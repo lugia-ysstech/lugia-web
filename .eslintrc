@@ -76,7 +76,8 @@
       {
         "allow": [
           "warn",
-          "error"
+          "error",
+          "log"
         ]
       }
     ],
@@ -129,10 +130,6 @@
     "quote-props": [
       "error",
       "as-needed"
-    ],
-    "arrow-body-style": [
-      "error",
-      "never"
     ],
     "eol-last": "error",
     "consistent-this": "error",
