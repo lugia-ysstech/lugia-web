@@ -1,0 +1,30 @@
+
+
+.svInput {
+    font-family: inherit;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    position: relative;
+    display: inline-block;
+    padding: 2px 3px;
+    height: 28px;
+    cursor: text;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, .65);
+    background-color: #fff;
+    background-image: none;
+    margin: 0;
+    border-radius: 4px;
+    transition: all .3s;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.svInput:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(16, 142, 233, .2);
+}
+
+.svInput:focus, .svInput:hover {
+    border-color: #49a9ee;
+}
