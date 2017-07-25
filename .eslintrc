@@ -32,7 +32,6 @@
     "no-new-symbol": "off",
     "no-this-before-super": "error",
     "no-useless-computed-key": "error",
-    "no-useless-constructor": "error",
     "no-var": "error",
     "object-shorthand": [
       "error",
@@ -122,7 +121,7 @@
     "yoda": "error",
     "quotes": [
       "error",
-      "backtick",
+      "single",
       {
         "avoidEscape": true
       }
