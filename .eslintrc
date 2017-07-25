@@ -1,7 +1,6 @@
 {
   "extends": "eslint-config-react-app",
   "rules": {
-    "arrow-body-style": "off",
     "arrow-parens": [
       "error",
       "as-needed"
@@ -72,15 +71,15 @@
     "require-yield": "off",
     "no-cond-assign": "error",
     "no-dupe-keys": "error",
-    //    "no-console:": [
-    //      "error",
-    //      {
-    //        "allow": [
-    //          "warn",
-    //          "error"
-    //        ]
-    //      }
-    //    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
     "no-debugger": "error",
     "semi": "error",
     "require-await": "off",
@@ -108,14 +107,6 @@
     "camelcase": "error",
     "block-spacing": "error",
     "array-bracket-spacing": "error",
-    //    "array-bracket-newline": [
-    //      "error",
-    //      "always"
-    //    ],
-    //    "array-element-newline": [
-    //      "error",
-    //      "always"
-    //    ],
     "brace-style": "error",
     "comma-dangle": [
       "error",
@@ -128,6 +119,21 @@
       }
     ],
     "yoda": "error",
+    "quotes": [
+      "error",
+      "backtick",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    "arrow-body-style": [
+      "error",
+      "never"
+    ],
     "eol-last": "error",
     "consistent-this": "error",
     "jsx-quotes": [
