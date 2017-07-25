@@ -1,9 +1,14 @@
 [ignore]
-
+.*/node_modules/.*
+.*/build/.*
+.*/config/.*
+.*/public/.*
+.*/scripts/.*
 [include]
-
+src
 [libs]
-
+flow-typed/
+src/interface/
 [options]
 
 [lints]

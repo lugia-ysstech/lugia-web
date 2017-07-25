@@ -4,6 +4,9 @@ import logo from './logo.svg';
 import Input from './widgets/input';
 import style from './App.css';
 
+const debug = require('debug');
+debug.enable('*');
+
 class App extends Component {
   render () {
     return (
