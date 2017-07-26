@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input render normal 1`] = `
+<span
+  className="sc-bdVaJa fpwWVj"
+>
+  <input
+    className="sc-bwzfXH ehuWex"
+    defaultValue={undefined}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    value={undefined}
+  />
+</span>
+`;
+
+exports[`Input render state.focued 1`] = `
+<span
+  className="sc-bdVaJa fCMnHf"
+>
+  <input
+    className="sc-bwzfXH ehuWex"
+    defaultValue={undefined}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    value={undefined}
+  />
+</span>
+`;
+
+exports[`Input render state.focued 2`] = `
+<span
+  className="sc-bdVaJa fpwWVj"
+>
+  <input
+    className="sc-bwzfXH ehuWex"
+    defaultValue={undefined}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    value={undefined}
+  />
+</span>
+`;

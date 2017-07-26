@@ -101,7 +101,6 @@
     "no-new-func": "error",
     "no-self-assign": "error",
     "no-labels": "error",
-    "no-magic-numbers": "error",
     "no-multi-str": "error",
     "no-redeclare": "error",
     "camelcase": "error",

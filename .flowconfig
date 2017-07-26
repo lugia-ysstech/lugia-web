@@ -4,11 +4,14 @@
 .*/config/.*
 .*/public/.*
 .*/scripts/.*
+.*/flow-typed/.*
 [include]
 src
 [libs]
 flow-typed/
 src/interface/
+node_modules/vx-mock/interface
 [options]
+module.name_mapper='^core/\(.*\)$' -> '<PROJECT_ROOT>/src/core/\1'
 
 [lints]

@@ -2,14 +2,52 @@
 import type { Props, State, } from 'vx-widget/input';
 
 import React, { Component, } from 'react';
-import style from './input.css';
+import style from 'styled-components';
 
-const debug = require('debug')('Input');
 
+const InputContainer = style.span`
+    font-family: inherit;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    position: relative;
+    display: inline-block;
+    padding: 2px 3px;
+    height: 28px;
+    cursor: text;  
+    font-size: 12px;
+    line-height: 1.5;
+    &:hover {
+      border-color: #49a9ee;
+    }
+    background-color: #fff;
+    background-image: none;
+    margin: 0;
+    border-radius: 4px;
+    transition: all .3s;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, .65);
+    box-shadow: ${props => (props.focused ? '0 0 0 2px rgba(16, 142, 233, .2' : '')};
+`;
+
+const Input = style.input`{
+    border: none;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}`;
 
 class TextBox extends Component<void, Props, State> {
 
   state: State;
+  input: any;
+
+  constructor (ctx: Props) {
+    super(ctx);
+    this.state = { focused: false, };
+  }
+
   onFocus = () => {
     this.setState({ focused: true, });
   };
@@ -18,25 +56,30 @@ class TextBox extends Component<void, Props, State> {
     this.setState({ focused: false, });
   };
 
-  constructor (ctx: Props) {
-    super(ctx);
-    this.state = { focused: false, };
-  }
+  onClear = () => {
+    this.input.value = '';
+  };
 
+
+  onChange = (event: Object) => {
+    const { target, } = event;
+    const { value, } = target;
+    const { onChange, } = this.props;
+    onChange && onChange(this.input.value, value);
+  };
 
   render () {
-    const { svInputInput, svInputContainer, focus, } = style;
     const { focused, } = this.state;
+    const { value, defaultValue, } = this.props;
 
-    const inputClass = focused ? `${svInputContainer} ${focus}` : svInputContainer;
-
-    debug('状态 = %s, inputClass = %s', focused, inputClass);
-
-    return <span className={inputClass}>
-      <input className={svInputInput}
+    return <InputContainer focused={focused}>
+      <Input ref={node => this.input = node}
              onFocus={this.onFocus}
+             defaultValue={defaultValue}
+             value={value}
+             onChange={this.onChange}
              onBlur={this.onBlur}/>
-    </span>;
+    </InputContainer>;
   }
 }
 
