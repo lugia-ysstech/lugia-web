@@ -6,37 +6,42 @@ import style from 'styled-components';
 
 
 const InputContainer = style.span`
-    font-family: inherit;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    position: relative;
-    display: inline-block;
-    padding: 2px 3px;
-    height: 28px;
-    cursor: text;  
-    font-size: 12px;
-    line-height: 1.5;
-    &:hover {
-      border-color: #49a9ee;
-    }
-    background-color: #fff;
-    background-image: none;
-    margin: 0;
-    border-radius: 4px;
-    transition: all .3s;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, .65);
-    box-shadow: ${props => (props.focused ? '0 0 0 2px rgba(16, 142, 233, .2' : '')};
+  font-family: inherit;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  position: relative;
+  display: inline-block;
+  padding: 2px 3px;
+  height: 28px;
+  cursor: text;
+  font-size: 12px;
+  line-height: 1.5;
+
+  &:hover {
+    border-color: #49a9ee;
+  }
+
+  background-color: #fff;
+  background-image: none;
+  margin: 0;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0.65);
+  box-shadow: ${props => (props.focused ? '0 0 0 2px rgba(16, 142, 233, .2' : '')};
 `;
 
-const Input = style.input`{
-    border: none;
-    width: 100%;
-    height: 100%;
-    outline: none;
-    margin: 0;
-    padding: 0;
-}`;
+const Input = style.input`
+  border: none;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const Icon = style.span`
+  color: red;
+`;
 
 class TextBox extends Component<void, Props, State> {
 
@@ -73,12 +78,13 @@ class TextBox extends Component<void, Props, State> {
     const { value, defaultValue, } = this.props;
 
     return <InputContainer focused={focused}>
-      <Input ref={node => this.input = node}
+      <Input innerRef={node => this.input = node}
              onFocus={this.onFocus}
              defaultValue={defaultValue}
              value={value}
              onChange={this.onChange}
              onBlur={this.onBlur}/>
+      <Icon onClick={this.onClear}>x</Icon>
     </InputContainer>;
   }
 }
