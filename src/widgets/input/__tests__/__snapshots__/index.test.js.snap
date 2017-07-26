@@ -2,73 +2,126 @@
 
 exports[`Input render normal 1`] = `
 .c0 {
-  font-family: inherit;
-  border: 1px solid #d9d9d9;
   border-radius: 4px;
-  position: relative;
-  display: inline-block;
-  padding: 2px 3px;
-  height: 28px;
+  border: 1px solid #d9d9d9;
   cursor: text;
-  font-size: 12px;
   line-height: 1.5;
-  background-color: #fff;
-  background-image: none;
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 3px;
+  font-family: inherit;
   margin: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
   color: rgba(0,0,0,0.65);
   box-shadow: ;
+  outline: none;
 }
 
 .c0:hover {
   border-color: #49a9ee;
 }
 
-.c1 {
-  border: none;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  margin: 0;
-  padding: 0;
-}
-
-<span
+<input
   className="c0"
->
-  <input
-    className="c1"
-    defaultValue={undefined}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    value={undefined}
-  />
-</span>
+  defaultValue={undefined}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  value={undefined}
+/>
 `;
 
-exports[`Input render state.focued 1`] = `
+exports[`Input render state.focued has fix 1`] = `
 .c0 {
-  font-family: inherit;
-  border: 1px solid #d9d9d9;
   border-radius: 4px;
-  position: relative;
-  display: inline-block;
-  padding: 2px 3px;
-  height: 28px;
+  border: 1px solid #d9d9d9;
   cursor: text;
-  font-size: 12px;
   line-height: 1.5;
-  background-color: #fff;
-  background-image: none;
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 3px;
+  font-family: inherit;
   margin: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
   color: rgba(0,0,0,0.65);
   box-shadow: 0 0 0 2px rgba(16,142,233,.2);
+  outline: none;
+}
+
+.c0:hover {
+  border-color: #49a9ee;
+}
+
+<input
+  className="c0"
+  defaultValue={undefined}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  value={undefined}
+/>
+`;
+
+exports[`Input render state.focued has fix 2`] = `
+.c0 {
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  cursor: text;
+  line-height: 1.5;
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 3px;
+  font-family: inherit;
+  margin: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: rgba(0,0,0,0.65);
+  box-shadow: ;
+  outline: none;
+}
+
+.c0:hover {
+  border-color: #49a9ee;
+}
+
+<input
+  className="c0"
+  defaultValue={undefined}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  value={undefined}
+/>
+`;
+
+exports[`Input render state.focued has prefix 1`] = `
+.c0 {
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  cursor: text;
+  line-height: 1.5;
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 3px;
+  font-family: inherit;
+  margin: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: rgba(0,0,0,0.65);
+  box-shadow: 0 0 0 2px rgba(16,142,233,.2);
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
 }
 
 .c0:hover {
@@ -98,26 +151,26 @@ exports[`Input render state.focued 1`] = `
 </span>
 `;
 
-exports[`Input render state.focued 2`] = `
+exports[`Input render state.focued has prefix 2`] = `
 .c0 {
-  font-family: inherit;
-  border: 1px solid #d9d9d9;
   border-radius: 4px;
-  position: relative;
-  display: inline-block;
-  padding: 2px 3px;
-  height: 28px;
+  border: 1px solid #d9d9d9;
   cursor: text;
-  font-size: 12px;
   line-height: 1.5;
-  background-color: #fff;
-  background-image: none;
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 3px;
+  font-family: inherit;
   margin: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
   color: rgba(0,0,0,0.65);
   box-shadow: ;
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
 }
 
 .c0:hover {

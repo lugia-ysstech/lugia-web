@@ -2,40 +2,49 @@
 import type { Props, State, } from 'vx-widget/input';
 
 import React, { Component, } from 'react';
-import style from 'styled-components';
+import styled from 'styled-components';
 
-const InputContainer = style.span`
-  font-family: inherit;
-  border: 1px solid #d9d9d9;
+const debug = require('debug')('Input');
+
+const CommonInputStyle = styled.span`
   border-radius: 4px;
-  position: relative;
-  display: inline-block;
-  padding: 2px 3px;
-  height: 28px;
+  border: 1px solid #d9d9d9;
   cursor: text;
-  font-size: 12px;
   line-height: 1.5;
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 3px;
+  font-family: inherit;
+  margin: 0;
 
   &:hover {
     border-color: #49a9ee;
   }
 
-  background-color: #fff;
-  background-image: none;
-  margin: 0;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-image: none;
   color: rgba(0, 0, 0, 0.65);
   box-shadow: ${props => (props.focused ? '0 0 0 2px rgba(16, 142, 233, .2)' : '')};
 `;
 
-const Input = style.input`
+const InputContainer = CommonInputStyle.extend`
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+`;
+
+const Input = styled.input`
   border: none;
   width: 100%;
   height: 100%;
   outline: none;
   margin: 0;
   padding: 0;
+`;
+
+const InputOnly = CommonInputStyle.withComponent('input').extend`
+  outline: none;
 `;
 
 class TextBox extends Component<void, Props, State> {
@@ -65,8 +74,18 @@ class TextBox extends Component<void, Props, State> {
 
   render () {
     const { focused, } = this.state;
-    const { value, defaultValue, } = this.props;
 
+    const { value, defaultValue, prefix, suffix, } = this.props;
+    debug('%o', prefix);
+    if (!suffix && !prefix) {
+      return <InputOnly innerRef={node => this.input = node}
+                        focused={focused}
+                        onFocus={this.onFocus}
+                        defaultValue={defaultValue}
+                        value={value}
+                        onChange={this.onChange}
+                        onBlur={this.onBlur}/>;
+    }
     return <InputContainer focused={focused}>
       <Input innerRef={node => this.input = node}
              onFocus={this.onFocus}
