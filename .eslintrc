@@ -59,7 +59,7 @@
     "valid-typeof": "error",
     "no-extra-semi": "error",
     "no-duplicate-case": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": "warn",
     "no-dupe-args": "error",
     "no-constant-condition": "error",
     //    "for-direction": "error",
