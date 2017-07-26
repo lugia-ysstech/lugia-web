@@ -4,7 +4,7 @@ import Input from '../';
 import renderer from 'react-test-renderer';
 import { mount, } from 'enzyme';
 import chai from 'chai';
-
+import 'jest-styled-components';
 
 
 const { expect: exp, } = chai;
@@ -23,12 +23,11 @@ describe('Input', () => {
 
     input.children[ 0 ].props.onFocus();
     input = component.toJSON();
-
+    expect(input).toHaveStyleRule('box-shadow', /.*/);
     expect(input).toMatchSnapshot();
-
     input.children[ 0 ].props.onBlur();
     input = component.toJSON();
-
+    expect(input).toHaveStyleRule('box-shadow', '');
     expect(input).toMatchSnapshot();
   });
 

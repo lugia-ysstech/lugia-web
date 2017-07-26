@@ -58,6 +58,7 @@
     "flow-bin": "0.51.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-cli": "^20.0.4",
+    "jest-styled-components": "^4.2.2",
     "react-test-renderer": "^15.6.1",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",

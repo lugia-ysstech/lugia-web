@@ -126,6 +126,7 @@ type EnzymeMatchersType = {
   toHaveStyle(styleKey: string, styleValue?: any): void,
   toHaveTagName(tagName: string): void,
   toHaveText(text: string): void,
+  toHaveStyleRule(property: string, value: string | RegExp): any;
   toIncludeText(text: string): void,
   toHaveValue(value: any): void,
   toMatchElement(element: React$Element<any>): void,
@@ -343,11 +344,9 @@ type JestObjectType = {
    * The third argument can be used to create virtual mocks -- mocks of modules
    * that don't exist anywhere in the system.
    */
-  mock(
-    moduleName: string,
-    moduleFactory?: any,
-    options?: Object
-  ): JestObjectType,
+  mock(moduleName: string,
+       moduleFactory?: any,
+       options?: Object): JestObjectType,
   /**
    * Resets the module registry - the cache of all required modules. This is
    * useful to isolate modules where local state might conflict between tests.
@@ -412,13 +411,16 @@ type JestSpyType = {
 };
 
 /** Runs this function after every test inside this context */
-declare function afterEach(fn: Function): void;
+declare function afterEach (fn: Function): void;
+
 /** Runs this function before every test inside this context */
-declare function beforeEach(fn: Function): void;
+declare function beforeEach (fn: Function): void;
+
 /** Runs this function after all tests have finished inside this context */
-declare function afterAll(fn: Function): void;
+declare function afterAll (fn: Function): void;
+
 /** Runs this function before any tests have started inside this context */
-declare function beforeAll(fn: Function): void;
+declare function beforeAll (fn: Function): void;
 
 /** A context for grouping tests together */
 declare var describe: {
@@ -470,7 +472,9 @@ declare var it: {
    */
   concurrent(name: string, fn?: Function): ?Promise<void>
 };
-declare function fit(name: string, fn: Function): ?Promise<void>;
+
+declare function fit (name: string, fn: Function): ?Promise<void>;
+
 /** An individual test unit */
 declare var test: typeof it;
 /** A disabled group of tests */
@@ -503,7 +507,7 @@ declare var expect: {
 
 // TODO handle return type
 // http://jasmine.github.io/2.4/introduction.html#section-Spies
-declare function spyOn(value: mixed, method: string): Object;
+declare function spyOn (value: mixed, method: string): Object;
 
 /** Holds all functions related to manipulating test runner */
 declare var jest: JestObjectType;
@@ -519,10 +523,8 @@ declare var jasmine: {
   arrayContaining(value: Array<mixed>): void,
   clock(): JestClockType,
   createSpy(name: string): JestSpyType,
-  createSpyObj(
-    baseName: string,
-    methodNames: Array<string>
-  ): { [methodName: string]: JestSpyType },
+  createSpyObj(baseName: string,
+               methodNames: Array<string>): { [methodName: string]: JestSpyType },
   objectContaining(value: Object): void,
   stringMatching(value: string): void
 };
