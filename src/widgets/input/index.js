@@ -42,7 +42,6 @@ const Input = styled.input`
   margin: 0;
   padding: 0;
 `;
-
 const InputOnly = CommonInputStyle.withComponent('input').extend`
   outline: none;
 `;
@@ -76,7 +75,8 @@ class TextBox extends Component<void, Props, State> {
     const { focused, } = this.state;
 
     const { value, defaultValue, prefix, suffix, } = this.props;
-    debug('%o', prefix);
+    // debug('%o', prefix);
+
     if (!suffix && !prefix) {
       return <InputOnly innerRef={node => this.input = node}
                         focused={focused}
@@ -86,13 +86,16 @@ class TextBox extends Component<void, Props, State> {
                         onChange={this.onChange}
                         onBlur={this.onBlur}/>;
     }
+
     return <InputContainer focused={focused}>
+      {prefix}
       <Input innerRef={node => this.input = node}
              onFocus={this.onFocus}
              defaultValue={defaultValue}
              value={value}
              onChange={this.onChange}
              onBlur={this.onBlur}/>
+      {suffix}
     </InputContainer>;
   }
 }

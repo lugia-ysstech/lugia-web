@@ -34,74 +34,6 @@ exports[`Input render normal 1`] = `
 />
 `;
 
-exports[`Input render state.focued has fix 1`] = `
-.c0 {
-  border-radius: 4px;
-  border: 1px solid #d9d9d9;
-  cursor: text;
-  line-height: 1.5;
-  font-size: 12px;
-  height: 28px;
-  padding: 2px 3px;
-  font-family: inherit;
-  margin: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgba(0,0,0,0.65);
-  box-shadow: 0 0 0 2px rgba(16,142,233,.2);
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #49a9ee;
-}
-
-<input
-  className="c0"
-  defaultValue={undefined}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  value={undefined}
-/>
-`;
-
-exports[`Input render state.focued has fix 2`] = `
-.c0 {
-  border-radius: 4px;
-  border: 1px solid #d9d9d9;
-  cursor: text;
-  line-height: 1.5;
-  font-size: 12px;
-  height: 28px;
-  padding: 2px 3px;
-  font-family: inherit;
-  margin: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgba(0,0,0,0.65);
-  box-shadow: ;
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #49a9ee;
-}
-
-<input
-  className="c0"
-  defaultValue={undefined}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  value={undefined}
-/>
-`;
-
 exports[`Input render state.focued has prefix 1`] = `
 .c0 {
   border-radius: 4px;
@@ -140,6 +72,7 @@ exports[`Input render state.focued has prefix 1`] = `
 <span
   className="c0"
 >
+  <div />
   <input
     className="c1"
     defaultValue={undefined}
@@ -189,6 +122,7 @@ exports[`Input render state.focued has prefix 2`] = `
 <span
   className="c0"
 >
+  <div />
   <input
     className="c1"
     defaultValue={undefined}
@@ -198,4 +132,72 @@ exports[`Input render state.focued has prefix 2`] = `
     value={undefined}
   />
 </span>
+`;
+
+exports[`Input render state.focued no have fix 1`] = `
+.c0 {
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  cursor: text;
+  line-height: 1.5;
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 3px;
+  font-family: inherit;
+  margin: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: rgba(0,0,0,0.65);
+  box-shadow: 0 0 0 2px rgba(16,142,233,.2);
+  outline: none;
+}
+
+.c0:hover {
+  border-color: #49a9ee;
+}
+
+<input
+  className="c0"
+  defaultValue={undefined}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  value={undefined}
+/>
+`;
+
+exports[`Input render state.focued no have fix 2`] = `
+.c0 {
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  cursor: text;
+  line-height: 1.5;
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 3px;
+  font-family: inherit;
+  margin: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: rgba(0,0,0,0.65);
+  box-shadow: ;
+  outline: none;
+}
+
+.c0:hover {
+  border-color: #49a9ee;
+}
+
+<input
+  className="c0"
+  defaultValue={undefined}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  value={undefined}
+/>
 `;

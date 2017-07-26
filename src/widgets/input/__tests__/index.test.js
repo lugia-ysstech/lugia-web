@@ -23,17 +23,17 @@ describe('Input', () => {
     const component = renderer.create(<Input prefix={prefix}/>);
     let input = component.toJSON();
 
-    input.children[ 0 ].props.onFocus();
+    input.children[ 1 ].props.onFocus();
     input = component.toJSON();
     expect(input).toHaveStyleRule('box-shadow', /.*/);
     expect(input).toMatchSnapshot();
-    input.children[ 0 ].props.onBlur();
+    input.children[ 1 ].props.onBlur();
     input = component.toJSON();
     expect(input).toHaveStyleRule('box-shadow', '');
     expect(input).toMatchSnapshot();
   });
 
-  it('render state.focued has fix', () => {
+  it('render state.focued no have fix', () => {
     const component = renderer.create(<Input/>);
     let input = component.toJSON();
 
@@ -56,19 +56,28 @@ describe('Input', () => {
     exp(input.state('focused')).to.be.false;
   });
 
-  it('clear', () => {
+  it('exisit prefix', () => {
+    const text = 'hello ligx';
+    const prefix = <div className="prefix">{text}</div>;
+    const component = mount(<Input prefix={prefix}/>);
+    exp(component.find('.prefix').text()).to.be.equal(text);
+  });
 
-    // const mockOnChange = mockFunction.create(VerifyOrderConfig.create('onChange', order));
-    //
-    // const input = mount(<Input onChange={mockOnChange.getFunction()}/>);
-    //
-    // const txt = 'hello';
-    // input.find('.svInputInput').simulate('change', { target: { value: txt, }, });
-    // input.find('.clear').simulate('click');
-    //
-    // order.verify(({ onChange, }) => {
-    //   onChange(txt);
-    //   onChange('');
-    // });
+  it('exisit suffix', () => {
+    const text = 'hello suffix';
+    const suffix = <div className="suffix">{text}</div>;
+    const component = mount(<Input suffix={suffix}/>);
+    exp(component.find('.suffix').text()).to.be.equal(text);
+  });
+
+  it('exisit prefix&suffix', () => {
+    const prefixTxt = 'hello ligx';
+    const suffixTxt = 'hello kxy';
+    const prefix = <div className="prefix">{prefixTxt}</div>;
+    const suffix = <div className="suffix">{suffixTxt}</div>;
+
+    const component = mount(<Input prefix={prefix} suffix={suffix}/>);
+    exp(component.find('.prefix').text()).to.be.equal(prefixTxt);
+    exp(component.find('.suffix').text()).to.be.equal(suffixTxt);
   });
 });

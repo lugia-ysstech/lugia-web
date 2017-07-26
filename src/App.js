@@ -5,8 +5,7 @@ import Input from './widgets/input';
 import style from './App.css';
 
 const debug = require('debug');
-debug.enable('*');
-
+// debug.enable('*');
 class App extends Component {
   render () {
     return (
@@ -19,7 +18,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <div>
-          <Input/>
+          <Input ref={node => this.input = node} prefix={<div>11</div>}/>
         </div>
       </div>
     );
