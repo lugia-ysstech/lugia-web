@@ -4,7 +4,6 @@ import type { Props, State, } from 'vx-widget/input';
 import React, { Component, } from 'react';
 import style from 'styled-components';
 
-
 const InputContainer = style.span`
   font-family: inherit;
   border: 1px solid #d9d9d9;
@@ -27,7 +26,7 @@ const InputContainer = style.span`
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0.65);
-  box-shadow: ${props => (props.focused ? '0 0 0 2px rgba(16, 142, 233, .2' : '')};
+  box-shadow: ${props => (props.focused ? '0 0 0 2px rgba(16, 142, 233, .2)' : '')};
 `;
 
 const Input = style.input`
@@ -37,10 +36,6 @@ const Input = style.input`
   outline: none;
   margin: 0;
   padding: 0;
-`;
-
-const Icon = style.span`
-  color: red;
 `;
 
 class TextBox extends Component<void, Props, State> {
@@ -61,11 +56,6 @@ class TextBox extends Component<void, Props, State> {
     this.setState({ focused: false, });
   };
 
-  onClear = () => {
-    this.input.value = '';
-  };
-
-
   onChange = (event: Object) => {
     const { target, } = event;
     const { value, } = target;
@@ -84,7 +74,6 @@ class TextBox extends Component<void, Props, State> {
              value={value}
              onChange={this.onChange}
              onBlur={this.onBlur}/>
-      <Icon onClick={this.onClear}>x</Icon>
     </InputContainer>;
   }
 }
