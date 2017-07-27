@@ -8,17 +8,18 @@ import 'jest-styled-components';
 
 
 const { expect: exp, } = chai;
-
+const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
 describe('Input', () => {
-
+  let order;
   beforeEach(() => {
+    order = VerifyOrder.create();
   });
 
-  it('render normal', () => {
+  it('props: null', () => {
     expect(renderer.create(<Input/>).toJSON()).toMatchSnapshot();
   });
 
-  it('render state.focued has prefix', () => {
+  it('props: prefix state: focus', () => {
     const prefix = <div></div>;
     const component = renderer.create(<Input prefix={prefix}/>);
     let input = component.toJSON();
@@ -33,7 +34,7 @@ describe('Input', () => {
     expect(input).toMatchSnapshot();
   });
 
-  it('render state.focued no have fix', () => {
+  it('props: null state: focus', () => {
     const component = renderer.create(<Input/>);
     let input = component.toJSON();
 
@@ -48,7 +49,7 @@ describe('Input', () => {
     expect(input).toMatchSnapshot();
   });
 
-  it('render input event', () => {
+  it('props: null event: focus', () => {
     const input = mount(<Input/>);
     input.find('input').simulate('focus');
     exp(input.state('focused')).to.be.true;
@@ -56,21 +57,21 @@ describe('Input', () => {
     exp(input.state('focused')).to.be.false;
   });
 
-  it('exisit prefix', () => {
+  it('props: prefix', () => {
     const text = 'hello ligx';
     const prefix = <div className="prefix">{text}</div>;
     const component = mount(<Input prefix={prefix}/>);
     exp(component.find('.prefix').text()).to.be.equal(text);
   });
 
-  it('exisit suffix', () => {
+  it('props: suffix', () => {
     const text = 'hello suffix';
     const suffix = <div className="suffix">{text}</div>;
     const component = mount(<Input suffix={suffix}/>);
     exp(component.find('.suffix').text()).to.be.equal(text);
   });
 
-  it('exisit prefix&suffix', () => {
+  it('props: prefix&suffix', () => {
     const prefixTxt = 'hello ligx';
     const suffixTxt = 'hello kxy';
     const prefix = <div className="prefix">{prefixTxt}</div>;
@@ -80,4 +81,45 @@ describe('Input', () => {
     exp(component.find('.prefix').text()).to.be.equal(prefixTxt);
     exp(component.find('.suffix').text()).to.be.equal(suffixTxt);
   });
+
+
+  it('props: value', () => {
+    const text = 'hello suffix';
+    const component = mount(<Input value={text}/>);
+    const inputDOM = getInputDOM(component);
+    if (inputDOM) {
+      exp(inputDOM.value).to.be.equal(text);
+      return;
+    }
+    throw new Error('input创建失败');
+  });
+
+  it('props: onChange', () => {
+    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
+    const text = 'hello suffix';
+    const component = mount(<Input onChange={mockFunc.getFunction()}/>);
+    component.find('input').simulate('change', { target: { value: text, }, });
+    const inputDOM = getInputDOM(component);
+
+    if (inputDOM) {
+      exp(inputDOM.value).to.be.equal(text);
+    }
+
+    order.verify(({ onChange, }) => {
+      onChange(text, '');
+    });
+
+  });
+
+  it('function: getValue', () => {
+
+  });
+
+  function getInputDOM (component, text): HTMLInputElement | null {
+    const result = component.find('input').getDOMNode();
+    if (result instanceof HTMLInputElement) {
+      return result;
+    }
+    return null;
+  }
 });

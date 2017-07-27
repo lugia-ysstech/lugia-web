@@ -1,10 +1,11 @@
 //@flow
-import type { Props, State, } from 'vx-widget/input';
+import type { InputProps, InputState, } from 'sv-widget';
 
 import React, { Component, } from 'react';
 import styled from 'styled-components';
 
 const debug = require('debug')('Input');
+
 
 const CommonInputStyle = styled.span`
   border-radius: 4px;
@@ -42,18 +43,23 @@ const Input = styled.input`
   margin: 0;
   padding: 0;
 `;
+
 const InputOnly = CommonInputStyle.withComponent('input').extend`
   outline: none;
 `;
 
-class TextBox extends Component<void, Props, State> {
+class TextBox extends Component<void, InputProps, InputState> {
 
-  state: State;
+  state: InputState;
   input: any;
 
-  constructor (ctx: Props) {
-    super(ctx);
-    this.state = { focused: false, };
+  constructor (props: InputProps) {
+    super(props);
+    this.state = { focused: false, value: this.getValue(props) };
+  }
+
+  getValue (props: InputProps): string {
+    return '';
   }
 
   onFocus = () => {
@@ -68,12 +74,12 @@ class TextBox extends Component<void, Props, State> {
     const { target, } = event;
     const { value, } = target;
     const { onChange, } = this.props;
-    onChange && onChange(this.input.value, value);
+    onChange && onChange(value, this.input.value);
   };
 
   render () {
     const { focused, } = this.state;
-
+    debug('dafas');
     const { value, defaultValue, prefix, suffix, } = this.props;
     // debug('%o', prefix);
 
