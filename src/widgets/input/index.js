@@ -1,6 +1,7 @@
 //@flow
 import type { InputProps, InputState, } from 'sv-widget';
 
+import Support from '../common/FormFieldWidgetSupport';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
 
@@ -35,7 +36,7 @@ const InputContainer = CommonInputStyle.extend`
   background-color: #fff;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   border: none;
   width: 100%;
   height: 100%;
@@ -44,7 +45,7 @@ const Input = styled.input`
   padding: 0;
 `;
 
-const InputOnly = CommonInputStyle.withComponent('input').extend`
+export const InputOnly = CommonInputStyle.withComponent('input').extend`
   outline: none;
 `;
 
@@ -55,12 +56,15 @@ class TextBox extends Component<void, InputProps, InputState> {
 
   constructor (props: InputProps) {
     super(props);
-    this.state = { focused: false, value: this.getValue(props) };
+    const { value, defaultValue, } = props;
+    this.state = {
+      focused: false, value: Support.getValue({
+        value,
+        defaultValue,
+      }),
+    };
   }
 
-  getValue (props: InputProps): string {
-    return '';
-  }
 
   onFocus = () => {
     this.setState({ focused: true, });
@@ -73,36 +77,43 @@ class TextBox extends Component<void, InputProps, InputState> {
   onChange = (event: Object) => {
     const { target, } = event;
     const { value, } = target;
-    const { onChange, } = this.props;
-    onChange && onChange(value, this.input.value);
+    this.setValue(value);
   };
+
+  setValue (value: string): void {
+    if ('value' in this.props === false) {
+      const { onChange, } = this.props;
+      this.setState({ value, });
+      onChange && onChange(value, this.input.value);
+    }
+  }
 
   render () {
     const { focused, } = this.state;
-    debug('dafas');
-    const { value, defaultValue, prefix, suffix, } = this.props;
-    // debug('%o', prefix);
+    const { prefix, suffix, } = this.props;
 
     if (!suffix && !prefix) {
-      return <InputOnly innerRef={node => this.input = node}
-                        focused={focused}
-                        onFocus={this.onFocus}
-                        defaultValue={defaultValue}
-                        value={value}
-                        onChange={this.onChange}
-                        onBlur={this.onBlur}/>;
+      return this.generateInput(InputOnly);
     }
 
     return <InputContainer focused={focused}>
       {prefix}
-      <Input innerRef={node => this.input = node}
-             onFocus={this.onFocus}
-             defaultValue={defaultValue}
-             value={value}
-             onChange={this.onChange}
-             onBlur={this.onBlur}/>
+      {this.generateInput(Input)}
       {suffix}
     </InputContainer>;
+  }
+
+  generateInput (Input: Function): React$Element<any> {
+
+    const { defaultValue, } = this.props;
+    const { focused, value, } = this.state;
+    return <Input innerRef={node => this.input = node}
+                  onFocus={this.onFocus}
+                  focused={focused}
+                  defaultValue={defaultValue}
+                  value={value}
+                  onChange={this.onChange}
+                  onBlur={this.onBlur}/>;
   }
 }
 

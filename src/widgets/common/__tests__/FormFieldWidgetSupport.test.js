@@ -1,9 +1,10 @@
 //@flow
-import { getValue, } from '../FormFieldWidgetSupport';
+import Support from '../FormFieldWidgetSupport';
 
 import chai from 'chai';
 
 const { expect: exp, } = chai;
+const { getValue } = Support;
 
 describe('FormFieldWidgetSupport.js', () => {
   it('getValue: value  ', () => {

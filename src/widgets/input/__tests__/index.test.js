@@ -1,14 +1,19 @@
 //@flow
+import { mount, } from 'enzyme';
 import React from 'react';
 import Input from '../';
 import renderer from 'react-test-renderer';
-import { mount, } from 'enzyme';
 import chai from 'chai';
 import 'jest-styled-components';
 
 
+import Support from '../../common/FormFieldWidgetSupport';
+import { assertInputValue, testPropsValue, } from './InputTestUtils';
+
 const { expect: exp, } = chai;
-const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
+const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
+const { InputOnly, Input: InputElement, } = require('../index');
+
 describe('Input', () => {
   let order;
   beforeEach(() => {
@@ -84,14 +89,8 @@ describe('Input', () => {
 
 
   it('props: value', () => {
-    const text = 'hello suffix';
-    const component = mount(<Input value={text}/>);
-    const inputDOM = getInputDOM(component);
-    if (inputDOM) {
-      exp(inputDOM.value).to.be.equal(text);
-      return;
-    }
-    throw new Error('input创建失败');
+    const value = '诸法为空';
+    testPropsValue(value, value);
   });
 
   it('props: onChange', () => {
@@ -99,27 +98,60 @@ describe('Input', () => {
     const text = 'hello suffix';
     const component = mount(<Input onChange={mockFunc.getFunction()}/>);
     component.find('input').simulate('change', { target: { value: text, }, });
-    const inputDOM = getInputDOM(component);
-
-    if (inputDOM) {
-      exp(inputDOM.value).to.be.equal(text);
-    }
-
+    assertInputValue(component, text);
     order.verify(({ onChange, }) => {
       onChange(text, '');
     });
+  });
 
+  it('props: value onChange Limited Input', () => {
+
+    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
+    mockFunc.forever('ok');
+
+    const value = '诸行无常';
+    const changeValue = 'hello ligx';
+
+    const component = mount(<Input value={value} onChange={mockFunc.getFunction()}/>);
+
+    assertInputValue(component, value);
+
+    component.find('input').simulate('change', { target: { value: changeValue, }, });
+
+    assertInputValue(component, value);
+
+    order.verify(({ onChange, }) => {
+    });
   });
 
   it('function: getValue', () => {
-
+    const SupportMock = mockObject.create(Support, VerifyOrderConfig.create('Support', order));
+    const returnValue = 'hello';
+    const value = 'ligx';
+    SupportMock.mockFunction('getValue').returned(returnValue);
+    testPropsValue(value, returnValue);
   });
 
-  function getInputDOM (component, text): HTMLInputElement | null {
-    const result = component.find('input').getDOMNode();
-    if (result instanceof HTMLInputElement) {
-      return result;
-    }
-    return null;
-  }
+  it('function: generateInput', () => {
+    const InputMock = mockObject.create(Input.prototype, VerifyOrderConfig.create('Input', order));
+    InputMock.mockFunction('generateInput').returned(<InputOnly/>);
+    const component = mount(<Input/>);
+    order.verify(({ Input, }) => {
+      Input.generateInput(InputOnly);
+    });
+    InputMock.resetAll();
+  });
+
+  it('props: prefix function: generateInput', () => {
+    const InputMock = mockObject.create(Input.prototype, VerifyOrderConfig.create('Input', order));
+    InputMock.mockFunction('generateInput').returned(<InputOnly/>);
+    const prefix = <div></div>;
+
+    const component = mount(<Input prefix={prefix}/>);
+    order.verify(({ Input, }) => {
+      Input.generateInput(InputElement);
+    });
+    InputMock.resetAll();
+  });
+
 });

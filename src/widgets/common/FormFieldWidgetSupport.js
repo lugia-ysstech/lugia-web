@@ -1,7 +1,7 @@
 //@flow
 import type { GetValueArgType, } from 'sv-widget';
 
-export function getValue (arg: GetValueArgType): string {
+function getValue (arg: GetValueArgType): string {
   const { value = '', defaultValue = '', } = arg;
   if ('value' in arg) {
     return value;
@@ -10,3 +10,7 @@ export function getValue (arg: GetValueArgType): string {
   }
   return '';
 }
+
+export default {
+  getValue,
+};

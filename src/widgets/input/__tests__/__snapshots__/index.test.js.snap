@@ -30,7 +30,7 @@ exports[`Input props: null 1`] = `
   onBlur={[Function]}
   onChange={[Function]}
   onFocus={[Function]}
-  value={undefined}
+  value=""
 />
 `;
 
@@ -64,7 +64,7 @@ exports[`Input props: null state: focus 1`] = `
   onBlur={[Function]}
   onChange={[Function]}
   onFocus={[Function]}
-  value={undefined}
+  value=""
 />
 `;
 
@@ -98,7 +98,7 @@ exports[`Input props: null state: focus 2`] = `
   onBlur={[Function]}
   onChange={[Function]}
   onFocus={[Function]}
-  value={undefined}
+  value=""
 />
 `;
 
@@ -147,7 +147,7 @@ exports[`Input props: prefix state: focus 1`] = `
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    value={undefined}
+    value=""
   />
 </span>
 `;
@@ -197,7 +197,7 @@ exports[`Input props: prefix state: focus 2`] = `
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    value={undefined}
+    value=""
   />
 </span>
 `;
