@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const debug = require('debug')('Input');
 
 
-const CommonInputStyle = styled.span`
+const CommonInputStyle = styled.input`
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   cursor: text;
@@ -18,7 +18,7 @@ const CommonInputStyle = styled.span`
   padding: 2px 3px;
   font-family: inherit;
   margin: 0;
-
+  width: 100%;
   &:hover {
     border-color: #49a9ee;
   }
@@ -27,26 +27,41 @@ const CommonInputStyle = styled.span`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-image: none;
   color: rgba(0, 0, 0, 0.65);
-  box-shadow: ${props => (props.focused ? '0 0 0 2px rgba(16, 142, 233, .2)' : '')};
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(16, 142, 233, .2);
+  }
 `;
 
-const InputContainer = CommonInputStyle.extend`
+const InputContainer = styled.span`
   position: relative;
+  width: 100%;
   display: inline-block;
   background-color: #fff;
 `;
 
-export const Input = styled.input`
-  border: none;
-  width: 100%;
-  height: 100%;
+export const Input = CommonInputStyle.extend`
   outline: none;
   margin: 0;
-  padding: 0;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+  :not(:first-child) {
+    padding-left: 24px;
+  }
 `;
 
-export const InputOnly = CommonInputStyle.withComponent('input').extend`
+export const InputOnly = CommonInputStyle.extend`
   outline: none;
+`;
+const Fix = styled.span`
+  left: 7px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  line-height: 0;
+  color: rgba(0, 0, 0, 0.65);
 `;
 
 class TextBox extends Component<void, InputProps, InputState> {
@@ -58,21 +73,12 @@ class TextBox extends Component<void, InputProps, InputState> {
     super(props);
     const { value, defaultValue, } = props;
     this.state = {
-      focused: false, value: Support.getValue({
+      value: Support.getValue({
         value,
         defaultValue,
       }),
     };
   }
-
-
-  onFocus = () => {
-    this.setState({ focused: true, });
-  };
-
-  onBlur = () => {
-    this.setState({ focused: false, });
-  };
 
   onChange = (event: Object) => {
     const { target, } = event;
@@ -89,31 +95,43 @@ class TextBox extends Component<void, InputProps, InputState> {
   }
 
   render () {
-    const { focused, } = this.state;
     const { prefix, suffix, } = this.props;
 
     if (!suffix && !prefix) {
       return this.generateInput(InputOnly);
     }
 
-    return <InputContainer focused={focused}>
-      {prefix}
+    return <InputContainer >
+      {this.generatePrefix()}
       {this.generateInput(Input)}
-      {suffix}
+      {this.generateSuffix()}
     </InputContainer>;
+  }
+
+  generatePrefix (): React$Element<any> | null {
+    const { prefix, } = this.props;
+    if (prefix) {
+      return <Fix>{prefix}</Fix>;
+    }
+    return null;
+  }
+
+  generateSuffix (): React$Element<any> | null {
+    const { suffix, } = this.props;
+    if (suffix) {
+      return <Fix>{suffix}</Fix>;
+    }
+    return null;
   }
 
   generateInput (Input: Function): React$Element<any> {
 
     const { defaultValue, } = this.props;
-    const { focused, value, } = this.state;
+    const { value, } = this.state;
     return <Input innerRef={node => this.input = node}
-                  onFocus={this.onFocus}
-                  focused={focused}
                   defaultValue={defaultValue}
                   value={value}
-                  onChange={this.onChange}
-                  onBlur={this.onBlur}/>;
+                  onChange={this.onChange}/>;
   }
 }
 

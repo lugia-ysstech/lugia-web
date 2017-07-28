@@ -2,7 +2,6 @@
 declare module 'sv-widget' {
 
   declare  type InputState = {|
-    focused: boolean,
     value: string,
   |};
 

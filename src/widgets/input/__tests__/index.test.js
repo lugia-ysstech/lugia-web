@@ -24,44 +24,6 @@ describe('Input', () => {
     expect(renderer.create(<Input/>).toJSON()).toMatchSnapshot();
   });
 
-  it('props: prefix state: focus', () => {
-    const prefix = <div></div>;
-    const component = renderer.create(<Input prefix={prefix}/>);
-    let input = component.toJSON();
-
-    input.children[ 1 ].props.onFocus();
-    input = component.toJSON();
-    expect(input).toHaveStyleRule('box-shadow', /.*/);
-    expect(input).toMatchSnapshot();
-    input.children[ 1 ].props.onBlur();
-    input = component.toJSON();
-    expect(input).toHaveStyleRule('box-shadow', '');
-    expect(input).toMatchSnapshot();
-  });
-
-  it('props: null state: focus', () => {
-    const component = renderer.create(<Input/>);
-    let input = component.toJSON();
-
-    input.props.onFocus();
-    input = component.toJSON();
-    expect(input).toHaveStyleRule('box-shadow', '0 0 0 2px rgba(16,142,233,.2)');
-    expect(input).toMatchSnapshot();
-    exp(input.children).to.be.null;
-    input.props.onBlur();
-    input = component.toJSON();
-    expect(input).toHaveStyleRule('box-shadow', '');
-    expect(input).toMatchSnapshot();
-  });
-
-  it('props: null event: focus', () => {
-    const input = mount(<Input/>);
-    input.find('input').simulate('focus');
-    exp(input.state('focused')).to.be.true;
-    input.find('input').simulate('blur');
-    exp(input.state('focused')).to.be.false;
-  });
-
   it('props: prefix', () => {
     const text = 'hello ligx';
     const prefix = <div className="prefix">{text}</div>;

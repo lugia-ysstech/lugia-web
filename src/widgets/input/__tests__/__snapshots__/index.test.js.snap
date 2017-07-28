@@ -11,193 +11,27 @@ exports[`Input props: null 1`] = `
   padding: 2px 3px;
   font-family: inherit;
   margin: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgba(0,0,0,0.65);
-  box-shadow: ;
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #49a9ee;
-}
-
-<input
-  className="c0"
-  defaultValue={undefined}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  value=""
-/>
-`;
-
-exports[`Input props: null state: focus 1`] = `
-.c0 {
-  border-radius: 4px;
-  border: 1px solid #d9d9d9;
-  cursor: text;
-  line-height: 1.5;
-  font-size: 12px;
-  height: 28px;
-  padding: 2px 3px;
-  font-family: inherit;
-  margin: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgba(0,0,0,0.65);
-  box-shadow: 0 0 0 2px rgba(16,142,233,.2);
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #49a9ee;
-}
-
-<input
-  className="c0"
-  defaultValue={undefined}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  value=""
-/>
-`;
-
-exports[`Input props: null state: focus 2`] = `
-.c0 {
-  border-radius: 4px;
-  border: 1px solid #d9d9d9;
-  cursor: text;
-  line-height: 1.5;
-  font-size: 12px;
-  height: 28px;
-  padding: 2px 3px;
-  font-family: inherit;
-  margin: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgba(0,0,0,0.65);
-  box-shadow: ;
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #49a9ee;
-}
-
-<input
-  className="c0"
-  defaultValue={undefined}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  value=""
-/>
-`;
-
-exports[`Input props: prefix state: focus 1`] = `
-.c0 {
-  border-radius: 4px;
-  border: 1px solid #d9d9d9;
-  cursor: text;
-  line-height: 1.5;
-  font-size: 12px;
-  height: 28px;
-  padding: 2px 3px;
-  font-family: inherit;
-  margin: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgba(0,0,0,0.65);
-  box-shadow: 0 0 0 2px rgba(16,142,233,.2);
-  position: relative;
-  display: inline-block;
-  background-color: #fff;
-}
-
-.c0:hover {
-  border-color: #49a9ee;
-}
-
-.c1 {
-  border: none;
   width: 100%;
-  height: 100%;
-  outline: none;
-  margin: 0;
-  padding: 0;
-}
-
-<span
-  className="c0"
->
-  <div />
-  <input
-    className="c1"
-    defaultValue={undefined}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    value=""
-  />
-</span>
-`;
-
-exports[`Input props: prefix state: focus 2`] = `
-.c0 {
-  border-radius: 4px;
-  border: 1px solid #d9d9d9;
-  cursor: text;
-  line-height: 1.5;
-  font-size: 12px;
-  height: 28px;
-  padding: 2px 3px;
-  font-family: inherit;
-  margin: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
   color: rgba(0,0,0,0.65);
-  box-shadow: ;
-  position: relative;
-  display: inline-block;
-  background-color: #fff;
+  outline: none;
 }
 
 .c0:hover {
   border-color: #49a9ee;
 }
 
-.c1 {
-  border: none;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  margin: 0;
-  padding: 0;
+.c0:focus {
+  box-shadow: 0 0 0 2px rgba(16,142,233,.2);
 }
 
-<span
+<input
   className="c0"
->
-  <div />
-  <input
-    className="c1"
-    defaultValue={undefined}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    value=""
-  />
-</span>
+  defaultValue={undefined}
+  onChange={[Function]}
+  value=""
+/>
 `;
