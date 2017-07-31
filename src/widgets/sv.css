@@ -18,6 +18,9 @@
   font-size: large;
 }
 
+:global(.sv *) {
+  box-sizing: border-box;
+}
 @keyframes AppLogoSpin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

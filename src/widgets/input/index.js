@@ -4,6 +4,7 @@ import type { InputProps, InputState, } from 'sv-widget';
 import Support from '../common/FormFieldWidgetSupport';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
+import '../sv.css';
 
 const debug = require('debug')('Input');
 
@@ -15,6 +16,7 @@ const CommonInputStyle = styled.input`
   line-height: 1.5;
   font-size: 12px;
   height: 28px;
+  display: inline-block;
   padding: 2px 3px;
   font-family: inherit;
   margin: 0;
@@ -49,20 +51,29 @@ export const Input = CommonInputStyle.extend`
   position: relative;
   :not(:first-child) {
     padding-left: 24px;
+    padding-right: 24px;
   }
 `;
 
 export const InputOnly = CommonInputStyle.extend`
   outline: none;
 `;
+
 const Fix = styled.span`
-  left: 7px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(50%);
   z-index: 2;
   line-height: 0;
   color: rgba(0, 0, 0, 0.65);
+`;
+
+const Prefix = Fix.extend`
+  left: 7px;
+`;
+
+const Suffix = Fix.extend`
+  right: 7px;
 `;
 
 class TextBox extends Component<void, InputProps, InputState> {
@@ -102,7 +113,7 @@ class TextBox extends Component<void, InputProps, InputState> {
       return this.generateInput(InputOnly);
     }
 
-    return <InputContainer >
+    return <InputContainer className="sv">
       {this.generatePrefix()}
       {this.generateInput(Input)}
       {this.generateSuffix()}
@@ -112,7 +123,7 @@ class TextBox extends Component<void, InputProps, InputState> {
   generatePrefix (): React$Element<any> | null {
     const { prefix, } = this.props;
     if (prefix) {
-      return <Fix>{prefix}</Fix>;
+      return <Prefix>{prefix}</Prefix>;
     }
     return null;
   }
@@ -120,7 +131,7 @@ class TextBox extends Component<void, InputProps, InputState> {
   generateSuffix (): React$Element<any> | null {
     const { suffix, } = this.props;
     if (suffix) {
-      return <Fix>{suffix}</Fix>;
+      return <Suffix>{suffix}</Suffix>;
     }
     return null;
   }

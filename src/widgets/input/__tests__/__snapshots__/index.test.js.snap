@@ -8,6 +8,7 @@ exports[`Input props: null 1`] = `
   line-height: 1.5;
   font-size: 12px;
   height: 28px;
+  display: inline-block;
   padding: 2px 3px;
   font-family: inherit;
   margin: 0;
