@@ -1,18 +1,19 @@
 //@flow
 import { mount, } from 'enzyme';
 import React from 'react';
-import Input from '../';
+import Input, { TextBoxInner, } from '../';
 import renderer from 'react-test-renderer';
 import chai from 'chai';
 import 'jest-styled-components';
 
 
 import Support from '../../common/FormFieldWidgetSupport';
-import { assertInputValue, testPropsValue, } from './InputTestUtils';
+import { assertInputValue, testKeyBoardEvent, testPropsValue, } from './InputTestUtils';
 
 const { expect: exp, } = chai;
 const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
 const { InputOnly, Input: InputElement, } = require('../index');
+
 
 describe('Input', () => {
   let order;
@@ -66,6 +67,18 @@ describe('Input', () => {
     });
   });
 
+  it('props: onKeyUp', () => {
+    testKeyBoardEvent(order, 'onKeyUp');
+  });
+
+  it('props: onKeyPress', () => {
+    testKeyBoardEvent(order, 'onKeyPress');
+  });
+  it('props: onKeyDown', () => {
+    testKeyBoardEvent(order, 'onKeyDown');
+  });
+
+
   it('props: value onChange Limited Input', () => {
 
     const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
@@ -95,9 +108,9 @@ describe('Input', () => {
   });
 
   it('function: generateInput', () => {
-    const InputMock = mockObject.create(Input.prototype, VerifyOrderConfig.create('Input', order));
+    const InputMock = mockObject.create(TextBoxInner.prototype, VerifyOrderConfig.create('Input', order));
     InputMock.mockFunction('generateInput').returned(<InputOnly/>);
-    const component = mount(<Input/>);
+    mount(<Input/>);
     order.verify(({ Input, }) => {
       Input.generateInput(InputOnly);
     });
@@ -105,7 +118,7 @@ describe('Input', () => {
   });
 
   it('props: prefix function: generateInput', () => {
-    const InputMock = mockObject.create(Input.prototype, VerifyOrderConfig.create('Input', order));
+    const InputMock = mockObject.create(TextBoxInner.prototype, VerifyOrderConfig.create('Input', order));
     InputMock.mockFunction('generateInput').returned(<InputOnly/>);
     const prefix = <div></div>;
 
@@ -117,7 +130,7 @@ describe('Input', () => {
   });
 
   it('props: null function: generateInput', () => {
-    const InputMock = mockObject.create(Input.prototype, VerifyOrderConfig.create('Input', order));
+    const InputMock = mockObject.create(TextBoxInner.prototype, VerifyOrderConfig.create('Input', order));
     InputMock.mockFunction('generateInput').returned(<InputOnly/>);
     const component = mount(<Input/>);
     order.verify(({ Input, }) => {
@@ -125,5 +138,6 @@ describe('Input', () => {
     });
     InputMock.resetAll();
   });
+
 
 });

@@ -2,6 +2,7 @@
 import type { InputProps, InputState, } from 'sv-widget';
 
 import Support from '../common/FormFieldWidgetSupport';
+import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
 import '../sv.css';
@@ -138,13 +139,18 @@ class TextBox extends Component<void, InputProps, InputState> {
 
   generateInput (Input: Function): React$Element<any> {
 
-    const { defaultValue, } = this.props;
+    const { defaultValue, onKeyUp, onKeyPress, onKeyDown, } = this.props;
     const { value, } = this.state;
     return <Input innerRef={node => this.input = node}
                   defaultValue={defaultValue}
                   value={value}
+                  onKeyUp={onKeyUp}
+                  onKeyPress={onKeyPress}
+                  onKeyDown={onKeyDown}
                   onChange={this.onChange}/>;
   }
+
 }
 
-export default TextBox;
+export const TextBoxInner = TextBox;
+export default KeyBoardEventAdaptor(TextBox);

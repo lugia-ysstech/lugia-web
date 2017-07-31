@@ -14,6 +14,9 @@ declare module 'sv-widget' {
     prefix?: React$Element<any>,
     suffix?: React$Element<any>,
     onChange?: (newValue: any, oldValue: any) => void,
+    onKeyUp?: (event: KeyboardEvent) => void;
+    onKeyDown?: (event: KeyboardEvent) => void;
+    onKeyPress?: (event: KeyboardEvent) => void;
     defaultValue?: string,
     value?: string
   |};
