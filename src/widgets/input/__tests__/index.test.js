@@ -8,7 +8,7 @@ import 'jest-styled-components';
 
 
 import Support from '../../common/FormFieldWidgetSupport';
-import { assertInputValue, testKeyBoardEvent, testPropsValue, } from './InputTestUtils';
+import { assertInputValue, testFireNullKeyBoardEvent, testKeyBoardEvent, testPropsValue } from './InputTestUtils';
 
 const { expect: exp, } = chai;
 const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
@@ -70,6 +70,13 @@ describe('Input', () => {
   it('props: onKeyUp', () => {
     testKeyBoardEvent(order, 'onKeyUp');
   });
+  it('props: keyboard event is null but fire keyup event', () => {
+    testFireNullKeyBoardEvent('onKeyUp');
+    testFireNullKeyBoardEvent('onKeyDown');
+    testFireNullKeyBoardEvent('onKeyPress');
+    testFireNullKeyBoardEvent('onFocus');
+    testFireNullKeyBoardEvent('onBlur');
+  });
 
   it('props: onKeyPress', () => {
     testKeyBoardEvent(order, 'onKeyPress');
@@ -78,7 +85,7 @@ describe('Input', () => {
     testKeyBoardEvent(order, 'onKeyDown');
   });
 
- it('props: onFocus', () => {
+  it('props: onFocus', () => {
     testKeyBoardEvent(order, 'onFocus');
   });
   it('props: onBlur', () => {

@@ -53,3 +53,14 @@ export function testKeyBoardEvent (order: VerifyOrder, keyEvent: KeyEventType) {
     arg[ keyEvent ](VerifyOrderFactory.Object);
   });
 }
+
+/*
+*   键盘事件为空的情况
+*/
+export function testFireNullKeyBoardEvent (keyEvent: KeyEventType) {
+  const component = mount(<Input/>);
+  const keyCode = 49;
+  const event = { keyCode, };
+
+  component.find('input').simulate(keyEvent.substr(2).toLowerCase(), event);
+}
