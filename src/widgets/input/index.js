@@ -19,6 +19,7 @@ const CommonInputStyle = styled.input`
   font-family: inherit;
   margin: 0;
   width: 100%;
+
   &:hover {
     border-color: #49a9ee;
   }
@@ -29,7 +30,7 @@ const CommonInputStyle = styled.input`
   color: rgba(0, 0, 0, 0.65);
 
   &:focus {
-    box-shadow: 0 0 0 2px rgba(16, 142, 233, .2);
+    box-shadow: 0 0 0 2px rgba(16, 142, 233, 0.2);
   }
 `;
 

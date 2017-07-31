@@ -25,7 +25,7 @@ exports[`Input props: null 1`] = `
 }
 
 .c0:focus {
-  box-shadow: 0 0 0 2px rgba(16,142,233,.2);
+  box-shadow: 0 0 0 2px rgba(16,142,233,0.2);
 }
 
 <input
