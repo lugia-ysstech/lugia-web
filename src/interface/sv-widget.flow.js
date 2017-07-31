@@ -19,6 +19,10 @@ declare module 'sv-widget' {
     onKeyPress?: (event: KeyboardEvent) => void;
     onFocus?: (event: UIEvent) => void;
     onBlur?: (event: UIEvent) => void;
+    /*
+     * 当键入回车时触发事件
+     */
+    onEnter?: (event: UIEvent) => void;
     defaultValue?: string,
     value?: string
   |};

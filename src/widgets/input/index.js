@@ -139,19 +139,25 @@ class TextBox extends Component<void, InputProps, InputState> {
 
   generateInput (Input: Function): React$Element<any> {
 
-    const { defaultValue, onKeyUp, onKeyPress, onKeyDown, onFocus, onBlur,} = this.props;
+    const { defaultValue, onKeyUp, onKeyPress, onKeyDown, onFocus, onBlur, } = this.props;
     const { value, } = this.state;
     return <Input innerRef={node => this.input = node}
                   defaultValue={defaultValue}
                   value={value}
                   onKeyUp={onKeyUp}
-                  onKeyPress={onKeyPress}u
-                  onKeyDown={onKeyDown}
+                  onKeyPress={onKeyPress}
+                  onKeyDown={this.onKeyDown}
                   onFocus={onFocus}
                   onBlur={onBlur}
                   onChange={this.onChange}/>;
   }
 
+  onKeyDown = (event: KeyboardEvent) => {
+    const { onKeyDown, onEnter, } = this.props;
+    onKeyDown && onKeyDown(event);
+    const { keyCode, } = event;
+    onEnter && keyCode === 13 && onEnter(event);
+  };
 }
 
 export const TextBoxInner = TextBox;

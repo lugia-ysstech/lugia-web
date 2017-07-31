@@ -8,7 +8,7 @@ import 'jest-styled-components';
 
 
 import Support from '../../common/FormFieldWidgetSupport';
-import { assertInputValue, testFireNullKeyBoardEvent, testKeyBoardEvent, testPropsValue } from './InputTestUtils';
+import { assertInputValue, testFireNullKeyBoardEvent, testKeyBoardEvent, testPropsValue, } from './InputTestUtils';
 
 const { expect: exp, } = chai;
 const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
@@ -90,6 +90,48 @@ describe('Input', () => {
   });
   it('props: onBlur', () => {
     testKeyBoardEvent(order, 'onBlur');
+  });
+  it('props: onEnter Fired', () => {
+    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onEnter', order));
+
+    const keyCode = 13;
+    const event = { keyCode, };
+    mockFunc.mock(({ keyCode, }) => {
+      exp(keyCode).to.be.equal(keyCode);
+    });
+    const props = {
+      onEnter: mockFunc.getFunction(),
+    };
+
+    const component = mount(<Input {...props}/>);
+    component.find('input').simulate('onKeyDown'.substr(2).toLowerCase(), event);
+    order.verify(arg => {
+      arg.onEnter(VerifyOrder.Object);
+    });
+  });
+
+  it('props: onEnter Not Fired', () => {
+    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onEnter', order));
+
+    const keyCode = 44;
+    const event = { keyCode, };
+
+
+    const props = {
+      onEnter: mockFunc.getFunction(),
+    };
+
+    const component = mount(<Input {...props}/>);
+    component.find('input').simulate('onKeyDown'.substr(2).toLowerCase(), event);
+    order.verify(arg => {
+    });
+  });
+  it('props: null  Fired Enter', () => {
+
+    const keyCode = 13;
+    const event = { keyCode, };
+    const component = mount(<Input/>);
+    component.find('input').simulate('onKeyDown'.substr(2).toLowerCase(), event);
   });
 
 

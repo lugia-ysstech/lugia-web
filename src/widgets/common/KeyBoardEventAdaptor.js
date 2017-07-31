@@ -16,6 +16,11 @@ export default Target => props => {
     onFocus = (event: KeyboardEvent) => {
       const { onFocus, } = props;
       onFocus && onFocus(event);
+    },
+
+    onEnter = (event: KeyboardEvent) => {
+      const { onEnter, } = props;
+      onEnter && onEnter(event);
 
     },
     onBlur = (event: KeyboardEvent) => {
