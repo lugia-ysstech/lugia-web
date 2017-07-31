@@ -5,7 +5,7 @@ const debug = require('debug');
 
 // debug.enable('*');
 class App extends Component {
-  onKeyUp = e => {
+  onFocus = e => {
     console.info(e);
   };
 
@@ -13,7 +13,7 @@ class App extends Component {
   render () {
     return (
       <div style={{ width: 100, }}>
-        <Input ref={node => this.input = node} prefix={<i>11</i>} suffix={<i>12</i>} onKeyUp={this.onKeyUp}/>
+        <Input ref={node => this.input = node} prefix={<i>11</i>} suffix={<i>12</i>} onFocus={this.onFocus}/>
       </div>
     );
   }

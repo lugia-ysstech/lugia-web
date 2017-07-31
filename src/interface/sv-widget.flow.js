@@ -17,6 +17,8 @@ declare module 'sv-widget' {
     onKeyUp?: (event: KeyboardEvent) => void;
     onKeyDown?: (event: KeyboardEvent) => void;
     onKeyPress?: (event: KeyboardEvent) => void;
+    onFocus?: (event: UIEvent) => void;
+    onBlur?: (event: UIEvent) => void;
     defaultValue?: string,
     value?: string
   |};

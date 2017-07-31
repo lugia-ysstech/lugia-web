@@ -33,7 +33,7 @@ function getInputDOM (component, text): HTMLInputElement | null {
   return null;
 }
 
-type KeyEventType = 'onKeyUp' | 'onKeyPress' | 'onKeyDown';
+type KeyEventType = 'onKeyUp' | 'onKeyPress' | 'onKeyDown' | 'onFocus';
 
 export function testKeyBoardEvent (order: VerifyOrder, keyEvent: KeyEventType) {
   const mockFunc = mockFunction.create(VerifyOrderConfig.create(keyEvent, order));

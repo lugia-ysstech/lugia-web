@@ -78,6 +78,13 @@ describe('Input', () => {
     testKeyBoardEvent(order, 'onKeyDown');
   });
 
+ it('props: onFocus', () => {
+    testKeyBoardEvent(order, 'onFocus');
+  });
+  it('props: onBlur', () => {
+    testKeyBoardEvent(order, 'onBlur');
+  });
+
 
   it('props: value onChange Limited Input', () => {
 

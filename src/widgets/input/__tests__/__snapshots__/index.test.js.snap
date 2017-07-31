@@ -32,7 +32,9 @@ exports[`Input props: null 1`] = `
 <input
   className="c0"
   defaultValue={undefined}
+  onBlur={[Function]}
   onChange={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}
   onKeyUp={[Function]}
