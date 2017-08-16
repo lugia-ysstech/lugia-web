@@ -6,13 +6,13 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
 import '../sv.css';
-
+import {InputBorderColor, InputBorderHoverColor,} from '../color';
 const debug = require('debug')('Input');
 
 
 const CommonInputStyle = styled.input`
   border-radius: 4px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid ${InputBorderColor};
   cursor: text;
   line-height: 1.5;
   font-size: 12px;
@@ -24,7 +24,7 @@ const CommonInputStyle = styled.input`
   width: 100%;
 
   &:hover {
-    border-color: #49a9ee;
+    border-color: ${InputBorderHoverColor};
   }
 
   transition: all 0.3s;
