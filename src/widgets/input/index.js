@@ -102,8 +102,10 @@ class TextBox extends Component<void, InputProps, InputState> {
   setValue (value: string): void {
     if ('value' in this.props === false) {
       const { onChange, } = this.props;
-      this.setState({ value, });
-      onChange && onChange(value, this.input.value);
+      const oldValue = this.state.value;
+      this.setState({ value, }, () => {
+        onChange && onChange(value, oldValue);
+      });
     }
   }
 

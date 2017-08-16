@@ -56,7 +56,7 @@ describe('Input', () => {
     testPropsValue(value, value);
   });
 
-  it('props: onChange', () => {
+  it('props: onChange oldValue is "" ', () => {
     const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
     const text = 'hello suffix';
     const component = mount(<Input onChange={mockFunc.getFunction()}/>);
@@ -64,6 +64,23 @@ describe('Input', () => {
     assertInputValue(component, text);
     order.verify(({ onChange, }) => {
       onChange(text, '');
+    });
+  });
+  it('props: onChange oldValue "a" ', () => {
+    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
+    const text0 = 'a';
+    const text1 = 'b';
+    const component = mount(<Input onChange={mockFunc.getFunction()}/>);
+
+    component.find('input').simulate('change', { target: { value: text0, }, });
+    assertInputValue(component, text0);
+
+    component.find('input').simulate('change', { target: { value: text1, }, });
+    assertInputValue(component, text1);
+
+    order.verify(({ onChange, }) => {
+      onChange(text0, '');
+      onChange(text1, text0);
     });
   });
 
