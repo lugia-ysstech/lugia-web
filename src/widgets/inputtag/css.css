@@ -1,0 +1,7 @@
+
+.hidden {
+    width: auto;;
+    white-space: nowrap;
+    position: fixed;
+    display: none;
+}

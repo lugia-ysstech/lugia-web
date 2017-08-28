@@ -5,13 +5,13 @@ import Support from '../common/FormFieldWidgetSupport';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
-import '../sv.css';
-import {InputBorderColor, InputBorderHoverColor,} from '../color';
-const debug = require('debug')('Input');
+import '../../sv.css';
+import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
+
 
 
 const CommonInputStyle = styled.input`
-  border-radius: 4px;
+  border-radius: ${RadiusSize};
   border: 1px solid ${InputBorderColor};
   cursor: text;
   line-height: 1.5;

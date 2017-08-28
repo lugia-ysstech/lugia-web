@@ -1,9 +1,7 @@
 import React, { Component, } from 'react';
-import Input from './widgets/input';
+import Input from './widgets/inputtag';
+import Item from './widgets/inputtag/Item';
 
-const debug = require('debug');
-
-// debug.enable('*');
 class App extends Component {
   onKeyUp = e => {
     console.info('keyUp', e);
@@ -34,7 +32,7 @@ class App extends Component {
 
   render () {
     return (
-      <div style={{ width: 100, }}>
+      <div style={{ width: 100, margin: '0 auto', }}>
         <Input ref={node => this.input = node} prefix={<i>11</i>} suffix={<i>12</i>}
                onKeyUp={this.onKeyUp}
                onKeyDown={this.onKeyDown}
@@ -43,7 +41,9 @@ class App extends Component {
                onBlur={this.onBlur}
                onChange={this.onChange}
                onEnter={this.onEnter}
-        />
+               value={['adsfadsfadsfadsfadsfadsf','b','c',]}
+        >
+        </Input>
       </div>
     );
   }

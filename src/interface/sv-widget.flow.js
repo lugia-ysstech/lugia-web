@@ -27,5 +27,11 @@ declare module 'sv-widget' {
     value?: string
   |};
 
-
+  declare type InputTagProps = {
+    value: Array<String>,
+    children: Array<Object>
+  };
+  declare  type InputTagState = {
+    items: Array<Object>
+  };
 }

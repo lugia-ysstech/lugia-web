@@ -1,0 +1,114 @@
+/**
+ * 标签输入框
+ * create by ligx
+ *
+ * @flow
+ */
+import type { InputTagProps, InputTagState, } from 'sv-widget';
+import React from 'react';
+import styled from 'styled-components';
+import '../../sv.css';
+import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
+import Item from './Item';
+import FontItem from './FontItem';
+
+const Container = styled.div`
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 12px;
+`;
+
+const OutContainer = styled.div`
+  border: solid 1px ${InputBorderColor};
+  border-radius: ${RadiusSize};
+  min-height: 28px;
+  padding-bottom: 3px;
+
+  :hover {
+    border-color: ${InputBorderHoverColor};
+  }
+`;
+const InnerContainer = styled.div`
+  height: 26px;
+  margin-left: 5px;
+  margin-right: 7px;
+  margin-bottom: -3px;
+  position: relative;
+  user-select: none;
+`;
+const PlaceContainer = styled.div`
+  top: 50%;
+  position: absolute;
+  left: 0;
+  right: 7px;
+  margin-top: -10px;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.25);
+  line-height: 20px;
+  max-width: 100%;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+const List = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+export default class  extends React.Component<any, InputTagProps, InputTagState> {
+  list: Object;
+  fontItem: Object;
+  state: InputTagState;
+  props: InputTagProps;
+
+  constructor (props: InputTagProps) {
+    super(props);
+    this.state = {
+      items: [],
+    };
+  }
+
+  render () {
+    return (
+      <Container className="sv">
+        <OutContainer>
+          <InnerContainer>
+            {/*<PlaceContainer>气你输入</PlaceContainer>*/}
+            <List innerRef={cmp => this.list = cmp}>
+              <FontItem ref={cmp => this.fontItem = cmp}/>
+              {this.state.items}
+            </List>
+          </InnerContainer>
+        </OutContainer>
+      </Container>
+    );
+  }
+
+  componentDidMount () {
+      this.adaptiveItems(this.list.offsetWidth);
+  }
+
+  async adaptiveItems (listWidth: number): Promise<boolean> {
+    const { value, } = this.props;
+    const result = [];
+    let totalWidth = 0;
+    if (value) {
+      for (let i = 0; i < value.length; i++) {
+        const text = value[ i ];
+        totalWidth += await this.fontItem.getWidth(text);
+        if (totalWidth >= listWidth) {
+          break;
+        }
+        result.push(<Item>{text}</Item>);
+
+      }
+    }
+    await this.fontItem.setVisible(false);
+    this.setState({ items: result, });
+    return true;
+  }
+
+}
