@@ -106,7 +106,6 @@ export default class  extends React.Component<any, InputTagProps, InputTagState>
 
       }
     }
-    await this.fontItem.setVisible(false);
     this.setState({ items: result, });
     return true;
   }

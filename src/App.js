@@ -41,7 +41,7 @@ class App extends Component {
                onBlur={this.onBlur}
                onChange={this.onChange}
                onEnter={this.onEnter}
-               value={['adsfadsfadsfadsfadsfadsf','b','c',]}
+               value={['a','b','c',]}
         >
         </Input>
       </div>

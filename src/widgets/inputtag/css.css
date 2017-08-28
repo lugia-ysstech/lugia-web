@@ -1,7 +1,5 @@
 
 .hidden {
-    width: auto;;
-    white-space: nowrap;
-    position: fixed;
-    display: none;
+    position: absolute !important;
+    top: -943124px;
 }
