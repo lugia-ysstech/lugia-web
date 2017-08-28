@@ -24,7 +24,7 @@ const Item = styled.li`
   position: relative;
   overflow: hidden;
   transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  padding: 0 ${ItemPadingRight}px 0 ${ItemPadingLeft}px;
+  padding: 0 ${(props: Object) => ( props.closeable ? ItemPadingRight : ItemPadingLeft)}px 0 ${ItemPadingLeft}px;
 `;
 
 const Text = styled.span`
@@ -53,11 +53,11 @@ export default class  extends React.Component {
   width: number;
 
   render () {
-    const { className, } = this.props;
+    const { className, closeable = true, } = this.props;
     return (
-      <Item className={className} innerRef={c => this.item = c}>
+      <Item className={className} closeable={closeable} innerRef={c => this.item = c}>
         <Text>{this.props.children}</Text>
-        <CloseButton className="iconfont icon-close"></CloseButton>
+        {closeable ? <CloseButton className="iconfont icon-close"></CloseButton> : null}
       </Item>
     );
   }

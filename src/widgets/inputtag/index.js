@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import '../../sv.css';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 import Item from './Item';
+import Moretem from './Moretem';
 import FontItem from './FontItem';
 
 const Container = styled.div`
@@ -88,7 +89,7 @@ export default class  extends React.Component<any, InputTagProps, InputTagState>
   }
 
   componentDidMount () {
-      this.adaptiveItems(this.list.offsetWidth);
+    this.adaptiveItems(this.list.offsetWidth);
   }
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
@@ -106,7 +107,7 @@ export default class  extends React.Component<any, InputTagProps, InputTagState>
 
       }
     }
-    this.setState({ items: result, });
+    this.setState({ items: result.length > 0 ? result : [<Moretem/>,], });
     return true;
   }
 
