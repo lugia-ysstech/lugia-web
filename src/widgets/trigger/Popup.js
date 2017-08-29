@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Align from 'rc-align';
 import Animate from 'rc-animate';
 import PopupInner from './PopupInner';
-import LazyRenderBox from './ContentBox';
+import ContentBox from './ContentBox';
 import { saveRef, } from './utils';
 
 class Popup extends Component {
@@ -164,7 +164,7 @@ class Popup extends Component {
     if (props.mask) {
       const maskTransition = this.getMaskTransitionName();
       maskElement = (
-        <LazyRenderBox
+        <ContentBox
           style={this.getZIndexStyle()}
           key="mask"
           isMask

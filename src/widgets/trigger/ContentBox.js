@@ -19,7 +19,7 @@ const MaskBox = Box.extend`
   z-index: 1050;
 `;
 
-class LazyRenderBox extends Component {
+class ContentBox extends Component {
   static propTypes = {
     children: PropTypes.any,
     className: PropTypes.string,
@@ -44,4 +44,4 @@ class LazyRenderBox extends Component {
   }
 }
 
-export default LazyRenderBox;
+export default ContentBox;
