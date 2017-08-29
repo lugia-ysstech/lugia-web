@@ -11,8 +11,7 @@ class PopupInner extends Component {
     onMouseLeave: PropTypes.func,
     children: PropTypes.any,
   };
-
-  render () {
+  render() {
     const props = this.props;
     let className = props.className;
     if (!props.visible) {
@@ -25,7 +24,7 @@ class PopupInner extends Component {
         onMouseLeave={props.onMouseLeave}
         style={props.style}
       >
-        <LazyRenderBox visible={props.visible}>
+        <LazyRenderBox className={`${props.prefixCls}-content`} visible={props.visible}>
           {props.children}
         </LazyRenderBox>
       </div>

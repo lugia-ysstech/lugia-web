@@ -168,6 +168,7 @@ class Popup extends Component {
           style={this.getZIndexStyle()}
           key="mask"
           className={`${props.prefixCls}-mask`}
+          isMask
           visible={props.visible}
         />
       );
