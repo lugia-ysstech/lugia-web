@@ -17,12 +17,11 @@ class LazyRenderBox extends Component {
   };
 
   shouldComponentUpdate (nextProps) {
-    return nextProps.hiddenClassName || nextProps.visible;
+    return nextProps.visible !== this.props.visible;
   }
 
   render () {
     const { isMask, ...props } = this.props;
-    console.info(this.props);
     if (isMask || React.Children.count(props.children) > 1) {
       return <Box {...this.props}/>;
     }
