@@ -6,6 +6,19 @@ const Box = styled.div`
   display: ${props => (props.visible ? '' : 'none')};
 `;
 
+const MaskBox = Box.extend`
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #373737;
+  background-color: rgba(55, 55, 55, 0.6);
+  height: 100%;
+  filter: alpha(opacity=50);
+  z-index: 1050;
+`;
+
 class LazyRenderBox extends Component {
   static propTypes = {
     children: PropTypes.any,
@@ -20,7 +33,10 @@ class LazyRenderBox extends Component {
 
   render () {
     const { isMask, ...props } = this.props;
-    if (isMask || React.Children.count(props.children) > 1) {
+    if (isMask) {
+      return <MaskBox {...this.props}/>;
+    }
+    if (React.Children.count(props.children) > 1) {
       return <Box {...this.props}/>;
     }
 
