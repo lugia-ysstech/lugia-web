@@ -1,6 +1,6 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import LazyRenderBox from './LazyRenderBox';
+import LazyRenderBox from './ContentBox';
 
 class PopupInner extends Component {
   static propTypes = {

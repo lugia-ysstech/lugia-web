@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Align from 'rc-align';
 import Animate from 'rc-animate';
 import PopupInner from './PopupInner';
-import LazyRenderBox from './LazyRenderBox';
+import LazyRenderBox from './ContentBox';
 import { saveRef, } from './utils';
 
 class Popup extends Component {
