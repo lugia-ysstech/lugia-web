@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Box = styled.div`
-  display: ${props => {
-  return props.visible ? '' : 'none';
-}};
+  display: ${props => (props.visible ? '' : 'none')};
 `;
 
 class LazyRenderBox extends Component {
