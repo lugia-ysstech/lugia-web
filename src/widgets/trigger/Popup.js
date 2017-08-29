@@ -81,7 +81,6 @@ class Popup extends Component {
     const { align, style, visible, prefixCls, destroyPopupOnHide, } = props;
     const className = this.getClassName(this.currentAlignClassName ||
       props.getClassNameFromAlign(align));
-    const hiddenClassName = `${prefixCls}-hidden`;
     if (!visible) {
       this.currentAlignClassName = null;
     }
@@ -140,7 +139,6 @@ class Popup extends Component {
         onAlign={this.onAlign}
       >
         <PopupInner
-          hiddenClassName={hiddenClassName}
           {...popupInnerProps}
         >
           {props.children}

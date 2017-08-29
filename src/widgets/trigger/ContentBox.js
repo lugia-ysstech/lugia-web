@@ -1,12 +1,9 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import VisibleBox from './VisibleBox';
 
-const Box = styled.div`
-  display: ${props => (props.visible ? '' : 'none')};
-`;
 
-const MaskBox = Box.extend`
+const MaskBox = VisibleBox.extend`
   position: fixed;
   top: 0;
   right: 0;
@@ -37,7 +34,7 @@ class ContentBox extends Component {
       return <MaskBox {...this.props}/>;
     }
     if (React.Children.count(props.children) > 1) {
-      return <Box {...this.props}/>;
+      return <VisibleBox {...this.props}/>;
     }
 
     return React.Children.only(props.children);
