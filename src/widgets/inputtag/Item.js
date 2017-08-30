@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../sv.css';
-import { ItemMarginRight, ItemPadingLeft, ItemPadingRight, } from './style';
+import { ItemMarginRight, ItemPaddingLeft, ItemPadingRight, } from './style';
 import { RadiusSize, } from '../css/input';
 
 const Item = styled.li`
@@ -24,7 +24,7 @@ const Item = styled.li`
   position: relative;
   overflow: hidden;
   transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  padding: 0 ${(props: Object) => ( props.closeable ? ItemPadingRight : ItemPadingLeft)}px 0 ${ItemPadingLeft}px;
+  padding: 0 ${(props: Object) => ( props.closeable ? ItemPadingRight : ItemPaddingLeft)}px 0 ${ItemPaddingLeft}px;
 `;
 
 const Text = styled.span`

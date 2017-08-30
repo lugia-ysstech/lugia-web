@@ -9,6 +9,7 @@ import React from 'react';
 import styled from 'styled-components';
 import '../../sv.css';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
+import { ItemMarginRight, } from './style';
 import Item from './Item';
 import Moretem from './Moretem';
 import FontItem from './FontItem';
@@ -99,7 +100,7 @@ export default class  extends React.Component<any, InputTagProps, InputTagState>
     if (value) {
       for (let i = 0; i < value.length; i++) {
         const text = value[ i ];
-        totalWidth += await this.fontItem.getWidth(text);
+        totalWidth += await this.fontItem.getWidth(text) + ItemMarginRight;
         if (totalWidth >= listWidth) {
           break;
         }
