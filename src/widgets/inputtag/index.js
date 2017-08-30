@@ -60,7 +60,7 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
 `;
-export default class  extends React.Component<any, InputTagProps, InputTagState> {
+export default class  extends React.Component<InputTagProps, InputTagState> {
   list: Object;
   fontItem: Object;
   state: InputTagState;
@@ -74,13 +74,14 @@ export default class  extends React.Component<any, InputTagProps, InputTagState>
   }
 
   render () {
+    const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
     return (
       <Container className="sv">
         <OutContainer>
           <InnerContainer>
             {/*<PlaceContainer>气你输入</PlaceContainer>*/}
             <List innerRef={cmp => this.list = cmp}>
-              <FontItem ref={cmp => this.fontItem = cmp}/>
+              <FontItem ref={fillFontItem}/>
               {this.state.items}
             </List>
           </InnerContainer>

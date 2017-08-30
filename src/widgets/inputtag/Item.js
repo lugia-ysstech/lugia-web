@@ -46,8 +46,9 @@ const CloseButton = styled.span`
     color: #000;
   }
 `;
-
-export default class  extends React.Component {
+type ItemProps = { className?: string, closeable?: boolean, children: any };
+type ItemState = {};
+export default class  extends React.Component<ItemProps, ItemState> {
   list: Object;
   item: Object;
   width: number;

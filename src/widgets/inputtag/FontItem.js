@@ -12,7 +12,7 @@ import { hidden, } from './css.css';
 type FontItemState = {
   text: string,
 }
-export default class  extends React.Component<any, any, FontItemState> {
+export default class  extends React.Component<any, FontItemState> {
   state: FontItemState;
   width: number;
   item: Object;
@@ -39,8 +39,11 @@ export default class  extends React.Component<any, any, FontItemState> {
 
   render () {
     const { text, } = this.state;
+    const fillItem: Function = (cmp: Object): void => {
+      this.item = cmp;
+    };
     return (
-      <Item className={hidden} ref={cmp => this.item = cmp}>{text}</Item>
+      <Item className={hidden} ref={fillItem}>{text}</Item>
     );
   }
 

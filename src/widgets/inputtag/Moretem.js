@@ -9,7 +9,7 @@ import Item from './Item';
 import { hidden, } from './css.css';
 
 
-export default class  extends React.Component<any, any, any> {
+export default class  extends React.Component<any, any> {
 
   render () {
     return (
