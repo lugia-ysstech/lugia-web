@@ -74,69 +74,59 @@ class Popup extends React.Component<PopupProps> {
 
   getPopupElement () {
     const { savePopupRef, props, } = this;
-    const { align, style, visible, destroyPopupOnHide, } = props;
-    if (!visible) {
+    const {
+      align,
+      style,
+      visible,
+      destroyPopupOnHide,
+      onMouseEnter,
+      onMouseLeave,
+      children,
+    } = props;
+
+    const hidden = !visible;
+
+    if (hidden) {
       this.currentAlignClassName = '';
     }
+
     const newStyle = {
       ...style,
       ...this.getZIndexStyle(),
     };
+
     const popupInnerProps = {
       ref: savePopupRef,
-      onMouseEnter: props.onMouseEnter,
-      onMouseLeave: props.onMouseLeave,
+      onMouseEnter,
+      onMouseLeave,
       style: newStyle,
     };
-    if (destroyPopupOnHide) {
-      return (<Animate
-        component=""
-        exclusive
-        transitionAppear
-        transitionName={this.getTransitionName()}
+
+    const inner = destroyPopupOnHide && hidden ? null : <Align
+      target={this.getTarget}
+      key="popup"
+      ref={this.saveAlignRef}
+      monitorWindowResize
+      xVisible={visible}
+      childrenProps={{ visible: 'xVisible', }}
+      disabled={hidden}
+      align={align}
+      onAlign={this.onAlign}
+    >
+      <PopupInner
+        {...popupInnerProps}
       >
-        {visible ? (<Align
-          target={this.getTarget}
-          key="popup"
-          ref={this.saveAlignRef}
-          monitorWindowResize
-          align={align}
-          onAlign={this.onAlign}
-        >
-          <PopupInner
-            visible
-            {...popupInnerProps}
-          >
-            {props.children}
-          </PopupInner>
-        </Align>) : null}
-      </Animate>);
-    }
-    return (<Animate
+        {children}
+      </PopupInner>
+    </Align>;
+    return <Animate
       component=""
       exclusive
       transitionAppear
       transitionName={this.getTransitionName()}
-      showProp="xVisible"
-    >
-      <Align
-        target={this.getTarget}
-        key="popup"
-        ref={this.saveAlignRef}
-        monitorWindowResize
-        xVisible={visible}
-        childrenProps={{ visible: 'xVisible', }}
-        disabled={!visible}
-        align={align}
-        onAlign={this.onAlign}
-      >
-        <PopupInner
-          {...popupInnerProps}
-        >
-          {props.children}
-        </PopupInner>
-      </Align>
-    </Animate>);
+      showProp="xVisible">
+      {inner}
+    </Animate>;
   }
 
   getTransitionName () {
