@@ -1,96 +1,88 @@
-import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
+/**
+ * 弹出面板
+ *@flow
+ */
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 import Align from 'rc-align';
 import Animate from 'rc-animate';
 import PopupInner from './PopupInner';
 import ContentBox from './ContentBox';
-import { saveRef, } from './utils';
 
-class Popup extends Component {
-  static propTypes = {
-    visible: PropTypes.bool,
-    style: PropTypes.object,
-    getClassNameFromAlign: PropTypes.func,
-    onAlign: PropTypes.func,
-    getRootDomNode: PropTypes.func,
-    onMouseEnter: PropTypes.func,
-    align: PropTypes.any,
-    destroyPopupOnHide: PropTypes.bool,
-    className: PropTypes.string,
-    prefixCls: PropTypes.string,
-    onMouseLeave: PropTypes.func,
-  };
+type PopupProps = {
+  visible: boolean,
+  style: Object,
+  getClassNameFromAlign: Function,
+  onAlign: Function,
+  getRootDomNode: Function,
+  onMouseEnter: Function,
+  children: React.Node,
+  maskTransitionName: string,
+  maskAnimation: string,
+  align: any,
+  animation: string,
+  destroyPopupOnHide: boolean,
+  prefixCls: string,
+  transitionName: string,
+  onMouseLeave: Function,
+};
 
-  constructor (props) {
+class Popup extends React.Component<PopupProps> {
+
+  savePopupRef: Function;
+  saveAlignRef: Function;
+  currentAlignClassName: string;
+  popupInstance: Element | React.Component<any> | null;
+  alignInstance: ?React.Element<any>;
+
+  constructor (props: PopupProps) {
     super(props);
-
-    this.savePopupRef = saveRef.bind(this, 'popupInstance');
-    this.saveAlignRef = saveRef.bind(this, 'alignInstance');
-  }
-
-  componentDidMount () {
-    this.rootNode = this.getPopupDomNode();
-  }
-
-  onAlign = (popupDomNode, align) => {
-    const props = this.props;
-    const currentAlignClassName = props.getClassNameFromAlign(align);
-    // FIX: https://github.com/react-component/trigger/issues/56
-    // FIX: https://github.com/react-component/tooltip/issues/79
-    if (this.currentAlignClassName !== currentAlignClassName) {
-      this.currentAlignClassName = currentAlignClassName;
-      popupDomNode.className = this.getClassName(currentAlignClassName);
-    }
-    props.onAlign(popupDomNode, align);
+    this.savePopupRef = cmp => this.popupInstance = cmp;
+    this.saveAlignRef = cmp => this.alignInstance = cmp;
   }
 
   getPopupDomNode () {
-    return ReactDOM.findDOMNode(this.popupInstance);
+    if (this.popupInstance) {
+      return ReactDOM.findDOMNode(this.popupInstance);
+    }
+    return null;
   }
+
+  render () {
+    return (
+      <div>
+        {this.getMaskElement()}
+        {this.getPopupElement()}
+      </div>
+    );
+  }
+
+  onAlign = (popupDomNode: HTMLElement, align: string) => {
+    const props = this.props;
+    const currentAlignClassName = props.getClassNameFromAlign(align);
+    if (this.currentAlignClassName !== currentAlignClassName) {
+      this.currentAlignClassName = currentAlignClassName;
+    }
+    props.onAlign(popupDomNode, align);
+  };
+
 
   getTarget = () => {
     return this.props.getRootDomNode();
-  }
+  };
 
-  getMaskTransitionName () {
-    const props = this.props;
-    let transitionName = props.maskTransitionName;
-    const animation = props.maskAnimation;
-    if (!transitionName && animation) {
-      transitionName = `${props.prefixCls}-${animation}`;
-    }
-    return transitionName;
-  }
-
-  getTransitionName () {
-    const props = this.props;
-    let transitionName = props.transitionName;
-    if (!transitionName && props.animation) {
-      transitionName = `${props.prefixCls}-${props.animation}`;
-    }
-    return transitionName;
-  }
-
-  getClassName (currentAlignClassName) {
-    return `${this.props.prefixCls} ${this.props.className} ${currentAlignClassName}`;
-  }
 
   getPopupElement () {
     const { savePopupRef, props, } = this;
-    const { align, style, visible, prefixCls, destroyPopupOnHide, } = props;
-    const className = this.getClassName(this.currentAlignClassName ||
-      props.getClassNameFromAlign(align));
+    const { align, style, visible, destroyPopupOnHide, } = props;
     if (!visible) {
-      this.currentAlignClassName = null;
+      this.currentAlignClassName = '';
     }
     const newStyle = {
       ...style,
       ...this.getZIndexStyle(),
     };
     const popupInnerProps = {
-      className,
-      prefixCls,
       ref: savePopupRef,
       onMouseEnter: props.onMouseEnter,
       onMouseLeave: props.onMouseLeave,
@@ -147,13 +139,13 @@ class Popup extends Component {
     </Animate>);
   }
 
-  getZIndexStyle () {
-    const style = {};
+  getTransitionName () {
     const props = this.props;
-    if (props.zIndex !== undefined) {
-      style.zIndex = props.zIndex;
+    let transitionName = props.transitionName;
+    if (!transitionName && props.animation) {
+      transitionName = `${props.prefixCls}-${props.animation}`;
     }
-    return style;
+    return transitionName;
   }
 
   getMaskElement () {
@@ -186,13 +178,23 @@ class Popup extends Component {
     return maskElement;
   }
 
-  render () {
-    return (
-      <div>
-        {this.getMaskElement()}
-        {this.getPopupElement()}
-      </div>
-    );
+  getZIndexStyle () {
+    const style = {};
+    const props = this.props;
+    if (props.zIndex !== undefined) {
+      style.zIndex = props.zIndex;
+    }
+    return style;
+  }
+
+  getMaskTransitionName () {
+    const props = this.props;
+    let transitionName = props.maskTransitionName;
+    const animation = props.maskAnimation;
+    if (!transitionName && animation) {
+      transitionName = `${props.prefixCls}-${animation}`;
+    }
+    return transitionName;
   }
 }
 

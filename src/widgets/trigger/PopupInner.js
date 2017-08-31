@@ -1,31 +1,42 @@
-import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
+/**
+ * 弹出面板内框
+ * @flow
+ */
+import * as React from 'react';
 import ContentBox from './ContentBox';
 import VisibleBox from './VisibleBox';
 
-class PopupInner extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    prefixCls: PropTypes.string,
-    onMouseEnter: PropTypes.func,
-    onMouseLeave: PropTypes.func,
-    children: PropTypes.any,
+const PopupInnerBox = VisibleBox.extend`
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1050;
+`;
+
+type PopupInnerProps = {
+  visible: boolean,
+  onMouseEnter: Function,
+  onMouseLeave: Function,
+  children: React.Node,
+};
+
+class PopupInner extends React.Component<PopupInnerProps> {
+  static defaultProps = {
+    visible: true,
   };
 
   render () {
-    const { className, visible, onMouseEnter, onMouseLeave, style, children, } = this.props;
+    const { visible, onMouseEnter, onMouseLeave, children, } = this.props;
     return (
-      <VisibleBox
+      <PopupInnerBox
         visible={visible}
-        className={className}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        style={style}
       >
         <ContentBox visible={visible}>
           {children}
         </ContentBox>
-      </VisibleBox>
+      </PopupInnerBox>
     );
   }
 }

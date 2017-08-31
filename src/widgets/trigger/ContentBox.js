@@ -1,5 +1,8 @@
-import React, { Component, } from 'react';
-import PropTypes from 'prop-types';
+/**
+ * 内容盒子
+ * @flow
+ */
+import * as React from 'react';
 import VisibleBox from './VisibleBox';
 
 
@@ -16,15 +19,20 @@ const MaskBox = VisibleBox.extend`
   z-index: 1050;
 `;
 
-class ContentBox extends Component {
-  static propTypes = {
-    children: PropTypes.any,
-    className: PropTypes.string,
-    visible: PropTypes.bool,
-    isMask: PropTypes.bool,
+type ContentBoxProps = {
+  children?: React.Node,
+  visible: boolean,
+  isMask: boolean,
+}
+
+
+class ContentBox extends React.Component<ContentBoxProps> {
+  static defaultProps = {
+    isMask: false,
+    visible: false,
   };
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate (nextProps: ContentBoxProps) {
     return nextProps.visible !== this.props.visible;
   }
 
