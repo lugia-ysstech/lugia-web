@@ -1,5 +1,4 @@
 //@flow
-import type { InputProps, InputState, } from 'sv-widget';
 
 import Support from '../common/FormFieldWidgetSupport';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -8,7 +7,31 @@ import styled from 'styled-components';
 import '../../sv.css';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 
+type InputState = {|
+  value: string,
+|};
 
+type GetValueArgType = {|
+  defaultValue?: string,
+  value?: string
+|};
+
+type InputProps = {|
+  prefix?: React$Element<any>,
+  suffix?: React$Element<any>,
+  onChange?: (newValue: any, oldValue: any) => void,
+  onKeyUp?: (event: KeyboardEvent) => void;
+  onKeyDown?: (event: KeyboardEvent) => void;
+  onKeyPress?: (event: KeyboardEvent) => void;
+  onFocus?: (event: UIEvent) => void;
+  onBlur?: (event: UIEvent) => void;
+  /*
+   * 当键入回车时触发事件
+   */
+  onEnter?: (event: UIEvent) => void;
+  defaultValue?: string,
+  value?: string
+|};
 
 const CommonInputStyle = styled.input`
   border-radius: ${RadiusSize};
@@ -77,7 +100,7 @@ const Suffix = Fix.extend`
   right: 7px;
 `;
 
-class TextBox extends Component<void, InputProps, InputState> {
+class TextBox extends Component<InputProps, InputState> {
 
   state: InputState;
   input: any;
@@ -163,4 +186,5 @@ class TextBox extends Component<void, InputProps, InputState> {
 }
 
 export const TextBoxInner = TextBox;
+
 export default KeyBoardEventAdaptor(TextBox);

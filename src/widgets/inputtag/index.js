@@ -4,7 +4,6 @@
  *
  * @flow
  */
-import type { InputTagProps, InputTagState, } from 'sv-widget';
 import React from 'react';
 import styled from 'styled-components';
 import '../../sv.css';
@@ -14,6 +13,13 @@ import Item from './Item';
 import Moretem from './Moretem';
 import FontItem from './FontItem';
 
+type InputTagProps = {
+  value: Array<string>,
+  children: Array<Object>
+};
+type InputTagState = {
+  items: Array<Object>
+};
 const Container = styled.div`
   width: 100%;
   display: inline-block;
