@@ -11,11 +11,6 @@ type InputState = {|
   value: string,
 |};
 
-type GetValueArgType = {|
-  defaultValue?: string,
-  value?: string
-|};
-
 type InputProps = {|
   prefix?: React$Element<any>,
   suffix?: React$Element<any>,
@@ -102,7 +97,6 @@ const Suffix = Fix.extend`
 
 class TextBox extends Component<InputProps, InputState> {
 
-  state: InputState;
   input: any;
 
   constructor (props: InputProps) {

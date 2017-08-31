@@ -15,7 +15,7 @@ type FontItemState = {
 export default class  extends React.Component<any, FontItemState> {
   state: FontItemState;
   width: number;
-  item: Object;
+  item: ?Item;
 
   constructor (props: any) {
     super(props);
@@ -48,6 +48,8 @@ export default class  extends React.Component<any, FontItemState> {
   }
 
   componentDidUpdate () {
-    this.width = this.item.getWidth();
+    if (this.item) {
+      this.width = this.item.getWidth();
+    }
   }
 }

@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 import '../../sv.css';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
@@ -14,11 +14,11 @@ import Moretem from './Moretem';
 import FontItem from './FontItem';
 
 type InputTagProps = {
+  children: React.ChildrenArray<React.Element<Item>>,
   value: Array<string>,
-  children: Array<Object>
 };
 type InputTagState = {
-  items: Array<Object>
+  items: Array<React.Node>,
 };
 const Container = styled.div`
   width: 100%;
@@ -69,8 +69,6 @@ const List = styled.ul`
 export default class  extends React.Component<InputTagProps, InputTagState> {
   list: Object;
   fontItem: Object;
-  state: InputTagState;
-  props: InputTagProps;
 
   constructor (props: InputTagProps) {
     super(props);

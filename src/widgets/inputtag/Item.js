@@ -50,7 +50,7 @@ type ItemProps = { className?: string, closeable?: boolean, children: any };
 type ItemState = {};
 export default class  extends React.Component<ItemProps, ItemState> {
   list: Object;
-  item: Object;
+  item: ?HTMLElement;
   width: number;
 
   render () {
@@ -72,7 +72,9 @@ export default class  extends React.Component<ItemProps, ItemState> {
   }
 
   updateWidth () {
-    this.width = this.item.offsetWidth;
+    if (this.item) {
+      this.width = this.item.offsetWidth;
+    }
   }
 
   getWidth (): number {
