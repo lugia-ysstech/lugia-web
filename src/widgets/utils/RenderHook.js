@@ -14,13 +14,13 @@ function defaultGetContainer () {
 
 type Props = {};
 type ArgType = {
-  autoMount: boolean,
-  autoDestory: boolean
+  autoMount?: boolean,
+  autoDestory?: boolean
 }
 export default <C: React.ComponentType<any>> (arg: ArgType, Target: C) => {
   const {
-    autoMount,
-    autoDestory,
+    autoMount = true,
+    autoDestory = true,
   } = arg;
   return class extends React.Component<Props> {
     target: React.Element<any>;

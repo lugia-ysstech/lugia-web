@@ -32,7 +32,7 @@ class Popup extends React.Component<PopupProps> {
   savePopupRef: Function;
   saveAlignRef: Function;
   currentAlignClassName: string;
-  popupInstance: Element | React.Component<any> | null;
+  popupInstance: Element | null;
   alignInstance: ?React.Element<any>;
 
   constructor (props: PopupProps) {
