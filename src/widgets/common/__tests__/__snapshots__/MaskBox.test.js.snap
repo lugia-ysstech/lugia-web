@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VisibleBox visible  is true 1`] = `
+.c0 {
+  display: inherit;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #373737;
+  background-color: rgba(55,55,55,0.6);
+  height: 100%;
+  -webkit-filter: alpha(opacity=50);
+  filter: alpha(opacity=50);
+  z-index: 999999;
+}
+
+<div
+  className="c0"
+/>
+`;
