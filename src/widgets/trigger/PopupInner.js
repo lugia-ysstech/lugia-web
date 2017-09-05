@@ -15,8 +15,8 @@ const PopupInnerBox = VisibleBox.extend`
 
 type PopupInnerProps = {
   visible: boolean,
-  onMouseEnter: Function,
-  onMouseLeave: Function,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
   children: React.Node,
 };
 

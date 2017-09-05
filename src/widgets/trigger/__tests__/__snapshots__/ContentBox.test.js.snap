@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBox default children: more 1`] = `
+.c0 {
+  display: none;
+}
+
+<div
+  className="c0"
+>
+  <span>
+    a
+  </span>
+  <span>
+    b
+  </span>
+</div>
+`;
+
+exports[`ContentBox default children:onlyOne 1`] = `
+<span>
+  a
+</span>
+`;
+
+exports[`ContentBox mask: false, children: more, visible: false 1`] = `
+.c0 {
+  display: none;
+}
+
+<div
+  className="c0"
+>
+  <span>
+    a
+  </span>
+  <span>
+    b
+  </span>
+</div>
+`;
+
+exports[`ContentBox mask: false, visible: false, children: only one 1`] = `
+<span>
+  a
+</span>
+`;
+
+exports[`ContentBox mask: true children: more 1`] = `
+.c0 {
+  display: none;
+}
+
+<div
+  className="c0"
+>
+  <span>
+    a
+  </span>
+  <span>
+    b
+  </span>
+</div>
+`;
+
+exports[`ContentBox mask: true, children: more, visible: false 1`] = `
+.c0 {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #373737;
+  background-color: rgba(55,55,55,0.6);
+  height: 100%;
+  -webkit-filter: alpha(opacity=50);
+  filter: alpha(opacity=50);
+  z-index: 999999;
+}
+
+<div
+  className="c0"
+>
+  <span>
+    a
+  </span>
+  <span>
+    b
+  </span>
+</div>
+`;
+
+exports[`ContentBox mask: true, visible: true, children: only one 1`] = `
+.c0 {
+  display: inherit;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #373737;
+  background-color: rgba(55,55,55,0.6);
+  height: 100%;
+  -webkit-filter: alpha(opacity=50);
+  filter: alpha(opacity=50);
+  z-index: 999999;
+}
+
+<div
+  className="c0"
+>
+  <span>
+    a
+  </span>
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`trigger render 1`] = `
+<span
+  onBlur={undefined}
+  onClick={undefined}
+  onFocus={undefined}
+  onMouseDown={undefined}
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
+  onTouchStart={undefined}
+>
+  hello world!
+</span>
+`;

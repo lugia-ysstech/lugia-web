@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBox default visible: false, children: 1 1`] = `
+.c0 {
+  display: inherit;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1050;
+}
+
+<div
+  className="c0"
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
+>
+  <span>
+    a
+  </span>
+</div>
+`;
+
+exports[`ContentBox default visible: true, children: 1 1`] = `
+.c0 {
+  display: inherit;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1050;
+}
+
+<div
+  className="c0"
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
+>
+  <span>
+    a
+  </span>
+</div>
+`;
+
+exports[`ContentBox default visible: true, children: 2 1`] = `
+.c1 {
+  display: inherit;
+}
+
+.c0 {
+  display: inherit;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1050;
+}
+
+<div
+  className="c0"
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
+>
+  <div
+    className="c1"
+  >
+    <span>
+      a
+    </span>
+    <span>
+      b
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ContentBox default visible:false, children: 2 1`] = `
+.c1 {
+  display: inherit;
+}
+
+.c0 {
+  display: inherit;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1050;
+}
+
+<div
+  className="c0"
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
+>
+  <div
+    className="c1"
+  >
+    <span>
+      a
+    </span>
+    <span>
+      b
+    </span>
+  </div>
+</div>
+`;
