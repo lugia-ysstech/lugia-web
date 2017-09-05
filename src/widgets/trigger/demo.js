@@ -1,5 +1,5 @@
 /**
- *
+ *@flow
  * create by ligx
  *
  */
@@ -16,31 +16,40 @@ function getPopupContainer (trigger) {
   return trigger.parentNode;
 }
 
-class Test extends React.Component {
+type PropsType = {};
+type StateType = {
+  mask: boolean,
+  placement: string,
+  trigger: Object,
+  offsetX: number,
+
+  offsetY: number,
+  destroyPopupOnHide: boolean,
+};
+
+class Test extends React.Component<PropsType, StateType> {
   state = {
+    destroyPopupOnHide: false,
     mask: false,
-    maskClosable: false,
     placement: 'right',
+    focus: () => {},
+    click: () => {},
     trigger: {
       hover: 1,
+      focus: 0,
+      click: 0,
     },
-    offsetX: undefined,
-    offsetY: undefined,
+    offsetX: 0,
+    offsetY: 0,
   };
 
-  onPlacementChange = e => {
+  onPlacementChange = (e: SyntheticInputEvent<any>) => {
     this.setState({
       placement: e.target.value,
     });
   };
 
-  onTransitionChange = e => {
-    this.setState({
-      transitionName: e.target.checked ? e.target.value : '',
-    });
-  };
-
-  onTriggerChange = e => {
+  onTriggerChange = (e: SyntheticInputEvent<any>) => {
     const trigger = assign({}, this.state.trigger);
     if (e.target.checked) {
       trigger[ e.target.value ] = 1;
@@ -52,40 +61,29 @@ class Test extends React.Component {
     });
   };
 
-  onOffsetXChange = e => {
+  onOffsetXChange = (e: SyntheticInputEvent<any>) => {
     const targetValue = e.target.value;
     this.setState({
-      offsetX: targetValue || undefined,
+      offsetX: Number(targetValue) || undefined,
     });
   };
 
-  onOffsetYChange = e => {
+  onOffsetYChange = (e: SyntheticInputEvent<any>) => {
     const targetValue = e.target.value;
     this.setState({
-      offsetY: targetValue || undefined,
+      offsetY: Number(targetValue) || undefined,
     });
   };
 
 
-  onMask = e => {
+  onMask = (e: SyntheticInputEvent<any>) => {
     this.setState({
       mask: e.target.checked,
     });
   };
 
-  onMaskClosable = e => {
-    this.setState({
-      maskClosable: e.target.checked,
-    });
-  };
 
-  destroy = () => {
-    this.setState({
-      destroyed: true,
-    });
-  };
-
-  destroyPopupOnHide = e => {
+  destroyPopupOnHide = (e: SyntheticInputEvent<any>) => {
     this.setState({
       destroyPopupOnHide: e.target.checked,
     });
@@ -94,13 +92,10 @@ class Test extends React.Component {
   render () {
     const state = this.state;
     const trigger = state.trigger;
-    if (state.destroyed) {
-      return null;
-    }
     return (<div>
       <div style={{ margin: '10px 20px', }}>
         <label>
-          placement:
+          对齐方式:
           <select value={state.placement} onChange={this.onPlacementChange}>
             <option>right</option>
             <option>left</option>
@@ -113,19 +108,8 @@ class Test extends React.Component {
           </select>
         </label>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <label>
-          <input
-            value="rc-trigger-popup-zoom"
-            type="checkbox"
-            onChange={this.onTransitionChange}
-            checked={state.transitionName === 'rc-trigger-popup-zoom'}
-          />
-          transitionName
-        </label>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;
-
-        trigger:
+        触发方式:
 
         <label>
           <input
@@ -171,17 +155,7 @@ class Test extends React.Component {
             type="checkbox"
             onChange={this.onMask}
           />
-          mask
-        </label>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <label>
-          <input
-            checked={!!this.state.maskClosable}
-            type="checkbox"
-            onChange={this.onMaskClosable}
-          />
-          maskClosable
+          是否开启蒙版
         </label>
 
         <br/>
@@ -202,8 +176,6 @@ class Test extends React.Component {
             style={{ width: 50, }}
           />
         </label>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <button onClick={this.destroy}>destroy</button>
       </div>
       <div style={{ margin: 100, position: 'relative', }}>
         <Trigger
@@ -212,16 +184,13 @@ class Test extends React.Component {
           getPopupContainer={undefined && getPopupContainer}
           align={state.placement.toString()}
           destroyPopupOnHide={this.state.destroyPopupOnHide}
-          // zIndex={40}
           mask={this.state.mask}
-          maskClosable={this.state.maskClosable}
           action={Object.keys(state.trigger)}
           popup={
             <div style={{ border: '1px solid red', padding: 10, background: 'white', }}>
-              i am a popup
+              弹出来了
             </div>
           }
-          popupTransitionName={state.transitionName}
         >
           <a href="#" style={{ margin: 20, }} onClick={preventDefault}>trigger</a>
         </Trigger>
