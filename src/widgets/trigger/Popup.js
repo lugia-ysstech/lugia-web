@@ -5,7 +5,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import Align from 'rc-align';
-import Animate from 'rc-animate';
 import PopupInner from './PopupInner';
 import ContentBox from './ContentBox';
 
@@ -58,12 +57,8 @@ class Popup extends React.Component<PopupProps> {
   }
 
   onAlign = (popupDomNode: HTMLElement, align: string) => {
-    const props = this.props;
-    const currentAlignClassName = props.getClassNameFromAlign(align);
-    if (this.currentAlignClassName !== currentAlignClassName) {
-      this.currentAlignClassName = currentAlignClassName;
-    }
-    props.onAlign(popupDomNode, align);
+    const { onAlign, } = this.props;
+    onAlign && onAlign(popupDomNode, align);
   };
 
 
@@ -119,30 +114,13 @@ class Popup extends React.Component<PopupProps> {
         {children}
       </PopupInner>
     </Align>;
-    return <Animate
-      component=""
-      exclusive
-      transitionAppear
-      transitionName={this.getTransitionName()}
-      showProp="xVisible">
-      {inner}
-    </Animate>;
-  }
-
-  getTransitionName () {
-    const props = this.props;
-    let transitionName = props.transitionName;
-    if (!transitionName && props.animation) {
-      transitionName = `${props.prefixCls}-${props.animation}`;
-    }
-    return transitionName;
+    return inner;
   }
 
   getMaskElement () {
     const props = this.props;
     let maskElement;
     if (props.mask) {
-      const maskTransition = this.getMaskTransitionName();
       maskElement = (
         <ContentBox
           style={this.getZIndexStyle()}
@@ -151,19 +129,6 @@ class Popup extends React.Component<PopupProps> {
           visible={props.visible}
         />
       );
-      if (maskTransition) {
-        maskElement = (
-          <Animate
-            key="mask"
-            showProp="visible"
-            transitionAppear
-            component=""
-            transitionName={maskTransition}
-          >
-            {maskElement}
-          </Animate>
-        );
-      }
     }
     return maskElement;
   }
@@ -175,16 +140,6 @@ class Popup extends React.Component<PopupProps> {
       style.zIndex = props.zIndex;
     }
     return style;
-  }
-
-  getMaskTransitionName () {
-    const props = this.props;
-    let transitionName = props.maskTransitionName;
-    const animation = props.maskAnimation;
-    if (!transitionName && animation) {
-      transitionName = `${props.prefixCls}-${animation}`;
-    }
-    return transitionName;
   }
 }
 
