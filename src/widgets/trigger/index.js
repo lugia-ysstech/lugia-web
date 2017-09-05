@@ -55,7 +55,6 @@ type TriggerProps = {
   destroyPopupOnHide: boolean,
   defaultPopupVisible: boolean,
   mask: boolean,
-  maskClosable: boolean,
   action: Array<string>,
   showAction: Array<string>,
   hideAction: Array<string>,
@@ -90,7 +89,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     popupAlign: {},
     defaultPopupVisible: false,
     mask: false,
-    maskClosable: true,
     action: [],
     align: 'left',
     showAction: [],
@@ -477,10 +475,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
 
   onDocumentClick = e => {
-    const { mask, maskClosable, } = this.props;
-    if (mask && !maskClosable) {
-      return;
-    }
     const target = e.target;
     const root = findDOMNode(this);
     const popupNode = this.getPopupDomNode();
