@@ -44,18 +44,14 @@ type TriggerProps = {
   onMouseLeave: ?Function,
   onFocus: ?Function,
   onBlur: ?Function,
-  prefixCls: string,
-  getPopupClassNameFromAlign: Function,
   getDocument: Function,
   onPopupVisibleChange: Function,
   afterPopupVisibleChange: Function,
   onPopupAlign: Function,
-  popupClassName: string,
   mouseEnterDelay: number,
   mouseLeaveDelay: number,
   focusDelay: number,
   blurDelay: number,
-  popupStyle: Object,
   destroyPopupOnHide: boolean,
   defaultPopupVisible: boolean,
   mask: boolean,
@@ -66,10 +62,6 @@ type TriggerProps = {
   getPopupContainer?: Function,
   zIndex: number,
   popup: Function | string,
-  popupAnimation: string,
-  maskTransitionName: string,
-  maskAnimation: string,
-  popupTransitionName: string,
   popupVisible: boolean,
   renderComponent: Function,
   popupPlacement: Function,
@@ -84,18 +76,14 @@ type TriggerState = {
 
 class Trigger extends React.Component<TriggerProps, TriggerState> {
   static  defaultProps = {
-    prefixCls: 'rc-trigger-popup',
-    getPopupClassNameFromAlign: returnEmptyString,
     getDocument: returnDocument,
     onPopupVisibleChange: noop,
     afterPopupVisibleChange: noop,
     onPopupAlign: noop,
-    popupClassName: '',
     mouseEnterDelay: 0,
     mouseLeaveDelay: 0.1,
     focusDelay: 0,
     blurDelay: 0.15,
-    popupStyle: {},
     destroyPopupOnHide: false,
     popupAlign: {},
     defaultPopupVisible: false,
@@ -161,13 +149,10 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   getComponent () {
     const { props, state, } = this;
+    const { onPopupAlign, popup, } = props;
     const {
-      prefixCls,
       destroyPopupOnHide,
       mask,
-      popupStyle,
-      popupClassName,
-      action,
       zIndex,
       align,
     } = props;
@@ -181,24 +166,16 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     return (
       <Popup
         ref={cmp => this.component = cmp}
-        prefixCls={prefixCls}
         destroyPopupOnHide={destroyPopupOnHide}
         visible={state.popupVisible}
-        className={popupClassName}
-        action={action}
         align={align}
-        onAlign={props.onPopupAlign}
-        animation={props.popupAnimation}
+        onAlign={onPopupAlign}
         {...mouseProps}
         getRootDomNode={this.getRootDomNode}
-        style={popupStyle}
-        mask={mask}
+        isMask={mask}
         zIndex={zIndex}
-        transitionName={props.popupTransitionName}
-        maskAnimation={props.maskAnimation}
-        maskTransitionName={props.maskTransitionName}
       >
-        {typeof props.popup === 'function' ? props.popup() : props.popup}
+        {typeof popup === 'function' ? popup() : popup}
       </Popup>
     );
   }
@@ -276,7 +253,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   getRootDomNode = () => {
     return findDOMNode(this);
   };
-
 
 
   setPopupVisible (popupVisible) {

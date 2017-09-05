@@ -10,14 +10,13 @@ import ContentBox from './ContentBox';
 
 type PopupProps = {
   visible: boolean,
-  style?: Object,
   onAlign?: Function,
   getRootDomNode: Function,
   onMouseEnter?: Function,
   children?: React.Node,
+  isMask: boolean,
   align?: string,
   destroyPopupOnHide?: boolean,
-  prefixCls?: string,
   transitionName?: string,
   onMouseLeave?: Function,
 };
@@ -26,6 +25,7 @@ class Popup extends React.Component<PopupProps> {
 
   static defaultProps = {
     visible: true,
+    isMask: false,
     align: 'bottom',
   };
   savePopupRef: Function;
@@ -70,7 +70,6 @@ class Popup extends React.Component<PopupProps> {
     const { savePopupRef, props, } = this;
     const {
       align,
-      style,
       visible,
       destroyPopupOnHide,
       onMouseEnter,
@@ -80,7 +79,6 @@ class Popup extends React.Component<PopupProps> {
 
     const hidden = !visible;
     const newStyle = {
-      ...style,
       ...this.getZIndexStyle(),
     };
 
@@ -110,15 +108,15 @@ class Popup extends React.Component<PopupProps> {
   }
 
   getMaskElement () {
-    const props = this.props;
+    const { isMask, visible, } = this.props;
     let maskElement;
-    if (props.mask) {
+    if (isMask) {
       maskElement = (
         <ContentBox
           style={this.getZIndexStyle()}
           key="mask"
           isMask
-          visible={props.visible}
+          visible={visible}
         />
       );
     }
