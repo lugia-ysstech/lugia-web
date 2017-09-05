@@ -6,7 +6,7 @@ exports[`ContentBox default visible: false, children: 1 1`] = `
   position: absolute;
   left: -9999px;
   top: -9999px;
-  z-index: 1050;
+  z-index: 1051;
 }
 
 <div
@@ -26,7 +26,7 @@ exports[`ContentBox default visible: true, children: 1 1`] = `
   position: absolute;
   left: -9999px;
   top: -9999px;
-  z-index: 1050;
+  z-index: 1051;
 }
 
 <div
@@ -50,7 +50,7 @@ exports[`ContentBox default visible: true, children: 2 1`] = `
   position: absolute;
   left: -9999px;
   top: -9999px;
-  z-index: 1050;
+  z-index: 1051;
 }
 
 <div
@@ -81,7 +81,7 @@ exports[`ContentBox default visible:false, children: 2 1`] = `
   position: absolute;
   left: -9999px;
   top: -9999px;
-  z-index: 1050;
+  z-index: 1051;
 }
 
 <div

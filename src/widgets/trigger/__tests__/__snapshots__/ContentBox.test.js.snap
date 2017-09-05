@@ -76,7 +76,7 @@ exports[`ContentBox mask: true, children: more, visible: false 1`] = `
   height: 100%;
   -webkit-filter: alpha(opacity=50);
   filter: alpha(opacity=50);
-  z-index: 999999;
+  z-index: 1050;
 }
 
 <div
@@ -104,7 +104,7 @@ exports[`ContentBox mask: true, visible: true, children: only one 1`] = `
   height: 100%;
   -webkit-filter: alpha(opacity=50);
   filter: alpha(opacity=50);
-  z-index: 999999;
+  z-index: 1050;
 }
 
 <div
