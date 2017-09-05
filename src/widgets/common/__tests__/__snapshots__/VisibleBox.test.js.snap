@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VisibleBox default visible default is false 1`] = `
+.c0 {
+  display: none;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`VisibleBox visible  is true 1`] = `
+.c0 {
+  display: inherit;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`VisibleBox visible is false 1`] = `
+.c0 {
+  display: none;
+}
+
+<div
+  className="c0"
+/>
+`;
