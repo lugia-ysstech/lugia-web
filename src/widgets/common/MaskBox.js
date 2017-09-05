@@ -5,7 +5,7 @@
 import * as React from 'react';
 import VisibleBox from '../common/VisibleBox';
 
-
+export const ZIndex = 1050;
 export default VisibleBox.extend`
   position: fixed;
   top: 0;
@@ -16,5 +16,5 @@ export default VisibleBox.extend`
   background-color: rgba(55, 55, 55, 0.6);
   height: 100%;
   filter: alpha(opacity=50);
-  z-index: 999999;
+  z-index: ${ZIndex};
 `;

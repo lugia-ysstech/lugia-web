@@ -5,12 +5,13 @@
 import * as React from 'react';
 import ContentBox from './ContentBox';
 import VisibleBox from '../common/VisibleBox';
+import { ZIndex, } from '../common/MaskBox';
 
 const PopupInnerBox = VisibleBox.extend`
   position: absolute;
   left: -9999px;
   top: -9999px;
-  z-index: 1050;
+  z-index: ${ZIndex + 1};
 `;
 
 type PopupInnerProps = {
