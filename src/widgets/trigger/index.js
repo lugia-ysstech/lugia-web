@@ -9,8 +9,6 @@ import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
 import RenderHook from '../utils/RenderHook';
 
-const { getAlignFromPlacement, getPopupClassNameFromAlign: getPopupClassFormAlign, } = require('./utils');
-
 function noop () {
 }
 
@@ -59,7 +57,6 @@ type TriggerProps = {
   blurDelay: number,
   popupStyle: Object,
   destroyPopupOnHide: boolean,
-  popupAlign: Object,
   defaultPopupVisible: boolean,
   mask: boolean,
   maskClosable: boolean,
@@ -78,6 +75,7 @@ type TriggerProps = {
   popupPlacement: Function,
   builtinPlacements: Function,
   children: React.Element<any>,
+  align: string,
 };
 type TriggerState = {
   popupVisible: boolean,
@@ -104,6 +102,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     mask: false,
     maskClosable: true,
     action: [],
+    align: 'left',
     showAction: [],
     hideAction: [],
   };
@@ -170,6 +169,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       popupClassName,
       action,
       zIndex,
+      align,
     } = props;
     const mouseProps = {};
     if (this.isMouseEnterToShow()) {
@@ -186,10 +186,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         visible={state.popupVisible}
         className={popupClassName}
         action={action}
-        align={this.getPopupAlign()}
+        align={align}
         onAlign={props.onPopupAlign}
         animation={props.popupAnimation}
-        getClassNameFromAlign={this.getPopupClassNameFromAlign}
         {...mouseProps}
         getRootDomNode={this.getRootDomNode}
         style={popupStyle}
@@ -278,29 +277,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     return findDOMNode(this);
   };
 
-
-  getPopupClassNameFromAlign = align => {
-    const className = [];
-    const props = this.props;
-    const { popupPlacement, builtinPlacements, prefixCls, } = props;
-    if (popupPlacement && builtinPlacements) {
-      className.push(getPopupClassFormAlign(builtinPlacements, prefixCls, align));
-    }
-    if (props.getPopupClassNameFromAlign) {
-      className.push(props.getPopupClassNameFromAlign(align));
-    }
-    return className.join(' ');
-  };
-
-
-  getPopupAlign () {
-    const props = this.props;
-    const { popupPlacement, popupAlign, builtinPlacements, } = props;
-    if (popupPlacement && builtinPlacements) {
-      return getAlignFromPlacement(builtinPlacements, popupPlacement, popupAlign);
-    }
-    return popupAlign;
-  }
 
 
   setPopupVisible (popupVisible) {

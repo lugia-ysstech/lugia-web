@@ -4,33 +4,32 @@
  */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import Align from 'rc-align';
+import Align from '../align';
 import PopupInner from './PopupInner';
 import ContentBox from './ContentBox';
 
 type PopupProps = {
   visible: boolean,
-  style: Object,
-  getClassNameFromAlign: Function,
-  onAlign: Function,
+  style?: Object,
+  onAlign?: Function,
   getRootDomNode: Function,
-  onMouseEnter: Function,
-  children: React.Node,
-  maskTransitionName: string,
-  maskAnimation: string,
-  align: any,
-  animation: string,
-  destroyPopupOnHide: boolean,
-  prefixCls: string,
-  transitionName: string,
-  onMouseLeave: Function,
+  onMouseEnter?: Function,
+  children?: React.Node,
+  align?: string,
+  destroyPopupOnHide?: boolean,
+  prefixCls?: string,
+  transitionName?: string,
+  onMouseLeave?: Function,
 };
 
 class Popup extends React.Component<PopupProps> {
 
+  static defaultProps = {
+    visible: true,
+    align: 'bottom',
+  };
   savePopupRef: Function;
   saveAlignRef: Function;
-  currentAlignClassName: string;
   popupInstance: Element | null;
   alignInstance: ?React.Element<any>;
 
@@ -80,11 +79,6 @@ class Popup extends React.Component<PopupProps> {
     } = props;
 
     const hidden = !visible;
-
-    if (hidden) {
-      this.currentAlignClassName = '';
-    }
-
     const newStyle = {
       ...style,
       ...this.getZIndexStyle(),
@@ -98,14 +92,12 @@ class Popup extends React.Component<PopupProps> {
     };
 
     const inner = destroyPopupOnHide && hidden ? null : <Align
-      target={this.getTarget}
+      autoResize
+      getTargetDom={this.getTarget}
       key="popup"
       ref={this.saveAlignRef}
-      monitorWindowResize
-      xVisible={visible}
-      childrenProps={{ visible: 'xVisible', }}
-      disabled={hidden}
       align={align}
+      visible={visible}
       onAlign={this.onAlign}
     >
       <PopupInner

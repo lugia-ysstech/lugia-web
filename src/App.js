@@ -244,8 +244,7 @@ class Test extends React.Component {
       <div style={{ margin: 100, position: 'relative', }}>
         <Trigger
           getPopupContainer={undefined && getPopupContainer}
-          popupAlign={getPopupAlign(state)}
-          popupPlacement={state.placement}
+          align={state.placement.toString()}
           destroyPopupOnHide={this.state.destroyPopupOnHide}
           // zIndex={40}
           mask={this.state.mask}
