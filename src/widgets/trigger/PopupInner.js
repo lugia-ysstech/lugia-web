@@ -4,7 +4,7 @@
  */
 import * as React from 'react';
 import ContentBox from './ContentBox';
-import VisibleBox from './VisibleBox';
+import VisibleBox from '../common/VisibleBox';
 
 const PopupInnerBox = VisibleBox.extend`
   position: absolute;

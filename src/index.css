@@ -122,23 +122,6 @@ body {
     }
 }
 
-:global(.rc-trigger-popup-mask) {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: #373737;
-    background-color: rgba(55, 55, 55, 0.6);
-    height: 100%;
-    filter: alpha(opacity=50);
-    z-index: 1050;
-}
-
-:global(.rc-trigger-popup-mask-hidden) {
-    display: none;
-}
-
 :global(.rc-trigger-popup-fade-enter,
 .rc-trigger-popup-fade-appear ) {
     opacity: 0;

@@ -1,9 +1,9 @@
 /**
- * 内容盒子
+ * Trigger内容盒子
  * @flow
  */
 import * as React from 'react';
-import VisibleBox from './VisibleBox';
+import VisibleBox from '../common/VisibleBox';
 
 
 const MaskBox = VisibleBox.extend`

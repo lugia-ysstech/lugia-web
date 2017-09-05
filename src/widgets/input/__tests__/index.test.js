@@ -205,7 +205,6 @@ describe('Input', () => {
   it('props: null function: generateInput', () => {
     const InputMock = mockObject.create(TextBoxInner.prototype, VerifyOrderConfig.create('Input', order));
     InputMock.mockFunction('generateInput').returned(<InputOnly/>);
-    const component = mount(<Input/>);
     order.verify(({ Input, }) => {
       Input.generateInput(InputOnly);
     });

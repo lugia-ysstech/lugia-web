@@ -9,5 +9,5 @@ type VisibleBoxProps = {
   visible: boolean
 }
 export default styled.div`
-   ${(props: VisibleBoxProps) => (props.visible ? '' : 'display: none;')}
+   ${(props: VisibleBoxProps) => (props.visible ? 'display: inherit;' : 'display: none;')}
 `;
