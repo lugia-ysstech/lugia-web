@@ -243,6 +243,8 @@ class Test extends React.Component {
       </div>
       <div style={{ margin: 100, position: 'relative', }}>
         <Trigger
+          offsetX={this.state.offsetX}
+          offsetY={this.state.offsetY}
           getPopupContainer={undefined && getPopupContainer}
           align={state.placement.toString()}
           destroyPopupOnHide={this.state.destroyPopupOnHide}

@@ -20,7 +20,8 @@ const builtinPlacements = {
   bottomLeft: ['tl', 'bl',],
 };
 type PropsType = {
-
+  offsetX: number,
+  offsetY: number,
   align: string,
   getTargetDom: Function,
   children: React.Node,
@@ -32,15 +33,21 @@ const defaultAligh = 'bottom';
 export default class Align extends React.Component<PropsType> {
   static defaultProps = {
     visible: true,
+    offsetX: 0,
+    offsetY: 0,
     autoResize: false,
     align: defaultAligh,
   };
 
   render () {
-    const { visible, autoResize, align, getTargetDom, children, } = this.props;
+    const { visible, autoResize, align, getTargetDom, children, offsetX, offsetY, } = this.props;
     const config = builtinPlacements[ align ];
     const rcAlignArg = {
       points: config ? config : builtinPlacements[ defaultAligh ],
+      offset: [
+        offsetX,
+        offsetY,
+      ],
     };
     return <VisibleBox visible={visible}>
       <RcAlign

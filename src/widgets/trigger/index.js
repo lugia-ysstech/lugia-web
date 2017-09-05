@@ -68,6 +68,8 @@ type TriggerProps = {
   builtinPlacements: Function,
   children: React.Element<any>,
   align: string,
+  offsetX?: number,
+  offsetY?: number,
 };
 type TriggerState = {
   popupVisible: boolean,
@@ -149,7 +151,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   getComponent () {
     const { props, state, } = this;
-    const { onPopupAlign, popup, } = props;
+    const { onPopupAlign, popup, offsetX, offsetY, } = props;
     const {
       destroyPopupOnHide,
       mask,
@@ -165,6 +167,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
     return (
       <Popup
+        offsetX={offsetX}
+        offsetY={offsetY}
         ref={cmp => this.component = cmp}
         destroyPopupOnHide={destroyPopupOnHide}
         visible={state.popupVisible}

@@ -9,6 +9,8 @@ import PopupInner from './PopupInner';
 import ContentBox from './ContentBox';
 
 type PopupProps = {
+  offsetX: number,
+  offsetY: number,
   visible: boolean,
   onAlign?: Function,
   getRootDomNode: Function,
@@ -24,6 +26,8 @@ type PopupProps = {
 class Popup extends React.Component<PopupProps> {
 
   static defaultProps = {
+  offsetX: 0,
+    offsetY: 0,
     visible: true,
     isMask: false,
     align: 'bottom',
@@ -75,6 +79,8 @@ class Popup extends React.Component<PopupProps> {
       onMouseEnter,
       onMouseLeave,
       children,
+      offsetX,
+      offsetY,
     } = props;
 
     const hidden = !visible;
@@ -90,6 +96,8 @@ class Popup extends React.Component<PopupProps> {
     };
 
     const inner = destroyPopupOnHide && hidden ? null : <Align
+      offsetX={offsetX}
+      offsetY={offsetY}
       autoResize
       getTargetDom={this.getTarget}
       key="popup"
