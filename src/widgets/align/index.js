@@ -11,7 +11,11 @@ import RcAlign from 'rc-align';
 
 const builtinPlacements = {
   left: ['cr', 'cl',],
+  leftTop: ['tr', 'tl',],
+  leftBottom: ['br', 'bl',],
   right: ['cl', 'cr',],
+  rightTop: ['tl', 'tr',],
+  rightBottom: ['bl', 'br',],
   top: ['bc', 'tc',],
   bottom: ['tc', 'bc',],
   topLeft: ['bl', 'tl',],
@@ -25,7 +29,7 @@ type PropsType = {
   align: string,
   getTargetDom: Function,
   children: React.Node,
-  onAlign: Function,
+  onAlign?: Function,
   autoResize: boolean,
   visible: boolean,
 };
