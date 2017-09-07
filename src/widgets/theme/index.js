@@ -13,7 +13,7 @@ type PropsType = {
 };
 type StateType = {};
 
-class Style extends React.Component<PropsType, StateType> {
+class Theme extends React.Component<PropsType, StateType> {
   static defaultProps = {
     config: {},
   };
@@ -28,8 +28,8 @@ class Style extends React.Component<PropsType, StateType> {
   }
 }
 
-Style.childContextTypes = {
+Theme.childContextTypes = {
   config: PropTypes.object,
 };
 
-export default Style;
+export default Theme;

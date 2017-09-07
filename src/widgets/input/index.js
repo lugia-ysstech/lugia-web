@@ -6,7 +6,7 @@ import React, { Component, } from 'react';
 import styled from 'styled-components';
 import '../../sv.css';
 import PropTypes from 'prop-types';
-
+import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 
@@ -102,12 +102,13 @@ const Suffix = Fix.extend`
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
-    viewClass: 'Input',
+    viewClass: Widget.Input,
     getTheme: () => {
       return {};
     },
   };
   input: any;
+  static displayName = Widget.Input;
 
   constructor (props: InputProps) {
     super(props);
@@ -141,7 +142,7 @@ class TextBox extends Component<InputProps, InputState> {
     if (!suffix && !prefix) {
       return this.generateInput(InputOnly);
     }
-    return <InputContainer className="sv" theme={this.props.getTheme(this)}>
+    return <InputContainer className="sv" theme={this.props.getTheme()}>
       {this.generatePrefix()}
       {this.generateInput(Input)}
       {this.generateSuffix()}
@@ -169,7 +170,7 @@ class TextBox extends Component<InputProps, InputState> {
     const { defaultValue, onKeyUp, onKeyPress, onFocus, onBlur, } = this.props;
     const { value, } = this.state;
     return <Input innerRef={node => this.input = node}
-                  theme={this.props.getTheme(this)}
+                  theme={this.props.getTheme()}
                   defaultValue={defaultValue}
                   value={value}
                   onKeyUp={onKeyUp}
@@ -190,7 +191,7 @@ class TextBox extends Component<InputProps, InputState> {
 
 export const TextBoxInner = TextBox;
 
-const TargetTxtBox = ThemeProvider(KeyBoardEventAdaptor(TextBox));
+const TargetTxtBox = ThemeProvider(KeyBoardEventAdaptor(TextBox), Widget.Input);
 
 TextBox.contextTypes = {
   config: PropTypes.object,

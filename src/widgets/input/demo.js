@@ -7,19 +7,22 @@
 import * as React from 'react';
 import Theme from '../theme';
 import Input from './';
+import * as Widget from '../consts/Widget';
 
 export default () => {
   const view = {
-    Input: {
-      width: '100px',
+    [Widget.Input]: {
+      width: '80px',
     },
     register: {
-      width: '20px',
+      width: '40px',
     },
   };
   return <Theme config={view}>
-    <Input width={50}/>
-    <Input width={50} viewClass="register"/>
-    <Input width={50} viewClass="register"/>
+    <Input/>
+    <Input viewClass="register"/>
+    <Theme config={{ register: { width: '300px', }, }}>
+      <Input viewClass="register"/>
+    </Theme>
   </Theme>;
 };
