@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import * as Widget from '../consts/Widget';
 
 type PropsType = {
   children: React.Node,
@@ -17,7 +18,7 @@ class Theme extends React.Component<PropsType, StateType> {
   static defaultProps = {
     config: {},
   };
-  static displayName = 'sv.widget.Theme';
+  static displayName = Widget.Theme;
 
   getChildContext (): Object {
     return { config: this.props.config, };
