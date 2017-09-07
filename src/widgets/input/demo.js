@@ -9,7 +9,7 @@ import Theme from '../theme';
 import Input from './';
 import * as Widget from '../consts/Widget';
 
-export default () => {
+const InputDemo = () => {
   const view = {
     [Widget.Input]: {
       width: '80px',
@@ -26,3 +26,4 @@ export default () => {
     </Theme>
   </Theme>;
 };
+export default InputDemo;

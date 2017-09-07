@@ -5,8 +5,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-export default (Target: React.ComponentType<any>, widgetName: string) => {
-  const result = (props: Object, context: Object): React.Element<any> => {
+const ThemeProvider = (Target: React.ComponentType<any> & { displayName: string }, widgetName: string) => {
+  const ThemeWrapWidget = (props: Object, context: Object): React.Element<any> => {
 
     const getTheme = function () {
       const { config, } = context;
@@ -14,12 +14,15 @@ export default (Target: React.ComponentType<any>, widgetName: string) => {
       const result = config[ viewClass ];
       return result ? result : {};
     };
+    Target.displayName = `ThemeWrapWidget[${widgetName}]`;
     return <Target {...props} getTheme={getTheme}/>;
 
   };
 
-  result.contextTypes = {
+  ThemeWrapWidget.contextTypes = {
     config: PropTypes.object,
   };
-  return result;
+  ThemeWrapWidget.displayName = 'ThemeWrapWidget';
+  return ThemeWrapWidget;
 };
+export default ThemeProvider;

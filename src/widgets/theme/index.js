@@ -17,6 +17,7 @@ class Theme extends React.Component<PropsType, StateType> {
   static defaultProps = {
     config: {},
   };
+  static displayName = 'sv.widget.Theme';
 
   getChildContext (): Object {
     return { config: this.props.config, };
