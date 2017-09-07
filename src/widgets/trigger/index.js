@@ -14,10 +14,6 @@ import RenderHook from '../utils/RenderHook';
 function noop () {
 }
 
-function returnEmptyString () {
-  return '';
-}
-
 function returnDocument () {
   return window.document;
 }
@@ -29,13 +25,13 @@ type EventName = 'onClick' |
   'onMouseLeave' |
   'onFocus' |
   'onBlur';
-const ALL_HANDLERS: Array<EventName> = [ 'onClick',
+const ALL_HANDLERS: Array<EventName> = ['onClick',
   'onMouseDown',
   'onTouchStart',
   'onMouseEnter',
   'onMouseLeave',
   'onFocus',
-  'onBlur', ];
+  'onBlur',];
 
 
 type TriggerProps = {
