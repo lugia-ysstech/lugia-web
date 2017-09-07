@@ -24,7 +24,7 @@ class Style extends React.Component<PropsType, StateType> {
 
   render () {
     const { children, } = this.props;
-    return <div>{children}</div>;
+    return <span>{children}</span>;
   }
 }
 
