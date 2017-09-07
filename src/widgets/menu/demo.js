@@ -7,6 +7,14 @@
 import * as React from 'react';
 import Menu from './';
 
+const { MenuItem, } = Menu;
 export default () => {
-  return <Menu>hello</Menu>;
+  return <Menu>
+    <MenuItem>
+      a
+    </MenuItem>
+    <MenuItem>
+      b
+    </MenuItem>
+  </Menu>;
 };

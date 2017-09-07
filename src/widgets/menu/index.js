@@ -4,14 +4,10 @@
  *
  * @flow
  */
-/**
- * 下拉菜单
- * create by ligx
- *
- * @flow
- */
 import * as React from 'react';
 import styled from 'styled-components';
+import Item from './item';
+import '../css/sv.css';
 
 type MenuProps = {
   children: React.Node
@@ -27,6 +23,7 @@ const MenuContainer = styled.ul`
 
 
 class Menu extends React.Component<MenuProps> {
+  static MenuItem: typeof Item;
 
   render () {
     const { children, } = this.props;
@@ -34,6 +31,7 @@ class Menu extends React.Component<MenuProps> {
   }
 }
 
+Menu.MenuItem = Item;
 export default Menu;
 
 
