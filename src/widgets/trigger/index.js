@@ -1,5 +1,7 @@
 /**
  * 漂浮弹出框
+ * 参考rc-trigger
+ * @author zenjava
  * @flow
  */
 import * as React from 'react';
@@ -27,13 +29,13 @@ type EventName = 'onClick' |
   'onMouseLeave' |
   'onFocus' |
   'onBlur';
-const ALL_HANDLERS: Array<EventName> = ['onClick',
+const ALL_HANDLERS: Array<EventName> = [ 'onClick',
   'onMouseDown',
   'onTouchStart',
   'onMouseEnter',
   'onMouseLeave',
   'onFocus',
-  'onBlur',];
+  'onBlur', ];
 
 
 type TriggerProps = {
