@@ -5,6 +5,8 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
 import '../../sv.css';
+import PropTypes from 'prop-types';
+
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 
 type InputState = {|
@@ -12,6 +14,7 @@ type InputState = {|
 |};
 
 type InputProps = {|
+  viewClass: string,
   prefix?: React$Element<any>,
   suffix?: React$Element<any>,
   onChange?: (newValue: any, oldValue: any) => void,
@@ -39,7 +42,7 @@ const CommonInputStyle = styled.input`
   padding: 2px 3px;
   font-family: inherit;
   margin: 0;
-  width: 100%;
+  width: ${props => props.theme.width};
 
   &:hover {
     border-color: ${InputBorderHoverColor};
@@ -57,7 +60,7 @@ const CommonInputStyle = styled.input`
 
 const InputContainer = styled.span`
   position: relative;
-  width: 100%;
+  width: ${props => props.theme.width};
   display: inline-block;
   background-color: #fff;
 `;
@@ -96,7 +99,9 @@ const Suffix = Fix.extend`
 `;
 
 class TextBox extends Component<InputProps, InputState> {
-
+  static defaultProps = {
+    viewClass: 'Input',
+  };
   input: any;
 
   constructor (props: InputProps) {
@@ -128,16 +133,21 @@ class TextBox extends Component<InputProps, InputState> {
 
   render () {
     const { prefix, suffix, } = this.props;
-
     if (!suffix && !prefix) {
       return this.generateInput(InputOnly);
     }
-
-    return <InputContainer className="sv">
+    return <InputContainer className="sv" theme={this.getTheme()}>
       {this.generatePrefix()}
       {this.generateInput(Input)}
       {this.generateSuffix()}
     </InputContainer>;
+  }
+
+  getTheme (): Object {
+    const { config, } = this.context;
+    const { viewClass, } = this.props;
+    const result = config[ viewClass ];
+    return result ? result : {};
   }
 
   generatePrefix (): React$Element<any> | null {
@@ -158,9 +168,10 @@ class TextBox extends Component<InputProps, InputState> {
 
   generateInput (Input: Function): React$Element<any> {
 
-    const { defaultValue, onKeyUp, onKeyPress, onKeyDown, onFocus, onBlur, } = this.props;
+    const { defaultValue, onKeyUp, onKeyPress, onFocus, onBlur, } = this.props;
     const { value, } = this.state;
     return <Input innerRef={node => this.input = node}
+                  theme={this.getTheme()}
                   defaultValue={defaultValue}
                   value={value}
                   onKeyUp={onKeyUp}
@@ -181,4 +192,9 @@ class TextBox extends Component<InputProps, InputState> {
 
 export const TextBoxInner = TextBox;
 
-export default KeyBoardEventAdaptor(TextBox);
+const TargetTxtBox = KeyBoardEventAdaptor(TextBox);
+
+TextBox.contextTypes = {
+  config: PropTypes.object,
+};
+export default TargetTxtBox;
