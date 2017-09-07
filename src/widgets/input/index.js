@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import '../../sv.css';
 import PropTypes from 'prop-types';
 
+import ThemeProvider from '../common/ThemeProvider';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 
 type InputState = {|
@@ -16,6 +17,7 @@ type InputState = {|
 type InputProps = {|
   viewClass: string,
   prefix?: React$Element<any>,
+  getTheme: Function,
   suffix?: React$Element<any>,
   onChange?: (newValue: any, oldValue: any) => void,
   onKeyUp?: (event: KeyboardEvent) => void;
@@ -101,6 +103,9 @@ const Suffix = Fix.extend`
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     viewClass: 'Input',
+    getTheme: () => {
+      return {};
+    },
   };
   input: any;
 
@@ -136,18 +141,11 @@ class TextBox extends Component<InputProps, InputState> {
     if (!suffix && !prefix) {
       return this.generateInput(InputOnly);
     }
-    return <InputContainer className="sv" theme={this.getTheme()}>
+    return <InputContainer className="sv" theme={this.props.getTheme(this)}>
       {this.generatePrefix()}
       {this.generateInput(Input)}
       {this.generateSuffix()}
     </InputContainer>;
-  }
-
-  getTheme (): Object {
-    const { config, } = this.context;
-    const { viewClass, } = this.props;
-    const result = config[ viewClass ];
-    return result ? result : {};
   }
 
   generatePrefix (): React$Element<any> | null {
@@ -171,7 +169,7 @@ class TextBox extends Component<InputProps, InputState> {
     const { defaultValue, onKeyUp, onKeyPress, onFocus, onBlur, } = this.props;
     const { value, } = this.state;
     return <Input innerRef={node => this.input = node}
-                  theme={this.getTheme()}
+                  theme={this.props.getTheme(this)}
                   defaultValue={defaultValue}
                   value={value}
                   onKeyUp={onKeyUp}
@@ -192,7 +190,7 @@ class TextBox extends Component<InputProps, InputState> {
 
 export const TextBoxInner = TextBox;
 
-const TargetTxtBox = KeyBoardEventAdaptor(TextBox);
+const TargetTxtBox = ThemeProvider(KeyBoardEventAdaptor(TextBox));
 
 TextBox.contextTypes = {
   config: PropTypes.object,
