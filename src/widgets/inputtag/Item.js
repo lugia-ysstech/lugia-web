@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import styled from 'styled-components';
-import '../../sv.css';
+import '../css/sv.css';
 import { ItemMarginRight, ItemPaddingLeft, ItemPadingRight, } from './style';
 import { RadiusSize, } from '../css/input';
 

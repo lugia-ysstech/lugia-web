@@ -4,7 +4,7 @@ import Support from '../common/FormFieldWidgetSupport';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
-import '../../sv.css';
+import '../css/sv.css';
 import PropTypes from 'prop-types';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
