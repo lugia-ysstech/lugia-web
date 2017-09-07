@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import VisibleBox from '../common/VisibleBox';
+import * as Widget from '../consts/Widget';
 import RcAlign from 'rc-align';
 
 
@@ -42,6 +43,8 @@ export default class Align extends React.Component<PropsType> {
     autoResize: false,
     align: defaultAligh,
   };
+  
+  static displayName = Widget.Align;
 
   render () {
     const { visible, autoResize, align, getTargetDom, children, offsetX, offsetY, } = this.props;

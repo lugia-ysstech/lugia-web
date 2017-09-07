@@ -22,7 +22,7 @@ const Source = styled.span`
 type StateType = {
   align: string,
 };
-export default class Demo extends React.Component<any, StateType> {
+export default class AlignDemo extends React.Component<any, StateType> {
   getTargetDom () {
     return document.getElementById('align');
   }
