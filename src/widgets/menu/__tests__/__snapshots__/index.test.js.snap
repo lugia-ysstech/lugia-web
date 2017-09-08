@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Menu mutliple selectKeys 2 1`] = `
+<styled.ul>
+  <MenuItem
+    checked={false}
+    mutliple={true}
+    onClick={[Function]}
+  >
+    a
+  </MenuItem>
+  <MenuItem
+    checked={false}
+    mutliple={true}
+    onClick={[Function]}
+  >
+    b
+  </MenuItem>
+  <MenuItem
+    checked={true}
+    mutliple={true}
+    onClick={[Function]}
+  >
+    c
+  </MenuItem>
+  <MenuItem
+    checked={true}
+    mutliple={true}
+    onClick={[Function]}
+  >
+    d
+  </MenuItem>
+</styled.ul>
+`;
+
+exports[`Menu Menu single selectKeys 2 1`] = `
+<styled.ul>
+  <MenuItem
+    checked={false}
+    mutliple={false}
+    onClick={[Function]}
+  >
+    a
+  </MenuItem>
+  <MenuItem
+    checked={true}
+    mutliple={false}
+    onClick={[Function]}
+  >
+    b
+  </MenuItem>
+  <MenuItem
+    checked={true}
+    mutliple={false}
+    onClick={[Function]}
+  >
+    c
+  </MenuItem>
+  <MenuItem
+    checked={false}
+    mutliple={false}
+    onClick={[Function]}
+  >
+    d
+  </MenuItem>
+</styled.ul>
+`;

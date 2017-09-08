@@ -4,6 +4,7 @@ import * as React from 'react';
 import chai from 'chai';
 import Menu from '../';
 import 'jest-styled-components';
+import { shallow, } from 'enzyme';
 
 const ReactShallowRenderer = require('react-test-renderer/shallow');
 
@@ -15,41 +16,57 @@ describe('Menu', () => {
 
   it('Menu single selectKeys 2', () => {
     const renderer = new ReactShallowRenderer();
-    renderer.render(<Menu selectKeys={['2', '3',]}>
+    expect(renderer.render(<Menu selectKeys={[ '2', '3', ]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
       <MenuItem key="4">d</MenuItem>
-    </Menu>);
-    const result = renderer.getRenderOutput();
-
-    expect(result.props.children).toEqual([
-      <MenuItem key="1">a</MenuItem>,
-      <MenuItem key="2" checked>b</MenuItem>,
-      <MenuItem key="3" checked>c</MenuItem>,
-      <MenuItem key="4">d</MenuItem>,]
-    );
+    </Menu>)).toMatchSnapshot();
   });
 
   it('Menu mutliple selectKeys 2', () => {
     const renderer = new ReactShallowRenderer();
-    renderer.render(<Menu selectKeys={['3', '4',]} mutliple>
+    expect(renderer.render(<Menu selectKeys={[ '3', '4', ]} mutliple>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
       <MenuItem key="4">d</MenuItem>
-    </Menu>);
-    const result = renderer.getRenderOutput();
-
-    expect(result.props.children).toEqual([
-      <MenuItem key="1" mutliple>a</MenuItem>,
-      <MenuItem key="2" mutliple>b</MenuItem>,
-      <MenuItem key="3" mutliple checked>c</MenuItem>,
-      <MenuItem key="4" mutliple checked>d</MenuItem>,]
-    );
+    </Menu>)).toMatchSnapshot();
   });
 
   it('Menu mutliple onClick', () => {
+    const checkedKey = '4';
+    const dom = shallow(<Menu mutliple>
+      <MenuItem key="1">a</MenuItem>
+      <MenuItem key="2">b</MenuItem>
+      <MenuItem key="3">c</MenuItem>
+      <MenuItem key={checkedKey} checked>d</MenuItem>
+    </Menu>);
+    dom.find(MenuItem).forEach(node => {
+      exp(node.prop('checked')).to.be.false;
+    });
+    dom.find(MenuItem).forEach(node => node.simulate('click'));
+    dom.find(MenuItem).forEach(node => {
+      exp(node.prop('checked')).to.be.true;
+    });
+  });
+  it('Menu mutliple onClick selectKeys: 1 2', () => {
+    const checkedKey = '4';
+    const dom = shallow(<Menu mutliple selectKeys={[ '1', '2', ]}>
+      <MenuItem key="1">a</MenuItem>
+      <MenuItem key="2">b</MenuItem>
+      <MenuItem key="3">c</MenuItem>
+      <MenuItem key={checkedKey} checked>d</MenuItem>
+    </Menu>);
+    exp(dom.find(MenuItem).at(0).prop('checked')).to.be.true;
+    exp(dom.find(MenuItem).at(1).prop('checked')).to.be.true;
+    exp(dom.find(MenuItem).at(2).prop('checked')).to.be.false;
+    exp(dom.find(MenuItem).at(3).prop('checked')).to.be.false;
+    dom.find(MenuItem).forEach(node => node.simulate('click'));
+    exp(dom.find(MenuItem).at(0).prop('checked')).to.be.false;
+    exp(dom.find(MenuItem).at(1).prop('checked')).to.be.false;
+    exp(dom.find(MenuItem).at(2).prop('checked')).to.be.true;
+    exp(dom.find(MenuItem).at(3).prop('checked')).to.be.true;
   });
 
 });
