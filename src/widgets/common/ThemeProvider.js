@@ -15,7 +15,7 @@ const ThemeProvider = (Target: React.ComponentType<any> & { displayName: string 
       return result ? result : {};
     };
     Target.displayName = `ThemeWrapWidget[${widgetName}]`;
-    return <Target {...props} getTheme={getTheme}/>;
+    return <Target {...props} getTheme={getTheme}></Target>;
 
   };
 
