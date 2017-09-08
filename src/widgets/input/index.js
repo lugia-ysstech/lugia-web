@@ -5,7 +5,6 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
-import PropTypes from 'prop-types';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
@@ -192,8 +191,4 @@ class TextBox extends Component<InputProps, InputState> {
 export const TextBoxInner = TextBox;
 
 const TargetTxtBox = ThemeProvider(KeyBoardEventAdaptor(TextBox), Widget.Input);
-
-TextBox.contextTypes = {
-  config: PropTypes.object,
-};
 export default TargetTxtBox;
