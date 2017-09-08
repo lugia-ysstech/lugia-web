@@ -1,23 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContentBox default visible: false, children: 1 1`] = `
-.c0 {
-  display: inherit;
-  position: absolute;
-  left: -9999px;
-  top: -9999px;
-  z-index: 1051;
-}
-
+exports[`Popup Popup snapshot 1`] = `
 <div>
-  <div
-    className="c0"
-    onMouseEnter={undefined}
-    onMouseLeave={undefined}
+  <sv.widget.Align
+    align="bottom"
+    autoResize={true}
+    getTargetDom={[Function]}
+    offsetX={0}
+    offsetY={0}
+    onAlign={[Function]}
+    visible={true}
   >
-    <span>
-      a
-    </span>
-  </div>
+    <PopupInner
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      style={Object {}}
+      visible={true}
+    >
+       
+    </PopupInner>
+  </sv.widget.Align>
 </div>
 `;

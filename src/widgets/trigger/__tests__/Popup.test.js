@@ -1,17 +1,18 @@
 //@flow
 import React from 'react';
 import chai from 'chai';
-import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 import Popup from '../Popup';
 
+const ReactShallowRenderer = require('react-test-renderer/shallow');
+
+const renderer = new ReactShallowRenderer();
 const { expect: exp, } = chai;
 
-describe('ContentBox', () => {
+describe('Popup', () => {
 
-  it('default visible: false, children: 1', () => {
-    const contentBox = renderer.create(<Popup getRootDomNode={() => ''}><span>a</span>
-    </Popup>).toJSON();
+  it('Popup snapshot', () => {
+    const contentBox = renderer.render(<Popup getRootDomNode={() => ''}> </Popup>);
     expect(contentBox).toMatchSnapshot();
   });
 });
