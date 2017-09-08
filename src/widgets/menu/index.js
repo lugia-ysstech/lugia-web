@@ -10,7 +10,9 @@ import Item from './item';
 import '../css/sv.css';
 
 type MenuProps = {
-  children: React.Node
+  mutliple: boolean,
+  children: React.ChildrenArray<React.Element<typeof Item>>,
+  selectKeys?: Array<string>,
 };
 const MenuContainer = styled.ul`
   outline: none;
@@ -22,12 +24,49 @@ const MenuContainer = styled.ul`
 `;
 
 
+type MenuItemProps = {|
+  checked?: boolean,
+  mutliple: boolean,
+|} ;
+
 class Menu extends React.Component<MenuProps> {
   static MenuItem: typeof Item;
+  static defaultProps = {
+    mutliple: false,
+  };
 
   render () {
     const { children, } = this.props;
-    return <MenuContainer>{children}</MenuContainer>;
+    const items = [];
+    if (children !== null) {
+      React.Children.forEach(children, (child: React.Element<typeof Item>) => {
+        items.push(this.renderMenuItem(child));
+      });
+    }
+    return <MenuContainer>{items}</MenuContainer>;
+  }
+
+  renderMenuItem = (child: React.Element<typeof Item>) => {
+    const { key, } = child;
+    return React.cloneElement(child, this.fetchExtendProps(key));
+  };
+
+  fetchExtendProps (key?: null | number | string): MenuItemProps {
+    const { mutliple, selectKeys, } = this.props;
+    if (!key || !this.isSelect(selectKeys)(key)) {
+      return { mutliple, };
+    }
+    return { checked: true, mutliple, };
+  }
+
+  isSelect (selectedKeys?: Array<string>): (number | string) => boolean {
+    const existKey = {};
+    selectedKeys && selectedKeys.forEach(key => {
+      existKey[ key ] = true;
+    });
+    return (key: number | string) => {
+      return existKey[ key ];
+    };
   }
 }
 

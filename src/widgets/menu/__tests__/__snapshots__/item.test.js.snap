@@ -44,6 +44,7 @@ exports[`Item Mutliple MenuItem 1`] = `
 <li
   checked={false}
   className="c0"
+  onClick={undefined}
 >
   <a>
     hello
@@ -106,6 +107,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 <li
   checked={true}
   className="c0"
+  onClick={undefined}
 >
   <a>
     hello
@@ -134,6 +136,7 @@ exports[`Item Single MenuItem 1`] = `
 <li
   checked={false}
   className="c0"
+  onClick={undefined}
 >
   hello
 </li>
@@ -163,6 +166,7 @@ exports[`Item Single MenuItem checked 1`] = `
 <li
   checked={true}
   className="c0"
+  onClick={undefined}
 >
   <a>
     hello
@@ -191,5 +195,33 @@ exports[`Item children: null 1`] = `
 <li
   checked={false}
   className="c0"
+  onClick={undefined}
 />
+`;
+
+exports[`Item key: hello 1`] = `
+.c0 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.c0:hover {
+  background-color: #ecf6fd;
+}
+
+<li
+  checked={false}
+  className="c0"
+  onClick={undefined}
+>
+  hello
+</li>
 `;
