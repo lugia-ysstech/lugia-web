@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item Mutliple MenuItem 1`] = `
+.c0 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.c0:hover {
+  background-color: #ecf6fd;
+}
+
+.c0:after {
+  font-family: "iconfont" !important;
+  text-rendering: optimizeLegibility;
+  content: "\\e73e";
+  color: transparent;
+  display: inline-block;
+  font-size: 14px;
+  -webkit-transform: scale(.83333333) rotate(0deg);
+  -ms-transform: scale(.83333333) rotate(0deg);
+  transform: scale(.83333333) rotate(0deg);
+  zoom: 1;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 8px;
+  font-weight: 700;
+  text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
+}
+
+<li
+  checked={false}
+  className="c0"
+>
+  <a>
+    hello
+  </a>
+</li>
+`;
+
+exports[`Item Mutliple MenuItem checked 1`] = `
+.c0 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+  background-color: #f7f7f7;
+  font-weight: 600;
+  color: rgba(0,0,0,.65);
+}
+
+.c0:hover {
+  background-color: #ecf6fd;
+}
+
+.c0:after {
+  font-family: "iconfont" !important;
+  text-rendering: optimizeLegibility;
+  content: "\\e73e";
+  color: transparent;
+  display: inline-block;
+  font-size: 14px;
+  -webkit-transform: scale(.83333333) rotate(0deg);
+  -ms-transform: scale(.83333333) rotate(0deg);
+  transform: scale(.83333333) rotate(0deg);
+  zoom: 1;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 8px;
+  font-weight: 700;
+  text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
+}
+
+.c0:after {
+  color: #108ee9;
+}
+
+.c0:hover:after {
+  color: #108ee9;
+}
+
+<li
+  checked={true}
+  className="c0"
+>
+  <a>
+    hello
+  </a>
+</li>
+`;
+
+exports[`Item Single MenuItem 1`] = `
+.c0 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.c0:hover {
+  background-color: #ecf6fd;
+}
+
+<li
+  checked={false}
+  className="c0"
+>
+  hello
+</li>
+`;
+
+exports[`Item Single MenuItem checked 1`] = `
+.c0 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+  background-color: #f7f7f7;
+  font-weight: 600;
+  color: rgba(0,0,0,.65);
+}
+
+.c0:hover {
+  background-color: #ecf6fd;
+}
+
+<li
+  checked={true}
+  className="c0"
+>
+  <a>
+    hello
+  </a>
+</li>
+`;
+
+exports[`Item children: null 1`] = `
+.c0 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.c0:hover {
+  background-color: #ecf6fd;
+}
+
+<li
+  checked={false}
+  className="c0"
+/>
+`;
