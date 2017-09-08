@@ -9,7 +9,7 @@ const ThemeProvider = (Target: React.ComponentType<any> & { displayName: string 
   const ThemeWrapWidget = (props: Object, context: Object): React.Element<any> => {
 
     const getTheme = function () {
-      const { config, } = context;
+      const { config = {}, } = context;
       const { viewClass = widgetName, } = props;
       const result = config[ viewClass ];
       return result ? result : {};
