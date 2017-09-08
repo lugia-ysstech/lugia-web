@@ -10,8 +10,11 @@ import Menu from './';
 const { MenuItem, } = Menu;
 export default () => {
   return <Menu>
-    <MenuItem>
+    <MenuItem checked>
       a
+    </MenuItem>
+    <MenuItem>
+      b
     </MenuItem>
     <MenuItem>
       b
