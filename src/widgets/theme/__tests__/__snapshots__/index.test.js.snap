@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Theme Theme 1`] = `
+<span>
+  <div>
+    {"ligx":{"value":"正念"}}
+    hello everyone
+  </div>
+</span>
+`;
