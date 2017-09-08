@@ -10,6 +10,7 @@ import styled from 'styled-components';
 type MenuItemProps = {
   checked: boolean,
   mutliple: boolean,
+  onClick?: Function,
   children?: React.Node
 };
 const SelectIcon = '\\e73e';
@@ -73,9 +74,9 @@ class MenuItem extends React.Component<MenuItemProps> {
   };
 
   render () {
-    const { children, mutliple, } = this.props;
+    const { children, mutliple, checked, onClick, } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
-    return <Item {...this.props}>{children}</Item>;
+    return <Item checked={checked} onClick={onClick}>{children}</Item>;
   }
 }
 
