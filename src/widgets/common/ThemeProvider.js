@@ -5,7 +5,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-const ThemeProvider = (Target: React.ComponentType<any> & { displayName: string }, widgetName: string) => {
+type ProviderComponent = React.ComponentType<any> & { displayName: string };
+const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {
   const ThemeWrapWidget = (props: Object, context: Object): React.Element<any> => {
 
     const getTheme = function () {
