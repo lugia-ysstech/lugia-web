@@ -7,15 +7,19 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Item from './item';
+import ThemeProvider from '../common/ThemeProvider';
+import * as Widget from '../consts/Widget';
 import '../css/sv.css';
 
 type MenuProps = {
+  getTheme: Function,
   mutliple: boolean,
   children: React.ChildrenArray<React.Element<typeof Item>>,
   selectedKeys?: Array<string>,
   defaultSelectedKeys?: Array<string>,
 };
 const MenuContainer = styled.ul`
+  width: ${props => props.theme.width};
   outline: none;
   margin: 0;
   padding-left: 0;
@@ -35,10 +39,13 @@ type MenuState = {
 }
 
 class Menu extends React.Component<MenuProps, MenuState> {
-  static MenuItem: typeof Item;
   static defaultProps = {
     mutliple: false,
+    getTheme: () => {
+      return {};
+    },
   };
+  static displayName = Widget.Menu;
 
   constructor (props: MenuProps) {
     super(props);
@@ -65,7 +72,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         items.push(this.renderMenuItem(child));
       });
     }
-    return <MenuContainer>{items}</MenuContainer>;
+    return <MenuContainer theme={this.props.getTheme()}>{items}</MenuContainer>;
   }
 
   renderMenuItem = (child: React.Element<typeof Item>) => {
@@ -130,7 +137,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 }
 
-Menu.MenuItem = Item;
-export default Menu;
+const Result = ThemeProvider(Menu, Widget.Menu);
+Result.MenuItem = Item;
+export default Result;
 
 

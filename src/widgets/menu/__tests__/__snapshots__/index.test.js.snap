@@ -2,6 +2,7 @@
 
 exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 .c0 {
+  width: ;
   outline: none;
   margin: 0;
   padding-left: 0;
@@ -137,6 +138,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu single selectedKeys 2 1`] = `
 .c0 {
+  width: ;
   outline: none;
   margin: 0;
   padding-left: 0;
@@ -214,4 +216,68 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
     d
   </li>
 </ul>
+`;
+
+exports[`Menu DropMenu width: 500px 1`] = `
+.c0 {
+  width: 500px;
+  outline: none;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.c1 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.c1:hover {
+  background-color: #ecf6fd;
+}
+
+<span>
+  <ul
+    className="c0"
+  >
+    <li
+      checked={false}
+      className="c1"
+      onClick={[Function]}
+    >
+      a
+    </li>
+    <li
+      checked={false}
+      className="c1"
+      onClick={[Function]}
+    >
+      b
+    </li>
+    <li
+      checked={false}
+      className="c1"
+      onClick={[Function]}
+    >
+      c
+    </li>
+    <li
+      checked={false}
+      className="c1"
+      onClick={[Function]}
+    >
+      d
+    </li>
+  </ul>
+</span>
 `;
