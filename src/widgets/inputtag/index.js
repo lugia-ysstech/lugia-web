@@ -14,8 +14,7 @@ import Moretem from './Moretem';
 import FontItem from './FontItem';
 
 type InputTagProps = {
-  children: React.ChildrenArray<React.Element<Item>>,
-  value: Array<string>,
+  value?: Array<string>,
 };
 type InputTagState = {
   items: Array<React.Node>,
@@ -113,7 +112,7 @@ export default class  extends React.Component<InputTagProps, InputTagState> {
 
       }
     }
-    this.setState({ items: result.length > 0 ? result : [<Moretem/>,], });
+    this.setState({ items: result.length >= 0 ? result : [<Moretem/>,], });
     return true;
   }
 
