@@ -9,3 +9,5 @@ export const Align = 'sv.widget.Align';
 export const Trigger = 'sv.widget.Trigger';
 export const InputTag = 'sv.widget.InputTag';
 export const Theme = 'sv.widget.Theme';
+export const Menu = 'sv.widget.Menu';
+export const DropMenu = 'sv.widget.DropMenu';
