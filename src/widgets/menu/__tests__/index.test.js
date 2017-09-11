@@ -23,8 +23,8 @@ describe('Menu', () => {
       <MenuItem key="4">d</MenuItem>
     </Menu>).toJSON()).toMatchSnapshot();
   });
-  it('DropMenu width: 500px', () => {
-    expect(renderer.create(<Theme config={{ [Widget.Menu]: { width: '500px', }, }}><Menu>
+  it('DropMenu width: 500px height: 333px', () => {
+    expect(renderer.create(<Theme config={{ [Widget.Menu]: { width: '500px', height: '333px', }, }}><Menu>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>

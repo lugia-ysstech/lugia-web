@@ -18,13 +18,18 @@ type MenuProps = {
   selectedKeys?: Array<string>,
   defaultSelectedKeys?: Array<string>,
 };
+const height = props => {
+  const height = props.theme.height;
+  return height ? height : '250px';
+};
 const MenuContainer = styled.ul`
   width: ${props => props.theme.width};
   outline: none;
   margin: 0;
   padding-left: 0;
   list-style: none;
-  max-height: 250px;
+  height: ${height};
+  max-height: ${height};
   overflow: auto;
 `;
 
