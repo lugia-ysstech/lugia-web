@@ -2,8 +2,10 @@
 
 exports[`Item Mutliple MenuItem 1`] = `
 .c0 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -54,8 +56,10 @@ exports[`Item Mutliple MenuItem 1`] = `
 
 exports[`Item Mutliple MenuItem checked 1`] = `
 .c0 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -117,8 +121,10 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 
 exports[`Item Single MenuItem 1`] = `
 .c0 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -144,8 +150,10 @@ exports[`Item Single MenuItem 1`] = `
 
 exports[`Item Single MenuItem checked 1`] = `
 .c0 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -176,8 +184,10 @@ exports[`Item Single MenuItem checked 1`] = `
 
 exports[`Item children: null 1`] = `
 .c0 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -197,31 +207,4 @@ exports[`Item children: null 1`] = `
   className="c0"
   onClick={undefined}
 />
-`;
-
-exports[`Item key: hello 1`] = `
-.c0 {
-  position: relative;
-  display: block;
-  padding: 7px 8px;
-  font-weight: 400;
-  color: rgba(0,0,0,.65);
-  white-space: nowrap;
-  cursor: pointer;
-  overflow: hidden;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
-}
-
-.c0:hover {
-  background-color: #ecf6fd;
-}
-
-<li
-  checked={false}
-  className="c0"
-  onClick={undefined}
->
-  hello
-</li>
 `;

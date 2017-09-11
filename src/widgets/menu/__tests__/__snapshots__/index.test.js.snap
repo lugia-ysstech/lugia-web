@@ -13,8 +13,10 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c1 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -53,8 +55,10 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c2 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -150,8 +154,10 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c1 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -167,8 +173,10 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c2 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);
@@ -233,8 +241,10 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 }
 
 .c1 {
+  box-sizing: border-box;
   position: relative;
   display: block;
+  height: 35px;
   padding: 7px 8px;
   font-weight: 400;
   color: rgba(0,0,0,.65);

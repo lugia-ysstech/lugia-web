@@ -32,8 +32,10 @@ const mulipleChecked = (props: MenuItemProps) => {
     ` : '';
 };
 const SingleItem = styled.li `
+    box-sizing: border-box;
     position: relative;
     display: block;
+    height: 35px;
     padding: 7px 8px;
     font-weight: 400;
     color: rgba(0,0,0,.65);
