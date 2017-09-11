@@ -14,9 +14,9 @@ const { expect: exp, } = chai;
 describe('Menu', () => {
 
 
-  it('Menu single selectKeys 2', () => {
+  it('DropMenu single selectedKeys 2', () => {
     const renderer = new ReactShallowRenderer();
-    expect(renderer.render(<Menu selectKeys={[ '2', '3', ]}>
+    expect(renderer.render(<Menu selectedKeys={['2', '3',]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -24,9 +24,9 @@ describe('Menu', () => {
     </Menu>)).toMatchSnapshot();
   });
 
-  it('Menu mutliple selectKeys 2', () => {
+  it('DropMenu mutliple selectedKeys 2', () => {
     const renderer = new ReactShallowRenderer();
-    expect(renderer.render(<Menu selectKeys={[ '3', '4', ]} mutliple>
+    expect(renderer.render(<Menu selectedKeys={['3', '4',]} mutliple>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -34,7 +34,7 @@ describe('Menu', () => {
     </Menu>)).toMatchSnapshot();
   });
 
-  it('Menu mutliple onClick', () => {
+  it('DropMenu mutliple onClick', () => {
     const checkedKey = '4';
     const dom = shallow(<Menu mutliple>
       <MenuItem key="1">a</MenuItem>
@@ -50,9 +50,9 @@ describe('Menu', () => {
       exp(node.prop('checked')).to.be.true;
     });
   });
-  it('Menu mutliple onClick selectKeys: 1 2', () => {
+  it('DropMenu mutliple onClick selectedKeys: 1 2', () => {
     const checkedKey = '4';
-    const dom = shallow(<Menu mutliple selectKeys={[ '1', '2', ]}>
+    const dom = shallow(<Menu mutliple selectedKeys={['1', '2',]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -69,4 +69,22 @@ describe('Menu', () => {
     exp(dom.find(MenuItem).at(3).prop('checked')).to.be.true;
   });
 
+  it('DropMenu single onClick selectedKeys: 1 2', () => {
+    const checkedKey = '4';
+    const dom = shallow(<Menu selectedKeys={['1', '2',]}>
+      <MenuItem key="1">a</MenuItem>
+      <MenuItem key="2">b</MenuItem>
+      <MenuItem key="3">c</MenuItem>
+      <MenuItem key={checkedKey} checked>d</MenuItem>
+    </Menu>);
+    exp(dom.find(MenuItem).at(0).prop('checked')).to.be.false;
+    exp(dom.find(MenuItem).at(1).prop('checked')).to.be.true;
+    exp(dom.find(MenuItem).at(2).prop('checked')).to.be.false;
+    exp(dom.find(MenuItem).at(3).prop('checked')).to.be.false;
+    dom.find(MenuItem).forEach(node => node.simulate('click'));
+    exp(dom.find(MenuItem).at(0).prop('checked')).to.be.false;
+    exp(dom.find(MenuItem).at(1).prop('checked')).to.be.false;
+    exp(dom.find(MenuItem).at(2).prop('checked')).to.be.false;
+    exp(dom.find(MenuItem).at(3).prop('checked')).to.be.true;
+  });
 });

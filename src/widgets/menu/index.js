@@ -12,8 +12,8 @@ import '../css/sv.css';
 type MenuProps = {
   mutliple: boolean,
   children: React.ChildrenArray<React.Element<typeof Item>>,
-  selectKeys?: Array<string>,
-  defaultSelectKeys?: Array<string>,
+  selectedKeys?: Array<string>,
+  defaultSelectedKeys?: Array<string>,
 };
 const MenuContainer = styled.ul`
   outline: none;
@@ -31,7 +31,7 @@ type MenuItemProps = {|
   onClick: Function,
 |} ;
 type MenuState = {
-  selectKeys: Array<string>,
+  selectedKeys: Array<string>,
 }
 
 class Menu extends React.Component<MenuProps, MenuState> {
@@ -43,16 +43,16 @@ class Menu extends React.Component<MenuProps, MenuState> {
   constructor (props: MenuProps) {
     super(props);
     this.state = {
-      selectKeys: this.getSelectkeys(),
+      selectedKeys: this.getSelectedKeys(),
     };
   }
 
-  getSelectkeys (): Array<string> {
-    const { selectKeys = [], defaultSelectKeys = [], } = this.props;
-    if ('selectKeys' in this.props) {
-      return selectKeys;
+  getSelectedKeys (): Array<string> {
+    const { selectedKeys = [], defaultSelectedKeys = [], } = this.props;
+    if ('selectedKeys' in this.props) {
+      return selectedKeys;
     } else if ('defaultSelectedKeys' in this.props) {
-      return defaultSelectKeys;
+      return defaultSelectedKeys;
     }
     return [];
   }
@@ -75,9 +75,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   fetchExtendProps (key?: null | number | string): MenuItemProps {
     const { mutliple, } = this.props;
-    const { selectKeys, } = this.state;
     const onClick = this.onMenuItemClick(key);
-    if (!key || !this.isSelect(selectKeys)(key)) {
+    if (!key || !this.isSelect()(key)) {
       return { mutliple, ...onClick, checked: false, };
     }
     return { checked: true, mutliple, ...onClick, };
@@ -93,25 +92,38 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return;
         }
         const str = key + '';
-        const { selectKeys, } = this.state;
-        const index = selectKeys.indexOf(str);
-
-        const noIn = index === -1;
-        if (noIn) {
-          selectKeys.push(str);
+        const { mutliple, } = this.props;
+        let { selectedKeys, } = this.state;
+        if (mutliple) {
+          const index = selectedKeys.indexOf(str);
+          const noIn = index === -1;
+          if (noIn) {
+            selectedKeys.push(str);
+          } else {
+            selectedKeys.splice(index, 1);
+          }
         } else {
-          selectKeys.splice(index, 1);
+          selectedKeys = [str,];
         }
-        this.setState({ selectKeys, });
+        this.setState({ selectedKeys, });
       },
     };
   };
 
-  isSelect (selectedKeys?: Array<string>): (number | string) => boolean {
+  isSelect (): (number | string) => boolean {
     const existKey = {};
-    selectedKeys && selectedKeys.forEach(key => {
-      existKey[ key ] = true;
-    });
+    const { selectedKeys, } = this.state;
+    const { mutliple, } = this.props;
+    if (selectedKeys && selectedKeys.length > 0) {
+      if (mutliple) {
+        selectedKeys.forEach(key => {
+          existKey[ key ] = true;
+        });
+      } else {
+        existKey[ selectedKeys[ selectedKeys.length - 1 ] ] = true;
+      }
+    }
+
     return (key: number | string) => {
       return existKey[ key ];
     };

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Menu Menu mutliple selectKeys 2 1`] = `
+exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 <styled.ul>
   <MenuItem
     checked={false}
@@ -33,7 +33,7 @@ exports[`Menu Menu mutliple selectKeys 2 1`] = `
 </styled.ul>
 `;
 
-exports[`Menu Menu single selectKeys 2 1`] = `
+exports[`Menu DropMenu single selectedKeys 2 1`] = `
 <styled.ul>
   <MenuItem
     checked={false}
@@ -43,7 +43,7 @@ exports[`Menu Menu single selectKeys 2 1`] = `
     a
   </MenuItem>
   <MenuItem
-    checked={true}
+    checked={false}
     mutliple={false}
     onClick={[Function]}
   >
