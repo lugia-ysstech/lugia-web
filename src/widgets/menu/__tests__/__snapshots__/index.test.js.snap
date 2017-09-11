@@ -1,67 +1,217 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
-<styled.ul>
-  <MenuItem
+.c0 {
+  outline: none;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.c1 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.c1:hover {
+  background-color: #ecf6fd;
+}
+
+.c1:after {
+  font-family: "iconfont" !important;
+  text-rendering: optimizeLegibility;
+  content: "\\e73e";
+  color: transparent;
+  display: inline-block;
+  font-size: 14px;
+  -webkit-transform: scale(.83333333) rotate(0deg);
+  -ms-transform: scale(.83333333) rotate(0deg);
+  transform: scale(.83333333) rotate(0deg);
+  zoom: 1;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 8px;
+  font-weight: 700;
+  text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
+}
+
+.c2 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+  background-color: #f7f7f7;
+  font-weight: 600;
+  color: rgba(0,0,0,.65);
+}
+
+.c2:hover {
+  background-color: #ecf6fd;
+}
+
+.c2:after {
+  font-family: "iconfont" !important;
+  text-rendering: optimizeLegibility;
+  content: "\\e73e";
+  color: transparent;
+  display: inline-block;
+  font-size: 14px;
+  -webkit-transform: scale(.83333333) rotate(0deg);
+  -ms-transform: scale(.83333333) rotate(0deg);
+  transform: scale(.83333333) rotate(0deg);
+  zoom: 1;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 8px;
+  font-weight: 700;
+  text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
+}
+
+.c2:after {
+  color: #108ee9;
+}
+
+.c2:hover:after {
+  color: #108ee9;
+}
+
+<ul
+  className="c0"
+>
+  <li
     checked={false}
-    mutliple={true}
+    className="c1"
     onClick={[Function]}
   >
     a
-  </MenuItem>
-  <MenuItem
+  </li>
+  <li
     checked={false}
-    mutliple={true}
+    className="c1"
     onClick={[Function]}
   >
     b
-  </MenuItem>
-  <MenuItem
+  </li>
+  <li
     checked={true}
-    mutliple={true}
+    className="c2"
     onClick={[Function]}
   >
     c
-  </MenuItem>
-  <MenuItem
+  </li>
+  <li
     checked={true}
-    mutliple={true}
+    className="c2"
     onClick={[Function]}
   >
     d
-  </MenuItem>
-</styled.ul>
+  </li>
+</ul>
 `;
 
 exports[`Menu DropMenu single selectedKeys 2 1`] = `
-<styled.ul>
-  <MenuItem
+.c0 {
+  outline: none;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.c1 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.c1:hover {
+  background-color: #ecf6fd;
+}
+
+.c2 {
+  position: relative;
+  display: block;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+  background-color: #f7f7f7;
+  font-weight: 600;
+  color: rgba(0,0,0,.65);
+}
+
+.c2:hover {
+  background-color: #ecf6fd;
+}
+
+<ul
+  className="c0"
+>
+  <li
     checked={false}
-    mutliple={false}
+    className="c1"
     onClick={[Function]}
   >
     a
-  </MenuItem>
-  <MenuItem
+  </li>
+  <li
     checked={false}
-    mutliple={false}
+    className="c1"
     onClick={[Function]}
   >
     b
-  </MenuItem>
-  <MenuItem
+  </li>
+  <li
     checked={true}
-    mutliple={false}
+    className="c2"
     onClick={[Function]}
   >
     c
-  </MenuItem>
-  <MenuItem
+  </li>
+  <li
     checked={false}
-    mutliple={false}
+    className="c1"
     onClick={[Function]}
   >
     d
-  </MenuItem>
-</styled.ul>
+  </li>
+</ul>
 `;

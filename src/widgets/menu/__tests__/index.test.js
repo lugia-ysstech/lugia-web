@@ -4,6 +4,7 @@ import * as React from 'react';
 import chai from 'chai';
 import Menu from '../';
 import 'jest-styled-components';
+import renderer from 'react-test-renderer';
 import { shallow, } from 'enzyme';
 
 const ReactShallowRenderer = require('react-test-renderer/shallow');
@@ -15,23 +16,21 @@ describe('Menu', () => {
 
 
   it('DropMenu single selectedKeys 2', () => {
-    const renderer = new ReactShallowRenderer();
-    expect(renderer.render(<Menu selectedKeys={['2', '3',]}>
+    expect(renderer.create(<Menu selectedKeys={[ '2', '3', ]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
       <MenuItem key="4">d</MenuItem>
-    </Menu>)).toMatchSnapshot();
+    </Menu>).toJSON()).toMatchSnapshot();
   });
 
   it('DropMenu mutliple selectedKeys 2', () => {
-    const renderer = new ReactShallowRenderer();
-    expect(renderer.render(<Menu selectedKeys={['3', '4',]} mutliple>
+    expect(renderer.create((<Menu selectedKeys={[ '3', '4', ]} mutliple>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
       <MenuItem key="4">d</MenuItem>
-    </Menu>)).toMatchSnapshot();
+    </Menu>)).toJSON()).toMatchSnapshot();
   });
 
   it('DropMenu mutliple onClick', () => {
@@ -52,7 +51,7 @@ describe('Menu', () => {
   });
   it('DropMenu mutliple onClick selectedKeys: 1 2', () => {
     const checkedKey = '4';
-    const dom = shallow(<Menu mutliple selectedKeys={['1', '2',]}>
+    const dom = shallow(<Menu mutliple selectedKeys={[ '1', '2', ]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -71,7 +70,7 @@ describe('Menu', () => {
 
   it('DropMenu single onClick selectedKeys: 1 2', () => {
     const checkedKey = '4';
-    const dom = shallow(<Menu selectedKeys={['1', '2',]}>
+    const dom = shallow(<Menu selectedKeys={[ '1', '2', ]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>

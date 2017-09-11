@@ -17,7 +17,7 @@ type MenuProps = {
 };
 const MenuContainer = styled.ul`
   outline: none;
-  margin-bottom: 0;
+  margin: 0;
   padding-left: 0;
   list-style: none;
   max-height: 250px;
