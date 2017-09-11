@@ -11,6 +11,7 @@ import Theme from '../theme';
 import * as Widget from '../consts/Widget';
 
 type DropMenuProps = {
+  action: string,
   menus: React.Node,
   children: React.Node
 };
@@ -25,6 +26,9 @@ type DropMenuState = {
 };
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
+  static defaultProps = {
+    action: 'hover',
+  };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
   isAutoTriggerWidth: boolean;
@@ -36,11 +40,11 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render () {
-    const { menus, children, } = this.props;
+    const { menus, children, action, } = this.props;
     const menuConfig = { [Widget.Menu]: { width: this.state.trigerWidth, }, };
     return <Trigger
       align="bottomLeft"
-      action="hover"
+      action={action}
       popup={
         <MenuContainer><Theme config={menuConfig}>{menus}</Theme></MenuContainer>
       }>
