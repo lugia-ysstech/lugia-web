@@ -4,7 +4,7 @@ import * as React from 'react';
 import chai from 'chai';
 import Menu from '../';
 import 'jest-styled-components';
-import { mount, } from 'enzyme';
+import { mount, render, } from 'enzyme';
 import renderer from 'react-test-renderer';
 import Theme from '../../theme';
 import * as Widget from '../../consts/Widget';
@@ -24,7 +24,7 @@ describe('Menu', () => {
     </Menu>).toJSON()).toMatchSnapshot();
   });
   it('DropMenu width: 500px height: 333px', () => {
-    expect(renderer.create(<Theme config={{ [Widget.Menu]: { width: '500px', height: '333px', }, }}><Menu>
+    expect(renderer.create(<Theme config={{ [Widget.Menu]: { width: 550, height: 333, }, }}><Menu>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -93,5 +93,25 @@ describe('Menu', () => {
     exp(dom.find(MenuItem).at(1).prop('checked')).to.be.false;
     exp(dom.find(MenuItem).at(2).prop('checked')).to.be.false;
     exp(dom.find(MenuItem).at(3).prop('checked')).to.be.true;
+  });
+
+  it('compute see count', () => {
+    const dom = render(<Menu>
+      <MenuItem key="1">1</MenuItem>
+      <MenuItem key="2">2</MenuItem>
+      <MenuItem key="3">3</MenuItem>
+      <MenuItem key="4" checked>4</MenuItem>
+      <MenuItem key="5" checked>5</MenuItem>
+      <MenuItem key="6" checked>6</MenuItem>
+      <MenuItem key="7" checked>7</MenuItem>
+      <MenuItem key="8" checked>8</MenuItem>
+      <MenuItem key="9" checked>9</MenuItem>
+      <MenuItem key="11" checked>10</MenuItem>
+      <MenuItem key="12" checked>11</MenuItem>
+      <MenuItem key="13" checked>12</MenuItem>
+      <MenuItem key="13" checked>13</MenuItem>
+    </Menu>);
+
+    exp(dom.find('li').length).to.be.equal(8);
   });
 });

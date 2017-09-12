@@ -6,34 +6,41 @@
  */
 import * as React from 'react';
 import styled from 'styled-components';
-import Item from './item';
+import Item, { menuItemHeight, } from './item';
 import ThemeProvider from '../common/ThemeProvider';
 import * as Widget from '../consts/Widget';
+import Scroller from '../scroller';
 import '../css/sv.css';
 
 type MenuProps = {
   getTheme: Function,
   mutliple: boolean,
-  children: React.ChildrenArray<React.Element<typeof Item>>,
+  children: Array<React.Element<typeof Item>>,
   selectedKeys?: Array<string>,
   defaultSelectedKeys?: Array<string>,
 };
+const defaultHeight = 250;
 const height = props => {
-  const height = props.theme.height;
-  return height ? height : '250px';
+  const height = props.theme.height ? props.theme.height : defaultHeight;
+  return `${height}px`;
 };
 const MenuContainer = styled.ul`
-  width: ${props => props.theme.width};
+  ${props => (props.theme.width ? `width: ${props.theme.width}px;` : '')}
   outline: none;
   margin: 0;
   padding-left: 0;
   list-style: none;
   height: ${height};
   max-height: ${height};
-  overflow: auto;
+  overflow: hidden;
 `;
 
-
+const MenuCol = styled.div`
+  display: inline-block;
+`;
+const MenuScrollerContainer = styled.div`
+  position: relative;
+`;
 type MenuItemProps = {|
   checked?: boolean,
   mutliple: boolean,
@@ -71,13 +78,47 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   render () {
     const { children, } = this.props;
+    let needScroller = false;
     const items = [];
+    let totalSize = 0;
+    const viewSize = this.fetchViewHeigh();
     if (children !== null) {
-      React.Children.forEach(children, (child: React.Element<typeof Item>) => {
+      const seeCount = this.computeCanSeeMenuItemCount();
+      totalSize = menuItemHeight * children.length;
+      needScroller = children.some((child: React.Element<typeof Item>, i: number) => {
         items.push(this.renderMenuItem(child));
+        if (i + 1 < seeCount) {
+          return false;
+        }
+        return true;
       });
     }
-    return <MenuContainer theme={this.props.getTheme()}>{items}</MenuContainer>;
+    const menus = <MenuContainer theme={this.props.getTheme()}>{items}</MenuContainer>;
+    if (needScroller) {
+
+      return <MenuScrollerContainer>
+        <MenuCol>{menus}</MenuCol>
+        <MenuCol>
+          <Scroller viewSize={viewSize} totalSize={totalSize} onChange={this.onScroller}/>
+        </MenuCol>
+      </MenuScrollerContainer>;
+    }
+    return menus;
+  }
+
+  componentDidMount () {
+  }
+
+  onScroller (value: number) {
+  }
+
+  computeCanSeeMenuItemCount (): number {
+    return Math.ceil(this.fetchViewHeigh() / menuItemHeight);
+  }
+
+  fetchViewHeigh () {
+    const { height = defaultHeight, } = this.props.getTheme();
+    return height;
   }
 
   renderMenuItem = (child: React.Element<typeof Item>) => {

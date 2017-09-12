@@ -2,14 +2,13 @@
 
 exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 .c0 {
-  width: ;
   outline: none;
   margin: 0;
   padding-left: 0;
   list-style: none;
   height: 250px;
   max-height: 250px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .c1 {
@@ -143,14 +142,13 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu single selectedKeys 2 1`] = `
 .c0 {
-  width: ;
   outline: none;
   margin: 0;
   padding-left: 0;
   list-style: none;
   height: 250px;
   max-height: 250px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .c1 {
@@ -230,14 +228,14 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 .c0 {
-  width: 500px;
+  width: 550px;
   outline: none;
   margin: 0;
   padding-left: 0;
   list-style: none;
   height: 333px;
   max-height: 333px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .c1 {

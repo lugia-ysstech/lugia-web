@@ -13,6 +13,8 @@ type MenuItemProps = {
   onClick?: Function,
   children?: React.Node
 };
+
+export const menuItemHeight = 35;
 const SelectIcon = '\\e73e';
 const singleChecked = (props: MenuItemProps) => {
   return props.checked ? `
@@ -35,7 +37,7 @@ const SingleItem = styled.li `
     box-sizing: border-box;
     position: relative;
     display: block;
-    height: 35px;
+    height: ${menuItemHeight}px;
     padding: 7px 8px;
     font-weight: 400;
     color: rgba(0,0,0,.65);
