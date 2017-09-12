@@ -75,6 +75,7 @@ type ScrollerProps = {
 type ScrollerState = {
   value: number,
 };
+const maxZoom = 8;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
@@ -101,6 +102,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
         defaultValue,
       }),
     };
+    this.zoom = 1;
   }
 
   componentWillReceiveProps (props: ScrollerProps) {
@@ -194,22 +196,28 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   }
 
   isWheel: boolean;
+  lastTime: number;
+  zoom: number;
   onWheel = (event: Object) => {
-    if (this.isWheel) {
-      console.info('return');
-      return;
-    }
+    const now = new Date();
+    const timeSpan = now - this.lastTime;
     const { deltaY, } = event;
     event.preventDefault();
     const { step, } = this.props;
     const { value, } = this.state;
     this.isWheel = true;
     const stepValue = deltaY < 0 ? -step : step;
-
-    this.setState({ value: value + stepValue, }, () => {
+    if (this.lastTime && timeSpan < 20) {
+      const newValue = this.zoom + 1;
+      this.zoom = newValue > maxZoom ? maxZoom : newValue;
+    } else {
+      this.zoom = 1;
+    }
+    console.info(timeSpan, this.zoom);
+    this.setState({ value: value + this.zoom * stepValue, }, () => {
       this.isWheel = false;
+      this.lastTime = new Date();
     });
-
   };
 
   createJQueryScrollerPlugin () {
