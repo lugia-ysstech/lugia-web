@@ -2,8 +2,8 @@
 declare module 'sv-widget' {
 
   declare type GetValueArgType = {|
-    defaultValue?: string,
-    value?: string
+    defaultValue?: any,
+    value?: any
   |};
 
 }
