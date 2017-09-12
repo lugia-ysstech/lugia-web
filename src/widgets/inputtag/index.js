@@ -97,6 +97,10 @@ export default class  extends React.Component<InputTagProps, InputTagState> {
     this.adaptiveItems(this.list.offsetWidth);
   }
 
+  componentDidUpdate () {
+    this.adaptiveItems(this.list.offsetWidth);
+  }
+
   async adaptiveItems (listWidth: number): Promise<boolean> {
     const { value, } = this.props;
     const result = [];
