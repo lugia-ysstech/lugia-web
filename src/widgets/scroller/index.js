@@ -68,6 +68,7 @@ type ScrollerProps = {
   type: 'x' | 'y',
   onChange?: Function,
   value?: number,
+  throttle: number,
   defaultValue?: number,
 };
 type ScrollerState = {
@@ -78,6 +79,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   static defaultProps = {
     type: YScroller,
+    throttle: 200,
   };
 
   scrollerSize: number;
@@ -85,6 +87,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   scroller: Object;
   drag: boolean;
   state: ScrollerState;
+  throttleTimer: number;
 
   constructor (props: ScrollerProps) {
     super(props);
@@ -199,9 +202,14 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const { onChange, type, } = this.props;
 
     const callback = (x, y) => {
-      const value = this.computeValue([x, y,]);
-      this.setState({ value, });
-      onChange && onChange(value);
+      if (this.throttleTimer) {
+        clearTimeout(this.throttleTimer);
+      }
+      this.throttleTimer = setTimeout(() => {
+        const value = this.computeValue([x, y,]);
+        this.setState({ value, });
+        onChange && onChange(value);
+      }, this.props.throttle);
     };
 
     const animationCallback = (x, y) => {
