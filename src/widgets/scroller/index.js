@@ -5,7 +5,7 @@
  * create by ligx 170911
  */
 import * as React from 'react';
-import Dragdealer from 'dragdealer';
+import Dragdealer from './dragdealer';
 import { mouseWheel, } from './mouseWheel';
 import $ from 'jquery';
 import styled from 'styled-components';
@@ -70,6 +70,7 @@ type ScrollerProps = {
   value?: number,
   throttle: number,
   defaultValue?: number,
+  step: number,
 };
 type ScrollerState = {
   value: number,
@@ -80,6 +81,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   static defaultProps = {
     type: YScroller,
     throttle: 200,
+    step: 5,
   };
 
   scrollerSize: number;
@@ -191,25 +193,45 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
   }
 
+  isWheel: boolean;
   onWheel = (event: Object) => {
+    if (this.isWheel) {
+      console.info('return');
+      return;
+    }
     const { deltaY, } = event;
-    const { value, } = this.state;
-    this.setState({ value: value + deltaY, });
     event.preventDefault();
+    const { step, } = this.props;
+    const { value, } = this.state;
+    this.isWheel = true;
+    const stepValue = deltaY < 0 ? -step : step;
+
+    this.setState({ value: value + stepValue, }, () => {
+      this.isWheel = false;
+    });
+
   };
 
   createJQueryScrollerPlugin () {
     const { onChange, type, } = this.props;
 
     const callback = (x, y) => {
-      if (this.throttleTimer) {
-        clearTimeout(this.throttleTimer);
-      }
-      this.throttleTimer = setTimeout(() => {
+
+      const scrolling = () => {
         const value = this.computeValue([x, y,]);
         this.setState({ value, });
         onChange && onChange(value);
-      }, this.props.throttle);
+      };
+
+      if (this.isWheel) {
+        scrolling();
+        return;
+      }
+
+      if (this.throttleTimer) {
+        clearTimeout(this.throttleTimer);
+      }
+      this.throttleTimer = setTimeout(scrolling, this.props.throttle);
     };
 
     const animationCallback = (x, y) => {

@@ -15,11 +15,10 @@ const InputDemo = () => {
     left: 100,
     value: 50,
     onChange: (...rest) => {
-      console.info('onChange', rest);
     },
   };
   return <div>
-    <Scroller {...config}/>
+    {/*<Scroller {...config}/>*/}
     <Scroller {...config} type="y"/>
   </div>;
 };
