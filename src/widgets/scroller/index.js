@@ -14,6 +14,7 @@ import Support from '../common/FormFieldWidgetSupport';
 
 const BarDefaultSize = 12;
 const Container = styled.div`
+  position: absolute;
   background: #fff;
   width: 20px;
   height: 300px;
@@ -161,9 +162,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   shouldComponentUpdate (nextProps: ScrollerProps, nextState: ScrollerState) {
 
-    return this.props.viewSize != nextProps.viewSize
+    return this.props.viewSize !== nextProps.viewSize
       || !this.scroller
-      || this.state.value != nextState.value
+      || this.state.value !== nextState.value
       || this.props.totalSize !== nextProps.totalSize;
   }
 
