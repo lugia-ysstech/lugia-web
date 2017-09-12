@@ -43,7 +43,7 @@ const CommonInputStyle = styled.input`
   padding: 2px 3px;
   font-family: inherit;
   margin: 0;
-  width: ${props => props.theme.width};
+  ${props => (props.theme.width ? `width: ${props.theme.width}px` : '')};
 
   &:hover {
     border-color: ${InputBorderHoverColor};
@@ -61,7 +61,7 @@ const CommonInputStyle = styled.input`
 
 const InputContainer = styled.span`
   position: relative;
-  width: ${props => props.theme.width};
+  ${props => (props.theme.width ? `width: ${props.theme.width}px` : '')};
   display: inline-block;
   background-color: #fff;
 `;
