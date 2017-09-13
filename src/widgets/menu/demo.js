@@ -11,13 +11,14 @@ import * as Widget from '../consts/Widget';
 
 const { MenuItem, } = Menu;
 export default () => {
+  const items = [];
+  for (let i = 0; i < 20000; i++) {
+    items.push(<MenuItem key={i}>{i}</MenuItem>);
+  }
   return <div>
     <div>hello world</div>
     <Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }}><Menu>
-      <MenuItem key="1">a</MenuItem>
-      <MenuItem key="2">b</MenuItem>
-      <MenuItem key="3">c</MenuItem>
-      <MenuItem key="4">d</MenuItem>
+      {items}
     </Menu></Theme>
   </div>;
 };

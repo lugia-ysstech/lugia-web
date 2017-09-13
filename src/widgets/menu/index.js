@@ -47,6 +47,7 @@ type MenuItemProps = {|
   onClick: Function,
 |} ;
 type MenuState = {
+  start: number,
   selectedKeys: Array<string>,
 }
 
@@ -62,6 +63,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   constructor (props: MenuProps) {
     super(props);
     this.state = {
+      start: 0,
       selectedKeys: this.getSelectedKeys(),
     };
   }
@@ -78,6 +80,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   render () {
     const { children, } = this.props;
+    const { start, } = this.state;
     let needScroller = false;
     const items = [];
     let totalSize = 0;
@@ -85,13 +88,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
     if (children !== null) {
       const seeCount = this.computeCanSeeMenuItemCount();
       totalSize = menuItemHeight * children.length;
-      needScroller = children.some((child: React.Element<typeof Item>, i: number) => {
-        items.push(this.renderMenuItem(child));
-        if (i + 1 < seeCount) {
-          return false;
-        }
-        return true;
-      });
+
+      needScroller = seeCount < children.length;
+      for (let i = start; i < seeCount + start; i++) {
+        items.push(this.renderMenuItem(children[ i ]));
+      }
     }
     const menus = <MenuContainer theme={this.props.getTheme()}>{items}</MenuContainer>;
     if (needScroller) {
@@ -106,11 +107,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return menus;
   }
 
-  componentDidMount () {
-  }
 
-  onScroller (value: number) {
-  }
+  onScroller = (value: number) => {
+    this.setState({ start: Math.floor(value / menuItemHeight), });
+  };
 
   computeCanSeeMenuItemCount (): number {
     return Math.ceil(this.fetchViewHeigh() / menuItemHeight);
