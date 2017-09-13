@@ -16,9 +16,10 @@ type MenuItemProps = {
 
 export const menuItemHeight = 35;
 const SelectIcon = '\\e73e';
+const BgColor = '#f7f7f7';
 const singleChecked = (props: MenuItemProps) => {
   return props.checked ? `
-    background-color: #f7f7f7;
+    background-color: ${BgColor};
     font-weight: 600;
     color: rgba(0,0,0,.65);
     ` : '';
@@ -31,7 +32,11 @@ const mulipleChecked = (props: MenuItemProps) => {
     :hover:after{
       color: #108ee9;
     }
-    ` : '';
+    ` : `
+    :hover:after{
+      color: #d0c8c8;
+    }
+    `;
 };
 const SingleItem = styled.li `
     box-sizing: border-box;

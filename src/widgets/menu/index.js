@@ -86,32 +86,21 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   render () {
     const { data, } = this.props;
-    const { start, } = this.state;
-    let needScroller = false;
-    const items = [];
-    let totalSize = 0;
     const viewSize = this.fetchViewHeigh();
-
+    let totalSize = 0, needScroller = false, items = [];
     if (data && data.length > 0) {
-      const seeCount = this.computeCanSeeMenuItemCount();
-      totalSize = menuItemHeight * data.length;
-      needScroller = seeCount < data.length;
-      for (let i = start; i < seeCount + start; i++) {
-        const { key, value, } = data[ i ];
-        items.push(this.renderMenuItem(<Item key={key}>{value}</Item>));
-      }
+      ({ totalSize, needScroller, items, } = this.computeItems(data, (obj: Object) => {
+        const { key, value, } = obj;
+        return <Item key={key}>{value}</Item>;
+      }));
     } else {
       const { children, } = this.props;
 
       if (children && children.length > 0) {
-        const seeCount = this.computeCanSeeMenuItemCount();
-        totalSize = menuItemHeight * children.length;
-        needScroller = seeCount < children.length;
-        for (let i = start; i < seeCount + start; i++) {
-          items.push(this.renderMenuItem(children[ i ]));
-        }
+        ({ totalSize, needScroller, items, } = this.computeItems(children, (obj: Object) => obj));
       }
     }
+
     const menus = <MenuContainer theme={this.props.getTheme()}>{items}</MenuContainer>;
     if (needScroller) {
 
@@ -124,6 +113,20 @@ class Menu extends React.Component<MenuProps, MenuState> {
       </MenuScrollerContainer>;
     }
     return menus;
+  }
+
+  computeItems (data: Array<Object>, getItem: (value: Object) => Object): { items: Array<Object>, totalSize: number, needScroller: boolean } {
+    const { start, } = this.state;
+    const items = [];
+    const seeCount = this.computeCanSeeMenuItemCount();
+    const totalSize = menuItemHeight * data.length;
+    const needScroller = seeCount < data.length;
+    let endIndex = seeCount + start;
+    endIndex = endIndex < data.length ? endIndex : data.length;
+    for (let i = start; i < endIndex; i++) {
+      items.push(this.renderMenuItem(getItem(data[ i ])));
+    }
+    return { items, totalSize, needScroller, };
   }
 
 

@@ -53,6 +53,10 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
 
+.c1:hover:after {
+  color: #d0c8c8;
+}
+
 .c2 {
   box-sizing: border-box;
   position: relative;

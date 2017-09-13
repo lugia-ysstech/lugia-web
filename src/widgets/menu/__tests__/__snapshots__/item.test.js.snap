@@ -43,6 +43,10 @@ exports[`Item Mutliple MenuItem 1`] = `
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
 
+.c0:hover:after {
+  color: #d0c8c8;
+}
+
 <li
   checked={false}
   className="c0"
