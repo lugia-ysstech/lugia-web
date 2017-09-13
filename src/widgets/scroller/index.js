@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import Dragdealer from './dragdealer';
-import { mouseWheel, } from './mouseWheel';
+import { mouseWheel, } from '../common/mouseWheel';
 import $ from 'jquery';
 import styled from 'styled-components';
 import { scroller, } from './index.css';
@@ -15,7 +15,7 @@ import Support from '../common/FormFieldWidgetSupport';
 const BarDefaultSize = 12;
 const Container = styled.div`
   position: absolute;
-  background: #fff;
+  background: #ebefec8a;
   width: 20px;
   height: 300px;
   border-radius: 5px;
@@ -182,9 +182,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   componentDidUpdate () {
     if (!this.scroller) {
       mouseWheel($);
-      $(this.htmlScroller).mousewheel(event => {
-        this.onWheel(event);
-      });
+      $(this.htmlScroller).mousewheel(this.onWheel);
       this.scroller = this.createJQueryScrollerPlugin();
       const { value, } = this.state;
       this.setScrollerValue(value);
@@ -213,7 +211,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     } else {
       this.zoom = 1;
     }
-    console.info(timeSpan, this.zoom);
     this.setState({ value: value + this.zoom * stepValue, }, () => {
       this.isWheel = false;
       this.lastTime = new Date();
@@ -293,6 +290,11 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   reflow = () => {
     this.scroller && this.scroller.reflow();
+  };
+
+  componentWillUnmount(){
+    $(this.htmlScroller).unmousewheel(this.onWheel);
+
   }
 }
 
