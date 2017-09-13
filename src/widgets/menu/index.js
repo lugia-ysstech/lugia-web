@@ -11,11 +11,14 @@ import ThemeProvider from '../common/ThemeProvider';
 import * as Widget from '../consts/Widget';
 import Scroller from '../scroller';
 import '../css/sv.css';
+import { mouseWheel, } from '../common/mouseWheel';
+import $ from 'jquery';
 
 type MenuProps = {
   getTheme: Function,
   mutliple: boolean,
   children: Array<React.Element<typeof Item>>,
+  data: Array<Object>,
   selectedKeys?: Array<string>,
   defaultSelectedKeys?: Array<string>,
 };
@@ -78,29 +81,45 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return [];
   }
 
+  container: Object;
+  scroller: ?Object;
+
   render () {
-    const { children, } = this.props;
+    const { data, } = this.props;
     const { start, } = this.state;
     let needScroller = false;
     const items = [];
     let totalSize = 0;
     const viewSize = this.fetchViewHeigh();
-    if (children !== null) {
-      const seeCount = this.computeCanSeeMenuItemCount();
-      totalSize = menuItemHeight * children.length;
 
-      needScroller = seeCount < children.length;
+    if (data && data.length > 0) {
+      const seeCount = this.computeCanSeeMenuItemCount();
+      totalSize = menuItemHeight * data.length;
+      needScroller = seeCount < data.length;
       for (let i = start; i < seeCount + start; i++) {
-        items.push(this.renderMenuItem(children[ i ]));
+        const { key, value, } = data[ i ];
+        items.push(this.renderMenuItem(<Item key={key}>{value}</Item>));
+      }
+    } else {
+      const { children, } = this.props;
+
+      if (children && children.length > 0) {
+        const seeCount = this.computeCanSeeMenuItemCount();
+        totalSize = menuItemHeight * children.length;
+        needScroller = seeCount < children.length;
+        for (let i = start; i < seeCount + start; i++) {
+          items.push(this.renderMenuItem(children[ i ]));
+        }
       }
     }
     const menus = <MenuContainer theme={this.props.getTheme()}>{items}</MenuContainer>;
     if (needScroller) {
 
-      return <MenuScrollerContainer>
+      return <MenuScrollerContainer innerRef={cmp => this.container = cmp}>
         <MenuCol>{menus}</MenuCol>
         <MenuCol>
-          <Scroller viewSize={viewSize} totalSize={totalSize} onChange={this.onScroller}/>
+          <Scroller ref={cmp => this.scroller = cmp} viewSize={viewSize} totalSize={totalSize}
+                    onChange={this.onScroller}/>
         </MenuCol>
       </MenuScrollerContainer>;
     }
@@ -114,6 +133,16 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   computeCanSeeMenuItemCount (): number {
     return Math.ceil(this.fetchViewHeigh() / menuItemHeight);
+  }
+
+  bindContainerEvent: boolean;
+
+  componentDidMount () {
+    if (this.container && this.bindContainerEvent !== true) {
+      mouseWheel($);
+      $(this.container).mousewheel(this.scroller ? this.scroller.onWheel : () => {});
+      this.bindContainerEvent = true;
+    }
   }
 
   fetchViewHeigh () {
