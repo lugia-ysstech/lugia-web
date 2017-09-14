@@ -227,21 +227,21 @@
     }
 }
 
-:global(.ant-tree li.drag-over > span[draggable]) {
+:global(.ant-tree li.drag-over) > :global(span[draggable]) {
     background-color: #108ee9;
     color: white;
     opacity: 0.8;
 }
 
-:global(.ant-tree li.drag-over-gap-top > span[draggable]) {
+:global(.ant-tree li.drag-over-gap-top) > :global(span[draggable]) {
     border-top-color: #108ee9;
 }
 
-:global(.ant-tree li.drag-over-gap-bottom > span[draggable]) {
+:global(.ant-tree li.drag-over-gap-bottom) > :global(span[draggable]) {
     border-bottom-color: #108ee9;
 }
 
-:global(.ant-tree li.filter-node > span ) {
+:global(.ant-tree li.filter-node) > :global(span ) {
     color: #f04134 !important;
     font-weight: bold !important;
 }
@@ -403,17 +403,17 @@
     transform: rotate(270deg) scale(0.59);
 }
 
-:global(.ant-tree li:last-child > span.ant-tree-switcher:before),
-:global(.ant-tree li:last-child > span.ant-tree-iconEle:before) {
+:global(.ant-tree li:last-child) > :global(span.ant-tree-switcher:before),
+:global(.ant-tree li:last-child) > :global(span.ant-tree-iconEle:before) {
     display: none;
 }
 
-:global(.ant-tree > li:first-child) {
+:global(.ant-tree) > :global(li:first-child) {
     padding-top: 7px;
     color: #777
 }
 
-:global(.ant-tree > li:last-child) {
+:global(.ant-tree) > :global(li:last-child) {
     padding-bottom: 7px;
 }
 
@@ -425,15 +425,15 @@
     display: block;
 }
 
-:global(li.ant-tree-treenode-disabled > span),
-:global(li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper),
-:global(li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper span),
-:global(li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
+:global(li.ant-tree-treenode-disabled) > :global(span),
+:global(li.ant-tree-treenode-disabled) > :global(.ant-tree-node-content-wrapper),
+:global(li.ant-tree-treenode-disabled) > :global(.ant-tree-node-content-wrapper span),
+:global(li.ant-tree-treenode-disabled) > :global(span.ant-tree-switcher) {
     color: rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
 }
 
-:global(li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper:hover) {
+:global(li.ant-tree-treenode-disabled) > :global(.ant-tree-node-content-wrapper:hover) {
     background: transparent;
 }
 
