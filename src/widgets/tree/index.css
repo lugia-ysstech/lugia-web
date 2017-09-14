@@ -1,3 +1,31 @@
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable declaration-bang-space-before */
+/* stylelint-disable declaration-bang-space-before */
+@-webkit-keyframes antCheckboxEffect {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: scale(1.6);
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+@keyframes antCheckboxEffect {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: scale(1.6);
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
 
 :global(.sv-tree-checkbox) {
     white-space: nowrap;
@@ -29,6 +57,11 @@
     visibility: hidden;
 }
 
+:global(.sv-tree-checkbox:hover:after),
+:global(.sv-tree-checkbox-wrapper:hover .sv-tree-checkbox:after) {
+    visibility: visible;
+}
+
 :global(.sv-tree-checkbox-inner) {
     position: relative;
     top: 0;
@@ -43,8 +76,7 @@
 }
 
 :global(.sv-tree-checkbox-inner:after) {
-    -ms-transform: rotate(45deg) scale(0);
-    transform: rotate(45deg) scale(0);
+    transform: rotate(0) scale(0);
     position: absolute;
     left: 4px;
     top: 1px;
@@ -74,7 +106,6 @@
 
 :global(.sv-tree-checkbox-indeterminate .sv-tree-checkbox-inner:after) {
     content: ' ';
-    -ms-transform: scale(1);
     transform: scale(1);
     position: absolute;
     left: 2px;
@@ -83,8 +114,12 @@
     height: 0px;
 }
 
+:global(.sv-tree-checkbox-indeterminate.sv-tree-checkbox-disabled .sv-tree-checkbox-inner:after) {
+    border-color: rgba(0, 0, 0, 0.25);
+}
+
 :global(.sv-tree-checkbox-checked .sv-tree-checkbox-inner:after) {
-    transform: rotate(45deg) scale(1);
+    transform: rotate(0) scale(1);
     position: absolute;
     left: 4px;
     top: 1px;
@@ -113,11 +148,11 @@
     border-color: rgba(0, 0, 0, 0.25);
 }
 
-:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-input) {
+:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-input ) {
     cursor: not-allowed;
 }
 
-:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-inner) {
+:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-inner ) {
     border-color: #d9d9d9 !important;
     background-color: #f7f7f7;
 }
@@ -132,7 +167,7 @@
     cursor: not-allowed;
 }
 
-:global(.sv-tree-checkbox-wrapper) {
+:global(.sv-tree-checkbox-wrapper ) {
     cursor: pointer;
     font-size: 12px;
     display: inline-block;
@@ -142,12 +177,8 @@
     margin-right: 8px;
 }
 
-:global(.sv-tree-checkbox-wrapper + span) {
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-:global(.sv-tree-checkbox + span ) {
+:global(.sv-tree-checkbox-wrapper + span),
+:global(.sv-tree-checkbox + span) {
     padding-left: 8px;
     padding-right: 8px;
 }
@@ -156,13 +187,30 @@
     font-size: 12px;
 }
 
-:global(.sv-tree-checkbox-group-item) {
+.sv-tree-checkbox-group-item {
     display: inline-block;
+}
+
+@media screen {
+    :global(.sv-tree-checkbox-checked .sv-tree-checkbox-inner:after) {
+        font-family: "iconfont" !important;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\e6c2";
+        font-weight: bold;
+        font-size: 8px;
+        border: 0;
+        color: #fff;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+    }
 }
 
 :global(.sv-tree) {
     margin: 0;
-    padding: 5px;
+    padding: 0;
     font-size: 12px;
 }
 
@@ -174,24 +222,15 @@
     outline: 0;
 }
 
-:global(.sv-tree li span[draggable]),
-:global(.sv-tree li span[draggable="true"]) {
+:global(.sv-tree li span[draggable],
+.sv-tree li span[draggable="true"]) {
     user-select: none;
     border-top: 2px transparent solid;
     border-bottom: 2px transparent solid;
     margin-top: -2px;
     /* Required to make elements draggable in old WebKit */
-}
-
-@keyframes: global(antCheckboxEffect) {
-    0% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(1.6);
-        opacity: 0;
-    }
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
 }
 
 :global(.sv-tree li.drag-over) > :global(span[draggable]) {
@@ -208,9 +247,9 @@
     border-bottom-color: #108ee9;
 }
 
-:global(.sv-tree li.filter-node) > :global(span ) {
+:global(.sv-tree li.filter-node ) > :global(span) {
     color: #f04134 !important;
-    font-weight: bold !important;
+    font-weight: 500 !important;
 }
 
 :global(.sv-tree li ul) {
@@ -234,11 +273,11 @@
     background-color: #ecf6fd;
 }
 
-:global(.sv-tree li .sv-tree-node-content-wrapper.sv-tree-node-selected) {
+:global(.sv-tree li .sv-tree-node-content-wrapper.sv-tree-node-selected ) {
     background-color: #d2eafb;
 }
 
-:global(.sv-tree li span.sv-tree-checkbox ) {
+:global(.sv-tree li span.sv-tree-checkbox) {
     margin: 0 4px 0 2px;
     vertical-align: middle;
 }
@@ -272,14 +311,11 @@
     cursor: default;
 }
 
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-roots_open:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-center_open:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
-    font-size: 20px;
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after) {
+    font-size: 15px;
     transform: scale(0.58333333) rotate(0deg);
     /* IE6-IE8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
     font-family: "iconfont" !important;
@@ -291,33 +327,19 @@
     transition: transform .3s;
 }
 
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_open:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_open:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after) {
     filter: none;
 }
 
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_open:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_open:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
-    font-size: 12px;
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after) {
+    font-size: 15px;
 }
 
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-roots_close),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-center_close),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_close),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_close) {
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close ) {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
 }
 
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
     font-size: 20px;
     transform: scale(0.58333333) rotate(0deg);
     /* IE6-IE8 */
@@ -328,29 +350,20 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    content: "\e691";
+    content: "\e606";
     font-weight: bold;
     transition: transform .3s;
 }
 
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
     filter: none;
 }
 
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
     font-size: 12px;
 }
 
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
     transform: rotate(270deg) scale(0.59);
 }
 
@@ -361,7 +374,6 @@
 
 :global(.sv-tree) > :global(li:first-child) {
     padding-top: 7px;
-    color: #777
 }
 
 :global(.sv-tree) > :global(li:last-child) {
@@ -398,7 +410,7 @@
     vertical-align: top;
 }
 
-:global(.sv-tree.sv-tree-show-line li) {
+:global(.sv-tree.sv-tree-show-line li ) {
     position: relative;
 }
 
@@ -407,8 +419,8 @@
     color: rgba(0, 0, 0, 0.65);
 }
 
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
-    font-size: 12px;
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after ) {
+    font-size: 15px;
     transform: scale(1) rotate(0deg);
     /* IE6-IE8 */
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
@@ -429,22 +441,15 @@
 }
 
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
-    font-size: 12px;
+    font-size: 15px;
 }
 
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open) {
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open) {
     color: rgba(0, 0, 0, 0.43);
 }
 
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open:after),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open:after),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open:after),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open:after) {
-    font-size: 15px;
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after) {
+    font-size: 20px;
     transform: scale(1) rotate(0deg);
     /* IE6-IE8 */
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
@@ -460,32 +465,20 @@
     transition: transform .3s;
 }
 
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open:after) {
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after) {
     filter: none;
 }
 
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open:after) {
-    font-size: 12px;
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after) {
+    font-size: 15px;
 }
 
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close) {
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_close) {
     color: rgba(0, 0, 0, 0.43);
 }
 
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close:after),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close:after),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close:after),
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close:after) {
-    font-size: 12px;
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_close:after) {
+    font-size: 20px;
     transform: scale(1) rotate(0deg);
     /* IE6-IE8 */
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
@@ -493,24 +486,20 @@
     display: inline-block;
     font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
-    content: "\e645";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\e609";
     vertical-align: baseline;
     font-weight: normal;
     transition: transform .3s;
 }
 
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close:after) {
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_close:after) {
     filter: none;
 }
 
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close:after),
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close:after) {
-    font-size: 12px;
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_close:after) {
+    font-size: 20px;
 }
 
 :global(.sv-tree.sv-tree-show-line li:not(:last-child):before) {
