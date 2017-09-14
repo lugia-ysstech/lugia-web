@@ -9,9 +9,9 @@
     vertical-align: text-bottom;
 }
 
-:global(.ant-tree-checkbox-wrapper:hover .ant-tree-checkbox-inner,
-.ant-tree-checkbox:hover .ant-tree-checkbox-inner,
-.ant-tree-checkbox-input:focus + .ant-tree-checkbox-inner) {
+:global(.ant-tree-checkbox-wrapper:hover .ant-tree-checkbox-inner),
+:global(.ant-tree-checkbox:hover .ant-tree-checkbox-inner),
+:global(.ant-tree-checkbox-input:focus + .ant-tree-checkbox-inner) {
     border-color: #108ee9;
 }
 
@@ -29,11 +29,6 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     visibility: hidden;
-}
-
-:global(.ant-tree-checkbox:hover:after,
-.ant-tree-checkbox-wrapper:hover .ant-tree-checkbox:after) {
-    visibility: visible;
 }
 
 :global(.ant-tree-checkbox-inner) {
@@ -109,8 +104,8 @@
     transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
 }
 
-:global(.ant-tree-checkbox-checked .ant-tree-checkbox-inner,
-.ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner) {
+:global(.ant-tree-checkbox-checked .ant-tree-checkbox-inner),
+:global(.ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner) {
     background-color: #108ee9;
     border-color: #108ee9;
 }
@@ -173,10 +168,10 @@
     display: inline-block;
 }
 
-@media \0screen {
+@media screen {
     .ant-tree-checkbox-checked .ant-tree-checkbox-inner:before,
     .ant-tree-checkbox-checked .ant-tree-checkbox-inner:after {
-         font-family: "iconfont" !important;
+        font-family: "iconfont" !important;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -205,8 +200,8 @@
     outline: 0;
 }
 
-:global(.ant-tree li span[draggable],
-.ant-tree li span[draggable="true"]) {
+:global(.ant-tree li span[draggable]),
+:global(.ant-tree li span[draggable="true"]) {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -217,6 +212,19 @@
     /* Required to make elements draggable in old WebKit */
     -khtml-user-drag: element;
     -webkit-user-drag: element;
+}
+
+@keyframes: global(antCheckboxEffect) {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: scale(1.6);
+        transform: scale(1.6);
+        opacity: 0;
+    }
 }
 
 :global(.ant-tree li.drag-over > span[draggable]) {
@@ -268,8 +276,8 @@
     vertical-align: middle;
 }
 
-:global(.ant-tree li span.ant-tree-switcher,
-.ant-tree li span.ant-tree-iconEle) {
+:global(.ant-tree li span.ant-tree-switcher),
+:global(.ant-tree li span.ant-tree-iconEle) {
     margin: 0;
     width: 24px;
     height: 24px;
@@ -284,7 +292,7 @@
 
 :global(.ant-tree li span.ant-tree-icon_loading:after) {
     display: inline-block;
-     font-family: "iconfont" !important;
+    font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -298,11 +306,11 @@
     cursor: default;
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-center_open:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-switcher_open:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-center_open:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-switcher_open:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
     font-size: 12px;
     font-size: 7px \9;
     -webkit-transform: scale(0.58333333) rotate(0deg);
@@ -312,7 +320,7 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-     font-family: "iconfont" !important;
+    font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -323,32 +331,34 @@
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-center_open:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-center_open:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-switcher_open:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-center_open:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-center_open:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
     font-size: 12px;
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close,
-.ant-tree li span.ant-tree-switcher.ant-tree-center_close,
-.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close,
-.ant-tree li span.ant-tree-switcher.ant-tree-noline_close) {
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-center_close),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-noline_close) {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-center_close:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-switcher_close:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-center_close:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
     font-size: 12px;
     font-size: 7px \9;
     -webkit-transform: scale(0.58333333) rotate(0deg);
@@ -358,43 +368,43 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-     font-family: "iconfont" !important;
+    font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    content: "\e682";
+    content: "\e691";
     font-weight: bold;
     transition: -webkit-transform .3s;
     transition: transform .3s;
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-center_close:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-center_close:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-center_close:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after,
-:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-center_close:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after),
+:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
     font-size: 12px;
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-center_close:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after,
-.ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-center_close:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after),
+:global(.ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
     -webkit-transform: rotate(270deg) scale(0.59);
     -ms-transform: rotate(270deg) scale(0.59);
     transform: rotate(270deg) scale(0.59);
 }
 
-:global(.ant-tree li:last-child > span.ant-tree-switcher:before,
-.ant-tree li:last-child > span.ant-tree-iconEle:before) {
+:global(.ant-tree li:last-child > span.ant-tree-switcher:before),
+:global(.ant-tree li:last-child > span.ant-tree-iconEle:before) {
     display: none;
 }
 
@@ -415,10 +425,10 @@
     display: block;
 }
 
-:global(li.ant-tree-treenode-disabled > span,
-li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper,
-li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper span,
-li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
+:global(li.ant-tree-treenode-disabled > span),
+:global(li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper),
+:global(li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper span),
+:global(li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
     color: rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
 }
@@ -456,11 +466,11 @@ li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-     font-family: "iconfont" !important;
+    font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    content: "\e664";
+    content: "\e772";
     vertical-align: baseline;
     font-weight: normal;
     transition: -webkit-transform .3s;
@@ -477,17 +487,18 @@ li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
     font-size: 12px;
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open) {
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open) {
     color: rgba(0, 0, 0, 0.43);
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-switcher_open:after),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
     font-size: 12px;
     font-size: 12px \9;
     -webkit-transform: scale(1) rotate(0deg);
@@ -497,7 +508,7 @@ li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-     font-family: "iconfont" !important;
+    font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -509,32 +520,32 @@ li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
     font-size: 12px;
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close) {
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close) {
     color: rgba(0, 0, 0, 0.43);
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after,
-.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after),
+:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
     font-size: 12px;
     font-size: 12px \9;
     -webkit-transform: scale(1) rotate(0deg);
@@ -544,7 +555,7 @@ li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-     font-family: "iconfont" !important;
+    font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -556,18 +567,18 @@ li.ant-tree-treenode-disabled > span.ant-tree-switcher) {
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after,
-:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after),
+:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
     font-size: 12px;
 }
 
