@@ -277,7 +277,7 @@
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after),
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
-    font-size: 12px;
+    font-size: 20px;
     transform: scale(0.58333333) rotate(0deg);
     /* IE6-IE8 */
     zoom: 1;
