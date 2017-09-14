@@ -24,9 +24,7 @@
     border-radius: 2px;
     border: 1px solid #108ee9;
     content: '';
-    -webkit-animation: antCheckboxEffect 0.36s ease-in-out;
     animation: antCheckboxEffect 0.36s ease-in-out;
-    -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     visibility: hidden;
 }
@@ -36,8 +34,8 @@
     top: 0;
     left: 0;
     display: block;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border: 1px solid #d9d9d9;
     border-radius: 2px;
     background-color: #fff;
@@ -45,7 +43,6 @@
 }
 
 :global(.sv-tree-checkbox-inner:after) {
-    -webkit-transform: rotate(45deg) scale(0);
     -ms-transform: rotate(45deg) scale(0);
     transform: rotate(45deg) scale(0);
     position: absolute;
@@ -77,26 +74,23 @@
 
 :global(.sv-tree-checkbox-indeterminate .sv-tree-checkbox-inner:after) {
     content: ' ';
-    -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
     position: absolute;
     left: 2px;
     top: 5px;
-    width: 8px;
-    height: 1px;
+    width: 6px;
+    height: 0px;
 }
 
 :global(.sv-tree-checkbox-checked .sv-tree-checkbox-inner:after) {
-    -webkit-transform: rotate(45deg) scale(1);
-    -ms-transform: rotate(45deg) scale(1);
     transform: rotate(45deg) scale(1);
     position: absolute;
     left: 4px;
     top: 1px;
     display: table;
-    width: 5px;
-    height: 8px;
+    width: 3px;
+    height: 6px;
     border: 2px solid #fff;
     border-top: 0;
     border-left: 0;
@@ -115,7 +109,6 @@
 }
 
 :global(.sv-tree-checkbox-disabled.sv-tree-checkbox-checked .sv-tree-checkbox-inner:after) {
-    -webkit-animation-name: none;
     animation-name: none;
     border-color: rgba(0, 0, 0, 0.25);
 }
@@ -130,7 +123,6 @@
 }
 
 :global(.sv-tree-checkbox-disabled .sv-tree-checkbox-inner:after) {
-    -webkit-animation-name: none;
     animation-name: none;
     border-color: #f7f7f7;
 }
@@ -168,24 +160,6 @@
     display: inline-block;
 }
 
-@media screen {
-    .sv-tree-checkbox-checked .sv-tree-checkbox-inner:before,
-    .sv-tree-checkbox-checked .sv-tree-checkbox-inner:after {
-        font-family: "iconfont" !important;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        content: "\e632";
-        font-weight: bold;
-        font-size: 8px;
-        border: 0;
-        color: #fff;
-        left: 2px;
-        top: 3px;
-        position: absolute;
-    }
-}
-
 :global(.sv-tree) {
     margin: 0;
     padding: 5px;
@@ -193,7 +167,7 @@
 }
 
 :global(.sv-tree li) {
-    padding: 4px 0;
+    padding: 2px 0;
     margin: 0;
     list-style: none;
     white-space: nowrap;
@@ -202,26 +176,19 @@
 
 :global(.sv-tree li span[draggable]),
 :global(.sv-tree li span[draggable="true"]) {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     border-top: 2px transparent solid;
     border-bottom: 2px transparent solid;
     margin-top: -2px;
     /* Required to make elements draggable in old WebKit */
-    -khtml-user-drag: element;
-    -webkit-user-drag: element;
 }
 
 @keyframes: global(antCheckboxEffect) {
     0% {
-        -webkit-transform: scale(1);
         transform: scale(1);
         opacity: 0.5;
     }
     100% {
-        -webkit-transform: scale(1.6);
         transform: scale(1.6);
         opacity: 0;
     }
@@ -253,7 +220,7 @@
 
 :global(.sv-tree li .sv-tree-node-content-wrapper) {
     display: inline-block;
-    padding: 3px 5px;
+    padding: 0;
     border-radius: 2px;
     margin: 0;
     cursor: pointer;
@@ -279,9 +246,9 @@
 :global(.sv-tree li span.sv-tree-switcher),
 :global(.sv-tree li span.sv-tree-iconEle) {
     margin: 0;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
     display: inline-block;
     vertical-align: middle;
     border: 0 none;
@@ -297,7 +264,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: "\e6ae";
-    -webkit-animation: loadingCircle 1s infinite linear;
     animation: loadingCircle 1s infinite linear;
     color: #108ee9;
 }
@@ -312,12 +278,8 @@
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
     font-size: 12px;
-    font-size: 7px \9;
-    -webkit-transform: scale(0.58333333) rotate(0deg);
-    -ms-transform: scale(0.58333333) rotate(0deg);
     transform: scale(0.58333333) rotate(0deg);
     /* IE6-IE8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
     font-family: "iconfont" !important;
@@ -326,9 +288,7 @@
     -moz-osx-font-smoothing: grayscale;
     content: "\e682";
     font-weight: bold;
-    transition: -webkit-transform .3s;
     transition: transform .3s;
-    transition: transform .3s, -webkit-transform .3s;
 }
 
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_open:after),
@@ -336,7 +296,6 @@
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after),
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
-    -webkit-filter: none;
     filter: none;
 }
 
@@ -359,10 +318,7 @@
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
-    font-size: 12px;
-    font-size: 7px \9;
-    -webkit-transform: scale(0.58333333) rotate(0deg);
-    -ms-transform: scale(0.58333333) rotate(0deg);
+    font-size: 20px;
     transform: scale(0.58333333) rotate(0deg);
     /* IE6-IE8 */
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
@@ -374,16 +330,13 @@
     -moz-osx-font-smoothing: grayscale;
     content: "\e691";
     font-weight: bold;
-    transition: -webkit-transform .3s;
     transition: transform .3s;
-    transition: transform .3s, -webkit-transform .3s;
 }
 
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
-    -webkit-filter: none;
     filter: none;
 }
 
@@ -398,8 +351,6 @@
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
-    -webkit-transform: rotate(270deg) scale(0.59);
-    -ms-transform: rotate(270deg) scale(0.59);
     transform: rotate(270deg) scale(0.59);
 }
 
@@ -458,9 +409,6 @@
 
 :global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
     font-size: 12px;
-    font-size: 12px \9;
-    -webkit-transform: scale(1) rotate(0deg);
-    -ms-transform: scale(1) rotate(0deg);
     transform: scale(1) rotate(0deg);
     /* IE6-IE8 */
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
@@ -470,16 +418,13 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    content: "\e772";
+    content: "\e7b3";
     vertical-align: baseline;
     font-weight: normal;
-    transition: -webkit-transform .3s;
     transition: transform .3s;
-    transition: transform .3s, -webkit-transform .3s;
 }
 
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
-    -webkit-filter: none;
     filter: none;
 }
 
@@ -499,10 +444,7 @@
 :global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after),
 :global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open:after),
 :global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open:after) {
-    font-size: 12px;
-    font-size: 12px \9;
-    -webkit-transform: scale(1) rotate(0deg);
-    -ms-transform: scale(1) rotate(0deg);
+    font-size: 15px;
     transform: scale(1) rotate(0deg);
     /* IE6-IE8 */
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
@@ -512,19 +454,16 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    content: "\e621";
+    content: "\e682";
     vertical-align: baseline;
     font-weight: normal;
-    transition: -webkit-transform .3s;
     transition: transform .3s;
-    transition: transform .3s, -webkit-transform .3s;
 }
 
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open:after),
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open:after),
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open:after),
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open:after) {
-    -webkit-filter: none;
     filter: none;
 }
 
@@ -547,9 +486,6 @@
 :global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close:after),
 :global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close:after) {
     font-size: 12px;
-    font-size: 12px \9;
-    -webkit-transform: scale(1) rotate(0deg);
-    -ms-transform: scale(1) rotate(0deg);
     transform: scale(1) rotate(0deg);
     /* IE6-IE8 */
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
@@ -557,21 +493,16 @@
     display: inline-block;
     font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     content: "\e645";
     vertical-align: baseline;
     font-weight: normal;
-    transition: -webkit-transform .3s;
     transition: transform .3s;
-    transition: transform .3s, -webkit-transform .3s;
 }
 
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close:after),
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close:after),
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close:after),
 :global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close:after) {
-    -webkit-filter: none;
     filter: none;
 }
 
