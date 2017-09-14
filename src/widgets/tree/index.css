@@ -88,6 +88,7 @@
     border-left: 0;
     content: ' ';
     transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+    color: white;
 }
 
 :global(.sv-tree-checkbox-input) {
@@ -130,7 +131,7 @@
     border-top: 0;
     border-left: 0;
     content: ' ';
-    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    /*transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;*/
 }
 
 :global(.sv-tree-checkbox-checked .sv-tree-checkbox-inner),
