@@ -1,5 +1,5 @@
 
-:global(.ant-tree-checkbox) {
+:global(.sv-tree-checkbox) {
     white-space: nowrap;
     cursor: pointer;
     outline: none;
@@ -9,13 +9,13 @@
     vertical-align: text-bottom;
 }
 
-:global(.ant-tree-checkbox-wrapper:hover .ant-tree-checkbox-inner),
-:global(.ant-tree-checkbox:hover .ant-tree-checkbox-inner),
-:global(.ant-tree-checkbox-input:focus + .ant-tree-checkbox-inner) {
+:global(.sv-tree-checkbox-wrapper:hover .sv-tree-checkbox-inner),
+:global(.sv-tree-checkbox:hover .sv-tree-checkbox-inner),
+:global(.sv-tree-checkbox-input:focus + .sv-tree-checkbox-inner) {
     border-color: #108ee9;
 }
 
-:global(.ant-tree-checkbox-checked:after) {
+:global(.sv-tree-checkbox-checked:after) {
     position: absolute;
     top: 0;
     left: 0;
@@ -31,7 +31,7 @@
     visibility: hidden;
 }
 
-:global(.ant-tree-checkbox-inner) {
+:global(.sv-tree-checkbox-inner) {
     position: relative;
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@
     transition: all .3s;
 }
 
-:global(.ant-tree-checkbox-inner:after) {
+:global(.sv-tree-checkbox-inner:after) {
     -webkit-transform: rotate(45deg) scale(0);
     -ms-transform: rotate(45deg) scale(0);
     transform: rotate(45deg) scale(0);
@@ -61,7 +61,7 @@
     transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
 }
 
-:global(.ant-tree-checkbox-input) {
+:global(.sv-tree-checkbox-input) {
     position: absolute;
     left: 0;
     z-index: 1;
@@ -75,7 +75,7 @@
     height: 100%;
 }
 
-:global(.ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner:after) {
+:global(.sv-tree-checkbox-indeterminate .sv-tree-checkbox-inner:after) {
     content: ' ';
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
@@ -87,7 +87,7 @@
     height: 1px;
 }
 
-:global(.ant-tree-checkbox-checked .ant-tree-checkbox-inner:after) {
+:global(.sv-tree-checkbox-checked .sv-tree-checkbox-inner:after) {
     -webkit-transform: rotate(45deg) scale(1);
     -ms-transform: rotate(45deg) scale(1);
     transform: rotate(45deg) scale(1);
@@ -104,73 +104,73 @@
     transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
 }
 
-:global(.ant-tree-checkbox-checked .ant-tree-checkbox-inner),
-:global(.ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner) {
+:global(.sv-tree-checkbox-checked .sv-tree-checkbox-inner),
+:global(.sv-tree-checkbox-indeterminate .sv-tree-checkbox-inner) {
     background-color: #108ee9;
     border-color: #108ee9;
 }
 
-:global(.ant-tree-checkbox-disabled) {
+:global(.sv-tree-checkbox-disabled) {
     cursor: not-allowed;
 }
 
-:global(.ant-tree-checkbox-disabled.ant-tree-checkbox-checked .ant-tree-checkbox-inner:after) {
+:global(.sv-tree-checkbox-disabled.sv-tree-checkbox-checked .sv-tree-checkbox-inner:after) {
     -webkit-animation-name: none;
     animation-name: none;
     border-color: rgba(0, 0, 0, 0.25);
 }
 
-:global(.ant-tree-checkbox-disabled .ant-tree-checkbox-input) {
+:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-input) {
     cursor: not-allowed;
 }
 
-:global(.ant-tree-checkbox-disabled .ant-tree-checkbox-inner) {
+:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-inner) {
     border-color: #d9d9d9 !important;
     background-color: #f7f7f7;
 }
 
-:global(.ant-tree-checkbox-disabled .ant-tree-checkbox-inner:after) {
+:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-inner:after) {
     -webkit-animation-name: none;
     animation-name: none;
     border-color: #f7f7f7;
 }
 
-:global(.ant-tree-checkbox-disabled + span) {
+:global(.sv-tree-checkbox-disabled + span) {
     color: rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
 }
 
-:global(.ant-tree-checkbox-wrapper) {
+:global(.sv-tree-checkbox-wrapper) {
     cursor: pointer;
     font-size: 12px;
     display: inline-block;
 }
 
-:global(.ant-tree-checkbox-wrapper:not(:last-child)) {
+:global(.sv-tree-checkbox-wrapper:not(:last-child)) {
     margin-right: 8px;
 }
 
-:global(.ant-tree-checkbox-wrapper + span) {
+:global(.sv-tree-checkbox-wrapper + span) {
     padding-left: 8px;
     padding-right: 8px;
 }
 
-:global(.ant-tree-checkbox + span ) {
+:global(.sv-tree-checkbox + span ) {
     padding-left: 8px;
     padding-right: 8px;
 }
 
-:global(.ant-tree-checkbox-group) {
+:global(.sv-tree-checkbox-group) {
     font-size: 12px;
 }
 
-:global(.ant-tree-checkbox-group-item) {
+:global(.sv-tree-checkbox-group-item) {
     display: inline-block;
 }
 
 @media screen {
-    .ant-tree-checkbox-checked .ant-tree-checkbox-inner:before,
-    .ant-tree-checkbox-checked .ant-tree-checkbox-inner:after {
+    .sv-tree-checkbox-checked .sv-tree-checkbox-inner:before,
+    .sv-tree-checkbox-checked .sv-tree-checkbox-inner:after {
         font-family: "iconfont" !important;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
@@ -186,13 +186,13 @@
     }
 }
 
-:global(.ant-tree) {
+:global(.sv-tree) {
     margin: 0;
     padding: 5px;
     font-size: 12px;
 }
 
-:global(.ant-tree li) {
+:global(.sv-tree li) {
     padding: 4px 0;
     margin: 0;
     list-style: none;
@@ -200,8 +200,8 @@
     outline: 0;
 }
 
-:global(.ant-tree li span[draggable]),
-:global(.ant-tree li span[draggable="true"]) {
+:global(.sv-tree li span[draggable]),
+:global(.sv-tree li span[draggable="true"]) {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -227,31 +227,31 @@
     }
 }
 
-:global(.ant-tree li.drag-over) > :global(span[draggable]) {
+:global(.sv-tree li.drag-over) > :global(span[draggable]) {
     background-color: #108ee9;
     color: white;
     opacity: 0.8;
 }
 
-:global(.ant-tree li.drag-over-gap-top) > :global(span[draggable]) {
+:global(.sv-tree li.drag-over-gap-top) > :global(span[draggable]) {
     border-top-color: #108ee9;
 }
 
-:global(.ant-tree li.drag-over-gap-bottom) > :global(span[draggable]) {
+:global(.sv-tree li.drag-over-gap-bottom) > :global(span[draggable]) {
     border-bottom-color: #108ee9;
 }
 
-:global(.ant-tree li.filter-node) > :global(span ) {
+:global(.sv-tree li.filter-node) > :global(span ) {
     color: #f04134 !important;
     font-weight: bold !important;
 }
 
-:global(.ant-tree li ul) {
+:global(.sv-tree li ul) {
     margin: 0;
     padding: 0 0 0 18px;
 }
 
-:global(.ant-tree li .ant-tree-node-content-wrapper) {
+:global(.sv-tree li .sv-tree-node-content-wrapper) {
     display: inline-block;
     padding: 3px 5px;
     border-radius: 2px;
@@ -263,21 +263,21 @@
     transition: all 0.3s ease;
 }
 
-:global(.ant-tree li .ant-tree-node-content-wrapper:hover) {
+:global(.sv-tree li .sv-tree-node-content-wrapper:hover) {
     background-color: #ecf6fd;
 }
 
-:global(.ant-tree li .ant-tree-node-content-wrapper.ant-tree-node-selected) {
+:global(.sv-tree li .sv-tree-node-content-wrapper.sv-tree-node-selected) {
     background-color: #d2eafb;
 }
 
-:global(.ant-tree li span.ant-tree-checkbox ) {
+:global(.sv-tree li span.sv-tree-checkbox ) {
     margin: 0 4px 0 2px;
     vertical-align: middle;
 }
 
-:global(.ant-tree li span.ant-tree-switcher),
-:global(.ant-tree li span.ant-tree-iconEle) {
+:global(.sv-tree li span.sv-tree-switcher),
+:global(.sv-tree li span.sv-tree-iconEle) {
     margin: 0;
     width: 24px;
     height: 24px;
@@ -290,7 +290,7 @@
     text-align: center;
 }
 
-:global(.ant-tree li span.ant-tree-icon_loading:after) {
+:global(.sv-tree li span.sv-tree-icon_loading:after) {
     display: inline-block;
     font-family: "iconfont" !important;
     text-rendering: optimizeLegibility;
@@ -302,15 +302,15 @@
     color: #108ee9;
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-switcher-noop) {
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher-noop) {
     cursor: default;
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-center_open:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-switcher_open:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-roots_open:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-center_open:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
     font-size: 12px;
     font-size: 7px \9;
     -webkit-transform: scale(0.58333333) rotate(0deg);
@@ -331,34 +331,34 @@
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-center_open:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-switcher_open:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_open:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_open:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_open:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-center_open:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_open:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_open:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_open:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_open:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_open:after) {
     font-size: 12px;
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-center_close),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-noline_close) {
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-roots_close),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-center_close),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_close),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_close) {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-switcher_close:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-center_close:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
     font-size: 12px;
     font-size: 7px \9;
     -webkit-transform: scale(0.58333333) rotate(0deg);
@@ -379,84 +379,84 @@
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-center_close:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-center_close:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after),
-:global(:root .ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
     font-size: 12px;
 }
 
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-roots_close:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-center_close:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-bottom_close:after),
-:global(.ant-tree li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-roots_close:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-center_close:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-bottom_close:after),
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-noline_close:after) {
     -webkit-transform: rotate(270deg) scale(0.59);
     -ms-transform: rotate(270deg) scale(0.59);
     transform: rotate(270deg) scale(0.59);
 }
 
-:global(.ant-tree li:last-child) > :global(span.ant-tree-switcher:before),
-:global(.ant-tree li:last-child) > :global(span.ant-tree-iconEle:before) {
+:global(.sv-tree li:last-child) > :global(span.sv-tree-switcher:before),
+:global(.sv-tree li:last-child) > :global(span.sv-tree-iconEle:before) {
     display: none;
 }
 
-:global(.ant-tree) > :global(li:first-child) {
+:global(.sv-tree) > :global(li:first-child) {
     padding-top: 7px;
     color: #777
 }
 
-:global(.ant-tree) > :global(li:last-child) {
+:global(.sv-tree) > :global(li:last-child) {
     padding-bottom: 7px;
 }
 
-:global(.ant-tree-child-tree) {
+:global(.sv-tree-child-tree) {
     display: none;
 }
 
-:global(.ant-tree-child-tree-open) {
+:global(.sv-tree-child-tree-open) {
     display: block;
 }
 
-:global(li.ant-tree-treenode-disabled) > :global(span),
-:global(li.ant-tree-treenode-disabled) > :global(.ant-tree-node-content-wrapper),
-:global(li.ant-tree-treenode-disabled) > :global(.ant-tree-node-content-wrapper span),
-:global(li.ant-tree-treenode-disabled) > :global(span.ant-tree-switcher) {
+:global(li.sv-tree-treenode-disabled) > :global(span),
+:global(li.sv-tree-treenode-disabled) > :global(.sv-tree-node-content-wrapper),
+:global(li.sv-tree-treenode-disabled) > :global(.sv-tree-node-content-wrapper span),
+:global(li.sv-tree-treenode-disabled) > :global(span.sv-tree-switcher) {
     color: rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
 }
 
-:global(li.ant-tree-treenode-disabled) > :global(.ant-tree-node-content-wrapper:hover) {
+:global(li.sv-tree-treenode-disabled) > :global(.sv-tree-node-content-wrapper:hover) {
     background: transparent;
 }
 
-:global(.ant-tree-icon__open) {
+:global(.sv-tree-icon__open) {
     margin-right: 2px;
     vertical-align: top;
 }
 
-:global(.ant-tree-icon__close) {
+:global(.sv-tree-icon__close) {
     margin-right: 2px;
     vertical-align: top;
 }
 
-:global(.ant-tree.ant-tree-show-line li) {
+:global(.sv-tree.sv-tree-show-line li) {
     position: relative;
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher) {
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher) {
     background: #fff;
     color: rgba(0, 0, 0, 0.65);
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-switcher-noop:after) {
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
     font-size: 12px;
     font-size: 12px \9;
     -webkit-transform: scale(1) rotate(0deg);
@@ -478,27 +478,27 @@
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-switcher-noop:after) {
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-switcher-noop:after) {
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
     font-size: 12px;
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open) {
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open) {
     color: rgba(0, 0, 0, 0.43);
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-switcher_open:after),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open:after),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open:after),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open:after),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open:after) {
     font-size: 12px;
     font-size: 12px \9;
     -webkit-transform: scale(1) rotate(0deg);
@@ -520,32 +520,32 @@
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_open:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_open:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_open:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_open:after) {
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_open:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_open:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_open:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_open:after) {
     font-size: 12px;
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close) {
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close) {
     color: rgba(0, 0, 0, 0.43);
 }
 
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after),
-:global(.ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close:after),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close:after),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close:after),
+:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close:after) {
     font-size: 12px;
     font-size: 12px \9;
     -webkit-transform: scale(1) rotate(0deg);
@@ -567,22 +567,22 @@
     transition: transform .3s, -webkit-transform .3s;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close:after) {
     -webkit-filter: none;
     filter: none;
 }
 
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-roots_close:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-center_close:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-bottom_close:after),
-:global(:root .ant-tree.ant-tree-show-line li span.ant-tree-switcher.ant-tree-noline_close:after) {
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-roots_close:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-center_close:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-bottom_close:after),
+:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-noline_close:after) {
     font-size: 12px;
 }
 
-:global(.ant-tree.ant-tree-show-line li:not(:last-child):before) {
+:global(.sv-tree.sv-tree-show-line li:not(:last-child):before) {
     content: ' ';
     width: 1px;
     border-left: 1px solid #d9d9d9;

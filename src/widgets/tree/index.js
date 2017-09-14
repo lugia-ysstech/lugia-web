@@ -69,7 +69,7 @@ type TreeProps = {
 class Tree extends React.Component<TreeProps> {
 
   static defaultProps = {
-    prefixCls: 'ant-tree',
+    prefixCls: 'sv-tree',
     checkable: false,
     showIcon: false,
     openAnimation: animation,
