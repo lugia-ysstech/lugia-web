@@ -15,6 +15,7 @@ type RowData = {
   key: string,
   title: string,
   pid?: string,
+  children?: Array<RowData>,
 };
 type TreeProps = {
   showLine?: boolean;
@@ -91,8 +92,36 @@ class Tree extends React.Component<TreeProps> {
     const { children, } = this.props;
 
     if (rowData) {
+      const nodes = this.generateTreeNode(rowData);
+      return <RcTree {...this.props} className={classString}
+                     checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
+        {this.loopNode(nodes)}
+      </RcTree>;
+    }
+
+    return <RcTree {...this.props} className={classString}
+                   checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
+      {children}
+    </RcTree>;
+
+  }
+
+  loopNode = (data: Array<RowData>) => data.map(item => {
+    const { children, key, title, } = item;
+    if (children != undefined) {
+      return (
+        <TreeNode key={key} title={title}>
+          {this.loopNode(children)}
+        </TreeNode>
+      );
+    }
+    return <TreeNode key={key} title={title}/>;
+  });
+
+  generateTreeNode (rowData: Array<RowData>) {
+    const result = [];
+    if (rowData) {
       const node = {};
-      const pids = [];
       rowData.forEach(row => {
         const { pid, key, } = row;
         node[ key ] = row;
@@ -105,34 +134,11 @@ class Tree extends React.Component<TreeProps> {
           }
           children.push(row);
         } else {
-          pids.push(node[ key ]);
+          result.push(node[ key ]);
         }
       });
-      const loop = data => data.map(({ children, title, key, }) => {
-        if (children) {
-          return (
-            <TreeNode key={key} title={title}>
-              {loop(children)}
-            </TreeNode>
-          );
-        }
-        return <TreeNode key={key} title={title}/>;
-      });
-      return <RcTree {...this.props} className={classString}
-                     checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
-        {loop(pids)}
-      </RcTree>;
     }
-
-    return <RcTree {...this.props} className={classString}
-                   checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
-      {children}
-    </RcTree>;
-
-  }
-
-  generateTreeNode () {
-    return <div>hello</div>;
+    return result;
   }
 }
 
