@@ -73,6 +73,7 @@ type TreeProps = {
 
 };
 
+
 class Tree extends React.Component<TreeProps> {
 
   static defaultProps = {
@@ -118,11 +119,12 @@ class Tree extends React.Component<TreeProps> {
     return <TreeNode key={key} title={title}/>;
   });
 
-  generateTreeNode (rowData: Array<RowData>) {
+  generateTreeNode (rowData: Array<RowData>): Array<RowData> {
     const result = [];
     if (rowData) {
       const node = {};
-      rowData.forEach(row => {
+      rowData.forEach(data => {
+        const row = { ...data, };
         const { pid, key, } = row;
         node[ key ] = row;
         if (pid) {
@@ -140,6 +142,48 @@ class Tree extends React.Component<TreeProps> {
     }
     return result;
   }
+
+  slice (rowDatas: Array<RowData>, start: number, total: number): Array<RowData> {
+    let result = [];
+
+    if (rowDatas && rowDatas.length === 0) {
+      return result;
+    }
+
+    const root = rowDatas[ start ];
+    if (!root) {
+      console.error('树形数据存在问题');
+      return result;
+    }
+
+    const targetRows = rowDatas.slice(start, start + total);
+    const isTopLevel = !root.pid;
+    if (isTopLevel) {
+      return this.generateTreeNode(targetRows);
+    }
+    result = this.getPathNode(rowDatas, start, root.pid).concat(targetRows);
+    return this.generateTreeNode(result);
+  }
+
+  getPathNode (rowDatas: Array<RowData>, start: number, targetPid?: string) {
+    const result = [];
+    if (!targetPid) {
+      return result;
+    }
+    for (let findPidIdx = start; findPidIdx >= 0; findPidIdx--) {
+      const node = rowDatas[ findPidIdx ];
+      const { key, pid, } = node;
+      if (key === targetPid) {
+        result.push(node);
+        if (!pid) {
+          break;
+        }
+        targetPid = pid;
+      }
+    }
+    return result.reverse();
+  }
+
 }
 
 export default Tree;
