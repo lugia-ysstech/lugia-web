@@ -202,14 +202,32 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (!expand) {
       return rowDatas.slice(start, start + total);
     }
+
     const result = [];
-    for (let i = start; i <= total && i < rowDatas.length; i++) {
+    let foundRow: number = 0;
+    let inCollapseRange: boolean = false;
+    let collapsePath: ?string = null;
+
+    for (let i = start; foundRow <= total && i < rowDatas.length; i++) {
       const row = rowDatas[ i ];
-      const { key, } = row;
-      if (expand[ key ] === true) {
+      const { key, path, } = row;
+
+      if (inCollapseRange) {
+        if (!path || collapsePath === null || collapsePath === undefined || !path.startsWith(collapsePath)) {
+          inCollapseRange = false;
+        }
+      }
+
+      if (!inCollapseRange) {
         result.push(row);
-      } else {
-        result.push(row);
+        foundRow++;
+      }
+
+      const isNotExpanded = !expand[ key ];
+
+      if (!inCollapseRange && isNotExpanded && path) {
+        inCollapseRange = true;
+        collapsePath = `${path}/${key}`;
       }
     }
     return result;

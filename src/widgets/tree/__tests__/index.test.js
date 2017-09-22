@@ -282,34 +282,44 @@ describe('Input', () => {
     exp(generateTreeNode.getCallArgs(0)[ 0 ]).to.be.eql(pathNode.concat(sliceData));
   });
 
-  it('sliceExpand collapse is undefined ', () => {
+  it('sliceExpand expand is undefined, is eql [].slice(start, start + total)', () => {
     const tree = new Tree({ children: null, });
     const start = 1;
     const total = 5;
     exp(tree.sliceExpand(datas, start, total)).to.be.eql(datas.slice(start, start + total));
 
   });
-  it('sliceExpand collapse is exisit ', () => {
+  it('sliceExpand expand is exisit ', () => {
     const tree = new Tree({ children: null, });
     const start = 1;
     const total = 5;
     const expandDatas = [{ key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', },
-      { key: '1.2', title: '1.2', pid: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', },];
+      { key: '1.1', title: '1.1', pid: '1', path: '1',},
+      { key: '1.2', title: '1.2', pid: '1', path: '1',},
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2',},
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2',},
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2',},
+      { key: '1.3', title: '1.3', pid: '1', path: '1',},
+      { key: '2', title: '2',},
+      { key: '3', title: '3',},
+    ];
 
     const expandObj = {
+      ['1' + '']: true,
       ['1.1' + '']: true,
-      ['1.2' + '']: false,
       ['1.2.1' + '']: true,
       ['1.2.2' + '']: true,
       ['1.2.2.1' + '']: true,
+      ['1.3' + '']: true,
+      ['2' + '']: true,
     };
     exp(tree.sliceExpand(expandDatas, start, total, expandObj)).to.be.eql([
-      { key: '1.1', title: '1.1', pid: '1', },
-      { key: '1.2', title: '1.2', pid: '1', },]);
+      { key: '1.1', title: '1.1', pid: '1', path: '1',},
+      { key: '1.2', title: '1.2', pid: '1', path: '1',},
+      { key: '1.3', title: '1.3', pid: '1', path: '1',},
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ]);
   });
 
 
