@@ -17,22 +17,48 @@ export default () => {
     onCheck = (checkedKeys, info) => {
       console.log('onCheck', checkedKeys, info);
     };
-  const onExpand = () => {
+  const onExpand = keys => {
+    console.info(keys);
     return false;
   };
   const rowData = [
     { key: '1', title: '1', },
     { key: '1.1', title: '1.1', pid: '1', },
     { key: '1.2', title: '1.2', pid: '1', },
+    { key: '1.2.1', title: '1.2.1', pid: '1.2', },
+    { key: '1.2.2', title: '1.2.2', pid: '1.2', },
+    { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', },
+    { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', },
+    { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', },
+    { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', },
+
     { key: '1.3', title: '1.3', pid: '1', },
     { key: '1.3.1', title: '1.3.1', pid: '1.3', },
     { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', },
     { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', },
+    { key: '1.3.2', title: '1.3.2', pid: '1.3', },
+    { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', },
+    { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', },
+    { key: '1.3.3', title: '1.3.3', pid: '1.3', },
+
     { key: '2', title: '2', },
     { key: '2.1', title: '2.1', pid: '2', },
+    { key: '2.1.1', title: '2.1.1', pid: '2.1', },
+    { key: '2.1.2', title: '2.1.2', pid: '2.1', },
+    { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', },
     { key: '2.2', title: '2.2', pid: '2', },
+    { key: '2.2.1', title: '2.2.1', pid: '2.2', },
+    { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', },
+    { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', },
+    { key: '2.2.2', title: '2.2.2', pid: '2.2', },
+
+    { key: '3', title: '3', },
+    { key: '3.1', title: '3.1', pid: '3', },
+    { key: '3.2', title: '32.2', pid: '3', },
+    { key: '4', title: '4', },
   ];
   return <Tree
+    defaultExpandAll
     onExpand={onExpand}
     showLine
     rowData={rowData}

@@ -232,16 +232,16 @@ describe('Input', () => {
     const tree = new Tree({ children: null, });
     exp(tree.getPathNode(datas, 2, '1.2')).to.be.eql([
       { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1',  path: '1',},]);
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },]);
   });
 
   it('getPathNode 起始结点非根结点 3 级', () => {
     const tree = new Tree({ children: null, });
     exp(tree.getPathNode(datas, 7, '1.2.2.1')).to.be.eql([
       { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1',},
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2',},
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2',},]);
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },]);
   });
 
   it('slice empty', () => {
@@ -294,14 +294,14 @@ describe('Input', () => {
     const start = 1;
     const total = 5;
     const expandDatas = [{ key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1',},
-      { key: '1.2', title: '1.2', pid: '1', path: '1',},
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2',},
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2',},
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2',},
-      { key: '1.3', title: '1.3', pid: '1', path: '1',},
-      { key: '2', title: '2',},
-      { key: '3', title: '3',},
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
     ];
 
     const expandObj = {
@@ -314,13 +314,76 @@ describe('Input', () => {
       ['2' + '']: true,
     };
     exp(tree.sliceExpand(expandDatas, start, total, expandObj)).to.be.eql([
-      { key: '1.1', title: '1.1', pid: '1', path: '1',},
-      { key: '1.2', title: '1.2', pid: '1', path: '1',},
-      { key: '1.3', title: '1.3', pid: '1', path: '1',},
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
       { key: '2', title: '2', },
       { key: '3', title: '3', },
     ]);
   });
+
+  it('slice expand', () => {
+      const tree = new Tree({ children: null, });
+      const start = 0;
+      const total = 5;
+      const expandDatas = [
+        { key: '1', title: '1', },
+        { key: '1.1', title: '1.1', pid: '1', path: '1', },
+        { key: '1.2', title: '1.2', pid: '1', path: '1', },
+        { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
+        { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+        { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+        { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', },
+        { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', },
+        { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', },
+
+        { key: '1.3', title: '1.3', pid: '1', path: '1', },
+        { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
+        { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', },
+        { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', },
+        { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
+        { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', },
+        { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', },
+        { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', },
+
+        { key: '2', title: '2', },
+        { key: '2.1', title: '2.1', pid: '2', path: '2', },
+        { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', },
+        { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
+        { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', },
+        { key: '2.2', title: '2.2', pid: '2', path: '2', },
+        { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
+        { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', },
+        { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', },
+        { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', },
+
+        { key: '3', title: '3', },
+        { key: '3.1', title: '3.1', pid: '3', path: '3', },
+        { key: '3.2', title: '32.2', pid: '3', path: '3', },
+        { key: '4', title: '4', },
+      ];
+
+      const expandObj = {
+        ['1' + '']: true,
+        ['1.1' + '']: true,
+        ['1.2.1' + '']: true,
+        ['1.2.2' + '']: true,
+      };
+
+
+    const actualResult = tree.sliceExpand(expandDatas, start, total, expandObj);
+    console.info(actualResult);
+
+    exp(actualResult).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      ]);
+
+    }
+  );
 
 
 });

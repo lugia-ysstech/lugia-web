@@ -124,14 +124,17 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { expanded, node, } = data;
     const { expand, } = this.state;
     const expandObj = expand ? expand : {};
-    if (!expandObj && defaultExpandAll === true) {
+    if (!expand && defaultExpandAll === true) {
       expandedKeys.forEach((key: string) => {
         expandObj[ key ] = true;
       });
     }
 
+    const noeKey = node.props.eventKey;
     if (expanded) {
-      expandObj[ node.props.eventKey ] = true;
+      expandObj[ noeKey ] = true;
+    } else {
+      delete expandObj[ noeKey ];
     }
 
     this.setState({ expand: expandObj, });
@@ -208,7 +211,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     let inCollapseRange: boolean = false;
     let collapsePath: ?string = null;
 
-    for (let i = start; foundRow <= total && i < rowDatas.length; i++) {
+    for (let i = start; foundRow < total && i < rowDatas.length; i++) {
       const row = rowDatas[ i ];
       const { key, path, } = row;
 
