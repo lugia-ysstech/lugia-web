@@ -51,38 +51,56 @@ describe('Input', () => {
 
 
   /*
-     1
-       1.1
-       1.2
-         1.2.1
-         1.2.2
-           1.2.2.1
-             1.2.2.1.1
-             1.2.2.1.2
-           1.2.2.2
-       1.3
-         1.3.1
-           1.3.1.1
-           1.3.1.2
-         1.3.2
-           1.3.2.1
-           1.3.2.2
-         1.3.3
-     2
-       2.1
-         2.1.1
-         2.1.2
-           2.1.2.1
-      2.2
-         2.2.1
-           2.2.1.1
-           2.2.1.2
-         2.2.2
-     3
-       3.1
-       3.2
-     4
+0      1
+1        1.1
+2        1.2
+3          1.2.1
+4          1.2.2
+5            1.2.2.1
+6              1.2.2.1.1
+7              1.2.2.1.2
+8            1.2.2.2
+9        1.3
+10         1.3.1
+11           1.3.1.1
+12           1.3.1.2
+13         1.3.2
+14           1.3.2.1
+15           1.3.2.2
+16         1.3.3
+17     2
+18       2.1
+19         2.1.1
+20         2.1.2
+21           2.1.2.1
+22      2.2
+23         2.2.1
+24           2.2.1.1
+25           2.2.1.2
+26         2.2.2
+27     3
+28       3.1
+29       3.2
+30     4
   */
+
+  it('slice not topLevel 真实测试', () => {
+    const tree = new Tree({ children: null, });
+    const mockTree = mockObject.create(tree);
+    const generateTreeNode = mockTree.mockFunction('generateTreeNode');
+    generateTreeNode.returned([]);
+    tree.slice(datas, 8, 5, { expandedAll: true, target: { ['1' + '']: true, }, });
+    exp(generateTreeNode.getCallArgs(0)[0]).to.be.eql( [{ key: '1', title: '1', },
+      { key: '2', title: '2', },
+      { key: '2.1', title: '2.1', pid: '2', path: '2', },
+      { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', },
+      { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
+      { key: '2.1.2.1',
+        title: '2.1.2.1',
+        pid: '2.1.2',
+        path: '2/2.1/2.1.2', },]
+    );
+  });
 
   it('generateTreeNode empty', () => {
     const tree = new Tree({ children: null, });
@@ -221,23 +239,23 @@ describe('Input', () => {
   });
 
 
-  it('getPathNode 起始节点为1级结点', () => {
+  it('getPathNodes 起始节点为1级结点', () => {
 
     const tree = new Tree({ children: null, });
-    exp(tree.getPathNode(datas, 1, '1')).to.be.eql([
+    exp(tree.getPathNodes(datas, 1, '1')).to.be.eql([
       { key: '1', title: '1', },]);
   });
 
-  it('getPathNode 起始结点非根结点 2 级', () => {
+  it('getPathNodes 起始结点非根结点 2 级', () => {
     const tree = new Tree({ children: null, });
-    exp(tree.getPathNode(datas, 2, '1.2')).to.be.eql([
+    exp(tree.getPathNodes(datas, 2, '1.2')).to.be.eql([
       { key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },]);
   });
 
-  it('getPathNode 起始结点非根结点 3 级', () => {
+  it('getPathNodes 起始结点非根结点 3 级', () => {
     const tree = new Tree({ children: null, });
-    exp(tree.getPathNode(datas, 7, '1.2.2.1')).to.be.eql([
+    exp(tree.getPathNodes(datas, 7, '1.2.2.1')).to.be.eql([
       { key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
@@ -246,41 +264,48 @@ describe('Input', () => {
 
   it('slice empty', () => {
     const tree = new Tree({ children: null, });
-    exp(tree.getPathNode([], 1, '')).to.be.eql([]);
+    exp(tree.getPathNodes([], 1, '')).to.be.eql([]);
   });
 
   it('slice topLevel', () => {
     const tree = new Tree({ children: null, });
     const mockTree = mockObject.create(tree);
     const generateTreeNode = mockTree.mockFunction('generateTreeNode');
-    const getPathNode = mockTree.mockFunction('getPathNode');
+    const getPathNodes = mockTree.mockFunction('getPathNodes');
     const expectResult = [1, 2, 3, 4,];
     generateTreeNode.returned(expectResult);
     exp(tree.slice(datas, 0, 5)).to.be.eql(expectResult);
     exp(generateTreeNode.getCallArgs(0)[ 0 ]).to.be.eql(datas.slice(0, 5));
     exp(generateTreeNode.callTimes()).to.be.equal(1);
-    exp(getPathNode.callTimes()).to.be.equal(0);
+    exp(getPathNodes.callTimes()).to.be.equal(0);
   });
 
   it('slice not topLevel', () => {
     const tree = new Tree({ children: null, });
     const mockTree = mockObject.create(tree);
     const generateTreeNode = mockTree.mockFunction('generateTreeNode');
-    const getPathNode = mockTree.mockFunction('getPathNode');
+    const getPathNodes = mockTree.mockFunction('getPathNodes');
     const sliceExpand = mockTree.mockFunction('sliceExpand');
     const expectResult = [1, 2, 3, 4,];
     const pathNode = [1, 2, 3, 4,];
     const start = 1;
     const total = 5;
+
     generateTreeNode.returned(expectResult);
-    getPathNode.returned(pathNode);
-    const sliceData = datas.slice(start, start + total);
-    sliceExpand.returned(sliceData);
-    exp(tree.slice(datas, start, total)).to.be.eql(expectResult);
+    getPathNodes.returned(pathNode);
+    const sliceResult = [5, 7, 5, 75,];
+    sliceExpand.returned(sliceResult);
+    const expandInfo = { expandedAll: false, target: {}, };
+    exp(tree.slice(datas, start, total, expandInfo)).to.be.eql(expectResult);
+
     exp(generateTreeNode.callTimes()).to.be.equal(1);
-    exp(getPathNode.callTimes()).to.be.equal(1);
-    exp(generateTreeNode.getCallArgs(0)[ 0 ]).to.be.eql(pathNode.concat(sliceData));
+    exp(getPathNodes.callTimes()).to.be.equal(1);
+    exp(sliceExpand.callTimes()).to.be.equal(1);
+
+    exp(sliceExpand.getCallArgs(0)).to.be.eql([datas, start, total, expandInfo, pathNode,]);
   });
+
+
 
   it('sliceExpand expand is undefined, is eql [].slice(start, start + total)', () => {
     const tree = new Tree({ children: null, });
@@ -290,6 +315,33 @@ describe('Input', () => {
 
   });
 
+  it('sliceExpand expand is exisit expandedAll true toproot collapse', () => {
+    const tree = new Tree({ children: null, });
+    const start = 0;
+    const total = 5;
+    const expandDatas = [{ key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ];
+
+    const expandObj = {
+      target: {
+        ['1' + '']: true,
+      },
+      expandedAll: true,
+    };
+    exp(tree.sliceExpand(expandDatas, start, total, expandObj)).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ]);
+  });
   it('sliceExpand expand is exisit expandedAll false', () => {
     const tree = new Tree({ children: null, });
     const start = 1;
@@ -459,6 +511,80 @@ describe('Input', () => {
 
     }
   );
+
+  it('sliceExpand expand is exisit expandedAll true container parentNode 1', () => {
+    const tree = new Tree({ children: null, });
+    const start = 5;
+    const total = 5;
+    const expandDatas = [
+      { key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ];
+
+    const expandObj = {
+      target: {
+        ['1.1' + '']: true,
+      },
+      expandedAll: true,
+    };
+    const result = tree.sliceExpand(expandDatas, start, total, expandObj,
+      [
+        { key: '1', title: '1', },
+        { key: '1.2', title: '1.2', pid: '1', path: '1', },
+        { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      ]);
+    exp(result).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ]);
+  });
+
+ it('sliceExpand expand is exisit expandedAll true container parentNode 2', () => {
+    const tree = new Tree({ children: null, });
+    const start = 1;
+    const total = 3;
+    const expandDatas = [
+      { key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ];
+
+    const expandObj = {
+      target: {
+        ['1.1' + '']: true,
+        ['1.2' + '']: true,
+      },
+      expandedAll: true,
+    };
+    const result = tree.sliceExpand(expandDatas, start, total, expandObj,
+      [
+        { key: '1', title: '1', },
+      ]);
+    exp(result).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+    ]);
+  });
 
   it('getKeys', () => {
     const tree = new Tree({ children: null, });

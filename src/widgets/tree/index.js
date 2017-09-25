@@ -217,28 +217,26 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   slice (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo): Array<RowData> {
-    let result = [];
-
     if (rowDatas && rowDatas.length === 0) {
-      return result;
+      return [];
     }
 
     const root = rowDatas[ start ];
     if (!root) {
       console.error('树形数据存在问题');
-      return result;
+      return [];
     }
 
-    const targetRows = this.sliceExpand(rowDatas, start, total, expandInfo);
     const isTopLevel = !root.pid;
     if (isTopLevel) {
-      return this.generateTreeNode(targetRows);
+      return this.generateTreeNode(this.sliceExpand(rowDatas, start, total, expandInfo));
     }
-    result = this.getPathNode(rowDatas, start, root.pid).concat(targetRows);
-    return this.generateTreeNode(result);
+
+    const pathNode = this.getPathNodes(rowDatas, start, root.pid);
+    return this.generateTreeNode(this.sliceExpand(rowDatas, start, total, expandInfo, pathNode));
   }
 
-  sliceExpand (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo): Array<RowData> {
+  sliceExpand (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo, parentNode?: Array<RowData> = []): Array<RowData> {
 
     if (!expandInfo) {
       return rowDatas.slice(start, start + total);
@@ -250,10 +248,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     let inCollapseRange: boolean = false;
     let collapsePath: ?string = null;
 
-
-    for (let i = start; foundRow < total && i < rowDatas.length; i++) {
-
-      const row = rowDatas[ i ];
+    const processRow = (needComput: ?boolean = true) => (row: RowData) => {
       const { key, path, } = row;
 
       if (inCollapseRange) {
@@ -262,22 +257,35 @@ class Tree extends React.Component<TreeProps, TreeState> {
         }
       }
 
-      if (!inCollapseRange ) {
+      if (!inCollapseRange) {
         result.push(row);
-        foundRow++;
+        if (needComput) {
+          foundRow++;
+        }
       }
 
       const isNotExpanded = expandedAll ? target[ key ] : !target[ key ];
 
-      if (!inCollapseRange && isNotExpanded && path) {
+      if (!inCollapseRange && isNotExpanded) {
         inCollapseRange = true;
-        collapsePath = `${path}/${key}`;
+        collapsePath = key;
+        if (path) {
+          collapsePath = `${path}/${collapsePath}`;
+        }
       }
+    };
+
+    parentNode.forEach(processRow(false));
+    const processRowForRowDatas = processRow();
+    for (let i = start; foundRow < total && i < rowDatas.length; i++) {
+      const row = rowDatas[ i ];
+      processRowForRowDatas(row);
     }
+
     return result;
   }
 
-  getPathNode (rowDatas: Array<RowData>, start: number, targetPid?: string) {
+  getPathNodes (rowDatas: Array<RowData>, start: number, targetPid?: string) {
     const result = [];
     if (!targetPid) {
       return result;
