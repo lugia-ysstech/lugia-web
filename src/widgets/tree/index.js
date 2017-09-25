@@ -74,9 +74,12 @@ type TreeProps = {
 
 };
 
-
+type ExpandInfo = {
+  expandedAll: boolean,
+  target: Object,
+}
 type TreeState = {
-  expand?: { [key: string]: boolean };
+  expand: ExpandInfo
 }
 
 class Tree extends React.Component<TreeProps, TreeState> {
@@ -92,7 +95,25 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   constructor (props: TreeProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      expand: this.getExpandInfo(),
+    };
+  }
+
+  getExpandInfo (): ExpandInfo {
+    let array: Array<string> = [];
+    const { props, } = this;
+    const { expandedKeys = [], defaultExpandedKeys = [], defaultExpandAll, } = props;
+    if ('expandedKeys' in props) {
+      array = expandedKeys;
+    } else if ('defaultExpandedKeys' in props) {
+      array = defaultExpandedKeys;
+    }
+    const target: Object = {};
+    array.forEach(key => {
+      target[ key ] = true;
+    });
+    return { target, expandedAll: defaultExpandAll === true, };
   }
 
   render () {
@@ -103,8 +124,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { children, } = this.props;
     const { expand, } = this.state;
     if (rowData) {
-      const nodes = this.slice(rowData, 0, 5, expand);
+      const nodes = this.slice(rowData, 0, 555555, expand);
+      const expandedKeys = this.getKeys(nodes);
       return <RcTree {...this.props} className={classString}
+                     expandedKeys={expandedKeys}
                      onExpand={this.onExpand}
                      checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
         {this.loopNode(nodes)}
@@ -119,25 +142,40 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   }
 
+  getKeys (nodes: Array<RowData>): Array<string> {
+    const result = [];
+    nodes && nodes.forEach((node: RowData) => {
+      const { key, } = node;
+      result.push(key);
+    });
+    return result;
+
+  }
+
   onExpand = (expandedKeys: Array<string>, data: { expanded: boolean, node: Object, }) => {
-    const { onExpand, defaultExpandAll, } = this.props;
+    const { onExpand, } = this.props;
     const { expanded, node, } = data;
     const { expand, } = this.state;
-    const expandObj = expand ? expand : {};
-    if (!expand && defaultExpandAll === true) {
-      expandedKeys.forEach((key: string) => {
-        expandObj[ key ] = true;
-      });
-    }
+
 
     const noeKey = node.props.eventKey;
-    if (expanded) {
-      expandObj[ noeKey ] = true;
+
+    const { target, expandedAll, } = expand;
+    if (expandedAll) {
+      if (!expanded) {
+        target[ noeKey ] = true;
+      } else {
+        delete target[ noeKey ];
+      }
     } else {
-      delete expandObj[ noeKey ];
+      if (expanded) {
+        target[ noeKey ] = true;
+      } else {
+        delete target[ noeKey ];
+      }
     }
 
-    this.setState({ expand: expandObj, });
+    this.setState({ expand: this.state.expand, });
     onExpand && onExpand(expandedKeys, data);
   };
 
@@ -178,7 +216,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return result;
   }
 
-  slice (rowDatas: Array<RowData>, start: number, total: number, expand?: Object): Array<RowData> {
+  slice (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo): Array<RowData> {
     let result = [];
 
     if (rowDatas && rowDatas.length === 0) {
@@ -191,7 +229,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       return result;
     }
 
-    const targetRows = this.sliceExpand(rowDatas, start, total, expand);
+    const targetRows = this.sliceExpand(rowDatas, start, total, expandInfo);
     const isTopLevel = !root.pid;
     if (isTopLevel) {
       return this.generateTreeNode(targetRows);
@@ -200,18 +238,21 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return this.generateTreeNode(result);
   }
 
-  sliceExpand (rowDatas: Array<RowData>, start: number, total: number, expand?: Object): Array<RowData> {
+  sliceExpand (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo): Array<RowData> {
 
-    if (!expand) {
+    if (!expandInfo) {
       return rowDatas.slice(start, start + total);
     }
+    const { target, expandedAll, } = expandInfo;
 
     const result = [];
     let foundRow: number = 0;
     let inCollapseRange: boolean = false;
     let collapsePath: ?string = null;
 
+
     for (let i = start; foundRow < total && i < rowDatas.length; i++) {
+
       const row = rowDatas[ i ];
       const { key, path, } = row;
 
@@ -221,12 +262,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
         }
       }
 
-      if (!inCollapseRange) {
+      if (!inCollapseRange ) {
         result.push(row);
         foundRow++;
       }
 
-      const isNotExpanded = !expand[ key ];
+      const isNotExpanded = expandedAll ? target[ key ] : !target[ key ];
 
       if (!inCollapseRange && isNotExpanded && path) {
         inCollapseRange = true;

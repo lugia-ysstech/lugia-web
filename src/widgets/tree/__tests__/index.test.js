@@ -289,7 +289,8 @@ describe('Input', () => {
     exp(tree.sliceExpand(datas, start, total)).to.be.eql(datas.slice(start, start + total));
 
   });
-  it('sliceExpand expand is exisit ', () => {
+
+  it('sliceExpand expand is exisit expandedAll false', () => {
     const tree = new Tree({ children: null, });
     const start = 1;
     const total = 5;
@@ -305,13 +306,16 @@ describe('Input', () => {
     ];
 
     const expandObj = {
-      ['1' + '']: true,
-      ['1.1' + '']: true,
-      ['1.2.1' + '']: true,
-      ['1.2.2' + '']: true,
-      ['1.2.2.1' + '']: true,
-      ['1.3' + '']: true,
-      ['2' + '']: true,
+      target: {
+        ['1' + '']: true,
+        ['1.1' + '']: true,
+        ['1.2.1' + '']: true,
+        ['1.2.2' + '']: true,
+        ['1.2.2.1' + '']: true,
+        ['1.3' + '']: true,
+        ['2' + '']: true,
+      },
+      expandedAll: false,
     };
     exp(tree.sliceExpand(expandDatas, start, total, expandObj)).to.be.eql([
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
@@ -322,7 +326,76 @@ describe('Input', () => {
     ]);
   });
 
-  it('slice expand', () => {
+  it('sliceExpand expand is exisit expandedAll false start is collapse', () => {
+    const tree = new Tree({ children: null, });
+    const start = 1;
+    const total = 5;
+    const expandDatas = [{ key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ];
+
+    const expandObj = {
+      target: {
+        ['1.2' + '']: false,
+        ['1.2.1' + '']: true,
+        ['1.2.2' + '']: true,
+        ['1.2.2.1' + '']: true,
+        ['1.3' + '']: true,
+        ['2' + '']: true,
+      },
+      expandedAll: false,
+    };
+    const result = tree.sliceExpand(expandDatas, start, total, expandObj);
+    exp(result).to.be.eql([
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ]);
+  });
+
+  it('sliceExpand expand is exisit expandedAll true', () => {
+    const tree = new Tree({ children: null, });
+    const start = 1;
+    const total = 5;
+    const expandDatas = [{ key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ];
+
+    const expandObj = {
+      target: {
+        ['1.1' + '']: true,
+        ['1.2' + '']: true,
+        ['1.3' + '']: true,
+      },
+      expandedAll: true,
+    };
+    const result = tree.sliceExpand(expandDatas, start, total, expandObj);
+    exp(result).to.be.eql([
+      { key: '1.1', title: '1.1', pid: '1', path: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+    ]);
+  });
+
+  it('sliceExpand', () => {
       const tree = new Tree({ children: null, });
       const start = 0;
       const total = 5;
@@ -364,26 +437,34 @@ describe('Input', () => {
       ];
 
       const expandObj = {
-        ['1' + '']: true,
-        ['1.1' + '']: true,
-        ['1.2.1' + '']: true,
-        ['1.2.2' + '']: true,
+        target: {
+          ['1' + '']: true,
+          ['1.1' + '']: true,
+          ['1.2.1' + '']: true,
+          ['1.2.2' + '']: true,
+        },
+        expandedAll: false,
       };
 
 
-    const actualResult = tree.sliceExpand(expandDatas, start, total, expandObj);
-    console.info(actualResult);
+      const actualResult = tree.sliceExpand(expandDatas, start, total, expandObj);
+      exp(actualResult).to.be.eql([
+        { key: '1', title: '1', },
+        { key: '1.1', title: '1.1', pid: '1', path: '1', },
+        { key: '1.2', title: '1.2', pid: '1', path: '1', },
+        { key: '1.3', title: '1.3', pid: '1', path: '1', },
+        { key: '2', title: '2', },
 
-    exp(actualResult).to.be.eql([
-      { key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
       ]);
 
     }
   );
+
+  it('getKeys', () => {
+    const tree = new Tree({ children: null, });
+    const result = tree.getKeys([{ key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', },]);
+    exp(result).to.be.eql(['1', '2', '3',]);
+  });
 
 
 });
