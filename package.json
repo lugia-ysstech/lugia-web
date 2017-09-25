@@ -39,7 +39,6 @@
     "prop-types-extra": "^1.0.1",
     "rc-align": "2.x",
     "rc-animate": "2.x",
-    "rc-tree": "^1.7.4",
     "rc-util": "4.x",
     "react": "15.6.1",
     "react-dev-utils": "3.0.2",

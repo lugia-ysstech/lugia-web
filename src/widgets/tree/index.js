@@ -6,7 +6,7 @@
  */
 import animation from '../common/openAnimation';
 import * as React from 'react';
-import RcTree, { TreeNode, } from 'rc-tree';
+import RcTree, { TreeNode, } from './rc-tree';
 import classNames from 'classnames';
 import '../css/sv.css';
 import './index.css';
@@ -103,11 +103,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
   getExpandInfo (): ExpandInfo {
     let array: Array<string> = [];
     const { props, } = this;
-    const { expandedKeys = [], defaultExpandedKeys = [], defaultExpandAll, } = props;
+    const { expandedKeys = [],  defaultExpandAll, } = props;
     if ('expandedKeys' in props) {
       array = expandedKeys;
-    } else if ('defaultExpandedKeys' in props) {
-      array = defaultExpandedKeys;
     }
     const target: Object = {};
     array.forEach(key => {
@@ -124,10 +122,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { children, } = this.props;
     const { expand, } = this.state;
     if (rowData) {
-      const nodes = this.slice(rowData, 0, 555555, expand);
-      const expandedKeys = this.getKeys(nodes);
+      const nodes = this.slice(rowData, 0, 5, expand);
       return <RcTree {...this.props} className={classString}
-                     expandedKeys={expandedKeys}
                      onExpand={this.onExpand}
                      checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
         {this.loopNode(nodes)}
