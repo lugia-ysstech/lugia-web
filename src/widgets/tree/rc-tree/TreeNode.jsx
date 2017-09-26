@@ -229,7 +229,7 @@ class TreeNode extends React.Component {
     if (!newChildren || newChildren === props.children) {
       // content = newChildren;
       newChildren = null;
-      if (!props.loadData || props.isLeaf) {
+      if (props.isLeaf) {
         canRenderSwitcher = false;
         iconState = 'docu';
       }

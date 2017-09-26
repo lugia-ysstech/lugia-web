@@ -17,6 +17,7 @@ type RowData = {
   pid?: string,
   children?: Array<RowData>,
   path?: string,
+  isLeaf?: boolean,
 };
 type TreeProps = {
   showLine?: boolean;
@@ -103,7 +104,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   getExpandInfo (): ExpandInfo {
     let array: Array<string> = [];
     const { props, } = this;
-    const { expandedKeys = [],  defaultExpandAll, } = props;
+    const { expandedKeys = [], defaultExpandAll, } = props;
     if ('expandedKeys' in props) {
       array = expandedKeys;
     }
@@ -177,15 +178,15 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
 
   loopNode = (data: Array<RowData>) => data.map(item => {
-    const { children, key, title, } = item;
+    const { children, key, title, isLeaf, } = item;
     if (children !== undefined) {
       return (
-        <TreeNode key={key} title={title}>
+        <TreeNode key={key} title={title} isLeaf={isLeaf}>
           {this.loopNode(children)}
         </TreeNode>
       );
     }
-    return <TreeNode key={key} title={title}/>;
+    return <TreeNode key={key} title={title} isLeaf={isLeaf}/>;
   });
 
   generateTreeNode (rowData: Array<RowData>): Array<RowData> {
