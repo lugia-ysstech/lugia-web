@@ -8,6 +8,9 @@ import animation from '../common/openAnimation';
 import * as React from 'react';
 import RcTree, { TreeNode, } from './rc-tree';
 import classNames from 'classnames';
+import ThemeProvider from '../common/ThemeProvider';
+import ThrottleScroller from '../scroller/ThrottleScroller';
+import * as Widget from '../consts/Widget';
 import '../css/sv.css';
 import './index.css';
 
@@ -20,6 +23,8 @@ type RowData = {
   isLeaf?: boolean,
 };
 type TreeProps = {
+  start: number,
+  end: number,
   showLine?: boolean;
   className?: string;
   /** 是否支持多选 */
@@ -71,7 +76,7 @@ type TreeProps = {
   prefixCls?: string;
   filterTreeNode?: Function,
   children: React.Node,
-  rowData?: Array<RowData>
+  data?: Array<RowData>
 
 };
 
@@ -116,14 +121,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   render () {
-    const { prefixCls = Tree.defaultProps.prefixCls, className, showLine, checkable, rowData, } = this.props;
+    const { prefixCls = Tree.defaultProps.prefixCls, className, showLine, checkable, data, start, end,} = this.props;
     const classString = classNames({
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     const { children, } = this.props;
     const { expand, } = this.state;
-    if (rowData) {
-      const nodes = this.slice(rowData, 0, 5, expand);
+    if (data) {
+      const nodes = this.slice(data, start, end - start, expand);
       return <RcTree {...this.props} className={classString}
                      onExpand={this.onExpand}
                      checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
@@ -303,5 +308,5 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
 }
 
-export default Tree;
+export default ThemeProvider(ThrottleScroller(Tree, 21), Widget.Tree);
 Tree.TreeNode = TreeNode;

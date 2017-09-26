@@ -62,7 +62,7 @@ export default () => {
     // expandedKeys={[]}
     onExpand={onExpand}
     showLine
-    rowData={rowData}
+    data={rowData}
     checkable
     defaultExpandedKeys={['0-0-0', '0-0-1',]}
     defaultSelectedKeys={['0-0-0', '0-0-1',]}
@@ -70,14 +70,6 @@ export default () => {
     onSelect={onSelect}
     onCheck={onCheck}
   >
-    <TreeNode title="parent 1" key="0-0">
-      <TreeNode title="parent 1-0" key="0-0-0">
-        <TreeNode title="leaf" key="0-0-0-0"/>
-        <TreeNode title="leaf" key="0-0-0-1"/>
-      </TreeNode>
-      <TreeNode title="parent 1-1" key="0-0-1">
-        <TreeNode title={<span style={{ color: '#08c', }}>sss</span>} key="0-0-1-0"/>
-      </TreeNode>
-    </TreeNode>
+   
   </Tree>;
 };
