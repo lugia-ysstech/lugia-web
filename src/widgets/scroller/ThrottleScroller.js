@@ -12,8 +12,12 @@ import { mouseWheel, } from '../common/mouseWheel';
 import $ from 'jquery';
 
 const defaultHeight = 250;
-
+const width = props => {
+  const width = props.theme.width;
+  return  width ? `${width}px;` : '200px;';
+};
 const Col = styled.div`
+  width:${width}
   display: inline-block;
 `;
 const ScrollerContainer = styled.div`
@@ -59,7 +63,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
       if (needScroller) {
         return <ScrollerContainer innerRef={cmp => this.container = cmp}>
-          <Col>{menus}</Col>
+          <Col theme={this.props.getTheme()}>{menus}</Col>
           <Col>
             <Scroller ref={cmp => this.scroller = cmp}
                       viewSize={viewSize}
