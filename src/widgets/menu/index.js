@@ -8,13 +8,13 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Item, { menuItemHeight, } from './item';
 import ThemeProvider from '../common/ThemeProvider';
+import ThrolleScroller from '../scroller/ThrottleScroller';
 import * as Widget from '../consts/Widget';
-import Scroller from '../scroller';
 import '../css/sv.css';
-import { mouseWheel, } from '../common/mouseWheel';
-import $ from 'jquery';
 
 type MenuProps = {
+  start: number,
+  end: number,
   getTheme: Function,
   mutliple: boolean,
   children: Array<React.Element<typeof Item>>,
@@ -38,25 +38,20 @@ const MenuContainer = styled.ul`
   overflow: hidden;
 `;
 
-const MenuCol = styled.div`
-  display: inline-block;
-`;
-const MenuScrollerContainer = styled.div`
-  position: relative;
-`;
 type MenuItemProps = {|
   checked?: boolean,
   mutliple: boolean,
   onClick: Function,
 |} ;
 type MenuState = {
-  start: number,
   selectedKeys: Array<string>,
 }
 
 class Menu extends React.Component<MenuProps, MenuState> {
   static defaultProps = {
     mutliple: false,
+    start: 0,
+    end: 0,
     getTheme: () => {
       return {};
     },
@@ -81,77 +76,34 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return [];
   }
 
-  container: Object;
-  scroller: ?Object;
-
   render () {
-    const { data, } = this.props;
-    const viewSize = this.fetchViewHeigh();
-    let totalSize = 0, needScroller = false, items = [];
+    const { data, start, end,} = this.props;
+    let items = [];
     if (data && data.length > 0) {
-      ({ totalSize, needScroller, items, } = this.computeItems(data, (obj: Object) => {
+      items = this.computeItems(data, start, end, (obj: Object) => {
         const { key, value, } = obj;
         return <Item key={key}>{value}</Item>;
-      }));
+      });
     } else {
       const { children, } = this.props;
 
       if (children && children.length > 0) {
-        ({ totalSize, needScroller, items, } = this.computeItems(children, (obj: Object) => obj));
+        items = this.computeItems(children,start, end,  (obj: Object) => obj);
       }
     }
 
-    const menus = <MenuContainer theme={this.props.getTheme()}>{items}</MenuContainer>;
-    if (needScroller) {
 
-      return <MenuScrollerContainer innerRef={cmp => this.container = cmp}>
-        <MenuCol>{menus}</MenuCol>
-        <MenuCol>
-          <Scroller ref={cmp => this.scroller = cmp} viewSize={viewSize} totalSize={totalSize}
-                    onChange={this.onScroller}/>
-        </MenuCol>
-      </MenuScrollerContainer>;
-    }
-    return menus;
+    return <MenuContainer theme={this.props.getTheme()}>{items}</MenuContainer>;
   }
 
-  computeItems (data: Array<Object>, getItem: (value: Object) => Object): { items: Array<Object>, totalSize: number, needScroller: boolean } {
-    const { start, } = this.state;
+  computeItems (data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
     const items = [];
-    const seeCount = this.computeCanSeeMenuItemCount();
-    const totalSize = menuItemHeight * data.length;
-    const needScroller = seeCount < data.length;
-    let endIndex = seeCount + start;
-    endIndex = endIndex < data.length ? endIndex : data.length;
-    for (let i = start; i < endIndex; i++) {
+    for (let i = start; i < end; i++) {
       items.push(this.renderMenuItem(getItem(data[ i ])));
     }
-    return { items, totalSize, needScroller, };
+    return items;
   }
 
-
-  onScroller = (value: number) => {
-    this.setState({ start: Math.floor(value / menuItemHeight), });
-  };
-
-  computeCanSeeMenuItemCount (): number {
-    return Math.ceil(this.fetchViewHeigh() / menuItemHeight);
-  }
-
-  bindContainerEvent: boolean;
-
-  componentDidMount () {
-    if (this.container && this.bindContainerEvent !== true) {
-      mouseWheel($);
-      $(this.container).mousewheel(this.scroller ? this.scroller.onWheel : () => {});
-      this.bindContainerEvent = true;
-    }
-  }
-
-  fetchViewHeigh () {
-    const { height = defaultHeight, } = this.props.getTheme();
-    return height;
-  }
 
   renderMenuItem = (child: React.Element<typeof Item>) => {
     const { key, } = child;
@@ -215,7 +167,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 }
 
-const Result = ThemeProvider(Menu, Widget.Menu);
+const Result = ThemeProvider(ThrolleScroller(Menu, menuItemHeight), Widget.Menu);
 Result.MenuItem = Item;
 export default Result;
 
