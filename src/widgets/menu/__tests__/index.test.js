@@ -4,10 +4,13 @@ import * as React from 'react';
 import chai from 'chai';
 import Menu from '../';
 import 'jest-styled-components';
-import { mount, render, } from 'enzyme';
 import renderer from 'react-test-renderer';
 import Theme from '../../theme';
 import * as Widget from '../../consts/Widget';
+
+import Enzyme,{ mount,render,}  from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter(), });
 
 const { MenuItem, } = Menu;
 const { expect: exp, } = chai;

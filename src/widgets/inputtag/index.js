@@ -65,7 +65,7 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
 `;
-export default class  extends React.Component<InputTagProps, InputTagState> {
+export default zclass  extends React.Component<InputTagProps, InputTagState> {
   list: Object;
   fontItem: Object;
 

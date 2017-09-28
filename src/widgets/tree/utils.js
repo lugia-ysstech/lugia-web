@@ -19,6 +19,19 @@ const ErrorDefine = {
   PidPathMustSameExist,
   PathNotContainerPid,
 };
+type RowData = {
+  key: string,
+  title: string,
+  pid?: string,
+  children?: Array<RowData>,
+  path?: string,
+  isLeaf?: boolean,
+};
+
+type ExpandInfo = {
+  expandedAll: boolean,
+  target: Object,
+}
 
 const notEmpty = (obj: any) => {
   return obj !== null && obj !== undefined && obj !== '';
@@ -182,6 +195,129 @@ class TreeUtils {
 
 
     return result;
+  }
+
+
+  generateTreeNode (rowData: Array<RowData>): Array<RowData> {
+    const result = [];
+    if (rowData) {
+      const node = {};
+      rowData.forEach(data => {
+        const row = { ...data, };
+        const { pid, key, } = row;
+        node[ key ] = row;
+        if (pid) {
+          const parent = node[ pid ];
+          let { children, } = parent;
+          if (!children) {
+            children = [];
+            parent.children = children;
+          }
+          children.push(row);
+        } else {
+          result.push(node[ key ]);
+        }
+      });
+    }
+    return result;
+  }
+
+  slice (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo): Array<RowData> {
+    if (rowDatas && rowDatas.length === 0) {
+      return [];
+    }
+
+    const root = rowDatas[ start ];
+    if (!root) {
+      console.error('树形数据存在问题');
+      return [];
+    }
+
+    const isTopLevel = !root.pid;
+    if (isTopLevel) {
+      return this.generateTreeNode(this.sliceExpand(rowDatas, start, total, expandInfo));
+    }
+
+    const pathNode = this.getPathNodes(rowDatas, start, root.pid);
+    return this.generateTreeNode(this.sliceExpand(rowDatas, start, total, expandInfo, pathNode));
+  }
+
+  sliceExpand (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo, parentNode?: Array<RowData> = []): Array<RowData> {
+
+    if (!expandInfo) {
+      return rowDatas.slice(start, start + total);
+    }
+    const { target, expandedAll, } = expandInfo;
+
+    const result = [];
+    let foundRow: number = 0;
+    let inCollapseRange: boolean = false;
+    let collapsePath: ?string = null;
+
+    const processRow = (needComput: ?boolean = true) => (row: RowData) => {
+      const { key, path, } = row;
+
+      if (inCollapseRange) {
+        if (!path || collapsePath === null || collapsePath === undefined || !path.startsWith(collapsePath)) {
+          inCollapseRange = false;
+        }
+      }
+
+      if (!inCollapseRange) {
+        result.push(row);
+        if (needComput) {
+          foundRow++;
+        }
+      }
+
+      const isNotExpanded = expandedAll ? target[ key ] : !target[ key ];
+
+      if (!inCollapseRange && isNotExpanded) {
+        inCollapseRange = true;
+        collapsePath = key;
+        if (path) {
+          collapsePath = `${path}/${collapsePath}`;
+        }
+      }
+    };
+
+    parentNode.forEach(processRow(false));
+    const processRowForRowDatas = processRow();
+    for (let i = start; foundRow < total && i < rowDatas.length; i++) {
+      const row = rowDatas[ i ];
+      processRowForRowDatas(row);
+    }
+
+    return result;
+  }
+
+  getPathNodes (rowDatas: Array<RowData>, start: number, targetPid?: string) {
+    const result = [];
+    if (!targetPid) {
+      return result;
+    }
+    for (let findPidIdx = start; findPidIdx >= 0; findPidIdx--) {
+      const node = rowDatas[ findPidIdx ];
+      const { key, pid, } = node;
+      if (key === targetPid) {
+        result.push(node);
+        if (!pid) {
+          break;
+        }
+        targetPid = pid;
+      }
+    }
+    return result.reverse();
+  }
+
+  getKeys (nodes: Array<RowData>): Array<string> {
+    const result = [];
+    nodes && nodes.forEach((node: RowData) => {
+      const { key, } = node;
+      result.push(key);
+    });
+    return result;
+
   }
 
 }

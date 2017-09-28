@@ -4,9 +4,11 @@ import * as React from 'react';
 import chai from 'chai';
 import MenuItem from '../item';
 import 'jest-styled-components';
-import { mount, } from 'enzyme';
 
 import renderer from 'react-test-renderer';
+import Enzyme,{ mount,}  from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter(), });
 
 const { expect: exp, } = chai;
 const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');

@@ -1,11 +1,13 @@
 //@flow
 import type { ReactWrapper, } from 'enzyme';
-import { mount, } from 'enzyme';
 import type { VerifyOrder, } from 'vx-mock';
 import React from 'react';
 import Input from '../';
 import 'jest-styled-components';
 import chai from 'chai';
+import Enzyme,{ mount,}  from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter(), });
 
 const { mockFunction, VerifyOrder: VerifyOrderFactory, VerifyOrderConfig, } = require('vx-mock');
 

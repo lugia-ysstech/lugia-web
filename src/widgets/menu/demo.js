@@ -17,7 +17,7 @@ export default () => {
   }
   return <div>
     <div>hello world</div>
-    <Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }}><Menu>
+    <Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }} ><Menu mutliple>
       {items}
     </Menu></Theme>
   </div>;

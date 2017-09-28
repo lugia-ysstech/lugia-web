@@ -1,5 +1,4 @@
 //@flow
-import { mount, } from 'enzyme';
 import React from 'react';
 import Input, { TextBoxInner, } from '../';
 import renderer from 'react-test-renderer';
@@ -9,6 +8,9 @@ import 'jest-styled-components';
 
 import Support from '../../common/FormFieldWidgetSupport';
 import { assertInputValue, testFireNullKeyBoardEvent, testKeyBoardEvent, testPropsValue, } from './InputTestUtils';
+import Enzyme,{ mount, }  from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter(), });
 
 const { expect: exp, } = chai;
 const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');

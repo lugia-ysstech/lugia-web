@@ -42,6 +42,7 @@ const builtinPlacements = {
 };
 
 function preventDefault (e) {
+
   e.preventDefault();
 }
 
