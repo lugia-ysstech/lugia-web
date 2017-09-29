@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Popup Popup snapshot 1`] = `
-<div>
+Array [
+  undefined,
   <sv.widget.Align
     align="bottom"
     autoResize={true}
@@ -10,15 +11,15 @@ exports[`Popup Popup snapshot 1`] = `
     offsetY={0}
     onAlign={[Function]}
     visible={true}
-  >
+>
     <PopupInner
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
-      style={Object {}}
-      visible={true}
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
+        style={Object {}}
+        visible={true}
     >
-       
+         
     </PopupInner>
-  </sv.widget.Align>
-</div>
+</sv.widget.Align>,
+]
 `;
