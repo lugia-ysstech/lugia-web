@@ -5,11 +5,10 @@
  * @flow
  */
 import * as React from 'react';
-import { findDOMNode, } from 'react-dom';
+import { createPortal, findDOMNode, } from 'react-dom';
 import contains from 'rc-util/lib/Dom/contains';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
-import RenderHook from '../utils/RenderHook';
 
 function noop () {
 }
@@ -44,7 +43,6 @@ type TriggerProps = {
   onBlur: ?Function,
   getDocument: Function,
   onPopupVisibleChange: Function,
-  afterPopupVisibleChange: Function,
   onPopupAlign: Function,
   mouseEnterDelay: number,
   mouseLeaveDelay: number,
@@ -60,7 +58,6 @@ type TriggerProps = {
   zIndex: number,
   popup: Function | string,
   popupVisible: boolean,
-  renderComponent: Function,
   popupPlacement: Function,
   builtinPlacements: Function,
   children: React.Element<any>,
@@ -111,7 +108,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   preClickTime: number;
   preTouchTime: number;
 
-  constructor (props) {
+  constructor (props: TriggerProps) {
     super(props);
     let { popupVisible = false, defaultPopupVisible, } = props;
     if ('popupVisible' in props) {
@@ -123,11 +120,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     this.state = {
       popupVisible,
     };
-  }
-
-
-  isVisible () {
-    return this.state.popupVisible;
   }
 
   getContainer () {
@@ -180,7 +172,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     );
   }
 
-  componentWillReceiveProps ({ popupVisible, }) {
+  componentWillReceiveProps ({ popupVisible, }: Object) {
     if (popupVisible !== undefined) {
       this.setState({
         popupVisible,
@@ -191,33 +183,16 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   componentWillMount () {
     ALL_HANDLERS.forEach((h: EventName) => {
-      this.handlers[ `fire${h}` ] = e => {
+      this.handlers[ `fire${h}` ] = (e: Object) => {
         this.fireEvents(h, e);
       };
     });
   }
 
 
-  componentDidMount () {
-    this.componentDidUpdate({}, {
-      popupVisible: this.state.popupVisible,
-    });
-  }
-
-
-  componentDidUpdate (_, prevState) {
-    const { afterPopupVisibleChange, getDocument, renderComponent, } = this.props;
+  componentDidUpdate () {
+    const { getDocument, } = this.props;
     const { popupVisible, } = this.state;
-    renderComponent(null, () => {
-      if (prevState.popupVisible !== popupVisible) {
-        afterPopupVisibleChange(popupVisible);
-      }
-    });
-
-    // We must listen to `mousedown` or `touchstart`, edge case:
-    // https://github.com/ant-design/ant-design/issues/5804
-    // https://github.com/react-component/calendar/issues/250
-    // https://github.com/react-component/trigger/issues/50
     if (popupVisible) {
       let currentDocument;
       if (!this.clickOutsideHandler && this.isClickToHide()) {
@@ -255,7 +230,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
 
-  setPopupVisible (popupVisible) {
+  setPopupVisible (popupVisible: boolean) {
     this.clearDelayTimer();
     if (this.state.popupVisible !== popupVisible) {
       if (!('popupVisible' in this.props)) {
@@ -268,7 +243,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
 
-  delaySetPopupVisible (visible, delayS) {
+  delaySetPopupVisible (visible: boolean, delayS: number) {
     const delay = delayS * 1000;
     this.clearDelayTimer();
     if (delay) {
@@ -346,7 +321,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
 
-    return React.cloneElement(child, newChildProps);
+    const portal = createPortal(this.getComponent(), this.getContainer());
+    return [React.cloneElement(child, newChildProps), portal,];
   }
 
   isClickToShow () {
@@ -384,13 +360,13 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     return action.indexOf('focus') !== -1 || hideAction.indexOf('blur') !== -1;
   }
 
-  onMouseEnter = e => {
+  onMouseEnter = (e: Object) => {
     this.fireEvents('onMouseEnter', e);
     this.delaySetPopupVisible(true, this.props.mouseEnterDelay);
   };
 
 
-  onMouseLeave = e => {
+  onMouseLeave = (e: Object) => {
     this.fireEvents('onMouseLeave', e);
     this.delaySetPopupVisible(false, this.props.mouseLeaveDelay);
   };
@@ -401,7 +377,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
 
-  onPopupMouseLeave = e => {
+  onPopupMouseLeave = (e: Object) => {
     // https://github.com/react-component/trigger/pull/13
     // react bug?
     if (e.relatedTarget && !e.relatedTarget.setTimeout &&
@@ -413,7 +389,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
 
-  onFocus = e => {
+  onFocus = (e: Object) => {
     this.fireEvents('onFocus', e);
     // incase focusin and focusout
     this.clearDelayTimer();
@@ -424,19 +400,19 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
 
-  onMouseDown = e => {
+  onMouseDown = (e: Object) => {
     this.fireEvents('onMouseDown', e);
     this.preClickTime = Date.now();
   };
 
 
-  onTouchStart = e => {
+  onTouchStart = (e: Object) => {
     this.fireEvents('onTouchStart', e);
     this.preTouchTime = Date.now();
   };
 
 
-  onBlur = e => {
+  onBlur = (e: Object) => {
     this.fireEvents('onBlur', e);
     this.clearDelayTimer();
     if (this.isBlurToHide()) {
@@ -445,7 +421,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
 
-  onClick = e => {
+  onClick = (e: Object) => {
     this.fireEvents('onClick', e);
     // focus will trigger click
     if (this.focusTime) {
@@ -472,7 +448,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
 
-  onDocumentClick = e => {
+  onDocumentClick = (e: Object) => {
     const target = e.target;
     const root = findDOMNode(this);
     const popupNode = this.getPopupDomNode();
@@ -482,7 +458,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
 
-  fireEvents (type: EventName, e) {
+  fireEvents (type: EventName, e: Object) {
     const childCallback = this.props.children.props[ type ];
     childCallback && childCallback(e);
 
@@ -490,10 +466,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     callback && callback(e);
   }
 
-
   close () {
     this.setPopupVisible(false);
   }
 }
 
-export default RenderHook({ autoMount: false, }, Trigger);
+export default Trigger;
