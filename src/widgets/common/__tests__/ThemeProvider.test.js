@@ -14,6 +14,7 @@ describe('ThemeProvider', () => {
   it('ThemeProvider', () => {
 
     const TestComponent = ThemeProvider(class  extends React.Component<any> {
+      static displayName = 'ThemeProviderTest';
       render () {
         return <div>{JSON.stringify(this.props.getTheme())}{this.props.children}</div>;
       }

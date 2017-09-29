@@ -10,6 +10,7 @@ import Scroller from './index';
 import '../css/sv.css';
 import { mouseWheel, } from '../common/mouseWheel';
 import $ from 'jquery';
+import * as Widget from '../consts/Widget';
 
 const defaultHeight = 250;
 const width = props => {
@@ -33,6 +34,8 @@ type ThrottleScrollerState = {
 }
 export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
   return class ThrottleScroller extends React.Component<ThrottleScrollerProps, ThrottleScrollerState> {
+    static displayName = Widget.ThrottleScroller;
+
     static defaultProps = {
       mutliple: false,
       getTheme: () => {
