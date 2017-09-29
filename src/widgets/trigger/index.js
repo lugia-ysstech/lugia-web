@@ -155,6 +155,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
     return (
       <Popup
+        key="popup"
         offsetX={offsetX}
         offsetY={offsetY}
         ref={cmp => this.component = cmp}
@@ -319,6 +320,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     } else {
       newChildProps.onFocus = this.createTwoChains('onFocus');
       newChildProps.onBlur = this.createTwoChains('onBlur');
+      newChildProps.key = 'container';
     }
 
     const portal = createPortal(this.getComponent(), this.getContainer());
