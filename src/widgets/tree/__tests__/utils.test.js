@@ -218,19 +218,18 @@ describe('utils', () => {
 
 
   it('slice not topLevel 真实测试', () => {
-    const mockUtils = mockObject.create(utils);
-    const generateTreeNode = mockUtils.mockFunction('generateTreeNode');
-    generateTreeNode.returned([]);
-    utils.slice(datas, 8, 5, { expandedAll: true, target: { ['1' + '']: true, }, });
-    exp(generateTreeNode.getCallArgs(0)[0]).to.be.eql( [{ key: '1', title: '1', },
-      { key: '2', title: '2', },
-      { key: '2.1', title: '2.1', pid: '2', path: '2', },
-      { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', },
-      { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
-      { key: '2.1.2.1',
-        title: '2.1.2.1',
-        pid: '2.1.2',
-        path: '2/2.1/2.1.2', },]
+    exp(utils.slice(datas, 8, 5, { expandedAll: true, target: { ['1' + '']: true, }, })).to.be.eql(
+      [{ key: '1', title: '1', },
+        { key: '2', title: '2', },
+        { key: '2.1', title: '2.1', pid: '2', path: '2', },
+        { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', },
+        { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
+        {
+          key: '2.1.2.1',
+          title: '2.1.2.1',
+          pid: '2.1.2',
+          path: '2/2.1/2.1.2',
+        },]
     );
   });
 
@@ -395,40 +394,30 @@ describe('utils', () => {
 
   it('slice topLevel', () => {
     const mockUtils = mockObject.create(utils);
-    const generateTreeNode = mockUtils.mockFunction('generateTreeNode');
     const getPathNodes = mockUtils.mockFunction('getPathNodes');
-    const expectResult = [1, 2, 3, 4,];
-    generateTreeNode.returned(expectResult);
-    exp(utils.slice(datas, 0, 5)).to.be.eql(expectResult);
-    exp(generateTreeNode.getCallArgs(0)[ 0 ]).to.be.eql(datas.slice(0, 5));
-    exp(generateTreeNode.callTimes()).to.be.equal(1);
+    exp(utils.slice(datas, 0, 5)).to.be.eql(datas.slice(0, 5));
     exp(getPathNodes.callTimes()).to.be.equal(0);
   });
 
   it('slice not topLevel', () => {
     const mockUtils = mockObject.create(utils);
-    const generateTreeNode = mockUtils.mockFunction('generateTreeNode');
     const getPathNodes = mockUtils.mockFunction('getPathNodes');
     const sliceExpand = mockUtils.mockFunction('sliceExpand');
-    const expectResult = [1, 2, 3, 4,];
     const pathNode = [1, 2, 3, 4,];
     const start = 1;
     const total = 5;
 
-    generateTreeNode.returned(expectResult);
     getPathNodes.returned(pathNode);
     const sliceResult = [5, 7, 5, 75,];
     sliceExpand.returned(sliceResult);
     const expandInfo = { expandedAll: false, target: {}, };
-    exp(utils.slice(datas, start, total, expandInfo)).to.be.eql(expectResult);
+    exp(utils.slice(datas, start, total, expandInfo)).to.be.eql(sliceResult);
 
-    exp(generateTreeNode.callTimes()).to.be.equal(1);
     exp(getPathNodes.callTimes()).to.be.equal(1);
     exp(sliceExpand.callTimes()).to.be.equal(1);
 
     exp(sliceExpand.getCallArgs(0)).to.be.eql([datas, start, total, expandInfo, pathNode,]);
   });
-
 
 
   it('sliceExpand expand is undefined, is eql [].slice(start, start + total)', () => {
@@ -706,7 +695,6 @@ describe('utils', () => {
     const result = utils.getKeys([{ key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', },]);
     exp(result).to.be.eql(['1', '2', '3',]);
   });
-
 
 
 });

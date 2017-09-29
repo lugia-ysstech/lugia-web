@@ -235,11 +235,11 @@ class TreeUtils {
 
     const isTopLevel = !root.pid;
     if (isTopLevel) {
-      return this.generateTreeNode(this.sliceExpand(rowDatas, start, total, expandInfo));
+      return this.sliceExpand(rowDatas, start, total, expandInfo);
     }
 
     const pathNode = this.getPathNodes(rowDatas, start, root.pid);
-    return this.generateTreeNode(this.sliceExpand(rowDatas, start, total, expandInfo, pathNode));
+    return this.sliceExpand(rowDatas, start, total, expandInfo, pathNode);
   }
 
   sliceExpand (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo, parentNode?: Array<RowData> = []): Array<RowData> {

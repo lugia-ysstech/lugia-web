@@ -91,6 +91,7 @@ type TreeState = {
 
 class Tree extends React.Component<TreeProps, TreeState> {
 
+  static displayName = Widget.Tree;
   static defaultProps = {
     prefixCls: 'sv-tree',
     checkable: false,
@@ -122,15 +123,28 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   render () {
-    const { prefixCls = Tree.defaultProps.prefixCls, className, showLine, checkable, data, start, end,} = this.props;
+    const { prefixCls = Tree.defaultProps.prefixCls, className, showLine, checkable, data, start, end, } = this.props;
     const classString = classNames({
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     const { children, } = this.props;
     const { expand, } = this.state;
+    const { expandedAll, target, } = expand;
     if (data) {
-      const nodes = Utils.slice(data, start, end - start, expand);
-      return <RcTree {...this.props} className={classString}
+      const rowData = Utils.slice(data, start, end - start, expand);
+      const nodes = Utils.generateTreeNode(rowData);
+      const expandedKeys = [];
+      rowData.forEach(node => {
+        const { key, } = node;
+        const targetValue = target[key];
+        const isExpanded = expandedAll? !targetValue : targetValue;
+        if(isExpanded){
+          expandedKeys.push(key);
+        }
+      });
+      return <RcTree {...this.props}
+                     className={classString}
+                     expandedKeys={expandedKeys}
                      onExpand={this.onExpand}
                      checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
         {this.loopNode(nodes)}
