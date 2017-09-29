@@ -320,8 +320,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     } else {
       newChildProps.onFocus = this.createTwoChains('onFocus');
       newChildProps.onBlur = this.createTwoChains('onBlur');
-      newChildProps.key = 'container';
     }
+    newChildProps.key = 'container';
 
     const portal = createPortal(this.getComponent(), this.getContainer());
     return [React.cloneElement(child, newChildProps), portal,];

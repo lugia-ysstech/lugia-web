@@ -26,7 +26,7 @@ type PopupProps = {
 class Popup extends React.Component<PopupProps> {
 
   static defaultProps = {
-  offsetX: 0,
+    offsetX: 0,
     offsetY: 0,
     visible: true,
     isMask: false,
@@ -51,12 +51,8 @@ class Popup extends React.Component<PopupProps> {
   }
 
   render () {
-    return (
-      <div>
-        {this.getMaskElement()}
-        {this.getPopupElement()}
-      </div>
-    );
+    return [this.getMaskElement(),
+      this.getPopupElement(),];
   }
 
   onAlign = (popupDomNode: HTMLElement, align: string) => {
@@ -100,13 +96,14 @@ class Popup extends React.Component<PopupProps> {
       offsetY={offsetY}
       autoResize
       getTargetDom={this.getTarget}
-      key="popup"
+      key="align"
       ref={this.saveAlignRef}
       align={align}
       visible={visible}
       onAlign={this.onAlign}
     >
       <PopupInner
+        key="popupiner"
         {...popupInnerProps}
       >
         {children}
