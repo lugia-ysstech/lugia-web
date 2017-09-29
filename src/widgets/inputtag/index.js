@@ -65,7 +65,7 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
 `;
-export default zclass  extends React.Component<InputTagProps, InputTagState> {
+export default class  extends React.Component<InputTagProps, InputTagState> {
   list: Object;
   fontItem: Object;
 
@@ -93,12 +93,18 @@ export default zclass  extends React.Component<InputTagProps, InputTagState> {
     );
   }
 
+  oldWidth: number;
+
   componentDidMount () {
+    this.oldWidth = this.list.offsetWidth;
     this.adaptiveItems(this.list.offsetWidth);
   }
 
   componentDidUpdate () {
-    this.adaptiveItems(this.list.offsetWidth);
+    if (this.list.offsetWidth !== this.oldWidth) {
+      this.adaptiveItems(this.list.offsetWidth);
+      this.oldWidth = this.list.offsetWidth;
+    }
   }
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
@@ -112,7 +118,7 @@ export default zclass  extends React.Component<InputTagProps, InputTagState> {
         if (totalWidth >= listWidth) {
           break;
         }
-        result.push(<Item>{text}</Item>);
+        result.push(<Item key={`k${i}`}>{text}</Item>);
 
       }
     }
