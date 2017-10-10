@@ -92,22 +92,22 @@ describe('utils', () => {
   it('checkTree is rowData wrong', () => {
     const mock = mockObject.create(utils);
     const isRightTreeRowData = mock.mockFunction('isRightTreeRowData');
-    const errors = [ '1', '2', '3', ];
+    const errors = ['1', '2', '3',];
     isRightTreeRowData.returned(errors[ 0 ]);
     isRightTreeRowData.returned(errors[ 1 ]);
     isRightTreeRowData.returned(errors[ 2 ]);
-    exp(utils.checkTree([ {}, {}, {}, ])).to.be.eql(errors.map(err => `{}==>${err}`));
+    exp(utils.checkTree([{}, {}, {},])).to.be.eql(errors.map(err => `{}==>${err}`));
     isRightTreeRowData.reset();
   });
 
   it('checkTree is right', () => {
     const mock = mockObject.create(utils);
     const isRightTreeRowData = mock.mockFunction('isRightTreeRowData');
-    const errors = [ '', '', '', ];
+    const errors = ['', '', '',];
     isRightTreeRowData.returned(errors[ 0 ]);
     isRightTreeRowData.returned(errors[ 1 ]);
     isRightTreeRowData.returned(errors[ 2 ]);
-    exp(utils.checkTree([ {}, {}, {}, ])).to.be.eql([]);
+    exp(utils.checkTree([{}, {}, {},])).to.be.eql([]);
     isRightTreeRowData.reset();
   });
 
@@ -163,10 +163,10 @@ describe('utils', () => {
   const pathIsError = ({ key, }) => `${key}结点path信息错误!`;
 
   it('isRightLevel pid level before level ', () => {
-    const errorNodes = [ { key: '1.1', pid: '2', path: '1/7', },
+    const errorNodes = [{ key: '1.1', pid: '2', path: '1/7', },
       { key: '1.2', pid: '2', path: '1/7', },
       { key: '1.3', pid: '2', path: '1/7', },
-      { key: '1.4', pid: '2', path: '1/7', }, ];
+      { key: '1.4', pid: '2', path: '1/7', },];
     const datas = [
       { key: '1', },
       { key: '2', pid: '1', path: '1', },
@@ -183,7 +183,7 @@ describe('utils', () => {
 
     const errorNodes = [
       { key: '1.1.1', pid: '1.1', path: '1', },
-      { key: '1.1.2', pid: '1.1', path: '1', }, ];
+      { key: '1.1.2', pid: '1.1', path: '1', },];
     const datas = [
       { key: '1', },
       { key: '1.1', pid: '1', path: '1', },
@@ -198,11 +198,11 @@ describe('utils', () => {
   });
 
   it('isRightLevel pid level after level but not join, is after "3"', () => {
-    const errorNodes = [ { key: '1.1', pid: '2', path: '1/2', },
+    const errorNodes = [{ key: '1.1', pid: '2', path: '1/2', },
       { key: '1.2', pid: '2', path: '1/2', },
 
       { key: '1.3', pid: '2', path: '1/2', },
-      { key: '1.4', pid: '2', path: '1/2', }, ];
+      { key: '1.4', pid: '2', path: '1/2', },];
     const datas = [
       { key: '1', },
       { key: '2', pid: '1', path: '1', },
@@ -218,7 +218,7 @@ describe('utils', () => {
 
   it('slice not topLevel 真实测试', () => {
     exp(utils.slice(datas, 8, 5, { expandedAll: true, target: { ['1' + '']: true, }, })).to.be.eql(
-      [ { key: '1', title: '1', },
+      [{ key: '1', title: '1', },
         { key: '2', title: '2', },
         { key: '2.1', title: '2.1', pid: '2', path: '2', },
         { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
@@ -229,7 +229,7 @@ describe('utils', () => {
           pid: '2.1.2',
           path: '2/2.1/2.1.2',
           isLeaf: true,
-        }, ]
+        },]
     );
   });
 
@@ -240,7 +240,7 @@ describe('utils', () => {
 
   it('generateTreeNode is tree', () => {
     const actual = utils.generateTreeNode(datas);
-    const expectResult = [ {
+    const expectResult = [{
       key: '1',
       title: '1',
       children: [
@@ -279,7 +279,7 @@ describe('utils', () => {
                       path: '1/1.2/1.2.2/1.2.2.1',
                       isLeaf: true,
 
-                    }, ],
+                    },],
                 },
                 {
                   key: '1.2.2.2',
@@ -288,19 +288,19 @@ describe('utils', () => {
                   path: '1/1.2/1.2.2',
                   isLeaf: true,
 
-                }, ],
-            }, ],
+                },],
+            },],
         }, {
           key: '1.3',
           title: '1.3',
           pid: '1',
           path: '1',
-          children: [ {
+          children: [{
             key: '1.3.1',
             title: '1.3.1',
             pid: '1.3',
             path: '1/1.3',
-            children: [ {
+            children: [{
               key: '1.3.1.1',
               title: '1.3.1.1',
               pid: '1.3.1',
@@ -312,7 +312,7 @@ describe('utils', () => {
               pid: '1.3.1',
               path: '1/1.3/1.3.1',
               isLeaf: true,
-            }, ],
+            },],
           }, {
             key: '1.3.2',
             title: '1.3.2',
@@ -333,24 +333,24 @@ describe('utils', () => {
                 path: '1/1.3/1.3.2',
                 isLeaf: true,
 
-              }, ],
+              },],
           }, {
             key: '1.3.3',
             title: '1.3.3',
             pid: '1.3',
             path: '1/1.3',
             isLeaf: true,
-          }, ],
-        }, ],
+          },],
+        },],
     }, {
       key: '2',
       title: '2',
-      children: [ {
+      children: [{
         key: '2.1',
         title: '2.1',
         pid: '2',
         path: '2',
-        children: [ {
+        children: [{
           key: '2.1.1',
           title: '2.1.1',
           pid: '2.1',
@@ -362,28 +362,28 @@ describe('utils', () => {
           pid: '2.1',
           path: '2/2.1',
 
-          children: [ {
+          children: [{
             key: '2.1.2.1',
             title: '2.1.2.1',
             pid: '2.1.2',
             path: '2/2.1/2.1.2',
             isLeaf: true,
 
-          }, ],
-        }, ],
+          },],
+        },],
       }, {
         key: '2.2',
         title: '2.2',
         pid: '2',
         path: '2',
 
-        children: [ {
+        children: [{
           key: '2.2.1',
           title: '2.2.1',
           pid: '2.2',
           path: '2/2.2',
 
-          children: [ {
+          children: [{
             key: '2.2.1.1',
             title: '2.2.1.1',
             pid: '2.2.1',
@@ -396,19 +396,19 @@ describe('utils', () => {
             pid: '2.2.1',
             path: '2/2.2/2.2.1',
             isLeaf: true,
-          }, ],
+          },],
         }, {
           key: '2.2.2',
           title: '2.2.2',
           pid: '2.2',
           path: '2/2.2',
           isLeaf: true,
-        }, ],
-      }, ],
+        },],
+      },],
     }, {
       key: '3',
       title: '3',
-      children: [ {
+      children: [{
         key: '3.1',
         title: '3.1', pid: '3',
         path: '3',
@@ -419,10 +419,10 @@ describe('utils', () => {
         pid: '3',
         path: '3',
         isLeaf: true,
-      }, ],
+      },],
     }, {
       key: '4', title: '4', isLeaf: true,
-    }, ];
+    },];
 
     exp(actual).to.be.eql(expectResult);
   });
@@ -431,13 +431,13 @@ describe('utils', () => {
   it('getPathNodes 起始节点为1级结点', () => {
 
     exp(utils.getPathNodes(datas, 1, '1')).to.be.eql([
-      { key: '1', title: '1', }, ]);
+      { key: '1', title: '1', },]);
   });
 
   it('getPathNodes 起始结点非根结点 2 级', () => {
     exp(utils.getPathNodes(datas, 2, '1.2')).to.be.eql([
       { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', }, ]);
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },]);
   });
 
   it('getPathNodes 起始结点非根结点 3 级', () => {
@@ -445,7 +445,7 @@ describe('utils', () => {
       { key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', }, ]);
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },]);
   });
 
   it('slice empty', () => {
@@ -463,12 +463,12 @@ describe('utils', () => {
     const mockUtils = mockObject.create(utils);
     const getPathNodes = mockUtils.mockFunction('getPathNodes');
     const sliceExpand = mockUtils.mockFunction('sliceExpand');
-    const pathNode = [ 1, 2, 3, 4, ];
+    const pathNode = [1, 2, 3, 4,];
     const start = 1;
     const total = 5;
 
     getPathNodes.returned(pathNode);
-    const sliceResult = [ 5, 7, 5, 75, ];
+    const sliceResult = [5, 7, 5, 75,];
     sliceExpand.returned(sliceResult);
     const expandInfo = { expandedAll: false, target: {}, };
     exp(utils.slice(datas, start, total, expandInfo)).to.be.eql(sliceResult);
@@ -476,7 +476,7 @@ describe('utils', () => {
     exp(getPathNodes.callTimes()).to.be.equal(1);
     exp(sliceExpand.callTimes()).to.be.equal(1);
 
-    exp(sliceExpand.getCallArgs(0)).to.be.eql([ datas, start, total, expandInfo, pathNode, ]);
+    exp(sliceExpand.getCallArgs(0)).to.be.eql([datas, start, total, expandInfo, pathNode,]);
   });
 
 
@@ -490,7 +490,7 @@ describe('utils', () => {
   it('sliceExpand expand is exisit expandedAll true toproot collapse', () => {
     const start = 0;
     const total = 5;
-    const expandDatas = [ { key: '1', title: '1', },
+    const expandDatas = [{ key: '1', title: '1', },
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
@@ -516,7 +516,7 @@ describe('utils', () => {
   it('sliceExpand expand is exisit expandedAll false', () => {
     const start = 1;
     const total = 5;
-    const expandDatas = [ { key: '1', title: '1', },
+    const expandDatas = [{ key: '1', title: '1', },
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
@@ -551,7 +551,7 @@ describe('utils', () => {
   it('sliceExpand expand is exisit expandedAll false start is collapse', () => {
     const start = 1;
     const total = 5;
-    const expandDatas = [ { key: '1', title: '1', },
+    const expandDatas = [{ key: '1', title: '1', },
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
@@ -586,7 +586,7 @@ describe('utils', () => {
   it('sliceExpand expand is exisit expandedAll true', () => {
     const start = 1;
     const total = 5;
-    const expandDatas = [ { key: '1', title: '1', },
+    const expandDatas = [{ key: '1', title: '1', },
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
@@ -752,8 +752,8 @@ describe('utils', () => {
   });
 
   it('getKeys', () => {
-    const result = utils.getKeys([ { key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', }, ]);
-    exp(result).to.be.eql([ '1', '2', '3', ]);
+    const result = utils.getKeys([{ key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', },]);
+    exp(result).to.be.eql(['1', '2', '3',]);
   });
 
   it('fetchNodeExtendInfo will exisit', () => {
