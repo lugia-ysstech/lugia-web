@@ -11,9 +11,9 @@ import Theme from '../theme';
 import * as Widget from '../consts/Widget';
 
 type DropMenuProps = {
-  action: string,
+  action: Array<string>,
   menus: React.Node,
-  children: React.Node
+  children: React.Element<any>,
 };
 const MenuContainer = styled.div`
    background-color: #fff;
@@ -27,7 +27,7 @@ type DropMenuState = {
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
-    action: 'hover',
+    action: ['hover',],
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
