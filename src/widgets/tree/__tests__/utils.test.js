@@ -21,7 +21,6 @@ describe('utils', () => {
     { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', },
     { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', },
     { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', },
-
     { key: '1.3', title: '1.3', pid: '1', path: '1', },
     { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
     { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', },
@@ -696,5 +695,228 @@ describe('utils', () => {
     exp(result).to.be.eql(['1', '2', '3',]);
   });
 
+  it('fetchNodeExtendInfo will exisit', () => {
+
+    const expectResultA = {
+      nowVisible: 5,
+      realyVisible: 6,
+      children: 7,
+      begats: 8,
+    };
+    const expectResultB = {
+      nowVisible: 8,
+      realyVisible: 7,
+      children: 6,
+      begats: 5,
+    };
+    const nodeIdA = 'a';
+    const nodeIdB = 'b';
+    const countInfo = {
+      [nodeIdA]: expectResultA,
+      [nodeIdB]: expectResultB,
+    };
+    exp(utils.fetchNodeExtendInfo(nodeIdA, datas, countInfo)).to.be.eql(expectResultA);
+    exp(utils.fetchNodeExtendInfo(nodeIdB, datas, countInfo)).to.be.eql(expectResultB);
+  });
+  const baseCountInfo: Object = {
+    ['1' + '']: { index: 0, },
+    ['2' + '']: { index: 17, },
+    ['3' + '']: { index: 27, },
+    ['4' + '']: { index: 30, },
+    ['1.1' + '']: { index: 1, },
+    ['1.2' + '']: { index: 2, },
+    '1.2.1': { index: 3, },
+    '1.2.2': { index: 4, },
+    '1.2.2.1': { index: 5, },
+    '1.2.2.1.1': { index: 6, },
+    '1.2.2.1.2': { index: 7, },
+    '1.2.2.2': { index: 8, },
+    ['1.3' + '']: { index: 9, },
+    '1.3.1': { index: 10, },
+    '1.3.1.1': { index: 11, },
+    '1.3.1.2': { index: 12, },
+    '1.3.2': { index: 13, },
+    '1.3.2.1': { index: 14, },
+    '1.3.2.2': { index: 15, },
+    '1.3.3': { index: 16, },
+    ['2.1' + '']: { index: 18, },
+    '2.1.1': { index: 19, },
+    '2.1.2': { index: 20, },
+    '2.1.2.1': { index: 21, },
+    ['2.2' + '']: { index: 22, },
+    '2.2.1': { index: 23, },
+    '2.2.1.1': { index: 24, },
+    '2.2.1.2': { index: 25, },
+    '2.2.2': { index: 26, },
+    [ '3.1' + '']: { index: 28, },
+    ['3.2' + '']: { index: 29, },
+  };
+  it('fetchNodeExtendInfo for virual root for expandedAll: true', () => {
+
+    const expectResult = {
+      nowVisible: datas.length,
+      realyVisible: datas.length,
+      children: 4,
+      begats: datas.length,
+      index: -1,
+    };
+    const nodeId = 'sv_tree_root';
+    const countInfo = {};
+    exp(utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true)).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+    baseCountInfo[ nodeId ] = expectResult;
+    exp(countInfo).to.be.eql(baseCountInfo);
+  });
+
+  it('fetchNodeExtendInfo for virual root for expandedAll: false', () => {
+
+    const expectResult = {
+      nowVisible: 4,
+      realyVisible: 4,
+      children: 4,
+      begats: datas.length,
+      index: -1,
+    };
+    const nodeId = 'sv_tree_root';
+    const countInfo = {};
+    exp(utils.fetchNodeExtendInfo(nodeId, datas, countInfo)).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+    baseCountInfo[ nodeId ] = expectResult;
+    exp(countInfo).to.be.eql(baseCountInfo);
+  });
+
+  it('fetchNodeExtendInfo for normal node for expandedAll: false nodeId: 1', () => {
+
+    const expectResult = {
+      nowVisible: 3,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+    };
+    const nodeId = '1';
+    const countInfo = {};
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
+    exp(actual).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+  });
+
+  it('fetchNodeExtendInfo for normal node for expandedAll: true  nodeId: 1', () => {
+
+    const expectResult = {
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    };
+    const nodeId = '1';
+    const countInfo = {};
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
+    exp(actual).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
+  it('fetchNodeExtendInfo for normal node for expandedAll: false nodeId: 2', () => {
+
+    const expectResult = {
+      nowVisible: 2,
+      realyVisible: 2,
+      children: 2,
+      begats: 9,
+      index: 17,
+
+    };
+    const nodeId = '2';
+    const countInfo = {};
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
+    exp(actual).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
+
+  it('fetchNodeExtendInfo for normal node for expandedAll: true  nodeId: 2', () => {
+
+    const expectResult = {
+      nowVisible: 9,
+      realyVisible: 9,
+      children: 2,
+      begats: 9,
+      index: 17,
+    };
+    const nodeId = '2';
+    const countInfo = {};
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
+    exp(actual).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
+  it('fetchNodeExtendInfo for normal node for expandedAll: false nodeId: 2.1.1', () => {
+
+    const expectResult = {
+      nowVisible: 0,
+      realyVisible: 0,
+      children: 0,
+      begats: 0,
+      index: 19,
+    };
+    const nodeId = '2.1.1';
+    const countInfo = {};
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
+    exp(actual).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
+
+  it('fetchNodeExtendInfo for normal node for expandedAll: true  nodeId: 2.1.1', () => {
+
+    const expectResult = {
+      nowVisible: 0,
+      realyVisible: 0,
+      children: 0,
+      begats: 0,
+      index: 19,
+    };
+    const nodeId = '2.1.1';
+    const countInfo = {};
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
+    exp(actual).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
+  it('fetchNodeExtendInfo for normal node for expandedAll: false nodeId: 2.1.2', () => {
+
+    const expectResult = {
+      nowVisible: 1,
+      realyVisible: 1,
+      children: 1,
+      index: 20,
+
+      begats: 1,
+    };
+    const nodeId = '2.1.2';
+    const countInfo = {};
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
+    exp(actual).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
+
+  it('fetchNodeExtendInfo for normal node for expandedAll: true  nodeId: 2.1.2', () => {
+
+    const expectResult = {
+      nowVisible: 1,
+      realyVisible: 1,
+      children: 1,
+      index: 20,
+      begats: 1,
+    };
+    const nodeId = '2.1.2';
+    const countInfo = {};
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
+    exp(actual).to.be.eql(expectResult);
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
 
 });
