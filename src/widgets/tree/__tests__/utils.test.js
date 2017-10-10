@@ -13,38 +13,39 @@ describe('utils', () => {
 
   const datas = [
     { key: '1', title: '1', },
-    { key: '1.1', title: '1.1', pid: '1', path: '1', },
+    { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
     { key: '1.2', title: '1.2', pid: '1', path: '1', },
-    { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
+    { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
     { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
     { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-    { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', },
-    { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', },
-    { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', },
+    { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+    { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+    { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
+
     { key: '1.3', title: '1.3', pid: '1', path: '1', },
     { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
-    { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', },
-    { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', },
+    { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+    { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
     { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
-    { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', },
-    { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', },
-    { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', },
+    { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+    { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+    { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
 
     { key: '2', title: '2', },
     { key: '2.1', title: '2.1', pid: '2', path: '2', },
-    { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', },
+    { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
     { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
-    { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', },
+    { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
     { key: '2.2', title: '2.2', pid: '2', path: '2', },
     { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
-    { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', },
-    { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', },
-    { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', },
+    { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+    { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+    { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
 
     { key: '3', title: '3', },
-    { key: '3.1', title: '3.1', pid: '3', path: '3', },
-    { key: '3.2', title: '32.2', pid: '3', path: '3', },
-    { key: '4', title: '4', },
+    { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+    { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+    { key: '4', title: '4', isLeaf: true, },
   ];
 
 
@@ -85,29 +86,28 @@ describe('utils', () => {
 
   it('checkTree', () => {
     const result = utils.checkTree(datas);
-    console.info(result);
     exp(result).to.be.eql([]);
   });
 
   it('checkTree is rowData wrong', () => {
     const mock = mockObject.create(utils);
     const isRightTreeRowData = mock.mockFunction('isRightTreeRowData');
-    const errors = ['1', '2', '3',];
+    const errors = [ '1', '2', '3', ];
     isRightTreeRowData.returned(errors[ 0 ]);
     isRightTreeRowData.returned(errors[ 1 ]);
     isRightTreeRowData.returned(errors[ 2 ]);
-    exp(utils.checkTree([{}, {}, {},])).to.be.eql(errors.map(err => `{}==>${err}`));
+    exp(utils.checkTree([ {}, {}, {}, ])).to.be.eql(errors.map(err => `{}==>${err}`));
     isRightTreeRowData.reset();
   });
 
   it('checkTree is right', () => {
     const mock = mockObject.create(utils);
     const isRightTreeRowData = mock.mockFunction('isRightTreeRowData');
-    const errors = ['', '', '',];
+    const errors = [ '', '', '', ];
     isRightTreeRowData.returned(errors[ 0 ]);
     isRightTreeRowData.returned(errors[ 1 ]);
     isRightTreeRowData.returned(errors[ 2 ]);
-    exp(utils.checkTree([{}, {}, {},])).to.be.eql([]);
+    exp(utils.checkTree([ {}, {}, {}, ])).to.be.eql([]);
     isRightTreeRowData.reset();
   });
 
@@ -163,10 +163,10 @@ describe('utils', () => {
   const pathIsError = ({ key, }) => `${key}结点path信息错误!`;
 
   it('isRightLevel pid level before level ', () => {
-    const errorNodes = [{ key: '1.1', pid: '2', path: '1/7', },
+    const errorNodes = [ { key: '1.1', pid: '2', path: '1/7', },
       { key: '1.2', pid: '2', path: '1/7', },
       { key: '1.3', pid: '2', path: '1/7', },
-      { key: '1.4', pid: '2', path: '1/7', },];
+      { key: '1.4', pid: '2', path: '1/7', }, ];
     const datas = [
       { key: '1', },
       { key: '2', pid: '1', path: '1', },
@@ -183,7 +183,7 @@ describe('utils', () => {
 
     const errorNodes = [
       { key: '1.1.1', pid: '1.1', path: '1', },
-      { key: '1.1.2', pid: '1.1', path: '1', },];
+      { key: '1.1.2', pid: '1.1', path: '1', }, ];
     const datas = [
       { key: '1', },
       { key: '1.1', pid: '1', path: '1', },
@@ -198,11 +198,11 @@ describe('utils', () => {
   });
 
   it('isRightLevel pid level after level but not join, is after "3"', () => {
-    const errorNodes = [{ key: '1.1', pid: '2', path: '1/2', },
+    const errorNodes = [ { key: '1.1', pid: '2', path: '1/2', },
       { key: '1.2', pid: '2', path: '1/2', },
 
       { key: '1.3', pid: '2', path: '1/2', },
-      { key: '1.4', pid: '2', path: '1/2', },];
+      { key: '1.4', pid: '2', path: '1/2', }, ];
     const datas = [
       { key: '1', },
       { key: '2', pid: '1', path: '1', },
@@ -218,17 +218,18 @@ describe('utils', () => {
 
   it('slice not topLevel 真实测试', () => {
     exp(utils.slice(datas, 8, 5, { expandedAll: true, target: { ['1' + '']: true, }, })).to.be.eql(
-      [{ key: '1', title: '1', },
+      [ { key: '1', title: '1', },
         { key: '2', title: '2', },
         { key: '2.1', title: '2.1', pid: '2', path: '2', },
-        { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', },
+        { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
         { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
         {
           key: '2.1.2.1',
           title: '2.1.2.1',
           pid: '2.1.2',
           path: '2/2.1/2.1.2',
-        },]
+          isLeaf: true,
+        }, ]
     );
   });
 
@@ -238,145 +239,205 @@ describe('utils', () => {
 
 
   it('generateTreeNode is tree', () => {
-    exp(utils.generateTreeNode(datas)).to.be.eql([{
-        key: '1',
-        title: '1',
-        children: [
-          { key: '1.1', title: '1.1', pid: '1', path: '1', },
-          {
-            key: '1.2',
-            title: '1.2',
-            pid: '1', path: '1',
-            children: [
-              { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
-              {
-                key: '1.2.2',
-                title: '1.2.2',
-                pid: '1.2',
-                path: '1/1.2',
-                children: [
-                  {
-                    path: '1/1.2/1.2.2',
-                    key: '1.2.2.1',
-                    title: '1.2.2.1',
-                    pid: '1.2.2',
-                    children: [
+    const actual = utils.generateTreeNode(datas);
+    const expectResult = [ {
+      key: '1',
+      title: '1',
+      children: [
+        { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
+        {
+          key: '1.2',
+          title: '1.2',
+          pid: '1', path: '1',
+          children: [
+            { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
+            {
+              key: '1.2.2',
+              title: '1.2.2',
+              pid: '1.2',
+              path: '1/1.2',
+              children: [
+                {
+                  path: '1/1.2/1.2.2',
+                  key: '1.2.2.1',
+                  title: '1.2.2.1',
+                  pid: '1.2.2',
+                  children: [
 
-                      {
-                        key: '1.2.2.1.1',
-                        title: '1.2.2.1.1',
-                        pid: '1.2.2.1',
-                        path: '1/1.2/1.2.2/1.2.2.1',
-                      },
-                      {
-                        key: '1.2.2.1.2',
-                        title: '1.2.2.1.2',
-                        pid: '1.2.2.1',
-                        path: '1/1.2/1.2.2/1.2.2.1',
-                      },],
-                  },
-                  {
-                    key: '1.2.2.2',
-                    title: '1.2.2.2',
-                    pid: '1.2.2',
-                    path: '1/1.2/1.2.2',
-                  },],
-              },],
-          }, {
-            key: '1.3',
-            title: '1.3',
-            pid: '1',
-            path: '1',
-            children: [{
-              key: '1.3.1',
-              title: '1.3.1',
-              pid: '1.3',
-              path: '1/1.3',
-              children: [{ key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', }, {
-                key: '1.3.1.2',
-                title: '1.3.1.2',
-                pid: '1.3.1',
-                path: '1/1.3/1.3.1',
-              },],
+                    {
+                      key: '1.2.2.1.1',
+                      title: '1.2.2.1.1',
+                      pid: '1.2.2.1',
+                      path: '1/1.2/1.2.2/1.2.2.1',
+                      isLeaf: true,
+
+                    },
+                    {
+                      key: '1.2.2.1.2',
+                      title: '1.2.2.1.2',
+                      pid: '1.2.2.1',
+                      path: '1/1.2/1.2.2/1.2.2.1',
+                      isLeaf: true,
+
+                    }, ],
+                },
+                {
+                  key: '1.2.2.2',
+                  title: '1.2.2.2',
+                  pid: '1.2.2',
+                  path: '1/1.2/1.2.2',
+                  isLeaf: true,
+
+                }, ],
+            }, ],
+        }, {
+          key: '1.3',
+          title: '1.3',
+          pid: '1',
+          path: '1',
+          children: [ {
+            key: '1.3.1',
+            title: '1.3.1',
+            pid: '1.3',
+            path: '1/1.3',
+            children: [ {
+              key: '1.3.1.1',
+              title: '1.3.1.1',
+              pid: '1.3.1',
+              path: '1/1.3/1.3.1',
+              isLeaf: true,
             }, {
-              key: '1.3.2',
-              title: '1.3.2',
-              pid: '1.3',
-              path: '1/1.3',
-              children: [{ key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', }, {
+              key: '1.3.1.2',
+              title: '1.3.1.2',
+              pid: '1.3.1',
+              path: '1/1.3/1.3.1',
+              isLeaf: true,
+            }, ],
+          }, {
+            key: '1.3.2',
+            title: '1.3.2',
+            pid: '1.3',
+            path: '1/1.3',
+            children: [
+              {
+                key: '1.3.2.1',
+                title: '1.3.2.1',
+                pid: '1.3.2',
+                path: '1/1.3/1.3.2',
+                isLeaf: true,
+              },
+              {
                 key: '1.3.2.2',
                 title: '1.3.2.2',
                 pid: '1.3.2',
                 path: '1/1.3/1.3.2',
-              },],
-            }, { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', },],
-          },],
-      }, {
-        key: '2',
-        title: '2',
-        children: [{
-          key: '2.1',
-          title: '2.1',
-          pid: '2',
-          path: '2',
-          children: [{
-            key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1',
+                isLeaf: true,
+
+              }, ],
           }, {
-            key: '2.1.2',
-            title: '2.1.2',
-            pid: '2.1',
-            path: '2/2.1',
-
-            children: [{
-              key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2',
-            },],
-          },],
+            key: '1.3.3',
+            title: '1.3.3',
+            pid: '1.3',
+            path: '1/1.3',
+            isLeaf: true,
+          }, ],
+        }, ],
+    }, {
+      key: '2',
+      title: '2',
+      children: [ {
+        key: '2.1',
+        title: '2.1',
+        pid: '2',
+        path: '2',
+        children: [ {
+          key: '2.1.1',
+          title: '2.1.1',
+          pid: '2.1',
+          path: '2/2.1',
+          isLeaf: true,
         }, {
-          key: '2.2',
-          title: '2.2',
-          pid: '2',
-          path: '2',
+          key: '2.1.2',
+          title: '2.1.2',
+          pid: '2.1',
+          path: '2/2.1',
 
-          children: [{
-            key: '2.2.1',
-            title: '2.2.1',
-            pid: '2.2',
-            path: '2/2.2',
+          children: [ {
+            key: '2.1.2.1',
+            title: '2.1.2.1',
+            pid: '2.1.2',
+            path: '2/2.1/2.1.2',
+            isLeaf: true,
 
-            children: [{
-              key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1',
-            }, {
-              key: '2.2.1.2',
-              title: '2.2.1.2',
-              pid: '2.2.1',
-              path: '2/2.2/2.2.1',
-            },],
-          }, { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', },],
-        },],
+          }, ],
+        }, ],
       }, {
-        key: '3',
-        title: '3',
-        children: [{ key: '3.1', title: '3.1', pid: '3', path: '3', }, {
-          key: '3.2',
-          title: '32.2',
-          pid: '3',
-          path: '3',
-        },],
-      }, { key: '4', title: '4', },]
-    );
+        key: '2.2',
+        title: '2.2',
+        pid: '2',
+        path: '2',
+
+        children: [ {
+          key: '2.2.1',
+          title: '2.2.1',
+          pid: '2.2',
+          path: '2/2.2',
+
+          children: [ {
+            key: '2.2.1.1',
+            title: '2.2.1.1',
+            pid: '2.2.1',
+            path: '2/2.2/2.2.1',
+            isLeaf: true,
+
+          }, {
+            key: '2.2.1.2',
+            title: '2.2.1.2',
+            pid: '2.2.1',
+            path: '2/2.2/2.2.1',
+            isLeaf: true,
+          }, ],
+        }, {
+          key: '2.2.2',
+          title: '2.2.2',
+          pid: '2.2',
+          path: '2/2.2',
+          isLeaf: true,
+        }, ],
+      }, ],
+    }, {
+      key: '3',
+      title: '3',
+      children: [ {
+        key: '3.1',
+        title: '3.1', pid: '3',
+        path: '3',
+        isLeaf: true,
+      }, {
+        key: '3.2',
+        title: '3.2',
+        pid: '3',
+        path: '3',
+        isLeaf: true,
+      }, ],
+    }, {
+      key: '4', title: '4', isLeaf: true,
+    }, ];
+
+    exp(actual).to.be.eql(expectResult);
   });
 
 
   it('getPathNodes 起始节点为1级结点', () => {
 
     exp(utils.getPathNodes(datas, 1, '1')).to.be.eql([
-      { key: '1', title: '1', },]);
+      { key: '1', title: '1', }, ]);
   });
 
   it('getPathNodes 起始结点非根结点 2 级', () => {
     exp(utils.getPathNodes(datas, 2, '1.2')).to.be.eql([
       { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },]);
+      { key: '1.2', title: '1.2', pid: '1', path: '1', }, ]);
   });
 
   it('getPathNodes 起始结点非根结点 3 级', () => {
@@ -384,7 +445,7 @@ describe('utils', () => {
       { key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },]);
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', }, ]);
   });
 
   it('slice empty', () => {
@@ -402,12 +463,12 @@ describe('utils', () => {
     const mockUtils = mockObject.create(utils);
     const getPathNodes = mockUtils.mockFunction('getPathNodes');
     const sliceExpand = mockUtils.mockFunction('sliceExpand');
-    const pathNode = [1, 2, 3, 4,];
+    const pathNode = [ 1, 2, 3, 4, ];
     const start = 1;
     const total = 5;
 
     getPathNodes.returned(pathNode);
-    const sliceResult = [5, 7, 5, 75,];
+    const sliceResult = [ 5, 7, 5, 75, ];
     sliceExpand.returned(sliceResult);
     const expandInfo = { expandedAll: false, target: {}, };
     exp(utils.slice(datas, start, total, expandInfo)).to.be.eql(sliceResult);
@@ -415,7 +476,7 @@ describe('utils', () => {
     exp(getPathNodes.callTimes()).to.be.equal(1);
     exp(sliceExpand.callTimes()).to.be.equal(1);
 
-    exp(sliceExpand.getCallArgs(0)).to.be.eql([datas, start, total, expandInfo, pathNode,]);
+    exp(sliceExpand.getCallArgs(0)).to.be.eql([ datas, start, total, expandInfo, pathNode, ]);
   });
 
 
@@ -429,7 +490,7 @@ describe('utils', () => {
   it('sliceExpand expand is exisit expandedAll true toproot collapse', () => {
     const start = 0;
     const total = 5;
-    const expandDatas = [{ key: '1', title: '1', },
+    const expandDatas = [ { key: '1', title: '1', },
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
@@ -455,7 +516,7 @@ describe('utils', () => {
   it('sliceExpand expand is exisit expandedAll false', () => {
     const start = 1;
     const total = 5;
-    const expandDatas = [{ key: '1', title: '1', },
+    const expandDatas = [ { key: '1', title: '1', },
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
@@ -490,7 +551,7 @@ describe('utils', () => {
   it('sliceExpand expand is exisit expandedAll false start is collapse', () => {
     const start = 1;
     const total = 5;
-    const expandDatas = [{ key: '1', title: '1', },
+    const expandDatas = [ { key: '1', title: '1', },
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
@@ -525,7 +586,7 @@ describe('utils', () => {
   it('sliceExpand expand is exisit expandedAll true', () => {
     const start = 1;
     const total = 5;
-    const expandDatas = [{ key: '1', title: '1', },
+    const expandDatas = [ { key: '1', title: '1', },
       { key: '1.1', title: '1.1', pid: '1', path: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
@@ -691,19 +752,19 @@ describe('utils', () => {
   });
 
   it('getKeys', () => {
-    const result = utils.getKeys([{ key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', },]);
-    exp(result).to.be.eql(['1', '2', '3',]);
+    const result = utils.getKeys([ { key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', }, ]);
+    exp(result).to.be.eql([ '1', '2', '3', ]);
   });
 
   it('fetchNodeExtendInfo will exisit', () => {
 
-    const expectResultA = {
+    const expectResultA: Object = {
       nowVisible: 5,
       realyVisible: 6,
       children: 7,
       begats: 8,
     };
-    const expectResultB = {
+    const expectResultB: Object = {
       nowVisible: 8,
       realyVisible: 7,
       children: 6,
@@ -771,8 +832,8 @@ describe('utils', () => {
   it('fetchNodeExtendInfo for virual root for expandedAll: false', () => {
 
     const expectResult = {
-      nowVisible: 4,
-      realyVisible: 4,
+      nowVisible: 0,
+      realyVisible: 0,
       children: 4,
       begats: datas.length,
       index: -1,
@@ -788,8 +849,8 @@ describe('utils', () => {
   it('fetchNodeExtendInfo for normal node for expandedAll: false nodeId: 1', () => {
 
     const expectResult = {
-      nowVisible: 3,
-      realyVisible: 3,
+      nowVisible: 0,
+      realyVisible: 0,
       children: 3,
       begats: 16,
       index: 0,
@@ -820,8 +881,8 @@ describe('utils', () => {
   it('fetchNodeExtendInfo for normal node for expandedAll: false nodeId: 2', () => {
 
     const expectResult = {
-      nowVisible: 2,
-      realyVisible: 2,
+      nowVisible: 0,
+      realyVisible: 0,
       children: 2,
       begats: 9,
       index: 17,
@@ -887,8 +948,8 @@ describe('utils', () => {
   it('fetchNodeExtendInfo for normal node for expandedAll: false nodeId: 2.1.2', () => {
 
     const expectResult = {
-      nowVisible: 1,
-      realyVisible: 1,
+      nowVisible: 0,
+      realyVisible: 0,
       children: 1,
       index: 20,
 
@@ -916,6 +977,311 @@ describe('utils', () => {
     const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
+
+  it('expandNode expandedAll: false nodeId: 1', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    utils.expandNode(nodeId, datas, countInfo, false);
+    const expectResult = {
+      nowVisible: 3,
+      expanded: true,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+    };
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+  });
+
+
+  it('expandNode expandedAll: true nodeId: 1', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    utils.expandNode(nodeId, datas, countInfo, true);
+    const expectResult = {
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    };
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+
+  });
+  it('expandNode expandedAll: true nodeId: 1 之前已展开过的结点', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    countInfo[ nodeId ] = {
+      nowVisible: 0,
+      realyVisible: 16,
+      children: 3,
+      expanded: true,
+      begats: 16,
+      index: 0,
+    };
+    utils.expandNode(nodeId, datas, countInfo, true);
+    exp(countInfo[ nodeId ]).to.be.eql({
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      expanded: true,
+      begats: 16,
+      index: 0,
+    });
+
+  });
+  it('expandNode expandedAll: false nodeId: 1 之前已展开过的结点', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    countInfo[ nodeId ] = {
+      nowVisible: 0,
+      realyVisible: 3,
+      children: 3,
+      expanded: true,
+      begats: 16,
+      index: 0,
+    };
+    utils.expandNode(nodeId, datas, countInfo, true);
+    exp(countInfo[ nodeId ]).to.be.eql({
+      nowVisible: 3,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      expanded: true,
+      index: 0,
+    });
+
+  });
+
+  it('expandNode expandedAll: false nodeId: 1 , 1.1 重复展开', () => {
+
+    const countInfo = {};
+
+    utils.expandNode('1', datas, countInfo, false);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 3,
+      expanded: true,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    function reapat () {
+      utils.expandNode('1.2', datas, countInfo, false);
+      exp(countInfo[ '1' ]).to.be.eql({
+        nowVisible: 5,
+        expanded: true,
+        realyVisible: 5,
+        children: 3,
+        begats: 16,
+        index: 0,
+      });
+      exp(countInfo[ '1.2' ]).to.be.eql({
+        nowVisible: 2,
+        realyVisible: 2,
+        children: 2,
+        expanded: true,
+        begats: 6,
+        index: 2,
+      });
+
+    }
+
+    reapat();
+    reapat();
+    reapat();
+  });
+
+  it('expandNode expandedAll: false nodeId: 1 , 1.1, 1.2, 1.2.2', () => {
+
+    const countInfo = {};
+
+    utils.expandNode('1', datas, countInfo, false);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 3,
+      expanded: true,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    utils.expandNode('1.1', datas, countInfo, false);
+
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 3,
+      expanded: true,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+    exp(countInfo[ '1.1' ]).to.be.eql({
+      nowVisible: 0,
+      realyVisible: 0,
+      children: 0,
+      begats: 0,
+      expanded: true,
+      index: 1,
+    });
+
+    utils.expandNode('1.2', datas, countInfo, false);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 5,
+      expanded: true,
+      realyVisible: 5,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 2,
+      realyVisible: 2,
+      children: 2,
+      expanded: true,
+      begats: 6,
+      index: 2,
+    });
+
+
+    utils.expandNode('1.2.2', datas, countInfo, false);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      expanded: true,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 4,
+      realyVisible: 4,
+      children: 2,
+      expanded: true,
+      begats: 6,
+      index: 2,
+    });
+    exp(countInfo[ '1.2.2' ]).to.be.eql({
+      nowVisible: 2,
+      realyVisible: 2,
+      children: 2,
+      expanded: true,
+      begats: 4,
+      index: 4,
+    });
+
+  });
+
+  it('expandNode expandedAll: true nodeId: 1 , 1.1, 1.2, 1.2.2', () => {
+    const countInfo = {};
+    const expandedAll = true;
+    utils.expandNode('1', datas, countInfo, expandedAll);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    utils.expandNode('1.1', datas, countInfo, expandedAll);
+
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+    exp(countInfo[ '1.1' ]).to.be.eql({
+      nowVisible: 0,
+      realyVisible: 0,
+      children: 0,
+      begats: 0,
+      index: 1,
+    });
+
+    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 6,
+      realyVisible: 6,
+      children: 2,
+      begats: 6,
+      index: 2,
+    });
+
+    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 6,
+      realyVisible: 6,
+      children: 2,
+      begats: 6,
+      index: 2,
+    });
+
+    exp(countInfo[ '1.2.2' ]).to.be.eql({
+      nowVisible: 4,
+      realyVisible: 4,
+      children: 2,
+      begats: 4,
+      index: 4,
+    });
+
+    utils.expandNode('1.3', datas, countInfo, expandedAll);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 6,
+      realyVisible: 6,
+      children: 2,
+      begats: 6,
+      index: 2,
+    });
+
+    exp(countInfo[ '1.3' ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      children: 3,
+      begats: 7,
+      index: 9,
+    });
+
+    exp(countInfo[ '1.2.2' ]).to.be.eql({
+      nowVisible: 4,
+      realyVisible: 4,
+      children: 2,
+      begats: 4,
+      index: 4,
+    });
 
   });
 

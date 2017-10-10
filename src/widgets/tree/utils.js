@@ -42,7 +42,8 @@ type NodeExtendInfo = {
   children?: number,
   // 子孙节点数
   begats?: number,
-  index?: number,
+  index: number,
+  expanded?: boolean,
 }
 type NodeId2ExtendInfo = { [nodeId: string]: NodeExtendInfo };
 const notEmpty = (obj: any) => {
@@ -399,7 +400,7 @@ class TreeUtils {
 
   generateExtendInfo (nodeId, expandedAll: boolean, begats: number, children: number, id2nodeExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
 
-    const nowAndRealVisible = expandedAll ? begats : children;
+    const nowAndRealVisible = expandedAll ? begats : 0;
     const nodeInfo = id2nodeExtendInfo[ nodeId ];
     const index = nodeInfo && nodeInfo.index !== undefined ? nodeInfo.index : -1;
 
@@ -411,6 +412,56 @@ class TreeUtils {
       index,
     };
     return id2nodeExtendInfo[ nodeId ];
+  }
+
+  /**
+   * 只支持逐级进行展开
+   * @param nodeId
+   * @param nodes
+   * @param id2nodeExtendInfo
+   * @param expandedAll
+   */
+  expandNode (nodeId: string,
+              nodes: Array<RowData>,
+              id2nodeExtendInfo: NodeId2ExtendInfo,
+              expandedAll: boolean = false): void {
+
+    let info = id2nodeExtendInfo[ nodeId ];
+
+    if (!info || !info.realyVisible) {
+      info = this.fetchNodeExtendInfo(nodeId, nodes, id2nodeExtendInfo, expandedAll);
+      if (!expandedAll) {
+        info.nowVisible = info.children;
+        info.realyVisible = info.children;
+      }
+    }
+
+    const { expanded, } = info;
+    info.nowVisible = info.realyVisible;
+
+    if (expandedAll === true && expanded !== false) {
+      return;
+    }
+    const { path, } = nodes[ info.index ];
+
+    if (!expanded && path) {
+      const pathArray = path.split('/');
+      for (let i = 0; i < pathArray.length; i++) {
+        const nodeId = pathArray[ i ];
+        const childInfo = this.fetchNodeExtendInfo(nodeId, nodes, id2nodeExtendInfo, expandedAll);
+        childInfo.nowVisible = childInfo.nowVisible + info.nowVisible;
+        childInfo.realyVisible = childInfo.realyVisible + info.realyVisible;
+      }
+    }
+    info.expanded = true;
+
+  }
+
+  colapseNode (nodeId: string,
+               nodes: Array<RowData>,
+               id2nodeExtendInfo: NodeId2ExtendInfo,
+               expandedAll: boolean = false): void {
+
   }
 }
 
