@@ -392,7 +392,9 @@ class TreeUtils {
         if (!pid) {
           children++;
         }
-        id2nodeExpandInfo[ key ] = { index, };
+        if (!id2nodeExpandInfo[ key ]) {
+          id2nodeExpandInfo[ key ] = { index, };
+        }
       }
       this.generateExtendInfo(VirtualRoot, expandedAll, len, children, id2nodeExpandInfo);
     }
@@ -426,35 +428,47 @@ class TreeUtils {
               id2nodeExtendInfo: NodeId2ExtendInfo,
               expandedAll: boolean = false): void {
 
-    let info = id2nodeExtendInfo[ nodeId ];
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo, expandedAll);
+    const info = fetchNodeInfo(nodeId);
+    const { children, expanded, } = info;
 
-    if (!info || !info.realyVisible) {
-      info = this.fetchNodeExtendInfo(nodeId, nodes, id2nodeExtendInfo, expandedAll);
-      if (!expandedAll) {
-        info.nowVisible = info.children;
-        info.realyVisible = info.children;
-      }
+    const isInitExpandedStatus = expanded === undefined;
+
+    if (!expandedAll && isInitExpandedStatus) {
+      info.nowVisible = info.realyVisible = children;
     }
 
-    const { expanded, } = info;
-    info.nowVisible = info.realyVisible;
+    const { realyVisible, } = info;
+    info.nowVisible = realyVisible;
 
-    if (expandedAll === true && expanded !== false) {
+    if (expandedAll === true && (isInitExpandedStatus || expanded === true)) {
       return;
     }
-    const { path, } = nodes[ info.index ];
+
+    const { index, } = info;
+    const { path, } = nodes[ index ];
 
     if (!expanded && path) {
       const pathArray = path.split('/');
       for (let i = 0; i < pathArray.length; i++) {
-        const nodeId = pathArray[ i ];
-        const childInfo = this.fetchNodeExtendInfo(nodeId, nodes, id2nodeExtendInfo, expandedAll);
-        childInfo.nowVisible = childInfo.nowVisible + info.nowVisible;
-        childInfo.realyVisible = childInfo.realyVisible + info.realyVisible;
+        const childInfo = fetchNodeInfo(pathArray[ i ]);
+        const {
+          nowVisible: childNow,
+          realyVisible: childRealy,
+        } = childInfo;
+        childInfo.nowVisible = childNow + realyVisible;
+        childInfo.realyVisible = childRealy + realyVisible;
       }
     }
     info.expanded = true;
+  }
 
+  fetchNodeExtendInfoById (nodes: Array<RowData>,
+                           id2nodeExtendInfo: NodeId2ExtendInfo,
+                           expandedAll: boolean = false) {
+    return (nodeId: string): NodeExtendInfo => {
+      return this.fetchNodeExtendInfo(nodeId, nodes, id2nodeExtendInfo, expandedAll);
+    };
   }
 
   colapseNode (nodeId: string,
