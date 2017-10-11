@@ -115,6 +115,6 @@ describe('Menu', () => {
       <MenuItem key="13" checked>13</MenuItem>
     </Menu>);
 
-    exp(dom.find('li').length).to.be.equal(8);
+    exp(dom.find('li').length).to.be.equal(13);
   });
 });
