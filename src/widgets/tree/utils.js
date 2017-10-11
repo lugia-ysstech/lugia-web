@@ -438,12 +438,13 @@ class TreeUtils {
       info.nowVisible = info.realyVisible = children;
     }
 
-    const { realyVisible, } = info;
-    info.nowVisible = realyVisible;
 
-    if (expandedAll === true && (isInitExpandedStatus || expanded === true)) {
+    if ((expandedAll && isInitExpandedStatus) || expanded === true) {
       return;
     }
+
+    const { realyVisible, } = info;
+    info.nowVisible = realyVisible;
 
     const { index, } = info;
     const { path, } = nodes[ index ];
@@ -475,7 +476,10 @@ class TreeUtils {
                nodes: Array<RowData>,
                id2nodeExtendInfo: NodeId2ExtendInfo,
                expandedAll: boolean = false): void {
-
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo, expandedAll);
+    const info = fetchNodeInfo(nodeId);
+    info.nowVisible = 0;
+    info.expanded = false;
   }
 }
 

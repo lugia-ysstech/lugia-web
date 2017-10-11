@@ -1012,6 +1012,42 @@ describe('utils', () => {
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
 
   });
+  it('colapseNode expandedAll: true nodeId: 1', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    utils.expandNode(nodeId, datas, countInfo, true);
+    utils.colapseNode(nodeId, datas, countInfo, true);
+
+    const expectResult = {
+      nowVisible: 0,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      expanded: false,
+      index: 0,
+    };
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+  });
+
+  it('colapseNode expandedAll: false nodeId: 1', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    utils.expandNode(nodeId, datas, countInfo, false);
+    utils.colapseNode(nodeId, datas, countInfo, false);
+
+    const expectResult = {
+      nowVisible: 0,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      expanded: false,
+      index: 0,
+    };
+    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+  });
+
   it('expandNode expandedAll: true nodeId: 1 之前已展开过的结点', () => {
 
     const nodeId = '1';
@@ -1020,7 +1056,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 16,
       children: 3,
-      expanded: true,
+      expanded: false,
       begats: 16,
       index: 0,
     };
@@ -1033,9 +1069,53 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     });
+  });
+
+  it('expandNode expandedAll: true nodeId: 1 未折叠之前进行展开', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    countInfo[ nodeId ] = {
+      nowVisible: 0,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    };
+    utils.expandNode(nodeId, datas, countInfo, true);
+    exp(countInfo[ nodeId ]).to.be.eql({
+      nowVisible: 0,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+  });
+
+  it('expandNode expandedAll: false nodeId: 1 之前已展开过的结点', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    countInfo[ nodeId ] = {
+      nowVisible: 0,
+      realyVisible: 3,
+      children: 3,
+      expanded: false,
+      begats: 16,
+      index: 0,
+    };
+    utils.expandNode(nodeId, datas, countInfo, true);
+    exp(countInfo[ nodeId ]).to.be.eql({
+      nowVisible: 3,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      expanded: true,
+      index: 0,
+    });
 
   });
-  it('expandNode expandedAll: false nodeId: 1 之前已展开过的结点', () => {
+  it('expandNode expandedAll: false nodeId: 1 展开已展开的结点', () => {
 
     const nodeId = '1';
     const countInfo = {};
@@ -1049,11 +1129,11 @@ describe('utils', () => {
     };
     utils.expandNode(nodeId, datas, countInfo, true);
     exp(countInfo[ nodeId ]).to.be.eql({
-      nowVisible: 3,
+      nowVisible: 0,
       realyVisible: 3,
       children: 3,
-      begats: 16,
       expanded: true,
+      begats: 16,
       index: 0,
     });
 
