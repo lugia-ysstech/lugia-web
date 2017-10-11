@@ -52,6 +52,7 @@ const notEmpty = (obj: any) => {
 const VirtualRoot = 'sv_tree_root';
 
 class TreeUtils {
+  VirtualRoot: string = VirtualRoot;
 
   checkTree (datas: Array<Object>): Array<string> {
     let result = [];
@@ -402,7 +403,7 @@ class TreeUtils {
 
   generateExtendInfo (nodeId, expandedAll: boolean, begats: number, children: number, id2nodeExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
 
-    const nowAndRealVisible = expandedAll ? begats : 0;
+    const nowAndRealVisible = expandedAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
     const nodeInfo = id2nodeExtendInfo[ nodeId ];
     const index = nodeInfo && nodeInfo.index !== undefined ? nodeInfo.index : -1;
 
@@ -431,38 +432,33 @@ class TreeUtils {
     const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo, expandedAll);
     const info = fetchNodeInfo(nodeId);
     const { children, expanded, } = info;
+    const isInitStatus = expanded === undefined;
 
-    const isInitExpandedStatus = expanded === undefined;
-
-    if (!expandedAll && isInitExpandedStatus) {
+    if (!expandedAll && isInitStatus) {
       info.nowVisible = info.realyVisible = children;
     }
 
-
-    if ((expandedAll && isInitExpandedStatus) || expanded === true) {
+    const willNotCollapsed = expandedAll && isInitStatus;
+    if (willNotCollapsed || expanded === true) {
       return;
     }
 
-    const { realyVisible, } = info;
+    const { realyVisible, index, } = info;
     info.nowVisible = realyVisible;
 
-    const { index, } = info;
-    const { path, } = nodes[ index ];
+    this.processPath(nodes[ index ], (nodeId: string) => {
+      const childInfo = fetchNodeInfo(nodeId);
+      const {
+        nowVisible: childNow,
+        realyVisible: childRealy,
+      } = childInfo;
+      childInfo.nowVisible = childNow + realyVisible;
+      childInfo.realyVisible = childRealy + realyVisible;
 
-    if (!expanded && path) {
-      const pathArray = path.split('/');
-      for (let i = 0; i < pathArray.length; i++) {
-        const childInfo = fetchNodeInfo(pathArray[ i ]);
-        const {
-          nowVisible: childNow,
-          realyVisible: childRealy,
-        } = childInfo;
-        childInfo.nowVisible = childNow + realyVisible;
-        childInfo.realyVisible = childRealy + realyVisible;
-      }
-    }
+    });
     info.expanded = true;
   }
+
 
   fetchNodeExtendInfoById (nodes: Array<RowData>,
                            id2nodeExtendInfo: NodeId2ExtendInfo,
@@ -477,9 +473,42 @@ class TreeUtils {
                id2nodeExtendInfo: NodeId2ExtendInfo,
                expandedAll: boolean = false): void {
     const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo, expandedAll);
+
     const info = fetchNodeInfo(nodeId);
+    const { expanded, realyVisible = 0, } = info;
+    if (expanded === false) {
+      return;
+    }
+
+    const { index, } = info;
+
     info.nowVisible = 0;
+    this.processPath(nodes[ index ], (nodeId: string) => {
+      const childInfo = fetchNodeInfo(nodeId);
+      const {
+        realyVisible: childRealy = 0,
+      } = childInfo;
+      childInfo.realyVisible = childRealy - realyVisible;
+      if (childInfo.nowVisible !== 0) {
+        childInfo.nowVisible = childInfo.realyVisible;
+      }
+    });
     info.expanded = false;
+  }
+
+  processPath (info: RowData, doCall: Function): void {
+
+
+    const { path, } = info;
+    const pathArray = [this.VirtualRoot,];
+    if (path) {
+      Array.prototype.push.apply(pathArray, path.split('/'));
+    }
+
+    const len = pathArray.length;
+    for (let i = 0; i < len; i++) {
+      doCall(pathArray[ i ]);
+    }
   }
 }
 
