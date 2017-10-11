@@ -821,7 +821,7 @@ describe('utils', () => {
       begats: datas.length,
       index: -1,
     };
-    const nodeId = 'sv_tree_root';
+    const nodeId = utils.VirtualRoot;
     const countInfo = {};
     exp(utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true)).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
@@ -832,13 +832,13 @@ describe('utils', () => {
   it('fetchNodeExtendInfo for virual root for expandedAll: false', () => {
 
     const expectResult = {
-      nowVisible: 0,
-      realyVisible: 0,
+      nowVisible: 4,
+      realyVisible: 4,
       children: 4,
       begats: datas.length,
       index: -1,
     };
-    const nodeId = 'sv_tree_root';
+    const nodeId = utils.VirtualRoot;
     const countInfo = {};
     exp(utils.fetchNodeExtendInfo(nodeId, datas, countInfo)).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
@@ -1024,19 +1024,33 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
-      expanded: false,
       index: 0,
+      expanded: false,
     };
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 15,
+      realyVisible: 15,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
   });
 
   it('colapseNode expandedAll: false nodeId: 1', () => {
 
     const nodeId = '1';
     const countInfo = {};
-    utils.expandNode(nodeId, datas, countInfo, false);
-    utils.colapseNode(nodeId, datas, countInfo, false);
 
+    utils.expandNode(nodeId, datas, countInfo, false);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+    utils.colapseNode(nodeId, datas, countInfo, false);
     const expectResult = {
       nowVisible: 0,
       realyVisible: 3,
@@ -1046,9 +1060,16 @@ describe('utils', () => {
       index: 0,
     };
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 4,
+      realyVisible: 4,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
   });
 
-  it('expandNode expandedAll: true nodeId: 1 之前已展开过的结点', () => {
+  it('expandNode expandedAll: true nodeId: 1 展开折叠的结点', () => {
 
     const nodeId = '1';
     const countInfo = {};
@@ -1071,7 +1092,7 @@ describe('utils', () => {
     });
   });
 
-  it('expandNode expandedAll: true nodeId: 1 未折叠之前进行展开', () => {
+  it('expandNode expandedAll: true nodeId: 1 展开初始化的结点', () => {
 
     const nodeId = '1';
     const countInfo = {};
@@ -1092,7 +1113,97 @@ describe('utils', () => {
     });
   });
 
-  it('expandNode expandedAll: false nodeId: 1 之前已展开过的结点', () => {
+  it('expandNode expandedAll: false nodeId: 1 展开初始化的结点', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    countInfo[ nodeId ] = {
+      nowVisible: 0,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+    };
+    utils.expandNode(nodeId, datas, countInfo, false);
+    exp(countInfo[ nodeId ]).to.be.eql({
+      nowVisible: 3,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      expanded: true,
+      index: 0,
+    });
+
+  });
+  it('expandNode expandedAll: false nodeId: 1 展开展开结点', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    countInfo[ nodeId ] = {
+      nowVisible: 0,
+      realyVisible: 3,
+      children: 3,
+      expanded: true,
+      begats: 16,
+      index: 0,
+    };
+    utils.expandNode(nodeId, datas, countInfo, true);
+    exp(countInfo[ nodeId ]).to.be.eql({
+      nowVisible: 0,
+      realyVisible: 3,
+      children: 3,
+      expanded: true,
+      begats: 16,
+      index: 0,
+    });
+
+  });
+  it('colapseNode expandedAll: true nodeId: 1 折叠折叠结点', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    countInfo[ nodeId ] = {
+      nowVisible: 0,
+      realyVisible: 16,
+      children: 3,
+      expanded: false,
+      begats: 16,
+      index: 0,
+    };
+    utils.colapseNode(nodeId, datas, countInfo, true);
+    exp(countInfo[ nodeId ]).to.be.eql({
+      nowVisible: 0,
+      realyVisible: 16,
+      children: 3,
+      expanded: false,
+      begats: 16,
+      index: 0,
+    });
+  });
+
+  it('colapseNode expandedAll: true nodeId: 1 折叠初始化的结点', () => {
+
+    const nodeId = '1';
+    const countInfo = {};
+    countInfo[ nodeId ] = {
+      nowVisible: 0,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    };
+    utils.colapseNode(nodeId, datas, countInfo, true);
+    exp(countInfo[ nodeId ]).to.be.eql({
+      nowVisible: 0,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      expanded: false,
+      index: 0,
+    });
+  });
+
+  it('colapseNode expandedAll: false nodeId: 1 折叠折叠结点', () => {
 
     const nodeId = '1';
     const countInfo = {};
@@ -1104,35 +1215,34 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    utils.expandNode(nodeId, datas, countInfo, true);
+    utils.colapseNode(nodeId, datas, countInfo, true);
     exp(countInfo[ nodeId ]).to.be.eql({
-      nowVisible: 3,
+      nowVisible: 0,
       realyVisible: 3,
       children: 3,
       begats: 16,
-      expanded: true,
+      expanded: false,
       index: 0,
     });
 
   });
-  it('expandNode expandedAll: false nodeId: 1 展开已展开的结点', () => {
+  it('colapseNode expandedAll: false nodeId: 1 折叠初始化结点', () => {
 
     const nodeId = '1';
     const countInfo = {};
     countInfo[ nodeId ] = {
-      nowVisible: 0,
+      nowVisible: 3,
       realyVisible: 3,
       children: 3,
-      expanded: true,
       begats: 16,
       index: 0,
     };
-    utils.expandNode(nodeId, datas, countInfo, true);
+    utils.colapseNode(nodeId, datas, countInfo, true);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       realyVisible: 3,
       children: 3,
-      expanded: true,
+      expanded: false,
       begats: 16,
       index: 0,
     });
@@ -1178,8 +1288,210 @@ describe('utils', () => {
     reapat();
     reapat();
   });
+  it('expandNode expandedAll: true nodeId: 1 , 1.1 重复展开', () => {
 
-  it('expandNode expandedAll: false nodeId: 1 , 1.1, 1.2, 1.2.2', () => {
+    const countInfo = {};
+
+    utils.expandNode('1', datas, countInfo, true);
+
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 16,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    function reapat () {
+      utils.expandNode('1.2', datas, countInfo, true);
+      exp(countInfo[ '1' ]).to.be.eql({
+        nowVisible: 16,
+        realyVisible: 16,
+        children: 3,
+        begats: 16,
+        index: 0,
+      });
+      exp(countInfo[ '1.2' ]).to.be.eql({
+        nowVisible: 6,
+        realyVisible: 6,
+        children: 2,
+        begats: 6,
+        index: 2,
+      });
+
+    }
+
+    reapat();
+    reapat();
+    reapat();
+  });
+
+  it('colapseNode expandedAll: false 展开:(1->1.2) 折叠:(1.2) 重复折叠', () => {
+
+    const countInfo = {};
+
+    utils.expandNode('1', datas, countInfo, false);
+    utils.expandNode('1.2', datas, countInfo, false);
+
+    function reapat () {
+      utils.colapseNode('1.2', datas, countInfo, false);
+      exp(countInfo[ '1' ]).to.be.eql({
+        nowVisible: 3,
+        expanded: true,
+        realyVisible: 3,
+        children: 3,
+        begats: 16,
+        index: 0,
+      });
+      exp(countInfo[ '1.2' ]).to.be.eql({
+        nowVisible: 0,
+        realyVisible: 2,
+        children: 2,
+        expanded: false,
+        begats: 6,
+        index: 2,
+      });
+    }
+
+    reapat();
+    reapat();
+    reapat();
+  });
+
+  it('colapseNode expandedAll: false 展开:(1->1.2) 折叠:(1 -> 1.2) 重复折叠', () => {
+
+    const countInfo = {};
+
+    utils.expandNode('1', datas, countInfo, false);
+    utils.expandNode('1.2', datas, countInfo, false);
+    utils.colapseNode('1', datas, countInfo, false);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 0,
+      expanded: false,
+      realyVisible: 5,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 2,
+      realyVisible: 2,
+      children: 2,
+      expanded: true,
+      begats: 6,
+      index: 2,
+    });
+
+    function reapat () {
+
+
+      utils.colapseNode('1.2', datas, countInfo, false);
+      exp(countInfo[ '1' ]).to.be.eql({
+          nowVisible: 0,
+          realyVisible: 3,
+          children: 3,
+          begats: 16,
+          index: 0,
+          expanded: false,
+        }
+      );
+      exp(countInfo[ '1.2' ]).to.be.eql({
+        nowVisible: 0,
+        realyVisible: 2,
+        children: 2,
+        expanded: false,
+        begats: 6,
+        index: 2,
+      });
+    }
+
+    reapat();
+    reapat();
+    reapat();
+  });
+  it('colapseNode expandedAll: true 展开:(1->1.2) 折叠:(1.2) 重复折叠', () => {
+
+    const countInfo = {};
+
+    utils.expandNode('1', datas, countInfo, true);
+    utils.expandNode('1.2', datas, countInfo, true);
+
+    function reapat () {
+      utils.colapseNode('1.2', datas, countInfo, true);
+      exp(countInfo[ '1' ]).to.be.eql({
+        nowVisible: 10,
+        realyVisible: 10,
+        children: 3,
+        begats: 16,
+        index: 0,
+      });
+      exp(countInfo[ '1.2' ]).to.be.eql({
+        nowVisible: 0,
+        realyVisible: 6,
+        children: 2,
+        expanded: false,
+        begats: 6,
+        index: 2,
+      });
+    }
+
+    reapat();
+    reapat();
+    reapat();
+  });
+
+  it('colapseNode expandedAll: true 展开:(1->1.2) 折叠:(1 -> 1.2) 重复折叠', () => {
+
+    const countInfo = {};
+
+    utils.expandNode('1', datas, countInfo, true);
+    utils.expandNode('1.2', datas, countInfo, true);
+    utils.colapseNode('1', datas, countInfo, true);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 0,
+      expanded: false,
+      realyVisible: 16,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 6,
+      realyVisible: 6,
+      children: 2,
+      begats: 6,
+      index: 2,
+    });
+
+    function reapat () {
+
+
+      utils.colapseNode('1.2', datas, countInfo, true);
+      exp(countInfo[ '1' ]).to.be.eql({
+          nowVisible: 0,
+          realyVisible: 10,
+          children: 3,
+          begats: 16,
+          index: 0,
+          expanded: false,
+        }
+      );
+      exp(countInfo[ '1.2' ]).to.be.eql({
+        nowVisible: 0,
+        realyVisible: 6,
+        children: 2,
+        expanded: false,
+        begats: 6,
+        index: 2,
+      });
+    }
+
+    reapat();
+    reapat();
+    reapat();
+  });
+
+  it('expandNode expandedAll: false nodeId: 1 -> 1.1-> 1.2->1.2.2->1.3', () => {
 
     const countInfo = {};
 
@@ -1259,7 +1571,7 @@ describe('utils', () => {
 
   });
 
-  it('expandNode expandedAll: true nodeId: 1 , 1.1, 1.2, 1.2.2', () => {
+  it('expandNode expandedAll: true nodeId: 1 -> 1.1-> 1.2->1.2.2->1.3', () => {
     const countInfo = {};
     const expandedAll = true;
     utils.expandNode('1', datas, countInfo, expandedAll);
@@ -1363,6 +1675,314 @@ describe('utils', () => {
       index: 4,
     });
 
+  });
+  it('collapsed expandedAll: true nodeId: 展开( 1 -> 1.1-> 1.2->1.2.2->1.3) 折叠: (1.2)', () => {
+    const countInfo = {};
+    const expandedAll = true;
+    utils.expandNode('1', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.1', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.2', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.3', datas, countInfo, expandedAll);
+
+    utils.colapseNode('1.2', datas, countInfo, expandedAll);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 25,
+      realyVisible: 25,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 10,
+      realyVisible: 10,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 0,
+      realyVisible: 6,
+      children: 2,
+      expanded: false,
+      begats: 6,
+      index: 2,
+    });
+
+    exp(countInfo[ '1.3' ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      children: 3,
+      begats: 7,
+      index: 9,
+    });
+
+    exp(countInfo[ '1.2.2' ]).to.be.eql({
+      nowVisible: 4,
+      realyVisible: 4,
+      children: 2,
+      begats: 4,
+      index: 4,
+    });
+
+  });
+
+  it('collapsed expandedAll: true nodeId: 展开( 1 -> 1.1-> 1.2->1.2.2->1.3) 折叠: (1.2.2)', () => {
+    const countInfo = {};
+    const expandedAll = true;
+    utils.expandNode('1', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.1', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.2', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.3', datas, countInfo, expandedAll);
+
+    utils.colapseNode('1.2.2', datas, countInfo, expandedAll);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 27,
+      realyVisible: 27,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 12,
+      realyVisible: 12,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 2,
+      realyVisible: 2,
+      children: 2,
+      begats: 6,
+      index: 2,
+    });
+
+    exp(countInfo[ '1.3' ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      children: 3,
+      begats: 7,
+      index: 9,
+    });
+
+    exp(countInfo[ '1.2.2' ]).to.be.eql({
+      nowVisible: 0,
+      expanded: false,
+      realyVisible: 4,
+      children: 2,
+      begats: 4,
+      index: 4,
+    });
+
+  });
+
+  it('collapsed expandedAll: fasle nodeId: 展开( 1 -> 1.1-> 1.2->1.2.2->1.3) 折叠: (1.2.2)', () => {
+    const countInfo = {};
+    const expandedAll = false;
+    utils.expandNode('1', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.1', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.2', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+
+    utils.expandNode('1.3', datas, countInfo, expandedAll);
+
+    utils.colapseNode('1.2.2', datas, countInfo, expandedAll);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 12,
+      realyVisible: 12,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 8,
+      realyVisible: 8,
+      expanded: true,
+      children: 3,
+      begats: 16,
+      index: 0,
+    });
+
+    exp(countInfo[ '1.2' ]).to.be.eql({
+      nowVisible: 2,
+      realyVisible: 2,
+      children: 2,
+      expanded: true,
+      begats: 6,
+      index: 2,
+    });
+    exp(countInfo[ '1.3' ]).to.be.eql({
+      nowVisible: 3,
+      realyVisible: 3,
+      children: 3,
+      begats: 7,
+      index: 9,
+      expanded: true,
+
+    });
+
+    exp(countInfo[ '1.2.2' ]).to.be.eql({
+      nowVisible: 0,
+      expanded: false,
+      realyVisible: 2,
+      children: 2,
+      begats: 4,
+      index: 4,
+    });
+
+  });
+
+  it('collapsed expandedAll: fasle nodeId: 折叠展开交叉的情况', () => {
+    const countInfo = {};
+    const expandedAll = false;
+    utils.expandNode('1', datas, countInfo, expandedAll);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 3,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+      expanded: true,
+    });
+
+    utils.colapseNode('1', datas, countInfo, expandedAll);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 4,
+      realyVisible: 4,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 0,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+      expanded: false,
+    });
+    utils.expandNode('1', datas, countInfo, expandedAll);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 3,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+      expanded: true,
+    });
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 5,
+      realyVisible: 5,
+      children: 3,
+      begats: 16,
+      index: 0,
+      expanded: true,
+    });
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 9,
+      realyVisible: 9,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+
+    utils.colapseNode('1.2', datas, countInfo, expandedAll);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 3,
+      realyVisible: 3,
+      children: 3,
+      begats: 16,
+      index: 0,
+      expanded: true,
+    });
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+
+    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 9,
+      realyVisible: 9,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 5,
+      realyVisible: 5,
+      children: 3,
+      begats: 16,
+      index: 0,
+      expanded: true,
+    });
+    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 11,
+      realyVisible: 11,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 7,
+      realyVisible: 7,
+      children: 3,
+      begats: 16,
+      index: 0,
+      expanded: true,
+    });
+    utils.colapseNode('1.2.2', datas, countInfo, expandedAll);
+    exp(countInfo[ '1' ]).to.be.eql({
+      nowVisible: 5,
+      realyVisible: 5,
+      children: 3,
+      begats: 16,
+      index: 0,
+      expanded: true,
+    });
+    exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
+      nowVisible: 9,
+      realyVisible: 9,
+      children: 4,
+      begats: 31,
+      index: -1,
+    });
   });
 
 });
