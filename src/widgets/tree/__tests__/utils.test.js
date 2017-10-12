@@ -2047,4 +2047,68 @@ describe('utils', () => {
       { key: '4', title: '4', isLeaf: true, },
     ]);
   });
+
+  it('generateRealTreeData children === nowVisible', () => {
+
+    const bigTree = [];
+    for (let a = 0; a < 3; a++) {
+      bigTree.push({
+        key: `${a}`,
+        title: `${a}`,
+      });
+      for (let b = 0; b < 2; b++) {
+        const keyb = `${a}.${b}`;
+        bigTree.push({
+          key: keyb,
+          title: keyb,
+          pid: `${a}`,
+          path: `${a}`,
+        });
+        for (let c = 0; c < 3; c++) {
+          const keyc = `${a}.${b}.${c}`;
+          bigTree.push({
+            key: keyc,
+            title: keyc,
+            pid: `${keyb}`,
+            path: `${a}/${keyb}`,
+          });
+          for (let d = 0; d < 5; d++) {
+            const key = `${a}.${b}.${c}.${d}`;
+            bigTree.push({
+              key,
+              title: key,
+              pid: `${keyc}`,
+              isLeaf: true,
+              path: `${a}/${keyb}/${keyc}`,
+            });
+          }
+        }
+      }
+    }
+    utils = new TreeUtils(bigTree);
+    const id2ExtendInfo = {};
+
+    utils.expandNode('0', bigTree, id2ExtendInfo, false);
+    utils.expandNode('0.0', bigTree, id2ExtendInfo, false);
+    utils.expandNode('0.0.0', bigTree, id2ExtendInfo, false);
+    const actual = utils.generateRealTreeData({
+      expandedAll: false,
+      target: {},
+      id2ExtendInfo,
+    });
+    console.dir(actual);
+    exp(actual).to.be.eql([
+      { key: '0', title: '0', }, { key: '0.0', title: '0.0', pid: '0', path: '0', },
+      { key: '0.0.0', title: '0.0.0', pid: '0.0', path: '0/0.0', },
+      { key: '0.0.0.0', title: '0.0.0.0', pid: '0.0.0', isLeaf: true, path: '0/0.0/0.0.0', },
+      { key: '0.0.0.1', title: '0.0.0.1', pid: '0.0.0', isLeaf: true, path: '0/0.0/0.0.0', },
+      { key: '0.0.0.2', title: '0.0.0.2', pid: '0.0.0', isLeaf: true, path: '0/0.0/0.0.0', },
+      { key: '0.0.0.3', title: '0.0.0.3', pid: '0.0.0', isLeaf: true, path: '0/0.0/0.0.0', },
+      { key: '0.0.0.4', title: '0.0.0.4', pid: '0.0.0', isLeaf: true, path: '0/0.0/0.0.0', },
+      { key: '0.0.1', title: '0.0.1', pid: '0.0', path: '0/0.0', },
+      { key: '0.0.2', title: '0.0.2', pid: '0.0', path: '0/0.0', },
+      { key: '0.1', title: '0.1', pid: '0', path: '0', },
+      { key: '1', title: '1', },
+      { key: '2', title: '2', },]);
+  });
 });

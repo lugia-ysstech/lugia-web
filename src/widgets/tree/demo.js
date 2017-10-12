@@ -11,6 +11,51 @@ const { TreeNode, } = Tree;
 export default () => {
 
 
+  const bigTree = [];
+  for (let a = 0; a < 5; a++) {
+    bigTree.push({
+      key: `${a}`,
+      title: `${a}`,
+    });
+    for (let b = 0; b < 5; b++) {
+      const keyb = `${a}.${b}`;
+      bigTree.push({
+        key: keyb,
+        title: keyb,
+        pid: `${a}`,
+        path: `${a}`,
+      });
+      for (let c = 0; c < 5; c++) {
+        const keyc = `${a}.${b}.${c}`;
+        bigTree.push({
+          key: keyc,
+          title: keyc,
+          pid: `${keyb}`,
+          path: `${a}/${keyb}`,
+        });
+        for (let d = 0; d < 400; d++) {
+          const key = `${a}.${b}.${c}.${d}`;
+          bigTree.push({
+            key,
+            title: key,
+            pid: `${keyc}`,
+            isLeaf: true,
+            path: `${a}/${keyb}/${keyc}`,
+          });
+        }
+      }
+    }
+  }
+  const now = new Date();
+  const len = bigTree.length;
+  let root = 0;
+  for (let i = 0; i < len; i++) {
+    const node = bigTree[ i ];
+    if (!node.pid) {
+      root++;
+    }
+  }
+  console.info(new Date() - now);
   const onSelect = (selectedKeys, info) => {
       console.log('selected', selectedKeys, info);
     },
@@ -21,6 +66,7 @@ export default () => {
     console.info(keys);
     return false;
   };
+
   const rowData = [
     { key: '1', title: '1', },
     { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
@@ -57,19 +103,20 @@ export default () => {
     { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
     { key: '4', title: '4', isLeaf: true, },
   ];
+  rowData.forEach((row: Object, i: number) => {
+    row.title = row.title + '-' + i;
+  });
   return <Tree
-    defaultExpandAll
+    // defaultExpandAll
     // expandedKeys={[]}
     onExpand={onExpand}
     showLine
-    data={rowData}
+    data={bigTree}
     checkable
-    defaultExpandedKeys={['0-0-0', '0-0-1',]}
-    defaultSelectedKeys={['0-0-0', '0-0-1',]}
-    defaultCheckedKeys={['0-0-0', '0-0-1',]}
     onSelect={onSelect}
     onCheck={onCheck}
   >
-   
+
   </Tree>;
-};
+}
+;

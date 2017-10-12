@@ -242,11 +242,11 @@ class TreeUtils {
     return result;
   }
 
-  slice (rowDatas: Array<RowData>, start: number, total: number): Array<RowData> {
+  slice (rowDatas: Array<RowData>, start: number, total: number, out?: Object): Array<RowData> {
     if (rowDatas && rowDatas.length === 0) {
       return [];
     }
-    const result =  rowDatas.slice(start, start + total);
+    const result = rowDatas.slice(start, start + total);
     const root = result[ 0 ];
     if (!root) {
       console.error('树形数据存在问题');
@@ -259,6 +259,10 @@ class TreeUtils {
     }
 
     const pathNode = this.getPathNodes(rowDatas, start, root.pid);
+    if(out){
+      out.parentCount = pathNode.length;
+    }
+    console.info('pathNode', pathNode );
     Array.prototype.push.apply(pathNode, result);
     return pathNode;
   }
@@ -523,9 +527,9 @@ class TreeUtils {
       } else {
         if (nowVisible === children) {
           Array.prototype.push.apply(result, this.fetchLevelOneChild(datas, childrenIdx));
+
           i += begats;
-        }
-        if (nowVisible === begats) {
+        } else if (nowVisible === begats) {
           const start = i + 1;
           Array.prototype.push.apply(result, datas.slice(start, start + begats));
           i += begats;

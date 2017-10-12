@@ -17,7 +17,7 @@ import type { NodeId2ExtendInfo, } from 'sv-widget';
 import TreeUtils from './utils';
 
 const defaultHeight = 250;
-const menuItemHeight = 21;
+const menuItemHeight = 18;
 
 type RowData = {
   key: string,
@@ -92,8 +92,72 @@ type ExpandInfo = {
   id2ExtendInfo: NodeId2ExtendInfo,
 }
 type TreeState = {
-  expand: ExpandInfo
+  expand: ExpandInfo,
+  expandedKeys: Array<string>,
 }
+
+class KTree extends React.Component<any, any> {
+
+  static defaultProps = {
+    prefixCls: 'sv-tree',
+    checkable: false,
+    showIcon: false,
+    openAnimation: animation,
+  };
+
+  utils: TreeUtils;
+
+
+  render () {
+    const {
+      prefixCls = Tree.defaultProps.prefixCls,
+      className,
+      showLine,
+      checkable,
+      data,
+      start,
+      end,
+      onExpand,
+      utils,
+    } = this.props;
+
+    const classString = classNames({
+      [`${prefixCls}-show-line`]: !!showLine,
+    }, className);
+    if (data) {
+      const out = {};
+      const rowData = utils.slice(data, start, end - start, out);
+      const nodes = utils.generateTreeNode(rowData);
+      const top = out.parentCount ? 3 - out.parentCount * 20 : 0;
+      const treeNodes = this.loopNode(nodes);
+      return <RcTree {...this.props}
+                     style={{ position: 'absolute', top: `${top}px`, }}
+                     className={classString}
+                     onExpand={onExpand}
+                     checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
+        {treeNodes}
+      </RcTree>;
+    }
+
+
+  }
+
+
+  loopNode = (data: Array<RowData>) => data.map(item => {
+    const { children, key, title, isLeaf, } = item;
+    if (children !== undefined) {
+      return (
+        <TreeNode key={key} title={title} isLeaf={isLeaf}>
+          {this.loopNode(children)}
+        </TreeNode>
+      );
+    }
+    return <TreeNode key={key} title={title} isLeaf={isLeaf}/>;
+  });
+
+}
+
+const ThrottleTree = ThrottleScroller(KTree, menuItemHeight);
 
 class Tree extends React.Component<TreeProps, TreeState> {
 
@@ -112,6 +176,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     super(props);
     this.createTreeUtils(props);
     this.state = {
+      expandedKeys: [],
       expand: this.getExpandInfo(),
     };
   }
@@ -136,7 +201,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
       this.createTreeUtils(nexProps);
     }
     const needUpdate = dataChanged
-      || nexProps.start !== this.props.start
       || nextState.expand !== this.state.expand;
     return needUpdate;
   }
@@ -157,25 +221,26 @@ class Tree extends React.Component<TreeProps, TreeState> {
       showLine,
       checkable,
       data,
-      start,
-      end,
     } = this.props;
 
     const classString = classNames({
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     const { children, } = this.props;
-    const { expand, } = this.state;
+    const { expand, expandedKeys, } = this.state;
     if (data) {
+      console.dir(data);
       this.realyDatas = this.utils.generateRealTreeData(expand);
-      const rowData = this.utils.slice(this.realyDatas, start, end - start);
-      const nodes = this.utils.generateTreeNode(rowData);
-      return <RcTree {...this.props}
-                     className={classString}
-                     onExpand={this.onExpand}
-                     checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
-        {this.loopNode(nodes)}
-      </RcTree>;
+      console.dir(this.realyDatas);
+      console.dir(expand.id2ExtendInfo[ '0.0' ]);
+      console.dir(expand.id2ExtendInfo[ '0.0.0' ]);
+      console.dir(expand.id2ExtendInfo[ '0.0.1' ]);
+
+      return <ThrottleTree {...this.props}
+                           data={this.realyDatas}
+                           utils={this.utils}
+                           expandedKeys={expandedKeys}
+                           onExpand={this.onExpand}></ThrottleTree>;
     }
 
     return <RcTree {...this.props} className={classString}
@@ -214,8 +279,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         delete target[ noeKey ];
       }
     }
-
-    this.setState({ expand: Object.assign({}, this.state.expand, { target, id2ExtendInfo, }), });
+    this.setState({ expand: Object.assign({}, this.state.expand, { target, id2ExtendInfo, }), expandedKeys, });
     onExpand && onExpand(expandedKeys, data);
   };
 
@@ -241,9 +305,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { height = defaultHeight, } = this.props.getTheme();
     return height;
   }
-
-
 }
 
-export default ThemeProvider(ThrottleScroller(Tree, menuItemHeight), Widget.Tree);
+const SvTree = ThemeProvider(Tree, Widget.Tree);
+
+export default SvTree;
 Tree.TreeNode = TreeNode;
