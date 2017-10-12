@@ -4,13 +4,14 @@
  *
  * @flow
  */
-
+import type { NodeExtendInfo, NodeId2ExtendInfo, } from 'sv-widget';
 
 const EmptyError = '结点不能为空',
   PathEqlKey = 'path不能等于key',
   PidEqlKey = 'pid不能等于key',
   PathNotContainerPid = 'path必须包含pid',
   PidPathMustSameExist = 'pid&path必须同时存在';
+const isInit = -1;
 
 const ErrorDefine = {
   EmptyError,
@@ -31,21 +32,10 @@ type RowData = {
 type ExpandInfo = {
   expandedAll: boolean,
   target: Object,
+  id2ExtendInfo: NodeId2ExtendInfo,
 }
 
-type NodeExtendInfo = {
-  // 当前可见节点数
-  nowVisible?: number,
-  // 真实可见节点数
-  realyVisible?: number,
-  // 子节点树
-  children?: number,
-  // 子孙节点数
-  begats?: number,
-  index: number,
-  expanded?: boolean,
-}
-type NodeId2ExtendInfo = { [nodeId: string]: NodeExtendInfo };
+
 const notEmpty = (obj: any) => {
   return obj !== null && obj !== undefined && obj !== '';
 };
@@ -67,10 +57,25 @@ class TreeUtils {
   }
 
   Error: Object;
+  version: number;
+  oldTreeData: Array<RowData>;
+  treeData: Array<RowData>;
+  oldVersion: number;
 
-  constructor () {
+  constructor (treeData: Array<RowData>) {
     this.Error = ErrorDefine;
+    this.version = 0;
+    this.oldVersion = isInit;
+    this.oldTreeData = treeData;
+    this.treeData = treeData;
     return this;
+  }
+
+  updateVersion (): void {
+    this.version++;
+    if (this.version >= Number.MAX_VALUE) {
+      this.version = 0;
+    }
   }
 
   isRightTreeRowData (data: Object): string {
@@ -237,12 +242,12 @@ class TreeUtils {
     return result;
   }
 
-  slice (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo): Array<RowData> {
+  slice (rowDatas: Array<RowData>, start: number, total: number): Array<RowData> {
     if (rowDatas && rowDatas.length === 0) {
       return [];
     }
-
-    const root = rowDatas[ start ];
+    const result =  rowDatas.slice(start, start + total);
+    const root = result[ 0 ];
     if (!root) {
       console.error('树形数据存在问题');
       return [];
@@ -250,64 +255,14 @@ class TreeUtils {
 
     const isTopLevel = !root.pid;
     if (isTopLevel) {
-      return this.sliceExpand(rowDatas, start, total, expandInfo);
+      return result;
     }
 
     const pathNode = this.getPathNodes(rowDatas, start, root.pid);
-    return this.sliceExpand(rowDatas, start, total, expandInfo, pathNode);
+    Array.prototype.push.apply(pathNode, result);
+    return pathNode;
   }
 
-  sliceExpand (rowDatas: Array<RowData>, start: number, total: number, expandInfo?: ExpandInfo, parentNode?: Array<RowData> = []): Array<RowData> {
-
-    if (!expandInfo) {
-      return rowDatas.slice(start, start + total);
-    }
-    const { target, expandedAll, } = expandInfo;
-
-    const result = [];
-    let foundRow: number = 0;
-    let inCollapseRange: boolean = false;
-    let collapsePath: ?string = null;
-
-    const isCollspace = function (key) {
-      return expandedAll ? target[ key ] : !target[ key ];
-    };
-
-    const processRow = (needComput: ?boolean = true) => (row: RowData) => {
-      const { key, path, } = row;
-
-      if (inCollapseRange) {
-        if (!path || collapsePath === null || collapsePath === undefined || !path.startsWith(collapsePath)) {
-          inCollapseRange = false;
-        }
-      }
-
-      if (!inCollapseRange) {
-
-        result.push(row);
-        if (needComput) {
-          foundRow++;
-        }
-      }
-
-      if (!inCollapseRange && isCollspace(key)) {
-        inCollapseRange = true;
-        collapsePath = key;
-        if (path) {
-          collapsePath = `${path}/${collapsePath}`;
-        }
-      }
-    };
-
-    parentNode.forEach(processRow(false));
-    const processRowForRowDatas = processRow();
-    for (let i = start; foundRow < total && i < rowDatas.length; i++) {
-      const row = rowDatas[ i ];
-      processRowForRowDatas(row);
-    }
-
-    return result;
-  }
 
   getPathNodes (rowDatas: Array<RowData>, start: number, targetPid?: string) {
     const result = [];
@@ -355,6 +310,7 @@ class TreeUtils {
     let children = 0;
     let begats = 0;
     const begin = existData && existData.index !== undefined ? existData.index : 0;
+    const childrenIdx = [];
 
     for (let i = begin + 1; i < end; i++) {
 
@@ -364,6 +320,7 @@ class TreeUtils {
       const isChildren = pid === nodeId;
       if (isChildren) {
         children++;
+        childrenIdx.push(i);
         begats++;
         founded = true;
       } else if (path) {
@@ -379,29 +336,34 @@ class TreeUtils {
       }
 
     }
-    return this.generateExtendInfo(nodeId, expandedAll, begats, children, id2nodeExtendInfo);
+    return this.generateExtendInfo(nodeId, expandedAll, begats, children, id2nodeExtendInfo, childrenIdx);
   }
 
   initAllNodeIndexAndTopRoot (nodes: Array<RowData>,
                               id2nodeExpandInfo: NodeId2ExtendInfo,
                               expandedAll: boolean) {
+    const childrenIdx = [];
     if (!id2nodeExpandInfo[ VirtualRoot ]) {
       const len = nodes.length;
       let children = 0;
       for (let index = 0; index < len; index++) {
         const { pid, key, } = nodes[ index ];
         if (!pid) {
+          childrenIdx.push(index);
           children++;
         }
         if (!id2nodeExpandInfo[ key ]) {
           id2nodeExpandInfo[ key ] = { index, };
         }
       }
-      this.generateExtendInfo(VirtualRoot, expandedAll, len, children, id2nodeExpandInfo);
+      this.generateExtendInfo(VirtualRoot, expandedAll, len, children, id2nodeExpandInfo, childrenIdx);
     }
   }
 
-  generateExtendInfo (nodeId, expandedAll: boolean, begats: number, children: number, id2nodeExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
+  generateExtendInfo (nodeId: string, expandedAll: boolean,
+                      begats: number, children: number,
+                      id2nodeExtendInfo: NodeId2ExtendInfo,
+                      childrenIdx: Array<number>): NodeExtendInfo {
 
     const nowAndRealVisible = expandedAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
     const nodeInfo = id2nodeExtendInfo[ nodeId ];
@@ -410,6 +372,7 @@ class TreeUtils {
     id2nodeExtendInfo[ nodeId ] = {
       nowVisible: nowAndRealVisible,
       realyVisible: nowAndRealVisible,
+      childrenIdx,
       children,
       begats,
       index,
@@ -431,7 +394,7 @@ class TreeUtils {
 
     const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo, expandedAll);
     const info = fetchNodeInfo(nodeId);
-    const { children, expanded, } = info;
+    const { children, expanded, begats = 0, } = info;
     const isInitStatus = expanded === undefined;
 
     if (!expandedAll && isInitStatus) {
@@ -439,7 +402,7 @@ class TreeUtils {
     }
 
     const willNotCollapsed = expandedAll && isInitStatus;
-    if (willNotCollapsed || expanded === true) {
+    if (willNotCollapsed || expanded === true || begats == 0) {
       return;
     }
 
@@ -457,6 +420,7 @@ class TreeUtils {
 
     });
     info.expanded = true;
+    this.updateVersion();
   }
 
 
@@ -475,8 +439,8 @@ class TreeUtils {
     const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo, expandedAll);
 
     const info = fetchNodeInfo(nodeId);
-    const { expanded, realyVisible = 0, } = info;
-    if (expanded === false) {
+    const { expanded, realyVisible = 0, begats = 0, } = info;
+    if (expanded === false || begats == 0) {
       return;
     }
 
@@ -494,6 +458,7 @@ class TreeUtils {
       }
     });
     info.expanded = false;
+    this.updateVersion();
   }
 
   processPath (info: RowData, doCall: Function): void {
@@ -510,8 +475,76 @@ class TreeUtils {
       doCall(pathArray[ i ]);
     }
   }
+
+
+  generateRealTreeData (expandInfo: ExpandInfo): Array<RowData> {
+
+    let c = 0;
+    if (this.version === this.oldVersion) {
+      console.info(c);
+      return this.oldTreeData;
+    }
+
+    this.oldVersion = this.version;
+    const datas = this.treeData;
+    const { expandedAll, id2ExtendInfo, } = expandInfo;
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(datas, id2ExtendInfo, expandedAll);
+    const { childrenIdx = [], nowVisible = 0, children = 0, begats = 0, } = fetchNodeInfo(this.VirtualRoot);
+    if (nowVisible === 0) {
+      return [];
+    }
+
+    if (this.oldVersion === isInit) {
+      return this.oldTreeData = expandedAll ? datas : this.fetchLevelOneChild(datas, childrenIdx);
+    }
+
+
+    if (nowVisible === children) {
+      console.info(c);
+      return this.oldTreeData = this.fetchLevelOneChild(datas, childrenIdx);
+    }
+    if (nowVisible === begats) {
+      console.info(c);
+      return this.oldTreeData = datas;
+    }
+
+    const totalLen = datas.length;
+    const result = [];
+    for (let i = 0; i < totalLen; i++) {
+      c++;
+      const row = datas[ i ];
+      result.push(row);
+
+      const { key, } = row;
+      const { childrenIdx = [], nowVisible = 0, children = 0, begats = 0, } = fetchNodeInfo(key);
+
+      if (nowVisible === 0) {
+        i += begats;
+      } else {
+        if (nowVisible === children) {
+          Array.prototype.push.apply(result, this.fetchLevelOneChild(datas, childrenIdx));
+          i += begats;
+        }
+        if (nowVisible === begats) {
+          const start = i + 1;
+          Array.prototype.push.apply(result, datas.slice(start, start + begats));
+          i += begats;
+        }
+      }
+    }
+    console.info(c);
+    return this.oldTreeData = result;
+  }
+
+  fetchLevelOneChild (datas: Array<RowData>, childrenIdx: Array<number>) {
+    const result = [];
+    const len = childrenIdx.length;
+    for (let i = 0; i < len; i++) {
+      result.push(datas[ childrenIdx[ i ] ]);
+    }
+    return result;
+  }
 }
 
 
-const utils: TreeUtils = new TreeUtils();
-export default utils;
+export default TreeUtils;

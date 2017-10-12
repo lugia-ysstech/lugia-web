@@ -4,12 +4,20 @@ import chai from 'chai';
 import 'jest-styled-components';
 
 import { mockObject, } from 'vx-mock';
-import utils from '../utils';
+import TreeUtils from '../utils';
 
 const { expect: exp, } = chai;
 
 describe('utils', () => {
 
+  const children1D2 = [3, 4,];
+  const children1D2D2 = [5, 8,];
+  const children1D3 = [10, 13, 16,];
+  const children2D1D2 = [21,];
+  const childrenRoot = [0, 17, 27, 30,];
+  const children1 = [1, 2, 9,];
+  const children2 = [18, 22,];
+  let utils;
 
   const datas = [
     { key: '1', title: '1', },
@@ -47,8 +55,9 @@ describe('utils', () => {
     { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
     { key: '4', title: '4', isLeaf: true, },
   ];
-
-
+  beforeEach(() => {
+    utils = new TreeUtils(datas);
+  });
   /*
 0      1
 1        1.1
@@ -216,21 +225,204 @@ describe('utils', () => {
   });
 
 
-  it('slice not topLevel 真实测试', () => {
-    exp(utils.slice(datas, 8, 5, { expandedAll: true, target: { ['1' + '']: true, }, })).to.be.eql(
-      [{ key: '1', title: '1', },
-        { key: '2', title: '2', },
-        { key: '2.1', title: '2.1', pid: '2', path: '2', },
-        { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
-        { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
-        {
-          key: '2.1.2.1',
-          title: '2.1.2.1',
-          pid: '2.1.2',
-          path: '2/2.1/2.1.2',
-          isLeaf: true,
-        },]
-    );
+  // [
+  //   { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+  //   { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+  //   { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
+  //   { key: '3', title: '3', },
+  //   { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+  // ]
+
+
+  it('generateRealTreeData  expandedAll: true 第一次获取', () => {
+    const id2ExtendInfo = {};
+
+    exp(utils.generateRealTreeData({
+      expandedAll: true,
+      target: {},
+      id2ExtendInfo,
+    })).to.be.eql(datas);
+  });
+
+
+  it('generateRealTreeData expandedAll: false 第一次获取', () => {
+    const id2ExtendInfo = {};
+
+    const actual = utils.generateRealTreeData({
+      expandedAll: false,
+      target: {},
+      id2ExtendInfo,
+    });
+
+    exp(actual).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+      { key: '4', title: '4', isLeaf: true, },
+    ]);
+  });
+
+
+  it('generateRealTreeData expandedAll: true 折叠全部', () => {
+    const id2ExtendInfo = {};
+    const expandedAll = true;
+    utils.colapseNode('1', datas, id2ExtendInfo, expandedAll);
+    utils.colapseNode('2', datas, id2ExtendInfo, expandedAll);
+    utils.colapseNode('3', datas, id2ExtendInfo, expandedAll);
+    utils.colapseNode('4', datas, id2ExtendInfo, expandedAll);
+    const actual = utils.generateRealTreeData({
+      expandedAll,
+      target: {},
+      id2ExtendInfo,
+    });
+
+    exp(actual).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+      { key: '4', title: '4', isLeaf: true, },
+    ]);
+    exp(utils.generateRealTreeData({
+      expandedAll,
+      target: {},
+      id2ExtendInfo,
+    })).to.be.equal(actual);
+  });
+  it('generateRealTreeData expandedAll: true 折叠全部后 再 全部展开', () => {
+    const id2ExtendInfo = {};
+    const expandedAll = true;
+    utils.colapseNode('1', datas, id2ExtendInfo, expandedAll);
+    utils.colapseNode('2', datas, id2ExtendInfo, expandedAll);
+    utils.colapseNode('3', datas, id2ExtendInfo, expandedAll);
+    utils.colapseNode('4', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('1', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('2', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('3', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('4', datas, id2ExtendInfo, expandedAll);
+    const actual = utils.generateRealTreeData({
+      expandedAll,
+      target: {},
+      id2ExtendInfo,
+    });
+
+    exp(actual).to.be.eql(datas);
+  });
+  it('generateRealTreeData expandedAll: true 折叠1 2 ', () => {
+    const id2ExtendInfo = {};
+    const expandedAll = true;
+    utils.colapseNode('1', datas, id2ExtendInfo, expandedAll);
+    utils.colapseNode('2', datas, id2ExtendInfo, expandedAll);
+    const actual = utils.generateRealTreeData({
+      expandedAll,
+      target: {},
+      id2ExtendInfo,
+    });
+    exp(actual).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+      { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+      { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+      { key: '4', title: '4', isLeaf: true, },]);
+  });
+
+  it('generateRealTreeData expandedAll: true 折叠1.2 2', () => {
+    const id2ExtendInfo = {};
+    const expandedAll = true;
+    utils.colapseNode('1.2', datas, id2ExtendInfo, expandedAll);
+    utils.colapseNode('2', datas, id2ExtendInfo, expandedAll);
+    const actual = utils.generateRealTreeData({
+      expandedAll,
+      target: {},
+      id2ExtendInfo,
+    });
+    exp(actual).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+      { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+      { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+      { key: '4', title: '4', isLeaf: true, },]);
+  });
+
+
+  it('generateRealTreeData expandedAll: false 展开 1 2 3 ', () => {
+    const id2ExtendInfo = {};
+    const expandedAll = false;
+    utils.expandNode('1', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('2', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('3', datas, id2ExtendInfo, expandedAll);
+    const actual = utils.generateRealTreeData({
+      expandedAll,
+      target: {},
+      id2ExtendInfo,
+    });
+    exp(actual).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '2', title: '2', },
+      { key: '2.1', title: '2.1', pid: '2', path: '2', },
+      { key: '2.2', title: '2.2', pid: '2', path: '2', },
+      { key: '3', title: '3', },
+      { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+      { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+      { key: '4', title: '4', isLeaf: true, },]);
+  });
+
+  it('generateRealTreeData expandedAll: false 展开 1 1.1  1.3 1.3.1 1.3.2 3', () => {
+    const id2ExtendInfo = {};
+    const expandedAll = false;
+    utils.expandNode('1', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('1.1', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('1.3', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('1.3.1', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('1.3.2', datas, id2ExtendInfo, expandedAll);
+    utils.expandNode('3', datas, id2ExtendInfo, expandedAll);
+    const actual = utils.generateRealTreeData({
+      expandedAll,
+      target: {},
+      id2ExtendInfo,
+    });
+    exp(actual).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+      { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+      { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+      { key: '4', title: '4', isLeaf: true, },]);
+  });
+
+  it('generateRealTreeData empty', () => {
+    utils = new TreeUtils([]);
+    const id2ExtendInfo = {};
+    const expandedAll = false;
+    exp(utils.generateRealTreeData({
+      expandedAll,
+      target: {},
+      id2ExtendInfo,
+    })).to.be.eql([]);
   });
 
   it('generateTreeNode empty', () => {
@@ -452,304 +644,6 @@ describe('utils', () => {
     exp(utils.getPathNodes([], 1, '')).to.be.eql([]);
   });
 
-  it('slice topLevel', () => {
-    const mockUtils = mockObject.create(utils);
-    const getPathNodes = mockUtils.mockFunction('getPathNodes');
-    exp(utils.slice(datas, 0, 5)).to.be.eql(datas.slice(0, 5));
-    exp(getPathNodes.callTimes()).to.be.equal(0);
-  });
-
-  it('slice not topLevel', () => {
-    const mockUtils = mockObject.create(utils);
-    const getPathNodes = mockUtils.mockFunction('getPathNodes');
-    const sliceExpand = mockUtils.mockFunction('sliceExpand');
-    const pathNode = [1, 2, 3, 4,];
-    const start = 1;
-    const total = 5;
-
-    getPathNodes.returned(pathNode);
-    const sliceResult = [5, 7, 5, 75,];
-    sliceExpand.returned(sliceResult);
-    const expandInfo = { expandedAll: false, target: {}, };
-    exp(utils.slice(datas, start, total, expandInfo)).to.be.eql(sliceResult);
-
-    exp(getPathNodes.callTimes()).to.be.equal(1);
-    exp(sliceExpand.callTimes()).to.be.equal(1);
-
-    exp(sliceExpand.getCallArgs(0)).to.be.eql([datas, start, total, expandInfo, pathNode,]);
-  });
-
-
-  it('sliceExpand expand is undefined, is eql [].slice(start, start + total)', () => {
-    const start = 1;
-    const total = 5;
-    exp(utils.sliceExpand(datas, start, total)).to.be.eql(datas.slice(start, start + total));
-
-  });
-
-  it('sliceExpand expand is exisit expandedAll true toproot collapse', () => {
-    const start = 0;
-    const total = 5;
-    const expandDatas = [{ key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ];
-
-    const expandObj = {
-      target: {
-        ['1' + '']: true,
-      },
-      expandedAll: true,
-    };
-    exp(utils.sliceExpand(expandDatas, start, total, expandObj)).to.be.eql([
-      { key: '1', title: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ]);
-  });
-  it('sliceExpand expand is exisit expandedAll false', () => {
-    const start = 1;
-    const total = 5;
-    const expandDatas = [{ key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ];
-
-    const expandObj = {
-      target: {
-        ['1' + '']: true,
-        ['1.1' + '']: true,
-        ['1.2.1' + '']: true,
-        ['1.2.2' + '']: true,
-        ['1.2.2.1' + '']: true,
-        ['1.3' + '']: true,
-        ['2' + '']: true,
-      },
-      expandedAll: false,
-    };
-    exp(utils.sliceExpand(expandDatas, start, total, expandObj)).to.be.eql([
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ]);
-  });
-
-  it('sliceExpand expand is exisit expandedAll false start is collapse', () => {
-    const start = 1;
-    const total = 5;
-    const expandDatas = [{ key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ];
-
-    const expandObj = {
-      target: {
-        ['1.2' + '']: false,
-        ['1.2.1' + '']: true,
-        ['1.2.2' + '']: true,
-        ['1.2.2.1' + '']: true,
-        ['1.3' + '']: true,
-        ['2' + '']: true,
-      },
-      expandedAll: false,
-    };
-    const result = utils.sliceExpand(expandDatas, start, total, expandObj);
-    exp(result).to.be.eql([
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ]);
-  });
-
-  it('sliceExpand expand is exisit expandedAll true', () => {
-    const start = 1;
-    const total = 5;
-    const expandDatas = [{ key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ];
-
-    const expandObj = {
-      target: {
-        ['1.1' + '']: true,
-        ['1.2' + '']: true,
-        ['1.3' + '']: true,
-      },
-      expandedAll: true,
-    };
-    const result = utils.sliceExpand(expandDatas, start, total, expandObj);
-    exp(result).to.be.eql([
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ]);
-  });
-
-  it('sliceExpand', () => {
-      const start = 0;
-      const total = 5;
-      const expandDatas = [
-        { key: '1', title: '1', },
-        { key: '1.1', title: '1.1', pid: '1', path: '1', },
-        { key: '1.2', title: '1.2', pid: '1', path: '1', },
-        { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
-        { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-        { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-        { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', },
-        { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', },
-        { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', },
-
-        { key: '1.3', title: '1.3', pid: '1', path: '1', },
-        { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
-        { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', },
-        { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', },
-        { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
-        { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', },
-        { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', },
-        { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', },
-
-        { key: '2', title: '2', },
-        { key: '2.1', title: '2.1', pid: '2', path: '2', },
-        { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', },
-        { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
-        { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', },
-        { key: '2.2', title: '2.2', pid: '2', path: '2', },
-        { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
-        { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', },
-        { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', },
-        { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', },
-
-        { key: '3', title: '3', },
-        { key: '3.1', title: '3.1', pid: '3', path: '3', },
-        { key: '3.2', title: '32.2', pid: '3', path: '3', },
-        { key: '4', title: '4', },
-      ];
-
-      const expandObj = {
-        target: {
-          ['1' + '']: true,
-          ['1.1' + '']: true,
-          ['1.2.1' + '']: true,
-          ['1.2.2' + '']: true,
-        },
-        expandedAll: false,
-      };
-
-
-      const actualResult = utils.sliceExpand(expandDatas, start, total, expandObj);
-      exp(actualResult).to.be.eql([
-        { key: '1', title: '1', },
-        { key: '1.1', title: '1.1', pid: '1', path: '1', },
-        { key: '1.2', title: '1.2', pid: '1', path: '1', },
-        { key: '1.3', title: '1.3', pid: '1', path: '1', },
-        { key: '2', title: '2', },
-
-      ]);
-
-    }
-  );
-
-  it('sliceExpand expand is exisit expandedAll true container parentNode 1', () => {
-    const start = 5;
-    const total = 5;
-    const expandDatas = [
-      { key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ];
-
-    const expandObj = {
-      target: {
-        ['1.1' + '']: true,
-      },
-      expandedAll: true,
-    };
-    const result = utils.sliceExpand(expandDatas, start, total, expandObj,
-      [
-        { key: '1', title: '1', },
-        { key: '1.2', title: '1.2', pid: '1', path: '1', },
-        { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      ]);
-    exp(result).to.be.eql([
-      { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ]);
-  });
-
-  it('sliceExpand expand is exisit expandedAll true container parentNode 2', () => {
-    const start = 1;
-    const total = 3;
-    const expandDatas = [
-      { key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-    ];
-
-    const expandObj = {
-      target: {
-        ['1.1' + '']: true,
-        ['1.2' + '']: true,
-      },
-      expandedAll: true,
-    };
-    const result = utils.sliceExpand(expandDatas, start, total, expandObj,
-      [
-        { key: '1', title: '1', },
-      ]);
-    exp(result).to.be.eql([
-      { key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-    ]);
-  });
 
   it('getKeys', () => {
     const result = utils.getKeys([{ key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', },]);
@@ -820,6 +714,7 @@ describe('utils', () => {
       children: 4,
       begats: datas.length,
       index: -1,
+      childrenIdx: childrenRoot,
     };
     const nodeId = utils.VirtualRoot;
     const countInfo = {};
@@ -836,6 +731,7 @@ describe('utils', () => {
       realyVisible: 4,
       children: 4,
       begats: datas.length,
+      childrenIdx: childrenRoot,
       index: -1,
     };
     const nodeId = utils.VirtualRoot;
@@ -853,6 +749,7 @@ describe('utils', () => {
       realyVisible: 0,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     };
     const nodeId = '1';
@@ -869,6 +766,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     };
     const nodeId = '1';
@@ -886,6 +784,7 @@ describe('utils', () => {
       children: 2,
       begats: 9,
       index: 17,
+      childrenIdx: children2,
 
     };
     const nodeId = '2';
@@ -904,6 +803,8 @@ describe('utils', () => {
       children: 2,
       begats: 9,
       index: 17,
+      childrenIdx: children2,
+
     };
     const nodeId = '2';
     const countInfo = {};
@@ -920,6 +821,8 @@ describe('utils', () => {
       children: 0,
       begats: 0,
       index: 19,
+      childrenIdx: [],
+
     };
     const nodeId = '2.1.1';
     const countInfo = {};
@@ -937,6 +840,7 @@ describe('utils', () => {
       children: 0,
       begats: 0,
       index: 19,
+      childrenIdx: [],
     };
     const nodeId = '2.1.1';
     const countInfo = {};
@@ -952,7 +856,7 @@ describe('utils', () => {
       realyVisible: 0,
       children: 1,
       index: 20,
-
+      childrenIdx: children2D1D2,
       begats: 1,
     };
     const nodeId = '2.1.2';
@@ -971,6 +875,8 @@ describe('utils', () => {
       children: 1,
       index: 20,
       begats: 1,
+      childrenIdx: children2D1D2,
+
     };
     const nodeId = '2.1.2';
     const countInfo = {};
@@ -988,6 +894,7 @@ describe('utils', () => {
     const expectResult = {
       nowVisible: 3,
       expanded: true,
+      childrenIdx: children1,
       realyVisible: 3,
       children: 3,
       begats: 16,
@@ -1006,6 +913,8 @@ describe('utils', () => {
       nowVisible: 16,
       realyVisible: 16,
       children: 3,
+      childrenIdx: children1,
+
       begats: 16,
       index: 0,
     };
@@ -1024,6 +933,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
       expanded: false,
     };
@@ -1034,6 +944,8 @@ describe('utils', () => {
       children: 4,
       begats: 31,
       index: -1,
+      childrenIdx: childrenRoot,
+
     });
   });
 
@@ -1048,6 +960,7 @@ describe('utils', () => {
       realyVisible: 7,
       children: 4,
       begats: 31,
+      childrenIdx: childrenRoot,
       index: -1,
     });
     utils.colapseNode(nodeId, datas, countInfo, false);
@@ -1057,6 +970,7 @@ describe('utils', () => {
       children: 3,
       begats: 16,
       expanded: false,
+      childrenIdx: children1,
       index: 0,
     };
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
@@ -1064,6 +978,7 @@ describe('utils', () => {
       nowVisible: 4,
       realyVisible: 4,
       children: 4,
+      childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
     });
@@ -1079,6 +994,8 @@ describe('utils', () => {
       children: 3,
       expanded: false,
       begats: 16,
+      childrenIdx: children1,
+
       index: 0,
     };
     utils.expandNode(nodeId, datas, countInfo, true);
@@ -1087,6 +1004,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       expanded: true,
+      childrenIdx: children1,
       begats: 16,
       index: 0,
     });
@@ -1100,6 +1018,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 16,
       children: 3,
+      childrenIdx: [],
       begats: 16,
       index: 0,
     };
@@ -1107,6 +1026,7 @@ describe('utils', () => {
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       realyVisible: 16,
+      childrenIdx: [],
       children: 3,
       begats: 16,
       index: 0,
@@ -1120,6 +1040,7 @@ describe('utils', () => {
     countInfo[ nodeId ] = {
       nowVisible: 0,
       realyVisible: 3,
+      childrenIdx: [],
       children: 3,
       begats: 16,
       index: 0,
@@ -1129,6 +1050,7 @@ describe('utils', () => {
       nowVisible: 3,
       realyVisible: 3,
       children: 3,
+      childrenIdx: [],
       begats: 16,
       expanded: true,
       index: 0,
@@ -1141,6 +1063,7 @@ describe('utils', () => {
     const countInfo = {};
     countInfo[ nodeId ] = {
       nowVisible: 0,
+      childrenIdx: [],
       realyVisible: 3,
       children: 3,
       expanded: true,
@@ -1150,6 +1073,7 @@ describe('utils', () => {
     utils.expandNode(nodeId, datas, countInfo, true);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
+      childrenIdx: [],
       realyVisible: 3,
       children: 3,
       expanded: true,
@@ -1167,12 +1091,14 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       expanded: false,
+      childrenIdx: [],
       begats: 16,
       index: 0,
     };
     utils.colapseNode(nodeId, datas, countInfo, true);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
+      childrenIdx: [],
       realyVisible: 16,
       children: 3,
       expanded: false,
@@ -1189,6 +1115,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 16,
       children: 3,
+      childrenIdx: [],
       begats: 16,
       index: 0,
     };
@@ -1197,6 +1124,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 16,
       children: 3,
+      childrenIdx: [],
       begats: 16,
       expanded: false,
       index: 0,
@@ -1210,6 +1138,7 @@ describe('utils', () => {
     countInfo[ nodeId ] = {
       nowVisible: 0,
       realyVisible: 3,
+      childrenIdx: [],
       children: 3,
       expanded: false,
       begats: 16,
@@ -1219,6 +1148,7 @@ describe('utils', () => {
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       realyVisible: 3,
+      childrenIdx: [],
       children: 3,
       begats: 16,
       expanded: false,
@@ -1234,6 +1164,7 @@ describe('utils', () => {
       nowVisible: 3,
       realyVisible: 3,
       children: 3,
+      childrenIdx: [],
       begats: 16,
       index: 0,
     };
@@ -1242,6 +1173,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 3,
       children: 3,
+      childrenIdx: [],
       expanded: false,
       begats: 16,
       index: 0,
@@ -1260,6 +1192,7 @@ describe('utils', () => {
       realyVisible: 3,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     });
 
@@ -1270,6 +1203,7 @@ describe('utils', () => {
         expanded: true,
         realyVisible: 5,
         children: 3,
+        childrenIdx: children1,
         begats: 16,
         index: 0,
       });
@@ -1277,6 +1211,7 @@ describe('utils', () => {
         nowVisible: 2,
         realyVisible: 2,
         children: 2,
+        childrenIdx: children1D2,
         expanded: true,
         begats: 6,
         index: 2,
@@ -1299,6 +1234,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     });
 
@@ -1309,11 +1245,13 @@ describe('utils', () => {
         realyVisible: 16,
         children: 3,
         begats: 16,
+        childrenIdx: children1,
         index: 0,
       });
       exp(countInfo[ '1.2' ]).to.be.eql({
         nowVisible: 6,
         realyVisible: 6,
+        childrenIdx: children1D2,
         children: 2,
         begats: 6,
         index: 2,
@@ -1340,12 +1278,14 @@ describe('utils', () => {
         expanded: true,
         realyVisible: 3,
         children: 3,
+        childrenIdx: children1,
         begats: 16,
         index: 0,
       });
       exp(countInfo[ '1.2' ]).to.be.eql({
         nowVisible: 0,
         realyVisible: 2,
+        childrenIdx: children1D2,
         children: 2,
         expanded: false,
         begats: 6,
@@ -1370,6 +1310,7 @@ describe('utils', () => {
       expanded: false,
       realyVisible: 5,
       children: 3,
+      childrenIdx: children1,
       begats: 16,
       index: 0,
     });
@@ -1378,6 +1319,8 @@ describe('utils', () => {
       realyVisible: 2,
       children: 2,
       expanded: true,
+      childrenIdx: children1D2,
+
       begats: 6,
       index: 2,
     });
@@ -1392,6 +1335,7 @@ describe('utils', () => {
           children: 3,
           begats: 16,
           index: 0,
+          childrenIdx: children1,
           expanded: false,
         }
       );
@@ -1399,6 +1343,8 @@ describe('utils', () => {
         nowVisible: 0,
         realyVisible: 2,
         children: 2,
+        childrenIdx: children1D2,
+
         expanded: false,
         begats: 6,
         index: 2,
@@ -1421,12 +1367,16 @@ describe('utils', () => {
       exp(countInfo[ '1' ]).to.be.eql({
         nowVisible: 10,
         realyVisible: 10,
+        childrenIdx: children1,
+
         children: 3,
         begats: 16,
         index: 0,
       });
       exp(countInfo[ '1.2' ]).to.be.eql({
         nowVisible: 0,
+        childrenIdx: children1D2,
+
         realyVisible: 6,
         children: 2,
         expanded: false,
@@ -1451,6 +1401,7 @@ describe('utils', () => {
       nowVisible: 0,
       expanded: false,
       realyVisible: 16,
+      childrenIdx: children1,
       children: 3,
       begats: 16,
       index: 0,
@@ -1459,6 +1410,8 @@ describe('utils', () => {
       nowVisible: 6,
       realyVisible: 6,
       children: 2,
+      childrenIdx: children1D2,
+
       begats: 6,
       index: 2,
     });
@@ -1470,6 +1423,7 @@ describe('utils', () => {
       exp(countInfo[ '1' ]).to.be.eql({
           nowVisible: 0,
           realyVisible: 10,
+          childrenIdx: children1,
           children: 3,
           begats: 16,
           index: 0,
@@ -1481,6 +1435,8 @@ describe('utils', () => {
         realyVisible: 6,
         children: 2,
         expanded: false,
+        childrenIdx: children1D2,
+
         begats: 6,
         index: 2,
       });
@@ -1503,6 +1459,7 @@ describe('utils', () => {
       children: 3,
       begats: 16,
       index: 0,
+      childrenIdx: children1,
     });
 
     utils.expandNode('1.1', datas, countInfo, false);
@@ -1513,6 +1470,7 @@ describe('utils', () => {
       realyVisible: 3,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     });
     exp(countInfo[ '1.1' ]).to.be.eql({
@@ -1520,8 +1478,9 @@ describe('utils', () => {
       realyVisible: 0,
       children: 0,
       begats: 0,
-      expanded: true,
       index: 1,
+      childrenIdx: [],
+
     });
 
     utils.expandNode('1.2', datas, countInfo, false);
@@ -1531,6 +1490,7 @@ describe('utils', () => {
       realyVisible: 5,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     });
     exp(countInfo[ '1.2' ]).to.be.eql({
@@ -1539,6 +1499,7 @@ describe('utils', () => {
       children: 2,
       expanded: true,
       begats: 6,
+      childrenIdx: children1D2,
       index: 2,
     });
 
@@ -1548,6 +1509,7 @@ describe('utils', () => {
       nowVisible: 7,
       realyVisible: 7,
       expanded: true,
+      childrenIdx: children1,
       children: 3,
       begats: 16,
       index: 0,
@@ -1557,6 +1519,7 @@ describe('utils', () => {
       realyVisible: 4,
       children: 2,
       expanded: true,
+      childrenIdx: children1D2,
       begats: 6,
       index: 2,
     });
@@ -1565,6 +1528,7 @@ describe('utils', () => {
       realyVisible: 2,
       children: 2,
       expanded: true,
+      childrenIdx: children1D2D2,
       begats: 4,
       index: 4,
     });
@@ -1580,6 +1544,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     });
 
@@ -1590,6 +1555,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     });
     exp(countInfo[ '1.1' ]).to.be.eql({
@@ -1597,6 +1563,7 @@ describe('utils', () => {
       realyVisible: 0,
       children: 0,
       begats: 0,
+      childrenIdx: [],
       index: 1,
     });
 
@@ -1606,12 +1573,14 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     });
 
     exp(countInfo[ '1.2' ]).to.be.eql({
       nowVisible: 6,
       realyVisible: 6,
+      childrenIdx: children1D2,
       children: 2,
       begats: 6,
       index: 2,
@@ -1623,6 +1592,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
       index: 0,
     });
 
@@ -1631,12 +1601,14 @@ describe('utils', () => {
       realyVisible: 6,
       children: 2,
       begats: 6,
+      childrenIdx: children1D2,
       index: 2,
     });
 
     exp(countInfo[ '1.2.2' ]).to.be.eql({
       nowVisible: 4,
       realyVisible: 4,
+      childrenIdx: children1D2D2,
       children: 2,
       begats: 4,
       index: 4,
@@ -1646,6 +1618,8 @@ describe('utils', () => {
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
       realyVisible: 16,
+      childrenIdx: children1,
+
       children: 3,
       begats: 16,
       index: 0,
@@ -1657,12 +1631,14 @@ describe('utils', () => {
       children: 2,
       begats: 6,
       index: 2,
+      childrenIdx: children1D2,
     });
 
     exp(countInfo[ '1.3' ]).to.be.eql({
       nowVisible: 7,
       realyVisible: 7,
       children: 3,
+      childrenIdx: children1D3,
       begats: 7,
       index: 9,
     });
@@ -1670,6 +1646,7 @@ describe('utils', () => {
     exp(countInfo[ '1.2.2' ]).to.be.eql({
       nowVisible: 4,
       realyVisible: 4,
+      childrenIdx: children1D2D2,
       children: 2,
       begats: 4,
       index: 4,
@@ -1694,6 +1671,7 @@ describe('utils', () => {
       nowVisible: 25,
       realyVisible: 25,
       children: 4,
+      childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
     });
@@ -1701,6 +1679,8 @@ describe('utils', () => {
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 10,
       realyVisible: 10,
+      childrenIdx: children1,
+
       children: 3,
       begats: 16,
       index: 0,
@@ -1713,10 +1693,12 @@ describe('utils', () => {
       expanded: false,
       begats: 6,
       index: 2,
+      childrenIdx: children1D2,
     });
 
     exp(countInfo[ '1.3' ]).to.be.eql({
       nowVisible: 7,
+      childrenIdx: children1D3,
       realyVisible: 7,
       children: 3,
       begats: 7,
@@ -1726,6 +1708,7 @@ describe('utils', () => {
     exp(countInfo[ '1.2.2' ]).to.be.eql({
       nowVisible: 4,
       realyVisible: 4,
+      childrenIdx: children1D2D2,
       children: 2,
       begats: 4,
       index: 4,
@@ -1752,10 +1735,13 @@ describe('utils', () => {
       realyVisible: 27,
       children: 4,
       begats: 31,
+      childrenIdx: childrenRoot,
       index: -1,
     });
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 12,
+      childrenIdx: children1,
+
       realyVisible: 12,
       children: 3,
       begats: 16,
@@ -1768,11 +1754,14 @@ describe('utils', () => {
       children: 2,
       begats: 6,
       index: 2,
+      childrenIdx: children1D2,
+
     });
 
     exp(countInfo[ '1.3' ]).to.be.eql({
       nowVisible: 7,
       realyVisible: 7,
+      childrenIdx: children1D3,
       children: 3,
       begats: 7,
       index: 9,
@@ -1780,6 +1769,7 @@ describe('utils', () => {
 
     exp(countInfo[ '1.2.2' ]).to.be.eql({
       nowVisible: 0,
+      childrenIdx: children1D2D2,
       expanded: false,
       realyVisible: 4,
       children: 2,
@@ -1805,6 +1795,7 @@ describe('utils', () => {
     utils.colapseNode('1.2.2', datas, countInfo, expandedAll);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 12,
+      childrenIdx: childrenRoot,
       realyVisible: 12,
       children: 4,
       begats: 31,
@@ -1813,7 +1804,9 @@ describe('utils', () => {
 
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 8,
+      childrenIdx: children1,
       realyVisible: 8,
+
       expanded: true,
       children: 3,
       begats: 16,
@@ -1827,11 +1820,14 @@ describe('utils', () => {
       expanded: true,
       begats: 6,
       index: 2,
+      childrenIdx: children1D2,
+
     });
     exp(countInfo[ '1.3' ]).to.be.eql({
       nowVisible: 3,
       realyVisible: 3,
       children: 3,
+      childrenIdx: children1D3,
       begats: 7,
       index: 9,
       expanded: true,
@@ -1840,6 +1836,7 @@ describe('utils', () => {
 
     exp(countInfo[ '1.2.2' ]).to.be.eql({
       nowVisible: 0,
+      childrenIdx: children1D2D2,
       expanded: false,
       realyVisible: 2,
       children: 2,
@@ -1857,11 +1854,14 @@ describe('utils', () => {
       nowVisible: 7,
       realyVisible: 7,
       children: 4,
+      childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
     });
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 3,
+      childrenIdx: children1,
+
       realyVisible: 3,
       children: 3,
       begats: 16,
@@ -1874,6 +1874,7 @@ describe('utils', () => {
       nowVisible: 4,
       realyVisible: 4,
       children: 4,
+      childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
     });
@@ -1882,6 +1883,8 @@ describe('utils', () => {
       realyVisible: 3,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
+
       index: 0,
       expanded: false,
     });
@@ -1890,6 +1893,8 @@ describe('utils', () => {
       nowVisible: 3,
       realyVisible: 3,
       children: 3,
+      childrenIdx: children1,
+
       begats: 16,
       index: 0,
       expanded: true,
@@ -1898,6 +1903,7 @@ describe('utils', () => {
       nowVisible: 7,
       realyVisible: 7,
       children: 4,
+      childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
     });
@@ -1907,6 +1913,8 @@ describe('utils', () => {
       realyVisible: 5,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
+
       index: 0,
       expanded: true,
     });
@@ -1914,6 +1922,7 @@ describe('utils', () => {
       nowVisible: 9,
       realyVisible: 9,
       children: 4,
+      childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
     });
@@ -1923,12 +1932,16 @@ describe('utils', () => {
       nowVisible: 3,
       realyVisible: 3,
       children: 3,
+      childrenIdx: children1,
+
       begats: 16,
       index: 0,
       expanded: true,
     });
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 7,
+      childrenIdx: childrenRoot,
+
       realyVisible: 7,
       children: 4,
       begats: 31,
@@ -1938,6 +1951,8 @@ describe('utils', () => {
     utils.expandNode('1.2', datas, countInfo, expandedAll);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 9,
+      childrenIdx: childrenRoot,
+
       realyVisible: 9,
       children: 4,
       begats: 31,
@@ -1948,6 +1963,8 @@ describe('utils', () => {
       realyVisible: 5,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
+
       index: 0,
       expanded: true,
     });
@@ -1957,6 +1974,8 @@ describe('utils', () => {
       realyVisible: 11,
       children: 4,
       begats: 31,
+      childrenIdx: childrenRoot,
+
       index: -1,
     });
     exp(countInfo[ '1' ]).to.be.eql({
@@ -1964,6 +1983,8 @@ describe('utils', () => {
       realyVisible: 7,
       children: 3,
       begats: 16,
+      childrenIdx: children1,
+
       index: 0,
       expanded: true,
     });
@@ -1974,15 +1995,56 @@ describe('utils', () => {
       children: 3,
       begats: 16,
       index: 0,
+      childrenIdx: children1,
+
       expanded: true,
     });
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 9,
       realyVisible: 9,
+      childrenIdx: childrenRoot,
+
       children: 4,
       begats: 31,
       index: -1,
     });
   });
+  it('slice all node', () => {
+    exp(utils.slice(datas, 0, 100)).to.be.eql(datas);
+  });
+  it('slice all 1.2.2.1.2', () => {
+    exp(utils.slice(datas, 7, 100)).to.be.eql([
+      { key: '1', title: '1', },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+      { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
 
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+
+      { key: '2', title: '2', },
+      { key: '2.1', title: '2.1', pid: '2', path: '2', },
+      { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
+      { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
+      { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
+      { key: '2.2', title: '2.2', pid: '2', path: '2', },
+      { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
+      { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+      { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+      { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
+
+      { key: '3', title: '3', },
+      { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+      { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+      { key: '4', title: '4', isLeaf: true, },
+    ]);
+  });
 });
