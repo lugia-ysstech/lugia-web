@@ -11,9 +11,13 @@ import classNames from 'classnames';
 import ThemeProvider from '../common/ThemeProvider';
 import ThrottleScroller from '../scroller/ThrottleScroller';
 import * as Widget from '../consts/Widget';
-import Utils from './utils';
 import '../css/sv.css';
 import './index.css';
+import type { NodeId2ExtendInfo, } from 'sv-widget';
+import TreeUtils from './utils';
+
+const defaultHeight = 250;
+const menuItemHeight = 21;
 
 type RowData = {
   key: string,
@@ -24,6 +28,7 @@ type RowData = {
   isLeaf?: boolean,
 };
 type TreeProps = {
+  getTheme: Function,
   start: number,
   end: number,
   showLine?: boolean;
@@ -77,13 +82,14 @@ type TreeProps = {
   prefixCls?: string;
   filterTreeNode?: Function,
   children: React.Node,
-  data?: Array<RowData>
-
+  data?: Array<RowData>,
+  setDataLen: Function,
 };
 
 type ExpandInfo = {
   expandedAll: boolean,
   target: Object,
+  id2ExtendInfo: NodeId2ExtendInfo,
 }
 type TreeState = {
   expand: ExpandInfo
@@ -100,9 +106,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
   };
 
   static TreeNode: TreeNode;
+  utils: TreeUtils;
 
   constructor (props: TreeProps) {
     super(props);
+    this.createTreeUtils(props);
     this.state = {
       expand: this.getExpandInfo(),
     };
@@ -119,32 +127,51 @@ class Tree extends React.Component<TreeProps, TreeState> {
     array.forEach(key => {
       target[ key ] = true;
     });
-    return { target, expandedAll: defaultExpandAll === true, };
+    return { target, expandedAll: defaultExpandAll === true, id2ExtendInfo: {}, };
   }
 
+  shouldComponentUpdate (nexProps: TreeProps, nextState: TreeState) {
+    const dataChanged = nexProps.data !== this.props.data;
+    if (dataChanged) {
+      this.createTreeUtils(nexProps);
+    }
+    const needUpdate = dataChanged
+      || nexProps.start !== this.props.start
+      || nextState.expand !== this.state.expand;
+    return needUpdate;
+  }
+
+  createTreeUtils (props: TreeProps) {
+    const { data, } = props;
+    if (data) {
+      this.utils = new TreeUtils(data);
+    }
+  }
+
+  realyDatas: Array<RowData>;
+
   render () {
-    const { prefixCls = Tree.defaultProps.prefixCls, className, showLine, checkable, data, start, end, } = this.props;
+    const {
+      prefixCls = Tree.defaultProps.prefixCls,
+      className,
+      showLine,
+      checkable,
+      data,
+      start,
+      end,
+    } = this.props;
+
     const classString = classNames({
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     const { children, } = this.props;
     const { expand, } = this.state;
-    const { expandedAll, target, } = expand;
     if (data) {
-      const rowData = Utils.slice(data, start, end - start, expand);
-      const nodes = Utils.generateTreeNode(rowData);
-      const expandedKeys = [];
-      rowData.forEach(node => {
-        const { key, } = node;
-        const targetValue = target[key];
-        const isExpanded = expandedAll? !targetValue : targetValue;
-        if(isExpanded){
-          expandedKeys.push(key);
-        }
-      });
+      this.realyDatas = this.utils.generateRealTreeData(expand);
+      const rowData = this.utils.slice(this.realyDatas, start, end - start);
+      const nodes = this.utils.generateTreeNode(rowData);
       return <RcTree {...this.props}
                      className={classString}
-                     expandedKeys={expandedKeys}
                      onExpand={this.onExpand}
                      checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
         {this.loopNode(nodes)}
@@ -160,16 +187,20 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
 
-
-  onExpand = (expandedKeys: Array<string>, data: { expanded: boolean, node: Object, }) => {
-    const { onExpand, } = this.props;
-    const { expanded, node, } = data;
+  onExpand = (expandedKeys: Array<string>, rowData: { expanded: boolean, node: Object, }) => {
+    const { onExpand, data = [], } = this.props;
+    const { expanded, node, } = rowData;
     const { expand, } = this.state;
 
 
     const noeKey = node.props.eventKey;
 
-    const { target, expandedAll, } = expand;
+    const { target, expandedAll, id2ExtendInfo, } = expand;
+    if (expanded) {
+      this.utils.expandNode(noeKey, data, id2ExtendInfo, expandedAll);
+    } else {
+      this.utils.colapseNode(noeKey, data, id2ExtendInfo, expandedAll);
+    }
     if (expandedAll) {
       if (!expanded) {
         target[ noeKey ] = true;
@@ -184,7 +215,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       }
     }
 
-    this.setState({ expand: this.state.expand, });
+    this.setState({ expand: Object.assign({}, this.state.expand, { target, id2ExtendInfo, }), });
     onExpand && onExpand(expandedKeys, data);
   };
 
@@ -201,8 +232,18 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return <TreeNode key={key} title={title} isLeaf={isLeaf}/>;
   });
 
+  computeCanSeeMenuItemCount (len: number): number {
+    const count = Math.ceil(this.fetchViewHeigh() / menuItemHeight);
+    return count < len ? count : len;
+  }
+
+  fetchViewHeigh () {
+    const { height = defaultHeight, } = this.props.getTheme();
+    return height;
+  }
+
 
 }
 
-export default ThemeProvider(ThrottleScroller(Tree, 21), Widget.Tree);
+export default ThemeProvider(ThrottleScroller(Tree, menuItemHeight), Widget.Tree);
 Tree.TreeNode = TreeNode;

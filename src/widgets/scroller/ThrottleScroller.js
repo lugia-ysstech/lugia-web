@@ -15,7 +15,7 @@ import * as Widget from '../consts/Widget';
 const defaultHeight = 250;
 const width = props => {
   const width = props.theme.width;
-  return  width ? `${width}px;` : '200px;';
+  return width ? `${width}px;` : '200px;';
 };
 const Col = styled.div`
   width:${width}
@@ -26,6 +26,7 @@ const ScrollerContainer = styled.div`
 `;
 type ThrottleScrollerProps = {|
   getTheme: Function,
+  onScroller: Function,
   data: Array<Object>,
   children: Array<React.Element<any>>,
 |} ;
@@ -59,7 +60,8 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       let start = 0, end = 0, totalSize = 0, needScroller = false;
       const target = data ? data : children;
       if (target && target.length > 0) {
-        ({ totalSize, needScroller, start, end, } = this.computeItems(target));
+        ({ totalSize, needScroller, start, end, } = this.computeItems(target,
+          this.props.start != undefined ? this.props.start : this.state.start));
       }
 
       const menus = <Target {...this.props} start={start} end={end}/>;
@@ -78,8 +80,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       return menus;
     }
 
-    computeItems (data: Array<Object>): { totalSize: number, needScroller: boolean, start: number, end: number } {
-      const { start, } = this.state;
+    computeItems (data: Array<Object>, start: number): { totalSize: number, needScroller: boolean, start: number, end: number } {
       const seeCount = this.computeCanSeeMenuItemCount();
       const totalSize = menuItemHeight * data.length;
       const needScroller = seeCount < data.length;
@@ -91,7 +92,9 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
 
     onScroller = (value: number) => {
-      this.setState({ start: Math.floor(value / menuItemHeight), });
+      const { onScroller, } = this.props;
+      const start = Math.floor(value / menuItemHeight);
+      onScroller ? onScroller(start) : this.setState({ start, });
     };
 
     computeCanSeeMenuItemCount (): number {
