@@ -259,10 +259,9 @@ class TreeUtils {
     }
 
     const pathNode = this.getPathNodes(rowDatas, start, root.pid);
-    if(out){
+    if (out) {
       out.parentCount = pathNode.length;
     }
-    console.info('pathNode', pathNode );
     Array.prototype.push.apply(pathNode, result);
     return pathNode;
   }
@@ -483,9 +482,8 @@ class TreeUtils {
 
   generateRealTreeData (expandInfo: ExpandInfo): Array<RowData> {
 
-    let c = 0;
+    const c = 0;
     if (this.version === this.oldVersion) {
-      console.info(c);
       return this.oldTreeData;
     }
 
@@ -504,18 +502,15 @@ class TreeUtils {
 
 
     if (nowVisible === children) {
-      console.info(c);
       return this.oldTreeData = this.fetchLevelOneChild(datas, childrenIdx);
     }
     if (nowVisible === begats) {
-      console.info(c);
       return this.oldTreeData = datas;
     }
-
+    console.info('重新计算 ');
     const totalLen = datas.length;
     const result = [];
     for (let i = 0; i < totalLen; i++) {
-      c++;
       const row = datas[ i ];
       result.push(row);
 
@@ -536,7 +531,6 @@ class TreeUtils {
         }
       }
     }
-    console.info(c);
     return this.oldTreeData = result;
   }
 
