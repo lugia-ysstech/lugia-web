@@ -433,39 +433,39 @@ class Tree extends React.Component {
   }
 
   calcExpandedKeys (props, isNotInit) {
-    const expandedKeys = props.expandedKeys || (isNotInit ? undefined : props.defaultExpandedKeys);
-    if (!expandedKeys) {
-      return undefined;
-    }
-    const expandAll = isNotInit ? false : props.defaultExpandAll;
-    if (!expandAll && !props.autoExpandParent) {
-      return expandedKeys;
-    }
-
-    const expandedPositionArr = [];
-    if (props.autoExpandParent) {
-      traverseTreeNodes(props.children, (item, index, pos, key) => {
-        if (expandedKeys.indexOf(key) > -1) {
-          expandedPositionArr.push(pos);
-        }
-      });
-    }
-    const filterExpandedKeysSet = {};
-    traverseTreeNodes(props.children, (item, index, pos, key) => {
-      const { props: itemProps, } = item;
-      const { isLeaf, } = itemProps;
-      if (expandAll && !isLeaf) {
-        filterExpandedKeysSet[ key ] = true;
-      } else if (props.autoExpandParent) {
-        const isCurrentParentOfExpanded =
-          expandedPositionArr.some(p => isInclude(pos.split('-'), p.split('-')));
-        if (isCurrentParentOfExpanded) {
-          filterExpandedKeysSet[ key ] = true;
-        }
-      }
-    });
-    const filterExpandedKeys = Object.keys(filterExpandedKeysSet);
-    return filterExpandedKeys.length ? filterExpandedKeys : expandedKeys;
+    // const expandedKeys = props.expandedKeys || (isNotInit ? undefined : props.defaultExpandedKeys);
+    // if (!expandedKeys) {
+    //   return undefined;
+    // }
+    // const expandAll = isNotInit ? false : props.defaultExpandAll;
+    // if (!expandAll && !props.autoExpandParent) {
+    //   return expandedKeys;
+    // }
+    //
+    // const expandedPositionArr = [];
+    // if (props.autoExpandParent) {
+    //   traverseTreeNodes(props.children, (item, index, pos, key) => {
+    //     if (expandedKeys.indexOf(key) > -1) {
+    //       expandedPositionArr.push(pos);
+    //     }
+    //   });
+    // }
+    // const filterExpandedKeysSet = {};
+    // traverseTreeNodes(props.children, (item, index, pos, key) => {
+    //   const { props: itemProps, } = item;
+    //   const { isLeaf, } = itemProps;
+    //   if (expandAll && !isLeaf) {
+    //     filterExpandedKeysSet[ key ] = true;
+    //   } else if (props.autoExpandParent) {
+    //     const isCurrentParentOfExpanded =
+    //       expandedPositionArr.some(p => isInclude(pos.split('-'), p.split('-')));
+    //     if (isCurrentParentOfExpanded) {
+    //       filterExpandedKeysSet[ key ] = true;
+    //     }
+    //   }
+    // });
+    // const filterExpandedKeys = Object.keys(filterExpandedKeysSet);
+    return props.expandedKeys;
   }
 
   calcCheckedKeys (props, isNotInit) {
@@ -534,7 +534,6 @@ class Tree extends React.Component {
     const { state, props, } = this;
     const pos = `${level}-${index}`;
     const key = child.key || pos;
-
     const childProps = {
       root: this,
       eventKey: key,

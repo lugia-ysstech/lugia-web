@@ -175,9 +175,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
   constructor (props: TreeProps) {
     super(props);
     this.createTreeUtils(props);
+    const expand = this.getExpandInfo();
+    this.utils.generateRealTreeData(expand);
+    const expandedKeys = expand.expandedAll ? Object.keys(expand.id2ExtendInfo) : [];
     this.state = {
-      expandedKeys: [],
-      expand: this.getExpandInfo(),
+      expandedKeys,
+      expand,
     };
   }
 
@@ -229,15 +232,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { children, } = this.props;
     const { expand, expandedKeys, } = this.state;
     if (data) {
-      console.dir(data);
       this.realyDatas = this.utils.generateRealTreeData(expand);
-      console.dir(this.realyDatas);
-      console.dir(expand.id2ExtendInfo[ '0.0' ]);
-      console.dir(expand.id2ExtendInfo[ '0.0.0' ]);
-      console.dir(expand.id2ExtendInfo[ '0.0.1' ]);
-
       return <ThrottleTree {...this.props}
                            data={this.realyDatas}
+                           showLine={showLine}
+                           mutliple={checkable}
                            utils={this.utils}
                            expandedKeys={expandedKeys}
                            onExpand={this.onExpand}></ThrottleTree>;
@@ -295,16 +294,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
     return <TreeNode key={key} title={title} isLeaf={isLeaf}/>;
   });
-
-  computeCanSeeMenuItemCount (len: number): number {
-    const count = Math.ceil(this.fetchViewHeigh() / menuItemHeight);
-    return count < len ? count : len;
-  }
-
-  fetchViewHeigh () {
-    const { height = defaultHeight, } = this.props.getTheme();
-    return height;
-  }
 }
 
 const SvTree = ThemeProvider(Tree, Widget.Tree);
