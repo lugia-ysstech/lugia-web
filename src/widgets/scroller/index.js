@@ -17,7 +17,7 @@ mouseWheel($);
 const BarDefaultSize = 12;
 const Container = styled.div`
   position: absolute;
-  background: #ebefec8a;
+  background: #e3e3e6;
   width: 20px;
   height: 300px;
   border-radius: 5px;
