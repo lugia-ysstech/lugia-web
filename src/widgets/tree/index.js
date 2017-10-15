@@ -128,7 +128,7 @@ class KTree extends React.Component<any, any> {
       const out = {};
       const rowData = utils.slice(data, start, end - start, out);
       const nodes = utils.generateTreeNode(rowData);
-      const top = out.parentCount ? 3 - out.parentCount * 20 : 0;
+      const top = out.parentCount ? - out.parentCount * 17 : 0;
       const treeNodes = this.loopNode(nodes);
       return <RcTree {...this.props}
                      style={{ position: 'absolute', top: `${top}px`, }}

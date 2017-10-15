@@ -222,6 +222,7 @@
 }
 
 :global(.sv-tree li) {
+    min-height: 17px;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -263,8 +264,15 @@
     margin: 0;
     padding: 0 0 0 18px;
 }
+:global(.sv-tree .sv-tree-switcher) {
+     min-height: 17px;
+}
+:global(.sv-tree .sv-tree-checkbox) {
+     min-height: 17px;
+}
 
 :global(.sv-tree li .sv-tree-node-content-wrapper) {
+    min-height: 17px;
     display: inline-block;
     padding: 0;
     border-radius: 2px;
@@ -380,11 +388,11 @@
 }
 
 :global(.sv-tree) > :global(li:first-child) {
-    padding-top: 7px;
+    padding-top: 0px;
 }
 
 :global(.sv-tree) > :global(li:last-child) {
-    padding-bottom: 7px;
+    padding-bottom: 0px;
 }
 
 :global(.sv-tree-child-tree) {
