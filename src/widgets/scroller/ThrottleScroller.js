@@ -24,17 +24,11 @@ const Col = styled.div`
 const ScrollerContainer = styled.div`
   position: relative;
 `;
-type ThrottleScrollerProps = {|
-  getTheme: Function,
-  onScroller: Function,
-  data: Array<Object>,
-  children: Array<React.Element<any>>,
-|} ;
 type ThrottleScrollerState = {
   start: number,
 }
 export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
-  return class ThrottleScroller extends React.Component<ThrottleScrollerProps, ThrottleScrollerState> {
+  return class ThrottleScroller extends React.Component<any, ThrottleScrollerState> {
     static displayName = Widget.ThrottleScroller;
 
     static defaultProps = {
@@ -44,7 +38,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       },
     };
 
-    constructor (props: ThrottleScrollerProps) {
+    constructor (props: any) {
       super(props);
       this.state = {
         start: 0,
