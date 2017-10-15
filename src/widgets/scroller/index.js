@@ -1,4 +1,4 @@
- /*
+/*
  *
  * 滚动条
  * @flow
@@ -11,6 +11,8 @@ import $ from 'jquery';
 import styled from 'styled-components';
 import { scroller, } from './index.css';
 import Support from '../common/FormFieldWidgetSupport';
+
+mouseWheel($);
 
 const BarDefaultSize = 12;
 const Container = styled.div`
@@ -181,7 +183,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   componentDidUpdate () {
     if (!this.scroller) {
-      mouseWheel($);
       $(this.htmlScroller).mousewheel(this.onWheel);
       this.scroller = this.createJQueryScrollerPlugin();
       const { value, } = this.state;
@@ -193,7 +194,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
   }
 
-  isWheel: boolean;
   lastTime: number;
   zoom: number;
   onWheel = (event: Object) => {
@@ -203,7 +203,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     event.preventDefault();
     const { step, } = this.props;
     const { value, } = this.state;
-    this.isWheel = true;
     const stepValue = deltaY < 0 ? -step : step;
     if (this.lastTime && timeSpan < 20) {
       const newValue = this.zoom + 1;
@@ -212,7 +211,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       this.zoom = 1;
     }
     this.setState({ value: value + this.zoom * stepValue, }, () => {
-      this.isWheel = false;
       this.lastTime = new Date();
     });
   };
@@ -228,10 +226,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
         onChange && onChange(value);
       };
 
-      if (this.isWheel) {
-        scrolling();
-        return;
-      }
+      // if (!this.drag) {
+      //   scrolling();
+      //   return;
+      // }
 
       if (this.throttleTimer) {
         clearTimeout(this.throttleTimer);
@@ -292,9 +290,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.scroller && this.scroller.reflow();
   };
 
-  componentWillUnmount(){
-    $(this.htmlScroller).unmousewheel(this.onWheel);
-
+  componentWillUnmount () {
+    if (this.scroller) {
+      $(this.htmlScroller).unmousewheel(this.onWheel);
+    }
   }
 }
 

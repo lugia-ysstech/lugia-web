@@ -11,7 +11,6 @@ import '../css/sv.css';
 import { mouseWheel, } from '../common/mouseWheel';
 import $ from 'jquery';
 import * as Widget from '../consts/Widget';
-
 const defaultHeight = 250;
 const width = props => {
   const width = props.theme.width;
@@ -105,7 +104,18 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       }
     }
 
-    //TODO:释放事件
+    componentDidUpdate () {
+      if (this.container && this.bindContainerEvent !== true) {
+        $(this.container).mousewheel(this.scroller ? this.scroller.onWheel : () => {});
+        this.bindContainerEvent = true;
+      }
+    }
+    componentWillUnmount(){
+      if (this.container && this.bindContainerEvent === true) {
+        $(this.container).unmousewheel(this.scroller ? this.scroller.onWheel : () => {});
+        this.bindContainerEvent = false;
+      }
+    }
 
     fetchViewHeigh () {
       const { height = defaultHeight, } = this.props.getTheme();
