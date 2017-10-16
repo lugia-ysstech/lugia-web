@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu HasScroller 1`] = `"<div class=\\"sc-bZQynM kzCrGI\\"><div>hello</div></div><div class=\\"sc-gzVnrw eDdPVo\\"><div class=\\"sc-bxivhb ldBCLS\\" style=\\"height:250px\\"><div class=\\"scroller sc-EHOje gvHLNC\\" style=\\"height:96.15384615384615px\\"></div></div></div>"`;

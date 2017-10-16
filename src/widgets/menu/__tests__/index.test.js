@@ -8,8 +8,9 @@ import renderer from 'react-test-renderer';
 import Theme from '../../theme';
 import * as Widget from '../../consts/Widget';
 
-import Enzyme,{ mount,render,}  from 'enzyme';
+import Enzyme, { mount, render, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
 Enzyme.configure({ adapter: new Adapter(), });
 
 const { MenuItem, } = Menu;
@@ -116,5 +117,18 @@ describe('Menu', () => {
     </Menu>);
 
     exp(dom.find('li').length).to.be.equal(8);
+  });
+
+  it('DropMenu for demo', () => {
+    const items = [];
+    for (let i = 0; i < 10; i++) {
+      items.push(<MenuItem key={i}>{i}</MenuItem>);
+    }
+    const wraper = render(
+      <Theme config={{ [Widget.Menu]: { width: 200, height: 250, }, }}>
+        <Menu mutliple>
+          {items}
+        </Menu></Theme>);
+    expect(wraper.html()).toMatchSnapshot();
   });
 });
