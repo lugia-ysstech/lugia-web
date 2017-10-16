@@ -10,7 +10,7 @@ import '../css/sv.css';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 import { ItemMarginRight, } from './style';
 import Item from './Item';
-import Moretem from './Moretem';
+import MoreItem from './MoreItem';
 import FontItem from './FontItem';
 import ThemeProvider from '../common/ThemeProvider';
 import * as Widget from '../consts/Widget';
@@ -34,7 +34,6 @@ const Container = styled.div`
   color: rgba(0, 0, 0, 0.65);
   font-size: 12px;
 `;
-
 const OutContainer = styled.div`
   border: solid 1px ${InputBorderColor};
   border-radius: ${RadiusSize};
@@ -49,8 +48,11 @@ const OutContainer = styled.div`
 const marginLeft = 5;
 const marginRight = 7;
 
+const getContentWidth = (w: number) => {
+  return w - marginRight - marginLeft;
+};
 const InnerContainer = styled.div`
-  ${widthFunc(marginLeft + marginRight)}
+  ${widthFunc(getContentWidth(0))}
   height: 26px;
   margin-left: ${marginLeft}px;
   margin-right: ${marginRight}px;
@@ -116,33 +118,50 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   oldWidth: number;
 
   componentDidMount () {
-    this.oldWidth = this.list.offsetWidth;
-    this.adaptiveItems(this.list.offsetWidth);
+    const offSetWidth = this.getOffSetWidth();
+    this.oldWidth = offSetWidth;
+    this.adaptiveItems(offSetWidth);
   }
 
   componentDidUpdate () {
-    if (this.list.offsetWidth !== this.oldWidth) {
+
+    if (this.getOffSetWidth() !== this.oldWidth) {
       this.adaptiveItems(this.list.offsetWidth);
       this.oldWidth = this.list.offsetWidth;
     }
   }
 
+  getOffSetWidth () {
+    const { getTheme, } = this.props;
+    const { width, } = getTheme();
+    return width ? getContentWidth(width) : this.list.offsetWidth;
+  }
+
   async adaptiveItems (listWidth: number): Promise<boolean> {
+    listWidth -= 20;
     const { value, } = this.props;
-    const result = [];
+    const items = [];
     let totalWidth = 0;
+    let needMoreItem = false;
     if (value) {
-      for (let i = 0; i < value.length; i++) {
+      const valueLen = value.length;
+      for (let i = 0; i < valueLen; i++) {
         const text = value[ i ];
         totalWidth += await this.fontItem.getWidth(text) + ItemMarginRight;
         if (totalWidth >= listWidth) {
           break;
         }
-        result.push(<Item key={`k${i}`}>{text}</Item>);
-
+        items.push(<Item key={`k${i}`}>{text}</Item>);
+      }
+      if (valueLen !== items.length) {
+        needMoreItem = true;
       }
     }
-    this.setState({ items: result.length >= 0 ? result : [<Moretem/>,], });
+    if (needMoreItem) {
+      items.push(<MoreItem/>);
+    }
+
+    this.setState({ items, });
     return true;
   }
 

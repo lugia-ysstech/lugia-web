@@ -11,17 +11,26 @@ import InputTag from './';
 import * as Widget from '../consts/Widget';
 
 const InputDemo = () => {
-  const view = {
-    [Widget.Input]: {
-      width: '80px',
-    },
-    register: {
-      width: '40px',
-    },
-  };
-  return <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
+
+  return [<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
     <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-              value={['abcdeddfasdddfadasf', 'b', 'c',]}/>
-  </Theme>;
+              value={['a', 'b', 'c',]}/>
+  </Theme>,
+    <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
+      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
+                value={['abcdeddfasdddfadasf', 'b', 'c',]}/>
+    </Theme>,
+    <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
+      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
+                value={['12345678901234', 'b', 'c',]}/>
+    </Theme>,
+    <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
+      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
+                value={['123456789012345676890780',]}/>
+    </Theme>,
+    <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
+      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
+                value={['123456789012345676890780', 'b', 'c',]}/>
+    </Theme>,];
 };
 export default InputDemo;

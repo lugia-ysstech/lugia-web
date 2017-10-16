@@ -1,0 +1,685 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputTag InputTag items: 1 item,  can see  0 1`] = `
+.c0 {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  font-size: 12px;
+}
+
+.c1 {
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+  min-height: 28px;
+  padding-bottom: 3px;
+}
+
+.c1:hover {
+  border-color: #49a9ee;
+}
+
+.c2 {
+  width: 212px;
+  height: 26px;
+  margin-left: 5px;
+  margin-right: 7px;
+  margin-bottom: -3px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  margin-top: 3px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #f3f3f3;
+  border-radius: 4px;
+  color: rgba(0,0,0,0.65);
+  cursor: default;
+  float: left;
+  margin-right: 4px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  padding: 0 20px 0 10px;
+}
+
+.c5 {
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  font-size: 14px;
+  color: rgba(0,0,0,0.47);
+  position: absolute;
+  padding: 0 0 0 5px;
+  right: 4px;
+  zoom: 1;
+}
+
+.c6:hover {
+  color: #000;
+}
+
+<span>
+  <div
+    className="sv c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <ul
+          className="c3"
+        >
+          <li
+            className="hidden c4"
+          >
+            <span
+              className="c5"
+            >
+              123456789012345676890780dfasfasfa
+            </span>
+            <span
+              className="iconfont icon-close c6"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</span>
+`;
+
+exports[`InputTag InputTag items: 1 item,  can see  1 1`] = `
+.c0 {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  font-size: 12px;
+}
+
+.c1 {
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+  min-height: 28px;
+  padding-bottom: 3px;
+}
+
+.c1:hover {
+  border-color: #49a9ee;
+}
+
+.c2 {
+  width: 212px;
+  height: 26px;
+  margin-left: 5px;
+  margin-right: 7px;
+  margin-bottom: -3px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  margin-top: 3px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #f3f3f3;
+  border-radius: 4px;
+  color: rgba(0,0,0,0.65);
+  cursor: default;
+  float: left;
+  margin-right: 4px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  padding: 0 20px 0 10px;
+}
+
+.c5 {
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  font-size: 14px;
+  color: rgba(0,0,0,0.47);
+  position: absolute;
+  padding: 0 0 0 5px;
+  right: 4px;
+  zoom: 1;
+}
+
+.c6:hover {
+  color: #000;
+}
+
+<span>
+  <div
+    className="sv c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <ul
+          className="c3"
+        >
+          <li
+            className="hidden c4"
+          >
+            <span
+              className="c5"
+            >
+              abcdeddfasdddfadasf
+            </span>
+            <span
+              className="iconfont icon-close c6"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</span>
+`;
+
+exports[`InputTag InputTag items: 3 item,  can see  0 1`] = `
+.c0 {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  font-size: 12px;
+}
+
+.c1 {
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+  min-height: 28px;
+  padding-bottom: 3px;
+}
+
+.c1:hover {
+  border-color: #49a9ee;
+}
+
+.c2 {
+  width: 212px;
+  height: 26px;
+  margin-left: 5px;
+  margin-right: 7px;
+  margin-bottom: -3px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  margin-top: 3px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #f3f3f3;
+  border-radius: 4px;
+  color: rgba(0,0,0,0.65);
+  cursor: default;
+  float: left;
+  margin-right: 4px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  padding: 0 20px 0 10px;
+}
+
+.c5 {
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  font-size: 14px;
+  color: rgba(0,0,0,0.47);
+  position: absolute;
+  padding: 0 0 0 5px;
+  right: 4px;
+  zoom: 1;
+}
+
+.c6:hover {
+  color: #000;
+}
+
+<span>
+  <div
+    className="sv c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <ul
+          className="c3"
+        >
+          <li
+            className="hidden c4"
+          >
+            <span
+              className="c5"
+            >
+              123456789012345676890780
+            </span>
+            <span
+              className="iconfont icon-close c6"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</span>
+`;
+
+exports[`InputTag InputTag items: 3 item,  can see  1 1`] = `
+.c0 {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  font-size: 12px;
+}
+
+.c1 {
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+  min-height: 28px;
+  padding-bottom: 3px;
+}
+
+.c1:hover {
+  border-color: #49a9ee;
+}
+
+.c2 {
+  width: 212px;
+  height: 26px;
+  margin-left: 5px;
+  margin-right: 7px;
+  margin-bottom: -3px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  margin-top: 3px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #f3f3f3;
+  border-radius: 4px;
+  color: rgba(0,0,0,0.65);
+  cursor: default;
+  float: left;
+  margin-right: 4px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  padding: 0 20px 0 10px;
+}
+
+.c5 {
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  font-size: 14px;
+  color: rgba(0,0,0,0.47);
+  position: absolute;
+  padding: 0 0 0 5px;
+  right: 4px;
+  zoom: 1;
+}
+
+.c6:hover {
+  color: #000;
+}
+
+<span>
+  <div
+    className="sv c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <ul
+          className="c3"
+        >
+          <li
+            className="hidden c4"
+          >
+            <span
+              className="c5"
+            >
+              12345678901234
+            </span>
+            <span
+              className="iconfont icon-close c6"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</span>
+`;
+
+exports[`InputTag InputTag items: 3 item,  can see  1 more item 1`] = `
+.c0 {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  font-size: 12px;
+}
+
+.c1 {
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+  min-height: 28px;
+  padding-bottom: 3px;
+}
+
+.c1:hover {
+  border-color: #49a9ee;
+}
+
+.c2 {
+  width: 212px;
+  height: 26px;
+  margin-left: 5px;
+  margin-right: 7px;
+  margin-bottom: -3px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  margin-top: 3px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #f3f3f3;
+  border-radius: 4px;
+  color: rgba(0,0,0,0.65);
+  cursor: default;
+  float: left;
+  margin-right: 4px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  padding: 0 20px 0 10px;
+}
+
+.c5 {
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  font-size: 14px;
+  color: rgba(0,0,0,0.47);
+  position: absolute;
+  padding: 0 0 0 5px;
+  right: 4px;
+  zoom: 1;
+}
+
+.c6:hover {
+  color: #000;
+}
+
+<span>
+  <div
+    className="sv c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <ul
+          className="c3"
+        >
+          <li
+            className="hidden c4"
+          >
+            <span
+              className="c5"
+            >
+              abcdeddfasdddfadasf
+            </span>
+            <span
+              className="iconfont icon-close c6"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</span>
+`;
+
+exports[`InputTag InputTag items: 3 item,  can see  3 1`] = `
+.c0 {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  font-size: 12px;
+}
+
+.c1 {
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+  min-height: 28px;
+  padding-bottom: 3px;
+}
+
+.c1:hover {
+  border-color: #49a9ee;
+}
+
+.c2 {
+  width: 212px;
+  height: 26px;
+  margin-left: 5px;
+  margin-right: 7px;
+  margin-bottom: -3px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  margin-top: 3px;
+  height: 20px;
+  line-height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #f3f3f3;
+  border-radius: 4px;
+  color: rgba(0,0,0,0.65);
+  cursor: default;
+  float: left;
+  margin-right: 4px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  padding: 0 20px 0 10px;
+}
+
+.c5 {
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  font-size: 14px;
+  color: rgba(0,0,0,0.47);
+  position: absolute;
+  padding: 0 0 0 5px;
+  right: 4px;
+  zoom: 1;
+}
+
+.c6:hover {
+  color: #000;
+}
+
+<span>
+  <div
+    className="sv c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <ul
+          className="c3"
+        >
+          <li
+            className="hidden c4"
+          >
+            <span
+              className="c5"
+            >
+              a
+            </span>
+            <span
+              className="iconfont icon-close c6"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</span>
+`;
