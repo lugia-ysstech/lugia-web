@@ -507,7 +507,6 @@ class TreeUtils {
     if (nowVisible === begats) {
       return this.oldTreeData = datas;
     }
-    console.info('重新计算 ');
     const totalLen = datas.length;
     const result = [];
     for (let i = 0; i < totalLen; i++) {
