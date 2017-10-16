@@ -8,12 +8,14 @@ import ReactDom from 'react-dom';
 import styled from 'styled-components';
 import Trigger from '../trigger';
 import Theme from '../theme';
+import ThemeProvider from '../common/ThemeProvider';
 import * as Widget from '../consts/Widget';
 
 type DropMenuProps = {
   action: Array<string>,
   menus: React.Node,
   children: React.Element<any>,
+  getTheme: Function,
 };
 const MenuContainer = styled.div`
    background-color: #fff;
@@ -28,6 +30,9 @@ type DropMenuState = {
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
     action: ['click',],
+    getTheme () {
+      return {};
+    },
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
@@ -35,8 +40,16 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   constructor (props: DropMenuProps) {
     super(props);
-    this.state = { trigerWidth: '100%', };
-    this.isAutoTriggerWidth = false;
+    const { getTheme, } = props;
+    const { width, } = getTheme();
+    if (width) {
+      this.state = { trigerWidth: width, };
+      this.isAutoTriggerWidth = true;
+    } else {
+      this.state = { trigerWidth: '100%', };
+      this.isAutoTriggerWidth = false;
+
+    }
   }
 
   render () {
@@ -73,4 +86,4 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 }
 
-export default DropMenu;
+export default ThemeProvider(DropMenu, Widget.DropMenu);

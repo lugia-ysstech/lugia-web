@@ -48,7 +48,8 @@ describe('InputTag', () => {
                 value={['123456789012345676890780dfasfasfa',]}/>
     </Theme>).toJSON()).toMatchSnapshot();
 
-  });it('InputTag items: 3 item,  can see  0', () => {
+  });
+  it('InputTag items: 3 item,  can see  0', () => {
     expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
       <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
                 value={['123456789012345676890780', 'b', 'c',]}/>

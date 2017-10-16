@@ -7,25 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
-import { ItemMarginRight, ItemPaddingLeft, ItemPadingRight, } from './style';
-import { RadiusSize, } from '../css/input';
-
-const Item = styled.li`
-  margin-top: 3px;
-  height: 20px;
-  line-height: 20px;
-  user-select: none;
-  background: #f3f3f3;
-  border-radius: ${RadiusSize};
-  color: rgba(0, 0, 0, 0.65);
-  cursor: default;
-  float: left;
-  margin-right: ${ItemMarginRight}px;
-  position: relative;
-  overflow: hidden;
-  transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  padding: 0 ${(props: Object) => ( props.closeable ? ItemPadingRight : ItemPaddingLeft)}px 0 ${ItemPaddingLeft}px;
-`;
+import { ItemContainer, ItemText, } from './ItemTag';
 
 const Text = styled.span`
   height: 20px;
@@ -56,10 +38,10 @@ export default class  extends React.Component<ItemProps, ItemState> {
   render () {
     const { className, closeable = true, } = this.props;
     return (
-      <Item className={className} closeable={closeable} innerRef={c => this.item = c}>
-        <Text>{this.props.children}</Text>
+      <ItemContainer className={className} closeable={closeable} innerRef={c => this.item = c}>
+        <ItemText>{this.props.children}</ItemText>
         {closeable ? <CloseButton className="iconfont icon-close"></CloseButton> : null}
-      </Item>
+      </ItemContainer>
     );
   }
 

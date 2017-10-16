@@ -158,13 +158,16 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       }
     }
     if (needMoreItem) {
-      items.push(<MoreItem/>);
+      items.push(this.getMoreItem());
     }
 
     this.setState({ items, });
     return true;
   }
 
+  getMoreItem () {
+    return <MoreItem items={this.props.value}/>;
+  }
 }
 
 const InputTagBox = ThemeProvider(InputTag, Widget.InputTag);
