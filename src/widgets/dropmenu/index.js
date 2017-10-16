@@ -27,7 +27,7 @@ type DropMenuState = {
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
-    action: ['hover',],
+    action: ['click',],
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
@@ -65,7 +65,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       this.isAutoTriggerWidth = true;
       const domNode = ReactDom.findDOMNode(this);
       if (domNode && domNode.offsetWidth) {
-        this.setState({ trigerWidth: `${String(domNode.offsetWidth)}px`, }, () => {
+        this.setState({ trigerWidth: `${String(domNode.offsetWidth)}`, }, () => {
           this.isAutoTriggerWidth = false;
         });
       }
