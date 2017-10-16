@@ -14,6 +14,11 @@ import MoreItem from './MoreItem';
 import FontItem from './FontItem';
 import ThemeProvider from '../common/ThemeProvider';
 import * as Widget from '../consts/Widget';
+import Theme from '../theme';
+import DropMenu from '../dropmenu';
+import Menu from '../menu';
+
+const { MenuItem, } = Menu;
 
 type InputTagProps = {
   getTheme: Function,
@@ -83,6 +88,8 @@ const List = styled.ul`
 
 class InputTag extends React.Component<InputTagProps, InputTagState> {
   list: Object;
+  container: Object;
+  dropMenu: ?Object;
   fontItem: Object;
   static displayName = Widget.InputTag;
   static defaultProps = {
@@ -99,20 +106,52 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   render () {
+    const { items, } = this.state;
     const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
-    return (
-      <Container className="sv" theme={this.props.getTheme()}>
+
+    const result = (
+      <Container className="sv" theme={this.props.getTheme()} innerRef={cmp => this.container = cmp}>
         <OutContainer>
           <InnerContainer theme={this.props.getTheme()}>
             {/*<PlaceContainer>气你输入</PlaceContainer>*/}
             <List innerRef={cmp => this.list = cmp}>
               <FontItem ref={fillFontItem}/>
-              {this.state.items}
+              {items}
             </List>
           </InnerContainer>
         </OutContainer>
       </Container>
     );
+    if (this.needMoreItem) {
+      return <Theme config={{ [Widget.DropMenu]: { width: this.getWidth(), }, }}>
+        <DropMenu menus={this.getItems()}
+                  action={[]}
+                  hideAction={['click',]}
+                  ref={cmp => {
+                    console.info('kk', cmp);
+                    this.dropMenu = cmp;
+                  }}>
+          {result}
+        </DropMenu>
+      </Theme>;
+    }
+    return result;
+  }
+
+  getItems () {
+    const { value, } = this.props;
+    const items = [];
+    if (value) {
+      const valueLen = value.length;
+      for (let i = 0; i < valueLen; i++) {
+        const text = value[ i ];
+        items.push(<MenuItem key={text}>{text}</MenuItem>);
+      }
+    }
+
+    return <Menu>
+      {items}
+    </Menu>;
   }
 
   oldWidth: number;
@@ -137,12 +176,20 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return width ? getContentWidth(width) : this.list.offsetWidth;
   }
 
+  getWidth () {
+    const { getTheme, } = this.props;
+    const { width, } = getTheme();
+    return width ? width : this.container.offsetWidth;
+  }
+
+  needMoreItem: boolean;
+
   async adaptiveItems (listWidth: number): Promise<boolean> {
     listWidth -= 20;
     const { value, } = this.props;
     const items = [];
     let totalWidth = 0;
-    let needMoreItem = false;
+    this.needMoreItem = false;
     if (value) {
       const valueLen = value.length;
       for (let i = 0; i < valueLen; i++) {
@@ -154,10 +201,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         items.push(<Item key={`k${i}`}>{text}</Item>);
       }
       if (valueLen !== items.length) {
-        needMoreItem = true;
+        this.needMoreItem = true;
       }
     }
-    if (needMoreItem) {
+    if (this.needMoreItem) {
       items.push(this.getMoreItem());
     }
 
@@ -166,8 +213,16 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getMoreItem () {
-    return <MoreItem items={this.props.value}/>;
+    return <MoreItem items={this.props.value} onClick={this.onMoreClick}/>;
   }
+
+  onMoreClick = () => {
+    if (this.dropMenu && this.dropMenu.target && this.dropMenu.target.trigger) {
+      this.dropMenu.target.trigger.setPopupVisible(true);
+      console.info('hello');
+    }
+  };
+
 }
 
 const InputTagBox = ThemeProvider(InputTag, Widget.InputTag);

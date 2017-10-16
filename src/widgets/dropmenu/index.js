@@ -13,6 +13,7 @@ import * as Widget from '../consts/Widget';
 
 type DropMenuProps = {
   action: Array<string>,
+  hideAction: Array<string>,
   menus: React.Node,
   children: React.Element<any>,
   getTheme: Function,
@@ -30,6 +31,7 @@ type DropMenuState = {
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
     action: ['click',],
+    hideAction: ['click',],
     getTheme () {
       return {};
     },
@@ -52,12 +54,16 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     }
   }
 
+  trigger: ?Object;
+
   render () {
-    const { menus, children, action, } = this.props;
+    const { menus, children, action, hideAction,} = this.props;
     const menuConfig = { [Widget.Menu]: { width: this.state.trigerWidth, }, };
     return <Trigger
+      ref={cmp => this.trigger = cmp}
       align="bottomLeft"
       action={action}
+      hideAction={hideAction}
       popup={
         <MenuContainer><Theme config={menuConfig}>{menus}</Theme></MenuContainer>
       }>

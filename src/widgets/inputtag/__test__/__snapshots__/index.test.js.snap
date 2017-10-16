@@ -97,6 +97,7 @@ exports[`InputTag InputTag items: 1 item,  can see  0 1`] = `
         >
           <li
             className="hidden c4"
+            onClick={undefined}
           >
             <span
               className="c5"
@@ -211,6 +212,7 @@ exports[`InputTag InputTag items: 1 item,  can see  1 1`] = `
         >
           <li
             className="hidden c4"
+            onClick={undefined}
           >
             <span
               className="c5"
@@ -325,6 +327,7 @@ exports[`InputTag InputTag items: 3 item,  can see  0 1`] = `
         >
           <li
             className="hidden c4"
+            onClick={undefined}
           >
             <span
               className="c5"
@@ -439,6 +442,7 @@ exports[`InputTag InputTag items: 3 item,  can see  1 1`] = `
         >
           <li
             className="hidden c4"
+            onClick={undefined}
           >
             <span
               className="c5"
@@ -553,6 +557,7 @@ exports[`InputTag InputTag items: 3 item,  can see  1 more item 1`] = `
         >
           <li
             className="hidden c4"
+            onClick={undefined}
           >
             <span
               className="c5"
@@ -667,6 +672,7 @@ exports[`InputTag InputTag items: 3 item,  can see  3 1`] = `
         >
           <li
             className="hidden c4"
+            onClick={undefined}
           >
             <span
               className="c5"
