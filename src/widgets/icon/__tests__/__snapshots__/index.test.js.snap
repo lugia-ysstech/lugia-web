@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon iconClass: sv-icon-close 1`] = `
+<i
+  className="iconfont sv-icon-close"
+  onClick={undefined}
+>
+   
+</i>
+`;
