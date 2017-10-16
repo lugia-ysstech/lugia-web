@@ -15,44 +15,50 @@ const { expect: exp, } = chai;
 
 describe('InputTag', () => {
   it('InputTag items: 3 item,  can see  3', () => {
-    expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
+    expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }} key="1">
       <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={['a', 'b', 'c',]}/>
+                value={[{ key: '1', text: 'a', }, { key: '2', text: 'b', }, { key: '3', text: 'c', },]}/>
     </Theme>).toJSON()).toMatchSnapshot();
 
   });
   it('InputTag items: 3 item,  can see  1', () => {
     expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
       <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={['12345678901234', 'b', 'c',]}/>
+                value={[{ key: '1', text: '12345678901234', }, { key: '2', text: 'b', }, { key: '3', text: 'c', },]}/>
     </Theme>).toJSON()).toMatchSnapshot();
 
   });
   it('InputTag items: 3 item,  can see  1 more item', () => {
     expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
       <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={['abcdeddfasdddfadasf', 'b', 'c',]}/>
+                value={[{ key: '1', text: 'abcdeddfasdddfadasf', }, { key: '2', text: 'b', }, {
+                  key: '3',
+                  text: 'c',
+                },]}/>
     </Theme>).toJSON()).toMatchSnapshot();
 
   });
   it('InputTag items: 1 item,  can see  1', () => {
     expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
       <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={['abcdeddfasdddfadasf',]}/>
+                value={[{ key: '1', text: 'abcdeddfasdddfadasf', },]}/>
     </Theme>).toJSON()).toMatchSnapshot();
 
   });
   it('InputTag items: 1 item,  can see  0', () => {
     expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
       <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={['123456789012345676890780dfasfasfa',]}/>
+                value={[{ key: '1', text: '123456789012345676890780dfasfasfa', },]}/>
     </Theme>).toJSON()).toMatchSnapshot();
 
   });
   it('InputTag items: 3 item,  can see  0', () => {
     expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
       <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={['123456789012345676890780', 'b', 'c',]}/>
+                value={[{ key: '1', text: '123456789012345676890780', }, { key: '2', text: 'b', }, {
+                  key: '3',
+                  text: 'c',
+                },]}/>
     </Theme>).toJSON()).toMatchSnapshot();
 
   });

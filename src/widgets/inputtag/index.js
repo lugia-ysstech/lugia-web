@@ -19,10 +19,13 @@ import DropMenu from '../dropmenu';
 import Menu from '../menu';
 
 const { MenuItem, } = Menu;
-
+type ValuItem = {
+  key: string,
+  text: string,
+}
 type InputTagProps = {
   getTheme: Function,
-  value?: Array<string>,
+  value?: Array<ValuItem>,
 };
 type InputTagState = {
   items: Array<React.Node>,
@@ -144,8 +147,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (value) {
       const valueLen = value.length;
       for (let i = 0; i < valueLen; i++) {
-        const text = value[ i ];
-        items.push(<MenuItem key={text}>{text}</MenuItem>);
+        const { text, key, } = value[ i ];
+        items.push(<MenuItem key={key}>{text}</MenuItem>);
       }
     }
 
@@ -153,6 +156,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       {items}
     </Menu>;
   }
+
 
   oldWidth: number;
 
@@ -193,12 +197,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (value) {
       const valueLen = value.length;
       for (let i = 0; i < valueLen; i++) {
-        const text = value[ i ];
+        const { text, key, } = value[ i ];
+
         totalWidth += await this.fontItem.getWidth(text) + ItemMarginRight;
         if (totalWidth >= listWidth) {
           break;
         }
-        items.push(<Item key={`k${i}`}>{text}</Item>);
+        items.push(<Item key={key}>{text}</Item>);
       }
       if (valueLen !== items.length) {
         this.needMoreItem = true;
