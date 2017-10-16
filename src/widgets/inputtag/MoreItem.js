@@ -10,7 +10,6 @@ import { hidden, } from './css.css';
 
 
 export default class  extends React.Component<any, any> {
-
   render () {
     return (
       <Item closeable={false}>...</Item>
