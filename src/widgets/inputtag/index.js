@@ -12,15 +12,22 @@ import { ItemMarginRight, } from './style';
 import Item from './Item';
 import Moretem from './Moretem';
 import FontItem from './FontItem';
+import ThemeProvider from '../common/ThemeProvider';
+import * as Widget from '../consts/Widget';
 
 type InputTagProps = {
+  getTheme: Function,
   value?: Array<string>,
 };
 type InputTagState = {
   items: Array<React.Node>,
 };
+const width = props => {
+  const w = props.theme.width;
+  return w ? `width: ${w}px;` : 'width: 100%;';
+};
 const Container = styled.div`
-  width: 100%;
+  ${width}
   display: inline-block;
   position: relative;
   color: rgba(0, 0, 0, 0.65);
@@ -37,7 +44,9 @@ const OutContainer = styled.div`
     border-color: ${InputBorderHoverColor};
   }
 `;
+
 const InnerContainer = styled.div`
+  ${width}
   height: 26px;
   margin-left: 5px;
   margin-right: 7px;
@@ -65,9 +74,16 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
 `;
-export default class  extends React.Component<InputTagProps, InputTagState> {
+
+class InputTag extends React.Component<InputTagProps, InputTagState> {
   list: Object;
   fontItem: Object;
+  static displayName = Widget.InputTag;
+  static defaultProps = {
+    getTheme: () => {
+      return {};
+    },
+  };
 
   constructor (props: InputTagProps) {
     super(props);
@@ -79,9 +95,9 @@ export default class  extends React.Component<InputTagProps, InputTagState> {
   render () {
     const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
     return (
-      <Container className="sv">
+      <Container className="sv" theme={this.props.getTheme()}>
         <OutContainer>
-          <InnerContainer>
+          <InnerContainer theme={this.props.getTheme()}>
             {/*<PlaceContainer>气你输入</PlaceContainer>*/}
             <List innerRef={cmp => this.list = cmp}>
               <FontItem ref={fillFontItem}/>
@@ -127,3 +143,6 @@ export default class  extends React.Component<InputTagProps, InputTagState> {
   }
 
 }
+
+const InputTagBox = ThemeProvider(InputTag, Widget.InputTag);
+export default InputTagBox;
