@@ -22,10 +22,11 @@ type InputTagProps = {
 type InputTagState = {
   items: Array<React.Node>,
 };
-const width = props => {
-  const w = props.theme.width;
+const widthFunc = (spanWidth: number) => (props: Object) => {
+  const w = props.theme.width - spanWidth;
   return w ? `width: ${w}px;` : 'width: 100%;';
 };
+const width = widthFunc(0);
 const Container = styled.div`
   ${width}
   display: inline-block;
@@ -45,11 +46,14 @@ const OutContainer = styled.div`
   }
 `;
 
+const marginLeft = 5;
+const marginRight = 7;
+
 const InnerContainer = styled.div`
-  ${width}
+  ${widthFunc(marginLeft + marginRight)}
   height: 26px;
-  margin-left: 5px;
-  margin-right: 7px;
+  margin-left: ${marginLeft}px;
+  margin-right: ${marginRight}px;
   margin-bottom: -3px;
   position: relative;
   user-select: none;
