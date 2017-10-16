@@ -11,6 +11,16 @@ function getValue (arg: GetValueArgType): string {
   return '';
 }
 
+function getObjectValue (arg: GetValueArgType): Object {
+  const { value = {}, defaultValue = {}, } = arg;
+  if ('value' in arg) {
+    return value;
+  } else if ('defaultValue' in arg) {
+    return defaultValue;
+  }
+  return {};
+}
+
 function getNumberValue (arg: GetValueArgType): number {
   const { value = 0, defaultValue = 0, } = arg;
   if ('value' in arg) {
@@ -24,4 +34,5 @@ function getNumberValue (arg: GetValueArgType): number {
 export default {
   getValue,
   getNumberValue,
+  getObjectValue,
 };

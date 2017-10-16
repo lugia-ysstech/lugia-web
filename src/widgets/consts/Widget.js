@@ -10,6 +10,7 @@ export const Trigger = 'sv.widget.Trigger';
 export const InputTag = 'sv.widget.InputTag';
 export const Theme = 'sv.widget.Theme';
 export const Menu = 'sv.widget.Menu';
+export const Icon = 'sv.widget.Icon';
 export const DropMenu = 'sv.widget.DropMenu';
 export const Tree = 'sv.widget.Tree';
 export const ThrottleScroller = 'sv.widget.ThrottleScroller';

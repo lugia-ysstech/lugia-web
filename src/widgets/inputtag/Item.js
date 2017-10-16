@@ -32,7 +32,8 @@ type ItemProps = {
   className?: string,
   closeable?: boolean,
   children: any,
-  onClick?: Function
+  onClick?: Function,
+  onCloseClick?: Function
 };
 type ItemState = {};
 export default class  extends React.Component<ItemProps, ItemState> {
@@ -41,11 +42,11 @@ export default class  extends React.Component<ItemProps, ItemState> {
   width: number;
 
   render () {
-    const { className, closeable = true, onClick,} = this.props;
+    const { className, closeable = true, onClick, onCloseClick,} = this.props;
     return (
       <ItemContainer className={className} closeable={closeable} innerRef={c => this.item = c} onClick={onClick}>
         <ItemText>{this.props.children}</ItemText>
-        {closeable ? <CloseButton className="iconfont icon-close"></CloseButton> : null}
+        {closeable ? <CloseButton className="iconfont icon-close" onClick={onCloseClick}></CloseButton> : null}
       </ItemContainer>
     );
   }
