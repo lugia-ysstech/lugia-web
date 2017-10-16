@@ -2096,7 +2096,6 @@ describe('utils', () => {
       target: {},
       id2ExtendInfo,
     });
-    console.dir(actual);
     exp(actual).to.be.eql([
       { key: '0', title: '0', }, { key: '0.0', title: '0.0', pid: '0', path: '0', },
       { key: '0.0.0', title: '0.0.0', pid: '0.0', path: '0/0.0', },
