@@ -38,7 +38,8 @@ const Seperator = '/';
 const notEmpty = (obj: any) => {
   return obj !== null && obj !== undefined && obj !== '';
 };
-const VirtualRoot = 'sv_tree_root';
+
+const VirtualRoot: string = 'sv_tree_root';
 
 class TreeUtils {
   VirtualRoot: string = VirtualRoot;
@@ -545,21 +546,41 @@ class TreeUtils {
       const len = pathArray.length;
       for (let i = 0; i < len; i++) {
         const key = pathArray[ i ];
-        selectInfo[ key ] = { type: TreeUtils.Half, };
+        this.check(key, selectInfo, TreeUtils.Half);
       }
     }
   }
 
   updateSelectedStatus (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
-    selectInfo[ key ] = { type, };
+
+    this.check(key, selectInfo, type);
+
     const datas = this.treeData;
     const { index, begats, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
     const len = datas.length;
     for (let i = index; i <= index + begats && i < len; i++) {
       const { key, } = datas[ i ];
-      selectInfo[ key ] = { type, };
+      this.check(key, selectInfo, type);
     }
     return datas[ index ];
+  }
+
+  check (key: string, selectInfo: NodeId2SelectInfo, type: SelectType) {
+    const { checked, value, } = selectInfo;
+    switch (type) {
+      case TreeUtils.Selected:
+        checked[ key ] = true;
+        value[ key ] = true;
+        break;
+      case TreeUtils.UnSelected:
+        delete checked[ key ];
+        delete value[ key ];
+        break;
+      case TreeUtils.Half:
+        delete checked[ key ];
+        break;
+      default:
+    }
   }
 
   static Selected: 1 = 1;
