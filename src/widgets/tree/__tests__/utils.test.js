@@ -2302,7 +2302,7 @@ describe('utils', () => {
 
     utils.selectNode(targetKey, selectedInfo, nodeExpandInfo);
     const expectResult: Object = {
-      [targetKey]: { type: TreeUtils.Selected, },
+      [targetKey]: { type: TreeUtils.Half, },
     };
     datas.forEach((row: Object) => {
       const { path, key, } = row;
@@ -2321,8 +2321,8 @@ describe('utils', () => {
         };
       }
     });
-    expectResult[ three ] = TreeUtils.Half;
-    expectResult[ '1.3' + '' ] = TreeUtils.Half;
+    expectResult[ three ] = { type: TreeUtils.UnSelected, };
+    expectResult[ '1.3' + '' ] = { type: TreeUtils.Half, };
     utils.unSelectNode(three, selectedInfo, nodeExpandInfo);
     exp(selectedInfo).to.be.eql(expectResult);
   });

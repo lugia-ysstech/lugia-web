@@ -461,7 +461,7 @@ class TreeUtils {
 
 
     const { path, } = info;
-    const pathArray = [ this.VirtualRoot, ];
+    const pathArray = [this.VirtualRoot,];
     if (path) {
       Array.prototype.push.apply(pathArray, path.split(Seperator));
     }
@@ -541,7 +541,12 @@ class TreeUtils {
 
     const { path, } = this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.UnSelected);
     if (path) {
-      console.info();
+      const pathArray = path.split('/');
+      const len = pathArray.length;
+      for (let i = 0; i < len; i++) {
+        const key = pathArray[ i ];
+        selectInfo[ key ] = { type: TreeUtils.Half, };
+      }
     }
   }
 
