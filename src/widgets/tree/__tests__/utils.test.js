@@ -17,7 +17,6 @@ describe('utils', () => {
   const childrenRoot = [0, 17, 27, 30,];
   const children1 = [1, 2, 9,];
   const children2 = [18, 22,];
-  let utils;
 
   const datas = [
     { key: '1', title: '1', },
@@ -55,8 +54,9 @@ describe('utils', () => {
     { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
     { key: '4', title: '4', isLeaf: true, },
   ];
+  let utils;
   beforeEach(() => {
-    utils = new TreeUtils(datas);
+    utils = new TreeUtils(datas, false);
   });
   /*
 0      1
@@ -94,6 +94,7 @@ describe('utils', () => {
 
 
   it('checkTree', () => {
+    const utils = new TreeUtils(datas, false);
     const result = utils.checkTree(datas);
     exp(result).to.be.eql([]);
   });
@@ -219,6 +220,7 @@ describe('utils', () => {
       ...errorNodes,
       { key: '4', pid: '1', path: '1', },
     ];
+
     const errors = utils.isRightLevel(datas);
     const expectErrors = errorNodes.map(leveIsError);
     exp(errors).to.be.eql(expectErrors);
@@ -236,9 +238,10 @@ describe('utils', () => {
 
   it('generateRealTreeData  expandedAll: true 第一次获取', () => {
     const id2ExtendInfo = {};
-
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
     exp(utils.generateRealTreeData({
-      expandedAll: true,
+      expandedAll,
       target: {},
       id2ExtendInfo,
     })).to.be.eql(datas);
@@ -247,7 +250,7 @@ describe('utils', () => {
 
   it('generateRealTreeData expandedAll: false 第一次获取', () => {
     const id2ExtendInfo = {};
-
+    const utils = new TreeUtils(datas, false);
     const actual = utils.generateRealTreeData({
       expandedAll: false,
       target: {},
@@ -266,10 +269,12 @@ describe('utils', () => {
   it('generateRealTreeData expandedAll: true 折叠全部', () => {
     const id2ExtendInfo = {};
     const expandedAll = true;
-    utils.colapseNode('1', datas, id2ExtendInfo, expandedAll);
-    utils.colapseNode('2', datas, id2ExtendInfo, expandedAll);
-    utils.colapseNode('3', datas, id2ExtendInfo, expandedAll);
-    utils.colapseNode('4', datas, id2ExtendInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+
+    utils.colapseNode('1', datas, id2ExtendInfo);
+    utils.colapseNode('2', datas, id2ExtendInfo);
+    utils.colapseNode('3', datas, id2ExtendInfo);
+    utils.colapseNode('4', datas, id2ExtendInfo);
     const actual = utils.generateRealTreeData({
       expandedAll,
       target: {},
@@ -289,29 +294,33 @@ describe('utils', () => {
     })).to.be.equal(actual);
   });
   it('generateRealTreeData expandedAll: true 折叠全部后 再 全部展开', () => {
+    const rs = [];
+    Array.prototype.push.apply(rs, datas);
     const id2ExtendInfo = {};
     const expandedAll = true;
-    utils.colapseNode('1', datas, id2ExtendInfo, expandedAll);
-    utils.colapseNode('2', datas, id2ExtendInfo, expandedAll);
-    utils.colapseNode('3', datas, id2ExtendInfo, expandedAll);
-    utils.colapseNode('4', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('1', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('2', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('3', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('4', datas, id2ExtendInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.colapseNode('1', datas, id2ExtendInfo);
+    utils.colapseNode('2', datas, id2ExtendInfo);
+    utils.colapseNode('3', datas, id2ExtendInfo);
+    utils.colapseNode('4', datas, id2ExtendInfo);
+    utils.expandNode('1', datas, id2ExtendInfo);
+    utils.expandNode('2', datas, id2ExtendInfo);
+    utils.expandNode('3', datas, id2ExtendInfo);
+    utils.expandNode('4', datas, id2ExtendInfo);
     const actual = utils.generateRealTreeData({
       expandedAll,
       target: {},
       id2ExtendInfo,
     });
-
     exp(actual).to.be.eql(datas);
   });
   it('generateRealTreeData expandedAll: true 折叠1 2 ', () => {
     const id2ExtendInfo = {};
     const expandedAll = true;
-    utils.colapseNode('1', datas, id2ExtendInfo, expandedAll);
-    utils.colapseNode('2', datas, id2ExtendInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+
+    utils.colapseNode('1', datas, id2ExtendInfo);
+    utils.colapseNode('2', datas, id2ExtendInfo);
     const actual = utils.generateRealTreeData({
       expandedAll,
       target: {},
@@ -329,8 +338,10 @@ describe('utils', () => {
   it('generateRealTreeData expandedAll: true 折叠1.2 2', () => {
     const id2ExtendInfo = {};
     const expandedAll = true;
-    utils.colapseNode('1.2', datas, id2ExtendInfo, expandedAll);
-    utils.colapseNode('2', datas, id2ExtendInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+
+    utils.colapseNode('1.2', datas, id2ExtendInfo);
+    utils.colapseNode('2', datas, id2ExtendInfo);
     const actual = utils.generateRealTreeData({
       expandedAll,
       target: {},
@@ -359,9 +370,11 @@ describe('utils', () => {
   it('generateRealTreeData expandedAll: false 展开 1 2 3 ', () => {
     const id2ExtendInfo = {};
     const expandedAll = false;
-    utils.expandNode('1', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('2', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('3', datas, id2ExtendInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+
+    utils.expandNode('1', datas, id2ExtendInfo);
+    utils.expandNode('2', datas, id2ExtendInfo);
+    utils.expandNode('3', datas, id2ExtendInfo);
     const actual = utils.generateRealTreeData({
       expandedAll,
       target: {},
@@ -384,12 +397,14 @@ describe('utils', () => {
   it('generateRealTreeData expandedAll: false 展开 1 1.1  1.3 1.3.1 1.3.2 3', () => {
     const id2ExtendInfo = {};
     const expandedAll = false;
-    utils.expandNode('1', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('1.1', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('1.3', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('1.3.1', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('1.3.2', datas, id2ExtendInfo, expandedAll);
-    utils.expandNode('3', datas, id2ExtendInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+
+    utils.expandNode('1', datas, id2ExtendInfo);
+    utils.expandNode('1.1', datas, id2ExtendInfo);
+    utils.expandNode('1.3', datas, id2ExtendInfo);
+    utils.expandNode('1.3.1', datas, id2ExtendInfo);
+    utils.expandNode('1.3.2', datas, id2ExtendInfo);
+    utils.expandNode('3', datas, id2ExtendInfo);
     const actual = utils.generateRealTreeData({
       expandedAll,
       target: {},
@@ -415,9 +430,9 @@ describe('utils', () => {
   });
 
   it('generateRealTreeData empty', () => {
-    utils = new TreeUtils([]);
-    const id2ExtendInfo = {};
     const expandedAll = false;
+    const utils = new TreeUtils([], expandedAll);
+    const id2ExtendInfo = {};
     exp(utils.generateRealTreeData({
       expandedAll,
       target: {},
@@ -426,11 +441,13 @@ describe('utils', () => {
   });
 
   it('generateTreeNode empty', () => {
+    const utils = new TreeUtils(datas, false);
     exp(utils.generateTreeNode([])).to.be.eql([]);
   });
 
 
   it('generateTreeNode is tree', () => {
+    const utils = new TreeUtils(datas, false);
     const actual = utils.generateTreeNode(datas);
     const expectResult = [{
       key: '1',
@@ -621,19 +638,21 @@ describe('utils', () => {
 
 
   it('getPathNodes 起始节点为1级结点', () => {
-
-    exp(utils.getPathNodes(datas, 1, '1')).to.be.eql([
+    const utils = new TreeUtils(datas, false);
+    exp(utils.getPathNodes(datas, 1, {})).to.be.eql([
       { key: '1', title: '1', },]);
   });
 
   it('getPathNodes 起始结点非根结点 2 级', () => {
-    exp(utils.getPathNodes(datas, 2, '1.2')).to.be.eql([
+    const utils = new TreeUtils(datas, false);
+    exp(utils.getPathNodes(datas, 3, {})).to.be.eql([
       { key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },]);
   });
 
   it('getPathNodes 起始结点非根结点 3 级', () => {
-    exp(utils.getPathNodes(datas, 7, '1.2.2.1')).to.be.eql([
+    const utils = new TreeUtils(datas, false);
+    exp(utils.getPathNodes(datas, 7, {})).to.be.eql([
       { key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
@@ -641,17 +660,19 @@ describe('utils', () => {
   });
 
   it('slice empty', () => {
-    exp(utils.getPathNodes([], 1, '')).to.be.eql([]);
+    const utils = new TreeUtils(datas, false);
+    exp(utils.getPathNodes([], 1, {})).to.be.eql([]);
   });
 
 
   it('getKeys', () => {
+    const utils = new TreeUtils(datas, false);
     const result = utils.getKeys([{ key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', },]);
     exp(result).to.be.eql(['1', '2', '3',]);
   });
 
   it('fetchNodeExtendInfo will exisit', () => {
-
+    const utils = new TreeUtils(datas, false);
     const expectResultA: Object = {
       nowVisible: 5,
       realyVisible: 6,
@@ -707,7 +728,6 @@ describe('utils', () => {
     ['3.2' + '']: { index: 29, },
   };
   it('fetchNodeExtendInfo for virual root for expandedAll: true', () => {
-
     const expectResult = {
       nowVisible: datas.length,
       realyVisible: datas.length,
@@ -716,9 +736,12 @@ describe('utils', () => {
       index: -1,
       childrenIdx: childrenRoot,
     };
-    const nodeId = utils.VirtualRoot;
     const countInfo = {};
-    exp(utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true)).to.be.eql(expectResult);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    const nodeId = utils.VirtualRoot;
+
+    exp(utils.fetchNodeExtendInfo(nodeId, datas, countInfo)).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
     baseCountInfo[ nodeId ] = expectResult;
     exp(countInfo).to.be.eql(baseCountInfo);
@@ -734,8 +757,11 @@ describe('utils', () => {
       childrenIdx: childrenRoot,
       index: -1,
     };
+    const utils = new TreeUtils(datas, false);
+
     const nodeId = utils.VirtualRoot;
     const countInfo = {};
+
     exp(utils.fetchNodeExtendInfo(nodeId, datas, countInfo)).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
     baseCountInfo[ nodeId ] = expectResult;
@@ -754,6 +780,8 @@ describe('utils', () => {
     };
     const nodeId = '1';
     const countInfo = {};
+    const utils = new TreeUtils(datas, false);
+
     const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
@@ -771,7 +799,10 @@ describe('utils', () => {
     };
     const nodeId = '1';
     const countInfo = {};
-    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
 
@@ -789,6 +820,8 @@ describe('utils', () => {
     };
     const nodeId = '2';
     const countInfo = {};
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
     const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
@@ -808,7 +841,9 @@ describe('utils', () => {
     };
     const nodeId = '2';
     const countInfo = {};
-    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
 
@@ -826,6 +861,8 @@ describe('utils', () => {
     };
     const nodeId = '2.1.1';
     const countInfo = {};
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
     const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
@@ -844,7 +881,9 @@ describe('utils', () => {
     };
     const nodeId = '2.1.1';
     const countInfo = {};
-    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
 
@@ -861,6 +900,8 @@ describe('utils', () => {
     };
     const nodeId = '2.1.2';
     const countInfo = {};
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
     const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
@@ -880,7 +921,9 @@ describe('utils', () => {
     };
     const nodeId = '2.1.2';
     const countInfo = {};
-    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
 
@@ -890,7 +933,9 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
-    utils.expandNode(nodeId, datas, countInfo, false);
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode(nodeId, datas, countInfo);
     const expectResult = {
       nowVisible: 3,
       expanded: true,
@@ -908,7 +953,9 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
-    utils.expandNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode(nodeId, datas, countInfo);
     const expectResult = {
       nowVisible: 16,
       realyVisible: 16,
@@ -925,8 +972,10 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
-    utils.expandNode(nodeId, datas, countInfo, true);
-    utils.colapseNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode(nodeId, datas, countInfo);
+    utils.colapseNode(nodeId, datas, countInfo);
 
     const expectResult = {
       nowVisible: 0,
@@ -953,8 +1002,9 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
-
-    utils.expandNode(nodeId, datas, countInfo, false);
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode(nodeId, datas, countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 7,
       realyVisible: 7,
@@ -963,7 +1013,7 @@ describe('utils', () => {
       childrenIdx: childrenRoot,
       index: -1,
     });
-    utils.colapseNode(nodeId, datas, countInfo, false);
+    utils.colapseNode(nodeId, datas, countInfo);
     const expectResult = {
       nowVisible: 0,
       realyVisible: 3,
@@ -998,7 +1048,9 @@ describe('utils', () => {
 
       index: 0,
     };
-    utils.expandNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode(nodeId, datas, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 16,
       realyVisible: 16,
@@ -1022,7 +1074,9 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    utils.expandNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode(nodeId, datas, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       realyVisible: 16,
@@ -1045,7 +1099,9 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    utils.expandNode(nodeId, datas, countInfo, false);
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode(nodeId, datas, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 3,
       realyVisible: 3,
@@ -1070,7 +1126,9 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    utils.expandNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode(nodeId, datas, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       childrenIdx: [],
@@ -1095,7 +1153,9 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    utils.colapseNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.colapseNode(nodeId, datas, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       childrenIdx: [],
@@ -1119,7 +1179,9 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    utils.colapseNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.colapseNode(nodeId, datas, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       realyVisible: 16,
@@ -1144,7 +1206,9 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    utils.colapseNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.colapseNode(nodeId, datas, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       realyVisible: 3,
@@ -1168,7 +1232,9 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    utils.colapseNode(nodeId, datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.colapseNode(nodeId, datas, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
       realyVisible: 3,
@@ -1184,8 +1250,9 @@ describe('utils', () => {
   it('expandNode expandedAll: false nodeId: 1 , 1.1 重复展开', () => {
 
     const countInfo = {};
-
-    utils.expandNode('1', datas, countInfo, false);
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 3,
       expanded: true,
@@ -1197,7 +1264,7 @@ describe('utils', () => {
     });
 
     function reapat () {
-      utils.expandNode('1.2', datas, countInfo, false);
+      utils.expandNode('1.2', datas, countInfo);
       exp(countInfo[ '1' ]).to.be.eql({
         nowVisible: 5,
         expanded: true,
@@ -1226,8 +1293,9 @@ describe('utils', () => {
   it('expandNode expandedAll: true nodeId: 1 , 1.1 重复展开', () => {
 
     const countInfo = {};
-
-    utils.expandNode('1', datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
 
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
@@ -1239,7 +1307,7 @@ describe('utils', () => {
     });
 
     function reapat () {
-      utils.expandNode('1.2', datas, countInfo, true);
+      utils.expandNode('1.2', datas, countInfo);
       exp(countInfo[ '1' ]).to.be.eql({
         nowVisible: 16,
         realyVisible: 16,
@@ -1267,12 +1335,13 @@ describe('utils', () => {
   it('colapseNode expandedAll: false 展开:(1->1.2) 折叠:(1.2) 重复折叠', () => {
 
     const countInfo = {};
-
-    utils.expandNode('1', datas, countInfo, false);
-    utils.expandNode('1.2', datas, countInfo, false);
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
+    utils.expandNode('1.2', datas, countInfo);
 
     function reapat () {
-      utils.colapseNode('1.2', datas, countInfo, false);
+      utils.colapseNode('1.2', datas, countInfo);
       exp(countInfo[ '1' ]).to.be.eql({
         nowVisible: 3,
         expanded: true,
@@ -1301,10 +1370,11 @@ describe('utils', () => {
   it('colapseNode expandedAll: false 展开:(1->1.2) 折叠:(1 -> 1.2) 重复折叠', () => {
 
     const countInfo = {};
-
-    utils.expandNode('1', datas, countInfo, false);
-    utils.expandNode('1.2', datas, countInfo, false);
-    utils.colapseNode('1', datas, countInfo, false);
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
+    utils.expandNode('1.2', datas, countInfo);
+    utils.colapseNode('1', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 0,
       expanded: false,
@@ -1328,7 +1398,7 @@ describe('utils', () => {
     function reapat () {
 
 
-      utils.colapseNode('1.2', datas, countInfo, false);
+      utils.colapseNode('1.2', datas, countInfo);
       exp(countInfo[ '1' ]).to.be.eql({
           nowVisible: 0,
           realyVisible: 3,
@@ -1358,12 +1428,13 @@ describe('utils', () => {
   it('colapseNode expandedAll: true 展开:(1->1.2) 折叠:(1.2) 重复折叠', () => {
 
     const countInfo = {};
-
-    utils.expandNode('1', datas, countInfo, true);
-    utils.expandNode('1.2', datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
+    utils.expandNode('1.2', datas, countInfo);
 
     function reapat () {
-      utils.colapseNode('1.2', datas, countInfo, true);
+      utils.colapseNode('1.2', datas, countInfo);
       exp(countInfo[ '1' ]).to.be.eql({
         nowVisible: 10,
         realyVisible: 10,
@@ -1393,10 +1464,11 @@ describe('utils', () => {
   it('colapseNode expandedAll: true 展开:(1->1.2) 折叠:(1 -> 1.2) 重复折叠', () => {
 
     const countInfo = {};
-
-    utils.expandNode('1', datas, countInfo, true);
-    utils.expandNode('1.2', datas, countInfo, true);
-    utils.colapseNode('1', datas, countInfo, true);
+    const expandedAll = true;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
+    utils.expandNode('1.2', datas, countInfo);
+    utils.colapseNode('1', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 0,
       expanded: false,
@@ -1419,7 +1491,7 @@ describe('utils', () => {
     function reapat () {
 
 
-      utils.colapseNode('1.2', datas, countInfo, true);
+      utils.colapseNode('1.2', datas, countInfo);
       exp(countInfo[ '1' ]).to.be.eql({
           nowVisible: 0,
           realyVisible: 10,
@@ -1450,8 +1522,9 @@ describe('utils', () => {
   it('expandNode expandedAll: false nodeId: 1 -> 1.1-> 1.2->1.2.2->1.3', () => {
 
     const countInfo = {};
-
-    utils.expandNode('1', datas, countInfo, false);
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 3,
       expanded: true,
@@ -1462,7 +1535,7 @@ describe('utils', () => {
       childrenIdx: children1,
     });
 
-    utils.expandNode('1.1', datas, countInfo, false);
+    utils.expandNode('1.1', datas, countInfo);
 
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 3,
@@ -1483,7 +1556,7 @@ describe('utils', () => {
 
     });
 
-    utils.expandNode('1.2', datas, countInfo, false);
+    utils.expandNode('1.2', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 5,
       expanded: true,
@@ -1504,7 +1577,7 @@ describe('utils', () => {
     });
 
 
-    utils.expandNode('1.2.2', datas, countInfo, false);
+    utils.expandNode('1.2.2', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 7,
       realyVisible: 7,
@@ -1538,7 +1611,8 @@ describe('utils', () => {
   it('expandNode expandedAll: true nodeId: 1 -> 1.1-> 1.2->1.2.2->1.3', () => {
     const countInfo = {};
     const expandedAll = true;
-    utils.expandNode('1', datas, countInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
       realyVisible: 16,
@@ -1548,7 +1622,7 @@ describe('utils', () => {
       index: 0,
     });
 
-    utils.expandNode('1.1', datas, countInfo, expandedAll);
+    utils.expandNode('1.1', datas, countInfo);
 
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
@@ -1567,7 +1641,7 @@ describe('utils', () => {
       index: 1,
     });
 
-    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
       realyVisible: 16,
@@ -1586,7 +1660,7 @@ describe('utils', () => {
       index: 2,
     });
 
-    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2.2', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
       realyVisible: 16,
@@ -1614,7 +1688,7 @@ describe('utils', () => {
       index: 4,
     });
 
-    utils.expandNode('1.3', datas, countInfo, expandedAll);
+    utils.expandNode('1.3', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
       realyVisible: 16,
@@ -1656,17 +1730,18 @@ describe('utils', () => {
   it('collapsed expandedAll: true nodeId: 展开( 1 -> 1.1-> 1.2->1.2.2->1.3) 折叠: (1.2)', () => {
     const countInfo = {};
     const expandedAll = true;
-    utils.expandNode('1', datas, countInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
 
-    utils.expandNode('1.1', datas, countInfo, expandedAll);
+    utils.expandNode('1.1', datas, countInfo);
 
-    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2', datas, countInfo);
 
-    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2.2', datas, countInfo);
 
-    utils.expandNode('1.3', datas, countInfo, expandedAll);
+    utils.expandNode('1.3', datas, countInfo);
 
-    utils.colapseNode('1.2', datas, countInfo, expandedAll);
+    utils.colapseNode('1.2', datas, countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 25,
       realyVisible: 25,
@@ -1719,17 +1794,18 @@ describe('utils', () => {
   it('collapsed expandedAll: true nodeId: 展开( 1 -> 1.1-> 1.2->1.2.2->1.3) 折叠: (1.2.2)', () => {
     const countInfo = {};
     const expandedAll = true;
-    utils.expandNode('1', datas, countInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
 
-    utils.expandNode('1.1', datas, countInfo, expandedAll);
+    utils.expandNode('1.1', datas, countInfo);
 
-    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2', datas, countInfo);
 
-    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2.2', datas, countInfo);
 
-    utils.expandNode('1.3', datas, countInfo, expandedAll);
+    utils.expandNode('1.3', datas, countInfo);
 
-    utils.colapseNode('1.2.2', datas, countInfo, expandedAll);
+    utils.colapseNode('1.2.2', datas, countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 27,
       realyVisible: 27,
@@ -1782,17 +1858,18 @@ describe('utils', () => {
   it('collapsed expandedAll: fasle nodeId: 展开( 1 -> 1.1-> 1.2->1.2.2->1.3) 折叠: (1.2.2)', () => {
     const countInfo = {};
     const expandedAll = false;
-    utils.expandNode('1', datas, countInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
 
-    utils.expandNode('1.1', datas, countInfo, expandedAll);
+    utils.expandNode('1.1', datas, countInfo);
 
-    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2', datas, countInfo);
 
-    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2.2', datas, countInfo);
 
-    utils.expandNode('1.3', datas, countInfo, expandedAll);
+    utils.expandNode('1.3', datas, countInfo);
 
-    utils.colapseNode('1.2.2', datas, countInfo, expandedAll);
+    utils.colapseNode('1.2.2', datas, countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 12,
       childrenIdx: childrenRoot,
@@ -1849,7 +1926,8 @@ describe('utils', () => {
   it('collapsed expandedAll: fasle nodeId: 折叠展开交叉的情况', () => {
     const countInfo = {};
     const expandedAll = false;
-    utils.expandNode('1', datas, countInfo, expandedAll);
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.expandNode('1', datas, countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 7,
       realyVisible: 7,
@@ -1869,7 +1947,7 @@ describe('utils', () => {
       expanded: true,
     });
 
-    utils.colapseNode('1', datas, countInfo, expandedAll);
+    utils.colapseNode('1', datas, countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 4,
       realyVisible: 4,
@@ -1888,7 +1966,7 @@ describe('utils', () => {
       index: 0,
       expanded: false,
     });
-    utils.expandNode('1', datas, countInfo, expandedAll);
+    utils.expandNode('1', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 3,
       realyVisible: 3,
@@ -1907,7 +1985,7 @@ describe('utils', () => {
       begats: 31,
       index: -1,
     });
-    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 5,
       realyVisible: 5,
@@ -1927,7 +2005,7 @@ describe('utils', () => {
       index: -1,
     });
 
-    utils.colapseNode('1.2', datas, countInfo, expandedAll);
+    utils.colapseNode('1.2', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 3,
       realyVisible: 3,
@@ -1948,7 +2026,7 @@ describe('utils', () => {
       index: -1,
     });
 
-    utils.expandNode('1.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2', datas, countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 9,
       childrenIdx: childrenRoot,
@@ -1968,7 +2046,7 @@ describe('utils', () => {
       index: 0,
       expanded: true,
     });
-    utils.expandNode('1.2.2', datas, countInfo, expandedAll);
+    utils.expandNode('1.2.2', datas, countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 11,
       realyVisible: 11,
@@ -1988,7 +2066,7 @@ describe('utils', () => {
       index: 0,
       expanded: true,
     });
-    utils.colapseNode('1.2.2', datas, countInfo, expandedAll);
+    utils.colapseNode('1.2.2', datas, countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 5,
       realyVisible: 5,
@@ -2010,42 +2088,48 @@ describe('utils', () => {
     });
   });
   it('slice all node', () => {
-    exp(utils.slice(datas, 0, 100)).to.be.eql(datas);
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    exp(utils.slice(datas, 0, 100, {})).to.be.eql({ rows: datas, parentCount: 0, });
   });
   it('slice all 1.2.2.1.2', () => {
-    exp(utils.slice(datas, 7, 100)).to.be.eql([
-      { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-      { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
-      { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    exp(utils.slice(datas, 7, 100, {})).to.be.eql({
+      rows: [
+        { key: '1', title: '1', },
+        { key: '1.2', title: '1.2', pid: '1', path: '1', },
+        { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+        { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+        { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+        { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
 
-      { key: '1.3', title: '1.3', pid: '1', path: '1', },
-      { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
-      { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
-      { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
-      { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
-      { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
-      { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
-      { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+        { key: '1.3', title: '1.3', pid: '1', path: '1', },
+        { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
+        { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+        { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+        { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
+        { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+        { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+        { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
 
-      { key: '2', title: '2', },
-      { key: '2.1', title: '2.1', pid: '2', path: '2', },
-      { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
-      { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
-      { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
-      { key: '2.2', title: '2.2', pid: '2', path: '2', },
-      { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
-      { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
-      { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
-      { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
+        { key: '2', title: '2', },
+        { key: '2.1', title: '2.1', pid: '2', path: '2', },
+        { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
+        { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
+        { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
+        { key: '2.2', title: '2.2', pid: '2', path: '2', },
+        { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
+        { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+        { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+        { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
 
-      { key: '3', title: '3', },
-      { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
-      { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, },
-    ]);
+        { key: '3', title: '3', },
+        { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+        { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+        { key: '4', title: '4', isLeaf: true, },
+      ], parentCount: 4,
+    });
   });
 
   it('generateRealTreeData children === nowVisible', () => {
@@ -2085,14 +2169,15 @@ describe('utils', () => {
         }
       }
     }
-    utils = new TreeUtils(bigTree);
+    const expandedAll = false;
+    const utils = new TreeUtils(bigTree, expandedAll);
     const id2ExtendInfo = {};
 
-    utils.expandNode('0', bigTree, id2ExtendInfo, false);
-    utils.expandNode('0.0', bigTree, id2ExtendInfo, false);
-    utils.expandNode('0.0.0', bigTree, id2ExtendInfo, false);
+    utils.expandNode('0', bigTree, id2ExtendInfo);
+    utils.expandNode('0.0', bigTree, id2ExtendInfo);
+    utils.expandNode('0.0.0', bigTree, id2ExtendInfo);
     const actual = utils.generateRealTreeData({
-      expandedAll: false,
+      expandedAll,
       target: {},
       id2ExtendInfo,
     });
@@ -2110,4 +2195,137 @@ describe('utils', () => {
       { key: '1', title: '1', },
       { key: '2', title: '2', },]);
   });
+
+  it('selectNode key: 1', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = {};
+    const targetKey = '1';
+    const expectResult = {};
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectNode(targetKey, selectedInfo, nodeExpandInfo);
+
+    datas.forEach((row: Object) => {
+      const { path, key, } = row;
+      if (path && path.startsWith(`${targetKey}`)) {
+        expectResult[ key ] = {
+          type: TreeUtils.Selected,
+        };
+      }
+    });
+    expectResult[ targetKey ] = { type: TreeUtils.Selected, };
+    exp(selectedInfo).to.be.eql(expectResult);
+  });
+
+  it('selectNode key: 1.3.3', () => {
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    const nodeExpandInfo = {};
+    const selectedInfo = {};
+    const targetKey = '1.3.3';
+    utils.selectNode(targetKey, selectedInfo, nodeExpandInfo);
+    const expectResult = { [targetKey]: { type: TreeUtils.Selected, }, };
+    exp(selectedInfo).to.be.eql(expectResult);
+  });
+
+  it('selectNode key: 1.3.3', () => {
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    const nodeExpandInfo = {};
+    const selectedInfo = {};
+    const targetKey = '3';
+    utils.selectNode(targetKey, selectedInfo, nodeExpandInfo);
+    const expectResult = {
+      [targetKey]: { type: TreeUtils.Selected, },
+      ['3.1' + '']: { type: TreeUtils.Selected, },
+      ['3.2' + '']: { type: TreeUtils.Selected, },
+    };
+    exp(selectedInfo).to.be.eql(expectResult);
+  });
+  it('selectNode key: 1 3', () => {
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    const nodeExpandInfo = {};
+    const selectedInfo = {};
+    const targetKey = '1';
+    const three = '3';
+    const expectResult = {
+      [targetKey]: { type: TreeUtils.Selected, },
+      [three]: { type: TreeUtils.Selected, },
+      ['3.1' + '']: { type: TreeUtils.Selected, },
+      ['3.2' + '']: { type: TreeUtils.Selected, },
+    };
+    utils.selectNode(targetKey, selectedInfo, nodeExpandInfo);
+    utils.selectNode(three, selectedInfo, nodeExpandInfo);
+
+    datas.forEach((row: Object) => {
+      const { path, key, } = row;
+      if (path && path.startsWith(`${targetKey}`)) {
+        expectResult[ key ] = {
+          type: TreeUtils.Selected,
+        };
+      }
+    });
+    exp(selectedInfo).to.be.eql(expectResult);
+  });
+
+  it('selectNode key: 1 unSelectNode key: 1', () => {
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    const nodeExpandInfo = {};
+    const selectedInfo = {};
+    const targetKey = '1';
+
+    utils.selectNode(targetKey, selectedInfo, nodeExpandInfo);
+    const expectResult = {
+      [targetKey]: { type: TreeUtils.UnSelected, },
+    };
+    datas.forEach((row: Object) => {
+      const { path, key, } = row;
+      if (path && path.startsWith(`${targetKey}`)) {
+        expectResult[ key ] = {
+          type: TreeUtils.UnSelected,
+        };
+      }
+    });
+    utils.unSelectNode(targetKey, selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql(expectResult);
+  });
+
+  it('selectNode key: 1 unSelectNode key: 1.3', () => {
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    const nodeExpandInfo = {};
+    const selectedInfo = {};
+    const targetKey = '1';
+    const three = '1.3.2';
+
+    utils.selectNode(targetKey, selectedInfo, nodeExpandInfo);
+    const expectResult: Object = {
+      [targetKey]: { type: TreeUtils.Selected, },
+    };
+    datas.forEach((row: Object) => {
+      const { path, key, } = row;
+      if (path && path.startsWith(`${targetKey}`)) {
+        expectResult[ key ] = {
+          type: TreeUtils.Selected,
+        };
+      }
+    });
+    expectResult[ three ] = { type: TreeUtils.UnSelected, };
+    datas.forEach((row: Object) => {
+      const { path, key, } = row;
+      if (path && path.startsWith(`${targetKey}/1.3/${three}`)) {
+        expectResult[ key ] = {
+          type: TreeUtils.UnSelected,
+        };
+      }
+    });
+    expectResult[ three ] = TreeUtils.Half;
+    expectResult[ '1.3' + '' ] = TreeUtils.Half;
+    utils.unSelectNode(three, selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql(expectResult);
+  });
+
+
 });

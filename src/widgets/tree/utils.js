@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import type { NodeExtendInfo, NodeId2ExtendInfo, } from 'sv-widget';
+import type { NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, SelectType, } from 'sv-widget';
 
 const EmptyError = '结点不能为空',
   PathEqlKey = 'path不能等于key',
@@ -30,12 +30,11 @@ type RowData = {
 };
 
 type ExpandInfo = {
-  expandedAll: boolean,
   target: Object,
   id2ExtendInfo: NodeId2ExtendInfo,
 }
 
-
+const Seperator = '/';
 const notEmpty = (obj: any) => {
   return obj !== null && obj !== undefined && obj !== '';
 };
@@ -61,13 +60,15 @@ class TreeUtils {
   oldTreeData: Array<RowData>;
   treeData: Array<RowData>;
   oldVersion: number;
+  expandedAll: boolean;
 
-  constructor (treeData: Array<RowData>) {
+  constructor (treeData: Array<RowData>, expandedAll: boolean) {
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
     this.oldTreeData = treeData;
     this.treeData = treeData;
+    this.expandedAll = expandedAll;
     return this;
   }
 
@@ -181,7 +182,7 @@ class TreeUtils {
       const { pid, path, key, } = data;
       if (pid) {
         const pidPathArray = fetchPidPath(pid);
-        const pidPath = pidPathArray.join('/');
+        const pidPath = pidPathArray.join(Seperator);
         if (pidPath !== path) {
           isPathError[ key ] = true;
           result.push(pathIsError(data));
@@ -242,48 +243,46 @@ class TreeUtils {
     return result;
   }
 
-  slice (rowDatas: Array<RowData>, start: number, total: number, out?: Object): Array<RowData> {
+  slice (rowDatas: Array<RowData>, start: number, total: number, id2nodeExtendInfo: NodeId2ExtendInfo): { rows: Array<RowData>, parentCount: number } {
+    const empty = { rows: [], parentCount: 0, };
     if (rowDatas && rowDatas.length === 0) {
-      return [];
+      return empty;
     }
     const result = rowDatas.slice(start, start + total);
     const root = result[ 0 ];
     if (!root) {
       console.error('树形数据存在问题');
-      return [];
+      return empty;
     }
 
     const isTopLevel = !root.pid;
     if (isTopLevel) {
-      return result;
+      return { rows: result, parentCount: 0, };
     }
 
-    const pathNode = this.getPathNodes(rowDatas, start, root.pid);
-    if (out) {
-      out.parentCount = pathNode.length;
-    }
+    const pathNode = this.getPathNodes(rowDatas, start, id2nodeExtendInfo);
+    const parentCount = pathNode.length;
     Array.prototype.push.apply(pathNode, result);
-    return pathNode;
+    return { rows: pathNode, parentCount, };
   }
 
 
-  getPathNodes (rowDatas: Array<RowData>, start: number, targetPid?: string) {
+  getPathNodes (rowDatas: Array<RowData>, start: number, id2nodeExtendInfo: NodeId2ExtendInfo) {
     const result = [];
-    if (!targetPid) {
+    const row = rowDatas[ start ];
+    if (!row) {
       return result;
     }
-    for (let findPidIdx = start; findPidIdx >= 0; findPidIdx--) {
-      const node = rowDatas[ findPidIdx ];
-      const { key, pid, } = node;
-      if (key === targetPid) {
-        result.push(node);
-        if (!pid) {
-          break;
-        }
-        targetPid = pid;
+    const { path, } = row;
+    if (path) {
+      const pathArray = path.split(Seperator);
+      for (let i = 0; i < pathArray.length; i++) {
+        const key = pathArray[ i ];
+        const { index, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+        result.push(this.treeData[ index ]);
       }
     }
-    return result.reverse();
+    return result;
   }
 
   getKeys (nodes: Array<RowData>): Array<string> {
@@ -298,10 +297,9 @@ class TreeUtils {
 
   fetchNodeExtendInfo (nodeId: string,
                        nodes: Array<RowData>,
-                       id2nodeExtendInfo: NodeId2ExtendInfo,
-                       expandedAll: boolean = false): NodeExtendInfo {
+                       id2nodeExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
 
-    this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo, expandedAll);
+    this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo);
 
     const existData = id2nodeExtendInfo[ nodeId ];
     const isExist = existData && existData.begats !== undefined;
@@ -327,7 +325,7 @@ class TreeUtils {
         begats++;
         founded = true;
       } else if (path) {
-        const pathArray = path.split('/');
+        const pathArray = path.split(Seperator);
         const isInPath = ~pathArray.indexOf(nodeId);
         if (isInPath) {
           begats++;
@@ -339,12 +337,11 @@ class TreeUtils {
       }
 
     }
-    return this.generateExtendInfo(nodeId, expandedAll, begats, children, id2nodeExtendInfo, childrenIdx);
+    return this.generateExtendInfo(nodeId, begats, children, id2nodeExtendInfo, childrenIdx);
   }
 
   initAllNodeIndexAndTopRoot (nodes: Array<RowData>,
-                              id2nodeExpandInfo: NodeId2ExtendInfo,
-                              expandedAll: boolean) {
+                              id2nodeExpandInfo: NodeId2ExtendInfo) {
     const childrenIdx = [];
     if (!id2nodeExpandInfo[ VirtualRoot ]) {
       const len = nodes.length;
@@ -359,16 +356,15 @@ class TreeUtils {
           id2nodeExpandInfo[ key ] = { index, };
         }
       }
-      this.generateExtendInfo(VirtualRoot, expandedAll, len, children, id2nodeExpandInfo, childrenIdx);
+      this.generateExtendInfo(VirtualRoot, len, children, id2nodeExpandInfo, childrenIdx);
     }
   }
 
-  generateExtendInfo (nodeId: string, expandedAll: boolean,
-                      begats: number, children: number,
+  generateExtendInfo (nodeId: string, begats: number, children: number,
                       id2nodeExtendInfo: NodeId2ExtendInfo,
                       childrenIdx: Array<number>): NodeExtendInfo {
 
-    const nowAndRealVisible = expandedAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
+    const nowAndRealVisible = this.expandedAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
     const nodeInfo = id2nodeExtendInfo[ nodeId ];
     const index = nodeInfo && nodeInfo.index !== undefined ? nodeInfo.index : -1;
 
@@ -392,19 +388,18 @@ class TreeUtils {
    */
   expandNode (nodeId: string,
               nodes: Array<RowData>,
-              id2nodeExtendInfo: NodeId2ExtendInfo,
-              expandedAll: boolean = false): void {
+              id2nodeExtendInfo: NodeId2ExtendInfo): void {
 
-    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo, expandedAll);
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo);
     const info = fetchNodeInfo(nodeId);
     const { children, expanded, begats = 0, } = info;
     const isInitStatus = expanded === undefined;
 
-    if (!expandedAll && isInitStatus) {
+    if (!this.expandedAll && isInitStatus) {
       info.nowVisible = info.realyVisible = children;
     }
 
-    const willNotCollapsed = expandedAll && isInitStatus;
+    const willNotCollapsed = this.expandedAll && isInitStatus;
     if (willNotCollapsed || expanded === true || begats == 0) {
       return;
     }
@@ -428,18 +423,16 @@ class TreeUtils {
 
 
   fetchNodeExtendInfoById (nodes: Array<RowData>,
-                           id2nodeExtendInfo: NodeId2ExtendInfo,
-                           expandedAll: boolean = false) {
+                           id2nodeExtendInfo: NodeId2ExtendInfo) {
     return (nodeId: string): NodeExtendInfo => {
-      return this.fetchNodeExtendInfo(nodeId, nodes, id2nodeExtendInfo, expandedAll);
+      return this.fetchNodeExtendInfo(nodeId, nodes, id2nodeExtendInfo);
     };
   }
 
   colapseNode (nodeId: string,
                nodes: Array<RowData>,
-               id2nodeExtendInfo: NodeId2ExtendInfo,
-               expandedAll: boolean = false): void {
-    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo, expandedAll);
+               id2nodeExtendInfo: NodeId2ExtendInfo): void {
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo);
 
     const info = fetchNodeInfo(nodeId);
     const { expanded, realyVisible = 0, begats = 0, } = info;
@@ -468,9 +461,9 @@ class TreeUtils {
 
 
     const { path, } = info;
-    const pathArray = [this.VirtualRoot,];
+    const pathArray = [ this.VirtualRoot, ];
     if (path) {
-      Array.prototype.push.apply(pathArray, path.split('/'));
+      Array.prototype.push.apply(pathArray, path.split(Seperator));
     }
 
     const len = pathArray.length;
@@ -481,23 +474,21 @@ class TreeUtils {
 
 
   generateRealTreeData (expandInfo: ExpandInfo): Array<RowData> {
-
-    const c = 0;
     if (this.version === this.oldVersion) {
       return this.oldTreeData;
     }
 
     this.oldVersion = this.version;
     const datas = this.treeData;
-    const { expandedAll, id2ExtendInfo, } = expandInfo;
-    const fetchNodeInfo = this.fetchNodeExtendInfoById(datas, id2ExtendInfo, expandedAll);
+    const { id2ExtendInfo, } = expandInfo;
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(datas, id2ExtendInfo);
     const { childrenIdx = [], nowVisible = 0, children = 0, begats = 0, } = fetchNodeInfo(this.VirtualRoot);
     if (nowVisible === 0) {
       return [];
     }
 
     if (this.oldVersion === isInit) {
-      return this.oldTreeData = expandedAll ? datas : this.fetchLevelOneChild(datas, childrenIdx);
+      return this.oldTreeData = this.expandedAll ? datas : this.fetchLevelOneChild(datas, childrenIdx);
     }
 
 
@@ -541,6 +532,34 @@ class TreeUtils {
     }
     return result;
   }
+
+  selectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
+    this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.Selected);
+  }
+
+  unSelectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
+
+    const { path, } = this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.UnSelected);
+    if (path) {
+      console.info();
+    }
+  }
+
+  updateSelectedStatus (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
+    selectInfo[ key ] = { type, };
+    const datas = this.treeData;
+    const { index, begats, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
+    const len = datas.length;
+    for (let i = index; i <= index + begats && i < len; i++) {
+      const { key, } = datas[ i ];
+      selectInfo[ key ] = { type, };
+    }
+    return datas[ index ];
+  }
+
+  static Selected: 1 = 1;
+  static UnSelected: 0 = 0;
+  static Half: 2 = 2;
 }
 
 

@@ -87,7 +87,6 @@ type TreeProps = {
 };
 
 type ExpandInfo = {
-  expandedAll: boolean,
   target: Object,
   id2ExtendInfo: NodeId2ExtendInfo,
 }
@@ -101,6 +100,7 @@ class KTree extends React.Component<any, any> {
   static defaultProps = {
     prefixCls: 'sv-tree',
     checkable: false,
+    defaultExpandAll: false,
     showIcon: false,
     openAnimation: animation,
   };
@@ -119,6 +119,7 @@ class KTree extends React.Component<any, any> {
       end,
       onExpand,
       utils,
+      onSelect,
     } = this.props;
 
     const classString = classNames({
@@ -126,11 +127,12 @@ class KTree extends React.Component<any, any> {
     }, className);
     if (data) {
       const out = {};
-      const rowData = utils.slice(data, start, end - start, out);
-      const nodes = utils.generateTreeNode(rowData);
-      const top = out.parentCount ? - out.parentCount * 17 : 0;
+      const { rows, parentCount, }  = utils.slice(data, start, end - start, out);
+      const nodes = utils.generateTreeNode(rows);
+      const top = parentCount * 17;
       const treeNodes = this.loopNode(nodes);
       return <RcTree {...this.props}
+                     onSelect={onSelect}
                      style={{ position: 'absolute', top: `${top}px`, }}
                      className={classString}
                      onExpand={onExpand}
@@ -187,7 +189,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   getExpandInfo (): ExpandInfo {
     let array: Array<string> = [];
     const { props, } = this;
-    const { expandedKeys = [], defaultExpandAll, } = props;
+    const { expandedKeys = [], } = props;
     if ('expandedKeys' in props) {
       array = expandedKeys;
     }
@@ -195,7 +197,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     array.forEach(key => {
       target[ key ] = true;
     });
-    return { target, expandedAll: defaultExpandAll === true, id2ExtendInfo: {}, };
+    return { target, id2ExtendInfo: {}, };
   }
 
   shouldComponentUpdate (nexProps: TreeProps, nextState: TreeState) {
@@ -209,9 +211,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   createTreeUtils (props: TreeProps) {
-    const { data, } = props;
+    const { data, defaultExpandAll = false, } = props;
     if (data) {
-      this.utils = new TreeUtils(data);
+      this.utils = new TreeUtils(data, defaultExpandAll);
     }
   }
 
@@ -234,6 +236,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (data) {
       this.realyDatas = this.utils.generateRealTreeData(expand);
       return <ThrottleTree {...this.props}
+                           onCheck={this.onCheck}
                            data={this.realyDatas}
                            showLine={showLine}
                            mutliple={checkable}
@@ -250,22 +253,30 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   }
 
+  onCheck = (_, event) => {
+    console.info('onselect');
+    const { node, checked, } = event;
+    const { props, } = node;
+    const { eventKey, } = props;
+    console.info(props, checked);
+  };
+
 
   onExpand = (expandedKeys: Array<string>, rowData: { expanded: boolean, node: Object, }) => {
-    const { onExpand, data = [], } = this.props;
+    const { onExpand, data = [], defaultExpandAll, } = this.props;
     const { expanded, node, } = rowData;
     const { expand, } = this.state;
 
 
     const noeKey = node.props.eventKey;
 
-    const { target, expandedAll, id2ExtendInfo, } = expand;
+    const { target, id2ExtendInfo, } = expand;
     if (expanded) {
-      this.utils.expandNode(noeKey, data, id2ExtendInfo, expandedAll);
+      this.utils.expandNode(noeKey, data, id2ExtendInfo);
     } else {
-      this.utils.colapseNode(noeKey, data, id2ExtendInfo, expandedAll);
+      this.utils.colapseNode(noeKey, data, id2ExtendInfo);
     }
-    if (expandedAll) {
+    if (defaultExpandAll) {
       if (!expanded) {
         target[ noeKey ] = true;
       } else {
