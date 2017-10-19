@@ -103,15 +103,15 @@ export default () => {
     { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
     { key: '4', title: '4', isLeaf: true, },
   ];
-  rowData.forEach((row: Object, i: number) => {
-    row.title = row.title + '-' + i;
-  });
+  // rowData.forEach((row: Object, i: number) => {
+  //   row.title = row.title + '-' + i;
+  // });
   return <Tree
     // defaultExpandAll
     // expandedKeys={[]}
     onExpand={onExpand}
     showLine
-    data={rowData}
+    data={bigTree}
     checkable
     onSelect={onSelect}
     onCheck={onCheck}

@@ -108,7 +108,10 @@ class KTree extends React.Component<any, any> {
 
   utils: TreeUtils;
 
-
+  constructor (props){
+    super(props);
+    console.info('a');
+  }
   render () {
     const {
       prefixCls = Tree.defaultProps.prefixCls,
@@ -130,7 +133,7 @@ class KTree extends React.Component<any, any> {
       const out = {};
       const { rows, parentCount, } = utils.slice(data, start, end - start, out);
       const nodes = utils.generateTreeNode(rows);
-      const top = parentCount * 17;
+      const top = -parentCount * 17;
       const treeNodes = this.loopNode(nodes);
       return <RcTree {...this.props}
                      onSelect={onSelect}
@@ -184,7 +187,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.state = {
       expandedKeys,
       expand,
-      selectedInfo: { checked: {}, value: {}, },
+      selectedInfo: {
+        checked: {},
+        value: {},
+        halfchecked: {},
+      },
     };
   }
 
@@ -237,22 +244,28 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }, className);
     const { children, } = this.props;
     const { expand, expandedKeys, selectedInfo, } = this.state;
-    const {checked,} = selectedInfo;
+    const { checked, halfchecked, } = selectedInfo;
     if (data) {
+      console.info('half', Object.keys(halfchecked));
+
       this.realyDatas = this.utils.generateRealTreeData(expand);
       return <ThrottleTree {...this.props}
                            onCheck={this.onCheck}
                            data={this.realyDatas}
                            showLine={showLine}
-                           checkedKeys={Object.keys(checked)}
+                           checkedKeys={{
+                             checkedKeys: Object.keys(checked),
+                             halfCheckedKeys: Object.keys(halfchecked),
+                           }}
                            mutliple={checkable}
                            utils={this.utils}
                            expandedKeys={expandedKeys}
                            onExpand={this.onExpand}></ThrottleTree>;
     }
-
     return <RcTree {...this.props} className={classString}
                    onExpand={this.onExpand}
+                   checkedKeys={Object.keys(checked)}
+                   halfCheckedKeys={Object.keys(halfchecked)}
                    checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
       {children}
     </RcTree>;

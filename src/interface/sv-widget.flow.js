@@ -20,9 +20,11 @@ declare module 'sv-widget' {
   }
 
   declare type SelectType = 0 | 1 | 2;
-  declare type NodeSelectInfo = {
-    type: SelectType;
+  declare type NodeId2ExtendInfo = {} | { [string]: NodeExtendInfo } ;
+  declare type NodeId2Checked = { [string]: boolean };
+  declare type NodeId2SelectInfo = {
+    checked: NodeId2Checked,
+    halfchecked: NodeId2Checked,
+    value: NodeId2Checked,
   };
-  declare type NodeId2ExtendInfo = { [nodeId: string]: NodeExtendInfo } ;
-  declare type NodeId2SelectInfo = { [nodeId: string]: NodeSelectInfo } ;
 }
