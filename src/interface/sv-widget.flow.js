@@ -18,5 +18,11 @@ declare module 'sv-widget' {
     index: number,
     expanded?: boolean,
   }
+
+  declare type SelectType = 0 | 1 | 2;
+  declare type NodeSelectInfo = {
+    type: SelectType;
+  };
   declare type NodeId2ExtendInfo = { [nodeId: string]: NodeExtendInfo } ;
+  declare type NodeId2SelectInfo = { [nodeId: string]: NodeSelectInfo } ;
 }
