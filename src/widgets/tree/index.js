@@ -272,13 +272,15 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onCheck = (_, event) => {
-    console.info('onselect');
     const { node, checked, } = event;
     const { props, } = node;
     const { eventKey, } = props;
     const { expand, selectedInfo, } = this.state;
-    const check = checked ? this.utils.selectNode : this.utils.unSelectNode;
-    check.bind(this.utils)(eventKey, selectedInfo, expand);
+    const { halfchecked, value, } = selectedInfo;
+    const check = halfchecked[ eventKey ] === undefined && checked ? this.utils.selectNode : this.utils.unSelectNode;
+    check.bind(this.utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
+    console.info('expandInfo', expand.id2ExtendInfo);
+    console.info('halfChecked', selectedInfo.halfchecked);
     this.setState({ selectedInfo: { ...selectedInfo, }, });
   };
 

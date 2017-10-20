@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import type { NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, SelectType, } from 'sv-widget';
+import type { HalfType, NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, SelectType, } from 'sv-widget';
 
 const EmptyError = '结点不能为空',
   PathEqlKey = 'path不能等于key',
@@ -535,52 +535,108 @@ class TreeUtils {
   }
 
   selectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
-    this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.Selected);
+    const { path, } = this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.Selected);
+    const { checked, } = selectInfo;
+    if (path) {
+      const pathArray = path.split('/');
+      const len = pathArray.length;
+      const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+
+      for (let i = 0; i < len; i++) {
+        const key = pathArray[ i ];
+        if (checked[ key ] !== true) {
+          this.half(key, selectInfo, TreeUtils.Half, begats + 1);
+        }
+      }
+    }
   }
 
   unSelectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
-    const { halfchecked, } = selectInfo;
+    const { halfchecked, checked,} = selectInfo;
+    const halfCount = halfchecked[ key ] + 1;
     const { path, } = this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.UnSelected);
     if (path) {
       const pathArray = path.split('/');
       const len = pathArray.length;
       for (let i = 0; i < len; i++) {
         const key = pathArray[ i ];
-        this.check(key, selectInfo, TreeUtils.Half);
-        halfchecked[ key ] = true;
+        delete checked[key];
+        this.half(key, selectInfo, TreeUtils.UnHalf, halfCount);
       }
     }
   }
 
   updateSelectedStatus (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
 
-    this.check(key, selectInfo, type);
     const datas = this.treeData;
     const { index, begats, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
     const len = datas.length;
     for (let i = index; i <= index + begats && i < len; i++) {
       const { key, } = datas[ i ];
+      const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
       this.check(key, selectInfo, type);
+      switch (type) {
+        case TreeUtils.Selected:
+          this.half(key, selectInfo, TreeUtils.Half, begats);
+          break;
+        case TreeUtils.UnSelected:
+          this.half(key, selectInfo, TreeUtils.UnHalf, begats);
+          break;
+        default:
+
+      }
     }
     return datas[ index ];
   }
 
   check (key: string, selectInfo: NodeId2SelectInfo, type: SelectType) {
-    const { checked, value, halfchecked,} = selectInfo;
+    const { checked, value, } = selectInfo;
+
     switch (type) {
       case TreeUtils.Selected:
         checked[ key ] = true;
         value[ key ] = true;
         break;
       case TreeUtils.UnSelected:
-        delete halfchecked[ key ];
         delete checked[ key ];
         delete value[ key ];
         break;
-      case TreeUtils.Half:
-        halfchecked[ key ] = true;
-        delete checked[ key ];
+      default:
+    }
+  }
+
+  half (key: string, selectInfo: NodeId2SelectInfo, type: HalfType, begats: number) {
+    if(begats === 0){
+      return;
+    }
+    const { value, halfchecked, checked,} = selectInfo;
+
+    switch (type) {
+
+
+      case TreeUtils.Half: {
+
+        if (halfchecked[ key ] === undefined) {
+          halfchecked[ key ] = 0;
+        }
+        halfchecked[ key ] = halfchecked[ key ] + begats;
         break;
+
+      }
+      case TreeUtils.UnHalf: {
+        if (halfchecked[ key ] === undefined) {
+          halfchecked[ key ] = 0;
+        }
+        halfchecked[ key ] = halfchecked[ key ] - begats;
+
+        if (halfchecked[ key ] <= 0) {
+          delete halfchecked[ key ];
+          delete checked[ key ];
+          delete value[ key ];
+        }
+        break;
+
+      }
       default:
     }
   }
@@ -588,6 +644,7 @@ class TreeUtils {
   static Selected: 1 = 1;
   static UnSelected: 0 = 0;
   static Half: 2 = 2;
+  static UnHalf: 3 = 3;
 }
 
 
