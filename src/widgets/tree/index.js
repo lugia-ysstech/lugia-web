@@ -108,10 +108,11 @@ class KTree extends React.Component<any, any> {
 
   utils: TreeUtils;
 
-  constructor (props){
+  constructor (props) {
     super(props);
     console.info('a');
   }
+
   render () {
     const {
       prefixCls = Tree.defaultProps.prefixCls,
@@ -253,10 +254,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
                            onCheck={this.onCheck}
                            data={this.realyDatas}
                            showLine={showLine}
-                           checkedKeys={{
-                             checkedKeys: Object.keys(checked),
-                             halfCheckedKeys: Object.keys(halfchecked),
-                           }}
+                           checkedKeys={Object.keys(checked)}
+                           halfCheckedKeys={Object.keys(halfchecked)}
                            mutliple={checkable}
                            utils={this.utils}
                            expandedKeys={expandedKeys}

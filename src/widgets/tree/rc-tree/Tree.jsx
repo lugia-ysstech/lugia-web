@@ -88,10 +88,11 @@ class Tree extends React.Component {
   constructor (props) {
     super(props);
     console.info('tree init');
+    const { expandedKeys, checkedKeys, halfCheckedKeys, } = props;
     this.state = {
-      expandedKeys: this.props.expandedKeys,
-      checkedKeys: this.props.checkedKeys.checkedKeys,
-      halfCheckedKeys: this.props.checkedKeys.halfCheckedKeys,
+      expandedKeys,
+      checkedKeys,
+      halfCheckedKeys,
       selectedKeys: this.calcSelectedKeys(props),
       dragNodesKeys: '',
       dragOverNodeKey: '',
@@ -116,12 +117,9 @@ class Tree extends React.Component {
     if (expandedKeys) {
       newState.expandedKeys = expandedKeys;
     }
-
-    const checkedKeys = nextProps.checkedKeys;
-    if (checkedKeys) {
-      newState.checkedKeys = checkedKeys.checkedKeys;
-      newState.halfCheckedKeys = checkedKeys.halfCheckedKeys;
-    }
+    const { checkedKeys = {}, halfCheckedKeys = [], } = nextProps;
+    newState.checkedKeys = checkedKeys;
+    newState.halfCheckedKeys = halfCheckedKeys;
 
     const selectedKeys = nextProps.selectedKeys !== props.selectedKeys ?
       this.calcSelectedKeys(nextProps, true) : undefined;
