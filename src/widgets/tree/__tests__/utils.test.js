@@ -2202,19 +2202,18 @@ describe('utils', () => {
     const expandedAll = false;
     const utils = new TreeUtils(datas, expandedAll);
     utils.selectNode('1.3.2.1', selectedInfo, nodeExpandInfo);
-console.info('a', selectedInfo);
     exp(selectedInfo).to.be.eql({
       halfchecked: {
         [getKey('1')]: 1,
         [getKey('1.3')]: 1,
         [getKey('1.3.2')]: 1,
+        [getKey('1.3.2.1')]: 1,
       }, checked: {
         [getKey('1.3.2.1')]: true,
       }, value: {
         [getKey('1.3.2.1')]: true,
       },
     });
-    console.info('b', selectedInfo);
 
     utils.unSelectNode('1.3.2.1', selectedInfo, nodeExpandInfo);
 
@@ -2230,12 +2229,11 @@ console.info('a', selectedInfo);
     const expandedAll = false;
     const utils = new TreeUtils(datas, expandedAll);
     utils.selectNode('1.3.2', selectedInfo, nodeExpandInfo);
-
     exp(selectedInfo).to.be.eql({
       halfchecked: {
         [getKey('1')]: 3,
         [getKey('1.3')]: 3,
-        [getKey('1.3.2')]: 2,
+        [getKey('1.3.2')]: 3,
       }, checked: {
         [getKey('1.3.2')]: true,
         [getKey('1.3.2.1')]: true,
@@ -2263,13 +2261,12 @@ console.info('a', selectedInfo);
     utils.selectNode('1.3.2', selectedInfo, nodeExpandInfo);
 
     utils.unSelectNode('1.3.2.1', selectedInfo, nodeExpandInfo);
-    console.info(selectedInfo);
 
     exp(selectedInfo).to.be.eql({
       halfchecked: {
         [getKey('1')]: 2,
         [getKey('1.3')]: 2,
-        [getKey('1.3.2')]: 1,
+        [getKey('1.3.2')]: 2,
       },
       checked: {
         [getKey('1.3.2.2')]: true,
@@ -2280,6 +2277,115 @@ console.info('a', selectedInfo);
         [getKey('1.3.2.2')]: true,
       },
     });
+
+    utils.unSelectNode('1.3.2.2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.3')]: 1,
+        [getKey('1.3.2')]: 1,
+      },
+      checked: {},
+      value: {
+        [getKey('1.3.2')]: true,
+      },
+    });
+
+  });
+  it('selectNode key: 1.3.2.1 unSelectNode Key: 1.3.2', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectNode('1.3.2.1', selectedInfo, nodeExpandInfo);
+
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.3')]: 1,
+        [getKey('1.3.2')]: 1,
+        [getKey('1.3.2.1')]: 1,
+      },
+      checked: {
+        [getKey('1.3.2.1')]: true,
+
+      },
+      value: {
+        [getKey('1.3.2.1')]: true,
+      },
+    });
+
+    utils.unSelectNode('1.3.2', selectedInfo, nodeExpandInfo);
+
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {},
+      checked: {},
+      value: {},
+    });
+
+
+  });
+  it('selectNode key: 1.3.1.2  1.3.1.1 unSelectNode Key: 1.3.1.1', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectNode('1.3.1.1', selectedInfo, nodeExpandInfo);
+
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.3')]: 1,
+        [getKey('1.3.1')]: 1,
+        [getKey('1.3.1.1')]: 1,
+      },
+      checked: {
+        [getKey('1.3.1.1')]: true,
+
+      },
+      value: {
+        [getKey('1.3.1.1')]: true,
+      },
+    });
+    utils.selectNode('1.3.1.2', selectedInfo, nodeExpandInfo);
+
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 2,
+        [getKey('1.3')]: 2,
+        [getKey('1.3.1')]: 2,
+        [getKey('1.3.1.1')]: 1,
+        [getKey('1.3.1.2')]: 1,
+      },
+      checked: {
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+
+      },
+      value: {
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+      },
+    });
+    utils.unSelectNode('1.3.1.2', selectedInfo, nodeExpandInfo);
+
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.3')]: 1,
+        [getKey('1.3.1')]: 1,
+        [getKey('1.3.1.1')]: 1,
+      },
+      checked: {
+        [getKey('1.3.1.1')]: true,
+
+      },
+      value: {
+        [getKey('1.3.1.1')]: true,
+      },
+    });
+
+
   });
 
 

@@ -111,7 +111,7 @@ export default () => {
     // expandedKeys={[]}
     onExpand={onExpand}
     showLine
-    data={bigTree}
+    data={rowData}
     checkable
     onSelect={onSelect}
     onCheck={onCheck}

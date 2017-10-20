@@ -19,12 +19,14 @@ declare module 'sv-widget' {
     expanded?: boolean,
   }
 
-  declare type SelectType = 0 | 1 | 2;
+  declare type SelectType = 0 | 1 | 4 ;
+  declare type HalfType = 2 | 3;
   declare type NodeId2ExtendInfo = {} | { [string]: NodeExtendInfo } ;
   declare type NodeId2Checked = { [string]: boolean };
+  declare type NodeId2Half = { [string]: number };
   declare type NodeId2SelectInfo = {
     checked: NodeId2Checked,
-    halfchecked: NodeId2Checked,
+    halfchecked: NodeId2Half,
     value: NodeId2Checked,
   };
 }

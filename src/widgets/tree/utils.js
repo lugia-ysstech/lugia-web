@@ -552,15 +552,19 @@ class TreeUtils {
   }
 
   unSelectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
-    const { halfchecked, checked,} = selectInfo;
-    const halfCount = halfchecked[ key ] + 1;
+    const { halfchecked, checked, } = selectInfo;
+    const childHalfCount = halfchecked[ key ];
+    const { index, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+    const {isLeaf,} =  this.treeData[index];
+    const halfCount = (!isLeaf && childHalfCount ? childHalfCount : 0) + 1;
+
     const { path, } = this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.UnSelected);
     if (path) {
       const pathArray = path.split('/');
       const len = pathArray.length;
       for (let i = 0; i < len; i++) {
         const key = pathArray[ i ];
-        delete checked[key];
+        delete checked[ key ];
         this.half(key, selectInfo, TreeUtils.UnHalf, halfCount);
       }
     }
@@ -571,9 +575,8 @@ class TreeUtils {
     const datas = this.treeData;
     const { index, begats, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
     const len = datas.length;
-    for (let i = index; i <= index + begats && i < len; i++) {
-      const { key, } = datas[ i ];
-      const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
+
+    const process = (key: string, begats: number) => {
       this.check(key, selectInfo, type);
       switch (type) {
         case TreeUtils.Selected:
@@ -585,6 +588,15 @@ class TreeUtils {
         default:
 
       }
+    };
+
+    const { key: theKey, } = datas[ index ];
+    const { begats: nowBegats = 0, } = this.fetchNodeExtendInfo(theKey, datas, id2nodeExtendInfo);
+    process(key, nowBegats + 1);
+    for (let i = index + 1; i <= index + begats && i < len; i++) {
+      const { key, } = datas[ i ];
+      const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
+      process(key, begats);
     }
     return datas[ index ];
   }
@@ -606,10 +618,14 @@ class TreeUtils {
   }
 
   half (key: string, selectInfo: NodeId2SelectInfo, type: HalfType, begats: number) {
-    if(begats === 0){
+    const { value, halfchecked, checked, } = selectInfo;
+
+    if (begats === 0) {
+      if(halfchecked[ key ]){
+        delete halfchecked[ key ];
+      }
       return;
     }
-    const { value, halfchecked, checked,} = selectInfo;
 
     switch (type) {
 
@@ -635,7 +651,6 @@ class TreeUtils {
           delete value[ key ];
         }
         break;
-
       }
       default:
     }
