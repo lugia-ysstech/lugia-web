@@ -10,13 +10,13 @@ const { expect: exp, } = chai;
 
 describe('utils', () => {
 
-  const children1D2 = [ 3, 4, ];
-  const children1D2D2 = [ 5, 8, ];
-  const children1D3 = [ 10, 13, 16, ];
-  const children2D1D2 = [ 21, ];
-  const childrenRoot = [ 0, 17, 27, 30, ];
-  const children1 = [ 1, 2, 9, ];
-  const children2 = [ 18, 22, ];
+  const children1D2 = [3, 4,];
+  const children1D2D2 = [5, 8,];
+  const children1D3 = [10, 13, 16,];
+  const children2D1D2 = [21,];
+  const childrenRoot = [0, 17, 27, 30,];
+  const children1 = [1, 2, 9,];
+  const children2 = [18, 22,];
 
   const datas = [
     { key: '1', title: '1', },
@@ -102,22 +102,22 @@ describe('utils', () => {
   it('checkTree is rowData wrong', () => {
     const mock = mockObject.create(utils);
     const isRightTreeRowData = mock.mockFunction('isRightTreeRowData');
-    const errors = [ '1', '2', '3', ];
+    const errors = ['1', '2', '3',];
     isRightTreeRowData.returned(errors[ 0 ]);
     isRightTreeRowData.returned(errors[ 1 ]);
     isRightTreeRowData.returned(errors[ 2 ]);
-    exp(utils.checkTree([ {}, {}, {}, ])).to.be.eql(errors.map(err => `{}==>${err}`));
+    exp(utils.checkTree([{}, {}, {},])).to.be.eql(errors.map(err => `{}==>${err}`));
     isRightTreeRowData.reset();
   });
 
   it('checkTree is right', () => {
     const mock = mockObject.create(utils);
     const isRightTreeRowData = mock.mockFunction('isRightTreeRowData');
-    const errors = [ '', '', '', ];
+    const errors = ['', '', '',];
     isRightTreeRowData.returned(errors[ 0 ]);
     isRightTreeRowData.returned(errors[ 1 ]);
     isRightTreeRowData.returned(errors[ 2 ]);
-    exp(utils.checkTree([ {}, {}, {}, ])).to.be.eql([]);
+    exp(utils.checkTree([{}, {}, {},])).to.be.eql([]);
     isRightTreeRowData.reset();
   });
 
@@ -173,10 +173,10 @@ describe('utils', () => {
   const pathIsError = ({ key, }) => `${key}结点path信息错误!`;
 
   it('isRightLevel pid level before level ', () => {
-    const errorNodes = [ { key: '1.1', pid: '2', path: '1/7', },
+    const errorNodes = [{ key: '1.1', pid: '2', path: '1/7', },
       { key: '1.2', pid: '2', path: '1/7', },
       { key: '1.3', pid: '2', path: '1/7', },
-      { key: '1.4', pid: '2', path: '1/7', }, ];
+      { key: '1.4', pid: '2', path: '1/7', },];
     const datas = [
       { key: '1', },
       { key: '2', pid: '1', path: '1', },
@@ -193,7 +193,7 @@ describe('utils', () => {
 
     const errorNodes = [
       { key: '1.1.1', pid: '1.1', path: '1', },
-      { key: '1.1.2', pid: '1.1', path: '1', }, ];
+      { key: '1.1.2', pid: '1.1', path: '1', },];
     const datas = [
       { key: '1', },
       { key: '1.1', pid: '1', path: '1', },
@@ -208,11 +208,11 @@ describe('utils', () => {
   });
 
   it('isRightLevel pid level after level but not join, is after "3"', () => {
-    const errorNodes = [ { key: '1.1', pid: '2', path: '1/2', },
+    const errorNodes = [{ key: '1.1', pid: '2', path: '1/2', },
       { key: '1.2', pid: '2', path: '1/2', },
 
       { key: '1.3', pid: '2', path: '1/2', },
-      { key: '1.4', pid: '2', path: '1/2', }, ];
+      { key: '1.4', pid: '2', path: '1/2', },];
     const datas = [
       { key: '1', },
       { key: '2', pid: '1', path: '1', },
@@ -332,7 +332,7 @@ describe('utils', () => {
       { key: '3', title: '3', },
       { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
       { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, }, ]);
+      { key: '4', title: '4', isLeaf: true, },]);
   });
 
   it('generateRealTreeData expandedAll: true 折叠1.2 2', () => {
@@ -363,7 +363,7 @@ describe('utils', () => {
       { key: '3', title: '3', },
       { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
       { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, }, ]);
+      { key: '4', title: '4', isLeaf: true, },]);
   });
 
 
@@ -391,7 +391,7 @@ describe('utils', () => {
       { key: '3', title: '3', },
       { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
       { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, }, ]);
+      { key: '4', title: '4', isLeaf: true, },]);
   });
 
   it('generateRealTreeData expandedAll: false 展开 1 1.1  1.3 1.3.1 1.3.2 3', () => {
@@ -426,7 +426,7 @@ describe('utils', () => {
       { key: '3', title: '3', },
       { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
       { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, }, ]);
+      { key: '4', title: '4', isLeaf: true, },]);
   });
 
   it('generateRealTreeData empty', () => {
@@ -449,7 +449,7 @@ describe('utils', () => {
   it('generateTreeNode is tree', () => {
     const utils = new TreeUtils(datas, false);
     const actual = utils.generateTreeNode(datas);
-    const expectResult = [ {
+    const expectResult = [{
       key: '1',
       title: '1',
       children: [
@@ -488,7 +488,7 @@ describe('utils', () => {
                       path: '1/1.2/1.2.2/1.2.2.1',
                       isLeaf: true,
 
-                    }, ],
+                    },],
                 },
                 {
                   key: '1.2.2.2',
@@ -497,19 +497,19 @@ describe('utils', () => {
                   path: '1/1.2/1.2.2',
                   isLeaf: true,
 
-                }, ],
-            }, ],
+                },],
+            },],
         }, {
           key: '1.3',
           title: '1.3',
           pid: '1',
           path: '1',
-          children: [ {
+          children: [{
             key: '1.3.1',
             title: '1.3.1',
             pid: '1.3',
             path: '1/1.3',
-            children: [ {
+            children: [{
               key: '1.3.1.1',
               title: '1.3.1.1',
               pid: '1.3.1',
@@ -521,7 +521,7 @@ describe('utils', () => {
               pid: '1.3.1',
               path: '1/1.3/1.3.1',
               isLeaf: true,
-            }, ],
+            },],
           }, {
             key: '1.3.2',
             title: '1.3.2',
@@ -542,24 +542,24 @@ describe('utils', () => {
                 path: '1/1.3/1.3.2',
                 isLeaf: true,
 
-              }, ],
+              },],
           }, {
             key: '1.3.3',
             title: '1.3.3',
             pid: '1.3',
             path: '1/1.3',
             isLeaf: true,
-          }, ],
-        }, ],
+          },],
+        },],
     }, {
       key: '2',
       title: '2',
-      children: [ {
+      children: [{
         key: '2.1',
         title: '2.1',
         pid: '2',
         path: '2',
-        children: [ {
+        children: [{
           key: '2.1.1',
           title: '2.1.1',
           pid: '2.1',
@@ -571,28 +571,28 @@ describe('utils', () => {
           pid: '2.1',
           path: '2/2.1',
 
-          children: [ {
+          children: [{
             key: '2.1.2.1',
             title: '2.1.2.1',
             pid: '2.1.2',
             path: '2/2.1/2.1.2',
             isLeaf: true,
 
-          }, ],
-        }, ],
+          },],
+        },],
       }, {
         key: '2.2',
         title: '2.2',
         pid: '2',
         path: '2',
 
-        children: [ {
+        children: [{
           key: '2.2.1',
           title: '2.2.1',
           pid: '2.2',
           path: '2/2.2',
 
-          children: [ {
+          children: [{
             key: '2.2.1.1',
             title: '2.2.1.1',
             pid: '2.2.1',
@@ -605,19 +605,19 @@ describe('utils', () => {
             pid: '2.2.1',
             path: '2/2.2/2.2.1',
             isLeaf: true,
-          }, ],
+          },],
         }, {
           key: '2.2.2',
           title: '2.2.2',
           pid: '2.2',
           path: '2/2.2',
           isLeaf: true,
-        }, ],
-      }, ],
+        },],
+      },],
     }, {
       key: '3',
       title: '3',
-      children: [ {
+      children: [{
         key: '3.1',
         title: '3.1', pid: '3',
         path: '3',
@@ -628,10 +628,10 @@ describe('utils', () => {
         pid: '3',
         path: '3',
         isLeaf: true,
-      }, ],
+      },],
     }, {
       key: '4', title: '4', isLeaf: true,
-    }, ];
+    },];
 
     exp(actual).to.be.eql(expectResult);
   });
@@ -640,14 +640,14 @@ describe('utils', () => {
   it('getPathNodes 起始节点为1级结点', () => {
     const utils = new TreeUtils(datas, false);
     exp(utils.getPathNodes(datas, 1, {})).to.be.eql([
-      { key: '1', title: '1', }, ]);
+      { key: '1', title: '1', },]);
   });
 
   it('getPathNodes 起始结点非根结点 2 级', () => {
     const utils = new TreeUtils(datas, false);
     exp(utils.getPathNodes(datas, 3, {})).to.be.eql([
       { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', }, ]);
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },]);
   });
 
   it('getPathNodes 起始结点非根结点 3 级', () => {
@@ -656,7 +656,7 @@ describe('utils', () => {
       { key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', }, ]);
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },]);
   });
 
   it('slice empty', () => {
@@ -667,8 +667,8 @@ describe('utils', () => {
 
   it('getKeys', () => {
     const utils = new TreeUtils(datas, false);
-    const result = utils.getKeys([ { key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', }, ]);
-    exp(result).to.be.eql([ '1', '2', '3', ]);
+    const result = utils.getKeys([{ key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', },]);
+    exp(result).to.be.eql(['1', '2', '3',]);
   });
 
   it('fetchNodeExtendInfo will exisit', () => {
@@ -2193,7 +2193,7 @@ describe('utils', () => {
       { key: '0.0.2', title: '0.0.2', pid: '0.0', path: '0/0.0', },
       { key: '0.1', title: '0.1', pid: '0', path: '0', },
       { key: '1', title: '1', },
-      { key: '2', title: '2', }, ]);
+      { key: '2', title: '2', },]);
   });
 
   it('selectNode key: 1.3.2.1 unSelectNode Key: 1.3.2.1', () => {
@@ -2388,6 +2388,117 @@ describe('utils', () => {
 
   });
 
+  it('selectNode key: 1.2.2 unSelectNode Key: 1.2.2.1.1 & 1.2.2.1.2 & 1.2.2.1', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectNode('1.2.2', selectedInfo, nodeExpandInfo);
+
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 5,
+        [getKey('1.2')]: 5,
+        [getKey('1.2.2')]: 5,
+        [getKey('1.2.2.1')]: 3,
+      },
+      checked: {
+        [getKey('1.2.2')]: true,
+        [getKey('1.2.2.1')]: true,
+        [getKey('1.2.2.1.1')]: true,
+        [getKey('1.2.2.1.2')]: true,
+        [getKey('1.2.2.2')]: true,
+
+      },
+      value: {
+        [getKey('1.2.2')]: true,
+        [getKey('1.2.2.1')]: true,
+        [getKey('1.2.2.1.1')]: true,
+        [getKey('1.2.2.1.2')]: true,
+        [getKey('1.2.2.2')]: true,
+      },
+    });
+    utils.unSelectNode('1.2.2.1.1', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 4,
+        [getKey('1.2')]: 4,
+        [getKey('1.2.2')]: 4,
+        [getKey('1.2.2.1')]: 2,
+      },
+      checked: {
+        [getKey('1.2.2.2')]: true,
+        [getKey('1.2.2.1.2')]: true,
+
+      },
+      value: {
+        [getKey('1.2.2')]: true,
+        [getKey('1.2.2.1')]: true,
+        [getKey('1.2.2.1.2')]: true,
+        [getKey('1.2.2.2')]: true,
+      },
+    });
+    utils.unSelectNode('1.2.2.1.2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 3,
+        [getKey('1.2')]: 3,
+        [getKey('1.2.2')]: 3,
+        [getKey('1.2.2.1')]: 1,
+      },
+      checked: {
+        [getKey('1.2.2.2')]: true,
+
+      },
+      value: {
+        [getKey('1.2.2')]: true,
+        [getKey('1.2.2.1')]: true,
+        [getKey('1.2.2.2')]: true,
+      },
+    });
+
+    utils.unSelectNode('1.2.2.1', selectedInfo, nodeExpandInfo);
+    console.info(selectedInfo);
+
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 2,
+        [getKey('1.2')]: 2,
+        [getKey('1.2.2')]: 2,
+      },
+      checked: {
+        [getKey('1.2.2.2')]: true,
+
+      },
+      value: {
+        [getKey('1.2.2')]: true,
+        [getKey('1.2.2.2')]: true,
+      },
+    });
+
+  });
+  it('selectNode key: 1.2 unSelectNode Key: 1.2.2.2 &  1.2.2  & 1.2.1', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectNode('1.2', selectedInfo, nodeExpandInfo);
+    utils.unSelectNode('1.2.1', selectedInfo, nodeExpandInfo);
+    utils.unSelectNode('1.2.2.2', selectedInfo, nodeExpandInfo);
+    utils.unSelectNode('1.2.2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.2')]: 1,
+      },
+      checked: {},
+      value: {
+        [getKey('1.2')]: true,
+      },
+    });
+
+
+  });
 
   function getKey (key: string): string {
     return key;

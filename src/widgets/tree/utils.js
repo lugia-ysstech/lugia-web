@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import type { HalfType, NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, SelectType, } from 'sv-widget';
+import type { NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, SelectType, } from 'sv-widget';
 
 const EmptyError = '结点不能为空',
   PathEqlKey = 'path不能等于key',
@@ -159,10 +159,8 @@ class TreeUtils {
     eachRowDatas()((keys: Object, data: Object) => {
       const { pid, key, } = data;
       key2PidIndex[ key ] = index++;
-      if (notEmpty(pid)) {
-        if (!keys[ pid ]) {
-          result.push(levelIsError(data));
-        }
+      if (notEmpty(pid) && !keys[ pid ]) {
+        result.push(levelIsError(data));
       }
     });
 
@@ -179,7 +177,7 @@ class TreeUtils {
 
     const pathIsError = ({ key, }) => `${key}结点path信息错误!`;
     const isPathError = {};
-    datas.forEach((data: Object, index: number) => {
+    datas.forEach((data: Object) => {
       const { pid, path, key, } = data;
       if (pid) {
         const pidPathArray = fetchPidPath(pid);
@@ -278,9 +276,7 @@ class TreeUtils {
     if (path) {
       const pathArray = path.split(Seperator);
       for (let i = 0; i < pathArray.length; i++) {
-        const key = pathArray[ i ];
-        const { index, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
-        result.push(this.treeData[ index ]);
+        result.push(this.getRow(pathArray[ i ], id2nodeExtendInfo));
       }
     }
     return result;
@@ -535,131 +531,165 @@ class TreeUtils {
   }
 
   selectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
-    const { path, } = this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.Selected);
-    const { checked, } = selectInfo;
-    if (path) {
-      const pathArray = path.split('/');
-      const len = pathArray.length;
-      const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
 
-      for (let i = 0; i < len; i++) {
-        const key = pathArray[ i ];
-        if (checked[ key ] !== true) {
-          this.half(key, selectInfo, TreeUtils.Half, begats + 1);
-        }
-      }
-    }
+    const operType = TreeUtils.Selected;
+    const { path, } = this.updateSelectedStatusForChildren(key, selectInfo, id2nodeExtendInfo, operType);
+
+    const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+    const maxHalfCount = begats + 1;
+
+    this.updateSelectedStatusForParent(path, selectInfo, maxHalfCount, operType);
+
   }
 
   unSelectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
-    const { halfchecked, checked, } = selectInfo;
-    const childHalfCount = halfchecked[ key ];
-    const { index, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
-    const {isLeaf,} =  this.treeData[index];
-    const halfCount = (!isLeaf && childHalfCount ? childHalfCount : 0) + 1;
 
-    const { path, } = this.updateSelectedStatus(key, selectInfo, id2nodeExtendInfo, TreeUtils.UnSelected);
+    const notLeaf = !this.isLeaf(key, id2nodeExtendInfo);
+    let halfCount = 1;
+
+    if (notLeaf) {
+      const { halfchecked, } = selectInfo;
+      const childHalfCount = halfchecked[ key ];
+      const onlyYourSelf = childHalfCount === 1;
+
+      if (onlyYourSelf) {
+        halfCount = 1;
+      } else {
+        const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+        const fullHalf = begats + 1;
+
+        halfCount = Math.min(childHalfCount + 1, fullHalf); // 加上自身
+
+        const notFullHalf = childHalfCount < fullHalf;
+        if (notFullHalf) {
+          // 非满结点 扣除自身
+          halfCount -= 1;
+        }
+      }
+    }
+
+    const operatorType = TreeUtils.UnSelected;
+    const { path, } = this.updateSelectedStatusForChildren(key, selectInfo, id2nodeExtendInfo, operatorType);
+    this.updateSelectedStatusForParent(path, selectInfo, halfCount, operatorType);
+  }
+
+  updateSelectedStatusForParent (path?: string, selectInfo: NodeId2SelectInfo, halfCount: number, operatorType: SelectType) {
+
     if (path) {
+
+      const { checked, } = selectInfo;
       const pathArray = path.split('/');
       const len = pathArray.length;
+
       for (let i = 0; i < len; i++) {
         const key = pathArray[ i ];
-        delete checked[ key ];
-        this.half(key, selectInfo, TreeUtils.UnHalf, halfCount);
+        switch (operatorType) {
+          case TreeUtils.Selected:
+            if (checked[ key ] !== true) {
+              this.halfCheckForParent(key, selectInfo, operatorType, halfCount);
+            }
+            break;
+          case TreeUtils.UnSelected:
+            delete checked[ key ];
+            this.halfCheckForParent(key, selectInfo, operatorType, halfCount);
+            break;
+          default:
+        }
       }
     }
   }
 
-  updateSelectedStatus (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
+
+  isLeaf (key: string, id2nodeExtendInfo: NodeId2ExtendInfo) {
+    const { isLeaf = false, } = this.getRow(key, id2nodeExtendInfo);
+    return isLeaf;
+  }
+
+  getRow (key: string, id2nodeExtendInfo: NodeId2ExtendInfo) {
+    const { index, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+    return this.treeData[ index ];
+  }
+
+  updateSelectedStatusForChildren (targetKey: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
 
     const datas = this.treeData;
-    const { index, begats, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
+    const { index: targetNode, begats, } = this.fetchNodeExtendInfo(targetKey, datas, id2nodeExtendInfo);
     const len = datas.length;
+    const range = targetNode + begats;
 
-    const process = (key: string, begats: number) => {
-      this.check(key, selectInfo, type);
+    for (let i = targetNode; i <= range && i < len; i++) {
+      const row = datas[ i ];
+      const { key, } = row;
       switch (type) {
-        case TreeUtils.Selected:
-          this.half(key, selectInfo, TreeUtils.Half, begats);
+        case TreeUtils.Selected: {
+          const { checked, value, } = selectInfo;
+          checked[ key ] = true;
+          value[ key ] = true;
+
+          const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
+          const isTargetNode = i === targetNode;
+          const { isLeaf = false, } = row;
+          const childHalfCount = (isTargetNode || isLeaf === false) ? begats + 1 : begats;
+
+          if (childHalfCount !== 0) {
+            const { halfchecked, } = selectInfo;
+            halfchecked[ key ] = childHalfCount;
+          }
           break;
+        }
+
         case TreeUtils.UnSelected:
-          this.half(key, selectInfo, TreeUtils.UnHalf, begats);
+          this.clearSelectInfo(key, selectInfo);
           break;
         default:
-
       }
-    };
 
-    const { key: theKey, } = datas[ index ];
-    const { begats: nowBegats = 0, } = this.fetchNodeExtendInfo(theKey, datas, id2nodeExtendInfo);
-    process(key, nowBegats + 1);
-    for (let i = index + 1; i <= index + begats && i < len; i++) {
-      const { key, } = datas[ i ];
-      const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
-      process(key, begats);
     }
-    return datas[ index ];
+    return datas[ targetNode ];
   }
 
-  check (key: string, selectInfo: NodeId2SelectInfo, type: SelectType) {
-    const { checked, value, } = selectInfo;
-
-    switch (type) {
-      case TreeUtils.Selected:
-        checked[ key ] = true;
-        value[ key ] = true;
-        break;
-      case TreeUtils.UnSelected:
-        delete checked[ key ];
-        delete value[ key ];
-        break;
-      default:
-    }
-  }
-
-  half (key: string, selectInfo: NodeId2SelectInfo, type: HalfType, begats: number) {
-    const { value, halfchecked, checked, } = selectInfo;
-
-    if (begats === 0) {
-      if(halfchecked[ key ]){
-        delete halfchecked[ key ];
-      }
+  halfCheckForParent (key: string, selectInfo: NodeId2SelectInfo, type: SelectType, childHalf: number) {
+    if (childHalf === 0) {
+      this.clearSelectInfo(key, selectInfo);
       return;
     }
 
+    const { halfchecked, } = selectInfo;
+    const notHalfCheck = halfchecked[ key ] === undefined;
+
     switch (type) {
-
-
-      case TreeUtils.Half: {
-
-        if (halfchecked[ key ] === undefined) {
+      case TreeUtils.Selected: {
+        if (notHalfCheck) {
           halfchecked[ key ] = 0;
         }
-        halfchecked[ key ] = halfchecked[ key ] + begats;
+        halfchecked[ key ] = halfchecked[ key ] + childHalf;
         break;
-
       }
-      case TreeUtils.UnHalf: {
-        if (halfchecked[ key ] === undefined) {
-          halfchecked[ key ] = 0;
-        }
-        halfchecked[ key ] = halfchecked[ key ] - begats;
+      case TreeUtils.UnSelected: {
 
-        if (halfchecked[ key ] <= 0) {
-          delete halfchecked[ key ];
-          delete checked[ key ];
-          delete value[ key ];
+        const isHalfCheck = halfchecked[ key ] !== undefined;
+        if (isHalfCheck) {
+          halfchecked[ key ] = halfchecked[ key ] - childHalf;
+        }
+
+        if (notHalfCheck || halfchecked[ key ] <= 0) {
+          this.clearSelectInfo(key, selectInfo);
         }
         break;
       }
       default:
     }
+  }
+
+  clearSelectInfo (key: string, selectInfo: NodeId2SelectInfo) {
+    const { value, halfchecked, checked, } = selectInfo;
+    delete halfchecked[ key ];
+    delete checked[ key ];
+    delete value[ key ];
   }
 
   static Selected: 1 = 1;
   static UnSelected: 0 = 0;
-  static Half: 2 = 2;
-  static UnHalf: 3 = 3;
 }
 
 
