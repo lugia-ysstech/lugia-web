@@ -247,8 +247,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { expand, expandedKeys, selectedInfo, } = this.state;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
-      console.info('halfCheckForParent', Object.keys(halfchecked));
-
       this.realyDatas = this.utils.generateRealTreeData(expand);
       return <ThrottleTree {...this.props}
                            onCheck={this.onCheck}
@@ -279,9 +277,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { halfchecked, value, } = selectedInfo;
     const check = halfchecked[ eventKey ] === undefined && checked ? this.utils.selectNode : this.utils.unSelectNode;
     check.bind(this.utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
-    console.info('expandInfo', expand.id2ExtendInfo);
-    console.info('halfChecked', selectedInfo.halfchecked);
-    console.info('halfChecked', selectedInfo.value);
+    console.info('value', Object.keys(value));
     this.setState({ selectedInfo: { ...selectedInfo, }, });
   };
 
