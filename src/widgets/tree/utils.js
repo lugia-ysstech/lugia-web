@@ -58,6 +58,7 @@ class TreeUtils {
 
   Error: Object;
   version: number;
+  query: string;
   oldTreeData: Array<RowData>;
   treeData: Array<RowData>;
   oldVersion: number;
@@ -69,6 +70,7 @@ class TreeUtils {
     this.oldVersion = isInit;
     this.oldTreeData = treeData;
     this.treeData = treeData;
+    this.query = '';
     this.expandedAll = expandedAll;
     return this;
   }
@@ -283,13 +285,13 @@ class TreeUtils {
   }
 
   getKeys (nodes: Array<RowData>): Array<string> {
-    const result = [];
-    nodes && nodes.forEach((node: RowData) => {
+    if (!nodes) {
+      return [];
+    }
+    return nodes.map((node: RowData) => {
       const { key, } = node;
-      result.push(key);
+      return key;
     });
-    return result;
-
   }
 
   fetchNodeExtendInfo (nodeId: string,
@@ -470,8 +472,9 @@ class TreeUtils {
   }
 
 
-  generateRealTreeData (expandInfo: ExpandInfo): Array<RowData> {
-    if (this.version === this.oldVersion) {
+  generateRealTreeData (expandInfo: ExpandInfo, query?: string): Array<RowData> {
+    const noChanged = this.version === this.oldVersion;
+    if (noChanged) {
       return this.oldTreeData;
     }
 
@@ -479,19 +482,25 @@ class TreeUtils {
     const datas = this.treeData;
     const { id2ExtendInfo, } = expandInfo;
     const fetchNodeInfo = this.fetchNodeExtendInfoById(datas, id2ExtendInfo);
-    const { childrenIdx = [], nowVisible = 0, children = 0, begats = 0, } = fetchNodeInfo(this.VirtualRoot);
+    const nodeInfo = fetchNodeInfo(this.VirtualRoot);
+    const { nowVisible, } = nodeInfo;
+
     if (nowVisible === 0) {
       return [];
     }
+
+    const { childrenIdx = [], } = nodeInfo;
 
     if (this.oldVersion === isInit) {
       return this.oldTreeData = this.expandedAll ? datas : this.fetchLevelOneChild(datas, childrenIdx);
     }
 
+    const { children = 0, begats = 0, } = nodeInfo;
 
     if (nowVisible === children) {
       return this.oldTreeData = this.fetchLevelOneChild(datas, childrenIdx);
     }
+
     if (nowVisible === begats) {
       return this.oldTreeData = datas;
     }
@@ -500,16 +509,13 @@ class TreeUtils {
     for (let i = 0; i < totalLen; i++) {
       const row = datas[ i ];
       result.push(row);
-
       const { key, } = row;
       const { childrenIdx = [], nowVisible = 0, children = 0, begats = 0, } = fetchNodeInfo(key);
-
       if (nowVisible === 0) {
         i += begats;
       } else {
         if (nowVisible === children) {
           Array.prototype.push.apply(result, this.fetchLevelOneChild(datas, childrenIdx));
-
           i += begats;
         } else if (nowVisible === begats) {
           const start = i + 1;
