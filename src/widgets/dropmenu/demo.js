@@ -7,7 +7,7 @@
 import * as React from 'react';
 import DropMenu from './';
 import Menu from '../menu';
-
+const a  = '';
 const { MenuItem, } = Menu;
 const menus = <Menu>
   <MenuItem key="1">1</MenuItem>
