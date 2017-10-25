@@ -222,8 +222,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
       const scrolling = () => {
         const value = this.computeValue([x, y,]);
-        this.setState({ value, });
-        onChange && onChange(value);
+        if(value !== this.state.value){
+          this.setState({ value, });
+          onChange && onChange(value);
+        }
       };
 
       // if (!this.drag) {
