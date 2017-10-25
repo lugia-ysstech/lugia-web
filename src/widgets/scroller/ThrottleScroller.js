@@ -56,7 +56,6 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
     constructor (props: any) {
       super(props);
-      this.oldData = props.data;
       this.state = {
         start: 0,
       };
@@ -64,18 +63,18 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
     container: Object;
     scroller: ?Object;
-    oldData: Object;
+    version: number;
+
     render () {
-      const { data, children, } = this.props;
+      const { data, children, version, } = this.props;
       const viewSize = this.fetchViewHeigh();
       let start = 0, end = 0, totalSize = 0, needScroller = false;
       const target = data ? data : children;
       if (target && target.length > 0) {
         ({ totalSize, needScroller, start, end, } = this.computeItems(target,
-          this.oldData !== data ? 0 : this.state.start));
+          this.props.start != undefined ? this.props.start : this.state.start));
       }
-      this.oldData = data;
-
+      this.version = version;
       const menus = <Target {...this.props} start={start} end={end}/>;
 
       if (needScroller) {
@@ -106,7 +105,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
     onScroller = (value: number) => {
       const { onScroller, } = this.props;
       const start = Math.floor(value / menuItemHeight);
-      onScroller ? onScroller(start) : this.setState({ start, });
+      onScroller ? onScroller(start, this.version) : this.setState({ start, });
     };
 
     computeCanSeeMenuItemCount (): number {

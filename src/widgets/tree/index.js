@@ -7,6 +7,7 @@
 import type { NodeId2ExtendInfo, NodeId2SelectInfo, } from 'sv-widget';
 import animation from '../common/openAnimation';
 import * as React from 'react';
+import { updateVersion, } from './version';
 import RcTree, { TreeNode, } from './rc-tree';
 import classNames from 'classnames';
 import ThemeProvider from '../common/ThemeProvider';
@@ -18,7 +19,6 @@ import TreeUtils from './utils';
 
 const defaultHeight = 250;
 const menuItemHeight = 18;
-
 type RowData = {
   key: string,
   title: string,
@@ -92,6 +92,7 @@ type ExpandInfo = {
   id2ExtendInfo: NodeId2ExtendInfo,
 }
 type TreeState = {
+  start: number,
   expand: ExpandInfo,
   selectedInfo: NodeId2SelectInfo,
   expandedKeys: Array<string>,
@@ -111,7 +112,6 @@ class KTree extends React.Component<any, any> {
 
   constructor (props) {
     super(props);
-    console.info('a');
   }
 
   render () {
@@ -132,7 +132,6 @@ class KTree extends React.Component<any, any> {
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     if (data) {
-      console.info('start', start);
       const out = {};
       const { rows, parentCount, } = utils.slice(data, start, end - start, out);
       const nodes = utils.generateTreeNode(rows);
@@ -181,11 +180,17 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   static TreeNode: TreeNode;
   utils: TreeUtils;
+  version: number;
 
   constructor (props: TreeProps) {
     super(props);
+    this.version = 0;
     this.createTreeUtils(props);
     this.loadData(props, true);
+  }
+
+  updateVersion () {
+    updateVersion.call(this);
   }
 
   loadData (props, init: boolean = false) {
@@ -195,6 +200,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     if (init) {
       this.state = {
+        start: 0,
         expandedKeys,
         expand,
         selectedInfo: {
@@ -204,7 +210,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
         },
       };
     } else {
-      this.setState({ expandedKeys, expand, });
+      this.setState({
+        start: 0,
+        expandedKeys, expand,
+      }, () => {
+        this.updateVersion();
+      });
     }
   }
 
@@ -230,6 +241,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
     const needUpdate = dataChanged
       || this.props.query !== nexProps.query
+      || this.state.start !== nextState.start
       || nextState.expand !== this.state.expand
       || nextState.selectedInfo !== this.state.selectedInfo;
     return needUpdate;
@@ -257,11 +269,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     const { children, query, } = this.props;
-    const { expand, expandedKeys, selectedInfo, } = this.state;
+    const { expand, expandedKeys, selectedInfo, start, } = this.state;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
       this.realyDatas = this.utils.search(expand, query);
       return <ThrottleTree {...this.props}
+                           start={start}
+                           version={this.version}
+                           onScroller={this.onScroller}
                            onCheck={this.onCheck}
                            data={this.realyDatas}
                            showLine={showLine}
@@ -282,6 +297,15 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   }
 
+  onScroller = (start: number, version: number) => {
+    if(version !== this.version){
+      return;
+    }
+    this.updateVersion();
+    this.setState({ start, });
+  };
+
+
   onCheck = (_, event) => {
     const { node, checked, } = event;
     const { props, } = node;
@@ -290,9 +314,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { halfchecked, value, checked: chk, } = selectedInfo;
     const check = halfchecked[ eventKey ] === undefined && checked ? this.utils.selectNode : this.utils.unSelectNode;
     check.bind(this.utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
-    console.info('halfchecked', Object.keys(halfchecked));
-    console.info('checked', Object.keys(chk));
-    console.info('value', Object.keys(value));
     this.setState({ selectedInfo: { ...selectedInfo, }, });
   };
 

@@ -5,7 +5,7 @@
  * @flow
  */
 import type { NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType, SelectType, } from 'sv-widget';
-
+import {updateVersion,} from './version';
 const EmptyError = '结点不能为空',
   PathEqlKey = 'path不能等于key',
   PidEqlKey = 'pid不能等于key',
@@ -77,10 +77,7 @@ class TreeUtils {
   }
 
   updateVersion (): void {
-    this.version++;
-    if (this.version >= Number.MAX_VALUE) {
-      this.version = 0;
-    }
+    updateVersion.call(this);
   }
 
   isRightTreeRowData (data: Object): string {
@@ -253,7 +250,7 @@ class TreeUtils {
     const result = rowDatas.slice(start, start + total);
     const root = result[ 0 ];
     if (!root) {
-      console.error('树形数据存在问题');
+      console.warn('树形数据存在问题');
       return empty;
     }
 
@@ -520,7 +517,6 @@ class TreeUtils {
       this.treeData = datas.reverse();
     }
     this.query = query;
-
     return this.oldTreeData = this.generateRealTreeData(expandInfo);
   }
 

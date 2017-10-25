@@ -183,7 +183,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   onDelItem = (key: string) => {
-    console.info('del', key);
     const { value, } = this.state;
     if (value && value[ key ]) {
       delete value[ key ];

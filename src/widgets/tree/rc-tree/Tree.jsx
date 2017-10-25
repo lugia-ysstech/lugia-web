@@ -87,7 +87,6 @@ class Tree extends React.Component {
 
   constructor (props) {
     super(props);
-    console.info('tree init');
     const { expandedKeys, checkedKeys, halfCheckedKeys, } = props;
     this.state = {
       expandedKeys,
