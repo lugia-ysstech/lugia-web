@@ -25,7 +25,7 @@ export default () => {
         pid: `${a}`,
         path: `${a}`,
       });
-      for (let c = 0; c < 5; c++) {
+      for (let c = 0; c < 20; c++) {
         const keyc = `${a}.${b}.${c}`;
         bigTree.push({
           key: keyc,
@@ -106,9 +106,10 @@ export default () => {
   // rowData.forEach((row: Object, i: number) => {
   //   row.title = row.title + '-' + i;
   // });
+  console.info(bigTree.length);
   return <Tree
-    // defaultExpandAll
-    // expandedKeys={[]}
+    // query="1.2.2.1"
+    // expandAll
     onExpand={onExpand}
     showLine
     data={rowData}

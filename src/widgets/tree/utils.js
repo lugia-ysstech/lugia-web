@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import type { NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, SelectType, } from 'sv-widget';
+import type { NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType, SelectType, } from 'sv-widget';
 
 const EmptyError = '结点不能为空',
   PathEqlKey = 'path不能等于key',
@@ -30,7 +30,6 @@ type RowData = {
 };
 
 type ExpandInfo = {
-  target: Object,
   id2ExtendInfo: NodeId2ExtendInfo,
 }
 
@@ -58,8 +57,9 @@ class TreeUtils {
 
   Error: Object;
   version: number;
-  query: string;
+  query: ?string;
   oldTreeData: Array<RowData>;
+  orignalData: Array<RowData>;
   treeData: Array<RowData>;
   oldVersion: number;
   expandedAll: boolean;
@@ -70,7 +70,8 @@ class TreeUtils {
     this.oldVersion = isInit;
     this.oldTreeData = treeData;
     this.treeData = treeData;
-    this.query = '';
+    this.orignalData = treeData;
+    this.query = null;
     this.expandedAll = expandedAll;
     return this;
   }
@@ -386,9 +387,8 @@ class TreeUtils {
    * @param expandedAll
    */
   expandNode (nodeId: string,
-              nodes: Array<RowData>,
               id2nodeExtendInfo: NodeId2ExtendInfo): void {
-
+    const nodes: Array<RowData> = this.treeData;
     const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo);
     const info = fetchNodeInfo(nodeId);
     const { children, expanded, begats = 0, } = info;
@@ -429,8 +429,8 @@ class TreeUtils {
   }
 
   colapseNode (nodeId: string,
-               nodes: Array<RowData>,
                id2nodeExtendInfo: NodeId2ExtendInfo): void {
+    const nodes: Array<RowData> = this.treeData;
     const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo);
 
     const info = fetchNodeInfo(nodeId);
@@ -472,14 +472,90 @@ class TreeUtils {
   }
 
 
-  generateRealTreeData (expandInfo: ExpandInfo, query?: string): Array<RowData> {
+  search (expandInfo: ExpandInfo, query: string, searchType: QueryType = 'include'): Array<RowData> {
+    const queryChanging = !Object.is(query, this.query);
+    const noChanged = this.version === this.oldVersion && !queryChanging;
+
+    if (noChanged) {
+      return this.oldTreeData;
+    }
+
+
+    if (queryChanging) {
+      this.updateVersion();
+      expandInfo.id2ExtendInfo = {};
+    }
+
+    const queryAll = query === '';
+    if (queryAll) {
+      this.treeData = this.orignalData;
+    } else if (queryChanging) {
+
+      const need: Object = {};
+      const containPath: Object = {};
+      const rowSet: Set<RowData> = new Set();
+      const len = this.orignalData.length - 1;
+
+      for (let i = len; i >= 0; i--) {
+        const row: RowData = this.orignalData[ i ];
+        const { title, key, path, } = row;
+        if (this.match(title, query, searchType)) {
+          if (path !== undefined && containPath[ path ] === undefined) {
+            const pathArray = path.split(Seperator);
+            containPath[ path ] = true;
+            const len = pathArray.length;
+            for (let i = 0; i < len; i++) {
+              const key = pathArray[ i ];
+              need[ key ] = true;
+            }
+          }
+          rowSet.add(row);
+        } else if (need[ key ] === true) {
+          rowSet.add(row);
+          delete need[ key ];
+        }
+      }
+
+      const datas = [...rowSet,];
+      this.treeData = datas.reverse();
+    }
+    this.query = query;
+
+    return this.oldTreeData = this.generateRealTreeData(expandInfo);
+  }
+
+  match (val: ?string, query: string, type: QueryType): boolean {
+    if (val === undefined || val === null) {
+      return false;
+    }
+    val += '';
+    switch (type) {
+      case 'start': {
+        return val.startsWith(query);
+      }
+      case 'end': {
+        return val.endsWith(query);
+      }
+      case 'include': {
+        return !!~val.indexOf(query);
+      }
+      case 'eql': {
+        return val === query;
+      }
+      default:
+        return false;
+    }
+  }
+
+
+  generateRealTreeData (expandInfo: ExpandInfo): Array<RowData> {
+    const datas = this.treeData;
     const noChanged = this.version === this.oldVersion;
     if (noChanged) {
       return this.oldTreeData;
     }
 
     this.oldVersion = this.version;
-    const datas = this.treeData;
     const { id2ExtendInfo, } = expandInfo;
     const fetchNodeInfo = this.fetchNodeExtendInfoById(datas, id2ExtendInfo);
     const nodeInfo = fetchNodeInfo(this.VirtualRoot);
@@ -490,10 +566,6 @@ class TreeUtils {
     }
 
     const { childrenIdx = [], } = nodeInfo;
-
-    if (this.oldVersion === isInit) {
-      return this.oldTreeData = this.expandedAll ? datas : this.fetchLevelOneChild(datas, childrenIdx);
-    }
 
     const { children = 0, begats = 0, } = nodeInfo;
 

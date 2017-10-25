@@ -31,6 +31,7 @@ type TreeProps = {
   getTheme: Function,
   start: number,
   end: number,
+  query: string,
   showLine?: boolean;
   className?: string;
   /** 是否支持多选 */
@@ -42,7 +43,7 @@ type TreeProps = {
   /** 是否支持选中 */
   checkable?: boolean;
   /** 默认展开所有树节点 */
-  defaultExpandAll?: boolean;
+  expandAll?: boolean;
   /** 默认展开指定的树节点 */
   defaultExpandedKeys?: Array<string>;
   /** （受控）展开指定的树节点 */
@@ -101,7 +102,7 @@ class KTree extends React.Component<any, any> {
   static defaultProps = {
     prefixCls: 'sv-tree',
     checkable: false,
-    defaultExpandAll: false,
+    expandAll: false,
     showIcon: false,
     openAnimation: animation,
   };
@@ -173,6 +174,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     prefixCls: 'sv-tree',
     checkable: false,
     showIcon: false,
+    query: '',
     openAnimation: animation,
   };
 
@@ -182,9 +184,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
   constructor (props: TreeProps) {
     super(props);
     this.createTreeUtils(props);
+    this.loadData(props);
+  }
+
+  loadData (props) {
     const expand = this.getExpandInfo();
-    this.utils.generateRealTreeData(expand);
-    const expandedKeys = expand.expandedAll ? Object.keys(expand.id2ExtendInfo) : [];
+    this.utils.search(expand, props.query);
+    const expandedKeys = props.expandAll ? Object.keys(expand.id2ExtendInfo) : [];
     this.state = {
       expandedKeys,
       expand,
@@ -217,15 +223,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
       this.createTreeUtils(nexProps);
     }
     const needUpdate = dataChanged
+      || this.props.query !== nexProps.query
       || nextState.expand !== this.state.expand
       || nextState.selectedInfo !== this.state.selectedInfo;
     return needUpdate;
   }
 
   createTreeUtils (props: TreeProps) {
-    const { data, defaultExpandAll = false, } = props;
+    const { data, expandAll = false, } = props;
     if (data) {
-      this.utils = new TreeUtils(data, defaultExpandAll);
+      this.utils = new TreeUtils(data, expandAll);
     }
   }
 
@@ -243,11 +250,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const classString = classNames({
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
-    const { children, } = this.props;
+    const { children, query, } = this.props;
     const { expand, expandedKeys, selectedInfo, } = this.state;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
-      this.realyDatas = this.utils.generateRealTreeData(expand);
+      this.realyDatas = this.utils.search(expand, query);
       return <ThrottleTree {...this.props}
                            onCheck={this.onCheck}
                            data={this.realyDatas}
@@ -274,16 +281,18 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { props, } = node;
     const { eventKey, } = props;
     const { expand, selectedInfo, } = this.state;
-    const { halfchecked, value, } = selectedInfo;
+    const { halfchecked, value, checked: chk, } = selectedInfo;
     const check = halfchecked[ eventKey ] === undefined && checked ? this.utils.selectNode : this.utils.unSelectNode;
     check.bind(this.utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
+    console.info('halfchecked', Object.keys(halfchecked));
+    console.info('checked', Object.keys(chk));
     console.info('value', Object.keys(value));
     this.setState({ selectedInfo: { ...selectedInfo, }, });
   };
 
 
   onExpand = (expandedKeys: Array<string>, rowData: { expanded: boolean, node: Object, }) => {
-    const { onExpand, data = [], defaultExpandAll, } = this.props;
+    const { onExpand, data = [], expandAll, } = this.props;
     const { expanded, node, } = rowData;
     const { expand, } = this.state;
 
@@ -292,11 +301,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     const { target, id2ExtendInfo, } = expand;
     if (expanded) {
-      this.utils.expandNode(noeKey, data, id2ExtendInfo);
+      this.utils.expandNode(noeKey, id2ExtendInfo);
     } else {
-      this.utils.colapseNode(noeKey, data, id2ExtendInfo);
+      this.utils.colapseNode(noeKey, id2ExtendInfo);
     }
-    if (defaultExpandAll) {
+    if (expandAll) {
       if (!expanded) {
         target[ noeKey ] = true;
       } else {
@@ -313,6 +322,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     onExpand && onExpand(expandedKeys, data);
   };
 
+  componentWillReceiveProps (props: TreeProps) {
+    this.loadData(props);
+  }
 
   loopNode = (data: Array<RowData>) => data.map(item => {
     const { children, key, title, isLeaf, } = item;
