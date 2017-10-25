@@ -56,6 +56,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
     constructor (props: any) {
       super(props);
+      this.oldData = props.data;
       this.state = {
         start: 0,
       };
@@ -63,7 +64,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
     container: Object;
     scroller: ?Object;
-
+    oldData: Object;
     render () {
       const { data, children, } = this.props;
       const viewSize = this.fetchViewHeigh();
@@ -71,8 +72,9 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       const target = data ? data : children;
       if (target && target.length > 0) {
         ({ totalSize, needScroller, start, end, } = this.computeItems(target,
-          this.props.start != undefined ? this.props.start : this.state.start));
+          this.oldData !== data ? 0 : this.state.start));
       }
+      this.oldData = data;
 
       const menus = <Target {...this.props} start={start} end={end}/>;
 

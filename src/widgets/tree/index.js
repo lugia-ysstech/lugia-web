@@ -132,6 +132,7 @@ class KTree extends React.Component<any, any> {
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     if (data) {
+      console.info('start', start);
       const out = {};
       const { rows, parentCount, } = utils.slice(data, start, end - start, out);
       const nodes = utils.generateTreeNode(rows);
@@ -139,7 +140,7 @@ class KTree extends React.Component<any, any> {
       const treeNodes = this.loopNode(nodes);
       return <RcTree {...this.props}
                      onSelect={onSelect}
-                     style={{ position: 'absolute', top: `${top}px`, }}
+                     style={{ position: 'relative', top: `${top}px`, }}
                      className={classString}
                      onExpand={onExpand}
                      checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
@@ -184,22 +185,27 @@ class Tree extends React.Component<TreeProps, TreeState> {
   constructor (props: TreeProps) {
     super(props);
     this.createTreeUtils(props);
-    this.loadData(props);
+    this.loadData(props, true);
   }
 
-  loadData (props) {
+  loadData (props, init: boolean = false) {
     const expand = this.getExpandInfo();
     this.utils.search(expand, props.query);
     const expandedKeys = props.expandAll ? Object.keys(expand.id2ExtendInfo) : [];
-    this.state = {
-      expandedKeys,
-      expand,
-      selectedInfo: {
-        checked: {},
-        value: {},
-        halfchecked: {},
-      },
-    };
+
+    if (init) {
+      this.state = {
+        expandedKeys,
+        expand,
+        selectedInfo: {
+          checked: {},
+          value: {},
+          halfchecked: {},
+        },
+      };
+    } else {
+      this.setState({ expandedKeys, expand, });
+    }
   }
 
   getExpandInfo (): ExpandInfo {

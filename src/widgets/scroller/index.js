@@ -89,7 +89,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   scrollerSize: number;
   htmlScroller: HTMLElement;
-  scroller: Object;
+  scroller: ?Object;
   drag: boolean;
   state: ScrollerState;
   throttleTimer: number;
@@ -160,10 +160,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const pos = this.value2pos(value);
     switch (type) {
       case XScroller:
-        this.scroller.setValue(pos, 0, false, igron);
+        this.scroller && this.scroller.setValue(pos, 0, false, igron);
         break;
       case YScroller:
-        this.scroller.setValue(0, pos, false, igron);
+        this.scroller && this.scroller.setValue(0, pos, false, igron);
         break;
       default:
     }
@@ -293,6 +293,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   componentWillUnmount () {
     if (this.scroller) {
       $(this.htmlScroller).unmousewheel(this.onWheel);
+      this.scroller = undefined;
     }
   }
 }
