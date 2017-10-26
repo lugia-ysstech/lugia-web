@@ -28,5 +28,9 @@ declare module 'sv-widget' {
     halfchecked: NodeId2Half,
     value: NodeId2Checked,
   };
+
+  declare type ExpandInfo = {
+    id2ExtendInfo: NodeId2ExtendInfo,
+  };
   declare type QueryType = 'include' | 'start' | 'end' | 'eql';
 }

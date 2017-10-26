@@ -4,10 +4,9 @@
  *
  * @flow
  */
-import type { NodeId2ExtendInfo, NodeId2SelectInfo, } from 'sv-widget';
+import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, } from 'sv-widget';
 import animation from '../common/openAnimation';
 import * as React from 'react';
-import { updateVersion, } from './version';
 import RcTree, { TreeNode, } from './rc-tree';
 import classNames from 'classnames';
 import ThemeProvider from '../common/ThemeProvider';
@@ -43,7 +42,7 @@ type TreeProps = {
   /** 是否支持选中 */
   checkable?: boolean;
   /** 默认展开所有树节点 */
-  expandAll?: boolean;
+  expandAll: boolean;
   /** 默认展开指定的树节点 */
   defaultExpandedKeys?: Array<string>;
   /** （受控）展开指定的树节点 */
@@ -87,10 +86,6 @@ type TreeProps = {
   setDataLen: Function,
 };
 
-type ExpandInfo = {
-  target: Object,
-  id2ExtendInfo: NodeId2ExtendInfo,
-}
 type TreeState = {
   start: number,
   expand: ExpandInfo,
@@ -171,6 +166,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   static displayName = Widget.Tree;
   static defaultProps = {
+    expandAll: false,
     prefixCls: 'sv-tree',
     checkable: false,
     showIcon: false,
@@ -180,23 +176,40 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   static TreeNode: TreeNode;
   utils: TreeUtils;
-  version: number;
+  queryAllUtils: TreeUtils;
 
   constructor (props: TreeProps) {
     super(props);
-    this.version = 0;
     this.createTreeUtils(props);
     this.loadData(props, true);
   }
 
-  updateVersion () {
-    updateVersion.call(this);
+  componentWillReceiveProps (props: TreeProps) {
+    this.loadData(props);
   }
 
+  allExpandKeys: Array<string>;
+
   loadData (props, init: boolean = false) {
-    const expand = this.getExpandInfo();
-    this.utils.search(expand, props.query);
-    const expandedKeys = props.expandAll ? Object.keys(expand.id2ExtendInfo) : [];
+
+    const expand = this.getExpandInfo(props);
+    let expandedKeys;
+    const { expandAll, } = this.props;
+    const notFirstAndNotQueryALl = !this.isQueryAll(props) && !init;
+    if (notFirstAndNotQueryALl) {
+      this.createTreeQueryUtils(props);
+    }
+
+    this.getUtils(props).search(expand, props.query);
+
+    if (this.isQueryAll(props)) {
+      if (this.allExpandKeys === undefined) {
+        this.allExpandKeys = this.getExpandedKeys(expandAll, expand);
+      }
+      expandedKeys = this.allExpandKeys;
+    } else {
+      expandedKeys = this.getExpandedKeys(expandAll, expand);
+    }
 
     if (init) {
       this.state = {
@@ -214,23 +227,26 @@ class Tree extends React.Component<TreeProps, TreeState> {
         start: 0,
         expandedKeys, expand,
       }, () => {
-        this.updateVersion();
       });
     }
   }
 
-  getExpandInfo (): ExpandInfo {
-    let array: Array<string> = [];
-    const { props, } = this;
-    const { expandedKeys = [], } = props;
-    if ('expandedKeys' in props) {
-      array = expandedKeys;
+  getExpandedKeys (expandAll: boolean, expand: ExpandInfo): Array<string> {
+    return expandAll ? Object.keys(expand.id2ExtendInfo) : [];
+  }
+
+  allExpandInfo: ExpandInfo;
+
+  getExpandInfo (props: TreeProps): ExpandInfo {
+    const empty = { id2ExtendInfo: {}, };
+    if (this.isQueryAll(props)) {
+      if (this.allExpandInfo === undefined) {
+        this.allExpandInfo = empty;
+      }
+      console.info(this.allExpandInfo);
+      return this.allExpandInfo;
     }
-    const target: Object = {};
-    array.forEach(key => {
-      target[ key ] = true;
-    });
-    return { target, id2ExtendInfo: {}, };
+    return empty;
   }
 
 
@@ -248,10 +264,34 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   createTreeUtils (props: TreeProps) {
+    this.createTreeQueryAllUtils(props);
+    this.createTreeQueryUtils(props);
+  }
+
+  createTreeQueryUtils (props: TreeProps) {
     const { data, expandAll = false, } = props;
     if (data) {
       this.utils = new TreeUtils(data, expandAll);
     }
+  }
+
+  createTreeQueryAllUtils (props: TreeProps) {
+    const { data, expandAll = false, } = props;
+    if (data) {
+      this.queryAllUtils = new TreeUtils(data, expandAll);
+    }
+  }
+
+  getUtils (props: TreeProps) {
+    if (this.isQueryAll(props)) {
+      return this.queryAllUtils;
+    }
+    return this.utils;
+  }
+
+  isQueryAll (props: TreeProps): boolean {
+    const { query, } = props;
+    return (query === '');
   }
 
   realyDatas: Array<RowData>;
@@ -272,10 +312,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { expand, expandedKeys, selectedInfo, start, } = this.state;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
-      this.realyDatas = this.utils.search(expand, query);
+      const utils = this.getUtils(this.props);
+      this.realyDatas = utils.search(expand, query);
       return <ThrottleTree {...this.props}
                            start={start}
-                           version={this.version}
                            onScroller={this.onScroller}
                            onCheck={this.onCheck}
                            data={this.realyDatas}
@@ -283,7 +323,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
                            checkedKeys={Object.keys(checked)}
                            halfCheckedKeys={Object.keys(halfchecked)}
                            mutliple={checkable}
-                           utils={this.utils}
+                           utils={utils}
                            expandedKeys={expandedKeys}
                            onExpand={this.onExpand}></ThrottleTree>;
     }
@@ -297,11 +337,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   }
 
-  onScroller = (start: number, version: number) => {
-    if(version !== this.version){
-      return;
-    }
-    this.updateVersion();
+  onScroller = (start: number) => {
+    console.info(start, this.state.start);
     this.setState({ start, });
   };
 
@@ -312,8 +349,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { eventKey, } = props;
     const { expand, selectedInfo, } = this.state;
     const { halfchecked, value, checked: chk, } = selectedInfo;
-    const check = halfchecked[ eventKey ] === undefined && checked ? this.utils.selectNode : this.utils.unSelectNode;
-    check.bind(this.utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
+    const utils = this.getUtils(this.props);
+    const check = halfchecked[ eventKey ] === undefined && checked ? utils.selectNode : utils.unSelectNode;
+    check.bind(utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
     this.setState({ selectedInfo: { ...selectedInfo, }, });
   };
 
@@ -326,32 +364,20 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     const noeKey = node.props.eventKey;
 
-    const { target, id2ExtendInfo, } = expand;
+    const { id2ExtendInfo, } = expand;
+    const utils = this.getUtils(this.props);
     if (expanded) {
-      this.utils.expandNode(noeKey, id2ExtendInfo);
+      utils.expandNode(noeKey, id2ExtendInfo);
     } else {
-      this.utils.colapseNode(noeKey, id2ExtendInfo);
+      utils.colapseNode(noeKey, id2ExtendInfo);
     }
-    if (expandAll) {
-      if (!expanded) {
-        target[ noeKey ] = true;
-      } else {
-        delete target[ noeKey ];
-      }
-    } else {
-      if (expanded) {
-        target[ noeKey ] = true;
-      } else {
-        delete target[ noeKey ];
-      }
+    if (this.isQueryAll(this.props)) {
+      this.allExpandKeys = expandedKeys;
     }
-    this.setState({ expand: Object.assign({}, this.state.expand, { target, id2ExtendInfo, }), expandedKeys, });
+    this.setState({ expand: Object.assign({}, this.state.expand, { id2ExtendInfo, }), expandedKeys, });
     onExpand && onExpand(expandedKeys, data);
   };
 
-  componentWillReceiveProps (props: TreeProps) {
-    this.loadData(props);
-  }
 
   loopNode = (data: Array<RowData>) => data.map(item => {
     const { children, key, title, isLeaf, } = item;
