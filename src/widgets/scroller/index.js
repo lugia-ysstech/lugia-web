@@ -215,28 +215,26 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     });
   };
 
+  changeValue (value: number, time: ?number): void {
+    const { onChange, } = this.props;
+    const interval = time ? time : this.props.throttle;
+    const scrolling = () => {
+      this.setState({ value, });
+      onChange && onChange(value);
+    };
+
+    if (this.throttleTimer) {
+      clearTimeout(this.throttleTimer);
+    }
+    this.throttleTimer = setTimeout(scrolling, interval);
+
+  }
+
   createJQueryScrollerPlugin () {
-    const { onChange, type, } = this.props;
-
+    const { type, } = this.props;
     const callback = (x, y) => {
-
-      const scrolling = () => {
-        const value = this.computeValue([x, y,]);
-        if(value !== this.state.value){
-          this.setState({ value, });
-          onChange && onChange(value);
-        }
-      };
-
-      // if (!this.drag) {
-      //   scrolling();
-      //   return;
-      // }
-
-      if (this.throttleTimer) {
-        clearTimeout(this.throttleTimer);
-      }
-      this.throttleTimer = setTimeout(scrolling, this.props.throttle);
+      const value = this.computeValue([x, y,]);
+      this.changeValue(value);
     };
 
     const animationCallback = (x, y) => {
