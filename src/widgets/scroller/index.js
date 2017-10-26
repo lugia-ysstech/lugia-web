@@ -114,6 +114,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
 
   render () {
+    console.info('this.state.value', this.state.value);
     const { viewSize, totalSize, type, } = this.props;
 
     const style: Object = {};
@@ -197,33 +198,24 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   lastTime: number;
   zoom: number;
   onWheel = (event: Object) => {
-    const now = new Date();
-    const timeSpan = now - this.lastTime;
     const { deltaY, } = event;
     event.preventDefault();
     const { step, } = this.props;
     const { value, } = this.state;
     const stepValue = deltaY < 0 ? -step : step;
-    if (this.lastTime && timeSpan < 20) {
-      const newValue = this.zoom + 1;
-      this.zoom = newValue > maxZoom ? maxZoom : newValue;
-    } else {
-      this.zoom = 1;
-    }
-    this.setState({ value: value + this.zoom * stepValue, }, () => {
-      this.lastTime = new Date();
-    });
+    // this.changeValue(value + stepValue, 0);
+    this.setState({ value: value + stepValue, });
   };
 
   changeValue (value: number, time: ?number): void {
     const { onChange, } = this.props;
     const interval = time ? time : this.props.throttle;
     const scrolling = () => {
-      this.setState({ value, });
+      console.info('v', value);
       onChange && onChange(value);
     };
 
-    if (this.throttleTimer) {
+    if (this.throttleTimer !== undefined) {
       clearTimeout(this.throttleTimer);
     }
     this.throttleTimer = setTimeout(scrolling, interval);
