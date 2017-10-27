@@ -6,13 +6,10 @@
  */
 import * as React from 'react';
 import Dragdealer from './dragdealer';
-import { mouseWheel, } from '../common/mouseWheel';
-import $ from 'jquery';
 import styled from 'styled-components';
 import { scroller, } from './index.css';
 import Support from '../common/FormFieldWidgetSupport';
 
-mouseWheel($);
 
 const BarDefaultSize = 12;
 const Container = styled.div`
@@ -77,7 +74,7 @@ type ScrollerProps = {
 type ScrollerState = {
   value: number,
 };
-const maxZoom = 8;
+const maxZoom = 3;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
@@ -114,7 +111,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
 
   render () {
-    console.info('this.state.value', this.state.value);
     const { viewSize, totalSize, type, } = this.props;
 
     const style: Object = {};
@@ -144,7 +140,8 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       return '';
     }
 
-    return <TargetContainer style={style} innerRef={cmp => this.htmlScroller = cmp} onMouseEnter={this.reflow}>
+    return <TargetContainer style={style} innerRef={cmp => this.htmlScroller = cmp} onWheel={this.onWheel}
+                            onMouseEnter={this.reflow}>
       <Target className={scroller} style={barStyle} onMouseEnter={this.reflow}>
       </Target>
     </TargetContainer>;
@@ -184,7 +181,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   componentDidUpdate () {
     if (!this.scroller) {
-      $(this.htmlScroller).mousewheel(this.onWheel);
       this.scroller = this.createJQueryScrollerPlugin();
       const { value, } = this.state;
       this.setScrollerValue(value);
@@ -197,21 +193,34 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   lastTime: number;
   zoom: number;
+
   onWheel = (event: Object) => {
+
+    const now = new Date();
+    const timeSpan = now - this.lastTime;
     const { deltaY, } = event;
-    event.preventDefault();
     const { step, } = this.props;
-    const { value, } = this.state;
-    const stepValue = deltaY < 0 ? -step : step;
-    // this.changeValue(value + stepValue, 0);
-    this.setState({ value: value + stepValue, });
+    const stepValue = deltaY < 0 ? step : -step;
+    let value = 0;
+
+    if (this.scroller) {
+      value = this.computeValue(this.scroller.getValue());
+    }
+
+    if (this.lastTime && timeSpan < 20) {
+      const newValue = this.zoom + 0.1;
+      this.zoom = newValue > maxZoom ? maxZoom : newValue;
+    } else {
+      this.zoom = 1;
+    }
+    this.setScrollerValue(value + stepValue * this.zoom);
+    this.lastTime = now;
   };
 
   changeValue (value: number, time: ?number): void {
     const { onChange, } = this.props;
     const interval = time ? time : this.props.throttle;
     const scrolling = () => {
-      console.info('v', value);
       onChange && onChange(value);
     };
 
@@ -219,7 +228,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       clearTimeout(this.throttleTimer);
     }
     this.throttleTimer = setTimeout(scrolling, interval);
-
   }
 
   createJQueryScrollerPlugin () {
@@ -284,9 +292,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   componentWillUnmount () {
     if (this.scroller) {
-      $(this.htmlScroller).unmousewheel(this.onWheel);
       this.scroller = undefined;
     }
+
   }
 }
 

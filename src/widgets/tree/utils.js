@@ -5,7 +5,8 @@
  * @flow
  */
 import type { NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType, SelectType, } from 'sv-widget';
-import {updateVersion,} from './version';
+import { updateVersion, } from './version';
+
 const EmptyError = '结点不能为空',
   PathEqlKey = 'path不能等于key',
   PidEqlKey = 'pid不能等于key',
@@ -470,7 +471,7 @@ class TreeUtils {
 
 
   search (expandInfo: ExpandInfo, query: string, searchType: QueryType = 'include'): Array<RowData> {
-    const queryChanging = !Object.is(query, this.query);
+    const queryChanging = query !== this.query;
     const noChanged = this.version === this.oldVersion && !queryChanging;
 
     if (noChanged) {

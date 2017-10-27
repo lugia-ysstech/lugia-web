@@ -338,7 +338,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onScroller = (start: number) => {
-    console.info(start, this.state.start);
     this.setState({ start, });
   };
 

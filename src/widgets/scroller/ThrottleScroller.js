@@ -8,8 +8,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Scroller from './index';
 import '../css/sv.css';
-import { mouseWheel, } from '../common/mouseWheel';
-import $ from 'jquery';
 import * as Widget from '../consts/Widget';
 
 const scrollerWidth = 12;
@@ -23,16 +21,28 @@ const width = props => {
   const width = props.theme.width;
   return width ? `width:${width}px;` : `width:${defaultWidth}px;`;
 };
-const contentWidth = props => {
+const getContentWidth = props => {
   const width = props.theme.width;
-  return width ? `width:${width - scrollerWidth}px;` : `width:${defaultWidth - scrollerWidth}px;`;
+  return width ? width - scrollerWidth : defaultWidth - scrollerWidth;
 };
+
+const contentWidth = props => {
+  return `width:${getContentWidth(props)}px;`;
+};
+
+const scrollerLeft = props => {
+  return `left: ${getContentWidth(props)}px;`;
+};
+
+
 const Col = styled.div`
   ${height}
   ${contentWidth}
+  position: absolute;
   display: inline-block;
 `;
 const ScrollerCol = Col.extend`
+  ${scrollerLeft}
   width: ${scrollerWidth}px;
 `;
 const ScrollerContainer = styled.div`
@@ -76,7 +86,8 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       const menus = <Target {...this.props} start={start} end={end}/>;
 
       if (needScroller) {
-        return <ScrollerContainer theme={this.props.getTheme()} innerRef={cmp => this.container = cmp}>
+        return <ScrollerContainer theme={this.props.getTheme()} innerRef={cmp => this.container = cmp}
+                                  onWheel={this.onWheel}>
           <Col theme={this.props.getTheme()}>{menus}</Col>
           <ScrollerCol theme={this.props.getTheme()}>
             <Scroller ref={cmp => this.scroller = cmp}
@@ -99,7 +110,9 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       return { totalSize, needScroller, start, end, };
     }
 
-
+    onWheel = (e: Object) => {
+      this.scroller && this.scroller.onWheel && this.scroller.onWheel.call(this.scroller, e);
+    };
     onScroller = (value: number) => {
       const { onScroller, } = this.props;
       const start = Math.floor(value / menuItemHeight);
@@ -114,22 +127,18 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
     componentDidMount () {
       if (this.container && this.bindContainerEvent !== true) {
-        mouseWheel($);
-        $(this.container).mousewheel(this.scroller ? this.scroller.onWheel : () => {});
         this.bindContainerEvent = true;
       }
     }
 
     componentDidUpdate () {
       if (this.container && this.bindContainerEvent !== true) {
-        $(this.container).mousewheel(this.scroller ? this.scroller.onWheel : () => {});
         this.bindContainerEvent = true;
       }
     }
 
     componentWillUnmount () {
       if (this.container && this.bindContainerEvent === true) {
-        $(this.container).unmousewheel(this.scroller ? this.scroller.onWheel : () => {});
         this.bindContainerEvent = false;
       }
     }
