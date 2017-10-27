@@ -15,6 +15,7 @@ import * as Widget from '../consts/Widget';
 import '../css/sv.css';
 import './index.css';
 import TreeUtils from './utils';
+import 'babel-polyfill';
 
 const defaultHeight = 250;
 const menuItemHeight = 18;
