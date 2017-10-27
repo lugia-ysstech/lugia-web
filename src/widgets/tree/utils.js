@@ -74,6 +74,7 @@ class TreeUtils {
     this.orignalData = treeData;
     this.query = null;
     this.expandedAll = expandedAll;
+    this.catchPathArray = {};
     return this;
   }
 
@@ -284,7 +285,7 @@ class TreeUtils {
     const { path, } = row;
     if (path) {
       console.time('split');
-      const pathArray = path.split(Seperator);
+      const pathArray = this.getPathArray(row);
       console.timeEnd('split');
       console.time('for');
 
@@ -296,6 +297,21 @@ class TreeUtils {
 
     }
     return result;
+  }
+
+  catchPathArray: Object;
+
+  getPathArray (row: RowData): Array<string> {
+    const { path, key, } = row;
+    const cacheValue = this.catchPathArray[ key ];
+    if (cacheValue) {
+      return cacheValue;
+    }
+    if (path !== undefined) {
+      this.catchPathArray[ key ] = path.split(Seperator);
+      return this.catchPathArray[ key ];
+    }
+    return [];
   }
 
   getKeys (nodes: Array<RowData>): Array<string> {
@@ -329,7 +345,8 @@ class TreeUtils {
     for (let i = begin + 1; i < end; i++) {
 
       let founded = false;
-      const { pid, path, } = nodes[ i ];
+      const row = nodes[ i ];
+      const { pid, path, } = row;
 
       const isChildren = pid === nodeId;
       if (isChildren) {
@@ -338,7 +355,7 @@ class TreeUtils {
         begats++;
         founded = true;
       } else if (path) {
-        const pathArray = path.split(Seperator);
+        const pathArray = this.getPathArray(row);
         const isInPath = ~pathArray.indexOf(nodeId);
         if (isInPath) {
           begats++;
@@ -475,7 +492,7 @@ class TreeUtils {
     const { path, } = info;
     const pathArray = [this.VirtualRoot,];
     if (path) {
-      Array.prototype.push.apply(pathArray, path.split(Seperator));
+      Array.prototype.push.apply(pathArray, this.getPathArray(info));
     }
 
     const len = pathArray.length;
@@ -507,15 +524,15 @@ class TreeUtils {
 
       const need: Object = {};
       const containPath: Object = {};
-      const rowSet: Set<RowData> = new Set();
+      const rowSet = [];
       const len = this.orignalData.length - 1;
-
+      console.time('search for');
       for (let i = len; i >= 0; i--) {
         const row: RowData = this.orignalData[ i ];
         const { title, key, path, } = row;
         if (this.match(title, query, searchType)) {
           if (path !== undefined && containPath[ path ] === undefined) {
-            const pathArray = path.split(Seperator);
+            const pathArray = this.getPathArray(row);
             containPath[ path ] = true;
             const len = pathArray.length;
             for (let i = 0; i < len; i++) {
@@ -523,18 +540,22 @@ class TreeUtils {
               need[ key ] = true;
             }
           }
-          rowSet.add(row);
+          rowSet.push(row);
         } else if (need[ key ] === true) {
-          rowSet.add(row);
+          rowSet.push(row);
           delete need[ key ];
         }
       }
+      console.timeEnd('search for');
 
       const datas = [...rowSet,];
       this.treeData = datas.reverse();
     }
     this.query = query;
-    return this.oldTreeData = this.generateRealTreeData(expandInfo);
+    console.time('search generateRealTreeData');
+    this.oldTreeData = this.generateRealTreeData(expandInfo);
+    console.timeEnd('search generateRealTreeData');
+    return this.oldTreeData;
   }
 
   match (val: ?string, query: string, type: QueryType): boolean {

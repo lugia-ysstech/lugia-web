@@ -204,8 +204,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (notFirstAndNotQueryALl) {
       this.createTreeQueryUtils(props);
     }
+    console.time('loadData utils.search');
 
     this.getUtils(props).search(expand, props.query);
+    console.timeEnd('loadData utils.search');
 
     if (this.isQueryAll(props)) {
       if (this.allExpandKeys === undefined) {
@@ -319,7 +321,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
       const utils = this.getUtils(this.props);
+      console.time('utils.search');
       this.realyDatas = utils.search(expand, query);
+      console.timeEnd('utils.search');
       return <ThrottleTree {...this.props} id2ExtendInfo={id2ExtendInfo}
                            start={start}
                            onScroller={this.onScroller}
