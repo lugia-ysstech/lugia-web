@@ -122,15 +122,19 @@ class KTree extends React.Component<any, any> {
       onExpand,
       utils,
       onSelect,
+      id2ExtendInfo,
     } = this.props;
-
     const classString = classNames({
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     if (data) {
-      const out = {};
-      const { rows, parentCount, } = utils.slice(data, start, end - start, out);
+      console.time('utils.slice(data, start, end - start, out)');
+      const { rows, parentCount, } = utils.slice(data, start, end - start, id2ExtendInfo);
+      console.timeEnd('utils.slice(data, start, end - start, out)');
+      console.time('utils.generateTreeNode(rows)');
       const nodes = utils.generateTreeNode(rows);
+      console.timeEnd('utils.generateTreeNode(rows)');
+
       const top = -parentCount * 17;
       const treeNodes = this.loopNode(nodes);
       return <RcTree {...this.props}
@@ -311,11 +315,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }, className);
     const { children, query, } = this.props;
     const { expand, expandedKeys, selectedInfo, start, } = this.state;
+    const {id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
       const utils = this.getUtils(this.props);
       this.realyDatas = utils.search(expand, query);
-      return <ThrottleTree {...this.props}
+      return <ThrottleTree {...this.props} id2ExtendInfo={id2ExtendInfo}
                            start={start}
                            onScroller={this.onScroller}
                            onCheck={this.onCheck}

@@ -248,7 +248,9 @@ class TreeUtils {
     if (rowDatas && rowDatas.length === 0) {
       return empty;
     }
+    console.time('result = rowDatas.slice(start, start + total)');
     const result = rowDatas.slice(start, start + total);
+    console.timeEnd('result = rowDatas.slice(start, start + total)');
     const root = result[ 0 ];
     if (!root) {
       console.warn('树形数据存在问题');
@@ -259,10 +261,16 @@ class TreeUtils {
     if (isTopLevel) {
       return { rows: result, parentCount: 0, };
     }
+    console.time('getPathNodes');
 
     const pathNode = this.getPathNodes(rowDatas, start, id2nodeExtendInfo);
+    console.timeEnd('getPathNodes');
+
+    console.time('push');
+
     const parentCount = pathNode.length;
     Array.prototype.push.apply(pathNode, result);
+    console.timeEnd('push');
     return { rows: pathNode, parentCount, };
   }
 
@@ -275,10 +283,17 @@ class TreeUtils {
     }
     const { path, } = row;
     if (path) {
+      console.time('split');
       const pathArray = path.split(Seperator);
-      for (let i = 0; i < pathArray.length; i++) {
+      console.timeEnd('split');
+      console.time('for');
+
+      const len = pathArray.length;
+      for (let i = 0; i < len; i++) {
         result.push(this.getRow(pathArray[ i ], id2nodeExtendInfo));
       }
+      console.timeEnd('for');
+
     }
     return result;
   }
@@ -475,6 +490,7 @@ class TreeUtils {
     const noChanged = this.version === this.oldVersion && !queryChanging;
 
     if (noChanged) {
+      console.info('cache');
       return this.oldTreeData;
     }
 

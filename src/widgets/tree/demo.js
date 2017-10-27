@@ -32,7 +32,7 @@ for (let a = 0; a < 5; a++) {
         pid: `${keyb}`,
         path: `${a}/${keyb}`,
       });
-      for (let d = 0; d < 100; d++) {
+      for (let d = 0; d < 400; d++) {
         const key = `${a}.${b}.${c}.${d}`;
         bigTree.push({
           key,
@@ -115,7 +115,7 @@ export default class extends React.Component<Object, Object> {
       query={this.state.query}
       expandAll
       showLine
-      data={rowData}
+      data={bigTree}
       checkable
       onSelect={onSelect}
       onCheck={onCheck}
