@@ -288,10 +288,12 @@ class TreeUtils {
       const pathArray = this.getPathArray(row);
       console.timeEnd('split');
       console.time('for');
-
       const len = pathArray.length;
+      console.info(len);
       for (let i = 0; i < len; i++) {
+        console.time('result.push(this.getRow(pathArray[ i ], id2nodeExtendInfo))' + pathArray[ i ]);
         result.push(this.getRow(pathArray[ i ], id2nodeExtendInfo));
+        console.timeEnd('result.push(this.getRow(pathArray[ i ], id2nodeExtendInfo))' + pathArray[ i ]);
       }
       console.timeEnd('for');
 
@@ -327,8 +329,9 @@ class TreeUtils {
   fetchNodeExtendInfo (nodeId: string,
                        nodes: Array<RowData>,
                        id2nodeExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
-
+    console.time('this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo)');
     this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo);
+    console.timeEnd('this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo)');
 
     const existData = id2nodeExtendInfo[ nodeId ];
     const isExist = existData && existData.begats !== undefined;
@@ -356,7 +359,7 @@ class TreeUtils {
         founded = true;
       } else if (path) {
         const pathArray = this.getPathArray(row);
-        const isInPath = ~pathArray.indexOf(nodeId);
+        const isInPath = !!~pathArray.indexOf(nodeId);
         if (isInPath) {
           begats++;
           founded = true;
@@ -547,9 +550,11 @@ class TreeUtils {
         }
       }
       console.timeEnd('search for');
-
-      const datas = [...rowSet,];
-      this.treeData = datas.reverse();
+      if (rowSet.length === this.orignalData.length) {
+        this.treeData = this.orignalData;
+      } else {
+        this.treeData = rowSet.reverse();
+      }
     }
     this.query = query;
     console.time('search generateRealTreeData');
@@ -592,7 +597,9 @@ class TreeUtils {
     this.oldVersion = this.version;
     const { id2ExtendInfo, } = expandInfo;
     const fetchNodeInfo = this.fetchNodeExtendInfoById(datas, id2ExtendInfo);
+    console.time('fetchNodeInfo(this.VirtualRoot)');
     const nodeInfo = fetchNodeInfo(this.VirtualRoot);
+    console.timeEnd('fetchNodeInfo(this.VirtualRoot)');
     const { nowVisible, } = nodeInfo;
 
     if (nowVisible === 0) {
@@ -718,7 +725,8 @@ class TreeUtils {
   }
 
   getRow (key: string, id2nodeExtendInfo: NodeId2ExtendInfo) {
-    const { index, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+    this.initAllNodeIndexAndTopRoot(this.treeData, id2nodeExtendInfo);
+    const { index, } = id2nodeExtendInfo[ key ];
     return this.treeData[ index ];
   }
 
