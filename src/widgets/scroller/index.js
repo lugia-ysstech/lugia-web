@@ -74,7 +74,7 @@ type ScrollerProps = {
 type ScrollerState = {
   value: number,
 };
-const maxZoom = 3;
+const maxZoom = 10;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
@@ -208,7 +208,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
 
     if (this.lastTime && timeSpan < 20) {
-      const newValue = this.zoom + 0.1;
+      const newValue = this.zoom + 1;
       this.zoom = newValue > maxZoom ? maxZoom : newValue;
     } else {
       this.zoom = 1;
