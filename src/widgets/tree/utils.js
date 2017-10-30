@@ -313,7 +313,8 @@ class TreeUtils {
       this.catchPathArray[ key ] = path.split(Seperator);
       return this.catchPathArray[ key ];
     }
-    return [];
+    this.catchPathArray[ key ] = [];
+    return this.catchPathArray[ key ];
   }
 
   getKeys (nodes: Array<RowData>): Array<string> {
@@ -329,9 +330,9 @@ class TreeUtils {
   fetchNodeExtendInfo (nodeId: string,
                        nodes: Array<RowData>,
                        id2nodeExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
-    console.time('this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo)');
+    // console.time('this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo)');
     this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo);
-    console.timeEnd('this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo)');
+    // console.timeEnd('this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo)');
 
     const existData = id2nodeExtendInfo[ nodeId ];
     const isExist = existData && existData.begats !== undefined;
@@ -344,7 +345,15 @@ class TreeUtils {
     let begats = 0;
     const begin = existData && existData.index !== undefined ? existData.index : 0;
     const childrenIdx = [];
-
+    const { isLeaf = false, path, } = nodes[ begin ];
+    let startWiths = nodeId;
+    if (path) {
+      startWiths = `${path}/${nodeId}`;
+    }
+    if (isLeaf) {
+      return this.generateExtendInfo(nodeId, 0, 0, id2nodeExtendInfo, []);
+    }
+    let endA = 0;
     for (let i = begin + 1; i < end; i++) {
 
       let founded = false;
@@ -358,18 +367,17 @@ class TreeUtils {
         begats++;
         founded = true;
       } else if (path) {
-        const pathArray = this.getPathArray(row);
-        const isInPath = !!~pathArray.indexOf(nodeId);
-        if (isInPath) {
+        if (path.indexOf(startWiths) === 0) {
           begats++;
           founded = true;
         }
       }
       if (!founded) {
+        endA = i;
         break;
       }
-
     }
+    // console.info('begin', begin + 1, 'end', endA);
     return this.generateExtendInfo(nodeId, begats, children, id2nodeExtendInfo, childrenIdx);
   }
 
@@ -619,24 +627,38 @@ class TreeUtils {
     }
     const totalLen = datas.length;
     const result = [];
+    let t = 0;
+    let fetchTotal = 0;
+    console.time('generateRealTreeData for');
     for (let i = 0; i < totalLen; i++) {
       const row = datas[ i ];
+      t++;
       result.push(row);
       const { key, } = row;
+      const now = new Date();
       const { childrenIdx = [], nowVisible = 0, children = 0, begats = 0, } = fetchNodeInfo(key);
+      fetchTotal += new Date() - now;
       if (nowVisible === 0) {
         i += begats;
       } else {
         if (nowVisible === children) {
+          console.time(key + ':fetchLevelOneChild');
           Array.prototype.push.apply(result, this.fetchLevelOneChild(datas, childrenIdx));
+          console.timeEnd(key + ':fetchLevelOneChild');
           i += begats;
         } else if (nowVisible === begats) {
           const start = i + 1;
+          console.time(key + ':slice');
           Array.prototype.push.apply(result, datas.slice(start, start + begats));
+          console.timeEnd(key + ':slice');
           i += begats;
         }
       }
     }
+    console.info('t', t);
+    console.info('fetchTotalTime=', fetchTotal);
+    console.timeEnd('generateRealTreeData for');
+
     return this.oldTreeData = result;
   }
 

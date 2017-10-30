@@ -317,7 +317,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }, className);
     const { children, query, } = this.props;
     const { expand, expandedKeys, selectedInfo, start, } = this.state;
-    const {id2ExtendInfo, } = expand;
+    const { id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
       const utils = this.getUtils(this.props);
@@ -361,6 +361,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const utils = this.getUtils(this.props);
     const check = halfchecked[ eventKey ] === undefined && checked ? utils.selectNode : utils.unSelectNode;
     check.bind(utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
+    console.info('halfchecked value', expand.id2ExtendInfo['0.0.0.7']);
+    console.info('halfchecked value', halfchecked);
+    console.info('value', Object.keys(value));
+    console.info('checked', Object.keys(chk));
+    console.info('halfchecked', Object.keys(halfchecked));
     this.setState({ selectedInfo: { ...selectedInfo, }, });
   };
 
