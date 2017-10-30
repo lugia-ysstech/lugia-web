@@ -244,7 +244,7 @@ class TreeUtils {
     return result;
   }
 
-  slice (rowDatas: Array<RowData>, start: number, total: number, id2nodeExtendInfo: NodeId2ExtendInfo): { rows: Array<RowData>, parentCount: number } {
+  slice (rowDatas: Array<RowData>, start: number, total: number, id2ExtendInfo: NodeId2ExtendInfo): { rows: Array<RowData>, parentCount: number } {
     const empty = { rows: [], parentCount: 0, };
     if (rowDatas && rowDatas.length === 0) {
       return empty;
@@ -264,7 +264,7 @@ class TreeUtils {
     }
     console.time('getPathNodes');
 
-    const pathNode = this.getPathNodes(rowDatas, start, id2nodeExtendInfo);
+    const pathNode = this.getPathNodes(rowDatas, start, id2ExtendInfo);
     console.timeEnd('getPathNodes');
 
     console.time('push');
@@ -276,7 +276,7 @@ class TreeUtils {
   }
 
 
-  getPathNodes (rowDatas: Array<RowData>, start: number, id2nodeExtendInfo: NodeId2ExtendInfo) {
+  getPathNodes (rowDatas: Array<RowData>, start: number, id2ExtendInfo: NodeId2ExtendInfo) {
     const result = [];
     const row = rowDatas[ start ];
     if (!row) {
@@ -291,9 +291,9 @@ class TreeUtils {
       const len = pathArray.length;
       console.info(len);
       for (let i = 0; i < len; i++) {
-        console.time('result.push(this.getRow(pathArray[ i ], id2nodeExtendInfo))' + pathArray[ i ]);
-        result.push(this.getRow(pathArray[ i ], id2nodeExtendInfo));
-        console.timeEnd('result.push(this.getRow(pathArray[ i ], id2nodeExtendInfo))' + pathArray[ i ]);
+        console.time('result.push(this.getRow(pathArray[ i ], id2ExtendInfo))' + pathArray[ i ]);
+        result.push(this.getRow(pathArray[ i ], id2ExtendInfo));
+        console.timeEnd('result.push(this.getRow(pathArray[ i ], id2ExtendInfo))' + pathArray[ i ]);
       }
       console.timeEnd('for');
 
@@ -329,12 +329,12 @@ class TreeUtils {
 
   fetchNodeExtendInfo (nodeId: string,
                        nodes: Array<RowData>,
-                       id2nodeExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
-    // console.time('this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo)');
-    this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo);
-    // console.timeEnd('this.initAllNodeIndexAndTopRoot(nodes, id2nodeExtendInfo)');
+                       id2ExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
+    // console.time('this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo)');
+    this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo);
+    // console.timeEnd('this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo)');
 
-    const existData = id2nodeExtendInfo[ nodeId ];
+    const existData = id2ExtendInfo[ nodeId ];
     const isExist = existData && existData.begats !== undefined;
     if (isExist) {
       return existData;
@@ -351,7 +351,7 @@ class TreeUtils {
       startWiths = `${path}/${nodeId}`;
     }
     if (isLeaf) {
-      return this.generateExtendInfo(nodeId, 0, 0, id2nodeExtendInfo, []);
+      return this.generateExtendInfo(nodeId, 0, 0, id2ExtendInfo, []);
     }
     let endA = 0;
     for (let i = begin + 1; i < end; i++) {
@@ -378,7 +378,7 @@ class TreeUtils {
       }
     }
     // console.info('begin', begin + 1, 'end', endA);
-    return this.generateExtendInfo(nodeId, begats, children, id2nodeExtendInfo, childrenIdx);
+    return this.generateExtendInfo(nodeId, begats, children, id2ExtendInfo, childrenIdx);
   }
 
   initAllNodeIndexAndTopRoot (nodes: Array<RowData>,
@@ -402,14 +402,14 @@ class TreeUtils {
   }
 
   generateExtendInfo (nodeId: string, begats: number, children: number,
-                      id2nodeExtendInfo: NodeId2ExtendInfo,
+                      id2ExtendInfo: NodeId2ExtendInfo,
                       childrenIdx: Array<number>): NodeExtendInfo {
 
     const nowAndRealVisible = this.expandedAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
-    const nodeInfo = id2nodeExtendInfo[ nodeId ];
+    const nodeInfo = id2ExtendInfo[ nodeId ];
     const index = nodeInfo && nodeInfo.index !== undefined ? nodeInfo.index : -1;
 
-    id2nodeExtendInfo[ nodeId ] = {
+    id2ExtendInfo[ nodeId ] = {
       nowVisible: nowAndRealVisible,
       realyVisible: nowAndRealVisible,
       childrenIdx,
@@ -417,20 +417,20 @@ class TreeUtils {
       begats,
       index,
     };
-    return id2nodeExtendInfo[ nodeId ];
+    return id2ExtendInfo[ nodeId ];
   }
 
   /**
    * 只支持逐级进行展开
    * @param nodeId
    * @param nodes
-   * @param id2nodeExtendInfo
+   * @param id2ExtendInfo
    * @param expandedAll
    */
   expandNode (nodeId: string,
-              id2nodeExtendInfo: NodeId2ExtendInfo): void {
+              id2ExtendInfo: NodeId2ExtendInfo): void {
     const nodes: Array<RowData> = this.treeData;
-    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo);
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2ExtendInfo);
     const info = fetchNodeInfo(nodeId);
     const { children, expanded, begats = 0, } = info;
     const isInitStatus = expanded === undefined;
@@ -463,16 +463,16 @@ class TreeUtils {
 
 
   fetchNodeExtendInfoById (nodes: Array<RowData>,
-                           id2nodeExtendInfo: NodeId2ExtendInfo) {
+                           id2ExtendInfo: NodeId2ExtendInfo) {
     return (nodeId: string): NodeExtendInfo => {
-      return this.fetchNodeExtendInfo(nodeId, nodes, id2nodeExtendInfo);
+      return this.fetchNodeExtendInfo(nodeId, nodes, id2ExtendInfo);
     };
   }
 
   colapseNode (nodeId: string,
-               id2nodeExtendInfo: NodeId2ExtendInfo): void {
+               id2ExtendInfo: NodeId2ExtendInfo): void {
     const nodes: Array<RowData> = this.treeData;
-    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2nodeExtendInfo);
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(nodes, id2ExtendInfo);
 
     const info = fetchNodeInfo(nodeId);
     const { expanded, realyVisible = 0, begats = 0, } = info;
@@ -671,21 +671,21 @@ class TreeUtils {
     return result;
   }
 
-  selectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
+  selectNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
 
     const operType = TreeUtils.Selected;
-    const { path, } = this.updateSelectedStatusForChildren(key, selectInfo, id2nodeExtendInfo, operType);
+    const { path, } = this.updateSelectedStatusForChildren(key, selectInfo, id2ExtendInfo, operType);
 
-    const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+    const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
     const maxHalfCount = begats + 1;
 
     this.updateSelectedStatusForParent(path, selectInfo, maxHalfCount, operType);
 
   }
 
-  unSelectNode (key: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo): void {
+  unSelectNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
 
-    const notLeaf = !this.isLeaf(key, id2nodeExtendInfo);
+    const notLeaf = !this.isLeaf(key, id2ExtendInfo);
     let halfCount = 1;
 
     if (notLeaf) {
@@ -696,7 +696,7 @@ class TreeUtils {
       if (onlyYourSelf) {
         halfCount = 1;
       } else {
-        const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2nodeExtendInfo);
+        const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
         const fullHalf = begats + 1;
 
         halfCount = Math.min(childHalfCount + 1, fullHalf); // 加上自身
@@ -710,7 +710,7 @@ class TreeUtils {
     }
 
     const operatorType = TreeUtils.UnSelected;
-    const { path, } = this.updateSelectedStatusForChildren(key, selectInfo, id2nodeExtendInfo, operatorType);
+    const { path, } = this.updateSelectedStatusForChildren(key, selectInfo, id2ExtendInfo, operatorType);
     this.updateSelectedStatusForParent(path, selectInfo, halfCount, operatorType);
   }
 
@@ -741,21 +741,21 @@ class TreeUtils {
   }
 
 
-  isLeaf (key: string, id2nodeExtendInfo: NodeId2ExtendInfo) {
-    const { isLeaf = false, } = this.getRow(key, id2nodeExtendInfo);
+  isLeaf (key: string, id2ExtendInfo: NodeId2ExtendInfo) {
+    const { isLeaf = false, } = this.getRow(key, id2ExtendInfo);
     return isLeaf;
   }
 
-  getRow (key: string, id2nodeExtendInfo: NodeId2ExtendInfo) {
-    this.initAllNodeIndexAndTopRoot(this.treeData, id2nodeExtendInfo);
-    const { index, } = id2nodeExtendInfo[ key ];
+  getRow (key: string, id2ExtendInfo: NodeId2ExtendInfo) {
+    this.initAllNodeIndexAndTopRoot(this.treeData, id2ExtendInfo);
+    const { index, } = id2ExtendInfo[ key ];
     return this.treeData[ index ];
   }
 
-  updateSelectedStatusForChildren (targetKey: string, selectInfo: NodeId2SelectInfo, id2nodeExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
+  updateSelectedStatusForChildren (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
 
     const datas = this.treeData;
-    const { index: targetNode, begats, } = this.fetchNodeExtendInfo(targetKey, datas, id2nodeExtendInfo);
+    const { index: targetNode, begats, } = this.fetchNodeExtendInfo(targetKey, datas, id2ExtendInfo);
     const len = datas.length;
     const range = targetNode + begats;
 
@@ -768,7 +768,7 @@ class TreeUtils {
           checked[ key ] = true;
           value[ key ] = true;
 
-          const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2nodeExtendInfo);
+          const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2ExtendInfo);
           const isTargetNode = i === targetNode;
           const { isLeaf = false, } = row;
           const childHalfCount = (isTargetNode || isLeaf === false) ? begats + 1 : begats;
