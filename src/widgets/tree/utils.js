@@ -4,7 +4,14 @@
  *
  * @flow
  */
-import type { NodeExtendInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType, SelectType, } from 'sv-widget';
+import type {
+  NodeExtendInfo,
+  NodeId2Checked,
+  NodeId2ExtendInfo,
+  NodeId2SelectInfo,
+  QueryType,
+  SelectType,
+} from 'sv-widget';
 import { updateVersion, } from './version';
 
 const EmptyError = '结点不能为空',
@@ -249,9 +256,7 @@ class TreeUtils {
     if (rowDatas && rowDatas.length === 0) {
       return empty;
     }
-    console.time('result = rowDatas.slice(start, start + total)');
     const result = rowDatas.slice(start, start + total);
-    console.timeEnd('result = rowDatas.slice(start, start + total)');
     const root = result[ 0 ];
     if (!root) {
       console.warn('树形数据存在问题');
@@ -262,16 +267,11 @@ class TreeUtils {
     if (isTopLevel) {
       return { rows: result, parentCount: 0, };
     }
-    console.time('getPathNodes');
 
     const pathNode = this.getPathNodes(rowDatas, start, id2ExtendInfo);
-    console.timeEnd('getPathNodes');
-
-    console.time('push');
 
     const parentCount = pathNode.length;
     Array.prototype.push.apply(pathNode, result);
-    console.timeEnd('push');
     return { rows: pathNode, parentCount, };
   }
 
@@ -284,18 +284,12 @@ class TreeUtils {
     }
     const { path, } = row;
     if (path) {
-      console.time('split');
       const pathArray = this.getPathArray(row);
-      console.timeEnd('split');
-      console.time('for');
       const len = pathArray.length;
       console.info(len);
       for (let i = 0; i < len; i++) {
-        console.time('result.push(this.getRow(pathArray[ i ], id2ExtendInfo))' + pathArray[ i ]);
         result.push(this.getRow(pathArray[ i ], id2ExtendInfo));
-        console.timeEnd('result.push(this.getRow(pathArray[ i ], id2ExtendInfo))' + pathArray[ i ]);
       }
-      console.timeEnd('for');
 
     }
     return result;
@@ -330,9 +324,7 @@ class TreeUtils {
   fetchNodeExtendInfo (nodeId: string,
                        nodes: Array<RowData>,
                        id2ExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
-    // console.time('this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo)');
     this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo);
-    // console.timeEnd('this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo)');
 
     const existData = id2ExtendInfo[ nodeId ];
     const isExist = existData && existData.begats !== undefined;
@@ -518,7 +510,6 @@ class TreeUtils {
     const noChanged = this.version === this.oldVersion && !queryChanging;
 
     if (noChanged) {
-      console.info('cache');
       return this.oldTreeData;
     }
 
@@ -537,7 +528,6 @@ class TreeUtils {
       const containPath: Object = {};
       const rowSet = [];
       const len = this.orignalData.length - 1;
-      console.time('search for');
       for (let i = len; i >= 0; i--) {
         const row: RowData = this.orignalData[ i ];
         const { title, key, path, } = row;
@@ -557,7 +547,6 @@ class TreeUtils {
           delete need[ key ];
         }
       }
-      console.timeEnd('search for');
       if (rowSet.length === this.orignalData.length) {
         this.treeData = this.orignalData;
       } else {
@@ -565,9 +554,7 @@ class TreeUtils {
       }
     }
     this.query = query;
-    console.time('search generateRealTreeData');
     this.oldTreeData = this.generateRealTreeData(expandInfo);
-    console.timeEnd('search generateRealTreeData');
     return this.oldTreeData;
   }
 
@@ -605,9 +592,7 @@ class TreeUtils {
     this.oldVersion = this.version;
     const { id2ExtendInfo, } = expandInfo;
     const fetchNodeInfo = this.fetchNodeExtendInfoById(datas, id2ExtendInfo);
-    console.time('fetchNodeInfo(this.VirtualRoot)');
     const nodeInfo = fetchNodeInfo(this.VirtualRoot);
-    console.timeEnd('fetchNodeInfo(this.VirtualRoot)');
     const { nowVisible, } = nodeInfo;
 
     if (nowVisible === 0) {
@@ -627,37 +612,24 @@ class TreeUtils {
     }
     const totalLen = datas.length;
     const result = [];
-    let t = 0;
-    let fetchTotal = 0;
-    console.time('generateRealTreeData for');
     for (let i = 0; i < totalLen; i++) {
       const row = datas[ i ];
-      t++;
       result.push(row);
       const { key, } = row;
-      const now = new Date();
       const { childrenIdx = [], nowVisible = 0, children = 0, begats = 0, } = fetchNodeInfo(key);
-      fetchTotal += new Date() - now;
       if (nowVisible === 0) {
         i += begats;
       } else {
         if (nowVisible === children) {
-          console.time(key + ':fetchLevelOneChild');
           Array.prototype.push.apply(result, this.fetchLevelOneChild(datas, childrenIdx));
-          console.timeEnd(key + ':fetchLevelOneChild');
           i += begats;
         } else if (nowVisible === begats) {
           const start = i + 1;
-          console.time(key + ':slice');
           Array.prototype.push.apply(result, datas.slice(start, start + begats));
-          console.timeEnd(key + ':slice');
           i += begats;
         }
       }
     }
-    console.info('t', t);
-    console.info('fetchTotalTime=', fetchTotal);
-    console.timeEnd('generateRealTreeData for');
 
     return this.oldTreeData = result;
   }
@@ -828,6 +800,67 @@ class TreeUtils {
     delete halfchecked[ key ];
     delete checked[ key ];
     delete value[ key ];
+  }
+
+
+  value2SelectInfo (oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
+    const keys = Object.keys(oldValue);
+    const treeData = this.treeData;
+    const value = {}, halfchecked = {}, checked = {};
+    const selectedInfo = { value, halfchecked, checked, };
+    const len = keys.length;
+    const dirNodeKey = [];
+
+    for (let i = 0; i < len; i++) {
+      const key = keys[ i ];
+      const row = this.getRow(key, id2ExtendInfo);
+      if (row) {
+        const { isLeaf = false, key, } = row;
+        if (isLeaf) {
+          this.selectNode(key, selectedInfo, id2ExtendInfo);
+        } else {
+          dirNodeKey.push(key);
+        }
+      }
+    }
+
+    const dirLen = dirNodeKey.length;
+    const fetchNodeInfo = this.fetchNodeExtendInfoById(treeData, id2ExtendInfo);
+    for (let i = 0; i < dirLen; i++) {
+      const key = keys[ i ];
+      const row = this.getRow(key, id2ExtendInfo);
+      if (row) {
+        const { key, } = row;
+        const { begats = 0, } = fetchNodeInfo(key);
+
+        const halfValue = halfchecked[ key ];
+        if (!halfValue) {
+
+          const pathArray = this.getPathArray(row);
+          halfchecked[ key ] = 1;
+          const pathLen = pathArray.length;
+          for (let i = 0; i < pathLen; i++) {
+            const key = pathArray[ i ];
+            const row = this.getRow(key, id2ExtendInfo);
+            if (row) {
+              const halfValue = halfchecked[ key ];
+              if (!halfValue) {
+                halfchecked[ key ] = 0;
+              }
+              const { begats = 0, } = fetchNodeInfo(key);
+              halfchecked[ key ] = halfchecked[ key ] + 1;
+            }
+          }
+
+        }
+        // if (begats > 0 && halfValue === begats) {
+        //
+        // }
+      }
+
+    }
+
+    return { value: oldValue, halfchecked, checked, };
   }
 
   static Selected: 1 = 1;
