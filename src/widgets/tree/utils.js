@@ -669,19 +669,22 @@ class TreeUtils {
       this.selectNode(key, selectInfo, id2ExtendInfo);
       return;
     }
-    const { halfchecked, value, } = selectInfo;
-    value[ key ] = true;
-    halfchecked[ key ] = 1;
 
-    const { path, } = row;
-    if (path) {
-      const pathArray = path.split('/');
-      const len = pathArray.length;
-      for (let i = 0; i < len; i++) {
-        const key = pathArray[ i ];
-        this.halfCheckForParent(key, selectInfo, TreeUtils.Selected, 1);
+    const { halfchecked, value, } = selectInfo;
+    const nowHalf = halfchecked[ key ];
+    if (nowHalf !== undefined) {
+      const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
+      if (nowHalf === begats) {
+        halfchecked[key] = nowHalf + 1;
+        checked[key] = true;
       }
+    } else {
+      halfchecked[ key ] = 1;
     }
+    value[ key ] = true;
+    const { path, } = row;
+    this.updateSelectedStatusForParent(path, selectInfo, 1, TreeUtils.Selected, id2ExtendInfo);
+
   }
 
 
@@ -719,7 +722,7 @@ class TreeUtils {
 
     if (path) {
 
-      const { checked, } = selectInfo;
+      const { checked, halfchecked, } = selectInfo;
       const pathArray = path.split('/');
       const len = pathArray.length;
 
@@ -729,7 +732,6 @@ class TreeUtils {
           case TreeUtils.Selected:
             if (checked[ key ] !== true) {
               this.halfCheckForParent(key, selectInfo, operatorType, halfCount);
-              const { halfchecked, } = selectInfo;
               const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
               if (halfchecked[ key ] === begats + 1) {
                 checked[ key ] = true;

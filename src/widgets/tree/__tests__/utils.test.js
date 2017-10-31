@@ -2562,6 +2562,220 @@ describe('utils', () => {
       },
     });
   });
+  it('selectDirNode key: 1.3.2.1 1.3.2.2 1.3.2', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectDirNode('1.3.2.1', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.3')]: 1,
+        [getKey('1.3.2')]: 1,
+        [getKey('1.3.2.1')]: 1,
+      },
+      checked: {
+        [getKey('1.3.2.1')]: true,
+      },
+      value: {
+        [getKey('1.3.2.1')]: true,
+      },
+    });
+
+    utils.selectDirNode('1.3.2.2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 2,
+        [getKey('1.3')]: 2,
+        [getKey('1.3.2')]: 2,
+        [getKey('1.3.2.1')]: 1,
+        [getKey('1.3.2.2')]: 1,
+      },
+      checked: {
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+      },
+      value: {
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+      },
+    });
+    utils.selectDirNode('1.3.2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 3,
+        [getKey('1.3')]: 3,
+        [getKey('1.3.2')]: 3,
+        [getKey('1.3.2.1')]: 1,
+        [getKey('1.3.2.2')]: 1,
+      },
+      checked: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+
+      },
+      value: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+      },
+    });
+  });
+
+  it('selectDirNode key: 1.3.2.1 1.3.2.2 1.3.2', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectDirNode('1.3.2.1', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.3')]: 1,
+        [getKey('1.3.2')]: 1,
+        [getKey('1.3.2.1')]: 1,
+      },
+      checked: {
+        [getKey('1.3.2.1')]: true,
+      },
+      value: {
+        [getKey('1.3.2.1')]: true,
+      },
+    });
+
+    utils.selectDirNode('1.3.2.2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 2,
+        [getKey('1.3')]: 2,
+        [getKey('1.3.2')]: 2,
+        [getKey('1.3.2.1')]: 1,
+        [getKey('1.3.2.2')]: 1,
+      },
+      checked: {
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+      },
+      value: {
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+      },
+    });
+    utils.selectDirNode('1.3.2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 3,
+        [getKey('1.3')]: 3,
+        [getKey('1.3.2')]: 3,
+        [getKey('1.3.2.1')]: 1,
+        [getKey('1.3.2.2')]: 1,
+      },
+      checked: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+
+      },
+      value: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+      },
+    });
+    utils.selectDirNode('1.3.1.1', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 4,
+        [getKey('1.3')]: 4,
+        [getKey('1.3.2')]: 3,
+        [getKey('1.3.2.1')]: 1,
+        [getKey('1.3.2.2')]: 1,
+        [getKey('1.3.1')]: 1,
+        [getKey('1.3.1.1')]: 1,
+
+      },
+      checked: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+        [getKey('1.3.1.1')]: true,
+
+      },
+      value: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+        [getKey('1.3.1.1')]: true,
+      },
+    });
+
+    utils.selectDirNode('1.3.1.2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 5,
+        [getKey('1.3')]: 5,
+        [getKey('1.3.2')]: 3,
+        [getKey('1.3.2.1')]: 1,
+        [getKey('1.3.2.2')]: 1,
+        [getKey('1.3.1')]: 2,
+        [getKey('1.3.1.1')]: 1,
+        [getKey('1.3.1.2')]: 1,
+
+      },
+      checked: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+
+      },
+      value: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+      },
+    });
+
+    utils.selectDirNode('1.3.1', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 6,
+        [getKey('1.3')]: 6,
+        [getKey('1.3.2')]: 3,
+        [getKey('1.3.2.1')]: 1,
+        [getKey('1.3.2.2')]: 1,
+        [getKey('1.3.1')]: 3,
+        [getKey('1.3.1.1')]: 1,
+        [getKey('1.3.1.2')]: 1,
+
+      },
+      checked: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+        [getKey('1.3.1')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+
+      },
+      value: {
+        [getKey('1.3.2')]: true,
+        [getKey('1.3.2.1')]: true,
+        [getKey('1.3.2.2')]: true,
+        [getKey('1.3.1')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+      },
+    });
+
+  });
+
+
   it('selectNode key: 1.3.1 selectDirNode key: 1.3', () => {
     const nodeExpandInfo = {};
     const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
@@ -2659,7 +2873,7 @@ describe('utils', () => {
     utils.unSelectNode('1.3.1.1', selectedInfo, nodeExpandInfo);
     utils.selectNode('1.3.1.1', selectedInfo, nodeExpandInfo);
     utils.selectNode('1.3.1.2', selectedInfo, nodeExpandInfo);
-    console.info(selectedInfo);
+
     exp(selectedInfo).to.be.eql({
       halfchecked: {
         [getKey('1')]: 3,
