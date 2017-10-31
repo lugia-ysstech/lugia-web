@@ -644,19 +644,21 @@ class TreeUtils {
   }
 
   selectNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
-
+    const { checked, } = selectInfo;
+    if (checked[ key ] === true) {
+      return;
+    }
     const operType = TreeUtils.Selected;
     const { path, } = this.updateSelectedStatusForChildren(key, selectInfo, id2ExtendInfo, operType);
 
     const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
     const maxHalfCount = begats + 1;
 
-    this.updateSelectedStatusForParent(path, selectInfo, maxHalfCount, operType);
+    this.updateSelectedStatusForParent(path, selectInfo, maxHalfCount, operType, id2ExtendInfo);
 
   }
 
   unSelectNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
-
     const notLeaf = !this.isLeaf(key, id2ExtendInfo);
     let halfCount = 1;
 
@@ -683,10 +685,10 @@ class TreeUtils {
 
     const operatorType = TreeUtils.UnSelected;
     const { path, } = this.updateSelectedStatusForChildren(key, selectInfo, id2ExtendInfo, operatorType);
-    this.updateSelectedStatusForParent(path, selectInfo, halfCount, operatorType);
+    this.updateSelectedStatusForParent(path, selectInfo, halfCount, operatorType, id2ExtendInfo);
   }
 
-  updateSelectedStatusForParent (path?: string, selectInfo: NodeId2SelectInfo, halfCount: number, operatorType: SelectType) {
+  updateSelectedStatusForParent (path?: string, selectInfo: NodeId2SelectInfo, halfCount: number, operatorType: SelectType, id2ExtendInfo: NodeId2ExtendInfo) {
 
     if (path) {
 
@@ -700,6 +702,11 @@ class TreeUtils {
           case TreeUtils.Selected:
             if (checked[ key ] !== true) {
               this.halfCheckForParent(key, selectInfo, operatorType, halfCount);
+              const { halfchecked, } = selectInfo;
+              const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
+              if (halfchecked[ key ] === begats + 1) {
+                checked[ key ] = true;
+              }
             }
             break;
           case TreeUtils.UnSelected:
