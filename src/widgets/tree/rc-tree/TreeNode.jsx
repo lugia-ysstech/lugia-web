@@ -24,7 +24,7 @@ class TreeNode extends React.Component {
     title: defaultTitle,
   };
 
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -33,11 +33,11 @@ class TreeNode extends React.Component {
     };
   }
 
-  onCheck = () => {
-    this.props.root.onCheck(this);
+  onCheck = e => {
+    this.props.root.onCheck(this, e);
   }
 
-  onSelect() {
+  onSelect () {
     this.props.root.onSelect(this);
   }
 
@@ -121,11 +121,11 @@ class TreeNode extends React.Component {
   }
 
   // keyboard event support
-  onKeyDown(e) {
+  onKeyDown (e) {
     e.preventDefault();
   }
 
-  isSelectable() {
+  isSelectable () {
     const { props, context, } = this;
     return 'selectable' in props ? props.selectable : context.rcTree.selectable;
   }
@@ -134,42 +134,42 @@ class TreeNode extends React.Component {
     this.selectHandle = node;
   }
 
-  renderSwitcher(props, expandedState) {
+  renderSwitcher (props, expandedState) {
     const prefixCls = props.prefixCls;
     const switcherCls = classNames(
       `${prefixCls}-switcher`,
       `${prefixCls}-switcher_${expandedState}`, {
         [`${prefixCls}-switcher-disabled`]: props.disabled,
       });
-    return <span className={switcherCls} onClick={props.disabled ? null : this.onExpand} />;
+    return <span className={switcherCls} onClick={props.disabled ? null : this.onExpand}/>;
   }
 
-  renderCheckbox(props) {
+  renderCheckbox (props) {
     const prefixCls = props.prefixCls;
     const checkboxCls = {
       [`${prefixCls}-checkbox`]: true,
     };
     if (props.checked) {
-      checkboxCls[`${prefixCls}-checkbox-checked`] = true;
+      checkboxCls[ `${prefixCls}-checkbox-checked` ] = true;
     } else if (props.halfChecked) {
-      checkboxCls[`${prefixCls}-checkbox-indeterminate`] = true;
+      checkboxCls[ `${prefixCls}-checkbox-indeterminate` ] = true;
     }
     let customEle = null;
     if (typeof props.checkable !== 'boolean') {
       customEle = props.checkable;
     }
     if (props.disabled || props.disableCheckbox) {
-      checkboxCls[`${prefixCls}-checkbox-disabled`] = true;
+      checkboxCls[ `${prefixCls}-checkbox-disabled` ] = true;
       return <span className={classNames(checkboxCls)}>{customEle}</span>;
     }
     return (
       <span
-        className={classNames(checkboxCls) }
+        className={classNames(checkboxCls)}
         onClick={this.onCheck}
       >{customEle}</span>);
   }
 
-  renderChildren(props) {
+  renderChildren (props) {
     const renderFirst = this.renderFirst;
     this.renderFirst = 1;
     let transitionAppear = true;
@@ -217,7 +217,7 @@ class TreeNode extends React.Component {
     return newChildren;
   }
 
-  render() {
+  render () {
     const { props, } = this;
     const prefixCls = props.prefixCls;
     const expandedState = props.expanded ? 'open' : 'close';
@@ -269,7 +269,7 @@ class TreeNode extends React.Component {
         if (props.draggable) {
           domProps.className += ' draggable';
           domProps.draggable = true;
-          domProps['aria-grabbed'] = true;
+          domProps[ 'aria-grabbed' ] = true;
           domProps.onDragStart = this.onDragStart;
         }
       }
@@ -308,13 +308,13 @@ class TreeNode extends React.Component {
     const filterCls = props.filterTreeNode(this) ? 'filter-node' : '';
 
     const renderNoopSwitcher = () => (
-      <span className={`${prefixCls}-switcher ${prefixCls}-switcher-noop`} />
+      <span className={`${prefixCls}-switcher ${prefixCls}-switcher-noop`}/>
     );
 
     return (
       <li
         {...liProps}
-        className={classNames(props.className, disabledCls, dragOverCls, filterCls) }
+        className={classNames(props.className, disabledCls, dragOverCls, filterCls)}
       >
         {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : renderNoopSwitcher()}
         {props.checkable ? this.renderCheckbox(props) : null}

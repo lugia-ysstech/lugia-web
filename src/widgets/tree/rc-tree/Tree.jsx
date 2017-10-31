@@ -250,14 +250,14 @@ class Tree extends React.Component {
     }
   }
 
-  onCheck = treeNode => {
+  onCheck = (treeNode, e) => {
 
     const checked = !treeNode.props.checked || treeNode.props.halfChecked;
-    const eventObj = {
+    const eventObj = Object.assign({}, e, {
       event: 'check',
       node: treeNode,
       checked,
-    };
+    });
     const { onCheck, } = this.props;
     const { checkKeys = {}, } = this.state;
     onCheck && onCheck(checkKeys.checkedKeys, eventObj);

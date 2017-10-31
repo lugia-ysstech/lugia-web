@@ -2545,6 +2545,49 @@ describe('utils', () => {
 
 
   });
+  it('selectDirNode key: 1.3', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectDirNode('1.3', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.3')]: 1,
+      },
+      checked: {},
+      value: {
+        [getKey('1.3')]: true,
+      },
+    });
+  });
+  it('selectNode key: 1.3.1 selectDirNode key: 1.3', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandedAll = false;
+    const utils = new TreeUtils(datas, expandedAll);
+    utils.selectNode('1.3.1.1', selectedInfo, nodeExpandInfo);
+
+
+    exp(selectedInfo).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 1,
+        [getKey('1.3')]: 1,
+        [getKey('1.3.1')]: 1,
+        [getKey('1.3.1.1')]: 1,
+      },
+      checked: {
+        [getKey('1.3.1.1')]: true,
+      },
+      value: {
+        [getKey('1.3.1.1')]: true,
+
+      },
+    });
+
+  });
+
   it('selectNode key: 1.3.1.2  1.3.1.1 unSelectNode Key: 1.3.1.1', () => {
     const nodeExpandInfo = {};
     const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };

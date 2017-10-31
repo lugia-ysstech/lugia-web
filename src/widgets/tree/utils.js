@@ -658,6 +658,33 @@ class TreeUtils {
 
   }
 
+  selectDirNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
+    const { checked, } = selectInfo;
+    if (checked[ key ] === true) {
+      return;
+    }
+    const row = this.getRow(key, id2ExtendInfo);
+    const { isLeaf = false, } = row;
+    if (isLeaf === true) {
+      this.selectNode(key, selectInfo, id2ExtendInfo);
+      return;
+    }
+    const { halfchecked, value, } = selectInfo;
+    value[ key ] = true;
+    halfchecked[ key ] = 1;
+
+    const { path, } = row;
+    if (path) {
+      const pathArray = path.split('/');
+      const len = pathArray.length;
+      for (let i = 0; i < len; i++) {
+        const key = pathArray[ i ];
+        this.halfCheckForParent(key, selectInfo, TreeUtils.Selected, 1);
+      }
+    }
+  }
+
+
   unSelectNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
     const notLeaf = !this.isLeaf(key, id2ExtendInfo);
     let halfCount = 1;

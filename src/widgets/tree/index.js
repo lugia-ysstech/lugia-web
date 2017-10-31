@@ -206,7 +206,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
     console.time('loadData utils.search');
 
-    this.getUtils(props).search(expand, props.query);
+    const utils = this.getUtils(props);
+    utils.search(expand, props.query);
     console.timeEnd('loadData utils.search');
 
     if (this.isQueryAll(props)) {
@@ -230,9 +231,28 @@ class Tree extends React.Component<TreeProps, TreeState> {
         },
       };
     } else {
+      const { id2ExtendInfo, } = expand;
+      const { selectedInfo, } = this.state;
+      const { value, } = selectedInfo;
+      const values = Object.keys(value);
+      const len = values.length;
+      const newSelectedInfo = {
+        checked: {},
+        value: {},
+        halfchecked: {},
+      };
+      for (let i = 0; i < len; i++) {
+        const key = values[ i ];
+        const extendInfo = id2ExtendInfo[ key ];
+        if (extendInfo) {
+          utils.selectNode(key, newSelectedInfo, id2ExtendInfo);
+        }
+      }
       this.setState({
         start: 0,
-        expandedKeys, expand,
+        selectedInfo: newSelectedInfo,
+        expandedKeys,
+        expand,
       }, () => {
       });
     }
@@ -359,13 +379,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { expand, selectedInfo, } = this.state;
     const { halfchecked, value, checked: chk, } = selectedInfo;
     const utils = this.getUtils(this.props);
-    const check = halfchecked[ eventKey ] === undefined && checked ? utils.selectNode : utils.unSelectNode;
+    console.info(event.shiftKey);
+    let check = () => {};
+    if (event.shiftKey) {
+      check = halfchecked[ eventKey ] === undefined && checked ? utils.selectDirNode : utils.unSelectNode;
+    } else {
+      check = halfchecked[ eventKey ] === undefined && checked ? utils.selectNode : utils.unSelectNode;
+    }
+    console.info(selectedInfo);
     check.bind(utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
-    console.info('halfchecked value', expand.id2ExtendInfo['0.0.0.7']);
-    console.info('halfchecked value', halfchecked);
-    console.info('value', Object.keys(value));
-    console.info('checked', Object.keys(chk));
-    console.info('halfchecked', Object.keys(halfchecked));
+
     this.setState({ selectedInfo: { ...selectedInfo, }, });
   };
 
