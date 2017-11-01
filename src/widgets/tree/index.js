@@ -44,6 +44,7 @@ type TreeProps = {
   checkable?: boolean;
   /** 默认展开所有树节点 */
   expandAll: boolean;
+  onlySelectLeaf: boolean;
   /** 默认展开指定的树节点 */
   defaultExpandedKeys?: Array<string>;
   /** （受控）展开指定的树节点 */
@@ -100,6 +101,7 @@ class KTree extends React.Component<any, any> {
     prefixCls: 'sv-tree',
     checkable: false,
     expandAll: false,
+    onlySelectLeaf: false,
     showIcon: false,
     openAnimation: animation,
   };
@@ -276,16 +278,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   createTreeQueryUtils (props: TreeProps) {
-    const { data, expandAll = false, } = props;
+    const { data, expandAll = false, onlySelectLeaf, } = props;
     if (data) {
-      this.utils = new TreeUtils(data, {expandAll,});
+      this.utils = new TreeUtils(data, { expandAll, onlySelectLeaf, });
     }
   }
 
   createTreeQueryAllUtils (props: TreeProps) {
-    const { data, expandAll = false, } = props;
+    const { data, expandAll = false, onlySelectLeaf, } = props;
     if (data) {
-      this.queryAllUtils = new TreeUtils(data, {expandAll,});
+      this.queryAllUtils = new TreeUtils(data, { expandAll, onlySelectLeaf, });
     }
   }
 

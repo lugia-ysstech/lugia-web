@@ -191,10 +191,11 @@ export default class extends React.Component<Object, Object> {
       query={this.state.query}
       expandAll
       showLine
-      data={bigTree}
+      data={rowData}
       checkable
       onSelect={onSelect}
       onCheck={onCheck}
+      onlySelectLeaf
     >
     </Tree>,
       <input onChange={this.onChange}/>,];

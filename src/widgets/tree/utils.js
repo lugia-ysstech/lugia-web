@@ -789,11 +789,14 @@ class TreeUtils {
         case TreeUtils.Selected: {
           const { checked, value, } = selectInfo;
           checked[ key ] = true;
-          value[ key ] = true;
+          const { isLeaf = false, } = row;
+
+          if (isLeaf === true || this.onlySelectLeaf === false) {
+            value[ key ] = true;
+          }
 
           const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2ExtendInfo);
           const isTargetNode = i === targetNode;
-          const { isLeaf = false, } = row;
           const childHalfCount = (isTargetNode || isLeaf === false) ? begats + 1 : begats;
 
           if (childHalfCount !== 0) {
