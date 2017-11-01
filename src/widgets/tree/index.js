@@ -151,14 +151,16 @@ class KTree extends React.Component<any, any> {
 
   loopNode = (data: Array<RowData>) => data.map(item => {
     const { children, key, title, isLeaf, } = item;
+    const { checkable, } = this.props;
+    const selectable = checkable === false;
     if (children !== undefined) {
       return (
-        <TreeNode key={key} title={title} isLeaf={isLeaf}>
+        <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>
           {this.loopNode(children)}
         </TreeNode>
       );
     }
-    return <TreeNode key={key} title={title} isLeaf={isLeaf}/>;
+    return <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}/>;
   });
 
 }
@@ -227,10 +229,21 @@ class Tree extends React.Component<TreeProps, TreeState> {
         },
       };
     } else {
-      const { id2ExtendInfo, } = expand;
-      const { selectedInfo, } = this.state;
-      const { value, } = selectedInfo;
-      const newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
+      const { checkable, } = this.props;
+
+      let newSelectedInfo = {
+        checked: {},
+        value: {},
+        halfchecked: {},
+      };
+
+      if (checkable) {
+        const { id2ExtendInfo, } = expand;
+        const { selectedInfo, } = this.state;
+        const { value, } = selectedInfo;
+        newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
+      }
+
       this.setState({
         start: 0,
         selectedInfo: newSelectedInfo,
@@ -238,6 +251,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         expand,
       }, () => {
       });
+
     }
   }
 
@@ -328,6 +342,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
                            start={start}
                            onScroller={this.onScroller}
                            onCheck={this.onCheck}
+                           onSelect={this.onSelect}
                            data={this.realyDatas}
                            showLine={showLine}
                            checkedKeys={Object.keys(checked)}
@@ -347,6 +362,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   }
 
+  onSelect = (key: string) => {
+    const { checkable, } = this.props;
+    if (checkable === false) {
+      console.info(key);
+    }
+  };
   onScroller = (start: number) => {
     this.setState({ start, });
   };
@@ -372,7 +393,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
 
   onExpand = (expandedKeys: Array<string>, rowData: { expanded: boolean, node: Object, }) => {
-    const { onExpand, data = [], expandAll, } = this.props;
+    const { onExpand, data = [], } = this.props;
     const { expanded, node, } = rowData;
     const { expand, } = this.state;
 
@@ -392,19 +413,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.setState({ expand: Object.assign({}, this.state.expand, { id2ExtendInfo, }), expandedKeys, });
     onExpand && onExpand(expandedKeys, data);
   };
-
-
-  loopNode = (data: Array<RowData>) => data.map(item => {
-    const { children, key, title, isLeaf, } = item;
-    if (children !== undefined) {
-      return (
-        <TreeNode key={key} title={title} isLeaf={isLeaf}>
-          {this.loopNode(children)}
-        </TreeNode>
-      );
-    }
-    return <TreeNode key={key} title={title} isLeaf={isLeaf}/>;
-  });
 }
 
 const SvTree = ThemeProvider(Tree, Widget.Tree);
