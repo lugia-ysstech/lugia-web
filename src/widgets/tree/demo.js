@@ -197,7 +197,7 @@ export default class extends React.Component<Object, Object> {
       onlySelectLeaf
     >
     </Tree>,
-      <input onChange={this.onChange}/>,];
+      <input onChange={this.onChange} key="query"/>,];
   }
 
   onTreeChange = (v: any) => {
