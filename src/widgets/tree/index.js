@@ -278,14 +278,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
   createTreeQueryUtils (props: TreeProps) {
     const { data, expandAll = false, } = props;
     if (data) {
-      this.utils = new TreeUtils(data, expandAll);
+      this.utils = new TreeUtils(data, {expandAll,});
     }
   }
 
   createTreeQueryAllUtils (props: TreeProps) {
     const { data, expandAll = false, } = props;
     if (data) {
-      this.queryAllUtils = new TreeUtils(data, expandAll);
+      this.queryAllUtils = new TreeUtils(data, {expandAll,});
     }
   }
 

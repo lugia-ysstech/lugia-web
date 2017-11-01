@@ -70,9 +70,11 @@ class TreeUtils {
   orignalData: Array<RowData>;
   treeData: Array<RowData>;
   oldVersion: number;
-  expandedAll: boolean;
+  expandAll: boolean;
+  onlySelectLeaf: boolean;
 
-  constructor (treeData: Array<RowData>, expandedAll: boolean) {
+  constructor (treeData: Array<RowData>, config: Object) {
+    const { expandAll, onlySelectLeaf = false, } = config;
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
@@ -80,8 +82,9 @@ class TreeUtils {
     this.treeData = treeData;
     this.orignalData = treeData;
     this.query = null;
-    this.expandedAll = expandedAll;
+    this.expandAll = expandAll;
     this.catchPathArray = {};
+    this.onlySelectLeaf = onlySelectLeaf;
     return this;
   }
 
@@ -398,7 +401,7 @@ class TreeUtils {
                       id2ExtendInfo: NodeId2ExtendInfo,
                       childrenIdx: Array<number>): NodeExtendInfo {
 
-    const nowAndRealVisible = this.expandedAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
+    const nowAndRealVisible = this.expandAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
     const nodeInfo = id2ExtendInfo[ nodeId ];
     const index = nodeInfo && nodeInfo.index !== undefined ? nodeInfo.index : -1;
 
@@ -418,7 +421,7 @@ class TreeUtils {
    * @param nodeId
    * @param nodes
    * @param id2ExtendInfo
-   * @param expandedAll
+   * @param expandAll
    */
   expandNode (nodeId: string,
               id2ExtendInfo: NodeId2ExtendInfo): void {
@@ -428,11 +431,11 @@ class TreeUtils {
     const { children, expanded, begats = 0, } = info;
     const isInitStatus = expanded === undefined;
 
-    if (!this.expandedAll && isInitStatus) {
+    if (!this.expandAll && isInitStatus) {
       info.nowVisible = info.realyVisible = children;
     }
 
-    const willNotCollapsed = this.expandedAll && isInitStatus;
+    const willNotCollapsed = this.expandAll && isInitStatus;
     if (willNotCollapsed || expanded === true || begats == 0) {
       return;
     }
