@@ -467,7 +467,7 @@ class Tree extends React.Component {
         {...domProps}
         className={className}
         role="tree-node"
-        unselectable
+        unselectable="true"
         style={props.style}
       >
         {React.Children.map(props.children, this.renderTreeNode, this)}
