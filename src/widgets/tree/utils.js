@@ -286,9 +286,11 @@ class TreeUtils {
     if (path) {
       const pathArray = this.getPathArray(row);
       const len = pathArray.length;
-      console.info(len);
       for (let i = 0; i < len; i++) {
-        result.push(this.getRow(pathArray[ i ], id2ExtendInfo));
+        const row = this.getRow(pathArray[ i ], id2ExtendInfo);
+        if (row) {
+          result.push(row);
+        }
       }
 
     }
@@ -369,7 +371,6 @@ class TreeUtils {
         break;
       }
     }
-    // console.info('begin', begin + 1, 'end', endA);
     return this.generateExtendInfo(nodeId, begats, children, id2ExtendInfo, childrenIdx);
   }
 
@@ -490,7 +491,6 @@ class TreeUtils {
   }
 
   processPath (info: RowData, doCall: Function): void {
-
 
     const { path, } = info;
     const pathArray = [this.VirtualRoot,];
@@ -664,6 +664,10 @@ class TreeUtils {
       return;
     }
     const row = this.getRow(key, id2ExtendInfo);
+    if (!row) {
+      console.warn('选择的结点不存在');
+      return;
+    }
     const { isLeaf = false, } = row;
     if (isLeaf === true) {
       this.selectNode(key, selectInfo, id2ExtendInfo);
@@ -675,8 +679,8 @@ class TreeUtils {
     if (nowHalf !== undefined) {
       const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
       if (nowHalf === begats) {
-        halfchecked[key] = nowHalf + 1;
-        checked[key] = true;
+        halfchecked[ key ] = nowHalf + 1;
+        checked[ key ] = true;
       }
     } else {
       halfchecked[ key ] = 1;
@@ -750,14 +754,22 @@ class TreeUtils {
 
 
   isLeaf (key: string, id2ExtendInfo: NodeId2ExtendInfo) {
-    const { isLeaf = false, } = this.getRow(key, id2ExtendInfo);
+    const row = this.getRow(key, id2ExtendInfo);
+    if (!row) {
+      return false;
+    }
+    const { isLeaf = false, } = row;
     return isLeaf;
   }
 
   getRow (key: string, id2ExtendInfo: NodeId2ExtendInfo) {
     this.initAllNodeIndexAndTopRoot(this.treeData, id2ExtendInfo);
-    const { index, } = id2ExtendInfo[ key ];
-    return this.treeData[ index ];
+    const extendInfo = id2ExtendInfo[ key ];
+    if (extendInfo) {
+      const { index, } = id2ExtendInfo[ key ];
+      return this.treeData[ index ];
+    }
+    return null;
   }
 
   updateSelectedStatusForChildren (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
@@ -840,62 +852,64 @@ class TreeUtils {
 
 
   value2SelectInfo (oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
+
+    const empty = { value: {}, halfchecked: {}, checked: {}, };
+    if (!oldValue) {
+      return empty;
+    }
+
     const keys = Object.keys(oldValue);
-    const treeData = this.treeData;
+    const len = keys.length;
+
+    if (len === 0) {
+      return empty;
+    }
+
+    const levelArray = [];
+    for (let i = 0; i < len; i++) {
+      const key = keys[ i ];
+      const row = this.getRow(key, id2ExtendInfo);
+      if (row) {
+        const { isLeaf = false, } = row;
+        if (isLeaf === false) {
+          const path = this.getPathArray(row);
+          const level = path.length;
+          let rows = levelArray[ level ];
+          if (!rows) {
+            rows = levelArray[ level ] = [];
+          }
+          const { key, } = row;
+          rows.push(key);
+        }
+      }
+    }
+
     const value = {}, halfchecked = {}, checked = {};
     const selectedInfo = { value, halfchecked, checked, };
-    const len = keys.length;
-    const dirNodeKey = [];
+    const levelArrayLen = levelArray.length;
+
+    for (let i = 0; i < levelArrayLen; i++) {
+      const rows = levelArray[ i ];
+      if (rows) {
+        const rowLen = rows.length;
+        for (let j = 0; j < rowLen; j++) {
+          const key = rows[ j ];
+          this.selectDirNode(key, selectedInfo, id2ExtendInfo);
+        }
+      }
+    }
 
     for (let i = 0; i < len; i++) {
       const key = keys[ i ];
       const row = this.getRow(key, id2ExtendInfo);
       if (row) {
-        const { isLeaf = false, key, } = row;
-        if (isLeaf) {
+        const { isLeaf = false, } = row;
+        if (isLeaf == true) {
+          const { key, } = row;
           this.selectNode(key, selectedInfo, id2ExtendInfo);
-        } else {
-          dirNodeKey.push(key);
         }
       }
     }
-
-    const dirLen = dirNodeKey.length;
-    const fetchNodeInfo = this.fetchNodeExtendInfoById(treeData, id2ExtendInfo);
-    for (let i = 0; i < dirLen; i++) {
-      const key = keys[ i ];
-      const row = this.getRow(key, id2ExtendInfo);
-      if (row) {
-        const { key, } = row;
-        const { begats = 0, } = fetchNodeInfo(key);
-
-        const halfValue = halfchecked[ key ];
-        if (!halfValue) {
-
-          const pathArray = this.getPathArray(row);
-          halfchecked[ key ] = 1;
-          const pathLen = pathArray.length;
-          for (let i = 0; i < pathLen; i++) {
-            const key = pathArray[ i ];
-            const row = this.getRow(key, id2ExtendInfo);
-            if (row) {
-              const halfValue = halfchecked[ key ];
-              if (!halfValue) {
-                halfchecked[ key ] = 0;
-              }
-              const { begats = 0, } = fetchNodeInfo(key);
-              halfchecked[ key ] = halfchecked[ key ] + 1;
-            }
-          }
-
-        }
-        // if (begats > 0 && halfValue === begats) {
-        //
-        // }
-      }
-
-    }
-
     return { value: oldValue, halfchecked, checked, };
   }
 

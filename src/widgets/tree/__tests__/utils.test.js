@@ -10,13 +10,13 @@ const { expect: exp, } = chai;
 
 describe('utils', () => {
 
-  const children1D2 = [ 3, 4, ];
-  const children1D2D2 = [ 5, 8, ];
-  const children1D3 = [ 10, 13, 16, ];
-  const children2D1D2 = [ 21, ];
-  const childrenRoot = [ 0, 17, 27, 30, ];
-  const children1 = [ 1, 2, 9, ];
-  const children2 = [ 18, 22, ];
+  const children1D2 = [3, 4,];
+  const children1D2D2 = [5, 8,];
+  const children1D3 = [10, 13, 16,];
+  const children2D1D2 = [21,];
+  const childrenRoot = [0, 17, 27, 30,];
+  const children1 = [1, 2, 9,];
+  const children2 = [18, 22,];
 
   const datas: Array<Object> = [
     { key: '1', title: '1', },
@@ -107,22 +107,22 @@ describe('utils', () => {
   it('checkTree is rowData wrong', () => {
     const mock = mockObject.create(utils);
     const isRightTreeRowData = mock.mockFunction('isRightTreeRowData');
-    const errors = [ '1', '2', '3', ];
+    const errors = ['1', '2', '3',];
     isRightTreeRowData.returned(errors[ 0 ]);
     isRightTreeRowData.returned(errors[ 1 ]);
     isRightTreeRowData.returned(errors[ 2 ]);
-    exp(utils.checkTree([ {}, {}, {}, ])).to.be.eql(errors.map(err => `{}==>${err}`));
+    exp(utils.checkTree([{}, {}, {},])).to.be.eql(errors.map(err => `{}==>${err}`));
     isRightTreeRowData.reset();
   });
 
   it('checkTree is right', () => {
     const mock = mockObject.create(utils);
     const isRightTreeRowData = mock.mockFunction('isRightTreeRowData');
-    const errors = [ '', '', '', ];
+    const errors = ['', '', '',];
     isRightTreeRowData.returned(errors[ 0 ]);
     isRightTreeRowData.returned(errors[ 1 ]);
     isRightTreeRowData.returned(errors[ 2 ]);
-    exp(utils.checkTree([ {}, {}, {}, ])).to.be.eql([]);
+    exp(utils.checkTree([{}, {}, {},])).to.be.eql([]);
     isRightTreeRowData.reset();
   });
 
@@ -178,10 +178,10 @@ describe('utils', () => {
   const pathIsError = ({ key, }) => `${key}结点path信息错误!`;
 
   it('isRightLevel pid level before level ', () => {
-    const errorNodes = [ { key: '1.1', pid: '2', path: '1/7', },
+    const errorNodes = [{ key: '1.1', pid: '2', path: '1/7', },
       { key: '1.2', pid: '2', path: '1/7', },
       { key: '1.3', pid: '2', path: '1/7', },
-      { key: '1.4', pid: '2', path: '1/7', }, ];
+      { key: '1.4', pid: '2', path: '1/7', },];
     const datas = [
       { key: '1', },
       { key: '2', pid: '1', path: '1', },
@@ -198,7 +198,7 @@ describe('utils', () => {
 
     const errorNodes = [
       { key: '1.1.1', pid: '1.1', path: '1', },
-      { key: '1.1.2', pid: '1.1', path: '1', }, ];
+      { key: '1.1.2', pid: '1.1', path: '1', },];
     const datas = [
       { key: '1', },
       { key: '1.1', pid: '1', path: '1', },
@@ -213,11 +213,11 @@ describe('utils', () => {
   });
 
   it('isRightLevel pid level after level but not join, is after "3"', () => {
-    const errorNodes = [ { key: '1.1', pid: '2', path: '1/2', },
+    const errorNodes = [{ key: '1.1', pid: '2', path: '1/2', },
       { key: '1.2', pid: '2', path: '1/2', },
 
       { key: '1.3', pid: '2', path: '1/2', },
-      { key: '1.4', pid: '2', path: '1/2', }, ];
+      { key: '1.4', pid: '2', path: '1/2', },];
     const datas = [
       { key: '1', },
       { key: '2', pid: '1', path: '1', },
@@ -288,7 +288,7 @@ describe('utils', () => {
   it('search 版本未变 查询条件未变 直接返回旧值', () => {
     const utils = new TreeUtils(datas, true);
     const mockUtils = mockObject.create(utils);
-    const result = [ '知行合一', ];
+    const result = ['知行合一',];
     const query: string = '';
     const mock = mockUtils.mockFunction('generateRealTreeData');
     mock.returned(result);
@@ -303,13 +303,13 @@ describe('utils', () => {
     utils.version = 1;
     exp(utils.search(expandInfo, query)).to.be.equal(result);
     exp(mock.callTimes()).to.be.equal(1);
-    exp(mock.getCallArgs(0)).to.be.eql([ expandInfo, ]);
+    exp(mock.getCallArgs(0)).to.be.eql([expandInfo,]);
   });
   it('search 版本改变 查询条件未变 重新计算', () => {
     const utils = new TreeUtils(datas, true);
     const mockUtils = mockObject.create(utils);
-    const result = [ '知行合一', ];
-    const other = [ '有名万物之始', ];
+    const result = ['知行合一',];
+    const other = ['有名万物之始',];
     const query: string = '';
     const mock = mockUtils.mockFunction('generateRealTreeData');
     mock.returned(result);
@@ -323,15 +323,15 @@ describe('utils', () => {
     exp(utils.search(expandInfo, query)).to.be.equal(result);
     exp(utils.search(expandInfo, query)).to.be.equal(other);
     exp(mock.callTimes()).to.be.equal(2);
-    exp(mock.getCallArgs(0)).to.be.eql([ expandInfo, ]);
-    exp(mock.getCallArgs(1)).to.be.eql([ expandInfo, ]);
+    exp(mock.getCallArgs(0)).to.be.eql([expandInfo,]);
+    exp(mock.getCallArgs(1)).to.be.eql([expandInfo,]);
 
   });
   it('search 版本未变 查询条件改变 重新计算', () => {
     const utils = new TreeUtils(datas, true);
     const mockUtils = mockObject.create(utils);
-    const result = [ '知行合一', ];
-    const other = [ '有名万物之始', ];
+    const result = ['知行合一',];
+    const other = ['有名万物之始',];
     const query: string = '';
     const mock = mockUtils.mockFunction('generateRealTreeData');
     mock.returned(result);
@@ -348,8 +348,8 @@ describe('utils', () => {
     exp(utils.search(expandInfo, query + 'different')).to.be.not.equal(result);
     exp(mock.callTimes()).to.be.equal(2);
 
-    exp(mock.getCallArgs(0)).to.be.eql([ expandInfo, ]);
-    exp(mock.getCallArgs(1)).to.be.eql([ expandInfo, ]);
+    exp(mock.getCallArgs(0)).to.be.eql([expandInfo,]);
+    exp(mock.getCallArgs(1)).to.be.eql([expandInfo,]);
   });
   it('search query: 1.2 matchAll', () => {
     const utils = new TreeUtils(datas, true);
@@ -421,7 +421,7 @@ describe('utils', () => {
     };
 
     const result = utils.search(expandInfo, query);
-    const queryResult = [ { key: '1', title: '1', },
+    const queryResult = [{ key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
       { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
@@ -435,7 +435,7 @@ describe('utils', () => {
 
     exp(utils.search(expandInfo, query), '查询出对应的结点').to.be.eql([
       { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', }, ]);
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },]);
     exp(utils.treeData, 'query没变化则treeData要是原来的值').to.be.equal(oldTreeData);
     exp(utils.search(expandInfo, '')).to.be.eql(datas);
     utils.expandNode('1.2', id2ExtendInfo);
@@ -462,18 +462,18 @@ describe('utils', () => {
       id2ExtendInfo: {},
     };
 
-    exp(utils.search(expandInfo, '1.2.1', 'eql')).to.be.eql([ { key: '1', title: '1', },
+    exp(utils.search(expandInfo, '1.2.1', 'eql')).to.be.eql([{ key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, }, ]);
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },]);
 
-    exp(utils.search(expandInfo, '1.2.1', 'eql')).to.be.eql([ { key: '1', title: '1', },
+    exp(utils.search(expandInfo, '1.2.1', 'eql')).to.be.eql([{ key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, }, ]);
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },]);
 
-    exp(utils.search(expandInfo, '1.2.2', 'eql')).to.be.eql([ { key: '1', title: '1', },
+    exp(utils.search(expandInfo, '1.2.2', 'eql')).to.be.eql([{ key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
-      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', }, ]);
-    exp(utils.search(expandInfo, '1.3', 'eql')).to.be.eql([ { key: '1', title: '1', },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },]);
+    exp(utils.search(expandInfo, '1.3', 'eql')).to.be.eql([{ key: '1', title: '1', },
       { key: '1.3', title: '1.3', pid: '1', path: '1', },
     ]);
   });
@@ -514,7 +514,7 @@ describe('utils', () => {
       { key: '3', title: '3', },
       { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
       { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, }, ]);
+      { key: '4', title: '4', isLeaf: true, },]);
   });
 
   it('match val: null', () => {
@@ -589,7 +589,7 @@ describe('utils', () => {
       { key: '3', title: '3', },
       { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
       { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, }, ]);
+      { key: '4', title: '4', isLeaf: true, },]);
   });
 
 
@@ -616,7 +616,7 @@ describe('utils', () => {
       { key: '3', title: '3', },
       { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
       { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, }, ]);
+      { key: '4', title: '4', isLeaf: true, },]);
   });
 
   it('generateRealTreeData expandedAll: false 展开 1 1.1  1.3 1.3.1 1.3.2 3', () => {
@@ -650,7 +650,7 @@ describe('utils', () => {
       { key: '3', title: '3', },
       { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
       { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-      { key: '4', title: '4', isLeaf: true, }, ]);
+      { key: '4', title: '4', isLeaf: true, },]);
   });
 
   it('generateRealTreeData empty', () => {
@@ -672,7 +672,7 @@ describe('utils', () => {
   it('generateTreeNode is tree', () => {
     const utils = new TreeUtils(datas, false);
     const actual = utils.generateTreeNode(datas);
-    const expectResult = [ {
+    const expectResult = [{
       key: '1',
       title: '1',
       children: [
@@ -711,7 +711,7 @@ describe('utils', () => {
                       path: '1/1.2/1.2.2/1.2.2.1',
                       isLeaf: true,
 
-                    }, ],
+                    },],
                 },
                 {
                   key: '1.2.2.2',
@@ -720,19 +720,19 @@ describe('utils', () => {
                   path: '1/1.2/1.2.2',
                   isLeaf: true,
 
-                }, ],
-            }, ],
+                },],
+            },],
         }, {
           key: '1.3',
           title: '1.3',
           pid: '1',
           path: '1',
-          children: [ {
+          children: [{
             key: '1.3.1',
             title: '1.3.1',
             pid: '1.3',
             path: '1/1.3',
-            children: [ {
+            children: [{
               key: '1.3.1.1',
               title: '1.3.1.1',
               pid: '1.3.1',
@@ -744,7 +744,7 @@ describe('utils', () => {
               pid: '1.3.1',
               path: '1/1.3/1.3.1',
               isLeaf: true,
-            }, ],
+            },],
           }, {
             key: '1.3.2',
             title: '1.3.2',
@@ -765,24 +765,24 @@ describe('utils', () => {
                 path: '1/1.3/1.3.2',
                 isLeaf: true,
 
-              }, ],
+              },],
           }, {
             key: '1.3.3',
             title: '1.3.3',
             pid: '1.3',
             path: '1/1.3',
             isLeaf: true,
-          }, ],
-        }, ],
+          },],
+        },],
     }, {
       key: '2',
       title: '2',
-      children: [ {
+      children: [{
         key: '2.1',
         title: '2.1',
         pid: '2',
         path: '2',
-        children: [ {
+        children: [{
           key: '2.1.1',
           title: '2.1.1',
           pid: '2.1',
@@ -794,28 +794,28 @@ describe('utils', () => {
           pid: '2.1',
           path: '2/2.1',
 
-          children: [ {
+          children: [{
             key: '2.1.2.1',
             title: '2.1.2.1',
             pid: '2.1.2',
             path: '2/2.1/2.1.2',
             isLeaf: true,
 
-          }, ],
-        }, ],
+          },],
+        },],
       }, {
         key: '2.2',
         title: '2.2',
         pid: '2',
         path: '2',
 
-        children: [ {
+        children: [{
           key: '2.2.1',
           title: '2.2.1',
           pid: '2.2',
           path: '2/2.2',
 
-          children: [ {
+          children: [{
             key: '2.2.1.1',
             title: '2.2.1.1',
             pid: '2.2.1',
@@ -828,19 +828,19 @@ describe('utils', () => {
             pid: '2.2.1',
             path: '2/2.2/2.2.1',
             isLeaf: true,
-          }, ],
+          },],
         }, {
           key: '2.2.2',
           title: '2.2.2',
           pid: '2.2',
           path: '2/2.2',
           isLeaf: true,
-        }, ],
-      }, ],
+        },],
+      },],
     }, {
       key: '3',
       title: '3',
-      children: [ {
+      children: [{
         key: '3.1',
         title: '3.1', pid: '3',
         path: '3',
@@ -851,10 +851,10 @@ describe('utils', () => {
         pid: '3',
         path: '3',
         isLeaf: true,
-      }, ],
+      },],
     }, {
       key: '4', title: '4', isLeaf: true,
-    }, ];
+    },];
 
     exp(actual).to.be.eql(expectResult);
   });
@@ -863,14 +863,14 @@ describe('utils', () => {
   it('getPathNodes 起始节点为1级结点', () => {
     const utils = new TreeUtils(datas, false);
     exp(utils.getPathNodes(datas, 1, {})).to.be.eql([
-      { key: '1', title: '1', }, ]);
+      { key: '1', title: '1', },]);
   });
 
   it('getPathNodes 起始结点非根结点 2 级', () => {
     const utils = new TreeUtils(datas, false);
     exp(utils.getPathNodes(datas, 3, {})).to.be.eql([
       { key: '1', title: '1', },
-      { key: '1.2', title: '1.2', pid: '1', path: '1', }, ]);
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },]);
   });
 
   it('getPathNodes 起始结点非根结点 3 级', () => {
@@ -879,7 +879,7 @@ describe('utils', () => {
       { key: '1', title: '1', },
       { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', }, ]);
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },]);
   });
 
   it('slice empty', () => {
@@ -890,8 +890,8 @@ describe('utils', () => {
 
   it('getKeys', () => {
     const utils = new TreeUtils(datas, false);
-    const result = utils.getKeys([ { key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', }, ]);
-    exp(result).to.be.eql([ '1', '2', '3', ]);
+    const result = utils.getKeys([{ key: '1', title: '1', }, { key: '2', title: '2', }, { key: '3', title: '3', },]);
+    exp(result).to.be.eql(['1', '2', '3',]);
   });
 
   it('fetchNodeExtendInfo will exisit', () => {
@@ -2414,7 +2414,7 @@ describe('utils', () => {
       { key: '0.0.2', title: '0.0.2', pid: '0.0', path: '0/0.0', },
       { key: '0.1', title: '0.1', pid: '0', path: '0', },
       { key: '1', title: '1', },
-      { key: '2', title: '2', }, ]);
+      { key: '2', title: '2', },]);
   });
 
   it('selectNode key: 1.3.2.1 unSelectNode Key: 1.3.2.1', () => {
@@ -3098,6 +3098,8 @@ describe('utils', () => {
           [getKey('1.2')]: 3,
           [getKey('1.2.2')]: 3,
           [getKey('1.2.2.1')]: 3,
+          [getKey('1.2.2.1.1')]: 1,
+          [getKey('1.2.2.1.2')]: 1,
         },
         checked: {
           [getKey('1.2.2.1')]: true,
@@ -3112,7 +3114,144 @@ describe('utils', () => {
       }
     );
   });
+  it('value2SelectInfo leafNode & dirNdoe  三级结点', () => {
 
+    const value = {
+      [getKey('1.2.2')]: true,
+      [getKey('1.2.2.1')]: true,
+      [getKey('1.2.2.1.1')]: true,
+      [getKey('1.2.2.1.2')]: true,
+      [getKey('1.2.2.2')]: true,
+    };
+    const id2ExtendInfo = {};
+    utils.initAllNodeIndexAndTopRoot(datas, id2ExtendInfo);
+
+    const result = utils.value2SelectInfo(value, id2ExtendInfo);
+    exp(result).to.be.eql(
+      {
+        halfchecked: {
+          [getKey('1')]: 5,
+          [getKey('1.2.2.1.1')]: 1,
+          [getKey('1.2')]: 5,
+          [getKey('1.2.2')]: 5,
+          [getKey('1.2.2.1')]: 3,
+          [getKey('1.2.2.1.2')]: 1,
+          [getKey('1.2.2.2')]: 1,
+        },
+        checked: {
+          [getKey('1.2.2')]: true,
+          [getKey('1.2.2.1')]: true,
+          [getKey('1.2.2.1.1')]: true,
+          [getKey('1.2.2.1.2')]: true,
+          [getKey('1.2.2.2')]: true,
+        },
+        value: {
+          [getKey('1.2.2')]: true,
+          [getKey('1.2.2.1')]: true,
+          [getKey('1.2.2.1.1')]: true,
+          [getKey('1.2.2.1.2')]: true,
+          [getKey('1.2.2.2')]: true,
+        },
+      }
+    );
+  });
+
+  it('value2SelectInfo 配合查询  query: 1.3.1 选择 1  query: 1.3.1.a', () => {
+    const id2ExtendInfo = {};
+    const expandInfo = {
+      id2ExtendInfo,
+    };
+
+    const selectedInfo = {
+      halfchecked: {},
+      checked: {},
+      value: {},
+    };
+    utils.search(expandInfo, '1.3.1');
+    utils.selectNode('1', selectedInfo, expandInfo.id2ExtendInfo);
+
+    utils.search(expandInfo, '1.3.1.a');
+
+    let result = utils.value2SelectInfo(selectedInfo.value, expandInfo.id2ExtendInfo);
+    exp(result).to.be.eql({
+      halfchecked: {},
+      checked: {},
+      value: {
+        [getKey('1')]: true,
+        [getKey('1.3')]: true,
+        [getKey('1.3.1')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+      },
+    });
+    utils.search(expandInfo, '');
+    result = utils.value2SelectInfo(selectedInfo.value, expandInfo.id2ExtendInfo);
+    exp(result).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 5,
+        [getKey('1.3')]: 4,
+        [getKey('1.3.1')]: 3,
+        [getKey('1.3.1.1')]: 1,
+        [getKey('1.3.1.2')]: 1,
+      },
+      checked: {
+        [getKey('1.3.1')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+      },
+      value: {
+        [getKey('1')]: true,
+        [getKey('1.3')]: true,
+        [getKey('1.3.1')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+      },
+    });
+  });
+  it('value2SelectInfo 跨级松散', () => {
+    const id2ExtendInfo = {};
+
+
+    const result = utils.value2SelectInfo({
+      [getKey('1')]: true,
+      [getKey('1.3')]: true,
+      [getKey('1.3.1')]: true,
+      [getKey('1.3.1.1')]: true,
+      [getKey('1.3.1.2')]: true,
+    }, id2ExtendInfo);
+    exp(result).to.be.eql({
+      halfchecked: {
+        [getKey('1')]: 5,
+        [getKey('1.3')]: 4,
+        [getKey('1.3.1')]: 3,
+        [getKey('1.3.1.1')]: 1,
+        [getKey('1.3.1.2')]: 1,
+      },
+      checked: {
+        [getKey('1.3.1')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+      },
+      value: {
+        [getKey('1')]: true,
+        [getKey('1.3')]: true,
+        [getKey('1.3.1')]: true,
+        [getKey('1.3.1.1')]: true,
+        [getKey('1.3.1.2')]: true,
+      },
+    });
+  });
+  it('value2SelectInfo 空对象', () => {
+    const id2ExtendInfo = {};
+
+
+    const result = utils.value2SelectInfo({}, id2ExtendInfo);
+    exp(result).to.be.eql({
+      halfchecked: {},
+      checked: {},
+      value: {},
+    });
+  });
 
   function getKey (key: string): string {
     return key;

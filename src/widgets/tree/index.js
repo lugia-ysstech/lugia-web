@@ -128,12 +128,8 @@ class KTree extends React.Component<any, any> {
       [`${prefixCls}-show-line`]: !!showLine,
     }, className);
     if (data) {
-      console.time('utils.slice(data, start, end - start, out)');
       const { rows, parentCount, } = utils.slice(data, start, end - start, id2ExtendInfo);
-      console.timeEnd('utils.slice(data, start, end - start, out)');
-      console.time('utils.generateTreeNode(rows)');
       const nodes = utils.generateTreeNode(rows);
-      console.timeEnd('utils.generateTreeNode(rows)');
 
       const top = -parentCount * 17;
       const treeNodes = this.loopNode(nodes);
@@ -204,11 +200,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (notFirstAndNotQueryALl) {
       this.createTreeQueryUtils(props);
     }
-    console.time('loadData utils.search');
 
     const utils = this.getUtils(props);
     utils.search(expand, props.query);
-    console.timeEnd('loadData utils.search');
 
     if (this.isQueryAll(props)) {
       if (this.allExpandKeys === undefined) {
@@ -234,20 +228,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       const { id2ExtendInfo, } = expand;
       const { selectedInfo, } = this.state;
       const { value, } = selectedInfo;
-      const values = Object.keys(value);
-      const len = values.length;
-      const newSelectedInfo = {
-        checked: {},
-        value: {},
-        halfchecked: {},
-      };
-      for (let i = 0; i < len; i++) {
-        const key = values[ i ];
-        const extendInfo = id2ExtendInfo[ key ];
-        if (extendInfo) {
-          utils.selectNode(key, newSelectedInfo, id2ExtendInfo);
-        }
-      }
+      const newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
       this.setState({
         start: 0,
         selectedInfo: newSelectedInfo,
@@ -270,7 +251,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
       if (this.allExpandInfo === undefined) {
         this.allExpandInfo = empty;
       }
-      console.info(this.allExpandInfo);
       return this.allExpandInfo;
     }
     return empty;
@@ -341,9 +321,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
       const utils = this.getUtils(this.props);
-      console.time('utils.search');
       this.realyDatas = utils.search(expand, query);
-      console.timeEnd('utils.search');
       return <ThrottleTree {...this.props} id2ExtendInfo={id2ExtendInfo}
                            start={start}
                            onScroller={this.onScroller}
@@ -379,16 +357,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { expand, selectedInfo, } = this.state;
     const { halfchecked, value, checked: chk, } = selectedInfo;
     const utils = this.getUtils(this.props);
-    console.info(event.shiftKey);
     let check = () => {};
     if (event.shiftKey) {
       check = halfchecked[ eventKey ] === undefined && checked ? utils.selectDirNode : utils.unSelectNode;
     } else {
       check = halfchecked[ eventKey ] === undefined && checked ? utils.selectNode : utils.unSelectNode;
     }
-    console.info(selectedInfo);
     check.bind(utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
-
+    console.info(selectedInfo);
     this.setState({ selectedInfo: { ...selectedInfo, }, });
   };
 
