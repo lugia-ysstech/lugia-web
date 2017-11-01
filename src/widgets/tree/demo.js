@@ -110,8 +110,8 @@ function f1 () {
   for (let index = 0; index < length; index++) {
     const row = bigTree[ index ];
     if (row.pid !== undefined) {
-        childrenIdx.push(index);
-        children++;
+      childrenIdx.push(index);
+      children++;
     }
     const key = row.key;
     const container = id2nodeExpandInfo.hasOwnProperty(key);
@@ -175,8 +175,6 @@ console.timeEnd('f1');
 // console.timeEnd('f2');
 
 
-
-
 export default class extends React.Component<Object, Object> {
   constructor (props: Object) {
     super(props);
@@ -194,6 +192,7 @@ export default class extends React.Component<Object, Object> {
       data={rowData}
       checkable
       onSelect={onSelect}
+      onChange={this.onTreeChange}
       onCheck={onCheck}
       onlySelectLeaf
     >
@@ -201,6 +200,9 @@ export default class extends React.Component<Object, Object> {
       <input onChange={this.onChange}/>,];
   }
 
+  onTreeChange = (v: any) => {
+    console.info(v);
+  };
   onChange = (e: Object) => {
     this.setState({ query: e.target.value, });
   };

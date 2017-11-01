@@ -59,10 +59,12 @@ type TreeProps = {
   defaultSelectedKeys?: Array<string>;
   /** 展开/收起节点时触发 */
   onExpand?: Function,
-  /** 点击复选框触发 */
-  onCheck?: Function,
   /** 点击树节点触发 */
   onSelect?: Function,
+  /**
+   * 当值发生变化的时候出发
+   */
+  onChange?: Function,
   /** filter some AntTreeNodes as you need. it should return true */
   filterAntTreeNode?: Function,
   /** 异步加载数据 */
@@ -93,9 +95,10 @@ type TreeState = {
   expand: ExpandInfo,
   selectedInfo: NodeId2SelectInfo,
   expandedKeys: Array<string>,
+  selectValue?: Array<string>,
 }
 
-class KTree extends React.Component<any, any> {
+class ScrollerTree extends React.Component<any, any> {
 
   static defaultProps = {
     prefixCls: 'sv-tree',
@@ -151,8 +154,7 @@ class KTree extends React.Component<any, any> {
 
   loopNode = (data: Array<RowData>) => data.map(item => {
     const { children, key, title, isLeaf, } = item;
-    const { checkable, } = this.props;
-    const selectable = checkable === false;
+    const { selectable, } = this.props;
     if (children !== undefined) {
       return (
         <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>
@@ -165,7 +167,7 @@ class KTree extends React.Component<any, any> {
 
 }
 
-const ThrottleTree = ThrottleScroller(KTree, menuItemHeight);
+const ThrottleTree = ThrottleScroller(ScrollerTree, menuItemHeight);
 
 class Tree extends React.Component<TreeProps, TreeState> {
 
@@ -281,6 +283,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const needUpdate = dataChanged
       || this.props.query !== nexProps.query
       || this.state.start !== nextState.start
+      || this.state.selectValue !== nextState.selectValue
       || nextState.expand !== this.state.expand
       || nextState.selectedInfo !== this.state.selectedInfo;
     return needUpdate;
@@ -321,18 +324,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render () {
     const {
-      prefixCls = Tree.defaultProps.prefixCls,
-      className,
       showLine,
       checkable,
       data,
     } = this.props;
-
-    const classString = classNames({
-      [`${prefixCls}-show-line`]: !!showLine,
-    }, className);
-    const { children, query, } = this.props;
-    const { expand, expandedKeys, selectedInfo, start, } = this.state;
+    const { query, } = this.props;
+    const { expand, expandedKeys, selectedInfo, start, selectValue, } = this.state;
     const { id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
@@ -345,6 +342,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
                            onSelect={this.onSelect}
                            data={this.realyDatas}
                            showLine={showLine}
+                           selectable={this.isSingleSelect()}
+                           selectedKeys={selectValue}
                            checkedKeys={Object.keys(checked)}
                            halfCheckedKeys={Object.keys(halfchecked)}
                            mutliple={checkable}
@@ -352,33 +351,34 @@ class Tree extends React.Component<TreeProps, TreeState> {
                            expandedKeys={expandedKeys}
                            onExpand={this.onExpand}></ThrottleTree>;
     }
-    return <RcTree {...this.props} className={classString}
-                   onExpand={this.onExpand}
-                   checkedKeys={Object.keys(checked)}
-                   halfCheckedKeys={Object.keys(halfchecked)}
-                   checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
-      {children}
-    </RcTree>;
+    return <div></div>;
 
   }
 
-  onSelect = (key: string) => {
-    const { checkable, } = this.props;
-    if (checkable === false) {
-      console.info(key);
+  onSelect = (selectValue: Array<string>) => {
+    if (this.isSingleSelect()) {
+      this.value = selectValue[ 0 ];
+      this.setState({ selectValue, }, () => {
+        this.onChange();
+      });
     }
   };
+
+  isSingleSelect () {
+    const { checkable, } = this.props;
+    return checkable === false;
+  }
+
   onScroller = (start: number) => {
     this.setState({ start, });
   };
-
-
+  value: any;
   onCheck = (_, event) => {
     const { node, checked, } = event;
     const { props, } = node;
     const { eventKey, } = props;
     const { expand, selectedInfo, } = this.state;
-    const { halfchecked, value, checked: chk, } = selectedInfo;
+    const { halfchecked, value, } = selectedInfo;
     const utils = this.getUtils(this.props);
     let check = () => {};
     if (event.shiftKey) {
@@ -387,11 +387,17 @@ class Tree extends React.Component<TreeProps, TreeState> {
       check = halfchecked[ eventKey ] === undefined && checked ? utils.selectNode : utils.unSelectNode;
     }
     check.bind(utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
-    console.info(selectedInfo);
-    this.setState({ selectedInfo: { ...selectedInfo, }, });
+    this.value = Object.keys(value);
+    this.setState({ selectedInfo: { ...selectedInfo, }, }, () => {
+      this.onChange();
+    });
   };
 
 
+  onChange = () => {
+    const { onChange, } = this.props;
+    onChange && onChange(this.value);
+  };
   onExpand = (expandedKeys: Array<string>, rowData: { expanded: boolean, node: Object, }) => {
     const { onExpand, data = [], } = this.props;
     const { expanded, node, } = rowData;
