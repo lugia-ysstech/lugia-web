@@ -211,6 +211,39 @@ describe('Input', () => {
     assertInputValue(component, value);
 
   });
+  it('props: defaultValue', () => {
+
+
+    const value = '诸行无常';
+    const changeValue = 'hello ligx';
+
+    class LimitInput extends React.Component<any, any> {
+      render () {
+
+        return <Input defaultValue={this.props.defaultValue}/>;
+      }
+    }
+
+    const component = mount(<LimitInput defaultValue={value}/>);
+
+    assertInputValue(component, value);
+    component.find('input').simulate('change', { target: { value: changeValue, }, });
+    assertInputValue(component, changeValue);
+
+
+  });
+  it('props: defaultValue & value', () => {
+
+
+    const defaultValue = '诸行无常';
+    const value = '诸法无我';
+
+    const component = mount(<Input defaultValue={defaultValue} value={value}/>);
+
+    assertInputValue(component, value);
+
+
+  });
 
 
   it('props: value onChange Limited Input changed for prefix: Icon', () => {
