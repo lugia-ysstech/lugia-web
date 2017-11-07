@@ -17,8 +17,6 @@ import './index.css';
 import TreeUtils from './utils';
 import 'babel-polyfill';
 
-const defaultHeight = 250;
-const menuItemHeight = 18;
 type RowData = {
   key: string,
   title: string,
