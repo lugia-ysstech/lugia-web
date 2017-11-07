@@ -98,8 +98,7 @@ const rowData = [
 ];
 console.info(bigTree.length);
 
-
-export default class extends React.Component<Object, Object> {
+class MutlipleTree extends React.Component<Object, Object> {
   constructor (props: Object) {
     super(props);
     this.state = { query: '', };
@@ -114,11 +113,11 @@ export default class extends React.Component<Object, Object> {
       expandAll
       showLine
       data={rowData}
-      multiple
+      mutliple
       onSelect={onSelect}
       onChange={this.onTreeChange}
       onCheck={onCheck}
-      defaultValue="1.2"
+      defaultValue="1,1.1,1.2"
       // onlySelectLeaf
     >
     </Tree>,
@@ -131,4 +130,43 @@ export default class extends React.Component<Object, Object> {
   onChange = (e: Object) => {
     this.setState({ query: e.target.value, });
   };
+
 }
+
+class SingleTree extends React.Component<Object, Object> {
+  constructor (props: Object) {
+    super(props);
+    this.state = { query: '', };
+  }
+
+  render () {
+
+
+    return [<Tree
+      key="tree"
+      query={this.state.query}
+      expandAll
+      showLine
+      data={rowData}
+      onSelect={onSelect}
+      onChange={this.onTreeChange}
+      onCheck={onCheck}
+      defaultValue="1"
+      // onlySelectLeaf
+    >
+    </Tree>,
+      <input onChange={this.onChange} key="query"/>,];
+  }
+
+  onTreeChange = (v: any) => {
+    console.info(v);
+  };
+  onChange = (e: Object) => {
+    this.setState({ query: e.target.value, });
+  };
+
+}
+
+export default () => {
+  return [<MutlipleTree key="mutliple"/>, <SingleTree key="single"/>,];
+};

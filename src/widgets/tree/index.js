@@ -34,7 +34,7 @@ type TreeProps = {
   query: string,
   showLine?: boolean;
   /** 是否支持多选 */
-  multiple?: boolean;
+  mutliple?: boolean;
   /** 默认展开所有树节点 */
   expandAll: boolean;
   onlySelectLeaf: boolean;
@@ -66,7 +66,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
   static displayName = Widget.Tree;
   static defaultProps = {
     expandAll: false,
-    multiple: false,
+    mutliple: false,
+    defaultValue: '',
     showIcon: false,
     query: '',
     openAnimation: animation,
@@ -111,18 +112,41 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
 
     if (init) {
+      const { defaultValue = '', } = this.props;
+      const { id2ExtendInfo, } = expand;
+
+      let selectedInfo = {
+        checked: {},
+        value: {},
+        halfchecked: {},
+      };
+      let selectValue = [];
+      if (defaultValue && defaultValue !== '') {
+        if (this.isSingleSelect()) {
+          selectValue = [defaultValue,];
+        } else {
+          const valArray = defaultValue.split(',');
+          const len = valArray.length;
+          const value = {};
+          for (let i = 0; i < len; i++) {
+            if (valArray[ i ] != '') {
+              value[ valArray[ i ] ] = true;
+            }
+          }
+          selectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
+        }
+      }
+
       this.state = {
         start: 0,
         expandedKeys,
         expand,
-        selectedInfo: {
-          checked: {},
-          value: {},
-          halfchecked: {},
-        },
+        selectValue,
+        selectedInfo,
       };
+
     } else {
-      const { multiple, } = this.props;
+      const { mutliple, } = this.props;
 
       let newSelectedInfo = {
         checked: {},
@@ -130,7 +154,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         halfchecked: {},
       };
 
-      if (multiple) {
+      if (mutliple) {
         const { id2ExtendInfo, } = expand;
         const { selectedInfo, } = this.state;
         const { value, } = selectedInfo;
@@ -216,7 +240,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   render () {
     const {
       showLine,
-      multiple,
+      mutliple,
       data,
     } = this.props;
     const { query, } = this.props;
@@ -237,7 +261,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
                            selectedKeys={selectValue}
                            checkedKeys={Object.keys(checked)}
                            halfCheckedKeys={Object.keys(halfchecked)}
-                           mutliple={multiple}
+                           mutliple={mutliple}
                            utils={utils}
                            expandedKeys={expandedKeys}
                            onExpand={this.onExpand}></ThrottleTree>;
@@ -256,8 +280,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
   };
 
   isSingleSelect () {
-    const { multiple, } = this.props;
-    return multiple === false;
+    const { mutliple, } = this.props;
+    return mutliple === false;
   }
 
   onScroller = (start: number) => {

@@ -30,7 +30,7 @@ class ScrollerTree extends React.Component<any, any> {
 
   static defaultProps = {
     prefixCls: 'sv-tree',
-    multiple: false,
+    mutliple: false,
     expandAll: false,
     onlySelectLeaf: false,
     showIcon: false,
@@ -48,7 +48,7 @@ class ScrollerTree extends React.Component<any, any> {
       prefixCls,
       className,
       showLine,
-      multiple,
+      mutliple,
       data,
       start,
       end,
@@ -71,7 +71,7 @@ class ScrollerTree extends React.Component<any, any> {
                      style={{ position: 'relative', top: `${top}px`, }}
                      className={classString}
                      onExpand={onExpand}
-                     checkable={multiple ? <span className={`${prefixCls}-checkbox-inner`}/> : multiple}>
+                     checkable={mutliple ? <span className={`${prefixCls}-checkbox-inner`}/> : mutliple}>
         {treeNodes}
       </RcTree>;
     }
