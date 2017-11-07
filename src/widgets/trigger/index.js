@@ -320,9 +320,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
     newChildProps.key = 'container';
-
-    const portal = createPortal(this.getComponent(), this.getContainer());
-    return [React.cloneElement(child, newChildProps), portal,];
+    return [React.cloneElement(child, newChildProps), this.getComponent(),];
   }
 
   isClickToShow () {
