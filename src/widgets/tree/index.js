@@ -7,10 +7,10 @@
 import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, } from 'sv-widget';
 import animation from '../common/openAnimation';
 import * as React from 'react';
-import RcTree, { TreeNode, } from './rc-tree';
-import classNames from 'classnames';
+import { TreeNode, } from './rc-tree';
+
 import ThemeProvider from '../common/ThemeProvider';
-import ThrottleScroller from '../scroller/ThrottleScroller';
+import ThrottleTree from './ThrottleTree';
 import * as Widget from '../consts/Widget';
 import '../css/sv.css';
 import './index.css';
@@ -33,30 +33,14 @@ type TreeProps = {
   end: number,
   query: string,
   showLine?: boolean;
-  className?: string;
   /** 是否支持多选 */
   multiple?: boolean;
-  /** 是否自动展开父节点 */
-  autoExpandParent?: boolean;
-  /** checkable状态下节点选择完全受控（父子节点选中状态不再关联）*/
-  checkStrictly?: boolean;
-  /** 是否支持选中 */
-  checkable?: boolean;
   /** 默认展开所有树节点 */
   expandAll: boolean;
   onlySelectLeaf: boolean;
-  /** 默认展开指定的树节点 */
-  defaultExpandedKeys?: Array<string>;
-  /** （受控）展开指定的树节点 */
-  expandedKeys?: Array<string>;
-  /** （受控）选中复选框的树节点 */
-  checkedKeys?: Array<string> | { checked: Array<string>, halfChecked: Array<string> };
-  /** 默认选中复选框的树节点 */
-  defaultCheckedKeys?: Array<string>;
-  /** （受控）设置选中的树节点 */
-  selectedKeys?: Array<string>;
-  /** 默认选中的树节点 */
-  defaultSelectedKeys?: Array<string>;
+
+  defaultValue: string;
+
   /** 展开/收起节点时触发 */
   onExpand?: Function,
   /** 点击树节点触发 */
@@ -65,29 +49,7 @@ type TreeProps = {
    * 当值发生变化的时候出发
    */
   onChange?: Function,
-  /** filter some AntTreeNodes as you need. it should return true */
-  filterAntTreeNode?: Function,
-  /** 异步加载数据 */
-  loadData?: Function,
-  /** 响应右键点击 */
-  onRightClick?: Function,
-  /** 设置节点可拖拽（IE>8）*/
-  draggable?: boolean;
-  /** 开始拖拽时调用 */
-  onDragStart?: Function,
-  /** dragenter 触发时调用 */
-  onDragEnter?: Function,
-  /** dragover 触发时调用 */
-  onDragOver?: Function,
-  /** dragleave 触发时调用 */
-  onDragLeave?: Function,
-  /** drop 触发时调用 */
-  onDrop?: Function,
-  prefixCls?: string;
-  filterTreeNode?: Function,
-  children: React.Node,
   data?: Array<RowData>,
-  setDataLen: Function,
 };
 
 type TreeState = {
@@ -98,84 +60,13 @@ type TreeState = {
   selectValue?: Array<string>,
 }
 
-class ScrollerTree extends React.Component<any, any> {
-
-  static defaultProps = {
-    prefixCls: 'sv-tree',
-    checkable: false,
-    expandAll: false,
-    onlySelectLeaf: false,
-    showIcon: false,
-    openAnimation: animation,
-  };
-
-  utils: TreeUtils;
-
-  constructor (props) {
-    super(props);
-  }
-
-  render () {
-    const {
-      prefixCls = Tree.defaultProps.prefixCls,
-      className,
-      showLine,
-      checkable,
-      data,
-      start,
-      end,
-      onExpand,
-      utils,
-      onSelect,
-      id2ExtendInfo,
-    } = this.props;
-    const classString = classNames({
-      [`${prefixCls}-show-line`]: !!showLine,
-    }, className);
-    if (data) {
-      const { rows, parentCount, } = utils.slice(data, start, end - start, id2ExtendInfo);
-      const nodes = utils.generateTreeNode(rows);
-
-      const top = -parentCount * 17;
-      const treeNodes = this.loopNode(nodes);
-      return <RcTree {...this.props}
-                     onSelect={onSelect}
-                     style={{ position: 'relative', top: `${top}px`, }}
-                     className={classString}
-                     onExpand={onExpand}
-                     checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`}/> : checkable}>
-        {treeNodes}
-      </RcTree>;
-    }
-
-
-  }
-
-
-  loopNode = (data: Array<RowData>) => data.map(item => {
-    const { children, key, title, isLeaf, } = item;
-    const { selectable, } = this.props;
-    if (children !== undefined) {
-      return (
-        <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>
-          {this.loopNode(children)}
-        </TreeNode>
-      );
-    }
-    return <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}/>;
-  });
-
-}
-
-const ThrottleTree = ThrottleScroller(ScrollerTree, menuItemHeight);
 
 class Tree extends React.Component<TreeProps, TreeState> {
 
   static displayName = Widget.Tree;
   static defaultProps = {
     expandAll: false,
-    prefixCls: 'sv-tree',
-    checkable: false,
+    multiple: false,
     showIcon: false,
     query: '',
     openAnimation: animation,
@@ -231,7 +122,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         },
       };
     } else {
-      const { checkable, } = this.props;
+      const { multiple, } = this.props;
 
       let newSelectedInfo = {
         checked: {},
@@ -239,7 +130,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         halfchecked: {},
       };
 
-      if (checkable) {
+      if (multiple) {
         const { id2ExtendInfo, } = expand;
         const { selectedInfo, } = this.state;
         const { value, } = selectedInfo;
@@ -325,7 +216,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   render () {
     const {
       showLine,
-      checkable,
+      multiple,
       data,
     } = this.props;
     const { query, } = this.props;
@@ -346,7 +237,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
                            selectedKeys={selectValue}
                            checkedKeys={Object.keys(checked)}
                            halfCheckedKeys={Object.keys(halfchecked)}
-                           mutliple={checkable}
+                           mutliple={multiple}
                            utils={utils}
                            expandedKeys={expandedKeys}
                            onExpand={this.onExpand}></ThrottleTree>;
@@ -365,8 +256,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
   };
 
   isSingleSelect () {
-    const { checkable, } = this.props;
-    return checkable === false;
+    const { multiple, } = this.props;
+    return multiple === false;
   }
 
   onScroller = (start: number) => {
@@ -422,6 +313,5 @@ class Tree extends React.Component<TreeProps, TreeState> {
 }
 
 const SvTree = ThemeProvider(Tree, Widget.Tree);
-
+SvTree.TreeNode = TreeNode;
 export default SvTree;
-Tree.TreeNode = TreeNode;

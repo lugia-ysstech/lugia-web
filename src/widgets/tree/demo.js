@@ -96,83 +96,7 @@ const rowData = [
   { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
   { key: '4', title: '4', isLeaf: true, },
 ];
-// rowData.forEach((row: Object, i: number) => {
-//   row.title = row.title + '-' + i;
-// });
 console.info(bigTree.length);
-
-function f1 () {
-
-  const childrenIdx = [];
-  const id2nodeExpandInfo = {};
-  const length = bigTree.length;
-  let children = 0;
-  for (let index = 0; index < length; index++) {
-    const row = bigTree[ index ];
-    if (row.pid !== undefined) {
-      childrenIdx.push(index);
-      children++;
-    }
-    const key = row.key;
-    const container = id2nodeExpandInfo.hasOwnProperty(key);
-    if (!container) {
-      id2nodeExpandInfo[ key ] = index;
-    }
-  }
-}
-
-function f2 () {
-
-  const childrenIdx = [];
-  const id2nodeExpandInfo = {};
-  const length = bigTree.length;
-  const children = 0;
-  for (let index = 0; index < length; index++) {
-    const row = bigTree[ index ];
-    if (row.pid !== undefined) {
-      //   childrenIdx.push(index);
-      //   children++;
-    }
-    const key = row.key;
-    const container = id2nodeExpandInfo[ key ];
-    if (!container) {
-      // id2nodeExpandInfo[ key ] = { index, };
-    }
-  }
-}
-
-function f3 () {
-
-  const childrenIdx = [];
-  const id2nodeExpandInfo = {};
-  const length = bigTree.length;
-  const children = 0;
-  for (let index = 0; index < length; index++) {
-    const row = bigTree[ index ];
-    if (row.pid !== undefined) {
-      //   childrenIdx.push(index);
-      //   children++;
-    }
-    const key = row.key;
-    const container = key in id2nodeExpandInfo;
-    if (!container) {
-      // id2nodeExpandInfo[ key ] = { index, };
-    }
-  }
-}
-
-//
-// console.time('f3');
-// f3();
-// console.timeEnd('f3');
-
-console.time('f1');
-f1();
-console.timeEnd('f1');
-
-// console.time('f2');
-// f2();
-// console.timeEnd('f2');
 
 
 export default class extends React.Component<Object, Object> {
@@ -190,11 +114,12 @@ export default class extends React.Component<Object, Object> {
       expandAll
       showLine
       data={rowData}
-      checkable
+      multiple
       onSelect={onSelect}
       onChange={this.onTreeChange}
       onCheck={onCheck}
-      onlySelectLeaf
+      defaultValue="1.2"
+      // onlySelectLeaf
     >
     </Tree>,
       <input onChange={this.onChange} key="query"/>,];
