@@ -168,5 +168,11 @@ class SingleTree extends React.Component<Object, Object> {
 }
 
 export default () => {
-  return [<MutlipleTree key="mutliple"/>, <SingleTree key="single"/>,];
+  return [<MutlipleTree key="mutliple"/>, <SingleTree key="single"/>, <Tree
+    expandAll
+    showLine
+    query="2.1.2.1"
+    data={rowData}
+  >
+  </Tree>,];
 };

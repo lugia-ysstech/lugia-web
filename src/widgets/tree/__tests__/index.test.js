@@ -72,10 +72,49 @@ describe('Tree', () => {
     }
   }
 
- 
+  it('props: query: 2.1.2.1 expandAll: true mutliple: false', () => {
+    const cmp = render(<Tree
+      expandAll
+      showLine
+      query="2.1.2.1"
+      data={rowData}
+    >
+    </Tree>);
+    const titles = cmp.find('.sv-tree-title');
+    exp(titles.length).to.be.equal(4);
+    exp(titles.slice(0, 1).text()).to.be.equal('2');
+    exp(titles.slice(1, 2).text()).to.be.equal('2.1');
+    exp(titles.slice(2, 3).text()).to.be.equal('2.1.2');
+    exp(titles.slice(3, 4).text()).to.be.equal('2.1.2.1');
+  });
+
+  it('props: query: 2.1.2.1 expandAll: false mutliple: true', () => {
+    const cmp = render(<Tree
+      mutliple
+      showLine
+      query="2.1.2.1"
+      data={rowData}
+    >
+    </Tree>);
+    const titles = cmp.find('.sv-tree-title');
+    exp(titles.length).to.be.equal(4);
+    exp(titles.slice(0, 1).text()).to.be.equal('2');
+    exp(titles.slice(1, 2).text()).to.be.equal('2.1');
+    exp(titles.slice(2, 3).text()).to.be.equal('2.1.2');
+    exp(titles.slice(3, 4).text()).to.be.equal('2.1.2.1');
+  });
+
+
+  // it('props: defaultValue: 1 mutliple: true value: 1.1', () => {
+  //
+  //   const cmp = render(<TreeDemo defaultValue="1" value="1.1" data={rowData}/>);
+  //   const chkBoxes = cmp.find('.sv-tree-checkbox');
+  //   exp(chkBoxes.slice(1, 2).hasClass('sv-tree-checkbox-checked')).to.be.true;
+  // });
+
   it('props: defaultValue: 1 mutliple: true', () => {
 
-    const cmp = render(<TreeDemo defaultValue={'1'} data={rowData}/>);
+    const cmp = render(<TreeDemo defaultValue="1" data={rowData}/>);
     exp(cmp.find('.sv-tree-checkbox').first().hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
   });
 
@@ -91,7 +130,7 @@ describe('Tree', () => {
 
   it('props: defaultValue: 1  mutliple: false', () => {
 
-    const cmp = render(<TreeDemo defaultValue={'1'} data={rowData} mutliple={false}/>);
+    const cmp = render(<TreeDemo defaultValue="1" data={rowData} mutliple={false}/>);
     exp(cmp.find('.sv-tree-checkbox').length).to.be.equal(0);
     exp(cmp.find('.sv-tree-node-content-wrapper').first().hasClass('sv-tree-node-selected')).to.be.true;
   });
