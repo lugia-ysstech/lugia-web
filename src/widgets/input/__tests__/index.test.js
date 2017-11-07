@@ -8,8 +8,9 @@ import 'jest-styled-components';
 
 import Support from '../../common/FormFieldWidgetSupport';
 import { assertInputValue, testFireNullKeyBoardEvent, testKeyBoardEvent, testPropsValue, } from './InputTestUtils';
-import Enzyme,{ mount, }  from 'enzyme';
+import Enzyme, { mount, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
 Enzyme.configure({ adapter: new Adapter(), });
 
 const { expect: exp, } = chai;
@@ -154,15 +155,54 @@ describe('Input', () => {
   });
 
 
-  it('props: value onChange Limited Input', () => {
+  it('props: value onChange Limited Input changed', () => {
 
-    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
-    mockFunc.forever('ok');
 
     const value = '诸行无常';
     const changeValue = 'hello ligx';
 
-    const component = mount(<Input value={value} onChange={mockFunc.getFunction()}/>);
+    class LimitInput extends React.Component<any, any> {
+      constructor (props) {
+        super(props);
+        this.state = { value: props.value, };
+      }
+
+      onChange = value => {
+        this.setState({ value, });
+      };
+
+      render () {
+        return <Input value={this.state.value} onChange={this.onChange}/>;
+      }
+    }
+
+    const component = mount(<LimitInput value={value}/>);
+
+    assertInputValue(component, value);
+
+    component.find('input').simulate('change', { target: { value: changeValue, }, });
+
+    assertInputValue(component, changeValue);
+
+  });
+  it('props: value onChange Limited Input no changed', () => {
+
+
+    const value = '诸行无常';
+    const changeValue = 'hello ligx';
+
+    class LimitInput extends React.Component<any, any> {
+      constructor (props) {
+        super(props);
+        this.state = { value: props.value, };
+      }
+
+      render () {
+        return <Input value={this.state.value}/>;
+      }
+    }
+
+    const component = mount(<LimitInput value={value}/>);
 
     assertInputValue(component, value);
 
@@ -170,9 +210,67 @@ describe('Input', () => {
 
     assertInputValue(component, value);
 
-    order.verify(({ onChange, }) => {
-    });
   });
+
+
+  it('props: value onChange Limited Input changed for prefix: Icon', () => {
+
+
+    const value = '诸行无常';
+    const changeValue = 'hello ligx';
+
+    class LimitInput extends React.Component<any, any> {
+      constructor (props) {
+        super(props);
+        this.state = { value: props.value, };
+      }
+
+      onChange = value => {
+        this.setState({ value, });
+      };
+
+      render () {
+        return <Input value={this.state.value} onChange={this.onChange} prefix={<div>helllo</div>}/>;
+      }
+    }
+
+    const component = mount(<LimitInput value={value}/>);
+
+    assertInputValue(component, value);
+
+    component.find('input').simulate('change', { target: { value: changeValue, }, });
+
+    assertInputValue(component, changeValue);
+
+  });
+
+  it('props: value onChange Limited Input no changed  for prefix: Icon', () => {
+
+
+    const value = '诸行无常';
+    const changeValue = 'hello ligx';
+
+    class LimitInput extends React.Component<any, any> {
+      constructor (props) {
+        super(props);
+        this.state = { value: props.value, };
+      }
+
+      render () {
+        return <Input value={this.state.value} prefix={<div>helllo</div>}/>;
+      }
+    }
+
+    const component = mount(<LimitInput value={value}/>);
+
+    assertInputValue(component, value);
+
+    component.find('input').simulate('change', { target: { value: changeValue, }, });
+
+    assertInputValue(component, value);
+
+  });
+
 
   it('function: getValue', () => {
     const SupportMock = mockObject.create(Support, VerifyOrderConfig.create('Support', order));

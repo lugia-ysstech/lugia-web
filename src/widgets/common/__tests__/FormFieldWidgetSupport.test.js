@@ -7,29 +7,18 @@ const { expect: exp, } = chai;
 const { getValue, } = Support;
 
 describe('FormFieldWidgetSupport.js', () => {
-  it('getValue: value  ', () => {
-    const value = 'ligx';
-    exp(getValue({ value, })).to.be.equal(value);
+  it('getValue: value is  props.value', () => {
+    const propsValue = '无名天地之母';
+    const stateValue = '有名万物之始';
+    const props = { value: propsValue, };
+    const state = { value: stateValue, };
+    exp(getValue(props, state)).to.be.equal(propsValue);
+  });
+  it('getValue: value is  state.value', () => {
+    const stateValue = '有名万物之始';
+    const state = { value: stateValue, };
+    exp(getValue({}, state)).to.be.equal(stateValue);
   });
 
-  it('getValue: defaultValue  ', () => {
-    const defaultValue = 'kxy';
-    exp(getValue({ defaultValue, })).to.be.equal(defaultValue);
-  });
-  it('getValue: value & defaultValue ', () => {
-    const value = 'ligx';
-    const defaultValue = 'kxy';
-    exp(getValue({ defaultValue, value, })).to.be.equal(value);
-  });
-
-  it('getValue: value: undefined  & defaultValue ', () => {
-    const value = undefined;
-    const defaultValue = 'kxy';
-    exp(getValue({ defaultValue, value, })).to.be.equal('');
-  });
-
-  it('getValue: value: undefined  & defaultValue ', () => {
-    exp(getValue({})).to.be.equal('');
-  });
 
 });

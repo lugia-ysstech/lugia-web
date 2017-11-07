@@ -1,14 +1,14 @@
 //@flow
 import type { GetValueArgType, } from 'sv-widget';
 
-function getValue (arg: GetValueArgType): string {
-  const { value = '', defaultValue = '', } = arg;
-  if ('value' in arg) {
-    return value;
-  } else if ('defaultValue' in arg) {
-    return defaultValue;
+function getValue (props: any, state: any): string {
+  let value;
+  if ('value' in props) {
+    value = props.value;
+  } else {
+    value = state.value;
   }
-  return '';
+  return value;
 }
 
 function getObjectValue (arg: GetValueArgType): Object {

@@ -12,16 +12,16 @@ import * as Widget from '../consts/Widget';
 const InputDemo = () => {
   const view = {
     [Widget.Input]: {
-      width: '80px',
+      width: 3000,
     },
     register: {
-      width: '40px',
+      width: 20,
     },
   };
   return <Theme config={view}>
     <Input/>
     <Input viewClass="register"/>
-    <Theme config={{ register: { width: '300px', }, }}>
+    <Theme config={{ register: { width: 5000, }, }}>
       <Input viewClass="register"/>
     </Theme>
   </Theme>;

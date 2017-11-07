@@ -111,13 +111,8 @@ class TextBox extends Component<InputProps, InputState> {
 
   constructor (props: InputProps) {
     super(props);
-    const { value, defaultValue, } = props;
-    this.state = {
-      value: Support.getValue({
-        value,
-        defaultValue,
-      }),
-    };
+    const { defaultValue = '', } = props;
+    this.state = { value: defaultValue, };
   }
 
   onChange = (event: Object) => {
@@ -127,12 +122,14 @@ class TextBox extends Component<InputProps, InputState> {
   };
 
   setValue (value: string): void {
+    const oldValue = this.state.value;
+    const { onChange, } = this.props;
     if ('value' in this.props === false) {
-      const { onChange, } = this.props;
-      const oldValue = this.state.value;
       this.setState({ value, }, () => {
         onChange && onChange(value, oldValue);
       });
+    } else {
+      onChange && onChange(value, oldValue);
     }
   }
 
@@ -164,14 +161,14 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
-  generateInput (Input: Function): React$Element<any> {
 
-    const { defaultValue, onKeyUp, onKeyPress, onFocus, onBlur, } = this.props;
-    const { value, } = this.state;
+  generateInput (Input: Function): React$Element<any> {
+    const { props, state, } = this;
+    const { onKeyUp, onKeyPress, onFocus, onBlur, } = props;
+
     return <Input innerRef={node => this.input = node}
                   theme={this.props.getTheme()}
-                  defaultValue={defaultValue}
-                  value={value}
+                  value={Support.getValue(props, state)}
                   onKeyUp={onKeyUp}
                   onKeyPress={onKeyPress}
                   onKeyDown={this.onKeyDown}
