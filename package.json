@@ -65,7 +65,7 @@
   "devDependencies": {
     "babel-plugin-react-flow-props-to-prop-types": "^0.15.0",
     "chai": "^4.1.0",
-    "enzyme": "^3.0.0",
+    "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.0",
     "flow-bin": "^0.57.3",
     "identity-obj-proxy": "^3.0.0",
