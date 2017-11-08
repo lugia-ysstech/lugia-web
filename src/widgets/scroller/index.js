@@ -79,7 +79,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   static defaultProps = {
     type: YScroller,
     throttle: 100,
-    step: 5,
+    step: 1,
   };
 
   htmlScroller: HTMLElement;
@@ -98,16 +98,19 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
         value,
         defaultValue,
       }),
-      sliderSize: this.getSliderBarSize(this.props),
+      sliderSize: this.getSliderBarSize(props),
     };
     this.posGetter = cacheOnlyFirstCall(getElementPosition);
-    this.zoom = 1;
-
-
+    this.updateStepInfo(props);
   }
 
+  updateStepInfo (props: ScrollerProps): void {
+    this.step = props.step;
+    this.fastStep = props.totalSize / 4;
+  }
 
   componentWillReceiveProps (props: ScrollerProps) {
+    this.updateStepInfo(props);
     this.setState({ sliderSize: this.getSliderBarSize(props), });
   }
 
@@ -154,6 +157,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       TargetContainer = YContainer;
 
     });
+    console.info('滚动', value);
 
     if (!TargetContainer || !Target) {
       return '';
@@ -162,7 +166,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return <TargetContainer style={style} innerRef={cmp => this.htmlScroller = cmp}
                             onMouseMove={this.onMouseMove}
                             onWheel={this.onWheel}
-                            onMouseDown={this.onContainerMouseDown}>
+                            onClick={this.onClick}
+                            onMouseDown={this.onContainerMouseDown}
+    >
       <Target style={barStyle}
               onMouseDown={this.onMouseDown}
               onMouseUp={this.onMouseUp}
@@ -207,9 +213,17 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   onMouseDown = () => {
     this.isDrag = true;
   };
-
-  onContainerMouseDown = (e: Object) => {
+  move: number;
+  onClick = (e: Object) => {
     this.processDomEvent(e);
+    if (this.move) {
+      clearInterval(this.move);
+    }
+  };
+  onContainerMouseDown = (e: Object) => {
+    this.move = setInterval(() => {
+      this.fastMove(-1);
+    }, 200);
   };
   onMouseUp = () => {
     this.isDrag = false;
@@ -231,14 +245,15 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.bodyMouseUpHandle && this.bodyMouseUpHandle.remove();
   }
 
-
+  lastFx: boolean;
   lastTime: number;
-  zoom: number;
-
+  step: number;
+  fastStep: number;
   onWheel = (event: Object) => {
     const { deltaY, } = event;
     this.fastMove(deltaY);
   };
+
 
   fastMove = (fx: number) => {
     if (fx === 0) {
@@ -248,22 +263,37 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const now = new Date();
     const timeSpan = now - this.lastTime;
     const { step, } = this.props;
-    const stepValue = fx < 0 ? step : -step;
     const { value, } = this.state;
 
-    if (this.lastTime && timeSpan < 20) {
-      const newValue = this.zoom + 1;
-      this.zoom = Math.min(newValue, maxZoom);
+    if (this.lastTime && timeSpan < 500) {
+      this.step = this.step * (1 + 0.03);
+      console.info('加速', this.step, this.fastStep);
     } else {
-      this.zoom = 1;
+      this.step = step;
     }
-    this.setValue(value + stepValue * this.zoom);
+    const isDown = fx < 0;
+
+    this.step = Math.min(this.fastStep, this.step);
+    const newValue = value + (isDown ? this.step : -this.step);
+    //
+    if (this.lastFx !== undefined && this.lastFx !== isDown) {
+      const timeSpan = new Date() - this.lastTime;
+      if (timeSpan < 200) {
+        this.lastFx = isDown;
+        console.info('出现回退', this.lastFx, newValue, timeSpan);
+        return;
+      }
+    }
+    this.setValue(newValue);
+    this.lastFx = isDown;
     this.lastTime = now;
   };
 
 
   setValue (theValue: number, time: ?number) {
-
+    if (theValue === this.state.value) {
+      return;
+    }
     const min = Math.max(0, theValue);
     const max = this.getMaxScrollValue();
     const value = Math.min(min, max);
