@@ -241,6 +241,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   };
 
   fastMove = (fx: number) => {
+    if (fx === 0) {
+      return;
+    }
 
     const now = new Date();
     const timeSpan = now - this.lastTime;
@@ -264,7 +267,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const min = Math.max(0, theValue);
     const max = this.getMaxScrollValue();
     const value = Math.min(min, max);
-
     this.setState({ value, }, () => {
       this.scrolling(value, time);
     });
