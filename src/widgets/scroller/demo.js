@@ -10,17 +10,18 @@ import Scroller from './';
 const InputDemo = () => {
   const config = {
     type: 'x',
-    viewSize: 100,
+    viewSize: 300,
     totalSize: 1000,
     left: 100,
     value: 0,
-    onChange: (...rest) => {
-    },
   };
+
   function onChange (v) {
-    console.info(v);
+    console.info('滚动', v);
+
   }
-  return <div style={{ top: '50px', position: 'absolute',}}>
+
+  return <div style={{ top: '50px', position: 'absolute', }}>
     {/*<Scroller {...config}/>*/}
     <Scroller {...config} type="y" onChange={onChange}/>
   </div>;

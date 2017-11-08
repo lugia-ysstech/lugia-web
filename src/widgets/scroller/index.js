@@ -104,9 +104,13 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.updateStepInfo(props);
   }
 
+  maxValue: number;
+
   updateStepInfo (props: ScrollerProps): void {
-    this.step = props.step;
-    this.fastStep = props.totalSize / 4;
+    const { totalSize, viewSize, step, } = props;
+    this.step = step;
+    this.maxValue = totalSize - viewSize;
+    this.fastStep = totalSize / 4;
   }
 
   componentWillReceiveProps (props: ScrollerProps) {
@@ -157,7 +161,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       TargetContainer = YContainer;
 
     });
-    console.info('滚动', value);
 
     if (!TargetContainer || !Target) {
       return '';
@@ -221,8 +224,22 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
   };
   onContainerMouseDown = (e: Object) => {
+    if (this.drag) {
+      return;
+    }
+    let fx = 0;
+    const mousePos = this.getPos(e);
+    const targetValue = this.pos2value(mousePos);
+    if (this.value2pos(this.state.value) > mousePos) {
+      fx = 1;
+    } else {
+      fx = -1;
+    }
     this.move = setInterval(() => {
-      this.fastMove(-1);
+      this.fastMove(fx, 2, targetValue);
+      if (this.state.value >= targetValue) {
+        clearInterval(this.move);
+      }
     }, 200);
   };
   onMouseUp = () => {
@@ -251,11 +268,11 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   fastStep: number;
   onWheel = (event: Object) => {
     const { deltaY, } = event;
-    this.fastMove(deltaY);
+    this.fastMove(deltaY, 0.03, this.maxValue);
   };
 
 
-  fastMove = (fx: number) => {
+  fastMove = (fx: number, percent: number, maxValue: number) => {
     if (fx === 0) {
       return;
     }
@@ -266,7 +283,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const { value, } = this.state;
 
     if (this.lastTime && timeSpan < 500) {
-      this.step = this.step * (1 + 0.03);
+      this.step = this.step * (1 + percent);
       console.info('加速', this.step, this.fastStep);
     } else {
       this.step = step;
@@ -274,8 +291,8 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const isDown = fx < 0;
 
     this.step = Math.min(this.fastStep, this.step);
-    const newValue = value + (isDown ? this.step : -this.step);
-    //
+    let newValue = value + (isDown ? this.step : -this.step);
+    newValue = Math.min(newValue, maxValue);
     if (this.lastFx !== undefined && this.lastFx !== isDown) {
       const timeSpan = new Date() - this.lastTime;
       if (timeSpan < 200) {
@@ -295,7 +312,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       return;
     }
     const min = Math.max(0, theValue);
-    const max = this.getMaxScrollValue();
+    const max = this.maxValue;
     const value = Math.min(min, max);
     this.setState({ value, }, () => {
       this.scrolling(value, time);
@@ -354,10 +371,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       || this.props.totalSize !== nextProps.totalSize;
   }
 
-  getMaxScrollValue () {
-    const { totalSize, viewSize, } = this.props;
-    return totalSize - viewSize;
-  }
 
   value2pos (value: number) {
     const { viewSize, } = this.props;
