@@ -6,9 +6,8 @@
  */
 import * as React from 'react';
 import styled from 'styled-components';
-import { scroller, } from './index.css';
 import Support from '../common/FormFieldWidgetSupport';
-
+import { cacheOnlyFirstCall, getElementPosition, } from '../../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 
 const BarDefaultSize = 12;
@@ -79,7 +78,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   static defaultProps = {
     type: YScroller,
-    throttle: 200,
+    throttle: 100,
     step: 5,
   };
 
@@ -88,6 +87,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   drag: boolean;
   state: ScrollerState;
   throttleTimer: number;
+  posGetter: Object;
 
   constructor (props: ScrollerProps) {
     super(props);
@@ -100,13 +100,17 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       }),
       sliderSize: this.getSliderBarSize(this.props),
     };
+    this.posGetter = cacheOnlyFirstCall(getElementPosition);
+    this.zoom = 1;
 
 
   }
+
 
   componentWillReceiveProps (props: ScrollerProps) {
     this.setState({ sliderSize: this.getSliderBarSize(props), });
   }
+
 
   getSliderBarSize (props: ScrollerProps) {
     let result = 0;
@@ -114,65 +118,13 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const hidenWidthOrHeight = (totalSize - viewSize);
 
     if (hidenWidthOrHeight > 0) {
-      const computeValue = (hidenWidthOrHeight / viewSize);
+      const computeValue = (viewSize * viewSize / totalSize);
       result = Math.max(10, computeValue);
     }
 
     return result;
   }
 
-  bodyMouseMoveHandle: Object;
-  bodyMouseUpHandle: Object;
-
-  componentDidMount () {
-    if (document.body) {
-
-      if (this.bodyMouseMoveHandle === undefined) {
-        this.bodyMouseMoveHandle = this.bindDoc('mousemove', (e: Object) => {
-          if (this.isDrag) {
-            this.setValue(e);
-          }
-        });
-      }
-
-      if (this.bodyMouseUpHandle === undefined) {
-        this.bodyMouseUpHandle = this.bindDoc('mouseup', (e: Object) => {
-          this.isDrag = false;
-        });
-      }
-    }
-  }
-
-  componentWillUnmount () {
-    this.bodyMouseMoveHandle && this.bodyMouseMoveHandle.remove();
-    this.bodyMouseUpHandle && this.bodyMouseUpHandle.remove();
-  }
-
-  bindDoc (event: string, callback: Function): Object {
-    return addEventListener(document, event, callback);
-  }
-
-  containerPos: Object;
-
-  getElementPosition (e: Object) {
-
-    if (this.containerPos) {
-      return this.containerPos;
-    }
-
-    let x = 0, y = 0;
-    while ( e ) {
-      x += e.offsetLeft;
-      y += e.offsetTop;
-      e = e.offsetParent;
-    }
-    return this.containerPos = { x, y, };
-  }
-
-
-  getPX (val: number): string {
-    return `${val}px`;
-  }
 
   render () {
     const { value, sliderSize, } = this.state;
@@ -209,8 +161,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
     return <TargetContainer style={style} innerRef={cmp => this.htmlScroller = cmp}
                             onMouseMove={this.onMouseMove}
+                            onWheel={this.onWheel}
                             onMouseDown={this.onContainerMouseDown}>
-      <Target className={scroller} style={barStyle}
+      <Target style={barStyle}
               onMouseDown={this.onMouseDown}
               onMouseUp={this.onMouseUp}
 
@@ -219,17 +172,121 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     </TargetContainer>;
   }
 
-  setValue (e: Object) {
 
+  getPX (val: number): string {
+    return `${val}px`;
+  }
+
+
+  bodyMouseMoveHandle: Object;
+  bodyMouseUpHandle: Object;
+
+  componentDidMount () {
+    if (document.body) {
+      if (this.bodyMouseMoveHandle === undefined) {
+        this.bodyMouseMoveHandle = this.bindDoc('mousemove', (e: Object) => {
+          if (this.isDrag) {
+            this.processDomEvent(e);
+          }
+        });
+      }
+      if (this.bodyMouseUpHandle === undefined) {
+        this.bodyMouseUpHandle = this.bindDoc('mouseup', (e: Object) => {
+          this.isDrag = false;
+        });
+      }
+    }
+  }
+
+
+  bindDoc (event: string, callback: Function): Object {
+    return addEventListener(document, event, callback);
+  }
+
+
+  onMouseDown = () => {
+    this.isDrag = true;
+  };
+
+  onContainerMouseDown = (e: Object) => {
+    this.processDomEvent(e);
+  };
+  onMouseUp = () => {
+    this.isDrag = false;
+  };
+  onMouseMove = (e: Object) => {
+    if (this.isDrag) {
+      this.processDomEvent(e);
+    }
+  };
+
+  processDomEvent (e: Object, time: ?number) {
     const value = this.pos2value(this.getPos(e));
-    this.setState({ value, });
+    this.setValue(value, time);
+  }
+
+
+  componentWillUnmount () {
+    this.bodyMouseMoveHandle && this.bodyMouseMoveHandle.remove();
+    this.bodyMouseUpHandle && this.bodyMouseUpHandle.remove();
+  }
+
+
+  lastTime: number;
+  zoom: number;
+
+  onWheel = (event: Object) => {
+    const { deltaY, } = event;
+    this.fastMove(deltaY);
+  };
+
+  fastMove = (fx: number) => {
+
+    const now = new Date();
+    const timeSpan = now - this.lastTime;
+    const { step, } = this.props;
+    const stepValue = fx < 0 ? step : -step;
+    const { value, } = this.state;
+
+    if (this.lastTime && timeSpan < 20) {
+      const newValue = this.zoom + 1;
+      this.zoom = Math.min(newValue, maxZoom);
+    } else {
+      this.zoom = 1;
+    }
+    this.setValue(value + stepValue * this.zoom);
+    this.lastTime = now;
+  };
+
+
+  setValue (theValue: number, time: ?number) {
+
+    const min = Math.max(0, theValue);
+    const max = this.getMaxScrollValue();
+    const value = Math.min(min, max);
+
+    this.setState({ value, }, () => {
+      this.scrolling(value, time);
+    });
+  }
+
+  scrolling (value: number, time: ?number) {
+    const interval = time || this.props.throttle;
+    const scrolling = () => {
+      const { onChange, } = this.props;
+      onChange && onChange(value);
+    };
+    if (this.throttleTimer !== undefined) {
+      clearTimeout(this.throttleTimer);
+    }
+    this.throttleTimer = setTimeout(scrolling, interval);
   }
 
   getPos (e: Object) {
-    const arg = this.getElementPosition(this.htmlScroller);
+    const arg = this.posGetter.func(this.htmlScroller);
 
     let pos = 0;
-
+    const { viewSize, } = this.props;
     this.selectType(() => {
       const { clientX, } = e;
       const { x, } = arg;
@@ -239,10 +296,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       const { y, } = arg;
       pos = clientY - y;
     });
-
-    const min = Math.max(0, pos);
-    const { viewSize: max, } = this.props;
-    return Math.min(min, max);
+    return Math.min(pos, viewSize);
   }
 
   async selectType (x: Function, y: Function) {
@@ -260,21 +314,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   isDrag: boolean;
 
-  onMouseDown = () => {
-    this.isDrag = true;
-  };
-
-  onContainerMouseDown = (e: Object) => {
-    this.setValue(e);
-  };
-  onMouseUp = () => {
-    this.isDrag = false;
-  };
-  onMouseMove = (e: Object) => {
-    if (this.isDrag) {
-      this.setValue(e);
-    }
-  };
 
   shouldComponentUpdate (nextProps: ScrollerProps, nextState: ScrollerState) {
     return this.props.viewSize !== nextProps.viewSize
@@ -283,18 +322,27 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       || this.props.totalSize !== nextProps.totalSize;
   }
 
-
-  pos2value (pos: number) {
+  getMaxScrollValue () {
     const { totalSize, viewSize, } = this.props;
-    return (pos / viewSize) * totalSize;
+    return totalSize - viewSize;
   }
 
   value2pos (value: number) {
-    const { state, props, } = this;
-    const { sliderSize, } = state;
-    const { totalSize, viewSize, } = props;
-    return (value / totalSize) * (viewSize - sliderSize);
+    const { viewSize, } = this.props;
+    const { sliderSize, } = this.state;
+    return Math.min(value * this.unitPos(), viewSize - sliderSize);
   }
+
+
+  pos2value (pos: number) {
+    return pos / this.unitPos();
+  }
+
+  unitPos (): number {
+    const { viewSize, totalSize, } = this.props;
+    return viewSize / totalSize;
+  }
+
 }
 
 export default Scroller;

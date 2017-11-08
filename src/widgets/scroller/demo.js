@@ -10,16 +10,19 @@ import Scroller from './';
 const InputDemo = () => {
   const config = {
     type: 'x',
-    viewSize: 800,
-    totalSize: 5000,
+    viewSize: 100,
+    totalSize: 1000,
     left: 100,
-    value: 50,
+    value: 0,
     onChange: (...rest) => {
     },
   };
-  return <div>
+  function onChange (v) {
+    console.info(v);
+  }
+  return <div style={{ top: '50px', position: 'absolute',}}>
     {/*<Scroller {...config}/>*/}
-    <Scroller {...config} type="y"/>
+    <Scroller {...config} type="y" onChange={onChange}/>
   </div>;
 };
 export default InputDemo;
