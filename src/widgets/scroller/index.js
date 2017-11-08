@@ -168,6 +168,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
     return <TargetContainer style={style} innerRef={cmp => this.htmlScroller = cmp}
                             onMouseMove={this.onMouseMove}
+                            onMouseOut={this.onMouseOut}
                             onWheel={this.onWheel}
                             onClick={this.onClick}
                             onMouseDown={this.onContainerMouseDown}
@@ -219,10 +220,15 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   move: number;
   onClick = (e: Object) => {
     this.processDomEvent(e);
+    this.clearMove();
+  };
+
+  clearMove () {
     if (this.move) {
       clearInterval(this.move);
     }
-  };
+  }
+
   onContainerMouseDown = (e: Object) => {
     if (this.drag) {
       return;
@@ -238,13 +244,17 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.move = setInterval(() => {
       this.fastMove(fx, 2, targetValue);
       if (this.state.value >= targetValue) {
-        clearInterval(this.move);
+        this.clearMove();
       }
     }, 200);
   };
   onMouseUp = () => {
     this.isDrag = false;
   };
+  onMouseOut = () => {
+    this.clearMove();
+  };
+
   onMouseMove = (e: Object) => {
     if (this.isDrag) {
       this.processDomEvent(e);
@@ -284,7 +294,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
     if (this.lastTime && timeSpan < 500) {
       this.step = this.step * (1 + percent);
-      console.info('加速', this.step, this.fastStep);
     } else {
       this.step = step;
     }
@@ -297,7 +306,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       const timeSpan = new Date() - this.lastTime;
       if (timeSpan < 200) {
         this.lastFx = isDown;
-        console.info('出现回退', this.lastFx, newValue, timeSpan);
         return;
       }
     }
