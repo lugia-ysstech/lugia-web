@@ -193,6 +193,23 @@ describe('Scroller', function () {
     exp(cmp.state().value).to.be.equal(50);
 
   });
+  it('updateStepInfo', async () => {
+
+    const viewSize = 100;
+    const totalSize = 200;
+    const
+      config = {
+        type: 'x',
+        viewSize,
+        totalSize,
+      };
+    const Target = createTestComponent(Scroller, (target: Object) => {
+      exp(target.step).to.be.equal(1);
+      exp(target.fastStep).to.be.equal(50);
+      exp(target.maxValue).to.be.equal(100);
+    });
+    mount(<Target {...config}/>);
+  });
 
 
 });
