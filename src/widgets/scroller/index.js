@@ -72,7 +72,10 @@ type ScrollerState = {
   value: number,
   sliderSize: number,
 };
-const maxZoom = 10;
+const Down = 'down';
+const Up = 'up';
+const None = 'none';
+type Direction = 'down' | 'up' | 'none';
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
@@ -92,12 +95,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   constructor (props: ScrollerProps) {
     super(props);
     this.componentWillReceiveProps(props);
-    const { value, defaultValue, } = props;
+    const { defaultValue = 0, } = props;
     this.state = {
-      value: Support.getNumberValue({
-        value,
-        defaultValue,
-      }),
+      value: defaultValue,
       sliderSize: this.getSliderBarSize(props),
     };
     this.posGetter = cacheOnlyFirstCall(getElementPosition);
@@ -115,7 +115,8 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   componentWillReceiveProps (props: ScrollerProps) {
     this.updateStepInfo(props);
-    this.setState({ sliderSize: this.getSliderBarSize(props), });
+    const changeState = { sliderSize: this.getSliderBarSize(props), };
+    this.state = { ...this.state, ...changeState, };
   }
 
 
@@ -134,9 +135,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
 
   render () {
-    const { value, sliderSize, } = this.state;
+    const { sliderSize, } = this.state;
     const { viewSize, } = this.props;
-
+    const value = Support.getNumberValue(this.props, this.state);
     const style: Object = {};
     const barStyle = {};
     let Target, TargetContainer;
@@ -145,7 +146,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const posPx = this.getPX(this.value2pos(value));
 
     this.selectType(() => {
-
       style.width = viewPx;
       barStyle.width = barPx;
       barStyle.left = posPx;
@@ -153,25 +153,24 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       TargetContainer = XContainer;
 
     }, () => {
-
       style.height = viewPx;
       barStyle.height = barPx;
       barStyle.top = posPx;
       Target = YBar;
       TargetContainer = YContainer;
-
     });
 
     if (!TargetContainer || !Target) {
       return '';
     }
 
+
     return <TargetContainer style={style} innerRef={cmp => this.htmlScroller = cmp}
                             onMouseMove={this.onMouseMove}
                             onMouseOut={this.onMouseOut}
                             onWheel={this.onWheel}
-                            onClick={this.onClick}
                             onMouseDown={this.onContainerMouseDown}
+                            onMouseUp={this.onContainerMouseUp}
     >
       <Target style={barStyle}
               onMouseDown={this.onMouseDown}
@@ -218,10 +217,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.isDrag = true;
   };
   move: number;
-  onClick = (e: Object) => {
-    this.processDomEvent(e);
-    this.clearMove();
-  };
 
   clearMove () {
     if (this.move) {
@@ -229,20 +224,43 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
   }
 
+  onContainerMouseUp = (e: Object) => {
+    this.processDomEvent(e);
+    this.clearMove();
+    this.isDrag = false;
+  };
+
+  getDirection (fx: number): Direction {
+    if (fx === 0) {
+      return None;
+    }
+    if (fx < 0) {
+      return Down;
+    }
+    return Up;
+
+  }
+
   onContainerMouseDown = (e: Object) => {
-    if (this.drag) {
+    if (this.isDrag) {
       return;
     }
-    let fx = 0;
+    this.step = this.props.step;
+    this.clearMove();
+    let fx = None;
     const mousePos = this.getPos(e);
     const targetValue = this.pos2value(mousePos);
     if (this.value2pos(this.state.value) > mousePos) {
-      fx = 1;
+      fx = Down;
     } else {
-      fx = -1;
+      fx = Up;
     }
     this.move = setInterval(() => {
-      this.fastMove(fx, 2, targetValue);
+      if (fx === Down) {
+        this.fastMove(fx, 2, targetValue);
+      } else {
+        this.fastMove(fx, 2, this.maxValue, targetValue);
+      }
       if (this.state.value >= targetValue) {
         this.clearMove();
       }
@@ -272,7 +290,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.bodyMouseUpHandle && this.bodyMouseUpHandle.remove();
   }
 
-  lastFx: boolean;
+  lastFx: string;
   lastTime: number;
   step: number;
   fastStep: number;
@@ -282,8 +300,8 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   };
 
 
-  fastMove = (fx: number, percent: number, maxValue: number) => {
-    if (fx === 0) {
+  fastMove = (fx: Direction, percent: number, maxValue: number, minValue: number = 0) => {
+    if (fx === None) {
       return;
     }
 
@@ -297,23 +315,30 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     } else {
       this.step = step;
     }
-    const isDown = fx < 0;
-
     this.step = Math.min(this.fastStep, this.step);
-    let newValue = value + (isDown ? this.step : -this.step);
+    let newValue = value + this.getMoveStep(fx, this.step);
     newValue = Math.min(newValue, maxValue);
-    if (this.lastFx !== undefined && this.lastFx !== isDown) {
+    newValue = Math.max(newValue, minValue);
+
+    if (this.lastFx !== undefined && this.lastFx !== fx) {
       const timeSpan = new Date() - this.lastTime;
       if (timeSpan < 200) {
-        this.lastFx = isDown;
+        this.lastFx = fx;
         return;
       }
     }
+
     this.setValue(newValue);
-    this.lastFx = isDown;
+    this.lastFx = fx;
     this.lastTime = now;
   };
 
+  getMoveStep (fx: Direction, step: number): number {
+    if (fx === None) {
+      return step;
+    }
+    return fx === Down ? step : -step;
+  }
 
   setValue (theValue: number, time: ?number) {
     if (theValue === this.state.value) {
@@ -322,6 +347,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const min = Math.max(0, theValue);
     const max = this.maxValue;
     const value = Math.min(min, max);
+
     this.setState({ value, }, () => {
       this.scrolling(value, time);
     });

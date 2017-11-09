@@ -21,14 +21,14 @@ function getObjectValue (arg: GetValueArgType): Object {
   return {};
 }
 
-function getNumberValue (arg: GetValueArgType): number {
-  const { value = 0, defaultValue = 0, } = arg;
-  if ('value' in arg) {
-    return value;
-  } else if ('defaultValue' in arg) {
-    return defaultValue;
+function getNumberValue (props: any, state: any): number {
+  let value;
+  if ('value' in props) {
+    value = props.value;
+  } else {
+    value = state.value;
   }
-  return 0;
+  return value;
 }
 
 export default {

@@ -11,6 +11,7 @@ src
 flow-typed/
 src/interface/
 node_modules/vx-mock/interface
+node_modules/sv-test-utils/interface
 [options]
 module.name_mapper='^core/\(.*\)$' -> '<PROJECT_ROOT>/src/core/\1'
 

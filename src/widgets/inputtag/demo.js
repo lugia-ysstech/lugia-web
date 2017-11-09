@@ -7,24 +7,15 @@
 import * as React from 'react';
 
 import InputTag from './';
+import Theme from '../theme';
+import * as Widget from '../consts/Widget';
 
 const InputDemo = () => {
 
   return [
-    <div key="6">
+    <Theme config={{ [Widget.InputTag]: { width: 50, }, }}>
       <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={{
-                  [ '' + '1']: { text: '123456789012345676890780', },
-                  [ '' + '4']: { text: '123456789012345676890781', },
-                  [ '' + '5']: { text: '123456789012345676890782', },
-                  [ '' + '6']: { text: '123456789012345676890783', },
-                  [ '' + '7']: { text: '123456789012345676890784', },
-                  [ '' + '8']: { text: '123456789012345676890785', },
-                  [ '' + '9']: { text: '123456789012345676890786', },
-                  [ '' + '10']: { text: '123456789012345676890787', },
-                  [ '' + '2']: { text: 'b', },
-                }}/>
-
-    </div>,];
+                value={{ a: { text: 'asdfasfasdfadsfqreqwrqwadsfasfqweerqwrqwerqwrqwreqwrqwrqwrqwa', }, }}/>
+    </Theme>,];
 };
 export default InputDemo;

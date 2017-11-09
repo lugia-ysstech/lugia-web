@@ -13,7 +13,7 @@ const InputDemo = () => {
     viewSize: 300,
     totalSize: 1000,
     left: 100,
-    value: 0,
+    value: 50,
   };
 
   function onChange (v) {
@@ -23,7 +23,7 @@ const InputDemo = () => {
 
   return <div style={{ top: '50px', position: 'absolute', }}>
     {/*<Scroller {...config}/>*/}
-    <Scroller {...config} type="y" onChange={onChange}/>
+    <Scroller {...config} onChange={onChange} />
   </div>;
 };
 export default InputDemo;

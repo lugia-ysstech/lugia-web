@@ -1,4 +1,4 @@
-//@flow
+ //@flow
 
 import Support from '../common/FormFieldWidgetSupport';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
