@@ -46,6 +46,7 @@ const ScrollerCol = Col.extend`
   width: ${scrollerWidth}px;
 `;
 const ScrollerContainer = styled.div`
+  overflow: hidden;
   ${height}
   ${width}
   position: relative;
