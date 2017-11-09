@@ -285,17 +285,12 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   onContainerMouseMove = (e: Object) => {
     if (this.isDrag) {
-      console.info('pos', this.getPos(e));
-      console.info('absoulate', this.sliderAbsoulateSize);
-      const realyPos = this.getPos(e) - this.sliderAbsoulateSize;
-      console.info('realy', realyPos);
-      this.processDomEvent(realyPos);
+      this.processDomEvent(this.getPos(e) - this.sliderAbsoulateSize);
     }
   };
 
   processDomEvent (pos: number, time: ?number) {
     const value = this.pos2value(pos);
-    console.info(value);
     this.setValue(value, time);
   }
 
