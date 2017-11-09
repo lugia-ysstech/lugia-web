@@ -20,7 +20,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "cover": "jest --env=jsdom  --coverage"
+    "cover": "node scripts/test.js --env=jsdom  --coverage"
   },
   "devDependencies": {
     "sw-precache-webpack-plugin": "0.11.3",
@@ -80,7 +80,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
+      "src/**/*.{js,jsx}",
+      "!src/**/demo.js"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
