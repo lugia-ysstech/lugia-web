@@ -114,6 +114,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.step = step;
     this.maxValue = totalSize - viewSize;
     this.fastStep = totalSize / 4;
+    this.sliderAbsoulateSize = 0;
   }
 
 
@@ -129,7 +130,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   render () {
 
-    const value = Support.getNumberValue(this.props, this.state);
     let style: Object = {};
     let barStyle = {};
     let Target, TargetContainer;
@@ -139,7 +139,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
     const viewPx = this.getPX(viewSize);
     const barPx = this.getPX(sliderSize);
-    const posPx = this.getPX(this.value2pos(value));
+    const posPx = this.getPX(this.getCurrentPos());
 
     this.selectType(() => {
 
@@ -181,6 +181,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     </TargetContainer>;
   }
 
+  getCurrentPos (): number {
+    const value = Support.getNumberValue(this.props, this.state);
+    return this.value2pos(value);
+  }
 
   getPX (val: number): string {
     return `${val}px`;
@@ -195,7 +199,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       if (this.bodyMouseMoveHandle === undefined) {
         this.bodyMouseMoveHandle = this.bindDoc('mousemove', (e: Object) => {
           if (this.isDrag) {
-            this.processDomEvent(e);
+            this.processDomEvent(this.getPos(e) - this.sliderAbsoulateSize);
           }
         });
       }
@@ -212,8 +216,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return addEventListener(document, event, callback);
   }
 
-
-  onSliderBarMouseDown = () => {
+  sliderAbsoulateSize: number;
+  onSliderBarMouseDown = (e: Object) => {
+    this.sliderAbsoulateSize = this.getPos(e) - this.getCurrentPos();
     this.isDrag = true;
   };
   move: number;
@@ -263,7 +268,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     if (this.isDrag === true) {
       return;
     }
-    this.processDomEvent(e);
+    this.processDomEvent(this.getPos(e));
     this.clearMove();
     this.isDrag = false;
   };
@@ -280,12 +285,17 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   onContainerMouseMove = (e: Object) => {
     if (this.isDrag) {
-      this.processDomEvent(e);
+      console.info('pos', this.getPos(e));
+      console.info('absoulate', this.sliderAbsoulateSize);
+      const realyPos = this.getPos(e) - this.sliderAbsoulateSize;
+      console.info('realy', realyPos);
+      this.processDomEvent(realyPos);
     }
   };
 
-  processDomEvent (e: Object, time: ?number) {
-    const value = this.pos2value(this.getPos(e));
+  processDomEvent (pos: number, time: ?number) {
+    const value = this.pos2value(pos);
+    console.info(value);
     this.setValue(value, time);
   }
 
