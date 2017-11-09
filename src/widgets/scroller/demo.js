@@ -13,7 +13,7 @@ const InputDemo = () => {
     viewSize: 300,
     totalSize: 1000,
     left: 100,
-    value: 50,
+    // value: 50,
   };
 
   function onChange (v) {

@@ -61,12 +61,12 @@ const XScroller = 'x', YScroller = 'y';
 type ScrollerProps = {
   totalSize: number,
   viewSize: number,
-  type: 'x' | 'y',
+  type?: 'x' | 'y',
   onChange?: Function,
   value?: number,
-  throttle: number,
+  throttle?: number,
   defaultValue?: number,
-  step: number,
+  step?: number,
 };
 type ScrollerState = {
   value: number,
@@ -76,13 +76,14 @@ const Down = 'down';
 const Up = 'up';
 const None = 'none';
 type Direction = 'down' | 'up' | 'none';
+const DefaultStep = 1;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   static defaultProps = {
     type: YScroller,
     throttle: 100,
-    step: 1,
+    step: DefaultStep,
   };
 
   htmlScroller: HTMLElement;
@@ -107,7 +108,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   maxValue: number;
 
   updateStepInfo (props: ScrollerProps): void {
-    const { totalSize, viewSize, step, } = props;
+    const { totalSize, viewSize, step = DefaultStep, } = props;
     this.step = step;
     this.maxValue = totalSize - viewSize;
     this.fastStep = totalSize / 4;
@@ -121,16 +122,12 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
 
   getSliderBarSize (props: ScrollerProps) {
-    let result = 0;
     const { viewSize, totalSize, } = props;
-    const hidenWidthOrHeight = (totalSize - viewSize);
-
-    if (hidenWidthOrHeight > 0) {
-      const computeValue = (viewSize * viewSize / totalSize);
-      result = Math.max(10, computeValue);
+    const notNeed = totalSize <= viewSize;
+    if (notNeed) {
+      return 0;
     }
-
-    return result;
+    return Math.round(Math.max(viewSize * this.unitValuePos(props), 10));
   }
 
 
@@ -138,24 +135,30 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const { sliderSize, } = this.state;
     const { viewSize, } = this.props;
     const value = Support.getNumberValue(this.props, this.state);
-    const style: Object = {};
-    const barStyle = {};
+    let style: Object = {};
+    let barStyle = {};
     let Target, TargetContainer;
     const viewPx = this.getPX(viewSize);
     const barPx = this.getPX(sliderSize);
     const posPx = this.getPX(this.value2pos(value));
 
     this.selectType(() => {
+
+      style = { width: viewPx, };
       style.width = viewPx;
-      barStyle.width = barPx;
-      barStyle.left = posPx;
+      barStyle = {
+        width: barPx,
+        left: posPx,
+      };
       Target = XBar;
       TargetContainer = XContainer;
 
     }, () => {
-      style.height = viewPx;
-      barStyle.height = barPx;
-      barStyle.top = posPx;
+      style = { height: viewPx, };
+      barStyle = {
+        height: barPx,
+        top: posPx,
+      };
       Target = YBar;
       TargetContainer = YContainer;
     });
@@ -234,18 +237,15 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     if (fx === 0) {
       return None;
     }
-    if (fx < 0) {
-      return Down;
-    }
-    return Up;
-
+    return fx < 0 ? Down : Up;
   }
 
   onContainerMouseDown = (e: Object) => {
     if (this.isDrag) {
       return;
     }
-    this.step = this.props.step;
+    const { step = DefaultStep, } = this.props;
+    this.step = step;
     this.clearMove();
     let fx = None;
     const mousePos = this.getPos(e);
@@ -307,7 +307,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
     const now = new Date();
     const timeSpan = now - this.lastTime;
-    const { step, } = this.props;
+    const { step = DefaultStep, } = this.props;
     const { value, } = this.state;
 
     if (this.lastTime && timeSpan < 500) {
@@ -409,16 +409,16 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   value2pos (value: number) {
     const { viewSize, } = this.props;
     const { sliderSize, } = this.state;
-    return Math.min(value * this.unitPos(), viewSize - sliderSize);
+    return Math.min(value * this.unitValuePos(this.props), viewSize - sliderSize);
   }
 
 
   pos2value (pos: number) {
-    return pos / this.unitPos();
+    return pos / this.unitValuePos(this.props);
   }
 
-  unitPos (): number {
-    const { viewSize, totalSize, } = this.props;
+  unitValuePos (props: ScrollerProps): number {
+    const { viewSize, totalSize, } = props;
     return viewSize / totalSize;
   }
 

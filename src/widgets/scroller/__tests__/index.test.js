@@ -39,10 +39,12 @@ describe('Scroller', function () {
       value: 0,
     };
     expect(renderer.create(<Scroller {...config} type="x"/>).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Scroller {...config} type="x"/>).toJSON()).toMatchSnapshot();
     expect(renderer.create(<Scroller {...config} type="y"/>).toJSON()).toMatchSnapshot();
     expect(renderer.create(<Scroller {...config} type="x" value={50}/>).toJSON()).toMatchSnapshot();
     expect(renderer.create(<Scroller {...config} type="y" value={50}/>).toJSON()).toMatchSnapshot();
   });
+
   it('props value: 50 eql defaultValue: 50', () => {
     const config = {
       viewSize: 300,
@@ -66,15 +68,18 @@ describe('Scroller', function () {
       exp(scroller.value2pos(0), 'pos 0 value 0').to.be.equal(0);
       exp(scroller.pos2value(0)).to.be.equal(0);
 
+      // 等式恒等
       for (let i = 0; i < 100; i++) {
         const pos = scroller.value2pos(i);
         exp(scroller.pos2value(pos)).to.be.equal(i);
       }
+
       exp(scroller.value2pos(10)).to.be.equal(5);
       exp(scroller.pos2value(5)).to.be.equal(10);
     });
     mount(<Target {...config}/>);
   });
+
 
   it('getPX', () => {
     const config = {
@@ -118,7 +123,7 @@ describe('Scroller', function () {
     exp(await onChange).to.be.equal(100);
   });
 
-  it('props defaultValue: 50 not limit', async () => {
+  it('props defaultValue: 50 & onChange not limit', async () => {
     let config;
     const onChange = new Promise(resolve => {
         config = {
@@ -150,6 +155,18 @@ describe('Scroller', function () {
     exp(Scroller.prototype.getDirection(-1)).to.be.equal('down');
     exp(Scroller.prototype.getDirection(-2)).to.be.equal('down');
     exp(Scroller.prototype.getDirection(0)).to.be.equal('none');
+  });
+
+
+  it('getSliderBarSize', () => {
+
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 50, })).to.be.equal(0);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 100, })).to.be.equal(0);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 1000, })).to.be.equal(10);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 200, })).to.be.equal(50);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 300, })).to.be.equal(33);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 500, })).to.be.equal(20);
+
   });
 
   it('getMoveStep', () => {
