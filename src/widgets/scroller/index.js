@@ -167,19 +167,17 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
 
 
-    return <TargetContainer style={style} innerRef={cmp => this.htmlScroller = cmp}
-                            onMouseMove={this.onMouseMove}
-                            onMouseOut={this.onMouseOut}
-                            onWheel={this.onWheel}
+    const getScroller = cmp => this.htmlScroller = cmp;
+    return <TargetContainer style={style}
+                            innerRef={getScroller}
+                            onMouseMove={this.onContainerMouseMove}
+                            onMouseOut={this.onContainerMouseOut}
                             onMouseDown={this.onContainerMouseDown}
                             onMouseUp={this.onContainerMouseUp}
-    >
+                            onWheel={this.onWheel}>
       <Target style={barStyle}
-              onMouseDown={this.onMouseDown}
-              onMouseUp={this.onMouseUp}
-
-      >
-      </Target>
+              onMouseDown={this.onSliderBarMouseDown}
+              onMouseUp={this.onSliderBarMouseUp}/>
     </TargetContainer>;
   }
 
@@ -202,7 +200,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
         });
       }
       if (this.bodyMouseUpHandle === undefined) {
-        this.bodyMouseUpHandle = this.bindDoc('mouseup', (e: Object) => {
+        this.bodyMouseUpHandle = this.bindDoc('mouseup', () => {
           this.isDrag = false;
         });
       }
@@ -215,7 +213,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   }
 
 
-  onMouseDown = () => {
+  onSliderBarMouseDown = () => {
     this.isDrag = true;
   };
   move: number;
@@ -265,14 +263,14 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       }
     }, 200);
   };
-  onMouseUp = () => {
+  onSliderBarMouseUp = () => {
     this.isDrag = false;
   };
-  onMouseOut = () => {
+  onContainerMouseOut = () => {
     this.clearMove();
   };
 
-  onMouseMove = (e: Object) => {
+  onContainerMouseMove = (e: Object) => {
     if (this.isDrag) {
       this.processDomEvent(e);
     }

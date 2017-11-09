@@ -114,12 +114,15 @@ describe('Scroller', function () {
       };
     });
     const cmp = mount(<Scroller {...config}/>);
-    exp(cmp.find('div').at(1).props().style.left).to.be.eql('25px');
+    const dom = cmp.find('div');
+    const sliderBar = dom.at(1);
+    exp(sliderBar.props().style.left).to.be.eql('25px');
 
-    cmp.find('div').at(1).simulate('mousedown', { clientX: 100, });
-    cmp.find('div').at(0).simulate('mouseup', { clientX: 50, });
+    sliderBar.simulate('mousedown', { clientX: 100, });
+    const scroller = dom.at(0);
+    scroller.simulate('mouseup', { clientX: 50, });
 
-    exp(cmp.find('div').at(1).props().style.left).to.be.eql('25px');
+    exp(sliderBar.props().style.left).to.be.eql('25px');
     exp(await onChange).to.be.equal(100);
   });
 
@@ -139,12 +142,15 @@ describe('Scroller', function () {
     );
     const cmp = mount(<Scroller {...config}/>);
 
-    exp(cmp.find('div').at(1).props().style.left).to.be.eql('25px');
+    const dom = cmp.find('div');
+    const sliderBar = dom.at(1);
+    exp(sliderBar.props().style.left).to.be.eql('25px');
 
-    cmp.find('div').at(1).simulate('mousedown', { clientX: 100, });
-    cmp.find('div').at(0).simulate('mouseup', { clientX: 50, });
+    sliderBar.simulate('mousedown', { clientX: 100, });
+    const scroller = dom.at(0);
+    scroller.simulate('mouseup', { clientX: 50, });
 
-    exp(cmp.find('div').at(1).getDOMNode().style.left).to.be.eql('50px');
+    exp(sliderBar.getDOMNode().style.left).to.be.eql('50px');
     exp(await onChange).to.be.equal(100);
 
   });
