@@ -96,13 +96,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   constructor (props: ScrollerProps) {
     super(props);
     this.componentWillReceiveProps(props);
-    const { defaultValue = 0, } = props;
-    this.state = {
-      value: defaultValue,
-      sliderSize: this.getSliderBarSize(props),
-    };
-    this.posGetter = cacheOnlyFirstCall(getElementPosition);
-    this.updateStepInfo(props);
   }
 
   maxValue: number;
@@ -115,9 +108,14 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   }
 
   componentWillReceiveProps (props: ScrollerProps) {
+
+    const { defaultValue = 0, } = props;
+    this.state = {
+      value: defaultValue,
+      sliderSize: this.getSliderBarSize(props),
+    };
+    this.posGetter = cacheOnlyFirstCall(getElementPosition);
     this.updateStepInfo(props);
-    const changeState = { sliderSize: this.getSliderBarSize(props), };
-    this.state = { ...this.state, ...changeState, };
   }
 
 
@@ -132,12 +130,15 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
 
   render () {
-    const { sliderSize, } = this.state;
-    const { viewSize, } = this.props;
+
     const value = Support.getNumberValue(this.props, this.state);
     let style: Object = {};
     let barStyle = {};
     let Target, TargetContainer;
+
+    const { viewSize, } = this.props;
+    const { sliderSize, } = this.state;
+
     const viewPx = this.getPX(viewSize);
     const barPx = this.getPX(sliderSize);
     const posPx = this.getPX(this.value2pos(value));

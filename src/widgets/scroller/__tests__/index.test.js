@@ -175,6 +175,24 @@ describe('Scroller', function () {
     exp(Scroller.prototype.getMoveStep('down', step)).to.be.equal(step);
     exp(Scroller.prototype.getMoveStep('up', step)).to.be.equal(-step);
   });
+  it('setProps', async () => {
+
+    const value = 50;
+    const
+      config = {
+        type: 'x',
+        viewSize: 100,
+        totalSize: 200,
+      };
+    const cmp = mount(<Scroller {...config}/>);
+    exp(cmp.state().sliderSize).to.be.equal(50);
+    exp(cmp.state().value).to.be.equal(0);
+
+    cmp.setProps({ type: 'x', viewSize: 100, totalSize: 100, defaultValue: value, });
+    exp(cmp.state().sliderSize).to.be.equal(0);
+    exp(cmp.state().value).to.be.equal(50);
+
+  });
 
 
 });
