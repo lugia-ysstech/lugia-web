@@ -224,11 +224,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
   }
 
-  onContainerMouseUp = (e: Object) => {
-    this.processDomEvent(e);
-    this.clearMove();
-    this.isDrag = false;
-  };
 
   getDirection (fx: number): Direction {
     if (fx === 0) {
@@ -263,9 +258,22 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       }
     }, 200);
   };
-  onSliderBarMouseUp = () => {
+
+  onContainerMouseUp = (e: Object) => {
+    if (this.isDrag === true) {
+      return;
+    }
+    this.processDomEvent(e);
+    this.clearMove();
     this.isDrag = false;
   };
+
+  onSliderBarMouseUp = (e: Object) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.isDrag = false;
+  };
+
   onContainerMouseOut = () => {
     this.clearMove();
   };

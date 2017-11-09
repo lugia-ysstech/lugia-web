@@ -530,3 +530,5 @@ exports[`Scroller props value: 0 & 50 type: x & y 5`] = `
   />
 </div>
 `;
+
+exports[`Scroller props: type is error 1`] = `""`;

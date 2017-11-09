@@ -99,7 +99,7 @@ describe('Scroller', function () {
     mount(<Target {...config}/>);
   });
 
-  it('props value: 50  & onChange limit cannot scroller  ', async () => {
+  it('props type: x, value: 50  & onChange limit cannot scroller  ', async () => {
 
     let config;
     const onChange = new Promise(resolve => {
@@ -118,7 +118,6 @@ describe('Scroller', function () {
     const sliderBar = dom.at(1);
     exp(sliderBar.props().style.left).to.be.eql('25px');
 
-    sliderBar.simulate('mousedown', { clientX: 100, });
     const scroller = dom.at(0);
     scroller.simulate('mouseup', { clientX: 50, });
 
@@ -126,7 +125,141 @@ describe('Scroller', function () {
     exp(await onChange).to.be.equal(100);
   });
 
-  it('props defaultValue: 50 & onChange not limit', async () => {
+  it('props type: y, value: 50  & onChange limit cannot scroller  ', async () => {
+
+    let config;
+    const onChange = new Promise(resolve => {
+      config = {
+        type: 'y',
+        viewSize: 100,
+        totalSize: 200,
+        value: 50,
+        onChange (v) {
+          resolve(v);
+        },
+      };
+    });
+    const cmp = mount(<Scroller {...config}/>);
+    const dom = cmp.find('div');
+    const sliderBar = dom.at(1);
+    exp(sliderBar.props().style.top).to.be.eql('25px');
+
+    const scroller = dom.at(0);
+    scroller.simulate('mouseup', { clientY: 50, });
+
+    exp(sliderBar.props().style.top).to.be.eql('25px');
+    exp(await onChange).to.be.equal(100);
+  });
+  it('props type: y, bar.mousedown & scroller.mousemove ', async () => {
+
+    let config;
+    const onChange = new Promise(resolve => {
+      config = {
+        type: 'y',
+        viewSize: 100,
+        totalSize: 200,
+        onChange (v) {
+          resolve(v);
+        },
+      };
+    });
+    const cmp = mount(<Scroller {...config}/>);
+    const dom = cmp.find('div');
+    const sliderBar = dom.at(1);
+    const scroller = dom.at(0);
+    exp(sliderBar.props().style.top).to.be.eql('0px');
+
+    sliderBar.simulate('mousedown', { clientY: 100, });
+    scroller.simulate('mousemove', { clientY: 100, });
+    exp(sliderBar.getDOMNode().style.top).to.be.eql('50px');
+    exp(await onChange).to.be.equal(100);
+
+  });
+  it('props type: y, bar mousedown & mouseup ', async () => {
+
+    let config;
+    const onChange = new Promise(resolve => {
+      config = {
+        type: 'y',
+        viewSize: 100,
+        totalSize: 200,
+        onChange (v) {
+          resolve(v);
+        },
+      };
+    });
+    const cmp = mount(<Scroller {...config}/>);
+    const dom = cmp.find('div');
+    const sliderBar = dom.at(1);
+    exp(sliderBar.props().style.top).to.be.eql('0px');
+    exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
+
+    sliderBar.simulate('mousedown', { clientY: 100, });
+    sliderBar.simulate('mouseup', { target: '', clientY: 100, });
+    exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
+  });
+  it('props type: y, bar.mousedown & bar.mouseup & mousemove', async () => {
+
+    const config = {
+      type: 'y',
+      viewSize: 100,
+      totalSize: 200,
+      onChange (v) {
+      },
+    };
+    const cmp = mount(<Scroller {...config}/>);
+    const dom = cmp.find('div');
+    const sliderBar = dom.at(1);
+    const scroller = dom.at(0);
+    exp(sliderBar.props().style.top).to.be.eql('0px');
+    exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
+
+    sliderBar.simulate('mousedown', { clientY: 100, });
+    sliderBar.simulate('mouseup', { target: '', clientY: 100, });
+    scroller.simulate('mousemove', { clientY: 100, });
+    exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
+  });
+
+  it('props type: y, bar.mousedown & scroller.mousemove', async () => {
+
+    const config = {
+      type: 'y',
+      viewSize: 100,
+      totalSize: 200,
+      onChange (v) {
+      },
+    };
+    const cmp = mount(<Scroller {...config}/>);
+    const dom = cmp.find('div');
+    const sliderBar = dom.at(1);
+    const scroller = dom.at(0);
+    exp(sliderBar.props().style.top).to.be.eql('0px');
+    exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
+
+    sliderBar.simulate('mousedown', { clientY: 100, });
+    scroller.simulate('mouseup', { clientY: 100, });
+    exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
+  });
+
+
+  it('props type: y, only mousemove ', async () => {
+
+    const config = {
+      type: 'y',
+      viewSize: 100,
+      totalSize: 200,
+
+    };
+    const cmp = mount(<Scroller {...config}/>);
+    const dom = cmp.find('div');
+    const sliderBar = dom.at(1);
+    const scroller = dom.at(0);
+    exp(sliderBar.props().style.top).to.be.eql('0px');
+    scroller.simulate('mousemove', { clientY: 100, });
+    exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
+  });
+
+  it('props defaultValue: 50 & onChange not limit bar.mousedown bar.mouseup scroller.mouseup', async () => {
     let config;
     const onChange = new Promise(resolve => {
         config = {
@@ -147,6 +280,7 @@ describe('Scroller', function () {
     exp(sliderBar.props().style.left).to.be.eql('25px');
 
     sliderBar.simulate('mousedown', { clientX: 100, });
+    sliderBar.simulate('mouseup', { clientX: 100, });
     const scroller = dom.at(0);
     scroller.simulate('mouseup', { clientX: 50, });
 
@@ -217,5 +351,20 @@ describe('Scroller', function () {
     mount(<Target {...config}/>);
   });
 
+  it('props: type is error', async () => {
 
-});
+    const viewSize = 100;
+    const totalSize = 200;
+    const
+      config = {
+        type: 'x',
+        viewSize,
+        totalSize,
+      };
+    config[ 'type' + '' ] = 'adsfads';
+
+    expect(renderer.create(<Scroller {...config}/>).toJSON()).toMatchSnapshot();
+  });
+
+})
+;
