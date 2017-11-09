@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu props value: 0 1`] = `
+.c0 {
+  position: relative;
+  background: #e3e3e6;
+  width: 20px;
+  height: 300px;
+  border-radius: 5px;
+  z-index: 996;
+  height: 12px;
+}
+
+.c1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  background: #49a9ee;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  height: 8px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.c1:hover {
+  background-color: #49a9ee96;
+}
+
+<div
+  className="c0"
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseOut={[Function]}
+  onMouseUp={[Function]}
+  onWheel={[Function]}
+  style={
+    Object {
+      "width": "300px",
+    }
+  }
+>
+  <div
+    className="c1"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "left": "0px",
+        "width": "90px",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Menu props value: 50 1`] = `
+.c0 {
+  position: relative;
+  background: #e3e3e6;
+  width: 20px;
+  height: 300px;
+  border-radius: 5px;
+  z-index: 996;
+  height: 12px;
+}
+
+.c1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  background: #49a9ee;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  height: 8px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.c1:hover {
+  background-color: #49a9ee96;
+}
+
+<div
+  className="c0"
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseOut={[Function]}
+  onMouseUp={[Function]}
+  onWheel={[Function]}
+  style={
+    Object {
+      "width": "300px",
+    }
+  }
+>
+  <div
+    className="c1"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    style={
+      Object {
+        "left": "0px",
+        "width": "90px",
+      }
+    }
+  />
+</div>
+`;
