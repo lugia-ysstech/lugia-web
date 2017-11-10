@@ -233,27 +233,23 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   }
 
   onContainerMouseDown = (e: Object) => {
+    this.clearMove();
+
     if (this.isDrag) {
       return;
     }
+
     const { step = DefaultStep, } = this.props;
     this.step = step;
-    this.clearMove();
-    let fx = None;
     const mousePos = this.getPos(e);
+    const fx = mousePos > this.value2pos(this.state.value) ? Down : Up;
     const targetValue = this.pos2value(mousePos);
-    if (mousePos > this.value2pos(this.state.value)) {
-      fx = Down;
-    } else {
-      fx = Up;
-    }
+
     this.move = setInterval(() => {
-      if (fx === Down) {
-        this.fastMove(fx, 2, this.state.value, 0, targetValue);
-      } else {
-        this.fastMove(fx, 2, this.state.value, 0, this.maxValue);
-      }
-      if (this.state.value === targetValue) {
+      const maxValue = fx === Down ? targetValue : this.maxValue;
+      this.fastMove(fx, 2, maxValue);
+      const { value, } = this.state;
+      if (value === targetValue) {
         this.clearMove();
       }
     }, 200);
@@ -323,13 +319,11 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   onWheel = (event: Object) => {
     const { deltaY, } = event;
-    const { value, } = this.state;
-
-    this.fastMove(this.getDirection(deltaY), 0.03, value, 0, this.maxValue);
+    this.fastMove(this.getDirection(deltaY), 0.03, this.maxValue);
   };
 
 
-  fastMove = (fx: Direction, percent: number, value: number, minValue: number, maxValue: number) => {
+  fastMove = (fx: Direction, percent: number, maxValue: number) => {
     if (fx === None) {
       return;
     }
@@ -343,9 +337,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
     this.step = Math.min(this.fastStep, this.step);
     const realStep = this.getMoveStep(fx, this.step);
-    let newValue = value + realStep;
+    let newValue = this.state.value + realStep;
     newValue = Math.min(newValue, maxValue);
-    newValue = Math.max(newValue, minValue);
+    newValue = Math.max(newValue, 0);
+
     if (this.lastFx !== undefined && this.lastFx !== fx) {
       const timeSpan = new Date() - this.lastTime;
       if (timeSpan < 200) {
