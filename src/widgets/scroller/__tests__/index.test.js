@@ -114,16 +114,16 @@ describe('Scroller', function () {
       };
     });
     const cmp = mount(<Scroller {...config}/>);
-    const dom = cmp.find('div');
-    const sliderBar = dom.at(1);
+    const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.left).to.be.eql('25px');
 
-    const scroller = dom.at(0);
+    const scroller = findScroller(cmp);
     scroller.simulate('mouseup', { clientX: 50, });
 
     exp(sliderBar.props().style.left).to.be.eql('25px');
     exp(await onChange).to.be.equal(100);
   });
+
 
   it('props type: y, value: 50  & onChange limit cannot scroller  ', async () => {
 
@@ -140,11 +140,10 @@ describe('Scroller', function () {
       };
     });
     const cmp = mount(<Scroller {...config}/>);
-    const dom = cmp.find('div');
-    const sliderBar = dom.at(1);
-    exp(sliderBar.props().style.top).to.be.eql('25px');
 
-    const scroller = dom.at(0);
+    const sliderBar = findSlider(cmp);
+    exp(sliderBar.props().style.top).to.be.eql('25px');
+    const scroller = findScroller(cmp);
     scroller.simulate('mouseup', { clientY: 50, });
 
     exp(sliderBar.props().style.top).to.be.eql('25px');
@@ -164,9 +163,9 @@ describe('Scroller', function () {
       };
     });
     const cmp = mount(<Scroller {...config}/>);
-    const dom = cmp.find('div');
-    const sliderBar = dom.at(1);
-    const scroller = dom.at(0);
+
+    const sliderBar = findSlider(cmp);
+    const scroller = findScroller(cmp);
 
     exp(sliderBar.props().style.top).to.be.eql('0px');
     sliderBar.simulate('mousedown', { clientY: 10, });
@@ -177,20 +176,14 @@ describe('Scroller', function () {
   });
   it('props type: y, bar mousedown & mouseup ', async () => {
 
-    let config;
-    const onChange = new Promise(resolve => {
-      config = {
-        type: 'y',
-        viewSize: 100,
-        totalSize: 200,
-        onChange (v) {
-          resolve(v);
-        },
-      };
-    });
+    const config = {
+      type: 'y',
+      viewSize: 100,
+      totalSize: 200,
+    };
     const cmp = mount(<Scroller {...config}/>);
-    const dom = cmp.find('div');
-    const sliderBar = dom.at(1);
+
+    const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.top).to.be.eql('0px');
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
 
@@ -208,9 +201,9 @@ describe('Scroller', function () {
       },
     };
     const cmp = mount(<Scroller {...config}/>);
-    const dom = cmp.find('div');
-    const sliderBar = dom.at(1);
-    const scroller = dom.at(0);
+
+    const sliderBar = findSlider(cmp);
+    const scroller = findScroller(cmp);
     exp(sliderBar.props().style.top).to.be.eql('0px');
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
 
@@ -230,9 +223,9 @@ describe('Scroller', function () {
       },
     };
     const cmp = mount(<Scroller {...config}/>);
-    const dom = cmp.find('div');
-    const sliderBar = dom.at(1);
-    const scroller = dom.at(0);
+
+    const sliderBar = findSlider(cmp);
+    const scroller = findScroller(cmp);
     exp(sliderBar.props().style.top).to.be.eql('0px');
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
 
@@ -251,9 +244,9 @@ describe('Scroller', function () {
 
     };
     const cmp = mount(<Scroller {...config}/>);
-    const dom = cmp.find('div');
-    const sliderBar = dom.at(1);
-    const scroller = dom.at(0);
+
+    const sliderBar = findSlider(cmp);
+    const scroller = findScroller(cmp);
     exp(sliderBar.props().style.top).to.be.eql('0px');
     scroller.simulate('mousemove', { clientY: 100, });
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
@@ -275,13 +268,13 @@ describe('Scroller', function () {
     );
     const cmp = mount(<Scroller {...config}/>);
 
-    const dom = cmp.find('div');
-    const sliderBar = dom.at(1);
+
+    const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.left).to.be.eql('25px');
 
     sliderBar.simulate('mousedown', { clientX: 100, });
     sliderBar.simulate('mouseup', { clientX: 100, });
-    const scroller = dom.at(0);
+    const scroller = findScroller(cmp);
     scroller.simulate('mouseup', { clientX: 50, });
 
     exp(sliderBar.getDOMNode().style.left).to.be.eql('50px');
@@ -347,7 +340,7 @@ describe('Scroller', function () {
       exp(target.step).to.be.equal(1);
       exp(target.fastStep).to.be.equal(50);
       exp(target.maxValue).to.be.equal(100);
-      exp(target.sliderAbsoulateSize ).to.be.equal(0);
+      exp(target.sliderAbsoulateSize).to.be.equal(0);
     });
     mount(<Target {...config}/>);
   });
@@ -366,6 +359,16 @@ describe('Scroller', function () {
 
     expect(renderer.create(<Scroller {...config}/>).toJSON()).toMatchSnapshot();
   });
+
+  function findSlider (cmp: Object): Object {
+    const dom = cmp.find('div');
+    return dom.at(1);
+  }
+
+  function findScroller (cmp: Object): Object {
+    const dom = cmp.find('div');
+    return dom.at(0);
+  }
 
 })
 ;
