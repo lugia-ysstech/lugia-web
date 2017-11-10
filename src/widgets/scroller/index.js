@@ -242,18 +242,18 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     let fx = None;
     const mousePos = this.getPos(e);
     const targetValue = this.pos2value(mousePos);
-    if (this.value2pos(this.state.value) > mousePos) {
+    if (mousePos > this.value2pos(this.state.value)) {
       fx = Down;
     } else {
       fx = Up;
     }
     this.move = setInterval(() => {
       if (fx === Down) {
-        this.fastMove(fx, 2, 0, targetValue);
+        this.fastMove(fx, 2, this.state.value, 0, targetValue);
       } else {
-        this.fastMove(fx, 2, targetValue, this.maxValue);
+        this.fastMove(fx, 2, this.state.value, 0, this.maxValue);
       }
-      if (this.state.value >= targetValue) {
+      if (this.state.value === targetValue) {
         this.clearMove();
       }
     }, 200);
@@ -323,20 +323,19 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   onWheel = (event: Object) => {
     const { deltaY, } = event;
-    this.fastMove(this.getDirection(deltaY), 0.03, 0, this.maxValue);
+    const { value, } = this.state;
+
+    this.fastMove(this.getDirection(deltaY), 0.03, value, 0, this.maxValue);
   };
 
 
-  fastMove = (fx: Direction, percent: number, minValue: number, maxValue: number) => {
+  fastMove = (fx: Direction, percent: number, value: number, minValue: number, maxValue: number) => {
     if (fx === None) {
       return;
     }
-
     const now = new Date();
     const timeSpan = now - this.lastTime;
     const { step = DefaultStep, } = this.props;
-    const { value, } = this.state;
-
     if (this.lastTime && timeSpan < 500) {
       this.step = this.step * (1 + percent);
     } else {

@@ -460,7 +460,7 @@ describe('Scroller', function () {
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
     //  忽略delaty大小的影响
-    const deltayArr = [5, 15,];
+    const deltayArr = [ 5, 15, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -486,7 +486,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
-    const deltayArr = [-1, -5,];
+    const deltayArr = [ -1, -5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -512,7 +512,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
-    const deltayArr = [-1, -5,];
+    const deltayArr = [ -1, -5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -538,7 +538,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
-    const deltayArr = [1, 5,];
+    const deltayArr = [ 1, 5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -568,7 +568,7 @@ describe('Scroller', function () {
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
     //  忽略delaty大小的影响
-    const deltayArr = [5, 15,];
+    const deltayArr = [ 5, 15, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -594,7 +594,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
-    const deltayArr = [-1, -5,];
+    const deltayArr = [ -1, -5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -620,7 +620,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
-    const deltayArr = [-1, -5,];
+    const deltayArr = [ -1, -5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -646,7 +646,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
-    const deltayArr = [1,5,];
+    const deltayArr = [ 1, 5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -679,5 +679,54 @@ describe('Scroller', function () {
 
     });
     exp(changeCnt).to.be.equal(1);
+  });
+
+
+  it('onContainerMouseDown 长摁滑块下方 滚动条容器将持续滚动到点击的位置', async () => {
+
+    const viewSize = 100;
+    const totalSize = 1000;
+    const
+      config = {
+        type: 'y',
+        viewSize,
+        totalSize,
+      };
+    const Target = createTestComponent(Scroller, (target: Object) => {
+
+    });
+
+    const cmp = mount(<Target {...config}/>);
+    const scroller = findScroller(cmp);
+    const sliderBar = findSlider(cmp);
+    exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
+    scroller.simulate('mousedown', { clientY: 90, });
+    await delay(2000);
+    exp(sliderBar.getDOMNode().style.top).to.be.equal('90px');
+
+  });
+  it('onContainerMouseDown 长摁滑块上方 滚动条容器将持续滚动到点击的位置', async () => {
+
+    const viewSize = 100;
+    const totalSize = 1000;
+    const
+      config = {
+        type: 'y',
+        viewSize,
+        totalSize,
+        defaultValue: 900,
+      };
+    const Target = createTestComponent(Scroller, (target: Object) => {
+
+    });
+
+    const cmp = mount(<Target {...config}/>);
+    const scroller = findScroller(cmp);
+    const sliderBar = findSlider(cmp);
+    exp(sliderBar.getDOMNode().style.top).to.be.equal('90px');
+    scroller.simulate('mousedown', { clientY: 90, });
+    await delay(2000);
+    exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
+
   });
 });

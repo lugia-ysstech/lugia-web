@@ -7,11 +7,12 @@
 import * as React from 'react';
 import Scroller from './';
 
+
 const InputDemo = () => {
   const config = {
-    type: 'x',
-    viewSize: 300,
-    totalSize: 1000,
+    type: 'y',
+    viewSize: 200,
+    totalSize: 5000,
     left: 100,
     // value: 50,
   };
