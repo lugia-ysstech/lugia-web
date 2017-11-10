@@ -10,7 +10,22 @@ import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition, } from '../../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 
-const BarDefaultSize = 12;
+type ScrollerProps = {
+  totalSize: number,
+  viewSize: number,
+  type?: 'x' | 'y',
+  onChange?: Function,
+  value?: number,
+  throttle?: number,
+  defaultValue?: number,
+  step?: number,
+};
+type ScrollerState = {
+  value: number,
+  sliderSize: number,
+};
+type Direction = 'down' | 'up' | 'none';
+
 const Container = styled.div`
   position: relative;
   background: #e3e3e6;
@@ -18,6 +33,14 @@ const Container = styled.div`
   height: 300px;
   border-radius: 5px;
   z-index: 996;
+`;
+
+const BarDefaultSize = 12;
+const XContainer = Container.extend`
+  height: ${BarDefaultSize}px;
+`;
+const YContainer = Container.extend`
+  width: ${BarDefaultSize}px;
 `;
 
 const Bar = styled.div`
@@ -36,20 +59,13 @@ const Bar = styled.div`
     background-color: #49a9ee96;
   }
 `;
-const XContainer = Container.extend`
-  height: ${BarDefaultSize}px;
-`;
-const YContainer = Container.extend`
-  width: ${BarDefaultSize}px;
-`;
-const BarDefaultSizePadding = 4;
 
+const BarDefaultSizePadding = 4;
 const XBar = Bar.extend`
   height: ${BarDefaultSize - BarDefaultSizePadding}px;
   margin-bottom: 2px;
   margin-top: 2px;
 `;
-
 const YBar = Bar.extend`
   width: ${BarDefaultSize - BarDefaultSizePadding}px;
   margin-left: 2px;
@@ -57,25 +73,9 @@ const YBar = Bar.extend`
 `;
 
 const XScroller = 'x', YScroller = 'y';
-
-type ScrollerProps = {
-  totalSize: number,
-  viewSize: number,
-  type?: 'x' | 'y',
-  onChange?: Function,
-  value?: number,
-  throttle?: number,
-  defaultValue?: number,
-  step?: number,
-};
-type ScrollerState = {
-  value: number,
-  sliderSize: number,
-};
 const Down = 'down';
 const Up = 'up';
 const None = 'none';
-type Direction = 'down' | 'up' | 'none';
 const DefaultStep = 1;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
@@ -86,19 +86,26 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     step: DefaultStep,
   };
 
+  bodyMouseUpHandle: Object;
+  bodyMouseMoveHandle: Object;
+  fastStep: number;
   htmlScroller: HTMLElement;
-  scroller: ?Object;
-  drag: boolean;
-  state: ScrollerState;
-  throttleTimer: number;
+  isDrag: boolean;
+  lastFx: string;
+  lastTime: number;
+  maxValue: number;
   posGetter: Object;
+  state: ScrollerState;
+  throttleTimer: ?number;
+  sliderAbsoulateSize: number;
+  step: number;
+  move: number;
 
   constructor (props: ScrollerProps) {
     super(props);
     this.componentWillReceiveProps(props);
   }
 
-  maxValue: number;
 
   componentWillReceiveProps (props: ScrollerProps) {
 
@@ -124,45 +131,45 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     if (notNeed) {
       return 0;
     }
-    return Math.round(Math.max(viewSize * this.unitValuePos(props), 10));
+    const barSize = viewSize * this.unitValuePos(props);
+    return Math.round(Math.max(barSize, 10));
   }
 
 
   render () {
 
-    let style: Object = {};
     let barStyle = {};
+    let style: Object = {};
     let Target, TargetContainer;
 
     const { viewSize, } = this.props;
     const { sliderSize, } = this.state;
 
-    const viewPx = this.getPX(viewSize);
     const barPx = this.getPX(sliderSize);
     const posPx = this.getPX(this.getCurrentPos());
+    const viewPx = this.getPX(viewSize);
 
     this.selectType(() => {
-
-      style = { width: viewPx, };
-      style.width = viewPx;
       barStyle = {
         width: barPx,
         left: posPx,
       };
+      style = { width: viewPx, };
+      style.width = viewPx;
       Target = XBar;
       TargetContainer = XContainer;
 
     }, () => {
-      style = { height: viewPx, };
       barStyle = {
         height: barPx,
         top: posPx,
       };
+      style = { height: viewPx, };
       Target = YBar;
       TargetContainer = YContainer;
     });
 
-    if (!TargetContainer || !Target) {
+    if (!Target || !TargetContainer) {
       return '';
     }
 
@@ -171,10 +178,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return <TargetContainer style={style}
                             innerRef={getScroller}
                             onMouseMove={this.onContainerMouseMove}
-                            onMouseOut={this.onContainerMouseOut}
                             onMouseDown={this.onContainerMouseDown}
                             onMouseUp={this.onContainerMouseUp}
-                            onWheel={this.onWheel}>
+                            onWheel={this.onWheel}
+                            onMouseOut={this.onContainerMouseOut}>
       <Target style={barStyle}
               onMouseDown={this.onSliderBarMouseDown}
               onMouseUp={this.onSliderBarMouseUp}/>
@@ -190,16 +197,12 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return `${val}px`;
   }
 
-
-  bodyMouseMoveHandle: Object;
-  bodyMouseUpHandle: Object;
-
   componentDidMount () {
     if (document.body) {
       if (this.bodyMouseMoveHandle === undefined) {
         this.bodyMouseMoveHandle = this.bindDoc('mousemove', (e: Object) => {
           if (this.isDrag) {
-            this.processDomEvent(this.getPos(e) - this.sliderAbsoulateSize);
+            this.processDomEvent(this.getRealSliderPos(e));
           }
         });
       }
@@ -211,23 +214,19 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
   }
 
-
   bindDoc (event: string, callback: Function): Object {
     return addEventListener(document, event, callback);
   }
 
-  sliderAbsoulateSize: number;
+  getRealSliderPos (e: Object): number {
+    return this.getPos(e) - this.sliderAbsoulateSize;
+  }
+
+
   onSliderBarMouseDown = (e: Object) => {
     this.sliderAbsoulateSize = this.getPos(e) - this.getCurrentPos();
     this.isDrag = true;
   };
-  move: number;
-
-  clearMove () {
-    if (this.move) {
-      clearInterval(this.move);
-    }
-  }
 
 
   getDirection (fx: number): Direction {
@@ -283,15 +282,20 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.clearMove();
   };
 
+  clearMove () {
+    if (this.move) {
+      clearInterval(this.move);
+    }
+  }
+
   onContainerMouseMove = (e: Object) => {
     if (this.isDrag) {
-      this.processDomEvent(this.getPos(e) - this.sliderAbsoulateSize);
+      this.processDomEvent(this.getRealSliderPos(e));
     }
   };
 
-  processDomEvent (pos: number, time: ?number) {
-    const value = this.pos2value(pos);
-    this.setValue(value, time);
+  processDomEvent (pos: number) {
+    this.setValue(this.pos2value(pos));
   }
 
 
@@ -300,10 +304,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.bodyMouseUpHandle && this.bodyMouseUpHandle.remove();
   }
 
-  lastFx: string;
-  lastTime: number;
-  step: number;
-  fastStep: number;
+
   onWheel = (event: Object) => {
     const { deltaY, } = event;
     this.fastMove(this.getDirection(deltaY), 0.03, 0, this.maxValue);
@@ -350,7 +351,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return fx === Down ? step : -step;
   }
 
-  setValue (theValue: number, time: ?number) {
+  setValue (theValue: number) {
     if (theValue === this.state.value) {
       return;
     }
@@ -359,27 +360,30 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const value = Math.min(min, max);
 
     this.setState({ value, }, () => {
-      this.scrolling(value, time);
+      this.scrolling(value);
     });
   }
 
-  scrolling (value: number, time: ?number) {
-    const interval = time || this.props.throttle;
-    const scrolling = () => {
-      const { onChange, } = this.props;
-      onChange && onChange(value);
-    };
+  scrolling (value: number) {
     if (this.throttleTimer !== undefined) {
       clearTimeout(this.throttleTimer);
     }
-    this.throttleTimer = setTimeout(scrolling, interval);
+    const { props, } = this;
+    const { throttle, } = props;
+    this.throttleTimer = setTimeout(() => {
+      this.onChange(value);
+    }, throttle);
   }
+
+  onChange = (value: number) => {
+    const { onChange, } = this.props;
+    onChange && onChange(value);
+  };
 
   getPos (e: Object) {
     const arg = this.posGetter.func(this.htmlScroller);
-
     let pos = 0;
-    const { viewSize, } = this.props;
+
     this.selectType(() => {
       const { clientX, } = e;
       const { x, } = arg;
@@ -389,7 +393,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       const { y, } = arg;
       pos = clientY - y;
     });
-    return Math.min(pos, viewSize);
+    return Math.min(this.props.viewSize, pos);
   }
 
   selectType (x: Function, y: Function) {
@@ -405,12 +409,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
   }
 
-  isDrag: boolean;
-
 
   shouldComponentUpdate (nextProps: ScrollerProps, nextState: ScrollerState) {
     return this.props.viewSize !== nextProps.viewSize
-      || !this.scroller
       || this.state.value !== nextState.value
       || this.props.totalSize !== nextProps.totalSize;
   }

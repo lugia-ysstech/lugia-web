@@ -32,6 +32,7 @@ describe('Scroller', function () {
     expect(renderer.create(<Scroller {...config} type="x" defaultValue={50}/>).toJSON()).toMatchSnapshot();
     expect(renderer.create(<Scroller {...config} type="y" defaultValue={50}/>).toJSON()).toMatchSnapshot();
   });
+
   it('props value: 0 & 50 type: x & y', () => {
     const config = {
       viewSize: 300,
@@ -570,5 +571,32 @@ describe('Scroller', function () {
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
   });
 
-})
-;
+  it('throttle scrolling', async () => {
+    let changeCnt = 0;
+    const throttle = 200;
+    const config = {
+      type: 'x',
+      viewSize: 100,
+      totalSize: 200,
+      value: 50,
+      throttle,
+      onChange () {
+        changeCnt++;
+      },
+    };
+    await new Promise(resolve => {
+      const Target = createTestComponent(Scroller, scroller => {
+        for (let i = 0; i < 1000; i++) {
+          scroller.scrolling(10);
+        }
+        setTimeout(() => {
+          scroller.scrolling(10);
+          resolve(true);
+        }, throttle * 2);
+      });
+      mount(<Target {...config}/>);
+
+    });
+    exp(changeCnt).to.be.equal(1);
+  });
+});
