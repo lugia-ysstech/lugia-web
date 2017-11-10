@@ -254,9 +254,9 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
     this.move = setInterval(() => {
       if (fx === Down) {
-        this.fastMove(fx, 2, targetValue);
+        this.fastMove(fx, 2, 0, targetValue);
       } else {
-        this.fastMove(fx, 2, this.maxValue, targetValue);
+        this.fastMove(fx, 2, targetValue, this.maxValue);
       }
       if (this.state.value >= targetValue) {
         this.clearMove();
@@ -306,11 +306,11 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   fastStep: number;
   onWheel = (event: Object) => {
     const { deltaY, } = event;
-    this.fastMove(deltaY, 0.03, this.maxValue);
+    this.fastMove(this.getDirection(deltaY), 0.03, 0, this.maxValue);
   };
 
 
-  fastMove = (fx: Direction, percent: number, maxValue: number, minValue: number = 0) => {
+  fastMove = (fx: Direction, percent: number, minValue: number, maxValue: number) => {
     if (fx === None) {
       return;
     }
@@ -326,10 +326,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       this.step = step;
     }
     this.step = Math.min(this.fastStep, this.step);
-    let newValue = value + this.getMoveStep(fx, this.step);
+    const realStep = this.getMoveStep(fx, this.step);
+    let newValue = value + realStep;
     newValue = Math.min(newValue, maxValue);
     newValue = Math.max(newValue, minValue);
-
     if (this.lastFx !== undefined && this.lastFx !== fx) {
       const timeSpan = new Date() - this.lastTime;
       if (timeSpan < 200) {
@@ -392,7 +392,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return Math.min(pos, viewSize);
   }
 
-  async selectType (x: Function, y: Function) {
+  selectType (x: Function, y: Function) {
     const { type, } = this.props;
     switch (type) {
       case XScroller:

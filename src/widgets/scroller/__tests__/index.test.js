@@ -370,5 +370,110 @@ describe('Scroller', function () {
     return dom.at(0);
   }
 
+
+  it('onWheel 滚动条位于顶部，继续往上拖动', async () => {
+
+    const viewSize = 100;
+    const totalSize = 200;
+    const
+      config = {
+        type: 'x',
+        viewSize,
+        totalSize,
+      };
+    const Target = createTestComponent(Scroller, (target: Object) => {
+
+    });
+
+    const cmp = mount(<Target {...config}/>);
+    const scroller = findScroller(cmp);
+    const sliderBar = findSlider(cmp);
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
+    //  忽略delaty大小的影响
+    const deltayArr = [5, 15,];
+    for (let i = 0; i < 100; i++) {
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+    }
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
+  });
+
+  it('onWheel 滚动条位于底部，继续往下拖动', async () => {
+
+    const viewSize = 100;
+    const totalSize = 200;
+    const
+      config = {
+        type: 'x',
+        viewSize,
+        totalSize,
+        defaultValue: 100,
+      };
+    const Target = createTestComponent(Scroller, (target: Object) => {
+
+    });
+
+    const cmp = mount(<Target {...config}/>);
+    const scroller = findScroller(cmp);
+    const sliderBar = findSlider(cmp);
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
+    const deltayArr = [-1, -5,];
+    for (let i = 0; i < 100; i++) {
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+    }
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
+  });
+
+
+  it('onWheel 滚动条位于顶部，一滑到底', async () => {
+
+    const viewSize = 100;
+    const totalSize = 200;
+    const
+      config = {
+        type: 'x',
+        viewSize,
+        totalSize,
+      };
+    const Target = createTestComponent(Scroller, (target: Object) => {
+
+    });
+
+    const cmp = mount(<Target {...config}/>);
+    const scroller = findScroller(cmp);
+    const sliderBar = findSlider(cmp);
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
+    const deltayArr = [-1, -5,];
+    for (let i = 0; i < 100; i++) {
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+    }
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
+  });
+
+  it('onWheel 滚动条位于底部，一拉到顶', async () => {
+
+    const viewSize = 100;
+    const totalSize = 200;
+    const
+      config = {
+        type: 'x',
+        viewSize,
+        totalSize,
+        defaultValue: 100,
+      };
+    const Target = createTestComponent(Scroller, (target: Object) => {
+
+    });
+
+    const cmp = mount(<Target {...config}/>);
+    const scroller = findScroller(cmp);
+    const sliderBar = findSlider(cmp);
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
+    const deltayArr = [1, 5,];
+    for (let i = 0; i < 100; i++) {
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+    }
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
+  });
+
 })
 ;
