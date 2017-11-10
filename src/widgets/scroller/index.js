@@ -218,10 +218,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return addEventListener(document, event, callback);
   }
 
-  getRealSliderPos (e: Object): number {
-    return this.getPos(e) - this.sliderAbsoulateSize;
-  }
-
 
   onSliderBarMouseDown = (e: Object) => {
     this.sliderAbsoulateSize = this.getPos(e) - this.getCurrentPos();
@@ -272,6 +268,22 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.isDrag = false;
   };
 
+  getPos (e: Object) {
+    const arg = this.posGetter.func(this.htmlScroller);
+    let pos = 0;
+
+    this.selectType(() => {
+      const { clientX, } = e;
+      const { x, } = arg;
+      pos = clientX - x;
+    }, () => {
+      const { clientY, } = e;
+      const { y, } = arg;
+      pos = clientY - y;
+    });
+    return Math.min(this.props.viewSize, pos);
+  }
+
   onSliderBarMouseUp = (e: Object) => {
     e.preventDefault();
     e.stopPropagation();
@@ -293,6 +305,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       this.processDomEvent(this.getRealSliderPos(e));
     }
   };
+
+  getRealSliderPos (e: Object): number {
+    return this.getPos(e) - this.sliderAbsoulateSize;
+  }
 
   processDomEvent (pos: number) {
     this.setValue(this.pos2value(pos));
@@ -380,21 +396,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     onChange && onChange(value);
   };
 
-  getPos (e: Object) {
-    const arg = this.posGetter.func(this.htmlScroller);
-    let pos = 0;
-
-    this.selectType(() => {
-      const { clientX, } = e;
-      const { x, } = arg;
-      pos = clientX - x;
-    }, () => {
-      const { clientY, } = e;
-      const { y, } = arg;
-      pos = clientY - y;
-    });
-    return Math.min(this.props.viewSize, pos);
-  }
 
   selectType (x: Function, y: Function) {
     const { type, } = this.props;
