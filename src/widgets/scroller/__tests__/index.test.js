@@ -8,6 +8,7 @@ import { createTestComponent, } from 'sv-test-utils';
 import Adapter from 'enzyme-adapter-react-16';
 import Scroller from '../index';
 import chai from 'chai';
+import { mockObject, } from 'vx-mock';
 
 const { expect: exp, } = chai;
 
@@ -80,6 +81,74 @@ describe('Scroller', function () {
     mount(<Target {...config}/>);
   });
 
+
+  it('getPos for x', () => {
+    const config = {
+      type: 'x',
+      viewSize: 100,
+      totalSize: 200,
+      value: 50,
+    };
+    const Target = createTestComponent(Scroller, scroller => {
+      exp(scroller.getPos({ clientY: 100, })).to.be.NaN;
+      const mock = mockObject.create(scroller);
+      const pos = 50;
+      mock.mockVar('posGetter').returned({
+        func () {
+          return { x: pos, y: pos, };
+        },
+      });
+      exp(scroller.getPos({ clientX: 100, })).to.be.equal(50);
+    });
+    mount(<Target {...config}/>);
+  });
+
+  it('getPos for y', () => {
+    const config = {
+      type: 'y',
+      viewSize: 100,
+      totalSize: 200,
+      value: 50,
+    };
+    const Target = createTestComponent(Scroller, scroller => {
+      exp(scroller.getPos({ clientX: 100, })).to.be.NaN;
+      const mock = mockObject.create(scroller);
+      const pos = 30;
+      mock.mockVar('posGetter').returned({
+        func () {
+          return { x: pos, y: pos, };
+        },
+      });
+      exp(scroller.getPos({ clientY: 100, })).to.be.equal(70);
+    });
+    mount(<Target {...config}/>);
+  });
+
+  it('selectType: type is x', generateSelectTypeCase('x'));
+  it('selectType: type is y', generateSelectTypeCase('y'));
+
+  function generateSelectTypeCase (type: string): Function {
+    return async () => {
+      const config = {
+        type,
+        viewSize: 100,
+        totalSize: 200,
+        value: 50,
+      };
+      const result = new Promise(resolve => {
+
+        const Target = createTestComponent(Scroller, scroller => {
+          scroller.selectType(() => {
+            resolve('x');
+          }, () => {
+            resolve('y');
+          });
+        });
+        mount(<Target {...config}/>);
+      });
+      exp(await result).to.be.equal(type);
+    };
+  }
 
   it('getPX', () => {
     const config = {
@@ -390,7 +459,7 @@ describe('Scroller', function () {
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
     //  忽略delaty大小的影响
-    const deltayArr = [5, 15,];
+    const deltayArr = [ 5, 15, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -416,7 +485,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
-    const deltayArr = [-1, -5,];
+    const deltayArr = [ -1, -5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -442,7 +511,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
-    const deltayArr = [-1, -5,];
+    const deltayArr = [ -1, -5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
@@ -468,7 +537,33 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
-    const deltayArr = [1, 5,];
+    const deltayArr = [ 1, 5, ];
+    for (let i = 0; i < 100; i++) {
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+    }
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
+  });
+
+  it('onContainerMouseDown 长摁滚动条容器，将持续滚动到指定位置', async () => {
+
+    const viewSize = 100;
+    const totalSize = 200;
+    const
+      config = {
+        type: 'x',
+        viewSize,
+        totalSize,
+        defaultValue: 100,
+      };
+    const Target = createTestComponent(Scroller, (target: Object) => {
+
+    });
+
+    const cmp = mount(<Target {...config}/>);
+    const scroller = findScroller(cmp);
+    const sliderBar = findSlider(cmp);
+    exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
+    const deltayArr = [ 1, 5, ];
     for (let i = 0; i < 100; i++) {
       scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
     }
