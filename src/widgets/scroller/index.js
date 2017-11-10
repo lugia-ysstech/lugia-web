@@ -220,6 +220,8 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
 
   onSliderBarMouseDown = (e: Object) => {
+    e.preventDefault();
+    e.stopPropagation();
     this.sliderAbsoulateSize = this.getPos(e) - this.getCurrentPos();
     this.isDrag = true;
   };
@@ -336,6 +338,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       this.step = step;
     }
     this.step = Math.min(this.fastStep, this.step);
+    console.info(this.step);
     const realStep = this.getMoveStep(fx, this.step);
     let newValue = this.state.value + realStep;
     newValue = Math.min(newValue, maxValue);
