@@ -313,6 +313,7 @@ class TreeNode extends React.Component {
 
     return (
       <li
+        unselectable="on"
         {...liProps}
         className={classNames(props.className, disabledCls, dragOverCls, filterCls)}
       >
