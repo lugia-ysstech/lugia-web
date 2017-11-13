@@ -1,0 +1,600 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
+.c3 {
+  position: relative;
+  background: #e3e3e6;
+  width: 20px;
+  height: 300px;
+  border-radius: 5px;
+  z-index: 996;
+  width: 12px;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  background: #49a9ee;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  width: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.c4:hover {
+  background-color: #49a9ee96;
+}
+
+.c1 {
+  height: 50px;
+  width: 288px;
+  position: absolute;
+  display: inline-block;
+}
+
+.c2 {
+  height: 50px;
+  width: 288px;
+  position: absolute;
+  display: inline-block;
+  left: 288px;
+  width: 12px;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 50px;
+  width: 300px;
+  position: relative;
+}
+
+<div
+  className="c0"
+  onWheel={[Function]}
+>
+  <div
+    className="c1"
+  >
+    <div>
+      1
+    </div>
+  </div>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onMouseDown={[Function]}
+      onMouseMove={[Function]}
+      onMouseOut={[Function]}
+      onMouseUp={[Function]}
+      onWheel={[Function]}
+      style={
+        Object {
+          "height": "50px",
+        }
+      }
+    >
+      <div
+        className="c4"
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "14px",
+            "top": "0px",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
+.c3 {
+  position: relative;
+  background: #e3e3e6;
+  width: 20px;
+  height: 300px;
+  border-radius: 5px;
+  z-index: 996;
+  width: 12px;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  background: #49a9ee;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  width: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.c4:hover {
+  background-color: #49a9ee96;
+}
+
+.c1 {
+  height: 250px;
+  width: 238px;
+  position: absolute;
+  display: inline-block;
+}
+
+.c2 {
+  height: 250px;
+  width: 238px;
+  position: absolute;
+  display: inline-block;
+  left: 238px;
+  width: 12px;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 250px;
+  width: 250px;
+  position: relative;
+}
+
+<div
+  className="c0"
+  onWheel={[Function]}
+>
+  <div
+    className="c1"
+  >
+    <div>
+      <div>
+        title0
+      </div>
+      <div>
+        title1
+      </div>
+      <div>
+        title2
+      </div>
+      <div>
+        title3
+      </div>
+      <div>
+        title4
+      </div>
+      <div>
+        title5
+      </div>
+      <div>
+        title6
+      </div>
+      <div>
+        title7
+      </div>
+      <div>
+        title8
+      </div>
+      <div>
+        title9
+      </div>
+      <div>
+        title10
+      </div>
+      <div>
+        title11
+      </div>
+      <div>
+        title12
+      </div>
+      <div>
+        title13
+      </div>
+      <div>
+        title14
+      </div>
+      <div>
+        title15
+      </div>
+      <div>
+        title16
+      </div>
+      <div>
+        title17
+      </div>
+      <div>
+        title18
+      </div>
+      <div>
+        title19
+      </div>
+      <div>
+        title20
+      </div>
+      <div>
+        title21
+      </div>
+      <div>
+        title22
+      </div>
+      <div>
+        title23
+      </div>
+      <div>
+        title24
+      </div>
+      <div>
+        title25
+      </div>
+      <div>
+        title26
+      </div>
+      <div>
+        title27
+      </div>
+      <div>
+        title28
+      </div>
+      <div>
+        title29
+      </div>
+      <div>
+        title30
+      </div>
+      <div>
+        title31
+      </div>
+      <div>
+        title32
+      </div>
+      <div>
+        title33
+      </div>
+      <div>
+        title34
+      </div>
+      <div>
+        title35
+      </div>
+      <div>
+        title36
+      </div>
+      <div>
+        title37
+      </div>
+      <div>
+        title38
+      </div>
+      <div>
+        title39
+      </div>
+      <div>
+        title40
+      </div>
+      <div>
+        title41
+      </div>
+      <div>
+        title42
+      </div>
+      <div>
+        title43
+      </div>
+      <div>
+        title44
+      </div>
+      <div>
+        title45
+      </div>
+      <div>
+        title46
+      </div>
+      <div>
+        title47
+      </div>
+      <div>
+        title48
+      </div>
+      <div>
+        title49
+      </div>
+      <div>
+        title50
+      </div>
+      <div>
+        title51
+      </div>
+      <div>
+        title52
+      </div>
+      <div>
+        title53
+      </div>
+      <div>
+        title54
+      </div>
+      <div>
+        title55
+      </div>
+      <div>
+        title56
+      </div>
+      <div>
+        title57
+      </div>
+      <div>
+        title58
+      </div>
+      <div>
+        title59
+      </div>
+      <div>
+        title60
+      </div>
+      <div>
+        title61
+      </div>
+      <div>
+        title62
+      </div>
+      <div>
+        title63
+      </div>
+      <div>
+        title64
+      </div>
+      <div>
+        title65
+      </div>
+      <div>
+        title66
+      </div>
+      <div>
+        title67
+      </div>
+      <div>
+        title68
+      </div>
+      <div>
+        title69
+      </div>
+      <div>
+        title70
+      </div>
+      <div>
+        title71
+      </div>
+      <div>
+        title72
+      </div>
+      <div>
+        title73
+      </div>
+      <div>
+        title74
+      </div>
+      <div>
+        title75
+      </div>
+      <div>
+        title76
+      </div>
+      <div>
+        title77
+      </div>
+      <div>
+        title78
+      </div>
+      <div>
+        title79
+      </div>
+      <div>
+        title80
+      </div>
+      <div>
+        title81
+      </div>
+      <div>
+        title82
+      </div>
+      <div>
+        title83
+      </div>
+      <div>
+        title84
+      </div>
+      <div>
+        title85
+      </div>
+      <div>
+        title86
+      </div>
+      <div>
+        title87
+      </div>
+      <div>
+        title88
+      </div>
+      <div>
+        title89
+      </div>
+      <div>
+        title90
+      </div>
+      <div>
+        title91
+      </div>
+      <div>
+        title92
+      </div>
+      <div>
+        title93
+      </div>
+      <div>
+        title94
+      </div>
+      <div>
+        title95
+      </div>
+      <div>
+        title96
+      </div>
+      <div>
+        title97
+      </div>
+      <div>
+        title98
+      </div>
+      <div>
+        title99
+      </div>
+    </div>
+  </div>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onMouseDown={[Function]}
+      onMouseMove={[Function]}
+      onMouseOut={[Function]}
+      onMouseUp={[Function]}
+      onWheel={[Function]}
+      style={
+        Object {
+          "height": "250px",
+        }
+      }
+    >
+      <div
+        className="c4"
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "31px",
+            "top": "0px",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10 len 1`] = `
+<div>
+  1
+</div>
+`;
+
+exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 100 len 1`] = `
+.c3 {
+  position: relative;
+  background: #e3e3e6;
+  width: 20px;
+  height: 300px;
+  border-radius: 5px;
+  z-index: 996;
+  width: 12px;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  background: #49a9ee;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  width: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.c4:hover {
+  background-color: #49a9ee96;
+}
+
+.c1 {
+  height: 250px;
+  width: 238px;
+  position: absolute;
+  display: inline-block;
+}
+
+.c2 {
+  height: 250px;
+  width: 238px;
+  position: absolute;
+  display: inline-block;
+  left: 238px;
+  width: 12px;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 250px;
+  width: 250px;
+  position: relative;
+}
+
+<div
+  className="c0"
+  onWheel={[Function]}
+>
+  <div
+    className="c1"
+  >
+    <div>
+      1
+    </div>
+  </div>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onMouseDown={[Function]}
+      onMouseMove={[Function]}
+      onMouseOut={[Function]}
+      onMouseUp={[Function]}
+      onWheel={[Function]}
+      style={
+        Object {
+          "height": "250px",
+        }
+      }
+    >
+      <div
+        className="c4"
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "height": "31px",
+            "top": "0px",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
