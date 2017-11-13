@@ -103,25 +103,20 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   constructor (props: ScrollerProps) {
     super(props);
-    this.componentWillReceiveProps(props);
-  }
-
-
-  componentWillReceiveProps (props: ScrollerProps) {
-
     const { defaultValue = 0, } = props;
 
     this.state = {
       value: defaultValue,
       sliderSize: this.getSliderBarSize(props),
     };
+    this.updateStepInfo(props);
+  }
 
-    const { totalSize, viewSize, step = DefaultStep, } = props;
-    this.posGetter = cacheOnlyFirstCall(getElementPosition);
-    this.step = step;
-    this.maxValue = totalSize - viewSize;
-    this.fastStep = totalSize / 4;
-    this.sliderAbsoulateSize = 0;
+
+  componentWillReceiveProps (props: ScrollerProps) {
+    this.setState({
+      sliderSize: this.getSliderBarSize(props),
+    });
   }
 
 
@@ -338,7 +333,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       this.step = step;
     }
     this.step = Math.min(this.fastStep, this.step);
-    console.info(this.step);
     const realStep = this.getMoveStep(fx, this.step);
     let newValue = this.state.value + realStep;
     newValue = Math.min(newValue, maxValue);
@@ -409,11 +403,24 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
 
   shouldComponentUpdate (nextProps: ScrollerProps, nextState: ScrollerState) {
-    return this.props.viewSize !== nextProps.viewSize
-      || this.state.value !== nextState.value
+    const sizeChange = this.props.viewSize !== nextProps.viewSize
       || this.props.totalSize !== nextProps.totalSize;
+    if (sizeChange) {
+      this.updateStepInfo(nextProps);
+    }
+    return sizeChange
+      || this.state.value !== nextState.value;
   }
 
+  updateStepInfo (props: ScrollerProps): void {
+
+    const { totalSize, viewSize, step = DefaultStep, } = props;
+    this.posGetter = cacheOnlyFirstCall(getElementPosition);
+    this.step = step;
+    this.maxValue = totalSize - viewSize;
+    this.fastStep = totalSize / 4;
+    this.sliderAbsoulateSize = 0;
+  }
 
   value2pos (value: number) {
     const { viewSize, } = this.props;

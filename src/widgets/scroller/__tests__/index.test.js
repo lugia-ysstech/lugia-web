@@ -393,7 +393,7 @@ describe('Scroller', function () {
 
     cmp.setProps({ type: 'x', viewSize: 100, totalSize: 100, defaultValue: value, });
     exp(cmp.state().sliderSize).to.be.equal(0);
-    exp(cmp.state().value).to.be.equal(50);
+    exp(cmp.state().value).to.be.equal(0);
 
   });
   it('updateStepInfo', async () => {
