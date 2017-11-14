@@ -7,7 +7,7 @@
 import React from 'react';
 import chai from 'chai';
 import 'jest-styled-components';
-import Enzyme, { mount, render, } from 'enzyme';
+import Enzyme, { mount, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tree from '../';
 
@@ -73,7 +73,7 @@ describe('Tree', () => {
   }
 
   it('props: query: 2.1.2.1 expandAll: true mutliple: false', () => {
-    const cmp = render(<Tree
+    const cmp = mount(<Tree
       expandAll
       showLine
       query="2.1.2.1"
@@ -82,9 +82,9 @@ describe('Tree', () => {
     </Tree>);
     const titles = cmp.find('.sv-tree-title');
     exp(titles.length).to.be.equal(4);
-    exp(titles.slice(0, 1).text()).to.be.equal('2');
-    exp(titles.slice(1, 2).text()).to.be.equal('2.1');
-    exp(titles.slice(2, 3).text()).to.be.equal('2.1.2');
+    exp(titles.at(0).text()).to.be.equal('2');
+    exp(titles.at(1).text()).to.be.equal('2.1');
+    exp(titles.at(2).text()).to.be.equal('2.1.2');
     exp(titles.slice(3, 4).text()).to.be.equal('2.1.2.1');
   });
 
@@ -96,42 +96,49 @@ describe('Tree', () => {
       data={rowData}
     >
     </Tree>);
-    console.info(cmp.html());
   });
 
 
   // it('props: defaultValue: 1 mutliple: true value: 1.1', () => {
   //
-  //   const cmp = render(<TreeDemo defaultValue="1" value="1.1" data={rowData}/>);
+  //   const cmp = mount(<TreeDemo defaultValue="1" value="1.1" data={rowData}/>);
   //   const chkBoxes = cmp.find('.sv-tree-checkbox');
-  //   exp(chkBoxes.slice(1, 2).hasClass('sv-tree-checkbox-checked')).to.be.true;
+  //   exp(chkBoxes.at(1).hasClass('sv-tree-checkbox-checked')).to.be.true;
   // });
 
   it('props: defaultValue: 1 mutliple: true', () => {
 
-    const cmp = render(<TreeDemo defaultValue="1" data={rowData}/>);
+    const cmp = mount(<TreeDemo defaultValue="1" data={rowData}/>);
     exp(cmp.find('.sv-tree-checkbox').first().hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
   });
 
   it('props: defaultValue: 1,1.1,1.2  mutliple: true', () => {
 
-    const cmp = render(<TreeDemo data={rowData} defaultValue="1,1.1,1.2"/>);
+    const cmp = mount(<TreeDemo data={rowData} defaultValue="1,1.1,1.2"/>);
     const chkBoxes = cmp.find('.sv-tree-checkbox');
-    exp(chkBoxes.slice(0, 1).hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
-    exp(chkBoxes.slice(1, 2).hasClass('sv-tree-checkbox-checked')).to.be.true;
-    exp(chkBoxes.slice(2, 3).hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
+    exp(chkBoxes.at(0).hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
+    exp(chkBoxes.at(1).hasClass('sv-tree-checkbox-checked')).to.be.true;
+    exp(chkBoxes.at(2).hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
+  });
+  it('props: defaultValue: 1,1.1,1.2 & value 1  mutliple: true', () => {
+
+    const cmp = mount(<TreeDemo data={rowData} defaultValue="1,1.1,1.2" value="1"/>);
+    const chkBoxes = cmp.find('.sv-tree-checkbox');
+    exp(chkBoxes.at(0).hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
+    exp(chkBoxes.at(1).hasClass('sv-tree-checkbox-checked')).to.be.false;
+    exp(chkBoxes.at(2).hasClass('sv-tree-checkbox-indeterminate')).to.be.false;
   });
 
 
   it('props: defaultValue: 1  mutliple: false', () => {
 
-    const cmp = render(<TreeDemo defaultValue="1" data={rowData} mutliple={false}/>);
+    const cmp = mount(<TreeDemo defaultValue="1" data={rowData} mutliple={false}/>);
     exp(cmp.find('.sv-tree-checkbox').length).to.be.equal(0);
     exp(cmp.find('.sv-tree-node-content-wrapper').first().hasClass('sv-tree-node-selected')).to.be.true;
   });
 
   it('props: defaultValue: 1,1.1,1.2  mutliple: false', () => {
-    const cmp = render(<TreeDemo data={rowData} defaultValue="1,1.1,1.2" mutliple={false}/>);
+    const cmp = mount(<TreeDemo data={rowData} defaultValue="1,1.1,1.2" mutliple={false}/>);
     exp(cmp.find('.sv-tree-checkbox').length).to.be.equal(0);
     exp(cmp.find('.sv-tree-node-content-wrapper').first().hasClass('sv-tree-node-selected')).to.be.false;
   });
