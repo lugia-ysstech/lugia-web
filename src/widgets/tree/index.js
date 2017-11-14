@@ -72,41 +72,75 @@ class Tree extends React.Component<TreeProps, TreeState> {
   };
 
   static TreeNode: TreeNode;
+
+  allExpandKeys: Array<string>;
+  allExpandInfo: ExpandInfo;
   utils: TreeUtils;
   queryAllUtils: TreeUtils;
 
+
   constructor (props: TreeProps) {
     super(props);
+
     this.createTreeQueryAllUtils(props);
-    this.loadData(props, true);
+
+    const expand = this.updateExpandInfo(props);
+
+    const { id2ExtendInfo, } = expand;
+
+    let selectedInfo = {
+      checked: {},
+      value: {},
+      halfchecked: {},
+    };
+    let selectValue = [];
+
+    const { defaultValue, } = props;
+    const existDefault = 'defaultValue' in props;
+
+    if (existDefault && defaultValue && defaultValue.trim() !== '') {
+      const { mutliple, } = props;
+      if (mutliple) {
+        selectedInfo = this.getSelectedInfo(defaultValue, props, id2ExtendInfo);
+      } else {
+        selectValue = [defaultValue,];
+      }
+    }
+
+    const expandedKeys = this.getExpandedKeys(props, id2ExtendInfo);
+    this.state = {
+      start: 0,
+      expandedKeys,
+      expand,
+      selectValue,
+      selectedInfo,
+    };
+  }
+
+  getSelectedInfo (value: string, props: TreeProps, id2ExtendInfo: NodeId2ExtendInfo) {
+    const valArray = value.split(',');
+    const len = valArray.length;
+    const valueObj = {};
+    for (let i = 0; i < len; i++) {
+      const oneValue = valArray[ i ];
+      if (oneValue != '') {
+        valueObj[ oneValue ] = true;
+      }
+    }
+    const utils = this.getUtils(props);
+    return utils.value2SelectInfo(valueObj, id2ExtendInfo);
   }
 
   componentWillReceiveProps (props: TreeProps) {
     this.loadData(props);
   }
 
-  allExpandKeys: Array<string>;
 
-  loadData (props, init: boolean = false) {
+  loadData (props) {
 
-    const expand = this.getExpandInfo(props);
-    let expandedKeys;
-
-    this.createTreeQueryUtils(props);
-
-    const utils = this.getUtils(props);
-    utils.search(expand, props.query);
-
-    const { mutliple, expandAll, } = this.props;
-
-    if (this.isQueryAll(props)) {
-      if (this.allExpandKeys === undefined) {
-        this.allExpandKeys = this.getExpandedKeys(expandAll, expand);
-      }
-      expandedKeys = this.allExpandKeys;
-    } else {
-      expandedKeys = this.getExpandedKeys(true, expand);
-    }
+    const expand = this.updateExpandInfo(props);
+    const { id2ExtendInfo, } = expand;
+    const { mutliple, } = this.props;
 
     let newSelectedInfo = {
       checked: {},
@@ -114,69 +148,51 @@ class Tree extends React.Component<TreeProps, TreeState> {
       halfchecked: {},
     };
 
-    const { id2ExtendInfo, } = expand;
-
-    if (init) {
-      const { defaultValue, } = this.props;
-      let selectValue = [];
-
-      if (defaultValue && defaultValue !== '') {
-        if (mutliple) {
-          const valArray = defaultValue.split(',');
-          const len = valArray.length;
-          const value = {};
-          for (let i = 0; i < len; i++) {
-            const oneValue = valArray[ i ];
-            if (oneValue != '') {
-              value[ oneValue ] = true;
-            }
-          }
-          newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
-        } else {
-          selectValue = [defaultValue,];
-        }
-      }
-
-      this.state = {
-        start: 0,
-        expandedKeys,
-        expand,
-        selectValue,
-        selectedInfo: newSelectedInfo,
-      };
-
-    } else {
-      if (mutliple) {
-        const { selectedInfo, } = this.state;
-        const { value, } = selectedInfo;
-        newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
-      }
-      this.setState({
-        start: 0,
-        selectedInfo: newSelectedInfo,
-        expandedKeys,
-        expand,
-      }, () => {
-      });
-
+    if (mutliple) {
+      const { selectedInfo, } = this.state;
+      const { value, } = selectedInfo;
+      const utils = this.getUtils(props);
+      newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
     }
+    const expandedKeys = this.getExpandedKeys(props, id2ExtendInfo);
+
+    this.setState({
+      start: 0,
+      selectedInfo: newSelectedInfo,
+      expandedKeys,
+      expand,
+    });
   }
 
-  getExpandedKeys (expandAll: boolean, expand: ExpandInfo): Array<string> {
-    return expandAll ? Object.keys(expand.id2ExtendInfo) : [];
+  getExpandedKeys (props: TreeProps, id2ExtendInfo): Array<string> {
+    let result;
+    if (this.isQueryAll(props)) {
+      if (this.allExpandKeys === undefined) {
+        const { expandAll, } = this.props;
+        this.allExpandKeys = expandAll ? Object.keys(id2ExtendInfo) : [];
+      }
+      result = this.allExpandKeys;
+    } else {
+      result = Object.keys(id2ExtendInfo);
+    }
+    return result;
   }
 
-  allExpandInfo: ExpandInfo;
 
-  getExpandInfo (props: TreeProps): ExpandInfo {
-    const empty = { id2ExtendInfo: {}, };
+  updateExpandInfo (props: TreeProps): ExpandInfo {
+    let result = { id2ExtendInfo: {}, };
     if (this.isQueryAll(props)) {
       if (this.allExpandInfo === undefined) {
-        this.allExpandInfo = empty;
+        this.allExpandInfo = result;
       }
-      return this.allExpandInfo;
+      result = this.allExpandInfo;
     }
-    return empty;
+
+    this.createTreeQueryUtils(props);
+
+    const utils = this.getUtils(props);
+    utils.search(result, props.query);
+    return result;
   }
 
 
@@ -252,7 +268,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
                            expandedKeys={expandedKeys}
                            onExpand={this.onExpand}></ThrottleTree>;
     }
-    return <div></div>;
+    return '';
 
   }
 
