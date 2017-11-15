@@ -7,7 +7,7 @@
 import React from 'react';
 import chai from 'chai';
 import 'jest-styled-components';
-import Enzyme, { mount, } from 'enzyme';
+import Enzyme, { mount, shallow, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tree from '../';
 
@@ -131,8 +131,9 @@ describe('Tree', () => {
     chkBox.at(1).simulate('click', {});
     chkBox.at(3).simulate('click', {});
     const result = await res;
-    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
+    exp(result).to.be.eql([['1', '1.1',], ['1',], ['1', '1.2.1',],]);
   });
+
   it('props: value: 1 mutliple: true onChange监听 limit', async () => {
 
     class LimitTree extends React.Component<Object, Object> {
@@ -165,7 +166,120 @@ describe('Tree', () => {
     chkBox.at(3).simulate('click', {});
     const result = await res;
     cmp.find(CheckBox);
-    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
+    exp(result).to.be.eql([['1', '1.1',], ['1',], ['1', '1.2.1',],]);
+  });
+
+
+  it('props: defaultValue: 1,1.1,1.2  mutliple: false', () => {
+
+    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2"/>);
+    exp(cmp.find('.' + Selected).length).to.be.equal(0);
+  });
+
+  it('props: value 1  mutliple: false', () => {
+
+    const cmp = mount(<ExpandAllTree data={rowData} value="1"/>);
+    const chkBoxes = cmp.find(TreeRow);
+    exp(cmp.find('.' + Selected).length).to.be.equal(1);
+    exp(chkBoxes.at(0).hasClass(Selected)).to.be.true;
+    exp(chkBoxes.at(1).hasClass(Selected)).to.be.false;
+    exp(chkBoxes.at(2).hasClass(Selected)).to.be.false;
+  });
+
+  it('props: defaultValue: 1,1.1,1.2 & value 1  mutliple: false', () => {
+
+    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1" value="1.2"/>);
+    const chkBoxes = cmp.find(TreeRow);
+    exp(cmp.find('.' + Selected).length).to.be.equal(1);
+    exp(chkBoxes.at(2).hasClass(Selected)).to.be.true;
+  });
+
+
+  it('props: defaultValue: 1 mutliple: false onChange监听', async () => {
+
+    class LimitTree extends React.Component<Object, Object> {
+      render () {
+        return <Tree
+          expandAll
+          {...this.props}
+        >
+        </Tree>;
+      }
+
+    }
+
+    let onChange;
+    const res = new Promise(resolve => {
+      const values = [];
+      onChange = v => {
+        values.push(v);
+        if (values.length === 2) {
+          resolve(values);
+        }
+      };
+    });
+
+    const cmp = mount(<LimitTree defaultValue="1" data={rowData} mutliple={false} onChange={onChange}/>);
+    const getChkBox = () => cmp.find(TreeRow);
+
+    getChkBox().at(1).simulate('click', {});
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(TreeRow).at(1).hasClass(Selected)).to.be.true;
+    getChkBox().at(1).simulate('click', {});
+    getChkBox().at(3).simulate('click', {});
+    cmp.instance().forceUpdate();
+    cmp.update();
+    console.info(cmp.find(TreeRow).at(0).hasClass(Selected));
+
+    const result = await res;
+    exp(cmp.find('.' + Selected).length).to.be.equal(1);
+    exp(result).to.be.eql(['1.1', '', '1.2.1',]);
+  });
+
+  it('props: value: 1 mutliple: false onChange监听 limit', async () => {
+
+    class LimitTree extends React.Component<Object, Object> {
+      render () {
+        return <Tree
+          value={'1'}
+          expandAll
+          {...this.props}
+        >
+        </Tree>;
+      }
+
+    }
+
+    let onChange;
+    const res = new Promise(resolve => {
+      const values = [];
+      onChange = v => {
+        values.push(v);
+        if (values.length === 2) {
+          resolve(values);
+        }
+      };
+    });
+
+    const cmp = mount(<LimitTree defaultValue="1" data={rowData} onChange={onChange}/>);
+    const chkBox = cmp.find(TreeRow);
+
+    function checkSelectStatus () {
+      exp(chkBox.at(0).hasClass(Selected)).to.be.true;
+      exp(chkBox.at(1).hasClass(Selected)).to.be.false;
+      exp(chkBox.at(3).hasClass(Selected)).to.be.false;
+    }
+
+    chkBox.at(1).simulate('click', {});
+    checkSelectStatus();
+    chkBox.at(1).simulate('click', {});
+    checkSelectStatus();
+    chkBox.at(3).simulate('click', {});
+    checkSelectStatus();
+    const result = await res;
+    cmp.find(CheckBox);
+    exp(result).to.be.eql(['1.1', '1.1', '1.2.1',]);
   });
 
 

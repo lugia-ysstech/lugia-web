@@ -301,10 +301,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   onSelect = (selectValue: Array<string>) => {
     if (this.isSingleSelect()) {
-      this.value = selectValue[ 0 ];
-      this.setState({ selectValue, }, () => {
-        this.onChange();
-      });
+      const selVal = selectValue[ 0 ];
+      this.value = selVal != undefined ? selVal : '';
+      this.onChange();
+      if ('value' in this.props === false) {
+        this.setState({ selectValue, });
+      }
     }
   };
 
