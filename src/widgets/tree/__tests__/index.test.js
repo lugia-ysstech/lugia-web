@@ -51,22 +51,24 @@ const rowData = [
   { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
   { key: '4', title: '4', isLeaf: true, },
 ];
+const HalfChecked = 'sv-tree-checkbox-indeterminate';
+const Checked = 'sv-tree-checkbox-checked';
+const Selected = 'sv-tree-node-selected';
+const CheckBox = '.sv-tree-checkbox';
+const CheckBoxInner = '.sv-tree-checkbox-inner';
+const TreeRow = '.sv-tree-node-content-wrapper';
 describe('Tree', () => {
   let order;
   beforeEach(() => {
     order = VerifyOrder.create();
   });
 
-  class TreeDemo extends React.Component<Object, Object> {
+  class ExpandAllTree extends React.Component<Object, Object> {
     render () {
-      const { data, defaultValue, mutliple = true, } = this.props;
       return <Tree
         key="tree"
         expandAll
-        showLine
-        data={data}
-        mutliple={mutliple}
-        defaultValue={defaultValue}
+        {...this.props}
       >
       </Tree>;
     }
@@ -99,47 +101,112 @@ describe('Tree', () => {
   });
 
 
-  // it('props: defaultValue: 1 mutliple: true value: 1.1', () => {
-  //
-  //   const cmp = mount(<TreeDemo defaultValue="1" value="1.1" data={rowData}/>);
-  //   const chkBoxes = cmp.find('.sv-tree-checkbox');
-  //   exp(chkBoxes.at(1).hasClass('sv-tree-checkbox-checked')).to.be.true;
-  // });
+  it('props: defaultValue: 1 mutliple: true onChange监听', async () => {
 
-  it('props: defaultValue: 1 mutliple: true', () => {
+    class LimitTree extends React.Component<Object, Object> {
+      render () {
+        return <Tree
+          expandAll
+          {...this.props}
+        >
+        </Tree>;
+      }
 
-    const cmp = mount(<TreeDemo defaultValue="1" data={rowData}/>);
-    exp(cmp.find('.sv-tree-checkbox').first().hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
+    }
+
+    let onChange;
+    const res = new Promise(resolve => {
+      const values = [];
+      onChange = v => {
+        values.push(v);
+        if (values.length === 2) {
+          resolve(values);
+        }
+      };
+    });
+
+    const cmp = mount(<LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange}/>);
+    const chkBox = cmp.find(CheckBoxInner);
+    chkBox.at(1).simulate('click', {});
+    chkBox.at(1).simulate('click', {});
+    chkBox.at(3).simulate('click', {});
+    const result = await res;
+    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
   });
+  it('props: value: 1 mutliple: true onChange监听 limit', async () => {
+
+    class LimitTree extends React.Component<Object, Object> {
+      render () {
+        return <Tree
+          value={'1'}
+          expandAll
+          {...this.props}
+        >
+        </Tree>;
+      }
+
+    }
+
+    let onChange;
+    const res = new Promise(resolve => {
+      const values = [];
+      onChange = v => {
+        values.push(v);
+        if (values.length === 2) {
+          resolve(values);
+        }
+      };
+    });
+
+    const cmp = mount(<LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange}/>);
+    const chkBox = cmp.find(CheckBoxInner);
+    chkBox.at(1).simulate('click', {});
+    chkBox.at(1).simulate('click', {});
+    chkBox.at(3).simulate('click', {});
+    const result = await res;
+    cmp.find(CheckBox);
+    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
+  });
+
 
   it('props: defaultValue: 1,1.1,1.2  mutliple: true', () => {
 
-    const cmp = mount(<TreeDemo data={rowData} defaultValue="1,1.1,1.2"/>);
-    const chkBoxes = cmp.find('.sv-tree-checkbox');
-    exp(chkBoxes.at(0).hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
-    exp(chkBoxes.at(1).hasClass('sv-tree-checkbox-checked')).to.be.true;
-    exp(chkBoxes.at(2).hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
+    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" mutliple/>);
+    const chkBoxes = cmp.find(CheckBox);
+    exp(chkBoxes.at(0).hasClass(HalfChecked)).to.be.true;
+    exp(chkBoxes.at(1).hasClass(Checked)).to.be.true;
+    exp(chkBoxes.at(2).hasClass(HalfChecked)).to.be.true;
   });
+
+  it('props: value 1  mutliple: true', () => {
+
+    const cmp = mount(<ExpandAllTree data={rowData} value="1" mutliple/>);
+    const chkBoxes = cmp.find(CheckBox);
+    exp(chkBoxes.at(0).hasClass(HalfChecked)).to.be.true;
+    exp(chkBoxes.at(1).hasClass(Checked)).to.be.false;
+    exp(chkBoxes.at(2).hasClass(HalfChecked)).to.be.false;
+  });
+
   it('props: defaultValue: 1,1.1,1.2 & value 1  mutliple: true', () => {
 
-    const cmp = mount(<TreeDemo data={rowData} defaultValue="1,1.1,1.2" value="1"/>);
-    const chkBoxes = cmp.find('.sv-tree-checkbox');
-    exp(chkBoxes.at(0).hasClass('sv-tree-checkbox-indeterminate')).to.be.true;
-    exp(chkBoxes.at(1).hasClass('sv-tree-checkbox-checked')).to.be.false;
-    exp(chkBoxes.at(2).hasClass('sv-tree-checkbox-indeterminate')).to.be.false;
+    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" value="1" mutliple/>);
+    const chkBoxes = cmp.find(CheckBox);
+    exp(chkBoxes.at(0).hasClass(HalfChecked)).to.be.true;
+    exp(chkBoxes.at(1).hasClass(Checked)).to.be.false;
+    exp(chkBoxes.at(2).hasClass(HalfChecked)).to.be.false;
   });
 
 
   it('props: defaultValue: 1  mutliple: false', () => {
 
-    const cmp = mount(<TreeDemo defaultValue="1" data={rowData} mutliple={false}/>);
-    exp(cmp.find('.sv-tree-checkbox').length).to.be.equal(0);
-    exp(cmp.find('.sv-tree-node-content-wrapper').first().hasClass('sv-tree-node-selected')).to.be.true;
+    const cmp = mount(<ExpandAllTree defaultValue="1" data={rowData} mutliple={false}/>);
+    exp(cmp.find(CheckBox).length).to.be.equal(0);
+    exp(cmp.find(TreeRow).first().hasClass(Selected)).to.be.true;
   });
 
   it('props: defaultValue: 1,1.1,1.2  mutliple: false', () => {
-    const cmp = mount(<TreeDemo data={rowData} defaultValue="1,1.1,1.2" mutliple={false}/>);
-    exp(cmp.find('.sv-tree-checkbox').length).to.be.equal(0);
-    exp(cmp.find('.sv-tree-node-content-wrapper').first().hasClass('sv-tree-node-selected')).to.be.false;
+    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" mutliple={false}/>);
+    exp(cmp.find(CheckBox).length).to.be.equal(0);
+    exp(cmp.find(TreeRow).first().hasClass(Selected)).to.be.false;
   });
 });

@@ -37,7 +37,8 @@ type TreeProps = {
   expandAll: boolean;
   onlySelectLeaf: boolean;
 
-  defaultValue: string;
+  value: ?string;
+  defaultValue: ?string;
 
   /** 展开/收起节点时触发 */
   onExpand?: Function,
@@ -95,15 +96,24 @@ class Tree extends React.Component<TreeProps, TreeState> {
     };
     let selectValue = [];
 
-    const { defaultValue, } = props;
+    let realyValue;
     const existDefault = 'defaultValue' in props;
-
-    if (existDefault && defaultValue && defaultValue.trim() !== '') {
+    const existValue = 'value' in props;
+    if (existDefault || existValue) {
+      if (existValue) {
+        const { value = '', } = props;
+        realyValue = value;
+      } else if (existDefault) {
+        const { defaultValue, } = props;
+        realyValue = defaultValue;
+      }
+    }
+    if (realyValue && realyValue.trim() !== '') {
       const { mutliple, } = props;
       if (mutliple) {
-        selectedInfo = this.getSelectedInfo(defaultValue, props, id2ExtendInfo);
+        selectedInfo = this.getSelectedInfo(realyValue, props, id2ExtendInfo);
       } else {
-        selectValue = [defaultValue,];
+        selectValue = [realyValue,];
       }
     }
 
@@ -136,23 +146,39 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
 
-  loadData (props) {
+  loadData (props: TreeProps) {
 
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
-    const { mutliple, } = this.props;
+    const { mutliple, } = props;
 
     let newSelectedInfo = {
       checked: {},
       value: {},
       halfchecked: {},
     };
+    const { selectValue: oldSingleValue = [], } = this.state;
+    let selectValue: Array<string> = oldSingleValue;
+
+    const isLimitValue = 'value' in props;
+    const { value: propsValue, } = props;
+    if (isLimitValue) {
+      if (propsValue) {
+        selectValue = [propsValue,];
+      }
+    }
 
     if (mutliple) {
-      const { selectedInfo, } = this.state;
-      const { value, } = selectedInfo;
-      const utils = this.getUtils(props);
-      newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
+      if (isLimitValue) {
+        if (propsValue) {
+          newSelectedInfo = this.getSelectedInfo(propsValue, props, id2ExtendInfo);
+        }
+      } else {
+        const { selectedInfo, } = this.state;
+        const { value, } = selectedInfo;
+        const utils = this.getUtils(props);
+        newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
+      }
     }
     const expandedKeys = this.getExpandedKeys(props, id2ExtendInfo);
 
@@ -161,6 +187,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       selectedInfo: newSelectedInfo,
       expandedKeys,
       expand,
+      selectValue,
     });
   }
 
@@ -305,9 +332,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
     check.bind(utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
     this.value = Object.keys(value);
-    this.setState({ selectedInfo: { ...selectedInfo, }, }, () => {
-      this.onChange();
-    });
+    this.onChange();
+    if ('value' in this.props === false) {
+      this.setState({ selectedInfo: { ...selectedInfo, }, });
+    }
   };
 
 

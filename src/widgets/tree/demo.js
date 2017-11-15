@@ -96,6 +96,7 @@ const rowData = [
   { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
   { key: '4', title: '4', isLeaf: true, },
 ];
+
 console.info(bigTree.length);
 
 class MutlipleTree extends React.Component<Object, Object> {
@@ -117,7 +118,7 @@ class MutlipleTree extends React.Component<Object, Object> {
       onSelect={onSelect}
       onChange={this.onTreeChange}
       onCheck={onCheck}
-      defaultValue="1,1.1,1.2"
+      value="1"
       // onlySelectLeaf
     >
     </Tree>,
@@ -168,11 +169,5 @@ class SingleTree extends React.Component<Object, Object> {
 }
 
 export default () => {
-  return [<MutlipleTree key="mutliple"/>, <SingleTree key="single"/>, <Tree
-    expandAll
-    showLine
-    query="2.1.2.1"
-    data={rowData}
-  >
-  </Tree>,];
+  return [<MutlipleTree key="mutliple"/>,];
 };
