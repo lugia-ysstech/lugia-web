@@ -85,6 +85,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     this.createTreeQueryAllUtils(props);
 
+    if (this.isEmpty(props)) {
+      return;
+    }
     const expand = this.updateExpandInfo(props);
 
     const { id2ExtendInfo, } = expand;
@@ -113,7 +116,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       if (mutliple) {
         selectedInfo = this.getSelectedInfo(realyValue, props, id2ExtendInfo);
       } else {
-        selectValue = [realyValue,];
+        selectValue = [ realyValue, ];
       }
     }
 
@@ -165,7 +168,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (isSingle && isLimitValue) {
       selectValue = [];
       if (propsValue) {
-        selectValue = [propsValue,];
+        selectValue = [ propsValue, ];
       }
     }
 
@@ -206,6 +209,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return result;
   }
 
+
+  isEmpty (props: TreeProps) {
+    const { data, } = props;
+    return !data || data.length === 0;
+  }
 
   updateExpandInfo (props: TreeProps): ExpandInfo {
     let result = { id2ExtendInfo: {}, };
@@ -268,36 +276,34 @@ class Tree extends React.Component<TreeProps, TreeState> {
   realyDatas: Array<RowData>;
 
   render () {
+    if (this.isEmpty(this.props)) {
+      return <span></span>;
+    }
     const {
       showLine,
       mutliple,
-      data,
     } = this.props;
     const { query, } = this.props;
     const { expand, expandedKeys, selectedInfo, start, selectValue, } = this.state;
     const { id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
-    if (data) {
-      const utils = this.getUtils(this.props);
-      this.realyDatas = utils.search(expand, query);
-      return <ThrottleTree {...this.props} id2ExtendInfo={id2ExtendInfo}
-                           start={start}
-                           onScroller={this.onScroller}
-                           onCheck={this.onCheck}
-                           onSelect={this.onSelect}
-                           data={this.realyDatas}
-                           showLine={showLine}
-                           selectable={this.isSingleSelect()}
-                           selectedKeys={selectValue}
-                           checkedKeys={Object.keys(checked)}
-                           halfCheckedKeys={Object.keys(halfchecked)}
-                           mutliple={mutliple}
-                           utils={utils}
-                           expandedKeys={expandedKeys}
-                           onExpand={this.onExpand}></ThrottleTree>;
-    }
-    return '';
-
+    const utils = this.getUtils(this.props);
+    this.realyDatas = utils.search(expand, query);
+    return <ThrottleTree {...this.props} id2ExtendInfo={id2ExtendInfo}
+                         start={start}
+                         onScroller={this.onScroller}
+                         onCheck={this.onCheck}
+                         onSelect={this.onSelect}
+                         data={this.realyDatas}
+                         showLine={showLine}
+                         selectable={this.isSingleSelect()}
+                         selectedKeys={selectValue}
+                         checkedKeys={Object.keys(checked)}
+                         halfCheckedKeys={Object.keys(halfchecked)}
+                         mutliple={mutliple}
+                         utils={utils}
+                         expandedKeys={expandedKeys}
+                         onExpand={this.onExpand}></ThrottleTree>;
   }
 
   onSelect = (selectValue: Array<string>) => {
@@ -383,5 +389,4 @@ class Tree extends React.Component<TreeProps, TreeState> {
 }
 
 const SvTree = ThemeProvider(Tree, Widget.Tree);
-SvTree.TreeNode = TreeNode;
 export default SvTree;

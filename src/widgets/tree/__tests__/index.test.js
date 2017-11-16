@@ -597,4 +597,21 @@ describe('Tree', () => {
     exp(cmp.find(Switcher).at(index).hasClass(open ? SwitcherClose : SwitcherOpen), '1 目前为展开').to.be.false;
   }
 
+  it('data 为空的情况', () => {
+    const cmp = mount(<Tree/>);
+    exp(cmp.html()).to.be.equal('<span></span>');
+  });
+
+  it('data 为[]的情况', () => {
+    const cmp = mount(<Tree data={[]}/>);
+    exp(cmp.html()).to.be.equal('<span></span>');
+  });
+
+  it('重新设置熟悉为 null 的情况', () => {
+    const cmp = mount(<Tree data={rowData}/>);
+    cmp.setProps({ data: null, });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.html()).to.be.equal('<span></span>');
+  });
 });
