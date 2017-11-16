@@ -551,4 +551,50 @@ describe('Tree', () => {
     exp(cmp.find(TreeRow).length).to.be.equal(9);
   }
 
+  const Switcher = '.sv-tree-switcher';
+  const SwitcherOpen = 'sv-tree-switcher_open';
+  const SwitcherClose = 'sv-tree-switcher_close';
+  it('expandAll: false 折叠测试', () => {
+    const expandAll = true;
+    const cmp = mount(<Tree data={rowData} expandAll={expandAll}/>);
+
+    // 折叠 1
+    expectNodeExpandStatue(cmp, 0, true);
+    exp(cmp.find(TreeRow).at(1).text(), '第二个结点为1.1').to.be.equal('1.1');
+    cmp.find(Switcher).at(0).simulate('click');
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(TreeRow).at(1).text(), '第二个结点为2').to.be.equal('2');
+    expectNodeExpandStatue(cmp, 0, false);
+
+    // 折叠 2
+    expectNodeExpandStatue(cmp, 1, true);
+    cmp.find(Switcher).at(1).simulate('click');
+    cmp.instance().forceUpdate();
+    cmp.update();
+    expectNodeExpandStatue(cmp, 1, false);
+
+    // 折叠 3
+    expectNodeExpandStatue(cmp, 2, true);
+    cmp.find(Switcher).at(2).simulate('click');
+    cmp.instance().forceUpdate();
+    cmp.update();
+    expectNodeExpandStatue(cmp, 2, false);
+
+
+    // 展开 1 操作
+    cmp.find(Switcher).at(0).simulate('click');
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(TreeRow).at(1).text(), '第二个结点为2').to.be.equal('1.1');
+    expectNodeExpandStatue(cmp, 0, true);
+
+  });
+
+  function expectNodeExpandStatue (cmp, index: number, open: boolean) {
+
+    exp(cmp.find(Switcher).at(index).hasClass(open ? SwitcherOpen : SwitcherClose), '1 目前为展开').to.be.true;
+    exp(cmp.find(Switcher).at(index).hasClass(open ? SwitcherClose : SwitcherOpen), '1 目前为展开').to.be.false;
+  }
+
 });
