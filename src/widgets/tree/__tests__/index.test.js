@@ -159,7 +159,7 @@ describe('Tree', () => {
       };
     });
 
-    const cmp = mount(<LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange}/>);
+    const cmp = mount(<LimitTree defaultValue="2" data={rowData} mutliple onChange={onChange}/>);
     const chkBox = cmp.find(CheckBoxInner);
     chkBox.at(1).simulate('click', {});
     chkBox.at(1).simulate('click', {});
@@ -230,7 +230,6 @@ describe('Tree', () => {
     getChkBox().at(3).simulate('click', {});
     cmp.instance().forceUpdate();
     cmp.update();
-    console.info(cmp.find(TreeRow).at(0).hasClass(Selected));
 
     const result = await res;
     exp(cmp.find('.' + Selected).length).to.be.equal(1);
@@ -240,15 +239,25 @@ describe('Tree', () => {
   it('props: value: 1 mutliple: false onChange监听 limit', async () => {
 
     class LimitTree extends React.Component<Object, Object> {
+      constructor (props) {
+        super(props);
+        const { value, } = props;
+        this.state = { value, };
+      }
+
       render () {
-        return <Tree
-          value={'1'}
+        const { value, } = this.state;
+        return [<Tree
+          value={value}
           expandAll
           {...this.props}
         >
-        </Tree>;
+        </Tree>, <button onClick={this.onClick}></button>,];
       }
 
+      onClick = () => {
+        this.setState({ value: '1.1', });
+      }
     }
 
     let onChange;
@@ -262,26 +271,131 @@ describe('Tree', () => {
       };
     });
 
-    const cmp = mount(<LimitTree defaultValue="1" data={rowData} onChange={onChange}/>);
-    const chkBox = cmp.find(TreeRow);
+    const cmp = mount(<LimitTree value="1" data={rowData} onChange={onChange}/>);
+    const getChkBox = () => cmp.find(TreeRow);
 
     function checkSelectStatus () {
-      exp(chkBox.at(0).hasClass(Selected)).to.be.true;
-      exp(chkBox.at(1).hasClass(Selected)).to.be.false;
-      exp(chkBox.at(3).hasClass(Selected)).to.be.false;
+      exp(getChkBox().at(0).hasClass(Selected)).to.be.true;
+      exp(getChkBox().at(1).hasClass(Selected)).to.be.false;
+      exp(getChkBox().at(3).hasClass(Selected)).to.be.false;
     }
 
-    chkBox.at(1).simulate('click', {});
+    getChkBox().at(1).simulate('click', {});
     checkSelectStatus();
-    chkBox.at(1).simulate('click', {});
+    getChkBox().at(1).simulate('click', {});
     checkSelectStatus();
-    chkBox.at(3).simulate('click', {});
+    getChkBox().at(3).simulate('click', {});
     checkSelectStatus();
     const result = await res;
     cmp.find(CheckBox);
     exp(result).to.be.eql(['1.1', '1.1', '1.2.1',]);
   });
 
+
+  it('props: value: 1 mutliple: false 重新设置value属性', () => {
+
+
+    class Target extends React.Component<Object, Object> {
+      constructor (props) {
+        super(props);
+        const { value, } = props;
+        this.state = { value, };
+      }
+
+      render () {
+        const { value, } = this.state;
+        return [<Tree data={rowData}
+                       expandAll
+                       value={value}
+        >
+        </Tree>, <button onClick={this.onClick}></button>,];
+      }
+
+      onClick = () => {
+        this.setState({ value: '1.1', });
+      }
+    }
+
+    const cmp = mount(<Target value="1"/>);
+
+    exp(cmp.find(TreeRow).at(0).hasClass(Selected)).to.be.true;
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
+    cmp.find('button').simulate('click');
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
+    exp(cmp.find(TreeRow).at(0).hasClass(Selected)).to.be.false;
+    exp(cmp.find(TreeRow).at(1).hasClass(Selected)).to.be.true;
+
+  });
+
+
+  it('mutliple: false change props.value ', () => {
+
+    const cmp = mount(<Tree expandAll data={rowData}/>);
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
+    cmp.setProps({ value: '1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
+
+    cmp.setProps({ value: '1.1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
+
+  });
+
+  it('mutliple: false change props.value 1 => ""  ', () => {
+    createSinglePropsValueEmptyCase('');
+  });
+
+  it('mutliple: false change props.value 1 => undefined  ', () => {
+    createSinglePropsValueEmptyCase(undefined);
+  });
+
+
+  function createSinglePropsValueEmptyCase (emptyValue: any) {
+    const cmp = mount(<Tree expandAll data={rowData}/>);
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
+    cmp.setProps({ value: '1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
+
+    cmp.setProps({ value: emptyValue, });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
+  }
+
+
+  it('mutliple: true change props.value 1 => ""  ', () => {
+    createMutlipePropsValueEmptyCase('');
+  });
+
+  it('mutliple: true change props.value 1 => undefined  ', () => {
+    createMutlipePropsValueEmptyCase(undefined);
+  });
+
+
+  function createMutlipePropsValueEmptyCase (emptyValue: any) {
+    const cmp = mount(<Tree mutliple={true} expandAll data={rowData}/>);
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
+    cmp.setProps({ value: '1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
+    exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(1);
+
+    cmp.setProps({ value: emptyValue, });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
+    exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
+  }
 
   it('props: defaultValue: 1,1.1,1.2  mutliple: true', () => {
 

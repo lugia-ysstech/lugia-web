@@ -150,7 +150,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
-    const { mutliple, } = props;
 
     let newSelectedInfo = {
       checked: {},
@@ -161,14 +160,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
     let selectValue: Array<string> = oldSingleValue;
 
     const isLimitValue = 'value' in props;
+    const isSingle = this.isSingleSelect();
     const { value: propsValue, } = props;
-    if (isLimitValue) {
+    if (isSingle && isLimitValue) {
+      selectValue = [];
       if (propsValue) {
         selectValue = [propsValue,];
       }
     }
 
-    if (mutliple) {
+    if (!isSingle) {
       if (isLimitValue) {
         if (propsValue) {
           newSelectedInfo = this.getSelectedInfo(propsValue, props, id2ExtendInfo);
