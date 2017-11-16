@@ -108,18 +108,18 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   getInitValue () {
-    let realyValue;
+    let result = '';
     const existDefault = 'defaultValue' in this.props;
 
     const isLimit = !this.isNotLimit(this.props);
     if (isLimit) {
       const { value = '', } = this.props;
-      realyValue = value;
+      result = value;
     } else if (existDefault) {
       const { defaultValue, } = this.props;
-      realyValue = defaultValue;
+      result = defaultValue;
     }
-    return realyValue;
+    return result;
   }
 
   getEmptyNodeId2SelectInfo (): NodeId2SelectInfo {
@@ -145,10 +145,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
       if (this.isSingleSelect()) {
         state.selectValue = this.state.selectValue;
       } else {
-        const { selectedInfo, } = this.state;
-        const { value, } = selectedInfo;
-        const utils = this.getUtils(props);
-        state.selectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
+        const { value, } = this.state.selectedInfo;
+        state.selectedInfo = this.getUtils(props).value2SelectInfo(value, id2ExtendInfo);
       }
     } else {
       const { value, } = props;
@@ -183,9 +181,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
 
     this.createQueryTreeUtils(props);
-    const utils = this.getUtils(props);
     const { query, } = props;
-    utils.search(result, query);
+    this.getUtils(props).search(result, query);
     return result;
   }
 
@@ -203,8 +200,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         valueObj[ oneValue ] = true;
       }
     }
-    const utils = this.getUtils(props);
-    return utils.value2SelectInfo(valueObj, id2ExtendInfo);
+    return this.getUtils(props).value2SelectInfo(valueObj, id2ExtendInfo);
   }
 
 
@@ -299,11 +295,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
 
-  isEmpty (props: TreeProps) {
-    const { data, } = props;
-    return !data || data.length === 0;
-  }
-
   onSelect = (selectValue: Array<string>) => {
 
     if (this.isSingleSelect() === false) {
@@ -326,19 +317,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isNotLimit(this.props)) {
       this.setState({ selectValue, });
     }
-  };
-
-  isSingleSelect () {
-    return this.isSingleSelectForProps(this.props);
-  }
-
-  isSingleSelectForProps (props: TreeProps) {
-    const { mutliple, } = props;
-    return mutliple === false;
-  }
-
-  onScroller = (start: number) => {
-    this.setState({ start, });
   };
 
 
@@ -399,6 +377,25 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { onExpand, data = [], } = this.props;
     onExpand && onExpand(expandedKeys, data);
   };
+
+  onScroller = (start: number) => {
+    this.setState({ start, });
+  };
+
+  isEmpty (props: TreeProps) {
+    const { data, } = props;
+    return !data || data.length === 0;
+  }
+
+  isSingleSelect () {
+    return this.isSingleSelectForProps(this.props);
+  }
+
+  isSingleSelectForProps (props: TreeProps) {
+    const { mutliple, } = props;
+    return mutliple === false;
+  }
+
 }
 
 export default ThemeProvider(Tree, Widget.Tree);
