@@ -93,17 +93,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { id2ExtendInfo, } = expand;
 
 
-    let realyValue;
-    const existDefault = 'defaultValue' in props;
-    const isLimit = !this.isNotLimit(props);
-    if (isLimit) {
-      const { value = '', } = props;
-      realyValue = value;
-    } else if (existDefault) {
-      const { defaultValue, } = props;
-      realyValue = defaultValue;
-    }
-
     const state = {
       start: 0,
       expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
@@ -111,14 +100,24 @@ class Tree extends React.Component<TreeProps, TreeState> {
       selectValue: [],
       selectedInfo: this.getDefaultSelectedInfo(),
     };
-
-    if (realyValue && realyValue.trim() !== '') {
-      this.setLimitValue(props, state, id2ExtendInfo, realyValue);
-    }
-
+    this.setLimitValue(props, state, id2ExtendInfo, this.getInitValue());
     this.state = state;
   }
 
+  getInitValue () {
+    let realyValue;
+    const existDefault = 'defaultValue' in this.props;
+
+    const isLimit = !this.isNotLimit(this.props);
+    if (isLimit) {
+      const { value = '', } = this.props;
+      realyValue = value;
+    } else if (existDefault) {
+      const { defaultValue, } = this.props;
+      realyValue = defaultValue;
+    }
+    return realyValue;
+  }
 
   getDefaultSelectedInfo () {
     return {
@@ -168,7 +167,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   setLimitValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, value: any) {
-    if (value) {
+    if (value == undefined) {
+      return;
+    }
+    const isNotBlank = value.trim && value.trim() !== '';
+    if (isNotBlank) {
       if (this.isSingleSelectForProps(props)) {
         state.selectValue = [value,];
       } else {
