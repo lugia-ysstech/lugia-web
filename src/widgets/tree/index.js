@@ -278,8 +278,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
-      console.info(start);
-      console.info(checked);
       const utils = this.getUtils(this.props);
       this.realyDatas = utils.search(expand, query);
       return <ThrottleTree {...this.props} id2ExtendInfo={id2ExtendInfo}

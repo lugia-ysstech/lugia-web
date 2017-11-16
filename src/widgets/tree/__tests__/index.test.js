@@ -515,4 +515,40 @@ describe('Tree', () => {
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(1);
     exp(cmp.find(TreeRow).last().hasClass(Selected)).to.be.true;
   });
+
+
+  it('props:  expandAll:true | false,  mutliple: true , query:  1.3.2.1  & 1.3.2.1.1 & 1.3', () => {
+    createMutlipleTreeQueryCase(true, true);
+    createMutlipleTreeQueryCase(false, true);
+  });
+
+  it('props:  expandAll:true | false,  mutliple: false , query:  1.3.2.1  & 1.3.2.1.1 & 1.3', () => {
+    createMutlipleTreeQueryCase(true, false);
+    createMutlipleTreeQueryCase(false, false);
+  });
+
+  function createMutlipleTreeQueryCase (expandAll: boolean, mutliple: boolean) {
+
+    const cmp = mount(<Tree data={rowData} expandAll={expandAll} mutliple={mutliple}/>);
+
+    cmp.setProps({ query: '1.3.2.1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    const getValue = () => cmp.find(TreeRow).map(node => node.text()).join(',');
+    exp(getValue()).to.be.equal('1,1.3,1.3.2,1.3.2.1');
+    exp(cmp.find(TreeRow).length).to.be.equal(4);
+
+    cmp.setProps({ query: '1.3.2.1.1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(TreeRow).length).to.be.equal(0);
+
+    cmp.setProps({ query: '1.3', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+
+    exp(getValue()).to.be.equal('1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3');
+    exp(cmp.find(TreeRow).length).to.be.equal(9);
+  }
+
 });
