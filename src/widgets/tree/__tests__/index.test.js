@@ -437,4 +437,36 @@ describe('Tree', () => {
     exp(cmp.find(CheckBox).length).to.be.equal(0);
     exp(cmp.find(TreeRow).first().hasClass(Selected)).to.be.false;
   });
+
+
+  it('mutliple: true ,  onlySelectLeaf: true', async () => {
+
+    const promise = new Promise(resolve => {
+      const onChange = v => {
+        resolve(v);
+      };
+      const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} onlySelectLeaf/>);
+      cmp.find(CheckBoxInner).at(5).simulate('click', {});
+
+      cmp.instance().forceUpdate();
+      cmp.update();
+      exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
+      exp(cmp.find(`.${Checked}`).length).to.be.equal(3);
+      exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(3);
+    });
+    exp(await promise).to.be.eql(['1.2.2.1.1', '1.2.2.1.2',]);
+  });
+
+  it('mutliple: false ,  onlySelectLeaf: true', () => {
+    const cmp = mount(<Tree mutliple={false} expandAll data={rowData}
+                            onlySelectLeaf/>);
+    cmp.find(TreeRow).at(5).simulate('click', {});
+
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
+    exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
+    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
+  });
 });

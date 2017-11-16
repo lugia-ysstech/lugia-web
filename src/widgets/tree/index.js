@@ -304,8 +304,19 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isSingleSelect()) {
       const selVal = selectValue[ 0 ];
       this.value = selVal != undefined ? selVal : '';
+      const { props, } = this;
+      const { onlySelectLeaf, } = props;
+      if (onlySelectLeaf === true) {
+        const utils = this.getUtils(props);
+        const { expand, } = this.state;
+        const { id2ExtendInfo, } = expand;
+        if (!utils.isLeaf(this.value, id2ExtendInfo)) {
+          return;
+        }
+      }
+
       this.onChange();
-      if ('value' in this.props === false) {
+      if ('value' in props === false) {
         this.setState({ selectValue, });
       }
     }
@@ -333,7 +344,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     } else {
       check = halfchecked[ eventKey ] === undefined && checked ? utils.selectNode : utils.unSelectNode;
     }
-    check.bind(utils)(eventKey, selectedInfo, expand.id2ExtendInfo);
+    const { id2ExtendInfo, } = expand;
+    check.bind(utils)(eventKey, selectedInfo, id2ExtendInfo);
     this.value = Object.keys(value);
     this.onChange();
     if ('value' in this.props === false) {
