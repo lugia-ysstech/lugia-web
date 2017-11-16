@@ -647,4 +647,30 @@ describe('Tree', () => {
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
   });
+
+
+  it('查询结果切换是value设置是否正确', () => {
+
+    const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true}/>);
+    cmp.setProps({ value: '3.1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
+
+    cmp.setProps({ query: '3.1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Checked}`).length).to.be.equal(1);
+    exp(cmp.find(CheckBox).at(5).hasClass(HalfChecked)).to.be.true;
+    exp(cmp.find(CheckBox).at(6).hasClass(Checked)).to.be.true;
+    exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(1);
+
+    cmp.setProps({ query: '', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
+  });
+
 });
