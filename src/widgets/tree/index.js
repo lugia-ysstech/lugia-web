@@ -78,6 +78,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   allExpandInfo: ExpandInfo;
   utils: TreeUtils;
   queryAllUtils: TreeUtils;
+  value: any;
 
 
   constructor (props: TreeProps) {
@@ -260,29 +261,27 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return this.utils;
   }
 
-
-  realyDatas: Array<RowData>;
-
   render () {
-    if (this.isEmpty(this.props)) {
+    const { props, state, } = this;
+    if (this.isEmpty(props)) {
       return <span></span>;
     }
     const {
+      query,
       showLine,
       mutliple,
-    } = this.props;
-    const { query, } = this.props;
-    const { expand, expandedKeys, selectedInfo, start, selectValue, } = this.state;
+    } = props;
+    const { expand, expandedKeys, selectedInfo, start, selectValue, } = state;
     const { id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
-    const utils = this.getUtils(this.props);
-    this.realyDatas = utils.search(expand, query);
-    return <ThrottleTree {...this.props} id2ExtendInfo={id2ExtendInfo}
+    const utils = this.getUtils(props);
+    const data = utils.search(expand, query);
+    return <ThrottleTree {...props} id2ExtendInfo={id2ExtendInfo}
                          start={start}
                          onScroller={this.onScroller}
                          onCheck={this.onCheck}
                          onSelect={this.onSelect}
-                         data={this.realyDatas}
+                         data={data}
                          showLine={showLine}
                          selectable={this.isSingleSelect()}
                          selectedKeys={selectValue}
@@ -337,7 +336,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.setState({ start, });
   };
 
-  value: any;
 
   onCheck = (_, event) => {
     const { node, checked, shiftKey, } = event;
@@ -398,5 +396,4 @@ class Tree extends React.Component<TreeProps, TreeState> {
   };
 }
 
-const SvTree = ThemeProvider(Tree, Widget.Tree);
-export default SvTree;
+export default ThemeProvider(Tree, Widget.Tree);
