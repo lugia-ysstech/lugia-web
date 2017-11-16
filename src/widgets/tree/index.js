@@ -101,7 +101,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     let realyValue;
     const existDefault = 'defaultValue' in props;
-    const isLimit = this.isLmit(props);
+    const isLimit = !this.isNotLimit(props);
     if (isLimit) {
       const { value = '', } = props;
       realyValue = value;
@@ -150,7 +150,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { selectValue: oldSingleValue = [], } = this.state;
     let selectValue: Array<string> = oldSingleValue;
 
-    const isLimitValue = this.isLmit(props);
+    const isLimitValue = !this.isNotLimit(props);
     const isSingle = this.isSingleSelect();
     const { value: propsValue, } = props;
     if (isSingle && isLimitValue) {
@@ -183,8 +183,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     });
   }
 
-  isLmit (props: TreeProps) {
-    return 'value' in props;
+  isNotLimit (props: TreeProps) {
+    return 'value' in props === false;
   }
 
   updateExpandInfo (props: TreeProps): ExpandInfo {
@@ -197,7 +197,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
 
     this.createTreeQueryUtils(props);
-
     const utils = this.getUtils(props);
     utils.search(result, props.query);
     return result;
@@ -210,7 +209,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const valueObj = {};
     for (let i = 0; i < len; i++) {
       const oneValue = valArray[ i ];
-      if (oneValue != '') {
+      if (oneValue !== '') {
         valueObj[ oneValue ] = true;
       }
     }
@@ -305,7 +304,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
                          mutliple={mutliple}
                          utils={utils}
                          expandedKeys={expandedKeys}
-                         onExpand={this.onExpand}></ThrottleTree>;
+                         onExpand={this.onExpand}/>;
   }
 
 
@@ -315,24 +314,26 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onSelect = (selectValue: Array<string>) => {
-    if (this.isSingleSelect()) {
-      const selVal = selectValue[ 0 ];
-      this.value = selVal != undefined ? selVal : '';
-      const { props, } = this;
-      const { onlySelectLeaf, } = props;
-      if (onlySelectLeaf === true) {
-        const utils = this.getUtils(props);
-        const { expand, } = this.state;
-        const { id2ExtendInfo, } = expand;
-        if (!utils.isLeaf(this.value, id2ExtendInfo)) {
-          return;
-        }
-      }
 
-      this.onChange();
-      if ('value' in props === false) {
-        this.setState({ selectValue, });
+    if (this.isSingleSelect() === false) {
+      return;
+    }
+    const selVal = selectValue[ 0 ];
+    this.value = selVal != undefined ? selVal : '';
+    const { props, } = this;
+    const { onlySelectLeaf, } = props;
+    if (onlySelectLeaf === true) {
+      const utils = this.getUtils(props);
+      const { expand, } = this.state;
+      const { id2ExtendInfo, } = expand;
+      if (!utils.isLeaf(this.value, id2ExtendInfo)) {
+        return;
       }
+    }
+
+    this.onChange();
+    if (this.isNotLimit(this.props)) {
+      this.setState({ selectValue, });
     }
   };
 
@@ -344,25 +345,31 @@ class Tree extends React.Component<TreeProps, TreeState> {
   onScroller = (start: number) => {
     this.setState({ start, });
   };
+
   value: any;
+
   onCheck = (_, event) => {
-    const { node, checked, } = event;
+    const { node, checked, shiftKey, } = event;
     const { props, } = node;
     const { eventKey, } = props;
     const { expand, selectedInfo, } = this.state;
+
     const { halfchecked, value, } = selectedInfo;
+    const isHalfSelect = halfchecked[ eventKey ] === undefined;
+    const isSelected = isHalfSelect && checked;
+
     const utils = this.getUtils(this.props);
-    let check = () => {};
-    if (event.shiftKey) {
-      check = halfchecked[ eventKey ] === undefined && checked ? utils.selectDirNode : utils.unSelectNode;
-    } else {
-      check = halfchecked[ eventKey ] === undefined && checked ? utils.selectNode : utils.unSelectNode;
-    }
+    const { selectDirNode, unSelectNode, selectNode, } = utils;
+    const onlySelectYourself = isSelected ? selectDirNode : unSelectNode;
+    const select = isSelected ? selectNode : unSelectNode;
+
     const { id2ExtendInfo, } = expand;
-    check.bind(utils)(eventKey, selectedInfo, id2ExtendInfo);
+    const check = shiftKey ? onlySelectYourself : select;
+    check.call(utils, eventKey, selectedInfo, id2ExtendInfo);
+
     this.value = Object.keys(value);
     this.onChange();
-    if ('value' in this.props === false) {
+    if (this.isNotLimit(this.props)) {
       this.setState({ selectedInfo: { ...selectedInfo, }, });
     }
   };
@@ -374,24 +381,28 @@ class Tree extends React.Component<TreeProps, TreeState> {
   };
 
   onExpand = (expandedKeys: Array<string>, rowData: { expanded: boolean, node: Object, }) => {
-    const { onExpand, data = [], } = this.props;
     const { expanded, node, } = rowData;
-    const { expand, } = this.state;
-
-
     const noeKey = node.props.eventKey;
-
-    const { id2ExtendInfo, } = expand;
     const utils = this.getUtils(this.props);
-    if (expanded) {
-      utils.expandNode(noeKey, id2ExtendInfo);
-    } else {
-      utils.colapseNode(noeKey, id2ExtendInfo);
-    }
+    const { expand, } = this.state;
+    const { id2ExtendInfo, } = expand;
+
+    expanded ? utils.expandNode(noeKey, id2ExtendInfo) : utils.colapseNode(noeKey, id2ExtendInfo);
+
     if (this.isQueryAll(this.props)) {
       this.allExpandKeys = expandedKeys;
     }
-    this.setState({ expand: Object.assign({}, this.state.expand, { id2ExtendInfo, }), expandedKeys, });
+
+    const newExpand = Object.assign({},
+      this.state.expand,
+      { id2ExtendInfo, });
+
+    this.setState({
+      expand: newExpand,
+      expandedKeys,
+    });
+
+    const { onExpand, data = [], } = this.props;
     onExpand && onExpand(expandedKeys, data);
   };
 }
