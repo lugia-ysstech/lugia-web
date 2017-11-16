@@ -341,26 +341,27 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   onCheck = (_, event) => {
     const { node, checked, shiftKey, } = event;
-    const { props, } = node;
-    const { eventKey, } = props;
-    const { expand, selectedInfo, } = this.state;
+    const { eventKey, } = node.props;
+    const { state, props, } = this;
 
+    const { selectedInfo, } = state;
     const { halfchecked, value, } = selectedInfo;
     const isHalfSelect = halfchecked[ eventKey ] === undefined;
     const isSelected = isHalfSelect && checked;
 
-    const utils = this.getUtils(this.props);
+    const utils = this.getUtils(props);
     const { selectDirNode, unSelectNode, selectNode, } = utils;
-    const onlySelectYourself = isSelected ? selectDirNode : unSelectNode;
-    const select = isSelected ? selectNode : unSelectNode;
+    const onlyProcessYouself = isSelected ? selectDirNode : unSelectNode;
+    const processAllNode = isSelected ? selectNode : unSelectNode;
 
+    const { expand, } = state;
     const { id2ExtendInfo, } = expand;
-    const check = shiftKey ? onlySelectYourself : select;
+    const check = shiftKey ? onlyProcessYouself : processAllNode;
     check.call(utils, eventKey, selectedInfo, id2ExtendInfo);
 
     this.value = Object.keys(value);
     this.onChange();
-    if (this.isNotLimit(this.props)) {
+    if (this.isNotLimit(props)) {
       this.setState({ selectedInfo: { ...selectedInfo, }, });
     }
   };
@@ -371,14 +372,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
     onChange && onChange(this.value);
   };
 
-  onExpand = (expandedKeys: Array<string>, rowData: { expanded: boolean, node: Object, }) => {
-    const { expanded, node, } = rowData;
-    const noeKey = node.props.eventKey;
+  onExpand = (expandedKeys: Array<string>, event: { expanded: boolean, node: Object, }) => {
+    const { expanded, node, } = event;
+    const key = node.props.eventKey;
     const utils = this.getUtils(this.props);
-    const { expand, } = this.state;
-    const { id2ExtendInfo, } = expand;
+    const { id2ExtendInfo, } = this.state.expand;
 
-    expanded ? utils.expandNode(noeKey, id2ExtendInfo) : utils.colapseNode(noeKey, id2ExtendInfo);
+    expanded ? utils.expandNode(key, id2ExtendInfo) : utils.colapseNode(key, id2ExtendInfo);
 
     if (this.isQueryAll(this.props)) {
       this.allExpandKeys = expandedKeys;
