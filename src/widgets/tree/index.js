@@ -92,8 +92,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     const { id2ExtendInfo, } = expand;
 
-    let selectedInfo = this.getDefaultSelectedInfo();
-    let selectValue = [];
 
     let realyValue;
     const existDefault = 'defaultValue' in props;
@@ -106,24 +104,19 @@ class Tree extends React.Component<TreeProps, TreeState> {
       realyValue = defaultValue;
     }
 
+    const state = {
+      start: 0,
+      expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
+      expand,
+      selectValue: [],
+      selectedInfo: this.getDefaultSelectedInfo(),
+    };
+
     if (realyValue && realyValue.trim() !== '') {
-      const isSingle = this.isSingleSelect();
-      if (isSingle) {
-        selectValue = [realyValue,];
-      } else {
-        selectedInfo = this.getSelectedInfo(realyValue, props, id2ExtendInfo);
-      }
+      this.setLimitValue(props, state, id2ExtendInfo, realyValue);
     }
 
-    const expandedKeys = this.getExpandedKeys(props, id2ExtendInfo);
-
-    this.state = {
-      start: 0,
-      expandedKeys,
-      expand,
-      selectValue,
-      selectedInfo,
-    };
+    this.state = state;
   }
 
 
@@ -145,47 +138,43 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
 
-    let newSelectedInfo = this.getDefaultSelectedInfo();
-
-    const { selectValue: oldSingleValue = [], } = this.state;
-    let selectValue: Array<string> = oldSingleValue;
+    const state: TreeState = {
+      start: this.isQueryAll(props) ? this.state.start : 0,
+      selectedInfo: this.getDefaultSelectedInfo(),
+      expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
+      expand,
+      selectValue: [],
+    };
 
     const isLimitValue = !this.isNotLimit(props);
     const isSingle = this.isSingleSelect();
-    const { value: configValue, } = props;
-
-    if (isSingle && isLimitValue) {
-      selectValue = [];
-      if (configValue) {
-        selectValue = [configValue,];
-      }
-    }
-
-    if (!isSingle) {
-      if (isLimitValue) {
-        if (configValue) {
-          newSelectedInfo = this.getSelectedInfo(configValue, props, id2ExtendInfo);
-        }
+    if (isLimitValue) {
+      this.setLimitValue(props, state, id2ExtendInfo, props.value);
+    } else {
+      if (isSingle) {
+        state.selectValue = this.state.selectValue;
       } else {
         const { selectedInfo, } = this.state;
         const { value, } = selectedInfo;
         const utils = this.getUtils(props);
-        newSelectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
+        state.selectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
       }
     }
-    const expandedKeys = this.getExpandedKeys(props, id2ExtendInfo);
-
-    this.setState({
-      start: this.isQueryAll(props) ? this.state.start : 0,
-      selectedInfo: newSelectedInfo,
-      expandedKeys,
-      expand,
-      selectValue,
-    });
+    this.setState(state);
   }
 
   isNotLimit (props: TreeProps) {
     return 'value' in props === false;
+  }
+
+  setLimitValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, value: any) {
+    if (value) {
+      if (this.isSingleSelectForProps(props)) {
+        state.selectValue = [value,];
+      } else {
+        state.selectedInfo = this.getSelectedInfo(value, this.props, id2ExtendInfo);
+      }
+    }
   }
 
   updateExpandInfo (props: TreeProps): ExpandInfo {
@@ -339,7 +328,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
   };
 
   isSingleSelect () {
-    const { mutliple, } = this.props;
+    return this.isSingleSelectForProps(this.props);
+  }
+
+  isSingleSelectForProps (props: TreeProps) {
+    const { mutliple, } = props;
     return mutliple === false;
   }
 
