@@ -672,5 +672,31 @@ describe('Tree', () => {
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
   });
+  it('查询所有时先移动滚动条到底部，而后进行查询。最后恢复为查询全部', () => {
+    let target = {};
+    const Target = createTestComponent(Tree, the => {
+      target = the;
+    });
+    const cmp = mount(<Target value={'3.2'} data={rowData} mutliple expandAll/>);
+
+
+    target.target.setState({ start: 17, }, () => {
+
+    });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(target.target.state.start, '移动滚动条到底部失败').to.be.equal(17);
+
+    cmp.setProps({ query: '3.1', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(target.target.state.start, '查询后start统一移动到顶部').to.be.equal(0);
+
+    cmp.setProps({ query: '', });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(target.target.state.start, '恢复到原来的底部位置').to.be.equal(17);
+
+  });
 
 });

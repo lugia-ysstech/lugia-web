@@ -76,15 +76,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   allExpandKeys: Array<string>;
   allExpandInfo: ExpandInfo;
-  utils: TreeUtils;
+  allStart: number;
   queryAllUtils: TreeUtils;
+  utils: TreeUtils;
   value: any;
 
 
   constructor (props: TreeProps) {
     super(props);
     this.allExpandInfo = this.getEmptyExpandInfo();
-
+    this.allStart = 0;
     this.createQueryAllTreelUtils(props);
 
     if (this.isEmpty(props)) {
@@ -103,6 +104,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     };
     this.setLimitValue(props, state, id2ExtendInfo, this.getInitValue());
     this.state = state;
+
   }
 
   getInitValue () {
@@ -132,7 +134,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
     const state: TreeState = {
-      start: this.isQueryAll(props) ? this.state.start : 0,
+      start: this.isQueryAll(props) ? this.allStart : 0,
       selectedInfo: this.getEmptyNodeId2SelectInfo(),
       expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
       expand,
@@ -167,7 +169,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     value = isNotBlank ? value : '';
     if (isNotBlank) {
       if (this.isSingleSelectForProps(props)) {
-        state.selectValue = [value,];
+        state.selectValue = [ value, ];
       } else {
         state.selectedInfo = this.getSelectedInfo(value, props, id2ExtendInfo);
       }
@@ -276,6 +278,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { checked, halfchecked, } = selectedInfo;
     const utils = this.getUtils(props);
     const data = utils.search(expand, query);
+    if (this.isQueryAll(this.props)) {
+      this.allStart = start;
+    }
     return <ThrottleTree {...props} id2ExtendInfo={id2ExtendInfo}
                          start={start}
                          onScroller={this.onScroller}
