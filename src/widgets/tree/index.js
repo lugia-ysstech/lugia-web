@@ -82,6 +82,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   constructor (props: TreeProps) {
     super(props);
+    this.allExpandInfo = this.getEmptyExpandInfo();
 
     this.createQueryAllTreelUtils(props);
 
@@ -97,7 +98,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
       expand,
       selectValue: [],
-      selectedInfo: this.getDefaultSelectedInfo(),
+      selectedInfo: this.getEmptyNodeId2SelectInfo(),
     };
     this.setLimitValue(props, state, id2ExtendInfo, this.getInitValue());
     this.state = state;
@@ -118,7 +119,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return realyValue;
   }
 
-  getDefaultSelectedInfo () {
+  getEmptyNodeId2SelectInfo (): NodeId2SelectInfo {
     return {
       checked: {},
       value: {},
@@ -131,7 +132,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { id2ExtendInfo, } = expand;
     const state: TreeState = {
       start: this.isQueryAll(props) ? this.state.start : 0,
-      selectedInfo: this.getDefaultSelectedInfo(),
+      selectedInfo: this.getEmptyNodeId2SelectInfo(),
       expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
       expand,
       selectValue: [],
@@ -173,11 +174,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   updateExpandInfo (props: TreeProps): ExpandInfo {
-    let result = { id2ExtendInfo: {}, };
+    let result = this.getEmptyExpandInfo();
     if (this.isQueryAll(props)) {
-      if (this.allExpandInfo === undefined) {
-        this.allExpandInfo = result;
-      }
       result = this.allExpandInfo;
     }
 
@@ -188,6 +186,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return result;
   }
 
+  getEmptyExpandInfo (): ExpandInfo {
+    return { id2ExtendInfo: {}, };
+  }
 
   getSelectedInfo (value: string, props: TreeProps, id2ExtendInfo: NodeId2ExtendInfo) {
     const valArray = value.split(',');
