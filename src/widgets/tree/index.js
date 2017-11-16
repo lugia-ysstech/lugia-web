@@ -92,11 +92,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     const { id2ExtendInfo, } = expand;
 
-    let selectedInfo = {
-      checked: {},
-      value: {},
-      halfchecked: {},
-    };
+    let selectedInfo = this.getDefaultSelectedInfo();
     let selectValue = [];
 
     let realyValue;
@@ -131,6 +127,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
 
+  getDefaultSelectedInfo () {
+    return {
+      checked: {},
+      value: {},
+      halfchecked: {},
+    };
+  }
+
   componentWillReceiveProps (props: TreeProps) {
     this.loadData(props);
   }
@@ -141,29 +145,26 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
 
-    let newSelectedInfo = {
-      checked: {},
-      value: {},
-      halfchecked: {},
-    };
+    let newSelectedInfo = this.getDefaultSelectedInfo();
 
     const { selectValue: oldSingleValue = [], } = this.state;
     let selectValue: Array<string> = oldSingleValue;
 
     const isLimitValue = !this.isNotLimit(props);
     const isSingle = this.isSingleSelect();
-    const { value: propsValue, } = props;
+    const { value: configValue, } = props;
+
     if (isSingle && isLimitValue) {
       selectValue = [];
-      if (propsValue) {
-        selectValue = [propsValue,];
+      if (configValue) {
+        selectValue = [configValue,];
       }
     }
 
     if (!isSingle) {
       if (isLimitValue) {
-        if (propsValue) {
-          newSelectedInfo = this.getSelectedInfo(propsValue, props, id2ExtendInfo);
+        if (configValue) {
+          newSelectedInfo = this.getSelectedInfo(configValue, props, id2ExtendInfo);
         }
       } else {
         const { selectedInfo, } = this.state;
