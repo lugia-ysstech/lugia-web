@@ -184,7 +184,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const expandedKeys = this.getExpandedKeys(props, id2ExtendInfo);
 
     this.setState({
-      start: 0,
+      start: this.isQueryAll(props) ? this.state.start : 0,
       selectedInfo: newSelectedInfo,
       expandedKeys,
       expand,
@@ -278,6 +278,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
     if (data) {
+      console.info(start);
+      console.info(checked);
       const utils = this.getUtils(this.props);
       this.realyDatas = utils.search(expand, query);
       return <ThrottleTree {...this.props} id2ExtendInfo={id2ExtendInfo}

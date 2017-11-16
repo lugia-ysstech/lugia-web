@@ -10,6 +10,7 @@ import 'jest-styled-components';
 import Enzyme, { mount, shallow, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tree from '../';
+import { createTestComponent, } from 'sv-test-utils';
 
 Enzyme.configure({ adapter: new Adapter(), });
 
@@ -465,8 +466,53 @@ describe('Tree', () => {
     cmp.instance().forceUpdate();
     cmp.update();
     exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
-    exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
-    exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
+    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
+  });
+
+
+  it('mutliple: true ,  value： 在不可见的位置', () => {
+    let target = {};
+    const Target = createTestComponent(Tree, the => {
+      target = the;
+    });
+    const cmp = mount(<Target value={'3.2'} data={rowData} mutliple expandAll/>);
+
+    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
+    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
+    target.target.setState({ start: 17, }, () => {
+
+    });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(1);
+    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(1);
+    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
+    const chkBox = cmp.find(CheckBox);
+    exp(chkBox.at(chkBox.length - 3).hasClass(HalfChecked), '3被半选上').to.be.true;
+    exp(chkBox.last().hasClass(Checked), '3.2被全选上').to.be.true;
+  });
+
+  it('mutliple: false ,  value： 在不可见的位置', () => {
+    let target = {};
+    const Target = createTestComponent(Tree, the => {
+      target = the;
+    });
+    const cmp = mount(<Target value={'3.2'} data={rowData} expandAll/>);
+
+    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
+    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
+    target.target.setState({ start: 17, }, () => {
+
+    });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
+    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(1);
+    exp(cmp.find(TreeRow).last().hasClass(Selected)).to.be.true;
   });
 });
