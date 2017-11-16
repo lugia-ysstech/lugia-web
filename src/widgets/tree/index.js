@@ -169,7 +169,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     value = isNotBlank ? value : '';
     if (isNotBlank) {
       if (this.isSingleSelectForProps(props)) {
-        state.selectValue = [ value, ];
+        state.selectValue = [value,];
       } else {
         state.selectedInfo = this.getSelectedInfo(value, props, id2ExtendInfo);
       }
