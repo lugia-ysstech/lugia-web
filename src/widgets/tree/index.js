@@ -227,14 +227,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const dataChanged = nexProps.data !== this.props.data;
     if (dataChanged) {
       this.createQueryAllTreelUtils(nexProps);
+      return true;
     }
-    const needUpdate = dataChanged
-      || this.props.query !== nexProps.query
+    return this.props.query !== nexProps.query
       || this.state.start !== nextState.start
       || this.state.selectValue !== nextState.selectValue
       || nextState.expand !== this.state.expand
       || nextState.selectedInfo !== this.state.selectedInfo;
-    return needUpdate;
   }
 
 
