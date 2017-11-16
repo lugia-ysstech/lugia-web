@@ -163,6 +163,19 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
   }
 
+  getValueObject (value: string) {
+    const valArray = value.split(',');
+    const len = valArray.length;
+    const valueObj = {};
+    for (let i = 0; i < len; i++) {
+      const oneValue = valArray[ i ];
+      if (oneValue !== '') {
+        valueObj[ oneValue ] = true;
+      }
+    }
+    return valueObj;
+  }
+
   updateStateValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, selectValue: Array<string>, valueObject: Object) {
     if (this.isSingleSelectForProps(props)) {
       state.selectValue = selectValue;
@@ -184,19 +197,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   getEmptyExpandInfo (): ExpandInfo {
     return { id2ExtendInfo: {}, };
-  }
-
-  getValueObject (value: string) {
-    const valArray = value.split(',');
-    const len = valArray.length;
-    const valueObj = {};
-    for (let i = 0; i < len; i++) {
-      const oneValue = valArray[ i ];
-      if (oneValue !== '') {
-        valueObj[ oneValue ] = true;
-      }
-    }
-    return valueObj;
   }
 
 
