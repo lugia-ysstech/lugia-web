@@ -159,9 +159,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   setLimitValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, value: any) {
     if (value == undefined) {
-      return;
+      value = '';
     }
     const isNotBlank = value.trim && value.trim() !== '';
+    value = isNotBlank ? value : '';
     if (isNotBlank) {
       if (this.isSingleSelectForProps(props)) {
         state.selectValue = [value,];
