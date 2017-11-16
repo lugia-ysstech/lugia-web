@@ -153,27 +153,23 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   updateStateValuForLimitValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, value: any) {
-    if (value === undefined || value === null) {
-      value = '';
-    }
-    const isNotBlank = value.trim && value.trim() !== '';
-    value = isNotBlank ? value : '';
-    if (isNotBlank) {
-      this.updateStateValue(props, state, id2ExtendInfo, [value,], this.getValueObject(value));
-    }
+    const notString = Object.prototype.toString.call(value) !== '[object String]';
+    const emptyValue = value === undefined || value === null || notString;
+    value = emptyValue ? '' : value.trim();
+    this.updateStateValue(props, state, id2ExtendInfo, [value,], this.getValueObject(value));
   }
 
   getValueObject (value: string) {
     const valArray = value.split(',');
     const len = valArray.length;
-    const valueObj = {};
+    const result = {};
     for (let i = 0; i < len; i++) {
       const oneValue = valArray[ i ];
       if (oneValue !== '') {
-        valueObj[ oneValue ] = true;
+        result[ oneValue ] = true;
       }
     }
-    return valueObj;
+    return result;
   }
 
   updateStateValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, selectValue: Array<string>, valueObject: Object) {
@@ -220,7 +216,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   shouldComponentUpdate (nexProps: TreeProps, nextState: TreeState) {
     const { props, state, } = this;
-    const dataChanged = nexProps.data !== props.data;
+    const dataChanged = props.data !== nexProps.data;
     if (dataChanged === true) {
       this.createQueryAllTreelUtils(nexProps);
       return true;
