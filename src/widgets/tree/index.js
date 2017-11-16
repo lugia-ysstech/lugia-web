@@ -83,7 +83,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   constructor (props: TreeProps) {
     super(props);
 
-    this.createTreeQueryAllUtils(props);
+    this.createQueryAllTreelUtils(props);
 
     if (this.isEmpty(props)) {
       return;
@@ -91,7 +91,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const expand = this.updateExpandInfo(props);
 
     const { id2ExtendInfo, } = expand;
-
 
     const state = {
       start: 0,
@@ -128,15 +127,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   componentWillReceiveProps (props: TreeProps) {
-    this.loadData(props);
-  }
-
-
-  loadData (props: TreeProps) {
-
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
-
     const state: TreeState = {
       start: this.isQueryAll(props) ? this.state.start : 0,
       selectedInfo: this.getDefaultSelectedInfo(),
@@ -145,12 +137,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
       selectValue: [],
     };
 
-    const isLimitValue = !this.isNotLimit(props);
-    const isSingle = this.isSingleSelect();
-    if (isLimitValue) {
-      this.setLimitValue(props, state, id2ExtendInfo, props.value);
-    } else {
-      if (isSingle) {
+    if (this.isNotLimit(props)) {
+      if (this.isSingleSelect()) {
         state.selectValue = this.state.selectValue;
       } else {
         const { selectedInfo, } = this.state;
@@ -158,6 +146,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
         const utils = this.getUtils(props);
         state.selectedInfo = utils.value2SelectInfo(value, id2ExtendInfo);
       }
+    } else {
+      const { value, } = props;
+      this.setLimitValue(props, state, id2ExtendInfo, value);
     }
     this.setState(state);
   }
@@ -175,7 +166,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       if (this.isSingleSelectForProps(props)) {
         state.selectValue = [value,];
       } else {
-        state.selectedInfo = this.getSelectedInfo(value, this.props, id2ExtendInfo);
+        state.selectedInfo = this.getSelectedInfo(value, props, id2ExtendInfo);
       }
     }
   }
@@ -189,9 +180,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
       result = this.allExpandInfo;
     }
 
-    this.createTreeQueryUtils(props);
+    this.createQueryTreeUtils(props);
     const utils = this.getUtils(props);
-    utils.search(result, props.query);
+    const { query, } = props;
+    utils.search(result, query);
     return result;
   }
 
@@ -233,7 +225,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   shouldComponentUpdate (nexProps: TreeProps, nextState: TreeState) {
     const dataChanged = nexProps.data !== this.props.data;
     if (dataChanged) {
-      this.createTreeQueryAllUtils(nexProps);
+      this.createQueryAllTreelUtils(nexProps);
     }
     const needUpdate = dataChanged
       || this.props.query !== nexProps.query
@@ -245,14 +237,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
 
-  createTreeQueryUtils (props: TreeProps) {
+  createQueryTreeUtils (props: TreeProps) {
     const { data, onlySelectLeaf, } = props;
     if (data) {
       this.utils = new TreeUtils(data, { expandAll: true, onlySelectLeaf, });
     }
   }
 
-  createTreeQueryAllUtils (props: TreeProps) {
+  createQueryAllTreelUtils (props: TreeProps) {
     const { data, expandAll = false, onlySelectLeaf, } = props;
     if (data) {
       this.queryAllUtils = new TreeUtils(data, { expandAll, onlySelectLeaf, });
