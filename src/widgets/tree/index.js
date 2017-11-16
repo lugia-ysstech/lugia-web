@@ -101,26 +101,26 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     let realyValue;
     const existDefault = 'defaultValue' in props;
-    const existValue = 'value' in props;
-    if (existDefault || existValue) {
-      if (existValue) {
-        const { value = '', } = props;
-        realyValue = value;
-      } else if (existDefault) {
-        const { defaultValue, } = props;
-        realyValue = defaultValue;
-      }
+    const isLimit = this.isLmit(props);
+    if (isLimit) {
+      const { value = '', } = props;
+      realyValue = value;
+    } else if (existDefault) {
+      const { defaultValue, } = props;
+      realyValue = defaultValue;
     }
+
     if (realyValue && realyValue.trim() !== '') {
-      const { mutliple, } = props;
-      if (mutliple) {
-        selectedInfo = this.getSelectedInfo(realyValue, props, id2ExtendInfo);
+      const isSingle = this.isSingleSelect();
+      if (isSingle) {
+        selectValue = [realyValue,];
       } else {
-        selectValue = [ realyValue, ];
+        selectedInfo = this.getSelectedInfo(realyValue, props, id2ExtendInfo);
       }
     }
 
     const expandedKeys = this.getExpandedKeys(props, id2ExtendInfo);
+
     this.state = {
       start: 0,
       expandedKeys,
@@ -130,19 +130,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     };
   }
 
-  getSelectedInfo (value: string, props: TreeProps, id2ExtendInfo: NodeId2ExtendInfo) {
-    const valArray = value.split(',');
-    const len = valArray.length;
-    const valueObj = {};
-    for (let i = 0; i < len; i++) {
-      const oneValue = valArray[ i ];
-      if (oneValue != '') {
-        valueObj[ oneValue ] = true;
-      }
-    }
-    const utils = this.getUtils(props);
-    return utils.value2SelectInfo(valueObj, id2ExtendInfo);
-  }
 
   componentWillReceiveProps (props: TreeProps) {
     this.loadData(props);
@@ -159,16 +146,17 @@ class Tree extends React.Component<TreeProps, TreeState> {
       value: {},
       halfchecked: {},
     };
+
     const { selectValue: oldSingleValue = [], } = this.state;
     let selectValue: Array<string> = oldSingleValue;
 
-    const isLimitValue = 'value' in props;
+    const isLimitValue = this.isLmit(props);
     const isSingle = this.isSingleSelect();
     const { value: propsValue, } = props;
     if (isSingle && isLimitValue) {
       selectValue = [];
       if (propsValue) {
-        selectValue = [ propsValue, ];
+        selectValue = [propsValue,];
       }
     }
 
@@ -195,24 +183,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     });
   }
 
-  getExpandedKeys (props: TreeProps, id2ExtendInfo): Array<string> {
-    let result;
-    if (this.isQueryAll(props)) {
-      if (this.allExpandKeys === undefined) {
-        const { expandAll, } = this.props;
-        this.allExpandKeys = expandAll ? Object.keys(id2ExtendInfo) : [];
-      }
-      result = this.allExpandKeys;
-    } else {
-      result = Object.keys(id2ExtendInfo);
-    }
-    return result;
-  }
-
-
-  isEmpty (props: TreeProps) {
-    const { data, } = props;
-    return !data || data.length === 0;
+  isLmit (props: TreeProps) {
+    return 'value' in props;
   }
 
   updateExpandInfo (props: TreeProps): ExpandInfo {
@@ -231,6 +203,40 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return result;
   }
 
+
+  getSelectedInfo (value: string, props: TreeProps, id2ExtendInfo: NodeId2ExtendInfo) {
+    const valArray = value.split(',');
+    const len = valArray.length;
+    const valueObj = {};
+    for (let i = 0; i < len; i++) {
+      const oneValue = valArray[ i ];
+      if (oneValue != '') {
+        valueObj[ oneValue ] = true;
+      }
+    }
+    const utils = this.getUtils(props);
+    return utils.value2SelectInfo(valueObj, id2ExtendInfo);
+  }
+
+
+  getExpandedKeys (props: TreeProps, id2ExtendInfo): Array<string> {
+    let result;
+    if (this.isQueryAll(props)) {
+      if (this.allExpandKeys === undefined) {
+        const { expandAll, } = this.props;
+        this.allExpandKeys = expandAll ? Object.keys(id2ExtendInfo) : [];
+      }
+      result = this.allExpandKeys;
+    } else {
+      result = Object.keys(id2ExtendInfo);
+    }
+    return result;
+  }
+
+  isQueryAll (props: TreeProps): boolean {
+    const { query, } = props;
+    return (query === '');
+  }
 
   shouldComponentUpdate (nexProps: TreeProps, nextState: TreeState) {
     const dataChanged = nexProps.data !== this.props.data;
@@ -268,10 +274,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return this.utils;
   }
 
-  isQueryAll (props: TreeProps): boolean {
-    const { query, } = props;
-    return (query === '');
-  }
 
   realyDatas: Array<RowData>;
 
@@ -304,6 +306,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
                          utils={utils}
                          expandedKeys={expandedKeys}
                          onExpand={this.onExpand}></ThrottleTree>;
+  }
+
+
+  isEmpty (props: TreeProps) {
+    const { data, } = props;
+    return !data || data.length === 0;
   }
 
   onSelect = (selectValue: Array<string>) => {
