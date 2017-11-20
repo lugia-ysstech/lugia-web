@@ -40,6 +40,7 @@ describe('InputTag', () => {
     defaultValue: value,
     defaultDisplayValue: displayValue,
   }), '[defaultValue & defaultDisplayValue]');
+
   createItemsTest(createInputTagTest({
     value,
     displayValue,
@@ -51,11 +52,7 @@ describe('InputTag', () => {
   function createItemsTest (InputTagTest: Object, caseTitle: string) {
 
     it('展现值&实际值 宽度够容纳所有的3个结点 ' + caseTitle, async () => {
-      const mockInputTagPrototye = mockObject.create(_InputTag_.prototype);
-      const funcMock = mockInputTagPrototye.mockFunction('getFontWidth');
-      funcMock.forever(5);
-      const cmp = mount(<InputTagTest/>);
-      await delay(100, () => {
+      await renderInputTag(5, cmp => {
         cmp.instance().forceUpdate();
         cmp.update();
         const tagItems = cmp.find(Widgets.InputTagItem);
@@ -66,16 +63,10 @@ describe('InputTag', () => {
         exp(cmp.find(Widgets.FontItem).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
         exp(cmp.find(Widgets.FontItem).length).to.be.equal(1);
       });
-      mockInputTagPrototye.resetAll();
     });
 
     it('展现值&实际值 3个一个结点也容不下' + caseTitle, async () => {
-      const mockInputTagPrototye = mockObject.create(_InputTag_.prototype);
-      const funcMock = mockInputTagPrototye.mockFunction('getFontWidth');
-      funcMock.forever(1000);
-
-      const cmp = mount(<InputTagTest/>);
-      await delay(100, () => {
+      await renderInputTag(1000, cmp => {
         cmp.instance().forceUpdate();
         cmp.update();
         const tagItems = cmp.find(Widgets.InputTagItem);
@@ -85,19 +76,16 @@ describe('InputTag', () => {
         exp(cmp.find(Widgets.MoreInputTagItem).length).to.be.equal(1);
         exp(cmp.find(Widgets.MoreInputTagItem).at(0).getDOMNode() == tagItems.at(1).getDOMNode()).to.be.true;
       });
-      mockInputTagPrototye.resetAll();
+
     });
     it('展现值&实际值 3个只能容纳一个' + caseTitle, async () => {
-      const mockInputTagPrototye = mockObject.create(_InputTag_.prototype);
-      const funcMock = mockInputTagPrototye.mockFunction('getFontWidth');
       let i = 0;
       const val = [ 5, 1000, 1000, ];
-      funcMock.mock(() => {
+      const getFontWidth = () => {
         return val[ i++ ];
-      });
+      };
 
-      const cmp = mount(<InputTagTest/>);
-      await delay(100, () => {
+      await renderInputTag(getFontWidth, cmp => {
         cmp.instance().forceUpdate();
         cmp.update();
         const tagItems = cmp.find(Widgets.InputTagItem);
@@ -108,8 +96,23 @@ describe('InputTag', () => {
         exp(tagItems.at(1).text()).to.be.equal('常');
         exp(cmp.find(Widgets.MoreInputTagItem).at(0).getDOMNode() == tagItems.at(2).getDOMNode()).to.be.true;
       });
-      mockInputTagPrototye.resetAll();
+
     });
+  }
+
+  async function renderInputTag (fontWidth: number | Function, callback: Function) {
+    const mockInputTagPrototye = mockObject.create(_InputTag_.prototype);
+    const funcMock = mockInputTagPrototye.mockFunction('getFontWidth');
+    if (typeof fontWidth === 'function') {
+      funcMock.mock(fontWidth);
+    } else {
+      funcMock.forever(fontWidth);
+    }
+    const cmp = mount(<InputTagTest/>);
+    await delay(100, () => {
+      callback(cmp);
+    });
+    mockInputTagPrototye.resetAll();
   }
 
 });
