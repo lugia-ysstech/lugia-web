@@ -11,6 +11,7 @@ import Enzyme, { mount, shallow, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tree from '../';
 import { createTestComponent, } from 'sv-test-utils';
+import renderer from 'react-test-renderer';
 
 Enzyme.configure({ adapter: new Adapter(), });
 
@@ -76,13 +77,15 @@ describe('Tree', () => {
   }
 
   it('props: query: 2.1.2.1 expandAll: true mutliple: false', () => {
-    const cmp = mount(<Tree
+    const Target = <Tree
       expandAll
       showLine
       query="2.1.2.1"
       data={rowData}
     >
-    </Tree>);
+    </Tree>;
+    const cmp = mount(Target);
+    expect(renderer.create(Target).toJSON()).toMatchSnapshot();
     const titles = cmp.find('.sv-tree-title');
     exp(titles.length).to.be.equal(4);
     exp(titles.at(0).text()).to.be.equal('2');
@@ -126,7 +129,9 @@ describe('Tree', () => {
       };
     });
 
-    const cmp = mount(<LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange}/>);
+    const Target = <LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange}/>;
+    const cmp = mount(Target);
+    expect(renderer.create(Target).toJSON()).toMatchSnapshot();
     const chkBox = cmp.find(CheckBoxInner);
     chkBox.at(1).simulate('click', {});
     chkBox.at(1).simulate('click', {});
@@ -160,7 +165,10 @@ describe('Tree', () => {
       };
     });
 
-    const cmp = mount(<LimitTree defaultValue="2" data={rowData} mutliple onChange={onChange}/>);
+    const Target = <LimitTree defaultValue="2" data={rowData} mutliple onChange={onChange}/>;
+    const cmp = mount(Target);
+    expect(renderer.create(Target).toJSON()).toMatchSnapshot();
+
     const chkBox = cmp.find(CheckBoxInner);
     chkBox.at(1).simulate('click', {});
     chkBox.at(1).simulate('click', {});
@@ -272,7 +280,10 @@ describe('Tree', () => {
       };
     });
 
-    const cmp = mount(<LimitTree value="1" data={rowData} onChange={onChange}/>);
+    const Target = <LimitTree value="1" data={rowData} onChange={onChange}/>;
+    const cmp = mount(Target);
+    expect(renderer.create(Target).toJSON()).toMatchSnapshot();
+
     const getChkBox = () => cmp.find(TreeRow);
 
     function checkSelectStatus () {
