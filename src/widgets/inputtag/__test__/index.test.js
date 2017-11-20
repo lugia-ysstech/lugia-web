@@ -52,29 +52,27 @@ describe('InputTag', () => {
   function createItemsTest (InputTagTest: Object, caseTitle: string) {
 
     it('展现值&实际值 宽度够容纳所有的3个结点 ' + caseTitle, async () => {
-      await renderInputTag(5, cmp => {
-        cmp.instance().forceUpdate();
-        cmp.update();
-        const tagItems = cmp.find(Widgets.InputTagItem);
+      await renderInputTag(InputTagTest, 5, cmp => {
+
+        const tagItems = findInputItem(cmp);
         exp(tagItems.length).to.be.equal(4);
         exp(tagItems.at(1).text()).to.be.equal('常');
         exp(tagItems.at(2).text()).to.be.equal('乐');
         exp(tagItems.at(3).text()).to.be.equal('我');
-        exp(cmp.find(Widgets.FontItem).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
-        exp(cmp.find(Widgets.FontItem).length).to.be.equal(1);
+        exp(findFontItem(cmp).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
+        exp(findFontItem(cmp).length).to.be.equal(1);
       });
     });
 
     it('展现值&实际值 3个一个结点也容不下' + caseTitle, async () => {
-      await renderInputTag(1000, cmp => {
-        cmp.instance().forceUpdate();
-        cmp.update();
-        const tagItems = cmp.find(Widgets.InputTagItem);
+      await renderInputTag(InputTagTest, 1000, cmp => {
+
+        const tagItems = findInputItem(cmp);
         exp(tagItems.length).to.be.equal(2);
-        exp(cmp.find(Widgets.FontItem).length).to.be.equal(1);
-        exp(cmp.find(Widgets.FontItem).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
-        exp(cmp.find(Widgets.MoreInputTagItem).length).to.be.equal(1);
-        exp(cmp.find(Widgets.MoreInputTagItem).at(0).getDOMNode() == tagItems.at(1).getDOMNode()).to.be.true;
+        exp(findFontItem(cmp).length).to.be.equal(1);
+        exp(findFontItem(cmp).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
+        exp(findMoreItem(cmp).length).to.be.equal(1);
+        exp(findMoreItem(cmp).at(0).getDOMNode() == tagItems.at(1).getDOMNode()).to.be.true;
       });
 
     });
@@ -85,22 +83,56 @@ describe('InputTag', () => {
         return val[ i++ ];
       };
 
-      await renderInputTag(getFontWidth, cmp => {
-        cmp.instance().forceUpdate();
-        cmp.update();
-        const tagItems = cmp.find(Widgets.InputTagItem);
+      await renderInputTag(InputTagTest, getFontWidth, cmp => {
+
+        const tagItems = findInputItem(cmp);
         exp(tagItems.length).to.be.equal(3);
-        exp(cmp.find(Widgets.FontItem).length).to.be.equal(1);
-        exp(cmp.find(Widgets.MoreInputTagItem).length).to.be.equal(1);
-        exp(cmp.find(Widgets.FontItem).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
+        exp(findFontItem(cmp).length).to.be.equal(1);
+        exp(findMoreItem(cmp).length).to.be.equal(1);
+        exp(findFontItem(cmp).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
         exp(tagItems.at(1).text()).to.be.equal('常');
-        exp(cmp.find(Widgets.MoreInputTagItem).at(0).getDOMNode() == tagItems.at(2).getDOMNode()).to.be.true;
+        exp(findMoreItem(cmp).at(0).getDOMNode() == tagItems.at(2).getDOMNode()).to.be.true;
       });
 
     });
   }
 
-  async function renderInputTag (fontWidth: number | Function, callback: Function) {
+
+  it('测试点击X时，删除对应的Item', async () => {
+    const result = new Promise(async resolve => {
+
+      await renderInputTag(InputTagTest, 5, async cmp => {
+        cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
+        await delay(0, () => {
+          cmp.instance().forceUpdate();
+          cmp.update();
+          const tagItems = findInputItem(cmp);
+
+          exp(tagItems.length).to.be.equal(3);
+          exp(tagItems.at(1).text()).to.be.equal('乐');
+          exp(tagItems.at(2).text()).to.be.equal('我');
+          exp(findFontItem(cmp).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
+          exp(findFontItem(cmp).length).to.be.equal(1);
+          resolve(true);
+        });
+      });
+    });
+    await result;
+  });
+
+  function findFontItem (cmp) {
+    return cmp.find(Widgets.FontItem);
+  }
+
+  function findMoreItem (cmp) {
+    return cmp.find(Widgets.MoreInputTagItem);
+  }
+
+  function findInputItem (cmp) {
+    return cmp.find(Widgets.InputTagItem);
+  }
+
+  async function renderInputTag (InputTagTest: Object, fontWidth: number | Function, callback: Function) {
     const mockInputTagPrototye = mockObject.create(_InputTag_.prototype);
     const funcMock = mockInputTagPrototye.mockFunction('getFontWidth');
     if (typeof fontWidth === 'function') {
@@ -109,7 +141,9 @@ describe('InputTag', () => {
       funcMock.forever(fontWidth);
     }
     const cmp = mount(<InputTagTest/>);
-    await delay(100, () => {
+    await delay(0, () => {
+      cmp.instance().forceUpdate();
+      cmp.update();
       callback(cmp);
     });
     mockInputTagPrototye.resetAll();

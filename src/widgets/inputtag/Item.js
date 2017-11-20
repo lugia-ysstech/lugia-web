@@ -10,7 +10,7 @@ import '../css/sv.css';
 import { ItemContainer, ItemText, } from './ItemTag';
 import * as Widget from '../consts/Widget';
 
-const CloseButton = styled.span`
+const CloseButton: Object = styled.span`
   font-size: 14px;
   color: rgba(0, 0, 0, 0.47);
   position: absolute;
@@ -21,6 +21,7 @@ const CloseButton = styled.span`
     color: #000;
   }
 `;
+CloseButton.displayName = Widget.InputTagCloseButton;
 type ItemProps = {
   className?: string,
   closeable?: boolean,
