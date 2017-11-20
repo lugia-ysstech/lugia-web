@@ -134,7 +134,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   render () {
     const { items, } = this.state;
     const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
-    console.info('render items.length', items.length);
     const result = (
       <Container className="sv" theme={this.props.getTheme()} innerRef={cmp => this.container = cmp}
                  onClick={this.onClick}>
@@ -246,32 +245,35 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   needMoreItem: boolean;
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
-    listWidth -= 20;
-    const { value, } = this.state;
     const items = [];
-    let totalWidth = 0;
     this.needMoreItem = false;
+    const { value, } = this.state;
     if (value) {
+      listWidth -= 20;
+      let totalWidth = 0;
       const keys = Object.keys(value);
       const valueLen = keys.length;
       for (let i = 0; i < valueLen; i++) {
+
         const key = keys[ i ];
         const { text, } = value[ key ];
-        totalWidth += await this.getFontWidth(text) + ItemMarginRight;
+        const fontWidth = await this.getFontWidth(text);
+        totalWidth += fontWidth + ItemMarginRight;
+
         if (totalWidth >= listWidth) {
           break;
         }
+
         items.push(<Item key={key} onCloseClick={this.onDelItem.bind(this, key)}>{text}</Item>);
       }
-      console.info('items.length', items.length);
       if (valueLen !== items.length) {
         this.needMoreItem = true;
       }
-    }
-    if (this.needMoreItem) {
-      items.push(this.getMoreItem());
-    }
 
+      if (this.needMoreItem) {
+        items.push(this.getMoreItem());
+      }
+    }
     this.setState({ items, });
     return true;
   }
@@ -289,4 +291,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 }
 
 const InputTagBox = ThemeProvider(InputTag, Widget.InputTag);
+export const _InputTag_ = InputTag;
+
 export default InputTagBox;
