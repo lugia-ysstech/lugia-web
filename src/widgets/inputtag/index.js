@@ -29,6 +29,8 @@ type InputTagProps = {
   getTheme: Function,
   value?: string,
   displayValue?: string,
+  defaultValue?: string,
+  defaultDisplayValue?: string,
   onClick?: Function,
 };
 type InputTagState = {
@@ -117,7 +119,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   fetchValueObject (): Object {
     const result = {};
-    const { value = '', displayValue = '', } = this.props;
+    const { value = '', displayValue = '', } = this.getValue();
     const valArray = value.split(separator);
     const valLen = valArray.length;
     const displayValArray = displayValue.split(separator);
@@ -129,6 +131,16 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       }
     }
     return result;
+  }
+
+  getValue (): { value: string, displayValue: string } {
+    const { props, } = this;
+    if ('value' in props === true) {
+      const { value = '', displayValue = '', } = props;
+      return { value, displayValue, };
+    }
+    const { defaultValue: value = '', defaultDisplayValue: displayValue = '', } = props;
+    return { value, displayValue, };
   }
 
   render () {
