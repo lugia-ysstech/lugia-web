@@ -27,6 +27,7 @@ type ValuItem = {
 }
 type InputTagProps = {
   getTheme: Function,
+  onChange?: Function,
   value?: string,
   displayValue?: string,
   defaultValue?: string,
@@ -202,6 +203,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       for (let i = 0; i < valueLen; i++) {
         const key = keys[ i ];
         const { text, } = value[ key ];
+        this.valueArray.push(key);
+        this.displayValueArray.push(text);
+
         items.push(<Theme config={theme} key={key}>
             <MenuItem key={key}>
               <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)} key={key}/>
@@ -221,10 +225,15 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { value, } = this.state;
     if (value && value[ key ]) {
       delete value[ key ];
-      this.setState({ value, }, () => {
-        this.adaptiveItems(this.getOffSetWidth());
+      this.setState({ value, }, async () => {
+        await this.adaptiveItems(this.getOffSetWidth());
+        this.onChange(this.valueArray.join(','), this.displayValueArray.join(','));
       });
     }
+  };
+  onChange = (value: string, displayValue: string) => {
+    const { onChange, } = this.props;
+    onChange && onChange({ value, displayValue, });
   };
 
   oldWidth: number;
@@ -257,11 +266,15 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   needMoreItem: boolean;
+  valueArray: Array<string>;
+  displayValueArray: Array<string>;
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
     const items = [];
     this.needMoreItem = false;
     const { value, } = this.state;
+    this.valueArray = [];
+    this.displayValueArray = [];
     if (value) {
       listWidth -= 20;
       let totalWidth = 0;
@@ -273,10 +286,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         const { text, } = value[ key ];
         const fontWidth = await this.getFontWidth(text);
         totalWidth += fontWidth + ItemMarginRight;
-
         if (totalWidth >= listWidth) {
           break;
         }
+        this.valueArray.push(key);
+        this.displayValueArray.push(text);
 
         items.push(<Item key={key} onCloseClick={this.onDelItem.bind(this, key)}>{text}</Item>);
       }

@@ -78,7 +78,7 @@ describe('InputTag', () => {
     });
     it('展现值&实际值 3个只能容纳一个' + caseTitle, async () => {
       let i = 0;
-      const val = [ 5, 1000, 1000, ];
+      const val = [5, 1000, 1000,];
       const getFontWidth = () => {
         return val[ i++ ];
       };
@@ -99,6 +99,13 @@ describe('InputTag', () => {
 
 
   it('完全显示3个 , 点击第一个的删除图标', async () => {
+    let InputTagTest;
+    const onChangePromise = new Promise(resolve => {
+      const onChange = (v: Object) => {
+        resolve(v);
+      };
+      InputTagTest = createInputTagTest({ displayValue, value, onChange, });
+    });
     const result = new Promise(async resolve => {
 
       await renderInputTag(InputTagTest, 5, async cmp => {
@@ -117,7 +124,8 @@ describe('InputTag', () => {
         });
       });
     });
-    await result;
+    await  result;
+    exp(await  onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
   });
 
   function findFontItem (cmp) {
@@ -149,4 +157,5 @@ describe('InputTag', () => {
     mockInputTagPrototye.resetAll();
   }
 
-});
+})
+;
