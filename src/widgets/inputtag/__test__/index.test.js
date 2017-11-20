@@ -98,7 +98,7 @@ describe('InputTag', () => {
   }
 
 
-  it('测试点击X时，删除对应的Item', async () => {
+  it('完全显示3个 , 点击第一个的删除图标', async () => {
     const result = new Promise(async resolve => {
 
       await renderInputTag(InputTagTest, 5, async cmp => {
