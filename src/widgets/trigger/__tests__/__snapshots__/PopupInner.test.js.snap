@@ -2,8 +2,11 @@
 
 exports[`ContentBox default visible: false, children: 1 1`] = `
 .c0 {
-  display: inherit;
-  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  border-radius: 4px;
+  box-sizing: border-box;
   left: -9999px;
   top: -9999px;
   z-index: 1051;
@@ -22,8 +25,11 @@ exports[`ContentBox default visible: false, children: 1 1`] = `
 
 exports[`ContentBox default visible: true, children: 1 1`] = `
 .c0 {
-  display: inherit;
-  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  border-radius: 4px;
+  box-sizing: border-box;
   left: -9999px;
   top: -9999px;
   z-index: 1051;
@@ -41,13 +47,12 @@ exports[`ContentBox default visible: true, children: 1 1`] = `
 `;
 
 exports[`ContentBox default visible: true, children: 2 1`] = `
-.c1 {
-  display: inherit;
-}
-
 .c0 {
-  display: inherit;
-  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  border-radius: 4px;
+  box-sizing: border-box;
   left: -9999px;
   top: -9999px;
   z-index: 1051;
@@ -59,7 +64,7 @@ exports[`ContentBox default visible: true, children: 2 1`] = `
   onMouseLeave={undefined}
 >
   <div
-    className="c1"
+    className=""
   >
     <span>
       a
@@ -72,13 +77,12 @@ exports[`ContentBox default visible: true, children: 2 1`] = `
 `;
 
 exports[`ContentBox default visible:false, children: 2 1`] = `
-.c1 {
-  display: inherit;
-}
-
 .c0 {
-  display: inherit;
-  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  border-radius: 4px;
+  box-sizing: border-box;
   left: -9999px;
   top: -9999px;
   z-index: 1051;
@@ -90,7 +94,7 @@ exports[`ContentBox default visible:false, children: 2 1`] = `
   onMouseLeave={undefined}
 >
   <div
-    className="c1"
+    className=""
   >
     <span>
       a

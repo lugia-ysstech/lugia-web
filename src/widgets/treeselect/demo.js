@@ -5,10 +5,11 @@
  * @flow
  */
 import * as React from 'react';
-import TreeSelect from './';
+import Theme from '../theme/index';
+import TreeSelect from './index';
+import * as Widget from '../consts/Widget';
 
-
-const rowData = [
+const rowData: Array<Object> = [
   { key: '1', title: '1', },
   { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
@@ -47,5 +48,8 @@ const rowData = [
 
 
 export default () => {
-  return <TreeSelect data={rowData}/>;
+  const config = { [ Widget.TreeSelect ]: { width: 300, }, };
+  return <Theme config={config}>
+    <TreeSelect data={rowData}/>
+  </Theme>;
 };

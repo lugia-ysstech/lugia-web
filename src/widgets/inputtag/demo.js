@@ -13,9 +13,9 @@ import * as Widget from '../consts/Widget';
 const InputDemo = () => {
 
   return [
-    <Theme config={{ [Widget.InputTag]: { width: 50, }, }}>
-      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={{ a: { text: 'asdfasfasdfadsfqreqwrqwadsfasfqweerqwrqwerqwrqwreqwrqwrqwrqwa', }, }}/>
+    <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
+      <InputTag
+        value="1,2,3" displayValue="a,b,c,"/>
     </Theme>,];
 };
 export default InputDemo;

@@ -15,6 +15,7 @@ import '../css/sv.css';
 import './index.css';
 import TreeUtils from './utils';
 import 'babel-polyfill';
+import styled from 'styled-components';
 
 const menuItemHeight = 18;
 type RowData = {
@@ -25,6 +26,19 @@ type RowData = {
   path?: string,
   isLeaf?: boolean,
 };
+
+const getTop = props => props.top;
+const getWidth = props => {
+  const { theme = {}, } = props;
+  const { width, } = theme;
+
+  return width ? `width:${props.theme.width}px;` : 'width: 100%';
+};
+const WrapRcTree = styled(RcTree)`
+  position: relative;
+  top: ${getTop}px;
+  ${getWidth}
+`;
 
 class ScrollerTree extends React.Component<any, any> {
 
@@ -47,33 +61,34 @@ class ScrollerTree extends React.Component<any, any> {
     const {
       prefixCls,
       className,
-      showLine,
-      mutliple,
       data,
-      start,
-      end,
-      onExpand,
-      utils,
-      onSelect,
-      id2ExtendInfo,
     } = this.props;
-    const classString = classNames({
-      [`${prefixCls}-show-line`]: !!showLine,
-    }, className);
+    const classString = classNames(
+      `${prefixCls}-show-line`, className);
     if (data) {
+      const {
+        mutliple,
+        start,
+        end,
+        onExpand,
+        utils,
+        onSelect,
+        getTheme,
+        id2ExtendInfo,
+      } = this.props;
       const { rows, parentCount, } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
-
       const top = -parentCount * 17;
       const treeNodes = this.loopNode(nodes);
-      return <RcTree {...this.props}
-                     onSelect={onSelect}
-                     style={{ position: 'relative', top: `${top}px`, }}
-                     className={classString}
-                     onExpand={onExpand}
-                     checkable={mutliple ? <span className={`${prefixCls}-checkbox-inner`}/> : mutliple}>
+      return <WrapRcTree {...this.props}
+                         onSelect={onSelect}
+                         top={top}
+                         theme={getTheme()}
+                         className={classString}
+                         onExpand={onExpand}
+                         checkable={mutliple ? <span className={`${prefixCls}-checkbox-inner`}/> : mutliple}>
         {treeNodes}
-      </RcTree>;
+      </WrapRcTree>;
     }
 
 

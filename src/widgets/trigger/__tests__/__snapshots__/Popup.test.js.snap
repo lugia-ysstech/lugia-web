@@ -3,7 +3,7 @@
 exports[`Popup Popup snapshot 1`] = `
 Array [
   undefined,
-  <sv.widget.Align
+  <sv_widget_Align
     align="bottom"
     autoResize={true}
     getTargetDom={[Function]}
@@ -13,6 +13,7 @@ Array [
     visible={true}
 >
     <PopupInner
+        getTheme={[Function]}
         onMouseEnter={undefined}
         onMouseLeave={undefined}
         style={Object {}}
@@ -20,6 +21,6 @@ Array [
     >
          
     </PopupInner>
-</sv.widget.Align>,
+</sv_widget_Align>,
 ]
 `;

@@ -10,6 +10,7 @@ import ContentBox from './ContentBox';
 
 type PopupProps = {
   offsetX: number,
+  getTheme: Function,
   offsetY: number,
   visible: boolean,
   onAlign?: Function,
@@ -31,6 +32,9 @@ class Popup extends React.Component<PopupProps> {
     visible: true,
     isMask: false,
     align: 'bottom',
+    getTheme () {
+      return {};
+    },
   };
   savePopupRef: Function;
   saveAlignRef: Function;
@@ -77,6 +81,7 @@ class Popup extends React.Component<PopupProps> {
       children,
       offsetX,
       offsetY,
+      getTheme,
     } = props;
 
     const hidden = !visible;
@@ -89,6 +94,7 @@ class Popup extends React.Component<PopupProps> {
       onMouseEnter,
       onMouseLeave,
       style: newStyle,
+      getTheme,
     };
 
     const inner = destroyPopupOnHide && hidden ? null : <Align

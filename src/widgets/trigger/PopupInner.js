@@ -7,7 +7,13 @@ import ContentBox from './ContentBox';
 import VisibleBox from '../common/VisibleBox';
 import { ZIndex, } from '../common/MaskBox';
 
+const getWidth = props => {
+  const { theme = {}, } = props;
+  const { width, } = theme;
+  return `width: ${width ? `${width}px;` : '100%;'}`;
+};
 const PopupInnerBox = VisibleBox.extend`
+  ${getWidth}
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
   border-radius: 4px;
@@ -18,6 +24,7 @@ const PopupInnerBox = VisibleBox.extend`
 `;
 
 type PopupInnerProps = {
+  getTheme: Function,
   visible: boolean,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
@@ -27,13 +34,17 @@ type PopupInnerProps = {
 class PopupInner extends React.Component<PopupInnerProps> {
   static defaultProps = {
     visible: true,
+    getTheme () {
+      return {};
+    },
   };
 
   render () {
-    const { visible, onMouseEnter, onMouseLeave, children, } = this.props;
+    const { visible, onMouseEnter, onMouseLeave, children, getTheme, } = this.props;
     return (
       <PopupInnerBox
         visible={visible}
+        theme={getTheme()}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >

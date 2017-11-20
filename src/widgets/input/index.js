@@ -1,4 +1,4 @@
- //@flow
+//@flow
 
 import Support from '../common/FormFieldWidgetSupport';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -31,7 +31,11 @@ type InputProps = {|
   defaultValue?: string,
   value?: string
 |};
-
+const getWidth = props => {
+  const { theme = {}, } = props;
+  const { width, } = theme;
+  return `width:${width ? width + 'px' : '100%'};`;
+};
 const CommonInputStyle = styled.input`
   border-radius: ${RadiusSize};
   border: 1px solid ${InputBorderColor};
@@ -43,8 +47,7 @@ const CommonInputStyle = styled.input`
   padding: 2px 3px;
   font-family: inherit;
   margin: 0;
-  ${props => (props.theme.width ? `width: ${props.theme.width}px` : '')};
-
+  ${getWidth}
   &:hover {
     border-color: ${InputBorderHoverColor};
   }
@@ -61,7 +64,7 @@ const CommonInputStyle = styled.input`
 
 const InputContainer = styled.span`
   position: relative;
-  ${props => (props.theme.width ? `width: ${props.theme.width}px` : '')};
+  ${getWidth}
   display: inline-block;
   background-color: #fff;
 `;

@@ -4,7 +4,6 @@
  *
  * @flow
  */
-import Support from '../common/FormFieldWidgetSupport';
 
 import * as React from 'react';
 import styled from 'styled-components';
@@ -28,8 +27,10 @@ type ValuItem = {
 }
 type InputTagProps = {
   getTheme: Function,
-  value?: Object,
+  value?: string,
+  displayValue?: string,
   defaultValue?: Object,
+  onClick?: Function,
 };
 type InputTagState = {
   items: Array<React.Node>,
@@ -108,25 +109,37 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   constructor (props: InputTagProps) {
     super(props);
-    const { value, defaultValue, } = props;
     this.state = {
       items: [],
-      value: Support.getObjectValue({
-        value,
-        defaultValue,
-      }),
+      value: this.fetchValueObject(),
     };
+  }
+
+  fetchValueObject (): Object {
+    const result = {};
+    const { value = '', displayValue = '', } = this.props;
+    const valArray = value.split(',');
+    const valLen = valArray.length;
+    const displayValArray = displayValue.split(',');
+    for (let i = 0; i < valLen; i++) {
+      const val = valArray[ i ];
+      if (val !== '') {
+        const displayVal = displayValArray[ i ];
+        result[ val ] = { text: displayVal ? displayVal : '', };
+      }
+    }
+    return result;
   }
 
   render () {
     const { items, } = this.state;
     const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
-
+    console.info('render items.length', items.length);
     const result = (
-      <Container className="sv" theme={this.props.getTheme()} innerRef={cmp => this.container = cmp}>
+      <Container className="sv" theme={this.props.getTheme()} innerRef={cmp => this.container = cmp}
+                 onClick={this.onClick}>
         <OutContainer>
           <InnerContainer theme={this.props.getTheme()}>
-            {/*<PlaceContainer>气你输入</PlaceContainer>*/}
             <List innerRef={cmp => this.list = cmp}>
               <FontItem ref={fillFontItem}/>
               {items}
@@ -155,9 +168,18 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return result;
   }
 
+  getFontWidth (text: string): number {
+    return this.fontItem.getWidth(text);
+  }
+
+  onClick = (e: Object) => {
+    const { onClick, } = this.props;
+    onClick && onClick(e);
+  };
+
   getItems () {
     const theme = {
-      [Widget.Icon]: {  hoverColor: 'red', },
+      [Widget.Icon]: { hoverColor: 'red', },
     };
     const { value, } = this.state;
     const items = [];
@@ -167,9 +189,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       for (let i = 0; i < valueLen; i++) {
         const key = keys[ i ];
         const { text, } = value[ key ];
-        items.push(<Theme config={theme}>
+        items.push(<Theme config={theme} key={key}>
             <MenuItem key={key}>
-              <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)}/>
+              <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)} key={key}/>
               {text}
             </MenuItem>
           </Theme>
@@ -235,12 +257,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       for (let i = 0; i < valueLen; i++) {
         const key = keys[ i ];
         const { text, } = value[ key ];
-        totalWidth += await this.fontItem.getWidth(text) + ItemMarginRight;
+        totalWidth += await this.getFontWidth(text) + ItemMarginRight;
         if (totalWidth >= listWidth) {
           break;
         }
         items.push(<Item key={key} onCloseClick={this.onDelItem.bind(this, key)}>{text}</Item>);
       }
+      console.info('items.length', items.length);
       if (valueLen !== items.length) {
         this.needMoreItem = true;
       }
@@ -254,7 +277,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getMoreItem () {
-    return <MoreItem items={this.props.value} onClick={this.onMoreClick}/>;
+    return <MoreItem items={this.props.value} onClick={this.onMoreClick} key="sv_more_item"/>;
   }
 
   onMoreClick = () => {

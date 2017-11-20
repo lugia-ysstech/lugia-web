@@ -93,7 +93,6 @@ exports[`ContentBox mask: true, children: more, visible: false 1`] = `
 
 exports[`ContentBox mask: true, visible: true, children: only one 1`] = `
 .c0 {
-  display: inherit;
   position: fixed;
   top: 0;
   right: 0;

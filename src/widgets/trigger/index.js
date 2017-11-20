@@ -5,10 +5,12 @@
  * @flow
  */
 import * as React from 'react';
-import { createPortal, findDOMNode, } from 'react-dom';
+import { findDOMNode, } from 'react-dom';
 import contains from 'rc-util/lib/Dom/contains';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
+import ThemeProvider from '../common/ThemeProvider';
+import * as Widget from '../consts/Widget';
 
 function noop () {
 }
@@ -34,6 +36,7 @@ const ALL_HANDLERS: Array<EventName> = ['onClick',
 
 
 type TriggerProps = {
+  getTheme: Function,
   onClick?: Function,
   onMouseDown?: Function,
   onTouchStart?: Function,
@@ -86,6 +89,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     align: 'left',
     showAction: [],
     hideAction: [],
+    getTheme () {
+      return {};
+    },
   };
 
   handlers: {
@@ -123,7 +129,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   getContainer () {
     const { getPopupContainer, getDocument, } = this.props;
     const popupContainer = document.createElement('div');
-    popupContainer.style.position = 'absolute';
+    popupContainer.style.position = 'releative';
     popupContainer.style.top = '0';
     popupContainer.style.left = '0';
     popupContainer.style.width = '100%';
@@ -143,6 +149,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       mask,
       zIndex,
       align,
+      getTheme,
     } = props;
     const mouseProps = {};
     if (this.isMouseEnterToShow()) {
@@ -153,6 +160,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
     return (
       <Popup
+        getTheme={getTheme}
         key="popup"
         offsetX={offsetX}
         offsetY={offsetY}
@@ -469,4 +477,5 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 }
 
-export default Trigger;
+export default ThemeProvider(Trigger, Widget.Trigger);
+

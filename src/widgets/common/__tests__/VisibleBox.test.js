@@ -12,7 +12,6 @@ describe('VisibleBox', () => {
   it('visible  is true', () => {
     const visibleBox = renderer.create(<VisibleBox visible></VisibleBox>).toJSON();
     expect(visibleBox).toMatchSnapshot();
-    expect(visibleBox).toHaveStyleRule('display', 'inherit');
 
   });
 

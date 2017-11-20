@@ -8,15 +8,8 @@ import React from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
 import { ItemContainer, ItemText, } from './ItemTag';
+import * as Widget from '../consts/Widget';
 
-const Text = styled.span`
-  height: 20px;
-  line-height: 20px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin: 0;
-  padding: 0;
-`;
 const CloseButton = styled.span`
   font-size: 14px;
   color: rgba(0, 0, 0, 0.47);
@@ -35,12 +28,13 @@ type ItemProps = {
   onClick?: Function,
   onCloseClick?: Function
 };
+
 type ItemState = {};
 export default class  extends React.Component<ItemProps, ItemState> {
   list: Object;
   item: ?HTMLElement;
   width: number;
-
+  static displayName = Widget.InputTagItem;
   render () {
     const { className, closeable = true, onClick, onCloseClick,} = this.props;
     return (

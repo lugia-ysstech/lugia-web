@@ -30,7 +30,6 @@ type TreeProps = {
   start: number,
   end: number,
   query: string,
-  showLine?: boolean;
   /** 是否支持多选 */
   mutliple?: boolean;
   /** 默认展开所有树节点 */

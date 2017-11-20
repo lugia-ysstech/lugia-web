@@ -5,59 +5,44 @@ import chai from 'chai';
 import 'jest-styled-components';
 import Enzyme, { mount, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import renderer from 'react-test-renderer';
 import Theme from '../../theme';
-import * as Widget from '../../consts/Widget';
+import { createTestComponent, } from 'sv-test-utils';
+import * as Widgets from '../../consts/Widget';
+
+const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
 
 Enzyme.configure({ adapter: new Adapter(), });
 
 const { expect: exp, } = chai;
 
 describe('InputTag', () => {
-  it('InputTag items: 3 item,  can see  3', () => {
-    expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }} key="1">
-      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={{ a: { text: 'a', }, b: { text: 'b', }, c: { text: 'c', }, }}/>
-    </Theme>).toJSON()).toMatchSnapshot();
 
+  it('展现值&实际值', () => {
+    const displayValue = '常,乐,我,净';
+    const value = '1,2,3';
+
+    class InputTagTest extends React.Component<any, any> {
+      inputtag: any;
+
+      render () {
+        return <Theme config={{ [Widgets.InputTag]: { width: 300, }, }} {...this.props}>
+          <InputTag value={value}
+                    ref={cmp => this.inputtag = cmp}
+                    displayValue={displayValue}/></Theme>;
+      }
+    }
+
+    const Target = createTestComponent(InputTagTest, target => {
+      const mock = mockObject.create(target.inputtag.target);
+      target.inputtag.target.getFontWidth('11').then(v => console.info(v));
+      // console.info(target.inputtag.target.getFontWidth('11'));
+      mock.mockFunction('getFontWidth').forever(5);
+    });
+
+    const cmp = mount(<Target/>);
+    cmp.setProps({ hello: 1, });
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(Widgets.InputTagItem).length).to.be.equal(3);
   });
-  it('InputTag items: 3 item,  can see  1', () => {
-    expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
-      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={{ a: { text: '12345678901234', }, b: { text: 'b', }, c: { text: 'c', }, }}/>
-
-    </Theme>).toJSON()).toMatchSnapshot();
-
-  });
-  it('InputTag items: 3 item,  can see  1 more item', () => {
-    expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
-      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={{ a: { text: 'abcdeddfasdddfadasf', }, b: { text: 'b', }, c: { text: 'c', }, }}/>
-    </Theme>).toJSON()).toMatchSnapshot();
-
-  });
-  it('InputTag items: 1 item,  can see  1', () => {
-    expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
-      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={{ a: { text: 'abcdeddfasdddfadasf', }, b: { text: 'b', }, c: { text: 'c', }, }}/>
-
-    </Theme>).toJSON()).toMatchSnapshot();
-
-  });
-  it('InputTag items: 1 item,  can see  0', () => {
-    expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
-      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={{ a: { text: '123456789012345676890780dfasfasfa', }, }}/>
-    </Theme>).toJSON()).toMatchSnapshot();
-
-  });
-  it('InputTag items: 3 item,  can see  0', () => {
-    expect(renderer.create(<Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
-      <InputTag prefix={<i>11</i>} suffix={<i>12</i>}
-                value={{ a: { text: '123456789012345676890780', }, b: { text: 'b', }, c: { text: 'c', }, }}/>
-    </Theme>).toJSON()).toMatchSnapshot();
-
-  });
-
-
 });

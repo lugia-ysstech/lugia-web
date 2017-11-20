@@ -4,7 +4,7 @@
  */
 import * as React from 'react';
 import PropTypes from 'prop-types';
-
+import * as Widgets from '../consts/Widget';
 type ProviderComponent = React.ComponentType<any> & { displayName: ?string };
 const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {
 
@@ -18,7 +18,6 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
         const result = config[ viewClass ];
         return result ? result : {};
       };
-      Target.displayName = `ThemeWrapWidget[${widgetName}]`;
       return <Target {...this.props} getTheme={getTheme} ref={cmp => this.target = cmp}></Target>;
     }
   }
@@ -27,7 +26,7 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
   ThemeWrapWidget.contextTypes = {
     config: PropTypes.object,
   };
-  ThemeWrapWidget.displayName = 'ThemeWrapWidget';
+  ThemeWrapWidget.displayName = Widgets.ThemeWrapWidget;
   return ThemeWrapWidget;
 };
 export default ThemeProvider;

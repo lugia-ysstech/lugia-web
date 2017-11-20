@@ -12,6 +12,7 @@ exports[`Input props: null 1`] = `
   padding: 2px 3px;
   font-family: inherit;
   margin: 0;
+  width: 100%;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
