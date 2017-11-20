@@ -57,18 +57,21 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   trigger: ?Object;
 
   render () {
-    const { menus, children, action, hideAction,} = this.props;
-    const menuConfig = { [Widget.Menu]: { width: this.state.trigerWidth, }, };
-    return <Trigger
+    const { menus, children, action, hideAction, } = this.props;
+    const menuConfig = {
+      [Widget.Menu]: { width: this.state.trigerWidth, },
+      [Widget.Trigger]: { width: this.state.trigerWidth, },
+    };
+    return <Theme config={menuConfig}> <Trigger
       ref={cmp => this.trigger = cmp}
       align="bottomLeft"
       action={action}
       hideAction={hideAction}
       popup={
-        <MenuContainer><Theme config={menuConfig}>{menus}</Theme></MenuContainer>
+        <MenuContainer>{menus}</MenuContainer>
       }>
       {children}
-    </Trigger>;
+    </Trigger></Theme>;
   }
 
   componentDidMount () {
