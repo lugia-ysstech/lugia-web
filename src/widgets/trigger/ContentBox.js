@@ -20,7 +20,8 @@ class ContentBox extends React.Component<ContentBoxProps> {
   };
 
   shouldComponentUpdate (nextProps: ContentBoxProps) {
-    return nextProps.visible !== this.props.visible;
+    return nextProps.visible !== this.props.visible
+      || nextProps.children !== this.props.children;
   }
 
   render () {

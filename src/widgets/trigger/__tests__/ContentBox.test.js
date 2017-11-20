@@ -6,8 +6,11 @@ import 'jest-styled-components';
 import VisibleBox from '../../common/VisibleBox';
 import MaskBox from '../../common/MaskBox';
 import ContentBox from '../ContentBox';
+import Enzyme, { mount, } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
 const { expect: exp, } = chai;
+Enzyme.configure({ adapter: new Adapter(), });
 
 describe('ContentBox', () => {
 
@@ -65,4 +68,16 @@ describe('ContentBox', () => {
     expect(contentBox).toHaveStyleRule('display', 'none');
   });
 
+  it('children变化时组件要更新视图', () => {
+
+    const txt = '我心';
+    const cmp = mount(<ContentBox>
+      <div>{txt}</div>
+    </ContentBox>);
+    exp(cmp.text()).to.be.equal(txt);
+    const textTwo = '全中国';
+    cmp.setProps({ children: <div>{textTwo}</div>, });
+    exp(cmp.text()).to.be.equal(textTwo);
+
+  });
 });
