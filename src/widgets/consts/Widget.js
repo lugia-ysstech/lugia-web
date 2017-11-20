@@ -9,6 +9,7 @@ export const Align = 'sv_widget_Align';
 export const Trigger = 'sv_widget_Trigger';
 export const InputTag = 'sv_widget_InputTag';
 export const InputTagItem = 'sv_widget_InputTagItem';
+export const FontItem = 'sv_widget_FontItem';
 export const MoreInputTagItem = 'sv_widget_MoreInputTagItem';
 export const ThemeWrapWidget = 'ThemeWrapWidget';
 export const Theme = 'sv_widget_Theme';

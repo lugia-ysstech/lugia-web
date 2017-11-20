@@ -29,7 +29,6 @@ type InputTagProps = {
   getTheme: Function,
   value?: string,
   displayValue?: string,
-  defaultValue?: Object,
   onClick?: Function,
 };
 type InputTagState = {
@@ -61,6 +60,7 @@ const OutContainer = styled.div`
 
 const marginLeft = 5;
 const marginRight = 7;
+const separator = ',';
 
 const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
@@ -118,9 +118,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   fetchValueObject (): Object {
     const result = {};
     const { value = '', displayValue = '', } = this.props;
-    const valArray = value.split(',');
+    const valArray = value.split(separator);
     const valLen = valArray.length;
-    const displayValArray = displayValue.split(',');
+    const displayValArray = displayValue.split(separator);
     for (let i = 0; i < valLen; i++) {
       const val = valArray[ i ];
       if (val !== '') {
@@ -149,8 +149,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     );
     if (this.needMoreItem) {
 
+      const config = { width: this.getWidth(), };
       const theme = {
-        [Widget.DropMenu]: { width: this.getWidth(), },
+        [Widget.DropMenu]: config,
+        [Widget.Trigger]: config,
       };
 
       return <Theme config={theme}>
@@ -284,7 +286,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   onMoreClick = () => {
     if (this.dropMenu && this.dropMenu.target && this.dropMenu.target.trigger) {
-      this.dropMenu.target.trigger.setPopupVisible(true);
+      this.dropMenu.target.trigger.target.setPopupVisible(true);
     }
   };
 

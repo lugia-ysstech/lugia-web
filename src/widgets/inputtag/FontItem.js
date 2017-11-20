@@ -7,12 +7,15 @@
 import React from 'react';
 import Item from './Item';
 import { hidden, } from './css.css';
+import * as Widget from '../consts/Widget';
 
 
 type FontItemState = {
   text: string,
 }
 export default class  extends React.Component<any, FontItemState> {
+  static displayName = Widget.FontItem;
+
   state: FontItemState;
   width: number;
   item: ?Item;
