@@ -9,16 +9,31 @@ import Menu from './';
 import Theme from '../theme';
 import * as Widget from '../consts/Widget';
 
+const items = [];
+
 const { MenuItem, } = Menu;
-export default () => {
-  const items = [];
-  for (let i = 0; i < 20000; i++) {
-    items.push(<MenuItem key={i}>{i}</MenuItem>);
+for (let i = 0; i < 20; i++) {
+  items.push(<MenuItem key={i}>{i}</MenuItem>);
+}
+let i = 0;
+export default class extends React.Component<any, any> {
+  constructor (props: any) {
+    super(props);
+    this.state = { items: [], };
   }
-  return <div>
-    <div>hello world</div>
-    <Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }} ><Menu mutliple>
-      {items}
-    </Menu></Theme>
-  </div>;
-};
+
+  render () {
+    const { items = [], } = this.state;
+    return <div>
+      <button onClick={this.onClick}>test</button>
+      <Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }}><Menu mutliple>
+        {items}
+      </Menu></Theme>
+    </div>;
+  }
+
+  onClick = () => {
+
+    this.setState({ items: items.slice(i++), });
+  }
+}
