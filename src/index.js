@@ -5,11 +5,13 @@ import 'core-js/es6/string';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactServer from 'react-dom/server';
 
-import App from './widgets/scroller/demo';
+import App from './widgets/inputtag/demo';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
+console.info(ReactServer.renderToString(<App/>));
 const root = document.getElementById('root');
 if (root) {
 

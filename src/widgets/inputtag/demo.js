@@ -10,12 +10,20 @@ import InputTag from './';
 import Theme from '../theme';
 import * as Widget from '../consts/Widget';
 
+const valArr = [],
+  dispArr = [];
+for (let i = 0; i < 100000; i++) {
+  valArr.push('k' + i);
+  dispArr.push('v' + i);
+}
+const val = valArr.join(',');
+const disp = dispArr.join(',');
 const InputDemo = () => {
 
   return [
     <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
       <InputTag
-        value="1,2,3" displayValue="a,b,c,"/>
+        value={val} displayValue={disp}/>
     </Theme>,];
 };
 export default InputDemo;

@@ -1,4 +1,4 @@
-/**
+  /**
  *
  * create by ligx
  *
@@ -10,10 +10,8 @@ import Theme from '../theme';
 import * as Widget from '../consts/Widget';
 
 const items = [];
-
-const { MenuItem, } = Menu;
-for (let i = 0; i < 20; i++) {
-  items.push(<MenuItem key={i}>{i}</MenuItem>);
+for (let i = 0; i < 100000; i++) {
+  items.push({ key: i, value: i, });
 }
 let i = 0;
 export default class extends React.Component<any, any> {
@@ -26,9 +24,10 @@ export default class extends React.Component<any, any> {
     const { items = [], } = this.state;
     return <div>
       <button onClick={this.onClick}>test</button>
-      <Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }}><Menu mutliple>
-        {items}
-      </Menu></Theme>
+      <Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }}>
+        <Menu single data={items}>
+        </Menu>
+      </Theme>
     </div>;
   }
 
@@ -36,4 +35,5 @@ export default class extends React.Component<any, any> {
 
     this.setState({ items: items.slice(i++), });
   }
+
 }

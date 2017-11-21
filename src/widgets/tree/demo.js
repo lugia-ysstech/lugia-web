@@ -115,10 +115,10 @@ class MutlipleTree extends React.Component<Object, Object> {
       showLine
       data={rowData}
       mutliple
+      onlySelectLeaf
       onSelect={onSelect}
       onChange={this.onTreeChange}
       onCheck={onCheck}
-      value="1"
       // onlySelectLeaf
     >
     </Tree>,
@@ -152,7 +152,7 @@ class SingleTree extends React.Component<Object, Object> {
       onSelect={onSelect}
       onChange={this.onTreeChange}
       onCheck={onCheck}
-      defaultValue="1"
+      // defaultValue="1"
       // onlySelectLeaf
     >
     </Tree>,
@@ -168,6 +168,30 @@ class SingleTree extends React.Component<Object, Object> {
 
 }
 
+class LimitTree extends React.Component<Object, Object> {
+  constructor (props) {
+    super(props);
+    const { value, } = props;
+    this.state = { value, };
+  }
+
+  render () {
+    const { value, } = this.state;
+    console.info(value);
+    return [<Tree
+      value={value}
+      expandAll
+      {...this.props}
+    >
+    </Tree>, <button onClick={this.onClick}></button>,];
+  }
+
+  onClick = () => {
+    console.info('aa');
+    this.setState({ value: '1.1', });
+  }
+}
+
 export default () => {
-  return [<MutlipleTree key="mutliple"/>,];
+  return [<MutlipleTree key="mutliple"/>, <LimitTree data={rowData}/>,];
 };
