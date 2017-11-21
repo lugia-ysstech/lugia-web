@@ -19,9 +19,28 @@ class Theme extends React.Component<PropsType, StateType> {
     config: {},
   };
   static displayName = Widget.Theme;
+  svThemeConfigTree: Object;
+
+  constructor (props: PropsType, context: Object) {
+    super(props);
+    this.updateTreeConfig(props, context);
+  }
+  componentWillReceiveProps(nextProps:PropsType, context: Object ){
+    this.updateTreeConfig(nextProps, context);
+  }
+
+  updateTreeConfig (props: PropsType, context: Object) {
+    const { config, svThemeConfigTree, } = context;
+    this.svThemeConfigTree = Object.assign({}, svThemeConfigTree, config, props.config);
+  }
 
   getChildContext (): Object {
-    return { config: this.props.config, };
+    const { props, } = this;
+    const { config, } = props;
+    return {
+      config,
+      svThemeConfigTree: this.svThemeConfigTree,
+    };
   }
 
   render () {
@@ -32,6 +51,11 @@ class Theme extends React.Component<PropsType, StateType> {
 
 Theme.childContextTypes = {
   config: PropTypes.object,
+  svThemeConfigTree: PropTypes.object,
+};
+Theme.contextTypes = {
+  config: PropTypes.object,
+  svThemeConfigTree: PropTypes.object,
 };
 
 export default Theme;
