@@ -16,6 +16,8 @@ type MenuProps = {
   start: number,
   end: number,
   getTheme: Function,
+  getPrefix: Function,
+  getSuffix: Function,
   mutliple: boolean,
   children: Array<React.Element<typeof Item>>,
   data: Array<Object>,
@@ -76,19 +78,34 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return [];
   }
 
+  shouldComponentUpdate (nextProps: MenuProps, nextState: MenuState) {
+
+    const { props, state, } = this;
+    const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
+    if (dataChanged === true) {
+      return true;
+    }
+    return props.start !== nextProps.start
+      || state.selectedKeys !== nextState.selectedKeys;
+  }
+
+
   render () {
-    const { data, start, end,} = this.props;
+    const { data, start, end, } = this.props;
     let items = [];
     if (data && data.length > 0) {
       items = this.computeItems(data, start, end, (obj: Object) => {
         const { key, value, } = obj;
-        return <Item key={key}>{value}</Item>;
+        const { getPrefix, getSuffix, } = this.props;
+        const prefix = getPrefix && getPrefix(obj);
+        const suffix = getSuffix && getSuffix(obj);
+        return <Item key={key}>{prefix}{value}{suffix}</Item>;
       });
     } else {
       const { children, } = this.props;
 
       if (children && children.length > 0) {
-        items = this.computeItems(children,start, end,  (obj: Object) => obj);
+        items = this.computeItems(children, start, end, (obj: Object) => obj);
       }
     }
 
@@ -142,7 +159,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         } else {
           selectedKeys = [str,];
         }
-        this.setState({ selectedKeys, });
+        this.setState({ selectedKeys: [...selectedKeys,], });
       },
     };
   };

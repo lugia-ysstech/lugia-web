@@ -173,7 +173,7 @@ describe('Menu', () => {
 
     exp(cmp.find('.lgx_suffix').length).to.be.equal(10);
   });
-  
+
   it('props: data & getPrefix  ', () => {
     const items = [];
     for (let i = 0; i < 10; i++) {

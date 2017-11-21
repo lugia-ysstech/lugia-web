@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import styled from 'styled-components';
+import * as Widget from '../consts/Widget';
 
 type MenuItemProps = {
   checked: boolean,
@@ -81,6 +82,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     checked: false,
     mutliple: false,
   };
+  static displayName = Widget.MenuItem;
 
   render () {
     const { children, mutliple, checked, onClick, } = this.props;
