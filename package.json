@@ -11,8 +11,7 @@
     "react-dom": "16.0.0",
     "react-error-overlay": "1.0.9",
     "style-loader": "0.18.2",
-    "styled-components": "2.1.2",
-    "sv-test-utils": "0.1.2"
+    "styled-components": "2.1.2"
   },
   "author": "ysstech",
   "scripts": {
@@ -23,6 +22,7 @@
     "cover": "node scripts/test.js --env=jsdom  --coverage"
   },
   "devDependencies": {
+    "sv-test-utils": "^0.1.3",
     "sw-precache-webpack-plugin": "0.11.3",
     "url-loader": "0.5.9",
     "webpack": "2.6.1",
