@@ -3,7 +3,7 @@
 exports[`ThemeProvider ThemeProvider 1`] = `
 <span>
   <div>
-    {"value":"正念"}
+    {"value":"正念","svThemeConfigTree":{"ligx":{"value":"正念"}}}
     hello everyone
   </div>
 </span>

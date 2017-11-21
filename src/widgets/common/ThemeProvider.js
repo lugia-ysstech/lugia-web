@@ -5,6 +5,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import * as Widgets from '../consts/Widget';
+
 type ProviderComponent = React.ComponentType<any> & { displayName: ?string };
 const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {
 
@@ -13,18 +14,24 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
 
     render () {
       const getTheme = () => {
-        const { config = {}, } = this.context;
+        const { config = {}, svThemeConfigTree = {}, } = this.context;
         const { viewClass = widgetName, } = this.props;
-        const result = config[ viewClass ];
-        return result ? result : {};
+        let currConfig = config[ viewClass ];
+        if (!currConfig) {
+          currConfig = svThemeConfigTree[ viewClass ];
+        }
+        currConfig = currConfig ? currConfig : {};
+        return Object.assign({}, currConfig, { svThemeConfigTree, });
       };
-      return <Target {...this.props} getTheme={getTheme} ref={cmp => this.target = cmp}></Target>;
+      return <Target {...this.props} getTheme={getTheme}
+                     ref={cmp => this.target = cmp}></Target>;
     }
   }
 
 
   ThemeWrapWidget.contextTypes = {
     config: PropTypes.object,
+    svThemeConfigTree: PropTypes.object,
   };
   ThemeWrapWidget.displayName = Widgets.ThemeWrapWidget;
   return ThemeWrapWidget;
