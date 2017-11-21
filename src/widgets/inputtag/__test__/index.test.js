@@ -6,7 +6,7 @@ import 'jest-styled-components';
 import Enzyme, { mount, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Theme from '../../theme';
-import { createTestComponent, delay, } from 'sv-test-utils';
+import { delay, } from 'sv-test-utils';
 import * as Widgets from '../../consts/Widget';
 
 const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
@@ -128,6 +128,29 @@ describe('InputTag', () => {
     exp(await  onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
   });
 
+  it('点击更多按钮', async () => {
+    const result = new Promise(async resolve => {
+
+      await renderInputTag(InputTagTest, 5000, async cmp => {
+        // cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
+
+        const tagItems = findInputItem(cmp);
+        exp(tagItems.length).to.be.equal(2);
+        const moreItem = findMoreItem(cmp);
+        moreItem.simulate('click');
+        await delay(0, () => {
+          cmp.instance().forceUpdate();
+          cmp.update();
+          exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
+          exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
+          exp(cmp.find(Widgets.Icon).length).to.be.equal(3);
+          resolve(true);
+        });
+      });
+    });
+    await  result;
+  });
+
   function findFontItem (cmp) {
     return cmp.find(Widgets.FontItem);
   }
@@ -139,6 +162,7 @@ describe('InputTag', () => {
   function findInputItem (cmp) {
     return cmp.find(Widgets.InputTagItem);
   }
+
 
   async function renderInputTag (InputTagTest: Object, fontWidth: number | Function, callback: Function) {
     const mockInputTagPrototye = mockObject.create(_InputTag_.prototype);
