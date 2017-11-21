@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Menu DropMenu for demo 1`] = `"<div class=\\"sc-iwsKbI gkbffz\\"><div class=\\"sc-htoDjs fwixOC\\"><ul class=\\"sc-gZMcBi dzmiXx\\"><li class=\\"sc-bwzfXH iOijJX\\">0</li><li class=\\"sc-bwzfXH iOijJX\\">1</li><li class=\\"sc-bwzfXH iOijJX\\">2</li><li class=\\"sc-bwzfXH iOijJX\\">3</li><li class=\\"sc-bwzfXH iOijJX\\">4</li><li class=\\"sc-bwzfXH iOijJX\\">5</li><li class=\\"sc-bwzfXH iOijJX\\">6</li><li class=\\"sc-bwzfXH iOijJX\\">7</li></ul></div><div class=\\"sc-dnqmqq kNmwEr\\"><div class=\\"sc-ifAKCX byojse\\" style=\\"height:250px\\"><div class=\\"sc-gzVnrw izckeG\\" style=\\"height:179px;top:0px\\"></div></div></div></div>"`;
-
 exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 .c0 {
   outline: none;
@@ -296,5 +294,219 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
       d
     </li>
   </ul>
+</span>
+`;
+
+exports[`Menu children: items 1`] = `
+.c2 {
+  width: 200px;
+  outline: none;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  height: 250px;
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.c3 {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  height: 35px;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0,0,0,.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+.c3:hover {
+  background-color: #ecf6fd;
+}
+
+.c3:after {
+  font-family: "iconfont" !important;
+  text-rendering: optimizeLegibility;
+  content: "\\e73e";
+  color: transparent;
+  display: inline-block;
+  font-size: 14px;
+  -webkit-transform: scale(.83333333) rotate(0deg);
+  -ms-transform: scale(.83333333) rotate(0deg);
+  transform: scale(.83333333) rotate(0deg);
+  zoom: 1;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 8px;
+  font-weight: 700;
+  text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
+}
+
+.c3:hover:after {
+  color: #d0c8c8;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 250px;
+  width: 200px;
+  position: relative;
+}
+
+.c1 {
+  height: 250px;
+  width: 188px;
+  position: absolute;
+  display: inline-block;
+}
+
+.c4 {
+  height: 250px;
+  width: 188px;
+  position: absolute;
+  display: inline-block;
+  left: 188px;
+  width: 12px;
+}
+
+.c5 {
+  position: relative;
+  background: #e3e3e6;
+  width: 20px;
+  height: 300px;
+  border-radius: 5px;
+  z-index: 996;
+  width: 12px;
+}
+
+.c6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  background: #49a9ee;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  width: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.c6:hover {
+  background-color: #49a9ee96;
+}
+
+<span>
+  <div
+    className="c0"
+    onWheel={[Function]}
+  >
+    <div
+      className="c1"
+    >
+      <ul
+        className="c2"
+      >
+        <li
+          checked={false}
+          className="c3"
+          onClick={[Function]}
+        >
+          0
+        </li>
+        <li
+          checked={false}
+          className="c3"
+          onClick={[Function]}
+        >
+          1
+        </li>
+        <li
+          checked={false}
+          className="c3"
+          onClick={[Function]}
+        >
+          2
+        </li>
+        <li
+          checked={false}
+          className="c3"
+          onClick={[Function]}
+        >
+          3
+        </li>
+        <li
+          checked={false}
+          className="c3"
+          onClick={[Function]}
+        >
+          4
+        </li>
+        <li
+          checked={false}
+          className="c3"
+          onClick={[Function]}
+        >
+          5
+        </li>
+        <li
+          checked={false}
+          className="c3"
+          onClick={[Function]}
+        >
+          6
+        </li>
+        <li
+          checked={false}
+          className="c3"
+          onClick={[Function]}
+        >
+          7
+        </li>
+      </ul>
+    </div>
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+        onMouseDown={[Function]}
+        onMouseMove={[Function]}
+        onMouseOut={[Function]}
+        onMouseUp={[Function]}
+        onWheel={[Function]}
+        style={
+          Object {
+            "height": "250px",
+          }
+        }
+      >
+        <div
+          className="c6"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "height": "179px",
+              "top": "0px",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
 </span>
 `;
