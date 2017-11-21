@@ -33,6 +33,7 @@ const MenuContainer = styled.ul`
   ${props => (props.theme.width ? `width: ${props.theme.width}px;` : '')}
   outline: none;
   margin: 0;
+  user-select: none;
   padding-left: 0;
   list-style: none;
   height: ${height};
@@ -59,6 +60,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     },
   };
   static displayName = Widget.Menu;
+  isSelect: Function;
 
   constructor (props: MenuProps) {
     super(props);
@@ -66,6 +68,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       start: 0,
       selectedKeys: this.getSelectedKeys(),
     };
+    this.updateIsSelect(this.state, this.props);
   }
 
   getSelectedKeys (): Array<string> {
@@ -78,15 +81,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return [];
   }
 
-  shouldComponentUpdate (nextProps: MenuProps, nextState: MenuState) {
 
+  shouldComponentUpdate (nextProps: MenuProps, nextState: MenuState) {
     const { props, state, } = this;
     const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
-    if (dataChanged === true) {
-      return true;
+    const selectedChange = state.selectedKeys !== nextState.selectedKeys;
+
+    if (dataChanged || selectedChange) {
+      this.updateIsSelect(nextState, nextProps);
     }
-    return props.start !== nextProps.start
-      || state.selectedKeys !== nextState.selectedKeys;
+    return dataChanged ||
+      props.start !== nextProps.start
+      || selectedChange;
   }
 
 
@@ -103,7 +109,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       });
     } else {
       const { children, } = this.props;
-
       if (children && children.length > 0) {
         items = this.computeItems(children, start, end, (obj: Object) => obj);
       }
@@ -116,21 +121,21 @@ class Menu extends React.Component<MenuProps, MenuState> {
   computeItems (data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
     const items = [];
     for (let i = start; i < end; i++) {
-      items.push(this.renderMenuItem(getItem(data[ i ])));
+      items.push(this.renderMenuItem(getItem(data[ i ]), this.isSelect));
     }
     return items;
   }
 
 
-  renderMenuItem = (child: React.Element<typeof Item>) => {
+  renderMenuItem = (child: React.Element<typeof Item>, isSelect: Function) => {
     const { key, } = child;
-    return React.cloneElement(child, this.fetchExtendProps(key));
+    return React.cloneElement(child, this.fetchExtendProps(key, isSelect));
   };
 
-  fetchExtendProps (key?: null | number | string): MenuItemProps {
+  fetchExtendProps (key?: null | number | string, isSelect: Function): MenuItemProps {
     const { mutliple, } = this.props;
     const onClick = this.onMenuItemClick(key);
-    if (!key || !this.isSelect()(key)) {
+    if (!key || !isSelect(key)) {
       return { mutliple, ...onClick, checked: false, };
     }
     return { checked: true, mutliple, ...onClick, };
@@ -159,20 +164,26 @@ class Menu extends React.Component<MenuProps, MenuState> {
         } else {
           selectedKeys = [str,];
         }
-        this.setState({ selectedKeys: [...selectedKeys,], });
+        const keys = { selectedKeys: [...selectedKeys,], };
+        this.setState(keys);
       },
     };
   };
 
-  isSelect (): (number | string) => boolean {
+  updateIsSelect (state: MenuState, props: MenuProps) {
+    this.isSelect = this.createSelect(state, props);
+  }
+
+  createSelect = (state: MenuState, props: MenuProps) => {
     const existKey = {};
-    const { selectedKeys, } = this.state;
-    const { mutliple, } = this.props;
-    if (selectedKeys && selectedKeys.length > 0) {
+    const { selectedKeys, } = state;
+    const len = selectedKeys.length;
+    if (selectedKeys && len > 0) {
+      const { mutliple, } = props;
       if (mutliple) {
-        selectedKeys.forEach(key => {
-          existKey[ key ] = true;
-        });
+        for (let i = 0; i < len; i++) {
+          existKey[ selectedKeys[ i ] ] = true;
+        }
       } else {
         existKey[ selectedKeys[ selectedKeys.length - 1 ] ] = true;
       }

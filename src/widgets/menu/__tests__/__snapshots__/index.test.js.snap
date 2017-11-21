@@ -4,6 +4,10 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 .c0 {
   outline: none;
   margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding-left: 0;
   list-style: none;
   height: 250px;
@@ -148,6 +152,10 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 .c0 {
   outline: none;
   margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding-left: 0;
   list-style: none;
   height: 250px;
@@ -235,6 +243,10 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   width: 550px;
   outline: none;
   margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding-left: 0;
   list-style: none;
   height: 333px;
@@ -302,6 +314,10 @@ exports[`Menu children: items 1`] = `
   width: 200px;
   outline: none;
   margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding-left: 0;
   list-style: none;
   height: 250px;
