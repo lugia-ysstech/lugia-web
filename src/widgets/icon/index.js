@@ -29,6 +29,8 @@ type IconProps = {
 };
 
 class Icon extends React.Component<IconProps> {
+  static displayName = Widget.Icon;
+
   static defaultProps = {
     getTheme: () => {
       return {};
