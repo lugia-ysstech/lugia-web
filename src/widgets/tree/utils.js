@@ -858,7 +858,7 @@ class TreeUtils {
     }
 
     const { halfchecked, } = selectInfo;
-    const notHalfCheck = halfchecked[ key ] === undefined;
+    const notHalfCheck = !halfchecked[ key ];
 
     switch (type) {
       case TreeUtils.Selected: {
@@ -870,9 +870,9 @@ class TreeUtils {
       }
       case TreeUtils.UnSelected: {
 
-        const isHalfCheck = halfchecked[ key ] !== undefined;
-        if (isHalfCheck) {
-          halfchecked[ key ] = halfchecked[ key ] - childHalf;
+        const halfValue = halfchecked[ key ];
+        if (halfValue) {
+          halfchecked[ key ] = halfValue - childHalf;
         }
 
         if (notHalfCheck || halfchecked[ key ] <= 0) {
