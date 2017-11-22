@@ -164,7 +164,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const last = len - 1;
     const str = [];
     str.push('{');
-    for (let i = 1; i < len; i++) {
+    for (let i = 0; i < len; i++) {
       const oneValue = valArray[ i ];
       if (oneValue === 0 || oneValue) {
         if (i === last) {
@@ -192,10 +192,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     let result = this.getEmptyExpandInfo();
     if (this.isQueryAll(props)) {
       result = this.allExpandInfo;
-    } else {
-      this.createQueryTreeUtils(props);
     }
 
+    this.createQueryTreeUtils(props);
     this.getUtils(props).search(result, props.query);
     return result;
   }
