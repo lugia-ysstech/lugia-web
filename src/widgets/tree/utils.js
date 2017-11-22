@@ -659,7 +659,30 @@ class TreeUtils {
 
   }
 
-  selectDirNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
+  selectLeafNode (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
+    const { checked, } = selectInfo;
+
+    if (checked[ targetKey ]) {
+      return;
+    }
+
+    const targetRow = this.getRow(targetKey, id2ExtendInfo);
+    if (!targetRow) {
+      return;
+    }
+    checked[ targetKey ] = true;
+
+    const { begats = 0, } = this.fetchNodeExtendInfo(targetKey, this.treeData, id2ExtendInfo);
+    const childHalfCount = begats + 1;
+    if (childHalfCount > 0) {
+      const { halfchecked, } = selectInfo;
+      halfchecked[ targetKey ] = childHalfCount;
+    }
+    const { path, } = targetRow;
+    this.updateSelectedStatusForParent(path, selectInfo, childHalfCount, TreeUtils.Selected, id2ExtendInfo);
+  }
+
+  selectDirNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, isValue2SelectedInfo: boolean = false): void {
     const { checked, } = selectInfo;
     if (checked[ key ] === true) {
       return;
@@ -686,7 +709,9 @@ class TreeUtils {
     } else {
       halfchecked[ key ] = 1;
     }
-    value[ key ] = true;
+    if (!isValue2SelectedInfo) {
+      value[ key ] = true;
+    }
     const { path, } = row;
     this.updateSelectedStatusForParent(path, selectInfo, 1, TreeUtils.Selected, id2ExtendInfo);
 
@@ -814,6 +839,7 @@ class TreeUtils {
     return datas[ targetNode ];
   }
 
+
   halfCheckForParent (key: string, selectInfo: NodeId2SelectInfo, type: SelectType, childHalf: number) {
     if (childHalf === 0) {
       this.clearSelectInfo(key, selectInfo);
@@ -901,14 +927,14 @@ class TreeUtils {
         const rowLen = rows.length;
         for (let j = 0; j < rowLen; j++) {
           const key = rows[ j ];
-          this.selectDirNode(key, selectedInfo, id2ExtendInfo);
+          this.selectDirNode(key, selectedInfo, id2ExtendInfo, true);
         }
       }
     }
     const leafLen = leafNode.length;
     for (let i = 0; i < leafLen; i++) {
       const { key, } = leafNode[ i ];
-      this.selectNode(key, selectedInfo, id2ExtendInfo);
+      this.selectLeafNode(key, selectedInfo, id2ExtendInfo);
     }
     return { value: oldValue, halfchecked, checked, };
   }
