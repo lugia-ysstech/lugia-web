@@ -19,10 +19,13 @@ for (let i = 0; i < 100000; i++) {
 const val = valArr.join(',');
 const disp = dispArr.join(',');
 const InputDemo = () => {
-
+  const onChange = v => {
+    // console.info(v);
+  };
   return [
     <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
       <InputTag
+        onChange={onChange}
         value={val} displayValue={disp}/>
     </Theme>,];
 };

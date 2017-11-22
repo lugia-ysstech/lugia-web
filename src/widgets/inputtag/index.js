@@ -99,16 +99,22 @@ const List = styled.ul`
 `;
 
 class InputTag extends React.Component<InputTagProps, InputTagState> {
-  list: Object;
-  container: Object;
-  dropMenu: ?Object;
-  fontItem: Object;
   static displayName = Widget.InputTag;
   static defaultProps = {
     getTheme: () => {
       return {};
     },
   };
+
+  container: Object;
+  dropMenu: ?Object;
+  displayValueArray: Array<string>;
+  fontItem: Object;
+  list: Object;
+  needMoreItem: boolean;
+  oldWidth: number;
+  valueArray: Array<string>;
+
 
   constructor (props: InputTagProps) {
     super(props);
@@ -118,12 +124,20 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     };
   }
 
+  shouldComponentUpdate (nextPros: InputTagProps, nextState: InputTagState) {
+    const { props, state, } = this;
+    return state.items !== nextState.items ||
+      props.value !== nextPros.value ||
+      props.displayValue !== nextPros.displayValue;
+  }
+
+
   fetchValueObject (): Object {
     const result = {};
     const { value = '', displayValue = '', } = this.getValue();
     const valArray = value.split(separator);
-    const valLen = valArray.length;
     const displayValArray = displayValue.split(separator);
+    const valLen = valArray.length;
     for (let i = 0; i < valLen; i++) {
       const val = valArray[ i ];
       if (val !== '') {
@@ -166,6 +180,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const theme = {
         [Widget.DropMenu]: config,
         [Widget.Trigger]: config,
+        [Widget.Icon]: { hoverColor: 'red', },
       };
 
       return <Theme config={theme}>
@@ -192,34 +207,31 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getItems () {
-    const theme = {
-      [Widget.Icon]: { hoverColor: 'red', },
-    };
+    console.info('getITems');
     const { value, } = this.state;
     const items = [];
     if (value) {
       const keys = Object.keys(value);
       const valueLen = keys.length;
+
       for (let i = 0; i < valueLen; i++) {
         const key = keys[ i ];
         const { text, } = value[ key ];
         this.valueArray.push(key);
         this.displayValueArray.push(text);
-
-        items.push(<Theme config={theme} key={key}>
-            <MenuItem key={key}>
-              <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)} key={key}/>
-              {text}
-            </MenuItem>
-          </Theme>
-        );
+        items.push({ key, value: text, });
       }
     }
 
-    return <Menu>
-      {items}
+    return <Menu data={items} getPrefix={this.getIcon}>
     </Menu>;
   }
+
+
+  getIcon = (item: Object) => {
+    const { key, } = item;
+    return <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)} key={key}/>;
+  };
 
   onDelItem = (key: string) => {
     const { value, } = this.state;
@@ -231,12 +243,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       });
     }
   };
+
   onChange = (value: string, displayValue: string) => {
     const { onChange, } = this.props;
     onChange && onChange({ value, displayValue, });
   };
 
-  oldWidth: number;
 
   componentDidMount () {
     const offSetWidth = this.getOffSetWidth();
@@ -248,8 +260,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
     const offSetWidth = this.getOffSetWidth();
     if (offSetWidth !== this.oldWidth) {
-      this.adaptiveItems(offSetWidth);
       this.oldWidth = offSetWidth;
+      this.adaptiveItems(offSetWidth);
     }
   }
 
@@ -264,10 +276,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { width, } = getTheme();
     return width ? width : this.container.offsetWidth;
   }
-
-  needMoreItem: boolean;
-  valueArray: Array<string>;
-  displayValueArray: Array<string>;
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
     const items = [];
