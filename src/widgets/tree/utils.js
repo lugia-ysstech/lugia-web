@@ -661,26 +661,17 @@ class TreeUtils {
   }
 
   selectLeafNode (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
-    const { checked, } = selectInfo;
-
-    if (checked[ targetKey ]) {
-      return;
-    }
 
     const targetRow = this.getRow(targetKey, id2ExtendInfo);
     if (!targetRow) {
       return;
     }
+    const { checked, halfchecked,} = selectInfo;
     checked[ targetKey ] = true;
-
     const { begats = 0, } = this.fetchNodeExtendInfo(targetKey, this.treeData, id2ExtendInfo);
     const childHalfCount = begats + 1;
-    if (childHalfCount > 0) {
-      const { halfchecked, } = selectInfo;
-      halfchecked[ targetKey ] = childHalfCount;
-    }
-    const { path, } = targetRow;
-    this.updateSelectedStatusForParent(path, selectInfo, childHalfCount, TreeUtils.Selected, id2ExtendInfo);
+    halfchecked[ targetKey ] = childHalfCount;
+    this.updateSelectedStatusForParent(targetRow.path, selectInfo, childHalfCount, TreeUtils.Selected, id2ExtendInfo);
   }
 
   selectDirNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, isValue2SelectedInfo: boolean = false): void {
