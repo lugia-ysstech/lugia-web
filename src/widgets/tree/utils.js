@@ -329,8 +329,9 @@ class TreeUtils {
   fetchNodeExtendInfo (nodeId: string,
                        nodes: Array<RowData>,
                        id2ExtendInfo: NodeId2ExtendInfo): NodeExtendInfo {
-    this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo);
-
+    if (!id2ExtendInfo[ VirtualRoot ]) {
+      this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo);
+    }
     const existData = id2ExtendInfo[ nodeId ];
     const isExist = existData && existData.begats !== undefined;
     if (isExist) {
@@ -789,7 +790,9 @@ class TreeUtils {
   }
 
   getRow (key: string, id2ExtendInfo: NodeId2ExtendInfo) {
-    this.initAllNodeIndexAndTopRoot(this.treeData, id2ExtendInfo);
+    if (!id2ExtendInfo[ VirtualRoot ]) {
+      this.initAllNodeIndexAndTopRoot(this.treeData, id2ExtendInfo);
+    }
     const extendInfo = id2ExtendInfo[ key ];
     if (extendInfo) {
       const { index, } = id2ExtendInfo[ key ];
