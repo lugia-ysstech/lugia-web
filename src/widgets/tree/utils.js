@@ -870,6 +870,7 @@ class TreeUtils {
     }
 
     const levelArray = [];
+    const leafNode = [];
     for (let i = 0; i < len; i++) {
       const key = keys[ i ];
       const row = this.getRow(key, id2ExtendInfo);
@@ -884,6 +885,8 @@ class TreeUtils {
           }
           const { key, } = row;
           rows.push(key);
+        } else {
+          leafNode.push(row);
         }
       }
     }
@@ -902,17 +905,10 @@ class TreeUtils {
         }
       }
     }
-
-    for (let i = 0; i < len; i++) {
-      const key = keys[ i ];
-      const row = this.getRow(key, id2ExtendInfo);
-      if (row) {
-        const { isLeaf = false, } = row;
-        if (isLeaf == true) {
-          const { key, } = row;
-          this.selectNode(key, selectedInfo, id2ExtendInfo);
-        }
-      }
+    const leafLen = leafNode.length;
+    for (let i = 0; i < leafLen; i++) {
+      const { key, } = leafNode[ i ];
+      this.selectNode(key, selectedInfo, id2ExtendInfo);
     }
     return { value: oldValue, halfchecked, checked, };
   }
