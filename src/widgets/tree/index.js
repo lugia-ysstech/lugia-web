@@ -161,24 +161,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
   getValueObject (value: string) {
     const valArray = value.split(',');
     const len = valArray.length;
-    const last = len - 1;
-    const str = [];
-    str.push('{');
+    const result = {};
     for (let i = 0; i < len; i++) {
       const oneValue = valArray[ i ];
-      if (oneValue === 0 || oneValue) {
-        if (i === last) {
-          str.push(`"${oneValue}": true`);
-
-        } else {
-          str.push(`"${oneValue}": true,`);
-
-        }
+      if (oneValue !== '') {
+        result[ oneValue ] = true;
       }
     }
-    str.push('}');
-    return JSON.parse(str.join(''));
+    return result;
   }
+
 
   updateStateValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, selectValue: Array<string>, valueObject: Object) {
     if (this.isSingleSelectForProps(props)) {
