@@ -1089,7 +1089,6 @@ describe('utils', () => {
     const utils = new TreeUtils(datas, { expandAll, });
     const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
-    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
 
   });
 
@@ -1109,7 +1108,6 @@ describe('utils', () => {
     const utils = new TreeUtils(datas, { expandAll, });
     const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
-    exp(countInfo[ nodeId ]).to.be.eql(expectResult);
 
   });
   it('fetchNodeExtendInfo for normal node for expandAll: false nodeId: 2.1.2', () => {
@@ -1771,13 +1769,7 @@ describe('utils', () => {
       index: 0,
     });
     exp(countInfo[ '1.1' ]).to.be.eql({
-      nowVisible: 0,
-      realyVisible: 0,
-      children: 0,
-      begats: 0,
       index: 1,
-      childrenIdx: [],
-
     });
 
     utils.expandNode('1.2', countInfo);
@@ -1857,11 +1849,6 @@ describe('utils', () => {
       index: 0,
     });
     exp(countInfo[ '1.1' ]).to.be.eql({
-      nowVisible: 0,
-      realyVisible: 0,
-      children: 0,
-      begats: 0,
-      childrenIdx: [],
       index: 1,
     });
 

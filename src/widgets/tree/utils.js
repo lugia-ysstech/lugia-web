@@ -334,7 +334,26 @@ class TreeUtils {
       this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo);
     }
     const existData = id2ExtendInfo[ nodeId ];
-    const isExist = existData && existData.begats !== undefined;
+
+    const { index: begin, } = existData;
+    const row = nodes[ begin ];
+    if (row) {
+      const { isLeaf = false, } = row;
+
+      if (isLeaf) {
+        return {
+          nowVisible: 0,
+          realyVisible: 0,
+          childrenIdx: [],
+          children: 0,
+          begats: 0,
+          index: existData.index,
+        };
+      }
+    }
+
+
+    const isExist = existData.begats !== undefined;
     if (isExist) {
       return existData;
     }
@@ -342,27 +361,28 @@ class TreeUtils {
     const end = nodes.length;
     let children = 0;
     let begats = 0;
-    const begin = existData && existData.index !== undefined ? existData.index : 0;
+
     const childrenIdx = [];
-    const { isLeaf = false, path, } = nodes[ begin ];
+    const { path, } = row;
     let startWiths = nodeId;
     if (path) {
       startWiths = `${path}/${nodeId}`;
     }
-    if (isLeaf) {
-      return this.generateExtendInfo(nodeId, 0, 0, id2ExtendInfo, []);
-    }
-    let endA = 0;
+
     for (let i = begin + 1; i < end; i++) {
 
       let founded = false;
       const row = nodes[ i ];
-      const { pid, path, } = row;
-
+      const { pid, path, key, } = row;
       const isChildren = pid === nodeId;
       if (isChildren) {
         children++;
         childrenIdx.push(i);
+        const { begats: childBegats = -1, } = id2ExtendInfo[ key ];
+        if (childBegats > 0) {
+          begats += childBegats;
+          i += childBegats;
+        }
         begats++;
         founded = true;
       } else if (path) {
@@ -372,19 +392,18 @@ class TreeUtils {
         }
       }
       if (!founded) {
-        endA = i;
         break;
       }
     }
-    return this.generateExtendInfo(nodeId, begats, children, id2ExtendInfo, childrenIdx);
+    return this.generateExtendInfo(nodeId, begats, children, id2ExtendInfo, childrenIdx, begin);
   }
 
   initAllNodeIndexAndTopRoot (nodes: Array<RowData>,
                               id2nodeExpandInfo: NodeId2ExtendInfo) {
     const childrenIdx = [];
     if (!id2nodeExpandInfo[ VirtualRoot ]) {
-      const len = nodes.length;
-      for (let index = 0; index < len; index++) {
+      const begats = nodes.length;
+      for (let index = 0; index < begats; index++) {
         const { pid, key, } = nodes[ index ];
         if (!pid) {
           childrenIdx.push(index);
@@ -393,19 +412,17 @@ class TreeUtils {
           id2nodeExpandInfo[ key ] = { index, };
         }
       }
-      this.generateExtendInfo(VirtualRoot, len, childrenIdx.length, id2nodeExpandInfo, childrenIdx);
+      this.generateExtendInfo(VirtualRoot, begats, childrenIdx.length, id2nodeExpandInfo, childrenIdx, -1);
     }
   }
 
   generateExtendInfo (nodeId: string, begats: number, children: number,
                       id2ExtendInfo: NodeId2ExtendInfo,
-                      childrenIdx: Array<number>): NodeExtendInfo {
+                      childrenIdx: Array<number>, index: number): NodeExtendInfo {
 
     const nowAndRealVisible = this.expandAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
-    const nodeInfo = id2ExtendInfo[ nodeId ];
-    const index = nodeInfo && nodeInfo.index !== undefined ? nodeInfo.index : -1;
 
-    id2ExtendInfo[ nodeId ] = {
+    return id2ExtendInfo[ nodeId ] = {
       nowVisible: nowAndRealVisible,
       realyVisible: nowAndRealVisible,
       childrenIdx,
@@ -413,7 +430,6 @@ class TreeUtils {
       begats,
       index,
     };
-    return id2ExtendInfo[ nodeId ];
   }
 
   /**
@@ -877,7 +893,6 @@ class TreeUtils {
 
 
   value2SelectInfo (oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
-
     const empty = { value: {}, halfchecked: {}, checked: {}, };
     if (!oldValue) {
       return empty;
@@ -911,10 +926,19 @@ class TreeUtils {
         }
       }
     }
-
     const value = {}, halfchecked = {}, checked = {};
     const selectedInfo = { value, halfchecked, checked, };
     const levelArrayLen = levelArray.length;
+    for (let i = levelArrayLen - 1; i >= 0; i--) {
+      const rows = levelArray[ i ];
+      if (rows) {
+        const rowLen = rows.length;
+        for (let j = 0; j < rowLen; j++) {
+          const key = rows[ j ];
+          this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
+        }
+      }
+    }
 
     for (let i = 0; i < levelArrayLen; i++) {
       const rows = levelArray[ i ];
