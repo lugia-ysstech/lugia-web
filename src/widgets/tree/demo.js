@@ -11,40 +11,91 @@ const { TreeNode, } = Tree;
 
 
 const bigTree = [];
-for (let a = 0; a < 5; a++) {
-  bigTree.push({
-    key: `${a}`,
-    title: `${a}`,
-  });
-  for (let b = 0; b < 5; b++) {
-    const keyb = `${a}.${b}`;
+
+function getStringKey () {
+
+  for (let a = 0; a < 5; a++) {
     bigTree.push({
-      key: keyb,
-      title: keyb,
-      pid: `${a}`,
-      path: `${a}`,
+      key: `${a}`,
+      title: `${a}`,
     });
-    for (let c = 0; c < 20; c++) {
-      const keyc = `${a}.${b}.${c}`;
+    for (let b = 0; b < 5; b++) {
+      const keyb = `${a}.${b}`;
       bigTree.push({
-        key: keyc,
-        title: keyc,
-        pid: `${keyb}`,
-        path: `${a}/${keyb}`,
+        key: keyb,
+        title: keyb,
+        pid: `${a}`,
+        path: `${a}`,
       });
-      for (let d = 0; d < 400; d++) {
-        const key = `${a}.${b}.${c}.${d}`;
+      for (let c = 0; c < 20; c++) {
+        const keyc = `${a}.${b}.${c}`;
         bigTree.push({
-          key,
-          title: key,
-          pid: `${keyc}`,
-          isLeaf: true,
-          path: `${a}/${keyb}/${keyc}`,
+          key: keyc,
+          title: keyc,
+          pid: `${keyb}`,
+          path: `${a}/${keyb}`,
         });
+        for (let d = 0; d < 400; d++) {
+          const key = `${a}.${b}.${c}.${d}`;
+          bigTree.push({
+            key,
+            title: key,
+            pid: `${keyc}`,
+            isLeaf: true,
+            path: `${a}/${keyb}/${keyc}`,
+          });
+        }
+      }
+    }
+  }
+
+}
+
+getNumberKey();
+
+function getNumberKey () {
+
+  let key = 0;
+  for (let a = 0; a < 5; a++) {
+    const keyA = key++;
+    bigTree.push({
+      key: `${keyA}`,
+      title: `${a}`,
+    });
+    for (let b = 0; b < 5; b++) {
+      const titleB = `${a}.${b}`;
+      const keyb = key++;
+      bigTree.push({
+        key: keyb,
+        title: titleB,
+        pid: `${keyA}`,
+        path: `${a}`,
+      });
+      for (let c = 0; c < 20; c++) {
+        const titleC = `${a}.${b}.${c}`;
+        const keyc = key++;
+        bigTree.push({
+          key: keyc,
+          title: titleC,
+          pid: `${keyb}`,
+          path: `${keyA}/${keyb}`,
+        });
+        for (let d = 0; d < 40; d++) {
+          const title = `${a}.${b}.${c}.${d}`;
+          const keyD = key++;
+          bigTree.push({
+            key: keyD,
+            title,
+            pid: `${keyc}`,
+            isLeaf: true,
+            path: `${keyA}/${keyb}/${keyc}`,
+          });
+        }
       }
     }
   }
 }
+
 const now = new Date();
 const len = bigTree.length;
 let root = 0;
@@ -99,74 +150,6 @@ const rowData = [
 
 console.info(bigTree.length);
 
-class MutlipleTree extends React.Component<Object, Object> {
-  constructor (props: Object) {
-    super(props);
-    this.state = { query: '', };
-  }
-
-  render () {
-
-
-    return [<Tree
-      key="tree"
-      query={this.state.query}
-      expandAll
-      showLine
-      data={rowData}
-      mutliple
-      onlySelectLeaf
-      onSelect={onSelect}
-      onChange={this.onTreeChange}
-      onCheck={onCheck}
-      // onlySelectLeaf
-    >
-    </Tree>,
-      <input onChange={this.onChange} key="query"/>,];
-  }
-
-  onTreeChange = (v: any) => {
-    console.info(v);
-  };
-  onChange = (e: Object) => {
-    this.setState({ query: e.target.value, });
-  };
-
-}
-
-class SingleTree extends React.Component<Object, Object> {
-  constructor (props: Object) {
-    super(props);
-    this.state = { query: '', };
-  }
-
-  render () {
-
-
-    return [<Tree
-      key="tree"
-      query={this.state.query}
-      expandAll
-      showLine
-      data={rowData}
-      onSelect={onSelect}
-      onChange={this.onTreeChange}
-      onCheck={onCheck}
-      // defaultValue="1"
-      // onlySelectLeaf
-    >
-    </Tree>,
-      <input onChange={this.onChange} key="query"/>,];
-  }
-
-  onTreeChange = (v: any) => {
-    console.info(v);
-  };
-  onChange = (e: Object) => {
-    this.setState({ query: e.target.value, });
-  };
-
-}
 
 class LimitTree extends React.Component<Object, Object> {
   constructor (props) {
@@ -177,7 +160,6 @@ class LimitTree extends React.Component<Object, Object> {
 
   render () {
     const { value, } = this.state;
-    console.info(value);
     return [<Tree
       value={value}
       expandAll
@@ -186,12 +168,30 @@ class LimitTree extends React.Component<Object, Object> {
     </Tree>, <button onClick={this.onClick}></button>,];
   }
 
+  all: boolean;
   onClick = () => {
-    console.info('aa');
-    this.setState({ value: '1.1', });
+
+    if (this.all) {
+      this.setState({ value: '', });
+      this.all = false;
+    } else {
+      console.time('aa');
+      const { data, } = this.props;
+      const value = [];
+      console.info(data.length);
+      for (let i = 0; i < data.length; i++) {
+        const { key, } = data[ i ];
+        value.push(key);
+      }
+      // console.timeEnd('aa');
+      this.setState({ value: value.join(','), }, () => {
+        console.timeEnd('aa');
+      });
+      this.all = true;
+    }
   }
 }
 
 export default () => {
-  return [<MutlipleTree key="mutliple"/>, <LimitTree data={rowData}/>,];
+  return [<LimitTree key="mutliple" data={bigTree} mutliple/>,];
 };
