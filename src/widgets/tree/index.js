@@ -132,7 +132,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     if (this.isNotLimit(props)) {
       const { selectValue = [], selectedInfo, } = this.state;
-      this.updateStateValue(props, newState, id2ExtendInfo, selectValue, selectedInfo.value);
+      this.updateStateValue(props, newState, id2ExtendInfo, selectValue, selectedInfo.value, []);
     } else {
       this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, props.value);
     }
@@ -155,7 +155,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const notString = Object.prototype.toString.call(value) !== '[object String]';
     const emptyValue = value === undefined || value === null || notString;
     value = emptyValue ? '' : value.trim();
-    this.updateStateValue(props, state, id2ExtendInfo, [value,], this.getValueObject(value));
+    const { obj, val, } = this.getValueObject(value);
+    this.updateStateValue(props, state, id2ExtendInfo, [value,], obj, val);
   }
 
   getValueObject (value: string) {
@@ -168,15 +169,15 @@ class Tree extends React.Component<TreeProps, TreeState> {
         result[ oneValue ] = true;
       }
     }
-    return result;
+    return { obj: result, val: valArray, };
   }
 
 
-  updateStateValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, selectValue: Array<string>, valueObject: Object) {
+  updateStateValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, selectValue: Array<string>, valueObject: Object, val: Array<string>) {
     if (this.isSingleSelectForProps(props)) {
       state.selectValue = selectValue;
     } else {
-      state.selectedInfo = this.getUtils(props).value2SelectInfo(valueObject, id2ExtendInfo);
+      state.selectedInfo = this.getUtils(props).value2SelectInfo(val, valueObject, id2ExtendInfo);
     }
   }
 

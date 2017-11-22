@@ -892,13 +892,12 @@ class TreeUtils {
   }
 
 
-  value2SelectInfo (oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
+  value2SelectInfo (keys: Array<string>, oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
     const empty = { value: {}, halfchecked: {}, checked: {}, };
     if (!oldValue) {
       return empty;
     }
 
-    const keys = Object.keys(oldValue);
     const len = keys.length;
 
     if (len === 0) {
