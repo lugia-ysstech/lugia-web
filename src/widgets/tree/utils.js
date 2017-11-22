@@ -382,18 +382,16 @@ class TreeUtils {
     const childrenIdx = [];
     if (!id2nodeExpandInfo[ VirtualRoot ]) {
       const len = nodes.length;
-      let children = 0;
       for (let index = 0; index < len; index++) {
         const { pid, key, } = nodes[ index ];
         if (!pid) {
           childrenIdx.push(index);
-          children++;
         }
         if (!id2nodeExpandInfo[ key ]) {
           id2nodeExpandInfo[ key ] = { index, };
         }
       }
-      this.generateExtendInfo(VirtualRoot, len, children, id2nodeExpandInfo, childrenIdx);
+      this.generateExtendInfo(VirtualRoot, len, childrenIdx.length, id2nodeExpandInfo, childrenIdx);
     }
   }
 
@@ -737,7 +735,7 @@ class TreeUtils {
         const key = pathArray[ i ];
         switch (operatorType) {
           case TreeUtils.Selected:
-            if (checked[ key ] !== true) {
+            if (!checked[ key ]) {
               this.halfCheckForParent(key, selectInfo, operatorType, halfCount);
               const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
               if (halfchecked[ key ] === begats + 1) {
@@ -791,15 +789,15 @@ class TreeUtils {
           checked[ key ] = true;
           const { isLeaf = false, } = row;
 
-          if (isLeaf === true || this.onlySelectLeaf === false) {
+          if (!value[ key ] && (isLeaf || !this.onlySelectLeaf)) {
             value[ key ] = true;
           }
 
           const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2ExtendInfo);
           const isTargetNode = i === targetNode;
-          const childHalfCount = (isTargetNode || isLeaf === false) ? begats + 1 : begats;
+          const childHalfCount = (isTargetNode || !isLeaf) ? begats + 1 : begats;
 
-          if (childHalfCount !== 0) {
+          if (childHalfCount > 0) {
             const { halfchecked, } = selectInfo;
             halfchecked[ key ] = childHalfCount;
           }
