@@ -677,12 +677,12 @@ class TreeUtils {
 
   }
 
-  selectLeafNode (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
+  selectLeafNode (targetRow: RowData, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
 
-    const targetRow = this.getRow(targetKey, id2ExtendInfo);
     if (!targetRow) {
       return;
     }
+    const { key: targetKey, } = targetRow;
     const { checked, halfchecked, } = selectInfo;
     checked[ targetKey ] = true;
     const { begats = 0, } = this.fetchNodeExtendInfo(targetKey, this.treeData, id2ExtendInfo);
@@ -894,13 +894,9 @@ class TreeUtils {
 
   value2SelectInfo (keys: Array<string>, oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
     const empty = { value: {}, halfchecked: {}, checked: {}, };
-    if (!oldValue) {
-      return empty;
-    }
-
     const len = keys.length;
 
-    if (len === 0) {
+    if (!oldValue || !len) {
       return empty;
     }
 
@@ -951,8 +947,7 @@ class TreeUtils {
     }
     const leafLen = leafNode.length;
     for (let i = 0; i < leafLen; i++) {
-      const { key, } = leafNode[ i ];
-      this.selectLeafNode(key, selectedInfo, id2ExtendInfo);
+      this.selectLeafNode(leafNode[ i ], selectedInfo, id2ExtendInfo);
     }
     return { value: oldValue, halfchecked, checked, };
   }
