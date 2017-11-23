@@ -14,12 +14,12 @@ const bigTree = [];
 
 function getStringKey () {
 
-  for (let a = 0; a < 2; a++) {
+  for (let a = 0; a < 5; a++) {
     bigTree.push({
       key: `${a}`,
       title: `${a}`,
     });
-    for (let b = 0; b < 1; b++) {
+    for (let b = 0; b < 5; b++) {
       const keyb = `${a}.${b}`;
       bigTree.push({
         key: keyb,
@@ -27,7 +27,7 @@ function getStringKey () {
         pid: `${a}`,
         path: `${a}`,
       });
-      for (let c = 0; c < 1; c++) {
+      for (let c = 0; c < 20; c++) {
         const keyc = `${a}.${b}.${c}`;
         bigTree.push({
           key: keyc,
@@ -35,7 +35,7 @@ function getStringKey () {
           pid: `${keyb}`,
           path: `${a}/${keyb}`,
         });
-        for (let d = 0; d < 1; d++) {
+        for (let d = 0; d < 400; d++) {
           const key = `${a}.${b}.${c}.${d}`;
           bigTree.push({
             key,
@@ -51,7 +51,7 @@ function getStringKey () {
 
 }
 
-getStringKey();
+getNumberKey();
 
 function getNumberKey () {
 
@@ -80,7 +80,7 @@ function getNumberKey () {
           pid: `${keyb}`,
           path: `${keyA}/${keyb}`,
         });
-        for (let d = 0; d < 40; d++) {
+        for (let d = 0; d < 400; d++) {
           const title = `${a}.${b}.${c}.${d}`;
           const keyD = key++;
           bigTree.push({
