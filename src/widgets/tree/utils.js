@@ -773,11 +773,10 @@ class TreeUtils {
       const { checked, halfchecked, } = selectInfo;
       const pathArray = this.getPathArray(path);
       const len = pathArray.length;
-
-      for (let i = 0; i < len; i++) {
-        const key = pathArray[ i ];
-        switch (operatorType) {
-          case TreeUtils.Selected:
+      switch (operatorType) {
+        case TreeUtils.Selected: {
+          for (let i = 0; i < len; i++) {
+            const key = pathArray[ i ];
             if (!checked[ key ]) {
               this.halfCheckForParent(key, selectInfo, operatorType, halfCount);
               const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
@@ -785,13 +784,18 @@ class TreeUtils {
                 checked[ key ] = true;
               }
             }
-            break;
-          case TreeUtils.UnSelected:
+          }
+          break;
+        }
+        case TreeUtils.UnSelected: {
+          for (let i = 0; i < len; i++) {
+            const key = pathArray[ i ];
             delete checked[ key ];
             this.halfCheckForParent(key, selectInfo, operatorType, halfCount);
-            break;
-          default:
+          }
+          break;
         }
+        default:
       }
     }
   }
