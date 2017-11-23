@@ -14,12 +14,12 @@ const bigTree = [];
 
 function getStringKey () {
 
-  for (let a = 0; a < 5; a++) {
+  for (let a = 0; a < 2; a++) {
     bigTree.push({
       key: `${a}`,
       title: `${a}`,
     });
-    for (let b = 0; b < 5; b++) {
+    for (let b = 0; b < 1; b++) {
       const keyb = `${a}.${b}`;
       bigTree.push({
         key: keyb,
@@ -27,7 +27,7 @@ function getStringKey () {
         pid: `${a}`,
         path: `${a}`,
       });
-      for (let c = 0; c < 20; c++) {
+      for (let c = 0; c < 1; c++) {
         const keyc = `${a}.${b}.${c}`;
         bigTree.push({
           key: keyc,
@@ -35,7 +35,7 @@ function getStringKey () {
           pid: `${keyb}`,
           path: `${a}/${keyb}`,
         });
-        for (let d = 0; d < 400; d++) {
+        for (let d = 0; d < 1; d++) {
           const key = `${a}.${b}.${c}.${d}`;
           bigTree.push({
             key,
@@ -51,7 +51,7 @@ function getStringKey () {
 
 }
 
-getNumberKey();
+getStringKey();
 
 function getNumberKey () {
 
@@ -69,7 +69,7 @@ function getNumberKey () {
         key: keyb,
         title: titleB,
         pid: `${keyA}`,
-        path: `${a}`,
+        path: `${keyA}`,
       });
       for (let c = 0; c < 20; c++) {
         const titleC = `${a}.${b}.${c}`;
@@ -114,6 +114,9 @@ const onSelect = (selectedKeys, info) => {
 const rowData = [
   { key: '1', title: '1', },
   { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
+  { key: '1.1.1', title: '1.1.1', pid: '1.1', path: '1/1.1', },
+  { key: '1.1.1.1', title: '1.1.1.1', pid: '1.1.1', path: '1/1.1/1.1.1', },
+  { key: '1.1.1.1.1', title: '1.1.1.1.1', pid: '1.1.1.1', path: '1/1.1/1.1.1/1.1.1.1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
@@ -164,10 +167,14 @@ class LimitTree extends React.Component<Object, Object> {
       value={value}
       expandAll
       {...this.props}
+      onChange={this.onChange}
     >
     </Tree>, <button onClick={this.onClick}></button>,];
   }
 
+  onChange = value => {
+    this.setState({ value: value.join(','), });
+  };
   all: boolean;
   onClick = () => {
 
