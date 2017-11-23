@@ -677,19 +677,6 @@ class TreeUtils {
 
   }
 
-  selectLeafNode (targetRow: RowData, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
-
-    if (!targetRow) {
-      return;
-    }
-    const { key: targetKey, } = targetRow;
-    const { checked, halfchecked, } = selectInfo;
-    checked[ targetKey ] = true;
-    const { begats = 0, } = this.fetchNodeExtendInfo(targetKey, this.treeData, id2ExtendInfo);
-    const childHalfCount = begats + 1;
-    halfchecked[ targetKey ] = childHalfCount;
-    this.updateSelectedStatusForParent(targetRow.path, selectInfo, childHalfCount, TreeUtils.Selected, id2ExtendInfo);
-  }
 
   selectDirNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
     const { checked, } = selectInfo;
@@ -914,7 +901,7 @@ class TreeUtils {
     }
 
     const levelArray = [];
-    const leafNode = [];
+    const path2Nodes = {};
     for (let i = 0; i < len; i++) {
       const key = keys[ i ];
       const row = this.getRow(key, id2ExtendInfo);
@@ -928,8 +915,12 @@ class TreeUtils {
             rows = levelArray[ level ] = [];
           }
           rows.push(row);
-        } else {
-          leafNode.push(row);
+        } else if (rowPath) {
+          let nodes = path2Nodes[ rowPath ];
+          if (!nodes) {
+            nodes = path2Nodes[ rowPath ] = [];
+          }
+          nodes.push(row);
         }
       }
     }
@@ -946,7 +937,6 @@ class TreeUtils {
         }
       }
     }
-
     for (let i = 0; i < levelArrayLen; i++) {
       const rows = levelArray[ i ];
       if (rows) {
@@ -956,11 +946,47 @@ class TreeUtils {
         }
       }
     }
-    const leafLen = leafNode.length;
-    for (let i = 0; i < leafLen; i++) {
-      this.selectLeafNode(leafNode[ i ], selectedInfo, id2ExtendInfo);
+    const paths = Object.keys(path2Nodes);
+    const pathsLen = paths.length;
+    for (let i = 0; i < pathsLen; i++) {
+      const fatherPath = paths[ i ];
+      const nodes = path2Nodes[ fatherPath ];
+      this.selectLeafNodeForValue(fatherPath, nodes, selectedInfo, id2ExtendInfo);
     }
     return { value: oldValue, halfchecked, checked, };
+  }
+
+  selectLeafNodeForValue (fatherPath: string, rows: Array<RowData>, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
+    const rowLen = rows.length;
+    let totalHalfCount = 0;
+    const { checked, halfchecked, } = selectInfo;
+
+    for (let i = 0; i < rowLen; i++) {
+      const targetRow = rows[ i ];
+      if (!targetRow) {
+        continue;
+      }
+      const { key: targetKey, } = targetRow;
+      checked[ targetKey ] = true;
+      const { begats = 0, } = this.fetchNodeExtendInfo(targetKey, this.treeData, id2ExtendInfo);
+      const childHalfCount = begats + 1;
+      halfchecked[ targetKey ] = childHalfCount;
+      totalHalfCount += childHalfCount;
+    }
+
+    const pathArray = this.getPathArray(fatherPath);
+    const len = pathArray.length;
+    for (let i = 0; i < len; i++) {
+      const key = pathArray[ i ];
+      if (!checked[ key ]) {
+        this.halfCheckForParent(key, selectInfo, TreeUtils.Selected, totalHalfCount);
+        const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
+        if (halfchecked[ key ] === begats + 1) {
+          checked[ key ] = true;
+        }
+      }
+    }
+
   }
 
   static Selected: 1 = 1;
