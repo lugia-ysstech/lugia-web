@@ -691,7 +691,7 @@ class TreeUtils {
     this.updateSelectedStatusForParent(targetRow.path, selectInfo, childHalfCount, TreeUtils.Selected, id2ExtendInfo);
   }
 
-  selectDirNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, isValue2SelectedInfo: boolean = false): void {
+  selectDirNode (key: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
     const { checked, } = selectInfo;
     if (checked[ key ] === true) {
       return;
@@ -699,6 +699,15 @@ class TreeUtils {
     const row = this.getRow(key, id2ExtendInfo);
     if (!row) {
       console.warn('选择的结点不存在');
+      return;
+    }
+    this.selectDirNodeByRow(row, selectInfo, id2ExtendInfo);
+  }
+
+  selectDirNodeByRow (row: RowData, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, isValue2SelectedInfo: boolean = false): void {
+    const { key, } = row;
+    const { checked, } = selectInfo;
+    if (checked[ key ] === true) {
       return;
     }
     const { isLeaf = false, } = row;
@@ -914,8 +923,7 @@ class TreeUtils {
           if (!rows) {
             rows = levelArray[ level ] = [];
           }
-          const { key, } = row;
-          rows.push(key);
+          rows.push(row);
         } else {
           leafNode.push(row);
         }
@@ -929,7 +937,7 @@ class TreeUtils {
       if (rows) {
         const rowLen = rows.length;
         for (let j = 0; j < rowLen; j++) {
-          const key = rows[ j ];
+          const { key, } = rows[ j ];
           this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
         }
       }
@@ -940,8 +948,7 @@ class TreeUtils {
       if (rows) {
         const rowLen = rows.length;
         for (let j = 0; j < rowLen; j++) {
-          const key = rows[ j ];
-          this.selectDirNode(key, selectedInfo, id2ExtendInfo, true);
+          this.selectDirNodeByRow(rows[ j ], selectedInfo, id2ExtendInfo, true);
         }
       }
     }
