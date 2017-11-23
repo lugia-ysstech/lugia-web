@@ -34,6 +34,7 @@ type InputTagProps = {
   defaultDisplayValue?: string,
   onClick?: Function,
 };
+const Clear = 'sv-icon-close-circled';
 type InputTagState = {
   items: Array<React.Node>,
   value?: Object,
@@ -60,7 +61,14 @@ const OutContainer = styled.div`
     border-color: ${InputBorderHoverColor};
   }
 `;
+const IconButton: Object = styled(Icon)`
+  top: 50%;
+  position: absolute;
+  margin-top: -8px;
+  color: rgba(0,0,0,.25);
+`;
 
+IconButton.displayName = 'IconButtonName';
 const marginLeft = 5;
 const marginRight = 7;
 const separator = ',';
@@ -69,7 +77,7 @@ const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
 };
 const InnerContainer = styled.div`
-  ${widthFunc(getContentWidth(0))}
+  ${widthFunc(-getContentWidth(0))}
   height: 26px;
   margin-left: ${marginLeft}px;
   margin-right: ${marginRight}px;
@@ -150,7 +158,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getValue (): { value: string, displayValue: string } {
     const { props, } = this;
-    if ('value' in props === true) {
+    if (this.isLmit()) {
       const { value = '', displayValue = '', } = props;
       return { value, displayValue, };
     }
@@ -158,11 +166,18 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return { value, displayValue, };
   }
 
+  isLmit (): boolean {
+    const { props, } = this;
+    return ('value' in props === true);
+  }
+
   render () {
     const { items, } = this.state;
     const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
     const result = (
-      <Container className="sv" theme={this.props.getTheme()} innerRef={cmp => this.container = cmp}
+      <Container className="sv"
+                 theme={this.props.getTheme()}
+                 innerRef={cmp => this.container = cmp}
                  onClick={this.onClick}>
         <OutContainer>
           <InnerContainer theme={this.props.getTheme()}>
@@ -170,6 +185,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
               <FontItem ref={fillFontItem}/>
               {items}
             </List>
+
+            {items.length > 0 ? <IconButton iconClass={Clear} viewClass={IconButton.displayName}
+                                            onClick={this.onClear}></IconButton> : null}
           </InnerContainer>
         </OutContainer>
       </Container>
@@ -181,6 +199,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         [Widget.DropMenu]: config,
         [Widget.Trigger]: config,
         [Widget.Icon]: { hoverColor: 'red', },
+        [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
       };
 
       return <Theme config={theme}>
@@ -207,7 +226,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getItems () {
-    console.info('getITems');
     const { value, } = this.state;
     const items = [];
     if (value) {
@@ -227,6 +245,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     </Menu>;
   }
 
+  onClear = () => {
+    this.setState({ value: {}, }, async () => {
+      await this.adaptiveItems(this.getOffSetWidth());
+      this.onChange('', '');
+    });
+  };
 
   getIcon = (item: Object) => {
     const { key, } = item;
