@@ -69,10 +69,10 @@ describe('TreeSelect', () => {
     };
     const svThemeConfigTree = { [Widget.TreeSelect]: styleConfig, };
     const expResult: Object = {
-      [Widget.Tree]: Object.assign({}, styleConfig,{ svThemeConfigTree,}),
-      [Widget.Trigger]: Object.assign({}, styleConfig,{ svThemeConfigTree,}),
-      [Widget.InputTag]: Object.assign({}, styleConfig,{ svThemeConfigTree,}),
-      [Widget.Input]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, },{ svThemeConfigTree,}),
+      [Widget.Tree]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
+      [Widget.Trigger]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
+      [Widget.InputTag]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
+      [Widget.Input]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, }, { svThemeConfigTree, }),
     };
     createThemeCase(styleConfig, expResult);
   });
@@ -118,7 +118,42 @@ describe('TreeSelect', () => {
 
   }
 
+  it('测试查询功能', () => {
+    const cmp = mount(<TreeSelect data={rowData}/>);
+    const firstValue = 'helloworld';
+    chagneQuery(cmp, firstValue);
+    exp(getTreeQuery(cmp)).to.be.equal(firstValue);
 
+
+    const secondValue = 'helloworld';
+    chagneQuery(cmp, secondValue);
+    exp(getTreeQuery(cmp)).to.be.equal(secondValue);
+  });
+
+  function updateTree (cmp: Object) {
+    findTree(cmp).instance().forceUpdate();
+    cmp.update();
+
+  }
+
+  function getTreeQuery (cmp: Object) {
+    return findTree(cmp).props().query;
+  }
+
+  function findTree (cmp: Object) {
+    return cmp.find(Widget.Tree).at(0);
+  }
+
+  function chagneQuery (cmp: Object, value: string) {
+    findQueryInput(cmp).simulate('change', { target: { value, }, });
+    cmp.instance().forceUpdate();
+    updateTree(cmp);
+    cmp.update();
+  }
+
+  function findQueryInput (cmp: Object) {
+    return cmp.find(Widget.Input).at(0);
+  }
 });
 
 

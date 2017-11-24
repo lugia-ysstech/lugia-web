@@ -22,6 +22,7 @@ type TreeSelectProps = {
 };
 type TreeSelectState = {
   open: boolean,
+  query: string,
 };
 const QueryInputPadding = 3;
 const QueryInput = styled.div`
@@ -38,15 +39,31 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   constructor (props: TreeSelectProps) {
     super(props);
-    this.state = { open: false, };
+    this.state = {
+      open: false,
+      query: '',
+    };
+  }
+
+  shouldComponentUpdate (nexProps: TreeSelectProps, nextState: TreeSelectState) {
+    const { props, } = this;
+    const dataChanged = props.data !== nexProps.data;
+    if (dataChanged === true) {
+      return true;
+    }
+    const { state, } = this;
+    return state.query !== nextState.query;
   }
 
   render () {
-    const { props, } = this;
+    const { props, state, } = this;
     const { data, } = props;
+    const { query, } = state;
+    console.info('treee select ', query);
 
-    const tree = [<QueryInput><Input/></QueryInput>, <Tree data={data} {...props} className="sv">
-    </Tree>,];
+    const tree = [<QueryInput onChange={this.onQueryTree}><Input/></QueryInput>,
+      <Tree data={data} onChange={this.onTreeChange} {...props} className="sv" query={query}>
+      </Tree>,];
     return <Theme config={this.getTheme()}>
       <Trigger popup={tree}
                align="bottomLeft"
@@ -56,6 +73,17 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       </Trigger>
     </Theme>;
   }
+
+  onQueryTree = (event: Object) => {
+    const { target, } = event;
+    const { value, } = target;
+    console.info(value);
+    this.setState({ query: value, });
+  };
+
+  onTreeChange = (value: Array<string>) => {
+    console.info(value);
+  };
 
   getTheme (): Object {
     const { getTheme = () => ({}), } = this.props;
