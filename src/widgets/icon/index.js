@@ -23,6 +23,7 @@ const IconTag = styled.i`
   ${hover}
 `;
 type IconProps = {
+  className?: string,
   iconClass: string,
   onClick?: Function,
   getTheme: Function,
@@ -38,8 +39,8 @@ class Icon extends React.Component<IconProps> {
   };
 
   render () {
-    const { iconClass, onClick, getTheme, } = this.props;
-    return <IconTag className={`iconfont ${iconClass}`}
+    const { iconClass, onClick, getTheme, className = '', } = this.props;
+    return <IconTag className={`iconfont ${iconClass} ${className}`}
                     onClick={onClick}
                     theme={getTheme()}> </IconTag>;
   }
