@@ -78,7 +78,7 @@ describe('InputTag', () => {
     });
     it('展现值&实际值 3个只能容纳一个' + caseTitle, async () => {
       let i = 0;
-      const val = [5, 1000, 1000,];
+      const val = [ 5, 1000, 1000, ];
       const getFontWidth = () => {
         return val[ i++ ];
       };
@@ -118,6 +118,102 @@ describe('InputTag', () => {
           exp(tagItems.length).to.be.equal(3);
           exp(tagItems.at(1).text()).to.be.equal('乐');
           exp(tagItems.at(2).text()).to.be.equal('我');
+          exp(findFontItem(cmp).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
+          exp(findFontItem(cmp).length).to.be.equal(1);
+          resolve(true);
+        });
+      });
+    });
+    await  result;
+    exp(await  onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
+  });
+  it('完全显示3个 , 点击第一个的删除图标 onChange事件改变值', async () => {
+    let InputTagTest;
+    const onChangePromise = new Promise(resolve => {
+
+      InputTagTest = class  extends React.Component<any, any> {
+        inputtag: any;
+        state: Object;
+
+        constructor (props) {
+          super(props);
+          this.state = {
+            value,
+            displayValue,
+          };
+        }
+
+        onChange = (v: Object) => {
+          console.info(v);
+          const { value, displayValue, } = v;
+          this.setState({
+            value,
+            displayValue,
+          });
+          resolve(v);
+        };
+
+        render () {
+          const { value, displayValue, } = this.state;
+          return <Theme config={{ [Widgets.InputTag]: { width: 300, }, }}>
+            <InputTag
+              onChange={this.onChange}
+              value={value}
+              displayValue={displayValue}
+              ref={cmp => this.inputtag = cmp}
+            /></Theme>;
+        }
+      };
+    });
+
+    const result = new Promise(async resolve => {
+
+      await renderInputTag(InputTagTest, 1, async cmp => {
+        cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
+        await delay(0, async () => {
+          cmp.instance().forceUpdate();
+          cmp.update();
+          await delay(0, () => {
+            cmp.instance().forceUpdate();
+            cmp.update();
+            const tagItems = findInputItem(cmp);
+            exp(tagItems.length).to.be.equal(3);
+            exp(tagItems.at(1).text()).to.be.equal('乐');
+            exp(tagItems.at(2).text()).to.be.equal('我');
+            exp(findFontItem(cmp).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
+            exp(findFontItem(cmp).length).to.be.equal(1);
+            resolve(true);
+          });
+        });
+        return true;
+      });
+    });
+    await  result;
+    exp(await  onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
+  });
+
+
+  it('完全显示3个 , 点击第一个的删除图标 onChange事件 受限组件 不能改变', async () => {
+    let InputTagTest;
+    const onChangePromise = new Promise(resolve => {
+      const onChange = (v: Object) => {
+        resolve(v);
+      };
+      InputTagTest = createInputTagTest({ displayValue, value, onChange, });
+    });
+    const result = new Promise(async resolve => {
+
+      await renderInputTag(InputTagTest, 1, async cmp => {
+        cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
+        await delay(0, () => {
+          cmp.instance().forceUpdate();
+          cmp.update();
+
+          const tagItems = findInputItem(cmp);
+          exp(tagItems.length).to.be.equal(4);
+          exp(tagItems.at(1).text()).to.be.equal('常');
+          exp(tagItems.at(2).text()).to.be.equal('乐');
+          exp(tagItems.at(3).text()).to.be.equal('我');
           exp(findFontItem(cmp).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
           exp(findFontItem(cmp).length).to.be.equal(1);
           resolve(true);

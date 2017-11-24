@@ -118,14 +118,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   dropMenu: ?Object;
   fontItem: Object;
   list: Object;
-  isUpdate: boolean;
   needMoreItem: boolean;
   oldWidth: number;
 
 
   constructor (props: InputTagProps) {
     super(props);
-    this.isUpdate = false;
     this.state = {
       items: [],
       value: this.fetchValueObject(props),
@@ -215,7 +213,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return <Theme config={theme}>
         <DropMenu menus={this.getItems()}
                   action={[]}
-                  hideAction={[ 'click', ]}
+                  hideAction={['click',]}
                   ref={cmp => {
                     this.dropMenu = cmp;
                   }}>
@@ -282,16 +280,16 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       }
     }
 
-    const onChange = () => {
+    const tirggetChagne = () => {
       this.onChange(valueArray.join(','), displayValueArray.join(','));
     };
 
     if (this.isLmit()) {
-      onChange();
+      tirggetChagne();
       return;
     }
     delete value[ targetKey ];
-    onChange();
+    tirggetChagne();
     this.adaptiveItems(this.getOffSetWidth());
   };
 
@@ -330,10 +328,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
-    if (this.isUpdate) {
-      return true;
-    }
-    this.isUpdate = true;
     const items = [];
     this.needMoreItem = false;
     const { value, } = this.state;
@@ -362,9 +356,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         items.push(this.getMoreItem());
       }
     }
-    this.setState({ items, }, () => {
-      this.isUpdate = false;
-    });
+    this.setState({ items, });
     return true;
   }
 
