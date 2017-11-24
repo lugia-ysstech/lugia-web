@@ -224,27 +224,48 @@ describe('InputTag', () => {
     exp(await  onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
   });
 
-  it('点击更多按钮', async () => {
+  it('点击更多按钮 点击删除', async () => {
+    let InputTagTest;
+    const onChangePromise = new Promise(resolve => {
+      const onChange = (v: Object) => {
+        resolve(v);
+      };
+      InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, onChange, });
+    });
     const result = new Promise(async resolve => {
 
       await renderInputTag(InputTagTest, 5000, async cmp => {
-        // cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
-
         const tagItems = findInputItem(cmp);
         exp(tagItems.length).to.be.equal(2);
         const moreItem = findMoreItem(cmp);
         moreItem.simulate('click');
-        await delay(0, () => {
+        await delay(0, async () => {
           cmp.instance().forceUpdate();
           cmp.update();
           exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
           exp(cmp.find(Widgets.Icon).length).to.be.equal(4);
-          resolve(true);
+          cmp.find(Widgets.Icon).at(1).simulate('click');
+          await delay(0, async () => {
+            cmp.instance().forceUpdate();
+            cmp.find(Widgets.Menu).instance().forceUpdate();
+            cmp.update();
+            await delay(0, async () => {
+              cmp.instance().forceUpdate();
+              cmp.find(Widgets.Menu).instance().forceUpdate();
+              cmp.update();
+              const menuItem = cmp.find(Widgets.MenuItem);
+              exp(menuItem.length).to.be.equal(2);
+              exp(menuItem.at(0).text().trim()).to.be.equal('乐');
+              exp(menuItem.at(1).text().trim()).to.be.equal('我');
+              resolve(true);
+            });
+          });
         });
       });
     });
     await  result;
+    exp(await onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
   });
 
   function findFontItem (cmp) {
