@@ -67,24 +67,23 @@ describe('TreeSelect', () => {
     const styleConfig = {
       width: 500,
     };
-
+    const svThemeConfigTree = { [Widget.TreeSelect]: styleConfig, };
     const expResult: Object = {
-      [Widget.Tree]: styleConfig,
-      [Widget.Trigger]: styleConfig,
-      [Widget.InputTag]: styleConfig,
-      [Widget.Input]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, }),
+      [Widget.Tree]: Object.assign({}, styleConfig,{ svThemeConfigTree,}),
+      [Widget.Trigger]: Object.assign({}, styleConfig,{ svThemeConfigTree,}),
+      [Widget.InputTag]: Object.assign({}, styleConfig,{ svThemeConfigTree,}),
+      [Widget.Input]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, },{ svThemeConfigTree,}),
     };
-
     createThemeCase(styleConfig, expResult);
   });
   it('未指定width', () => {
     const styleConfig = {};
 
     const expResult: Object = {
-      [Widget.Tree]: {},
-      [Widget.Trigger]: {},
-      [Widget.InputTag]: {},
-      [Widget.Input]: {},
+      [Widget.Tree]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
+      [Widget.Trigger]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
+      [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
+      [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
     };
 
     createThemeCase(styleConfig, expResult);
@@ -110,6 +109,8 @@ describe('TreeSelect', () => {
 
     const Target = createTestComponent(TestDemo, target => {
       const resultTheme = target.treeSelect.target.getTheme();
+      console.dir(resultTheme);
+      console.dir(expResult);
       exp(resultTheme).to.be.eql(expResult);
     });
     const cmp = mount(<Target/>);
