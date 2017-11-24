@@ -132,7 +132,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     if (this.isNotLimit(props)) {
       const { selectValue = [], selectedInfo, } = this.state;
-      this.updateStateValue(props, newState, id2ExtendInfo, selectValue, selectedInfo.value, []);
+      const { value, } = selectedInfo;
+      this.updateStateValue(props, newState, id2ExtendInfo, selectValue, value, Object.keys(value));
     } else {
       this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, props.value);
     }
@@ -156,7 +157,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const emptyValue = value === undefined || value === null || notString;
     value = emptyValue ? '' : value.trim();
     const { obj, val, } = this.getValueObject(value);
-    this.updateStateValue(props, state, id2ExtendInfo, [value,], obj, val);
+    this.updateStateValue(props, state, id2ExtendInfo, [ value, ], obj, val);
   }
 
   getValueObject (value: string) {
