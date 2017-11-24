@@ -116,19 +116,19 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   container: Object;
   dropMenu: ?Object;
-  displayValueArray: Array<string>;
   fontItem: Object;
   list: Object;
+  isUpdate: boolean;
   needMoreItem: boolean;
   oldWidth: number;
-  valueArray: Array<string>;
 
 
   constructor (props: InputTagProps) {
     super(props);
+    this.isUpdate = false;
     this.state = {
       items: [],
-      value: this.fetchValueObject(),
+      value: this.fetchValueObject(props),
     };
   }
 
@@ -140,9 +140,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
 
-  fetchValueObject (): Object {
+  fetchValueObject (props: InputTagProps): Object {
     const result = {};
-    const { value = '', displayValue = '', } = this.getValue();
+    const { value = '', displayValue = '', } = this.getValue(props);
     const valArray = value.split(separator);
     const displayValArray = displayValue.split(separator);
     const valLen = valArray.length;
@@ -156,8 +156,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return result;
   }
 
-  getValue (): { value: string, displayValue: string } {
-    const { props, } = this;
+  getValue (props: InputTagProps): { value: string, displayValue: string } {
     if (this.isLmit()) {
       const { value = '', displayValue = '', } = props;
       return { value, displayValue, };
@@ -169,6 +168,17 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   isLmit (): boolean {
     const { props, } = this;
     return ('value' in props === true);
+  }
+
+  componentWillReceiveProps (props: InputTagProps) {
+    if (this.isLmit()) {
+      this.setState({
+        value: this.fetchValueObject(props),
+      }, () => {
+        this.adaptiveItems(this.getOffSetWidth());
+      });
+
+    }
   }
 
   render () {
@@ -205,7 +215,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return <Theme config={theme}>
         <DropMenu menus={this.getItems()}
                   action={[]}
-                  hideAction={['click',]}
+                  hideAction={[ 'click', ]}
                   ref={cmp => {
                     this.dropMenu = cmp;
                   }}>
@@ -235,8 +245,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       for (let i = 0; i < valueLen; i++) {
         const key = keys[ i ];
         const { text, } = value[ key ];
-        this.valueArray.push(key);
-        this.displayValueArray.push(text);
         items.push({ key, value: text, });
       }
     }
@@ -246,8 +254,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   onClear = () => {
-    this.setState({ value: {}, }, async () => {
-      await this.adaptiveItems(this.getOffSetWidth());
+    this.setState({ value: {}, }, () => {
+      this.adaptiveItems(this.getOffSetWidth());
       this.onChange('', '');
     });
   };
@@ -257,15 +265,34 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)} key={key}/>;
   };
 
-  onDelItem = (key: string) => {
+  onDelItem = (targetKey: string) => {
     const { value, } = this.state;
-    if (value && value[ key ]) {
-      delete value[ key ];
-      this.setState({ value, }, async () => {
-        await this.adaptiveItems(this.getOffSetWidth());
-        this.onChange(this.valueArray.join(','), this.displayValueArray.join(','));
-      });
+    if (!value || !value[ targetKey ]) {
+      return;
     }
+    const keys = Object.keys(value);
+    const valueArray = [];
+    const displayValueArray = [];
+    const len = keys.length;
+    for (let i = 0; i < len; i++) {
+      const key = keys[ i ];
+      if (key !== targetKey) {
+        valueArray.push(key);
+        displayValueArray.push(value[ key ].text);
+      }
+    }
+
+    const onChange = () => {
+      this.onChange(valueArray.join(','), displayValueArray.join(','));
+    };
+
+    if (this.isLmit()) {
+      onChange();
+      return;
+    }
+    delete value[ targetKey ];
+    onChange();
+    this.adaptiveItems(this.getOffSetWidth());
   };
 
   onChange = (value: string, displayValue: string) => {
@@ -277,6 +304,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   componentDidMount () {
     const offSetWidth = this.getOffSetWidth();
     this.oldWidth = offSetWidth;
+
     this.adaptiveItems(offSetWidth);
   }
 
@@ -302,11 +330,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
+    if (this.isUpdate) {
+      return true;
+    }
+    this.isUpdate = true;
     const items = [];
     this.needMoreItem = false;
     const { value, } = this.state;
-    this.valueArray = [];
-    this.displayValueArray = [];
     if (value) {
       listWidth -= 20;
       let totalWidth = 0;
@@ -321,8 +351,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         if (totalWidth >= listWidth) {
           break;
         }
-        this.valueArray.push(key);
-        this.displayValueArray.push(text);
 
         items.push(<Item key={key} onCloseClick={this.onDelItem.bind(this, key)}>{text}</Item>);
       }
@@ -334,7 +362,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         items.push(this.getMoreItem());
       }
     }
-    this.setState({ items, });
+    this.setState({ items, }, () => {
+      this.isUpdate = false;
+    });
     return true;
   }
 

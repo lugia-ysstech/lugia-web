@@ -12,21 +12,33 @@ import * as Widget from '../consts/Widget';
 
 const valArr = [],
   dispArr = [];
-for (let i = 0; i < 100000; i++) {
+for (let i = 0; i < 10; i++) {
   valArr.push('k' + i);
   dispArr.push('v' + i);
 }
 const val = valArr.join(',');
 const disp = dispArr.join(',');
-const InputDemo = () => {
-  const onChange = v => {
-    // console.info(v);
+
+class InputDemo extends React.Component<any, any> {
+  constructor (props: any) {
+    super(props);
+    this.state = { value: val, displayValue: disp, };
+  }
+
+  render () {
+    // const { value, displayValue, } = this.state;
+    return [
+      <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
+        <InputTag
+          onChange={this.onChange}
+          defaultValue={val} defaultDisplayValue={disp}/>
+      </Theme>,];
+  }
+
+  onChange = ({ value, displayValue, }: Object) => {
+    // console.info(value, displayValue);
+    // this.setState({ value, displayValue, });
   };
-  return [
-    <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
-      <InputTag
-        onChange={onChange}
-        value={val} displayValue={disp}/>
-    </Theme>,];
-};
+}
+
 export default InputDemo;

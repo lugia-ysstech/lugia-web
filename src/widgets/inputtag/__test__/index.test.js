@@ -98,17 +98,17 @@ describe('InputTag', () => {
   }
 
 
-  it('完全显示3个 , 点击第一个的删除图标', async () => {
+  it('完全显示3个 , 点击第一个的删除图标 onChange事件 非受限组件 default', async () => {
     let InputTagTest;
     const onChangePromise = new Promise(resolve => {
       const onChange = (v: Object) => {
         resolve(v);
       };
-      InputTagTest = createInputTagTest({ displayValue, value, onChange, });
+      InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, onChange, });
     });
     const result = new Promise(async resolve => {
 
-      await renderInputTag(InputTagTest, 5, async cmp => {
+      await renderInputTag(InputTagTest, 1, async cmp => {
         cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
         await delay(0, () => {
           cmp.instance().forceUpdate();
@@ -143,7 +143,7 @@ describe('InputTag', () => {
           cmp.update();
           exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
-          exp(cmp.find(Widgets.Icon).length).to.be.equal(3);
+          exp(cmp.find(Widgets.Icon).length).to.be.equal(4);
           resolve(true);
         });
       });
@@ -173,10 +173,10 @@ describe('InputTag', () => {
       funcMock.forever(fontWidth);
     }
     const cmp = mount(<InputTagTest/>);
-    await delay(0, () => {
+    await delay(0, async () => {
       cmp.instance().forceUpdate();
       cmp.update();
-      callback(cmp);
+      await callback(cmp);
     });
     mockInputTagPrototye.resetAll();
   }
