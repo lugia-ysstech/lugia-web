@@ -397,7 +397,6 @@ class TreeUtils {
 
   initAllNodeIndexAndTopRoot (nodes: Array<RowData>,
                               id2nodeExpandInfo: NodeId2ExtendInfo) {
-    console.info('a');
     const childrenIdx = [];
     if (!id2nodeExpandInfo[ VirtualRoot ]) {
       const begats = nodes.length;
