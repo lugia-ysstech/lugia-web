@@ -63,6 +63,7 @@ const OutContainer = styled.div`
 `;
 const IconButton: Object = styled(Icon)`
   top: 50%;
+  right: 0px;
   position: absolute;
   margin-top: -8px;
   color: rgba(0,0,0,.25);
