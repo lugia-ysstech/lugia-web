@@ -33,6 +33,7 @@ type InputTagProps = {
   defaultValue?: string,
   defaultDisplayValue?: string,
   onClick?: Function,
+  onPopupVisibleChange?: Function,
 };
 const Clear = 'sv-icon-close-circled';
 type InputTagState = {
@@ -213,6 +214,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
       return <Theme config={theme}>
         <DropMenu menus={this.getItems()}
+                  onPopupVisibleChange={this.onPopupVisibleChange}
                   action={[]}
                   hideAction={['click',]}
                   ref={cmp => {
@@ -333,7 +335,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     this.needMoreItem = false;
     const { value, } = this.state;
     if (value) {
-      listWidth -= 20;
+      listWidth -= 36;
       let totalWidth = 0;
       const keys = Object.keys(value);
       const valueLen = keys.length;
@@ -365,11 +367,17 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return <MoreItem items={this.props.value} onClick={this.onMoreClick} key="sv_more_item"/>;
   }
 
-  onMoreClick = () => {
+  onMoreClick = (e: Object) => {
     if (this.dropMenu && this.dropMenu.target && this.dropMenu.target.trigger) {
       this.dropMenu.target.trigger.target.setPopupVisible(true);
+      e.preventDefault();
+      e.stopPropagation();
     }
   };
+  onPopupVisibleChange = (visible: boolean) => {
+    const {onPopupVisibleChange,} = this.props;
+    onPopupVisibleChange && onPopupVisibleChange(visible);
+  }
 
 }
 

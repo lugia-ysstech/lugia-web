@@ -16,6 +16,7 @@ type DropMenuProps = {
   hideAction: Array<string>,
   menus: React.Node,
   children: React.Element<any>,
+  onPopupVisibleChange?: Function,
   getTheme: Function,
 };
 const MenuContainer = styled.div`
@@ -63,6 +64,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       [Widget.Trigger]: { width: this.state.trigerWidth, },
     };
     return <Theme config={menuConfig}> <Trigger
+      onPopupVisibleChange={this.onPopupVisibleChange}
       ref={cmp => this.trigger = cmp}
       align="bottomLeft"
       action={action}
@@ -81,6 +83,11 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   componentDidUpdate () {
     this.autoMenuWidth();
   }
+
+  onPopupVisibleChange = (visible: boolean) => {
+    const { onPopupVisibleChange, } = this.props;
+    onPopupVisibleChange && onPopupVisibleChange(visible);
+  };
 
   autoMenuWidth () {
     if (!this.isAutoTriggerWidth) {
