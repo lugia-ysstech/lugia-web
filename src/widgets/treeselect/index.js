@@ -47,6 +47,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
   state: TreeSelectState;
 
+  treeTriger: Object;
+
   constructor (props: TreeSelectProps) {
     super(props);
     this.state = {
@@ -75,12 +77,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const tree = [<QueryInput onChange={this.onQueryTree}><Input/></QueryInput>,
       <Tree data={data} onChange={this.onTreeChange} {...props} className="sv" query={query} value={value}>
       </Tree>,];
+    const getTreeTriger: Function = (cmp: Object) => {
+      this.treeTriger = cmp;
+    };
     return <Theme config={this.getTheme()}>
       <Trigger popup={tree}
+               onPopupVisibleChange={this.onTreePopupVisibleChange}
                align="bottomLeft"
+               ref={getTreeTriger}
                action={['click',]}
                hideAction={['click',]}>
-        <InputTag value={value} displayValue={displayValue} onChange={this.onInputTagChange}/>
+        <InputTag value={value} displayValue={displayValue} onChange={this.onInputTagChange}
+                  onPopupVisibleChange={this.onInputTagPopupVisibleChange}/>
       </Trigger>
     </Theme>;
   }
@@ -91,6 +99,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.setState({ query: value, });
   };
 
+  onInputTagPopupVisibleChange = (visible: boolean) => {
+    this.setTreePopupVisible(!visible);
+  };
+
+  onTreePopupVisibleChange = (visible: boolean) => {
+
+  };
+
   onInputTagChange = ({ value, displayValue, }: Object) => {
     this.setState({ value, displayValue, });
   };
@@ -98,6 +114,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
     this.setState({ value: value.join(','), displayValue: displayValue.join(','), });
   };
+
+
+  setTreePopupVisible (visible: boolean) {
+    if (this.treeTriger && this.treeTriger.target) {
+      this.treeTriger.target.setPopupVisible(visible);
+    }
+  }
+
 
   getTheme (): Object {
     const { getTheme = () => ({}), } = this.props;

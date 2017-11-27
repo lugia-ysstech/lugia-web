@@ -368,14 +368,20 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   onMoreClick = (e: Object) => {
-    if (this.dropMenu && this.dropMenu.target && this.dropMenu.target.trigger) {
-      this.dropMenu.target.trigger.target.setPopupVisible(true);
-      e.preventDefault();
-      e.stopPropagation();
-    }
+    this.setPopupVisible(true);
+    e.preventDefault();
+    e.stopPropagation();
   };
+
+  setPopupVisible (visible: boolean) {
+    if (this.dropMenu && this.dropMenu.target && this.dropMenu.target.trigger) {
+      this.dropMenu.target.trigger.target.setPopupVisible(visible);
+
+    }
+  }
+
   onPopupVisibleChange = (visible: boolean) => {
-    const {onPopupVisibleChange,} = this.props;
+    const { onPopupVisibleChange, } = this.props;
     onPopupVisibleChange && onPopupVisibleChange(visible);
   }
 
