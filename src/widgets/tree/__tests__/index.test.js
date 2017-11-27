@@ -242,7 +242,7 @@ describe('Tree', () => {
 
     const result = await res;
     exp(cmp.find('.' + Selected).length).to.be.equal(1);
-    exp(result).to.be.eql(['1.1', '', '1.2.1',]);
+    exp(result).to.be.eql([['1.1',], ['',], ['1.2.1',],]);
   });
 
   it('props: value: 1 mutliple: false onChange监听 limit', async () => {
@@ -300,7 +300,7 @@ describe('Tree', () => {
     checkSelectStatus();
     const result = await res;
     cmp.find(CheckBox);
-    exp(result).to.be.eql(['1.1', '1.1', '1.2.1',]);
+    exp(result).to.be.eql([['1.1',], ['1.1',], ['1.2.1',],]);
   });
 
 
