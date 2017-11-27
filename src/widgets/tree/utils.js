@@ -806,6 +806,23 @@ class TreeUtils {
     return null;
   }
 
+  getTitle (value: Array<string>, id2ExtendInfo: NodeId2ExtendInfo): Array<string> {
+    if (!value || value.length === 0) {
+      return [];
+    }
+    const result = [];
+    const len = value.length;
+    for (let i = 0; i < len; i++) {
+      const key = value[ i ];
+      const row = this.getRow(key, id2ExtendInfo);
+      if (row) {
+        const { title, } = row;
+        result.push(title);
+      }
+    }
+    return result;
+  }
+
   updateSelectedStatusForChildren (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
 
     const datas = this.treeData;

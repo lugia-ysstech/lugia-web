@@ -157,7 +157,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const emptyValue = value === undefined || value === null || notString;
     value = emptyValue ? '' : value.trim();
     const { obj, val, } = this.getValueObject(value);
-    this.updateStateValue(props, state, id2ExtendInfo, [ value, ], obj, val);
+    this.updateStateValue(props, state, id2ExtendInfo, [value,], obj, val);
   }
 
   getValueObject (value: string) {
@@ -308,7 +308,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         return;
       }
     }
-    this.onChange(value);
+    this.onChange([value,]);
     if (this.isNotLimit(props)) {
       this.setState({ selectValue, });
     }
@@ -344,8 +344,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   onChange = (value: any) => {
     this.value = value;
-    const { onChange, } = this.props;
-    onChange && onChange(this.value);
+    const { props, } = this;
+    const { onChange, } = props;
+    if (onChange) {
+      const { expand, } = this.state;
+      const { id2ExtendInfo, } = expand;
+      const utils = this.getUtils(props);
+      onChange(value, utils.getTitle(value, id2ExtendInfo));
+    }
   };
 
   onExpand = (expandedKeys: Array<string>, event: { expanded: boolean, node: Object, }) => {

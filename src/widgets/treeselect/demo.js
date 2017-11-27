@@ -50,6 +50,6 @@ const rowData: Array<Object> = [
 export default () => {
   const config = { [ Widget.TreeSelect ]: { width: 300, }, };
   return <Theme config={config}>
-    <TreeSelect data={rowData}/>
+    <TreeSelect data={rowData} mutliple onlyS/>
   </Theme>;
 };

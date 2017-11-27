@@ -172,8 +172,11 @@ class LimitTree extends React.Component<Object, Object> {
     </Tree>, <button onClick={this.onClick}></button>,];
   }
 
-  onChange = value => {
-    this.setState({ value: value.join(','), });
+  onChange = (value, displayValue) => {
+
+    this.setState({ value: value.join(','), }, () => {
+    });
+
   };
   all: boolean;
   onClick = () => {

@@ -19,9 +19,17 @@ import styled from 'styled-components';
 type TreeSelectProps = {
   data: Array<Object>,
   getTheme?: Function,
+  value?: string,
+  displayValue?: string,
+  defaultValue?: string,
+  mutliple: boolean,
+  onlySelectLeaf: boolean,
+  defaultDisplayValue?: string,
 };
 type TreeSelectState = {
   open: boolean,
+  value: string,
+  displayValue: string,
   query: string,
 };
 const QueryInputPadding = 3;
@@ -34,6 +42,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     getTheme () {
       return {};
     },
+    mutliple: false,
+    onlySelectLeaf: false,
   };
   state: TreeSelectState;
 
@@ -42,6 +52,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.state = {
       open: false,
       query: '',
+      value: '',
+      displayValue: '',
     };
   }
 
@@ -52,24 +64,23 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       return true;
     }
     const { state, } = this;
-    return state.query !== nextState.query;
+    return state.query !== nextState.query
+      || state.value !== nextState.value;
   }
 
   render () {
     const { props, state, } = this;
     const { data, } = props;
-    const { query, } = state;
-    console.info('treee select ', query);
-
+    const { query, value, displayValue, } = state;
     const tree = [<QueryInput onChange={this.onQueryTree}><Input/></QueryInput>,
-      <Tree data={data} onChange={this.onTreeChange} {...props} className="sv" query={query}>
+      <Tree data={data} onChange={this.onTreeChange} {...props} className="sv" query={query} value={value}>
       </Tree>,];
     return <Theme config={this.getTheme()}>
       <Trigger popup={tree}
                align="bottomLeft"
                action={['click',]}
                hideAction={['click',]}>
-        <InputTag/>
+        <InputTag value={value} displayValue={displayValue} onChange={this.onInputTagChange}/>
       </Trigger>
     </Theme>;
   }
@@ -77,12 +88,15 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   onQueryTree = (event: Object) => {
     const { target, } = event;
     const { value, } = target;
-    console.info(value);
     this.setState({ query: value, });
   };
 
-  onTreeChange = (value: Array<string>) => {
-    console.info(value);
+  onInputTagChange = ({ value, displayValue, }: Object) => {
+    this.setState({ value, displayValue, });
+  };
+
+  onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
+    this.setState({ value: value.join(','), displayValue: displayValue.join(','), });
   };
 
   getTheme (): Object {
