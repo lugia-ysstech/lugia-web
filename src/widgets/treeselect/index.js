@@ -15,6 +15,7 @@ import 'babel-polyfill';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import styled from 'styled-components';
+import Support from '../common/FormFieldWidgetSupport';
 
 type TreeSelectProps = {
   data: Array<Object>,
@@ -51,12 +52,22 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   constructor (props: TreeSelectProps) {
     super(props);
+    const { value, displayValue, } = this.getInitValue(props);
     this.state = {
       open: false,
       query: '',
-      value: '',
-      displayValue: '',
+      value,
+      displayValue,
     };
+  }
+
+  getInitValue (props: TreeSelectProps) {
+    return Support.getCodeItem(props);
+
+  }
+
+  isNotLimit (props: TreeSelectProps) {
+    return Support.isNotLimit(props);
   }
 
   shouldComponentUpdate (nexProps: TreeSelectProps, nextState: TreeSelectState) {

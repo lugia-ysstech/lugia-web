@@ -8,13 +8,14 @@ import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, } from 'sv-widge
 import animation from '../common/openAnimation';
 import * as React from 'react';
 import { TreeNode, } from './rc-tree';
-
+import Support from '../common/FormFieldWidgetSupport';
 import ThemeProvider from '../common/ThemeProvider';
 import ThrottleTree from './ThrottleTree';
 import * as Widget from '../consts/Widget';
 import '../css/sv.css';
 import './index.css';
 import TreeUtils from './utils';
+import styled from 'styled-components';
 import 'babel-polyfill';
 
 type RowData = {
@@ -57,7 +58,12 @@ type TreeState = {
   expandedKeys: Array<string>,
   selectValue?: Array<string>,
 }
-
+const Empty = styled.span`
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  display: block;
+`;
 
 class Tree extends React.Component<TreeProps, TreeState> {
 
@@ -101,21 +107,18 @@ class Tree extends React.Component<TreeProps, TreeState> {
       selectValue: [],
       selectedInfo: this.getEmptyNodeId2SelectInfo(),
     };
-    this.updateStateValuForLimitValue(props, state, id2ExtendInfo, this.getInitValue());
+    this.updateStateValuForLimitValue(props, state, id2ExtendInfo, this.getInitValue(props));
     this.state = state;
 
   }
 
-  getInitValue () {
-    const { props, } = this;
+  getInitValue (props: TreeProps) {
+    return Support.getInitValue(props);
 
-    if (this.isNotLimit(props)) {
-      const { defaultValue = '', } = props;
-      return defaultValue;
-    }
+  }
 
-    const { value = '', } = props;
-    return value;
+  isNotLimit (props: TreeProps) {
+    return Support.isNotLimit(props);
   }
 
 
@@ -140,9 +143,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.setState(newState);
   }
 
-  isNotLimit (props: TreeProps) {
-    return ('value' in props) === false;
-  }
 
   getEmptyNodeId2SelectInfo (): NodeId2SelectInfo {
     return {
@@ -261,8 +261,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render () {
     const { props, state, } = this;
+    const empty = <Empty>查无结果</Empty>;
     if (this.isEmpty(props)) {
-      return <span></span>;
+      return empty;
     }
     const {
       query,
@@ -272,6 +273,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { checked, halfchecked, } = selectedInfo;
     const utils = this.getUtils(props);
     const data = utils.search(expand, query);
+    if (data.length === 0) {
+      return empty;
+    }
     if (this.isQueryAll(props)) {
       this.allStart = start;
     }
@@ -347,12 +351,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { props, } = this;
     const { onChange, } = props;
     if (onChange) {
-      const { expand, } = this.state;
-      const { id2ExtendInfo, } = expand;
-      const utils = this.getUtils(props);
-      onChange(value, utils.getTitle(value, id2ExtendInfo));
+      onChange(value, this.getTitle(value));
     }
   };
+
+  getTitle (value: Array<string>): Array<string> {
+    const { id2ExtendInfo, } = this.allExpandInfo;
+    return this.queryAllUtils.getTitle(value, id2ExtendInfo);
+  }
 
   onExpand = (expandedKeys: Array<string>, event: { expanded: boolean, node: Object, }) => {
     const { props, state, } = this;

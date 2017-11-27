@@ -31,8 +31,36 @@ function getNumberValue (props: any, state: any): number {
   return value;
 }
 
+
+function getInitValue (props: any) {
+  if (isNotLimit(props)) {
+    const { defaultValue = '', } = props;
+    return defaultValue;
+  }
+
+  const { value = '', } = props;
+  return value;
+}
+
+function getInitCodeItem (props: any): { value: string, displayValue: string } {
+  if (!isNotLimit(props)) {
+    const { value = '', displayValue = '', } = props;
+    return { value, displayValue, };
+  }
+  const { defaultValue: value = '', defaultDisplayValue: displayValue = '', } = props;
+  return { value, displayValue, };
+}
+
+
+function isNotLimit (props: any) {
+  return ('value' in props) === false;
+}
+
 export default {
   getValue,
   getNumberValue,
   getObjectValue,
+  getInitValue,
+  isNotLimit,
+  getCodeItem: getInitCodeItem,
 };

@@ -19,6 +19,7 @@ import * as Widget from '../consts/Widget';
 import Theme from '../theme';
 import DropMenu from '../dropmenu';
 import Menu from '../menu';
+import Support from '../common/FormFieldWidgetSupport';
 
 const { MenuItem, } = Menu;
 type ValuItem = {
@@ -157,17 +158,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getValue (props: InputTagProps): { value: string, displayValue: string } {
-    if (this.isLmit()) {
-      const { value = '', displayValue = '', } = props;
-      return { value, displayValue, };
-    }
-    const { defaultValue: value = '', defaultDisplayValue: displayValue = '', } = props;
-    return { value, displayValue, };
+    return Support.getCodeItem(props);
   }
 
   isLmit (): boolean {
     const { props, } = this;
-    return ('value' in props === true);
+    return !Support.isNotLimit(props);
   }
 
   componentWillReceiveProps (props: InputTagProps) {
