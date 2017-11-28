@@ -210,6 +210,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     if (visible) {
       const { onTrigger, } = this.props;
       onTrigger && onTrigger();
+      this.setState({ query: '', });
     }
   };
 
