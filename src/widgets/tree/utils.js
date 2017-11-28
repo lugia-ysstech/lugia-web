@@ -66,9 +66,9 @@ class TreeUtils {
   onlySelectLeaf: boolean;
   notInTree: { [key: string]: string };
   displayField: string;
-
+  igronSelectField: ?string;
   constructor (treeData: Array<RowData>, config: Object) {
-    const { expandAll, onlySelectLeaf = false, displayField = 'title', } = config;
+    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField} = config;
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
@@ -81,6 +81,7 @@ class TreeUtils {
     this.onlySelectLeaf = onlySelectLeaf;
     this.displayField = displayField;
     this.notInTree = {};
+    this.igronSelectField = igronSelectField;
     return this;
   }
 
@@ -836,8 +837,11 @@ class TreeUtils {
           const { checked, value, } = selectInfo;
           checked[ key ] = true;
           const { isLeaf = false, } = row;
-
-          if (!value[ key ] && (isLeaf || !this.onlySelectLeaf)) {
+          let canSelect = true;
+          if(this.igronSelectField){
+            canSelect = !!row[this.igronSelectField] === false; 
+          }
+          if (!value[ key ] && (isLeaf || !this.onlySelectLeaf) && canSelect) {
             value[ key ] = true;
           }
 
