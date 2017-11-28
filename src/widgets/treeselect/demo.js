@@ -109,11 +109,18 @@ export default class extends React.Component<any, any> {
   render () {
     const config = { [ Widget.TreeSelect ]: { width: 300, }, };
     return <Theme config={config}>
-      <TreeSelect data={this.state.data} canInput onTrigger={this.onTrigger} defaultValue="a,b,c,4" defaultDisplayValue="我,你,他,4"
-                  expandAll/>
+      <TreeSelect data={this.state.data}
+                  onTrigger={this.onTrigger}
+                  defaultValue="a,b,c,4"
+                  defaultDisplayValue="我,你,他,4"
+                  mutliple
+                  expandAll onChange={this.onChange}/>
     </Theme>;
   }
 
+  onChange = (obj: Object) => {
+    console.info(obj);
+  };
   onTrigger = () => {
     this.setState({ data: bigTree, });
   };
