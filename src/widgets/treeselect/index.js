@@ -230,9 +230,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         value.push(key);
         displayValue.push(title);
       }
-      this.setValue(value, displayValue, { selectAll: true, });
+      this.setValue(value, displayValue, { selectAll: true, }, () => {
+        this.oldValue = this.state.value;
+      });
     } else {
-      this.setValue(['',], ['',], { selectAll: false, });
+
+      this.setValue([], [], { selectAll: false, }, () => {
+        this.oldValue = this.state.value;
+      });
     }
   };
 
@@ -254,7 +259,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         selectCount = this.inputTag.target.getCount();
       }
       this.setState({ query: '', selectCount, });
-
     } else {
       this.onChange();
     }
@@ -273,7 +277,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.setValue(value, displayValue, {});
   };
 
-  setValue (value: Array<string>, displayValue: Array<string>, other: Object = {}, callback = () => {}) {
+  setValue (value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
     let valStr = '', dispStr = '';
     if (!value || value.length === 0) {
       other.selectAll = false;
