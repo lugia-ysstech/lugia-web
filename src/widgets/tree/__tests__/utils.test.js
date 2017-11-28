@@ -3039,7 +3039,7 @@ describe('utils', () => {
     const id2ExtendInfo = {};
     utils.initAllNodeIndexAndTopRoot(datas, id2ExtendInfo);
 
-    const result = utils.value2SelectInfo(Object.keys(value), value, id2ExtendInfo);
+    const result = utils.value2SelectInfo(Object.keys(value), [], value, id2ExtendInfo);
     exp(result).to.be.eql(
       {
         halfchecked: {
@@ -3071,7 +3071,7 @@ describe('utils', () => {
     const id2ExtendInfo = {};
     utils.initAllNodeIndexAndTopRoot(datas, id2ExtendInfo);
 
-    const result = utils.value2SelectInfo(Object.keys(value), value, id2ExtendInfo);
+    const result = utils.value2SelectInfo(Object.keys(value), [], value, id2ExtendInfo);
     exp(result).to.be.eql(
       {
         halfchecked: {
@@ -3106,7 +3106,7 @@ describe('utils', () => {
     const id2ExtendInfo = {};
     utils.initAllNodeIndexAndTopRoot(datas, id2ExtendInfo);
 
-    const result = utils.value2SelectInfo(Object.keys(value), value, id2ExtendInfo);
+    const result = utils.value2SelectInfo(Object.keys(value), [], value, id2ExtendInfo);
     exp(result).to.be.eql(
       {
         halfchecked: {
@@ -3142,7 +3142,7 @@ describe('utils', () => {
     const id2ExtendInfo = {};
     utils.initAllNodeIndexAndTopRoot(datas, id2ExtendInfo);
 
-    const result = utils.value2SelectInfo(Object.keys(value), value, id2ExtendInfo);
+    const result = utils.value2SelectInfo(Object.keys(value), [], value, id2ExtendInfo);
     exp(result).to.be.eql(
       {
         halfchecked: {
@@ -3188,7 +3188,7 @@ describe('utils', () => {
 
     utils.search(expandInfo, '1.3.1.a');
 
-    let result = utils.value2SelectInfo(Object.keys(selectedInfo.value), selectedInfo.value, expandInfo.id2ExtendInfo);
+    let result = utils.value2SelectInfo(Object.keys(selectedInfo.value), [], selectedInfo.value, expandInfo.id2ExtendInfo);
     exp(result).to.be.eql({
       halfchecked: {},
       checked: {},
@@ -3201,7 +3201,7 @@ describe('utils', () => {
       },
     });
     utils.search(expandInfo, '');
-    result = utils.value2SelectInfo(Object.keys(selectedInfo.value), selectedInfo.value, expandInfo.id2ExtendInfo);
+    result = utils.value2SelectInfo(Object.keys(selectedInfo.value), [], selectedInfo.value, expandInfo.id2ExtendInfo);
     exp(result).to.be.eql({
       halfchecked: {
         [getKey('1')]: 5,
@@ -3235,7 +3235,7 @@ describe('utils', () => {
       [getKey('1.3.1.1')]: true,
       [getKey('1.3.1.2')]: true,
     };
-    const result = utils.value2SelectInfo(Object.keys(valueObj), valueObj, id2ExtendInfo);
+    const result = utils.value2SelectInfo(Object.keys(valueObj), [], valueObj, id2ExtendInfo);
     exp(result).to.be.eql({
       halfchecked: {
         [getKey('1')]: 5,
@@ -3256,7 +3256,7 @@ describe('utils', () => {
     const id2ExtendInfo = {};
 
 
-    const result = utils.value2SelectInfo([], {}, id2ExtendInfo);
+    const result = utils.value2SelectInfo([], [], {}, id2ExtendInfo);
     exp(result).to.be.eql({
       halfchecked: {},
       checked: {},
@@ -3277,7 +3277,7 @@ describe('utils', () => {
     const id2ExtendInfo = {};
     utils.initAllNodeIndexAndTopRoot(datas, id2ExtendInfo);
 
-    const result = utils.value2SelectInfo(Object.keys(value), value, id2ExtendInfo);
+    const result = utils.value2SelectInfo(Object.keys(value), [], value, id2ExtendInfo);
     exp(result).to.be.eql(
       {
         halfchecked: {
@@ -3335,8 +3335,7 @@ describe('utils', () => {
 
     utils = new TreeUtils(datas, { expandAll: true, });
 
-    const result = utils.value2SelectInfo(Object.keys(value), value, id2ExtendInfo);
-    console.info(result);
+    const result = utils.value2SelectInfo(Object.keys(value), [], value, id2ExtendInfo);
     exp(result).to.be.eql(
       {
         halfchecked: {
@@ -3359,6 +3358,182 @@ describe('utils', () => {
         },
       }
     );
+  });
+
+  it('value2SelectInfo  选择根目录下的叶子结点', () => {
+
+    const value = {
+      [getKey('4')]: true,
+    };
+
+    const id2ExtendInfo = {};
+
+    utils = new TreeUtils(datas, { expandAll: true, });
+
+    const result = utils.value2SelectInfo(Object.keys(value), [], value, id2ExtendInfo);
+    exp(result).to.be.eql(
+      {
+        halfchecked: {},
+        checked: {
+          [getKey('4')]: true,
+        },
+        value: {
+          [getKey('4')]: true,
+        },
+      }
+    );
+  });
+  it('value2SelectInfo  存在不包含在树形数据的值 显示值在displayValue里有的', () => {
+
+    const value = {
+      [getKey('4')]: true,
+      [getKey('100')]: true,
+    };
+
+    const id2ExtendInfo = {};
+
+    utils = new TreeUtils(datas, { expandAll: true, });
+
+    const result = utils.value2SelectInfo(Object.keys(value), ['4', '我',], value, id2ExtendInfo);
+
+    exp(result).to.be.eql(
+      {
+        halfchecked: {},
+        checked: {
+          [getKey('4')]: true,
+        },
+        value: {
+          [getKey('4')]: true,
+          [getKey('100')]: true,
+        },
+      }
+    );
+    exp(utils.getTitle(Object.keys(value), id2ExtendInfo)).to.be.eql(['4', '我',]);
+  });
+
+  it('value2SelectInfo  存在不包含在树形数据的值 显示值在displayValue没有的 displayValue就是value 缺失一个displayValue', () => {
+
+    const value = {
+      [getKey('4')]: true,
+      [getKey('100')]: true,
+    };
+
+    const id2ExtendInfo = {};
+
+    utils = new TreeUtils(datas, { expandAll: true, });
+
+    const result = utils.value2SelectInfo(Object.keys(value), ['4',], value, id2ExtendInfo);
+
+    exp(result).to.be.eql(
+      {
+        halfchecked: {},
+        checked: {
+          [getKey('4')]: true,
+        },
+        value: {
+          [getKey('4')]: true,
+          [getKey('100')]: true,
+        },
+      }
+    );
+    exp(utils.getTitle(['4', '100',], id2ExtendInfo)).to.be.eql(['4', '100',]);
+  });
+  it('value2SelectInfo  存在不包含在树形数据的值 显示值在displayValue没有的 displayValue就是value 缺失多个displayValue', () => {
+
+    const value = {
+      [getKey('4')]: true,
+      [getKey('100')]: true,
+      [getKey('101')]: true,
+      [getKey('102')]: true,
+    };
+
+    const id2ExtendInfo = {};
+
+    utils = new TreeUtils(datas, { expandAll: true, });
+
+    const result = utils.value2SelectInfo(Object.keys(value), ['4',], value, id2ExtendInfo);
+
+    exp(result).to.be.eql(
+      {
+        halfchecked: {},
+        checked: {
+          [getKey('4')]: true,
+        },
+        value: {
+          [getKey('4')]: true,
+          [getKey('100')]: true,
+          [getKey('101')]: true,
+          [getKey('102')]: true,
+        },
+      }
+    );
+    exp(utils.getTitle(Object.keys(value), id2ExtendInfo)).to.be.eql(['4', '100', '101', '102',]);
+  });
+
+  it('value2SelectInfo  存在不包含在树形数据的值 显示值在displayValue没有的 displayValue就是value 缺失多个displayValue', () => {
+
+    const value = {
+      [getKey('4')]: true,
+      [getKey('100')]: true,
+      [getKey('101')]: true,
+      [getKey('102')]: true,
+    };
+
+    const id2ExtendInfo = {};
+    const titleDatas = [
+      { key: '1', title: '1', },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
+      { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
+      { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+      { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+      { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
+
+      { key: '1.3', title: '1.3', pid: '1', path: '1', },
+      { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+
+      { key: '2', title: '2', },
+      { key: '2.1', title: '2.1', pid: '2', path: '2', },
+      { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
+      { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
+      { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
+      { key: '2.2', title: '2.2', pid: '2', path: '2', },
+      { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
+      { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+      { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+      { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
+
+      { key: '3', title: '3', },
+      { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+      { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+      { key: '4', title: '你好', isLeaf: true, },];
+    utils = new TreeUtils(titleDatas, { expandAll: true, });
+
+    const result = utils.value2SelectInfo(Object.keys(value), ['4',], value, id2ExtendInfo);
+
+    exp(result).to.be.eql(
+      {
+        halfchecked: {},
+        checked: {
+          [getKey('4')]: true,
+        },
+        value: {
+          [getKey('4')]: true,
+          [getKey('100')]: true,
+          [getKey('101')]: true,
+          [getKey('102')]: true,
+        },
+      }
+    );
+    exp(utils.getTitle(Object.keys(value), id2ExtendInfo)).to.be.eql(['你好', '100', '101', '102',]);
   });
 
 });

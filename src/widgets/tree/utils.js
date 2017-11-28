@@ -72,6 +72,7 @@ class TreeUtils {
   oldVersion: number;
   expandAll: boolean;
   onlySelectLeaf: boolean;
+  notInTree: { [key: string]: string };
 
   constructor (treeData: Array<RowData>, config: Object) {
     const { expandAll, onlySelectLeaf = false, } = config;
@@ -85,6 +86,7 @@ class TreeUtils {
     this.expandAll = expandAll;
     this.catchPathArray = {};
     this.onlySelectLeaf = onlySelectLeaf;
+    this.notInTree = {};
     return this;
   }
 
@@ -818,6 +820,8 @@ class TreeUtils {
       if (row) {
         const { title, } = row;
         result.push(title);
+      } else {
+        result.push(this.notInTree[ key ]);
       }
     }
     return result;
@@ -911,11 +915,12 @@ class TreeUtils {
   }
 
 
-  value2SelectInfo (keys: Array<string>, oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
+  value2SelectInfo (keys: Array<string>, displayValue: Array<string>, oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
     const len = keys.length;
     if (!oldValue || !len) {
       return { value: {}, halfchecked: {}, checked: {}, };
     }
+    const value = {}, halfchecked = {}, checked = {};
 
     this.initAllNodeIndexAndTopRoot(this.treeData, id2ExtendInfo);
     const levelArray = [];
@@ -924,13 +929,16 @@ class TreeUtils {
     let nowPath = '';
     let nowPathIndex = 0;
     let currNodes = [];
+    const rootChildNode = [];
     for (let i = 0; i < len; i++) {
       const key = keys[ i ];
       const row = this.getRow(key, id2ExtendInfo);
       if (row) {
         const { isLeaf = false, path: rowPath, } = row;
         if (isLeaf) {
-          if (rowPath && nowPath != rowPath) {
+          if (!rowPath) {
+            rootChildNode.push(row);
+          } else if (nowPath != rowPath) {
             allPathArray[ nowPathIndex ] = this.getPathArray(rowPath);
             nowPath = rowPath;
             currNodes = path2Nodes[ nowPathIndex ] = [];
@@ -946,10 +954,13 @@ class TreeUtils {
           }
           rows.push(row);
         }
+      } else {
+        value[ key ] = true;
+        const disp = displayValue[ i ];
+        this.notInTree[ key ] = disp ? disp : key;
       }
     }
 
-    const value = {}, halfchecked = {}, checked = {};
     const selectedInfo = { value, halfchecked, checked, };
     const levelArrayLen = levelArray.length;
     for (let i = levelArrayLen - 1; i >= 0; i--) {
@@ -1000,6 +1011,11 @@ class TreeUtils {
           }
         }
       }
+    }
+    const rootChildNodeLen = rootChildNode.length;
+    for (let i = 0; i < rootChildNodeLen; i++) {
+      const { key, } = rootChildNode[ i ];
+      checked[ key ] = true;
     }
     return { value: oldValue, halfchecked, checked, };
   }
