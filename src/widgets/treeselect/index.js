@@ -26,6 +26,7 @@ type TreeSelectProps = {
   defaultValue?: string,
   mutliple: boolean,
   onlySelectLeaf: boolean,
+  igronSelectField?: string,
   defaultDisplayValue?: string,
 };
 type TreeSelectState = {

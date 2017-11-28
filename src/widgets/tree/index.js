@@ -18,7 +18,7 @@ import TreeUtils from './utils';
 import styled from 'styled-components';
 import 'babel-polyfill';
 
-type RowData = {[key: string]: any,}
+type RowData = { [key: string]: any, }
 type TreeProps = {
   getTheme: Function,
   start: number,
@@ -30,7 +30,7 @@ type TreeProps = {
   expandAll: boolean;
   onlySelectLeaf: boolean;
   displayField?: string,
-
+  igronSelectField?: string,
   value: ?string;
   displayValue: ? string;
   defaultValue: ?string;
@@ -301,14 +301,21 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const selVal = selectValue[ 0 ];
     const value = (selVal !== undefined && selVal !== null) ? selVal : '';
     const { props, } = this;
-    const { onlySelectLeaf = false, } = props;
-    if (onlySelectLeaf === true) {
+    const { onlySelectLeaf = false, igronSelectField = '', } = props;
+    if (onlySelectLeaf === true || igronSelectField) {
       const utils = this.getUtils(props);
       const { expand, } = this.state;
       const { id2ExtendInfo, } = expand;
       if (!utils.isLeaf(value, id2ExtendInfo)) {
         return;
       }
+      if (igronSelectField != '' && igronSelectField != undefined) {
+        const row = utils.getRow(value, id2ExtendInfo);
+        if (row && (!!row[ igronSelectField ] === true)) {
+          return;
+        }
+      }
+
     }
     this.onChange([value,]);
     if (this.isNotLimit(props)) {

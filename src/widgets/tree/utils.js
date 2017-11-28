@@ -68,7 +68,7 @@ class TreeUtils {
   displayField: string;
   igronSelectField: ?string;
   constructor (treeData: Array<RowData>, config: Object) {
-    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField} = config;
+    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField,} = config;
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
