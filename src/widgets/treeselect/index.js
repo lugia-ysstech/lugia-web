@@ -63,6 +63,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   treeTriger: Object;
   oldValue: string;
   treeVisible: boolean;
+
   constructor (props: TreeSelectProps) {
     super(props);
     const { value, displayValue, } = this.getInitValue(props);
@@ -229,9 +230,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   onInputTagChange = ({ value, displayValue, }: Object) => {
     this.setValue(value, displayValue, {}, () => {
-        if(this.treeVisible === false){
-          this.onChange();
-        }
+      if (this.treeVisible === false) {
+        this.onChange();
+      }
     });
   };
 
@@ -239,7 +240,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.setValue(value.join(','), displayValue.join(','), {});
   };
 
-  setValue (value: string, displayValue: string, other: Object, callback = () => {}) {
+  setValue (value: string, displayValue: string, other: Object = {}, callback = () => {}) {
+    if (!value || value.trim() === '') {
+      other.selectAll = false;
+    }
     this.setState({ value, displayValue, ...other, }, callback);
   }
 
