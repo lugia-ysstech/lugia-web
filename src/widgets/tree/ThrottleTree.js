@@ -18,14 +18,7 @@ import 'babel-polyfill';
 import styled from 'styled-components';
 
 const menuItemHeight = 18;
-type RowData = {
-  key: string,
-  title: string,
-  pid?: string,
-  children?: Array<RowData>,
-  path?: string,
-  isLeaf?: boolean,
-};
+type RowData = { [key: string]: any };
 
 const getTop = props => props.top;
 const getWidth = props => {
@@ -45,6 +38,7 @@ class ScrollerTree extends React.Component<any, any> {
   static defaultProps = {
     prefixCls: 'sv-tree',
     mutliple: false,
+    displayField: 'title',
     expandAll: false,
     onlySelectLeaf: false,
     showIcon: false,
@@ -63,6 +57,7 @@ class ScrollerTree extends React.Component<any, any> {
       className,
       data,
     } = this.props;
+
     const classString = classNames(
       `${prefixCls}-show-line`, className);
     if (data) {
@@ -96,8 +91,9 @@ class ScrollerTree extends React.Component<any, any> {
 
 
   loopNode = (data: Array<RowData>) => data.map(item => {
-    const { children, key, title, isLeaf, } = item;
-    const { selectable, } = this.props;
+
+    const { selectable, displayField, } = this.props;
+    const { children, key, [displayField]: title, isLeaf, } = item;
     if (children !== undefined) {
       return (
         <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>

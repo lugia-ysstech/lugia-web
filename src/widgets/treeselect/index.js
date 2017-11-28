@@ -22,6 +22,7 @@ type TreeSelectProps = {
   getTheme?: Function,
   value?: string,
   displayValue?: string,
+  displayField?: string,
   defaultValue?: string,
   mutliple: boolean,
   onlySelectLeaf: boolean,
@@ -86,7 +87,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { data, } = props;
     const { query, value, displayValue, } = state;
     const tree = [<QueryInput onChange={this.onQueryTree}><Input/></QueryInput>,
-      <Tree data={data} onChange={this.onTreeChange} {...props} className="sv" query={query} value={value}>
+      <Tree data={data} onChange={this.onTreeChange} {...props} className="sv" query={query} value={value}
+            displayValue={displayValue}>
       </Tree>,];
     const getTreeTriger: Function = (cmp: Object) => {
       this.treeTriger = cmp;
@@ -123,6 +125,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
+    console.info(value, displayValue);
     this.setState({ value: value.join(','), displayValue: displayValue.join(','), });
   };
 

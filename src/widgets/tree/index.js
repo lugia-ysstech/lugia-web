@@ -18,14 +18,7 @@ import TreeUtils from './utils';
 import styled from 'styled-components';
 import 'babel-polyfill';
 
-type RowData = {
-  key: string,
-  title: string,
-  pid?: string,
-  children?: Array<RowData>,
-  path?: string,
-  isLeaf?: boolean,
-};
+type RowData = {[key: string]: any,}
 type TreeProps = {
   getTheme: Function,
   start: number,
@@ -36,8 +29,10 @@ type TreeProps = {
   /** 默认展开所有树节点 */
   expandAll: boolean;
   onlySelectLeaf: boolean;
+  displayField?: string,
 
   value: ?string;
+  displayValue: ? string;
   defaultValue: ?string;
 
   /** 展开/收起节点时触发 */
@@ -174,11 +169,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
 
-  updateStateValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, selectValue: Array<string>, valueObject: Object, val: Array<string>) {
+  updateStateValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo,
+                    selectValue: Array<string>, valueObject: Object,
+                    val: Array<string>) {
+    const { displayValue = '', } = props;
     if (this.isSingleSelectForProps(props)) {
       state.selectValue = selectValue;
     } else {
-      state.selectedInfo = this.getUtils(props).value2SelectInfo(val, valueObject, id2ExtendInfo);
+      state.selectedInfo = this.getUtils(props).value2SelectInfo(val, displayValue ? displayValue.split(',') : [], valueObject, id2ExtendInfo);
     }
   }
 
@@ -245,11 +243,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
   }
 
-  createUtils ({ data, onlySelectLeaf, expandAll, }, realyExpandAll: boolean = expandAll): ?TreeUtils {
+  createUtils ({ data, onlySelectLeaf, expandAll, displayField, }, realyExpandAll: boolean = expandAll): ?TreeUtils {
     if (!data) {
       return null;
     }
-    return new TreeUtils(data, { expandAll: realyExpandAll, onlySelectLeaf, });
+    return new TreeUtils(data, { expandAll: realyExpandAll, onlySelectLeaf, displayField, });
   }
 
   getUtils (props: TreeProps) {
