@@ -109,8 +109,8 @@ export default class extends React.Component<any, any> {
   render () {
     const config = { [ Widget.TreeSelect ]: { width: 300, }, };
     return <Theme config={config}>
-      <TreeSelect data={this.state.data} onTrigger={this.onTrigger} defaultValue="a,b,c,4" defaultDisplayValue="我,你,他,4"
-                  expandAll mutliple/>
+      <TreeSelect data={this.state.data} canInput onTrigger={this.onTrigger} defaultValue="a,b,c,4" defaultDisplayValue="我,你,他,4"
+                  expandAll/>
     </Theme>;
   }
 

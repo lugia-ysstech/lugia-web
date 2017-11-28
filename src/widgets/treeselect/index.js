@@ -29,6 +29,7 @@ type TreeSelectProps = {
   onlySelectLeaf: boolean,
   igronSelectField?: string,
   onTrigger: Function,
+  canInput: boolean,
   defaultDisplayValue?: string,
 };
 type TreeSelectState = {
@@ -53,6 +54,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     },
     mutliple: false,
     onlySelectLeaf: false,
+    canInput: false,
     displayField: 'title',
   };
   state: TreeSelectState;
@@ -96,7 +98,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { props, state, } = this;
     const { data, } = props;
     const { query, value, displayValue, } = state;
-    const tree = [<QueryInput><Input onChange={this.onQueryTree} suffix={this.getSuffix()}/></QueryInput>,
+    const tree = [<QueryInput><Input value={this.state.query} onChange={this.onQueryTree} suffix={this.getSuffix()}
+                                      onKeyDown={this.onQueryKeyDown}/></QueryInput>,
       <Tree data={data} onChange={this.onTreeChange} {...props} className="sv" query={query} value={value}
             displayValue={displayValue}>
       </Tree>,];
@@ -117,13 +120,65 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getSuffix = () => {
-    const { mutliple, } = this.props;
-    if (mutliple) {
-      const iconClass = this.state.selectAll ? Checked : UnCheck;
-      return <Icon iconClass={iconClass} onClick={this.onSelectAll} viewClass={SelectedIcon}></Icon>;
+    const result = [];
+    if (this.isCanInput()) {
+      result.push(<Icon iconClass="sv-icon-plus" key="add" onClick={this.onAdd}
+                        viewClass={SelectedIcon}></Icon>);
     }
-    return null;
+    if (this.isMutliple()) {
+      const iconClass = this.state.selectAll ? Checked : UnCheck;
+      result.push(<Icon iconClass={iconClass} key="selAll" onClick={this.onSelectAll} viewClass={SelectedIcon}></Icon>);
+    }
+
+    return result;
   };
+
+  isMutliple () {
+    const { mutliple, } = this.props;
+    return mutliple;
+  }
+
+  isCanInput () {
+    const { canInput, } = this.props;
+    return canInput;
+  }
+
+  onQueryKeyDown = (e: Object) => {
+    if (e.keyCode === 13) {
+      this.appendValue();
+    }
+  };
+
+  onAdd = () => {
+    this.appendValue();
+  };
+
+  appendValue () {
+    const inputValue = this.state.query;
+    if (inputValue && inputValue.trim() && this.isCanInput()) {
+      if (this.isMutliple()) {
+        const { value = '', displayValue = '', } = this.state;
+
+
+        function joinValue (value: string) {
+          return value ? value + `,${inputValue}` : inputValue;
+        }
+
+        this.setState({
+          query: '',
+          value: joinValue(value),
+          displayValue: joinValue(displayValue),
+        });
+      } else {
+        this.setState({
+          query: '',
+          value: inputValue,
+          displayValue: inputValue,
+        });
+      }
+    }
+  }
+
 
   onSelectAll = () => {
 
@@ -186,7 +241,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       [Widget.Tree]: theme,
       [Widget.Trigger]: theme,
       [Widget.InputTag]: theme,
-      [SelectedIcon]: {color: '#d9d9d9', hoverColor: '#108ee9',},
+      [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9', },
       [Widget.Input]: Object.assign({}, theme, queryInputConfig),
     };
   }
