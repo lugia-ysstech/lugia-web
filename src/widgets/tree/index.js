@@ -90,6 +90,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.createQueryAllTreelUtils(props);
 
     if (this.isEmpty(props)) {
+      this.state = {
+        start: 0,
+        expandedKeys: [],
+        expand: this.getEmptyExpandInfo(),
+        selectValue: [],
+        selectedInfo: this.getEmptyNodeId2SelectInfo(),
+      };
       return;
     }
 
