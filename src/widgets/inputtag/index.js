@@ -250,11 +250,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     </Menu>;
   }
 
-  onClear = () => {
+  onClear = (e: Object) => {
     this.setState({ value: {}, }, () => {
       this.adaptiveItems(this.getOffSetWidth());
       this.onChange('', '');
     });
+    e.preventDefault();
+    e.stopPropagation();
   };
 
   getIcon = (item: Object) => {
