@@ -30,6 +30,7 @@ type InputTagProps = {
   getTheme: Function,
   onChange?: Function,
   value?: string,
+  mutliple: boolean,
   displayValue?: string,
   defaultValue?: string,
   defaultDisplayValue?: string,
@@ -115,6 +116,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     getTheme: () => {
       return {};
     },
+    mutliple: true,
   };
 
   container: Object;
@@ -146,8 +148,19 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   fetchValueObject (props: InputTagProps): Object {
     const result = {};
     const { value = '', displayValue = '', } = this.getValue(props);
-    const valArray = value && value.trim() !== '' ? value.split(separator) : [];
-    const displayValArray = displayValue && displayValue.trim() !== '' ? displayValue.split(separator) : [];
+
+    const isEmptyValue = !value || value.trim() === '';
+    if (this.props.mutliple === false) {
+      if (isEmptyValue) {
+        return {};
+      }
+      this.count = 1;
+      return { [value]: { text: displayValue, }, };
+    }
+
+    const isEmptyDisplayValue = !displayValue || displayValue.trim() === '';
+    const valArray = isEmptyValue ? [] : value.split(separator);
+    const displayValArray = isEmptyDisplayValue ? [] : displayValue.split(separator);
     const valLen = valArray.length;
     for (let i = 0; i < valLen; i++) {
       const val = valArray[ i ];

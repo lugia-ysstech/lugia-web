@@ -92,7 +92,7 @@ const rowData: Array<Object> = [
   { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
   { key: '4', title: '4', isLeaf: true, },
 ];
-
+console.info(rowData.length);
 
 export default class extends React.Component<any, any> {
   constructor (props: any) {
@@ -114,7 +114,7 @@ export default class extends React.Component<any, any> {
                   defaultValue="a,b,c,4"
                   limitCount={1}
                   defaultDisplayValue="我,你,他,4"
-                   mutliple
+                   // mutliple
                   expandAll onChange={this.onChange}/>
     </Theme>;
   }

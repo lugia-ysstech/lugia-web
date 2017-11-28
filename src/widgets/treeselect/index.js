@@ -150,7 +150,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
                ref={getTreeTriger}
                action={['click',]}
                hideAction={['click',]}>
-        <InputTag value={value} displayValue={displayValue} onChange={this.onInputTagChange}
+        <InputTag value={value} displayValue={displayValue} onChange={this.onInputTagChange} mutliple={this.isMutliple()}
                   ref={getInputTag}
                   onPopupVisibleChange={this.onInputTagPopupVisibleChange}/>
       </Trigger>
