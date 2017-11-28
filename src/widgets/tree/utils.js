@@ -66,10 +66,9 @@ class TreeUtils {
   onlySelectLeaf: boolean;
   notInTree: { [key: string]: string };
   displayField: string;
-  valueField: string;
 
   constructor (treeData: Array<RowData>, config: Object) {
-    const { expandAll, onlySelectLeaf = false, displayField = 'title', valueField = 'key', } = config;
+    const { expandAll, onlySelectLeaf = false, displayField = 'title', } = config;
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
@@ -81,7 +80,6 @@ class TreeUtils {
     this.catchPathArray = {};
     this.onlySelectLeaf = onlySelectLeaf;
     this.displayField = displayField;
-    this.valueField = 'key';
     this.notInTree = {};
     return this;
   }
