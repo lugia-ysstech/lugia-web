@@ -28,7 +28,7 @@ const ErrorDefine = {
   PidPathMustSameExist,
   PathNotContainerPid,
 };
-type RowData = {[key: string]: any};
+type RowData = { [key: string]: any };
 type ExpandInfo = {
   id2ExtendInfo: NodeId2ExtendInfo,
 }
@@ -67,8 +67,9 @@ class TreeUtils {
   notInTree: { [key: string]: string };
   displayField: string;
   igronSelectField: ?string;
+
   constructor (treeData: Array<RowData>, config: Object) {
-    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField,} = config;
+    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField, } = config;
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
@@ -709,7 +710,7 @@ class TreeUtils {
       halfchecked[ key ] = 1;
     }
     if (!isValue2SelectedInfo) {
-      value[ key ] = true;
+      this.selectRow(value, key, id2ExtendInfo, row);
     }
     const { path, } = row;
     this.updateSelectedStatusForParent(path, selectInfo, 1, TreeUtils.Selected, id2ExtendInfo);
@@ -791,7 +792,7 @@ class TreeUtils {
     return isLeaf;
   }
 
-  getRow (key: string, id2ExtendInfo: NodeId2ExtendInfo) {
+  getRow (key: string, id2ExtendInfo: NodeId2ExtendInfo): Object | null {
     if (!id2ExtendInfo[ VirtualRoot ]) {
       this.initAllNodeIndexAndTopRoot(this.treeData, id2ExtendInfo);
     }
@@ -837,13 +838,7 @@ class TreeUtils {
           const { checked, value, } = selectInfo;
           checked[ key ] = true;
           const { isLeaf = false, } = row;
-          let canSelect = true;
-          if(this.igronSelectField){
-            canSelect = !!row[this.igronSelectField] === false; 
-          }
-          if (!value[ key ] && (isLeaf || !this.onlySelectLeaf) && canSelect) {
-            value[ key ] = true;
-          }
+          this.selectRow(value, key, id2ExtendInfo, row);
 
           const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2ExtendInfo);
           const isTargetNode = i === targetNode;
@@ -1016,6 +1011,33 @@ class TreeUtils {
       checked[ key ] = true;
     }
     return { value: oldValue, halfchecked, checked, };
+  }
+
+  selectRow (value: Object, key: string, id2ExtendInfo: NodeId2ExtendInfo, row: ?Object) {
+    if (value[ key ]) {
+      return;
+    }
+
+    if (this.igronSelectField) {
+      row = row ? row : this.getRow(key, id2ExtendInfo);
+      if (!row) {
+        return;
+      }
+      if (!!row[ this.igronSelectField ] === true) {
+        return;
+      }
+    }
+    if (this.onlySelectLeaf) {
+      row = row ? row : this.getRow(key, id2ExtendInfo);
+      if (!row) {
+        return;
+      }
+      const { isLeaf = false, } = row;
+      if (!isLeaf) {
+        return;
+      }
+    }
+    value[ key ] = true;
   }
 
   static Selected: 1 = 1;

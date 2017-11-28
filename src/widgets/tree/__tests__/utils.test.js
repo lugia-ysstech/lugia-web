@@ -3010,6 +3010,24 @@ describe('utils', () => {
       [getKey('1.2.1')]: true,
     });
   });
+  it(' selectDirNode key: 1 onlySelectLeaf: true,  ', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandAll = false;
+    const utils = new TreeUtils(datas, { expandAll, onlySelectLeaf: true, });
+    utils.selectDirNode('1', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo.value).to.be.eql({
+    });
+  });
+  it(' selectDirNode key: 1 igronSelectField: disabled,  ', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandAll = false;
+    const utils = new TreeUtils([{ key: '1', title: '1', disabled: true,},], { expandAll, igronSelectField: 'disabled',});
+    utils.selectDirNode('1', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo.value).to.be.eql({
+    });
+  });
 
   it(' selectNode key: 1.2 igronSelectField: disabled,  unSelectNode Key:  1.2.1 - 1.2.2.2 - 1.2.2', () => {
     const nodeExpandInfo = {};
