@@ -3535,5 +3535,70 @@ describe('utils', () => {
     );
     exp(utils.getTitle(Object.keys(value), id2ExtendInfo)).to.be.eql(['你好', '100', '101', '102',]);
   });
+  it('value2SelectInfo  displayField : 为text', () => {
+
+    const value = {
+      [getKey('4')]: true,
+      [getKey('100')]: true,
+      [getKey('101')]: true,
+      [getKey('102')]: true,
+    };
+
+    const id2ExtendInfo = {};
+    const titleDatas = [
+      { key: '1', text: '1', },
+      { key: '1.1', text: '1.1', pid: '1', path: '1', isLeaf: true, },
+      { key: '1.2', text: '1.2', pid: '1', path: '1', },
+      { key: '1.2.1', text: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
+      { key: '1.2.2', text: '1.2.2', pid: '1.2', path: '1/1.2', },
+      { key: '1.2.2.1', text: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
+      { key: '1.2.2.1.1', text: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+      { key: '1.2.2.1.2', text: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+      { key: '1.2.2.2', text: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
+
+      { key: '1.3', text: '1.3', pid: '1', path: '1', },
+      { key: '1.3.1', text: '1.3.1', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.1.1', text: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.1.2', text: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+      { key: '1.3.2', text: '1.3.2', pid: '1.3', path: '1/1.3', },
+      { key: '1.3.2.1', text: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.2.2', text: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+      { key: '1.3.3', text: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+
+      { key: '2', text: '2', },
+      { key: '2.1', text: '2.1', pid: '2', path: '2', },
+      { key: '2.1.1', text: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
+      { key: '2.1.2', text: '2.1.2', pid: '2.1', path: '2/2.1', },
+      { key: '2.1.2.1', text: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
+      { key: '2.2', text: '2.2', pid: '2', path: '2', },
+      { key: '2.2.1', text: '2.2.1', pid: '2.2', path: '2/2.2', },
+      { key: '2.2.1.1', text: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+      { key: '2.2.1.2', text: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+      { key: '2.2.2', text: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
+
+      { key: '3', text: '3', },
+      { key: '3.1', text: '3.1', pid: '3', path: '3', isLeaf: true, },
+      { key: '3.2', text: '3.2', pid: '3', path: '3', isLeaf: true, },
+      { key: '4', text: '你好', isLeaf: true, },];
+    utils = new TreeUtils(titleDatas, { expandAll: true, displayField: 'text'});
+
+    const result = utils.value2SelectInfo(Object.keys(value), ['4',], value, id2ExtendInfo);
+
+    exp(result).to.be.eql(
+      {
+        halfchecked: {},
+        checked: {
+          [getKey('4')]: true,
+        },
+        value: {
+          [getKey('4')]: true,
+          [getKey('100')]: true,
+          [getKey('101')]: true,
+          [getKey('102')]: true,
+        },
+      }
+    );
+    exp(utils.getTitle(Object.keys(value), id2ExtendInfo)).to.be.eql(['你好', '100', '101', '102',]);
+  });
 
 });

@@ -28,15 +28,7 @@ const ErrorDefine = {
   PidPathMustSameExist,
   PathNotContainerPid,
 };
-type RowData = {
-  key: string,
-  title: string,
-  pid?: string,
-  children?: Array<RowData>,
-  path?: string,
-  isLeaf?: boolean,
-};
-
+type RowData = {[key: string]: any};
 type ExpandInfo = {
   id2ExtendInfo: NodeId2ExtendInfo,
 }
@@ -73,9 +65,11 @@ class TreeUtils {
   expandAll: boolean;
   onlySelectLeaf: boolean;
   notInTree: { [key: string]: string };
+  displayField: string;
+  valueField: string;
 
   constructor (treeData: Array<RowData>, config: Object) {
-    const { expandAll, onlySelectLeaf = false, } = config;
+    const { expandAll, onlySelectLeaf = false, displayField = 'title', valueField = 'key', } = config;
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
@@ -86,6 +80,8 @@ class TreeUtils {
     this.expandAll = expandAll;
     this.catchPathArray = {};
     this.onlySelectLeaf = onlySelectLeaf;
+    this.displayField = displayField;
+    this.valueField = 'key';
     this.notInTree = {};
     return this;
   }
@@ -96,7 +92,7 @@ class TreeUtils {
 
   isRightTreeRowData (data: Object): string {
 
-    const { key, title, pid, path, } = data;
+    const { key, [this.displayField]: title, pid, path, } = data;
 
     const required = notEmpty(key) && notEmpty(title);
     const existPid = notEmpty(pid);
@@ -548,7 +544,7 @@ class TreeUtils {
       const len = this.orignalData.length - 1;
       for (let i = len; i >= 0; i--) {
         const row: RowData = this.orignalData[ i ];
-        const { title, key, path, } = row;
+        const { [this.displayField]: title, key, path, } = row;
         if (this.match(title, query, searchType)) {
           if (path !== undefined && containPath[ path ] === undefined) {
             const pathArray = this.getPathArray(path);
@@ -818,7 +814,7 @@ class TreeUtils {
       const key = value[ i ];
       const row = this.getRow(key, id2ExtendInfo);
       if (row) {
-        const { title, } = row;
+        const { [this.displayField]: title, } = row;
         result.push(title);
       } else {
         result.push(this.notInTree[ key ]);
