@@ -153,7 +153,7 @@ describe('TreeSelect', () => {
   }
 
   function findQueryInput (cmp: Object) {
-    return cmp.find(Widget.Input).at(0);
+    return cmp.find(Widget.Input).find('input').at(0);
   }
 });
 
