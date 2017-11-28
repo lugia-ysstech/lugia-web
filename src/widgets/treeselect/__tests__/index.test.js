@@ -54,6 +54,7 @@ const rowData = [
   { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
   { key: '4', title: '4', isLeaf: true, },
 ];
+const SelectedIcon = 'SelectedIcon';
 
 describe('TreeSelect', () => {
   it('输入框点击后，弹出面板', () => {
@@ -73,6 +74,7 @@ describe('TreeSelect', () => {
       [Widget.Trigger]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
       [Widget.InputTag]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
       [Widget.Input]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, }, { svThemeConfigTree, }),
+      [SelectedIcon]: {color: '#d9d9d9', hoverColor: '#108ee9',},
     };
     createThemeCase(styleConfig, expResult);
   });
@@ -84,6 +86,7 @@ describe('TreeSelect', () => {
       [Widget.Trigger]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
       [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
       [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
+      [SelectedIcon]: {color: '#d9d9d9', hoverColor: '#108ee9',},
     };
 
     createThemeCase(styleConfig, expResult);

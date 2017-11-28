@@ -44,6 +44,7 @@ const QueryInput = styled.div`
 `;
 const UnCheck = 'sv-icon-android-checkbox-out1';
 const Checked = 'sv-icon-android-checkbox';
+const SelectedIcon = 'SelectedIcon';
 
 class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   static defaultProps = {
@@ -119,7 +120,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { mutliple, } = this.props;
     if (mutliple) {
       const iconClass = this.state.selectAll ? Checked : UnCheck;
-      return <Icon iconClass={iconClass} onClick={this.onSelectAll}></Icon>;
+      return <Icon iconClass={iconClass} onClick={this.onSelectAll} viewClass={SelectedIcon}></Icon>;
     }
     return null;
   };
@@ -185,6 +186,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       [Widget.Tree]: theme,
       [Widget.Trigger]: theme,
       [Widget.InputTag]: theme,
+      [SelectedIcon]: {color: '#d9d9d9', hoverColor: '#108ee9',},
       [Widget.Input]: Object.assign({}, theme, queryInputConfig),
     };
   }
