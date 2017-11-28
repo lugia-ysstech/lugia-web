@@ -75,7 +75,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   static TreeNode: TreeNode;
 
-  allExpandKeys: Array<string>;
+  allExpandKeys: Array<string> | null;
   allExpandInfo: ExpandInfo;
   allStart: number;
   queryAllUtils: TreeUtils;
@@ -212,7 +212,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   getExpandedKeys (props: TreeProps, id2ExtendInfo): Array<string> {
     if (this.isQueryAll(props)) {
-      if (this.allExpandKeys === undefined) {
+      if (this.allExpandKeys == undefined) {
         const { expandAll, } = this.props;
         this.allExpandKeys = expandAll ? Object.keys(id2ExtendInfo) : [];
       }
@@ -251,6 +251,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const utils = this.createUtils(props);
     if (utils) {
       this.queryAllUtils = utils;
+      this.allExpandKeys = null;
+      this.allStart = 0;
     }
   }
 
