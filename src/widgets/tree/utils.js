@@ -509,7 +509,7 @@ class TreeUtils {
   processPath (info: RowData, doCall: Function): void {
 
     const { path, } = info;
-    const pathArray = [ this.VirtualRoot, ];
+    const pathArray = [this.VirtualRoot,];
     if (path) {
       Array.prototype.push.apply(pathArray, this.getPathArray(path));
     }
