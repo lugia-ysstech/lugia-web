@@ -28,6 +28,7 @@ type TreeSelectProps = {
   mutliple: boolean,
   onlySelectLeaf: boolean,
   igronSelectField?: string,
+  onTrigger: Function,
   defaultDisplayValue?: string,
 };
 type TreeSelectState = {
@@ -150,7 +151,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   onTreePopupVisibleChange = (visible: boolean) => {
-
+    if (visible) {
+      const { onTrigger, } = this.props;
+      onTrigger && onTrigger();
+    }
   };
 
   onInputTagChange = ({ value, displayValue, }: Object) => {

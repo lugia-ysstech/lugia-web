@@ -118,6 +118,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
 
   componentWillReceiveProps (props: TreeProps) {
+    const dataChanged = props.data !== this.props.data;
+    if (dataChanged === true) {
+      this.createQueryAllTreelUtils(props);
+    }
+
+
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
     const newState: TreeState = {
@@ -215,13 +221,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
   shouldComponentUpdate (nexProps: TreeProps, nextState: TreeState) {
     const { props, } = this;
     const dataChanged = props.data !== nexProps.data;
-    if (dataChanged === true) {
-      this.createQueryAllTreelUtils(nexProps);
-      return true;
-    }
 
     const { state, } = this;
     return props.query !== nexProps.query
+      || dataChanged
       || state.start !== nextState.start
       || state.selectValue !== nextState.selectValue
       || state.expand !== nextState.expand

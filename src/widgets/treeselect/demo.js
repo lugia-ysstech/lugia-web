@@ -9,9 +9,56 @@ import Theme from '../theme/index';
 import TreeSelect from './index';
 import * as Widget from '../consts/Widget';
 
+const bigTree = [];
+
+getNumberKey();
+
+function getNumberKey () {
+
+  let key = 0;
+  for (let a = 0; a < 5; a++) {
+    const keyA = key++;
+    bigTree.push({
+      key: `${keyA}`,
+      title: `${a}`,
+    });
+    for (let b = 0; b < 5; b++) {
+      const titleB = `${a}.${b}`;
+      const keyb = key++;
+      bigTree.push({
+        key: keyb,
+        title: titleB,
+        pid: `${keyA}`,
+        path: `${keyA}`,
+      });
+      for (let c = 0; c < 20; c++) {
+        const titleC = `${a}.${b}.${c}`;
+        const keyc = key++;
+        bigTree.push({
+          key: keyc,
+          title: titleC,
+          pid: `${keyb}`,
+          path: `${keyA}/${keyb}`,
+        });
+        for (let d = 0; d < 40; d++) {
+          const title = `${a}.${b}.${c}.${d}`;
+          const keyD = key++;
+          bigTree.push({
+            key: keyD,
+            title,
+            pid: `${keyc}`,
+            isLeaf: true,
+            path: `${keyA}/${keyb}/${keyc}`,
+          });
+        }
+      }
+    }
+  }
+}
+
 const rowData: Array<Object> = [
-  { key: '1', title: '1', },
-  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
+  { key: '1', title: 'a1', },
+  { key: '1.1', title: 'a1.1', pid: '1', path: '1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
@@ -47,9 +94,27 @@ const rowData: Array<Object> = [
 ];
 
 
-export default () => {
-  const config = { [ Widget.TreeSelect ]: { width: 300, }, };
-  return <Theme config={config}>
-    <TreeSelect data={rowData} mutliple onlyS/>
-  </Theme>;
-};
+export default class extends React.Component<any, any> {
+  constructor (props: any) {
+    super(props);
+    this.state = {
+      data: [],
+    };
+  }
+
+  shouldComponentUpdate (nexProps: any, nextState: any) {
+    return this.state.data !== nextState.data;
+  }
+
+  render () {
+    const config = { [ Widget.TreeSelect ]: { width: 300, }, };
+    return <Theme config={config}>
+      <TreeSelect data={this.state.data} onTrigger={this.onTrigger} defaultValue="a,b,c,4" defaultDisplayValue="我,你,他,4"
+                  expandAll mutliple/>
+    </Theme>;
+  }
+
+  onTrigger = () => {
+    this.setState({ data: bigTree, });
+  };
+}
