@@ -16,13 +16,14 @@ import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
+import Icon from '../icon';
 
 type TreeSelectProps = {
   data: Array<Object>,
   getTheme?: Function,
   value?: string,
   displayValue?: string,
-  displayField?: string,
+  displayField: string,
   defaultValue?: string,
   mutliple: boolean,
   onlySelectLeaf: boolean,
@@ -34,11 +35,14 @@ type TreeSelectState = {
   value: string,
   displayValue: string,
   query: string,
+  selectAll: boolean,
 };
 const QueryInputPadding = 3;
 const QueryInput = styled.div`
   padding: ${QueryInputPadding}px;
 `;
+const UnCheck = 'sv-icon-android-checkbox-out1';
+const Checked = 'sv-icon-android-checkbox';
 
 class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   static defaultProps = {
@@ -47,6 +51,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     },
     mutliple: false,
     onlySelectLeaf: false,
+    displayField: 'title',
   };
   state: TreeSelectState;
 
@@ -60,6 +65,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       query: '',
       value,
       displayValue,
+      selectAll: false,
     };
   }
 
@@ -80,6 +86,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
     const { state, } = this;
     return state.query !== nextState.query
+      || state.selectAll !== nextState.selectAll
       || state.value !== nextState.value;
   }
 
@@ -87,7 +94,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { props, state, } = this;
     const { data, } = props;
     const { query, value, displayValue, } = state;
-    const tree = [<QueryInput onChange={this.onQueryTree}><Input/></QueryInput>,
+    const tree = [<QueryInput><Input onChange={this.onQueryTree} suffix={this.getSuffix()}/></QueryInput>,
       <Tree data={data} onChange={this.onTreeChange} {...props} className="sv" query={query} value={value}
             displayValue={displayValue}>
       </Tree>,];
@@ -107,9 +114,35 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     </Theme>;
   }
 
-  onQueryTree = (event: Object) => {
-    const { target, } = event;
-    const { value, } = target;
+  getSuffix = () => {
+    const { mutliple, } = this.props;
+    if (mutliple) {
+      const iconClass = this.state.selectAll ? Checked : UnCheck;
+      return <Icon iconClass={iconClass} onClick={this.onSelectAll}></Icon>;
+    }
+    return null;
+  };
+
+  onSelectAll = () => {
+
+    const selectAll = !this.state.selectAll;
+    if (selectAll === true) {
+      const { data, displayField, } = this.props;
+      const value = [];
+      const displayValue = [];
+      for (let i = 0; i < data.length; i++) {
+        const { key, [displayField]: title, } = data[ i ];
+        value.push(key);
+        console.info(title);
+        displayValue.push(title);
+      }
+      this.setState({ value: value.join(','), displayValue: displayValue.join(','), selectAll: true, });
+    } else {
+      this.setState({ value: '', displayValue: '', selectAll: false, });
+    }
+  };
+
+  onQueryTree = value => {
     this.setState({ query: value, });
   };
 
