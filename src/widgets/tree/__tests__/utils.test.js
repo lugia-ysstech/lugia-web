@@ -3016,16 +3016,41 @@ describe('utils', () => {
     const expandAll = false;
     const utils = new TreeUtils(datas, { expandAll, onlySelectLeaf: true, });
     utils.selectDirNode('1', selectedInfo, nodeExpandInfo);
-    exp(selectedInfo.value).to.be.eql({
-    });
+    exp(selectedInfo.value).to.be.eql({});
   });
   it(' selectDirNode key: 1 igronSelectField: disabled,  ', () => {
     const nodeExpandInfo = {};
     const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
     const expandAll = false;
-    const utils = new TreeUtils([{ key: '1', title: '1', disabled: true,},], { expandAll, igronSelectField: 'disabled',});
+    const utils = new TreeUtils([{ key: '1', title: '1', disabled: true, },], {
+      expandAll,
+      igronSelectField: 'disabled',
+    });
     utils.selectDirNode('1', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo.value).to.be.eql({});
+  });
+  it(' selectDirNode key: 1 limitCount: 1  ', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandAll = false;
+    const utils = new TreeUtils(datas, { expandAll, limitCount: 1, });
+    utils.selectDirNode('1', selectedInfo, nodeExpandInfo);
+    utils.selectDirNode('2', selectedInfo, nodeExpandInfo);
     exp(selectedInfo.value).to.be.eql({
+      [ getKey('1')]: true,
+    });
+  });
+  it(' selectNode key: 1 limitCount: 3  ', () => {
+    const nodeExpandInfo = {};
+    const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
+    const expandAll = false;
+    const utils = new TreeUtils(datas, { expandAll, limitCount: 3, });
+    utils.selectNode('1', selectedInfo, nodeExpandInfo);
+    utils.selectNode('2', selectedInfo, nodeExpandInfo);
+    exp(selectedInfo.value).to.be.eql({
+      [ getKey('1')]: true,
+      [ getKey('1.1')]: true,
+      [ getKey('1.2')]: true,
     });
   });
 
@@ -3034,14 +3059,14 @@ describe('utils', () => {
     const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
     const expandAll = false;
     const utils = new TreeUtils([{ key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, disabled: true,},
-      { key: '1.2', title: '1.2', pid: '1', path: '1',  disabled: true,},
+      { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, disabled: true, },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', disabled: true, },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, disabled: true, },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
       { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
       { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
       { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
-      { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true,  disabled: true,},], {
+      { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, disabled: true, },], {
       expandAll,
       onlySelectLeaf: false,
       igronSelectField: 'disabled',
@@ -3060,14 +3085,14 @@ describe('utils', () => {
     const selectedInfo = { halfchecked: {}, checked: {}, value: {}, };
     const expandAll = false;
     const utils = new TreeUtils([{ key: '1', title: '1', },
-      { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, disabled: true,},
-      { key: '1.2', title: '1.2', pid: '1', path: '1',  },
+      { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, disabled: true, },
+      { key: '1.2', title: '1.2', pid: '1', path: '1', },
       { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, disabled: true, },
       { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
       { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
       { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
       { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
-      { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true,  disabled: true,},], {
+      { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, disabled: true, },], {
       expandAll,
       onlySelectLeaf: true,
       igronSelectField: 'disabled',

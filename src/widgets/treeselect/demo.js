@@ -112,8 +112,9 @@ export default class extends React.Component<any, any> {
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
                   defaultValue="a,b,c,4"
+                  limitCount={1}
                   defaultDisplayValue="我,你,他,4"
-                  mutliple
+                   mutliple
                   expandAll onChange={this.onChange}/>
     </Theme>;
   }
@@ -122,6 +123,6 @@ export default class extends React.Component<any, any> {
     console.info(obj);
   };
   onTrigger = () => {
-    this.setState({ data: bigTree, });
+    this.setState({ data: rowData, });
   };
 }

@@ -125,7 +125,7 @@ describe('InputTag', () => {
       });
     });
     await  result;
-    exp(await  onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
+    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
   });
   it('完全显示3个 , 点击第一个的删除图标 onChange事件改变值', async () => {
     let InputTagTest;
@@ -144,11 +144,10 @@ describe('InputTag', () => {
         }
 
         onChange = (v: Object) => {
-          console.info(v);
           const { value, displayValue, } = v;
           this.setState({
-            value,
-            displayValue,
+            value: value.join(','),
+            displayValue: displayValue.join(','),
           });
           resolve(v);
         };
@@ -176,6 +175,7 @@ describe('InputTag', () => {
           await delay(0, () => {
             cmp.instance().forceUpdate();
             cmp.update();
+
             const tagItems = findInputItem(cmp);
             exp(tagItems.length).to.be.equal(3);
             exp(tagItems.at(1).text()).to.be.equal('乐');
@@ -189,7 +189,7 @@ describe('InputTag', () => {
       });
     });
     await  result;
-    exp(await  onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
+    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
   });
 
 
@@ -221,7 +221,7 @@ describe('InputTag', () => {
       });
     });
     await  result;
-    exp(await  onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
+    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
   });
 
   it('点击更多按钮 点击删除', async () => {
@@ -265,7 +265,7 @@ describe('InputTag', () => {
       });
     });
     await  result;
-    exp(await onChangePromise).to.be.eql({ value: '2,3', displayValue: '乐,我', });
+    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
   });
 
   function findFontItem (cmp) {

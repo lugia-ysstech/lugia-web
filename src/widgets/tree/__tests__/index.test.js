@@ -468,6 +468,21 @@ describe('Tree', () => {
     });
     exp(await promise).to.be.eql(['1.2.2.1.1', '1.2.2.1.2',]);
   });
+  it('mutliple: true ,  limitCount: 1', async () => {
+
+    const promise = new Promise(resolve => {
+      const onChange = (value, displayValue) => {
+        resolve({ value, displayValue, });
+      };
+      const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} limitCount={1} />);
+      cmp.find(CheckBoxInner).at(5).simulate('click', {});
+
+      cmp.instance().forceUpdate();
+      cmp.update();
+    });
+    const result = await promise;
+    exp(result).to.be.eql({ value: ['1.2.2.1',], displayValue: ['1.2.2.1',], });
+  });
 
   it('mutliple: false ,  onlySelectLeaf: true', () => {
     const cmp = mount(<Tree mutliple={false} expandAll data={rowData}
@@ -483,6 +498,17 @@ describe('Tree', () => {
   });
   it('mutliple: false ,  igronSelectField: title', () => {
     const cmp = mount(<Tree mutliple={false} expandAll data={rowData} igronSelectField={'title'}/>);
+    cmp.find(TreeRow).at(5).simulate('click', {});
+
+    cmp.instance().forceUpdate();
+    cmp.update();
+    exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
+    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
+    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
+  });
+  it('mutliple: false ,  limitCount: 0', () => {
+    const cmp = mount(<Tree mutliple={false} expandAll data={rowData} limitCount={0}/>);
     cmp.find(TreeRow).at(5).simulate('click', {});
 
     cmp.instance().forceUpdate();

@@ -67,9 +67,10 @@ class TreeUtils {
   notInTree: { [key: string]: string };
   displayField: string;
   igronSelectField: ?string;
+  limitCount: ?number;
 
   constructor (treeData: Array<RowData>, config: Object) {
-    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField, } = config;
+    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField, limitCount, } = config;
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
@@ -83,6 +84,7 @@ class TreeUtils {
     this.displayField = displayField;
     this.notInTree = {};
     this.igronSelectField = igronSelectField;
+    this.limitCount = limitCount;
     return this;
   }
 
@@ -1038,6 +1040,12 @@ class TreeUtils {
       }
     }
     value[ key ] = true;
+
+    if (this.limitCount != undefined) {
+      if (Object.keys(value).length > this.limitCount) {
+        delete value[ key ];
+      }
+    }
   }
 
   static Selected: 1 = 1;

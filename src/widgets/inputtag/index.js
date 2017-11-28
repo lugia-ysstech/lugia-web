@@ -118,6 +118,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   container: Object;
+  count: number;
   dropMenu: ?Object;
   fontItem: Object;
   list: Object;
@@ -127,6 +128,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   constructor (props: InputTagProps) {
     super(props);
+    this.count = 0;
     this.state = {
       items: [],
       value: this.fetchValueObject(props),
@@ -154,7 +156,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         result[ val ] = { text: displayVal ? displayVal : '', };
       }
     }
+    this.count = valLen;
     return result;
+  }
+
+  getCount (): number {
+    return this.count;
   }
 
   getValue (props: InputTagProps): { value: string, displayValue: string } {
@@ -253,7 +260,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   onClear = (e: Object) => {
     this.setState({ value: {}, }, () => {
       this.adaptiveItems(this.getOffSetWidth());
-      this.onChange('', '');
+      this.onChange(['',], ['',]);
     });
     e.preventDefault();
     e.stopPropagation();
@@ -282,7 +289,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     }
 
     const tirggetChagne = () => {
-      this.onChange(valueArray.join(','), displayValueArray.join(','));
+      this.onChange(valueArray, displayValueArray);
     };
 
     if (this.isLmit()) {
@@ -294,7 +301,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     this.adaptiveItems(this.getOffSetWidth());
   };
 
-  onChange = (value: string, displayValue: string) => {
+  onChange = (value: Array<string>, displayValue: Array<string>) => {
     const { onChange, } = this.props;
     onChange && onChange({ value, displayValue, });
   };

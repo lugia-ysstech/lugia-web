@@ -26,6 +26,7 @@ type TreeProps = {
   query: string,
   /** 是否支持多选 */
   mutliple?: boolean;
+  limitCount?: number;
   /** 默认展开所有树节点 */
   expandAll: boolean;
   onlySelectLeaf: boolean;
@@ -253,11 +254,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
   }
 
-  createUtils ({ data, onlySelectLeaf, expandAll, displayField, }, realyExpandAll: boolean = expandAll): ?TreeUtils {
+  createUtils ({ data, onlySelectLeaf, expandAll, displayField, limitCount,}, realyExpandAll: boolean = expandAll): ?TreeUtils {
     if (!data) {
       return null;
     }
-    return new TreeUtils(data, { expandAll: realyExpandAll, onlySelectLeaf, displayField, });
+    return new TreeUtils(data, { expandAll: realyExpandAll, onlySelectLeaf, displayField, limitCount,});
   }
 
   getUtils (props: TreeProps) {
@@ -311,8 +312,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const selVal = selectValue[ 0 ];
     const value = (selVal !== undefined && selVal !== null) ? selVal : '';
     const { props, } = this;
-    const { onlySelectLeaf = false, igronSelectField = '', } = props;
+    const { onlySelectLeaf = false, igronSelectField = '', limitCount, } = props;
+    if (limitCount != undefined && limitCount <= 0) {
+      return;
+    }
     if (onlySelectLeaf === true || igronSelectField) {
+
       const utils = this.getUtils(props);
       const { expand, } = this.state;
       const { id2ExtendInfo, } = expand;
