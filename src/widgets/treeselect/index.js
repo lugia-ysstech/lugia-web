@@ -202,6 +202,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           return value ? value + `,${inputValue}` : inputValue;
         }
 
+        // TODO:存在问题
         this.setState({
           query: '',
           value: joinValue(value),

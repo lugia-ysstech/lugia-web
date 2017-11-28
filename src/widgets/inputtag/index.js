@@ -146,8 +146,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   fetchValueObject (props: InputTagProps): Object {
     const result = {};
     const { value = '', displayValue = '', } = this.getValue(props);
-    const valArray = value.split(separator);
-    const displayValArray = displayValue.split(separator);
+    const valArray = value && value.trim() !== '' ? value.split(separator) : [];
+    const displayValArray = displayValue && displayValue.trim() !== '' ? displayValue.split(separator) : [];
     const valLen = valArray.length;
     for (let i = 0; i < valLen; i++) {
       const val = valArray[ i ];
@@ -261,6 +261,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     this.setState({ value: {}, }, () => {
       this.adaptiveItems(this.getOffSetWidth());
       this.onChange([], []);
+      this.count = 0;
     });
     e.preventDefault();
     e.stopPropagation();
@@ -275,6 +276,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { value, } = this.state;
     if (!value || !value[ targetKey ]) {
       return;
+    }
+    this.count--;
+    if (this.count < 0) {
+      this.count = 0;
     }
     const keys = Object.keys(value);
     const valueArray = [];
