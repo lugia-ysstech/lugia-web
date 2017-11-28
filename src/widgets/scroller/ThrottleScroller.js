@@ -161,7 +161,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
         return 0;
       }
       const seeCount = this.canSeeCount();
-      return Math.min(seeCount + Math.max(start, 0), maxLen - 1);
+      return Math.min(seeCount + Math.max(start, 0), maxLen);
     }
 
     onWheel = (e: Object) => {

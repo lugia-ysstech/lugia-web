@@ -263,7 +263,7 @@ describe('ThrottleScroller', function () {
       exp(target.fetchEnd(5)).to.be.equal(10);
 
       canSeeCount.returned(5);
-      exp(target.fetchEnd(100)).to.be.equal(10);
+      exp(target.fetchEnd(100)).to.be.equal(11);
 
       canSeeCount.returned(5);
       exp(target.fetchEnd(-1)).to.be.equal(5);
