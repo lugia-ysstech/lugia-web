@@ -133,7 +133,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       for (let i = 0; i < data.length; i++) {
         const { key, [displayField]: title, } = data[ i ];
         value.push(key);
-        console.info(title);
         displayValue.push(title);
       }
       this.setState({ value: value.join(','), displayValue: displayValue.join(','), selectAll: true, });
@@ -159,7 +158,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
-    console.info(value, displayValue);
     this.setState({ value: value.join(','), displayValue: displayValue.join(','), });
   };
 
