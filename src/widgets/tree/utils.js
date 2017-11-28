@@ -509,7 +509,7 @@ class TreeUtils {
   processPath (info: RowData, doCall: Function): void {
 
     const { path, } = info;
-    const pathArray = [this.VirtualRoot,];
+    const pathArray = [ this.VirtualRoot, ];
     if (path) {
       Array.prototype.push.apply(pathArray, this.getPathArray(path));
     }
@@ -1015,28 +1015,28 @@ class TreeUtils {
     return { value: oldValue, halfchecked, checked, };
   }
 
-  selectRow (value: Object, key: string, id2ExtendInfo: NodeId2ExtendInfo, row: ?Object) {
+  selectRow (value: Object, key: string, id2ExtendInfo: NodeId2ExtendInfo, row: ?Object): boolean {
     if (value[ key ]) {
-      return;
+      return false;
     }
 
     if (this.igronSelectField) {
       row = row ? row : this.getRow(key, id2ExtendInfo);
       if (!row) {
-        return;
+        return false;
       }
       if (!!row[ this.igronSelectField ] === true) {
-        return;
+        return false;
       }
     }
     if (this.onlySelectLeaf) {
       row = row ? row : this.getRow(key, id2ExtendInfo);
       if (!row) {
-        return;
+        return false;
       }
       const { isLeaf = false, } = row;
       if (!isLeaf) {
-        return;
+        return false;
       }
     }
     value[ key ] = true;
@@ -1044,8 +1044,10 @@ class TreeUtils {
     if (this.limitCount != undefined) {
       if (Object.keys(value).length > this.limitCount) {
         delete value[ key ];
+        return false;
       }
     }
+    return true;
   }
 
   static Selected: 1 = 1;
