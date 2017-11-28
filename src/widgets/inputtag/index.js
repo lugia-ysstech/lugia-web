@@ -260,7 +260,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   onClear = (e: Object) => {
     this.setState({ value: {}, }, () => {
       this.adaptiveItems(this.getOffSetWidth());
-      this.onChange(['',], ['',]);
+      this.onChange([], []);
     });
     e.preventDefault();
     e.stopPropagation();
