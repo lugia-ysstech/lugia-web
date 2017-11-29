@@ -112,9 +112,13 @@ export default class extends React.Component<any, any> {
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
                   defaultValue="3.2"
-                  // limitCount={1}
+        //onlySelectLeaf
+        //igronSelectField
+        // limitCount={1}
+        //canInput
+                  canInput
                   defaultDisplayValue="3.2"
-                  mutliple
+        // mutliple
                   splitQuery=","
                   expandAll onChange={this.onChange}/>
     </Theme>;
