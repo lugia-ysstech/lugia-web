@@ -68,9 +68,10 @@ class TreeUtils {
   displayField: string;
   igronSelectField: ?string;
   limitCount: ?number;
+  splitQuery: ? string;
 
   constructor (treeData: Array<RowData>, config: Object) {
-    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField, limitCount, } = config;
+    const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField, limitCount, splitQuery, } = config;
     this.Error = ErrorDefine;
     this.version = 0;
     this.oldVersion = isInit;
@@ -85,6 +86,7 @@ class TreeUtils {
     this.notInTree = {};
     this.igronSelectField = igronSelectField;
     this.limitCount = limitCount;
+    this.splitQuery = splitQuery;
     return this;
   }
 
@@ -579,15 +581,26 @@ class TreeUtils {
       return false;
     }
     val += '';
+
+
     switch (type) {
       case 'start': {
-        return val.startsWith(query);
+        return this.toMach(val, query, (val: string, query: string) => {
+            return val.startsWith(query);
+          }
+        );
       }
       case 'end': {
-        return val.endsWith(query);
+        return this.toMach(val, query, (val: string, query: string) => {
+            return val.endsWith(query);
+          }
+        );
       }
       case 'include': {
-        return !!~val.indexOf(query);
+        return this.toMach(val, query, (val: string, query: string) => {
+            return !!~val.indexOf(query);
+          }
+        );
       }
       case 'eql': {
         return val === query;
@@ -597,6 +610,18 @@ class TreeUtils {
     }
   }
 
+  toMach (val: string, query: string, match: Function): boolean {
+    if (this.splitQuery) {
+      const queryArray = query.split(this.splitQuery);
+      for (let i = 0; i < queryArray.length; i++) {
+        if (match(val, queryArray[ i ])) {
+          return true;
+        }
+      }
+      return false;
+    }
+    return match(val, query);
+  }
 
   generateRealTreeData (expandInfo: ExpandInfo): Array<RowData> {
     const datas = this.treeData;
