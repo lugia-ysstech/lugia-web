@@ -25,6 +25,22 @@ exports[`Input props: null 1`] = `
   border-color: #49a9ee;
 }
 
+.c0::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c0::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c0:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c0::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
 .c0:focus {
   box-shadow: 0 0 0 2px rgba(16,142,233,0.2);
 }
@@ -37,6 +53,8 @@ exports[`Input props: null 1`] = `
   onKeyDown={[Function]}
   onKeyPress={[Function]}
   onKeyUp={[Function]}
+  placeholder={undefined}
+  prefix={undefined}
   value=""
 />
 `;

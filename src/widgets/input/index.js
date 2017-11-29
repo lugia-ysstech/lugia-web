@@ -8,6 +8,7 @@ import '../css/sv.css';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
+import PlaceContainer from '../common/PlaceContainer';
 
 type InputState = {|
   value: string,
@@ -16,6 +17,7 @@ type InputState = {|
 type InputProps = {|
   viewClass: string,
   readOnly: boolean,
+  placeholder?: string;
   prefix?: React$Element<any>,
   getTheme: Function,
   suffix?: React$Element<any>,
@@ -57,7 +59,9 @@ const CommonInputStyle = styled.input`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-image: none;
   color: rgba(0, 0, 0, 0.65);
-
+  &::placeholder{
+    color: rgba(0,0,0,0.25);
+  }
   &:focus {
     box-shadow: 0 0 0 2px rgba(16, 142, 233, 0.2);
   }
@@ -69,7 +73,30 @@ const InputContainer = styled.span`
   display: inline-block;
   background-color: #fff;
 `;
+const LeftPadding = 5;
 
+const getLeft = (props: Object) => {
+  const { prefix, } = props;
+  let padding = LeftPadding;
+  if (prefix) {
+    padding = LeftPadding + 24;
+  }
+  if (prefix && prefix.length) {
+    padding = LeftPadding + prefix.length * 24;
+  }
+  return `${padding}px;`;
+};
+const getRight = (props: Object) => {
+  const { suffix, } = props;
+  let padding = 0;
+  if (suffix) {
+    padding = 24;
+  }
+  if (suffix && suffix.length) {
+    padding = suffix.length * 24;
+  }
+  return `${padding}px;`;
+};
 export const Input = CommonInputStyle.extend`
   outline: none;
   margin: 0;
@@ -77,8 +104,8 @@ export const Input = CommonInputStyle.extend`
   z-index: 1;
   position: relative;
   :not(:first-child) {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: ${getLeft};
+    padding-right: ${getRight};
   }
 `;
 
@@ -142,11 +169,14 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   render () {
-    const { prefix, suffix, } = this.props;
+    const { props, } = this;
+    const { prefix, suffix, } = props;
     if (!suffix && !prefix) {
       return this.generateInput(InputOnly);
     }
-    return <InputContainer className="sv" theme={this.props.getTheme()}>
+    const { getTheme, } = props;
+    return <InputContainer className="sv" theme={getTheme()}>
+      <PlaceContainer>adsfas</PlaceContainer>
       {this.generatePrefix()}
       {this.generateInput(Input)}
       {this.generateSuffix()}
@@ -172,13 +202,16 @@ class TextBox extends Component<InputProps, InputState> {
 
   generateInput (Input: Function): React$Element<any> {
     const { props, state, } = this;
-    const { onKeyUp, onKeyPress, onFocus, onBlur, } = props;
-
+    const { suffix, prefix, } = props;
+    const { onKeyUp, onKeyPress, onFocus, onBlur, placeholder, } = props;
     return <Input innerRef={node => this.input = node}
+                  suffix={suffix}
+                  prefix={prefix}
                   theme={this.props.getTheme()}
                   value={Support.getValue(props, state)}
                   onKeyUp={onKeyUp}
                   onKeyPress={onKeyPress}
+                  placeholder={placeholder}
                   onKeyDown={this.onKeyDown}
                   onFocus={onFocus}
                   onBlur={onBlur}

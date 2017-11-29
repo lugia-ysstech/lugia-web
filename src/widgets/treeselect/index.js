@@ -119,7 +119,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { props, state, } = this;
     const { data, placeholder, } = props;
     const { query, value, displayValue, selectCount, } = state;
-    const tree = [<QueryInput><Input value={this.state.query} onChange={this.onQueryTree} suffix={this.getSuffix()}
+    const tree = [<QueryInput><Input placeholder="输入查询条件" value={this.state.query} onChange={this.onQueryTree} suffix={this.getSuffix()}
                                       onKeyDown={this.onQueryKeyDown}/></QueryInput>,
       <Tree data={data}
             {...props}
@@ -172,7 +172,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       result.push(<Icon iconClass={iconClass} key="selAll" onClick={this.onSelectAll} viewClass={SelectedIcon}></Icon>);
     }
 
-    return result;
+    return <Icon iconClass="sv-icon-plus" key="add" onClick={this.onAdd}
+                 viewClass={SelectedIcon}></Icon>;
   };
 
   isMutliple () {

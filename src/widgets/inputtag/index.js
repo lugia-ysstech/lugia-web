@@ -20,12 +20,7 @@ import Theme from '../theme';
 import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
-
-const { MenuItem, } = Menu;
-type ValuItem = {
-  key: string,
-  text: string,
-}
+import PlaceContainer from '../common/PlaceContainer';
 type InputTagProps = {
   placeholder?: string;
   getTheme: Function,
@@ -92,21 +87,6 @@ const InnerContainer = styled.div`
 `;
 const SingleInnerContainer = InnerContainer.extend`
   padding: 5px;
-`;
-const PlaceContainer = styled.div`
-  top: 50%;
-  position: absolute;
-  left: 0;
-  right: 7px;
-  margin-top: -10px;
-  text-align: left;
-  color: rgba(0, 0, 0, 0.25);
-  line-height: 20px;
-  max-width: 100%;
-  height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 const List = styled.ul`
   list-style: none;
