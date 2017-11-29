@@ -951,27 +951,30 @@ class TreeUtils {
 
     this.initAllNodeIndexAndTopRoot(this.treeData, id2ExtendInfo);
     const levelArray = [];
-    const path2Nodes = [];
-    const allPathArray = [];
-    let nowPath = '';
-    let nowPathIndex = 0;
-    let currNodes = [];
+    const path2Nodes = {};
+    const allPathArray = {};
     const rootChildNode = [];
+    const isDo = {};
     for (let i = 0; i < len; i++) {
       const key = keys[ i ];
+      if(isDo[key]){
+        continue;
+      }
       const row = this.getRow(key, id2ExtendInfo);
       if (row) {
         const { isLeaf = false, path: rowPath, } = row;
         if (isLeaf) {
           if (!rowPath) {
             rootChildNode.push(row);
-          } else if (nowPath != rowPath) {
-            allPathArray[ nowPathIndex ] = this.getPathArray(rowPath);
-            nowPath = rowPath;
-            currNodes = path2Nodes[ nowPathIndex ] = [];
-            nowPathIndex++;
+          } else  {
+            if(!allPathArray[rowPath]){
+              allPathArray[ rowPath ] = this.getPathArray(rowPath);
+            }
+            if(!path2Nodes[ rowPath ]) {
+              path2Nodes[ rowPath ] = [];
+            }
+            path2Nodes[rowPath].push(row);
           }
-          currNodes.push(row);
         } else {
           const path = this.getPathArray(rowPath);
           const level = path.length;
@@ -986,6 +989,7 @@ class TreeUtils {
         const disp = displayValue[ i ];
         this.notInTree[ key ] = disp ? disp : key;
       }
+      isDo[key] = true;
     }
 
     const selectedInfo = { value, halfchecked, checked, };
@@ -1011,9 +1015,11 @@ class TreeUtils {
     }
 
     const data = this.treeData;
-
-    for (let i = 0; i < nowPathIndex; i++) {
-      const rows = path2Nodes[ i ];
+    const paths = Object.keys(allPathArray);
+    const pathCount = paths.length;
+    for (let i = 0; i < pathCount; i++) {
+      const path = paths[ i ];
+      const rows = path2Nodes[ path ];
       const rowLen = rows.length;
       let totalHalfCount = 0;
       // 选择子节点
@@ -1026,7 +1032,7 @@ class TreeUtils {
       }
 
       // 更新父结点
-      const pathArray = allPathArray[ i ];
+      const pathArray = allPathArray[ path ];
       const len = pathArray.length;
       for (let i = 0; i < len; i++) {
         const key = pathArray[ i ];

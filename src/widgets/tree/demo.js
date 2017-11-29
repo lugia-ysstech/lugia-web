@@ -167,7 +167,7 @@ class LimitTree extends React.Component<Object, Object> {
       value={value}
       expandAll
       {...this.props}
-      onChange={this.onChange}
+      // onChange={this.onChange}
     >
     </Tree>, <button onClick={this.onClick}></button>,];
   }
@@ -180,12 +180,12 @@ class LimitTree extends React.Component<Object, Object> {
   };
   all: boolean;
   onClick = () => {
+    console.info('adsfas');
 
     if (this.all) {
       this.setState({ value: '', });
       this.all = false;
     } else {
-      console.time('aa');
       const { data, } = this.props;
       const value = [];
       console.info(data.length);
@@ -193,6 +193,8 @@ class LimitTree extends React.Component<Object, Object> {
         const { key, } = data[ i ];
         value.push(key);
       }
+      console.time('aa');
+
       // console.timeEnd('aa');
       this.setState({ value: value.join(','), }, () => {
         console.timeEnd('aa');
