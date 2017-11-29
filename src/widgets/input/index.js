@@ -199,6 +199,13 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
+  focus () {
+    if (this.input) {
+      setTimeout(() => {
+        this.input.focus();
+      }, 0);
+    }
+  }
 
   generateInput (Input: Function): React$Element<any> {
     const { props, state, } = this;

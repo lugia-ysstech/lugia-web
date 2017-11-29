@@ -1,39 +1,43 @@
 import React from 'react';
 
-export default Target => props => {
-  const onKeyUp = (event: KeyboardEvent) => {
-      const { onKeyUp, } = props;
-      onKeyUp && onKeyUp(event);
-    },
-    onKeyPress = (event: KeyboardEvent) => {
-      const { onKeyPress, } = props;
-      onKeyPress && onKeyPress(event);
-    },
-    onKeyDown = (event: UIEvent) => {
-      const { onKeyDown, } = props;
-      onKeyDown && onKeyDown(event);
-    },
-    onFocus = (event: KeyboardEvent) => {
-      const { onFocus, } = props;
-      onFocus && onFocus(event);
-    },
+export default Target => class extends React.Component<any, any> {
+  render () {
 
-    onEnter = (event: KeyboardEvent) => {
-      const { onEnter, } = props;
-      onEnter && onEnter(event);
+    const { props, } = this;
 
-    },
-    onBlur = (event: KeyboardEvent) => {
-      const { onBlur, } = props;
-      onBlur && onBlur(event);
+    const onKeyUp = (event: KeyboardEvent) => {
+        const { onKeyUp, } = props;
+        onKeyUp && onKeyUp(event);
+      },
+      onKeyPress = (event: KeyboardEvent) => {
+        const { onKeyPress, } = props;
+        onKeyPress && onKeyPress(event);
+      },
+      onKeyDown = (event: UIEvent) => {
+        const { onKeyDown, } = props;
+        onKeyDown && onKeyDown(event);
+      },
+      onFocus = (event: KeyboardEvent) => {
+        const { onFocus, } = props;
+        onFocus && onFocus(event);
+      },
+      onEnter = (event: KeyboardEvent) => {
+        const { onEnter, } = props;
+        onEnter && onEnter(event);
 
-    };
+      },
+      onBlur = (event: KeyboardEvent) => {
+        const { onBlur, } = props;
+        onBlur && onBlur(event);
 
-  return <Target {...props}
-                 onFocus={onFocus}
-                 onKeyUp={onKeyUp}
-                 onKeyPress={onKeyPress}
-                 onBlur={onBlur}
-                 onKeyDown={onKeyDown}/>;
+      };
+    return <Target {...props}
+                   ref={cmp => this.target = cmp}
+                   onFocus={onFocus}
+                   onKeyUp={onKeyUp}
+                   onKeyPress={onKeyPress}
+                   onBlur={onBlur}
+                   onKeyDown={onKeyDown}/>;
 
+  }
 };

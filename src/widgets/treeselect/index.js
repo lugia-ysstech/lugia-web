@@ -78,6 +78,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   oldValue: string;
   treeVisible: boolean;
   treeCmp: Object;
+  queryInput: Object;
 
   constructor (props: TreeSelectProps) {
     super(props);
@@ -123,7 +124,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
     };
-    const tree = [<QueryInput><Input placeholder="输入查询条件" value={this.state.query} onChange={this.onQueryTree}
+    const getQueryInput: Function = (cmp: Object) => {
+      this.queryInput = cmp;
+    };
+    const tree = [<QueryInput><Input ref={getQueryInput} placeholder="输入查询条件" value={this.state.query}
+                                      onChange={this.onQueryTree}
                                       suffix={this.getSuffix()}
                                       onKeyDown={this.onQueryKeyDown}/></QueryInput>,
       <Tree data={data}
@@ -317,7 +322,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       if (this.isMutliple()) {
         selectCount = this.getInputTagCount();
       }
-      this.setState({ query: '', selectCount, });
+      this.setState({ query: '', selectCount, }, () => {
+        if (this.queryInput && this.queryInput.getThemeTarget()) {
+          this.queryInput.getThemeTarget().focus();
+        }
+      });
     } else {
       this.onChange();
       this.changeOldValue(value);

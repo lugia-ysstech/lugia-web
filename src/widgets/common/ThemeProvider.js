@@ -26,8 +26,15 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
       return <Target {...this.props} getTheme={getTheme}
                      ref={cmp => this.target = cmp}></Target>;
     }
-  }
 
+    getThemeTarget = () => {
+      let target = this.target;
+      while ( target && target.target ) {
+        target = target.target;
+      }
+      return target;
+    }
+  }
 
   ThemeWrapWidget.contextTypes = {
     config: PropTypes.object,
