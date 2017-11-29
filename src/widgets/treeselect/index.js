@@ -77,6 +77,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   treeTriger: Object;
   oldValue: string;
   treeVisible: boolean;
+  treeCmp: Object;
 
   constructor (props: TreeSelectProps) {
     super(props);
@@ -89,7 +90,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       selectCount: 0,
       selectAll: false,
     };
-    this.oldValue = value;
+    this.changeOldValue(value);
     this.treeVisible = false;
   }
 
@@ -119,12 +120,17 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { props, state, } = this;
     const { data, placeholder, } = props;
     const { query, value, displayValue, selectCount, } = state;
-    const tree = [<QueryInput><Input placeholder="输入查询条件" value={this.state.query} onChange={this.onQueryTree} suffix={this.getSuffix()}
+    const getTree: Function = (cmp: Object) => {
+      this.treeCmp = cmp;
+    };
+    const tree = [<QueryInput><Input placeholder="输入查询条件" value={this.state.query} onChange={this.onQueryTree}
+                                      suffix={this.getSuffix()}
                                       onKeyDown={this.onQueryKeyDown}/></QueryInput>,
       <Tree data={data}
             {...props}
             className="sv"
             query={query}
+            ref={getTree}
             value={value}
             onChange={this.onTreeChange}
             displayValue={displayValue}>
@@ -222,29 +228,59 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   }
 
+  componentDidUpdate () {
+    this.setState({ selectAll: this.isSelectAll(), });
+  }
 
   onSelectAll = () => {
 
-    const selectAll = !this.state.selectAll;
+    const selectAll = !this.isSelectAll();
     if (selectAll === true) {
-      const { data, displayField, } = this.props;
-      const value = [];
-      const displayValue = [];
+      const { displayField, } = this.props;
+      const data = this.getData();
+      const { value: val, displayValue: disp, } = this.state;
+
+      let value = [];
+      let displayValue = [];
+      if (val && val !== '') {
+        value = val.split(',');
+      }
+      if (disp && disp !== '') {
+        displayValue = disp.split(',');
+      }
       for (let i = 0; i < data.length; i++) {
         const { key, [displayField]: title, } = data[ i ];
         value.push(key);
         displayValue.push(title);
       }
-      this.setValue(value, displayValue, { selectAll: true, }, () => {
-        this.oldValue = this.state.value;
-      });
+      this.setValue(value, displayValue, {});
     } else {
-
-      this.setValue([], [], { selectAll: false, }, () => {
-        this.oldValue = this.state.value;
-      });
+      this.setValue([], [], {});
     }
   };
+
+  getData (): Array<Object> {
+    if (this.treeCompontIsEmpty()) {
+      return [];
+    }
+    return this.getTree().getData();
+  }
+
+  getTree () {
+    return this.treeCmp.target;
+  }
+
+  isSelectAll (): boolean {
+    if (this.treeCompontIsEmpty()) {
+      return false;
+    }
+    return this.getTree().isSelectAll();
+  }
+
+  treeCompontIsEmpty () {
+    return !this.treeCmp || !this.treeCmp.target;
+  }
+
 
   onQueryTree = value => {
     this.setState({ query: value, });
@@ -255,17 +291,20 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   onTreePopupVisibleChange = (visible: boolean) => {
+    const { state, } = this;
+    const { value, } = state;
     if (visible) {
       const { onTrigger, } = this.props;
       onTrigger && onTrigger();
-      let { value, selectCount, } = this.state;
-      this.oldValue = value;
+      let { selectCount, } = state;
+      this.changeOldValue(value);
       if (this.isMutliple()) {
         selectCount = this.inputTag.target.getCount();
       }
       this.setState({ query: '', selectCount, });
     } else {
       this.onChange();
+      this.changeOldValue(value);
     }
     this.treeVisible = visible;
   };
@@ -284,13 +323,15 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   setValue (value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
     let valStr = '', dispStr = '';
-    if (!value || value.length === 0) {
-      other.selectAll = false;
-    } else {
+    if (value && value.length > 0) {
       valStr = value.join(',');
       dispStr = displayValue.join(',');
     }
-    this.setState({ value: valStr, displayValue: dispStr, ...other, selectCount: value.length, }, callback);
+    this.setState({
+      value: valStr,
+      displayValue: dispStr, ...other,
+      selectCount: value.length,
+    }, callback);
   }
 
   setTreePopupVisible (visible: boolean) {
@@ -300,13 +341,16 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onChange = () => {
-
     if (this.oldValue !== this.state.value) {
       const { onChange, } = this.props;
       const { value, displayValue, } = this.state;
       onChange && onChange({ value, displayValue, });
     }
   };
+
+  changeOldValue (value: any) {
+    this.oldValue = value;
+  }
 
   getTheme (): Object {
     const { getTheme = () => ({}), } = this.props;

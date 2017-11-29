@@ -82,7 +82,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   queryAllUtils: TreeUtils;
   utils: TreeUtils;
   value: any;
-
+  data: Array<RowData>;
 
   constructor (props: TreeProps) {
     super(props);
@@ -114,6 +114,19 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.updateStateValuForLimitValue(props, state, id2ExtendInfo, this.getInitValue(props));
     this.state = state;
 
+  }
+
+  getData (): Array<RowData> {
+    const { data, } = this;
+    return data ? data : [];
+  }
+
+  isSelectAll () {
+    const { selectedInfo, } = this.state;
+    const { checked, } = selectedInfo;
+    const chkLen = Object.keys(checked).length;
+    console.info(chkLen, this.getData().length);
+    return chkLen > 0 && chkLen >= this.getData().length;
   }
 
   getInitValue (props: TreeProps) {
@@ -191,6 +204,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isSingleSelectForProps(props)) {
       state.selectValue = selectValue;
     } else {
+      console.info(val);
       state.selectedInfo = this.getUtils(props).value2SelectInfo(val, displayValue ? displayValue.split(',') : [], valueObject, id2ExtendInfo);
     }
   }
@@ -202,7 +216,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
 
     this.createQueryTreeUtils(props);
-    this.getUtils(props).search(result, props.query);
+    this.search(this.getUtils(props), result, props.query);
     return result;
   }
 
@@ -284,7 +298,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
     const utils = this.getUtils(props);
-    const data = utils.search(expand, query);
+    const data = this.search(utils, expand, query);
+    this.data = data;
     if (data.length === 0) {
       return empty;
     }
@@ -306,6 +321,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
                          onExpand={this.onExpand}/>;
   }
 
+  search (utils: TreeUtils, expand: ExpandInfo, query: string): Array<RowData> {
+    return this.data = utils.search(expand, query);
+  }
 
   onSelect = (selectValue: Array<string>) => {
 
