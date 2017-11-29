@@ -253,8 +253,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getClearButton () {
-    console.info(this.getSingleValue());
-    console.info(this.isEmpty());
     if (this.isEmpty()) {
       return null;
     }
