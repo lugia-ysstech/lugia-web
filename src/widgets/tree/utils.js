@@ -580,6 +580,9 @@ class TreeUtils {
     if (val === undefined || val === null) {
       return false;
     }
+    if (!query || query === '') {
+      return false;
+    }
     val += '';
 
 
@@ -614,7 +617,11 @@ class TreeUtils {
     if (this.splitQuery) {
       const queryArray = query.split(this.splitQuery);
       for (let i = 0; i < queryArray.length; i++) {
-        if (match(val, queryArray[ i ])) {
+        const oneQuery = queryArray[ i ];
+        if (!oneQuery || oneQuery === '') {
+          continue;
+        }
+        if (match(val, oneQuery)) {
           return true;
         }
       }

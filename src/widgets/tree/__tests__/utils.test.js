@@ -566,16 +566,17 @@ describe('utils', () => {
   it('match val: 123,  start splitQuery: ,', () => {
     utils = new TreeUtils(datas, { expandAll: false, splitQuery: ',', });
     exp(utils.match('321,432', '1,2', 'end')).to.be.true;
+    exp(utils.match('321,432', ',', 'end')).to.be.false;
     exp(utils.match('321,432', '1|2', 'end')).to.be.false;
   });
 
   it('match val: 123,  start splitQuery: |', () => {
     utils = new TreeUtils(datas, { expandAll: false, splitQuery: '|', });
     exp(utils.match('321,432', '1,2', 'end')).to.be.false;
+    exp(utils.match('321,432', ',', 'end')).to.be.false;
     exp(utils.match('321,432', '1|2', 'end')).to.be.true;
-
+    exp(utils.match('321,432', '|', 'end')).to.be.false;
   });
-
 
   it('match val: 123,  include', () => {
     const val = '123';
@@ -587,17 +588,26 @@ describe('utils', () => {
     exp(utils.match(val, '1,2,3', 'include')).to.be.false;
   });
 
+  it('match val: 123,  query: 空字符串', () => {
+    exp(utils.match('1', '', 'include')).to.be.false;
+    exp(utils.match('1', '', 'eql')).to.be.false;
+    exp(utils.match('1', '', 'start')).to.be.false;
+    exp(utils.match('1', '', 'end')).to.be.false;
+
+  });
   it('match val: 123,  include container splitQuery: ,', () => {
     utils = new TreeUtils(datas, { expandAll: false, splitQuery: ',', });
     exp(utils.match('1', '1,2', 'include')).to.be.true;
     exp(utils.match('2', '1,2', 'include')).to.be.true;
     exp(utils.match('3', '1,2', 'include')).to.be.false;
+    exp(utils.match('3', ',', 'include')).to.be.false;
   });
   it('match val: 123,  include container splitQuery: |', () => {
     utils = new TreeUtils(datas, { expandAll: false, splitQuery: '|', });
     exp(utils.match('1', '1|2', 'include')).to.be.true;
     exp(utils.match('2', '1|2', 'include')).to.be.true;
     exp(utils.match('3', '1|2', 'include')).to.be.false;
+    exp(utils.match('3', '|', 'include')).to.be.false;
   });
 
   it('match val: 123,  eql', () => {
