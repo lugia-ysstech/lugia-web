@@ -30,6 +30,7 @@ type TreeSelectProps = {
   igronSelectField?: string,
   onTrigger?: Function,
   onChange?: Function,
+  splitQuery?: string,
   limitCount: number,
   canInput: boolean,
   defaultDisplayValue?: string,

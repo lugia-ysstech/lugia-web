@@ -44,6 +44,7 @@ type TreeProps = {
    * 当值发生变化的时候出发
    */
   onChange?: Function,
+  splitQuery?: string,
   data?: Array<RowData>,
 };
 
@@ -256,11 +257,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
   }
 
-  createUtils ({ data, onlySelectLeaf, expandAll, displayField, limitCount,}, realyExpandAll: boolean = expandAll): ?TreeUtils {
+  createUtils ({ data, onlySelectLeaf, expandAll, displayField, limitCount, splitQuery, }, realyExpandAll: boolean = expandAll): ?TreeUtils {
     if (!data) {
       return null;
     }
-    return new TreeUtils(data, { expandAll: realyExpandAll, onlySelectLeaf, displayField, limitCount,});
+    return new TreeUtils(data, { expandAll: realyExpandAll, onlySelectLeaf, displayField, limitCount, splitQuery, });
   }
 
   getUtils (props: TreeProps) {

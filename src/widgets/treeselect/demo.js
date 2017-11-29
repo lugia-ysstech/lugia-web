@@ -40,7 +40,7 @@ function getNumberKey () {
           pid: `${keyb}`,
           path: `${keyA}/${keyb}`,
         });
-        for (let d = 0; d < 40; d++) {
+        for (let d = 0; d < 400; d++) {
           const title = `${a}.${b}.${c}.${d}`;
           const keyD = key++;
           bigTree.push({
@@ -111,10 +111,11 @@ export default class extends React.Component<any, any> {
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
-                  defaultValue="a,b,c,4"
-                  limitCount={1}
-                  defaultDisplayValue="我,你,他,4"
-                   // mutliple
+                  defaultValue="3.2"
+                  // limitCount={1}
+                  defaultDisplayValue="3.2"
+                  mutliple
+                  splitQuery=","
                   expandAll onChange={this.onChange}/>
     </Theme>;
   }
