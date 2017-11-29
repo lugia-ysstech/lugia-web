@@ -33,6 +33,7 @@ type TreeSelectProps = {
   splitQuery?: string,
   limitCount: number,
   canInput: boolean,
+  placeholder?: string,
   defaultDisplayValue?: string,
 };
 type TreeSelectState = {
@@ -116,7 +117,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   render () {
     const { props, state, } = this;
-    const { data, } = props;
+    const { data, placeholder, } = props;
     const { query, value, displayValue, selectCount, } = state;
     const tree = [<QueryInput><Input value={this.state.query} onChange={this.onQueryTree} suffix={this.getSuffix()}
                                       onKeyDown={this.onQueryKeyDown}/></QueryInput>,
@@ -151,7 +152,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
                ref={getTreeTriger}
                action={['click',]}
                hideAction={['click',]}>
-        <InputTag value={value} displayValue={displayValue} onChange={this.onInputTagChange} mutliple={this.isMutliple()}
+        <InputTag value={value} displayValue={displayValue} onChange={this.onInputTagChange}
+                  mutliple={this.isMutliple()}
+                  placeholder={placeholder}
                   ref={getInputTag}
                   onPopupVisibleChange={this.onInputTagPopupVisibleChange}/>
       </Trigger>

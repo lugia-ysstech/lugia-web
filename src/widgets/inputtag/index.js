@@ -27,6 +27,7 @@ type ValuItem = {
   text: string,
 }
 type InputTagProps = {
+  placeholder?: string;
   getTheme: Function,
   onChange?: Function,
   value?: string,
@@ -81,7 +82,6 @@ const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
 };
 const InnerContainer = styled.div`
-  padding: 5px;
   ${widthFunc(-getContentWidth(0))}
   height: 26px;
   margin-left: ${marginLeft}px;
@@ -207,19 +207,19 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   render () {
     const { props, state, } = this;
     let result;
-    const clearButton = <IconButton iconClass={Clear} viewClass={IconButton.displayName}
-                                    onClick={this.onClear}></IconButton>;
+    const clearButton = this.getClearButton();
+    const placeholder = this.getPlaceholder();
     if (!this.isMutliple()) {
-      const { value, } = state;
-      const text = value ? value.text : '';
       result = <Container className="sv"
                           theme={props.getTheme()}
                           innerRef={cmp => this.container = cmp}
                           onClick={this.onClick}>
         <OutContainer>
+
           <SingleInnerContainer theme={props.getTheme()}>
-            {text}
-            {text ? clearButton : null}
+            {placeholder}
+            {this.getSingleValue()}
+            {clearButton}
           </SingleInnerContainer>
         </OutContainer>
       </Container>;
@@ -239,7 +239,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
                 <FontItem ref={fillFontItem}/>
                 {items}
               </List>
-              {items.length > 0 ? clearButton : null}
+              {placeholder}
+              {clearButton}
             </InnerContainer>
           </OutContainer>
         </Container>
@@ -269,6 +270,40 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     }
 
     return result;
+  }
+
+  getClearButton () {
+    console.info(this.getSingleValue());
+    console.info(this.isEmpty());
+    if (this.isEmpty()) {
+      return null;
+    }
+    return <IconButton iconClass={Clear} viewClass={IconButton.displayName}
+                       onClick={this.onClear}></IconButton>;
+  }
+
+
+  getPlaceholder () {
+    const { placeholder, } = this.props;
+    if (!placeholder || !this.isEmpty()) {
+      return null;
+    }
+    return <PlaceContainer>{placeholder}</PlaceContainer>;
+  }
+
+  isEmpty (): boolean {
+    if (this.isMutliple()) {
+      const { items, } = this.state;
+      return items.length <= 0;
+    }
+    return this.getSingleValue() === '';
+
+  }
+
+  getSingleValue () {
+    const { value = {}, } = this.state;
+    const { text = '', } = value;
+    return text;
   }
 
   getFontWidth (text: string): number {
