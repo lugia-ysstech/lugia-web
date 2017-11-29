@@ -288,7 +288,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getTree () {
-    return this.treeCmp.target;
+    return this.treeCmp.getThemeTarget();
   }
 
   isSelectAll (): boolean {
@@ -299,7 +299,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   treeCompontIsEmpty () {
-    return !this.treeCmp || !this.treeCmp.target;
+    return !this.treeCmp || !this.treeCmp.getThemeTarget();
   }
 
 
@@ -363,7 +363,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     if (!this.inputTag) {
       return null;
     }
-    return this.inputTag.target;
+    return this.inputTag.getThemeTarget();
   }
 
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
@@ -399,8 +399,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   setTreePopupVisible (visible: boolean) {
-    if (this.treeTriger && this.treeTriger.target) {
-      this.treeTriger.target.setPopupVisible(visible);
+    if (this.treeTriger && this.treeTriger.getThemeTarget()) {
+      this.treeTriger.getThemeTarget().setPopupVisible(visible);
     }
   }
 

@@ -70,7 +70,7 @@ describe('ThemeProvider', () => {
     const Target = createTestComponent(TestComponent, target => {
 
 
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { ...twoConfig.ligx, svThemeConfigTree: Object.assign({}, oneConfig, twoConfig), };
       exp(theme).to.be.eql(expectResult);
     });
@@ -112,7 +112,7 @@ describe('ThemeProvider', () => {
     const Target = createTestComponent(TestComponent, target => {
 
 
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { ...D.ligx, svThemeConfigTree: Object.assign({}, A, B, C, D), };
       exp(theme).to.be.eql(expectResult);
     });
@@ -153,7 +153,7 @@ describe('ThemeProvider', () => {
     const Target = createTestComponent(TestComponent, target => {
 
 
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { svThemeConfigTree: Object.assign({}, A, B, C, D), };
       exp(theme).to.be.eql(expectResult);
     });
@@ -195,7 +195,7 @@ describe('ThemeProvider', () => {
     const Target = createTestComponent(TestComponent, target => {
 
 
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { svThemeConfigTree: D, };
       exp(theme).to.be.eql(expectResult);
     });
@@ -236,7 +236,7 @@ describe('ThemeProvider', () => {
     const Target = createTestComponent(TestComponent, target => {
 
 
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { svThemeConfigTree: { ...C, ...D, }, };
       exp(theme).to.be.eql(expectResult);
     });
@@ -277,7 +277,7 @@ describe('ThemeProvider', () => {
     const Target = createTestComponent(TestComponent, target => {
 
 
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { svThemeConfigTree: { ...B, ...C, ...D, }, };
       exp(theme).to.be.eql(expectResult);
     });
@@ -317,7 +317,7 @@ describe('ThemeProvider', () => {
     const Target = createTestComponent(TestComponent, target => {
 
 
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { svThemeConfigTree: { ...B, ...C, ...D, }, };
       exp(theme).to.be.eql(expectResult);
     });
@@ -357,7 +357,7 @@ describe('ThemeProvider', () => {
     const Target = createTestComponent(TestComponent, target => {
 
 
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { svThemeConfigTree: { ...B, ...C, ...D, }, ...B[ WidgetName ], };
       exp(theme).to.be.eql(expectResult);
     });
@@ -394,7 +394,7 @@ describe('ThemeProvider', () => {
     };
 
     const Target = createTestComponent(TestComponent, target => {
-      const theme = target.lgx.target.props.getTheme();
+      const theme = target.lgx.getThemeTarget().props.getTheme();
       const expectResult = { svThemeConfigTree: { ...B, ...C, ...D, }, ...C[ WidgetName ], };
       exp(theme).to.be.eql(expectResult);
     });
@@ -435,12 +435,12 @@ describe('ThemeProvider', () => {
       };
 
       const Target = createTestComponent(TestComponent, target => {
-        const theme = target.lgx.target.props.getTheme();
+        const theme = target.lgx.getThemeTarget().props.getTheme();
         const expectResult = { svThemeConfigTree: { ...B, ...C, ...D, }, ...C[ WidgetName ], };
         exp(theme).to.be.eql(expectResult);
       }, {
         componentDidUpdate (_, _b, target) {
-          const theme = target.lgx.target.props.getTheme();
+          const theme = target.lgx.getThemeTarget().props.getTheme();
           const expectResult = { svThemeConfigTree: { ...A, ...B, ...C, }, ...C[ WidgetName ], };
           exp(theme).to.be.eql(expectResult);
           resolve(true);

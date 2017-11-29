@@ -120,7 +120,7 @@ export default class extends React.Component<any, any> {
                   defaultDisplayValue="3.2"
                   mutliple
                   placeholder="请输入xxx"
-                  splitQuery=","
+                  // splitQuery=","
                   expandAll onChange={this.onChange}/>
     </Theme>;
   }

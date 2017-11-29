@@ -530,7 +530,7 @@ describe('Tree', () => {
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
-    target.target.setState({ start: 17, }, () => {
+    target.getThemeTarget().setState({ start: 17, }, () => {
 
     });
     cmp.instance().forceUpdate();
@@ -553,7 +553,7 @@ describe('Tree', () => {
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
-    target.target.setState({ start: 17, }, () => {
+    target.getThemeTarget().setState({ start: 17, }, () => {
 
     });
     cmp.instance().forceUpdate();
@@ -730,22 +730,22 @@ describe('Tree', () => {
     const cmp = mount(<Target value={'3.2'} data={rowData} mutliple expandAll/>);
 
 
-    target.target.setState({ start: 17, }, () => {
+    target.getThemeTarget().setState({ start: 17, }, () => {
 
     });
     cmp.instance().forceUpdate();
     cmp.update();
-    exp(target.target.state.start, '移动滚动条到底部失败').to.be.equal(17);
+    exp(target.getThemeTarget().state.start, '移动滚动条到底部失败').to.be.equal(17);
 
     cmp.setProps({ query: '3.1', });
     cmp.instance().forceUpdate();
     cmp.update();
-    exp(target.target.state.start, '查询后start统一移动到顶部').to.be.equal(0);
+    exp(target.getThemeTarget().state.start, '查询后start统一移动到顶部').to.be.equal(0);
 
     cmp.setProps({ query: '', });
     cmp.instance().forceUpdate();
     cmp.update();
-    exp(target.target.state.start, '恢复到原来的底部位置').to.be.equal(17);
+    exp(target.getThemeTarget().state.start, '恢复到原来的底部位置').to.be.equal(17);
 
   });
 

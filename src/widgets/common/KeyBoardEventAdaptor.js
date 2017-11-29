@@ -32,7 +32,7 @@ export default Target => class extends React.Component<any, any> {
 
       };
     return <Target {...props}
-                   ref={cmp => this.target = cmp}
+                   ref={cmp => this.svtarget = cmp}
                    onFocus={onFocus}
                    onKeyUp={onKeyUp}
                    onKeyPress={onKeyPress}

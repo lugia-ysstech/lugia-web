@@ -10,7 +10,7 @@ type ProviderComponent = React.ComponentType<any> & { displayName: ?string };
 const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {
 
   class ThemeWrapWidget extends React.Component<any, any> {
-    target: Object;
+    svtarget: Object;
 
     render () {
       const getTheme = () => {
@@ -24,13 +24,13 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
         return Object.assign({}, currConfig, { svThemeConfigTree, });
       };
       return <Target {...this.props} getTheme={getTheme}
-                     ref={cmp => this.target = cmp}></Target>;
+                     ref={cmp => this.svtarget = cmp}></Target>;
     }
 
     getThemeTarget = () => {
-      let target = this.target;
-      while ( target && target.target ) {
-        target = target.target;
+      let target = this.svtarget;
+      while ( target && target.svtarget ) {
+        target = target.svtarget;
       }
       return target;
     }
