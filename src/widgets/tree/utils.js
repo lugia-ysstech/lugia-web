@@ -942,9 +942,9 @@ class TreeUtils {
   }
 
 
-  value2SelectInfo (keys: Array<string>, displayValue: Array<string>, oldValue: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
+  value2SelectInfo (keys: Array<string>, displayValue: Array<string>, valueObject: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
     const len = keys.length;
-    if (!oldValue || !len) {
+    if (!valueObject || !len) {
       return { value: {}, halfchecked: {}, checked: {}, };
     }
     const value = {}, halfchecked = {}, checked = {};
@@ -1050,7 +1050,7 @@ class TreeUtils {
       const { key, } = rootChildNode[ i ];
       checked[ key ] = true;
     }
-    return { value: oldValue, halfchecked, checked, };
+    return { value: valueObject, halfchecked, checked, };
   }
 
   selectRow (value: Object, key: string, id2ExtendInfo: NodeId2ExtendInfo, row: ?Object): boolean {
