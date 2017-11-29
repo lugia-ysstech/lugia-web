@@ -81,6 +81,7 @@ const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
 };
 const InnerContainer = styled.div`
+  padding: 5px;
   ${widthFunc(-getContentWidth(0))}
   height: 26px;
   margin-left: ${marginLeft}px;
@@ -88,6 +89,9 @@ const InnerContainer = styled.div`
   margin-bottom: -3px;
   position: relative;
   user-select: none;
+`;
+const SingleInnerContainer = InnerContainer.extend`
+  padding: 5px;
 `;
 const PlaceContainer = styled.div`
   top: 50%;
@@ -127,6 +131,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   needMoreItem: boolean;
   oldWidth: number;
 
+  isMutliple () {
+    return this.props.mutliple;
+  }
 
   constructor (props: InputTagProps) {
     super(props);
@@ -150,12 +157,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { value = '', displayValue = '', } = this.getValue(props);
 
     const isEmptyValue = !value || value.trim() === '';
-    if (this.props.mutliple === false) {
+    if (this.isMutliple() === false) {
       if (isEmptyValue) {
         return {};
       }
       this.count = 1;
-      return { [value]: { text: displayValue, }, };
+      return { text: displayValue, };
     }
 
     const isEmptyDisplayValue = !displayValue || displayValue.trim() === '';
@@ -198,48 +205,69 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   render () {
-    const { items, } = this.state;
-    const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
-    const result = (
-      <Container className="sv"
-                 theme={this.props.getTheme()}
-                 innerRef={cmp => this.container = cmp}
-                 onClick={this.onClick}>
+    const { props, state, } = this;
+    let result;
+    const clearButton = <IconButton iconClass={Clear} viewClass={IconButton.displayName}
+                                    onClick={this.onClear}></IconButton>;
+    if (!this.isMutliple()) {
+      const { value, } = state;
+      const text = value ? value.text : '';
+      result = <Container className="sv"
+                                                          theme={props.getTheme()}
+                                                          innerRef={cmp => this.container = cmp}
+                                                          onClick={this.onClick}>
         <OutContainer>
-          <InnerContainer theme={this.props.getTheme()}>
-            <List innerRef={cmp => this.list = cmp}>
-              <FontItem ref={fillFontItem}/>
-              {items}
-            </List>
-
-            {items.length > 0 ? <IconButton iconClass={Clear} viewClass={IconButton.displayName}
-                                            onClick={this.onClear}></IconButton> : null}
-          </InnerContainer>
+          <SingleInnerContainer theme={props.getTheme()}>
+            {text}
+            {text ? clearButton : null}
+          </SingleInnerContainer>
         </OutContainer>
-      </Container>
-    );
-    if (this.needMoreItem) {
+      </Container>;
+    } else {
 
-      const config = { width: this.getWidth(), };
-      const theme = {
-        [Widget.DropMenu]: config,
-        [Widget.Trigger]: config,
-        [Widget.Icon]: { hoverColor: 'red', },
-        [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
-      };
+      const { items, } = state;
+      const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
 
-      return <Theme config={theme}>
-        <DropMenu menus={this.getItems()}
-                  onPopupVisibleChange={this.onPopupVisibleChange}
-                  action={[]}
-                  hideAction={['click',]}
-                  ref={cmp => {
-                    this.dropMenu = cmp;
-                  }}>
-          {result}
-        </DropMenu>
-      </Theme>;
+      result = (
+        <Container className="sv"
+                   theme={props.getTheme()}
+                   innerRef={cmp => this.container = cmp}
+                   onClick={this.onClick}>
+          <OutContainer>
+            <InnerContainer theme={props.getTheme()}>
+              <List innerRef={cmp => this.list = cmp}>
+                <FontItem ref={fillFontItem}/>
+                {items}
+              </List>
+              {items.length > 0 ? clearButton : null}
+            </InnerContainer>
+          </OutContainer>
+        </Container>
+      );
+      if (this.needMoreItem) {
+
+        const config = { width: this.getWidth(), };
+        const theme = {
+          [Widget.DropMenu]: config,
+          [Widget.Trigger]: config,
+          [Widget.Icon]: { hoverColor: 'red', },
+          [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
+        };
+
+        return <Theme config={theme}>
+          <DropMenu menus={this.getItems()}
+                    onPopupVisibleChange={this.onPopupVisibleChange}
+                    action={[]}
+                    hideAction={['click',]}
+                    ref={cmp => {
+                      this.dropMenu = cmp;
+                    }}>
+            {result}
+          </DropMenu>
+        </Theme>;
+      }
     }
+
     return result;
   }
 
@@ -354,6 +382,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
+    if (!this.isMutliple()) {
+      return true;
+    }
     const items = [];
     this.needMoreItem = false;
     const { value, } = this.state;
