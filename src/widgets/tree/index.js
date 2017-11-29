@@ -125,7 +125,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { selectedInfo, } = this.state;
     const { checked, } = selectedInfo;
     const chkLen = Object.keys(checked).length;
-    console.info(chkLen, this.getData().length);
     return chkLen > 0 && chkLen >= this.getData().length;
   }
 
@@ -204,7 +203,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isSingleSelectForProps(props)) {
       state.selectValue = selectValue;
     } else {
-      console.info(val);
       state.selectedInfo = this.getUtils(props).value2SelectInfo(val, displayValue ? displayValue.split(',') : [], valueObject, id2ExtendInfo);
     }
   }

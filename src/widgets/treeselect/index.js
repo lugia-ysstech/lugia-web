@@ -323,14 +323,29 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   setValue (value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
     let valStr = '', dispStr = '';
+    const realyVal = [];
+    const realDisp = [];
     if (value && value.length > 0) {
-      valStr = value.join(',');
-      dispStr = displayValue.join(',');
+      const len = value.length;
+      const isHas = {};
+      for (let i = 0; i < len; i++) {
+        const key = value[ i ];
+        const title = displayValue[ i ];
+        if (isHas[ key ]) {
+          console.warn(`存在重复的数据${key}:${title}`);
+          continue;
+        }
+        isHas[key] = true;
+        realyVal.push(key);
+        realDisp.push(title);
+      }
+      valStr = realyVal.join(',');
+      dispStr = realDisp.join(',');
     }
     this.setState({
       value: valStr,
       displayValue: dispStr, ...other,
-      selectCount: value.length,
+      selectCount: realyVal.length,
     }, callback);
   }
 
