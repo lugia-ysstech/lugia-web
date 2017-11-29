@@ -118,7 +118,7 @@ export default class extends React.Component<any, any> {
         //canInput
                   canInput
                   defaultDisplayValue="3.2"
-         mutliple
+                  mutliple
                   placeholder="请输入xxx"
                   splitQuery=","
                   expandAll onChange={this.onChange}/>
@@ -129,6 +129,6 @@ export default class extends React.Component<any, any> {
     console.info(obj);
   };
   onTrigger = () => {
-    this.setState({ data: rowData, });
+    this.setState({ data: bigTree, });
   };
 }

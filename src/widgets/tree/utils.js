@@ -541,7 +541,7 @@ class TreeUtils {
     if (queryAll) {
       this.treeData = this.orignalData;
     } else if (queryChanging) {
-
+      const queryArray = this.getQueryArray(query);
       const need: Object = {};
       const containPath: Object = {};
       const rowSet = [];
@@ -549,7 +549,7 @@ class TreeUtils {
       for (let i = len; i >= 0; i--) {
         const row: RowData = this.orignalData[ i ];
         const { [this.displayField]: title, key, path, } = row;
-        if (this.match(title, query, searchType)) {
+        if (this.match(title, queryArray, searchType)) {
           if (path !== undefined && containPath[ path ] === undefined) {
             const pathArray = this.getPathArray(path);
             containPath[ path ] = true;
@@ -576,7 +576,7 @@ class TreeUtils {
     return this.oldTreeData;
   }
 
-  match (val: ?string, query: string, type: QueryType): boolean {
+  match (val: ?string, query: Array<string>, type: QueryType): boolean {
     if (val === undefined || val === null) {
       return false;
     }
@@ -606,28 +606,34 @@ class TreeUtils {
         );
       }
       case 'eql': {
-        return val === query;
+        return this.toMach(val, query, (val: string, query: string) => {
+            return val === query;
+          }
+        );
       }
       default:
         return false;
     }
   }
 
-  toMach (val: string, query: string, match: Function): boolean {
+  getQueryArray (query: string): Array<string> {
     if (this.splitQuery) {
-      const queryArray = query.split(this.splitQuery);
-      for (let i = 0; i < queryArray.length; i++) {
-        const oneQuery = queryArray[ i ];
-        if (!oneQuery || oneQuery === '') {
-          continue;
-        }
-        if (match(val, oneQuery)) {
-          return true;
-        }
-      }
-      return false;
+      return query.split(this.splitQuery);
     }
-    return match(val, query);
+    return [query,];
+  }
+
+  toMach (val: string, queryArray: Array<string>, match: Function): boolean {
+    for (let i = 0; i < queryArray.length; i++) {
+      const oneQuery = queryArray[ i ];
+      if (!oneQuery || oneQuery === '') {
+        continue;
+      }
+      if (match(val, oneQuery)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   generateRealTreeData (expandInfo: ExpandInfo): Array<RowData> {
@@ -957,7 +963,7 @@ class TreeUtils {
     const isDo = {};
     for (let i = 0; i < len; i++) {
       const key = keys[ i ];
-      if(isDo[key]){
+      if (isDo[ key ]) {
         continue;
       }
       const row = this.getRow(key, id2ExtendInfo);
@@ -966,14 +972,14 @@ class TreeUtils {
         if (isLeaf) {
           if (!rowPath) {
             rootChildNode.push(row);
-          } else  {
-            if(!allPathArray[rowPath]){
+          } else {
+            if (!allPathArray[ rowPath ]) {
               allPathArray[ rowPath ] = this.getPathArray(rowPath);
             }
-            if(!path2Nodes[ rowPath ]) {
+            if (!path2Nodes[ rowPath ]) {
               path2Nodes[ rowPath ] = [];
             }
-            path2Nodes[rowPath].push(row);
+            path2Nodes[ rowPath ].push(row);
           }
         } else {
           const path = this.getPathArray(rowPath);
@@ -989,7 +995,7 @@ class TreeUtils {
         const disp = displayValue[ i ];
         this.notInTree[ key ] = disp ? disp : key;
       }
-      isDo[key] = true;
+      isDo[ key ] = true;
     }
 
     const selectedInfo = { value, halfchecked, checked, };

@@ -366,9 +366,92 @@ describe('utils', () => {
 
       id2ExtendInfo,
     };
+    exp(utils.search(expandInfo, query)).to.be.eql(datas);
+    exp(mockMatch.getCallArgs(0)).to.be.eql(['4', ['诸行无常',], 'include',]);
+    exp(mockMatch.callTimes()).to.be.eql(datas.length);
+
+  });
+  it('search query: 1.2 matchAll splitQuery: , query: 诸行无常', () => {
+    const utils = new TreeUtils(datas, { expandAll: true, splitQuery: ',', });
+    const mockUtils = mockObject.create(utils);
+
+    const mockMatch = mockUtils.mockFunction('match');
+    for (let i = 0; i < datas.length; i++) {
+      mockMatch.returned(true);
+    }
+    const query: string = '诸行无常';
+    const id2ExtendInfo = {};
+
+    const expandInfo = {
+
+      id2ExtendInfo,
+    };
 
     exp(utils.search(expandInfo, query)).to.be.eql(datas);
+    exp(mockMatch.getCallArgs(0)).to.be.eql(['4', ['诸行无常',], 'include',]);
+    exp(mockMatch.callTimes()).to.be.eql(datas.length);
   });
+  it('search query: 1.2 matchAll splitQuery: , query: 1,2,3', () => {
+    const utils = new TreeUtils(datas, { expandAll: true, splitQuery: ',', });
+    const mockUtils = mockObject.create(utils);
+
+    const mockMatch = mockUtils.mockFunction('match');
+    for (let i = 0; i < datas.length; i++) {
+      mockMatch.returned(true);
+    }
+    const query: string = '1,2,3';
+    const id2ExtendInfo = {};
+
+    const expandInfo = {
+
+      id2ExtendInfo,
+    };
+
+    exp(utils.search(expandInfo, query)).to.be.eql(datas);
+    exp(mockMatch.getCallArgs(0)).to.be.eql(['4', ['1', '2', '3',], 'include',]);
+    exp(mockMatch.callTimes()).to.be.eql(datas.length);
+  });
+  it('search query: 1.2 matchAll splitQuery: | query: 1,2,3', () => {
+    const utils = new TreeUtils(datas, { expandAll: true, splitQuery: '|', });
+    const mockUtils = mockObject.create(utils);
+
+    const mockMatch = mockUtils.mockFunction('match');
+    for (let i = 0; i < datas.length; i++) {
+      mockMatch.returned(true);
+    }
+    const query: string = '1,2,3';
+    const id2ExtendInfo = {};
+
+    const expandInfo = {
+
+      id2ExtendInfo,
+    };
+
+    exp(utils.search(expandInfo, query)).to.be.eql(datas);
+    exp(mockMatch.getCallArgs(0)).to.be.eql(['4', ['1,2,3',], 'include',]);
+    exp(mockMatch.callTimes()).to.be.eql(datas.length);
+  });
+  it('search query: 1.2 matchAll splitQuery: | query: 1,2,3', () => {
+    const utils = new TreeUtils(datas, { expandAll: true, splitQuery: '|', });
+    const mockUtils = mockObject.create(utils);
+
+    const mockMatch = mockUtils.mockFunction('match');
+    for (let i = 0; i < datas.length; i++) {
+      mockMatch.returned(true);
+    }
+    const query: string = '1|2|3';
+    const id2ExtendInfo = {};
+
+    const expandInfo = {
+
+      id2ExtendInfo,
+    };
+
+    exp(utils.search(expandInfo, query)).to.be.eql(datas);
+    exp(mockMatch.getCallArgs(0)).to.be.eql(['4', ['1', '2', '3',], 'include',]);
+    exp(mockMatch.callTimes()).to.be.eql(datas.length);
+  });
+
   it('search query: 1.2 notMatch', () => {
     const utils = new TreeUtils(datas, { expandAll: true, });
     const mockUtils = mockObject.create(utils);
@@ -518,105 +601,62 @@ describe('utils', () => {
   });
 
   it('match val: null', () => {
-    exp(utils.match(null, '', 'include')).to.be.false;
-    exp(utils.match(undefined, '', 'include')).to.be.false;
+    exp(utils.match(null, ['',], 'include')).to.be.false;
+    exp(utils.match(undefined, ['',], 'include')).to.be.false;
 
-    exp(utils.match(null, '', 'start')).to.be.false;
-    exp(utils.match(undefined, '', 'start')).to.be.false;
+    exp(utils.match(null, ['',], 'start')).to.be.false;
+    exp(utils.match(undefined, ['',], 'start')).to.be.false;
 
-    exp(utils.match(null, '', 'end')).to.be.false;
-    exp(utils.match(undefined, '', 'end')).to.be.false;
+    exp(utils.match(null, ['',], 'end')).to.be.false;
+    exp(utils.match(undefined, ['',], 'end')).to.be.false;
 
-    exp(utils.match(null, '', 'eql')).to.be.false;
-    exp(utils.match(undefined, '', 'eql')).to.be.false;
+    exp(utils.match(null, ['',], 'eql')).to.be.false;
+    exp(utils.match(undefined, ['',], 'eql')).to.be.false;
 
   });
   it('match val: 123,  start', () => {
     const val = '123';
-    exp(utils.match(val, '1', 'start')).to.be.true;
-    exp(utils.match(val, '12', 'start')).to.be.true;
-    exp(utils.match(val, '123', 'start')).to.be.true;
-    exp(utils.match(val, '5', 'start')).to.be.false;
-  });
-
-
-  it('match val: 123,  start splitQuery: ,', () => {
-    utils = new TreeUtils(datas, { expandAll: false, splitQuery: ',', });
-    exp(utils.match('123,234', '1,2', 'start')).to.be.true;
-    exp(utils.match('123,234', '1|2', 'start')).to.be.false;
-  });
-
-  it('match val: 123,  start splitQuery: |', () => {
-    utils = new TreeUtils(datas, { expandAll: false, splitQuery: '|', });
-    exp(utils.match('123,234', '1,2', 'start')).to.be.false;
-    exp(utils.match('123,234', '1|2', 'start')).to.be.true;
-
+    exp(utils.match(val, ['1',], 'start')).to.be.true;
+    exp(utils.match(val, ['12',], 'start')).to.be.true;
+    exp(utils.match(val, ['123',], 'start')).to.be.true;
+    exp(utils.match(val, ['5',], 'start')).to.be.false;
   });
 
 
   it('match val: 123,  end', () => {
     const val = '123';
-    exp(utils.match(val, '1,2,3', 'end')).to.be.false;
-    exp(utils.match(val, '3', 'end')).to.be.true;
-    exp(utils.match(val, '23', 'end')).to.be.true;
-    exp(utils.match(val, '123', 'end')).to.be.true;
-    exp(utils.match(val, '5', 'end')).to.be.false;
+    exp(utils.match(val, ['1', '2', '3',], 'end')).to.be.true;
+    exp(utils.match(val, ['3',], 'end')).to.be.true;
+    exp(utils.match(val, ['23',], 'end')).to.be.true;
+    exp(utils.match(val, ['123',], 'end')).to.be.true;
+    exp(utils.match(val, ['5',], 'end')).to.be.false;
   });
 
-  it('match val: 123,  start splitQuery: ,', () => {
-    utils = new TreeUtils(datas, { expandAll: false, splitQuery: ',', });
-    exp(utils.match('321,432', '1,2', 'end')).to.be.true;
-    exp(utils.match('321,432', ',', 'end')).to.be.false;
-    exp(utils.match('321,432', '1|2', 'end')).to.be.false;
-  });
-
-  it('match val: 123,  start splitQuery: |', () => {
-    utils = new TreeUtils(datas, { expandAll: false, splitQuery: '|', });
-    exp(utils.match('321,432', '1,2', 'end')).to.be.false;
-    exp(utils.match('321,432', ',', 'end')).to.be.false;
-    exp(utils.match('321,432', '1|2', 'end')).to.be.true;
-    exp(utils.match('321,432', '|', 'end')).to.be.false;
-  });
 
   it('match val: 123,  include', () => {
     const val = '123';
-    exp(utils.match(val, '3', 'include')).to.be.true;
-    exp(utils.match(val, '23', 'include')).to.be.true;
-    exp(utils.match(val, '1', 'include')).to.be.true;
-    exp(utils.match(val, '2', 'include')).to.be.true;
-    exp(utils.match(val, 'a', 'include')).to.be.false;
-    exp(utils.match(val, '1,2,3', 'include')).to.be.false;
+    exp(utils.match(val, ['3',], 'include')).to.be.true;
+    exp(utils.match(val, ['23',], 'include')).to.be.true;
+    exp(utils.match(val, ['1',], 'include')).to.be.true;
+    exp(utils.match(val, ['2',], 'include')).to.be.true;
+    exp(utils.match(val, ['a',], 'include')).to.be.false;
+    exp(utils.match(val, ['1', '2', '3',], 'include')).to.be.true;
   });
 
   it('match val: 123,  query: 空字符串', () => {
-    exp(utils.match('1', '', 'include')).to.be.false;
-    exp(utils.match('1', '', 'eql')).to.be.false;
-    exp(utils.match('1', '', 'start')).to.be.false;
-    exp(utils.match('1', '', 'end')).to.be.false;
+    exp(utils.match('1', ['',], 'include')).to.be.false;
+    exp(utils.match('1', ['',], 'eql')).to.be.false;
+    exp(utils.match('1', ['',], 'start')).to.be.false;
+    exp(utils.match('1', ['',], 'end')).to.be.false;
 
   });
-  it('match val: 123,  include container splitQuery: ,', () => {
-    utils = new TreeUtils(datas, { expandAll: false, splitQuery: ',', });
-    exp(utils.match('1', '1,2', 'include')).to.be.true;
-    exp(utils.match('2', '1,2', 'include')).to.be.true;
-    exp(utils.match('3', '1,2', 'include')).to.be.false;
-    exp(utils.match('3', ',', 'include')).to.be.false;
-  });
-  it('match val: 123,  include container splitQuery: |', () => {
-    utils = new TreeUtils(datas, { expandAll: false, splitQuery: '|', });
-    exp(utils.match('1', '1|2', 'include')).to.be.true;
-    exp(utils.match('2', '1|2', 'include')).to.be.true;
-    exp(utils.match('3', '1|2', 'include')).to.be.false;
-    exp(utils.match('3', '|', 'include')).to.be.false;
-  });
-
   it('match val: 123,  eql', () => {
     const val = '123';
-    exp(utils.match(val, '3', 'eql')).to.be.false;
-    exp(utils.match(val, '23', 'eql')).to.be.false;
-    exp(utils.match(val, '1', 'eql')).to.be.false;
-    exp(utils.match(val, '2', 'eql')).to.be.false;
-    exp(utils.match(val, '123', 'eql')).to.be.true;
+    exp(utils.match(val, ['3',], 'eql')).to.be.false;
+    exp(utils.match(val, ['23',], 'eql')).to.be.false;
+    exp(utils.match(val, ['1',], 'eql')).to.be.false;
+    exp(utils.match(val, ['2',], 'eql')).to.be.false;
+    exp(utils.match(val, ['123',], 'eql')).to.be.true;
   });
 
   it('generateRealTreeData expandAll: true 折叠1.2 2', () => {
