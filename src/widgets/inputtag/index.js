@@ -213,9 +213,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const { value, } = state;
       const text = value ? value.text : '';
       result = <Container className="sv"
-                                                          theme={props.getTheme()}
-                                                          innerRef={cmp => this.container = cmp}
-                                                          onClick={this.onClick}>
+                          theme={props.getTheme()}
+                          innerRef={cmp => this.container = cmp}
+                          onClick={this.onClick}>
         <OutContainer>
           <SingleInnerContainer theme={props.getTheme()}>
             {text}
@@ -372,7 +372,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   getOffSetWidth () {
     const { getTheme, } = this.props;
     const { width, } = getTheme();
-    return width ? getContentWidth(width) : this.list.offsetWidth;
+    if (this.isMutliple()) {
+      return width ? getContentWidth(width) : this.list.offsetWidth;
+    }
+    return 0;
   }
 
   getWidth () {
