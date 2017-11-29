@@ -474,7 +474,7 @@ describe('Tree', () => {
       const onChange = (value, displayValue) => {
         resolve({ value, displayValue, });
       };
-      const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} limitCount={1} />);
+      const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} limitCount={1}/>);
       cmp.find(CheckBoxInner).at(5).simulate('click', {});
 
       cmp.instance().forceUpdate();
@@ -539,8 +539,8 @@ describe('Tree', () => {
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(1);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
     const chkBox = cmp.find(CheckBox);
-    exp(chkBox.at(chkBox.length - 3).hasClass(HalfChecked), '3被半选上').to.be.true;
-    exp(chkBox.last().hasClass(Checked), '3.2被全选上').to.be.true;
+    exp(chkBox.at(chkBox.length - 4).hasClass(HalfChecked), '3被半选上').to.be.true;
+    exp(chkBox.at(chkBox.length - 2).hasClass(Checked), '3.2被全选上').to.be.true;
   });
 
   it('mutliple: false ,  value： 在不可见的位置', () => {
@@ -561,7 +561,8 @@ describe('Tree', () => {
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(1);
-    exp(cmp.find(TreeRow).last().hasClass(Selected)).to.be.true;
+    const rows = cmp.find(TreeRow);
+    exp(rows.at(rows.length - 2).hasClass(Selected)).to.be.true;
   });
 
 
