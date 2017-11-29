@@ -172,8 +172,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       result.push(<Icon iconClass={iconClass} key="selAll" onClick={this.onSelectAll} viewClass={SelectedIcon}></Icon>);
     }
 
-    return <Icon iconClass="sv-icon-plus" key="add" onClick={this.onAdd}
-                 viewClass={SelectedIcon}></Icon>;
+    return result;
   };
 
   isMutliple () {
