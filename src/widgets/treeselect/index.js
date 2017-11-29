@@ -255,7 +255,23 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       }
       this.setValue(value, displayValue, {});
     } else {
-      this.setValue([], [], {});
+      //TODO: 这里修改了getInputTagValueObject方法的值.
+      const valueObj = this.getInputTagValueObject();
+      const items = this.getData();
+      const len = items.length;
+      for (let i = 0; i < len; i++) {
+        const { key, } = items[ i ];
+        const item = valueObj[ key ];
+        if (item) {
+          delete valueObj[ key ];
+        }
+      }
+      const valArray = Object.keys(valueObj);
+      const dispArray = [];
+      for (let i = 0; i < valArray.length; i++) {
+        dispArray.push(valueObj[ valArray[ i ] ].text);
+      }
+      this.setValue(valArray, dispArray, {});
     }
   };
 
@@ -299,7 +315,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       let { selectCount, } = state;
       this.changeOldValue(value);
       if (this.isMutliple()) {
-        selectCount = this.inputTag.target.getCount();
+        selectCount = this.getInputTagCount();
       }
       this.setState({ query: '', selectCount, });
     } else {
@@ -316,6 +332,30 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       }
     });
   };
+
+  getInputTagCount (): number {
+
+    const inputTag = this.getInputTag();
+    if (!inputTag) {
+      return 0;
+    }
+    return inputTag.getCount();
+  }
+
+  getInputTagValueObject (): Object {
+    const inputTag = this.getInputTag();
+    if (!inputTag) {
+      return {};
+    }
+    return inputTag.getValueObject();
+  }
+
+  getInputTag () {
+    if (!this.inputTag) {
+      return null;
+    }
+    return this.inputTag.target;
+  }
 
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
     this.setValue(value, displayValue, {});
@@ -335,7 +375,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           console.warn(`存在重复的数据${key}:${title}`);
           continue;
         }
-        isHas[key] = true;
+        isHas[ key ] = true;
         realyVal.push(key);
         realDisp.push(title);
       }

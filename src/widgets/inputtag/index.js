@@ -21,6 +21,7 @@ import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
+
 type InputTagProps = {
   placeholder?: string;
   getTheme: Function,
@@ -36,7 +37,7 @@ type InputTagProps = {
 const Clear = 'sv-icon-close-circled';
 type InputTagState = {
   items: Array<React.Node>,
-  value?: Object,
+  value: Object,
 };
 const widthFunc = (spanWidth: number) => (props: Object) => {
   const w = props.theme.width - spanWidth;
@@ -162,6 +163,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getCount (): number {
     return this.count;
+  }
+
+  getValueObject (): Object {
+    return this.state.value;
   }
 
   getValue (props: InputTagProps): { value: string, displayValue: string } {
