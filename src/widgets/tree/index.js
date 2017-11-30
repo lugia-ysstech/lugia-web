@@ -146,17 +146,24 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const queryChanged = this.props.query !== props.query;
     const valueChanged = props.value != this.props.value;
     if (dataChanged || queryChanged || valueChanged) {
-      const expand = this.updateExpandInfo(props);
-      const { id2ExtendInfo, } = expand;
-      const newState: TreeState = {
-        start: this.isQueryAll(props) ? this.allStart : 0,
-        selectedInfo: this.state.selectedInfo,
-        expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
-        expand,
+      let expand = this.state.expand;
+      let newState: Object = {
         selectValue: [],
       };
+      if (dataChanged || queryChanged) {
+        expand = this.updateExpandInfo(props);
+        const { id2ExtendInfo, } = expand;
+        newState = {
+          start: this.isQueryAll(props) ? this.allStart : 0,
+          selectedInfo: this.state.selectedInfo,
+          expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
+          expand,
+          selectValue: [],
+        };
+      }
 
       if (valueChanged) {
+        const { id2ExtendInfo, } = expand;
         newState.selectedInfo = this.getEmptyNodeId2SelectInfo();
         if (this.isNotLimit(props)) {
           const { selectValue = [], selectedInfo, } = this.state;
