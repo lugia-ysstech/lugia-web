@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ThemeProvider ThemeProvider 1`] = `
-<span>
+<span
+  className={undefined}
+>
   <div>
     {"value":"正念","svThemeConfigTree":{"ligx":{"value":"正念"}}}
     hello everyone

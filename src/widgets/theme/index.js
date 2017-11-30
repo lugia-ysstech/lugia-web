@@ -11,6 +11,7 @@ import * as Widget from '../consts/Widget';
 type PropsType = {
   children: React.Node,
   config: Object,
+  className?: string,
 };
 type StateType = {};
 
@@ -44,8 +45,8 @@ class Theme extends React.Component<PropsType, StateType> {
   }
 
   render () {
-    const { children, } = this.props;
-    return <span>{children}</span>;
+    const { children, className,} = this.props;
+    return <span className={className}>{children}</span>;
   }
 }
 

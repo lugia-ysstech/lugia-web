@@ -273,7 +273,9 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   background-color: #ecf6fd;
 }
 
-<span>
+<span
+  className={undefined}
+>
   <ul
     className="c0"
   >
@@ -425,7 +427,9 @@ exports[`Menu children: items 1`] = `
   background-color: #49a9ee96;
 }
 
-<span>
+<span
+  className={undefined}
+>
   <div
     className="c0"
     onWheel={[Function]}

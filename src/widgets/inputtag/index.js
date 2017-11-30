@@ -51,10 +51,11 @@ const Container = styled.div`
   color: rgba(0, 0, 0, 0.65);
   font-size: 12px;
 `;
+const outContainerHeight = 28;
 const OutContainer = styled.div`
   border: solid 1px ${InputBorderColor};
   border-radius: ${RadiusSize};
-  min-height: 28px;
+  min-height: ${outContainerHeight}px;
   padding-bottom: 3px;
 
   :hover {
@@ -77,7 +78,7 @@ const separator = ',';
 const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
 };
-const InnerContainer = styled.div`
+const InnerContainer = styled.div `
   ${widthFunc(-getContentWidth(0))}
   height: 26px;
   margin-left: ${marginLeft}px;
@@ -93,6 +94,11 @@ const List = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+`;
+const InputTagTheme = styled(Theme)`
+  display: block;
+  min-height: ${outContainerHeight}px;
+  height: ${outContainerHeight}px;
 `;
 
 class InputTag extends React.Component<InputTagProps, InputTagState> {
@@ -192,6 +198,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     let result;
     const clearButton = this.getClearButton();
     const placeholder = this.getPlaceholder();
+    const config = { width: this.getWidth(), };
+    const theme = {
+      [Widget.DropMenu]: config,
+      [Widget.Trigger]: config,
+      [Widget.Icon]: { hoverColor: 'red', },
+      [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
+    };
     if (!this.isMutliple()) {
       result = <Container className="sv"
                           theme={props.getTheme()}
@@ -228,31 +241,23 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           </OutContainer>
         </Container>
       );
+
       if (this.needMoreItem) {
-
-        const config = { width: this.getWidth(), };
-        const theme = {
-          [Widget.DropMenu]: config,
-          [Widget.Trigger]: config,
-          [Widget.Icon]: { hoverColor: 'red', },
-          [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
-        };
-
-        return <Theme config={theme}>
-          <DropMenu menus={this.getItems()}
-                    onPopupVisibleChange={this.onPopupVisibleChange}
-                    action={[]}
-                    hideAction={['click',]}
-                    ref={cmp => {
-                      this.dropMenu = cmp;
-                    }}>
-            {result}
-          </DropMenu>
-        </Theme>;
+        return <InputTagTheme config={theme}><DropMenu menus={this.getItems()}
+                                                       onPopupVisibleChange={this.onPopupVisibleChange}
+                                                       action={[]}
+                                                       hideAction={['click',]}
+                                                       ref={cmp => {
+                                                         this.dropMenu = cmp;
+                                                       }}>
+          {result}
+        </DropMenu></InputTagTheme>;
       }
     }
 
-    return result;
+    return <InputTagTheme config={theme}>
+      {result}
+    </InputTagTheme>;
   }
 
   getClearButton () {
@@ -413,7 +418,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   getWidth () {
     const { getTheme, } = this.props;
     const { width, } = getTheme();
-    return width ? width : this.container.offsetWidth;
+    const offsetWidth = this.container ? this.container.offsetWidth : 0;
+    return width ? width : offsetWidth;
   }
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
