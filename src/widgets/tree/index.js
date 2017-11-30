@@ -143,26 +143,32 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (dataChanged === true) {
       this.createQueryAllTreelUtils(props);
     }
+    const queryChanged = this.props.query !== props.query;
+    const valueChanged = props.value != this.props.value;
+    if (dataChanged || queryChanged || valueChanged) {
+      const expand = this.updateExpandInfo(props);
+      const { id2ExtendInfo, } = expand;
+      const newState: TreeState = {
+        start: this.isQueryAll(props) ? this.allStart : 0,
+        selectedInfo: this.state.selectedInfo,
+        expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
+        expand,
+        selectValue: [],
+      };
 
-
-    const expand = this.updateExpandInfo(props);
-    const { id2ExtendInfo, } = expand;
-    const newState: TreeState = {
-      start: this.isQueryAll(props) ? this.allStart : 0,
-      selectedInfo: this.getEmptyNodeId2SelectInfo(),
-      expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
-      expand,
-      selectValue: [],
-    };
-
-    if (this.isNotLimit(props)) {
-      const { selectValue = [], selectedInfo, } = this.state;
-      const { value, } = selectedInfo;
-      this.updateStateValue(props, newState, id2ExtendInfo, selectValue, value, Object.keys(value));
-    } else {
-      this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, props.value);
+      if (valueChanged) {
+        newState.selectedInfo = this.getEmptyNodeId2SelectInfo();
+        if (this.isNotLimit(props)) {
+          const { selectValue = [], selectedInfo, } = this.state;
+          const { value, } = selectedInfo;
+          this.updateStateValue(props, newState, id2ExtendInfo, selectValue, value, Object.keys(value));
+        } else {
+          this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, props.value);
+        }
+      }
+      this.setState(newState);
     }
-    this.setState(newState);
+
   }
 
 
