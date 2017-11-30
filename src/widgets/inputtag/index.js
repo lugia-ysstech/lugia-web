@@ -180,12 +180,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   componentWillReceiveProps (props: InputTagProps) {
     if (this.isLmit()) {
-      this.setState({
-        value: this.fetchValueObject(props),
-      }, () => {
-        this.adaptiveItems(this.getOffSetWidth());
-      });
-
+      if (props.value !== this.props.value) {
+        this.setState({
+          value: this.fetchValueObject(props),
+        }, () => {
+          this.adaptiveItems(this.getOffSetWidth());
+        });
+      }
     }
   }
 
@@ -302,7 +303,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { value, } = this.state;
     const items = [];
     if (value) {
-      const keys = Object.keys(value);
+      const keys = this.getKeys(value);
       const valueLen = keys.length;
 
       for (let i = 0; i < valueLen; i++) {
@@ -314,6 +315,17 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
     return <Menu data={items} getPrefix={this.getIcon}>
     </Menu>;
+  }
+
+  valueKeys: Array<string>;
+  oldValue: Object;
+
+  getKeys (value: Object): Array<string> {
+    if (value != this.oldValue) {
+      this.valueKeys = Object.keys(value);
+      this.oldValue = value;
+    }
+    return this.valueKeys;
   }
 
   onClear = (e: Object) => {
@@ -340,7 +352,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (this.count < 0) {
       this.count = 0;
     }
-    const keys = Object.keys(value);
+    const keys = this.getKeys(value);
     const valueArray = [];
     const displayValueArray = [];
     const len = keys.length;
@@ -412,7 +424,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (value) {
       listWidth -= 36;
       let totalWidth = 0;
-      const keys = Object.keys(value);
+      const keys = this.getKeys(value);
       const valueLen = keys.length;
       for (let i = 0; i < valueLen; i++) {
 
