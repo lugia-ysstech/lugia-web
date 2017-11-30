@@ -132,7 +132,6 @@ describe('TreeSelect', () => {
   });
 
   function updateTree (cmp: Object) {
-    findTree(cmp).instance().forceUpdate();
     cmp.update();
 
   }

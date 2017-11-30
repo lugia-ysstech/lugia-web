@@ -248,11 +248,8 @@ describe('InputTag', () => {
           cmp.find(Widgets.Icon).at(1).simulate('click');
           await delay(0, async () => {
             
-            cmp.find(Widgets.Menu).instance().forceUpdate();
             cmp.update();
             await delay(0, async () => {
-              
-              cmp.find(Widgets.Menu).instance().forceUpdate();
               cmp.update();
               const menuItem = cmp.find(Widgets.MenuItem);
               exp(menuItem.length).to.be.equal(2);
