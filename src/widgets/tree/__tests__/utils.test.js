@@ -1356,7 +1356,11 @@ describe('utils', () => {
   it('expandNode expandAll: true nodeId: 1 展开折叠的结点', () => {
 
     const nodeId = '1';
+
+    const expandAll = true;
+    const utils = new TreeUtils(datas, { expandAll, });
     const countInfo = {};
+    utils.initAllNodeIndexAndTopRoot(datas, countInfo);
     countInfo[ nodeId ] = {
       nowVisible: 0,
       realyVisible: 16,
@@ -1367,8 +1371,6 @@ describe('utils', () => {
 
       index: 0,
     };
-    const expandAll = true;
-    const utils = new TreeUtils(datas, { expandAll, });
     utils.expandNode(nodeId, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 16,
@@ -1384,7 +1386,12 @@ describe('utils', () => {
   it('expandNode expandAll: true nodeId: 1 展开初始化的结点', () => {
 
     const nodeId = '1';
+
+    const expandAll = true;
+    const utils = new TreeUtils(datas, { expandAll, });
     const countInfo = {};
+    utils.initAllNodeIndexAndTopRoot(datas, countInfo);
+
     countInfo[ nodeId ] = {
       nowVisible: 0,
       realyVisible: 16,
@@ -1393,8 +1400,6 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    const expandAll = true;
-    const utils = new TreeUtils(datas, { expandAll, });
     utils.expandNode(nodeId, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
@@ -1409,7 +1414,12 @@ describe('utils', () => {
   it('expandNode expandAll: false nodeId: 1 展开初始化的结点', () => {
 
     const nodeId = '1';
+
+    const expandAll = false;
+    const utils = new TreeUtils(datas, { expandAll, });
     const countInfo = {};
+    utils.initAllNodeIndexAndTopRoot(datas, countInfo);
+
     countInfo[ nodeId ] = {
       nowVisible: 0,
       realyVisible: 3,
@@ -1418,8 +1428,6 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    const expandAll = false;
-    const utils = new TreeUtils(datas, { expandAll, });
     utils.expandNode(nodeId, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 3,
@@ -1436,6 +1444,10 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
+    const expandAll = true;
+    const utils = new TreeUtils(datas, { expandAll, });
+    utils.initAllNodeIndexAndTopRoot(datas, countInfo);
+
     countInfo[ nodeId ] = {
       nowVisible: 0,
       childrenIdx: [],
@@ -1445,8 +1457,7 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    const expandAll = true;
-    const utils = new TreeUtils(datas, { expandAll, });
+
     utils.expandNode(nodeId, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
@@ -1463,6 +1474,10 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
+    const expandAll = true;
+    const utils = new TreeUtils(datas, { expandAll, });
+    utils.initAllNodeIndexAndTopRoot(datas, countInfo);
+
     countInfo[ nodeId ] = {
       nowVisible: 0,
       realyVisible: 16,
@@ -1472,8 +1487,6 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    const expandAll = true;
-    const utils = new TreeUtils(datas, { expandAll, });
     utils.colapseNode(nodeId, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
@@ -1490,6 +1503,10 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
+    const expandAll = true;
+    const utils = new TreeUtils(datas, { expandAll, });
+    utils.initAllNodeIndexAndTopRoot(datas, countInfo);
+
     countInfo[ nodeId ] = {
       nowVisible: 0,
       realyVisible: 16,
@@ -1498,8 +1515,6 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    const expandAll = true;
-    const utils = new TreeUtils(datas, { expandAll, });
     utils.colapseNode(nodeId, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
@@ -1516,6 +1531,10 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
+    const expandAll = true;
+    const utils = new TreeUtils(datas, { expandAll, });
+    utils.initAllNodeIndexAndTopRoot(datas, countInfo);
+
     countInfo[ nodeId ] = {
       nowVisible: 0,
       realyVisible: 3,
@@ -1525,8 +1544,6 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    const expandAll = true;
-    const utils = new TreeUtils(datas, { expandAll, });
     utils.colapseNode(nodeId, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,
@@ -1543,6 +1560,10 @@ describe('utils', () => {
 
     const nodeId = '1';
     const countInfo = {};
+    const expandAll = true;
+    const utils = new TreeUtils(datas, { expandAll, });
+    utils.initAllNodeIndexAndTopRoot(datas, countInfo);
+
     countInfo[ nodeId ] = {
       nowVisible: 3,
       realyVisible: 3,
@@ -1551,8 +1572,6 @@ describe('utils', () => {
       begats: 16,
       index: 0,
     };
-    const expandAll = true;
-    const utils = new TreeUtils(datas, { expandAll, });
     utils.colapseNode(nodeId, countInfo);
     exp(countInfo[ nodeId ]).to.be.eql({
       nowVisible: 0,

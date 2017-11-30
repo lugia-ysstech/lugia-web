@@ -407,9 +407,7 @@ class TreeUtils {
         if (!pid) {
           childrenIdx.push(index);
         }
-        if (!id2nodeExpandInfo[ key ]) {
-          id2nodeExpandInfo[ key ] = { index, };
-        }
+        id2nodeExpandInfo[ key ] = { index, };
       }
       this.generateExtendInfo(VirtualRoot, begats, childrenIdx.length, id2nodeExpandInfo, childrenIdx, -1);
     }
