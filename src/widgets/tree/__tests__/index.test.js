@@ -12,6 +12,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import Tree from '../';
 import { createTestComponent, } from 'sv-test-utils';
 import renderer from 'react-test-renderer';
+import * as Widget from '../../consts/Widget';
 
 Enzyme.configure({ adapter: new Adapter(), });
 
@@ -748,6 +749,47 @@ describe('Tree', () => {
 
   });
 
+  it('多次查询', () => {
+
+    const context = {
+      config: {
+        [Widget.Tree]: {
+          height: 1000,
+        },
+      },
+    };
+    const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true}/>, { context, });
+
+    const sepator = ',';
+    const getValue = () => cmp.find(TreeRow).map(node => node.text()).join(sepator);
+    const getTitle = item => item.title;
+    exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
+    cmp.setProps({ query: '3', });
+
+    const query3Result = '1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3,3,3.1,3.2'.split(',');
+
+    exp(getValue()).to.be.equal(query3Result.join(','));
+    cmp.setProps({ value: query3Result, });
+    exp(cmp.find('.' + Checked).length).to.be.equal(query3Result.length);
+
+    const query2Result = '1,1.2,1.2.1,1.2.2,1.2.2.1,1.2.2.1.1,1.2.2.1.2,1.2.2.2,1.3,1.3.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,2,2.1,2.1.1,2.1.2,2.1.2.1,2.2,2.2.1,2.2.1.1,2.2.1.2,2.2.2,3,3.2'.split(',');
+    cmp.setProps({ query: '2', });
+    exp(getValue()).to.be.equal(query2Result.join(','));
+
+    const value = {};
+    const callback = v => {
+      value[ v ] = true;
+    };
+    query3Result.forEach(callback);
+    query2Result.forEach(callback);
+    const mergerValue = Object.keys(value);
+    cmp.setProps({ value: mergerValue, });
+
+    cmp.setProps({ query: '', });
+    exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
+    exp(cmp.find('.' + Checked).length + cmp.find('.' + HalfChecked).length).to.be.equal(mergerValue.length);
+
+  });
   // displayValue的测试场景
   // value为4的场景
 

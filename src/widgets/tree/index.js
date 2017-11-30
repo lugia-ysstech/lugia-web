@@ -145,36 +145,25 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const queryChanged = this.props.query !== props.query;
     const valueChanged = props.value != this.props.value;
     if (dataChanged || queryChanged || valueChanged) {
-      let expand = this.state.expand;
-      let newState: Object = {
+      const expand = this.updateExpandInfo(props);
+      const { id2ExtendInfo, } = expand;
+      const newState: TreeState = {
+        start: this.isQueryAll(props) ? this.allStart : 0,
+        selectedInfo: this.getEmptyNodeId2SelectInfo(),
+        expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
+        expand,
         selectValue: [],
       };
-      if (dataChanged || queryChanged) {
-        expand = this.updateExpandInfo(props);
-        const { id2ExtendInfo, } = expand;
-        newState = {
-          start: this.isQueryAll(props) ? this.allStart : 0,
-          selectedInfo: this.state.selectedInfo,
-          expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
-          expand,
-          selectValue: [],
-        };
-      }
 
-      if (valueChanged) {
-        const { id2ExtendInfo, } = expand;
-        newState.selectedInfo = this.getEmptyNodeId2SelectInfo();
-        if (this.isNotLimit(props)) {
-          const { selectValue = [], selectedInfo, } = this.state;
-          const { value, } = selectedInfo;
-          this.updateStateValue(props, newState, id2ExtendInfo, selectValue, value, Object.keys(value));
-        } else {
-          this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, this.getInitValue(props));
-        }
+      if (this.isNotLimit(props)) {
+        const { selectValue = [], selectedInfo, } = this.state;
+        const { value, } = selectedInfo;
+        this.updateStateValue(props, newState, id2ExtendInfo, selectValue, value, Object.keys(value));
+      } else {
+        this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, this.getInitValue(props));
       }
       this.setState(newState);
     }
-
   }
 
 
