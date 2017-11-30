@@ -318,7 +318,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   valueKeys: Array<string>;
-  oldValue: Object;
+  oldValue: ?Object;
 
   getKeys (value: Object): Array<string> {
     if (value != this.oldValue) {
@@ -373,10 +373,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return;
     }
     delete value[ targetKey ];
+    this.resetValueKeys();
     tirggetChagne();
     this.adaptiveItems(this.getOffSetWidth());
   };
-
+  resetValueKeys(){
+    this.oldValue = undefined;
+  }
   onChange = (value: Array<string>, displayValue: Array<string>) => {
     const { onChange, } = this.props;
     onChange && onChange({ value, displayValue, });
