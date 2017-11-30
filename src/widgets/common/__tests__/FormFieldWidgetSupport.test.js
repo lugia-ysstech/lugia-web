@@ -4,7 +4,7 @@ import Support from '../FormFieldWidgetSupport';
 import chai from 'chai';
 
 const { expect: exp, } = chai;
-const { getValue, } = Support;
+const { getValue, getInitValueArray, getInitValue, getCodeItem, getCodeItemArray, } = Support;
 
 describe('FormFieldWidgetSupport.js', () => {
   it('getValue: value is  props.value', () => {
@@ -20,5 +20,96 @@ describe('FormFieldWidgetSupport.js', () => {
     exp(getValue({}, state)).to.be.equal(stateValue);
   });
 
+  it('getInitValueArray', () => {
+    exp(getInitValueArray({ defaultValue: '1000', })).to.be.eql(['1000',]);
+    exp(getInitValueArray({ defaultValue: ['1000', '1',], })).to.be.eql(['1000', '1',]);
+    exp(getInitValueArray({ defaultValue: ['1000', '1',], value: ['1000',], })).to.be.eql(['1000',]);
+    exp(getInitValueArray({})).to.be.eql([]);
+  });
+
+  it('getInitValue', () => {
+    exp(getInitValue({ defaultValue: '1000', })).to.be.eql('1000');
+    exp(getInitValue({ defaultValue: 'a', })).to.be.eql('a');
+    exp(getInitValue({ defaultValue: 'b', value: 'c', })).to.be.eql('c');
+    exp(getInitValue({})).to.be.eql('');
+  });
+
+  it('getCodeItem', () => {
+    exp(getCodeItem({
+      value: 'value',
+      defaultValue: 'defaultValue',
+      defaultDisplayValue: 'defaultDisplayValue',
+      displayValue: 'displayValue',
+    })).to.be.eql({
+      displayValue: 'displayValue',
+      value: 'value',
+    });
+    exp(getCodeItem({
+      value: 'value',
+      displayValue: 'displayValue',
+    })).to.be.eql({
+      displayValue: 'displayValue',
+      value: 'value',
+    });
+
+
+    exp(getCodeItem({
+      defaultValue: 'defaultValue',
+      defaultDisplayValue: 'defaultDisplayValue',
+      displayValue: 'displayValue',
+    })).to.be.eql({
+      displayValue: 'displayValue',
+      value: 'defaultValue',
+    });
+
+    exp(getCodeItem({
+      defaultValue: 'defaultValue',
+      defaultDisplayValue: 'defaultDisplayValue',
+    })).to.be.eql({
+      displayValue: 'defaultDisplayValue',
+      value: 'defaultValue',
+    });
+
+    exp(getCodeItem({})).to.be.eql({ displayValue: '', value: '', });
+  });
+
+  it('getCodeItemArray', () => {
+    exp(getCodeItemArray({
+      value: 'value',
+      defaultValue: 'defaultValue',
+      defaultDisplayValue: 'defaultDisplayValue',
+      displayValue: 'displayValue',
+    })).to.be.eql({
+      displayValue: ['displayValue',],
+      value: ['value',],
+    });
+    exp(getCodeItemArray({
+      value: 'value',
+      displayValue: 'displayValue',
+    })).to.be.eql({
+      displayValue: ['displayValue',],
+      value: ['value',],
+    });
+
+
+    exp(getCodeItemArray({
+      defaultValue: 'defaultValue',
+      defaultDisplayValue: 'defaultDisplayValue',
+      displayValue: 'displayValue',
+    })).to.be.eql({
+      displayValue: ['displayValue',],
+      value: ['defaultValue',],
+    });
+
+    exp(getCodeItemArray({
+      defaultValue: 'defaultValue',
+      defaultDisplayValue: 'defaultDisplayValue',
+    })).to.be.eql({
+      displayValue: ['defaultDisplayValue',],
+      value: ['defaultValue',],
+    });
+
+    exp(getCodeItemArray({})).to.be.eql({ displayValue: [], value: [], });
+  });
 
 });

@@ -24,6 +24,13 @@ export function cacheOnlyFirstCall (targetFunc: Function) {
   };
 }
 
+export function splitStr (str: string, sepator: string = ','): Array<string> {
+  if (!str || str.trim().length === 0) {
+    return [];
+  }
+  return str.split(sepator);
+}
+
 export function getElementPosition (e: Object) {
 
   let x = 0, y = 0;

@@ -135,9 +135,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   fetchValueObject (props: InputTagProps): Object {
     const result = {};
-    const { value = '', displayValue = '', } = this.getValue(props);
+    const { value = [], displayValue = [], } = this.getValue(props);
 
-    const isEmptyValue = !value || value.trim() === '';
+    const isEmptyValue = !value || value.length === 0;
     if (this.isMutliple() === false) {
       if (isEmptyValue) {
         return {};
@@ -146,14 +146,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return { text: displayValue, };
     }
 
-    const isEmptyDisplayValue = !displayValue || displayValue.trim() === '';
-    const valArray = isEmptyValue ? [] : value.split(separator);
-    const displayValArray = isEmptyDisplayValue ? [] : displayValue.split(separator);
-    const valLen = valArray.length;
+    const valLen = value.length;
     for (let i = 0; i < valLen; i++) {
-      const val = valArray[ i ];
+      const val = value[ i ];
       if (val !== '') {
-        const displayVal = displayValArray[ i ];
+        const displayVal = displayValue[ i ];
         result[ val ] = { text: displayVal ? displayVal : '', };
       }
     }
@@ -169,8 +166,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return this.state.value;
   }
 
-  getValue (props: InputTagProps): { value: string, displayValue: string } {
-    return Support.getCodeItem(props);
+  getValue (props: InputTagProps): { value: Array<string>, displayValue: Array<string> } {
+    return Support.getCodeItemArray(props);
   }
 
   isLmit (): boolean {
@@ -377,9 +374,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     tirggetChagne();
     this.adaptiveItems(this.getOffSetWidth());
   };
-  resetValueKeys(){
+
+  resetValueKeys () {
     this.oldValue = undefined;
   }
+
   onChange = (value: Array<string>, displayValue: Array<string>) => {
     const { onChange, } = this.props;
     onChange && onChange({ value, displayValue, });

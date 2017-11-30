@@ -32,9 +32,9 @@ type TreeProps = {
   onlySelectLeaf: boolean;
   displayField?: string,
   igronSelectField?: string,
-  value: ?string;
-  displayValue: ? string;
-  defaultValue: ?string;
+  value: ?Array<string>;
+  displayValue: ?Array<string>;
+  defaultValue: ?Array<string>;
 
   /** 展开/收起节点时触发 */
   onExpand?: Function,
@@ -128,9 +128,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return chkLen > 0 && chkLen >= this.getData().length;
   }
 
-  getInitValue (props: TreeProps) {
-    return Support.getInitValue(props);
-
+  getInitValue (props: TreeProps): Array<string> {
+    return Support.getInitValueArray(props);
   }
 
   isNotLimit (props: TreeProps) {
@@ -170,7 +169,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
           const { value, } = selectedInfo;
           this.updateStateValue(props, newState, id2ExtendInfo, selectValue, value, Object.keys(value));
         } else {
-          this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, props.value);
+          this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, this.getInitValue(props));
         }
       }
       this.setState(newState);
@@ -187,36 +186,39 @@ class Tree extends React.Component<TreeProps, TreeState> {
     };
   }
 
-  updateStateValuForLimitValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, value: any) {
-    const notString = Object.prototype.toString.call(value) !== '[object String]';
-    const emptyValue = value === undefined || value === null || notString;
-    value = emptyValue ? '' : value.trim();
-    const { obj, val, } = this.getValueObject(value);
-    this.updateStateValue(props, state, id2ExtendInfo, [value,], obj, val);
+  updateStateValuForLimitValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, value: Array<string>) {
+    const { obj, val, } = this.getValueObject(props, value);
+    this.updateStateValue(props, state, id2ExtendInfo, value, obj, val);
   }
 
-  getValueObject (value: string) {
-    const valArray = value.split(',');
-    const len = valArray.length;
+  getValueObject (props: TreeProps, value: Array<string>) {
+    if (this.isSingleSelectForProps(props)) {
+      if (!value || value.length === 0) {
+        return { obj: {}, val: [], };
+      }
+      const first = value[ 0 ];
+      return { obj: { [first]: true, }, val: [first,], };
+    }
+    const len = value.length;
     const result = {};
     for (let i = 0; i < len; i++) {
-      const oneValue = valArray[ i ];
+      const oneValue = value[ i ];
       if (oneValue !== '') {
         result[ oneValue ] = true;
       }
     }
-    return { obj: result, val: valArray, };
+    return { obj: result, val: value, };
   }
 
 
   updateStateValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo,
                     selectValue: Array<string>, valueObject: Object,
                     val: Array<string>) {
-    const { displayValue = '', } = props;
+    const { displayValue = [], } = props;
     if (this.isSingleSelectForProps(props)) {
       state.selectValue = selectValue;
     } else {
-      state.selectedInfo = this.getUtils(props).value2SelectInfo(val, displayValue ? displayValue.split(',') : [], valueObject, id2ExtendInfo);
+      state.selectedInfo = this.getUtils(props).value2SelectInfo(val, displayValue ? displayValue : [], valueObject, id2ExtendInfo);
     }
   }
 

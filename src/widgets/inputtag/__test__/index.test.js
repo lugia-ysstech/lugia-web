@@ -16,8 +16,8 @@ Enzyme.configure({ adapter: new Adapter(), });
 const { expect: exp, } = chai;
 
 describe('InputTag', () => {
-  const displayValue = '常,乐,我,净';
-  const value = '1,2,3';
+  const displayValue = '常,乐,我,净'.split(',');
+  const value = '1,2,3'.split(',');
 
   function createInputTagTest (props: Object) {
 
@@ -41,6 +41,37 @@ describe('InputTag', () => {
     defaultDisplayValue: displayValue,
   }), '[defaultValue & defaultDisplayValue]');
 
+  it('只有一个结点 值为字符串', async () => {
+    await renderInputTag(createInputTagTest({ displayValue: '常', value: '1', }), 5, cmp => {
+
+      const tagItems = findInputItem(cmp);
+      exp(tagItems.length).to.be.equal(2);
+      exp(tagItems.at(1).text()).to.be.equal('常');
+      exp(findFontItem(cmp).at(0).getDOMNode() == tagItems.at(0).getDOMNode()).to.be.true;
+      exp(findFontItem(cmp).length).to.be.equal(1);
+    });
+  });
+
+  function createSingleCase (value, displayValue) {
+
+    it('只有一个结点 值为字符串 单个值的inputtag' + value + ',' + displayValue.toString(), async () => {
+      await renderInputTag(createInputTagTest({
+        displayValue,
+        value,
+        mutliple: false,
+      }), 5, cmp => {
+
+        const tagItems = findInputItem(cmp);
+        exp(cmp.text().trim()).to.be.equal(typeof displayValue === 'string' ? displayValue : displayValue.join(''));
+        exp(tagItems.length).to.be.equal(0);
+        exp(findFontItem(cmp).length).to.be.equal(0);
+      });
+    });
+  }
+
+  createSingleCase('a', '我');
+  createSingleCase('a', ['我',]);
+  createSingleCase('a', ['我', '你', '他',]);
   createItemsTest(createInputTagTest({
     value,
     displayValue,
@@ -78,7 +109,7 @@ describe('InputTag', () => {
     });
     it('展现值&实际值 3个只能容纳一个' + caseTitle, async () => {
       let i = 0;
-      const val = [ 5, 1000, 1000, ];
+      const val = [5, 1000, 1000,];
       const getFontWidth = () => {
         return val[ i++ ];
       };
@@ -111,7 +142,7 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
         await delay(0, () => {
-          
+
           cmp.update();
           const tagItems = findInputItem(cmp);
 
@@ -146,8 +177,8 @@ describe('InputTag', () => {
         onChange = (v: Object) => {
           const { value, displayValue, } = v;
           this.setState({
-            value: value.join(','),
-            displayValue: displayValue.join(','),
+            value,
+            displayValue,
           });
           resolve(v);
         };
@@ -170,10 +201,10 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
         await delay(0, async () => {
-          
+
           cmp.update();
           await delay(0, () => {
-            
+
             cmp.update();
 
             const tagItems = findInputItem(cmp);
@@ -206,7 +237,7 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
         await delay(0, () => {
-          
+
           cmp.update();
 
           const tagItems = findInputItem(cmp);
@@ -240,14 +271,14 @@ describe('InputTag', () => {
         const moreItem = findMoreItem(cmp);
         moreItem.simulate('click');
         await delay(0, async () => {
-          
+
           cmp.update();
           exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
           exp(cmp.find(Widgets.Icon).length).to.be.equal(4);
           cmp.find(Widgets.Icon).at(1).simulate('click');
           await delay(0, async () => {
-            
+
             cmp.update();
             await delay(0, async () => {
               cmp.update();
@@ -288,7 +319,7 @@ describe('InputTag', () => {
     }
     const cmp = mount(<InputTagTest/>);
     await delay(0, async () => {
-      
+
       cmp.update();
       await callback(cmp);
     });

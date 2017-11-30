@@ -42,18 +42,75 @@ function getInitValue (props: any) {
   return value;
 }
 
-function getInitCodeItem (props: any): { value: string, displayValue: string } {
-  if (!isNotLimit(props)) {
-    const { value = '', displayValue = '', } = props;
-    return { value, displayValue, };
+
+function getInitValueArray (props: any): Array<any> {
+  if (isNotLimit(props)) {
+    const { defaultValue = [], } = props;
+    return toArray(defaultValue);
   }
-  const { defaultValue: value = '', defaultDisplayValue: displayValue = '', } = props;
-  return { value, displayValue, };
+
+  const { value = [], } = props;
+  return toArray(value);
+}
+
+function getInitCodeItem (props: any): { value: string, displayValue: string } {
+  let resValue = '',
+    resDisplayValue = '';
+  if (!isNotLimit(props)) {
+    const { value = '', } = props;
+    resValue = value;
+  } else {
+    const { defaultValue: value = '', } = props;
+    resValue = value;
+  }
+  if (!isNotLimitByName(props, 'displayValue')) {
+    const { displayValue, } = props;
+    resDisplayValue = displayValue;
+  } else {
+    const { defaultDisplayValue: displayValue = '', } = props;
+    resDisplayValue = displayValue;
+  }
+  return { value: resValue, displayValue: resDisplayValue, };
+}
+
+function getInitCodeItemArray (props: any): { value: Array<any>, displayValue: Array<any> } {
+  let resValue = [];
+  let resDisplayValue = [];
+  if (!isNotLimit(props)) {
+    const { value = [], } = props;
+    resValue = value;
+  } else {
+    const { defaultValue: value = [], } = props;
+    resValue = value;
+  }
+
+  if (!isNotLimitByName(props, 'displayValue')) {
+    const { displayValue = [], } = props;
+    resDisplayValue = displayValue;
+  } else {
+    const { defaultDisplayValue: displayValue = [], } = props;
+    resDisplayValue = displayValue;
+  }
+
+  return { value: toArray(resValue), displayValue: toArray(resDisplayValue), };
+}
+
+function toArray (val: any): Array<string> {
+  return isString(val) ? [val,] : val;
 }
 
 
 function isNotLimit (props: any) {
-  return ('value' in props) === false;
+  return isNotLimitByName(props, 'value');
+}
+
+function isNotLimitByName (props: any, name: string) {
+  return (name in props) === false;
+}
+
+
+function isString (str: any) {
+  return typeof str === 'string';
 }
 
 export default {
@@ -62,5 +119,7 @@ export default {
   getObjectValue,
   getInitValue,
   isNotLimit,
+  getInitValueArray,
   getCodeItem: getInitCodeItem,
+  getCodeItemArray: getInitCodeItemArray,
 };

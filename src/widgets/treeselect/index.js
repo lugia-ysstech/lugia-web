@@ -17,6 +17,7 @@ import ThemeProvider from '../common/ThemeProvider';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import Icon from '../icon';
+import { splitStr, } from '../../utils';
 
 type TreeSelectProps = {
   data: Array<Object>,
@@ -38,8 +39,8 @@ type TreeSelectProps = {
 };
 type TreeSelectState = {
   open: boolean,
-  value: string,
-  displayValue: string,
+  value: Array<string>,
+  displayValue: Array<string>,
   query: string,
   selectAll: boolean,
   selectCount: number,
@@ -96,12 +97,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getInitValue (props: TreeSelectProps) {
-    return Support.getCodeItem(props);
-
-  }
-
-  isNotLimit (props: TreeSelectProps) {
-    return Support.isNotLimit(props);
+    const { value, displayValue, } = Support.getCodeItem(props);
+    return { value: splitStr(value), displayValue: splitStr(displayValue), };
   }
 
   shouldComponentUpdate (nexProps: TreeSelectProps, nextState: TreeSelectState) {
@@ -210,24 +207,21 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const inputValue = this.state.query;
     if (inputValue && inputValue.trim() && this.isCanInput()) {
       if (this.isMutliple()) {
-        const { value = '', displayValue = '', } = this.state;
-
-
-        function joinValue (value: string) {
-          return value ? value + `,${inputValue}` : inputValue;
-        }
+        const { value = [], displayValue = [], } = this.state;
 
         // TODO:存在问题
+        value.push(inputValue);
+        displayValue.push(inputValue);
         this.setState({
           query: '',
-          value: joinValue(value),
-          displayValue: joinValue(displayValue),
+          value,
+          displayValue,
         });
       } else {
         this.setState({
           query: '',
-          value: inputValue,
-          displayValue: inputValue,
+          value: [inputValue,],
+          displayValue: [inputValue,],
         });
       }
     }
@@ -243,16 +237,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     if (selectAll === true) {
       const { displayField, } = this.props;
       const data = this.getData();
-      const { value: val, displayValue: disp, } = this.state;
-
-      let value = [];
-      let displayValue = [];
-      if (val && val !== '') {
-        value = val.split(',');
-      }
-      if (disp && disp !== '') {
-        displayValue = disp.split(',');
-      }
+      const { value, displayValue, } = this.state;
       for (let i = 0; i < data.length; i++) {
         const { key, [displayField]: title, } = data[ i ];
         value.push(key);
@@ -371,7 +356,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   setValue (value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
-    let valStr = '', dispStr = '';
     const realyVal = [];
     const realDisp = [];
     if (value && value.length > 0) {
@@ -388,12 +372,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         realyVal.push(key);
         realDisp.push(title);
       }
-      valStr = realyVal.join(',');
-      dispStr = realDisp.join(',');
     }
     this.setState({
-      value: valStr,
-      displayValue: dispStr, ...other,
+      value: realyVal,
+      displayValue: realDisp, ...other,
       selectCount: realyVal.length,
     }, callback);
   }
