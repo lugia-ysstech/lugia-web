@@ -293,7 +293,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   onInputTagPopupVisibleChange = (visible: boolean) => {
-    this.setTreePopupVisible(!visible);
+    if(visible){
+      this.setTreePopupVisible(false);
+    }
   };
 
   onTreePopupVisibleChange = (visible: boolean) => {
