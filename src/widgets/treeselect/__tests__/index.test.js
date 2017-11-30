@@ -60,7 +60,7 @@ describe('TreeSelect', () => {
   it('输入框点击后，弹出面板', () => {
     const cmp = mount(<TreeSelect data={rowData}/>);
     cmp.children().at(0).simulate('click');
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(Trigger).length).to.be.equal(1);
   });
@@ -147,7 +147,7 @@ describe('TreeSelect', () => {
 
   function chagneQuery (cmp: Object, value: string) {
     findQueryInput(cmp).simulate('change', { target: { value, }, });
-    cmp.instance().forceUpdate();
+    
     updateTree(cmp);
     cmp.update();
   }

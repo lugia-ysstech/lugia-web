@@ -111,7 +111,7 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
         await delay(0, () => {
-          cmp.instance().forceUpdate();
+          
           cmp.update();
           const tagItems = findInputItem(cmp);
 
@@ -170,10 +170,10 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
         await delay(0, async () => {
-          cmp.instance().forceUpdate();
+          
           cmp.update();
           await delay(0, () => {
-            cmp.instance().forceUpdate();
+            
             cmp.update();
 
             const tagItems = findInputItem(cmp);
@@ -206,7 +206,7 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp.find(Widgets.InputTagCloseButton).find('span').at(1).simulate('click');
         await delay(0, () => {
-          cmp.instance().forceUpdate();
+          
           cmp.update();
 
           const tagItems = findInputItem(cmp);
@@ -240,18 +240,18 @@ describe('InputTag', () => {
         const moreItem = findMoreItem(cmp);
         moreItem.simulate('click');
         await delay(0, async () => {
-          cmp.instance().forceUpdate();
+          
           cmp.update();
           exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
           exp(cmp.find(Widgets.Icon).length).to.be.equal(4);
           cmp.find(Widgets.Icon).at(1).simulate('click');
           await delay(0, async () => {
-            cmp.instance().forceUpdate();
+            
             cmp.find(Widgets.Menu).instance().forceUpdate();
             cmp.update();
             await delay(0, async () => {
-              cmp.instance().forceUpdate();
+              
               cmp.find(Widgets.Menu).instance().forceUpdate();
               cmp.update();
               const menuItem = cmp.find(Widgets.MenuItem);
@@ -291,7 +291,7 @@ describe('InputTag', () => {
     }
     const cmp = mount(<InputTagTest/>);
     await delay(0, async () => {
-      cmp.instance().forceUpdate();
+      
       cmp.update();
       await callback(cmp);
     });

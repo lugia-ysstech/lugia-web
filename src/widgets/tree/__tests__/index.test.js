@@ -232,12 +232,12 @@ describe('Tree', () => {
     const getChkBox = () => cmp.find(TreeRow);
 
     getChkBox().at(1).simulate('click', {});
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(TreeRow).at(1).hasClass(Selected)).to.be.true;
     getChkBox().at(1).simulate('click', {});
     getChkBox().at(3).simulate('click', {});
-    cmp.instance().forceUpdate();
+    
     cmp.update();
 
     const result = await res;
@@ -333,7 +333,7 @@ describe('Tree', () => {
     exp(cmp.find(TreeRow).at(0).hasClass(Selected)).to.be.true;
     exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
     cmp.find('button').simulate('click');
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
     exp(cmp.find(TreeRow).at(0).hasClass(Selected)).to.be.false;
@@ -347,12 +347,12 @@ describe('Tree', () => {
     const cmp = mount(<Tree expandAll data={rowData}/>);
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
     cmp.setProps({ value: '1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
 
     cmp.setProps({ value: '1.1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
 
@@ -371,12 +371,12 @@ describe('Tree', () => {
     const cmp = mount(<Tree expandAll data={rowData}/>);
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
     cmp.setProps({ value: '1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
 
     cmp.setProps({ value: emptyValue, });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
   }
@@ -395,14 +395,14 @@ describe('Tree', () => {
     const cmp = mount(<Tree mutliple={true} expandAll data={rowData}/>);
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
     cmp.setProps({ value: '1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(1);
 
     cmp.setProps({ value: emptyValue, });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
@@ -460,7 +460,7 @@ describe('Tree', () => {
       const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} onlySelectLeaf/>);
       cmp.find(CheckBoxInner).at(5).simulate('click', {});
 
-      cmp.instance().forceUpdate();
+      
       cmp.update();
       exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
       exp(cmp.find(`.${Checked}`).length).to.be.equal(3);
@@ -477,7 +477,7 @@ describe('Tree', () => {
       const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} limitCount={1}/>);
       cmp.find(CheckBoxInner).at(5).simulate('click', {});
 
-      cmp.instance().forceUpdate();
+      
       cmp.update();
     });
     const result = await promise;
@@ -489,7 +489,7 @@ describe('Tree', () => {
                             onlySelectLeaf/>);
     cmp.find(TreeRow).at(5).simulate('click', {});
 
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
@@ -500,7 +500,7 @@ describe('Tree', () => {
     const cmp = mount(<Tree mutliple={false} expandAll data={rowData} igronSelectField={'title'}/>);
     cmp.find(TreeRow).at(5).simulate('click', {});
 
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
@@ -511,7 +511,7 @@ describe('Tree', () => {
     const cmp = mount(<Tree mutliple={false} expandAll data={rowData} limitCount={0}/>);
     cmp.find(TreeRow).at(5).simulate('click', {});
 
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
@@ -533,7 +533,7 @@ describe('Tree', () => {
     target.getThemeTarget().setState({ start: 17, }, () => {
 
     });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(1);
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(1);
@@ -556,7 +556,7 @@ describe('Tree', () => {
     target.getThemeTarget().setState({ start: 17, }, () => {
 
     });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
@@ -581,19 +581,19 @@ describe('Tree', () => {
     const cmp = mount(<Tree data={rowData} expandAll={expandAll} mutliple={mutliple}/>);
 
     cmp.setProps({ query: '1.3.2.1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     const getValue = () => cmp.find(TreeRow).map(node => node.text()).join(',');
     exp(getValue()).to.be.equal('1,1.3,1.3.2,1.3.2.1');
     exp(cmp.find(TreeRow).length).to.be.equal(4);
 
     cmp.setProps({ query: '1.3.2.1.1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(TreeRow).length).to.be.equal(0);
 
     cmp.setProps({ query: '1.3', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
 
     exp(getValue()).to.be.equal('1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3');
@@ -611,7 +611,7 @@ describe('Tree', () => {
     expectNodeExpandStatue(cmp, 0, true);
     exp(cmp.find(TreeRow).at(1).text(), '第二个结点为1.1').to.be.equal('1.1');
     cmp.find(Switcher).at(0).simulate('click');
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(TreeRow).at(1).text(), '第二个结点为2').to.be.equal('2');
     expectNodeExpandStatue(cmp, 0, false);
@@ -619,21 +619,21 @@ describe('Tree', () => {
     // 折叠 2
     expectNodeExpandStatue(cmp, 1, true);
     cmp.find(Switcher).at(1).simulate('click');
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     expectNodeExpandStatue(cmp, 1, false);
 
     // 折叠 3
     expectNodeExpandStatue(cmp, 2, true);
     cmp.find(Switcher).at(2).simulate('click');
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     expectNodeExpandStatue(cmp, 2, false);
 
 
     // 展开 1 操作
     cmp.find(Switcher).at(0).simulate('click');
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(TreeRow).at(1).text(), '第二个结点为2').to.be.equal('1.1');
     expectNodeExpandStatue(cmp, 0, true);
@@ -660,7 +660,7 @@ describe('Tree', () => {
   it('重新设置熟悉为 null 的情况', () => {
     const cmp = mount(<Tree data={rowData}/>);
     cmp.setProps({ data: null, });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.html()).to.be.equal(empty);
   });
@@ -672,7 +672,6 @@ describe('Tree', () => {
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
     cmp.find(CheckBox).at(0).simulate('click', { shiftKey: true, });
-    cmp.instance().forceUpdate();
     cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(1);
@@ -685,14 +684,12 @@ describe('Tree', () => {
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
     cmp.find(CheckBox).at(0).simulate('click');
-    cmp.instance().forceUpdate();
     cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(14);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
 
     cmp.find(CheckBox).at(0).simulate('click', { shiftKey: true, });
-    cmp.instance().forceUpdate();
     cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
@@ -703,13 +700,13 @@ describe('Tree', () => {
 
     const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true}/>);
     cmp.setProps({ value: '3.1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
     cmp.setProps({ query: '3.1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(1);
     exp(cmp.find(CheckBox).at(5).hasClass(HalfChecked)).to.be.true;
@@ -717,7 +714,7 @@ describe('Tree', () => {
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(1);
 
     cmp.setProps({ query: '', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
@@ -733,17 +730,17 @@ describe('Tree', () => {
     target.getThemeTarget().setState({ start: 17, }, () => {
 
     });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(target.getThemeTarget().state.start, '移动滚动条到底部失败').to.be.equal(17);
 
     cmp.setProps({ query: '3.1', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(target.getThemeTarget().state.start, '查询后start统一移动到顶部').to.be.equal(0);
 
     cmp.setProps({ query: '', });
-    cmp.instance().forceUpdate();
+    
     cmp.update();
     exp(target.getThemeTarget().state.start, '恢复到原来的底部位置').to.be.equal(17);
 
