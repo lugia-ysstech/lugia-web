@@ -684,13 +684,13 @@ describe('Tree', () => {
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
     cmp.find(CheckBox).at(0).simulate('click');
-    cmp.update();
+    // cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(14);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
 
     cmp.find(CheckBox).at(0).simulate('click', { shiftKey: true, });
-    cmp.update();
+    // cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
   });
