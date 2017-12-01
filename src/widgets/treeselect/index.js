@@ -33,6 +33,9 @@ type TreeSelectProps = {
   onTrigger?: Function,
   onChange?: Function,
   splitQuery?: string,
+  onQuery?: Function,
+  mode: 'local' | 'remote',
+  throttle: number,
   limitCount: number,
   canInput: boolean,
   placeholder?: string,
@@ -40,6 +43,7 @@ type TreeSelectProps = {
 };
 type TreeSelectState = {
   open: boolean,
+  treeFilter: string,
   value: Array<string>,
   displayValue: Array<string>,
   query: string,
@@ -72,6 +76,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     onlySelectLeaf: false,
     canInput: false,
     displayField: 'title',
+    mode: 'local',
+    throttle: 200,
   };
 
   state: TreeSelectState;
@@ -81,6 +87,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   treeVisible: boolean;
   treeCmp: Object;
   queryInput: Object;
+  queryHandle: number;
 
   constructor (props: TreeSelectProps) {
     super(props);
@@ -88,6 +95,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.state = {
       open: false,
       query: '',
+      treeFilter: '',
       value,
       displayValue,
       selectCount: 0,
@@ -110,6 +118,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
     const { state, } = this;
     return state.query !== nextState.query
+      || state.treeFilter !== nextState.treeFilter
       || state.selectAll !== nextState.selectAll
       || state.selectCount !== nextState.selectCount
       || state.value !== nextState.value
@@ -129,15 +138,15 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   render () {
     const { props, state, } = this;
     const { data, placeholder, } = props;
-    const { query, value, displayValue, selectCount, } = state;
+    const { query, value, displayValue, selectCount, treeFilter, } = state;
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
     };
     const getQueryInput: Function = (cmp: Object) => {
       this.queryInput = cmp;
     };
-    const tree = [<QueryInput key="queryContainer"><Input key="queryInput" ref={getQueryInput} placeholder="输入查询条件"
-                                                           value={this.state.query}
+    const tree = [ <QueryInput key="queryContainer"><Input key="queryInput" ref={getQueryInput} placeholder="输入查询条件"
+                                                           value={query}
                                                            onChange={this.onQueryTree}
                                                            suffix={this.getSuffix()}
                                                            onKeyDown={this.onQueryKeyDown}/></QueryInput>,
@@ -145,12 +154,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
             key="tree"
             {...props}
             className="sv"
-            query={query}
+            query={treeFilter}
             ref={getTree}
             value={value}
             onChange={this.onTreeChange}
             displayValue={displayValue}>
-      </Tree>,];
+      </Tree>, ];
 
     if (this.isMutliple()) {
       let str = `已选择${selectCount}个结点`;
@@ -173,8 +182,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
                align="bottomLeft"
                key="trigger"
                ref={getTreeTriger}
-               action={['click',]}
-               hideAction={['click',]}>
+               action={[ 'click', ]}
+               hideAction={[ 'click', ]}>
         <InputTag key="inputtag"
                   value={value} displayValue={displayValue} onChange={this.onInputTagChange}
                   mutliple={this.isMutliple()}
@@ -241,8 +250,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       } else {
         this.setState({
           query: '',
-          value: [inputValue,],
-          displayValue: [inputValue,],
+          value: [ inputValue, ],
+          displayValue: [ inputValue, ],
         });
       }
     }
@@ -308,9 +317,23 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return !this.treeCmp || !this.treeCmp.getThemeTarget();
   }
 
-
   onQueryTree = value => {
+    if (value === this.state.query) {
+      return;
+    }
+    if (this.queryHandle) {
+      clearTimeout(this.queryHandle);
+    }
     this.setState({ query: value, });
+    this.queryHandle = setTimeout(() => {
+      const { onQuery, mode, } = this.props;
+      onQuery && onQuery(value);
+      if (mode === 'local') {
+        this.setState({ treeFilter: value, });
+      } else {
+        this.setState({ treeFilter: '', });
+      }
+    }, this.props.throttle);
   };
 
   onInputTagPopupVisibleChange = (visible: boolean) => {
