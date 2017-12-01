@@ -138,7 +138,7 @@ describe('Tree', () => {
     chkBox.at(1).simulate('click', {});
     chkBox.at(3).simulate('click', {});
     const result = await res;
-    exp(result).to.be.eql([['1', '1.1',], ['1',], ['1', '1.2.1',],]);
+    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
   });
 
   it('props: value: 1 mutliple: true onChange监听 limit', async () => {
@@ -176,7 +176,7 @@ describe('Tree', () => {
     chkBox.at(3).simulate('click', {});
     const result = await res;
     cmp.find(CheckBox);
-    exp(result).to.be.eql([['1', '1.1',], ['1',], ['1', '1.2.1',],]);
+    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
   });
 
 
@@ -246,7 +246,7 @@ describe('Tree', () => {
 
     const result = await res;
     exp(cmp.find('.' + Selected).length).to.be.equal(1);
-    exp(result).to.be.eql([['1.1',], ['',], ['1.2.1',],]);
+    exp(result).to.be.eql([ [ '1.1', ], [ '', ], [ '1.2.1', ], ]);
   });
 
   it('props: value: 1 mutliple: false onChange监听 limit', async () => {
@@ -260,12 +260,12 @@ describe('Tree', () => {
 
       render () {
         const { value, } = this.state;
-        return [<Tree
+        return [ <Tree
           value={value}
           expandAll
           {...this.props}
         >
-        </Tree>, <button onClick={this.onClick}></button>,];
+        </Tree>, <button onClick={this.onClick}></button>, ];
       }
 
       onClick = () => {
@@ -304,7 +304,7 @@ describe('Tree', () => {
     checkSelectStatus();
     const result = await res;
     cmp.find(CheckBox);
-    exp(result).to.be.eql([['1.1',], ['1.1',], ['1.2.1',],]);
+    exp(result).to.be.eql([ [ '1.1', ], [ '1.1', ], [ '1.2.1', ], ]);
   });
 
 
@@ -320,11 +320,11 @@ describe('Tree', () => {
 
       render () {
         const { value, } = this.state;
-        return [<Tree data={rowData}
+        return [ <Tree data={rowData}
                        expandAll
                        value={value}
         >
-        </Tree>, <button onClick={this.onClick}></button>,];
+        </Tree>, <button onClick={this.onClick}></button>, ];
       }
 
       onClick = () => {
@@ -469,7 +469,7 @@ describe('Tree', () => {
       exp(cmp.find(`.${Checked}`).length).to.be.equal(3);
       exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(3);
     });
-    exp(await promise).to.be.eql(['1.2.2.1.1', '1.2.2.1.2',]);
+    exp(await promise).to.be.eql([ '1.2.2.1.1', '1.2.2.1.2', ]);
   });
   it('mutliple: true ,  limitCount: 1', async () => {
 
@@ -484,7 +484,7 @@ describe('Tree', () => {
       cmp.update();
     });
     const result = await promise;
-    exp(result).to.be.eql({ value: ['1.2.2.1',], displayValue: ['1.2.2.1',], });
+    exp(result).to.be.eql({ value: [ '1.2.2.1', ], displayValue: [ '1.2.2.1', ], });
   });
 
   it('mutliple: false ,  onlySelectLeaf: true', () => {
@@ -789,6 +789,15 @@ describe('Tree', () => {
     exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
     exp(cmp.find('.' + Checked).length + cmp.find('.' + HalfChecked).length).to.be.equal(mergerValue.length);
 
+  });
+
+  it('height 为200的边界情况', () => {
+    const cmp = mount(<Tree data={rowData} expandAll={true} start={23}/>);
+    exp(cmp.find(TreeRow).last().text()).to.be.equal('4');
+  });
+  it('height 为200的边界情况 超出范围', () => {
+    const cmp = mount(<Tree data={rowData} expandAll={true} start={1000}/>);
+    exp(cmp.find(TreeRow).last().text()).to.be.equal('4');
   });
   // displayValue的测试场景
   // value为4的场景

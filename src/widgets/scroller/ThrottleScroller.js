@@ -112,14 +112,20 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
     }
 
     getStart (props: Object, state: Object): number {
+      const { length, } = this.getTarget();
+
+      const limitStart = (start: number) => {
+        const maxStart = Math.max(0, length - this.canSeeCount() + 1);
+        return Math.min(start, maxStart);
+      };
 
       if ('start' in props) {
         const { start = 0, } = props;
-        return start;
+        return limitStart(start);
       }
 
       const { start = 0, } = state;
-      return start;
+      return limitStart(start);
     }
 
     isNeedScrolelr () {
