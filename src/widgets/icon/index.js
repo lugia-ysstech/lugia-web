@@ -19,6 +19,7 @@ const hover = (props: Object) => {
   return hoverColor ? `  &:hover { color: ${hoverColor}; }` : '';
 };
 const IconTag = styled.i`
+  user-select: none;
   ${color}
   ${hover}
 `;
