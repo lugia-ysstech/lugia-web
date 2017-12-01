@@ -158,25 +158,23 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     if (this.isMouseLeaveToHide()) {
       mouseProps.onMouseLeave = this.onPopupMouseLeave;
     }
-    return (
-      <Popup
-        getTheme={getTheme}
-        key="popup"
-        offsetX={offsetX}
-        offsetY={offsetY}
-        ref={cmp => this.component = cmp}
-        destroyPopupOnHide={destroyPopupOnHide}
-        visible={state.popupVisible}
-        align={align}
-        onAlign={onPopupAlign}
-        {...mouseProps}
-        getRootDomNode={this.getRootDomNode}
-        isMask={mask}
-        zIndex={zIndex}
-      >
-        {typeof popup === 'function' ? popup() : popup}
-      </Popup>
-    );
+    return <Popup
+      getTheme={getTheme}
+      key="popup"
+      offsetX={offsetX}
+      offsetY={offsetY}
+      ref={cmp => this.component = cmp}
+      destroyPopupOnHide={destroyPopupOnHide}
+      visible={state.popupVisible}
+      align={align}
+      onAlign={onPopupAlign}
+      {...mouseProps}
+      getRootDomNode={this.getRootDomNode}
+      isMask={mask}
+      zIndex={zIndex}
+    >
+      {typeof popup === 'function' ? popup() : popup}
+    </Popup>;
   }
 
   componentWillReceiveProps ({ popupVisible, }: Object) {
