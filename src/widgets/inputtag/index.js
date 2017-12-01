@@ -135,6 +135,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { props, state, } = this;
     return state.items !== nextState.items ||
       props.value !== nextPros.value ||
+      state.value !== nextState.value ||
       props.displayValue !== nextPros.displayValue;
   }
 

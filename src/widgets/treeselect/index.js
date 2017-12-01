@@ -112,7 +112,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return state.query !== nextState.query
       || state.selectAll !== nextState.selectAll
       || state.selectCount !== nextState.selectCount
-      || state.value !== nextState.value;
+      || state.value !== nextState.value
+      || state.displayValue !== nextState.displayValue;
+  }
+
+  componentWillReceiveProps (props: TreeSelectProps) {
+    if (!Support.isNotLimit(props)) {
+
+      if (props.value !== this.props.value || props.displayValue !== this.props.displayValue) {
+        const { value, displayValue, } = this.getInitValue(props);
+        this.setState({ value, displayValue, });
+      }
+    }
   }
 
   render () {
