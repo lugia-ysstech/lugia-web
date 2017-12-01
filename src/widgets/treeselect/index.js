@@ -150,9 +150,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     };
     const tree = [<QueryInput key="queryContainer"><Input key="queryInput" ref={getQueryInput} placeholder="输入查询条件"
                                                            value={query}
-                                                           onChange={this.onQueryTree}
+                                                           onChange={this.onQueryInputChange}
                                                            suffix={this.getSuffix()}
-                                                           onKeyDown={this.onQueryKeyDown}/></QueryInput>,
+                                                           onKeyDown={this.onQueryInputKeyDown}/></QueryInput>,
       <Tree data={data}
             key="tree"
             {...props}
@@ -231,13 +231,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return canInput;
   }
 
-  onQueryKeyDown = (e: Object) => {
+  onQueryInputKeyDown = (e: Object) => {
     if (e.keyCode === 13) {
       this.appendValue();
     }
     if (e.keyCode === 40) {
       console.info('down');
-
     }
   };
 
@@ -331,7 +330,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return !this.treeCmp || !this.treeCmp.getThemeTarget();
   }
 
-  onQueryTree = value => {
+  onQueryInputChange = value => {
     if (value === this.state.query) {
       return;
     }
