@@ -145,7 +145,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getQueryInput: Function = (cmp: Object) => {
       this.queryInput = cmp;
     };
-    const tree = [ <QueryInput key="queryContainer"><Input key="queryInput" ref={getQueryInput} placeholder="输入查询条件"
+    const tree = [<QueryInput key="queryContainer"><Input key="queryInput" ref={getQueryInput} placeholder="输入查询条件"
                                                            value={query}
                                                            onChange={this.onQueryTree}
                                                            suffix={this.getSuffix()}
@@ -159,7 +159,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
             value={value}
             onChange={this.onTreeChange}
             displayValue={displayValue}>
-      </Tree>, ];
+      </Tree>,];
 
     if (this.isMutliple()) {
       let str = `已选择${selectCount}个结点`;
@@ -182,8 +182,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
                align="bottomLeft"
                key="trigger"
                ref={getTreeTriger}
-               action={[ 'click', ]}
-               hideAction={[ 'click', ]}>
+               action={['click',]}
+               hideAction={['click',]}>
         <InputTag key="inputtag"
                   value={value} displayValue={displayValue} onChange={this.onInputTagChange}
                   mutliple={this.isMutliple()}
@@ -250,8 +250,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       } else {
         this.setState({
           query: '',
-          value: [ inputValue, ],
-          displayValue: [ inputValue, ],
+          value: [inputValue,],
+          displayValue: [inputValue,],
         });
       }
     }
