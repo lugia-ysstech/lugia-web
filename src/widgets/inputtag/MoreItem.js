@@ -6,7 +6,6 @@
  */
 import React from 'react';
 import Item from './Item';
-import { hidden, } from './css.css';
 import * as Widget from '../consts/Widget';
 
 

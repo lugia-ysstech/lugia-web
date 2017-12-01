@@ -395,6 +395,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     this.oldWidth = offSetWidth;
 
     this.adaptiveItems(offSetWidth);
+    console.info('inputtag');
   }
 
   componentDidUpdate () {

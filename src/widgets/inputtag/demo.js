@@ -30,15 +30,9 @@ class InputDemo extends React.Component<any, any> {
     return [
       <Theme config={{ [Widget.InputTag]: { width: 200, }, }}>
         <InputTag
-          onChange={this.onChange}
           defaultValue={val} defaultDisplayValue={disp}/>
       </Theme>,];
   }
-
-  onChange = ({ value, displayValue, }: Object) => {
-    // console.info(value, displayValue);
-    // this.setState({ value, displayValue, });
-  };
 }
 
 export default InputDemo;

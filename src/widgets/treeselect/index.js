@@ -17,7 +17,7 @@ import ThemeProvider from '../common/ThemeProvider';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import Icon from '../icon';
-import { splitStr, } from '../../utils';
+import { splitStr, } from '../utils';
 
 type TreeSelectProps = {
   data: Array<Object>,

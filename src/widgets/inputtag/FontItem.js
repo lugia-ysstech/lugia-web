@@ -6,13 +6,16 @@
  */
 import React from 'react';
 import Item from './Item';
-import { hidden, } from './css.css';
 import * as Widget from '../consts/Widget';
-
+import styled from 'styled-components';
 
 type FontItemState = {
   text: string,
 }
+const HiddenItem = styled(Item)`
+  position: absolute !important;
+  top: -943124px;
+`;
 export default class  extends React.Component<any, FontItemState> {
   static displayName = Widget.FontItem;
 
@@ -46,7 +49,7 @@ export default class  extends React.Component<any, FontItemState> {
       this.item = cmp;
     };
     return (
-      <Item className={hidden} ref={fillItem}>{text}</Item>
+      <HiddenItem innerRef={fillItem}>{text}</HiddenItem>
     );
   }
 

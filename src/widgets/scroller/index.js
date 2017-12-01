@@ -7,7 +7,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
-import { cacheOnlyFirstCall, getElementPosition, } from '../../utils';
+import { cacheOnlyFirstCall, getElementPosition, } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 
 type ScrollerProps = {

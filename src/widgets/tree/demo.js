@@ -6,6 +6,8 @@
  */
 import * as React from 'react';
 import Tree from './';
+import * as Widget from '../consts/Widget';
+import Theme from '../theme';
 
 const { TreeNode, } = Tree;
 
@@ -163,47 +165,30 @@ class LimitTree extends React.Component<Object, Object> {
 
   render () {
     const { value, } = this.state;
+    console.info('render', value);
     return [<Tree
-      value={value}
       expandAll
       {...this.props}
+      value={value}
       // onChange={this.onChange}
     >
     </Tree>, <button onClick={this.onClick}></button>,];
   }
 
   onChange = (value, displayValue) => {
-
-    this.setState({ value: value.join(','), }, () => {
-    });
-
+    this.setState({ value, });
   };
   all: boolean;
   onClick = () => {
-    console.info('adsfas');
-
-    if (this.all) {
-      this.setState({ value: '', });
-      this.all = false;
-    } else {
-      const { data, } = this.props;
-      const value = [];
-      console.info(data.length);
-      for (let i = 0; i < data.length; i++) {
-        const { key, } = data[ i ];
-        value.push(key);
-      }
-      console.time('aa');
-
-      // console.timeEnd('aa');
-      this.setState({ value: value.join(','), }, () => {
-        console.timeEnd('aa');
-      });
-      this.all = true;
-    }
+    this.setState({ value: '1.1', });
   }
 }
 
+const config = {
+  [Widget.Tree]: {
+    height: 1000,
+  },
+};
 export default () => {
-  return [<LimitTree key="mutliple" data={bigTree} mutliple/>,];
+  return [<Theme config={config}><Tree data={rowData} query="3" expandAll={true} mutliple={true}/></Theme>,];
 };

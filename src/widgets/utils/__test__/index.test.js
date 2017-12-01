@@ -1,7 +1,7 @@
 //@flow
 import React from 'react';
 import chai from 'chai';
-import { cacheOnlyFirstCall, getElementPosition, } from '../';
+import { cacheOnlyFirstCall, getElementPosition, } from '../index';
 
 const { expect: exp, } = chai;
 

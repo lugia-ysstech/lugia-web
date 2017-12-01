@@ -26,13 +26,13 @@ type EventName = 'onClick' |
   'onMouseLeave' |
   'onFocus' |
   'onBlur';
-const ALL_HANDLERS: Array<EventName> = ['onClick',
+const ALL_HANDLERS: Array<EventName> = [ 'onClick',
   'onMouseDown',
   'onTouchStart',
   'onMouseEnter',
   'onMouseLeave',
   'onFocus',
-  'onBlur',];
+  'onBlur', ];
 
 
 type TriggerProps = {
@@ -186,6 +186,10 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
 
+  componentDidMount () {
+    console.info('triger')
+  }
+
   componentWillMount () {
     ALL_HANDLERS.forEach((h: EventName) => {
       this.handlers[ `fire${h}` ] = (e: Object) => {
@@ -326,7 +330,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
     newChildProps.key = 'container';
-    return [React.cloneElement(child, newChildProps), this.getComponent(),];
+    return [ React.cloneElement(child, newChildProps), this.getComponent(), ];
   }
 
   isClickToShow () {
