@@ -375,7 +375,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
-    this.setValue(value, displayValue, {});
+    this.setValue(value, displayValue, {}, () => {
+      if (!this.isMutliple()) {
+        this.setTreePopupVisible(false);
+      }
+    });
   };
 
   setValue (value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
