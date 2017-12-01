@@ -102,6 +102,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
         <ScrollerCol theme={theme}>
           <Scroller ref={cmp => this.scroller = cmp}
                     type={type}
+                    value={menuItemHeight * start}
                     viewSize={viewSize}
                     totalSize={totalSize}
                     onChange={this.onScroller}/>
@@ -170,9 +171,10 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
     onScroller = (value: number) => {
       const { onScroller, } = this.props;
-      const start = Math.floor(value / menuItemHeight);
+      const start = (value / menuItemHeight);
       onScroller ? onScroller(start) : this.setState({ start, });
     };
+
 
   };
 

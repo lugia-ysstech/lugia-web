@@ -106,7 +106,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const { defaultValue = 0, } = props;
 
     this.state = {
-      value: defaultValue,
+      value: Support.getInitNumberValue(props),
       sliderSize: this.getSliderBarSize(props),
     };
     this.updateStepInfo(props);
@@ -115,6 +115,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   componentWillReceiveProps (props: ScrollerProps) {
     this.setState({
+      value: Support.getNumberValue(props, this.state),
       sliderSize: this.getSliderBarSize(props),
     });
   }
@@ -184,8 +185,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   }
 
   getCurrentPos (): number {
-    const value = Support.getNumberValue(this.props, this.state);
-    return this.value2pos(value);
+    return this.value2pos(this.state.value);
   }
 
   getPX (val: number): string {

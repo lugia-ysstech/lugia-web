@@ -43,6 +43,17 @@ function getInitValue (props: any) {
 }
 
 
+function getInitNumberValue (props: any) {
+  if (isNotLimit(props)) {
+    const { defaultValue = 0, } = props;
+    return defaultValue;
+  }
+
+  const { value = 0, } = props;
+  return value;
+}
+
+
 function getInitValueArray (props: any): Array<any> {
   if (isNotLimit(props)) {
     const { defaultValue = [], } = props;
@@ -119,6 +130,7 @@ export default {
   getObjectValue,
   getInitValue,
   isNotLimit,
+  getInitNumberValue,
   getInitValueArray,
   getCodeItem: getInitCodeItem,
   getCodeItemArray: getInitCodeItemArray,
