@@ -24,6 +24,7 @@ type TreeProps = {
   start: number,
   end: number,
   query: string,
+  onScroller?: Function,
   /** 是否支持多选 */
   mutliple?: boolean;
   limitCount?: number;
@@ -436,6 +437,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   onScroller = (start: number) => {
     this.setState({ start, });
+    const { onScroller, } = this.props;
+    onScroller && onScroller(start);
   };
 
   isEmpty ({ data, }) {

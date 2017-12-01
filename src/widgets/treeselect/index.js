@@ -43,6 +43,7 @@ type TreeSelectProps = {
 };
 type TreeSelectState = {
   open: boolean,
+  start: number,
   treeFilter: string,
   value: Array<string>,
   displayValue: Array<string>,
@@ -99,6 +100,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       value,
       displayValue,
       selectCount: 0,
+      start: 0,
       selectAll: false,
     };
     this.changeOldValue(value);
@@ -118,6 +120,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
     const { state, } = this;
     return state.query !== nextState.query
+      || state.start !== nextState.start
       || state.treeFilter !== nextState.treeFilter
       || state.selectAll !== nextState.selectAll
       || state.selectCount !== nextState.selectCount
@@ -138,7 +141,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   render () {
     const { props, state, } = this;
     const { data, placeholder, } = props;
-    const { query, value, displayValue, selectCount, treeFilter, } = state;
+    const { query, value, displayValue, selectCount, treeFilter, start,} = state;
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
     };
@@ -154,7 +157,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
             key="tree"
             {...props}
             className="sv"
+            start={start}
             query={treeFilter}
+            onScroller={this.onTreeScroller}
             ref={getTree}
             value={value}
             onChange={this.onTreeChange}
@@ -194,6 +199,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     </Theme>;
   }
 
+  onTreeScroller = start => {
+    this.setState({ start, });
+  };
   getSuffix = () => {
     const result = [];
     if (this.isCanInput()) {
