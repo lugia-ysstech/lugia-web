@@ -78,17 +78,17 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
     render () {
       const { props, } = this;
 
+      const start = this.getStart(props, this.state);
 
       if (!this.isNeedScrolelr()) {
         const { length, } = this.getTarget();
-        return <Target {...props} start={0} end={length}/>;
+        return <Target {...props} start={start} end={length}/>;
       }
 
       const { type, getTheme, } = props;
       const viewSize = this.fetchViewSize();
       const totalSize = this.fetchTotalSize();
 
-      const start = this.getStart(props, this.state);
       const end = this.fetchEnd(start);
       const theme = getTheme();
 

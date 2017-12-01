@@ -167,16 +167,18 @@ class LimitTree extends React.Component<Object, Object> {
     const { value, } = this.state;
     console.info('render', value);
     return [<Tree
+      start={5}
       expandAll
       {...this.props}
-      value={value}
-      // onChange={this.onChange}
+      // value={value}
+      onChange={this.onChange}
     >
     </Tree>, <button onClick={this.onClick}></button>,];
   }
 
   onChange = (value, displayValue) => {
-    this.setState({ value, });
+    console.info(value);
+    // this.setState({ value, });
   };
   all: boolean;
   onClick = () => {
@@ -186,9 +188,10 @@ class LimitTree extends React.Component<Object, Object> {
 
 const config = {
   [Widget.Tree]: {
-    height: 1000,
+    height: 200,
   },
 };
 export default () => {
-  return [<Theme config={config}><Tree data={rowData} query="3" expandAll={true} mutliple={true}/></Theme>,];
+  return [<Theme config={config}><LimitTree data={rowData} expandAll={true} mutliple={true}
+  /></Theme>,];
 };

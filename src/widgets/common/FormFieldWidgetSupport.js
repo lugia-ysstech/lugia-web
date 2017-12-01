@@ -53,6 +53,14 @@ function getInitNumberValue (props: any) {
   return value;
 }
 
+function getInitStart (props: any, value: number) {
+  if ('start' in props) {
+    const { start = 0, } = props;
+    return start;
+  }
+  return value;
+}
+
 
 function getInitValueArray (props: any): Array<any> {
   if (isNotLimit(props)) {
@@ -129,6 +137,7 @@ export default {
   getNumberValue,
   getObjectValue,
   getInitValue,
+  getInitStart,
   isNotLimit,
   getInitNumberValue,
   getInitValueArray,

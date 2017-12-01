@@ -107,7 +107,7 @@ export default class extends React.Component<any, any> {
   }
 
   render () {
-    const config = { [ Widget.TreeSelect ]: { width: 300, height: 1000, }, };
+    const config = { [ Widget.TreeSelect ]: { width: 300, height: 250, }, };
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
@@ -129,7 +129,7 @@ export default class extends React.Component<any, any> {
     console.info('refresh');
   };
   onChange = (obj: Object) => {
-    // console.info(obj);
+    console.info(obj);
   };
   onTrigger = () => {
     this.setState({ data: rowData, });

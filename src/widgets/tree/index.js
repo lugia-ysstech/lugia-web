@@ -105,7 +105,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
     const state = {
-      start: 0,
+      start: Support.getInitStart(props, 0),
       expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
       expand,
       selectValue: [],
@@ -163,6 +163,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
         this.updateStateValuForLimitValue(props, newState, id2ExtendInfo, this.getInitValue(props));
       }
       this.setState(newState);
+    }
+    const startChange = this.props.start !== props.start;
+    if (startChange) {
+      this.setState({ start: Support.getInitStart(props, this.state.start), });
     }
   }
 
