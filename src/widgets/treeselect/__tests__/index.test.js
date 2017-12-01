@@ -60,7 +60,7 @@ describe('TreeSelect', () => {
   it('输入框点击后，弹出面板', () => {
     const cmp = mount(<TreeSelect data={rowData}/>);
     cmp.children().at(0).simulate('click');
-    
+
     cmp.update();
     exp(cmp.find(Trigger).length).to.be.equal(1);
   });
@@ -74,7 +74,7 @@ describe('TreeSelect', () => {
       [Widget.Trigger]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
       [Widget.InputTag]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
       [Widget.Input]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, }, { svThemeConfigTree, }),
-      [SelectedIcon]: {color: '#d9d9d9', hoverColor: '#108ee9',},
+      [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9', },
     };
     createThemeCase(styleConfig, expResult);
   });
@@ -86,7 +86,7 @@ describe('TreeSelect', () => {
       [Widget.Trigger]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
       [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
       [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
-      [SelectedIcon]: {color: '#d9d9d9', hoverColor: '#108ee9',},
+      [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9', },
     };
 
     createThemeCase(styleConfig, expResult);
@@ -119,22 +119,28 @@ describe('TreeSelect', () => {
 
   }
 
-  it('测试查询功能', () => {
-    const cmp = mount(<TreeSelect data={rowData}/>);
+  it('测试查询功能 local', async () => {
+    const cmp = mount(<TreeSelect data={rowData} throttle={0}/>);
     const firstValue = 'helloworld';
     chagneQuery(cmp, firstValue);
     exp(getTreeQuery(cmp)).to.be.equal(firstValue);
+    exp(findQueryInputValue(cmp)).to.be.equal(firstValue);
 
 
-    const secondValue = 'helloworld';
+    const secondValue = 'ligx';
     chagneQuery(cmp, secondValue);
     exp(getTreeQuery(cmp)).to.be.equal(secondValue);
+    exp(findQueryInputValue(cmp)).to.be.equal(secondValue);
+  });
+  it('测试查询功能 remote', async () => {
+    const cmp = mount(<TreeSelect data={rowData} throttle={0} mode="remote"/>);
+    const firstValue = 'helloworld';
+    chagneQuery(cmp, firstValue);
+    exp(getTreeQuery(cmp)).to.be.equal('');
+    exp(findQueryInputValue(cmp)).to.be.equal(firstValue);
+
   });
 
-  function updateTree (cmp: Object) {
-    cmp.update();
-
-  }
 
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;
@@ -146,9 +152,11 @@ describe('TreeSelect', () => {
 
   function chagneQuery (cmp: Object, value: string) {
     findQueryInput(cmp).simulate('change', { target: { value, }, });
-    
-    updateTree(cmp);
-    cmp.update();
+
+  }
+
+  function findQueryInputValue (cmp: Object) {
+    return findQueryInput(cmp).props().value;
   }
 
   function findQueryInput (cmp: Object) {

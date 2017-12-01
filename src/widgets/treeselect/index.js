@@ -330,8 +330,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     if (this.queryHandle) {
       clearTimeout(this.queryHandle);
     }
+
     this.setState({ query: value, });
-    this.queryHandle = setTimeout(() => {
+    const callback = () => {
       const { onQuery, mode, } = this.props;
       onQuery && onQuery(value);
       if (mode === 'local') {
@@ -339,7 +340,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       } else {
         this.setState({ treeFilter: '', });
       }
-    }, this.props.throttle);
+    };
+
+    const { throttle = -1, } = this.props;
+    if (throttle > 0) {
+      this.queryHandle = setTimeout(callback, throttle);
+    } else {
+      callback();
+    }
   };
 
   onInputTagPopupVisibleChange = (visible: boolean) => {
