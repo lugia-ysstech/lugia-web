@@ -227,6 +227,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     if (e.keyCode === 13) {
       this.appendValue();
     }
+    if (e.keyCode === 40) {
+      console.info('down');
+
+    }
   };
 
   onAdd = () => {
@@ -244,12 +248,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         displayValue.push(inputValue);
         this.setState({
           query: '',
+          treeFilter: '',
           value,
           displayValue,
         });
       } else {
         this.setState({
           query: '',
+          treeFilter: '',
           value: [inputValue,],
           displayValue: [inputValue,],
         });
@@ -353,7 +359,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       if (this.isMutliple()) {
         selectCount = this.getInputTagCount();
       }
-      this.setState({ query: '', selectCount, }, () => {
+      this.setState({ query: '', treeFilter: '', selectCount, }, () => {
         if (this.queryInput && this.queryInput.getThemeTarget()) {
           this.queryInput.getThemeTarget().focus();
         }
