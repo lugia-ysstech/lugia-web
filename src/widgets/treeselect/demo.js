@@ -107,28 +107,31 @@ export default class extends React.Component<any, any> {
   }
 
   render () {
-    const config = { [ Widget.TreeSelect ]: { width: 300, }, };
+    const config = { [ Widget.TreeSelect ]: { width: 300, height: 1000, }, };
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
                   defaultValue="3.2"
+                  onRefresh={this.onRefresh}
         //onlySelectLeaf
         //igronSelectField
         // limitCount={1}
-        //canInput
                   canInput
                   defaultDisplayValue="3.2"
                   mutliple
                   placeholder="请输入xxx"
-                  // splitQuery=","
+        // splitQuery=","
                   expandAll onChange={this.onChange}/>
     </Theme>;
   }
 
+  onRefresh = () => {
+    console.info('refresh');
+  };
   onChange = (obj: Object) => {
-    console.info(obj);
+    // console.info(obj);
   };
   onTrigger = () => {
-    this.setState({ data: bigTree, });
+    this.setState({ data: rowData, });
   };
 }

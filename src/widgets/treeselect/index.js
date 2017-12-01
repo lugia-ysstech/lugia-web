@@ -24,6 +24,7 @@ type TreeSelectProps = {
   getTheme?: Function,
   value?: string,
   displayValue?: string,
+  onRefresh?: Function,
   displayField: string,
   defaultValue?: string,
   mutliple: boolean,
@@ -124,11 +125,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getQueryInput: Function = (cmp: Object) => {
       this.queryInput = cmp;
     };
-    const tree = [<QueryInput><Input ref={getQueryInput} placeholder="输入查询条件" value={this.state.query}
-                                      onChange={this.onQueryTree}
-                                      suffix={this.getSuffix()}
-                                      onKeyDown={this.onQueryKeyDown}/></QueryInput>,
+    const tree = [<QueryInput key="queryContainer"><Input key="queryInput" ref={getQueryInput} placeholder="输入查询条件"
+                                                           value={this.state.query}
+                                                           onChange={this.onQueryTree}
+                                                           suffix={this.getSuffix()}
+                                                           onKeyDown={this.onQueryKeyDown}/></QueryInput>,
       <Tree data={data}
+            key="tree"
             {...props}
             className="sv"
             query={query}
@@ -144,7 +147,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       if (limitCount != undefined) {
         str += `,最多可选${limitCount}个结点`;
       }
-      tree.push(<Text>{str}.</Text>);
+      tree.push(<Text key="selInfo">{str}.</Text>);
     }
 
     const getTreeTriger: Function = (cmp: Object) => {
@@ -153,14 +156,16 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
-    return <Theme config={this.getTheme()}>
+    return <Theme config={this.getTheme()} key="treesel_theme">
       <Trigger popup={tree}
                onPopupVisibleChange={this.onTreePopupVisibleChange}
                align="bottomLeft"
+               key="trigger"
                ref={getTreeTriger}
                action={['click',]}
                hideAction={['click',]}>
-        <InputTag value={value} displayValue={displayValue} onChange={this.onInputTagChange}
+        <InputTag key="inputtag"
+                  value={value} displayValue={displayValue} onChange={this.onInputTagChange}
                   mutliple={this.isMutliple()}
                   placeholder={placeholder}
                   ref={getInputTag}
@@ -179,8 +184,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       const iconClass = this.state.selectAll ? Checked : UnCheck;
       result.push(<Icon iconClass={iconClass} key="selAll" onClick={this.onSelectAll} viewClass={SelectedIcon}></Icon>);
     }
-
+    result.push(<Icon iconClass="sv-icon-android-refresh" key="refresh" onClick={this.onRefresh}
+                      viewClass={SelectedIcon}></Icon>);
     return result;
+  };
+  onRefresh = () => {
+    const { onRefresh, } = this.props;
+    onRefresh && onRefresh();
   };
 
   isMutliple () {
@@ -293,7 +303,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   onInputTagPopupVisibleChange = (visible: boolean) => {
-    if(visible){
+    if (visible) {
       this.setTreePopupVisible(false);
     }
   };
