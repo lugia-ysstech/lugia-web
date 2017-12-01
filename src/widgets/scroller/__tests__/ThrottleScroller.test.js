@@ -320,9 +320,11 @@ describe('ThrottleScroller', function () {
 
     cmp = cmp.setState({ start: 1, });
     exp(cmp.find(SVScroller).length).to.be.equal(1);
+    exp(cmp.find(SVScroller).props().onChange).to.be.equal(_this.onScroller);
     exp(cmp.find(SVScroller).props()).to.be.eql({
       viewSize,
       totalSize,
+      value:0,
       type: type ? type : 'y',
       onChange: _this.onScroller,
       throttle: 100,
