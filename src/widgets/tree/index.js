@@ -446,9 +446,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return mutliple === false;
   }
 
-  componentDidMount () {
-    console.info('tree');
-  }
 }
 
 export default ThemeProvider(Tree, Widget.Tree);
