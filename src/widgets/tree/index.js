@@ -346,7 +346,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const row = data[ current ];
     if (row) {
       const { key, } = row;
-      highlight.push(key);
+      highlight.push(key + '');
     }
     return <ThrottleTree {...props} id2ExtendInfo={id2ExtendInfo}
                          start={start}
