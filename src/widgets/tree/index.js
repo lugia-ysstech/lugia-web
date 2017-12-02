@@ -161,7 +161,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       const expand = this.updateExpandInfo(props);
       const { id2ExtendInfo, } = expand;
       const newState: TreeState = {
-        start: this.isQueryAll(props) ? this.allStart : 0,
+        start: this.isQueryAll(props) ? this.allStart : Support.getInitStart(props, this.state.start),
         selectedInfo: this.getEmptyNodeId2SelectInfo(),
         expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
         expand,
