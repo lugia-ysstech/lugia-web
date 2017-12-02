@@ -390,12 +390,6 @@ class Tree extends React.Component {
     if (!selectedKeys) {
       return undefined;
     }
-    if (props.multiple) {
-      return [...selectedKeys,];
-    }
-    if (selectedKeys.length) {
-      return [selectedKeys[ 0 ],];
-    }
     return selectedKeys;
   }
 

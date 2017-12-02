@@ -46,6 +46,7 @@ type TreeProps = {
    */
   onChange?: Function,
   splitQuery?: string,
+  current: number,
   data?: Array<RowData>,
 };
 
@@ -72,6 +73,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     defaultValue: '',
     showIcon: false,
     query: '',
+    current: -1,
     openAnimation: animation,
   };
 
@@ -84,11 +86,15 @@ class Tree extends React.Component<TreeProps, TreeState> {
   utils: TreeUtils;
   value: any;
   data: Array<RowData>;
+  end: number;
+  canSeeCount: number;
 
   constructor (props: TreeProps) {
     super(props);
     this.allExpandInfo = this.getEmptyExpandInfo();
     this.allStart = 0;
+    this.end = 0;
+    this.canSeeCount = 0;
 
     this.createQueryAllTreelUtils(props);
 
@@ -169,6 +175,20 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (startChange) {
       this.setState({ start: Support.getInitStart(props, this.state.start), });
     }
+    const { current, } = this.props;
+    const currentChange = current !== props.current;
+    if (currentChange) {
+      if (current > this.end - 2) {
+        this.setState({ start: this.state.start + this.canSeeCount, });
+      }
+      if (current < this.state.start) {
+        console.info('current', current);
+        console.info('start', this.state.start);
+        console.info('final', Math.max(this.state.start - this.canSeeCount, 0));
+        this.setState({ start: Math.max(this.state.start - this.canSeeCount, 0), });
+      }
+    }
+
   }
 
 
@@ -255,6 +275,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { state, } = this;
     return props.query !== nexProps.query
       || dataChanged
+      || props.current != nexProps.current
       || state.start !== nextState.start
       || state.selectValue !== nextState.selectValue
       || state.expand !== nextState.expand
@@ -300,8 +321,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
     const {
       query,
+      current,
     } = props;
-    const { expand, expandedKeys, selectedInfo, start, selectValue, } = state;
+    const { expand, expandedKeys, selectedInfo, start, selectValue = [], } = state;
     const { id2ExtendInfo, } = expand;
     const { checked, halfchecked, } = selectedInfo;
     const utils = this.getUtils(props);
@@ -313,20 +335,38 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isQueryAll(props)) {
       this.allStart = start;
     }
+    const selectKeys = [...selectValue,];
+    const row = data[ current ];
+    if (row) {
+      const { key, } = row;
+      selectKeys.push(key);
+    }
+    console.info(selectKeys);
     return <ThrottleTree {...props} id2ExtendInfo={id2ExtendInfo}
                          start={start}
                          onScroller={this.onScroller}
+                         onScrollerEndChange={this.onScrollerEndChange}
+                         onCanSeeCountChange={this.onCanSeeCountChange}
                          onCheck={this.onCheck}
                          onSelect={this.onSelect}
                          data={data}
                          selectable={this.isSingleSelect()}
-                         selectedKeys={selectValue}
+                         selectedKeys={selectKeys}
                          checkedKeys={Object.keys(checked)}
                          halfCheckedKeys={Object.keys(halfchecked)}
                          utils={utils}
                          expandedKeys={expandedKeys}
                          onExpand={this.onExpand}/>;
   }
+
+  onScrollerEndChange = (end: number) => {
+    console.info('onScrollerEndChange', end);
+    this.end = end;
+  };
+  onCanSeeCountChange = (count: number) => {
+    console.info('onCanSeeCountChange', count);
+    this.canSeeCount = count;
+  };
 
   search (utils: TreeUtils, expand: ExpandInfo, query: string): Array<RowData> {
     return this.data = utils.search(expand, query);
@@ -358,7 +398,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
           return;
         }
       }
-
     }
     this.onChange([value,]);
     if (this.isNotLimit(props)) {
@@ -435,10 +474,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     onExpand && onExpand(expandedKeys, data);
   };
 
-  onScroller = (start: number) => {
+  onScroller = (start: number, end: number) => {
     this.setState({ start, });
     const { onScroller, } = this.props;
-    onScroller && onScroller(start);
+    onScroller && onScroller(start, end);
   };
 
   isEmpty ({ data, }) {

@@ -51,6 +51,39 @@ class ScrollerTree extends React.Component<any, any> {
     super(props);
   }
 
+  shouldComponentUpdate (nexProps: Object, nextState: Object) {
+
+    const endChange = nexProps.end != this.props.end;
+    if (endChange) {
+      this.onScrollerEndChange(nexProps.end);
+    }
+    const canSeeCountChange = nexProps.canSeeCount != this.props.canSeeCount;
+    if (canSeeCountChange) {
+      this.onCanSeeCountChange(nexProps.canSeeCount);
+    }
+    return nexProps.mutliple !== this.props.mutliple ||
+      nexProps.utils != this.props.utils ||
+      nexProps.onSelect != this.props.onSelect ||
+      nexProps.getTheme() != this.props.getTheme() ||
+      nexProps.id2ExtendInfo != this.props.id2ExtendInfo ||
+      nexProps.start != this.props.start ||
+      endChange;
+  }
+
+  componentDidMount () {
+    this.onScrollerEndChange(this.props.end);
+    this.onCanSeeCountChange(this.props.canSeeCount);
+  }
+
+  onScrollerEndChange = (end: number) => {
+    const { onScrollerEndChange, } = this.props;
+    onScrollerEndChange && onScrollerEndChange(end);
+  };
+  onCanSeeCountChange = (end: number) => {
+    const { onCanSeeCountChange, } = this.props;
+    onCanSeeCountChange && onCanSeeCountChange(end);
+  };
+
   render () {
     const {
       prefixCls,
@@ -72,6 +105,7 @@ class ScrollerTree extends React.Component<any, any> {
       } = this.props;
       let { start, } = this.props;
       start = Math.ceil(start);
+      console.info('rc',this.props.selectedKeys);
       const { rows, parentCount, } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
       const top = -parentCount * 17;

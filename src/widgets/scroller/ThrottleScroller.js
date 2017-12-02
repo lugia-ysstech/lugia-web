@@ -96,6 +96,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
                                 onWheel={this.onWheel}>
         <Col theme={theme}>
           <Target {...props}
+                  canSeeCount={this.canSeeCount()}
                   start={start}
                   end={end}/>
         </Col>
@@ -178,7 +179,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
     onScroller = (value: number) => {
       const { onScroller, } = this.props;
       const start = (value / menuItemHeight);
-      onScroller ? onScroller(start) : this.setState({ start, });
+      onScroller ? onScroller(start, this.fetchEnd(start)) : this.setState({ start, });
     };
 
 
