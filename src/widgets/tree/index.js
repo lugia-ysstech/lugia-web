@@ -449,9 +449,21 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onExpand = (expandedKeys: Array<string>, event: { expanded: boolean, node: Object, }) => {
-    const { props, state, } = this;
     const { expanded, node, } = event;
     const key = node.props.eventKey;
+    this.expandOrCollapse(key, expandedKeys, expanded);
+  };
+
+  expand(key: string){
+    this.expandOrCollapse(key, this.state.expandedKeys, true);
+  }
+
+  collapse(key: string){
+    this.expandOrCollapse(key, this.state.expandedKeys, false);
+  }
+
+  expandOrCollapse (key: string, expandedKeys: Array<string>, expanded: boolean) {
+    const { props, state, } = this;
     const utils = this.getUtils(props);
     const { expand, } = state;
     const { id2ExtendInfo, } = expand;
@@ -473,7 +485,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     const { onExpand, data = [], } = props;
     onExpand && onExpand(expandedKeys, data);
-  };
+  }
 
   onScroller = (start: number, end: number) => {
     this.setState({ start, });

@@ -230,18 +230,41 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onQueryInputKeyDown = (e: Object) => {
-    if (e.keyCode === 13) {
+    const isEnter = e.keyCode === 13;
+    if (isEnter) {
       this.appendValue();
     }
-    if (e.keyCode === 40) {
-      console.info('down');
+    const isDown = e.keyCode === 40;
+    if (isDown) {
       this.setState({ current: Math.min(this.state.current + 1, this.getData().length - 1), });
     }
-    if (e.keyCode === 38) {
-      console.info('down');
+    const isUp = e.keyCode === 38;
+    if (isUp) {
       this.setState({ current: Math.max(this.state.current - 1, 0), });
     }
+    const isLeft = e.keyCode === 37;
+    if (isLeft) {
+      const currentRow = this.getCurrentRow();
+      if (currentRow) {
+        this.getTree().collapse(currentRow.key);
+      }
+    }
+    const isRight = e.keyCode === 39;
+    if (isRight) {
+      const currentRow = this.getCurrentRow();
+      if (currentRow) {
+        this.getTree().expand(currentRow.key);
+      }
+    }
   };
+
+  getCurrentRow (): Object | null {
+    const data =  this.getTree().getData();
+    if (data && data[ this.state.current ]) {
+      return data[ this.state.current ];
+    }
+    return null;
+  }
 
   onAdd = () => {
     this.appendValue();
