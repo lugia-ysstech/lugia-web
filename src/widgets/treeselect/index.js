@@ -243,23 +243,34 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       this.setState({ current: Math.max(this.state.current - 1, 0), });
     }
     const isLeft = e.keyCode === 37;
+    const tree = this.getTree();
+    if (!tree) {
+      return;
+    }
+    const currentRow = this.getCurrentRow();
+    if (!currentRow) {
+      return;
+    }
+    const { key, } = currentRow;
     if (isLeft) {
-      const currentRow = this.getCurrentRow();
-      if (currentRow) {
-        this.getTree().collapse(currentRow.key);
-      }
+      tree.collapse(key);
     }
     const isRight = e.keyCode === 39;
     if (isRight) {
-      const currentRow = this.getCurrentRow();
-      if (currentRow) {
-        this.getTree().expand(currentRow.key);
+      tree.expand(key);
+    }
+    const isShift = e.keyCode === 16;
+    if (isShift) {
+      if (this.isMutliple()) {
+        tree.check(key, !tree.isChecked(key));
+      } else {
+        tree.select([key,]);
       }
     }
   };
 
   getCurrentRow (): Object | null {
-    const data =  this.getTree().getData();
+    const data = this.getTree().getData();
     if (data && data[ this.state.current ]) {
       return data[ this.state.current ];
     }

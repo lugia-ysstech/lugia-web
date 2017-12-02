@@ -135,6 +135,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return chkLen > 0 && chkLen >= this.getData().length;
   }
 
+  isChecked (key: string) {
+    const { selectedInfo, } = this.state;
+    const { checked, halfchecked, } = selectedInfo;
+    return checked[ key ] || halfchecked[ key ];
+  }
+
   getInitValue (props: TreeProps): Array<string> {
     return Support.getInitValueArray(props);
   }
@@ -374,7 +380,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onSelect = (selectValue: Array<string>) => {
+    this.select(selectValue);
+  };
 
+  select (selectValue: Array<string>) {
     if (this.isSingleSelect() === false) {
       return;
     }
@@ -404,12 +413,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isNotLimit(props)) {
       this.setState({ selectValue, });
     }
-  };
+  }
 
 
   onCheck = (_, event) => {
     const { node, checked, shiftKey, } = event;
     const { eventKey, } = node.props;
+    this.check(eventKey, checked, shiftKey);
+  };
+
+  check (eventKey: string, checked: boolean, shiftKey: boolean = false) {
     const { state, props, } = this;
 
     const { selectedInfo, } = state;
@@ -431,7 +444,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isNotLimit(props)) {
       this.setState({ selectedInfo: { ...selectedInfo, }, });
     }
-  };
+  }
 
 
   onChange = (value: any) => {
@@ -454,11 +467,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.expandOrCollapse(key, expandedKeys, expanded);
   };
 
-  expand(key: string){
+  expand (key: string) {
     this.expandOrCollapse(key, this.state.expandedKeys, true);
   }
 
-  collapse(key: string){
+  collapse (key: string) {
     this.expandOrCollapse(key, this.state.expandedKeys, false);
   }
 
