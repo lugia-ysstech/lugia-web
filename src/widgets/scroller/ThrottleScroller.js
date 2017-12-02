@@ -82,7 +82,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
       if (!this.isNeedScrolelr()) {
         const { length, } = this.getTarget();
-        return <Target {...props} start={start} end={length}/>;
+        return <Target {...props} start={start} end={length} canSeeCount={length}/>;
       }
 
       const { type, getTheme, } = props;
@@ -91,12 +91,13 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
       const end = this.fetchEnd(start);
       const theme = getTheme();
+      const canSeeCount = this.canSeeCount();
 
       return <ScrollerContainer theme={theme}
-                                onWheel={this.onWheel}>
+                                                                onWheel={this.onWheel}>
         <Col theme={theme}>
           <Target {...props}
-                  canSeeCount={this.canSeeCount()}
+                  canSeeCount={canSeeCount}
                   start={start}
                   end={end}/>
         </Col>

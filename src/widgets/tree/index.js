@@ -179,7 +179,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const currentChange = current !== props.current;
     if (currentChange) {
       if (current > this.end - 2) {
-        this.setState({ start: this.state.start + this.canSeeCount, });
+        const start = Math.min(this.state.start + this.canSeeCount, this.getData().length - 1);
+        this.setState({ start, });
       }
       if (current < this.state.start) {
         console.info('current', current);
