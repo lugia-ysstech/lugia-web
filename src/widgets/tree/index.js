@@ -335,13 +335,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isQueryAll(props)) {
       this.allStart = start;
     }
-    const selectKeys = [...selectValue,];
+    const highlight = [];
     const row = data[ current ];
     if (row) {
       const { key, } = row;
-      selectKeys.push(key);
+      highlight.push(key);
     }
-    console.info(selectKeys);
     return <ThrottleTree {...props} id2ExtendInfo={id2ExtendInfo}
                          start={start}
                          onScroller={this.onScroller}
@@ -351,7 +350,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
                          onSelect={this.onSelect}
                          data={data}
                          selectable={this.isSingleSelect()}
-                         selectedKeys={selectKeys}
+                         highlight={highlight}
+                         selectedKeys={selectValue}
                          checkedKeys={Object.keys(checked)}
                          halfCheckedKeys={Object.keys(halfchecked)}
                          utils={utils}

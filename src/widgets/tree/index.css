@@ -277,6 +277,10 @@
     background-color: #d2eafb;
 }
 
+:global(.sv-tree li .sv-tree-node-content-wrapper.sv-tree-node-highlight ) {
+    background-color: #49a9ee;
+}
+
 :global(.sv-tree li span.sv-tree-checkbox) {
     margin: 0 4px 0 2px;
     vertical-align: middle;

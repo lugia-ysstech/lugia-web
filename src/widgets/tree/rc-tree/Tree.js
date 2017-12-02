@@ -93,6 +93,7 @@ class Tree extends React.Component {
       checkedKeys,
       halfCheckedKeys,
       selectedKeys: this.calcSelectedKeys(props),
+      highlight: this.caclcHighLight(props),
       dragNodesKeys: '',
       dragOverNodeKey: '',
       dropNodeKey: '',
@@ -124,6 +125,11 @@ class Tree extends React.Component {
       this.calcSelectedKeys(nextProps, true) : undefined;
     if (selectedKeys) {
       newState.selectedKeys = selectedKeys;
+    }
+    const highlight = nextProps.highlight !== props.highlight ?
+      this.caclcHighLight(nextProps, true) : undefined;
+    if (highlight) {
+      newState.highlight = highlight;
     }
     this.setState(newState);
   }
@@ -390,7 +396,21 @@ class Tree extends React.Component {
     if (!selectedKeys) {
       return undefined;
     }
+    if (props.multiple) {
+      return [...selectedKeys,];
+    }
+    if (selectedKeys.length) {
+      return [selectedKeys[ 0 ],];
+    }
     return selectedKeys;
+  }
+
+  caclcHighLight (props, isNotInit) {
+    const highlight = props.highlight || (isNotInit ? undefined : props.defaulthighlight);
+    if (!highlight) {
+      return undefined;
+    }
+    return highlight;
   }
 
   calcDropPosition (e, treeNode) {
@@ -433,6 +453,7 @@ class Tree extends React.Component {
       dragOverGapBottom: state.dragOverNodeKey === key && state.dropPosition === 1,
       expanded: state.expandedKeys.indexOf(key) !== -1,
       selected: state.selectedKeys.indexOf(key) !== -1,
+      hightLight: state.highlight.indexOf(key) !== -1,
       openTransitionName: this.getOpenTransitionName(),
       openAnimation: props.openAnimation,
       filterTreeNode: this.filterTreeNode,

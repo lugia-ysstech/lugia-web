@@ -260,6 +260,9 @@ class TreeNode extends React.Component {
         if (props.selected || this.state.dragNodeHighlight) {
           domProps.className += ` ${prefixCls}-node-selected`;
         }
+        if (props.hightLight || this.state.dragNodeHighlight) {
+          domProps.className += ` ${prefixCls}-node-highlight`;
+        }
         domProps.onClick = e => {
           e.preventDefault();
           if (this.isSelectable()) {
