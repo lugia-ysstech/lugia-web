@@ -506,13 +506,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       onChange && onChange({ value, displayValue, });
     }
   };
-  getSelectRows (): Array<Object> {
-    const tree = this.getTree();
-    if(!tree){
+
+  getRows (valArray: Array<any> = []): Array<Object> {
+    if (!valArray || valArray.length <= 0) {
       return [];
     }
-    return tree.getSelectRows();
+    const tree = this.getTree();
+    if (!tree) {
+      return [];
+    }
+    return tree.getRows(valArray);
   }
+
   changeOldValue (value: any) {
     this.oldValue = value;
   }

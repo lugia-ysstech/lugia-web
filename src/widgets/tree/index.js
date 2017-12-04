@@ -443,28 +443,29 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
   }
 
-  getSelectRows (): Array<any> {
+  getRows (valArray: Array<any> = []): Array<Object> {
+    if (!valArray || valArray.length <=0) {
+      return [];
+    }
     const result = [];
-    const {props, state,} = this;
+    const { props, state, } = this;
     const { expand, } = state;
-    const {  displayField,} = props;
+    const { displayField, } = props;
     const { id2ExtendInfo, } = expand;
     const utils = this.getUtils(props);
-    if (this.value) {
 
-      const len = this.value.length;
-      for (let i = 0; i < len; i++) {
-        const val = this.value[ i ];
-        const row = utils.getRow(val, id2ExtendInfo);
-        if(row){
-          result.push(row);
-        }else{
-         const disp =  this.getTitle([val,])[0];
-         result.push({
-           key: val,
-           [displayField]: disp?disp: '',
-         });
-        }
+    const len = valArray.length;
+    for (let i = 0; i < len; i++) {
+      const val = valArray[ i ];
+      const row = utils.getRow(val, id2ExtendInfo);
+      if (row) {
+        result.push(row);
+      } else {
+        const disp = this.getTitle([val,])[ 0 ];
+        result.push({
+          key: val,
+          [displayField]: disp ? disp : '',
+        });
       }
     }
     return result;
