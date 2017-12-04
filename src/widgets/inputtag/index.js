@@ -139,11 +139,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   shouldComponentUpdate (nextPros: InputTagProps, nextState: InputTagState) {
     const { props, state, } = this;
-    return state.items !== nextState.items ||
+    const isChange = state.items !== nextState.items ||
       props.value !== nextPros.value ||
+      props.mutliple !== nextPros.mutliple ||
       props.disabled !== nextPros.disabled ||
       state.value !== nextState.value ||
       props.displayValue !== nextPros.displayValue;
+    return isChange;
   }
 
 

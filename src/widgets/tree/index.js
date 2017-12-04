@@ -31,7 +31,7 @@ type TreeProps = {
   /** 默认展开所有树节点 */
   expandAll: boolean;
   onlySelectLeaf: boolean;
-  displayField?: string,
+  displayField: string,
   igronSelectField?: string,
   value: ?Array<string>;
   displayValue: ?Array<string>;
@@ -71,6 +71,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     expandAll: false,
     mutliple: false,
     defaultValue: '',
+    displayField: 'title',
     showIcon: false,
     query: '',
     current: -1,
@@ -281,6 +282,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       || dataChanged
       || props.current != nexProps.current
       || state.start !== nextState.start
+      || props.mutliple !== nexProps.mutliple
       || state.selectValue !== nextState.selectValue
       || state.expand !== nextState.expand
       || state.selectedInfo !== nextState.selectedInfo;
@@ -441,6 +443,32 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
   }
 
+  getSelectRows (): Array<any> {
+    const result = [];
+    const {props, state,} = this;
+    const { expand, } = state;
+    const {  displayField,} = props;
+    const { id2ExtendInfo, } = expand;
+    const utils = this.getUtils(props);
+    if (this.value) {
+
+      const len = this.value.length;
+      for (let i = 0; i < len; i++) {
+        const val = this.value[ i ];
+        const row = utils.getRow(val, id2ExtendInfo);
+        if(row){
+          result.push(row);
+        }else{
+         const disp =  this.getTitle([val,])[0];
+         result.push({
+           key: val,
+           [displayField]: disp?disp: '',
+         });
+        }
+      }
+    }
+    return result;
+  }
 
   onChange = (value: any) => {
     this.value = value;

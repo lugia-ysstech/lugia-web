@@ -57,7 +57,7 @@ function getNumberKey () {
 }
 
 const rowData: Array<Object> = [
-  { key: '1', title: 'a1', },
+  { key: '1', title: 'a1', age:15,},
   { key: '1.1', title: 'a1.1', pid: '1', path: '1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
@@ -111,17 +111,17 @@ export default class extends React.Component<any, any> {
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
-                  defaultValue="3.2,1,1.1,1.2,1.2.1,1.2.2,1.2.2.1,1.2.2.1.1,1.2.2.1.2,1.2.2.2,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3,2,2.1,2.1.1,2.1.2,2.1.2.1,2.2,2.2.1,2.2.1.1,2.2.1.2,2.2.2,3,3.1,4"
+                  defaultValue="512"
                   onRefresh={this.onRefresh}
         //onlySelectLeaf
         //igronSelectField
         // limitCount={1}
                   canInput
-
+                  displayValue={'我'}
                   mutliple
                   placeholder="请输入xxx"
-                  disabled
-        // splitQuery=","
+                  // disabled
+        // splitQuery=","、
                   expandAll onChange={this.onChange}/>
     </Theme>;
   }
