@@ -127,7 +127,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     if (notNeed) {
       return 0;
     }
-    const barSize = viewSize * this.unitValuePos(props);
+    const barSize = viewSize * viewSize / totalSize;
     return Math.round(Math.max(barSize, 10));
   }
 
@@ -414,30 +414,38 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   updateStepInfo (props: ScrollerProps): void {
 
-    const { totalSize, viewSize, step = DefaultStep, } = props;
+    const { totalSize, step = DefaultStep, } = props;
     this.posGetter = cacheOnlyFirstCall(getElementPosition);
     this.step = step;
-    this.maxValue = totalSize - viewSize;
+    this.maxValue = this.getMaxValue(props);
     this.fastStep = totalSize / 4;
     this.sliderAbsoulateSize = 0;
   }
 
   value2pos (value: number) {
-    const { viewSize, } = this.props;
-    const { sliderSize, } = this.state;
-    return Math.min(value * this.unitValuePos(this.props), viewSize - sliderSize);
+    const { viewSize, totalSize, } = this.props;
+    const maxPos = this.getMaxPos();
+    return Math.min(value * (maxPos) / (totalSize - viewSize), maxPos);
   }
 
 
   pos2value (pos: number) {
-    return pos / this.unitValuePos(this.props);
+    const { viewSize, totalSize, } = this.props;
+    const maxPos = this.getMaxPos();
+    return Math.min(pos * (totalSize - viewSize) / (maxPos), this.getMaxValue(this.props));
   }
 
-  unitValuePos (props: ScrollerProps): number {
-    const { viewSize, totalSize, } = props;
-    return viewSize / totalSize;
+
+  getMaxValue (props: ScrollerProps): number {
+    const { totalSize, viewSize, } = props;
+    return totalSize - viewSize;
   }
 
+  getMaxPos () {
+    const { viewSize, } = this.props;
+    const { sliderSize, } = this.state;
+    return viewSize - sliderSize;
+  }
 }
 
 export default Scroller;

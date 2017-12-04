@@ -473,7 +473,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         const key = value[ i ];
         const title = displayValue[ i ];
         if (isHas[ key ]) {
-          console.warn(`存在重复的数据${key}:${title}`);
           continue;
         }
         isHas[ key ] = true;

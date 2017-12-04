@@ -96,19 +96,20 @@ class ScrollerTree extends React.Component<any, any> {
     if (data) {
       const {
         mutliple,
-        end,
         onExpand,
         utils,
         onSelect,
         getTheme,
         id2ExtendInfo,
       } = this.props;
-      let { start, } = this.props;
-      start = Math.ceil(start);
-      console.info('rc',this.props.selectedKeys);
+      let {
+        start, end,
+      } = this.props;
+      start = Math.round(start);
+      end = Math.round(end);
       const { rows, parentCount, } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
-      const top = -parentCount * 17;
+      const top = -parentCount * 18;
       const treeNodes = this.loopNode(nodes);
       return <WrapRcTree {...this.props}
                          onSelect={onSelect}

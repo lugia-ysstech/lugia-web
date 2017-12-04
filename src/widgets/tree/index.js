@@ -189,9 +189,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
         this.setState({ start, });
       }
       if (current < this.state.start) {
-        console.info('current', current);
-        console.info('start', this.state.start);
-        console.info('final', Math.max(this.state.start - this.canSeeCount, 0));
         this.setState({ start: Math.max(this.state.start - this.canSeeCount, 0), });
       }
     }
@@ -367,11 +364,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onScrollerEndChange = (end: number) => {
-    console.info('onScrollerEndChange', end);
     this.end = end;
   };
   onCanSeeCountChange = (count: number) => {
-    console.info('onCanSeeCountChange', count);
     this.canSeeCount = count;
   };
 

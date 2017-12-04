@@ -98,9 +98,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   render () {
     const { props, } = this;
-    const { data, end, getTheme, } = props;
-    let { start, } = props;
-    start = Math.ceil(start);
+    const { data, getTheme, } = props;
+    let {
+      start, end,
+    } = this.props;
+    start = Math.round(start);
+    end = Math.round(end);
     let items = [];
     if (data && data.length > 0) {
       items = this.computeItems(data, start, end, (obj: Object) => {

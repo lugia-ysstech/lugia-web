@@ -167,7 +167,7 @@ class LimitTree extends React.Component<Object, Object> {
     const { value, } = this.state;
     console.info('render', value);
     return [<Tree
-      start={5}
+      start={5000}
       expandAll
       {...this.props}
       // value={value}

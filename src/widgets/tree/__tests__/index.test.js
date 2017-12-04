@@ -740,7 +740,7 @@ describe('Tree', () => {
     cmp.setProps({ query: '3.1', });
 
     cmp.update();
-    exp(target.getThemeTarget().state.start, '查询后start统一移动到顶部').to.be.equal(0);
+    exp(target.getThemeTarget().state.start, '查询后start统一移动到顶部').to.be.equal(17);
 
     cmp.setProps({ query: '', });
 

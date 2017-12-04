@@ -31,7 +31,7 @@ function getNumberKey () {
         pid: `${keyA}`,
         path: `${keyA}`,
       });
-      for (let c = 0; c < 20; c++) {
+      for (let c = 0; c < 5; c++) {
         const titleC = `${a}.${b}.${c}`;
         const keyc = key++;
         bigTree.push({
@@ -40,7 +40,7 @@ function getNumberKey () {
           pid: `${keyb}`,
           path: `${keyA}/${keyb}`,
         });
-        for (let d = 0; d < 400; d++) {
+        for (let d = 0; d < 40; d++) {
           const title = `${a}.${b}.${c}.${d}`;
           const keyD = key++;
           bigTree.push({
@@ -107,7 +107,7 @@ export default class extends React.Component<any, any> {
   }
 
   render () {
-    const config = { [ Widget.TreeSelect ]: { width: 300, height: 250, }, };
+    const config = { [ Widget.TreeSelect ]: { width: 300, height: 200, }, };
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
