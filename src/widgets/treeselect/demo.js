@@ -117,7 +117,7 @@ export default class extends React.Component<any, any> {
         //igronSelectField
         // limitCount={1}
                   canInput
-                  defaultDisplayValue="3.2,1,1.1,1.2,1.2.1,1.2.2,1.2.2.1,1.2.2.1.1,1.2.2.1.2,1.2.2.2,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3,2,2.1,2.1.1,2.1.2,2.1.2.1,2.2,2.2.1,2.2.1.1,2.2.1.2,2.2.2,3,3.1,4"
+
                   mutliple
                   placeholder="请输入xxx"
                   disabled

@@ -157,7 +157,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         return {};
       }
       this.count = 1;
-      return { text: displayValue, };
+      return { text: displayValue? displayValue : value, };
     }
 
     const valLen = value.length;
@@ -165,7 +165,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const val = value[ i ];
       if (val !== '') {
         const displayVal = displayValue[ i ];
-        result[ val ] = { text: displayVal ? displayVal : '', };
+        result[ val ] = { text: displayVal ? displayVal : val, };
       }
     }
     this.count = valLen;
