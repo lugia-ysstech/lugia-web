@@ -855,10 +855,15 @@ class TreeUtils {
         const { [this.displayField]: title, } = row;
         result.push(title);
       } else {
-        result.push(this.notInTree[ key ]);
+        result.push(this.getNoInTreeTitle(key));
       }
     }
     return result;
+  }
+
+  getNoInTreeTitle (key: string): string {
+    const result = this.notInTree[ key ];
+    return result ? result : '';
   }
 
   updateSelectedStatusForChildren (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
