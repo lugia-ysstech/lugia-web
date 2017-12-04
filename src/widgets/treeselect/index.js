@@ -38,6 +38,7 @@ type TreeSelectProps = {
   throttle: number,
   limitCount: number,
   canInput: boolean,
+  disabled: boolean,
   placeholder?: string,
   defaultDisplayValue?: string,
 };
@@ -80,6 +81,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     displayField: 'title',
     mode: 'local',
     throttle: 200,
+    disabled: false,
   };
 
   state: TreeSelectState;
@@ -125,6 +127,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       || state.current !== nextState.current
       || state.treeFilter !== nextState.treeFilter
       || state.selectAll !== nextState.selectAll
+      || props.disabled !== nexProps.disabled
       || state.selectCount !== nextState.selectCount
       || state.value !== nextState.value
       || state.displayValue !== nextState.displayValue;
@@ -182,15 +185,17 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
+    const { disabled, } = this.props;
     return <Theme config={this.getTheme()} key="treesel_theme">
       <Trigger popup={tree}
                onPopupVisibleChange={this.onTreePopupVisibleChange}
                align="bottomLeft"
                key="trigger"
                ref={getTreeTriger}
-               action={['click',]}
+               action={disabled ? [] : ['click',]}
                hideAction={['click',]}>
         <InputTag key="inputtag"
+                  disabled={disabled}
                   value={value} displayValue={displayValue} onChange={this.onInputTagChange}
                   mutliple={this.isMutliple()}
                   placeholder={placeholder}

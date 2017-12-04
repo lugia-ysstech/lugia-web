@@ -16,7 +16,7 @@ type InputState = {|
 
 type InputProps = {|
   viewClass: string,
-  readOnly: boolean,
+  disabled: boolean,
   placeholder?: string;
   prefix?: React$Element<any>,
   getTheme: Function,
@@ -132,7 +132,7 @@ const Suffix = Fix.extend`
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
-    readOnly: false,
+    disabled: false,
     viewClass: Widget.Input,
     getTheme: () => {
       return {};
@@ -155,9 +155,9 @@ class TextBox extends Component<InputProps, InputState> {
 
   setValue (value: string): void {
     const oldValue = this.state.value;
-    const { readOnly, onChange, } = this.props;
+    const { disabled, onChange, } = this.props;
     if ('value' in this.props === false) {
-      if (readOnly) {
+      if (disabled) {
         return;
       }
       this.setState({ value, }, () => {

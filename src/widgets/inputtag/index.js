@@ -27,6 +27,7 @@ type InputTagProps = {
   getTheme: Function,
   onChange?: Function,
   value?: string,
+  disabled: boolean,
   mutliple: boolean,
   displayValue?: string,
   defaultValue?: string,
@@ -44,8 +45,12 @@ const widthFunc = (spanWidth: number) => (props: Object) => {
   return w ? `width: ${w}px;` : 'width: 100%;';
 };
 const width = widthFunc(0);
+const disabled = props => {
+  return props.disabled ? 'background: rgba(0,0,0,.05);' : '';
+};
 const Container = styled.div`
   ${width}
+  ${disabled}
   display: inline-block;
   position: relative;
   color: rgba(0, 0, 0, 0.65);
@@ -108,6 +113,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return {};
     },
     mutliple: true,
+    disabled: false,
   };
 
   container: Object;
@@ -135,6 +141,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { props, state, } = this;
     return state.items !== nextState.items ||
       props.value !== nextPros.value ||
+      props.disabled !== nextPros.disabled ||
       state.value !== nextState.value ||
       props.displayValue !== nextPros.displayValue;
   }
@@ -206,9 +213,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       [Widget.Icon]: { hoverColor: 'red', },
       [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
     };
+    const {getTheme, disabled,} = props;
     if (!this.isMutliple()) {
       result = <Container className="sv"
-                          theme={props.getTheme()}
+                          disabled={disabled}
+                          theme={getTheme()}
                           innerRef={cmp => this.container = cmp}
                           onClick={this.onClick}>
         <OutContainer>
@@ -227,6 +236,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
       result = (
         <Container className="sv"
+                   disabled={disabled}
                    theme={props.getTheme()}
                    innerRef={cmp => this.container = cmp}
                    onClick={this.onClick}>
@@ -332,6 +342,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   onClear = (e: Object) => {
+    const { disabled,} = this.props;
+    if(disabled){
+      return;
+    }
     this.setState({ value: {}, }, () => {
       this.adaptiveItems(this.getOffSetWidth());
       this.onChange([], []);
@@ -347,6 +361,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   onDelItem = (targetKey: string) => {
+    const { disabled,} = this.props;
+    if(disabled){
+      return;
+    }
     const { value, } = this.state;
     if (!value || !value[ targetKey ]) {
       return;
