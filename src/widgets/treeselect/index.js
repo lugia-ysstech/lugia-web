@@ -300,18 +300,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         // TODO:存在问题
         value.push(inputValue);
         displayValue.push(inputValue);
-        this.setState({
+        this.setValue([...value,], [...displayValue,], {
           query: '',
           treeFilter: '',
-          value,
-          displayValue,
+        }, () => {
+          this.onChange();
         });
       } else {
-        this.setState({
+        this.setValue([inputValue], [inputValue,], {
           query: '',
           treeFilter: '',
-          value: [inputValue,],
-          displayValue: [inputValue,],
+        }, () => {
+          this.onChange();
         });
       }
     }

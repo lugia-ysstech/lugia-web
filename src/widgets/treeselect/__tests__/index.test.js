@@ -141,6 +141,40 @@ describe('TreeSelect', () => {
 
   });
 
+  it('选择全部', () => {
+    const cmp = mount(<TreeSelect data={rowData} throttle={0} mutliple igronSelectField="isLeaf"/>);
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.CheckIcon).simulate('click');
+
+  });
+
+
+  function createCanInput ({ mutliple, }) {
+
+
+    it(`canInput mutliple: ${mutliple.toString()}`, async () => {
+      let onChange;
+      const value = new Promise(res => {
+        onChange = v => {
+          res(v);
+        };
+      });
+
+      const cmp = mount(<TreeSelect data={rowData}
+                                    mutliple={mutliple}
+                                    canInput
+                                    onChange={onChange}/>);
+      cmp.find(Widget.InputTag).simulate('click');
+      const txt = '100';
+      chagneQuery(cmp, txt);
+      findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
+      mutliple ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt) : exp(cmp.find(Widget.InputTag).text().trim()).to.be.equal(txt);
+      exp(await value).to.be.eql({ value: [ txt, ], displayValue: [ txt, ], });
+    });
+  }
+
+  createCanInput({ mutliple: true, });
+  createCanInput({ mutliple: false, });
 
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;
