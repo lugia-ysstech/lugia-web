@@ -228,6 +228,22 @@ describe('TreeSelect', () => {
     const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
   });
+  it('selectAll limitCount: 5', async () => {
+
+
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.CheckIcon).simulate('click');
+
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+
+    const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
+  });
 
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;

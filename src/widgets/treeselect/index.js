@@ -325,14 +325,17 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
     const selectAll = !this.isSelectAll();
     if (selectAll === true) {
-      const { displayField, } = this.props;
+      const { displayField, limitCount = 9999999, } = this.props;
       const data = this.getData();
       const { value, displayValue, } = this.state;
+      let cnt = 0;
       for (let i = 0; i < data.length; i++) {
         const { key, [displayField]: title, } = data[ i ];
+        if (cnt >= limitCount) break;
         if (!this.canSelect(key)) continue;
         value.push(key);
         displayValue.push(title);
+        cnt++;
       }
       this.setValue(value, displayValue, {});
     } else {
