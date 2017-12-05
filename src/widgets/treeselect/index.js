@@ -196,6 +196,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
                action={disabled ? [] : ['click',]}
                hideAction={['click',]}>
         <InputTag key="inputtag"
+                  onFocus={this.onFocus}
                   disabled={disabled}
                   value={value} displayValue={displayValue} onChange={this.onInputTagChange}
                   mutliple={this.isMutliple()}
@@ -205,6 +206,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       </Trigger>
     </Theme>;
   }
+  
+  onFocus = () => {
+
+  };
 
   getSuffix = () => {
     const result = [];
