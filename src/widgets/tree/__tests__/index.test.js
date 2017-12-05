@@ -510,6 +510,18 @@ describe('Tree', () => {
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
   });
+
+  it('mutliple: true ,  igronSelectField: title', () => {
+    const cmp = mount(<Tree mutliple={true} expandAll data={rowData} igronSelectField={'title'}/>);
+    cmp.find(TreeRow).at(5).simulate('click', {});
+
+
+    cmp.update();
+    exp(cmp.find(`${CheckBox}`).length).to.be.equal(14);
+    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
+    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
+    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
+  });
   it('mutliple: false ,  limitCount: 0', () => {
     const cmp = mount(<Tree mutliple={false} expandAll data={rowData} limitCount={0}/>);
     cmp.find(TreeRow).at(5).simulate('click', {});
