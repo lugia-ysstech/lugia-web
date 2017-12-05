@@ -169,7 +169,7 @@ describe('TreeSelect', () => {
       chagneQuery(cmp, txt);
       findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
       mutliple ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt) : exp(cmp.find(Widget.InputTag).text().trim()).to.be.equal(txt);
-      exp(await value).to.be.eql({ value: [ txt, ], displayValue: [ txt, ], });
+      exp(await value).to.be.eql({ value: [txt,], displayValue: [txt,], });
     });
   }
 

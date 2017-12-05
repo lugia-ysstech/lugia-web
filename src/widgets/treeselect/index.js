@@ -307,7 +307,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           this.onChange();
         });
       } else {
-        this.setValue([inputValue], [inputValue,], {
+        this.setValue([inputValue,], [inputValue,], {
           query: '',
           treeFilter: '',
         }, () => {
