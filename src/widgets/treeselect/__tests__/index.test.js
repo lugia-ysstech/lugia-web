@@ -177,18 +177,24 @@ describe('TreeSelect', () => {
   createCanInput({ mutliple: false, });
 
 
-  it('onlySelectLeaf', () => {
+  function createSelectAll (expandAll) {
+
+    it(`selectAll expandAll${expandAll.toString()}`, () => {
 
 
-    const cmp = mount(<TreeSelect data={rowData}
-                                  mutliple
-                                  canInput/>);
-    cmp.find(Widget.InputTag).simulate('click');
-    cmp.find(Widget.CheckIcon).simulate('click');
-    console.info(cmp.find(Widget.CheckIcon).props());
-    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
+      const cmp = mount(<TreeSelect data={rowData}
+                                    mutliple
+                                    expandAll={expandAll}
+                                    canInput/>);
+      cmp.find(Widget.InputTag).simulate('click');
+      cmp.find(Widget.CheckIcon).simulate('click');
+      console.info(cmp.find(Widget.CheckIcon).props());
+      exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
-  });
+    });
+  }
+  createSelectAll(true);
+  createSelectAll(false);
 
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;
