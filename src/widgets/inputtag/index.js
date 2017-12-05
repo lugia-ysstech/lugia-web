@@ -230,7 +230,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       [Widget.Icon]: { hoverColor: 'red', },
       [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
     };
-    const {focus,} = state;
+    const { focus, } = state;
     const { getTheme, disabled, } = props;
     if (!this.isMutliple()) {
       result = <Container className="sv"
@@ -292,14 +292,14 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   onFocus = () => {
     this.setState({ focus: true, }, () => {
-      const {onFocus,} = this.props;
+      const { onFocus, } = this.props;
       onFocus && onFocus();
     });
   };
   onBlur = () => {
 
     this.setState({ focus: false, }, () => {
-      const {onBlur,} = this.props;
+      const { onBlur, } = this.props;
       onBlur && onBlur();
     });
   };
@@ -462,7 +462,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { getTheme, } = this.props;
     const { width, } = getTheme();
     if (this.isMutliple()) {
-      return width ? getContentWidth(width) : this.list.offsetWidth;
+      return (typeof width === 'number') ? getContentWidth(width) : this.list.offsetWidth;
     }
     return 0;
   }
