@@ -724,7 +724,7 @@ class TreeUtils {
     this.selectDirNodeByRow(row, selectInfo, id2ExtendInfo);
   }
 
-  selectDirNodeByRow (row: RowData, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, isValue2SelectedInfo: boolean = false): void {
+  selectDirNodeByRow (row: RowData, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo): void {
     const { key, } = row;
     const { checked, } = selectInfo;
     if (checked[ key ] === true) {
@@ -747,9 +747,7 @@ class TreeUtils {
     } else {
       halfchecked[ key ] = 1;
     }
-    if (!isValue2SelectedInfo) {
-      this.selectRow(value, key, id2ExtendInfo, row);
-    }
+    this.selectRow(value, key, row);
     const { path, } = row;
     this.updateSelectedStatusForParent(path, selectInfo, 1, TreeUtils.Selected, id2ExtendInfo);
 
@@ -879,12 +877,11 @@ class TreeUtils {
       switch (type) {
         case TreeUtils.Selected: {
           const { checked, value, } = selectInfo;
-          if (!this.selectRow(value, key, id2ExtendInfo, row)) {
+          if (!this.selectRow(value, key, row)) {
             break;
           }
           checked[ key ] = true;
           const { isLeaf = false, } = row;
-          this.selectRow(value, key, id2ExtendInfo, row);
 
           const { begats = 0, } = this.fetchNodeExtendInfo(key, datas, id2ExtendInfo);
           const isTargetNode = i === targetNode;
@@ -1021,7 +1018,7 @@ class TreeUtils {
       if (rows) {
         const rowLen = rows.length;
         for (let j = 0; j < rowLen; j++) {
-          this.selectDirNodeByRow(rows[ j ], selectedInfo, id2ExtendInfo, true);
+          this.selectDirNodeByRow(rows[ j ], selectedInfo, id2ExtendInfo);
         }
       }
     }
@@ -1065,13 +1062,12 @@ class TreeUtils {
     return { value: valueObject, halfchecked, checked, };
   }
 
-  selectRow (value: Object, key: string, id2ExtendInfo: NodeId2ExtendInfo, row: ?Object): boolean {
+  selectRow (value: Object, key: string, row: Object): boolean {
     if (value[ key ]) {
       return false;
     }
 
     if (this.igronSelectField) {
-      row = row ? row : this.getRow(key, id2ExtendInfo);
       if (!row) {
         return false;
       }
@@ -1080,7 +1076,6 @@ class TreeUtils {
       }
     }
     if (this.onlySelectLeaf) {
-      row = row ? row : this.getRow(key, id2ExtendInfo);
       if (!row) {
         return false;
       }
