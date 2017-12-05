@@ -879,6 +879,9 @@ class TreeUtils {
       switch (type) {
         case TreeUtils.Selected: {
           const { checked, value, } = selectInfo;
+          if (!this.selectRow(value, key, id2ExtendInfo, row)) {
+            break;
+          }
           checked[ key ] = true;
           const { isLeaf = false, } = row;
           this.selectRow(value, key, id2ExtendInfo, row);
@@ -1072,7 +1075,7 @@ class TreeUtils {
       if (!row) {
         return false;
       }
-      if (row[ this.igronSelectField ] !== 0 && !!row[ this.igronSelectField ] === true) {
+      if (row[ this.igronSelectField ] === true) {
         return false;
       }
     }
@@ -1096,6 +1099,7 @@ class TreeUtils {
     }
     return true;
   }
+
 
   static Selected: 1 = 1;
   static UnSelected: 0 = 0;

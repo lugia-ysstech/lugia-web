@@ -138,7 +138,7 @@ describe('Tree', () => {
     chkBox.at(1).simulate('click', {});
     chkBox.at(3).simulate('click', {});
     const result = await res;
-    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
+    exp(result).to.be.eql([['1', '1.1',], ['1',], ['1', '1.2.1',],]);
   });
 
   it('props: value: 1 mutliple: true onChange监听 limit', async () => {
@@ -176,7 +176,7 @@ describe('Tree', () => {
     chkBox.at(3).simulate('click', {});
     const result = await res;
     cmp.find(CheckBox);
-    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
+    exp(result).to.be.eql([['1', '1.1',], ['1',], ['1', '1.2.1',],]);
   });
 
 
@@ -246,7 +246,7 @@ describe('Tree', () => {
 
     const result = await res;
     exp(cmp.find('.' + Selected).length).to.be.equal(1);
-    exp(result).to.be.eql([ [ '1.1', ], [ '', ], [ '1.2.1', ], ]);
+    exp(result).to.be.eql([['1.1',], ['',], ['1.2.1',],]);
   });
 
   it('props: value: 1 mutliple: false onChange监听 limit', async () => {
@@ -260,12 +260,12 @@ describe('Tree', () => {
 
       render () {
         const { value, } = this.state;
-        return [ <Tree
+        return [<Tree
           value={value}
           expandAll
           {...this.props}
         >
-        </Tree>, <button onClick={this.onClick}></button>, ];
+        </Tree>, <button onClick={this.onClick}></button>,];
       }
 
       onClick = () => {
@@ -304,7 +304,7 @@ describe('Tree', () => {
     checkSelectStatus();
     const result = await res;
     cmp.find(CheckBox);
-    exp(result).to.be.eql([ [ '1.1', ], [ '1.1', ], [ '1.2.1', ], ]);
+    exp(result).to.be.eql([['1.1',], ['1.1',], ['1.2.1',],]);
   });
 
 
@@ -320,11 +320,11 @@ describe('Tree', () => {
 
       render () {
         const { value, } = this.state;
-        return [ <Tree data={rowData}
+        return [<Tree data={rowData}
                        expandAll
                        value={value}
         >
-        </Tree>, <button onClick={this.onClick}></button>, ];
+        </Tree>, <button onClick={this.onClick}></button>,];
       }
 
       onClick = () => {
@@ -462,14 +462,11 @@ describe('Tree', () => {
       };
       const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} onlySelectLeaf/>);
       cmp.find(CheckBoxInner).at(5).simulate('click', {});
-
-
-      cmp.update();
       exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
       exp(cmp.find(`.${Checked}`).length).to.be.equal(3);
       exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(3);
     });
-    exp(await promise).to.be.eql([ '1.2.2.1.1', '1.2.2.1.2', ]);
+    exp(await promise).to.be.eql(['1.2.2.1.1', '1.2.2.1.2',]);
   });
   it('mutliple: true ,  limitCount: 1', async () => {
 
@@ -484,7 +481,7 @@ describe('Tree', () => {
       cmp.update();
     });
     const result = await promise;
-    exp(result).to.be.eql({ value: [ '1.2.2.1', ], displayValue: [ '1.2.2.1', ], });
+    exp(result).to.be.eql({ value: ['1.2.2.1',], displayValue: ['1.2.2.1',], });
   });
 
   it('mutliple: false ,  onlySelectLeaf: true', () => {
@@ -499,41 +496,78 @@ describe('Tree', () => {
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
   });
-  it('mutliple: false ,  igronSelectField: title', () => {
-    const cmp = mount(<Tree mutliple={false} expandAll data={rowData} igronSelectField={'title'}/>);
-    cmp.find(TreeRow).at(5).simulate('click', {});
 
 
-    cmp.update();
-    exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
-    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
-    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
-    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
-  });
-
-  it('mutliple: true ,  igronSelectField: title', () => {
-    const cmp = mount(<Tree mutliple={true} expandAll data={rowData} igronSelectField={'title'}/>);
-    cmp.find(TreeRow).at(5).simulate('click', {});
+  createIgronCase({ igron: [undefined, undefined,], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [null, null,], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: ['', '',], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [1, 1,], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [0, 0,], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [true, true,], mutliple: false, half: 0, all: 0, sel: 0, });
 
 
-    cmp.update();
-    exp(cmp.find(`${CheckBox}`).length).to.be.equal(14);
-    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
-    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
-    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
-  });
-  it('mutliple: false ,  limitCount: 0', () => {
-    const cmp = mount(<Tree mutliple={false} expandAll data={rowData} limitCount={0}/>);
-    cmp.find(TreeRow).at(5).simulate('click', {});
+  createIgronCase({ igron: [undefined, undefined,], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [null, null,], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: ['', '',], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [1, 1,], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [0, 0,], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [true, true,], mutliple: false, half: 0, all: 0, sel: 0, target: 0, });
 
 
-    cmp.update();
-    exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
-    exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
-    exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
-    exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
-  });
+  createIgronCase({ igron: [undefined, undefined,], mutliple: true, half: 1, all: 1, sel: 0, target: 0, });
+  createIgronCase({ igron: [true, true,], mutliple: true, half: 0, all: 0, sel: 0, target: 0, });
+  createIgronCase({ igron: [false, true,], mutliple: true, half: 1, all: 0, sel: 0, target: 0, });
 
+
+  createIgronCase({ igron: [undefined, undefined,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [null, null,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: ['', '',], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [1, 1,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [0, 0,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [true, true,], mutliple: true, half: 0, all: 0, sel: 0, isLeaf: true, });
+
+
+  createIgronCase({ igron: [undefined, undefined,], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [null, null,], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: ['', '',], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [1, 1,], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [0, 0,], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [true, true,], mutliple: true, half: 0, all: 0, sel: 0, });
+
+
+  createIgronCase({ igron: [undefined, undefined,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [null, null,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: ['', '',], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [1, 1,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [0, 0,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [true, true,], mutliple: true, half: 0, all: 0, sel: 0, isLeaf: true, });
+
+  function createIgronCase ({
+                              igron,
+                              mutliple,
+                              half,
+                              all,
+                              sel,
+                              isLeaf = false,
+                              target = 1,
+                            }: Object) {
+
+    it(`mutliple: ${mutliple} ,  igronSelectField: igron is ${igron} isLeaf: ${isLeaf} target: ${target}`, () => {
+      const data = [{ key: '1', title: 'hello1', igron: igron[ 0 ], }, {
+        key: '1.1',
+        title: 'hello2',
+        pid: '1',
+        path: '1',
+        isLeaf,
+        igron: igron[ 1 ],
+      },];
+      const cmp = mount(<Tree mutliple={mutliple} expandAll data={data} igronSelectField={'igron'}/>);
+      cmp.find(mutliple ? CheckBox : TreeRow).at(target).simulate('click', {});
+      exp(cmp.find(`.${Checked}`).length, '全选').to.be.equal(all);
+      exp(cmp.find(`.${HalfChecked}`, '半选').length).to.be.equal(half);
+      exp(cmp.find(`.${Selected}`).length, '单选数').to.be.equal(sel);
+    });
+  }
 
   it('mutliple: true ,  value： 在不可见的位置', () => {
     let target = {};

@@ -403,12 +403,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
       const utils = this.getUtils(props);
       const { expand, } = this.state;
       const { id2ExtendInfo, } = expand;
-      if (!utils.isLeaf(value, id2ExtendInfo)) {
+
+      if (onlySelectLeaf && !utils.isLeaf(value, id2ExtendInfo)) {
         return;
       }
       if (igronSelectField != '' && igronSelectField != undefined) {
         const row = utils.getRow(value, id2ExtendInfo);
-        if (row && (row[ igronSelectField ] !== 0 && !!row[ igronSelectField ] === true)) {
+        if (row && (row[ igronSelectField ] === true)) {
           return;
         }
       }
@@ -446,7 +447,17 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     this.onChange(Object.keys(value));
     if (this.isNotLimit(props)) {
-      this.setState({ selectedInfo: { ...selectedInfo, }, });
+      const newState: TreeState = {
+        start: this.state.start,
+        selectedInfo: this.getEmptyNodeId2SelectInfo(),
+        expandedKeys: this.state.expandedKeys,
+        expand: this.state.expand,
+        selectValue: [],
+      };
+
+      const { value, } = selectedInfo;
+      this.updateStateValue(props, newState, id2ExtendInfo, [], value, Object.keys(value));
+      this.setState(newState );
     }
   }
 
