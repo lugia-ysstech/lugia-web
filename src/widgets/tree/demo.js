@@ -167,7 +167,6 @@ class LimitTree extends React.Component<Object, Object> {
     const { value, } = this.state;
     console.info('render', value);
     return [<Tree
-      start={5000}
       expandAll
       {...this.props}
       // value={value}
@@ -192,6 +191,13 @@ const config = {
   },
 };
 export default () => {
-  return [<Theme config={config}><LimitTree data={rowData} expandAll={true} mutliple={true}
+  return [<Theme config={config}><LimitTree data={[{ key: '1', title: 'hello1', igron: false, }, {
+    key: '1.1',
+    title: 'hello2',
+    pid: '1',
+    isLeaf: false,
+    path: '1',
+    igron: true,
+  },]} expandAll={true} mutliple={true} igronSelectField={'igron'}
   /></Theme>,];
 };

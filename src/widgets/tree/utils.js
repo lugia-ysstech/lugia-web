@@ -69,6 +69,7 @@ class TreeUtils {
   igronSelectField: ?string;
   limitCount: ?number;
   splitQuery: ? string;
+  selCount: number;
 
   constructor (treeData: Array<RowData>, config: Object) {
     const { expandAll, onlySelectLeaf = false, displayField = 'title', igronSelectField, limitCount, splitQuery, } = config;
@@ -87,6 +88,7 @@ class TreeUtils {
     this.igronSelectField = igronSelectField;
     this.limitCount = limitCount;
     this.splitQuery = splitQuery;
+    this.selCount = 0;
     return this;
   }
 
@@ -975,6 +977,7 @@ class TreeUtils {
 
   value2SelectInfo (keys: Array<string>, displayValue: Array<string>, valueObject: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
     const len = keys.length;
+    this.selCount = 0;
     if (!valueObject || !len) {
       return { value: {}, halfchecked: {}, checked: {}, };
     }
@@ -993,6 +996,7 @@ class TreeUtils {
       }
       const row = this.getRow(key, id2ExtendInfo);
       if (row) {
+        this.selCount++;
         const { isLeaf = false, path: rowPath, } = row;
         if (isLeaf) {
           if (!rowPath) {
@@ -1117,6 +1121,15 @@ class TreeUtils {
     }
 
     return true;
+  }
+
+  getCanTotal (id2ExtendInfo: NodeId2ExtendInfo): number {
+    const info = this.fetchNodeExtendInfo(VirtualRoot, this.treeData, id2ExtendInfo);
+    if (!info) {
+      return 0;
+    }
+    const { canTotal = 0, } = info;
+    return canTotal;
   }
 
   static Selected: 1 = 1;

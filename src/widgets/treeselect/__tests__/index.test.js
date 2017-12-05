@@ -203,9 +203,7 @@ describe('TreeSelect', () => {
 
     cmp.find(Widget.InputTag).simulate('click');
     cmp.find(Widget.CheckIcon).simulate('click');
-    console.info(cmp.find(Widget.CheckIcon).props());
-
-    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     const value = ['1', '1.2', '1.2.2', '1.2.2.1', '1.3', '1.3.1', '1.3.2', '2', '2.1', '2.1.2', '2.2', '2.2.1', '3',];
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
@@ -224,9 +222,8 @@ describe('TreeSelect', () => {
 
     cmp.find(Widget.InputTag).simulate('click');
     cmp.find(Widget.CheckIcon).simulate('click');
-    console.info(cmp.find(Widget.CheckIcon).props());
 
-    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);

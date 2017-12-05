@@ -57,7 +57,7 @@ function getNumberKey () {
 }
 
 const rowData: Array<Object> = [
-  { key: '1', title: 'a1', age:15,},
+  { key: '1', title: '0',  },
   { key: '1.1', title: 'a1.1', pid: '1', path: '1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
@@ -90,7 +90,11 @@ const rowData: Array<Object> = [
   { key: '3', title: '3', },
   { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
   { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-  { key: '4', title: '4', isLeaf: true, },
+  {
+    key: '4',
+    title: '11324213412094871240391274901274902174892174921749812374912734901274903127491274391274097124903127',
+    isLeaf: true,
+  },
 ];
 console.info(rowData.length);
 
@@ -107,22 +111,22 @@ export default class extends React.Component<any, any> {
   }
 
   render () {
-    const config = { [ Widget.TreeSelect ]: { width: 300, height: 200, }, };
+    const config = { [ Widget.TreeSelect ]: { width: 300, height: 750, }, };
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
-                  defaultValue="512"
+                  defaultValue="a"
                   onRefresh={this.onRefresh}
         //onlySelectLeaf
-        //igronSelectField
-        // limitCount={1}
+                  igronSelectField="isLeaf"
+                  limitCount={5}
                   canInput
                   displayValue={'我'}
-                  mutliple
+        mutliple
                   placeholder="请输入xxx"
-                  // disabled
-        // splitQuery=","、
-                  expandAll onChange={this.onChange}/>
+        // disabled
+                  splitQuery="\/"
+                   onChange={this.onChange}/>
     </Theme>;
   }
 

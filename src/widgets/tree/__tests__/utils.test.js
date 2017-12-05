@@ -3983,5 +3983,7 @@ describe('utils', () => {
       });
     });
     exp(id2ExpandInfo[utils.VirtualRoot].canTotal).to.be.equal(0);
+    exp(utils.getCanTotal(id2ExpandInfo)).to.be.equal(0);
+    
   });
 });
