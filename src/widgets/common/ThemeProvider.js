@@ -12,6 +12,21 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
   class ThemeWrapWidget extends React.Component<any, any> {
     svtarget: Object;
 
+
+    constructor (props: any) {
+      super(props);
+      this.state = { svThemVersion: 0, };
+    }
+
+    componentWillReceiveProps (props: any, context: any) {
+      if (this.context !== context) {
+        this.setState({
+          svThemVersion: this.state.svThemVersion + 1,
+        });
+      }
+
+    }
+
     render () {
       const getTheme = () => {
         const { config = {}, svThemeConfigTree = {}, } = this.context;
@@ -21,9 +36,10 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
           currConfig = svThemeConfigTree[ viewClass ];
         }
         currConfig = currConfig ? currConfig : {};
-        return Object.assign({}, currConfig, { svThemeConfigTree, });
+        return Object.assign({}, { ...currConfig, }, { svThemeConfigTree, });
       };
       return <Target {...this.props} getTheme={getTheme}
+                     svThemVersion={this.state.svThemVersion}
                      ref={cmp => this.svtarget = cmp}></Target>;
     }
 

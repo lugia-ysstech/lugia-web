@@ -8,6 +8,7 @@ import * as React from 'react';
 import Theme from '../theme/index';
 import TreeSelect from './index';
 import * as Widget from '../consts/Widget';
+import styled from 'styled-components';
 
 const bigTree = [];
 
@@ -57,7 +58,7 @@ function getNumberKey () {
 }
 
 const rowData: Array<Object> = [
-  { key: '1', title: '0',  },
+  { key: '1', title: '0', },
   { key: '1.1', title: 'a1.1', pid: '1', path: '1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
@@ -97,21 +98,30 @@ const rowData: Array<Object> = [
   },
 ];
 console.info(rowData.length);
-
+const Data = styled.div`
+ height: ${props => props.height}px;
+`;
 export default class extends React.Component<any, any> {
   constructor (props: any) {
     super(props);
     this.state = {
       data: [],
+      width: 300,
+      height: 250,
     };
   }
 
   shouldComponentUpdate (nexProps: any, nextState: any) {
-    return this.state.data !== nextState.data;
+    return this.state.data !== nextState.data ||
+      this.state.width !== nextState.width ||
+      this.state.height !== nextState.height;
   }
 
   render () {
-    const config = { [ Widget.TreeSelect ]: { width: 300, height: 750, }, };
+    const { height, width, } = this.state;
+    console.info(height, width);
+    const config = { [ Widget.TreeSelect ]: { height, width, }, };
+    console.info('demo');
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
@@ -121,15 +131,26 @@ export default class extends React.Component<any, any> {
                   igronSelectField="isLeaf"
                   limitCount={5}
                   canInput
+                  throttle={500}
+                  expandAll
                   displayValue={'我'}
-        mutliple
+                  mutliple
                   placeholder="请输入xxx"
         // disabled
-                  splitQuery="\/"
-                   onChange={this.onChange}/>
+                  splitQuery="\"
+                  onChange={this.onChange}/>
+      w <input value={width} onChange={this.onWidthChange}/>
+      h<input value={height} onChange={this.onHeightChange}/>
     </Theme>;
   }
 
+  onHeightChange = (e:Object) => {
+    this.setState({ height: e.target.value, });
+  };
+  onWidthChange = (e:Object) => {
+    this.setState({ width: e.target.value, });
+
+  };
   onRefresh = () => {
     console.info('refresh');
   };
@@ -137,6 +158,6 @@ export default class extends React.Component<any, any> {
     console.info(obj);
   };
   onTrigger = () => {
-    this.setState({ data: rowData, });
+    this.setState({ data: bigTree, });
   };
 }

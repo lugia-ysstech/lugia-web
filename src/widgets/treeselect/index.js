@@ -23,9 +23,10 @@ import { splitStr, } from '../utils';
 
 type TreeSelectProps = {
   data: Array<Object>,
-  getTheme?: Function,
+  getTheme: Function,
   value?: string,
   displayValue?: string,
+  svThemVersion?: number;
   onRefresh?: Function,
   displayField: string,
   defaultValue?: string,
@@ -34,6 +35,7 @@ type TreeSelectProps = {
   igronSelectField?: string,
   onTrigger?: Function,
   onChange?: Function,
+
   splitQuery?: string,
   onQuery?: Function,
   mode: 'local' | 'remote',
@@ -124,15 +126,16 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       return true;
     }
     const { state, } = this;
-    return state.query !== nextState.query
-      || state.current !== nextState.current
-      || state.treeFilter !== nextState.treeFilter
-      || state.selectAll !== nextState.selectAll
-      || props.disabled !== nexProps.disabled
-      || props.mutliple !== nexProps.mutliple
-      || state.selectCount !== nextState.selectCount
-      || state.value !== nextState.value
-      || state.displayValue !== nextState.displayValue;
+    return state.query !== nextState.query ||
+      state.current !== nextState.current ||
+      state.treeFilter !== nextState.treeFilter ||
+      state.selectAll !== nextState.selectAll ||
+      props.disabled !== nexProps.disabled ||
+      props.mutliple !== nexProps.mutliple ||
+      props.svThemVersion !== nexProps.svThemVersion ||
+      state.selectCount !== nextState.selectCount ||
+      state.value !== nextState.value ||
+      state.displayValue !== nextState.displayValue;
   }
 
   componentWillReceiveProps (props: TreeSelectProps) {

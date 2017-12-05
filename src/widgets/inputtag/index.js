@@ -30,6 +30,7 @@ type InputTagProps = {
   onBlur?: Function,
   value?: string,
   disabled: boolean,
+  svThemVersion?: number,
   mutliple: boolean,
   displayValue?: string,
   defaultValue?: string,
@@ -155,6 +156,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { props, state, } = this;
     const isChange = state.items !== nextState.items ||
       props.value !== nextPros.value ||
+      props.svThemVersion !== nextPros.svThemVersion ||
       props.mutliple !== nextPros.mutliple ||
       props.disabled !== nextPros.disabled ||
       state.value !== nextState.value ||

@@ -36,7 +36,7 @@ type TreeProps = {
   value: ?Array<string>;
   displayValue: ?Array<string>;
   defaultValue: ?Array<string>;
-
+  svThemVersion?: number,
   /** 展开/收起节点时触发 */
   onExpand?: Function,
   /** 点击树节点触发 */
@@ -287,6 +287,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       || dataChanged
       || props.current != nexProps.current
       || state.start !== nextState.start
+      || props.svThemVersion !== nexProps.svThemVersion
       || props.mutliple !== nexProps.mutliple
       || state.selectValue !== nextState.selectValue
       || state.expand !== nextState.expand

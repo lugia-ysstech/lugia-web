@@ -18,6 +18,7 @@ type MenuProps = {
   getTheme: Function,
   getPrefix: Function,
   getSuffix: Function,
+  svThemVersion?: number,
   mutliple: boolean,
   children: Array<React.Element<typeof Item>>,
   data: Array<Object>,
@@ -91,8 +92,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
       this.updateIsSelect(nextState, nextProps);
     }
     return dataChanged ||
-      props.start !== nextProps.start
-      || selectedChange;
+      props.start !== nextProps.start ||
+      props.svThemVersion !== nextProps.svThemVersion ||
+      selectedChange;
   }
 
 
