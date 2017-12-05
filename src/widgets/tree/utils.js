@@ -1072,7 +1072,7 @@ class TreeUtils {
       if (!row) {
         return false;
       }
-      if (!!row[ this.igronSelectField ] === true) {
+      if (row[ this.igronSelectField ] !== 0 && !!row[ this.igronSelectField ] === true) {
         return false;
       }
     }

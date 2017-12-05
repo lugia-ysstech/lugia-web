@@ -408,7 +408,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       }
       if (igronSelectField != '' && igronSelectField != undefined) {
         const row = utils.getRow(value, id2ExtendInfo);
-        if (row && (!!row[ igronSelectField ] === true)) {
+        if (row && (row[ igronSelectField ] !== 0 && !!row[ igronSelectField ] === true)) {
           return;
         }
       }
