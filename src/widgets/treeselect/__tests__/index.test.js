@@ -176,6 +176,20 @@ describe('TreeSelect', () => {
   createCanInput({ mutliple: true, });
   createCanInput({ mutliple: false, });
 
+
+  it('onlySelectLeaf', () => {
+
+
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  canInput/>);
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.CheckIcon).simulate('click');
+    console.info(cmp.find(Widget.CheckIcon).props());
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
+
+  });
+
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;
   }

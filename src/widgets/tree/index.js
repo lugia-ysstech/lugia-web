@@ -125,8 +125,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   getData (): Array<RowData> {
-    const { data, } = this;
-    return data ? data : [];
+    const { props, } = this;
+    if (this.isQueryAll(props)) {
+      const { data = [], } = props;
+      return data;
+    }
+    const { data = [], } = this;
+    return data;
   }
 
   isSelectAll () {
@@ -457,7 +462,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
       const { value, } = selectedInfo;
       this.updateStateValue(props, newState, id2ExtendInfo, [], value, Object.keys(value));
-      this.setState(newState );
+      this.setState(newState);
     }
   }
 
