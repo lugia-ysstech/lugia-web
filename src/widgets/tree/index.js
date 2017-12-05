@@ -305,11 +305,18 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
   }
 
-  createUtils ({ data, onlySelectLeaf, expandAll, displayField, limitCount, splitQuery, }, realyExpandAll: boolean = expandAll): ?TreeUtils {
+  createUtils ({ data, onlySelectLeaf, expandAll, displayField, limitCount, splitQuery, igronSelectField, }, realyExpandAll: boolean = expandAll): ?TreeUtils {
     if (!data) {
       return null;
     }
-    return new TreeUtils(data, { expandAll: realyExpandAll, onlySelectLeaf, displayField, limitCount, splitQuery, });
+    return new TreeUtils(data, {
+      expandAll: realyExpandAll,
+      onlySelectLeaf,
+      displayField,
+      limitCount,
+      splitQuery,
+      igronSelectField,
+    });
   }
 
   getUtils (props: TreeProps) {
@@ -444,10 +451,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   getRows (valArray: Array<any> = []): Array<any> {
-    if (!valArray || valArray.length <=0) {
+    if (!valArray || valArray.length <= 0) {
       return [];
     }
-    const result  = [];
+    const result = [];
     const { props, state, } = this;
     const { expand, } = state;
     const { id2ExtendInfo, } = expand;
