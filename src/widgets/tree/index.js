@@ -443,14 +443,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
   }
 
-  getRows (valArray: Array<any> = []): Array<Object> {
+  getRows (valArray: Array<any> = []): Array<any> {
     if (!valArray || valArray.length <=0) {
       return [];
     }
-    const result = [];
+    const result  = [];
     const { props, state, } = this;
     const { expand, } = state;
-    const { displayField, } = props;
     const { id2ExtendInfo, } = expand;
     const utils = this.getUtils(props);
 
@@ -461,11 +460,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       if (row) {
         result.push(row);
       } else {
-        const disp = this.getNoInTreeTitle(val);
-        result.push({
-          key: val,
-          [displayField]: disp ? disp : '',
-        });
+        result.push(null);
       }
     }
     return result;
@@ -485,10 +480,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return this.queryAllUtils.getTitle(value, id2ExtendInfo);
   }
 
-  getNoInTreeTitle (key: string): string {
-    const { id2ExtendInfo, } = this.allExpandInfo;
-    return this.queryAllUtils.getNoInTreeTitle(key);
-  }
   onExpand = (expandedKeys: Array<string>, event: { expanded: boolean, node: Object, }) => {
     const { expanded, node, } = event;
     const key = node.props.eventKey;
