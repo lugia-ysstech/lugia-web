@@ -22,7 +22,7 @@ describe('ThrottleScroller', function () {
     const Menus = () => {
       return <div>1</div>;
     };
-    const data = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ];
+    const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,];
     const Target = createTestComponent(ThrottleScroller(Menus, 20), target => {
       exp(target.getTarget()).to.be.equal(data);
     });
@@ -35,7 +35,7 @@ describe('ThrottleScroller', function () {
     const Item = (props: Object) => {
       return <div>{props.children}</div>;
     };
-    const myItems = [ <Item key="a">hello</Item>, <Item key="b">world</Item>, ];
+    const myItems = [<Item key="a">hello</Item>, <Item key="b">world</Item>,];
     const Target = createTestComponent(ThrottleScroller(Menus, 20), target => {
       exp(target.getTarget()).to.be.equal(myItems);
     });
@@ -92,7 +92,7 @@ describe('ThrottleScroller', function () {
       const mock = mockObject.create(target);
       const getTarget = mock.mockFunction('getTarget');
       const canSeeCount = mock.mockFunction('canSeeCount');
-      getTarget.returned([ 1, 2, 3, 4, 5, 6, ]);
+      getTarget.returned([1, 2, 3, 4, 5, 6,]);
       canSeeCount.returned(5);
       exp(target.isNeedScrolelr()).to.be.true;
     });
@@ -149,7 +149,7 @@ describe('ThrottleScroller', function () {
     const Target = createTestComponent(ThrottleScroller(Menus, itemHeigth), target => {
       const mock = mockObject.create(target);
       const getTarget = mock.mockFunction('getTarget');
-      const items = [ 1, 2, 3, 4, 54, 5, ];
+      const items = [1, 2, 3, 4, 54, 5,];
       getTarget.returned(items);
       exp(target.fetchTotalSize()).to.be.equal(itemHeigth * items.length);
     });
@@ -254,7 +254,7 @@ describe('ThrottleScroller', function () {
       getTarget.returned([]);
       exp(target.fetchEnd(3)).to.be.equal(0);
 
-      getTarget.forever([ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ]);
+      getTarget.forever([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,]);
       canSeeCount.returned(5);
       exp(target.fetchEnd(3)).to.be.equal(8);
 
@@ -345,7 +345,7 @@ describe('ThrottleScroller', function () {
     const event = { target: 'ligx', };
     _this.onWheel(event);
     exp(mockFunction.getCallContext(0)).to.be.equal(scroller);
-    exp(mockFunction.getCallArgs(0)).to.be.eql([ event, ]);
+    exp(mockFunction.getCallArgs(0)).to.be.eql([event,]);
   }
 
   it('Target props & start & end', () => {
@@ -394,7 +394,7 @@ describe('ThrottleScroller', function () {
     const itemH = 20;
     const Target = ThrottleScroller(Menus, itemH);
     const theme = () => ({ height: 50, width: 300, });
-    const data = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, ];
+    const data = [1, 2, 3, 4, 5, 6, 7, 8, 9,];
     expect(renderer.create(<Target getTheme={theme}
                                    data={data}></Target>).toJSON()).toMatchSnapshot();
   });
@@ -405,7 +405,7 @@ describe('ThrottleScroller', function () {
     };
     const itemH = 20;
     const Target = ThrottleScroller(Menus, itemH);
-    const data = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, ];
+    const data = [1, 2, 3, 4, 5, 6, 7, 8, 9,];
     expect(renderer.create(<Target data={data}></Target>).toJSON()).toMatchSnapshot();
   });
   it('需要滚动条 HTML结构 theme is default data is 100 len', () => {

@@ -21,7 +21,7 @@ describe('Menu', () => {
 
 
   it('DropMenu single selectedKeys 2', () => {
-    expect(renderer.create(<Menu selectedKeys={[ '2', '3', ]}>
+    expect(renderer.create(<Menu selectedKeys={['2', '3',]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -38,7 +38,7 @@ describe('Menu', () => {
   });
 
   it('DropMenu mutliple selectedKeys 2', () => {
-    expect(renderer.create((<Menu selectedKeys={[ '3', '4', ]} mutliple>
+    expect(renderer.create((<Menu selectedKeys={['3', '4',]} mutliple>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -64,7 +64,7 @@ describe('Menu', () => {
   });
   it('DropMenu mutliple onClick selectedKeys: 1 2', () => {
     const checkedKey = '4';
-    const dom = mount(<Menu mutliple selectedKeys={[ '1', '2', ]}>
+    const dom = mount(<Menu mutliple selectedKeys={['1', '2',]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -83,7 +83,7 @@ describe('Menu', () => {
 
   it('DropMenu single onClick selectedKeys: 1 2', () => {
     const checkedKey = '4';
-    const dom = mount(<Menu selectedKeys={[ '1', '2', ]}>
+    const dom = mount(<Menu selectedKeys={['1', '2',]}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
