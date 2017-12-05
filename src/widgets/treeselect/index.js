@@ -16,7 +16,9 @@ import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
-import Icon from '../icon';
+import AddIcon from '../icon/AddIcon';
+import Refresh from '../icon/RefreshIcon';
+import CheckIcon from '../icon/CheckIcon';
 import { splitStr, } from '../utils';
 
 type TreeSelectProps = {
@@ -57,8 +59,6 @@ const QueryInputPadding = 3;
 const QueryInput = styled.div`
   padding: ${QueryInputPadding}px;
 `;
-const UnCheck = 'sv-icon-android-checkbox-out1';
-const Checked = 'sv-icon-android-checkbox';
 const SelectedIcon = 'SelectedIcon';
 const Text = styled.span`
   color: white;
@@ -69,6 +69,7 @@ const Text = styled.span`
   position: absolute;
   border-radius: 3px;
 `;
+
 
 class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   static defaultProps = {
@@ -206,7 +207,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       </Trigger>
     </Theme>;
   }
-  
+
   onFocus = () => {
 
   };
@@ -214,15 +215,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   getSuffix = () => {
     const result = [];
     if (this.isCanInput()) {
-      result.push(<Icon iconClass="sv-icon-plus" key="add" onClick={this.onAdd}
-                        viewClass={SelectedIcon}></Icon>);
+      result.push(<AddIcon key="add" onClick={this.onAdd} viewClass={SelectedIcon}></AddIcon>);
     }
     if (this.isMutliple()) {
-      const iconClass = this.state.selectAll ? Checked : UnCheck;
-      result.push(<Icon iconClass={iconClass} key="selAll" onClick={this.onSelectAll} viewClass={SelectedIcon}></Icon>);
+      result.push(<CheckIcon checked={this.state.selectAll} key="selAll" onClick={this.onSelectAll}
+                             viewClass={SelectedIcon}></CheckIcon>);
     }
-    result.push(<Icon iconClass="sv-icon-android-refresh" key="refresh" onClick={this.onRefresh}
-                      viewClass={SelectedIcon}></Icon>);
+    result.push(<Refresh key="refresh" onClick={this.onRefresh} viewClass={SelectedIcon}></Refresh>);
     return result;
   };
   onRefresh = () => {
