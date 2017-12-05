@@ -294,6 +294,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   appendValue () {
     const inputValue = this.state.query;
     if (inputValue && inputValue.trim() && this.isCanInput()) {
+      clearTimeout(this.queryHandle);
       if (this.isMutliple()) {
         const { value = [], displayValue = [], } = this.state;
 
