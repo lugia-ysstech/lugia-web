@@ -334,13 +334,14 @@ class TreeUtils {
     }
     const existData = id2ExtendInfo[ nodeId ];
 
-    const { index: begin, } = existData;
+    const { index: begin, can, } = existData;
     const row = nodes[ begin ];
     if (row) {
       const { isLeaf = false, } = row;
 
       if (isLeaf) {
         return {
+          can,
           nowVisible: 0,
           realyVisible: 0,
           childrenIdx: [],
@@ -394,32 +395,50 @@ class TreeUtils {
         break;
       }
     }
-    return this.generateExtendInfo(nodeId, begats, children, id2ExtendInfo, childrenIdx, begin);
+    return this.generateExtendInfo(nodeId, begats, children, id2ExtendInfo, childrenIdx, begin, can);
   }
 
   initAllNodeIndexAndTopRoot (nodes: Array<RowData>,
                               id2nodeExpandInfo: NodeId2ExtendInfo) {
     const childrenIdx = [];
+    let canTotal = 0;
     if (!id2nodeExpandInfo[ VirtualRoot ]) {
       const begats = nodes.length;
       for (let index = 0; index < begats; index++) {
-        const { pid, key, } = nodes[ index ];
+        const row = nodes[ index ];
+        const { pid, key, } = row;
         if (!pid) {
           childrenIdx.push(index);
         }
-        id2nodeExpandInfo[ key ] = { index, };
+        const can = this.can(row);
+        can && (canTotal++);
+        id2nodeExpandInfo[ key ] = { index, can, };
       }
-      this.generateExtendInfo(VirtualRoot, begats, childrenIdx.length, id2nodeExpandInfo, childrenIdx, -1);
+
+      const length = childrenIdx.length;
+      const nowAndRealVisible = this.expandAll ? begats : length;
+      id2nodeExpandInfo[ VirtualRoot ] = {
+        can: false,
+        canTotal,
+        nowVisible: nowAndRealVisible,
+        realyVisible: nowAndRealVisible,
+        childrenIdx,
+        children: length,
+        begats,
+        index: -1,
+      };
+
     }
   }
 
   generateExtendInfo (nodeId: string, begats: number, children: number,
                       id2ExtendInfo: NodeId2ExtendInfo,
-                      childrenIdx: Array<number>, index: number): NodeExtendInfo {
+                      childrenIdx: Array<number>, index: number, can: boolean): NodeExtendInfo {
 
     const nowAndRealVisible = this.expandAll ? begats : (nodeId === this.VirtualRoot ? children : 0);
 
     return id2ExtendInfo[ nodeId ] = {
+      can,
       nowVisible: nowAndRealVisible,
       realyVisible: nowAndRealVisible,
       childrenIdx,
@@ -738,8 +757,9 @@ class TreeUtils {
 
     const { halfchecked, value, } = selectInfo;
     const nowHalf = halfchecked[ key ];
+    const extendInfo = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
     if (nowHalf !== undefined) {
-      const { begats = 0, } = this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
+      const { begats = 0, } = extendInfo;
       if (nowHalf === begats) {
         halfchecked[ key ] = nowHalf + 1;
         checked[ key ] = true;
@@ -747,7 +767,7 @@ class TreeUtils {
     } else {
       halfchecked[ key ] = 1;
     }
-    this.selectRow(value, key, row);
+    this.selectRow(value, key, row, extendInfo);
     const { path, } = row;
     this.updateSelectedStatusForParent(path, selectInfo, 1, TreeUtils.Selected, id2ExtendInfo);
 
@@ -876,8 +896,10 @@ class TreeUtils {
       const { key, } = row;
       switch (type) {
         case TreeUtils.Selected: {
+          const extendInfo = this.fetchNodeExtendInfo(key, datas, id2ExtendInfo);
+
           const { checked, value, } = selectInfo;
-          if (!this.selectRow(value, key, row)) {
+          if (!this.selectRow(value, key, row, extendInfo)) {
             break;
           }
           checked[ key ] = true;
@@ -1062,27 +1084,12 @@ class TreeUtils {
     return { value: valueObject, halfchecked, checked, };
   }
 
-  selectRow (value: Object, key: string, row: Object): boolean {
+  selectRow (value: Object, key: string, row: Object, extendINfo: NodeExtendInfo): boolean {
     if (value[ key ]) {
       return false;
     }
-
-    if (this.igronSelectField) {
-      if (!row) {
-        return false;
-      }
-      if (row[ this.igronSelectField ] === true) {
-        return false;
-      }
-    }
-    if (this.onlySelectLeaf) {
-      if (!row) {
-        return false;
-      }
-      const { isLeaf = false, } = row;
-      if (!isLeaf) {
-        return false;
-      }
+    if (!extendINfo.can) {
+      return false;
     }
     value[ key ] = true;
 
@@ -1095,6 +1102,22 @@ class TreeUtils {
     return true;
   }
 
+  can (row: Object) {
+
+    if (this.igronSelectField) {
+      if (row[ this.igronSelectField ] === true) {
+        return false;
+      }
+    }
+    if (this.onlySelectLeaf) {
+      const { isLeaf = false, } = row;
+      if (!isLeaf) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 
   static Selected: 1 = 1;
   static UnSelected: 0 = 0;

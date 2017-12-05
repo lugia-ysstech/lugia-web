@@ -303,15 +303,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         this.setValue([...value,], [...displayValue,], {
           query: '',
           treeFilter: '',
-        }, () => {
-          this.onChange();
         });
       } else {
         this.setValue([inputValue,], [inputValue,], {
           query: '',
           treeFilter: '',
-        }, () => {
-          this.onChange();
         });
       }
     }
@@ -330,6 +326,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       const { value, displayValue, } = this.state;
       for (let i = 0; i < data.length; i++) {
         const { key, [displayField]: title, } = data[ i ];
+        if (!this.canSelect(key)) continue;
         value.push(key);
         displayValue.push(title);
       }
@@ -354,6 +351,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       this.setValue(valArray, dispArray, {});
     }
   };
+
+  canSelect (row: Object): boolean {
+    const tree = this.getTree();
+    return tree && tree.canSelect(row);
+  }
 
   getData (): Array<Object> {
     if (this.treeCompontIsEmpty()) {

@@ -152,24 +152,17 @@ describe('TreeSelect', () => {
   function createCanInput ({ mutliple, }) {
 
 
-    it(`canInput mutliple: ${mutliple.toString()}`, async () => {
+    it(`canInput mutliple: ${mutliple.toString()}`, () => {
       let onChange;
-      const value = new Promise(res => {
-        onChange = v => {
-          res(v);
-        };
-      });
-
       const cmp = mount(<TreeSelect data={rowData}
                                     mutliple={mutliple}
                                     canInput
-                                    onChange={onChange}/>);
+      />);
       cmp.find(Widget.InputTag).simulate('click');
       const txt = '100';
       chagneQuery(cmp, txt);
       findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
       mutliple ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt) : exp(cmp.find(Widget.InputTag).text().trim()).to.be.equal(txt);
-      exp(await value).to.be.eql({ value: [txt,], displayValue: [txt,], });
     });
   }
 
@@ -188,13 +181,56 @@ describe('TreeSelect', () => {
                                     canInput/>);
       cmp.find(Widget.InputTag).simulate('click');
       cmp.find(Widget.CheckIcon).simulate('click');
-      console.info(cmp.find(Widget.CheckIcon).props());
       exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     });
   }
+
   createSelectAll(true);
   createSelectAll(false);
+
+
+  it('selectAll igronSelectField', async () => {
+
+
+    let onChange;
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  expandAll={true}
+                                  onChange={onChange}
+                                  igronSelectField="isLeaf"
+                                  canInput/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.CheckIcon).simulate('click');
+    console.info(cmp.find(Widget.CheckIcon).props());
+
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+
+    const value = ['1', '1.2', '1.2.2', '1.2.2.1', '1.3', '1.3.1', '1.3.2', '2', '2.1', '2.1.2', '2.2', '2.2.1', '3',];
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
+  });
+
+  it('selectAll onlySelectLeaf', async () => {
+
+
+    let onChange;
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  expandAll={true}
+                                  onChange={onChange}
+                                  onlySelectLeaf
+                                  canInput/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.CheckIcon).simulate('click');
+    console.info(cmp.find(Widget.CheckIcon).props());
+
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+
+    const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
+  });
 
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;

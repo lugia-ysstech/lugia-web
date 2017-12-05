@@ -2,9 +2,9 @@
 import React from 'react';
 import chai from 'chai';
 import 'jest-styled-components';
-
-import { mockObject, } from 'vx-mock';
 import TreeUtils from '../utils';
+
+const { mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
 
 const { expect: exp, } = chai;
 
@@ -1016,37 +1016,37 @@ describe('utils', () => {
     exp(utils.fetchNodeExtendInfo(nodeIdB, datas, countInfo)).to.be.eql(expectResultB);
   });
   const baseCountInfo: Object = {
-    ['1' + '']: { index: 0, },
-    ['2' + '']: { index: 17, },
-    ['3' + '']: { index: 27, },
-    ['4' + '']: { index: 30, },
-    ['1.1' + '']: { index: 1, },
-    ['1.2' + '']: { index: 2, },
-    '1.2.1': { index: 3, },
-    '1.2.2': { index: 4, },
-    '1.2.2.1': { index: 5, },
-    '1.2.2.1.1': { index: 6, },
-    '1.2.2.1.2': { index: 7, },
-    '1.2.2.2': { index: 8, },
-    ['1.3' + '']: { index: 9, },
-    '1.3.1': { index: 10, },
-    '1.3.1.1': { index: 11, },
-    '1.3.1.2': { index: 12, },
-    '1.3.2': { index: 13, },
-    '1.3.2.1': { index: 14, },
-    '1.3.2.2': { index: 15, },
-    '1.3.3': { index: 16, },
-    ['2.1' + '']: { index: 18, },
-    '2.1.1': { index: 19, },
-    '2.1.2': { index: 20, },
-    '2.1.2.1': { index: 21, },
-    ['2.2' + '']: { index: 22, },
-    '2.2.1': { index: 23, },
-    '2.2.1.1': { index: 24, },
-    '2.2.1.2': { index: 25, },
-    '2.2.2': { index: 26, },
-    [ '3.1' + '']: { index: 28, },
-    ['3.2' + '']: { index: 29, },
+    ['1' + '']: { index: 0, can: true, },
+    ['2' + '']: { index: 17, can: true, },
+    ['3' + '']: { index: 27, can: true, },
+    ['4' + '']: { index: 30, can: true, },
+    ['1.1' + '']: { index: 1, can: true, },
+    ['1.2' + '']: { index: 2, can: true, },
+    '1.2.1': { index: 3, can: true, },
+    '1.2.2': { index: 4, can: true, },
+    '1.2.2.1': { index: 5, can: true, },
+    '1.2.2.1.1': { index: 6, can: true, },
+    '1.2.2.1.2': { index: 7, can: true, },
+    '1.2.2.2': { index: 8, can: true, },
+    ['1.3' + '']: { index: 9, can: true, },
+    '1.3.1': { index: 10, can: true, },
+    '1.3.1.1': { index: 11, can: true, },
+    '1.3.1.2': { index: 12, can: true, },
+    '1.3.2': { index: 13, can: true, },
+    '1.3.2.1': { index: 14, can: true, },
+    '1.3.2.2': { index: 15, can: true, },
+    '1.3.3': { index: 16, can: true, },
+    ['2.1' + '']: { index: 18, can: true, },
+    '2.1.1': { index: 19, can: true, },
+    '2.1.2': { index: 20, can: true, },
+    '2.1.2.1': { index: 21, can: true, },
+    ['2.2' + '']: { index: 22, can: true, },
+    '2.2.1': { index: 23, can: true, },
+    '2.2.1.1': { index: 24, can: true, },
+    '2.2.1.2': { index: 25, can: true, },
+    '2.2.2': { index: 26, can: true, },
+    [ '3.1' + '']: { index: 28, can: true, },
+    ['3.2' + '']: { index: 29, can: true, },
   };
   it('fetchNodeExtendInfo for virual root for expandAll: true', () => {
     const expectResult = {
@@ -1055,6 +1055,8 @@ describe('utils', () => {
       children: 4,
       begats: datas.length,
       index: -1,
+      canTotal: datas.length,
+      can: false,
       childrenIdx: childrenRoot,
     };
     const countInfo = {};
@@ -1075,7 +1077,9 @@ describe('utils', () => {
       realyVisible: 4,
       children: 4,
       begats: datas.length,
+      can: false,
       childrenIdx: childrenRoot,
+      canTotal: datas.length,
       index: -1,
     };
     const utils = new TreeUtils(datas, { expandAll: false, });
@@ -1096,13 +1100,13 @@ describe('utils', () => {
       realyVisible: 0,
       children: 3,
       begats: 16,
+      can: true,
       childrenIdx: children1,
       index: 0,
     };
     const nodeId = '1';
     const countInfo = {};
     const utils = new TreeUtils(datas, { expandAll: false, });
-
     const actual = utils.fetchNodeExtendInfo(nodeId, datas, countInfo);
     exp(actual).to.be.eql(expectResult);
     exp(countInfo[ nodeId ]).to.be.eql(expectResult);
@@ -1114,6 +1118,7 @@ describe('utils', () => {
       nowVisible: 16,
       realyVisible: 16,
       children: 3,
+      can: true,
       begats: 16,
       childrenIdx: children1,
       index: 0,
@@ -1135,6 +1140,7 @@ describe('utils', () => {
       realyVisible: 0,
       children: 2,
       begats: 9,
+      can: true,
       index: 17,
       childrenIdx: children2,
 
@@ -1156,6 +1162,7 @@ describe('utils', () => {
       realyVisible: 9,
       children: 2,
       begats: 9,
+      can: true,
       index: 17,
       childrenIdx: children2,
 
@@ -1173,6 +1180,7 @@ describe('utils', () => {
 
     const expectResult = {
       nowVisible: 0,
+      can: true,
       realyVisible: 0,
       children: 0,
       begats: 0,
@@ -1195,6 +1203,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 0,
       children: 0,
+      can: true,
       begats: 0,
       index: 19,
       childrenIdx: [],
@@ -1213,6 +1222,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 0,
       children: 1,
+      can: true,
       index: 20,
       childrenIdx: children2D1D2,
       begats: 1,
@@ -1233,6 +1243,7 @@ describe('utils', () => {
       nowVisible: 1,
       realyVisible: 1,
       children: 1,
+      can: true,
       index: 20,
       begats: 1,
       childrenIdx: children2D1D2,
@@ -1260,6 +1271,7 @@ describe('utils', () => {
       expanded: true,
       childrenIdx: children1,
       realyVisible: 3,
+      can: true,
       children: 3,
       begats: 16,
       index: 0,
@@ -1280,7 +1292,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       childrenIdx: children1,
-
+      can: true,
       begats: 16,
       index: 0,
     };
@@ -1300,6 +1312,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 16,
       children: 3,
+      can: true,
       begats: 16,
       childrenIdx: children1,
       index: 0,
@@ -1311,6 +1324,8 @@ describe('utils', () => {
       realyVisible: 15,
       children: 4,
       begats: 31,
+      can: false,
+      canTotal: datas.length,
       index: -1,
       childrenIdx: childrenRoot,
 
@@ -1328,7 +1343,9 @@ describe('utils', () => {
       nowVisible: 7,
       realyVisible: 7,
       children: 4,
+      canTotal: datas.length,
       begats: 31,
+      can: false,
       childrenIdx: childrenRoot,
       index: -1,
     });
@@ -1339,6 +1356,7 @@ describe('utils', () => {
       children: 3,
       begats: 16,
       expanded: false,
+      can: true,
       childrenIdx: children1,
       index: 0,
     };
@@ -1346,6 +1364,8 @@ describe('utils', () => {
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 4,
       realyVisible: 4,
+      canTotal: datas.length,
+      can: false,
       children: 4,
       childrenIdx: childrenRoot,
       begats: 31,
@@ -1595,6 +1615,7 @@ describe('utils', () => {
       nowVisible: 3,
       expanded: true,
       realyVisible: 3,
+      can: true,
       children: 3,
       begats: 16,
       childrenIdx: children1,
@@ -1608,6 +1629,7 @@ describe('utils', () => {
         expanded: true,
         realyVisible: 5,
         children: 3,
+        can: true,
         childrenIdx: children1,
         begats: 16,
         index: 0,
@@ -1618,6 +1640,7 @@ describe('utils', () => {
         children: 2,
         childrenIdx: children1D2,
         expanded: true,
+        can: true,
         begats: 6,
         index: 2,
       });
@@ -1637,6 +1660,7 @@ describe('utils', () => {
 
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
+      can: true,
       realyVisible: 16,
       children: 3,
       begats: 16,
@@ -1651,6 +1675,7 @@ describe('utils', () => {
         realyVisible: 16,
         children: 3,
         begats: 16,
+        can: true,
         childrenIdx: children1,
         index: 0,
       });
@@ -1660,6 +1685,7 @@ describe('utils', () => {
         childrenIdx: children1D2,
         children: 2,
         begats: 6,
+        can: true,
         index: 2,
       });
 
@@ -1683,6 +1709,7 @@ describe('utils', () => {
       exp(countInfo[ '1' ]).to.be.eql({
         nowVisible: 3,
         expanded: true,
+        can: true,
         realyVisible: 3,
         children: 3,
         childrenIdx: children1,
@@ -1694,6 +1721,7 @@ describe('utils', () => {
         realyVisible: 2,
         childrenIdx: children1D2,
         children: 2,
+        can: true,
         expanded: false,
         begats: 6,
         index: 2,
@@ -1715,6 +1743,7 @@ describe('utils', () => {
     utils.colapseNode('1', countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 0,
+      can: true,
       expanded: false,
       realyVisible: 5,
       children: 3,
@@ -1726,6 +1755,7 @@ describe('utils', () => {
       nowVisible: 2,
       realyVisible: 2,
       children: 2,
+      can: true,
       expanded: true,
       childrenIdx: children1D2,
 
@@ -1742,6 +1772,8 @@ describe('utils', () => {
           realyVisible: 3,
           children: 3,
           begats: 16,
+          can: true,
+
           index: 0,
           childrenIdx: children1,
           expanded: false,
@@ -1751,6 +1783,8 @@ describe('utils', () => {
         nowVisible: 0,
         realyVisible: 2,
         children: 2,
+        can: true,
+
         childrenIdx: children1D2,
 
         expanded: false,
@@ -1775,6 +1809,7 @@ describe('utils', () => {
       utils.colapseNode('1.2', countInfo);
       exp(countInfo[ '1' ]).to.be.eql({
         nowVisible: 10,
+        can: true,
         realyVisible: 10,
         childrenIdx: children1,
 
@@ -1785,7 +1820,7 @@ describe('utils', () => {
       exp(countInfo[ '1.2' ]).to.be.eql({
         nowVisible: 0,
         childrenIdx: children1D2,
-
+        can: true,
         realyVisible: 6,
         children: 2,
         expanded: false,
@@ -1810,6 +1845,7 @@ describe('utils', () => {
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 0,
       expanded: false,
+      can: true,
       realyVisible: 16,
       childrenIdx: children1,
       children: 3,
@@ -1821,7 +1857,7 @@ describe('utils', () => {
       realyVisible: 6,
       children: 2,
       childrenIdx: children1D2,
-
+      can: true,
       begats: 6,
       index: 2,
     });
@@ -1835,6 +1871,7 @@ describe('utils', () => {
           realyVisible: 10,
           childrenIdx: children1,
           children: 3,
+          can: true,
           begats: 16,
           index: 0,
           expanded: false,
@@ -1846,7 +1883,7 @@ describe('utils', () => {
         children: 2,
         expanded: false,
         childrenIdx: children1D2,
-
+        can: true,
         begats: 6,
         index: 2,
       });
@@ -1867,6 +1904,7 @@ describe('utils', () => {
       nowVisible: 3,
       expanded: true,
       realyVisible: 3,
+      can: true,
       children: 3,
       begats: 16,
       index: 0,
@@ -1877,6 +1915,7 @@ describe('utils', () => {
 
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 3,
+      can: true,
       expanded: true,
       realyVisible: 3,
       children: 3,
@@ -1886,12 +1925,14 @@ describe('utils', () => {
     });
     exp(countInfo[ '1.1' ]).to.be.eql({
       index: 1,
+      can: true,
     });
 
     utils.expandNode('1.2', countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 5,
       expanded: true,
+      can: true,
       realyVisible: 5,
       children: 3,
       begats: 16,
@@ -1903,6 +1944,7 @@ describe('utils', () => {
       realyVisible: 2,
       children: 2,
       expanded: true,
+      can: true,
       begats: 6,
       childrenIdx: children1D2,
       index: 2,
@@ -1914,6 +1956,7 @@ describe('utils', () => {
       nowVisible: 7,
       realyVisible: 7,
       expanded: true,
+      can: true,
       childrenIdx: children1,
       children: 3,
       begats: 16,
@@ -1921,6 +1964,7 @@ describe('utils', () => {
     });
     exp(countInfo[ '1.2' ]).to.be.eql({
       nowVisible: 4,
+      can: true,
       realyVisible: 4,
       children: 2,
       expanded: true,
@@ -1933,6 +1977,7 @@ describe('utils', () => {
       realyVisible: 2,
       children: 2,
       expanded: true,
+      can: true,
       childrenIdx: children1D2D2,
       begats: 4,
       index: 4,
@@ -1947,6 +1992,7 @@ describe('utils', () => {
     utils.expandNode('1', countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
+      can: true,
       realyVisible: 16,
       children: 3,
       begats: 16,
@@ -1961,16 +2007,19 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      can: true,
       childrenIdx: children1,
       index: 0,
     });
     exp(countInfo[ '1.1' ]).to.be.eql({
       index: 1,
+      can: true,
     });
 
     utils.expandNode('1.2', countInfo);
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 16,
+      can: true,
       realyVisible: 16,
       children: 3,
       begats: 16,
@@ -1981,6 +2030,7 @@ describe('utils', () => {
     exp(countInfo[ '1.2' ]).to.be.eql({
       nowVisible: 6,
       realyVisible: 6,
+      can: true,
       childrenIdx: children1D2,
       children: 2,
       begats: 6,
@@ -1993,6 +2043,7 @@ describe('utils', () => {
       realyVisible: 16,
       children: 3,
       begats: 16,
+      can: true,
       childrenIdx: children1,
       index: 0,
     });
@@ -2000,6 +2051,7 @@ describe('utils', () => {
     exp(countInfo[ '1.2' ]).to.be.eql({
       nowVisible: 6,
       realyVisible: 6,
+      can: true,
       children: 2,
       begats: 6,
       childrenIdx: children1D2,
@@ -2012,6 +2064,7 @@ describe('utils', () => {
       childrenIdx: children1D2D2,
       children: 2,
       begats: 4,
+      can: true,
       index: 4,
     });
 
@@ -2020,7 +2073,7 @@ describe('utils', () => {
       nowVisible: 16,
       realyVisible: 16,
       childrenIdx: children1,
-
+      can: true,
       children: 3,
       begats: 16,
       index: 0,
@@ -2031,12 +2084,14 @@ describe('utils', () => {
       realyVisible: 6,
       children: 2,
       begats: 6,
+      can: true,
       index: 2,
       childrenIdx: children1D2,
     });
 
     exp(countInfo[ '1.3' ]).to.be.eql({
       nowVisible: 7,
+      can: true,
       realyVisible: 7,
       children: 3,
       childrenIdx: children1D3,
@@ -2049,6 +2104,7 @@ describe('utils', () => {
       realyVisible: 4,
       childrenIdx: children1D2D2,
       children: 2,
+      can: true,
       begats: 4,
       index: 4,
     });
@@ -2071,10 +2127,12 @@ describe('utils', () => {
     utils.colapseNode('1.2', countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 25,
+      canTotal: datas.length,
       realyVisible: 25,
       children: 4,
       childrenIdx: childrenRoot,
       begats: 31,
+      can: false,
       index: -1,
     });
 
@@ -2082,7 +2140,7 @@ describe('utils', () => {
       nowVisible: 10,
       realyVisible: 10,
       childrenIdx: children1,
-
+      can: true,
       children: 3,
       begats: 16,
       index: 0,
@@ -2092,6 +2150,7 @@ describe('utils', () => {
       nowVisible: 0,
       realyVisible: 6,
       children: 2,
+      can: true,
       expanded: false,
       begats: 6,
       index: 2,
@@ -2105,6 +2164,7 @@ describe('utils', () => {
       children: 3,
       begats: 7,
       index: 9,
+      can: true,
     });
 
     exp(countInfo[ '1.2.2' ]).to.be.eql({
@@ -2112,6 +2172,7 @@ describe('utils', () => {
       realyVisible: 4,
       childrenIdx: children1D2D2,
       children: 2,
+      can: true,
       begats: 4,
       index: 4,
     });
@@ -2135,16 +2196,18 @@ describe('utils', () => {
     utils.colapseNode('1.2.2', countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 27,
+      canTotal: datas.length,
       realyVisible: 27,
       children: 4,
       begats: 31,
       childrenIdx: childrenRoot,
       index: -1,
+      can: false,
     });
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 12,
       childrenIdx: children1,
-
+      can: true,
       realyVisible: 12,
       children: 3,
       begats: 16,
@@ -2156,6 +2219,7 @@ describe('utils', () => {
       realyVisible: 2,
       children: 2,
       begats: 6,
+      can: true,
       index: 2,
       childrenIdx: children1D2,
 
@@ -2166,6 +2230,7 @@ describe('utils', () => {
       realyVisible: 7,
       childrenIdx: children1D3,
       children: 3,
+      can: true,
       begats: 7,
       index: 9,
     });
@@ -2174,6 +2239,7 @@ describe('utils', () => {
       nowVisible: 0,
       childrenIdx: children1D2D2,
       expanded: false,
+      can: true,
       realyVisible: 4,
       children: 2,
       begats: 4,
@@ -2199,17 +2265,21 @@ describe('utils', () => {
     utils.colapseNode('1.2.2', countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 12,
+      canTotal: datas.length,
       childrenIdx: childrenRoot,
       realyVisible: 12,
       children: 4,
       begats: 31,
       index: -1,
+      can: false,
+
     });
 
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 8,
       childrenIdx: children1,
       realyVisible: 8,
+      can: true,
 
       expanded: true,
       children: 3,
@@ -2221,6 +2291,8 @@ describe('utils', () => {
       nowVisible: 2,
       realyVisible: 2,
       children: 2,
+      can: true,
+
       expanded: true,
       begats: 6,
       index: 2,
@@ -2231,6 +2303,7 @@ describe('utils', () => {
       nowVisible: 3,
       realyVisible: 3,
       children: 3,
+      can: true,
       childrenIdx: children1D3,
       begats: 7,
       index: 9,
@@ -2246,6 +2319,7 @@ describe('utils', () => {
       children: 2,
       begats: 4,
       index: 4,
+      can: true,
     });
 
   });
@@ -2257,11 +2331,13 @@ describe('utils', () => {
     utils.expandNode('1', countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 7,
+      canTotal: datas.length,
       realyVisible: 7,
       children: 4,
       childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
+      can: false,
     });
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 3,
@@ -2272,21 +2348,25 @@ describe('utils', () => {
       begats: 16,
       index: 0,
       expanded: true,
+      can: true,
     });
 
     utils.colapseNode('1', countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 4,
+      canTotal: datas.length,
       realyVisible: 4,
       children: 4,
       childrenIdx: childrenRoot,
       begats: 31,
+      can: false,
       index: -1,
     });
     exp(countInfo[ '1' ]).to.be.eql({
       nowVisible: 0,
       realyVisible: 3,
       children: 3,
+      can: true,
       begats: 16,
       childrenIdx: children1,
 
@@ -2299,6 +2379,7 @@ describe('utils', () => {
       realyVisible: 3,
       children: 3,
       childrenIdx: children1,
+      can: true,
 
       begats: 16,
       index: 0,
@@ -2306,8 +2387,10 @@ describe('utils', () => {
     });
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 7,
+      canTotal: datas.length,
       realyVisible: 7,
       children: 4,
+      can: false,
       childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
@@ -2318,6 +2401,8 @@ describe('utils', () => {
       realyVisible: 5,
       children: 3,
       begats: 16,
+      can: true,
+
       childrenIdx: children1,
 
       index: 0,
@@ -2326,10 +2411,12 @@ describe('utils', () => {
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 9,
       realyVisible: 9,
+      canTotal: datas.length,
       children: 4,
       childrenIdx: childrenRoot,
       begats: 31,
       index: -1,
+      can: false,
     });
 
     utils.colapseNode('1.2', countInfo);
@@ -2338,6 +2425,7 @@ describe('utils', () => {
       realyVisible: 3,
       children: 3,
       childrenIdx: children1,
+      can: true,
 
       begats: 16,
       index: 0,
@@ -2346,7 +2434,8 @@ describe('utils', () => {
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 7,
       childrenIdx: childrenRoot,
-
+      can: false,
+      canTotal: datas.length,
       realyVisible: 7,
       children: 4,
       begats: 31,
@@ -2356,7 +2445,9 @@ describe('utils', () => {
     utils.expandNode('1.2', countInfo);
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 9,
+      canTotal: datas.length,
       childrenIdx: childrenRoot,
+      can: false,
 
       realyVisible: 9,
       children: 4,
@@ -2369,6 +2460,7 @@ describe('utils', () => {
       children: 3,
       begats: 16,
       childrenIdx: children1,
+      can: true,
 
       index: 0,
       expanded: true,
@@ -2377,8 +2469,11 @@ describe('utils', () => {
     exp(countInfo[ utils.VirtualRoot ]).to.be.eql({
       nowVisible: 11,
       realyVisible: 11,
+      canTotal: datas.length,
       children: 4,
       begats: 31,
+      can: false,
+
       childrenIdx: childrenRoot,
 
       index: -1,
@@ -2389,6 +2484,7 @@ describe('utils', () => {
       children: 3,
       begats: 16,
       childrenIdx: children1,
+      can: true,
 
       index: 0,
       expanded: true,
@@ -2401,6 +2497,7 @@ describe('utils', () => {
       begats: 16,
       index: 0,
       childrenIdx: children1,
+      can: true,
 
       expanded: true,
     });
@@ -2408,7 +2505,8 @@ describe('utils', () => {
       nowVisible: 9,
       realyVisible: 9,
       childrenIdx: childrenRoot,
-
+      can: false,
+      canTotal: datas.length,
       children: 4,
       begats: 31,
       index: -1,
@@ -3837,4 +3935,53 @@ describe('utils', () => {
 
   });
 
+  it('can onlySelectLeaf', () => {
+    const utils = new TreeUtils(datas, { onlySelectLeaf: true, });
+    exp(utils.can(datas[ 0 ])).to.be.equal(false);
+    exp(utils.can(datas[ 1 ])).to.be.equal(true);
+  });
+  it('can onlySelectLeaf', () => {
+    const datas = [
+      { key: '1', title: false, },
+      { key: '2', title: '1', },
+      { key: '3', title: undefined, },
+      { key: '4', title: null, },
+      { key: '5', title: {}, },
+      { key: '6', title: [], },
+      { key: '7', title: new Date(), },
+      { key: '8', title: 0, },
+      { key: '9', title: 1, },
+      { key: '10', title: 'true', },
+      { key: '11', title: 'false', },
+      { key: '12', title: true, },
+    ];
+    const utils = new TreeUtils(datas,
+      { igronSelectField: 'title', });
+    for (let i = 0; i < datas.length - 1; i++) {
+      const row = datas[ i ];
+      exp(utils.can(row), JSON.stringify(row)).to.be.true;
+    }
+    exp(utils.can(datas[ datas.length - 1 ])).to.be.false;
+  });
+
+  it('initAllNodeIndexAndTopRoot can & canTotal', () => {
+    const order = VerifyOrder.create();
+    const mock = mockObject.create(utils, VerifyOrderConfig.create('utils', order));
+    const can = mock.mockFunction('can');
+    can.forever(false);
+    const id2ExpandInfo = {};
+    utils.initAllNodeIndexAndTopRoot(datas, id2ExpandInfo);
+    datas.forEach(obj => {
+      const { key, } = obj;
+      exp(id2ExpandInfo[ key ].can).to.be.false;
+    });
+    exp(can.callTimes()).to.be.equal(datas.length);
+    order.verify(mock => {
+      const { utils, } = mock;
+      datas.forEach(item => {
+        utils.can(item);
+      });
+    });
+    exp(id2ExpandInfo[utils.VirtualRoot].canTotal).to.be.equal(0);
+  });
 });

@@ -556,6 +556,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return this.isSingleSelectForProps(this.props);
   }
 
+  canSelect (key: string) {
+    return this.state.expand.id2ExtendInfo[ key ].can;
+  }
+
   isSingleSelectForProps ({ mutliple, }) {
     return mutliple === false;
   }

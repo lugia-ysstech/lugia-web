@@ -7,6 +7,7 @@ declare module 'sv-widget' {
   |};
   declare type NodeExtendInfo = {
     childrenIdx?: Array<number>,
+    can: boolean,
     // 当前可见节点数
     nowVisible?: number,
     // 真实可见节点数
