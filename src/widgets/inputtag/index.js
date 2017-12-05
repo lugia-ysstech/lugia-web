@@ -26,6 +26,8 @@ type InputTagProps = {
   placeholder?: string;
   getTheme: Function,
   onChange?: Function,
+  onFocus?: Function,
+  onBlur?: Function,
   value?: string,
   disabled: boolean,
   mutliple: boolean,
@@ -37,6 +39,7 @@ type InputTagProps = {
 };
 const Clear = 'sv-icon-close-circled';
 type InputTagState = {
+  focus: boolean,
   items: Array<React.Node>,
   value: Object,
 };
@@ -57,12 +60,15 @@ const Container = styled.div`
   font-size: 12px;
 `;
 const outContainerHeight = 28;
+const focus = props => {
+  return props.focus ? `border-color: ${InputBorderHoverColor};` : '';
+};
 const OutContainer = styled.div`
   border: solid 1px ${InputBorderColor};
   border-radius: ${RadiusSize};
   min-height: ${outContainerHeight}px;
   padding-bottom: 3px;
-
+  ${focus}
   :hover {
     border-color: ${InputBorderHoverColor};
   }
@@ -78,7 +84,6 @@ const IconButton: Object = styled(Icon)`
 IconButton.displayName = 'IconButtonName';
 const marginLeft = 5;
 const marginRight = 7;
-const separator = ',';
 
 const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
@@ -104,6 +109,14 @@ const InputTagTheme = styled(Theme)`
   display: block;
   min-height: ${outContainerHeight}px;
   height: ${outContainerHeight}px;
+`;
+const FocuInput = styled.input`
+  position: absolute;
+  left: -500px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: none;
 `;
 
 class InputTag extends React.Component<InputTagProps, InputTagState> {
@@ -132,6 +145,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     super(props);
     this.count = 0;
     this.state = {
+      focus: false,
       items: [],
       value: this.fetchValueObject(props),
     };
@@ -144,6 +158,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       props.mutliple !== nextPros.mutliple ||
       props.disabled !== nextPros.disabled ||
       state.value !== nextState.value ||
+      state.focus !== nextState.focus ||
       props.displayValue !== nextPros.displayValue;
     return isChange;
   }
@@ -159,7 +174,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         return {};
       }
       this.count = 1;
-      return { text: displayValue? displayValue : value, };
+      return { text: displayValue ? displayValue : value, };
     }
 
     const valLen = value.length;
@@ -215,19 +230,20 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       [Widget.Icon]: { hoverColor: 'red', },
       [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
     };
-    const {getTheme, disabled,} = props;
+    const {focus,} = state;
+    const { getTheme, disabled, } = props;
     if (!this.isMutliple()) {
       result = <Container className="sv"
                           disabled={disabled}
                           theme={getTheme()}
                           innerRef={cmp => this.container = cmp}
                           onClick={this.onClick}>
-        <OutContainer>
-
+        <OutContainer focus={focus}>
           <SingleInnerContainer theme={props.getTheme()}>
             {placeholder}
             {this.getSingleValue()}
             {clearButton}
+            <FocuInput/>
           </SingleInnerContainer>
         </OutContainer>
       </Container>;
@@ -242,7 +258,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
                    theme={props.getTheme()}
                    innerRef={cmp => this.container = cmp}
                    onClick={this.onClick}>
-          <OutContainer>
+          <OutContainer focus={focus}>
             <InnerContainer theme={props.getTheme()}>
               <List innerRef={cmp => this.list = cmp}>
                 <FontItem ref={fillFontItem}/>
@@ -250,6 +266,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
               </List>
               {placeholder}
               {clearButton}
+              <FocuInput onFocus={this.onFocus} onBlur={this.onBlur}/>
             </InnerContainer>
           </OutContainer>
         </Container>
@@ -272,6 +289,20 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       {result}
     </InputTagTheme>;
   }
+
+  onFocus = () => {
+    this.setState({ focus: true, }, () => {
+      const {onFocus,} = this.props;
+      onFocus && onFocus();
+    });
+  };
+  onBlur = () => {
+
+    this.setState({ focus: false, }, () => {
+      const {onBlur,} = this.props;
+      onBlur && onBlur();
+    });
+  };
 
   getClearButton () {
     if (this.isEmpty()) {
@@ -344,8 +375,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   onClear = (e: Object) => {
-    const { disabled,} = this.props;
-    if(disabled){
+    const { disabled, } = this.props;
+    if (disabled) {
       return;
     }
     this.setState({ value: {}, }, () => {
@@ -363,8 +394,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   onDelItem = (targetKey: string) => {
-    const { disabled,} = this.props;
-    if(disabled){
+    const { disabled, } = this.props;
+    if (disabled) {
       return;
     }
     const { value, } = this.state;
