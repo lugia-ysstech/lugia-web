@@ -239,7 +239,7 @@ describe('TreeSelect', () => {
     cmp.find(Widget.InputTag).simulate('click');
     cmp.find(Widget.CheckIcon).simulate('click');
 
-    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);

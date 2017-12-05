@@ -138,7 +138,7 @@ describe('Tree', () => {
     chkBox.at(1).simulate('click', {});
     chkBox.at(3).simulate('click', {});
     const result = await res;
-    exp(result).to.be.eql([['1', '1.1',], ['1',], ['1', '1.2.1',],]);
+    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
   });
 
   it('props: value: 1 mutliple: true onChange监听 limit', async () => {
@@ -176,7 +176,7 @@ describe('Tree', () => {
     chkBox.at(3).simulate('click', {});
     const result = await res;
     cmp.find(CheckBox);
-    exp(result).to.be.eql([['1', '1.1',], ['1',], ['1', '1.2.1',],]);
+    exp(result).to.be.eql([ [ '1', '1.1', ], [ '1', ], [ '1', '1.2.1', ], ]);
   });
 
 
@@ -246,7 +246,7 @@ describe('Tree', () => {
 
     const result = await res;
     exp(cmp.find('.' + Selected).length).to.be.equal(1);
-    exp(result).to.be.eql([['1.1',], ['',], ['1.2.1',],]);
+    exp(result).to.be.eql([ [ '1.1', ], [ '', ], [ '1.2.1', ], ]);
   });
 
   it('props: value: 1 mutliple: false onChange监听 limit', async () => {
@@ -260,12 +260,12 @@ describe('Tree', () => {
 
       render () {
         const { value, } = this.state;
-        return [<Tree
+        return [ <Tree
           value={value}
           expandAll
           {...this.props}
         >
-        </Tree>, <button onClick={this.onClick}></button>,];
+        </Tree>, <button onClick={this.onClick}></button>, ];
       }
 
       onClick = () => {
@@ -304,7 +304,7 @@ describe('Tree', () => {
     checkSelectStatus();
     const result = await res;
     cmp.find(CheckBox);
-    exp(result).to.be.eql([['1.1',], ['1.1',], ['1.2.1',],]);
+    exp(result).to.be.eql([ [ '1.1', ], [ '1.1', ], [ '1.2.1', ], ]);
   });
 
 
@@ -320,11 +320,11 @@ describe('Tree', () => {
 
       render () {
         const { value, } = this.state;
-        return [<Tree data={rowData}
+        return [ <Tree data={rowData}
                        expandAll
                        value={value}
         >
-        </Tree>, <button onClick={this.onClick}></button>,];
+        </Tree>, <button onClick={this.onClick}></button>, ];
       }
 
       onClick = () => {
@@ -466,7 +466,7 @@ describe('Tree', () => {
       exp(cmp.find(`.${Checked}`).length).to.be.equal(3);
       exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(3);
     });
-    exp(await promise).to.be.eql(['1.2.2.1.1', '1.2.2.1.2',]);
+    exp(await promise).to.be.eql([ '1.2.2.1.1', '1.2.2.1.2', ]);
   });
   it('mutliple: true ,  limitCount: 1', async () => {
 
@@ -481,7 +481,7 @@ describe('Tree', () => {
       cmp.update();
     });
     const result = await promise;
-    exp(result).to.be.eql({ value: ['1.2.2.1',], displayValue: ['1.2.2.1',], });
+    exp(result).to.be.eql({ value: [ '1.2.2.1', ], displayValue: [ '1.2.2.1', ], });
   });
 
   it('mutliple: false ,  onlySelectLeaf: true', () => {
@@ -498,49 +498,49 @@ describe('Tree', () => {
   });
 
 
-  createIgronCase({ igron: [undefined, undefined,], mutliple: false, half: 0, all: 0, sel: 1, });
-  createIgronCase({ igron: [null, null,], mutliple: false, half: 0, all: 0, sel: 1, });
-  createIgronCase({ igron: ['', '',], mutliple: false, half: 0, all: 0, sel: 1, });
-  createIgronCase({ igron: [1, 1,], mutliple: false, half: 0, all: 0, sel: 1, });
-  createIgronCase({ igron: [0, 0,], mutliple: false, half: 0, all: 0, sel: 1, });
-  createIgronCase({ igron: [true, true,], mutliple: false, half: 0, all: 0, sel: 0, });
+  createIgronCase({ igron: [ undefined, undefined, ], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [ null, null, ], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [ '', '', ], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [ 1, 1, ], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [ 0, 0, ], mutliple: false, half: 0, all: 0, sel: 1, });
+  createIgronCase({ igron: [ true, true, ], mutliple: false, half: 0, all: 0, sel: 0, });
 
 
-  createIgronCase({ igron: [undefined, undefined,], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
-  createIgronCase({ igron: [null, null,], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
-  createIgronCase({ igron: ['', '',], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
-  createIgronCase({ igron: [1, 1,], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
-  createIgronCase({ igron: [0, 0,], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
-  createIgronCase({ igron: [true, true,], mutliple: false, half: 0, all: 0, sel: 0, target: 0, });
+  createIgronCase({ igron: [ undefined, undefined, ], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [ null, null, ], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [ '', '', ], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [ 1, 1, ], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [ 0, 0, ], mutliple: false, half: 0, all: 0, sel: 1, target: 0, });
+  createIgronCase({ igron: [ true, true, ], mutliple: false, half: 0, all: 0, sel: 0, target: 0, });
 
 
-  createIgronCase({ igron: [undefined, undefined,], mutliple: true, half: 1, all: 1, sel: 0, target: 0, });
-  createIgronCase({ igron: [true, true,], mutliple: true, half: 0, all: 0, sel: 0, target: 0, });
-  createIgronCase({ igron: [false, true,], mutliple: true, half: 1, all: 0, sel: 0, target: 0, });
+  createIgronCase({ igron: [ undefined, undefined, ], mutliple: true, half: 1, all: 1, sel: 0, target: 0, });
+  createIgronCase({ igron: [ true, true, ], mutliple: true, half: 0, all: 0, sel: 0, target: 0, });
+  createIgronCase({ igron: [ false, true, ], mutliple: true, half: 1, all: 0, sel: 0, target: 0, });
 
 
-  createIgronCase({ igron: [undefined, undefined,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: [null, null,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: ['', '',], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: [1, 1,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: [0, 0,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: [true, true,], mutliple: true, half: 0, all: 0, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ undefined, undefined, ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ null, null, ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ '', '', ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ 1, 1, ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ 0, 0, ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ true, true, ], mutliple: true, half: 0, all: 0, sel: 0, isLeaf: true, });
 
 
-  createIgronCase({ igron: [undefined, undefined,], mutliple: true, half: 2, all: 0, sel: 0, });
-  createIgronCase({ igron: [null, null,], mutliple: true, half: 2, all: 0, sel: 0, });
-  createIgronCase({ igron: ['', '',], mutliple: true, half: 2, all: 0, sel: 0, });
-  createIgronCase({ igron: [1, 1,], mutliple: true, half: 2, all: 0, sel: 0, });
-  createIgronCase({ igron: [0, 0,], mutliple: true, half: 2, all: 0, sel: 0, });
-  createIgronCase({ igron: [true, true,], mutliple: true, half: 0, all: 0, sel: 0, });
+  createIgronCase({ igron: [ undefined, undefined, ], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [ null, null, ], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [ '', '', ], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [ 1, 1, ], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [ 0, 0, ], mutliple: true, half: 2, all: 0, sel: 0, });
+  createIgronCase({ igron: [ true, true, ], mutliple: true, half: 0, all: 0, sel: 0, });
 
 
-  createIgronCase({ igron: [undefined, undefined,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: [null, null,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: ['', '',], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: [1, 1,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: [0, 0,], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
-  createIgronCase({ igron: [true, true,], mutliple: true, half: 0, all: 0, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ undefined, undefined, ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ null, null, ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ '', '', ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ 1, 1, ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ 0, 0, ], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true, });
+  createIgronCase({ igron: [ true, true, ], mutliple: true, half: 0, all: 0, sel: 0, isLeaf: true, });
 
   function createIgronCase ({
                               igron,
@@ -553,14 +553,14 @@ describe('Tree', () => {
                             }: Object) {
 
     it(`mutliple: ${mutliple} ,  igronSelectField: igron is ${igron} isLeaf: ${isLeaf} target: ${target}`, () => {
-      const data = [{ key: '1', title: 'hello1', igron: igron[ 0 ], }, {
+      const data = [ { key: '1', title: 'hello1', igron: igron[ 0 ], }, {
         key: '1.1',
         title: 'hello2',
         pid: '1',
         path: '1',
         isLeaf,
         igron: igron[ 1 ],
-      },];
+      }, ];
       const cmp = mount(<Tree mutliple={mutliple} expandAll data={data} igronSelectField={'igron'}/>);
       cmp.find(mutliple ? CheckBox : TreeRow).at(target).simulate('click', {});
       exp(cmp.find(`.${Checked}`).length, '全选').to.be.equal(all);
@@ -841,6 +841,32 @@ describe('Tree', () => {
     const cmp = mount(<Tree data={rowData} expandAll={true} start={23}/>);
     exp(cmp.find(TreeRow).last().text()).to.be.equal('4');
   });
+
+  it('isSelectedAll all', () => {
+    let target = {};
+    const Target = createTestComponent(Tree, the => {
+      target = the;
+    });
+    const cmp = mount(<Target data={rowData} expandAll={true} start={23} mutliple/>);
+
+    exp(target.getThemeTarget().isSelectAll()).to.be.false;
+    const value = rowData.map(item => item.key);
+    cmp.setProps({ value, });
+    exp(target.getThemeTarget().isSelectAll()).to.be.true;
+  });
+  it('isSelectedAll onlySelectLeaf', () => {
+    let target = {};
+    const Target = createTestComponent(Tree, the => {
+      target = the;
+    });
+    const cmp = mount(<Target data={rowData} expandAll={true} start={23} mutliple onlySelectLeaf={true}/>);
+
+    exp(target.getThemeTarget().isSelectAll()).to.be.false;
+    const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
+    cmp.setProps({ value, });
+    exp(target.getThemeTarget().isSelectAll()).to.be.true;
+  });
+
   it('height 为200的边界情况 超出范围', () => {
     const cmp = mount(<Tree data={rowData} expandAll={true} start={1000}/>);
     exp(cmp.find(TreeRow).last().text()).to.be.equal('4');

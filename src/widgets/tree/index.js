@@ -137,8 +137,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
   isSelectAll () {
     const { expand, } = this.state;
     const { id2ExtendInfo, } = expand;
-    const utils = this.getUtils(this.props);
-    return utils.selCount >= utils.getCanTotal(id2ExtendInfo);
+    const { props, } = this;
+    const { limitCount = 9999999, } = props;
+    const utils = this.getUtils(props);
+    return utils.selCount >= Math.min(utils.getCanTotal(id2ExtendInfo), limitCount);
   }
 
   isChecked (key: string) {

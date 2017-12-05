@@ -129,7 +129,6 @@ export default class extends React.Component<any, any> {
                   onRefresh={this.onRefresh}
         //onlySelectLeaf
                   igronSelectField="isLeaf"
-                  limitCount={5}
                   canInput
                   throttle={500}
                   expandAll
