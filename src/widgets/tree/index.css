@@ -258,10 +258,20 @@
 
 :global(.sv-tree li .sv-tree-node-content-wrapper) {
     min-height: 17px;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow: hidden;
+    margin-left: -33px;
+    padding-left: 33px;
     display: inline-block;
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
     border-radius: 2px;
-    margin: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     cursor: pointer;
     text-decoration: none;
     vertical-align: top;
@@ -282,6 +292,7 @@
 }
 
 :global(.sv-tree li span.sv-tree-checkbox) {
+    width: 12px;
     margin: 0 4px 0 2px;
     vertical-align: middle;
 }
