@@ -20,6 +20,7 @@ const hover = (props: Object) => {
 };
 const IconTag = styled.i`
   user-select: none;
+  cursor: pointer;
   ${color}
   ${hover}
 `;

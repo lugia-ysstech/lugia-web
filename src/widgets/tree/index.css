@@ -192,6 +192,7 @@
 }
 
 :global(.sv-tree) {
+    font-family: tahoma, arial, helvetica, sans-serif;
     margin: 0;
     padding: 0;
     font-size: 12px;
