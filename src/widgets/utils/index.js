@@ -41,3 +41,15 @@ export function getElementPosition (e: Object) {
   }
   return { x, y, };
 }
+
+export function deleteValue (target: Array<any>, value: any): void {
+  if (!target || target.length === 0) {
+    return;
+  }
+  const index = target.indexOf(value);
+  if (index === -1) {
+    return;
+  }
+
+  target.splice(index, 1);
+}

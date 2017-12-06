@@ -1,7 +1,7 @@
 //@flow
 import React from 'react';
 import chai from 'chai';
-import { cacheOnlyFirstCall, getElementPosition, } from '../index';
+import { cacheOnlyFirstCall, deleteValue, getElementPosition, splitStr, } from '../';
 
 const { expect: exp, } = chai;
 
@@ -48,4 +48,29 @@ describe('utils', () => {
     })).to.be.eql({ x: 2 + 1 + 0, y: 5 + 4 + 3, });
   });
 
+  it('splitStr', () => {
+    exp(splitStr('')).to.be.eql([]);
+    exp(splitStr('1,2')).to.be.eql(['1', '2',]);
+    exp(splitStr('1#2', '#')).to.be.eql(['1', '2',]);
+  });
+
+  it('deleteValue value is not empty', () => {
+    createDeletValueCase([1, 2, 3,], [2, 3,], 1);
+    createDeletValueCase([1, 2, 3,], [1, 3,], 2);
+    createDeletValueCase([1, 2, 3,], [1, 2,], 3);
+  });
+
+  function createDeletValueCase (target, expResult, value) {
+    deleteValue(target, value);
+    exp(target).to.be.eql(expResult);
+  }
+
+  it('deleteValue value is  empty', () => {
+    const target = [];
+    deleteValue(target, 100);
+    exp(target).to.be.eql(target);
+
+    deleteValue(target, 1);
+    exp(target).to.be.eql(target);
+  });
 });

@@ -249,7 +249,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
     const isDown = e.keyCode === 40;
     if (isDown) {
-      this.setState({ current: Math.min(this.state.current + 1, this.getData().length - 1), });
+      this.setState({ current: Math.min(this.state.current + 1, this.getViewData().length - 1), });
     }
     const isUp = e.keyCode === 38;
     if (isUp) {
@@ -264,7 +264,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     if (!currentRow) {
       return;
     }
-    const { key, } = currentRow;
+    const { key, isLeaf = false, } = currentRow;
+    if (isLeaf) {
+      return;
+    }
     if (isLeft) {
       tree.collapse(key);
     }
@@ -284,7 +287,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   getCurrentRow (): Object | null {
-    const data = this.getTree().getData();
+    const data = this.getTree().getViewData();
     if (data && data[ this.state.current ]) {
       return data[ this.state.current ];
     }
@@ -327,7 +330,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const selectAll = !this.isSelectAll();
     if (selectAll === true) {
       const { displayField, limitCount = 9999999, } = this.props;
-      const data = this.getData();
+      const data = this.getQueryData();
       const { value, displayValue, } = this.state;
       let cnt = 0;
       for (let i = 0; i < data.length; i++) {
@@ -342,7 +345,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     } else {
       //TODO: 这里修改了getInputTagValueObject方法的值.
       const valueObj = this.getInputTagValueObject();
-      const items = this.getData();
+      const items = this.getQueryData();
       const len = items.length;
       for (let i = 0; i < len; i++) {
         const { key, } = items[ i ];
@@ -365,11 +368,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return tree && tree.canSelect(row);
   }
 
-  getData (): Array<Object> {
+  getViewData (): Array<Object> {
     if (this.treeCompontIsEmpty()) {
       return [];
     }
-    return this.getTree().getData();
+    return this.getTree().getViewData();
+  }
+
+  getQueryData (): Array<Object> {
+    if (this.treeCompontIsEmpty()) {
+      return [];
+    }
+    return this.getTree().getQueryData();
   }
 
   getTree () {

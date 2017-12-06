@@ -15,6 +15,7 @@ import * as Widget from '../consts/Widget';
 import '../css/sv.css';
 import './index.css';
 import TreeUtils from './utils';
+import { deleteValue, } from '../utils/index';
 import styled from 'styled-components';
 import 'babel-polyfill';
 
@@ -124,14 +125,20 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   }
 
-  getData (): Array<RowData> {
+  getViewData (): Array<RowData> {
+
+    const { data = [], } = this;
+    return data;
+  }
+
+  getQueryData (): Array<RowData> {
     const { props, } = this;
     if (this.isQueryAll(props)) {
       const { data = [], } = props;
       return data;
     }
     const { data = [], } = this;
-    return data;
+    return this.getViewData();
   }
 
   isSelectAll () {
@@ -193,7 +200,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const currentChange = current !== props.current;
     if (currentChange) {
       if (current > this.end - 2) {
-        const start = Math.min(this.state.start + this.canSeeCount, this.getData().length - 1);
+        const start = Math.min(this.state.start + this.canSeeCount, this.getViewData().length - 1);
         this.setState({ start, });
       }
       if (current < this.state.start) {
@@ -513,14 +520,27 @@ class Tree extends React.Component<TreeProps, TreeState> {
   };
 
   expand (key: string) {
-    this.expandOrCollapse(key, this.state.expandedKeys, true);
+    if (this.isExpand(key)) {
+      return;
+    }
+    this.state.expandedKeys.push(key + '');
+    this.expandOrCollapse(key, [...this.state.expandedKeys,], true);
   }
 
   collapse (key: string) {
-    this.expandOrCollapse(key, this.state.expandedKeys, false);
+    if (!this.isExpand(key)) {
+      return;
+    }
+    deleteValue(this.state.expandedKeys, key + '');
+    this.expandOrCollapse(key, [...this.state.expandedKeys,], false);
+  }
+
+  isExpand (key: string): boolean {
+    return this.state.expandedKeys.indexOf(key + '') !== -1;
   }
 
   expandOrCollapse (key: string, expandedKeys: Array<string>, expanded: boolean) {
+
     const { props, state, } = this;
     const utils = this.getUtils(props);
     const { expand, } = state;
@@ -540,7 +560,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
       expand: newExpand,
       expandedKeys,
     });
-
     const { onExpand, data = [], } = props;
     onExpand && onExpand(expandedKeys, data);
   }
