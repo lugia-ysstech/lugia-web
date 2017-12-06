@@ -517,12 +517,12 @@
     font-size: 20px;
 }
 
-:global(.sv-tree.sv-tree-show-line li:not(:last-child):before) {
+:global(.sv-tree.sv-tree-show-line li:before) {
     content: ' ';
     width: 1px;
     border-left: 1px solid #d9d9d9;
-    height: 80%;
+    height: 95%;
     position: absolute;
-    left: 12px;
+    left: 7px;
     margin: 18px 0;
 }
