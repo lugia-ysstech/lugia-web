@@ -264,6 +264,36 @@ describe('TreeSelect', () => {
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
   });
+
+
+  it('selectAll limitCount: 5 caninput value: 我们啊 全选', async () => {
+
+
+    const str = '我么啊啊';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  value={str}
+                                  displayValue={str}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.CheckIcon).simulate('click');
+
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
+
+    const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
+
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql([str, ...value,]);
+
+    cmp.find(Widget.CheckIcon).simulate('click');
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql([str,]);
+
+
+  });
+
   it('selectAll limitCount: 5 caninput 先输入再选全部', async () => {
 
 
