@@ -6,6 +6,7 @@ exports[`Icon iconClass: sv-icon-close 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: pointer;
 }
 
 <i

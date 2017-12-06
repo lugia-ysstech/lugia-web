@@ -20,7 +20,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 30px;
   text-align: center;
   width: 8px;
@@ -118,7 +118,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 30px;
   text-align: center;
   width: 8px;
@@ -521,7 +521,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 30px;
   text-align: center;
   width: 8px;

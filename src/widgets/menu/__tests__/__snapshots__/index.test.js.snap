@@ -40,7 +40,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   content: "\\e73e";
   color: transparent;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   -webkit-transform: scale(.83333333) rotate(0deg);
   -ms-transform: scale(.83333333) rotate(0deg);
   transform: scale(.83333333) rotate(0deg);
@@ -89,7 +89,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   content: "\\e73e";
   color: transparent;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   -webkit-transform: scale(.83333333) rotate(0deg);
   -ms-transform: scale(.83333333) rotate(0deg);
   transform: scale(.83333333) rotate(0deg);
@@ -352,7 +352,7 @@ exports[`Menu children: items 1`] = `
   content: "\\e73e";
   color: transparent;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   -webkit-transform: scale(.83333333) rotate(0deg);
   -ms-transform: scale(.83333333) rotate(0deg);
   transform: scale(.83333333) rotate(0deg);
@@ -415,7 +415,7 @@ exports[`Menu children: items 1`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 30px;
   text-align: center;
   width: 8px;

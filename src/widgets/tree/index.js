@@ -148,7 +148,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const { props, } = this;
     const { limitCount = 9999999, } = props;
     const utils = this.getUtils(props);
-    return utils.selCount >= Math.min(utils.getCanTotal(id2ExtendInfo), limitCount);
+    const userInput = Object.keys(this.getNotInTree()).length;
+    return utils.selCount + userInput >= Math.min(utils.getCanTotal(id2ExtendInfo), limitCount);
   }
 
   isChecked (key: string) {

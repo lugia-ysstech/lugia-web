@@ -279,6 +279,7 @@ describe('TreeSelect', () => {
     findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
     cmp.find(Widget.CheckIcon).simulate('click');
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
     const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(['100', ...value,]);
   });

@@ -63,8 +63,8 @@ describe('InputTag', () => {
 
         const tagItems = findInputItem(cmp);
         exp(cmp.text().trim()).to.be.equal(typeof displayValue === 'string' ? displayValue : displayValue.join(''));
-        exp(tagItems.length).to.be.equal(0);
-        exp(findFontItem(cmp).length).to.be.equal(0);
+        exp(tagItems.length).to.be.equal(1);
+        exp(findFontItem(cmp).length).to.be.equal(1);
       });
     });
   }
