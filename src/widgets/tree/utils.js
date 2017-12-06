@@ -886,6 +886,11 @@ class TreeUtils {
     return result ? result : '';
   }
 
+  getNotInTree () {
+    const { notInTree = {}, } = this;
+    return notInTree;
+  }
+
   updateSelectedStatusForChildren (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
 
     const datas = this.treeData;
@@ -978,6 +983,7 @@ class TreeUtils {
   value2SelectInfo (keys: Array<string>, displayValue: Array<string>, valueObject: NodeId2Checked, id2ExtendInfo: NodeId2ExtendInfo): NodeId2SelectInfo {
     const len = keys.length;
     this.selCount = 0;
+    this.notInTree = {};
     if (!valueObject || !len) {
       return { value: {}, halfchecked: {}, checked: {}, };
     }

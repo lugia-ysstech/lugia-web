@@ -18,7 +18,7 @@ import TreeUtils from './utils';
 import { deleteValue, } from '../utils/index';
 import styled from 'styled-components';
 import 'babel-polyfill';
-import {FontSize,} from '../css';
+import { FontSize, } from '../css';
 
 type RowData = { [key: string]: any, }
 type TreeProps = {
@@ -218,6 +218,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
       value: {},
       halfchecked: {},
     };
+  }
+
+  getNotInTree (): Object {
+    return this.getUtils(this.props).getNotInTree();
   }
 
   updateStateValuForLimitValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, value: Array<string>) {

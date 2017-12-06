@@ -20,7 +20,7 @@ import AddIcon from '../icon/AddIcon';
 import Refresh from '../icon/RefreshIcon';
 import CheckIcon from '../icon/CheckIcon';
 import { splitStr, } from '../utils';
-import {FontSize,} from '../css';
+import { FontSize, } from '../css';
 
 type TreeSelectProps = {
   data: Array<Object>,
@@ -73,6 +73,7 @@ const Text = styled.span`
   border-radius: 3px;
 `;
 
+const DefaultLimitCount = 999999;
 
 class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   static defaultProps = {
@@ -301,7 +302,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   appendValue () {
     const inputValue = this.state.query;
-    if (inputValue && inputValue.trim() && this.isCanInput()) {
+    if (inputValue && inputValue.trim() && this.isCanInput() && !this.isLimit()) {
       clearTimeout(this.queryHandle);
       if (this.isMutliple()) {
         const { value = [], displayValue = [], } = this.state;
@@ -322,6 +323,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   }
 
+  isLimit (): boolean {
+    const { limitCount = DefaultLimitCount, } = this.props;
+    return this.state.value.length >= limitCount;
+  }
+
   componentDidUpdate () {
     this.setState({ selectAll: this.isSelectAll(), });
   }
@@ -330,10 +336,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
     const selectAll = !this.isSelectAll();
     if (selectAll === true) {
-      const { displayField, limitCount = 9999999, } = this.props;
+      const { displayField, } = this.props;
       const data = this.getQueryData();
       const { value, displayValue, } = this.state;
       let cnt = 0;
+      let { limitCount = DefaultLimitCount, } = this.props;
+      const notInTreeCount = Object.keys(this.getNotInTree()).length;
+      limitCount = limitCount - notInTreeCount;
       for (let i = 0; i < data.length; i++) {
         const { key, [displayField]: title, } = data[ i ];
         if (cnt >= limitCount) break;
@@ -360,7 +369,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       for (let i = 0; i < valArray.length; i++) {
         dispArray.push(valueObj[ valArray[ i ] ].text);
       }
-      console.info(valArray, dispArray);
       this.setValue(valArray, dispArray, {});
     }
   };
@@ -368,6 +376,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   canSelect (row: Object): boolean {
     const tree = this.getTree();
     return tree && tree.canSelect(row);
+  }
+
+  getNotInTree (): Object {
+    const tree = this.getTree();
+    if (!tree) {
+      return {};
+    }
+    return tree.getNotInTree();
   }
 
   getViewData (): Array<Object> {

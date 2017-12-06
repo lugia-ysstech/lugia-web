@@ -245,6 +245,44 @@ describe('TreeSelect', () => {
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
   });
 
+  it('selectAll limitCount: 5 caninput 先选全部再输入', async () => {
+
+
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.CheckIcon).simulate('click');
+    const txt = '100';
+    chagneQuery(cmp, txt);
+    findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
+
+    const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
+  });
+  it('selectAll limitCount: 5 caninput 先输入再选全部', async () => {
+
+
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    const txt = '100';
+    chagneQuery(cmp, txt);
+    findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+    cmp.find(Widget.CheckIcon).simulate('click');
+    const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql(['100', ...value,]);
+  });
+
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;
   }

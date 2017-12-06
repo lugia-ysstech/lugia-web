@@ -103,6 +103,7 @@ export default class extends React.Component<any, any> {
         //           igronSelectField="isLeaf"
                   canInput
                   throttle={500}
+                  limitCount={5}
                   expandAll
                   displayValue={'我'}
                   mutliple
