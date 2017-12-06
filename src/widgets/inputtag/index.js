@@ -21,6 +21,7 @@ import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
+import {FontSize,} from '../css';
 
 type InputTagProps = {
   placeholder?: string;
@@ -58,7 +59,7 @@ const Container = styled.div`
   display: inline-block;
   position: relative;
   color: rgba(0, 0, 0, 0.65);
-  font-size: 12px;
+  font-size: ${FontSize};
 `;
 const outContainerHeight = 28;
 const focus = props => {
@@ -211,8 +212,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   componentWillReceiveProps (props: InputTagProps) {
     if (this.isLmit()) {
       if (props.value !== this.props.value) {
+        const value = this.fetchValueObject(props);
         this.setState({
-          value: this.fetchValueObject(props),
+          value,
         }, () => {
           this.adaptiveItems(this.getOffSetWidth());
         });
@@ -232,6 +234,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       [Widget.Icon]: { hoverColor: 'red', },
       [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
     };
+    const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
+    const font = <FontItem ref={fillFontItem} key="fontItem"/>;
     const { focus, } = state;
     const { getTheme, disabled, } = props;
     if (!this.isMutliple()) {
@@ -252,8 +256,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     } else {
 
       const { items, } = state;
-      const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
-
       result = (
         <Container className="sv"
                    disabled={disabled}
@@ -263,7 +265,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           <OutContainer focus={focus}>
             <InnerContainer theme={props.getTheme()}>
               <List innerRef={cmp => this.list = cmp}>
-                <FontItem ref={fillFontItem}/>
                 {items}
               </List>
               {placeholder}
@@ -275,19 +276,22 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       );
 
       if (this.needMoreItem) {
-        return <InputTagTheme config={theme}><DropMenu menus={this.getItems()}
-                                                       onPopupVisibleChange={this.onPopupVisibleChange}
-                                                       action={[]}
-                                                       hideAction={['click',]}
-                                                       ref={cmp => {
-                                                         this.dropMenu = cmp;
-                                                       }}>
+        result = <DropMenu menus={this.getItems()}
+                           onPopupVisibleChange={this.onPopupVisibleChange}
+                           action={[]}
+                           hideAction={['click',]}
+                           ref={cmp => {
+                             this.dropMenu = cmp;
+                           }}>
           {result}
-        </DropMenu></InputTagTheme>;
+        </DropMenu>;
       }
     }
 
     return <InputTagTheme config={theme}>
+      <List>
+        {font}
+      </List>
       {result}
     </InputTagTheme>;
   }

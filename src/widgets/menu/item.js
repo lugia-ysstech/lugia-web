@@ -7,6 +7,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import * as Widget from '../consts/Widget';
+import {FontSize,} from '../css';
 
 type MenuItemProps = {
   checked: boolean,
@@ -63,7 +64,7 @@ const MutlipleItem = SingleItem.extend `
       content: "${SelectIcon}";
       color: transparent;
       display: inline-block;
-      font-size: 14px;
+      font-size: ${FontSize};
       transform: scale(.83333333) rotate(0deg);
       zoom: 1;
       transition: all .2s ease;

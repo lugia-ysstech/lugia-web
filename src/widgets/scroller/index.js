@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition, } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
+import {FontSize,} from '../css';
 
 type ScrollerProps = {
   totalSize: number,
@@ -52,7 +53,7 @@ const Bar = styled.div`
   border-radius: 8px;
   background: ${props => (props.disabled ? '#898989' : '#49a9ee')};
   color: #FFF;
-  font-size: 14px;
+  font-size: ${FontSize};
   line-height: 30px;
   text-align: center;
   :hover {

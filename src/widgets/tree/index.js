@@ -18,6 +18,7 @@ import TreeUtils from './utils';
 import { deleteValue, } from '../utils/index';
 import styled from 'styled-components';
 import 'babel-polyfill';
+import {FontSize,} from '../css';
 
 type RowData = { [key: string]: any, }
 type TreeProps = {
@@ -59,7 +60,7 @@ type TreeState = {
   selectValue?: Array<string>,
 }
 const Empty = styled.span`
-  font-size: 12px;
+  font-size: ${FontSize};
   line-height: 20px;
   text-align: center;
   display: block;

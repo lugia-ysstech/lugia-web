@@ -8,11 +8,12 @@ import React from 'react';
 import Item from './Item';
 import * as Widget from '../consts/Widget';
 import styled from 'styled-components';
-
+import {FontSize,} from '../css';
 type FontItemState = {
   text: string,
 }
 const HiddenItem = styled(Item)`
+  font-size: ${FontSize};
   position: absolute !important;
   top: -943124px;
 `;
@@ -28,9 +29,11 @@ export default class  extends React.Component<any, FontItemState> {
     this.state = {
       text: '',
     };
+    this.width = 0;
   }
 
   async getWidth (text: string): Promise<number> {
+
     return new Promise(res => {
       this.setState({ text, }, () => {
         res(this.width);
@@ -53,6 +56,9 @@ export default class  extends React.Component<any, FontItemState> {
     );
   }
 
+  componentDidMount () {
+    this.componentDidUpdate();
+  }
   componentDidUpdate () {
     if (this.item) {
       this.width = this.item.getWidth();

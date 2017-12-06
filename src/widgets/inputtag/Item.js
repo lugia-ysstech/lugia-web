@@ -9,9 +9,10 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import { ItemContainer, ItemText, } from './ItemTag';
 import * as Widget from '../consts/Widget';
+import {FontSize,} from '../css';
 
 const CloseButton: Object = styled.span`
-  font-size: 14px;
+  font-size: ${FontSize};
   color: rgba(0, 0, 0, 0.47);
   position: absolute;
   padding: 0 0 0 5px;

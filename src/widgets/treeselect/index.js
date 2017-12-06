@@ -20,6 +20,7 @@ import AddIcon from '../icon/AddIcon';
 import Refresh from '../icon/RefreshIcon';
 import CheckIcon from '../icon/CheckIcon';
 import { splitStr, } from '../utils';
+import {FontSize,} from '../css';
 
 type TreeSelectProps = {
   data: Array<Object>,
@@ -64,7 +65,7 @@ const QueryInput = styled.div`
 const SelectedIcon = 'SelectedIcon';
 const Text = styled.span`
   color: white;
-  font-size: 12px;
+  font-size: ${FontSize};
   width: 100%;
   background: #108ee9;
   padding: 0.1rem;
@@ -359,6 +360,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       for (let i = 0; i < valArray.length; i++) {
         dispArray.push(valueObj[ valArray[ i ] ].text);
       }
+      console.info(valArray, dispArray);
       this.setValue(valArray, dispArray, {});
     }
   };

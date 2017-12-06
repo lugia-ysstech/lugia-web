@@ -9,7 +9,7 @@ import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 import PlaceContainer from '../common/PlaceContainer';
-
+import {FontSize,} from '../css';
 type InputState = {|
   value: string,
 |};
@@ -44,7 +44,7 @@ const CommonInputStyle = styled.input`
   border: 1px solid ${InputBorderColor};
   cursor: text;
   line-height: 1.5;
-  font-size: 12px;
+  font-size: ${FontSize};
   height: 28px;
   display: inline-block;
   padding: 2px 3px;
