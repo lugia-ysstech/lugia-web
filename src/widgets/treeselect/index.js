@@ -273,9 +273,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       tree.expand(key);
     }
     const isShift = e.keyCode === 16;
-    if (isShift) {
+    const isCtrl = e.keyCode === 17;
+    if (isShift || isCtrl) {
       if (this.isMutliple()) {
-        tree.check(key, !tree.isChecked(key));
+        tree.check(key, !tree.isChecked(key), isShift);
       } else {
         tree.select([key,]);
       }
