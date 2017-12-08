@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition, } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import {FontSize,} from '../css';
+import { FontSize, } from '../css';
 
 type ScrollerProps = {
   totalSize: number,
@@ -227,7 +227,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     if (fx === 0) {
       return None;
     }
-    return fx < 0 ? Down : Up;
+    return fx > 0 ? Down : Up;
   }
 
   onContainerMouseDown = (e: Object) => {

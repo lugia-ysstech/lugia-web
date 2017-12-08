@@ -97,7 +97,6 @@ export default class extends React.Component<any, any> {
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
                   onTrigger={this.onTrigger}
-                  defaultValue="a"
                   onRefresh={this.onRefresh}
         //onlySelectLeaf
         //           igronSelectField="isLeaf"
@@ -105,7 +104,8 @@ export default class extends React.Component<any, any> {
                   throttle={500}
                   limitCount={5}
                   expandAll
-                  displayValue={'我'}
+                  defaultValue="a"
+                  defaultDisplayValue={'我么啊啊'}
                   mutliple
                   placeholder="请输入xxx"
         // disabled
@@ -130,6 +130,6 @@ export default class extends React.Component<any, any> {
     console.info(obj);
   };
   onTrigger = () => {
-    this.setState({ data: rowData, });
+    this.setState({ data: bigTree, });
   };
 }
