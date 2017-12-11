@@ -58,12 +58,17 @@ type TreeState = {
   selectedInfo: NodeId2SelectInfo,
   expandedKeys: Array<string>,
   selectValue?: Array<string>,
+  hasError: boolean
 }
 const Empty = styled.span`
   font-size: ${FontSize};
   line-height: 20px;
   text-align: center;
   display: block;
+`;
+
+const ErrorTooltip = Empty.extend`
+  color: red;
 `;
 
 class Tree extends React.Component<TreeProps, TreeState> {
@@ -104,6 +109,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isEmpty(props)) {
       this.state = {
         start: 0,
+        hasError: false,
         expandedKeys: [],
         expand: this.getEmptyExpandInfo(),
         selectValue: [],
@@ -115,6 +121,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const expand = this.updateExpandInfo(props);
     const { id2ExtendInfo, } = expand;
     const state = {
+      hasError: false,
       start: Support.getInitStart(props, 0),
       expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
       expand,
@@ -182,6 +189,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       const expand = this.updateExpandInfo(props);
       const { id2ExtendInfo, } = expand;
       const newState: TreeState = {
+        hasError: false,
         start: this.isQueryAll(props) ? this.allStart : Support.getInitStart(props, this.state.start),
         selectedInfo: this.getEmptyNodeId2SelectInfo(),
         expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
@@ -213,6 +221,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         this.setState({ start: Math.max(this.state.start - this.canSeeCount, 0), });
       }
     }
+    this.setState({ hasError: false, });
 
   }
 
@@ -305,6 +314,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return props.query !== nexProps.query
       || dataChanged
       || props.current != nexProps.current
+      || state.hasError !== nextState.hasError
       || state.start !== nextState.start
       || props.svThemVersion !== nexProps.svThemVersion
       || props.mutliple !== nexProps.mutliple
@@ -356,6 +366,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const empty = <Empty>查无结果</Empty>;
     if (this.isEmpty(props)) {
       return empty;
+    }
+    if (this.state.hasError) {
+      return <ErrorTooltip>属性数据错误</ErrorTooltip>;
     }
     const {
       query,
@@ -474,6 +487,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.isNotLimit(props)) {
       const newState: TreeState = {
         start: this.state.start,
+        hasError: false,
         selectedInfo: this.getEmptyNodeId2SelectInfo(),
         expandedKeys: this.state.expandedKeys,
         expand: this.state.expand,
@@ -575,10 +589,17 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onScroller = (start: number, end: number) => {
-    this.setState({ start, });
+    if(!this.isLimitStart()){
+      this.setState({ start, });
+    }
+    console.info(start);
     const { onScroller, } = this.props;
     onScroller && onScroller(start, end);
   };
+
+  isLimitStart () {
+    return 'start' in this.props;
+  }
 
   isEmpty ({ data, }) {
     return !data || data.length === 0;
@@ -596,6 +617,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return mutliple === false;
   }
 
+  componentDidCatch () {
+    this.setState({ hasError: true, });
+  }
 }
 
 export default ThemeProvider(Tree, Widget.Tree);

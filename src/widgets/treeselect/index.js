@@ -58,6 +58,7 @@ type TreeSelectState = {
   current: number,
   selectCount: number,
   end: number,
+  start: number,
 };
 const QueryInputPadding = 3;
 const QueryInput = styled.div`
@@ -111,6 +112,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       selectCount: 0,
       current: -1,
       end: 0,
+      start: 0,
       selectAll: false,
     };
     this.changeOldValue(value);
@@ -132,6 +134,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return state.query !== nextState.query ||
       state.current !== nextState.current ||
       state.treeFilter !== nextState.treeFilter ||
+      state.start !== nextState.start ||
       state.selectAll !== nextState.selectAll ||
       props.disabled !== nexProps.disabled ||
       props.mutliple !== nexProps.mutliple ||
@@ -154,7 +157,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   render () {
     const { props, state, } = this;
     const { data, placeholder, } = props;
-    const { query, value, displayValue, selectCount, treeFilter, current, } = state;
+    const { query, value, displayValue, selectCount, treeFilter, current, start, } = state;
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
     };
@@ -171,6 +174,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
             {...props}
             className="sv"
             current={current}
+            start={start}
+            onScroller={this.onScroller}
             query={treeFilter}
             ref={getTree}
             value={value}
@@ -593,6 +598,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9', },
       [ Widget.Input ]: Object.assign({}, theme, queryInputConfig),
     };
+  }
+
+  onScroller = (start: number) => {
+    this.setState({ start, });
+  };
+
+  componentDidCatch () {
+    this.setState({ start: 0, });
   }
 }
 
