@@ -313,6 +313,78 @@ describe('TreeSelect', () => {
     const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(['100', ...value,]);
   });
+  it('没有任何结点可以选择的情况  全选框状态应该是未选中', async () => {
+
+    const rowData = [
+      { key: '1', title: '1', },
+      { key: '2', title: '2', },
+      { key: '3', title: '3', },
+      { key: '4', title: '4', },
+      { key: '5', title: '5', },
+      { key: '6', title: '6', },
+      { key: '7', title: '7', },
+      { key: '8', title: '8', },
+      { key: '9', title: '9', },
+      { key: '10', title: '10', },
+      { key: '11', title: '11', },
+      { key: '12', title: '12', },
+      { key: '13', title: '13', },
+      { key: '14', title: '14', },
+      { key: '15', title: '15', },
+      { key: '16', title: '16', },
+      { key: '17', title: '17', },
+      { key: '18', title: '18', },
+      { key: '19', title: '19', },
+      { key: '20', title: '20', },
+      { key: '21', title: '21', },
+      { key: '22', title: '22', },
+      { key: '23', title: '23', },
+      { key: '24', title: '24', },
+      { key: '25', title: '25', },
+      { key: '26', title: '26', },
+      { key: '27', title: '27', },
+      { key: '28', title: '28', },
+      { key: '29', title: '29', },
+      { key: '30', title: '30', },
+      { key: '31', title: '31', },
+      { key: '32', title: '32', },
+      { key: '33', title: '33', },
+      { key: '34', title: '34', },
+      { key: '35', title: '35', },
+      { key: '36', title: '36', },
+      { key: '37', title: '37', },
+      { key: '38', title: '38', },
+      { key: '39', title: '39', },
+      { key: '40', title: '40', },
+      { key: '41', title: '41', },
+      { key: '42', title: '42', },
+      { key: '43', title: '43', },
+      { key: '44', title: '44', },
+      { key: '45', title: '45', },
+      { key: '46', title: '46', },
+      { key: '47', title: '47', },
+      { key: '48', title: '48', },
+      { key: '49', title: '49', },
+      { key: '50', title: '50', },
+      { key: '51', title: '51', },
+      { key: '52', title: '52', },
+      { key: '53', title: '53', },
+      { key: '54', title: '54', },
+      { key: '55', title: '55', },
+    ];
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  canInput
+                                  onlySelectLeaf
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+    cmp.find(Widget.CheckIcon).simulate('click');
+    exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql([]);
+  });
 
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;
