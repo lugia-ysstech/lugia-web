@@ -104,8 +104,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   constructor (props: ScrollerProps) {
     super(props);
-    const { defaultValue = 0, } = props;
-
     this.state = {
       value: Support.getInitNumberValue(props),
       sliderSize: this.getSliderBarSize(props),
@@ -419,7 +417,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.posGetter = cacheOnlyFirstCall(getElementPosition);
     this.step = step;
     this.maxValue = this.getMaxValue(props);
-    this.fastStep = totalSize / 4;
+    this.fastStep = totalSize / 32;
     this.sliderAbsoulateSize = 0;
   }
 
