@@ -368,7 +368,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       return empty;
     }
     if (this.state.hasError) {
-      return <ErrorTooltip>属性数据错误</ErrorTooltip>;
+      return <ErrorTooltip>树形数据错误错误</ErrorTooltip>;
     }
     const {
       query,
@@ -592,7 +592,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if(!this.isLimitStart()){
       this.setState({ start, });
     }
-    console.info(start);
     const { onScroller, } = this.props;
     onScroller && onScroller(start, end);
   };
