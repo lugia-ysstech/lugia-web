@@ -346,6 +346,96 @@ describe('TreeSelect', () => {
     const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
     exp(cmp.find(Widget.Tree).props().value).to.be.eql(['100', ...value,]);
   });
+  const HalfChecked = 'sv-tree-checkbox-indeterminate';
+  const Checked = 'sv-tree-checkbox-checked';
+  const Selected = 'sv-tree-node-selected';
+  const CheckBox = '.sv-tree-checkbox';
+  const CheckBoxInner = '.sv-tree-checkbox-inner';
+  const TreeRow = '.sv-tree-node-content-wrapper';
+
+  it('多选 选择第一个 onSelect 事件', async () => {
+
+    let onSelect;
+    const selAllPromise = new Promise(res => {
+      const result = [];
+      onSelect = v => {
+        result.push(v);
+        if (result.length === 2) {
+          res(result);
+        }
+      };
+    });
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  onSelect={onSelect}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(CheckBox).at(0).simulate('click');
+    const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
+    const displayValue = rowData.filter((item: Object, index: number) => index < 5).map(item => item.title);
+    cmp.find(CheckBox).at(0).simulate('click');
+    const result = await selAllPromise;
+    exp(result).to.be.eql([{ value, displayValue, }, { value: [], displayValue: [], },]);
+  });
+
+  it('单选 选择第一个 onSelect 事件', async () => {
+
+    let onSelect;
+    const selAllPromise = new Promise(res => {
+      const result = [];
+      onSelect = v => {
+        result.push(v);
+        if (result.length === 2) {
+          res(result);
+        }
+      };
+    });
+    const cmp = mount(<TreeSelect data={rowData}
+                                  onSelect={onSelect}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(TreeRow).at(0).simulate('click');
+    const value = rowData.filter((item: Object, index: number) => index < 1).map(item => item.key);
+    const displayValue = rowData.filter((item: Object, index: number) => index < 1).map(item => item.title);
+    cmp.find(TreeRow).at(0).simulate('click');
+    const result = await selAllPromise;
+    exp(result).to.be.eql([{ value, displayValue, }, { value: ['',], displayValue: ['',], },]);
+  });
+
+  it('selectAll onSelect 事件', async () => {
+
+    let onSelect;
+    const selAllPromise = new Promise(res => {
+      const result = [];
+      onSelect = v => {
+        result.push(v);
+        if (result.length === 2) {
+          res(result);
+        }
+      };
+    });
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  onSelect={onSelect}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find().simulate('click');
+    const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
+    const displayValue = rowData.filter((item: Object, index: number) => index < 5).map(item => item.title);
+    cmp.find(Widget.CheckIcon).simulate('click');
+    const result = await selAllPromise;
+    exp(result).to.be.eql([{ value, displayValue, }, { value: [], displayValue: [], },]);
+  });
+
   it('没有任何结点可以选择的情况  全选框状态应该是未选中', async () => {
 
     const rowData = [

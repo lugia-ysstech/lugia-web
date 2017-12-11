@@ -36,6 +36,7 @@ type TreeSelectProps = {
   igronSelectField?: string,
   onTrigger?: Function,
   onChange?: Function,
+  onSelect?: Function,
 
   splitQuery?: string,
   onQuery?: Function,
@@ -343,6 +344,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   onSelectAll = () => {
 
     const selectAll = !this.isSelectAll();
+    const { onSelect, } = this.props;
     if (selectAll === true) {
       const { displayField, } = this.props;
       const data = this.getQueryData();
@@ -359,6 +361,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         displayValue.push(title);
         cnt++;
       }
+      onSelect && onSelect({ value, displayValue, });
       this.setValue(value, displayValue, {});
     } else {
       //TODO: 这里修改了getInputTagValueObject方法的值.
@@ -377,6 +380,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       for (let i = 0; i < valArray.length; i++) {
         dispArray.push(valueObj[ valArray[ i ] ].text);
       }
+      onSelect && onSelect({ value: [], displayValue: [], });
       this.setValue(valArray, dispArray, {});
     }
   };
@@ -512,6 +516,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
+    const { onSelect, } = this.props;
+    onSelect && onSelect({ value, displayValue, });
     this.setValue(value, displayValue, {}, () => {
       if (!this.isMutliple()) {
         this.setTreePopupVisible(false);
