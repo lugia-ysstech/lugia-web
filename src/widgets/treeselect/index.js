@@ -237,6 +237,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         treeFilter: '',
       });
     }
+    this.setState({ query: '', treeFilter: '', });
     const { onRefresh, } = props;
     onRefresh && onRefresh();
   };
