@@ -428,7 +428,7 @@ describe('TreeSelect', () => {
                                   limitCount={5}/>);
 
     cmp.find(Widget.InputTag).simulate('click');
-    cmp.find().simulate('click');
+    cmp.find(Widget.CheckIcon).simulate('click');
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
     const displayValue = rowData.filter((item: Object, index: number) => index < 5).map(item => item.title);
     cmp.find(Widget.CheckIcon).simulate('click');

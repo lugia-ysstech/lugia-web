@@ -408,7 +408,7 @@ describe('Scroller', function () {
       };
     const Target = createTestComponent(Scroller, (target: Object) => {
       exp(target.step).to.be.equal(1);
-      exp(target.fastStep).to.be.equal(50);
+      exp(target.fastStep).to.be.equal(6.25);
       exp(target.maxValue).to.be.equal(100);
       exp(target.sliderAbsoulateSize).to.be.equal(0);
     });
@@ -702,7 +702,7 @@ describe('Scroller', function () {
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
     scroller.simulate('mousedown', { clientY: 90, });
     await delay(2000);
-    exp(sliderBar.getDOMNode().style.top).to.be.equal('90px');
+    exp(sliderBar.getDOMNode().style.top).to.be.equal('19.625px');
 
   });
   it('onContainerMouseDown 长摁滑块上方 滚动条容器将持续滚动到点击的位置', async () => {
@@ -726,7 +726,7 @@ describe('Scroller', function () {
     exp(sliderBar.getDOMNode().style.top).to.be.equal('90px');
     scroller.simulate('mousedown', { clientY: 90, });
     await delay(2000);
-    exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
+    exp(sliderBar.getDOMNode().style.top).to.be.equal('70.375px');
 
   });
 });
