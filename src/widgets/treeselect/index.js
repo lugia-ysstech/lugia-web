@@ -230,7 +230,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return result;
   };
   onRefresh = () => {
-    const { onRefresh, } = this.props;
+    const { props, } = this;
+    if (Support.isNotLimit(props)) {
+      this.setValue([], [], {
+        query: '',
+        treeFilter: '',
+      });
+    }
+    const { onRefresh, } = props;
     onRefresh && onRefresh();
   };
 
@@ -344,7 +351,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       const notInTreeCount = Object.keys(this.getNotInTree()).length;
       limitCount = limitCount - notInTreeCount;
       for (let i = 0; i < data.length; i++) {
-        const { key, [displayField]: title, } = data[ i ];
+        const { key, [ displayField ]: title, } = data[ i ];
         if (cnt >= limitCount) break;
         if (!this.canSelect(key)) continue;
         value.push(key);
@@ -573,14 +580,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       queryInputConfig.width = width - 2 * QueryInputPadding;
     }
     return {
-      [Widget.Tree]: theme,
-      [Widget.Trigger]: theme,
-      [Widget.InputTag]: theme,
-      [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9', },
-      [Widget.Input]: Object.assign({}, theme, queryInputConfig),
+      [ Widget.Tree ]: theme,
+      [ Widget.Trigger ]: theme,
+      [ Widget.InputTag ]: theme,
+      [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9', },
+      [ Widget.Input ]: Object.assign({}, theme, queryInputConfig),
     };
   }
-
 }
 
 export default ThemeProvider(TreeSelect, Widget.TreeSelect);

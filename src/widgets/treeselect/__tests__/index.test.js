@@ -68,13 +68,13 @@ describe('TreeSelect', () => {
     const styleConfig = {
       width: 500,
     };
-    const svThemeConfigTree = { [Widget.TreeSelect]: styleConfig, };
+    const svThemeConfigTree = { [ Widget.TreeSelect ]: styleConfig, };
     const expResult: Object = {
-      [Widget.Tree]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
-      [Widget.Trigger]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
-      [Widget.InputTag]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
-      [Widget.Input]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, }, { svThemeConfigTree, }),
-      [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9', },
+      [ Widget.Tree ]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
+      [ Widget.Trigger ]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
+      [ Widget.InputTag ]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
+      [ Widget.Input ]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, }, { svThemeConfigTree, }),
+      [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9', },
     };
     createThemeCase(styleConfig, expResult);
   });
@@ -82,11 +82,11 @@ describe('TreeSelect', () => {
     const styleConfig = {};
 
     const expResult: Object = {
-      [Widget.Tree]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
-      [Widget.Trigger]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
-      [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
-      [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {}, }, },
-      [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9', },
+      [ Widget.Tree ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {}, }, },
+      [ Widget.Trigger ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {}, }, },
+      [ Widget.InputTag ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {}, }, },
+      [ Widget.Input ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {}, }, },
+      [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9', },
     };
 
     createThemeCase(styleConfig, expResult);
@@ -95,7 +95,7 @@ describe('TreeSelect', () => {
   function createThemeCase (styleConfig: Object, expResult: Object) {
 
     const config = {
-        [Widget.TreeSelect]: styleConfig,
+        [ Widget.TreeSelect ]: styleConfig,
       }
     ;
 
@@ -266,7 +266,7 @@ describe('TreeSelect', () => {
   });
 
 
-  it('selectAll limitCount: 5 caninput value: 我们啊 全选', async () => {
+  it('selectAll limitCount: 5 caninput value: 我们啊 全选  然后进行刷新操作 非受限情况', async () => {
 
 
     const str = '我么啊啊';
@@ -293,6 +293,39 @@ describe('TreeSelect', () => {
 
 
   });
+  it('全选  然后进行刷新操作 非受限情况', async () => {
+
+
+    const str = '我么啊啊';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  defaultValue={str}
+                                  defaultDisplayValue={str}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.RefershIcon).simulate('click');
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql([]);
+
+  });
+  it('全选  然后进行刷新操作 受限情况', async () => {
+
+
+    const str = '我么啊啊';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  value={str}
+                                  displayValue={str}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+    cmp.find(Widget.InputTag).simulate('click');
+    cmp.find(Widget.RefershIcon).simulate('click');
+    exp(cmp.find(Widget.Tree).props().value).to.be.eql([str,]);
+
+  });
+
 
   it('selectAll limitCount: 5 caninput 先输入再选全部', async () => {
 
