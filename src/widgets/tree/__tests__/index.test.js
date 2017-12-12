@@ -700,7 +700,7 @@ describe('Tree', () => {
     const cmp = mount(<Tree/>);
     exp(cmp.html()).to.be.equal(empty);
   });
-  const error = '<span class="sc-gZMcBi gotTWc">树形数据错误错误</span>';
+  const error = '<span class="sc-gZMcBi gotTWc">树形数据错误</span>';
   it('树报错的情况', () => {
 
     const rowData: Array<Object> = [

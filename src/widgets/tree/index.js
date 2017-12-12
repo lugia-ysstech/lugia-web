@@ -368,7 +368,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       return empty;
     }
     if (this.state.hasError) {
-      return <ErrorTooltip>树形数据错误错误</ErrorTooltip>;
+      return <ErrorTooltip>树形数据错误</ErrorTooltip>;
     }
     const {
       query,
