@@ -1,11 +1,10 @@
 {
   "name": "sv-widget",
-  "version": "1.0.7",
+  "version": "1.0.11",
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
     "css-animation": "1.4.1",
-    "dom-align": "1.6.4",
     "prop-types": "15.5.10",
     "prop-types-extra": "1.0.1",
     "rc-align": "2.3.4",
@@ -132,7 +131,8 @@
   "main": "dist",
   "files": [
     "dist",
-    "interface"
+    "interface",
+    "npm-shrinkwrap.json"
   ],
   "babel": {
     "presets": [
