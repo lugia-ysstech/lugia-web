@@ -122,7 +122,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   getInitValue (props: TreeSelectProps) {
     const { value, displayValue, } = Support.getCodeItem(props);
-    return { value: splitStr(value), displayValue: splitStr(displayValue), };
+    return { value: splitStr(value), displayValue: displayValue ? splitStr(displayValue) : splitStr(value), };
   }
 
   shouldComponentUpdate (nexProps: TreeSelectProps, nextState: TreeSelectState) {

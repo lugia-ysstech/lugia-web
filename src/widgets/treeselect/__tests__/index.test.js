@@ -577,6 +577,26 @@ describe('TreeSelect', () => {
     exp(findTree(cmp).props().query).to.be.equal('');
     exp(findTree(cmp).props().value).to.be.eql([value,]);
   });
+  it('单选 只value设置值', async () => {
+    const value = 'hello';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  value={value}
+                                  throttle={0}
+                                  expandAll={true}/>);
+    exp(cmp.find(Widget.InputTag).props().value).to.be.eql([value,]);
+    exp(cmp.find(Widget.InputTag).props().displayValue).to.be.eql([value,]);
+  });
+  it('单选 value displayValue', async () => {
+    const value = '0';
+    const displayValue = 'hello';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  value={value}
+                                  displayValue={displayValue}
+                                  throttle={0}
+                                  expandAll={true}/>);
+    exp(cmp.find(Widget.InputTag).props().value).to.be.eql([value,]);
+    exp(cmp.find(Widget.InputTag).props().displayValue).to.be.eql([displayValue,]);
+  });
 
   function getTreeValue (cmp) {
     return cmp.find(Widget.Tree).props().value;
