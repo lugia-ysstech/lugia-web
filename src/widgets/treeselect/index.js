@@ -23,6 +23,7 @@ import Refresh from '../icon/RefreshIcon';
 import CheckIcon from '../icon/CheckIcon';
 import ClearIcon from '../icon/ClearIcon';
 import { FontSize, } from '../css';
+import QueryInput, { QueryInputPadding, } from '../common/QueryInputContainer';
 
 type TreeSelectProps = {
   data: Array<Object>,
@@ -62,10 +63,6 @@ type TreeSelectState = {
   end: number,
   start: number,
 };
-const QueryInputPadding = 3;
-const QueryInput = styled.div`
-  padding: ${QueryInputPadding}px;
-`;
 const SelectedIcon = 'SelectedIcon';
 const Text = styled.span`
   color: white;

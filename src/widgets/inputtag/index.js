@@ -22,7 +22,7 @@ import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
-import {FontSize,} from '../css';
+import { FontSize, } from '../css';
 
 type InputTagProps = {
   placeholder?: string;
@@ -45,6 +45,7 @@ type InputTagState = {
   focus: boolean,
   items: Array<React.Node>,
   value: Object,
+  query: string,
 };
 const widthFunc = (spanWidth: number) => (props: Object) => {
   const w = props.theme.width - spanWidth;
@@ -150,6 +151,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     this.state = {
       focus: false,
       items: [],
+      query: '',
       value: this.fetchValueObject(props),
     };
   }
@@ -161,6 +163,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       props.svThemVersion !== nextPros.svThemVersion ||
       props.mutliple !== nextPros.mutliple ||
       props.disabled !== nextPros.disabled ||
+      (this.needMoreItem && state.query !== nextState.query) ||
       state.value !== nextState.value ||
       state.focus !== nextState.focus ||
       props.displayValue !== nextPros.displayValue;
@@ -230,10 +233,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const placeholder = this.getPlaceholder();
     const config = { width: this.getWidth(), };
     const theme = {
-      [Widget.DropMenu]: config,
-      [Widget.Trigger]: config,
-      [Widget.Icon]: { hoverColor: 'red', },
-      [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)', },
+      [ Widget.DropMenu ]: config,
+      [ Widget.Trigger ]: config,
+      [ Widget.Icon ]: { hoverColor: 'red', },
+      [ IconButton.displayName ]: { hoverColor: 'rgba(0,0,0,.43)', },
     };
     const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
     const font = <FontItem ref={fillFontItem} key="fontItem"/>;
@@ -277,7 +280,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       );
 
       if (this.needMoreItem) {
-        result = <DropMenu menus={this.getItems()}
+        const { query, } = state;
+        result = <DropMenu menus={this.getItems(query)}
+                           onQuery={this.onQueryInput}
                            onPopupVisibleChange={this.onPopupVisibleChange}
                            action={[]}
                            hideAction={['click',]}
@@ -297,6 +302,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     </InputTagTheme>;
   }
 
+  onQueryInput = (query: string) => {
+    this.setState({ query, });
+  };
   onFocus = () => {
     this.setState({ focus: true, }, () => {
       const { onFocus, } = this.props;
@@ -352,7 +360,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     onClick && onClick(e);
   };
 
-  getItems () {
+  getItems (query: string) {
     const { value, } = this.state;
     const items = [];
     if (value) {
@@ -362,7 +370,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       for (let i = 0; i < valueLen; i++) {
         const key = keys[ i ];
         const { text, } = value[ key ];
-        items.push({ key, value: text, });
+        if (query === '' || text.indexOf(query) != -1) {
+          items.push({ key, value: text, });
+        }
       }
     }
 
@@ -535,6 +545,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   onPopupVisibleChange = (visible: boolean) => {
     const { onPopupVisibleChange, } = this.props;
+    if (visible === true) {
+      this.setState({ query: '', });
+    }
     onPopupVisibleChange && onPopupVisibleChange(visible);
   }
 

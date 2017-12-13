@@ -11,7 +11,7 @@ import App from './widgets/treeselect/demo';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-// console.info(ReactServer.renderToString(<App/>));
+console.info(ReactServer.renderToString(<App/>));
 const root = document.getElementById('root');
 if (root) {
 

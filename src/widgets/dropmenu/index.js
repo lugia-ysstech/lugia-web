@@ -4,19 +4,23 @@
  * @flow
  */
 import * as React from 'react';
-import ReactDom from 'react-dom';
 import styled from 'styled-components';
 import Trigger from '../trigger';
 import Theme from '../theme';
 import ThemeProvider from '../common/ThemeProvider';
 import * as Widget from '../consts/Widget';
 import '../common/shirm';
+import Input from '../input';
+import QueryInput, { QueryInputPadding, } from '../common/QueryInputContainer';
+
+const defaultWidth = 200;
 type DropMenuProps = {
   action: Array<string>,
   hideAction: Array<string>,
   menus: React.Node,
   children: React.Element<any>,
   onPopupVisibleChange?: Function,
+  onQuery: Function,
   getTheme: Function,
 };
 const MenuContainer = styled.div`
@@ -25,9 +29,7 @@ const MenuContainer = styled.div`
    border-radius: 4px;
    box-sizing: border-box;
 `;
-type DropMenuState = {
-  trigerWidth: string;
-};
+type DropMenuState = {};
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
@@ -39,30 +41,26 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
-  isAutoTriggerWidth: boolean;
-
-  constructor (props: DropMenuProps) {
-    super(props);
-    const { getTheme, } = props;
-    const { width, } = getTheme();
-    if (width) {
-      this.state = { trigerWidth: width, };
-      this.isAutoTriggerWidth = true;
-    } else {
-      this.state = { trigerWidth: '100%', };
-      this.isAutoTriggerWidth = false;
-
-    }
-  }
 
   trigger: ?Object;
 
+  constructor (props: DropMenuProps) {
+    super(props);
+    this.state = { filter: '', };
+  }
+
   render () {
     const { menus, children, action, hideAction, } = this.props;
+    const { width = defaultWidth, } = this.props.getTheme();
+
+    const queryInputWidth = (width) - (2 * QueryInputPadding);
     const menuConfig = {
-      [Widget.Menu]: { width: this.state.trigerWidth, },
-      [Widget.Trigger]: { width: this.state.trigerWidth, },
+      [ Widget.Menu ]: { width, },
+      [ Widget.Input ]: { width: queryInputWidth, },
+      [ Widget.Trigger ]: { width, },
     };
+    const popup = [<QueryInput key="queryContainer"><Input onChange={this.onQuery} key="quernInput"/></QueryInput>,
+      <MenuContainer key="menus">{menus}</MenuContainer>,];
     return <Theme config={menuConfig}> <Trigger
       onPopupVisibleChange={this.onPopupVisibleChange}
       ref={cmp => this.trigger = cmp}
@@ -70,36 +68,21 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       action={action}
       hideAction={hideAction}
       popup={
-        <MenuContainer>{menus}</MenuContainer>
+        popup
       }>
       {children}
     </Trigger></Theme>;
   }
 
-  componentDidMount () {
-    this.autoMenuWidth();
-  }
-
-  componentDidUpdate () {
-    this.autoMenuWidth();
-  }
-
+  onQuery = value => {
+    const { onQuery, } = this.props;
+    onQuery && onQuery(value);
+  };
   onPopupVisibleChange = (visible: boolean) => {
     const { onPopupVisibleChange, } = this.props;
     onPopupVisibleChange && onPopupVisibleChange(visible);
   };
 
-  autoMenuWidth () {
-    if (!this.isAutoTriggerWidth) {
-      this.isAutoTriggerWidth = true;
-      const domNode = ReactDom.findDOMNode(this);
-      if (domNode && domNode.offsetWidth) {
-        this.setState({ trigerWidth: `${String(domNode.offsetWidth)}`, }, () => {
-          this.isAutoTriggerWidth = false;
-        });
-      }
-    }
-  }
 }
 
 export default ThemeProvider(DropMenu, Widget.DropMenu);
