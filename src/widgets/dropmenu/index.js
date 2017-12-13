@@ -10,7 +10,7 @@ import Trigger from '../trigger';
 import Theme from '../theme';
 import ThemeProvider from '../common/ThemeProvider';
 import * as Widget from '../consts/Widget';
-
+import '../common/shirm';
 type DropMenuProps = {
   action: Array<string>,
   hideAction: Array<string>,

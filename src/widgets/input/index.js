@@ -1,5 +1,5 @@
 //@flow
-
+import '../common/shirm';
 import Support from '../common/FormFieldWidgetSupport';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component, } from 'react';
@@ -10,6 +10,7 @@ import ThemeProvider from '../common/ThemeProvider';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 import PlaceContainer from '../common/PlaceContainer';
 import {FontSize,} from '../css';
+
 type InputState = {|
   value: string,
 |};

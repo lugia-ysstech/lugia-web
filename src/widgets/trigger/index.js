@@ -4,6 +4,8 @@
  * @author zenjava
  * @flow
  */
+import '../common/shirm';
+
 import * as React from 'react';
 import { findDOMNode, } from 'react-dom';
 import contains from 'rc-util/lib/Dom/contains';

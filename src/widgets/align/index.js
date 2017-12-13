@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import '../common/shirm';
 import * as React from 'react';
 import VisibleBox from '../common/VisibleBox';
 import * as Widget from '../consts/Widget';

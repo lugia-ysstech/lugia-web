@@ -4,6 +4,7 @@
  * @flow
  * create by ligx 170911
  */
+import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';

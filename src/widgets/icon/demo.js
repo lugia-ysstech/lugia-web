@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import Icon from './';
+import '../common/shirm';
 
 export default () => {
   const onClick = () => {

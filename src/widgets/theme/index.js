@@ -7,6 +7,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import * as Widget from '../consts/Widget';
+import '../common/shirm';
 
 type PropsType = {
   children: React.Node,

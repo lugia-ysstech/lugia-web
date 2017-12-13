@@ -4,6 +4,8 @@
  *
  * @flow
  */
+import '../common/shirm';
+
 import React from 'react';
 import InputTag from '../inputtag';
 import Input from '../input';

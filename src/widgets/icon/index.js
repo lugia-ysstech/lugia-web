@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import '../common/shirm';
 import * as React from 'react';
 import '../css/sv.css';
 import * as Widget from '../consts/Widget';

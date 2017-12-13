@@ -4,6 +4,7 @@
  *
  * @flow
  */
+import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
 import Item, { menuItemHeight, } from './item';
