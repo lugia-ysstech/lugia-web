@@ -58,8 +58,8 @@ function getNumberKey () {
 }
 
 const rowData: Array<Object> = [
-  { key: '1', title: '0', },
-  { key: '1.1', title: 'a1.1', pid: '1', path: '1', isLeaf: true, },
+  { key: '1', title: '1', },
+  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
@@ -67,6 +67,31 @@ const rowData: Array<Object> = [
   { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
   { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
   { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
+
+  { key: '1.3', title: '1.3', pid: '1', path: '1', },
+  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
+  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
+  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
+  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
+  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+
+  { key: '2', title: '2', },
+  { key: '2.1', title: '2.1', pid: '2', path: '2', },
+  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
+  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
+  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
+  { key: '2.2', title: '2.2', pid: '2', path: '2', },
+  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
+  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
+  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
+
+  { key: '3', title: '3', },
+  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
+  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
+  { key: '4', title: '4', isLeaf: true, },
 
 ];
 console.info(rowData.length);
@@ -102,7 +127,7 @@ export default class extends React.Component<any, any> {
         //           igronSelectField="isLeaf"
                   canInput
                   throttle={500}
-                  limitCount={5}
+                  // limitCount={5}
                   expandAll
                   defaultValue="a"
                   defaultDisplayValue={'我么啊啊'}
@@ -130,6 +155,6 @@ export default class extends React.Component<any, any> {
     console.info(obj);
   };
   onTrigger = () => {
-    this.setState({ data: bigTree, });
+    this.setState({ data: rowData, });
   };
 }
