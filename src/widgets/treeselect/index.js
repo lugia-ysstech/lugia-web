@@ -282,10 +282,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       return;
     }
     const { key, isLeaf = false, } = currentRow;
-    if (isLeaf) {
-      return;
-    }
+
     if (isLeft) {
+      if (isLeaf) {
+        return;
+      }
       tree.collapse(key);
     }
     const isRight = e.keyCode === 39;

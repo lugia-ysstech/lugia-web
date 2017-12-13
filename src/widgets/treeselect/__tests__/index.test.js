@@ -143,8 +143,8 @@ describe('TreeSelect', () => {
 
   it('选择全部', () => {
     const cmp = mount(<TreeSelect data={rowData} throttle={0} mutliple igronSelectField="isLeaf"/>);
-    cmp.find(Widget.InputTag).simulate('click');
-    cmp.find(Widget.CheckIcon).simulate('click');
+    showTrigger(cmp);
+    clickSelectChkBox(cmp);
 
   });
 
@@ -158,10 +158,10 @@ describe('TreeSelect', () => {
                                     mutliple={mutliple}
                                     canInput
       />);
-      cmp.find(Widget.InputTag).simulate('click');
+      showTrigger(cmp);
       const txt = '100';
       chagneQuery(cmp, txt);
-      findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
+      queryInputEnter(cmp);
       mutliple ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt) : exp(cmp.find(Widget.InputTag).text().trim()).to.be.equal(txt);
     });
   }
@@ -179,8 +179,8 @@ describe('TreeSelect', () => {
                                     mutliple
                                     expandAll={expandAll}
                                     canInput/>);
-      cmp.find(Widget.InputTag).simulate('click');
-      cmp.find(Widget.CheckIcon).simulate('click');
+      showTrigger(cmp);
+      clickSelectChkBox(cmp);
       exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     });
@@ -201,12 +201,12 @@ describe('TreeSelect', () => {
                                   igronSelectField="isLeaf"
                                   canInput/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
-    cmp.find(Widget.CheckIcon).simulate('click');
+    showTrigger(cmp);
+    clickSelectChkBox(cmp);
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     const value = ['1', '1.2', '1.2.2', '1.2.2.1', '1.3', '1.3.1', '1.3.2', '2', '2.1', '2.1.2', '2.2', '2.2.1', '3',];
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
+    exp(getTreeValue(cmp)).to.be.eql(value);
   });
 
   it('selectAll onlySelectLeaf', async () => {
@@ -220,13 +220,13 @@ describe('TreeSelect', () => {
                                   onlySelectLeaf
                                   canInput/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
-    cmp.find(Widget.CheckIcon).simulate('click');
+    showTrigger(cmp);
+    clickSelectChkBox(cmp);
 
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
+    exp(getTreeValue(cmp)).to.be.eql(value);
   });
   it('selectAll limitCount: 5', async () => {
 
@@ -236,13 +236,13 @@ describe('TreeSelect', () => {
                                   expandAll={true}
                                   limitCount={5}/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
-    cmp.find(Widget.CheckIcon).simulate('click');
+    showTrigger(cmp);
+    clickSelectChkBox(cmp);
 
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
+    exp(getTreeValue(cmp)).to.be.eql(value);
   });
 
   it('selectAll limitCount: 5 caninput 先选全部再输入', async () => {
@@ -254,15 +254,15 @@ describe('TreeSelect', () => {
                                   expandAll={true}
                                   limitCount={5}/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
-    cmp.find(Widget.CheckIcon).simulate('click');
+    showTrigger(cmp);
+    clickSelectChkBox(cmp);
     const txt = '100';
     chagneQuery(cmp, txt);
-    findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
+    queryInputEnter(cmp);
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql(value);
+    exp(getTreeValue(cmp)).to.be.eql(value);
   });
 
 
@@ -278,18 +278,18 @@ describe('TreeSelect', () => {
                                   expandAll={true}
                                   limitCount={5}/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
-    cmp.find(Widget.CheckIcon).simulate('click');
+    showTrigger(cmp);
+    clickSelectChkBox(cmp);
 
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
 
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql([str, ...value,]);
+    exp(getTreeValue(cmp)).to.be.eql([str, ...value,]);
 
-    cmp.find(Widget.CheckIcon).simulate('click');
+    clickSelectChkBox(cmp);
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql([str,]);
+    exp(getTreeValue(cmp)).to.be.eql([str,]);
 
 
   });
@@ -304,9 +304,9 @@ describe('TreeSelect', () => {
                                   canInput
                                   expandAll={true}
                                   limitCount={5}/>);
-    cmp.find(Widget.InputTag).simulate('click');
+    showTrigger(cmp);
     cmp.find(Widget.RefershIcon).simulate('click');
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql([]);
+    exp(getTreeValue(cmp)).to.be.eql([]);
 
   });
   it('全选  然后进行刷新操作 受限情况', async () => {
@@ -320,9 +320,9 @@ describe('TreeSelect', () => {
                                   canInput
                                   expandAll={true}
                                   limitCount={5}/>);
-    cmp.find(Widget.InputTag).simulate('click');
+    showTrigger(cmp);
     cmp.find(Widget.RefershIcon).simulate('click');
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql([str,]);
+    exp(getTreeValue(cmp)).to.be.eql([str,]);
 
   });
 
@@ -336,15 +336,15 @@ describe('TreeSelect', () => {
                                   expandAll={true}
                                   limitCount={5}/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
+    showTrigger(cmp);
     const txt = '100';
     chagneQuery(cmp, txt);
-    findQueryInput(cmp).simulate('keydown', { keyCode: 13, });
+    queryInputEnter(cmp);
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
     cmp.find(Widget.CheckIcon).simulate('click');
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.true;
     const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql(['100', ...value,]);
+    exp(getTreeValue(cmp)).to.be.eql(['100', ...value,]);
   });
   const HalfChecked = 'sv-tree-checkbox-indeterminate';
   const Checked = 'sv-tree-checkbox-checked';
@@ -372,7 +372,7 @@ describe('TreeSelect', () => {
                                   expandAll={true}
                                   limitCount={5}/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
+    showTrigger(cmp);
     cmp.find(CheckBox).at(0).simulate('click');
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
     const displayValue = rowData.filter((item: Object, index: number) => index < 5).map(item => item.title);
@@ -399,7 +399,7 @@ describe('TreeSelect', () => {
                                   expandAll={true}
                                   limitCount={5}/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
+    showTrigger(cmp);
     cmp.find(TreeRow).at(0).simulate('click');
     const value = rowData.filter((item: Object, index: number) => index < 1).map(item => item.key);
     const displayValue = rowData.filter((item: Object, index: number) => index < 1).map(item => item.title);
@@ -427,11 +427,11 @@ describe('TreeSelect', () => {
                                   expandAll={true}
                                   limitCount={5}/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
-    cmp.find(Widget.CheckIcon).simulate('click');
+    showTrigger(cmp);
+    clickSelectChkBox(cmp);
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
     const displayValue = rowData.filter((item: Object, index: number) => index < 5).map(item => item.title);
-    cmp.find(Widget.CheckIcon).simulate('click');
+    clickSelectChkBox(cmp);
     const result = await selAllPromise;
     exp(result).to.be.eql([{ value, displayValue, }, { value: [], displayValue: [], },]);
   });
@@ -502,19 +502,102 @@ describe('TreeSelect', () => {
                                   expandAll={true}
                                   limitCount={5}/>);
 
-    cmp.find(Widget.InputTag).simulate('click');
+    showTrigger(cmp);
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
-    cmp.find(Widget.CheckIcon).simulate('click');
+    clickSelectChkBox(cmp);
     exp(cmp.find(Widget.CheckIcon).props().checked).to.be.false;
-    exp(cmp.find(Widget.Tree).props().value).to.be.eql([]);
+    exp(getTreeValue(cmp)).to.be.eql([]);
   });
+  it('键盘子节点选择问题 shift选择 父节点', async () => {
+
+
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  expandAll={true}/>);
+    showTrigger(cmp);
+    queryInputDown(cmp);
+    queryInputShift(cmp);
+    exp(getTreeValue(cmp)).to.be.eql(['1',]);
+
+
+  });
+  it('键盘子节点选择问题 shift选择 子节点', async () => {
+
+
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  expandAll={true}/>);
+    showTrigger(cmp);
+    queryInputDown(cmp);
+    queryInputDown(cmp);
+    queryInputShift(cmp);
+    exp(getTreeValue(cmp)).to.be.eql(['1.1',]);
+
+
+  });
+  it('键盘子节点选择问题 ctrl选择 父节点', async () => {
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  expandAll={true}/>);
+    showTrigger(cmp);
+    queryInputDown(cmp);
+    queryInputCtrl(cmp);
+    exp(getTreeValue(cmp)).to.be.eql(
+      rowData.filter(item => {
+        return item.key == '1' || item.path && item.path.startsWith('1');
+      }).map(item => item.key));
+
+  });
+  it('键盘子节点选择问题 ctrl选择 子节点', async () => {
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  expandAll={true}/>);
+    showTrigger(cmp);
+    queryInputDown(cmp);
+    queryInputDown(cmp);
+    queryInputCtrl(cmp);
+    exp(getTreeValue(cmp)).to.be.eql(['1.1',]);
+  });
+
+  function getTreeValue (cmp) {
+    return cmp.find(Widget.Tree).props().value;
+  }
+
+
+  function showTrigger (cmp: Object) {
+    cmp.find(Widget.InputTag).simulate('click');
+  }
 
   function getTreeQuery (cmp: Object) {
     return findTree(cmp).props().query;
   }
 
+  function queryInputDown (cmp: Object) {
+    simulateQueryInput(cmp, 40);
+  }
+
+  function queryInputShift (cmp: Object) {
+    simulateQueryInput(cmp, 16);
+  }
+
+  function queryInputCtrl (cmp: Object) {
+    simulateQueryInput(cmp, 17);
+  }
+
+  function queryInputEnter (cmp: Object) {
+    simulateQueryInput(cmp, 13);
+  }
+
+  function simulateQueryInput (cmp: Object, keyCode: number) {
+    findQueryInput(cmp).simulate('keydown', { keyCode, });
+  }
+
   function findTree (cmp: Object) {
     return cmp.find(Widget.Tree).at(0);
+  }
+
+  function clickSelectChkBox (cmp: Object) {
+    cmp.find(Widget.CheckIcon).simulate('click');
   }
 
   function chagneQuery (cmp: Object, value: string) {
