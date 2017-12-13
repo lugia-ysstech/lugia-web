@@ -22,14 +22,13 @@ import AddIcon from '../icon/AddIcon';
 import Refresh from '../icon/RefreshIcon';
 import CheckIcon from '../icon/CheckIcon';
 import ClearIcon from '../icon/ClearIcon';
-import { splitStr, } from '../utils';
 import { FontSize, } from '../css';
 
 type TreeSelectProps = {
   data: Array<Object>,
   getTheme: Function,
-  value?: string,
-  displayValue?: string,
+  value?: Array<string>,
+  displayValue?: Array<string>,
   svThemVersion?: number;
   onRefresh?: Function,
   displayField: string,
@@ -123,8 +122,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getInitValue (props: TreeSelectProps) {
-    const { value, displayValue, } = Support.getCodeItem(props);
-    return { value: splitStr(value), displayValue: displayValue ? splitStr(displayValue) : splitStr(value), };
+    const { value, displayValue, } = Support.getCodeItemArray(props);
+    return { value, displayValue: displayValue && displayValue.length > 0 ? displayValue : [...value,], };
   }
 
   shouldComponentUpdate (nexProps: TreeSelectProps, nextState: TreeSelectState) {
@@ -367,9 +366,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       const data = this.getQueryData();
       const { value, displayValue, } = this.state;
       let cnt = 0;
+
       let { limitCount = DefaultLimitCount, } = this.props;
       const notInTreeCount = Object.keys(this.getNotInTree()).length;
       limitCount = limitCount - notInTreeCount;
+
       for (let i = 0; i < data.length; i++) {
         const { key, [ displayField ]: title, } = data[ i ];
         if (cnt >= limitCount) break;

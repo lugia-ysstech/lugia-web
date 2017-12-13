@@ -433,7 +433,8 @@ describe('TreeSelect', () => {
     const displayValue = rowData.filter((item: Object, index: number) => index < 5).map(item => item.title);
     clickSelectChkBox(cmp);
     const result = await selAllPromise;
-    exp(result).to.be.eql([{ value, displayValue, }, { value: [], displayValue: [], },]);
+    const expRes = [{ value, displayValue, }, { value: [], displayValue: [], },];
+    exp(result).to.be.eql(expRes);
   });
 
   it('没有任何结点可以选择的情况  全选框状态应该是未选中', async () => {
