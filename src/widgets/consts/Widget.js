@@ -20,6 +20,7 @@ export const Icon = 'sv_widget_Icon';
 export const AddIcon = 'sv_widget_AddIcon';
 export const RefershIcon = 'sv_widget_RefershIcon';
 export const CheckIcon = 'sv_widget_CheckIcon';
+export const ClearIcon = 'sv_widget_ClearIcon';
 export const DropMenu = 'sv_widget_DropMenu';
 export const Tree = 'sv_widget_Tree';
 export const TreeSelect = 'sv_widget_TreeSelect';

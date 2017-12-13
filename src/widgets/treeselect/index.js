@@ -19,6 +19,7 @@ import Support from '../common/FormFieldWidgetSupport';
 import AddIcon from '../icon/AddIcon';
 import Refresh from '../icon/RefreshIcon';
 import CheckIcon from '../icon/CheckIcon';
+import ClearIcon from '../icon/ClearIcon';
 import { splitStr, } from '../utils';
 import { FontSize, } from '../css';
 
@@ -233,7 +234,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
                              viewClass={SelectedIcon}></CheckIcon>);
     }
     result.push(<Refresh key="refresh" onClick={this.onRefresh} viewClass={SelectedIcon}></Refresh>);
+    result.push(<ClearIcon key="clear" onClick={this.onClearQuery} viewClass={SelectedIcon}></ClearIcon>);
     return result;
+  };
+  onClearQuery = () => {
+    this.setState({
+      query: '',
+      treeFilter: '',
+    });
   };
   onRefresh = () => {
     const { props, } = this;

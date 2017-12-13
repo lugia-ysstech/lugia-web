@@ -558,6 +558,25 @@ describe('TreeSelect', () => {
     queryInputCtrl(cmp);
     exp(getTreeValue(cmp)).to.be.eql(['1.1',]);
   });
+  it('点击删除查询内容', async () => {
+    const value = 'hello';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  value={value}
+                                  throttle={0}
+                                  mutliple
+                                  expandAll={true}/>);
+    showTrigger(cmp);
+    const old = 'hello';
+    chagneQuery(cmp, old);
+    exp(findQueryInputValue(cmp)).to.be.equal(old);
+    exp(findTree(cmp).props().query).to.be.equal(old);
+    exp(findTree(cmp).props().value).to.be.eql([value,]);
+
+    clickClear(cmp);
+    exp(findQueryInputValue(cmp)).to.be.equal('');
+    exp(findTree(cmp).props().query).to.be.equal('');
+    exp(findTree(cmp).props().value).to.be.eql([value,]);
+  });
 
   function getTreeValue (cmp) {
     return cmp.find(Widget.Tree).props().value;
@@ -594,6 +613,10 @@ describe('TreeSelect', () => {
 
   function findTree (cmp: Object) {
     return cmp.find(Widget.Tree).at(0);
+  }
+
+  function clickClear (cmp: Object) {
+    cmp.find(Widget.ClearIcon).simulate('click');
   }
 
   function clickSelectChkBox (cmp: Object) {
