@@ -114,8 +114,13 @@ function getInitCodeItemArray (props: any): { value: Array<any>, displayValue: A
   return { value: toArray(resValue), displayValue: toArray(resDisplayValue), };
 }
 
-function toArray (val: any): Array<string> {
-  return isString(val) ? [val,] : val;
+function isArray (value) {
+  return Object.prototype.toString.call(value) === '[object Array]';
+
+}
+
+function toArray (value) {
+  return isArray(value) ? value : [value,];
 }
 
 

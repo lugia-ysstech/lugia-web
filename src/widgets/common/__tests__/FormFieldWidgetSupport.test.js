@@ -22,6 +22,7 @@ describe('FormFieldWidgetSupport.js', () => {
 
   it('getInitValueArray', () => {
     exp(getInitValueArray({ defaultValue: '1000', })).to.be.eql(['1000',]);
+    exp(getInitValueArray({ defaultValue: 1, })).to.be.eql([1,]);
     exp(getInitValueArray({ defaultValue: ['1000', '1',], })).to.be.eql(['1000', '1',]);
     exp(getInitValueArray({ defaultValue: ['1000', '1',], value: ['1000',], })).to.be.eql(['1000',]);
     exp(getInitValueArray({})).to.be.eql([]);
