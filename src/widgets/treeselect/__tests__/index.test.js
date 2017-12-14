@@ -598,6 +598,17 @@ describe('TreeSelect', () => {
     exp(cmp.find(Widget.InputTag).props().value).to.be.eql([value,]);
     exp(cmp.find(Widget.InputTag).props().displayValue).to.be.eql([displayValue,]);
   });
+  it('多选 value displayValue 逗号分隔', async () => {
+    const value = '1,2,3,4';
+    const displayValue = '1,2,3,4';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  value={value}
+                                  displayValue={displayValue}
+                                  throttle={0}
+                                  expandAll={true}/>);
+    exp(cmp.find(Widget.InputTag).props().value).to.be.eql([value,]);
+    exp(cmp.find(Widget.InputTag).props().displayValue).to.be.eql([displayValue,]);
+  });
 
   function getTreeValue (cmp) {
     return cmp.find(Widget.Tree).props().value;
