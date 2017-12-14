@@ -10,7 +10,7 @@ import * as Widget from '../consts/Widget';
 
 
 export default class  extends React.Component<any, any> {
-  static displayName = Widget.MoreInputTagItem;
+  static displayName = Widget.InputTagMoreItem;
   render () {
     return (
       <Item closeable={false} {...this.props}>...</Item>

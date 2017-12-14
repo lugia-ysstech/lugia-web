@@ -7,13 +7,15 @@
 export const Input = 'sv_widget_Input';
 export const Align = 'sv_widget_Align';
 export const Trigger = 'sv_widget_Trigger';
-export const InputTag = 'sv_widget_InputTag';
-export const InputTagItem = 'sv_widget_InputTagItem';
-export const InputTagCloseButton = 'sv_widget_InputTagCloseButton';
-export const FontItem = 'sv_widget_FontItem';
-export const MoreInputTagItem = 'sv_widget_MoreInputTagItem';
-export const ItemOption = 'sv_widget_ItemOption';
 export const ThemeWrapWidget = 'ThemeWrapWidget';
+
+export const InputTag = 'sv_widget_InputTag';
+export const InputTagCloseButton = 'sv_widget_InputTagCloseButton';
+export const InputTagFontItem = 'sv_widget_InputTagFontItem';
+export const InputTagMoreItem = 'sv_widget_InputTagMoreItem';
+export const ItemTagOption = 'sv_widget_ItemTagOption';
+export const InputTagItem = 'sv_widget_InputTagItem';
+
 export const Theme = 'sv_widget_Theme';
 export const Menu = 'sv_widget_Menu';
 export const MenuItem = 'sv_widget_MenuItem';

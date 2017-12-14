@@ -303,8 +303,8 @@ describe('InputTag', () => {
         const tagItems = findInputItem(cmp);
         // 一个字体 2个显示 一个多选
 
-        exp(cmp.find(Widgets.MoreInputTagItem).length).to.be.equal(1);
-        exp(cmp.find(Widgets.ItemOption).length).to.be.equal(1);
+        exp(cmp.find(Widgets.InputTagMoreItem).length).to.be.equal(1);
+        exp(cmp.find(Widgets.ItemTagOption).length).to.be.equal(1);
         const moreItem = findMoreItem(cmp);
         moreItem.simulate('click');
         await delay(0, async () => {
@@ -312,7 +312,7 @@ describe('InputTag', () => {
           cmp.find(Widgets.Input).simulate('change', { target: { value: '我', }, });
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).text().trim()).to.be.equal('我');
-          cmp.find(Widgets.ItemOption).at(0).simulate('click');
+          cmp.find(Widgets.ItemTagOption).at(0).simulate('click');
           moreItem.simulate('click');
           exp(cmp.find(Widgets.Input).props().value).to.be.equal('');
 
@@ -324,11 +324,11 @@ describe('InputTag', () => {
   });
 
   function findFontItem (cmp) {
-    return cmp.find(Widgets.FontItem);
+    return cmp.find(Widgets.InputTagFontItem);
   }
 
   function findMoreItem (cmp) {
-    return cmp.find(Widgets.MoreInputTagItem);
+    return cmp.find(Widgets.InputTagMoreItem);
   }
 
   function findInputItem (cmp) {

@@ -18,7 +18,7 @@ const HiddenItem = styled(Item)`
   top: -943124px;
 `;
 export default class  extends React.Component<any, FontItemState> {
-  static displayName = Widget.FontItem;
+  static displayName = Widget.InputTagFontItem;
 
   state: FontItemState;
   width: number;
