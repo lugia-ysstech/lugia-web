@@ -20,12 +20,12 @@ describe('InputTag', () => {
   const value = '1,2,3'.split(',');
 
   function createInputTagTest (props: Object) {
-
+    const { width = 300, } = props;
     return class  extends React.Component<any, any> {
       inputtag: any;
 
       render () {
-        return <Theme config={{ [ Widgets.InputTag ]: { width: 300, }, }} {...this.props}>
+        return <Theme config={{ [ Widgets.InputTag ]: { width, }, }} {...this.props}>
           <InputTag {...props}
                     ref={cmp => this.inputtag = cmp}
           /></Theme>;
@@ -296,27 +296,32 @@ describe('InputTag', () => {
     exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
   });
   it('点击更多按钮 进行查询', async () => {
-    const InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, });
+    const InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, width: 300,});
     const result = new Promise(async resolve => {
 
-      await renderInputTag(InputTagTest, 5000, async cmp => {
+      await renderInputTag(InputTagTest, 100, async cmp => {
         const tagItems = findInputItem(cmp);
-        exp(tagItems.length).to.be.equal(2);
+        // 一个字体 2个显示 一个多选
+        exp(tagItems.length).to.be.equal(4);
         const moreItem = findMoreItem(cmp);
         moreItem.simulate('click');
         await delay(0, async () => {
 
           cmp.update();
-          exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
-          exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
-          exp(cmp.find(Widgets.Icon).length).to.be.equal(4);
-          // console.info(cmp.find(Widgets.InputTagItem.length))
+          console.info(cmp.find(Widgets.DropMenu).length);
+          console.info(cmp.find(Widgets.MenuItem).length);
+          console.info(cmp.find(Widgets.Icon).length);
+
+
           cmp.find(Widgets.Input).simulate('change', { target: { value: '我', }, });
+
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).text().trim()).to.be.equal('我');
-          // cmp.find(Widgets.InputTagItem).at(0).simulate('click');
-          // moreItem.simulate('click');
-          console.info(cmp.find(Widgets.Input).props().value);
+          console.info(cmp.find(Widgets.InputTagItem).length);
+
+          cmp.find(Widgets.InputTagItem).at(1).simulate('click');
+          moreItem.simulate('click');
+          exp(cmp.find(Widgets.Input).props().value).to.be.equal('');
 
           resolve(true);
         });
