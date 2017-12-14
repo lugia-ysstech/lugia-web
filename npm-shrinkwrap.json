@@ -1,6 +1,6 @@
 {
   "name": "sv-widget",
-  "version": "1.0.11",
+  "version": "1.0.16",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -14256,9 +14256,9 @@
       }
     },
     "sv-test-utils": {
-      "version": "0.1.3",
-      "resolved": "http://192.168.101.103:5000/sv-test-utils/download/sv-test-utils-0.1.3.tgz",
-      "integrity": "sha1-1XI/5ZGGXzbjf7XNiiRMEw6tbuo=",
+      "version": "0.1.4",
+      "resolved": "http://192.168.101.103:5000/sv-test-utils/download/sv-test-utils-0.1.4.tgz",
+      "integrity": "sha1-J2m3HY3+hjXVEHUhfNXvGFs2MZ8=",
       "dev": true,
       "requires": {
         "react": "16.2.0",
@@ -15115,14 +15115,13 @@
       "dev": true,
       "requires": {
         "deep-equal": "1.0.1",
-        "vx-var-utils": "0.5.8"
+        "vx-var-utils": "0.5.9"
       }
     },
     "vx-var-utils": {
-      "version": "0.5.8",
-      "resolved": "http://192.168.101.103:5000/vx-var-utils/download/vx-var-utils-0.5.8.tgz",
-      "integrity": "sha1-iOGfIYQT2uEm2VPdUh6VW72CET4=",
-      "dev": true
+      "version": "0.5.9",
+      "resolved": "http://192.168.101.103:5000/vx-var-utils/download/vx-var-utils-0.5.9.tgz",
+      "integrity": "sha1-bDFdbMcDTJNZAoE7MkupG+F3Ax8="
     },
     "walker": {
       "version": "1.0.7",

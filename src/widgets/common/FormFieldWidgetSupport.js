@@ -1,6 +1,9 @@
 //@flow
 import type { GetValueArgType, } from 'sv-widget';
-import { ArrayUtils, } from 'vx-var-utils';
+
+const Utils = require('vx-var-utils');
+
+const { ArrayUtils, } = Utils;
 
 const { toArray, } = ArrayUtils;
 
