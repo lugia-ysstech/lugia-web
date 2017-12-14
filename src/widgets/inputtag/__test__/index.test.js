@@ -296,30 +296,23 @@ describe('InputTag', () => {
     exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
   });
   it('点击更多按钮 进行查询', async () => {
-    const InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, width: 300,});
+    const InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, width: 300, });
     const result = new Promise(async resolve => {
 
-      await renderInputTag(InputTagTest, 100, async cmp => {
+      await renderInputTag(InputTagTest, 150, async cmp => {
         const tagItems = findInputItem(cmp);
         // 一个字体 2个显示 一个多选
-        exp(tagItems.length).to.be.equal(4);
+
+        exp(cmp.find(Widgets.MoreInputTagItem).length).to.be.equal(1);
+        exp(cmp.find(Widgets.ItemOption).length).to.be.equal(1);
         const moreItem = findMoreItem(cmp);
         moreItem.simulate('click');
         await delay(0, async () => {
-
           cmp.update();
-          console.info(cmp.find(Widgets.DropMenu).length);
-          console.info(cmp.find(Widgets.MenuItem).length);
-          console.info(cmp.find(Widgets.Icon).length);
-
-
           cmp.find(Widgets.Input).simulate('change', { target: { value: '我', }, });
-
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).text().trim()).to.be.equal('我');
-          console.info(cmp.find(Widgets.InputTagItem).length);
-
-          cmp.find(Widgets.InputTagItem).at(1).simulate('click');
+          cmp.find(Widgets.ItemOption).at(0).simulate('click');
           moreItem.simulate('click');
           exp(cmp.find(Widgets.Input).props().value).to.be.equal('');
 

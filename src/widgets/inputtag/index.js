@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
 import { ItemMarginRight, } from './style';
-import Item from './Item';
+import Item from './ItemOption';
 import Icon from '../icon';
 import MoreItem from './MoreItem';
 import FontItem from './FontItem';

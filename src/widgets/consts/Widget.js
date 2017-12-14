@@ -12,6 +12,7 @@ export const InputTagItem = 'sv_widget_InputTagItem';
 export const InputTagCloseButton = 'sv_widget_InputTagCloseButton';
 export const FontItem = 'sv_widget_FontItem';
 export const MoreInputTagItem = 'sv_widget_MoreInputTagItem';
+export const ItemOption = 'sv_widget_ItemOption';
 export const ThemeWrapWidget = 'ThemeWrapWidget';
 export const Theme = 'sv_widget_Theme';
 export const Menu = 'sv_widget_Menu';
