@@ -70,8 +70,8 @@ describe('InputTag', () => {
   }
 
   createSingleCase('a', '我');
-  createSingleCase('a', [ '我', ]);
-  createSingleCase('a', [ '我', '你', '他', ]);
+  createSingleCase('a', ['我',]);
+  createSingleCase('a', ['我', '你', '他',]);
   createItemsTest(createInputTagTest({
     value,
     displayValue,
@@ -109,7 +109,7 @@ describe('InputTag', () => {
     });
     it('展现值&实际值 3个只能容纳一个' + caseTitle, async () => {
       let i = 0;
-      const val = [ 5, 1000, 1000, ];
+      const val = [5, 1000, 1000,];
       const getFontWidth = () => {
         return val[ i++ ];
       };
@@ -297,7 +297,7 @@ describe('InputTag', () => {
   });
   it('点击更多按钮 进行查询', async () => {
     const InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, });
-    new Promise(async resolve => {
+    const result = new Promise(async resolve => {
 
       await renderInputTag(InputTagTest, 5000, async cmp => {
         const tagItems = findInputItem(cmp);
@@ -310,13 +310,19 @@ describe('InputTag', () => {
           exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
           exp(cmp.find(Widgets.Icon).length).to.be.equal(4);
-          exp(cmp.find(Widgets.Input)).simulate('change', { target: { value: '我', }, });
-          exp(cmp.find(Widgets.InputTagItem).length).to.be.equal(1);
-          exp(cmp.find(Widgets.InputTagItem).text()).to.be.equal('我');
+          // console.info(cmp.find(Widgets.InputTagItem.length))
+          cmp.find(Widgets.Input).simulate('change', { target: { value: '我', }, });
+          exp(cmp.find(Widgets.MenuItem).length).to.be.equal(1);
+          exp(cmp.find(Widgets.MenuItem).text().trim()).to.be.equal('我');
+          // cmp.find(Widgets.InputTagItem).at(0).simulate('click');
+          // moreItem.simulate('click');
+          console.info(cmp.find(Widgets.Input).props().value);
+
           resolve(true);
         });
       });
     });
+    await result;
   });
 
   function findFontItem (cmp) {
