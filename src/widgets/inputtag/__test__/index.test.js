@@ -25,7 +25,7 @@ describe('InputTag', () => {
       inputtag: any;
 
       render () {
-        return <Theme config={{ [Widgets.InputTag]: { width: 300, }, }} {...this.props}>
+        return <Theme config={{ [ Widgets.InputTag ]: { width: 300, }, }} {...this.props}>
           <InputTag {...props}
                     ref={cmp => this.inputtag = cmp}
           /></Theme>;
@@ -70,8 +70,8 @@ describe('InputTag', () => {
   }
 
   createSingleCase('a', '我');
-  createSingleCase('a', ['我',]);
-  createSingleCase('a', ['我', '你', '他',]);
+  createSingleCase('a', [ '我', ]);
+  createSingleCase('a', [ '我', '你', '他', ]);
   createItemsTest(createInputTagTest({
     value,
     displayValue,
@@ -109,7 +109,7 @@ describe('InputTag', () => {
     });
     it('展现值&实际值 3个只能容纳一个' + caseTitle, async () => {
       let i = 0;
-      const val = [5, 1000, 1000,];
+      const val = [ 5, 1000, 1000, ];
       const getFontWidth = () => {
         return val[ i++ ];
       };
@@ -185,7 +185,7 @@ describe('InputTag', () => {
 
         render () {
           const { value, displayValue, } = this.state;
-          return <Theme config={{ [Widgets.InputTag]: { width: 300, }, }}>
+          return <Theme config={{ [ Widgets.InputTag ]: { width: 300, }, }}>
             <InputTag
               onChange={this.onChange}
               value={value}
@@ -294,6 +294,29 @@ describe('InputTag', () => {
     });
     await  result;
     exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
+  });
+  it('点击更多按钮 进行查询', async () => {
+    const InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, });
+    new Promise(async resolve => {
+
+      await renderInputTag(InputTagTest, 5000, async cmp => {
+        const tagItems = findInputItem(cmp);
+        exp(tagItems.length).to.be.equal(2);
+        const moreItem = findMoreItem(cmp);
+        moreItem.simulate('click');
+        await delay(0, async () => {
+
+          cmp.update();
+          exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
+          exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
+          exp(cmp.find(Widgets.Icon).length).to.be.equal(4);
+          exp(cmp.find(Widgets.Input)).simulate('change', { target: { value: '我', }, });
+          exp(cmp.find(Widgets.InputTagItem).length).to.be.equal(1);
+          exp(cmp.find(Widgets.InputTagItem).text()).to.be.equal('我');
+          resolve(true);
+        });
+      });
+    });
   });
 
   function findFontItem (cmp) {

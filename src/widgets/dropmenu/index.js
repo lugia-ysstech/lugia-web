@@ -22,6 +22,7 @@ type DropMenuProps = {
   onPopupVisibleChange?: Function,
   onQuery: Function,
   getTheme: Function,
+  query: string,
 };
 const MenuContainer = styled.div`
    background-color: #fff;
@@ -50,7 +51,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render () {
-    const { menus, children, action, hideAction, } = this.props;
+    const { menus, children, action, hideAction, query, } = this.props;
     const { width = defaultWidth, } = this.props.getTheme();
 
     const queryInputWidth = (width) - (2 * QueryInputPadding);
@@ -59,7 +60,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       [ Widget.Input ]: { width: queryInputWidth, },
       [ Widget.Trigger ]: { width, },
     };
-    const popup = [<QueryInput key="queryContainer"><Input onChange={this.onQuery} key="quernInput"/></QueryInput>,
+    const popup = [<QueryInput key="queryContainer"><Input onChange={this.onQuery} key="quernInput"
+                                                            value={query}/></QueryInput>,
       <MenuContainer key="menus">{menus}</MenuContainer>,];
     return <Theme config={menuConfig}> <Trigger
       onPopupVisibleChange={this.onPopupVisibleChange}
