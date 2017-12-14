@@ -14,6 +14,7 @@ import Input from '../input';
 import QueryInput, { QueryInputPadding, } from '../common/QueryInputContainer';
 
 const defaultWidth = 200;
+const defaultHeight = 250;
 type DropMenuProps = {
   action: Array<string>,
   hideAction: Array<string>,
@@ -52,13 +53,13 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   render () {
     const { menus, children, action, hideAction, query, } = this.props;
-    const { width = defaultWidth, } = this.props.getTheme();
+    const { width = defaultWidth, height = defaultHeight, } = this.props.getTheme();
 
     const queryInputWidth = (width) - (2 * QueryInputPadding);
     const menuConfig = {
-      [ Widget.Menu ]: { width, },
+      [ Widget.Menu ]: { width, height, },
       [ Widget.Input ]: { width: queryInputWidth, },
-      [ Widget.Trigger ]: { width, },
+      [ Widget.Trigger ]: { width, height, },
     };
     const popup = [<QueryInput key="queryContainer"><Input onChange={this.onQuery} key="quernInput"
                                                             value={query}/></QueryInput>,

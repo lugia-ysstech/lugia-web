@@ -88,6 +88,7 @@ const IconButton: Object = styled(Icon)`
 IconButton.displayName = 'IconButtonName';
 const marginLeft = 5;
 const marginRight = 7;
+const DefaultHeight = 250;
 
 const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
@@ -231,10 +232,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     let result;
     const clearButton = this.getClearButton();
     const placeholder = this.getPlaceholder();
-    const config = { width: this.getWidth(), };
+    const config = { width: this.getWidth(), height: this.getHeight(), };
     const theme = {
       [ Widget.DropMenu ]: config,
-      [ Widget.Trigger ]: config,
       [ Widget.Icon ]: { hoverColor: 'red', },
       [ IconButton.displayName ]: { hoverColor: 'rgba(0,0,0,.43)', },
     };
@@ -490,6 +490,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { width, } = getTheme();
     const offsetWidth = this.container ? this.container.offsetWidth : 0;
     return width ? width : offsetWidth;
+  }
+
+  getHeight () {
+    const { getTheme, } = this.props;
+
+    const { height = DefaultHeight, } = getTheme();
+    return height;
   }
 
   async adaptiveItems (listWidth: number): Promise<boolean> {
