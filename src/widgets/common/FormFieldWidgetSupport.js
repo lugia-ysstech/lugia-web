@@ -1,5 +1,8 @@
 //@flow
 import type { GetValueArgType, } from 'sv-widget';
+import { ArrayUtils, } from 'vx-var-utils';
+
+const { toArray, } = ArrayUtils;
 
 function getValue (props: any, state: any): string {
   let value;
@@ -114,15 +117,6 @@ function getInitCodeItemArray (props: any): { value: Array<any>, displayValue: A
   return { value: toArray(resValue), displayValue: toArray(resDisplayValue), };
 }
 
-function isArray (value) {
-  return Object.prototype.toString.call(value) === '[object Array]';
-
-}
-
-function toArray (value) {
-  return isArray(value) ? value : [value,];
-}
-
 
 function isNotLimit (props: any) {
   return isNotLimitByName(props, 'value');
@@ -133,7 +127,7 @@ function isNotLimitByName (props: any, name: string) {
 }
 
 
-function isString (str: any) {
+export function isString (str: any) {
   return typeof str === 'string';
 }
 
@@ -143,6 +137,7 @@ export default {
   getObjectValue,
   getInitValue,
   getInitStart,
+  toArray,
   isNotLimit,
   getInitNumberValue,
   getInitValueArray,

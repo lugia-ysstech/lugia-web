@@ -4,7 +4,7 @@ import Support from '../FormFieldWidgetSupport';
 import chai from 'chai';
 
 const { expect: exp, } = chai;
-const { getValue, getInitValueArray, getInitValue, getCodeItem, getCodeItemArray, } = Support;
+const { getValue, getInitValueArray, getInitValue, getCodeItem, getCodeItemArray, toArray, } = Support;
 
 describe('FormFieldWidgetSupport.js', () => {
   it('getValue: value is  props.value', () => {
@@ -112,5 +112,11 @@ describe('FormFieldWidgetSupport.js', () => {
 
     exp(getCodeItemArray({})).to.be.eql({ displayValue: [], value: [], });
   });
-
+  it('toArray', () => {
+      exp(toArray('1')).to.be.eql(['1',]);
+      exp(toArray(1)).to.be.eql([1,]);
+      exp(toArray()).to.be.eql([]);
+      exp(toArray(null)).to.be.eql([]);
+      exp(toArray(0)).to.be.eql([0,]);
+  });
 });
