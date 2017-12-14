@@ -7,3 +7,4 @@
 export const InputBorderColor = '#d9d9d9';
 export const InputBorderHoverColor = '#49a9ee';
 export const RadiusSize = '4px';
+export const Height = 28;

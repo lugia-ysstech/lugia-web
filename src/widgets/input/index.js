@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
-import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
+import { InputBorderColor, InputBorderHoverColor, RadiusSize, Height,} from '../css/input';
 import PlaceContainer from '../common/PlaceContainer';
 import {FontSize,} from '../css';
 
@@ -46,7 +46,7 @@ const CommonInputStyle = styled.input`
   cursor: text;
   line-height: 1.5;
   font-size: ${FontSize};
-  height: 28px;
+  height: ${Height}px;
   display: inline-block;
   padding: 2px 3px;
   font-family: inherit;

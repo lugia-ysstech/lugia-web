@@ -12,6 +12,7 @@ import * as Widget from '../consts/Widget';
 import '../common/shirm';
 import Input from '../input';
 import QueryInput, { QueryInputPadding, } from '../common/QueryInputContainer';
+import { Height, } from '../css/input';
 
 const defaultWidth = 200;
 const defaultHeight = 250;
@@ -57,14 +58,14 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
     const queryInputWidth = (width) - (2 * QueryInputPadding);
     const menuConfig = {
-      [ Widget.Menu ]: { width, height, },
+      [ Widget.Menu ]: { width, height: height - (Height + 2 * QueryInputPadding), },
       [ Widget.Input ]: { width: queryInputWidth, },
       [ Widget.Trigger ]: { width, height, },
     };
     const popup = [<QueryInput key="queryContainer"><Input onChange={this.onQuery} key="quernInput"
                                                             value={query}/></QueryInput>,
       <MenuContainer key="menus">{menus}</MenuContainer>,];
-    return <Theme config={menuConfig}> <Trigger
+    return <Theme config={menuConfig}><Trigger
       onPopupVisibleChange={this.onPopupVisibleChange}
       ref={cmp => this.trigger = cmp}
       align="bottomLeft"
