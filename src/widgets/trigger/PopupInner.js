@@ -13,6 +13,7 @@ const getWidth = props => {
   return `width: ${width ? `${width}px;` : '100%;'}`;
 };
 const PopupInnerBox = VisibleBox.extend`
+  position: absolute;
   ${getWidth}
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
