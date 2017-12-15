@@ -1,6 +1,9 @@
 
-:global(.sv *) {
+:global(.sv) {
     line-height: 1;
+}
+
+:global(.sv *) {
     box-sizing: border-box;
 }
 
