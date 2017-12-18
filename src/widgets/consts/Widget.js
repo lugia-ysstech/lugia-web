@@ -15,6 +15,7 @@ export const InputTagFontItem = 'sv_widget_InputTagFontItem';
 export const InputTagMoreItem = 'sv_widget_InputTagMoreItem';
 export const ItemTagOption = 'sv_widget_ItemTagOption';
 export const InputTagItem = 'sv_widget_InputTagItem';
+export const InputTagClearButton = 'sv_widget_InputTagClearButton';
 
 export const Theme = 'sv_widget_Theme';
 export const Menu = 'sv_widget_Menu';
