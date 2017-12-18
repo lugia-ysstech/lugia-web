@@ -59,7 +59,7 @@ function getNumberKey () {
 
 const rowData: Array<Object> = [
   { key: '1', title: '1', },
-  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
+  { key: '1.1', title: '1123', pid: '1', path: '1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
@@ -103,19 +103,16 @@ export default class extends React.Component<any, any> {
     super(props);
     this.state = {
       data: [],
+      value: '1',
+      displayValue: '1',
       width: 300,
       height: 250,
     };
   }
 
-  shouldComponentUpdate (nexProps: any, nextState: any) {
-    return this.state.data !== nextState.data ||
-      this.state.width !== nextState.width ||
-      this.state.height !== nextState.height;
-  }
 
   render () {
-    const { height, width, } = this.state;
+    const { height, width, value, displayValue, } = this.state;
     console.info(height, width);
     const config = { [ Widget.TreeSelect ]: { height, width, }, };
     console.info('demo');
@@ -127,10 +124,12 @@ export default class extends React.Component<any, any> {
         //           igronSelectField="isLeaf"
                   canInput
                   throttle={500}
-                  // limitCount={5}
+                  expandAll={true}
+                  limitCount={5}
+        // limitCount={5}
                   expandAll
-                  defaultValue="a"
-                  defaultDisplayValue={'我么啊啊'}
+                  value={value}
+                  displayValue={displayValue}
                   mutliple
                   placeholder="请输入xxx"
         // disabled
@@ -141,10 +140,10 @@ export default class extends React.Component<any, any> {
     </Theme>;
   }
 
-  onHeightChange = (e:Object) => {
+  onHeightChange = (e: Object) => {
     this.setState({ height: e.target.value, });
   };
-  onWidthChange = (e:Object) => {
+  onWidthChange = (e: Object) => {
     this.setState({ width: e.target.value, });
 
   };
@@ -152,7 +151,7 @@ export default class extends React.Component<any, any> {
     console.info('refresh');
   };
   onChange = (obj: Object) => {
-    console.info(obj);
+    this.setState(obj);
   };
   onTrigger = () => {
     this.setState({ data: rowData, });
