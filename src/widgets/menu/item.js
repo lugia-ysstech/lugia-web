@@ -7,8 +7,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import * as Widget from '../consts/Widget';
-import {FontSize,} from '../css';
+import { FontSize, } from '../css';
 
+const Utils = require('vx-var-utils');
+const { ObjectUtils, } = Utils;
 type MenuItemProps = {
   checked: boolean,
   mutliple: boolean,
@@ -88,7 +90,13 @@ class MenuItem extends React.Component<MenuItemProps> {
   render () {
     const { children, mutliple, checked, onClick, } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
-    return <Item checked={checked} onClick={onClick}>{children}</Item>;
+    let title = '';
+    React.Children.forEach(children, (item: Object) => {
+      if (ObjectUtils.isString(item)) {
+        title = item;
+      }
+    });
+    return <Item checked={checked} onClick={onClick} title={title}>{children}</Item>;
   }
 }
 
