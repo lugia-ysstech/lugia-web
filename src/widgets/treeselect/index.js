@@ -93,7 +93,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   state: TreeSelectState;
   inputTag: Object;
   treeTriger: Object;
-  oldValue: string;
+  oldValue: Array<string>;
   treeVisible: boolean;
   treeCmp: Object;
   queryInput: Object;
@@ -118,6 +118,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.treeVisible = false;
   }
 
+  //TODO:受限问题
+  //TODO: 放到Table元素中半选状态的样式问题
+  //TODO: 选中结点时如果子节点特备多的时候性能有问题。
   getInitValue (props: TreeSelectProps) {
     const { value, displayValue, } = Support.getCodeItemArray(props);
     return { value, displayValue: displayValue && displayValue.length > 0 ? displayValue : [...value,], };
@@ -145,6 +148,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   componentWillReceiveProps (props: TreeSelectProps) {
     if (!Support.isNotLimit(props)) {
+      const { value = [], } = props;
+      this.changeOldValue(value);
 
       if (props.value !== this.props.value || props.displayValue !== this.props.displayValue) {
         const { value, displayValue, } = this.getInitValue(props);
@@ -243,13 +248,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
   onRefresh = () => {
     const { props, } = this;
-    if (Support.isNotLimit(props)) {
-      this.setValue([], [], {
-        query: '',
-        treeFilter: '',
-        start: 0,
-      });
-    }
+    this.setValue([], [], {
+      query: '',
+      treeFilter: '',
+      start: 0,
+    });
     this.setState({ query: '', treeFilter: '', start: 0, });
     const { onRefresh, } = props;
     onRefresh && onRefresh();
@@ -361,7 +364,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     if (selectAll === true) {
       const { displayField, } = this.props;
       const data = this.getQueryData();
-      const { value, displayValue, } = this.state;
+      const { value: stateValue, displayValue: stateDisplayValue, } = this.state;
+      const value = [...stateValue,];
+      const displayValue = [...stateDisplayValue,];
       let cnt = 0;
 
       let { limitCount = DefaultLimitCount, } = this.props;
@@ -482,7 +487,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       const { onTrigger, } = this.props;
       onTrigger && onTrigger();
       let { selectCount, } = state;
-      this.changeOldValue(value);
       if (this.isMutliple()) {
         selectCount = this.getInputTagCount();
       }
@@ -491,19 +495,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           this.queryInput.getThemeTarget().focus();
         }
       });
-    } else {
-      this.onChange();
-      this.changeOldValue(value);
     }
     this.treeVisible = visible;
   };
 
   onInputTagChange = ({ value, displayValue, }: Object) => {
-    this.setValue(value, displayValue, {}, () => {
-      if (this.treeVisible === false) {
-        this.onChange();
-      }
-    });
+    this.setValue(value, displayValue, {});
   };
 
   getInputTagCount (): number {
@@ -541,27 +538,32 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   setValue (value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
-    const realyVal = [];
-    const realDisp = [];
-    if (value && value.length > 0) {
-      const len = value.length;
-      const isHas = {};
-      for (let i = 0; i < len; i++) {
-        const key = value[ i ];
-        const title = displayValue[ i ];
-        if (isHas[ key ]) {
-          continue;
+    this.onChange(value, displayValue);
+    if (Support.isNotLimit(this.props)) {
+
+      const realyVal = [];
+      const realDisp = [];
+      if (value && value.length > 0) {
+        const len = value.length;
+        const isHas = {};
+        for (let i = 0; i < len; i++) {
+          const key = value[ i ];
+          const title = displayValue[ i ];
+          if (isHas[ key ]) {
+            continue;
+          }
+          isHas[ key ] = true;
+          realyVal.push(key);
+          realDisp.push(title);
         }
-        isHas[ key ] = true;
-        realyVal.push(key);
-        realDisp.push(title);
       }
+      this.setState({
+        value: realyVal,
+        displayValue: realDisp, ...other,
+        selectCount: realyVal.length,
+      }, callback);
+      this.changeOldValue(value);
     }
-    this.setState({
-      value: realyVal,
-      displayValue: realDisp, ...other,
-      selectCount: realyVal.length,
-    }, callback);
   }
 
   setTreePopupVisible (visible: boolean) {
@@ -570,10 +572,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   }
 
-  onChange = () => {
-    if (this.oldValue !== this.state.value) {
+  onChange = (value: Array<string>, displayValue: Array<string>) => {
+    if (this.oldValue !== value) {
       const { onChange, } = this.props;
-      const { value, displayValue, } = this.state;
       onChange && onChange({ value, displayValue, });
     }
   };
