@@ -28,4 +28,5 @@ export const ClearIcon = 'sv_widget_ClearIcon';
 export const DropMenu = 'sv_widget_DropMenu';
 export const Tree = 'sv_widget_Tree';
 export const TreeSelect = 'sv_widget_TreeSelect';
+export const TreeSelectLimitTitle = 'sv_widget_TreeSelectLimitTitle';
 export const ThrottleScroller = 'sv_widget_ThrottleScroller';

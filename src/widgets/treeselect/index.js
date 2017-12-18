@@ -73,6 +73,7 @@ const Text = styled.span`
   position: absolute;
   border-radius: 3px;
 `;
+Text.displayName = Widget.TreeSelectLimitTitle;
 
 const DefaultLimitCount = 999999;
 
@@ -153,7 +154,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
       if (props.value !== this.props.value || props.displayValue !== this.props.displayValue) {
         const { value, displayValue, } = this.getInitValue(props);
-        this.setState({ value, displayValue, });
+        this.setState({ value, displayValue, selectCount: value.length, });
       }
     }
   }
@@ -374,7 +375,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       const inTreee = this.getInTree();
       for (let i = 0; i < data.length; i++) {
         const { key, [ displayField ]: title, } = data[ i ];
-        if(inTreee[key]){
+        if (inTreee[ key ]) {
           continue;
         }
         if (cnt >= limitCount) break;

@@ -271,42 +271,82 @@ describe('TreeSelect', () => {
 
     const value = ['1231', 'lgx',];
     const displayValue = ['我么啊啊', 'ab',];
+    const limit = 5;
     const cmp = mount(<TreeSelect data={rowData}
                                   mutliple
                                   defaultValue={value}
                                   defaultDisplayValue={displayValue}
                                   canInput
                                   expandAll={true}
-                                  limitCount={5}/>);
+                                  limitCount={limit}/>);
 
     showTrigger(cmp);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
     const expValue = rowData.filter((item: Object, index: number) => index < 3).map(item => item.key);
-    checkTreeSelectValue(cmp, [...value, ...expValue,]);
+    checkTreeSelectValue(cmp, [...value, ...expValue,], limit);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
-    checkTreeSelectValue(cmp, value);
+    checkTreeSelectValue(cmp, value, limit);
   });
   it('selectAll 默认值为顶部的值 然后进行全选 limitCount: 5', () => {
 
     const value = ['1',];
     const displayValue = [];
+    const limit = 5;
     const cmp = mount(<TreeSelect data={rowData}
                                   mutliple
                                   defaultValue={value}
                                   defaultDisplayValue={displayValue}
                                   canInput
                                   expandAll={true}
-                                  limitCount={5}/>);
+                                  limitCount={limit}/>);
 
     showTrigger(cmp);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
-    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2',]);
+    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2',], limit);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
-    checkTreeSelectValue(cmp, []);
+    checkTreeSelectValue(cmp, [], limit);
+  });
+  it('selectAll limitCount: 5 受限组件', () => {
+
+    const limit = 5;
+
+    class LimitTreeSelect extends React.Component<any, any> {
+      constructor (props) {
+        super(props);
+        this.state = { value: [], displayValue: [], };
+      }
+
+      render () {
+        const { state, } = this;
+        const { value, displayValue, } = state;
+        return <TreeSelect data={rowData}
+                           mutliple
+                           value={value}
+                           onChange={this.onChange}
+                           displayValue={displayValue}
+                           canInput
+                           expandAll={true}
+                           limitCount={limit}/>;
+      }
+
+      onChange = obj => {
+        this.setState(obj);
+      };
+    }
+
+    const cmp = mount(<LimitTreeSelect/>);
+
+    showTrigger(cmp);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2',], limit);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    checkTreeSelectValue(cmp, [], limit);
   });
 
   it('selectAll 默认值为中间的值 然后进行全选 limitCount: 5', () => {
@@ -373,7 +413,10 @@ describe('TreeSelect', () => {
     exp(await  changeReuslt).to.be.eql({ value: [], displayValue: [], });
   });
 
-  function checkTreeSelectValue (cmp, value) {
+  function checkTreeSelectValue (cmp, value, limit) {
+    if (limit != undefined) {
+      exp(cmp.find(Widget.TreeSelectLimitTitle).text().trim()).to.be.eql(`已选择${value.length}个结点,最多可选${limit}个结点.`);
+    }
     exp(getTreeValue(cmp)).to.be.eql(value);
     exp(getInputTagValue(cmp)).to.be.eql(value);
   }
