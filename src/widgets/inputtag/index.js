@@ -85,7 +85,7 @@ const IconButton: Object = styled(Icon)`
   color: rgba(0,0,0,.25);
 `;
 
-IconButton.displayName = 'IconButtonName';
+IconButton.displayName = Widget.InputTagClearButton;
 const marginLeft = 5;
 const marginRight = 7;
 const DefaultHeight = 250;
@@ -209,13 +209,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return Support.getCodeItemArray(props);
   }
 
-  isLmit (): boolean {
+  isLimit (): boolean {
     const { props, } = this;
     return !Support.isNotLimit(props);
   }
 
   componentWillReceiveProps (props: InputTagProps) {
-    if (this.isLmit()) {
+    if (this.isLimit()) {
       if (props.value !== this.props.value) {
         const value = this.fetchValueObject(props);
         this.setState({
@@ -397,13 +397,16 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (disabled) {
       return;
     }
-    this.setState({ value: {}, }, () => {
-      this.adaptiveItems(this.getOffSetWidth());
-      this.onChange([], []);
-      this.count = 0;
-    });
+    this.onChange([], []);
     e.preventDefault();
     e.stopPropagation();
+    if (this.isLimit()) {
+      return;
+    }
+    this.setState({ value: {}, }, () => {
+      this.adaptiveItems(this.getOffSetWidth());
+      this.count = 0;
+    });
   };
 
   getIcon = (item: Object) => {
@@ -436,17 +439,17 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       }
     }
 
-    const tirggetChagne = () => {
+    const triggerChange = () => {
       this.onChange(valueArray, displayValueArray);
     };
 
-    if (this.isLmit()) {
-      tirggetChagne();
+    triggerChange();
+    if (this.isLimit()) {
       return;
     }
+
     delete value[ targetKey ];
     this.resetValueKeys();
-    tirggetChagne();
     this.adaptiveItems(this.getOffSetWidth());
   };
 

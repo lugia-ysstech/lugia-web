@@ -300,9 +300,6 @@ describe('InputTag', () => {
     const result = new Promise(async resolve => {
 
       await renderInputTag(InputTagTest, 150, async cmp => {
-        const tagItems = findInputItem(cmp);
-        // 一个字体 2个显示 一个多选
-
         exp(cmp.find(Widgets.InputTagMoreItem).length).to.be.equal(1);
         exp(cmp.find(Widgets.ItemTagOption).length).to.be.equal(1);
         const moreItem = findMoreItem(cmp);
@@ -322,6 +319,61 @@ describe('InputTag', () => {
     });
     await result;
   });
+  it('点击清除值 则清除所有值', async () => {
+    let InputTagTest;
+    const changeResult = new Promise(resolve => {
+      InputTagTest = createInputTagTest({
+        defaultDisplayValue: displayValue, defaultValue: value, width: 300, onChange (arg) {
+          resolve(arg);
+        },
+      });
+    });
+    const result = new Promise(async resolve => {
+
+      await renderInputTag(InputTagTest, 150, async cmp => {
+        exp(cmp.find(Widgets.InputTagMoreItem).length).to.be.equal(1);
+        exp(cmp.find(Widgets.ItemTagOption).length).to.be.equal(1);
+        clearInputTagValue(cmp);
+        await delay(0, async () => {
+          exp(cmp.find(Widgets.InputTagMoreItem).length).to.be.equal(0);
+          exp(cmp.find(Widgets.ItemTagOption).length).to.be.equal(0);
+          exp(await changeResult).to.be.eql({ value: [], displayValue: [], });
+          resolve(true);
+        });
+      });
+    });
+    await result;
+  });
+  it('受限 点击清除值 则清除所有值', async () => {
+    let InputTagTest;
+    const changeResult = new Promise(resolve => {
+      InputTagTest = createInputTagTest({
+        displayValue, value, width: 300, onChange (arg) {
+          resolve(arg);
+        },
+      });
+    });
+    const result = new Promise(async resolve => {
+
+      await renderInputTag(InputTagTest, 150, async cmp => {
+        exp(cmp.find(Widgets.InputTagMoreItem).length).to.be.equal(1);
+        exp(cmp.find(Widgets.ItemTagOption).length).to.be.equal(1);
+        clearInputTagValue(cmp);
+        await delay(0, async () => {
+          exp(cmp.find(Widgets.InputTagMoreItem).length).to.be.equal(1);
+          exp(cmp.find(Widgets.ItemTagOption).length).to.be.equal(1);
+          exp(await changeResult).to.be.eql({ value: [], displayValue: [], });
+          resolve(true);
+        });
+      });
+    });
+    await result;
+  });
+
+
+  function clearInputTagValue (cmp: Object) {
+    cmp.find(Widgets.InputTagClearButton).simulate('click');
+  }
 
   function findFontItem (cmp) {
     return cmp.find(Widgets.InputTagFontItem);
