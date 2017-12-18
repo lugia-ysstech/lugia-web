@@ -2,6 +2,7 @@
 
 exports[`ContentBox default visible: false, children: 1 1`] = `
 .c0 {
+  position: absolute;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
@@ -25,6 +26,7 @@ exports[`ContentBox default visible: false, children: 1 1`] = `
 
 exports[`ContentBox default visible: true, children: 1 1`] = `
 .c0 {
+  position: absolute;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
@@ -48,6 +50,7 @@ exports[`ContentBox default visible: true, children: 1 1`] = `
 
 exports[`ContentBox default visible: true, children: 2 1`] = `
 .c0 {
+  position: absolute;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
@@ -78,6 +81,7 @@ exports[`ContentBox default visible: true, children: 2 1`] = `
 
 exports[`ContentBox default visible:false, children: 2 1`] = `
 .c0 {
+  position: absolute;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
