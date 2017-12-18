@@ -239,6 +239,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return this.getUtils(this.props).getNotInTree();
   }
 
+  getInTree (): Object {
+    return this.getUtils(this.props).getInTree();
+  }
+
   updateStateValuForLimitValue (props: TreeProps, state: TreeState, id2ExtendInfo: NodeId2ExtendInfo, value: Array<string>) {
     const { obj, val, } = this.getValueObject(props, value);
     this.updateStateValue(props, state, id2ExtendInfo, value, obj, val);
@@ -590,7 +594,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onScroller = (start: number, end: number) => {
-    if(!this.isLimitStart()){
+    if (!this.isLimitStart()) {
       this.setState({ start, });
     }
     const { onScroller, } = this.props;

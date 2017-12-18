@@ -266,14 +266,15 @@ describe('TreeSelect', () => {
   });
 
 
-  it('selectAll limitCount: 5 caninput value: 我们啊 全选  然后进行刷新操作 非受限情况', async () => {
+  it('selectAll limitCount: 5 caninput value: 我们啊 全选  然后进行刷新操作', async () => {
 
 
-    const str = '我么啊啊';
+    const value = ['1231', 'lgx',];
+    const displayValue = ['我么啊啊', 'ab',];
     const cmp = mount(<TreeSelect data={rowData}
                                   mutliple
-                                  defaultValue={str}
-                                  defaultDisplayValue={str}
+                                  defaultValue={value}
+                                  defaultDisplayValue={displayValue}
                                   canInput
                                   expandAll={true}
                                   limitCount={5}/>);
@@ -281,13 +282,72 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
-    const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
-    checkTreeSelectValue(cmp, [str, ...value,]);
+    const expValue = rowData.filter((item: Object, index: number) => index < 3).map(item => item.key);
+    checkTreeSelectValue(cmp, [...value, ...expValue,]);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
-    checkTreeSelectValue(cmp, [str,]);
+    checkTreeSelectValue(cmp, value);
+  });
+  it('selectAll 默认值为顶部的值 然后进行全选 limitCount: 5', () => {
 
+    const value = ['1',];
+    const displayValue = [];
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  defaultValue={value}
+                                  defaultDisplayValue={displayValue}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
 
+    showTrigger(cmp);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2',]);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    checkTreeSelectValue(cmp, []);
+  });
+
+  it('selectAll 默认值为中间的值 然后进行全选 limitCount: 5', () => {
+
+    const value = ['2.2', '2.2.1.1',];
+    const displayValue = [];
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  defaultValue={value}
+                                  defaultDisplayValue={displayValue}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    showTrigger(cmp);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    checkTreeSelectValue(cmp, [...value, '1', '1.1', '1.2',]);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    checkTreeSelectValue(cmp, []);
+  });
+  it('selectAll 默认值为底部的值 然后进行全选 limitCount: 5', () => {
+
+    const value = ['4', '3.2', '3.1',];
+    const displayValue = [];
+    const cmp = mount(<TreeSelect data={rowData}
+                                  mutliple
+                                  defaultValue={value}
+                                  defaultDisplayValue={displayValue}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+
+    showTrigger(cmp);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    checkTreeSelectValue(cmp, [...value, '1', '1.1',]);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    checkTreeSelectValue(cmp, []);
   });
   it('非受限 刷新操作', async () => {
 
@@ -318,7 +378,7 @@ describe('TreeSelect', () => {
     exp(getInputTagValue(cmp)).to.be.eql(value);
   }
 
-  it('受限组件 刷新操作 值不可改变 onChange', async () => {
+  it('受限组件 清空值 clickRefresh(cmp); onChange', async () => {
 
 
     let onChange;
@@ -352,7 +412,41 @@ describe('TreeSelect', () => {
     });
   });
 
-  it('受限组件 全选操作 值不可改变 onChange', async () => {
+  it('非受限组件 清空值 onChange', async () => {
+
+
+    let onChange;
+    const changeReuslt = new Promise(resolve => {
+      onChange = arg => {
+        resolve(arg);
+      };
+    });
+    const value = '我么啊啊';
+    const displayValue = '我么啊啊';
+    const config = { [ Widget.TreeSelect ]: { width: 100, }, };
+
+    const cmp = mount(<Theme config={config}><TreeSelect data={rowData}
+                                                         onChange={onChange}
+                                                         mutliple
+                                                         defaultValue={value}
+                                                         defaultDisplayValue={displayValue}
+                                                         canInput expandAll={true}/></Theme>);
+    await delay(0, async () => {
+      showTrigger(cmp);
+      clearInputTagValue(cmp);
+      checkTreeSelectValue(cmp, []);
+
+      const result = await  changeReuslt;
+
+      exp(result).to.be.eql({
+        value: [],
+        displayValue: [],
+      });
+      checkTreeSelectValue(cmp, []);
+    });
+  });
+
+  it('受限组件 全选操作 clickRefresh(cmp); onChange', async () => {
 
     let onChange;
     const changeReuslt = new Promise(resolve => {
@@ -378,7 +472,7 @@ describe('TreeSelect', () => {
       displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData),],
     });
   });
-  it('受限组件 清空值 值不可改变 onChange', async () => {
+  it('非受限组件 选择全部  onChange', async () => {
 
     let onChange;
     const changeReuslt = new Promise(resolve => {
@@ -402,6 +496,35 @@ describe('TreeSelect', () => {
     const result = await changeReuslt;
     exp(result).to.be.eql({
       value: [value, ...getAllRowDataValue(rowData),],
+      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData),],
+    });
+  });
+  it('非受限组件 选择全部  onChange', async () => {
+
+    let onChange;
+    const changeReuslt = new Promise(resolve => {
+      onChange = arg => {
+        resolve(arg);
+      };
+    });
+    const value = '我么啊啊';
+    const displayValue = '我么啊啊';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  onChange={onChange}
+                                  mutliple
+                                  defaultValue={value}
+                                  defaultDisplayValue={displayValue}
+                                  canInput
+                                  expandAll={true}/>);
+    showTrigger(cmp);
+    selctedAll(cmp);
+    const allValue = [value, ...getAllRowDataValue(rowData),];
+
+    checkTreeSelectValue(cmp, allValue);
+
+    const result = await changeReuslt;
+    exp(result).to.be.eql({
+      value: allValue,
       displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData),],
     });
   });

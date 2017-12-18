@@ -5,11 +5,7 @@
  * @flow
  */
 import type {
-  NodeExtendInfo,
-  NodeId2Checked,
-  NodeId2ExtendInfo,
-  NodeId2SelectInfo,
-  QueryType,
+  NodeExtendInfo, NodeId2Checked, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType,
   SelectType,
 } from 'sv-widget';
 import { updateVersion, } from './version';
@@ -65,6 +61,7 @@ class TreeUtils {
   expandAll: boolean;
   onlySelectLeaf: boolean;
   notInTree: { [key: string]: string };
+  inTree: { [key: string]: boolean };
   displayField: string;
   igronSelectField: ?string;
   limitCount: ?number;
@@ -85,6 +82,7 @@ class TreeUtils {
     this.onlySelectLeaf = onlySelectLeaf;
     this.displayField = displayField;
     this.notInTree = {};
+    this.inTree = {};
     this.igronSelectField = igronSelectField;
     this.limitCount = limitCount;
     this.splitQuery = splitQuery;
@@ -98,7 +96,7 @@ class TreeUtils {
 
   isRightTreeRowData (data: Object): string {
 
-    const { key, [this.displayField]: title, pid, path, } = data;
+    const { key, [ this.displayField ]: title, pid, path, } = data;
 
     const required = notEmpty(key) && notEmpty(title);
     const existPid = notEmpty(pid);
@@ -567,7 +565,7 @@ class TreeUtils {
       const len = this.orignalData.length - 1;
       for (let i = len; i >= 0; i--) {
         const row: RowData = this.orignalData[ i ];
-        const { [this.displayField]: title, key, path, } = row;
+        const { [ this.displayField ]: title, key, path, } = row;
         if (this.match(title, queryArray, searchType)) {
           if (path !== undefined && containPath[ path ] === undefined) {
             const pathArray = this.getPathArray(path);
@@ -872,7 +870,7 @@ class TreeUtils {
       const key = value[ i ];
       const row = this.getRow(key, id2ExtendInfo);
       if (row) {
-        const { [this.displayField]: title, } = row;
+        const { [ this.displayField ]: title, } = row;
         result.push(title);
       } else {
         result.push(this.getNoInTreeTitle(key));
@@ -889,6 +887,10 @@ class TreeUtils {
   getNotInTree () {
     const { notInTree = {}, } = this;
     return notInTree;
+  }
+  getInTree () {
+    const { inTree = {}, } = this;
+    return inTree;
   }
 
   updateSelectedStatusForChildren (targetKey: string, selectInfo: NodeId2SelectInfo, id2ExtendInfo: NodeId2ExtendInfo, type: SelectType): RowData {
@@ -984,6 +986,7 @@ class TreeUtils {
     const len = keys.length;
     this.selCount = 0;
     this.notInTree = {};
+    this.inTree = {};
     if (!valueObject || !len) {
       return { value: {}, halfchecked: {}, checked: {}, };
     }
@@ -1025,6 +1028,7 @@ class TreeUtils {
           }
           rows.push(row);
         }
+        this.inTree[ key ] = true;
       } else {
         value[ key ] = true;
         const disp = displayValue[ i ];

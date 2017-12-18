@@ -370,11 +370,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       let cnt = 0;
 
       let { limitCount = DefaultLimitCount, } = this.props;
-      const notInTreeCount = Object.keys(this.getNotInTree()).length;
-      limitCount = limitCount - notInTreeCount;
-
+      limitCount = limitCount - value.length;
+      const inTreee = this.getInTree();
       for (let i = 0; i < data.length; i++) {
         const { key, [ displayField ]: title, } = data[ i ];
+        if(inTreee[key]){
+          continue;
+        }
         if (cnt >= limitCount) break;
         if (!this.canSelect(key)) continue;
         value.push(key);
@@ -416,6 +418,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       return {};
     }
     return tree.getNotInTree();
+  }
+
+  getInTree (): Object {
+    const tree = this.getTree();
+    if (!tree) {
+      return {};
+    }
+    return tree.getInTree();
   }
 
   getViewData (): Array<Object> {
