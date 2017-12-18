@@ -310,35 +310,40 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, [], limit);
   });
+
+  class LimitTreeSelect extends React.Component<any, any> {
+    constructor (props) {
+      super(props);
+      const { value = [], displayValue = [], } = props;
+      this.state = { value, displayValue, };
+    }
+
+    render () {
+      const { state, props,} = this;
+      const { value, displayValue, } = state;
+      const {limitCount,}  = props;
+      return <TreeSelect data={rowData}
+                         mutliple
+                         value={value}
+                         onChange={this.onChange}
+                         displayValue={displayValue}
+                         canInput
+                         expandAll={true}
+                         limitCount={limitCount}/>;
+    }
+
+    onChange = obj => {
+      this.setState(obj);
+    };
+  }
+
+
   it('selectAll limitCount: 5 受限组件', () => {
 
     const limit = 5;
 
-    class LimitTreeSelect extends React.Component<any, any> {
-      constructor (props) {
-        super(props);
-        this.state = { value: [], displayValue: [], };
-      }
 
-      render () {
-        const { state, } = this;
-        const { value, displayValue, } = state;
-        return <TreeSelect data={rowData}
-                           mutliple
-                           value={value}
-                           onChange={this.onChange}
-                           displayValue={displayValue}
-                           canInput
-                           expandAll={true}
-                           limitCount={limit}/>;
-      }
-
-      onChange = obj => {
-        this.setState(obj);
-      };
-    }
-
-    const cmp = mount(<LimitTreeSelect/>);
+    const cmp = mount(<LimitTreeSelect limitCount={limit}/>);
 
     showTrigger(cmp);
     selctedAll(cmp);
@@ -347,6 +352,36 @@ describe('TreeSelect', () => {
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, [], limit);
+  });
+  it(' limitCount: 5 受限组件', () => {
+
+    const limit = 5;
+
+
+    const cmp = mount(<LimitTreeSelect limitCount={limit}/>);
+
+    showTrigger(cmp);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2',], limit);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    checkTreeSelectValue(cmp, [], limit);
+    checkTreeSelectValue(cmp, [], limit);
+  });
+
+  it('selectAll limitCount: 5 受限组件 有默认值 然后刷新', () => {
+
+    const limit = 5;
+
+    const value = ['1',];
+    const cmp = mount(<LimitTreeSelect value={value} limitCount={limit}/>);
+
+    showTrigger(cmp);
+    checkTreeSelectValue(cmp, value, limit);
+    refreshValue(cmp);
+    checkTreeSelectValue(cmp, [], limit);
+
   });
 
   it('selectAll 默认值为中间的值 然后进行全选 limitCount: 5', () => {
@@ -415,7 +450,8 @@ describe('TreeSelect', () => {
 
   function checkTreeSelectValue (cmp, value, limit) {
     if (limit != undefined) {
-      exp(cmp.find(Widget.TreeSelectLimitTitle).text().trim()).to.be.eql(`已选择${value.length}个结点,最多可选${limit}个结点.`);
+      const limitTitle = cmp.find(Widget.TreeSelectLimitTitle).text();
+      exp(limitTitle.trim()).to.be.eql(`已选择${value.length}个结点,最多可选${limit}个结点.`);
     }
     exp(getTreeValue(cmp)).to.be.eql(value);
     exp(getInputTagValue(cmp)).to.be.eql(value);
@@ -456,6 +492,7 @@ describe('TreeSelect', () => {
   });
 
   it('非受限组件 清空值 onChange', async () => {
+    const limit = 1000;
 
 
     let onChange;
@@ -471,13 +508,14 @@ describe('TreeSelect', () => {
     const cmp = mount(<Theme config={config}><TreeSelect data={rowData}
                                                          onChange={onChange}
                                                          mutliple
+                                                         limitCount={limit}
                                                          defaultValue={value}
                                                          defaultDisplayValue={displayValue}
                                                          canInput expandAll={true}/></Theme>);
     await delay(0, async () => {
       showTrigger(cmp);
       clearInputTagValue(cmp);
-      checkTreeSelectValue(cmp, []);
+      checkTreeSelectValue(cmp, [], limit);
 
       const result = await  changeReuslt;
 
@@ -485,7 +523,7 @@ describe('TreeSelect', () => {
         value: [],
         displayValue: [],
       });
-      checkTreeSelectValue(cmp, []);
+      checkTreeSelectValue(cmp, [], limit);
     });
   });
 
