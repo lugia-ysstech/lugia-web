@@ -206,8 +206,7 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
 
     const value = ['1', '1.2', '1.2.2', '1.2.2.1', '1.3', '1.3.1', '1.3.2', '2', '2.1', '2.1.2', '2.2', '2.2.1', '3',];
-    exp(getTreeValue(cmp)).to.be.eql(value);
-    exp(getInputTagValue(cmp)).to.be.eql(value);
+    checkTreeSelectValue(cmp, value);
   });
 
   it('selectAll onlySelectLeaf', async () => {
@@ -227,8 +226,7 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
-    exp(getTreeValue(cmp)).to.be.eql(value);
-    exp(getInputTagValue(cmp)).to.be.eql(value);
+    checkTreeSelectValue(cmp, value);
   });
   it('selectAll limitCount: 5', async () => {
 
@@ -244,8 +242,7 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
-    exp(getTreeValue(cmp)).to.be.eql(value);
-    exp(getInputTagValue(cmp)).to.be.eql(value);
+    checkTreeSelectValue(cmp, value);
   });
 
   it('selectAll limitCount: 5 caninput 先选全部再输入', async () => {
@@ -265,41 +262,11 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
 
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
-    exp(getTreeValue(cmp)).to.be.eql(value);
-    exp(getInputTagValue(cmp)).to.be.eql(value);
+    checkTreeSelectValue(cmp, value);
   });
 
 
   it('selectAll limitCount: 5 caninput value: 我们啊 全选  然后进行刷新操作 非受限情况', async () => {
-
-
-    const str = '我么啊啊';
-    const cmp = mount(<TreeSelect data={rowData}
-                                  mutliple
-                                  value={str}
-                                  displayValue={str}
-                                  canInput
-                                  expandAll={true}
-                                  limitCount={5}/>);
-
-    showTrigger(cmp);
-    selctedAll(cmp);
-
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
-
-    const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
-
-    exp(getTreeValue(cmp)).to.be.eql([str, ...value,]);
-    exp(getInputTagValue(cmp)).to.be.eql([str, ...value,]);
-
-    selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
-    exp(getTreeValue(cmp)).to.be.eql([str,]);
-    exp(getInputTagValue(cmp)).to.be.eql([str,]);
-
-
-  });
-  it('全选  然后进行刷新操作 非受限情况', async () => {
 
 
     const str = '我么啊啊';
@@ -310,12 +277,47 @@ describe('TreeSelect', () => {
                                   canInput
                                   expandAll={true}
                                   limitCount={5}/>);
+
     showTrigger(cmp);
-    refreshValue(cmp);
-    exp(getTreeValue(cmp)).to.be.eql([]);
-    exp(getInputTagValue(cmp)).to.be.eql([]);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
+    checkTreeSelectValue(cmp, [str, ...value,]);
+    selctedAll(cmp);
+    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    checkTreeSelectValue(cmp, [str,]);
+
 
   });
+  it('非受限 刷新操作', async () => {
+
+    let onChange;
+    const changeReuslt = new Promise(resolve => {
+      onChange = arg => {
+        resolve(arg);
+      };
+    });
+
+    const str = '我么啊啊';
+    const cmp = mount(<TreeSelect data={rowData}
+                                  onChange={onChange}
+                                  mutliple
+                                  defaultValue={str}
+                                  defaultDisplayValue={str}
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+    showTrigger(cmp);
+    refreshValue(cmp);
+    checkTreeSelectValue(cmp, []);
+    exp(await  changeReuslt).to.be.eql({ value: [], displayValue: [], });
+  });
+
+  function checkTreeSelectValue (cmp, value) {
+    exp(getTreeValue(cmp)).to.be.eql(value);
+    exp(getInputTagValue(cmp)).to.be.eql(value);
+  }
+
   it('受限组件 刷新操作 值不可改变 onChange', async () => {
 
 
@@ -338,16 +340,15 @@ describe('TreeSelect', () => {
     await delay(0, async () => {
       showTrigger(cmp);
       clearInputTagValue(cmp);
-      exp(getTreeValue(cmp)).to.be.eql([value,]);
-      exp(getInputTagValue(cmp)).to.be.eql([value,]);
+      checkTreeSelectValue(cmp, [value,]);
+
       const result = await  changeReuslt;
 
       exp(result).to.be.eql({
         value: [],
         displayValue: [],
       });
-      exp(getTreeValue(cmp)).to.be.eql([value,]);
-      exp(getInputTagValue(cmp)).to.be.eql([value,]);
+      checkTreeSelectValue(cmp, [value,]);
     });
   });
 
@@ -370,8 +371,7 @@ describe('TreeSelect', () => {
                                   expandAll={true}/>);
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(getTreeValue(cmp)).to.be.eql([value,]);
-    exp(getInputTagValue(cmp)).to.be.eql([value,]);
+    checkTreeSelectValue(cmp, [value,]);
     const result = await changeReuslt;
     exp(result).to.be.eql({
       value: [value, ...getAllRowDataValue(rowData),],
@@ -397,8 +397,8 @@ describe('TreeSelect', () => {
                                   expandAll={true}/>);
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(getTreeValue(cmp)).to.be.eql([value,]);
-    exp(getInputTagValue(cmp)).to.be.eql([value,]);
+    checkTreeSelectValue(cmp, [value,]);
+
     const result = await changeReuslt;
     exp(result).to.be.eql({
       value: [value, ...getAllRowDataValue(rowData),],
@@ -431,8 +431,8 @@ describe('TreeSelect', () => {
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
     const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
-    exp(getTreeValue(cmp)).to.be.eql(['100', ...value,]);
-    exp(getInputTagValue(cmp)).to.be.eql(['100', ...value,]);
+    checkTreeSelectValue(cmp, ['100', ...value,]);
+
   })
   ;
   const HalfChecked = 'sv-tree-checkbox-indeterminate';
@@ -596,8 +596,7 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
-    exp(getTreeValue(cmp)).to.be.eql([]);
-    exp(getInputTagValue(cmp)).to.be.eql([]);
+    checkTreeSelectValue(cmp, []);
   });
   it('键盘子节点选择问题 shift选择 父节点', async () => {
 
@@ -608,8 +607,7 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     queryInputDown(cmp);
     queryInputShift(cmp);
-    exp(getTreeValue(cmp)).to.be.eql(['1',]);
-    exp(getInputTagValue(cmp)).to.be.eql(['1',]);
+    checkTreeSelectValue(cmp, ['1',]);
 
 
   });
@@ -623,8 +621,7 @@ describe('TreeSelect', () => {
     queryInputDown(cmp);
     queryInputDown(cmp);
     queryInputShift(cmp);
-    exp(getTreeValue(cmp)).to.be.eql(['1.1',]);
-    exp(getInputTagValue(cmp)).to.be.eql(['1.1',]);
+    checkTreeSelectValue(cmp, ['1.1',]);
 
 
   });
@@ -638,10 +635,7 @@ describe('TreeSelect', () => {
     const expectResult = rowData.filter(item => {
       return item.key == '1' || item.path && item.path.startsWith('1');
     }).map(item => item.key);
-    exp(getTreeValue(cmp)).to.be.eql(
-      expectResult);
-    exp(getInputTagValue(cmp)).to.be.eql(
-      expectResult);
+    checkTreeSelectValue(cmp, expectResult);
 
   });
   it('键盘子节点选择问题 ctrl选择 子节点', async () => {
@@ -652,8 +646,7 @@ describe('TreeSelect', () => {
     queryInputDown(cmp);
     queryInputDown(cmp);
     queryInputCtrl(cmp);
-    exp(getTreeValue(cmp)).to.be.eql(['1.1',]);
-    exp(getInputTagValue(cmp)).to.be.eql(['1.1',]);
+    checkTreeSelectValue(cmp, ['1.1',]);
   });
   it('点击删除查询内容', async () => {
     const value = 'hello';
