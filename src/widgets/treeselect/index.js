@@ -583,6 +583,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onChange = (value: Array<string>, displayValue: Array<string>) => {
+    if (this.oldValue.length === 0 && value.length === 0) {
+      return;
+    }
     if (this.oldValue !== value) {
       const { onChange, } = this.props;
       onChange && onChange({ value, displayValue, });

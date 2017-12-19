@@ -380,7 +380,7 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     checkTreeSelectValue(cmp, value, limit);
     refreshValue(cmp);
-    checkTreeSelectValue(cmp, value, limit);
+    checkTreeSelectValue(cmp, [], limit);
     exp(getTreeQuery(cmp)).to.be.equal('');
     exp(getQueryInputValue(cmp)).to.be.equal('');
   });
@@ -425,7 +425,16 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, []);
   });
+
+
   it('非受限 刷新操作', async () => {
+
+    let onChange;
+    const changeReuslt = new Promise(resolve => {
+      onChange = arg => {
+        resolve(arg);
+      };
+    });
 
     let onRefresh;
     const refreshResult = new Promise(resolve => {
@@ -434,9 +443,11 @@ describe('TreeSelect', () => {
       };
     });
 
+
     const str = '我么啊啊';
     const cmp = mount(<TreeSelect data={rowData}
                                   onRefresh={onRefresh}
+                                  onChange={onChange}
                                   mutliple
                                   defaultValue={str}
                                   defaultDisplayValue={str}
@@ -447,8 +458,27 @@ describe('TreeSelect', () => {
     refreshValue(cmp);
     exp(getTreeQuery(cmp)).to.be.equal('');
     exp(getQueryInputValue(cmp)).to.be.equal('');
-    checkTreeSelectValue(cmp, [str,]);
+    checkTreeSelectValue(cmp, []);
     exp(await  refreshResult).to.be.eql(true);
+    exp(await  changeReuslt).to.be.eql({ value: [], displayValue: [], });
+  });
+  it('非受限 没有值直接刷新 操作',  () => {
+
+    const onChange = () => {
+      throw new Error('不应触发change事件');
+    };
+
+    const cmp = mount(<TreeSelect data={rowData}
+                                  onChange={onChange}
+                                  mutliple
+                                  canInput
+                                  expandAll={true}
+                                  limitCount={5}/>);
+    showTrigger(cmp);
+    refreshValue(cmp);
+    exp(getTreeQuery(cmp)).to.be.equal('');
+    exp(getQueryInputValue(cmp)).to.be.equal('');
+    checkTreeSelectValue(cmp, []);
   });
 
   function checkTreeSelectValue (cmp, value, limit) {
