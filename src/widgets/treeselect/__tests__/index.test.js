@@ -124,20 +124,20 @@ describe('TreeSelect', () => {
     const firstValue = 'helloworld';
     chagneQuery(cmp, firstValue);
     exp(getTreeQuery(cmp)).to.be.equal(firstValue);
-    exp(findQueryInputValue(cmp)).to.be.equal(firstValue);
+    exp(getQueryInputValue(cmp)).to.be.equal(firstValue);
 
 
     const secondValue = 'ligx';
     chagneQuery(cmp, secondValue);
     exp(getTreeQuery(cmp)).to.be.equal(secondValue);
-    exp(findQueryInputValue(cmp)).to.be.equal(secondValue);
+    exp(getQueryInputValue(cmp)).to.be.equal(secondValue);
   });
   it('测试查询功能 remote', async () => {
     const cmp = mount(<TreeSelect data={rowData} throttle={0} mode="remote"/>);
     const firstValue = 'helloworld';
     chagneQuery(cmp, firstValue);
     exp(getTreeQuery(cmp)).to.be.equal('');
-    exp(findQueryInputValue(cmp)).to.be.equal(firstValue);
+    exp(getQueryInputValue(cmp)).to.be.equal(firstValue);
 
   });
 
@@ -162,7 +162,7 @@ describe('TreeSelect', () => {
       const txt = '100';
       chagneQuery(cmp, txt);
       queryInputEnter(cmp);
-      mutliple ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt) : exp(cmp.find(Widget.InputTag).text().trim()).to.be.equal(txt);
+      mutliple ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt) : exp(getInputTag(cmp).text().trim()).to.be.equal(txt);
     });
   }
 
@@ -319,9 +319,9 @@ describe('TreeSelect', () => {
     }
 
     render () {
-      const { state, props,} = this;
+      const { state, props, } = this;
       const { value, displayValue, } = state;
-      const {limitCount,}  = props;
+      const { limitCount, } = props;
       return <TreeSelect data={rowData}
                          mutliple
                          value={value}
@@ -380,8 +380,9 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     checkTreeSelectValue(cmp, value, limit);
     refreshValue(cmp);
-    checkTreeSelectValue(cmp, [], limit);
-
+    checkTreeSelectValue(cmp, value, limit);
+    exp(getTreeQuery(cmp)).to.be.equal('');
+    exp(getQueryInputValue(cmp)).to.be.equal('');
   });
 
   it('selectAll 默认值为中间的值 然后进行全选 limitCount: 5', () => {
@@ -426,16 +427,16 @@ describe('TreeSelect', () => {
   });
   it('非受限 刷新操作', async () => {
 
-    let onChange;
-    const changeReuslt = new Promise(resolve => {
-      onChange = arg => {
-        resolve(arg);
+    let onRefresh;
+    const refreshResult = new Promise(resolve => {
+      onRefresh = () => {
+        resolve(true);
       };
     });
 
     const str = '我么啊啊';
     const cmp = mount(<TreeSelect data={rowData}
-                                  onChange={onChange}
+                                  onRefresh={onRefresh}
                                   mutliple
                                   defaultValue={str}
                                   defaultDisplayValue={str}
@@ -444,8 +445,10 @@ describe('TreeSelect', () => {
                                   limitCount={5}/>);
     showTrigger(cmp);
     refreshValue(cmp);
-    checkTreeSelectValue(cmp, []);
-    exp(await  changeReuslt).to.be.eql({ value: [], displayValue: [], });
+    exp(getTreeQuery(cmp)).to.be.equal('');
+    exp(getQueryInputValue(cmp)).to.be.equal('');
+    checkTreeSelectValue(cmp, [str,]);
+    exp(await  refreshResult).to.be.eql(true);
   });
 
   function checkTreeSelectValue (cmp, value, limit) {
@@ -862,12 +865,12 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     const old = 'hello';
     chagneQuery(cmp, old);
-    exp(findQueryInputValue(cmp)).to.be.equal(old);
+    exp(getQueryInputValue(cmp)).to.be.equal(old);
     exp(findTree(cmp).props().query).to.be.equal(old);
     exp(findTree(cmp).props().value).to.be.eql([value,]);
 
     clearQueryInput(cmp);
-    exp(findQueryInputValue(cmp)).to.be.equal('');
+    exp(getQueryInputValue(cmp)).to.be.equal('');
     exp(findTree(cmp).props().query).to.be.equal('');
     exp(findTree(cmp).props().value).to.be.eql([value,]);
   });
@@ -877,8 +880,8 @@ describe('TreeSelect', () => {
                                   value={value}
                                   throttle={0}
                                   expandAll={true}/>);
-    exp(cmp.find(Widget.InputTag).props().value).to.be.eql([value,]);
-    exp(cmp.find(Widget.InputTag).props().displayValue).to.be.eql([value,]);
+    exp(getInputTagValue(cmp)).to.be.eql([value,]);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql([value,]);
   });
   it('单选 value displayValue', async () => {
     const value = '0';
@@ -888,8 +891,8 @@ describe('TreeSelect', () => {
                                   displayValue={displayValue}
                                   throttle={0}
                                   expandAll={true}/>);
-    exp(cmp.find(Widget.InputTag).props().value).to.be.eql([value,]);
-    exp(cmp.find(Widget.InputTag).props().displayValue).to.be.eql([displayValue,]);
+    exp(getInputTagValue(cmp)).to.be.eql([value,]);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql([displayValue,]);
   });
   it('多选 value displayValue 逗号分隔', async () => {
     const value = '1,2,3,4';
@@ -899,12 +902,16 @@ describe('TreeSelect', () => {
                                   displayValue={displayValue}
                                   throttle={0}
                                   expandAll={true}/>);
-    exp(cmp.find(Widget.InputTag).props().value).to.be.eql([value,]);
-    exp(cmp.find(Widget.InputTag).props().displayValue).to.be.eql([displayValue,]);
+    exp(getInputTagValue(cmp)).to.be.eql([value,]);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql([displayValue,]);
   });
 
   function getInputTagValue (cmp) {
-    return cmp.find(Widget.InputTag).props().value;
+    return getInputTag(cmp).props().value;
+  }
+
+  function getInputTagDisplayValue (cmp) {
+    return getInputTag(cmp).props().displayValue;
   }
 
   function getTreeValue (cmp) {
@@ -913,7 +920,11 @@ describe('TreeSelect', () => {
 
 
   function showTrigger (cmp: Object) {
-    cmp.find(Widget.InputTag).simulate('click');
+    getInputTag(cmp).simulate('click');
+  }
+
+  function getInputTag (cmp: Object) {
+    return cmp.find(Widget.InputTag);
   }
 
   function getTreeQuery (cmp: Object) {
@@ -937,7 +948,7 @@ describe('TreeSelect', () => {
   }
 
   function simulateQueryInput (cmp: Object, keyCode: number) {
-    findQueryInput(cmp).simulate('keydown', { keyCode, });
+    getQueryInput(cmp).simulate('keydown', { keyCode, });
   }
 
   function findTree (cmp: Object) {
@@ -965,15 +976,15 @@ describe('TreeSelect', () => {
   }
 
   function chagneQuery (cmp: Object, value: string) {
-    findQueryInput(cmp).simulate('change', { target: { value, }, });
+    getQueryInput(cmp).simulate('change', { target: { value, }, });
 
   }
 
-  function findQueryInputValue (cmp: Object) {
-    return findQueryInput(cmp).props().value;
+  function getQueryInputValue (cmp: Object) {
+    return getQueryInput(cmp).props().value;
   }
 
-  function findQueryInput (cmp: Object) {
+  function getQueryInput (cmp: Object) {
     return cmp.find(Widget.Input).find('input').at(0);
   }
 });
