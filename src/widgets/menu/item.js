@@ -53,6 +53,7 @@ const SingleItem = styled.li `
     white-space: nowrap;
     cursor: pointer;
     overflow: hidden;
+    text-overflow: ellipsis;
     transition: background .3s ease;
     :hover {
       background-color: #ecf6fd;

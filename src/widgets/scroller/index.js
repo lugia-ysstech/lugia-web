@@ -11,6 +11,7 @@ import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition, } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import { FontSize, } from '../css';
+import { BarDefaultSize, } from '../css/scroller';
 
 type ScrollerProps = {
   totalSize: number,
@@ -37,7 +38,6 @@ const Container = styled.div`
   z-index: 996;
 `;
 
-const BarDefaultSize = 12;
 const XContainer = Container.extend`
   height: ${BarDefaultSize}px;
 `;

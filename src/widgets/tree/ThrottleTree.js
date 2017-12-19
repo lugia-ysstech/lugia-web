@@ -16,6 +16,7 @@ import './index.css';
 import TreeUtils from './utils';
 import 'babel-polyfill';
 import styled from 'styled-components';
+import { BarDefaultSize, } from '../css/scroller';
 
 const menuItemHeight = 18;
 type RowData = { [key: string]: any };
@@ -107,14 +108,21 @@ class ScrollerTree extends React.Component<any, any> {
       } = this.props;
       start = Math.round(start);
       end = Math.round(end);
+      const hasScroller = data.length > end;
       const { rows, parentCount, } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
       const top = -parentCount * 18;
       const treeNodes = this.loopNode(nodes);
+      const treeTheme = getTheme();
+      if (hasScroller) {
+        if (treeTheme.width) {
+          treeTheme.width = treeTheme.width - BarDefaultSize;
+        }
+      }
       return <WrapRcTree {...this.props}
                          onSelect={onSelect}
                          top={top}
-                         theme={getTheme()}
+                         theme={treeTheme}
                          className={classString}
                          onExpand={onExpand}
                          checkable={mutliple ? <span className={`${prefixCls}-checkbox-inner`}/> : mutliple}>
@@ -129,7 +137,7 @@ class ScrollerTree extends React.Component<any, any> {
   loopNode = (data: Array<RowData>) => data.map(item => {
 
     const { selectable, displayField, } = this.props;
-    const { children, key, [displayField]: title, isLeaf, } = item;
+    const { children, key, [ displayField ]: title, isLeaf, } = item;
     if (children !== undefined) {
       return (
         <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>

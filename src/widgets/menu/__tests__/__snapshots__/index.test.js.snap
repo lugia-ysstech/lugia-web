@@ -26,6 +26,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }
@@ -72,6 +73,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
   background-color: #f7f7f7;
@@ -178,6 +180,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }
@@ -197,6 +200,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
   background-color: #f7f7f7;
@@ -273,6 +277,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }
@@ -350,6 +355,7 @@ exports[`Menu children: items 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }

@@ -12,6 +12,7 @@ exports[`Item Mutliple MenuItem 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }
@@ -71,6 +72,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
   background-color: #f7f7f7;
@@ -137,6 +139,7 @@ exports[`Item Single MenuItem 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }
@@ -167,6 +170,7 @@ exports[`Item Single MenuItem checked 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
   background-color: #f7f7f7;
@@ -202,6 +206,7 @@ exports[`Item children: null 1`] = `
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: background .3s ease;
   transition: background .3s ease;
 }
