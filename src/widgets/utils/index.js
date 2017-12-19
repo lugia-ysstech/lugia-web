@@ -53,3 +53,13 @@ export function deleteValue (target: Array<any>, value: any): void {
 
   target.splice(index, 1);
 }
+
+export function adjustValue (value: any, per: any) {
+  value = value - 0;
+  per = per - 0;
+  const ys = value % per;
+  if (ys !== 0) {
+    return value - ys + per;
+  }
+  return value;
+}

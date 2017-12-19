@@ -10,8 +10,8 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 250px;
-  max-height: 250px;
+  height: 280px;
+  max-height: 280px;
   overflow: hidden;
 }
 
@@ -164,8 +164,8 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 250px;
-  max-height: 250px;
+  height: 280px;
+  max-height: 280px;
   overflow: hidden;
 }
 
@@ -261,8 +261,8 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 333px;
-  max-height: 333px;
+  height: 350px;
+  max-height: 350px;
   overflow: hidden;
 }
 
@@ -339,8 +339,8 @@ exports[`Menu children: items 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 250px;
-  max-height: 250px;
+  height: 280px;
+  max-height: 280px;
   overflow: hidden;
 }
 

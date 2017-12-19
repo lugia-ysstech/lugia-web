@@ -831,7 +831,7 @@ describe('Tree', () => {
 
     cmp.find(CheckBox).at(0).simulate('click');
     // cmp.update();
-    exp(cmp.find(`.${Checked}`).length).to.be.equal(14);
+    exp(cmp.find(`.${Checked}`).length).to.be.equal(15);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
 

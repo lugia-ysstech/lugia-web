@@ -1,7 +1,7 @@
 //@flow
 import React from 'react';
 import chai from 'chai';
-import { cacheOnlyFirstCall, deleteValue, getElementPosition, splitStr, } from '../';
+import { adjustValue, cacheOnlyFirstCall, deleteValue, getElementPosition, splitStr, } from '../';
 
 const { expect: exp, } = chai;
 
@@ -72,5 +72,21 @@ describe('utils', () => {
 
     deleteValue(target, 1);
     exp(target).to.be.eql(target);
+  });
+  it('adjustValue', () => {
+    exp(adjustValue(0, 3)).to.be.equal(0);
+    exp(adjustValue(3, 3)).to.be.equal(3);
+    exp(adjustValue(4, 3)).to.be.equal(6);
+    exp(adjustValue(10, 3)).to.be.equal(12);
+    exp(adjustValue(11, 3)).to.be.equal(12);
+    exp(adjustValue(12, 3)).to.be.equal(12);
+
+
+    exp(adjustValue('0', 3)).to.be.equal(0);
+    exp(adjustValue('3', 3)).to.be.equal(3);
+    exp(adjustValue('4', 3)).to.be.equal(6);
+    exp(adjustValue('10', 3)).to.be.equal(12);
+    exp(adjustValue('11', '3')).to.be.equal(12);
+    exp(adjustValue('12', 3)).to.be.equal(12);
   });
 });

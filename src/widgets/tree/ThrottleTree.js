@@ -17,8 +17,9 @@ import TreeUtils from './utils';
 import 'babel-polyfill';
 import styled from 'styled-components';
 import { BarDefaultSize, } from '../css/scroller';
+import { adjustValue, } from '../utils';
+import { menuItemHeight, defaultHeight, } from '../css/tree';
 
-const menuItemHeight = 18;
 type RowData = { [key: string]: any };
 
 const getTop = props => props.top;
@@ -100,7 +101,6 @@ class ScrollerTree extends React.Component<any, any> {
         onExpand,
         utils,
         onSelect,
-        getTheme,
         id2ExtendInfo,
       } = this.props;
       let {
@@ -113,7 +113,7 @@ class ScrollerTree extends React.Component<any, any> {
       const nodes = utils.generateTreeNode(rows);
       const top = -parentCount * 18;
       const treeNodes = this.loopNode(nodes);
-      const treeTheme = getTheme();
+      const treeTheme = this.getTheme();
       if (hasScroller) {
         if (treeTheme.width) {
           treeTheme.width = treeTheme.width - BarDefaultSize;
@@ -133,6 +133,14 @@ class ScrollerTree extends React.Component<any, any> {
 
   }
 
+
+  getTheme () {
+    const { getTheme, } = this.props;
+    const theme = getTheme();
+    const { height = defaultHeight, } = theme;
+    theme.height = adjustValue(height, menuItemHeight);
+    return theme;
+  }
 
   loopNode = (data: Array<RowData>) => data.map(item => {
 

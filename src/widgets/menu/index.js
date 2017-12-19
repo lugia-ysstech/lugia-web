@@ -12,6 +12,7 @@ import ThemeProvider from '../common/ThemeProvider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import * as Widget from '../consts/Widget';
 import '../css/sv.css';
+import { adjustValue, } from '../utils';
 
 type MenuProps = {
   start: number,
@@ -101,7 +102,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   render () {
     const { props, } = this;
-    const { data, getTheme, } = props;
+    const { data, } = props;
     let {
       start, end,
     } = this.props;
@@ -124,7 +125,15 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
 
-    return <MenuContainer theme={getTheme()}>{items}</MenuContainer>;
+    return <MenuContainer theme={this.getTheme()}>{items}</MenuContainer>;
+  }
+
+  getTheme () {
+    const { getTheme, } = this.props;
+    const theme = getTheme();
+    const { height = defaultHeight, } = theme;
+    theme.height = adjustValue(height, menuItemHeight);
+    return theme;
   }
 
   computeItems (data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {

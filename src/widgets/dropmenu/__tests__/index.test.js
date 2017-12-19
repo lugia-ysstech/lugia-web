@@ -9,6 +9,7 @@ import Menu from '../../menu';
 import * as Widgets from '../../consts/Widget';
 import { Height, } from '../../css/input';
 import { QueryInputPadding, } from '../../common/QueryInputContainer';
+import { adjustValue, } from '../../utils';
 
 Enzyme.configure({ adapter: new Adapter(), });
 
