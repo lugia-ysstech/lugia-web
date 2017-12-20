@@ -4,6 +4,7 @@
  *
  * @flow
  */
-export const ItemMarginRight = 4;
-export const ItemPaddingLeft = 10;
-export const ItemPadingRight = 20;
+export const MarginTop = 1;
+export const MarginRight = 4;
+export const PaddingLeft = 10;
+export const PadingRight = 20;

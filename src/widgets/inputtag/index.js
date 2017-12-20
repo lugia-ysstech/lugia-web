@@ -10,7 +10,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
 import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
-import { ItemMarginRight, } from './style';
+import { MarginRight, } from './style';
 import Item from './ItemOption';
 import Icon from '../icon';
 import MoreItem from './MoreItem';
@@ -23,6 +23,7 @@ import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
 import { FontSize, } from '../css';
+import { Height, Padding, } from '../css/input';
 
 type InputTagProps = {
   placeholder?: string;
@@ -63,14 +64,13 @@ const Container = styled.div`
   color: rgba(0, 0, 0, 0.65);
   font-size: ${FontSize};
 `;
-const outContainerHeight = 28;
 const focus = props => {
   return props.focus ? `border-color: ${InputBorderHoverColor};` : '';
 };
 const OutContainer = styled.div`
   border: solid 1px ${InputBorderColor};
   border-radius: ${RadiusSize};
-  min-height: ${outContainerHeight}px;
+  min-height: ${Height}px;
   padding-bottom: 3px;
   ${focus}
   :hover {
@@ -95,7 +95,7 @@ const getContentWidth = (w: number) => {
 };
 const InnerContainer = styled.div `
   ${widthFunc(-getContentWidth(0))}
-  height: 26px;
+  height: ${Height - Padding}px;
   margin-left: ${marginLeft}px;
   margin-right: ${marginRight}px;
   margin-bottom: -3px;
@@ -112,8 +112,8 @@ const List = styled.ul`
 `;
 const InputTagTheme = styled(Theme)`
   display: block;
-  min-height: ${outContainerHeight}px;
-  height: ${outContainerHeight}px;
+  min-height: ${Height}px;
+  height: ${Height}px;
 `;
 const FocuInput = styled.input`
   position: absolute;
@@ -519,7 +519,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         const key = keys[ i ];
         const { text, } = value[ key ];
         const fontWidth = await this.getFontWidth(text);
-        totalWidth += fontWidth + ItemMarginRight;
+        totalWidth += fontWidth + MarginRight;
         if (totalWidth >= listWidth) {
           break;
         }

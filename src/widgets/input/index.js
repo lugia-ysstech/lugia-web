@@ -7,9 +7,9 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
-import { InputBorderColor, InputBorderHoverColor, RadiusSize, Height,} from '../css/input';
+import { Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
 import PlaceContainer from '../common/PlaceContainer';
-import {FontSize,} from '../css';
+import { FontSize, } from '../css';
 
 type InputState = {|
   value: string,
@@ -48,7 +48,7 @@ const CommonInputStyle = styled.input`
   font-size: ${FontSize};
   height: ${Height}px;
   display: inline-block;
-  padding: 2px 3px;
+  padding: ${Padding}px ${Padding + 1}px;
   font-family: inherit;
   margin: 0;
   ${getWidth}
