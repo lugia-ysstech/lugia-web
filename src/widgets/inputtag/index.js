@@ -507,7 +507,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return true;
     }
     const items = [];
-    this.needMoreItem = false;
     const { value, } = this.state;
     if (value) {
       listWidth -= 36;
@@ -526,6 +525,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
         items.push(<Item key={key} onCloseClick={this.onDelItem.bind(this, key)}>{text}</Item>);
       }
+      this.needMoreItem = false;
       if (valueLen !== items.length) {
         this.needMoreItem = true;
       }
