@@ -614,13 +614,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { getTheme = () => ({}), } = this.props;
     const theme = getTheme();
     const { width, } = theme;
-    const queryInputConfig = {};
+    let queryInputConfig = {};
     if (width) {
       queryInputConfig.width = width - 2 * QueryInputPadding;
     }
     const inputTag = { ...theme, };
-    const inputConfig = Object.assign({}, theme, queryInputConfig);
-    delete inputConfig.height;
+    queryInputConfig = Object.assign({}, theme, queryInputConfig);
+    delete queryInputConfig.height;
     const treeConfig = { ...theme, };
     const { height = DefaultHeight, } = treeConfig;
     treeConfig.height = adjustValue(height, MenuItemHeight);
@@ -629,7 +629,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       [ Widget.Trigger ]: theme,
       [ Widget.InputTag ]: inputTag,
       [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9', },
-      [ Widget.Input ]: inputConfig,
+      [ Widget.Input ]: queryInputConfig,
     };
   }
 
