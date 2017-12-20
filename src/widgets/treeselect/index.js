@@ -65,6 +65,7 @@ type TreeSelectState = {
   selectCount: number,
   end: number,
   start: number,
+  themeConfig: Object
 };
 const SelectedIcon = 'SelectedIcon';
 const Text = styled.span`
@@ -117,6 +118,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       end: 0,
       start: 0,
       selectAll: false,
+      themeConfig: this.getTheme(),
     };
     this.changeOldValue(value);
     this.treeVisible = false;
@@ -130,9 +132,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return { value, displayValue: displayValue && displayValue.length > 0 ? displayValue : [...value,], };
   }
 
-  shouldComponentUpdate (nexProps: TreeSelectProps, nextState: TreeSelectState) {
+  shouldComponentUpdate (nextProps: TreeSelectProps, nextState: TreeSelectState) {
     const { props, } = this;
-    const dataChanged = props.data !== nexProps.data;
+    const dataChanged = props.data !== nextProps.data;
     if (dataChanged === true) {
       return true;
     }
@@ -142,22 +144,27 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       state.treeFilter !== nextState.treeFilter ||
       state.start !== nextState.start ||
       state.selectAll !== nextState.selectAll ||
-      props.disabled !== nexProps.disabled ||
-      props.mutliple !== nexProps.mutliple ||
-      props.svThemVersion !== nexProps.svThemVersion ||
+      props.disabled !== nextProps.disabled ||
+      props.mutliple !== nextProps.mutliple ||
+      props.svThemVersion !== nextProps.svThemVersion ||
       state.selectCount !== nextState.selectCount ||
       state.value !== nextState.value ||
       state.displayValue !== nextState.displayValue;
   }
 
-  componentWillReceiveProps (props: TreeSelectProps) {
-    if (!Support.isNotLimit(props)) {
-      const { value = [], } = props;
+  componentWillReceiveProps (nextProps: TreeSelectProps) {
+    if (!Support.isNotLimit(nextProps)) {
+      const { value = [], } = nextProps;
       this.changeOldValue(value);
 
-      if (props.value !== this.props.value || props.displayValue !== this.props.displayValue) {
-        const { value, displayValue, } = this.getInitValue(props);
+      if (nextProps.value !== this.props.value || nextProps.displayValue !== this.props.displayValue) {
+        const { value, displayValue, } = this.getInitValue(nextProps);
         this.setState({ value, displayValue, selectCount: value.length, });
+      }
+      if (this.props.svThemVersion !== nextProps.svThemVersion) {
+        this.setState({
+          themeConfig: this.getTheme(),
+        });
       }
     }
   }
@@ -206,8 +213,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
-    const { disabled, } = this.props;
-    return <Theme config={this.getTheme()} key="treesel_theme">
+    const { disabled, } = props;
+    const { themeConfig, } = state;
+
+    return <Theme config={themeConfig} key="treesel_theme">
       <Trigger popup={tree}
                onPopupVisibleChange={this.onTreePopupVisibleChange}
                align="bottomLeft"
