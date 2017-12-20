@@ -16,7 +16,7 @@ import * as Widget from '../../consts/Widget';
 import Theme from '../../theme';
 
 import { adjustValue, } from '../../utils';
-import { defaultHeight, menuItemHeight, } from '../../css/tree';
+import { DefaultHeight, MenuItemHeight, } from '../../css/tree';
 
 Enzyme.configure({ adapter: new Adapter(), });
 
@@ -73,7 +73,7 @@ describe('TreeSelect', () => {
     };
     const svThemeConfigTree = { [ Widget.TreeSelect ]: styleConfig, };
     const expResult: Object = {
-      [ Widget.Tree ]: Object.assign({}, styleConfig, { svThemeConfigTree, }, { height: adjustValue(defaultHeight, menuItemHeight), }),
+      [ Widget.Tree ]: Object.assign({}, styleConfig, { svThemeConfigTree, }, { height: adjustValue(DefaultHeight, MenuItemHeight), }),
       [ Widget.Trigger ]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
       [ Widget.InputTag ]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
       [ Widget.Input ]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, }, { svThemeConfigTree, }),
@@ -86,7 +86,7 @@ describe('TreeSelect', () => {
 
     const expResult: Object = {
       [ Widget.Tree ]: {
-        height: adjustValue(defaultHeight, menuItemHeight),
+        height: adjustValue(DefaultHeight, MenuItemHeight),
         svThemeConfigTree: { [ Widget.TreeSelect ]: {}, },
       },
       [ Widget.Trigger ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {}, }, },

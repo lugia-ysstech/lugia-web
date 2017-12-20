@@ -8,7 +8,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 import * as Widget from '../consts/Widget';
 import { FontSize, } from '../css';
-import { menuItemHeight, } from '../css/menu';
+import { BackgroundColor, MenuItemHeight, SelectIcon, } from '../css/menu';
+
 const Utils = require('vx-var-utils');
 const { ObjectUtils, } = Utils;
 type MenuItemProps = {
@@ -18,16 +19,14 @@ type MenuItemProps = {
   children?: React.Node
 };
 
-const SelectIcon = '\\e73e';
-const BgColor = '#f7f7f7';
-const singleChecked = (props: MenuItemProps) => {
+const getBackGroundColor = (props: MenuItemProps) => {
   return props.checked ? `
-    background-color: ${BgColor};
+    background-color: ${BackgroundColor};
     font-weight: 600;
     color: rgba(0,0,0,.65);
     ` : '';
 };
-const mulipleChecked = (props: MenuItemProps) => {
+const getMulipleCheckedStyle = (props: MenuItemProps) => {
   return props.checked ? `
     :after{
       color: #108ee9;
@@ -45,7 +44,7 @@ const SingleItem = styled.li `
     box-sizing: border-box;
     position: relative;
     display: block;
-    height: ${menuItemHeight}px;
+    height: ${MenuItemHeight}px;
     padding: 7px 8px;
     font-weight: 400;
     color: rgba(0,0,0,.65);
@@ -57,7 +56,7 @@ const SingleItem = styled.li `
     :hover {
       background-color: #ecf6fd;
     }
-    ${singleChecked}
+    ${getBackGroundColor}
 `;
 const MutlipleItem = SingleItem.extend `
     :after {
@@ -77,7 +76,7 @@ const MutlipleItem = SingleItem.extend `
       font-weight: 700;
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
     }
-    ${mulipleChecked}
+    ${getMulipleCheckedStyle}
 `;
 
 class MenuItem extends React.Component<MenuItemProps> {

@@ -8,7 +8,7 @@ import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
 import Item from './item';
-import { defaultHeight, menuItemHeight, } from '../css/menu';
+import { DefaultHeight, MenuItemHeight, } from '../css/menu';
 import ThemeProvider from '../common/ThemeProvider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import * as Widget from '../consts/Widget';
@@ -28,19 +28,20 @@ type MenuProps = {
   selectedKeys?: Array<string>,
   defaultSelectedKeys?: Array<string>,
 };
-const height = props => {
-  const height = props.theme.height ? props.theme.height : defaultHeight;
+const getHeight = props => {
+  const height = props.theme.height ? props.theme.height : DefaultHeight;
   return `${height}px`;
 };
+const getWidth = props => (props.theme.width ? `width: ${props.theme.width}px;` : '');
 const MenuContainer = styled.ul`
-  ${props => (props.theme.width ? `width: ${props.theme.width}px;` : '')}
+  ${getWidth}
   outline: none;
   margin: 0;
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: ${height};
-  max-height: ${height};
+  height: ${getHeight};
+  max-height: ${getHeight};
   overflow: hidden;
 `;
 
@@ -131,8 +132,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
   getTheme () {
     const { getTheme, } = this.props;
     const theme = getTheme();
-    const { height = defaultHeight, } = theme;
-    theme.height = adjustValue(height, menuItemHeight);
+    const { height = DefaultHeight, } = theme;
+    theme.height = adjustValue(height, MenuItemHeight);
     return theme;
   }
 
@@ -213,7 +214,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 }
 
-const Result = ThemeProvider(ThrolleScroller(Menu, menuItemHeight), Widget.Menu);
+const Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
 Result.MenuItem = Item;
 export default Result;
 

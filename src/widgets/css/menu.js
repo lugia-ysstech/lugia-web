@@ -4,6 +4,9 @@
  *
  * @flow
  */
-export const menuItemHeight = 35;
-export const defaultHeight = 250;
-export const defaultWidth = 200;
+export const MenuItemHeight = 35;
+export const DefaultHeight = 250;
+export const DefaultWidth = 250;
+export const BackgroundColor = '#f7f7f7';
+export const SelectIcon = '\\e73e';
+

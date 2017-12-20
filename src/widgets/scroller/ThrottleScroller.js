@@ -9,20 +9,20 @@ import styled from 'styled-components';
 import Scroller from './index';
 import '../css/sv.css';
 import * as Widget from '../consts/Widget';
-import { defaultHeight, defaultWidth, BarDefaultSize,} from '../css/scroller';
+import { DefaultHeight, DefaultWidth, BarDefaultSize,} from '../css/scroller';
 
 
 const height = props => {
   const height = props.theme.height;
-  return height ? `height:${height}px;` : `height:${defaultHeight}px;`;
+  return height ? `height:${height}px;` : `height:${DefaultHeight}px;`;
 };
 const width = props => {
   const width = props.theme.width;
-  return width ? `width:${width}px;` : `width:${defaultWidth}px;`;
+  return width ? `width:${width}px;` : `width:${DefaultWidth}px;`;
 };
 const getContentWidth = props => {
   const width = props.theme.width;
-  return width ? width - BarDefaultSize : defaultWidth - BarDefaultSize;
+  return width ? width - BarDefaultSize : DefaultWidth - BarDefaultSize;
 };
 
 const contentWidth = props => {
@@ -146,7 +146,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
     }
 
     fetchViewSize () {
-      const { height = defaultHeight, } = this.props.getTheme();
+      const { height = DefaultHeight, } = this.props.getTheme();
       return height;
     }
 

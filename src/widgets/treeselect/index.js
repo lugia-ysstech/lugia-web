@@ -24,7 +24,7 @@ import CheckIcon from '../icon/CheckIcon';
 import ClearIcon from '../icon/ClearIcon';
 import { FontSize, } from '../css';
 import QueryInput, { QueryInputPadding, } from '../common/QueryInputContainer';
-import { defaultHeight, menuItemHeight, } from '../css/tree';
+import { DefaultHeight, MenuItemHeight, } from '../css/tree';
 
 import { adjustValue, } from '../utils';
 
@@ -622,8 +622,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const inputConfig = Object.assign({}, theme, queryInputConfig);
     delete inputConfig.height;
     const treeConfig = { ...theme, };
-    const { height = defaultHeight, } = treeConfig;
-    treeConfig.height = adjustValue(height, menuItemHeight);
+    const { height = DefaultHeight, } = treeConfig;
+    treeConfig.height = adjustValue(height, MenuItemHeight);
     return {
       [ Widget.Tree ]: treeConfig,
       [ Widget.Trigger ]: theme,

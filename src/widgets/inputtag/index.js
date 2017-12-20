@@ -9,8 +9,7 @@ import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
-import { Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
-import { MarginRight, } from './style';
+
 import Item from './ItemOption';
 import Icon from '../icon';
 import MoreItem from './MoreItem';
@@ -22,8 +21,10 @@ import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
+import { Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
 import { FontSize, } from '../css';
-import { defaultHeight, } from '../css/menu';
+import { DefaultHeight, } from '../css/menu';
+import { MarginRight, } from '../css/inputtag';
 
 type InputTagProps = {
   placeholder?: string;
@@ -48,23 +49,23 @@ type InputTagState = {
   value: Object,
   query: string,
 };
-const widthFunc = (spanWidth: number) => (props: Object) => {
+const getWidthBySpan = (spanWidth: number) => (props: Object) => {
   const w = props.theme.width - spanWidth;
   return w ? `width: ${w}px;` : 'width: 100%;';
 };
-const width = widthFunc(0);
-const disabled = props => {
+const getWidth = getWidthBySpan(0);
+const getBackground = props => {
   return props.disabled ? 'background: rgba(0,0,0,.05);' : '';
 };
 const Container = styled.div`
-  ${width}
-  ${disabled}
+  ${getWidth}
+  ${getBackground}
   display: inline-block;
   position: relative;
   color: rgba(0, 0, 0, 0.65);
   font-size: ${FontSize};
 `;
-const focus = props => {
+const getBorderColor = props => {
   return props.focus ? `border-color: ${InputBorderHoverColor};` : '';
 };
 const OutContainer = styled.div`
@@ -72,7 +73,7 @@ const OutContainer = styled.div`
   border-radius: ${RadiusSize};
   min-height: ${Height}px;
   padding-bottom: 3px;
-  ${focus}
+  ${getBorderColor}
   :hover {
     border-color: ${InputBorderHoverColor};
   }
@@ -93,7 +94,7 @@ const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
 };
 const InnerContainer = styled.div `
-  ${widthFunc(-getContentWidth(0))}
+  ${getWidthBySpan(-getContentWidth(0))}
   height: ${Height - Padding}px;
   margin-left: ${marginLeft}px;
   margin-right: ${marginRight}px;
@@ -497,7 +498,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   getHeight () {
     const { getTheme, } = this.props;
 
-    const { height = defaultHeight, } = getTheme();
+    const { height = DefaultHeight, } = getTheme();
     return height;
   }
 

@@ -5,5 +5,6 @@
  * @flow
  */
 export const BarDefaultSize = 12;
-export const defaultWidth = 250;
-export const defaultHeight = 250;
+export const DefaultWidth = 250;
+export const DefaultHeight = 250;
+export const BarDefaultSizePadding = 4;

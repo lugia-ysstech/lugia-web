@@ -18,7 +18,7 @@ import 'babel-polyfill';
 import styled from 'styled-components';
 import { BarDefaultSize, } from '../css/scroller';
 import { adjustValue, } from '../utils';
-import { menuItemHeight, defaultHeight, } from '../css/tree';
+import { MenuItemHeight, DefaultHeight, } from '../css/tree';
 
 type RowData = { [key: string]: any };
 
@@ -137,8 +137,8 @@ class ScrollerTree extends React.Component<any, any> {
   getTheme () {
     const { getTheme, } = this.props;
     const theme = getTheme();
-    const { height = defaultHeight, } = theme;
-    theme.height = adjustValue(height, menuItemHeight);
+    const { height = DefaultHeight, } = theme;
+    theme.height = adjustValue(height, MenuItemHeight);
     return theme;
   }
 
@@ -158,4 +158,4 @@ class ScrollerTree extends React.Component<any, any> {
 
 }
 
-export default ThrottleScroller(ScrollerTree, menuItemHeight);
+export default ThrottleScroller(ScrollerTree, MenuItemHeight);

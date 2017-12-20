@@ -11,7 +11,7 @@ import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import styled from 'styled-components';
 
-const color = (props: Object) => {
+const getColor = (props: Object) => {
   const { color, } = props.theme;
   return color ? `color: ${color};` : '';
 };
@@ -22,7 +22,7 @@ const hover = (props: Object) => {
 const IconTag = styled.i`
   user-select: none;
   cursor: pointer;
-  ${color}
+  ${getColor}
   ${hover}
 `;
 type IconProps = {

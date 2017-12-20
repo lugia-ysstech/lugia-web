@@ -11,7 +11,7 @@ import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition, } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import { FontSize, } from '../css';
-import { BarDefaultSize, } from '../css/scroller';
+import { BarDefaultSize, BarDefaultSizePadding, } from '../css/scroller';
 
 type ScrollerProps = {
   totalSize: number,
@@ -44,7 +44,7 @@ const XContainer = Container.extend`
 const YContainer = Container.extend`
   width: ${BarDefaultSize}px;
 `;
-
+const getBackground = props => (props.disabled ? '#898989' : '#49a9ee');
 const Bar = styled.div`
   position: absolute;
   top: 0;
@@ -52,7 +52,7 @@ const Bar = styled.div`
   cursor: pointer;
   text-align: center;
   border-radius: 8px;
-  background: ${props => (props.disabled ? '#898989' : '#49a9ee')};
+  background: ${getBackground};
   color: #FFF;
   font-size: ${FontSize};
   line-height: 30px;
@@ -62,14 +62,14 @@ const Bar = styled.div`
   }
 `;
 
-const BarDefaultSizePadding = 4;
+const scrollerSize = BarDefaultSize - BarDefaultSizePadding;
 const XBar = Bar.extend`
-  height: ${BarDefaultSize - BarDefaultSizePadding}px;
+  height: ${scrollerSize}px;
   margin-bottom: 2px;
   margin-top: 2px;
 `;
 const YBar = Bar.extend`
-  width: ${BarDefaultSize - BarDefaultSizePadding}px;
+  width: ${scrollerSize}px;
   margin-left: 2px;
   margin-right: 2px;
 `;

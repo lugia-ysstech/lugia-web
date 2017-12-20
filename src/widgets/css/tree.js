@@ -4,5 +4,5 @@
  *
  * @flow
  */
-export const menuItemHeight = 17;
-export const defaultHeight = 250;
+export const MenuItemHeight = 17;
+export const DefaultHeight = 250;
