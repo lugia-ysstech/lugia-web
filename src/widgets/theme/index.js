@@ -28,6 +28,7 @@ class Theme extends React.Component<PropsType, StateType> {
     this.updateTreeConfig(props, context);
   }
 
+  //TODO: 需要单元测试
   componentWillReceiveProps (nextProps: PropsType, context: Object) {
     const nowContext = this.context;
     if (nextProps.config !== this.props.config

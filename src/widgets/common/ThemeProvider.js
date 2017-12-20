@@ -17,7 +17,7 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
       super(props);
       this.state = { svThemVersion: 0, };
     }
-
+    //TODO: 需要单元测试
     componentWillReceiveProps (props: any, context: any) {
       const nowContext = this.context;
       if (nowContext.config !== context.config
