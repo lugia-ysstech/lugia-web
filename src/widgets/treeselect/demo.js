@@ -101,21 +101,22 @@ const Data = styled.div`
 export default class extends React.Component<any, any> {
   constructor (props: any) {
     super(props);
+    const height = 400, width = 300;
     this.state = {
       data: [],
       value: '1',
       displayValue: '1',
-      width: 300,
-      limitCount: 5,
-      height: 400,
+      limitCount: 12,
+      width, height,
+      config:
+        { [ Widget.TreeSelect ]: { height, width, }, },
     };
   }
 
 
   render () {
-    const { height, width, value, displayValue, limitCount, } = this.state;
-    console.info(height, width);
-    const config = { [ Widget.TreeSelect ]: { height, width, }, };
+    const { value, displayValue, limitCount, config, width, height, } = this.state;
+
     console.info('demo');
     return <Theme config={config}>
       <TreeSelect data={this.state.data}
@@ -143,14 +144,17 @@ export default class extends React.Component<any, any> {
   }
 
   onHeightChange = (e: Object) => {
-    this.setState({ height: e.target.value, });
+    const height = e.target.value;
+    this.state.config[ Widget.TreeSelect ].height = height;
+    this.setState({ config: this.state.config, height, });
   };
   onLimitCountChange = (e: Object) => {
     this.setState({ limitCount: e.target.value, });
   };
   onWidthChange = (e: Object) => {
-    this.setState({ width: e.target.value, });
-
+    const width = e.target.value;
+    this.state.config[ Widget.TreeSelect ].width = width;
+    this.setState({ config: this.state.config, width, });
   };
   onRefresh = () => {
     console.info('refresh');
