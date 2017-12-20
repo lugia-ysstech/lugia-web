@@ -27,8 +27,14 @@ class Theme extends React.Component<PropsType, StateType> {
     super(props);
     this.updateTreeConfig(props, context);
   }
-  componentWillReceiveProps(nextProps:PropsType, context: Object ){
-    this.updateTreeConfig(nextProps, context);
+
+  componentWillReceiveProps (nextProps: PropsType, context: Object) {
+    const nowContext = this.context;
+    if (nextProps.config !== this.props.config
+      || nowContext.config !== context.config
+      || nowContext.svThemeConfigTree !== context.svThemeConfigTree) {
+      this.updateTreeConfig(nextProps, context);
+    }
   }
 
   updateTreeConfig (props: PropsType, context: Object) {
@@ -46,7 +52,7 @@ class Theme extends React.Component<PropsType, StateType> {
   }
 
   render () {
-    const { children, className,} = this.props;
+    const { children, className, } = this.props;
     return <span className={className}>{children}</span>;
   }
 }

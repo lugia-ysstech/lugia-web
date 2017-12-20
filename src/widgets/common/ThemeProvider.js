@@ -19,12 +19,13 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
     }
 
     componentWillReceiveProps (props: any, context: any) {
-      if (this.context !== context) {
+      const nowContext = this.context;
+      if (nowContext.config !== context.config
+        || nowContext.svThemeConfigTree !== context.svThemeConfigTree) {
         this.setState({
           svThemVersion: this.state.svThemVersion + 1,
         });
       }
-
     }
 
     render () {
