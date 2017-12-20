@@ -81,7 +81,8 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
       if (!this.isNeedScrolelr()) {
         const { length, } = this.getTarget();
-        return <Target {...props} start={start} end={length} canSeeCount={length}/>;
+        //TODO: 待测试
+        return <Target {...props} start={0} end={length} canSeeCount={length}/>;
       }
 
       const { type, getTheme, } = props;
