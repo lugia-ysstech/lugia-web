@@ -59,7 +59,7 @@ function getNumberKey () {
 
 const rowData: Array<Object> = [
   { key: '1', title: '1', },
-  { key: '1.1', title: '1123', pid: '1', path: '1', isLeaf: true, },
+  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
   { key: '1.2', title: '1.2', pid: '1', path: '1', },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
@@ -106,13 +106,14 @@ export default class extends React.Component<any, any> {
       value: '1',
       displayValue: '1',
       width: 300,
-      height: 250,
+      limitCount: 5,
+      height: 400,
     };
   }
 
 
   render () {
-    const { height, width, value, displayValue, } = this.state;
+    const { height, width, value, displayValue, limitCount, } = this.state;
     console.info(height, width);
     const config = { [ Widget.TreeSelect ]: { height, width, }, };
     console.info('demo');
@@ -125,10 +126,10 @@ export default class extends React.Component<any, any> {
                   canInput
                   throttle={500}
                   expandAll={true}
-                  limitCount={5}
         // limitCount={5}
                   expandAll
                   value={value}
+                  limitCount={limitCount}
                   displayValue={displayValue}
                   mutliple
                   placeholder="请输入xxx"
@@ -137,11 +138,15 @@ export default class extends React.Component<any, any> {
                   onChange={this.onChange}/>
       w <input value={width} onChange={this.onWidthChange}/>
       h<input value={height} onChange={this.onHeightChange}/>
+      h<input value={limitCount} onChange={this.onLimitCountChange}/>
     </Theme>;
   }
 
   onHeightChange = (e: Object) => {
     this.setState({ height: e.target.value, });
+  };
+  onLimitCountChange = (e: Object) => {
+    this.setState({ limitCount: e.target.value, });
   };
   onWidthChange = (e: Object) => {
     this.setState({ width: e.target.value, });

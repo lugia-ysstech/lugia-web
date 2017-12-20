@@ -7,7 +7,7 @@ exports[`Input props: null 1`] = `
   cursor: text;
   line-height: 1.5;
   font-size: 12px;
-  height: 28px;
+  height: 22px;
   display: inline-block;
   padding: 2px 3px;
   font-family: inherit;

@@ -7,7 +7,8 @@
 import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
-import Item, { menuItemHeight, } from './item';
+import Item from './item';
+import { defaultHeight, menuItemHeight, } from '../css/menu';
 import ThemeProvider from '../common/ThemeProvider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import * as Widget from '../consts/Widget';
@@ -27,7 +28,6 @@ type MenuProps = {
   selectedKeys?: Array<string>,
   defaultSelectedKeys?: Array<string>,
 };
-const defaultHeight = 250;
 const height = props => {
   const height = props.theme.height ? props.theme.height : defaultHeight;
   return `${height}px`;

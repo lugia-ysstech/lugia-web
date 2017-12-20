@@ -10,18 +10,17 @@ import * as Widgets from '../../consts/Widget';
 import { Height, } from '../../css/input';
 import { QueryInputPadding, } from '../../common/QueryInputContainer';
 import { adjustValue, } from '../../utils';
+import { menuItemHeight, defaultHeight,} from '../../css/menu';
 
 Enzyme.configure({ adapter: new Adapter(), });
 
 const { expect: exp, } = chai;
 
-const defaultHeight = 250;
-const inputHeight = 50;
 describe('DropMenu', () => {
 
   it('菜单的高度需扣除input的默认高度', () => {
     const cmp = mount(<DropMenu menus={<Menu data={[{ key: '1', value: 'hello', },]}/>}><input/></DropMenu>);
-    exp(getMenuHeight(cmp)).to.be.equal(defaultHeight - (Height + 2 * QueryInputPadding));
+    exp(getMenuHeight(cmp)).to.be.equal(adjustValue(defaultHeight - (Height + 2 * QueryInputPadding), menuItemHeight));
   });
 
   function getMenuHeight (cmp) {

@@ -13,9 +13,9 @@ import '../common/shirm';
 import Input from '../input';
 import QueryInput, { QueryInputPadding, } from '../common/QueryInputContainer';
 import { Height, } from '../css/input';
+import { adjustValue, } from '../utils';
+import { menuItemHeight, defaultHeight, defaultWidth,} from '../css/menu';
 
-const defaultWidth = 200;
-const defaultHeight = 250;
 type DropMenuProps = {
   action: Array<string>,
   hideAction: Array<string>,
@@ -57,10 +57,12 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     const { width = defaultWidth, height = defaultHeight, } = this.props.getTheme();
 
     const queryInputWidth = (width) - (2 * QueryInputPadding);
+    const oldMenuHeight = height - (Height + 2 * QueryInputPadding);
+    const menuHeight = adjustValue(oldMenuHeight, menuItemHeight);
     const menuConfig = {
-      [ Widget.Menu ]: { width, height: height - (Height + 2 * QueryInputPadding), },
+      [ Widget.Menu ]: { width, height: menuHeight, },
       [ Widget.Input ]: { width: queryInputWidth, },
-      [ Widget.Trigger ]: { width, height, },
+      [ Widget.Trigger ]: { width, height: height + (menuHeight - oldMenuHeight), },
     };
     const popup = [<QueryInput key="queryContainer"><Input onChange={this.onQuery} key="quernInput"
                                                             value={query}/></QueryInput>,

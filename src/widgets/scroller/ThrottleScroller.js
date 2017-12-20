@@ -9,10 +9,9 @@ import styled from 'styled-components';
 import Scroller from './index';
 import '../css/sv.css';
 import * as Widget from '../consts/Widget';
+import { defaultHeight, defaultWidth, BarDefaultSize,} from '../css/scroller';
 
-const scrollerWidth = 12;
-const defaultWidth = 250;
-const defaultHeight = 250;
+
 const height = props => {
   const height = props.theme.height;
   return height ? `height:${height}px;` : `height:${defaultHeight}px;`;
@@ -23,7 +22,7 @@ const width = props => {
 };
 const getContentWidth = props => {
   const width = props.theme.width;
-  return width ? width - scrollerWidth : defaultWidth - scrollerWidth;
+  return width ? width - BarDefaultSize : defaultWidth - BarDefaultSize;
 };
 
 const contentWidth = props => {
@@ -44,7 +43,7 @@ const Col = styled.div`
 
 const ScrollerCol = Col.extend`
   ${scrollerLeft}
-  width: ${scrollerWidth}px;
+  width: ${BarDefaultSize}px;
 `;
 
 const ScrollerContainer = styled.div`
@@ -94,7 +93,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       const canSeeCount = this.canSeeCount();
 
       return <ScrollerContainer theme={theme}
-                                                                onWheel={this.onWheel}>
+                                onWheel={this.onWheel}>
         <Col theme={theme}>
           <Target {...props}
                   canSeeCount={canSeeCount}

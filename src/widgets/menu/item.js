@@ -8,7 +8,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import * as Widget from '../consts/Widget';
 import { FontSize, } from '../css';
-
+import { menuItemHeight, } from '../css/menu';
 const Utils = require('vx-var-utils');
 const { ObjectUtils, } = Utils;
 type MenuItemProps = {
@@ -18,7 +18,6 @@ type MenuItemProps = {
   children?: React.Node
 };
 
-export const menuItemHeight = 35;
 const SelectIcon = '\\e73e';
 const BgColor = '#f7f7f7';
 const singleChecked = (props: MenuItemProps) => {

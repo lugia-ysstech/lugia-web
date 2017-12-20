@@ -9,7 +9,7 @@ import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
-import { InputBorderColor, InputBorderHoverColor, RadiusSize, } from '../css/input';
+import { Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
 import { MarginRight, } from './style';
 import Item from './ItemOption';
 import Icon from '../icon';
@@ -23,7 +23,7 @@ import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
 import { FontSize, } from '../css';
-import { Height, Padding, } from '../css/input';
+import { defaultHeight, } from '../css/menu';
 
 type InputTagProps = {
   placeholder?: string;
@@ -88,7 +88,6 @@ const IconButton: Object = styled(Icon)`
 IconButton.displayName = Widget.InputTagClearButton;
 const marginLeft = 5;
 const marginRight = 7;
-const DefaultHeight = 250;
 
 const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
@@ -498,7 +497,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   getHeight () {
     const { getTheme, } = this.props;
 
-    const { height = DefaultHeight, } = getTheme();
+    const { height = defaultHeight, } = getTheme();
     return height;
   }
 
