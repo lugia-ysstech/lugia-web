@@ -366,6 +366,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   componentDidUpdate () {
+    if (this.props.disabled) {
+      this.setTreePopupVisible(false);
+    }
     this.setState({ selectAll: this.isSelectAll(), });
   }
 
