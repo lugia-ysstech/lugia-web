@@ -176,6 +176,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       props.value !== nextPros.value ||
       props.svThemVersion !== nextPros.svThemVersion ||
       props.mutliple !== nextPros.mutliple ||
+      props.validateStatus !== nextPros.validateStatus ||
+      props.help !== nextPros.help ||
       props.disabled !== nextPros.disabled ||
       (this.needMoreItem && state.query !== nextState.query) ||
       state.value !== nextState.value ||
@@ -323,7 +325,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return cmp;
     }
     const { help, } = props;
-    return <ErrorTip title={help} action={['click',]} ref={cmp => {
+    return <ErrorTip title={help} action={['click',]} placement="right" ref={cmp => {
       this.errorTip = cmp;
     }}>
       {cmp}

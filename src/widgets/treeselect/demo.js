@@ -65,7 +65,7 @@ const rowData: Array<Object> = [
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
   { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
   { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
-  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, not:true, },
+  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, not: true, },
   { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
 
   { key: '1.3', title: '1.3', pid: '1', path: '1', },
@@ -104,9 +104,11 @@ export default class extends React.Component<any, any> {
     const height = 400, width = 300;
     this.state = {
       data: [],
+      validateStatus: 'sucess',
       value: '1',
       displayValue: '1',
       limitCount: 12,
+      help: 'yes',
       width, height,
       config:
         { [ Widget.TreeSelect ]: { height, width, }, },
@@ -115,7 +117,7 @@ export default class extends React.Component<any, any> {
 
 
   render () {
-    const { value, displayValue, limitCount, config, width, height, } = this.state;
+    const { value, displayValue, limitCount, config, width, height, validateStatus, help, } = this.state;
 
     console.info('demo');
     return <Theme config={config}>
@@ -123,13 +125,14 @@ export default class extends React.Component<any, any> {
                   onTrigger={this.onTrigger}
                   onRefresh={this.onRefresh}
         //onlySelectLeaf
-           igronSelectField="not"
+                  igronSelectField="not"
                   canInput
                   throttle={500}
-                  expandAll={true}
         // limitCount={5}
+                  validateStatus={validateStatus}
                   expandAll
                   value={value}
+                  help={help}
                   limitCount={limitCount}
                   displayValue={displayValue}
                   mutliple
@@ -139,7 +142,9 @@ export default class extends React.Component<any, any> {
                   onChange={this.onChange}/>
       w <input value={width} onChange={this.onWidthChange}/>
       h<input value={height} onChange={this.onHeightChange}/>
-      h<input value={limitCount} onChange={this.onLimitCountChange}/>
+      onValidateStatusChange<input value={validateStatus} onChange={this.onValidateStatusChange}/>
+      help<input value={help} onChange={this.onHelpChange}/>
+      h<input value={limitCount} onChange={this.onHeightChange}/>
     </Theme>;
   }
 
@@ -147,6 +152,12 @@ export default class extends React.Component<any, any> {
     const height = e.target.value;
     this.state.config[ Widget.TreeSelect ].height = height;
     this.setState({ config: this.state.config, height, });
+  };
+  onValidateStatusChange = (e: Object) => {
+    this.setState({ validateStatus: e.target.value, });
+  };
+  onHelpChange = (e: Object) => {
+    this.setState({ help: e.target.value, });
   };
   onLimitCountChange = (e: Object) => {
     this.setState({ limitCount: e.target.value, });

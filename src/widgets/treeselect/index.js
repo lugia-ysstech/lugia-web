@@ -27,8 +27,14 @@ import QueryInput, { QueryInputPadding, } from '../common/QueryInputContainer';
 import { DefaultHeight, MenuItemHeight, } from '../css/tree';
 
 import { adjustValue, } from '../utils';
+import { DefaultHelp, } from '../css/input';
+
+type ValidateStatus = 'sucess' | 'error';
 
 type TreeSelectProps = {
+  validateStatus: ValidateStatus,
+  help?: string;
+
   data: Array<Object>,
   getTheme: Function,
   value?: Array<string>,
@@ -110,6 +116,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.state = {
       open: false,
       query: '',
+      validateStatus: 'sucess',
+      help: DefaultHelp,
       treeFilter: '',
       value,
       displayValue,
@@ -145,6 +153,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       state.start !== nextState.start ||
       state.selectAll !== nextState.selectAll ||
       props.disabled !== nextProps.disabled ||
+      props.validateStatus !== nextProps.validateStatus ||
+      props.help !== nextProps.help ||
       props.mutliple !== nextProps.mutliple ||
       props.svThemVersion !== nextProps.svThemVersion ||
       state.selectCount !== nextState.selectCount ||
@@ -213,7 +223,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
-    const { disabled, } = props;
+    const { disabled, help, validateStatus, } = props;
     const { themeConfig, } = state;
 
     return <Theme config={themeConfig} key="treesel_theme">
@@ -225,9 +235,13 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
                action={disabled ? [] : ['click',]}
                hideAction={['click',]}>
         <InputTag key="inputtag"
+                  help={help}
+                  validateStatus={validateStatus}
                   onFocus={this.onFocus}
                   disabled={disabled}
-                  value={value} displayValue={displayValue} onChange={this.onInputTagChange}
+                  value={value}
+                  displayValue={displayValue}
+                  onChange={this.onInputTagChange}
                   mutliple={this.isMutliple()}
                   placeholder={placeholder}
                   ref={getInputTag}

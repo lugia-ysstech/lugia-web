@@ -19,10 +19,10 @@ export default class extends React.Component<any, any> {
         fontColor: '#000',
       },
     };
-    const { children, title, action = ['focus',], } = this.props;
+    const { children, title, action = ['focus',], placement = 'bottom', } = this.props;
     const getTarget: Function = cmp => this.target = cmp;
     return <Theme config={config}>
-      <Tooltip placement="bottom" title={title} action={action} ref={getTarget}>
+      <Tooltip placement={placement} title={title} action={action} ref={getTarget}>
         {children}
       </Tooltip>
     </Theme>;
