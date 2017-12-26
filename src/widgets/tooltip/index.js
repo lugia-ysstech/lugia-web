@@ -8,16 +8,21 @@ import * as React from 'react';
 import Trigger from '../trigger';
 import styled from 'styled-components';
 
+const Left = 'left';
+const Right = 'right';
+const Down = 'bottom';
+const Up = 'top';
+
 const getTriggerByArrow = props => {
   const { fx, } = props;
   switch (fx) {
-    case 'up':
+    case Up:
       return 'padding-top: 8px;';
-    case 'down':
+    case Down:
       return 'padding-bottom: 8px;';
-    case 'left':
+    case Left:
       return 'padding-left: 8px;';
-    case 'right':
+    case Right:
     default:
       return 'padding-right: 8px;';
   }
@@ -39,28 +44,28 @@ const up = '';
 const getArrow = props => {
   const { fx, } = props;
   switch (fx) {
-    case 'up':
+    case Up:
       return `
         left: 16px;
         top: 3px;
         border-width: 0 5px 5px;
         border-bottom-color: ${color};
       `;
-    case 'down':
+    case Down:
       return `
         left: 16px;
         bottom: 3px;
         border-width: 5px 5px 0;
         border-top-color: ${color};
       `;
-    case 'left':
+    case Left:
       return `
         top: 8px;
         left: 3px;
         border-width: 5px 5px 5px 0;
         border-right-color: ${color};
       `;
-    case 'right':
+    case Right:
       return `
         top: 8px;
         right: 3px;
@@ -98,21 +103,46 @@ const Message = styled.div`
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     min-height: 32px;
 `;
-
-type StateType = {
-  align: string,
+const builtinPlacements = {
+  left: ['cr', 'cl',],
+  leftTop: ['tr', 'tl',],
+  leftBottom: ['br', 'bl',],
+  right: ['cl', 'cr',],
+  rightTop: ['tl', 'tr',],
+  rightBottom: ['bl', 'br',],
+  top: ['bc', 'tc',],
+  bottom: ['tc', 'bc',],
+  topLeft: ['bl', 'tl',],
+  topRight: ['br', 'tr',],
+  bottomRight: ['tr', 'br',],
+  bottomLeft: ['tl', 'bl',],
 };
 
-export default class  extends React.Component<any, StateType> {
+type TooltipProps = {
+  placement: string,
+  action: Array<string>,
+  children: any,
+};
+
+export default class  extends React.Component<TooltipProps, any> {
   getTargetDom () {
     return document.getElementById('root');
   }
 
+  static  defaultProps = {
+    action: ['click',],
+    getTheme () {
+      return {};
+    },
+  };
+
   render () {
-    const fx = 'right';
-    return <ToolTrigger action="click"
+    const { placement, action, } = this.props;
+
+    const fx = this.getFx(placement);
+    return <ToolTrigger align={placement}
                         fx={fx}
-                        align="bottomLeft"
+                        action={action}
                         popup={
                           <Content>
                             <Arrow fx={fx}/>
@@ -125,5 +155,15 @@ export default class  extends React.Component<any, StateType> {
 
   onSelectAlign = (align: string) => () => {
     this.setState({ align, });
+  };
+  getFx = (placement: string) => {
+    if (!placement) {
+      return 'down';
+    }
+
+    if (placement.startsWith(Left)) return Right;
+    if (placement.startsWith(Right)) return Left;
+    if (placement.startsWith(Down)) return Up;
+    if (placement.startsWith(Up)) return Down;
   };
 }

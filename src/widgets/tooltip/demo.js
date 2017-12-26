@@ -7,13 +7,17 @@
 import * as React from 'react';
 import Tooltip from './';
 import styled from 'styled-components';
+
 const buttonWidth = 70;
 const text = <span>prompt text</span>;
+const Content = styled.div`
+  margin: 100px;
+`;
 const Button = styled.button`
   width: ${buttonWidth}px;
 `;
 export default () => {
-  return <div className="demo">
+  return <Content className="demo">
     <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap', }}>
       <Tooltip placement="topLeft" title={text}>
         <Button>TL</Button>
@@ -58,5 +62,5 @@ export default () => {
         <Button>BR</Button>
       </Tooltip>
     </div>
-  </div>;
+  </Content>;
 };
