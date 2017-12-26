@@ -9,6 +9,7 @@ import Trigger from '../trigger';
 import styled from 'styled-components';
 import ThemeProvider from '../common/ThemeProvider';
 import * as Widget from '../consts/Widget';
+import { FontSize, } from '../css';
 
 const Left = 'left';
 const Right = 'right';
@@ -47,7 +48,7 @@ const getColor = (props: Object) => {
 };
 
 const Content = styled.div`
-    font-size: 14px;
+    font-size: ${FontSize};
     line-height: 1;
     color: ${getColor};
     box-sizing: border-box;
@@ -94,7 +95,7 @@ const Arrow = styled.div`
     width: 0;
     height: 0;
     border-style: solid;
-    font-size: 14px;
+    font-size: ${FontSize};
     line-height: 1;
     color: ${getColor};
 `;
@@ -102,7 +103,7 @@ const Arrow = styled.div`
 const Message = styled.div`
     box-sizing: border-box;
     user-select: none;
-    font-size: 14px;
+    font-size: ${FontSize};
     line-height: 1.5;
     max-width: 250px;
     padding: 6px 8px;
@@ -148,14 +149,18 @@ class Tooltip extends React.Component<TooltipProps, any> {
       return {};
     },
   };
+  trigger: Object;
 
   render () {
     const { placement, action, title, } = this.props;
     const { getTheme, } = this.props;
     const theme = getTheme();
     const fx = this.getFx(placement);
+    const getTarget: Function = cmp => this.trigger = cmp;
+
     return <ToolTrigger align={placement}
                         fx={fx}
+                        innerRef={getTarget}
                         action={action}
                         popup={
                           <Content theme={theme}>

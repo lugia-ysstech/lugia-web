@@ -1,0 +1,30 @@
+/**
+ *
+ * create by ligx
+ *
+ * @flow
+ */
+import * as React from 'react';
+import Tooltip from './';
+import * as Widget from '../consts/Widget';
+import Theme from '../theme';
+
+export default class extends React.Component<any, any> {
+  target: Object;
+
+  render () {
+    const config = {
+      [ Widget.Tooltip ]: {
+        color: '#fef0ef',
+        fontColor: '#000',
+      },
+    };
+    const { children, title, action = ['focus',], } = this.props;
+    const getTarget: Function = cmp => this.target = cmp;
+    return <Theme config={config}>
+      <Tooltip placement="bottom" title={title} action={action} ref={getTarget}>
+        {children}
+      </Tooltip>
+    </Theme>;
+  }
+}

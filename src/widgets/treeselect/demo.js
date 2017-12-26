@@ -65,7 +65,7 @@ const rowData: Array<Object> = [
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
   { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
   { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
-  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
+  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, not:true, },
   { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
 
   { key: '1.3', title: '1.3', pid: '1', path: '1', },
@@ -123,7 +123,7 @@ export default class extends React.Component<any, any> {
                   onTrigger={this.onTrigger}
                   onRefresh={this.onRefresh}
         //onlySelectLeaf
-        //           igronSelectField="isLeaf"
+           igronSelectField="not"
                   canInput
                   throttle={500}
                   expandAll={true}
@@ -160,6 +160,7 @@ export default class extends React.Component<any, any> {
     console.info('refresh');
   };
   onChange = (obj: Object) => {
+    console.info(obj);
     this.setState(obj);
   };
   onTrigger = () => {

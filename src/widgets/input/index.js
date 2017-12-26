@@ -7,9 +7,9 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
-import { getFocusShadow, getInputBorderHoverColor, Height, InputBorderColor, Padding, RadiusSize, } from '../css/input';
-import PlaceContainer from '../common/PlaceContainer';
+import { getFocusShadow, getInputBorderHoverColor, Height, getInputBorderColor, Padding, RadiusSize, DefaultHelp,} from '../css/input';
 import { FontSize, } from '../css';
+import ErrorTip from '../tooltip/ErrorTip';
 
 type InputState = {|
   value: string,
@@ -20,6 +20,7 @@ type InputProps = {|
   viewClass: string,
   disabled: boolean,
   validateStatus: ValidateStatus,
+  help: ?string,
   placeholder?: string;
   prefix?: React$Element<any>,
   getTheme: Function,
@@ -44,7 +45,7 @@ const getWidth = props => {
 };
 const CommonInputStyle = styled.input`
   border-radius: ${RadiusSize};
-  border: 1px solid ${InputBorderColor};
+  border: 1px solid ${getInputBorderColor};
   cursor: text;
   line-height: 1.5;
   font-size: ${FontSize};
@@ -138,6 +139,7 @@ class TextBox extends Component<InputProps, InputState> {
     disabled: false,
     viewClass: Widget.Input,
     validateStatus: 'sucess',
+    help: DefaultHelp,
     getTheme: () => {
       return {};
     },
@@ -179,12 +181,22 @@ class TextBox extends Component<InputProps, InputState> {
       return this.generateInput(InputOnly);
     }
     const { getTheme, } = props;
-    return <InputContainer className="sv" theme={getTheme()}>
-      <PlaceContainer>adsfas</PlaceContainer>
+
+    const result = <InputContainer className="sv" theme={getTheme()}>
       {this.generatePrefix()}
       {this.generateInput(Input)}
       {this.generateSuffix()}
     </InputContainer>;
+    const { validateStatus, } = props;
+
+    if (validateStatus === 'sucess') {
+      return result;
+    }
+    const { help, } = props;
+
+    return <ErrorTip title={help}>
+      {result}
+    </ErrorTip>;
   }
 
   generatePrefix (): React$Element<any> | null {

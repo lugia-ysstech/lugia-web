@@ -21,14 +21,19 @@ import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
-import { getFocusShadow, getInputBorderHoverColor, Height, InputBorderColor, Padding, RadiusSize, } from '../css/input';
+import {
+  DefaultHelp, getFocusShadow, getInputBorderColor, getInputBorderHoverColor, Height, Padding,
+  RadiusSize,
+} from '../css/input';
 import { FontSize, } from '../css';
 import { DefaultHeight, } from '../css/menu';
 import { MarginRight, } from '../css/inputtag';
+import ErrorTip from '../tooltip/ErrorTip';
 
 type ValidateStatus = 'sucess' | 'error';
 
 type InputTagProps = {
+  help?: string;
   placeholder?: string;
   getTheme: Function,
   onChange?: Function,
@@ -74,7 +79,7 @@ const getBorderColor = props => {
   return focus ? `border-color: ${getInputBorderHoverColor(props)}; ${getFocusShadow(props)};` : '';
 };
 const OutContainer = styled.div`
-  border: solid 1px ${InputBorderColor};
+  border: solid 1px ${getInputBorderColor};
   border-radius: ${RadiusSize};
   min-height: ${Height}px;
   padding-bottom: 3px;
@@ -138,11 +143,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     mutliple: true,
     disabled: false,
     validateStatus: 'sucess',
+    help: DefaultHelp,
   };
 
   container: Object;
   count: number;
   dropMenu: ?Object;
+  errorTip: ?Object;
   fontItem: Object;
   list: Object;
   needMoreItem: boolean;
@@ -249,11 +256,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { focus, } = state;
     const { getTheme, disabled, validateStatus, } = props;
     if (!this.isMutliple()) {
-      result = <Container className="sv"
-                          disabled={disabled}
-                          theme={getTheme()}
-                          innerRef={cmp => this.container = cmp}
-                          onClick={this.onClick}>
+      result = this.generateOutter(<Container className="sv"
+                                              disabled={disabled}
+                                              theme={getTheme()}
+                                              innerRef={cmp => this.container = cmp}
+                                              onClick={this.onClick}>
         <OutContainer focus={focus} validateStatus={validateStatus}>
           <SingleInnerContainer theme={props.getTheme()}>
             {placeholder}
@@ -262,11 +269,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             <FocuInput/>
           </SingleInnerContainer>
         </OutContainer>
-      </Container>;
+      </Container>);
     } else {
 
       const { items, } = state;
-      result = (
+      result = this.generateOutter(
         <Container className="sv"
                    disabled={disabled}
                    theme={props.getTheme()}
@@ -307,6 +314,20 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       </List>
       {result}
     </InputTagTheme>;
+  }
+
+  generateOutter (cmp: any) {
+    const { props, } = this;
+    const { validateStatus, } = props;
+    if (validateStatus === 'sucess') {
+      return cmp;
+    }
+    const { help, } = props;
+    return <ErrorTip title={help} action={['click',]} ref={cmp => {
+      this.errorTip = cmp;
+    }}>
+      {cmp}
+    </ErrorTip>;
   }
 
   onQueryInput = (query: string) => {

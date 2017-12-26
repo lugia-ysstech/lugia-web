@@ -4,7 +4,12 @@
  *
  * @flow
  */
-export const InputBorderColor = '#d9d9d9';
+export const getInputBorderColor = (props: Object) => {
+  const { validateStatus = Sucess, } = props;
+
+  const color = isSucess(validateStatus) ? '#d9d9d9' : '#FF3030';
+  return color;
+};
 const Sucess = 'sucess';
 
 function isSucess (validateStatus) {
@@ -26,3 +31,4 @@ export const getFocusShadow = (props: Object) => {
 export const RadiusSize = '4px';
 export const Height = 22;
 export const Padding = 2;
+export const DefaultHelp = '验证出错';
