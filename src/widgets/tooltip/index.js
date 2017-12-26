@@ -7,6 +7,8 @@
 import * as React from 'react';
 import Trigger from '../trigger';
 import styled from 'styled-components';
+import ThemeProvider from '../common/ThemeProvider';
+import * as Widget from '../consts/Widget';
 
 const Left = 'left';
 const Right = 'right';
@@ -32,15 +34,18 @@ const ToolTrigger = styled(Trigger)`
   box-shadow: none;`;
 
 
-const color = 'rgba(0, 0, 0, 0.75)';
+const getColor = (props: Object) => {
+  const { theme, } = props;
+  const { color, } = theme;
+  return color ? color : 'rgba(0, 0, 0, 0.75)';
+};
+
 const Content = styled.div`
     font-size: 14px;
     line-height: 1;
-    color: ${color};
+    color: ${getColor};
     box-sizing: border-box;
 `;
-const down = '5px 5px 0';
-const up = '';
 const getArrow = props => {
   const { fx, } = props;
   switch (fx) {
@@ -49,28 +54,28 @@ const getArrow = props => {
         left: 16px;
         top: 3px;
         border-width: 0 5px 5px;
-        border-bottom-color: ${color};
+        border-bottom-color: ${getColor(props)};
       `;
     case Down:
       return `
         left: 16px;
         bottom: 3px;
         border-width: 5px 5px 0;
-        border-top-color: ${color};
+        border-top-color: ${getColor(props)};
       `;
     case Left:
       return `
         top: 8px;
         left: 3px;
         border-width: 5px 5px 5px 0;
-        border-right-color: ${color};
+        border-right-color: ${getColor(props)};
       `;
     case Right:
       return `
         top: 8px;
         right: 3px;
         border-width: 5px 0 5px 5px;
-        border-left-color: ${color};
+        border-left-color: ${getColor(props)};
       `;
     default:
       return '';
@@ -85,7 +90,7 @@ const Arrow = styled.div`
     border-style: solid;
     font-size: 14px;
     line-height: 1;
-    color: ${color};
+    color: ${getColor};
 `;
 
 const Message = styled.div`
@@ -98,7 +103,7 @@ const Message = styled.div`
     color: #fff;
     text-align: left;
     text-decoration: none;
-    background-color:  ${color};
+    background-color:  ${getColor};
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     min-height: 32px;
@@ -122,9 +127,11 @@ type TooltipProps = {
   placement: string,
   action: Array<string>,
   children: any,
+  title: any,
+  getTheme: Function,
 };
 
-export default class  extends React.Component<TooltipProps, any> {
+class Tooltip extends React.Component<TooltipProps, any> {
   getTargetDom () {
     return document.getElementById('root');
   }
@@ -137,16 +144,17 @@ export default class  extends React.Component<TooltipProps, any> {
   };
 
   render () {
-    const { placement, action, } = this.props;
-
+    const { placement, action, title, } = this.props;
+    const { getTheme, } = this.props;
+    const theme = getTheme();
     const fx = this.getFx(placement);
     return <ToolTrigger align={placement}
                         fx={fx}
                         action={action}
                         popup={
-                          <Content>
-                            <Arrow fx={fx}/>
-                            <Message>hello</Message>
+                          <Content theme={theme}>
+                            <Arrow fx={fx} theme={theme}/>
+                            <Message theme={theme}>{title}</Message>
                           </Content>
                         }>
       {this.props.children}
@@ -167,3 +175,5 @@ export default class  extends React.Component<TooltipProps, any> {
     if (placement.startsWith(Up)) return Down;
   };
 }
+
+export default ThemeProvider(Tooltip, Widget.Tooltip);

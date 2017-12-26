@@ -7,6 +7,7 @@
 export const Input = 'sv_widget_Input';
 export const Align = 'sv_widget_Align';
 export const Trigger = 'sv_widget_Trigger';
+export const Tooltip = 'sv_widget_Tooltip';
 export const ThemeWrapWidget = 'ThemeWrapWidget';
 
 export const InputTag = 'sv_widget_InputTag';
