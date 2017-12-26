@@ -21,7 +21,8 @@ const Button = styled.button`
 export default () => {
   const config = {
       [ Widget.Tooltip ]: {
-        color: 'red',
+        color: '#fef0ef',
+        fontColor: '#000',
       },
     }
   ;

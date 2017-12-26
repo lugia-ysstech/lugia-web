@@ -33,11 +33,17 @@ const ToolTrigger = styled(Trigger)`
   ${getTriggerByArrow}
   box-shadow: none;`;
 
-
+const DefaultColor = 'rgba(0, 0, 0, 0.75)';
+const DefaultFontColor = '#fff';
+const getFontColor = (props: Object) => {
+  const { theme, } = props;
+  const { fontColor, } = theme;
+  return fontColor ? fontColor : DefaultFontColor;
+};
 const getColor = (props: Object) => {
   const { theme, } = props;
   const { color, } = theme;
-  return color ? color : 'rgba(0, 0, 0, 0.75)';
+  return color ? color : DefaultColor;
 };
 
 const Content = styled.div`
@@ -100,7 +106,7 @@ const Message = styled.div`
     line-height: 1.5;
     max-width: 250px;
     padding: 6px 8px;
-    color: #fff;
+    color: ${getFontColor};
     text-align: left;
     text-decoration: none;
     background-color:  ${getColor};
