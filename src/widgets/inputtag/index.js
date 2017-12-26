@@ -21,7 +21,7 @@ import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
-import { Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
+import { FocusShadow, Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
 import { FontSize, } from '../css';
 import { DefaultHeight, } from '../css/menu';
 import { MarginRight, } from '../css/inputtag';
@@ -36,6 +36,7 @@ type InputTagProps = {
   disabled: boolean,
   svThemVersion?: number,
   mutliple: boolean,
+  focus: boolean,
   displayValue?: string,
   defaultValue?: string,
   defaultDisplayValue?: string,
@@ -66,7 +67,7 @@ const Container = styled.div`
   font-size: ${FontSize};
 `;
 const getBorderColor = props => {
-  return props.focus ? `border-color: ${InputBorderHoverColor};` : '';
+  return props.focus ? `border-color: ${InputBorderHoverColor}; ${FocusShadow};` : '';
 };
 const OutContainer = styled.div`
   border: solid 1px ${InputBorderColor};

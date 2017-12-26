@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
-import { Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
+import { FocusShadow, Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
 import PlaceContainer from '../common/PlaceContainer';
 import { FontSize, } from '../css';
 
@@ -64,7 +64,7 @@ const CommonInputStyle = styled.input`
     color: rgba(0,0,0,0.25);
   }
   &:focus {
-    box-shadow: 0 0 0 2px rgba(16, 142, 233, 0.2);
+    ${FocusShadow};
   }
 `;
 
