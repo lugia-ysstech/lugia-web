@@ -357,11 +357,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       clearTimeout(this.queryHandle);
       if (this.isMutliple()) {
         const { value = [], displayValue = [], } = this.state;
-
-        // TODO:存在问题
-        value.push(inputValue);
-        displayValue.push(inputValue);
-        this.setValue([...value,], [...displayValue,], {
+        const newValue = [...value,],
+          newDisplayValue = [...displayValue,];
+        newValue.push(inputValue);
+        newDisplayValue.push(inputValue);
+        this.setValue([...newValue,], [...newDisplayValue,], {
           query: '',
           treeFilter: '',
         });
