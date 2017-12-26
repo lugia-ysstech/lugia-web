@@ -44,7 +44,7 @@ export default class Align extends React.Component<PropsType> {
     autoResize: false,
     align: defaultAligh,
   };
-  
+
   static displayName = Widget.Align;
 
   render () {
@@ -57,7 +57,7 @@ export default class Align extends React.Component<PropsType> {
         offsetY,
       ],
     };
-    return <VisibleBox visible={visible}>
+    return <VisibleBox visible={visible} visibleCSS="inline-block">
       <RcAlign
         target={getTargetDom}
         align={rcAlignArg}

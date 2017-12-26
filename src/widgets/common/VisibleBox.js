@@ -6,8 +6,15 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 type VisibleBoxProps = {
-  visible: boolean
+  visible: boolean,
+  visibleCSS?: string,
 }
 export default styled.div`
-   ${(props: VisibleBoxProps) => (props.visible ? '' : 'display: none;')}
+   ${(props: VisibleBoxProps) => {
+  let { visibleCSS = '', } = props;
+  if (visibleCSS) {
+    visibleCSS = `display: ${visibleCSS};`;
+  }
+  return (props.visible ? visibleCSS : 'display: none;');
+}}
 `;
