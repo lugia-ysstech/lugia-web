@@ -31,29 +31,28 @@ const { expect: exp, } = chai;
 describe('Tooltip', () => {
 
   it('getFx', () => {
-    let target: Object = {};
-    const Target = createTestComponent(Tooltip, the => {
-      target = the;
+    const Target = createTestComponent(Tooltip, target => {
+      exp(target.getThemeTarget().getFx('left')).to.be.equal('right');
+      exp(target.getThemeTarget().getFx('leftTop')).to.be.equal('right');
+      exp(target.getThemeTarget().getFx('leftBottom')).to.be.equal('right');
+
+
+      exp(target.getThemeTarget().getFx('right')).to.be.equal('left');
+      exp(target.getThemeTarget().getFx('rightTop')).to.be.equal('left');
+      exp(target.getThemeTarget().getFx('rightBottom')).to.be.equal('left');
+
+      exp(target.getThemeTarget().getFx('top')).to.be.equal('bottom');
+      exp(target.getThemeTarget().getFx('topLeft')).to.be.equal('bottom');
+      exp(target.getThemeTarget().getFx('topRight')).to.be.equal('bottom');
+
+      exp(target.getThemeTarget().getFx('bottom')).to.be.equal('top');
+      exp(target.getThemeTarget().getFx('bottomLeft')).to.be.equal('top');
+      exp(target.getThemeTarget().getFx('bottomRight')).to.be.equal('top');
     });
     mount(<Target>
       <button></button>
     </Target>);
-    exp(target.getFx('left')).to.be.equal('right');
-    exp(target.getFx('leftTop')).to.be.equal('right');
-    exp(target.getFx('leftBottom')).to.be.equal('right');
 
-
-    exp(target.getFx('right')).to.be.equal('left');
-    exp(target.getFx('rightTop')).to.be.equal('left');
-    exp(target.getFx('rightBottom')).to.be.equal('left');
-
-    exp(target.getFx('top')).to.be.equal('bottom');
-    exp(target.getFx('topLeft')).to.be.equal('bottom');
-    exp(target.getFx('topRight')).to.be.equal('bottom');
-
-    exp(target.getFx('bottom')).to.be.equal('top');
-    exp(target.getFx('bottomLeft')).to.be.equal('top');
-    exp(target.getFx('bottomRight')).to.be.equal('top');
   });
 
 
