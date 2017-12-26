@@ -21,16 +21,19 @@ import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
-import { FocusShadow, Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
+import { getFocusShadow, getInputBorderHoverColor, Height, InputBorderColor, Padding, RadiusSize, } from '../css/input';
 import { FontSize, } from '../css';
 import { DefaultHeight, } from '../css/menu';
 import { MarginRight, } from '../css/inputtag';
+
+type ValidateStatus = 'sucess' | 'error';
 
 type InputTagProps = {
   placeholder?: string;
   getTheme: Function,
   onChange?: Function,
   onFocus?: Function,
+  validateStatus: ValidateStatus,
   onBlur?: Function,
   value?: string,
   disabled: boolean,
@@ -67,7 +70,8 @@ const Container = styled.div`
   font-size: ${FontSize};
 `;
 const getBorderColor = props => {
-  return props.focus ? `border-color: ${InputBorderHoverColor}; ${FocusShadow};` : '';
+  const { focus, } = props;
+  return focus ? `border-color: ${getInputBorderHoverColor(props)}; ${getFocusShadow(props)};` : '';
 };
 const OutContainer = styled.div`
   border: solid 1px ${InputBorderColor};
@@ -76,7 +80,7 @@ const OutContainer = styled.div`
   padding-bottom: 3px;
   ${getBorderColor}
   :hover {
-    border-color: ${InputBorderHoverColor};
+    border-color: ${getInputBorderHoverColor};
   }
 `;
 const IconButton: Object = styled(Icon)`
@@ -133,6 +137,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     },
     mutliple: true,
     disabled: false,
+    validateStatus: 'sucess',
   };
 
   container: Object;
@@ -242,14 +247,14 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
     const font = <FontItem ref={fillFontItem} key="fontItem"/>;
     const { focus, } = state;
-    const { getTheme, disabled, } = props;
+    const { getTheme, disabled, validateStatus, } = props;
     if (!this.isMutliple()) {
       result = <Container className="sv"
                           disabled={disabled}
                           theme={getTheme()}
                           innerRef={cmp => this.container = cmp}
                           onClick={this.onClick}>
-        <OutContainer focus={focus}>
+        <OutContainer focus={focus} validateStatus={validateStatus}>
           <SingleInnerContainer theme={props.getTheme()}>
             {placeholder}
             {this.getSingleValue()}
@@ -267,7 +272,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
                    theme={props.getTheme()}
                    innerRef={cmp => this.container = cmp}
                    onClick={this.onClick}>
-          <OutContainer focus={focus}>
+          <OutContainer focus={focus} validateStatus={validateStatus}>
             <InnerContainer theme={props.getTheme()}>
               <List innerRef={cmp => this.list = cmp}>
                 {items}

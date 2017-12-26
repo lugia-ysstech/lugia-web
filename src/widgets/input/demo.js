@@ -8,6 +8,7 @@ import * as React from 'react';
 import Theme from '../theme';
 import Input from './';
 import * as Widget from '../consts/Widget';
+import ClearIcon from '../icon/ClearIcon';
 
 class LimitInput extends React.Component<any, any> {
   constructor (props) {
@@ -35,18 +36,19 @@ class DefaultValueInput extends React.Component<any, any> {
 const InputDemo = () => {
   const view = {
     [Widget.Input]: {
-      width: 20,
+      width: 100,
     },
     register: {
-      width: 30,
+      width: 134,
     },
   };
   const onChange = (cmpName: string) => (value: string) => {
     console.info(`${cmpName} changeTo ${value}`);
   };
   return <Theme config={view}>
-    <Input/>
+    <Input validateStatus="error"/>
     <Input viewClass="register"/>
+    <Input viewClass="register" prefix={<ClearIcon/>} validateStatus="error"/>
     <Theme config={{ register: { width: 40, }, }}>
       <Input viewClass="register"/>
       <LimitInput onChange={onChange('limit')}/>

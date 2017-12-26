@@ -7,17 +7,19 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
-import { FocusShadow, Height, InputBorderColor, InputBorderHoverColor, Padding, RadiusSize, } from '../css/input';
+import { getFocusShadow, getInputBorderHoverColor, Height, InputBorderColor, Padding, RadiusSize, } from '../css/input';
 import PlaceContainer from '../common/PlaceContainer';
 import { FontSize, } from '../css';
 
 type InputState = {|
   value: string,
 |};
+type ValidateStatus = 'sucess' | 'error';
 
 type InputProps = {|
   viewClass: string,
   disabled: boolean,
+  validateStatus: ValidateStatus,
   placeholder?: string;
   prefix?: React$Element<any>,
   getTheme: Function,
@@ -53,7 +55,7 @@ const CommonInputStyle = styled.input`
   margin: 0;
   ${getWidth}
   &:hover {
-    border-color: ${InputBorderHoverColor};
+    border-color: ${getInputBorderHoverColor};
   }
 
   transition: all 0.3s;
@@ -64,7 +66,7 @@ const CommonInputStyle = styled.input`
     color: rgba(0,0,0,0.25);
   }
   &:focus {
-    ${FocusShadow};
+    ${getFocusShadow};
   }
 `;
 
@@ -135,6 +137,7 @@ class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     disabled: false,
     viewClass: Widget.Input,
+    validateStatus: 'sucess',
     getTheme: () => {
       return {};
     },
@@ -210,9 +213,10 @@ class TextBox extends Component<InputProps, InputState> {
 
   generateInput (Input: Function): React$Element<any> {
     const { props, state, } = this;
-    const { suffix, prefix, } = props;
+    const { suffix, prefix, validateStatus, } = props;
     const { onKeyUp, onKeyPress, onFocus, onBlur, placeholder, } = props;
     return <Input innerRef={node => this.input = node}
+                  validateStatus={validateStatus}
                   suffix={suffix}
                   prefix={prefix}
                   theme={this.props.getTheme()}
