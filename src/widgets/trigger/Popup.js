@@ -19,6 +19,7 @@ type PopupProps = {
   children?: React.Node,
   isMask: boolean,
   align?: string,
+  className: string,
   destroyPopupOnHide?: boolean,
   transitionName?: string,
   onMouseLeave?: Function,
@@ -31,6 +32,7 @@ class Popup extends React.Component<PopupProps> {
     offsetY: 0,
     visible: true,
     isMask: false,
+    className: '',
     align: 'bottom',
     getTheme () {
       return {};
@@ -82,6 +84,7 @@ class Popup extends React.Component<PopupProps> {
       offsetX,
       offsetY,
       getTheme,
+      className,
     } = props;
 
     const hidden = !visible;
@@ -93,6 +96,7 @@ class Popup extends React.Component<PopupProps> {
       ref: savePopupRef,
       onMouseEnter,
       onMouseLeave,
+      className,
       style: newStyle,
       getTheme,
     };

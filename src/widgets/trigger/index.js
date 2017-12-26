@@ -53,6 +53,7 @@ type TriggerProps = {
   mouseLeaveDelay: number,
   focusDelay: number,
   blurDelay: number,
+  className: string,
   destroyPopupOnHide: boolean,
   defaultPopupVisible: boolean,
   mask: boolean,
@@ -89,6 +90,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     mask: false,
     action: [],
     align: 'left',
+    className: '',
     showAction: [],
     hideAction: [],
     getTheme () {
@@ -134,7 +136,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     popupContainer.style.position = 'releative';
     popupContainer.style.top = '0';
     popupContainer.style.left = '0';
-    popupContainer.style.width = '100%';
 
     const mountNode = getPopupContainer ?
       getPopupContainer(findDOMNode(this)) : getDocument().body;
@@ -152,6 +153,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       zIndex,
       align,
       getTheme,
+      className,
     } = props;
     const mouseProps = {};
     if (this.isMouseEnterToShow()) {
@@ -165,6 +167,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       key="popup"
       offsetX={offsetX}
       offsetY={offsetY}
+      className={className}
       ref={cmp => this.component = cmp}
       destroyPopupOnHide={destroyPopupOnHide}
       visible={state.popupVisible}
@@ -186,7 +189,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       });
     }
   }
-
 
 
   componentWillMount () {

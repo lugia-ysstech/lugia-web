@@ -10,7 +10,7 @@ import { ZIndex, } from '../common/MaskBox';
 const getWidth = props => {
   const { theme = {}, } = props;
   const { width, } = theme;
-  return `width: ${width ? `${width}px;` : '100%;'}`;
+  return `width: ${width ? `${width}px;` : ';'}`;
 };
 const PopupInnerBox = VisibleBox.extend`
   position: absolute;
@@ -30,20 +30,23 @@ type PopupInnerProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   children: React.Node,
+  className: string,
 };
 
 class PopupInner extends React.Component<PopupInnerProps> {
   static defaultProps = {
     visible: true,
+    className: '',
     getTheme () {
       return {};
     },
   };
 
   render () {
-    const { visible, onMouseEnter, onMouseLeave, children, getTheme, } = this.props;
+    const { visible, onMouseEnter, onMouseLeave, children, getTheme,className, } = this.props;
     return (
       <PopupInnerBox
+        className={className}
         visible={visible}
         theme={getTheme()}
         onMouseEnter={onMouseEnter}
