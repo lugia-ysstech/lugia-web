@@ -1,6 +1,6 @@
 {
   "name": "sv-widget",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
@@ -13,7 +13,6 @@
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-error-overlay": "1.0.9",
-    "style-loader": "0.18.2",
     "styled-components": "2.1.2",
     "vx-var-utils": "^0.5.10",
     "warning": "3.0.0"
@@ -27,6 +26,7 @@
     "cover": "node scripts/test.js --env=jsdom  --coverage"
   },
   "devDependencies": {
+    "style-loader": "0.18.2",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
