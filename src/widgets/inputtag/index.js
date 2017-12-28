@@ -133,6 +133,7 @@ const FocuInput = styled.input`
   padding: 0;
   border: none;
 `;
+FocuInput.displayName = Widget.InputTagFocuInput;
 
 class InputTag extends React.Component<InputTagProps, InputTagState> {
   static displayName = Widget.InputTag;

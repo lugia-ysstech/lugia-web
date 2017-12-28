@@ -268,16 +268,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return result;
   };
   onClearQuery = () => {
-    this.setState({
-      query: '',
-      treeFilter: '',
-    });
+    this.onQueryInputChange('');
   };
   onRefresh = () => {
     const { props, } = this;
+    this.onQueryInputChange('');
     this.setValue([], [], {
-      query: '',
-      treeFilter: '',
       start: 0,
     });
     const { onRefresh, } = props;
@@ -361,15 +357,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           newDisplayValue = [...displayValue,];
         newValue.push(inputValue);
         newDisplayValue.push(inputValue);
-        this.setValue([...newValue,], [...newDisplayValue,], {
-          query: '',
-          treeFilter: '',
-        });
+        this.setValue([...newValue,], [...newDisplayValue,], {});
+        this.onQueryInputChange('');
       } else {
-        this.setValue([inputValue,], [inputValue,], {
-          query: '',
-          treeFilter: '',
-        });
+        this.setValue([inputValue,], [inputValue,], {});
+        this.onQueryInputChange('');
       }
     }
   }
@@ -521,7 +513,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   onTreePopupVisibleChange = (visible: boolean) => {
     const { state, } = this;
-    const { value, } = state;
     if (visible) {
       const { onTrigger, } = this.props;
       onTrigger && onTrigger();
@@ -529,7 +520,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       if (this.isMutliple()) {
         selectCount = this.getInputTagCount();
       }
-      this.setState({ query: '', treeFilter: '', selectCount, }, () => {
+      this.onQueryInputChange('');
+      this.setState({ selectCount, }, () => {
         if (this.queryInput && this.queryInput.getThemeTarget()) {
           this.queryInput.getThemeTarget().focus();
         }

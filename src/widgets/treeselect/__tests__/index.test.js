@@ -921,9 +921,20 @@ describe('TreeSelect', () => {
   });
   it('点击删除查询内容', async () => {
     const value = 'hello';
+    let onQuery;
+    const queryEventData = new Promise(resolve => {
+      const queryValue = [];
+      onQuery = value => {
+        queryValue.push(value);
+        if (queryValue.length === 2) {
+          resolve(queryValue);
+        }
+      };
+    });
     const cmp = mount(<TreeSelect data={rowData}
                                   value={value}
                                   throttle={0}
+                                  onQuery={onQuery}
                                   mutliple
                                   expandAll={true}/>);
     showTrigger(cmp);
@@ -937,7 +948,118 @@ describe('TreeSelect', () => {
     exp(getQueryInputValue(cmp)).to.be.equal('');
     exp(findTree(cmp).props().query).to.be.equal('');
     exp(findTree(cmp).props().value).to.be.eql([value,]);
+    exp(await queryEventData).to.be.eql([old, '',]);
   });
+  it('弹出->输入查询条件->收齐->弹出面板 要触发onQuery为空的事件', async () => {
+    const value = 'hello';
+    let onQuery;
+    const queryEventData = new Promise(resolve => {
+      const queryValue = [];
+      onQuery = value => {
+        console.info('q', value);
+        queryValue.push(value);
+        if (queryValue.length === 2) {
+          resolve(queryValue);
+        }
+      };
+    });
+    const cmp = mount(<TreeSelect data={rowData}
+                                  value={value}
+                                  throttle={0}
+                                  onQuery={onQuery}
+                                  mutliple
+                                  expandAll={true}/>);
+    const old = 'hello';
+    chagneQuery(cmp, old);
+    showTrigger(cmp);
+    showTrigger(cmp);
+    exp(await queryEventData).to.be.eql([old, '',]);
+  });
+  it('弹出->输入查询条件->刷新按钮 要触发onQuery为空的事件', async () => {
+    const value = 'hello';
+    let onQuery;
+    const queryEventData = new Promise(resolve => {
+      const queryValue = [];
+      onQuery = value => {
+        console.info('q', value);
+        queryValue.push(value);
+        if (queryValue.length === 2) {
+          resolve(queryValue);
+        }
+      };
+    });
+    const cmp = mount(<TreeSelect data={rowData}
+                                  value={value}
+                                  throttle={0}
+                                  onQuery={onQuery}
+                                  mutliple
+                                  expandAll={true}/>);
+    const old = 'hello';
+    showTrigger(cmp);
+    chagneQuery(cmp, old);
+    refreshValue(cmp);
+    exp(await queryEventData).to.be.eql([old, '',]);
+  });
+
+  it('多选  canInput: true, 弹出->输入查询条件->点击添加项->输入查询条件->查询框回车 要触发onQuery为空的事件', async () => {
+    let onQuery;
+    const queryEventData = new Promise(resolve => {
+      const queryValue = [];
+      onQuery = value => {
+        console.info('q', value);
+        queryValue.push(value);
+        if (queryValue.length === 2) {
+          resolve(queryValue);
+        }
+      };
+    });
+    const cmp = mount(<TreeSelect data={rowData}
+                                  canInput={true}
+                                  throttle={0}
+                                  onQuery={onQuery}
+                                  mutliple
+                                  expandAll={true}/>);
+    const ligx = 'hello';
+    showTrigger(cmp);
+    chagneQuery(cmp, ligx);
+    queryInputEnter(cmp);
+    checkTreeSelectValue(cmp, [ligx,]);
+    const kxy = 'kxy';
+    chagneQuery(cmp, kxy);
+    clickAdd(cmp);
+    checkTreeSelectValue(cmp, [ligx, kxy,]);
+    exp(await queryEventData).to.be.eql([ligx, '', kxy, '',]);
+  });
+  it('单选  canInput: true, 弹出->输入查询条件->点击添加项->输入查询条件->查询框回车 要触发onQuery为空的事件', async () => {
+    let onQuery;
+    const queryEventData = new Promise(resolve => {
+      const queryValue = [];
+      onQuery = value => {
+        console.info('q', value);
+        queryValue.push(value);
+        if (queryValue.length === 2) {
+          resolve(queryValue);
+        }
+      };
+    });
+    const cmp = mount(<TreeSelect data={rowData}
+                                  canInput={true}
+                                  throttle={0}
+                                  onQuery={onQuery}
+                                  expandAll={true}/>);
+    const ligx = 'hello';
+    showTrigger(cmp);
+    chagneQuery(cmp, ligx);
+    queryInputEnter(cmp);
+    checkTreeSelectValue(cmp, [ligx,]);
+    const kxy = 'kxy';
+    chagneQuery(cmp, kxy);
+    clickAdd(cmp);
+    checkTreeSelectValue(cmp, [kxy,]);
+    exp(await queryEventData).to.be.eql([ligx, '', kxy, '',]);
+  });
+
+
   it('单选 只value设置值', async () => {
     const value = 'hello';
     const cmp = mount(<TreeSelect data={rowData}
@@ -947,6 +1069,8 @@ describe('TreeSelect', () => {
     exp(getInputTagValue(cmp)).to.be.eql([value,]);
     exp(getInputTagDisplayValue(cmp)).to.be.eql([value,]);
   });
+
+
   it('单选 value displayValue', async () => {
     const value = '0';
     const displayValue = 'hello';
@@ -984,7 +1108,11 @@ describe('TreeSelect', () => {
 
 
   function showTrigger (cmp: Object) {
-    getInputTag(cmp).simulate('click');
+    getInputTagFocusInput(cmp).simulate('click');
+  }
+
+  function getInputTagFocusInput (cmp: Object) {
+    return cmp.find(Widget.InputTagFocuInput);
   }
 
   function getInputTag (cmp: Object) {
@@ -1029,6 +1157,14 @@ describe('TreeSelect', () => {
 
   function refreshValue (cmp: Object) {
     cmp.find(Widget.RefershIcon).simulate('click');
+  }
+
+  function clickAdd (cmp: Object) {
+    getAddIcon(cmp).simulate('click');
+  }
+
+  function getAddIcon (cmp: Object) {
+    return cmp.find(Widget.AddIcon);
   }
 
   function selctedAll (cmp: Object) {

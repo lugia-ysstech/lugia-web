@@ -127,6 +127,7 @@ export default class extends React.Component<any, any> {
         //onlySelectLeaf
                   igronSelectField="not"
                   canInput
+                  onQuery={this.onQuery}
                   throttle={500}
         // limitCount={5}
                   validateStatus={validateStatus}
@@ -176,5 +177,8 @@ export default class extends React.Component<any, any> {
   };
   onTrigger = () => {
     this.setState({ data: rowData, });
+  };
+  onQuery = (v: any) => {
+    console.info('query', v);
   };
 }

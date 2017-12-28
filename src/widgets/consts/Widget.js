@@ -13,6 +13,7 @@ export const ThemeWrapWidget = 'ThemeWrapWidget';
 export const InputTag = 'sv_widget_InputTag';
 export const InputTagCloseButton = 'sv_widget_InputTagCloseButton';
 export const InputTagFontItem = 'sv_widget_InputTagFontItem';
+export const InputTagFocuInput = 'sv_widget_InputTagFocuInput';
 export const InputTagMoreItem = 'sv_widget_InputTagMoreItem';
 export const ItemTagOption = 'sv_widget_ItemTagOption';
 export const InputTagItem = 'sv_widget_InputTagItem';

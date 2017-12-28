@@ -13,13 +13,12 @@ type IconProps = {
   getTheme?: Function,
 };
 
-class RefershIcon extends React.Component<IconProps> {
+class AddIcon extends React.Component<IconProps> {
   static displayName = Widget.AddIcon;
-
 
   render () {
     return <Icon iconClass="sv-icon-plus" key="refresh" {...this.props}></Icon>;
   }
 }
 
-export default RefershIcon;
+export default AddIcon;
