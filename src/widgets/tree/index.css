@@ -106,6 +106,7 @@
 }
 
 :global(.sv-tree-checkbox-indeterminate .sv-tree-checkbox-inner:after) {
+    box-sizing: border-box;
     content: ' ';
     transform: scale(1);
     position: absolute;
@@ -127,6 +128,7 @@
     display: table;
     width: 45%;
     height: 90%;
+    box-sizing: border-box;
     border: 2px solid #fff;
     border-top: 0;
     border-left: 0;
@@ -198,13 +200,6 @@
     font-size: 12px;
     user-select: none;
 }
-
-:global(*),
-:global(:after ),
-:global(:before ) {
-    box-sizing: border-box;
-}
-
 :global(.sv-tree li) {
     min-height: 17px;
     padding: 0;
