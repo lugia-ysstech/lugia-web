@@ -18,7 +18,6 @@ import './index.css';
 import TreeUtils from './utils';
 import { deleteValue, } from '../utils/index';
 import styled from 'styled-components';
-import 'babel-polyfill';
 import { FontSize, } from '../css';
 
 type RowData = { [key: string]: any, }

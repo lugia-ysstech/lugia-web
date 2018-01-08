@@ -14,7 +14,6 @@ import ThrottleScroller from '../scroller/ThrottleScroller';
 import '../css/sv.css';
 import './index.css';
 import TreeUtils from './utils';
-import 'babel-polyfill';
 import styled from 'styled-components';
 import { BarDefaultSize, } from '../css/scroller';
 import { adjustValue, } from '../utils';

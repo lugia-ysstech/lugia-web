@@ -13,7 +13,6 @@ import Trigger from '../trigger';
 import Tree from '../tree';
 import Theme from '../theme';
 import '../css/sv.css';
-import 'babel-polyfill';
 import * as Widget from '../consts/Widget';
 import ThemeProvider from '../common/ThemeProvider';
 import styled from 'styled-components';
