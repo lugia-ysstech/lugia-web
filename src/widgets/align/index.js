@@ -57,7 +57,7 @@ export default class Align extends React.Component<PropsType> {
         offsetY,
       ],
     };
-    return <VisibleBox visible={visible} visibleCSS="inline-block">
+    return <VisibleBox visible={visible}>
       <RcAlign
         target={getTargetDom}
         align={rcAlignArg}
