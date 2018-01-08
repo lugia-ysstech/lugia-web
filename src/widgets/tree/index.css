@@ -309,7 +309,7 @@
 
 :global(.sv-tree li span.sv-tree-icon_loading:after) {
     display: inline-block;
-    font-family: "iconfont" !important;
+    font-family: "sviconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -329,7 +329,7 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-    font-family: "iconfont" !important;
+    font-family: "sviconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -357,7 +357,7 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-    font-family: "iconfont" !important;
+    font-family: "sviconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -437,7 +437,7 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-    font-family: "iconfont" !important;
+    font-family: "sviconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -466,7 +466,7 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-    font-family: "iconfont" !important;
+    font-family: "sviconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -495,7 +495,7 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
     zoom: 1;
     display: inline-block;
-    font-family: "iconfont" !important;
+    font-family: "sviconfont" !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
