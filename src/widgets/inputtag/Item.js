@@ -42,7 +42,7 @@ export default class  extends React.Component<ItemProps, ItemState> {
     return (
       <ItemContainer className={className} closeable={closeable} innerRef={c => this.item = c} onClick={onClick}>
         <ItemText>{this.props.children}</ItemText>
-        {closeable ? <CloseButton className="iconfont icon-close" onClick={onCloseClick}></CloseButton> : null}
+        {closeable ? <CloseButton className="sviconfont icon-close" onClick={onCloseClick}></CloseButton> : null}
       </ItemContainer>
     );
   }

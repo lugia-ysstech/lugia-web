@@ -36,7 +36,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c1:after {
-  font-family: "iconfont" !important;
+  font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
   color: transparent;
@@ -86,7 +86,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c2:after {
-  font-family: "iconfont" !important;
+  font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
   color: transparent;
@@ -365,7 +365,7 @@ exports[`Menu children: items 1`] = `
 }
 
 .c3:after {
-  font-family: "iconfont" !important;
+  font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
   color: transparent;

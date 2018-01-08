@@ -60,7 +60,7 @@ const SingleItem = styled.li `
 `;
 const MutlipleItem = SingleItem.extend `
     :after {
-      font-family: "iconfont" !important;
+      font-family: "sviconfont" !important;
       text-rendering: optimizeLegibility;
       content: "${SelectIcon}";
       color: transparent;

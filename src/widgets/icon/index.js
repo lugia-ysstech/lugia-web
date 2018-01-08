@@ -43,7 +43,7 @@ class Icon extends React.Component<IconProps> {
 
   render () {
     const { iconClass, onClick, getTheme, className = '', } = this.props;
-    return <IconTag className={`iconfont ${iconClass} ${className}`}
+    return <IconTag className={`sviconfont ${iconClass} ${className}`}
                     onClick={onClick}
                     theme={getTheme()}> </IconTag>;
   }

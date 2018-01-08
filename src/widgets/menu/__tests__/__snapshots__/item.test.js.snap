@@ -22,7 +22,7 @@ exports[`Item Mutliple MenuItem 1`] = `
 }
 
 .c0:after {
-  font-family: "iconfont" !important;
+  font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
   color: transparent;
@@ -85,7 +85,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 }
 
 .c0:after {
-  font-family: "iconfont" !important;
+  font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
   color: transparent;
