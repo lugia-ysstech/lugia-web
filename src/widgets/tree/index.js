@@ -12,7 +12,7 @@ import { TreeNode, } from './rc-tree';
 import Support from '../common/FormFieldWidgetSupport';
 import ThemeProvider from '../common/ThemeProvider';
 import ThrottleTree from './ThrottleTree';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import '../css/sv.css';
 import './index.css';
 import TreeUtils from './utils';

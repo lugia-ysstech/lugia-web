@@ -7,7 +7,7 @@
 import * as React from 'react';
 import Theme from '../theme/index';
 import TreeSelect from './index';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import styled from 'styled-components';
 
 const bigTree = [];

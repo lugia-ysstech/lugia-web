@@ -7,7 +7,7 @@
 import '../common/shirm';
 import * as React from 'react';
 import '../css/sv.css';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import ThemeProvider from '../common/ThemeProvider';
 import styled from 'styled-components';
 

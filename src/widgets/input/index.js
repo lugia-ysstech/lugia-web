@@ -5,7 +5,7 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import ThemeProvider from '../common/ThemeProvider';
 import { getFocusShadow, getInputBorderHoverColor, Height, getInputBorderColor, Padding, RadiusSize, DefaultHelp,} from '../css/input';
 import { FontSize, } from '../css';

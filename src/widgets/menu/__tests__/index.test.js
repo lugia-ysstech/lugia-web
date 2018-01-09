@@ -3,8 +3,8 @@
 import * as React from 'react';
 import chai from 'chai';
 import Menu from '../index';
-import * as Widgets from '../../consts/Widget';
-import * as Widget from '../../consts/Widget';
+import * as Widgets from '../../consts/index';
+import * as Widget from '../../consts/index';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
 import Theme from '../../theme';

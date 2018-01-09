@@ -7,7 +7,7 @@ import Enzyme, { mount, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Theme from '../../theme';
 import { delay, } from 'sv-test-utils';
-import * as Widgets from '../../consts/Widget';
+import * as Widgets from '../../consts/index';
 
 const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
 

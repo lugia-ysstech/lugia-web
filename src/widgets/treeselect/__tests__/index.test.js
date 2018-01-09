@@ -12,7 +12,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import { createTestComponent, delay, } from 'sv-test-utils';
 import TreeSelect from '../';
 import Trigger from '../../trigger';
-import * as Widget from '../../consts/Widget';
+import * as Widget from '../../consts/index';
 import Theme from '../../theme';
 
 import { adjustValue, } from '../../utils';

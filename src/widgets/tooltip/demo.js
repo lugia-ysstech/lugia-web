@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import Tooltip from './';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import Theme from '../theme';
 import styled from 'styled-components';
 

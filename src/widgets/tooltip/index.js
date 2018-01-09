@@ -8,7 +8,7 @@ import * as React from 'react';
 import Trigger from '../trigger';
 import styled from 'styled-components';
 import ThemeProvider from '../common/ThemeProvider';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import { FontSize, } from '../css';
 
 const Left = 'left';

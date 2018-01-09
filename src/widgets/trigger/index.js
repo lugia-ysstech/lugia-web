@@ -12,7 +12,7 @@ import contains from 'rc-util/lib/Dom/contains';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
 import ThemeProvider from '../common/ThemeProvider';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 
 function noop () {
 }

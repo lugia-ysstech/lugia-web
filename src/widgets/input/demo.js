@@ -7,7 +7,7 @@
 import * as React from 'react';
 import Theme from '../theme';
 import Input from './';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import ClearIcon from '../icon/ClearIcon';
 
 class LimitInput extends React.Component<any, any> {

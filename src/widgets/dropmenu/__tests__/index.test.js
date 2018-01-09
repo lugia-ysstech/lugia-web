@@ -6,7 +6,7 @@ import DropMenu from '../';
 import Enzyme, { mount, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Menu from '../../menu';
-import * as Widgets from '../../consts/Widget';
+import * as Widgets from '../../consts/index';
 import { Height, } from '../../css/input';
 import { QueryInputPadding, } from '../../common/QueryInputContainer';
 import { adjustValue, } from '../../utils';

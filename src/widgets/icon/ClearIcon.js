@@ -5,7 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import Icon from './';
 type IconProps = {
   viewClass?: string,

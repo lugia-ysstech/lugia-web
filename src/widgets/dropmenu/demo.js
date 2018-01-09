@@ -8,7 +8,7 @@ import * as React from 'react';
 import DropMenu from './';
 import Menu from '../menu';
 import Theme from '../theme';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 
 const { MenuItem, } = Menu;
 

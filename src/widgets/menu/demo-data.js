@@ -7,7 +7,7 @@
 import * as React from 'react';
 import Menu from './';
 import Theme from '../theme';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 
 const items = [];
 for (let i = 0; i < 30; i++) {

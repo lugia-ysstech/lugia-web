@@ -4,7 +4,7 @@
  */
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import * as Widgets from '../consts/Widget';
+import * as Widgets from '../consts/index';
 
 type ProviderComponent = React.ComponentType<any> & { displayName: ?string };
 const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {

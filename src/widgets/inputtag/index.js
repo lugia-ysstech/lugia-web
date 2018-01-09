@@ -15,7 +15,7 @@ import Icon from '../icon';
 import MoreItem from './MoreItem';
 import FontItem from './FontItem';
 import ThemeProvider from '../common/ThemeProvider';
-import * as Widget from '../consts/Widget';
+import * as Widget from '../consts/index';
 import Theme from '../theme';
 import DropMenu from '../dropmenu';
 import Menu from '../menu';
