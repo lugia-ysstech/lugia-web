@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 import '../common/shirm';
 
 type PropsType = {

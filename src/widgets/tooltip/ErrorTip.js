@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import Tooltip from './';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 import Theme from '../theme';
 
 export default class extends React.Component<any, any> {

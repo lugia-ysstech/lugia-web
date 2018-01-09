@@ -11,7 +11,7 @@ import Item from './item';
 import { DefaultHeight, MenuItemHeight, } from '../css/menu';
 import ThemeProvider from '../common/ThemeProvider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 import '../css/sv.css';
 import { adjustValue, } from '../utils';
 

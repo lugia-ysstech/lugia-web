@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import styled from 'styled-components';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 import { FontSize, } from '../css';
 import { BackgroundColor, MenuItemHeight, SelectIcon, } from '../css/menu';
 

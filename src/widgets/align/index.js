@@ -7,7 +7,7 @@
 import '../common/shirm';
 import * as React from 'react';
 import VisibleBox from '../common/VisibleBox';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 import RcAlign from 'rc-align';
 
 

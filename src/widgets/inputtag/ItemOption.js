@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import Item from './Item';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 
 
 export default class  extends React.Component<any, any> {

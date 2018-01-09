@@ -12,7 +12,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import Tree from '../';
 import { createTestComponent, } from 'sv-test-utils';
 import renderer from 'react-test-renderer';
-import * as Widget from '../../consts/index';
+import Widget from '../../consts/index';
 
 Enzyme.configure({ adapter: new Adapter(), });
 

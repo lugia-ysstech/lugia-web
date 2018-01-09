@@ -8,7 +8,7 @@ import * as React from 'react';
 
 import InputTag from './';
 import Theme from '../theme';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 
 const valArr = [],
   dispArr = [];

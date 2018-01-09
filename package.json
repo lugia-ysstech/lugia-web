@@ -1,6 +1,6 @@
 {
   "name": "sv-widget",
-  "version": "1.0.39",
+  "version": "1.0.41",
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",

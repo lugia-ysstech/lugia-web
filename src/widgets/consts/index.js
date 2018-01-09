@@ -4,31 +4,60 @@
  *
  * @flow
  */
-export const Input = 'sv_widget_Input';
-export const Align = 'sv_widget_Align';
-export const Trigger = 'sv_widget_Trigger';
-export const Tooltip = 'sv_widget_Tooltip';
-export const ThemeWrapWidget = 'ThemeWrapWidget';
+const Input = 'sv_widget_Input';
+const Align = 'sv_widget_Align';
+const Trigger = 'sv_widget_Trigger';
+const Tooltip = 'sv_widget_Tooltip';
+const ThemeWrapWidget = 'ThemeWrapWidget';
 
-export const InputTag = 'sv_widget_InputTag';
-export const InputTagCloseButton = 'sv_widget_InputTagCloseButton';
-export const InputTagFontItem = 'sv_widget_InputTagFontItem';
-export const InputTagFocuInput = 'sv_widget_InputTagFocuInput';
-export const InputTagMoreItem = 'sv_widget_InputTagMoreItem';
-export const ItemTagOption = 'sv_widget_ItemTagOption';
-export const InputTagItem = 'sv_widget_InputTagItem';
-export const InputTagClearButton = 'sv_widget_InputTagClearButton';
+const InputTag = 'sv_widget_InputTag';
+const InputTagCloseButton = 'sv_widget_InputTagCloseButton';
+const InputTagFontItem = 'sv_widget_InputTagFontItem';
+const InputTagFocuInput = 'sv_widget_InputTagFocuInput';
+const InputTagMoreItem = 'sv_widget_InputTagMoreItem';
+const ItemTagOption = 'sv_widget_ItemTagOption';
+const InputTagItem = 'sv_widget_InputTagItem';
+const InputTagClearButton = 'sv_widget_InputTagClearButton';
 
-export const Theme = 'sv_widget_Theme';
-export const Menu = 'sv_widget_Menu';
-export const MenuItem = 'sv_widget_MenuItem';
-export const Icon = 'sv_widget_Icon';
-export const AddIcon = 'sv_widget_AddIcon';
-export const RefershIcon = 'sv_widget_RefershIcon';
-export const CheckIcon = 'sv_widget_CheckIcon';
-export const ClearIcon = 'sv_widget_ClearIcon';
-export const DropMenu = 'sv_widget_DropMenu';
-export const Tree = 'sv_widget_Tree';
-export const TreeSelect = 'sv_widget_TreeSelect';
-export const TreeSelectLimitTitle = 'sv_widget_TreeSelectLimitTitle';
-export const ThrottleScroller = 'sv_widget_ThrottleScroller';
+const Theme = 'sv_widget_Theme';
+const Menu = 'sv_widget_Menu';
+const MenuItem = 'sv_widget_MenuItem';
+const Icon = 'sv_widget_Icon';
+const AddIcon = 'sv_widget_AddIcon';
+const RefershIcon = 'sv_widget_RefershIcon';
+const CheckIcon = 'sv_widget_CheckIcon';
+const ClearIcon = 'sv_widget_ClearIcon';
+const DropMenu = 'sv_widget_DropMenu';
+const Tree = 'sv_widget_Tree';
+const TreeSelect = 'sv_widget_TreeSelect';
+const TreeSelectLimitTitle = 'sv_widget_TreeSelectLimitTitle';
+const ThrottleScroller = 'sv_widget_ThrottleScroller';
+
+export default {
+  Input,
+  Align,
+  Trigger,
+  Tooltip,
+  ThemeWrapWidget,
+  InputTag,
+  InputTagCloseButton,
+  InputTagFontItem,
+  InputTagFocuInput,
+  InputTagMoreItem,
+  ItemTagOption,
+  InputTagItem,
+  InputTagClearButton,
+  Theme,
+  Menu,
+  MenuItem,
+  Icon,
+  AddIcon,
+  RefershIcon,
+  CheckIcon,
+  ClearIcon,
+  DropMenu,
+  Tree,
+  TreeSelect,
+  TreeSelectLimitTitle,
+  ThrottleScroller,
+};

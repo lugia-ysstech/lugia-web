@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import Tree from './';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 import Theme from '../theme';
 
 const { TreeNode, } = Tree;

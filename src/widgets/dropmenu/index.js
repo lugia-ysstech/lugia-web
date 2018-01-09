@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import Trigger from '../trigger';
 import Theme from '../theme';
 import ThemeProvider from '../common/ThemeProvider';
-import * as Widget from '../consts/index';
+import Widget from '../consts/index';
 import '../common/shirm';
 import Input from '../input';
 import QueryInput, { QueryInputPadding, } from '../common/QueryInputContainer';
