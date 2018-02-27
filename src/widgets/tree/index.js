@@ -10,7 +10,7 @@ import animation from '../common/openAnimation';
 import * as React from 'react';
 import { TreeNode, } from './rc-tree';
 import Support from '../common/FormFieldWidgetSupport';
-import ThemeProvider from '../common/ThemeProvider';
+import ThemeProvider from '../theme-provider';
 import ThrottleTree from './ThrottleTree';
 import Widget from '../consts/index';
 import '../css/sv.css';

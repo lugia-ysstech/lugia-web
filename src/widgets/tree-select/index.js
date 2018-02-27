@@ -14,7 +14,7 @@ import Tree from '../tree';
 import Theme from '../theme';
 import '../css/sv.css';
 import Widget from '../consts/index';
-import ThemeProvider from '../common/ThemeProvider';
+import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import AddIcon from '../icon/AddIcon';

@@ -9,7 +9,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Item from './item';
 import { DefaultHeight, MenuItemHeight, } from '../css/menu';
-import ThemeProvider from '../common/ThemeProvider';
+import ThemeProvider from '../theme-provider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
 import '../css/sv.css';

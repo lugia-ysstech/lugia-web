@@ -23,7 +23,7 @@ describe('Theme', () => {
       config: PropTypes.object,
     };
     const config = { ligx: { value: '正念', }, };
-    const cmp = renderer.create(<Theme config={config}><TestComponent>hello everyone</TestComponent></Theme>);
+    const cmp = renderer.create(<Theme config={config} ><TestComponent>hello everyone</TestComponent></Theme>);
     expect(cmp).toMatchSnapshot();
   });
 

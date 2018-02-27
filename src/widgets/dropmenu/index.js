@@ -7,7 +7,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Trigger from '../trigger';
 import Theme from '../theme';
-import ThemeProvider from '../common/ThemeProvider';
+import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import '../common/shirm';
 import Input from '../input';

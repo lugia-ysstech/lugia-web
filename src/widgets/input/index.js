@@ -6,7 +6,7 @@ import React, { Component, } from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
 import Widget from '../consts/index';
-import ThemeProvider from '../common/ThemeProvider';
+import ThemeProvider from '../theme-provider';
 import { getFocusShadow, getInputBorderHoverColor, Height, getInputBorderColor, Padding, RadiusSize, DefaultHelp,} from '../css/input';
 import { FontSize, } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';

@@ -8,7 +8,7 @@ import '../common/shirm';
 import * as React from 'react';
 import '../css/sv.css';
 import Widget from '../consts/index';
-import ThemeProvider from '../common/ThemeProvider';
+import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
 
 const getColor = (props: Object) => {

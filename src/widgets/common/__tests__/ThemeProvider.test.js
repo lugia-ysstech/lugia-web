@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import chai from 'chai';
-import ThemeProvider from '../ThemeProvider';
+import ThemeProvider from '../../theme-provider';
 import Theme from '../../theme/index';
 
 import renderer from 'react-test-renderer';
