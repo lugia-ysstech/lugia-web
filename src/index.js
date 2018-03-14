@@ -7,7 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactServer from 'react-dom/server';
 
-import App from './widgets/treeselect/demo';
+import App from './widgets/tree-select/demo';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
