@@ -79,6 +79,7 @@ const getBorderColor = props => {
   return focus ? `border-color: ${getInputBorderHoverColor(props)}; ${getFocusShadow(props)};` : '';
 };
 const OutContainer = styled.div`
+  background: white;
   border: solid 1px ${getInputBorderColor};
   border-radius: ${RadiusSize};
   min-height: ${Height}px;
@@ -104,6 +105,7 @@ const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
 };
 const InnerContainer = styled.div `
+  background: white;
   ${getWidthBySpan(-getContentWidth(0))}
   height: ${Height - Padding}px;
   margin-left: ${marginLeft}px;
