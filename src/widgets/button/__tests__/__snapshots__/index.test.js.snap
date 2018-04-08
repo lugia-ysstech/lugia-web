@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button normal 1`] = `
+.c0 {
+  color: #fff;
+  background-color: #108ee9;
+  border-color: #108ee9;
+  margin-right: 8px;
+  margin-bottom: 12px;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  padding: 4px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all .3s cubic-bezier(.645,.045,.355,1);
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  position: relative;
+  color: rgba(0,0,0,.65);
+  background-color: #fff;
+  border-color: #d9d9d9;
+  text-transform: none;
+  outline: 0;
+}
+
+.c0:hover {
+  color: #40a9ff;
+  background-color: #fff;
+  border-color: #40a9ff;
+}
+
+<button
+  className="c0"
+  onClick={[Function]}
+  shape={undefined}
+  type={undefined}
+>
+  <span
+    className=""
+  >
+    你好吗
+  </span>
+</button>
+`;
+
+exports[`Button normal type: danger 1`] = `
+.c0 {
+  color: #fff;
+  background-color: #108ee9;
+  border-color: #108ee9;
+  margin-right: 8px;
+  margin-bottom: 12px;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  padding: 4px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all .3s cubic-bezier(.645,.045,.355,1);
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  position: relative;
+  color: #f5222d;
+  background-color: transparent;
+  border-color: #f5222d;
+  text-transform: none;
+  outline: 0;
+}
+
+.c0:hover {
+  color: #40a9ff;
+  background-color: #fff;
+  border-color: #40a9ff;
+}
+
+<button
+  className="c0"
+  onClick={[Function]}
+  shape={undefined}
+  type="danger"
+>
+  <span
+    className=""
+  >
+    hello
+  </span>
+</button>
+`;

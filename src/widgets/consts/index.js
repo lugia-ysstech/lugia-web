@@ -4,6 +4,7 @@
  *
  * @flow
  */
+const Button = 'sv_widget_Button';
 const Input = 'sv_widget_Input';
 const Align = 'sv_widget_Align';
 const Trigger = 'sv_widget_Trigger';
@@ -34,6 +35,7 @@ const TreeSelectLimitTitle = 'sv_widget_TreeSelectLimitTitle';
 const ThrottleScroller = 'sv_widget_ThrottleScroller';
 
 export default {
+  Button,
   Input,
   Align,
   Trigger,
