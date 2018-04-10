@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch snapshot 1`] = `
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  height: 22px;
+  min-width: 44px;
+  line-height: 20px;
+  vertical-align: middle;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  background-color: rgba(0,0,0,.25);
+  cursor: 'pointer';
+  -webkit-transition: all .36s;
+  transition: all .36s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0:before,
+.c0:after {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 1px;
+  top: 1px;
+  border-radius: 18px;
+  background-color: #fff;
+  content: " ";
+  cursor: pointer;
+  -webkit-transition: all .36s cubic-bezier(0.78,0.14,0.15,0.86);
+  transition: all .36s cubic-bezier(0.78,0.14,0.15,0.86);
+}
+
+.c0:active:before,
+.c0:active:after {
+  width: 24px;
+}
+
+.c0:after {
+  box-shadow: 0 2px 4px 0 rgba(0,35,11,.2);
+}
+
+.c0:before {
+  content: "e64d";
+  font-family: anticon;
+  -webkit-animation: loadingCircle 1s infinite linear;
+  animation: loadingCircle 1s infinite linear;
+  text-align: center;
+  background: transparent;
+  z-index: 1;
+  display: none;
+  font-size: 12px;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 2px rgba(24,144,255,.2);
+  outline: 0;
+}
+
+.c0:focus:hover {
+  box-shadow: none;
+}
+
+.c1 {
+  color: #fff;
+  font-size: 12px;
+  margin-left: 24px;
+  margin-right: 6px;
+  display: block;
+}
+
+<span
+  className="c0"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <span
+    className="c1"
+  >
+    
+  </span>
+</span>
+`;
