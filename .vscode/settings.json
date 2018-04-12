@@ -1,0 +1,21 @@
+{
+  "javascript.validate.enable": false,
+  "files.autoSave": "off",
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    "vue"
+  ],
+  "flow.pathToFlow": "${workspaceRoot}/node_modules/.bin/flow",
+  "flow.useNPMPackagedFlow": true,
+  "flow.runOnEdit": false
+}
