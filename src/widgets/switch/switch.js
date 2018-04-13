@@ -2,12 +2,14 @@
  *
  * create by ZhangBoPing
  *
+ * create date: 2018/04/09
+ *
  * @flow
  */
 import * as React from 'react';
 import Widget from '../consts/index';
-
-import {SwitchWrapper, SwitchInner,} from './styles';
+import {ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE,} from '../consts/KeyCode';
+import {SwitchWrapper, SwitchInner,} from './styled';
 
 /* props type */
 export type SwitchProps = {
@@ -18,8 +20,8 @@ export type SwitchProps = {
   checked?: boolean,
   defaultChecked?: boolean,
   onChange?: (checked: boolean) => any,
-  checkedChildren?: string | React$Node,
-  unCheckedChildren?: string | React$Node,
+  checkedChildren?: string | React.Node,
+  unCheckedChildren?: string | React.Node,
   disabled?: boolean,
   loading?: boolean,
 }
@@ -27,7 +29,7 @@ export type SwitchProps = {
 /* state type */
 export type SwitchState = {
   checked: boolean,
-  disabled: boolean
+  disabled: boolean,
 };
 
 /* Class */
@@ -39,19 +41,18 @@ class Switch extends React.Component<SwitchProps, SwitchState>{
   constructor(props: SwitchProps){
     super(props);
     
-    const disabled = this.props.disabled || false;
-    let checked = this.props.defaultChecked || false;
-    if('checked' in this.props){
-      checked =  this.props.checked || false;
-    }
-
+    const {
+      defaultChecked = false, 
+      disabled = false, 
+      checked = defaultChecked,
+    } = this.props;
     this.state = {
       checked,
       disabled,
     };
   }
 
-  toggle(): void{
+  toggle = (): void => {
     this.updateChecked(!this.state.checked);
   }
 
@@ -65,12 +66,12 @@ class Switch extends React.Component<SwitchProps, SwitchState>{
     });
   }
 
-  handleKeyDown(event: SyntheticKeyboardEvent<EventTarget>): void{
+  handleKeyDown = (event: SyntheticKeyboardEvent<EventTarget>): void => {
     const key = event.keyCode;
 
-    if(key === 37) this.updateChecked(false); // left
-    if(key === 39) this.updateChecked(true); // right
-    if(key === 32 || key === 13) this.toggle(); // space || enter
+    if(key === LEFT_ARROW) this.updateChecked(false);
+    if(key === RIGHT_ARROW) this.updateChecked(true);
+    if(key === SPACE || key === ENTER) this.toggle();
   }
   
   focus(): void{
@@ -85,7 +86,7 @@ class Switch extends React.Component<SwitchProps, SwitchState>{
     }
   }
 
-  cacheNode(node: React.Node): void{
+  cacheNode = (node: HTMLSpanElement): void => {
     this.el = node;
   }
 
@@ -102,27 +103,40 @@ class Switch extends React.Component<SwitchProps, SwitchState>{
     }
   }
 
+  componentWillUnmount(){
+    this.el = null;
+  }
+
   render(){
-    const {checkedChildren,unCheckedChildren,} = this.props;
-    const switchTabIndex = this.state.disabled? -1 : 0;
+    const {checkedChildren = '',unCheckedChildren = '', size='default', loading, ...otherProps} = this.props;
+    const {checked, disabled, } = this.state;
+    const TAB_INDEX = 0;
+    const NO_TAB_INDEX = -1;
+
+    const switchTabIndex = disabled? NO_TAB_INDEX : TAB_INDEX;
+
     return (
       <SwitchWrapper
-        isChecked={this.state.checked}
-        isDisabled={this.state.disabled}
+        isChecked={checked}
+        isDisabled={disabled}
+        size={size}
+        loading={loading}
+
         tabIndex={switchTabIndex}
-        onClick={() => this.toggle()}
-        onKeyDown={e => this.handleKeyDown(e)}
-        innerRef={el => this.cacheNode(el)}
+
+        onClick={this.toggle}
+        onKeyDown={this.handleKeyDown}
+
+        innerRef={this.cacheNode}
+        {...otherProps}
         >
         
-        <SwitchInner isChecked={this.state.checked}>
+        <SwitchInner 
+          isChecked={checked}
+          size={size}
+          >
           {
-            (checkedChildren || unCheckedChildren)?
-            (this.state.checked?
-              checkedChildren || '' :
-              unCheckedChildren || ''
-            ):
-            ''
+            checked? checkedChildren: unCheckedChildren
           }
         </SwitchInner>
       </SwitchWrapper>

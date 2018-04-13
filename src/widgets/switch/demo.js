@@ -2,6 +2,8 @@
  *
  * create by ZhangBoPing
  *
+ * create date: 2018/04/09
+ *
  * @flow
  */
 import React from 'react';
@@ -41,7 +43,21 @@ export default () => {
 
       <section style={{marginBottom: '20px',}}>
         <h3>autoFocus</h3>
-        <Switch defaultChecked autoFocus />
+        <Switch defaultChecked autoFocus onFocus={() => {
+          console.log('is focus.');
+        }} />
+      </section>
+
+      <section style={{marginBottom: '20px',}}>
+        <h3>small</h3>
+        <Switch size={'small'} />
+      </section>
+
+      <section style={{marginBottom: '20px',}}>
+        <h3>loading</h3>
+        <Switch loading defaultChecked />
+        <br />
+        <Switch size={'small'} loading disabled />
       </section>
     </div>
   );

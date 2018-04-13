@@ -13,11 +13,63 @@ import Adapter from 'enzyme-adapter-react-16';
 // import Switch from '../';
 import Switch from '../switch';
 import renderer from 'react-test-renderer';
-import Widget from '../../consts/index';
+import {ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE,} from '../../consts/KeyCode';
 
+const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
 const { expect: exp, } = chai;
 
 Enzyme.configure({ adapter: new Adapter(), });
+
+function checkState(propsArr, expectFun, equal, model='shallow'){
+  const handler = model === 'shallow'? shallow: mount;
+  const Origin = <Switch {...propsArr} />;
+
+  const Wrapper = handler(Origin);
+  const result = typeof equal !== 'function'?
+    equal:
+    equal(Wrapper);
+
+  exp(expectFun(Wrapper)).to.be.eql(result);
+}
+
+const config = {
+  defaultCheckedTrue: {
+    defaultChecked: true,
+  },
+  defaultCheckedFalse: {
+    defaultChecked: false,
+  },
+  checkedTrue: {
+    checked: true,
+  },
+  checkedFalse: {
+    checked: false,
+  },
+  disabledTrue: {
+    disabled: true,
+  },
+  disabledFalse:{
+    disabled: false,
+  },
+  checkedChildren: {
+    checkedChildren: 'on',
+  },
+  unCheckedChildren: {
+    unCheckedChildren: 'off',
+  },
+  autoFocusTrue: {
+    autoFocus: true,
+  },
+  autoFocusFalse: {
+    autoFocus: false,
+  },
+  sizeSmall: {
+    size: 'small',
+  },
+  sizeNormal: {
+    size: 'normal',
+  },
+};
 
 describe('Switch', () => {
   it('snapshot', () => {
@@ -26,62 +78,101 @@ describe('Switch', () => {
 
   });
 
-  it('API: defaultChecked', () => {
-    const Wrapper = shallow(<Switch defaultChecked />);
-    exp(Wrapper.state('checked')).to.eql(true);
+  it('props: defaultChecked = true', () => {
+    checkState(config.defaultCheckedTrue, wrapper => {
+      return wrapper.state('checked');
+    }, true);
   });
 
-  it('API: checked', () => {
-    const Wrapper = shallow(<Switch checked />);
-    exp(Wrapper.state('checked')).to.eql(true);
-    Wrapper.setState({checked: false,});
-    exp(Wrapper.state('checked')).to.eql(false);
+  it('props: defaultChecked = false', () => {
+    checkState(config.defaultCheckedFalse, wrapper => {
+      return wrapper.state('checked');
+    }, false);
   });
 
-  it('API: disabled', () => {
-    const Wrapper = shallow(<Switch disabled />);
-    exp(Wrapper.state('disabled')).to.eql(true);
-    Wrapper.setState({disabled: false,});
-    exp(Wrapper.state('disabled')).to.eql(false);
+  it('props: checked = true', () => {
+    checkState(config.checkedTrue, wrapper => {
+      return wrapper.state('checked');
+    }, true);
   });
 
-  it('API: checkedChildren', () => {
-    const Wrapper = shallow(<Switch checkedChildren={'on'} />);
-    Wrapper.setState({checked: true,});
-    exp(Wrapper.html().indexOf('on') > -1).to.eql(true);
+  it('props: checked = false', () => {
+    checkState(config.checkedFalse, wrapper => {
+      return wrapper.state('checked');
+    }, false);
   });
 
-  it('API: unCheckedChildren', () => {
-    const Wrapper = shallow(<Switch unCheckedChildren={'off'} />);
-    Wrapper.setState({checked: false,});
-    exp(Wrapper.html().indexOf('off') > -1).to.eql(true);
+  it('props: disabled = true', () => {
+    checkState(config.disabledTrue, wrapper => {
+      return wrapper.state('disabled');
+    }, true);
   });
 
-  /* has problem => autoFocus is not work. */
-  it('API: autoFocus', () => {
-    const Wrapper = mount(<Switch autoFocus />);
-    const checkedState = Wrapper.state('checked');
-    Wrapper.find('span').at(0).simulate('keyDown', {keyCode: 13,});
-    exp(Wrapper.state('checked')).to.eql(!checkedState);
+  it('props: disabled = false', () => {
+    checkState(config.disabledFalse, wrapper => {
+      return wrapper.state('disabled');
+    }, false);
   });
+
+  it('props: checkedChildren = “on”', () => {
+    checkState(config.checkedChildren, wrapper => {
+      wrapper.setState({checked: true,});
+      return wrapper.html().indexOf(config.checkedChildren.checkedChildren) > -1;
+    }, true);
+  });
+
+  it('props: unCheckedChildren = "off"', () => {
+    checkState(config.unCheckedChildren, wrapper => {
+      wrapper.setState({checked: false,});
+      return wrapper.html().indexOf(config.unCheckedChildren.unCheckedChildren) > -1;
+    }, true);
+  });
+
+  it('props: onChange => checked: false to checked: true', () => {
+    const Target = shallow(<Switch checked={false} onChange={result => {
+      exp(result).to.eql(true);
+    }} />);
+
+    Target.setState({
+      checked: true,
+    });
+  });
+
+  it('Switch onClick', () => {
+    checkState({}, wrapper => {
+      wrapper.find('span').at(0).simulate('click');
+      
+      return wrapper.state('checked');
+    }, true, 'mount');
+  });
+
+  it('keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW" ', () => {
+    const Target = mount(<Switch autoFocus />);
+    const SwitchEl = Target.find('span').at(0);
+
+    SwitchEl.simulate('keyDown', {keyCode: ENTER,});
+    exp(Target.state('checked')).to.eql(true);
+    SwitchEl.simulate('keyDown', {keyCode: SPACE,});
+    exp(Target.state('checked')).to.eql(false);
+    SwitchEl.simulate('keyDown', {keyCode: RIGHT_ARROW,});
+    exp(Target.state('checked')).to.eql(true);
+    SwitchEl.simulate('keyDown', {keyCode: LEFT_ARROW,});
+    exp(Target.state('checked')).to.eql(false);
+  });
+
+  /* 
   
-  // it('normal type: danger', () => {
-  //   const Target = <Button type="danger">hello</Button>;
-  //   expect(renderer.create(Target).toJSON()).toMatchSnapshot();
 
-  // });
-  // it('props: click', async () => {
-  //   let onClick;
-  //   const promise = new Promise(resolve => {
-  //     onClick = e => {
-  //       resolve(e.target);
-  //     };
-  //   });
-  //   const cmp = mount(<Button type="danger" onClick={onClick}>hello</Button>);
-  //   let target = { px: 'hello', };
-  //   cmp.find('hello').at(0).simulate('click', { target, });
-
-  //   exp(await  promise).to.be.eql(target);
-  // });
-
+  it('iconClass: sv-icon-close', () => {
+    const order = VerifyOrder.create();
+    const mockClick = mockFunction.create(VerifyOrderConfig.create('eventHandle', order));
+    const onClick = mockClick.getFunction();
+    const target = mount(<Icon iconClass="sv-icon-close" onClick={onClick}></Icon>);
+    target.find('i').simulate('click', {});
+    order.verify(obj => {
+      const { eventHandle, } = obj;
+      eventHandle(VerifyOrder.Object);
+    });
+  });
+   */
 });
