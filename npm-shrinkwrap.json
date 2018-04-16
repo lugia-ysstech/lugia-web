@@ -403,6 +403,12 @@
       "integrity": "sha1-GdOGodntxufByF04iu28xW0zYC0=",
       "dev": true
     },
+    "async-limiter": {
+      "version": "1.0.0",
+      "resolved": "http://registry.npm.taobao.org/async-limiter/download/async-limiter-1.0.0.tgz",
+      "integrity": "sha1-ePrtjD0HSrgfIrTphdeehzj3IPg=",
+      "dev": true
+    },
     "asynckit": {
       "version": "0.4.0",
       "resolved": "http://registry.npm.taobao.org/asynckit/download/asynckit-0.4.0.tgz",
@@ -1982,6 +1988,12 @@
       "integrity": "sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=",
       "dev": true
     },
+    "browser-process-hrtime": {
+      "version": "0.1.2",
+      "resolved": "http://registry.npm.taobao.org/browser-process-hrtime/download/browser-process-hrtime-0.1.2.tgz",
+      "integrity": "sha1-Ql1opY00R/AqBKqJQYf86K+Le44=",
+      "dev": true
+    },
     "browser-resolve": {
       "version": "1.11.2",
       "resolved": "http://registry.npm.taobao.org/browser-resolve/download/browser-resolve-1.11.2.tgz",
@@ -3226,6 +3238,51 @@
         }
       }
     },
+    "data-urls": {
+      "version": "1.0.0",
+      "resolved": "http://registry.npm.taobao.org/data-urls/download/data-urls-1.0.0.tgz",
+      "integrity": "sha1-JIAt5OgcKY6oqTiLsNjkYcd0aE8=",
+      "dev": true,
+      "requires": {
+        "abab": "1.0.4",
+        "whatwg-mimetype": "2.1.0",
+        "whatwg-url": "6.4.0"
+      },
+      "dependencies": {
+        "abab": {
+          "version": "1.0.4",
+          "resolved": "http://registry.npm.taobao.org/abab/download/abab-1.0.4.tgz",
+          "integrity": "sha1-X6rZwsB/YN12dw9xzwJbYqY8/U4=",
+          "dev": true
+        },
+        "punycode": {
+          "version": "2.1.0",
+          "resolved": "http://registry.npm.taobao.org/punycode/download/punycode-2.1.0.tgz",
+          "integrity": "sha1-X4Y+3Im5bbCQdLrXlHvwkFbKTn0=",
+          "dev": true
+        },
+        "tr46": {
+          "version": "1.0.1",
+          "resolved": "http://registry.npm.taobao.org/tr46/download/tr46-1.0.1.tgz",
+          "integrity": "sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=",
+          "dev": true,
+          "requires": {
+            "punycode": "2.1.0"
+          }
+        },
+        "whatwg-url": {
+          "version": "6.4.0",
+          "resolved": "http://registry.npm.taobao.org/whatwg-url/download/whatwg-url-6.4.0.tgz",
+          "integrity": "sha1-CP3yuehyeDp6H2IWJgodZsxyLgg=",
+          "dev": true,
+          "requires": {
+            "lodash.sortby": "4.7.0",
+            "tr46": "1.0.1",
+            "webidl-conversions": "4.0.2"
+          }
+        }
+      }
+    },
     "date-now": {
       "version": "0.1.4",
       "resolved": "http://registry.npm.taobao.org/date-now/download/date-now-0.1.4.tgz",
@@ -3931,6 +3988,15 @@
       "resolved": "http://registry.npm.taobao.org/domelementtype/download/domelementtype-1.3.0.tgz",
       "integrity": "sha1-sXrtguirWeUt2cGbF1bg/BhyBMI=",
       "dev": true
+    },
+    "domexception": {
+      "version": "1.0.1",
+      "resolved": "http://registry.npm.taobao.org/domexception/download/domexception-1.0.1.tgz",
+      "integrity": "sha1-k3RCZEymoxJh7zbj7Gd/6AVYLJA=",
+      "dev": true,
+      "requires": {
+        "webidl-conversions": "4.0.2"
+      }
     },
     "domhandler": {
       "version": "2.1.0",
@@ -8614,6 +8680,41 @@
         "jest-mock": "20.0.3",
         "jest-util": "20.0.3",
         "jsdom": "9.12.0"
+      },
+      "dependencies": {
+        "acorn": {
+          "version": "4.0.13",
+          "resolved": "http://registry.npm.taobao.org/acorn/download/acorn-4.0.13.tgz",
+          "integrity": "sha1-EFSVrlNh1pe9GVyCUZLhrX8lN4c=",
+          "dev": true
+        },
+        "jsdom": {
+          "version": "9.12.0",
+          "resolved": "http://registry.npm.taobao.org/jsdom/download/jsdom-9.12.0.tgz",
+          "integrity": "sha1-6MVG//ywbADUgzyoRBD+1/igl9Q=",
+          "dev": true,
+          "requires": {
+            "abab": "1.0.3",
+            "acorn": "4.0.13",
+            "acorn-globals": "3.1.0",
+            "array-equal": "1.0.0",
+            "content-type-parser": "1.0.1",
+            "cssom": "0.3.2",
+            "cssstyle": "0.2.37",
+            "escodegen": "1.9.0",
+            "html-encoding-sniffer": "1.0.1",
+            "nwmatcher": "1.4.1",
+            "parse5": "1.5.1",
+            "request": "2.81.0",
+            "sax": "1.2.4",
+            "symbol-tree": "3.2.2",
+            "tough-cookie": "2.3.2",
+            "webidl-conversions": "4.0.2",
+            "whatwg-encoding": "1.0.1",
+            "whatwg-url": "4.8.0",
+            "xml-name-validator": "2.0.1"
+          }
+        }
       }
     },
     "jest-environment-node": {
@@ -8837,36 +8938,308 @@
       "integrity": "sha1-xRn2KfhrOlvtuliojTETCe7Al/k="
     },
     "jsdom": {
-      "version": "9.12.0",
-      "resolved": "http://registry.npm.taobao.org/jsdom/download/jsdom-9.12.0.tgz",
-      "integrity": "sha1-6MVG//ywbADUgzyoRBD+1/igl9Q=",
+      "version": "11.7.0",
+      "resolved": "http://registry.npm.taobao.org/jsdom/download/jsdom-11.7.0.tgz",
+      "integrity": "sha1-i0W2V9rpDW0tOl9dESa7cQLQoXI=",
       "dev": true,
       "requires": {
-        "abab": "1.0.3",
-        "acorn": "4.0.13",
-        "acorn-globals": "3.1.0",
+        "abab": "1.0.4",
+        "acorn": "5.5.3",
+        "acorn-globals": "4.1.0",
         "array-equal": "1.0.0",
-        "content-type-parser": "1.0.1",
         "cssom": "0.3.2",
         "cssstyle": "0.2.37",
+        "data-urls": "1.0.0",
+        "domexception": "1.0.1",
         "escodegen": "1.9.0",
-        "html-encoding-sniffer": "1.0.1",
-        "nwmatcher": "1.4.1",
-        "parse5": "1.5.1",
-        "request": "2.81.0",
+        "html-encoding-sniffer": "1.0.2",
+        "left-pad": "1.3.0",
+        "nwmatcher": "1.4.4",
+        "parse5": "4.0.0",
+        "pn": "1.1.0",
+        "request": "2.85.0",
+        "request-promise-native": "1.0.5",
         "sax": "1.2.4",
         "symbol-tree": "3.2.2",
-        "tough-cookie": "2.3.2",
+        "tough-cookie": "2.3.4",
+        "w3c-hr-time": "1.0.1",
         "webidl-conversions": "4.0.2",
-        "whatwg-encoding": "1.0.1",
-        "whatwg-url": "4.8.0",
-        "xml-name-validator": "2.0.1"
+        "whatwg-encoding": "1.0.3",
+        "whatwg-mimetype": "2.1.0",
+        "whatwg-url": "6.4.0",
+        "ws": "4.1.0",
+        "xml-name-validator": "3.0.0"
       },
       "dependencies": {
+        "abab": {
+          "version": "1.0.4",
+          "resolved": "http://registry.npm.taobao.org/abab/download/abab-1.0.4.tgz",
+          "integrity": "sha1-X6rZwsB/YN12dw9xzwJbYqY8/U4=",
+          "dev": true
+        },
         "acorn": {
-          "version": "4.0.13",
-          "resolved": "http://registry.npm.taobao.org/acorn/download/acorn-4.0.13.tgz",
-          "integrity": "sha1-EFSVrlNh1pe9GVyCUZLhrX8lN4c=",
+          "version": "5.5.3",
+          "resolved": "http://registry.npm.taobao.org/acorn/download/acorn-5.5.3.tgz",
+          "integrity": "sha1-9HPdR+AnegjijpvsWu6wR1HwuMk=",
+          "dev": true
+        },
+        "acorn-globals": {
+          "version": "4.1.0",
+          "resolved": "http://registry.npm.taobao.org/acorn-globals/download/acorn-globals-4.1.0.tgz",
+          "integrity": "sha1-q3FgJdvhfFTT74HTLs4rLZn+JTg=",
+          "dev": true,
+          "requires": {
+            "acorn": "5.5.3"
+          }
+        },
+        "ajv": {
+          "version": "5.5.2",
+          "resolved": "http://registry.npm.taobao.org/ajv/download/ajv-5.5.2.tgz",
+          "integrity": "sha1-c7Xuyj+rZT49P5Qis0GtQiBdyWU=",
+          "dev": true,
+          "requires": {
+            "co": "4.6.0",
+            "fast-deep-equal": "1.0.0",
+            "fast-json-stable-stringify": "2.0.0",
+            "json-schema-traverse": "0.3.1"
+          }
+        },
+        "assert-plus": {
+          "version": "1.0.0",
+          "resolved": "http://registry.npm.taobao.org/assert-plus/download/assert-plus-1.0.0.tgz",
+          "integrity": "sha1-8S4PPF13sLHN2RRpQuTpbB5N1SU=",
+          "dev": true
+        },
+        "aws-sign2": {
+          "version": "0.7.0",
+          "resolved": "http://registry.npm.taobao.org/aws-sign2/download/aws-sign2-0.7.0.tgz",
+          "integrity": "sha1-tG6JCTSpWR8tL2+G1+ap8bP+dqg=",
+          "dev": true
+        },
+        "boom": {
+          "version": "4.3.1",
+          "resolved": "http://registry.npm.taobao.org/boom/download/boom-4.3.1.tgz",
+          "integrity": "sha1-T4owBctKfjiJ90kDD9JbluAdLjE=",
+          "dev": true,
+          "requires": {
+            "hoek": "4.2.1"
+          }
+        },
+        "cryptiles": {
+          "version": "3.1.2",
+          "resolved": "http://registry.npm.taobao.org/cryptiles/download/cryptiles-3.1.2.tgz",
+          "integrity": "sha1-qJ+7Ig9c4l7FboxKqKT9e1sNKf4=",
+          "dev": true,
+          "requires": {
+            "boom": "5.2.0"
+          },
+          "dependencies": {
+            "boom": {
+              "version": "5.2.0",
+              "resolved": "http://registry.npm.taobao.org/boom/download/boom-5.2.0.tgz",
+              "integrity": "sha1-XdnabuOl8wIHdDYpDLcX0/SlTgI=",
+              "dev": true,
+              "requires": {
+                "hoek": "4.2.1"
+              }
+            }
+          }
+        },
+        "form-data": {
+          "version": "2.3.2",
+          "resolved": "http://registry.npm.taobao.org/form-data/download/form-data-2.3.2.tgz",
+          "integrity": "sha1-SXBJi+YEwgwAXU9cI67NIda0kJk=",
+          "dev": true,
+          "requires": {
+            "asynckit": "0.4.0",
+            "combined-stream": "1.0.6",
+            "mime-types": "2.1.17"
+          },
+          "dependencies": {
+            "combined-stream": {
+              "version": "1.0.6",
+              "resolved": "http://registry.npm.taobao.org/combined-stream/download/combined-stream-1.0.6.tgz",
+              "integrity": "sha1-cj599ugBrFYTETp+RFqbactjKBg=",
+              "dev": true,
+              "requires": {
+                "delayed-stream": "1.0.0"
+              }
+            }
+          }
+        },
+        "har-schema": {
+          "version": "2.0.0",
+          "resolved": "http://registry.npm.taobao.org/har-schema/download/har-schema-2.0.0.tgz",
+          "integrity": "sha1-qUwiJOvKwEeCoNkDVSHyRzW37JI=",
+          "dev": true
+        },
+        "har-validator": {
+          "version": "5.0.3",
+          "resolved": "http://registry.npm.taobao.org/har-validator/download/har-validator-5.0.3.tgz",
+          "integrity": "sha1-ukAsJmGU8VlW7xXg/PJCmT9qff0=",
+          "dev": true,
+          "requires": {
+            "ajv": "5.5.2",
+            "har-schema": "2.0.0"
+          }
+        },
+        "hawk": {
+          "version": "6.0.2",
+          "resolved": "http://registry.npm.taobao.org/hawk/download/hawk-6.0.2.tgz",
+          "integrity": "sha1-r02RTrBl+bXOTZ0RwcshJu7MMDg=",
+          "dev": true,
+          "requires": {
+            "boom": "4.3.1",
+            "cryptiles": "3.1.2",
+            "hoek": "4.2.1",
+            "sntp": "2.1.0"
+          }
+        },
+        "hoek": {
+          "version": "4.2.1",
+          "resolved": "http://registry.npm.taobao.org/hoek/download/hoek-4.2.1.tgz",
+          "integrity": "sha1-ljRQKqEsRF3Vp8VzS1cruHOKrLs=",
+          "dev": true
+        },
+        "html-encoding-sniffer": {
+          "version": "1.0.2",
+          "resolved": "http://registry.npm.taobao.org/html-encoding-sniffer/download/html-encoding-sniffer-1.0.2.tgz",
+          "integrity": "sha1-5w2EuU2lOqN14R/jo1G+ZkLKRvg=",
+          "dev": true,
+          "requires": {
+            "whatwg-encoding": "1.0.3"
+          }
+        },
+        "http-signature": {
+          "version": "1.2.0",
+          "resolved": "http://registry.npm.taobao.org/http-signature/download/http-signature-1.2.0.tgz",
+          "integrity": "sha1-muzZJRFHcvPZW2WmCruPfBj7rOE=",
+          "dev": true,
+          "requires": {
+            "assert-plus": "1.0.0",
+            "jsprim": "1.4.1",
+            "sshpk": "1.13.1"
+          }
+        },
+        "iconv-lite": {
+          "version": "0.4.19",
+          "resolved": "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.19.tgz",
+          "integrity": "sha1-90aPYBNfXl2tM5nAqBvpoWA6CCs=",
+          "dev": true
+        },
+        "nwmatcher": {
+          "version": "1.4.4",
+          "resolved": "http://registry.npm.taobao.org/nwmatcher/download/nwmatcher-1.4.4.tgz",
+          "integrity": "sha1-IoVjHzSpXw0Dlc2QDJbtObWPNG4=",
+          "dev": true
+        },
+        "parse5": {
+          "version": "4.0.0",
+          "resolved": "http://registry.npm.taobao.org/parse5/download/parse5-4.0.0.tgz",
+          "integrity": "sha1-bXhlbj2o14tOwLkG98CO8d/j9gg=",
+          "dev": true
+        },
+        "performance-now": {
+          "version": "2.1.0",
+          "resolved": "http://registry.npm.taobao.org/performance-now/download/performance-now-2.1.0.tgz",
+          "integrity": "sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=",
+          "dev": true
+        },
+        "qs": {
+          "version": "6.5.1",
+          "resolved": "http://registry.npm.taobao.org/qs/download/qs-6.5.1.tgz",
+          "integrity": "sha1-NJzfbu+J7EXBLX1es/wMhwNDptg=",
+          "dev": true
+        },
+        "request": {
+          "version": "2.85.0",
+          "resolved": "http://registry.npm.taobao.org/request/download/request-2.85.0.tgz",
+          "integrity": "sha1-WgNhWkfGFCCz65m326IE+DYD4fo=",
+          "dev": true,
+          "requires": {
+            "aws-sign2": "0.7.0",
+            "aws4": "1.6.0",
+            "caseless": "0.12.0",
+            "combined-stream": "1.0.5",
+            "extend": "3.0.1",
+            "forever-agent": "0.6.1",
+            "form-data": "2.3.2",
+            "har-validator": "5.0.3",
+            "hawk": "6.0.2",
+            "http-signature": "1.2.0",
+            "is-typedarray": "1.0.0",
+            "isstream": "0.1.2",
+            "json-stringify-safe": "5.0.1",
+            "mime-types": "2.1.17",
+            "oauth-sign": "0.8.2",
+            "performance-now": "2.1.0",
+            "qs": "6.5.1",
+            "safe-buffer": "5.1.1",
+            "stringstream": "0.0.5",
+            "tough-cookie": "2.3.4",
+            "tunnel-agent": "0.6.0",
+            "uuid": "3.1.0"
+          }
+        },
+        "sntp": {
+          "version": "2.1.0",
+          "resolved": "http://registry.npm.taobao.org/sntp/download/sntp-2.1.0.tgz",
+          "integrity": "sha1-LGzsFP7cIiJznK+bXD2F0cxaLMg=",
+          "dev": true,
+          "requires": {
+            "hoek": "4.2.1"
+          }
+        },
+        "tough-cookie": {
+          "version": "2.3.4",
+          "resolved": "http://registry.npm.taobao.org/tough-cookie/download/tough-cookie-2.3.4.tgz",
+          "integrity": "sha1-7GDO44rGdQY//JelwYlwV47oNlU=",
+          "dev": true,
+          "requires": {
+            "punycode": "1.4.1"
+          }
+        },
+        "tr46": {
+          "version": "1.0.1",
+          "resolved": "http://registry.npm.taobao.org/tr46/download/tr46-1.0.1.tgz",
+          "integrity": "sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=",
+          "dev": true,
+          "requires": {
+            "punycode": "2.1.0"
+          },
+          "dependencies": {
+            "punycode": {
+              "version": "2.1.0",
+              "resolved": "http://registry.npm.taobao.org/punycode/download/punycode-2.1.0.tgz",
+              "integrity": "sha1-X4Y+3Im5bbCQdLrXlHvwkFbKTn0=",
+              "dev": true
+            }
+          }
+        },
+        "whatwg-encoding": {
+          "version": "1.0.3",
+          "resolved": "http://registry.npm.taobao.org/whatwg-encoding/download/whatwg-encoding-1.0.3.tgz",
+          "integrity": "sha1-V8I1vIZX6RTSTho5fTyC2u4Ka6M=",
+          "dev": true,
+          "requires": {
+            "iconv-lite": "0.4.19"
+          }
+        },
+        "whatwg-url": {
+          "version": "6.4.0",
+          "resolved": "http://registry.npm.taobao.org/whatwg-url/download/whatwg-url-6.4.0.tgz",
+          "integrity": "sha1-CP3yuehyeDp6H2IWJgodZsxyLgg=",
+          "dev": true,
+          "requires": {
+            "lodash.sortby": "4.7.0",
+            "tr46": "1.0.1",
+            "webidl-conversions": "4.0.2"
+          }
+        },
+        "xml-name-validator": {
+          "version": "3.0.0",
+          "resolved": "http://registry.npm.taobao.org/xml-name-validator/download/xml-name-validator-3.0.0.tgz",
+          "integrity": "sha1-auc+Bt5NjG5H+fsYH3jWSK1FfGo=",
           "dev": true
         }
       }
@@ -9123,6 +9496,12 @@
       "requires": {
         "invert-kv": "1.0.0"
       }
+    },
+    "left-pad": {
+      "version": "1.3.0",
+      "resolved": "http://registry.npm.taobao.org/left-pad/download/left-pad-1.3.0.tgz",
+      "integrity": "sha1-W4o6d2Xf4AEmHd6RVYnngvjJTR4=",
+      "dev": true
     },
     "leven": {
       "version": "2.1.0",
@@ -9399,6 +9778,12 @@
       "version": "3.6.1",
       "resolved": "http://registry.npm.taobao.org/lodash.restparam/download/lodash.restparam-3.6.1.tgz",
       "integrity": "sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=",
+      "dev": true
+    },
+    "lodash.sortby": {
+      "version": "4.7.0",
+      "resolved": "http://registry.npm.taobao.org/lodash.sortby/download/lodash.sortby-4.7.0.tgz",
+      "integrity": "sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=",
       "dev": true
     },
     "lodash.template": {
@@ -10643,6 +11028,12 @@
       "requires": {
         "find-up": "2.1.0"
       }
+    },
+    "pn": {
+      "version": "1.1.0",
+      "resolved": "http://registry.npm.taobao.org/pn/download/pn-1.1.0.tgz",
+      "integrity": "sha1-4vTO8OIZ9GPBeas3Rj5OHs3Muvs=",
+      "dev": true
     },
     "portfinder": {
       "version": "1.0.13",
@@ -13046,6 +13437,37 @@
         "uuid": "3.1.0"
       }
     },
+    "request-promise-core": {
+      "version": "1.1.1",
+      "resolved": "http://registry.npm.taobao.org/request-promise-core/download/request-promise-core-1.1.1.tgz",
+      "integrity": "sha1-Pu4AssWqgyOc+wTFcA2jb4HNCLY=",
+      "dev": true,
+      "requires": {
+        "lodash": "4.17.4"
+      }
+    },
+    "request-promise-native": {
+      "version": "1.0.5",
+      "resolved": "http://registry.npm.taobao.org/request-promise-native/download/request-promise-native-1.0.5.tgz",
+      "integrity": "sha1-UoF3D2jgyXGeUWP9P6tIIhX0/aU=",
+      "dev": true,
+      "requires": {
+        "request-promise-core": "1.1.1",
+        "stealthy-require": "1.1.1",
+        "tough-cookie": "2.3.4"
+      },
+      "dependencies": {
+        "tough-cookie": {
+          "version": "2.3.4",
+          "resolved": "http://registry.npm.taobao.org/tough-cookie/download/tough-cookie-2.3.4.tgz",
+          "integrity": "sha1-7GDO44rGdQY//JelwYlwV47oNlU=",
+          "dev": true,
+          "requires": {
+            "punycode": "1.4.1"
+          }
+        }
+      }
+    },
     "require-directory": {
       "version": "2.1.1",
       "resolved": "http://registry.npm.taobao.org/require-directory/download/require-directory-2.1.1.tgz",
@@ -13771,6 +14193,12 @@
       "version": "1.3.1",
       "resolved": "http://registry.npm.taobao.org/statuses/download/statuses-1.3.1.tgz",
       "integrity": "sha1-+vUbnrdKrvOzrPStX2Gr8ky3uT4=",
+      "dev": true
+    },
+    "stealthy-require": {
+      "version": "1.1.1",
+      "resolved": "http://registry.npm.taobao.org/stealthy-require/download/stealthy-require-1.1.1.tgz",
+      "integrity": "sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=",
       "dev": true
     },
     "stream-browserify": {
@@ -15188,6 +15616,15 @@
       "resolved": "http://192.168.101.103:5000/vx-var-utils/download/vx-var-utils-0.5.10.tgz",
       "integrity": "sha1-n3rJUH1ugGmZFGH0zSpPP3WpKyY="
     },
+    "w3c-hr-time": {
+      "version": "1.0.1",
+      "resolved": "http://registry.npm.taobao.org/w3c-hr-time/download/w3c-hr-time-1.0.1.tgz",
+      "integrity": "sha1-gqwr/2PZUOqeMYmlimViX+3xkEU=",
+      "dev": true,
+      "requires": {
+        "browser-process-hrtime": "0.1.2"
+      }
+    },
     "walker": {
       "version": "1.0.7",
       "resolved": "http://registry.npm.taobao.org/walker/download/walker-1.0.7.tgz",
@@ -15681,6 +16118,12 @@
       "resolved": "http://registry.npm.taobao.org/whatwg-fetch/download/whatwg-fetch-2.0.3.tgz",
       "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
     },
+    "whatwg-mimetype": {
+      "version": "2.1.0",
+      "resolved": "http://registry.npm.taobao.org/whatwg-mimetype/download/whatwg-mimetype-2.1.0.tgz",
+      "integrity": "sha1-8PIddsu6cjYutgnb7SowzRf8x9Q=",
+      "dev": true
+    },
     "whatwg-url": {
       "version": "4.8.0",
       "resolved": "http://registry.npm.taobao.org/whatwg-url/download/whatwg-url-4.8.0.tgz",
@@ -15801,6 +16244,16 @@
         "graceful-fs": "4.1.11",
         "imurmurhash": "0.1.4",
         "slide": "1.1.6"
+      }
+    },
+    "ws": {
+      "version": "4.1.0",
+      "resolved": "http://registry.npm.taobao.org/ws/download/ws-4.1.0.tgz",
+      "integrity": "sha1-qXm119TaaL9U7+BAiWfDJIaacok=",
+      "dev": true,
+      "requires": {
+        "async-limiter": "1.0.0",
+        "safe-buffer": "5.1.1"
       }
     },
     "xdg-basedir": {

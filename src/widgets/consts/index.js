@@ -34,6 +34,9 @@ const TreeSelect = 'sv_widget_TreeSelect';
 const TreeSelectLimitTitle = 'sv_widget_TreeSelectLimitTitle';
 const ThrottleScroller = 'sv_widget_ThrottleScroller';
 
+/* add by zhangBoPing */
+const Switch = 'sv_widget_Switch';
+
 export default {
   Button,
   Input,
@@ -62,4 +65,5 @@ export default {
   TreeSelect,
   TreeSelectLimitTitle,
   ThrottleScroller,
+  Switch,
 };
