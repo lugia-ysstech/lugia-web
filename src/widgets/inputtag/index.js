@@ -116,6 +116,10 @@ const InnerContainer = styled.div `
 `;
 const SingleInnerContainer = InnerContainer.extend`
   padding: 5px;
+  padding-right: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
 `;
 const List = styled.ul`
   list-style: none;
