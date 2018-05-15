@@ -95,7 +95,6 @@ const Label = styled.span`
   overflow: hidden;
   white-space: nowrap;
   float: left;
-  margin-right: 5px;
 `;
 const FloatLeft = styled.div`
   float: left;
