@@ -58,6 +58,10 @@ type TreeSelectProps = {
   disabled: boolean,
   placeholder?: string,
   defaultDisplayValue?: string,
+
+  /* create by ZhangBoPing */
+  label: string,
+  labelSize: number
 };
 type TreeSelectState = {
   open: boolean,
@@ -82,6 +86,28 @@ const Text = styled.span`
   position: absolute;
   border-radius: 3px;
 `;
+
+/* create by ZhangBoPing */
+const Label = styled.span`
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: ${props => (props.size? `${props.size}px`: 'auto')};
+  overflow: hidden;
+  white-space: nowrap;
+  float: left;
+  margin-right: 5px;
+`;
+const FloatLeft = styled.div`
+  float: left;
+`;
+const ClearFloat = styled.div`
+  clear: both;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  font-size: 0;
+`;
+
 Text.displayName = Widget.TreeSelectLimitTitle;
 
 const DefaultLimitCount = 999999;
@@ -178,10 +204,17 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   }
 
-  render () {
-    const { props, state, } = this;
-    const { data, placeholder, } = props;
-    const { query, value, displayValue, selectCount, treeFilter, current, start, } = state;
+  getLabel(props){
+    /* create by ZhangBoPing */
+    const {label, labelSize,} = props;
+    return <Label size={labelSize}>{label}</Label>;
+  }
+
+  getInner(props, state){
+    /* create by ZhangBoPing */
+    const {data,disabled,help,validateStatus,placeholder,} = props;
+    const {current,start,treeFilter,value,displayValue,selectCount,query,} = state;
+
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
     };
@@ -222,17 +255,16 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
-    const { disabled, help, validateStatus, } = props;
-    const { themeConfig, } = state;
 
-    return <Theme config={themeConfig} key="treesel_theme">
+    return (
       <Trigger popup={tree}
                onPopupVisibleChange={this.onTreePopupVisibleChange}
                align="bottomLeft"
                key="trigger"
                ref={getTreeTriger}
                action={disabled ? [] : ['click',]}
-               hideAction={['click',]}>
+               hideAction={['click',]}
+               >
         <InputTag key="inputtag"
                   help={help}
                   validateStatus={validateStatus}
@@ -244,8 +276,23 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
                   mutliple={this.isMutliple()}
                   placeholder={placeholder}
                   ref={getInputTag}
-                  onPopupVisibleChange={this.onInputTagPopupVisibleChange}/>
+                  onPopupVisibleChange={this.onInputTagPopupVisibleChange}
+                  />
       </Trigger>
+    );
+  }
+
+  render () {
+    /* update by ZhangBoPing */
+    const { props, state, } = this;
+
+    const { label,} = props;
+    const { themeConfig, } = state;
+
+    return <Theme config={themeConfig} key="treesel_theme">
+      {label? 
+        [this.getLabel(props), <FloatLeft>{this.getInner(props, state)}</FloatLeft>,<ClearFloat />,]:
+        this.getInner(props, state)}
     </Theme>;
   }
 
@@ -636,7 +683,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getTheme (): Object {
-    const { getTheme = () => ({}), } = this.props;
+    const { getTheme = () => ({}), label,} = this.props;
     const theme = getTheme();
     const { width, } = theme;
     let queryInputConfig = {};
@@ -651,7 +698,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     treeConfig.height = adjustValue(height, MenuItemHeight);
     return {
       [ Widget.Tree ]: treeConfig,
-      [ Widget.Trigger ]: theme,
+      [ Widget.Trigger ]: label? Object.assign({}, theme, {float:'left',}): theme,
       [ Widget.InputTag ]: inputTag,
       [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9', },
       [ Widget.Input ]: queryInputConfig,

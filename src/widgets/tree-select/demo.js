@@ -140,7 +140,10 @@ export default class extends React.Component<any, any> {
                   placeholder="请输入xxx"
         // disabled
                   splitQuery="\"
-                  onChange={this.onChange}/>
+                  onChange={this.onChange}
+                  label="test label"
+                  labelSize={150}
+                  />
       w <input value={width} onChange={this.onWidthChange}/>
       h<input value={height} onChange={this.onHeightChange}/>
       onValidateStatusChange<input value={validateStatus} onChange={this.onValidateStatusChange}/>
