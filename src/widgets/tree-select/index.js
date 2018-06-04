@@ -206,7 +206,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   getLabel(props){
     /* create by ZhangBoPing */
     const {label, labelSize,} = props;
-    return <Label size={labelSize}>{label}</Label>;
+    return <Label key="textLabel" size={labelSize}>{label}</Label>;
   }
 
   getInner(props, state){
@@ -290,7 +290,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
     return <Theme config={themeConfig} key="treesel_theme">
       {label? 
-        [this.getLabel(props), <FloatLeft>{this.getInner(props, state)}</FloatLeft>,<ClearFloat />,]:
+        [this.getLabel(props), <FloatLeft key="floatLeft">{this.getInner(props, state)}</FloatLeft>,<ClearFloat key="clearFloat"/>,]:
         this.getInner(props, state)}
     </Theme>;
   }
