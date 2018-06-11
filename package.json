@@ -2,7 +2,7 @@
   "name": "sv-widget",
   "version": "1.0.43",
   "dependencies": {
-    "@lugia/type-utils": "^1.0.0",
+    "@lugia/type-utils": "^1.0.1",
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
     "css-animation": "1.4.1",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@lugia/jverify": "^1.0.0",
-    "@lugia/react-test-utils": "1.0.0",
+    "@lugia/react-test-utils": "^1.0.0",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",

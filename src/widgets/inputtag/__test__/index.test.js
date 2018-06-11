@@ -6,7 +6,7 @@ import 'jest-styled-components';
 import Enzyme, { mount, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Theme from '../../theme';
-import { delay, } from '@lugia/type-utils';
+import { delay, } from '@lugia/react-test-utils';
 import Widgets from '../../consts/index';
 
 const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');

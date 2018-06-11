@@ -18,15 +18,15 @@
 
 "@lugia/jverify@^1.0.0":
   version "1.0.0"
-  resolved "http://192.168.102.79:5001/@lugia/jverify/download/@lugia/jverify-1.0.0.tgz#d9e67f8e9699d79390a92d8faedaeaafa62e2bf1"
+  resolved "http://192.168.102.79:5001/@lugia/jverify/download/@lugia/jverify-1.0.0.tgz#73bc9822c4b3d38949222fc263c6390843d42582"
   dependencies:
     "@lugia/type-utils" "^1.0.0"
     chai "^4.1.2"
     deep-equal "^1.0.1"
 
-"@lugia/react-test-utils@1.0.0":
+"@lugia/react-test-utils@^1.0.0":
   version "1.0.0"
-  resolved "http://192.168.102.79:5001/@lugia/react-test-utils/download/@lugia/react-test-utils-1.0.0.tgz#89af5f47003f9034bffe34b6ecf3f839b8ac7c37"
+  resolved "http://192.168.102.79:5001/@lugia/react-test-utils/download/@lugia/react-test-utils-1.0.0.tgz#019bc028615d3c8ae454ec9b98b4546d027a7497"
   dependencies:
     react "^16.4.0"
     react-dom "^16.4.0"
@@ -34,6 +34,12 @@
 "@lugia/type-utils@^1.0.0":
   version "1.0.0"
   resolved "http://192.168.102.79:5001/@lugia/type-utils/download/@lugia/type-utils-1.0.0.tgz#a26f26f18558c7a4d707e2d7a1c5adaf729213b8"
+  dependencies:
+    jest "^23.1.0"
+
+"@lugia/type-utils@^1.0.1":
+  version "1.0.1"
+  resolved "http://192.168.102.79:5001/@lugia/type-utils/download/@lugia/type-utils-1.0.1.tgz#7630d8350caa5f09e85012b581bb9e6c0bb925ad"
   dependencies:
     jest "^23.1.0"
 
