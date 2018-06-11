@@ -20,7 +20,7 @@
   version "1.0.0"
   resolved "http://192.168.102.79:5001/@lugia/jverify/download/@lugia/jverify-1.0.0.tgz#d9e67f8e9699d79390a92d8faedaeaafa62e2bf1"
   dependencies:
-    "@lugia/type-utils" "^1.0.1"
+    "@lugia/type-utils" "^1.0.0"
     chai "^4.1.2"
     deep-equal "^1.0.1"
 
