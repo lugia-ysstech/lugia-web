@@ -388,7 +388,7 @@ describe('Scroller', function () {
         totalSize: 200,
       };
     const cmp = mount(<Scroller {...config}/>);
-    exp(cmp.state()).to.be.equal();
+    exp(cmp.state()).to.be.eql({ sliderSize: 50, value: 0, });
     exp(cmp.state().sliderSize).to.be.equal(50);
     exp(cmp.state().value).to.be.equal(0);
 
