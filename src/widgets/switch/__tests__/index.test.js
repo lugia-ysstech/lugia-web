@@ -15,7 +15,7 @@ import Switch from '../switch';
 import renderer from 'react-test-renderer';
 import {ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE,} from '../../consts/KeyCode';
 
-const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
+const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
 const { expect: exp, } = chai;
 
 Enzyme.configure({ adapter: new Adapter(), });

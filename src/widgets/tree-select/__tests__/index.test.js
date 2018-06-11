@@ -9,7 +9,7 @@ import chai from 'chai';
 import 'jest-styled-components';
 import Enzyme, { mount, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { createTestComponent, delay, } from 'sv-test-utils';
+import { createTestComponent, delay, } from '@lugia/react-test-utils';
 import TreeSelect from '../';
 import Trigger from '../../trigger';
 import Widget from '../../consts/index';

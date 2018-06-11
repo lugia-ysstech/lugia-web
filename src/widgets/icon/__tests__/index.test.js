@@ -9,7 +9,7 @@ import Enzyme,{ mount, }  from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter(), });
 
-const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
+const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
 
 const { expect: exp, } = chai;
 

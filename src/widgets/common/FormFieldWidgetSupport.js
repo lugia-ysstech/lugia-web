@@ -1,7 +1,7 @@
 //@flow
 import type { GetValueArgType, } from 'sv-widget';
 
-const Utils = require('vx-var-utils');
+const Utils = require('@lugia/type-utils');
 
 const { ArrayUtils, } = Utils;
 

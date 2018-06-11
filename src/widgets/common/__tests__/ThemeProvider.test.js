@@ -8,7 +8,7 @@ import Theme from '../../theme/index';
 import renderer from 'react-test-renderer';
 import Enzyme, { mount, shallow, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { createTestComponent, } from 'sv-test-utils';
+import { createTestComponent, } from '@lugia/react-test-utils';
 
 const { expect: exp, } = chai;
 Enzyme.configure({ adapter: new Adapter(), });

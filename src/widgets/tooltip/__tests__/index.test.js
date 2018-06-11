@@ -4,7 +4,7 @@ import chai from 'chai';
 import 'jest-styled-components';
 
 import Tooltip from '../';
-import { createTestComponent, } from 'sv-test-utils';
+import { createTestComponent, } from '@lugia/react-test-utils';
 
 
 import Enzyme, { mount, } from 'enzyme';

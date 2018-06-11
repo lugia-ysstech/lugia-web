@@ -11,7 +11,7 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter(), });
 
 const { expect: exp, } = chai;
-const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
+const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
 
 describe('Item', () => {
 

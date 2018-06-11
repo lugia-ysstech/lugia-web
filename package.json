@@ -2,6 +2,7 @@
   "name": "sv-widget",
   "version": "1.0.43",
   "dependencies": {
+    "@lugia/type-utils": "^1.0.0",
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
     "css-animation": "1.4.1",
@@ -10,11 +11,10 @@
     "rc-align": "2.3.4",
     "rc-animate": "2.4.1",
     "rc-util": "4.0.4",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
+    "react": "16.4.0",
+    "react-dom": "16.4.0",
     "react-error-overlay": "1.0.9",
     "styled-components": "2.1.2",
-    "vx-var-utils": "^0.5.10",
     "warning": "3.0.0"
   },
   "author": "ysstech",
@@ -32,6 +32,8 @@
     "postpublish": "npx shx cp npm-shrinkwrap.all.json npm-shrinkwrap.json && npm run clean && npm install"
   },
   "devDependencies": {
+    "@lugia/jverify": "^1.0.0",
+    "@lugia/react-test-utils": "1.0.0",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -92,10 +94,8 @@
     "stylelint": "8.0.0",
     "stylelint-config-standard": "17.0.0",
     "stylelint-processor-styled-components": "0.2.1",
-    "sv-test-utils": "^0.1.4",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
-    "vx-mock": "0.1.7",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",
     "webpack-manifest-plugin": "1.3.2",

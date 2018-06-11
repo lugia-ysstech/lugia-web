@@ -3,11 +3,11 @@
 import * as React from 'react';
 import 'jest-styled-components';
 import Enzyme, { mount, render, } from 'enzyme';
-import { createTestComponent, } from 'sv-test-utils';
+import { createTestComponent, } from '@lugia/react-test-utils';
 import Adapter from 'enzyme-adapter-react-16';
 import chai from 'chai';
 import ThrottleScroller from '../ThrottleScroller';
-import { mockObject, } from 'vx-mock';
+import { mockObject, } from '@lugia/jverify';
 import renderer from 'react-test-renderer';
 
 import SVScroller from '../';

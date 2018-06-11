@@ -4,7 +4,7 @@ import chai from 'chai';
 import 'jest-styled-components';
 import TreeUtils from '../utils';
 
-const { mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
+const { mockObject, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
 
 const { expect: exp, } = chai;
 

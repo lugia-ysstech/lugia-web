@@ -10,14 +10,14 @@ import 'jest-styled-components';
 import Enzyme, { mount, shallow, } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tree from '../';
-import { createTestComponent, } from 'sv-test-utils';
+import { createTestComponent, } from '@lugia/react-test-utils';
 import renderer from 'react-test-renderer';
 import Widget from '../../consts/index';
 
 Enzyme.configure({ adapter: new Adapter(), });
 
 const { expect: exp, } = chai;
-const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('vx-mock');
+const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
 const rowData = [
   { key: '1', title: '1', },
   { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },

@@ -1,6 +1,6 @@
 //@flow
 import type { ReactWrapper, } from 'enzyme';
-import type { VerifyOrder, } from 'vx-mock';
+import type { VerifyOrder, } from '@lugia/jverify';
 import React from 'react';
 import Input from '../';
 import 'jest-styled-components';
@@ -9,7 +9,7 @@ import Enzyme,{ mount,}  from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter(), });
 
-const { mockFunction, VerifyOrder: VerifyOrderFactory, VerifyOrderConfig, } = require('vx-mock');
+const { mockFunction, VerifyOrder: VerifyOrderFactory, VerifyOrderConfig, } = require('@lugia/jverify');
 
 const { expect: exp, } = chai;
 

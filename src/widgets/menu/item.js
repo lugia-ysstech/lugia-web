@@ -10,7 +10,7 @@ import Widget from '../consts/index';
 import { FontSize, } from '../css';
 import { BackgroundColor, MenuItemHeight, SelectIcon, } from '../css/menu';
 
-const Utils = require('vx-var-utils');
+const Utils = require('@lugia/type-utils');
 const { ObjectUtils, } = Utils;
 type MenuItemProps = {
   checked: boolean,

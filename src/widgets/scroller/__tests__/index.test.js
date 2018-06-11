@@ -4,11 +4,11 @@ import * as React from 'react';
 import 'jest-styled-components';
 import Enzyme, { mount, render, } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { createTestComponent, delay, } from 'sv-test-utils';
+import { createTestComponent, delay, } from '@lugia/react-test-utils';
 import Adapter from 'enzyme-adapter-react-16';
 import Scroller from '../index';
 import chai from 'chai';
-import { mockObject, } from 'vx-mock';
+import { mockObject, } from '@lugia/jverify';
 
 const { expect: exp, } = chai;
 
