@@ -57,13 +57,15 @@ const SingleItem = styled.li`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: background 0.3s ease;
-  :hover {
+
+  &:hover {
     background-color: #ecf6fd;
   }
+
   ${getBackGroundColor};
 `;
 const MutlipleItem = SingleItem.extend`
-    :after {
+    &::after {
       font-family: "sviconfont" !important;
       text-rendering: optimizeLegibility;
       content: "${SelectIcon}";
@@ -80,6 +82,7 @@ const MutlipleItem = SingleItem.extend`
       font-weight: 700;
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
     }
+    
     ${getMulipleCheckedStyle}
 `;
 

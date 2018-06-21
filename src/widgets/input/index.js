@@ -72,9 +72,11 @@ const CommonInputStyle = styled.input`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-image: none;
   color: rgba(0, 0, 0, 0.65);
+
   &::placeholder {
     color: rgba(0, 0, 0, 0.25);
   }
+
   &:focus {
     ${getFocusShadow};
   }

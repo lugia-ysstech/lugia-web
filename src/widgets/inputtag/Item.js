@@ -18,6 +18,7 @@ const CloseButton: Object = styled.span`
   padding: 0 0 0 5px;
   right: 4px;
   zoom: 1;
+
   :hover {
     color: #000;
   }

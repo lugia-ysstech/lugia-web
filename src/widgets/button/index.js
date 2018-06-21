@@ -8,8 +8,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-
-const Text = styled.span``;
 export type ButtonType = 'primary' | 'ghost' | 'dashed' | 'danger';
 export type ButtonShape = 'circle' | 'circle-outline';
 export type ButtonSize = 'small' | 'default' | 'large';
@@ -86,7 +84,6 @@ const ButtonOut = styled.button`
   background-color: #108ee9;
   border-color: #108ee9;
   margin-right: 8px;
-  margin-bottom: 12px;
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -104,6 +101,7 @@ const ButtonOut = styled.button`
   position: relative;
   ${getTypeCSS} text-transform: none;
   outline: 0;
+
   &:hover {
     color: #40a9ff;
     background-color: #fff;
@@ -122,7 +120,7 @@ export default ThemeProvider(
       const { children, type, shape } = this.props;
       return (
         <ButtonOut type={type} shape={shape} onClick={this.onClick}>
-          <Text>{children}</Text>
+          <span>{children}</span>
         </ButtonOut>
       );
     }

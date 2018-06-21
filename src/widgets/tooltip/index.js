@@ -31,7 +31,7 @@ const getTriggerByArrow = props => {
   }
 };
 const ToolTrigger = styled(Trigger)`
-  ${getTriggerByArrow} box-shadow: none;
+  ${getTriggerByArrow}box-shadow: none;
 `;
 
 const DefaultColor = 'rgba(0, 0, 0, 0.75)';

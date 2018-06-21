@@ -56,8 +56,8 @@ const Bar = styled.div`
   color: #fff;
   font-size: ${FontSize};
   line-height: 30px;
-  text-align: center;
-  :hover {
+
+  &:hover {
     background-color: #49a9ee96;
   }
 `;
@@ -98,10 +98,10 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   maxValue: number;
   posGetter: Object;
   state: ScrollerState;
-  throttleTimer: ?number;
+  throttleTimer: TimeoutID;
   sliderAbsoulateSize: number;
   step: number;
-  move: number;
+  move: IntervalID;
 
   constructor(props: ScrollerProps) {
     super(props);

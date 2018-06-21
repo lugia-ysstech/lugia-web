@@ -20,11 +20,10 @@
   "author": "ysstech",
   "scripts": {
     "precommit": "npm run lint-staged",
-    "prettier": "prettier --write src/*/*/*.js src/*.js src/*/*/*/*.js",
-    "lint": "eslint --ext .js src mock tests && npm run lint:css",
-    "lint:fix": "eslint --fix --ext .js src mock tests && npm run lint:css",
+    "prettier": "prettier --write",
+    "lint": "eslint --ext .js src mock tests",
+    "lint:fix": "eslint --fix --ext .js src mock tests",
     "lint-staged": "lint-staged",
-    "lint-staged:js": "eslint --ext .js",
     "lint:css": "stylelint './src/widgets/**/*.js'",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
@@ -100,7 +99,7 @@
     "react-test-renderer": "16.0.0",
     "shx": "0.2.2",
     "style-loader": "0.19.0",
-    "stylelint": "8.0.0",
+    "stylelint": "^9.3.0",
     "stylelint-config-standard": "17.0.0",
     "stylelint-processor-styled-components": "0.2.1",
     "sw-precache-webpack-plugin": "0.11.4",
@@ -111,7 +110,12 @@
     "whatwg-fetch": "2.0.3"
   },
   "lint-staged": {
-    "**/**/*.{js,jsx}": "lint-staged:js"
+    "src/**/*.js": [
+      "prettier",
+      "lint:fix",
+      "lint",
+      "lint:css"
+    ]
   },
   "jest": {
     "collectCoverageFrom": [

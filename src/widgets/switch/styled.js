@@ -60,6 +60,7 @@ const LoadingCircle = keyframes`
     transform-origin: 50% 50%;
     transform: rotate(0deg);
   }
+  
   100% {
     transform-origin: 50% 50%;
     transform: rotate(360deg);
@@ -71,6 +72,7 @@ const LoadingCircleSmall = keyframes`
     transform-origin: 50% 50%;
     transform: rotate(0deg) scale(0.66667);
   }
+  
   100% {
     transform-origin: 50% 50%;
     transform: rotate(360deg) scale(0.66667);
@@ -92,6 +94,7 @@ const getStyled = (props: CSSProps) => {
     height: ${vars.height}px;
     min-width: ${vars.minWidth}px;
     line-height: ${vars.height - 2}px;
+    
     &:after {
       width: ${vars.height - 4}px;
       height: ${vars.height - 4}px;
@@ -156,10 +159,10 @@ export const SwitchWrapper = styled.span`
   cursor: 'pointer';
   transition: all ${_normalVars.switchDuration};
   user-select: none;
-  &:before,
-  &:after {
+  
+  &::before,
+  &::after {
     position: absolute;
-
     top: 1px;
     border-radius: 18px;
     background-color: #fff;
@@ -168,11 +171,11 @@ export const SwitchWrapper = styled.span`
     transition: all ${_normalVars.switchDuration} ${_normalVars.easeInOutCirc};
   }
 
-  &:after {
-    box-shadow: 0 2px 4px 0 rgba(0, 35, 11, .2);
+  &::after {
+    box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
   }
 
-  &:before {
+  &::before {
     content: "\\e818";
     font-family: "sviconfont" !important;
     text-align: center;
@@ -202,6 +205,5 @@ export const SwitchInner = styled.span`
   color: #fff;
   font-size: ${_normalVars.fontSize}px;
   display: block;
-
   ${props => getStyled(props).innerStyle};
 `;
