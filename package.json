@@ -20,7 +20,7 @@
   },
   "author": "ysstech",
   "scripts": {
-    "precommit": "flow && npm run lint-staged",
+    "precommit": "npm run lint-staged",
     "prettier": "prettier --write",
     "lint": "eslint --ext .js src mock tests",
     "lint:fix": "eslint --fix --ext .js src mock tests",
