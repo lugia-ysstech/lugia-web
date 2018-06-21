@@ -7,9 +7,17 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import { getFocusShadow, getInputBorderHoverColor, Height, getInputBorderColor, Padding, RadiusSize, DefaultHelp,} from '../css/input';
+import {
+  DefaultHelp,
+  getFocusShadow,
+  getInputBorderColor,
+  getInputBorderHoverColor, Height,
+  Padding,
+  RadiusSize,
+} from '../css/input';
 import { FontSize, } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
+import { px2emcss, } from '../css/units';
 
 type InputState = {|
   value: string,
@@ -43,15 +51,16 @@ const getWidth = props => {
   const { width, } = theme;
   return `width:${width ? width + 'px' : '100%'};`;
 };
+const em = px2emcss(1.2);
 const CommonInputStyle = styled.input`
   border-radius: ${RadiusSize};
   border: 1px solid ${getInputBorderColor};
   cursor: text;
   line-height: 1.5;
-  font-size: ${FontSize};
-  height: ${Height}px;
+  font-size: ${FontSize}; 
+  height:${em(Height)};
   display: inline-block;
-  padding: ${Padding}px ${Padding + 1}px;
+  padding: ${em(Padding)} ${em(Padding + 1)};
   font-family: inherit;
   margin: 0;
   ${getWidth}

@@ -27,7 +27,7 @@ exports[`Item Mutliple MenuItem 1`] = `
   content: "\\e73e";
   color: transparent;
   display: inline-block;
-  font-size: 12px;
+  font-size: 1.2rem;
   -webkit-transform: scale(.83333333) rotate(0deg);
   -ms-transform: scale(.83333333) rotate(0deg);
   transform: scale(.83333333) rotate(0deg);
@@ -90,7 +90,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   content: "\\e73e";
   color: transparent;
   display: inline-block;
-  font-size: 12px;
+  font-size: 1.2rem;
   -webkit-transform: scale(.83333333) rotate(0deg);
   -ms-transform: scale(.83333333) rotate(0deg);
   transform: scale(.83333333) rotate(0deg);

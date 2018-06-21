@@ -695,12 +695,12 @@ describe('Tree', () => {
     exp(cmp.find(Switcher).at(index).hasClass(open ? SwitcherClose : SwitcherOpen), '1 目前为展开').to.be.false;
   }
 
-  const empty = '<span class="sc-iwsKbI hanuQI">查无结果</span>';
+  const empty = '<span>查无结果</span>';
   it('data 为空的情况', () => {
     const cmp = mount(<Tree/>);
-    exp(cmp.html()).to.be.equal(empty);
+    exp(cmp.html().slice(0, 5) + cmp.html().slice(30)).to.be.equal(empty);
   });
-  const error = '<span class="sc-gZMcBi gotTWc">树形数据错误</span>';
+  const error = '<span>树形数据错误</span>';
   it('树报错的情况', () => {
 
     const rowData: Array<Object> = [
@@ -794,13 +794,13 @@ describe('Tree', () => {
     ];
     const cmp = mount(<Tree data={rowData} expandAll mutliple/>);
     cmp.setProps({ start: 1.5565931965863116, });
-    exp(cmp.html()).to.be.equal(error);
+    exp(cmp.html().slice(0, 5) + cmp.html().slice(30)).to.be.equal(error);
 
   });
 
   it('data 为[]的情况', () => {
     const cmp = mount(<Tree data={[]}/>);
-    exp(cmp.html()).to.be.equal(empty);
+    exp(cmp.html().slice(0, 5) + cmp.html().slice(30)).to.be.equal(empty);
   });
 
   it('重新设置熟悉为 null 的情况', () => {
@@ -808,7 +808,7 @@ describe('Tree', () => {
     cmp.setProps({ data: null, });
 
     cmp.update();
-    exp(cmp.html()).to.be.equal(empty);
+    exp(cmp.html().slice(0, 5) + cmp.html().slice(30)).to.be.equal(empty);
   });
 
   it('多选树，shift键只选当前节点，不选择子节点', () => {

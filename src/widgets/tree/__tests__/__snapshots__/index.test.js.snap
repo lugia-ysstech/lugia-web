@@ -20,7 +20,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   width: 8px;
@@ -743,7 +743,7 @@ Array [
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   width: 8px;
@@ -1227,7 +1227,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   width: 8px;

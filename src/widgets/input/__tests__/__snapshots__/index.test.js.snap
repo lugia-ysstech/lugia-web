@@ -6,10 +6,10 @@ exports[`Input props: null 1`] = `
   border: 1px solid #d9d9d9;
   cursor: text;
   line-height: 1.5;
-  font-size: 12px;
-  height: 22px;
+  font-size: 1.2rem;
+  height: 1.8333333333333335em;
   display: inline-block;
-  padding: 2px 3px;
+  padding: 0.16666666666666669em 0.25em;
   font-family: inherit;
   margin: 0;
   width: 100%;

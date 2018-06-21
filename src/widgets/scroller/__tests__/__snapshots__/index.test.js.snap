@@ -20,7 +20,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 1`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   height: 8px;
@@ -79,7 +79,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 2`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   width: 8px;
@@ -138,7 +138,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 3`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   height: 8px;
@@ -197,7 +197,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 4`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   width: 8px;
@@ -256,7 +256,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 1`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   height: 8px;
@@ -315,7 +315,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 2`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   height: 8px;
@@ -374,7 +374,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 3`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   width: 8px;
@@ -433,7 +433,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 4`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   height: 8px;
@@ -492,7 +492,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 5`] = `
   border-radius: 8px;
   background: #49a9ee;
   color: #FFF;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 30px;
   text-align: center;
   width: 8px;

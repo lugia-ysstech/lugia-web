@@ -4,4 +4,4 @@
  *
  * @flow
  */
-export const FontSize = '12px';
+export const FontSize = '1.2rem';
