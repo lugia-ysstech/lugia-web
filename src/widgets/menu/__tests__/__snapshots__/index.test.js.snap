@@ -22,20 +22,20 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .c1:hover {
   background-color: #ecf6fd;
 }
 
-.c1:after {
+.c1::after {
   font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
@@ -69,13 +69,13 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
   background-color: #f7f7f7;
   font-weight: 600;
   color: rgba(0,0,0,.65);
@@ -85,7 +85,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   background-color: #ecf6fd;
 }
 
-.c2:after {
+.c2::after {
   font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
@@ -176,13 +176,13 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .c1:hover {
@@ -196,13 +196,13 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
   background-color: #f7f7f7;
   font-weight: 600;
   color: rgba(0,0,0,.65);
@@ -273,13 +273,13 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .c1:hover {
@@ -351,20 +351,20 @@ exports[`Menu children: items 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .c3:hover {
   background-color: #ecf6fd;
 }
 
-.c3:after {
+.c3::after {
   font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
@@ -432,10 +432,9 @@ exports[`Menu children: items 1`] = `
   text-align: center;
   border-radius: 8px;
   background: #49a9ee;
-  color: #FFF;
+  color: #fff;
   font-size: 1.2rem;
   line-height: 30px;
-  text-align: center;
   width: 8px;
   margin-left: 2px;
   margin-right: 2px;

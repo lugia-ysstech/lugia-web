@@ -6,7 +6,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Widgets from '../consts/index';
 
-type ProviderComponent = React.ComponentType<any> & { displayName: ?string };
+type ProviderComponent = React.ComponentType<any>;
 const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {
   class ThemeWrapWidget extends React.Component<any, any> {
     svtarget: Object;

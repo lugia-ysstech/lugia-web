@@ -10,7 +10,8 @@ type $npm$classnames$Classes =
   | null;
 
 declare module 'classnames' {
-  declare function exports(...classes: Array<$npm$classnames$Classes>): string;
+  declare module.exports:(...classes: Array<$npm$classnames$Classes>)=> string;
+
 }
 
 declare module 'classnames/bind' {

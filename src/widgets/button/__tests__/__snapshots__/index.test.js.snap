@@ -6,7 +6,6 @@ exports[`Button normal 1`] = `
   background-color: #108ee9;
   border-color: #108ee9;
   margin-right: 8px;
-  margin-bottom: 12px;
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -23,8 +22,8 @@ exports[`Button normal 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all .3s cubic-bezier(.645,.045,.355,1);
-  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   color: rgba(0,0,0,.65);
   background-color: #fff;
@@ -45,9 +44,7 @@ exports[`Button normal 1`] = `
   shape={undefined}
   type={undefined}
 >
-  <span
-    className=""
-  >
+  <span>
     你好吗
   </span>
 </button>
@@ -59,7 +56,6 @@ exports[`Button normal type: danger 1`] = `
   background-color: #108ee9;
   border-color: #108ee9;
   margin-right: 8px;
-  margin-bottom: 12px;
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -76,8 +72,8 @@ exports[`Button normal type: danger 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all .3s cubic-bezier(.645,.045,.355,1);
-  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
   color: #f5222d;
   background-color: transparent;
@@ -98,9 +94,7 @@ exports[`Button normal type: danger 1`] = `
   shape={undefined}
   type="danger"
 >
-  <span
-    className=""
-  >
+  <span>
     hello
   </span>
 </button>

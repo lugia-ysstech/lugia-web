@@ -6,7 +6,6 @@
 
 import React from 'react';
 import Trigger from './';
-import assign from 'object-assign';
 
 function preventDefault(e) {
   e.preventDefault();
@@ -50,7 +49,7 @@ class Test extends React.Component<PropsType, StateType> {
   };
 
   onTriggerChange = (e: SyntheticInputEvent<any>) => {
-    const trigger = assign({}, this.state.trigger);
+    const trigger = Object.assign({}, this.state.trigger);
     if (e.target.checked) {
       trigger[e.target.value] = 1;
     } else {

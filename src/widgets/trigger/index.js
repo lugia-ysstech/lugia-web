@@ -111,7 +111,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   component: any;
   clickOutsideHandler: ?Function;
   touchOutsideHandler: ?Function;
-  delayTimer: ?number;
+  delayTimer: ?TimeoutID;
   focusTime: number;
   preClickTime: number;
   preTouchTime: number;

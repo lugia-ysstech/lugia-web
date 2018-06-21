@@ -5,7 +5,7 @@
  * @flow
  */
 import '../common/shirm';
-import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo } from 'sv-widget';
+import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo } from '@lugia/lugia-web';
 import animation from '../common/openAnimation';
 import * as React from 'react';
 import { TreeNode } from './rc-tree';

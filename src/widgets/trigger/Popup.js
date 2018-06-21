@@ -11,6 +11,7 @@ import ContentBox from './ContentBox';
 type PopupProps = {
   offsetX: number,
   getTheme: Function,
+  zIndex?: number,
   offsetY: number,
   visible: boolean,
   onAlign?: Function,

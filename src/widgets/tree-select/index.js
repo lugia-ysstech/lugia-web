@@ -132,7 +132,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   treeVisible: boolean;
   treeCmp: Object;
   queryInput: Object;
-  queryHandle: number;
+  queryHandle: TimeoutID;
 
   constructor(props: TreeSelectProps) {
     super(props);
@@ -726,7 +726,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const inputTag = { ...theme };
     queryInputConfig = Object.assign({}, theme, queryInputConfig);
     delete queryInputConfig.height;
-    const treeConfig = { ...theme };
+    const treeConfig: Object = { ...theme };
     const { height = DefaultHeight } = treeConfig;
     treeConfig.height = adjustValue(height, MenuItemHeight);
     return {

@@ -5,7 +5,7 @@
  * @flow
  */
 
-import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo } from 'sv-widget';
+import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo } from '@lugia/lugia-web';
 import animation from '../common/openAnimation';
 import * as React from 'react';
 import RcTree, { TreeNode } from './rc-tree';
@@ -86,9 +86,9 @@ class ScrollerTree extends React.Component<any, any> {
   };
 
   render() {
-    const { prefixCls, className, data } = this.props;
+    const { prefixCls, className: classNme, data } = this.props;
 
-    const classString = classNames(`${prefixCls}-show-line`, className);
+    const classString = classNames([`${prefixCls}-show-line`, classNme]);
     if (data) {
       const { mutliple, onExpand, utils, onSelect, id2ExtendInfo } = this.props;
       let { start, end } = this.props;

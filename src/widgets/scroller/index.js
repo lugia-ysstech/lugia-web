@@ -85,6 +85,8 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   static defaultProps = {
     type: YScroller,
     throttle: 100,
+    totalSize: 0,
+    viewSize: 0,
     step: DefaultStep,
   };
 

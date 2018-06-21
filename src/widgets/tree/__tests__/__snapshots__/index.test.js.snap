@@ -19,10 +19,9 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   text-align: center;
   border-radius: 8px;
   background: #49a9ee;
-  color: #FFF;
+  color: #fff;
   font-size: 1.2rem;
   line-height: 30px;
-  text-align: center;
   width: 8px;
   margin-left: 2px;
   margin-right: 2px;
@@ -742,10 +741,9 @@ Array [
   text-align: center;
   border-radius: 8px;
   background: #49a9ee;
-  color: #FFF;
+  color: #fff;
   font-size: 1.2rem;
   line-height: 30px;
-  text-align: center;
   width: 8px;
   margin-left: 2px;
   margin-right: 2px;
@@ -1226,10 +1224,9 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   text-align: center;
   border-radius: 8px;
   background: #49a9ee;
-  color: #FFF;
+  color: #fff;
   font-size: 1.2rem;
   line-height: 30px;
-  text-align: center;
   width: 8px;
   margin-left: 2px;
   margin-right: 2px;

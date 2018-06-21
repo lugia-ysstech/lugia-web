@@ -11,7 +11,7 @@ import type {
   NodeId2SelectInfo,
   QueryType,
   SelectType,
-} from 'sv-widget';
+} from '@lugia/lugia-web';
 import { updateVersion } from './version';
 
 const EmptyError = '结点不能为空',
