@@ -4,36 +4,16 @@
  *
  * @flow
  */
-type UnitType = 'px' | 'rem' | '%' | 'em';
+const footerFontSize = 10;
 
-
-class Unit extends Number {
-  value: number;
-  type: UnitType;
-  constructor (value: number, type: UnitType) {
-    super(value);
-    this.value = value;
-    this.type = type;
-  }
-
-  toString () {
-    return `${Number(this.value)}${this.type}`;
-  }
+export function px2rem (px: number) {
+  return px / footerFontSize;
 }
 
-
-export function px (value: number): any {
-  return new Unit(value, 'px');
+export function rem2em (rem: number, emFontSize: number) {
+  return rem / emFontSize;
 }
 
-export function rem (value: number): any {
-  return new Unit(value, 'rem');
-}
-
-export function em (value: number): any {
-  return new Unit(value, 'em');
-}
-
-export function percent (value: number): any {
-  return new Unit(value, '%');
+export function px2emcss (emFontSize: number) {
+  return (px: number) => (`${px2rem(px) / emFontSize}em`);
 }
