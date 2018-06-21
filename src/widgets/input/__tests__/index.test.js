@@ -1,21 +1,21 @@
 //@flow
 import React from 'react';
-import Input, { TextBoxInner, } from '../';
+import Input, { TextBoxInner } from '../';
 import renderer from 'react-test-renderer';
 import chai from 'chai';
 import 'jest-styled-components';
 
 
 import Support from '../../common/FormFieldWidgetSupport';
-import { assertInputValue, testFireNullKeyBoardEvent, testKeyBoardEvent, testPropsValue, } from './InputTestUtils';
-import Enzyme, { mount, } from 'enzyme';
+import { assertInputValue, testFireNullKeyBoardEvent, testKeyBoardEvent, testPropsValue } from './InputTestUtils';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
-const { expect: exp, } = chai;
-const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
-const { InputOnly, Input: InputElement, } = require('../index');
+const { expect: exp } = chai;
+const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
+const { InputOnly, Input: InputElement } = require('../index');
 
 
 describe('Input', () => {
@@ -63,9 +63,9 @@ describe('Input', () => {
     const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
     const text = 'hello suffix';
     const component = mount(<Input onChange={mockFunc.getFunction()}/>);
-    component.find('input').simulate('change', { target: { value: text, }, });
+    component.find('input').simulate('change', { target: { value: text } });
     assertInputValue(component, text);
-    order.verify(({ onChange, }) => {
+    order.verify(({ onChange }) => {
       onChange(text, '');
     });
   });
@@ -75,13 +75,13 @@ describe('Input', () => {
     const text1 = 'b';
     const component = mount(<Input onChange={mockFunc.getFunction()}/>);
 
-    component.find('input').simulate('change', { target: { value: text0, }, });
+    component.find('input').simulate('change', { target: { value: text0 } });
     assertInputValue(component, text0);
 
-    component.find('input').simulate('change', { target: { value: text1, }, });
+    component.find('input').simulate('change', { target: { value: text1 } });
     assertInputValue(component, text1);
 
-    order.verify(({ onChange, }) => {
+    order.verify(({ onChange }) => {
       onChange(text0, '');
       onChange(text1, text0);
     });
@@ -115,8 +115,8 @@ describe('Input', () => {
     const mockFunc = mockFunction.create(VerifyOrderConfig.create('onEnter', order));
 
     const keyCode = 13;
-    const event = { keyCode, };
-    mockFunc.mock(({ keyCode, }) => {
+    const event = { keyCode };
+    mockFunc.mock(({ keyCode }) => {
       exp(keyCode).to.be.equal(keyCode);
     });
     const props = {
@@ -134,7 +134,7 @@ describe('Input', () => {
     const mockFunc = mockFunction.create(VerifyOrderConfig.create('onEnter', order));
 
     const keyCode = 44;
-    const event = { keyCode, };
+    const event = { keyCode };
 
 
     const props = {
@@ -149,7 +149,7 @@ describe('Input', () => {
   it('props: null  Fired Enter', () => {
 
     const keyCode = 13;
-    const event = { keyCode, };
+    const event = { keyCode };
     const component = mount(<Input/>);
     component.find('input').simulate('onKeyDown'.substr(2).toLowerCase(), event);
   });
@@ -164,11 +164,11 @@ describe('Input', () => {
     class LimitInput extends React.Component<any, any> {
       constructor (props) {
         super(props);
-        this.state = { value: props.value, };
+        this.state = { value: props.value };
       }
 
       onChange = value => {
-        this.setState({ value, });
+        this.setState({ value });
       };
 
       render () {
@@ -180,7 +180,7 @@ describe('Input', () => {
 
     assertInputValue(component, value);
 
-    component.find('input').simulate('change', { target: { value: changeValue, }, });
+    component.find('input').simulate('change', { target: { value: changeValue } });
 
     assertInputValue(component, changeValue);
 
@@ -194,7 +194,7 @@ describe('Input', () => {
     class LimitInput extends React.Component<any, any> {
       constructor (props) {
         super(props);
-        this.state = { value: props.value, };
+        this.state = { value: props.value };
       }
 
       render () {
@@ -206,7 +206,7 @@ describe('Input', () => {
 
     assertInputValue(component, value);
 
-    component.find('input').simulate('change', { target: { value: changeValue, }, });
+    component.find('input').simulate('change', { target: { value: changeValue } });
 
     assertInputValue(component, value);
 
@@ -227,7 +227,7 @@ describe('Input', () => {
     const component = mount(<LimitInput defaultValue={value}/>);
 
     assertInputValue(component, value);
-    component.find('input').simulate('change', { target: { value: changeValue, }, });
+    component.find('input').simulate('change', { target: { value: changeValue } });
     assertInputValue(component, changeValue);
 
 
@@ -255,11 +255,11 @@ describe('Input', () => {
     class LimitInput extends React.Component<any, any> {
       constructor (props) {
         super(props);
-        this.state = { value: props.value, };
+        this.state = { value: props.value };
       }
 
       onChange = value => {
-        this.setState({ value, });
+        this.setState({ value });
       };
 
       render () {
@@ -271,7 +271,7 @@ describe('Input', () => {
 
     assertInputValue(component, value);
 
-    component.find('input').simulate('change', { target: { value: changeValue, }, });
+    component.find('input').simulate('change', { target: { value: changeValue } });
 
     assertInputValue(component, changeValue);
 
@@ -286,7 +286,7 @@ describe('Input', () => {
     class LimitInput extends React.Component<any, any> {
       constructor (props) {
         super(props);
-        this.state = { value: props.value, };
+        this.state = { value: props.value };
       }
 
       render () {
@@ -298,7 +298,7 @@ describe('Input', () => {
 
     assertInputValue(component, value);
 
-    component.find('input').simulate('change', { target: { value: changeValue, }, });
+    component.find('input').simulate('change', { target: { value: changeValue } });
 
     assertInputValue(component, value);
 
@@ -317,7 +317,7 @@ describe('Input', () => {
     const InputMock = mockObject.create(TextBoxInner.prototype, VerifyOrderConfig.create('Input', order));
     InputMock.mockFunction('generateInput').returned(<InputOnly/>);
     mount(<Input/>);
-    order.verify(({ Input, }) => {
+    order.verify(({ Input }) => {
       Input.generateInput(InputOnly);
     });
     InputMock.resetAll();
@@ -329,7 +329,7 @@ describe('Input', () => {
     const prefix = <div></div>;
 
     mount(<Input prefix={prefix}/>);
-    order.verify(({ Input, }) => {
+    order.verify(({ Input }) => {
       Input.generateInput(InputElement);
     });
     InputMock.resetAll();
@@ -339,7 +339,7 @@ describe('Input', () => {
     const InputMock = mockObject.create(TextBoxInner.prototype, VerifyOrderConfig.create('Input', order));
     InputMock.mockFunction('generateInput').returned(<InputOnly/>);
     mount(<Input/>);
-    order.verify(({ Input, }) => {
+    order.verify(({ Input }) => {
       Input.generateInput(InputOnly);
     });
     InputMock.resetAll();

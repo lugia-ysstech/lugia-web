@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 import VisibleBox from '../VisibleBox';
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
 describe('VisibleBox', () => {
 

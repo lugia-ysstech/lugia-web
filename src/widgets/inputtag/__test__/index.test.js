@@ -1,31 +1,31 @@
 //@flow
 import React from 'react';
-import InputTag, { _InputTag_, } from '../';
+import InputTag, { _InputTag_ } from '../';
 import chai from 'chai';
 import 'jest-styled-components';
-import Enzyme, { mount, } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Theme from '../../theme';
-import { delay, } from '@lugia/react-test-utils';
+import { delay } from '@lugia/react-test-utils';
 import Widgets from '../../consts/index';
 
-const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
+const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
 describe('InputTag', () => {
   const displayValue = '常,乐,我,净'.split(',');
   const value = '1,2,3'.split(',');
 
   function createInputTagTest (props: Object) {
-    const { width = 300, } = props;
+    const { width = 300 } = props;
     return class  extends React.Component<any, any> {
       inputtag: any;
 
       render () {
-        return <Theme config={{ [ Widgets.InputTag ]: { width, }, }} {...this.props}>
+        return <Theme config={{ [ Widgets.InputTag ]: { width } }} {...this.props}>
           <InputTag {...props}
                     ref={cmp => this.inputtag = cmp}
           /></Theme>;
@@ -33,7 +33,7 @@ describe('InputTag', () => {
     };
   }
 
-  const InputTagTest = createInputTagTest({ displayValue, value, });
+  const InputTagTest = createInputTagTest({ displayValue, value });
   createItemsTest(InputTagTest, '[value & displayValue]');
 
   createItemsTest(createInputTagTest({
@@ -42,7 +42,7 @@ describe('InputTag', () => {
   }), '[defaultValue & defaultDisplayValue]');
 
   it('只有一个结点 值为字符串', async () => {
-    await renderInputTag(createInputTagTest({ displayValue: '常', value: '1', }), 5, cmp => {
+    await renderInputTag(createInputTagTest({ displayValue: '常', value: '1' }), 5, cmp => {
 
       const tagItems = findInputItem(cmp);
       exp(tagItems.length).to.be.equal(2);
@@ -70,8 +70,8 @@ describe('InputTag', () => {
   }
 
   createSingleCase('a', '我');
-  createSingleCase('a', ['我',]);
-  createSingleCase('a', ['我', '你', '他',]);
+  createSingleCase('a', ['我']);
+  createSingleCase('a', ['我', '你', '他']);
   createItemsTest(createInputTagTest({
     value,
     displayValue,
@@ -109,7 +109,7 @@ describe('InputTag', () => {
     });
     it('展现值&实际值 3个只能容纳一个' + caseTitle, async () => {
       let i = 0;
-      const val = [5, 1000, 1000,];
+      const val = [5, 1000, 1000];
       const getFontWidth = () => {
         return val[ i++ ];
       };
@@ -135,7 +135,7 @@ describe('InputTag', () => {
       const onChange = (v: Object) => {
         resolve(v);
       };
-      InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, onChange, });
+      InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, onChange });
     });
     const result = new Promise(async resolve => {
 
@@ -156,7 +156,7 @@ describe('InputTag', () => {
       });
     });
     await  result;
-    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
+    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(',') });
   });
   it('完全显示3个 , 点击第一个的删除图标 onChange事件改变值', async () => {
     let InputTagTest;
@@ -175,7 +175,7 @@ describe('InputTag', () => {
         }
 
         onChange = (v: Object) => {
-          const { value, displayValue, } = v;
+          const { value, displayValue } = v;
           this.setState({
             value,
             displayValue,
@@ -184,8 +184,8 @@ describe('InputTag', () => {
         };
 
         render () {
-          const { value, displayValue, } = this.state;
-          return <Theme config={{ [ Widgets.InputTag ]: { width: 300, }, }}>
+          const { value, displayValue } = this.state;
+          return <Theme config={{ [ Widgets.InputTag ]: { width: 300 } }}>
             <InputTag
               onChange={this.onChange}
               value={value}
@@ -220,7 +220,7 @@ describe('InputTag', () => {
       });
     });
     await  result;
-    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
+    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(',') });
   });
 
 
@@ -230,7 +230,7 @@ describe('InputTag', () => {
       const onChange = (v: Object) => {
         resolve(v);
       };
-      InputTagTest = createInputTagTest({ displayValue, value, onChange, });
+      InputTagTest = createInputTagTest({ displayValue, value, onChange });
     });
     const result = new Promise(async resolve => {
 
@@ -252,7 +252,7 @@ describe('InputTag', () => {
       });
     });
     await  result;
-    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
+    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(',') });
   });
 
   it('点击更多按钮 点击删除', async () => {
@@ -261,7 +261,7 @@ describe('InputTag', () => {
       const onChange = (v: Object) => {
         resolve(v);
       };
-      InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, onChange, });
+      InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, onChange });
     });
     const result = new Promise(async resolve => {
 
@@ -293,10 +293,10 @@ describe('InputTag', () => {
       });
     });
     await  result;
-    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(','), });
+    exp(await onChangePromise).to.be.eql({ value: '2,3'.split(','), displayValue: '乐,我'.split(',') });
   });
   it('点击更多按钮 进行查询', async () => {
-    const InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, width: 300, });
+    const InputTagTest = createInputTagTest({ defaultDisplayValue: displayValue, defaultValue: value, width: 300 });
     const result = new Promise(async resolve => {
 
       await renderInputTag(InputTagTest, 150, async cmp => {
@@ -306,7 +306,7 @@ describe('InputTag', () => {
         moreItem.simulate('click');
         await delay(0, async () => {
           cmp.update();
-          cmp.find(Widgets.Input).simulate('change', { target: { value: '我', }, });
+          cmp.find(Widgets.Input).simulate('change', { target: { value: '我' } });
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).text().trim()).to.be.equal('我');
           cmp.find(Widgets.ItemTagOption).at(0).simulate('click');
@@ -337,7 +337,7 @@ describe('InputTag', () => {
         await delay(0, async () => {
           exp(cmp.find(Widgets.InputTagMoreItem).length).to.be.equal(0);
           exp(cmp.find(Widgets.ItemTagOption).length).to.be.equal(0);
-          exp(await changeResult).to.be.eql({ value: [], displayValue: [], });
+          exp(await changeResult).to.be.eql({ value: [], displayValue: [] });
           resolve(true);
         });
       });
@@ -362,7 +362,7 @@ describe('InputTag', () => {
         await delay(0, async () => {
           exp(cmp.find(Widgets.InputTagMoreItem).length).to.be.equal(1);
           exp(cmp.find(Widgets.ItemTagOption).length).to.be.equal(1);
-          exp(await changeResult).to.be.eql({ value: [], displayValue: [], });
+          exp(await changeResult).to.be.eql({ value: [], displayValue: [] });
           resolve(true);
         });
       });

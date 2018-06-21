@@ -8,17 +8,17 @@ import React from 'react';
 import chai from 'chai';
 
 import 'jest-styled-components';
-import Enzyme, { mount, shallow, } from 'enzyme';
+import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 // import Switch from '../';
 import Switch from '../switch';
 import renderer from 'react-test-renderer';
-import {ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE,} from '../../consts/KeyCode';
+import {ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE} from '../../consts/KeyCode';
 
-const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
-const { expect: exp, } = chai;
+const { mockFunction, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
+const { expect: exp } = chai;
 
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
 function checkState(propsArr, expectFun, equal, model='shallow'){
   const handler = model === 'shallow'? shallow: mount;
@@ -116,14 +116,14 @@ describe('Switch', () => {
 
   it('props: checkedChildren = “on”', () => {
     checkState(config.checkedChildren, wrapper => {
-      wrapper.setState({checked: true,});
+      wrapper.setState({checked: true});
       return wrapper.html().indexOf(config.checkedChildren.checkedChildren) > -1;
     }, true);
   });
 
   it('props: unCheckedChildren = "off"', () => {
     checkState(config.unCheckedChildren, wrapper => {
-      wrapper.setState({checked: false,});
+      wrapper.setState({checked: false});
       return wrapper.html().indexOf(config.unCheckedChildren.unCheckedChildren) > -1;
     }, true);
   });
@@ -150,13 +150,13 @@ describe('Switch', () => {
     const Target = mount(<Switch autoFocus />);
     const SwitchEl = Target.find('span').at(0);
 
-    SwitchEl.simulate('keyDown', {keyCode: ENTER,});
+    SwitchEl.simulate('keyDown', {keyCode: ENTER});
     exp(Target.state('checked')).to.eql(true);
-    SwitchEl.simulate('keyDown', {keyCode: SPACE,});
+    SwitchEl.simulate('keyDown', {keyCode: SPACE});
     exp(Target.state('checked')).to.eql(false);
-    SwitchEl.simulate('keyDown', {keyCode: RIGHT_ARROW,});
+    SwitchEl.simulate('keyDown', {keyCode: RIGHT_ARROW});
     exp(Target.state('checked')).to.eql(true);
-    SwitchEl.simulate('keyDown', {keyCode: LEFT_ARROW,});
+    SwitchEl.simulate('keyDown', {keyCode: LEFT_ARROW});
     exp(Target.state('checked')).to.eql(false);
   });
 

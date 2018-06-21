@@ -9,19 +9,19 @@ import 'jest-styled-components';
 import renderer from 'react-test-renderer';
 import Theme from '../../theme';
 
-import Enzyme, { mount, render, } from 'enzyme';
+import Enzyme, { mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
-const { MenuItem, } = Menu;
-const { expect: exp, } = chai;
+const { MenuItem } = Menu;
+const { expect: exp } = chai;
 
 describe('Menu', () => {
 
 
   it('DropMenu single selectedKeys 2', () => {
-    expect(renderer.create(<Menu selectedKeys={['2', '3',]}>
+    expect(renderer.create(<Menu selectedKeys={['2', '3']}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -29,7 +29,7 @@ describe('Menu', () => {
     </Menu>).toJSON()).toMatchSnapshot();
   });
   it('DropMenu width: 500px height: 333px', () => {
-    expect(renderer.create(<Theme config={{ [Widget.Menu]: { width: 550, height: 333, }, }}><Menu>
+    expect(renderer.create(<Theme config={{ [Widget.Menu]: { width: 550, height: 333 } }}><Menu>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -38,7 +38,7 @@ describe('Menu', () => {
   });
 
   it('DropMenu mutliple selectedKeys 2', () => {
-    expect(renderer.create((<Menu selectedKeys={['3', '4',]} mutliple>
+    expect(renderer.create((<Menu selectedKeys={['3', '4']} mutliple>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -64,7 +64,7 @@ describe('Menu', () => {
   });
   it('DropMenu mutliple onClick selectedKeys: 1 2', () => {
     const checkedKey = '4';
-    const dom = mount(<Menu mutliple selectedKeys={['1', '2',]}>
+    const dom = mount(<Menu mutliple selectedKeys={['1', '2']}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -83,7 +83,7 @@ describe('Menu', () => {
 
   it('DropMenu single onClick selectedKeys: 1 2', () => {
     const checkedKey = '4';
-    const dom = mount(<Menu selectedKeys={['1', '2',]}>
+    const dom = mount(<Menu selectedKeys={['1', '2']}>
       <MenuItem key="1">a</MenuItem>
       <MenuItem key="2">b</MenuItem>
       <MenuItem key="3">c</MenuItem>
@@ -126,7 +126,7 @@ describe('Menu', () => {
       items.push(<MenuItem key={i}>{i}</MenuItem>);
     }
     const wraper = renderer.create(
-      <Theme config={{ [Widget.Menu]: { width: 200, height: 250, }, }}>
+      <Theme config={{ [Widget.Menu]: { width: 200, height: 250 } }}>
         <Menu mutliple>
           {items}
         </Menu></Theme>);
@@ -140,7 +140,7 @@ describe('Menu', () => {
   it('props: data & getPrefix & getSuffix ', () => {
     const items = [];
     for (let i = 0; i < 10; i++) {
-      items.push({ key: `k${i}`, value: `v${i}`, });
+      items.push({ key: `k${i}`, value: `v${i}` });
     }
     const prefixItems = [];
     const getPrefix = item => {
@@ -152,7 +152,7 @@ describe('Menu', () => {
       suffixItems.push(item);
       return <div className="lgx_suffix"></div>;
     };
-    const cmp = createMenuPropsDataCase({ getSuffix, getPrefix, });
+    const cmp = createMenuPropsDataCase({ getSuffix, getPrefix });
 
     exp(cmp.find('.lgx_prefix').length).to.be.equal(10);
     exp(cmp.find('.lgx_suffix').length).to.be.equal(10);
@@ -162,14 +162,14 @@ describe('Menu', () => {
   it('props: data  & getSuffix ', () => {
     const items = [];
     for (let i = 0; i < 10; i++) {
-      items.push({ key: `k${i}`, value: `v${i}`, });
+      items.push({ key: `k${i}`, value: `v${i}` });
     }
     const suffixItems = [];
     const getSuffix = item => {
       suffixItems.push(item);
       return <div className="lgx_suffix"></div>;
     };
-    const cmp = createMenuPropsDataCase({ getSuffix, });
+    const cmp = createMenuPropsDataCase({ getSuffix });
 
     exp(cmp.find('.lgx_suffix').length).to.be.equal(10);
   });
@@ -177,14 +177,14 @@ describe('Menu', () => {
   it('props: data & getPrefix  ', () => {
     const items = [];
     for (let i = 0; i < 10; i++) {
-      items.push({ key: `k${i}`, value: `v${i}`, });
+      items.push({ key: `k${i}`, value: `v${i}` });
     }
     const prefixItems = [];
     const getPrefix = item => {
       prefixItems.push(item);
       return <div className="lgx_prefix"></div>;
     };
-    const cmp = createMenuPropsDataCase({ getPrefix, });
+    const cmp = createMenuPropsDataCase({ getPrefix });
 
     exp(cmp.find('.lgx_prefix').length).to.be.equal(10);
     exp(prefixItems).to.be.eql(items);
@@ -194,13 +194,13 @@ describe('Menu', () => {
   function createMenuPropsDataCase (props: Object) {
     const items = [];
     for (let i = 0; i < 10; i++) {
-      items.push({ key: `k${i}`, value: `v${i}`, });
+      items.push({ key: `k${i}`, value: `v${i}` });
     }
-    const cmp = mount(<Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }}>
+    const cmp = mount(<Theme config={{ [Widget.Menu]: { width: 200, height: 350 } }}>
       <Menu data={items}  {...props}>
       </Menu></Theme>);
     exp(cmp.find(Widgets.MenuItem).length).to.be.equal(10);
-    items.forEach(({ value, }, index) => {
+    items.forEach(({ value }, index) => {
       exp(cmp.find(Widgets.MenuItem).at(index).text()).to.be.equal(value);
     });
     return cmp;

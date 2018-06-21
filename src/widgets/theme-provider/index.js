@@ -15,7 +15,7 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
 
     constructor (props: any) {
       super(props);
-      this.state = { svThemVersion: 0, };
+      this.state = { svThemVersion: 0 };
     }
     //TODO: 需要单元测试
     componentWillReceiveProps (props: any, context: any) {
@@ -30,14 +30,14 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
 
     render () {
       const getTheme = () => {
-        const { config = {}, svThemeConfigTree = {}, } = this.context;
-        const { viewClass = widgetName, } = this.props;
+        const { config = {}, svThemeConfigTree = {} } = this.context;
+        const { viewClass = widgetName } = this.props;
         let currConfig = config[ viewClass ];
         if (!currConfig) {
           currConfig = svThemeConfigTree[ viewClass ];
         }
         currConfig = currConfig ? currConfig : {};
-        return Object.assign({}, { ...currConfig, }, { svThemeConfigTree, });
+        return Object.assign({}, { ...currConfig }, { svThemeConfigTree });
       };
       return <Target {...this.props} getTheme={getTheme}
                      svThemVersion={this.state.svThemVersion}

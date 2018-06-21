@@ -6,7 +6,7 @@ import 'jest-styled-components';
 import VisibleBox from '../VisibleBox';
 import MaskBox from '../MaskBox';
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
 describe('VisibleBox', () => {
 

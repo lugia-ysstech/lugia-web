@@ -8,14 +8,14 @@ import React from 'react';
 import chai from 'chai';
 
 import 'jest-styled-components';
-import Enzyme, { mount, shallow, } from 'enzyme';
+import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Button from '../';
 import renderer from 'react-test-renderer';
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Button', () => {
   beforeEach(() => {
@@ -42,8 +42,8 @@ describe('Button', () => {
       };
     });
     const cmp = mount(<Button type="danger" onClick={onClick}>hello</Button>);
-    let target = { px: 'hello', };
-    cmp.find('hello').at(0).simulate('click', { target, });
+    const target = { px: 'hello' };
+    cmp.find('hello').at(0).simulate('click', { target });
 
     exp(await  promise).to.be.eql(target);
   });

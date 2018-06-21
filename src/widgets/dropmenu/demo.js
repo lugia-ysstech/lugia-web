@@ -10,7 +10,7 @@ import Menu from '../menu';
 import Theme from '../theme';
 import Widget from '../consts/index';
 
-const { MenuItem, } = Menu;
+const { MenuItem } = Menu;
 
 const items = [];
 
@@ -21,14 +21,14 @@ let i = 0;
 export default class extends React.Component<any, any> {
   constructor (props: any) {
     super(props);
-    this.state = { menu: null, };
+    this.state = { menu: null };
   }
 
   render () {
-    const { menu, } = this.state;
+    const { menu } = this.state;
     return <div>
       <button onClick={this.onClick}>test</button>
-      <Theme config={{ [Widget.DropMenu]: { width: 200, }, }}>
+      <Theme config={{ [Widget.DropMenu]: { width: 200 } }}>
         <DropMenu menus={menu}>
           <input type="text"/>
         </DropMenu></Theme>
@@ -37,7 +37,7 @@ export default class extends React.Component<any, any> {
 
   onClick = () => {
 
-    this.setState({ menu: <Menu>{items.slice(i++)}</Menu>, });
+    this.setState({ menu: <Menu>{items.slice(i++)}</Menu> });
   }
 }
 

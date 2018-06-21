@@ -8,8 +8,8 @@
  */
 import * as React from 'react';
 import Widget from '../consts/index';
-import {ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE,} from '../consts/KeyCode';
-import {SwitchWrapper, SwitchInner,} from './styled';
+import {ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE} from '../consts/KeyCode';
+import {SwitchWrapper, SwitchInner} from './styled';
 
 /* props type */
 export type SwitchProps = {
@@ -91,7 +91,7 @@ class Switch extends React.Component<SwitchProps, SwitchState>{
   }
 
   componentDidMount() {
-    const { autoFocus, disabled, } = this.props;
+    const { autoFocus, disabled } = this.props;
     if (autoFocus && !disabled) {
       this.focus();
     }
@@ -109,7 +109,7 @@ class Switch extends React.Component<SwitchProps, SwitchState>{
 
   render(){
     const {checkedChildren = '',unCheckedChildren = '', size='default', loading, ...otherProps} = this.props;
-    const {checked, disabled, } = this.state;
+    const {checked, disabled } = this.state;
     const TAB_INDEX = 0;
     const NO_TAB_INDEX = -1;
 

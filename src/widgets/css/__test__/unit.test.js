@@ -5,7 +5,7 @@
  * @flow
  */
 import React from 'react';
-import { px2rem, rem2em, px2emcss,} from '../units';
+import { px2rem, rem2em, px2emcss} from '../units';
 
 
 describe('Button', () => {

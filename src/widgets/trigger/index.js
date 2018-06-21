@@ -7,7 +7,7 @@
 import '../common/shirm';
 
 import * as React from 'react';
-import { findDOMNode, } from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import contains from 'rc-util/lib/Dom/contains';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
@@ -34,7 +34,7 @@ const ALL_HANDLERS: Array<EventName> = ['onClick',
   'onMouseEnter',
   'onMouseLeave',
   'onFocus',
-  'onBlur',];
+  'onBlur'];
 
 
 type TriggerProps = {
@@ -118,7 +118,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   constructor (props: TriggerProps) {
     super(props);
-    let { popupVisible = false, defaultPopupVisible, } = props;
+    let { popupVisible = false, defaultPopupVisible } = props;
     if ('popupVisible' in props) {
       popupVisible = !!popupVisible;
     } else {
@@ -131,7 +131,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
   getContainer () {
-    const { getPopupContainer, getDocument, } = this.props;
+    const { getPopupContainer, getDocument } = this.props;
     const popupContainer = document.createElement('div');
     popupContainer.style.position = 'releative';
     popupContainer.style.top = '0';
@@ -145,8 +145,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   }
 
   getComponent () {
-    const { props, state, } = this;
-    const { onPopupAlign, popup, offsetX, offsetY, } = props;
+    const { props, state } = this;
+    const { onPopupAlign, popup, offsetX, offsetY } = props;
     const {
       destroyPopupOnHide,
       mask,
@@ -182,7 +182,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     </Popup>;
   }
 
-  componentWillReceiveProps ({ popupVisible, }: Object) {
+  componentWillReceiveProps ({ popupVisible }: Object) {
     if (popupVisible !== undefined) {
       this.setState({
         popupVisible,
@@ -201,8 +201,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
 
   componentDidUpdate () {
-    const { getDocument, } = this.props;
-    const { popupVisible, } = this.state;
+    const { getDocument } = this.props;
+    const { popupVisible } = this.state;
     if (popupVisible) {
       let currentDocument;
       if (!this.clickOutsideHandler && this.isClickToHide()) {
@@ -300,7 +300,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   render () {
 
-    const { children, } = this.props;
+    const { children } = this.props;
 
     const child = React.Children.only(children);
     const newChildProps = {};
@@ -331,41 +331,41 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
     newChildProps.key = 'container';
-    return [React.cloneElement(child, newChildProps), this.getComponent(),];
+    return [React.cloneElement(child, newChildProps), this.getComponent()];
   }
 
   isClickToShow () {
-    const { action, showAction, } = this.props;
+    const { action, showAction } = this.props;
     return action.indexOf('click') !== -1 || showAction.indexOf('click') !== -1;
   }
 
 
   isClickToHide () {
-    const { action, hideAction, } = this.props;
+    const { action, hideAction } = this.props;
     return action.indexOf('click') !== -1 || hideAction.indexOf('click') !== -1;
   }
 
 
   isMouseEnterToShow () {
-    const { action, showAction, } = this.props;
+    const { action, showAction } = this.props;
     return action.indexOf('hover') !== -1 || showAction.indexOf('mouseEnter') !== -1;
   }
 
 
   isMouseLeaveToHide () {
-    const { action, hideAction, } = this.props;
+    const { action, hideAction } = this.props;
     return action.indexOf('hover') !== -1 || hideAction.indexOf('mouseLeave') !== -1;
   }
 
 
   isFocusToShow () {
-    const { action, showAction, } = this.props;
+    const { action, showAction } = this.props;
     return action.indexOf('focus') !== -1 || showAction.indexOf('focus') !== -1;
   }
 
 
   isBlurToHide () {
-    const { action, hideAction, } = this.props;
+    const { action, hideAction } = this.props;
     return action.indexOf('focus') !== -1 || hideAction.indexOf('blur') !== -1;
   }
 

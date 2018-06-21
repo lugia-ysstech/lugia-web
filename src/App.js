@@ -6,7 +6,7 @@ import assign from 'object-assign';
 
 function getPopupAlign (state) {
   return {
-    offset: [state.offsetX, state.offsetY,],
+    offset: [state.offsetX, state.offsetY],
     overflow: {
       adjustX: 1,
       adjustY: 1,
@@ -16,28 +16,28 @@ function getPopupAlign (state) {
 
 const builtinPlacements = {
   left: {
-    points: ['cr', 'cl',],
+    points: ['cr', 'cl'],
   },
   right: {
-    points: ['cl', 'cr',],
+    points: ['cl', 'cr'],
   },
   top: {
-    points: ['bc', 'tc',],
+    points: ['bc', 'tc'],
   },
   bottom: {
-    points: ['tc', 'bc',],
+    points: ['tc', 'bc'],
   },
   topLeft: {
-    points: ['bl', 'tl',],
+    points: ['bl', 'tl'],
   },
   topRight: {
-    points: ['br', 'tr',],
+    points: ['br', 'tr'],
   },
   bottomRight: {
-    points: ['tr', 'br',],
+    points: ['tr', 'br'],
   },
   bottomLeft: {
-    points: ['tl', 'bl',],
+    points: ['tl', 'bl'],
   },
 };
 
@@ -135,7 +135,7 @@ class Test extends React.Component {
       return null;
     }
     return (<div>
-      <div style={{ margin: '10px 20px', }}>
+      <div style={{ margin: '10px 20px' }}>
         <label>
           placement:
           <select value={state.placement} onChange={this.onPlacementChange}>
@@ -227,7 +227,7 @@ class Test extends React.Component {
           <input
             type="text"
             onChange={this.onOffsetXChange}
-            style={{ width: 50, }}
+            style={{ width: 50 }}
           />
         </label>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -236,13 +236,13 @@ class Test extends React.Component {
           <input
             type="text"
             onChange={this.onOffsetYChange}
-            style={{ width: 50, }}
+            style={{ width: 50 }}
           />
         </label>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <button onClick={this.destroy}>destroy</button>
       </div>
-      <div style={{ margin: 100, position: 'relative', }}>
+      <div style={{ margin: 100, position: 'relative' }}>
         <Trigger
           offsetX={this.state.offsetX}
           offsetY={this.state.offsetY}
@@ -258,13 +258,13 @@ class Test extends React.Component {
           action={Object.keys(state.trigger)}
           builtinPlacements={builtinPlacements}
           popup={
-            <div style={{ border: '1px solid red', padding: 10, background: 'white', }}>
+            <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
               i am a popup
             </div>
           }
           popupTransitionName={state.transitionName}
         >
-          <a href="#" style={{ margin: 20, }} onClick={preventDefault}>trigger</a>
+          <a href="#" style={{ margin: 20 }} onClick={preventDefault}>trigger</a>
         </Trigger>
       </div>
     </div>);

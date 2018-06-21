@@ -7,9 +7,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
-import { ItemContainer, ItemText, } from './ItemTag';
+import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
-import {FontSize,} from '../css';
+import {FontSize} from '../css';
 
 const CloseButton: Object = styled.span`
   font-size: ${FontSize};
@@ -38,7 +38,7 @@ export default class  extends React.Component<ItemProps, ItemState> {
   width: number;
   static displayName = Widget.InputTagItem;
   render () {
-    const { className, closeable = true, onClick, onCloseClick,} = this.props;
+    const { className, closeable = true, onClick, onCloseClick} = this.props;
     return (
       <ItemContainer className={className} closeable={closeable} innerRef={c => this.item = c} onClick={onClick}>
         <ItemText>{this.props.children}</ItemText>

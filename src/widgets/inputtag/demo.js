@@ -22,19 +22,19 @@ const disp = dispArr.join(',');
 class InputDemo extends React.Component<any, any> {
   constructor (props: any) {
     super(props);
-    this.state = { value: val, displayValue: disp, };
+    this.state = { value: val, displayValue: disp };
   }
 
   render () {
     // const { value, displayValue, } = this.state;
     return [
-      <Theme config={{ [ Widget.InputTag ]: { width: 200, }, }}>
+      <Theme config={{ [ Widget.InputTag ]: { width: 200 } }}>
         <input/>
         <InputTag
           validateStatus="error"
           defaultValue={val.split(',')} defaultDisplayValue={disp.split(',')}/>
         <input/>
-      </Theme>,];
+      </Theme>];
   }
 }
 

@@ -1,11 +1,11 @@
 //@flow
-import type { GetValueArgType, } from 'sv-widget';
+import type { GetValueArgType } from 'sv-widget';
 
 const Utils = require('@lugia/type-utils');
 
-const { ArrayUtils, } = Utils;
+const { ArrayUtils } = Utils;
 
-const { toArray, } = ArrayUtils;
+const { toArray } = ArrayUtils;
 
 function getValue (props: any, state: any): string {
   let value;
@@ -18,7 +18,7 @@ function getValue (props: any, state: any): string {
 }
 
 function getObjectValue (arg: GetValueArgType): Object {
-  const { value = {}, defaultValue = {}, } = arg;
+  const { value = {}, defaultValue = {} } = arg;
   if ('value' in arg) {
     return value;
   } else if ('defaultValue' in arg) {
@@ -40,28 +40,28 @@ function getNumberValue (props: any, state: any): number {
 
 function getInitValue (props: any) {
   if (isNotLimit(props)) {
-    const { defaultValue = '', } = props;
+    const { defaultValue = '' } = props;
     return defaultValue;
   }
 
-  const { value = '', } = props;
+  const { value = '' } = props;
   return value;
 }
 
 
 function getInitNumberValue (props: any) {
   if (isNotLimit(props)) {
-    const { defaultValue = 0, } = props;
+    const { defaultValue = 0 } = props;
     return defaultValue;
   }
 
-  const { value = 0, } = props;
+  const { value = 0 } = props;
   return value;
 }
 
 function getInitStart (props: any, value: number) {
   if ('start' in props) {
-    const { start = 0, } = props;
+    const { start = 0 } = props;
     return start;
   }
   return value;
@@ -70,11 +70,11 @@ function getInitStart (props: any, value: number) {
 
 function getInitValueArray (props: any): Array<any> {
   if (isNotLimit(props)) {
-    const { defaultValue = [], } = props;
+    const { defaultValue = [] } = props;
     return toArray(defaultValue);
   }
 
-  const { value = [], } = props;
+  const { value = [] } = props;
   return toArray(value);
 }
 
@@ -82,42 +82,42 @@ function getInitCodeItem (props: any): { value: string, displayValue: string } {
   let resValue = '',
     resDisplayValue = '';
   if (!isNotLimit(props)) {
-    const { value = '', } = props;
+    const { value = '' } = props;
     resValue = value;
   } else {
-    const { defaultValue: value = '', } = props;
+    const { defaultValue: value = '' } = props;
     resValue = value;
   }
   if (!isNotLimitByName(props, 'displayValue')) {
-    const { displayValue, } = props;
+    const { displayValue } = props;
     resDisplayValue = displayValue;
   } else {
-    const { defaultDisplayValue: displayValue = '', } = props;
+    const { defaultDisplayValue: displayValue = '' } = props;
     resDisplayValue = displayValue;
   }
-  return { value: resValue, displayValue: resDisplayValue, };
+  return { value: resValue, displayValue: resDisplayValue };
 }
 
 function getInitCodeItemArray (props: any): { value: Array<any>, displayValue: Array<any> } {
   let resValue = [];
   let resDisplayValue = [];
   if (!isNotLimit(props)) {
-    const { value = [], } = props;
+    const { value = [] } = props;
     resValue = value;
   } else {
-    const { defaultValue: value = [], } = props;
+    const { defaultValue: value = [] } = props;
     resValue = value;
   }
 
   if (!isNotLimitByName(props, 'displayValue')) {
-    const { displayValue = [], } = props;
+    const { displayValue = [] } = props;
     resDisplayValue = displayValue;
   } else {
-    const { defaultDisplayValue: displayValue = [], } = props;
+    const { defaultDisplayValue: displayValue = [] } = props;
     resDisplayValue = displayValue;
   }
 
-  return { value: toArray(resValue), displayValue: toArray(resDisplayValue), };
+  return { value: toArray(resValue), displayValue: toArray(resDisplayValue) };
 }
 
 

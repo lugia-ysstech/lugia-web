@@ -58,11 +58,11 @@ class Popup extends React.Component<PopupProps> {
 
   render () {
     return [this.getMaskElement(),
-      this.getPopupElement(),];
+      this.getPopupElement()];
   }
 
   onAlign = (popupDomNode: HTMLElement, align: string) => {
-    const { onAlign, } = this.props;
+    const { onAlign } = this.props;
     onAlign && onAlign(popupDomNode, align);
   };
 
@@ -73,7 +73,7 @@ class Popup extends React.Component<PopupProps> {
 
 
   getPopupElement () {
-    const { savePopupRef, props, } = this;
+    const { savePopupRef, props } = this;
     const {
       align,
       visible,
@@ -123,7 +123,7 @@ class Popup extends React.Component<PopupProps> {
   }
 
   getMaskElement () {
-    const { isMask, visible, } = this.props;
+    const { isMask, visible } = this.props;
     let maskElement;
     if (isMask) {
       maskElement = (

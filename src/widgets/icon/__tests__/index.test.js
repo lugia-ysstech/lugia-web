@@ -5,13 +5,13 @@ import chai from 'chai';
 import Icon from '../';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
-import Enzyme,{ mount, }  from 'enzyme';
+import Enzyme,{ mount }  from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
-const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
+const { mockFunction, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
 describe('Icon', () => {
 
@@ -27,7 +27,7 @@ describe('Icon', () => {
     const target = mount(<Icon iconClass="sv-icon-close" onClick={onClick}></Icon>);
     target.find('i').simulate('click', {});
     order.verify(obj => {
-      const { eventHandle, } = obj;
+      const { eventHandle } = obj;
       eventHandle(VerifyOrder.Object);
     });
   });

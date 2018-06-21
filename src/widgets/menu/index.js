@@ -8,12 +8,12 @@ import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
 import Item from './item';
-import { DefaultHeight, MenuItemHeight, } from '../css/menu';
+import { DefaultHeight, MenuItemHeight } from '../css/menu';
 import ThemeProvider from '../theme-provider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
 import '../css/sv.css';
-import { adjustValue, } from '../utils';
+import { adjustValue } from '../utils';
 
 type MenuProps = {
   start: number,
@@ -76,7 +76,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   getSelectedKeys (): Array<string> {
-    const { selectedKeys = [], defaultSelectedKeys = [], } = this.props;
+    const { selectedKeys = [], defaultSelectedKeys = [] } = this.props;
     if ('selectedKeys' in this.props) {
       return selectedKeys;
     } else if ('defaultSelectedKeys' in this.props) {
@@ -87,7 +87,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
 
   shouldComponentUpdate (nextProps: MenuProps, nextState: MenuState) {
-    const { props, state, } = this;
+    const { props, state } = this;
     const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
 
@@ -102,8 +102,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
 
   render () {
-    const { props, } = this;
-    const { data, } = props;
+    const { props } = this;
+    const { data } = props;
     let {
       start, end,
     } = this.props;
@@ -112,14 +112,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
     let items = [];
     if (data && data.length > 0) {
       items = this.computeItems(data, start, end, (obj: Object) => {
-        const { key, value, } = obj;
-        const { getPrefix, getSuffix, } = props;
+        const { key, value } = obj;
+        const { getPrefix, getSuffix } = props;
         const prefix = getPrefix && getPrefix(obj);
         const suffix = getSuffix && getSuffix(obj);
         return <Item key={key}>{prefix}{value}{suffix}</Item>;
       });
     } else {
-      const { children, } = props;
+      const { children } = props;
       if (children && children.length > 0) {
         items = this.computeItems(children, start, end, (obj: Object) => obj);
       }
@@ -130,9 +130,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   getTheme () {
-    const { getTheme, } = this.props;
+    const { getTheme } = this.props;
     const theme = getTheme();
-    const { height = DefaultHeight, } = theme;
+    const { height = DefaultHeight } = theme;
     theme.height = adjustValue(height, MenuItemHeight);
     return theme;
   }
@@ -147,17 +147,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
 
   renderMenuItem = (child: React.Element<typeof Item>, isSelect: Function) => {
-    const { key, } = child;
+    const { key } = child;
     return React.cloneElement(child, this.fetchExtendProps(key, isSelect));
   };
 
   fetchExtendProps (key?: null | number | string, isSelect: Function): MenuItemProps {
-    const { mutliple, } = this.props;
+    const { mutliple } = this.props;
     const onClick = this.onMenuItemClick(key);
     if (!key || !isSelect(key)) {
-      return { mutliple, ...onClick, checked: false, };
+      return { mutliple, ...onClick, checked: false };
     }
-    return { checked: true, mutliple, ...onClick, };
+    return { checked: true, mutliple, ...onClick };
   }
 
   onMenuItemClick = (key?: null | number | string): Object => {
@@ -170,8 +170,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return;
         }
         const str = key + '';
-        const { mutliple, } = this.props;
-        let { selectedKeys, } = this.state;
+        const { mutliple } = this.props;
+        let { selectedKeys } = this.state;
         if (mutliple) {
           const index = selectedKeys.indexOf(str);
           const noIn = index === -1;
@@ -181,9 +181,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
             selectedKeys.splice(index, 1);
           }
         } else {
-          selectedKeys = [str,];
+          selectedKeys = [str];
         }
-        const keys = { selectedKeys: [...selectedKeys,], };
+        const keys = { selectedKeys: [...selectedKeys] };
         this.setState(keys);
       },
     };
@@ -195,10 +195,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   createSelect = (state: MenuState, props: MenuProps) => {
     const existKey = {};
-    const { selectedKeys, } = state;
+    const { selectedKeys } = state;
     const len = selectedKeys.length;
     if (selectedKeys && len > 0) {
-      const { mutliple, } = props;
+      const { mutliple } = props;
       if (mutliple) {
         for (let i = 0; i < len; i++) {
           existKey[ selectedKeys[ i ] ] = true;

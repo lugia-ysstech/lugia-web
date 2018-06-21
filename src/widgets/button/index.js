@@ -74,8 +74,8 @@ const TypeCSS: { [key: ButtonType]: TypeColor } = {
 };
 
 const getTypeCSS = (props: CSSProps) => {
-  const { type = 'primary', } = props;
-  const { color, backgroundColor, borderColor, } = TypeCSS[ type ];
+  const { type = 'primary' } = props;
+  const { color, backgroundColor, borderColor } = TypeCSS[ type ];
 
   return `
     color: ${color};
@@ -116,12 +116,12 @@ const ButtonOut = styled.button`
 ButtonOut.displayName = 'hello';
 export default ThemeProvider(class extends React.Component<ButtonProps, ButtonState> {
   onClick = e => {
-    const { onClick, } = this.props;
+    const { onClick } = this.props;
     onClick && onClick(e);
   };
 
   render () {
-    const { children, type, shape, } = this.props;
+    const { children, type, shape } = this.props;
     return <ButtonOut type={type} shape={shape} onClick={this.onClick}><Text>{children}</Text></ButtonOut>;
   }
 }, Widget.Button);

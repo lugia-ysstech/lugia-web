@@ -12,11 +12,11 @@ import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
 
 const getColor = (props: Object) => {
-  const { color, } = props.theme;
+  const { color } = props.theme;
   return color ? `color: ${color};` : '';
 };
 const hover = (props: Object) => {
-  const { hoverColor, } = props.theme;
+  const { hoverColor } = props.theme;
   return hoverColor ? `  &:hover { color: ${hoverColor}; }` : '';
 };
 const IconTag = styled.i`
@@ -42,7 +42,7 @@ class Icon extends React.Component<IconProps> {
   };
 
   render () {
-    const { iconClass, onClick, getTheme, className = '', } = this.props;
+    const { iconClass, onClick, getTheme, className = '' } = this.props;
     return <IconTag className={`sviconfont ${iconClass} ${className}`}
                     onClick={onClick}
                     theme={getTheme()}> </IconTag>;

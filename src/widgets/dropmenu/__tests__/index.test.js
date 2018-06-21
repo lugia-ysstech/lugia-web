@@ -3,23 +3,23 @@ import React from 'react';
 import chai from 'chai';
 
 import DropMenu from '../';
-import Enzyme, { mount, } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Menu from '../../menu';
 import Widgets from '../../consts/index';
-import { Height, } from '../../css/input';
-import { QueryInputPadding, } from '../../common/QueryInputContainer';
-import { adjustValue, } from '../../utils';
-import { MenuItemHeight, DefaultHeight,} from '../../css/menu';
+import { Height } from '../../css/input';
+import { QueryInputPadding } from '../../common/QueryInputContainer';
+import { adjustValue } from '../../utils';
+import { MenuItemHeight, DefaultHeight} from '../../css/menu';
 
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
 describe('DropMenu', () => {
 
   it('菜单的高度需扣除input的默认高度', () => {
-    const cmp = mount(<DropMenu menus={<Menu data={[{ key: '1', value: 'hello', },]}/>}><input/></DropMenu>);
+    const cmp = mount(<DropMenu menus={<Menu data={[{ key: '1', value: 'hello' }]}/>}><input/></DropMenu>);
     exp(getMenuHeight(cmp)).to.be.equal(adjustValue(DefaultHeight - (Height + 2 * QueryInputPadding), MenuItemHeight));
   });
 

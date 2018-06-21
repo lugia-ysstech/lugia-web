@@ -39,7 +39,7 @@ export function getElementPosition (e: Object) {
     y += e.offsetTop;
     e = e.offsetParent;
   }
-  return { x, y, };
+  return { x, y };
 }
 
 export function deleteValue (target: Array<any>, value: any): void {

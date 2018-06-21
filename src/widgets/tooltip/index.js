@@ -9,7 +9,7 @@ import Trigger from '../trigger';
 import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import { FontSize, } from '../css';
+import { FontSize } from '../css';
 
 const Left = 'left';
 const Right = 'right';
@@ -17,7 +17,7 @@ const Down = 'bottom';
 const Up = 'top';
 
 const getTriggerByArrow = props => {
-  const { fx, } = props;
+  const { fx } = props;
   switch (fx) {
     case Up:
       return 'padding-top: 8px;';
@@ -37,13 +37,13 @@ const ToolTrigger = styled(Trigger)`
 const DefaultColor = 'rgba(0, 0, 0, 0.75)';
 const DefaultFontColor = '#fff';
 const getFontColor = (props: Object) => {
-  const { theme, } = props;
-  const { fontColor, } = theme;
+  const { theme } = props;
+  const { fontColor } = theme;
   return fontColor ? fontColor : DefaultFontColor;
 };
 const getColor = (props: Object) => {
-  const { theme, } = props;
-  const { color, } = theme;
+  const { theme } = props;
+  const { color } = theme;
   return color ? color : DefaultColor;
 };
 
@@ -54,7 +54,7 @@ const Content = styled.div`
     box-sizing: border-box;
 `;
 const getArrow = props => {
-  const { fx, } = props;
+  const { fx } = props;
   switch (fx) {
     case Up:
       return `
@@ -116,18 +116,18 @@ const Message = styled.div`
     min-height: 32px;
 `;
 const builtinPlacements = {
-  left: ['cr', 'cl',],
-  leftTop: ['tr', 'tl',],
-  leftBottom: ['br', 'bl',],
-  right: ['cl', 'cr',],
-  rightTop: ['tl', 'tr',],
-  rightBottom: ['bl', 'br',],
-  top: ['bc', 'tc',],
-  bottom: ['tc', 'bc',],
-  topLeft: ['bl', 'tl',],
-  topRight: ['br', 'tr',],
-  bottomRight: ['tr', 'br',],
-  bottomLeft: ['tl', 'bl',],
+  left: ['cr', 'cl'],
+  leftTop: ['tr', 'tl'],
+  leftBottom: ['br', 'bl'],
+  right: ['cl', 'cr'],
+  rightTop: ['tl', 'tr'],
+  rightBottom: ['bl', 'br'],
+  top: ['bc', 'tc'],
+  bottom: ['tc', 'bc'],
+  topLeft: ['bl', 'tl'],
+  topRight: ['br', 'tr'],
+  bottomRight: ['tr', 'br'],
+  bottomLeft: ['tl', 'bl'],
 };
 
 type TooltipProps = {
@@ -144,7 +144,7 @@ class Tooltip extends React.Component<TooltipProps, any> {
   }
 
   static  defaultProps = {
-    action: ['click',],
+    action: ['click'],
     getTheme () {
       return {};
     },
@@ -152,8 +152,8 @@ class Tooltip extends React.Component<TooltipProps, any> {
   trigger: Object;
 
   render () {
-    const { placement, action, title, } = this.props;
-    const { getTheme, } = this.props;
+    const { placement, action, title } = this.props;
+    const { getTheme } = this.props;
     const theme = getTheme();
     const fx = this.getFx(placement);
     const getTarget: Function = cmp => this.trigger = cmp;
@@ -173,7 +173,7 @@ class Tooltip extends React.Component<TooltipProps, any> {
   }
 
   onSelectAlign = (align: string) => () => {
-    this.setState({ align, });
+    this.setState({ align });
   };
   getFx = (placement: string) => {
     if (!placement) {

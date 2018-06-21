@@ -1,9 +1,9 @@
 /* eslint no-loop-func: 0*/
-import { Children, } from 'react';
+import { Children } from 'react';
 
 export function getOffset(ele) {
   if (!ele.getClientRects().length) {
-    return { top: 0, left: 0, };
+    return { top: 0, left: 0 };
   }
 
   const rect = ele.getBoundingClientRect();
@@ -104,7 +104,7 @@ export function getCheck(treeNodesStates) {
     if (itemObj.checked) {
       checkedKeys.push(itemObj.key);
       checkedNodes.push(itemObj.node);
-      checkedNodesPositions.push({ node: itemObj.node, pos: item, });
+      checkedNodesPositions.push({ node: itemObj.node, pos: item });
     } else if (itemObj.halfChecked) {
       halfCheckedKeys.push(itemObj.key);
     }
@@ -119,7 +119,7 @@ export function getCheck(treeNodesStates) {
 
 export function getStrictlyValue(checkedKeys, halfChecked) {
   if (halfChecked) {
-    return { checked: checkedKeys, halfChecked, };
+    return { checked: checkedKeys, halfChecked };
   }
   return checkedKeys;
 }

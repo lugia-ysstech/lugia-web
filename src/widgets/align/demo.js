@@ -27,7 +27,7 @@ export default class AlignDemo extends React.Component<any, StateType> {
     return document.getElementById('align');
   }
 
-  state = { align: 'left', };
+  state = { align: 'left' };
 
   render () {
     return <div>
@@ -63,7 +63,7 @@ export default class AlignDemo extends React.Component<any, StateType> {
   }
 
   getRadio (targetAlign: string): React.Element<any> {
-    const { align, } = this.state;
+    const { align } = this.state;
     return <label>
       <input name="align" type="radio" value={targetAlign} checked={align === targetAlign}
              onClick={this.onSelectAlign(targetAlign)}/>{targetAlign}
@@ -71,6 +71,6 @@ export default class AlignDemo extends React.Component<any, StateType> {
   }
 
   onSelectAlign = (align: string) => () => {
-    this.setState({ align, });
+    this.setState({ align });
   };
 }

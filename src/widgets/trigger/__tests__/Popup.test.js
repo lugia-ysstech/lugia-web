@@ -7,7 +7,7 @@ import Popup from '../Popup';
 const ReactShallowRenderer = require('react-test-renderer/shallow');
 
 const renderer = new ReactShallowRenderer();
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
 describe('Popup', () => {
 

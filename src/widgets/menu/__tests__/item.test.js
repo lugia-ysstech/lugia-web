@@ -6,12 +6,12 @@ import MenuItem from '../item';
 import 'jest-styled-components';
 
 import renderer from 'react-test-renderer';
-import Enzyme,{ mount,}  from 'enzyme';
+import Enzyme,{ mount}  from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
-const { expect: exp, } = chai;
-const { mockFunction, VerifyOrder, VerifyOrderConfig, } = require('@lugia/jverify');
+const { expect: exp } = chai;
+const { mockFunction, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
 describe('Item', () => {
 
@@ -49,7 +49,7 @@ describe('Item', () => {
     const target = mount(<MenuItem onClick={onClick}></MenuItem>);
     target.find('li').simulate('click', {});
     order.verify(obj => {
-      const { eventHandle, } = obj;
+      const { eventHandle } = obj;
       eventHandle(VerifyOrder.Object);
     });
   });

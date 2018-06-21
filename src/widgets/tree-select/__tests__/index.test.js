@@ -7,55 +7,55 @@
 import React from 'react';
 import chai from 'chai';
 import 'jest-styled-components';
-import Enzyme, { mount, } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { createTestComponent, delay, } from '@lugia/react-test-utils';
+import { createTestComponent, delay } from '@lugia/react-test-utils';
 import TreeSelect from '../';
 import Trigger from '../../trigger';
 import Widget from '../../consts/index';
 import Theme from '../../theme';
 
-import { adjustValue, } from '../../utils';
-import { DefaultHeight, MenuItemHeight, } from '../../css/tree';
+import { adjustValue } from '../../utils';
+import { DefaultHeight, MenuItemHeight } from '../../css/tree';
 
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 const rowData = [
-  { key: '1', title: '1', },
-  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
-  { key: '1.2', title: '1.2', pid: '1', path: '1', },
-  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
-  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-  { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
-  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
-  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
+  { key: '1', title: '1' },
+  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true },
+  { key: '1.2', title: '1.2', pid: '1', path: '1' },
+  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
+  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
+  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
+  { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true },
+  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true },
+  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
 
-  { key: '1.3', title: '1.3', pid: '1', path: '1', },
-  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
-  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
-  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
-  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
-  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
-  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
-  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+  { key: '1.3', title: '1.3', pid: '1', path: '1' },
+  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
 
-  { key: '2', title: '2', },
-  { key: '2.1', title: '2.1', pid: '2', path: '2', },
-  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
-  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
-  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
-  { key: '2.2', title: '2.2', pid: '2', path: '2', },
-  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
-  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
-  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
-  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
+  { key: '2', title: '2' },
+  { key: '2.1', title: '2.1', pid: '2', path: '2' },
+  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
+  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1' },
+  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
+  { key: '2.2', title: '2.2', pid: '2', path: '2' },
+  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2' },
+  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
+  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
+  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true },
 
-  { key: '3', title: '3', },
-  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
-  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-  { key: '4', title: '4', isLeaf: true, },
+  { key: '3', title: '3' },
+  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true },
+  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
+  { key: '4', title: '4', isLeaf: true },
 ];
 const SelectedIcon = 'SelectedIcon';
 
@@ -71,13 +71,13 @@ describe('TreeSelect', () => {
     const styleConfig = {
       width: 500,
     };
-    const svThemeConfigTree = { [ Widget.TreeSelect ]: styleConfig, };
+    const svThemeConfigTree = { [ Widget.TreeSelect ]: styleConfig };
     const expResult: Object = {
-      [ Widget.Tree ]: Object.assign({}, styleConfig, { svThemeConfigTree, }, { height: adjustValue(DefaultHeight, MenuItemHeight), }),
-      [ Widget.Trigger ]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
-      [ Widget.InputTag ]: Object.assign({}, styleConfig, { svThemeConfigTree, }),
-      [ Widget.Input ]: Object.assign({}, styleConfig, { width: styleConfig.width - 6, }, { svThemeConfigTree, }),
-      [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9', },
+      [ Widget.Tree ]: Object.assign({}, styleConfig, { svThemeConfigTree }, { height: adjustValue(DefaultHeight, MenuItemHeight) }),
+      [ Widget.Trigger ]: Object.assign({}, styleConfig, { svThemeConfigTree }),
+      [ Widget.InputTag ]: Object.assign({}, styleConfig, { svThemeConfigTree }),
+      [ Widget.Input ]: Object.assign({}, styleConfig, { width: styleConfig.width - 6 }, { svThemeConfigTree }),
+      [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9' },
     };
     createThemeCase(styleConfig, expResult);
   });
@@ -87,12 +87,12 @@ describe('TreeSelect', () => {
     const expResult: Object = {
       [ Widget.Tree ]: {
         height: adjustValue(DefaultHeight, MenuItemHeight),
-        svThemeConfigTree: { [ Widget.TreeSelect ]: {}, },
+        svThemeConfigTree: { [ Widget.TreeSelect ]: {} },
       },
-      [ Widget.Trigger ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {}, }, },
-      [ Widget.InputTag ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {}, }, },
-      [ Widget.Input ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {}, }, },
-      [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9', },
+      [ Widget.Trigger ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {} } },
+      [ Widget.InputTag ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {} } },
+      [ Widget.Input ]: { svThemeConfigTree: { [ Widget.TreeSelect ]: {} } },
+      [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9' },
     };
 
     createThemeCase(styleConfig, expResult);
@@ -155,7 +155,7 @@ describe('TreeSelect', () => {
   });
 
 
-  function createCanInput ({ mutliple, }) {
+  function createCanInput ({ mutliple }) {
 
 
     it(`canInput mutliple: ${mutliple.toString()}`, () => {
@@ -172,8 +172,8 @@ describe('TreeSelect', () => {
     });
   }
 
-  createCanInput({ mutliple: true, });
-  createCanInput({ mutliple: false, });
+  createCanInput({ mutliple: true });
+  createCanInput({ mutliple: false });
 
 
   function createSelectAll (expandAll) {
@@ -211,7 +211,7 @@ describe('TreeSelect', () => {
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
 
-    const value = ['1', '1.2', '1.2.2', '1.2.2.1', '1.3', '1.3.1', '1.3.2', '2', '2.1', '2.1.2', '2.2', '2.2.1', '3',];
+    const value = ['1', '1.2', '1.2.2', '1.2.2.1', '1.3', '1.3.1', '1.3.2', '2', '2.1', '2.1.2', '2.2', '2.2.1', '3'];
     checkTreeSelectValue(cmp, value);
   });
 
@@ -275,8 +275,8 @@ describe('TreeSelect', () => {
   it('selectAll limitCount: 5 caninput value: 我们啊 全选  然后进行刷新操作', async () => {
 
 
-    const value = ['1231', 'lgx',];
-    const displayValue = ['我么啊啊', 'ab',];
+    const value = ['1231', 'lgx'];
+    const displayValue = ['我么啊啊', 'ab'];
     const limit = 5;
     const cmp = mount(<TreeSelect data={rowData}
                                   mutliple
@@ -290,14 +290,14 @@ describe('TreeSelect', () => {
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
     const expValue = rowData.filter((item: Object, index: number) => index < 3).map(item => item.key);
-    checkTreeSelectValue(cmp, [...value, ...expValue,], limit);
+    checkTreeSelectValue(cmp, [...value, ...expValue], limit);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, value, limit);
   });
   it('selectAll 默认值为顶部的值 然后进行全选 limitCount: 5', () => {
 
-    const value = ['1',];
+    const value = ['1'];
     const displayValue = [];
     const limit = 5;
     const cmp = mount(<TreeSelect data={rowData}
@@ -311,7 +311,7 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
-    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2',], limit);
+    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2'], limit);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, [], limit);
@@ -320,14 +320,14 @@ describe('TreeSelect', () => {
   class LimitTreeSelect extends React.Component<any, any> {
     constructor (props) {
       super(props);
-      const { value = [], displayValue = [], } = props;
-      this.state = { value, displayValue, };
+      const { value = [], displayValue = [] } = props;
+      this.state = { value, displayValue };
     }
 
     render () {
-      const { state, props, } = this;
-      const { value, displayValue, } = state;
-      const { limitCount, } = props;
+      const { state, props } = this;
+      const { value, displayValue } = state;
+      const { limitCount } = props;
       return <TreeSelect data={rowData}
                          mutliple
                          value={value}
@@ -354,7 +354,7 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
-    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2',], limit);
+    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2'], limit);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, [], limit);
@@ -369,7 +369,7 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
-    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2',], limit);
+    checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2'], limit);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, [], limit);
@@ -380,7 +380,7 @@ describe('TreeSelect', () => {
 
     const limit = 5;
 
-    const value = ['1',];
+    const value = ['1'];
     const cmp = mount(<LimitTreeSelect value={value} limitCount={limit}/>);
 
     showTrigger(cmp);
@@ -393,7 +393,7 @@ describe('TreeSelect', () => {
 
   it('selectAll 默认值为中间的值 然后进行全选 limitCount: 5', () => {
 
-    const value = ['2.2', '2.2.1.1',];
+    const value = ['2.2', '2.2.1.1'];
     const displayValue = [];
     const cmp = mount(<TreeSelect data={rowData}
                                   mutliple
@@ -406,14 +406,14 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
-    checkTreeSelectValue(cmp, [...value, '1', '1.1', '1.2',]);
+    checkTreeSelectValue(cmp, [...value, '1', '1.1', '1.2']);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, []);
   });
   it('selectAll 默认值为底部的值 然后进行全选 limitCount: 5', () => {
 
-    const value = ['4', '3.2', '3.1',];
+    const value = ['4', '3.2', '3.1'];
     const displayValue = [];
     const cmp = mount(<TreeSelect data={rowData}
                                   mutliple
@@ -426,7 +426,7 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
-    checkTreeSelectValue(cmp, [...value, '1', '1.1',]);
+    checkTreeSelectValue(cmp, [...value, '1', '1.1']);
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.false;
     checkTreeSelectValue(cmp, []);
@@ -466,7 +466,7 @@ describe('TreeSelect', () => {
     exp(getQueryInputValue(cmp)).to.be.equal('');
     checkTreeSelectValue(cmp, []);
     exp(await  refreshResult).to.be.eql(true);
-    exp(await  changeReuslt).to.be.eql({ value: [], displayValue: [], });
+    exp(await  changeReuslt).to.be.eql({ value: [], displayValue: [] });
   });
   it('非受限 没有值直接刷新 操作', () => {
 
@@ -507,7 +507,7 @@ describe('TreeSelect', () => {
     });
     const value = '我么啊啊';
     const displayValue = '我么啊啊';
-    const config = { [ Widget.TreeSelect ]: { width: 100, }, };
+    const config = { [ Widget.TreeSelect ]: { width: 100 } };
 
     const cmp = mount(<Theme config={config}><TreeSelect data={rowData}
                                                          onChange={onChange}
@@ -518,7 +518,7 @@ describe('TreeSelect', () => {
     await delay(0, async () => {
       showTrigger(cmp);
       clearInputTagValue(cmp);
-      checkTreeSelectValue(cmp, [value,]);
+      checkTreeSelectValue(cmp, [value]);
 
       const result = await  changeReuslt;
 
@@ -526,7 +526,7 @@ describe('TreeSelect', () => {
         value: [],
         displayValue: [],
       });
-      checkTreeSelectValue(cmp, [value,]);
+      checkTreeSelectValue(cmp, [value]);
     });
   });
 
@@ -542,7 +542,7 @@ describe('TreeSelect', () => {
     });
     const value = '我么啊啊';
     const displayValue = '我么啊啊';
-    const config = { [ Widget.TreeSelect ]: { width: 100, }, };
+    const config = { [ Widget.TreeSelect ]: { width: 100 } };
 
     const cmp = mount(<Theme config={config}><TreeSelect data={rowData}
                                                          onChange={onChange}
@@ -585,11 +585,11 @@ describe('TreeSelect', () => {
                                   expandAll={true}/>);
     showTrigger(cmp);
     selctedAll(cmp);
-    checkTreeSelectValue(cmp, [value,]);
+    checkTreeSelectValue(cmp, [value]);
     const result = await changeReuslt;
     exp(result).to.be.eql({
-      value: [value, ...getAllRowDataValue(rowData),],
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData),],
+      value: [value, ...getAllRowDataValue(rowData)],
+      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
     });
   });
   it('受限组件 canInput: true  手工添加项 onChange', async () => {
@@ -613,11 +613,11 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     chagneQuery(cmp, txt);
     queryInputEnter(cmp);
-    checkTreeSelectValue(cmp, [value,]);
+    checkTreeSelectValue(cmp, [value]);
     const result = await changeReuslt;
     exp(result).to.be.eql({
-      value: [value, txt,],
-      displayValue: [displayValue, txt,],
+      value: [value, txt],
+      displayValue: [displayValue, txt],
     });
   });
   it('非受限组件 选择全部  onChange', async () => {
@@ -639,12 +639,12 @@ describe('TreeSelect', () => {
                                   expandAll={true}/>);
     showTrigger(cmp);
     selctedAll(cmp);
-    checkTreeSelectValue(cmp, [value,]);
+    checkTreeSelectValue(cmp, [value]);
 
     const result = await changeReuslt;
     exp(result).to.be.eql({
-      value: [value, ...getAllRowDataValue(rowData),],
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData),],
+      value: [value, ...getAllRowDataValue(rowData)],
+      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
     });
   });
   it('非受限组件 选择全部  onChange', async () => {
@@ -666,14 +666,14 @@ describe('TreeSelect', () => {
                                   expandAll={true}/>);
     showTrigger(cmp);
     selctedAll(cmp);
-    const allValue = [value, ...getAllRowDataValue(rowData),];
+    const allValue = [value, ...getAllRowDataValue(rowData)];
 
     checkTreeSelectValue(cmp, allValue);
 
     const result = await changeReuslt;
     exp(result).to.be.eql({
       value: allValue,
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData),],
+      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
     });
   });
 
@@ -702,7 +702,7 @@ describe('TreeSelect', () => {
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().checked).to.be.true;
     const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
-    checkTreeSelectValue(cmp, ['100', ...value,]);
+    checkTreeSelectValue(cmp, ['100', ...value]);
 
   })
   ;
@@ -738,7 +738,7 @@ describe('TreeSelect', () => {
     const displayValue = rowData.filter((item: Object, index: number) => index < 5).map(item => item.title);
     cmp.find(CheckBox).at(0).simulate('click');
     const result = await selAllPromise;
-    exp(result).to.be.eql([{ value, displayValue, }, { value: [], displayValue: [], },]);
+    exp(result).to.be.eql([{ value, displayValue }, { value: [], displayValue: [] }]);
   });
 
   it('单选 选择第一个 onSelect 事件', async () => {
@@ -765,7 +765,7 @@ describe('TreeSelect', () => {
     const displayValue = rowData.filter((item: Object, index: number) => index < 1).map(item => item.title);
     cmp.find(TreeRow).at(0).simulate('click');
     const result = await selAllPromise;
-    exp(result).to.be.eql([{ value, displayValue, }, { value: ['',], displayValue: ['',], },]);
+    exp(result).to.be.eql([{ value, displayValue }, { value: [''], displayValue: [''] }]);
   });
 
   it('selectAll onSelect 事件', async () => {
@@ -793,68 +793,68 @@ describe('TreeSelect', () => {
     const displayValue = rowData.filter((item: Object, index: number) => index < 5).map(item => item.title);
     selctedAll(cmp);
     const result = await selAllPromise;
-    const expRes = [{ value, displayValue, }, { value: [], displayValue: [], },];
+    const expRes = [{ value, displayValue }, { value: [], displayValue: [] }];
     exp(result).to.be.eql(expRes);
   });
 
   it('没有任何结点可以选择的情况  全选框状态应该是未选中', async () => {
 
     const rowData = [
-      { key: '1', title: '1', },
-      { key: '2', title: '2', },
-      { key: '3', title: '3', },
-      { key: '4', title: '4', },
-      { key: '5', title: '5', },
-      { key: '6', title: '6', },
-      { key: '7', title: '7', },
-      { key: '8', title: '8', },
-      { key: '9', title: '9', },
-      { key: '10', title: '10', },
-      { key: '11', title: '11', },
-      { key: '12', title: '12', },
-      { key: '13', title: '13', },
-      { key: '14', title: '14', },
-      { key: '15', title: '15', },
-      { key: '16', title: '16', },
-      { key: '17', title: '17', },
-      { key: '18', title: '18', },
-      { key: '19', title: '19', },
-      { key: '20', title: '20', },
-      { key: '21', title: '21', },
-      { key: '22', title: '22', },
-      { key: '23', title: '23', },
-      { key: '24', title: '24', },
-      { key: '25', title: '25', },
-      { key: '26', title: '26', },
-      { key: '27', title: '27', },
-      { key: '28', title: '28', },
-      { key: '29', title: '29', },
-      { key: '30', title: '30', },
-      { key: '31', title: '31', },
-      { key: '32', title: '32', },
-      { key: '33', title: '33', },
-      { key: '34', title: '34', },
-      { key: '35', title: '35', },
-      { key: '36', title: '36', },
-      { key: '37', title: '37', },
-      { key: '38', title: '38', },
-      { key: '39', title: '39', },
-      { key: '40', title: '40', },
-      { key: '41', title: '41', },
-      { key: '42', title: '42', },
-      { key: '43', title: '43', },
-      { key: '44', title: '44', },
-      { key: '45', title: '45', },
-      { key: '46', title: '46', },
-      { key: '47', title: '47', },
-      { key: '48', title: '48', },
-      { key: '49', title: '49', },
-      { key: '50', title: '50', },
-      { key: '51', title: '51', },
-      { key: '52', title: '52', },
-      { key: '53', title: '53', },
-      { key: '54', title: '54', },
-      { key: '55', title: '55', },
+      { key: '1', title: '1' },
+      { key: '2', title: '2' },
+      { key: '3', title: '3' },
+      { key: '4', title: '4' },
+      { key: '5', title: '5' },
+      { key: '6', title: '6' },
+      { key: '7', title: '7' },
+      { key: '8', title: '8' },
+      { key: '9', title: '9' },
+      { key: '10', title: '10' },
+      { key: '11', title: '11' },
+      { key: '12', title: '12' },
+      { key: '13', title: '13' },
+      { key: '14', title: '14' },
+      { key: '15', title: '15' },
+      { key: '16', title: '16' },
+      { key: '17', title: '17' },
+      { key: '18', title: '18' },
+      { key: '19', title: '19' },
+      { key: '20', title: '20' },
+      { key: '21', title: '21' },
+      { key: '22', title: '22' },
+      { key: '23', title: '23' },
+      { key: '24', title: '24' },
+      { key: '25', title: '25' },
+      { key: '26', title: '26' },
+      { key: '27', title: '27' },
+      { key: '28', title: '28' },
+      { key: '29', title: '29' },
+      { key: '30', title: '30' },
+      { key: '31', title: '31' },
+      { key: '32', title: '32' },
+      { key: '33', title: '33' },
+      { key: '34', title: '34' },
+      { key: '35', title: '35' },
+      { key: '36', title: '36' },
+      { key: '37', title: '37' },
+      { key: '38', title: '38' },
+      { key: '39', title: '39' },
+      { key: '40', title: '40' },
+      { key: '41', title: '41' },
+      { key: '42', title: '42' },
+      { key: '43', title: '43' },
+      { key: '44', title: '44' },
+      { key: '45', title: '45' },
+      { key: '46', title: '46' },
+      { key: '47', title: '47' },
+      { key: '48', title: '48' },
+      { key: '49', title: '49' },
+      { key: '50', title: '50' },
+      { key: '51', title: '51' },
+      { key: '52', title: '52' },
+      { key: '53', title: '53' },
+      { key: '54', title: '54' },
+      { key: '55', title: '55' },
     ];
     const cmp = mount(<TreeSelect data={rowData}
                                   mutliple
@@ -878,7 +878,7 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     queryInputDown(cmp);
     queryInputShift(cmp);
-    checkTreeSelectValue(cmp, ['1',]);
+    checkTreeSelectValue(cmp, ['1']);
 
 
   });
@@ -892,7 +892,7 @@ describe('TreeSelect', () => {
     queryInputDown(cmp);
     queryInputDown(cmp);
     queryInputShift(cmp);
-    checkTreeSelectValue(cmp, ['1.1',]);
+    checkTreeSelectValue(cmp, ['1.1']);
 
 
   });
@@ -917,7 +917,7 @@ describe('TreeSelect', () => {
     queryInputDown(cmp);
     queryInputDown(cmp);
     queryInputCtrl(cmp);
-    checkTreeSelectValue(cmp, ['1.1',]);
+    checkTreeSelectValue(cmp, ['1.1']);
   });
   it('点击删除查询内容', async () => {
     const value = 'hello';
@@ -942,13 +942,13 @@ describe('TreeSelect', () => {
     chagneQuery(cmp, old);
     exp(getQueryInputValue(cmp)).to.be.equal(old);
     exp(findTree(cmp).props().query).to.be.equal(old);
-    exp(findTree(cmp).props().value).to.be.eql([value,]);
+    exp(findTree(cmp).props().value).to.be.eql([value]);
 
     clearQueryInput(cmp);
     exp(getQueryInputValue(cmp)).to.be.equal('');
     exp(findTree(cmp).props().query).to.be.equal('');
-    exp(findTree(cmp).props().value).to.be.eql([value,]);
-    exp(await queryEventData).to.be.eql([old, '',]);
+    exp(findTree(cmp).props().value).to.be.eql([value]);
+    exp(await queryEventData).to.be.eql([old, '']);
   });
   it('弹出->输入查询条件->收齐->弹出面板 要触发onQuery为空的事件', async () => {
     const value = 'hello';
@@ -973,7 +973,7 @@ describe('TreeSelect', () => {
     chagneQuery(cmp, old);
     showTrigger(cmp);
     showTrigger(cmp);
-    exp(await queryEventData).to.be.eql([old, '',]);
+    exp(await queryEventData).to.be.eql([old, '']);
   });
   it('弹出->输入查询条件->刷新按钮 要触发onQuery为空的事件', async () => {
     const value = 'hello';
@@ -998,7 +998,7 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     chagneQuery(cmp, old);
     refreshValue(cmp);
-    exp(await queryEventData).to.be.eql([old, '',]);
+    exp(await queryEventData).to.be.eql([old, '']);
   });
 
   it('多选  canInput: true, 弹出->输入查询条件->点击添加项->输入查询条件->查询框回车 要触发onQuery为空的事件', async () => {
@@ -1023,12 +1023,12 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     chagneQuery(cmp, ligx);
     queryInputEnter(cmp);
-    checkTreeSelectValue(cmp, [ligx,]);
+    checkTreeSelectValue(cmp, [ligx]);
     const kxy = 'kxy';
     chagneQuery(cmp, kxy);
     clickAdd(cmp);
-    checkTreeSelectValue(cmp, [ligx, kxy,]);
-    exp(await queryEventData).to.be.eql([ligx, '', kxy, '',]);
+    checkTreeSelectValue(cmp, [ligx, kxy]);
+    exp(await queryEventData).to.be.eql([ligx, '', kxy, '']);
   });
   it('单选  canInput: true, 弹出->输入查询条件->点击添加项->输入查询条件->查询框回车 要触发onQuery为空的事件', async () => {
     let onQuery;
@@ -1051,12 +1051,12 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     chagneQuery(cmp, ligx);
     queryInputEnter(cmp);
-    checkTreeSelectValue(cmp, [ligx,]);
+    checkTreeSelectValue(cmp, [ligx]);
     const kxy = 'kxy';
     chagneQuery(cmp, kxy);
     clickAdd(cmp);
-    checkTreeSelectValue(cmp, [kxy,]);
-    exp(await queryEventData).to.be.eql([ligx, '', kxy, '',]);
+    checkTreeSelectValue(cmp, [kxy]);
+    exp(await queryEventData).to.be.eql([ligx, '', kxy, '']);
   });
 
 
@@ -1066,8 +1066,8 @@ describe('TreeSelect', () => {
                                   value={value}
                                   throttle={0}
                                   expandAll={true}/>);
-    exp(getInputTagValue(cmp)).to.be.eql([value,]);
-    exp(getInputTagDisplayValue(cmp)).to.be.eql([value,]);
+    exp(getInputTagValue(cmp)).to.be.eql([value]);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql([value]);
   });
 
 
@@ -1079,8 +1079,8 @@ describe('TreeSelect', () => {
                                   displayValue={displayValue}
                                   throttle={0}
                                   expandAll={true}/>);
-    exp(getInputTagValue(cmp)).to.be.eql([value,]);
-    exp(getInputTagDisplayValue(cmp)).to.be.eql([displayValue,]);
+    exp(getInputTagValue(cmp)).to.be.eql([value]);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql([displayValue]);
   });
   it('多选 value displayValue 逗号分隔', async () => {
     const value = '1,2,3,4';
@@ -1090,8 +1090,8 @@ describe('TreeSelect', () => {
                                   displayValue={displayValue}
                                   throttle={0}
                                   expandAll={true}/>);
-    exp(getInputTagValue(cmp)).to.be.eql([value,]);
-    exp(getInputTagDisplayValue(cmp)).to.be.eql([displayValue,]);
+    exp(getInputTagValue(cmp)).to.be.eql([value]);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql([displayValue]);
   });
 
   function getInputTagValue (cmp) {
@@ -1140,7 +1140,7 @@ describe('TreeSelect', () => {
   }
 
   function simulateQueryInput (cmp: Object, keyCode: number) {
-    getQueryInput(cmp).simulate('keydown', { keyCode, });
+    getQueryInput(cmp).simulate('keydown', { keyCode });
   }
 
   function findTree (cmp: Object) {
@@ -1176,7 +1176,7 @@ describe('TreeSelect', () => {
   }
 
   function chagneQuery (cmp: Object, value: string) {
-    getQueryInput(cmp).simulate('change', { target: { value, }, });
+    getQueryInput(cmp).simulate('change', { target: { value } });
 
   }
 

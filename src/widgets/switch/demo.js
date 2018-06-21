@@ -12,8 +12,8 @@ import Switch from './index';
 export default () => {
 
   return (
-    <div className="demo-switch" style={{margin: '20px',}}>
-      <section style={{marginBottom: '20px',}}>
+    <div className="demo-switch" style={{margin: '20px'}}>
+      <section style={{marginBottom: '20px'}}>
         <h3>Basic</h3>
         <Switch />
       </section>
@@ -23,7 +23,7 @@ export default () => {
         <Switch defaultChecked />
       </section>
 
-      <section style={{marginBottom: '20px',}}>
+      <section style={{marginBottom: '20px'}}>
         <h3>checkedChildren && unCheckedChildren</h3>
         <Switch
           checkedChildren={'on'}
@@ -36,24 +36,24 @@ export default () => {
         />
       </section>
 
-      <section style={{marginBottom: '20px',}}>
+      <section style={{marginBottom: '20px'}}>
         <h3>disabled</h3>
         <Switch defaultChecked disabled />
       </section>
 
-      <section style={{marginBottom: '20px',}}>
+      <section style={{marginBottom: '20px'}}>
         <h3>autoFocus</h3>
         <Switch defaultChecked autoFocus onFocus={() => {
           console.log('is focus.');
         }} />
       </section>
 
-      <section style={{marginBottom: '20px',}}>
+      <section style={{marginBottom: '20px'}}>
         <h3>small</h3>
         <Switch size={'small'} />
       </section>
 
-      <section style={{marginBottom: '20px',}}>
+      <section style={{marginBottom: '20px'}}>
         <h3>loading</h3>
         <Switch loading defaultChecked />
         <br />

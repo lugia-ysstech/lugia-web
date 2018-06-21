@@ -13,11 +13,11 @@ import ClearIcon from '../icon/ClearIcon';
 class LimitInput extends React.Component<any, any> {
   constructor (props) {
     super(props);
-    this.state = { value: props.value, };
+    this.state = { value: props.value };
   }
 
   onChange = value => {
-    this.setState({ value, });
+    this.setState({ value });
     this.props.onChange(value);
   };
 
@@ -49,7 +49,7 @@ const InputDemo = () => {
     <Input validateStatus="error"/>
     <Input viewClass="register"/>
     <Input viewClass="register" prefix={<ClearIcon/>} validateStatus="error"/>
-    <Theme config={{ register: { width: 40, }, }}>
+    <Theme config={{ register: { width: 40 } }}>
       <Input viewClass="register"/>
       <LimitInput onChange={onChange('limit')}/>
       <DefaultValueInput onChange={onChange('limit')}/>

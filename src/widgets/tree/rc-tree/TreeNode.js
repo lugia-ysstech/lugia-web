@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Animate from 'rc-animate';
 import toArray from 'rc-util/lib/Children/toArray';
-import { contextTypes, } from './Tree';
+import { contextTypes } from './Tree';
 
 const defaultTitle = '---';
 
@@ -109,7 +109,7 @@ class TreeNode extends React.Component {
     const callbackPromise = this.props.root.onExpand(this);
     if (callbackPromise && typeof callbackPromise === 'object') {
       const setLoading = dataLoading => {
-        this.setState({ dataLoading, });
+        this.setState({ dataLoading });
       };
       setLoading(true);
       callbackPromise.then(() => {
@@ -126,7 +126,7 @@ class TreeNode extends React.Component {
   }
 
   isSelectable () {
-    const { props, context, } = this;
+    const { props, context } = this;
     return 'selectable' in props ? props.selectable : context.rcTree.selectable;
   }
 
@@ -189,7 +189,7 @@ class TreeNode extends React.Component {
       if (props.openTransitionName) {
         animProps.transitionName = props.openTransitionName;
       } else if (typeof props.openAnimation === 'object') {
-        animProps.animation = { ...props.openAnimation, };
+        animProps.animation = { ...props.openAnimation };
         if (!transitionAppear) {
           delete animProps.animation.appear;
         }
@@ -218,7 +218,7 @@ class TreeNode extends React.Component {
   }
 
   render () {
-    const { props, } = this;
+    const { props } = this;
     const prefixCls = props.prefixCls;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;

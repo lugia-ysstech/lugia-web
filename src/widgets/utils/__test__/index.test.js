@@ -1,9 +1,9 @@
 //@flow
 import React from 'react';
 import chai from 'chai';
-import { adjustValue, cacheOnlyFirstCall, deleteValue, getElementPosition, splitStr, } from '../';
+import { adjustValue, cacheOnlyFirstCall, deleteValue, getElementPosition, splitStr } from '../';
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
 describe('utils', () => {
 
@@ -32,7 +32,7 @@ describe('utils', () => {
     exp(getElementPosition({
       offsetTop: 5,
       offsetLeft: 5,
-    })).to.be.eql({ x: 5, y: 5, });
+    })).to.be.eql({ x: 5, y: 5 });
 
     exp(getElementPosition({
       offsetTop: 5,
@@ -45,19 +45,19 @@ describe('utils', () => {
           offsetLeft: 0,
         },
       },
-    })).to.be.eql({ x: 2 + 1 + 0, y: 5 + 4 + 3, });
+    })).to.be.eql({ x: 2 + 1 + 0, y: 5 + 4 + 3 });
   });
 
   it('splitStr', () => {
     exp(splitStr('')).to.be.eql([]);
-    exp(splitStr('1,2')).to.be.eql(['1', '2',]);
-    exp(splitStr('1#2', '#')).to.be.eql(['1', '2',]);
+    exp(splitStr('1,2')).to.be.eql(['1', '2']);
+    exp(splitStr('1#2', '#')).to.be.eql(['1', '2']);
   });
 
   it('deleteValue value is not empty', () => {
-    createDeletValueCase([1, 2, 3,], [2, 3,], 1);
-    createDeletValueCase([1, 2, 3,], [1, 3,], 2);
-    createDeletValueCase([1, 2, 3,], [1, 2,], 3);
+    createDeletValueCase([1, 2, 3], [2, 3], 1);
+    createDeletValueCase([1, 2, 3], [1, 3], 2);
+    createDeletValueCase([1, 2, 3], [1, 2], 3);
   });
 
   function createDeletValueCase (target, expResult, value) {

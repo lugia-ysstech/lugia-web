@@ -7,11 +7,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
-import { FontSize, } from '../css';
-import { BackgroundColor, MenuItemHeight, SelectIcon, } from '../css/menu';
+import { FontSize } from '../css';
+import { BackgroundColor, MenuItemHeight, SelectIcon } from '../css/menu';
 
 const Utils = require('@lugia/type-utils');
-const { ObjectUtils, } = Utils;
+const { ObjectUtils } = Utils;
 type MenuItemProps = {
   checked: boolean,
   mutliple: boolean,
@@ -87,7 +87,7 @@ class MenuItem extends React.Component<MenuItemProps> {
   static displayName = Widget.MenuItem;
 
   render () {
-    const { children, mutliple, checked, onClick, } = this.props;
+    const { children, mutliple, checked, onClick } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
     React.Children.forEach(children, (item: Object) => {

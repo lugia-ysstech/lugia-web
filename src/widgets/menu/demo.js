@@ -11,20 +11,20 @@ import Widget from '../consts/index';
 
 const items = [];
 for (let i = 0; i < 100000; i++) {
-  items.push({ key: i, value: i, });
+  items.push({ key: i, value: i });
 }
 let i = 0;
 export default class extends React.Component<any, any> {
   constructor (props: any) {
     super(props);
-    this.state = { items: [], };
+    this.state = { items: [] };
   }
 
   render () {
-    const { items = [], } = this.state;
+    const { items = [] } = this.state;
     return <div>
       <button onClick={this.onClick}>test</button>
-      <Theme config={{ [Widget.Menu]: { width: 200, height: 350, }, }}>
+      <Theme config={{ [Widget.Menu]: { width: 200, height: 350 } }}>
         <Menu single data={items}>
         </Menu>
       </Theme>
@@ -33,7 +33,7 @@ export default class extends React.Component<any, any> {
 
   onClick = () => {
 
-    this.setState({ items: items.slice(i++), });
+    this.setState({ items: items.slice(i++) });
   }
 
 }

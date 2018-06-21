@@ -2,17 +2,17 @@
 
 import * as React from 'react';
 import 'jest-styled-components';
-import Enzyme, { mount, render, } from 'enzyme';
+import Enzyme, { mount, render } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { createTestComponent, delay, } from '@lugia/react-test-utils';
+import { createTestComponent, delay } from '@lugia/react-test-utils';
 import Adapter from 'enzyme-adapter-react-16';
 import Scroller from '../index';
 import chai from 'chai';
-import { mockObject, } from '@lugia/jverify';
+import { mockObject } from '@lugia/jverify';
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
 
 describe('Scroller', function () {
@@ -91,15 +91,15 @@ describe('Scroller', function () {
       value: 50,
     };
     const Target = createTestComponent(Scroller, scroller => {
-      exp(scroller.getPos({ clientY: 100, })).to.be.NaN;
+      exp(scroller.getPos({ clientY: 100 })).to.be.NaN;
       const mock = mockObject.create(scroller);
       const pos = 50;
       mock.mockVar('posGetter').returned({
         func () {
-          return { x: pos, y: pos, };
+          return { x: pos, y: pos };
         },
       });
-      exp(scroller.getPos({ clientX: 100, })).to.be.equal(50);
+      exp(scroller.getPos({ clientX: 100 })).to.be.equal(50);
     });
     mount(<Target {...config}/>);
   });
@@ -112,15 +112,15 @@ describe('Scroller', function () {
       value: 50,
     };
     const Target = createTestComponent(Scroller, scroller => {
-      exp(scroller.getPos({ clientX: 100, })).to.be.NaN;
+      exp(scroller.getPos({ clientX: 100 })).to.be.NaN;
       const mock = mockObject.create(scroller);
       const pos = 30;
       mock.mockVar('posGetter').returned({
         func () {
-          return { x: pos, y: pos, };
+          return { x: pos, y: pos };
         },
       });
-      exp(scroller.getPos({ clientY: 100, })).to.be.equal(70);
+      exp(scroller.getPos({ clientY: 100 })).to.be.equal(70);
     });
     mount(<Target {...config}/>);
   });
@@ -188,7 +188,7 @@ describe('Scroller', function () {
     exp(sliderBar.props().style.left).to.be.eql('25px');
 
     const scroller = findScroller(cmp);
-    scroller.simulate('mouseup', { clientX: 50, });
+    scroller.simulate('mouseup', { clientX: 50 });
 
     exp(sliderBar.props().style.left).to.be.eql('25px');
     exp(await onChange).to.be.equal(100);
@@ -214,7 +214,7 @@ describe('Scroller', function () {
     const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.top).to.be.eql('25px');
     const scroller = findScroller(cmp);
-    scroller.simulate('mouseup', { clientY: 50, });
+    scroller.simulate('mouseup', { clientY: 50 });
 
     exp(sliderBar.props().style.top).to.be.eql('25px');
     exp(await onChange).to.be.equal(100);
@@ -238,8 +238,8 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
 
     exp(sliderBar.props().style.top).to.be.eql('0px');
-    sliderBar.simulate('mousedown', { clientY: 10, });
-    scroller.simulate('mousemove', { clientY: 20, });
+    sliderBar.simulate('mousedown', { clientY: 10 });
+    scroller.simulate('mousemove', { clientY: 20 });
     exp(sliderBar.getDOMNode().style.top).to.be.eql('10px');
     exp(await onChange).to.be.equal(20);
 
@@ -257,8 +257,8 @@ describe('Scroller', function () {
     exp(sliderBar.props().style.top).to.be.eql('0px');
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
 
-    sliderBar.simulate('mousedown', { clientY: 100, });
-    sliderBar.simulate('mouseup', { target: '', clientY: 100, });
+    sliderBar.simulate('mousedown', { clientY: 100 });
+    sliderBar.simulate('mouseup', { target: '', clientY: 100 });
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
   });
   it('props type: y, bar.mousedown & bar.mouseup & mousemove', async () => {
@@ -277,9 +277,9 @@ describe('Scroller', function () {
     exp(sliderBar.props().style.top).to.be.eql('0px');
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
 
-    sliderBar.simulate('mousedown', { clientY: 100, });
-    sliderBar.simulate('mouseup', { target: '', clientY: 100, });
-    scroller.simulate('mousemove', { clientY: 100, });
+    sliderBar.simulate('mousedown', { clientY: 100 });
+    sliderBar.simulate('mouseup', { target: '', clientY: 100 });
+    scroller.simulate('mousemove', { clientY: 100 });
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
   });
 
@@ -299,8 +299,8 @@ describe('Scroller', function () {
     exp(sliderBar.props().style.top).to.be.eql('0px');
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
 
-    sliderBar.simulate('mousedown', { clientY: 100, });
-    scroller.simulate('mouseup', { clientY: 100, });
+    sliderBar.simulate('mousedown', { clientY: 100 });
+    scroller.simulate('mouseup', { clientY: 100 });
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
   });
 
@@ -318,7 +318,7 @@ describe('Scroller', function () {
     const sliderBar = findSlider(cmp);
     const scroller = findScroller(cmp);
     exp(sliderBar.props().style.top).to.be.eql('0px');
-    scroller.simulate('mousemove', { clientY: 100, });
+    scroller.simulate('mousemove', { clientY: 100 });
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
   });
 
@@ -342,10 +342,10 @@ describe('Scroller', function () {
     const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.left).to.be.eql('25px');
 
-    sliderBar.simulate('mousedown', { clientX: 100, });
-    sliderBar.simulate('mouseup', { clientX: 100, });
+    sliderBar.simulate('mousedown', { clientX: 100 });
+    sliderBar.simulate('mouseup', { clientX: 100 });
     const scroller = findScroller(cmp);
-    scroller.simulate('mouseup', { clientX: 50, });
+    scroller.simulate('mouseup', { clientX: 50 });
 
     exp(sliderBar.getDOMNode().style.left).to.be.eql('50px');
     exp(await onChange).to.be.equal(100);
@@ -363,12 +363,12 @@ describe('Scroller', function () {
 
   it('getSliderBarSize', () => {
 
-    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 50, })).to.be.equal(0);
-    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 100, })).to.be.equal(0);
-    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 1000, })).to.be.equal(10);
-    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 200, })).to.be.equal(50);
-    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 300, })).to.be.equal(33);
-    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 500, })).to.be.equal(20);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 50 })).to.be.equal(0);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 100 })).to.be.equal(0);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 1000 })).to.be.equal(10);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 200 })).to.be.equal(50);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 300 })).to.be.equal(33);
+    exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 500 })).to.be.equal(20);
 
   });
 
@@ -388,11 +388,11 @@ describe('Scroller', function () {
         totalSize: 200,
       };
     const cmp = mount(<Scroller {...config}/>);
-    exp(cmp.state()).to.be.eql({ sliderSize: 50, value: 0, });
+    exp(cmp.state()).to.be.eql({ sliderSize: 50, value: 0 });
     exp(cmp.state().sliderSize).to.be.equal(50);
     exp(cmp.state().value).to.be.equal(0);
 
-    cmp.setProps({ type: 'x', viewSize: 100, totalSize: 100, defaultValue: value, });
+    cmp.setProps({ type: 'x', viewSize: 100, totalSize: 100, defaultValue: value });
     exp(cmp.state().sliderSize).to.be.equal(0);
     exp(cmp.state().value).to.be.equal(0);
 
@@ -461,9 +461,9 @@ describe('Scroller', function () {
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
     //  忽略delaty大小的影响
-    const deltayArr = [-5, -15,];
+    const deltayArr = [-5, -15];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
     }
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
   });
@@ -487,9 +487,9 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
-    const deltayArr = [1, 5,];
+    const deltayArr = [1, 5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
     }
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
   });
@@ -513,9 +513,9 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
-    const deltayArr = [1, 5,];
+    const deltayArr = [1, 5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
     }
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
   });
@@ -539,9 +539,9 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
-    const deltayArr = [-1, -5,];
+    const deltayArr = [-1, -5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
     }
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
   });
@@ -569,9 +569,9 @@ describe('Scroller', function () {
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
     //  忽略delaty大小的影响
-    const deltayArr = [-5, -15,];
+    const deltayArr = [-5, -15];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
     }
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
   });
@@ -595,9 +595,9 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
-    const deltayArr = [1, 5,];
+    const deltayArr = [1, 5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
     }
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
   });
@@ -621,9 +621,9 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
-    const deltayArr = [1, 5,];
+    const deltayArr = [1, 5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
     }
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
   });
@@ -647,9 +647,9 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
-    const deltayArr = [-1, -5,];
+    const deltayArr = [-1, -5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ], });
+      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
     }
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
   });
@@ -701,7 +701,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
-    scroller.simulate('mousedown', { clientY: 90, });
+    scroller.simulate('mousedown', { clientY: 90 });
     await delay(2000);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('19.625px');
 
@@ -725,7 +725,7 @@ describe('Scroller', function () {
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('90px');
-    scroller.simulate('mousedown', { clientY: 90, });
+    scroller.simulate('mousedown', { clientY: 90 });
     await delay(2000);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('70.375px');
 

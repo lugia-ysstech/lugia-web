@@ -2,7 +2,7 @@
 import '../common/shirm';
 import Support from '../common/FormFieldWidgetSupport';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
 import Widget from '../consts/index';
@@ -15,9 +15,9 @@ import {
   Padding,
   RadiusSize,
 } from '../css/input';
-import { FontSize, } from '../css';
+import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
-import { px2emcss, } from '../css/units';
+import { px2emcss } from '../css/units';
 
 type InputState = {|
   value: string,
@@ -47,8 +47,8 @@ type InputProps = {|
   value?: string
 |};
 const getWidth = props => {
-  const { theme = {}, } = props;
-  const { width, } = theme;
+  const { theme = {} } = props;
+  const { width } = theme;
   return `width:${width ? width + 'px' : '100%'};`;
 };
 const em = px2emcss(1.2);
@@ -89,7 +89,7 @@ const InputContainer = styled.span`
 const LeftPadding = 5;
 
 const getLeft = (props: Object) => {
-  const { prefix, } = props;
+  const { prefix } = props;
   let padding = LeftPadding;
   if (prefix) {
     padding = LeftPadding + 24;
@@ -100,7 +100,7 @@ const getLeft = (props: Object) => {
   return `${padding}px;`;
 };
 const getRight = (props: Object) => {
-  const { suffix, } = props;
+  const { suffix } = props;
   let padding = 0;
   if (suffix) {
     padding = 24;
@@ -158,24 +158,24 @@ class TextBox extends Component<InputProps, InputState> {
 
   constructor (props: InputProps) {
     super(props);
-    const { defaultValue = '', } = props;
-    this.state = { value: defaultValue, };
+    const { defaultValue = '' } = props;
+    this.state = { value: defaultValue };
   }
 
   onChange = (event: Object) => {
-    const { target, } = event;
-    const { value, } = target;
+    const { target } = event;
+    const { value } = target;
     this.setValue(value);
   };
 
   setValue (value: string): void {
     const oldValue = this.state.value;
-    const { disabled, onChange, } = this.props;
+    const { disabled, onChange } = this.props;
     if ('value' in this.props === false) {
       if (disabled) {
         return;
       }
-      this.setState({ value, }, () => {
+      this.setState({ value }, () => {
         onChange && onChange(value, oldValue);
       });
     } else {
@@ -184,24 +184,24 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   render () {
-    const { props, } = this;
-    const { prefix, suffix, } = props;
+    const { props } = this;
+    const { prefix, suffix } = props;
     if (!suffix && !prefix) {
       return this.generateInput(InputOnly);
     }
-    const { getTheme, } = props;
+    const { getTheme } = props;
 
     const result = <InputContainer className="sv" theme={getTheme()}>
       {this.generatePrefix()}
       {this.generateInput(Input)}
       {this.generateSuffix()}
     </InputContainer>;
-    const { validateStatus, } = props;
+    const { validateStatus } = props;
 
     if (validateStatus === 'sucess') {
       return result;
     }
-    const { help, } = props;
+    const { help } = props;
 
     return <ErrorTip title={help}>
       {result}
@@ -209,7 +209,7 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   generatePrefix (): React$Element<any> | null {
-    const { prefix, } = this.props;
+    const { prefix } = this.props;
     if (prefix) {
       return <Prefix>{prefix}</Prefix>;
     }
@@ -217,7 +217,7 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   generateSuffix (): React$Element<any> | null {
-    const { suffix, } = this.props;
+    const { suffix } = this.props;
     if (suffix) {
       return <Suffix>{suffix}</Suffix>;
     }
@@ -233,9 +233,9 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   generateInput (Input: Function): React$Element<any> {
-    const { props, state, } = this;
-    const { suffix, prefix, validateStatus, } = props;
-    const { onKeyUp, onKeyPress, onFocus, onBlur, placeholder, } = props;
+    const { props, state } = this;
+    const { suffix, prefix, validateStatus } = props;
+    const { onKeyUp, onKeyPress, onFocus, onBlur, placeholder } = props;
     return <Input innerRef={node => this.input = node}
                   validateStatus={validateStatus}
                   suffix={suffix}
@@ -252,9 +252,9 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onKeyDown = (event: KeyboardEvent) => {
-    const { onKeyDown, onEnter, } = this.props;
+    const { onKeyDown, onEnter } = this.props;
     onKeyDown && onKeyDown(event);
-    const { keyCode, } = event;
+    const { keyCode } = event;
     onEnter && keyCode === 13 && onEnter(event);
   };
 }

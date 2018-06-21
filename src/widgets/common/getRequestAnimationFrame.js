@@ -1,4 +1,4 @@
-const availablePrefixs = ['moz', 'ms', 'webkit',];
+const availablePrefixs = ['moz', 'ms', 'webkit'];
 
 function requestAnimationFramePolyfill () {
   let lastTime = 0;

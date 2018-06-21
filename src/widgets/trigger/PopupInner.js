@@ -5,11 +5,11 @@
 import * as React from 'react';
 import ContentBox from './ContentBox';
 import VisibleBox from '../common/VisibleBox';
-import { ZIndex, } from '../common/MaskBox';
+import { ZIndex } from '../common/MaskBox';
 
 const getWidth = props => {
-  const { theme = {}, } = props;
-  const { width, } = theme;
+  const { theme = {} } = props;
+  const { width } = theme;
   return `width: ${width ? `${width}px;` : ';'}`;
 };
 const PopupInnerBox = VisibleBox.extend`
@@ -43,7 +43,7 @@ class PopupInner extends React.Component<PopupInnerProps> {
   };
 
   render () {
-    const { visible, onMouseEnter, onMouseLeave, children, getTheme,className, } = this.props;
+    const { visible, onMouseEnter, onMouseLeave, children, getTheme,className } = this.props;
     return (
       <PopupInnerBox
         className={className}

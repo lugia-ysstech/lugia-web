@@ -12,18 +12,18 @@ import RcAlign from 'rc-align';
 
 
 const builtinPlacements = {
-  left: ['cr', 'cl',],
-  leftTop: ['tr', 'tl',],
-  leftBottom: ['br', 'bl',],
-  right: ['cl', 'cr',],
-  rightTop: ['tl', 'tr',],
-  rightBottom: ['bl', 'br',],
-  top: ['bc', 'tc',],
-  bottom: ['tc', 'bc',],
-  topLeft: ['bl', 'tl',],
-  topRight: ['br', 'tr',],
-  bottomRight: ['tr', 'br',],
-  bottomLeft: ['tl', 'bl',],
+  left: ['cr', 'cl'],
+  leftTop: ['tr', 'tl'],
+  leftBottom: ['br', 'bl'],
+  right: ['cl', 'cr'],
+  rightTop: ['tl', 'tr'],
+  rightBottom: ['bl', 'br'],
+  top: ['bc', 'tc'],
+  bottom: ['tc', 'bc'],
+  topLeft: ['bl', 'tl'],
+  topRight: ['br', 'tr'],
+  bottomRight: ['tr', 'br'],
+  bottomLeft: ['tl', 'bl'],
 };
 type PropsType = {
   offsetX: number,
@@ -48,7 +48,7 @@ export default class Align extends React.Component<PropsType> {
   static displayName = Widget.Align;
 
   render () {
-    const { visible, autoResize, align, getTargetDom, children, offsetX, offsetY, } = this.props;
+    const { visible, autoResize, align, getTargetDom, children, offsetX, offsetY } = this.props;
     const config = builtinPlacements[ align ];
     const rcAlignArg = {
       points: config ? config : builtinPlacements[ defaultAligh ],

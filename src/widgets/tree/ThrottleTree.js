@@ -5,26 +5,26 @@
  * @flow
  */
 
-import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, } from 'sv-widget';
+import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo } from 'sv-widget';
 import animation from '../common/openAnimation';
 import * as React from 'react';
-import RcTree, { TreeNode, } from './rc-tree';
+import RcTree, { TreeNode } from './rc-tree';
 import classNames from 'classnames';
 import ThrottleScroller from '../scroller/ThrottleScroller';
 import '../css/sv.css';
 import './index.css';
 import TreeUtils from './utils';
 import styled from 'styled-components';
-import { BarDefaultSize, } from '../css/scroller';
-import { adjustValue, } from '../utils';
-import { MenuItemHeight, DefaultHeight, } from '../css/tree';
+import { BarDefaultSize } from '../css/scroller';
+import { adjustValue } from '../utils';
+import { MenuItemHeight, DefaultHeight } from '../css/tree';
 
 type RowData = { [key: string]: any };
 
 const getTop = props => props.top;
 const getWidth = props => {
-  const { theme = {}, } = props;
-  const { width, } = theme;
+  const { theme = {} } = props;
+  const { width } = theme;
 
   return width ? `width:${props.theme.width}px;` : 'width: 100%';
 };
@@ -77,11 +77,11 @@ class ScrollerTree extends React.Component<any, any> {
   }
 
   onScrollerEndChange = (end: number) => {
-    const { onScrollerEndChange, } = this.props;
+    const { onScrollerEndChange } = this.props;
     onScrollerEndChange && onScrollerEndChange(end);
   };
   onCanSeeCountChange = (end: number) => {
-    const { onCanSeeCountChange, } = this.props;
+    const { onCanSeeCountChange } = this.props;
     onCanSeeCountChange && onCanSeeCountChange(end);
   };
 
@@ -108,7 +108,7 @@ class ScrollerTree extends React.Component<any, any> {
       start = Math.round(start);
       end = Math.round(end);
       const hasScroller = data.length > end;
-      const { rows, parentCount, } = utils.slice(data, start, end - start, id2ExtendInfo);
+      const { rows, parentCount } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
       const top = -parentCount * 18;
       const treeNodes = this.loopNode(nodes);
@@ -134,17 +134,17 @@ class ScrollerTree extends React.Component<any, any> {
 
 
   getTheme () {
-    const { getTheme, } = this.props;
+    const { getTheme } = this.props;
     const theme = getTheme();
-    const { height = DefaultHeight, } = theme;
+    const { height = DefaultHeight } = theme;
     theme.height = adjustValue(height, MenuItemHeight);
     return theme;
   }
 
   loopNode = (data: Array<RowData>) => data.map(item => {
 
-    const { selectable, displayField, } = this.props;
-    const { children, key, [ displayField ]: title, isLeaf, } = item;
+    const { selectable, displayField } = this.props;
+    const { children, key, [ displayField ]: title, isLeaf } = item;
     if (children !== undefined) {
       return (
         <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>

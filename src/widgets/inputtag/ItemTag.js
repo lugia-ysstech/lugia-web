@@ -7,8 +7,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
-import { MarginRight, MarginTop, PaddingLeft, PadingRight, } from '../css/inputtag';
-import { Height, Padding, RadiusSize, } from '../css/input';
+import { MarginRight, MarginTop, PaddingLeft, PadingRight } from '../css/inputtag';
+import { Height, Padding, RadiusSize } from '../css/input';
 
 const ItemTagHeight = Height - Padding - MarginTop;
 

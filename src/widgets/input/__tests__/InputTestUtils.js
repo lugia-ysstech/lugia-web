@@ -1,17 +1,17 @@
 //@flow
-import type { ReactWrapper, } from 'enzyme';
-import type { VerifyOrder, } from '@lugia/jverify';
+import type { ReactWrapper } from 'enzyme';
+import type { VerifyOrder } from '@lugia/jverify';
 import React from 'react';
 import Input from '../';
 import 'jest-styled-components';
 import chai from 'chai';
-import Enzyme,{ mount,}  from 'enzyme';
+import Enzyme,{ mount}  from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
-const { mockFunction, VerifyOrder: VerifyOrderFactory, VerifyOrderConfig, } = require('@lugia/jverify');
+const { mockFunction, VerifyOrder: VerifyOrderFactory, VerifyOrderConfig } = require('@lugia/jverify');
 
-const { expect: exp, } = chai;
+const { expect: exp } = chai;
 
 export function testPropsValue (value: string, expect: string) {
   const component = mount(<Input value={value}/>);
@@ -41,8 +41,8 @@ export function testKeyBoardEvent (order: VerifyOrder, keyEvent: KeyEventType) {
   const mockFunc = mockFunction.create(VerifyOrderConfig.create(keyEvent, order));
 
   const keyCode = 49;
-  const event = { keyCode, };
-  mockFunc.mock(({ keyCode, }) => {
+  const event = { keyCode };
+  mockFunc.mock(({ keyCode }) => {
     exp(keyCode).to.be.equal(keyCode);
   });
   const props = {
@@ -62,7 +62,7 @@ export function testKeyBoardEvent (order: VerifyOrder, keyEvent: KeyEventType) {
 export function testFireNullKeyBoardEvent (keyEvent: KeyEventType) {
   const component = mount(<Input/>);
   const keyCode = 49;
-  const event = { keyCode, };
+  const event = { keyCode };
 
   component.find('input').simulate(keyEvent.substr(2).toLowerCase(), event);
 }

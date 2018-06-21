@@ -11,7 +11,7 @@ type VisibleBoxProps = {
 }
 export default styled.div`
    ${(props: VisibleBoxProps) => {
-  let { visibleCSS = '', } = props;
+  let { visibleCSS = '' } = props;
   if (visibleCSS) {
     visibleCSS = `display: ${visibleCSS};`;
   }

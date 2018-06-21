@@ -7,7 +7,7 @@
  * @flow
  */
 import '../css/sv.css';
-import styled ,{keyframes,} from 'styled-components';
+import styled ,{keyframes} from 'styled-components';
 
 type SwitchSize = 'small' | 'default';
 
@@ -79,7 +79,7 @@ const LoadingCircleSmall = keyframes`
 
 /* getStyled */
 const getStyled = (props: CSSProps) => {
-  const { size, isChecked, isDisabled,loading,} = props;
+  const { size, isChecked, isDisabled,loading} = props;
   let vars = _normalVars;
   let innerVars = _normalInnerVars;
 

@@ -58,40 +58,40 @@ function getNumberKey () {
 }
 
 const rowData: Array<Object> = [
-  { key: '1', title: '1', },
-  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true, },
-  { key: '1.2', title: '1.2', pid: '1', path: '1', },
-  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true, },
-  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2', },
-  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2', },
-  { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, },
-  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, not: true, },
-  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true, },
+  { key: '1', title: '1' },
+  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true },
+  { key: '1.2', title: '1.2', pid: '1', path: '1' },
+  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
+  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
+  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
+  { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true },
+  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true, not: true },
+  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
 
-  { key: '1.3', title: '1.3', pid: '1', path: '1', },
-  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3', },
-  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
-  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true, },
-  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3', },
-  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
-  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true, },
-  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true, },
+  { key: '1.3', title: '1.3', pid: '1', path: '1' },
+  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
 
-  { key: '2', title: '2', },
-  { key: '2.1', title: '2.1', pid: '2', path: '2', },
-  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true, },
-  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1', },
-  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true, },
-  { key: '2.2', title: '2.2', pid: '2', path: '2', },
-  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2', },
-  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
-  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true, },
-  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true, },
+  { key: '2', title: '2' },
+  { key: '2.1', title: '2.1', pid: '2', path: '2' },
+  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
+  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1' },
+  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
+  { key: '2.2', title: '2.2', pid: '2', path: '2' },
+  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2' },
+  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
+  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
+  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true },
 
-  { key: '3', title: '3', },
-  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true, },
-  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true, },
-  { key: '4', title: '4', isLeaf: true, },
+  { key: '3', title: '3' },
+  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true },
+  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
+  { key: '4', title: '4', isLeaf: true },
 
 ];
 console.info(rowData.length);
@@ -111,13 +111,13 @@ export default class extends React.Component<any, any> {
       help: 'yes',
       width, height,
       config:
-        { [ Widget.TreeSelect ]: { height, width, }, },
+        { [ Widget.TreeSelect ]: { height, width } },
     };
   }
 
 
   render () {
-    const { value, displayValue, limitCount, config, width, height, validateStatus, help, } = this.state;
+    const { value, displayValue, limitCount, config, width, height, validateStatus, help } = this.state;
 
     console.info('demo');
     return <Theme config={config}>
@@ -155,21 +155,21 @@ export default class extends React.Component<any, any> {
   onHeightChange = (e: Object) => {
     const height = e.target.value;
     this.state.config[ Widget.TreeSelect ].height = height;
-    this.setState({ config: this.state.config, height, });
+    this.setState({ config: this.state.config, height });
   };
   onValidateStatusChange = (e: Object) => {
-    this.setState({ validateStatus: e.target.value, });
+    this.setState({ validateStatus: e.target.value });
   };
   onHelpChange = (e: Object) => {
-    this.setState({ help: e.target.value, });
+    this.setState({ help: e.target.value });
   };
   onLimitCountChange = (e: Object) => {
-    this.setState({ limitCount: e.target.value, });
+    this.setState({ limitCount: e.target.value });
   };
   onWidthChange = (e: Object) => {
     const width = e.target.value;
     this.state.config[ Widget.TreeSelect ].width = width;
-    this.setState({ config: this.state.config, width, });
+    this.setState({ config: this.state.config, width });
   };
   onRefresh = () => {
     console.info('refresh');
@@ -179,7 +179,7 @@ export default class extends React.Component<any, any> {
     this.setState(obj);
   };
   onTrigger = () => {
-    this.setState({ data: rowData, });
+    this.setState({ data: rowData });
   };
   onQuery = (v: any) => {
     console.info('query', v);

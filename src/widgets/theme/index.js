@@ -39,13 +39,13 @@ class Theme extends React.Component<PropsType, StateType> {
   }
 
   updateTreeConfig (props: PropsType, context: Object) {
-    const { config, svThemeConfigTree, } = context;
+    const { config, svThemeConfigTree } = context;
     this.svThemeConfigTree = Object.assign({}, svThemeConfigTree, config, props.config);
   }
 
   getChildContext (): Object {
-    const { props, } = this;
-    const { config, } = props;
+    const { props } = this;
+    const { config } = props;
     return {
       config,
       svThemeConfigTree: this.svThemeConfigTree,
@@ -53,7 +53,7 @@ class Theme extends React.Component<PropsType, StateType> {
   }
 
   render () {
-    const { children, className, } = this.props;
+    const { children, className } = this.props;
     return <span className={className}>{children}</span>;
   }
 }

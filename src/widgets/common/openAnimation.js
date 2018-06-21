@@ -1,5 +1,5 @@
 import cssAnimation from 'css-animation';
-import getRequestAnimationFrame, { cancelRequestAnimationFrame, } from './getRequestAnimationFrame';
+import getRequestAnimationFrame, { cancelRequestAnimationFrame } from './getRequestAnimationFrame';
 
 const reqAnimFrame = getRequestAnimationFrame();
 

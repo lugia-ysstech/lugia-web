@@ -8,7 +8,7 @@ import React from 'react';
 import Item from './Item';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-import {FontSize,} from '../css';
+import {FontSize} from '../css';
 type FontItemState = {
   text: string,
 }
@@ -35,7 +35,7 @@ export default class  extends React.Component<any, FontItemState> {
   async getWidth (text: string): Promise<number> {
 
     return new Promise(res => {
-      this.setState({ text, }, () => {
+      this.setState({ text }, () => {
         res(this.width);
       });
     });
@@ -47,7 +47,7 @@ export default class  extends React.Component<any, FontItemState> {
   }
 
   render () {
-    const { text, } = this.state;
+    const { text } = this.state;
     const fillItem: Function = (cmp: Object): void => {
       this.item = cmp;
     };

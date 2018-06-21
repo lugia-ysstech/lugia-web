@@ -29,10 +29,10 @@ const InputDemo = () => {
 
   }
 
-  return <div style={{ top: '50px', position: 'absolute', }}>
+  return <div style={{ top: '50px', position: 'absolute' }}>
     {/*<Scroller {...config}/>*/}
     <Scroller {...config} onChange={onChange}
-              data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 11, 1, 2, 3, 134, 1234, 132, 41,]}/>
+              data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 11, 1, 2, 3, 134, 1234, 132, 41]}/>
   </div>;
 };
 export default InputDemo;

@@ -93,7 +93,7 @@ class Test extends React.Component<PropsType, StateType> {
     const state = this.state;
     const trigger = state.trigger;
     return (<div>
-      <div style={{ margin: '10px 20px', }}>
+      <div style={{ margin: '10px 20px' }}>
         <label>
           对齐方式:
           <select value={state.placement} onChange={this.onPlacementChange}>
@@ -164,7 +164,7 @@ class Test extends React.Component<PropsType, StateType> {
           <input
             type="text"
             onChange={this.onOffsetXChange}
-            style={{ width: 50, }}
+            style={{ width: 50 }}
           />
         </label>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -173,11 +173,11 @@ class Test extends React.Component<PropsType, StateType> {
           <input
             type="text"
             onChange={this.onOffsetYChange}
-            style={{ width: 50, }}
+            style={{ width: 50 }}
           />
         </label>
       </div>
-      <div style={{ margin: 100, position: 'relative', }}>
+      <div style={{ margin: 100, position: 'relative' }}>
         <Trigger
           offsetX={this.state.offsetX}
           offsetY={this.state.offsetY}
@@ -187,12 +187,12 @@ class Test extends React.Component<PropsType, StateType> {
           mask={this.state.mask}
           action={Object.keys(state.trigger)}
           popup={
-            <div style={{ border: '1px solid red', padding: 10, background: 'white', }}>
+            <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
               弹出来了
             </div>
           }
         >
-          <a href="#" style={{ margin: 20, }} onClick={preventDefault}>trigger</a>
+          <a href="#" style={{ margin: 20 }} onClick={preventDefault}>trigger</a>
         </Trigger>
       </div>
     </div>);
