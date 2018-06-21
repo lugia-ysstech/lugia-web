@@ -110,11 +110,11 @@
     "comma-dangle": [
       "error",
       {
-        "arrays": "always",
-        "objects": "always",
-        "imports": "always",
-        "exports": "never",
-        "functions": "never"
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
+        "functions": "only-multiline"
       }
     ],
     "yoda": "error",
