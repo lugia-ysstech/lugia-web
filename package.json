@@ -115,7 +115,8 @@
       "prettier",
       "lint:fix",
       "lint",
-      "lint:css"
+      "lint:css",
+      "flow"
     ]
   },
   "jest": {
