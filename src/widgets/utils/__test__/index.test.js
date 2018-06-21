@@ -6,11 +6,10 @@ import { adjustValue, cacheOnlyFirstCall, deleteValue, getElementPosition, split
 const { expect: exp } = chai;
 
 describe('utils', () => {
-
   it('cacheOnlyFirstCall', () => {
     let callCount = 0;
 
-    function add (a, b) {
+    function add(a, b) {
       callCount++;
       return a + b;
     }
@@ -28,24 +27,27 @@ describe('utils', () => {
     exp(callCount).to.be.equal(2);
   });
   it('getElementPosition', () => {
+    exp(
+      getElementPosition({
+        offsetTop: 5,
+        offsetLeft: 5,
+      })
+    ).to.be.eql({ x: 5, y: 5 });
 
-    exp(getElementPosition({
-      offsetTop: 5,
-      offsetLeft: 5,
-    })).to.be.eql({ x: 5, y: 5 });
-
-    exp(getElementPosition({
-      offsetTop: 5,
-      offsetLeft: 2,
-      offsetParent: {
-        offsetTop: 4,
-        offsetLeft: 1,
+    exp(
+      getElementPosition({
+        offsetTop: 5,
+        offsetLeft: 2,
         offsetParent: {
-          offsetTop: 3,
-          offsetLeft: 0,
+          offsetTop: 4,
+          offsetLeft: 1,
+          offsetParent: {
+            offsetTop: 3,
+            offsetLeft: 0,
+          },
         },
-      },
-    })).to.be.eql({ x: 2 + 1 + 0, y: 5 + 4 + 3 });
+      })
+    ).to.be.eql({ x: 2 + 1 + 0, y: 5 + 4 + 3 });
   });
 
   it('splitStr', () => {
@@ -60,7 +62,7 @@ describe('utils', () => {
     createDeletValueCase([1, 2, 3], [1, 2], 3);
   });
 
-  function createDeletValueCase (target, expResult, value) {
+  function createDeletValueCase(target, expResult, value) {
     deleteValue(target, value);
     exp(target).to.be.eql(expResult);
   }
@@ -80,7 +82,6 @@ describe('utils', () => {
     exp(adjustValue(10, 3)).to.be.equal(12);
     exp(adjustValue(11, 3)).to.be.equal(12);
     exp(adjustValue(12, 3)).to.be.equal(12);
-
 
     exp(adjustValue('0', 3)).to.be.equal(0);
     exp(adjustValue('3', 3)).to.be.equal(3);

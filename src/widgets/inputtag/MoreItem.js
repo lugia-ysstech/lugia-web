@@ -8,12 +8,13 @@ import React from 'react';
 import Item from './Item';
 import Widget from '../consts/index';
 
-
-export default class  extends React.Component<any, any> {
+export default class extends React.Component<any, any> {
   static displayName = Widget.InputTagMoreItem;
-  render () {
+  render() {
     return (
-      <Item closeable={false} {...this.props}>...</Item>
+      <Item closeable={false} {...this.props}>
+        ...
+      </Item>
     );
   }
 }

@@ -11,7 +11,8 @@ import {
   DefaultHelp,
   getFocusShadow,
   getInputBorderColor,
-  getInputBorderHoverColor, Height,
+  getInputBorderHoverColor,
+  Height,
   Padding,
   RadiusSize,
 } from '../css/input';
@@ -29,22 +30,22 @@ type InputProps = {|
   disabled: boolean,
   validateStatus: ValidateStatus,
   help: ?string,
-  placeholder?: string;
+  placeholder?: string,
   prefix?: React$Element<any>,
   getTheme: Function,
   suffix?: React$Element<any>,
   onChange?: (newValue: any, oldValue: any) => void,
-  onKeyUp?: (event: KeyboardEvent) => void;
-  onKeyDown?: (event: KeyboardEvent) => void;
-  onKeyPress?: (event: KeyboardEvent) => void;
-  onFocus?: (event: UIEvent) => void;
-  onBlur?: (event: UIEvent) => void;
+  onKeyUp?: (event: KeyboardEvent) => void,
+  onKeyDown?: (event: KeyboardEvent) => void,
+  onKeyPress?: (event: KeyboardEvent) => void,
+  onFocus?: (event: UIEvent) => void,
+  onBlur?: (event: UIEvent) => void,
   /*
    * 当键入回车时触发事件
    */
-  onEnter?: (event: UIEvent) => void;
+  onEnter?: (event: UIEvent) => void,
   defaultValue?: string,
-  value?: string
+  value?: string,
 |};
 const getWidth = props => {
   const { theme = {} } = props;
@@ -57,14 +58,13 @@ const CommonInputStyle = styled.input`
   border: 1px solid ${getInputBorderColor};
   cursor: text;
   line-height: 1.5;
-  font-size: ${FontSize}; 
-  height:${em(Height)};
+  font-size: ${FontSize};
+  height: ${em(Height)};
   display: inline-block;
   padding: ${em(Padding)} ${em(Padding + 1)};
   font-family: inherit;
   margin: 0;
-  ${getWidth}
-  &:hover {
+  ${getWidth} &:hover {
     border-color: ${getInputBorderHoverColor};
   }
 
@@ -72,8 +72,8 @@ const CommonInputStyle = styled.input`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-image: none;
   color: rgba(0, 0, 0, 0.65);
-  &::placeholder{
-    color: rgba(0,0,0,0.25);
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.25);
   }
   &:focus {
     ${getFocusShadow};
@@ -82,8 +82,7 @@ const CommonInputStyle = styled.input`
 
 const InputContainer = styled.span`
   position: relative;
-  ${getWidth}
-  display: inline-block;
+  ${getWidth} display: inline-block;
   background-color: #fff;
 `;
 const LeftPadding = 5;
@@ -156,7 +155,7 @@ class TextBox extends Component<InputProps, InputState> {
   input: any;
   static displayName = Widget.Input;
 
-  constructor (props: InputProps) {
+  constructor(props: InputProps) {
     super(props);
     const { defaultValue = '' } = props;
     this.state = { value: defaultValue };
@@ -168,7 +167,7 @@ class TextBox extends Component<InputProps, InputState> {
     this.setValue(value);
   };
 
-  setValue (value: string): void {
+  setValue(value: string): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
     if ('value' in this.props === false) {
@@ -183,7 +182,7 @@ class TextBox extends Component<InputProps, InputState> {
     }
   }
 
-  render () {
+  render() {
     const { props } = this;
     const { prefix, suffix } = props;
     if (!suffix && !prefix) {
@@ -191,11 +190,13 @@ class TextBox extends Component<InputProps, InputState> {
     }
     const { getTheme } = props;
 
-    const result = <InputContainer className="sv" theme={getTheme()}>
-      {this.generatePrefix()}
-      {this.generateInput(Input)}
-      {this.generateSuffix()}
-    </InputContainer>;
+    const result = (
+      <InputContainer className="sv" theme={getTheme()}>
+        {this.generatePrefix()}
+        {this.generateInput(Input)}
+        {this.generateSuffix()}
+      </InputContainer>
+    );
     const { validateStatus } = props;
 
     if (validateStatus === 'sucess') {
@@ -203,12 +204,10 @@ class TextBox extends Component<InputProps, InputState> {
     }
     const { help } = props;
 
-    return <ErrorTip title={help}>
-      {result}
-    </ErrorTip>;
+    return <ErrorTip title={help}>{result}</ErrorTip>;
   }
 
-  generatePrefix (): React$Element<any> | null {
+  generatePrefix(): React$Element<any> | null {
     const { prefix } = this.props;
     if (prefix) {
       return <Prefix>{prefix}</Prefix>;
@@ -216,7 +215,7 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
-  generateSuffix (): React$Element<any> | null {
+  generateSuffix(): React$Element<any> | null {
     const { suffix } = this.props;
     if (suffix) {
       return <Suffix>{suffix}</Suffix>;
@@ -224,7 +223,7 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
-  focus () {
+  focus() {
     if (this.input) {
       setTimeout(() => {
         this.input.focus();
@@ -232,23 +231,27 @@ class TextBox extends Component<InputProps, InputState> {
     }
   }
 
-  generateInput (Input: Function): React$Element<any> {
+  generateInput(Input: Function): React$Element<any> {
     const { props, state } = this;
     const { suffix, prefix, validateStatus } = props;
     const { onKeyUp, onKeyPress, onFocus, onBlur, placeholder } = props;
-    return <Input innerRef={node => this.input = node}
-                  validateStatus={validateStatus}
-                  suffix={suffix}
-                  prefix={prefix}
-                  theme={this.props.getTheme()}
-                  value={Support.getValue(props, state)}
-                  onKeyUp={onKeyUp}
-                  onKeyPress={onKeyPress}
-                  placeholder={placeholder}
-                  onKeyDown={this.onKeyDown}
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  onChange={this.onChange}/>;
+    return (
+      <Input
+        innerRef={node => (this.input = node)}
+        validateStatus={validateStatus}
+        suffix={suffix}
+        prefix={prefix}
+        theme={this.props.getTheme()}
+        value={Support.getValue(props, state)}
+        onKeyUp={onKeyUp}
+        onKeyPress={onKeyPress}
+        placeholder={placeholder}
+        onKeyDown={this.onKeyDown}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onChange={this.onChange}
+      />
+    );
   }
 
   onKeyDown = (event: KeyboardEvent) => {

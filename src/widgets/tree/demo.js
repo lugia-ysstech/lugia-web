@@ -11,11 +11,9 @@ import Theme from '../theme';
 
 const { TreeNode } = Tree;
 
-
 const bigTree = [];
 
-function getStringKey () {
-
+function getStringKey() {
   for (let a = 0; a < 5; a++) {
     bigTree.push({
       key: `${a}`,
@@ -50,13 +48,11 @@ function getStringKey () {
       }
     }
   }
-
 }
 
 getNumberKey();
 
-function getNumberKey () {
-
+function getNumberKey() {
   let key = 0;
   for (let a = 0; a < 5; a++) {
     const keyA = key++;
@@ -102,29 +98,45 @@ const now = new Date();
 const len = bigTree.length;
 let root = 0;
 for (let i = 0; i < len; i++) {
-  const node = bigTree[ i ];
+  const node = bigTree[i];
   if (!node.pid) {
     root++;
   }
 }
 console.info(new Date() - now);
-const onSelect = (selectedKeys, info) => {
-  },
-  onCheck = (checkedKeys, info) => {
-  };
+const onSelect = (selectedKeys, info) => {},
+  onCheck = (checkedKeys, info) => {};
 
 const rowData = [
   { key: '1', title: '1' },
   { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true },
   { key: '1.1.1', title: '1.1.1', pid: '1.1', path: '1/1.1' },
   { key: '1.1.1.1', title: '1.1.1.1', pid: '1.1.1', path: '1/1.1/1.1.1' },
-  { key: '1.1.1.1.1', title: '1.1.1.1.1', pid: '1.1.1.1', path: '1/1.1/1.1.1/1.1.1.1', isLeaf: true },
+  {
+    key: '1.1.1.1.1',
+    title: '1.1.1.1.1',
+    pid: '1.1.1.1',
+    path: '1/1.1/1.1.1/1.1.1.1',
+    isLeaf: true,
+  },
   { key: '1.2', title: '1.2', pid: '1', path: '1' },
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
   { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
-  { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true },
-  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true },
+  {
+    key: '1.2.2.1.1',
+    title: '1.2.2.1.1',
+    pid: '1.2.2.1',
+    path: '1/1.2/1.2.2/1.2.2.1',
+    isLeaf: true,
+  },
+  {
+    key: '1.2.2.1.2',
+    title: '1.2.2.1.2',
+    pid: '1.2.2.1',
+    path: '1/1.2/1.2.2/1.2.2.1',
+    isLeaf: true,
+  },
   { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
 
   { key: '1.3', title: '1.3', pid: '1', path: '1' },
@@ -155,24 +167,25 @@ const rowData = [
 
 console.info(bigTree.length);
 
-
 class LimitTree extends React.Component<Object, Object> {
-  constructor (props) {
+  constructor(props) {
     super(props);
     const { value } = props;
     this.state = { value };
   }
 
-  render () {
+  render() {
     const { value } = this.state;
     console.info('render', value);
-    return [<Tree
-      expandAll
-      {...this.props}
-      // value={value}
-      onChange={this.onChange}
-    >
-    </Tree>, <button onClick={this.onClick}></button>];
+    return [
+      <Tree
+        expandAll
+        {...this.props}
+        // value={value}
+        onChange={this.onChange}
+      />,
+      <button onClick={this.onClick} />,
+    ];
   }
 
   onChange = (value, displayValue) => {
@@ -182,7 +195,7 @@ class LimitTree extends React.Component<Object, Object> {
   all: boolean;
   onClick = () => {
     this.setState({ value: '1.1' });
-  }
+  };
 }
 
 const config = {
@@ -191,13 +204,24 @@ const config = {
   },
 };
 export default () => {
-  return [<Theme config={config}><LimitTree data={[{ key: '1', title: 'hello1', igron: false }, {
-    key: '1.1',
-    title: 'hello2',
-    pid: '1',
-    isLeaf: false,
-    path: '1',
-    igron: true,
-  }]} expandAll={true} mutliple={true} igronSelectField={'igron'}
-  /></Theme>];
+  return [
+    <Theme config={config}>
+      <LimitTree
+        data={[
+          { key: '1', title: 'hello1', igron: false },
+          {
+            key: '1.1',
+            title: 'hello2',
+            pid: '1',
+            isLeaf: false,
+            path: '1',
+            igron: true,
+          },
+        ]}
+        expandAll={true}
+        mutliple={true}
+        igronSelectField={'igron'}
+      />
+    </Theme>,
+  ];
 };

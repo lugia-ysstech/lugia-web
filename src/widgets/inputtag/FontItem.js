@@ -8,23 +8,23 @@ import React from 'react';
 import Item from './Item';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-import {FontSize} from '../css';
+import { FontSize } from '../css';
 type FontItemState = {
   text: string,
-}
+};
 const HiddenItem = styled(Item)`
   font-size: ${FontSize};
   position: absolute !important;
   top: -943124px;
 `;
-export default class  extends React.Component<any, FontItemState> {
+export default class extends React.Component<any, FontItemState> {
   static displayName = Widget.InputTagFontItem;
 
   state: FontItemState;
   width: number;
   item: ?Item;
 
-  constructor (props: any) {
+  constructor(props: any) {
     super(props);
     this.state = {
       text: '',
@@ -32,8 +32,7 @@ export default class  extends React.Component<any, FontItemState> {
     this.width = 0;
   }
 
-  async getWidth (text: string): Promise<number> {
-
+  async getWidth(text: string): Promise<number> {
     return new Promise(res => {
       this.setState({ text }, () => {
         res(this.width);
@@ -41,25 +40,22 @@ export default class  extends React.Component<any, FontItemState> {
     });
   }
 
-
-  shouldComponentUpdate (_: Object, nextState: FontItemState) {
+  shouldComponentUpdate(_: Object, nextState: FontItemState) {
     return this.state.text !== nextState.text;
   }
 
-  render () {
+  render() {
     const { text } = this.state;
     const fillItem: Function = (cmp: Object): void => {
       this.item = cmp;
     };
-    return (
-      <HiddenItem innerRef={fillItem}>{text}</HiddenItem>
-    );
+    return <HiddenItem innerRef={fillItem}>{text}</HiddenItem>;
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.componentDidUpdate();
   }
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (this.item) {
       this.width = this.item.getWidth();
     }

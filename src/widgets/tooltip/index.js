@@ -31,8 +31,8 @@ const getTriggerByArrow = props => {
   }
 };
 const ToolTrigger = styled(Trigger)`
-  ${getTriggerByArrow}
-  box-shadow: none;`;
+  ${getTriggerByArrow} box-shadow: none;
+`;
 
 const DefaultColor = 'rgba(0, 0, 0, 0.75)';
 const DefaultFontColor = '#fff';
@@ -48,10 +48,10 @@ const getColor = (props: Object) => {
 };
 
 const Content = styled.div`
-    font-size: ${FontSize};
-    line-height: 1;
-    color: ${getColor};
-    box-sizing: border-box;
+  font-size: ${FontSize};
+  line-height: 1;
+  color: ${getColor};
+  box-sizing: border-box;
 `;
 const getArrow = props => {
   const { fx } = props;
@@ -89,31 +89,30 @@ const getArrow = props => {
   }
 };
 const Arrow = styled.div`
-    border-color: transparent;
-    ${getArrow}
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    font-size: ${FontSize};
-    line-height: 1;
-    color: ${getColor};
+  border-color: transparent;
+  ${getArrow} position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  font-size: ${FontSize};
+  line-height: 1;
+  color: ${getColor};
 `;
 
 const Message = styled.div`
-    box-sizing: border-box;
-    user-select: none;
-    font-size: ${FontSize};
-    line-height: 1.5;
-    max-width: 250px;
-    padding: 6px 8px;
-    color: ${getFontColor};
-    text-align: left;
-    text-decoration: none;
-    background-color:  ${getColor};
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    min-height: 32px;
+  box-sizing: border-box;
+  user-select: none;
+  font-size: ${FontSize};
+  line-height: 1.5;
+  max-width: 250px;
+  padding: 6px 8px;
+  color: ${getFontColor};
+  text-align: left;
+  text-decoration: none;
+  background-color: ${getColor};
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-height: 32px;
 `;
 const builtinPlacements = {
   left: ['cr', 'cl'],
@@ -139,37 +138,41 @@ type TooltipProps = {
 };
 
 class Tooltip extends React.Component<TooltipProps, any> {
-  getTargetDom () {
+  getTargetDom() {
     return document.getElementById('root');
   }
 
-  static  defaultProps = {
+  static defaultProps = {
     action: ['click'],
-    getTheme () {
+    getTheme() {
       return {};
     },
   };
   trigger: Object;
 
-  render () {
+  render() {
     const { placement, action, title } = this.props;
     const { getTheme } = this.props;
     const theme = getTheme();
     const fx = this.getFx(placement);
-    const getTarget: Function = cmp => this.trigger = cmp;
+    const getTarget: Function = cmp => (this.trigger = cmp);
 
-    return <ToolTrigger align={placement}
-                        fx={fx}
-                        innerRef={getTarget}
-                        action={action}
-                        popup={
-                          <Content theme={theme}>
-                            <Arrow fx={fx} theme={theme}/>
-                            <Message theme={theme}>{title}</Message>
-                          </Content>
-                        }>
-      {this.props.children}
-    </ToolTrigger>;
+    return (
+      <ToolTrigger
+        align={placement}
+        fx={fx}
+        innerRef={getTarget}
+        action={action}
+        popup={
+          <Content theme={theme}>
+            <Arrow fx={fx} theme={theme} />
+            <Message theme={theme}>{title}</Message>
+          </Content>
+        }
+      >
+        {this.props.children}
+      </ToolTrigger>
+    );
   }
 
   onSelectAlign = (align: string) => () => {

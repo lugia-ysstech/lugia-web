@@ -32,13 +32,13 @@ type ValidateStatus = 'sucess' | 'error';
 
 type TreeSelectProps = {
   validateStatus: ValidateStatus,
-  help?: string;
+  help?: string,
 
   data: Array<Object>,
   getTheme: Function,
   value?: Array<string>,
   displayValue?: Array<string>,
-  svThemVersion?: number;
+  svThemVersion?: number,
   onRefresh?: Function,
   displayField: string,
   defaultValue?: string,
@@ -61,7 +61,7 @@ type TreeSelectProps = {
 
   /* create by ZhangBoPing */
   label: string,
-  labelSize: number
+  labelSize: number,
 };
 type TreeSelectState = {
   open: boolean,
@@ -74,7 +74,7 @@ type TreeSelectState = {
   selectCount: number,
   end: number,
   start: number,
-  themeConfig: Object
+  themeConfig: Object,
 };
 const SelectedIcon = 'SelectedIcon';
 const Text = styled.span`
@@ -91,7 +91,7 @@ const Text = styled.span`
 const Label = styled.span`
   display: inline-block;
   text-overflow: ellipsis;
-  width: ${props => (props.size? `${props.size}px`: 'auto')};
+  width: ${props => (props.size ? `${props.size}px` : 'auto')};
   overflow: hidden;
   white-space: nowrap;
   float: left;
@@ -113,7 +113,7 @@ const DefaultLimitCount = 999999;
 
 class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   static defaultProps = {
-    getTheme () {
+    getTheme() {
       return {};
     },
     mutliple: false,
@@ -134,7 +134,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   queryInput: Object;
   queryHandle: number;
 
-  constructor (props: TreeSelectProps) {
+  constructor(props: TreeSelectProps) {
     super(props);
     const { value, displayValue } = this.getInitValue(props);
     this.state = {
@@ -159,19 +159,23 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   //TODO:受限问题
   //TODO: 放到Table元素中半选状态的样式问题
   //TODO: 选中结点时如果子节点特备多的时候性能有问题。
-  getInitValue (props: TreeSelectProps) {
+  getInitValue(props: TreeSelectProps) {
     const { value, displayValue } = Support.getCodeItemArray(props);
-    return { value, displayValue: displayValue && displayValue.length > 0 ? displayValue : [...value] };
+    return {
+      value,
+      displayValue: displayValue && displayValue.length > 0 ? displayValue : [...value],
+    };
   }
 
-  shouldComponentUpdate (nextProps: TreeSelectProps, nextState: TreeSelectState) {
+  shouldComponentUpdate(nextProps: TreeSelectProps, nextState: TreeSelectState) {
     const { props } = this;
     const dataChanged = props.data !== nextProps.data;
     if (dataChanged === true) {
       return true;
     }
     const { state } = this;
-    return state.query !== nextState.query ||
+    return (
+      state.query !== nextState.query ||
       state.current !== nextState.current ||
       state.treeFilter !== nextState.treeFilter ||
       state.start !== nextState.start ||
@@ -183,15 +187,19 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       props.svThemVersion !== nextProps.svThemVersion ||
       state.selectCount !== nextState.selectCount ||
       state.value !== nextState.value ||
-      state.displayValue !== nextState.displayValue;
+      state.displayValue !== nextState.displayValue
+    );
   }
 
-  componentWillReceiveProps (nextProps: TreeSelectProps) {
+  componentWillReceiveProps(nextProps: TreeSelectProps) {
     if (!Support.isNotLimit(nextProps)) {
       const { value = [] } = nextProps;
       this.changeOldValue(value);
 
-      if (nextProps.value !== this.props.value || nextProps.displayValue !== this.props.displayValue) {
+      if (
+        nextProps.value !== this.props.value ||
+        nextProps.displayValue !== this.props.displayValue
+      ) {
         const { value, displayValue } = this.getInitValue(nextProps);
         this.setState({ value, displayValue, selectCount: value.length });
       }
@@ -203,16 +211,20 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   }
 
-  getLabel(props){
+  getLabel(props) {
     /* create by ZhangBoPing */
-    const {label, labelSize} = props;
-    return <Label key="textLabel" size={labelSize}>{label}</Label>;
+    const { label, labelSize } = props;
+    return (
+      <Label key="textLabel" size={labelSize}>
+        {label}
+      </Label>
+    );
   }
 
-  getInner(props, state){
+  getInner(props, state) {
     /* create by ZhangBoPing */
-    const {data,disabled,help,validateStatus,placeholder} = props;
-    const {current,start,treeFilter,value,displayValue,selectCount,query} = state;
+    const { data, disabled, help, validateStatus, placeholder } = props;
+    const { current, start, treeFilter, value, displayValue, selectCount, query } = state;
 
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
@@ -220,24 +232,33 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getQueryInput: Function = (cmp: Object) => {
       this.queryInput = cmp;
     };
-    const tree = [<QueryInput key="queryContainer"><Input key="queryInput" ref={getQueryInput} placeholder="输入查询条件"
-                                                           value={query}
-                                                           onChange={this.onQueryInputChange}
-                                                           suffix={this.getSuffix()}
-                                                           onKeyDown={this.onQueryInputKeyDown}/></QueryInput>,
-      <Tree data={data}
-            key="tree"
-            {...props}
-            className="sv"
-            current={current}
-            start={start}
-            onScroller={this.onScroller}
-            query={treeFilter}
-            ref={getTree}
-            value={value}
-            onChange={this.onTreeChange}
-            displayValue={displayValue}>
-      </Tree>];
+    const tree = [
+      <QueryInput key="queryContainer">
+        <Input
+          key="queryInput"
+          ref={getQueryInput}
+          placeholder="输入查询条件"
+          value={query}
+          onChange={this.onQueryInputChange}
+          suffix={this.getSuffix()}
+          onKeyDown={this.onQueryInputKeyDown}
+        />
+      </QueryInput>,
+      <Tree
+        data={data}
+        key="tree"
+        {...props}
+        className="sv"
+        current={current}
+        start={start}
+        onScroller={this.onScroller}
+        query={treeFilter}
+        ref={getTree}
+        value={value}
+        onChange={this.onTreeChange}
+        displayValue={displayValue}
+      />,
+    ];
 
     if (this.isMutliple()) {
       let str = `已选择${selectCount}个结点`;
@@ -256,60 +277,72 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     };
 
     return (
-      <Trigger popup={tree}
-               onPopupVisibleChange={this.onTreePopupVisibleChange}
-               align="bottomLeft"
-               key="trigger"
-               ref={getTreeTriger}
-               action={disabled ? [] : ['click']}
-               hideAction={['click']}
-               >
-        <InputTag key="inputtag"
-                  help={help}
-                  validateStatus={validateStatus}
-                  onFocus={this.onFocus}
-                  disabled={disabled}
-                  value={value}
-                  displayValue={displayValue}
-                  onChange={this.onInputTagChange}
-                  mutliple={this.isMutliple()}
-                  placeholder={placeholder}
-                  ref={getInputTag}
-                  onPopupVisibleChange={this.onInputTagPopupVisibleChange}
-                  />
+      <Trigger
+        popup={tree}
+        onPopupVisibleChange={this.onTreePopupVisibleChange}
+        align="bottomLeft"
+        key="trigger"
+        ref={getTreeTriger}
+        action={disabled ? [] : ['click']}
+        hideAction={['click']}
+      >
+        <InputTag
+          key="inputtag"
+          help={help}
+          validateStatus={validateStatus}
+          onFocus={this.onFocus}
+          disabled={disabled}
+          value={value}
+          displayValue={displayValue}
+          onChange={this.onInputTagChange}
+          mutliple={this.isMutliple()}
+          placeholder={placeholder}
+          ref={getInputTag}
+          onPopupVisibleChange={this.onInputTagPopupVisibleChange}
+        />
       </Trigger>
     );
   }
 
-  render () {
+  render() {
     /* update by ZhangBoPing */
     const { props, state } = this;
 
-    const { label} = props;
+    const { label } = props;
     const { themeConfig } = state;
 
-    return <Theme config={themeConfig} key="treesel_theme">
-      {label? 
-        [this.getLabel(props), <FloatLeft key="floatLeft">{this.getInner(props, state)}</FloatLeft>,<ClearFloat key="clearFloat"/>]:
-        this.getInner(props, state)}
-    </Theme>;
+    return (
+      <Theme config={themeConfig} key="treesel_theme">
+        {label
+          ? [
+              this.getLabel(props),
+              <FloatLeft key="floatLeft">{this.getInner(props, state)}</FloatLeft>,
+              <ClearFloat key="clearFloat" />,
+            ]
+          : this.getInner(props, state)}
+      </Theme>
+    );
   }
 
-  onFocus = () => {
-
-  };
+  onFocus = () => {};
 
   getSuffix = () => {
     const result = [];
     if (this.isCanInput()) {
-      result.push(<AddIcon key="add" onClick={this.onAdd} viewClass={SelectedIcon}></AddIcon>);
+      result.push(<AddIcon key="add" onClick={this.onAdd} viewClass={SelectedIcon} />);
     }
     if (this.isMutliple()) {
-      result.push(<CheckIcon checked={this.state.selectAll} key="selAll" onClick={this.onSelectAll}
-                             viewClass={SelectedIcon}></CheckIcon>);
+      result.push(
+        <CheckIcon
+          checked={this.state.selectAll}
+          key="selAll"
+          onClick={this.onSelectAll}
+          viewClass={SelectedIcon}
+        />
+      );
     }
-    result.push(<Refresh key="refresh" onClick={this.onRefresh} viewClass={SelectedIcon}></Refresh>);
-    result.push(<ClearIcon key="clear" onClick={this.onClearQuery} viewClass={SelectedIcon}></ClearIcon>);
+    result.push(<Refresh key="refresh" onClick={this.onRefresh} viewClass={SelectedIcon} />);
+    result.push(<ClearIcon key="clear" onClick={this.onClearQuery} viewClass={SelectedIcon} />);
     return result;
   };
   onClearQuery = () => {
@@ -325,12 +358,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     onRefresh && onRefresh();
   };
 
-  isMutliple () {
+  isMutliple() {
     const { mutliple } = this.props;
     return mutliple;
   }
 
-  isCanInput () {
+  isCanInput() {
     const { canInput } = this.props;
     return canInput;
   }
@@ -380,10 +413,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   };
 
-  getCurrentRow (): Object | null {
+  getCurrentRow(): Object | null {
     const data = this.getTree().getViewData();
-    if (data && data[ this.state.current ]) {
-      return data[ this.state.current ];
+    if (data && data[this.state.current]) {
+      return data[this.state.current];
     }
     return null;
   }
@@ -392,7 +425,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.appendValue();
   };
 
-  appendValue () {
+  appendValue() {
     const inputValue = this.state.query;
     if (inputValue && inputValue.trim() && this.isCanInput() && !this.isLimit()) {
       clearTimeout(this.queryHandle);
@@ -411,12 +444,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   }
 
-  isLimit (): boolean {
+  isLimit(): boolean {
     const { limitCount = DefaultLimitCount } = this.props;
     return this.state.value.length >= limitCount;
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (this.props.disabled) {
       this.setTreePopupVisible(false);
     }
@@ -424,7 +457,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onSelectAll = () => {
-
     const selectAll = !this.isSelectAll();
     const { onSelect } = this.props;
     if (selectAll === true) {
@@ -439,8 +471,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       limitCount = limitCount - value.length;
       const inTreee = this.getInTree();
       for (let i = 0; i < data.length; i++) {
-        const { key, [ displayField ]: title } = data[ i ];
-        if (inTreee[ key ]) {
+        const { key, [displayField]: title } = data[i];
+        if (inTreee[key]) {
           continue;
         }
         if (cnt >= limitCount) break;
@@ -457,28 +489,28 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       const items = this.getQueryData();
       const len = items.length;
       for (let i = 0; i < len; i++) {
-        const { key } = items[ i ];
-        const item = valueObj[ key ];
+        const { key } = items[i];
+        const item = valueObj[key];
         if (item) {
-          delete valueObj[ key ];
+          delete valueObj[key];
         }
       }
       const valArray = Object.keys(valueObj);
       const dispArray = [];
       for (let i = 0; i < valArray.length; i++) {
-        dispArray.push(valueObj[ valArray[ i ] ].text);
+        dispArray.push(valueObj[valArray[i]].text);
       }
       onSelect && onSelect({ value: [], displayValue: [] });
       this.setValue(valArray, dispArray, {});
     }
   };
 
-  canSelect (row: Object): boolean {
+  canSelect(row: Object): boolean {
     const tree = this.getTree();
     return tree && tree.canSelect(row);
   }
 
-  getNotInTree (): Object {
+  getNotInTree(): Object {
     const tree = this.getTree();
     if (!tree) {
       return {};
@@ -486,7 +518,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return tree.getNotInTree();
   }
 
-  getInTree (): Object {
+  getInTree(): Object {
     const tree = this.getTree();
     if (!tree) {
       return {};
@@ -494,32 +526,32 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return tree.getInTree();
   }
 
-  getViewData (): Array<Object> {
+  getViewData(): Array<Object> {
     if (this.treeCompontIsEmpty()) {
       return [];
     }
     return this.getTree().getViewData();
   }
 
-  getQueryData (): Array<Object> {
+  getQueryData(): Array<Object> {
     if (this.treeCompontIsEmpty()) {
       return [];
     }
     return this.getTree().getQueryData();
   }
 
-  getTree () {
+  getTree() {
     return this.treeCmp.getThemeTarget();
   }
 
-  isSelectAll (): boolean {
+  isSelectAll(): boolean {
     if (this.treeCompontIsEmpty()) {
       return false;
     }
     return this.getTree().isSelectAll();
   }
 
-  treeCompontIsEmpty () {
+  treeCompontIsEmpty() {
     return !this.treeCmp || !this.treeCmp.getThemeTarget();
   }
 
@@ -579,8 +611,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.setValue(value, displayValue, {});
   };
 
-  getInputTagCount (): number {
-
+  getInputTagCount(): number {
     const inputTag = this.getInputTag();
     if (!inputTag) {
       return 0;
@@ -588,7 +619,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return inputTag.getCount();
   }
 
-  getInputTagValueObject (): Object {
+  getInputTagValueObject(): Object {
     const inputTag = this.getInputTag();
     if (!inputTag) {
       return {};
@@ -596,7 +627,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return inputTag.getValueObject();
   }
 
-  getInputTag () {
+  getInputTag() {
     if (!this.inputTag) {
       return null;
     }
@@ -613,36 +644,39 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     });
   };
 
-  setValue (value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
+  setValue(value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
     this.onChange(value, displayValue);
     if (Support.isNotLimit(this.props)) {
-
       const realyVal = [];
       const realDisp = [];
       if (value && value.length > 0) {
         const len = value.length;
         const isHas = {};
         for (let i = 0; i < len; i++) {
-          const key = value[ i ];
-          const title = displayValue[ i ];
-          if (isHas[ key ]) {
+          const key = value[i];
+          const title = displayValue[i];
+          if (isHas[key]) {
             continue;
           }
-          isHas[ key ] = true;
+          isHas[key] = true;
           realyVal.push(key);
           realDisp.push(title);
         }
       }
-      this.setState({
-        value: realyVal,
-        displayValue: realDisp, ...other,
-        selectCount: realyVal.length,
-      }, callback);
+      this.setState(
+        {
+          value: realyVal,
+          displayValue: realDisp,
+          ...other,
+          selectCount: realyVal.length,
+        },
+        callback
+      );
       this.changeOldValue(value);
     }
   }
 
-  setTreePopupVisible (visible: boolean) {
+  setTreePopupVisible(visible: boolean) {
     if (this.treeTriger && this.treeTriger.getThemeTarget()) {
       this.treeTriger.getThemeTarget().setPopupVisible(visible);
     }
@@ -666,7 +700,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   };
 
-  getRows (valArray: Array<any> = []): Array<Object> {
+  getRows(valArray: Array<any> = []): Array<Object> {
     if (!valArray || valArray.length <= 0) {
       return [];
     }
@@ -677,12 +711,12 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return tree.getRows(valArray);
   }
 
-  changeOldValue (value: any) {
+  changeOldValue(value: any) {
     this.oldValue = value;
   }
 
-  getTheme (): Object {
-    const { getTheme = () => ({}), label} = this.props;
+  getTheme(): Object {
+    const { getTheme = () => ({}), label } = this.props;
     const theme = getTheme();
     const { width } = theme;
     let queryInputConfig = {};
@@ -696,11 +730,11 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { height = DefaultHeight } = treeConfig;
     treeConfig.height = adjustValue(height, MenuItemHeight);
     return {
-      [ Widget.Tree ]: treeConfig,
-      [ Widget.Trigger ]: label? Object.assign({}, theme, {float:'left'}): theme,
-      [ Widget.InputTag ]: inputTag,
-      [ SelectedIcon ]: { color: '#d9d9d9', hoverColor: '#108ee9' },
-      [ Widget.Input ]: queryInputConfig,
+      [Widget.Tree]: treeConfig,
+      [Widget.Trigger]: label ? Object.assign({}, theme, { float: 'left' }) : theme,
+      [Widget.InputTag]: inputTag,
+      [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9' },
+      [Widget.Input]: queryInputConfig,
     };
   }
 
@@ -708,7 +742,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.setState({ start });
   };
 
-  componentDidCatch () {
+  componentDidCatch() {
     this.setState({ start: 0 });
   }
 }

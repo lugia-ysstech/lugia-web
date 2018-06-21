@@ -34,14 +34,7 @@ export function traverseTreeNodes(treeNodes, callback) {
       if (item.props.children && item.type && item.type.isTreeNode) {
         traverse(item.props.children, pos, childrenPos, pos);
       }
-      callback(
-        item,
-        index,
-        pos,
-        item.key || pos,
-        childrenPos,
-        parentPos
-      );
+      callback(item, index, pos, item.key || pos, childrenPos, parentPos);
     });
   };
   traverse(treeNodes, 0, []);

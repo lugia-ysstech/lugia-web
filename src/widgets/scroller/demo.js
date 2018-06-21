@@ -8,7 +8,7 @@ import * as React from 'react';
 import ThrottleScroller from './ThrottleScroller';
 
 class Div extends React.Component<any, any> {
-  render () {
+  render() {
     return <div>hello</div>;
   }
 }
@@ -24,15 +24,19 @@ const InputDemo = () => {
     // value: 50,
   };
 
-  function onChange (v) {
+  function onChange(v) {
     console.info('滚动', v);
-
   }
 
-  return <div style={{ top: '50px', position: 'absolute' }}>
-    {/*<Scroller {...config}/>*/}
-    <Scroller {...config} onChange={onChange}
-              data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 11, 1, 2, 3, 134, 1234, 132, 41]}/>
-  </div>;
+  return (
+    <div style={{ top: '50px', position: 'absolute' }}>
+      {/*<Scroller {...config}/>*/}
+      <Scroller
+        {...config}
+        onChange={onChange}
+        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 11, 1, 2, 3, 134, 1234, 132, 41]}
+      />
+    </div>
+  );
 };
 export default InputDemo;

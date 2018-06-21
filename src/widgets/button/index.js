@@ -9,9 +9,7 @@ import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 
-
-const Text = styled.span`
-`;
+const Text = styled.span``;
 export type ButtonType = 'primary' | 'ghost' | 'dashed' | 'danger';
 export type ButtonShape = 'circle' | 'circle-outline';
 export type ButtonSize = 'small' | 'default' | 'large';
@@ -19,7 +17,7 @@ export type ButtonSize = 'small' | 'default' | 'large';
 type CSSProps = {
   shape?: ButtonShape,
   type?: ButtonType,
-}
+};
 
 export type ButtonProps = {
   children: React.Node,
@@ -75,7 +73,7 @@ const TypeCSS: { [key: ButtonType]: TypeColor } = {
 
 const getTypeCSS = (props: CSSProps) => {
   const { type = 'primary' } = props;
-  const { color, backgroundColor, borderColor } = TypeCSS[ type ];
+  const { color, backgroundColor, borderColor } = TypeCSS[type];
 
   return `
     color: ${color};
@@ -84,44 +82,50 @@ const getTypeCSS = (props: CSSProps) => {
   `;
 };
 const ButtonOut = styled.button`
-    color: #fff;
-    background-color: #108ee9;
-    border-color: #108ee9;
-    margin-right: 8px;
-    margin-bottom: 12px;
-    display: inline-block;
-    margin-bottom: 0;
-    text-align: center;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    line-height: 1.5;
-    padding: 4px 15px;
-    font-size: 12px;
-    border-radius: 4px;
-    user-select: none;
-    transition: all .3s cubic-bezier(.645,.045,.355,1);
-    position: relative;
-    ${getTypeCSS}
-    text-transform: none;
-    outline: 0;
-    &:hover{
-        color: #40a9ff;
-        background-color: #fff;
-        border-color: #40a9ff;
-    }
+  color: #fff;
+  background-color: #108ee9;
+  border-color: #108ee9;
+  margin-right: 8px;
+  margin-bottom: 12px;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  padding: 4px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  position: relative;
+  ${getTypeCSS} text-transform: none;
+  outline: 0;
+  &:hover {
+    color: #40a9ff;
+    background-color: #fff;
+    border-color: #40a9ff;
+  }
 `;
 ButtonOut.displayName = 'hello';
-export default ThemeProvider(class extends React.Component<ButtonProps, ButtonState> {
-  onClick = e => {
-    const { onClick } = this.props;
-    onClick && onClick(e);
-  };
+export default ThemeProvider(
+  class extends React.Component<ButtonProps, ButtonState> {
+    onClick = e => {
+      const { onClick } = this.props;
+      onClick && onClick(e);
+    };
 
-  render () {
-    const { children, type, shape } = this.props;
-    return <ButtonOut type={type} shape={shape} onClick={this.onClick}><Text>{children}</Text></ButtonOut>;
-  }
-}, Widget.Button);
+    render() {
+      const { children, type, shape } = this.props;
+      return (
+        <ButtonOut type={type} shape={shape} onClick={this.onClick}>
+          <Text>{children}</Text>
+        </ButtonOut>
+      );
+    }
+  },
+  Widget.Button
+);

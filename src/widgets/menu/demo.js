@@ -1,4 +1,4 @@
-  /**
+/**
  *
  * create by ligx
  *
@@ -15,25 +15,24 @@ for (let i = 0; i < 100000; i++) {
 }
 let i = 0;
 export default class extends React.Component<any, any> {
-  constructor (props: any) {
+  constructor(props: any) {
     super(props);
     this.state = { items: [] };
   }
 
-  render () {
+  render() {
     const { items = [] } = this.state;
-    return <div>
-      <button onClick={this.onClick}>test</button>
-      <Theme config={{ [Widget.Menu]: { width: 200, height: 350 } }}>
-        <Menu single data={items}>
-        </Menu>
-      </Theme>
-    </div>;
+    return (
+      <div>
+        <button onClick={this.onClick}>test</button>
+        <Theme config={{ [Widget.Menu]: { width: 200, height: 350 } }}>
+          <Menu single data={items} />
+        </Theme>
+      </div>
+    );
   }
 
   onClick = () => {
-
     this.setState({ items: items.slice(i++) });
-  }
-
+  };
 }

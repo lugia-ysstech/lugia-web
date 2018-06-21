@@ -22,7 +22,12 @@ import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
 import {
-  DefaultHelp, getFocusShadow, getInputBorderColor, getInputBorderHoverColor, Height, Padding,
+  DefaultHelp,
+  getFocusShadow,
+  getInputBorderColor,
+  getInputBorderHoverColor,
+  Height,
+  Padding,
   RadiusSize,
 } from '../css/input';
 import { FontSize } from '../css';
@@ -33,8 +38,8 @@ import ErrorTip from '../tooltip/ErrorTip';
 type ValidateStatus = 'sucess' | 'error';
 
 type InputTagProps = {
-  help?: string;
-  placeholder?: string;
+  help?: string,
+  placeholder?: string,
   getTheme: Function,
   onChange?: Function,
   onFocus?: Function,
@@ -67,8 +72,7 @@ const getBackground = props => {
   return props.disabled ? 'background: rgba(0,0,0,.05);' : '';
 };
 const Container = styled.div`
-  ${getWidth}
-  ${getBackground}
+  ${getWidth} ${getBackground}
   display: inline-block;
   position: relative;
   color: rgba(0, 0, 0, 0.65);
@@ -84,8 +88,7 @@ const OutContainer = styled.div`
   border-radius: ${RadiusSize};
   min-height: ${Height}px;
   padding-bottom: 3px;
-  ${getBorderColor}
-  :hover {
+  ${getBorderColor} :hover {
     border-color: ${getInputBorderHoverColor};
   }
 `;
@@ -94,7 +97,7 @@ const IconButton: Object = styled(Icon)`
   right: 0px;
   position: absolute;
   margin-top: -8px;
-  color: rgba(0,0,0,.25);
+  color: rgba(0, 0, 0, 0.25);
 `;
 
 IconButton.displayName = Widget.InputTagClearButton;
@@ -104,7 +107,7 @@ const marginRight = 7;
 const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
 };
-const InnerContainer = styled.div `
+const InnerContainer = styled.div`
   background: white;
   ${getWidthBySpan(-getContentWidth(0))}
   height: ${Height - Padding}px;
@@ -119,7 +122,7 @@ const SingleInnerContainer = InnerContainer.extend`
   padding-right: 14px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
 `;
 const List = styled.ul`
   list-style: none;
@@ -162,11 +165,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   needMoreItem: boolean;
   oldWidth: number;
 
-  isMutliple () {
+  isMutliple() {
     return this.props.mutliple;
   }
 
-  constructor (props: InputTagProps) {
+  constructor(props: InputTagProps) {
     super(props);
     this.count = 0;
     this.state = {
@@ -177,9 +180,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     };
   }
 
-  shouldComponentUpdate (nextPros: InputTagProps, nextState: InputTagState) {
+  shouldComponentUpdate(nextPros: InputTagProps, nextState: InputTagState) {
     const { props, state } = this;
-    const isChange = state.items !== nextState.items ||
+    const isChange =
+      state.items !== nextState.items ||
       props.value !== nextPros.value ||
       props.svThemVersion !== nextPros.svThemVersion ||
       props.mutliple !== nextPros.mutliple ||
@@ -193,8 +197,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return isChange;
   }
 
-
-  fetchValueObject (props: InputTagProps): Object {
+  fetchValueObject(props: InputTagProps): Object {
     const result = {};
     const { value = [], displayValue = [] } = this.getValue(props);
 
@@ -209,93 +212,99 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
     const valLen = value.length;
     for (let i = 0; i < valLen; i++) {
-      const val = value[ i ];
+      const val = value[i];
       if (val !== '') {
-        const displayVal = displayValue[ i ];
-        result[ val ] = { text: displayVal ? displayVal : val };
+        const displayVal = displayValue[i];
+        result[val] = { text: displayVal ? displayVal : val };
       }
     }
     this.count = valLen;
     return result;
   }
 
-  getCount (): number {
+  getCount(): number {
     return this.count;
   }
 
-  getValueObject (): Object {
+  getValueObject(): Object {
     return this.state.value;
   }
 
-  getValue (props: InputTagProps): { value: Array<string>, displayValue: Array<string> } {
+  getValue(props: InputTagProps): { value: Array<string>, displayValue: Array<string> } {
     return Support.getCodeItemArray(props);
   }
 
-  isLimit (): boolean {
+  isLimit(): boolean {
     const { props } = this;
     return !Support.isNotLimit(props);
   }
 
-  componentWillReceiveProps (props: InputTagProps) {
+  componentWillReceiveProps(props: InputTagProps) {
     if (this.isLimit()) {
       if (props.value !== this.props.value) {
         const value = this.fetchValueObject(props);
-        this.setState({
-          value,
-        }, () => {
-          this.adaptiveItems(this.getOffSetWidth());
-        });
+        this.setState(
+          {
+            value,
+          },
+          () => {
+            this.adaptiveItems(this.getOffSetWidth());
+          }
+        );
       }
     }
   }
 
-  render () {
+  render() {
     const { props, state } = this;
     let result;
     const clearButton = this.getClearButton();
     const placeholder = this.getPlaceholder();
     const config = { width: this.getWidth(), height: this.getHeight() };
     const theme = {
-      [ Widget.DropMenu ]: config,
-      [ Widget.Icon ]: { hoverColor: 'red' },
-      [ IconButton.displayName ]: { hoverColor: 'rgba(0,0,0,.43)' },
+      [Widget.DropMenu]: config,
+      [Widget.Icon]: { hoverColor: 'red' },
+      [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)' },
     };
-    const fillFontItem: Function = (cmp: Object): any => this.fontItem = cmp;
-    const font = <FontItem ref={fillFontItem} key="fontItem"/>;
+    const fillFontItem: Function = (cmp: Object): any => (this.fontItem = cmp);
+    const font = <FontItem ref={fillFontItem} key="fontItem" />;
     const { focus } = state;
     const { getTheme, disabled, validateStatus } = props;
     if (!this.isMutliple()) {
-      result = this.generateOutter(<Container className="sv"
-                                              disabled={disabled}
-                                              theme={getTheme()}
-                                              innerRef={cmp => this.container = cmp}
-                                              onClick={this.onClick}>
-        <OutContainer focus={focus} validateStatus={validateStatus}>
-          <SingleInnerContainer theme={props.getTheme()}>
-            {placeholder}
-            {this.getSingleValue()}
-            {clearButton}
-            <FocuInput/>
-          </SingleInnerContainer>
-        </OutContainer>
-      </Container>);
+      result = this.generateOutter(
+        <Container
+          className="sv"
+          disabled={disabled}
+          theme={getTheme()}
+          innerRef={cmp => (this.container = cmp)}
+          onClick={this.onClick}
+        >
+          <OutContainer focus={focus} validateStatus={validateStatus}>
+            <SingleInnerContainer theme={props.getTheme()}>
+              {placeholder}
+              {this.getSingleValue()}
+              {clearButton}
+              <FocuInput />
+            </SingleInnerContainer>
+          </OutContainer>
+        </Container>
+      );
     } else {
-
       const { items } = state;
       result = this.generateOutter(
-        <Container className="sv"
-                   disabled={disabled}
-                   theme={props.getTheme()}
-                   innerRef={cmp => this.container = cmp}
-                   onClick={this.onClick}>
+        <Container
+          className="sv"
+          disabled={disabled}
+          theme={props.getTheme()}
+          innerRef={cmp => (this.container = cmp)}
+          onClick={this.onClick}
+        >
           <OutContainer focus={focus} validateStatus={validateStatus}>
             <InnerContainer theme={props.getTheme()}>
-              <List innerRef={cmp => this.list = cmp}>
-                {items}
-              </List>
+              <List innerRef={cmp => (this.list = cmp)}>{items}</List>
               {placeholder}
               {clearButton}
-              <FocuInput onFocus={this.onFocus} onBlur={this.onBlur}/>
+              <FocuInput onFocus={this.onFocus} onBlur={this.onBlur} />
             </InnerContainer>
           </OutContainer>
         </Container>
@@ -303,40 +312,51 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
       if (this.needMoreItem) {
         const { query } = state;
-        result = <DropMenu menus={this.getItems(query)}
-                           onQuery={this.onQueryInput}
-                           onPopupVisibleChange={this.onPopupVisibleChange}
-                           action={[]}
-                           query={query}
-                           hideAction={['click']}
-                           ref={cmp => {
-                             this.dropMenu = cmp;
-                           }}>
-          {result}
-        </DropMenu>;
+        result = (
+          <DropMenu
+            menus={this.getItems(query)}
+            onQuery={this.onQueryInput}
+            onPopupVisibleChange={this.onPopupVisibleChange}
+            action={[]}
+            query={query}
+            hideAction={['click']}
+            ref={cmp => {
+              this.dropMenu = cmp;
+            }}
+          >
+            {result}
+          </DropMenu>
+        );
       }
     }
 
-    return <InputTagTheme config={theme}>
-      <List>
-        {font}
-      </List>
-      {result}
-    </InputTagTheme>;
+    return (
+      <InputTagTheme config={theme}>
+        <List>{font}</List>
+        {result}
+      </InputTagTheme>
+    );
   }
 
-  generateOutter (cmp: any) {
+  generateOutter(cmp: any) {
     const { props } = this;
     const { validateStatus } = props;
     if (validateStatus === 'sucess') {
       return cmp;
     }
     const { help } = props;
-    return <ErrorTip title={help} action={['click']} placement="right" ref={cmp => {
-      this.errorTip = cmp;
-    }}>
-      {cmp}
-    </ErrorTip>;
+    return (
+      <ErrorTip
+        title={help}
+        action={['click']}
+        placement="right"
+        ref={cmp => {
+          this.errorTip = cmp;
+        }}
+      >
+        {cmp}
+      </ErrorTip>
+    );
   }
 
   onQueryInput = (query: string) => {
@@ -349,23 +369,22 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     });
   };
   onBlur = () => {
-
     this.setState({ focus: false }, () => {
       const { onBlur } = this.props;
       onBlur && onBlur();
     });
   };
 
-  getClearButton () {
+  getClearButton() {
     if (this.isEmpty()) {
       return null;
     }
-    return <IconButton iconClass={Clear} viewClass={IconButton.displayName}
-                       onClick={this.onClear}></IconButton>;
+    return (
+      <IconButton iconClass={Clear} viewClass={IconButton.displayName} onClick={this.onClear} />
+    );
   }
 
-
-  getPlaceholder () {
+  getPlaceholder() {
     const { placeholder } = this.props;
     if (!placeholder || !this.isEmpty()) {
       return null;
@@ -373,22 +392,21 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return <PlaceContainer>{placeholder}</PlaceContainer>;
   }
 
-  isEmpty (): boolean {
+  isEmpty(): boolean {
     if (this.isMutliple()) {
       const { items } = this.state;
       return items.length <= 0;
     }
     return this.getSingleValue() === '';
-
   }
 
-  getSingleValue () {
+  getSingleValue() {
     const { value = {} } = this.state;
     const { text = '' } = value;
     return text;
   }
 
-  getFontWidth (text: string): number {
+  getFontWidth(text: string): number {
     return this.fontItem.getWidth(text);
   }
 
@@ -397,7 +415,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     onClick && onClick(e);
   };
 
-  getItems (query: string) {
+  getItems(query: string) {
     const { value } = this.state;
     const items = [];
     if (value) {
@@ -405,22 +423,21 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const valueLen = keys.length;
 
       for (let i = 0; i < valueLen; i++) {
-        const key = keys[ i ];
-        const { text } = value[ key ];
+        const key = keys[i];
+        const { text } = value[key];
         if (query === '' || text.indexOf(query) != -1) {
           items.push({ key, value: text });
         }
       }
     }
 
-    return <Menu data={items} getPrefix={this.getIcon}>
-    </Menu>;
+    return <Menu data={items} getPrefix={this.getIcon} />;
   }
 
   valueKeys: Array<string>;
   oldValue: ?Object;
 
-  getKeys (value: Object): Array<string> {
+  getKeys(value: Object): Array<string> {
     if (value != this.oldValue) {
       this.valueKeys = Object.keys(value);
       this.oldValue = value;
@@ -447,7 +464,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getIcon = (item: Object) => {
     const { key } = item;
-    return <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)} key={key}/>;
+    return (
+      <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)} key={key} />
+    );
   };
 
   onDelItem = (targetKey: string) => {
@@ -456,7 +475,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return;
     }
     const { value } = this.state;
-    if (!value || !value[ targetKey ]) {
+    if (!value || !value[targetKey]) {
       return;
     }
     this.count--;
@@ -468,10 +487,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const displayValueArray = [];
     const len = keys.length;
     for (let i = 0; i < len; i++) {
-      const key = keys[ i ];
+      const key = keys[i];
       if (key !== targetKey) {
         valueArray.push(key);
-        displayValueArray.push(value[ key ].text);
+        displayValueArray.push(value[key].text);
       }
     }
 
@@ -484,12 +503,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       return;
     }
 
-    delete value[ targetKey ];
+    delete value[targetKey];
     this.resetValueKeys();
     this.adaptiveItems(this.getOffSetWidth());
   };
 
-  resetValueKeys () {
+  resetValueKeys() {
     this.oldValue = undefined;
   }
 
@@ -498,16 +517,14 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     onChange && onChange({ value, displayValue });
   };
 
-
-  componentDidMount () {
+  componentDidMount() {
     const offSetWidth = this.getOffSetWidth();
     this.oldWidth = offSetWidth;
 
     this.adaptiveItems(offSetWidth);
   }
 
-  componentDidUpdate () {
-
+  componentDidUpdate() {
     const offSetWidth = this.getOffSetWidth();
     if (offSetWidth !== this.oldWidth) {
       this.oldWidth = offSetWidth;
@@ -515,30 +532,30 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     }
   }
 
-  getOffSetWidth () {
+  getOffSetWidth() {
     const { getTheme } = this.props;
     const { width } = getTheme();
     if (this.isMutliple()) {
-      return (typeof width === 'number') ? getContentWidth(width) : this.list.offsetWidth;
+      return typeof width === 'number' ? getContentWidth(width) : this.list.offsetWidth;
     }
     return 0;
   }
 
-  getWidth () {
+  getWidth() {
     const { getTheme } = this.props;
     const { width } = getTheme();
     const offsetWidth = this.container ? this.container.offsetWidth : 0;
     return width ? width : offsetWidth;
   }
 
-  getHeight () {
+  getHeight() {
     const { getTheme } = this.props;
 
     const { height = DefaultHeight } = getTheme();
     return height;
   }
 
-  async adaptiveItems (listWidth: number): Promise<boolean> {
+  async adaptiveItems(listWidth: number): Promise<boolean> {
     if (!this.isMutliple()) {
       return true;
     }
@@ -550,16 +567,19 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const keys = this.getKeys(value);
       const valueLen = keys.length;
       for (let i = 0; i < valueLen; i++) {
-
-        const key = keys[ i ];
-        const { text } = value[ key ];
+        const key = keys[i];
+        const { text } = value[key];
         const fontWidth = await this.getFontWidth(text);
         totalWidth += fontWidth + MarginRight;
         if (totalWidth >= listWidth) {
           break;
         }
 
-        items.push(<Item key={key} onCloseClick={this.onDelItem.bind(this, key)}>{text}</Item>);
+        items.push(
+          <Item key={key} onCloseClick={this.onDelItem.bind(this, key)}>
+            {text}
+          </Item>
+        );
       }
       this.needMoreItem = false;
       if (valueLen !== items.length) {
@@ -574,8 +594,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return true;
   }
 
-  getMoreItem () {
-    return <MoreItem items={this.props.value} onClick={this.onMoreClick} key="sv_more_item"/>;
+  getMoreItem() {
+    return <MoreItem items={this.props.value} onClick={this.onMoreClick} key="sv_more_item" />;
   }
 
   onMoreClick = (e: Object) => {
@@ -584,9 +604,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     e.stopPropagation();
   };
 
-  setPopupVisible (visible: boolean) {
+  setPopupVisible(visible: boolean) {
     if (this.dropMenu && this.dropMenu.getThemeTarget() && this.dropMenu.getThemeTarget().trigger) {
-      this.dropMenu.getThemeTarget().trigger.getThemeTarget().setPopupVisible(visible);
+      this.dropMenu
+        .getThemeTarget()
+        .trigger.getThemeTarget()
+        .setPopupVisible(visible);
     }
   }
 
@@ -596,8 +619,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       this.setState({ query: '' });
     }
     onPopupVisibleChange && onPopupVisibleChange(visible);
-  }
-
+  };
 }
 
 const InputTagBox = ThemeProvider(InputTag, Widget.InputTag);

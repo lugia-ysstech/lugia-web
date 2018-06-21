@@ -16,49 +16,53 @@ type MenuItemProps = {
   checked: boolean,
   mutliple: boolean,
   onClick?: Function,
-  children?: React.Node
+  children?: React.Node,
 };
 
 const getBackGroundColor = (props: MenuItemProps) => {
-  return props.checked ? `
+  return props.checked
+    ? `
     background-color: ${BackgroundColor};
     font-weight: 600;
     color: rgba(0,0,0,.65);
-    ` : '';
+    `
+    : '';
 };
 const getMulipleCheckedStyle = (props: MenuItemProps) => {
-  return props.checked ? `
+  return props.checked
+    ? `
     :after{
       color: #108ee9;
     } 
     :hover:after{
       color: #108ee9;
     }
-    ` : `
+    `
+    : `
     :hover:after{
       color: #d0c8c8;
     }
     `;
 };
-const SingleItem = styled.li `
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    height: ${MenuItemHeight}px;
-    padding: 7px 8px;
-    font-weight: 400;
-    color: rgba(0,0,0,.65);
-    white-space: nowrap;
-    cursor: pointer;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: background .3s ease;
-    :hover {
-      background-color: #ecf6fd;
-    }
-    ${getBackGroundColor}
+const SingleItem = styled.li`
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  height: ${MenuItemHeight}px;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.65);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.3s ease;
+  :hover {
+    background-color: #ecf6fd;
+  }
+  ${getBackGroundColor};
 `;
-const MutlipleItem = SingleItem.extend `
+const MutlipleItem = SingleItem.extend`
     :after {
       font-family: "sviconfont" !important;
       text-rendering: optimizeLegibility;
@@ -86,7 +90,7 @@ class MenuItem extends React.Component<MenuItemProps> {
   };
   static displayName = Widget.MenuItem;
 
-  render () {
+  render() {
     const { children, mutliple, checked, onClick } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
@@ -95,7 +99,11 @@ class MenuItem extends React.Component<MenuItemProps> {
         title = item;
       }
     });
-    return <Item checked={checked} onClick={onClick} title={title}>{children}</Item>;
+    return (
+      <Item checked={checked} onClick={onClick} title={title}>
+        {children}
+      </Item>
+    );
   }
 }
 

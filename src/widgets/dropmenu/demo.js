@@ -19,25 +19,26 @@ for (let i = 0; i < 20; i++) {
 }
 let i = 0;
 export default class extends React.Component<any, any> {
-  constructor (props: any) {
+  constructor(props: any) {
     super(props);
     this.state = { menu: null };
   }
 
-  render () {
+  render() {
     const { menu } = this.state;
-    return <div>
-      <button onClick={this.onClick}>test</button>
-      <Theme config={{ [Widget.DropMenu]: { width: 200 } }}>
-        <DropMenu menus={menu}>
-          <input type="text"/>
-        </DropMenu></Theme>
-    </div>;
+    return (
+      <div>
+        <button onClick={this.onClick}>test</button>
+        <Theme config={{ [Widget.DropMenu]: { width: 200 } }}>
+          <DropMenu menus={menu}>
+            <input type="text" />
+          </DropMenu>
+        </Theme>
+      </div>
+    );
   }
 
   onClick = () => {
-
     this.setState({ menu: <Menu>{items.slice(i++)}</Menu> });
-  }
+  };
 }
-

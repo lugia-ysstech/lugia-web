@@ -24,7 +24,7 @@ class TreeNode extends React.Component {
     title: defaultTitle,
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -35,26 +35,26 @@ class TreeNode extends React.Component {
 
   onCheck = e => {
     this.props.root.onCheck(this, e);
-  }
+  };
 
-  onSelect () {
+  onSelect() {
     this.props.root.onSelect(this);
   }
 
   onMouseEnter = e => {
     e.preventDefault();
     this.props.root.onMouseEnter(e, this);
-  }
+  };
 
   onMouseLeave = e => {
     e.preventDefault();
     this.props.root.onMouseLeave(e, this);
-  }
+  };
 
   onContextMenu = e => {
     e.preventDefault();
     this.props.root.onContextMenu(e, this);
-  }
+  };
 
   onDragStart = e => {
     e.stopPropagation();
@@ -69,24 +69,24 @@ class TreeNode extends React.Component {
     } catch (error) {
       // empty
     }
-  }
+  };
 
   onDragEnter = e => {
     e.preventDefault();
     e.stopPropagation();
     this.props.root.onDragEnter(e, this);
-  }
+  };
 
   onDragOver = e => {
     e.preventDefault();
     e.stopPropagation();
     this.props.root.onDragOver(e, this);
-  }
+  };
 
   onDragLeave = e => {
     e.stopPropagation();
     this.props.root.onDragLeave(e, this);
-  }
+  };
 
   onDrop = e => {
     e.preventDefault();
@@ -95,7 +95,7 @@ class TreeNode extends React.Component {
       dragNodeHighlight: false,
     });
     this.props.root.onDrop(e, this);
-  }
+  };
 
   onDragEnd = e => {
     e.stopPropagation();
@@ -103,7 +103,7 @@ class TreeNode extends React.Component {
       dragNodeHighlight: false,
     });
     this.props.root.onDragEnd(e, this);
-  }
+  };
 
   onExpand = () => {
     const callbackPromise = this.props.root.onExpand(this);
@@ -112,64 +112,69 @@ class TreeNode extends React.Component {
         this.setState({ dataLoading });
       };
       setLoading(true);
-      callbackPromise.then(() => {
-        setLoading(false);
-      }, () => {
-        setLoading(false);
-      });
+      callbackPromise.then(
+        () => {
+          setLoading(false);
+        },
+        () => {
+          setLoading(false);
+        }
+      );
     }
-  }
+  };
 
   // keyboard event support
-  onKeyDown (e) {
+  onKeyDown(e) {
     e.preventDefault();
   }
 
-  isSelectable () {
+  isSelectable() {
     const { props, context } = this;
     return 'selectable' in props ? props.selectable : context.rcTree.selectable;
   }
 
   saveSelectHandle = node => {
     this.selectHandle = node;
-  }
+  };
 
-  renderSwitcher (props, expandedState) {
+  renderSwitcher(props, expandedState) {
     const prefixCls = props.prefixCls;
     const switcherCls = classNames(
       `${prefixCls}-switcher`,
-      `${prefixCls}-switcher_${expandedState}`, {
+      `${prefixCls}-switcher_${expandedState}`,
+      {
         [`${prefixCls}-switcher-disabled`]: props.disabled,
-      });
-    return <span className={switcherCls} onClick={props.disabled ? null : this.onExpand}/>;
+      }
+    );
+    return <span className={switcherCls} onClick={props.disabled ? null : this.onExpand} />;
   }
 
-  renderCheckbox (props) {
+  renderCheckbox(props) {
     const prefixCls = props.prefixCls;
     const checkboxCls = {
       [`${prefixCls}-checkbox`]: true,
     };
     if (props.checked) {
-      checkboxCls[ `${prefixCls}-checkbox-checked` ] = true;
+      checkboxCls[`${prefixCls}-checkbox-checked`] = true;
     } else if (props.halfChecked) {
-      checkboxCls[ `${prefixCls}-checkbox-indeterminate` ] = true;
+      checkboxCls[`${prefixCls}-checkbox-indeterminate`] = true;
     }
     let customEle = null;
     if (typeof props.checkable !== 'boolean') {
       customEle = props.checkable;
     }
     if (props.disabled || props.disableCheckbox) {
-      checkboxCls[ `${prefixCls}-checkbox-disabled` ] = true;
+      checkboxCls[`${prefixCls}-checkbox-disabled`] = true;
       return <span className={classNames(checkboxCls)}>{customEle}</span>;
     }
     return (
-      <span
-        className={classNames(checkboxCls)}
-        onClick={this.onCheck}
-      >{customEle}</span>);
+      <span className={classNames(checkboxCls)} onClick={this.onCheck}>
+        {customEle}
+      </span>
+    );
   }
 
-  renderChildren (props) {
+  renderChildren(props) {
     const renderFirst = this.renderFirst;
     this.renderFirst = 1;
     let transitionAppear = true;
@@ -181,10 +186,13 @@ class TreeNode extends React.Component {
       children = toArray(props.children).filter(item => !!item);
     }
     let newChildren = children;
-    if (children &&
-      (Array.isArray(children) && children.length &&
-        children.every(item => item.type && item.type.isTreeNode) ||
-        (children.type && children.type.isTreeNode))) {
+    if (
+      children &&
+      ((Array.isArray(children) &&
+        children.length &&
+        children.every(item => item.type && item.type.isTreeNode)) ||
+        (children.type && children.type.isTreeNode))
+    ) {
       const animProps = {};
       if (props.openTransitionName) {
         animProps.transitionName = props.openTransitionName;
@@ -206,9 +214,13 @@ class TreeNode extends React.Component {
         >
           {!props.expanded ? null : (
             <ul className={cls} data-expanded={props.expanded}>
-              {React.Children.map(children, (item, index) => {
-                return props.root.renderTreeNode(item, index, props.pos);
-              }, props.root)}
+              {React.Children.map(
+                children,
+                (item, index) => {
+                  return props.root.renderTreeNode(item, index, props.pos);
+                },
+                props.root
+              )}
             </ul>
           )}
         </Animate>
@@ -217,7 +229,7 @@ class TreeNode extends React.Component {
     return newChildren;
   }
 
-  render () {
+  render() {
     const { props } = this;
     const prefixCls = props.prefixCls;
     const expandedState = props.expanded ? 'open' : 'close';
@@ -246,8 +258,10 @@ class TreeNode extends React.Component {
     };
 
     const selectHandle = () => {
-      const icon = (props.showIcon || props.loadData && this.state.dataLoading) ?
-        <span className={classNames(iconEleCls)}></span> : null;
+      const icon =
+        props.showIcon || (props.loadData && this.state.dataLoading) ? (
+          <span className={classNames(iconEleCls)} />
+        ) : null;
       const title = <span className={`${prefixCls}-title`}>{content}</span>;
       const wrap = `${prefixCls}-node-content-wrapper`;
       const domProps = {
@@ -272,7 +286,7 @@ class TreeNode extends React.Component {
         if (props.draggable) {
           domProps.className += ' draggable';
           domProps.draggable = true;
-          domProps[ 'aria-grabbed' ] = true;
+          domProps['aria-grabbed'] = true;
           domProps.onDragStart = this.onDragStart;
         }
       }
@@ -282,7 +296,8 @@ class TreeNode extends React.Component {
           title={typeof content === 'string' ? content : ''}
           {...domProps}
         >
-          {icon}{title}
+          {icon}
+          {title}
         </span>
       );
     };
@@ -311,7 +326,7 @@ class TreeNode extends React.Component {
     const filterCls = props.filterTreeNode(this) ? 'filter-node' : '';
 
     const renderNoopSwitcher = () => (
-      <span className={`${prefixCls}-switcher ${prefixCls}-switcher-noop`}/>
+      <span className={`${prefixCls}-switcher ${prefixCls}-switcher-noop`} />
     );
 
     return (

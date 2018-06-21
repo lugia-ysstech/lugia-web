@@ -13,7 +13,7 @@ type IconProps = {
   onClick?: Function,
   className?: string,
   getTheme?: Function,
-  checked:boolean,
+  checked: boolean,
 };
 
 const UnCheck = 'sv-icon-android-checkbox-out1';
@@ -24,9 +24,9 @@ class CheckIcon extends React.Component<IconProps> {
   static defaultProps = {
     checked: false,
   };
-  render () {
+  render() {
     const iconClass = this.props.checked ? Checked : UnCheck;
-    return <Icon iconClass={iconClass} key="refresh" {...this.props}></Icon>;
+    return <Icon iconClass={iconClass} key="refresh" {...this.props} />;
   }
 }
 

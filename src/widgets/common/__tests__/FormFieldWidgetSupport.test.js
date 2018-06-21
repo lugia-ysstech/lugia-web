@@ -4,7 +4,14 @@ import Support from '../FormFieldWidgetSupport';
 import chai from 'chai';
 
 const { expect: exp } = chai;
-const { getValue, getInitValueArray, getInitValue, getCodeItem, getCodeItemArray, toArray } = Support;
+const {
+  getValue,
+  getInitValueArray,
+  getInitValue,
+  getCodeItem,
+  getCodeItemArray,
+  toArray,
+} = Support;
 
 describe('FormFieldWidgetSupport.js', () => {
   it('getValue: value is  props.value', () => {
@@ -36,37 +43,44 @@ describe('FormFieldWidgetSupport.js', () => {
   });
 
   it('getCodeItem', () => {
-    exp(getCodeItem({
-      value: 'value',
-      defaultValue: 'defaultValue',
-      defaultDisplayValue: 'defaultDisplayValue',
-      displayValue: 'displayValue',
-    })).to.be.eql({
+    exp(
+      getCodeItem({
+        value: 'value',
+        defaultValue: 'defaultValue',
+        defaultDisplayValue: 'defaultDisplayValue',
+        displayValue: 'displayValue',
+      })
+    ).to.be.eql({
       displayValue: 'displayValue',
       value: 'value',
     });
-    exp(getCodeItem({
-      value: 'value',
-      displayValue: 'displayValue',
-    })).to.be.eql({
+    exp(
+      getCodeItem({
+        value: 'value',
+        displayValue: 'displayValue',
+      })
+    ).to.be.eql({
       displayValue: 'displayValue',
       value: 'value',
     });
 
-
-    exp(getCodeItem({
-      defaultValue: 'defaultValue',
-      defaultDisplayValue: 'defaultDisplayValue',
-      displayValue: 'displayValue',
-    })).to.be.eql({
+    exp(
+      getCodeItem({
+        defaultValue: 'defaultValue',
+        defaultDisplayValue: 'defaultDisplayValue',
+        displayValue: 'displayValue',
+      })
+    ).to.be.eql({
       displayValue: 'displayValue',
       value: 'defaultValue',
     });
 
-    exp(getCodeItem({
-      defaultValue: 'defaultValue',
-      defaultDisplayValue: 'defaultDisplayValue',
-    })).to.be.eql({
+    exp(
+      getCodeItem({
+        defaultValue: 'defaultValue',
+        defaultDisplayValue: 'defaultDisplayValue',
+      })
+    ).to.be.eql({
       displayValue: 'defaultDisplayValue',
       value: 'defaultValue',
     });
@@ -75,37 +89,44 @@ describe('FormFieldWidgetSupport.js', () => {
   });
 
   it('getCodeItemArray', () => {
-    exp(getCodeItemArray({
-      value: 'value',
-      defaultValue: 'defaultValue',
-      defaultDisplayValue: 'defaultDisplayValue',
-      displayValue: 'displayValue',
-    })).to.be.eql({
+    exp(
+      getCodeItemArray({
+        value: 'value',
+        defaultValue: 'defaultValue',
+        defaultDisplayValue: 'defaultDisplayValue',
+        displayValue: 'displayValue',
+      })
+    ).to.be.eql({
       displayValue: ['displayValue'],
       value: ['value'],
     });
-    exp(getCodeItemArray({
-      value: 'value',
-      displayValue: 'displayValue',
-    })).to.be.eql({
+    exp(
+      getCodeItemArray({
+        value: 'value',
+        displayValue: 'displayValue',
+      })
+    ).to.be.eql({
       displayValue: ['displayValue'],
       value: ['value'],
     });
 
-
-    exp(getCodeItemArray({
-      defaultValue: 'defaultValue',
-      defaultDisplayValue: 'defaultDisplayValue',
-      displayValue: 'displayValue',
-    })).to.be.eql({
+    exp(
+      getCodeItemArray({
+        defaultValue: 'defaultValue',
+        defaultDisplayValue: 'defaultDisplayValue',
+        displayValue: 'displayValue',
+      })
+    ).to.be.eql({
       displayValue: ['displayValue'],
       value: ['defaultValue'],
     });
 
-    exp(getCodeItemArray({
-      defaultValue: 'defaultValue',
-      defaultDisplayValue: 'defaultDisplayValue',
-    })).to.be.eql({
+    exp(
+      getCodeItemArray({
+        defaultValue: 'defaultValue',
+        defaultDisplayValue: 'defaultDisplayValue',
+      })
+    ).to.be.eql({
       displayValue: ['defaultDisplayValue'],
       value: ['defaultValue'],
     });
@@ -113,10 +134,10 @@ describe('FormFieldWidgetSupport.js', () => {
     exp(getCodeItemArray({})).to.be.eql({ displayValue: [], value: [] });
   });
   it('toArray', () => {
-      exp(toArray('1')).to.be.eql(['1']);
-      exp(toArray(1)).to.be.eql([1]);
-      exp(toArray()).to.be.eql([]);
-      exp(toArray(null)).to.be.eql([]);
-      exp(toArray(0)).to.be.eql([0]);
+    exp(toArray('1')).to.be.eql(['1']);
+    exp(toArray(1)).to.be.eql([1]);
+    exp(toArray()).to.be.eql([]);
+    exp(toArray(null)).to.be.eql([]);
+    exp(toArray(0)).to.be.eql([0]);
   });
 });

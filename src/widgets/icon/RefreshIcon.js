@@ -16,9 +16,8 @@ type IconProps = {
 class RefershIcon extends React.Component<IconProps> {
   static displayName = Widget.RefershIcon;
 
-
-  render () {
-    return <Icon iconClass="sv-icon-android-refresh" key="refresh" {...this.props}></Icon>;
+  render() {
+    return <Icon iconClass="sv-icon-android-refresh" key="refresh" {...this.props} />;
   }
 }
 

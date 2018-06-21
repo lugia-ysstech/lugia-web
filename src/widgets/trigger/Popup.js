@@ -26,7 +26,6 @@ type PopupProps = {
 };
 
 class Popup extends React.Component<PopupProps> {
-
   static defaultProps = {
     offsetX: 0,
     offsetY: 0,
@@ -34,7 +33,7 @@ class Popup extends React.Component<PopupProps> {
     isMask: false,
     className: '',
     align: 'bottom',
-    getTheme () {
+    getTheme() {
       return {};
     },
   };
@@ -43,22 +42,21 @@ class Popup extends React.Component<PopupProps> {
   popupInstance: Element | null;
   alignInstance: ?React.Element<any>;
 
-  constructor (props: PopupProps) {
+  constructor(props: PopupProps) {
     super(props);
-    this.savePopupRef = cmp => this.popupInstance = cmp;
-    this.saveAlignRef = cmp => this.alignInstance = cmp;
+    this.savePopupRef = cmp => (this.popupInstance = cmp);
+    this.saveAlignRef = cmp => (this.alignInstance = cmp);
   }
 
-  getPopupDomNode () {
+  getPopupDomNode() {
     if (this.popupInstance) {
       return ReactDOM.findDOMNode(this.popupInstance);
     }
     return null;
   }
 
-  render () {
-    return [this.getMaskElement(),
-      this.getPopupElement()];
+  render() {
+    return [this.getMaskElement(), this.getPopupElement()];
   }
 
   onAlign = (popupDomNode: HTMLElement, align: string) => {
@@ -66,13 +64,11 @@ class Popup extends React.Component<PopupProps> {
     onAlign && onAlign(popupDomNode, align);
   };
 
-
   getTarget = () => {
     return this.props.getRootDomNode();
   };
 
-
-  getPopupElement () {
+  getPopupElement() {
     const { savePopupRef, props } = this;
     const {
       align,
@@ -101,44 +97,39 @@ class Popup extends React.Component<PopupProps> {
       getTheme,
     };
 
-    const inner = destroyPopupOnHide && hidden ? null : <Align
-      offsetX={offsetX}
-      offsetY={offsetY}
-      autoResize
-      getTargetDom={this.getTarget}
-      key="align"
-      ref={this.saveAlignRef}
-      align={align}
-      visible={visible}
-      onAlign={this.onAlign}
-    >
-      <PopupInner
-        key="popupiner"
-        {...popupInnerProps}
-      >
-        {children}
-      </PopupInner>
-    </Align>;
+    const inner =
+      destroyPopupOnHide && hidden ? null : (
+        <Align
+          offsetX={offsetX}
+          offsetY={offsetY}
+          autoResize
+          getTargetDom={this.getTarget}
+          key="align"
+          ref={this.saveAlignRef}
+          align={align}
+          visible={visible}
+          onAlign={this.onAlign}
+        >
+          <PopupInner key="popupiner" {...popupInnerProps}>
+            {children}
+          </PopupInner>
+        </Align>
+      );
     return inner;
   }
 
-  getMaskElement () {
+  getMaskElement() {
     const { isMask, visible } = this.props;
     let maskElement;
     if (isMask) {
       maskElement = (
-        <ContentBox
-          style={this.getZIndexStyle()}
-          key="mask"
-          isMask
-          visible={visible}
-        />
+        <ContentBox style={this.getZIndexStyle()} key="mask" isMask visible={visible} />
       );
     }
     return maskElement;
   }
 
-  getZIndexStyle () {
+  getZIndexStyle() {
     const style = {};
     const props = this.props;
     if (props.zIndex !== undefined) {

@@ -23,51 +23,57 @@ type StateType = {
   align: string,
 };
 export default class AlignDemo extends React.Component<any, StateType> {
-  getTargetDom () {
+  getTargetDom() {
     return document.getElementById('align');
   }
 
   state = { align: 'left' };
 
-  render () {
-    return <div>
+  render() {
+    return (
       <div>
-        {this.getRadio('topLeft')}
-        {this.getRadio('top')}
-        {this.getRadio('topRight')}
+        <div>
+          {this.getRadio('topLeft')}
+          {this.getRadio('top')}
+          {this.getRadio('topRight')}
+        </div>
+        <div>
+          {this.getRadio('leftTop')}
+          {this.getRadio('left')}
+          {this.getRadio('leftBottom')}
+        </div>{' '}
+        <div>
+          {this.getRadio('rightTop')}
+          {this.getRadio('right')}
+          {this.getRadio('rightBottom')}
+        </div>
+        <div>
+          {this.getRadio('bottom')}
+          {this.getRadio('bottomLeft')}
+          {this.getRadio('bottomRight')}
+        </div>
+        <Target id="align" />
+        <Align getTargetDom={this.getTargetDom} align={this.state.align}>
+          <Source>hello world</Source>
+        </Align>
       </div>
-
-      <div>
-        {this.getRadio('leftTop')}
-        {this.getRadio('left')}
-        {this.getRadio('leftBottom')}
-
-      </div> <div>
-        {this.getRadio('rightTop')}
-        {this.getRadio('right')}
-        {this.getRadio('rightBottom')}
-
-      </div>
-      <div>
-        {this.getRadio('bottom')}
-        {this.getRadio('bottomLeft')}
-        {this.getRadio('bottomRight')}
-      </div>
-
-
-      <Target id="align"/>
-      <Align getTargetDom={this.getTargetDom} align={this.state.align}>
-        <Source>hello world</Source>
-      </Align>
-    </div>;
+    );
   }
 
-  getRadio (targetAlign: string): React.Element<any> {
+  getRadio(targetAlign: string): React.Element<any> {
     const { align } = this.state;
-    return <label>
-      <input name="align" type="radio" value={targetAlign} checked={align === targetAlign}
-             onClick={this.onSelectAlign(targetAlign)}/>{targetAlign}
-    </label>;
+    return (
+      <label>
+        <input
+          name="align"
+          type="radio"
+          value={targetAlign}
+          checked={align === targetAlign}
+          onClick={this.onSelectAlign(targetAlign)}
+        />
+        {targetAlign}
+      </label>
+    );
   }
 
   onSelectAlign = (align: string) => () => {

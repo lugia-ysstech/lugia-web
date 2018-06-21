@@ -10,10 +10,8 @@ const renderer = new ReactShallowRenderer();
 const { expect: exp } = chai;
 
 describe('Popup', () => {
-
   it('Popup snapshot', () => {
     const contentBox = renderer.render(<Popup getRootDomNode={() => ''}> </Popup>);
     expect(contentBox).toMatchSnapshot();
   });
 });
-

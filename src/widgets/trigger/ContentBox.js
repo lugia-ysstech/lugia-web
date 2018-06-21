@@ -10,8 +10,7 @@ type ContentBoxProps = {
   children?: React.Node,
   visible: boolean,
   isMask: boolean,
-}
-
+};
 
 class ContentBox extends React.Component<ContentBoxProps> {
   static defaultProps = {
@@ -19,18 +18,17 @@ class ContentBox extends React.Component<ContentBoxProps> {
     visible: false,
   };
 
-  shouldComponentUpdate (nextProps: ContentBoxProps) {
-    return nextProps.visible !== this.props.visible
-      || nextProps.children !== this.props.children;
+  shouldComponentUpdate(nextProps: ContentBoxProps) {
+    return nextProps.visible !== this.props.visible || nextProps.children !== this.props.children;
   }
 
-  render () {
+  render() {
     const { isMask, ...props } = this.props;
     if (isMask) {
-      return <MaskBox {...this.props}/>;
+      return <MaskBox {...this.props} />;
     }
     if (React.Children.count(props.children) > 1) {
-      return <VisibleBox {...this.props}/>;
+      return <VisibleBox {...this.props} />;
     }
 
     return React.Children.only(props.children);

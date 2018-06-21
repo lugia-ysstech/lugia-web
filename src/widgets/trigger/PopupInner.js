@@ -14,9 +14,8 @@ const getWidth = props => {
 };
 const PopupInnerBox = VisibleBox.extend`
   position: absolute;
-  ${getWidth}
-  background-color: #fff;
-  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  ${getWidth} background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   box-sizing: border-box;
   left: -9999px;
@@ -37,13 +36,13 @@ class PopupInner extends React.Component<PopupInnerProps> {
   static defaultProps = {
     visible: true,
     className: '',
-    getTheme () {
+    getTheme() {
       return {};
     },
   };
 
-  render () {
-    const { visible, onMouseEnter, onMouseLeave, children, getTheme,className } = this.props;
+  render() {
+    const { visible, onMouseEnter, onMouseLeave, children, getTheme, className } = this.props;
     return (
       <PopupInnerBox
         className={className}
@@ -52,9 +51,7 @@ class PopupInner extends React.Component<PopupInnerProps> {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <ContentBox visible={visible}>
-          {children}
-        </ContentBox>
+        <ContentBox visible={visible}>{children}</ContentBox>
       </PopupInnerBox>
     );
   }

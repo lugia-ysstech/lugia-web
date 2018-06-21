@@ -14,23 +14,22 @@ const { expect: exp } = chai;
 
 Enzyme.configure({ adapter: new Adapter() });
 
-
-describe('Scroller', function () {
-
-
+describe('Scroller', function() {
   it('props defaultValue: 0 & 50 type: x & y', () => {
-
-
     const config = {
       viewSize: 300,
       totalSize: 1000,
       left: 100,
       defaultValue: 0,
     };
-    expect(renderer.create(<Scroller {...config} type="x"/>).toJSON()).toMatchSnapshot();
-    expect(renderer.create(<Scroller {...config} type="y"/>).toJSON()).toMatchSnapshot();
-    expect(renderer.create(<Scroller {...config} type="x" defaultValue={50}/>).toJSON()).toMatchSnapshot();
-    expect(renderer.create(<Scroller {...config} type="y" defaultValue={50}/>).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Scroller {...config} type="x" />).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Scroller {...config} type="y" />).toJSON()).toMatchSnapshot();
+    expect(
+      renderer.create(<Scroller {...config} type="x" defaultValue={50} />).toJSON()
+    ).toMatchSnapshot();
+    expect(
+      renderer.create(<Scroller {...config} type="y" defaultValue={50} />).toJSON()
+    ).toMatchSnapshot();
   });
 
   it('props value: 0 & 50 type: x & y', () => {
@@ -40,11 +39,15 @@ describe('Scroller', function () {
       left: 100,
       value: 0,
     };
-    expect(renderer.create(<Scroller {...config} type="x"/>).toJSON()).toMatchSnapshot();
-    expect(renderer.create(<Scroller {...config} type="x"/>).toJSON()).toMatchSnapshot();
-    expect(renderer.create(<Scroller {...config} type="y"/>).toJSON()).toMatchSnapshot();
-    expect(renderer.create(<Scroller {...config} type="x" value={50}/>).toJSON()).toMatchSnapshot();
-    expect(renderer.create(<Scroller {...config} type="y" value={50}/>).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Scroller {...config} type="x" />).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Scroller {...config} type="x" />).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Scroller {...config} type="y" />).toJSON()).toMatchSnapshot();
+    expect(
+      renderer.create(<Scroller {...config} type="x" value={50} />).toJSON()
+    ).toMatchSnapshot();
+    expect(
+      renderer.create(<Scroller {...config} type="y" value={50} />).toJSON()
+    ).toMatchSnapshot();
   });
 
   it('props value: 50 eql defaultValue: 50', () => {
@@ -53,8 +56,8 @@ describe('Scroller', function () {
       totalSize: 1000,
       left: 100,
     };
-    const valueCmp = renderer.create(<Scroller {...config} type="x" value={50}/>);
-    const defaultValueCmp = renderer.create(<Scroller {...config} type="x" defaultValue={50}/>);
+    const valueCmp = renderer.create(<Scroller {...config} type="x" value={50} />);
+    const defaultValueCmp = renderer.create(<Scroller {...config} type="x" defaultValue={50} />);
     exp(JSON.stringify(valueCmp.toJSON())).to.be.eql(JSON.stringify(defaultValueCmp.toJSON()));
   });
 
@@ -66,7 +69,6 @@ describe('Scroller', function () {
       value: 50,
     };
     const Target = createTestComponent(Scroller, scroller => {
-
       exp(scroller.value2pos(0), 'pos 0 value 0').to.be.equal(0);
       exp(scroller.pos2value(0)).to.be.equal(0);
 
@@ -79,9 +81,8 @@ describe('Scroller', function () {
       exp(scroller.value2pos(10)).to.be.equal(5);
       exp(scroller.pos2value(5)).to.be.equal(10);
     });
-    mount(<Target {...config}/>);
+    mount(<Target {...config} />);
   });
-
 
   it('getPos for x', () => {
     const config = {
@@ -95,13 +96,13 @@ describe('Scroller', function () {
       const mock = mockObject.create(scroller);
       const pos = 50;
       mock.mockVar('posGetter').returned({
-        func () {
+        func() {
           return { x: pos, y: pos };
         },
       });
       exp(scroller.getPos({ clientX: 100 })).to.be.equal(50);
     });
-    mount(<Target {...config}/>);
+    mount(<Target {...config} />);
   });
 
   it('getPos for y', () => {
@@ -116,19 +117,19 @@ describe('Scroller', function () {
       const mock = mockObject.create(scroller);
       const pos = 30;
       mock.mockVar('posGetter').returned({
-        func () {
+        func() {
           return { x: pos, y: pos };
         },
       });
       exp(scroller.getPos({ clientY: 100 })).to.be.equal(70);
     });
-    mount(<Target {...config}/>);
+    mount(<Target {...config} />);
   });
 
   it('selectType: type is x', generateSelectTypeCase('x'));
   it('selectType: type is y', generateSelectTypeCase('y'));
 
-  function generateSelectTypeCase (type: string): Function {
+  function generateSelectTypeCase(type: string): Function {
     return async () => {
       const config = {
         type,
@@ -137,15 +138,17 @@ describe('Scroller', function () {
         value: 50,
       };
       const result = new Promise(resolve => {
-
         const Target = createTestComponent(Scroller, scroller => {
-          scroller.selectType(() => {
-            resolve('x');
-          }, () => {
-            resolve('y');
-          });
+          scroller.selectType(
+            () => {
+              resolve('x');
+            },
+            () => {
+              resolve('y');
+            }
+          );
         });
-        mount(<Target {...config}/>);
+        mount(<Target {...config} />);
       });
       exp(await result).to.be.equal(type);
     };
@@ -166,11 +169,10 @@ describe('Scroller', function () {
       exp(scroller.getPX(5)).to.be.equal('5px');
       exp(scroller.getPX(10)).to.be.equal('10px');
     });
-    mount(<Target {...config}/>);
+    mount(<Target {...config} />);
   });
 
   it('props type: x, value: 50  & onChange limit cannot scroller  ', async () => {
-
     let config;
     const onChange = new Promise(resolve => {
       config = {
@@ -178,12 +180,12 @@ describe('Scroller', function () {
         viewSize: 100,
         totalSize: 200,
         value: 50,
-        onChange (v) {
+        onChange(v) {
           resolve(v);
         },
       };
     });
-    const cmp = mount(<Scroller {...config}/>);
+    const cmp = mount(<Scroller {...config} />);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.left).to.be.eql('25px');
 
@@ -194,9 +196,7 @@ describe('Scroller', function () {
     exp(await onChange).to.be.equal(100);
   });
 
-
   it('props type: y, value: 50  & onChange limit cannot scroller  ', async () => {
-
     let config;
     const onChange = new Promise(resolve => {
       config = {
@@ -204,12 +204,12 @@ describe('Scroller', function () {
         viewSize: 100,
         totalSize: 200,
         value: 50,
-        onChange (v) {
+        onChange(v) {
           resolve(v);
         },
       };
     });
-    const cmp = mount(<Scroller {...config}/>);
+    const cmp = mount(<Scroller {...config} />);
 
     const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.top).to.be.eql('25px');
@@ -220,19 +220,18 @@ describe('Scroller', function () {
     exp(await onChange).to.be.equal(100);
   });
   it('props type: y, begin: 0px, bar.mousedown & scroller.mousemove ', async () => {
-
     let config;
     const onChange = new Promise(resolve => {
       config = {
         type: 'y',
         viewSize: 100,
         totalSize: 200,
-        onChange (v) {
+        onChange(v) {
           resolve(v);
         },
       };
     });
-    const cmp = mount(<Scroller {...config}/>);
+    const cmp = mount(<Scroller {...config} />);
 
     const sliderBar = findSlider(cmp);
     const scroller = findScroller(cmp);
@@ -242,16 +241,14 @@ describe('Scroller', function () {
     scroller.simulate('mousemove', { clientY: 20 });
     exp(sliderBar.getDOMNode().style.top).to.be.eql('10px');
     exp(await onChange).to.be.equal(20);
-
   });
   it('props type: y, bar mousedown & mouseup ', async () => {
-
     const config = {
       type: 'y',
       viewSize: 100,
       totalSize: 200,
     };
-    const cmp = mount(<Scroller {...config}/>);
+    const cmp = mount(<Scroller {...config} />);
 
     const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.top).to.be.eql('0px');
@@ -262,15 +259,13 @@ describe('Scroller', function () {
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
   });
   it('props type: y, bar.mousedown & bar.mouseup & mousemove', async () => {
-
     const config = {
       type: 'y',
       viewSize: 100,
       totalSize: 200,
-      onChange (v) {
-      },
+      onChange(v) {},
     };
-    const cmp = mount(<Scroller {...config}/>);
+    const cmp = mount(<Scroller {...config} />);
 
     const sliderBar = findSlider(cmp);
     const scroller = findScroller(cmp);
@@ -284,15 +279,13 @@ describe('Scroller', function () {
   });
 
   it('props type: y, bar.mousedown & scroller.mousemove', async () => {
-
     const config = {
       type: 'y',
       viewSize: 100,
       totalSize: 200,
-      onChange (v) {
-      },
+      onChange(v) {},
     };
-    const cmp = mount(<Scroller {...config}/>);
+    const cmp = mount(<Scroller {...config} />);
 
     const sliderBar = findSlider(cmp);
     const scroller = findScroller(cmp);
@@ -304,16 +297,13 @@ describe('Scroller', function () {
     exp(sliderBar.getDOMNode().style.top).to.be.eql('0px');
   });
 
-
   it('props type: y, only mousemove ', async () => {
-
     const config = {
       type: 'y',
       viewSize: 100,
       totalSize: 200,
-
     };
-    const cmp = mount(<Scroller {...config}/>);
+    const cmp = mount(<Scroller {...config} />);
 
     const sliderBar = findSlider(cmp);
     const scroller = findScroller(cmp);
@@ -325,19 +315,17 @@ describe('Scroller', function () {
   it('props defaultValue: 50 & onChange not limit bar.mousedown bar.mouseup scroller.mouseup', async () => {
     let config;
     const onChange = new Promise(resolve => {
-        config = {
-          type: 'x',
-          viewSize: 100,
-          totalSize: 200,
-          defaultValue: 50,
-          onChange: v => {
-            resolve(v);
-          },
-        };
-      }
-    );
-    const cmp = mount(<Scroller {...config}/>);
-
+      config = {
+        type: 'x',
+        viewSize: 100,
+        totalSize: 200,
+        defaultValue: 50,
+        onChange: v => {
+          resolve(v);
+        },
+      };
+    });
+    const cmp = mount(<Scroller {...config} />);
 
     const sliderBar = findSlider(cmp);
     exp(sliderBar.props().style.left).to.be.eql('25px');
@@ -349,9 +337,7 @@ describe('Scroller', function () {
 
     exp(sliderBar.getDOMNode().style.left).to.be.eql('50px');
     exp(await onChange).to.be.equal(100);
-
   });
-
 
   it('getDirection', () => {
     exp(Scroller.prototype.getDirection(1)).to.be.equal('down');
@@ -360,16 +346,13 @@ describe('Scroller', function () {
     exp(Scroller.prototype.getDirection(0)).to.be.equal('none');
   });
 
-
   it('getSliderBarSize', () => {
-
     exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 50 })).to.be.equal(0);
     exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 100 })).to.be.equal(0);
     exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 1000 })).to.be.equal(10);
     exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 200 })).to.be.equal(50);
     exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 300 })).to.be.equal(33);
     exp(Scroller.prototype.getSliderBarSize({ viewSize: 100, totalSize: 500 })).to.be.equal(20);
-
   });
 
   it('getMoveStep', () => {
@@ -379,15 +362,13 @@ describe('Scroller', function () {
     exp(Scroller.prototype.getMoveStep('up', step)).to.be.equal(-step);
   });
   it('setProps', async () => {
-
     const value = 50;
-    const
-      config = {
-        type: 'x',
-        viewSize: 100,
-        totalSize: 200,
-      };
-    const cmp = mount(<Scroller {...config}/>);
+    const config = {
+      type: 'x',
+      viewSize: 100,
+      totalSize: 200,
+    };
+    const cmp = mount(<Scroller {...config} />);
     exp(cmp.state()).to.be.eql({ sliderSize: 50, value: 0 });
     exp(cmp.state().sliderSize).to.be.equal(50);
     exp(cmp.state().value).to.be.equal(0);
@@ -395,261 +376,219 @@ describe('Scroller', function () {
     cmp.setProps({ type: 'x', viewSize: 100, totalSize: 100, defaultValue: value });
     exp(cmp.state().sliderSize).to.be.equal(0);
     exp(cmp.state().value).to.be.equal(0);
-
   });
   it('updateStepInfo', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'x',
-        viewSize,
-        totalSize,
-      };
+    const config = {
+      type: 'x',
+      viewSize,
+      totalSize,
+    };
     const Target = createTestComponent(Scroller, (target: Object) => {
       exp(target.step).to.be.equal(1);
       exp(target.fastStep).to.be.equal(6.25);
       exp(target.maxValue).to.be.equal(100);
       exp(target.sliderAbsoulateSize).to.be.equal(0);
     });
-    mount(<Target {...config}/>);
+    mount(<Target {...config} />);
   });
 
   it('props: type is error', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'x',
-        viewSize,
-        totalSize,
-      };
-    config[ 'type' + '' ] = 'adsfads';
+    const config = {
+      type: 'x',
+      viewSize,
+      totalSize,
+    };
+    config['type' + ''] = 'adsfads';
 
-    expect(renderer.create(<Scroller {...config}/>).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Scroller {...config} />).toJSON()).toMatchSnapshot();
   });
 
-  function findSlider (cmp: Object): Object {
+  function findSlider(cmp: Object): Object {
     const dom = cmp.find('div');
     return dom.at(1);
   }
 
-  function findScroller (cmp: Object): Object {
+  function findScroller(cmp: Object): Object {
     const dom = cmp.find('div');
     return dom.at(0);
   }
 
-
   it('onWheel x 滚动条位于顶部，继续往上拖动', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'x',
-        viewSize,
-        totalSize,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'x',
+      viewSize,
+      totalSize,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
     //  忽略delaty大小的影响
     const deltayArr = [-5, -15];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
+      scroller.simulate('wheel', { deltaY: deltayArr[i % 2] });
     }
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
   });
 
   it('onWheel x 滚动条位于底部，继续往下拖动', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'x',
-        viewSize,
-        totalSize,
-        defaultValue: 100,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'x',
+      viewSize,
+      totalSize,
+      defaultValue: 100,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
     const deltayArr = [1, 5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
+      scroller.simulate('wheel', { deltaY: deltayArr[i % 2] });
     }
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
   });
 
-
   it('onWheel x 滚动条位于顶部，一滑到底', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'x',
-        viewSize,
-        totalSize,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'x',
+      viewSize,
+      totalSize,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
     const deltayArr = [1, 5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
+      scroller.simulate('wheel', { deltaY: deltayArr[i % 2] });
     }
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
   });
 
   it('onWheel x 滚动条位于底部，一拉到顶', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'x',
-        viewSize,
-        totalSize,
-        defaultValue: 100,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'x',
+      viewSize,
+      totalSize,
+      defaultValue: 100,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.left).to.be.equal('50px');
     const deltayArr = [-1, -5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
+      scroller.simulate('wheel', { deltaY: deltayArr[i % 2] });
     }
     exp(sliderBar.getDOMNode().style.left).to.be.equal('0px');
   });
 
-
   //--
 
-
   it('onWheel y 滚动条位于顶部，继续往上拖动', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'y',
-        viewSize,
-        totalSize,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'y',
+      viewSize,
+      totalSize,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
     //  忽略delaty大小的影响
     const deltayArr = [-5, -15];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
+      scroller.simulate('wheel', { deltaY: deltayArr[i % 2] });
     }
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
   });
 
   it('onWheel y 滚动条位于底部，继续往下拖动', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'y',
-        viewSize,
-        totalSize,
-        defaultValue: 100,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'y',
+      viewSize,
+      totalSize,
+      defaultValue: 100,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
     const deltayArr = [1, 5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
+      scroller.simulate('wheel', { deltaY: deltayArr[i % 2] });
     }
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
   });
 
-
   it('onWheel y 滚动条位于顶部，一滑到底', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'y',
-        viewSize,
-        totalSize,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'y',
+      viewSize,
+      totalSize,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
     const deltayArr = [1, 5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
+      scroller.simulate('wheel', { deltaY: deltayArr[i % 2] });
     }
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
   });
 
   it('onWheel y 滚动条位于底部，一拉到顶', async () => {
-
     const viewSize = 100;
     const totalSize = 200;
-    const
-      config = {
-        type: 'y',
-        viewSize,
-        totalSize,
-        defaultValue: 100,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'y',
+      viewSize,
+      totalSize,
+      defaultValue: 100,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('50px');
     const deltayArr = [-1, -5];
     for (let i = 0; i < 100; i++) {
-      scroller.simulate('wheel', { deltaY: deltayArr[ i % 2 ] });
+      scroller.simulate('wheel', { deltaY: deltayArr[i % 2] });
     }
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
   });
@@ -662,7 +601,7 @@ describe('Scroller', function () {
       totalSize: 200,
       value: 50,
       throttle,
-      onChange () {
+      onChange() {
         changeCnt++;
       },
     };
@@ -676,58 +615,46 @@ describe('Scroller', function () {
           resolve(true);
         }, throttle * 2);
       });
-      mount(<Target {...config}/>);
-
+      mount(<Target {...config} />);
     });
     exp(changeCnt).to.be.equal(1);
   });
 
-
   it('onContainerMouseDown 长摁滑块下方 滚动条容器将持续滚动到点击的位置', async () => {
-
     const viewSize = 100;
     const totalSize = 1000;
-    const
-      config = {
-        type: 'y',
-        viewSize,
-        totalSize,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'y',
+      viewSize,
+      totalSize,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('0px');
     scroller.simulate('mousedown', { clientY: 90 });
     await delay(2000);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('19.625px');
-
   });
   it('onContainerMouseDown 长摁滑块上方 滚动条容器将持续滚动到点击的位置', async () => {
-
     const viewSize = 100;
     const totalSize = 1000;
-    const
-      config = {
-        type: 'y',
-        viewSize,
-        totalSize,
-        defaultValue: 900,
-      };
-    const Target = createTestComponent(Scroller, (target: Object) => {
+    const config = {
+      type: 'y',
+      viewSize,
+      totalSize,
+      defaultValue: 900,
+    };
+    const Target = createTestComponent(Scroller, (target: Object) => {});
 
-    });
-
-    const cmp = mount(<Target {...config}/>);
+    const cmp = mount(<Target {...config} />);
     const scroller = findScroller(cmp);
     const sliderBar = findSlider(cmp);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('90px');
     scroller.simulate('mousedown', { clientY: 90 });
     await delay(2000);
     exp(sliderBar.getDOMNode().style.top).to.be.equal('70.375px');
-
   });
 });

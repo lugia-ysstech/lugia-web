@@ -12,13 +12,9 @@ import App from './widgets/tree-select/demo';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-console.info(ReactServer.renderToString(<App/>));
+console.info(ReactServer.renderToString(<App />));
 const root = document.getElementById('root');
 if (root) {
-
-  window.a = ReactDOM.render(
-    <App/>,
-    root
-  );
+  window.a = ReactDOM.render(<App />, root);
 }
 registerServiceWorker();

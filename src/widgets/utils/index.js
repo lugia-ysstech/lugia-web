@@ -4,37 +4,34 @@
  *
  * @flow
  */
-export function cacheOnlyFirstCall (targetFunc: Function) {
-
+export function cacheOnlyFirstCall(targetFunc: Function) {
   let containerPos;
 
-
   return {
-    func (...args: any) {
+    func(...args: any) {
       if (containerPos) {
         return containerPos;
       }
 
-      return containerPos = targetFunc(...args);
+      return (containerPos = targetFunc(...args));
     },
-    clearCache () {
+    clearCache() {
       containerPos = undefined;
     },
-
   };
 }
 
-export function splitStr (str: string, sepator: string = ','): Array<string> {
+export function splitStr(str: string, sepator: string = ','): Array<string> {
   if (!str || str.trim().length === 0) {
     return [];
   }
   return str.split(sepator);
 }
 
-export function getElementPosition (e: Object) {
-
-  let x = 0, y = 0;
-  while ( e ) {
+export function getElementPosition(e: Object) {
+  let x = 0,
+    y = 0;
+  while (e) {
     x += e.offsetLeft;
     y += e.offsetTop;
     e = e.offsetParent;
@@ -42,7 +39,7 @@ export function getElementPosition (e: Object) {
   return { x, y };
 }
 
-export function deleteValue (target: Array<any>, value: any): void {
+export function deleteValue(target: Array<any>, value: any): void {
   if (!target || target.length === 0) {
     return;
   }
@@ -54,7 +51,7 @@ export function deleteValue (target: Array<any>, value: any): void {
   target.splice(index, 1);
 }
 
-export function adjustValue (value: any, per: any) {
+export function adjustValue(value: any, per: any) {
   value = value - 0;
   per = per - 0;
   const ys = value % per;

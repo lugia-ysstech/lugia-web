@@ -6,7 +6,6 @@ import 'jest-styled-components';
 import Tooltip from '../';
 import { createTestComponent } from '@lugia/react-test-utils';
 
-
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -29,13 +28,11 @@ const { expect: exp } = chai;
  */
 
 describe('Tooltip', () => {
-
   it('getFx', () => {
     const Target = createTestComponent(Tooltip, target => {
       exp(target.getThemeTarget().getFx('left')).to.be.equal('right');
       exp(target.getThemeTarget().getFx('leftTop')).to.be.equal('right');
       exp(target.getThemeTarget().getFx('leftBottom')).to.be.equal('right');
-
 
       exp(target.getThemeTarget().getFx('right')).to.be.equal('left');
       exp(target.getThemeTarget().getFx('rightTop')).to.be.equal('left');
@@ -49,11 +46,10 @@ describe('Tooltip', () => {
       exp(target.getThemeTarget().getFx('bottomLeft')).to.be.equal('top');
       exp(target.getThemeTarget().getFx('bottomRight')).to.be.equal('top');
     });
-    mount(<Target>
-      <button></button>
-    </Target>);
-
+    mount(
+      <Target>
+        <button />
+      </Target>
+    );
   });
-
-
 });

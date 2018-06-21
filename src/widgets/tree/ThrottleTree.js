@@ -31,11 +31,10 @@ const getWidth = props => {
 const WrapRcTree = styled(RcTree)`
   position: relative;
   top: ${getTop}px;
-  ${getWidth}
+  ${getWidth};
 `;
 
 class ScrollerTree extends React.Component<any, any> {
-
   static defaultProps = {
     prefixCls: 'sv-tree',
     mutliple: false,
@@ -48,12 +47,11 @@ class ScrollerTree extends React.Component<any, any> {
 
   utils: TreeUtils;
 
-  constructor (props) {
+  constructor(props) {
     super(props);
   }
 
-  shouldComponentUpdate (nexProps: Object, nextState: Object) {
-
+  shouldComponentUpdate(nexProps: Object, nextState: Object) {
     const endChange = nexProps.end != this.props.end;
     if (endChange) {
       this.onScrollerEndChange(nexProps.end);
@@ -62,16 +60,18 @@ class ScrollerTree extends React.Component<any, any> {
     if (canSeeCountChange) {
       this.onCanSeeCountChange(nexProps.canSeeCount);
     }
-    return nexProps.mutliple !== this.props.mutliple ||
+    return (
+      nexProps.mutliple !== this.props.mutliple ||
       nexProps.utils != this.props.utils ||
       nexProps.onSelect != this.props.onSelect ||
       nexProps.getTheme() != this.props.getTheme() ||
       nexProps.id2ExtendInfo != this.props.id2ExtendInfo ||
       nexProps.start != this.props.start ||
-      endChange;
+      endChange
+    );
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.onScrollerEndChange(this.props.end);
     this.onCanSeeCountChange(this.props.canSeeCount);
   }
@@ -85,26 +85,13 @@ class ScrollerTree extends React.Component<any, any> {
     onCanSeeCountChange && onCanSeeCountChange(end);
   };
 
-  render () {
-    const {
-      prefixCls,
-      className,
-      data,
-    } = this.props;
+  render() {
+    const { prefixCls, className, data } = this.props;
 
-    const classString = classNames(
-      `${prefixCls}-show-line`, className);
+    const classString = classNames(`${prefixCls}-show-line`, className);
     if (data) {
-      const {
-        mutliple,
-        onExpand,
-        utils,
-        onSelect,
-        id2ExtendInfo,
-      } = this.props;
-      let {
-        start, end,
-      } = this.props;
+      const { mutliple, onExpand, utils, onSelect, id2ExtendInfo } = this.props;
+      let { start, end } = this.props;
       start = Math.round(start);
       end = Math.round(end);
       const hasScroller = data.length > end;
@@ -118,22 +105,23 @@ class ScrollerTree extends React.Component<any, any> {
           treeTheme.width = treeTheme.width - BarDefaultSize;
         }
       }
-      return <WrapRcTree {...this.props}
-                         onSelect={onSelect}
-                         top={top}
-                         theme={treeTheme}
-                         className={classString}
-                         onExpand={onExpand}
-                         checkable={mutliple ? <span className={`${prefixCls}-checkbox-inner`}/> : mutliple}>
-        {treeNodes}
-      </WrapRcTree>;
+      return (
+        <WrapRcTree
+          {...this.props}
+          onSelect={onSelect}
+          top={top}
+          theme={treeTheme}
+          className={classString}
+          onExpand={onExpand}
+          checkable={mutliple ? <span className={`${prefixCls}-checkbox-inner`} /> : mutliple}
+        >
+          {treeNodes}
+        </WrapRcTree>
+      );
     }
-
-
   }
 
-
-  getTheme () {
+  getTheme() {
     const { getTheme } = this.props;
     const theme = getTheme();
     const { height = DefaultHeight } = theme;
@@ -141,20 +129,19 @@ class ScrollerTree extends React.Component<any, any> {
     return theme;
   }
 
-  loopNode = (data: Array<RowData>) => data.map(item => {
-
-    const { selectable, displayField } = this.props;
-    const { children, key, [ displayField ]: title, isLeaf } = item;
-    if (children !== undefined) {
-      return (
-        <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>
-          {this.loopNode(children)}
-        </TreeNode>
-      );
-    }
-    return <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}/>;
-  });
-
+  loopNode = (data: Array<RowData>) =>
+    data.map(item => {
+      const { selectable, displayField } = this.props;
+      const { children, key, [displayField]: title, isLeaf } = item;
+      if (children !== undefined) {
+        return (
+          <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>
+            {this.loopNode(children)}
+          </TreeNode>
+        );
+      }
+      return <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable} />;
+    });
 }
 
 export default ThrottleScroller(ScrollerTree, MenuItemHeight);

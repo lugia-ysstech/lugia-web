@@ -7,7 +7,7 @@ const { ArrayUtils } = Utils;
 
 const { toArray } = ArrayUtils;
 
-function getValue (props: any, state: any): string {
+function getValue(props: any, state: any): string {
   let value;
   if ('value' in props) {
     value = props.value;
@@ -17,7 +17,7 @@ function getValue (props: any, state: any): string {
   return value;
 }
 
-function getObjectValue (arg: GetValueArgType): Object {
+function getObjectValue(arg: GetValueArgType): Object {
   const { value = {}, defaultValue = {} } = arg;
   if ('value' in arg) {
     return value;
@@ -27,7 +27,7 @@ function getObjectValue (arg: GetValueArgType): Object {
   return {};
 }
 
-function getNumberValue (props: any, state: any): number {
+function getNumberValue(props: any, state: any): number {
   let value;
   if ('value' in props) {
     value = props.value;
@@ -37,8 +37,7 @@ function getNumberValue (props: any, state: any): number {
   return value;
 }
 
-
-function getInitValue (props: any) {
+function getInitValue(props: any) {
   if (isNotLimit(props)) {
     const { defaultValue = '' } = props;
     return defaultValue;
@@ -48,8 +47,7 @@ function getInitValue (props: any) {
   return value;
 }
 
-
-function getInitNumberValue (props: any) {
+function getInitNumberValue(props: any) {
   if (isNotLimit(props)) {
     const { defaultValue = 0 } = props;
     return defaultValue;
@@ -59,7 +57,7 @@ function getInitNumberValue (props: any) {
   return value;
 }
 
-function getInitStart (props: any, value: number) {
+function getInitStart(props: any, value: number) {
   if ('start' in props) {
     const { start = 0 } = props;
     return start;
@@ -67,8 +65,7 @@ function getInitStart (props: any, value: number) {
   return value;
 }
 
-
-function getInitValueArray (props: any): Array<any> {
+function getInitValueArray(props: any): Array<any> {
   if (isNotLimit(props)) {
     const { defaultValue = [] } = props;
     return toArray(defaultValue);
@@ -78,7 +75,7 @@ function getInitValueArray (props: any): Array<any> {
   return toArray(value);
 }
 
-function getInitCodeItem (props: any): { value: string, displayValue: string } {
+function getInitCodeItem(props: any): { value: string, displayValue: string } {
   let resValue = '',
     resDisplayValue = '';
   if (!isNotLimit(props)) {
@@ -98,7 +95,7 @@ function getInitCodeItem (props: any): { value: string, displayValue: string } {
   return { value: resValue, displayValue: resDisplayValue };
 }
 
-function getInitCodeItemArray (props: any): { value: Array<any>, displayValue: Array<any> } {
+function getInitCodeItemArray(props: any): { value: Array<any>, displayValue: Array<any> } {
   let resValue = [];
   let resDisplayValue = [];
   if (!isNotLimit(props)) {
@@ -120,17 +117,15 @@ function getInitCodeItemArray (props: any): { value: Array<any>, displayValue: A
   return { value: toArray(resValue), displayValue: toArray(resDisplayValue) };
 }
 
-
-function isNotLimit (props: any) {
+function isNotLimit(props: any) {
   return isNotLimitByName(props, 'value');
 }
 
-function isNotLimitByName (props: any, name: string) {
-  return (name in props) === false;
+function isNotLimitByName(props: any, name: string) {
+  return name in props === false;
 }
 
-
-export function isString (str: any) {
+export function isString(str: any) {
   return typeof str === 'string';
 }
 

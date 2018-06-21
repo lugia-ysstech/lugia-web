@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
-import {FontSize} from '../css';
+import { FontSize } from '../css';
 
 const CloseButton: Object = styled.span`
   font-size: ${FontSize};
@@ -28,40 +28,47 @@ type ItemProps = {
   closeable?: boolean,
   children: any,
   onClick?: Function,
-  onCloseClick?: Function
+  onCloseClick?: Function,
 };
 
 type ItemState = {};
-export default class  extends React.Component<ItemProps, ItemState> {
+export default class extends React.Component<ItemProps, ItemState> {
   list: Object;
   item: ?HTMLElement;
   width: number;
   static displayName = Widget.InputTagItem;
-  render () {
-    const { className, closeable = true, onClick, onCloseClick} = this.props;
+  render() {
+    const { className, closeable = true, onClick, onCloseClick } = this.props;
     return (
-      <ItemContainer className={className} closeable={closeable} innerRef={c => this.item = c} onClick={onClick}>
+      <ItemContainer
+        className={className}
+        closeable={closeable}
+        innerRef={c => (this.item = c)}
+        onClick={onClick}
+      >
         <ItemText>{this.props.children}</ItemText>
-        {closeable ? <CloseButton className="sviconfont icon-close" onClick={onCloseClick}></CloseButton> : null}
+        {closeable ? (
+          <CloseButton className="sviconfont icon-close" onClick={onCloseClick} />
+        ) : null}
       </ItemContainer>
     );
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.updateWidth();
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this.updateWidth();
   }
 
-  updateWidth () {
+  updateWidth() {
     if (this.item) {
       this.width = this.item.offsetWidth;
     }
   }
 
-  getWidth (): number {
+  getWidth(): number {
     return this.width;
   }
 }

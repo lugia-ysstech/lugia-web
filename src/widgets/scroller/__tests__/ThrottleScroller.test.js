@@ -12,12 +12,10 @@ import renderer from 'react-test-renderer';
 
 import SVScroller from '../';
 
-
 const { expect: exp } = chai;
 
 Enzyme.configure({ adapter: new Adapter() });
-describe('ThrottleScroller', function () {
-
+describe('ThrottleScroller', function() {
   it('getTarget: target is data', () => {
     const Menus = () => {
       return <div>1</div>;
@@ -26,7 +24,7 @@ describe('ThrottleScroller', function () {
     const Target = createTestComponent(ThrottleScroller(Menus, 20), target => {
       exp(target.getTarget()).to.be.equal(data);
     });
-    mount(<Target data={data}/>);
+    mount(<Target data={data} />);
   });
   it('getTarget: target is children', () => {
     const Menus = () => {
@@ -48,7 +46,7 @@ describe('ThrottleScroller', function () {
     const Target = createTestComponent(ThrottleScroller(Menus, 20), target => {
       exp(target.getTarget()).to.be.eql([]);
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
 
   it('isNeedScrolelr is false  data的数量为0', () => {
@@ -66,7 +64,7 @@ describe('ThrottleScroller', function () {
       exp(target.isNeedScrolelr()).to.be.false;
       exp(target.isNeedScrolelr()).to.be.false;
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
   it('isNeedScrolelr is false 可见的数大于总数', () => {
     const Menus = () => {
@@ -81,7 +79,7 @@ describe('ThrottleScroller', function () {
       canSeeCount.returned(5);
       exp(target.isNeedScrolelr()).to.be.false;
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
   it('isNeedScrolelr is true 可见的数小于总数', () => {
     const Menus = () => {
@@ -96,7 +94,7 @@ describe('ThrottleScroller', function () {
       canSeeCount.returned(5);
       exp(target.isNeedScrolelr()).to.be.true;
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
 
   it('fetchViewSize', () => {
@@ -108,7 +106,7 @@ describe('ThrottleScroller', function () {
     const Target = createTestComponent(ThrottleScroller(Menus, 20), target => {
       exp(target.fetchViewSize()).to.be.equal(height);
     });
-    mount(<Target getTheme={theme}></Target>);
+    mount(<Target getTheme={theme} />);
   });
   it('fetchViewSize default', () => {
     const Menus = () => {
@@ -118,7 +116,7 @@ describe('ThrottleScroller', function () {
     const Target = createTestComponent(ThrottleScroller(Menus, 20), target => {
       exp(target.fetchViewSize()).to.be.equal(height);
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
   it('getStart', () => {
     const Menus = () => {
@@ -129,14 +127,14 @@ describe('ThrottleScroller', function () {
     const canSee = height / 20;
     const menuItemHeight = 20;
     const Target = createTestComponent(ThrottleScroller(Menus, menuItemHeight), target => {
-
       exp(target.getStart({}, { start: 100 }), 'is state.start').to.be.equal(100);
-      exp(target.getStart({ start: 1000 }, { start: 100 }), 'is props.start').to.be.equal(1000 - canSee + 1);
+      exp(target.getStart({ start: 1000 }, { start: 100 }), 'is props.start').to.be.equal(
+        1000 - canSee + 1
+      );
 
       exp(target.getStart({}, {}), 'is empty 0').to.be.equal(0);
-
     });
-    mount(<Target getTheme={theme} data={{ length: 1000 }}></Target>);
+    mount(<Target getTheme={theme} data={{ length: 1000 }} />);
   });
 
   it('fetchTotalSize', () => {
@@ -153,9 +151,8 @@ describe('ThrottleScroller', function () {
       getTarget.returned(items);
       exp(target.fetchTotalSize()).to.be.equal(itemHeigth * items.length);
     });
-    mount(<Target getTheme={theme}></Target>);
+    mount(<Target getTheme={theme} />);
   });
-
 
   it('canSeeCount', () => {
     const Menus = () => {
@@ -182,9 +179,8 @@ describe('ThrottleScroller', function () {
 
       fetchViewSize.returned(69);
       exp(target.canSeeCount()).to.be.equal(4);
-
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
   it('canSeeCount itemHeight =0', () => {
     const Menus = () => {
@@ -210,9 +206,8 @@ describe('ThrottleScroller', function () {
 
       fetchViewSize.returned(69);
       exp(target.canSeeCount()).to.be.equal(0);
-
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
   it('canSeeCount itemHeight <0', () => {
     const Menus = () => {
@@ -238,9 +233,8 @@ describe('ThrottleScroller', function () {
 
       fetchViewSize.returned(69);
       exp(target.canSeeCount()).to.be.equal(0);
-
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
   it('fetchStart&End', () => {
     const Menus = () => {
@@ -273,9 +267,8 @@ describe('ThrottleScroller', function () {
       canSeeCount.returned(0);
       exp(target.fetchEnd(5)).to.be.equal(5);
     });
-    mount(<Target></Target>);
+    mount(<Target />);
   });
-
 
   it('没有滚动条', () => {
     const Menus = () => {
@@ -285,7 +278,7 @@ describe('ThrottleScroller', function () {
       const mock = mockObject.create(target);
       mock.mockFunction('isNeedScrolelr').returned(false);
     });
-    const cmp = mount(<Target></Target>);
+    const cmp = mount(<Target />);
     cmp.render();
     exp(cmp.html()).to.be.equal('<div>1</div>');
   });
@@ -296,10 +289,9 @@ describe('ThrottleScroller', function () {
 
   it('有滚动条 滚动条的属性是否正确 scroler.type is x', () => {
     createExistScrollerCase('x');
-
   });
 
-  function createExistScrollerCase (type: ?string) {
+  function createExistScrollerCase(type: ?string) {
     const Menus = () => {
       return <div>1</div>;
     };
@@ -316,7 +308,7 @@ describe('ThrottleScroller', function () {
         return true;
       });
     });
-    let cmp = mount(<Target type={type}></Target>);
+    let cmp = mount(<Target type={type} />);
 
     exp(_this.scroller).to.be.undefined;
 
@@ -349,7 +341,6 @@ describe('ThrottleScroller', function () {
   }
 
   it('Target props & start & end', () => {
-
     const Menus = () => {
       return <div>1</div>;
     };
@@ -373,7 +364,7 @@ describe('ThrottleScroller', function () {
       });
     });
     const canSee = Math.floor(viewSize / itemH);
-    let cmp = mount(<Target data={{ length: 1000 }}></Target>);
+    let cmp = mount(<Target data={{ length: 1000 }} />);
 
     cmp = cmp.setState({ start });
     let menuProps = cmp.find(Menus).props();
@@ -395,8 +386,7 @@ describe('ThrottleScroller', function () {
     const Target = ThrottleScroller(Menus, itemH);
     const theme = () => ({ height: 50, width: 300 });
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    expect(renderer.create(<Target getTheme={theme}
-                                   data={data}></Target>).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Target getTheme={theme} data={data} />).toJSON()).toMatchSnapshot();
   });
 
   it('需要滚动条 HTML结构 theme is default data is 10 len', () => {
@@ -406,7 +396,7 @@ describe('ThrottleScroller', function () {
     const itemH = 20;
     const Target = ThrottleScroller(Menus, itemH);
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    expect(renderer.create(<Target data={data}></Target>).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Target data={data} />).toJSON()).toMatchSnapshot();
   });
   it('需要滚动条 HTML结构 theme is default data is 100 len', () => {
     const Menus = () => {
@@ -418,7 +408,7 @@ describe('ThrottleScroller', function () {
     for (let i = 0; i < 100; i++) {
       data.push(i);
     }
-    expect(renderer.create(<Target data={data}></Target>).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<Target data={data} />).toJSON()).toMatchSnapshot();
   });
   it('需要滚动条 HTML结构 children', () => {
     const Item = (props: Object) => {
@@ -426,7 +416,7 @@ describe('ThrottleScroller', function () {
     };
     const items = [];
     for (let i = 0; i < 100; i++) {
-      items.push(<Item key={`key${i}`} title={`title${i}`}/>);
+      items.push(<Item key={`key${i}`} title={`title${i}`} />);
     }
     const Menus = props => {
       return <div>{props.children}</div>;

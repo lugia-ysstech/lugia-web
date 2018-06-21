@@ -25,8 +25,20 @@ const rowData = [
   { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
   { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
   { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
-  { key: '1.2.2.1.1', title: '1.2.2.1.1', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true },
-  { key: '1.2.2.1.2', title: '1.2.2.1.2', pid: '1.2.2.1', path: '1/1.2/1.2.2/1.2.2.1', isLeaf: true },
+  {
+    key: '1.2.2.1.1',
+    title: '1.2.2.1.1',
+    pid: '1.2.2.1',
+    path: '1/1.2/1.2.2/1.2.2.1',
+    isLeaf: true,
+  },
+  {
+    key: '1.2.2.1.2',
+    title: '1.2.2.1.2',
+    pid: '1.2.2.1',
+    path: '1/1.2/1.2.2/1.2.2.1',
+    isLeaf: true,
+  },
   { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
 
   { key: '1.3', title: '1.3', pid: '1', path: '1' },
@@ -67,24 +79,13 @@ describe('Tree', () => {
   });
 
   class ExpandAllTree extends React.Component<Object, Object> {
-    render () {
-      return <Tree
-        key="tree"
-        expandAll
-        {...this.props}
-      >
-      </Tree>;
+    render() {
+      return <Tree key="tree" expandAll {...this.props} />;
     }
   }
 
   it('props: query: 2.1.2.1 expandAll: true mutliple: false', () => {
-    const Target = <Tree
-      expandAll
-      showLine
-      query="2.1.2.1"
-      data={rowData}
-    >
-    </Tree>;
+    const Target = <Tree expandAll showLine query="2.1.2.1" data={rowData} />;
     const cmp = mount(Target);
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
     const titles = cmp.find('.sv-tree-title');
@@ -96,27 +97,14 @@ describe('Tree', () => {
   });
 
   it('props: query: 2.1.2.1 expandAll: false mutliple: true', () => {
-    const cmp = mount(<Tree
-      expandAll
-      mutliple
-      showLine
-      data={rowData}
-    >
-    </Tree>);
+    const cmp = mount(<Tree expandAll mutliple showLine data={rowData} />);
   });
 
-
   it('props: defaultValue: 1 mutliple: true onChange监听', async () => {
-
     class LimitTree extends React.Component<Object, Object> {
-      render () {
-        return <Tree
-          expandAll
-          {...this.props}
-        >
-        </Tree>;
+      render() {
+        return <Tree expandAll {...this.props} />;
       }
-
     }
 
     let onChange;
@@ -130,7 +118,7 @@ describe('Tree', () => {
       };
     });
 
-    const Target = <LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange}/>;
+    const Target = <LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange} />;
     const cmp = mount(Target);
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
     const chkBox = cmp.find(CheckBoxInner);
@@ -142,17 +130,10 @@ describe('Tree', () => {
   });
 
   it('props: value: 1 mutliple: true onChange监听 limit', async () => {
-
     class LimitTree extends React.Component<Object, Object> {
-      render () {
-        return <Tree
-          value={'1'}
-          expandAll
-          {...this.props}
-        >
-        </Tree>;
+      render() {
+        return <Tree value={'1'} expandAll {...this.props} />;
       }
-
     }
 
     let onChange;
@@ -166,7 +147,7 @@ describe('Tree', () => {
       };
     });
 
-    const Target = <LimitTree defaultValue="2" data={rowData} mutliple onChange={onChange}/>;
+    const Target = <LimitTree defaultValue="2" data={rowData} mutliple onChange={onChange} />;
     const cmp = mount(Target);
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
 
@@ -179,19 +160,21 @@ describe('Tree', () => {
     exp(result).to.be.eql([['1', '1.1'], ['1'], ['1', '1.2.1']]);
   });
 
-
   it('props: defaultValue: 1,1.1,1.2  mutliple: false', () => {
-
-    let cmp = mount(<ExpandAllTree data={rowData} defaultValue={'1,1.1,1.2'}/>);
+    let cmp = mount(<ExpandAllTree data={rowData} defaultValue={'1,1.1,1.2'} />);
     exp(cmp.find('.' + Selected).length).to.be.equal(0);
-    cmp = mount(<ExpandAllTree data={rowData} defaultValue={'1,1.1,1.2'.split(',')}/>);
-    exp(cmp.find(TreeRow).at(0).hasClass(Selected)).to.be.true;
+    cmp = mount(<ExpandAllTree data={rowData} defaultValue={'1,1.1,1.2'.split(',')} />);
+    exp(
+      cmp
+        .find(TreeRow)
+        .at(0)
+        .hasClass(Selected)
+    ).to.be.true;
     exp(cmp.find('.' + Selected).length).to.be.equal(1);
   });
 
   it('props: value 1  mutliple: false', () => {
-
-    const cmp = mount(<ExpandAllTree data={rowData} value="1"/>);
+    const cmp = mount(<ExpandAllTree data={rowData} value="1" />);
     const chkBoxes = cmp.find(TreeRow);
     exp(cmp.find('.' + Selected).length).to.be.equal(1);
     exp(chkBoxes.at(0).hasClass(Selected)).to.be.true;
@@ -200,25 +183,17 @@ describe('Tree', () => {
   });
 
   it('props: defaultValue: 1,1.1,1.2 & value 1  mutliple: false', () => {
-
-    const cmp = mount(<ExpandAllTree data={rowData} defaultValue={'1'} value={'1.2'}/>);
+    const cmp = mount(<ExpandAllTree data={rowData} defaultValue={'1'} value={'1.2'} />);
     const chkBoxes = cmp.find(TreeRow);
     exp(cmp.find('.' + Selected).length).to.be.equal(1);
     exp(chkBoxes.at(2).hasClass(Selected)).to.be.true;
   });
 
-
   it('props: defaultValue: 1 mutliple: false onChange监听', async () => {
-
     class LimitTree extends React.Component<Object, Object> {
-      render () {
-        return <Tree
-          expandAll
-          {...this.props}
-        >
-        </Tree>;
+      render() {
+        return <Tree expandAll {...this.props} />;
       }
-
     }
 
     let onChange;
@@ -232,15 +207,28 @@ describe('Tree', () => {
       };
     });
 
-    const cmp = mount(<LimitTree defaultValue="1" data={rowData} mutliple={false} onChange={onChange}/>);
+    const cmp = mount(
+      <LimitTree defaultValue="1" data={rowData} mutliple={false} onChange={onChange} />
+    );
     const getChkBox = () => cmp.find(TreeRow);
 
-    getChkBox().at(1).simulate('click', {});
+    getChkBox()
+      .at(1)
+      .simulate('click', {});
 
     cmp.update();
-    exp(cmp.find(TreeRow).at(1).hasClass(Selected)).to.be.true;
-    getChkBox().at(1).simulate('click', {});
-    getChkBox().at(3).simulate('click', {});
+    exp(
+      cmp
+        .find(TreeRow)
+        .at(1)
+        .hasClass(Selected)
+    ).to.be.true;
+    getChkBox()
+      .at(1)
+      .simulate('click', {});
+    getChkBox()
+      .at(3)
+      .simulate('click', {});
 
     cmp.update();
 
@@ -250,27 +238,24 @@ describe('Tree', () => {
   });
 
   it('props: value: 1 mutliple: false onChange监听 limit', async () => {
-
     class LimitTree extends React.Component<Object, Object> {
-      constructor (props) {
+      constructor(props) {
         super(props);
         const { value } = props;
         this.state = { value };
       }
 
-      render () {
+      render() {
         const { value } = this.state;
-        return [<Tree
-          value={value}
-          expandAll
-          {...this.props}
-        >
-        </Tree>, <button onClick={this.onClick}></button>];
+        return [
+          <Tree value={value} expandAll {...this.props} />,
+          <button onClick={this.onClick} />,
+        ];
       }
 
       onClick = () => {
         this.setState({ value: '1.1' });
-      }
+      };
     }
 
     let onChange;
@@ -284,70 +269,93 @@ describe('Tree', () => {
       };
     });
 
-    const Target = <LimitTree value="1" data={rowData} onChange={onChange}/>;
+    const Target = <LimitTree value="1" data={rowData} onChange={onChange} />;
     const cmp = mount(Target);
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
 
     const getChkBox = () => cmp.find(TreeRow);
 
-    function checkSelectStatus () {
-      exp(getChkBox().at(0).hasClass(Selected)).to.be.true;
-      exp(getChkBox().at(1).hasClass(Selected)).to.be.false;
-      exp(getChkBox().at(3).hasClass(Selected)).to.be.false;
+    function checkSelectStatus() {
+      exp(
+        getChkBox()
+          .at(0)
+          .hasClass(Selected)
+      ).to.be.true;
+      exp(
+        getChkBox()
+          .at(1)
+          .hasClass(Selected)
+      ).to.be.false;
+      exp(
+        getChkBox()
+          .at(3)
+          .hasClass(Selected)
+      ).to.be.false;
     }
 
-    getChkBox().at(1).simulate('click', {});
+    getChkBox()
+      .at(1)
+      .simulate('click', {});
     checkSelectStatus();
-    getChkBox().at(1).simulate('click', {});
+    getChkBox()
+      .at(1)
+      .simulate('click', {});
     checkSelectStatus();
-    getChkBox().at(3).simulate('click', {});
+    getChkBox()
+      .at(3)
+      .simulate('click', {});
     checkSelectStatus();
     const result = await res;
     cmp.find(CheckBox);
     exp(result).to.be.eql([['1.1'], ['1.1'], ['1.2.1']]);
   });
 
-
   it('props: value: 1 mutliple: false 重新设置value属性', () => {
-
-
     class Target extends React.Component<Object, Object> {
-      constructor (props) {
+      constructor(props) {
         super(props);
         const { value } = props;
         this.state = { value };
       }
 
-      render () {
+      render() {
         const { value } = this.state;
-        return [<Tree data={rowData}
-                       expandAll
-                       value={value}
-        >
-        </Tree>, <button onClick={this.onClick}></button>];
+        return [<Tree data={rowData} expandAll value={value} />, <button onClick={this.onClick} />];
       }
 
       onClick = () => {
         this.setState({ value: '1.1' });
-      }
+      };
     }
 
-    const cmp = mount(<Target value="1"/>);
+    const cmp = mount(<Target value="1" />);
 
-    exp(cmp.find(TreeRow).at(0).hasClass(Selected)).to.be.true;
+    exp(
+      cmp
+        .find(TreeRow)
+        .at(0)
+        .hasClass(Selected)
+    ).to.be.true;
     exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
     cmp.find('button').simulate('click');
 
     exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
-    exp(cmp.find(TreeRow).at(0).hasClass(Selected)).to.be.false;
-    exp(cmp.find(TreeRow).at(1).hasClass(Selected)).to.be.true;
-
+    exp(
+      cmp
+        .find(TreeRow)
+        .at(0)
+        .hasClass(Selected)
+    ).to.be.false;
+    exp(
+      cmp
+        .find(TreeRow)
+        .at(1)
+        .hasClass(Selected)
+    ).to.be.true;
   });
 
-
   it('mutliple: false change props.value ', () => {
-
-    const cmp = mount(<Tree expandAll data={rowData}/>);
+    const cmp = mount(<Tree expandAll data={rowData} />);
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
     cmp.setProps({ value: '1' });
 
@@ -358,7 +366,6 @@ describe('Tree', () => {
 
     cmp.update();
     exp(cmp.find(`.${Selected}`).length).to.be.equal(1);
-
   });
 
   it('mutliple: false change props.value 1 => ""  ', () => {
@@ -369,9 +376,8 @@ describe('Tree', () => {
     createSinglePropsValueEmptyCase(undefined);
   });
 
-
-  function createSinglePropsValueEmptyCase (emptyValue: any) {
-    const cmp = mount(<Tree expandAll data={rowData}/>);
+  function createSinglePropsValueEmptyCase(emptyValue: any) {
+    const cmp = mount(<Tree expandAll data={rowData} />);
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
     cmp.setProps({ value: '1' });
 
@@ -384,7 +390,6 @@ describe('Tree', () => {
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
   }
 
-
   it('mutliple: true change props.value 1 => ""  ', () => {
     createMutlipePropsValueEmptyCase('');
   });
@@ -393,9 +398,8 @@ describe('Tree', () => {
     createMutlipePropsValueEmptyCase(undefined);
   });
 
-
-  function createMutlipePropsValueEmptyCase (emptyValue: any) {
-    const cmp = mount(<Tree mutliple={true} expandAll data={rowData}/>);
+  function createMutlipePropsValueEmptyCase(emptyValue: any) {
+    const cmp = mount(<Tree mutliple={true} expandAll data={rowData} />);
     exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
     cmp.setProps({ value: '1' });
 
@@ -413,8 +417,9 @@ describe('Tree', () => {
   }
 
   it('props: defaultValue: 1,1.1,1.2  mutliple: true', () => {
-
-    const cmp = mount(<ExpandAllTree data={rowData} defaultValue={'1,1.1,1.2'.split(',')} mutliple/>);
+    const cmp = mount(
+      <ExpandAllTree data={rowData} defaultValue={'1,1.1,1.2'.split(',')} mutliple />
+    );
     const chkBoxes = cmp.find(CheckBox);
     exp(chkBoxes.at(0).hasClass(HalfChecked)).to.be.true;
     exp(chkBoxes.at(1).hasClass(Checked)).to.be.true;
@@ -422,8 +427,7 @@ describe('Tree', () => {
   });
 
   it('props: value 1  mutliple: true', () => {
-
-    const cmp = mount(<ExpandAllTree data={rowData} value="1" mutliple/>);
+    const cmp = mount(<ExpandAllTree data={rowData} value="1" mutliple />);
     const chkBoxes = cmp.find(CheckBox);
     exp(chkBoxes.at(0).hasClass(HalfChecked)).to.be.true;
     exp(chkBoxes.at(1).hasClass(Checked)).to.be.false;
@@ -431,37 +435,47 @@ describe('Tree', () => {
   });
 
   it('props: defaultValue: 1,1.1,1.2 & value 1  mutliple: true', () => {
-
-    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" value="1" mutliple/>);
+    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" value="1" mutliple />);
     const chkBoxes = cmp.find(CheckBox);
     exp(chkBoxes.at(0).hasClass(HalfChecked)).to.be.true;
     exp(chkBoxes.at(1).hasClass(Checked)).to.be.false;
     exp(chkBoxes.at(2).hasClass(HalfChecked)).to.be.false;
   });
 
-
   it('props: defaultValue: 1  mutliple: false', () => {
-
-    const cmp = mount(<ExpandAllTree defaultValue="1" data={rowData} mutliple={false}/>);
+    const cmp = mount(<ExpandAllTree defaultValue="1" data={rowData} mutliple={false} />);
     exp(cmp.find(CheckBox).length).to.be.equal(0);
-    exp(cmp.find(TreeRow).first().hasClass(Selected)).to.be.true;
+    exp(
+      cmp
+        .find(TreeRow)
+        .first()
+        .hasClass(Selected)
+    ).to.be.true;
   });
 
   it('props: defaultValue: 1,1.1,1.2  mutliple: false', () => {
-    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" mutliple={false}/>);
+    const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" mutliple={false} />);
     exp(cmp.find(CheckBox).length).to.be.equal(0);
-    exp(cmp.find(TreeRow).first().hasClass(Selected)).to.be.false;
+    exp(
+      cmp
+        .find(TreeRow)
+        .first()
+        .hasClass(Selected)
+    ).to.be.false;
   });
 
-
   it('mutliple: true ,  onlySelectLeaf: true', async () => {
-
     const promise = new Promise(resolve => {
       const onChange = v => {
         resolve(v);
       };
-      const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} onlySelectLeaf/>);
-      cmp.find(CheckBoxInner).at(5).simulate('click', {});
+      const cmp = mount(
+        <Tree mutliple={true} expandAll data={rowData} onChange={onChange} onlySelectLeaf />
+      );
+      cmp
+        .find(CheckBoxInner)
+        .at(5)
+        .simulate('click', {});
       exp(cmp.find(`.${Selected}`).length).to.be.equal(0);
       exp(cmp.find(`.${Checked}`).length).to.be.equal(3);
       exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(3);
@@ -469,14 +483,17 @@ describe('Tree', () => {
     exp(await promise).to.be.eql(['1.2.2.1.1', '1.2.2.1.2']);
   });
   it('mutliple: true ,  limitCount: 1', async () => {
-
     const promise = new Promise(resolve => {
       const onChange = (value, displayValue) => {
         resolve({ value, displayValue });
       };
-      const cmp = mount(<Tree mutliple={true} expandAll data={rowData} onChange={onChange} limitCount={1}/>);
-      cmp.find(CheckBoxInner).at(5).simulate('click', {});
-
+      const cmp = mount(
+        <Tree mutliple={true} expandAll data={rowData} onChange={onChange} limitCount={1} />
+      );
+      cmp
+        .find(CheckBoxInner)
+        .at(5)
+        .simulate('click', {});
 
       cmp.update();
     });
@@ -485,10 +502,11 @@ describe('Tree', () => {
   });
 
   it('mutliple: false ,  onlySelectLeaf: true', () => {
-    const cmp = mount(<Tree mutliple={false} expandAll data={rowData}
-                            onlySelectLeaf/>);
-    cmp.find(TreeRow).at(5).simulate('click', {});
-
+    const cmp = mount(<Tree mutliple={false} expandAll data={rowData} onlySelectLeaf />);
+    cmp
+      .find(TreeRow)
+      .at(5)
+      .simulate('click', {});
 
     cmp.update();
     exp(cmp.find(`${CheckBox}`).length).to.be.equal(0);
@@ -497,7 +515,6 @@ describe('Tree', () => {
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
   });
 
-
   createIgronCase({ igron: [undefined, undefined], mutliple: false, half: 0, all: 0, sel: 1 });
   createIgronCase({ igron: [null, null], mutliple: false, half: 0, all: 0, sel: 1 });
   createIgronCase({ igron: ['', ''], mutliple: false, half: 0, all: 0, sel: 1 });
@@ -505,27 +522,44 @@ describe('Tree', () => {
   createIgronCase({ igron: [0, 0], mutliple: false, half: 0, all: 0, sel: 1 });
   createIgronCase({ igron: [true, true], mutliple: false, half: 0, all: 0, sel: 0 });
 
-
-  createIgronCase({ igron: [undefined, undefined], mutliple: false, half: 0, all: 0, sel: 1, target: 0 });
+  createIgronCase({
+    igron: [undefined, undefined],
+    mutliple: false,
+    half: 0,
+    all: 0,
+    sel: 1,
+    target: 0,
+  });
   createIgronCase({ igron: [null, null], mutliple: false, half: 0, all: 0, sel: 1, target: 0 });
   createIgronCase({ igron: ['', ''], mutliple: false, half: 0, all: 0, sel: 1, target: 0 });
   createIgronCase({ igron: [1, 1], mutliple: false, half: 0, all: 0, sel: 1, target: 0 });
   createIgronCase({ igron: [0, 0], mutliple: false, half: 0, all: 0, sel: 1, target: 0 });
   createIgronCase({ igron: [true, true], mutliple: false, half: 0, all: 0, sel: 0, target: 0 });
 
-
-  createIgronCase({ igron: [undefined, undefined], mutliple: true, half: 1, all: 1, sel: 0, target: 0 });
+  createIgronCase({
+    igron: [undefined, undefined],
+    mutliple: true,
+    half: 1,
+    all: 1,
+    sel: 0,
+    target: 0,
+  });
   createIgronCase({ igron: [true, true], mutliple: true, half: 0, all: 0, sel: 0, target: 0 });
   createIgronCase({ igron: [false, true], mutliple: true, half: 1, all: 0, sel: 0, target: 0 });
 
-
-  createIgronCase({ igron: [undefined, undefined], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
+  createIgronCase({
+    igron: [undefined, undefined],
+    mutliple: true,
+    half: 1,
+    all: 1,
+    sel: 0,
+    isLeaf: true,
+  });
   createIgronCase({ igron: [null, null], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
   createIgronCase({ igron: ['', ''], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
   createIgronCase({ igron: [1, 1], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
   createIgronCase({ igron: [0, 0], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
   createIgronCase({ igron: [true, true], mutliple: true, half: 0, all: 0, sel: 0, isLeaf: true });
-
 
   createIgronCase({ igron: [undefined, undefined], mutliple: true, half: 2, all: 0, sel: 0 });
   createIgronCase({ igron: [null, null], mutliple: true, half: 2, all: 0, sel: 0 });
@@ -534,35 +568,48 @@ describe('Tree', () => {
   createIgronCase({ igron: [0, 0], mutliple: true, half: 2, all: 0, sel: 0 });
   createIgronCase({ igron: [true, true], mutliple: true, half: 0, all: 0, sel: 0 });
 
-
-  createIgronCase({ igron: [undefined, undefined], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
+  createIgronCase({
+    igron: [undefined, undefined],
+    mutliple: true,
+    half: 1,
+    all: 1,
+    sel: 0,
+    isLeaf: true,
+  });
   createIgronCase({ igron: [null, null], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
   createIgronCase({ igron: ['', ''], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
   createIgronCase({ igron: [1, 1], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
   createIgronCase({ igron: [0, 0], mutliple: true, half: 1, all: 1, sel: 0, isLeaf: true });
   createIgronCase({ igron: [true, true], mutliple: true, half: 0, all: 0, sel: 0, isLeaf: true });
 
-  function createIgronCase ({
-                              igron,
-                              mutliple,
-                              half,
-                              all,
-                              sel,
-                              isLeaf = false,
-                              target = 1,
-                            }: Object) {
-
+  function createIgronCase({
+    igron,
+    mutliple,
+    half,
+    all,
+    sel,
+    isLeaf = false,
+    target = 1,
+  }: Object) {
     it(`mutliple: ${mutliple} ,  igronSelectField: igron is ${igron} isLeaf: ${isLeaf} target: ${target}`, () => {
-      const data = [{ key: '1', title: 'hello1', igron: igron[ 0 ] }, {
-        key: '1.1',
-        title: 'hello2',
-        pid: '1',
-        path: '1',
-        isLeaf,
-        igron: igron[ 1 ],
-      }];
-      const cmp = mount(<Tree mutliple={mutliple} expandAll data={data} igronSelectField={'igron'}/>);
-      cmp.find(mutliple ? CheckBox : TreeRow).at(target).simulate('click', {});
+      const data = [
+        { key: '1', title: 'hello1', igron: igron[0] },
+        {
+          key: '1.1',
+          title: 'hello2',
+          pid: '1',
+          path: '1',
+          isLeaf,
+          igron: igron[1],
+        },
+      ];
+      const cmp = mount(
+        <Tree mutliple={mutliple} expandAll data={data} igronSelectField={'igron'} />
+      );
+      cmp
+        .find(mutliple ? CheckBox : TreeRow)
+        .at(target)
+        .simulate('click', {});
       exp(cmp.find(`.${Checked}`).length, '全选').to.be.equal(all);
       exp(cmp.find(`.${HalfChecked}`, '半选').length).to.be.equal(half);
       exp(cmp.find(`.${Selected}`).length, '单选数').to.be.equal(sel);
@@ -574,14 +621,12 @@ describe('Tree', () => {
     const Target = createTestComponent(Tree, the => {
       target = the;
     });
-    const cmp = mount(<Target value={'3.2'} data={rowData} mutliple expandAll/>);
+    const cmp = mount(<Target value={'3.2'} data={rowData} mutliple expandAll />);
 
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
-    target.getThemeTarget().setState({ start: 17 }, () => {
-
-    });
+    target.getThemeTarget().setState({ start: 17 }, () => {});
 
     cmp.update();
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(1);
@@ -597,14 +642,12 @@ describe('Tree', () => {
     const Target = createTestComponent(Tree, the => {
       target = the;
     });
-    const cmp = mount(<Target value={'3.2'} data={rowData} expandAll/>);
+    const cmp = mount(<Target value={'3.2'} data={rowData} expandAll />);
 
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`, '半选书必须为0').length).to.be.equal(0);
     exp(cmp.find(`.${Selected}`).length, '单选数应该为0').to.be.equal(0);
-    target.getThemeTarget().setState({ start: 17 }, () => {
-
-    });
+    target.getThemeTarget().setState({ start: 17 }, () => {});
 
     cmp.update();
     exp(cmp.find(`.${Checked}`).length, '全选结点必须为0').to.be.equal(0);
@@ -613,7 +656,6 @@ describe('Tree', () => {
     const rows = cmp.find(TreeRow);
     exp(rows.at(rows.length - 2).hasClass(Selected)).to.be.true;
   });
-
 
   it('props:  expandAll:true | false,  mutliple: true , query:  1.3.2.1  & 1.3.2.1.1 & 1.3', () => {
     createMutlipleTreeQueryCase(true, true);
@@ -625,14 +667,17 @@ describe('Tree', () => {
     createMutlipleTreeQueryCase(false, false);
   });
 
-  function createMutlipleTreeQueryCase (expandAll: boolean, mutliple: boolean) {
-
-    const cmp = mount(<Tree data={rowData} expandAll={expandAll} mutliple={mutliple}/>);
+  function createMutlipleTreeQueryCase(expandAll: boolean, mutliple: boolean) {
+    const cmp = mount(<Tree data={rowData} expandAll={expandAll} mutliple={mutliple} />);
 
     cmp.setProps({ query: '1.3.2.1' });
 
     cmp.update();
-    const getValue = () => cmp.find(TreeRow).map(node => node.text()).join(',');
+    const getValue = () =>
+      cmp
+        .find(TreeRow)
+        .map(node => node.text())
+        .join(',');
     exp(getValue()).to.be.equal('1,1.3,1.3.2,1.3.2.1');
     exp(cmp.find(TreeRow).length).to.be.equal(4);
 
@@ -654,55 +699,93 @@ describe('Tree', () => {
   const SwitcherClose = 'sv-tree-switcher_close';
   it('expandAll: false 折叠测试', () => {
     const expandAll = true;
-    const cmp = mount(<Tree data={rowData} expandAll={expandAll}/>);
+    const cmp = mount(<Tree data={rowData} expandAll={expandAll} />);
 
     // 折叠 1
     expectNodeExpandStatue(cmp, 0, true);
-    exp(cmp.find(TreeRow).at(1).text(), '第二个结点为1.1').to.be.equal('1.1');
-    cmp.find(Switcher).at(0).simulate('click');
+    exp(
+      cmp
+        .find(TreeRow)
+        .at(1)
+        .text(),
+      '第二个结点为1.1'
+    ).to.be.equal('1.1');
+    cmp
+      .find(Switcher)
+      .at(0)
+      .simulate('click');
 
     cmp.update();
-    exp(cmp.find(TreeRow).at(1).text(), '第二个结点为2').to.be.equal('2');
+    exp(
+      cmp
+        .find(TreeRow)
+        .at(1)
+        .text(),
+      '第二个结点为2'
+    ).to.be.equal('2');
     expectNodeExpandStatue(cmp, 0, false);
 
     // 折叠 2
     expectNodeExpandStatue(cmp, 1, true);
-    cmp.find(Switcher).at(1).simulate('click');
+    cmp
+      .find(Switcher)
+      .at(1)
+      .simulate('click');
 
     cmp.update();
     expectNodeExpandStatue(cmp, 1, false);
 
     // 折叠 3
     expectNodeExpandStatue(cmp, 2, true);
-    cmp.find(Switcher).at(2).simulate('click');
+    cmp
+      .find(Switcher)
+      .at(2)
+      .simulate('click');
 
     cmp.update();
     expectNodeExpandStatue(cmp, 2, false);
 
-
     // 展开 1 操作
-    cmp.find(Switcher).at(0).simulate('click');
+    cmp
+      .find(Switcher)
+      .at(0)
+      .simulate('click');
 
     cmp.update();
-    exp(cmp.find(TreeRow).at(1).text(), '第二个结点为2').to.be.equal('1.1');
+    exp(
+      cmp
+        .find(TreeRow)
+        .at(1)
+        .text(),
+      '第二个结点为2'
+    ).to.be.equal('1.1');
     expectNodeExpandStatue(cmp, 0, true);
-
   });
 
-  function expectNodeExpandStatue (cmp, index: number, open: boolean) {
-
-    exp(cmp.find(Switcher).at(index).hasClass(open ? SwitcherOpen : SwitcherClose), '1 目前为展开').to.be.true;
-    exp(cmp.find(Switcher).at(index).hasClass(open ? SwitcherClose : SwitcherOpen), '1 目前为展开').to.be.false;
+  function expectNodeExpandStatue(cmp, index: number, open: boolean) {
+    exp(
+      cmp
+        .find(Switcher)
+        .at(index)
+        .hasClass(open ? SwitcherOpen : SwitcherClose),
+      '1 目前为展开'
+    ).to.be.true;
+    exp(
+      cmp
+        .find(Switcher)
+        .at(index)
+        .hasClass(open ? SwitcherClose : SwitcherOpen),
+      '1 目前为展开'
+    ).to.be.false;
   }
 
   const empty = '<span>查无结果</span>';
   it('data 为空的情况', () => {
-    const cmp = mount(<Tree/>);
+    const cmp = mount(<Tree />);
     exp(cmp.html().slice(0, 5) + cmp.html().slice(30)).to.be.equal(empty);
   });
   const error = '<span>树形数据错误</span>';
   it('树报错的情况', () => {
-
     const rowData: Array<Object> = [
       { key: '1', title: 'A' },
       { key: '1.1', title: 'A1.1', pid: '1', path: '1', isLeaf: true },
@@ -714,7 +797,13 @@ describe('Tree', () => {
       { key: '2.1', title: 'B2.1', pid: '2', path: '2', isLeaf: true },
       { key: '2.1.1', title: 'B2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
       { key: '2.1.1.1', title: 'B2.1.1.1', pid: '2.1.1', path: '2/2.1/2.1.1', isLeaf: true },
-      { key: '2.1.1.1.1', title: 'B2.1.1.1.1', pid: '2.1.1.1', path: '2/2.1/2.1.1/2.1.1.1', isLeaf: true },
+      {
+        key: '2.1.1.1.1',
+        title: 'B2.1.1.1.1',
+        pid: '2.1.1.1',
+        path: '2/2.1/2.1.1/2.1.1.1',
+        isLeaf: true,
+      },
 
       { key: '3', title: 'C' },
       { key: '3.1', title: 'C3.1', pid: '3', path: '3', isLeaf: true },
@@ -790,21 +879,19 @@ describe('Tree', () => {
 
       { key: '25', title: 'E++' },
       { key: '25.1', title: 'E++1', pid: '25', path: '25', isLeaf: true },
-
     ];
-    const cmp = mount(<Tree data={rowData} expandAll mutliple/>);
+    const cmp = mount(<Tree data={rowData} expandAll mutliple />);
     cmp.setProps({ start: 1.5565931965863116 });
     exp(cmp.html().slice(0, 5) + cmp.html().slice(30)).to.be.equal(error);
-
   });
 
   it('data 为[]的情况', () => {
-    const cmp = mount(<Tree data={[]}/>);
+    const cmp = mount(<Tree data={[]} />);
     exp(cmp.html().slice(0, 5) + cmp.html().slice(30)).to.be.equal(empty);
   });
 
   it('重新设置熟悉为 null 的情况', () => {
-    const cmp = mount(<Tree data={rowData}/>);
+    const cmp = mount(<Tree data={rowData} />);
     cmp.setProps({ data: null });
 
     cmp.update();
@@ -812,39 +899,48 @@ describe('Tree', () => {
   });
 
   it('多选树，shift键只选当前节点，不选择子节点', () => {
-
-    const cmp = mount(<Tree data={rowData} expandAll mutliple/>);
+    const cmp = mount(<Tree data={rowData} expandAll mutliple />);
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
-    cmp.find(CheckBox).at(0).simulate('click', { shiftKey: true });
+    cmp
+      .find(CheckBox)
+      .at(0)
+      .simulate('click', { shiftKey: true });
     cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(1);
-    exp(cmp.find(CheckBox).at(0).hasClass(HalfChecked)).to.be.true;
+    exp(
+      cmp
+        .find(CheckBox)
+        .at(0)
+        .hasClass(HalfChecked)
+    ).to.be.true;
   });
   it('多选树，shift键反选节点，', () => {
-
-    const cmp = mount(<Tree data={rowData} expandAll mutliple/>);
+    const cmp = mount(<Tree data={rowData} expandAll mutliple />);
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
-    cmp.find(CheckBox).at(0).simulate('click');
+    cmp
+      .find(CheckBox)
+      .at(0)
+      .simulate('click');
     // cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(15);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
 
-
-    cmp.find(CheckBox).at(0).simulate('click', { shiftKey: true });
+    cmp
+      .find(CheckBox)
+      .at(0)
+      .simulate('click', { shiftKey: true });
     // cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(0);
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(0);
   });
 
-
   it('查询结果切换是value设置是否正确', () => {
-
-    const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true}/>);
+    const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true} />);
     cmp.setProps({ value: '3.1' });
 
     cmp.update();
@@ -855,8 +951,18 @@ describe('Tree', () => {
 
     cmp.update();
     exp(cmp.find(`.${Checked}`).length).to.be.equal(1);
-    exp(cmp.find(CheckBox).at(5).hasClass(HalfChecked)).to.be.true;
-    exp(cmp.find(CheckBox).at(6).hasClass(Checked)).to.be.true;
+    exp(
+      cmp
+        .find(CheckBox)
+        .at(5)
+        .hasClass(HalfChecked)
+    ).to.be.true;
+    exp(
+      cmp
+        .find(CheckBox)
+        .at(6)
+        .hasClass(Checked)
+    ).to.be.true;
     exp(cmp.find(`.${HalfChecked}`).length).to.be.equal(1);
 
     cmp.setProps({ query: '' });
@@ -870,12 +976,9 @@ describe('Tree', () => {
     const Target = createTestComponent(Tree, the => {
       target = the;
     });
-    const cmp = mount(<Target value={'3.2'} data={rowData} mutliple expandAll/>);
+    const cmp = mount(<Target value={'3.2'} data={rowData} mutliple expandAll />);
 
-
-    target.getThemeTarget().setState({ start: 17 }, () => {
-
-    });
+    target.getThemeTarget().setState({ start: 17 }, () => {});
 
     cmp.update();
     exp(target.getThemeTarget().state.start, '移动滚动条到底部失败').to.be.equal(17);
@@ -889,39 +992,45 @@ describe('Tree', () => {
 
     cmp.update();
     exp(target.getThemeTarget().state.start, '恢复到原来的底部位置').to.be.equal(17);
-
   });
 
   it('多次查询', () => {
-
     const context = {
       config: {
-        [ Widget.Tree ]: {
+        [Widget.Tree]: {
           height: 1000,
         },
       },
     };
-    const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true}/>, { context });
+    const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true} />, { context });
 
     const sepator = ',';
-    const getValue = () => cmp.find(TreeRow).map(node => node.text()).join(sepator);
+    const getValue = () =>
+      cmp
+        .find(TreeRow)
+        .map(node => node.text())
+        .join(sepator);
     const getTitle = item => item.title;
     exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
     cmp.setProps({ query: '3' });
 
-    const query3Result = '1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3,3,3.1,3.2'.split(',');
+    const query3Result = '1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3,3,3.1,3.2'.split(
+      ','
+    );
 
     exp(getValue()).to.be.equal(query3Result.join(','));
     cmp.setProps({ value: query3Result });
     exp(cmp.find('.' + Checked).length).to.be.equal(query3Result.length);
 
-    const query2Result = '1,1.2,1.2.1,1.2.2,1.2.2.1,1.2.2.1.1,1.2.2.1.2,1.2.2.2,1.3,1.3.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,2,2.1,2.1.1,2.1.2,2.1.2.1,2.2,2.2.1,2.2.1.1,2.2.1.2,2.2.2,3,3.2'.split(',');
+    const query2Result = '1,1.2,1.2.1,1.2.2,1.2.2.1,1.2.2.1.1,1.2.2.1.2,1.2.2.2,1.3,1.3.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,2,2.1,2.1.1,2.1.2,2.1.2.1,2.2,2.2.1,2.2.1.1,2.2.1.2,2.2.2,3,3.2'.split(
+      ','
+    );
     cmp.setProps({ query: '2' });
     exp(getValue()).to.be.equal(query2Result.join(','));
 
     const value = {};
     const callback = v => {
-      value[ v ] = true;
+      value[v] = true;
     };
     query3Result.forEach(callback);
     query2Result.forEach(callback);
@@ -930,13 +1039,19 @@ describe('Tree', () => {
 
     cmp.setProps({ query: '' });
     exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
-    exp(cmp.find('.' + Checked).length + cmp.find('.' + HalfChecked).length).to.be.equal(mergerValue.length);
-
+    exp(cmp.find('.' + Checked).length + cmp.find('.' + HalfChecked).length).to.be.equal(
+      mergerValue.length
+    );
   });
 
   it('height 为200的边界情况', () => {
-    const cmp = mount(<Tree data={rowData} expandAll={true} start={23}/>);
-    exp(cmp.find(TreeRow).last().text()).to.be.equal('4');
+    const cmp = mount(<Tree data={rowData} expandAll={true} start={23} />);
+    exp(
+      cmp
+        .find(TreeRow)
+        .last()
+        .text()
+    ).to.be.equal('4');
   });
 
   it('isSelectedAll all', () => {
@@ -944,7 +1059,7 @@ describe('Tree', () => {
     const Target = createTestComponent(Tree, the => {
       target = the;
     });
-    const cmp = mount(<Target data={rowData} expandAll={true} start={23} mutliple/>);
+    const cmp = mount(<Target data={rowData} expandAll={true} start={23} mutliple />);
 
     exp(target.getThemeTarget().isSelectAll()).to.be.false;
     const value = rowData.map(item => item.key);
@@ -956,7 +1071,9 @@ describe('Tree', () => {
     const Target = createTestComponent(Tree, the => {
       target = the;
     });
-    const cmp = mount(<Target data={rowData} expandAll={true} start={23} mutliple onlySelectLeaf={true}/>);
+    const cmp = mount(
+      <Target data={rowData} expandAll={true} start={23} mutliple onlySelectLeaf={true} />
+    );
 
     exp(target.getThemeTarget().isSelectAll()).to.be.false;
     const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
@@ -965,10 +1082,14 @@ describe('Tree', () => {
   });
 
   it('height 为200的边界情况 超出范围', () => {
-    const cmp = mount(<Tree data={rowData} expandAll={true} start={1000}/>);
-    exp(cmp.find(TreeRow).last().text()).to.be.equal('4');
+    const cmp = mount(<Tree data={rowData} expandAll={true} start={1000} />);
+    exp(
+      cmp
+        .find(TreeRow)
+        .last()
+        .text()
+    ).to.be.equal('4');
   });
   // displayValue的测试场景
   // value为4的场景
-
 });

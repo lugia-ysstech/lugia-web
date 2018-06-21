@@ -9,11 +9,8 @@ import MaskBox from '../MaskBox';
 const { expect: exp } = chai;
 
 describe('VisibleBox', () => {
-
   it('visible  is true', () => {
-    const maskBox = renderer.create(<MaskBox visible></MaskBox>).toJSON();
+    const maskBox = renderer.create(<MaskBox visible />).toJSON();
     expect(maskBox).toMatchSnapshot();
   });
-
-
 });

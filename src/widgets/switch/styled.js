@@ -7,7 +7,7 @@
  * @flow
  */
 import '../css/sv.css';
-import styled ,{keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 type SwitchSize = 'small' | 'default';
 
@@ -32,7 +32,7 @@ const _normalVars = {
   switchColor: 'rgb(24, 144, 255)',
   checkedColor: 'rgb(24, 144, 255)',
   boxShadowColor: 'rgba(24, 144, 255, .2)',
-  disabledOpacity: .4,
+  disabledOpacity: 0.4,
 };
 
 const _normalInnerVars = {
@@ -79,13 +79,13 @@ const LoadingCircleSmall = keyframes`
 
 /* getStyled */
 const getStyled = (props: CSSProps) => {
-  const { size, isChecked, isDisabled,loading} = props;
+  const { size, isChecked, isDisabled, loading } = props;
   let vars = _normalVars;
   let innerVars = _normalInnerVars;
 
-  if(size === 'small'){
-    vars = Object.assign({} , _normalVars, _smallVars);
-    innerVars = Object.assign({} , _normalInnerVars, _smallInnerVars);
+  if (size === 'small') {
+    vars = Object.assign({}, _normalVars, _smallVars);
+    innerVars = Object.assign({}, _normalInnerVars, _smallInnerVars);
   }
 
   const style = `
@@ -103,38 +103,36 @@ const getStyled = (props: CSSProps) => {
   }
   `;
   const innerStyle = `
-    margin-left: ${isChecked? innerVars.marginRight: innerVars.marginLeft}px;
-    margin-right: ${isChecked? innerVars.marginLeft: innerVars.marginRight}px;
+    margin-left: ${isChecked ? innerVars.marginRight : innerVars.marginLeft}px;
+    margin-right: ${isChecked ? innerVars.marginLeft : innerVars.marginRight}px;
   `;
 
   const checkedStyle = `
-    background-color: ${isChecked? vars.checkedColor: vars.bgDisabledColor};
+    background-color: ${isChecked ? vars.checkedColor : vars.bgDisabledColor};
     &:before,
     &:after{
-      left: ${isChecked? '100%': '1px'};
-      margin-left: ${isChecked ? 
-        size === 'small'? -(vars.height - 3) : -19 :
-        ''}px;
+      left: ${isChecked ? '100%' : '1px'};
+      margin-left: ${isChecked ? (size === 'small' ? -(vars.height - 3) : -19) : ''}px;
     }
 
     &:active:before,
     &:active:after {
-      margin-left: ${isChecked? vars.activeBeforeMarginLeft: ''}px;
+      margin-left: ${isChecked ? vars.activeBeforeMarginLeft : ''}px;
     }
   `;
 
   const disabledStyle = `
-    opacity: ${isDisabled? vars.disabledOpacity : ''};
-    pointer-events: ${isDisabled? 'none' : ''};
+    opacity: ${isDisabled ? vars.disabledOpacity : ''};
+    pointer-events: ${isDisabled ? 'none' : ''};
   `;
 
   const loadingStyle = `
-    opacity: ${loading? vars.disabledOpacity : ''};
-    pointer-events: ${loading? 'none' : ''};
+    opacity: ${loading ? vars.disabledOpacity : ''};
+    pointer-events: ${loading ? 'none' : ''};
     &:before{
-      animation: ${size === 'small'? LoadingCircleSmall: LoadingCircle} 1s infinite linear;
-      display: ${loading? 'inline-block': 'none'};
-      color: ${isChecked? vars.checkedColor: vars.textColor};
+      animation: ${size === 'small' ? LoadingCircleSmall : LoadingCircle} 1s infinite linear;
+      display: ${loading ? 'inline-block' : 'none'};
+      color: ${isChecked ? vars.checkedColor : vars.textColor};
     }
   `;
 
@@ -205,5 +203,5 @@ export const SwitchInner = styled.span`
   font-size: ${_normalVars.fontSize}px;
   display: block;
 
-  ${props => getStyled(props).innerStyle}
+  ${props => getStyled(props).innerStyle};
 `;

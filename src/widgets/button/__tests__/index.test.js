@@ -18,21 +18,15 @@ const { expect: exp } = chai;
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Button', () => {
-  beforeEach(() => {
-  });
-
+  beforeEach(() => {});
 
   it('normal', () => {
-    const Target = <Button>
-      你好吗
-    </Button>;
+    const Target = <Button>你好吗</Button>;
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
-
   });
   it('normal type: danger', () => {
     const Target = <Button type="danger">hello</Button>;
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
-
   });
   it('props: click', async () => {
     let onClick;
@@ -41,11 +35,17 @@ describe('Button', () => {
         resolve(e.target);
       };
     });
-    const cmp = mount(<Button type="danger" onClick={onClick}>hello</Button>);
+    const cmp = mount(
+      <Button type="danger" onClick={onClick}>
+        hello
+      </Button>
+    );
     const target = { px: 'hello' };
-    cmp.find('hello').at(0).simulate('click', { target });
+    cmp
+      .find('hello')
+      .at(0)
+      .simulate('click', { target });
 
-    exp(await  promise).to.be.eql(target);
+    exp(await promise).to.be.eql(target);
   });
-
 });

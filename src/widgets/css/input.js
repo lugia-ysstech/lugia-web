@@ -12,7 +12,7 @@ export const getInputBorderColor = (props: Object) => {
 };
 const Sucess = 'sucess';
 
-function isSucess (validateStatus) {
+function isSucess(validateStatus) {
   return validateStatus === Sucess;
 }
 

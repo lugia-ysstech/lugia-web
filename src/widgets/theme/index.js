@@ -23,27 +23,29 @@ class Theme extends React.Component<PropsType, StateType> {
   static displayName = Widget.Theme;
   svThemeConfigTree: Object;
 
-  constructor (props: PropsType, context: Object) {
+  constructor(props: PropsType, context: Object) {
     super(props);
     this.updateTreeConfig(props, context);
   }
 
   //TODO: 需要单元测试
-  componentWillReceiveProps (nextProps: PropsType, context: Object) {
+  componentWillReceiveProps(nextProps: PropsType, context: Object) {
     const nowContext = this.context;
-    if (nextProps.config !== this.props.config
-      || nowContext.config !== context.config
-      || nowContext.svThemeConfigTree !== context.svThemeConfigTree) {
+    if (
+      nextProps.config !== this.props.config ||
+      nowContext.config !== context.config ||
+      nowContext.svThemeConfigTree !== context.svThemeConfigTree
+    ) {
       this.updateTreeConfig(nextProps, context);
     }
   }
 
-  updateTreeConfig (props: PropsType, context: Object) {
+  updateTreeConfig(props: PropsType, context: Object) {
     const { config, svThemeConfigTree } = context;
     this.svThemeConfigTree = Object.assign({}, svThemeConfigTree, config, props.config);
   }
 
-  getChildContext (): Object {
+  getChildContext(): Object {
     const { props } = this;
     const { config } = props;
     return {
@@ -52,7 +54,7 @@ class Theme extends React.Component<PropsType, StateType> {
     };
   }
 
-  render () {
+  render() {
     const { children, className } = this.props;
     return <span className={className}>{children}</span>;
   }

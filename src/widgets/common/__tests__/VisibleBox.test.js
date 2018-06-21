@@ -8,22 +8,19 @@ import VisibleBox from '../VisibleBox';
 const { expect: exp } = chai;
 
 describe('VisibleBox', () => {
-
   it('visible  is true', () => {
-    const visibleBox = renderer.create(<VisibleBox visible></VisibleBox>).toJSON();
+    const visibleBox = renderer.create(<VisibleBox visible />).toJSON();
     expect(visibleBox).toMatchSnapshot();
-
   });
 
   it('visible is false', () => {
-    const visibleBox = renderer.create(<VisibleBox visible={false}></VisibleBox>).toJSON();
+    const visibleBox = renderer.create(<VisibleBox visible={false} />).toJSON();
     expect(visibleBox).toMatchSnapshot();
     expect(visibleBox).toHaveStyleRule('display', 'none');
   });
   it('default visible default is false', () => {
-    const visibleBox = renderer.create(<VisibleBox></VisibleBox>).toJSON();
+    const visibleBox = renderer.create(<VisibleBox />).toJSON();
     expect(visibleBox).toMatchSnapshot();
     expect(visibleBox).toHaveStyleRule('display', 'none');
   });
-
 });

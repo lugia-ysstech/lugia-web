@@ -22,8 +22,7 @@ const hover = (props: Object) => {
 const IconTag = styled.i`
   user-select: none;
   cursor: pointer;
-  ${getColor}
-  ${hover}
+  ${getColor} ${hover};
 `;
 type IconProps = {
   className?: string,
@@ -41,11 +40,17 @@ class Icon extends React.Component<IconProps> {
     },
   };
 
-  render () {
+  render() {
     const { iconClass, onClick, getTheme, className = '' } = this.props;
-    return <IconTag className={`sviconfont ${iconClass} ${className}`}
-                    onClick={onClick}
-                    theme={getTheme()}> </IconTag>;
+    return (
+      <IconTag
+        className={`sviconfont ${iconClass} ${className}`}
+        onClick={onClick}
+        theme={getTheme()}
+      >
+        {' '}
+      </IconTag>
+    );
   }
 }
 

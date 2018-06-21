@@ -9,8 +9,7 @@ import styled from 'styled-components';
 import Scroller from './index';
 import '../css/sv.css';
 import Widget from '../consts/index';
-import { DefaultHeight, DefaultWidth, BarDefaultSize} from '../css/scroller';
-
+import { DefaultHeight, DefaultWidth, BarDefaultSize } from '../css/scroller';
 
 const height = props => {
   const height = props.theme.height;
@@ -33,10 +32,8 @@ const scrollerLeft = props => {
   return `left: ${getContentWidth(props)}px;`;
 };
 
-
 const Col = styled.div`
-  ${height}
-  ${contentWidth}
+  ${height} ${contentWidth}
   position: absolute;
   display: inline-block;
 `;
@@ -48,14 +45,13 @@ const ScrollerCol = Col.extend`
 
 const ScrollerContainer = styled.div`
   overflow: hidden;
-  ${height}
-  ${width}
+  ${height} ${width}
   position: relative;
 `;
 
 type ThrottleScrollerState = {
   start: number,
-}
+};
 export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
   return class ThrottleScroller extends React.Component<any, ThrottleScrollerState> {
     static displayName = Widget.ThrottleScroller;
@@ -67,14 +63,14 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
     };
     scroller: ?Object;
 
-    constructor (props: any) {
+    constructor(props: any) {
       super(props);
       this.state = {
         start: 0,
       };
     }
 
-    render () {
+    render() {
       const { props } = this;
 
       const start = this.getStart(props, this.state);
@@ -82,7 +78,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       if (!this.isNeedScrolelr()) {
         const { length } = this.getTarget();
         //TODO: 待测试
-        return <Target {...props} start={0} end={length} canSeeCount={length}/>;
+        return <Target {...props} start={0} end={length} canSeeCount={length} />;
       }
 
       const { type, getTheme } = props;
@@ -93,27 +89,26 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       const theme = getTheme();
       const canSeeCount = this.canSeeCount();
 
-      return <ScrollerContainer theme={theme}
-                                onWheel={this.onWheel}>
-        <Col theme={theme}>
-          <Target {...props}
-                  canSeeCount={canSeeCount}
-                  start={start}
-                  end={end}/>
-        </Col>
-        <ScrollerCol theme={theme}>
-          <Scroller ref={cmp => this.scroller = cmp}
-                    type={type}
-                    value={menuItemHeight * start}
-                    viewSize={viewSize}
-                    totalSize={totalSize}
-                    onChange={this.onScroller}/>
-        </ScrollerCol>
-      </ScrollerContainer>;
-
+      return (
+        <ScrollerContainer theme={theme} onWheel={this.onWheel}>
+          <Col theme={theme}>
+            <Target {...props} canSeeCount={canSeeCount} start={start} end={end} />
+          </Col>
+          <ScrollerCol theme={theme}>
+            <Scroller
+              ref={cmp => (this.scroller = cmp)}
+              type={type}
+              value={menuItemHeight * start}
+              viewSize={viewSize}
+              totalSize={totalSize}
+              onChange={this.onScroller}
+            />
+          </ScrollerCol>
+        </ScrollerContainer>
+      );
     }
 
-    getStart (props: Object, state: Object): number {
+    getStart(props: Object, state: Object): number {
       const { length } = this.getTarget();
 
       const limitStart = (start: number) => {
@@ -130,13 +125,12 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       return limitStart(start);
     }
 
-    isNeedScrolelr () {
+    isNeedScrolelr() {
       const { length } = this.getTarget();
       return this.canSeeCount() < length;
     }
 
-    canSeeCount (): number {
-
+    canSeeCount(): number {
       const viewHeigh = this.fetchViewSize();
 
       if (viewHeigh <= 0 || menuItemHeight <= 0) {
@@ -146,17 +140,17 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       return Math.ceil(viewHeigh / menuItemHeight);
     }
 
-    fetchViewSize () {
+    fetchViewSize() {
       const { height = DefaultHeight } = this.props.getTheme();
       return height;
     }
 
-    fetchTotalSize (): number {
+    fetchTotalSize(): number {
       const { length } = this.getTarget();
       return length * menuItemHeight;
     }
 
-    getTarget (): Array<any> {
+    getTarget(): Array<any> {
       const { data, children } = this.props;
       if (!data && !children) {
         return [];
@@ -164,7 +158,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       return data ? data : children;
     }
 
-    fetchEnd (start: number): number {
+    fetchEnd(start: number): number {
       const { length: maxLen } = this.getTarget();
       if (maxLen === 0) {
         return 0;
@@ -179,11 +173,8 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
     onScroller = (value: number) => {
       const { onScroller } = this.props;
-      const start = (value / menuItemHeight);
+      const start = value / menuItemHeight;
       onScroller ? onScroller(start, this.fetchEnd(start)) : this.setState({ start });
     };
-
-
   };
-
 };

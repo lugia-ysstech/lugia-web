@@ -8,13 +8,10 @@ import React from 'react';
 import Item from './Item';
 import Widget from '../consts/index';
 
-
-export default class  extends React.Component<any, any> {
+export default class extends React.Component<any, any> {
   static displayName = Widget.ItemTagOption;
 
-  render () {
-    return (
-      <Item {...this.props}/>
-    );
+  render() {
+    return <Item {...this.props} />;
   }
 }

@@ -10,12 +10,15 @@ import PropTypes from 'prop-types';
 const { expect: exp } = chai;
 
 describe('Theme', () => {
-
   it('Theme', () => {
-
     class TestComponent extends React.Component<any> {
-      render () {
-        return <div>{JSON.stringify(this.context.config)}{this.props.children}</div>;
+      render() {
+        return (
+          <div>
+            {JSON.stringify(this.context.config)}
+            {this.props.children}
+          </div>
+        );
       }
     }
 
@@ -23,9 +26,11 @@ describe('Theme', () => {
       config: PropTypes.object,
     };
     const config = { ligx: { value: '正念' } };
-    const cmp = renderer.create(<Theme config={config} ><TestComponent>hello everyone</TestComponent></Theme>);
+    const cmp = renderer.create(
+      <Theme config={config}>
+        <TestComponent>hello everyone</TestComponent>
+      </Theme>
+    );
     expect(cmp).toMatchSnapshot();
   });
-
-
 });

@@ -34,8 +34,7 @@ const getHeight = props => {
 };
 const getWidth = props => (props.theme.width ? `width: ${props.theme.width}px;` : '');
 const MenuContainer = styled.ul`
-  ${getWidth}
-  outline: none;
+  ${getWidth} outline: none;
   margin: 0;
   user-select: none;
   padding-left: 0;
@@ -49,10 +48,10 @@ type MenuItemProps = {|
   checked?: boolean,
   mutliple: boolean,
   onClick: Function,
-|} ;
+|};
 type MenuState = {
   selectedKeys: Array<string>,
-}
+};
 
 class Menu extends React.Component<MenuProps, MenuState> {
   static defaultProps = {
@@ -66,7 +65,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   static displayName = Widget.Menu;
   isSelect: Function;
 
-  constructor (props: MenuProps) {
+  constructor(props: MenuProps) {
     super(props);
     this.state = {
       start: 0,
@@ -75,7 +74,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     this.updateIsSelect(this.state, this.props);
   }
 
-  getSelectedKeys (): Array<string> {
+  getSelectedKeys(): Array<string> {
     const { selectedKeys = [], defaultSelectedKeys = [] } = this.props;
     if ('selectedKeys' in this.props) {
       return selectedKeys;
@@ -85,8 +84,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return [];
   }
 
-
-  shouldComponentUpdate (nextProps: MenuProps, nextState: MenuState) {
+  shouldComponentUpdate(nextProps: MenuProps, nextState: MenuState) {
     const { props, state } = this;
     const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
@@ -94,19 +92,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
     if (dataChanged || selectedChange) {
       this.updateIsSelect(nextState, nextProps);
     }
-    return dataChanged ||
+    return (
+      dataChanged ||
       props.start !== nextProps.start ||
       props.svThemVersion !== nextProps.svThemVersion ||
-      selectedChange;
+      selectedChange
+    );
   }
 
-
-  render () {
+  render() {
     const { props } = this;
     const { data } = props;
-    let {
-      start, end,
-    } = this.props;
+    let { start, end } = this.props;
     start = Math.round(start);
     end = Math.round(end);
     let items = [];
@@ -116,7 +113,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
         const { getPrefix, getSuffix } = props;
         const prefix = getPrefix && getPrefix(obj);
         const suffix = getSuffix && getSuffix(obj);
-        return <Item key={key}>{prefix}{value}{suffix}</Item>;
+        return (
+          <Item key={key}>
+            {prefix}
+            {value}
+            {suffix}
+          </Item>
+        );
       });
     } else {
       const { children } = props;
@@ -125,11 +128,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
       }
     }
 
-
     return <MenuContainer theme={this.getTheme()}>{items}</MenuContainer>;
   }
 
-  getTheme () {
+  getTheme() {
     const { getTheme } = this.props;
     const theme = getTheme();
     const { height = DefaultHeight } = theme;
@@ -137,21 +139,20 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return theme;
   }
 
-  computeItems (data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
+  computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
     const items = [];
     for (let i = start; i < end; i++) {
-      items.push(this.renderMenuItem(getItem(data[ i ]), this.isSelect));
+      items.push(this.renderMenuItem(getItem(data[i]), this.isSelect));
     }
     return items;
   }
-
 
   renderMenuItem = (child: React.Element<typeof Item>, isSelect: Function) => {
     const { key } = child;
     return React.cloneElement(child, this.fetchExtendProps(key, isSelect));
   };
 
-  fetchExtendProps (key?: null | number | string, isSelect: Function): MenuItemProps {
+  fetchExtendProps(key?: null | number | string, isSelect: Function): MenuItemProps {
     const { mutliple } = this.props;
     const onClick = this.onMenuItemClick(key);
     if (!key || !isSelect(key)) {
@@ -189,7 +190,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     };
   };
 
-  updateIsSelect (state: MenuState, props: MenuProps) {
+  updateIsSelect(state: MenuState, props: MenuProps) {
     this.isSelect = this.createSelect(state, props);
   }
 
@@ -201,21 +202,19 @@ class Menu extends React.Component<MenuProps, MenuState> {
       const { mutliple } = props;
       if (mutliple) {
         for (let i = 0; i < len; i++) {
-          existKey[ selectedKeys[ i ] ] = true;
+          existKey[selectedKeys[i]] = true;
         }
       } else {
-        existKey[ selectedKeys[ selectedKeys.length - 1 ] ] = true;
+        existKey[selectedKeys[selectedKeys.length - 1]] = true;
       }
     }
 
     return (key: number | string) => {
-      return existKey[ key ];
+      return existKey[key];
     };
-  }
+  };
 }
 
 const Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
 Result.MenuItem = Item;
 export default Result;
-
-
