@@ -1,5 +1,5 @@
 //@flow
-declare module 'sv-widget' {
+declare module '@lugia/lugia-web' {
 
   declare type GetValueArgType = {|
     defaultValue?: any,
