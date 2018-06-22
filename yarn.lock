@@ -38,9 +38,7 @@
 
 "@lugia/type-utils@^1.0.1":
   version "1.0.1"
-  resolved "http://192.168.102.79:5001/@lugia/type-utils/download/@lugia/type-utils-1.0.1.tgz#7630d8350caa5f09e85012b581bb9e6c0bb925ad"
-  dependencies:
-    jest "^23.1.0"
+  resolved "http://192.168.102.79:5001/@lugia/type-utils/download/@lugia/type-utils-1.0.1.tgz#cad9b5f89243108ae81f30abea95f4ca75e4ec54"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
