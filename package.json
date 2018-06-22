@@ -85,7 +85,7 @@
     "jest-cli": "20.0.4",
     "jest-styled-components": "4.2.2",
     "jsdom": "^11.7.0",
-    "lint-staged": "^6.0.0",
+    "lint-staged": "7.2.0",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
     "prettier": "^1.13.5",
@@ -115,10 +115,11 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "prettier",
-      "lint:fix",
-      "lint",
-      "lint:css"
+      "npm run prettier",
+      "eslint --fix",
+      "npm run lint",
+      "npm run lint:css",
+      "git add"
     ]
   },
   "jest": {
