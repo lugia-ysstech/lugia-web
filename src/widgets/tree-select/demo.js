@@ -9,7 +9,54 @@ import Theme from '../theme/index';
 import TreeSelect from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-
+import changeclolr from '../css/utilsColor';
+const Box = styled.div`
+  text-align: center;
+`;
+const DIV = styled.div`
+  height: 50px;
+  background: ${changeclolr('#684fff').color};
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+`;
+const DIV1 = styled.div`
+  height: 50px;
+  background: ${changeclolr('#684fff', 20, 0).color};
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+`;
+const DIV2 = styled.div`
+  height: 50px;
+  background: ${changeclolr('#684fff', 0, 20).color};
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+`;
+const DIV3 = styled.div`
+  height: 50px;
+  background: ${changeclolr('#684fff', 45).color};
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+`;
+const DIV4 = styled.div`
+  height: 50px;
+  background: ${changeclolr('#684fff', 0, 0, 5).rgba};
+  color: #684fff;
+  border: 1px solid #684fff;
+  text-align: center;
+  line-height: 50px;
+`;
+const DIV5 = styled.div`
+  height: 50px;
+  background: ${changeclolr('#684fff', 0, 0, 1.5).rgba};
+  color: ${changeclolr('#684fff', 0, 0, 30).rgba};
+  border: 1px solid ${changeclolr('#684fff', 0, 0, 30).rgba};
+  text-align: center;
+  line-height: 50px;
+`;
 const bigTree = [];
 
 getNumberKey();
@@ -105,7 +152,6 @@ const rowData: Array<Object> = [
   { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
   { key: '4', title: '4', isLeaf: true },
 ];
-console.info(rowData.length);
 const Data = styled.div`
   height: ${props => props.height}px;
 `;
@@ -174,6 +220,15 @@ export default class extends React.Component<any, any> {
         />
         help<input value={help} onChange={this.onHelpChange} />
         h<input value={limitCount} onChange={this.onHeightChange} />
+        <Box>
+          <h2>颜色变化状态</h2>
+          <DIV>正常色 color #684fff</DIV>
+          <DIV1>划过-S值降低20% color #9482ff</DIV1>
+          <DIV2>按下-B值降低20% color #533fcc</DIV2>
+          <DIV3>禁用-S值降低45% color #cac2ff</DIV3>
+          <DIV4>幽灵 正常色透明5% rgba(104,79,255,0.05)</DIV4>
+          <DIV5>禁用幽灵 正常幽灵透明30%（正常色透明1.5%）rgba(104,79,255,0.015)</DIV5>
+        </Box>
       </Theme>
     );
   }
