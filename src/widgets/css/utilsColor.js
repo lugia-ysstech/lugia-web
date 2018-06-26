@@ -4,7 +4,7 @@
 // 十六进制转rgb
 const reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
 
-function colorRgb(sHex) {
+function colorRgb(sHex = '#684fff') {
   let sColor = sHex.toLowerCase();
   // 如果是16进制颜色
   if (sColor && reg.test(sColor)) {
