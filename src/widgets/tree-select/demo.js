@@ -9,51 +9,53 @@ import Theme from '../theme/index';
 import TreeSelect from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-import changeclolr from '../css/utilsColor';
+import colors from '../css/stateColor';
+
+const themeColor = colors('#684fff');
 const Box = styled.div`
   text-align: center;
 `;
 const DIV = styled.div`
   height: 50px;
-  background: ${changeclolr('#684fff').color};
+  background: ${themeColor.normalColor};
   color: #fff;
   text-align: center;
   line-height: 50px;
 `;
 const DIV1 = styled.div`
   height: 50px;
-  background: ${changeclolr('#684fff', 20, 0).color};
+  background: ${themeColor.hoverColor};
   color: #fff;
   text-align: center;
   line-height: 50px;
 `;
 const DIV2 = styled.div`
   height: 50px;
-  background: ${changeclolr('#684fff', 0, 20).color};
+  background: ${themeColor.mouseDownColor};
   color: #fff;
   text-align: center;
   line-height: 50px;
 `;
 const DIV3 = styled.div`
   height: 50px;
-  background: ${changeclolr('#684fff', 45).color};
+  background: ${themeColor.disabledColor};
   color: #fff;
   text-align: center;
   line-height: 50px;
 `;
 const DIV4 = styled.div`
   height: 50px;
-  background: ${changeclolr('#684fff', 0, 0, 5).rgba};
+  background: ${themeColor.spiritColor};
   color: #684fff;
-  border: 1px solid #684fff;
+  border: 1px solid ${themeColor.normalColor};
   text-align: center;
   line-height: 50px;
 `;
 const DIV5 = styled.div`
   height: 50px;
-  background: ${changeclolr('#684fff', 0, 0, 1.5).rgba};
-  color: ${changeclolr('#684fff', 0, 0, 30).rgba};
-  border: 1px solid ${changeclolr('#684fff', 0, 0, 30).rgba};
+  background: ${themeColor.disabledSpiritBackgroundColor};
+  color: ${themeColor.disabledSpiritFontAndBorderColor};
+  border: 1px solid ${themeColor.disabledSpiritFontAndBorderColor};
   text-align: center;
   line-height: 50px;
 `;
