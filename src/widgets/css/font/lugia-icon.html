@@ -1,0 +1,3486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lugia-icon</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .icon-num {
+		    color: #666;
+		    font-size: 0.5em;
+		    margin-left: 0.5em;
+		    padding: 0px 4px;
+		    border-radius: 4px;
+		    background-color: #ddd;
+        }
+
+        #copy-info {
+          	color: #f22735;
+        }
+
+        .preview {
+            width: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+        .preview .inner {
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            background: #f5f5f5;
+            -webkit-border-radius: 3px 3px 0 0;
+            -moz-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+        }
+        .preview .inner i {
+            line-height: 85px;
+            font-size: 40px;
+            color: #333;
+        }
+        .label {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px;
+            font-size: 10px;
+            font-family: Monaco, monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background: #ddd;
+            -webkit-border-radius: 0 0 3px 3px;
+            -moz-border-radius: 0 0 3px 3px;
+            border-radius: 0 0 3px 3px;
+            color: #666;
+        }
+        @font-face {
+    font-family: "lugia-icon";
+    src: url("./lugia-icon.eot?7a4bdc4f5ba617a1baa8e8727ea862c5?#iefix") format("embedded-opentype"),
+url("./lugia-icon.woff2?7a4bdc4f5ba617a1baa8e8727ea862c5") format("woff2"),
+url("./lugia-icon.woff?7a4bdc4f5ba617a1baa8e8727ea862c5") format("woff"),
+url("./lugia-icon.ttf?7a4bdc4f5ba617a1baa8e8727ea862c5") format("truetype"),
+url("./lugia-icon.svg?7a4bdc4f5ba617a1baa8e8727ea862c5#lugia-icon") format("svg");
+}
+
+i {
+    line-height: 1;
+}
+
+i[class^="lugia-icon-"]:before, i[class*=" lugia-icon-"]:before {
+    font-family: lugia-icon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.lugia-icon-direction_arrow_down:before {
+    content: "\f101";
+}
+.lugia-icon-direction_arrow_left:before {
+    content: "\f102";
+}
+.lugia-icon-direction_arrow_right:before {
+    content: "\f103";
+}
+.lugia-icon-direction_arrow_up:before {
+    content: "\f104";
+}
+.lugia-icon-direction_arrows_alt:before {
+    content: "\f105";
+}
+.lugia-icon-direction_backward:before {
+    content: "\f106";
+}
+.lugia-icon-direction_caret_down:before {
+    content: "\f107";
+}
+.lugia-icon-direction_caret_left:before {
+    content: "\f108";
+}
+.lugia-icon-direction_caret_right:before {
+    content: "\f109";
+}
+.lugia-icon-direction_caret_up:before {
+    content: "\f10a";
+}
+.lugia-icon-direction_Center_alignment:before {
+    content: "\f10b";
+}
+.lugia-icon-direction_double_left:before {
+    content: "\f10c";
+}
+.lugia-icon-direction_double_right:before {
+    content: "\f10d";
+}
+.lugia-icon-direction_down_circle_o:before {
+    content: "\f10e";
+}
+.lugia-icon-direction_down_circle:before {
+    content: "\f10f";
+}
+.lugia-icon-direction_down_square_o:before {
+    content: "\f110";
+}
+.lugia-icon-direction_down-square:before {
+    content: "\f111";
+}
+.lugia-icon-direction_down:before {
+    content: "\f112";
+}
+.lugia-icon-direction_enter:before {
+    content: "\f113";
+}
+.lugia-icon-direction_fast_backward:before {
+    content: "\f114";
+}
+.lugia-icon-direction_fast_forward:before {
+    content: "\f115";
+}
+.lugia-icon-direction_forward:before {
+    content: "\f116";
+}
+.lugia-icon-direction_Left_aligned:before {
+    content: "\f117";
+}
+.lugia-icon-direction_left_circle_o:before {
+    content: "\f118";
+}
+.lugia-icon-direction_left_circle:before {
+    content: "\f119";
+}
+.lugia-icon-direction_left_square_o:before {
+    content: "\f11a";
+}
+.lugia-icon-direction_left-square:before {
+    content: "\f11b";
+}
+.lugia-icon-direction_Left:before {
+    content: "\f11c";
+}
+.lugia-icon-direction_login:before {
+    content: "\f11d";
+}
+.lugia-icon-direction_logout:before {
+    content: "\f11e";
+}
+.lugia-icon-direction_menu_food:before {
+    content: "\f11f";
+}
+.lugia-icon-direction_menu_unfood:before {
+    content: "\f120";
+}
+.lugia-icon-direction_play_circle_o:before {
+    content: "\f121";
+}
+.lugia-icon-direction_play_circle:before {
+    content: "\f122";
+}
+.lugia-icon-direction_retweet:before {
+    content: "\f123";
+}
+.lugia-icon-direction_right_aligned:before {
+    content: "\f124";
+}
+.lugia-icon-direction_right_circle_o:before {
+    content: "\f125";
+}
+.lugia-icon-direction_right_circle:before {
+    content: "\f126";
+}
+.lugia-icon-direction_right_square_o:before {
+    content: "\f127";
+}
+.lugia-icon-direction_right-square:before {
+    content: "\f128";
+}
+.lugia-icon-direction_right:before {
+    content: "\f129";
+}
+.lugia-icon-direction_rollback:before {
+    content: "\f12a";
+}
+.lugia-icon-direction_shrink:before {
+    content: "\f12b";
+}
+.lugia-icon-direction_step_backward:before {
+    content: "\f12c";
+}
+.lugia-icon-direction_step_forward:before {
+    content: "\f12d";
+}
+.lugia-icon-direction_swap_left:before {
+    content: "\f12e";
+}
+.lugia-icon-direction_swap_right:before {
+    content: "\f12f";
+}
+.lugia-icon-direction_swap:before {
+    content: "\f130";
+}
+.lugia-icon-direction_up_circle_o:before {
+    content: "\f131";
+}
+.lugia-icon-direction_up_circle:before {
+    content: "\f132";
+}
+.lugia-icon-direction_up_square_o:before {
+    content: "\f133";
+}
+.lugia-icon-direction_up-square:before {
+    content: "\f134";
+}
+.lugia-icon-direction_up:before {
+    content: "\f135";
+}
+.lugia-icon-direction_verticle_left:before {
+    content: "\f136";
+}
+.lugia-icon-direction_verticle_right:before {
+    content: "\f137";
+}
+.lugia-icon-financial_abort:before {
+    content: "\f138";
+}
+.lugia-icon-financial_add_pic:before {
+    content: "\f139";
+}
+.lugia-icon-financial_amplification:before {
+    content: "\f13a";
+}
+.lugia-icon-financial_archive:before {
+    content: "\f13b";
+}
+.lugia-icon-financial_audit:before {
+    content: "\f13c";
+}
+.lugia-icon-financial_Back_file:before {
+    content: "\f13d";
+}
+.lugia-icon-financial_bank:before {
+    content: "\f13e";
+}
+.lugia-icon-financial_bar_code:before {
+    content: "\f13f";
+}
+.lugia-icon-financial_bell:before {
+    content: "\f140";
+}
+.lugia-icon-financial_bold:before {
+    content: "\f141";
+}
+.lugia-icon-financial_calculator:before {
+    content: "\f142";
+}
+.lugia-icon-financial_camera:before {
+    content: "\f143";
+}
+.lugia-icon-financial_classification:before {
+    content: "\f144";
+}
+.lugia-icon-financial_clip:before {
+    content: "\f145";
+}
+.lugia-icon-financial_cloud:before {
+    content: "\f146";
+}
+.lugia-icon-financial_code:before {
+    content: "\f147";
+}
+.lugia-icon-financial_column_width:before {
+    content: "\f148";
+}
+.lugia-icon-financial_columns:before {
+    content: "\f149";
+}
+.lugia-icon-financial_compass:before {
+    content: "\f14a";
+}
+.lugia-icon-financial_conference:before {
+    content: "\f14b";
+}
+.lugia-icon-financial_contacts:before {
+    content: "\f14c";
+}
+.lugia-icon-financial_copy:before {
+    content: "\f14d";
+}
+.lugia-icon-financial_credit_card:before {
+    content: "\f14e";
+}
+.lugia-icon-financial_database:before {
+    content: "\f14f";
+}
+.lugia-icon-financial_date:before {
+    content: "\f150";
+}
+.lugia-icon-financial_delete:before {
+    content: "\f151";
+}
+.lugia-icon-financial_describe:before {
+    content: "\f152";
+}
+.lugia-icon-financial_disconnect:before {
+    content: "\f153";
+}
+.lugia-icon-financial_download_cloud:before {
+    content: "\f154";
+}
+.lugia-icon-financial_download:before {
+    content: "\f155";
+}
+.lugia-icon-financial_e-mail:before {
+    content: "\f156";
+}
+.lugia-icon-financial_editor:before {
+    content: "\f157";
+}
+.lugia-icon-financial_environment:before {
+    content: "\f158";
+}
+.lugia-icon-financial_excle:before {
+    content: "\f159";
+}
+.lugia-icon-financial_export:before {
+    content: "\f15a";
+}
+.lugia-icon-financial_file_unknown:before {
+    content: "\f15b";
+}
+.lugia-icon-financial_filing_cabinet:before {
+    content: "\f15c";
+}
+.lugia-icon-financial_filter:before {
+    content: "\f15d";
+}
+.lugia-icon-financial_folder_add:before {
+    content: "\f15e";
+}
+.lugia-icon-financial_folder_open:before {
+    content: "\f15f";
+}
+.lugia-icon-financial_folder:before {
+    content: "\f160";
+}
+.lugia-icon-financial_font_colors:before {
+    content: "\f161";
+}
+.lugia-icon-financial_font_size:before {
+    content: "\f162";
+}
+.lugia-icon-financial_form:before {
+    content: "\f163";
+}
+.lugia-icon-financial_founder:before {
+    content: "\f164";
+}
+.lugia-icon-financial_framework:before {
+    content: "\f165";
+}
+.lugia-icon-financial_global:before {
+    content: "\f166";
+}
+.lugia-icon-financial_graph:before {
+    content: "\f167";
+}
+.lugia-icon-financial_group:before {
+    content: "\f168";
+}
+.lugia-icon-financial_hard_disk:before {
+    content: "\f169";
+}
+.lugia-icon-financial_head:before {
+    content: "\f16a";
+}
+.lugia-icon-financial_heart_o:before {
+    content: "\f16b";
+}
+.lugia-icon-financial_heart:before {
+    content: "\f16c";
+}
+.lugia-icon-financial_histogram:before {
+    content: "\f16d";
+}
+.lugia-icon-financial_home:before {
+    content: "\f16e";
+}
+.lugia-icon-financial_Hourglass:before {
+    content: "\f16f";
+}
+.lugia-icon-financial_information-124:before {
+    content: "\f170";
+}
+.lugia-icon-financial_information-89:before {
+    content: "\f171";
+}
+.lugia-icon-financial_italic:before {
+    content: "\f172";
+}
+.lugia-icon-financial_jpg:before {
+    content: "\f173";
+}
+.lugia-icon-financial_key:before {
+    content: "\f174";
+}
+.lugia-icon-financial_layout:before {
+    content: "\f175";
+}
+.lugia-icon-financial_like_o:before {
+    content: "\f176";
+}
+.lugia-icon-financial_like:before {
+    content: "\f177";
+}
+.lugia-icon-financial_line_height:before {
+    content: "\f178";
+}
+.lugia-icon-financial_line:before {
+    content: "\f179";
+}
+.lugia-icon-financial_link:before {
+    content: "\f17a";
+}
+.lugia-icon-financial_loading:before {
+    content: "\f17b";
+}
+.lugia-icon-financial_lock:before {
+    content: "\f17c";
+}
+.lugia-icon-financial_man:before {
+    content: "\f17d";
+}
+.lugia-icon-financial_markdown:before {
+    content: "\f17e";
+}
+.lugia-icon-financial_meh_o:before {
+    content: "\f17f";
+}
+.lugia-icon-financial_meh:before {
+    content: "\f180";
+}
+.lugia-icon-financial_monitoring:before {
+    content: "\f181";
+}
+.lugia-icon-financial_more:before {
+    content: "\f182";
+}
+.lugia-icon-financial_notification:before {
+    content: "\f183";
+}
+.lugia-icon-financial_number:before {
+    content: "\f184";
+}
+.lugia-icon-financial_omit:before {
+    content: "\f185";
+}
+.lugia-icon-financial_ordered_list:before {
+    content: "\f186";
+}
+.lugia-icon-financial_paper_clip:before {
+    content: "\f187";
+}
+.lugia-icon-financial_pay:before {
+    content: "\f188";
+}
+.lugia-icon-financial_pdf:before {
+    content: "\f189";
+}
+.lugia-icon-financial_pic_center:before {
+    content: "\f18a";
+}
+.lugia-icon-financial_pic_left:before {
+    content: "\f18b";
+}
+.lugia-icon-financial_pic_right:before {
+    content: "\f18c";
+}
+.lugia-icon-financial_pic:before {
+    content: "\f18d";
+}
+.lugia-icon-financial_pie-chart:before {
+    content: "\f18e";
+}
+.lugia-icon-financial_pin:before {
+    content: "\f18f";
+}
+.lugia-icon-financial_poweroff:before {
+    content: "\f190";
+}
+.lugia-icon-financial_ppt:before {
+    content: "\f191";
+}
+.lugia-icon-financial_print:before {
+    content: "\f192";
+}
+.lugia-icon-financial_progress:before {
+    content: "\f193";
+}
+.lugia-icon-financial_QR_code:before {
+    content: "\f194";
+}
+.lugia-icon-financial_questionnaire:before {
+    content: "\f195";
+}
+.lugia-icon-financial_release_letter:before {
+    content: "\f196";
+}
+.lugia-icon-financial_release:before {
+    content: "\f197";
+}
+.lugia-icon-financial_remind:before {
+    content: "\f198";
+}
+.lugia-icon-financial_remote_control:before {
+    content: "\f199";
+}
+.lugia-icon-financial_resd:before {
+    content: "\f19a";
+}
+.lugia-icon-financial_sad_o:before {
+    content: "\f19b";
+}
+.lugia-icon-financial_sad:before {
+    content: "\f19c";
+}
+.lugia-icon-financial_safe:before {
+    content: "\f19d";
+}
+.lugia-icon-financial_save:before {
+    content: "\f19e";
+}
+.lugia-icon-financial_scan:before {
+    content: "\f19f";
+}
+.lugia-icon-financial_search:before {
+    content: "\f1a0";
+}
+.lugia-icon-financial_service:before {
+    content: "\f1a1";
+}
+.lugia-icon-financial_setting:before {
+    content: "\f1a2";
+}
+.lugia-icon-financial_share:before {
+    content: "\f1a3";
+}
+.lugia-icon-financial_shrink:before {
+    content: "\f1a4";
+}
+.lugia-icon-financial_skin:before {
+    content: "\f1a5";
+}
+.lugia-icon-financial_smile_o:before {
+    content: "\f1a6";
+}
+.lugia-icon-financial_smile:before {
+    content: "\f1a7";
+}
+.lugia-icon-financial_sort_ascending:before {
+    content: "\f1a8";
+}
+.lugia-icon-financial_sort_descending:before {
+    content: "\f1a9";
+}
+.lugia-icon-financial_special_focus:before {
+    content: "\f1aa";
+}
+.lugia-icon-financial_star_o:before {
+    content: "\f1ab";
+}
+.lugia-icon-financial_star:before {
+    content: "\f1ac";
+}
+.lugia-icon-financial_statistical_add:before {
+    content: "\f1ad";
+}
+.lugia-icon-financial_statistics:before {
+    content: "\f1ae";
+}
+.lugia-icon-financial_strikethrough:before {
+    content: "\f1af";
+}
+.lugia-icon-financial_subtasks:before {
+    content: "\f1b0";
+}
+.lugia-icon-financial_switch_e&amp;c:before {
+    content: "\f1b1";
+}
+.lugia-icon-financial_table:before {
+    content: "\f1b2";
+}
+.lugia-icon-financial_tag:before {
+    content: "\f1b3";
+}
+.lugia-icon-financial_tags:before {
+    content: "\f1b4";
+}
+.lugia-icon-financial_text:before {
+    content: "\f1b5";
+}
+.lugia-icon-financial_tools:before {
+    content: "\f1b6";
+}
+.lugia-icon-financial_transfer_i:before {
+    content: "\f1b7";
+}
+.lugia-icon-financial_transfer_u:before {
+    content: "\f1b8";
+}
+.lugia-icon-financial_underline:before {
+    content: "\f1b9";
+}
+.lugia-icon-financial_unlike_o:before {
+    content: "\f1ba";
+}
+.lugia-icon-financial_unlike:before {
+    content: "\f1bb";
+}
+.lugia-icon-financial_unlock:before {
+    content: "\f1bc";
+}
+.lugia-icon-financial_unordered_list:before {
+    content: "\f1bd";
+}
+.lugia-icon-financial_upload_cloud:before {
+    content: "\f1be";
+}
+.lugia-icon-financial_upload:before {
+    content: "\f1bf";
+}
+.lugia-icon-financial_usb:before {
+    content: "\f1c0";
+}
+.lugia-icon-financial_user:before {
+    content: "\f1c1";
+}
+.lugia-icon-financial_video_camera:before {
+    content: "\f1c2";
+}
+.lugia-icon-financial_voice-102:before {
+    content: "\f1c3";
+}
+.lugia-icon-financial_voice-53:before {
+    content: "\f1c4";
+}
+.lugia-icon-financial_wallet:before {
+    content: "\f1c5";
+}
+.lugia-icon-financial_warnings:before {
+    content: "\f1c6";
+}
+.lugia-icon-financial_wifi:before {
+    content: "\f1c7";
+}
+.lugia-icon-financial_women:before {
+    content: "\f1c8";
+}
+.lugia-icon-financial_word:before {
+    content: "\f1c9";
+}
+.lugia-icon-logo_aliyun:before {
+    content: "\f1ca";
+}
+.lugia-icon-logo_android_o:before {
+    content: "\f1cb";
+}
+.lugia-icon-logo_android:before {
+    content: "\f1cc";
+}
+.lugia-icon-logo_apple_o:before {
+    content: "\f1cd";
+}
+.lugia-icon-logo_apple:before {
+    content: "\f1ce";
+}
+.lugia-icon-logo_baidu:before {
+    content: "\f1cf";
+}
+.lugia-icon-logo_behance:before {
+    content: "\f1d0";
+}
+.lugia-icon-logo_chrome:before {
+    content: "\f1d1";
+}
+.lugia-icon-logo_codepen_ciecle:before {
+    content: "\f1d2";
+}
+.lugia-icon-logo_codepen:before {
+    content: "\f1d3";
+}
+.lugia-icon-logo_csswizardry:before {
+    content: "\f1d4";
+}
+.lugia-icon-logo_datastream:before {
+    content: "\f1d5";
+}
+.lugia-icon-logo_dingding_circle:before {
+    content: "\f1d6";
+}
+.lugia-icon-logo_dingding:before {
+    content: "\f1d7";
+}
+.lugia-icon-logo_dribbble:before {
+    content: "\f1d8";
+}
+.lugia-icon-logo_dropbox:before {
+    content: "\f1d9";
+}
+.lugia-icon-logo_facebook:before {
+    content: "\f1da";
+}
+.lugia-icon-logo_github:before {
+    content: "\f1db";
+}
+.lugia-icon-logo_gitlab:before {
+    content: "\f1dc";
+}
+.lugia-icon-logo_google_plus:before {
+    content: "\f1dd";
+}
+.lugia-icon-logo_google:before {
+    content: "\f1de";
+}
+.lugia-icon-logo_henghe:before {
+    content: "\f1df";
+}
+.lugia-icon-logo_html5:before {
+    content: "\f1e0";
+}
+.lugia-icon-logo_ie:before {
+    content: "\f1e1";
+}
+.lugia-icon-logo_instagram:before {
+    content: "\f1e2";
+}
+.lugia-icon-logo_linkedin:before {
+    content: "\f1e3";
+}
+.lugia-icon-logo_lugia:before {
+    content: "\f1e4";
+}
+.lugia-icon-logo_medium:before {
+    content: "\f1e5";
+}
+.lugia-icon-logo_QQ:before {
+    content: "\f1e6";
+}
+.lugia-icon-logo_skype:before {
+    content: "\f1e7";
+}
+.lugia-icon-logo_twitter:before {
+    content: "\f1e8";
+}
+.lugia-icon-logo_visa:before {
+    content: "\f1e9";
+}
+.lugia-icon-logo_wechat:before {
+    content: "\f1ea";
+}
+.lugia-icon-logo_weibo_circle:before {
+    content: "\f1eb";
+}
+.lugia-icon-logo_weibo:before {
+    content: "\f1ec";
+}
+.lugia-icon-logo_windows_o:before {
+    content: "\f1ed";
+}
+.lugia-icon-logo_windows:before {
+    content: "\f1ee";
+}
+.lugia-icon-logo_ysstech:before {
+    content: "\f1ef";
+}
+.lugia-icon-logo_zhifubao_circle:before {
+    content: "\f1f0";
+}
+.lugia-icon-logo_zhifubao:before {
+    content: "\f1f1";
+}
+.lugia-icon-reminder_ban:before {
+    content: "\f1f2";
+}
+.lugia-icon-reminder_check_circle_o:before {
+    content: "\f1f3";
+}
+.lugia-icon-reminder_check_circle:before {
+    content: "\f1f4";
+}
+.lugia-icon-reminder_check_square_o:before {
+    content: "\f1f5";
+}
+.lugia-icon-reminder_check_square:before {
+    content: "\f1f6";
+}
+.lugia-icon-reminder_check:before {
+    content: "\f1f7";
+}
+.lugia-icon-reminder_clock_circle_o:before {
+    content: "\f1f8";
+}
+.lugia-icon-reminder_clock_circle:before {
+    content: "\f1f9";
+}
+.lugia-icon-reminder_close_circle_o:before {
+    content: "\f1fa";
+}
+.lugia-icon-reminder_close_circle:before {
+    content: "\f1fb";
+}
+.lugia-icon-reminder_close_square_o:before {
+    content: "\f1fc";
+}
+.lugia-icon-reminder_close_square:before {
+    content: "\f1fd";
+}
+.lugia-icon-reminder_close:before {
+    content: "\f1fe";
+}
+.lugia-icon-reminder_exclamation_circle_o:before {
+    content: "\f1ff";
+}
+.lugia-icon-reminder_exclamation_circle:before {
+    content: "\f200";
+}
+.lugia-icon-reminder_exclamation:before {
+    content: "\f201";
+}
+.lugia-icon-reminder_info_circle_o:before {
+    content: "\f202";
+}
+.lugia-icon-reminder_info_circle:before {
+    content: "\f203";
+}
+.lugia-icon-reminder_info:before {
+    content: "\f204";
+}
+.lugia-icon-reminder_minus_circle_o:before {
+    content: "\f205";
+}
+.lugia-icon-reminder_minus_circle:before {
+    content: "\f206";
+}
+.lugia-icon-reminder_minus_square_o:before {
+    content: "\f207";
+}
+.lugia-icon-reminder_minus_square:before {
+    content: "\f208";
+}
+.lugia-icon-reminder_minus:before {
+    content: "\f209";
+}
+.lugia-icon-reminder_pause_circle_o:before {
+    content: "\f20a";
+}
+.lugia-icon-reminder_pause_circle:before {
+    content: "\f20b";
+}
+.lugia-icon-reminder_pause_cycle:before {
+    content: "\f20c";
+}
+.lugia-icon-reminder_pause:before {
+    content: "\f20d";
+}
+.lugia-icon-reminder_plus_circle_o:before {
+    content: "\f20e";
+}
+.lugia-icon-reminder_plus_circle:before {
+    content: "\f20f";
+}
+.lugia-icon-reminder_plus_square_o:before {
+    content: "\f210";
+}
+.lugia-icon-reminder_plus_square:before {
+    content: "\f211";
+}
+.lugia-icon-reminder_plus:before {
+    content: "\f212";
+}
+.lugia-icon-reminder_question_circle_o:before {
+    content: "\f213";
+}
+.lugia-icon-reminder_question_circle:before {
+    content: "\f214";
+}
+.lugia-icon-reminder_question:before {
+    content: "\f215";
+}
+.lugia-icon-reminder_replay:before {
+    content: "\f216";
+}
+.lugia-icon-reminder_square_o:before {
+    content: "\f217";
+}
+.lugia-icon-reminder_warning:before {
+    content: "\f218";
+}
+
+    </style>
+</head>
+<body>
+
+    <h1>lugia-icon<span class="icon-num">280</span></h1>
+
+    <p id="copy-info"></p>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_arrow_down">
+                <i class="lugia-icon-direction_arrow_down"></i>
+            </span>
+            <br>
+            <span class='label'>direction_arrow_down</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_arrow_left">
+                <i class="lugia-icon-direction_arrow_left"></i>
+            </span>
+            <br>
+            <span class='label'>direction_arrow_left</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_arrow_right">
+                <i class="lugia-icon-direction_arrow_right"></i>
+            </span>
+            <br>
+            <span class='label'>direction_arrow_right</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_arrow_up">
+                <i class="lugia-icon-direction_arrow_up"></i>
+            </span>
+            <br>
+            <span class='label'>direction_arrow_up</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_arrows_alt">
+                <i class="lugia-icon-direction_arrows_alt"></i>
+            </span>
+            <br>
+            <span class='label'>direction_arrows_alt</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_backward">
+                <i class="lugia-icon-direction_backward"></i>
+            </span>
+            <br>
+            <span class='label'>direction_backward</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_caret_down">
+                <i class="lugia-icon-direction_caret_down"></i>
+            </span>
+            <br>
+            <span class='label'>direction_caret_down</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_caret_left">
+                <i class="lugia-icon-direction_caret_left"></i>
+            </span>
+            <br>
+            <span class='label'>direction_caret_left</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_caret_right">
+                <i class="lugia-icon-direction_caret_right"></i>
+            </span>
+            <br>
+            <span class='label'>direction_caret_right</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_caret_up">
+                <i class="lugia-icon-direction_caret_up"></i>
+            </span>
+            <br>
+            <span class='label'>direction_caret_up</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_Center_alignment">
+                <i class="lugia-icon-direction_Center_alignment"></i>
+            </span>
+            <br>
+            <span class='label'>direction_Center_alignment</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_double_left">
+                <i class="lugia-icon-direction_double_left"></i>
+            </span>
+            <br>
+            <span class='label'>direction_double_left</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_double_right">
+                <i class="lugia-icon-direction_double_right"></i>
+            </span>
+            <br>
+            <span class='label'>direction_double_right</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_down_circle_o">
+                <i class="lugia-icon-direction_down_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_down_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_down_circle">
+                <i class="lugia-icon-direction_down_circle"></i>
+            </span>
+            <br>
+            <span class='label'>direction_down_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_down_square_o">
+                <i class="lugia-icon-direction_down_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_down_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_down-square">
+                <i class="lugia-icon-direction_down-square"></i>
+            </span>
+            <br>
+            <span class='label'>direction_down-square</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_down">
+                <i class="lugia-icon-direction_down"></i>
+            </span>
+            <br>
+            <span class='label'>direction_down</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_enter">
+                <i class="lugia-icon-direction_enter"></i>
+            </span>
+            <br>
+            <span class='label'>direction_enter</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_fast_backward">
+                <i class="lugia-icon-direction_fast_backward"></i>
+            </span>
+            <br>
+            <span class='label'>direction_fast_backward</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_fast_forward">
+                <i class="lugia-icon-direction_fast_forward"></i>
+            </span>
+            <br>
+            <span class='label'>direction_fast_forward</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_forward">
+                <i class="lugia-icon-direction_forward"></i>
+            </span>
+            <br>
+            <span class='label'>direction_forward</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_Left_aligned">
+                <i class="lugia-icon-direction_Left_aligned"></i>
+            </span>
+            <br>
+            <span class='label'>direction_Left_aligned</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_left_circle_o">
+                <i class="lugia-icon-direction_left_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_left_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_left_circle">
+                <i class="lugia-icon-direction_left_circle"></i>
+            </span>
+            <br>
+            <span class='label'>direction_left_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_left_square_o">
+                <i class="lugia-icon-direction_left_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_left_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_left-square">
+                <i class="lugia-icon-direction_left-square"></i>
+            </span>
+            <br>
+            <span class='label'>direction_left-square</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_Left">
+                <i class="lugia-icon-direction_Left"></i>
+            </span>
+            <br>
+            <span class='label'>direction_Left</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_login">
+                <i class="lugia-icon-direction_login"></i>
+            </span>
+            <br>
+            <span class='label'>direction_login</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_logout">
+                <i class="lugia-icon-direction_logout"></i>
+            </span>
+            <br>
+            <span class='label'>direction_logout</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_menu_food">
+                <i class="lugia-icon-direction_menu_food"></i>
+            </span>
+            <br>
+            <span class='label'>direction_menu_food</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_menu_unfood">
+                <i class="lugia-icon-direction_menu_unfood"></i>
+            </span>
+            <br>
+            <span class='label'>direction_menu_unfood</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_play_circle_o">
+                <i class="lugia-icon-direction_play_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_play_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_play_circle">
+                <i class="lugia-icon-direction_play_circle"></i>
+            </span>
+            <br>
+            <span class='label'>direction_play_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_retweet">
+                <i class="lugia-icon-direction_retweet"></i>
+            </span>
+            <br>
+            <span class='label'>direction_retweet</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_right_aligned">
+                <i class="lugia-icon-direction_right_aligned"></i>
+            </span>
+            <br>
+            <span class='label'>direction_right_aligned</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_right_circle_o">
+                <i class="lugia-icon-direction_right_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_right_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_right_circle">
+                <i class="lugia-icon-direction_right_circle"></i>
+            </span>
+            <br>
+            <span class='label'>direction_right_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_right_square_o">
+                <i class="lugia-icon-direction_right_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_right_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_right-square">
+                <i class="lugia-icon-direction_right-square"></i>
+            </span>
+            <br>
+            <span class='label'>direction_right-square</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_right">
+                <i class="lugia-icon-direction_right"></i>
+            </span>
+            <br>
+            <span class='label'>direction_right</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_rollback">
+                <i class="lugia-icon-direction_rollback"></i>
+            </span>
+            <br>
+            <span class='label'>direction_rollback</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_shrink">
+                <i class="lugia-icon-direction_shrink"></i>
+            </span>
+            <br>
+            <span class='label'>direction_shrink</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_step_backward">
+                <i class="lugia-icon-direction_step_backward"></i>
+            </span>
+            <br>
+            <span class='label'>direction_step_backward</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_step_forward">
+                <i class="lugia-icon-direction_step_forward"></i>
+            </span>
+            <br>
+            <span class='label'>direction_step_forward</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_swap_left">
+                <i class="lugia-icon-direction_swap_left"></i>
+            </span>
+            <br>
+            <span class='label'>direction_swap_left</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_swap_right">
+                <i class="lugia-icon-direction_swap_right"></i>
+            </span>
+            <br>
+            <span class='label'>direction_swap_right</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_swap">
+                <i class="lugia-icon-direction_swap"></i>
+            </span>
+            <br>
+            <span class='label'>direction_swap</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_up_circle_o">
+                <i class="lugia-icon-direction_up_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_up_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_up_circle">
+                <i class="lugia-icon-direction_up_circle"></i>
+            </span>
+            <br>
+            <span class='label'>direction_up_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_up_square_o">
+                <i class="lugia-icon-direction_up_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>direction_up_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_up-square">
+                <i class="lugia-icon-direction_up-square"></i>
+            </span>
+            <br>
+            <span class='label'>direction_up-square</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_up">
+                <i class="lugia-icon-direction_up"></i>
+            </span>
+            <br>
+            <span class='label'>direction_up</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_verticle_left">
+                <i class="lugia-icon-direction_verticle_left"></i>
+            </span>
+            <br>
+            <span class='label'>direction_verticle_left</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-direction_verticle_right">
+                <i class="lugia-icon-direction_verticle_right"></i>
+            </span>
+            <br>
+            <span class='label'>direction_verticle_right</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_abort">
+                <i class="lugia-icon-financial_abort"></i>
+            </span>
+            <br>
+            <span class='label'>financial_abort</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_add_pic">
+                <i class="lugia-icon-financial_add_pic"></i>
+            </span>
+            <br>
+            <span class='label'>financial_add_pic</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_amplification">
+                <i class="lugia-icon-financial_amplification"></i>
+            </span>
+            <br>
+            <span class='label'>financial_amplification</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_archive">
+                <i class="lugia-icon-financial_archive"></i>
+            </span>
+            <br>
+            <span class='label'>financial_archive</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_audit">
+                <i class="lugia-icon-financial_audit"></i>
+            </span>
+            <br>
+            <span class='label'>financial_audit</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_Back_file">
+                <i class="lugia-icon-financial_Back_file"></i>
+            </span>
+            <br>
+            <span class='label'>financial_Back_file</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_bank">
+                <i class="lugia-icon-financial_bank"></i>
+            </span>
+            <br>
+            <span class='label'>financial_bank</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_bar_code">
+                <i class="lugia-icon-financial_bar_code"></i>
+            </span>
+            <br>
+            <span class='label'>financial_bar_code</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_bell">
+                <i class="lugia-icon-financial_bell"></i>
+            </span>
+            <br>
+            <span class='label'>financial_bell</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_bold">
+                <i class="lugia-icon-financial_bold"></i>
+            </span>
+            <br>
+            <span class='label'>financial_bold</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_calculator">
+                <i class="lugia-icon-financial_calculator"></i>
+            </span>
+            <br>
+            <span class='label'>financial_calculator</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_camera">
+                <i class="lugia-icon-financial_camera"></i>
+            </span>
+            <br>
+            <span class='label'>financial_camera</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_classification">
+                <i class="lugia-icon-financial_classification"></i>
+            </span>
+            <br>
+            <span class='label'>financial_classification</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_clip">
+                <i class="lugia-icon-financial_clip"></i>
+            </span>
+            <br>
+            <span class='label'>financial_clip</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_cloud">
+                <i class="lugia-icon-financial_cloud"></i>
+            </span>
+            <br>
+            <span class='label'>financial_cloud</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_code">
+                <i class="lugia-icon-financial_code"></i>
+            </span>
+            <br>
+            <span class='label'>financial_code</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_column_width">
+                <i class="lugia-icon-financial_column_width"></i>
+            </span>
+            <br>
+            <span class='label'>financial_column_width</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_columns">
+                <i class="lugia-icon-financial_columns"></i>
+            </span>
+            <br>
+            <span class='label'>financial_columns</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_compass">
+                <i class="lugia-icon-financial_compass"></i>
+            </span>
+            <br>
+            <span class='label'>financial_compass</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_conference">
+                <i class="lugia-icon-financial_conference"></i>
+            </span>
+            <br>
+            <span class='label'>financial_conference</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_contacts">
+                <i class="lugia-icon-financial_contacts"></i>
+            </span>
+            <br>
+            <span class='label'>financial_contacts</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_copy">
+                <i class="lugia-icon-financial_copy"></i>
+            </span>
+            <br>
+            <span class='label'>financial_copy</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_credit_card">
+                <i class="lugia-icon-financial_credit_card"></i>
+            </span>
+            <br>
+            <span class='label'>financial_credit_card</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_database">
+                <i class="lugia-icon-financial_database"></i>
+            </span>
+            <br>
+            <span class='label'>financial_database</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_date">
+                <i class="lugia-icon-financial_date"></i>
+            </span>
+            <br>
+            <span class='label'>financial_date</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_delete">
+                <i class="lugia-icon-financial_delete"></i>
+            </span>
+            <br>
+            <span class='label'>financial_delete</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_describe">
+                <i class="lugia-icon-financial_describe"></i>
+            </span>
+            <br>
+            <span class='label'>financial_describe</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_disconnect">
+                <i class="lugia-icon-financial_disconnect"></i>
+            </span>
+            <br>
+            <span class='label'>financial_disconnect</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_download_cloud">
+                <i class="lugia-icon-financial_download_cloud"></i>
+            </span>
+            <br>
+            <span class='label'>financial_download_cloud</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_download">
+                <i class="lugia-icon-financial_download"></i>
+            </span>
+            <br>
+            <span class='label'>financial_download</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_e-mail">
+                <i class="lugia-icon-financial_e-mail"></i>
+            </span>
+            <br>
+            <span class='label'>financial_e-mail</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_editor">
+                <i class="lugia-icon-financial_editor"></i>
+            </span>
+            <br>
+            <span class='label'>financial_editor</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_environment">
+                <i class="lugia-icon-financial_environment"></i>
+            </span>
+            <br>
+            <span class='label'>financial_environment</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_excle">
+                <i class="lugia-icon-financial_excle"></i>
+            </span>
+            <br>
+            <span class='label'>financial_excle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_export">
+                <i class="lugia-icon-financial_export"></i>
+            </span>
+            <br>
+            <span class='label'>financial_export</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_file_unknown">
+                <i class="lugia-icon-financial_file_unknown"></i>
+            </span>
+            <br>
+            <span class='label'>financial_file_unknown</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_filing_cabinet">
+                <i class="lugia-icon-financial_filing_cabinet"></i>
+            </span>
+            <br>
+            <span class='label'>financial_filing_cabinet</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_filter">
+                <i class="lugia-icon-financial_filter"></i>
+            </span>
+            <br>
+            <span class='label'>financial_filter</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_folder_add">
+                <i class="lugia-icon-financial_folder_add"></i>
+            </span>
+            <br>
+            <span class='label'>financial_folder_add</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_folder_open">
+                <i class="lugia-icon-financial_folder_open"></i>
+            </span>
+            <br>
+            <span class='label'>financial_folder_open</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_folder">
+                <i class="lugia-icon-financial_folder"></i>
+            </span>
+            <br>
+            <span class='label'>financial_folder</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_font_colors">
+                <i class="lugia-icon-financial_font_colors"></i>
+            </span>
+            <br>
+            <span class='label'>financial_font_colors</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_font_size">
+                <i class="lugia-icon-financial_font_size"></i>
+            </span>
+            <br>
+            <span class='label'>financial_font_size</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_form">
+                <i class="lugia-icon-financial_form"></i>
+            </span>
+            <br>
+            <span class='label'>financial_form</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_founder">
+                <i class="lugia-icon-financial_founder"></i>
+            </span>
+            <br>
+            <span class='label'>financial_founder</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_framework">
+                <i class="lugia-icon-financial_framework"></i>
+            </span>
+            <br>
+            <span class='label'>financial_framework</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_global">
+                <i class="lugia-icon-financial_global"></i>
+            </span>
+            <br>
+            <span class='label'>financial_global</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_graph">
+                <i class="lugia-icon-financial_graph"></i>
+            </span>
+            <br>
+            <span class='label'>financial_graph</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_group">
+                <i class="lugia-icon-financial_group"></i>
+            </span>
+            <br>
+            <span class='label'>financial_group</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_hard_disk">
+                <i class="lugia-icon-financial_hard_disk"></i>
+            </span>
+            <br>
+            <span class='label'>financial_hard_disk</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_head">
+                <i class="lugia-icon-financial_head"></i>
+            </span>
+            <br>
+            <span class='label'>financial_head</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_heart_o">
+                <i class="lugia-icon-financial_heart_o"></i>
+            </span>
+            <br>
+            <span class='label'>financial_heart_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_heart">
+                <i class="lugia-icon-financial_heart"></i>
+            </span>
+            <br>
+            <span class='label'>financial_heart</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_histogram">
+                <i class="lugia-icon-financial_histogram"></i>
+            </span>
+            <br>
+            <span class='label'>financial_histogram</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_home">
+                <i class="lugia-icon-financial_home"></i>
+            </span>
+            <br>
+            <span class='label'>financial_home</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_Hourglass">
+                <i class="lugia-icon-financial_Hourglass"></i>
+            </span>
+            <br>
+            <span class='label'>financial_Hourglass</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_information-124">
+                <i class="lugia-icon-financial_information-124"></i>
+            </span>
+            <br>
+            <span class='label'>financial_information-124</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_information-89">
+                <i class="lugia-icon-financial_information-89"></i>
+            </span>
+            <br>
+            <span class='label'>financial_information-89</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_italic">
+                <i class="lugia-icon-financial_italic"></i>
+            </span>
+            <br>
+            <span class='label'>financial_italic</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_jpg">
+                <i class="lugia-icon-financial_jpg"></i>
+            </span>
+            <br>
+            <span class='label'>financial_jpg</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_key">
+                <i class="lugia-icon-financial_key"></i>
+            </span>
+            <br>
+            <span class='label'>financial_key</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_layout">
+                <i class="lugia-icon-financial_layout"></i>
+            </span>
+            <br>
+            <span class='label'>financial_layout</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_like_o">
+                <i class="lugia-icon-financial_like_o"></i>
+            </span>
+            <br>
+            <span class='label'>financial_like_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_like">
+                <i class="lugia-icon-financial_like"></i>
+            </span>
+            <br>
+            <span class='label'>financial_like</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_line_height">
+                <i class="lugia-icon-financial_line_height"></i>
+            </span>
+            <br>
+            <span class='label'>financial_line_height</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_line">
+                <i class="lugia-icon-financial_line"></i>
+            </span>
+            <br>
+            <span class='label'>financial_line</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_link">
+                <i class="lugia-icon-financial_link"></i>
+            </span>
+            <br>
+            <span class='label'>financial_link</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_loading">
+                <i class="lugia-icon-financial_loading"></i>
+            </span>
+            <br>
+            <span class='label'>financial_loading</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_lock">
+                <i class="lugia-icon-financial_lock"></i>
+            </span>
+            <br>
+            <span class='label'>financial_lock</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_man">
+                <i class="lugia-icon-financial_man"></i>
+            </span>
+            <br>
+            <span class='label'>financial_man</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_markdown">
+                <i class="lugia-icon-financial_markdown"></i>
+            </span>
+            <br>
+            <span class='label'>financial_markdown</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_meh_o">
+                <i class="lugia-icon-financial_meh_o"></i>
+            </span>
+            <br>
+            <span class='label'>financial_meh_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_meh">
+                <i class="lugia-icon-financial_meh"></i>
+            </span>
+            <br>
+            <span class='label'>financial_meh</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_monitoring">
+                <i class="lugia-icon-financial_monitoring"></i>
+            </span>
+            <br>
+            <span class='label'>financial_monitoring</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_more">
+                <i class="lugia-icon-financial_more"></i>
+            </span>
+            <br>
+            <span class='label'>financial_more</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_notification">
+                <i class="lugia-icon-financial_notification"></i>
+            </span>
+            <br>
+            <span class='label'>financial_notification</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_number">
+                <i class="lugia-icon-financial_number"></i>
+            </span>
+            <br>
+            <span class='label'>financial_number</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_omit">
+                <i class="lugia-icon-financial_omit"></i>
+            </span>
+            <br>
+            <span class='label'>financial_omit</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_ordered_list">
+                <i class="lugia-icon-financial_ordered_list"></i>
+            </span>
+            <br>
+            <span class='label'>financial_ordered_list</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_paper_clip">
+                <i class="lugia-icon-financial_paper_clip"></i>
+            </span>
+            <br>
+            <span class='label'>financial_paper_clip</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_pay">
+                <i class="lugia-icon-financial_pay"></i>
+            </span>
+            <br>
+            <span class='label'>financial_pay</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_pdf">
+                <i class="lugia-icon-financial_pdf"></i>
+            </span>
+            <br>
+            <span class='label'>financial_pdf</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_pic_center">
+                <i class="lugia-icon-financial_pic_center"></i>
+            </span>
+            <br>
+            <span class='label'>financial_pic_center</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_pic_left">
+                <i class="lugia-icon-financial_pic_left"></i>
+            </span>
+            <br>
+            <span class='label'>financial_pic_left</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_pic_right">
+                <i class="lugia-icon-financial_pic_right"></i>
+            </span>
+            <br>
+            <span class='label'>financial_pic_right</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_pic">
+                <i class="lugia-icon-financial_pic"></i>
+            </span>
+            <br>
+            <span class='label'>financial_pic</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_pie-chart">
+                <i class="lugia-icon-financial_pie-chart"></i>
+            </span>
+            <br>
+            <span class='label'>financial_pie-chart</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_pin">
+                <i class="lugia-icon-financial_pin"></i>
+            </span>
+            <br>
+            <span class='label'>financial_pin</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_poweroff">
+                <i class="lugia-icon-financial_poweroff"></i>
+            </span>
+            <br>
+            <span class='label'>financial_poweroff</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_ppt">
+                <i class="lugia-icon-financial_ppt"></i>
+            </span>
+            <br>
+            <span class='label'>financial_ppt</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_print">
+                <i class="lugia-icon-financial_print"></i>
+            </span>
+            <br>
+            <span class='label'>financial_print</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_progress">
+                <i class="lugia-icon-financial_progress"></i>
+            </span>
+            <br>
+            <span class='label'>financial_progress</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_QR_code">
+                <i class="lugia-icon-financial_QR_code"></i>
+            </span>
+            <br>
+            <span class='label'>financial_QR_code</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_questionnaire">
+                <i class="lugia-icon-financial_questionnaire"></i>
+            </span>
+            <br>
+            <span class='label'>financial_questionnaire</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_release_letter">
+                <i class="lugia-icon-financial_release_letter"></i>
+            </span>
+            <br>
+            <span class='label'>financial_release_letter</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_release">
+                <i class="lugia-icon-financial_release"></i>
+            </span>
+            <br>
+            <span class='label'>financial_release</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_remind">
+                <i class="lugia-icon-financial_remind"></i>
+            </span>
+            <br>
+            <span class='label'>financial_remind</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_remote_control">
+                <i class="lugia-icon-financial_remote_control"></i>
+            </span>
+            <br>
+            <span class='label'>financial_remote_control</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_resd">
+                <i class="lugia-icon-financial_resd"></i>
+            </span>
+            <br>
+            <span class='label'>financial_resd</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_sad_o">
+                <i class="lugia-icon-financial_sad_o"></i>
+            </span>
+            <br>
+            <span class='label'>financial_sad_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_sad">
+                <i class="lugia-icon-financial_sad"></i>
+            </span>
+            <br>
+            <span class='label'>financial_sad</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_safe">
+                <i class="lugia-icon-financial_safe"></i>
+            </span>
+            <br>
+            <span class='label'>financial_safe</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_save">
+                <i class="lugia-icon-financial_save"></i>
+            </span>
+            <br>
+            <span class='label'>financial_save</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_scan">
+                <i class="lugia-icon-financial_scan"></i>
+            </span>
+            <br>
+            <span class='label'>financial_scan</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_search">
+                <i class="lugia-icon-financial_search"></i>
+            </span>
+            <br>
+            <span class='label'>financial_search</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_service">
+                <i class="lugia-icon-financial_service"></i>
+            </span>
+            <br>
+            <span class='label'>financial_service</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_setting">
+                <i class="lugia-icon-financial_setting"></i>
+            </span>
+            <br>
+            <span class='label'>financial_setting</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_share">
+                <i class="lugia-icon-financial_share"></i>
+            </span>
+            <br>
+            <span class='label'>financial_share</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_shrink">
+                <i class="lugia-icon-financial_shrink"></i>
+            </span>
+            <br>
+            <span class='label'>financial_shrink</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_skin">
+                <i class="lugia-icon-financial_skin"></i>
+            </span>
+            <br>
+            <span class='label'>financial_skin</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_smile_o">
+                <i class="lugia-icon-financial_smile_o"></i>
+            </span>
+            <br>
+            <span class='label'>financial_smile_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_smile">
+                <i class="lugia-icon-financial_smile"></i>
+            </span>
+            <br>
+            <span class='label'>financial_smile</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_sort_ascending">
+                <i class="lugia-icon-financial_sort_ascending"></i>
+            </span>
+            <br>
+            <span class='label'>financial_sort_ascending</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_sort_descending">
+                <i class="lugia-icon-financial_sort_descending"></i>
+            </span>
+            <br>
+            <span class='label'>financial_sort_descending</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_special_focus">
+                <i class="lugia-icon-financial_special_focus"></i>
+            </span>
+            <br>
+            <span class='label'>financial_special_focus</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_star_o">
+                <i class="lugia-icon-financial_star_o"></i>
+            </span>
+            <br>
+            <span class='label'>financial_star_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_star">
+                <i class="lugia-icon-financial_star"></i>
+            </span>
+            <br>
+            <span class='label'>financial_star</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_statistical_add">
+                <i class="lugia-icon-financial_statistical_add"></i>
+            </span>
+            <br>
+            <span class='label'>financial_statistical_add</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_statistics">
+                <i class="lugia-icon-financial_statistics"></i>
+            </span>
+            <br>
+            <span class='label'>financial_statistics</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_strikethrough">
+                <i class="lugia-icon-financial_strikethrough"></i>
+            </span>
+            <br>
+            <span class='label'>financial_strikethrough</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_subtasks">
+                <i class="lugia-icon-financial_subtasks"></i>
+            </span>
+            <br>
+            <span class='label'>financial_subtasks</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_switch_e&amp;c">
+                <i class="lugia-icon-financial_switch_e&amp;c"></i>
+            </span>
+            <br>
+            <span class='label'>financial_switch_e&amp;c</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_table">
+                <i class="lugia-icon-financial_table"></i>
+            </span>
+            <br>
+            <span class='label'>financial_table</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_tag">
+                <i class="lugia-icon-financial_tag"></i>
+            </span>
+            <br>
+            <span class='label'>financial_tag</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_tags">
+                <i class="lugia-icon-financial_tags"></i>
+            </span>
+            <br>
+            <span class='label'>financial_tags</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_text">
+                <i class="lugia-icon-financial_text"></i>
+            </span>
+            <br>
+            <span class='label'>financial_text</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_tools">
+                <i class="lugia-icon-financial_tools"></i>
+            </span>
+            <br>
+            <span class='label'>financial_tools</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_transfer_i">
+                <i class="lugia-icon-financial_transfer_i"></i>
+            </span>
+            <br>
+            <span class='label'>financial_transfer_i</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_transfer_u">
+                <i class="lugia-icon-financial_transfer_u"></i>
+            </span>
+            <br>
+            <span class='label'>financial_transfer_u</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_underline">
+                <i class="lugia-icon-financial_underline"></i>
+            </span>
+            <br>
+            <span class='label'>financial_underline</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_unlike_o">
+                <i class="lugia-icon-financial_unlike_o"></i>
+            </span>
+            <br>
+            <span class='label'>financial_unlike_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_unlike">
+                <i class="lugia-icon-financial_unlike"></i>
+            </span>
+            <br>
+            <span class='label'>financial_unlike</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_unlock">
+                <i class="lugia-icon-financial_unlock"></i>
+            </span>
+            <br>
+            <span class='label'>financial_unlock</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_unordered_list">
+                <i class="lugia-icon-financial_unordered_list"></i>
+            </span>
+            <br>
+            <span class='label'>financial_unordered_list</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_upload_cloud">
+                <i class="lugia-icon-financial_upload_cloud"></i>
+            </span>
+            <br>
+            <span class='label'>financial_upload_cloud</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_upload">
+                <i class="lugia-icon-financial_upload"></i>
+            </span>
+            <br>
+            <span class='label'>financial_upload</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_usb">
+                <i class="lugia-icon-financial_usb"></i>
+            </span>
+            <br>
+            <span class='label'>financial_usb</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_user">
+                <i class="lugia-icon-financial_user"></i>
+            </span>
+            <br>
+            <span class='label'>financial_user</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_video_camera">
+                <i class="lugia-icon-financial_video_camera"></i>
+            </span>
+            <br>
+            <span class='label'>financial_video_camera</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_voice-102">
+                <i class="lugia-icon-financial_voice-102"></i>
+            </span>
+            <br>
+            <span class='label'>financial_voice-102</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_voice-53">
+                <i class="lugia-icon-financial_voice-53"></i>
+            </span>
+            <br>
+            <span class='label'>financial_voice-53</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_wallet">
+                <i class="lugia-icon-financial_wallet"></i>
+            </span>
+            <br>
+            <span class='label'>financial_wallet</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_warnings">
+                <i class="lugia-icon-financial_warnings"></i>
+            </span>
+            <br>
+            <span class='label'>financial_warnings</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_wifi">
+                <i class="lugia-icon-financial_wifi"></i>
+            </span>
+            <br>
+            <span class='label'>financial_wifi</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_women">
+                <i class="lugia-icon-financial_women"></i>
+            </span>
+            <br>
+            <span class='label'>financial_women</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-financial_word">
+                <i class="lugia-icon-financial_word"></i>
+            </span>
+            <br>
+            <span class='label'>financial_word</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_aliyun">
+                <i class="lugia-icon-logo_aliyun"></i>
+            </span>
+            <br>
+            <span class='label'>logo_aliyun</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_android_o">
+                <i class="lugia-icon-logo_android_o"></i>
+            </span>
+            <br>
+            <span class='label'>logo_android_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_android">
+                <i class="lugia-icon-logo_android"></i>
+            </span>
+            <br>
+            <span class='label'>logo_android</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_apple_o">
+                <i class="lugia-icon-logo_apple_o"></i>
+            </span>
+            <br>
+            <span class='label'>logo_apple_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_apple">
+                <i class="lugia-icon-logo_apple"></i>
+            </span>
+            <br>
+            <span class='label'>logo_apple</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_baidu">
+                <i class="lugia-icon-logo_baidu"></i>
+            </span>
+            <br>
+            <span class='label'>logo_baidu</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_behance">
+                <i class="lugia-icon-logo_behance"></i>
+            </span>
+            <br>
+            <span class='label'>logo_behance</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_chrome">
+                <i class="lugia-icon-logo_chrome"></i>
+            </span>
+            <br>
+            <span class='label'>logo_chrome</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_codepen_ciecle">
+                <i class="lugia-icon-logo_codepen_ciecle"></i>
+            </span>
+            <br>
+            <span class='label'>logo_codepen_ciecle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_codepen">
+                <i class="lugia-icon-logo_codepen"></i>
+            </span>
+            <br>
+            <span class='label'>logo_codepen</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_csswizardry">
+                <i class="lugia-icon-logo_csswizardry"></i>
+            </span>
+            <br>
+            <span class='label'>logo_csswizardry</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_datastream">
+                <i class="lugia-icon-logo_datastream"></i>
+            </span>
+            <br>
+            <span class='label'>logo_datastream</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_dingding_circle">
+                <i class="lugia-icon-logo_dingding_circle"></i>
+            </span>
+            <br>
+            <span class='label'>logo_dingding_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_dingding">
+                <i class="lugia-icon-logo_dingding"></i>
+            </span>
+            <br>
+            <span class='label'>logo_dingding</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_dribbble">
+                <i class="lugia-icon-logo_dribbble"></i>
+            </span>
+            <br>
+            <span class='label'>logo_dribbble</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_dropbox">
+                <i class="lugia-icon-logo_dropbox"></i>
+            </span>
+            <br>
+            <span class='label'>logo_dropbox</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_facebook">
+                <i class="lugia-icon-logo_facebook"></i>
+            </span>
+            <br>
+            <span class='label'>logo_facebook</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_github">
+                <i class="lugia-icon-logo_github"></i>
+            </span>
+            <br>
+            <span class='label'>logo_github</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_gitlab">
+                <i class="lugia-icon-logo_gitlab"></i>
+            </span>
+            <br>
+            <span class='label'>logo_gitlab</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_google_plus">
+                <i class="lugia-icon-logo_google_plus"></i>
+            </span>
+            <br>
+            <span class='label'>logo_google_plus</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_google">
+                <i class="lugia-icon-logo_google"></i>
+            </span>
+            <br>
+            <span class='label'>logo_google</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_henghe">
+                <i class="lugia-icon-logo_henghe"></i>
+            </span>
+            <br>
+            <span class='label'>logo_henghe</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_html5">
+                <i class="lugia-icon-logo_html5"></i>
+            </span>
+            <br>
+            <span class='label'>logo_html5</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_ie">
+                <i class="lugia-icon-logo_ie"></i>
+            </span>
+            <br>
+            <span class='label'>logo_ie</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_instagram">
+                <i class="lugia-icon-logo_instagram"></i>
+            </span>
+            <br>
+            <span class='label'>logo_instagram</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_linkedin">
+                <i class="lugia-icon-logo_linkedin"></i>
+            </span>
+            <br>
+            <span class='label'>logo_linkedin</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_lugia">
+                <i class="lugia-icon-logo_lugia"></i>
+            </span>
+            <br>
+            <span class='label'>logo_lugia</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_medium">
+                <i class="lugia-icon-logo_medium"></i>
+            </span>
+            <br>
+            <span class='label'>logo_medium</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_QQ">
+                <i class="lugia-icon-logo_QQ"></i>
+            </span>
+            <br>
+            <span class='label'>logo_QQ</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_skype">
+                <i class="lugia-icon-logo_skype"></i>
+            </span>
+            <br>
+            <span class='label'>logo_skype</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_twitter">
+                <i class="lugia-icon-logo_twitter"></i>
+            </span>
+            <br>
+            <span class='label'>logo_twitter</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_visa">
+                <i class="lugia-icon-logo_visa"></i>
+            </span>
+            <br>
+            <span class='label'>logo_visa</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_wechat">
+                <i class="lugia-icon-logo_wechat"></i>
+            </span>
+            <br>
+            <span class='label'>logo_wechat</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_weibo_circle">
+                <i class="lugia-icon-logo_weibo_circle"></i>
+            </span>
+            <br>
+            <span class='label'>logo_weibo_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_weibo">
+                <i class="lugia-icon-logo_weibo"></i>
+            </span>
+            <br>
+            <span class='label'>logo_weibo</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_windows_o">
+                <i class="lugia-icon-logo_windows_o"></i>
+            </span>
+            <br>
+            <span class='label'>logo_windows_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_windows">
+                <i class="lugia-icon-logo_windows"></i>
+            </span>
+            <br>
+            <span class='label'>logo_windows</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_ysstech">
+                <i class="lugia-icon-logo_ysstech"></i>
+            </span>
+            <br>
+            <span class='label'>logo_ysstech</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_zhifubao_circle">
+                <i class="lugia-icon-logo_zhifubao_circle"></i>
+            </span>
+            <br>
+            <span class='label'>logo_zhifubao_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-logo_zhifubao">
+                <i class="lugia-icon-logo_zhifubao"></i>
+            </span>
+            <br>
+            <span class='label'>logo_zhifubao</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_ban">
+                <i class="lugia-icon-reminder_ban"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_ban</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_check_circle_o">
+                <i class="lugia-icon-reminder_check_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_check_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_check_circle">
+                <i class="lugia-icon-reminder_check_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_check_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_check_square_o">
+                <i class="lugia-icon-reminder_check_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_check_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_check_square">
+                <i class="lugia-icon-reminder_check_square"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_check_square</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_check">
+                <i class="lugia-icon-reminder_check"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_check</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_clock_circle_o">
+                <i class="lugia-icon-reminder_clock_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_clock_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_clock_circle">
+                <i class="lugia-icon-reminder_clock_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_clock_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_close_circle_o">
+                <i class="lugia-icon-reminder_close_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_close_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_close_circle">
+                <i class="lugia-icon-reminder_close_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_close_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_close_square_o">
+                <i class="lugia-icon-reminder_close_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_close_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_close_square">
+                <i class="lugia-icon-reminder_close_square"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_close_square</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_close">
+                <i class="lugia-icon-reminder_close"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_close</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_exclamation_circle_o">
+                <i class="lugia-icon-reminder_exclamation_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_exclamation_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_exclamation_circle">
+                <i class="lugia-icon-reminder_exclamation_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_exclamation_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_exclamation">
+                <i class="lugia-icon-reminder_exclamation"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_exclamation</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_info_circle_o">
+                <i class="lugia-icon-reminder_info_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_info_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_info_circle">
+                <i class="lugia-icon-reminder_info_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_info_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_info">
+                <i class="lugia-icon-reminder_info"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_info</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_minus_circle_o">
+                <i class="lugia-icon-reminder_minus_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_minus_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_minus_circle">
+                <i class="lugia-icon-reminder_minus_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_minus_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_minus_square_o">
+                <i class="lugia-icon-reminder_minus_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_minus_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_minus_square">
+                <i class="lugia-icon-reminder_minus_square"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_minus_square</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_minus">
+                <i class="lugia-icon-reminder_minus"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_minus</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_pause_circle_o">
+                <i class="lugia-icon-reminder_pause_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_pause_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_pause_circle">
+                <i class="lugia-icon-reminder_pause_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_pause_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_pause_cycle">
+                <i class="lugia-icon-reminder_pause_cycle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_pause_cycle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_pause">
+                <i class="lugia-icon-reminder_pause"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_pause</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_plus_circle_o">
+                <i class="lugia-icon-reminder_plus_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_plus_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_plus_circle">
+                <i class="lugia-icon-reminder_plus_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_plus_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_plus_square_o">
+                <i class="lugia-icon-reminder_plus_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_plus_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_plus_square">
+                <i class="lugia-icon-reminder_plus_square"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_plus_square</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_plus">
+                <i class="lugia-icon-reminder_plus"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_plus</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_question_circle_o">
+                <i class="lugia-icon-reminder_question_circle_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_question_circle_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_question_circle">
+                <i class="lugia-icon-reminder_question_circle"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_question_circle</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_question">
+                <i class="lugia-icon-reminder_question"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_question</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_replay">
+                <i class="lugia-icon-reminder_replay"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_replay</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_square_o">
+                <i class="lugia-icon-reminder_square_o"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_square_o</span>
+        </div>
+
+
+        <div class="preview">
+            <span class="inner" title="lugia-icon-reminder_warning">
+                <i class="lugia-icon-reminder_warning"></i>
+            </span>
+            <br>
+            <span class='label'>reminder_warning</span>
+        </div>
+
+
+    <script type="text/javascript">
+      const copySupport = document.queryCommandSupported('copy');
+      const $copyInfo = document.querySelector('#copy-info');
+      const copyInfoText = '点击图标，复制类名';
+
+      $copyInfo.innerHTML = copyInfoText;
+
+      if (copySupport) {
+        document.addEventListener('copy', (e) => {
+          if (window.__lugia_icon_classname__) {
+            const cd = e.clipboardData;
+            cd.setData('text/plain', window.__lugia_icon_classname__);
+            $copyInfo.innerHTML = `已复制类名：${window.__lugia_icon_classname__}`;
+            delete window.__lugia_icon_classname__;
+            e.preventDefault();
+            return false;
+          }
+        });
+      }
+
+      Array.from(document.querySelectorAll('.preview .inner')).map(el => {
+        el.addEventListener('click', e => {
+          window.__lugia_icon_classname__ = e.currentTarget.getAttribute('title');
+          document.execCommand('copy');
+        });
+      })
+    </script>
+
+</body>
+</html>
