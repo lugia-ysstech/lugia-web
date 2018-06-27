@@ -10,5 +10,5 @@ import '../common/shirm';
 
 export default () => {
   const onClick = () => {};
-  return <Icon iconClass="sv-icon-close" onClick={onClick} />;
+  return <Icon iconClass="lugia-icon-financial_audit" onClick={onClick} />;
 };
