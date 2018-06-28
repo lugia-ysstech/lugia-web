@@ -6,7 +6,7 @@
  */
 import '../common/shirm';
 import * as React from 'react';
-import '../css/sv.css';
+import '../css/font/lugia-icon.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
@@ -42,15 +42,7 @@ class Icon extends React.Component<IconProps> {
 
   render() {
     const { iconClass, onClick, getTheme, className = '' } = this.props;
-    return (
-      <IconTag
-        className={`sviconfont ${iconClass} ${className}`}
-        onClick={onClick}
-        theme={getTheme()}
-      >
-        {' '}
-      </IconTag>
-    );
+    return <IconTag className={`${iconClass} ${className}`} onClick={onClick} theme={getTheme()} />;
   }
 }
 
