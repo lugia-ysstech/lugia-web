@@ -17,12 +17,8 @@ const defaultColor = '#684fff';
 describe('stateColor', () => {
   beforeEach(() => {});
 
-  function colorsFactoryTestCase(themeColor: string) {
-    let title = themeColor;
-    if (!themeColor) {
-      title = 'default Color';
-    }
-    it(`colorsFactory: color is ${title}`, () => {
+  function colorsFactoryTestCase(themeColor?: string = 'default Color') {
+    it(`colorsFactory: color is ${themeColor}`, () => {
       const verifyOrder = VerifyOrder.create();
       const mock = create({ mockName: 'target', verifyOrder });
 

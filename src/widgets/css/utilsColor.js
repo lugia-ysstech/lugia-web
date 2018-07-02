@@ -2,9 +2,12 @@
 // s 饱和度
 // b(v) 亮度
 // 十六进制转rgb
+/*
+* by wangcuixia
+* @flow
+* */
 const reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
-
-function colorRgb(sHex = '#684fff') {
+function colorRgb(sHex: string): Array<number> {
   let sColor = sHex.toLowerCase();
   // 如果是16进制颜色
   if (sColor && reg.test(sColor)) {
@@ -24,17 +27,24 @@ function colorRgb(sHex = '#684fff') {
     return sColorChange;
     //return "RGB(" + sColorChange.join(",") + ")";
   }
-  return sColor;
+  return [255, 255, 255];
 }
 
-function rgb2hsb(rgbR, rgbG, rgbB, reduceS, reduceB) {
+function rgb2hsb(
+  rgbR?: number = 0,
+  rgbG?: number = 0,
+  rgbB?: number = 0,
+  reduceS?: number = 0,
+  reduceB?: number = 0
+): [number, number, number] {
   const max = Math.max(rgbR, rgbG, rgbB);
   const min = Math.min(rgbR, rgbG, rgbB);
   const hsbB = max / 255.0 - reduceB;
   const hsbS = (max === 0 ? 0 : (max - min) / max) - reduceS;
   let hsbH = 0;
+  const publicFormula = ((rgbG - rgbB) * 60) / (max - min);
   if (max === rgbR) {
-    hsbH = ((rgbG - rgbB) * 60) / rgbG >= rgbB ? max - min + 0 : max - min + 360;
+    hsbH = rgbG >= rgbB ? publicFormula : publicFormula + 360;
   } else if (max === rgbG) {
     hsbH = ((rgbB - rgbR) * 60) / (max - min) + 120;
   } else if (max === rgbB) {
@@ -44,7 +54,7 @@ function rgb2hsb(rgbR, rgbG, rgbB, reduceS, reduceB) {
   return [hsbH, hsbS, hsbB];
 }
 
-function hsb2rgb(h, s, v) {
+function hsb2rgb(h, s, v): Object {
   let r = 0,
     g = 0,
     b = 0;
@@ -93,7 +103,7 @@ function hsb2rgb(h, s, v) {
   return { newR: r, newG: g, newB: b };
 }
 
-function colorHex(rgb) {
+function colorHex(rgb): string {
   // 如果是rgb颜色表示
   if (/^(rgb|RGB)/.test(rgb)) {
     const aColor = rgb.replace(/(?:\(|\)|rgb|RGB)*/g, '').split(',');
@@ -123,10 +133,15 @@ function colorHex(rgb) {
   }
   return rgb;
 }
-export default function changeColor(sHex, reduceS = 0, reduceB = 0, reduceA = 100) {
-  reduceS = Number(reduceS) / 100;
-  reduceB = Number(reduceB) / 100;
-  reduceA = Number(reduceA) / 100;
+export default function changeColor(
+  sHex?: string = '#684fff',
+  reduceS?: number = 0,
+  reduceB?: number = 0,
+  reduceA?: number = 100
+): Object {
+  reduceS /= 100;
+  reduceB /= 100;
+  reduceA /= 100;
   const { newR, newG, newB } = hsb2rgb(...rgb2hsb(...colorRgb(sHex), reduceS, reduceB));
   const rgb = `rgb(${newR},${newG},${newB})`;
   const color = colorHex(rgb);
