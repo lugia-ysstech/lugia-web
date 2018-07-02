@@ -46,7 +46,7 @@ const DIV3 = styled.div`
 const DIV4 = styled.div`
   height: 50px;
   background: ${themeColor.spiritColor};
-  color: #684fff;
+  color: ${themeColor.normalColor};
   border: 1px solid ${themeColor.normalColor};
   text-align: center;
   line-height: 50px;
