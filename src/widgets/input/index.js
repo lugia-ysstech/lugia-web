@@ -1,19 +1,21 @@
 //@flow
 import '../common/shirm';
-import Support from '../common/FormFieldWidgetSupport';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
+import type { ThemeType, WidthType, MarginType } from '@lugia/lugia-web';
+
 import {
   DefaultHelp,
   getFocusShadow,
   getInputBorderColor,
   getInputBorderHoverColor,
-  Height,
-  Padding,
+  LargeHeight,
+  SmallHeight,
+  DefaultHeight,
   RadiusSize,
 } from '../css/input';
 import { FontSize } from '../css';
@@ -23,9 +25,18 @@ import { px2emcss } from '../css/units';
 type InputState = {|
   value: string,
 |};
-type ValidateStatus = 'sucess' | 'error';
+type ValidateStatus = 'success' | 'error';
+
+type InputSize = 'small' | 'default' | 'large';
+
+type CommonInputProps = {
+  theme: ThemeType,
+  size?: InputSize,
+  disabled: boolean,
+};
 
 type InputProps = {|
+  size?: InputSize,
   viewClass: string,
   disabled: boolean,
   validateStatus: ValidateStatus,
@@ -47,70 +58,81 @@ type InputProps = {|
   defaultValue?: string,
   value?: string,
 |};
-const getWidth = props => {
-  const { theme = {} } = props;
+const getWidth = (props: CommonInputProps) => {
+  const { theme } = props;
   const { width } = theme;
-  return `width:${width ? width + 'px' : '100%'};`;
+  return `width:${width ? em(width) : em(200)};`;
 };
+const getPadding = (props: CommonInputProps) => {
+  const { theme } = props;
+  const { width } = theme;
+  return `${width && width < 200 ? em(width / 20) : em(10)};`;
+};
+const getMargin = (props: CommonInputProps) => {
+  const { theme } = props;
+  const { margin } = theme;
+  if (typeof margin === 'number') {
+    return `margin:${em(margin)} `;
+  }
+};
+const getSize = (props: CommonInputProps) => {
+  const { size } = props;
+  return `height:${
+    size === 'large'
+      ? LargeHeight + 'px'
+      : size === 'small'
+        ? SmallHeight + 'px'
+        : DefaultHeight + 'px'
+  };`;
+};
+
+const getBackground = (props: CommonInputProps) => {
+  const { disabled } = props;
+  return `background:${disabled ? '#f2f2f2' : ''}`;
+};
+const getCursor = (props: CommonInputProps) => {
+  const { disabled } = props;
+  return `cursor:${disabled ? 'not-allowed' : 'text'}`;
+};
+
 const em = px2emcss(1.2);
+
 const CommonInputStyle = styled.input`
+  ${getBackground};
+  ${getSize};
+  ${getCursor};
+  ${getMargin};
+  ${getWidth};
   border-radius: ${RadiusSize};
   border: 1px solid ${getInputBorderColor};
-  cursor: text;
   line-height: 1.5;
   font-size: ${FontSize};
-  height: ${em(Height)};
   display: inline-block;
-  padding: ${em(Padding)} ${em(Padding + 1)};
+  padding: 0 ${getPadding};
   font-family: inherit;
-  margin: 0;
-  ${getWidth} &:hover {
+  &:hover {
     border-color: ${getInputBorderHoverColor};
   }
-
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-image: none;
-  color: rgba(0, 0, 0, 0.65);
-
+  color: rgb(51, 51, 51);
   &::placeholder {
     color: rgba(0, 0, 0, 0.25);
   }
-
   &:focus {
+    border-color: #684fff;
     ${getFocusShadow};
   }
 `;
 
 const InputContainer = styled.span`
   position: relative;
-  ${getWidth} display: inline-block;
+  ${getWidth};
+  display: inline-block;
   background-color: #fff;
 `;
-const LeftPadding = 5;
 
-const getLeft = (props: Object) => {
-  const { prefix } = props;
-  let padding = LeftPadding;
-  if (prefix) {
-    padding = LeftPadding + 24;
-  }
-  if (prefix && prefix.length) {
-    padding = LeftPadding + prefix.length * 24;
-  }
-  return `${padding}px;`;
-};
-const getRight = (props: Object) => {
-  const { suffix } = props;
-  let padding = 0;
-  if (suffix) {
-    padding = 24;
-  }
-  if (suffix && suffix.length) {
-    padding = suffix.length * 24;
-  }
-  return `${padding}px;`;
-};
 export const Input = CommonInputStyle.extend`
   outline: none;
   margin: 0;
@@ -118,8 +140,8 @@ export const Input = CommonInputStyle.extend`
   z-index: 1;
   position: relative;
   :not(:first-child) {
-    padding-left: ${getLeft};
-    padding-right: ${getRight};
+    padding-left: ${getPadding};
+    padding-right: ${getPadding};
   }
 `;
 
@@ -129,27 +151,37 @@ export const InputOnly = CommonInputStyle.extend`
 
 const Fix = styled.span`
   position: absolute;
-  top: 50%;
   transform: translateY(50%);
   z-index: 2;
-  line-height: 0;
+  bottom: 45%;
+  line-height: ${em(10)};
+  font-size: 1.6em;
   color: rgba(0, 0, 0, 0.65);
 `;
 
 const Prefix = Fix.extend`
-  left: 7px;
+  left: ${getPadding};
 `;
 
 const Suffix = Fix.extend`
-  right: 7px;
+  right: ${getPadding};
 `;
+
+function fixControlledValue(value) {
+  if (typeof value === 'undefined' || value === null) {
+    return '';
+  }
+  return value;
+}
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     disabled: false,
     viewClass: Widget.Input,
-    validateStatus: 'sucess',
+    validateStatus: 'success',
+    size: 'default',
     help: DefaultHelp,
+    defaultValue: '',
     getTheme: () => {
       return {};
     },
@@ -159,8 +191,18 @@ class TextBox extends Component<InputProps, InputState> {
 
   constructor(props: InputProps) {
     super(props);
-    const { defaultValue = '' } = props;
-    this.state = { value: defaultValue };
+  }
+
+  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
+    let { value, defaultValue } = nextProps;
+    const hasValueInprops = 'value' in nextProps;
+    value = fixControlledValue(value);
+    if (!preState) {
+      return { value: hasValueInprops ? value : defaultValue };
+    }
+    if (hasValueInprops) {
+      return { value };
+    }
   }
 
   onChange = (event: Object) => {
@@ -190,8 +232,8 @@ class TextBox extends Component<InputProps, InputState> {
     if (!suffix && !prefix) {
       return this.generateInput(InputOnly);
     }
-    const { getTheme } = props;
 
+    const { getTheme } = props;
     const result = (
       <InputContainer className="sv" theme={getTheme()}>
         {this.generatePrefix()}
@@ -201,7 +243,7 @@ class TextBox extends Component<InputProps, InputState> {
     );
     const { validateStatus } = props;
 
-    if (validateStatus === 'sucess') {
+    if (validateStatus === 'success') {
       return result;
     }
     const { help } = props;
@@ -209,7 +251,7 @@ class TextBox extends Component<InputProps, InputState> {
     return <ErrorTip title={help}>{result}</ErrorTip>;
   }
 
-  generatePrefix(): React$Element<any> | null {
+  generatePrefix (): React$Element<any> | null {
     const { prefix } = this.props;
     if (prefix) {
       return <Prefix>{prefix}</Prefix>;
@@ -217,7 +259,7 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
-  generateSuffix(): React$Element<any> | null {
+  generateSuffix (): React$Element<any> | null {
     const { suffix } = this.props;
     if (suffix) {
       return <Suffix>{suffix}</Suffix>;
@@ -225,7 +267,7 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
-  focus() {
+  focus () {
     if (this.input) {
       setTimeout(() => {
         this.input.focus();
@@ -233,9 +275,10 @@ class TextBox extends Component<InputProps, InputState> {
     }
   }
 
-  generateInput(Input: Function): React$Element<any> {
-    const { props, state } = this;
-    const { suffix, prefix, validateStatus } = props;
+  generateInput (Input: Function): React$Element<any> {
+    const { props } = this;
+    const { value } = this.state;
+    const { suffix, prefix, validateStatus, size, disabled } = props;
     const { onKeyUp, onKeyPress, onFocus, onBlur, placeholder } = props;
     return (
       <Input
@@ -244,7 +287,8 @@ class TextBox extends Component<InputProps, InputState> {
         suffix={suffix}
         prefix={prefix}
         theme={this.props.getTheme()}
-        value={Support.getValue(props, state)}
+        value={value}
+        size={size}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
         placeholder={placeholder}
@@ -252,6 +296,7 @@ class TextBox extends Component<InputProps, InputState> {
         onFocus={onFocus}
         onBlur={onBlur}
         onChange={this.onChange}
+        disabled={disabled}
       />
     );
   }

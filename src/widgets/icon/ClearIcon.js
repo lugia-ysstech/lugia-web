@@ -17,7 +17,7 @@ class ClearIcon extends React.Component<IconProps> {
   static displayName = Widget.ClearIcon;
 
   render() {
-    return <Icon iconClass="sv-icon-android-close" key="refresh" {...this.props} />;
+    return <Icon iconClass="lugia-icon-reminder_close_circle_o" key="refresh" {...this.props} />;
   }
 }
 
