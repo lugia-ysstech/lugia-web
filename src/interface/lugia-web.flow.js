@@ -1,9 +1,8 @@
 //@flow
 declare module '@lugia/lugia-web' {
-
   declare type GetValueArgType = {|
     defaultValue?: any,
-    value?: any
+    value?: any,
   |};
   declare type NodeExtendInfo = {
     childrenIdx?: Array<number>,
@@ -19,10 +18,10 @@ declare module '@lugia/lugia-web' {
     begats?: number,
     index: number,
     expanded?: boolean,
-  }
+  };
 
-  declare type SelectType = 0 | 1 | 4 ;
-  declare type NodeId2ExtendInfo = {} | { [string]: NodeExtendInfo } ;
+  declare type SelectType = 0 | 1 | 4;
+  declare type NodeId2ExtendInfo = {} | { [string]: NodeExtendInfo };
   declare type NodeId2Checked = { [string]: boolean };
   declare type NodeId2Half = { [string]: number };
   declare type NodeId2SelectInfo = {
@@ -35,4 +34,19 @@ declare module '@lugia/lugia-web' {
     id2ExtendInfo: NodeId2ExtendInfo,
   };
   declare type QueryType = 'include' | 'start' | 'end' | 'eql';
+
+  declare type ThemeType = {
+    width: WidthType,
+    margin: MarginType,
+    color: ColorType,
+  };
+  declare type WidthType = number;
+  declare type MarginType = number | MarginObject;
+  declare type ColorType = number;
+  declare type MarginObject = {
+    top: number,
+    right: number,
+    bottom: number,
+    left: number,
+  };
 }

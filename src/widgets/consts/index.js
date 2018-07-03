@@ -36,6 +36,9 @@ const ThrottleScroller = 'sv_widget_ThrottleScroller';
 
 /* add by zhangBoPing */
 const Switch = 'sv_widget_Switch';
+/* add by liangguodong */
+const SearchIcon = 'sv_widget_SearchIcon';
+const PullIcon = 'sv_widget_PullIcon';
 
 export default {
   Button,
@@ -66,4 +69,6 @@ export default {
   TreeSelectLimitTitle,
   ThrottleScroller,
   Switch,
+  SearchIcon,
+  PullIcon,
 };

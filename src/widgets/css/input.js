@@ -5,30 +5,32 @@
  * @flow
  */
 export const getInputBorderColor = (props: Object) => {
-  const { validateStatus = Sucess } = props;
+  const { validateStatus = Success } = props;
 
-  const color = isSucess(validateStatus) ? '#d9d9d9' : '#FF3030';
+  const color = isSuccess(validateStatus) ? '#e8e8e8' : '#f22735';
   return color;
 };
-const Sucess = 'sucess';
+const Success = 'success';
 
-function isSucess(validateStatus) {
-  return validateStatus === Sucess;
+function isSuccess (validateStatus) {
+  return validateStatus === Success;
 }
 
 export const getInputBorderHoverColor = (props: Object) => {
-  const { validateStatus = Sucess } = props;
-  return isSucess(validateStatus) ? '#49a9ee' : '#FF3030';
+  const { validateStatus = Success } = props;
+  return isSuccess(validateStatus) ? '#cccccc' : '#f22735';
 };
 
 export const getFocusShadow = (props: Object) => {
-  const { validateStatus = Sucess } = props;
-
-  const color = isSucess(validateStatus) ? 'rgba(16, 142, 233, 0.2)' : 'rgba(255, 48, 48, 0.2)';
-
-  return 'box-shadow: 0 0 0 2px ' + color;
+  const { validateStatus = Success } = props;
+  const color = isSuccess(validateStatus) ? 'rgba(104, 79, 255, 0.2)' : 'rgba(248, 172, 48, 0.2)';
+  return 'box-shadow: 0 0 6px ' + color;
 };
+
 export const RadiusSize = '4px';
 export const Height = 22;
+export const LargeHeight = 38;
+export const SmallHeight = 28;
+export const DefaultHeight = 32;
 export const Padding = 2;
 export const DefaultHelp = '验证出错';

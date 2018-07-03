@@ -1,11 +1,11 @@
 //@flow
 import React from 'react';
 import Input, { TextBoxInner } from '../';
+import Theme from '../../theme';
 import renderer from 'react-test-renderer';
 import chai from 'chai';
 import 'jest-styled-components';
 
-import Support from '../../common/FormFieldWidgetSupport';
 import {
   assertInputValue,
   testFireNullKeyBoardEvent,
@@ -14,6 +14,7 @@ import {
 } from './InputTestUtils';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import Widget from '../../consts';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -26,9 +27,77 @@ describe('Input', () => {
   beforeEach(() => {
     order = VerifyOrder.create();
   });
-
   it('props: null', () => {
     expect(renderer.create(<Input />).toJSON()).toMatchSnapshot();
+  });
+
+  function sizeTest(size) {
+    it('props: size', () => {
+      expect(renderer.create(<Input size={size} />).toJSON()).toMatchSnapshot();
+    });
+  }
+
+  sizeTest('small');
+  sizeTest('large');
+
+  function disabledTest(disabled) {
+    it('props: disabled', () => {
+      const component = mount(<Input disabled={disabled} />);
+      expect(renderer.create(component).toJSON()).toMatchSnapshot();
+      exp(component.props().disabled).to.be.equal(disabled);
+    });
+  }
+
+  disabledTest(false);
+  disabledTest(true);
+
+  it('props: disabled is true  onChange ', () => {
+    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
+    const oldValue = 'a';
+    const value = 'b';
+    const component = mount(
+      <Input disabled={true} value={oldValue} onChange={mockFunc.getFunction()} />
+    );
+    component.find('input').simulate('change', { target: { value } });
+    exp(value).to.not.equal(oldValue);
+    order.verify(({ onChange }) => {
+      onChange(value, oldValue);
+    });
+  });
+
+  function placeholderTest(placeholder) {
+    it('props: placeholder ', () => {
+      const component = mount(<Input placeholder={placeholder} />);
+      expect(renderer.create(component).toJSON()).toMatchSnapshot();
+      exp(component.props().placeholder).to.be.equal(placeholder);
+    });
+  }
+
+  placeholderTest('请填写内容');
+  placeholderTest('');
+
+  function validateStatusTest(validateStatus) {
+    it('props: validateStatus', () => {
+      const component = mount(<Input validateStatus={validateStatus} />);
+      expect(renderer.create(component).toJSON()).toMatchSnapshot();
+    });
+  }
+
+  validateStatusTest('success');
+  validateStatusTest('error');
+  it('props: getTheme: width:100,margin:10,', () => {
+    const view = {
+      [Widget.Input]: {
+        width: 100,
+        margin: 10,
+      },
+    };
+    const component = mount(
+      <Theme config={view}>
+        <Input />
+      </Theme>
+    );
+    expect(renderer.create(component).toJSON()).toMatchSnapshot();
   });
 
   it('props: prefix', () => {
@@ -61,33 +130,23 @@ describe('Input', () => {
     testPropsValue(value, value);
   });
 
-  it('props: onChange oldValue is "" ', () => {
-    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
-    const text = 'hello suffix';
-    const component = mount(<Input onChange={mockFunc.getFunction()} />);
-    component.find('input').simulate('change', { target: { value: text } });
-    assertInputValue(component, text);
-    order.verify(({ onChange }) => {
-      onChange(text, '');
+  function onChangeMultipleTest(firstValue, secondValue) {
+    it('props: onChange  ', () => {
+      const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
+      const component = mount(<Input onChange={mockFunc.getFunction()} />);
+      component.find('input').simulate('change', { target: { value: firstValue } });
+      assertInputValue(component, firstValue);
+      component.find('input').simulate('change', { target: { value: secondValue } });
+      assertInputValue(component, secondValue);
+      order.verify(({ onChange }) => {
+        onChange(firstValue, '');
+        onChange(secondValue, firstValue);
+      });
     });
-  });
-  it('props: onChange oldValue "a" ', () => {
-    const mockFunc = mockFunction.create(VerifyOrderConfig.create('onChange', order));
-    const text0 = 'a';
-    const text1 = 'b';
-    const component = mount(<Input onChange={mockFunc.getFunction()} />);
+  }
 
-    component.find('input').simulate('change', { target: { value: text0 } });
-    assertInputValue(component, text0);
-
-    component.find('input').simulate('change', { target: { value: text1 } });
-    assertInputValue(component, text1);
-
-    order.verify(({ onChange }) => {
-      onChange(text0, '');
-      onChange(text1, text0);
-    });
-  });
+  onChangeMultipleTest('', 'a');
+  onChangeMultipleTest('a', 'b');
 
   it('props: onKeyUp', () => {
     testKeyBoardEvent(order, 'onKeyUp');
@@ -146,6 +205,7 @@ describe('Input', () => {
     component.find('input').simulate('onKeyDown'.substr(2).toLowerCase(), event);
     order.verify(arg => {});
   });
+
   it('props: null  Fired Enter', () => {
     const keyCode = 13;
     const event = { keyCode };
@@ -162,22 +222,16 @@ describe('Input', () => {
         super(props);
         this.state = { value: props.value };
       }
-
       onChange = value => {
         this.setState({ value });
       };
-
       render() {
         return <Input value={this.state.value} onChange={this.onChange} />;
       }
     }
-
     const component = mount(<LimitInput value={value} />);
-
     assertInputValue(component, value);
-
     component.find('input').simulate('change', { target: { value: changeValue } });
-
     assertInputValue(component, changeValue);
   });
   it('props: value onChange Limited Input no changed', () => {
@@ -194,13 +248,9 @@ describe('Input', () => {
         return <Input value={this.state.value} />;
       }
     }
-
     const component = mount(<LimitInput value={value} />);
-
     assertInputValue(component, value);
-
     component.find('input').simulate('change', { target: { value: changeValue } });
-
     assertInputValue(component, value);
   });
   it('props: defaultValue', () => {
@@ -212,9 +262,7 @@ describe('Input', () => {
         return <Input defaultValue={this.props.defaultValue} />;
       }
     }
-
     const component = mount(<LimitInput defaultValue={value} />);
-
     assertInputValue(component, value);
     component.find('input').simulate('change', { target: { value: changeValue } });
     assertInputValue(component, changeValue);
@@ -222,9 +270,7 @@ describe('Input', () => {
   it('props: defaultValue & value', () => {
     const defaultValue = '诸行无常';
     const value = '诸法无我';
-
     const component = mount(<Input defaultValue={defaultValue} value={value} />);
-
     assertInputValue(component, value);
   });
 
@@ -237,24 +283,18 @@ describe('Input', () => {
         super(props);
         this.state = { value: props.value };
       }
-
       onChange = value => {
         this.setState({ value });
       };
-
       render() {
         return (
-          <Input value={this.state.value} onChange={this.onChange} prefix={<div>helllo</div>} />
+          <Input value={this.state.value} onChange={this.onChange} prefix={<div>hello</div>} />
         );
       }
     }
-
     const component = mount(<LimitInput value={value} />);
-
     assertInputValue(component, value);
-
     component.find('input').simulate('change', { target: { value: changeValue } });
-
     assertInputValue(component, changeValue);
   });
 
@@ -267,9 +307,8 @@ describe('Input', () => {
         super(props);
         this.state = { value: props.value };
       }
-
       render() {
-        return <Input value={this.state.value} prefix={<div>helllo</div>} />;
+        return <Input value={this.state.value} prefix={<div>hello</div>} />;
       }
     }
 
@@ -280,14 +319,6 @@ describe('Input', () => {
     component.find('input').simulate('change', { target: { value: changeValue } });
 
     assertInputValue(component, value);
-  });
-
-  it('function: getValue', () => {
-    const SupportMock = mockObject.create(Support, VerifyOrderConfig.create('Support', order));
-    const returnValue = 'hello';
-    const value = 'ligx';
-    SupportMock.mockFunction('getValue').returned(returnValue);
-    testPropsValue(value, returnValue);
   });
 
   it('function: generateInput', () => {
