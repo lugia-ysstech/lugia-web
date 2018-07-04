@@ -49,18 +49,18 @@ const DefaultCommonStyle = {
   marginToSameElementForY: '6px', //竖向文字到元素距离
   marginToSonElement: '16px', //主从关系元素间距
 };
-let CommonStyle = {};
+let CommonStyle = { ...DefaultCommonStyle };
+
 export function replaceStyle(theme: CommonCSS) {
-  let SaveStyle = {};
-  SaveStyle = JSON.parse(JSON.stringify(DefaultCommonStyle));
+  const saveStyle = { ...DefaultCommonStyle };
   if (theme) {
-    Object.keys(theme).forEach(trait => {
-      if (trait && theme[trait]) {
-        SaveStyle[trait] = theme[trait];
+    Object.keys(theme).forEach(key => {
+      if (key && theme[key] && key in DefaultCommonStyle) {
+        saveStyle[key] = theme[key];
       }
     });
   }
-  CommonStyle = { ...SaveStyle };
+  CommonStyle = { ...saveStyle };
 }
 
 export function colorsFactory(changeColor: Function) {
