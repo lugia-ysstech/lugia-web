@@ -4,8 +4,9 @@
  * **/
 
 import changeColor from './utilsColor';
+import type { CommonCSS } from '@lugia/lugia-web';
 
-type StateColor = {
+type StateColor = CommonCSS & {
   normalColor: string,
   hoverColor: string,
   mouseDownColor: string,
@@ -14,40 +15,8 @@ type StateColor = {
   disabledSpiritBackgroundColor: string,
   disabledSpiritFontAndBorderColor: string,
 };
-type Theme = {
-  themeColor?: string,
-  successColor?: string,
-  warningColor?: string,
-  dangerColor?: string,
-  blackColor?: string,
-  darkGreyColor?: string,
-  mediumGreyColor?: string,
-  lightGreyColor?: string,
-  superLightColor?: string,
-  disableColor?: string,
-  defaultColor?: string,
-  borderColor?: string,
-  borderDisableColor?: string,
-  borderSize?: string,
-  boxShadowOpacity?: string,
-  hShadow?: string,
-  vShadow?: string,
-  shadowSpread?: string,
-  borderRadius?: string,
-  circleBorderRadius?: string,
-  transitionTime?: string,
-  rulesColor?: string,
-  rulesSize?: string,
-  rulesOpacity?: string,
-  padding?: string,
-  paddingToText?: string,
-  marginToSameElement?: string,
-  marginToDifferentElement?: string,
-  marginToPeerElementForY?: string,
-  marginToSameElementForY?: string,
-  marginToSonElement?: string,
-};
-const CommonStyle = {
+
+const DefaultCommonStyle = {
   themeColor: '#684fff', //主题色
   successColor: '#56c22d', //成功色
   warningColor: '#f8ac30', //警告色
@@ -80,47 +49,24 @@ const CommonStyle = {
   marginToSameElementForY: '6px', //竖向文字到元素距离
   marginToSonElement: '16px', //主从关系元素间距
 };
-export function changeStyle(theme: Theme) {
-  CommonStyle.themeColor = theme.themeColor || CommonStyle.themeColor;
-  CommonStyle.successColor = theme.successColor || CommonStyle.successColor;
-  CommonStyle.warningColor = theme.warningColor || CommonStyle.warningColor;
-  CommonStyle.dangerColor = theme.dangerColor || CommonStyle.dangerColor;
-  CommonStyle.blackColor = theme.blackColor || CommonStyle.blackColor;
-  CommonStyle.darkGreyColor = theme.darkGreyColor || CommonStyle.darkGreyColor;
-  CommonStyle.mediumGreyColor = theme.mediumGreyColor || CommonStyle.mediumGreyColor;
-  CommonStyle.lightGreyColor = theme.lightGreyColor || CommonStyle.lightGreyColor;
-  CommonStyle.superLightColor = theme.superLightColor || CommonStyle.superLightColor;
-  CommonStyle.disableColor = theme.disableColor || CommonStyle.disableColor;
-  CommonStyle.defaultColor = theme.defaultColor || CommonStyle.defaultColor;
-  CommonStyle.borderColor = theme.borderColor || CommonStyle.borderColor;
-  CommonStyle.borderDisableColor = theme.borderDisableColor || CommonStyle.borderDisableColor;
-  CommonStyle.borderSize = theme.borderSize || CommonStyle.borderSize;
-  CommonStyle.boxShadowOpacity = theme.boxShadowOpacity || CommonStyle.boxShadowOpacity;
-  CommonStyle.hShadow = theme.hShadow || CommonStyle.hShadow;
-  CommonStyle.vShadow = theme.vShadow || CommonStyle.vShadow;
-  CommonStyle.shadowSpread = theme.shadowSpread || CommonStyle.shadowSpread;
-  CommonStyle.borderRadius = theme.borderRadius || CommonStyle.borderRadius;
-  CommonStyle.circleBorderRadius = theme.circleBorderRadius || CommonStyle.circleBorderRadius;
-  CommonStyle.transitionTime = theme.transitionTime || CommonStyle.transitionTime;
-  CommonStyle.rulesColor = theme.rulesColor || CommonStyle.rulesColor;
-  CommonStyle.rulesSize = theme.rulesSize || CommonStyle.rulesSize;
-  CommonStyle.rulesOpacity = theme.rulesOpacity || CommonStyle.rulesOpacity;
-  CommonStyle.padding = theme.padding || CommonStyle.padding;
-  CommonStyle.paddingToText = theme.paddingToText || CommonStyle.paddingToText;
-  CommonStyle.marginToSameElement = theme.marginToSameElement || CommonStyle.marginToSameElement;
-  CommonStyle.marginToDifferentElement =
-    theme.marginToDifferentElement || CommonStyle.marginToDifferentElement;
-  CommonStyle.marginToPeerElementForY =
-    theme.marginToPeerElementForY || CommonStyle.marginToPeerElementForY;
-  CommonStyle.marginToSameElementForY =
-    theme.marginToSameElementForY || CommonStyle.marginToSameElementForY;
-  CommonStyle.marginToSonElement = theme.marginToSonElement || CommonStyle.marginToSonElement;
+let CommonStyle = {};
+export function replaceStyle(theme: CommonCSS) {
+  let SaveStyle = {};
+  SaveStyle = JSON.parse(JSON.stringify(DefaultCommonStyle));
+  if (theme) {
+    Object.keys(theme).forEach(trait => {
+      if (trait && theme[trait]) {
+        SaveStyle[trait] = theme[trait];
+      }
+    });
+  }
+  CommonStyle = { ...SaveStyle };
 }
 
 export function colorsFactory(changeColor: Function) {
-  const func = (themeColor: string): StateColor => {
+  const func = (themeColor?: string): StateColor => {
     if (!themeColor) {
-      themeColor = CommonStyle.themeColor;
+      themeColor = CommonStyle.themeColor || DefaultCommonStyle.themeColor;
     }
     return {
       normalColor: changeColor(themeColor).color,

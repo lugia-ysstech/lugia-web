@@ -6,6 +6,7 @@
  */
 import colors, { colorsFactory } from '../stateColor';
 import unitColor from '../utilsColor';
+import { replaceStyle } from '../stateColor';
 
 const { mockFunction, VerifyOrder } = require('@lugia/jverify');
 const { create } = mockFunction;
@@ -81,5 +82,20 @@ describe('stateColor', () => {
   it('colors', () => {
     expect(colors.toString()).toBe(colorsFactory(unitColor).toString());
     expect(colors.__changeColor__).toBe(unitColor);
+  });
+
+  it('replaceStyle', () => {
+    const style = {
+      themeColor: '#aaa',
+    };
+    const style2 = {
+      successColor: '#bbb',
+    };
+    replaceStyle(style);
+    expect(colors().themeColor).toBe('#aaa');
+    expect(colors().successColor).toBe('#56c22d');
+    replaceStyle(style2);
+    expect(colors().themeColor).toBe('#684fff');
+    expect(colors().successColor).toBe('#bbb');
   });
 });
