@@ -33,6 +33,41 @@ declare module '@lugia/lugia-web' {
   declare type ExpandInfo = {
     id2ExtendInfo: NodeId2ExtendInfo,
   };
+
+  declare type CommonCSS = {
+    themeColor?: string,
+    successColor?: string,
+    warningColor?: string,
+    dangerColor?: string,
+    blackColor?: string,
+    darkGreyColor?: string,
+    mediumGreyColor?: string,
+    lightGreyColor?: string,
+    superLightColor?: string,
+    disableColor?: string,
+    defaultColor?: string,
+    borderColor?: string,
+    borderDisableColor?: string,
+    borderSize?: string,
+    boxShadowOpacity?: string,
+    hShadow?: string,
+    vShadow?: string,
+    shadowSpread?: string,
+    borderRadius?: string,
+    circleBorderRadius?: string,
+    transitionTime?: string,
+    rulesColor?: string,
+    rulesSize?: string,
+    rulesOpacity?: string,
+    padding?: string,
+    paddingToText?: string,
+    marginToSameElement?: string,
+    marginToDifferentElement?: string,
+    marginToPeerElementForY?: string,
+    marginToSameElementForY?: string,
+    marginToSonElement?: string,
+  };
+
   declare type QueryType = 'include' | 'start' | 'end' | 'eql';
 
   declare type ThemeType = {
