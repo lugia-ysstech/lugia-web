@@ -8,122 +8,141 @@ import * as React from 'react';
 import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-export type ButtonType = 'primary' | 'ghost' | 'dashed' | 'danger';
-export type ButtonShape = 'circle' | 'circle-outline';
-export type ButtonSize = 'small' | 'default' | 'large';
+import Icon from '../icon';
+import DelayHoc from '../common/DelayHoc';
 
-type CSSProps = {
-  shape?: ButtonShape,
-  type?: ButtonType,
-};
+import {
+  getTypeCSS,
+  getActiveCSS,
+  getCircleCSS,
+  getClickCSS,
+  getDisabledCSS,
+  getShapeCSS,
+  getSizeCSS,
+  hoverStyle,
+  getThemeStyle,
+  getIconStyle,
+  getLoadingIconStyle,
+} from '../css/button';
+import type { ButtonOutProps } from '../css/button';
 
-export type ButtonProps = {
-  children: React.Node,
-  htmlType?: string,
-  icon?: string,
-  size?: ButtonSize,
-  onClick?: (SyntheticEvent<HTMLButtonElement>) => any,
-  onMouseUp?: (SyntheticMouseEvent<HTMLButtonElement>) => any,
-  onMouseDown?: (SyntheticMouseEvent<HTMLButtonElement>) => any,
-  onKeyPress?: (SyntheticKeyboardEvent<HTMLButtonElement>) => any,
-  onKeyDown?: (SyntheticKeyboardEvent<HTMLButtonElement>) => any,
-  tabIndex?: number,
-  loading?: boolean | { delay?: number },
-  disabled?: boolean,
-  prefixCls?: string,
-  className?: string,
-  ghost?: boolean,
-  target?: string,
-  href?: string,
-  download?: string,
-} & CSSProps;
+type ButtonState = { clicked: boolean, loading: boolean };
 
-type ButtonState = {};
-
-type TypeColor = {
-  color: string,
-  backgroundColor: string,
-  borderColor: string,
-};
-
-const TypeCSS: { [key: ButtonType]: TypeColor } = {
-  primary: {
-    color: 'rgba(0,0,0,.65)',
-    backgroundColor: '#fff',
-    borderColor: '#d9d9d9',
-  },
-  ghost: {
-    color: 'rgba(0,0,0,.65)',
-    backgroundColor: '#fff',
-    borderColor: '#d9d9d9',
-  },
-  danger: {
-    color: '#f5222d',
-    backgroundColor: 'transparent',
-    borderColor: '#f5222d',
-  },
-  dashed: {
-    color: 'rgba(0,0,0,.65)',
-    backgroundColor: '#fff',
-    borderColor: '#d9d9d9',
-  },
-};
-
-const getTypeCSS = (props: CSSProps) => {
-  const { type = 'primary' } = props;
-  const { color, backgroundColor, borderColor } = TypeCSS[type];
-
-  return `
-    color: ${color};
-    background-color: ${backgroundColor};
-    border-color: ${borderColor};
-  `;
-};
 const ButtonOut = styled.button`
-  color: #fff;
-  background-color: #108ee9;
-  border-color: #108ee9;
-  margin-right: 8px;
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
   touch-action: manipulation;
   cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
   white-space: nowrap;
-  line-height: 1.5;
-  padding: 4px 15px;
-  font-size: 12px;
-  border-radius: 4px;
+  line-height: 1;
+  font-family: Trebuchet Ms, Arial, Helvetica, sans-serif;
   user-select: none;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   position: relative;
-  ${getTypeCSS} text-transform: none;
+  text-transform: none;
   outline: 0;
-
+  vertical-align: bottom;
   &:hover {
-    color: #40a9ff;
-    background-color: #fff;
-    border-color: #40a9ff;
+    ${hoverStyle}
   }
+  
+  &:focus {
+    ${hoverStyle}
+  }
+  &:active {
+    ${getActiveCSS}
+  }
+  
+  ${getTypeCSS} 
+  ${getSizeCSS} 
+  ${getShapeCSS}
+  ${getCircleCSS}
+  ${props => (props.loading ? hoverStyle : '')}
+  ${props => (props.loading ? 'pointer-events: none;' : '')}
+  ${getDisabledCSS}
+  ${getClickCSS}
+  ${getThemeStyle}
+`;
+
+const IconWrap = styled(Icon)`
+  vertical-align: bottom !important;
+  ${getIconStyle};
+  ${getLoadingIconStyle};
 `;
 ButtonOut.displayName = 'hello';
-export default ThemeProvider(
-  class extends React.Component<ButtonProps, ButtonState> {
-    onClick = e => {
-      const { onClick } = this.props;
-      onClick && onClick(e);
-    };
 
-    render() {
-      const { children, type, shape } = this.props;
-      return (
-        <ButtonOut type={type} shape={shape} onClick={this.onClick}>
-          <span>{children}</span>
-        </ButtonOut>
-      );
+export default ThemeProvider(
+  DelayHoc(
+    class extends React.Component<ButtonOutProps, ButtonState> {
+      static getDerivedStateFromProps(nextProps, prevState) {
+        if (!prevState) {
+          return {
+            clicked: false,
+          };
+        }
+      }
+
+      onClick = e => {
+        const { onClick, disabled, loading } = this.props;
+        if (!disabled && !loading) {
+          this.setState({
+            clicked: true,
+          });
+          setTimeout(() => {
+            this.setState({
+              clicked: false,
+            });
+          }, 500);
+          onClick && onClick(e);
+        }
+      };
+
+      handleChildren = () => {
+        const { children, icon, circle, loading } = this.props;
+        if (circle) {
+          const iconType = icon || 'lugia-icon-direction_logout';
+          return <Icon iconClass={iconType} />;
+        }
+        if (loading) {
+          return (
+            <span>
+              <IconWrap loading iconClass="lugia-icon-financial_loading_o" />
+              {children}
+            </span>
+          );
+        }
+        if (icon) {
+          return (
+            <span>
+              <IconWrap iconClass={icon} />
+              {children}
+            </span>
+          );
+        }
+        return children;
+      };
+      render() {
+        const { type, shape, disabled, plain, size, circle, getTheme, loading } = this.props;
+        const { clicked } = this.state;
+        return (
+          <ButtonOut
+            clicked={clicked}
+            type={type}
+            disabled={disabled}
+            size={size}
+            plain={plain}
+            shape={shape}
+            circle={circle}
+            loading={loading}
+            onClick={this.onClick}
+            themes={getTheme()}
+          >
+            <span>{this.handleChildren()}</span>
+          </ButtonOut>
+        );
+      }
     }
-  },
+  ),
   Widget.Button
 );
