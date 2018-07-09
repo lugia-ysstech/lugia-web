@@ -6,21 +6,23 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import type { ThemeType, WidthType, MarginType } from '@lugia/lugia-web';
+import { fixControlledValue } from '.././utils';
+import type { MarginType, ThemeType, WidthType } from '@lugia/lugia-web';
 
 import {
+  DefaultHeight,
   DefaultHelp,
   getFocusShadow,
   getInputBorderColor,
   getInputBorderHoverColor,
   LargeHeight,
-  SmallHeight,
-  DefaultHeight,
   RadiusSize,
+  SmallHeight,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
+import Icon from '../icon';
 
 type InputState = {|
   value: string,
@@ -57,6 +59,8 @@ type InputProps = {|
   onEnter?: (event: UIEvent) => void,
   defaultValue?: string,
   value?: string,
+  formatter?: (value: number | string) => string,
+  parser?: (displayValue: number | string) => string,
 |};
 const getWidth = (props: CommonInputProps) => {
   const { theme } = props;
@@ -94,7 +98,6 @@ const getCursor = (props: CommonInputProps) => {
   const { disabled } = props;
   return `cursor:${disabled ? 'not-allowed' : 'text'}`;
 };
-
 const em = px2emcss(1.2);
 
 const CommonInputStyle = styled.input`
@@ -113,6 +116,7 @@ const CommonInputStyle = styled.input`
   &:hover {
     border-color: ${getInputBorderHoverColor};
   }
+
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-image: none;
@@ -129,13 +133,13 @@ const CommonInputStyle = styled.input`
 const InputContainer = styled.span`
   position: relative;
   ${getWidth};
+  ${getMargin};
   display: inline-block;
   background-color: #fff;
 `;
 
 export const Input = CommonInputStyle.extend`
   outline: none;
-  margin: 0;
   min-height: 100%;
   z-index: 1;
   position: relative;
@@ -166,13 +170,17 @@ const Prefix = Fix.extend`
 const Suffix = Fix.extend`
   right: ${getPadding};
 `;
-
-function fixControlledValue(value) {
-  if (typeof value === 'undefined' || value === null) {
-    return '';
-  }
-  return value;
-}
+const Clear = 'lugia-icon-reminder_close_circle';
+const ClearButton: Object = styled(Icon)`
+  position: absolute;
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 45%;
+  line-height: ${em(10)};
+  font-size: 1.2em;
+  right: ${getPadding};
+  color: rgba(0, 0, 0, 0.65);
+`;
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
@@ -184,6 +192,12 @@ class TextBox extends Component<InputProps, InputState> {
     defaultValue: '',
     getTheme: () => {
       return {};
+    },
+    formatter: (value: string | number) => {
+      return value;
+    },
+    parser: (value: string | number) => {
+      return value;
     },
   };
   input: any;
@@ -198,7 +212,9 @@ class TextBox extends Component<InputProps, InputState> {
     const hasValueInprops = 'value' in nextProps;
     value = fixControlledValue(value);
     if (!preState) {
-      return { value: hasValueInprops ? value : defaultValue };
+      return {
+        value: hasValueInprops ? value : defaultValue,
+      };
     }
     if (hasValueInprops) {
       return { value };
@@ -213,10 +229,13 @@ class TextBox extends Component<InputProps, InputState> {
 
   setValue(value: string): void {
     const oldValue = this.state.value;
-    const { disabled, onChange } = this.props;
+    const { disabled, onChange, parser, formatter } = this.props;
     if ('value' in this.props === false) {
       if (disabled) {
         return;
+      }
+      if (formatter && parser) {
+        value = parser(value);
       }
       this.setState({ value }, () => {
         onChange && onChange(value, oldValue);
@@ -225,33 +244,62 @@ class TextBox extends Component<InputProps, InputState> {
       onChange && onChange(value, oldValue);
     }
   }
+  onFocus = (event: UIEvent) => {
+    const { onFocus } = this.props;
+    onFocus && onFocus(event);
+  };
+  onBlur = (event: UIEvent) => {
+    const { onBlur } = this.props;
+    onBlur && onBlur(event);
+  };
 
-  render() {
-    const { props } = this;
-    const { prefix, suffix } = props;
-    if (!suffix && !prefix) {
-      return this.generateInput(InputOnly);
+  isEmpty(): boolean {
+    const { value } = this.state;
+    return value && value.length ? false : true;
+  }
+
+  getClearButton() {
+    if (this.isEmpty()) {
+      return null;
     }
+    return (
+      <ClearButton iconClass={Clear} viewClass={ClearButton.displayName} onClick={this.onClear} />
+    );
+  }
 
-    const { getTheme } = props;
-    const result = (
+  onClear = (e: Object) => {
+    const { disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+    this.setValue('');
+  };
+
+  getInputContainer() {
+    const { getTheme } = this.props;
+    const suffix = this.generateSuffix();
+    return (
       <InputContainer className="sv" theme={getTheme()}>
         {this.generatePrefix()}
         {this.generateInput(Input)}
-        {this.generateSuffix()}
+        {suffix ? suffix : this.getClearButton()}
       </InputContainer>
     );
+  }
+
+  render() {
+    const { props } = this;
     const { validateStatus } = props;
+    const result = this.getInputContainer();
 
     if (validateStatus === 'success') {
       return result;
     }
     const { help } = props;
-
     return <ErrorTip title={help}>{result}</ErrorTip>;
   }
 
-  generatePrefix (): React$Element<any> | null {
+  generatePrefix(): React$Element<any> | null {
     const { prefix } = this.props;
     if (prefix) {
       return <Prefix>{prefix}</Prefix>;
@@ -259,7 +307,7 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
-  generateSuffix (): React$Element<any> | null {
+  generateSuffix(): React$Element<any> | null {
     const { suffix } = this.props;
     if (suffix) {
       return <Suffix>{suffix}</Suffix>;
@@ -267,19 +315,21 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
-  focus () {
+  focus() {
     if (this.input) {
       setTimeout(() => {
         this.input.focus();
       }, 0);
     }
   }
-
-  generateInput (Input: Function): React$Element<any> {
+  generateInput(Input: Function): React$Element<any> {
     const { props } = this;
-    const { value } = this.state;
-    const { suffix, prefix, validateStatus, size, disabled } = props;
-    const { onKeyUp, onKeyPress, onFocus, onBlur, placeholder } = props;
+    let { value } = this.state;
+    const { suffix, prefix, validateStatus, size, disabled, formatter, parser } = props;
+    const { onKeyUp, onKeyPress, placeholder } = props;
+    if (formatter && parser) {
+      value = formatter(value);
+    }
     return (
       <Input
         innerRef={node => (this.input = node)}
@@ -293,10 +343,12 @@ class TextBox extends Component<InputProps, InputState> {
         onKeyPress={onKeyPress}
         placeholder={placeholder}
         onKeyDown={this.onKeyDown}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
         onChange={this.onChange}
         disabled={disabled}
+        formatter={formatter}
+        parser={parser}
       />
     );
   }

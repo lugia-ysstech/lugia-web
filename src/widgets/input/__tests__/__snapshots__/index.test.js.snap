@@ -1,130 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input props: disabled 1`] = `
-.c0 {
-  height: 32px;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 4px;
-  border: 1px solid #e8e8e8;
-  line-height: 1.5;
-  font-size: 1.2rem;
-  display: inline-block;
-  padding: 0 0.8333333333333334em;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgb(51,51,51);
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #cccccc;
-}
-
-.c0::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:focus {
-  border-color: #684fff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-<input
-  className="c0"
-  disabled={false}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder={undefined}
-  prefix={undefined}
-  size="default"
-  value=""
-/>
-`;
-
-exports[`Input props: disabled 2`] = `
-.c0 {
-  background: #f2f2f2;
-  height: 32px;
-  cursor: not-allowed;
-  width: 16.666666666666668em;
-  border-radius: 4px;
-  border: 1px solid #e8e8e8;
-  line-height: 1.5;
-  font-size: 1.2rem;
-  display: inline-block;
-  padding: 0 0.8333333333333334em;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgb(51,51,51);
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #cccccc;
-}
-
-.c0::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:focus {
-  border-color: #684fff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-<input
-  className="c0"
-  disabled={true}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder={undefined}
-  prefix={undefined}
-  size="default"
-  value=""
-/>
-`;
-
 exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 .c0 {
+  position: relative;
+  width: 8.333333333333334em;
+  margin: 0.8333333333333334em;
+  display: inline-block;
+  background-color: #fff;
+}
+
+.c1 {
   height: 32px;
   cursor: text;
   margin: 0.8333333333333334em;
@@ -142,38 +27,130 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   background-image: none;
   color: rgb(51,51,51);
   outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   border-color: #cccccc;
 }
 
-.c0::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::-moz-placeholder {
+.c1::-moz-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::placeholder {
+.c1::placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:focus {
+.c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c1:not(:first-child) {
+  padding-left: 0.4166666666666667em;
+  padding-right: 0.4166666666666667em;
 }
 
 <span
   className={undefined}
 >
+  <span
+    className="sv c0"
+  >
+    <input
+      className="c1"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      placeholder={undefined}
+      prefix={undefined}
+      size="default"
+      value=""
+    />
+  </span>
+</span>
+`;
+
+exports[`Input props: null 1`] = `
+.c0 {
+  position: relative;
+  width: 16.666666666666668em;
+  display: inline-block;
+  background-color: #fff;
+}
+
+.c1 {
+  height: 32px;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  padding: 0 0.8333333333333334em;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: rgb(51,51,51);
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c1:hover {
+  border-color: #cccccc;
+}
+
+.c1::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c1::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c1:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c1::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c1:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
+}
+
+<span
+  className="sv c0"
+>
   <input
-    className="c0"
+    className="c1"
     disabled={false}
     onBlur={[Function]}
     onChange={[Function]}
@@ -189,69 +166,15 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 </span>
 `;
 
-exports[`Input props: null 1`] = `
-.c0 {
-  height: 32px;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 4px;
-  border: 1px solid #e8e8e8;
-  line-height: 1.5;
-  font-size: 1.2rem;
-  display: inline-block;
-  padding: 0 0.8333333333333334em;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgb(51,51,51);
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #cccccc;
-}
-
-.c0::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:focus {
-  border-color: #684fff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-<input
-  className="c0"
-  disabled={false}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder={undefined}
-  prefix={undefined}
-  size="default"
-  value=""
-/>
-`;
-
 exports[`Input props: placeholder  1`] = `
 .c0 {
+  position: relative;
+  width: 16.666666666666668em;
+  display: inline-block;
+  background-color: #fff;
+}
+
+.c1 {
   height: 32px;
   cursor: text;
   width: 16.666666666666668em;
@@ -268,51 +191,70 @@ exports[`Input props: placeholder  1`] = `
   background-image: none;
   color: rgb(51,51,51);
   outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   border-color: #cccccc;
 }
 
-.c0::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::-moz-placeholder {
+.c1::-moz-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::placeholder {
+.c1::placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:focus {
+.c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-<input
-  className="c0"
-  disabled={false}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder="请填写内容"
-  prefix={undefined}
-  size="default"
-  value=""
-/>
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
+}
+
+<span
+  className="sv c0"
+>
+  <input
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    placeholder="请填写内容"
+    prefix={undefined}
+    size="default"
+    value=""
+  />
+</span>
 `;
 
 exports[`Input props: placeholder  2`] = `
 .c0 {
+  position: relative;
+  width: 16.666666666666668em;
+  display: inline-block;
+  background-color: #fff;
+}
+
+.c1 {
   height: 32px;
   cursor: text;
   width: 16.666666666666668em;
@@ -329,51 +271,70 @@ exports[`Input props: placeholder  2`] = `
   background-image: none;
   color: rgb(51,51,51);
   outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   border-color: #cccccc;
 }
 
-.c0::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::-moz-placeholder {
+.c1::-moz-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::placeholder {
+.c1::placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:focus {
+.c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-<input
-  className="c0"
-  disabled={false}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder=""
-  prefix={undefined}
-  size="default"
-  value=""
-/>
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
+}
+
+<span
+  className="sv c0"
+>
+  <input
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    placeholder=""
+    prefix={undefined}
+    size="default"
+    value=""
+  />
+</span>
 `;
 
 exports[`Input props: size 1`] = `
 .c0 {
+  position: relative;
+  width: 16.666666666666668em;
+  display: inline-block;
+  background-color: #fff;
+}
+
+.c1 {
   height: 28px;
   cursor: text;
   width: 16.666666666666668em;
@@ -390,51 +351,70 @@ exports[`Input props: size 1`] = `
   background-image: none;
   color: rgb(51,51,51);
   outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   border-color: #cccccc;
 }
 
-.c0::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::-moz-placeholder {
+.c1::-moz-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::placeholder {
+.c1::placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:focus {
+.c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-<input
-  className="c0"
-  disabled={false}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder={undefined}
-  prefix={undefined}
-  size="small"
-  value=""
-/>
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
+}
+
+<span
+  className="sv c0"
+>
+  <input
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    placeholder={undefined}
+    prefix={undefined}
+    size="small"
+    value=""
+  />
+</span>
 `;
 
 exports[`Input props: size 2`] = `
 .c0 {
+  position: relative;
+  width: 16.666666666666668em;
+  display: inline-block;
+  background-color: #fff;
+}
+
+.c1 {
   height: 38px;
   cursor: text;
   width: 16.666666666666668em;
@@ -451,167 +431,57 @@ exports[`Input props: size 2`] = `
   background-image: none;
   color: rgb(51,51,51);
   outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   border-color: #cccccc;
 }
 
-.c0::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::-moz-placeholder {
+.c1::-moz-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0::placeholder {
+.c1::placeholder {
   color: rgba(0,0,0,0.25);
 }
 
-.c0:focus {
+.c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-<input
-  className="c0"
-  disabled={false}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder={undefined}
-  prefix={undefined}
-  size="large"
-  value=""
-/>
-`;
-
-exports[`Input props: validateStatus 1`] = `
-.c0 {
-  height: 32px;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 4px;
-  border: 1px solid #e8e8e8;
-  line-height: 1.5;
-  font-size: 1.2rem;
-  display: inline-block;
-  padding: 0 0.8333333333333334em;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgb(51,51,51);
-  outline: none;
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
 }
 
-.c0:hover {
-  border-color: #cccccc;
-}
-
-.c0::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:focus {
-  border-color: #684fff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-<input
-  className="c0"
-  disabled={false}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder={undefined}
-  prefix={undefined}
-  size="default"
-  value=""
-/>
-`;
-
-exports[`Input props: validateStatus 2`] = `
-.c0 {
-  height: 32px;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 4px;
-  border: 1px solid #f22735;
-  line-height: 1.5;
-  font-size: 1.2rem;
-  display: inline-block;
-  padding: 0 0.8333333333333334em;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: rgb(51,51,51);
-  outline: none;
-}
-
-.c0:hover {
-  border-color: #f22735;
-}
-
-.c0::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0::placeholder {
-  color: rgba(0,0,0,0.25);
-}
-
-.c0:focus {
-  border-color: #684fff;
-  box-shadow: 0 0 6px rgba(248,172,48,0.2);
-}
-
-<input
-  className="c0"
-  disabled={false}
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  placeholder={undefined}
-  prefix={undefined}
-  size="default"
-  value=""
-/>
+<span
+  className="sv c0"
+>
+  <input
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    placeholder={undefined}
+    prefix={undefined}
+    size="large"
+    value=""
+  />
+</span>
 `;

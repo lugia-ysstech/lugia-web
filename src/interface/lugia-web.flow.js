@@ -77,7 +77,7 @@ declare module '@lugia/lugia-web' {
   };
   declare type WidthType = number;
   declare type MarginType = number | MarginObject;
-  declare type ColorType = number;
+  declare type ColorType = string;
   declare type MarginObject = {
     top: number,
     right: number,

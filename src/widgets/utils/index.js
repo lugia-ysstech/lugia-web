@@ -60,3 +60,10 @@ export function adjustValue(value: any, per: any) {
   }
   return value;
 }
+
+export function fixControlledValue(value: any) {
+  if (typeof value === 'undefined' || value === null) {
+    return '';
+  }
+  return value;
+}
