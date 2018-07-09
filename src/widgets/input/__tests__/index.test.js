@@ -305,21 +305,21 @@ describe('Input', () => {
   );
   testOnChange(
     'props: onchange parser:null ',
-    { formatter: formatter, parser: noop },
+    { formatter, parser: noop },
     ['1234567'],
     ['$1,234,567'],
     ['1234567']
   );
   testOnChange(
     'props: onchange formatter:null ',
-    { formatter: noop, parser: parser },
+    { formatter: noop, parser },
     ['1234567'],
     ['1234567'],
     ['1234567']
   );
   testOnChange(
     'props: onchange formatter&&parser ',
-    { formatter: formatter, parser: parser },
+    { formatter, parser },
     ['1234567'],
     ['$1,234,567'],
     ['1234567']
