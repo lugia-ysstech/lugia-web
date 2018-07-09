@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button normal 1`] = `
-.c0 {
-  color: #fff;
-  background-color: #108ee9;
-  border-color: #108ee9;
-  margin-right: 8px;
+exports[`Button css 1`] = `
+.c30 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c1 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
   touch-action: manipulation;
   cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
   white-space: nowrap;
-  line-height: 1.5;
-  padding: 4px 15px;
-  font-size: 12px;
-  border-radius: 4px;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -25,49 +25,45 @@ exports[`Button normal 1`] = `
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
-  color: rgba(0,0,0,.65);
-  background-color: #fff;
-  border-color: #d9d9d9;
   text-transform: none;
   outline: 0;
-}
-
-.c0:hover {
-  color: #40a9ff;
+  vertical-align: bottom;
+  color: #666666;
   background-color: #fff;
-  border-color: #40a9ff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
 }
 
-<button
-  className="c0"
-  onClick={[Function]}
-  shape={undefined}
-  type={undefined}
->
-  <span>
-    你好吗
-  </span>
-</button>
-`;
+.c1:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
 
-exports[`Button normal type: danger 1`] = `
-.c0 {
-  color: #fff;
-  background-color: #108ee9;
-  border-color: #108ee9;
-  margin-right: 8px;
+.c1:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c1:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c2 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
   touch-action: manipulation;
   cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
   white-space: nowrap;
-  line-height: 1.5;
-  padding: 4px 15px;
-  font-size: 12px;
-  border-radius: 4px;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -75,27 +71,2073 @@ exports[`Button normal type: danger 1`] = `
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   position: relative;
-  color: #f5222d;
-  background-color: transparent;
-  border-color: #f5222d;
   text-transform: none;
   outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #684fff;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
 }
 
-.c0:hover {
-  color: #40a9ff;
+.c2:hover {
+  color: #fff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c2:focus {
+  color: #fff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c2:active {
+  background-color: #533fcc;
+}
+
+.c3 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #56c22d;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c3:hover {
+  color: #fff;
+  border: none;
+  background-color: #72c254;
+}
+
+.c3:focus {
+  color: #fff;
+  border: none;
+  background-color: #72c254;
+}
+
+.c3:active {
+  background-color: #3f8f21;
+}
+
+.c4 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #f8ac30;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c4:hover {
+  color: #fff;
+  border: none;
+  background-color: #f8bf62;
+}
+
+.c4:focus {
+  color: #fff;
+  border: none;
+  background-color: #f8bf62;
+}
+
+.c4:active {
+  background-color: #c58926;
+}
+
+.c5 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #f22735;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c5:hover {
+  color: #fff;
+  border: none;
+  background-color: #f25762;
+}
+
+.c5:focus {
+  color: #fff;
+  border: none;
+  background-color: #f25762;
+}
+
+.c5:active {
+  background-color: #bf1f2a;
+}
+
+.c6 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #666666;
   background-color: #fff;
-  border-color: #40a9ff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
 }
 
-<button
-  className="c0"
-  onClick={[Function]}
-  shape={undefined}
-  type="danger"
->
-  <span>
-    hello
+.c6:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c6:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c6:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c7 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #684fff;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c7:hover {
+  color: #fff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c7:focus {
+  color: #fff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c7:active {
+  background-color: #533fcc;
+}
+
+.c8 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #56c22d;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c8:hover {
+  color: #fff;
+  border: none;
+  background-color: #72c254;
+}
+
+.c8:focus {
+  color: #fff;
+  border: none;
+  background-color: #72c254;
+}
+
+.c8:active {
+  background-color: #3f8f21;
+}
+
+.c9 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #f8ac30;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c9:hover {
+  color: #fff;
+  border: none;
+  background-color: #f8bf62;
+}
+
+.c9:focus {
+  color: #fff;
+  border: none;
+  background-color: #f8bf62;
+}
+
+.c9:active {
+  background-color: #c58926;
+}
+
+.c10 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #f22735;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c10:hover {
+  color: #fff;
+  border: none;
+  background-color: #f25762;
+}
+
+.c10:focus {
+  color: #fff;
+  border: none;
+  background-color: #f25762;
+}
+
+.c10:active {
+  background-color: #bf1f2a;
+}
+
+.c11 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #684fff;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c11:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: #fff;
+}
+
+.c11:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: #fff;
+}
+
+.c11:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c12 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #684fff;
+  background-color: #e0dbff;
+  border: 1px solid #cac2ff;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c12:hover {
+  color: #fff;
+  border: 1px solid #cac2ff;
+  background-color: #684fff;
+}
+
+.c12:focus {
+  color: #fff;
+  border: 1px solid #cac2ff;
+  background-color: #684fff;
+}
+
+.c12:active {
+  background-color: #533fcc;
+}
+
+.c13 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #56c22d;
+  background-color: #a3c298;
+  border: 1px solid #95c284;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c13:hover {
+  color: #fff;
+  border: 1px solid #95c284;
+  background-color: #56c22d;
+}
+
+.c13:focus {
+  color: #fff;
+  border: 1px solid #95c284;
+  background-color: #56c22d;
+}
+
+.c13:active {
+  background-color: #3f8f21;
+}
+
+.c14 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #f8ac30;
+  background-color: #f8e0b8;
+  border: 1px solid #f8d6a0;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c14:hover {
+  color: #fff;
+  border: 1px solid #f8d6a0;
+  background-color: #f8ac30;
+}
+
+.c14:focus {
+  color: #fff;
+  border: 1px solid #f8d6a0;
+  background-color: #f8ac30;
+}
+
+.c14:active {
+  background-color: #c58926;
+}
+
+.c15 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #f22735;
+  background-color: #f2acb1;
+  border: 1px solid #f2949a;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 1.3333333333333335em;
+}
+
+.c15:hover {
+  color: #fff;
+  border: 1px solid #f2949a;
+  background-color: #f22735;
+}
+
+.c15:focus {
+  color: #fff;
+  border: 1px solid #f2949a;
+  background-color: #f22735;
+}
+
+.c15:active {
+  background-color: #bf1f2a;
+}
+
+.c16 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #684fff;
+  border: none;
+  width: 8.166666666666668em;
+  height: 3.1666666666666665em;
+  padding: 1em;
+  font-size: 1.1666666666666667em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c16:hover {
+  color: #fff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c16:focus {
+  color: #fff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c16:active {
+  background-color: #533fcc;
+}
+
+.c17 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #56c22d;
+  border: none;
+  width: 8.333333333333334em;
+  height: 3.5000000000000004em;
+  padding: 1.1666666666666667em;
+  font-size: 1.1666666666666667em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c17:hover {
+  color: #fff;
+  border: none;
+  background-color: #72c254;
+}
+
+.c17:focus {
+  color: #fff;
+  border: none;
+  background-color: #72c254;
+}
+
+.c17:active {
+  background-color: #3f8f21;
+}
+
+.c18 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #f8ac30;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.3333333333333335em;
+  padding: 0.6666666666666667em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c18:hover {
+  color: #fff;
+  border: none;
+  background-color: #f8bf62;
+}
+
+.c18:focus {
+  color: #fff;
+  border: none;
+  background-color: #f8bf62;
+}
+
+.c18:active {
+  background-color: #c58926;
+}
+
+.c19 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #666666;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #fff;
+  color: #cccccc;
+  border: 1px solid #e8e8e8;
+  cursor: not-allowed;
+}
+
+.c19:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c19:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c19:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c19:hover {
+  background-color: #fff;
+  color: #cccccc;
+  border: 1px solid #e8e8e8;
+}
+
+.c20 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #684fff;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #cac2ff;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+.c20:hover {
+  color: #fff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c20:focus {
+  color: #fff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c20:active {
+  background-color: #533fcc;
+}
+
+.c20:hover {
+  background-color: #cac2ff;
+  color: #fff;
+  border: none;
+}
+
+.c21 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #56c22d;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #95c284;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+.c21:hover {
+  color: #fff;
+  border: none;
+  background-color: #72c254;
+}
+
+.c21:focus {
+  color: #fff;
+  border: none;
+  background-color: #72c254;
+}
+
+.c21:active {
+  background-color: #3f8f21;
+}
+
+.c21:hover {
+  background-color: #95c284;
+  color: #fff;
+  border: none;
+}
+
+.c22 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #f8ac30;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #f8d6a0;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+.c22:hover {
+  color: #fff;
+  border: none;
+  background-color: #f8bf62;
+}
+
+.c22:focus {
+  color: #fff;
+  border: none;
+  background-color: #f8bf62;
+}
+
+.c22:active {
+  background-color: #c58926;
+}
+
+.c22:hover {
+  background-color: #f8d6a0;
+  color: #fff;
+  border: none;
+}
+
+.c23 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #fff;
+  background-color: #f22735;
+  border: none;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #f2949a;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+.c23:hover {
+  color: #fff;
+  border: none;
+  background-color: #f25762;
+}
+
+.c23:focus {
+  color: #fff;
+  border: none;
+  background-color: #f25762;
+}
+
+.c23:active {
+  background-color: #bf1f2a;
+}
+
+.c23:hover {
+  background-color: #f2949a;
+  color: #fff;
+  border: none;
+}
+
+.c24 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #684fff;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #fff;
+  color: #cccccc;
+  border: 1px solid #e8e8e8;
+  cursor: not-allowed;
+}
+
+.c24:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: #fff;
+}
+
+.c24:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: #fff;
+}
+
+.c24:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c24:hover {
+  background-color: #fff;
+  color: #cccccc;
+  border: 1px solid #e8e8e8;
+}
+
+.c25 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #684fff;
+  background-color: #e0dbff;
+  border: 1px solid #cac2ff;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #cac2ff;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+.c25:hover {
+  color: #fff;
+  border: 1px solid #cac2ff;
+  background-color: #684fff;
+}
+
+.c25:focus {
+  color: #fff;
+  border: 1px solid #cac2ff;
+  background-color: #684fff;
+}
+
+.c25:active {
+  background-color: #533fcc;
+}
+
+.c25:hover {
+  background-color: #cac2ff;
+  color: #fff;
+  border: none;
+}
+
+.c26 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #56c22d;
+  background-color: #a3c298;
+  border: 1px solid #95c284;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #95c284;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+.c26:hover {
+  color: #fff;
+  border: 1px solid #95c284;
+  background-color: #56c22d;
+}
+
+.c26:focus {
+  color: #fff;
+  border: 1px solid #95c284;
+  background-color: #56c22d;
+}
+
+.c26:active {
+  background-color: #3f8f21;
+}
+
+.c26:hover {
+  background-color: #95c284;
+  color: #fff;
+  border: none;
+}
+
+.c27 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #f8ac30;
+  background-color: #f8e0b8;
+  border: 1px solid #f8d6a0;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #f8d6a0;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+.c27:hover {
+  color: #fff;
+  border: 1px solid #f8d6a0;
+  background-color: #f8ac30;
+}
+
+.c27:focus {
+  color: #fff;
+  border: 1px solid #f8d6a0;
+  background-color: #f8ac30;
+}
+
+.c27:active {
+  background-color: #c58926;
+}
+
+.c27:hover {
+  background-color: #f8d6a0;
+  color: #fff;
+  border: none;
+}
+
+.c28 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #f22735;
+  background-color: #f2acb1;
+  border: 1px solid #f2949a;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  background-color: #f2949a;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+.c28:hover {
+  color: #fff;
+  border: 1px solid #f2949a;
+  background-color: #f22735;
+}
+
+.c28:focus {
+  color: #fff;
+  border: 1px solid #f2949a;
+  background-color: #f22735;
+}
+
+.c28:active {
+  background-color: #bf1f2a;
+}
+
+.c28:hover {
+  background-color: #f2949a;
+  color: #fff;
+  border: none;
+}
+
+.c29 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #684fff;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  width: 2.666666666666667em;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.c29:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: #fff;
+}
+
+.c29:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: #fff;
+}
+
+.c29:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c31 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #666666;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+  pointer-events: none;
+}
+
+.c31:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c31:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c31:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c34 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #666666;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  margin: 0.8333333333333334em;
+  width: 25em;
+  color: red;
+}
+
+.c34:hover {
+  color: #000000;
+  border: 1px solid #000000;
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c34:focus {
+  color: #000000;
+  border: 1px solid #000000;
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c34:active {
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.c32 {
+  vertical-align: bottom !important;
+  margin-right: 0.8333333333333334em;
+  -webkit-animation: iECmZH 1s infinite linear;
+  animation: iECmZH 1s infinite linear;
+}
+
+.c33 {
+  vertical-align: bottom !important;
+  margin-right: 0.8333333333333334em;
+}
+
+.c0 {
+  float: left;
+  margin-right: 50px;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <p>
+      type
+    </p>
+    <p>
+      default
+    </p>
+    <button
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        Default
+      </span>
+    </button>
+    <p>
+      primary
+    </p>
+    <button
+      className="c2"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="primary"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+    <p>
+      success
+    </p>
+    <button
+      className="c3"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="success"
+    >
+      <span>
+        Success
+      </span>
+    </button>
+    <p>
+      warning
+    </p>
+    <button
+      className="c4"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="warning"
+    >
+      <span>
+        Warning
+      </span>
+    </button>
+    <p>
+      danger
+    </p>
+    <button
+      className="c5"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="danger"
+    >
+      <span>
+        Danger
+      </span>
+    </button>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      shape
+    </p>
+    <p>
+      default
+    </p>
+    <button
+      className="c6"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        Hello
+      </span>
+    </button>
+    <p>
+      primary
+    </p>
+    <button
+      className="c7"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type="primary"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+    <p>
+      success
+    </p>
+    <button
+      className="c8"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type="success"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+    <p>
+      warning
+    </p>
+    <button
+      className="c9"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type="warning"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+    <p>
+      danger
+    </p>
+    <button
+      className="c10"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type="danger"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      plain
+    </p>
+    <p>
+      default
+    </p>
+    <button
+      className="c11"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        hello
+      </span>
+    </button>
+    <p>
+      primary
+    </p>
+    <button
+      className="c12"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type="primary"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+    <p>
+      success
+    </p>
+    <button
+      className="c13"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type="success"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+    <p>
+      warning
+    </p>
+    <button
+      className="c14"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type="warning"
+    >
+      <span>
+        primary
+      </span>
+    </button>
+    <p>
+      danger
+    </p>
+    <button
+      className="c15"
+      disabled={undefined}
+      onClick={[Function]}
+      shape="round"
+      size={undefined}
+      type="danger"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      size
+    </p>
+    <p>
+      default
+    </p>
+    <button
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        Default
+      </span>
+    </button>
+    <p>
+      medium
+    </p>
+    <button
+      className="c16"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size="large"
+      type="primary"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+    <p>
+      small
+    </p>
+    <button
+      className="c17"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size="bigger"
+      type="success"
+    >
+      <span>
+        Success
+      </span>
+    </button>
+    <p>
+      mini
+    </p>
+    <button
+      className="c18"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size="small"
+      type="warning"
+    >
+      <span>
+        Warning
+      </span>
+    </button>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      disabled
+    </p>
+    <p>
+      default
+    </p>
+    <button
+      className="c19"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        Default
+      </span>
+    </button>
+    <p>
+      primary
+    </p>
+    <button
+      className="c20"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="primary"
+    >
+      <span>
+        Primary
+      </span>
+    </button>
+    <p>
+      success
+    </p>
+    <button
+      className="c21"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="success"
+    >
+      <span>
+        Success
+      </span>
+    </button>
+    <p>
+      warning
+    </p>
+    <button
+      className="c22"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="warning"
+    >
+      <span>
+        warning
+      </span>
+    </button>
+    <p>
+      danger
+    </p>
+    <button
+      className="c23"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="danger"
+    >
+      <span>
+        danger
+      </span>
+    </button>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      plain disabled
+    </p>
+    <p>
+      default
+    </p>
+    <button
+      className="c24"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        default
+      </span>
+    </button>
+    <p>
+      primary
+    </p>
+    <button
+      className="c25"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="primary"
+    >
+      <span>
+        primary
+      </span>
+    </button>
+    <p>
+      success
+    </p>
+    <button
+      className="c26"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="success"
+    >
+      <span>
+        success
+      </span>
+    </button>
+    <p>
+      warning
+    </p>
+    <button
+      className="c27"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="warning"
+    >
+      <span>
+        warning
+      </span>
+    </button>
+    <p>
+      danger
+    </p>
+    <button
+      className="c28"
+      disabled={true}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type="danger"
+    >
+      <span>
+        danger
+      </span>
+    </button>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      circle
+    </p>
+    <button
+      className="c29"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        <i
+          className="lugia-icon-direction_logout  c30"
+          onClick={undefined}
+        />
+      </span>
+    </button>
+    <p>
+      loading
+    </p>
+    <button
+      className="c31"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        <span>
+          <i
+            className="lugia-icon-financial_loading_o c32 c30"
+            onClick={undefined}
+          />
+          loading
+        </span>
+      </span>
+    </button>
+    <p>
+      loading
+    </p>
+    <button
+      className="c31"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        <span>
+          <i
+            className="lugia-icon-financial_loading_o c32 c30"
+            onClick={undefined}
+          />
+          loading
+        </span>
+      </span>
+    </button>
+    <p>
+      icon Button
+    </p>
+    <button
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        <span>
+          <i
+            className="lugia-icon-direction_logout c33 c30"
+            onClick={undefined}
+          />
+          Button
+        </span>
+      </span>
+    </button>
+    <p>
+      icon Button
+    </p>
+    <button
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        <span>
+          <i
+            className="lugia-icon-financial_global c33 c30"
+            onClick={undefined}
+          />
+          Button
+        </span>
+      </span>
+    </button>
+  </div>
+  <span
+    className={undefined}
+  >
+    <button
+      className="c34"
+      disabled={undefined}
+      onClick={[Function]}
+      shape={undefined}
+      size={undefined}
+      type={undefined}
+    >
+      <span>
+        Button
+      </span>
+    </button>
   </span>
-</button>
+</div>
 `;

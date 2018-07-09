@@ -2,11 +2,42 @@
  * by wangcuixia
  * @flow
  * **/
-
-import changeColor from './utilsColor';
 import type { CommonCSS } from '@lugia/lugia-web';
 
-type StateColor = CommonCSS & {
+import changeColor from './utilsColor';
+
+type StateColor = {
+  themeColor: string,
+  successColor: string,
+  warningColor: string,
+  dangerColor: string,
+  blackColor: string,
+  darkGreyColor: string,
+  mediumGreyColor: string,
+  lightGreyColor: string,
+  superLightColor: string,
+  disableColor: string,
+  defaultColor: string,
+  borderColor: string,
+  borderDisableColor: string,
+  borderSize: string,
+  boxShadowOpacity: string,
+  hShadow: string,
+  vShadow: string,
+  shadowSpread: string,
+  borderRadius: string,
+  circleBorderRadius: string,
+  transitionTime: string,
+  rulesColor: string,
+  rulesSize: string,
+  rulesOpacity: string,
+  padding: string,
+  paddingToText: string,
+  marginToSameElement: string,
+  marginToDifferentElement: string,
+  marginToPeerElementForY: string,
+  marginToSameElementForY: string,
+  marginToSonElement: string,
   normalColor: string,
   hoverColor: string,
   mouseDownColor: string,
