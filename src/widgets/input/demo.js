@@ -38,11 +38,10 @@ const InputDemo = () => {
   const view = {
     [Widget.Input]: {
       width: 300,
-      margin: 10,
+      margin :10,
     },
     register: {
       width: 100,
-      margin: 5,
     },
   };
   const onChange = (cmpName: string) => (value: string) => {
@@ -59,7 +58,7 @@ const InputDemo = () => {
       <br />formatter input<br />
       <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
       <br />default input<br />
-      <Input placeholder={'请填写内容'}  />
+      <Input placeholder={'请填写内容'} />
       <br />禁用状态 <br />
       <Input size={'default'} disabled={true} />
       <Theme config={view}>
