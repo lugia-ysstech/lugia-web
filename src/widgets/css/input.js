@@ -15,6 +15,7 @@ const {
   borderSize,
   dangerColor,
   borderColor,
+  blackColor,
 } = colorsFunc();
 
 export const getInputBorderColor = (props: Object) => {
@@ -49,7 +50,7 @@ export const DefaultHeight = 32;
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
 
-export const fontColor = '#333333';
+export const fontColor = blackColor;
 
 export type ValidateStatus = 'success' | 'error';
 
