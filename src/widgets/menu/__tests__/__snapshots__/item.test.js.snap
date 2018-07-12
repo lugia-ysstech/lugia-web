@@ -8,20 +8,20 @@ exports[`Item Mutliple MenuItem 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .c0:hover {
   background-color: #ecf6fd;
 }
 
-.c0:after {
+.c0::after {
   font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
@@ -68,13 +68,13 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
   background-color: #f7f7f7;
   font-weight: 600;
   color: rgba(0,0,0,.65);
@@ -84,7 +84,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   background-color: #ecf6fd;
 }
 
-.c0:after {
+.c0::after {
   font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
@@ -135,13 +135,13 @@ exports[`Item Single MenuItem 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .c0:hover {
@@ -166,13 +166,13 @@ exports[`Item Single MenuItem checked 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
   background-color: #f7f7f7;
   font-weight: 600;
   color: rgba(0,0,0,.65);
@@ -202,13 +202,13 @@ exports[`Item children: null 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,0.65);
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .c0:hover {

@@ -21,8 +21,8 @@ exports[`Switch snapshot 1`] = `
   background-color: rgba(0,0,0,.25);
 }
 
-.c0:before,
-.c0:after {
+.c0::before,
+.c0::after {
   position: absolute;
   top: 1px;
   border-radius: 18px;
@@ -33,11 +33,11 @@ exports[`Switch snapshot 1`] = `
   transition: all .36s cubic-bezier(0.78,0.14,0.15,0.86);
 }
 
-.c0:after {
-  box-shadow: 0 2px 4px 0 rgba(0,35,11,.2);
+.c0::after {
+  box-shadow: 0 2px 4px 0 rgba(0,35,11,0.2);
 }
 
-.c0:before {
+.c0::before {
   content: "\\e818";
   font-family: "sviconfont" !important;
   text-align: center;
