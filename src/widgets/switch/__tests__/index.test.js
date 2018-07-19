@@ -1,220 +1,452 @@
 /**
  *
- * create by ZhangBoPing
+ * create by wcx
  *
  * @flow
  */
 import React from 'react';
-import chai from 'chai';
-
 import 'jest-styled-components';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-// import Switch from '../';
-import Switch from '../switch';
+import Switch from '../index';
+import Wrapper from '../demo';
 import renderer from 'react-test-renderer';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../../consts/KeyCode';
-
-const { mockFunction, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
-const { expect: exp } = chai;
-
+import { delay } from '@lugia/react-test-utils';
 Enzyme.configure({ adapter: new Adapter() });
 
-function checkState(propsArr, expectFun, equal, model = 'shallow') {
-  const handler = model === 'shallow' ? shallow : mount;
-  const Origin = <Switch {...propsArr} />;
-
-  const Wrapper = handler(Origin);
-  const result = typeof equal !== 'function' ? equal : equal(Wrapper);
-
-  exp(expectFun(Wrapper)).to.be.eql(result);
-}
-
-const config = {
-  defaultCheckedTrue: {
-    defaultChecked: true,
-  },
-  defaultCheckedFalse: {
-    defaultChecked: false,
-  },
-  checkedTrue: {
-    checked: true,
-  },
-  checkedFalse: {
-    checked: false,
-  },
-  disabledTrue: {
-    disabled: true,
-  },
-  disabledFalse: {
-    disabled: false,
-  },
-  checkedChildren: {
-    checkedChildren: 'on',
-  },
-  unCheckedChildren: {
-    unCheckedChildren: 'off',
-  },
-  autoFocusTrue: {
-    autoFocus: true,
-  },
-  autoFocusFalse: {
-    autoFocus: false,
-  },
-  sizeSmall: {
-    size: 'small',
-  },
-  sizeNormal: {
-    size: 'normal',
-  },
-};
-
 describe('Switch', () => {
-  it('snapshot', () => {
-    const Target = <Switch />;
-    expect(renderer.create(Target).toJSON()).toMatchSnapshot();
-  });
+  function getSwitchComponent(target) {
+    const switchComponent = target
+      .children()
+      .at(0)
+      .children()
+      .at(0)
+      .instance();
+    return switchComponent;
+  }
 
-  it('props: defaultChecked = true', () => {
-    checkState(
-      config.defaultCheckedTrue,
-      wrapper => {
-        return wrapper.state('checked');
-      },
-      true
+  function keyDown(target, keyCode) {
+    const event = target.simulate('keyDown', { keyCode });
+    return event;
+  }
+
+  it('Wrapper', () => {
+    const target = <Wrapper />;
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
+  });
+  it('small', () => {
+    const target = mount(<Switch size={'small'} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.props.size).toBe('small');
+  });
+  it('data.length=3 isInverse ', async () => {
+    const target = mount(
+      <Switch data={[{ text: '年' }, { text: '月' }, { text: '日' }]} isInverse={false} />
     );
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('月');
   });
-
-  it('props: defaultChecked = false', () => {
-    checkState(
-      config.defaultCheckedFalse,
-      wrapper => {
-        return wrapper.state('checked');
-      },
-      false
-    );
+  it('isInverse & data.length=2', async () => {
+    const target = mount(<Switch data={[{ text: '开' }, { text: '关' }]} isInverse defaultValue />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('开');
   });
-
-  it('props: checked = true', () => {
-    checkState(
-      config.checkedTrue,
-      wrapper => {
-        return wrapper.state('checked');
-      },
-      true
-    );
+  it('data.length=1', async () => {
+    const target = mount(<Switch data={[{ text: '开' }]} isInverse />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('');
   });
-
-  it('props: checked = false', () => {
-    checkState(
-      config.checkedFalse,
-      wrapper => {
-        return wrapper.state('checked');
-      },
-      false
-    );
+  it('data.length=0', () => {
+    const target = mount(<Switch data={[]} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('');
   });
-
-  it('props: disabled = true', () => {
-    checkState(
-      config.disabledTrue,
-      wrapper => {
-        return wrapper.state('disabled');
-      },
-      true
-    );
+  it('data null', () => {
+    const target = mount(<Switch data={[null]} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('');
   });
-
-  it('props: disabled = false', () => {
-    checkState(
-      config.disabledFalse,
-      wrapper => {
-        return wrapper.state('disabled');
-      },
-      false
-    );
+  it('data null null', () => {
+    const target = mount(<Switch data={[null, null]} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('');
   });
-
-  it('props: checkedChildren = “on”', () => {
-    checkState(
-      config.checkedChildren,
-      wrapper => {
-        wrapper.setState({ checked: true });
-        return wrapper.html().indexOf(config.checkedChildren.checkedChildren) > -1;
-      },
-      true
-    );
+  it('data undefined', () => {
+    const target = mount(<Switch data={[undefined]} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('');
   });
-
-  it('props: unCheckedChildren = "off"', () => {
-    checkState(
-      config.unCheckedChildren,
-      wrapper => {
-        wrapper.setState({ checked: false });
-        return wrapper.html().indexOf(config.unCheckedChildren.unCheckedChildren) > -1;
-      },
-      true
-    );
+  it('data undefined,undefined', () => {
+    const target = mount(<Switch data={[undefined, undefined]} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('');
   });
-
-  it('props: onChange => checked: false to checked: true', () => {
-    const Target = shallow(
+  it('data null, 关', () => {
+    const target = mount(<Switch data={[null, { text: '月' }]} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('月');
+  });
+  it('displayFiled', async () => {
+    const target = mount(
       <Switch
-        checked={false}
-        onChange={result => {
-          exp(result).to.eql(true);
-        }}
+        displayFiled={'left'}
+        data={[{ left: '年', name: 'ppp' }, { left: '月', name: 'ww' }]}
       />
     );
-
-    Target.setState({
-      checked: true,
-    });
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('月');
   });
-
-  it('Switch onClick', () => {
-    checkState(
-      {},
-      wrapper => {
-        wrapper
-          .find('span')
-          .at(0)
-          .simulate('click');
-
-        return wrapper.state('checked');
-      },
-      true,
-      'mount'
+  it('no  displayFiled', async () => {
+    const target = mount(
+      <Switch data={[{ left: '年', name: 'ppp' }, { left: '月', name: 'ww' }]} />
     );
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe(undefined);
+  });
+  it('no  displayFiled have text', async () => {
+    const target = mount(
+      <Switch
+        data={[{ text: '日', left: '年', name: 'ppp' }, { text: '时', left: '月', name: 'ww' }]}
+      />
+    );
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('时');
+  });
+  it('isInverse', () => {
+    const target = mount(<Switch isInverse />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.text).toBe('');
+  });
+  it('value', async () => {
+    const target = mount(<Switch value />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('');
+  });
+  it('defaultValue', async () => {
+    const target = mount(<Switch defaultValue />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('');
+  });
+  it('value& defaultValue', async () => {
+    const target = mount(<Switch defaultValue={false} value />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('');
+  });
+  it('disabled', async () => {
+    const target = mount(<Switch disabled />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.props.disabled).toBe(true);
+  });
+  it('loading', async () => {
+    const target = mount(<Switch loading />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.props.loading).toBe(true);
+    target.setProps({ loading: false });
+    expect(switchComponent.props.loading).toBe(false);
+  });
+  it(' loading={{delay:3000}}', async () => {
+    const target = mount(<Switch loading={{ delay: 3000 }} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.props.loading).toBe(true);
+    await delay(3000);
+    expect(switchComponent.props.loading).toBe(false);
+  });
+  it('disabled,loading', async () => {
+    const target = mount(<Switch loading disabled />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.props.loading).toBe(true);
+    expect(switchComponent.props.disabled).toBe(true);
+  });
+  it('disabled,loading={{delay:3000}}', async () => {
+    const target = mount(<Switch disabled loading={{ delay: 3000 }} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.props.loading).toBe(true);
+    expect(switchComponent.props.disabled).toBe(true);
+    await delay(3000);
+    expect(switchComponent.props.loading).toBe(false);
+    expect(switchComponent.props.disabled).toBe(true);
+  });
+  it('isMouseDown', async () => {
+    const target = mount(<Switch data={[{ text: '年' }, { text: '月' }]} />);
+    const switchComponent = getSwitchComponent(target);
+    expect(switchComponent.state.isMouseDown).toBe(false);
+    target.simulate('mousedown');
+    expect(switchComponent.state.isMouseDown).toBe(true);
+    target.simulate('mouseup');
+    expect(switchComponent.state.isMouseDown).toBe(false);
+  });
+  it('keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW" ', async () => {
+    const target = mount(<Switch autoFocus data={[{ text: '年' }, { text: '月' }]} />);
+    const switchComponent = getSwitchComponent(target);
+
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+
+    keyDown(target, RIGHT_ARROW);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, LEFT_ARROW);
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+  });
+  it('value && keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW"', async () => {
+    const target = mount(<Switch autoFocus value data={[{ text: '年' }, { text: '月' }]} />);
+    const switchComponent = getSwitchComponent(target);
+
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, RIGHT_ARROW);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, LEFT_ARROW);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+  });
+  it('mouseUp && value &&  keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW"', async () => {
+    const target = mount(<Switch autoFocus value data={[{ text: '年' }, { text: '月' }]} />);
+    const switchComponent = getSwitchComponent(target);
+
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, RIGHT_ARROW);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, LEFT_ARROW);
+
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+  });
+  it('mouseUp,setProps{value:true} keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW" ', async () => {
+    const target = mount(<Switch autoFocus data={[{ text: '年' }, { text: '月' }]} />);
+    const switchComponent = getSwitchComponent(target);
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+
+    keyDown(target, RIGHT_ARROW);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+
+    keyDown(target, LEFT_ARROW);
+    expect(switchComponent.state.value).toBe(false);
+    expect(switchComponent.state.text).toBe('月');
+
+    target.setProps({ value: true });
+
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, ENTER);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(target, RIGHT_ARROW);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    target.simulate('mouseup');
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(target, LEFT_ARROW);
+
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
   });
 
-  it('keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW" ', () => {
-    const Target = mount(<Switch autoFocus />);
-    const SwitchEl = Target.find('span').at(0);
+  function testOnChange(
+    title: string,
+    props: Object,
+    keyCodes: Array<any> | null,
+    stateValue: Array<any>,
+    changeEventValue: Array<any> = []
+  ) {
+    it(`props: onchange ${title} `, done => {
+      let changeCalledNum: number = 0;
+      const changeEventValueLen: number = changeEventValue.length;
+      const onChange: Function = jest.fn(() => {
+        changeCalledNum++;
+        changeCalledNum === changeEventValueLen && done();
+      });
 
-    SwitchEl.simulate('keyDown', { keyCode: ENTER });
-    exp(Target.state('checked')).to.eql(true);
-    SwitchEl.simulate('keyDown', { keyCode: SPACE });
-    exp(Target.state('checked')).to.eql(false);
-    SwitchEl.simulate('keyDown', { keyCode: RIGHT_ARROW });
-    exp(Target.state('checked')).to.eql(true);
-    SwitchEl.simulate('keyDown', { keyCode: LEFT_ARROW });
-    exp(Target.state('checked')).to.eql(false);
-  });
+      const component = mount(<Switch {...props} onChange={onChange} />);
+      const switchComponent = getSwitchComponent(component);
 
-  /* 
-  
+      if (keyCodes) {
+        keyCodes.forEach((keyCode: any, index: number) => {
+          component.simulate('keydown', { keyCode });
+          expect(switchComponent.state.value).toBe(stateValue[index]);
+        });
+      } else {
+        component.simulate('mouseup');
+        expect(switchComponent.state.value).toBe(stateValue[0]);
+      }
 
-  it('iconClass: sv-icon-close', () => {
-    const order = VerifyOrder.create();
-    const mockClick = mockFunction.create(VerifyOrderConfig.create('eventHandle', order));
-    const onClick = mockClick.getFunction();
-    const target = mount(<Icon iconClass="sv-icon-close" onClick={onClick}></Icon>);
-    target.find('i').simulate('click', {});
-    order.verify(obj => {
-      const { eventHandle, } = obj;
-      eventHandle(VerifyOrder.Object);
+      if (props.loading || props.disabled) {
+        expect(onChange.mock.calls.length).toBe(0);
+        done();
+      } else {
+        expect(onChange.mock.calls.length).toBe(keyCodes ? keyCodes.length : 1);
+        onChange.mock.calls.forEach(([value], index) => {
+          expect(Object.keys(value)).toEqual([
+            'newValue',
+            'oldValue',
+            'newItem',
+            'oldItem',
+            'event',
+          ]);
+          delete value.event;
+          expect(value).toEqual(changeEventValue[index]);
+        });
+      }
     });
-  });
-   */
+  }
+
+  testOnChange(
+    'disabled,change',
+    { disabled: true, autoFocus: true },
+    [ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE],
+    [false, false, false, false]
+  );
+
+  testOnChange(
+    'loading,change',
+    { loading: true, autoFocus: true },
+    [ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE],
+    [false, false, false, false]
+  );
+  testOnChange(
+    'loading:{delay:3000},change',
+    { loading: { delay: 3000 }, autoFocus: true },
+    [ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE],
+    [false, false, false, false]
+  );
+
+  testOnChange(
+    'mouseUp onChange',
+    { data: [{ text: '年' }, { text: '月' }] },
+    null,
+    [true],
+    [{ newValue: true, oldValue: false, newItem: { text: '年' }, oldItem: { text: '月' } }]
+  );
+  testOnChange(
+    'value onChange',
+    { value: true, data: [{ text: '年' }, { text: '月' }] },
+    null,
+    [true],
+    [{ newValue: true, oldValue: false, newItem: { text: '年' }, oldItem: { text: '月' } }]
+  );
+
+  testOnChange(
+    'keyDown onChange',
+    { data: [{ text: '年' }, { text: '月' }] },
+    [ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE],
+    [true, false, true, false],
+    [
+      { newValue: true, oldValue: false, newItem: { text: '年' }, oldItem: { text: '月' } },
+      { newValue: false, oldValue: true, newItem: { text: '月' }, oldItem: { text: '年' } },
+      { newValue: true, oldValue: false, newItem: { text: '年' }, oldItem: { text: '月' } },
+      { newValue: false, oldValue: true, newItem: { text: '月' }, oldItem: { text: '年' } },
+    ]
+  );
 });
