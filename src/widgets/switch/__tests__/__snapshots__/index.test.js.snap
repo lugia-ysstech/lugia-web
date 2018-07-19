@@ -1,109 +1,1453 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch snapshot 1`] = `
+exports[`Switch Wrapper 1`] = `
 .c0 {
-  position: relative;
-  display: inline-block;
+  font-size: 1em;
   box-sizing: border-box;
-  vertical-align: middle;
-  border-radius: 100px;
-  border: 1px solid transparent;
-  cursor: 'pointer';
-  -webkit-transition: all .36s;
-  transition: all .36s;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  height: 22px;
-  min-width: 44px;
-  line-height: 20px;
-  background-color: rgba(0,0,0,.25);
-}
-
-.c0::before,
-.c0::after {
-  position: absolute;
-  top: 1px;
-  border-radius: 18px;
-  background-color: #fff;
-  content: " ";
+  display: inline-block;
+  width: 3.1666666666666665em;
+  height: 1.6666666666666667em;
+  line-height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  background: #ccc;
+  position: relative;
+  text-align: right;
+  padding: 0 0.33333333333333337em;
+  color: rgba(255,255,255,0.8);
   cursor: pointer;
-  -webkit-transition: all .36s cubic-bezier(0.78,0.14,0.15,0.86);
-  transition: all .36s cubic-bezier(0.78,0.14,0.15,0.86);
-}
-
-.c0::after {
-  box-shadow: 0 2px 4px 0 rgba(0,35,11,0.2);
-}
-
-.c0::before {
-  content: "\\e818";
-  font-family: "sviconfont" !important;
-  text-align: center;
-  background: transparent;
-  z-index: 1;
-  display: none;
-  font-size: 12px;
+  vertical-align: middle;
 }
 
 .c0:focus {
-  box-shadow: 0 0 0 2px rgba(24,144,255,.2);
-  outline: 0;
+  outline: none;
 }
 
-.c0:focus:hover {
-  box-shadow: none;
+.c2 {
+  font-size: 1em;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 2.5em;
+  height: 1.3333333333333335em;
+  line-height: 1.3333333333333335em;
+  border-radius: 1.6666666666666667em;
+  background: #ccc;
+  position: relative;
+  text-align: right;
+  padding: 0 0.33333333333333337em;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
 }
 
-.c0:after {
-  width: 18px;
-  height: 18px;
+.c2:focus {
+  outline: none;
 }
 
-.c0:active:before,
-.c0:active:after {
-  width: 24px;
+.c4 {
+  font-size: 1em;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 3.1666666666666665em;
+  height: 1.6666666666666667em;
+  line-height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  background: #56c22d;
+  position: relative;
+  text-align: left;
+  padding: 0 0.33333333333333337em;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
 }
 
-.c0:before,
-.c0:after {
-  left: 1px;
-  margin-left: px;
+.c4:focus {
+  outline: none;
 }
 
-.c0:active:before,
-.c0:active:after {
-  margin-left: px;
+.c6 {
+  font-size: 1em;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 3.1666666666666665em;
+  height: 1.6666666666666667em;
+  line-height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  background: #f22735;
+  position: relative;
+  text-align: right;
+  padding: 0 0.33333333333333337em;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
 }
 
-.c0:before {
-  -webkit-animation: fuxbQo 1s infinite linear;
-  animation: fuxbQo 1s infinite linear;
-  display: none;
-  color: rgba(0,0,0,.64);
+.c6:focus {
+  outline: none;
+}
+
+.c7 {
+  font-size: 1em;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 3.1666666666666665em;
+  height: 1.6666666666666667em;
+  line-height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  background: #684fff;
+  position: relative;
+  text-align: left;
+  padding: 0 0.33333333333333337em;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.c7:focus {
+  outline: none;
+}
+
+.c8 {
+  font-size: 1em;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 3.1666666666666665em;
+  height: 1.6666666666666667em;
+  line-height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  background: #cac2ff;
+  position: relative;
+  text-align: right;
+  padding: 0 0.33333333333333337em;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.c8:focus {
+  outline: none;
 }
 
 .c1 {
-  color: #fff;
-  font-size: 12px;
-  display: block;
-  margin-left: 24px;
-  margin-right: 6px;
+  width: 1.1666666666666667em;
+  height: 1.1666666666666667em;
+  line-height: 1.1666666666666667em;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  background: #fff;
+  position: absolute;
+  left: 0.25em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
 }
 
-<span
-  className="c0"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  size="default"
-  tabIndex={0}
+.c3 {
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  background: #fff;
+  position: absolute;
+  left: 0.16666666666666669em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+}
+
+.c5 {
+  width: 1.1666666666666667em;
+  height: 1.1666666666666667em;
+  line-height: 1.1666666666666667em;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  background: #fff;
+  position: absolute;
+  right: 0.25em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+}
+
+.c9 {
+  font-size: 1.2rem;
+  position: absolute;
+  width: 0.8333333333333334em;
+  height: 0.8333333333333334em;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
+.c10 {
+  height: 0.8333333333333334em;
+  width: 0.075em;
+  position: absolute;
+  left: 0.37916666666666665em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 2.5s infinite;
+  animation: fDQPTE 2.5s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.c12 {
+  height: 0.8333333333333334em;
+  width: 0.0675em;
+  position: absolute;
+  left: 0.3829166666666666em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 2.5s infinite;
+  animation: fDQPTE 2.5s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.7999999999999999s;
+  animation-delay: 0.7999999999999999s;
+}
+
+.c14 {
+  height: 0.8333333333333334em;
+  width: 0.060750000000000005em;
+  position: absolute;
+  left: 0.3862916666666667em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 2.5s infinite;
+  animation: fDQPTE 2.5s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.8999999999999999s;
+  animation-delay: 0.8999999999999999s;
+}
+
+.c16 {
+  height: 0.8333333333333334em;
+  width: 0.054675000000000015em;
+  position: absolute;
+  left: 0.38932916666666667em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 2.5s infinite;
+  animation: fDQPTE 2.5s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.9999999999999999s;
+  animation-delay: 0.9999999999999999s;
+}
+
+.c18 {
+  height: 0.8333333333333334em;
+  width: 0.049207500000000015em;
+  position: absolute;
+  left: 0.39206291666666665em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 2.5s infinite;
+  animation: fDQPTE 2.5s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 1.0999999999999999s;
+  animation-delay: 1.0999999999999999s;
+}
+
+.c11 {
+  display: block;
+  width: 0.075em;
+  height: 0.075em;
+  background: #ccc;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c13 {
+  display: block;
+  width: 0.0675em;
+  height: 0.0675em;
+  background: #ccc;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c15 {
+  display: block;
+  width: 0.060750000000000005em;
+  height: 0.060750000000000005em;
+  background: #ccc;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c17 {
+  display: block;
+  width: 0.054675000000000015em;
+  height: 0.054675000000000015em;
+  background: #ccc;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c19 {
+  display: block;
+  width: 0.049207500000000015em;
+  height: 0.049207500000000015em;
+  background: #ccc;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+<div
+  className="demo-switch"
+  style={
+    Object {
+      "margin": "20px",
+    }
+  }
 >
-  <span
-    className="c1"
-    size="default"
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
   >
-    
-  </span>
-</span>
+    <h3>
+      normal
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      size=‘small’
+    </h3>
+    <span
+      className="c2"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size="small"
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c3"
+        disabled={undefined}
+        size="small"
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data.length=3
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      月
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data.length=2 isInverse defaultValue
+    </h3>
+    <span
+      className="c4"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={true}
+    >
+      开
+      <span
+        className="c5"
+        disabled={undefined}
+        size={undefined}
+        value={true}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data \`data.length=1 isInverse\`
+    </h3>
+    <span
+      className="c6"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data \`data.length=0\`
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=null
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=null,data[1]=null
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=undefined
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=undefined,data[1]=undefined
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=null,data[1]=undefined
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=null,data[1]=
+      text:月
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      月
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      displayFiled
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      月
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      no displayFiled, have text
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      时
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      no displayFiled no text
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      isInverse
+    </h3>
+    <span
+      className="c6"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data \`value\`
+    </h3>
+    <span
+      className="c7"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={true}
+    >
+      
+      <span
+        className="c5"
+        disabled={undefined}
+        size={undefined}
+        value={true}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      defaultValue
+    </h3>
+    <span
+      className="c7"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={true}
+    >
+      
+      <span
+        className="c5"
+        disabled={undefined}
+        size={undefined}
+        value={true}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      defaultValue && value
+    </h3>
+    <span
+      className="c7"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={true}
+    >
+      
+      <span
+        className="c5"
+        disabled={undefined}
+        size={undefined}
+        value={true}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      autoFocus
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      月
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      autoFocus && value
+    </h3>
+    <span
+      className="c7"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={true}
+    >
+      年
+      <span
+        className="c5"
+        disabled={undefined}
+        size={undefined}
+        value={true}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      onChange
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      月
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      onChange value false
+    </h3>
+    <span
+      className="c0"
+      disabled={undefined}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      月
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      loading
+    </h3>
+    <span
+      className="c8"
+      disabled={undefined}
+      onKeyDown={null}
+      onMouseDown={null}
+      onMouseUp={null}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        <div
+          className="c9"
+          width={10}
+        >
+          <div
+            className="c10"
+            width={10}
+          >
+            <span
+              className="c11"
+              color="#ccc"
+              scale={false}
+            />
+          </div>
+          <div
+            className="c12"
+            width={10}
+          >
+            <span
+              className="c13"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c14"
+            width={10}
+          >
+            <span
+              className="c15"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c16"
+            width={10}
+          >
+            <span
+              className="c17"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c18"
+            width={10}
+          >
+            <span
+              className="c19"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+        </div>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      'loading=delay:3000'
+    </h3>
+    <span
+      className="c8"
+      disabled={undefined}
+      onKeyDown={null}
+      onMouseDown={null}
+      onMouseUp={null}
+      size={undefined}
+      tabIndex={0}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={undefined}
+        size={undefined}
+        value={false}
+      >
+        <div
+          className="c9"
+          width={10}
+        >
+          <div
+            className="c10"
+            width={10}
+          >
+            <span
+              className="c11"
+              color="#ccc"
+              scale={false}
+            />
+          </div>
+          <div
+            className="c12"
+            width={10}
+          >
+            <span
+              className="c13"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c14"
+            width={10}
+          >
+            <span
+              className="c15"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c16"
+            width={10}
+          >
+            <span
+              className="c17"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c18"
+            width={10}
+          >
+            <span
+              className="c19"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+        </div>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      disabled
+    </h3>
+    <span
+      className="c8"
+      disabled={true}
+      onKeyDown={null}
+      onMouseDown={null}
+      onMouseUp={null}
+      size={undefined}
+      tabIndex={-1}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={true}
+        size={undefined}
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      disabled loading
+    </h3>
+    <span
+      className="c8"
+      disabled={true}
+      onKeyDown={null}
+      onMouseDown={null}
+      onMouseUp={null}
+      size={undefined}
+      tabIndex={-1}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={true}
+        size={undefined}
+        value={false}
+      >
+        <div
+          className="c9"
+          width={10}
+        >
+          <div
+            className="c10"
+            width={10}
+          >
+            <span
+              className="c11"
+              color="#ccc"
+              scale={false}
+            />
+          </div>
+          <div
+            className="c12"
+            width={10}
+          >
+            <span
+              className="c13"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c14"
+            width={10}
+          >
+            <span
+              className="c15"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c16"
+            width={10}
+          >
+            <span
+              className="c17"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c18"
+            width={10}
+          >
+            <span
+              className="c19"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+        </div>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      disabled loading=delay:3000
+    </h3>
+    <span
+      className="c8"
+      disabled={true}
+      onKeyDown={null}
+      onMouseDown={null}
+      onMouseUp={null}
+      size={undefined}
+      tabIndex={-1}
+      value={false}
+    >
+      
+      <span
+        className="c1"
+        disabled={true}
+        size={undefined}
+        value={false}
+      >
+        <div
+          className="c9"
+          width={10}
+        >
+          <div
+            className="c10"
+            width={10}
+          >
+            <span
+              className="c11"
+              color="#ccc"
+              scale={false}
+            />
+          </div>
+          <div
+            className="c12"
+            width={10}
+          >
+            <span
+              className="c13"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c14"
+            width={10}
+          >
+            <span
+              className="c15"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c16"
+            width={10}
+          >
+            <span
+              className="c17"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+          <div
+            className="c18"
+            width={10}
+          >
+            <span
+              className="c19"
+              color="#ccc"
+              scale=""
+            />
+          </div>
+        </div>
+      </span>
+    </span>
+  </section>
+</div>
 `;
