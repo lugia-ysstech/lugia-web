@@ -1,140 +1,166 @@
-/**
- *
- * create by ZhangBoPing
- *
- * create date: 2018/04/09
- *
- * @flow
- */
+/*
+*
+* by wangcuixia
+* @flow
+*2018/7/9
+* */
 import * as React from 'react';
-import Widget from '../consts/index';
+import { SwitchWrapper, SwitchCircle } from './styled';
+import Loading from '../loading/loading';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
-import { SwitchWrapper, SwitchInner } from './styled';
-
-/* props type */
-export type SwitchProps = {
-  autoFocus?: boolean,
-  prefixCls?: string,
-  size?: 'small' | 'default',
-  className?: string,
-  checked?: boolean,
-  defaultChecked?: boolean,
-  onChange?: (checked: boolean) => any,
-  checkedChildren?: string | React.Node,
-  unCheckedChildren?: string | React.Node,
+type TypeProps = {
+  value?: boolean,
+  defaultValue?: boolean,
+  data?: Object,
+  isInverse?: boolean,
+  size?: string,
   disabled?: boolean,
   loading?: boolean,
+  data?: Object,
+  autoFocus?: boolean,
+  onChange?: any,
+  displayFiled?: string,
 };
-
-/* state type */
-export type SwitchState = {
-  checked: boolean,
-  disabled: boolean,
+type TypeState = {
+  isMouseDown?: boolean,
+  items?: Array<Object>,
+  value?: boolean,
+  displayFiled?: string,
+  text?: string,
 };
-
-/* Class */
-class Switch extends React.Component<SwitchProps, SwitchState> {
-  el: any;
-
-  static displayName = `_${Widget.Switch}`;
-
-  constructor(props: SwitchProps) {
-    super(props);
-
-    const { defaultChecked = false, disabled = false, checked = defaultChecked } = this.props;
-    this.state = {
-      checked,
-      disabled,
+const TAB_INDEX = 0;
+const NO_TAB_INDEX = -1;
+function getItem(value, items) {
+  const item = value ? items[0] : items[1];
+  return item;
+}
+class Switch extends React.Component<TypeProps, TypeState> {
+  switchNode: any;
+  constructor() {
+    super();
+    this.switchNode = React.createRef();
+  }
+  static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
+    const { defaultValue = false, data, displayFiled = 'text' } = nextProps;
+    const hasValueProps = 'value' in nextProps;
+    let { value } = nextProps;
+    value = hasValueProps ? value : preState ? preState.value : defaultValue;
+    const empty = { text: '' };
+    let items = [empty, empty];
+    if (Array.isArray(data)) {
+      const datas = [...data];
+      const { length } = datas;
+      if (length !== 0) {
+        if (!datas[0]) {
+          datas[0] = empty;
+        }
+        if (!datas[1]) {
+          datas[1] = empty;
+        }
+        items = datas;
+      }
+    }
+    const text = getItem(value, items)[displayFiled];
+    if (!preState) {
+      return {
+        isMouseDown: false,
+        value,
+        text,
+        items,
+      };
+    }
+    return {
+      text,
+      value,
+      items,
     };
   }
-
-  toggle = (): void => {
-    this.updateChecked(!this.state.checked);
-  };
-
-  updateChecked(checked: boolean): void {
-    if (this.state.disabled) {
-      return;
-    }
-
+  mousedown = () => {
     this.setState({
-      checked,
+      isMouseDown: true,
     });
-  }
-
-  handleKeyDown = (event: SyntheticKeyboardEvent<EventTarget>): void => {
-    const key = event.keyCode;
-
-    if (key === LEFT_ARROW) this.updateChecked(false);
-    if (key === RIGHT_ARROW) this.updateChecked(true);
-    if (key === SPACE || key === ENTER) this.toggle();
   };
-
+  mouseup = (event?: any) => {
+    this.setState({
+      isMouseDown: false,
+    });
+    this.updateChecked(event, !this.state.value);
+  };
+  updateChecked(event?: any, value?: boolean): void {
+    this.setState(
+      {
+        value,
+      },
+      function() {
+        const { onChange } = this.props;
+        if (onChange) {
+          const { value, items } = this.state;
+          const newItem = getItem(value, items);
+          const oldItem = getItem(!value, items);
+          const opens = {
+            newValue: value,
+            oldValue: !value,
+            newItem,
+            oldItem,
+            event,
+          };
+          onChange(opens);
+        }
+      }
+    );
+  }
+  handleKeyDown = (event: SyntheticKeyboardEvent<EventTarget>): void => {
+    const { value } = this.state;
+    const key = event.keyCode;
+    if (key === LEFT_ARROW) this.updateChecked(event, false);
+    if (key === RIGHT_ARROW) this.updateChecked(event, true);
+    if (key === SPACE || key === ENTER) this.updateChecked(event, !value);
+  };
   focus(): void {
-    if (this.el) {
-      this.el.focus();
+    if (this.switchNode.current) {
+      this.switchNode.current.focus();
     }
   }
 
   blur(): void {
-    if (this.el) {
-      this.el.blur();
+    if (this.switchNode.current) {
+      this.switchNode.current.blur();
     }
   }
-
-  cacheNode = (node: HTMLSpanElement): void => {
-    this.el = node;
-  };
-
   componentDidMount() {
     const { autoFocus, disabled } = this.props;
     if (autoFocus && !disabled) {
       this.focus();
     }
   }
-
-  componentDidUpdate() {
-    if (this.props.onChange) {
-      this.props.onChange(this.state.checked);
-    }
-  }
-
-  componentWillUnmount() {
-    this.el = null;
-  }
-
   render() {
-    const {
-      checkedChildren = '',
-      unCheckedChildren = '',
-      size = 'default',
-      loading,
-      ...otherProps
-    } = this.props;
-    const { checked, disabled } = this.state;
-    const TAB_INDEX = 0;
-    const NO_TAB_INDEX = -1;
-
+    const { isMouseDown, value, text } = this.state;
+    const { isInverse, size, disabled, loading } = this.props;
+    const isabled = !disabled && !loading;
     const switchTabIndex = disabled ? NO_TAB_INDEX : TAB_INDEX;
-
+    const config = {
+      isMouseDown,
+      value,
+      size,
+      disabled,
+      loading,
+    };
     return (
       <SwitchWrapper
-        isChecked={checked}
-        isDisabled={disabled}
-        size={size}
-        loading={loading}
+        onMouseDown={isabled ? this.mousedown : null}
+        onMouseUp={isabled ? this.mouseup : null}
+        onKeyDown={isabled ? this.handleKeyDown : null}
+        innerRef={this.switchNode}
+        isInverse={isInverse}
         tabIndex={switchTabIndex}
-        onClick={this.toggle}
-        onKeyDown={this.handleKeyDown}
-        innerRef={this.cacheNode}
-        {...otherProps}
+        {...config}
       >
-        <SwitchInner isChecked={checked} size={size}>
-          {checked ? checkedChildren : unCheckedChildren}
-        </SwitchInner>
+        {text}
+        <SwitchCircle {...config}>
+          {loading ? <Loading width={10} color={'#ccc'} /> : ''}
+        </SwitchCircle>
       </SwitchWrapper>
     );
   }
 }
-
 export default Switch;

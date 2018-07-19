@@ -1,6 +1,6 @@
 /**
  *
- * create by ZhangBoPing
+ * create by wangcuixia
  *
  * create date: 2018/04/09
  *
@@ -9,5 +9,6 @@
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import Switch from './switch';
+import DelayHoc from '../common/DelayHoc';
 
-export default ThemeProvider(Switch, Widget.Switch);
+export default ThemeProvider(DelayHoc(Switch), Widget.Switch);
