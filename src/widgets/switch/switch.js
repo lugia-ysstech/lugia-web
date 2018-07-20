@@ -87,6 +87,9 @@ class Switch extends React.Component<TypeProps, TypeState> {
     this.updateChecked(event, !this.state.value);
   };
   updateChecked(event?: any, value?: boolean): void {
+    if (this.state.value === value) {
+      return;
+    }
     this.setState(
       {
         value,

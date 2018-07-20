@@ -13,6 +13,7 @@ import Wrapper from '../demo';
 import renderer from 'react-test-renderer';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../../consts/KeyCode';
 import { delay } from '@lugia/react-test-utils';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Switch', () => {
@@ -363,10 +364,10 @@ describe('Switch', () => {
   ) {
     it(`props: onchange ${title} `, done => {
       let changeCalledNum: number = 0;
-      const changeEventValueLen: number = changeEventValue.length;
+      const changeEventLength = changeEventValue.length;
       const onChange: Function = jest.fn(() => {
         changeCalledNum++;
-        changeCalledNum === changeEventValueLen && done();
+        changeCalledNum === changeEventLength && done();
       });
 
       const component = mount(<Switch {...props} onChange={onChange} />);
@@ -386,7 +387,10 @@ describe('Switch', () => {
         expect(onChange.mock.calls.length).toBe(0);
         done();
       } else {
-        expect(onChange.mock.calls.length).toBe(keyCodes ? keyCodes.length : 1);
+        expect(onChange.mock.calls.length).toBe(changeEventLength);
+        if (changeEventLength === 0) {
+          done();
+        }
         onChange.mock.calls.forEach(([value], index) => {
           expect(Object.keys(value)).toEqual([
             'newValue',
@@ -401,6 +405,16 @@ describe('Switch', () => {
       }
     });
   }
+
+  testOnChange(
+    'right right',
+    {},
+    [RIGHT_ARROW, RIGHT_ARROW],
+    [true, true],
+    [{ newValue: true, oldValue: false, newItem: { text: '' }, oldItem: { text: '' } }]
+  );
+
+  testOnChange('left left', {}, [LEFT_ARROW, LEFT_ARROW], [false, false]);
 
   testOnChange(
     'disabled,change',
