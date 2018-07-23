@@ -18,9 +18,10 @@ export default class Sl extends Component<any> {
   }
   onchange = v => {
     console.log(v);
-    this.setState({
-      currentValue: v,
-    });
+    console.log(34);
+    // this.setState({
+    //   currentValue: v,
+    // });
   };
   handleclick = () => {
     this.setState({ btnWidth: 30 });
@@ -59,7 +60,19 @@ export default class Sl extends Component<any> {
         {/*</div>*/}
         <div>
           <h2 style={{ paddingBottom: '50px' }}> 双滑块</h2>
-          <Slider maxValue={30} defaultValue={[10, 20]} />
+          <Slider maxValue={30} defaultValue={[10, 20]} tips onChange={this.onchange} />
+        </div>
+        <div>
+          <h2 style={{ paddingBottom: '50px' }}> 单滑块</h2>
+          <Slider maxValue={30} defaultValue={20} tips onChange={this.onchange} />
+        </div>
+        <div>
+          <h2 style={{ paddingBottom: '50px' }}> disabled</h2>
+          <Slider maxValue={30} defaultValue={20} tips onChange={this.onchange} disabled />
+        </div>
+        <div>
+          <h2 style={{ paddingBottom: '50px' }}> value</h2>
+          <Slider maxValue={30} defaultValue={[10, 20]} value={23} tips onChange={this.onchange} />
         </div>
       </div>
     );

@@ -3,77 +3,121 @@
 * @flow
 * */
 import styled from 'styled-components';
-import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
+import {
+  trackBackground,
+  doneBackground,
+  doingBackground,
+  throughRangeBackground,
+  trackDisabledBackground,
+  btnDisabledBackground,
+  tipBackground,
+  tipColor,
+} from './slider_public_color';
+
 const em = px2emcss(1.2);
-const { themeColor, successColor, dangerColor } = colorsFunc();
-const { hoverColor } = colorsFunc(themeColor);
 type CssTypeProps = {
   background?: string,
   changeBackground?: boolean,
   moveY?: number,
   btnWidth?: number,
   btnHeight?: number,
+  SliderInnerWidth?: number,
+  rangeW?: number,
+  moveX?: number,
+  value?: any,
+  SliderInnerLeft?: number,
+  btnDisabled?: boolean,
+  disabled?: boolean,
 };
 export const SliderWrapper = styled.div`
   width: ${props => props.rangeW}px;
   height: ${props => props.rangeH}px;
-  background: ${props => (props.disabled ? '#f2f2f2' : '#e8e8e8')};
-  margin-left: 50px;
-  border-radius: 6px;
+  background: ${props => getStyled(props).wrapperBackground};
+  margin-left: ${em(50)};
+  border-radius: ${em(6)};
   position: relative;
 `;
 export const SliderInner = styled.div`
-  width: ${props => props.moveX}%;
+  width: ${props => getStyled(props).InnerWidth}%;
   height: ${props => props.rangeH}px;
-  background: ${props => (props.disabled ? '#f2f2f2' : getStyled(props).background)};
-  border-radius: 6px;
+  background: ${props => getStyled(props).innerBackground};
+  border-radius: ${em(6)};
   position: absolute;
-  left: 0;
+  left: ${props => getStyled(props).SliderInnerLeft}%;
   top: 0;
 `;
 export const Button = styled.span`
-  width: ${props => (props.changeBackground ? props.btnWidth + 6 * 1 : props.btnWidth)}px;
-  height: ${props => (props.changeBackground ? props.btnHeight + 6 * 1 : props.btnHeight)}px;
+  width: ${props => getStyled(props).btnWidth}px;
+  height: ${props => getStyled(props).btnHeight}px;
   border-radius: 50%;
-  background: ${props => (props.disabled ? '#e8e8e8' : getStyled(props).background)};
+  background: ${props => getStyled(props).btnBackground};
   position: absolute;
   left: ${props => props.moveX}%;
-  top: ${props => (props.changeBackground ? props.moveY - 3 : props.moveY)}px;
+  top: ${props => (props.changeBackground && props.btnDisabled ? props.moveY - 3 : props.moveY)}px;
   transform: translateX(-50%);
 `;
 export const Tips = styled.span`
+  font-size: ${em(14)};
   text-align: center;
   position: absolute;
   left: 50%;
-  top: -40px;
+  top: -${em(40)};
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
 `;
 export const Tipinner = styled.span`
   display: block;
-  min-width: 21px;
-  height: 27px;
-  line-height: 27px;
-  padding: 0 3px;
-  background: #666;
-  color: #fff;
-  border-radius: 3px;
+  min-width: ${em(21)};
+  height: ${em(27)};
+  line-height: ${em(27)};
+  padding: 0 ${em(3)};
+  background: ${tipBackground};
+  color: ${tipColor};
+  border-radius: ${em(3)};
 `;
 export const Tiparrow = styled.span`
   display: inline-block;
   vertical-align: top;
-  border-top: 6px solid #666;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid transparent;
+  border-top: ${em(6)} solid ${tipBackground};
+  border-left: ${em(5)} solid transparent;
+  border-right: ${em(5)} solid transparent;
+  border-bottom: ${em(5)} solid transparent;
 `;
 const getStyled = (props: CssTypeProps) => {
-  const { changeBackground } = props;
-  let { background } = props;
-  const { hoverColor } = colorsFunc(background);
-  background = changeBackground ? hoverColor : background;
-  return {
+  const {
+    changeBackground,
+    SliderInnerWidth,
+    moveX,
+    value,
+    SliderInnerLeft,
+    btnDisabled,
+    disabled,
     background,
+  } = props;
+  let { btnWidth, btnHeight } = props;
+  let InnerWidth = moveX;
+  if (Array.isArray(value) && value.length === 2) {
+    InnerWidth = SliderInnerWidth;
+  }
+  const innerBackground = disabled
+    ? trackDisabledBackground
+    : changeBackground
+      ? doingBackground
+      : background;
+  const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
+  const btnBackground = disabled ? btnDisabledBackground : innerBackground;
+  const isChangeBg = changeBackground && btnDisabled;
+  btnWidth = isChangeBg ? btnWidth + 6 * 1 : btnWidth;
+  btnHeight = isChangeBg ? btnHeight + 6 * 1 : btnHeight;
+
+  return {
+    InnerWidth,
+    SliderInnerLeft,
+    innerBackground,
+    wrapperBackground,
+    btnWidth,
+    btnHeight,
+    btnBackground,
   };
 };
