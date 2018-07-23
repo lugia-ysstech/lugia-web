@@ -5,6 +5,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Widgets from '../consts/index';
+import getConfig from '../theme/utils';
 
 type ProviderComponent = React.ComponentType<any>;
 const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {
@@ -15,7 +16,7 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
       super(props);
       this.state = { svThemVersion: 0 };
     }
-    //TODO: 需要单元测试
+
     componentWillReceiveProps(props: any, context: any) {
       const nowContext = this.context;
       if (
@@ -31,12 +32,12 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
     render() {
       const getTheme = () => {
         const { config = {}, svThemeConfigTree = {} } = this.context;
-        const { viewClass = widgetName } = this.props;
-        let currConfig = config[viewClass];
-        if (!currConfig) {
-          currConfig = svThemeConfigTree[viewClass];
-        }
-        currConfig = currConfig ? currConfig : {};
+        const { viewClass } = this.props;
+
+        const result = getConfig({}, svThemeConfigTree, config);
+        const viewClassResult = result[viewClass];
+        const widgetNameResult = result[widgetName];
+        const currConfig = { ...widgetNameResult, ...viewClassResult };
         return Object.assign({}, { ...currConfig }, { svThemeConfigTree });
       };
       return (

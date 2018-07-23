@@ -7,6 +7,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Widget from '../consts/index';
+import getConfig from './utils';
+
 import '../common/shirm';
 
 type PropsType = {
@@ -28,7 +30,6 @@ class Theme extends React.Component<PropsType, StateType> {
     this.updateTreeConfig(props, context);
   }
 
-  //TODO: 需要单元测试
   componentWillReceiveProps(nextProps: PropsType, context: Object) {
     const nowContext = this.context;
     if (
@@ -42,7 +43,7 @@ class Theme extends React.Component<PropsType, StateType> {
 
   updateTreeConfig(props: PropsType, context: Object) {
     const { config, svThemeConfigTree } = context;
-    this.svThemeConfigTree = Object.assign({}, svThemeConfigTree, config, props.config);
+    this.svThemeConfigTree = getConfig(svThemeConfigTree, config, props.config);
   }
 
   getChildContext(): Object {
