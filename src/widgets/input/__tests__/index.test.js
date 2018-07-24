@@ -15,7 +15,6 @@ import {
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts';
-
 Enzyme.configure({ adapter: new Adapter() });
 
 const { expect: exp } = chai;
@@ -77,7 +76,6 @@ describe('Input', () => {
       });
     });
   }
-
   it('props: null', () => {
     expect(renderer.create(<Input />).toJSON()).toMatchSnapshot();
   });

@@ -38,7 +38,11 @@ const InputDemo = () => {
   const view = {
     [Widget.Input]: {
       width: 300,
-      margin :10,
+      margin: 10,
+    },
+    [Widget.Tooltip]: {
+      color: '#999999',
+      fontColor: '#ffffff',
     },
     register: {
       width: 100,
@@ -55,33 +59,38 @@ const InputDemo = () => {
   };
   return (
     <div>
-      <br />formatter input<br />
+      <p>formatter input</p>
       <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
-      <br />default input<br />
+      <p>default input</p>
       <Input placeholder={'请填写内容'} />
-      <br />禁用状态 <br />
+      <p>禁用状态 </p>
       <Input size={'default'} disabled={true} />
       <Theme config={view}>
-        <br />small size<br />
-        <Input size={'small'} placeholder={'请填写内容'} />
-        <br />default size<br />
-        <Input validateStatus="success" placeholder={'请填写内容'} />
-        <br />large size<br />
-        <Input size={'large'} />
-        <br />校验失败状态<br />
+        <p>small size</p>
+        <Input
+          size={'small'}
+          placeholder={'请填写内容'}
+          validateStatus="error"
+          validateType="inner"
+        />
+        <p>default size</p>
+        <Input validateStatus="error" placeholder={'请填写内容'} validateType="top" />
+        <p>large size</p>
+        <Input size={'large'} validateStatus="error" validateType="bottom" />
+        <p>校验失败状态</p>
         <Input validateStatus="error" />
-        <br />delete<br />
+        <p>delete</p>
         <Input viewClass="register" suffix={<ClearIcon />} />
-        <br />search<br />
+        <p>search</p>
         <Input viewClass="register" suffix={<SearchIcon />} />
-        <br />pull<br />
+        <p>pull</p>
         <Input viewClass="register" suffix={<PullIcon />} />
         <Theme config={{ register: { width: 100, margin: 5 } }}>
-          <br />字体色值<br />
+          <p>字体色值</p>
           <Input value="色值:&quot;#333333&quot;" />
-          <br />受限Input<br />
+          <p>受限Input</p>
           <LimitInput onChange={onChange('limit')} />
-          <br />有默认值的 受限Input<br />
+            <p>有默认值的 受限Input</p>
           <DefaultValueInput onChange={onChange('limit')} />
         </Theme>
       </Theme>
