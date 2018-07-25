@@ -126,7 +126,6 @@ const ClearButton: Object = styled(Icon)`
 
 type InputState = {|
   value: string,
-  actualValue: string,
 |};
 
 type InputProps = {|
@@ -161,7 +160,7 @@ class TextBox extends Component<InputProps, InputState> {
     disabled: false,
     viewClass: Widget.Input,
     validateStatus: 'success',
-    validateType: 'top',
+    validateType: 'default',
     size: 'default',
     help: DefaultHelp,
     defaultValue: '',
@@ -177,7 +176,7 @@ class TextBox extends Component<InputProps, InputState> {
   };
   input: any;
   static displayName = Widget.Input;
-
+  actualValue = '';
   constructor(props: InputProps) {
     super(props);
   }
@@ -222,16 +221,18 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onFocus = (event: UIEvent) => {
-    const { onFocus, validateType } = this.props;
-    if (validateType === 'inner') {
-      this.setState({ value: this.state.actualValue });
+    const { onFocus, validateType, validateStatus } = this.props;
+    if (validateStatus === 'error' && validateType === 'inner') {
+      this.setState({ value: this.actualValue });
     }
     onFocus && onFocus(event);
   };
+
   onBlur = (event: UIEvent) => {
-    const { onBlur, help, validateType } = this.props;
-    if (validateType === 'inner') {
-      this.setState({ value: help, actualValue: this.state.value });
+    const { onBlur, help, validateType, validateStatus } = this.props;
+    if (validateStatus === 'error' && validateType === 'inner') {
+      this.setState({ value: help });
+      this.actualValue = this.state.value;
     }
     onBlur && onBlur(event);
   };
@@ -282,11 +283,11 @@ class TextBox extends Component<InputProps, InputState> {
           {result}
         </ErrorTip>
       );
-    } else if (validateType === 'bottom' && validateStatus === 'error') {
+    } else if (validateType === 'bottom') {
       return (
         <div>
           {result}
-          <TipBottom validateStatus="error" validateType="bottom">
+          <TipBottom validateStatus={validateStatus} validateType={validateType}>
             {help}
           </TipBottom>
         </div>
@@ -329,9 +330,10 @@ class TextBox extends Component<InputProps, InputState> {
       formatter,
       parser,
       validateStatus,
-      validateType,
+      onKeyUp,
+      onKeyPress,
+      placeholder,
     } = props;
-    const { onKeyUp, onKeyPress, placeholder } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
@@ -340,7 +342,6 @@ class TextBox extends Component<InputProps, InputState> {
       <Input
         innerRef={node => (this.input = node)}
         validateStatus={validateStatus}
-        validateType={validateType}
         suffix={suffix}
         prefix={prefix}
         theme={this.props.getTheme()}

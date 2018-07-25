@@ -55,7 +55,7 @@ export const fontColor = blackColor;
 export type ValidateStatus = 'success' | 'error';
 
 export type InputSize = 'small' | 'default' | 'large';
-export type InputValidateType = 'top' | 'bottom' | 'inner';
+export type InputValidateType = 'top' | 'bottom' | 'inner'|'default';
 
 type CommonInputProps = {
   theme: ThemeType,
