@@ -7,25 +7,24 @@ import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { fixControlledValue } from '.././utils';
-import type { ValidateStatus, InputSize, InputValidateType } from '../css/input';
-
+import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
 import {
   DefaultHelp,
+  getBackground,
+  getCursor,
+  getFocusBorderColor,
   getFocusShadow,
+  getFontColor,
   getInputBorderColor,
   getInputBorderHoverColor,
   getInputBorderSize,
-  RadiusSize,
-  getFocusBorderColor,
-  getSize,
-  getBackground,
   getMargin,
-  getRightPadding,
   getPadding,
-  getCursor,
-  getWidth,
-  getFontColor,
+  getRightPadding,
+  getSize,
   getVisibility,
+  getWidth,
+  RadiusSize,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
@@ -63,11 +62,13 @@ const CommonInputStyle = styled.input`
   padding-left: ${getPadding};
   padding-right: ${getRightPadding};
 `;
-const InputContainer = styled.span`
-  ${getBackground};
-  ${getMargin};
+const BaseInputContainer = styled.span`
   position: relative;
   display: inline-block;
+`;
+const InputContainer = BaseInputContainer.extend`
+  ${getBackground};
+  ${getMargin};
 `;
 
 export const Input = CommonInputStyle.extend`
@@ -85,9 +86,6 @@ const TipBottom = styled.span`
   ${getVisibility};
   transform: translateY(50%);
   z-index: 2;
-  margin-left: ${em(20)};
-  margin-top: ${em(-20)};
-  line-height: ${em(20)};
   font-size: 1em;
   color: red;
 `;
@@ -177,6 +175,7 @@ class TextBox extends Component<InputProps, InputState> {
   input: any;
   static displayName = Widget.Input;
   actualValue = '';
+
   constructor(props: InputProps) {
     super(props);
   }
@@ -242,15 +241,6 @@ class TextBox extends Component<InputProps, InputState> {
     return !(value && value.length);
   }
 
-  getClearButton() {
-    if (this.isEmpty()) {
-      return null;
-    }
-    return (
-      <ClearButton iconClass={Clear} viewClass={ClearButton.displayName} onClick={this.onClear} />
-    );
-  }
-
   onClear = (e: Object) => {
     const { disabled } = this.props;
     if (disabled) {
@@ -259,42 +249,60 @@ class TextBox extends Component<InputProps, InputState> {
     this.setValue('');
   };
 
-  getInputContainer() {
+  getInputContent() {
+    return this.getInputContainer(this.getInputInner);
+  }
+
+  getInputContainer(fetcher: Function) {
     const { getTheme } = this.props;
-    const suffix = this.generateSuffix();
     return (
       <InputContainer className="sv" theme={getTheme()}>
-        {this.generatePrefix()}
-        {this.generateInput(Input)}
-        {suffix ? suffix : this.getClearButton()}
+        {fetcher()}
       </InputContainer>
     );
   }
 
+  getInputInner = () => {
+    const { validateType, validateStatus, help } = this.props;
+
+    if (validateType === 'bottom') {
+      const result = [
+        <BaseInputContainer>
+          {this.generatePrefix()}
+          {this.generateInput()}
+          {this.generateSuffix()}
+        </BaseInputContainer>,
+      ];
+
+      result.push(
+        <TipBottom validateStatus={validateStatus} validateType={validateType}>
+          {this.isValidateError() ? help : ''}
+        </TipBottom>
+      );
+      return result;
+    }
+    return [this.generatePrefix(), this.generateInput(), this.generateSuffix()];
+  };
+
+  isValidateError(): boolean {
+    return this.props.validateStatus === 'error';
+  }
+
   render() {
     const { props } = this;
-    const { validateType, size, validateStatus, getTheme } = props;
-    const result = this.getInputContainer();
-
+    const { validateType, size, getTheme } = props;
+    const result = this.getInputContent();
     const { help } = props;
-    if (validateType === 'top' && validateStatus === 'error') {
+    if (validateType === 'top' && this.isValidateError()) {
       return (
         <ErrorTip theme={getTheme()} size={size} placement={'topLeft'} title={help}>
           {result}
         </ErrorTip>
       );
-    } else if (validateType === 'bottom') {
-      return (
-        <div>
-          {result}
-          <TipBottom validateStatus={validateStatus} validateType={validateType}>
-            {help}
-          </TipBottom>
-        </div>
-      );
     }
     return result;
   }
+
   generatePrefix(): React$Element<any> | null {
     const { prefix } = this.props;
     if (prefix) {
@@ -308,7 +316,16 @@ class TextBox extends Component<InputProps, InputState> {
     if (suffix) {
       return <Suffix>{suffix}</Suffix>;
     }
-    return null;
+    return this.getClearButton();
+  }
+
+  getClearButton() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return (
+      <ClearButton iconClass={Clear} viewClass={ClearButton.displayName} onClick={this.onClear} />
+    );
   }
 
   focus() {
@@ -319,7 +336,7 @@ class TextBox extends Component<InputProps, InputState> {
     }
   }
 
-  generateInput(Input: Function): React$Element<any> {
+  generateInput(): React$Element<any> {
     const { props } = this;
     let { value } = this.state;
     const {
