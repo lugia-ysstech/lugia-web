@@ -57,11 +57,7 @@ export class ValidateInput extends React.Component<any, any> {
     const value = this.state.value;
     const validateStatus = value.indexOf(',') === -1 ? 'success' : 'error';
     return (
-      <Input
-        onChange={this.onChange}
-        validateType={validateType}
-        validateStatus={validateStatus}
-      />
+      <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
     );
   }
 }
@@ -88,10 +84,9 @@ export class TopInput extends React.Component<any, any> {
     this.setState({ value });
     this.props.onChange(value);
   };
-  onBlur = (event: UIEvent) => {
-    const { target } = event;
-    const { value } = target;
-    const validateStatus = value.indexOf(',') === -1 ? 'success' : 'error';
+  onBlur = (event: UIEvent, value: string) => {
+    console.log(value);
+    const validateStatus = this.state.value && this.state.value.indexOf(',') === -1 ? 'success' : 'error';
     this.setState({ validateStatus });
   };
   render() {
@@ -183,21 +178,18 @@ const InputDemo = () => {
           <TopInput
             viewClass="register"
             validateType="top"
-            validateStatus="error"
             onChange={onChange('limit')}
           />
           <p>校验信息显示类型 bottom</p>
           <ValidateInput
             viewClass="register"
             validateType="bottom"
-            validateStatus="error"
             onChange={onChange('limit')}
           />
           <p>校验信息显示类型 inner</p>
           <ValidateInput
             viewClass="register"
             validateType="inner"
-            validateStatus="error"
             onChange={onChange('limit')}
           />
         </Wrapper>

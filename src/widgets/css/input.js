@@ -50,12 +50,10 @@ export const DefaultHeight = em(32);
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
 
-export const fontColor = blackColor;
-
 export type ValidateStatus = 'success' | 'error';
 
 export type InputSize = 'small' | 'default' | 'large';
-export type InputValidateType = 'top' | 'bottom' | 'inner'|'default';
+export type InputValidateType = 'top' | 'bottom' | 'inner' | 'default';
 
 type CommonInputProps = {
   theme: ThemeType,
@@ -111,13 +109,13 @@ export const getInputBorderSize = () => {
 };
 export const getFontColor = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;
-  return `color:  ${
-    validateStatus === 'error' && validateType === 'inner' ? dangerColor : fontColor
+  return `color: ${
+    validateStatus === 'error' && validateType === 'inner' ? dangerColor : blackColor
   };`;
 };
 export const getVisibility = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;
-  return `visibility:${
+  return `visibility: ${
     validateStatus === 'error' && validateType === 'bottom' ? 'visible' : 'hidden'
   };`;
 };

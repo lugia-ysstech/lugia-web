@@ -142,7 +142,7 @@ type InputProps = {|
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
   onFocus?: (event: UIEvent) => void,
-  onBlur?: (event: UIEvent) => void,
+  onBlur?: (event: UIEvent, value: string) => void,
   /*
    * 当键入回车时触发事件
    */
@@ -175,7 +175,6 @@ class TextBox extends Component<InputProps, InputState> {
   input: any;
   static displayName = Widget.Input;
   actualValue = '';
-
   constructor(props: InputProps) {
     super(props);
   }
@@ -233,7 +232,7 @@ class TextBox extends Component<InputProps, InputState> {
       this.setState({ value: help });
       this.actualValue = this.state.value;
     }
-    onBlur && onBlur(event);
+    onBlur && onBlur(event, this.state.value);
   };
 
   isEmpty(): boolean {
@@ -267,7 +266,7 @@ class TextBox extends Component<InputProps, InputState> {
 
     if (validateType === 'bottom') {
       const result = [
-        <BaseInputContainer>
+        <BaseInputContainer >
           {this.generatePrefix()}
           {this.generateInput()}
           {this.generateSuffix()}
@@ -347,6 +346,7 @@ class TextBox extends Component<InputProps, InputState> {
       formatter,
       parser,
       validateStatus,
+      validateType,
       onKeyUp,
       onKeyPress,
       placeholder,
@@ -359,6 +359,7 @@ class TextBox extends Component<InputProps, InputState> {
       <Input
         innerRef={node => (this.input = node)}
         validateStatus={validateStatus}
+        validateType={validateType}
         suffix={suffix}
         prefix={prefix}
         theme={this.props.getTheme()}
