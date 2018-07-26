@@ -289,9 +289,8 @@ class TextBox extends Component<InputProps, InputState> {
 
   render() {
     const { props } = this;
-    const { validateType, size, getTheme } = props;
+    const { validateType, size, getTheme,help } = props;
     const result = this.getInputContent();
-    const { help } = props;
     if (validateType === 'top' && this.isValidateError()) {
       return (
         <ErrorTip theme={getTheme()} size={size} placement={'topLeft'} title={help}>
