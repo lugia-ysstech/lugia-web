@@ -29,6 +29,7 @@ type CssTypeProps = {
   SliderInnerLeft?: number,
   btnDisabled?: boolean,
   disabled?: boolean,
+  marksData?: Object,
 };
 export const SliderWrapper = styled.div`
   width: ${props => props.rangeW}px;
@@ -56,6 +57,7 @@ export const Button = styled.span`
   left: ${props => props.moveX}%;
   top: ${props => (props.changeBackground && props.btnDisabled ? props.moveY - 3 : props.moveY)}px;
   transform: translateX(-50%);
+  z-index: 2;
 `;
 export const Tips = styled.span`
   font-size: ${em(14)};
@@ -84,6 +86,30 @@ export const Tiparrow = styled.span`
   border-right: ${em(5)} solid transparent;
   border-bottom: ${em(5)} solid transparent;
 `;
+export const Dot = styled.span`
+  width: 6px;
+  height: 6px;  
+  border-radius: 50%;
+  position: absolute;
+  left: ${props => props.marksData.dotMoveX}%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  z-index: 1;  
+  ${props => getStyled(props).dotStyle}
+  ${props => getStyled(props).dotBackground}
+  
+  &:before {
+    content: '${props => getStyled(props).marskText}';
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    top: 10px;
+  }
+`;
+
 const getStyled = (props: CssTypeProps) => {
   const {
     changeBackground,
@@ -94,6 +120,7 @@ const getStyled = (props: CssTypeProps) => {
     btnDisabled,
     disabled,
     background,
+    marksData,
   } = props;
   let { btnWidth, btnHeight } = props;
   let InnerWidth = moveX;
@@ -106,11 +133,38 @@ const getStyled = (props: CssTypeProps) => {
       ? doingBackground
       : background;
   const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
-  const btnBackground = disabled ? btnDisabledBackground : innerBackground;
   const isChangeBg = changeBackground && btnDisabled;
+  const btnBackground = disabled
+    ? btnDisabledBackground
+    : isChangeBg
+      ? innerBackground
+      : background;
   btnWidth = isChangeBg ? btnWidth + 6 * 1 : btnWidth;
   btnHeight = isChangeBg ? btnHeight + 6 * 1 : btnHeight;
-
+  let isShowDot, dotStyle, marskText, isChangDotBg, dotBackground;
+  if (marksData) {
+    isShowDot = marksData.dotIndex === marksData.maxValue || marksData.index === marksData.minValue;
+    dotStyle = marksData.marks.style;
+    marskText = marksData.marks.text || marksData.marks;
+    isChangDotBg = marksData.moveValue >= marksData.index && !isShowDot;
+    if (isShowDot) {
+      dotBackground = `
+        border: none;
+        background: none;
+      `;
+    } else {
+      dotBackground = `
+        border: 1px solid #cccccc;
+        background: #fff;
+      `;
+    }
+    if (isChangDotBg) {
+      dotBackground = `
+        border: none;
+        background: #fff;
+      `;
+    }
+  }
   return {
     InnerWidth,
     SliderInnerLeft,
@@ -119,5 +173,10 @@ const getStyled = (props: CssTypeProps) => {
     btnWidth,
     btnHeight,
     btnBackground,
+    isShowDot,
+    dotStyle,
+    marskText,
+    isChangDotBg,
+    dotBackground,
   };
 };
