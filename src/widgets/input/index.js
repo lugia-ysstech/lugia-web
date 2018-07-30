@@ -25,6 +25,7 @@ import {
   getVisibility,
   getWidth,
   RadiusSize,
+  CompareValidateTypeAndValidateStatus,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
@@ -142,7 +143,7 @@ type InputProps = {|
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
   onFocus?: (event: UIEvent) => void,
-  onBlur?: (event: UIEvent, value: string) => void,
+  onBlur?: (event: UIEvent) => void,
   /*
    * 当键入回车时触发事件
    */
@@ -175,6 +176,7 @@ class TextBox extends Component<InputProps, InputState> {
   input: any;
   static displayName = Widget.Input;
   actualValue = '';
+
   constructor(props: InputProps) {
     super(props);
   }
@@ -223,20 +225,20 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onFocus = (event: UIEvent) => {
-    const { onFocus, validateType, validateStatus } = this.props;
-    if (validateStatus === 'error' && validateType === 'inner') {
+    const { onFocus, validateStatus, validateType } = this.props;
+    if (CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'inner')) {
       this.setState({ value: this.actualValue });
     }
     onFocus && onFocus(event);
   };
 
   onBlur = (event: UIEvent) => {
-    const { onBlur, help, validateType, validateStatus } = this.props;
-    if (validateStatus === 'error' && validateType === 'inner') {
+    const { onBlur, help, validateStatus, validateType } = this.props;
+    if (CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'inner')) {
       this.setState({ value: help });
       this.actualValue = this.state.value;
     }
-    onBlur && onBlur(event, this.state.value);
+    onBlur && onBlur(event);
   };
 
   isEmpty(): boolean {
@@ -270,7 +272,7 @@ class TextBox extends Component<InputProps, InputState> {
 
     if (validateType === 'bottom') {
       const result = [
-        <BaseInputContainer >
+        <BaseInputContainer>
           {this.generatePrefix()}
           {this.generateInput()}
           {this.generateSuffix()}
@@ -293,9 +295,9 @@ class TextBox extends Component<InputProps, InputState> {
 
   render() {
     const { props } = this;
-    const { validateType, size, getTheme,help } = props;
+    const { validateType, size, getTheme, help, validateStatus } = props;
     const result = this.getInputContent();
-    if (validateType === 'top' && this.isValidateError()) {
+    if (CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'top')) {
       return (
         <ErrorTip theme={getTheme()} size={size} placement={'topLeft'} title={help}>
           {result}

@@ -110,12 +110,23 @@ export const getInputBorderSize = () => {
 export const getFontColor = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;
   return `color: ${
-    validateStatus === 'error' && validateType === 'inner' ? dangerColor : blackColor
+    CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'inner')
+      ? dangerColor
+      : blackColor
   };`;
 };
 export const getVisibility = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;
-  return `visibility: ${
-    validateStatus === 'error' && validateType === 'bottom' ? 'visible' : 'hidden'
+  return `visibility:${
+    CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'bottom')
+      ? 'visible'
+      : 'hidden'
   };`;
 };
+export function CompareValidateTypeAndValidateStatus(
+  validateStatus: ValidateStatus,
+  validateType: InputValidateType,
+  expType: InputValidateType
+): boolean {
+  return validateStatus === 'error' && expType === validateType;
+}

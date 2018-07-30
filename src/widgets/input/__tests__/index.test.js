@@ -292,7 +292,6 @@ describe('Input', () => {
     ['b', 'b']
   );
 
-  testOnChange('twice ["", a]', {}, ['', 'a'], ['', 'a'], ['', 'a']);
   testOnChange('twice ["a", "b"] ', {}, ['a', 'b'], ['a', 'b'], ['a', 'b']);
 
   testOnChange(
@@ -332,19 +331,17 @@ describe('Input', () => {
         .find('input')
         .at(0)
         .simulate('change', { target: { value } });
-      const keyCode = 49;
-      const event = { keyCode };
       component
         .find('input')
         .at(0)
-        .simulate('onBlur'.substr(2).toLowerCase(), event);
+        .simulate('blur');
       expect(component.state().validateStatus).toBe(expValue);
     });
   }
   testValidateTop('value :""', '', 'success');
   testValidateTop('value :"111,1111"', '111,1111', 'error');
-  testValidateTop('value :","', '111,1111', 'error');
-  testValidateTop('value :",,,"', '111,1111', 'error');
+  testValidateTop('value :","', ',', 'error');
+  testValidateTop('value :",,,"', ',,,', 'error');
 
   function testValidateBottomAndInner(
     title: string,
@@ -355,14 +352,13 @@ describe('Input', () => {
     it(` props :validateStatus  ${title}  &&  valiedateType ${validateType} ;`, () => {
       const onChange = () => {};
       const component = mount(<ValidateInput validateType={validateType} onChange={onChange} />);
-      const input = component.find('input').at(0);
       const cmpInput = component
         .children()
         .at(0)
         .children()
         .at(0)
         .instance();
-      input
+      component
         .find('input')
         .at(0)
         .simulate('change', { target: { value } });
@@ -375,7 +371,7 @@ describe('Input', () => {
   testValidateBottomAndInner('value :","', 'bottom', ',', 'error');
   testValidateBottomAndInner('value :",,,"', 'bottom', ',,,', 'error');
 
-  testValidateBottomAndInner('value :""', 'bottom', '', 'success');
+  testValidateBottomAndInner('value :""', 'inner', '', 'success');
   testValidateBottomAndInner('value :"1111"', 'inner', '111', 'success');
   testValidateBottomAndInner('value :"111,11"', 'inner', '111,1', 'error');
   testValidateBottomAndInner('value :","', 'inner', ',', 'error');
