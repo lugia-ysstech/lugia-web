@@ -84,7 +84,7 @@ export class TopInput extends React.Component<any, any> {
     this.setState({ value });
     this.props.onChange(value);
   };
-  onBlur = (event: UIEvent, value: string) => {
+  onBlur = (event: UIEvent) => {
     const validateStatus = this.state.value && this.state.value.indexOf(',') === -1 ? 'success' : 'error';
     this.setState({ validateStatus });
   };

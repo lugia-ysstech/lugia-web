@@ -202,6 +202,10 @@ class TextBox extends Component<InputProps, InputState> {
   setValue(value: string): void {
     const oldValue = this.state.value;
     const { disabled, onChange, parser, formatter } = this.props;
+
+    if (oldValue === value) {
+      return;
+    }
     if ('value' in this.props === false) {
       if (disabled) {
         return;
