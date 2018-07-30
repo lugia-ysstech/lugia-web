@@ -9,90 +9,40 @@ import Trigger from '../trigger';
 import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import {
+  getTriggerByArrow,
+  getFontColor,
+  getColor,
+  getArrow,
+  getSize,
+  Left,
+  Right,
+  Down,
+  Up,
+  maxWidth,
+  RadiusSize,
+} from '../css/tooltip';
 import { FontSize } from '../css';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
-const Left = 'left';
-const Right = 'right';
-const Down = 'bottom';
-const Up = 'top';
-
-const getTriggerByArrow = props => {
-  const { fx } = props;
-  switch (fx) {
-    case Up:
-      return 'padding-top: 8px;';
-    case Down:
-      return 'padding-bottom: 8px;';
-    case Left:
-      return 'padding-left: 8px;';
-    case Right:
-    default:
-      return 'padding-right: 8px;';
-  }
-};
 const ToolTrigger = styled(Trigger)`
-  ${getTriggerByArrow}box-shadow: none;
+  ${getTriggerByArrow};
+  box-shadow: none;
 `;
 
-const DefaultColor = 'rgba(0, 0, 0, 0.75)';
-const DefaultFontColor = '#fff';
-const getFontColor = (props: Object) => {
-  const { theme } = props;
-  const { fontColor } = theme;
-  return fontColor ? fontColor : DefaultFontColor;
-};
-const getColor = (props: Object) => {
-  const { theme } = props;
-  const { color } = theme;
-  return color ? color : DefaultColor;
-};
-
 const Content = styled.div`
+  ${getSize};
   font-size: ${FontSize};
   line-height: 1;
   color: ${getColor};
   box-sizing: border-box;
 `;
-const getArrow = props => {
-  const { fx } = props;
-  switch (fx) {
-    case Up:
-      return `
-        left: 16px;
-        top: 3px;
-        border-width: 0 5px 5px;
-        border-bottom-color: ${getColor(props)};
-      `;
-    case Down:
-      return `
-        left: 16px;
-        bottom: 3px;
-        border-width: 5px 5px 0;
-        border-top-color: ${getColor(props)};
-      `;
-    case Left:
-      return `
-        top: 8px;
-        left: 3px;
-        border-width: 5px 5px 5px 0;
-        border-right-color: ${getColor(props)};
-      `;
-    case Right:
-      return `
-        top: 8px;
-        right: 3px;
-        border-width: 5px 0 5px 5px;
-        border-left-color: ${getColor(props)};
-      `;
-    default:
-      return '';
-  }
-};
+
 const Arrow = styled.div`
   border-color: transparent;
-  ${getArrow} position: absolute;
-  width: 0;
-  height: 0;
+  ${getArrow};
+  position: absolute;
   border-style: solid;
   font-size: ${FontSize};
   line-height: 1;
@@ -104,15 +54,14 @@ const Message = styled.div`
   user-select: none;
   font-size: ${FontSize};
   line-height: 1.5;
-  max-width: 250px;
-  padding: 6px 8px;
+  max-width: ${em(maxWidth)};
+  padding: ${em(6)} ${em(8)};
   color: ${getFontColor};
   text-align: left;
   text-decoration: none;
   background-color: ${getColor};
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  min-height: 32px;
+  border-radius: ${RadiusSize};
+  box-shadow: 0 ${em(2)} ${em(8)} rgba(0, 0, 0, 0.15);
 `;
 const builtinPlacements = {
   left: ['cr', 'cl'],
