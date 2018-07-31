@@ -51,7 +51,6 @@ exports[`Item Mutliple MenuItem 1`] = `
 <li
   checked={false}
   className="c0"
-  onClick={undefined}
   title=""
 >
   <a>
@@ -118,7 +117,6 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 <li
   checked={true}
   className="c0"
-  onClick={undefined}
   title=""
 >
   <a>
@@ -151,7 +149,6 @@ exports[`Item Single MenuItem 1`] = `
 <li
   checked={false}
   className="c0"
-  onClick={undefined}
   title="hello"
 >
   hello
@@ -185,7 +182,6 @@ exports[`Item Single MenuItem checked 1`] = `
 <li
   checked={true}
   className="c0"
-  onClick={undefined}
   title=""
 >
   <a>
@@ -218,7 +214,6 @@ exports[`Item children: null 1`] = `
 <li
   checked={false}
   className="c0"
-  onClick={undefined}
   title=""
 />
 `;

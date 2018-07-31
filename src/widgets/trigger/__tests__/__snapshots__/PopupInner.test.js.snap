@@ -14,8 +14,6 @@ exports[`ContentBox default visible: false, children: 1 1`] = `
 
 <div
   className="c0"
-  onMouseEnter={undefined}
-  onMouseLeave={undefined}
 >
   <span>
     a
@@ -37,8 +35,6 @@ exports[`ContentBox default visible: true, children: 1 1`] = `
 
 <div
   className="c0"
-  onMouseEnter={undefined}
-  onMouseLeave={undefined}
 >
   <span>
     a
@@ -60,8 +56,6 @@ exports[`ContentBox default visible: true, children: 2 1`] = `
 
 <div
   className="c0"
-  onMouseEnter={undefined}
-  onMouseLeave={undefined}
 >
   <div
     className=""
@@ -90,8 +84,6 @@ exports[`ContentBox default visible:false, children: 2 1`] = `
 
 <div
   className="c0"
-  onMouseEnter={undefined}
-  onMouseLeave={undefined}
 >
   <div
     className=""

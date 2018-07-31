@@ -55,9 +55,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-<span
-  className={undefined}
->
+<span>
   <span
     className="sv c0"
   >
@@ -70,8 +68,6 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       onKeyUp={[Function]}
-      placeholder={undefined}
-      prefix={undefined}
       size="default"
       value=""
     />
@@ -145,8 +141,6 @@ exports[`Input props: null 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
-    placeholder={undefined}
-    prefix={undefined}
     size="default"
     value=""
   />
@@ -220,7 +214,6 @@ exports[`Input props: placeholder  1`] = `
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     placeholder="请填写内容"
-    prefix={undefined}
     size="default"
     value=""
   />
@@ -294,7 +287,6 @@ exports[`Input props: placeholder  2`] = `
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     placeholder=""
-    prefix={undefined}
     size="default"
     value=""
   />
@@ -367,8 +359,6 @@ exports[`Input props: size 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
-    placeholder={undefined}
-    prefix={undefined}
     size="small"
     value=""
   />
@@ -441,8 +431,6 @@ exports[`Input props: size 2`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
-    placeholder={undefined}
-    prefix={undefined}
     size="large"
     value=""
   />
