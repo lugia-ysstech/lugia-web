@@ -16,7 +16,8 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts';
 import { TopInput, ValidateInput } from '../demo';
-import type { InputValidateType, ValidateStatus } from '../css/input';
+import type { InputValidateType, ValidateStatus } from '../../css/input';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 const { expect: exp } = chai;
@@ -30,7 +31,7 @@ class LimitInputBox extends React.Component<any, any> {
     return {};
   }
 
-  onChange = value => {
+  onChange = ({ newValue: value }: any) => {
     this.setState({ value });
   };
 
@@ -72,11 +73,16 @@ describe('Input', () => {
         changeEventValue &&
           changeEventValue.forEach((v, i) => {
             const { value } = props;
-            onChange(v, stateValue[i - 1] ? stateValue[i - 1] : value ? value : '');
+            onChange({
+              newValue: v,
+              oldValue: stateValue[i - 1] ? stateValue[i - 1] : value ? value : '',
+              event: VerifyOrder.Any,
+            });
           });
       });
     });
   }
+
   it('props: null', () => {
     expect(renderer.create(<Input />).toJSON()).toMatchSnapshot();
   });
@@ -338,6 +344,7 @@ describe('Input', () => {
       expect(component.state().validateStatus).toBe(expValue);
     });
   }
+
   testValidateTop('value :""', '', 'success');
   testValidateTop('value :"111,1111"', '111,1111', 'error');
   testValidateTop('value :","', ',', 'error');
@@ -365,6 +372,7 @@ describe('Input', () => {
       expect(cmpInput.props.validateStatus).toBe(expValue);
     });
   }
+
   testValidateBottomAndInner('value :""', 'bottom', '', 'success');
   testValidateBottomAndInner('value :"111"', 'bottom', '111', 'success');
   testValidateBottomAndInner('value :"111,1"', 'bottom', '111,1', 'error');
