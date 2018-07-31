@@ -110,20 +110,16 @@ export const getInputBorderSize = () => {
 export const getFontColor = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;
   return `color: ${
-    CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'inner')
-      ? dangerColor
-      : blackColor
+    isValidateSuccess(validateStatus, validateType, 'inner') ? dangerColor : blackColor
   };`;
 };
 export const getVisibility = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;
   return `visibility:${
-    CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'bottom')
-      ? 'visible'
-      : 'hidden'
+    isValidateSuccess(validateStatus, validateType, 'bottom') ? 'visible' : 'hidden'
   };`;
 };
-export function CompareValidateTypeAndValidateStatus(
+export function isValidateSuccess(
   validateStatus: ValidateStatus,
   validateType: InputValidateType,
   expType: InputValidateType

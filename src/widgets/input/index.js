@@ -25,7 +25,7 @@ import {
   getVisibility,
   getWidth,
   RadiusSize,
-  CompareValidateTypeAndValidateStatus,
+  isValidateSuccess,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
@@ -226,7 +226,7 @@ class TextBox extends Component<InputProps, InputState> {
 
   onFocus = (event: UIEvent) => {
     const { onFocus, validateStatus, validateType } = this.props;
-    if (CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'inner')) {
+    if (isValidateSuccess(validateStatus, validateType, 'inner')) {
       this.setState({ value: this.actualValue });
     }
     onFocus && onFocus(event);
@@ -234,7 +234,7 @@ class TextBox extends Component<InputProps, InputState> {
 
   onBlur = (event: UIEvent) => {
     const { onBlur, help, validateStatus, validateType } = this.props;
-    if (CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'inner')) {
+    if (isValidateSuccess(validateStatus, validateType, 'inner')) {
       this.setState({ value: help });
       this.actualValue = this.state.value;
     }
@@ -297,7 +297,7 @@ class TextBox extends Component<InputProps, InputState> {
     const { props } = this;
     const { validateType, size, getTheme, help, validateStatus } = props;
     const result = this.getInputContent();
-    if (CompareValidateTypeAndValidateStatus(validateStatus, validateType, 'top')) {
+    if (isValidateSuccess(validateStatus, validateType, 'top')) {
       return (
         <ErrorTip theme={getTheme()} size={size} placement={'topLeft'} title={help}>
           {result}
