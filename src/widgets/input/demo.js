@@ -22,7 +22,7 @@ export class LimitInput extends React.Component<any, any> {
 
   onChange = (value: any) => {
     this.setState({ value });
-    this.props.onChange(value);
+    this.props.onChange({newValue:value});
   };
 
   render() {
@@ -49,7 +49,7 @@ export class ValidateInput extends React.Component<any, any> {
   }
   onChange = (value: any) => {
     this.setState({ value });
-    this.props.onChange(value);
+    this.props.onChange({newValue:value});
   };
 
   render() {
@@ -82,7 +82,7 @@ export class TopInput extends React.Component<any, any> {
   }
   onChange = (value: any) => {
     this.setState({ value });
-    this.props.onChange(value);
+    this.props.onChange({newValue:value});
   };
   onBlur = (event: UIEvent) => {
     const validateStatus = this.state.value.indexOf(',') === -1 ? 'success' : 'error';

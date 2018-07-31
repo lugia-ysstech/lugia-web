@@ -138,7 +138,7 @@ type InputProps = {|
   prefix?: React$Element<any>,
   getTheme: Function,
   suffix?: React$Element<any>,
-  onChange?: (newValue: any, oldValue: any) => void,
+  onChange?: ({ newValue: any, oldValue: any, event: Event }) => void,
   onKeyUp?: (event: KeyboardEvent) => void,
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
@@ -198,10 +198,10 @@ class TextBox extends Component<InputProps, InputState> {
   onChange = (event: Object) => {
     const { target } = event;
     const { value } = target;
-    this.setValue(value);
+    this.setValue(value, event);
   };
 
-  setValue(value: string): void {
+  setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange, parser, formatter } = this.props;
 
@@ -217,10 +217,10 @@ class TextBox extends Component<InputProps, InputState> {
       }
 
       this.setState({ value }, () => {
-        onChange && onChange(value, oldValue);
+        onChange && onChange({ newValue:value, oldValue, event });
       });
     } else {
-      onChange && onChange(value, oldValue);
+      onChange && onChange({ newValue:value, oldValue, event });
     }
   }
 
