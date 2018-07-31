@@ -5,18 +5,18 @@ exports[`default Wrapper 1`] = `
   width: 300px;
   height: 6px;
   background: #e8e8e8;
-  margin-left: 50px;
-  border-radius: 6px;
+  border-radius: 0.5em;
   position: relative;
+  display: inline-block;
 }
 
 .c1 {
   width: 0%;
   height: 6px;
   background: #684fff;
-  border-radius: 6px;
+  border-radius: 0.5em;
   position: absolute;
-  left: 0;
+  left: 0%;
   top: 0;
 }
 
@@ -26,81 +26,49 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   background: #684fff;
   position: absolute;
-  left: 0%;
-  top: -7px;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.c3 {
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: -40px;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-}
-
-.c4 {
-  display: block;
-  min-width: 21px;
-  height: 27px;
-  line-height: 27px;
-  padding: 0 3px;
-  background: #666;
-  color: #fff;
-  border-radius: 3px;
-}
-
-.c5 {
-  display: inline-block;
-  vertical-align: top;
-  border-top: 6px solid #666;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid transparent;
+  left: -3.3333333333333335%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  z-index: 2;
 }
 
 <div
-  className="doxx"
+  className="c0"
+  defaultValue={0}
+  disabled={false}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
+  value={
+    Array [
+      0,
+    ]
+  }
 >
   <div
-    className="c0"
+    className="c1"
+    defaultValue={0}
+    disabled={false}
+    value={
+      Array [
+        0,
+      ]
+    }
+  />
+  <span
+    className="c2"
     defaultValue={0}
     disabled={false}
     onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    value={0}
+    value={
+      Array [
+        0,
+      ]
+    }
   >
-    <div
-      className="c1"
-      defaultValue={0}
-      disabled={false}
-      value={0}
-    />
-    <span
-      className="c2"
-      defaultValue={0}
-      disabled={false}
-      onMouseDown={[Function]}
-      value={0}
-    >
-      <span
-        className="c3"
-      >
-        <span
-          className="c4"
-        >
-          0
-        </span>
-        <span
-          className="c5"
-        />
-      </span>
-    </span>
-  </div>
+    
+  </span>
 </div>
 `;
