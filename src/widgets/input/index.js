@@ -24,8 +24,8 @@ import {
   getSize,
   getVisibility,
   getWidth,
-  RadiusSize,
   isValidateSuccess,
+  RadiusSize,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
@@ -208,6 +208,7 @@ class TextBox extends Component<InputProps, InputState> {
     if (oldValue === value) {
       return;
     }
+    const param = { newValue: value, oldValue, event };
     if ('value' in this.props === false) {
       if (disabled) {
         return;
@@ -215,12 +216,11 @@ class TextBox extends Component<InputProps, InputState> {
       if (formatter && parser) {
         value = parser(value);
       }
-
       this.setState({ value }, () => {
-        onChange && onChange({ newValue:value, oldValue, event });
+        onChange && onChange(param);
       });
     } else {
-      onChange && onChange({ newValue:value, oldValue, event });
+      onChange && onChange(param);
     }
   }
 
@@ -251,7 +251,7 @@ class TextBox extends Component<InputProps, InputState> {
     if (disabled) {
       return;
     }
-    this.setValue('');
+    this.setValue('', e);
   };
 
   getInputContent() {

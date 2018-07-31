@@ -20,9 +20,9 @@ export class LimitInput extends React.Component<any, any> {
     this.state = { value: props.value };
   }
 
-  onChange = (value: any) => {
+  onChange = ({ newValue: value }: any) => {
     this.setState({ value });
-    this.props.onChange({newValue:value});
+    this.props.onChange({ newValue: value });
   };
 
   render() {
@@ -47,9 +47,9 @@ export class ValidateInput extends React.Component<any, any> {
       return { value };
     }
   }
-  onChange = (value: any) => {
+  onChange = ({ newValue: value }: any) => {
     this.setState({ value });
-    this.props.onChange({newValue:value});
+    this.props.onChange({ newValue: value });
   };
 
   render() {
@@ -80,9 +80,10 @@ export class TopInput extends React.Component<any, any> {
       return { value };
     }
   }
-  onChange = (value: any) => {
+  onChange = (param: any) => {
+    const { newValue: value } = param;
     this.setState({ value });
-    this.props.onChange({newValue:value});
+    this.props.onChange({ newValue: value });
   };
   onBlur = (event: UIEvent) => {
     const validateStatus = this.state.value.indexOf(',') === -1 ? 'success' : 'error';
@@ -126,9 +127,7 @@ const InputDemo = () => {
       maigin: 10,
     },
   };
-  const onChange = (cmpName: string) => (value: string) => {
-    console.info(`${cmpName} changeTo ${value}`);
-  };
+  const onChange = (cmpName: string) => (value: any) => {};
   const formatter = value => {
     return `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
