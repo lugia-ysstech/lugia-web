@@ -5,7 +5,7 @@
  * @flow
  */
 import { px2emcss } from './units';
-import type { MarginType, ThemeType } from '@lugia/lugia-web';
+import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 
 const {
@@ -42,24 +42,25 @@ export const getFocusShadow = (props: Object) => {
 };
 const em = px2emcss(1.2);
 
-export const RadiusSize = '4px';
+export const RadiusSize = em(4);
 export const Height = 22;
-export const LargeHeight = 38;
-export const SmallHeight = 28;
-export const DefaultHeight = 32;
+export const LargeHeight = em(38);
+export const SmallHeight = em(28);
+export const DefaultHeight = em(32);
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
-
-export const fontColor = blackColor;
 
 export type ValidateStatus = 'success' | 'error';
 
 export type InputSize = 'small' | 'default' | 'large';
+export type InputValidateType = 'top' | 'bottom' | 'inner' | 'default';
 
 type CommonInputProps = {
   theme: ThemeType,
   size?: InputSize,
   disabled: boolean,
+  validateType: InputValidateType,
+  validateStatus: ValidateStatus,
 };
 export const getWidth = (props: CommonInputProps) => {
   const { theme } = props;
@@ -86,11 +87,7 @@ export const getMargin = (props: CommonInputProps) => {
 export const getSize = (props: CommonInputProps) => {
   const { size } = props;
   return `height:${
-    size === 'large'
-      ? LargeHeight + 'px'
-      : size === 'small'
-        ? SmallHeight + 'px'
-        : DefaultHeight + 'px'
+    size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight
   };`;
 };
 
@@ -110,3 +107,22 @@ export const getFocusBorderColor = () => {
 export const getInputBorderSize = () => {
   return `${borderSize}`;
 };
+export const getFontColor = (props: CommonInputProps) => {
+  const { validateType, validateStatus } = props;
+  return `color: ${
+    isValidateSuccess(validateStatus, validateType, 'inner') ? dangerColor : blackColor
+  };`;
+};
+export const getVisibility = (props: CommonInputProps) => {
+  const { validateType, validateStatus } = props;
+  return `visibility:${
+    isValidateSuccess(validateStatus, validateType, 'bottom') ? 'visible' : 'hidden'
+  };`;
+};
+export function isValidateSuccess(
+  validateStatus: ValidateStatus,
+  validateType: InputValidateType,
+  expType: InputValidateType
+): boolean {
+  return validateStatus === 'error' && expType === validateType;
+}

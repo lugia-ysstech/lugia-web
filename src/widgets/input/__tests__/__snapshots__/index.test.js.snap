@@ -2,16 +2,16 @@
 
 exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 .c0 {
-  margin: 0.8333333333333334em;
   position: relative;
   display: inline-block;
+  margin: 0.8333333333333334em;
 }
 
 .c1 {
-  height: 32px;
+  height: 2.666666666666667em;
   cursor: text;
   width: 8.333333333333334em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
@@ -82,10 +82,10 @@ exports[`Input props: null 1`] = `
 }
 
 .c1 {
-  height: 32px;
+  height: 2.666666666666667em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
@@ -154,10 +154,10 @@ exports[`Input props: placeholder  1`] = `
 }
 
 .c1 {
-  height: 32px;
+  height: 2.666666666666667em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
@@ -227,10 +227,10 @@ exports[`Input props: placeholder  2`] = `
 }
 
 .c1 {
-  height: 32px;
+  height: 2.666666666666667em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
@@ -300,10 +300,10 @@ exports[`Input props: size 1`] = `
 }
 
 .c1 {
-  height: 28px;
+  height: 2.3333333333333335em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
@@ -372,10 +372,10 @@ exports[`Input props: size 2`] = `
 }
 
 .c1 {
-  height: 38px;
+  height: 3.1666666666666665em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
