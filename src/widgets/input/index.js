@@ -7,24 +7,25 @@ import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { fixControlledValue } from '.././utils';
-import type { ValidateStatus, InputSize } from '../css/input';
-
+import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
 import {
   DefaultHelp,
+  getBackground,
+  getCursor,
+  getFocusBorderColor,
   getFocusShadow,
+  getFontColor,
   getInputBorderColor,
   getInputBorderHoverColor,
   getInputBorderSize,
-  RadiusSize,
-  getFocusBorderColor,
-  fontColor,
-  getSize,
-  getBackground,
   getMargin,
-  getRightPadding,
   getPadding,
-  getCursor,
+  getRightPadding,
+  getSize,
+  getVisibility,
   getWidth,
+  isValidateSuccess,
+  RadiusSize,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
@@ -50,7 +51,7 @@ const CommonInputStyle = styled.input`
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-image: none;
-  color: ${fontColor};
+  ${getFontColor};
   &::placeholder {
     color: rgba(0, 0, 0, 0.25);
   }
@@ -58,14 +59,17 @@ const CommonInputStyle = styled.input`
     ${getFocusBorderColor};
     ${getFocusShadow};
   }
+
   padding-left: ${getPadding};
   padding-right: ${getRightPadding};
 `;
-const InputContainer = styled.span`
-  ${getBackground};
-  ${getMargin};
+const BaseInputContainer = styled.span`
   position: relative;
   display: inline-block;
+`;
+const InputContainer = BaseInputContainer.extend`
+  ${getBackground};
+  ${getMargin};
 `;
 
 export const Input = CommonInputStyle.extend`
@@ -77,6 +81,14 @@ export const Input = CommonInputStyle.extend`
 
 export const InputOnly = CommonInputStyle.extend`
   outline: none;
+`;
+const TipBottom = styled.span`
+  display: block;
+  ${getVisibility};
+  transform: translateY(50%);
+  z-index: 2;
+  font-size: 1em;
+  color: red;
 `;
 
 const Fix = styled.span`
@@ -120,12 +132,13 @@ type InputProps = {|
   viewClass: string,
   disabled: boolean,
   validateStatus: ValidateStatus,
-  help: ?string,
+  validateType: InputValidateType,
+  help: string,
   placeholder?: string,
   prefix?: React$Element<any>,
   getTheme: Function,
   suffix?: React$Element<any>,
-  onChange?: (newValue: any, oldValue: any) => void,
+  onChange?: ({ newValue: any, oldValue: any, event: Event }) => void,
   onKeyUp?: (event: KeyboardEvent) => void,
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
@@ -146,6 +159,7 @@ class TextBox extends Component<InputProps, InputState> {
     disabled: false,
     viewClass: Widget.Input,
     validateStatus: 'success',
+    validateType: 'default',
     size: 'default',
     help: DefaultHelp,
     defaultValue: '',
@@ -161,6 +175,7 @@ class TextBox extends Component<InputProps, InputState> {
   };
   input: any;
   static displayName = Widget.Input;
+  actualValue = '';
 
   constructor(props: InputProps) {
     super(props);
@@ -183,12 +198,17 @@ class TextBox extends Component<InputProps, InputState> {
   onChange = (event: Object) => {
     const { target } = event;
     const { value } = target;
-    this.setValue(value);
+    this.setValue(value, event);
   };
 
-  setValue(value: string): void {
+  setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange, parser, formatter } = this.props;
+
+    if (oldValue === value) {
+      return;
+    }
+    const param = { newValue: value, oldValue, event };
     if ('value' in this.props === false) {
       if (disabled) {
         return;
@@ -197,19 +217,27 @@ class TextBox extends Component<InputProps, InputState> {
         value = parser(value);
       }
       this.setState({ value }, () => {
-        onChange && onChange(value, oldValue);
+        onChange && onChange(param);
       });
     } else {
-      onChange && onChange(value, oldValue);
+      onChange && onChange(param);
     }
   }
 
   onFocus = (event: UIEvent) => {
-    const { onFocus } = this.props;
+    const { onFocus, validateStatus, validateType } = this.props;
+    if (isValidateSuccess(validateStatus, validateType, 'inner')) {
+      this.setState({ value: this.actualValue });
+    }
     onFocus && onFocus(event);
   };
+
   onBlur = (event: UIEvent) => {
-    const { onBlur } = this.props;
+    const { onBlur, help, validateStatus, validateType } = this.props;
+    if (isValidateSuccess(validateStatus, validateType, 'inner')) {
+      this.setState({ value: help });
+      this.actualValue = this.state.value;
+    }
     onBlur && onBlur(event);
   };
 
@@ -218,45 +246,65 @@ class TextBox extends Component<InputProps, InputState> {
     return !(value && value.length);
   }
 
-  getClearButton() {
-    if (this.isEmpty()) {
-      return null;
-    }
-    return (
-      <ClearButton iconClass={Clear} viewClass={ClearButton.displayName} onClick={this.onClear} />
-    );
-  }
-
   onClear = (e: Object) => {
     const { disabled } = this.props;
     if (disabled) {
       return;
     }
-    this.setValue('');
+    this.setValue('', e);
   };
 
-  getInputContainer() {
+  getInputContent() {
+    return this.getInputContainer(this.getInputInner);
+  }
+
+  getInputContainer(fetcher: Function) {
     const { getTheme } = this.props;
-    const suffix = this.generateSuffix();
     return (
       <InputContainer className="sv" theme={getTheme()}>
-        {this.generatePrefix()}
-        {this.generateInput(Input)}
-        {suffix ? suffix : this.getClearButton()}
+        {fetcher()}
       </InputContainer>
     );
   }
 
-  render() {
-    const { props } = this;
-    const { validateStatus } = props;
-    const result = this.getInputContainer();
+  getInputInner = () => {
+    const { validateType, validateStatus, help } = this.props;
 
-    if (validateStatus === 'success') {
+    if (validateType === 'bottom') {
+      const result = [
+        <BaseInputContainer>
+          {this.generatePrefix()}
+          {this.generateInput()}
+          {this.generateSuffix()}
+        </BaseInputContainer>,
+      ];
+
+      result.push(
+        <TipBottom validateStatus={validateStatus} validateType={validateType}>
+          {this.isValidateError() ? help : ''}
+        </TipBottom>
+      );
       return result;
     }
-    const { help } = props;
-    return <ErrorTip title={help}>{result}</ErrorTip>;
+    return [this.generatePrefix(), this.generateInput(), this.generateSuffix()];
+  };
+
+  isValidateError(): boolean {
+    return this.props.validateStatus === 'error';
+  }
+
+  render() {
+    const { props } = this;
+    const { validateType, size, getTheme, help, validateStatus } = props;
+    const result = this.getInputContent();
+    if (isValidateSuccess(validateStatus, validateType, 'top')) {
+      return (
+        <ErrorTip theme={getTheme()} size={size} placement={'topLeft'} title={help}>
+          {result}
+        </ErrorTip>
+      );
+    }
+    return result;
   }
 
   generatePrefix(): React$Element<any> | null {
@@ -272,7 +320,16 @@ class TextBox extends Component<InputProps, InputState> {
     if (suffix) {
       return <Suffix>{suffix}</Suffix>;
     }
-    return null;
+    return this.getClearButton();
+  }
+
+  getClearButton() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return (
+      <ClearButton iconClass={Clear} viewClass={ClearButton.displayName} onClick={this.onClear} />
+    );
   }
 
   focus() {
@@ -283,18 +340,31 @@ class TextBox extends Component<InputProps, InputState> {
     }
   }
 
-  generateInput(Input: Function): React$Element<any> {
+  generateInput(): React$Element<any> {
     const { props } = this;
     let { value } = this.state;
-    const { suffix, prefix, validateStatus, size, disabled, formatter, parser } = props;
-    const { onKeyUp, onKeyPress, placeholder } = props;
+    const {
+      suffix,
+      prefix,
+      size,
+      disabled,
+      formatter,
+      parser,
+      validateStatus,
+      validateType,
+      onKeyUp,
+      onKeyPress,
+      placeholder,
+    } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
+
     return (
       <Input
         innerRef={node => (this.input = node)}
         validateStatus={validateStatus}
+        validateType={validateType}
         suffix={suffix}
         prefix={prefix}
         theme={this.props.getTheme()}

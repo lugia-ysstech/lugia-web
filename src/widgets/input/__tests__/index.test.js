@@ -1,6 +1,6 @@
 //@flow
 import React from 'react';
-import Input, { TextBoxInner } from '../';
+import Input from '../';
 import Theme from '../../theme';
 import renderer from 'react-test-renderer';
 import chai from 'chai';
@@ -15,12 +15,13 @@ import {
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts';
+import { TopInput, ValidateInput } from '../demo';
+import type { InputValidateType, ValidateStatus } from '../../css/input';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 const { expect: exp } = chai;
-const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
-const { InputOnly, Input: InputElement } = require('../index');
+const { mockFunction, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
 class LimitInputBox extends React.Component<any, any> {
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
@@ -30,7 +31,7 @@ class LimitInputBox extends React.Component<any, any> {
     return {};
   }
 
-  onChange = value => {
+  onChange = ({ newValue: value }: any) => {
     this.setState({ value });
   };
 
@@ -72,7 +73,11 @@ describe('Input', () => {
         changeEventValue &&
           changeEventValue.forEach((v, i) => {
             const { value } = props;
-            onChange(v, stateValue[i - 1] ? stateValue[i - 1] : value ? value : '');
+            onChange({
+              newValue: v,
+              oldValue: stateValue[i - 1] ? stateValue[i - 1] : value ? value : '',
+              event: VerifyOrder.Any,
+            });
           });
       });
     });
@@ -212,7 +217,7 @@ describe('Input', () => {
     component.find('input').simulate('onKeyDown'.substr(2).toLowerCase(), event);
   });
 
-  it('props: value onChange Limited Input changed', () => {
+  it('props: value changed Limited Input changed', () => {
     const value = '诸行无常';
     const changeValue = 'hello ligx';
 
@@ -221,7 +226,7 @@ describe('Input', () => {
     component.find('input').simulate('change', { target: { value: changeValue } });
     assertInputValue(component, changeValue);
   });
-  it('props: value onChange Limited Input no changed', () => {
+  it('props: value changed Limited Input no changed', () => {
     const value = '诸行无常';
     const changeValue = 'hello ligx';
 
@@ -252,22 +257,22 @@ describe('Input', () => {
     assertInputValue(component, value);
   });
 
-  it('props: value onChange Limited Input changed for prefix: Icon', () => {
+  it('props: value changed Limited Input changed for prefix: Icon', () => {
     const value = '诸行无常';
     const changeValue = 'hello ligx';
 
     const component = mount(<LimitInputBox value={value} prefix={<div>hello</div>} />);
+    const input = component.find('input').at(0);
     assertInputValue(component, value);
-    component.find('input').simulate('change', { target: { value: changeValue } });
+    input.find('input').simulate('change', { target: { value: changeValue } });
     assertInputValue(component, changeValue);
   });
 
-  it('props: value onChange Limited Input no changed  for prefix: Icon', () => {
+  it('props: value changed Limited Input no changed  for prefix: Icon', () => {
     const value = '诸行无常';
     const changeValue = 'hello ligx';
 
     const component = mount(<LimitInputBox value={value} prefix={<div>hello</div>} />);
-
     assertInputValue(component, value);
     component.setProps({ value: changeValue });
     assertInputValue(component, value);
@@ -293,7 +298,6 @@ describe('Input', () => {
     ['b', 'b']
   );
 
-  testOnChange('twice ["", a]', {}, ['', 'a'], ['', 'a'], ['', 'a']);
   testOnChange('twice ["a", "b"] ', {}, ['a', 'b'], ['a', 'b'], ['a', 'b']);
 
   testOnChange(
@@ -325,31 +329,59 @@ describe('Input', () => {
     ['1234567']
   );
 
-  it('function: generateInput', () => {
-    const InputMock = mockObject.create(
-      TextBoxInner.prototype,
-      VerifyOrderConfig.create('Input', order)
-    );
-    InputMock.mockFunction('generateInput').returned(<InputOnly />);
-    mount(<Input />);
-    order.verify(({ Input }) => {
-      Input.generateInput(InputElement);
+  function testValidateTop(title: string, value: string, expValue: ValidateStatus) {
+    it(` props :validateStatus  ${title}  &&  valiedateType top ;`, () => {
+      const onChange = () => {};
+      const component = mount(<TopInput validateType="top" onChange={onChange} />);
+      component
+        .find('input')
+        .at(0)
+        .simulate('change', { target: { value } });
+      component
+        .find('input')
+        .at(0)
+        .simulate('blur');
+      expect(component.state().validateStatus).toBe(expValue);
     });
-    InputMock.resetAll();
-  });
+  }
 
-  it('props: prefix function: generateInput', () => {
-    const InputMock = mockObject.create(
-      TextBoxInner.prototype,
-      VerifyOrderConfig.create('Input', order)
-    );
-    InputMock.mockFunction('generateInput').returned(<InputOnly />);
-    const prefix = <div />;
+  testValidateTop('value :""', '', 'success');
+  testValidateTop('value :"111,1111"', '111,1111', 'error');
+  testValidateTop('value :","', ',', 'error');
+  testValidateTop('value :",,,"', ',,,', 'error');
 
-    mount(<Input prefix={prefix} />);
-    order.verify(({ Input }) => {
-      Input.generateInput(InputElement);
+  function testValidateBottomAndInner(
+    title: string,
+    validateType: InputValidateType,
+    value: string,
+    expValue: ValidateStatus
+  ) {
+    it(` props :validateStatus  ${title}  &&  valiedateType ${validateType} ;`, () => {
+      const onChange = () => {};
+      const component = mount(<ValidateInput validateType={validateType} onChange={onChange} />);
+      const cmpInput = component
+        .children()
+        .at(0)
+        .children()
+        .at(0)
+        .instance();
+      component
+        .find('input')
+        .at(0)
+        .simulate('change', { target: { value } });
+      expect(cmpInput.props.validateStatus).toBe(expValue);
     });
-    InputMock.resetAll();
-  });
+  }
+
+  testValidateBottomAndInner('value :""', 'bottom', '', 'success');
+  testValidateBottomAndInner('value :"111"', 'bottom', '111', 'success');
+  testValidateBottomAndInner('value :"111,1"', 'bottom', '111,1', 'error');
+  testValidateBottomAndInner('value :","', 'bottom', ',', 'error');
+  testValidateBottomAndInner('value :",,,"', 'bottom', ',,,', 'error');
+
+  testValidateBottomAndInner('value :""', 'inner', '', 'success');
+  testValidateBottomAndInner('value :"1111"', 'inner', '111', 'success');
+  testValidateBottomAndInner('value :"111,11"', 'inner', '111,1', 'error');
+  testValidateBottomAndInner('value :","', 'inner', ',', 'error');
+  testValidateBottomAndInner('value :",,,,"', 'inner', ',,,', 'error');
 });
