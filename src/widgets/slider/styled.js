@@ -3,11 +3,11 @@
 * @flow
 * */
 import styled from 'styled-components';
+import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
 import {
+  themeColor,
   trackBackground,
-  doneBackground,
-  doingBackground,
   throughRangeBackground,
   trackDisabledBackground,
   btnDisabledBackground,
@@ -24,6 +24,7 @@ type CssTypeProps = {
   btnHeight?: number,
   SliderInnerWidth?: number,
   rangeW?: number,
+  rangeH?: number,
   moveX?: number,
   value?: any,
   SliderInnerLeft?: number,
@@ -32,15 +33,15 @@ type CssTypeProps = {
   marksData?: Object,
   iconStyle?: Object,
   middleVal?: number,
-  vertical?: boolean
+  vertical?: boolean,
 };
 export const SliderWrapper = styled.div`
-  width: ${props => getStyled(props).rangeW}px;
-  height: ${props => getStyled(props).rangeH}px;
+  width: ${props => getStyled(props).rangeW};
+  height: ${props => getStyled(props).rangeH};
   background: ${props => getStyled(props).wrapperBackground};
   border-radius: ${em(6)};
   position: relative;
-  display:inline-block;
+  display: inline-block;
 `;
 export const SliderInner = styled.div`
   width: ${props => getStyled(props).InnerWidth};
@@ -48,19 +49,16 @@ export const SliderInner = styled.div`
   background: ${props => getStyled(props).innerBackground};
   border-radius: ${em(6)};
   position: absolute;
-  // left: ${props => getStyled(props).SliderInnerLeft}%;
-  // top: 0;
   ${props => getStyled(props).sliderInnerPosition};
 `;
+
 export const Button = styled.span`
-  width: ${props => getStyled(props).btnWidth}px;
-  height: ${props => getStyled(props).btnHeight}px;
+  width: ${props => getStyled(props).btnWidth};
+  height: ${props => getStyled(props).btnHeight};
   border-radius: 50%;
   background: ${props => getStyled(props).btnBackground};
   position: absolute;
-  ${props => getStyled(props).btnPosition}  
-  
-  z-index: 2;
+  ${props => getStyled(props).btnPosition};
 `;
 export const Tips = styled.span`
   font-size: ${em(14)};
@@ -90,72 +88,77 @@ export const Tiparrow = styled.span`
   border-bottom: ${em(5)} solid transparent;
 `;
 export const Dot = styled.span`
-  width: 6px;
-  height: 6px;  
   border-radius: 50%;
   position: absolute;
-  // left: ${props => props.marksData.dotMoveX}%;
-  // top: 50%;
-  ${props => getStyled(props).dotPosition};
-  
+  ${props => getStyled(props).dotPosition};  
   z-index: 1;  
   ${props => getStyled(props).dotStyle};
   ${props => getStyled(props).dotBackground}
+  width: ${props => getStyled(props).dotW};
+  height: ${props => getStyled(props).dotH};
   
-  &:before {
+  &::before {
     content: '${props => getStyled(props).marskText}';
     display: block;
     position: absolute;
-    // left: 50%;
-    // transform: translateX(-50%);
-    // -webkit-transform: translateX(-50%);
-    // top: 10px;
     ${props => getStyled(props).dotTextPosition}
   }
 `;
-export const Icons=styled.span`
-    position: absolute;
-    top: 50%;
-    line-height: 0;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    color:#ccc;
-    ${props => getStyled(props).iconPosition}
-    ${props => getStyled(props).changeColor}
-    //${props => props.iconStyle.style};
-    font-size:${props => em(parseInt(props.iconStyle.style.fontSize))};  
-  
+export const Icons = styled.span`
+  position: absolute;
+  top: 50%;
+  line-height: 0;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  color: #ccc;
+  ${props => getStyled(props).iconPosition}
+  ${props => getStyled(props).changeColor}
+  font-size: ${props => em(parseInt(props.iconStyle.style.fontSize))};
 `;
 
-const getStyled = (props: CssTypeProps) => {
+export const getStyled = (props: CssTypeProps) => {
   const {
     changeBackground,
-    SliderInnerWidth,
-    moveX,
-    moveY,
     value,
-    SliderInnerLeft,
     btnDisabled,
     disabled,
-    background,
+    background = themeColor,
     marksData,
     iconStyle,
     middleVal,
-    vertical
+    vertical,
   } = props;
-  let { btnWidth, btnHeight,rangeW,rangeH} = props;
-  let InnerWidth = SliderInnerWidth+'%';
-  let InnerHeight = rangeH+'px';
-  let sliderInnerPosition=`
+
+  const doneBackground = background; //轨道划过完成的颜色
+  const { hoverColor } = colorsFunc(doneBackground);
+  const doingBackground = hoverColor; //轨道划过过程的颜色
+  let {
+    btnWidth,
+    btnHeight,
+    rangeW,
+    rangeH,
+    SliderInnerWidth,
+    SliderInnerLeft,
+    moveX,
+    moveY,
+  } = props;
+  SliderInnerWidth = Number(SliderInnerWidth);
+  SliderInnerLeft = Number(SliderInnerLeft);
+  rangeH = parseInt(rangeH);
+  moveX = Number(moveX);
+  moveY = Number(moveY);
+  let InnerWidth = SliderInnerWidth + '%';
+  let InnerHeight = em(rangeH);
+  let sliderInnerPosition = `
       left:${SliderInnerLeft}%;
       top:0;
   `;
   if (Array.isArray(value) && value.length === 2) {
-    InnerWidth = SliderInnerWidth+'%';
-    if(vertical) {
-      InnerWidth = rangeH + 'px';
-      InnerHeight =SliderInnerWidth+'%';
-      sliderInnerPosition =`
+    InnerWidth = SliderInnerWidth + '%';
+    if (vertical) {
+      InnerWidth = em(rangeH);
+      InnerHeight = SliderInnerWidth + '%';
+      sliderInnerPosition = `
       left:0;
       bottom:${SliderInnerLeft}%;
     `;
@@ -165,19 +168,27 @@ const getStyled = (props: CssTypeProps) => {
     ? trackDisabledBackground
     : changeBackground
       ? doingBackground
-      : background;
+      : doneBackground;
   const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
   const isChangeBg = changeBackground && btnDisabled;
   const btnBackground = disabled
     ? btnDisabledBackground
     : isChangeBg
       ? innerBackground
-      : background;
+      : doneBackground;
   btnWidth = isChangeBg ? btnWidth + 4 * 1 : btnWidth;
   btnHeight = isChangeBg ? btnHeight + 4 * 1 : btnHeight;
-  let isShowDot, dotStyle, marskText, isChangDotBg, dotBackground,dotPosition,dotTextPosition;
+  let isShowDot,
+    dotStyle,
+    marskText,
+    isChangDotBg,
+    dotBackground,
+    dotPosition,
+    dotTextPosition,
+    dotW,
+    dotH;
   if (marksData) {
-    const {dotIndex,maxValue,minValue,moveValue,marks} =marksData;
+    const { dotIndex, maxValue, minValue, moveValue, marks, rangeW, rangeH } = marksData;
     isShowDot = dotIndex === maxValue || dotIndex === minValue;
     dotStyle = marks.style;
     marskText = marks.text || marks;
@@ -199,86 +210,98 @@ const getStyled = (props: CssTypeProps) => {
         background: #fff;
       `;
     }
-    const {dotMoveX,vertical} =marksData;
-    dotPosition=`
+    const { dotMoveX, vertical } = marksData;
+    dotPosition = `
       left: ${dotMoveX}%;
       top: 50%;
       transform: translateY(-50%);
       -webkit-transform: translateY(-50%);
     `;
-    dotTextPosition=`
+    dotTextPosition = `
       left: 50%;
       transform: translateX(-50%);
       -webkit-transform: translateX(-50%);
-      top: 12px;
+      top: ${em(12)};
     `;
-    if(vertical){
-      dotPosition=`
+    if (vertical) {
+      dotPosition = `
         left: 50%;
         bottom: ${dotMoveX}%;
         transform: translateX(-50%);
         -webkit-transform: translateX(-50%);
     `;
-      dotTextPosition=`
-        left: 15px;
+      dotTextPosition = `
+        left: ${em(15)};
         transform: translateY(-50%);
         -webkit-transform: translateY(-50%);
         top: 50%;
       `;
+      dotW = rangeW;
+      dotH = rangeW;
     }
-
+    dotW = rangeH;
+    dotH = rangeH;
+    dotW = em(Number(dotW));
+    dotH = em(Number(dotH));
   }
+
   let iconPosition;
   let changeColor;
-  if(iconStyle){
-    const emTimes=parseInt(iconStyle.style.fontSize)/12;
-    const positionValue =em((parseInt(iconStyle.style.fontSize) + 22)/emTimes);
-    if(iconStyle.position === 'left'){
-      iconPosition=`
+  if (iconStyle && value && value.length === 1) {
+    const emTimes = parseInt(iconStyle.style.fontSize) / 12;
+    const positionValue = em((parseInt(iconStyle.style.fontSize) + 22) / emTimes);
+    if (iconStyle.position === 'left') {
+      iconPosition = `
         left:-${positionValue};
       `;
-      if(value <= middleVal ){
-        changeColor ='color:#999;';
+      if (value[0] <= middleVal) {
+        changeColor = 'color:#999;';
       }
-    }else{
-      iconPosition=`
+    } else {
+      iconPosition = `
         right:-${positionValue};
       `;
-      if(value>middleVal ){
-        changeColor ='color:#999;';
+      if (value[0] > middleVal) {
+        changeColor = 'color:#999;';
       }
     }
   }
 
-  const rangwWidth=rangeW;
-  const rangwHeight=rangeH;
-  let btnPosition =`
+  const rangwWidth = rangeW;
+  const rangwHeight = rangeH;
+  const btnZIndex = `
+  z-index:${isChangeBg ? '3' : '2'};
+  `;
+  let btnPosition = `
     left: ${moveX}%;
     top: 50%;
     transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    ${btnZIndex}
   `;
-  if(vertical){
-    rangeW=rangwHeight;
-    rangeH =rangwWidth;
-    if(value.length===1){
-      InnerWidth=rangwHeight+'px';
-      InnerHeight = SliderInnerWidth+'%' ;
-      sliderInnerPosition=`
+  if (vertical) {
+    rangeW = rangwHeight;
+    rangeH = rangwWidth;
+    if (value && value.length === 1) {
+      InnerWidth = em(rangwHeight);
+      InnerHeight = SliderInnerWidth + '%';
+      sliderInnerPosition = `
         left:${SliderInnerLeft}%;
         bottom:0;
     `;
     }
-    btnPosition=`
+    btnPosition = `
       left: 50%;
       bottom: ${moveY}% ;
       transform: translateX(-50%);
       -webkit-transform: translateX(-50%);
-      
+      ${btnZIndex}
     `;
-
   }
-
+  rangeW = em(Number(rangeW));
+  rangeH = em(Number(rangeH));
+  btnWidth = em(Number(btnWidth));
+  btnHeight = em(Number(btnHeight));
 
   return {
     InnerWidth,
@@ -292,6 +315,8 @@ const getStyled = (props: CssTypeProps) => {
     btnBackground,
     isShowDot,
     dotStyle,
+    dotW,
+    dotH,
     marskText,
     isChangDotBg,
     dotBackground,
@@ -301,6 +326,6 @@ const getStyled = (props: CssTypeProps) => {
     rangeH,
     btnPosition,
     dotPosition,
-    dotTextPosition
+    dotTextPosition,
   };
 };

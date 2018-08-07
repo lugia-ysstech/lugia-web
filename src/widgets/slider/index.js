@@ -9,5 +9,4 @@
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import Slider from './slider';
-
 export default ThemeProvider(Slider, Widget.Slider);

@@ -7,113 +7,35 @@ import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { fixControlledValue } from '.././utils';
-import type { ValidateStatus, InputSize } from '../css/input';
+import type { MarginType, ThemeType, WidthType } from '@lugia/lugia-web';
 
 import {
+  DefaultHeight,
   DefaultHelp,
   getFocusShadow,
   getInputBorderColor,
   getInputBorderHoverColor,
-  getInputBorderSize,
+  LargeHeight,
   RadiusSize,
-  getFocusBorderColor,
-  fontColor,
-  getSize,
-  getBackground,
-  getMargin,
-  getRightPadding,
-  getPadding,
-  getCursor,
-  getWidth,
+  SmallHeight,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
 
-const em = px2emcss(1.2);
-
-const CommonInputStyle = styled.input`
-  ${getSize};
-  ${getCursor};
-  ${getWidth};
-  border-radius: ${RadiusSize};
-  border: ${getInputBorderSize} solid ${getInputBorderColor};
-  line-height: 1.5;
-  font-size: ${FontSize};
-  display: inline-block;
-  font-family: inherit;
-  &:hover {
-    border-color: ${getInputBorderHoverColor};
-  }
-
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-image: none;
-  color: ${fontColor};
-  &::placeholder {
-    color: rgba(0, 0, 0, 0.25);
-  }
-  &:focus {
-    ${getFocusBorderColor};
-    ${getFocusShadow};
-  }
-  padding-left: ${getPadding};
-  padding-right: ${getRightPadding};
-`;
-const InputContainer = styled.span`
-  ${getBackground};
-  ${getMargin};
-  position: relative;
-  display: inline-block;
-`;
-
-export const Input = CommonInputStyle.extend`
-  outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-`;
-
-export const InputOnly = CommonInputStyle.extend`
-  outline: none;
-`;
-
-const Fix = styled.span`
-  position: absolute;
-  transform: translateY(50%);
-  z-index: 2;
-  bottom: 50%;
-  line-height: ${em(10)};
-  font-size: 1.4em;
-  color: rgba(0, 0, 0, 0.65);
-`;
-
-const Prefix = Fix.extend`
-  left: ${em(5)};
-`;
-
-const Suffix = Fix.extend`
-  right: ${em(5)};
-`;
-
-const Clear = 'lugia-icon-reminder_close_circle';
-
-const ClearButton: Object = styled(Icon)`
-  position: absolute;
-  transform: translateY(50%);
-  z-index: 2;
-  bottom: 50%;
-  line-height: ${em(10)};
-  font-size: 1.2em;
-  right: ${em(10)};
-  color: rgba(0, 0, 0, 0.65);
-  display: inline-block;
-`;
-
 type InputState = {|
   value: string,
 |};
+type ValidateStatus = 'success' | 'error';
+
+type InputSize = 'small' | 'default' | 'large';
+
+type CommonInputProps = {
+  theme: ThemeType,
+  size?: InputSize,
+  disabled: boolean,
+};
 
 type InputProps = {|
   size?: InputSize,
@@ -140,6 +62,125 @@ type InputProps = {|
   formatter?: (value: number | string) => string,
   parser?: (displayValue: number | string) => string,
 |};
+const getWidth = (props: CommonInputProps) => {
+  const { theme } = props;
+  const { width } = theme;
+  return `width:${width ? em(width) : em(200)};`;
+};
+const getPadding = (props: CommonInputProps) => {
+  const { theme } = props;
+  const { width } = theme;
+  return `${width && width < 200 ? em(width / 20) : em(10)};`;
+};
+const getMargin = (props: CommonInputProps) => {
+  const { theme } = props;
+  const { margin } = theme;
+  if (typeof margin === 'number') {
+    return `margin:${em(margin)} `;
+  }
+};
+const getSize = (props: CommonInputProps) => {
+  const { size } = props;
+  return `height:${
+    size === 'large'
+      ? LargeHeight + 'px'
+      : size === 'small'
+        ? SmallHeight + 'px'
+        : DefaultHeight + 'px'
+  };`;
+};
+
+const getBackground = (props: CommonInputProps) => {
+  const { disabled } = props;
+  return `background:${disabled ? '#f2f2f2' : ''}`;
+};
+const getCursor = (props: CommonInputProps) => {
+  const { disabled } = props;
+  return `cursor:${disabled ? 'not-allowed' : 'text'}`;
+};
+const em = px2emcss(1.2);
+
+const CommonInputStyle = styled.input`
+  ${getBackground};
+  ${getSize};
+  ${getCursor};
+  ${getMargin};
+  ${getWidth};
+  border-radius: ${RadiusSize};
+  border: 1px solid ${getInputBorderColor};
+  line-height: 1.5;
+  font-size: ${FontSize};
+  display: inline-block;
+  padding: 0 ${getPadding};
+  font-family: inherit;
+  &:hover {
+    border-color: ${getInputBorderHoverColor};
+  }
+
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  color: rgb(51, 51, 51);
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.25);
+  }
+  &:focus {
+    border-color: #684fff;
+    ${getFocusShadow};
+  }
+`;
+
+const InputContainer = styled.span`
+  position: relative;
+  ${getWidth};
+  ${getMargin};
+  display: inline-block;
+  background-color: #fff;
+`;
+
+export const Input = CommonInputStyle.extend`
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+  :not(:first-child) {
+    padding-left: ${getPadding};
+    padding-right: ${getPadding};
+  }
+`;
+
+export const InputOnly = CommonInputStyle.extend`
+  outline: none;
+`;
+
+const Fix = styled.span`
+  position: absolute;
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 45%;
+  line-height: ${em(10)};
+  font-size: 1.6em;
+  color: rgba(0, 0, 0, 0.65);
+`;
+
+const Prefix = Fix.extend`
+  left: ${getPadding};
+`;
+
+const Suffix = Fix.extend`
+  right: ${getPadding};
+`;
+const Clear = 'lugia-icon-reminder_close_circle';
+const ClearButton: Object = styled(Icon)`
+  position: absolute;
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 45%;
+  line-height: ${em(10)};
+  font-size: 1.2em;
+  right: ${getPadding};
+  color: rgba(0, 0, 0, 0.65);
+`;
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
@@ -203,7 +244,6 @@ class TextBox extends Component<InputProps, InputState> {
       onChange && onChange(value, oldValue);
     }
   }
-
   onFocus = (event: UIEvent) => {
     const { onFocus } = this.props;
     onFocus && onFocus(event);
@@ -215,7 +255,7 @@ class TextBox extends Component<InputProps, InputState> {
 
   isEmpty(): boolean {
     const { value } = this.state;
-    return !(value && value.length);
+    return value && value.length ? false : true;
   }
 
   getClearButton() {
@@ -282,7 +322,6 @@ class TextBox extends Component<InputProps, InputState> {
       }, 0);
     }
   }
-
   generateInput(Input: Function): React$Element<any> {
     const { props } = this;
     let { value } = this.state;

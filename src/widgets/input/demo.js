@@ -38,10 +38,11 @@ const InputDemo = () => {
   const view = {
     [Widget.Input]: {
       width: 300,
-      margin :10,
+      margin: 10,
     },
     register: {
       width: 100,
+      margin: 5,
     },
   };
   const onChange = (cmpName: string) => (value: string) => {

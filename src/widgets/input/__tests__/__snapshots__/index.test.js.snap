@@ -2,28 +2,30 @@
 
 exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 .c0 {
-  margin: 0.8333333333333334em;
   position: relative;
+  width: 8.333333333333334em;
+  margin: 0.8333333333333334em;
   display: inline-block;
+  background-color: #fff;
 }
 
 .c1 {
   height: 32px;
   cursor: text;
+  margin: 0.8333333333333334em;
   width: 8.333333333333334em;
   border-radius: 4px;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
+  padding: 0 0.4166666666666667em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: #333333;
-  padding-left: 0.4166666666666667em;
-  padding-right: 2.0833333333333335em;
+  color: rgb(51,51,51);
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -53,6 +55,11 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c1:not(:first-child) {
+  padding-left: 0.4166666666666667em;
+  padding-right: 0.4166666666666667em;
 }
 
 <span
@@ -82,7 +89,9 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 exports[`Input props: null 1`] = `
 .c0 {
   position: relative;
+  width: 16.666666666666668em;
   display: inline-block;
+  background-color: #fff;
 }
 
 .c1 {
@@ -94,14 +103,13 @@ exports[`Input props: null 1`] = `
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
+  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
+  color: rgb(51,51,51);
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -131,6 +139,11 @@ exports[`Input props: null 1`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
 }
 
 <span
@@ -156,7 +169,9 @@ exports[`Input props: null 1`] = `
 exports[`Input props: placeholder  1`] = `
 .c0 {
   position: relative;
+  width: 16.666666666666668em;
   display: inline-block;
+  background-color: #fff;
 }
 
 .c1 {
@@ -168,14 +183,13 @@ exports[`Input props: placeholder  1`] = `
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
+  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
+  color: rgb(51,51,51);
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -205,6 +219,11 @@ exports[`Input props: placeholder  1`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
 }
 
 <span
@@ -230,7 +249,9 @@ exports[`Input props: placeholder  1`] = `
 exports[`Input props: placeholder  2`] = `
 .c0 {
   position: relative;
+  width: 16.666666666666668em;
   display: inline-block;
+  background-color: #fff;
 }
 
 .c1 {
@@ -242,14 +263,13 @@ exports[`Input props: placeholder  2`] = `
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
+  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
+  color: rgb(51,51,51);
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -279,6 +299,11 @@ exports[`Input props: placeholder  2`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
 }
 
 <span
@@ -304,7 +329,9 @@ exports[`Input props: placeholder  2`] = `
 exports[`Input props: size 1`] = `
 .c0 {
   position: relative;
+  width: 16.666666666666668em;
   display: inline-block;
+  background-color: #fff;
 }
 
 .c1 {
@@ -316,14 +343,13 @@ exports[`Input props: size 1`] = `
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
+  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
+  color: rgb(51,51,51);
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -353,6 +379,11 @@ exports[`Input props: size 1`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
 }
 
 <span
@@ -378,7 +409,9 @@ exports[`Input props: size 1`] = `
 exports[`Input props: size 2`] = `
 .c0 {
   position: relative;
+  width: 16.666666666666668em;
   display: inline-block;
+  background-color: #fff;
 }
 
 .c1 {
@@ -390,14 +423,13 @@ exports[`Input props: size 2`] = `
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
+  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
+  color: rgb(51,51,51);
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -427,6 +459,11 @@ exports[`Input props: size 2`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c1:not(:first-child) {
+  padding-left: 0.8333333333333334em;
+  padding-right: 0.8333333333333334em;
 }
 
 <span
