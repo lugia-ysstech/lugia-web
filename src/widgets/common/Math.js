@@ -10,6 +10,10 @@ export function limit(val: number, range: number[]) {
   return Math.min(max, Math.max(val, min));
 }
 
+export function limitToSet(val: number[], range: number[]): number[] {
+  return [];
+}
+
 export function getMinAndMax(range: number[]): { min: number, max: number } {
   let min = range[0],
     max = range[0];

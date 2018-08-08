@@ -4,7 +4,7 @@
 * */
 import React, { Component } from 'react';
 import Icon from '../icon/index';
-import { limit, sortable } from '../common/Math';
+import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
 import getPosition from './utils';
 import { Button, Dot, Icons, SliderInner, SliderWrapper, Tiparrow, Tipinner, Tips } from './styled';
 
@@ -71,52 +71,44 @@ class Slider extends Component<TypeProps, TypeState> {
     const hasValueProps = 'value' in nexProps;
     const hasMarksProps = 'marks' in nexProps;
     value = hasValueProps ? value : preState ? preState.value : defaultValue;
-    const marksKeys = [];
+
+    let marksKeys = [];
+    let newMarks = { ...marks };
     if (hasMarksProps) {
       const hasMinValueProps = 'minValue' in nexProps;
       const hasMaxValueProps = 'maxValue' in nexProps;
       for (const key in marks) {
         marksKeys.push(Number(key));
       }
-      const min = Math.min(...marksKeys);
-      const max = Math.max(...marksKeys);
-      minValue = hasMinValueProps ? minValue : min;
-      maxValue = hasMaxValueProps ? maxValue : max;
-      if (minValue < min) {
-        marksKeys.unshift(minValue);
-        marks[minValue] = minValue.toString();
+
+      const { max, min } = getMinAndMax(marksKeys);
+      if (!hasMinValueProps) {
+        minValue = min;
       }
-      if (marksKeys && minValue > min) {
-        const index = marksKeys.indexOf(min);
-        if (index > -1) {
-          marksKeys.splice(index, 1);
-          delete marks[min];
-        }
-        marksKeys.unshift(minValue);
-        marks[minValue] = minValue.toString();
+      if (!hasMaxValueProps) {
+        maxValue = max;
       }
-      if (maxValue > max) {
-        marksKeys.push(maxValue);
-        marks[maxValue] = maxValue.toString();
-      }
-      if (marksKeys && maxValue < max) {
-        const index = marksKeys.indexOf(max);
-        if (index > -1) {
-          marksKeys.splice(index, 1);
-          delete marks[max];
-        }
-        marksKeys.unshift(maxValue);
-        marks[maxValue] = maxValue.toString();
-      }
+
+      marksKeys.unshift(minValue);
+      marksKeys.push(maxValue);
+
+      // 删除不在范围内的元素 包括相等 [] ()
+      marksKeys = limitToSet(marksKeys, [minValue, maxValue]);
+      newMarks = {};
+      marksKeys.forEach(item => {
+        const mark = marks[item];
+        newMarks[item] = mark ? mark : item.toString();
+      });
     }
     marksKeys.sort(sortable);
-    if (value !== undefined && !(value instanceof Array)) {
-      value = [value];
+    let newValue = [minValue];
+    if (!Array.isArray(value) && (value !== null && value !== undefined)) {
+      newValue = [value];
+    } else {
+      newValue = value;
     }
-    sortable;
-    if (value && value.length > 2) {
-      value = value.slice(0, 2);
-    }
+    newValue = newValue.slice(0, 2);
+
     if (Array.isArray(value)) {
       const { length } = value;
       value[0] = limit(value[0], [minValue, maxValue]);
@@ -137,7 +129,7 @@ class Slider extends Component<TypeProps, TypeState> {
         marksKeys,
         minValue,
         maxValue,
-        marks,
+        marks: newMarks,
         isMouseEnter: false,
       };
     }
