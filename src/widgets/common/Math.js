@@ -11,13 +11,20 @@ export function limit(val: number, range: number[]) {
 }
 
 export function getMinAndMax(range: number[]): { min: number, max: number } {
-  range.sort(sortable);
+  let min = range[0],
+    max = range[0];
 
   function check(val: number, negative: boolean = false) {
     return val !== undefined ? val : negative ? -Infinity : Infinity;
   }
 
-  return { min: check(range[0], true), max: check(range[range.length - 1]) };
+  range &&
+    range.forEach(item => {
+      min = Math.min(item, min);
+      max = Math.max(item, max);
+    });
+
+  return { min: check(min, true), max: check(max) };
 }
 
 export function sortable(a: number, b: number): number {
