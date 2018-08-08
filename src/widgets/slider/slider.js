@@ -4,7 +4,7 @@
 * */
 import React, { Component } from 'react';
 import Icon from '../icon/index';
-import Widgets from '../consts';
+import { limit, sortable } from '../common/Math';
 import getPosition from './utils';
 import { Button, Dot, Icons, SliderInner, SliderWrapper, Tiparrow, Tipinner, Tips } from './styled';
 
@@ -42,10 +42,6 @@ type TypeState = {
   marks?: { [key: number]: string | Object },
   isMouseEnter?: boolean,
 };
-
-function sortNumber(a: number, b: number) {
-  return a - b;
-}
 
 //let oldValue;
 class Slider extends Component<TypeProps, TypeState> {
@@ -113,29 +109,18 @@ class Slider extends Component<TypeProps, TypeState> {
         marks[maxValue] = maxValue.toString();
       }
     }
-    marksKeys.sort(sortNumber);
+    marksKeys.sort(sortable);
     if (value !== undefined && !(value instanceof Array)) {
       value = [value];
     }
+    sortable;
     if (value && value.length > 2) {
       value = value.slice(0, 2);
     }
     if (Array.isArray(value)) {
       const { length } = value;
-      if (value[0] < minValue) {
-        value[0] = minValue;
-      }
-      if (value[0] > maxValue) {
-        value[0] = maxValue;
-      }
-      if (length === 2) {
-        if (value[1] < minValue) {
-          value[1] = minValue;
-        }
-        if (value[1] > maxValue) {
-          value[1] = maxValue;
-        }
-      }
+      value[0] = limit(value[0], [minValue, maxValue]);
+      length === 2 && (value[1] = limit(value[1], [minValue, maxValue]));
     }
     if (!preState) {
       return {
@@ -298,8 +283,8 @@ class Slider extends Component<TypeProps, TypeState> {
     if (value) {
       const { length } = value;
       if (length === 2) {
-        value.sort(sortNumber);
-        oldValue.sort(sortNumber);
+        value.sort(sortable);
+        oldValue.sort(sortable);
         if (marks) {
           newItem = [marks[value[0]], marks[value[1]]];
           oldItem = [marks[oldValue[0]], marks[oldValue[1]]];
