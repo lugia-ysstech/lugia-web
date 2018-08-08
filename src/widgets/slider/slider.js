@@ -197,78 +197,10 @@ class Slider extends Component<TypeProps, TypeState> {
       }
     }
 
-    if ((!vertical && pageX <= offsetLeft) || (vertical && pageY <= offsetTop)) {
-      if (value) {
-        if (value.length == 2 && value[1] > value[0]) {
-          if (vertical) {
-            value[1] = maxValue;
-          } else {
-            value[0] = minValue;
-          }
-        } else if (value[1] < value[0]) {
-          if (vertical) {
-            value[0] = maxValue;
-          } else {
-            value[1] = minValue;
-          }
-        }
-        if (value.length == 1) {
-          value[0] = minValue;
-          if (vertical) {
-            value[0] = maxValue;
-          }
-        }
-      }
-      if (!vertical && pageX <= offsetLeft) {
-        this.setState({
-          moveX: 0,
-        });
-      }
-      if (vertical && pageY <= offsetTop) {
-        this.setState({
-          moveY: 100,
-        });
-      }
-    }
-    if ((!vertical && pageX >= offsetRight) || (vertical && pageY >= offsetBottom)) {
-      if (value) {
-        if (value.length == 2 && value[1] > value[0]) {
-          if (vertical) {
-            value[0] = minValue;
-          } else {
-            value[1] = maxValue;
-          }
-        } else if (value && value[1] < value[0]) {
-          if (vertical) {
-            value[1] = minValue;
-          } else {
-            value[0] = maxValue;
-          }
-        }
-        if (value.length == 1) {
-          value[0] = maxValue;
-          if (vertical) {
-            value[0] = minValue;
-          }
-        }
-      }
-      if (!vertical && pageX >= offsetRight) {
-        this.setState({
-          moveX: 100,
-        });
-      }
-
-      if (vertical && pageY >= offsetBottom) {
-        this.setState({
-          moveY: 0,
-        });
-      }
-    }
-
     this.setState({
       moveX: diffX,
       moveY: diffY,
-      value,
+      value: [limit(value[0], [maxValue, minValue]), limit(value[1], [maxValue, minValue])],
       moveValue,
       index,
     });
@@ -448,7 +380,6 @@ class Slider extends Component<TypeProps, TypeState> {
       isMouseEnter,
     } = this.state;
     let { minValue, maxValue } = this.state;
-
     this.style = {
       background,
       btnWidth: parseInt(btnWidth),
