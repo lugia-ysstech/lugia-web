@@ -72,10 +72,12 @@ declare module '@lugia/lugia-web' {
 
   declare type ThemeType = {
     width: WidthType,
+    height: HeightType,
     margin: MarginType,
     color: ColorType,
   };
   declare type WidthType = number;
+  declare type HeightType = number;
   declare type MarginType = number | MarginObject;
   declare type ColorType = string;
   declare type MarginObject = {

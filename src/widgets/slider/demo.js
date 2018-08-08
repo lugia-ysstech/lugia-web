@@ -7,7 +7,8 @@
  */
 import React, { Component } from 'react';
 import Slider from './index';
-import Icon from '../icon/index';
+import Widgets from '../consts/index';
+import Theme from '../theme/index';
 
 export default class Sl extends Component<any> {
   constructor() {
@@ -17,12 +18,14 @@ export default class Sl extends Component<any> {
       btnWidth: 20,
     };
   }
+
   onchange = v => {
     console.log(v);
   };
   handleclick = () => {
     this.setState({ btnWidth: 30 });
   };
+
   render() {
     const { btnWidth } = this.state;
     return (
@@ -33,7 +36,14 @@ export default class Sl extends Component<any> {
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 自定义css</h2>
-          <Slider background={'#f22735'} btnWidth={16} btnHeight={16} rangeH={4} rangeW={100} />
+          <Theme
+            config={{
+              [Widgets.SliderButton]: { color: '#333' },
+              [Widgets.Slider]: { color: '#2e5df2' },
+            }}
+          >
+            <Slider rangeH={4} rangeW={100} />
+          </Theme>
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 单滑块</h2>
@@ -173,12 +183,13 @@ export default class Sl extends Component<any> {
           <h2 style={{ padding: '35px 0' }}> 离散</h2>
           <Slider
             vertical
-            maxValue={50}
+            // maxValue={50}
             defaultValue={[10, 20]}
-            minValue={0}
+            // minValue={0}
             tips
             onChange={this.onchange}
             marks={{
+              0: '0℃',
               10: '10℃',
               20: '20℃',
               40: {
@@ -187,6 +198,7 @@ export default class Sl extends Component<any> {
                   color: 'red',
                 },
               },
+              50: '50℃',
             }}
           />
         </div>

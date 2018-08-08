@@ -6,19 +6,22 @@ import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
 import {
-  themeColor,
-  trackBackground,
-  throughRangeBackground,
-  trackDisabledBackground,
   btnDisabledBackground,
+  themeColor,
+  throughRangeBackground,
   tipBackground,
   tipColor,
+  trackBackground,
+  trackDisabledBackground,
 } from './slider_public_color';
+import Widgets from '../consts';
+import ThemeProvider from '../theme-provider';
 
 const em = px2emcss(1.2);
 type CssTypeProps = {
   background?: string,
   changeBackground?: boolean,
+  getTheme: Function,
   moveY?: number,
   btnWidth?: number,
   btnHeight?: number,
@@ -52,14 +55,19 @@ export const SliderInner = styled.div`
   ${props => getStyled(props).sliderInnerPosition};
 `;
 
-export const Button = styled.span`
-  width: ${props => getStyled(props).btnWidth};
-  height: ${props => getStyled(props).btnHeight};
-  border-radius: 50%;
-  background: ${props => getStyled(props).btnBackground};
-  position: absolute;
-  ${props => getStyled(props).btnPosition};
-`;
+export const Button = ThemeProvider(
+  styled.span`
+    width: ${props => getStyled(props).btnWidth};
+    height: ${props => getStyled(props).btnHeight};
+    border-radius: 50%;
+    background: ${props => getStyled(props).btnBackground};
+    position: absolute;
+    ${props => getStyled(props).btnPosition};
+  `,
+  Widgets.SliderButton
+);
+Button.displayName = Widgets.SliderButton;
+
 export const Tips = styled.span`
   font-size: ${em(14)};
   text-align: center;
@@ -122,13 +130,14 @@ export const getStyled = (props: CssTypeProps) => {
     value,
     btnDisabled,
     disabled,
-    background = themeColor,
     marksData,
     iconStyle,
     middleVal,
     vertical,
+    getTheme,
   } = props;
-
+  const theme = getTheme();
+  const background = theme.color || themeColor;
   const doneBackground = background; //轨道划过完成的颜色
   const { hoverColor } = colorsFunc(doneBackground);
   const doingBackground = hoverColor; //轨道划过过程的颜色

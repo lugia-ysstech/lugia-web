@@ -4,6 +4,7 @@
 * */
 import React, { Component } from 'react';
 import Icon from '../icon/index';
+import Widgets from '../consts';
 import getPosition from './utils';
 import { Button, Dot, Icons, SliderInner, SliderWrapper, Tiparrow, Tipinner, Tips } from './styled';
 
@@ -41,7 +42,6 @@ type TypeState = {
   marks?: { [key: number]: string | Object },
   isMouseEnter?: boolean,
 };
-Button.displayName = 'Button';
 
 function sortNumber(a: number, b: number) {
   return a - b;
@@ -451,6 +451,7 @@ class Slider extends Component<TypeProps, TypeState> {
       icons,
       vertical,
       disabled,
+      getTheme,
     } = this.props;
     const {
       value,
@@ -502,7 +503,7 @@ class Slider extends Component<TypeProps, TypeState> {
           rangeW: this.style.rangeW,
           rangeH: this.style.rangeH,
         };
-        Dots.push(<Dot marksData={data} key={dotIndex} />);
+        Dots.push(<Dot marksData={data} key={dotIndex} getTheme={getTheme} />);
       }
     }
 
@@ -534,6 +535,7 @@ class Slider extends Component<TypeProps, TypeState> {
       size.btnDisabled = btnDisabled;
       children.push(
         <Button
+          getTheme={getTheme}
           onMouseDown={mousedown}
           onMouseEnter={() => mouseenter(i)}
           onMouseLeave={mouseleave}
@@ -559,7 +561,7 @@ class Slider extends Component<TypeProps, TypeState> {
       size.middleVal = middleVal;
       icons.forEach(function(currentValue, index) {
         const iconChild = (
-          <Icons iconStyle={currentValue} {...size}>
+          <Icons iconStyle={currentValue} {...size} getTheme={getTheme}>
             <Icon iconClass={currentValue.name} />
           </Icons>
         );
@@ -572,10 +574,11 @@ class Slider extends Component<TypeProps, TypeState> {
         onMouseDown={mousedown}
         onMouseUp={mouseup}
         {...size}
+        getTheme={getTheme}
       >
         {iconsChildren}
         {Dots}
-        <SliderInner {...size} />
+        <SliderInner {...size} getTheme={getTheme} />
         {children}
       </SliderWrapper>
     );
