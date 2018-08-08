@@ -5,7 +5,8 @@
 import React, { Component } from 'react';
 import Icon from '../icon/index';
 import getPosition from './utils';
-import { SliderWrapper, SliderInner, Button, Tips, Tipinner, Tiparrow, Dot, Icons } from './styled';
+import { Button, Dot, Icons, SliderInner, SliderWrapper, Tiparrow, Tipinner, Tips } from './styled';
+
 type TypeProps = {
   btnWidth?: number | string,
   btnHeight?: number | string,
@@ -41,9 +42,11 @@ type TypeState = {
   isMouseEnter?: boolean,
 };
 Button.displayName = 'Button';
+
 function sortNumber(a: number, b: number) {
   return a - b;
 }
+
 //let oldValue;
 class Slider extends Component<TypeProps, TypeState> {
   sliderRange: any;
@@ -59,12 +62,14 @@ class Slider extends Component<TypeProps, TypeState> {
     SliderInnerLeft: number,
   };
   oldValue: Array<number> | number;
+
   constructor() {
     super();
     this.sliderRange = React.createRef();
   }
+
   static getDerivedStateFromProps(nexProps: TypeProps, preState: TypeState) {
-    let { minValue = 0, maxValue = 30, marks } = nexProps;
+    let { minValue = 0, maxValue = 30, marks = {} } = nexProps;
     const { defaultValue = 0, disabled = false } = nexProps;
     let { value } = nexProps;
     const hasValueProps = 'value' in nexProps;
@@ -152,7 +157,8 @@ class Slider extends Component<TypeProps, TypeState> {
       };
     }
   }
-  mousedown = (e: SyntheticMouseEvent<MouseEvent>) => {
+
+  mousedown = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
     const { index } = this.getNewIndex(e.pageX, e.pageY);
     this.mousedownFun(e.pageX, e.pageY, index);
   };
@@ -168,20 +174,21 @@ class Slider extends Component<TypeProps, TypeState> {
   };
   mousemove = (index: number) => {
     let that;
-    document.onmousemove = e => {
+    const onMouseMove = (e: Object) => {
       e = e || window.event;
       this.publicmove(e.pageX, e.pageY, index);
       this.onchange(this.state.value);
       that = this;
     };
-    document.onmouseup = function(e) {
-      this.onmousemove = null;
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', (e: Object) => {
+      document.removeEventListener('mousemove', onMouseMove);
       if (that) {
         const { value } = that.state;
         that.setState({ changeBackground: false });
         that.onchange(e, value);
       }
-    };
+    });
   };
   publicmove = (pageX: number, pageY: number, index: number) => {
     this.setState({ index, changeBackground: true });
@@ -281,6 +288,7 @@ class Slider extends Component<TypeProps, TypeState> {
       index,
     });
   };
+
   onchange(event, value) {
     const { onChange } = this.props;
     const { marks } = this.state;
@@ -319,7 +327,8 @@ class Slider extends Component<TypeProps, TypeState> {
 
     onChange && onChange(data);
   }
-  mouseup = event => {
+
+  mouseup = (event: SyntheticMouseEvent<HTMLButtonElement>) => {
     const { disabled } = this.props;
     const { value } = this.state;
     if (!disabled) {
@@ -379,7 +388,7 @@ class Slider extends Component<TypeProps, TypeState> {
     }
     return { index };
   };
-  getMarkValue = (marksKeys?: Array<number>, moveValue: number) => {
+  getMarkValue = (marksKeys: Array<number> = [], moveValue: number): { markValue: number } => {
     if (marksKeys) {
       let nextV = [];
       for (let i = 0; i < marksKeys.length; i++) {
@@ -400,7 +409,9 @@ class Slider extends Component<TypeProps, TypeState> {
       const markValue = nextV[0];
       return { markValue };
     }
+    return { markValue: 0 };
   };
+
   componentDidMount() {
     const { disabled } = this.state;
     const { offsetLeft, offsetTop } = this.getOffset();
@@ -412,6 +423,7 @@ class Slider extends Component<TypeProps, TypeState> {
       this.mousedown = null;
     }
   }
+
   getOffset() {
     const sliderRangeNode = this.sliderRange.current; //slider react 元素
     const { left, top } = getPosition(sliderRangeNode);
@@ -420,12 +432,14 @@ class Slider extends Component<TypeProps, TypeState> {
     }
     return { offsetLeft: left, offsetTop: top };
   }
+
   getMoveValue = (val: number, circleWidth: number) => {
     const { maxValue, minValue, rangeW } = this.style;
     const proportion = val / (maxValue - minValue); //比例
     const btnMove = ((proportion * rangeW - circleWidth / 2) / rangeW) * 100; //比例转化成px计算按钮中心点的位置；
     return { btnMove };
   };
+
   render() {
     const {
       background,
@@ -444,7 +458,7 @@ class Slider extends Component<TypeProps, TypeState> {
       index,
       moveValue,
       marksKeys,
-      marks,
+      marks = {},
       isMouseEnter,
     } = this.state;
     let { minValue, maxValue } = this.state;
@@ -567,4 +581,5 @@ class Slider extends Component<TypeProps, TypeState> {
     );
   }
 }
+
 export default Slider;
