@@ -57,7 +57,7 @@ class Slider extends Component<TypeProps, TypeState> {
     SliderInnerWidth: number,
     SliderInnerLeft: number,
   };
-  oldValue: Array<number> | number;
+  oldValue: Array<number>;
 
   constructor() {
     super();
@@ -154,7 +154,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const onMouseMove = (e: Object) => {
       e = e || window.event;
       this.publicmove(e.pageX, e.pageY, index);
-      this.onchange(this.state.value);
+      //this.onchange(this.state.value);
       that = this;
     };
     document.addEventListener('mousemove', onMouseMove);
@@ -163,7 +163,7 @@ class Slider extends Component<TypeProps, TypeState> {
       if (that) {
         const { value } = that.state;
         that.setState({ changeBackground: false });
-        that.onchange(e, value);
+        //that.onchange(e, value);
       }
     });
   };
@@ -198,11 +198,10 @@ class Slider extends Component<TypeProps, TypeState> {
     });
   };
 
-  onchange(event, value) {
+  onchange(event: SyntheticMouseEvent<HTMLButtonElement>, value: Array<number>): Object {
     const { onChange } = this.props;
-    const { marks } = this.state;
+    const { marks, marksKeys } = this.state;
     let oldValue = this.oldValue;
-    this.setState({ changeBackground: false });
     let newItem, oldItem;
     if (value) {
       const { length } = value;
@@ -229,7 +228,7 @@ class Slider extends Component<TypeProps, TypeState> {
       newValue: value,
       event,
     };
-    if (marks) {
+    if (marks && marksKeys.length > 0) {
       data.newItem = newItem;
       data.oldItem = oldItem;
     }
@@ -241,6 +240,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const { disabled } = this.props;
     const { value } = this.state;
     if (!disabled) {
+      this.setState({ changeBackground: false });
       this.onchange(event, value);
     }
   };

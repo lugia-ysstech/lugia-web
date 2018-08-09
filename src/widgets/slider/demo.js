@@ -57,7 +57,7 @@ export default class Sl extends Component<any> {
           <h2 style={{ padding: '20px 0' }}> 双滑块 minValue -1</h2>
           <Slider
             maxValue={30}
-            defaultValue={[20, -1, 25]}
+            defaultValue={[-1, 20, 25]}
             tips
             onChange={this.onchange}
             minValue={0}
