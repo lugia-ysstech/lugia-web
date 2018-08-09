@@ -24,6 +24,9 @@ describe('Math', () => {
   });
 
   it('limitToSet repeat', () => {
-    expect(limitToSet([1, 1, 2, 3, 4, 5], [1, 3])).toEqual([1, 2, 3]);
+    expect(limitToSet([1, 1, 2, 3, 4, 5], [1, 5])).toEqual([1, 2, 3, 4, 5]);
+  });
+  it('limitToSet index<0', () => {
+    expect(limitToSet([1, 1, 2, 3, 4, 5], [1, 6])).toEqual([1, 2, 3, 4, 5]);
   });
 });

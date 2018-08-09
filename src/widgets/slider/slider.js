@@ -4,8 +4,8 @@
 * */
 import React, { Component } from 'react';
 import Icon from '../icon/index';
-import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
 import getPosition from './utils';
+import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
 import { Button, Dot, Icons, SliderInner, SliderWrapper, Tiparrow, Tipinner, Tips } from './styled';
 
 type TypeProps = {
@@ -42,8 +42,7 @@ type TypeState = {
   marks?: { [key: number]: string | Object },
   isMouseEnter?: boolean,
 };
-
-//let oldValue;
+Button.displayName = 'Button';
 class Slider extends Component<TypeProps, TypeState> {
   sliderRange: any;
   style: {
@@ -70,17 +69,18 @@ class Slider extends Component<TypeProps, TypeState> {
     let { value } = nexProps;
     const hasValueProps = 'value' in nexProps;
     const hasMarksProps = 'marks' in nexProps;
+    const hasMinValueProps = 'minValue' in nexProps;
+    const hasMaxValueProps = 'maxValue' in nexProps;
     value = hasValueProps ? value : preState ? preState.value : defaultValue;
-
+    if (maxValue < minValue) {
+      maxValue = minValue;
+    }
     let marksKeys = [];
-    let newMarks = { ...marks };
+    const newMarks = { ...marks };
     if (hasMarksProps) {
-      const hasMinValueProps = 'minValue' in nexProps;
-      const hasMaxValueProps = 'maxValue' in nexProps;
       for (const key in marks) {
         marksKeys.push(Number(key));
       }
-
       const { max, min } = getMinAndMax(marksKeys);
       if (!hasMinValueProps) {
         minValue = min;
@@ -88,32 +88,25 @@ class Slider extends Component<TypeProps, TypeState> {
       if (!hasMaxValueProps) {
         maxValue = max;
       }
-
       marksKeys.unshift(minValue);
       marksKeys.push(maxValue);
-
-      // 删除不在范围内的元素 包括相等 [] ()
+      // 删除不在范围内的元素
       marksKeys = limitToSet(marksKeys, [minValue, maxValue]);
-      newMarks = {};
       marksKeys.forEach(item => {
         const mark = marks[item];
         newMarks[item] = mark ? mark : item.toString();
       });
     }
-    marksKeys.sort(sortable);
-    let newValue = [minValue];
-    if (!Array.isArray(value) && (value !== null && value !== undefined)) {
-      newValue = [value];
-    } else {
-      newValue = value;
+    if (!Array.isArray(value)) {
+      value = [value];
     }
-    newValue = newValue.slice(0, 2);
-
     if (Array.isArray(value)) {
       const { length } = value;
       value[0] = limit(value[0], [minValue, maxValue]);
       length === 2 && (value[1] = limit(value[1], [minValue, maxValue]));
     }
+    value = value.slice(0, 2);
+    value = value.sort(sortable);
     if (!preState) {
       return {
         changeBackground: false,
@@ -137,12 +130,12 @@ class Slider extends Component<TypeProps, TypeState> {
 
   mousedown = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
     const { index } = this.getNewIndex(e.pageX, e.pageY);
+    const { value } = this.state;
+    this.oldValue = [...value];
     this.mousedownFun(e.pageX, e.pageY, index);
   };
   mousedownFun = (pageX: number, pageY: number, index: number) => {
     const { disabled } = this.props;
-    const { value } = this.state;
-    this.oldValue = [...value];
     if (!this.props.value && !disabled) {
       this.publicmove(pageX, pageY, index);
       this.mousemove(index);
@@ -154,47 +147,37 @@ class Slider extends Component<TypeProps, TypeState> {
     const onMouseMove = (e: Object) => {
       e = e || window.event;
       this.publicmove(e.pageX, e.pageY, index);
-      //this.onchange(this.state.value);
       that = this;
     };
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', (e: Object) => {
       document.removeEventListener('mousemove', onMouseMove);
-      if (that) {
+      if (that && this.state.changeBackground) {
         const { value } = that.state;
         that.setState({ changeBackground: false });
-        //that.onchange(e, value);
+        that.onchange(e, value);
       }
     });
   };
   publicmove = (pageX: number, pageY: number, index: number) => {
+    console.log(index);
     this.setState({ index, changeBackground: true });
-    const { offsetLeft, offsetTop, marksKeys, value } = this.state;
-    const { maxValue, minValue } = this.style;
-    const { marks, vertical } = this.props;
-    const { moveValue, offsetRight, offsetBottom } = this.getMoveState(pageX, pageY);
-
-    let { diffX, diffY } = this.getMoveState(pageX, pageY);
-    const { markValue } = this.getMarkValue(marksKeys, moveValue);
+    const { marksKeys, value } = this.state;
+    const { marks } = this.props;
+    const { moveValue } = this.getMoveState(pageX, pageY);
     if (value && value.length === 1) {
       index = 0;
     }
-    if (marks && marksKeys) {
-      diffX = ((markValue - minValue) / (maxValue - minValue)) * 100;
-    }
+    const val = [...value];
     if (index !== undefined) {
-      value[index] = moveValue;
+      val[index] = moveValue;
       if (marks && marksKeys) {
-        value[index] = markValue;
+        const { markValue } = this.getMarkValue(marksKeys, moveValue);
+        val[index] = markValue;
       }
     }
-
     this.setState({
-      moveX: diffX,
-      moveY: diffY,
-      value: [limit(value[0], [maxValue, minValue]), limit(value[1], [maxValue, minValue])],
-      moveValue,
-      index,
+      value: val,
     });
   };
 
@@ -202,37 +185,29 @@ class Slider extends Component<TypeProps, TypeState> {
     const { onChange } = this.props;
     const { marks, marksKeys } = this.state;
     let oldValue = this.oldValue;
+    let newValue = [...value];
     let newItem, oldItem;
-    if (value) {
-      const { length } = value;
-      if (length === 2) {
-        value.sort(sortable);
-        oldValue.sort(sortable);
-        if (marks) {
-          newItem = [marks[value[0]], marks[value[1]]];
-          oldItem = [marks[oldValue[0]], marks[oldValue[1]]];
-        }
-      }
-      if (length === 1) {
-        value = value[0];
-        oldValue = oldValue[0];
-
-        if (marks) {
-          newItem = marks[value];
-          oldItem = marks[oldValue];
-        }
-      }
+    const { length } = newValue;
+    if (length === 1) {
+      newValue = value[0];
+      oldValue = oldValue[0];
+    }
+    if (marksKeys.length > 0 && length === 2) {
+      newItem = [marks[newValue[0]], marks[newValue[1]]];
+      oldItem = [marks[oldValue[0]], marks[oldValue[1]]];
+    } else {
+      newItem = marks[newValue];
+      oldItem = marks[oldValue];
     }
     const data: Object = {
       oldValue,
-      newValue: value,
+      newValue,
       event,
     };
-    if (marks && marksKeys.length > 0) {
+    if (marksKeys.length > 0) {
       data.newItem = newItem;
       data.oldItem = oldItem;
     }
-
     onChange && onChange(data);
   }
 
@@ -245,27 +220,25 @@ class Slider extends Component<TypeProps, TypeState> {
     }
   };
   mouseenter = (index: number) => {
-    const { disabled, value } = this.props;
-    let changeBackground = true;
-    if (disabled || value) {
-      changeBackground = false;
+    if (this.state.changeBackground || this.state.isMouseEnter) {
+      const { disabled, value } = this.props;
+      let changeBackground = true;
+      if (disabled || value) {
+        changeBackground = false;
+      }
+      this.setState({ index, changeBackground, isMouseEnter: true });
     }
-    this.setState({ index, changeBackground, isMouseEnter: true });
+
+    console.log(index);
   };
   mouseleave = () => {
     this.setState({ changeBackground: false, isMouseEnter: false });
   };
   getMoveState = (pageX: number, pageY: number) => {
-    const { offsetLeft, offsetTop, value, marksKeys } = this.state;
-    const { index } = this.state;
-    const { rangeW, rangeH, maxValue, btnWidth, minValue } = this.style;
-    const { marks, vertical } = this.props;
-    const halfBtnWidth = btnWidth / 2;
-    const offsetRight = rangeW + offsetLeft; //元素右边距离窗口左边的距离
-    const offsetBottom = rangeW + offsetTop; //元素底部距离窗顶部边的距离
-    const diffX = ((pageX - offsetLeft) / rangeW) * 100; //按钮定位的left值
+    const { offsetLeft, offsetTop } = this.state;
+    const { rangeW, maxValue, minValue } = this.style;
+    const { vertical } = this.props;
     const moveX = pageX - offsetLeft; //相对于轨道，按钮水平方向移动的距离
-    const diffY = ((pageY - offsetTop) / rangeW) * 100; //按钮定位的top值
     const moveY = rangeW - (pageY - offsetTop); //相对于轨道，按钮垂直方向移动的距离
     let moveValue = (moveX / rangeW) * (maxValue - minValue); //当前移动值
     if (vertical) {
@@ -274,11 +247,7 @@ class Slider extends Component<TypeProps, TypeState> {
     moveValue = (moveValue + minValue).toFixed(2);
     moveValue = Number(moveValue);
     return {
-      diffX,
-      diffY,
       moveValue,
-      offsetRight,
-      offsetBottom,
     };
   };
   getNewIndex = (pageX: number, pageY: number) => {
@@ -290,35 +259,31 @@ class Slider extends Component<TypeProps, TypeState> {
       const rightDistance = Math.abs(moveValue - value[1]);
       if (leftDistance <= rightDistance) {
         index = 0;
-      }
-      if (leftDistance > rightDistance) {
+      } else {
         index = 1;
       }
     }
     return { index };
   };
-  getMarkValue = (marksKeys: Array<number> = [], moveValue: number): { markValue: number } => {
-    if (marksKeys) {
-      let nextV = [];
-      for (let i = 0; i < marksKeys.length; i++) {
-        const nextIndex = i + 1;
-        if (i === marksKeys.length - 1) {
-          break;
-        }
-        const nextValue = marksKeys[nextIndex] * 1;
-        const currentValue = marksKeys[i] * 1;
-        const MiddleValue = (currentValue * 1 + nextValue * 1) * 0.5;
-        if (moveValue >= MiddleValue) {
-          nextV = [];
-          nextV.push(nextValue);
-        } else {
-          nextV.push(currentValue);
-        }
+  getMarkValue = (marksKeys: Array<number>, moveValue: number): { markValue: number } => {
+    let nextV = [];
+    for (let i = 0; i < marksKeys.length; i++) {
+      const nextIndex = i + 1;
+      if (i === marksKeys.length - 1) {
+        break;
       }
-      const markValue = nextV[0];
-      return { markValue };
+      const nextValue = marksKeys[nextIndex] * 1;
+      const currentValue = marksKeys[i] * 1;
+      const MiddleValue = (currentValue * 1 + nextValue * 1) * 0.5;
+      if (moveValue >= MiddleValue) {
+        nextV = [];
+        nextV.push(nextValue);
+      } else {
+        nextV.push(currentValue);
+      }
     }
-    return { markValue: 0 };
+    const markValue = nextV[0];
+    return { markValue };
   };
 
   componentDidMount() {
@@ -368,10 +333,11 @@ class Slider extends Component<TypeProps, TypeState> {
       index,
       moveValue,
       marksKeys,
-      marks = {},
+      marks,
       isMouseEnter,
     } = this.state;
     let { minValue, maxValue } = this.state;
+
     this.style = {
       background,
       btnWidth: parseInt(btnWidth),
@@ -393,9 +359,9 @@ class Slider extends Component<TypeProps, TypeState> {
       this.style.SliderInnerLeft =
         (Math.min(firstMinV, value[1] - minValue) / differenceValue) * 100;
     }
-    const hasMarksProps = 'marks' in this.props;
+
     const Dots = [];
-    if (hasMarksProps && marksKeys) {
+    if (marksKeys.length > 0) {
       for (let i: number = 0; i < marksKeys.length; i++) {
         const dotIndex = parseInt(marksKeys[i]);
         const dotVal = dotIndex - minValue;
@@ -420,6 +386,9 @@ class Slider extends Component<TypeProps, TypeState> {
     const mouseenter = this.mouseenter;
     const mouseleave = this.mouseleave;
     const showTip = tips && (changeBackground || isMouseEnter);
+    console.log('showTip', showTip);
+    console.log('changeBackground', changeBackground);
+    console.log('isMouseEnter', isMouseEnter);
     const size = {
       ...this.style,
       ...this.state,
@@ -443,12 +412,12 @@ class Slider extends Component<TypeProps, TypeState> {
       size.btnDisabled = btnDisabled;
       children.push(
         <Button
-          getTheme={getTheme}
           onMouseDown={mousedown}
           onMouseEnter={() => mouseenter(i)}
           onMouseLeave={mouseleave}
           {...size}
           key={i}
+          getTheme={getTheme}
         >
           {showTip && btnDisabled ? (
             <Tips>
@@ -464,7 +433,6 @@ class Slider extends Component<TypeProps, TypeState> {
     const hasIconsProps = 'icons' in this.props;
     const iconsChildren = [];
     if (hasIconsProps && value.length === 1 && Array.isArray(icons) && icons.length > 0) {
-      let iconIsChange;
       const middleVal = (maxValue + minValue) / 2;
       size.middleVal = middleVal;
       icons.forEach(function(currentValue, index) {
