@@ -153,14 +153,12 @@ class Slider extends Component<TypeProps, TypeState> {
     document.addEventListener('mouseup', (e: Object) => {
       document.removeEventListener('mousemove', onMouseMove);
       if (that && this.state.changeBackground) {
-        const { value } = that.state;
         that.setState({ changeBackground: false });
-        that.onchange(e, value);
+        that.onchange(e);
       }
     });
   };
   publicmove = (pageX: number, pageY: number, index: number) => {
-    console.log(index);
     this.setState({ index, changeBackground: true });
     const { marksKeys, value } = this.state;
     const { marks } = this.props;
@@ -181,10 +179,13 @@ class Slider extends Component<TypeProps, TypeState> {
     });
   };
 
-  onchange(event: SyntheticMouseEvent<HTMLButtonElement>, value: Array<number>): Object {
+  onchange(event: SyntheticMouseEvent<HTMLButtonElement>): Object {
     const { onChange } = this.props;
-    const { marks, marksKeys } = this.state;
-    let oldValue = this.oldValue;
+    const { marks, marksKeys, value } = this.state;
+    let oldValue = [];
+    if (this.oldValue) {
+      oldValue = [...this.oldValue];
+    }
     let newValue = [...value];
     let newItem, oldItem;
     const { length } = newValue;
@@ -213,23 +214,18 @@ class Slider extends Component<TypeProps, TypeState> {
 
   mouseup = (event: SyntheticMouseEvent<HTMLButtonElement>) => {
     const { disabled } = this.props;
-    const { value } = this.state;
     if (!disabled) {
       this.setState({ changeBackground: false });
-      this.onchange(event, value);
+      this.onchange(event);
     }
   };
   mouseenter = (index: number) => {
-    if (this.state.changeBackground || this.state.isMouseEnter) {
-      const { disabled, value } = this.props;
-      let changeBackground = true;
-      if (disabled || value) {
-        changeBackground = false;
-      }
-      this.setState({ index, changeBackground, isMouseEnter: true });
+    const { disabled, value } = this.props;
+    let changeBackground = true;
+    if (disabled || value) {
+      changeBackground = false;
     }
-
-    console.log(index);
+    this.setState({ index, changeBackground, isMouseEnter: true });
   };
   mouseleave = () => {
     this.setState({ changeBackground: false, isMouseEnter: false });
@@ -386,9 +382,6 @@ class Slider extends Component<TypeProps, TypeState> {
     const mouseenter = this.mouseenter;
     const mouseleave = this.mouseleave;
     const showTip = tips && (changeBackground || isMouseEnter);
-    console.log('showTip', showTip);
-    console.log('changeBackground', changeBackground);
-    console.log('isMouseEnter', isMouseEnter);
     const size = {
       ...this.style,
       ...this.state,
