@@ -8,23 +8,35 @@ import renderer from 'react-test-renderer';
 import Enzyme, { mount, shallow } from 'enzyme';
 import 'jest-styled-components';
 import { async } from 'rxjs/internal/scheduler/async';
+import Theme from '../../theme/index';
+import Widgets from '../../consts/index';
 const { expect: exp } = chai;
 Enzyme.configure({ adapter: new Adapter() });
 const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 describe('default', () => {
   it('Wrapper', () => {
-    const Target = <Slider />;
-    expect(renderer.create(Target).toJSON()).toMatchSnapshot();
+    const target = <Slider />;
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('css', () => {
     const target = mount(
-      <Slider background={'#f22735'} btnWidth={16} btnHeight={16} rangeH={4} rangeW={100} />
+      // <Slider background={'#f22735'} btnWidth={16} btnHeight={16} rangeH={4} rangeW={100} />
+      <Theme
+        config={{
+          [Widgets.SliderButton]: { color: '#333' },
+          [Widgets.Slider]: { color: '#f22735' },
+        }}
+      >
+        <Slider rangeH={4} rangeW={100} />
+      </Theme>
     );
+    console.log(target.props());
     expect(target.props().background).toBe('#f22735');
     expect(target.props().btnWidth).toBe(16);
     expect(target.props().btnHeight).toBe(16);
     expect(target.props().rangeH).toBe(4);
     expect(target.props().rangeW).toBe(100);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue', () => {
     const target = mount(<Slider defaultValue={10} />);

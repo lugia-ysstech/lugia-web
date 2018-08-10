@@ -42,7 +42,7 @@ export default class Sl extends Component<any> {
               [Widgets.Slider]: { color: '#2e5df2' },
             }}
           >
-            <Slider rangeH={4} rangeW={100} />
+            <Slider rangeH={4} rangeW={100} minValue={undefined} defaultValue={undefined} tips />
           </Theme>
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>

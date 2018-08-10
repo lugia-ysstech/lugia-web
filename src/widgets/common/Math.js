@@ -11,26 +11,15 @@ export function limit(val: number, range: number[]) {
 }
 
 export function limitToSet(val: number[], range: number[]): number[] {
-  const rangeVal = range.sort(sortable);
-  const min = rangeVal[0],
-    max = rangeVal[1];
-  let NewVal = [];
-  //去重
-  for (const i in val) {
-    if (NewVal.indexOf(val[i]) < 0) {
-      NewVal.push(val[i]);
+  const { min, max } = getMinAndMax(range);
+  const obj = {};
+  const newVal = val.sort(sortable).filter(i => {
+    if (!(i in obj)) {
+      obj[i] = i;
+      return i >= min && i <= max;
     }
-  }
-  //排序
-  NewVal.sort(sortable);
-  //删除不在范围内的值
-  const minIndex = NewVal.indexOf(min);
-  const maxIndex = NewVal.indexOf(max);
-  if (minIndex > -1 && maxIndex > -1) {
-    NewVal = NewVal.slice(minIndex, maxIndex + 1);
-  }
-  //返回区间内的值;
-  return NewVal;
+  });
+  return newVal;
 }
 
 export function getMinAndMax(range: number[]): { min: number, max: number } {

@@ -35,7 +35,8 @@ type CssTypeProps = {
   disabled?: boolean,
   marksData?: Object,
   iconStyle?: Object,
-  middleVal?: number,
+  minValue?: number,
+  maxValue?: number,
   vertical?: boolean,
 };
 export const SliderWrapper = styled.div`
@@ -132,11 +133,15 @@ export const getStyled = (props: CssTypeProps) => {
     disabled,
     marksData,
     iconStyle,
-    middleVal,
+    minValue,
+    maxValue,
     vertical,
     getTheme,
   } = props;
-  const theme = getTheme();
+  let theme = {};
+  if (getTheme) {
+    theme = getTheme();
+  }
   const background = theme.color || themeColor;
   const doneBackground = background; //轨道划过完成的颜色
   const { hoverColor } = colorsFunc(doneBackground);
@@ -259,6 +264,7 @@ export const getStyled = (props: CssTypeProps) => {
   if (iconStyle && value && value.length === 1) {
     const emTimes = parseInt(iconStyle.style.fontSize) / 12;
     const positionValue = em((parseInt(iconStyle.style.fontSize) + 22) / emTimes);
+    const middleVal = (minValue + maxValue) / 2;
     if (iconStyle.position === 'left') {
       iconPosition = `
         left:-${positionValue};
