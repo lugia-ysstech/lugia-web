@@ -70,4 +70,3 @@ export function testFireNullKeyBoardEvent(keyEvent: KeyEventType) {
 
   component.find('input').simulate(keyEvent.substr(2).toLowerCase(), event);
 }
-

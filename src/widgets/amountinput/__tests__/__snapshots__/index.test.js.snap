@@ -1,0 +1,1453 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AmountInputDemo Component JSON 1`] = `
+.c0 {
+  float: left;
+  margin-left: 50px;
+}
+
+.c8 {
+  padding-bottom: 0.8333333333333334em;
+  box-shadow: none;
+}
+
+.c1 {
+  width: 16.666666666666668em;
+  position: relative;
+  display: inline-block;
+}
+
+.c14 {
+  margin: 0.8333333333333334em;
+  width: 29.166666666666668em;
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+}
+
+.c15 {
+  position: relative;
+  display: inline-block;
+  margin: 0.8333333333333334em;
+}
+
+.c3 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px solid #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c3:hover {
+  border-color: #cccccc;
+}
+
+.c3::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c3::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c3:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c3::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c3:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c13 {
+  height: 2.666666666666667em;
+  cursor: not-allowed;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px solid #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c13:hover {
+  border-color: #cccccc;
+}
+
+.c13::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c13::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c13:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c13::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c13:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c16 {
+  height: 2.3333333333333335em;
+  cursor: text;
+  width: 29.166666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px solid #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c16:hover {
+  border-color: #cccccc;
+}
+
+.c16::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c16::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c16:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c16::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c16:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c17 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 29.166666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px solid #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c17:hover {
+  border-color: #cccccc;
+}
+
+.c17::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c17::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c17:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c17::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c17:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c18 {
+  height: 3.1666666666666665em;
+  cursor: text;
+  width: 29.166666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px solid #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c18:hover {
+  border-color: #cccccc;
+}
+
+.c18::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c18::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c18:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c18::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c18:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c4 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.2em;
+  right: 0.8333333333333334em;
+  color: rgba(0,0,0,0.65);
+  display: inline-block;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c6 {
+  background: transparent;
+  left: 2.5em;
+  color: #999999;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 2;
+  font-size: 1.2rem;
+}
+
+.c7 {
+  display: none;
+}
+
+.c9 {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1051;
+}
+
+.c10 {
+  height: 2.166666666666667em;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.75);
+  box-sizing: border-box;
+}
+
+.c11 {
+  border-color: transparent;
+  left: 1.3333333333333335em;
+  bottom: 0.25em;
+  border-width: 0.4166666666666667em 0.4166666666666667em 0;
+  border-top-color: rgba(0,0,0,0.75);
+  position: absolute;
+  border-style: solid;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.75);
+}
+
+.c12 {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 20.833333333333336em;
+  padding: 0.5em 0.6666666666666667em;
+  color: #ffffff;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 0.33333333333333337em;
+  box-shadow: 0 0.16666666666666669em 0.6666666666666667em rgba(0,0,0,0.15);
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <p>
+      formatter AmountInput
+    </p>
+    <span
+      className="sv c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span>
+        <span
+          className="sv c2"
+        >
+          <input
+            className="c3"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            readOnly={false}
+            size="default"
+            value="¥"
+          />
+          <i
+            className="lugia-icon-reminder_close_circle c4 c5"
+            onClick={[Function]}
+          />
+        </span>
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+        请填写金额
+         
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span
+              onClick={[Function]}
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      default AmountInput
+    </p>
+    <span
+      className="sv c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span>
+        <span
+          className="sv c2"
+        >
+          <input
+            className="c3"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            readOnly={false}
+            size="default"
+            value="¥"
+          />
+          <i
+            className="lugia-icon-reminder_close_circle c4 c5"
+            onClick={[Function]}
+          />
+        </span>
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+        请填写金额
+         
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span
+              onClick={[Function]}
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      禁用状态 
+    </p>
+    <span
+      className="sv c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span>
+        <span
+          className="sv c2"
+        >
+          <input
+            className="c13"
+            disabled={true}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            readOnly={false}
+            size="default"
+            value="¥"
+          />
+          <i
+            className="lugia-icon-reminder_close_circle c4 c5"
+            onClick={[Function]}
+          />
+        </span>
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+         
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span
+              onClick={[Function]}
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <span>
+      <p>
+        small size
+      </p>
+      <span
+        className="sv c14"
+        onBlur={[Function]}
+        onFocus={[Function]}
+      >
+        <span>
+          <span
+            className="sv c15"
+          >
+            <input
+              className="c16"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              readOnly={false}
+              size="small"
+              value="¥"
+            />
+            <i
+              className="lugia-icon-reminder_close_circle c4 c5"
+              onClick={[Function]}
+            />
+          </span>
+        </span>
+        <span
+          className="c6"
+          onClick={[Function]}
+        >
+          请填写金额
+           
+        </span>
+      </span>
+      <div
+        className="c7"
+      >
+        <div
+          className="c8 c9"
+        >
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
+              fx="bottom"
+            />
+            <div
+              className="c12"
+            >
+              <span
+                onClick={[Function]}
+              >
+                
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        default size
+      </p>
+      <span
+        className="sv c14"
+        onBlur={[Function]}
+        onFocus={[Function]}
+      >
+        <span>
+          <span
+            className="sv c15"
+          >
+            <input
+              className="c17"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              readOnly={false}
+              size="default"
+              value="¥"
+            />
+            <i
+              className="lugia-icon-reminder_close_circle c4 c5"
+              onClick={[Function]}
+            />
+          </span>
+        </span>
+        <span
+          className="c6"
+          onClick={[Function]}
+        >
+          请填写金额
+           
+        </span>
+      </span>
+      <div
+        className="c7"
+      >
+        <div
+          className="c8 c9"
+        >
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
+              fx="bottom"
+            />
+            <div
+              className="c12"
+            >
+              <span
+                onClick={[Function]}
+              >
+                
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        large size
+      </p>
+      <span
+        className="sv c14"
+        onBlur={[Function]}
+        onFocus={[Function]}
+      >
+        <span>
+          <span
+            className="sv c15"
+          >
+            <input
+              className="c18"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              readOnly={false}
+              size="large"
+              value="¥"
+            />
+            <i
+              className="lugia-icon-reminder_close_circle c4 c5"
+              onClick={[Function]}
+            />
+          </span>
+        </span>
+        <span
+          className="c6"
+          onClick={[Function]}
+        >
+          请填写金额
+           
+        </span>
+      </span>
+      <div
+        className="c7"
+      >
+        <div
+          className="c8 c9"
+        >
+          <div
+            className="c10"
+          >
+            <div
+              className="c11"
+              fx="bottom"
+            />
+            <div
+              className="c12"
+            >
+              <span
+                onClick={[Function]}
+              >
+                
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      受限Input
+    </p>
+    <span
+      className="sv c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span>
+        <span
+          className="sv c2"
+        >
+          <input
+            className="c3"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            readOnly={false}
+            size="default"
+            value="¥"
+          />
+          <i
+            className="lugia-icon-reminder_close_circle c4 c5"
+            onClick={[Function]}
+          />
+        </span>
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+         
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span
+              onClick={[Function]}
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      有默认值的 受限Input
+    </p>
+    <span
+      className="sv c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span>
+        <span
+          className="sv c2"
+        >
+          <input
+            className="c3"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            readOnly={false}
+            size="default"
+            value="¥123,456"
+          />
+          <i
+            className="lugia-icon-reminder_close_circle c4 c5"
+            onClick={[Function]}
+          />
+        </span>
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span
+              onClick={[Function]}
+            >
+              壹拾贰万叁仟肆佰伍拾陆元整
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      amountPrefix: '¥' transform: false 
+    </p>
+    <span
+      className="sv c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span>
+        <span
+          className="sv c2"
+        >
+          <input
+            className="c3"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            readOnly={false}
+            size="default"
+            value="¥"
+          />
+          <i
+            className="lugia-icon-reminder_close_circle c4 c5"
+            onClick={[Function]}
+          />
+        </span>
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+         
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span>
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      amountPrefix: '$' transform: false 
+    </p>
+    <span
+      className="sv c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span>
+        <span
+          className="sv c2"
+        >
+          <input
+            className="c3"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            readOnly={false}
+            size="default"
+            value="$"
+          />
+          <i
+            className="lugia-icon-reminder_close_circle c4 c5"
+            onClick={[Function]}
+          />
+        </span>
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+         
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span>
+              $
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AmountInputDemo props: placeholder  1`] = `
+Array [
+  .c0 {
+  width: 16.666666666666668em;
+  position: relative;
+  display: inline-block;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px solid #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c2:hover {
+  border-color: #cccccc;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.2em;
+  right: 0.8333333333333334em;
+  color: rgba(0,0,0,0.65);
+  display: inline-block;
+}
+
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c5 {
+  background: transparent;
+  left: 2.5em;
+  color: #999999;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 2;
+  font-size: 1.2rem;
+}
+
+<span
+    className="sv c0"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <span>
+      <span
+        className="sv c1"
+      >
+        <input
+          className="c2"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close_circle c3 c4"
+          onClick={[Function]}
+        />
+      </span>
+    </span>
+    <span
+      className="c5"
+      onClick={[Function]}
+    >
+      请填写内容
+       
+    </span>
+  </span>,
+  .c1 {
+  padding-bottom: 0.8333333333333334em;
+  box-shadow: none;
+}
+
+.c0 {
+  display: none;
+}
+
+.c2 {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1051;
+}
+
+.c3 {
+  height: 2.166666666666667em;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.75);
+  box-sizing: border-box;
+}
+
+.c4 {
+  border-color: transparent;
+  left: 1.3333333333333335em;
+  bottom: 0.25em;
+  border-width: 0.4166666666666667em 0.4166666666666667em 0;
+  border-top-color: rgba(0,0,0,0.75);
+  position: absolute;
+  border-style: solid;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.75);
+}
+
+.c5 {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 20.833333333333336em;
+  padding: 0.5em 0.6666666666666667em;
+  color: #ffffff;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 0.33333333333333337em;
+  box-shadow: 0 0.16666666666666669em 0.6666666666666667em rgba(0,0,0,0.15);
+}
+
+<div
+    className="c0"
+  >
+    <div
+      className="c1 c2"
+    >
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+          fx="bottom"
+        />
+        <div
+          className="c5"
+        >
+          <span
+            onClick={[Function]}
+          >
+            
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`AmountInputDemo props: placeholder  2`] = `
+Array [
+  .c0 {
+  width: 16.666666666666668em;
+  position: relative;
+  display: inline-block;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px solid #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c2:hover {
+  border-color: #cccccc;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.2em;
+  right: 0.8333333333333334em;
+  color: rgba(0,0,0,0.65);
+  display: inline-block;
+}
+
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c5 {
+  background: transparent;
+  left: 2.5em;
+  color: #999999;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 2;
+  font-size: 1.2rem;
+}
+
+<span
+    className="sv c0"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <span>
+      <span
+        className="sv c1"
+      >
+        <input
+          className="c2"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close_circle c3 c4"
+          onClick={[Function]}
+        />
+      </span>
+    </span>
+    <span
+      className="c5"
+      onClick={[Function]}
+    >
+      
+       
+    </span>
+  </span>,
+  .c1 {
+  padding-bottom: 0.8333333333333334em;
+  box-shadow: none;
+}
+
+.c0 {
+  display: none;
+}
+
+.c2 {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1051;
+}
+
+.c3 {
+  height: 2.166666666666667em;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.75);
+  box-sizing: border-box;
+}
+
+.c4 {
+  border-color: transparent;
+  left: 1.3333333333333335em;
+  bottom: 0.25em;
+  border-width: 0.4166666666666667em 0.4166666666666667em 0;
+  border-top-color: rgba(0,0,0,0.75);
+  position: absolute;
+  border-style: solid;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.75);
+}
+
+.c5 {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 20.833333333333336em;
+  padding: 0.5em 0.6666666666666667em;
+  color: #ffffff;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 0.33333333333333337em;
+  box-shadow: 0 0.16666666666666669em 0.6666666666666667em rgba(0,0,0,0.15);
+}
+
+<div
+    className="c0"
+  >
+    <div
+      className="c1 c2"
+    >
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+          fx="bottom"
+        />
+        <div
+          className="c5"
+        >
+          <span
+            onClick={[Function]}
+          >
+            
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

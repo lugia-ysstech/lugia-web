@@ -47,11 +47,7 @@ export const getColor = (props: ToolTipStyleProps) => {
 export const getSize = (props: ToolTipStyleProps) => {
   const { size } = props;
   return `height:${
-    size === 'large'
-      ? LargeHeight 
-      : size === 'small'
-        ? SmallHeight 
-        : DefaultHeight 
+    size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight
   };`;
 };
 

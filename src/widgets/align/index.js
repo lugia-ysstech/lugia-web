@@ -53,6 +53,11 @@ export default class Align extends React.Component<PropsType> {
       points: config ? config : builtinPlacements[defaultAligh],
       offset: [offsetX, offsetY],
     };
+
+    if (typeof global !== 'undefined' && global.svtest === true) {
+      return <VisibleBox visible={visible}>{children}</VisibleBox>;
+    }
+
     return (
       <VisibleBox visible={visible}>
         <RcAlign target={getTargetDom} align={rcAlignArg} monitorWindowResize={autoResize}>
