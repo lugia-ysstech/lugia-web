@@ -40,9 +40,10 @@ type TypeState = {
   minValue: number,
   maxValue: number,
   marks: { [key: number]: string | Object },
-  isMouseEnter?: boolean,
+  isInBall: boolean,
 };
 Button.displayName = 'Button';
+
 class Slider extends Component<TypeProps, TypeState> {
   sliderRange: any;
   style: {
@@ -121,43 +122,34 @@ class Slider extends Component<TypeProps, TypeState> {
         minValue: parseFloat(minValue),
         maxValue: parseFloat(maxValue),
         marks: newMarks,
-        isMouseEnter: false,
+        isInBall: false,
       };
     }
   }
 
+  index: number;
+  pageX: number;
+  pageY: number;
+  draging: boolean;
   mousedown = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
     e = e || window.event;
     const { pageX, pageY } = e;
-    console.log(pageX, pageY);
     const { index } = this.getNewIndex(pageX, pageY);
-    const { value, isMouseEnter } = this.state;
+    const { value, isInBall } = this.state;
     this.oldValue = [...value];
     const { disabled } = this.props;
-
+    this.pageX = pageX;
+    this.pageY = pageY;
     if (!this.props.value && !disabled) {
-      if (!isMouseEnter) {
+      setTimeout(() => (this.draging = isInBall), 0);
+      if (!isInBall) {
         this.publicmove(pageX, pageY, index);
       }
-      this.mousemove(index);
+      this.index = index;
       this.setState({ changeBackground: true });
     }
   };
-  mousemove = (index: number) => {
-    const onMouseMove = (e: Object) => {
-      console.log('addEventListener>>>mousemove');
-      e = e || window.event;
-      this.publicmove(e.pageX, e.pageY, index);
-    };
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', (e: Object) => {
-      document.removeEventListener('mousemove', onMouseMove);
-      if (this.state.changeBackground) {
-        this.setState({ changeBackground: false });
-        this.onchange(e);
-      }
-    });
-  };
+
   publicmove = (pageX: number, pageY: number, index: number) => {
     const { marksKeys, value } = this.state;
     const { moveValue } = this.getMoveState(pageX, pageY);
@@ -181,10 +173,12 @@ class Slider extends Component<TypeProps, TypeState> {
     let newValue = value.sort(sortable);
     const oldVal = oldValue && oldValue.sort(sortable);
     const { length } = newValue;
+
     function getItem(val) {
       const item = length === 2 ? [marks[val[0]], marks[val[1]]] : marks[val[0]];
       return item;
     }
+
     if (length === 1) {
       newValue = value[0];
       oldValue = oldValue && oldValue[0];
@@ -220,10 +214,10 @@ class Slider extends Component<TypeProps, TypeState> {
     if (disabled || value) {
       changeBackground = false;
     }
-    this.setState({ index, changeBackground, isMouseEnter: true });
+    this.setState({ index, changeBackground, isInBall: true });
   };
   mouseleave = () => {
-    this.setState({ changeBackground: false, isMouseEnter: false });
+    this.setState({ changeBackground: false, isInBall: false });
   };
   getMoveState = (pageX: number, pageY: number) => {
     const { offsetLeft, offsetTop, maxValue, minValue } = this.state;
@@ -270,6 +264,7 @@ class Slider extends Component<TypeProps, TypeState> {
   };
 
   componentDidMount() {
+    this.initListener();
     const { disabled } = this.state;
     const { offsetLeft, offsetTop } = this.getOffset();
     this.setState({
@@ -280,6 +275,29 @@ class Slider extends Component<TypeProps, TypeState> {
       this.mousedown = null;
     }
   }
+
+  onDocMouseMove = (e: Object) => {
+    if (this.draging) {
+      e = e || window.event;
+      const { pageX, pageY } = e;
+      if (this.pageX === pageX && this.pageY === pageY) {
+        return;
+      }
+      this.publicmove(e.pageX, e.pageY, this.index);
+    }
+  };
+
+  initListener = () => {
+    //TODO: unmount 释放监听
+    document.addEventListener('mousemove', this.onDocMouseMove);
+    document.addEventListener('mouseup', (e: Object) => {
+      this.draging = false;
+      if (this.state.changeBackground) {
+        this.setState({ changeBackground: false });
+        this.onchange(e);
+      }
+    });
+  };
 
   getOffset() {
     const sliderRangeNode = this.sliderRange.current; //slider react 元素
@@ -320,7 +338,7 @@ class Slider extends Component<TypeProps, TypeState> {
       maxValue,
       marksKeys,
       marks,
-      isMouseEnter,
+      isInBall,
     } = this.state;
     this.style = {
       background,
@@ -331,6 +349,7 @@ class Slider extends Component<TypeProps, TypeState> {
       SliderInnerWidth: 0,
       SliderInnerLeft: 0,
     };
+
     function getSliderInnerSIze(name) {
       const { length } = value;
       let difVal = length === 2 ? Math.abs(value[0] - value[1]) : value[0] - minValue;
@@ -368,7 +387,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const mouseup = this.mouseup;
     const mouseenter = this.mouseenter;
     const mouseleave = this.mouseleave;
-    const showTip = tips && (changeBackground || isMouseEnter);
+    const showTip = tips && (changeBackground || isInBall);
     const size = {
       ...this.style,
       ...this.state,

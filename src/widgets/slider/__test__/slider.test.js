@@ -551,7 +551,7 @@ describe('default', () => {
     expect(target.state().index).toBe(0);
     target.instance().mouseenter(1);
     expect(target.state().index).toBe(1);
-    expect(target.state().isMouseEnter).toBe(true);
+    expect(target.state().isInBall).toBe(true);
     expect(target.state().changeBackground).toBe(true);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
@@ -559,7 +559,7 @@ describe('default', () => {
     const target = mount(<Slider defaultValue={[0, 20]} tips />);
     target.instance().setState({ offsetLeft: 70 });
     target.instance().mouseleave();
-    expect(target.state().isMouseEnter).toBe(false);
+    expect(target.state().isInBall).toBe(false);
     expect(target.state().changeBackground).toBe(false);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
