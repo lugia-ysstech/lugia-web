@@ -373,7 +373,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   >
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
@@ -382,14 +381,11 @@ exports[`CheckBox CheckBox CSS 1`] = `
       >
         <input
           className="c3"
-          disabled={undefined}
           onBlur={[Function]}
           type="checkbox"
         />
         <span
-          checked={undefined}
           className="c4"
-          disabled={undefined}
         />
       </span>
       <span
@@ -404,7 +400,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   >
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
@@ -413,14 +408,12 @@ exports[`CheckBox CheckBox CSS 1`] = `
       >
         <input
           className="c3"
-          disabled={undefined}
           onBlur={[Function]}
           type="checkbox"
         />
         <span
           checked={true}
           className="c6"
-          disabled={undefined}
         />
       </span>
       <span
@@ -435,7 +428,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   >
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
@@ -444,14 +436,12 @@ exports[`CheckBox CheckBox CSS 1`] = `
       >
         <input
           className="c3"
-          disabled={undefined}
           onBlur={[Function]}
           type="checkbox"
         />
         <span
           checked={true}
           className="c6"
-          disabled={undefined}
         />
       </span>
       <span
@@ -480,7 +470,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
           type="checkbox"
         />
         <span
-          checked={undefined}
           className="c9"
           disabled={true}
         />
@@ -559,7 +548,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
   >
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
@@ -568,14 +556,11 @@ exports[`CheckBox CheckBox CSS 1`] = `
       >
         <input
           className="c3"
-          disabled={undefined}
           onBlur={[Function]}
           type="checkbox"
         />
         <span
-          checked={undefined}
           className="c11"
-          disabled={undefined}
         />
       </span>
       <span
@@ -588,12 +573,9 @@ exports[`CheckBox CheckBox CSS 1`] = `
   <div
     className="c0"
   >
-    <span
-      className={undefined}
-    >
+    <span>
       <label
         className="c12"
-        disabled={undefined}
         onClick={[Function]}
       >
         <span
@@ -602,14 +584,11 @@ exports[`CheckBox CheckBox CSS 1`] = `
         >
           <input
             className="c3"
-            disabled={undefined}
             onBlur={[Function]}
             type="checkbox"
           />
           <span
-            checked={undefined}
             className="c13"
-            disabled={undefined}
           />
         </span>
         <span
@@ -623,12 +602,9 @@ exports[`CheckBox CheckBox CSS 1`] = `
   <div
     className="c0"
   >
-    <span
-      className={undefined}
-    >
+    <span>
       <label
         className="c12"
-        disabled={undefined}
         onClick={[Function]}
       >
         <span
@@ -637,14 +613,12 @@ exports[`CheckBox CheckBox CSS 1`] = `
         >
           <input
             className="c3"
-            disabled={undefined}
             onBlur={[Function]}
             type="checkbox"
           />
           <span
             checked={true}
             className="c14"
-            disabled={undefined}
           />
         </span>
         <span

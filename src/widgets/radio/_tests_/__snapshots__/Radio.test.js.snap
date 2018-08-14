@@ -235,16 +235,13 @@ exports[`Radio Radio css 1`] = `
     </p>
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
         className="c2"
       >
         <span
-          checked={undefined}
           className="c3"
-          disabled={undefined}
         />
       </span>
       <span
@@ -262,7 +259,6 @@ exports[`Radio Radio css 1`] = `
     </p>
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
@@ -271,7 +267,6 @@ exports[`Radio Radio css 1`] = `
         <span
           checked={true}
           className="c5"
-          disabled={undefined}
         />
       </span>
       <span
@@ -289,7 +284,6 @@ exports[`Radio Radio css 1`] = `
     </p>
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
@@ -298,7 +292,6 @@ exports[`Radio Radio css 1`] = `
         <span
           checked={true}
           className="c5"
-          disabled={undefined}
         />
       </span>
       <span
@@ -323,7 +316,6 @@ exports[`Radio Radio css 1`] = `
         className="c2"
       >
         <span
-          checked={undefined}
           className="c7"
           disabled={true}
         />
@@ -363,16 +355,13 @@ exports[`Radio Radio css 1`] = `
     </p>
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
         className="c2"
       >
         <span
-          checked={undefined}
           className="c3"
-          disabled={undefined}
         />
       </span>
       <span
@@ -383,16 +372,13 @@ exports[`Radio Radio css 1`] = `
     </label>
     <label
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
         className="c2"
       >
         <span
-          checked={undefined}
           className="c3"
-          disabled={undefined}
         />
       </span>
       <span
@@ -406,7 +392,6 @@ exports[`Radio Radio css 1`] = `
     </p>
     <label
       className="c9"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
@@ -415,7 +400,6 @@ exports[`Radio Radio css 1`] = `
         <span
           checked={true}
           className="c5"
-          disabled={undefined}
         />
       </span>
       <span
@@ -426,16 +410,13 @@ exports[`Radio Radio css 1`] = `
     </label>
     <label
       className="c9"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
         className="c2"
       >
         <span
-          checked={undefined}
           className="c3"
-          disabled={undefined}
         />
       </span>
       <span
@@ -445,12 +426,9 @@ exports[`Radio Radio css 1`] = `
       </span>
     </label>
   </div>
-  <span
-    className={undefined}
-  >
+  <span>
     <label
       className="c10"
-      disabled={undefined}
       onClick={[Function]}
     >
       <span
@@ -459,7 +437,6 @@ exports[`Radio Radio css 1`] = `
         <span
           checked={true}
           className="c11"
-          disabled={undefined}
         />
       </span>
       <span

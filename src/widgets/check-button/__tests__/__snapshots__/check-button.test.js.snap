@@ -204,9 +204,7 @@ exports[`Button ChedckButton CSS 1`] = `
       size
     </h4>
     <label
-      checked={undefined}
       className="c1"
-      disabled={undefined}
       size="small"
     >
       <input
@@ -215,9 +213,7 @@ exports[`Button ChedckButton CSS 1`] = `
         type="radio"
       />
       <span
-        checked={undefined}
         className="c3"
-        disabled={undefined}
         onClick={[Function]}
         size="small"
         type="checkbox"
@@ -229,10 +225,7 @@ exports[`Button ChedckButton CSS 1`] = `
       className="c4"
     />
     <label
-      checked={undefined}
       className="c1"
-      disabled={undefined}
-      size={undefined}
     >
       <input
         className="c2"
@@ -240,11 +233,8 @@ exports[`Button ChedckButton CSS 1`] = `
         type="radio"
       />
       <span
-        checked={undefined}
         className="c5"
-        disabled={undefined}
         onClick={[Function]}
-        size={undefined}
         type="checkbox"
       >
         CheckButton
@@ -254,9 +244,7 @@ exports[`Button ChedckButton CSS 1`] = `
       className="c4"
     />
     <label
-      checked={undefined}
       className="c1"
-      disabled={undefined}
       size="large"
     >
       <input
@@ -265,9 +253,7 @@ exports[`Button ChedckButton CSS 1`] = `
         type="radio"
       />
       <span
-        checked={undefined}
         className="c6"
-        disabled={undefined}
         onClick={[Function]}
         size="large"
         type="checkbox"
@@ -279,9 +265,7 @@ exports[`Button ChedckButton CSS 1`] = `
       className="c4"
     />
     <label
-      checked={undefined}
       className="c1"
-      disabled={undefined}
       size="bigger"
     >
       <input
@@ -290,9 +274,7 @@ exports[`Button ChedckButton CSS 1`] = `
         type="radio"
       />
       <span
-        checked={undefined}
         className="c7"
-        disabled={undefined}
         onClick={[Function]}
         size="bigger"
         type="checkbox"
@@ -310,8 +292,6 @@ exports[`Button ChedckButton CSS 1`] = `
     <label
       checked={true}
       className="c8"
-      disabled={undefined}
-      size={undefined}
     >
       <input
         className="c2"
@@ -321,9 +301,7 @@ exports[`Button ChedckButton CSS 1`] = `
       <span
         checked={true}
         className="c9"
-        disabled={undefined}
         onClick={[Function]}
-        size={undefined}
         type="checkbox"
       >
         CheckButton
@@ -333,10 +311,7 @@ exports[`Button ChedckButton CSS 1`] = `
       className="c4"
     />
     <label
-      checked={undefined}
       className="c1"
-      disabled={undefined}
-      size={undefined}
     >
       <input
         className="c2"
@@ -344,11 +319,8 @@ exports[`Button ChedckButton CSS 1`] = `
         type="radio"
       />
       <span
-        checked={undefined}
         className="c5"
-        disabled={undefined}
         onClick={[Function]}
-        size={undefined}
         type="checkbox"
       >
         CheckButton
@@ -362,10 +334,8 @@ exports[`Button ChedckButton CSS 1`] = `
       disabled
     </h4>
     <label
-      checked={undefined}
       className="c10"
       disabled={true}
-      size={undefined}
     >
       <input
         className="c2"
@@ -373,11 +343,9 @@ exports[`Button ChedckButton CSS 1`] = `
         type="radio"
       />
       <span
-        checked={undefined}
         className="c11"
         disabled={true}
         onClick={[Function]}
-        size={undefined}
         type="checkbox"
       >
         CheckButton
@@ -390,7 +358,6 @@ exports[`Button ChedckButton CSS 1`] = `
       checked={true}
       className="c10"
       disabled={true}
-      size={undefined}
     >
       <input
         className="c2"
@@ -402,7 +369,6 @@ exports[`Button ChedckButton CSS 1`] = `
         className="c12"
         disabled={true}
         onClick={[Function]}
-        size={undefined}
         type="checkbox"
       >
         CheckButton
