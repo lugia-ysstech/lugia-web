@@ -1,0 +1,473 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio Radio css 1`] = `
+.c1 {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #333333;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  width: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 2.142857142857143em;
+}
+
+.c1:hover > span > span {
+  border: 1px solid #684fff;
+}
+
+.c6 {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #cccccc;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  width: none;
+  cursor: not-allowed;
+  display: inline-block;
+  margin-right: 2.142857142857143em;
+}
+
+.c6:hover > span > span {
+  border: 1px solid #e8e8e8;
+}
+
+.c9 {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #333333;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  width: none;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 0.7142857142857143em;
+}
+
+.c9:hover > span > span {
+  border: 1px solid #684fff;
+}
+
+.c10 {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #333333;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  width: 8.571428571428571em;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 2.142857142857143em;
+  margin: 1.4285714285714286em;
+}
+
+.c10:hover > span > span {
+  border: 1px solid red;
+}
+
+.c2 {
+  margin: 0;
+  outline: none;
+  line-height: 1;
+  vertical-align: text-bottom;
+  display: inline-block;
+}
+
+.c4 {
+  padding-left: 0.7142857142857143em;
+}
+
+.c3 {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.142857142857143em;
+  height: 1.142857142857143em;
+  border-radius: 50%;
+  border: 1px solid #cccccc;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c5 {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.142857142857143em;
+  height: 1.142857142857143em;
+  border-radius: 50%;
+  border: 1px solid #684fff;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c5::after {
+  position: absolute;
+  width: 0.8571428571428572em;
+  height: 0.8571428571428572em;
+  left: 0.14285714285714288em;
+  top: 0.14285714285714288em;
+  border-radius: 0.7142857142857143em;
+  display: table;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+  background-color: #684fff;
+}
+
+.c7 {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.142857142857143em;
+  height: 1.142857142857143em;
+  border-radius: 50%;
+  border: 1px solid #cccccc;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background-color: #f2f2f2;
+  border: 1px solid #e8e8e8;
+  color: #cccccc;
+}
+
+.c7::after {
+  background-color: none;
+}
+
+.c8 {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.142857142857143em;
+  height: 1.142857142857143em;
+  border-radius: 50%;
+  border: 1px solid #684fff;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background-color: #f2f2f2;
+  border: 1px solid #e8e8e8;
+  color: #cccccc;
+}
+
+.c8::after {
+  position: absolute;
+  width: 0.8571428571428572em;
+  height: 0.8571428571428572em;
+  left: 0.14285714285714288em;
+  top: 0.14285714285714288em;
+  border-radius: 0.7142857142857143em;
+  display: table;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+  background-color: #cccccc;
+}
+
+.c8::after {
+  background-color: #cccccc;
+}
+
+.c11 {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.142857142857143em;
+  height: 1.142857142857143em;
+  border-radius: 50%;
+  border: 1px solid red;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c11::after {
+  position: absolute;
+  width: 0.8571428571428572em;
+  height: 0.8571428571428572em;
+  left: 0.14285714285714288em;
+  top: 0.14285714285714288em;
+  border-radius: 0.7142857142857143em;
+  display: table;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+  background-color: red;
+}
+
+.c0 {
+  margin-left: 50px;
+  width: 50%;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <p>
+      default
+    </p>
+    <label
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={undefined}
+          className="c3"
+          disabled={undefined}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      checked
+    </p>
+    <label
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={true}
+          className="c5"
+          disabled={undefined}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      defaultChecked
+    </p>
+    <label
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={true}
+          className="c5"
+          disabled={undefined}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      disabled
+    </p>
+    <label
+      className="c6"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={undefined}
+          className="c7"
+          disabled={true}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+    <label
+      className="c6"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={true}
+          className="c8"
+          disabled={true}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      style default
+    </p>
+    <label
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={undefined}
+          className="c3"
+          disabled={undefined}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+    <label
+      className="c1"
+      disabled={undefined}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={undefined}
+          className="c3"
+          disabled={undefined}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+    <p>
+      style vertical
+    </p>
+    <label
+      className="c9"
+      disabled={undefined}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={true}
+          className="c5"
+          disabled={undefined}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+    <label
+      className="c9"
+      disabled={undefined}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={undefined}
+          className="c3"
+          disabled={undefined}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+  </div>
+  <span
+    className={undefined}
+  >
+    <label
+      className="c10"
+      disabled={undefined}
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          checked={true}
+          className="c11"
+          disabled={undefined}
+        />
+      </span>
+      <span
+        className="c4"
+      >
+        Radio
+      </span>
+    </label>
+  </span>
+</div>
+`;

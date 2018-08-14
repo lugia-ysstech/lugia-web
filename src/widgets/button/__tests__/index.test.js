@@ -95,42 +95,29 @@ describe('Button', () => {
 
     exp(await promise).to.be.eql(target);
   });
-
-  it('props: click, loading: true', async () => {
-    let onClick;
-    const promise = new Promise(resolve => {
-      onClick = e => {
-        throw new Error('错误出发click');
-      };
-    });
+  function mountCom(config: Object) {
+    let value = 1;
+    const onClick = () => {
+      value = 2;
+    };
     const cmp = mount(
-      <Button type="danger" onClick={onClick} loading>
+      <Button type="danger" onClick={onClick} {...config}>
         hello
       </Button>
     );
-    const target = { px: 'hello' };
     cmp
       .find('button')
       .at(0)
-      .simulate('click', { target });
+      .simulate('click');
+    expect(value).toBe(1);
+  }
+  it('props: click, loading: true', async () => {
+    const config = { loading: true };
+    mountCom(config);
   });
 
   it('props: click, disabled: true', async () => {
-    let onClick;
-    const promise = new Promise(resolve => {
-      onClick = e => {
-        throw new Error('错误出发click');
-      };
-    });
-    const cmp = mount(
-      <Button type="danger" onClick={onClick} disabled>
-        hello
-      </Button>
-    );
-    const target = { px: 'hello' };
-    cmp
-      .find('button')
-      .at(0)
-      .simulate('click', { target });
+    const config = { disabled: true };
+    mountCom(config);
   });
 });

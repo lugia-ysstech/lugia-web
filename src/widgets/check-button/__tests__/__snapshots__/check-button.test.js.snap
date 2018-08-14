@@ -1,0 +1,413 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button ChedckButton CSS 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c1:hover > span {
+  color: #684fff;
+}
+
+.c8 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c8:hover > span {
+  color: #fff;
+}
+
+.c10 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c10:hover > span {
+  color: #cccccc;
+}
+
+.c2 {
+  opacity: 0;
+  outline: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.c3 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  color: #666666;
+  background: #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.3333333333333335em;
+  line-height: 2.166666666666667em;
+  font-size: 1.2rem;
+}
+
+.c5 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  color: #666666;
+  background: #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+}
+
+.c6 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  color: #666666;
+  background: #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 3.1666666666666665em;
+  line-height: 3em;
+  font-size: 1.2rem;
+}
+
+.c7 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  color: #666666;
+  background: #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 3.5000000000000004em;
+  line-height: 3.3333333333333335em;
+  font-size: 1.2rem;
+}
+
+.c9 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  background-color: #684fff;
+  color: #fff;
+  border: 1px solid #684fff;
+  border-right: 1px solid #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+}
+
+.c11 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  color: #cccccc;
+  cursor: not-allowed;
+  background: #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+}
+
+.c12 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  color: #cccccc;
+  cursor: not-allowed;
+  background: rgba(104,79,255,0.05);
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+}
+
+.c0 {
+  float: left;
+  margin: 20px;
+}
+
+.c4 {
+  margin-bottom: 10px;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <h4>
+      size
+    </h4>
+    <label
+      checked={undefined}
+      className="c1"
+      disabled={undefined}
+      size="small"
+    >
+      <input
+        className="c2"
+        onBlur={[Function]}
+        type="radio"
+      />
+      <span
+        checked={undefined}
+        className="c3"
+        disabled={undefined}
+        onClick={[Function]}
+        size="small"
+        type="checkbox"
+      >
+        CheckButton
+      </span>
+    </label>
+    <div
+      className="c4"
+    />
+    <label
+      checked={undefined}
+      className="c1"
+      disabled={undefined}
+      size={undefined}
+    >
+      <input
+        className="c2"
+        onBlur={[Function]}
+        type="radio"
+      />
+      <span
+        checked={undefined}
+        className="c5"
+        disabled={undefined}
+        onClick={[Function]}
+        size={undefined}
+        type="checkbox"
+      >
+        CheckButton
+      </span>
+    </label>
+    <div
+      className="c4"
+    />
+    <label
+      checked={undefined}
+      className="c1"
+      disabled={undefined}
+      size="large"
+    >
+      <input
+        className="c2"
+        onBlur={[Function]}
+        type="radio"
+      />
+      <span
+        checked={undefined}
+        className="c6"
+        disabled={undefined}
+        onClick={[Function]}
+        size="large"
+        type="checkbox"
+      >
+        CheckButton
+      </span>
+    </label>
+    <div
+      className="c4"
+    />
+    <label
+      checked={undefined}
+      className="c1"
+      disabled={undefined}
+      size="bigger"
+    >
+      <input
+        className="c2"
+        onBlur={[Function]}
+        type="radio"
+      />
+      <span
+        checked={undefined}
+        className="c7"
+        disabled={undefined}
+        onClick={[Function]}
+        size="bigger"
+        type="checkbox"
+      >
+        CheckButton
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <h4>
+      checked
+    </h4>
+    <label
+      checked={true}
+      className="c8"
+      disabled={undefined}
+      size={undefined}
+    >
+      <input
+        className="c2"
+        onBlur={[Function]}
+        type="radio"
+      />
+      <span
+        checked={true}
+        className="c9"
+        disabled={undefined}
+        onClick={[Function]}
+        size={undefined}
+        type="checkbox"
+      >
+        CheckButton
+      </span>
+    </label>
+    <div
+      className="c4"
+    />
+    <label
+      checked={undefined}
+      className="c1"
+      disabled={undefined}
+      size={undefined}
+    >
+      <input
+        className="c2"
+        onBlur={[Function]}
+        type="radio"
+      />
+      <span
+        checked={undefined}
+        className="c5"
+        disabled={undefined}
+        onClick={[Function]}
+        size={undefined}
+        type="checkbox"
+      >
+        CheckButton
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <h4>
+      disabled
+    </h4>
+    <label
+      checked={undefined}
+      className="c10"
+      disabled={true}
+      size={undefined}
+    >
+      <input
+        className="c2"
+        onBlur={[Function]}
+        type="radio"
+      />
+      <span
+        checked={undefined}
+        className="c11"
+        disabled={true}
+        onClick={[Function]}
+        size={undefined}
+        type="checkbox"
+      >
+        CheckButton
+      </span>
+    </label>
+    <div
+      className="c4"
+    />
+    <label
+      checked={true}
+      className="c10"
+      disabled={true}
+      size={undefined}
+    >
+      <input
+        className="c2"
+        onBlur={[Function]}
+        type="radio"
+      />
+      <span
+        checked={true}
+        className="c12"
+        disabled={true}
+        onClick={[Function]}
+        size={undefined}
+        type="checkbox"
+      >
+        CheckButton
+      </span>
+    </label>
+  </div>
+</div>
+`;

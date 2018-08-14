@@ -40,6 +40,13 @@ const Switch = 'sv_widget_Switch';
 const SearchIcon = 'sv_widget_SearchIcon';
 const PullIcon = 'sv_widget_PullIcon';
 
+const ButtonGroup = 'sv_widget_ButtonGroup';
+const Radio = 'sv_widget_Radio';
+const RadioGroup = 'sv_widget_RadioGroup';
+const CheckBox = 'sv_widget_CheckBox';
+const CheckBoxGroup = 'sv_widget_CheckBoxGroup';
+const CheckButton = 'sv_widget_CheckButton';
+
 export default {
   Button,
   Input,
@@ -71,4 +78,10 @@ export default {
   Switch,
   SearchIcon,
   PullIcon,
+  Radio,
+  RadioGroup,
+  ButtonGroup,
+  CheckBox,
+  CheckBoxGroup,
+  CheckButton,
 };
