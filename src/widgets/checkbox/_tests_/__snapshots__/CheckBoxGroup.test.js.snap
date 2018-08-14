@@ -1,0 +1,1390 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox CheckBoxGroup CSS 1`] = `
+.c31 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c13 {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333333;
+  width: none;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.7142857142857143em;
+}
+
+.c15 {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333333;
+  width: none;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.7142857142857143em;
+}
+
+.c15:hover > span span {
+  border: 1px solid #684fff;
+}
+
+.c2 {
+  font-size: 1.4rem;
+  cursor: not-allowed;
+  color: #cccccc;
+  width: none;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 2.142857142857143em;
+}
+
+.c2:hover > span span {
+  border: 1px solid #e8e8e8;
+}
+
+.c7 {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333333;
+  width: none;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 2.142857142857143em;
+}
+
+.c7:hover > span span {
+  border: 1px solid #684fff;
+}
+
+.c10 {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333333;
+  width: 7.142857142857143em;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.7142857142857143em;
+}
+
+.c10:hover > span span {
+  border: 1px solid red;
+}
+
+.c3 {
+  margin: 0;
+  outline: none;
+  line-height: 1;
+  vertical-align: text-bottom;
+  display: inline-block;
+}
+
+.c6 {
+  padding-left: 0.7142857142857143em;
+}
+
+.c8 {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c4 {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  cursor: not-allowed;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c14 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.2857142857142858em;
+  height: 1.2857142857142858em;
+  border-radius: 0.14285714285714288em;
+  background-color: #cac2ff;
+  border: 1px solid #cac2ff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c14::after {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0.35714285714285715em;
+  top: 0.14285714285714288em;
+  width: 0.4285714285714286em;
+  height: 0.7142857142857143em;
+  -webkit-transform: rotate(45deg) scale(1);
+  -ms-transform: rotate(45deg) scale(1);
+  transform: rotate(45deg) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  display: table;
+  border: 0.14285714285714288em solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c16 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.2857142857142858em;
+  height: 1.2857142857142858em;
+  border-radius: 0.14285714285714288em;
+  background-color: #684fff;
+  border: 1px solid #684fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c16:hover {
+  border: 1px solid #684fff;
+}
+
+.c16::after {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0.35714285714285715em;
+  top: 0.14285714285714288em;
+  width: 0.4285714285714286em;
+  height: 0.7142857142857143em;
+  -webkit-transform: rotate(45deg) scale(1);
+  -ms-transform: rotate(45deg) scale(1);
+  transform: rotate(45deg) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  display: table;
+  border: 0.14285714285714288em solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c9 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.2857142857142858em;
+  height: 1.2857142857142858em;
+  border-radius: 0.14285714285714288em;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c9:hover {
+  border: 1px solid #684fff;
+}
+
+.c9::after {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0.35714285714285715em;
+  top: 0.14285714285714288em;
+  width: 0.4285714285714286em;
+  height: 0.7142857142857143em;
+  -webkit-transform: rotate(45deg) scale(0);
+  -ms-transform: rotate(45deg) scale(0);
+  transform: rotate(45deg) scale(0);
+  -webkit-transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+  display: table;
+  border: 0.14285714285714288em solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c5 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.2857142857142858em;
+  height: 1.2857142857142858em;
+  border-radius: 0.14285714285714288em;
+  background-color: #f2f2f2;
+  border: 1px solid #e8e8e8;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c5:hover {
+  border: 1px solid #e8e8e8;
+}
+
+.c5::after {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0.35714285714285715em;
+  top: 0.14285714285714288em;
+  width: 0.4285714285714286em;
+  height: 0.7142857142857143em;
+  -webkit-transform: rotate(45deg) scale(1);
+  -ms-transform: rotate(45deg) scale(1);
+  transform: rotate(45deg) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  display: table;
+  border: 0.14285714285714288em solid #cccccc;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c11 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.2857142857142858em;
+  height: 1.2857142857142858em;
+  border-radius: 0.14285714285714288em;
+  background-color: red;
+  border: 1px solid red;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c11:hover {
+  border: 1px solid red;
+}
+
+.c11::after {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0.35714285714285715em;
+  top: 0.14285714285714288em;
+  width: 0.4285714285714286em;
+  height: 0.7142857142857143em;
+  -webkit-transform: rotate(45deg) scale(1);
+  -ms-transform: rotate(45deg) scale(1);
+  transform: rotate(45deg) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  display: table;
+  border: 0.14285714285714288em solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c12 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.2857142857142858em;
+  height: 1.2857142857142858em;
+  border-radius: 0.14285714285714288em;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c12:hover {
+  border: 1px solid red;
+}
+
+.c12::after {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0.35714285714285715em;
+  top: 0.14285714285714288em;
+  width: 0.4285714285714286em;
+  height: 0.7142857142857143em;
+  -webkit-transform: rotate(45deg) scale(0);
+  -ms-transform: rotate(45deg) scale(0);
+  transform: rotate(45deg) scale(0);
+  -webkit-transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+  display: table;
+  border: 0.14285714285714288em solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c18 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c18:hover > span {
+  color: #fff;
+}
+
+.c21 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c21:hover > span {
+  color: #684fff;
+}
+
+.c25 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c25:hover > span {
+  color: red;
+}
+
+.c19 {
+  opacity: 0;
+  outline: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.c20 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  background-color: #684fff;
+  color: #fff;
+  border: 1px solid #684fff;
+  border-right: 1px solid #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+}
+
+.c22 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  color: #666666;
+  background: #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+}
+
+.c24 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  background-color: red;
+  color: #fff;
+  border: 1px solid red;
+  border-right: 1px solid #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+  width: 8.333333333333334em;
+}
+
+.c26 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  color: #666666;
+  background: #fff;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+  width: 8.333333333333334em;
+}
+
+.c28 {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0 0.8333333333333334em;
+  cursor: pointer;
+  background-color: #cac2ff;
+  color: #ffffff;
+  cursor: pointer;
+  border-left: 0;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  height: 2.666666666666667em;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+}
+
+.c29 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #666666;
+  background: #cccccc;
+  z-index: -2;
+}
+
+.c30 {
+  vertical-align: text-bottom !important;
+  font-size: 1.3333333333333335em!important;
+  color: #999999;
+}
+
+.c1 > label:first-child > span {
+  border-radius: 4px 0 0 4px;
+}
+
+.c1 > label:last-child > span {
+  border-radius: 0 4px 4px 0;
+}
+
+.c17 > label:first-child > span {
+  border-left: 1px solid #684fff;
+  border-radius: 4px 0 0 4px;
+}
+
+.c17 > label:last-child > span {
+  border-radius: 0 4px 4px 0;
+}
+
+.c23 > label:first-child > span {
+  border-left: 1px solid red;
+  border-radius: 4px 0 0 4px;
+}
+
+.c23 > label:last-child > span {
+  border-radius: 0 4px 4px 0;
+}
+
+.c27 > label:first-child > span {
+  border-left: 1px solid #cac2ff;
+  border-radius: 4px 0 0 4px;
+}
+
+.c27 > label:first-child > span > span {
+  border-radius: 4px 0 0 4px;
+}
+
+.c27 > label:last-child > span {
+  border-radius: 0 4px 4px 0;
+}
+
+.c0 {
+  margin: 20px;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <span
+      className={undefined}
+    >
+      <div
+        className="c1"
+      >
+        <label
+          className="c2"
+          disabled={true}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c4"
+              disabled={true}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={true}
+              className="c5"
+              disabled={true}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            CheckBox1
+          </span>
+        </label>
+        <label
+          className="c7"
+          disabled={undefined}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={false}
+              className="c9"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            CheckBox2
+          </span>
+        </label>
+        <label
+          className="c7"
+          disabled={undefined}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={false}
+              className="c9"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            CheckBox3
+          </span>
+        </label>
+      </div>
+    </span>
+  </div>
+  <div
+    className="c0"
+  >
+    <span
+      className={undefined}
+    >
+      <span
+        className={undefined}
+      >
+        <div
+          className="c1"
+        >
+          <label
+            className="c10"
+            disabled={undefined}
+            onClick={[Function]}
+          >
+            <span
+              className="c3"
+              onClick={null}
+            >
+              <input
+                className="c8"
+                disabled={undefined}
+                onBlur={[Function]}
+                type="checkbox"
+              />
+              <span
+                checked={true}
+                className="c11"
+                disabled={undefined}
+              />
+            </span>
+            <span
+              className="c6"
+            >
+              check1
+            </span>
+          </label>
+          <label
+            className="c10"
+            disabled={undefined}
+            onClick={[Function]}
+          >
+            <span
+              className="c3"
+              onClick={null}
+            >
+              <input
+                className="c8"
+                disabled={undefined}
+                onBlur={[Function]}
+                type="checkbox"
+              />
+              <span
+                checked={false}
+                className="c12"
+                disabled={undefined}
+              />
+            </span>
+            <span
+              className="c6"
+            >
+              check2
+            </span>
+          </label>
+          <label
+            className="c10"
+            disabled={undefined}
+            onClick={[Function]}
+          >
+            <span
+              className="c3"
+              onClick={null}
+            >
+              <input
+                className="c8"
+                disabled={undefined}
+                onBlur={[Function]}
+                type="checkbox"
+              />
+              <span
+                checked={false}
+                className="c12"
+                disabled={undefined}
+              />
+            </span>
+            <span
+              className="c6"
+            >
+              check3
+            </span>
+          </label>
+        </div>
+      </span>
+    </span>
+  </div>
+  <div
+    className="c0"
+  >
+    <span
+      className={undefined}
+    >
+      <div
+        className="c1"
+      >
+        <label
+          className="c13"
+          disabled={undefined}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={[Function]}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={true}
+              className="c14"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            check5
+          </span>
+        </label>
+        <label
+          className="c15"
+          disabled={undefined}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={true}
+              className="c16"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            check1
+          </span>
+        </label>
+        <label
+          className="c15"
+          disabled={undefined}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={false}
+              className="c9"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            check2
+          </span>
+        </label>
+        <label
+          className="c15"
+          disabled={undefined}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={false}
+              className="c9"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            check3
+          </span>
+        </label>
+      </div>
+    </span>
+  </div>
+  <div
+    className="c0"
+  >
+    <span
+      className={undefined}
+    >
+      <div
+        className="c1"
+      >
+        <label
+          className="c13"
+          disabled={undefined}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={[Function]}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={true}
+              className="c14"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            check5
+          </span>
+        </label>
+        <label
+          className="c15"
+          disabled={undefined}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={true}
+              className="c16"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            check1
+          </span>
+        </label>
+        <label
+          className="c15"
+          disabled={undefined}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={false}
+              className="c9"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            check2
+          </span>
+        </label>
+        <label
+          className="c15"
+          disabled={undefined}
+          onClick={[Function]}
+        >
+          <span
+            className="c3"
+            onClick={null}
+          >
+            <input
+              className="c8"
+              disabled={undefined}
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              checked={false}
+              className="c9"
+              disabled={undefined}
+            />
+          </span>
+          <span
+            className="c6"
+          >
+            check3
+          </span>
+        </label>
+      </div>
+    </span>
+  </div>
+  <div
+    className="c0"
+  >
+    <span
+      className={undefined}
+    >
+      <div
+        className="c17"
+      >
+        <label
+          checked={true}
+          className="c18"
+          disabled={undefined}
+          size={undefined}
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={true}
+            className="c20"
+            disabled={undefined}
+            onClick={[Function]}
+            size={undefined}
+            type="checkbox"
+          >
+            CheckBox1
+          </span>
+        </label>
+        <label
+          checked={true}
+          className="c18"
+          disabled={undefined}
+          size={undefined}
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={true}
+            className="c20"
+            disabled={undefined}
+            onClick={[Function]}
+            size={undefined}
+            type="checkbox"
+          >
+            CheckBox2
+          </span>
+        </label>
+        <label
+          checked={false}
+          className="c21"
+          disabled={undefined}
+          size={undefined}
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={false}
+            className="c22"
+            disabled={undefined}
+            onClick={[Function]}
+            size={undefined}
+            type="checkbox"
+          >
+            CheckBox3
+          </span>
+        </label>
+      </div>
+    </span>
+  </div>
+  <div
+    className="c0"
+  >
+    <span
+      className={undefined}
+    >
+      <span
+        className={undefined}
+      >
+        <div
+          className="c23"
+        >
+          <label
+            checked={true}
+            className="c18"
+            disabled={undefined}
+            size={undefined}
+          >
+            <input
+              className="c19"
+              onBlur={[Function]}
+              type="radio"
+            />
+            <span
+              checked={true}
+              className="c24"
+              disabled={undefined}
+              onClick={[Function]}
+              size={undefined}
+              type="checkbox"
+            >
+              CheckBox1
+            </span>
+          </label>
+          <label
+            checked={true}
+            className="c18"
+            disabled={undefined}
+            size={undefined}
+          >
+            <input
+              className="c19"
+              onBlur={[Function]}
+              type="radio"
+            />
+            <span
+              checked={true}
+              className="c24"
+              disabled={undefined}
+              onClick={[Function]}
+              size={undefined}
+              type="checkbox"
+            >
+              CheckBox2
+            </span>
+          </label>
+          <label
+            checked={false}
+            className="c25"
+            disabled={undefined}
+            size={undefined}
+          >
+            <input
+              className="c19"
+              onBlur={[Function]}
+              type="radio"
+            />
+            <span
+              checked={false}
+              className="c26"
+              disabled={undefined}
+              onClick={[Function]}
+              size={undefined}
+              type="checkbox"
+            >
+              CheckBox3
+            </span>
+          </label>
+        </div>
+      </span>
+    </span>
+  </div>
+  <div
+    className="c0"
+  >
+    <span
+      className={undefined}
+    >
+      <div
+        className="c27"
+      >
+        <label
+          checked={true}
+          className="c18"
+          disabled={undefined}
+          size="default"
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={true}
+            className="c28"
+            disabled={undefined}
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            size="default"
+            type="checkbox"
+          >
+            check5
+            <span
+              className="c29"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-reminder_close c30 c31"
+                onClick={undefined}
+              />
+            </span>
+          </span>
+        </label>
+        <label
+          checked={true}
+          className="c18"
+          disabled={undefined}
+          size="default"
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={true}
+            className="c20"
+            disabled={undefined}
+            onClick={[Function]}
+            size="default"
+            type="checkbox"
+          >
+            check1
+          </span>
+        </label>
+        <label
+          checked={false}
+          className="c21"
+          disabled={undefined}
+          size="default"
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={false}
+            className="c22"
+            disabled={undefined}
+            onClick={[Function]}
+            size="default"
+            type="checkbox"
+          >
+            check2
+          </span>
+        </label>
+        <label
+          checked={false}
+          className="c21"
+          disabled={undefined}
+          size="default"
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={false}
+            className="c22"
+            disabled={undefined}
+            onClick={[Function]}
+            size="default"
+            type="checkbox"
+          >
+            check3
+          </span>
+        </label>
+      </div>
+    </span>
+  </div>
+  <div
+    className="c0"
+  >
+    <span
+      className={undefined}
+    >
+      <div
+        className="c27"
+      >
+        <label
+          checked={true}
+          className="c18"
+          disabled={undefined}
+          size="default"
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={true}
+            className="c28"
+            disabled={undefined}
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            size="default"
+            type="checkbox"
+          >
+            check5
+            <span
+              className="c29"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-reminder_close c30 c31"
+                onClick={undefined}
+              />
+            </span>
+          </span>
+        </label>
+        <label
+          checked={true}
+          className="c18"
+          disabled={undefined}
+          size="default"
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={true}
+            className="c20"
+            disabled={undefined}
+            onClick={[Function]}
+            size="default"
+            type="checkbox"
+          >
+            check1
+          </span>
+        </label>
+        <label
+          checked={false}
+          className="c21"
+          disabled={undefined}
+          size="default"
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={false}
+            className="c22"
+            disabled={undefined}
+            onClick={[Function]}
+            size="default"
+            type="checkbox"
+          >
+            check2
+          </span>
+        </label>
+        <label
+          checked={false}
+          className="c21"
+          disabled={undefined}
+          size="default"
+        >
+          <input
+            className="c19"
+            onBlur={[Function]}
+            type="radio"
+          />
+          <span
+            checked={false}
+            className="c22"
+            disabled={undefined}
+            onClick={[Function]}
+            size="default"
+            type="checkbox"
+          >
+            check3
+          </span>
+        </label>
+      </div>
+    </span>
+  </div>
+</div>
+`;
