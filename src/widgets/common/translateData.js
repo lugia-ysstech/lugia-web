@@ -153,3 +153,14 @@ function renderChildren(owner: Object, type: 'radio' | 'checkbox') {
     });
   });
 }
+
+export const getValueAndDisplayValue = function(props: Object, state: ?Object): Object {
+  const isValue = 'value' in props;
+  const isDisplayValue = 'displayValue' in props;
+  const { value, defaultValue, displayValue, defaultDisplayValue } = props;
+  const realValue = isValue ? value : state ? state.value : defaultValue;
+  return {
+    value: realValue,
+    displayValue: isDisplayValue ? displayValue : state ? realValue : defaultDisplayValue,
+  };
+};

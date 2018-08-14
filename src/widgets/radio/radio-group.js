@@ -10,15 +10,15 @@ import ThemeProvider from '../theme-provider';
 import Radio from './radio';
 import CheckButton from '../check-button/button';
 import Widget from '../consts';
-import translateData, {
+import {
   didUpdate,
+  getValueAndDisplayValue,
   getItems,
   handleCreate,
   getMapData,
 } from '../common/translateData';
 import Theme from '../theme';
 import { Group } from '../checkbox/checkbox-group';
-import { getValueAndDisplayValue } from '../checkbox/checkbox-group';
 
 type RadioGroupProps = {
   defaultValue?: string,

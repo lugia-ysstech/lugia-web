@@ -10,11 +10,12 @@ import ThemeProvider from '../theme-provider';
 import CheckBox from './checkbox';
 import CheckButton from '../check-button/button';
 import Widget from '../consts';
-import translateData, {
+import {
   didUpdate,
   getItems,
   handleCreate,
   getMapData,
+  getValueAndDisplayValue,
 } from '../common/translateData';
 import Theme from '../theme';
 import colorsFunc from '../css/stateColor';
@@ -50,19 +51,6 @@ type GroupCSSProps = {
   childType: 'default' | 'button',
 };
 
-export const getValueAndDisplayValue = function(
-  props: CheckBoxGroupProps,
-  state: ?CheckBoxGroupState
-): Object {
-  const isValue = 'value' in props;
-  const isDisplayValue = 'displayValue' in props;
-  const { value, defaultValue, displayValue, defaultDisplayValue } = props;
-  const realValue = isValue ? value : state ? state.value : defaultValue;
-  return {
-    value: realValue,
-    displayValue: isDisplayValue ? displayValue : state ? realValue : defaultDisplayValue,
-  };
-};
 const getFirstChildBorder = (props: GroupCSSProps) => {
   const { children = [], themes, childType = 'default' } = props;
   const { checked = false } = children[0].props;
