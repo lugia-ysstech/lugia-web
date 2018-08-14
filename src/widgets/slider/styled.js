@@ -99,10 +99,11 @@ export const Tiparrow = styled.span`
 export const Dot = styled.span`
   border-radius: 50%;
   position: absolute;
-  ${props => getStyled(props).dotPosition};  
+  ${props => {
+    const { dotPosition, dotStyle, dotBackground } = getStyled(props);
+    return [dotPosition, dotStyle, dotBackground].join(' ');
+  }};  
   z-index: 1;  
-  ${props => getStyled(props).dotStyle};
-  ${props => getStyled(props).dotBackground}
   width: ${props => getStyled(props).dotW};
   height: ${props => getStyled(props).dotH};
   
@@ -183,15 +184,19 @@ export const getStyled = (props: CssTypeProps) => {
     : changeBackground
       ? doingBackground
       : doneBackground;
+
   const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
+
   const isChangeBg = changeBackground && btnDisabled;
+
   const btnBackground = disabled
     ? btnDisabledBackground
     : isChangeBg
       ? innerBackground
       : doneBackground;
-  btnWidth = isChangeBg ? btnWidth + 4 * 1 : btnWidth;
-  btnHeight = isChangeBg ? btnHeight + 4 * 1 : btnHeight;
+
+  btnWidth = isChangeBg ? btnWidth + 4 : btnWidth;
+  btnHeight = isChangeBg ? btnHeight + 4 : btnHeight;
   let isShowDot,
     dotStyle,
     marskText,
@@ -218,8 +223,6 @@ export const getStyled = (props: CssTypeProps) => {
         background: #fff;
       `;
     }
-    // console.log(moveValue);
-    // console.log(dotIndex);
     if (isChangDotBg) {
       dotBackground = `
         border: none;
