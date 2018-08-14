@@ -16,11 +16,17 @@ export default class Sl extends Component<any> {
     this.state = {
       currentValue: 0,
       btnWidth: 20,
+      disabled: false,
     };
   }
 
   onchange = v => {
     console.log(v);
+    // if(v.newValue>=10){
+    //   this.setState({
+    //     disabled:true
+    //   });
+    // }
   };
   handleclick = () => {
     this.setState({ btnWidth: 30 });
@@ -32,7 +38,12 @@ export default class Sl extends Component<any> {
       <div style={{ padding: '0 50px' }}>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> normal</h2>
-          <Slider defaultValue={[5, 10]} tips onChange={this.onchange} />
+          <Slider defaultValue={5} tips onChange={this.onchange} />
+        </div>
+
+        {/* <div style={{ float: 'left', padding: '0 20px 50px' }}>
+          <h2 style={{ padding: '20px 0' }}> normal</h2>
+          <Slider tips onChange={this.onchange} />
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 自定义css</h2>
@@ -46,12 +57,16 @@ export default class Sl extends Component<any> {
           </Theme>
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
-          <h2 style={{ padding: '20px 0' }}> 单滑块</h2>
+          <h2 style={{ padding: '20px 0' }}> 单滑块 defaultValue=-1</h2>
           <Slider maxValue={40} tips minValue={10} defaultValue={-1} />
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 单滑块</h2>
           <Slider maxValue={40} tips minValue={10} defaultValue={50} />
+        </div>
+        <div style={{ float: 'left', padding: '0 20px 50px' }}>
+          <h2 style={{ padding: '20px 0' }}> 单滑块 disabled false-> true</h2>
+          <Slider maxValue={30} tips minValue={0} defaultValue={0} onChange={this.onchange} disabled={this.state.disabled}/>
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 双滑块 minValue -1</h2>
@@ -76,8 +91,8 @@ export default class Sl extends Component<any> {
           <h2 style={{ padding: '20px 0' }}> 离散 marks 对象+对象</h2>
           <Slider
             maxValue={25}
-            defaultValue={5}
-            minValue={15}
+            defaultValue={10}
+            minValue={0}
             tips
             onChange={this.onchange}
             marks={{
@@ -103,11 +118,39 @@ export default class Sl extends Component<any> {
           />
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
-          <h2 style={{ padding: '20px 0' }}> 离散 marks 对象+string</h2>
+          <h2 style={{ padding: '20px 0' }}> 离散 marks 对象+对象</h2>
           <Slider
-            maxValue={50}
-            defaultValue={[0, 20]}
+            maxValue={25}
+            defaultValue={[10,20]}
             minValue={0}
+            tips
+            onChange={this.onchange}
+            marks={{
+              10: {
+                text: '10℃',
+                style: {
+                  color: 'blue',
+                },
+              },
+              20: {
+                text: '20℃',
+                style: {
+                  color: 'pink',
+                },
+              },
+              40: {
+                text: '40℃',
+                style: {
+                  color: 'red',
+                },
+              },
+            }}
+          />
+        </div>
+        <div style={{ float: 'left', padding: '0 20px 50px' }}>
+          <h2 style={{ padding: '20px 0' }}> 离散no min max</h2>
+          <Slider
+            defaultValue={5}
             tips
             onChange={this.onchange}
             marks={{
@@ -148,7 +191,11 @@ export default class Sl extends Component<any> {
         <div style={{ clear: 'both' }} />
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> normal</h2>
-          <Slider vertical />
+          <Slider vertical tips onChange={this.onchange}/>
+        </div>
+        <div style={{ float: 'left', padding: '0 50px 50px' }}>
+          <h2 style={{ padding: '35px 0' }}> 单滑块value</h2>
+          <Slider defaultValue={0} vertical value={10} onChange={this.onchange}/>
         </div>
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> 单滑块</h2>
@@ -157,6 +204,10 @@ export default class Sl extends Component<any> {
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> 双滑块</h2>
           <Slider defaultValue={[10, 20]} tips vertical />
+        </div>
+        <div style={{ float: 'left', padding: '0 50px 50px' }}>
+          <h2 style={{ padding: '35px 0' }}> 双滑块value</h2>
+          <Slider defaultValue={[10, 20]} value={[10,20]} tips vertical onChange={this.onchange}/>
         </div>
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> 离散</h2>
@@ -205,6 +256,22 @@ export default class Sl extends Component<any> {
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> disabled</h2>
           <Slider defaultValue={10} value={5} tips disabled vertical />
+        </div> */}
+        <div style={{ float: 'left', padding: '0 50px 50px' }}>
+          <h2 style={{ padding: '35px 0' }}> 离散</h2>
+          <Slider
+            vertical
+            // maxValue={50}
+            defaultValue={0}
+            // minValue={0}
+            tips
+            onChange={this.onchange}
+            marks={{
+              0: '0℃',
+              5: '5',
+              10: '10℃',
+            }}
+          />
         </div>
       </div>
     );

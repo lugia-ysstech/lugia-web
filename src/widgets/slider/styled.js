@@ -218,6 +218,8 @@ export const getStyled = (props: CssTypeProps) => {
         background: #fff;
       `;
     }
+    // console.log(moveValue);
+    // console.log(dotIndex);
     if (isChangDotBg) {
       dotBackground = `
         border: none;

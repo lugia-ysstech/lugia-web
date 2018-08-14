@@ -12,7 +12,6 @@ import Theme from '../../theme/index';
 import Widgets from '../../consts/index';
 const { expect: exp } = chai;
 Enzyme.configure({ adapter: new Adapter() });
-const { mockFunction, mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 describe('default', () => {
   it('Wrapper', () => {
     const target = <Slider />;
@@ -20,7 +19,6 @@ describe('default', () => {
   });
   it('css', () => {
     const target = mount(
-      // <Slider background={'#f22735'} btnWidth={16} btnHeight={16} rangeH={4} rangeW={100} />
       <Theme
         config={{
           [Widgets.SliderButton]: { color: '#333' },
@@ -30,24 +28,21 @@ describe('default', () => {
         <Slider rangeH={4} rangeW={100} />
       </Theme>
     );
-    console.log(target.props());
-    expect(target.props().background).toBe('#f22735');
-    expect(target.props().btnWidth).toBe(16);
-    expect(target.props().btnHeight).toBe(16);
-    expect(target.props().rangeH).toBe(4);
-    expect(target.props().rangeW).toBe(100);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue', () => {
     const target = mount(<Slider defaultValue={10} />);
     expect(target.state().value).toEqual([10]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('value={23}', () => {
-    const Target = mount(<Slider defaultValue={10} value={23} tips />);
-    Target.find('Button')
+    const target = mount(<Slider defaultValue={10} value={23} tips />);
+    target
+      .find('Button')
       .at(0)
       .simulate('mousedown');
-    expect(Target.state().value).toEqual([23]);
+    expect(target.state().value).toEqual([23]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('disabled', () => {
     const target = mount(<Slider value={2} maxValue={30} disabled />);
@@ -56,54 +51,64 @@ describe('default', () => {
       .at(0)
       .simulate('mousedown');
     expect(target.state().value).toEqual([2]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('minValue maxValue', () => {
     const target = mount(<Slider maxValue={40} minValue={10} />);
     expect(target.state().minValue).toBe(10);
     expect(target.state().maxValue).toBe(40);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue number defaultValue<minValue defaultValue=minValue', () => {
     const target = mount(<Slider minValue={10} defaultValue={-1} />);
     expect(target.state().minValue).toBe(10);
     expect(target.state().value).toEqual([10]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue number defaultValue>maxValue defaultValue=maxValue', () => {
     const target = mount(<Slider maxValue={40} defaultValue={50} />);
     expect(target.state().maxValue).toBe(40);
     expect(target.state().value).toEqual([40]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==1 defaultValue<minValue defaultValue=minValue', () => {
     const target = mount(<Slider minValue={0} defaultValue={[-1]} />);
     expect(target.state().minValue).toBe(0);
     expect(target.state().value).toEqual([0]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==1 defaultValue>maxValue defaultValue=maxValue', () => {
     const target = mount(<Slider maxValue={40} defaultValue={[50]} />);
     expect(target.state().maxValue).toBe(40);
     expect(target.state().value).toEqual([40]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==2 defaultValue[0]< minValue', () => {
     const target = mount(<Slider minValue={10} defaultValue={[-1, 10]} />);
     expect(target.state().minValue).toBe(10);
     expect(target.state().value).toEqual([10, 10]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==2 defaultValue[1]<minValue defaultValue=minValue', () => {
     const target = mount(<Slider minValue={10} defaultValue={[10, -1]} />);
     expect(target.state().minValue).toBe(10);
     expect(target.state().value).toEqual([10, 10]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==2 defaultValue[0]>maxValue defaultValue[0]=maxValue', () => {
     const target = mount(<Slider maxValue={40} defaultValue={[50, 20]} />);
     expect(target.state().maxValue).toBe(40);
     expect(target.state().value).toEqual([40, 20]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==2 defaultValue[1]>maxValue defaultValue[1]=maxValue', () => {
     const target = mount(<Slider maxValue={40} defaultValue={[10, 50]} />);
     expect(target.state().maxValue).toBe(40);
     expect(target.state().value).toEqual([10, 40]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 
-  it('离散值 marks={} has maxValue minValue', () => {
+  it('离散值 marks={} length==1 has maxValue minValue', () => {
     const marks = {
       10: {
         text: '10℃',
@@ -128,8 +133,11 @@ describe('default', () => {
     expect(target.state().maxValue).toBe(25);
     expect(target.state().minValue).toBe(0);
     expect(target.state().value).toEqual([5]);
-    expect(target.state().marks).toEqual({
-      0: '0',
+    expect(target.state().marksKeys).toEqual([0, 10, 20, 25]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
+  });
+  it('离散值 marks={} length==2 has maxValue minValue', () => {
+    const marks = {
       10: {
         text: '10℃',
         style: {
@@ -142,8 +150,21 @@ describe('default', () => {
           color: 'pink',
         },
       },
-      25: '25',
-    });
+      40: {
+        text: '40℃',
+        style: {
+          color: 'red',
+        },
+      },
+    };
+    const target = mount(
+      <Slider maxValue={25} defaultValue={[10, 20]} minValue={0} marks={marks} />
+    );
+    expect(target.state().maxValue).toBe(25);
+    expect(target.state().minValue).toBe(0);
+    expect(target.state().value).toEqual([10, 20]);
+    expect(target.state().marksKeys).toEqual([0, 10, 20, 25]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('离散值 marks={} no maxValue minValue', () => {
     const marks = {
@@ -170,8 +191,10 @@ describe('default', () => {
     expect(target.state().maxValue).toBe(40);
     expect(target.state().minValue).toBe(10);
     expect(target.state().value).toEqual([10]);
+    expect(target.state().marksKeys).toEqual([10, 20, 40]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
-  it('离散值 marks={} has maxValue minValue', () => {
+  it('离散值 marks={}  publicMove', () => {
     const marks = {
       10: {
         text: '10℃',
@@ -193,25 +216,13 @@ describe('default', () => {
       },
     };
     const target = mount(<Slider maxValue={25} defaultValue={5} minValue={15} marks={marks} />);
-    expect(target.state().maxValue).toBe(25);
-    expect(target.state().minValue).toBe(15);
-    expect(target.state().value).toEqual([15]);
-    expect(target.state().marks).toEqual({
-      15: '15',
-      20: {
-        text: '20℃',
-        style: {
-          color: 'pink',
-        },
-      },
-      25: '25',
-    });
     // publicMove
     target.instance().setState({ offsetLeft: 70 });
     target.instance().publicmove(186, 101, 0);
     expect(target.state().value).toEqual([20]);
     target.instance().publicmove(130, 102, 0);
     expect(target.state().value).toEqual([15]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function publicmove 横向 单滑块', async () => {
     const target = mount(<Slider minValue={0} defaultValue={0} maxValue={30} />);
@@ -228,6 +239,7 @@ describe('default', () => {
     expect(target.state().value).toEqual([30]);
     target.instance().publicmove(393, 103, 0); //pageX 大于最右边的临界值 ，value为maxValue
     expect(target.state().value).toEqual([30]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function publicmove 横向 双滑块', async () => {
     const target = mount(<Slider minValue={0} defaultValue={[0, 20]} maxValue={30} />);
@@ -242,6 +254,7 @@ describe('default', () => {
     expect(target.state().value).toEqual([4.8, 30]);
     target.instance().publicmove(37, 417, 0); //pageX 大于最右边的临界值 ，value为maxValue
     expect(target.state().value).toEqual([0, 30]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function publicmove 纵向 单滑块', async () => {
     const target = mount(<Slider defaultValue={10} vertical />);
@@ -256,6 +269,7 @@ describe('default', () => {
     expect(target.state().value).toEqual([30]);
     target.instance().publicmove(97, 120, 0); //pageY 大于最上的临界值 ，value为maxValue
     expect(target.state().value).toEqual([30]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function publicmove 纵向 双滑块', async () => {
     const target = mount(<Slider defaultValue={[10, 20]} tips vertical />);
@@ -272,42 +286,39 @@ describe('default', () => {
     expect(target.state().value).toEqual([0, 30]);
     target.instance().publicmove(256, 120, 1); //pageY 大于最上边的临界值 ，value为maxValue
     expect(target.state().value).toEqual([0, 30]);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getMoveState 横向 单滑块', async () => {
     const target = mount(<Slider minValue={0} defaultValue={0} maxValue={30} />);
     //横向slider
     // 单滑块
     target.instance().setState({ offsetLeft: 70 });
-    const { diffX, moveValue, offsetRight } = target.instance().getMoveState(149, 103, 0);
-    expect(diffX).toBe(26.333333333333332);
+    const { moveValue } = target.instance().getMoveState(149, 103, 0);
     expect(moveValue).toBe(7.9);
-    expect(offsetRight).toBe(370);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getMoveState 横向 双滑块', async () => {
     const target = mount(<Slider minValue={0} defaultValue={[5, 10]} maxValue={30} />);
     //横向slider
     // 单滑块
     target.instance().setState({ offsetLeft: 70 });
-    const { diffX, moveValue, offsetRight } = target.instance().getMoveState(220, 101, 1);
-    expect(diffX).toBe(50);
+    const { moveValue } = target.instance().getMoveState(220, 101, 1);
     expect(moveValue).toBe(15);
-    expect(offsetRight).toBe(370);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getMoveState 纵向 单滑块', async () => {
     const target = mount(<Slider vertical />);
     target.instance().setState({ offsetTop: 94 });
-    const { diffY, moveValue, offsetBottom } = target.instance().getMoveState(73, 281, 0);
-    expect(diffY).toBe(62.33333333333333);
+    const { moveValue } = target.instance().getMoveState(73, 281, 0);
     expect(moveValue).toBe(11.3);
-    expect(offsetBottom).toBe(394);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getMoveState 纵向 双滑块', async () => {
     const target = mount(<Slider vertical />);
     target.instance().setState({ offsetTop: 94 });
-    const { diffY, moveValue, offsetBottom } = target.instance().getMoveState(71, 146, 1);
-    expect(diffY).toBe(17.333333333333336);
+    const { moveValue } = target.instance().getMoveState(71, 146, 1);
     expect(moveValue).toBe(24.8);
-    expect(offsetBottom).toBe(394);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getNewIndex  单滑块', async () => {
     const target = mount(<Slider defaultValue={0} />);
@@ -316,6 +327,7 @@ describe('default', () => {
     expect(index).toBe(0);
     target.instance().setState({ offsetLeft: 94, vertical: true });
     expect(index).toBe(0);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getNewIndex  双滑块', async () => {
     const target = mount(<Slider defaultValue={[5, 10]} />);
@@ -324,41 +336,214 @@ describe('default', () => {
     expect(firstIndex).toBe(0);
     const secondIndex = target.instance().getNewIndex(199, 104).index;
     expect(secondIndex).toBe(1);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
+  function getMarkValue(
+    title: string,
+    props: Object,
+    offset: Object,
+    event: Array<number>,
+    expectValue: number
+  ) {
+    it(`Function getMarkValue ${title}`, async () => {
+      const target = mount(<Slider {...props} />);
+      const { marksKeys } = target.state();
+      target.instance().setState(offset);
+      const moveValue = target.instance().getMoveState(...event).moveValue;
+      const markValue = target.instance().getMarkValue(marksKeys, moveValue).markValue;
+      expect(markValue).toBe(expectValue);
+      expect(renderer.create(target).toJSON()).toMatchSnapshot();
+    });
+  }
+  const getMarkValueMarks = {
+    10: {
+      text: '10℃',
+      style: {
+        color: 'blue',
+      },
+    },
+    20: {
+      text: '20℃',
+      style: {
+        color: 'pink',
+      },
+    },
+    40: {
+      text: '40℃',
+      style: {
+        color: 'red',
+      },
+    },
+  };
+  getMarkValue(
+    'marks 横向，单滑块',
+    { marks: getMarkValueMarks },
+    { offsetLeft: 70 },
+    [156, 904],
+    20
+  );
+  getMarkValue(
+    'marks 横向，单滑块',
+    { marks: getMarkValueMarks },
+    { offsetLeft: 70 },
+    [340, 904],
+    40
+  );
+  getMarkValue(
+    'marks 横向，单滑块',
+    { marks: getMarkValueMarks },
+    { offsetLeft: 70 },
+    [93, 904],
+    10
+  );
+  getMarkValue(
+    'marks 横向，双滑块',
+    { marks: getMarkValueMarks, minValue: 0, maxValue: 25, defaultValue: [10, 20] },
+    { offsetLeft: 410 },
+    [457, 743],
+    0
+  );
+  getMarkValue(
+    'marks 横向，双滑块',
+    { marks: getMarkValueMarks, minValue: 0, maxValue: 25, defaultValue: [10, 20] },
+    { offsetLeft: 410 },
+    [692, 744],
+    25
+  );
+  getMarkValue(
+    'marks 横向，双滑块',
+    { marks: getMarkValueMarks, minValue: 0, maxValue: 25, defaultValue: [10, 20] },
+    { offsetLeft: 410 },
+    [619, 741],
+    20
+  );
+  getMarkValue(
+    'marks vetical，单滑块',
+    { vertical: true, marks: getMarkValueMarks, minValue: 0, maxValue: 50, defaultValue: 10 },
+    { offsetTop: 603 },
+    [576, 823],
+    10
+  );
+  getMarkValue(
+    'marks vetical，单滑块',
+    { vertical: true, marks: getMarkValueMarks, minValue: 0, maxValue: 50, defaultValue: 10 },
+    { offsetTop: 603 },
+    [576, 674],
+    40
+  );
+  getMarkValue(
+    'marks vetical，单滑块',
+    { vertical: true, marks: getMarkValueMarks, minValue: 0, maxValue: 50, defaultValue: 10 },
+    { offsetTop: 603 },
+    [576, 595],
+    50
+  );
+  getMarkValue(
+    'marks vetical，双滑块',
+    { vertical: true, marks: getMarkValueMarks, minValue: 0, maxValue: 50, defaultValue: [10, 20] },
+    { offsetTop: 603 },
+    [712, 882],
+    0
+  );
+  getMarkValue(
+    'marks vetical，双滑块',
+    { vertical: true, marks: getMarkValueMarks, minValue: 0, maxValue: 50, defaultValue: [10, 20] },
+    { offsetTop: 603 },
+    [712, 619],
+    50
+  );
+  getMarkValue(
+    'marks vetical，双滑块',
+    { vertical: true, marks: getMarkValueMarks, minValue: 0, maxValue: 50, defaultValue: [10, 20] },
+    { offsetTop: 603 },
+    [712, 795],
+    20
+  );
 
-  it('Function getMarkValue', async () => {
-    const marks = {
-      10: {
-        text: '10℃',
-        style: {
-          color: 'blue',
-        },
-      },
-      20: {
-        text: '20℃',
-        style: {
-          color: 'pink',
-        },
-      },
-      40: {
-        text: '40℃',
-        style: {
-          color: 'red',
-        },
-      },
-    };
-    const marksKeys = [10, 20, 40];
-    const target = mount(<Slider marks={marks} />);
-    target.instance().setState({ offsetLeft: 70 });
-    const { markValue } = target.instance().getMarkValue(marksKeys, 17);
-    expect(markValue).toBe(20);
-  });
-  it('Function getMoveValue', async () => {
-    const target = mount(<Slider defaultValue={5} />);
-    target.instance().setState({ offsetLeft: 70 });
-    const { btnMove } = target.instance().getMoveValue(5, 20);
-    expect(btnMove).toBe(13.333333333333334);
-  });
+  function getMoveValue(
+    title?: string,
+    props: Object,
+    enterValue: Array<number>,
+    expectVal: Array<number>
+  ) {
+    it(`Function getMoveValue ${title}`, async () => {
+      const target = mount(<Slider {...props} />);
+      const { btnWidth } = target.props();
+      let curVal, expVal;
+      enterValue.forEach(currentVal => {
+        curVal = currentVal;
+      });
+      expectVal.forEach(val => {
+        expVal = val;
+      });
+      const { btnMove } = target.instance().getMoveValue(curVal, btnWidth);
+      expect(btnMove).toBe(expVal);
+      expect(renderer.create(target).toJSON()).toMatchSnapshot();
+    });
+  }
+  getMoveValue(
+    '横向 单滑块 默认状态',
+    { defaultValue: 5, btnWidth: 20 },
+    [5],
+    [13.333333333333334]
+  );
+  getMoveValue('横向 单滑块 点击', { defaultValue: 5, btnWidth: 20 }, [9.5], [28.333333333333332]);
+  getMoveValue('横向 单滑块 再点击', { defaultValue: 5, btnWidth: 20 }, [19], [60]);
+  getMoveValue(
+    '横向 双滑块 默认',
+    { defaultValue: [5, 10], btnWidth: 20 },
+    [5, 10],
+    [13.333333333333334, 30]
+  );
+  getMoveValue(
+    '横向 双滑块 点击',
+    { defaultValue: [5, 10], btnWidth: 20 },
+    [5, 14.2],
+    [13.333333333333334, 44]
+  );
+  getMoveValue('横向 双滑块 再点击', { defaultValue: [5, 10], btnWidth: 20 }, [7, 14.2], [20, 44]);
+  getMoveValue(
+    '纵向 单滑块 默认状态',
+    { defaultValue: 0, btnWidth: 20, vertical: true },
+    [0],
+    [-3.3333333333333335]
+  );
+  getMoveValue(
+    '纵向 单滑块 默认状态',
+    { defaultValue: 0, btnWidth: 20, vertical: true },
+    [0],
+    [-3.3333333333333335]
+  );
+  getMoveValue(
+    '纵向 单滑块 点击',
+    { defaultValue: 0, btnWidth: 20, vertical: true },
+    [11.6],
+    [35.333333333333336]
+  );
+  getMoveValue(
+    '纵向 单滑块 再点击',
+    { defaultValue: 0, btnWidth: 20, vertical: true },
+    [11.6],
+    [35.333333333333336]
+  );
+  getMoveValue(
+    '纵向 双滑块 默认',
+    { defaultValue: [10, 20], btnWidth: 20, vertical: true },
+    [10, 20],
+    [30, 63.33333333333333]
+  );
+  getMoveValue(
+    '纵向 双滑块 点击',
+    { defaultValue: [10, 20], btnWidth: 20, vertical: true },
+    [10, 24.3],
+    [30, 77.66666666666667]
+  );
+  getMoveValue(
+    '纵向 双滑块 再点击',
+    { defaultValue: [10, 20], btnWidth: 20, vertical: true },
+    [5.6, 24.3],
+    [15.333333333333332, 77.66666666666667]
+  );
   it('Function mouseenter', async () => {
     const target = mount(<Slider defaultValue={[0, 20]} tips />);
     target.instance().setState({ offsetLeft: 70 });
@@ -368,6 +553,7 @@ describe('default', () => {
     expect(target.state().index).toBe(1);
     expect(target.state().isMouseEnter).toBe(true);
     expect(target.state().changeBackground).toBe(true);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function mouseleave', async () => {
     const target = mount(<Slider defaultValue={[0, 20]} tips />);
@@ -375,8 +561,9 @@ describe('default', () => {
     target.instance().mouseleave();
     expect(target.state().isMouseEnter).toBe(false);
     expect(target.state().changeBackground).toBe(false);
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
-  function onChange(title: string, props: Object, event: Array<number>, expectValue: any) {
+  function onChange(title: string, props: Object, offset: Object, event: Object, expectValue: any) {
     it(`Function onchange ${title}`, async () => {
       const { disabled } = props;
       let Result = {};
@@ -385,52 +572,61 @@ describe('default', () => {
         delete Result.event;
       });
       const target = mount(<Slider {...props} tips onChange={onChange} />);
-      target.instance().setState({ offsetLeft: 70 });
-      target.instance().mousedownFun(...event);
-      target.instance().mouseup();
+      target.instance().setState(offset);
       if (!disabled) {
+        target.instance().mousedown(event);
+        target.instance().mouseup();
         expect(Result).toEqual(expectValue);
         expect(onChange.mock.calls.length).toBe(1);
       }
       if (disabled) {
+        expect(target.instance().mousedown).toEqual(null);
+        target.instance().mouseup();
         expect(onChange.mock.calls.length).toBe(0);
       }
+      expect(renderer.create(target).toJSON()).toMatchSnapshot();
     });
   }
   onChange(
-    'onchange normal length=1',
+    '横向 normal length=1',
     { minValue: 0, maxValue: 30, defaultValue: 0 },
-    [156, 103, 0],
+    { offsetLeft: 70 },
+    { pageX: 156, pageY: 103 },
     { oldValue: 0, newValue: 8.6 }
   );
   onChange(
-    'onchange normal length=2',
+    '横向 normal length=2',
     { minValue: 0, maxValue: 30, defaultValue: [5, 10] },
-    [207, 103, 1],
+    { offsetLeft: 70 },
+    { pageX: 207, pageY: 103 },
     { oldValue: [5, 10], newValue: [5, 13.7] }
   );
   onChange(
-    'onchange disabled',
+    '横向 disabled',
     { minValue: 0, maxValue: 30, defaultValue: 0, disabled: true },
-    [156, 103, 0],
+    { offsetLeft: 70 },
+    {},
     {}
   );
   onChange(
-    'onchange disabled length=2',
+    '横向 disabled length=2',
     { minValue: 0, maxValue: 30, defaultValue: [5, 10], disabled: true },
-    [207, 103, 1],
+    { offsetLeft: 70 },
+    {},
     {}
   );
   onChange(
-    'onchange value',
+    '横向 value',
     { minValue: 0, maxValue: 30, defaultValue: 0, value: 2 },
-    [156, 103, 0],
+    { offsetLeft: 70 },
+    { pageX: 156, pageY: 103 },
     { oldValue: 2, newValue: 2 }
   );
   onChange(
-    'onchange value length=2',
+    '横向 value length=2',
     { minValue: 0, maxValue: 30, defaultValue: [5, 10], value: [5, 15] },
-    [207, 103, 1],
+    { offsetLeft: 70 },
+    { pageX: 207, pageY: 103 },
     { oldValue: [5, 15], newValue: [5, 15] }
   );
   const marks = {
@@ -454,32 +650,36 @@ describe('default', () => {
     },
   };
   onChange(
-    'onchange marks length=1',
-    { maxValue: 25, defaultValue: 5, minValue: 15, marks },
-    [163, 104, 0],
+    '横向 marks length=1',
+    { maxValue: 25, defaultValue: 10, minValue: 0, marks },
+    { offsetLeft: 70 },
+    { pageX: 292, pageY: 106 },
     {
-      oldValue: 15,
+      oldValue: 10,
       newValue: 20,
-      oldItem: '15',
+      oldItem: { text: '10℃', style: { color: 'blue' } },
       newItem: { style: { color: 'pink' }, text: '20℃' },
     }
   );
   onChange(
-    'onchange marks length=1 disabled',
+    '横向 marks length=1 disabled',
     { maxValue: 25, defaultValue: 5, minValue: 15, marks, disabled: true },
-    [163, 104, 0],
+    { offsetLeft: 70 },
+    { pageX: 163, pageY: 104 },
     {}
   );
   onChange(
-    'onchange marks length=1 value',
+    '横向 marks length=1 value',
     { maxValue: 25, defaultValue: 5, minValue: 15, marks, value: 15 },
-    [163, 104, 0],
+    { offsetLeft: 70 },
+    { pageX: 163, pageY: 104 },
     { oldValue: 15, newValue: 15, oldItem: '15', newItem: '15' }
   );
   onChange(
-    'onchange marks length=2',
+    '横向 marks length=2',
     { maxValue: 25, defaultValue: [15, 20], minValue: 15, marks },
-    [332, 104, 1],
+    { offsetLeft: 70 },
+    { pageX: 332, pageY: 104 },
     {
       oldValue: [15, 20],
       newValue: [15, 25],
@@ -488,20 +688,154 @@ describe('default', () => {
     }
   );
   onChange(
-    'onchange marks length=2 disabled',
+    '横向 marks length=2 disabled',
     { maxValue: 25, defaultValue: [15, 20], minValue: 15, marks, disabled: true },
-    [332, 104, 1],
+    { offsetLeft: 70 },
+    { pageX: 332, pageY: 104 },
     {}
   );
   onChange(
-    'onchange marks length=2 value',
+    '横向 marks length=2 value',
     { maxValue: 25, defaultValue: [15, 20], minValue: 15, marks, value: [15, 20] },
-    [332, 104, 1],
+    { offsetLeft: 70 },
+    { pageX: 332, pageY: 104 },
     {
       oldValue: [15, 20],
       newValue: [15, 20],
       oldItem: ['15', { text: '20℃', style: { color: 'pink' } }],
       newItem: ['15', { text: '20℃', style: { color: 'pink' } }],
+    }
+  );
+  onChange(
+    '纵向 normal length=1',
+    { minValue: 0, maxValue: 30, defaultValue: 0, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 100, pageY: 815 },
+    { oldValue: 0, newValue: 8.8 }
+  );
+  onChange(
+    '纵向 normal length=1',
+    { minValue: 0, maxValue: 30, defaultValue: 0, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 104, pageY: 780 },
+    { oldValue: 0, newValue: 12.3 }
+  );
+  onChange(
+    '纵向 normal length=2',
+    { minValue: 0, maxValue: 30, defaultValue: [10, 20], vertical: true },
+    { offsetTop: 603 },
+    { pageX: 422, pageY: 661 },
+    { oldValue: [10, 20], newValue: [10, 24.2] }
+  );
+  onChange(
+    '纵向 normal length=2',
+    { minValue: 0, maxValue: 30, defaultValue: [10, 20], vertical: true },
+    { offsetTop: 603 },
+    { pageX: 422, pageY: 849 },
+    { oldValue: [10, 20], newValue: [5.4, 20] }
+  );
+  onChange(
+    '纵向 disabled',
+    { minValue: 0, maxValue: 30, defaultValue: 0, disabled: true, vertical: true },
+    { offsetTop: 603 },
+    {},
+    {}
+  );
+  onChange(
+    '纵向 value length==1',
+    { minValue: 0, maxValue: 30, defaultValue: 0, value: 10, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 270, pageY: 751 },
+    { oldValue: 10, newValue: 10 }
+  );
+  onChange(
+    '纵向 value length==1',
+    { minValue: 0, maxValue: 30, defaultValue: 0, value: 10, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 268, pageY: 839 },
+    { oldValue: 10, newValue: 10 }
+  );
+  onChange(
+    '纵向 value length==2',
+    { minValue: 0, maxValue: 30, defaultValue: 0, value: [10, 20], vertical: true },
+    { offsetTop: 603 },
+    { pageX: 776, pageY: 831 },
+    { oldValue: [10, 20], newValue: [10, 20] }
+  );
+  onChange(
+    '纵向 value length==2',
+    { minValue: 0, maxValue: 30, defaultValue: 0, value: [10, 20], vertical: true },
+    { offsetTop: 603 },
+    { pageX: 778, pageY: 655 },
+    { oldValue: [10, 20], newValue: [10, 20] }
+  );
+  onChange(
+    '纵向 marks length=1',
+    { maxValue: 50, defaultValue: 10, minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 980, pageY: 796 },
+    {
+      oldValue: 10,
+      newValue: 20,
+      oldItem: { text: '10℃', style: { color: 'blue' } },
+      newItem: { style: { color: 'pink' }, text: '20℃' },
+    }
+  );
+  onChange(
+    '纵向 marks length=1',
+    { maxValue: 50, defaultValue: 10, minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 979, pageY: 855 },
+    {
+      oldValue: 10,
+      newValue: 10,
+      oldItem: { text: '10℃', style: { color: 'blue' } },
+      newItem: { text: '10℃', style: { color: 'blue' } },
+    }
+  );
+  onChange(
+    '纵向 marks length=1',
+    { maxValue: 50, defaultValue: 10, minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 980, pageY: 613 },
+    {
+      oldValue: 10,
+      newValue: 50,
+      oldItem: { text: '10℃', style: { color: 'blue' } },
+      newItem: '50',
+    }
+  );
+  onChange(
+    '纵向 marks length=2',
+    { maxValue: 50, defaultValue: [10, 20], minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 1116, pageY: 679 },
+    {
+      oldValue: [10, 20],
+      newValue: [10, 40],
+      oldItem: [
+        { text: '10℃', style: { color: 'blue' } },
+        { style: { color: 'pink' }, text: '20℃' },
+      ],
+      newItem: [
+        { text: '10℃', style: { color: 'blue' } },
+        { style: { color: 'red' }, text: '40℃' },
+      ],
+    }
+  );
+  onChange(
+    '纵向 marks length=2',
+    { maxValue: 50, defaultValue: [10, 20], minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 1116, pageY: 877 },
+    {
+      oldValue: [10, 20],
+      newValue: [0, 20],
+      oldItem: [
+        { text: '10℃', style: { color: 'blue' } },
+        { style: { color: 'pink' }, text: '20℃' },
+      ],
+      newItem: ['0', { style: { color: 'pink' }, text: '20℃' }],
     }
   );
 });
