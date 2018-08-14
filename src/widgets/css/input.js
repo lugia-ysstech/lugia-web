@@ -16,6 +16,7 @@ const {
   dangerColor,
   borderColor,
   blackColor,
+  mediumGreyColor,
 } = colorsFunc();
 
 export const getInputBorderColor = (props: Object) => {
@@ -49,6 +50,7 @@ export const SmallHeight = em(28);
 export const DefaultHeight = em(32);
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
+export const DefaultAmountPrefix = '¥';
 
 export type ValidateStatus = 'success' | 'error';
 
@@ -126,3 +128,6 @@ export function isValidateSuccess(
 ): boolean {
   return validateStatus === 'error' && expType === validateType;
 }
+export const getPlaceholderFontColor = () => {
+  return mediumGreyColor;
+};

@@ -384,4 +384,14 @@ describe('Input', () => {
   testValidateBottomAndInner('value :"111,11"', 'inner', '111,1', 'error');
   testValidateBottomAndInner('value :","', 'inner', ',', 'error');
   testValidateBottomAndInner('value :",,,,"', 'inner', ',,,', 'error');
+
+  it('props: readOnly true', () => {
+    const value = '诸行无常';
+    const changeValue = 'hello ligx';
+
+    const component = mount(<Input value={value} readOnly={true} />);
+    assertInputValue(component, value);
+    component.find('input').simulate('change', { target: { value: changeValue } });
+    assertInputValue(component, value);
+  });
 });

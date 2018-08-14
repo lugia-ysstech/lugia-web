@@ -91,6 +91,8 @@ class Tooltip extends React.Component<TooltipProps, any> {
     return document.getElementById('root');
   }
 
+  static displayName = Widget.Tooltip;
+
   static defaultProps = {
     action: ['click'],
     getTheme() {

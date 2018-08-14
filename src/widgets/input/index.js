@@ -152,6 +152,7 @@ type InputProps = {|
   value?: string,
   formatter?: (value: number | string) => string,
   parser?: (displayValue: number | string) => string,
+  readOnly: boolean,
 |};
 
 class TextBox extends Component<InputProps, InputState> {
@@ -355,6 +356,7 @@ class TextBox extends Component<InputProps, InputState> {
       onKeyUp,
       onKeyPress,
       placeholder,
+      readOnly,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
@@ -380,6 +382,7 @@ class TextBox extends Component<InputProps, InputState> {
         disabled={disabled}
         formatter={formatter}
         parser={parser}
+        readOnly={readOnly}
       />
     );
   }

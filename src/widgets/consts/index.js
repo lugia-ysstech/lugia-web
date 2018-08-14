@@ -9,7 +9,7 @@ const Input = 'sv_widget_Input';
 const Align = 'sv_widget_Align';
 const Trigger = 'sv_widget_Trigger';
 const Tooltip = 'sv_widget_Tooltip';
-const ThemeWrapWidget = 'ThemeWrapWidget';
+const ThemeWrapWidget = 'sv_widget_ThemeWrapWidget';
 
 const InputTag = 'sv_widget_InputTag';
 const InputTagCloseButton = 'sv_widget_InputTagCloseButton';
@@ -46,6 +46,7 @@ const RadioGroup = 'sv_widget_RadioGroup';
 const CheckBox = 'sv_widget_CheckBox';
 const CheckBoxGroup = 'sv_widget_CheckBoxGroup';
 const CheckButton = 'sv_widget_CheckButton';
+const AmountInput = 'sv_widget_AmountInput';
 
 export default {
   Button,
@@ -84,4 +85,5 @@ export default {
   CheckBox,
   CheckBoxGroup,
   CheckButton,
+  AmountInput,
 };
