@@ -5,6 +5,8 @@
  * @flow
  *
  */
+import { DisplayField, ValueField } from '../consts/props';
+
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Radio from './radio';
@@ -89,8 +91,8 @@ export default ThemeProvider(
     getChildDom = (item: Object, isCancel: boolean): any => {
       const {
         disabled,
-        valueField = 'value',
-        displayField = 'text',
+        valueField = ValueField,
+        displayField = DisplayField,
         styles = 'default',
         childType = 'default',
         size = 'default',

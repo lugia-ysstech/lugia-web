@@ -5,8 +5,10 @@
  * @flow
  */
 import * as React from 'react';
+import { DisplayField, ValueField } from '../consts/props';
+
 export default function translateData(props: Object, displayValue: Array<string>): Object {
-  const { data = [], valueField = 'value', displayField = 'text' } = props;
+  const { data = [], valueField = ValueField, displayField = DisplayField } = props;
   const value = props.value || props.defaultValue || [];
   const values = typeof value === 'string' ? [value] : [...value];
   const dataValue = [];
@@ -85,7 +87,7 @@ export function getItems(
 ): Object {
   const items = [];
   const displayValue = [];
-  const { displayField = 'text' } = owner.props;
+  const { displayField = DisplayField } = owner.props;
   const { children } = owner.props;
   if (children) {
     return {};

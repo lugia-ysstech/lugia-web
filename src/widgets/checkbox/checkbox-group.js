@@ -10,6 +10,7 @@ import ThemeProvider from '../theme-provider';
 import CheckBox from './checkbox';
 import CheckButton from '../check-button/button';
 import Widget from '../consts';
+import { DisplayField, ValueField } from '../consts/props';
 import {
   didUpdate,
   getItems,
@@ -140,8 +141,8 @@ export default ThemeProvider(
 
     getChildDom = (item: Object, isCancel: boolean): any => {
       const {
-        displayField = 'text',
-        valueField = 'value',
+        displayField = DisplayField,
+        valueField = ValueField,
         disabled,
         styles = 'default',
         childType = 'default',

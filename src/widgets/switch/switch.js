@@ -8,6 +8,8 @@ import * as React from 'react';
 import { SwitchWrapper, SwitchCircle } from './styled';
 import Loading from '../loading/loading';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
+import { DisplayField } from '../consts/props';
+
 type TypeProps = {
   value?: boolean,
   defaultValue?: boolean,
@@ -41,7 +43,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
     this.switchNode = React.createRef();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { defaultValue = false, data, displayFiled = 'text' } = nextProps;
+    const { defaultValue = false, data, displayFiled = DisplayField } = nextProps;
     const hasValueProps = 'value' in nextProps;
     let { value } = nextProps;
     value = hasValueProps ? value : preState ? preState.value : defaultValue;
