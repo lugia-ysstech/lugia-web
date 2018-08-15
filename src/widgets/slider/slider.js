@@ -147,7 +147,8 @@ class Slider extends Component<TypeProps, TypeState> {
     const onMouseMove = (e: Object) => {
       console.log('addEventListener>>>mousemove');
       e = e || window.event;
-      this.publicmove(e.pageX, e.pageY, index);
+      const { pageX, pageY } = e;
+      this.publicmove(pageX, pageY, index);
     };
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', (e: Object) => {
