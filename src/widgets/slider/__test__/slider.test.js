@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Slider from '../slider';
+import Slider from '../index';
 import Wrapper from '../demo';
 
 import chai from 'chai';
@@ -17,94 +17,102 @@ describe('default', () => {
     const target = <Slider />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
+  function getTarget(target) {
+    return target
+      .children()
+      .at(0)
+      .instance();
+  }
+  function getThemeTarget(target) {
+    return target
+      .children()
+      .at(0)
+      .children()
+      .at(0)
+      .children()
+      .at(0)
+      .instance();
+  }
   it('css', () => {
     const target = mount(
       <Theme
         config={{
           [Widgets.SliderButton]: { color: '#333' },
-          [Widgets.Slider]: { color: '#f22735' },
+          [Widgets.Slider]: { color: '#f22735', width: 300 },
         }}
       >
         <Slider rangeH={4} rangeW={100} />
       </Theme>
     );
+    expect(getThemeTarget(target).style.rangeW).toBe(300);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
+
   it('defaultValue', () => {
     const target = mount(<Slider defaultValue={10} />);
-    expect(target.state().value).toEqual([10]);
-    expect(renderer.create(target).toJSON()).toMatchSnapshot();
+    expect(getTarget(target).state.value).toEqual([10]);
   });
   it('value={23}', () => {
     const target = mount(<Slider defaultValue={10} value={23} tips />);
-    target
-      .find('Button')
-      .at(0)
-      .simulate('mousedown');
-    expect(target.state().value).toEqual([23]);
-    expect(renderer.create(target).toJSON()).toMatchSnapshot();
+    expect(getTarget(target).state.value).toEqual([23]);
   });
   it('disabled', () => {
     const target = mount(<Slider value={2} maxValue={30} disabled />);
-    target
-      .find('Button')
-      .at(0)
-      .simulate('mousedown');
-    expect(target.state().value).toEqual([2]);
+    expect(getTarget(target).state.value).toEqual([2]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('minValue maxValue', () => {
     const target = mount(<Slider maxValue={40} minValue={10} />);
-    expect(target.state().minValue).toBe(10);
-    expect(target.state().maxValue).toBe(40);
+    expect(getTarget(target).state.minValue).toBe(10);
+    expect(getTarget(target).state.maxValue).toBe(40);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue number defaultValue<minValue defaultValue=minValue', () => {
     const target = mount(<Slider minValue={10} defaultValue={-1} />);
-    expect(target.state().minValue).toBe(10);
-    expect(target.state().value).toEqual([10]);
+    expect(getTarget(target).state.minValue).toBe(10);
+    expect(getTarget(target).state.value).toEqual([10]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue number defaultValue>maxValue defaultValue=maxValue', () => {
     const target = mount(<Slider maxValue={40} defaultValue={50} />);
-    expect(target.state().maxValue).toBe(40);
-    expect(target.state().value).toEqual([40]);
+    expect(getTarget(target).state.maxValue).toBe(40);
+    expect(getTarget(target).state.value).toEqual([40]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==1 defaultValue<minValue defaultValue=minValue', () => {
     const target = mount(<Slider minValue={0} defaultValue={[-1]} />);
-    expect(target.state().minValue).toBe(0);
-    expect(target.state().value).toEqual([0]);
+    expect(getTarget(target).state.minValue).toBe(0);
+    expect(getTarget(target).state.value).toEqual([0]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==1 defaultValue>maxValue defaultValue=maxValue', () => {
     const target = mount(<Slider maxValue={40} defaultValue={[50]} />);
-    expect(target.state().maxValue).toBe(40);
-    expect(target.state().value).toEqual([40]);
+    expect(getTarget(target).state.maxValue).toBe(40);
+    expect(getTarget(target).state.value).toEqual([40]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==2 defaultValue[0]< minValue', () => {
     const target = mount(<Slider minValue={10} defaultValue={[-1, 10]} />);
-    expect(target.state().minValue).toBe(10);
-    expect(target.state().value).toEqual([10, 10]);
+    expect(getTarget(target).state.minValue).toBe(10);
+    expect(getTarget(target).state.value).toEqual([10, 10]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==2 defaultValue[1]<minValue defaultValue=minValue', () => {
     const target = mount(<Slider minValue={10} defaultValue={[10, -1]} />);
-    expect(target.state().minValue).toBe(10);
-    expect(target.state().value).toEqual([10, 10]);
+    expect(getTarget(target).state.minValue).toBe(10);
+    expect(getTarget(target).state.value).toEqual([10, 10]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==2 defaultValue[0]>maxValue defaultValue[0]=maxValue', () => {
     const target = mount(<Slider maxValue={40} defaultValue={[50, 20]} />);
-    expect(target.state().maxValue).toBe(40);
-    expect(target.state().value).toEqual([40, 20]);
+    expect(getTarget(target).state.maxValue).toBe(40);
+    expect(getTarget(target).state.value).toEqual([40, 20]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('defaultValue Array length==2 defaultValue[1]>maxValue defaultValue[1]=maxValue', () => {
     const target = mount(<Slider maxValue={40} defaultValue={[10, 50]} />);
-    expect(target.state().maxValue).toBe(40);
-    expect(target.state().value).toEqual([10, 40]);
+    expect(getTarget(target).state.maxValue).toBe(40);
+    expect(getTarget(target).state.value).toEqual([10, 40]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 
@@ -130,10 +138,10 @@ describe('default', () => {
       },
     };
     const target = mount(<Slider maxValue={25} defaultValue={5} minValue={0} marks={marks} />);
-    expect(target.state().maxValue).toBe(25);
-    expect(target.state().minValue).toBe(0);
-    expect(target.state().value).toEqual([5]);
-    expect(target.state().marksKeys).toEqual([0, 10, 20, 25]);
+    expect(getTarget(target).state.maxValue).toBe(25);
+    expect(getTarget(target).state.minValue).toBe(0);
+    expect(getTarget(target).state.value).toEqual([5]);
+    expect(getTarget(target).state.marksKeys).toEqual([0, 10, 20, 25]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('离散值 marks={} length==2 has maxValue minValue', () => {
@@ -160,10 +168,10 @@ describe('default', () => {
     const target = mount(
       <Slider maxValue={25} defaultValue={[10, 20]} minValue={0} marks={marks} />
     );
-    expect(target.state().maxValue).toBe(25);
-    expect(target.state().minValue).toBe(0);
-    expect(target.state().value).toEqual([10, 20]);
-    expect(target.state().marksKeys).toEqual([0, 10, 20, 25]);
+    expect(getTarget(target).state.maxValue).toBe(25);
+    expect(getTarget(target).state.minValue).toBe(0);
+    expect(getTarget(target).state.value).toEqual([10, 20]);
+    expect(getTarget(target).state.marksKeys).toEqual([0, 10, 20, 25]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('离散值 marks={} no maxValue minValue', () => {
@@ -188,10 +196,10 @@ describe('default', () => {
       },
     };
     const target = mount(<Slider defaultValue={5} marks={marks} />);
-    expect(target.state().maxValue).toBe(40);
-    expect(target.state().minValue).toBe(10);
-    expect(target.state().value).toEqual([10]);
-    expect(target.state().marksKeys).toEqual([10, 20, 40]);
+    expect(getTarget(target).state.maxValue).toBe(40);
+    expect(getTarget(target).state.minValue).toBe(10);
+    expect(getTarget(target).state.value).toEqual([10]);
+    expect(getTarget(target).state.marksKeys).toEqual([10, 20, 40]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('离散值 marks={}  publicMove', () => {
@@ -217,83 +225,83 @@ describe('default', () => {
     };
     const target = mount(<Slider maxValue={25} defaultValue={5} minValue={15} marks={marks} />);
     // publicMove
-    target.instance().setState({ offsetLeft: 70 });
-    target.instance().publicmove(186, 101, 0);
-    expect(target.state().value).toEqual([20]);
-    target.instance().publicmove(130, 102, 0);
-    expect(target.state().value).toEqual([15]);
+    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).publicmove(186, 101, 0);
+    expect(getTarget(target).state.value).toEqual([20]);
+    getTarget(target).publicmove(130, 102, 0);
+    expect(getTarget(target).state.value).toEqual([15]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function publicmove 横向 单滑块', async () => {
     const target = mount(<Slider minValue={0} defaultValue={0} maxValue={30} />);
     //横向slider
     // 单滑块
-    target.instance().setState({ offsetLeft: 70 });
-    target.instance().publicmove(106, 104, 0); // pageX,pageY,index(滑块的index)
-    expect(target.state().value).toEqual([3.6]);
-    target.instance().publicmove(53, 103, 0);
-    expect(target.state().value).toEqual([0]);
-    target.instance().publicmove(40, 103, 0); //pageX 小于最左边的临界值 ，value为minValue
-    expect(target.state().value).toEqual([0]);
-    target.instance().publicmove(370, 105, 0);
-    expect(target.state().value).toEqual([30]);
-    target.instance().publicmove(393, 103, 0); //pageX 大于最右边的临界值 ，value为maxValue
-    expect(target.state().value).toEqual([30]);
+    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).publicmove(106, 104, 0); // pageX,pageY,index(滑块的index)
+    expect(getTarget(target).state.value).toEqual([3.6]);
+    getTarget(target).publicmove(53, 103, 0);
+    expect(getTarget(target).state.value).toEqual([0]);
+    getTarget(target).publicmove(40, 103, 0); //pageX 小于最左边的临界值 ，value为minValue
+    expect(getTarget(target).state.value).toEqual([0]);
+    getTarget(target).publicmove(370, 105, 0);
+    expect(getTarget(target).state.value).toEqual([30]);
+    getTarget(target).publicmove(393, 103, 0); //pageX 大于最右边的临界值 ，value为maxValue
+    expect(getTarget(target).state.value).toEqual([30]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function publicmove 横向 双滑块', async () => {
     const target = mount(<Slider minValue={0} defaultValue={[0, 20]} maxValue={30} />);
     //横向slider
     //双滑块
-    target.instance().setState({ offsetLeft: 70 });
-    target.instance().publicmove(232, 422, 1);
-    expect(target.state().value).toEqual([0, 16.2]);
-    target.instance().publicmove(118, 425, 0);
-    expect(target.state().value).toEqual([4.8, 16.2]);
-    target.instance().publicmove(397, 418, 1); //pageX 小于最左边的临界值 ，value为minValue
-    expect(target.state().value).toEqual([4.8, 30]);
-    target.instance().publicmove(37, 417, 0); //pageX 大于最右边的临界值 ，value为maxValue
-    expect(target.state().value).toEqual([0, 30]);
+    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).publicmove(232, 422, 1);
+    expect(getTarget(target).state.value).toEqual([0, 16.2]);
+    getTarget(target).publicmove(118, 425, 0);
+    expect(getTarget(target).state.value).toEqual([4.8, 16.2]);
+    getTarget(target).publicmove(397, 418, 1); //pageX 小于最左边的临界值 ，value为minValue
+    expect(getTarget(target).state.value).toEqual([4.8, 30]);
+    getTarget(target).publicmove(37, 417, 0); //pageX 大于最右边的临界值 ，value为maxValue
+    expect(getTarget(target).state.value).toEqual([0, 30]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function publicmove 纵向 单滑块', async () => {
     const target = mount(<Slider defaultValue={10} vertical />);
-    target.instance().setState({ offsetTop: 124 });
-    target.instance().publicmove(99, 323, 0); // pageX,pageY,index(滑块的index)
-    expect(target.state().value).toEqual([10.1]);
-    target.instance().publicmove(97, 424, 0);
-    expect(target.state().value).toEqual([0]);
-    target.instance().publicmove(97, 429, 0); //pageY 小于最下的临界值 ，value为minValue
-    expect(target.state().value).toEqual([0]);
-    target.instance().publicmove(103, 124, 0);
-    expect(target.state().value).toEqual([30]);
-    target.instance().publicmove(97, 120, 0); //pageY 大于最上的临界值 ，value为maxValue
-    expect(target.state().value).toEqual([30]);
+    getTarget(target).setState({ offsetTop: 124 });
+    getTarget(target).publicmove(99, 323, 0); // pageX,pageY,index(滑块的index)
+    expect(getTarget(target).state.value).toEqual([10.1]);
+    getTarget(target).publicmove(97, 424, 0);
+    expect(getTarget(target).state.value).toEqual([0]);
+    getTarget(target).publicmove(97, 429, 0); //pageY 小于最下的临界值 ，value为minValue
+    expect(getTarget(target).state.value).toEqual([0]);
+    getTarget(target).publicmove(103, 124, 0);
+    expect(getTarget(target).state.value).toEqual([30]);
+    getTarget(target).publicmove(97, 120, 0); //pageY 大于最上的临界值 ，value为maxValue
+    expect(getTarget(target).state.value).toEqual([30]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function publicmove 纵向 双滑块', async () => {
     const target = mount(<Slider defaultValue={[10, 20]} tips vertical />);
-    target.instance().setState({ offsetTop: 124 });
-    target.instance().publicmove(254, 338, 0);
-    expect(target.state().value).toEqual([8.6, 20]);
-    target.instance().publicmove(256, 188, 1);
-    expect(target.state().value).toEqual([8.6, 23.6]);
-    target.instance().publicmove(256, 424, 0); //pageY 小于最下的临界值 ，value为minValue
-    expect(target.state().value).toEqual([0, 23.6]);
-    target.instance().publicmove(256, 430, 0);
-    expect(target.state().value).toEqual([0, 23.6]);
-    target.instance().publicmove(256, 124, 1); //pageY 大于最上边的临界值 ，value为maxValue
-    expect(target.state().value).toEqual([0, 30]);
-    target.instance().publicmove(256, 120, 1); //pageY 大于最上边的临界值 ，value为maxValue
-    expect(target.state().value).toEqual([0, 30]);
+    getTarget(target).setState({ offsetTop: 124 });
+    getTarget(target).publicmove(254, 338, 0);
+    expect(getTarget(target).state.value).toEqual([8.6, 20]);
+    getTarget(target).publicmove(256, 188, 1);
+    expect(getTarget(target).state.value).toEqual([8.6, 23.6]);
+    getTarget(target).publicmove(256, 424, 0); //pageY 小于最下的临界值 ，value为minValue
+    expect(getTarget(target).state.value).toEqual([0, 23.6]);
+    getTarget(target).publicmove(256, 430, 0);
+    expect(getTarget(target).state.value).toEqual([0, 23.6]);
+    getTarget(target).publicmove(256, 124, 1); //pageY 大于最上边的临界值 ，value为maxValue
+    expect(getTarget(target).state.value).toEqual([0, 30]);
+    getTarget(target).publicmove(256, 120, 1); //pageY 大于最上边的临界值 ，value为maxValue
+    expect(getTarget(target).state.value).toEqual([0, 30]);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getMoveState 横向 单滑块', async () => {
     const target = mount(<Slider minValue={0} defaultValue={0} maxValue={30} />);
     //横向slider
     // 单滑块
-    target.instance().setState({ offsetLeft: 70 });
-    const { moveValue } = target.instance().getMoveState(149, 103, 0);
+    getTarget(target).setState({ offsetLeft: 70 });
+    const { moveValue } = getTarget(target).getMoveState(149, 103, 0);
     expect(moveValue).toBe(7.9);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
@@ -301,40 +309,40 @@ describe('default', () => {
     const target = mount(<Slider minValue={0} defaultValue={[5, 10]} maxValue={30} />);
     //横向slider
     // 单滑块
-    target.instance().setState({ offsetLeft: 70 });
-    const { moveValue } = target.instance().getMoveState(220, 101, 1);
+    getTarget(target).setState({ offsetLeft: 70 });
+    const { moveValue } = getTarget(target).getMoveState(220, 101, 1);
     expect(moveValue).toBe(15);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getMoveState 纵向 单滑块', async () => {
     const target = mount(<Slider vertical />);
-    target.instance().setState({ offsetTop: 94 });
-    const { moveValue } = target.instance().getMoveState(73, 281, 0);
+    getTarget(target).setState({ offsetTop: 94 });
+    const { moveValue } = getTarget(target).getMoveState(73, 281, 0);
     expect(moveValue).toBe(11.3);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getMoveState 纵向 双滑块', async () => {
     const target = mount(<Slider vertical />);
-    target.instance().setState({ offsetTop: 94 });
-    const { moveValue } = target.instance().getMoveState(71, 146, 1);
+    getTarget(target).setState({ offsetTop: 94 });
+    const { moveValue } = getTarget(target).getMoveState(71, 146, 1);
     expect(moveValue).toBe(24.8);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getNewIndex  单滑块', async () => {
     const target = mount(<Slider defaultValue={0} />);
-    target.instance().setState({ offsetLeft: 70 });
-    const { index } = target.instance().getNewIndex(139, 105);
+    getTarget(target).setState({ offsetLeft: 70 });
+    const { index } = getTarget(target).getNewIndex(139, 105);
     expect(index).toBe(0);
-    target.instance().setState({ offsetLeft: 94, vertical: true });
+    getTarget(target).setState({ offsetLeft: 94, vertical: true });
     expect(index).toBe(0);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function getNewIndex  双滑块', async () => {
     const target = mount(<Slider defaultValue={[5, 10]} />);
-    target.instance().setState({ offsetLeft: 70 });
-    const firstIndex = target.instance().getNewIndex(101, 104).index;
+    getTarget(target).setState({ offsetLeft: 70 });
+    const firstIndex = getTarget(target).getNewIndex(101, 104).index;
     expect(firstIndex).toBe(0);
-    const secondIndex = target.instance().getNewIndex(199, 104).index;
+    const secondIndex = getTarget(target).getNewIndex(199, 104).index;
     expect(secondIndex).toBe(1);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
@@ -347,10 +355,10 @@ describe('default', () => {
   ) {
     it(`Function getMarkValue ${title}`, async () => {
       const target = mount(<Slider {...props} />);
-      const { marksKeys } = target.state();
-      target.instance().setState(offset);
-      const moveValue = target.instance().getMoveState(...event).moveValue;
-      const markValue = target.instance().getMarkValue(marksKeys, moveValue).markValue;
+      const { marksKeys } = getTarget(target).state;
+      getTarget(target).setState(offset);
+      const moveValue = getTarget(target).getMoveState(...event).moveValue;
+      const markValue = getTarget(target).getMarkValue(marksKeys, moveValue).markValue;
       expect(markValue).toBe(expectValue);
       expect(renderer.create(target).toJSON()).toMatchSnapshot();
     });
@@ -476,7 +484,7 @@ describe('default', () => {
       expectVal.forEach(val => {
         expVal = val;
       });
-      const { btnMove } = target.instance().getMoveValue(curVal, btnWidth);
+      const { btnMove } = getTarget(target).getMoveValue(curVal, btnWidth);
       expect(btnMove).toBe(expVal);
       expect(renderer.create(target).toJSON()).toMatchSnapshot();
     });
@@ -546,42 +554,42 @@ describe('default', () => {
   );
   it('Function mouseenter', async () => {
     const target = mount(<Slider defaultValue={[0, 20]} tips />);
-    target.instance().setState({ offsetLeft: 70 });
-    target.instance().mouseenter(0);
-    expect(target.state().index).toBe(0);
-    target.instance().mouseenter(1);
-    expect(target.state().index).toBe(1);
-    expect(target.state().isMouseEnter).toBe(true);
-    expect(target.state().changeBackground).toBe(true);
+    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).mouseenter(0)();
+    expect(getTarget(target).state.index).toBe(0);
+    getTarget(target).mouseenter(1)();
+    expect(getTarget(target).state.index).toBe(1);
+    expect(getTarget(target).state.isInBall).toBe(true);
+    expect(getTarget(target).state.changeBackground).toBe(true);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('Function mouseleave', async () => {
     const target = mount(<Slider defaultValue={[0, 20]} tips />);
-    target.instance().setState({ offsetLeft: 70 });
-    target.instance().mouseleave();
-    expect(target.state().isMouseEnter).toBe(false);
-    expect(target.state().changeBackground).toBe(false);
+    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).mouseleave();
+    expect(getTarget(target).state.isInBall).toBe(false);
+    expect(getTarget(target).state.changeBackground).toBe(false);
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   function onChange(title: string, props: Object, offset: Object, event: Object, expectValue: any) {
     it(`Function onchange ${title}`, async () => {
-      const { disabled } = props;
+      const { disabled, value } = props;
       let Result = {};
       const onChange = jest.fn(function(object) {
         Result = object;
         delete Result.event;
       });
       const target = mount(<Slider {...props} tips onChange={onChange} />);
-      target.instance().setState(offset);
-      if (!disabled) {
-        target.instance().mousedown(event);
-        target.instance().mouseup();
+      getTarget(target).setState(offset);
+      if (!disabled && !value) {
+        getTarget(target).mousedown(event);
+        getTarget(target).mouseup();
         expect(Result).toEqual(expectValue);
         expect(onChange.mock.calls.length).toBe(1);
       }
-      if (disabled) {
-        expect(target.instance().mousedown).toEqual(null);
-        target.instance().mouseup();
+      if (disabled && value) {
+        expect(getTarget(target).mousedown).toEqual(null);
+        getTarget(target).mouseup();
         expect(onChange.mock.calls.length).toBe(0);
       }
       expect(renderer.create(target).toJSON()).toMatchSnapshot();
@@ -627,7 +635,7 @@ describe('default', () => {
     { minValue: 0, maxValue: 30, defaultValue: [5, 10], value: [5, 15] },
     { offsetLeft: 70 },
     { pageX: 207, pageY: 103 },
-    { oldValue: [5, 15], newValue: [5, 15] }
+    {}
   );
   const marks = {
     10: {
@@ -746,28 +754,28 @@ describe('default', () => {
     { minValue: 0, maxValue: 30, defaultValue: 0, value: 10, vertical: true },
     { offsetTop: 603 },
     { pageX: 270, pageY: 751 },
-    { oldValue: 10, newValue: 10 }
+    {}
   );
   onChange(
     '纵向 value length==1',
     { minValue: 0, maxValue: 30, defaultValue: 0, value: 10, vertical: true },
     { offsetTop: 603 },
     { pageX: 268, pageY: 839 },
-    { oldValue: 10, newValue: 10 }
+    {}
   );
   onChange(
     '纵向 value length==2',
     { minValue: 0, maxValue: 30, defaultValue: 0, value: [10, 20], vertical: true },
     { offsetTop: 603 },
     { pageX: 776, pageY: 831 },
-    { oldValue: [10, 20], newValue: [10, 20] }
+    {}
   );
   onChange(
     '纵向 value length==2',
     { minValue: 0, maxValue: 30, defaultValue: 0, value: [10, 20], vertical: true },
     { offsetTop: 603 },
     { pageX: 778, pageY: 655 },
-    { oldValue: [10, 20], newValue: [10, 20] }
+    {}
   );
   onChange(
     '纵向 marks length=1',

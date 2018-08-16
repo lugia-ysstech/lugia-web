@@ -1,5 +1,5 @@
 //@flow
-import { getMinAndMax, limit, limitToSet } from '../Math';
+import { getMinAndMax, limit, limitToSet, valueInRange } from '../Math';
 
 describe('Math', () => {
   it('getMinAndMax', () => {
@@ -28,5 +28,17 @@ describe('Math', () => {
   });
   it('limitToSet index<0', () => {
     expect(limitToSet([1, 1, 2, 3, 4, 5], [1, 6])).toEqual([1, 2, 3, 4, 5]);
+  });
+  it('valueInRange in', () => {
+    expect(valueInRange(3, [1, 5])).toBe(true);
+  });
+  it('valueInRange out', () => {
+    expect(valueInRange(6, [1, 5])).toBe(false);
+  });
+  it('valueInRange equal', () => {
+    expect(valueInRange(1, [1, 5])).toBe(true);
+  });
+  it('valueInRange', () => {
+    expect(valueInRange(1, [5, 1])).toBe(true);
   });
 });

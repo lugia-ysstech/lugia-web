@@ -21,7 +21,10 @@ export function limitToSet(val: number[], range: number[]): number[] {
   });
   return newVal;
 }
-
+export function valueInRange(val: number, range: number[]): boolean {
+  const { min, max } = getMinAndMax(range);
+  return val >= min && val <= max;
+}
 export function getMinAndMax(range: number[]): { min: number, max: number } {
   let min = range[0],
     max = range[0];

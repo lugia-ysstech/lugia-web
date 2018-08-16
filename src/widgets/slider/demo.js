@@ -22,14 +22,11 @@ export default class Sl extends Component<any> {
 
   onchange = v => {
     console.log(v);
-    // if(v.newValue>=10){
-    //   this.setState({
-    //     disabled:true
-    //   });
-    // }
   };
   handleclick = () => {
-    this.setState({ btnWidth: 30 });
+    this.setState({
+      disabled: !this.state.disabled,
+    });
   };
 
   render() {
@@ -41,7 +38,7 @@ export default class Sl extends Component<any> {
           <Slider defaultValue={5} tips onChange={this.onchange} />
         </div>
 
-        {/* <div style={{ float: 'left', padding: '0 20px 50px' }}>
+        <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> normal</h2>
           <Slider tips onChange={this.onchange} />
         </div>
@@ -49,8 +46,8 @@ export default class Sl extends Component<any> {
           <h2 style={{ padding: '20px 0' }}> 自定义css</h2>
           <Theme
             config={{
-              [Widgets.SliderButton]: { color: '#333' },
-              [Widgets.Slider]: { color: '#2e5df2' },
+              [Widgets.SliderButton]: { color: '#f8ac30' },
+              [Widgets.Slider]: { color: '#f8ac30', margin: 50, width: 300 },
             }}
           >
             <Slider rangeH={4} rangeW={100} minValue={undefined} defaultValue={undefined} tips />
@@ -63,10 +60,6 @@ export default class Sl extends Component<any> {
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 单滑块</h2>
           <Slider maxValue={40} tips minValue={10} defaultValue={50} />
-        </div>
-        <div style={{ float: 'left', padding: '0 20px 50px' }}>
-          <h2 style={{ padding: '20px 0' }}> 单滑块 disabled false-> true</h2>
-          <Slider maxValue={30} tips minValue={0} defaultValue={0} onChange={this.onchange} disabled={this.state.disabled}/>
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 双滑块 minValue -1</h2>
@@ -121,7 +114,7 @@ export default class Sl extends Component<any> {
           <h2 style={{ padding: '20px 0' }}> 离散 marks 对象+对象</h2>
           <Slider
             maxValue={25}
-            defaultValue={[10,20]}
+            defaultValue={[10, 20]}
             minValue={0}
             tips
             onChange={this.onchange}
@@ -171,31 +164,33 @@ export default class Sl extends Component<any> {
             minValue={0}
             tips
             icons={[
-              {
-                name: 'lugia-icon-financial_global',
-                position: 'left',
-                style: {
-                  fontSize: '24px',
-                },
-              },
-              {
-                name: 'lugia-icon-financial_switch_e_and_c',
-                position: 'right',
-                style: {
-                  fontSize: '24px',
-                },
-              },
+              { name: 'lugia-icon-financial_global', style: { fontSize: 24, color: 'red' } },
+              { name: 'lugia-icon-financial_switch_e_and_c' },
             ]}
           />
+        </div>
+        <div style={{ float: 'left', padding: '0 20px 50px' }}>
+          <h2 style={{ padding: '20px 0' }}> 单滑块 disabled false-> true</h2>
+          <Slider
+            maxValue={30}
+            tips
+            minValue={0}
+            defaultValue={0}
+            onChange={this.onchange}
+            disabled={this.state.disabled}
+          />
+          <p>
+            <button onClick={this.handleclick}>click me, you can change disabled</button>
+          </p>
         </div>
         <div style={{ clear: 'both' }} />
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> normal</h2>
-          <Slider vertical tips onChange={this.onchange}/>
+          <Slider vertical tips onChange={this.onchange} />
         </div>
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> 单滑块value</h2>
-          <Slider defaultValue={0} vertical value={10} onChange={this.onchange}/>
+          <Slider defaultValue={0} vertical value={10} onChange={this.onchange} />
         </div>
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> 单滑块</h2>
@@ -207,7 +202,7 @@ export default class Sl extends Component<any> {
         </div>
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> 双滑块value</h2>
-          <Slider defaultValue={[10, 20]} value={[10,20]} tips vertical onChange={this.onchange}/>
+          <Slider defaultValue={[10, 20]} value={[10, 20]} tips vertical onChange={this.onchange} />
         </div>
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> 离散</h2>
@@ -256,7 +251,7 @@ export default class Sl extends Component<any> {
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> disabled</h2>
           <Slider defaultValue={10} value={5} tips disabled vertical />
-        </div> */}
+        </div>
         <div style={{ float: 'left', padding: '0 50px 50px' }}>
           <h2 style={{ padding: '35px 0' }}> 离散</h2>
           <Slider
@@ -271,6 +266,18 @@ export default class Sl extends Component<any> {
               5: '5',
               10: '10℃',
             }}
+          />
+        </div>
+        <div style={{ float: 'left', padding: '0 40px 50px' }}>
+          <h2 style={{ padding: '20px 0' }}> icon</h2>
+          <Slider
+            minValue={0}
+            tips
+            vertical
+            icons={[
+              { name: 'lugia-icon-financial_global' },
+              { name: 'lugia-icon-financial_switch_e_and_c' },
+            ]}
           />
         </div>
       </div>
