@@ -12,10 +12,19 @@ import type { RowProps, RowState, screensType } from '../css/row';
 import { RowWrap } from '../css/row';
 
 let enquire;
-if (typeof window !== 'undefined') {
+if (typeof window !== undefined) {
+  const matchMediaPolyfill = (mediaQuery: string) => {
+    return {
+      media: mediaQuery,
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+  window.matchMedia = window.matchMedia || matchMediaPolyfill;
+
   enquire = require('enquire.js');
 }
-
 const responsiveMap: { [key: screensType]: string } = {
   xs: '(max-width: 575px)',
   sm: '(min-width: 576px)',

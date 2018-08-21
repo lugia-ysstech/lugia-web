@@ -17,7 +17,7 @@ const { expect: exp } = chai;
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Button', () => {
+describe('row', () => {
   it('css', () => {
     const Target = <RowDemo />;
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();

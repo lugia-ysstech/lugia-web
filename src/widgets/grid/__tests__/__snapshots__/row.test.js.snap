@@ -1,0 +1,971 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`row css 1`] = `
+.c2 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 0%;
+}
+
+.c3 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 25%;
+}
+
+.c4 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 75%;
+  margin-left: 0%;
+  left: 25%;
+}
+
+.c5 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 0%;
+  right: 75%;
+}
+
+.c7 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+}
+
+.c15 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
+}
+
+.c16 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+}
+
+.c17 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+.c18 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+  -webkit-order: 4;
+  -ms-flex-order: 4;
+  order: 4;
+}
+
+.c20 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 0%;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.c1 {
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+  zoom: 1;
+  display: block;
+  box-sizing: border-box;
+}
+
+.c1:after {
+  content: "";
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.c1::before {
+  content: "";
+  display: table;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: star;
+  -webkit-justify-content: flex-star;
+  -ms-flex-pack: star;
+  justify-content: flex-star;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: star;
+  -webkit-justify-content: flex-star;
+  -ms-flex-pack: star;
+  justify-content: flex-star;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c19 {
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+  zoom: 1;
+  display: block;
+  box-sizing: border-box;
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.c19:after {
+  content: "";
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.c19::before {
+  content: "";
+  display: table;
+}
+
+.c0 > div > div {
+  padding: 8px;
+  text-align: center;
+}
+
+.c0 > div > div:nth-child(odd) {
+  background: rgba(0,160,233,0.7);
+}
+
+.c0 > div > div:nth-child(even) {
+  background: #00a0e9;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      type="default"
+    >
+      <div
+        className="c2"
+        span={6}
+      >
+        col-6
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-6
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-6
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-6
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      type="default"
+    >
+      <div
+        className="c3"
+        offset={6}
+        span={6}
+      >
+        col-6 col-offset-6
+      </div>
+      <div
+        className="c3"
+        offset={6}
+        span={6}
+      >
+        col-6 col-offset-6
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      type="default"
+    >
+      <div
+        className="c4"
+        span={18}
+      >
+        col-18 col-push-6
+      </div>
+      <div
+        className="c5"
+        span={6}
+      >
+        col-6 col-pull-18
+      </div>
+    </div>
+  </div>
+  <br />
+  <p>
+    type: flex, justify
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c6"
+      type="flex"
+    >
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-start
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-start
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-start
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-start
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c8"
+      type="flex"
+    >
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-center
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-center
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-center
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-center
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c9"
+      type="flex"
+    >
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-end
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-end
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-end
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-end
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c10"
+      type="flex"
+    >
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-spaceBetween
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-spaceBetween
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-spaceBetween
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-spaceBetween
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c11"
+      type="flex"
+    >
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-spacAround
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-spacAround
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-spacAround
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        col-4 justify-spacAround
+      </div>
+    </div>
+  </div>
+  <br />
+  <p>
+    type: flex, align
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c12"
+      type="flex"
+    >
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 80,
+            }
+          }
+        >
+          col-4 align-top
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 60,
+            }
+          }
+        >
+          col-4 align-top
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 100,
+            }
+          }
+        >
+          col-4 align-top
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 120,
+            }
+          }
+        >
+          col-4 align-top
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c13"
+      type="flex"
+    >
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 80,
+            }
+          }
+        >
+          col-4 align-middle
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 60,
+            }
+          }
+        >
+          col-4 align-middle
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 100,
+            }
+          }
+        >
+          col-4 align-middle
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 120,
+            }
+          }
+        >
+          col-4 align-middle
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c14"
+      type="flex"
+    >
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 80,
+            }
+          }
+        >
+          col-4 align-bottom
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 60,
+            }
+          }
+        >
+          col-4 align-bottom
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 100,
+            }
+          }
+        >
+          col-4 align-bottom
+        </div>
+      </div>
+      <div
+        className="c7"
+        span={4}
+      >
+        <div
+          style={
+            Object {
+              "height": 120,
+            }
+          }
+        >
+          col-4 align-bottom
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <p>
+    type: flex, order
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c8"
+      type="flex"
+    >
+      <div
+        className="c15"
+        order={3}
+        span={4}
+      >
+        col-4 center-order-3
+      </div>
+      <div
+        className="c16"
+        order={2}
+        span={4}
+      >
+        col-4 center-order-2
+      </div>
+      <div
+        className="c17"
+        order={1}
+        span={4}
+      >
+        col-4 center-order-1
+      </div>
+      <div
+        className="c18"
+        order={4}
+        span={4}
+      >
+        col-4 center-order-4
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    style={
+      Object {
+        "width": "1200px",
+      }
+    }
+  >
+    <div
+      className="c1"
+      type="default"
+    >
+      <div
+        className="c2"
+        span={6}
+      >
+        <div
+          style={
+            Object {
+              "background": "rgba(0, 160, 233, 0.7)",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        <div
+          style={
+            Object {
+              "background": " #00a0e9",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        <div
+          style={
+            Object {
+              "background": "rgba(0, 160, 233, 0.7)",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        <div
+          style={
+            Object {
+              "background": " #00a0e9",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    style={
+      Object {
+        "width": "1200px",
+      }
+    }
+  >
+    <div
+      className="c19"
+      type="default"
+    >
+      <div
+        className="c20"
+        span={6}
+      >
+        <div
+          style={
+            Object {
+              "background": "rgba(0, 160, 233, 0.7)",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c20"
+        span={6}
+      >
+        <div
+          style={
+            Object {
+              "background": " #00a0e9",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c20"
+        span={6}
+      >
+        <div
+          style={
+            Object {
+              "background": "rgba(0, 160, 233, 0.7)",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+      <div
+        className="c20"
+        span={6}
+      >
+        <div
+          style={
+            Object {
+              "background": " #00a0e9",
+            }
+          }
+        >
+          col-6
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <p>
+      响应式
+    </p>
+    <div
+      className="c1"
+      type="default"
+    >
+      <div
+        className="c2"
+        span={6}
+      >
+        col-
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
+`;
