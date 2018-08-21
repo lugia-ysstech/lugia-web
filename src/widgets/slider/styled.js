@@ -72,7 +72,7 @@ export const Button = ThemeProvider(
   `,
   Widgets.SliderButton
 );
-Button.displayName = Widgets.SliderButton;
+//Button.displayName = Widgets.SliderButton;
 
 export const Tips = styled.span`
   font-size: ${em(14)};
@@ -118,19 +118,20 @@ export const Dot = styled.span`
     ${props => getDotStyle(props).dotTextPosition}
   }
 `;
-export const Icons = styled.span`
-  position: absolute;
-  line-height: 0;
-  color: #ccc;
-  ${props => getIconsStyle(props).iconPosition};
-  ${props => getIconsStyle(props).changeColor};
-  ${props => getIconsStyle(props).iconStyles};
-  font-size: ${props => getIconsStyle(props).fontSize};
-`;
+export const Icons = ThemeProvider(
+  styled.span`
+    position: absolute;
+    line-height: 0;
+    ${props => getIconsStyle(props).iconPosition};
+    ${props => getIconsStyle(props).changeColor};
+    font-size: ${props => getIconsStyle(props).fontSize};
+  `,
+  Widgets.SliderIcon
+);
 const getSliderWrapperStyle = (props: CssTypeProps) => {
   const { changeBackground, disabled, vertical, getTheme } = props;
   const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
-  const { margin, width, height } = getTheme();
+  const { margin } = getTheme();
   let MarginValue;
   if (margin && typeof margin === 'object') {
     const { top, left, bottom, right } = margin;
@@ -140,9 +141,6 @@ const getSliderWrapperStyle = (props: CssTypeProps) => {
     MarginValue = `margin:${em(margin)}`;
   }
   let { rangeW, rangeH } = props;
-  rangeW = width || rangeW;
-  rangeH = height || rangeH;
-
   const rangwWidth = rangeW;
   const rangwHeight = rangeH;
 
@@ -315,36 +313,32 @@ const getIconsStyle = (props: CssTypeProps) => {
   if (getTheme) {
     theme = getTheme();
   }
+  let { fontSize = 20 } = theme;
+  const { color = '#999', margin = 20 } = theme;
   let iconPosition;
   let changeColor;
-  let fontSize = 20;
-  let iconStyles;
   if (iconStyle && value && value.length === 1) {
     const middleVal = (minValue + maxValue) / 2;
-
-    iconStyles = iconStyle.style;
-    iconStyles = iconStyles ? iconStyles : {};
-
-    if (iconStyles.fontSize) {
-      fontSize = parseInt(iconStyles.fontSize);
-    }
-    fontSize = em(fontSize);
-
+    fontSize = em(parseInt(fontSize));
     const { index } = iconStyle;
     let iconPos;
     const iconCenterP = vertical ? 'left:50%' : 'top: 50%';
     const iconTrans = vertical ? 'translateX' : 'translateY';
     const theValue = value[0];
-    const distance = em(20);
+    const distance = em(parseInt(margin));
     if (index === 0) {
       iconPos = `${vertical ? 'bottom' : 'left'}:-${distance}`;
       if (theValue <= middleVal) {
-        changeColor = 'color:#999;';
+        changeColor = `color:${color}`;
+      } else {
+        changeColor = 'color:#ccc;';
       }
     } else {
       iconPos = `${vertical ? 'top' : 'right'}:-${distance}`;
       if (theValue >= middleVal) {
-        changeColor = 'color:#999;';
+        changeColor = `color:${color}`;
+      } else {
+        changeColor = 'color:#ccc;';
       }
     }
     iconPosition = `
@@ -358,6 +352,5 @@ const getIconsStyle = (props: CssTypeProps) => {
     iconPosition,
     changeColor,
     fontSize,
-    iconStyles,
   };
 };

@@ -4,6 +4,7 @@
 * */
 import React, { Component } from 'react';
 import Icon from '../icon/index';
+import Widget from '../consts/index';
 import { getElementPosition } from '../utils';
 import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
 import { Button, Dot, Icons, SliderInner, SliderWrapper, Tiparrow, Tipinner, Tips } from './styled';
@@ -326,20 +327,19 @@ class Slider extends Component<TypeProps, TypeState> {
     return { btnMove };
   };
   render() {
+    const { background, tips = false, icons, vertical, disabled, getTheme } = this.props;
+    const styleSlider = this.getChildTheme()[[Widget.Slider]];
+    const styleSliderButton = this.getChildTheme()[[Widget.Slider]].svThemeConfigTree[
+      [Widget.SliderButton]
+    ];
+
     const {
-      background,
-      btnWidth = 20,
-      btnHeight = 20,
-      rangeH = 6,
-      tips = false,
-      icons,
-      vertical,
-      disabled,
-      getTheme,
+      rangeW = styleSlider.width || 300,
+      rangeH = styleSlider.height || 6,
+      btnWidth = (styleSliderButton && styleSliderButton.width) || 20,
+      btnHeight = (styleSliderButton && styleSliderButton.height) || 20,
     } = this.props;
-    let { rangeW = 300 } = this.props;
-    const { width } = getTheme();
-    rangeW = width || rangeW;
+
     const { value, index, moveValue, minValue, maxValue, marksKeys, marks, isInBall } = this.state;
 
     this.style = {
@@ -457,6 +457,13 @@ class Slider extends Component<TypeProps, TypeState> {
         {children}
       </SliderWrapper>
     );
+  }
+  getChildTheme() {
+    const { getTheme } = this.props;
+    return {
+      [Widget.Slider]: getTheme(),
+      [Widget.SliderButton]: getTheme(),
+    };
   }
 }
 

@@ -41,7 +41,7 @@ describe('default', () => {
           [Widgets.Slider]: { color: '#f22735', width: 300 },
         }}
       >
-        <Slider rangeH={4} rangeW={100} />
+        <Slider />
       </Theme>
     );
     expect(getThemeTarget(target).style.rangeW).toBe(300);

@@ -46,11 +46,11 @@ export default class Sl extends Component<any> {
           <h2 style={{ padding: '20px 0' }}> 自定义css</h2>
           <Theme
             config={{
-              [Widgets.SliderButton]: { color: '#f8ac30' },
-              [Widgets.Slider]: { color: '#f8ac30', margin: 50, width: 300 },
+              [Widgets.SliderButton]: { color: '#f8ac30', width: 30, height: 20 },
+              [Widgets.Slider]: { color: '#000000', margin: 50, width: 300 },
             }}
           >
-            <Slider rangeH={4} rangeW={100} minValue={undefined} defaultValue={undefined} tips />
+            <Slider minValue={undefined} defaultValue={undefined} tips />
           </Theme>
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
@@ -160,14 +160,20 @@ export default class Sl extends Component<any> {
         </div>
         <div style={{ float: 'left', padding: '0 40px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> icon</h2>
-          <Slider
-            minValue={0}
-            tips
-            icons={[
-              { name: 'lugia-icon-financial_global', style: { fontSize: 24, color: 'red' } },
-              { name: 'lugia-icon-financial_switch_e_and_c' },
-            ]}
-          />
+          <Theme
+            config={{
+              [Widgets.SliderIcon]: { color: '#f8ac30', fontSize: 30, margin: 18 },
+            }}
+          >
+            <Slider
+              minValue={0}
+              tips
+              icons={[
+                { name: 'lugia-icon-financial_global' },
+                { name: 'lugia-icon-financial_switch_e_and_c' },
+              ]}
+            />
+          </Theme>
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 单滑块 disabled false-> true</h2>

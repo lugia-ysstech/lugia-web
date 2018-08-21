@@ -38,6 +38,8 @@ const ThrottleScroller = 'sv_widget_ThrottleScroller';
 const Switch = 'sv_widget_Switch';
 const Slider = 'sv_widget_Slider';
 const SliderButton = 'sv_widget_Slider_Button';
+const SliderIcon = 'sv_widget_Slider_Icon';
+
 /* add by liangguodong */
 const SearchIcon = 'sv_widget_SearchIcon';
 const PullIcon = 'sv_widget_PullIcon';
@@ -81,6 +83,7 @@ export default {
   Switch,
   Slider,
   SliderButton,
+  SliderIcon,
   SearchIcon,
   PullIcon,
   Radio,

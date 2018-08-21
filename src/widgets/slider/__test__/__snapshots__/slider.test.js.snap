@@ -8695,7 +8695,7 @@ exports[`default Wrapper 1`] = `
 exports[`default css 1`] = `
 .c0 {
   width: 25em;
-  height: 0.33333333333333337em;
+  height: 0.5em;
   background: #e8e8e8;
   border-radius: 0.5em;
   position: relative;
@@ -8704,7 +8704,7 @@ exports[`default css 1`] = `
 
 .c1 {
   width: 0%;
-  height: 0.33333333333333337em;
+  height: 0.5em;
   background: #f22735;
   border-radius: 0.5em;
   position: absolute;
