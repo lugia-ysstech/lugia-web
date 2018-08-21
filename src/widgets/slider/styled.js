@@ -165,8 +165,7 @@ const getSliderInnerStyle = (props: CssTypeProps) => {
   const theme = getTheme(props);
   const background = theme.color || themeColor;
   const doneBackground = background; //轨道划过完成的颜色
-  const { hoverColor } = colorsFunc(doneBackground);
-  const doingBackground = hoverColor; //轨道划过过程的颜色
+  const { hoverColor: doingBackground } = colorsFunc(doneBackground);
   const innerBackground = disabled
     ? trackDisabledBackground
     : changeBackground
@@ -322,30 +321,29 @@ const getIconsStyle = (props: CssTypeProps) => {
   let iconStyles;
   if (iconStyle && value && value.length === 1) {
     const middleVal = (minValue + maxValue) / 2;
-    if (iconStyle.style && iconStyle.style.fontSize) {
-      fontSize = parseInt(iconStyle.style.fontSize);
+
+    iconStyles = iconStyle.style;
+    iconStyles = iconStyles ? iconStyles : {};
+
+    if (iconStyles.fontSize) {
+      fontSize = parseInt(iconStyles.fontSize);
     }
     fontSize = em(fontSize);
-    iconStyles = iconStyle.style && iconStyle.style;
 
     const { index } = iconStyle;
-    let iconP;
+    let iconPos;
     const iconCenterP = vertical ? 'left:50%' : 'top: 50%';
     const iconTrans = vertical ? 'translateX' : 'translateY';
+    const theValue = value[0];
+    const distance = em(20);
     if (index === 0) {
-      iconP = `left:-${em(20)}`;
-      if (vertical) {
-        iconP = `bottom:-${em(20)}`;
-      }
-      if (value[0] <= middleVal) {
+      iconPos = `${vertical ? 'bottom' : 'left'}:-${distance}`;
+      if (theValue <= middleVal) {
         changeColor = 'color:#999;';
       }
     } else {
-      iconP = `right:-${em(20)}`;
-      if (vertical) {
-        iconP = `top:-${em(20)}`;
-      }
-      if (value[0] >= middleVal) {
+      iconPos = `${vertical ? 'top' : 'right'}:-${distance}`;
+      if (theValue >= middleVal) {
         changeColor = 'color:#999;';
       }
     }
@@ -353,7 +351,7 @@ const getIconsStyle = (props: CssTypeProps) => {
       ${iconCenterP};
       transform: ${iconTrans}(-50%);
       -webkit-transform: ${iconTrans}(-50%);
-      ${iconP};
+      ${iconPos};
     `;
   }
   return {
