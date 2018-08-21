@@ -441,7 +441,6 @@ describe('utils', () => {
         isLeaf: true,
       },
     ]);
-    console.info(result);
     exp(result).to.be.eql([]);
   });
 

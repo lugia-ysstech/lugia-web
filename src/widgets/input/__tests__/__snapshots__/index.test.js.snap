@@ -3,29 +3,27 @@
 exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 .c0 {
   position: relative;
-  width: 8.333333333333334em;
-  margin: 0.8333333333333334em;
   display: inline-block;
-  background-color: #fff;
+  margin: 0.8333333333333334em;
 }
 
 .c1 {
-  height: 32px;
+  height: 2.666666666666667em;
   cursor: text;
-  margin: 0.8333333333333334em;
   width: 8.333333333333334em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
-  padding: 0 0.4166666666666667em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: rgb(51,51,51);
+  color: #333333;
+  padding-left: 0.4166666666666667em;
+  padding-right: 2.0833333333333335em;
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -57,14 +55,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-.c1:not(:first-child) {
-  padding-left: 0.4166666666666667em;
-  padding-right: 0.4166666666666667em;
-}
-
-<span
-  className={undefined}
->
+<span>
   <span
     className="sv c0"
   >
@@ -77,8 +68,6 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       onKeyUp={[Function]}
-      placeholder={undefined}
-      prefix={undefined}
       size="default"
       value=""
     />
@@ -89,27 +78,26 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 exports[`Input props: null 1`] = `
 .c0 {
   position: relative;
-  width: 16.666666666666668em;
   display: inline-block;
-  background-color: #fff;
 }
 
 .c1 {
-  height: 32px;
+  height: 2.666666666666667em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
-  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: rgb(51,51,51);
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -139,11 +127,6 @@ exports[`Input props: null 1`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-.c1:not(:first-child) {
-  padding-left: 0.8333333333333334em;
-  padding-right: 0.8333333333333334em;
 }
 
 <span
@@ -158,8 +141,6 @@ exports[`Input props: null 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
-    placeholder={undefined}
-    prefix={undefined}
     size="default"
     value=""
   />
@@ -169,27 +150,26 @@ exports[`Input props: null 1`] = `
 exports[`Input props: placeholder  1`] = `
 .c0 {
   position: relative;
-  width: 16.666666666666668em;
   display: inline-block;
-  background-color: #fff;
 }
 
 .c1 {
-  height: 32px;
+  height: 2.666666666666667em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
-  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: rgb(51,51,51);
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -219,11 +199,6 @@ exports[`Input props: placeholder  1`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-.c1:not(:first-child) {
-  padding-left: 0.8333333333333334em;
-  padding-right: 0.8333333333333334em;
 }
 
 <span
@@ -239,7 +214,6 @@ exports[`Input props: placeholder  1`] = `
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     placeholder="请填写内容"
-    prefix={undefined}
     size="default"
     value=""
   />
@@ -249,27 +223,26 @@ exports[`Input props: placeholder  1`] = `
 exports[`Input props: placeholder  2`] = `
 .c0 {
   position: relative;
-  width: 16.666666666666668em;
   display: inline-block;
-  background-color: #fff;
 }
 
 .c1 {
-  height: 32px;
+  height: 2.666666666666667em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
-  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: rgb(51,51,51);
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -299,11 +272,6 @@ exports[`Input props: placeholder  2`] = `
 .c1:focus {
   border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-.c1:not(:first-child) {
-  padding-left: 0.8333333333333334em;
-  padding-right: 0.8333333333333334em;
 }
 
 <span
@@ -319,7 +287,6 @@ exports[`Input props: placeholder  2`] = `
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     placeholder=""
-    prefix={undefined}
     size="default"
     value=""
   />
@@ -329,27 +296,26 @@ exports[`Input props: placeholder  2`] = `
 exports[`Input props: size 1`] = `
 .c0 {
   position: relative;
-  width: 16.666666666666668em;
   display: inline-block;
-  background-color: #fff;
 }
 
 .c1 {
-  height: 28px;
+  height: 2.3333333333333335em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
-  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: rgb(51,51,51);
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -381,11 +347,6 @@ exports[`Input props: size 1`] = `
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-.c1:not(:first-child) {
-  padding-left: 0.8333333333333334em;
-  padding-right: 0.8333333333333334em;
-}
-
 <span
   className="sv c0"
 >
@@ -398,8 +359,6 @@ exports[`Input props: size 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
-    placeholder={undefined}
-    prefix={undefined}
     size="small"
     value=""
   />
@@ -409,27 +368,26 @@ exports[`Input props: size 1`] = `
 exports[`Input props: size 2`] = `
 .c0 {
   position: relative;
-  width: 16.666666666666668em;
   display: inline-block;
-  background-color: #fff;
 }
 
 .c1 {
-  height: 38px;
+  height: 3.1666666666666665em;
   cursor: text;
   width: 16.666666666666668em;
-  border-radius: 4px;
+  border-radius: 0.33333333333333337em;
   border: 1px solid #e8e8e8;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
-  padding: 0 0.8333333333333334em;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background-image: none;
-  color: rgb(51,51,51);
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -461,11 +419,6 @@ exports[`Input props: size 2`] = `
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-.c1:not(:first-child) {
-  padding-left: 0.8333333333333334em;
-  padding-right: 0.8333333333333334em;
-}
-
 <span
   className="sv c0"
 >
@@ -478,8 +431,6 @@ exports[`Input props: size 2`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
-    placeholder={undefined}
-    prefix={undefined}
     size="large"
     value=""
   />

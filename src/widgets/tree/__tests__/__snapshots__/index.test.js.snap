@@ -70,7 +70,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
     <ul
       className="sv-tree sv-tree-show-line c2"
       role="tree-node"
-      style={undefined}
       unselectable="on"
     >
       <li
@@ -609,7 +608,6 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 <ul
   className="sv-tree sv-tree-show-line c0 sv-tree-show-line"
   role="tree-node"
-  style={undefined}
   unselectable="on"
 >
   <li
@@ -785,423 +783,422 @@ Array [
 <div
     className="c0"
     onWheel={[Function]}
->
+  >
     <div
-        className="c1"
+      className="c1"
     >
-        <ul
-            className="sv-tree sv-tree-show-line c2"
-            role="tree-node"
-            style={undefined}
-            unselectable="on"
+      <ul
+        className="sv-tree sv-tree-show-line c2"
+        role="tree-node"
+        unselectable="on"
+      >
+        <li
+          className=""
+          unselectable="on"
         >
-            <li
-                className=""
-                unselectable="on"
+          <span
+            className="sv-tree-switcher sv-tree-switcher_open"
+            onClick={[Function]}
+          />
+          <span
+            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open sv-tree-node-selected"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            title="1"
+          >
+            <span
+              className="sv-tree-title"
             >
+              1
+            </span>
+          </span>
+          <ul
+            className="sv-tree-child-tree sv-tree-child-tree-open"
+            data-expanded={true}
+          >
+            <li
+              className=""
+              unselectable="on"
+            >
+              <span
+                className="sv-tree-switcher sv-tree-switcher-noop"
+              />
+              <span
+                className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                title="1.1"
+              >
                 <span
-                    className="sv-tree-switcher sv-tree-switcher_open"
-                    onClick={[Function]}
-                />
+                  className="sv-tree-title"
+                >
+                  1.1
+                </span>
+              </span>
+            </li>
+            <li
+              className=""
+              unselectable="on"
+            >
+              <span
+                className="sv-tree-switcher sv-tree-switcher_open"
+                onClick={[Function]}
+              />
+              <span
+                className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                title="1.2"
+              >
                 <span
-                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open sv-tree-node-selected"
+                  className="sv-tree-title"
+                >
+                  1.2
+                </span>
+              </span>
+              <ul
+                className="sv-tree-child-tree sv-tree-child-tree-open"
+                data-expanded={true}
+              >
+                <li
+                  className=""
+                  unselectable="on"
+                >
+                  <span
+                    className="sv-tree-switcher sv-tree-switcher-noop"
+                  />
+                  <span
+                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
                     onClick={[Function]}
                     onContextMenu={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
-                    title="1"
-                >
+                    title="1.2.1"
+                  >
                     <span
-                        className="sv-tree-title"
+                      className="sv-tree-title"
                     >
-                        1
+                      1.2.1
                     </span>
-                </span>
-                <ul
+                  </span>
+                </li>
+                <li
+                  className=""
+                  unselectable="on"
+                >
+                  <span
+                    className="sv-tree-switcher sv-tree-switcher_open"
+                    onClick={[Function]}
+                  />
+                  <span
+                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    title="1.2.2"
+                  >
+                    <span
+                      className="sv-tree-title"
+                    >
+                      1.2.2
+                    </span>
+                  </span>
+                  <ul
                     className="sv-tree-child-tree sv-tree-child-tree-open"
                     data-expanded={true}
-                >
+                  >
                     <li
-                        className=""
-                        unselectable="on"
+                      className=""
+                      unselectable="on"
                     >
+                      <span
+                        className="sv-tree-switcher sv-tree-switcher_open"
+                        onClick={[Function]}
+                      />
+                      <span
+                        className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
+                        onClick={[Function]}
+                        onContextMenu={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        title="1.2.2.1"
+                      >
                         <span
+                          className="sv-tree-title"
+                        >
+                          1.2.2.1
+                        </span>
+                      </span>
+                      <ul
+                        className="sv-tree-child-tree sv-tree-child-tree-open"
+                        data-expanded={true}
+                      >
+                        <li
+                          className=""
+                          unselectable="on"
+                        >
+                          <span
                             className="sv-tree-switcher sv-tree-switcher-noop"
-                        />
-                        <span
+                          />
+                          <span
                             className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
                             onClick={[Function]}
                             onContextMenu={[Function]}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
-                            title="1.1"
-                        >
+                            title="1.2.2.1.1"
+                          >
                             <span
-                                className="sv-tree-title"
+                              className="sv-tree-title"
                             >
-                                1.1
+                              1.2.2.1.1
                             </span>
-                        </span>
-                    </li>
-                    <li
-                        className=""
-                        unselectable="on"
-                    >
-                        <span
-                            className="sv-tree-switcher sv-tree-switcher_open"
-                            onClick={[Function]}
-                        />
-                        <span
-                            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
+                          </span>
+                        </li>
+                        <li
+                          className=""
+                          unselectable="on"
+                        >
+                          <span
+                            className="sv-tree-switcher sv-tree-switcher-noop"
+                          />
+                          <span
+                            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
                             onClick={[Function]}
                             onContextMenu={[Function]}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
-                            title="1.2"
-                        >
+                            title="1.2.2.1.2"
+                          >
                             <span
-                                className="sv-tree-title"
+                              className="sv-tree-title"
                             >
-                                1.2
+                              1.2.2.1.2
                             </span>
-                        </span>
-                        <ul
-                            className="sv-tree-child-tree sv-tree-child-tree-open"
-                            data-expanded={true}
-                        >
-                            <li
-                                className=""
-                                unselectable="on"
-                            >
-                                <span
-                                    className="sv-tree-switcher sv-tree-switcher-noop"
-                                />
-                                <span
-                                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
-                                    onClick={[Function]}
-                                    onContextMenu={[Function]}
-                                    onMouseEnter={[Function]}
-                                    onMouseLeave={[Function]}
-                                    title="1.2.1"
-                                >
-                                    <span
-                                        className="sv-tree-title"
-                                    >
-                                        1.2.1
-                                    </span>
-                                </span>
-                            </li>
-                            <li
-                                className=""
-                                unselectable="on"
-                            >
-                                <span
-                                    className="sv-tree-switcher sv-tree-switcher_open"
-                                    onClick={[Function]}
-                                />
-                                <span
-                                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
-                                    onClick={[Function]}
-                                    onContextMenu={[Function]}
-                                    onMouseEnter={[Function]}
-                                    onMouseLeave={[Function]}
-                                    title="1.2.2"
-                                >
-                                    <span
-                                        className="sv-tree-title"
-                                    >
-                                        1.2.2
-                                    </span>
-                                </span>
-                                <ul
-                                    className="sv-tree-child-tree sv-tree-child-tree-open"
-                                    data-expanded={true}
-                                >
-                                    <li
-                                        className=""
-                                        unselectable="on"
-                                    >
-                                        <span
-                                            className="sv-tree-switcher sv-tree-switcher_open"
-                                            onClick={[Function]}
-                                        />
-                                        <span
-                                            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
-                                            onClick={[Function]}
-                                            onContextMenu={[Function]}
-                                            onMouseEnter={[Function]}
-                                            onMouseLeave={[Function]}
-                                            title="1.2.2.1"
-                                        >
-                                            <span
-                                                className="sv-tree-title"
-                                            >
-                                                1.2.2.1
-                                            </span>
-                                        </span>
-                                        <ul
-                                            className="sv-tree-child-tree sv-tree-child-tree-open"
-                                            data-expanded={true}
-                                        >
-                                            <li
-                                                className=""
-                                                unselectable="on"
-                                            >
-                                                <span
-                                                    className="sv-tree-switcher sv-tree-switcher-noop"
-                                                />
-                                                <span
-                                                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
-                                                    onClick={[Function]}
-                                                    onContextMenu={[Function]}
-                                                    onMouseEnter={[Function]}
-                                                    onMouseLeave={[Function]}
-                                                    title="1.2.2.1.1"
-                                                >
-                                                    <span
-                                                        className="sv-tree-title"
-                                                    >
-                                                        1.2.2.1.1
-                                                    </span>
-                                                </span>
-                                            </li>
-                                            <li
-                                                className=""
-                                                unselectable="on"
-                                            >
-                                                <span
-                                                    className="sv-tree-switcher sv-tree-switcher-noop"
-                                                />
-                                                <span
-                                                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
-                                                    onClick={[Function]}
-                                                    onContextMenu={[Function]}
-                                                    onMouseEnter={[Function]}
-                                                    onMouseLeave={[Function]}
-                                                    title="1.2.2.1.2"
-                                                >
-                                                    <span
-                                                        className="sv-tree-title"
-                                                    >
-                                                        1.2.2.1.2
-                                                    </span>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li
-                                        className=""
-                                        unselectable="on"
-                                    >
-                                        <span
-                                            className="sv-tree-switcher sv-tree-switcher-noop"
-                                        />
-                                        <span
-                                            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
-                                            onClick={[Function]}
-                                            onContextMenu={[Function]}
-                                            onMouseEnter={[Function]}
-                                            onMouseLeave={[Function]}
-                                            title="1.2.2.2"
-                                        >
-                                            <span
-                                                className="sv-tree-title"
-                                            >
-                                                1.2.2.2
-                                            </span>
-                                        </span>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                          </span>
+                        </li>
+                      </ul>
                     </li>
                     <li
-                        className=""
-                        unselectable="on"
+                      className=""
+                      unselectable="on"
                     >
+                      <span
+                        className="sv-tree-switcher sv-tree-switcher-noop"
+                      />
+                      <span
+                        className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
+                        onClick={[Function]}
+                        onContextMenu={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        title="1.2.2.2"
+                      >
                         <span
-                            className="sv-tree-switcher sv-tree-switcher_open"
-                            onClick={[Function]}
-                        />
-                        <span
-                            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
-                            onClick={[Function]}
-                            onContextMenu={[Function]}
-                            onMouseEnter={[Function]}
-                            onMouseLeave={[Function]}
-                            title="1.3"
+                          className="sv-tree-title"
                         >
-                            <span
-                                className="sv-tree-title"
-                            >
-                                1.3
-                            </span>
+                          1.2.2.2
                         </span>
-                        <ul
-                            className="sv-tree-child-tree sv-tree-child-tree-open"
-                            data-expanded={true}
-                        >
-                            <li
-                                className=""
-                                unselectable="on"
-                            >
-                                <span
-                                    className="sv-tree-switcher sv-tree-switcher_open"
-                                    onClick={[Function]}
-                                />
-                                <span
-                                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
-                                    onClick={[Function]}
-                                    onContextMenu={[Function]}
-                                    onMouseEnter={[Function]}
-                                    onMouseLeave={[Function]}
-                                    title="1.3.1"
-                                >
-                                    <span
-                                        className="sv-tree-title"
-                                    >
-                                        1.3.1
-                                    </span>
-                                </span>
-                                <ul
-                                    className="sv-tree-child-tree sv-tree-child-tree-open"
-                                    data-expanded={true}
-                                >
-                                    <li
-                                        className=""
-                                        unselectable="on"
-                                    >
-                                        <span
-                                            className="sv-tree-switcher sv-tree-switcher-noop"
-                                        />
-                                        <span
-                                            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
-                                            onClick={[Function]}
-                                            onContextMenu={[Function]}
-                                            onMouseEnter={[Function]}
-                                            onMouseLeave={[Function]}
-                                            title="1.3.1.1"
-                                        >
-                                            <span
-                                                className="sv-tree-title"
-                                            >
-                                                1.3.1.1
-                                            </span>
-                                        </span>
-                                    </li>
-                                    <li
-                                        className=""
-                                        unselectable="on"
-                                    >
-                                        <span
-                                            className="sv-tree-switcher sv-tree-switcher-noop"
-                                        />
-                                        <span
-                                            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
-                                            onClick={[Function]}
-                                            onContextMenu={[Function]}
-                                            onMouseEnter={[Function]}
-                                            onMouseLeave={[Function]}
-                                            title="1.3.1.2"
-                                        >
-                                            <span
-                                                className="sv-tree-title"
-                                            >
-                                                1.3.1.2
-                                            </span>
-                                        </span>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li
-                                className=""
-                                unselectable="on"
-                            >
-                                <span
-                                    className="sv-tree-switcher sv-tree-switcher_open"
-                                    onClick={[Function]}
-                                />
-                                <span
-                                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
-                                    onClick={[Function]}
-                                    onContextMenu={[Function]}
-                                    onMouseEnter={[Function]}
-                                    onMouseLeave={[Function]}
-                                    title="1.3.2"
-                                >
-                                    <span
-                                        className="sv-tree-title"
-                                    >
-                                        1.3.2
-                                    </span>
-                                </span>
-                                <ul
-                                    className="sv-tree-child-tree sv-tree-child-tree-open"
-                                    data-expanded={true}
-                                >
-                                    <li
-                                        className=""
-                                        unselectable="on"
-                                    >
-                                        <span
-                                            className="sv-tree-switcher sv-tree-switcher-noop"
-                                        />
-                                        <span
-                                            className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
-                                            onClick={[Function]}
-                                            onContextMenu={[Function]}
-                                            onMouseEnter={[Function]}
-                                            onMouseLeave={[Function]}
-                                            title="1.3.2.1"
-                                        >
-                                            <span
-                                                className="sv-tree-title"
-                                            >
-                                                1.3.2.1
-                                            </span>
-                                        </span>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                      </span>
                     </li>
-                </ul>
+                  </ul>
+                </li>
+              </ul>
             </li>
-        </ul>
+            <li
+              className=""
+              unselectable="on"
+            >
+              <span
+                className="sv-tree-switcher sv-tree-switcher_open"
+                onClick={[Function]}
+              />
+              <span
+                className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                title="1.3"
+              >
+                <span
+                  className="sv-tree-title"
+                >
+                  1.3
+                </span>
+              </span>
+              <ul
+                className="sv-tree-child-tree sv-tree-child-tree-open"
+                data-expanded={true}
+              >
+                <li
+                  className=""
+                  unselectable="on"
+                >
+                  <span
+                    className="sv-tree-switcher sv-tree-switcher_open"
+                    onClick={[Function]}
+                  />
+                  <span
+                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    title="1.3.1"
+                  >
+                    <span
+                      className="sv-tree-title"
+                    >
+                      1.3.1
+                    </span>
+                  </span>
+                  <ul
+                    className="sv-tree-child-tree sv-tree-child-tree-open"
+                    data-expanded={true}
+                  >
+                    <li
+                      className=""
+                      unselectable="on"
+                    >
+                      <span
+                        className="sv-tree-switcher sv-tree-switcher-noop"
+                      />
+                      <span
+                        className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
+                        onClick={[Function]}
+                        onContextMenu={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        title="1.3.1.1"
+                      >
+                        <span
+                          className="sv-tree-title"
+                        >
+                          1.3.1.1
+                        </span>
+                      </span>
+                    </li>
+                    <li
+                      className=""
+                      unselectable="on"
+                    >
+                      <span
+                        className="sv-tree-switcher sv-tree-switcher-noop"
+                      />
+                      <span
+                        className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
+                        onClick={[Function]}
+                        onContextMenu={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        title="1.3.1.2"
+                      >
+                        <span
+                          className="sv-tree-title"
+                        >
+                          1.3.1.2
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </li>
+                <li
+                  className=""
+                  unselectable="on"
+                >
+                  <span
+                    className="sv-tree-switcher sv-tree-switcher_open"
+                    onClick={[Function]}
+                  />
+                  <span
+                    className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-open"
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    title="1.3.2"
+                  >
+                    <span
+                      className="sv-tree-title"
+                    >
+                      1.3.2
+                    </span>
+                  </span>
+                  <ul
+                    className="sv-tree-child-tree sv-tree-child-tree-open"
+                    data-expanded={true}
+                  >
+                    <li
+                      className=""
+                      unselectable="on"
+                    >
+                      <span
+                        className="sv-tree-switcher sv-tree-switcher-noop"
+                      />
+                      <span
+                        className="sv-tree-node-content-wrapper sv-tree-node-content-wrapper-normal"
+                        onClick={[Function]}
+                        onContextMenu={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        title="1.3.2.1"
+                      >
+                        <span
+                          className="sv-tree-title"
+                        >
+                          1.3.2.1
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
     <div
-        className="c3"
+      className="c3"
     >
+      <div
+        className="c4"
+        onMouseDown={[Function]}
+        onMouseMove={[Function]}
+        onMouseOut={[Function]}
+        onMouseUp={[Function]}
+        onWheel={[Function]}
+        style={
+          Object {
+            "height": "250px",
+          }
+        }
+      >
         <div
-            className="c4"
-            onMouseDown={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseUp={[Function]}
-            onWheel={[Function]}
-            style={
-                Object {
-                    "height": "250px",
-                  }
+          className="c5"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "height": "119px",
+              "top": "0px",
             }
-        >
-            <div
-                className="c5"
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                style={
-                    Object {
-                        "height": "119px",
-                        "top": "0px",
-                      }
-                }
-            />
-        </div>
+          }
+        />
+      </div>
     </div>
-</div>,
+  </div>,
   <button
     onClick={[Function]}
-/>,
+  />,
 ]
 `;
 
@@ -1275,7 +1272,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
     <ul
       className="sv-tree sv-tree-show-line c2"
       role="tree-node"
-      style={undefined}
       unselectable="on"
     >
       <li

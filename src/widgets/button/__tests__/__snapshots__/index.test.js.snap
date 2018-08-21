@@ -1551,11 +1551,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         Default
@@ -1566,10 +1562,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c2"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="primary"
     >
       <span>
@@ -1581,10 +1574,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c3"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="success"
     >
       <span>
@@ -1596,10 +1586,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c4"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="warning"
     >
       <span>
@@ -1611,10 +1598,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c5"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="danger"
     >
       <span>
@@ -1633,11 +1617,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c6"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
-      type={undefined}
     >
       <span>
         Hello
@@ -1648,10 +1629,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c7"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
       type="primary"
     >
       <span>
@@ -1663,10 +1642,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c8"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
       type="success"
     >
       <span>
@@ -1678,10 +1655,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c9"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
       type="warning"
     >
       <span>
@@ -1693,10 +1668,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c10"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
       type="danger"
     >
       <span>
@@ -1715,11 +1688,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c11"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
-      type={undefined}
     >
       <span>
         hello
@@ -1730,10 +1700,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c12"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
       type="primary"
     >
       <span>
@@ -1745,10 +1713,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c13"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
       type="success"
     >
       <span>
@@ -1760,10 +1726,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c14"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
       type="warning"
     >
       <span>
@@ -1775,10 +1739,8 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c15"
-      disabled={undefined}
       onClick={[Function]}
       shape="round"
-      size={undefined}
       type="danger"
     >
       <span>
@@ -1797,11 +1759,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         Default
@@ -1812,9 +1770,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c16"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
       size="large"
       type="primary"
     >
@@ -1827,9 +1783,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c17"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
       size="bigger"
       type="success"
     >
@@ -1842,9 +1796,7 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c18"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
       size="small"
       type="warning"
     >
@@ -1866,9 +1818,6 @@ exports[`Button css 1`] = `
       className="c19"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         Default
@@ -1881,8 +1830,6 @@ exports[`Button css 1`] = `
       className="c20"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="primary"
     >
       <span>
@@ -1896,8 +1843,6 @@ exports[`Button css 1`] = `
       className="c21"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="success"
     >
       <span>
@@ -1911,8 +1856,6 @@ exports[`Button css 1`] = `
       className="c22"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="warning"
     >
       <span>
@@ -1926,8 +1869,6 @@ exports[`Button css 1`] = `
       className="c23"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="danger"
     >
       <span>
@@ -1948,9 +1889,6 @@ exports[`Button css 1`] = `
       className="c24"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         default
@@ -1963,8 +1901,6 @@ exports[`Button css 1`] = `
       className="c25"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="primary"
     >
       <span>
@@ -1978,8 +1914,6 @@ exports[`Button css 1`] = `
       className="c26"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="success"
     >
       <span>
@@ -1993,8 +1927,6 @@ exports[`Button css 1`] = `
       className="c27"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="warning"
     >
       <span>
@@ -2008,8 +1940,6 @@ exports[`Button css 1`] = `
       className="c28"
       disabled={true}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
       type="danger"
     >
       <span>
@@ -2025,16 +1955,11 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c29"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         <i
           className="lugia-icon-direction_logout  c30"
-          onClick={undefined}
         />
       </span>
     </button>
@@ -2043,17 +1968,12 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c31"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         <span>
           <i
             className="lugia-icon-financial_loading_o c32 c30"
-            onClick={undefined}
           />
           loading
         </span>
@@ -2064,17 +1984,12 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c31"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         <span>
           <i
             className="lugia-icon-financial_loading_o c32 c30"
-            onClick={undefined}
           />
           loading
         </span>
@@ -2085,17 +2000,12 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         <span>
           <i
             className="lugia-icon-direction_logout c33 c30"
-            onClick={undefined}
           />
           Button
         </span>
@@ -2106,33 +2016,22 @@ exports[`Button css 1`] = `
     </p>
     <button
       className="c1"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         <span>
           <i
             className="lugia-icon-financial_global c33 c30"
-            onClick={undefined}
           />
           Button
         </span>
       </span>
     </button>
   </div>
-  <span
-    className={undefined}
-  >
+  <span>
     <button
       className="c34"
-      disabled={undefined}
       onClick={[Function]}
-      shape={undefined}
-      size={undefined}
-      type={undefined}
     >
       <span>
         Button

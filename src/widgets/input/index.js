@@ -7,47 +7,138 @@ import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { fixControlledValue } from '.././utils';
-import type { MarginType, ThemeType, WidthType } from '@lugia/lugia-web';
-
+import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
 import {
-  DefaultHeight,
   DefaultHelp,
+  getBackground,
+  getCursor,
+  getFocusBorderColor,
   getFocusShadow,
+  getFontColor,
   getInputBorderColor,
   getInputBorderHoverColor,
-  LargeHeight,
+  getInputBorderSize,
+  getMargin,
+  getPadding,
+  getRightPadding,
+  getSize,
+  getVisibility,
+  getWidth,
+  isValidateSuccess,
   RadiusSize,
-  SmallHeight,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
 
+const em = px2emcss(1.2);
+
+const CommonInputStyle = styled.input`
+  ${getSize};
+  ${getCursor};
+  ${getWidth};
+  border-radius: ${RadiusSize};
+  border: ${getInputBorderSize} solid ${getInputBorderColor};
+  line-height: 1.5;
+  font-size: ${FontSize};
+  display: inline-block;
+  font-family: inherit;
+  &:hover {
+    border-color: ${getInputBorderHoverColor};
+  }
+
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  ${getFontColor};
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.25);
+  }
+  &:focus {
+    ${getFocusBorderColor};
+    ${getFocusShadow};
+  }
+
+  padding-left: ${getPadding};
+  padding-right: ${getRightPadding};
+`;
+const BaseInputContainer = styled.span`
+  position: relative;
+  display: inline-block;
+`;
+const InputContainer = BaseInputContainer.extend`
+  ${getBackground};
+  ${getMargin};
+`;
+
+export const Input = CommonInputStyle.extend`
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+`;
+
+export const InputOnly = CommonInputStyle.extend`
+  outline: none;
+`;
+const TipBottom = styled.span`
+  display: block;
+  ${getVisibility};
+  transform: translateY(50%);
+  z-index: 2;
+  font-size: 1em;
+  color: red;
+`;
+
+const Fix = styled.span`
+  position: absolute;
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: ${em(10)};
+  font-size: 1.4em;
+  color: rgba(0, 0, 0, 0.65);
+`;
+
+const Prefix = Fix.extend`
+  left: ${em(5)};
+`;
+
+const Suffix = Fix.extend`
+  right: ${em(5)};
+`;
+
+const Clear = 'lugia-icon-reminder_close_circle';
+
+const ClearButton: Object = styled(Icon)`
+  position: absolute;
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: ${em(10)};
+  font-size: 1.2em;
+  right: ${em(10)};
+  color: rgba(0, 0, 0, 0.65);
+  display: inline-block;
+`;
+
 type InputState = {|
   value: string,
 |};
-type ValidateStatus = 'success' | 'error';
-
-type InputSize = 'small' | 'default' | 'large';
-
-type CommonInputProps = {
-  theme: ThemeType,
-  size?: InputSize,
-  disabled: boolean,
-};
 
 type InputProps = {|
   size?: InputSize,
   viewClass: string,
   disabled: boolean,
   validateStatus: ValidateStatus,
-  help: ?string,
+  validateType: InputValidateType,
+  help: string,
   placeholder?: string,
   prefix?: React$Element<any>,
   getTheme: Function,
   suffix?: React$Element<any>,
-  onChange?: (newValue: any, oldValue: any) => void,
+  onChange?: ({ newValue: any, oldValue: any, event: Event }) => void,
   onKeyUp?: (event: KeyboardEvent) => void,
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
@@ -61,132 +152,15 @@ type InputProps = {|
   value?: string,
   formatter?: (value: number | string) => string,
   parser?: (displayValue: number | string) => string,
+  readOnly: boolean,
 |};
-const getWidth = (props: CommonInputProps) => {
-  const { theme } = props;
-  const { width } = theme;
-  return `width:${width ? em(width) : em(200)};`;
-};
-const getPadding = (props: CommonInputProps) => {
-  const { theme } = props;
-  const { width } = theme;
-  return `${width && width < 200 ? em(width / 20) : em(10)};`;
-};
-const getMargin = (props: CommonInputProps) => {
-  const { theme } = props;
-  const { margin } = theme;
-  if (typeof margin === 'number') {
-    return `margin:${em(margin)} `;
-  }
-};
-const getSize = (props: CommonInputProps) => {
-  const { size } = props;
-  return `height:${
-    size === 'large'
-      ? LargeHeight + 'px'
-      : size === 'small'
-        ? SmallHeight + 'px'
-        : DefaultHeight + 'px'
-  };`;
-};
-
-const getBackground = (props: CommonInputProps) => {
-  const { disabled } = props;
-  return `background:${disabled ? '#f2f2f2' : ''}`;
-};
-const getCursor = (props: CommonInputProps) => {
-  const { disabled } = props;
-  return `cursor:${disabled ? 'not-allowed' : 'text'}`;
-};
-const em = px2emcss(1.2);
-
-const CommonInputStyle = styled.input`
-  ${getBackground};
-  ${getSize};
-  ${getCursor};
-  ${getMargin};
-  ${getWidth};
-  border-radius: ${RadiusSize};
-  border: 1px solid ${getInputBorderColor};
-  line-height: 1.5;
-  font-size: ${FontSize};
-  display: inline-block;
-  padding: 0 ${getPadding};
-  font-family: inherit;
-  &:hover {
-    border-color: ${getInputBorderHoverColor};
-  }
-
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-image: none;
-  color: rgb(51, 51, 51);
-  &::placeholder {
-    color: rgba(0, 0, 0, 0.25);
-  }
-  &:focus {
-    border-color: #684fff;
-    ${getFocusShadow};
-  }
-`;
-
-const InputContainer = styled.span`
-  position: relative;
-  ${getWidth};
-  ${getMargin};
-  display: inline-block;
-  background-color: #fff;
-`;
-
-export const Input = CommonInputStyle.extend`
-  outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  :not(:first-child) {
-    padding-left: ${getPadding};
-    padding-right: ${getPadding};
-  }
-`;
-
-export const InputOnly = CommonInputStyle.extend`
-  outline: none;
-`;
-
-const Fix = styled.span`
-  position: absolute;
-  transform: translateY(50%);
-  z-index: 2;
-  bottom: 45%;
-  line-height: ${em(10)};
-  font-size: 1.6em;
-  color: rgba(0, 0, 0, 0.65);
-`;
-
-const Prefix = Fix.extend`
-  left: ${getPadding};
-`;
-
-const Suffix = Fix.extend`
-  right: ${getPadding};
-`;
-const Clear = 'lugia-icon-reminder_close_circle';
-const ClearButton: Object = styled(Icon)`
-  position: absolute;
-  transform: translateY(50%);
-  z-index: 2;
-  bottom: 45%;
-  line-height: ${em(10)};
-  font-size: 1.2em;
-  right: ${getPadding};
-  color: rgba(0, 0, 0, 0.65);
-`;
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     disabled: false,
     viewClass: Widget.Input,
     validateStatus: 'success',
+    validateType: 'default',
     size: 'default',
     help: DefaultHelp,
     defaultValue: '',
@@ -202,6 +176,7 @@ class TextBox extends Component<InputProps, InputState> {
   };
   input: any;
   static displayName = Widget.Input;
+  actualValue = '';
 
   constructor(props: InputProps) {
     super(props);
@@ -224,12 +199,17 @@ class TextBox extends Component<InputProps, InputState> {
   onChange = (event: Object) => {
     const { target } = event;
     const { value } = target;
-    this.setValue(value);
+    this.setValue(value, event);
   };
 
-  setValue(value: string): void {
+  setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange, parser, formatter } = this.props;
+
+    if (oldValue === value) {
+      return;
+    }
+    const param = { newValue: value, oldValue, event };
     if ('value' in this.props === false) {
       if (disabled) {
         return;
@@ -238,33 +218,33 @@ class TextBox extends Component<InputProps, InputState> {
         value = parser(value);
       }
       this.setState({ value }, () => {
-        onChange && onChange(value, oldValue);
+        onChange && onChange(param);
       });
     } else {
-      onChange && onChange(value, oldValue);
+      onChange && onChange(param);
     }
   }
+
   onFocus = (event: UIEvent) => {
-    const { onFocus } = this.props;
+    const { onFocus, validateStatus, validateType } = this.props;
+    if (isValidateSuccess(validateStatus, validateType, 'inner')) {
+      this.setState({ value: this.actualValue });
+    }
     onFocus && onFocus(event);
   };
+
   onBlur = (event: UIEvent) => {
-    const { onBlur } = this.props;
+    const { onBlur, help, validateStatus, validateType } = this.props;
+    if (isValidateSuccess(validateStatus, validateType, 'inner')) {
+      this.setState({ value: help });
+      this.actualValue = this.state.value;
+    }
     onBlur && onBlur(event);
   };
 
   isEmpty(): boolean {
     const { value } = this.state;
-    return value && value.length ? false : true;
-  }
-
-  getClearButton() {
-    if (this.isEmpty()) {
-      return null;
-    }
-    return (
-      <ClearButton iconClass={Clear} viewClass={ClearButton.displayName} onClick={this.onClear} />
-    );
+    return !(value && value.length);
   }
 
   onClear = (e: Object) => {
@@ -272,31 +252,60 @@ class TextBox extends Component<InputProps, InputState> {
     if (disabled) {
       return;
     }
-    this.setValue('');
+    this.setValue('', e);
   };
 
-  getInputContainer() {
+  getInputContent() {
+    return this.getInputContainer(this.getInputInner);
+  }
+
+  getInputContainer(fetcher: Function) {
     const { getTheme } = this.props;
-    const suffix = this.generateSuffix();
     return (
       <InputContainer className="sv" theme={getTheme()}>
-        {this.generatePrefix()}
-        {this.generateInput(Input)}
-        {suffix ? suffix : this.getClearButton()}
+        {fetcher()}
       </InputContainer>
     );
   }
 
-  render() {
-    const { props } = this;
-    const { validateStatus } = props;
-    const result = this.getInputContainer();
+  getInputInner = () => {
+    const { validateType, validateStatus, help } = this.props;
 
-    if (validateStatus === 'success') {
+    if (validateType === 'bottom') {
+      const result = [
+        <BaseInputContainer>
+          {this.generatePrefix()}
+          {this.generateInput()}
+          {this.generateSuffix()}
+        </BaseInputContainer>,
+      ];
+
+      result.push(
+        <TipBottom validateStatus={validateStatus} validateType={validateType}>
+          {this.isValidateError() ? help : ''}
+        </TipBottom>
+      );
       return result;
     }
-    const { help } = props;
-    return <ErrorTip title={help}>{result}</ErrorTip>;
+    return [this.generatePrefix(), this.generateInput(), this.generateSuffix()];
+  };
+
+  isValidateError(): boolean {
+    return this.props.validateStatus === 'error';
+  }
+
+  render() {
+    const { props } = this;
+    const { validateType, size, getTheme, help, validateStatus } = props;
+    const result = this.getInputContent();
+    if (isValidateSuccess(validateStatus, validateType, 'top')) {
+      return (
+        <ErrorTip theme={getTheme()} size={size} placement={'topLeft'} title={help}>
+          {result}
+        </ErrorTip>
+      );
+    }
+    return result;
   }
 
   generatePrefix(): React$Element<any> | null {
@@ -312,7 +321,16 @@ class TextBox extends Component<InputProps, InputState> {
     if (suffix) {
       return <Suffix>{suffix}</Suffix>;
     }
-    return null;
+    return this.getClearButton();
+  }
+
+  getClearButton() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return (
+      <ClearButton iconClass={Clear} viewClass={ClearButton.displayName} onClick={this.onClear} />
+    );
   }
 
   focus() {
@@ -322,18 +340,33 @@ class TextBox extends Component<InputProps, InputState> {
       }, 0);
     }
   }
-  generateInput(Input: Function): React$Element<any> {
+
+  generateInput(): React$Element<any> {
     const { props } = this;
     let { value } = this.state;
-    const { suffix, prefix, validateStatus, size, disabled, formatter, parser } = props;
-    const { onKeyUp, onKeyPress, placeholder } = props;
+    const {
+      suffix,
+      prefix,
+      size,
+      disabled,
+      formatter,
+      parser,
+      validateStatus,
+      validateType,
+      onKeyUp,
+      onKeyPress,
+      placeholder,
+      readOnly,
+    } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
+
     return (
       <Input
         innerRef={node => (this.input = node)}
         validateStatus={validateStatus}
+        validateType={validateType}
         suffix={suffix}
         prefix={prefix}
         theme={this.props.getTheme()}
@@ -349,6 +382,7 @@ class TextBox extends Component<InputProps, InputState> {
         disabled={disabled}
         formatter={formatter}
         parser={parser}
+        readOnly={readOnly}
       />
     );
   }

@@ -11,17 +11,15 @@ Array [
     offsetY={0}
     onAlign={[Function]}
     visible={true}
->
+  >
     <PopupInner
-        className=""
-        getTheme={[Function]}
-        onMouseEnter={undefined}
-        onMouseLeave={undefined}
-        style={Object {}}
-        visible={true}
+      className=""
+      getTheme={[Function]}
+      style={Object {}}
+      visible={true}
     >
-         
+       
     </PopupInner>
-</sv_widget_Align>,
+  </sv_widget_Align>,
 ]
 `;

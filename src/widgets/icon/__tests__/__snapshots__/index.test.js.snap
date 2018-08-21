@@ -10,9 +10,6 @@ exports[`Icon iconClass: sv-icon-close 1`] = `
 }
 
 <i
-  className="sviconfont sv-icon-close  c0"
-  onClick={undefined}
->
-   
-</i>
+  className="sv-icon-close  c0"
+/>
 `;

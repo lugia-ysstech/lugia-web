@@ -1021,7 +1021,6 @@ describe('TreeSelect', () => {
     const queryEventData = new Promise(resolve => {
       const queryValue = [];
       onQuery = value => {
-        console.info('q', value);
         queryValue.push(value);
         if (queryValue.length === 2) {
           resolve(queryValue);
@@ -1050,7 +1049,6 @@ describe('TreeSelect', () => {
     const queryEventData = new Promise(resolve => {
       const queryValue = [];
       onQuery = value => {
-        console.info('q', value);
         queryValue.push(value);
         if (queryValue.length === 2) {
           resolve(queryValue);
@@ -1079,7 +1077,6 @@ describe('TreeSelect', () => {
     const queryEventData = new Promise(resolve => {
       const queryValue = [];
       onQuery = value => {
-        console.info('q', value);
         queryValue.push(value);
         if (queryValue.length === 2) {
           resolve(queryValue);
@@ -1112,7 +1109,6 @@ describe('TreeSelect', () => {
     const queryEventData = new Promise(resolve => {
       const queryValue = [];
       onQuery = value => {
-        console.info('q', value);
         queryValue.push(value);
         if (queryValue.length === 2) {
           resolve(queryValue);
