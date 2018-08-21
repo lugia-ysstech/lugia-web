@@ -47,6 +47,8 @@ const CheckBox = 'sv_widget_CheckBox';
 const CheckBoxGroup = 'sv_widget_CheckBoxGroup';
 const CheckButton = 'sv_widget_CheckButton';
 const AmountInput = 'sv_widget_AmountInput';
+const Col = 'sv_widget_Col';
+const Row = 'sv_widget_Row';
 
 export default {
   Button,
@@ -86,4 +88,6 @@ export default {
   CheckBoxGroup,
   CheckButton,
   AmountInput,
+  Col,
+  Row,
 };
