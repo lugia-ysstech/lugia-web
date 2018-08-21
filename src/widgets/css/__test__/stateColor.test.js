@@ -32,20 +32,20 @@ const DefaultCommonStyle = {
   boxShadowOpacity: '20%', //边框透明度
   hShadow: '0', //边框水平偏移值（X）
   vShadow: '0', //边框竖直偏移值（Y）
-  shadowSpread: '6px', //边框大小
-  borderRadius: '4px', //圆角通用
+  shadowSpread: 6, //边框大小
+  borderRadius: 4, //圆角通用
   circleBorderRadius: '50%', //圆角-特殊
   transitionTime: '0.3s', //过渡时间
   rulesColor: '#fff', //分割线颜色
   rulesSize: '1px', //分割线大小
   rulesOpacity: '40%', //分割线透明度
-  padding: '10px', //元素左右padding
-  paddingToText: '6px', //文字到元素的距离
-  marginToSameElement: '10px', //同级元素与元素之间距离
-  marginToDifferentElement: '30px', //元素组之间距离
-  marginToPeerElementForY: '10px', //同级元素竖向间距
-  marginToSameElementForY: '6px', //竖向文字到元素距离
-  marginToSonElement: '16px', //主从关系元素间距
+  padding: 10, //元素左右padding
+  paddingToText: 6, //文字到元素的距离
+  marginToSameElement: 10, //同级元素与元素之间距离
+  marginToDifferentElement: 30, //元素组之间距离
+  marginToPeerElementForY: 10, //同级元素竖向间距
+  marginToSameElementForY: 6, //竖向文字到元素距离
+  marginToSonElement: 16, //主从关系元素间距
 };
 describe('stateColor', () => {
   beforeEach(() => {});
