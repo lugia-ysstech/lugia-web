@@ -326,13 +326,11 @@ class Slider extends Component<TypeProps, TypeState> {
     const btnMove = ((proportion * rangeW - circleWidth / 2) / rangeW) * 100; //比例转化成px计算按钮中心点的位置；
     return { btnMove };
   };
+
   render() {
     const { background, tips = false, icons, vertical, disabled, getTheme } = this.props;
-    const styleSlider = this.getChildTheme()[[Widget.Slider]];
-    const styleSliderButton = this.getChildTheme()[[Widget.Slider]].svThemeConfigTree[
-      [Widget.SliderButton]
-    ];
-
+    const styleSlider = getTheme();
+    const styleSliderButton = styleSlider.svThemeConfigTree[Widget.SliderButton];
     const {
       rangeW = styleSlider.width || 300,
       rangeH = styleSlider.height || 6,
@@ -457,13 +455,6 @@ class Slider extends Component<TypeProps, TypeState> {
         {children}
       </SliderWrapper>
     );
-  }
-  getChildTheme() {
-    const { getTheme } = this.props;
-    return {
-      [Widget.Slider]: getTheme(),
-      [Widget.SliderButton]: getTheme(),
-    };
   }
 }
 
