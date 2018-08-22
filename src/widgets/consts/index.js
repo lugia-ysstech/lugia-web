@@ -34,8 +34,12 @@ const TreeSelect = 'sv_widget_TreeSelect';
 const TreeSelectLimitTitle = 'sv_widget_TreeSelectLimitTitle';
 const ThrottleScroller = 'sv_widget_ThrottleScroller';
 
-/* add by zhangBoPing */
+/* add by wangcuixia */
 const Switch = 'sv_widget_Switch';
+const Slider = 'sv_widget_Slider';
+const SliderButton = 'sv_widget_Slider_Button';
+const SliderIcon = 'sv_widget_Slider_Icon';
+
 /* add by liangguodong */
 const SearchIcon = 'sv_widget_SearchIcon';
 const PullIcon = 'sv_widget_PullIcon';
@@ -79,6 +83,9 @@ export default {
   TreeSelectLimitTitle,
   ThrottleScroller,
   Switch,
+  Slider,
+  SliderButton,
+  SliderIcon,
   SearchIcon,
   PullIcon,
   Radio,

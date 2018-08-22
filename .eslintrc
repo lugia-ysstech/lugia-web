@@ -70,6 +70,7 @@
     "require-yield": "off",
     "no-cond-assign": "error",
     "no-dupe-keys": "error",
+    "linebreak-style": 0,
     "no-console": [
       "warn",
       {
