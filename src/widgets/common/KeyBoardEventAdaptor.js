@@ -28,6 +28,10 @@ export default Target =>
         onBlur = (event: KeyboardEvent) => {
           const { onBlur } = props;
           onBlur && onBlur(event);
+        },
+        onClick = (event: UIEvent) => {
+          const { onClick } = props;
+          onClick && onClick(event);
         };
       return (
         <Target
@@ -37,6 +41,7 @@ export default Target =>
           onKeyUp={onKeyUp}
           onKeyPress={onKeyPress}
           onBlur={onBlur}
+          onClick={onClick}
           onKeyDown={onKeyDown}
         />
       );

@@ -146,6 +146,7 @@ type InputProps = {|
   onKeyPress?: (event: KeyboardEvent) => void,
   onFocus?: (event: UIEvent) => void,
   onBlur?: (event: UIEvent) => void,
+  onClick?: (event: UIEvent) => void,
   /*
    * 当键入回车时触发事件
    */
@@ -359,6 +360,7 @@ class TextBox extends Component<InputProps, InputState> {
       onKeyPress,
       placeholder,
       readOnly,
+      onClick,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
@@ -380,6 +382,7 @@ class TextBox extends Component<InputProps, InputState> {
         onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
+        onClick={onClick}
         onChange={this.onChange}
         disabled={disabled}
         formatter={formatter}
