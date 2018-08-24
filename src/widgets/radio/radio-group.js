@@ -49,6 +49,7 @@ export default ThemeProvider(
   class extends React.Component<RadioGroupProps, RadioGroupState> {
     oldItem: Object;
     cancelItem: Array<Object>;
+
     dataItem: Object;
     constructor(props) {
       super(props);
@@ -56,7 +57,7 @@ export default ThemeProvider(
       updateMapData(props, [displayValue], this.updateMapData);
     }
 
-    updateMapData = ({ cancelItem, cancelItemData, dataItem }) => {
+    updateMapData = ({ cancelItem, dataItem }) => {
       this.cancelItem = cancelItem;
       this.dataItem = dataItem;
     };
@@ -146,7 +147,10 @@ export default ThemeProvider(
       if (val === value) {
         return;
       }
-      const { items } = getItems([value], false, this, this.updateMapData);
+      const handler = {
+        updateHanlder: this.updateMapData,
+      };
+      const { items } = getItems([value], false, this, handler);
       const obj = {
         newValue: val,
         oldValue: value,

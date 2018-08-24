@@ -74,6 +74,7 @@ export function didUpdate(
   }
   return true;
 }
+
 function getEqualResult(value, nextValue) {
   if (Array.isArray(value) && Array.isArray(nextValue)) {
     return nextValue.join(',') === value.join(',');
@@ -85,7 +86,7 @@ export function getItems(
   value: Array<string>,
   needDisplayValue: boolean = false,
   owner: Object,
-  updateHanlder: Function
+  handler: { updateHanlder: Function, needUpdate?: Function }
 ): Object {
   const items = [];
   const displayValue = [];
@@ -94,15 +95,15 @@ export function getItems(
   if (children) {
     return {};
   }
+
   if (value.length > 0) {
+    const { updateHanlder, needUpdate = (val: any) => false } = handler;
     value.forEach(val => {
-      const dataHasItem = val in owner.dataItem;
-      const cancelHasItem = val in owner.cancelItemData;
-      if (!dataHasItem && !cancelHasItem) {
+      if (needUpdate(val)) {
         updateMapData(owner.props, owner.state.displayValue, updateHanlder);
       }
       let dataItem = owner.dataItem[val];
-      if (!dataItem) {
+      if (!dataItem && owner.cancelItemData) {
         dataItem = owner.cancelItemData[val];
       }
       items.push(dataItem);

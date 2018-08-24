@@ -14,9 +14,9 @@ import { DisplayField, ValueField } from '../consts/props';
 import {
   didUpdate,
   getItems,
-  updateMapData,
   getValueAndDisplayValue,
   handleCreate,
+  updateMapData,
 } from '../common/translateData';
 import Theme from '../theme';
 import colorsFunc from '../css/stateColor';
@@ -127,6 +127,17 @@ export default ThemeProvider(
       this.dataItem = dataItem;
     };
 
+    dataHasItem = (val: any) => {
+      return val in this.dataItem;
+    };
+    cancelHasItem = (val: any) => {
+      return val in this.cancelItemData;
+    };
+
+    needUpdate = (val: any) => {
+      return !this.dataHasItem(val) && !this.cancelHasItem(val);
+    };
+
     shouldComponentUpdate(nextProps: CheckBoxGroupProps, nextState: CheckBoxGroupState) {
       return didUpdate(
         nextProps,
@@ -207,9 +218,13 @@ export default ThemeProvider(
       }
       let newItem, oldItem, newDisplayValue;
       if (!this.props.children) {
-        const { items, displayValue } = getItems(newValue, true, this, this.updateMapData);
+        const handler = {
+          updateHanlder: this.updateMapData,
+          needUpdate: this.needUpdate,
+        };
+        const { items, displayValue } = getItems(newValue, true, this, handler);
         newItem = items;
-        oldItem = getItems(oldValue, false, this, this.updateMapData).items;
+        oldItem = getItems(oldValue, false, this, handler).items;
         newDisplayValue = displayValue;
       }
 
