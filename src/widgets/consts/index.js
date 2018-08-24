@@ -53,6 +53,7 @@ const CheckButton = 'sv_widget_CheckButton';
 const AmountInput = 'sv_widget_AmountInput';
 const Col = 'sv_widget_Col';
 const Row = 'sv_widget_Row';
+const NumberInput = 'sv_widget_NumberInput';
 
 export default {
   Button,
@@ -97,4 +98,5 @@ export default {
   AmountInput,
   Col,
   Row,
+  NumberInput,
 };

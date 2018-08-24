@@ -75,15 +75,36 @@ declare module '@lugia/lugia-web' {
     height: HeightType,
     margin: MarginType,
     color: ColorType,
+    borderColor: ColorType,
+    backgroundColor: ColorType,
+    borderRadius: RadiusType,
+    border: BorderType,
   };
   declare type WidthType = number;
   declare type HeightType = number;
   declare type MarginType = number | MarginObject;
+  declare type BorderType = number | BorderSize;
   declare type ColorType = string;
+  declare type RadiusType = number | RadiusSize;
+
   declare type MarginObject = {
     top: number,
     right: number,
     bottom: number,
     left: number,
+  };
+
+  declare type BorderSize = {
+    top: number,
+    right: number,
+    bottom: number,
+    left: number,
+  };
+
+  declare type RadiusSize = {
+    topLeft: number,
+    topRight: number,
+    bottomLeft: number,
+    bottomRight: number,
   };
 }

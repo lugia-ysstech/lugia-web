@@ -159,7 +159,7 @@ const InputDemo = () => {
           <p>delete</p>
           <Input viewClass="register" suffix={<ClearIcon />} />
           <p>search</p>
-          <Input viewClass="register" suffix={<SearchIcon />} />
+          <Input prefix={<SearchIcon />} viewClass="register" suffix={<ClearIcon />} />
           <p>pull</p>
           <Input viewClass="register" suffix={<PullIcon />} />
         </Wrapper>

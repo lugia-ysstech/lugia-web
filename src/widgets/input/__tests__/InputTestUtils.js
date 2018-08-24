@@ -1,12 +1,15 @@
-//@flow
+/**
+ @flow
+ */
 import type { ReactWrapper } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import type { VerifyOrder } from '@lugia/jverify';
-import React from 'react';
+import * as React from 'react';
 import Input from '../';
 import 'jest-styled-components';
 import chai from 'chai';
-import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 const {
@@ -41,10 +44,13 @@ function getInputDOM(component, text): HTMLInputElement | null {
 
 type KeyEventType = 'onKeyUp' | 'onKeyPress' | 'onKeyDown' | 'onFocus' | 'onBlur';
 
-export function testKeyBoardEvent(order: VerifyOrder, keyEvent: KeyEventType) {
+export function testKeyBoardEvent(
+  order: VerifyOrder,
+  keyEvent: KeyEventType,
+  opt: { keyCode: any, Target: React.ComponentType<any> }
+) {
   const mockFunc = mockFunction.create(VerifyOrderConfig.create(keyEvent, order));
-
-  const keyCode = 49;
+  const { keyCode = 49, Target } = opt;
   const event = { keyCode };
   mockFunc.mock(({ keyCode }) => {
     exp(keyCode).to.be.equal(keyCode);
@@ -53,7 +59,7 @@ export function testKeyBoardEvent(order: VerifyOrder, keyEvent: KeyEventType) {
     [keyEvent]: mockFunc.getFunction(),
   };
 
-  const component = mount(<Input {...props} />);
+  const component = mount(<Target {...props} />);
   component.find('input').simulate(keyEvent.substr(2).toLowerCase(), event);
   order.verify(arg => {
     arg[keyEvent](VerifyOrderFactory.Object);
@@ -63,9 +69,12 @@ export function testKeyBoardEvent(order: VerifyOrder, keyEvent: KeyEventType) {
 /*
 *   键盘事件为空的情况
 */
-export function testFireNullKeyBoardEvent(keyEvent: KeyEventType) {
-  const component = mount(<Input />);
-  const keyCode = 49;
+export function testFireNullKeyBoardEvent(
+  keyEvent: KeyEventType,
+  opt: { keyCode: any, Target: React.ComponentType<any> }
+) {
+  const { keyCode = 49, Target } = opt;
+  const component = mount(<Target />);
   const event = { keyCode };
 
   component.find('input').simulate(keyEvent.substr(2).toLowerCase(), event);

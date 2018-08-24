@@ -1,0 +1,1325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
+.c0 {
+  width: 25em;
+  border-radius: 0.16666666666666669em;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.c0:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(248,172,48,0.2);
+}
+
+.c0:hover > span > span > input {
+  border-color: #684fff;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 25em;
+  border-radius: 0.33333333333333337em;
+  border: 1px;
+  border-style: solid;
+  border-color: #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c2:hover {
+  border-color: #cccccc;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  right: 0.4166666666666667em;
+}
+
+.c4 {
+  opacity: 0;
+  height: 2.5em;
+  border-left: 0.08333333333333334em solid #d9d9d9;
+  width: 1.8333333333333335em;
+  position: absolute;
+  bottom: 0.08333333333333334em;
+  right: 0.08333333333333334em;
+  -webkit-transition: all 0.3s linear 0.1s;
+  -webkit-transition: all 0.3s linear 0.1s;
+  transition: all 0.3s linear 0.1s;
+  z-index: 2;
+}
+
+.c5 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  height: 50%;
+}
+
+.c5:hover {
+  color: #684fff;
+}
+
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  border-top: 0.08333333333333334em solid #d9d9d9;
+  height: 50%;
+}
+
+.c8:hover {
+  color: #684fff;
+}
+
+<span>
+  <span
+    className="c0"
+    disabled={false}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <span>
+      <span
+        className="sv c1"
+      >
+        <input
+          className="c2"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          size="default"
+          value={10}
+        />
+        <span
+          className="c3"
+        >
+          <div />
+        </span>
+      </span>
+    </span>
+    <div
+      className="c4"
+      disabled={false}
+      size="default"
+    >
+      <span
+        className="c5"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_up c6 c7"
+        />
+      </span>
+      <span
+        className="c8"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_down c6 c7"
+        />
+      </span>
+    </div>
+  </span>
+</span>
+`;
+
+exports[`NumberInput props: null 1`] = `
+.c0 {
+  width: NaNem;
+  border-radius: 0.16666666666666669em;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.c0:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(248,172,48,0.2);
+}
+
+.c0:hover > span > span > input {
+  border-color: #684fff;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px;
+  border-style: solid;
+  border-color: #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c2:hover {
+  border-color: #cccccc;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  right: 0.4166666666666667em;
+}
+
+.c4 {
+  opacity: 0;
+  height: 2.5em;
+  border-left: 0.08333333333333334em solid #d9d9d9;
+  width: 1.8333333333333335em;
+  position: absolute;
+  bottom: 0.08333333333333334em;
+  right: 0.08333333333333334em;
+  -webkit-transition: all 0.3s linear 0.1s;
+  -webkit-transition: all 0.3s linear 0.1s;
+  transition: all 0.3s linear 0.1s;
+  z-index: 2;
+}
+
+.c5 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  height: 50%;
+}
+
+.c5:hover {
+  color: #684fff;
+}
+
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  border-top: 0.08333333333333334em solid #d9d9d9;
+  height: 50%;
+}
+
+.c8:hover {
+  color: #684fff;
+}
+
+<span
+  className="c0"
+  disabled={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <span>
+    <span
+      className="sv c1"
+    >
+      <input
+        className="c2"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        size="default"
+        value={10}
+      />
+      <span
+        className="c3"
+      >
+        <div />
+      </span>
+    </span>
+  </span>
+  <div
+    className="c4"
+    disabled={false}
+    size="default"
+  >
+    <span
+      className="c5"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_up c6 c7"
+      />
+    </span>
+    <span
+      className="c8"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_down c6 c7"
+      />
+    </span>
+  </div>
+</span>
+`;
+
+exports[`NumberInput props: placeholder  1`] = `
+.c0 {
+  width: NaNem;
+  border-radius: 0.16666666666666669em;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.c0:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(248,172,48,0.2);
+}
+
+.c0:hover > span > span > input {
+  border-color: #684fff;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px;
+  border-style: solid;
+  border-color: #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c2:hover {
+  border-color: #cccccc;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  right: 0.4166666666666667em;
+}
+
+.c4 {
+  opacity: 0;
+  height: 2.5em;
+  border-left: 0.08333333333333334em solid #d9d9d9;
+  width: 1.8333333333333335em;
+  position: absolute;
+  bottom: 0.08333333333333334em;
+  right: 0.08333333333333334em;
+  -webkit-transition: all 0.3s linear 0.1s;
+  -webkit-transition: all 0.3s linear 0.1s;
+  transition: all 0.3s linear 0.1s;
+  z-index: 2;
+}
+
+.c5 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  height: 50%;
+}
+
+.c5:hover {
+  color: #684fff;
+}
+
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  border-top: 0.08333333333333334em solid #d9d9d9;
+  height: 50%;
+}
+
+.c8:hover {
+  color: #684fff;
+}
+
+<span
+  className="c0"
+  disabled={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <span>
+    <span
+      className="sv c1"
+    >
+      <input
+        className="c2"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        placeholder="请填写内容"
+        size="default"
+        value={10}
+      />
+      <span
+        className="c3"
+      >
+        <div />
+      </span>
+    </span>
+  </span>
+  <div
+    className="c4"
+    disabled={false}
+    size="default"
+  >
+    <span
+      className="c5"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_up c6 c7"
+      />
+    </span>
+    <span
+      className="c8"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_down c6 c7"
+      />
+    </span>
+  </div>
+</span>
+`;
+
+exports[`NumberInput props: placeholder  2`] = `
+.c0 {
+  width: NaNem;
+  border-radius: 0.16666666666666669em;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.c0:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(248,172,48,0.2);
+}
+
+.c0:hover > span > span > input {
+  border-color: #684fff;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px;
+  border-style: solid;
+  border-color: #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c2:hover {
+  border-color: #cccccc;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  right: 0.4166666666666667em;
+}
+
+.c4 {
+  opacity: 0;
+  height: 2.5em;
+  border-left: 0.08333333333333334em solid #d9d9d9;
+  width: 1.8333333333333335em;
+  position: absolute;
+  bottom: 0.08333333333333334em;
+  right: 0.08333333333333334em;
+  -webkit-transition: all 0.3s linear 0.1s;
+  -webkit-transition: all 0.3s linear 0.1s;
+  transition: all 0.3s linear 0.1s;
+  z-index: 2;
+}
+
+.c5 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  height: 50%;
+}
+
+.c5:hover {
+  color: #684fff;
+}
+
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  border-top: 0.08333333333333334em solid #d9d9d9;
+  height: 50%;
+}
+
+.c8:hover {
+  color: #684fff;
+}
+
+<span
+  className="c0"
+  disabled={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <span>
+    <span
+      className="sv c1"
+    >
+      <input
+        className="c2"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        placeholder=""
+        size="default"
+        value={10}
+      />
+      <span
+        className="c3"
+      >
+        <div />
+      </span>
+    </span>
+  </span>
+  <div
+    className="c4"
+    disabled={false}
+    size="default"
+  >
+    <span
+      className="c5"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_up c6 c7"
+      />
+    </span>
+    <span
+      className="c8"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_down c6 c7"
+      />
+    </span>
+  </div>
+</span>
+`;
+
+exports[`NumberInput props: size 1`] = `
+.c0 {
+  width: NaNem;
+  border-radius: 0.16666666666666669em;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.c0:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(248,172,48,0.2);
+}
+
+.c0:hover > span > span > input {
+  border-color: #684fff;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  height: 2em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px;
+  border-style: solid;
+  border-color: #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c2:hover {
+  border-color: #cccccc;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  right: 0.4166666666666667em;
+}
+
+.c4 {
+  opacity: 0;
+  height: 1.8333333333333335em;
+  border-left: 0.08333333333333334em solid #d9d9d9;
+  width: 1.8333333333333335em;
+  position: absolute;
+  bottom: 0.08333333333333334em;
+  right: 0.08333333333333334em;
+  -webkit-transition: all 0.3s linear 0.1s;
+  -webkit-transition: all 0.3s linear 0.1s;
+  transition: all 0.3s linear 0.1s;
+  z-index: 2;
+}
+
+.c5 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  height: 50%;
+}
+
+.c5:hover {
+  color: #684fff;
+}
+
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  border-top: 0.08333333333333334em solid #d9d9d9;
+  height: 50%;
+}
+
+.c8:hover {
+  color: #684fff;
+}
+
+<span
+  className="c0"
+  disabled={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <span>
+    <span
+      className="sv c1"
+    >
+      <input
+        className="c2"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        size="small"
+        value={10}
+      />
+      <span
+        className="c3"
+      >
+        <div />
+      </span>
+    </span>
+  </span>
+  <div
+    className="c4"
+    disabled={false}
+    size="small"
+  >
+    <span
+      className="c5"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_up c6 c7"
+      />
+    </span>
+    <span
+      className="c8"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_down c6 c7"
+      />
+    </span>
+  </div>
+</span>
+`;
+
+exports[`NumberInput props: size 2`] = `
+.c0 {
+  width: NaNem;
+  border-radius: 0.16666666666666669em;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.c0:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(248,172,48,0.2);
+}
+
+.c0:hover > span > span > input {
+  border-color: #684fff;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  height: 3.3333333333333335em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px;
+  border-style: solid;
+  border-color: #e8e8e8;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c2:hover {
+  border-color: #cccccc;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.25);
+}
+
+.c2:focus {
+  border-color: #684fff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 0.8333333333333334em;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  right: 0.4166666666666667em;
+}
+
+.c4 {
+  opacity: 0;
+  height: 3.1666666666666665em;
+  border-left: 0.08333333333333334em solid #d9d9d9;
+  width: 1.8333333333333335em;
+  position: absolute;
+  bottom: 0.08333333333333334em;
+  right: 0.08333333333333334em;
+  -webkit-transition: all 0.3s linear 0.1s;
+  -webkit-transition: all 0.3s linear 0.1s;
+  transition: all 0.3s linear 0.1s;
+  z-index: 2;
+}
+
+.c5 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  height: 50%;
+}
+
+.c5:hover {
+  color: #684fff;
+}
+
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  border-top: 0.08333333333333334em solid #d9d9d9;
+  height: 50%;
+}
+
+.c8:hover {
+  color: #684fff;
+}
+
+<span
+  className="c0"
+  disabled={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <span>
+    <span
+      className="sv c1"
+    >
+      <input
+        className="c2"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        size="large"
+        value={10}
+      />
+      <span
+        className="c3"
+      >
+        <div />
+      </span>
+    </span>
+  </span>
+  <div
+    className="c4"
+    disabled={false}
+    size="large"
+  >
+    <span
+      className="c5"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_up c6 c7"
+      />
+    </span>
+    <span
+      className="c8"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <i
+        className="lugia-icon-direction_down c6 c7"
+      />
+    </span>
+  </div>
+</span>
+`;

@@ -47,6 +47,16 @@ describe('utils', () => {
   testConvertCurrencyCall('1234.12', '壹仟贰佰叁拾肆元壹角贰分');
   testConvertCurrencyCall('1234.123', '壹仟贰佰叁拾肆元壹角贰分叁厘');
   testConvertCurrencyCall('12345', '壹万贰仟叁佰肆拾伍元整');
+  testConvertCurrencyCall('-1.100', '负壹元壹角');
+  testConvertCurrencyCall('-1.234', '负壹元贰角叁分肆厘');
+  testConvertCurrencyCall('-1', '负壹元整');
+  testConvertCurrencyCall('-12', '负壹拾贰元整');
+  testConvertCurrencyCall('-123', '负壹佰贰拾叁元整');
+  testConvertCurrencyCall('-1234', '负壹仟贰佰叁拾肆元整');
+  testConvertCurrencyCall('-1234.1', '负壹仟贰佰叁拾肆元壹角');
+  testConvertCurrencyCall('-1234.12', '负壹仟贰佰叁拾肆元壹角贰分');
+  testConvertCurrencyCall('-1234.123', '负壹仟贰佰叁拾肆元壹角贰分叁厘');
+  testConvertCurrencyCall('-12345', '负壹万贰仟叁佰肆拾伍元整');
   testConvertCurrencyCall('123456', '壹拾贰万叁仟肆佰伍拾陆元整');
   testConvertCurrencyCall('1234567', '壹佰贰拾叁万肆仟伍佰陆拾柒元整');
   testConvertCurrencyCall('12345678', '壹仟贰佰叁拾肆万伍仟陆佰柒拾捌元整');
@@ -79,6 +89,10 @@ describe('utils', () => {
   testConvertCurrencyCall(
     9999999999999998,
     '玖仟玖佰玖拾玖兆玖仟玖佰玖拾玖亿玖仟玖佰玖拾玖万玖仟玖佰玖拾捌元整'
+  );
+  testConvertCurrencyCall(
+    -9999999999999998,
+    '负玖仟玖佰玖拾玖兆玖仟玖佰玖拾玖亿玖仟玖佰玖拾玖万玖仟玖佰玖拾捌元整'
   );
   testConvertCurrencyCall(9999999999999999, '超出输入范围');
   testConvertCurrencyCall('.9.9.9.9.9.9.9.9.9.9999', '玖角');

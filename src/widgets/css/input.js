@@ -7,14 +7,13 @@
 import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
-
+import { getAttributeFromObject } from '../common/ObjectUtils.js';
 const {
   themeColor,
   disableColor,
   borderDisableColor,
   borderSize,
   dangerColor,
-  borderColor,
   blackColor,
   mediumGreyColor,
 } = colorsFunc();
@@ -32,8 +31,13 @@ function isSuccess(validateStatus) {
 }
 
 export const getInputBorderHoverColor = (props: Object) => {
-  const { validateStatus = Success } = props;
-  return isSuccess(validateStatus) ? borderColor : dangerColor;
+  const { validateStatus = Success, theme } = props;
+  const { borderColor } = theme;
+  return borderColor
+    ? borderColor
+    : isSuccess(validateStatus)
+      ? colorsFunc().borderColor
+      : dangerColor;
 };
 
 export const getFocusShadow = (props: Object) => {
@@ -45,8 +49,8 @@ const em = px2emcss(1.2);
 
 export const RadiusSize = em(4);
 export const Height = 22;
-export const LargeHeight = em(38);
-export const SmallHeight = em(28);
+export const LargeHeight = em(40);
+export const SmallHeight = em(24);
 export const DefaultHeight = em(32);
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
@@ -60,6 +64,7 @@ export type InputValidateType = 'top' | 'bottom' | 'inner' | 'default';
 type CommonInputProps = {
   theme: ThemeType,
   size?: InputSize,
+  prefix?: React$Element<any>,
   disabled: boolean,
   validateType: InputValidateType,
   validateStatus: ValidateStatus,
@@ -70,9 +75,9 @@ export const getWidth = (props: CommonInputProps) => {
   return `width:${width ? em(width) : em(200)};`;
 };
 export const getPadding = (props: CommonInputProps) => {
-  const { theme } = props;
+  const { theme, prefix } = props;
   const { width } = theme;
-  return `${width && width < 200 ? em(width / 20) : em(10)};`;
+  return `${prefix ? em(30) : width && width < 200 ? em(width / 20) : em(10)};`;
 };
 export const getRightPadding = (props: CommonInputProps) => {
   const { theme } = props;
@@ -84,6 +89,13 @@ export const getMargin = (props: CommonInputProps) => {
   const { margin } = theme;
   if (typeof margin === 'number') {
     return `margin:${em(margin)} `;
+  }
+  if (margin !== undefined) {
+    const marginTop = getAttributeFromObject(margin, 'top', 0);
+    const marginRight = getAttributeFromObject(margin, 'right', 0);
+    const marginBottom = getAttributeFromObject(margin, 'bottom', 0);
+    const marginLeft = getAttributeFromObject(margin, 'left', 0);
+    return `margin:${em(marginTop)}; ${em(marginRight)}; ${em(marginBottom)}; ${em(marginLeft)}`;
   }
 };
 export const getSize = (props: CommonInputProps) => {
@@ -106,8 +118,43 @@ export const getCursor = (props: CommonInputProps) => {
 export const getFocusBorderColor = () => {
   return `border-color:${themeColor}`;
 };
-export const getInputBorderSize = () => {
-  return `${borderSize}`;
+export const getInputBorderSize = (props: CommonInputProps) => {
+  const { theme } = props;
+  const { border } = theme;
+  if (typeof border === 'number') {
+    return `border:${em(border)}`;
+  }
+  if (border !== undefined) {
+    const borderTop = getAttributeFromObject(border, 'top', 0);
+    const borderRight = getAttributeFromObject(border, 'right', 0);
+    const borderBottom = getAttributeFromObject(border, 'bottom', 0);
+    const borderLeft = getAttributeFromObject(border, 'left', 0);
+    return `
+    border-top:${em(borderTop)};
+    border-right:${em(borderRight)};
+    border-bottom:${em(borderBottom)};
+    border-left:${em(borderLeft)}`;
+  }
+  return `border:${borderSize}`;
+};
+export const getInputBorderRadius = (props: CommonInputProps) => {
+  const { theme } = props;
+  const { borderRadius } = theme;
+  if (typeof borderRadius === 'number') {
+    return `border-radius:${em(borderRadius)}`;
+  }
+  if (borderRadius !== undefined) {
+    const borderRadiusTopLeft = getAttributeFromObject(borderRadius, 'topLeft', 0);
+    const borderRadiusTopRight = getAttributeFromObject(borderRadius, 'topRight', 0);
+    const borderRadiusBottomLeft = getAttributeFromObject(borderRadius, 'bottomLeft', 0);
+    const borderRadiusBottomRight = getAttributeFromObject(borderRadius, 'bottomRight', 0);
+    return `
+    border-top-left-radius:${em(borderRadiusTopLeft)};
+    border-top-right-radius:${em(borderRadiusTopRight)};
+    border-bottom-left-radius:${em(borderRadiusBottomLeft)};
+    border-bottom-right-radius:${em(borderRadiusBottomRight)};`;
+  }
+  return `border-radius:${RadiusSize}`;
 };
 export const getFontColor = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;

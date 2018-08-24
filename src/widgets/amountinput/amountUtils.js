@@ -16,13 +16,20 @@ const cnIntLast = '元';
 const zero = '零元整';
 //最大处理的数字
 const maxNum = 9999999999999999.999;
+//符号
+const negative = '负';
 
 export function convertCurrency(value: string | number) {
   //输出的中文金额字符串
   let chineseStr = '';
-
+  //'-'
+  let minus = '';
   if (value === '') {
     return '';
+  }
+  if (Number(value) < 0) {
+    value = (value + '').substr(1);
+    minus = negative;
   }
   value = parseFloat(value);
   if (value >= maxNum) {
@@ -77,14 +84,18 @@ export function convertCurrency(value: string | number) {
   }
   chineseStr +=
     chineseStr === '' ? cnNums[0] + cnIntLast + cnInteger : decimalNum === '' ? cnInteger : '';
-  return chineseStr;
+  return minus + chineseStr;
 }
 
 export function converAmount(val: string): number {
+  let minus = '';
   if (!val) {
     return 0;
   }
 
+  if (val.substr(0, 1) === negative) {
+    minus = '-';
+  }
   const splitByYuan = val.split(cnIntLast);
   const integerPart = splitByYuan[0];
   const integerVal = integerPart ? getIntegerValue(integerPart) : 0;
@@ -92,11 +103,11 @@ export function converAmount(val: string): number {
   const floatStr = splitByYuan[1];
   const floatPart = floatStr && floatStr !== cnInteger ? floatStr : null;
   const floatVal = floatPart ? getFloatValue(floatPart) : 0;
-  return integerVal + floatVal;
+  return Number(minus + (integerVal + floatVal));
 }
 
 function getFloatValue(floatPart: string) {
-  return parseFloatForNumber(parseNumberAndUnit(floatPart), true);
+  return parseFloatForNumber(parseNumberAndUnit(floatPart));
 }
 
 const cn2number = {
