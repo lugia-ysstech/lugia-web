@@ -8,5 +8,5 @@
  */
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import datePicker from './datePicker';
+import datePicker from './DatePicker';
 export default ThemeProvider(datePicker, Widget.datePicker);

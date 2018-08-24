@@ -6,18 +6,6 @@ const distance = {
   iconLeft: 10,
 };
 const { hoverColor } = colorsFunc();
-export const Date = styled.span`
-  display: inline-block;
-  position: relative;
-`;
-export const DateInput = styled.input`
-  padding: 0;
-  margin: 0;
-  width: 198px;
-  height: 28px;
-  border: 1px solid #ddd;
-  padding-left: ${em(23)};
-`;
 export const Icons = styled.span`
   position: absolute;
   left: ${em(distance.iconLeft)};

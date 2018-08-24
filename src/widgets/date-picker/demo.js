@@ -6,7 +6,7 @@
  *
  */
 import React, { Component } from 'react';
-import DatePicker from './dateIndex';
+import DatePicker from './DateInput';
 import moment from 'moment';
 // import Widgets from '../consts/index';
 // import Theme from '../theme/index';

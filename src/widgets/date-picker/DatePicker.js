@@ -6,22 +6,19 @@ import React, { Component } from 'react';
 import Icon from '../icon/index';
 import moment from 'moment';
 // import { getElementPosition } from '../utils';
-import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
 import {
-  Date,
-  DateInput,
-  Icons,
-  DateWrapper,
-  DateWInner,
-  DateHeader,
-  HeaderTop,
-  HeaderTopText,
-  HeaderTopArrow,
-  HeaderWeekBox,
-  HeaderWeek,
-  DatePanel,
   DateChild,
+  DateHeader,
+  DatePanel,
+  DateWInner,
+  DateWrapper,
+  HeaderTop,
+  HeaderTopArrow,
+  HeaderTopText,
+  HeaderWeek,
+  HeaderWeekBox,
 } from './styled';
+
 type TypeProps = {
   defaultValue?: Object,
   value?: Object,
@@ -44,11 +41,13 @@ type TypeState = {
   showDate: boolean,
   inDate: boolean,
 };
+
 class DatePickerInner extends Component<TypeProps, TypeState> {
   datePanel: any;
   dateChildren: any;
   dateWeeks: any;
   chooseDay: number;
+
   constructor(props: TypeProps) {
     super(props);
     this.datePanel = React.createRef();
@@ -90,6 +89,7 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       };
     }
   }
+
   getDaysInMonth = (type: string, funName: string) => () => {
     //console.log('getDaysInMonth',flag);
 
@@ -109,7 +109,6 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
     const { newMonth, days, weekDay, weekIndex, lastDayIndexInMonth } = this.getDates(moments);
     const dateIndex = choseDate + weekIndex;
     const { choseDayIndex } = this.getChoseDayIndex(choseDate, weekIndex, dateIndex, value);
-    this.props.getValue(value);
     this.setState({
       days,
       weekDay,
@@ -163,15 +162,9 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
 
     const currentYear = moment(choseValue).year();
     const currentMonth = moment(choseValue).month();
-    this.setState(
-      { value: choseValue, currentYear, currentMonth, choseDate, choseDayIndex },
-      function() {
-        const { showDate, inDate } = this.state;
-        if (!showDate && !inDate) {
-          this.getDaysInMonth()();
-        }
-      }
-    );
+    this.setState({ value: choseValue, currentYear, currentMonth, choseDate, choseDayIndex });
+    const { onChange } = this.props;
+    onChange && onChange({ newValue: choseValue });
   };
   getChoseDayIndex = (choseDate: number, weekIndex: number, index, value) => {
     const { format } = this.state;
@@ -202,6 +195,7 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       newMoments[funName](number, 'month').set('date', choseDate);
       return newMoments.format(format);
     }
+
     return {
       choseDayIndex,
       choseValue,
@@ -233,7 +227,6 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       choseDayIndex,
     } = this.state;
 
-    const showDatePicker = !showDate && !inDate;
     const todayIndex = today + weekIndex;
     const dateChildren = days.map((currentValue, index) => {
       return (
@@ -262,7 +255,7 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       //   onFocus={this.onFocus}
       //   onBlur={this.onBlur}
       // />
-      <DateWrapper width={300} showDate={showDate} showDatePicker={showDatePicker}>
+      <DateWrapper width={300} showDate={showDate}>
         <DateWInner width={300}>
           <DateHeader>
             <HeaderTop>
@@ -311,4 +304,5 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
     );
   }
 }
+
 export default DatePickerInner;
