@@ -6,7 +6,7 @@
  *
  */
 import React, { Component } from 'react';
-import DatePicker from './datePicker';
+import DatePicker from './dateIndex';
 import moment from 'moment';
 // import Widgets from '../consts/index';
 // import Theme from '../theme/index';
@@ -34,7 +34,7 @@ export default class Sl extends Component<any> {
     const dateFormate = 'YYYY/MM/DD';
     return (
       <div style={{ margin: '30px' }}>
-        <DatePicker firstWeekday={1} defaultValue={'2015/5/1'} format={dateFormate} />
+        <DatePicker firstWeekday={2} defaultValue={'2015/5/1'} format={dateFormate} />
       </div>
     );
   }

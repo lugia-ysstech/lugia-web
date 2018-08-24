@@ -44,7 +44,7 @@ type TypeState = {
   showDate: boolean,
   inDate: boolean,
 };
-class DatePicker extends Component<TypeProps, TypeState> {
+class DatePickerInner extends Component<TypeProps, TypeState> {
   datePanel: any;
   dateChildren: any;
   dateWeeks: any;
@@ -91,6 +91,8 @@ class DatePicker extends Component<TypeProps, TypeState> {
     }
   }
   getDaysInMonth = (type: string, funName: string) => () => {
+    //console.log('getDaysInMonth',flag);
+
     const { currentYear, currentMonth, value, choseDate, format } = this.state;
     let year = moment(value).set('year', currentYear);
     if (type === 'year') {
@@ -107,7 +109,7 @@ class DatePicker extends Component<TypeProps, TypeState> {
     const { newMonth, days, weekDay, weekIndex, lastDayIndexInMonth } = this.getDates(moments);
     const dateIndex = choseDate + weekIndex;
     const { choseDayIndex } = this.getChoseDayIndex(choseDate, weekIndex, dateIndex, value);
-    console.log('choseValue', value);
+    this.props.getValue(value);
     this.setState({
       days,
       weekDay,
@@ -158,6 +160,7 @@ class DatePicker extends Component<TypeProps, TypeState> {
     const { weekIndex } = this.state;
     const { value } = this;
     const { choseDayIndex, choseValue } = this.getChoseDayIndex(choseDate, weekIndex, index, value);
+
     const currentYear = moment(choseValue).year();
     const currentMonth = moment(choseValue).month();
     this.setState(
@@ -204,15 +207,14 @@ class DatePicker extends Component<TypeProps, TypeState> {
       choseValue,
     };
   };
-  onFocus = () => {
-    this.setState({ showDate: true });
-  };
-  onBlur = () => {
-    this.setState({ showDate: false });
-  };
-  onmouseenter = () => {
-    this.setState({ inDate: true });
-  };
+  // onmousedown = () => {
+  //   console.log('onmouseenter');
+  //   this.props.getClickWhere(true);
+  // };
+  // onmouseleave = () => {
+  //   console.log('onmouseleave');
+  //   this.props.getClickWhere(false);
+  // };
   componentDidMount() {
     this.getDaysInMonth()();
   }
@@ -239,7 +241,8 @@ class DatePicker extends Component<TypeProps, TypeState> {
           width={300}
           key={index}
           onClick={this.onDateChange(index, currentValue)}
-          onMouseEnter={this.onmouseenter}
+          // onMouseEnter={this.onmouseenter}
+          // onMouseLeave={this.onmouseleave}
           isToday={todayIndex === index + 1 ? true : false}
           outMonth={index < weekIndex || index > lastDayIndexInMonth ? true : false}
           choseDayIndex={choseDayIndex}
@@ -249,51 +252,63 @@ class DatePicker extends Component<TypeProps, TypeState> {
       );
     });
     return (
-      <Date>
-        <Icons>
-          <Icon className="lugia-icon-financial_date" />
-        </Icons>
-        <DateInput
-          readOnly
-          value={value}
-          placeholder={'请选择日期'}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-        />
-        <DateWrapper width={300} showDate={showDate} showDatePicker={showDatePicker}>
-          <DateWInner width={300}>
-            <DateHeader>
-              <HeaderTop>
-                <HeaderTopArrow position={'left'} onClick={this.getDaysInMonth('year', 'subtract')}>
-                  <Icon iconClass={'lugia-icon-direction_double_right'} />{' '}
-                </HeaderTopArrow>
-                <HeaderTopArrow
-                  position={'left'}
-                  margin={20}
-                  onClick={this.getDaysInMonth('month', 'subtract')}
-                >
-                  <Icon iconClass={'lugia-icon-direction_Left'} />
-                </HeaderTopArrow>
-                <HeaderTopText>{currentYear}年</HeaderTopText>
-                <HeaderTopText>{currentMonth + 1}月</HeaderTopText>
-                <HeaderTopArrow position={'right'} onClick={this.getDaysInMonth('year', 'add')}>
-                  <Icon iconClass={'lugia-icon-direction_double_left'} />{' '}
-                </HeaderTopArrow>
-                <HeaderTopArrow
-                  position={'right'}
-                  margin={20}
-                  onClick={this.getDaysInMonth('month', 'add')}
-                >
-                  <Icon iconClass={'lugia-icon-direction_right'} />{' '}
-                </HeaderTopArrow>
-              </HeaderTop>
-              <HeaderWeekBox>{this.dateWeeks}</HeaderWeekBox>
-            </DateHeader>
-            <DatePanel innerRef={this.datePanel}>{dateChildren}</DatePanel>
-          </DateWInner>
-        </DateWrapper>
-      </Date>
+      // <Icons>
+      //   <Icon className="lugia-icon-financial_date" />
+      // </Icons>
+      // <DateInput
+      //   readOnly
+      //   value={value}
+      //   placeholder={'请选择日期'}
+      //   onFocus={this.onFocus}
+      //   onBlur={this.onBlur}
+      // />
+      <DateWrapper width={300} showDate={showDate} showDatePicker={showDatePicker}>
+        <DateWInner width={300}>
+          <DateHeader>
+            <HeaderTop>
+              <HeaderTopArrow
+                position={'left'}
+                onClick={this.getDaysInMonth('year', 'subtract')}
+                onMouseDown={this.onmousedown}
+                // onMouseLeave={this.onmouseleave}
+              >
+                <Icon iconClass={'lugia-icon-direction_double_right'} />{' '}
+              </HeaderTopArrow>
+              <HeaderTopArrow
+                position={'left'}
+                margin={20}
+                onClick={this.getDaysInMonth('month', 'subtract')}
+                // onMouseEnter={this.onmouseenter}
+                // onMouseLeave={this.onmouseleave}
+              >
+                <Icon iconClass={'lugia-icon-direction_Left'} />
+              </HeaderTopArrow>
+              <HeaderTopText>{currentYear}年</HeaderTopText>
+              <HeaderTopText>{currentMonth + 1}月</HeaderTopText>
+              <HeaderTopArrow
+                position={'right'}
+                onClick={this.getDaysInMonth('year', 'add')}
+                onMouseEnter={this.onmouseenter}
+                onMouseLeave={this.onmouseleave}
+              >
+                <Icon iconClass={'lugia-icon-direction_double_left'} />{' '}
+              </HeaderTopArrow>
+              <HeaderTopArrow
+                position={'right'}
+                margin={20}
+                onClick={this.getDaysInMonth('month', 'add')}
+                // onMouseEnter={this.onmouseenter}
+                // onMouseLeave={this.onmouseleave}
+              >
+                <Icon iconClass={'lugia-icon-direction_right'} />{' '}
+              </HeaderTopArrow>
+            </HeaderTop>
+            <HeaderWeekBox>{this.dateWeeks}</HeaderWeekBox>
+          </DateHeader>
+          <DatePanel innerRef={this.datePanel}>{dateChildren}</DatePanel>
+        </DateWInner>
+      </DateWrapper>
     );
   }
 }
-export default DatePicker;
+export default DatePickerInner;

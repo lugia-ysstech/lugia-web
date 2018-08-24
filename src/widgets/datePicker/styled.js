@@ -31,7 +31,6 @@ export const DateWrapper = styled.div`
   position: absolute;
   left: 0;
   top: 32px;
-  display: ${props => (props.showDate ? '' : props.showDatePicker ? 'none' : '')};
 `;
 export const DateWInner = styled.div`
   width: ${props => props.width}px;
