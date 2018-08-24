@@ -17,7 +17,7 @@ import {
   getValueAndDisplayValue,
   getItems,
   handleCreate,
-  getMapData,
+  updateMapData,
 } from '../common/translateData';
 import Theme from '../theme';
 import { Group } from '../checkbox/checkbox-group';
@@ -53,8 +53,13 @@ export default ThemeProvider(
     constructor(props) {
       super(props);
       const { displayValue } = getValueAndDisplayValue(props, null);
-      getMapData(props, [displayValue], this);
+      updateMapData(props, [displayValue], this.updateMapData);
     }
+
+    updateMapData = ({ cancelItem, cancelItemData, dataItem }) => {
+      this.cancelItem = cancelItem;
+      this.dataItem = dataItem;
+    };
 
     static getDerivedStateFromProps(props, state) {
       const { data = [] } = props;
@@ -65,7 +70,13 @@ export default ThemeProvider(
       };
     }
     shouldComponentUpdate(nextProps: RadioGroupProps, nextState: RadioGroupState) {
-      return didUpdate(nextProps, nextState, this, (_, nextState) => nextState.displayValue);
+      return didUpdate(
+        nextProps,
+        nextState,
+        this,
+        (_, nextState) => nextState.displayValue,
+        this.updateMapData
+      );
     }
 
     render() {
@@ -73,7 +84,7 @@ export default ThemeProvider(
       const disV = typeof displayValue === 'string' ? [displayValue] : [];
       const { cache = true, getTheme, childType = 'default' } = this.props;
       if (!cache) {
-        getMapData(this.props, disV, this);
+        updateMapData(this.props, disV, this.updateMapData);
       }
       return (
         <Theme config={this.getChildTheme()}>
@@ -135,7 +146,7 @@ export default ThemeProvider(
       if (val === value) {
         return;
       }
-      const { items } = getItems([value], false, this);
+      const { items } = getItems([value], false, this, this.updateMapData);
       const obj = {
         newValue: val,
         oldValue: value,

@@ -14,9 +14,9 @@ import { DisplayField, ValueField } from '../consts/props';
 import {
   didUpdate,
   getItems,
-  handleCreate,
-  getMapData,
+  updateMapData,
   getValueAndDisplayValue,
+  handleCreate,
 } from '../common/translateData';
 import Theme from '../theme';
 import colorsFunc from '../css/stateColor';
@@ -109,7 +109,7 @@ export default ThemeProvider(
     constructor(props: CheckBoxGroupProps) {
       super(props);
       const { displayValue = [] } = getValueAndDisplayValue(props, null);
-      getMapData(props, displayValue, this);
+      updateMapData(props, displayValue, this.updateMapData);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -121,14 +121,26 @@ export default ThemeProvider(
       };
     }
 
+    updateMapData = ({ cancelItem, cancelItemData, dataItem }) => {
+      this.cancelItem = cancelItem;
+      this.cancelItemData = cancelItemData;
+      this.dataItem = dataItem;
+    };
+
     shouldComponentUpdate(nextProps: CheckBoxGroupProps, nextState: CheckBoxGroupState) {
-      return didUpdate(nextProps, nextState, this, (_, nextState) => nextState.displayValue);
+      return didUpdate(
+        nextProps,
+        nextState,
+        this,
+        (_, nextState) => nextState.displayValue,
+        this.updateMapData
+      );
     }
 
     render() {
       const { cache = true, getTheme, childType = 'default' } = this.props;
       if (!cache) {
-        getMapData(this.props, this.state.displayValue, this);
+        updateMapData(this.props, this.state.displayValue, this.updateMapData);
       }
       return (
         <Theme config={this.getChildTheme()}>
@@ -195,9 +207,9 @@ export default ThemeProvider(
       }
       let newItem, oldItem, newDisplayValue;
       if (!this.props.children) {
-        const { items, displayValue } = getItems(newValue, true, this);
+        const { items, displayValue } = getItems(newValue, true, this, this.updateMapData);
         newItem = items;
-        oldItem = getItems(oldValue, false, this).items;
+        oldItem = getItems(oldValue, false, this, this.updateMapData).items;
         newDisplayValue = displayValue;
       }
 
@@ -221,6 +233,7 @@ export default ThemeProvider(
     hasValueProps() {
       return 'value' in this.props;
     }
+
     handleCancelItemClick = (value: any) => {
       if (!this.hasValueProps()) {
         const item = this.cancelItemData[value];

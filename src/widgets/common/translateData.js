@@ -50,7 +50,8 @@ export function didUpdate(
   nextProps: Object,
   nextState: Object,
   owner: Object,
-  getDisplayValue: Function
+  getDisplayValue: Function,
+  updateHanlder: Function
 ) {
   let displayValueEqual = true;
   let valueEqual = true;
@@ -69,7 +70,7 @@ export function didUpdate(
     !displayValueEqual ||
     !valueEqual
   ) {
-    getMapData(nextProps, getDisplayValue(nextProps, nextState), owner);
+    updateMapData(nextProps, getDisplayValue(nextProps, nextState), updateHanlder);
   }
   return true;
 }
@@ -83,7 +84,8 @@ function getEqualResult(value, nextValue) {
 export function getItems(
   value: Array<string>,
   needDisplayValue: boolean = false,
-  owner: Object
+  owner: Object,
+  updateHanlder: Function
 ): Object {
   const items = [];
   const displayValue = [];
@@ -97,7 +99,7 @@ export function getItems(
       const dataHasItem = val in owner.dataItem;
       const cancelHasItem = val in owner.cancelItemData;
       if (!dataHasItem && !cancelHasItem) {
-        getMapData(owner.props, owner.state.displayValue, owner);
+        updateMapData(owner.props, owner.state.displayValue, updateHanlder);
       }
       let dataItem = owner.dataItem[val];
       if (!dataItem) {
@@ -129,15 +131,14 @@ export function handleCreate(owner: Object, type: 'radio' | 'checkbox') {
   return result;
 }
 
-export function getMapData(props: Object, displayValue: Array<string>, owner: Object) {
+export function updateMapData(props: Object, displayValue: Array<string>, updateHandler: Function) {
   const { cancelItem = [], cancelItemData = {}, dataItem = {} } = translateData(
     props,
     displayValue
   );
-  owner.cancelItem = cancelItem;
-  owner.cancelItemData = cancelItemData;
-  owner.dataItem = dataItem;
+  updateHandler({ cancelItem, cancelItemData, dataItem });
 }
+
 function renderChildren(owner: Object, type: 'radio' | 'checkbox') {
   let { value } = owner.state;
   if (!value) {
