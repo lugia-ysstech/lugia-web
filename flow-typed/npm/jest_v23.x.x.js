@@ -146,6 +146,7 @@ type EnzymeMatchersType = {
   toIncludeText(text: string): void,
   toHaveValue(value: any): void,
   toMatchElement(element: React$Element<any>): void,
+  toHaveStyleRule(att: string, val: any): void,
   toMatchSelector(selector: string): void
 };
 
