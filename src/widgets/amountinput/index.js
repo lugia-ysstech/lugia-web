@@ -10,8 +10,8 @@ import {
   DefaultAmountPrefix,
   getBackground,
   getMargin,
-  getWidth,
   getPlaceholderFontColor,
+  getWidth,
 } from '../css/input';
 
 import InputTip from '../tooltip/';
@@ -31,6 +31,8 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import { FontSize } from '../css';
+import { checkNumber } from '../common/Math';
+
 const em = px2emcss(1.2);
 
 const InputContainer = styled.span`
@@ -143,14 +145,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
 
   handleChange = (event: Object) => {
     this.setValue(
-      (event.newValue + '')
-        .replace(/[^\d\.]/g, '')
-        .replace(/^\./g, '')
-        .replace('.', '$#$')
-        .replace(/\./g, '')
-        .replace('$#$', '.')
-        .replace(/\.{2,}/g, '.')
-        .replace(/^(\-)*(\d+)\.(\d\d\d).*$/, '$1$2.$3'),
+      checkNumber(event.newValue + '').replace(/^(\-)*(\d+)\.(\d\d\d).*$/, '$1$2.$3'),
       event.event
     );
   };
@@ -225,6 +220,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       </InputTip>
     );
   }
+
   getInputContainer() {
     const { getTheme } = this.props;
     return (
@@ -270,15 +266,10 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     onEnter && keyCode === 13 && onEnter(event);
   };
 
-  onKeyUp = (event: KeyboardEvent) => {
-    const { onKeyPress } = this.props;
-    onKeyPress && onKeyPress(event);
-  };
-
   generateInput(): React$Element<any> {
     const { props } = this;
     const { value, rmb } = this.state;
-    const { onKeyPress, size, disabled, amountPrefix, getTheme } = props;
+    const { onKeyUp, onKeyPress, size, disabled, amountPrefix, getTheme } = props;
     const actualValue = rmb
       ? tipTool(parser(value), convertCurrency)
       : amountPrefix + amountFormatter(value);
@@ -297,7 +288,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
           theme={getTheme()}
           value={actualValue}
           size={size}
-          onKeyUp={this.onKeyUp}
+          onKeyUp={onKeyUp}
           onKeyPress={onKeyPress}
           onKeyDown={this.onKeyDown}
           onFocus={this.onFocus}

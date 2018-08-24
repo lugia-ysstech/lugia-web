@@ -152,29 +152,28 @@ describe('Input', () => {
     testPropsValue(value, value);
   });
 
-  it('props: onKeyUp', () => {
-    testKeyBoardEvent(order, 'onKeyUp');
-  });
   it('props: keyboard event is null but fire keyup event', () => {
-    testFireNullKeyBoardEvent('onKeyUp');
-    testFireNullKeyBoardEvent('onKeyDown');
-    testFireNullKeyBoardEvent('onKeyPress');
-    testFireNullKeyBoardEvent('onFocus');
-    testFireNullKeyBoardEvent('onBlur');
+    testFireNullKeyBoardEvent('onKeyUp', { keyCode: 49, Target: Input });
+    testFireNullKeyBoardEvent('onKeyDown', { keyCode: 49, Target: Input });
+    testFireNullKeyBoardEvent('onKeyPress', { keyCode: 49, Target: Input });
+    testFireNullKeyBoardEvent('onFocus', { keyCode: 49, Target: Input });
+    testFireNullKeyBoardEvent('onBlur', { keyCode: 49, Target: Input });
   });
-
+  it('props: onKeyUp', () => {
+    testKeyBoardEvent(order, 'onKeyUp', { keyCode: 49, Target: Input });
+  });
   it('props: onKeyPress', () => {
-    testKeyBoardEvent(order, 'onKeyPress');
+    testKeyBoardEvent(order, 'onKeyPress', { keyCode: 49, Target: Input });
   });
   it('props: onKeyDown', () => {
-    testKeyBoardEvent(order, 'onKeyDown');
+    testKeyBoardEvent(order, 'onKeyDown', { keyCode: 49, Target: Input });
   });
 
   it('props: onFocus', () => {
-    testKeyBoardEvent(order, 'onFocus');
+    testKeyBoardEvent(order, 'onFocus', { keyCode: 49, Target: Input });
   });
   it('props: onBlur', () => {
-    testKeyBoardEvent(order, 'onBlur');
+    testKeyBoardEvent(order, 'onBlur', { keyCode: 49, Target: Input });
   });
   it('props: onEnter Fired', () => {
     const mockFunc = mockFunction.create(VerifyOrderConfig.create('onEnter', order));

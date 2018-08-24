@@ -45,3 +45,19 @@ export function getMinAndMax(range: number[]): { min: number, max: number } {
 export function sortable(a: number, b: number): number {
   return a - b;
 }
+
+export function accAdd(value: number, step: number, precision: number): number {
+  return Number((value + step).toFixed(precision));
+}
+
+export function checkNumber(value: string): string {
+  if (!value) return '';
+  return value
+    .replace(/[^\d\.-]/g, '')
+    .replace(/^-/g, '$%$')
+    .replace(/\-/g, '')
+    .replace('.', '$#$')
+    .replace(/\./g, '')
+    .replace('$#$', '.')
+    .replace('$%$', '-');
+}

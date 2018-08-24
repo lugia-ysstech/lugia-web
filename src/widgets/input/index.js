@@ -25,7 +25,7 @@ import {
   getVisibility,
   getWidth,
   isValidateSuccess,
-  RadiusSize,
+  getInputBorderRadius,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
@@ -38,8 +38,10 @@ const CommonInputStyle = styled.input`
   ${getSize};
   ${getCursor};
   ${getWidth};
-  border-radius: ${RadiusSize};
-  border: ${getInputBorderSize} solid ${getInputBorderColor};
+  ${getInputBorderRadius};
+  ${getInputBorderSize};
+  border-style: solid;
+  border-color: ${getInputBorderColor};
   line-height: 1.5;
   font-size: ${FontSize};
   display: inline-block;
@@ -109,7 +111,7 @@ const Suffix = Fix.extend`
   right: ${em(5)};
 `;
 
-const Clear = 'lugia-icon-reminder_close_circle';
+const Clear = 'lugia-icon-reminder_close';
 
 const ClearButton: Object = styled(Icon)`
   position: absolute;
@@ -209,13 +211,13 @@ class TextBox extends Component<InputProps, InputState> {
     if (oldValue === value) {
       return;
     }
+    if (formatter && parser) {
+      value = parser(value);
+    }
     const param = { newValue: value, oldValue, event };
     if ('value' in this.props === false) {
       if (disabled) {
         return;
-      }
-      if (formatter && parser) {
-        value = parser(value);
       }
       this.setState({ value }, () => {
         onChange && onChange(param);
