@@ -16,9 +16,6 @@ export const DateWrapper = styled.div`
   width: ${props => props.width}px;
   padding: 30px 30px 44px;
   border: 1px solid #ddd;
-  position: absolute;
-  left: 0;
-  top: 32px;
 `;
 export const DateWInner = styled.div`
   width: ${props => props.width}px;
