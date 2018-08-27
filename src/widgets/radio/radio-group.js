@@ -71,10 +71,21 @@ export default ThemeProvider(
       };
     }
     shouldComponentUpdate(nextProps: RadioGroupProps, nextState: RadioGroupState) {
+      const { displayValue, value, data } = this.props;
+      const _this = {
+        props: {
+          displayValue,
+          value,
+          data,
+        },
+        state: {
+          dataLength: this.state.dataLength,
+        },
+      };
       return didUpdate(
         nextProps,
         nextState,
-        this,
+        _this,
         (_, nextState) => nextState.displayValue,
         this.updateMapData
       );
@@ -83,14 +94,37 @@ export default ThemeProvider(
     render() {
       const { displayValue = '' } = this.state;
       const disV = typeof displayValue === 'string' ? [displayValue] : [];
-      const { cache = true, getTheme, childType = 'default' } = this.props;
+      const {
+        cache = true,
+        getTheme,
+        childType = 'default',
+        children,
+        data,
+        disabled,
+        styles,
+      } = this.props;
       if (!cache) {
         updateMapData(this.props, disV, this.updateMapData);
       }
+      const _this = {
+        props: {
+          children,
+          data,
+          disabled,
+          styles,
+        },
+        state: {
+          value: this.state.value,
+        },
+        getChildDom: (item, cancel) => this.getChildDom(item, cancel),
+        handleChange: () => this.handleChange,
+        hasValueProps: () => this.hasValueProps(),
+        cancelItem: this.cancelItem,
+      };
       return (
         <Theme config={this.getChildTheme()}>
           <Group themes={getTheme()} childType={childType}>
-            {handleCreate(this, 'radio')}
+            {handleCreate(_this, 'radio')}
           </Group>
         </Theme>
       );
@@ -142,15 +176,29 @@ export default ThemeProvider(
       );
     };
     handleChange = (item?: Object) => (e: Event, val: string) => {
-      const { onChange } = this.props;
+      const { onChange, displayField, children, data, valueField, defaultValue } = this.props;
       const { value } = this.state;
       if (val === value) {
         return;
       }
       const handler = {
         updateHanlder: this.updateMapData,
+        getMapData: this.getMapData,
       };
-      const { items } = getItems([value], false, this, handler);
+      const _this = {
+        props: {
+          displayField,
+          children,
+          data,
+          valueField,
+          value: this.props.value,
+          defaultValue,
+        },
+        state: {
+          displayValue: this.state.displayValue,
+        },
+      };
+      const { items } = getItems([value], false, _this, handler);
       const obj = {
         newValue: val,
         oldValue: value,
@@ -168,7 +216,12 @@ export default ThemeProvider(
         });
       }
     };
-
+    getMapData = () => {
+      return {
+        cancelItem: this.cancelItem,
+        dataItem: this.dataItem,
+      };
+    };
     getChildTheme(): Object {
       const { getTheme } = this.props;
       return {
