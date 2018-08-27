@@ -7,9 +7,13 @@
 import * as React from 'react';
 import { DisplayField, ValueField } from '../consts/props';
 
-export default function translateData(props: Object, displayValue: Array<string>): Object {
+export default function translateData(
+  props: Object,
+  displayValue: Array<string>,
+  stateValue?: string[] | string
+): Object {
   const { data = [], valueField = ValueField, displayField = DisplayField } = props;
-  const value = props.value || props.defaultValue || [];
+  const value = props.value || props.defaultValue || stateValue || [];
   const values = typeof value === 'string' ? [value] : [...value];
   const dataValue = [];
   const dataItem = {};
@@ -49,30 +53,32 @@ export default function translateData(props: Object, displayValue: Array<string>
 export function didUpdate(
   nextProps: Object,
   nextState: Object,
-  owner: Object,
-  getDisplayValue: Function
+  params: Object,
+  getDisplayValue: Function,
+  updateHanlder: Function
 ) {
   let displayValueEqual = true;
   let valueEqual = true;
-  const displayValue = owner.props.displayValue;
+  const displayValue = params.props.displayValue;
   const nextDisplayValue = nextProps.displayValue;
 
-  const value = owner.props.value;
+  const value = params.props.value;
   const nextValue = nextProps.value;
 
   displayValueEqual = getEqualResult(displayValue, nextDisplayValue);
   valueEqual = getEqualResult(value, nextValue);
 
   if (
-    nextState.dataLength !== owner.state.dataLength ||
-    nextProps.data !== owner.props.data ||
+    nextState.dataLength !== params.state.dataLength ||
+    nextProps.data !== params.props.data ||
     !displayValueEqual ||
     !valueEqual
   ) {
-    getMapData(nextProps, getDisplayValue(nextProps, nextState), owner);
+    updateMapData(nextProps, getDisplayValue(nextProps, nextState), updateHanlder);
   }
   return true;
 }
+
 function getEqualResult(value, nextValue) {
   if (Array.isArray(value) && Array.isArray(nextValue)) {
     return nextValue.join(',') === value.join(',');
@@ -83,25 +89,25 @@ function getEqualResult(value, nextValue) {
 export function getItems(
   value: Array<string>,
   needDisplayValue: boolean = false,
-  owner: Object
+  params: Object,
+  handler: { updateHanlder: Function, needUpdate?: Function, getMapData: Function }
 ): Object {
   const items = [];
   const displayValue = [];
-  const { displayField = DisplayField } = owner.props;
-  const { children } = owner.props;
+  const { displayField = DisplayField, children } = params.props;
   if (children) {
     return {};
   }
+
   if (value.length > 0) {
+    const { updateHanlder, needUpdate = (val: any) => false, getMapData } = handler;
     value.forEach(val => {
-      const dataHasItem = val in owner.dataItem;
-      const cancelHasItem = val in owner.cancelItemData;
-      if (!dataHasItem && !cancelHasItem) {
-        getMapData(owner.props, owner.state.displayValue, owner);
+      if (needUpdate(val)) {
+        updateMapData(params.props, params.state.displayValue, updateHanlder);
       }
-      let dataItem = owner.dataItem[val];
-      if (!dataItem) {
-        dataItem = owner.cancelItemData[val];
+      let dataItem = getMapData().dataItem[val];
+      if (!dataItem && getMapData().cancelItemData) {
+        dataItem = getMapData().cancelItemData[val];
       }
       items.push(dataItem);
       needDisplayValue && displayValue.push(dataItem[displayField]);
@@ -110,48 +116,53 @@ export function getItems(
   return { items, displayValue };
 }
 
-export function handleCreate(owner: Object, type: 'radio' | 'checkbox') {
-  const { children, data = [] } = owner.props;
+export function handleCreate(params: Object, type: 'radio' | 'checkbox') {
+  const { children, data = [] } = params.props;
   const result = [];
 
   if (children) {
-    return renderChildren(owner, type);
+    return renderChildren(params, type);
   }
 
   const pushItem = (cancel: boolean) => item => {
-    result.push(owner.getChildDom(item, cancel));
+    result.push(params.getChildDom(item, cancel));
   };
 
-  const { cancelItem } = owner;
+  const { cancelItem } = params;
   cancelItem && cancelItem.forEach(pushItem(true));
 
   data && data.forEach(pushItem(false));
   return result;
 }
 
-export function getMapData(props: Object, displayValue: Array<string>, owner: Object) {
+export function updateMapData(
+  props: Object,
+  displayValue: Array<string>,
+  updateHandler: Function,
+  stateValue?: string[] | string
+) {
   const { cancelItem = [], cancelItemData = {}, dataItem = {} } = translateData(
     props,
-    displayValue
+    displayValue,
+    stateValue
   );
-  owner.cancelItem = cancelItem;
-  owner.cancelItemData = cancelItemData;
-  owner.dataItem = dataItem;
+  updateHandler({ cancelItem, cancelItemData, dataItem });
 }
-function renderChildren(owner: Object, type: 'radio' | 'checkbox') {
-  let { value } = owner.state;
+
+function renderChildren(params: Object, type: 'radio' | 'checkbox') {
+  let { value } = params.state;
   if (!value) {
     value = type === 'radio' ? '' : [];
   }
-  const { children, disabled, styles = 'default' } = owner.props;
+  const { children, disabled, styles = 'default' } = params.props;
   return React.Children.map(children, child => {
     return React.cloneElement(child, {
-      onChange: type === 'radio' ? owner.handleChange() : owner.handleChange,
+      onChange: type === 'radio' ? params.handleChange()() : params.handleChange(),
       checked:
         type === 'radio' ? value === child.props.value : value.indexOf(child.props.value) !== -1,
       disabled: disabled || child.props.disabled,
       styles: styles || child.props.styles,
-      hasValue: owner.hasValueProps(),
+      hasValue: params.hasValueProps(),
     });
   });
 }

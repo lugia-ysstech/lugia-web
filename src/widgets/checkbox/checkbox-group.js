@@ -14,9 +14,9 @@ import { DisplayField, ValueField } from '../consts/props';
 import {
   didUpdate,
   getItems,
-  handleCreate,
-  getMapData,
   getValueAndDisplayValue,
+  handleCreate,
+  updateMapData,
 } from '../common/translateData';
 import Theme from '../theme';
 import colorsFunc from '../css/stateColor';
@@ -109,7 +109,7 @@ export default ThemeProvider(
     constructor(props: CheckBoxGroupProps) {
       super(props);
       const { displayValue = [] } = getValueAndDisplayValue(props, null);
-      getMapData(props, displayValue, this);
+      updateMapData(props, displayValue, this.updateMapData);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -121,19 +121,84 @@ export default ThemeProvider(
       };
     }
 
+    updateMapData = ({ cancelItem, cancelItemData, dataItem }) => {
+      this.cancelItem = cancelItem;
+      this.cancelItemData = cancelItemData;
+      this.dataItem = dataItem;
+    };
+
+    getMapData = () => {
+      return {
+        cancelItem: this.cancelItem,
+        dataItem: this.dataItem,
+        cancelItemData: this.cancelItemData,
+      };
+    };
+
+    dataHasItem = (val: any) => {
+      return val in this.dataItem;
+    };
+    cancelHasItem = (val: any) => {
+      return val in this.cancelItemData;
+    };
+
+    needUpdate = (val: any) => {
+      return !this.dataHasItem(val) && !this.cancelHasItem(val);
+    };
+
     shouldComponentUpdate(nextProps: CheckBoxGroupProps, nextState: CheckBoxGroupState) {
-      return didUpdate(nextProps, nextState, this, (_, nextState) => nextState.displayValue);
+      const { displayValue, value, data } = this.props;
+      const _this = {
+        props: {
+          displayValue,
+          value,
+          data,
+        },
+        state: {
+          dataLength: this.state.dataLength,
+        },
+      };
+      return didUpdate(
+        nextProps,
+        nextState,
+        _this,
+        (_, nextState) => nextState.displayValue,
+        this.updateMapData
+      );
     }
 
     render() {
-      const { cache = true, getTheme, childType = 'default' } = this.props;
+      const {
+        cache = true,
+        getTheme,
+        childType = 'default',
+        children,
+        data,
+        disabled,
+        styles,
+      } = this.props;
       if (!cache) {
-        getMapData(this.props, this.state.displayValue, this);
+        updateMapData(this.props, this.state.displayValue, this.updateMapData);
       }
+      const _this = {
+        props: {
+          children,
+          data,
+          disabled,
+          styles,
+        },
+        state: {
+          value: this.state.value,
+        },
+        getChildDom: (item, cancel) => this.getChildDom(item, cancel),
+        handleChange: () => this.handleChange,
+        hasValueProps: () => this.hasValueProps(),
+        cancelItem: this.cancelItem,
+      };
       return (
         <Theme config={this.getChildTheme()}>
           <Group themes={getTheme()} childType={childType}>
-            {handleCreate(this, 'checkbox')}
+            {handleCreate(_this, 'checkbox')}
           </Group>
         </Theme>
       );
@@ -182,11 +247,11 @@ export default ThemeProvider(
       );
     };
 
-    handleChange = (event, val) => {
+    handleChange = (event, val: any) => {
       const { onChange } = this.props;
       const { value = [] } = this.state;
       const oldValue = value;
-      const newValue = [...value];
+      const newValue: string[] = [...value];
       const valueIndex = value.indexOf(val);
       if (valueIndex > -1) {
         newValue.splice(valueIndex, 1);
@@ -195,9 +260,28 @@ export default ThemeProvider(
       }
       let newItem, oldItem, newDisplayValue;
       if (!this.props.children) {
-        const { items, displayValue } = getItems(newValue, true, this);
+        const handler = {
+          updateHanlder: this.updateMapData,
+          needUpdate: this.needUpdate,
+          getMapData: this.getMapData,
+        };
+        const { displayField, children, data, valueField, value, defaultValue } = this.props;
+        const _this = {
+          props: {
+            displayField,
+            children,
+            data,
+            valueField,
+            value,
+            defaultValue,
+          },
+          state: {
+            displayValue: this.state.displayValue,
+          },
+        };
+        const { items, displayValue } = getItems(newValue, true, _this, handler);
         newItem = items;
-        oldItem = getItems(oldValue, false, this).items;
+        oldItem = getItems(oldValue, false, _this, handler).items;
         newDisplayValue = displayValue;
       }
 
@@ -221,6 +305,7 @@ export default ThemeProvider(
     hasValueProps() {
       return 'value' in this.props;
     }
+
     handleCancelItemClick = (value: any) => {
       if (!this.hasValueProps()) {
         const item = this.cancelItemData[value];
