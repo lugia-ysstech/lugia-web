@@ -54,6 +54,7 @@ const AmountInput = 'sv_widget_AmountInput';
 const Col = 'sv_widget_Col';
 const Row = 'sv_widget_Row';
 const NumberInput = 'sv_widget_NumberInput';
+const Divider = 'sv_widget_Divider';
 
 export default {
   Button,
@@ -99,4 +100,5 @@ export default {
   Col,
   Row,
   NumberInput,
+  Divider,
 };
