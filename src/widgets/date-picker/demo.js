@@ -21,9 +21,6 @@ export default class Sl extends Component<any> {
     };
   }
 
-  // onchange = v => {
-  //   console.log(v);
-  // };
   handleclick = () => {
     this.setState({
       disabled: !this.state.disabled,
@@ -31,10 +28,36 @@ export default class Sl extends Component<any> {
   };
 
   render() {
-    const dateFormate = 'YYYY/MM/DD';
+    const dateFormate = 'YYYY年MM月DD日';
     return (
       <div style={{ margin: '30px' }}>
-        <DatePicker firstWeekday={2} defaultValue={'2015/5/1'} format={dateFormate} />
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>normal</h2>
+          <DatePicker />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>disabled</h2>
+          <DatePicker
+            disabled
+            readOnly
+            defaultValue={'2015.02.03'}
+            value={'2015.03.03'}
+            format={dateFormate}
+            lang={'en'}
+          />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>readOnly</h2>
+          <DatePicker readOnly defaultValue={'2015.02.03'} format={dateFormate} lang={'en'} />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>defaultValue</h2>
+          <DatePicker defaultValue={'2015.02.01'} format={dateFormate} lang={'en'} />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>value</h2>
+          <DatePicker value={'2015.02.03'} format={dateFormate} lang={'en'} />
+        </div>
       </div>
     );
   }
