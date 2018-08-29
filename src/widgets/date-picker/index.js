@@ -8,5 +8,13 @@
  */
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import datePicker from './DatePicker';
-export default ThemeProvider(datePicker, Widget.datePicker);
+import DatePicker from './DateInput';
+import Month from './MonthPicker';
+import Year from './YearPicker';
+import Week from './WeekPicker';
+console.log(Month);
+DatePicker.MonthPicker = Month;
+DatePicker.YearPicker = Year;
+DatePicker.WeekPicker = Week;
+//export default ThemeProvider(DatePicker, Widget.DatePicker);
+export default DatePicker;

@@ -16,6 +16,8 @@ import {
   HeaderTop,
   HeaderTopArrow,
   HeaderTopText,
+  MonthChild,
+  MonthChildText,
 } from './styled';
 
 type TypeProps = {
@@ -26,11 +28,14 @@ type TypeProps = {
   lang: string,
   newValue: string,
   onChange: Function,
+  mode?: string,
+  showToday?: boolean,
 };
 type TypeState = {
   days: Array<Object>,
   weekDay: number,
   today: number,
+  noToday: boolean,
   currentYear: number,
   currentMonth: number,
   lastDayIndexInMonth: number,
@@ -39,6 +44,7 @@ type TypeState = {
   choseDate: number,
   format: string,
   choseDayIndex: number,
+  mode: string,
 };
 
 class DatePickerInner extends Component<TypeProps, TypeState> {
@@ -49,8 +55,10 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
   maxDay: number;
   value: string;
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { defaultValue } = nextProps;
-    let { value, format = 'YYYY-MM-DD' } = nextProps;
+    const { defaultValue, mode, showToday } = nextProps;
+    const normalFormat = mode === 'month' ? 'YYYY-DD' : mode === 'year' ? 'YYYY' : 'YYYY-MM-DD';
+    let { value, format = normalFormat } = nextProps;
+
     const hasDefaultProps = 'defaultValue' in nextProps && moment(defaultValue, format)._isValid;
     const hasValueProps = 'value' in nextProps && moment(value, format)._isValid;
     value = hasValueProps
@@ -61,17 +69,26 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
           ? defaultValue
           : moment().format('YYYY-MM-DD');
     const moments = moment(value, format);
+    let today = moment().date();
+    const max = moments.daysInMonth();
+    let noToday = false;
+    if (today > max) {
+      today = max;
+      noToday = true;
+    }
     if (!preState) {
       return {
         value,
         days: [],
         weekDay: 0,
-        today: moment().date(),
+        today,
+        noToday,
         choseDate: moments.date() || moment().date(),
         currentYear: moments.year() || moment().year(),
         currentMonth: moments.month() || moment().month(),
         weekIndex: 0,
         format,
+        mode,
       };
     }
     return {
@@ -140,7 +157,7 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       { value: choseValue, currentYear, currentMonth, choseDate, choseDayIndex },
       () => {
         const { onChange } = this.props;
-        onChange && onChange({ newValue: this.state.value });
+        onChange && onChange({ newValue: choseValue });
         this.getDaysInMonth()();
       }
     );
@@ -201,6 +218,57 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       choseDayIndex,
     });
   };
+  getMonthIndex = (choseValue: number) => () => {
+    const { onChange, mode } = this.props;
+    const { currentYear, currentMonth, value, format, choseDate } = this.state;
+
+    const { isMonth, isYear, isWeek, isWeeks, yOrM } = this.getMode(this.state.mode);
+    const date = isMonth
+      ? { year: currentYear, month: choseValue }
+      : { year: choseValue, month: currentMonth };
+
+    let newValue = moment()
+      .set(date)
+      .format(format);
+    const modeType = isYear ? 'month' : isWeek ? 'weeks' : '';
+    if (!mode) {
+      const setType = isMonth ? 'month' : 'year';
+      const moments = moment(value, format).set(setType, choseValue);
+      newValue = moments.format(format);
+      this.value = newValue;
+      this.setState({ mode: modeType });
+      this.getDatePosition(newValue);
+    }
+    if (mode) {
+      onChange && onChange({ newValue });
+      this.setState({ value: newValue });
+      this.weeksDate = choseValue;
+    }
+  };
+  onChangeMonth = () => {
+    this.changeMode('month');
+  };
+  onChangeYear = () => {
+    this.changeMode('year');
+  };
+  changeMode = (type: string) => {
+    const { mode } = this.state;
+    this.setState({ mode: type });
+  };
+  getMode = (mode: string) => {
+    const isMonth = mode === 'month';
+    const isYear = mode === 'year';
+    const isWeek = mode === 'week';
+    const isWeeks = mode === 'weeks';
+    const yOrM = isMonth || isYear || isWeek || isWeeks;
+    return {
+      isMonth,
+      isYear,
+      isWeek,
+      isWeeks,
+      yOrM,
+    };
+  };
   componentDidMount() {
     this.getDaysInMonth()();
   }
@@ -211,10 +279,15 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       currentYear,
       currentMonth,
       today,
+      noToday,
       weekIndex,
       lastDayIndexInMonth,
       choseDayIndex,
+      mode,
+      value,
+      format,
     } = this.state;
+    const { showToday } = this.props;
     const todayIndex = today + weekIndex;
     const dateChildren = days.map((currentValue, index) => {
       return (
@@ -222,7 +295,8 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
           width={300}
           key={index}
           onClick={this.onDateChange(index, currentValue)}
-          isToday={todayIndex === index + 1 ? true : false}
+          isToday={showToday && todayIndex === index + 1 ? true : false}
+          noToday={noToday}
           outMonth={index < weekIndex || index > lastDayIndexInMonth ? true : false}
           choseDayIndex={choseDayIndex}
         >
@@ -231,6 +305,65 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       );
     });
     const { firstWeekday, lang } = this.props;
+    const { isMonth, isYear, isWeek, isWeeks, yOrM } = this.getMode(mode);
+    let months = [
+      '一月',
+      '二月',
+      '三月',
+      '四月',
+      '五月',
+      '六月',
+      '七月',
+      '八月',
+      '九月',
+      '十月',
+      '十一月',
+      '十二月',
+    ];
+    if (lang === 'en') {
+      months = moment.monthsShort();
+    }
+
+    const nextYear = moment()
+      .set('year', currentYear)
+      .add(-1, 'year');
+    const years = [];
+    for (let i = 0; i < 12; i++) {
+      const moments = moment(nextYear);
+      const year = moments.add(i, 'year');
+      years.push(year.year());
+    }
+
+    const weeks = [];
+    const currentWeeks = moment(value, format).weeksInYear();
+    for (let i = 0; i < 5; i++) {
+      const start = 12 * i + 1;
+      const end = i === 4 ? currentWeeks : 12 * i + 12;
+      const value = `${start}-${end}周`;
+      weeks.push({ value, start, end });
+    }
+
+    const weeksInner = [];
+    if (isWeeks) {
+      const { start, end } = this.weeksDate;
+      for (let i = 0; i < 12; i++) {
+        weeksInner.push(`第${start + i}周`);
+      }
+    }
+
+    const yOrMchildren = isYear ? years : isMonth ? months : isWeek ? weeks : weeksInner;
+    const monthChildren = yOrMchildren.map((current, i) => {
+      const year = moment(value, format).year();
+      const currentValue = isMonth ? currentMonth : year;
+      const showValue = isMonth ? i : current;
+      const text = isWeek ? current.value : current;
+      return (
+        <MonthChild onClick={this.getMonthIndex(showValue)}>
+          <MonthChildText isChose={currentValue === showValue}>{text}</MonthChildText>
+        </MonthChild>
+      );
+    });
+
     return (
       <DateWrapper width={300}>
         <DateWInner width={300}>
@@ -241,31 +374,52 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
                 onClick={this.getDaysInMonth('year', 'subtract')}
                 onMouseDown={this.onmousedown}
               >
-                <Icon iconClass={'lugia-icon-direction_double_right'} />
+                <Icon
+                  iconClass={
+                    yOrM ? 'lugia-icon-direction_Left' : 'lugia-icon-direction_double_right'
+                  }
+                />
               </HeaderTopArrow>
-              <HeaderTopArrow
-                position={'left'}
-                margin={20}
-                onClick={this.getDaysInMonth('month', 'subtract')}
-              >
-                <Icon iconClass={'lugia-icon-direction_Left'} />
-              </HeaderTopArrow>
-              <HeaderTopText>{currentYear}年</HeaderTopText>
-              <HeaderTopText>{currentMonth + 1}月</HeaderTopText>
+              {yOrM ? (
+                ''
+              ) : (
+                <HeaderTopArrow
+                  position={'left'}
+                  margin={20}
+                  onClick={this.getDaysInMonth('month', 'subtract')}
+                >
+                  <Icon iconClass={'lugia-icon-direction_Left'} />
+                </HeaderTopArrow>
+              )}
+
+              <HeaderTopText onClick={this.onChangeYear}>{currentYear}年</HeaderTopText>
+              {yOrM ? (
+                ''
+              ) : (
+                <HeaderTopText onClick={this.onChangeMonth}>{currentMonth + 1}月</HeaderTopText>
+              )}
               <HeaderTopArrow position={'right'} onClick={this.getDaysInMonth('year', 'add')}>
-                <Icon iconClass={'lugia-icon-direction_double_left'} />
+                <Icon
+                  iconClass={
+                    yOrM ? 'lugia-icon-direction_right' : 'lugia-icon-direction_double_left'
+                  }
+                />
               </HeaderTopArrow>
-              <HeaderTopArrow
-                position={'right'}
-                margin={20}
-                onClick={this.getDaysInMonth('month', 'add')}
-              >
-                <Icon iconClass={'lugia-icon-direction_right'} />
-              </HeaderTopArrow>
+              {yOrM ? (
+                ''
+              ) : (
+                <HeaderTopArrow
+                  position={'right'}
+                  margin={20}
+                  onClick={this.getDaysInMonth('month', 'add')}
+                >
+                  <Icon iconClass={'lugia-icon-direction_right'} />
+                </HeaderTopArrow>
+              )}
             </HeaderTop>
-            <WeekDays firstWeekday={firstWeekday} lang={lang} />
+            {yOrM ? '' : <WeekDays firstWeekday={firstWeekday} lang={lang} />}
           </DateHeader>
-          <DatePanel>{dateChildren}</DatePanel>
+          <DatePanel>{yOrM ? monthChildren : dateChildren}</DatePanel>
         </DateWInner>
       </DateWrapper>
     );

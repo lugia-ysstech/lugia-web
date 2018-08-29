@@ -62,6 +62,7 @@ const dateSize = {
 };
 export const DateChild = styled.span`
   border: 1px solid ${props => (props.isToday ? '#684fff' : 'transparent')};
+  border-style: ${props => (props.noToday ? 'dashed' : '')};
   ${props => (props.isToday ? 'border-radius:50%;' : '')};
   display: inline-block;
   width: ${em(dateSize.DateChildWidth)};
@@ -82,6 +83,25 @@ export const DateChild = styled.span`
 
   color: ${props => (props.outMonth ? '#ccc' : '#666')};
   ${props => getDateChildStyle(props).chooseStyle};
+`;
+export const MonthChild = styled.span`
+  display: inline-block;
+  width: 25%;
+  line-height: ${em(40)};
+  font-size: 14px;
+  text-align: center;
+
+  &:hover {
+    color: ${hoverColor};
+  }
+
+  cursor: pointer;
+`;
+export const MonthChildText = styled.i`
+  padding: 5px 10px;
+  font-style: normal;
+  border-radius: 3px;
+  ${props => (props.isChose ? 'background:#684fff;color:#fff;' : '')};
 `;
 const getDateChildStyle = props => {
   const { choseDayIndex } = props;

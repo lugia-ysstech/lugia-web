@@ -89,6 +89,9 @@ const Notification = 'sv_widget_Notification';
 const Step = 'sv_widget_Step';
 const Steps = 'sv_widget_Steps';
 
+/*add by wangcuixia*/
+const DatePicker = 'sv_widget_DatePicker';
+
 export default {
   Button,
   Input,
@@ -163,4 +166,5 @@ export default {
   Step,
   Steps,
   Cascader,
+  DatePicker,
 };
