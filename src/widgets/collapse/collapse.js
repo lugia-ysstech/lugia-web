@@ -39,8 +39,7 @@ export default ThemeProvider(
       const { children } = this.props;
       return React.Children.map(children, child => {
         return React.cloneElement(child, {
-          onChange: this.handleChange,
-          hasValue: this.hasValueProps(),
+          onClick: this.handleChange,
           open: this.handleOpen(child.props.value),
         });
       });

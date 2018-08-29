@@ -31,6 +31,14 @@ type CSSProps = {
   themes: Object,
 } & BasicType;
 
+export const OpenKeyframe = keyframes`
+  from {height: 0;}
+  to {height: 100}
+`;
+export const CloseKeyframe = keyframes`
+  from {height: 100px;}
+  to {height: 0px}
+`;
 const {
   themeColor,
   mediumGreyColor,
@@ -104,14 +112,26 @@ export const PanelHeader = styled.div`
   ${getColorCSS};
 `;
 const getPanelConten = (props: CSSProps): string => {
-  const { open } = props;
+  const { open, opening, closing, height } = props;
+
+  if (opening) {
+    return `
+     height: ${height}px;
+     animation:${OpenKeyframe} 1s;
+     `;
+  }
+  if (closing) {
+    return `
+     height: ${height}px;
+     animation:${CloseKeyframe} 1s;
+     `;
+  }
   if (open) {
     return `
-      height: 100%;
-   `;
+     height: 100%;`;
   }
   return `
-  height: 0;
+    height: 0;
 `;
 };
 export const PanelContentWrap = styled.div`
@@ -139,7 +159,19 @@ export const PanelContent = styled.div`
 `;
 
 const getIconTransform = (props: CSSProps) => {
-  const { open } = props;
+  const { opening, open, closing } = props;
+  if (opening) {
+    return `
+      transition: transform 0.3s;
+      transform: rotate(90deg)
+    `;
+  }
+  if (closing) {
+    return `
+      transition: transform 0.3s;
+      transform: rotate(0deg)
+    `;
+  }
   if (open) {
     return `
       transform: rotate(90deg)
@@ -152,6 +184,5 @@ export const IconWrap = styled(Icon)`
   position: absolute;
   top: ${em(18)};
   left: ${em(10)};
-  transition: transform 0.3s;
   ${getIconTransform};
 `;
