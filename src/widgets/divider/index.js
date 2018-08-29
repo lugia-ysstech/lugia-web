@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 import { px2emcss } from '../css/units';
-import type { DividerType, DividerPosition } from '../css/divider';
+import type { DividerProps } from '../css/divider';
 import { getPositionCSS, getColor, getDashed } from '../css/divider';
 const em = px2emcss(1.2);
 
@@ -61,15 +61,7 @@ const ChildText = styled.span`
   margin: 0 ${em(6)};
 `;
 
-type DividerProps = {|
-  viewClass: string,
-  dashed: boolean,
-  position: DividerPosition,
-  type: DividerType,
-  content?: string,
-|};
-
-class LineBox extends Component<DividerProps, DividerState> {
+class LineBox extends Component<DividerProps, any> {
   static defaultProps = {
     viewClass: Widget.Divider,
     dashed: false,
@@ -79,7 +71,7 @@ class LineBox extends Component<DividerProps, DividerState> {
 
   getChildText() {
     const { content } = this.props;
-    if (content !== undefined) {
+    if (content !== undefined && content !== null) {
       return <ChildText>{content}</ChildText>;
     }
     return null;
