@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapse Collapse CSS 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c1 {
+  box-sizing: border-box;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.c2 {
+  box-sizing: border-box;
+  position: relative;
+  padding: 1.142857142857143em 0 1.142857142857143em 2.142857142857143em;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1.142857142857143em;
+  color: #333333;
+}
+
+.c5 {
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100%;
+}
+
+.c8 {
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 0;
+}
+
+.c6 {
+  box-sizing: border-box;
+  font-weight: 300;
+  padding: 0.4285714285714286em 2.142857142857143em 1.5714285714285716em 2.142857142857143em;
+  color: #666666;
+}
+
+.c3 {
+  font-size: 1.4rem;
+  display: inline-block;
+  position: absolute;
+  top: 1.2857142857142858em;
+  left: 0.7142857142857143em;
+  -webkit-transition: -webkit-transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.c7 {
+  font-size: 1.4rem;
+  display: inline-block;
+  position: absolute;
+  top: 1.2857142857142858em;
+  left: 0.7142857142857143em;
+  -webkit-transition: -webkit-transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.c0 {
+  width: 900px;
+  margin: 0 auto;
+  padding: 50px;
+  border: 1px solid #e8e8e8;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_caret_right c3 c4"
+          />
+          LUGIA
+        </div>
+        <div
+          className="c5"
+          open={true}
+        >
+          <div
+            className="c6"
+            disabled={false}
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_caret_right c7 c4"
+          />
+          LUGIA
+        </div>
+        <div
+          className="c8"
+          open={false}
+        >
+          <div
+            className="c6"
+            disabled={false}
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
