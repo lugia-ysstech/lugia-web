@@ -9,14 +9,21 @@ import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { PanelProps, PanelState } from '../css/panel';
-import { IconWrap, PanelContent, PanelContentWrap, PanelHeader, PanelWrap } from '../css/panel';
+import {
+  IconWrap,
+  PanelContent,
+  PanelContentWrap,
+  PanelHeader,
+  PanelWrap,
+  HoverIconWrap,
+} from '../css/panel';
 
 PanelHeader.displayName = 'Panel';
 
 export default ThemeProvider(
   class extends React.Component<PanelProps, PanelState> {
     panel: any;
-
+    header: any;
     constructor(props) {
       super(props);
       this.state = {
@@ -24,6 +31,8 @@ export default ThemeProvider(
         opening: false,
         closing: false,
         height: 0,
+        hover: false,
+        headerHeight: 0,
       };
     }
 
@@ -37,19 +46,47 @@ export default ThemeProvider(
       };
     }
 
+    componentDidMount() {
+      const headerHeight = this.header.scrollHeight;
+      this.setState({
+        headerHeight,
+      });
+    }
+
     render() {
-      const { opening, closing, height, open } = this.state;
-      const { disabled = false, header, children, getTheme } = this.props;
+      const { opening, closing, height, open, hover, headerHeight } = this.state;
+      const { disabled = false, header, children, getTheme, showArrow = true } = this.props;
+      const config = {};
+      if (!showArrow) {
+        config.onMouseEnter = this.iconMouseEnter;
+        config.onMouseLeave = this.iconMouseLeave;
+      }
       return (
         <PanelWrap themes={getTheme()}>
-          <PanelHeader disabled={disabled} onClick={this.handlePanelClick}>
-            <IconWrap
-              open={open}
-              iconClass="lugia-icon-direction_caret_right"
-              opening={opening}
-              closing={closing}
-            />
+          <PanelHeader
+            disabled={disabled}
+            showArrow={showArrow}
+            onClick={this.handlePanelClick}
+            {...config}
+            innerRef={(node: any) => (this.header = node)}
+          >
+            {showArrow ? (
+              <IconWrap
+                open={open}
+                iconClass="lugia-icon-direction_caret_right"
+                opening={opening}
+                closing={closing}
+              />
+            ) : null}
             {header}
+            <HoverIconWrap headerHeight={headerHeight} hover={hover}>
+              <IconWrap
+                open={open}
+                iconClass="lugia-icon-direction_caret_right"
+                opening={opening}
+                closing={closing}
+              />
+            </HoverIconWrap>
           </PanelHeader>
           <PanelContentWrap
             innerRef={(node: any) => (this.panel = node)}
@@ -57,12 +94,27 @@ export default ThemeProvider(
             opening={opening}
             closing={closing}
             height={height}
+            disabled={disabled}
+            themes={getTheme()}
+            hover={hover}
           >
-            <PanelContent disabled={disabled}>{children}</PanelContent>
+            <PanelContent>{children}</PanelContent>
           </PanelContentWrap>
         </PanelWrap>
       );
     }
+
+    iconMouseEnter = () => {
+      this.setState({
+        hover: true,
+      });
+    };
+
+    iconMouseLeave = () => {
+      this.setState({
+        hover: false,
+      });
+    };
 
     handlePanelClick = () => {
       const { disabled = false, value, onClick } = this.props;

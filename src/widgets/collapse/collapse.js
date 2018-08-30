@@ -40,11 +40,12 @@ export default ThemeProvider(
       return <div>{this.renderChildren()}</div>;
     }
     renderChildren = () => {
-      const { children } = this.props;
+      const { children, accordion } = this.props;
       return React.Children.map(children, child => {
         return React.cloneElement(child, {
           onClick: this.handleChange,
           open: this.handleOpen(child.props.value),
+          accordion,
         });
       });
     };

@@ -10,16 +10,20 @@ import Icon from '../icon';
 
 const FontSize = 1.4;
 const em = px2emcss(FontSize);
+const defaultColor = '#fff';
 
 type BasicPropsType = {
   disabled?: boolean,
   open: boolean,
+  showArrow?: boolean,
 };
 type BasicStateType = {
   open: boolean,
   opening: boolean,
   closing: boolean,
   height: number,
+  hover: boolean,
+  headerHeight: number,
 };
 export type PanelProps = {
   header?: string | any,
@@ -98,13 +102,25 @@ const getColorCSS = (props: CSSProps): string => {
       color: ${blackColor};
     `;
 };
+const getHeaderPadding = (props: CSSProps): string => {
+  const { showArrow } = props;
+  if (showArrow) {
+    return `
+      padding: ${em(16)} 0 ${em(16)} ${em(30)};
+    `;
+  }
+  return `
+    padding: ${em(16)} 0 ${em(16)} ${em(20)};
+  `;
+};
+
 export const PanelHeader = styled.div`
   box-sizing: border-box;
   position: relative;
-  padding: ${em(16)} 0 ${em(16)} ${em(30)};
+  ${getHeaderPadding};
   font-size: ${FontSize}rem;
   cursor: ${(props: CSSProps) => (props.disabled ? 'not-allowed' : 'pointer')};
-  line-height: ${em(16)};
+  line-height: ${em(22)};
   user-select: none;
   ${getColorCSS};
 `;
@@ -138,28 +154,33 @@ const getPanelConten = (props: CSSProps): string => {
     height: 0;
 `;
 };
-export const PanelContentWrap = styled.div`
-  box-sizing: border-box;
-  overflow: hidden;
-  ${getPanelConten};
-`;
 const getContenColor = (props: CSSProps): string => {
-  const { disabled } = props;
+  const { disabled, themes } = props;
+  const color = themes.color || defaultColor;
   if (disabled) {
     return `
       color: ${lightGreyColor};
+      background: ${color};
     `;
   }
 
   return `
       color: ${darkGreyColor};
+      background: ${color};
     `;
 };
+export const PanelContentWrap = styled.div`
+  box-sizing: border-box;
+  overflow: hidden;
+  ${getPanelConten};
+  ${getContenColor};
+  margin-left: ${(props: CSSProps) => (props.hover ? em(-12) : 'none')};
+`;
+
 export const PanelContent = styled.div`
   box-sizing: border-box;
   font-weight: 300;
   padding: ${em(6)} ${em(30)} ${em(22)} ${em(30)};
-  ${getContenColor};
 `;
 
 const getIconTransform = (props: CSSProps) => {
@@ -189,4 +210,13 @@ export const IconWrap = styled(Icon)`
   top: ${em(18)};
   left: ${em(10)};
   ${getIconTransform};
+`;
+export const HoverIconWrap = styled.div`
+  display: ${(props: CSSProps) => (props.hover ? 'block' : 'none')};
+  width: ${em(30)};
+  height: ${(props: CSSProps) => em(props.headerHeight)};
+  position: absolute;
+  top: 0;
+  left: ${em(-10)};
+  background: #e6f7ff;
 `;

@@ -21,8 +21,6 @@ const Wrapper = styled.div`
 const view = {
   [Widget.Panel]: {
     color: '#e6f7ff',
-    margin: 20,
-    width: 500,
   },
 };
 
@@ -37,32 +35,39 @@ export const PanelDemo = class extends React.Component<any, any> {
     return (
       <div>
         <Wrapper>
-          <Panel value="1" header="LUGIA">
+          {/*<Panel value="1" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*<br />*/}
+          <Panel value="2" header="lugia">
             <div>PanelContent...</div>
             <div>PanelContent...</div>
           </Panel>
           <br />
-          <Panel value="2" open header="lugia">
-            <div>PanelContent...</div>
-            <div>PanelContent...</div>
-          </Panel>
-          <br />
-          <Panel value="3" header="LUGIA" disabled>
-            <div>PanelContent...</div>
-            <div>PanelContent...</div>
-          </Panel>
-          <br />
-          <Panel value="4" style={style} header="LUGIA">
+          {/*<Panel value="3" header="LUGIA" disabled>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*<br />*/}
+          <Panel value="4" showArrow={false} header="LUGIA">
             <div>PanelContent...</div>
             <div>PanelContent...</div>
           </Panel>
           <br />
           <Theme config={view}>
-            <Panel value="5" header="LUGIA">
+            <Panel value="4" showArrow={false} header="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
           </Theme>
+          {/*<br />*/}
+          {/*<Theme config={view}>*/}
+          {/*<Panel value="5" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*</Theme>*/}
         </Wrapper>
       </div>
     );
@@ -90,7 +95,7 @@ export const CollapseDemo = class extends React.Component<any, any> {
     return (
       <div>
         <Wrapper>
-          <Collapse activeValue={activeValue} onChange={this.handleChangeActiveValue}>
+          <Collapse activeValue={'1'} onChange={this.handleChangeActiveValue}>
             <Panel value="1" header="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>

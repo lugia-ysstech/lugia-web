@@ -20,7 +20,7 @@ exports[`Collapse Collapse CSS 1`] = `
   padding: 1.142857142857143em 0 1.142857142857143em 2.142857142857143em;
   font-size: 1.4rem;
   cursor: pointer;
-  line-height: 1.142857142857143em;
+  line-height: 1.5714285714285716em;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
