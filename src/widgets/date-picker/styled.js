@@ -84,7 +84,7 @@ export const DateChild = styled.span`
   color: ${props => (props.outMonth ? '#ccc' : '#666')};
   ${props => getDateChildStyle(props).chooseStyle};
 `;
-export const MonthChild = styled.span`
+export const OtherChild = styled.span`
   display: inline-block;
   width: 25%;
   line-height: ${em(40)};
@@ -97,7 +97,7 @@ export const MonthChild = styled.span`
 
   cursor: pointer;
 `;
-export const MonthChildText = styled.i`
+export const OtherChildText = styled.i`
   padding: 5px 10px;
   font-style: normal;
   border-radius: 3px;

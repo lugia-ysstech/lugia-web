@@ -42,12 +42,22 @@ export default ThemeProvider(
           : defaultProps
             ? defaultValue
             : '';
-      value = (value && moment(value, format).format(format)) || '';
 
+      value = (value && moment(value, format).format(format)) || '';
+      const weeksIndate = value;
+      let weeks = '';
+      if (mode === 'week') {
+        const moments = moment(weeksIndate, format);
+        weeks = moments.format('WW');
+        value = moments.format('YYYY年') + '-第' + weeks + '周';
+      }
+      console.log(weeks);
       if (!preState) {
         return {
           value,
           format,
+          weeksIndate,
+          weeks,
         };
       }
       if (hasValueProps) {
@@ -55,16 +65,17 @@ export default ThemeProvider(
       }
     }
     render() {
-      const { disabled, readOnly } = this.props;
-      const { value } = this.state;
-
+      const { disabled, readOnly, mode } = this.props;
+      const { value, weeksIndate } = this.state;
+      const isWeek = mode === 'week';
+      console.log(value);
       return (
         <Trigger
           popup={
             <DatePickerInner
               {...this.props}
               ref={this.picker}
-              newValue={value}
+              newValue={isWeek ? weeksIndate : value}
               onChange={this.onChange}
             />
           }
@@ -88,9 +99,9 @@ export default ThemeProvider(
     }
 
     onChange = (param: ChangeEventParam) => {
-      const { newValue } = param;
-      const { format } = this.state;
-      this.setState({ value: newValue }, () => {
+      const { newValue, weeks } = param;
+      console.log(weeks);
+      this.setState({ value: newValue, weeks }, () => {
         this.getFreshPicker();
       });
       this.setTreePopupVisible(false);
@@ -99,7 +110,11 @@ export default ThemeProvider(
       this.getFreshPicker();
     };
     getFreshPicker = () => {
-      const { value, format } = this.state;
+      const { format, weeks, weeksIndate } = this.state;
+      let { value } = this.state;
+      if (weeks) {
+        value = weeksIndate;
+      }
       if (moment(value, format)._isValid) {
         this.picker.current.getDatePosition(value || moment().format(this.props.format));
       }

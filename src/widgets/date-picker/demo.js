@@ -75,7 +75,7 @@ export default class Sl extends Component<any> {
         </div>
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>周</h2>
-          <WeekPicker defaultValue={'2016'} format={'YYYY年'} />
+          <WeekPicker defaultValue={'2015-03-02'} weeks={20} />
         </div>
       </div>
     );

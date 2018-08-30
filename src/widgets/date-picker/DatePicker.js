@@ -16,8 +16,8 @@ import {
   HeaderTop,
   HeaderTopArrow,
   HeaderTopText,
-  MonthChild,
-  MonthChildText,
+  OtherChild,
+  OtherChildText,
 } from './styled';
 
 type TypeProps = {
@@ -30,6 +30,7 @@ type TypeProps = {
   onChange: Function,
   mode?: string,
   showToday?: boolean,
+  weeks?: number,
 };
 type TypeState = {
   days: Array<Object>,
@@ -54,10 +55,11 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
   firstDayIndex: Array<number>;
   maxDay: number;
   value: string;
+  weeksRange: number;
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { defaultValue, mode, showToday } = nextProps;
     const normalFormat = mode === 'month' ? 'YYYY-DD' : mode === 'year' ? 'YYYY' : 'YYYY-MM-DD';
-    let { value, format = normalFormat } = nextProps;
+    let { value, format = normalFormat, weeks = 1 } = nextProps;
 
     const hasDefaultProps = 'defaultValue' in nextProps && moment(defaultValue, format)._isValid;
     const hasValueProps = 'value' in nextProps && moment(value, format)._isValid;
@@ -89,6 +91,7 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
         weekIndex: 0,
         format,
         mode,
+        weeks,
       };
     }
     return {
@@ -218,7 +221,7 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       choseDayIndex,
     });
   };
-  getMonthIndex = (choseValue: number) => () => {
+  getChildIndex = (choseValue: number) => () => {
     const { onChange, mode } = this.props;
     const { currentYear, currentMonth, value, format, choseDate } = this.state;
 
@@ -240,9 +243,22 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       this.getDatePosition(newValue);
     }
     if (mode) {
-      onChange && onChange({ newValue });
-      this.setState({ value: newValue });
-      this.weeksDate = choseValue;
+      if (isYear && mode !== 'year') {
+        this.setState({ mode: 'month', currentYear: choseValue });
+        if (mode === 'week') {
+          this.setState({ mode: 'week', currentYear: choseValue });
+        }
+      } else if (isWeek) {
+        this.setState({ mode: 'weeks' });
+        this.weeksDate = choseValue;
+      } else {
+        const data = { newValue };
+        if (isWeeks) {
+          data.weeks = choseValue.weeks;
+        }
+        onChange && onChange(data);
+        this.setState({ value: newValue });
+      }
     }
   };
   onChangeMonth = () => {
@@ -286,6 +302,7 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       mode,
       value,
       format,
+      weeks,
     } = this.state;
     const { showToday } = this.props;
     const todayIndex = today + weekIndex;
@@ -334,33 +351,50 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
       years.push(year.year());
     }
 
-    const weeks = [];
-    const currentWeeks = moment(value, format).weeksInYear();
+    const weeksDate = [];
+    const currentWeeks = moment(currentYear, format).weeksInYear();
     for (let i = 0; i < 5; i++) {
       const start = 12 * i + 1;
       const end = i === 4 ? currentWeeks : 12 * i + 12;
       const value = `${start}-${end}周`;
-      weeks.push({ value, start, end });
+
+      if (weeks >= start && weeks <= end) {
+        this.weeksRange = i;
+      }
+      weeksDate.push({ value, start, end, index: i });
     }
 
     const weeksInner = [];
     if (isWeeks) {
-      const { start, end } = this.weeksDate;
+      const { start, end, index } = this.weeksDate;
+      if (weeks >= start && weeks <= end) {
+        this.weeksRange = index;
+      }
+
       for (let i = 0; i < 12; i++) {
-        weeksInner.push(`第${start + i}周`);
+        weeksInner.push({ text: `第${start + i}周`, weeks: start + i });
       }
     }
 
-    const yOrMchildren = isYear ? years : isMonth ? months : isWeek ? weeks : weeksInner;
+    const yOrMchildren = isYear ? years : isMonth ? months : isWeek ? weeksDate : weeksInner;
+
     const monthChildren = yOrMchildren.map((current, i) => {
       const year = moment(value, format).year();
-      const currentValue = isMonth ? currentMonth : year;
+      const currentValue = isMonth
+        ? currentMonth
+        : isWeek
+          ? this.weeksRange
+          : isWeeks
+            ? weeks
+            : year;
+      const compareValue = isMonth || isWeek ? i : isWeeks ? current.weeks : current;
       const showValue = isMonth ? i : current;
-      const text = isWeek ? current.value : current;
+      const text = isWeek ? current.value : isWeeks ? current.text : current;
+
       return (
-        <MonthChild onClick={this.getMonthIndex(showValue)}>
-          <MonthChildText isChose={currentValue === showValue}>{text}</MonthChildText>
-        </MonthChild>
+        <OtherChild onClick={this.getChildIndex(showValue)} key={i}>
+          <OtherChildText isChose={currentValue === compareValue}>{text}</OtherChildText>
+        </OtherChild>
       );
     });
 
