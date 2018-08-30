@@ -11,9 +11,15 @@ import Icon from '../icon';
 const FontSize = 1.4;
 const em = px2emcss(FontSize);
 
-type BasicType = {
+type BasicPropsType = {
   disabled?: boolean,
   open: boolean,
+};
+type BasicStateType = {
+  open: boolean,
+  opening: boolean,
+  closing: boolean,
+  height: number,
 };
 export type PanelProps = {
   header?: string | any,
@@ -21,24 +27,14 @@ export type PanelProps = {
   children?: any,
   style?: Object,
   getTheme: Function,
-  hasValue: boolean,
-  onChange?: Function,
-} & BasicType;
-export type PanelState = {
-  open: boolean,
-};
+  onClick?: Function,
+} & BasicPropsType;
+export type PanelState = BasicStateType;
 type CSSProps = {
   themes: Object,
-} & BasicType;
+} & BasicPropsType &
+  BasicStateType;
 
-export const OpenKeyframe = keyframes`
-  from {height: 0;}
-  to {height: 100}
-`;
-export const CloseKeyframe = keyframes`
-  from {height: 100px;}
-  to {height: 0px}
-`;
 const {
   themeColor,
   mediumGreyColor,
@@ -109,21 +105,29 @@ export const PanelHeader = styled.div`
   font-size: ${FontSize}rem;
   cursor: ${(props: CSSProps) => (props.disabled ? 'not-allowed' : 'pointer')};
   line-height: ${em(16)};
+  user-select: none;
   ${getColorCSS};
 `;
 const getPanelConten = (props: CSSProps): string => {
   const { open, opening, closing, height } = props;
-
+  const OpenKeyframe = keyframes`
+  from { height: 0; }
+  to { height: ${height}px; }
+`;
+  const CloseKeyframe = keyframes`
+  from { height: ${height}px; }
+  to { height: 0; }
+`;
   if (opening) {
     return `
      height: ${height}px;
-     animation:${OpenKeyframe} 1s;
+     animation:${OpenKeyframe} .5s;
      `;
   }
   if (closing) {
     return `
      height: ${height}px;
-     animation:${CloseKeyframe} 1s;
+     animation:${CloseKeyframe} .5s;
      `;
   }
   if (open) {

@@ -18,7 +18,7 @@ export default ThemeProvider(
     panel: any;
 
     constructor(props) {
-      super();
+      super(props);
       this.state = {
         open: false,
         opening: false,
@@ -76,34 +76,24 @@ export default ThemeProvider(
         const reset: Object = {
           closing: false,
           opening: false,
+          height,
         };
-        if (open) {
-          this.setState({
-            height,
-            closing: true,
-          });
 
-          setTimeout(() => {
-            if (!hasOpen) {
-              reset.open = false;
-            }
-            this.setState(reset);
-            onClick && onClick(value);
-          }, 800);
-        } else {
-          this.setState({
-            height,
-            opening: true,
-          });
-          setTimeout(() => {
-            if (!hasOpen) {
-              reset.open = true;
-            }
-            this.setState(reset);
-            onClick && onClick(value);
-          }, 800);
-        }
+        this.setState(this.setClickState(open, height));
+        setTimeout(() => {
+          if (!hasOpen) {
+            reset.open = !open;
+          }
+          this.setState(reset);
+          onClick && onClick(value);
+        }, 300);
       }
+    };
+    setClickState = (open: boolean, height: number): Object => {
+      if (open) {
+        return { closing: true, height };
+      }
+      return { opening: true, height };
     };
   },
   Widget.Panel

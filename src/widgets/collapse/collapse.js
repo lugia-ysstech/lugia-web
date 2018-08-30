@@ -10,8 +10,12 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { CollapseProps, CollapseState } from '../css/collapse';
 
-function handleStateValue(value: string | string[]): string[] {
+function handleStateValue(value: string | string[], accordion?: boolean): string[] {
   if (Array.isArray(value)) {
+    if (accordion) {
+      const stateValue = value[0] ? [value[0]] : [];
+      return stateValue;
+    }
     return value;
   }
   return [value];
@@ -22,12 +26,12 @@ export default ThemeProvider(
       super(props);
     }
     static getDerivedStateFromProps(props, state) {
-      const { activeValue, defaultActiveValue } = props;
+      const { activeValue, defaultActiveValue, accordion } = props;
       const hasValue = 'activeValue' in props;
       const stateValue = hasValue ? activeValue : state ? state.value : defaultActiveValue;
 
       return {
-        value: handleStateValue(stateValue),
+        value: handleStateValue(stateValue, accordion),
       };
     }
 
@@ -46,15 +50,20 @@ export default ThemeProvider(
     };
     handleChange = (val: string) => {
       const hasValue = this.hasValueProps();
-      const { onChange } = this.props;
+      const { onChange, accordion } = this.props;
       const { value } = this.state;
-      const newValue = [...value];
+      let newValue = [...value];
       const index = value.indexOf(val);
       if (~index) {
         newValue.splice(index, 1);
       } else {
-        newValue.push(val);
+        if (accordion) {
+          newValue = [val];
+        } else {
+          newValue.push(val);
+        }
       }
+
       const params = {
         newValue,
         oldValue: value,

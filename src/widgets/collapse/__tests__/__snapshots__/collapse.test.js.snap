@@ -21,6 +21,10 @@ exports[`Collapse Collapse CSS 1`] = `
   font-size: 1.4rem;
   cursor: pointer;
   line-height: 1.142857142857143em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #333333;
 }
 
@@ -49,9 +53,6 @@ exports[`Collapse Collapse CSS 1`] = `
   position: absolute;
   top: 1.2857142857142858em;
   left: 0.7142857142857143em;
-  -webkit-transition: -webkit-transform 0.3s;
-  -webkit-transition: transform 0.3s;
-  transition: transform 0.3s;
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
@@ -63,9 +64,6 @@ exports[`Collapse Collapse CSS 1`] = `
   position: absolute;
   top: 1.2857142857142858em;
   left: 0.7142857142857143em;
-  -webkit-transition: -webkit-transform 0.3s;
-  -webkit-transition: transform 0.3s;
-  transition: transform 0.3s;
 }
 
 .c0 {
@@ -95,6 +93,7 @@ exports[`Collapse Collapse CSS 1`] = `
         </div>
         <div
           className="c5"
+          height={0}
           open={true}
         >
           <div
@@ -125,6 +124,7 @@ exports[`Collapse Collapse CSS 1`] = `
         </div>
         <div
           className="c8"
+          height={0}
           open={false}
         >
           <div
@@ -141,6 +141,137 @@ exports[`Collapse Collapse CSS 1`] = `
         </div>
       </div>
     </div>
+    <br />
+    <div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_caret_right c3 c4"
+          />
+          LUGIA
+        </div>
+        <div
+          className="c5"
+          height={0}
+          open={true}
+        >
+          <div
+            className="c6"
+            disabled={false}
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_caret_right c7 c4"
+          />
+          LUGIA
+        </div>
+        <div
+          className="c8"
+          height={0}
+          open={false}
+        >
+          <div
+            className="c6"
+            disabled={false}
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_caret_right c3 c4"
+          />
+          LUGIA
+        </div>
+        <div
+          className="c5"
+          height={0}
+          open={true}
+        >
+          <div
+            className="c6"
+            disabled={false}
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_caret_right c7 c4"
+          />
+          LUGIA
+        </div>
+        <div
+          className="c8"
+          height={0}
+          open={false}
+        >
+          <div
+            className="c6"
+            disabled={false}
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
   </div>
 </div>
 `;

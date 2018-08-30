@@ -115,6 +115,17 @@ export const CollapseDemo = class extends React.Component<any, any> {
             </Panel>
           </Collapse>
           <br />
+          <Collapse defaultActiveValue={defaultActiveValue} accordion>
+            <Panel value="1" header="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+            <Panel value="2" header="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+          </Collapse>
+          <br />
         </Wrapper>
       </div>
     );
