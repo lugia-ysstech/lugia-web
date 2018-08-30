@@ -43,13 +43,13 @@ export default ThemeProvider(
       const { children, accordion } = this.props;
       return React.Children.map(children, child => {
         return React.cloneElement(child, {
-          onClick: this.handleChange,
+          onClick: this.handleClick,
           open: this.handleOpen(child.props.value),
           accordion,
         });
       });
     };
-    handleChange = (val: string) => {
+    handleClick = (val: string) => {
       const hasValue = this.hasValueProps();
       const { onChange, accordion } = this.props;
       const { value } = this.state;

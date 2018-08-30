@@ -10,12 +10,12 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { PanelProps, PanelState } from '../css/panel';
 import {
+  HoverIconWrap,
   IconWrap,
   PanelContent,
   PanelContentWrap,
   PanelHeader,
   PanelWrap,
-  HoverIconWrap,
 } from '../css/panel';
 
 PanelHeader.displayName = 'Panel';
@@ -24,6 +24,8 @@ export default ThemeProvider(
   class extends React.Component<PanelProps, PanelState> {
     panel: any;
     header: any;
+    height: number;
+
     constructor(props) {
       super(props);
       this.state = {
@@ -34,19 +36,32 @@ export default ThemeProvider(
         hover: false,
         headerHeight: 0,
       };
+      this.height = 0;
     }
 
     static getDerivedStateFromProps(props, state) {
       const { open, defaultOpen } = props;
       const hasOpen = 'open' in props;
       const theOpen = hasOpen ? open : state ? state.open : defaultOpen;
-
-      return {
+      const result: Object = {
         open: theOpen,
       };
+      if (hasOpen) {
+        result.closing = false;
+        result.opening = false;
+        if (state.open === true && theOpen === false) {
+          result.closing = true;
+        }
+        if (state.open === false && theOpen === true) {
+          result.opening = true;
+        }
+      }
+      return result;
     }
 
     componentDidMount() {
+      this.height = this.panel.scrollHeight;
+
       const headerHeight = this.header.scrollHeight;
       this.setState({
         headerHeight,
@@ -54,7 +69,7 @@ export default ThemeProvider(
     }
 
     render() {
-      const { opening, closing, height, open, hover, headerHeight } = this.state;
+      const { opening, closing, open, hover, headerHeight } = this.state;
       const { disabled = false, header, children, getTheme, showArrow = true } = this.props;
       const config = {};
       if (!showArrow) {
@@ -93,7 +108,7 @@ export default ThemeProvider(
             open={open}
             opening={opening}
             closing={closing}
-            height={height}
+            height={this.height}
             disabled={disabled}
             themes={getTheme()}
             hover={hover}
@@ -121,31 +136,55 @@ export default ThemeProvider(
       if (!disabled) {
         const height = this.panel.scrollHeight;
         const { opening, closing, open } = this.state;
-        if (opening || closing) {
+        if (!this.hasOpen() && (opening || closing)) {
           return;
         }
-        const hasOpen = 'open' in this.props;
+        this.height = height;
         const reset: Object = {
           closing: false,
           opening: false,
-          height,
         };
 
-        this.setState(this.setClickState(open, height));
-        setTimeout(() => {
-          if (!hasOpen) {
+        if (!this.hasOpen()) {
+          this.setState(this.getClickState(open));
+          setTimeout(() => {
             reset.open = !open;
-          }
-          this.setState(reset);
+            this.setState(reset);
+            onClick && onClick(value);
+          }, 300);
+        } else {
           onClick && onClick(value);
-        }, 300);
+        }
       }
     };
-    setClickState = (open: boolean, height: number): Object => {
-      if (open) {
-        return { closing: true, height };
+    hasOpen = () => 'open' in this.props;
+
+    componentDidUpdate() {
+      const { opening, closing } = this.state;
+      this.height = this.panel.scrollHeight;
+      if (this.hasOpen() && (opening === true || closing === true)) {
+        setTimeout(() => {
+          console.info(
+            'this.props.value',
+            this.props.value,
+            this.state.opening,
+            this.state.closing,
+            this.state.open
+          );
+          this.height = 0;
+          this.setState({
+            opening: false,
+            closing: false,
+          });
+        }, 300);
       }
-      return { opening: true, height };
+    }
+
+    getClickState = (open: boolean): Object => {
+      if (open) {
+        return { closing: true };
+      }
+      return { opening: true };
     };
   },
   Widget.Panel

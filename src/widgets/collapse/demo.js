@@ -95,37 +95,20 @@ export const CollapseDemo = class extends React.Component<any, any> {
     return (
       <div>
         <Wrapper>
-          <Collapse activeValue={'1'} onChange={this.handleChangeActiveValue}>
-            <Panel value="1" header="LUGIA">
-              <div>PanelContent...</div>
-              <div>PanelContent...</div>
-            </Panel>
-            <Panel value="2" header="LUGIA">
-              <div>PanelContent...</div>
-              <div>PanelContent...</div>
-            </Panel>
-          </Collapse>
-          <br />
-          <Collapse
-            defaultActiveValue={defaultActiveValue}
-            onChange={this.handleChangeDefaultActiveValue}
-          >
-            <Panel value="1" header="LUGIA">
-              <div>PanelContent...</div>
-              <div>PanelContent...</div>
-            </Panel>
-            <Panel value="2" header="LUGIA">
-              <div>PanelContent...</div>
-              <div>PanelContent...</div>
-            </Panel>
-          </Collapse>
-          <br />
           <Collapse defaultActiveValue={defaultActiveValue} accordion>
             <Panel value="1" header="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
             <Panel value="2" header="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+            <Panel value="3" header="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+            <Panel value="4" header="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
