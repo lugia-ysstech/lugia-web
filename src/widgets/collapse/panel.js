@@ -166,7 +166,6 @@ export default ThemeProvider(
       this.height = this.panel.scrollHeight;
       if (this.hasOpen() && (opening === true || closing === true)) {
         setTimeout(() => {
-          this.height = 0;
           this.setState({
             opening: false,
             closing: false,
