@@ -55,6 +55,8 @@ const Col = 'sv_widget_Col';
 const Row = 'sv_widget_Row';
 const NumberInput = 'sv_widget_NumberInput';
 const Divider = 'sv_widget_Divider';
+const Panel = 'sv_widget_Panel';
+const Collapse = 'sv_widget_Collapse';
 
 export default {
   Button,
@@ -101,4 +103,6 @@ export default {
   Row,
   NumberInput,
   Divider,
+  Panel,
+  Collapse,
 };
