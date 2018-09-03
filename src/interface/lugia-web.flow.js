@@ -1,20 +1,13 @@
 //@flow
 declare module '@lugia/lugia-web' {
-  declare type GetValueArgType = {|
-    defaultValue?: any,
-    value?: any,
-  |};
+  declare type GetValueArgType = {| defaultValue?: any, value?: any |};
   declare type NodeExtendInfo = {
     childrenIdx?: Array<number>,
     can: boolean,
-    canTotal?: number,
-    // 当前可见节点数
-    nowVisible?: number,
-    // 真实可见节点数
-    realyVisible?: number,
-    // 子节点树
-    children?: number,
-    // 子孙节点数
+    canTotal?: number, // 当前可见节点数
+    nowVisible?: number, // 真实可见节点数
+    realyVisible?: number, // 子节点树
+    children?: number, // 子孙节点数
     begats?: number,
     index: number,
     expanded?: boolean,
@@ -30,9 +23,7 @@ declare module '@lugia/lugia-web' {
     value: NodeId2Checked,
   };
 
-  declare type ExpandInfo = {
-    id2ExtendInfo: NodeId2ExtendInfo,
-  };
+  declare type ExpandInfo = { id2ExtendInfo: NodeId2ExtendInfo };
 
   declare type CommonCSS = {
     themeColor?: string,
@@ -71,35 +62,26 @@ declare module '@lugia/lugia-web' {
   declare type QueryType = 'include' | 'start' | 'end' | 'eql';
 
   declare type ThemeType = {
-    width: WidthType,
-    height: HeightType,
-    margin: MarginType,
-    color: ColorType,
-    borderColor: ColorType,
-    backgroundColor: ColorType,
-    borderRadius: RadiusType,
-    border: BorderType,
+    width?: WidthType,
+    height?: HeightType,
+    margin?: MarginType,
+    color?: ColorType,
+    borderColor?: ColorType,
+    backgroundColor?: ColorType,
+    borderRadius?: RadiusType,
+    borderSize?: BorderSizeType,
+    position?: PositionType,
   };
   declare type WidthType = number;
   declare type HeightType = number;
   declare type MarginType = number | MarginObject;
-  declare type BorderType = number | BorderSize;
+  declare type BorderSizeType = number | BorderSizeObject;
   declare type ColorType = string;
   declare type RadiusType = number | RadiusSize;
 
-  declare type MarginObject = {
-    top: number,
-    right: number,
-    bottom: number,
-    left: number,
-  };
-
-  declare type BorderSize = {
-    top: number,
-    right: number,
-    bottom: number,
-    left: number,
-  };
+  declare type MarginObject = { top?: number, right?: number, bottom?: number, left?: number };
+  declare type PositionType = { top: number, right: number, bottom: number, left: number };
+  declare type BorderSizeObject = { top: number, right: number, bottom: number, left: number };
 
   declare type RadiusSize = {
     topLeft: number,
