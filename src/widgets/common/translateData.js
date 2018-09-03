@@ -156,24 +156,36 @@ function renderChildren(params: Object, type: 'radio' | 'checkbox') {
   }
   const { children, disabled, styles = 'default' } = params.props;
   return React.Children.map(children, child => {
-    return React.cloneElement(child, {
-      onChange: type === 'radio' ? params.handleChange()() : params.handleChange(),
-      checked:
-        type === 'radio' ? value === child.props.value : value.indexOf(child.props.value) !== -1,
-      disabled: disabled || child.props.disabled,
-      styles: styles || child.props.styles,
-      hasValue: params.hasValueProps(),
-    });
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, {
+        onChange: type === 'radio' ? params.handleChange()() : params.handleChange(),
+        checked:
+          type === 'radio' ? value === child.props.value : value.indexOf(child.props.value) !== -1,
+        disabled: disabled || child.props.disabled,
+        styles: styles || child.props.styles,
+        hasValue: params.hasValueProps(),
+      });
+    }
   });
 }
 
 export const getValueAndDisplayValue = function(props: Object, state: ?Object): Object {
+  const isInit = state === null || state === undefined;
+  state = state ? state : {};
   const isValue = 'value' in props;
   const isDisplayValue = 'displayValue' in props;
   const { value, defaultValue, displayValue, defaultDisplayValue } = props;
-  const realValue = isValue ? value : state ? state.value : defaultValue;
+  const { value: sValue } = state;
+  const realValue = isValue ? value : isInit ? defaultValue : sValue;
+  const { displayValue: sDisplayValue } = state;
   return {
     value: realValue,
-    displayValue: isDisplayValue ? displayValue : state ? realValue : defaultDisplayValue,
+    displayValue: isDisplayValue
+      ? displayValue
+      : isInit
+        ? defaultDisplayValue
+        : sDisplayValue
+          ? sDisplayValue
+          : realValue,
   };
 };

@@ -7,8 +7,10 @@
  */
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
+import Theme from '../theme';
 import Widget from '../consts/index';
 import type { CollapseProps, CollapseState } from '../css/collapse';
+import { Wrap } from '../css/collapse';
 
 function handleStateValue(value: string | string[], accordion?: boolean): string[] {
   if (Array.isArray(value)) {
@@ -22,9 +24,6 @@ function handleStateValue(value: string | string[], accordion?: boolean): string
 }
 export default ThemeProvider(
   class extends React.Component<CollapseProps, CollapseState> {
-    constructor(props) {
-      super(props);
-    }
     static getDerivedStateFromProps(props, state) {
       const { activeValue, defaultActiveValue, accordion } = props;
       const hasValue = 'activeValue' in props;
@@ -36,17 +35,23 @@ export default ThemeProvider(
     }
 
     render() {
-      const { children, getTheme } = this.props;
-      return <div>{this.renderChildren()}</div>;
+      const panelTheme = this.props.getTheme().svThemeConfigTree.sv_widget_Panel;
+      return (
+        <Wrap panelTheme={panelTheme} themes={this.props.getTheme()}>
+          {this.renderChildren()}
+        </Wrap>
+      );
     }
     renderChildren = () => {
       const { children, accordion } = this.props;
       return React.Children.map(children, child => {
-        return React.cloneElement(child, {
-          onClick: this.handleClick,
-          open: this.handleOpen(child.props.value),
-          accordion,
-        });
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, {
+            onClick: this.handleClick,
+            open: this.handleOpen(child.props.value),
+            accordion,
+          });
+        }
       });
     };
     handleClick = (val: string) => {

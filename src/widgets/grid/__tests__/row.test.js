@@ -11,6 +11,8 @@ import 'jest-styled-components';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { RowDemo } from '../demo';
+import Row from '../row';
+import Col from '../col';
 import renderer from 'react-test-renderer';
 
 const { expect: exp } = chai;

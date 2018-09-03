@@ -20,36 +20,62 @@ const Wrapper = styled.div`
 
 const view = {
   [Widget.Panel]: {
-    color: '#e6f7ff',
+    width: 500,
+    color: '#56f43e',
+    backgroundColor: '#e6f7ff',
+    margin: 50,
+    border: {
+      top: 0,
+      right: 0,
+      bottom: 1,
+      left: 0,
+    },
+  },
+};
+const wrapView = {
+  [Widget.Collapse]: {
+    width: 500,
+    margin: 20,
+  },
+  [Widget.Panel]: {
+    border: 0,
   },
 };
 
 export const PanelDemo = class extends React.Component<any, any> {
-  render() {
-    const style = {
-      background: '#f7f7f7',
-      borderRadius: 4,
-      marginBottom: 24,
-      border: 0,
+  constructor() {
+    super();
+    this.state = {
+      open: true,
     };
+  }
+  handleClick = () => {
+    const { open } = this.state;
+    this.setState({
+      open: !open,
+    });
+  };
+  render() {
+    const { open } = this.state;
+
     return (
       <div>
         <Wrapper>
-          {/*<Panel value="1" header="LUGIA">*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*<br />*/}
-          <Panel value="2" header="lugia">
+          <Panel value="1" header="LUGIA">
             <div>PanelContent...</div>
             <div>PanelContent...</div>
           </Panel>
           <br />
-          {/*<Panel value="3" header="LUGIA" disabled>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*<br />*/}
+          <Panel value="2" open={open} onClick={this.handleClick} header="lugia">
+            <div>PanelContent...</div>
+            <div>PanelContent...</div>
+          </Panel>
+          <br />
+          <Panel value="3" header="LUGIA" disabled>
+            <div>PanelContent...</div>
+            <div>PanelContent...</div>
+          </Panel>
+          <br />
           <Panel value="4" showArrow={false} header="LUGIA">
             <div>PanelContent...</div>
             <div>PanelContent...</div>
@@ -61,13 +87,13 @@ export const PanelDemo = class extends React.Component<any, any> {
               <div>PanelContent...</div>
             </Panel>
           </Theme>
-          {/*<br />*/}
-          {/*<Theme config={view}>*/}
-          {/*<Panel value="5" header="LUGIA">*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*</Theme>*/}
+          <br />
+          <Theme config={view}>
+            <Panel value="5" header="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+          </Theme>
         </Wrapper>
       </div>
     );
@@ -95,24 +121,73 @@ export const CollapseDemo = class extends React.Component<any, any> {
     return (
       <div>
         <Wrapper>
-          <Collapse defaultActiveValue={defaultActiveValue} accordion>
-            <Panel value="1" header="LUGIA">
-              <div>PanelContent...</div>
-              <div>PanelContent...</div>
-            </Panel>
-            <Panel value="2" header="LUGIA">
-              <div>PanelContent...</div>
-              <div>PanelContent...</div>
-            </Panel>
-            <Panel value="3" header="LUGIA">
-              <div>PanelContent...</div>
-              <div>PanelContent...</div>
-            </Panel>
-            <Panel value="4" header="LUGIA">
-              <div>PanelContent...</div>
-              <div>PanelContent...</div>
-            </Panel>
-          </Collapse>
+          {/*<p>defaultActiveValue={'1'}</p>*/}
+          {/*<Collapse defaultActiveValue={defaultActiveValue}>*/}
+          {/*<Panel value="1" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*<Panel value="2" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*</Collapse>*/}
+          {/*<br />*/}
+          {/*<p>activeValue={'1'}</p>*/}
+          {/*<Collapse activeValue={'1'}>*/}
+          {/*<Panel value="1" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*<Panel value="2" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*</Collapse>*/}
+          {/*<br />*/}
+          {/*<p>activeValue={'this.state.activeValue'}</p>*/}
+          {/*<Collapse activeValue={activeValue} onChange={this.handleChangeActiveValue}>*/}
+          {/*<Panel value="1" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*<Panel value="2" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*</Collapse>*/}
+          {/*<br />*/}
+          {/*<Collapse defaultActiveValue={defaultActiveValue} accordion>*/}
+          {/*<Panel value="1" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*<Panel value="2" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*<Panel value="3" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*<Panel value="4" header="LUGIA">*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*<div>PanelContent...</div>*/}
+          {/*</Panel>*/}
+          {/*</Collapse>*/}
+          {/*<br />*/}
+          <Theme config={wrapView}>
+            <Collapse activeValue={activeValue} onChange={this.handleChangeActiveValue}>
+              <Panel value="1" header="LUGIA">
+                <div>PanelContent...</div>
+                <div>PanelContent...</div>
+              </Panel>
+              <Panel value="2" header="LUGIA">
+                <div>PanelContent...</div>
+                <div>PanelContent...</div>
+              </Panel>
+            </Collapse>
+          </Theme>
           <br />
         </Wrapper>
       </div>

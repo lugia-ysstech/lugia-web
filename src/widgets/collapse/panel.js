@@ -10,6 +10,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { PanelProps, PanelState } from '../css/panel';
 import {
+  Wrap,
   HoverIconWrap,
   IconWrap,
   PanelContent,
@@ -73,49 +74,53 @@ export default ThemeProvider(
       const { disabled = false, header, children, getTheme, showArrow = true } = this.props;
       const config = {};
       if (!showArrow) {
-        config.onMouseEnter = this.iconMouseEnter;
+        config.onMouseMove = this.iconMouseEnter;
         config.onMouseLeave = this.iconMouseLeave;
       }
       return (
-        <PanelWrap themes={getTheme()}>
-          <PanelHeader
-            disabled={disabled}
-            showArrow={showArrow}
-            onClick={this.handlePanelClick}
-            {...config}
-            innerRef={(node: any) => (this.header = node)}
-          >
-            {showArrow ? (
-              <IconWrap
-                open={open}
-                iconClass="lugia-icon-direction_caret_right"
-                opening={opening}
-                closing={closing}
-              />
-            ) : null}
-            {header}
-            <HoverIconWrap headerHeight={headerHeight} hover={hover}>
-              <IconWrap
-                open={open}
-                iconClass="lugia-icon-direction_caret_right"
-                opening={opening}
-                closing={closing}
-              />
-            </HoverIconWrap>
-          </PanelHeader>
-          <PanelContentWrap
-            innerRef={(node: any) => (this.panel = node)}
-            open={open}
-            opening={opening}
-            closing={closing}
-            height={this.height}
-            disabled={disabled}
-            themes={getTheme()}
-            hover={hover}
-          >
-            <PanelContent>{children}</PanelContent>
-          </PanelContentWrap>
-        </PanelWrap>
+        <Wrap hover={hover} themes={getTheme()} {...config}>
+          <PanelWrap hover={hover} themes={getTheme()} {...config}>
+            <PanelHeader
+              disabled={disabled}
+              showArrow={showArrow}
+              themes={getTheme()}
+              onClick={this.handlePanelClick}
+              innerRef={(node: any) => (this.header = node)}
+            >
+              {showArrow ? (
+                <IconWrap
+                  open={open}
+                  iconClass="lugia-icon-direction_caret_right"
+                  opening={opening}
+                  closing={closing}
+                />
+              ) : null}
+              {header}
+              <HoverIconWrap themes={getTheme()} headerHeight={headerHeight} hover={hover}>
+                <IconWrap
+                  open={open}
+                  iconClass="lugia-icon-direction_caret_right"
+                  opening={opening}
+                  closing={closing}
+                />
+              </HoverIconWrap>
+            </PanelHeader>
+            <PanelContentWrap
+              innerRef={(node: any) => (this.panel = node)}
+              open={open}
+              opening={opening}
+              closing={closing}
+              height={this.height}
+              disabled={disabled}
+              themes={getTheme()}
+              hover={hover}
+            >
+              <PanelContent showArrow={showArrow} hover={hover}>
+                {children}
+              </PanelContent>
+            </PanelContentWrap>
+          </PanelWrap>
+        </Wrap>
       );
     }
 
@@ -131,7 +136,7 @@ export default ThemeProvider(
       });
     };
 
-    handlePanelClick = () => {
+    handlePanelClick = (e: Event) => {
       const { disabled = false, value, onClick } = this.props;
       if (!disabled) {
         const height = this.panel.scrollHeight;
@@ -156,6 +161,7 @@ export default ThemeProvider(
           onClick && onClick(value);
         }
       }
+      e.preventDefault();
     };
     hasOpen = () => 'open' in this.props;
 
@@ -164,13 +170,6 @@ export default ThemeProvider(
       this.height = this.panel.scrollHeight;
       if (this.hasOpen() && (opening === true || closing === true)) {
         setTimeout(() => {
-          console.info(
-            'this.props.value',
-            this.props.value,
-            this.state.opening,
-            this.state.closing,
-            this.state.open
-          );
           this.height = 0;
           this.setState({
             opening: false,
