@@ -295,8 +295,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
   line-height: 0.8333333333333334em;
   font-size: 1.2em;
   right: 0.8333333333333334em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   display: inline-block;
+}
+
+.c4:hover {
+  color: #666666;
 }
 
 .c5 {
@@ -396,6 +400,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -460,6 +465,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -524,6 +530,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             disabled={true}
             onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -592,6 +599,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
               disabled={false}
               onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -656,6 +664,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
               disabled={false}
               onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -720,6 +729,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
               disabled={false}
               onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -789,6 +799,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -852,6 +863,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -913,6 +925,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -974,6 +987,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -1095,8 +1109,12 @@ Array [
   line-height: 0.8333333333333334em;
   font-size: 1.2em;
   right: 0.8333333333333334em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   display: inline-block;
+}
+
+.c3:hover {
+  color: #666666;
 }
 
 .c4 {
@@ -1134,6 +1152,7 @@ Array [
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1317,8 +1336,12 @@ Array [
   line-height: 0.8333333333333334em;
   font-size: 1.2em;
   right: 0.8333333333333334em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   display: inline-block;
+}
+
+.c3:hover {
+  color: #666666;
 }
 
 .c4 {
@@ -1356,6 +1379,7 @@ Array [
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}

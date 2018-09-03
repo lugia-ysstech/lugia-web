@@ -57,6 +57,9 @@ const NumberInput = 'sv_widget_NumberInput';
 const Divider = 'sv_widget_Divider';
 const Panel = 'sv_widget_Panel';
 const Collapse = 'sv_widget_Collapse';
+const Avatar = 'sv_widget_Avatar';
+const Badge = 'sv_widget_Badge';
+const NumberTurn = 'sv_widget_NumberTurn';
 
 export default {
   Button,
@@ -105,4 +108,7 @@ export default {
   Divider,
   Panel,
   Collapse,
+  Avatar,
+  Badge,
+  NumberTurn,
 };

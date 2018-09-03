@@ -897,3 +897,6 @@ i[class^="lugia-icon-"]:before, i[class*=" lugia-icon-"]:before {
     transform: rotate(360deg);
   }
 }
+body {
+    font-family: Helvetica Neue, Helvetica, Arial
+}
