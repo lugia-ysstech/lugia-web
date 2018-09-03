@@ -71,7 +71,6 @@ const getThemeBorderWidthCSS = (props: CSSProps): string => {
   const { border, borderColor } = props.themes;
   const bdColor = borderColor || '#e8e8e8';
   const css = getThemeMarginOrBorderWidthCSS(border, 'border-width', FontSize);
-  console.info('borderborder', css);
   if (css) {
     return `
       border-color: ${bdColor};
@@ -93,7 +92,6 @@ const getBoxShadow = (props: CSSProps) => {
   const shadowColor = changeColor(color, 0, 30, 20).rgba;
   if (hover && border) {
     if ((typeof border === 'number' && border === 0) || !border.bottom) {
-      console.info(border);
       return `
       box-shadow: 0px 0px 6px ${shadowColor};
     `;
@@ -206,7 +204,6 @@ export const PanelContentWrap = styled.div`
   overflow: hidden;
   ${getPanelContent};
   ${getContenColor};
-  transition: all 0.2s;
   margin-left: ${(props: CSSProps) => (props.hover ? em(-12) : 'none')};
 `;
 
@@ -253,7 +250,7 @@ export const HoverIconWrap = styled.div`
   height: ${(props: CSSProps) => em(props.headerHeight)};
   position: absolute;
   top: 0;
-  left: ${em(-10)};
+  left: ${em(-10.5)};
   ${getThemeBackgroundColorCSS};
 `;
 export const Wrap = styled.div`
