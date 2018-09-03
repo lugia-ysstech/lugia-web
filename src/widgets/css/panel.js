@@ -195,11 +195,7 @@ const getContentPadding = (props: CSSProps): string => {
      padding: ${em(6)} ${em(30)} ${em(22)} ${em(34)};
     `;
   }
-  if (hover) {
-    return `
-      padding: ${em(6)} ${em(30)} ${em(22)} ${em(36)};
-  `;
-  }
+
   return `
     padding: ${em(6)} ${em(30)} ${em(22)} ${em(24)};
   `;
@@ -251,7 +247,7 @@ export const HoverIconWrap = styled.div`
   box-sizing: border-box;
   transition: left 0.3s;
   opacity: ${(props: CSSProps) => (props.hover ? '1' : '0')};
-  width: ${em(30)};
+  width: ${em(14)};
   ${getPanelContent};
   position: absolute;
   top: 0;
