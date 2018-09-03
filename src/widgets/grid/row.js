@@ -71,11 +71,11 @@ export default ThemeProvider(
     }
 
     render() {
-      const { type = 'default', justify, align } = this.props;
+      const { type = 'default', justify, align, getTheme } = this.props;
       const scrrenSize = this.getScrrenSize();
       const gutter = this.getGutter(scrrenSize);
       return (
-        <RowWrap type={type} justify={justify} align={align} gutter={gutter}>
+        <RowWrap type={type} justify={justify} align={align} gutter={gutter} theme={getTheme()}>
           {this.renderChildren(scrrenSize, gutter)}
         </RowWrap>
       );
