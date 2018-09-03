@@ -10,13 +10,13 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { PanelProps, PanelState } from '../css/panel';
 import {
-  Wrap,
   HoverIconWrap,
   IconWrap,
   PanelContent,
   PanelContentWrap,
   PanelHeader,
   PanelWrap,
+  Wrap,
 } from '../css/panel';
 
 PanelHeader.displayName = 'Panel';
@@ -43,26 +43,20 @@ export default ThemeProvider(
     static getDerivedStateFromProps(props, state) {
       const { open, defaultOpen } = props;
       const hasOpen = 'open' in props;
-      const theOpen = hasOpen ? open : state ? state.open : defaultOpen;
+      const { open: stateOpen } = state;
+      const theOpen = hasOpen ? open : state ? stateOpen : defaultOpen;
       const result: Object = {
         open: theOpen,
       };
       if (hasOpen) {
-        result.closing = false;
-        result.opening = false;
-        if (state.open === true && theOpen === false) {
-          result.closing = true;
-        }
-        if (state.open === false && theOpen === true) {
-          result.opening = true;
-        }
+        result.closing = stateOpen === true && theOpen === false;
+        result.opening = stateOpen === false && theOpen === true;
       }
       return result;
     }
 
     componentDidMount() {
       this.height = this.panel.scrollHeight;
-
       const headerHeight = this.header.scrollHeight;
       this.setState({
         headerHeight,
@@ -74,8 +68,8 @@ export default ThemeProvider(
       const { disabled = false, header, children, getTheme, showArrow = true } = this.props;
       const config = {};
       if (!showArrow) {
-        config.onMouseMove = this.iconMouseEnter;
-        config.onMouseLeave = this.iconMouseLeave;
+        config.onMouseMove = this.changeHover(true);
+        config.onMouseLeave = this.changeHover(false);
       }
       return (
         <Wrap hover={hover} themes={getTheme()} {...config}>
@@ -101,7 +95,7 @@ export default ThemeProvider(
                 hover={hover}
                 open={open}
                 headerHeight={headerHeight}
-                height={this.height + headerHeight}
+                height={this.height}
                 opening={opening}
                 closing={closing}
               >
@@ -132,15 +126,9 @@ export default ThemeProvider(
       );
     }
 
-    iconMouseEnter = () => {
+    changeHover = hover => () => {
       this.setState({
-        hover: true,
-      });
-    };
-
-    iconMouseLeave = () => {
-      this.setState({
-        hover: false,
+        hover,
       });
     };
 

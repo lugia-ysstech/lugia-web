@@ -41,7 +41,7 @@ type CSSProps = {
 } & BasicPropsType &
   BasicStateType;
 
-const { themeColor, darkGreyColor, blackColor, lightGreyColor } = colorsFunc();
+const { darkGreyColor, blackColor, lightGreyColor } = colorsFunc();
 
 export const getThemeMarginCSS = (props: CSSProps): string => {
   const { margin } = props.themes;
@@ -142,7 +142,9 @@ export const PanelHeader = styled.div`
   ${getColorCSS};
 `;
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing, height, headerHeight = 0 } = props;
+  const { open, opening, closing, headerHeight = 0 } = props;
+  let { height } = props;
+  height = height + headerHeight;
   const OpenKeyframe = keyframes`
   from { height: ${em(headerHeight)}; }
   to { height: ${height}px; }
