@@ -104,10 +104,12 @@ export default ThemeProvider(
     renderChildren = (scrrenSize?: string, gutter?: number | Object) => {
       const { children } = this.props;
       return React.Children.map(children, child => {
-        return React.cloneElement(child, {
-          scrrenSize,
-          gutter,
-        });
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, {
+            scrrenSize,
+            gutter,
+          });
+        }
       });
     };
   },

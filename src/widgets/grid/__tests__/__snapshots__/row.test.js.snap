@@ -337,6 +337,40 @@ exports[`row css 1`] = `
       type="default"
     >
       <div
+        className="c2"
+        span={6}
+      >
+        col-6
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-6
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-6
+      </div>
+      <div
+        className="c2"
+        span={6}
+      >
+        col-6
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      type="default"
+    >
+      <div
         className="c3"
         offset={6}
         span={6}
@@ -967,5 +1001,70 @@ exports[`row css 1`] = `
     </div>
   </div>
   <br />
+</div>
+`;
+
+exports[`row css children has space 1`] = `
+.c1 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 0%;
+}
+
+.c0 {
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+  zoom: 1;
+  display: block;
+  box-sizing: border-box;
+}
+
+.c0:after {
+  content: "";
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.c0::before {
+  content: "";
+  display: table;
+}
+
+<div
+  className="c0"
+  type="default"
+>
+  <div
+    className="c1"
+    span={6}
+  >
+    col-6
+  </div>
+  <div
+    className="c1"
+    span={6}
+  >
+    col-6
+  </div>
+  <div
+    className="c1"
+    span={6}
+  >
+    col-6
+  </div>
+  <div
+    className="c1"
+    span={6}
+  >
+    col-6
+  </div>
 </div>
 `;
