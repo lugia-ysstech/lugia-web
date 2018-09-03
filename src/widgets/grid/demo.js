@@ -60,6 +60,16 @@ export const RowDemo = () => {
       <br />
       <Wrapper>
         <Row>
+          <Col span={6}>col-6</Col>
+          {123}
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+        </Row>
+      </Wrapper>
+      <br />
+      <Wrapper>
+        <Row>
           <Col span={6} offset={6}>
             col-6 col-offset-6
           </Col>
