@@ -86,7 +86,10 @@ const getThemeBorderWidthCSS = (props: CSSProps): string => {
   `;
 };
 const getBoxShadow = (props: CSSProps) => {
-  const { hover } = props;
+  const { hover, opening } = props;
+  if (opening) {
+    return '';
+  }
   const { backgroundColor, border } = props.themes;
   const color = backgroundColor || defaultColor;
   const shadowColor = changeColor(color, 0, 30, 20).rgba;
@@ -139,14 +142,14 @@ export const PanelHeader = styled.div`
   ${getColorCSS};
 `;
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing, height } = props;
+  const { open, opening, closing, height, headerHeight = 0 } = props;
   const OpenKeyframe = keyframes`
-  from { height: 0; }
+  from { height: ${em(headerHeight)}; }
   to { height: ${height}px; }
 `;
   const CloseKeyframe = keyframes`
   from { height: ${height}px; }
-  to { height: 0; }
+  to { height: ${em(headerHeight)}; }
 `;
   if (opening) {
     return `
@@ -162,10 +165,10 @@ const getPanelContent = (props: CSSProps): string => {
   }
   if (open) {
     return `
-     height: 100%;`;
+     height: ${height !== null && height !== undefined ? height + 'px' : '100%'};`;
   }
   return `
-    height: 0;
+    height: ${em(headerHeight)};
 `;
 };
 const getContenColor = (props: CSSProps): string => {
@@ -204,7 +207,6 @@ export const PanelContentWrap = styled.div`
   overflow: hidden;
   ${getPanelContent};
   ${getContenColor};
-  margin-left: ${(props: CSSProps) => (props.hover ? em(-12) : 'none')};
 `;
 
 export const PanelContent = styled.div`
@@ -233,6 +235,7 @@ const getIconTransform = (props: CSSProps) => {
     `;
   }
 };
+
 export const IconWrap = styled(Icon)`
   font-size: ${FontSize}rem;
   display: inline-block;
@@ -244,13 +247,13 @@ export const IconWrap = styled(Icon)`
 
 export const HoverIconWrap = styled.div`
   box-sizing: border-box;
-  transition: all 0.3s;
+  transition: left 0.3s;
   opacity: ${(props: CSSProps) => (props.hover ? '1' : '0')};
-  width: ${(props: CSSProps) => (props.hover ? em(30) : 0)};
-  height: ${(props: CSSProps) => em(props.headerHeight)};
+  width: ${em(30)};
+  ${getPanelContent};
   position: absolute;
   top: 0;
-  left: ${em(-10.5)};
+  left: ${(props: CSSProps) => (props.hover ? em(-10.5) : 0)};
   ${getThemeBackgroundColorCSS};
 `;
 export const Wrap = styled.div`

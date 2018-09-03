@@ -96,7 +96,15 @@ export default ThemeProvider(
                 />
               ) : null}
               {header}
-              <HoverIconWrap themes={getTheme()} headerHeight={headerHeight} hover={hover}>
+              <HoverIconWrap
+                themes={getTheme()}
+                hover={hover}
+                open={open}
+                headerHeight={headerHeight}
+                height={this.height + headerHeight}
+                opening={opening}
+                closing={closing}
+              >
                 <IconWrap
                   open={open}
                   iconClass="lugia-icon-direction_caret_right"

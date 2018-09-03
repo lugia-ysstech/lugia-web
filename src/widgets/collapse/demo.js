@@ -27,7 +27,7 @@ const view = {
     border: {
       top: 0,
       right: 0,
-      bottom: 1,
+      bottom: 0,
       left: 0,
     },
   },
@@ -177,12 +177,8 @@ export const CollapseDemo = class extends React.Component<any, any> {
           {/*</Collapse>*/}
           {/*<br />*/}
           <Theme config={wrapView}>
-            <Collapse activeValue={activeValue} onChange={this.handleChangeActiveValue}>
-              <Panel value="1" header="LUGIA">
-                <div>PanelContent...</div>
-                <div>PanelContent...</div>
-              </Panel>
-              <Panel value="2" header="LUGIA">
+            <Collapse onChange={this.handleChangeActiveValue}>
+              <Panel header="LUGIA">
                 <div>PanelContent...</div>
                 <div>PanelContent...</div>
               </Panel>
