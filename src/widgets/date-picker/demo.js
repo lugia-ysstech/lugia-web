@@ -8,6 +8,9 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DatePicker from './index';
+import Head from './Head';
+import FacePanel from './FacePanel';
+import Year from './Year';
 const { MonthPicker, YearPicker, WeekPicker } = DatePicker;
 export default class Sl extends Component<any> {
   constructor() {
@@ -16,6 +19,8 @@ export default class Sl extends Component<any> {
       currentValue: 0,
       btnWidth: 20,
       disabled: false,
+      v: moment().year(),
+      cv: moment().year(),
     };
   }
 
@@ -24,13 +29,19 @@ export default class Sl extends Component<any> {
       disabled: !this.state.disabled,
     });
   };
-
+  onChangeYear = v => {
+    console.log(v);
+  };
+  choseYear = cv => {
+    console.log(cv);
+  };
   render() {
+    //console.log(this.state.v);
     const dateFormate = 'YYYY年MM月DD日';
     const monthFormate = 'YYYY年MM月';
     return (
       <div style={{ margin: '30px' }}>
-        <div style={{ float: 'left', marginRight: '30px' }}>
+        {/* <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>normal</h2>
           <DatePicker />
         </div>
@@ -76,6 +87,18 @@ export default class Sl extends Component<any> {
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>周</h2>
           <WeekPicker defaultValue={'2015-03-02'} weeks={20} />
+        </div> */}
+        {/* <div style={{ float: 'left', marginRight: '30px',width:'300px' }}>
+          <h2>Head</h2>
+          <Head onChange={this.onChangeYear} />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px',width:'300px' }}>
+          <h2>FacePanel</h2>
+          <FacePanel onChange={this.choseYear} />
+        </div> */}
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>Year</h2>
+          <Year defaultValue={'2015-02-03'} />
         </div>
       </div>
     );

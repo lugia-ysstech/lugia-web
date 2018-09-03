@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Icon from '../icon/index';
 import moment from 'moment';
 import WeekDays from './week';
+import { getDerived } from './getDerived';
 // import { getElementPosition } from '../utils';
 import {
   DateChild,
@@ -57,27 +58,7 @@ class DatePickerInner extends Component<TypeProps, TypeState> {
   value: string;
   weeksRange: number;
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { defaultValue, mode, showToday } = nextProps;
-    const normalFormat = mode === 'month' ? 'YYYY-DD' : mode === 'year' ? 'YYYY' : 'YYYY-MM-DD';
-    let { value, format = normalFormat, weeks = 1 } = nextProps;
-
-    const hasDefaultProps = 'defaultValue' in nextProps && moment(defaultValue, format)._isValid;
-    const hasValueProps = 'value' in nextProps && moment(value, format)._isValid;
-    value = hasValueProps
-      ? value
-      : preState
-        ? preState.value
-        : hasDefaultProps
-          ? defaultValue
-          : moment().format('YYYY-MM-DD');
-    const moments = moment(value, format);
-    let today = moment().date();
-    const max = moments.daysInMonth();
-    let noToday = false;
-    if (today > max) {
-      today = max;
-      noToday = true;
-    }
+    const { value, today, noToday, moments, format, mode, weeks } = getDerived(nextProps, preState);
     if (!preState) {
       return {
         value,
