@@ -5,9 +5,9 @@ import 'core-js/es6/string';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactServer from 'react-dom/server'; 
+import ReactServer from 'react-dom/server';
 
-import App from './widgets/slider/demo';
+import App from './widgets/slider/demo'; 
 //import App from './widgets/switch/demo';
 //import App from './widgets/loading/demo';
 //import App from './widgets/icon/demo';
