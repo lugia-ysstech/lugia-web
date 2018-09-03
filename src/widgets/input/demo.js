@@ -139,7 +139,7 @@ const InputDemo = () => {
       <Wrapper>
         <Theme config={{ register: { width: 150, margin: 15 } }}>
           <p>字体色值</p>
-          <Input viewClass="register" value="色值:#333333" />
+          <Input viewClass="register" disabled={true} value="色值:#333333" />
           <p>default input</p>
           <Input placeholder={'请填写内容'} />
           <p>禁用状态 </p>

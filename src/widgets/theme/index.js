@@ -4,6 +4,8 @@
  *
  * @flow
  */
+import type { ThemeType } from '@lugia/lugia-web';
+
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Widget from '../consts/index';
@@ -13,7 +15,7 @@ import '../common/shirm';
 
 type PropsType = {
   children: React.Node,
-  config: Object,
+  config: { [key: string]: ThemeType },
   className?: string,
 };
 type StateType = {};

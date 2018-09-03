@@ -6,10 +6,10 @@ import Theme from '../theme';
 import BaseInput from '../input/index';
 import Widget from '../consts/index';
 import type { InputSize } from '../css/input';
+import { getMargin } from '../common/ThemeUtils';
 import {
   DefaultAmountPrefix,
   getBackground,
-  getMargin,
   getPlaceholderFontColor,
   getWidth,
 } from '../css/input';

@@ -16,6 +16,7 @@ const {
   dangerColor,
   blackColor,
   mediumGreyColor,
+  darkGreyColor,
 } = colorsFunc();
 
 export const getInputBorderColor = (props: Object) => {
@@ -84,20 +85,6 @@ export const getRightPadding = (props: CommonInputProps) => {
   const { width } = theme;
   return `${width && width < 200 ? em(15 + width / 10) : em(35)};`;
 };
-export const getMargin = (props: CommonInputProps) => {
-  const { theme } = props;
-  const { margin } = theme;
-  if (typeof margin === 'number') {
-    return `margin:${em(margin)} `;
-  }
-  if (margin !== undefined) {
-    const marginTop = getAttributeFromObject(margin, 'top', 0);
-    const marginRight = getAttributeFromObject(margin, 'right', 0);
-    const marginBottom = getAttributeFromObject(margin, 'bottom', 0);
-    const marginLeft = getAttributeFromObject(margin, 'left', 0);
-    return `margin:${em(marginTop)}; ${em(marginRight)}; ${em(marginBottom)}; ${em(marginLeft)}`;
-  }
-};
 export const getSize = (props: CommonInputProps) => {
   const { size } = props;
   return `height:${
@@ -120,22 +107,22 @@ export const getFocusBorderColor = () => {
 };
 export const getInputBorderSize = (props: CommonInputProps) => {
   const { theme } = props;
-  const { border } = theme;
-  if (typeof border === 'number') {
-    return `border:${em(border)}`;
+  const { borderSize } = theme;
+  if (typeof borderSize === 'number') {
+    return `border:${em(borderSize)}`;
   }
-  if (border !== undefined) {
-    const borderTop = getAttributeFromObject(border, 'top', 0);
-    const borderRight = getAttributeFromObject(border, 'right', 0);
-    const borderBottom = getAttributeFromObject(border, 'bottom', 0);
-    const borderLeft = getAttributeFromObject(border, 'left', 0);
+  if (borderSize !== undefined) {
+    const borderTop = getAttributeFromObject(borderSize, 'top', 0);
+    const borderRight = getAttributeFromObject(borderSize, 'right', 0);
+    const borderBottom = getAttributeFromObject(borderSize, 'bottom', 0);
+    const borderLeft = getAttributeFromObject(borderSize, 'left', 0);
     return `
     border-top:${em(borderTop)};
     border-right:${em(borderRight)};
     border-bottom:${em(borderBottom)};
     border-left:${em(borderLeft)}`;
   }
-  return `border:${borderSize}`;
+  return `border:${colorsFunc().borderSize}`;
 };
 export const getInputBorderRadius = (props: CommonInputProps) => {
   const { theme } = props;
@@ -177,4 +164,10 @@ export function isValidateSuccess(
 }
 export const getPlaceholderFontColor = () => {
   return mediumGreyColor;
+};
+export const getClearButtonColor = () => {
+  return `color: ${mediumGreyColor}`;
+};
+export const getClearButtonHoverColor = () => {
+  return `color: ${darkGreyColor}`;
 };

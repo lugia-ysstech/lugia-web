@@ -14,7 +14,7 @@ import { ColWrap } from '../css/col';
 export default ThemeProvider(
   class extends React.Component<ColProps, ColState> {
     render() {
-      const { children, span, offset, push, pull, order, gutter } = this.props;
+      const { children, span = 1, offset, push, pull, order, gutter } = this.props;
       const propsSizeData: Object = this.handlePropsData();
       return (
         <ColWrap
