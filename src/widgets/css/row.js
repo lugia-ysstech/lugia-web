@@ -4,6 +4,7 @@
  * @flow
  */
 import styled from 'styled-components';
+import { getMargin } from '../common/ThemeUtils';
 
 type justifyType = 'start' | 'end' | 'center' | 'spaceAround' | 'spaceBetween';
 type alignType = 'top' | 'middle' | 'bottom';
@@ -11,6 +12,7 @@ type BaseProps = {
   justify?: justifyType,
   align?: alignType,
   gutter?: number | Object,
+  getTheme: Function,
 };
 
 export type RowProps = {
@@ -105,4 +107,5 @@ export const RowWrap = styled.div`
   ${getJustifyCSS}
   ${getAlignCSS}
   ${getGutterCSS}
+  ${getMargin}
 `;

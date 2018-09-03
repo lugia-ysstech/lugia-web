@@ -11,26 +11,28 @@ import type { InputSize, InputValidateType, ValidateStatus } from '../css/input'
 import {
   DefaultHelp,
   getBackground,
+  getClearButtonColor,
+  getClearButtonHoverColor,
   getCursor,
   getFocusBorderColor,
   getFocusShadow,
   getFontColor,
   getInputBorderColor,
   getInputBorderHoverColor,
+  getInputBorderRadius,
   getInputBorderSize,
-  getMargin,
   getPadding,
   getRightPadding,
   getSize,
   getVisibility,
   getWidth,
   isValidateSuccess,
-  getInputBorderRadius,
 } from '../css/input';
 import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
+import { getMargin } from '../common/ThemeUtils';
 
 const em = px2emcss(1.2);
 
@@ -121,7 +123,11 @@ const ClearButton: Object = styled(Icon)`
   line-height: ${em(10)};
   font-size: 1.2em;
   right: ${em(10)};
-  color: rgba(0, 0, 0, 0.65);
+  ${getClearButtonColor};
+  &:hover {
+    ${getClearButtonHoverColor};
+  }
+
   display: inline-block;
 `;
 
