@@ -24,7 +24,7 @@ export type ColState = {};
 type ColCSSProps = BasicType;
 
 const getSpanCSS = (props: ColCSSProps): string => {
-  const { span = 0 } = props;
+  const { span = 1 } = props;
   return `
       width: ${width * span}%;
     `;

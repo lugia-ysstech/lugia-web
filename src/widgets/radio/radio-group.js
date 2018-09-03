@@ -22,7 +22,7 @@ import {
 import Theme from '../theme';
 import { Group } from '../checkbox/checkbox-group';
 
-type RadioGroupProps = { 
+type RadioGroupProps = {
   defaultValue?: string,
   disabled?: boolean,
   data?: Array<Object>,
