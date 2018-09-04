@@ -12,7 +12,7 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import Input from '../input';
 import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
-import { Height } from '../css/input';
+import { Height } from '../css/menu';
 import { adjustValue } from '../utils';
 import { MenuItemHeight, DefaultHeight, DefaultWidth } from '../css/menu';
 
@@ -25,6 +25,7 @@ type DropMenuProps = {
   onQuery: Function,
   getTheme: Function,
   query: string,
+  needQueryInput: boolean,
 };
 const MenuContainer = styled.div`
   background-color: #fff;
@@ -38,6 +39,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
     action: ['click'],
     hideAction: ['click'],
+    needQueryInput: false,
     getTheme() {
       return {};
     },
@@ -53,7 +55,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render() {
-    const { menus, children, action, hideAction, query } = this.props;
+    const { menus, children, action, hideAction } = this.props;
     const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
 
     const queryInputWidth = width - 2 * QueryInputPadding;
@@ -64,12 +66,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       [Widget.Input]: { width: queryInputWidth },
       [Widget.Trigger]: { width, height: height + (menuHeight - oldMenuHeight) },
     };
-    const popup = [
-      <QueryInput key="queryContainer">
-        <Input onChange={this.onQuery} key="quernInput" value={query} />
-      </QueryInput>,
-      <MenuContainer key="menus">{menus}</MenuContainer>,
-    ];
+    const popup = [this.isNeedQueryInput(), <MenuContainer key="menus">{menus}</MenuContainer>];
     return (
       <Theme config={menuConfig}>
         <Trigger
@@ -84,6 +81,18 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
         </Trigger>
       </Theme>
     );
+  }
+
+  isNeedQueryInput() {
+    const { needQueryInput, query } = this.props;
+    if (needQueryInput) {
+      return (
+        <QueryInput key="queryContainer">
+          <Input onChange={this.onQuery} key="quernInput" value={query} />
+        </QueryInput>
+      );
+    }
+    return null;
   }
 
   onQuery = value => {

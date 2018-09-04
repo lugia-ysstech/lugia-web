@@ -8,7 +8,8 @@ exports[`Item Mutliple MenuItem 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #333;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -18,7 +19,8 @@ exports[`Item Mutliple MenuItem 1`] = `
 }
 
 .c0:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 .c0::after {
@@ -39,7 +41,7 @@ exports[`Item Mutliple MenuItem 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 8px;
+  right: 10px;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
@@ -67,20 +69,19 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #4d63ff;
+  font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
-  background-color: #f7f7f7;
-  font-weight: 600;
-  color: rgba(0,0,0,.65);
 }
 
 .c0:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 .c0::after {
@@ -101,7 +102,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 8px;
+  right: 10px;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
@@ -133,7 +134,8 @@ exports[`Item Single MenuItem 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #333;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -143,7 +145,8 @@ exports[`Item Single MenuItem 1`] = `
 }
 
 .c0:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 <li
@@ -163,20 +166,19 @@ exports[`Item Single MenuItem checked 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #4d63ff;
+  font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
-  background-color: #f7f7f7;
-  font-weight: 600;
-  color: rgba(0,0,0,.65);
 }
 
 .c0:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 <li
@@ -198,7 +200,8 @@ exports[`Item children: null 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #333;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -208,7 +211,8 @@ exports[`Item children: null 1`] = `
 }
 
 .c0:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 <li

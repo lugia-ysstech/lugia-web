@@ -16,6 +16,7 @@ import MoreItem from './MoreItem';
 import FontItem from './FontItem';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import { ValueField } from '../consts/props';
 import Theme from '../theme';
 import DropMenu from '../dropmenu';
 import Menu from '../menu';
@@ -26,16 +27,26 @@ import {
   getFocusShadow,
   getInputBorderColor,
   getInputBorderHoverColor,
-  Height,
   Padding,
   RadiusSize,
 } from '../css/input';
+
 import { FontSize } from '../css';
 import { DefaultHeight } from '../css/menu';
-import { MarginRight } from '../css/inputtag';
+import { MarginRight, SingleLineHeight, Height } from '../css/inputtag';
+import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
+const ClearMenuItemButton = styled(Icon)`
+  top: 50%;
+  right: ${em(12)};
+  position: absolute;
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.25);
+`;
 
-type ValidateStatus = 'sucess' | 'error';
+type ValidateStatus = 'success' | 'error';
 
 type InputTagProps = {
   help?: string,
@@ -56,7 +67,7 @@ type InputTagProps = {
   onClick?: Function,
   onPopupVisibleChange?: Function,
 };
-const Clear = 'sv-icon-close-circled';
+const Clear = 'lugia-icon-reminder_close';
 type InputTagState = {
   focus: boolean,
   items: Array<React.Node>,
@@ -65,14 +76,16 @@ type InputTagState = {
 };
 const getWidthBySpan = (spanWidth: number) => (props: Object) => {
   const w = props.theme.width - spanWidth;
-  return w ? `width: ${w}px;` : 'width: 100%;';
+  return w ? `width: ${em(w)};` : 'width: 100%;';
 };
 const getWidth = getWidthBySpan(0);
 const getBackground = props => {
   return props.disabled ? 'background: rgba(0,0,0,.05);' : '';
 };
+
 const Container = styled.div`
-  ${getWidth} ${getBackground}
+  ${getWidth};
+  ${getBackground};
   display: inline-block;
   position: relative;
   color: rgba(0, 0, 0, 0.65);
@@ -84,10 +97,10 @@ const getBorderColor = props => {
 };
 const OutContainer = styled.div`
   background: white;
-  border: solid 1px ${getInputBorderColor};
+  border: solid ${em(1)} ${getInputBorderColor};
   border-radius: ${RadiusSize};
-  min-height: ${Height}px;
-  padding-bottom: 3px;
+  min-height: ${InputCSS.DefaultHeight};
+  padding-bottom: ${em(3)};
   ${getBorderColor} :hover {
     border-color: ${getInputBorderHoverColor};
   }
@@ -96,8 +109,13 @@ const IconButton: Object = styled(Icon)`
   top: 50%;
   right: 0;
   position: absolute;
-  margin-top: -8px;
+  transform: translateY(-50%);
   color: rgba(0, 0, 0, 0.25);
+`;
+
+/** add by szfeng */
+const PullIcon: Object = IconButton.extend`
+  font-size: ${FontSize};
 `;
 
 IconButton.displayName = Widget.InputTagClearButton;
@@ -110,19 +128,20 @@ const getContentWidth = (w: number) => {
 const InnerContainer = styled.div`
   background: white;
   ${getWidthBySpan(-getContentWidth(0))}
-  height: ${Height - Padding}px;
-  margin-left: ${marginLeft}px;
-  margin-right: ${marginRight}px;
-  margin-bottom: -3px;
+  height: ${em(Height - Padding)};
+  margin-left: ${em(marginLeft)};
+  margin-right: ${em(marginRight)};
+  margin-bottom: -${em(3)};
   position: relative;
   user-select: none;
 `;
 const SingleInnerContainer = InnerContainer.extend`
-  padding: 5px;
-  padding-right: 14px;
+  padding-left: ${em(5)};
+  padding-right: ${em(14)};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: ${SingleLineHeight};
 `;
 const List = styled.ul`
   list-style: none;
@@ -131,14 +150,14 @@ const List = styled.ul`
 `;
 const InputTagTheme = styled(Theme)`
   display: block;
-  min-height: ${Height}px;
-  height: ${Height}px;
+  min-height: ${em(Height)};
+  height: ${em(Height)};
 `;
 const FocuInput = styled.input`
   position: absolute;
-  left: -500px;
-  width: 1px;
-  height: 1px;
+  left: -${em(500)};
+  width: ${em(1)};
+  height: ${em(1)};
   padding: 0;
   border: none;
 `;
@@ -152,7 +171,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     },
     mutliple: true,
     disabled: false,
-    validateStatus: 'sucess',
+    validateStatus: 'success',
     help: DefaultHelp,
   };
 
@@ -200,14 +219,18 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   fetchValueObject(props: InputTagProps): Object {
     const result = {};
     const { value = [], displayValue = [] } = this.getValue(props);
-
     const isEmptyValue = !value || value.length === 0;
     if (this.isMutliple() === false) {
       if (isEmptyValue) {
         return {};
       }
       this.count = 1;
-      return { text: displayValue ? displayValue : value };
+      /**
+       * add by szfeng ==================================================
+       */
+      return { text: displayValue === [] ? value : displayValue };
+      // return { text: displayValue ? displayValue : value };
+      // return { text: value };
     }
 
     const valLen = value.length;
@@ -263,7 +286,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const config = { width: this.getWidth(), height: this.getHeight() };
     const theme = {
       [Widget.DropMenu]: config,
-      [Widget.Icon]: { hoverColor: 'red' },
+      [Widget.Icon]: { hoverColor: '#000' },
       [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)' },
     };
     const fillFontItem: Function = (cmp: Object): any => (this.fontItem = cmp);
@@ -319,6 +342,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             onPopupVisibleChange={this.onPopupVisibleChange}
             action={[]}
             query={query}
+            needQueryInput
             hideAction={['click']}
             ref={cmp => {
               this.dropMenu = cmp;
@@ -341,7 +365,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   generateOutter(cmp: any) {
     const { props } = this;
     const { validateStatus } = props;
-    if (validateStatus === 'sucess') {
+    if (validateStatus === 'success') {
       return cmp;
     }
     const { help } = props;
@@ -359,7 +383,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     );
   }
 
-  onQueryInput = (query: string) => {
+  onQueryInput = (nextValue: any) => {
+    const { newValue } = nextValue;
+    const query = newValue ? newValue : '';
     this.setState({ query });
   };
   onFocus = () => {
@@ -377,7 +403,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getClearButton() {
     if (this.isEmpty()) {
-      return null;
+      return <PullIcon iconClass="lugia-icon-direction_down" />;
     }
     return (
       <IconButton iconClass={Clear} viewClass={IconButton.displayName} onClick={this.onClear} />
@@ -426,12 +452,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         const key = keys[i];
         const { text } = value[key];
         if (query === '' || text.indexOf(query) != -1) {
-          items.push({ key, value: text });
+          items.push({ value: key, text });
         }
       }
     }
 
-    return <Menu data={items} getPrefix={this.getIcon} />;
+    return <Menu data={items} step={30} getSuffix={this.getIcon} />;
   }
 
   valueKeys: Array<string>;
@@ -463,13 +489,19 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getIcon = (item: Object) => {
-    const { key } = item;
+    const { [ValueField]: value } = item;
     return (
-      <Icon iconClass="sv-icon-android-delete" onClick={this.onDelItem.bind(this, key)} key={key} />
+      <ClearMenuItemButton
+        iconClass="lugia-icon-reminder_close"
+        onClick={this.onDelItem.bind(this, value)}
+        key={value}
+      />
     );
   };
 
-  onDelItem = (targetKey: string) => {
+  onDelItem = (targetKey: string, e: Object) => {
+    e.preventDefault();
+    e.stopPropagation();
     const { disabled } = this.props;
     if (disabled) {
       return;
