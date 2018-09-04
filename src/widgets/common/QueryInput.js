@@ -135,7 +135,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
 
     const view = {
       [Widget.Input]: {
-        border: {
+        borderSize: {
           top: 0,
           left: 0,
           right: 0,
