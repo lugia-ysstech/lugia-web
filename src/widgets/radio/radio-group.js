@@ -54,7 +54,8 @@ export default ThemeProvider(
     constructor(props) {
       super(props);
       const { displayValue } = getValueAndDisplayValue(props, null);
-      updateMapData(props, [displayValue], this.updateMapData);
+      const disV = displayValue ? displayValue[0] : [];
+      updateMapData(props, disV, this.updateMapData);
     }
 
     updateMapData = ({ cancelItem, dataItem }) => {
@@ -65,8 +66,13 @@ export default ThemeProvider(
     static getDerivedStateFromProps(props, state) {
       const { data = [] } = props;
       const dataLength = data.length;
+      const { value, displayValue } = getValueAndDisplayValue(props, state);
+      const stateValue = value ? value[0] : '';
+      const stateDisplayValue = displayValue ? displayValue[0] : '';
+
       return {
-        ...getValueAndDisplayValue(props, state),
+        value: stateValue,
+        displayValue: stateDisplayValue,
         dataLength,
       };
     }
