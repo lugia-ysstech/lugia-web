@@ -36,10 +36,12 @@ import { DefaultHeight } from '../css/menu';
 import { MarginRight, SingleLineHeight } from '../css/inputtag';
 import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 const ClearMenuItemButton = styled(Icon)`
   top: 50%;
-  right: 12px;
+  right: ${em(12)};
   position: absolute;
   transform: translateY(-50%);
   color: rgba(0, 0, 0, 0.25);
@@ -75,7 +77,7 @@ type InputTagState = {
 };
 const getWidthBySpan = (spanWidth: number) => (props: Object) => {
   const w = props.theme.width - spanWidth;
-  return w ? `width: ${w}px;` : 'width: 100%;';
+  return w ? `width: ${em(w)};` : 'width: 100%;';
 };
 const getWidth = getWidthBySpan(0);
 const getBackground = props => {
@@ -96,10 +98,10 @@ const getBorderColor = props => {
 };
 const OutContainer = styled.div`
   background: white;
-  border: solid 1px ${getInputBorderColor};
+  border: solid ${em(1)} ${getInputBorderColor};
   border-radius: ${RadiusSize};
   min-height: ${InputCSS.DefaultHeight};
-  padding-bottom: 3px;
+  padding-bottom: ${em(3)};
   ${getBorderColor} :hover {
     border-color: ${getInputBorderHoverColor};
   }
@@ -127,16 +129,16 @@ const getContentWidth = (w: number) => {
 const InnerContainer = styled.div`
   background: white;
   ${getWidthBySpan(-getContentWidth(0))}
-  height: ${Height - Padding}px;
-  margin-left: ${marginLeft}px;
-  margin-right: ${marginRight}px;
-  margin-bottom: -3px;
+  height: ${em(Height - Padding)};
+  margin-left: ${em(marginLeft)};
+  margin-right: ${em(marginRight)};
+  margin-bottom: -${em(3)};
   position: relative;
   user-select: none;
 `;
 const SingleInnerContainer = InnerContainer.extend`
-  padding-left: 5px;
-  padding-right: 14px;
+  padding-left: ${em(5)};
+  padding-right: ${em(14)};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -149,14 +151,14 @@ const List = styled.ul`
 `;
 const InputTagTheme = styled(Theme)`
   display: block;
-  min-height: ${Height}px;
-  height: ${Height}px;
+  min-height: ${em(Height)};
+  height: ${em(Height)};
 `;
 const FocuInput = styled.input`
   position: absolute;
-  left: -500px;
-  width: 1px;
-  height: 1px;
+  left: -${em(500)};
+  width: ${em(1)};
+  height: ${em(1)};
   padding: 0;
   border: none;
 `;

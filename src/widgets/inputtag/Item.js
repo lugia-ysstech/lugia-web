@@ -11,13 +11,15 @@ import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
 import CommonIcon from '../icon';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 const CloseButton = styled(CommonIcon)`
   font-size: ${FontSize};
   color: rgba(0, 0, 0, 0.47);
   position: absolute;
-  padding: 0 0 0 5px;
-  right: 4px;
+  padding: 0 0 0 ${em(5)};
+  right: ${em(4)};
   top: 50%;
   transform: translateY(-50%);
   zoom: 1;
