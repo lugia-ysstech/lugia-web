@@ -22,7 +22,8 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #333;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -32,7 +33,8 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c1:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 .c1::after {
@@ -53,7 +55,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 8px;
+  right: 10px;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
@@ -69,20 +71,19 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #4d63ff;
+  font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
-  background-color: #f7f7f7;
-  font-weight: 600;
-  color: rgba(0,0,0,.65);
 }
 
 .c2:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 .c2::after {
@@ -103,7 +104,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 8px;
+  right: 10px;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
@@ -176,7 +177,8 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #333;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -186,7 +188,8 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c1:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 .c2 {
@@ -196,20 +199,19 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #4d63ff;
+  font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
-  background-color: #f7f7f7;
-  font-weight: 600;
-  color: rgba(0,0,0,.65);
 }
 
 .c2:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 <ul
@@ -273,7 +275,8 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #333;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -283,7 +286,8 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 }
 
 .c1:hover {
-  background-color: #ecf6fd;
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
 <span>
@@ -327,7 +331,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 `;
 
 exports[`Menu children: items 1`] = `
-.c2 {
+.c3 {
   width: 200px;
   outline: none;
   margin: 0;
@@ -342,14 +346,15 @@ exports[`Menu children: items 1`] = `
   overflow: hidden;
 }
 
-.c3 {
+.c4 {
   box-sizing: border-box;
   position: relative;
   display: block;
   height: 35px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0,0,0,0.65);
+  color: #333;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -358,11 +363,12 @@ exports[`Menu children: items 1`] = `
   transition: background 0.3s ease;
 }
 
-.c3:hover {
-  background-color: #ecf6fd;
+.c4:hover {
+  background-color: #f6f7ff;
+  font-weight: 900;
 }
 
-.c3::after {
+.c4::after {
   font-family: "sviconfont" !important;
   text-rendering: optimizeLegibility;
   content: "\\e73e";
@@ -380,49 +386,59 @@ exports[`Menu children: items 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 8px;
+  right: 10px;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
 
-.c3:hover:after {
+.c4:hover:after {
   color: #d0c8c8;
 }
 
-.c0 {
+.c1 {
   overflow: hidden;
   height: 250px;
   width: 200px;
   position: relative;
 }
 
-.c1 {
+.c2 {
   height: 250px;
   width: 188px;
   position: absolute;
   display: inline-block;
 }
 
-.c4 {
+.c0:hover .bEXUIr {
+  opacity: 1;
+}
+
+.c5 {
   height: 250px;
   width: 188px;
   position: absolute;
   display: inline-block;
   left: 188px;
   width: 12px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
-.c5 {
+.c0:hover .c5 {
+  opacity: 1;
+}
+
+.c6 {
   position: relative;
   background: #e3e3e6;
   width: 20px;
   height: 300px;
-  border-radius: 5px;
   z-index: 996;
   width: 12px;
 }
 
-.c6 {
+.c7 {
   position: absolute;
   top: 0;
   left: 0;
@@ -438,24 +454,24 @@ exports[`Menu children: items 1`] = `
   margin-right: 2px;
 }
 
-.c6:hover {
+.c7:hover {
   background-color: #49a9ee96;
 }
 
 <span>
   <div
-    className="c0"
+    className="c0 c1"
     onWheel={[Function]}
   >
     <div
-      className="c1"
+      className="c2"
     >
       <ul
-        className="c2"
+        className="c3"
       >
         <li
           checked={false}
-          className="c3"
+          className="c4"
           onClick={[Function]}
           title=""
         >
@@ -463,7 +479,7 @@ exports[`Menu children: items 1`] = `
         </li>
         <li
           checked={false}
-          className="c3"
+          className="c4"
           onClick={[Function]}
           title=""
         >
@@ -471,7 +487,7 @@ exports[`Menu children: items 1`] = `
         </li>
         <li
           checked={false}
-          className="c3"
+          className="c4"
           onClick={[Function]}
           title=""
         >
@@ -479,7 +495,7 @@ exports[`Menu children: items 1`] = `
         </li>
         <li
           checked={false}
-          className="c3"
+          className="c4"
           onClick={[Function]}
           title=""
         >
@@ -487,7 +503,7 @@ exports[`Menu children: items 1`] = `
         </li>
         <li
           checked={false}
-          className="c3"
+          className="c4"
           onClick={[Function]}
           title=""
         >
@@ -495,7 +511,7 @@ exports[`Menu children: items 1`] = `
         </li>
         <li
           checked={false}
-          className="c3"
+          className="c4"
           onClick={[Function]}
           title=""
         >
@@ -503,7 +519,7 @@ exports[`Menu children: items 1`] = `
         </li>
         <li
           checked={false}
-          className="c3"
+          className="c4"
           onClick={[Function]}
           title=""
         >
@@ -511,7 +527,7 @@ exports[`Menu children: items 1`] = `
         </li>
         <li
           checked={false}
-          className="c3"
+          className="c4"
           onClick={[Function]}
           title=""
         >
@@ -520,10 +536,10 @@ exports[`Menu children: items 1`] = `
       </ul>
     </div>
     <div
-      className="c4"
+      className="c5"
     >
       <div
-        className="c5"
+        className="c6"
         onMouseDown={[Function]}
         onMouseMove={[Function]}
         onMouseOut={[Function]}
@@ -536,7 +552,7 @@ exports[`Menu children: items 1`] = `
         }
       >
         <div
-          className="c6"
+          className="c7"
           onMouseDown={[Function]}
           onMouseUp={[Function]}
           style={

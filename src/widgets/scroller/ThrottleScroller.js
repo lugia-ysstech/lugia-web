@@ -38,15 +38,20 @@ const Col = styled.div`
   display: inline-block;
 `;
 
-const ScrollerCol = Col.extend`
-  ${scrollerLeft}
-  width: ${BarDefaultSize}px;
-`;
-
 const ScrollerContainer = styled.div`
   overflow: hidden;
   ${height} ${width}
   position: relative;
+`;
+
+const ScrollerCol = Col.extend`
+  ${scrollerLeft}
+  width: ${BarDefaultSize}px;
+  opacity: 0;
+  ${ScrollerContainer}:hover & {
+    opacity: 1;
+  }
+  transition: opacity 0.3s;
 `;
 
 type ThrottleScrollerState = {
@@ -75,13 +80,13 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
       const start = this.getStart(props, this.state);
 
-      if (!this.isNeedScrolelr()) {
+      if (!this.isNeedScroller()) {
         const { length } = this.getTarget();
         //TODO: 待测试
         return <Target {...props} start={0} end={length} canSeeCount={length} />;
       }
 
-      const { type, getTheme } = props;
+      const { type, getTheme, step } = props;
       const viewSize = this.fetchViewSize();
       const totalSize = this.fetchTotalSize();
 
@@ -102,6 +107,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
               viewSize={viewSize}
               totalSize={totalSize}
               onChange={this.onScroller}
+              step={step}
             />
           </ScrollerCol>
         </ScrollerContainer>
@@ -125,19 +131,17 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       return limitStart(start);
     }
 
-    isNeedScrolelr() {
+    isNeedScroller() {
       const { length } = this.getTarget();
       return this.canSeeCount() < length;
     }
 
     canSeeCount(): number {
-      const viewHeigh = this.fetchViewSize();
-
-      if (viewHeigh <= 0 || menuItemHeight <= 0) {
+      const viewHeight = this.fetchViewSize();
+      if (viewHeight <= 0 || menuItemHeight <= 0) {
         return 0;
       }
-
-      return Math.ceil(viewHeigh / menuItemHeight);
+      return Math.ceil(viewHeight / menuItemHeight);
     }
 
     fetchViewSize() {

@@ -10,19 +10,23 @@ import '../css/sv.css';
 import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
+import CommonIcon from '../icon';
 
-const CloseButton: Object = styled.span`
+const CloseButton = styled(CommonIcon)`
   font-size: ${FontSize};
   color: rgba(0, 0, 0, 0.47);
   position: absolute;
   padding: 0 0 0 5px;
   right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
   zoom: 1;
 
   :hover {
     color: #000;
   }
 `;
+
 CloseButton.displayName = Widget.InputTagCloseButton;
 type ItemProps = {
   className?: string,
@@ -49,7 +53,8 @@ export default class extends React.Component<ItemProps, ItemState> {
       >
         <ItemText>{this.props.children}</ItemText>
         {closeable ? (
-          <CloseButton className="sviconfont icon-close" onClick={onCloseClick} />
+          // <CloseButton className="sviconfont icon-close" onClick={onCloseClick} />
+          <CloseButton iconClass="lugia-icon-reminder_close_circle" onClick={onCloseClick} />
         ) : null}
       </ItemContainer>
     );

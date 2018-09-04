@@ -5,7 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
 import { BackgroundColor, MenuItemHeight, SelectIcon } from '../css/menu';
@@ -19,15 +19,6 @@ type MenuItemProps = {
   children?: React.Node,
 };
 
-const getBackGroundColor = (props: MenuItemProps) => {
-  return props.checked
-    ? `
-    background-color: ${BackgroundColor};
-    font-weight: 600;
-    color: rgba(0,0,0,.65);
-    `
-    : '';
-};
 const getMulipleCheckedStyle = (props: MenuItemProps) => {
   return props.checked
     ? `
@@ -44,6 +35,18 @@ const getMulipleCheckedStyle = (props: MenuItemProps) => {
     }
     `;
 };
+
+const getItemColor = (props: MenuItemProps) => {
+  return props.checked
+    ? `
+    color: #4d63ff;
+    font-weight: 900;
+  `
+    : `
+    color: #333;
+    font-weight: 500;
+  `;
+};
 const SingleItem = styled.li`
   box-sizing: border-box;
   position: relative;
@@ -51,7 +54,7 @@ const SingleItem = styled.li`
   height: ${MenuItemHeight}px;
   padding: 7px 8px;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.65);
+  ${getItemColor};
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -59,11 +62,11 @@ const SingleItem = styled.li`
   transition: background 0.3s ease;
 
   &:hover {
-    background-color: #ecf6fd;
+    background-color: #f6f7ff;
+    font-weight: 900;
   }
-
-  ${getBackGroundColor};
 `;
+
 const MutlipleItem = SingleItem.extend`
     &::after {
       font-family: "sviconfont" !important;
@@ -78,13 +81,14 @@ const MutlipleItem = SingleItem.extend`
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 8px;
+      right: 10px;
       font-weight: 700;
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
     }
     
     ${getMulipleCheckedStyle}
 `;
+MutlipleItem.displayName = 'mutlipleMenuItem';
 
 class MenuItem extends React.Component<MenuItemProps> {
   static defaultProps = {
@@ -103,7 +107,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       }
     });
     return (
-      <Item checked={checked} onClick={onClick} title={title}>
+      <Item onClick={onClick} title={title} checked={checked}>
         {children}
       </Item>
     );
