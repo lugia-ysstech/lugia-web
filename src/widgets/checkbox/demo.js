@@ -110,7 +110,7 @@ export const CheckBoxGroupDemo = class extends React.Component<any, any> {
           </CheckBoxGroup>
         </Wrapper>
         <Wrapper>
-          <CheckBoxGroup onChange={this.handleChange} value={this.state.newValue}>
+          <CheckBoxGroup onChange={this.handleChange}>
             <CheckBox value="11" disabled>
               CheckBox1
             </CheckBox>
