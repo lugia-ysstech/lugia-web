@@ -12,7 +12,7 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import Input from '../input';
 import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
-import { Height } from '../css/input';
+import { Height } from '../css/menu';
 import { adjustValue } from '../utils';
 import { MenuItemHeight, DefaultHeight, DefaultWidth } from '../css/menu';
 

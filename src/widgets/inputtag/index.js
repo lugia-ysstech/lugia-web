@@ -27,18 +27,17 @@ import {
   getFocusShadow,
   getInputBorderColor,
   getInputBorderHoverColor,
-  Height,
   Padding,
   RadiusSize,
 } from '../css/input';
+
 import { FontSize } from '../css';
 import { DefaultHeight } from '../css/menu';
-import { MarginRight, SingleLineHeight } from '../css/inputtag';
+import { MarginRight, SingleLineHeight, Height } from '../css/inputtag';
 import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
-
 const ClearMenuItemButton = styled(Icon)`
   top: 50%;
   right: ${em(12)};
