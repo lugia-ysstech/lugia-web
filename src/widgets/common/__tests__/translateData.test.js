@@ -2,7 +2,7 @@
 import * as React from 'react';
 import chai from 'chai';
 import Enzyme, { mount, shallow } from 'enzyme';
-import translateData from '../translateData';
+import translateData, { getItems } from '../translateData';
 import Adapter from 'enzyme-adapter-react-16';
 import { delay } from '@lugia/react-test-utils';
 
@@ -61,5 +61,91 @@ describe('translateData', () => {
       },
     };
     expect(result).toEqual(resultData);
+  });
+  it('getItems not in cancel & data', () => {
+    const result = getItems(
+      ['1', '2'],
+      true,
+      { props: {} },
+      {
+        needUpdate: () => false,
+        getMapData() {
+          return {
+            cancelItemData: {},
+            dataItem: {},
+          };
+        },
+        updateHanlder() {},
+      }
+    );
+    expect(result).toEqual({
+      items: [undefined, undefined],
+      displayValue: ['1', '2'],
+    });
+  });
+  it('getItems  in data ', () => {
+    const values = ['a', 'b'];
+
+    const items = {
+      [values[0]]: { label: 'aaaa' },
+      [values[1]]: { label: 'bbbb' },
+    };
+    const result = getItems(
+      values,
+      true,
+      {
+        props: {
+          displayField: 'label',
+        },
+      },
+      {
+        needUpdate: () => false,
+        getMapData() {
+          return {
+            cancelItemData: {},
+            dataItem: items,
+          };
+        },
+        updateHanlder() {},
+      }
+    );
+    const itemA = items[values[0]];
+    const itemB = items[values[1]];
+    expect(result).toEqual({
+      items: [itemA, itemB],
+      displayValue: [itemA.label, itemB.label],
+    });
+  });
+  it('getItems  one in data one undefined', () => {
+    const values = ['a', 'b'];
+
+    const items = {
+      [values[0]]: { label: 'aaaa' },
+    };
+    const result = getItems(
+      values,
+      true,
+      {
+        props: {
+          displayField: 'label',
+        },
+      },
+      {
+        needUpdate: () => false,
+        getMapData() {
+          return {
+            cancelItemData: {},
+            dataItem: items,
+          };
+        },
+        updateHanlder() {},
+      }
+    );
+    const itemA = items[values[0]];
+    const itemB = undefined;
+    expect(result).toEqual({
+      items: [itemA, itemB],
+      displayValue: [itemA.label, values[1]],
+    });
   });
 });

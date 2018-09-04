@@ -7,10 +7,9 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Menu from '../../menu';
 import Widgets from '../../consts/index';
-import { Height } from '../../css/input';
 import { QueryInputPadding } from '../../common/QueryInputContainer';
 import { adjustValue } from '../../utils';
-import { MenuItemHeight, DefaultHeight } from '../../css/menu';
+import { MenuItemHeight, DefaultHeight, Height } from '../../css/menu';
 
 Enzyme.configure({ adapter: new Adapter() });
 

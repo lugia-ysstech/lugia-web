@@ -49,7 +49,6 @@ export const getFocusShadow = (props: Object) => {
 const em = px2emcss(1.2);
 
 export const RadiusSize = em(4);
-export const Height = 22;
 export const LargeHeight = em(40);
 export const SmallHeight = em(24);
 export const DefaultHeight = em(32);

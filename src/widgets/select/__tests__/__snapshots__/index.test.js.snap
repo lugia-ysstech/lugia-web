@@ -1,0 +1,398 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select 单选默认样式 1`] = `
+.c3 {
+  margin-top: 0.33333333333333337em;
+  height: 1.8333333333333335em;
+  line-height: 1.8333333333333335em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #f6f5ff;
+  border-radius: 1.8333333333333335em;
+  color: '#666666';
+  cursor: default;
+  float: left;
+  margin-right: 0.33333333333333337em;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: padding 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  padding: 0 1.6666666666666667em 0 0.8333333333333334em;
+}
+
+.c4 {
+  height: 1.6666666666666667em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c6:hover {
+  color: #000;
+}
+
+.c5 {
+  font-size: 1.2rem;
+  color: rgba(0,0,0,0.47);
+  position: absolute;
+  padding: 0 0 0 0.4166666666666667em;
+  right: 0.33333333333333337em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  zoom: 1;
+}
+
+.c5:hover {
+  color: #000;
+}
+
+.c2 {
+  font-size: 1.2rem;
+  position: absolute !important;
+  top: -943124px;
+}
+
+.c12 {
+  display: none;
+}
+
+.c13 {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1051;
+}
+
+.c18 {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  height: 35px;
+  padding: 7px 8px;
+  font-weight: 400;
+  color: #333;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+
+.c18:hover {
+  background-color: #f6f7ff;
+  font-weight: 900;
+}
+
+.c20 {
+  position: relative;
+  background: #fbfbfb;
+  width: 20px;
+  height: 300px;
+  z-index: 996;
+  width: 12px;
+}
+
+.c21 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  background: #c2c2c2;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 30px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.c21:hover {
+  background-color: #7a7a7a;
+}
+
+.c16 {
+  height: 270px;
+  width: 238px;
+  position: absolute;
+  display: inline-block;
+}
+
+.c15 {
+  overflow: hidden;
+  height: 270px;
+  width: 250px;
+  position: relative;
+}
+
+.c19 {
+  height: 270px;
+  width: 238px;
+  position: absolute;
+  display: inline-block;
+  left: 238px;
+  width: 12px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c14:hover .c19 {
+  opacity: 1;
+}
+
+.c17 {
+  outline: none;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 0;
+  list-style: none;
+  height: 280px;
+  max-height: 280px;
+  overflow: hidden;
+}
+
+.c7 {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  font-size: 1.2rem;
+}
+
+.c8 {
+  background: white;
+  border: solid 0.08333333333333334em #e8e8e8;
+  border-radius: 0.33333333333333337em;
+  min-height: 2.666666666666667em;
+  padding-bottom: 0.25em;
+}
+
+.c8:hover {
+  border-color: #cccccc;
+}
+
+.c10 {
+  top: 50%;
+  right: 0;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: rgba(0,0,0,0.25);
+  font-size: 1.2rem;
+}
+
+.c9 {
+  background: white;
+  width: 100%;
+  height: 2.5em;
+  margin-left: 0.4166666666666667em;
+  margin-right: 0.5833333333333334em;
+  margin-bottom: -0.25em;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 0.4166666666666667em;
+  padding-right: 1.1666666666666667em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 2.5em;
+}
+
+.c1 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: block;
+  min-height: 2.666666666666667em;
+  height: 2.666666666666667em;
+}
+
+.c11 {
+  position: absolute;
+  left: -41.66666666666667em;
+  width: 0.08333333333333334em;
+  height: 0.08333333333333334em;
+  padding: 0;
+  border: none;
+}
+
+<span>
+  <span
+    className="c0"
+  >
+    <ul
+      className="c1"
+    >
+      <li
+        className="c2 c3"
+      >
+        <span
+          className="c4"
+        >
+          
+        </span>
+        <i
+          className="lugia-icon-reminder_close_circle c5 c6"
+        />
+      </li>
+    </ul>
+    <div
+      className="sv c7"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <div
+        className="c8"
+      >
+        <div
+          className="c9"
+        >
+          
+          <i
+            className="lugia-icon-direction_down c10 c6"
+          />
+          <input
+            className="c11"
+          />
+        </div>
+      </div>
+    </div>
+  </span>
+  <div
+    className="c12"
+  >
+    <div
+      className="c13"
+    >
+      <div
+        className=""
+      >
+        <div
+          className="c14 c15"
+          onWheel={[Function]}
+        >
+          <div
+            className="c16"
+          >
+            <ul
+              className="c17"
+            >
+              <li
+                checked={false}
+                className="c18"
+                onClick={[Function]}
+                title=""
+              />
+              <li
+                checked={false}
+                className="c18"
+                onClick={[Function]}
+                title=""
+              />
+              <li
+                checked={false}
+                className="c18"
+                onClick={[Function]}
+                title=""
+              />
+              <li
+                checked={false}
+                className="c18"
+                onClick={[Function]}
+                title=""
+              />
+              <li
+                checked={false}
+                className="c18"
+                onClick={[Function]}
+                title=""
+              />
+              <li
+                checked={false}
+                className="c18"
+                onClick={[Function]}
+                title=""
+              />
+              <li
+                checked={false}
+                className="c18"
+                onClick={[Function]}
+                title=""
+              />
+              <li
+                checked={false}
+                className="c18"
+                onClick={[Function]}
+                title=""
+              />
+            </ul>
+          </div>
+          <div
+            className="c19"
+          >
+            <div
+              className="c20"
+              onMouseDown={[Function]}
+              onMouseMove={[Function]}
+              onMouseOut={[Function]}
+              onMouseUp={[Function]}
+              onWheel={[Function]}
+              style={
+                Object {
+                  "height": "270px",
+                }
+              }
+            >
+              <div
+                className="c21"
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "height": "10px",
+                    "top": "0px",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</span>
+`;

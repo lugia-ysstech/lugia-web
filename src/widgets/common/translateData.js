@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import { DisplayField, ValueField } from '../consts/props';
+import Support from '../common/FormFieldWidgetSupport';
 
 export default function translateData(
   props: Object,
@@ -14,7 +15,8 @@ export default function translateData(
 ): Object {
   const { data = [], valueField = ValueField, displayField = DisplayField } = props;
   const value = props.value || props.defaultValue || stateValue || [];
-  const values = typeof value === 'string' ? [value] : [...value];
+  const values = toArray(value);
+  displayValue = toArray(displayValue);
   const dataValue = [];
   const dataItem = {};
   const cancelItem = [];
@@ -59,11 +61,11 @@ export function didUpdate(
 ) {
   let displayValueEqual = true;
   let valueEqual = true;
-  const displayValue = params.props.displayValue;
-  const nextDisplayValue = nextProps.displayValue;
+  const displayValue = toArray(params.props.displayValue);
+  const nextDisplayValue = toArray(nextProps.displayValue);
 
-  const value = params.props.value;
-  const nextValue = nextProps.value;
+  const value = toArray(params.props.value);
+  const nextValue = toArray(nextProps.value);
 
   displayValueEqual = getEqualResult(displayValue, nextDisplayValue);
   valueEqual = getEqualResult(value, nextValue);
@@ -92,6 +94,7 @@ export function getItems(
   params: Object,
   handler: { updateHanlder: Function, needUpdate?: Function, getMapData: Function }
 ): Object {
+  value = toArray(value);
   const items = [];
   const displayValue = [];
   const { displayField = DisplayField, children } = params.props;
@@ -101,6 +104,7 @@ export function getItems(
 
   if (value.length > 0) {
     const { updateHanlder, needUpdate = (val: any) => false, getMapData } = handler;
+    console.log(value);
     value.forEach(val => {
       if (needUpdate(val)) {
         updateMapData(params.props, params.state.displayValue, updateHanlder);
@@ -110,7 +114,13 @@ export function getItems(
         dataItem = getMapData().cancelItemData[val];
       }
       items.push(dataItem);
-      needDisplayValue && displayValue.push(dataItem[displayField]);
+      let theDisplayVlaue = val;
+      if (needDisplayValue) {
+        if (dataItem && dataItem[displayField]) {
+          theDisplayVlaue = dataItem[displayField];
+        }
+        displayValue.push(theDisplayVlaue);
+      }
     });
   }
   return { items, displayValue };
@@ -137,7 +147,7 @@ export function handleCreate(params: Object, type: 'radio' | 'checkbox') {
 
 export function updateMapData(
   props: Object,
-  displayValue: Array<string>,
+  displayValue?: Array<string> = [],
   updateHandler: Function,
   stateValue?: string[] | string
 ) {
@@ -169,16 +179,65 @@ function renderChildren(params: Object, type: 'radio' | 'checkbox') {
   });
 }
 
+export const getDisplayValue = (
+  value: string[],
+  cache: { cancelItemData: Object, dataItem: Object, displayField: string }
+): string[] => {
+  const res = [];
+  if (!value) {
+    return res;
+  }
+  value = toArray(value);
+  const { cancelItemData = {}, dataItem = {}, displayField } = cache;
+  return value.map(
+    (v: string): string => {
+      const dataDisplayValue = getItem(dataItem, v, displayField);
+      if (dataDisplayValue) {
+        return dataDisplayValue;
+      }
+      const cancelDisplayValue = getItem(cancelItemData, v, displayField);
+      if (cancelDisplayValue) {
+        return cancelDisplayValue;
+      }
+      const cancelItem = cancelItemData[v];
+      if (cancelItem) {
+        return cancelItem[displayField];
+      }
+      return v;
+    }
+  );
+};
+
+function getItem(itemMap: Object, v: string, displayField: string) {
+  const item = itemMap[v];
+  if (item) {
+    return item[displayField];
+  }
+  return undefined;
+}
+
+function toArray(param: any, defaultValue?: any = []): any[] {
+  if (!param) {
+    return defaultValue;
+  }
+  return Support.toArray(param);
+}
 export const getValueAndDisplayValue = function(props: Object, state: ?Object): Object {
   const isInit = state === null || state === undefined;
   state = state ? state : {};
   const isValue = 'value' in props;
   const isDisplayValue = 'displayValue' in props;
-  const { value, defaultValue, displayValue, defaultDisplayValue } = props;
+  let { value, defaultValue, displayValue, defaultDisplayValue } = props;
   const { value: sValue } = state;
-  const realValue = isValue ? value : isInit ? defaultValue : sValue;
-  const { displayValue: sDisplayValue } = state;
-  return {
+  let realValue = isValue ? value : isInit ? defaultValue : sValue;
+  let { displayValue: sDisplayValue } = state;
+
+  realValue = toArray(realValue, null);
+  displayValue = toArray(displayValue, null);
+  sDisplayValue = toArray(sDisplayValue, null);
+  defaultDisplayValue = toArray(defaultDisplayValue, null);
+
+  const result = {
     value: realValue,
     displayValue: isDisplayValue
       ? displayValue
@@ -186,6 +245,10 @@ export const getValueAndDisplayValue = function(props: Object, state: ?Object): 
         ? defaultDisplayValue
         : sDisplayValue
           ? sDisplayValue
-          : realValue,
+          : undefined,
   };
+  if (result.displayValue && result.displayValue.length === 0) {
+    result.displayValue = undefined;
+  }
+  return result;
 };
