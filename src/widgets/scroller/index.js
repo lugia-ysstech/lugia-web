@@ -31,10 +31,9 @@ type Direction = 'down' | 'up' | 'none';
 
 const Container = styled.div`
   position: relative;
-  background: #e3e3e6;
+  background: #fbfbfb;
   width: 20px;
   height: 300px;
-  border-radius: 5px;
   z-index: 996;
 `;
 
@@ -44,7 +43,7 @@ const XContainer = Container.extend`
 const YContainer = Container.extend`
   width: ${BarDefaultSize}px;
 `;
-const getBackground = props => (props.disabled ? '#898989' : '#49a9ee');
+const getBackground = props => (props.disabled ? '#898989' : '#c2c2c2');
 const Bar = styled.div`
   position: absolute;
   top: 0;
@@ -58,8 +57,10 @@ const Bar = styled.div`
   line-height: 30px;
 
   &:hover {
-    background-color: #49a9ee96;
+    background-color: #7a7a7a;
   }
+
+  transition: all 0.4s;
 `;
 
 const scrollerSize = BarDefaultSize - BarDefaultSizePadding;
@@ -79,7 +80,7 @@ const XScroller = 'x',
 const Down = 'down';
 const Up = 'up';
 const None = 'none';
-const DefaultStep = 1;
+const DefaultStep = 30;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   static defaultProps = {

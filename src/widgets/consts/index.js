@@ -61,6 +61,10 @@ const Avatar = 'sv_widget_Avatar';
 const Badge = 'sv_widget_Badge';
 const NumberTurn = 'sv_widget_NumberTurn';
 
+/* add by szfeng */
+const Select = 'sv_widget_Select';
+const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
+
 export default {
   Button,
   Input,
@@ -111,4 +115,6 @@ export default {
   Avatar,
   Badge,
   NumberTurn,
+  Select,
+  SelectLimitTitle,
 };

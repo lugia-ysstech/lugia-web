@@ -4,13 +4,12 @@
  *
  * @flow
  */
-import React from 'react';
 import styled from 'styled-components';
 import '../css/sv.css';
-import { MarginRight, MarginTop, PaddingLeft, PadingRight } from '../css/inputtag';
-import { Height, Padding, RadiusSize } from '../css/input';
+import { MarginRight, MarginTop, PaddingLeft, PadingRight, Height } from '../css/inputtag';
+import { Padding } from '../css/input';
 
-const ItemTagHeight = Height - Padding - MarginTop;
+const ItemTagHeight = Height - Padding - MarginTop * 2;
 
 const getPaddingRight = (props: Object) => (props.closeable ? PadingRight : PaddingLeft);
 export const ItemContainer = styled.li`
@@ -18,9 +17,9 @@ export const ItemContainer = styled.li`
   height: ${ItemTagHeight}px;
   line-height: ${ItemTagHeight}px;
   user-select: none;
-  background: #f3f3f3;
-  border-radius: ${RadiusSize};
-  color: rgba(0, 0, 0, 0.65);
+  background: #f6f5ff;
+  border-radius: ${ItemTagHeight}px;
+  color: '#666666';
   cursor: default;
   float: left;
   margin-right: ${MarginRight}px;
