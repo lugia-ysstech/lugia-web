@@ -164,7 +164,7 @@ function renderChildren(params: Object, type: 'radio' | 'checkbox') {
   if (!value) {
     value = type === 'radio' ? '' : [];
   }
-  const { children, disabled, styles = 'default' } = params.props;
+  const { children, disabled, styles } = params.props;
   return React.Children.map(children, child => {
     if (React.isValidElement(child)) {
       return React.cloneElement(child, {
