@@ -175,7 +175,6 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp
           .find(Widgets.InputTagCloseButton)
-          .find('span')
           .at(1)
           .simulate('click');
         await delay(0, () => {
@@ -245,7 +244,6 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp
           .find(Widgets.InputTagCloseButton)
-          .find('span')
           .at(1)
           .simulate('click');
         await delay(0, async () => {
@@ -288,7 +286,6 @@ describe('InputTag', () => {
       await renderInputTag(InputTagTest, 1, async cmp => {
         cmp
           .find(Widgets.InputTagCloseButton)
-          .find('span')
           .at(1)
           .simulate('click');
         await delay(0, () => {

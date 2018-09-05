@@ -5,7 +5,6 @@
  */
 
 import { keyframes } from 'styled-components';
-import { px2emcss } from './units';
 import colorsFunc from '../css/stateColor';
 import * as InputCSS from './input';
 const { themeColor } = colorsFunc();

@@ -4,12 +4,9 @@
  * @flow
  */
 import { keyframes } from 'styled-components';
-import { px2emcss } from './units';
 import colorsFunc from '../css/stateColor';
 import * as InputCSS from './input';
 const { themeColor } = colorsFunc();
-
-const em = px2emcss(1.2);
 
 export const MenuItemHeight = 30;
 export const DefaultHeight = 250;

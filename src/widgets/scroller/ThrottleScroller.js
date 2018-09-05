@@ -10,26 +10,28 @@ import Scroller from './index';
 import '../css/sv.css';
 import Widget from '../consts/index';
 import { DefaultHeight, DefaultWidth, BarDefaultSize } from '../css/scroller';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 const height = props => {
   const height = props.theme.height;
-  return height ? `height:${height}px;` : `height:${DefaultHeight}px;`;
+  return height ? `height:${em(height)};` : `height:${em(DefaultHeight)};`;
 };
 const width = props => {
   const width = props.theme.width;
-  return width ? `width:${width}px;` : `width:${DefaultWidth}px;`;
+  return width ? `width:${em(width)};` : `width:${em(DefaultWidth)};`;
 };
 const getContentWidth = props => {
   const width = props.theme.width;
-  return width ? width - BarDefaultSize : DefaultWidth - BarDefaultSize;
+  return width ? em(width - BarDefaultSize) : em(DefaultWidth - BarDefaultSize);
 };
 
 const contentWidth = props => {
-  return `width:${getContentWidth(props)}px;`;
+  return `width:${getContentWidth(props)};`;
 };
 
 const scrollerLeft = props => {
-  return `left: ${getContentWidth(props)}px;`;
+  return `left: ${getContentWidth(props)};`;
 };
 
 const Col = styled.div`
@@ -46,7 +48,7 @@ const ScrollerContainer = styled.div`
 
 const ScrollerCol = Col.extend`
   ${scrollerLeft}
-  width: ${BarDefaultSize}px;
+  width: ${em(BarDefaultSize)};
   opacity: 0;
   ${ScrollerContainer}:hover & {
     opacity: 1;

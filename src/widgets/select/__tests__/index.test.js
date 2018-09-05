@@ -150,7 +150,11 @@ describe('Select', () => {
     }
 
     onChange = obj => {
-      this.setState(obj);
+      const { newValue, newDisplayValue } = obj;
+      this.setState({
+        value: newValue,
+        displayValue: newDisplayValue,
+      });
     };
   }
 
@@ -264,7 +268,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
     const value = ['123'];
@@ -306,7 +311,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
     const value = ['123'];
@@ -347,7 +353,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
 
@@ -385,7 +392,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
 
@@ -423,7 +431,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
 
@@ -461,7 +470,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
 
@@ -524,7 +534,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -566,7 +578,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -601,7 +615,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -642,7 +658,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -678,7 +696,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -838,6 +858,7 @@ describe('Select', () => {
         .instance().displayValue
     ).toEqual([displayValue]);
   });
+
   it('displayValue  ["szfeng"]  displayValue = \'displayValue\' not exist &  dataItem not exist', async () => {
     const value = ['szfeng'];
     const displayValue = 'displayValue';
