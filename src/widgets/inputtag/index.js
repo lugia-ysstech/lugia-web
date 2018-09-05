@@ -149,6 +149,7 @@ const SingleInnerContainer = InnerContainer.extend`
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: ${SingleLineHeight};
+  color: ${blackColor};
 `;
 const List = styled.ul`
   list-style: none;

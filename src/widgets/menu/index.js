@@ -191,7 +191,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       return {};
     }
     return {
-      onClick: () => {
+      onClick: (event: Object) => {
         if (!key) {
           return;
         }
@@ -218,7 +218,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         /**
          *  add by szfeng
          */
-        onClick && onClick(keys, str);
+        onClick && onClick(event, keys, str);
       },
     };
   };

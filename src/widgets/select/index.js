@@ -230,17 +230,18 @@ class Select extends React.Component<SelectProps, SelectState> {
     return true;
   }
 
-  refreshValue = () => {
+  refreshValue = (event: Object) => {
+    console.log('refresh', event);
     const { searchType } = this.props;
     this.onQueryInputChange('');
     const value = [];
     const displayValue = [];
     this.search('', searchType);
     this.setValue(value, displayValue, {});
-    this.onChangeHandle({ value, displayValue });
+    this.onChangeHandle({ value, displayValue, event });
   };
 
-  onCheckAll = () => {
+  onCheckAll = (event: Object) => {
     const { props, state } = this;
     const { data, isCheckedAll, length, value } = state;
     const { displayValue } = this;
@@ -248,7 +249,7 @@ class Select extends React.Component<SelectProps, SelectState> {
 
     if (isCheckedAll) {
       this.setValue([], [], {});
-      this.onChangeHandle({ value: [], displayValue: [] });
+      this.onChangeHandle({ value: [], displayValue: [], event });
     } else {
       let newValue = [],
         newDisp = [];
@@ -276,7 +277,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       newValue = [...value, ...newValue];
       newDisp = [...displayValue, ...newDisp];
       this.setValue(newValue, newDisp, {});
-      this.onChangeHandle({ value: newValue, displayValue: newDisp });
+      this.onChangeHandle({ value: newValue, displayValue: newDisp, event });
     }
   };
 
@@ -362,10 +363,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     );
   }
 
-  menuItemClickHandler = (selectedValue: Object) => {
-    const { props } = this;
-    const { selectedKeys } = selectedValue;
-
+  getItem(targetValue: string[] | [], isNeedDisplayValue: boolean) {
     const handler = {
       updateHanlder: this.updateMapData,
       needUpdate: this.needUpdate,
@@ -386,11 +384,18 @@ class Select extends React.Component<SelectProps, SelectState> {
       },
     };
 
-    const { displayValue = [] } = getItems(selectedKeys, true, _this, handler);
+    return getItems(targetValue, isNeedDisplayValue, _this, handler);
+  }
+
+  menuItemClickHandler = (event: Object, selectedValue: Object) => {
+    const { props } = this;
+    const { selectedKeys } = selectedValue;
+
+    const { displayValue = [] } = this.getItem(selectedKeys, true);
 
     if (isMutliple(props)) {
       this.setValue(selectedKeys, displayValue, {});
-      this.onChangeHandle({ value: selectedKeys, displayValue });
+      this.onChangeHandle({ value: selectedKeys, displayValue, event });
     } else {
       const key = selectedKeys;
       const nextDisplayValue = this.getSingleItemDisplayValue(this.dataItem[key]);
@@ -398,7 +403,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         value: key,
         displayValue: [nextDisplayValue],
       });
-      this.onChangeHandle({ value: key, displayValue });
+      this.onChangeHandle({ value: key, displayValue, event });
       this.setSelectMenuPopupVisible(false);
     }
   };
@@ -567,11 +572,24 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   onChangeHandle(targetObj: Object) {
     const { onChange, onSelect } = this.props;
-    const { value } = targetObj;
-    const isCheckedAll = this.getIsCheckedAll(value);
+
+    const { value: newValue, displayValue: newDisplayValue, event = null } = targetObj;
+    const isCheckedAll = this.getIsCheckedAll(newValue);
+
+    const { value: oldValue = [] } = this.state;
+    const { items: oldItem } = this.getItem(oldValue, false);
+    const { items: newItem } = this.getItem(newValue, false);
+    const obj = {
+      newValue,
+      oldValue,
+      newItem,
+      oldItem,
+      newDisplayValue,
+      event,
+    };
     this.setState({ isCheckedAll });
-    onChange && onChange(targetObj);
-    onSelect && onSelect(targetObj);
+    onChange && onChange(obj);
+    onSelect && onSelect(obj);
   }
 
   getIsCheckedAll(value: string[]) {
