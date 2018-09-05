@@ -14,7 +14,9 @@ import Input from '../input';
 import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
 import { Height } from '../css/menu';
 import { adjustValue } from '../utils';
-import { MenuItemHeight, DefaultHeight, DefaultWidth } from '../css/menu';
+import { MenuItemHeight, DefaultHeight, DefaultWidth, lightGreyColor } from '../css/menu';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 type DropMenuProps = {
   action: Array<string>,
@@ -29,8 +31,8 @@ type DropMenuProps = {
 };
 const MenuContainer = styled.div`
   background-color: #fff;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  box-shadow: 0 ${em(1)} ${em(6)} ${lightGreyColor};
+  border-radius: ${em(4)};
   box-sizing: border-box;
 `;
 type DropMenuState = {};

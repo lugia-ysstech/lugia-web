@@ -5,10 +5,18 @@
  * @flow
  */
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
-import { BackgroundColor, MenuItemHeight, SelectIcon } from '../css/menu';
+import {
+  ItemBackgroundColor,
+  MenuItemHeight,
+  SelectIcon,
+  themeColor,
+  blackColor,
+} from '../css/menu';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
@@ -23,10 +31,10 @@ const getMulipleCheckedStyle = (props: MenuItemProps) => {
   return props.checked
     ? `
     :after{
-      color: #108ee9;
+      color: ${themeColor};
     } 
     :hover:after{
-      color: #108ee9;
+      color: ${themeColor};
     }
     `
     : `
@@ -39,11 +47,11 @@ const getMulipleCheckedStyle = (props: MenuItemProps) => {
 const getItemColor = (props: MenuItemProps) => {
   return props.checked
     ? `
-    color: #4d63ff;
+    color: ${themeColor};
     font-weight: 900;
   `
     : `
-    color: #333;
+    color: ${blackColor};
     font-weight: 500;
   `;
 };
@@ -51,8 +59,8 @@ const SingleItem = styled.li`
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: ${MenuItemHeight}px;
-  padding: 7px 8px;
+  height: ${em(MenuItemHeight)};
+  padding: ${em(7)} ${em(8)};
   font-weight: 400;
   ${getItemColor};
   white-space: nowrap;
@@ -62,7 +70,7 @@ const SingleItem = styled.li`
   transition: background 0.3s ease;
 
   &:hover {
-    background-color: #f6f7ff;
+    background-color: ${ItemBackgroundColor};
     font-weight: 900;
   }
 `;
@@ -81,7 +89,7 @@ const MutlipleItem = SingleItem.extend`
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 10px;
+      right: ${em(10)};
       font-weight: 700;
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
     }

@@ -11,12 +11,13 @@ import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
 import CommonIcon from '../icon';
+import { blackColor, mediumGreyColor } from '../css/inputtag';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
 
 const CloseButton = styled(CommonIcon)`
   font-size: ${FontSize};
-  color: rgba(0, 0, 0, 0.47);
+  color: ${mediumGreyColor};
   position: absolute;
   padding: 0 0 0 ${em(5)};
   right: ${em(4)};
@@ -25,7 +26,7 @@ const CloseButton = styled(CommonIcon)`
   zoom: 1;
 
   :hover {
-    color: #000;
+    color: ${blackColor};
   }
 `;
 
@@ -55,7 +56,6 @@ export default class extends React.Component<ItemProps, ItemState> {
       >
         <ItemText>{this.props.children}</ItemText>
         {closeable ? (
-          // <CloseButton className="sviconfont icon-close" onClick={onCloseClick} />
           <CloseButton iconClass="lugia-icon-reminder_close_circle" onClick={onCloseClick} />
         ) : null}
       </ItemContainer>
