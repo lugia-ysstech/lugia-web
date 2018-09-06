@@ -22,7 +22,8 @@ import Refresh from '../icon/RefreshIcon';
 import CheckIcon from '../icon/CheckIcon';
 import ClearIcon from '../icon/ClearIcon';
 import { FontSize } from '../css';
-import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
+// import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
+import QueryInput from '../common/QueryInput';
 import { DefaultHeight, MenuItemHeight } from '../css/tree';
 
 import { adjustValue } from '../utils';
@@ -62,6 +63,7 @@ type TreeSelectProps = {
   /* create by ZhangBoPing */
   label: string,
   labelSize: number,
+  canSearch: boolean,
 };
 type TreeSelectState = {
   open: boolean,
@@ -123,6 +125,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     mode: 'local',
     throttle: 200,
     disabled: false,
+    canSearch: false,
   };
 
   state: TreeSelectState;
@@ -223,8 +226,26 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   getInner(props, state) {
     /* create by ZhangBoPing */
-    const { data, disabled, help, validateStatus, placeholder } = props;
-    const { current, start, treeFilter, value, displayValue, selectCount, query } = state;
+    const {
+      data,
+      disabled,
+      help,
+      validateStatus,
+      placeholder,
+      canSearch,
+      mutliple,
+      canInput,
+    } = props;
+    const {
+      current,
+      start,
+      treeFilter,
+      value,
+      displayValue,
+      selectCount,
+      query,
+      selectAll,
+    } = state;
 
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
@@ -233,17 +254,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       this.queryInput = cmp;
     };
     const tree = [
-      <QueryInput key="queryContainer">
-        <Input
-          key="queryInput"
-          ref={getQueryInput}
-          placeholder="输入查询条件"
-          value={query}
-          onChange={this.onQueryInputChange}
-          suffix={this.getSuffix()}
-          onKeyDown={this.onQueryInputKeyDown}
-        />
-      </QueryInput>,
+      <QueryInput
+        query={query}
+        onQueryInputChange={this.onQueryInputChange}
+        onQueryInputKeyDown={this.onQueryInputKeyDown}
+        refreshValue={this.onRefresh}
+        addClick={this.onAdd}
+        isCheckedAll={selectAll}
+        onCheckAll={this.onSelectAll}
+        canSearch={canSearch}
+        mutliple={mutliple}
+        canInput={canInput}
+      />,
       <Tree
         data={data}
         key="tree"
@@ -326,25 +348,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   onFocus = () => {};
 
-  getSuffix = () => {
-    const result = [];
-    if (this.isCanInput()) {
-      result.push(<AddIcon key="add" onClick={this.onAdd} viewClass={SelectedIcon} />);
-    }
-    if (this.isMutliple()) {
-      result.push(
-        <CheckIcon
-          checked={this.state.selectAll}
-          key="selAll"
-          onClick={this.onSelectAll}
-          viewClass={SelectedIcon}
-        />
-      );
-    }
-    result.push(<Refresh key="refresh" onClick={this.onRefresh} viewClass={SelectedIcon} />);
-    result.push(<ClearIcon key="clear" onClick={this.onClearQuery} viewClass={SelectedIcon} />);
-    return result;
-  };
   onClearQuery = () => {
     this.onQueryInputChange('');
   };
@@ -555,7 +558,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return !this.treeCmp || !this.treeCmp.getThemeTarget();
   }
 
-  onQueryInputChange = value => {
+  onQueryInputChange = (nextValue: any) => {
+    const { newValue } = nextValue;
+    const value = newValue ? newValue : '';
+
     if (value === this.state.query) {
       return;
     }
@@ -721,7 +727,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { width } = theme;
     let queryInputConfig = {};
     if (width) {
-      queryInputConfig.width = width - 2 * QueryInputPadding;
+      // queryInputConfig.width = width - 2 * QueryInputPadding;
+      queryInputConfig.width = width;
     }
     const inputTag = { ...theme };
     queryInputConfig = Object.assign({}, theme, queryInputConfig);
