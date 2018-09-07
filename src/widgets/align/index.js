@@ -45,6 +45,12 @@ export default class Align extends React.Component<PropsType> {
   };
 
   static displayName = Widget.Align;
+  rcAlign: Object;
+
+  constructor(props: PropsType) {
+    super(props);
+    this.rcAlign = React.createRef();
+  }
 
   render() {
     const { visible, autoResize, align, getTargetDom, children, offsetX, offsetY } = this.props;
@@ -60,10 +66,27 @@ export default class Align extends React.Component<PropsType> {
 
     return (
       <VisibleBox visible={visible}>
-        <RcAlign target={getTargetDom} align={rcAlignArg} monitorWindowResize={autoResize}>
+        <RcAlign
+          target={getTargetDom}
+          align={rcAlignArg}
+          monitorWindowResize={autoResize}
+          ref={this.rcAlign}
+        >
           {children}
         </RcAlign>
       </VisibleBox>
     );
+  }
+
+  componentDidUpdate(prevProps: PropsType) {
+    const { align, offsetX, offsetY } = this.props;
+    const { align: pAlign, offsetX: pX, offsetY: pY } = prevProps;
+    if (
+      this.rcAlign &&
+      this.rcAlign.current &&
+      (pY !== offsetY || pX !== offsetX || align !== pAlign)
+    ) {
+      this.rcAlign.current.forceAlign();
+    }
   }
 }
