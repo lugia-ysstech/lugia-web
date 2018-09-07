@@ -13,7 +13,7 @@ import Layout from '../layout';
 const { Header, Content, Footer, Aside } = Layout;
 
 const header = (
-  <div style={{ height: '60px', lineHeight: '60px', textAlign: 'center', background: '#684fff' }}>
+  <div style={{ height: '60px', lineHeight: '60px', textAlign: 'center', background: '#381be5' }}>
     Header
   </div>
 );
@@ -58,7 +58,7 @@ const aside = (
 export const LayoutDemo = () => {
   const layoutView = {
     [Widget.Layout]: {
-      width: 200,
+      width: 500,
       margin: {
         top: 20,
         bottom: 30,
@@ -147,6 +147,41 @@ export const LayoutDemo = () => {
           <Footer>{footer}</Footer>
         </Layout>
       </Layout>
+      <p>flex-direction: row; Aside collapsible</p>
+      <Layout direction="row">
+        <Layout isWrap={true}>
+          <Header>{header}</Header>
+          <Content>{content}</Content>
+          <Footer>{footer}</Footer>
+        </Layout>
+        <Aside collapsible reverseArrow>
+          <div>Aside</div>
+        </Aside>
+      </Layout>
+      <p>flex-direction: row; Aside collapsible</p>
+      <Layout direction="row">
+        <Aside collapsible reverseArrow breakpoint={'lg'}>
+          <div>Aside</div>
+        </Aside>
+        <Layout isWrap={true}>
+          <Header>{header}</Header>
+          <Content>{content}</Content>
+          <Footer>{footer}</Footer>
+        </Layout>
+      </Layout>
+      <p>flex-direction: row; Aside collapsible</p>
+      <Theme config={{ [Widget.Aside]: { backgroundColor: 'red' } }}>
+        <Layout direction="row">
+          <Aside collapsible reverseArrow>
+            <div>Aside</div>
+          </Aside>
+          <Layout isWrap={true}>
+            <Header>{header}</Header>
+            <Content>{content}</Content>
+            <Footer>{footer}</Footer>
+          </Layout>
+        </Layout>
+      </Theme>
       <p>flex-direction: row;</p>
       <Layout direction="row">
         <Aside>
@@ -184,18 +219,100 @@ export const LayoutDemo = () => {
 
       <p>theme</p>
       <Theme config={layoutView}>
-        <Layout direction="row">
-          <Header>
-            <div style={{ textAlign: 'center', background: '#684fff' }}>Header</div>
-          </Header>
-          <Content>
-            <div style={{ textAlign: 'center', background: '#0F89FF' }}>Content</div>
-          </Content>
-          <Footer>
-            <div style={{ textAlign: 'center', background: '#0f13ff' }}>Footer</div>
-          </Footer>
+        <Layout>
+          <Header>{header}</Header>
+          <Content>{content}</Content>
+          <Footer>{footer}</Footer>
         </Layout>
       </Theme>
     </div>
   );
 };
+export class AsideDemo extends React.Component<any, any> {
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <div>
+        <Aside collapsible>
+          <div
+            style={{
+              height: '200px',
+              lineHeight: '200px',
+              textAlign: 'center',
+              background: '#11b4ff',
+            }}
+          >
+            Aside
+          </div>
+        </Aside>
+        <p>collapsible trigger=null</p>
+        <Aside collapsible trigger={null}>
+          <div
+            style={{
+              height: '200px',
+              lineHeight: '200px',
+              textAlign: 'center',
+              background: '#11b4ff',
+            }}
+          >
+            Aside
+          </div>
+        </Aside>
+        <p>collapsible collapsed=true trigger="hello"</p>
+        <Aside collapsible collapsed={true} trigger="hello">
+          <div
+            style={{
+              height: '200px',
+              lineHeight: '200px',
+              textAlign: 'center',
+              background: '#11b4ff',
+            }}
+          >
+            Aside
+          </div>
+        </Aside>
+        <p>collapsible defaultCollapsed=true trigger="hello"</p>
+        <Aside
+          collapsible
+          defaultCollapsed={true}
+          breakpoint={'lg'}
+          reverseArrow
+          collapsedWidth={120}
+        >
+          <div
+            style={{
+              height: '200px',
+              lineHeight: '200px',
+              textAlign: 'center',
+              background: '#11b4ff',
+            }}
+          >
+            Aside
+          </div>
+        </Aside>
+        <p>
+          collapsible breakpoint={'lg'} collapsedWidth={64}
+        </p>
+        <Aside
+          collapsible
+          breakpoint={'lg'}
+          collapsedWidth={64}
+          onBreakpoint={() => console.info('1111')}
+        >
+          <div
+            style={{
+              height: '200px',
+              lineHeight: '200px',
+              textAlign: 'center',
+              background: '#11b4ff',
+            }}
+          >
+            Aside
+          </div>
+        </Aside>
+      </div>
+    );
+  }
+}

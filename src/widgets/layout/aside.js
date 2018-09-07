@@ -9,13 +9,131 @@ import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { AsideProps, AsideState } from '../css/aside';
-import { Aside } from '../css/aside';
+import { Aside, Trigger, IconWrap, ChildrenWrap } from '../css/aside';
+import type { screensType } from '../css/row';
 
+const responsiveMap: { [key: screensType]: string } = {
+  xs: '(max-width: 575px)',
+  sm: '(max-width: 576px)',
+  md: '(max-width: 768px)',
+  lg: '(max-width: 992px)',
+  xl: '(max-width: 1200px)',
+  xxl: '(max-width: 1600px)',
+};
+const responsiveArray: screensType[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+
+let enquire;
+if (typeof window !== undefined) {
+  const matchMediaPolyfill = (mediaQuery: string) => {
+    return {
+      media: mediaQuery,
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+  window.matchMedia = window.matchMedia || matchMediaPolyfill;
+
+  enquire = require('enquire.js');
+}
+
+Trigger.displayName = 'trigger';
 export default ThemeProvider(
   class extends React.Component<AsideProps, AsideState> {
+    static getDerivedStateFromProps(props, state) {
+      const has = 'collapsed' in props;
+      const { collapsed, defaultCollapsed } = props;
+      const result = has ? collapsed : state ? state.collapsed : defaultCollapsed || false;
+      return {
+        collapsed: !!result,
+        screens: state ? state.screens : {},
+      };
+    }
+    componentDidMount() {
+      const { breakpoint, onBreakpoint } = this.props;
+      if (breakpoint && responsiveMap[breakpoint]) {
+        enquire.register(responsiveMap[breakpoint], {
+          match: () => {
+            onBreakpoint && onBreakpoint(true);
+            this.setState({
+              collapsed: true,
+              screens: breakpoint,
+            });
+          },
+          unmatch: () => {
+            onBreakpoint && onBreakpoint(false);
+            this.setState({
+              collapsed: false,
+              screens: breakpoint,
+            });
+          },
+          destroy() {},
+        });
+      }
+    }
+
+    componentWillUnmount() {
+      const { breakpoint } = this.props;
+      if (breakpoint && responsiveMap[breakpoint]) {
+        enquire.unregister(responsiveMap[breakpoint]);
+      }
+    }
+
     render() {
-      const { children, getTheme } = this.props;
-      return <Aside theme={getTheme()}>{children}</Aside>;
+      const { children, getTheme, collapsedWidth, collapsible, trigger } = this.props;
+      const { collapsed } = this.state;
+      return (
+        <Aside theme={getTheme()} collapsed={collapsed} collapsedWidth={collapsedWidth}>
+          <ChildrenWrap theme={getTheme()}>
+            <div>{children}</div>
+            {collapsible && trigger !== null ? (
+              <Trigger
+                theme={getTheme()}
+                collapsed={collapsed}
+                onClick={this.handleTriggerClick}
+                collapsedWidth={collapsedWidth}
+              >
+                {this.getTrigger()}
+              </Trigger>
+            ) : null}
+          </ChildrenWrap>
+        </Aside>
+      );
+    }
+
+    getTrigger = () => {
+      const { trigger, reverseArrow = false } = this.props;
+      const { collapsed } = this.state;
+
+      if (trigger) {
+        return trigger;
+      }
+
+      return (
+        <IconWrap
+          iconClass={
+            collapsed
+              ? `lugia-icon-direction_${reverseArrow ? 'Left' : 'right'}`
+              : `lugia-icon-direction_${reverseArrow ? 'right' : 'Left'}`
+          }
+        />
+      );
+    };
+    handleTriggerClick = () => {
+      const { collapsible, onCollapse } = this.props;
+      const { collapsed } = this.state;
+
+      if (collapsible) {
+        onCollapse && onCollapse(!collapsed);
+        if (!this.isInProps()) {
+          this.setState({
+            collapsed: !collapsed,
+          });
+        }
+      }
+    };
+    isInProps() {
+      return 'collapsed' in this.props;
     }
   },
   Widget.Aside
