@@ -50,8 +50,9 @@ export default ThemeProvider(
     }
     componentDidMount() {
       const { breakpoint, onBreakpoint } = this.props;
-      if (breakpoint && responsiveMap[breakpoint]) {
-        enquire.register(responsiveMap[breakpoint], {
+      const responsiveSize = breakpoint && responsiveMap[breakpoint];
+      if (breakpoint && responsiveSize) {
+        enquire.register(responsiveSize, {
           match: () => {
             onBreakpoint && onBreakpoint(true);
             this.setState({
