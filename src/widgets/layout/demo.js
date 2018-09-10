@@ -118,13 +118,25 @@ export const LayoutDemo = () => {
         <Footer>{footer}</Footer>
       </Layout>
       <p>flex-direction: row;</p>
-      <Layout>
-        <Header>{header}</Header>
-        <Layout direction="row">
+      <Layout direction="row">
+        <Aside>
+          <div
+            style={{
+              height: '320px',
+              lineHeight: '200px',
+              width: '200px',
+              textAlign: 'center',
+              background: '#11b4ff',
+            }}
+          >
+            Aside
+          </div>
+        </Aside>
+        <Layout>
+          <Header>{header}</Header>
           <Content>{content}</Content>
-          <Aside>{aside}</Aside>
+          <Footer>{footer}</Footer>
         </Layout>
-        <Footer>{footer}</Footer>
       </Layout>
       <p>flex-direction: row;</p>
       <Layout direction="row">
@@ -146,6 +158,19 @@ export const LayoutDemo = () => {
           <Content>{content}</Content>
           <Footer>{footer}</Footer>
         </Layout>
+        <Aside>
+          <div
+            style={{
+              height: '320px',
+              lineHeight: '200px',
+              width: '200px',
+              textAlign: 'center',
+              background: '#11b4ff',
+            }}
+          >
+            Aside
+          </div>
+        </Aside>
       </Layout>
       <p>flex-direction: row; Aside collapsible</p>
       <Layout direction="row">
@@ -160,7 +185,7 @@ export const LayoutDemo = () => {
       </Layout>
       <p>flex-direction: row; Aside collapsible</p>
       <Layout direction="row">
-        <Aside collapsible reverseArrow breakpoint={'lg'}>
+        <Aside collapsible breakpoint={'lg'}>
           <div>Aside</div>
         </Aside>
         <Layout>
@@ -182,41 +207,6 @@ export const LayoutDemo = () => {
           </Aside>
         </Layout>
       </Theme>
-      <p>flex-direction: row;</p>
-      <Layout direction="row">
-        <Aside>
-          <div
-            style={{
-              height: '320px',
-              lineHeight: '200px',
-              width: '200px',
-              textAlign: 'center',
-              background: '#11b4ff',
-            }}
-          >
-            Aside
-          </div>
-        </Aside>
-        <Layout>
-          <Header>{header}</Header>
-          <Content>{content}</Content>
-          <Footer>{footer}</Footer>
-        </Layout>
-        <Aside>
-          <div
-            style={{
-              height: '320px',
-              lineHeight: '200px',
-              width: '200px',
-              textAlign: 'center',
-              background: '#11b4ff',
-            }}
-          >
-            Aside
-          </div>
-        </Aside>
-      </Layout>
-
       <p>theme</p>
       <Theme config={layoutView}>
         <Layout>
