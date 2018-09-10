@@ -1,12 +1,17 @@
 //@flow
 import type { ThemeType } from '@lugia/lugia-web';
 
-import { createGetMargin, getMargin } from '../ThemeUtils';
+import { createGetMargin, getMargin, createGetWidth, getWidth } from '../ThemeUtils';
 
 describe('ThemeUtils', () => {
   function testGetMargin(theme: { theme: ThemeType }, expectMargin: string) {
     it(`getMargin = theme:${JSON.stringify(theme)} `, () => {
       expect(getMargin(theme)).toBe(expectMargin);
+    });
+  }
+  function testGetWidth(theme: { theme: ThemeType }, expectMargin: string) {
+    it(`getWidth = theme:${JSON.stringify(theme)} `, () => {
+      expect(getWidth(theme)).toBe(expectMargin);
     });
   }
 
@@ -80,4 +85,47 @@ describe('ThemeUtils', () => {
   testGetMargin({ theme: { margin: 12 } }, 'margin:1em ');
   testGetMargin({ theme: { margin: 0 } }, 'margin:0em ');
   testGetMargin({ theme: { margin: -120 } }, 'margin:-10em ');
+
+  it('createGetWidth createGetWidth() theme:{ width: 12 }', () => {
+    const getMyWidth = createGetWidth();
+
+    expect(getMyWidth({ theme: { width: 12 } })).toBe('width: 1em;');
+  });
+
+  it('createGetWidth theme:{}', () => {
+    const getMyWidth = createGetWidth();
+
+    expect(getMyWidth({ theme: {} })).toBe('');
+  });
+
+  it('createGetWidth theme:{}', () => {
+    const getMyWidth = createGetWidth({
+      fontSize: 1,
+      defaultWidth: 1,
+    });
+
+    expect(getMyWidth({ theme: {} })).toBe('width: 0.1em;');
+  });
+
+  it('createGetWidth default:{fontSize: 1} theme:{}', () => {
+    const getMyWidth = createGetWidth({
+      fontSize: 1,
+    });
+
+    expect(getMyWidth({ theme: {} })).toBe('');
+  });
+
+  it('createGetWidth theme: {width: 10}', () => {
+    const getMyWidth = createGetWidth({
+      fontSize: 1,
+      defaultWidth: 1,
+    });
+
+    expect(getMyWidth({ theme: { width: 10 } })).toBe('width: 1em;');
+  });
+
+  testGetWidth({ theme: {} }, '');
+  testGetWidth({ theme: { width: 0 } }, 'width: 0em;');
+  testGetWidth({ theme: { width: 1.2 } }, 'width: 0.1em;');
+  testGetWidth({ theme: { width: -1.2 } }, 'width: -0.1em;');
 });

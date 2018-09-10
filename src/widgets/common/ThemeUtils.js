@@ -17,6 +17,10 @@ type MarginOpt = {
     bottom: number,
   },
 };
+type WidthOpt = {
+  fontSize: number,
+  defaultWidth?: number,
+};
 
 const DefaultFontSize = 1.2;
 const DefaultMargin = 0;
@@ -59,4 +63,17 @@ export const createGetMargin = (
   };
 };
 
+export const createGetWidth = (opt?: WidthOpt = { fontSize: DefaultFontSize }) => {
+  const { fontSize, defaultWidth } = opt;
+  const em = px2emcss(fontSize);
+  return (props: { theme: ThemeType }) => {
+    const { width = defaultWidth } = props.theme;
+    if (typeof width === 'number') {
+      return `width: ${em(width)};`;
+    }
+    return '';
+  };
+};
+
 export const getMargin = createGetMargin();
+export const getWidth = createGetWidth();
