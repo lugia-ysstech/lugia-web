@@ -22,6 +22,7 @@ exports[`Aside css 1`] = `
   position: relative;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  width: 16.666666666666668em;
   width: 5.333333333333334em;
 }
 
@@ -30,6 +31,7 @@ exports[`Aside css 1`] = `
   position: relative;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  width: 16.666666666666668em;
   width: 10em;
 }
 
@@ -41,7 +43,6 @@ exports[`Aside css 1`] = `
   text-align: center;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 16.666666666666668em;
   background: #684fff;
   width: 16.666666666666668em;
   cursor: pointer;
@@ -55,8 +56,8 @@ exports[`Aside css 1`] = `
   text-align: center;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 16.666666666666668em;
   background: #684fff;
+  width: 16.666666666666668em;
   width: 5.333333333333334em;
   cursor: pointer;
 }
@@ -69,8 +70,8 @@ exports[`Aside css 1`] = `
   text-align: center;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 16.666666666666668em;
   background: #684fff;
+  width: 16.666666666666668em;
   width: 10em;
   cursor: pointer;
 }

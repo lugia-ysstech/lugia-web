@@ -6,7 +6,7 @@
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import styled from 'styled-components';
-import { getMargin } from '../common/ThemeUtils';
+import { getMargin, getWidth } from '../common/ThemeUtils';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -31,14 +31,6 @@ const getDirectionCSS = (props: CSSProps): string => {
 
   return 'flex-direction: column;';
 };
-export const getThemeWidthCSS = (props: CSSProps) => {
-  const { width } = props.theme;
-  if (width) {
-    return `
-      width: ${em(width)};
-    `;
-  }
-};
 export const getThemeHeightCSS = (props: CSSProps) => {
   const { height } = props.theme;
   if (height) {
@@ -53,7 +45,7 @@ export const Layout = styled.div`
   flex: auto;
   font-size: ${FontSize}rem;
   ${getDirectionCSS};
-  ${getThemeWidthCSS}
+  ${getWidth}
   ${getThemeHeightCSS}
   ${getMargin}
 `;

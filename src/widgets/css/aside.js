@@ -8,13 +8,14 @@ import colorsFunc from '../css/stateColor';
 import type { ThemeType } from '@lugia/lugia-web';
 import type { screensType } from '../css/row';
 import styled from 'styled-components';
-import { getMargin } from '../common/ThemeUtils';
+import { getMargin, createGetWidth } from '../common/ThemeUtils';
 import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 const { themeColor } = colorsFunc();
+const getWidth = createGetWidth({ fontSize: FontSize, defaultWidth: 200 });
 
 type BasicType = {
   collapsedWidth?: number,
@@ -39,13 +40,12 @@ type CSSProps = {
   needNarrow: boolean,
 } & BasicType;
 
-const getWidth = (props: CSSProps) => {
+const getCollapsedWidth = (props: CSSProps) => {
   const { collapsed, collapsedWidth = 64 } = props;
-  const { width = 200 } = props.theme;
+
   if (collapsed) {
     return `width: ${em(collapsedWidth)};`;
   }
-  return `width: ${em(width)};`;
 };
 const getBackgroundCSS = (props: CSSProps): string => {
   const { backgroundColor } = props.theme;
@@ -58,6 +58,7 @@ export const Aside = styled.div`
   position: relative;
   transition: all 0.3s;
   ${getWidth};
+  ${getCollapsedWidth};
   ${getThemeHeightCSS};
   ${getMargin};
 `;
@@ -68,9 +69,9 @@ export const Trigger = styled.div`
   line-height: ${em(48)};
   text-align: center;
   transition: all 0.3s;
-  width: ${em(200)};
   ${getBackgroundCSS};
-  ${getWidth} cursor: pointer;
+  ${getWidth};
+  ${getCollapsedWidth} cursor: pointer;
 `;
 export const IconWrap = styled(Icon)`
   color: #fff;

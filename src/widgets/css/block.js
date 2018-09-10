@@ -4,8 +4,8 @@
  * @flow
  */
 import styled from 'styled-components';
-import { getMargin } from '../common/ThemeUtils';
-import { getThemeWidthCSS, getThemeHeightCSS } from './layout';
+import { getMargin, getWidth } from '../common/ThemeUtils';
+import { getThemeHeightCSS } from './layout';
 
 const FontSize = 1.2;
 
@@ -18,7 +18,7 @@ export type BlockState = {};
 export const Block = styled.div`
   font-size: ${FontSize}rem;
   flex: auto;
-  ${getThemeWidthCSS}
+  ${getWidth}
   ${getThemeHeightCSS}
   ${getMargin}
 `;

@@ -92,7 +92,6 @@ exports[`Layout css 1`] = `
   text-align: center;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 16.666666666666668em;
   background: #684fff;
   width: 16.666666666666668em;
   cursor: pointer;
@@ -106,7 +105,6 @@ exports[`Layout css 1`] = `
   text-align: center;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 16.666666666666668em;
   background: red;
   width: 16.666666666666668em;
   cursor: pointer;
