@@ -1,5 +1,930 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Layout css 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 1.2rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 1.2rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 1.2rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 41.66666666666667em;
+  margin: 1.6666666666666667em 3.3333333333333335em 2.5em 4.166666666666667em;
+}
+
+.c1 {
+  font-size: 1.2rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c11 {
+  font-size: 1.2rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  margin: 0.8333333333333334em 1.6666666666666667em 0.8333333333333334em 1.6666666666666667em;
+}
+
+.c12 {
+  font-size: 1.2rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  margin: 1.6666666666666667em 0.8333333333333334em 1.6666666666666667em 0.8333333333333334em;
+}
+
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c3 {
+  font-size: 1.2rem;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 16.666666666666668em;
+}
+
+.c5 {
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  line-height: 4em;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 16.666666666666668em;
+  background: #684fff;
+  width: 16.666666666666668em;
+  cursor: pointer;
+}
+
+.c9 {
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  line-height: 4em;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 16.666666666666668em;
+  background: red;
+  width: 16.666666666666668em;
+  cursor: pointer;
+}
+
+.c6 {
+  color: #fff;
+}
+
+.c4 {
+  height: 100%;
+  background: #684fff;
+}
+
+.c8 {
+  height: 100%;
+  background: red;
+}
+
+<div>
+  <p>
+    default flex-direction: column;
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#381be5",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Header
+      </div>
+    </div>
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#0F89FF",
+            "height": "200px",
+            "lineHeight": "200px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Content
+      </div>
+    </div>
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#0f13ff",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Footer
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row;
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#381be5",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Header
+      </div>
+    </div>
+    <div
+      className="c2"
+      direction="row"
+    >
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+        >
+          <div>
+            <div
+              style={
+                Object {
+                  "background": "#11b4ff",
+                  "height": "200px",
+                  "lineHeight": "200px",
+                  "textAlign": "center",
+                  "width": "200px",
+                }
+              }
+            >
+              Aside
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Content
+        </div>
+      </div>
+    </div>
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#0f13ff",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Footer
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row;
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#381be5",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Header
+      </div>
+    </div>
+    <div
+      className="c2"
+      direction="row"
+    >
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Content
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+        >
+          <div>
+            <div
+              style={
+                Object {
+                  "background": "#11b4ff",
+                  "height": "200px",
+                  "lineHeight": "200px",
+                  "textAlign": "center",
+                  "width": "200px",
+                }
+              }
+            >
+              Aside
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#0f13ff",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Footer
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row;
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#381be5",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Header
+      </div>
+    </div>
+    <div
+      className="c2"
+      direction="row"
+    >
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Content
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+        >
+          <div>
+            <div
+              style={
+                Object {
+                  "background": "#11b4ff",
+                  "height": "200px",
+                  "lineHeight": "200px",
+                  "textAlign": "center",
+                  "width": "200px",
+                }
+              }
+            >
+              Aside
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c1"
+    >
+      <div
+        style={
+          Object {
+            "background": "#0f13ff",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Footer
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row;
+  </p>
+  <div
+    className="c2"
+    direction="row"
+  >
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "background": "#11b4ff",
+                "height": "320px",
+                "lineHeight": "200px",
+                "textAlign": "center",
+                "width": "200px",
+              }
+            }
+          >
+            Aside
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c0"
+    >
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#381be5",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Header
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Content
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0f13ff",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Footer
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row; Aside collapsible
+  </p>
+  <div
+    className="c2"
+    direction="row"
+  >
+    <div
+      className="c0"
+    >
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#381be5",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Header
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Content
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0f13ff",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Footer
+        </div>
+      </div>
+    </div>
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div>
+          <div>
+            Aside
+          </div>
+        </div>
+        <div
+          className="c5"
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_right c6 c7"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row; Aside collapsible
+  </p>
+  <div
+    className="c2"
+    direction="row"
+  >
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div>
+          <div>
+            Aside
+          </div>
+        </div>
+        <div
+          className="c5"
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_right c6 c7"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="c0"
+    >
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#381be5",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Header
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Content
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0f13ff",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Footer
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row; Aside collapsible
+  </p>
+  <span>
+    <div
+      className="c2"
+      direction="row"
+    >
+      <div
+        className="c0"
+      >
+        <div
+          className="c1"
+        >
+          <div
+            style={
+              Object {
+                "background": "#381be5",
+                "height": "60px",
+                "lineHeight": "60px",
+                "textAlign": "center",
+              }
+            }
+          >
+            Header
+          </div>
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            style={
+              Object {
+                "background": "#0F89FF",
+                "height": "200px",
+                "lineHeight": "200px",
+                "textAlign": "center",
+              }
+            }
+          >
+            Content
+          </div>
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            style={
+              Object {
+                "background": "#0f13ff",
+                "height": "60px",
+                "lineHeight": "60px",
+                "textAlign": "center",
+              }
+            }
+          >
+            Footer
+          </div>
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <div
+          className="c8"
+        >
+          <div>
+            <div>
+              Aside
+            </div>
+          </div>
+          <div
+            className="c9"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_right c6 c7"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+  <p>
+    flex-direction: row;
+  </p>
+  <div
+    className="c2"
+    direction="row"
+  >
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "background": "#11b4ff",
+                "height": "320px",
+                "lineHeight": "200px",
+                "textAlign": "center",
+                "width": "200px",
+              }
+            }
+          >
+            Aside
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c0"
+    >
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#381be5",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Header
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Content
+        </div>
+      </div>
+      <div
+        className="c1"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0f13ff",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Footer
+        </div>
+      </div>
+    </div>
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "background": "#11b4ff",
+                "height": "320px",
+                "lineHeight": "200px",
+                "textAlign": "center",
+                "width": "200px",
+              }
+            }
+          >
+            Aside
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    theme
+  </p>
+  <span>
+    <div
+      className="c10"
+    >
+      <div
+        className="c11"
+      >
+        <div
+          style={
+            Object {
+              "background": "#381be5",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Header
+        </div>
+      </div>
+      <div
+        className="c12"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Content
+        </div>
+      </div>
+      <div
+        className="c11"
+      >
+        <div
+          style={
+            Object {
+              "background": "#0f13ff",
+              "height": "60px",
+              "lineHeight": "60px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Footer
+        </div>
+      </div>
+    </div>
+  </span>
+</div>
+`;
+
 exports[`row css 1`] = `
 .c0 {
   display: -webkit-box;
