@@ -235,6 +235,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       canSearch,
       mutliple,
       canInput,
+      igronSelectField,
     } = props;
     const {
       current,

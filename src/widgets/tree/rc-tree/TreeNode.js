@@ -48,7 +48,7 @@ function getCheckedStyled(props) {
 
   return props.selected ? `background-color: ${ItemBackgroundColor}` : null;
 }
-const ChildrenTitle = styled.span`
+const TitleWrap = styled.span`
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
@@ -66,13 +66,19 @@ const ChildrenTitle = styled.span`
   }
 `;
 
+const TitleSpan = styled.span`
+  color: ${darkGreyColor};
+`;
+TitleSpan.displayName = 'titleSpan';
+
 const Switcher = styled.span`
   font-size: ${em(12)};
   color: ${mediumGreyColor};
   display: inline-block;
-  margin-left: ${em(10)};
+  margin: 0 ${em(10)};
   vertical-align: top;
 `;
+Switcher.displayName = 'switcherButton';
 
 const NullSwitcher = Switcher.extend`
   opacity: 0;
@@ -225,28 +231,28 @@ class TreeNode extends React.Component {
         ? 'lugia-icon-direction_caret_down'
         : 'lugia-icon-direction_caret_right';
     return (
-      <Switcher onClick={props.disabled ? null : this.onExpand}>
+      <Switcher onClick={props.disabled ? null : this.onExpand} expandedState={expandedState}>
         <CommonIcon iconClass={iconClass} />
       </Switcher>
     );
   }
 
   renderCheckbox(props) {
-    const { checked, halfChecked: indeterminate, notCanSelect: disabled } = props;
+    const { checked, halfChecked: indeterminate, notCanSelect: disabled, title } = props;
     const view = {
       [Widget.CheckBox]: { color: themeColor },
     };
     return (
-      <Wrap onClick={this.onCheck}>
-        <Theme config={view}>
-          <CheckBox
-            checked={checked}
-            disabled={disabled}
-            indeterminate={indeterminate}
-            onClick={this.onCheck}
-          />
-        </Theme>
-      </Wrap>
+      <Theme config={view}>
+        <CheckBox
+          checked={checked}
+          disabled={disabled}
+          indeterminate={indeterminate}
+          onChange={this.onCheck}
+        >
+          {title}
+        </CheckBox>
+      </Theme>
     );
   }
 
@@ -323,22 +329,14 @@ class TreeNode extends React.Component {
     }
 
     const selectHandle = () => {
-      const title = <span className={`${prefixCls}-title`}>{content}</span>;
-      const wrap = `${prefixCls}-node-content-wrapper`;
+      const title = <TitleSpan title={content}>{content}</TitleSpan>;
       const domProps = {
-        className: `${wrap} ${wrap}-${iconState === expandedState ? iconState : 'normal'}`,
         onMouseEnter: this.onMouseEnter,
         onMouseLeave: this.onMouseLeave,
         onContextMenu: this.onContextMenu,
       };
 
       if (!props.disabled) {
-        if (props.selected || this.state.dragNodeHighlight) {
-          domProps.className += ` ${prefixCls}-node-selected`;
-        }
-        if (props.hightLight || this.state.dragNodeHighlight) {
-          domProps.className += ` ${prefixCls}-node-highlight`;
-        }
         domProps.onClick = e => {
           e.preventDefault();
 
@@ -347,7 +345,6 @@ class TreeNode extends React.Component {
           }
         };
         if (props.draggable) {
-          domProps.className += ' draggable';
           domProps.draggable = true;
           domProps['aria-grabbed'] = true;
           domProps.onDragStart = this.onDragStart;
@@ -356,7 +353,7 @@ class TreeNode extends React.Component {
 
       const { checked, selected, notCanSelect } = this.props;
       return (
-        <ChildrenTitle
+        <TitleWrap
           ref={this.saveSelectHandle}
           title={typeof content === 'string' ? content : ''}
           {...domProps}
@@ -365,7 +362,7 @@ class TreeNode extends React.Component {
           notCanSelect={notCanSelect}
         >
           {title}
-        </ChildrenTitle>
+        </TitleWrap>
       );
     };
 
@@ -385,13 +382,19 @@ class TreeNode extends React.Component {
     );
 
     return (
-      <Li unselectable="on" {...liProps} isLeaf={props.isLeaf} selected={props.selected}>
+      <Li
+        unselectable="on"
+        {...liProps}
+        isLeaf={props.isLeaf}
+        selected={props.selected}
+        title={props.title}
+      >
         {/* 前边的小箭头和小书籍图标*/}
         {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : renderNoopSwitcher()}
         {/* 小方格 */}
         {props.checkable ? this.renderCheckbox(props) : null}
         {/* 内容 */}
-        {selectHandle()}
+        {props.checkable ? null : selectHandle()}
         {newChildren}
       </Li>
     );

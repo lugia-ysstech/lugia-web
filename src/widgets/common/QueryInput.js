@@ -14,8 +14,14 @@ import styled from 'styled-components';
 import CommonIcon from '../icon';
 import { DefaultHeight } from '../css/input';
 import { isCanInput, isCanSearch, isMutliple } from '../common/selectFunction';
-
-import { getCheckAllButtonColor, IsShowSearchInputHandle } from '../css/queryInput';
+import {
+  getCheckAllButtonColor,
+  IsShowSearchInputHandle,
+  themeColor,
+  darkGreyColor,
+} from '../css/queryInput';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 const OutContainer = styled.div`
   height: ${DefaultHeight};
@@ -46,37 +52,35 @@ const SearchInputContainer = styled.div`
 
 const CheckAllButton = styled.span`
   color: ${getCheckAllButtonColor};
-  margin-left: 10px;
-  font-size: 16px;
+  margin-left: ${em(10)};
+  font-size: ${em(16)};
 `;
 
 CheckAllButton.displayName = 'CheckAllButton';
 
-const RefreshButton = styled.span`
-  color: #666;
-  margin-left: 10px;
-  font-size: 16px;
+const ShowCheckAllButton = styled.span`
+  color: ${darkGreyColor};
   transition: all 0.4s;
-
   &:hover {
-    color: #4d63ff;
+    color: ${themeColor};
   }
+`;
+
+const AppendValueButton = ShowCheckAllButton.extend``;
+
+const RefreshButton = ShowCheckAllButton.extend`
+  margin-left: ${em(10)};
+  font-size: ${em(16)};
 `;
 RefreshButton.displayName = 'RefreshButton';
 
-const SearchButton = styled.span`
+const SearchButton = ShowCheckAllButton.extend`
   position: absolute;
-  color: #666;
   top: 50%;
-  right: 10px;
+  right: ${em(10)};
   transform: translateY(-50%);
   z-index: 2;
-  font-size: 16px;
-  transition: all 0.4s;
-
-  &:hover {
-    color: #4d63ff;
-  }
+  font-size: ${em(16)};
 `;
 SearchButton.displayName = 'SearchButton';
 
@@ -182,7 +186,9 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
 
   getQueryInputPrefix() {
     return (
-      <CommonIcon iconClass={'lugia-icon-direction_arrow_up'} onClick={this.onHideSearchInput} />
+      <ShowCheckAllButton>
+        <CommonIcon iconClass={'lugia-icon-direction_arrow_up'} onClick={this.onHideSearchInput} />
+      </ShowCheckAllButton>
     );
   }
 
@@ -190,7 +196,11 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
     const { props } = this;
     if (isCanInput(props)) {
       const { addClick } = props;
-      return <CommonIcon iconClass={'lugia-icon-reminder_plus'} onClick={addClick} />;
+      return (
+        <AppendValueButton>
+          <CommonIcon iconClass={'lugia-icon-reminder_plus'} onClick={addClick} />
+        </AppendValueButton>
+      );
     }
     return null;
   }

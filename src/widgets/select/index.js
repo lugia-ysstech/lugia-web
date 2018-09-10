@@ -55,6 +55,7 @@ type SelectProps = {
   onTrigger?: Function,
   onQuery?: Function,
   onSelect?: Function,
+  onRefresh?: Function,
   value?: string[],
   displayValue?: string[],
   defaultValue?: string[],
@@ -231,14 +232,14 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   refreshValue = (event: Object) => {
-    console.log('refresh', event);
-    const { searchType } = this.props;
+    const { searchType, onRefresh } = this.props;
     this.onQueryInputChange('');
     const value = [];
     const displayValue = [];
     this.search('', searchType);
     this.setValue(value, displayValue, {});
     this.onChangeHandle({ value, displayValue, event });
+    onRefresh && onRefresh();
   };
 
   onCheckAll = (event: Object) => {
