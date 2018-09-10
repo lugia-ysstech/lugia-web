@@ -14,9 +14,9 @@ import { Layout } from '../css/layout';
 export default ThemeProvider(
   class extends React.Component<LayoutProps, LayoutState> {
     render() {
-      const { direction, children, getTheme, isWrap } = this.props;
+      const { direction, children, getTheme } = this.props;
       return (
-        <Layout direction={direction} isWrap={isWrap} theme={getTheme()}>
+        <Layout direction={direction} theme={getTheme()}>
           {children}
         </Layout>
       );

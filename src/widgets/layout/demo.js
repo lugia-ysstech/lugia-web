@@ -141,7 +141,7 @@ export const LayoutDemo = () => {
             Aside
           </div>
         </Aside>
-        <Layout isWrap={true}>
+        <Layout>
           <Header>{header}</Header>
           <Content>{content}</Content>
           <Footer>{footer}</Footer>
@@ -149,7 +149,7 @@ export const LayoutDemo = () => {
       </Layout>
       <p>flex-direction: row; Aside collapsible</p>
       <Layout direction="row">
-        <Layout isWrap={true}>
+        <Layout>
           <Header>{header}</Header>
           <Content>{content}</Content>
           <Footer>{footer}</Footer>
@@ -163,7 +163,7 @@ export const LayoutDemo = () => {
         <Aside collapsible reverseArrow breakpoint={'lg'}>
           <div>Aside</div>
         </Aside>
-        <Layout isWrap={true}>
+        <Layout>
           <Header>{header}</Header>
           <Content>{content}</Content>
           <Footer>{footer}</Footer>
@@ -172,14 +172,14 @@ export const LayoutDemo = () => {
       <p>flex-direction: row; Aside collapsible</p>
       <Theme config={{ [Widget.Aside]: { backgroundColor: 'red' } }}>
         <Layout direction="row">
-          <Aside collapsible reverseArrow>
-            <div>Aside</div>
-          </Aside>
-          <Layout isWrap={true}>
+          <Layout>
             <Header>{header}</Header>
             <Content>{content}</Content>
             <Footer>{footer}</Footer>
           </Layout>
+          <Aside collapsible reverseArrow>
+            <div>Aside</div>
+          </Aside>
         </Layout>
       </Theme>
       <p>flex-direction: row;</p>
@@ -197,7 +197,7 @@ export const LayoutDemo = () => {
             Aside
           </div>
         </Aside>
-        <Layout isWrap={true}>
+        <Layout>
           <Header>{header}</Header>
           <Content>{content}</Content>
           <Footer>{footer}</Footer>

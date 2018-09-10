@@ -6,7 +6,8 @@
 import styled, { keyframes } from 'styled-components';
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import { getThemeWidthCSS, getThemeMarginCSS } from '../css/panel';
+import { getThemeWidthCSS } from '../css/panel';
+import { getMargin } from '../common/ThemeUtils';
 
 const FontSize = 1.4;
 const em = px2emcss(FontSize);
@@ -28,16 +29,16 @@ type CSSProps = {
 };
 
 const getFirstPanelBorder = (props: CSSProps) => {
-  const { borderColor, border } = props.panelTheme;
-  if (border || (border && border.bottom !== 0)) {
-    let borderSize;
-    if (typeof border === 'number') {
-      borderSize = border;
+  const { borderColor = '#e8e8e8', borderSize } = props.panelTheme;
+  if (borderSize || (borderSize && borderSize.bottom !== 0)) {
+    let border = 0;
+    if (typeof borderSize === 'number') {
+      border = borderSize;
     } else {
-      borderSize = border.bottom || 0;
+      border = borderSize.bottom || 0;
     }
     return `
-      border-top: ${em(borderSize)} solid ${borderColor};
+      border-top: ${em(border)} solid ${borderColor};
     `;
   }
 };
@@ -48,5 +49,5 @@ export const Wrap = styled.div`
   }
 
   ${getThemeWidthCSS};
-  ${getThemeMarginCSS};
+  ${getMargin};
 `;

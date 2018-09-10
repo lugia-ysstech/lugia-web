@@ -9,7 +9,7 @@ import type { ThemeType } from '@lugia/lugia-web';
 import type { screensType } from '../css/row';
 import styled from 'styled-components';
 import { getMargin } from '../common/ThemeUtils';
-import { getThemeWidthCSS, getThemeHeightCSS } from './layout';
+import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
 
 const FontSize = 1.2;
@@ -56,7 +56,6 @@ const getBackgroundCSS = (props: CSSProps): string => {
 export const Aside = styled.div`
   font-size: ${FontSize}rem;
   position: relative;
-  width: ${em(200)};
   transition: all 0.3s;
   ${getWidth};
   ${getThemeHeightCSS};
@@ -65,8 +64,8 @@ export const Aside = styled.div`
 export const Trigger = styled.div`
   position: absolute;
   bottom: 0;
-  height: 48px;
-  line-height: 48px;
+  height: ${em(48)};
+  line-height: ${em(48)};
   text-align: center;
   transition: all 0.3s;
   width: ${em(200)};

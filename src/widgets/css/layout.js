@@ -13,7 +13,6 @@ const em = px2emcss(FontSize);
 
 export type LayoutProps = {
   direction?: 'row' | 'column',
-  isWrap?: boolean,
   children: any,
   getTheme: Function,
 };
@@ -30,12 +29,6 @@ const getDirectionCSS = (props: CSSProps): string => {
   }
 
   return 'flex-direction: column;';
-};
-const getWrapCSS = (props: CSSProps) => {
-  const { isWrap = false } = props;
-  if (isWrap) {
-    return 'flex: auto;';
-  }
 };
 export const getThemeWidthCSS = (props: CSSProps) => {
   const { width } = props.theme;
@@ -56,9 +49,9 @@ export const getThemeHeightCSS = (props: CSSProps) => {
 
 export const Layout = styled.div`
   display: flex;
+  flex: auto;
   font-size: ${FontSize}rem;
   ${getDirectionCSS};
-  ${getWrapCSS}
   ${getThemeWidthCSS}
   ${getThemeHeightCSS}
   ${getMargin}

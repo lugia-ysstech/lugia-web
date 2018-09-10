@@ -20,7 +20,6 @@ const responsiveMap: { [key: screensType]: string } = {
   xl: '(max-width: 1200px)',
   xxl: '(max-width: 1600px)',
 };
-const responsiveArray: screensType[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 let enquire;
 if (typeof window !== undefined) {
@@ -41,9 +40,9 @@ Trigger.displayName = 'trigger';
 export default ThemeProvider(
   class extends React.Component<AsideProps, AsideState> {
     static getDerivedStateFromProps(props, state) {
-      const has = 'collapsed' in props;
+      const inProps = 'collapsed' in props;
       const { collapsed, defaultCollapsed } = props;
-      const result = has ? collapsed : state ? state.collapsed : defaultCollapsed || false;
+      const result = inProps ? collapsed : state ? state.collapsed : defaultCollapsed || false;
       return {
         collapsed: !!result,
         screens: state ? state.screens : {},
