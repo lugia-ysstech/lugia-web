@@ -11,17 +11,18 @@ import { getMargin } from '../common/ThemeUtils';
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
-export type LayoutProps = {
+type BasicType = {
   direction?: 'row' | 'column',
+};
+export type LayoutProps = {
   children: any,
   getTheme: Function,
-};
+} & BasicType;
 export type LayoutState = {};
 type CSSProps = {
-  direction?: 'row' | 'column',
   isWrap?: boolean,
   theme: ThemeType,
-};
+} & BasicType;
 const getDirectionCSS = (props: CSSProps): string => {
   const { direction = 'column' } = props;
   if (direction === 'row') {

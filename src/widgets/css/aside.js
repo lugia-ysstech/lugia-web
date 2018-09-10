@@ -16,28 +16,28 @@ const FontSize = 1.2;
 const em = px2emcss(FontSize);
 const { themeColor } = colorsFunc();
 
+type BasicType = {
+  collapsedWidth?: number,
+  collapsed?: boolean,
+};
 export type AsideProps = {
   getTheme: Function,
   children: any,
   collapsible?: boolean,
-  collapsedWidth?: number,
-  collapsed?: boolean,
   trigger?: any,
   onCollapse?: Function,
   reverseArrow?: boolean,
   breakpoint?: screensType,
   onBreakpoint?: Function,
-};
+} & BasicType;
 export type AsideState = {
   collapsed: boolean,
   screens: screensType,
 };
 type CSSProps = {
   theme: ThemeType,
-  collapsed: boolean,
-  collapsedWidth?: number,
   needNarrow: boolean,
-};
+} & BasicType;
 
 const getWidth = (props: CSSProps) => {
   const { collapsed, collapsedWidth = 64 } = props;
