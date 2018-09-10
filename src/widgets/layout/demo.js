@@ -5,7 +5,6 @@
  * @flow
  */
 import React from 'react';
-import styled from 'styled-components';
 import Widget from '../consts';
 import Theme from '../theme';
 import Layout from '../layout';
@@ -219,9 +218,6 @@ export const LayoutDemo = () => {
   );
 };
 export class AsideDemo extends React.Component<any, any> {
-  constructor() {
-    super();
-  }
   render() {
     return (
       <div>
