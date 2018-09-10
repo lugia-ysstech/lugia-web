@@ -7,7 +7,7 @@ import colorsFunc from '../css/stateColor';
 import styled, { keyframes } from 'styled-components';
 import { px2emcss } from '../css/units';
 import changeColor from '../css/utilsColor';
-import { getMargin } from '../common/ThemeUtils';
+import { getMargin } from './collapse';
 import Icon from '../icon';
 import type { ThemeType } from '@lugia/lugia-web';
 

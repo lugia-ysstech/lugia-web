@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Collapse Collapse CSS 1`] = `
+.c1 {
+  font-size: 1.4rem;
+}
+
+.c13 {
+  font-size: 1.4rem;
+  margin: 1.4285714285714286em;
+}
+
 .c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -111,16 +120,6 @@ exports[`Collapse Collapse CSS 1`] = `
   transition: all 0.2s;
   font-size: 1.4rem;
   padding-left: 0.8571428571428572em;
-}
-
-.c1 {
-  font-size: 1.4rem;
-}
-
-.c13 {
-  font-size: 1.4rem;
-  width: 35.714285714285715em;
-  margin: 1.6666666666666667em;
 }
 
 .c0 {
