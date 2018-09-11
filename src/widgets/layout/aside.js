@@ -11,6 +11,7 @@ import Widget from '../consts/index';
 import type { AsideProps, AsideState } from '../css/aside';
 import { Aside, Trigger, IconWrap, ChildrenWrap } from '../css/aside';
 import type { screensType } from '../css/row';
+import { EnlargeContext } from './layout';
 
 const responsiveMap: { [key: screensType]: string } = {
   xs: '(max-width: 575px)',
@@ -80,24 +81,52 @@ export default ThemeProvider(
     }
 
     render() {
-      const { children, getTheme, collapsedWidth, collapsible, trigger } = this.props;
+      const { children, getTheme, collapsedWidth, collapsible, trigger, value } = this.props;
       const { collapsed } = this.state;
       return (
-        <Aside theme={getTheme()} collapsed={collapsed} collapsedWidth={collapsedWidth}>
-          <ChildrenWrap theme={getTheme()}>
-            <div>{children}</div>
-            {collapsible && trigger !== null ? (
-              <Trigger
-                theme={getTheme()}
-                collapsed={collapsed}
-                onClick={this.handleTriggerClick}
-                collapsedWidth={collapsedWidth}
-              >
-                {this.getTrigger()}
-              </Trigger>
-            ) : null}
-          </ChildrenWrap>
-        </Aside>
+        <EnlargeContext.Consumer>
+          {context => {
+            if (context.enlargeValue && context.enlarge) {
+              if (value === context.enlargeValue) {
+                return (
+                  <Aside theme={getTheme()} collapsed={collapsed} collapsedWidth={collapsedWidth}>
+                    <ChildrenWrap theme={getTheme()}>
+                      <div>{children}</div>
+                      {collapsible && trigger !== null ? (
+                        <Trigger
+                          theme={getTheme()}
+                          collapsed={collapsed}
+                          onClick={this.handleTriggerClick}
+                          collapsedWidth={collapsedWidth}
+                        >
+                          {this.getTrigger()}
+                        </Trigger>
+                      ) : null}
+                    </ChildrenWrap>
+                  </Aside>
+                );
+              }
+              return null;
+            }
+            return (
+              <Aside theme={getTheme()} collapsed={collapsed} collapsedWidth={collapsedWidth}>
+                <ChildrenWrap theme={getTheme()}>
+                  <div>{children}</div>
+                  {collapsible && trigger !== null ? (
+                    <Trigger
+                      theme={getTheme()}
+                      collapsed={collapsed}
+                      onClick={this.handleTriggerClick}
+                      collapsedWidth={collapsedWidth}
+                    >
+                      {this.getTrigger()}
+                    </Trigger>
+                  ) : null}
+                </ChildrenWrap>
+              </Aside>
+            );
+          }}
+        </EnlargeContext.Consumer>
       );
     }
 

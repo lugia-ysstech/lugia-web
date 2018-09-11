@@ -17,7 +17,8 @@ export type BlockState = {};
 
 export const Block = styled.div`
   font-size: ${FontSize}rem;
-  flex: auto;
+  flex: 1;
+  position: relative;
   ${getWidth}
   ${getThemeHeightCSS}
   ${getMargin}

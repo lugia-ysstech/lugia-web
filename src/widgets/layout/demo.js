@@ -92,31 +92,31 @@ export const LayoutDemo = () => {
   };
   return (
     <div>
-      <p>default flex-direction: column;</p>
-      <Layout>
-        <Header>{header}</Header>
-        <Content>{content}</Content>
-        <Footer>{footer}</Footer>
-      </Layout>
-      <p>flex-direction: row;</p>
-      <Layout>
-        <Header>{header}</Header>
-        <Layout direction="row">
-          <Aside>{aside}</Aside>
-          <Content>{content}</Content>
-        </Layout>
-        <Footer>{footer}</Footer>
-      </Layout>
-      <p>flex-direction: row;</p>
-      <Layout>
-        <Header>{header}</Header>
-        <Layout direction="row">
-          <Content>{content}</Content>
-          <Aside>{aside}</Aside>
-        </Layout>
-        <Footer>{footer}</Footer>
-      </Layout>
-      <p>flex-direction: row;</p>
+      {/*<p>default flex-direction: column;</p>*/}
+      {/*<Layout>*/}
+      {/*<Header>{header}</Header>*/}
+      {/*<Content>{content}</Content>*/}
+      {/*<Footer>{footer}</Footer>*/}
+      {/*</Layout>*/}
+      {/*<p>flex-direction: row;</p>*/}
+      {/*<Layout>*/}
+      {/*<Header>{header}</Header>*/}
+      {/*<Layout direction="row">*/}
+      {/*<Aside>{aside}</Aside>*/}
+      {/*<Content>{content}</Content>*/}
+      {/*</Layout>*/}
+      {/*<Footer>{footer}</Footer>*/}
+      {/*</Layout>*/}
+      {/*<p>flex-direction: row;</p>*/}
+      {/*<Layout>*/}
+      {/*<Header>{header}</Header>*/}
+      {/*<Layout direction="row">*/}
+      {/*<Content>{content}</Content>*/}
+      {/*<Aside>{aside}</Aside>*/}
+      {/*</Layout>*/}
+      {/*<Footer>{footer}</Footer>*/}
+      {/*</Layout>*/}
+      {/*<p>flex-direction: row;</p>*/}
       <Layout direction="row">
         <Aside>
           <div
@@ -137,81 +137,139 @@ export const LayoutDemo = () => {
           <Footer>{footer}</Footer>
         </Layout>
       </Layout>
+      {/*<p>flex-direction: row;</p>*/}
+      {/*<Layout direction="row">*/}
+      {/*<Aside>*/}
+      {/*<div*/}
+      {/*style={{*/}
+      {/*height: '320px',*/}
+      {/*lineHeight: '200px',*/}
+      {/*width: '200px',*/}
+      {/*textAlign: 'center',*/}
+      {/*background: '#11b4ff',*/}
+      {/*}}*/}
+      {/*>*/}
+      {/*Aside*/}
+      {/*</div>*/}
+      {/*</Aside>*/}
+      {/*<Layout>*/}
+      {/*<Header>{header}</Header>*/}
+      {/*<Content>{content}</Content>*/}
+      {/*<Footer>{footer}</Footer>*/}
+      {/*</Layout>*/}
+      {/*<Aside>*/}
+      {/*<div*/}
+      {/*style={{*/}
+      {/*height: '320px',*/}
+      {/*lineHeight: '200px',*/}
+      {/*width: '200px',*/}
+      {/*textAlign: 'center',*/}
+      {/*background: '#11b4ff',*/}
+      {/*}}*/}
+      {/*>*/}
+      {/*Aside*/}
+      {/*</div>*/}
+      {/*</Aside>*/}
+      {/*</Layout>*/}
+      {/*<p>flex-direction: row; Aside collapsible</p>*/}
+      {/*<Layout direction="row">*/}
+      {/*<Layout>*/}
+      {/*<Header>{header}</Header>*/}
+      {/*<Content>{content}</Content>*/}
+      {/*<Footer>{footer}</Footer>*/}
+      {/*</Layout>*/}
+      {/*<Aside collapsible reverseArrow>*/}
+      {/*<div>Aside</div>*/}
+      {/*</Aside>*/}
+      {/*</Layout>*/}
+      {/*<p>flex-direction: row; Aside collapsible</p>*/}
+      {/*<Layout direction="row">*/}
+      {/*<Aside collapsible breakpoint={'lg'}>*/}
+      {/*<div>Aside</div>*/}
+      {/*</Aside>*/}
+      {/*<Layout>*/}
+      {/*<Header>{header}</Header>*/}
+      {/*<Content>{content}</Content>*/}
+      {/*<Footer>{footer}</Footer>*/}
+      {/*</Layout>*/}
+      {/*</Layout>*/}
+      {/*<p>flex-direction: row; Aside collapsible</p>*/}
+      {/*<Theme config={{ [Widget.Aside]: { backgroundColor: 'red' } }}>*/}
+      {/*<Layout direction="row">*/}
+      {/*<Layout>*/}
+      {/*<Header>{header}</Header>*/}
+      {/*<Content>{content}</Content>*/}
+      {/*<Footer>{footer}</Footer>*/}
+      {/*</Layout>*/}
+      {/*<Aside collapsible reverseArrow>*/}
+      {/*<div>Aside</div>*/}
+      {/*</Aside>*/}
+      {/*</Layout>*/}
+      {/*</Theme>*/}
+      {/*<p>theme</p>*/}
+      {/*<Theme config={layoutView}>*/}
+      {/*<Layout>*/}
+      {/*<Header>{header}</Header>*/}
+      {/*<Content>{content}</Content>*/}
+      {/*<Footer>{footer}</Footer>*/}
+      {/*</Layout>*/}
+      {/*</Theme>*/}
       <p>flex-direction: row;</p>
-      <Layout direction="row">
-        <Aside>
-          <div
-            style={{
-              height: '320px',
-              lineHeight: '200px',
-              width: '200px',
-              textAlign: 'center',
-              background: '#11b4ff',
-            }}
-          >
-            Aside
-          </div>
-        </Aside>
-        <Layout>
-          <Header>{header}</Header>
-          <Content>{content}</Content>
-          <Footer>{footer}</Footer>
-        </Layout>
-        <Aside>
-          <div
-            style={{
-              height: '320px',
-              lineHeight: '200px',
-              width: '200px',
-              textAlign: 'center',
-              background: '#11b4ff',
-            }}
-          >
-            Aside
-          </div>
-        </Aside>
-      </Layout>
-      <p>flex-direction: row; Aside collapsible</p>
-      <Layout direction="row">
-        <Layout>
-          <Header>{header}</Header>
-          <Content>{content}</Content>
-          <Footer>{footer}</Footer>
-        </Layout>
-        <Aside collapsible reverseArrow>
-          <div>Aside</div>
-        </Aside>
-      </Layout>
-      <p>flex-direction: row; Aside collapsible</p>
-      <Layout direction="row">
-        <Aside collapsible breakpoint={'lg'}>
-          <div>Aside</div>
-        </Aside>
-        <Layout>
-          <Header>{header}</Header>
-          <Content>{content}</Content>
-          <Footer>{footer}</Footer>
-        </Layout>
-      </Layout>
-      <p>flex-direction: row; Aside collapsible</p>
-      <Theme config={{ [Widget.Aside]: { backgroundColor: 'red' } }}>
-        <Layout direction="row">
-          <Layout>
-            <Header>{header}</Header>
-            <Content>{content}</Content>
-            <Footer>{footer}</Footer>
-          </Layout>
-          <Aside collapsible reverseArrow>
-            <div>Aside</div>
+      <Theme config={{ [Widget.Layout]: { width: 500, height: 500 } }}>
+        <Layout direction="row" needEnlarge>
+          <Aside>
+            <div
+              style={{
+                height: '320px',
+                lineHeight: '200px',
+                width: '200px',
+                textAlign: 'center',
+                background: '#11b4ff',
+              }}
+            >
+              Aside
+            </div>
           </Aside>
+          <Layout>
+            <Header value="header">
+              <div style={{ background: '#381be5', height: '100%' }}>heder</div>
+            </Header>
+            <Content value="content" enlarged>
+              <div style={{ background: '#0F89FF', height: '100%' }}>content</div>
+            </Content>
+            <Footer value="footer">
+              <div style={{ background: '#0f13ff', height: '100%' }}>footer</div>
+            </Footer>
+          </Layout>
         </Layout>
       </Theme>
-      <p>theme</p>
-      <Theme config={layoutView}>
-        <Layout>
-          <Header>{header}</Header>
-          <Content>{content}</Content>
-          <Footer>{footer}</Footer>
+      <p>flex-direction: row;</p>
+      <Theme config={{ [Widget.Layout]: { width: 500, height: 500 } }}>
+        <Layout direction="row">
+          <Aside>
+            <div
+              style={{
+                height: '320px',
+                lineHeight: '200px',
+                width: '200px',
+                textAlign: 'center',
+                background: '#11b4ff',
+              }}
+            >
+              Aside
+            </div>
+          </Aside>
+          <Layout needEnlarge>
+            <Header value="header" enlarged>
+              <div style={{ background: '#381be5', height: '100%' }}>heder</div>
+            </Header>
+            <Content value="content">
+              <div style={{ background: '#0F89FF', height: '100%' }}>content</div>
+            </Content>
+            <Footer value="footer">
+              <div style={{ background: '#0f13ff', height: '100%' }}>footer</div>
+            </Footer>
+          </Layout>
         </Layout>
       </Theme>
     </div>

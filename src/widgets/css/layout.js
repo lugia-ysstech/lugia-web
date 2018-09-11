@@ -17,8 +17,12 @@ type BasicType = {
 export type LayoutProps = {
   children: any,
   getTheme: Function,
+  needEnlarge?: boolean,
 } & BasicType;
-export type LayoutState = {};
+export type LayoutState = {
+  enlarge: boolean,
+  enlargeValue: string,
+};
 type CSSProps = {
   isWrap?: boolean,
   theme: ThemeType,
