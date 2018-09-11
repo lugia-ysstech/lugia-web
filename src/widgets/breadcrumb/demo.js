@@ -69,51 +69,7 @@ export default class Demo extends React.Component<any, any> {
   }
 }
 
-// //       demo4
-// // !!!!!!!!!!!!!!!!!!!这个组件这么使用有bug，不懂什么原因
-// // 使用的自定义设置的 renderItem回调函数,传入routes路由属性，生成面包屑组件=====================
-// import * as React from 'react';
-// import Breadcrumb from './index';
-// import { Link, Router } from 'react-router-dom';
-
-// const routes = [
-//   {
-//     path: 'index',
-//     breadcrumbName: '首页',
-//   },
-//   {
-//     path: 'first',
-//     breadcrumbName: '一级面包屑',
-//   },
-//   {
-//     path: 'second',
-//     breadcrumbName: '二级面包屑',
-//   },
-//   {
-//     path: 'third',
-//     breadcrumbName: '当前页面',
-//   },
-// ];
-
-// function renderItem(route, params, routes, paths) {
-//   const last = routes.indexOf(route) === routes.length - 1;
-//   return last ? (
-//     <span>{route.breadcrumbName}</span>
-//   ) : (
-//     <Link to={paths.join('/')}>{route.breadcrumbName}</Link>
-//   );
-// }
-// export default class Demo extends React.Component<any, any> {
-//   render() {
-//     return (
-//       <Router>
-//         <Breadcrumb renderItem={renderItem} routes={routes} />
-//       </Router>
-//     );
-//   }
-// }
-
-//     demo6
+//     demo2
 //  给路由传入params 参数
 // import * as React from 'react';
 // import Breadcrumb from './index';
@@ -142,6 +98,6 @@ export default class Demo extends React.Component<any, any> {
 
 // export default class Demo extends React.Component<any, any> {
 //   render() {
-//     return <Breadcrumb params={{ id: 1, class: 2 }} routes={routes} />;
+//     return <Breadcrumb params={{ id: 1 }} routes={routes} />;
 //   }
 // }
