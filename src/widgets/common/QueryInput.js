@@ -67,6 +67,7 @@ const ShowCheckAllButton = styled.span`
 `;
 
 const AppendValueButton = ShowCheckAllButton.extend``;
+AppendValueButton.displayName = 'addIcon';
 
 const RefreshButton = ShowCheckAllButton.extend`
   margin-left: ${em(10)};
@@ -104,6 +105,7 @@ type QueryInputState = {
 };
 
 class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
+  static displayName = Widget.QueryInput;
   constructor(props: QueryInputProps) {
     super(props);
     this.state = {

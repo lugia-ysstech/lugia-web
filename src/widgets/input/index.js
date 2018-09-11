@@ -130,6 +130,7 @@ const ClearButton: Object = styled(Icon)`
 
   display: inline-block;
 `;
+ClearButton.displayName = 'ClearButton';
 
 type InputState = {|
   value: string,
