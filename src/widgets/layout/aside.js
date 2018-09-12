@@ -85,29 +85,12 @@ export default ThemeProvider(
       const { collapsed } = this.state;
       return (
         <EnlargeContext.Consumer>
-          {context => {
-            if (context.enlargeValue && context.enlarge) {
-              if (value === context.enlargeValue) {
-                return (
-                  <Aside theme={getTheme()} collapsed={collapsed} collapsedWidth={collapsedWidth}>
-                    <ChildrenWrap theme={getTheme()}>
-                      <div>{children}</div>
-                      {collapsible && trigger !== null ? (
-                        <Trigger
-                          theme={getTheme()}
-                          collapsed={collapsed}
-                          onClick={this.handleTriggerClick}
-                          collapsedWidth={collapsedWidth}
-                        >
-                          {this.getTrigger()}
-                        </Trigger>
-                      ) : null}
-                    </ChildrenWrap>
-                  </Aside>
-                );
-              }
+          {(context: Object) => {
+            const { enlargeValue, enlarge } = context;
+            if (enlargeValue && value !== enlargeValue && enlarge) {
               return null;
             }
+
             return (
               <Aside theme={getTheme()} collapsed={collapsed} collapsedWidth={collapsedWidth}>
                 <ChildrenWrap theme={getTheme()}>

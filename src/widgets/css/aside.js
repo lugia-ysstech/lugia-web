@@ -8,14 +8,14 @@ import colorsFunc from '../css/stateColor';
 import type { ThemeType } from '@lugia/lugia-web';
 import type { screensType } from '../css/row';
 import styled from 'styled-components';
-import { getMargin, createGetWidth } from '../common/ThemeUtils';
+import { getMargin, createGetWidthOrHeight } from '../common/ThemeUtils';
 import { getThemeHeightCSS } from './layout';
 import Icon from '../icon';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 const { themeColor } = colorsFunc();
-const getWidth = createGetWidth({ fontSize: FontSize, defaultWidth: 200 });
+const getWidth = createGetWidthOrHeight('width', { fontSize: FontSize, defaultWidth: 200 });
 
 type BasicType = {
   collapsedWidth?: number,
@@ -30,6 +30,7 @@ export type AsideProps = {
   reverseArrow?: boolean,
   breakpoint?: screensType,
   onBreakpoint?: Function,
+  value?: string,
 } & BasicType;
 export type AsideState = {
   collapsed: boolean,

@@ -39,17 +39,7 @@ export default ThemeProvider(
         </Layout>
       );
     }
-    renderChildren = () => {
-      const { children } = this.props;
-      return React.Children.map(children, child => {
-        if (React.isValidElement(child)) {
-          return React.cloneElement(child, {
-            onClick: this.handleEnlargeClick,
-          });
-        }
-      });
-    };
-    handleEnlargeClick = (val: string) => {
+    handleEnlargeClick = (val?: string) => {
       const { enlarge } = this.state;
       this.setState({
         enlarge: !enlarge,
