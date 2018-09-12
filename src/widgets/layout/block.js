@@ -62,8 +62,4 @@ export default class extends React.Component<BlockProps, BlockState> {
       </EnlargeContext.Consumer>
     );
   }
-  handleEnlargeClick = () => {
-    const { onClick, value } = this.props;
-    onClick && onClick(value);
-  };
 }

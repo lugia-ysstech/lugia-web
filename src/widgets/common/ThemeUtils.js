@@ -63,17 +63,21 @@ export const createGetMargin = (
   };
 };
 
-export const createGetWidth = (opt?: WidthOpt = { fontSize: DefaultFontSize }) => {
+export const createGetWidthOrHeight = (
+  type?: 'width' | 'height' = 'width',
+  opt?: WidthOpt = { fontSize: DefaultFontSize }
+) => {
   const { fontSize, defaultWidth } = opt;
   const em = px2emcss(fontSize);
   return (props: { theme: ThemeType }) => {
     const { width = defaultWidth } = props.theme;
     if (typeof width === 'number') {
-      return `width: ${em(width)};`;
+      return `${type}: ${em(width)};`;
     }
     return '';
   };
 };
 
 export const getMargin = createGetMargin();
-export const getWidth = createGetWidth();
+export const getWidth = createGetWidthOrHeight();
+export const getHeight = createGetWidthOrHeight('height');
