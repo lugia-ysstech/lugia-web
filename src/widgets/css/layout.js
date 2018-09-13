@@ -21,7 +21,7 @@ export type LayoutProps = {
 } & BasicType;
 export type LayoutState = {
   enlarge: boolean,
-  enlargeValue: string,
+  enlargeValue: string[],
 };
 type CSSProps = {
   isWrap?: boolean,

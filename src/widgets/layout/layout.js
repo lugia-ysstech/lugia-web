@@ -15,13 +15,19 @@ export const EnlargeContext = React.createContext({});
 
 export default ThemeProvider(
   class extends React.Component<LayoutProps, LayoutState> {
+    child2father: Object;
+    father2childs: Object;
+
     constructor(props) {
       super(props);
       this.state = {
         enlarge: false,
-        enlargeValue: '',
+        enlargeValue: [],
       };
+      this.child2father = {};
+      this.father2childs = {};
     }
+
     render() {
       const { direction, children, getTheme, needEnlarge = false } = this.props;
       const { enlarge, enlargeValue } = this.state;
@@ -29,7 +35,13 @@ export default ThemeProvider(
         <Layout direction={direction} theme={getTheme()}>
           {needEnlarge ? (
             <EnlargeContext.Provider
-              value={{ enlargeValue, onClick: this.handleEnlargeClick, enlarge }}
+              value={{
+                enlargeValue,
+                onClick: this.handleEnlargeClick,
+                enlarge,
+                level: { cur: 0 },
+                talkRoot: this.talkRoot,
+              }}
             >
               {children}
             </EnlargeContext.Provider>
@@ -39,12 +51,32 @@ export default ThemeProvider(
         </Layout>
       );
     }
-    handleEnlargeClick = (val?: string) => {
+
+    handleEnlargeClick = (val: string) => {
       const { enlarge } = this.state;
+      const enlargeValue = [];
+      let value = val;
+      do {
+        enlargeValue.push(value);
+        value = this.child2father[value];
+      } while (value);
+      const childs = this.father2childs[val];
+      if (childs) {
+        Array.prototype.push.apply(enlargeValue, childs);
+      }
       this.setState({
         enlarge: !enlarge,
-        enlargeValue: val,
+        enlargeValue,
       });
+    };
+    talkRoot = (father: number, level) => {
+      this.child2father[level] = father;
+
+      let childs = this.father2childs[father];
+      if (!childs) {
+        childs = this.father2childs[father] = [];
+      }
+      childs.push(level);
     };
   },
   Widget.Layout
