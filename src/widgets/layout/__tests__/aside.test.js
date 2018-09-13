@@ -6,7 +6,6 @@
  */
 import React from 'react';
 import chai from 'chai';
-
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
