@@ -17,6 +17,7 @@ export type BlockProps = {
   children: any,
   value?: string,
   enlarged?: boolean,
+  order?: number,
 };
 export type BlockState = {};
 

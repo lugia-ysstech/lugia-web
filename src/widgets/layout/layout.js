@@ -39,7 +39,7 @@ export default ThemeProvider(
                 enlargeValue,
                 onClick: this.handleEnlargeClick,
                 enlarge,
-                level: { cur: 0 },
+                order: { current: 0 },
                 talkRoot: this.talkRoot,
               }}
             >

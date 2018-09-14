@@ -13,31 +13,34 @@ import { EnlargeContext } from './layout';
 export const BlockContext = React.createContext({});
 
 export default class extends React.Component<BlockProps, BlockState> {
-  level: number;
+  order: number;
 
   render() {
     const { getTheme, children, enlarged = false } = this.props;
     return (
       <EnlargeContext.Consumer>
         {(context: Object) => {
-          const { enlargeValue, enlarge, onClick, level, talkRoot } = context;
-          if (this.level === undefined) {
-            level.cur = level.cur + 1;
-            this.level = level.cur;
+          const { enlargeValue, enlarge, onClick, order, talkRoot } = context;
+          if (this.order === undefined && order) {
+            console.info('start', order);
+            order.current = order.current + 1;
+            this.order = order.current;
+            console.info('end', order);
           }
-          if (enlargeValue && !~enlargeValue.indexOf(this.level) && enlarge) {
+
+          if (enlargeValue && !~enlargeValue.indexOf(this.order) && enlarge) {
             return null;
           }
           return (
             <BlockContext.Consumer>
               {(context: Object) => {
-                talkRoot(context.father, this.level);
+                talkRoot && talkRoot(context.father, this.order);
                 return (
-                  <BlockContext.Provider value={{ father: this.level }}>
+                  <BlockContext.Provider value={{ father: this.order }}>
                     <Block theme={getTheme()}>
                       {children}
                       {enlarged ? (
-                        <Enlarge onClick={() => onClick && onClick(this.level)}>
+                        <Enlarge order={this.order} onClick={() => onClick && onClick(this.order)}>
                           <IconWrap
                             iconClass={
                               enlarge
