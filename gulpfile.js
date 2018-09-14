@@ -23,6 +23,7 @@ gulp.task('font', () => {
       'src/widgets/**/*.eot',
       'src/widgets/**/*.svg',
       'src/widgets/**/*.woff',
+      'src/widgets/**/*.woff2',
     ])
     .pipe(gulp.dest('dist'));
 });
