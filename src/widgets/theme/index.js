@@ -58,8 +58,8 @@ class Theme extends React.Component<PropsType, StateType> {
   }
 
   render() {
-    const { children, className } = this.props;
-    return <span className={className}>{children}</span>;
+    const { children } = this.props;
+    return children;
   }
 }
 
