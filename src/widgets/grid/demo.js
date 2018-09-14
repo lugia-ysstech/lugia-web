@@ -6,9 +6,8 @@
  */
 import React from 'react';
 import styled from 'styled-components';
-import Col from './col';
-import Row from './row';
-
+import Grid from './';
+const { Row, Col } = Grid;
 const Wrapper = styled.div`
   & > div > div {
     padding: 8px;
