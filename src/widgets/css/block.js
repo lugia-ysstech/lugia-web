@@ -18,12 +18,13 @@ export type BlockProps = {
   value?: string,
   enlarged?: boolean,
   order?: number,
+  isContent?: boolean,
 };
 export type BlockState = {};
 
 export const Block = styled.div`
   font-size: ${FontSize}rem;
-  flex: 1;
+  flex: ${props => (props.isContent ? 'auto' : '0 0 auto')};
   position: relative;
   ${getWidth}
   ${getThemeHeightCSS}

@@ -291,16 +291,16 @@ export const LayoutDemo = () => {
             <Header enlarged>
               <div style={{ background: '#381be5', height: '100%' }}>heder</div>
             </Header>
-            <Content enlarged>
+            <Content>
               <Layout direction="row">
                 <Header enlarged value="header">
-                  <div style={{ background: '#45e520', height: '100%' }}>好</div>
+                  <div style={{ width: '50px', background: '#45e520', height: '100%' }}>好</div>
                 </Header>
                 <Content enlarged>
                   <div style={{ background: '#ff7d62', height: '100%' }}>好</div>
                 </Content>
                 <Footer enlarged value={'footer'}>
-                  <div style={{ background: '#a42dff', height: '100%' }}>好</div>
+                  <div style={{ width: '50px', background: '#a42dff', height: '100%' }}>好</div>
                 </Footer>
               </Layout>
             </Content>

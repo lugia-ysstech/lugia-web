@@ -56,6 +56,7 @@ export default ThemeProvider(
       const { enlarge } = this.state;
       const enlargeValue = [];
       let value = val;
+      console.info('this.child2father', this.child2father);
       do {
         enlargeValue.push(value);
         value = this.child2father[value];
