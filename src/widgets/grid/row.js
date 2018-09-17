@@ -10,6 +10,8 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { RowProps, RowState, screensType } from '../css/row';
 import { RowWrap } from '../css/row';
+import MouseEventAdaptor from '../common/MouseEventAdaptor';
+import { ColWrap } from '../css/col';
 
 let enquire;
 if (typeof window !== undefined) {
@@ -36,82 +38,93 @@ const responsiveMap: { [key: screensType]: string } = {
 const responsiveArray: screensType[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 export default ThemeProvider(
-  class extends React.Component<RowProps, RowState> {
-    constructor(props: RowProps) {
-      super(props);
-      this.state = { screens: {} };
-    }
-
-    componentDidMount() {
-      responsiveArray.forEach((screen: screensType) =>
-        enquire.register(responsiveMap[screen], {
-          match: () => {
-            this.setState(prevState => ({
-              screens: {
-                ...prevState.screens,
-                [screen]: true,
-              },
-            }));
-          },
-          unmatch: () => {
-            this.setState(prevState => ({
-              screens: {
-                ...prevState.screens,
-                [screen]: false,
-              },
-            }));
-          },
-          destroy() {},
-        })
-      );
-    }
-
-    componentWillUnmount() {
-      responsiveArray.forEach((screen: screensType) => enquire.unregister(responsiveMap[screen]));
-    }
-
-    render() {
-      const { type = 'default', justify, align, getTheme } = this.props;
-      const scrrenSize = this.getScrrenSize();
-      const gutter = this.getGutter(scrrenSize);
-      return (
-        <RowWrap type={type} justify={justify} align={align} gutter={gutter} theme={getTheme()}>
-          {this.renderChildren(scrrenSize, gutter)}
-        </RowWrap>
-      );
-    }
-
-    getScrrenSize = (): string => {
-      const { screens } = this.state;
-      const len = responsiveArray.length;
-      for (let i = len - 1; i >= 0; i--) {
-        const breakpoint = responsiveArray[i];
-        if (screens[breakpoint]) {
-          return breakpoint;
-        }
+  MouseEventAdaptor(
+    class extends React.Component<RowProps, RowState> {
+      constructor(props: RowProps) {
+        super(props);
+        this.state = { screens: {} };
       }
-      return responsiveArray[len - 1];
-    };
 
-    getGutter = (size: string) => {
-      const { gutter } = this.props;
-      if (typeof gutter === 'object') {
-        return gutter[size];
+      componentDidMount() {
+        responsiveArray.forEach((screen: screensType) =>
+          enquire.register(responsiveMap[screen], {
+            match: () => {
+              this.setState(prevState => ({
+                screens: {
+                  ...prevState.screens,
+                  [screen]: true,
+                },
+              }));
+            },
+            unmatch: () => {
+              this.setState(prevState => ({
+                screens: {
+                  ...prevState.screens,
+                  [screen]: false,
+                },
+              }));
+            },
+            destroy() {},
+          })
+        );
       }
-      return gutter;
-    };
 
-    renderChildren = (scrrenSize?: string, gutter?: number | Object) => {
-      const { children } = this.props;
-      return React.Children.map(children, child => {
-        if (React.isValidElement(child)) {
-          return React.cloneElement(child, {
-            scrrenSize,
-            gutter,
-          });
+      componentWillUnmount() {
+        responsiveArray.forEach((screen: screensType) => enquire.unregister(responsiveMap[screen]));
+      }
+
+      render() {
+        const { type = 'default', justify, align, getTheme } = this.props;
+        const scrrenSize = this.getScrrenSize();
+        const gutter = this.getGutter(scrrenSize);
+        return (
+          <RowWrap
+            type={type}
+            justify={justify}
+            align={align}
+            gutter={gutter}
+            theme={getTheme()}
+            onMouseOut={this.props.onMouseOut}
+            onMouseEnter={this.props.onMouseEnter}
+            onMouseOver={this.props.onMouseOver}
+          >
+            {this.renderChildren(scrrenSize, gutter)}
+          </RowWrap>
+        );
+      }
+
+      getScrrenSize = (): string => {
+        const { screens } = this.state;
+        const len = responsiveArray.length;
+        for (let i = len - 1; i >= 0; i--) {
+          const breakpoint = responsiveArray[i];
+          if (screens[breakpoint]) {
+            return breakpoint;
+          }
         }
-      });
-    };
-  },
+        return responsiveArray[len - 1];
+      };
+
+      getGutter = (size: string) => {
+        const { gutter } = this.props;
+        if (typeof gutter === 'object') {
+          return gutter[size];
+        }
+        return gutter;
+      };
+
+      renderChildren = (scrrenSize?: string, gutter?: number | Object) => {
+        const { children } = this.props;
+        return React.Children.map(children, child => {
+          if (React.isValidElement(child)) {
+            return React.cloneElement(child, {
+              scrrenSize,
+              gutter,
+            });
+          }
+        });
+      };
+    }
+  ),
   Widget.Row
 );
