@@ -16,6 +16,9 @@ type BaseProps = {
 };
 
 export type RowProps = {
+  onMouseEnter?: Function,
+  onMouseOut?: Function,
+  onMouseOver?: Function,
   type?: 'default' | 'flex',
   children: any,
 } & BaseProps;
