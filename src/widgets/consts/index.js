@@ -65,6 +65,12 @@ const NumberTurn = 'sv_widget_NumberTurn';
 const Select = 'sv_widget_Select';
 const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
 
+const Layout = 'sv_widget_Layout';
+const Header = 'sv_widget_Header';
+const Content = 'sv_widget_Content';
+const Footer = 'sv_widget_Footer';
+const Aside = 'sv_widget_Aside';
+
 export default {
   Button,
   Input,
@@ -117,4 +123,9 @@ export default {
   NumberTurn,
   Select,
   SelectLimitTitle,
+  Layout,
+  Header,
+  Content,
+  Footer,
+  Aside,
 };

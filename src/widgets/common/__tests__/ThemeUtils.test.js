@@ -1,12 +1,28 @@
 //@flow
 import type { ThemeType } from '@lugia/lugia-web';
 
-import { createGetMargin, getMargin } from '../ThemeUtils';
+import {
+  createGetMargin,
+  getMargin,
+  createGetWidthOrHeight,
+  getWidth,
+  getHeight,
+} from '../ThemeUtils';
 
 describe('ThemeUtils', () => {
   function testGetMargin(theme: { theme: ThemeType }, expectMargin: string) {
     it(`getMargin = theme:${JSON.stringify(theme)} `, () => {
       expect(getMargin(theme)).toBe(expectMargin);
+    });
+  }
+  function testGetWidth(theme: { theme: ThemeType }, expectMargin: string) {
+    it(`getWidth = theme:${JSON.stringify(theme)} `, () => {
+      expect(getWidth(theme)).toBe(expectMargin);
+    });
+  }
+  function testGetHeight(theme: { theme: ThemeType }, expectMargin: string) {
+    it(`getWidth = theme:${JSON.stringify(theme)} `, () => {
+      expect(getHeight(theme)).toBe(expectMargin);
     });
   }
 
@@ -80,4 +96,69 @@ describe('ThemeUtils', () => {
   testGetMargin({ theme: { margin: 12 } }, 'margin:1em ');
   testGetMargin({ theme: { margin: 0 } }, 'margin:0em ');
   testGetMargin({ theme: { margin: -120 } }, 'margin:-10em ');
+
+  it('createGetWidthOrHeight createGetWidthOrHeight() theme:{ width: 12 }', () => {
+    const getMyWidth = createGetWidthOrHeight();
+
+    expect(getMyWidth({ theme: { width: 12 } })).toBe('width: 1em;');
+  });
+
+  it('createGetWidthOrHeight theme:{}', () => {
+    const getMyWidth = createGetWidthOrHeight();
+
+    expect(getMyWidth({ theme: {} })).toBe('');
+  });
+
+  it('createGetWidthOrHeight theme:{}', () => {
+    const getMyWidth = createGetWidthOrHeight('width', {
+      fontSize: 1,
+      defaultWidth: 1,
+    });
+
+    expect(getMyWidth({ theme: {} })).toBe('width: 0.1em;');
+  });
+
+  it('createGetWidthOrHeight theme:{}', () => {
+    const getMyWidth = createGetWidthOrHeight('height', {
+      fontSize: 1,
+      defaultWidth: 1,
+    });
+
+    expect(getMyWidth({ theme: {} })).toBe('height: 0.1em;');
+  });
+
+  it('createGetWidthOrHeight default:{fontSize: 1} theme:{}', () => {
+    const getMyWidth = createGetWidthOrHeight('width', {
+      fontSize: 1,
+    });
+
+    expect(getMyWidth({ theme: {} })).toBe('');
+  });
+
+  it('createGetWidthOrHeight theme: {width: 10}', () => {
+    const getMyWidth = createGetWidthOrHeight('width', {
+      fontSize: 1,
+      defaultWidth: 1,
+    });
+
+    expect(getMyWidth({ theme: { width: 10 } })).toBe('width: 1em;');
+  });
+  it('createGetHeight theme: {width: 10}', () => {
+    const getMyWidth = createGetWidthOrHeight('height', {
+      fontSize: 1,
+      defaultWidth: 1,
+    });
+
+    expect(getMyWidth({ theme: { width: 10 } })).toBe('height: 1em;');
+  });
+
+  testGetWidth({ theme: {} }, '');
+  testGetWidth({ theme: { width: 0 } }, 'width: 0em;');
+  testGetWidth({ theme: { width: 1.2 } }, 'width: 0.1em;');
+  testGetWidth({ theme: { width: -1.2 } }, 'width: -0.1em;');
+
+  testGetHeight({ theme: {} }, '');
+  testGetHeight({ theme: { width: 0 } }, 'height: 0em;');
+  testGetHeight({ theme: { width: 1.2 } }, 'height: 0.1em;');
+  testGetHeight({ theme: { width: -1.2 } }, 'height: -0.1em;');
 });
