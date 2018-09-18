@@ -56,8 +56,8 @@ export default ThemeProvider(
     }
 
     componentDidMount() {
-      this.height = this.panel.scrollHeight;
-      const headerHeight = this.header.scrollHeight;
+      this.height = this.panel && this.panel.scrollHeight;
+      const headerHeight = this.header && this.header.scrollHeight;
       this.setState({
         headerHeight,
       });
@@ -72,12 +72,12 @@ export default ThemeProvider(
         config.onMouseLeave = this.changeHover(false);
       }
       return (
-        <Wrap hover={hover} themes={getTheme()} {...config}>
-          <PanelWrap hover={hover} themes={getTheme()} {...config}>
+        <Wrap hover={hover} theme={getTheme()} {...config}>
+          <PanelWrap hover={hover} theme={getTheme()} {...config}>
             <PanelHeader
               disabled={disabled}
               showArrow={showArrow}
-              themes={getTheme()}
+              theme={getTheme()}
               onClick={this.handlePanelClick}
               innerRef={(node: any) => (this.header = node)}
             >
@@ -91,7 +91,7 @@ export default ThemeProvider(
               ) : null}
               {header}
               <HoverIconWrap
-                themes={getTheme()}
+                theme={getTheme()}
                 hover={hover}
                 open={open}
                 headerHeight={headerHeight}
@@ -114,7 +114,7 @@ export default ThemeProvider(
               closing={closing}
               height={this.height}
               disabled={disabled}
-              themes={getTheme()}
+              theme={getTheme()}
               hover={hover}
             >
               <PanelContent showArrow={showArrow} hover={hover}>
@@ -163,7 +163,7 @@ export default ThemeProvider(
 
     componentDidUpdate() {
       const { opening, closing } = this.state;
-      this.height = this.panel.scrollHeight;
+      this.height = this.panel && this.panel.scrollHeight;
       if (this.hasOpen() && (opening === true || closing === true)) {
         setTimeout(() => {
           this.setState({
