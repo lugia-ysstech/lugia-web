@@ -7,7 +7,6 @@
  */
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
-import Theme from '../theme';
 import Widget from '../consts/index';
 import type { CollapseProps, CollapseState } from '../css/collapse';
 import { Wrap } from '../css/collapse';
@@ -37,7 +36,7 @@ export default ThemeProvider(
     render() {
       const panelTheme = this.props.getTheme().svThemeConfigTree.sv_widget_Panel;
       return (
-        <Wrap panelTheme={panelTheme} themes={this.props.getTheme()}>
+        <Wrap panelTheme={panelTheme || {}} theme={this.props.getTheme()}>
           {this.renderChildren()}
         </Wrap>
       );
