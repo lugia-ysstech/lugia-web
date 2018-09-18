@@ -58,6 +58,9 @@ export default ThemeProvider(
       let value = val;
       do {
         enlargeValue.push(value);
+        if (value !== undefined && value !== null && value === this.child2father[value]) {
+          break;
+        }
         value = this.child2father[value];
       } while (value);
       const childs = this.father2childs[val];

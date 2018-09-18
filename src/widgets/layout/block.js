@@ -21,7 +21,7 @@ export default class extends React.Component<BlockProps, BlockState> {
       <EnlargeContext.Consumer>
         {(context: Object) => {
           const { enlargeValue, enlarge, onClick, order, talkRoot } = context;
-          if (this.order === undefined && order) {
+          if (order) {
             order.current = order.current + 1;
             this.order = order.current;
           }
