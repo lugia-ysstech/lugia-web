@@ -36,6 +36,7 @@ export default class extends React.Component<BlockProps, BlockState> {
                       theme={getTheme()}
                       isContent={isContent}
                       display={!(enlargeValue && !~enlargeValue.indexOf(this.order) && enlarge)}
+                      enlarge={enlarge}
                     >
                       {children}
                       {enlarged ? (

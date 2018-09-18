@@ -1183,11 +1183,11 @@ exports[`Layout css 1`] = `
                   Object {
                     "background": "#45e520",
                     "height": "100%",
-                    "width": "50px",
+                    "width": "100%",
                   }
                 }
               >
-                好
+                好好好好
               </div>
               <div
                 className="c16"
@@ -1232,11 +1232,11 @@ exports[`Layout css 1`] = `
                   Object {
                     "background": "#a42dff",
                     "height": "100%",
-                    "width": "50px",
+                    "width": "100%",
                   }
                 }
               >
-                好
+                好好好好
               </div>
               <div
                 className="c16"

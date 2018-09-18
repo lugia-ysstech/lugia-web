@@ -24,7 +24,7 @@ export type BlockState = {};
 
 export const Block = styled.div`
   font-size: ${FontSize}rem;
-  flex: ${props => (props.isContent ? 'auto' : '0 0 auto')};
+  flex: ${props => (props.enlarge ? 'auto' : props.isContent ? 'auto' : '0 0 auto')};
   display: ${props => (props.display ? 'block' : 'none')};
   position: relative;
   ${getWidth}

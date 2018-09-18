@@ -295,13 +295,17 @@ export const LayoutDemo = () => {
             <Content>
               <Layout direction="row">
                 <Header enlarged value="header">
-                  <div style={{ width: '50px', background: '#45e520', height: '100%' }}>好</div>
+                  <div style={{ width: '100%', background: '#45e520', height: '100%' }}>
+                    好好好好
+                  </div>
                 </Header>
                 <Content enlarged>
                   <div style={{ background: '#ff7d62', height: '100%' }}>好</div>
                 </Content>
                 <Footer enlarged value={'footer'}>
-                  <div style={{ width: '50px', background: '#a42dff', height: '100%' }}>好</div>
+                  <div style={{ width: '100%', background: '#a42dff', height: '100%' }}>
+                    好好好好
+                  </div>
                 </Footer>
               </Layout>
             </Content>
