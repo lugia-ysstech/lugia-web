@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Aside css 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  font-size: 1.2rem;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 16.666666666666668em;
+}
+
+.c5 {
+  font-size: 1.2rem;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 16.666666666666668em;
+  width: 5.333333333333334em;
+}
+
+.c7 {
+  font-size: 1.2rem;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 16.666666666666668em;
+  width: 10em;
+}
+
+.c2 {
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  line-height: 4em;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #684fff;
+  width: 16.666666666666668em;
+  cursor: pointer;
+}
+
+.c6 {
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  line-height: 4em;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #684fff;
+  width: 16.666666666666668em;
+  width: 5.333333333333334em;
+  cursor: pointer;
+}
+
+.c8 {
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  line-height: 4em;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #684fff;
+  width: 16.666666666666668em;
+  width: 10em;
+  cursor: pointer;
+}
+
+.c3 {
+  color: #fff;
+}
+
+.c1 {
+  height: 100%;
+  background: #684fff;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "background": "#11b4ff",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Aside
+        </div>
+      </div>
+      <div
+        className="c2"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_Left c3 c4"
+        />
+      </div>
+    </div>
+  </div>
+  <p>
+    collapsible trigger=null
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "background": "#11b4ff",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Aside
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    collapsible collapsed=true trigger="hello"
+  </p>
+  <div
+    className="c5"
+  >
+    <div
+      className="c1"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "background": "#11b4ff",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Aside
+        </div>
+      </div>
+      <div
+        className="c6"
+        onClick={[Function]}
+      >
+        hello
+      </div>
+    </div>
+  </div>
+  <p>
+    collapsible defaultCollapsed=true trigger="hello"
+  </p>
+  <div
+    className="c7"
+  >
+    <div
+      className="c1"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "background": "#11b4ff",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Aside
+        </div>
+      </div>
+      <div
+        className="c8"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_Left c3 c4"
+        />
+      </div>
+    </div>
+  </div>
+  <p>
+    collapsible breakpoint=
+    lg
+     collapsedWidth=
+    64
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "background": "#11b4ff",
+              "height": "200px",
+              "lineHeight": "200px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Aside
+        </div>
+      </div>
+      <div
+        className="c2"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_Left c3 c4"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
