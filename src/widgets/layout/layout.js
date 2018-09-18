@@ -56,7 +56,6 @@ export default ThemeProvider(
       const { enlarge } = this.state;
       const enlargeValue = [];
       let value = val;
-      console.info('this.child2father', this.child2father);
       do {
         enlargeValue.push(value);
         value = this.child2father[value];
@@ -72,7 +71,6 @@ export default ThemeProvider(
     };
     talkRoot = (father: number, level) => {
       this.child2father[level] = father;
-
       let childs = this.father2childs[father];
       if (!childs) {
         childs = this.father2childs[father] = [];

@@ -21,14 +21,9 @@ export default class extends React.Component<BlockProps, BlockState> {
       <EnlargeContext.Consumer>
         {(context: Object) => {
           const { enlargeValue, enlarge, onClick, order, talkRoot } = context;
-          console.info('start', order);
           if (this.order === undefined && order) {
             order.current = order.current + 1;
             this.order = order.current;
-          }
-          console.info('end', order);
-          if (enlargeValue && !~enlargeValue.indexOf(this.order) && enlarge) {
-            return null;
           }
           return (
             <BlockContext.Consumer>
@@ -37,7 +32,11 @@ export default class extends React.Component<BlockProps, BlockState> {
 
                 return (
                   <BlockContext.Provider value={{ father: this.order }}>
-                    <Block theme={getTheme()} isContent={isContent}>
+                    <Block
+                      theme={getTheme()}
+                      isContent={isContent}
+                      display={!(enlargeValue && !~enlargeValue.indexOf(this.order) && enlarge)}
+                    >
                       {children}
                       {enlarged ? (
                         <Enlarge order={this.order} onClick={() => onClick && onClick(this.order)}>
