@@ -12,7 +12,7 @@ import type { ColProps, ColState } from '../css/col';
 import { ColWrap } from '../css/col';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
 
-export default ThemeProvider( 
+export default ThemeProvider(
   MouseEventAdaptor(
     class extends React.Component<ColProps, ColState> {
       render() {
