@@ -1,0 +1,549 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链接 1`] = `
+.c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+.c2 {
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2:hover {
+  color: #333333;
+}
+
+.c1 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<div>
+  <a
+    className="c0"
+    href="/"
+  >
+    主页
+  </a>
+  <span
+    className="c1"
+    href="/"
+  >
+    &gt;
+  </span>
+  <a
+    className="c0"
+    href="/"
+  >
+    一级菜单
+  </a>
+  <span
+    className="c1"
+    href="/"
+  >
+    &gt;
+  </span>
+  <a
+    className="c2"
+    href="/"
+  >
+    二级菜单
+  </a>
+  <span
+    className="c1"
+    href="/"
+  >
+    
+  </span>
+</div>
+`;
+
+exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
+.c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+.c2 {
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2:hover {
+  color: #333333;
+}
+
+.c1 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<div>
+  <a
+    className="c0"
+  >
+    主页
+  </a>
+  <span
+    className="c1"
+  >
+    &gt;
+  </span>
+  <a
+    className="c0"
+  >
+    一级菜单
+  </a>
+  <span
+    className="c1"
+  >
+    &gt;
+  </span>
+  <a
+    className="c2"
+  >
+    二级菜单
+  </a>
+  <span
+    className="c1"
+  >
+    
+  </span>
+</div>
+`;
+
+exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
+.c1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+.c3 {
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:hover {
+  color: #333333;
+}
+
+.c2 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<div>
+  <a
+    className="c0"
+  >
+    <i
+      className="lugia-icon-reminder_close_circle_o  c1"
+    />
+    <span>
+      主页
+    </span>
+  </a>
+  <span
+    className="c2"
+  >
+    &gt;
+  </span>
+  <a
+    className="c3"
+  >
+    <span>
+      一级面包屑菜单
+    </span>
+    <i
+      className="lugia-icon-reminder_close_circle_o  c1"
+    />
+  </a>
+  <span
+    className="c2"
+  >
+    
+  </span>
+</div>
+`;
+
+exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = `
+Array [
+  .c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+<a
+    className="c0"
+    href="/index"
+  >
+    
+  </a>,
+  .c0 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<span
+    className="c0"
+    href="/index"
+  >
+    &gt;
+  </span>,
+  .c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+<a
+    className="c0"
+    href="/index/first"
+  >
+    
+  </a>,
+  .c0 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<span
+    className="c0"
+    href="/index/first"
+  >
+    &gt;
+  </span>,
+  .c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+<a
+    className="c0"
+    href="/index/first/second"
+  >
+    
+  </a>,
+  .c0 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<span
+    className="c0"
+    href="/index/first/second"
+  >
+    &gt;
+  </span>,
+  .c0 {
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+<a
+    className="c0"
+    href="/index/first/second/third"
+  >
+    
+  </a>,
+  .c0 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<span
+    className="c0"
+    href="/index/first/second/third"
+  >
+    
+  </span>,
+]
+`;
+
+exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
+.c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+.c2 {
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2:hover {
+  color: #333333;
+}
+
+.c1 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<div>
+  <a
+    className="c0"
+  >
+    主页
+  </a>
+  <span
+    className="c1"
+  >
+    /
+  </span>
+  <a
+    className="c0"
+  >
+    一级菜单
+  </a>
+  <span
+    className="c1"
+  >
+    /
+  </span>
+  <a
+    className="c2"
+  >
+    二级菜单
+  </a>
+  <span
+    className="c1"
+  >
+    
+  </span>
+</div>
+`;
+
+exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
+Array [
+  .c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+<a
+    className="c0"
+    href="/index"
+  >
+    
+  </a>,
+  .c0 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<span
+    className="c0"
+    href="/index"
+  >
+    &gt;
+  </span>,
+  .c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+<a
+    className="c0"
+    href="/index/first"
+  >
+    
+  </a>,
+  .c0 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<span
+    className="c0"
+    href="/index/first"
+  >
+    &gt;
+  </span>,
+  .c0 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+<a
+    className="c0"
+    href="/index/first/second"
+  >
+    
+  </a>,
+  .c0 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<span
+    className="c0"
+    href="/index/first/second"
+  >
+    &gt;
+  </span>,
+  .c0 {
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #333333;
+}
+
+<a
+    className="c0"
+    href="/index/first/second/third"
+  >
+    
+  </a>,
+  .c0 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+<span
+    className="c0"
+    href="/index/first/second/third"
+  >
+    &gt;
+  </span>,
+]
+`;
