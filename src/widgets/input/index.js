@@ -154,6 +154,7 @@ type InputProps = {|
   onFocus?: (event: UIEvent) => void,
   onBlur?: (event: UIEvent) => void,
   onClick?: (event: UIEvent) => void,
+  onClear?: Function,
   /*
    * 当键入回车时触发事件
    */
@@ -258,10 +259,11 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onClear = (e: Object) => {
-    const { disabled } = this.props;
+    const { disabled, onClear } = this.props;
     if (disabled) {
       return;
     }
+    onClear && onClear(e);
     this.setValue('', e);
   };
 

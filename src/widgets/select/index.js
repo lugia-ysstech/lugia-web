@@ -462,9 +462,9 @@ class Select extends React.Component<SelectProps, SelectState> {
     } else if (queryChanging) {
       const queryArray = this.getQueryArray(query);
       const rowSet = [];
-      const len = data.length - 1;
+      const len = data.length;
 
-      for (let i = len; i >= 0; i--) {
+      for (let i = 0; i < len; i++) {
         const row: RowData = data[i];
         const searchKey = row[displayField];
         if (toMatchFromType(searchKey, queryArray, searchType)) {

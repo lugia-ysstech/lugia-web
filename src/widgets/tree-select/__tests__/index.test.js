@@ -143,7 +143,7 @@ describe('TreeSelect', () => {
     }
 
     const Target = createTestComponent(TestDemo, target => {
-      const resultTheme = target.treeSelect.getThemeTarget().getTheme();
+      const resultTheme = target.treeSelect.getThemeTarget().getCurrentTheme();
       expect(resultTheme).toEqual(expResult);
     });
     const cmp = mount(<Target />);

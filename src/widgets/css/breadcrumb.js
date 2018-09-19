@@ -21,13 +21,6 @@ export const CommonSpan = styled.span`
   font-size: ${FontSize};
 `;
 
-export const ItemSpan = CommonSpan.extend`
-  ${getColor};
-  cursor: pointer;
-  &:hover {
-    color: ${HoverDefaultColor};
-  }
-`;
 export const SeparatorSpan = CommonSpan.extend`
   margin-left: ${separatorMarginLeft};
   margin-right: ${separatorMarginRight};

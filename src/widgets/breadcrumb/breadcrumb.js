@@ -6,47 +6,52 @@
 import * as React from 'react';
 import { cloneElement } from 'react';
 import BreadcrumbItem from './breadcrumbItem';
-import { ALink } from '../css/breadcrumb';
+import { getHrefs, replaceStr } from '../common/StringUtils';
 
 export type Route = {
   path: string,
-  breadcrumbName: string,
+  title: string,
 };
 
 export type RenderFunc = (
-  route: any,
-  params: any,
-  routes: Array<any>,
-  paths: Array<string>
+  route: Object[],
+  separator: string | React.Element<any>,
+  lastSeparator: string | React.Element<any>
 ) => React.Element<any>;
 
 export type BreadcrumbProps = {
   routes?: Array<Route>,
   params?: any,
-  separator?: any,
+  separator: string | React.Element<any>,
   renderItem?: RenderFunc,
-  lastSeparator?: React.Element<any>,
-  children?: React.Element<any>,
+  lastSeparator: string | React.Element<any>,
+  children: React.ChildrenArray<React.Element<any>>,
 };
 
-function getBreadcrumbName(route: Route, params: any) {
-  if (!route.breadcrumbName) {
-    return null;
-  }
-  const paramsKeys = Object.keys(params).join('|');
-  //将params中的参数加入到 name中
-  const regExp = new RegExp(`:(${paramsKeys})`, 'g');
-  const name = route.breadcrumbName.replace(
-    regExp,
-    (replacement, key) => params[key] || replacement
-  );
-  return name;
+export type breadCrumbItemConfig = Array<Object>;
+
+function isNotHref(target: Object) {
+  return 'href' in target || 'path' in target;
 }
 
-function defaultRenderItem(route: Route, params: any, routes: Array<Route>, paths: Array<string>) {
-  const isLastItem = routes.indexOf(route) === routes.length - 1;
-  const name = getBreadcrumbName(route, params);
-  return isLastItem ? <span>{name}</span> : <ALink href={`#${paths.join('/')}`}>{name}</ALink>;
+function defaultRenderItem(
+  breadCrumbItemConfig: breadCrumbItemConfig,
+  separator: string | React.Element<any>,
+  lastSeparator: string | React.Element<any>
+) {
+  return breadCrumbItemConfig.map(item => {
+    const { href, title, isLast } = item;
+
+    return (
+      <BreadcrumbItem
+        separator={isLast ? lastSeparator : separator}
+        href={href}
+        isLastItem={isLast}
+      >
+        {title}
+      </BreadcrumbItem>
+    );
+  });
 }
 
 export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
@@ -54,6 +59,44 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
     separator: '/',
     lastSeparator: '',
   };
+  static Item = BreadcrumbItem;
+
+  getRealityHrefs(href: string, param: Object, item: Object): string | void {
+    if (!isNotHref(item)) {
+      return undefined;
+    }
+
+    let newHref = href[0] === '/' ? href : '/' + href;
+    newHref = replaceStr(newHref, param);
+    return newHref;
+  }
+
+  getBreadCrumbItemConfig(routerConfig: Object[], param?: Object = {}): Object[] {
+    const paths = routerConfig.map(({ path }) => path);
+    const hrefs = getHrefs(paths);
+
+    return routerConfig.map(
+      (item: Object, i: number, data: Object[]): Object => {
+        const { title, href = hrefs[i] } = item;
+
+        return {
+          href: this.getRealityHrefs(href, param, item),
+          title: replaceStr(title, param),
+          isLast: i === data.length - 1,
+        };
+      }
+    );
+  }
+
+  getChildConfig(children: React.ChildrenArray<React.Element<any>>) {
+    const result = [];
+    children &&
+      React.Children.forEach(children, item => {
+        const props = item ? item.props : {};
+        result.push(props ? props : {});
+      });
+    return result;
+  }
 
   render() {
     let crumbs;
@@ -62,49 +105,40 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       lastSeparator,
       routes,
       params = {},
-      children,
       renderItem = defaultRenderItem,
     } = this.props;
 
     if (routes && routes.length > 0) {
-      const paths = [];
-      const len = routes.length - 1;
-      crumbs = routes.map((route, index) => {
-        let path = route.path || '';
-        if (path) {
-          path = path.replace(/^\//, '');
-          // 将params中的参数添加到 path中
-          Object.keys(params).forEach(key => {
-            path = path.replace(`:${key}`, params[key]);
-          });
-          paths.push(path);
-        }
+      const breadCrumbItemConfig = this.getBreadCrumbItemConfig(routes, params);
 
-        const isLast = index === len;
-        return (
-          <BreadcrumbItem
-            separator={isLast ? lastSeparator : separator}
-            isLastItem={isLast ? true : false}
-            key={route.breadcrumbName || path}
-          >
-            {renderItem(route, params, routes, paths)}
-          </BreadcrumbItem>
-        );
-      });
-    } else if (children) {
-      const len = children.length - 1;
+      return renderItem(breadCrumbItemConfig, separator, lastSeparator);
+    }
+
+    const { children } = this.props;
+    if (Array.isArray(children)) {
+      const childConfig = this.getChildConfig(children);
+      const childrenPro = this.getBreadCrumbItemConfig(childConfig, params);
+
       crumbs = React.Children.map(children, (element: any, index) => {
         if (!element) {
           return null;
         }
+        const { isLast, href } = childrenPro[index];
 
-        const isLast = index === len;
         return cloneElement(element, {
           separator: isLast ? lastSeparator : separator,
-          isLastItem: isLast ? true : false,
+          isLastItem: isLast,
+          href,
           key: index,
         });
       });
+    } else {
+      children &&
+        (crumbs = cloneElement(children, {
+          separator: lastSeparator,
+          isLastItem: true,
+          key: 'one',
+        }));
     }
 
     return <div>{crumbs}</div>;

@@ -101,4 +101,225 @@ describe('Breadcrumb', () => {
       renderer.create(<Breadcrumb separator={'>'} lastSeparator={'>'} routes={routes} />).toJSON()
     ).toMatchSnapshot();
   });
+  it('Breadcrumb.prototype.getBreadCrumbItemConfig only href', () => {
+    expect(
+      Breadcrumb.prototype.getBreadCrumbItemConfig([
+        {
+          href: 'index',
+          title: '首页',
+        },
+        {
+          href: 'first',
+          title: '一级面包屑',
+        },
+        {
+          href: 'second:id',
+          title: '二级面包屑',
+        },
+        {
+          href: 'third',
+          title: '当前页面',
+        },
+      ])
+    ).toEqual([
+      {
+        title: '首页',
+        isLast: false,
+        href: '/index',
+      },
+      {
+        href: '/first',
+        isLast: false,
+        title: '一级面包屑',
+      },
+      {
+        isLast: false,
+        href: '/second:id',
+        title: '二级面包屑',
+      },
+      {
+        href: '/third',
+        title: '当前页面',
+        isLast: true,
+      },
+    ]);
+  });
+  it('Breadcrumb.prototype.getBreadCrumbItemConfig only path', () => {
+    expect(
+      Breadcrumb.prototype.getBreadCrumbItemConfig([
+        {
+          path: 'index',
+          title: '首页',
+        },
+        {
+          path: 'first',
+          title: '一级面包屑',
+        },
+        {
+          path: 'second:id',
+          title: '二级面包屑',
+        },
+        {
+          path: 'third',
+          title: '当前页面',
+        },
+      ])
+    ).toEqual([
+      {
+        title: '首页',
+        isLast: false,
+        href: '/index',
+      },
+      {
+        href: '/index/first',
+        isLast: false,
+        title: '一级面包屑',
+      },
+      {
+        isLast: false,
+        href: '/index/first/second:id',
+        title: '二级面包屑',
+      },
+      {
+        href: '/index/first/second:id/third',
+        title: '当前页面',
+        isLast: true,
+      },
+    ]);
+  });
+  it('Breadcrumb.prototype.getBreadCrumbItemConfig path & href', () => {
+    expect(
+      Breadcrumb.prototype.getBreadCrumbItemConfig([
+        {
+          path: 'index',
+          title: '首页',
+        },
+        {
+          path: 'first',
+          title: '一级面包屑',
+        },
+        {
+          path: 'second:id',
+          title: '二级面包屑',
+          href: 'hello',
+        },
+        {
+          path: 'third',
+          title: '当前页面',
+        },
+      ])
+    ).toEqual([
+      {
+        title: '首页',
+        href: '/index',
+        isLast: false,
+      },
+      {
+        href: '/index/first',
+        title: '一级面包屑',
+        isLast: false,
+      },
+      {
+        href: '/hello',
+        title: '二级面包屑',
+        isLast: false,
+      },
+      {
+        href: '/index/first/second:id/third',
+        title: '当前页面',
+        isLast: true,
+      },
+    ]);
+  });
+
+  it('Breadcrumb.prototype.getBreadCrumbItemConfig only href', () => {
+    expect(
+      Breadcrumb.prototype.getBreadCrumbItemConfig(
+        [
+          {
+            href: 'index/:name',
+            title: '首页:name',
+          },
+          {
+            href: 'first',
+            title: '一级面包屑',
+          },
+          {
+            href: 'second/:id',
+            title: '二级面包屑',
+          },
+          {
+            href: 'third',
+            title: '当前页面',
+          },
+        ],
+        { id: '1', name: 'ligx' }
+      )
+    ).toEqual([
+      {
+        title: '首页ligx',
+        isLast: false,
+        href: '/index/ligx',
+      },
+      {
+        href: '/first',
+        isLast: false,
+        title: '一级面包屑',
+      },
+      {
+        isLast: false,
+        href: '/second/1',
+        title: '二级面包屑',
+      },
+      {
+        href: '/third',
+        title: '当前页面',
+        isLast: true,
+      },
+    ]);
+  });
+
+  it('Breadcrumb.prototype.getBreadCrumbItemConfig no path & no href', () => {
+    expect(
+      Breadcrumb.prototype.getBreadCrumbItemConfig([
+        {
+          path: 'index',
+          title: '首页',
+        },
+        {
+          title: '一级面包屑',
+        },
+        {
+          path: 'second:id',
+          title: '二级面包屑',
+          href: 'hello',
+        },
+        {
+          path: 'third',
+          title: '当前页面',
+        },
+      ])
+    ).toEqual([
+      {
+        title: '首页',
+        href: '/index',
+        isLast: false,
+      },
+      {
+        href: undefined,
+        title: '一级面包屑',
+        isLast: false,
+      },
+      {
+        href: '/hello',
+        title: '二级面包屑',
+        isLast: false,
+      },
+      {
+        href: '/index/second:id/third',
+        title: '当前页面',
+        isLast: true,
+      },
+    ]);
+  });
 });

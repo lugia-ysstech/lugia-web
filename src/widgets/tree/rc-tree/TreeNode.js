@@ -5,94 +5,19 @@ import Animate from 'rc-animate';
 import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
 import CommonIcon from '../../icon';
-import styled from 'styled-components';
 import CheckBox from '../../checkbox';
 import {
-  MenuItemHeight,
-  mediumGreyColor,
-  darkGreyColor,
-  ItemBackgroundColor,
   themeColor,
+  Switcher,
+  NullSwitcher,
+  Li,
+  ChildrenUl,
+  TitleWrap,
+  TitleSpan,
 } from '../../css/tree';
 import Widget from '../../consts';
 import Theme from '../../theme';
-import { px2emcss } from '../../css/units';
-const em = px2emcss(1.2);
 
-const Li = styled.li`
-  min-height: ${em(MenuItemHeight)};
-  line-height: ${em(MenuItemHeight)};
-  list-style: none;
-  white-space: nowrap;
-  outline: 0;
-  overflow: hidden;
-`;
-Li.displayName = 'liItem';
-
-const ChildrenUl = styled.ul`
-  margin: 0;
-  padding: 0 0 0 ${em(18)};
-`;
-
-function getChecked(props) {
-  if (props.checked) {
-    return `color: ${themeColor}`;
-  }
-  return `color:${darkGreyColor}`;
-}
-
-function getCheckedStyled(props) {
-  if (props.notCanSelect) {
-    return `color: ${mediumGreyColor}`;
-  }
-
-  return props.selected ? `background-color: ${ItemBackgroundColor}` : null;
-}
-const TitleWrap = styled.span`
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  padding-left: ${em(6)};
-  display: inline-block;
-  cursor: pointer;
-  text-decoration: none;
-  vertical-align: top;
-  transition: all 0.5s ease;
-  font-size: ${em(14)};
-  ${getChecked};
-  ${getCheckedStyled};
-  &:hover {
-    background-color: ${ItemBackgroundColor};
-  }
-`;
-
-const TitleSpan = styled.span`
-  color: ${darkGreyColor};
-`;
-TitleSpan.displayName = 'titleSpan';
-
-const Switcher = styled.span`
-  font-size: ${em(12)};
-  color: ${mediumGreyColor};
-  display: inline-block;
-  margin: 0 ${em(10)};
-  vertical-align: top;
-`;
-Switcher.displayName = 'switcherButton';
-
-const NullSwitcher = Switcher.extend`
-  opacity: 0;
-`;
-
-const Wrap = styled.span`
-  display: inline-block;
-  z-index: 100;
-  width: 18px;
-  height: 100%;
-  overflow: hidden;
-  margin-left: 6px;
-`;
-Wrap.displayName = 'checkboxWrap';
 const defaultTitle = '---';
 
 class TreeNode extends React.Component {
@@ -284,9 +209,7 @@ class TreeNode extends React.Component {
           delete animProps.animation.appear;
         }
       }
-      const cls = classNames(`${props.prefixCls}-child-tree`, {
-        [`${props.prefixCls}-child-tree-open`]: props.expanded,
-      });
+
       newChildren = (
         <Animate
           {...animProps}
@@ -295,7 +218,7 @@ class TreeNode extends React.Component {
           component=""
         >
           {!props.expanded ? null : (
-            <ChildrenUl className={cls} data-expanded={props.expanded}>
+            <ChildrenUl data-expanded={props.expanded}>
               {React.Children.map(
                 children,
                 (item, index) => {
@@ -313,7 +236,6 @@ class TreeNode extends React.Component {
 
   render() {
     const { props } = this;
-    const prefixCls = props.prefixCls;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
 
@@ -389,7 +311,7 @@ class TreeNode extends React.Component {
         selected={props.selected}
         title={props.title}
       >
-        {/* 前边的小箭头和小书籍图标*/}
+        {/* 小箭头*/}
         {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : renderNoopSwitcher()}
         {/* 小方格 */}
         {props.checkable ? this.renderCheckbox(props) : null}

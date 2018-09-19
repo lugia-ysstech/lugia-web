@@ -7,7 +7,8 @@
 import { keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import * as InputCSS from './input';
-const { themeColor } = colorsFunc();
+
+export const { themeColor, darkGreyColor } = colorsFunc();
 
 export const checkAllButtonAnimate = (fromHeight: any, toHeight: any) => {
   const animate = keyframes`
@@ -25,7 +26,7 @@ export function getCheckAllButtonColor(props: Object) {
   return props.isCheckedAll === false ? themeColor : 'red';
 }
 
-export function IsShowSearchInputHandle(props: Object) {
+export function IsShowSearchInputHandle(props: Object): string {
   const {
     showSearchInput,
     showCheckAllButton,
@@ -58,4 +59,5 @@ export function IsShowSearchInputHandle(props: Object) {
       transform: translateY(-${InputCSS.DefaultHeight});
         `;
   }
+  return '';
 }

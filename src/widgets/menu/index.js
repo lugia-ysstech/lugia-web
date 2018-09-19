@@ -35,7 +35,8 @@ type MenuProps = {
   limitCount?: number,
 };
 const getHeight = props => {
-  const height = props.theme.height ? props.theme.height : DefaultHeight;
+  const themeHeight = props.theme.height;
+  const height = themeHeight || themeHeight === 0 ? themeHeight : DefaultHeight;
   return `${em(height)}`;
 };
 const getWidth = props => (props.theme.width ? `width: ${em(props.theme.width)};` : '');

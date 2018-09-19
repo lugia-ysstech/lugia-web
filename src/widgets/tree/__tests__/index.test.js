@@ -420,7 +420,7 @@ describe('Tree', () => {
 
   function createMutlipePropsValueEmptyCase(emptyValue: any) {
     const cmp = mount(<Tree mutliple={true} expandAll data={rowData} />);
-    console.log(cmp.find(Widget.CheckBox).map(item => item.props().checked));
+
     exp(getCheckedItem(cmp).length).to.be.equal(0);
     cmp.setProps({ value: '1.1' });
 

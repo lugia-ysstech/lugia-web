@@ -2,7 +2,6 @@ import * as React from 'react';
 import Breadcrumb from './index';
 import styled from 'styled-components';
 import Icon from '../icon';
-import { HashRouter as Router, Route, Switch, Link, withRouter } from 'react-router-dom';
 
 const Hr = styled.div`
   height: 2px;
@@ -18,19 +17,19 @@ const CommonIcon = styled(Icon)`
 const routes = [
   {
     path: 'index',
-    breadcrumbName: '首页',
+    title: '首页',
   },
   {
     path: 'first',
-    breadcrumbName: '一级面包屑',
+    title: '一级面包屑',
   },
   {
-    path: 'second',
-    breadcrumbName: '二级面包屑',
+    path: 'second:id',
+    title: '二级面包屑:id',
   },
   {
     path: 'third',
-    breadcrumbName: '当前页面',
+    title: '当前页面',
   },
 ];
 
@@ -39,18 +38,24 @@ export default class Demo extends React.Component<any, any> {
     return (
       <div>
         {/*Breadcrumb 和 Breadcrumb.Item配合使用，使用href属性时，可跳转 */}
-        <Breadcrumb separator={'>'}>
-          <Breadcrumb.Item href="">主页</Breadcrumb.Item>
-          <Breadcrumb.Item href="">一级菜单</Breadcrumb.Item>
-          <Breadcrumb.Item href="">二级菜单</Breadcrumb.Item>
+        {/* <Breadcrumb separator={'>'}>
+          <Breadcrumb.Item href="a">主页</Breadcrumb.Item>
+          <Breadcrumb.Item href="b">一级菜单</Breadcrumb.Item>
+          <Breadcrumb.Item href="c">二级菜单</Breadcrumb.Item>
           <Breadcrumb.Item>三级菜单</Breadcrumb.Item>
-        </Breadcrumb>
+        </Breadcrumb> */}
+        {/* <Breadcrumb separator={'>'}>
+          <Breadcrumb.Item path="/index">主页</Breadcrumb.Item>
+          <Breadcrumb.Item path="two">一级菜单</Breadcrumb.Item>
+          <Breadcrumb.Item path="/index">二级菜单</Breadcrumb.Item>
+          <Breadcrumb.Item href="d">三级菜单</Breadcrumb.Item>
+        </Breadcrumb> */}
         <Hr />
         {/* 传入routes路由属性，使用默认的 renderItem函数,生成面包屑组件 */}
-        <Breadcrumb separator={'>'} routes={routes} />
+        {/* <Breadcrumb separator={'>'} params={{ id: 1 }} routes={routes} /> */}
         <Hr />
         {/* 传入Icon图标 */}
-        <Breadcrumb>
+        {/* <Breadcrumb>
           <Breadcrumb.Item href="">
             <CommonIcon iconClass="lugia-icon-logo_chrome" type="home" />
             <span>一级面包屑菜单 </span>
@@ -63,7 +68,8 @@ export default class Demo extends React.Component<any, any> {
             <span>二级面包屑菜单</span>
             <CommonIcon iconClass="lugia-icon-logo_apple" type="user" />
           </Breadcrumb.Item>
-        </Breadcrumb>
+        </Breadcrumb> */}
+        <Breadcrumb separator={undefined} params={{ id: 1 }} routes={routes} />
       </div>
     );
   }
@@ -73,28 +79,6 @@ export default class Demo extends React.Component<any, any> {
 //  给路由传入params 参数
 // import * as React from 'react';
 // import Breadcrumb from './index';
-// const routes = [
-//   {
-//     name: 'home',
-//     breadcrumbName: 'Home',
-//     path: '/',
-//   },
-//   {
-//     name: 'apps',
-//     breadcrumbName: 'Application List',
-//     path: 'apps',
-//   },
-//   {
-//     name: 'app',
-//     breadcrumbName: 'Application:id',
-//     path: ':id',
-//   },
-//   {
-//     name: 'detail',
-//     breadcrumbName: 'Detail',
-//     path: 'detail',
-//   },
-// ];
 
 // export default class Demo extends React.Component<any, any> {
 //   render() {

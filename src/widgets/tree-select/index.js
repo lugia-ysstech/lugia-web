@@ -8,7 +8,6 @@ import '../common/shirm';
 
 import React from 'react';
 import InputTag from '../inputtag';
-import Input from '../input';
 import Trigger from '../trigger';
 import Tree from '../tree';
 import Theme from '../theme';
@@ -17,14 +16,9 @@ import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
-import AddIcon from '../icon/AddIcon';
-import Refresh from '../icon/RefreshIcon';
-import CheckIcon from '../icon/CheckIcon';
-import ClearIcon from '../icon/ClearIcon';
 import { FontSize } from '../css';
-// import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
 import QueryInput from '../common/QueryInput';
-import { DefaultHeight, MenuItemHeight } from '../css/tree';
+import { DefaultHeight, MenuItemHeight, themeColor } from '../css/tree';
 
 import { adjustValue } from '../utils';
 import { DefaultHelp } from '../css/input';
@@ -83,7 +77,7 @@ const Text = styled.span`
   color: white;
   font-size: ${FontSize};
   width: 100%;
-  background: #108ee9;
+  background: ${themeColor};
   padding: 0.1rem;
   position: absolute;
   border-radius: 3px;
@@ -254,6 +248,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getQueryInput: Function = (cmp: Object) => {
       this.queryInput = cmp;
     };
+
     const tree = [
       <QueryInput
         query={query}

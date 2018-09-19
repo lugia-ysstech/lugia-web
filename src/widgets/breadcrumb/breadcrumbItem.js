@@ -6,14 +6,14 @@
 
 import * as React from 'react';
 
-import { CommonSpan, SeparatorSpan, ALink } from '../css/breadcrumb';
+import { ALink, CommonSpan, SeparatorSpan } from '../css/breadcrumb';
 
 export type BreadcrumbItemProps = {
-  separator?: any,
+  separator?: string | React.Element<any>,
   href?: string,
   isLastItem?: boolean,
-  children: any,
-  lastSeparator: any,
+  children: React.Node,
+  lastSeparator?: string | React.Element<any>,
 };
 
 export default class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
@@ -22,21 +22,15 @@ export default class BreadcrumbItem extends React.Component<BreadcrumbItemProps,
   };
 
   render() {
-    const { separator, children, ...restProps } = this.props;
-    let link;
+    const { separator, children, isLastItem, href } = this.props;
+    let Link = CommonSpan;
     if ('href' in this.props) {
-      link = <ALink {...restProps}>{children}</ALink>;
-    } else {
-      link = <CommonSpan {...restProps}>{children}</CommonSpan>;
+      Link = ALink;
     }
-    if (children) {
-      return (
-        <span>
-          {link}
-          <SeparatorSpan {...restProps}>{separator}</SeparatorSpan>
-        </span>
-      );
-    }
-    return null;
+    const config = { isLastItem, href };
+    return [
+      <Link {...config}>{children}</Link>,
+      <SeparatorSpan {...config}>{separator}</SeparatorSpan>,
+    ];
   }
 }
