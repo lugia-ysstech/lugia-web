@@ -18,12 +18,13 @@ import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import { FontSize } from '../css';
 import QueryInput from '../common/QueryInput';
-import { DefaultHeight, MenuItemHeight, themeColor } from '../css/tree';
+import { themeColor } from '../css/tree';
 
-import { adjustValue } from '../utils';
+import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
+
 import { DefaultHelp } from '../css/input';
 
-type ValidateStatus = 'sucess' | 'error';
+type ValidateStatus = 'success' | 'error';
 
 type TreeSelectProps = {
   validateStatus: ValidateStatus,
@@ -72,7 +73,7 @@ type TreeSelectState = {
   start: number,
   themeConfig: Object,
 };
-const SelectedIcon = 'SelectedIcon';
+
 const Text = styled.span`
   color: white;
   font-size: ${FontSize};
@@ -137,7 +138,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.state = {
       open: false,
       query: '',
-      validateStatus: 'sucess',
+      validateStatus: 'success',
       help: DefaultHelp,
       treeFilter: '',
       value,
@@ -147,7 +148,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       end: 0,
       start: 0,
       selectAll: false,
-      themeConfig: this.getTheme(),
+      themeConfig: this.getCurrentTheme(),
     };
     this.changeOldValue(value);
     this.treeVisible = false;
@@ -202,7 +203,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       }
       if (this.props.svThemVersion !== nextProps.svThemVersion) {
         this.setState({
-          themeConfig: this.getTheme(),
+          themeConfig: this.getCurrentTheme(),
         });
       }
     }
@@ -245,9 +246,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
     };
-    const getQueryInput: Function = (cmp: Object) => {
-      this.queryInput = cmp;
-    };
 
     const tree = [
       <QueryInput
@@ -275,6 +273,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         value={value}
         onChange={this.onTreeChange}
         displayValue={displayValue}
+        igronSelectField={igronSelectField}
       />,
     ];
 
@@ -425,21 +424,16 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   };
 
   appendValue() {
-    const inputValue = this.state.query;
+    const { props, state } = this;
+    const { query, value, displayValue } = state;
+    const inputValue = query;
     if (inputValue && inputValue.trim() && this.isCanInput() && !this.isLimit()) {
       clearTimeout(this.queryHandle);
-      if (this.isMutliple()) {
-        const { value = [], displayValue = [] } = this.state;
-        const newValue = [...value],
-          newDisplayValue = [...displayValue];
-        newValue.push(inputValue);
-        newDisplayValue.push(inputValue);
-        this.setValue([...newValue], [...newDisplayValue], {});
-        this.onQueryInputChange('');
-      } else {
-        this.setValue([inputValue], [inputValue], {});
-        this.onQueryInputChange('');
-      }
+
+      const { newValue, newDisplayValue } = appendCustomValue(props, query, value, displayValue);
+
+      this.setValue([...newValue], [...newDisplayValue], {});
+      this.onQueryInputChange('');
     }
   }
 
@@ -649,22 +643,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   setValue(value: Array<string>, displayValue: Array<string>, other: Object, callback = () => {}) {
     this.onChange(value, displayValue);
     if (Support.isNotLimit(this.props)) {
-      const realyVal = [];
-      const realDisp = [];
-      if (value && value.length > 0) {
-        const len = value.length;
-        const isHas = {};
-        for (let i = 0; i < len; i++) {
-          const key = value[i];
-          const title = displayValue[i];
-          if (isHas[key]) {
-            continue;
-          }
-          isHas[key] = true;
-          realyVal.push(key);
-          realDisp.push(title);
-        }
-      }
+      const { realyVal, realDisp } = setNewValue(value, displayValue);
       this.setState(
         {
           value: realyVal,
@@ -717,28 +696,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.oldValue = value;
   }
 
-  getTheme(): Object {
-    const { getTheme = () => ({}), label } = this.props;
-    const theme = getTheme();
-    const { width } = theme;
-    let queryInputConfig = {};
-    if (width) {
-      // queryInputConfig.width = width - 2 * QueryInputPadding;
-      queryInputConfig.width = width;
-    }
-    const inputTag = { ...theme };
-    queryInputConfig = Object.assign({}, theme, queryInputConfig);
-    delete queryInputConfig.height;
-    const treeConfig: Object = { ...theme };
-    const { height = DefaultHeight } = treeConfig;
-    treeConfig.height = adjustValue(height, MenuItemHeight);
-    return {
-      [Widget.Tree]: treeConfig,
-      [Widget.Trigger]: label ? Object.assign({}, theme, { float: 'left' }) : theme,
-      [Widget.InputTag]: inputTag,
-      [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9' },
-      [Widget.Input]: queryInputConfig,
-    };
+  getCurrentTheme(): Object {
+    return getTheme(this.props, Widget.Tree);
   }
 
   onScroller = (start: number) => {
