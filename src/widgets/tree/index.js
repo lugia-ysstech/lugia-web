@@ -393,7 +393,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.state.hasError) {
       return <ErrorTooltip>树形数据错误</ErrorTooltip>;
     }
-    const { query, current } = props;
+    const { query, current, igronSelectField } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;
     const { checked, halfchecked } = selectedInfo;
@@ -417,6 +417,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         {...props}
         id2ExtendInfo={id2ExtendInfo}
         start={start}
+        igronSelectField={igronSelectField}
         onScroller={this.onScroller}
         onScrollerEndChange={this.onScrollerEndChange}
         onCanSeeCountChange={this.onCanSeeCountChange}

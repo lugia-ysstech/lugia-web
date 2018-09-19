@@ -33,7 +33,14 @@ import {
 
 import { FontSize } from '../css';
 import { DefaultHeight } from '../css/menu';
-import { MarginRight, SingleLineHeight, Height } from '../css/inputtag';
+import {
+  MarginRight,
+  SingleLineHeight,
+  Height,
+  lightGreyColor,
+  mediumGreyColor,
+  blackColor,
+} from '../css/inputtag';
 import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
@@ -43,7 +50,7 @@ const ClearMenuItemButton = styled(Icon)`
   right: ${em(12)};
   position: absolute;
   transform: translateY(-50%);
-  color: rgba(0, 0, 0, 0.25);
+  color: ${lightGreyColor};
 `;
 
 type ValidateStatus = 'success' | 'error';
@@ -88,7 +95,7 @@ const Container = styled.div`
   ${getBackground};
   display: inline-block;
   position: relative;
-  color: rgba(0, 0, 0, 0.65);
+  color: ${mediumGreyColor};
   font-size: ${FontSize};
 `;
 const getBorderColor = props => {
@@ -110,7 +117,7 @@ const IconButton: Object = styled(Icon)`
   right: 0;
   position: absolute;
   transform: translateY(-50%);
-  color: rgba(0, 0, 0, 0.25);
+  color: ${lightGreyColor};
 `;
 
 /** add by szfeng */
@@ -142,6 +149,7 @@ const SingleInnerContainer = InnerContainer.extend`
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: ${SingleLineHeight};
+  color: ${blackColor};
 `;
 const List = styled.ul`
   list-style: none;
@@ -286,8 +294,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const config = { width: this.getWidth(), height: this.getHeight() };
     const theme = {
       [Widget.DropMenu]: config,
-      [Widget.Icon]: { hoverColor: '#000' },
-      [IconButton.displayName]: { hoverColor: 'rgba(0,0,0,.43)' },
+      [Widget.Icon]: { hoverColor: blackColor },
+      [IconButton.displayName]: { hoverColor: mediumGreyColor },
     };
     const fillFontItem: Function = (cmp: Object): any => (this.fontItem = cmp);
     const font = <FontItem ref={fillFontItem} key="fontItem" />;

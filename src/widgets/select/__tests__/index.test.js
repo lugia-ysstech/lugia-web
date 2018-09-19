@@ -150,7 +150,11 @@ describe('Select', () => {
     }
 
     onChange = obj => {
-      this.setState(obj);
+      const { newValue, newDisplayValue } = obj;
+      this.setState({
+        value: newValue,
+        displayValue: newDisplayValue,
+      });
     };
   }
 
@@ -264,7 +268,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
     const value = ['123'];
@@ -306,7 +311,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
     const value = ['123'];
@@ -347,7 +353,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
 
@@ -385,7 +392,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
 
@@ -423,7 +431,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
 
@@ -461,7 +470,8 @@ describe('Select', () => {
     let onChange;
     const changeResult = new Promise(resolve => {
       onChange = arg => {
-        resolve(arg);
+        const { newValue: value, newDisplayValue: displayValue } = arg;
+        resolve({ value, displayValue });
       };
     });
 
@@ -524,7 +534,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -566,7 +578,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -601,7 +615,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -642,7 +658,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -678,7 +696,9 @@ describe('Select', () => {
     const selectPromise = new Promise(res => {
       const result = [];
       onSelect = v => {
-        result.push(v);
+        const { newValue: value, newDisplayValue: displayValue } = v;
+
+        result.push({ value, displayValue });
         if (result.length === 2) {
           res(result);
         }
@@ -838,6 +858,7 @@ describe('Select', () => {
         .instance().displayValue
     ).toEqual([displayValue]);
   });
+
   it('displayValue  ["szfeng"]  displayValue = \'displayValue\' not exist &  dataItem not exist', async () => {
     const value = ['szfeng'];
     const displayValue = 'displayValue';
@@ -943,6 +964,180 @@ describe('Select', () => {
         .at(0)
         .instance().displayValue
     ).toEqual(['txt0']);
+  });
+
+  it('多选mutliple 非受限组件，测试oldValue,newValue', async () => {
+    let onSelect;
+    const selectPromise = new Promise(res => {
+      const result = [];
+      onSelect = v => {
+        const { newValue, oldValue, newItem, oldItem, newDisplayValue } = v;
+
+        result.push({ newValue, oldValue, newItem, oldItem, newDisplayValue });
+        if (result.length === 2) {
+          res(result);
+        }
+      };
+    });
+
+    const defaultValue = ['szfeng', '史振峰'];
+    const defaultDisplayValue = ['hades', '哈迪斯'];
+
+    const cmp = mount(
+      <Select
+        data={data}
+        displayField={'label'}
+        mutliple
+        canSearch
+        canInput
+        limitCount={5}
+        onSelect={onSelect}
+        defaultValue={defaultValue}
+        defaultDisplayValue={defaultDisplayValue}
+      />
+    );
+
+    showTrigger(cmp);
+    cmp
+      .find(Widget.MenuItem)
+      .at(0)
+      .simulate('click');
+
+    const FirstExpNewValue = [...defaultValue, 'key-0'];
+    const FirstExpOldValue = [...defaultValue];
+    const FirstExpNewDisplayValue = [...defaultDisplayValue, 'txt0'];
+    const FirstExpNewItem = [
+      { value: 'szfeng', label: 'hades' },
+      { value: '史振峰', label: '哈迪斯' },
+      { value: 'key-0', label: 'txt0' },
+    ];
+    const FirstExpOldItem = [
+      { value: 'szfeng', label: 'hades' },
+      { value: '史振峰', label: '哈迪斯' },
+    ];
+
+    cmp
+      .find(Widget.MenuItem)
+      .at(0)
+      .simulate('click');
+
+    const SecondExpNewValue = [...defaultValue];
+    const SecondExpOldValue = [...defaultValue, 'key-0'];
+    const SecondExpNewDisplayValue = [...defaultDisplayValue];
+    const SecondExpNewItem = [
+      { value: 'szfeng', label: 'hades' },
+      { value: '史振峰', label: '哈迪斯' },
+    ];
+    const SecondExpOldItem = [
+      { value: 'szfeng', label: 'hades' },
+      { value: '史振峰', label: '哈迪斯' },
+      { value: 'key-0', label: 'txt0' },
+    ];
+
+    const result = await selectPromise;
+    expect(result).toEqual([
+      {
+        newValue: FirstExpNewValue,
+        oldValue: FirstExpOldValue,
+        newItem: FirstExpNewItem,
+        oldItem: FirstExpOldItem,
+        newDisplayValue: FirstExpNewDisplayValue,
+      },
+      {
+        newValue: SecondExpNewValue,
+        oldValue: SecondExpOldValue,
+        newItem: SecondExpNewItem,
+        oldItem: SecondExpOldItem,
+        newDisplayValue: SecondExpNewDisplayValue,
+      },
+    ]);
+  });
+
+  it('多选mutliple 受限组件，测试oldValue,newValue', async () => {
+    let onSelect;
+    const selectPromise = new Promise(res => {
+      const result = [];
+      onSelect = v => {
+        const { newValue, oldValue, newItem, oldItem, newDisplayValue } = v;
+
+        result.push({ newValue, oldValue, newItem, oldItem, newDisplayValue });
+        if (result.length === 2) {
+          res(result);
+        }
+      };
+    });
+
+    const value = ['szfeng', '史振峰'];
+    const displayValue = ['hades', '哈迪斯'];
+
+    const cmp = mount(
+      <Select
+        data={data}
+        displayField={'label'}
+        mutliple
+        canSearch
+        canInput
+        limitCount={5}
+        onSelect={onSelect}
+        value={value}
+        displayValue={displayValue}
+      />
+    );
+
+    showTrigger(cmp);
+    cmp
+      .find(Widget.MenuItem)
+      .at(0)
+      .simulate('click');
+
+    const FirstExpNewValue = [...value, 'key-0'];
+    const FirstExpOldValue = [...value];
+    const FirstExpNewDisplayValue = [...displayValue, 'txt0'];
+    const FirstExpNewItem = [
+      { value: 'szfeng', label: 'hades' },
+      { value: '史振峰', label: '哈迪斯' },
+      { value: 'key-0', label: 'txt0' },
+    ];
+    const FirstExpOldItem = [
+      { value: 'szfeng', label: 'hades' },
+      { value: '史振峰', label: '哈迪斯' },
+    ];
+
+    cmp
+      .find(Widget.MenuItem)
+      .at(1)
+      .simulate('click');
+
+    const SecondExpNewValue = [...value, 'key-1'];
+    const SecondExpOldValue = [...value];
+    const SecondExpNewDisplayValue = [...displayValue, 'txt1'];
+    const SecondExpNewItem = [
+      { value: 'szfeng', label: 'hades' },
+      { value: '史振峰', label: '哈迪斯' },
+      { value: 'key-1', label: 'txt1' },
+    ];
+    const SecondExpOldItem = [
+      { value: 'szfeng', label: 'hades' },
+      { value: '史振峰', label: '哈迪斯' },
+    ];
+
+    const result = await selectPromise;
+    expect(result).toEqual([
+      {
+        newValue: FirstExpNewValue,
+        oldValue: FirstExpOldValue,
+        newItem: FirstExpNewItem,
+        oldItem: FirstExpOldItem,
+        newDisplayValue: FirstExpNewDisplayValue,
+      },
+      {
+        newValue: SecondExpNewValue,
+        oldValue: SecondExpOldValue,
+        newItem: SecondExpNewItem,
+        oldItem: SecondExpOldItem,
+        newDisplayValue: SecondExpNewDisplayValue,
+      },
+    ]);
   });
 
   function changeQuery(cmp: Object, value: string) {

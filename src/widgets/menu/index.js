@@ -14,6 +14,8 @@ import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
 import '../css/sv.css';
 import { adjustValue } from '../utils';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 type MenuProps = {
   start: number,
@@ -33,10 +35,11 @@ type MenuProps = {
   limitCount?: number,
 };
 const getHeight = props => {
-  const height = props.theme.height ? props.theme.height : DefaultHeight;
-  return `${height}px`;
+  const themeHeight = props.theme.height;
+  const height = themeHeight || themeHeight === 0 ? themeHeight : DefaultHeight;
+  return `${em(height)}`;
 };
-const getWidth = props => (props.theme.width ? `width: ${props.theme.width}px;` : '');
+const getWidth = props => (props.theme.width ? `width: ${em(props.theme.width)};` : '');
 const MenuContainer = styled.ul`
   ${getWidth} outline: none;
   margin: 0;
@@ -189,7 +192,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       return {};
     }
     return {
-      onClick: () => {
+      onClick: (event: Object) => {
         if (!key) {
           return;
         }
@@ -216,7 +219,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         /**
          *  add by szfeng
          */
-        onClick && onClick(keys, str);
+        onClick && onClick(event, keys, str);
       },
     };
   };

@@ -27,6 +27,7 @@ type CheckBoxState = {
 
 export default ThemeProvider(
   class extends React.Component<CheckBoxProps, CheckBoxState> {
+    static displayName = Widget.CheckBox;
     static getDerivedStateFromProps(props, state) {
       const isChecked = 'checked' in props;
       const checked = isChecked ? props.checked : state ? state.checked : props.defaultChecked;

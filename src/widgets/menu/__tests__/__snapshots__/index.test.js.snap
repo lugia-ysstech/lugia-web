@@ -10,8 +10,8 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 280px;
-  max-height: 280px;
+  height: 23.333333333333336em;
+  max-height: 23.333333333333336em;
   overflow: hidden;
 }
 
@@ -19,10 +19,10 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #333;
+  color: #333333;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
@@ -33,7 +33,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c1:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -55,7 +55,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 10px;
+  right: 0.8333333333333334em;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
@@ -68,10 +68,10 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #4d63ff;
+  color: #684fff;
   font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
@@ -82,7 +82,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c2:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -104,17 +104,17 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 10px;
+  right: 0.8333333333333334em;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
 
 .c2:after {
-  color: #108ee9;
+  color: #684fff;
 }
 
 .c2:hover:after {
-  color: #108ee9;
+  color: #684fff;
 }
 
 <ul
@@ -165,8 +165,8 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 280px;
-  max-height: 280px;
+  height: 23.333333333333336em;
+  max-height: 23.333333333333336em;
   overflow: hidden;
 }
 
@@ -174,10 +174,10 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #333;
+  color: #333333;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
@@ -188,7 +188,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c1:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -196,10 +196,10 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #4d63ff;
+  color: #684fff;
   font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
@@ -210,7 +210,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c2:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -254,7 +254,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 .c0 {
-  width: 550px;
+  width: 45.833333333333336em;
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -263,8 +263,8 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 350px;
-  max-height: 350px;
+  height: 29.166666666666668em;
+  max-height: 29.166666666666668em;
   overflow: hidden;
 }
 
@@ -272,10 +272,10 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #333;
+  color: #333333;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
@@ -286,7 +286,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 }
 
 .c1:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -332,7 +332,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 
 exports[`Menu children: items 1`] = `
 .c3 {
-  width: 200px;
+  width: 16.666666666666668em;
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -341,8 +341,8 @@ exports[`Menu children: items 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 280px;
-  max-height: 280px;
+  height: 23.333333333333336em;
+  max-height: 23.333333333333336em;
   overflow: hidden;
 }
 
@@ -350,10 +350,10 @@ exports[`Menu children: items 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #333;
+  color: #333333;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
@@ -364,7 +364,7 @@ exports[`Menu children: items 1`] = `
 }
 
 .c4:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -386,7 +386,7 @@ exports[`Menu children: items 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 10px;
+  right: 0.8333333333333334em;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
@@ -397,29 +397,29 @@ exports[`Menu children: items 1`] = `
 
 .c1 {
   overflow: hidden;
-  height: 250px;
-  width: 200px;
+  height: 20.833333333333336em;
+  width: 16.666666666666668em;
   position: relative;
 }
 
 .c2 {
-  height: 250px;
-  width: 188px;
+  height: 20.833333333333336em;
+  width: 15.666666666666668em;
   position: absolute;
   display: inline-block;
 }
 
-.c0:hover .bEXUIr {
+.c0:hover .gaxbjm {
   opacity: 1;
 }
 
 .c5 {
-  height: 250px;
-  width: 188px;
+  height: 20.833333333333336em;
+  width: 15.666666666666668em;
   position: absolute;
   display: inline-block;
-  left: 188px;
-  width: 12px;
+  left: 15.666666666666668em;
+  width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
@@ -431,11 +431,11 @@ exports[`Menu children: items 1`] = `
 
 .c6 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c7 {
@@ -444,18 +444,20 @@ exports[`Menu children: items 1`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c7:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <span>
@@ -547,7 +549,7 @@ exports[`Menu children: items 1`] = `
         onWheel={[Function]}
         style={
           Object {
-            "height": "250px",
+            "height": "20.833333333333336em",
           }
         }
       >
@@ -557,8 +559,8 @@ exports[`Menu children: items 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "179px",
-              "top": "0px",
+              "height": "14.916666666666666em",
+              "top": "0em",
             }
           }
         />

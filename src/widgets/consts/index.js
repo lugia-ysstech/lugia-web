@@ -64,6 +64,7 @@ const NumberTurn = 'sv_widget_NumberTurn';
 /* add by szfeng */
 const Select = 'sv_widget_Select';
 const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
+const QueryInput = 'sv_widget_QueryInput';
 
 const Layout = 'sv_widget_Layout';
 const Header = 'sv_widget_Header';
@@ -128,4 +129,5 @@ export default {
   Content,
   Footer,
   Aside,
+  QueryInput,
 };
