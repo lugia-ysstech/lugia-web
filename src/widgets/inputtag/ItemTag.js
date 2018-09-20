@@ -6,7 +6,15 @@
  */
 import styled from 'styled-components';
 import '../css/sv.css';
-import { MarginRight, MarginTop, PaddingLeft, PadingRight, Height } from '../css/inputtag';
+import {
+  MarginRight,
+  MarginTop,
+  PaddingLeft,
+  PadingRight,
+  Height,
+  ItemContainerBackgroundColor,
+  darkGreyColor,
+} from '../css/inputtag';
 import { Padding } from '../css/input';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
@@ -19,9 +27,9 @@ export const ItemContainer = styled.li`
   height: ${em(ItemTagHeight)};
   line-height: ${em(ItemTagHeight)};
   user-select: none;
-  background: #f6f5ff;
+  background: ${ItemContainerBackgroundColor};
   border-radius: ${em(ItemTagHeight)};
-  color: '#666666';
+  color: ${darkGreyColor};
   cursor: default;
   float: left;
   margin-right: ${em(MarginRight)};

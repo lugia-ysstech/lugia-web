@@ -5,10 +5,10 @@ exports[`Item Mutliple MenuItem 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #333;
+  color: #333333;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
@@ -19,7 +19,7 @@ exports[`Item Mutliple MenuItem 1`] = `
 }
 
 .c0:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -41,7 +41,7 @@ exports[`Item Mutliple MenuItem 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 10px;
+  right: 0.8333333333333334em;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
@@ -66,10 +66,10 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #4d63ff;
+  color: #684fff;
   font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
@@ -80,7 +80,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 }
 
 .c0:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -102,17 +102,17 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 10px;
+  right: 0.8333333333333334em;
   font-weight: 700;
   text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
 
 .c0:after {
-  color: #108ee9;
+  color: #684fff;
 }
 
 .c0:hover:after {
-  color: #108ee9;
+  color: #684fff;
 }
 
 <li
@@ -131,10 +131,10 @@ exports[`Item Single MenuItem 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #333;
+  color: #333333;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
@@ -145,7 +145,7 @@ exports[`Item Single MenuItem 1`] = `
 }
 
 .c0:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -163,10 +163,10 @@ exports[`Item Single MenuItem checked 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #4d63ff;
+  color: #684fff;
   font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
@@ -177,7 +177,7 @@ exports[`Item Single MenuItem checked 1`] = `
 }
 
 .c0:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
@@ -197,10 +197,10 @@ exports[`Item children: null 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #333;
+  color: #333333;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
@@ -211,7 +211,7 @@ exports[`Item children: null 1`] = `
 }
 
 .c0:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 

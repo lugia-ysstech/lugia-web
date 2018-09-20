@@ -4,6 +4,19 @@ import classNames from 'classnames';
 import Animate from 'rc-animate';
 import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
+import CommonIcon from '../../icon';
+import CheckBox from '../../checkbox';
+import {
+  themeColor,
+  Switcher,
+  NullSwitcher,
+  Li,
+  ChildrenUl,
+  TitleWrap,
+  TitleSpan,
+} from '../../css/tree';
+import Widget from '../../consts';
+import Theme from '../../theme';
 
 const defaultTitle = '---';
 
@@ -138,39 +151,33 @@ class TreeNode extends React.Component {
   };
 
   renderSwitcher(props, expandedState) {
-    const prefixCls = props.prefixCls;
-    const switcherCls = classNames(
-      `${prefixCls}-switcher`,
-      `${prefixCls}-switcher_${expandedState}`,
-      {
-        [`${prefixCls}-switcher-disabled`]: props.disabled,
-      }
+    const iconClass =
+      expandedState === 'open'
+        ? 'lugia-icon-direction_caret_down'
+        : 'lugia-icon-direction_caret_right';
+    return (
+      <Switcher onClick={props.disabled ? null : this.onExpand} expandedState={expandedState}>
+        <CommonIcon iconClass={iconClass} />
+      </Switcher>
     );
-    return <span className={switcherCls} onClick={props.disabled ? null : this.onExpand} />;
   }
 
   renderCheckbox(props) {
-    const prefixCls = props.prefixCls;
-    const checkboxCls = {
-      [`${prefixCls}-checkbox`]: true,
+    const { checked, halfChecked: indeterminate, notCanSelect: disabled, title } = props;
+    const view = {
+      [Widget.CheckBox]: { color: themeColor },
     };
-    if (props.checked) {
-      checkboxCls[`${prefixCls}-checkbox-checked`] = true;
-    } else if (props.halfChecked) {
-      checkboxCls[`${prefixCls}-checkbox-indeterminate`] = true;
-    }
-    let customEle = null;
-    if (typeof props.checkable !== 'boolean') {
-      customEle = props.checkable;
-    }
-    if (props.disabled || props.disableCheckbox) {
-      checkboxCls[`${prefixCls}-checkbox-disabled`] = true;
-      return <span className={classNames(checkboxCls)}>{customEle}</span>;
-    }
     return (
-      <span className={classNames(checkboxCls)} onClick={this.onCheck}>
-        {customEle}
-      </span>
+      <Theme config={view}>
+        <CheckBox
+          checked={checked}
+          disabled={disabled}
+          indeterminate={indeterminate}
+          onChange={this.onCheck}
+        >
+          {title}
+        </CheckBox>
+      </Theme>
     );
   }
 
@@ -202,9 +209,7 @@ class TreeNode extends React.Component {
           delete animProps.animation.appear;
         }
       }
-      const cls = classNames(`${props.prefixCls}-child-tree`, {
-        [`${props.prefixCls}-child-tree-open`]: props.expanded,
-      });
+
       newChildren = (
         <Animate
           {...animProps}
@@ -213,7 +218,7 @@ class TreeNode extends React.Component {
           component=""
         >
           {!props.expanded ? null : (
-            <ul className={cls} data-expanded={props.expanded}>
+            <ChildrenUl data-expanded={props.expanded}>
               {React.Children.map(
                 children,
                 (item, index) => {
@@ -221,7 +226,7 @@ class TreeNode extends React.Component {
                 },
                 props.root
               )}
-            </ul>
+            </ChildrenUl>
           )}
         </Animate>
       );
@@ -231,7 +236,6 @@ class TreeNode extends React.Component {
 
   render() {
     const { props } = this;
-    const prefixCls = props.prefixCls;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
 
@@ -239,66 +243,48 @@ class TreeNode extends React.Component {
     const content = props.title;
     let newChildren = this.renderChildren(props);
     if (!newChildren || newChildren === props.children) {
-      // content = newChildren;
       newChildren = null;
       if (props.isLeaf) {
         canRenderSwitcher = false;
         iconState = 'docu';
       }
     }
-    // For performance, does't render children into dom when `!props.expanded` (move to Animate)
-    // if (!props.expanded) {
-    //   newChildren = null;
-    // }
-
-    const iconEleCls = {
-      [`${prefixCls}-iconEle`]: true,
-      [`${prefixCls}-icon_loading`]: this.state.dataLoading,
-      [`${prefixCls}-icon__${iconState}`]: true,
-    };
 
     const selectHandle = () => {
-      const icon =
-        props.showIcon || (props.loadData && this.state.dataLoading) ? (
-          <span className={classNames(iconEleCls)} />
-        ) : null;
-      const title = <span className={`${prefixCls}-title`}>{content}</span>;
-      const wrap = `${prefixCls}-node-content-wrapper`;
+      const title = <TitleSpan title={content}>{content}</TitleSpan>;
       const domProps = {
-        className: `${wrap} ${wrap}-${iconState === expandedState ? iconState : 'normal'}`,
         onMouseEnter: this.onMouseEnter,
         onMouseLeave: this.onMouseLeave,
         onContextMenu: this.onContextMenu,
       };
+
       if (!props.disabled) {
-        if (props.selected || this.state.dragNodeHighlight) {
-          domProps.className += ` ${prefixCls}-node-selected`;
-        }
-        if (props.hightLight || this.state.dragNodeHighlight) {
-          domProps.className += ` ${prefixCls}-node-highlight`;
-        }
         domProps.onClick = e => {
           e.preventDefault();
+
           if (this.isSelectable()) {
             this.onSelect();
           }
         };
         if (props.draggable) {
-          domProps.className += ' draggable';
           domProps.draggable = true;
           domProps['aria-grabbed'] = true;
           domProps.onDragStart = this.onDragStart;
         }
       }
+
+      const { checked, selected, notCanSelect } = this.props;
       return (
-        <span
+        <TitleWrap
           ref={this.saveSelectHandle}
           title={typeof content === 'string' ? content : ''}
           {...domProps}
+          checked={checked}
+          selected={selected}
+          notCanSelect={notCanSelect}
         >
-          {icon}
           {title}
-        </span>
+        </TitleWrap>
       );
     };
 
@@ -311,35 +297,28 @@ class TreeNode extends React.Component {
       liProps.onDragEnd = this.onDragEnd;
     }
 
-    let disabledCls = '';
-    let dragOverCls = '';
-    if (props.disabled) {
-      disabledCls = `${prefixCls}-treenode-disabled`;
-    } else if (props.dragOver) {
-      dragOverCls = 'drag-over';
-    } else if (props.dragOverGapTop) {
-      dragOverCls = 'drag-over-gap-top';
-    } else if (props.dragOverGapBottom) {
-      dragOverCls = 'drag-over-gap-bottom';
-    }
-
-    const filterCls = props.filterTreeNode(this) ? 'filter-node' : '';
-
     const renderNoopSwitcher = () => (
-      <span className={`${prefixCls}-switcher ${prefixCls}-switcher-noop`} />
+      <NullSwitcher>
+        <CommonIcon iconClass={'lugia-icon-direction_caret_down'} />
+      </NullSwitcher>
     );
 
     return (
-      <li
+      <Li
         unselectable="on"
         {...liProps}
-        className={classNames(props.className, disabledCls, dragOverCls, filterCls)}
+        isLeaf={props.isLeaf}
+        selected={props.selected}
+        title={props.title}
       >
+        {/* 小箭头*/}
         {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : renderNoopSwitcher()}
+        {/* 小方格 */}
         {props.checkable ? this.renderCheckbox(props) : null}
-        {selectHandle()}
+        {/* 内容 */}
+        {props.checkable ? null : selectHandle()}
         {newChildren}
-      </li>
+      </Li>
     );
   }
 }

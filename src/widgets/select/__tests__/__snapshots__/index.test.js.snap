@@ -11,7 +11,7 @@ exports[`Select 单选默认样式 1`] = `
   user-select: none;
   background: #f6f5ff;
   border-radius: 1.8333333333333335em;
-  color: '#666666';
+  color: #666666;
   cursor: default;
   float: left;
   margin-right: 0.33333333333333337em;
@@ -40,12 +40,12 @@ exports[`Select 单选默认样式 1`] = `
 }
 
 .c6:hover {
-  color: #000;
+  color: #333333;
 }
 
 .c5 {
   font-size: 1.2rem;
-  color: rgba(0,0,0,0.47);
+  color: #999999;
   position: absolute;
   padding: 0 0 0 0.4166666666666667em;
   right: 0.33333333333333337em;
@@ -57,7 +57,7 @@ exports[`Select 单选默认样式 1`] = `
 }
 
 .c5:hover {
-  color: #000;
+  color: #333333;
 }
 
 .c2 {
@@ -85,10 +85,10 @@ exports[`Select 单选默认样式 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 35px;
-  padding: 7px 8px;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
-  color: #333;
+  color: #333333;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
@@ -99,17 +99,17 @@ exports[`Select 单选默认样式 1`] = `
 }
 
 .c18:hover {
-  background-color: #f6f7ff;
+  background-color: #edf0fe;
   font-weight: 900;
 }
 
 .c20 {
   position: relative;
   background: #fbfbfb;
-  width: 20px;
-  height: 300px;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c21 {
@@ -118,16 +118,16 @@ exports[`Select 单选默认样式 1`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 0.6666666666666667em;
   background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
+  line-height: 2.5em;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c21:hover {
@@ -135,26 +135,26 @@ exports[`Select 单选默认样式 1`] = `
 }
 
 .c16 {
-  height: 270px;
-  width: 238px;
+  height: 22.5em;
+  width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
 }
 
 .c15 {
   overflow: hidden;
-  height: 270px;
-  width: 250px;
+  height: 22.5em;
+  width: 20.833333333333336em;
   position: relative;
 }
 
 .c19 {
-  height: 270px;
-  width: 238px;
+  height: 22.5em;
+  width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
-  left: 238px;
-  width: 12px;
+  left: 19.833333333333336em;
+  width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
@@ -173,8 +173,8 @@ exports[`Select 单选默认样式 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 280px;
-  max-height: 280px;
+  height: 23.333333333333336em;
+  max-height: 23.333333333333336em;
   overflow: hidden;
 }
 
@@ -182,7 +182,7 @@ exports[`Select 单选默认样式 1`] = `
   width: 100%;
   display: inline-block;
   position: relative;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   font-size: 1.2rem;
 }
 
@@ -205,7 +205,7 @@ exports[`Select 单选默认样式 1`] = `
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  color: rgba(0,0,0,0.25);
+  color: #cccccc;
   font-size: 1.2rem;
 }
 
@@ -227,6 +227,7 @@ exports[`Select 单选默认样式 1`] = `
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 2.5em;
+  color: #333333;
 }
 
 .c1 {
@@ -373,7 +374,7 @@ exports[`Select 单选默认样式 1`] = `
               onWheel={[Function]}
               style={
                 Object {
-                  "height": "270px",
+                  "height": "22.5em",
                 }
               }
             >
@@ -383,8 +384,8 @@ exports[`Select 单选默认样式 1`] = `
                 onMouseUp={[Function]}
                 style={
                   Object {
-                    "height": "10px",
-                    "top": "0px",
+                    "height": "0.8333333333333334em",
+                    "top": "0em",
                   }
                 }
               />

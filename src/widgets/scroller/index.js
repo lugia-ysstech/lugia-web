@@ -11,7 +11,15 @@ import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import { FontSize } from '../css';
-import { BarDefaultSize, BarDefaultSizePadding } from '../css/scroller';
+import {
+  BarDefaultSize,
+  BarDefaultSizePadding,
+  ContainerBackgroundColor,
+  BarBackgroundColor,
+  BarHoverBackgroundColor,
+} from '../css/scroller';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 type ScrollerProps = {
   totalSize: number,
@@ -31,47 +39,48 @@ type Direction = 'down' | 'up' | 'none';
 
 const Container = styled.div`
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
-  border-radius: 5px;
+  background: ${ContainerBackgroundColor};
+  width: ${em(20)};
+  height: ${em(300)};
   z-index: 996;
 `;
 
 const XContainer = Container.extend`
-  height: ${BarDefaultSize}px;
+  height: ${em(BarDefaultSize)};
 `;
 const YContainer = Container.extend`
-  width: ${BarDefaultSize}px;
+  width: ${em(BarDefaultSize)};
 `;
-const getBackground = props => (props.disabled ? '#898989' : '#49a9ee');
+const getBackground = props => (props.disabled ? '#898989' : BarBackgroundColor);
 const Bar = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
+  border-radius: ${em(8)};
   background: ${getBackground};
   color: #fff;
   font-size: ${FontSize};
-  line-height: 30px;
+  line-height: ${em(30)};
 
   &:hover {
-    background-color: #49a9ee96;
+    background-color: ${BarHoverBackgroundColor};
   }
+
+  transition: all 0.4s;
 `;
 
 const scrollerSize = BarDefaultSize - BarDefaultSizePadding;
 const XBar = Bar.extend`
-  height: ${scrollerSize}px;
-  margin-bottom: 2px;
-  margin-top: 2px;
+  height: ${em(scrollerSize)};
+  margin-bottom: ${em(2)};
+  margin-top: ${em(2)};
 `;
 const YBar = Bar.extend`
-  width: ${scrollerSize}px;
-  margin-left: 2px;
-  margin-right: 2px;
+  width: ${em(scrollerSize)};
+  margin-left: ${em(2)};
+  margin-right: ${em(2)};
 `;
 
 const XScroller = 'x',
@@ -79,7 +88,7 @@ const XScroller = 'x',
 const Down = 'down';
 const Up = 'up';
 const None = 'none';
-const DefaultStep = 1;
+const DefaultStep = 30;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   static defaultProps = {
@@ -194,7 +203,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   }
 
   getPX(val: number): string {
-    return `${val}px`;
+    return `${em(val)}`;
   }
 
   componentDidMount() {
