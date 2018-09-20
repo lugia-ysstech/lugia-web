@@ -83,13 +83,8 @@ export default class Demo extends React.Component {
   }
 
   onChange = obj => {
-    console.log(obj);
-    const { newValue, newDisplayValue } = obj;
-
-    this.setState({
-      value: newValue,
-      displayValue: newDisplayValue,
-    });
+    const { value, displayValue } = obj;
+    this.setState({ value, displayValue });
   };
 
   onSelect = obj => {};
@@ -99,11 +94,11 @@ export default class Demo extends React.Component {
   };
 
   onChangeNoDisplayValue = obj => {
-    const { newValue, newDisplayValue } = obj;
+    const { value, displayValue } = obj;
 
     this.setState({
-      value: newValue,
-      displayValue: newDisplayValue,
+      value,
+      displayValue,
     });
   };
 }
