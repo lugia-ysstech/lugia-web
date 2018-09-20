@@ -54,6 +54,9 @@ exports[`Col css 1`] = `
 <div>
   <div
     className="c0"
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
     span={6}
   >
     col-6
@@ -62,6 +65,9 @@ exports[`Col css 1`] = `
   <div
     className="c1"
     offset={6}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
     span={6}
   >
     col-6 col-offset-6
@@ -69,6 +75,9 @@ exports[`Col css 1`] = `
   <br />
   <div
     className="c2"
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
     span={6}
   >
     col-6 col-push-6
@@ -76,6 +85,9 @@ exports[`Col css 1`] = `
   <br />
   <div
     className="c3"
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
     span={6}
   >
     col-6 col-pull-6
@@ -83,6 +95,9 @@ exports[`Col css 1`] = `
   <br />
   <div
     className="c4"
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
     order={1}
     span={6}
   >

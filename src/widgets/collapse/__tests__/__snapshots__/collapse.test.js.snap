@@ -605,100 +605,98 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
     </div>
     <br />
-    <span>
+    <div
+      className="c13"
+    >
       <div
-        className="c13"
+        className="c2"
       >
         <div
-          className="c2"
+          className="c14"
         >
           <div
-            className="c14"
+            className="c4"
+            disabled={false}
+            onClick={[Function]}
           >
+            <i
+              className="lugia-icon-direction_caret_right c5 c6"
+            />
+            LUGIA
             <div
-              className="c4"
-              disabled={false}
-              onClick={[Function]}
+              className="c7"
+              height={null}
+              open={true}
             >
               <i
                 className="lugia-icon-direction_caret_right c5 c6"
               />
-              LUGIA
-              <div
-                className="c7"
-                height={null}
-                open={true}
-              >
-                <i
-                  className="lugia-icon-direction_caret_right c5 c6"
-                />
-              </div>
-            </div>
-            <div
-              className="c8"
-              disabled={false}
-              height={null}
-              open={true}
-            >
-              <div
-                className="c9"
-              >
-                <div>
-                  PanelContent...
-                </div>
-                <div>
-                  PanelContent...
-                </div>
-              </div>
             </div>
           </div>
-        </div>
-        <div
-          className="c2"
-        >
           <div
-            className="c14"
+            className="c8"
+            disabled={false}
+            height={null}
+            open={true}
           >
             <div
-              className="c4"
-              disabled={false}
-              onClick={[Function]}
+              className="c9"
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-              LUGIA
-              <div
-                className="c11"
-                height={null}
-                open={false}
-              >
-                <i
-                  className="lugia-icon-direction_caret_right c10 c6"
-                />
+              <div>
+                PanelContent...
               </div>
-            </div>
-            <div
-              className="c12"
-              disabled={false}
-              height={null}
-              open={false}
-            >
-              <div
-                className="c9"
-              >
-                <div>
-                  PanelContent...
-                </div>
-                <div>
-                  PanelContent...
-                </div>
+              <div>
+                PanelContent...
               </div>
             </div>
           </div>
         </div>
       </div>
-    </span>
+      <div
+        className="c2"
+      >
+        <div
+          className="c14"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_caret_right c10 c6"
+            />
+            LUGIA
+            <div
+              className="c11"
+              height={null}
+              open={false}
+            >
+              <i
+                className="lugia-icon-direction_caret_right c10 c6"
+              />
+            </div>
+          </div>
+          <div
+            className="c12"
+            disabled={false}
+            height={null}
+            open={false}
+          >
+            <div
+              className="c9"
+            >
+              <div>
+                PanelContent...
+              </div>
+              <div>
+                PanelContent...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <br />
   </div>
 </div>

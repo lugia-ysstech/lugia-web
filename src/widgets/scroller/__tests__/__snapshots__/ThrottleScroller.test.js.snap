@@ -3,11 +3,11 @@
 exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
 .c4 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c5 {
@@ -16,49 +16,51 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c5:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 .c2 {
-  height: 50px;
-  width: 288px;
+  height: 4.166666666666667em;
+  width: 24em;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
-  height: 50px;
-  width: 300px;
+  height: 4.166666666666667em;
+  width: 25em;
   position: relative;
 }
 
-.c0:hover .fbGKtl {
+.c0:hover .c6 {
   opacity: 1;
 }
 
-.c0:hover .griAXB {
+.c0:hover .c7 {
   opacity: 1;
 }
 
 .c3 {
-  height: 50px;
-  width: 288px;
+  height: 4.166666666666667em;
+  width: 24em;
   position: absolute;
   display: inline-block;
-  left: 288px;
-  width: 12px;
+  left: 24em;
+  width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
@@ -91,7 +93,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
       onWheel={[Function]}
       style={
         Object {
-          "height": "50px",
+          "height": "4.166666666666667em",
         }
       }
     >
@@ -101,8 +103,8 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "14px",
-            "top": "0px",
+            "height": "1.1666666666666667em",
+            "top": "0em",
           }
         }
       />
@@ -114,11 +116,11 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
 exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
 .c4 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c5 {
@@ -127,45 +129,47 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c5:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 .c2 {
-  height: 250px;
-  width: 238px;
+  height: 20.833333333333336em;
+  width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
-  height: 250px;
-  width: 250px;
+  height: 20.833333333333336em;
+  width: 20.833333333333336em;
   position: relative;
 }
 
-.c0:hover .fbGKtl {
+.c0:hover .c6 {
   opacity: 1;
 }
 
 .c3 {
-  height: 250px;
-  width: 238px;
+  height: 20.833333333333336em;
+  width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
-  left: 238px;
-  width: 12px;
+  left: 19.833333333333336em;
+  width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
@@ -175,7 +179,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   opacity: 1;
 }
 
-.c0:hover .dVEvgP {
+.c0:hover .c7 {
   opacity: 1;
 }
 
@@ -501,7 +505,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
       onWheel={[Function]}
       style={
         Object {
-          "height": "250px",
+          "height": "20.833333333333336em",
         }
       }
     >
@@ -511,8 +515,8 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "31px",
-            "top": "0px",
+            "height": "2.5833333333333335em",
+            "top": "0em",
           }
         }
       />
@@ -530,11 +534,11 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
 exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 100 len 1`] = `
 .c4 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c5 {
@@ -543,45 +547,47 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c5:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 .c2 {
-  height: 250px;
-  width: 238px;
+  height: 20.833333333333336em;
+  width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
-  height: 250px;
-  width: 250px;
+  height: 20.833333333333336em;
+  width: 20.833333333333336em;
   position: relative;
 }
 
-.c0:hover .fbGKtl {
+.c0:hover .c6 {
   opacity: 1;
 }
 
 .c3 {
-  height: 250px;
-  width: 238px;
+  height: 20.833333333333336em;
+  width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
-  left: 238px;
-  width: 12px;
+  left: 19.833333333333336em;
+  width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
@@ -591,7 +597,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   opacity: 1;
 }
 
-.c0:hover .dVEvgP {
+.c0:hover .c7 {
   opacity: 1;
 }
 
@@ -618,7 +624,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
       onWheel={[Function]}
       style={
         Object {
-          "height": "250px",
+          "height": "20.833333333333336em",
         }
       }
     >
@@ -628,8 +634,8 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "31px",
-            "top": "0px",
+            "height": "2.5833333333333335em",
+            "top": "0em",
           }
         }
       />

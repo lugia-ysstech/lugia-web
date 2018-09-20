@@ -253,35 +253,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
             className="lugia-icon-direction_caret_down  c6"
           />
         </span>
-        <span>
-          <label
-            className="c7"
-            disabled={false}
-            onClick={[Function]}
+        <label
+          className="c7"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <span
+            className="c8"
+            onClick={null}
           >
+            <input
+              className="c9"
+              disabled={false}
+              onBlur={[Function]}
+              type="checkbox"
+            />
             <span
-              className="c8"
-              onClick={null}
-            >
-              <input
-                className="c9"
-                disabled={false}
-                onBlur={[Function]}
-                type="checkbox"
-              />
-              <span
-                checked={false}
-                className="c10"
-                disabled={false}
-              />
-            </span>
-            <span
-              className="c11"
-            >
-              1
-            </span>
-          </label>
-        </span>
+              checked={false}
+              className="c10"
+              disabled={false}
+            />
+          </span>
+          <span
+            className="c11"
+          >
+            1
+          </span>
+        </label>
         <ul
           className="c12"
           data-expanded={true}
@@ -299,35 +297,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                 className="lugia-icon-direction_caret_down  c6"
               />
             </span>
-            <span>
-              <label
-                className="c7"
-                disabled={false}
-                onClick={[Function]}
+            <label
+              className="c7"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <span
+                className="c8"
+                onClick={null}
               >
+                <input
+                  className="c9"
+                  disabled={false}
+                  onBlur={[Function]}
+                  type="checkbox"
+                />
                 <span
-                  className="c8"
-                  onClick={null}
-                >
-                  <input
-                    className="c9"
-                    disabled={false}
-                    onBlur={[Function]}
-                    type="checkbox"
-                  />
-                  <span
-                    checked={false}
-                    className="c14"
-                    disabled={false}
-                  />
-                </span>
-                <span
-                  className="c11"
-                >
-                  1.1
-                </span>
-              </label>
-            </span>
+                  checked={false}
+                  className="c14"
+                  disabled={false}
+                />
+              </span>
+              <span
+                className="c11"
+              >
+                1.1
+              </span>
+            </label>
           </li>
           <li
             className="c4"
@@ -343,35 +339,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                 className="lugia-icon-direction_caret_down  c6"
               />
             </span>
-            <span>
-              <label
-                className="c7"
-                disabled={false}
-                onClick={[Function]}
+            <label
+              className="c7"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <span
+                className="c8"
+                onClick={null}
               >
+                <input
+                  className="c9"
+                  disabled={false}
+                  onBlur={[Function]}
+                  type="checkbox"
+                />
                 <span
-                  className="c8"
-                  onClick={null}
-                >
-                  <input
-                    className="c9"
-                    disabled={false}
-                    onBlur={[Function]}
-                    type="checkbox"
-                  />
-                  <span
-                    checked={false}
-                    className="c14"
-                    disabled={false}
-                  />
-                </span>
-                <span
-                  className="c11"
-                >
-                  1.2
-                </span>
-              </label>
-            </span>
+                  checked={false}
+                  className="c14"
+                  disabled={false}
+                />
+              </span>
+              <span
+                className="c11"
+              >
+                1.2
+              </span>
+            </label>
             <ul
               className="c12"
               data-expanded={true}
@@ -389,35 +383,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     className="lugia-icon-direction_caret_down  c6"
                   />
                 </span>
-                <span>
-                  <label
-                    className="c7"
-                    disabled={false}
-                    onClick={[Function]}
+                <label
+                  className="c7"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  <span
+                    className="c8"
+                    onClick={null}
                   >
+                    <input
+                      className="c9"
+                      disabled={false}
+                      onBlur={[Function]}
+                      type="checkbox"
+                    />
                     <span
-                      className="c8"
-                      onClick={null}
-                    >
-                      <input
-                        className="c9"
-                        disabled={false}
-                        onBlur={[Function]}
-                        type="checkbox"
-                      />
-                      <span
-                        checked={false}
-                        className="c14"
-                        disabled={false}
-                      />
-                    </span>
-                    <span
-                      className="c11"
-                    >
-                      1.2.1
-                    </span>
-                  </label>
-                </span>
+                      checked={false}
+                      className="c14"
+                      disabled={false}
+                    />
+                  </span>
+                  <span
+                    className="c11"
+                  >
+                    1.2.1
+                  </span>
+                </label>
               </li>
               <li
                 className="c4"
@@ -433,35 +425,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     className="lugia-icon-direction_caret_down  c6"
                   />
                 </span>
-                <span>
-                  <label
-                    className="c7"
-                    disabled={false}
-                    onClick={[Function]}
+                <label
+                  className="c7"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  <span
+                    className="c8"
+                    onClick={null}
                   >
+                    <input
+                      className="c9"
+                      disabled={false}
+                      onBlur={[Function]}
+                      type="checkbox"
+                    />
                     <span
-                      className="c8"
-                      onClick={null}
-                    >
-                      <input
-                        className="c9"
-                        disabled={false}
-                        onBlur={[Function]}
-                        type="checkbox"
-                      />
-                      <span
-                        checked={false}
-                        className="c14"
-                        disabled={false}
-                      />
-                    </span>
-                    <span
-                      className="c11"
-                    >
-                      1.2.2
-                    </span>
-                  </label>
-                </span>
+                      checked={false}
+                      className="c14"
+                      disabled={false}
+                    />
+                  </span>
+                  <span
+                    className="c11"
+                  >
+                    1.2.2
+                  </span>
+                </label>
                 <ul
                   className="c12"
                   data-expanded={true}
@@ -480,35 +470,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                         className="lugia-icon-direction_caret_down  c6"
                       />
                     </span>
-                    <span>
-                      <label
-                        className="c7"
-                        disabled={false}
-                        onClick={[Function]}
+                    <label
+                      className="c7"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <span
+                        className="c8"
+                        onClick={null}
                       >
+                        <input
+                          className="c9"
+                          disabled={false}
+                          onBlur={[Function]}
+                          type="checkbox"
+                        />
                         <span
-                          className="c8"
-                          onClick={null}
-                        >
-                          <input
-                            className="c9"
-                            disabled={false}
-                            onBlur={[Function]}
-                            type="checkbox"
-                          />
-                          <span
-                            checked={false}
-                            className="c14"
-                            disabled={false}
-                          />
-                        </span>
-                        <span
-                          className="c11"
-                        >
-                          1.2.2.1
-                        </span>
-                      </label>
-                    </span>
+                          checked={false}
+                          className="c14"
+                          disabled={false}
+                        />
+                      </span>
+                      <span
+                        className="c11"
+                      >
+                        1.2.2.1
+                      </span>
+                    </label>
                     <ul
                       className="c12"
                       data-expanded={true}
@@ -526,35 +514,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                             className="lugia-icon-direction_caret_down  c6"
                           />
                         </span>
-                        <span>
-                          <label
-                            className="c7"
-                            disabled={false}
-                            onClick={[Function]}
+                        <label
+                          className="c7"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <span
+                            className="c8"
+                            onClick={null}
                           >
+                            <input
+                              className="c9"
+                              disabled={false}
+                              onBlur={[Function]}
+                              type="checkbox"
+                            />
                             <span
-                              className="c8"
-                              onClick={null}
-                            >
-                              <input
-                                className="c9"
-                                disabled={false}
-                                onBlur={[Function]}
-                                type="checkbox"
-                              />
-                              <span
-                                checked={false}
-                                className="c14"
-                                disabled={false}
-                              />
-                            </span>
-                            <span
-                              className="c11"
-                            >
-                              1.2.2.1.1
-                            </span>
-                          </label>
-                        </span>
+                              checked={false}
+                              className="c14"
+                              disabled={false}
+                            />
+                          </span>
+                          <span
+                            className="c11"
+                          >
+                            1.2.2.1.1
+                          </span>
+                        </label>
                       </li>
                       <li
                         className="c4"
@@ -569,35 +555,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                             className="lugia-icon-direction_caret_down  c6"
                           />
                         </span>
-                        <span>
-                          <label
-                            className="c7"
-                            disabled={false}
-                            onClick={[Function]}
+                        <label
+                          className="c7"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <span
+                            className="c8"
+                            onClick={null}
                           >
+                            <input
+                              className="c9"
+                              disabled={false}
+                              onBlur={[Function]}
+                              type="checkbox"
+                            />
                             <span
-                              className="c8"
-                              onClick={null}
-                            >
-                              <input
-                                className="c9"
-                                disabled={false}
-                                onBlur={[Function]}
-                                type="checkbox"
-                              />
-                              <span
-                                checked={false}
-                                className="c14"
-                                disabled={false}
-                              />
-                            </span>
-                            <span
-                              className="c11"
-                            >
-                              1.2.2.1.2
-                            </span>
-                          </label>
-                        </span>
+                              checked={false}
+                              className="c14"
+                              disabled={false}
+                            />
+                          </span>
+                          <span
+                            className="c11"
+                          >
+                            1.2.2.1.2
+                          </span>
+                        </label>
                       </li>
                     </ul>
                   </li>
@@ -614,35 +598,33 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                         className="lugia-icon-direction_caret_down  c6"
                       />
                     </span>
-                    <span>
-                      <label
-                        className="c7"
-                        disabled={false}
-                        onClick={[Function]}
+                    <label
+                      className="c7"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <span
+                        className="c8"
+                        onClick={null}
                       >
+                        <input
+                          className="c9"
+                          disabled={false}
+                          onBlur={[Function]}
+                          type="checkbox"
+                        />
                         <span
-                          className="c8"
-                          onClick={null}
-                        >
-                          <input
-                            className="c9"
-                            disabled={false}
-                            onBlur={[Function]}
-                            type="checkbox"
-                          />
-                          <span
-                            checked={false}
-                            className="c14"
-                            disabled={false}
-                          />
-                        </span>
-                        <span
-                          className="c11"
-                        >
-                          1.2.2.2
-                        </span>
-                      </label>
-                    </span>
+                          checked={false}
+                          className="c14"
+                          disabled={false}
+                        />
+                      </span>
+                      <span
+                        className="c11"
+                      >
+                        1.2.2.2
+                      </span>
+                    </label>
                   </li>
                 </ul>
               </li>
@@ -1650,35 +1632,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
             className="lugia-icon-direction_caret_down  c6"
           />
         </span>
-        <span>
-          <label
-            className="c7"
-            disabled={false}
-            onClick={[Function]}
+        <label
+          className="c7"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <span
+            className="c8"
+            onClick={null}
           >
+            <input
+              className="c9"
+              disabled={false}
+              onBlur={[Function]}
+              type="checkbox"
+            />
             <span
-              className="c8"
-              onClick={null}
-            >
-              <input
-                className="c9"
-                disabled={false}
-                onBlur={[Function]}
-                type="checkbox"
-              />
-              <span
-                checked={false}
-                className="c10"
-                disabled={false}
-              />
-            </span>
-            <span
-              className="c11"
-            >
-              1
-            </span>
-          </label>
-        </span>
+              checked={false}
+              className="c10"
+              disabled={false}
+            />
+          </span>
+          <span
+            className="c11"
+          >
+            1
+          </span>
+        </label>
         <ul
           className="c12"
           data-expanded={true}
@@ -1696,35 +1676,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                 className="lugia-icon-direction_caret_down  c6"
               />
             </span>
-            <span>
-              <label
-                className="c7"
-                disabled={false}
-                onClick={[Function]}
+            <label
+              className="c7"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <span
+                className="c8"
+                onClick={null}
               >
+                <input
+                  className="c9"
+                  disabled={false}
+                  onBlur={[Function]}
+                  type="checkbox"
+                />
                 <span
-                  className="c8"
-                  onClick={null}
-                >
-                  <input
-                    className="c9"
-                    disabled={false}
-                    onBlur={[Function]}
-                    type="checkbox"
-                  />
-                  <span
-                    checked={false}
-                    className="c14"
-                    disabled={false}
-                  />
-                </span>
-                <span
-                  className="c11"
-                >
-                  1.1
-                </span>
-              </label>
-            </span>
+                  checked={false}
+                  className="c14"
+                  disabled={false}
+                />
+              </span>
+              <span
+                className="c11"
+              >
+                1.1
+              </span>
+            </label>
           </li>
           <li
             className="c4"
@@ -1740,35 +1718,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                 className="lugia-icon-direction_caret_down  c6"
               />
             </span>
-            <span>
-              <label
-                className="c7"
-                disabled={false}
-                onClick={[Function]}
+            <label
+              className="c7"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <span
+                className="c8"
+                onClick={null}
               >
+                <input
+                  className="c9"
+                  disabled={false}
+                  onBlur={[Function]}
+                  type="checkbox"
+                />
                 <span
-                  className="c8"
-                  onClick={null}
-                >
-                  <input
-                    className="c9"
-                    disabled={false}
-                    onBlur={[Function]}
-                    type="checkbox"
-                  />
-                  <span
-                    checked={false}
-                    className="c14"
-                    disabled={false}
-                  />
-                </span>
-                <span
-                  className="c11"
-                >
-                  1.2
-                </span>
-              </label>
-            </span>
+                  checked={false}
+                  className="c14"
+                  disabled={false}
+                />
+              </span>
+              <span
+                className="c11"
+              >
+                1.2
+              </span>
+            </label>
             <ul
               className="c12"
               data-expanded={true}
@@ -1786,35 +1762,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     className="lugia-icon-direction_caret_down  c6"
                   />
                 </span>
-                <span>
-                  <label
-                    className="c7"
-                    disabled={false}
-                    onClick={[Function]}
+                <label
+                  className="c7"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  <span
+                    className="c8"
+                    onClick={null}
                   >
+                    <input
+                      className="c9"
+                      disabled={false}
+                      onBlur={[Function]}
+                      type="checkbox"
+                    />
                     <span
-                      className="c8"
-                      onClick={null}
-                    >
-                      <input
-                        className="c9"
-                        disabled={false}
-                        onBlur={[Function]}
-                        type="checkbox"
-                      />
-                      <span
-                        checked={false}
-                        className="c14"
-                        disabled={false}
-                      />
-                    </span>
-                    <span
-                      className="c11"
-                    >
-                      1.2.1
-                    </span>
-                  </label>
-                </span>
+                      checked={false}
+                      className="c14"
+                      disabled={false}
+                    />
+                  </span>
+                  <span
+                    className="c11"
+                  >
+                    1.2.1
+                  </span>
+                </label>
               </li>
               <li
                 className="c4"
@@ -1830,35 +1804,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     className="lugia-icon-direction_caret_down  c6"
                   />
                 </span>
-                <span>
-                  <label
-                    className="c7"
-                    disabled={false}
-                    onClick={[Function]}
+                <label
+                  className="c7"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  <span
+                    className="c8"
+                    onClick={null}
                   >
+                    <input
+                      className="c9"
+                      disabled={false}
+                      onBlur={[Function]}
+                      type="checkbox"
+                    />
                     <span
-                      className="c8"
-                      onClick={null}
-                    >
-                      <input
-                        className="c9"
-                        disabled={false}
-                        onBlur={[Function]}
-                        type="checkbox"
-                      />
-                      <span
-                        checked={false}
-                        className="c14"
-                        disabled={false}
-                      />
-                    </span>
-                    <span
-                      className="c11"
-                    >
-                      1.2.2
-                    </span>
-                  </label>
-                </span>
+                      checked={false}
+                      className="c14"
+                      disabled={false}
+                    />
+                  </span>
+                  <span
+                    className="c11"
+                  >
+                    1.2.2
+                  </span>
+                </label>
                 <ul
                   className="c12"
                   data-expanded={true}
@@ -1877,35 +1849,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                         className="lugia-icon-direction_caret_down  c6"
                       />
                     </span>
-                    <span>
-                      <label
-                        className="c7"
-                        disabled={false}
-                        onClick={[Function]}
+                    <label
+                      className="c7"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <span
+                        className="c8"
+                        onClick={null}
                       >
+                        <input
+                          className="c9"
+                          disabled={false}
+                          onBlur={[Function]}
+                          type="checkbox"
+                        />
                         <span
-                          className="c8"
-                          onClick={null}
-                        >
-                          <input
-                            className="c9"
-                            disabled={false}
-                            onBlur={[Function]}
-                            type="checkbox"
-                          />
-                          <span
-                            checked={false}
-                            className="c14"
-                            disabled={false}
-                          />
-                        </span>
-                        <span
-                          className="c11"
-                        >
-                          1.2.2.1
-                        </span>
-                      </label>
-                    </span>
+                          checked={false}
+                          className="c14"
+                          disabled={false}
+                        />
+                      </span>
+                      <span
+                        className="c11"
+                      >
+                        1.2.2.1
+                      </span>
+                    </label>
                     <ul
                       className="c12"
                       data-expanded={true}
@@ -1923,35 +1893,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                             className="lugia-icon-direction_caret_down  c6"
                           />
                         </span>
-                        <span>
-                          <label
-                            className="c7"
-                            disabled={false}
-                            onClick={[Function]}
+                        <label
+                          className="c7"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <span
+                            className="c8"
+                            onClick={null}
                           >
+                            <input
+                              className="c9"
+                              disabled={false}
+                              onBlur={[Function]}
+                              type="checkbox"
+                            />
                             <span
-                              className="c8"
-                              onClick={null}
-                            >
-                              <input
-                                className="c9"
-                                disabled={false}
-                                onBlur={[Function]}
-                                type="checkbox"
-                              />
-                              <span
-                                checked={false}
-                                className="c14"
-                                disabled={false}
-                              />
-                            </span>
-                            <span
-                              className="c11"
-                            >
-                              1.2.2.1.1
-                            </span>
-                          </label>
-                        </span>
+                              checked={false}
+                              className="c14"
+                              disabled={false}
+                            />
+                          </span>
+                          <span
+                            className="c11"
+                          >
+                            1.2.2.1.1
+                          </span>
+                        </label>
                       </li>
                       <li
                         className="c4"
@@ -1966,35 +1934,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                             className="lugia-icon-direction_caret_down  c6"
                           />
                         </span>
-                        <span>
-                          <label
-                            className="c7"
-                            disabled={false}
-                            onClick={[Function]}
+                        <label
+                          className="c7"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <span
+                            className="c8"
+                            onClick={null}
                           >
+                            <input
+                              className="c9"
+                              disabled={false}
+                              onBlur={[Function]}
+                              type="checkbox"
+                            />
                             <span
-                              className="c8"
-                              onClick={null}
-                            >
-                              <input
-                                className="c9"
-                                disabled={false}
-                                onBlur={[Function]}
-                                type="checkbox"
-                              />
-                              <span
-                                checked={false}
-                                className="c14"
-                                disabled={false}
-                              />
-                            </span>
-                            <span
-                              className="c11"
-                            >
-                              1.2.2.1.2
-                            </span>
-                          </label>
-                        </span>
+                              checked={false}
+                              className="c14"
+                              disabled={false}
+                            />
+                          </span>
+                          <span
+                            className="c11"
+                          >
+                            1.2.2.1.2
+                          </span>
+                        </label>
                       </li>
                     </ul>
                   </li>
@@ -2011,35 +1977,33 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                         className="lugia-icon-direction_caret_down  c6"
                       />
                     </span>
-                    <span>
-                      <label
-                        className="c7"
-                        disabled={false}
-                        onClick={[Function]}
+                    <label
+                      className="c7"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <span
+                        className="c8"
+                        onClick={null}
                       >
+                        <input
+                          className="c9"
+                          disabled={false}
+                          onBlur={[Function]}
+                          type="checkbox"
+                        />
                         <span
-                          className="c8"
-                          onClick={null}
-                        >
-                          <input
-                            className="c9"
-                            disabled={false}
-                            onBlur={[Function]}
-                            type="checkbox"
-                          />
-                          <span
-                            checked={false}
-                            className="c14"
-                            disabled={false}
-                          />
-                        </span>
-                        <span
-                          className="c11"
-                        >
-                          1.2.2.2
-                        </span>
-                      </label>
-                    </span>
+                          checked={false}
+                          className="c14"
+                          disabled={false}
+                        />
+                      </span>
+                      <span
+                        className="c11"
+                      >
+                        1.2.2.2
+                      </span>
+                    </label>
                   </li>
                 </ul>
               </li>
