@@ -5,6 +5,7 @@
  */
 import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
+import { getThemeColor } from '../common/ThemeUtils';
 import { keyframes } from 'styled-components';
 import { px2emcss } from '../css/units';
 import type { MarginType, ThemeType } from '@lugia/lugia-web';
@@ -188,16 +189,18 @@ const ShapeCSS: { [key: ButtonSize]: ShapeStyle } = {
 };
 
 export const getTypeCSS = (props: ButtonOutProps) => {
-  const { type = 'default', plain, themes } = props;
+  const { type = 'default', plain, themes = {} } = props;
+  const themeColor = getThemeColor(themes);
   const { color, backgroundColor, border } = plain
-    ? fetchPlainCSS(themes.color)[type]
-    : fetchTypeCSS(themes.color)[type];
+    ? fetchPlainCSS(themeColor)[type]
+    : fetchTypeCSS(themeColor)[type];
   return `
     color: ${color};
     background-color: ${backgroundColor};
     border: ${border};
   `;
 };
+
 export const getShapeCSS = (props: ButtonOutProps) => {
   const { shape = 'default', size = 'default' } = props;
   let borderRadius = `${em(21)}`;
@@ -216,7 +219,8 @@ export const getDisabledCSS = (props: ButtonOutProps) => {
     border = '';
   const cursor = 'not-allowed';
   const { disabled, type = 'default', themes } = props;
-  const colorChange = fetchTypeCSS(themes.color)[type].backgroundColor;
+  const themeColor = getThemeColor(themes);
+  const colorChange = fetchTypeCSS(themeColor)[type].backgroundColor;
   if (type === 'default') {
     color = disableColor;
     border = '1px solid #e8e8e8';
@@ -267,10 +271,11 @@ export const getClickCSS = (props: ButtonOutProps) => {
   const { type = 'default', size = 'default', shape = 'default', circle = false, themes } = props;
   const { width: sizeWidth, height: sizeHeight } = fetchSize(size);
   const { width: ucCircleWidth } = NotCircleSize;
+  const themeColor = getThemeColor(themes);
   const backGround =
     type === 'default'
       ? 'none'
-      : colorsFunc(fetchTypeCSS(themes.color)[type].backgroundColor).mouseDownColor;
+      : colorsFunc(fetchTypeCSS(themeColor)[type].backgroundColor).mouseDownColor;
   const borderRadius = circle
     ? '50%'
     : shape === 'default'
@@ -320,9 +325,9 @@ export const getClickCSS = (props: ButtonOutProps) => {
 };
 export const getActiveCSS = (props: ButtonOutProps) => {
   const { type = 'default', themes } = props;
-  const themeColor = themes.color;
+  const themeColor = getThemeColor(themes);
   if (type === 'default') {
-    const color = colorsFunc(themeColor ? themeColor : globalThemeColor).mouseDownColor;
+    const color = colorsFunc(themeColor).mouseDownColor;
     return `
       color: ${color};
       border: 1px solid ${color};
@@ -338,8 +343,8 @@ export const hoverStyle = (props: ButtonOutProps) => {
   let color = '',
     border = '',
     backgroundColor = '';
+  const themeColor = getThemeColor(themes);
 
-  const themeColor = themes.color;
   const typeBgcolor = fetchTypeCSS(themeColor)[type].backgroundColor;
 
   if (type === 'default') {
