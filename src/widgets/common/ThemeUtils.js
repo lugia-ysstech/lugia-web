@@ -7,6 +7,8 @@
 import type { ThemeType } from '@lugia/lugia-web';
 import { getAttributeFromObject } from './ObjectUtils';
 import { px2emcss } from '../css/units';
+import colorsFunc from '../css/stateColor';
+const { themeColor: globalThemeColor } = colorsFunc();
 
 type MarginOpt = {
   fontSize: number,
@@ -81,3 +83,8 @@ export const createGetWidthOrHeight = (
 export const getMargin = createGetMargin();
 export const getWidth = createGetWidthOrHeight();
 export const getHeight = createGetWidthOrHeight('height');
+
+export function getThemeColor(theme: ThemeType = {}): string {
+  const { color: themeColor } = theme;
+  return themeColor ? themeColor : globalThemeColor;
+}
