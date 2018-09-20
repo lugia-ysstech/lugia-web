@@ -7,11 +7,11 @@
  */
 import React, { Component } from 'react';
 import moment from 'moment';
-import DatePicker from './index';
+import { Date, Years, Months, Week } from './index';
 import Head from './Head';
 import FacePanel from './FacePanel';
-import Year from './Year';
-const { MonthPicker, YearPicker, WeekPicker } = DatePicker;
+import DatePicker from './index';
+const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
 export default class Sl extends Component<any> {
   constructor() {
     super();
@@ -35,16 +35,17 @@ export default class Sl extends Component<any> {
   choseYear = cv => {
     console.log(cv);
   };
+  weekschange = v => {
+    console.log(555);
+    console.log(v);
+  };
   render() {
     //console.log(this.state.v);
     const dateFormate = 'YYYY年MM月DD日';
     const monthFormate = 'YYYY年MM月';
     return (
       <div style={{ margin: '30px' }}>
-        {/* <div style={{ float: 'left', marginRight: '30px' }}>
-          <h2>normal</h2>
-          <DatePicker />
-        </div>
+        {/*
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>showToday</h2>
           <DatePicker defaultValue={'2015.03.03'} showToday />
@@ -90,16 +91,63 @@ export default class Sl extends Component<any> {
         </div> */}
         {/* <div style={{ float: 'left', marginRight: '30px',width:'300px' }}>
           <h2>Head</h2>
-          <Head onChange={this.onChangeYear} />
+          <Head defaultValue={'2015-02-03'} onChange={this.onChangeYear} />
         </div>
         <div style={{ float: 'left', marginRight: '30px',width:'300px' }}>
           <h2>FacePanel</h2>
-          <FacePanel onChange={this.choseYear} />
+          <FacePanel defaultValue={'2015-02-03'} onChange={this.choseYear} />
         </div> */}
         <div style={{ float: 'left', marginRight: '30px' }}>
-          <h2>Year</h2>
-          <Year defaultValue={'2015-02-03'} />
+          <h2>date</h2>
+          <DatePicker defaultValue={'2015年2月3日'} format={'YYYY年MM月DD日'} />
         </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>Year</h2>
+          <YearPicker defaultValue={'2015-02-03'} />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>month</h2>
+          <MonthPicker defaultValue={'2015-02-03'} />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>week</h2>
+          <WeekPicker defaultValue={'2015-01周'} />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>weeks</h2>
+          <WeeksPicker defaultValue={'2015-01周'} firstWeekDay={6} />
+          {/* isFollow 默认为true */}
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>RangePicker</h2>
+          <RangePicker />
+          {/* firstWeekday={2} isFollow */}
+        </div>
+
+        {/* <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>Month</h2>
+          <Month defaultValue={'2015-07-03'} onChange={this.weekschange}/>
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>Weeks</h2>
+          <Weeks defaultValue={'2015-02-03'} onChange={this.weekschange}/>
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>Date</h2>
+          <Date/>
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>Years</h2>
+          <Years />
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>Months</h2>
+          <Months defaultValue={'2015-02-03'}/>
+        </div>
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>Week</h2>
+          <Week defaultValue={'2015-07'} mode="week" />
+        </div> */}
       </div>
     );
   }

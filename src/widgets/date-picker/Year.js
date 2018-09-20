@@ -8,75 +8,107 @@ import Icon from '../icon/index';
 import Head from './Head';
 import FacePanel from './FacePanel';
 import { getDerived } from './getDerived';
-import { DateWInner, DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from './styled';
+import {
+  DateWrapper,
+  DateWInner,
+  DateHeader,
+  HeaderTop,
+  HeaderTopArrow,
+  HeaderTopText,
+} from './styled';
 type TypeProps = {
-  defaultValue?: string,
+  step?: number,
+  onChange: Function,
+  from: string,
 };
 type TypeState = {
-  format: string,
-  value: string,
-  currentYear: number,
   showYears: boolean,
-  value: string,
   start: number,
   end: number,
+  title: string,
 };
 class Year extends Component<TypeProps, TypeState> {
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { value, format } = getDerived(nextProps, preState);
     const start = (preState && preState.start) || moment(value, format).year() || moment().year();
-    //start=start-1;
     return {
-      value,
-      currentYear: moment(value, format).year() || moment().year(),
       start,
     };
   }
   arrorChange = (obj: Object) => {
-    const { year, start, end, showYears } = obj;
-    const { format, value } = this.state;
+    const { start, end, showYears, title } = obj;
     this.setState({
-      value: moment(value, format)
-        .set({ year })
-        .format(format),
       showYears,
       start,
+      end,
+      title,
     });
-    // if(showYears){
-    //   this.setState({start,end,showYears});
-    // }
   };
   headOnChange = (obj: Object) => {
-    const { year, start, end, showYears } = obj;
-    this.setState({ start, end, showYears });
+    const { start, end, showYears, title } = obj;
+    this.setState({ start, end, showYears, title });
   };
   panelChange = (obj: Object) => {
-    const { format, value } = this.state;
-    const { showYears, start } = obj;
-    console.log(start);
-    this.setState({ showYears, start: start + 1 });
+    const { showYears, start, text } = obj;
+    const star = showYears === false ? start + 1 : start;
+    let data = { showYears, start: star, title: text };
+    this.oldValue = this.state.start;
+    if (showYears) {
+      data = { start: star, title: text };
+    }
+    this.setState(data);
+    const { month } = this.state;
+    const newValue = star;
+    if (showYears) {
+      this.getOnChange({ newValue, oldValue: this.oldValue });
+    }
+  };
+  getOnChange = (data: Object) => {
+    const { onChange, from } = this.props;
+    //const {mode,from}=this.state;
+    onChange && onChange({ ...data, from, mode: from });
+  };
+  getFreshPicker = (obj: Object) => {
+    // param=param.toString();
+    //const {moments,mode,from}=param;
+    // const moments=moment(param);
+    //console.log(param);
+    const { moments } = obj;
+    // console.log(moments);
+    const year = moments.year();
+    const month = moments.month();
+    // console.log(year,month);
+    this.setState({ start: year, month });
   };
   render() {
-    const { currentYear, value, showYears, start, end } = this.state;
-    console.log(start);
+    const { showYears, start, end, title } = this.state;
+    //console.log(start);
+    const { step = 12 } = this.props;
     return (
-      <DateWInner width={400}>
-        <Head
-          onChange={this.arrorChange}
-          headOnChange={this.headOnChange}
-          {...this.props}
-          start={start}
-          showYears={showYears}
-        />
-        <FacePanel
-          onChange={this.panelChange}
-          {...this.props}
-          value={value}
-          start={start}
-          end={end}
-          showYears={showYears}
-        />
-      </DateWInner>
+      <DateWrapper width={300}>
+        <DateWInner width={300}>
+          <Head
+            {...this.props}
+            onChange={this.arrorChange}
+            headOnChange={this.headOnChange}
+            start={start}
+            showYears={showYears}
+            title={title}
+            step={step}
+            mode={'year'}
+          />
+          <FacePanel
+            {...this.props}
+            onChange={this.panelChange}
+            start={start}
+            end={end}
+            showYears={showYears}
+            step={step}
+            title={title}
+            mode={'year'}
+          />
+        </DateWInner>
+      </DateWrapper>
     );
   }
 }

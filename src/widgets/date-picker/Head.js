@@ -12,6 +12,10 @@ type TypeProps = {
   defaultValue?: string,
   onChange?: Function,
   headOnChange: ?Function,
+  start: number,
+  mode: string,
+  step?: number,
+  showYears?: boolean,
 };
 type TypeState = {
   currentYear: number,
@@ -25,46 +29,44 @@ type TypeState = {
 class Head extends Component<TypeProps, TypeState> {
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { value, format, moments, currentYear } = getDerived(nextProps, preState);
-    const { start } = nextProps;
+    const { start = moments.year(), title, mode, secondTitle, isWeekInner } = nextProps;
+    //console.log(start);
     const star = start - 1;
-    const title = star + '-' + (star + 11);
+    const normalTitle = star + '-' + (star + 11);
     return {
       value,
       currentYear: moment(value, format).year() || moment().year(),
-      title: (preState && preState.title) || title,
+      title: mode !== 'year' ? start : title || normalTitle,
+      secondTitle: isWeekInner ? '-' + secondTitle : '',
     };
   }
   changeYear = (number: number) => () => {
-    const { onChange, showYears } = this.props;
-    const { currentYear, value, format } = this.state;
-    let { start, end } = this.props;
-    if (start) {
-      start = start - 1;
-      end = start + 11;
+    const { onChange, showYears, mode } = this.props;
+    const { value, format } = this.state;
+    const { start, step } = this.props;
+    if (mode === 'year' && start !== undefined) {
+      number = number === -1 ? -step : step;
     }
-    if (start !== undefined && end !== undefined) {
-      const times = end - start + 1;
-      number = number === -1 ? -times : times;
+    //console.log(number);
+    const moments = moment(value, format).set({ year: start });
+    const newYear = moments.add(number, 'year').year();
+    this.setState({ value: moments.format(format) });
+    const titStart = newYear - 1;
+    const titEnd = titStart + step - 1;
+    const title = titStart + '-' + titEnd;
+    let data = { showYears: false, start: newYear, title };
+    if (mode !== 'year') {
+      data = { year: newYear };
     }
-    if (!showYears) {
-      const moments = moment(value, format).set({ year: currentYear });
-      const newYear = moments.add(number, 'year').year();
-      console.log(newYear);
-      this.setState({ value: moments.format(format) });
-      onChange && onChange({ year: newYear, showYears: false, start: newYear });
-    }
-
+    onChange && onChange(data);
     if (showYears) {
-      console.log('showYears?');
-      const { start } = this.props;
-      console.log(start);
-      const { startY, endY, title } = this.getSandE(start, end, number);
-      this.setState({ title, start: startY, end: endY });
-      onChange && onChange({ start: startY, end: endY, showYears });
+      const { start, step } = this.props;
+      const { startY, endY, title } = this.getSandE(start, step, number);
+      onChange && onChange({ start: startY, end: endY, showYears, title });
     }
   };
-  getSandE = (start: number, end: number, number: number) => {
-    const times = end - start;
+  getSandE = (start: number, step: number, number: number) => {
+    const times = step - 1;
     const titleStart = start - times - 1;
     const titleEnd = start + times * (times + 1) - 1;
 
@@ -76,9 +78,8 @@ class Head extends Component<TypeProps, TypeState> {
       newTitleStart = titleEnd + 1;
       newTitleEnd = newTitleStart + TitleYearRange;
     }
-
-    const yearStart = newTitleStart + 12;
-    const yearEnd = yearStart + 11;
+    const yearStart = newTitleStart + step;
+    const yearEnd = yearStart + step - 1;
     const title = newTitleStart + '-' + newTitleEnd;
     return {
       startY: yearStart,
@@ -88,21 +89,27 @@ class Head extends Component<TypeProps, TypeState> {
   };
   headClick = () => {
     const { currentYear } = this.state;
-    let { start } = this.props;
-    start = start - 1;
-    const end = start + 11;
-    const times = end - start;
-    const star = start - times - 1;
-    const en = start + times * (times + 1) - 1;
-    const title = star + '-' + en;
-    console.log(start, end);
-    this.setState({ showYears: true, title });
-    const { headOnChange } = this.props;
-    headOnChange && headOnChange({ start, end, year: currentYear, showYears: true });
+    // console.log(currentYear);
+    let { start, showYears, step } = this.props;
+    if (!showYears) {
+      start = start - 1;
+      const end = start + step - 1;
+      const times = end - start;
+      const star = start - times - 1;
+      const en = start + times * (times + 1) - 1;
+      const title = star + '-' + en;
+      const { headOnChange } = this.props;
+      headOnChange &&
+        headOnChange({ start: star + step, end, year: currentYear, showYears: true, title });
+    }
+  };
+  secondHeadClick = () => {
+    const { secondTitle, onHeadChange } = this.props;
+    onHeadChange && onHeadChange(secondTitle);
   };
   render() {
-    const { currentYear, showYears, title } = this.state;
-
+    const { currentYear, showYears, title, secondTitle, isWeekInner } = this.state;
+    //console.log(title);
     return (
       <DateHeader width={200}>
         <HeaderTop>
@@ -110,7 +117,7 @@ class Head extends Component<TypeProps, TypeState> {
             <Icon iconClass={'lugia-icon-direction_Left'} />
           </HeaderTopArrow>
           <HeaderTopText onClick={this.headClick}>{title}</HeaderTopText>
-          {/* <HeaderTopText>{'1-12周'}</HeaderTopText> */}
+          <HeaderTopText onClick={this.secondHeadClick}>{secondTitle}</HeaderTopText>
           <HeaderTopArrow position={'right'} onClick={this.changeYear(1)}>
             <Icon iconClass={'lugia-icon-direction_right'} />
           </HeaderTopArrow>

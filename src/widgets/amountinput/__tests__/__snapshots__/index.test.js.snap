@@ -389,7 +389,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <span
       className="sv c1"
       onBlur={[Function]}
+      onClick={undefined}
       onFocus={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      onTouchStart={undefined}
     >
       <span
         className="sv c2"
@@ -427,6 +432,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c8 c9"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
       >
         <div
           className="c10"
@@ -453,7 +460,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <span
       className="sv c1"
       onBlur={[Function]}
+      onClick={undefined}
       onFocus={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      onTouchStart={undefined}
     >
       <span
         className="sv c2"
@@ -491,6 +503,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c8 c9"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
       >
         <div
           className="c10"
@@ -517,7 +531,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <span
       className="sv c1"
       onBlur={[Function]}
+      onClick={undefined}
       onFocus={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      onTouchStart={undefined}
     >
       <span
         className="sv c2"
@@ -554,6 +573,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c8 c9"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
       >
         <div
           className="c10"
@@ -780,7 +801,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <span
       className="sv c1"
       onBlur={[Function]}
+      onClick={undefined}
       onFocus={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      onTouchStart={undefined}
     >
       <span
         className="sv c2"
@@ -817,6 +843,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c8 c9"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
       >
         <div
           className="c10"
@@ -843,7 +871,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <span
       className="sv c1"
       onBlur={[Function]}
+      onClick={undefined}
       onFocus={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      onTouchStart={undefined}
     >
       <span
         className="sv c2"
@@ -874,6 +907,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c8 c9"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
       >
         <div
           className="c10"
@@ -904,7 +939,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <span
       className="sv c1"
       onBlur={[Function]}
+      onClick={undefined}
       onFocus={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      onTouchStart={undefined}
     >
       <span
         className="sv c2"
@@ -941,6 +981,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c8 c9"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
       >
         <div
           className="c10"
@@ -965,7 +1007,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <span
       className="sv c1"
       onBlur={[Function]}
+      onClick={undefined}
       onFocus={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      onTouchStart={undefined}
     >
       <span
         className="sv c2"
@@ -1002,6 +1049,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c8 c9"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
       >
         <div
           className="c10"
@@ -1128,6 +1177,7 @@ Array [
 <span
     className="sv c0"
     onBlur={[Function]}
+    onClick={undefined}
     onFocus={[Function]}
   >
     <span
@@ -1154,11 +1204,11 @@ Array [
       />
     </span>
     <span
-      className="c5"
-      onClick={[Function]}
+        className="c5"
+        onClick={[Function]}
     >
-      请填写内容
-       
+        请填写内容
+         
     </span>
   </span>,
   .c0 {
@@ -1223,29 +1273,31 @@ Array [
 
 <div
     className="c0"
-  >
+>
     <div
-      className="c1 c2"
+        className="c1 c2"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
     >
-      <div
-        className="c3"
-      >
         <div
-          className="c4"
-          fx="bottom"
-        />
-        <div
-          className="c5"
+            className="c3"
         >
-          <span
-            onClick={[Function]}
-          >
-            
-          </span>
+            <div
+                className="c4"
+                fx="bottom"
+            />
+            <div
+                className="c5"
+            >
+                <span
+                    onClick={[Function]}
+                >
+                    
+                </span>
+            </div>
         </div>
-      </div>
     </div>
-  </div>,
+</div>,
 ]
 `;
 
@@ -1353,6 +1405,7 @@ Array [
 <span
     className="sv c0"
     onBlur={[Function]}
+    onClick={undefined}
     onFocus={[Function]}
   >
     <span
@@ -1379,11 +1432,11 @@ Array [
       />
     </span>
     <span
-      className="c5"
-      onClick={[Function]}
+        className="c5"
+        onClick={[Function]}
     >
-      
-       
+        
+         
     </span>
   </span>,
   .c0 {
@@ -1448,28 +1501,30 @@ Array [
 
 <div
     className="c0"
-  >
+>
     <div
-      className="c1 c2"
+        className="c1 c2"
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
     >
-      <div
-        className="c3"
-      >
         <div
-          className="c4"
-          fx="bottom"
-        />
-        <div
-          className="c5"
+            className="c3"
         >
-          <span
-            onClick={[Function]}
-          >
-            
-          </span>
+            <div
+                className="c4"
+                fx="bottom"
+            />
+            <div
+                className="c5"
+            >
+                <span
+                    onClick={[Function]}
+                >
+                    
+                </span>
+            </div>
         </div>
-      </div>
     </div>
-  </div>,
+</div>,
 ]
 `;

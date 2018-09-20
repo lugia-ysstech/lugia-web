@@ -4,13 +4,11 @@ import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import moment from 'moment';
 import DateInput from './DateInput';
-import { MonthChild, MonthChildText } from './styled';
-
 export default ThemeProvider(
-  class DatePicker extends Component {
+  class WeeksPicker extends Component {
     render() {
-      return <DateInput {...this.props} mode={'date'} />;
+      return <DateInput mode={'weeks'} {...this.props} />;
     }
   },
-  Widget.DatePicker
+  Widget.WeeksPicker
 );

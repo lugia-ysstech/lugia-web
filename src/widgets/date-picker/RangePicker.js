@@ -4,13 +4,12 @@ import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import moment from 'moment';
 import DateInput from './DateInput';
-import { MonthChild, MonthChildText } from './styled';
 
 export default ThemeProvider(
-  class DatePicker extends Component {
+  class RangePicker extends Component {
     render() {
-      return <DateInput {...this.props} mode={'date'} />;
+      return <DateInput {...this.props} mode={'range'} />;
     }
   },
-  Widget.DatePicker
+  Widget.RangePicker
 );

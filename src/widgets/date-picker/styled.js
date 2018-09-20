@@ -53,6 +53,7 @@ export const HeaderWeek = styled.li`
   height: ${props => (props.width - 14) / 7}px;
   text-align: center;
   line-height: ${props => (props.width - 14) / 7}px;
+  cursor: pointer;
 `;
 export const DatePanel = styled.div`
   font-size: 12px;
@@ -61,6 +62,15 @@ const dateSize = {
   DateChildWidth: 26,
 };
 export const DateChild = styled.span`
+  display: inline-block;
+  width: ${props => em(props.width / 7)};
+  text-align: center;
+  vertical-align: middle;
+  ${props => getDateChildStyle(props).chooseStyle};
+  ${props => getDateChildStyle(props).chooseWeeks};
+`;
+export const DateChildInner = styled.i`
+  font-style: normal;
   border: 1px solid ${props => (props.isToday ? '#684fff' : 'transparent')};
   border-style: ${props => (props.noToday ? 'dashed' : '')};
   ${props => (props.isToday ? 'border-radius:50%;' : '')};
@@ -70,19 +80,13 @@ export const DateChild = styled.span`
   text-align: center;
   line-height: ${em(dateSize.DateChildWidth)};
   vertical-align: middle;
-  margin-right: ${props => (props.width - (dateSize.DateChildWidth + 2) * 7) / 14}px;
-  margin-left: ${props => (props.width - (dateSize.DateChildWidth + 2) * 7) / 14}px;
-  &:nth-child(7n) {
-    margin-right: 0;
-  }
-
   cursor: pointer;
+
   &:hover {
     background: ${hoverColor};
   }
 
   color: ${props => (props.outMonth ? '#ccc' : '#666')};
-  ${props => getDateChildStyle(props).chooseStyle};
 `;
 export const OtherChild = styled.span`
   display: inline-block;
@@ -90,6 +94,7 @@ export const OtherChild = styled.span`
   line-height: ${em(40)};
   font-size: 14px;
   text-align: center;
+  white-space: nowrap;
 
   &:hover {
     color: ${hoverColor};
@@ -104,15 +109,50 @@ export const OtherChildText = styled.i`
   ${props => (props.isChose ? 'background:#684fff;color:#fff;' : '')};
 `;
 const getDateChildStyle = props => {
-  const { choseDayIndex } = props;
+  const {
+    choseDayIndex,
+    isChooseWeek,
+    startInWeeks,
+    endInWeeks,
+    isHoverWeek,
+    weekHoverStart,
+    weekHoverEnd,
+  } = props;
   const chooseStyle = `  
-        &:nth-child(${choseDayIndex}){
-            background:#684fff;
-            color:#fff;
-            border-radius:50%;
-        }  
+        &:nth-child(${choseDayIndex})>i{
+          background:#684fff;
+          color:#fff;
+          border-radius:50%;
+        } 
         `;
+  let chooseWeeks;
+  let chooseWeekRadius;
+  if (isChooseWeek || isHoverWeek) {
+    const backG = isChooseWeek ? '#684fff' : '#8f83ff';
+    const start = isChooseWeek ? startInWeeks + 1 : weekHoverStart + 1;
+    const end = isChooseWeek ? endInWeeks : weekHoverEnd;
+    chooseWeeks = `
+    background:${backG};
+    
+      &>i{
+        color:#fff;
+        border-radius:50%;
+      }  
+
+      &:nth-child(${start}){
+        border-top-left-radius:20px;
+        border-bottom-left-radius:20px;
+      }
+  
+      &:nth-child(${end}){
+        border-top-right-radius:20px;
+        border-bottom-right-radius:20px;
+      } 
+    `;
+  }
   return {
     chooseStyle,
+    chooseWeeks,
+    chooseWeekRadius,
   };
 };
