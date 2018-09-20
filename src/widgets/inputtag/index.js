@@ -156,7 +156,7 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
 `;
-const InputTagTheme = styled(Theme)`
+const InputTagTheme = styled.span`
   display: block;
   min-height: ${em(Height)};
   height: ${em(Height)};
@@ -363,10 +363,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     }
 
     return (
-      <InputTagTheme config={theme}>
-        <List>{font}</List>
-        {result}
-      </InputTagTheme>
+      <Theme config={theme}>
+        <InputTagTheme>
+          <List>{font}</List>
+          {result}
+        </InputTagTheme>
+      </Theme>
     );
   }
 
