@@ -316,7 +316,7 @@ describe('AmountInputDemo', () => {
   function clickToolTip(toolTip: Object) {
     toolTip
       .find('span')
-      .at(3)
+      .at(2)
       .simulate('click');
   }
 });
