@@ -84,9 +84,9 @@ declare module '@lugia/lugia-web' {
   declare type BorderSizeObject = { top?: number, right?: number, bottom?: number, left?: number };
 
   declare type RadiusSize = {
-    topLeft: number,
-    topRight: number,
-    bottomLeft: number,
-    bottomRight: number,
+    topLeft?: number,
+    topRight?: number,
+    bottomLeft?: number,
+    bottomRight?: number,
   };
 }
