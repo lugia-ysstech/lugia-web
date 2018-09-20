@@ -71,6 +71,8 @@ const Content = 'sv_widget_Content';
 const Footer = 'sv_widget_Footer';
 const Aside = 'sv_widget_Aside';
 
+const QueryInput = 'sv_widget_QueryInput';
+
 export default {
   Button,
   Input,
@@ -128,4 +130,5 @@ export default {
   Content,
   Footer,
   Aside,
+  QueryInput,
 };
