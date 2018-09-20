@@ -8,11 +8,12 @@ import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
+import { createGetInputBorderRadius } from '../common/ThemeUtils';
+
 const {
   themeColor,
   disableColor,
   borderDisableColor,
-  borderSize,
   dangerColor,
   blackColor,
   mediumGreyColor,
@@ -46,7 +47,8 @@ export const getFocusShadow = (props: Object) => {
   const color = isSuccess(validateStatus) ? 'rgba(104, 79, 255, 0.2)' : 'rgba(248, 172, 48, 0.2)';
   return 'box-shadow: 0 0 6px ' + color;
 };
-const em = px2emcss(1.2);
+const FontSize = 1.2;
+const em = px2emcss(FontSize);
 
 export const RadiusSize = em(4);
 export const LargeHeight = em(40);
@@ -123,25 +125,15 @@ export const getInputBorderSize = (props: CommonInputProps) => {
   }
   return `border:${colorsFunc().borderSize}`;
 };
-export const getInputBorderRadius = (props: CommonInputProps) => {
-  const { theme } = props;
-  const { borderRadius } = theme;
-  if (typeof borderRadius === 'number') {
-    return `border-radius:${em(borderRadius)}`;
-  }
-  if (borderRadius !== undefined) {
-    const borderRadiusTopLeft = getAttributeFromObject(borderRadius, 'topLeft', 0);
-    const borderRadiusTopRight = getAttributeFromObject(borderRadius, 'topRight', 0);
-    const borderRadiusBottomLeft = getAttributeFromObject(borderRadius, 'bottomLeft', 0);
-    const borderRadiusBottomRight = getAttributeFromObject(borderRadius, 'bottomRight', 0);
-    return `
-    border-top-left-radius:${em(borderRadiusTopLeft)};
-    border-top-right-radius:${em(borderRadiusTopRight)};
-    border-bottom-left-radius:${em(borderRadiusBottomLeft)};
-    border-bottom-right-radius:${em(borderRadiusBottomRight)};`;
-  }
-  return `border-radius:${RadiusSize}`;
-};
+export const getInputBorderRadius = createGetInputBorderRadius({
+  fontSize: FontSize,
+  default: {
+    topLeft: 0,
+    topRight: 0,
+    bottomLeft: 0,
+    bottomRight: 0,
+  },
+});
 export const getFontColor = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;
   return `color: ${
@@ -154,6 +146,7 @@ export const getVisibility = (props: CommonInputProps) => {
     isValidateSuccess(validateStatus, validateType, 'bottom') ? 'visible' : 'hidden'
   };`;
 };
+
 export function isValidateSuccess(
   validateStatus: ValidateStatus,
   validateType: InputValidateType,
@@ -161,6 +154,7 @@ export function isValidateSuccess(
 ): boolean {
   return validateStatus === 'error' && expType === validateType;
 }
+
 export const getPlaceholderFontColor = () => {
   return mediumGreyColor;
 };
