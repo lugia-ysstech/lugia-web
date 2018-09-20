@@ -1,9 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AmountInputDemo Component JSON 1`] = `
-.c0 {
-  float: left;
-  margin-left: 50px;
+.c7 {
+  display: none;
+}
+
+.c9 {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1051;
 }
 
 .c8 {
@@ -11,17 +21,52 @@ exports[`AmountInputDemo Component JSON 1`] = `
   box-shadow: none;
 }
 
-.c1 {
-  width: 16.666666666666668em;
-  position: relative;
-  display: inline-block;
+.c10 {
+  height: 2.166666666666667em;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.75);
+  box-sizing: border-box;
 }
 
-.c14 {
-  margin: 0.8333333333333334em;
-  width: 29.166666666666668em;
-  position: relative;
-  display: inline-block;
+.c11 {
+  border-color: transparent;
+  left: 1.3333333333333335em;
+  bottom: 0.25em;
+  border-width: 0.4166666666666667em 0.4166666666666667em 0;
+  border-top-color: rgba(0,0,0,0.75);
+  position: absolute;
+  border-style: solid;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.75);
+}
+
+.c12 {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 20.833333333333336em;
+  padding: 0.5em 0.6666666666666667em;
+  color: #ffffff;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 0.33333333333333337em;
+  box-shadow: 0 0.16666666666666669em 0.6666666666666667em rgba(0,0,0,0.15);
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 .c2 {
@@ -303,12 +348,17 @@ exports[`AmountInputDemo Component JSON 1`] = `
   color: #666666;
 }
 
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
+.c1 {
+  width: 16.666666666666668em;
+  position: relative;
+  display: inline-block;
+}
+
+.c14 {
+  margin: 0.8333333333333334em;
+  width: 29.166666666666668em;
+  position: relative;
+  display: inline-block;
 }
 
 .c6 {
@@ -324,59 +374,9 @@ exports[`AmountInputDemo Component JSON 1`] = `
   font-size: 1.2rem;
 }
 
-.c7 {
-  display: none;
-}
-
-.c9 {
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
-  border-radius: 4px;
-  box-sizing: border-box;
-  left: -9999px;
-  top: -9999px;
-  z-index: 1051;
-}
-
-.c10 {
-  height: 2.166666666666667em;
-  font-size: 1.2rem;
-  line-height: 1;
-  color: rgba(0,0,0,0.75);
-  box-sizing: border-box;
-}
-
-.c11 {
-  border-color: transparent;
-  left: 1.3333333333333335em;
-  bottom: 0.25em;
-  border-width: 0.4166666666666667em 0.4166666666666667em 0;
-  border-top-color: rgba(0,0,0,0.75);
-  position: absolute;
-  border-style: solid;
-  font-size: 1.2rem;
-  line-height: 1;
-  color: rgba(0,0,0,0.75);
-}
-
-.c12 {
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  max-width: 20.833333333333336em;
-  padding: 0.5em 0.6666666666666667em;
-  color: #ffffff;
-  text-align: left;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  background-color: rgba(0,0,0,0.75);
-  border-radius: 0.33333333333333337em;
-  box-shadow: 0 0.16666666666666669em 0.6666666666666667em rgba(0,0,0,0.15);
+.c0 {
+  float: left;
+  margin-left: 50px;
 }
 
 <div>
@@ -391,29 +391,27 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <span>
-        <span
-          className="sv c2"
-        >
-          <input
-            className="c3"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            readOnly={false}
-            size="default"
-            value="¥"
-          />
-          <i
-            className="lugia-icon-reminder_close c4 c5"
-            onClick={[Function]}
-          />
-        </span>
+      <span
+        className="sv c2"
+      >
+        <input
+          className="c3"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
       </span>
       <span
         className="c6"
@@ -456,29 +454,27 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <span>
-        <span
-          className="sv c2"
-        >
-          <input
-            className="c3"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            readOnly={false}
-            size="default"
-            value="¥"
-          />
-          <i
-            className="lugia-icon-reminder_close c4 c5"
-            onClick={[Function]}
-          />
-        </span>
+      <span
+        className="sv c2"
+      >
+        <input
+          className="c3"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
       </span>
       <span
         className="c6"
@@ -521,29 +517,27 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <span>
-        <span
-          className="sv c2"
-        >
-          <input
-            className="c13"
-            disabled={true}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            readOnly={false}
-            size="default"
-            value="¥"
-          />
-          <i
-            className="lugia-icon-reminder_close c4 c5"
-            onClick={[Function]}
-          />
-        </span>
+      <span
+        className="sv c2"
+      >
+        <input
+          className="c13"
+          disabled={true}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
       </span>
       <span
         className="c6"
@@ -581,203 +575,195 @@ exports[`AmountInputDemo Component JSON 1`] = `
   <div
     className="c0"
   >
-    <span>
-      <p>
-        small size
-      </p>
+    <p>
+      small size
+    </p>
+    <span
+      className="sv c14"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
       <span
-        className="sv c14"
-        onBlur={[Function]}
-        onFocus={[Function]}
+        className="sv c15"
       >
-        <span>
-          <span
-            className="sv c15"
-          >
-            <input
-              className="c16"
-              disabled={false}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              readOnly={false}
-              size="small"
-              value="¥"
-            />
-            <i
-              className="lugia-icon-reminder_close c4 c5"
-              onClick={[Function]}
-            />
-          </span>
-        </span>
-        <span
-          className="c6"
+        <input
+          className="c16"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
           onClick={[Function]}
-        >
-          请填写金额
-           
-        </span>
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="small"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
       </span>
-      <div
-        className="c7"
-      >
-        <div
-          className="c8 c9"
-        >
-          <div
-            className="c10"
-          >
-            <div
-              className="c11"
-              fx="bottom"
-            />
-            <div
-              className="c12"
-            >
-              <span
-                onClick={[Function]}
-              >
-                
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p>
-        default size
-      </p>
       <span
-        className="sv c14"
-        onBlur={[Function]}
-        onFocus={[Function]}
+        className="c6"
+        onClick={[Function]}
       >
-        <span>
-          <span
-            className="sv c15"
-          >
-            <input
-              className="c17"
-              disabled={false}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              readOnly={false}
-              size="default"
-              value="¥"
-            />
-            <i
-              className="lugia-icon-reminder_close c4 c5"
-              onClick={[Function]}
-            />
-          </span>
-        </span>
-        <span
-          className="c6"
-          onClick={[Function]}
-        >
-          请填写金额
-           
-        </span>
+        请填写金额
+         
       </span>
-      <div
-        className="c7"
-      >
-        <div
-          className="c8 c9"
-        >
-          <div
-            className="c10"
-          >
-            <div
-              className="c11"
-              fx="bottom"
-            />
-            <div
-              className="c12"
-            >
-              <span
-                onClick={[Function]}
-              >
-                
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p>
-        large size
-      </p>
-      <span
-        className="sv c14"
-        onBlur={[Function]}
-        onFocus={[Function]}
-      >
-        <span>
-          <span
-            className="sv c15"
-          >
-            <input
-              className="c18"
-              disabled={false}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              readOnly={false}
-              size="large"
-              value="¥"
-            />
-            <i
-              className="lugia-icon-reminder_close c4 c5"
-              onClick={[Function]}
-            />
-          </span>
-        </span>
-        <span
-          className="c6"
-          onClick={[Function]}
-        >
-          请填写金额
-           
-        </span>
-      </span>
-      <div
-        className="c7"
-      >
-        <div
-          className="c8 c9"
-        >
-          <div
-            className="c10"
-          >
-            <div
-              className="c11"
-              fx="bottom"
-            />
-            <div
-              className="c12"
-            >
-              <span
-                onClick={[Function]}
-              >
-                
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
     </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span
+              onClick={[Function]}
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      default size
+    </p>
+    <span
+      className="sv c14"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span
+        className="sv c15"
+      >
+        <input
+          className="c17"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+        请填写金额
+         
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span
+              onClick={[Function]}
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      large size
+    </p>
+    <span
+      className="sv c14"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <span
+        className="sv c15"
+      >
+        <input
+          className="c18"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="large"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+      >
+        请填写金额
+         
+      </span>
+    </span>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8 c9"
+      >
+        <div
+          className="c10"
+        >
+          <div
+            className="c11"
+            fx="bottom"
+          />
+          <div
+            className="c12"
+          >
+            <span
+              onClick={[Function]}
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     className="c0"
@@ -790,29 +776,27 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <span>
-        <span
-          className="sv c2"
-        >
-          <input
-            className="c3"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            readOnly={false}
-            size="default"
-            value="¥"
-          />
-          <i
-            className="lugia-icon-reminder_close c4 c5"
-            onClick={[Function]}
-          />
-        </span>
+      <span
+        className="sv c2"
+      >
+        <input
+          className="c3"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
       </span>
       <span
         className="c6"
@@ -854,29 +838,27 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <span>
-        <span
-          className="sv c2"
-        >
-          <input
-            className="c3"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            readOnly={false}
-            size="default"
-            value="¥123,456"
-          />
-          <i
-            className="lugia-icon-reminder_close c4 c5"
-            onClick={[Function]}
-          />
-        </span>
+      <span
+        className="sv c2"
+      >
+        <input
+          className="c3"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥123,456"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
       </span>
     </span>
     <div
@@ -916,29 +898,27 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <span>
-        <span
-          className="sv c2"
-        >
-          <input
-            className="c3"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            readOnly={false}
-            size="default"
-            value="¥"
-          />
-          <i
-            className="lugia-icon-reminder_close c4 c5"
-            onClick={[Function]}
-          />
-        </span>
+      <span
+        className="sv c2"
+      >
+        <input
+          className="c3"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="¥"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
       </span>
       <span
         className="c6"
@@ -978,29 +958,27 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <span>
-        <span
-          className="sv c2"
-        >
-          <input
-            className="c3"
-            disabled={false}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            readOnly={false}
-            size="default"
-            value="$"
-          />
-          <i
-            className="lugia-icon-reminder_close c4 c5"
-            onClick={[Function]}
-          />
-        </span>
+      <span
+        className="sv c2"
+      >
+        <input
+          className="c3"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          readOnly={false}
+          size="default"
+          value="$"
+        />
+        <i
+          className="lugia-icon-reminder_close c4 c5"
+          onClick={[Function]}
+        />
       </span>
       <span
         className="c6"
@@ -1038,10 +1016,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
 
 exports[`AmountInputDemo props: placeholder  1`] = `
 Array [
-  .c0 {
-  width: 16.666666666666668em;
-  position: relative;
-  display: inline-block;
+  .c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 .c1 {
@@ -1117,12 +1097,10 @@ Array [
   color: #666666;
 }
 
-.c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
+.c0 {
+  width: 16.666666666666668em;
+  position: relative;
+  display: inline-block;
 }
 
 .c5 {
@@ -1143,29 +1121,27 @@ Array [
     onBlur={[Function]}
     onFocus={[Function]}
   >
-    <span>
-      <span
-        className="sv c1"
-      >
-        <input
-          className="c2"
-          disabled={false}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          readOnly={false}
-          size="default"
-          value="¥"
-        />
-        <i
-          className="lugia-icon-reminder_close c3 c4"
-          onClick={[Function]}
-        />
-      </span>
+    <span
+      className="sv c1"
+    >
+      <input
+        className="c2"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        readOnly={false}
+        size="default"
+        value="¥"
+      />
+      <i
+        className="lugia-icon-reminder_close c3 c4"
+        onClick={[Function]}
+      />
     </span>
     <span
       className="c5"
@@ -1175,12 +1151,7 @@ Array [
        
     </span>
   </span>,
-  .c1 {
-  padding-bottom: 0.8333333333333334em;
-  box-shadow: none;
-}
-
-.c0 {
+  .c0 {
   display: none;
 }
 
@@ -1193,6 +1164,11 @@ Array [
   left: -9999px;
   top: -9999px;
   z-index: 1051;
+}
+
+.c1 {
+  padding-bottom: 0.8333333333333334em;
+  box-shadow: none;
 }
 
 .c3 {
@@ -1265,10 +1241,12 @@ Array [
 
 exports[`AmountInputDemo props: placeholder  2`] = `
 Array [
-  .c0 {
-  width: 16.666666666666668em;
-  position: relative;
-  display: inline-block;
+  .c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 .c1 {
@@ -1344,12 +1322,10 @@ Array [
   color: #666666;
 }
 
-.c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
+.c0 {
+  width: 16.666666666666668em;
+  position: relative;
+  display: inline-block;
 }
 
 .c5 {
@@ -1370,29 +1346,27 @@ Array [
     onBlur={[Function]}
     onFocus={[Function]}
   >
-    <span>
-      <span
-        className="sv c1"
-      >
-        <input
-          className="c2"
-          disabled={false}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          readOnly={false}
-          size="default"
-          value="¥"
-        />
-        <i
-          className="lugia-icon-reminder_close c3 c4"
-          onClick={[Function]}
-        />
-      </span>
+    <span
+      className="sv c1"
+    >
+      <input
+        className="c2"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        readOnly={false}
+        size="default"
+        value="¥"
+      />
+      <i
+        className="lugia-icon-reminder_close c3 c4"
+        onClick={[Function]}
+      />
     </span>
     <span
       className="c5"
@@ -1402,12 +1376,7 @@ Array [
        
     </span>
   </span>,
-  .c1 {
-  padding-bottom: 0.8333333333333334em;
-  box-shadow: none;
-}
-
-.c0 {
+  .c0 {
   display: none;
 }
 
@@ -1420,6 +1389,11 @@ Array [
   left: -9999px;
   top: -9999px;
   z-index: 1051;
+}
+
+.c1 {
+  padding-bottom: 0.8333333333333334em;
+  box-shadow: none;
 }
 
 .c3 {

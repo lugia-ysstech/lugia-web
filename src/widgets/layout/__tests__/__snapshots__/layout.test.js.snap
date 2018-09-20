@@ -783,98 +783,15 @@ exports[`Layout css 1`] = `
   <p>
     flex-direction: row; Aside collapsible
   </p>
-  <span>
+  <div
+    className="c3"
+    direction="row"
+  >
     <div
-      className="c3"
-      direction="row"
+      className="c0"
     >
       <div
-        className="c0"
-      >
-        <div
-          className="c1"
-          display={true}
-        >
-          <div
-            style={
-              Object {
-                "background": "#381be5",
-                "height": "60px",
-                "lineHeight": "60px",
-                "textAlign": "center",
-              }
-            }
-          >
-            Header
-          </div>
-        </div>
-        <div
-          className="c2"
-          display={true}
-        >
-          <div
-            style={
-              Object {
-                "background": "#0F89FF",
-                "height": "200px",
-                "lineHeight": "200px",
-                "textAlign": "center",
-              }
-            }
-          >
-            Content
-          </div>
-        </div>
-        <div
-          className="c1"
-          display={true}
-        >
-          <div
-            style={
-              Object {
-                "background": "#0f13ff",
-                "height": "60px",
-                "lineHeight": "60px",
-                "textAlign": "center",
-              }
-            }
-          >
-            Footer
-          </div>
-        </div>
-      </div>
-      <div
-        className="c4"
-      >
-        <div
-          className="c9"
-        >
-          <div>
-            <div>
-              Aside
-            </div>
-          </div>
-          <div
-            className="c10"
-            onClick={[Function]}
-          >
-            <i
-              className="lugia-icon-direction_right c7 c8"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </span>
-  <p>
-    theme
-  </p>
-  <span>
-    <div
-      className="c11"
-    >
-      <div
-        className="c12"
+        className="c1"
         display={true}
       >
         <div
@@ -891,7 +808,7 @@ exports[`Layout css 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
         display={true}
       >
         <div
@@ -908,7 +825,7 @@ exports[`Layout css 1`] = `
         </div>
       </div>
       <div
-        className="c12"
+        className="c1"
         display={true}
       >
         <div
@@ -925,357 +842,430 @@ exports[`Layout css 1`] = `
         </div>
       </div>
     </div>
-  </span>
+    <div
+      className="c4"
+    >
+      <div
+        className="c9"
+      >
+        <div>
+          <div>
+            Aside
+          </div>
+        </div>
+        <div
+          className="c10"
+          onClick={[Function]}
+        >
+          <i
+            className="lugia-icon-direction_right c7 c8"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    theme
+  </p>
+  <div
+    className="c11"
+  >
+    <div
+      className="c12"
+      display={true}
+    >
+      <div
+        style={
+          Object {
+            "background": "#381be5",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Header
+      </div>
+    </div>
+    <div
+      className="c13"
+      display={true}
+    >
+      <div
+        style={
+          Object {
+            "background": "#0F89FF",
+            "height": "200px",
+            "lineHeight": "200px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Content
+      </div>
+    </div>
+    <div
+      className="c12"
+      display={true}
+    >
+      <div
+        style={
+          Object {
+            "background": "#0f13ff",
+            "height": "60px",
+            "lineHeight": "60px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Footer
+      </div>
+    </div>
+  </div>
   <p>
     flex-direction: row;
   </p>
-  <span>
+  <div
+    className="c14"
+    direction="row"
+  >
     <div
-      className="c14"
-      direction="row"
+      className="c4"
     >
       <div
-        className="c4"
+        className="c5"
       >
-        <div
-          className="c5"
-        >
-          <div>
-            <div
-              style={
-                Object {
-                  "background": "#11b4ff",
-                  "height": "320px",
-                  "lineHeight": "200px",
-                  "textAlign": "center",
-                  "width": "200px",
-                }
-              }
-            >
-              Aside
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="c15"
-      >
-        <div
-          className="c1"
-          display={true}
-        >
+        <div>
           <div
             style={
               Object {
-                "background": "#381be5",
-                "height": "100%",
+                "background": "#11b4ff",
+                "height": "320px",
+                "lineHeight": "200px",
+                "textAlign": "center",
+                "width": "200px",
               }
             }
           >
-            heder
-          </div>
-        </div>
-        <div
-          className="c2"
-          display={true}
-        >
-          <div
-            style={
-              Object {
-                "background": "#0F89FF",
-                "height": "300px",
-              }
-            }
-          >
-            content
-          </div>
-          <div
-            className="c16"
-            onClick={[Function]}
-            order={2}
-          >
-            <i
-              className="lugia-icon-direction_arrows_alt c17 c8"
-            />
-          </div>
-        </div>
-        <div
-          className="c1"
-          display={true}
-        >
-          <div
-            style={
-              Object {
-                "background": "#0f13ff",
-                "height": "100%",
-              }
-            }
-          >
-            footer
+            Aside
           </div>
         </div>
       </div>
     </div>
-  </span>
-  <p>
-    flex-direction: row;
-  </p>
-  <span>
     <div
-      className="c14"
-      direction="row"
+      className="c15"
     >
       <div
-        className="c4"
+        className="c1"
+        display={true}
       >
         <div
-          className="c5"
+          style={
+            Object {
+              "background": "#381be5",
+              "height": "100%",
+            }
+          }
         >
-          <div>
-            <div
-              style={
-                Object {
-                  "background": "#11b4ff",
-                  "height": "320px",
-                  "lineHeight": "200px",
-                  "textAlign": "center",
-                  "width": "200px",
-                }
-              }
-            >
-              Aside
-            </div>
-          </div>
+          heder
         </div>
       </div>
       <div
-        className="c15"
+        className="c2"
+        display={true}
       >
         <div
-          className="c1"
-          display={true}
-        >
-          <div
-            style={
-              Object {
-                "background": "#381be5",
-                "height": "50px",
-              }
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "300px",
             }
-          >
-            heder
-          </div>
-          <div
-            className="c16"
-            onClick={[Function]}
-            order={1}
-          >
-            <i
-              className="lugia-icon-direction_arrows_alt c17 c8"
-            />
-          </div>
+          }
+        >
+          content
         </div>
         <div
-          className="c2"
-          display={true}
+          className="c16"
+          onClick={[Function]}
+          order={2}
         >
-          <div
-            style={
-              Object {
-                "background": "#0F89FF",
-                "height": "200px",
-              }
-            }
-          >
-            content
-          </div>
+          <i
+            className="lugia-icon-direction_arrows_alt c17 c8"
+          />
         </div>
+      </div>
+      <div
+        className="c1"
+        display={true}
+      >
         <div
-          className="c1"
-          display={true}
+          style={
+            Object {
+              "background": "#0f13ff",
+              "height": "100%",
+            }
+          }
         >
+          footer
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row;
+  </p>
+  <div
+    className="c14"
+    direction="row"
+  >
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+      >
+        <div>
           <div
             style={
               Object {
-                "background": "#0f13ff",
-                "height": "50px",
+                "background": "#11b4ff",
+                "height": "320px",
+                "lineHeight": "200px",
+                "textAlign": "center",
+                "width": "200px",
               }
             }
           >
-            footer
+            Aside
           </div>
         </div>
       </div>
     </div>
-  </span>
-  <p>
-    flex-direction: row;
-  </p>
-  <span>
     <div
-      className="c14"
-      direction="row"
+      className="c15"
     >
       <div
-        className="c4"
+        className="c1"
+        display={true}
       >
         <div
-          className="c5"
+          style={
+            Object {
+              "background": "#381be5",
+              "height": "50px",
+            }
+          }
         >
-          <div>
-            <div
-              style={
-                Object {
-                  "background": "#11b4ff",
-                  "height": "320px",
-                  "lineHeight": "200px",
-                  "textAlign": "center",
-                  "width": "200px",
-                }
-              }
-            >
-              Aside
-            </div>
-          </div>
+          heder
+        </div>
+        <div
+          className="c16"
+          onClick={[Function]}
+          order={1}
+        >
+          <i
+            className="lugia-icon-direction_arrows_alt c17 c8"
+          />
         </div>
       </div>
       <div
-        className="c15"
+        className="c2"
+        display={true}
       >
         <div
-          className="c1"
-          display={true}
+          style={
+            Object {
+              "background": "#0F89FF",
+              "height": "200px",
+            }
+          }
         >
+          content
+        </div>
+      </div>
+      <div
+        className="c1"
+        display={true}
+      >
+        <div
+          style={
+            Object {
+              "background": "#0f13ff",
+              "height": "50px",
+            }
+          }
+        >
+          footer
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    flex-direction: row;
+  </p>
+  <div
+    className="c14"
+    direction="row"
+  >
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+      >
+        <div>
           <div
             style={
               Object {
-                "background": "#381be5",
-                "height": "100%",
+                "background": "#11b4ff",
+                "height": "320px",
+                "lineHeight": "200px",
+                "textAlign": "center",
+                "width": "200px",
               }
             }
           >
-            heder
-          </div>
-          <div
-            className="c16"
-            onClick={[Function]}
-            order={1}
-          >
-            <i
-              className="lugia-icon-direction_arrows_alt c17 c8"
-            />
-          </div>
-        </div>
-        <div
-          className="c2"
-          display={true}
-        >
-          <div
-            className="c14"
-            direction="row"
-          >
-            <div
-              className="c1"
-              display={true}
-            >
-              <div
-                style={
-                  Object {
-                    "background": "#45e520",
-                    "height": "100%",
-                    "width": "100%",
-                  }
-                }
-              >
-                好好好好
-              </div>
-              <div
-                className="c16"
-                onClick={[Function]}
-                order={3}
-              >
-                <i
-                  className="lugia-icon-direction_arrows_alt c17 c8"
-                />
-              </div>
-            </div>
-            <div
-              className="c2"
-              display={true}
-            >
-              <div
-                style={
-                  Object {
-                    "background": "#ff7d62",
-                    "height": "100%",
-                  }
-                }
-              >
-                好
-              </div>
-              <div
-                className="c16"
-                onClick={[Function]}
-                order={4}
-              >
-                <i
-                  className="lugia-icon-direction_arrows_alt c17 c8"
-                />
-              </div>
-            </div>
-            <div
-              className="c1"
-              display={true}
-            >
-              <div
-                style={
-                  Object {
-                    "background": "#a42dff",
-                    "height": "100%",
-                    "width": "100%",
-                  }
-                }
-              >
-                好好好好
-              </div>
-              <div
-                className="c16"
-                onClick={[Function]}
-                order={5}
-              >
-                <i
-                  className="lugia-icon-direction_arrows_alt c17 c8"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c1"
-          display={true}
-        >
-          <div
-            style={
-              Object {
-                "background": "#0f13ff",
-                "height": "100%",
-              }
-            }
-          >
-            footer
-          </div>
-          <div
-            className="c16"
-            onClick={[Function]}
-            order={6}
-          >
-            <i
-              className="lugia-icon-direction_arrows_alt c17 c8"
-            />
+            Aside
           </div>
         </div>
       </div>
     </div>
-  </span>
+    <div
+      className="c15"
+    >
+      <div
+        className="c1"
+        display={true}
+      >
+        <div
+          style={
+            Object {
+              "background": "#381be5",
+              "height": "100%",
+            }
+          }
+        >
+          heder
+        </div>
+        <div
+          className="c16"
+          onClick={[Function]}
+          order={1}
+        >
+          <i
+            className="lugia-icon-direction_arrows_alt c17 c8"
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        display={true}
+      >
+        <div
+          className="c14"
+          direction="row"
+        >
+          <div
+            className="c1"
+            display={true}
+          >
+            <div
+              style={
+                Object {
+                  "background": "#45e520",
+                  "height": "100%",
+                  "width": "100%",
+                }
+              }
+            >
+              好好好好
+            </div>
+            <div
+              className="c16"
+              onClick={[Function]}
+              order={3}
+            >
+              <i
+                className="lugia-icon-direction_arrows_alt c17 c8"
+              />
+            </div>
+          </div>
+          <div
+            className="c2"
+            display={true}
+          >
+            <div
+              style={
+                Object {
+                  "background": "#ff7d62",
+                  "height": "100%",
+                }
+              }
+            >
+              好
+            </div>
+            <div
+              className="c16"
+              onClick={[Function]}
+              order={4}
+            >
+              <i
+                className="lugia-icon-direction_arrows_alt c17 c8"
+              />
+            </div>
+          </div>
+          <div
+            className="c1"
+            display={true}
+          >
+            <div
+              style={
+                Object {
+                  "background": "#a42dff",
+                  "height": "100%",
+                  "width": "100%",
+                }
+              }
+            >
+              好好好好
+            </div>
+            <div
+              className="c16"
+              onClick={[Function]}
+              order={5}
+            >
+              <i
+                className="lugia-icon-direction_arrows_alt c17 c8"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c1"
+        display={true}
+      >
+        <div
+          style={
+            Object {
+              "background": "#0f13ff",
+              "height": "100%",
+            }
+          }
+        >
+          footer
+        </div>
+        <div
+          className="c16"
+          onClick={[Function]}
+          order={6}
+        >
+          <i
+            className="lugia-icon-direction_arrows_alt c17 c8"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

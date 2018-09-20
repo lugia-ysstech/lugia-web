@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select 单选默认样式 1`] = `
-.c3 {
+Array [
+  .c2 {
   margin-top: 0.33333333333333337em;
   height: 1.8333333333333335em;
   line-height: 1.8333333333333335em;
@@ -22,7 +23,7 @@ exports[`Select 单选默认样式 1`] = `
   padding: 0 1.6666666666666667em 0 0.8333333333333334em;
 }
 
-.c4 {
+.c3 {
   height: 1.6666666666666667em;
   line-height: 1.6666666666666667em;
   white-space: nowrap;
@@ -31,7 +32,7 @@ exports[`Select 单选默认样式 1`] = `
   padding: 0;
 }
 
-.c6 {
+.c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -39,11 +40,11 @@ exports[`Select 单选默认样式 1`] = `
   cursor: pointer;
 }
 
-.c6:hover {
+.c5:hover {
   color: #333333;
 }
 
-.c5 {
+.c4 {
   font-size: 1.2rem;
   color: #999999;
   position: absolute;
@@ -56,129 +57,51 @@ exports[`Select 单选默认样式 1`] = `
   zoom: 1;
 }
 
-.c5:hover {
+.c4:hover {
   color: #333333;
 }
 
-.c2 {
+.c1 {
   font-size: 1.2rem;
   position: absolute !important;
   top: -943124px;
 }
 
-.c12 {
-  display: none;
-}
-
-.c13 {
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
-  border-radius: 4px;
-  box-sizing: border-box;
-  left: -9999px;
-  top: -9999px;
-  z-index: 1051;
-}
-
-.c18 {
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  height: 2.916666666666667em;
-  padding: 0.5833333333333334em 0.6666666666666667em;
-  font-weight: 400;
-  color: #333333;
-  font-weight: 500;
-  white-space: nowrap;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-}
-
-.c18:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
-}
-
-.c20 {
-  position: relative;
-  background: #fbfbfb;
-  width: 1.6666666666666667em;
-  height: 25em;
-  z-index: 996;
-  width: 1em;
-}
-
-.c21 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 0.6666666666666667em;
-  background: #c2c2c2;
-  color: #fff;
-  font-size: 1.2rem;
-  line-height: 2.5em;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  width: 0.6666666666666667em;
-  margin-left: 0.16666666666666669em;
-  margin-right: 0.16666666666666669em;
-}
-
-.c21:hover {
-  background-color: #7a7a7a;
-}
-
-.c16 {
-  height: 22.5em;
-  width: 19.833333333333336em;
-  position: absolute;
-  display: inline-block;
-}
-
-.c15 {
-  overflow: hidden;
-  height: 22.5em;
-  width: 20.833333333333336em;
-  position: relative;
-}
-
-.c19 {
-  height: 22.5em;
-  width: 19.833333333333336em;
-  position: absolute;
-  display: inline-block;
-  left: 19.833333333333336em;
-  width: 1em;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-}
-
-.c14:hover .c19 {
-  opacity: 1;
-}
-
-.c17 {
-  outline: none;
+.c0 {
+  list-style: none;
   margin: 0;
+  padding: 0;
+}
+
+<ul
+    className="c0"
+  >
+    <li
+      className="c1 c2"
+    >
+      <span
+        className="c3"
+      >
+        
+      </span>
+      <i
+        className="lugia-icon-reminder_close_circle c4 c5"
+      />
+    </li>
+  </ul>,
+  .c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding-left: 0;
-  list-style: none;
-  height: 23.333333333333336em;
-  max-height: 23.333333333333336em;
-  overflow: hidden;
+  cursor: pointer;
 }
 
-.c7 {
+.c4:hover {
+  color: #333333;
+}
+
+.c0 {
   width: 100%;
   display: inline-block;
   position: relative;
@@ -186,7 +109,7 @@ exports[`Select 单选默认样式 1`] = `
   font-size: 1.2rem;
 }
 
-.c8 {
+.c1 {
   background: white;
   border: solid 0.08333333333333334em #e8e8e8;
   border-radius: 0.33333333333333337em;
@@ -194,11 +117,11 @@ exports[`Select 单选默认样式 1`] = `
   padding-bottom: 0.25em;
 }
 
-.c8:hover {
+.c1:hover {
   border-color: #cccccc;
 }
 
-.c10 {
+.c3 {
   top: 50%;
   right: 0;
   position: absolute;
@@ -209,7 +132,7 @@ exports[`Select 单选默认样式 1`] = `
   font-size: 1.2rem;
 }
 
-.c9 {
+.c2 {
   background: white;
   width: 100%;
   height: 2.5em;
@@ -230,19 +153,7 @@ exports[`Select 单选默认样式 1`] = `
   color: #333333;
 }
 
-.c1 {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.c0 {
-  display: block;
-  min-height: 2.666666666666667em;
-  height: 2.666666666666667em;
-}
-
-.c11 {
+.c5 {
   position: absolute;
   left: -41.66666666666667em;
   width: 0.08333333333333334em;
@@ -251,122 +162,213 @@ exports[`Select 单选默认样式 1`] = `
   border: none;
 }
 
-<span>
-  <span
-    className="c0"
+<div
+    className="sv c0"
+    disabled={false}
+    onClick={[Function]}
   >
-    <ul
+    <div
       className="c1"
     >
-      <li
-        className="c2 c3"
-      >
-        <span
-          className="c4"
-        >
-          
-        </span>
-        <i
-          className="lugia-icon-reminder_close_circle c5 c6"
-        />
-      </li>
-    </ul>
-    <div
-      className="sv c7"
-      disabled={false}
-      onClick={[Function]}
-    >
       <div
-        className="c8"
+        className="c2"
       >
-        <div
-          className="c9"
-        >
-          
-          <i
-            className="lugia-icon-direction_down c10 c6"
-          />
-          <input
-            className="c11"
-          />
-        </div>
+        
+        <i
+          className="lugia-icon-direction_down c3 c4"
+        />
+        <input
+          className="c5"
+        />
       </div>
     </div>
-  </span>
-  <div
-    className="c12"
+  </div>,
+  .c0 {
+  display: none;
+}
+
+.c1 {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1051;
+}
+
+.c6 {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  height: 2.916666666666667em;
+  padding: 0.5833333333333334em 0.6666666666666667em;
+  font-weight: 400;
+  color: #333333;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+
+.c6:hover {
+  background-color: #edf0fe;
+  font-weight: 900;
+}
+
+.c8 {
+  position: relative;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
+  z-index: 996;
+  width: 1em;
+}
+
+.c9 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
+}
+
+.c9:hover {
+  background-color: #7a7a7a;
+}
+
+.c4 {
+  height: 22.5em;
+  width: 19.833333333333336em;
+  position: absolute;
+  display: inline-block;
+}
+
+.c3 {
+  overflow: hidden;
+  height: 22.5em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c7 {
+  height: 22.5em;
+  width: 19.833333333333336em;
+  position: absolute;
+  display: inline-block;
+  left: 19.833333333333336em;
+  width: 1em;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c2:hover .c7 {
+  opacity: 1;
+}
+
+.c5 {
+  outline: none;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 0;
+  list-style: none;
+  height: 23.333333333333336em;
+  max-height: 23.333333333333336em;
+  overflow: hidden;
+}
+
+<div
+    className="c0"
   >
     <div
-      className="c13"
+      className="c1"
     >
       <div
         className=""
       >
         <div
-          className="c14 c15"
+          className="c2 c3"
           onWheel={[Function]}
         >
           <div
-            className="c16"
+            className="c4"
           >
             <ul
-              className="c17"
+              className="c5"
             >
               <li
                 checked={false}
-                className="c18"
+                className="c6"
                 onClick={[Function]}
                 title=""
               />
               <li
                 checked={false}
-                className="c18"
+                className="c6"
                 onClick={[Function]}
                 title=""
               />
               <li
                 checked={false}
-                className="c18"
+                className="c6"
                 onClick={[Function]}
                 title=""
               />
               <li
                 checked={false}
-                className="c18"
+                className="c6"
                 onClick={[Function]}
                 title=""
               />
               <li
                 checked={false}
-                className="c18"
+                className="c6"
                 onClick={[Function]}
                 title=""
               />
               <li
                 checked={false}
-                className="c18"
+                className="c6"
                 onClick={[Function]}
                 title=""
               />
               <li
                 checked={false}
-                className="c18"
+                className="c6"
                 onClick={[Function]}
                 title=""
               />
               <li
                 checked={false}
-                className="c18"
+                className="c6"
                 onClick={[Function]}
                 title=""
               />
             </ul>
           </div>
           <div
-            className="c19"
+            className="c7"
           >
             <div
-              className="c20"
+              className="c8"
               onMouseDown={[Function]}
               onMouseMove={[Function]}
               onMouseOut={[Function]}
@@ -379,7 +381,7 @@ exports[`Select 单选默认样式 1`] = `
               }
             >
               <div
-                className="c21"
+                className="c9"
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
                 style={
@@ -394,6 +396,6 @@ exports[`Select 单选默认样式 1`] = `
         </div>
       </div>
     </div>
-  </div>
-</span>
+  </div>,
+]
 `;

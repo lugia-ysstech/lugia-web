@@ -2028,15 +2028,13 @@ exports[`Button css 1`] = `
       </span>
     </button>
   </div>
-  <span>
-    <button
-      className="c34"
-      onClick={[Function]}
-    >
-      <span>
-        Button
-      </span>
-    </button>
-  </span>
+  <button
+    className="c34"
+    onClick={[Function]}
+  >
+    <span>
+      Button
+    </span>
+  </button>
 </div>
 `;

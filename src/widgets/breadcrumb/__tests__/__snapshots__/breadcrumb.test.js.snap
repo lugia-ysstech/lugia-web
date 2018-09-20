@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链接 1`] = `
+.c1 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
 .c0 {
   color: #999999;
   font-weight: 500;
@@ -23,14 +31,6 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
 
 .c2:hover {
   color: #333333;
-}
-
-.c1 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
 }
 
 <div>
@@ -74,6 +74,14 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
 `;
 
 exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
+.c1 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
 .c0 {
   color: #999999;
   font-weight: 500;
@@ -96,14 +104,6 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
 
 .c2:hover {
   color: #333333;
-}
-
-.c1 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
 }
 
 <div>
@@ -141,12 +141,12 @@ exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
 `;
 
 exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
-.c1 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
+.c2 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
 }
 
 .c0 {
@@ -173,12 +173,12 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
   color: #333333;
 }
 
-.c2 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
+.c1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 <div>
@@ -349,6 +349,14 @@ Array [
 `;
 
 exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
+.c1 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
 .c0 {
   color: #999999;
   font-weight: 500;
@@ -371,14 +379,6 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
 
 .c2:hover {
   color: #333333;
-}
-
-.c1 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
 }
 
 <div>

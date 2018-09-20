@@ -426,25 +426,23 @@ exports[`Radio Radio css 1`] = `
       </span>
     </label>
   </div>
-  <span>
-    <label
-      className="c10"
-      onClick={[Function]}
+  <label
+    className="c10"
+    onClick={[Function]}
+  >
+    <span
+      className="c2"
     >
       <span
-        className="c2"
-      >
-        <span
-          checked={true}
-          className="c11"
-        />
-      </span>
-      <span
-        className="c4"
-      >
-        Radio
-      </span>
-    </label>
-  </span>
+        checked={true}
+        className="c11"
+      />
+    </span>
+    <span
+      className="c4"
+    >
+      Radio
+    </span>
+  </label>
 </div>
 `;

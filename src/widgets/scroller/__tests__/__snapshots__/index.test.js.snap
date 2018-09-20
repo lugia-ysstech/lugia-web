@@ -3,11 +3,11 @@
 exports[`Scroller props defaultValue: 0 & 50 type: x & y 1`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  height: 12px;
+  height: 1em;
 }
 
 .c1 {
@@ -16,18 +16,20 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 1`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  height: 8px;
-  margin-bottom: 2px;
-  margin-top: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  height: 0.6666666666666667em;
+  margin-bottom: 0.16666666666666669em;
+  margin-top: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -39,7 +41,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 1`] = `
   onWheel={[Function]}
   style={
     Object {
-      "width": "300px",
+      "width": "25em",
     }
   }
 >
@@ -49,8 +51,8 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "left": "0px",
-        "width": "90px",
+        "left": "0em",
+        "width": "7.5em",
       }
     }
   />
@@ -60,11 +62,11 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 1`] = `
 exports[`Scroller props defaultValue: 0 & 50 type: x & y 2`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c1 {
@@ -73,18 +75,20 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 2`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -96,7 +100,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 2`] = `
   onWheel={[Function]}
   style={
     Object {
-      "height": "300px",
+      "height": "25em",
     }
   }
 >
@@ -106,8 +110,8 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 2`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "height": "90px",
-        "top": "0px",
+        "height": "7.5em",
+        "top": "0em",
       }
     }
   />
@@ -117,11 +121,11 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 2`] = `
 exports[`Scroller props defaultValue: 0 & 50 type: x & y 3`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  height: 12px;
+  height: 1em;
 }
 
 .c1 {
@@ -130,18 +134,20 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 3`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  height: 8px;
-  margin-bottom: 2px;
-  margin-top: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  height: 0.6666666666666667em;
+  margin-bottom: 0.16666666666666669em;
+  margin-top: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -153,7 +159,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 3`] = `
   onWheel={[Function]}
   style={
     Object {
-      "width": "300px",
+      "width": "25em",
     }
   }
 >
@@ -163,8 +169,8 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 3`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "left": "15px",
-        "width": "90px",
+        "left": "1.25em",
+        "width": "7.5em",
       }
     }
   />
@@ -174,11 +180,11 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 3`] = `
 exports[`Scroller props defaultValue: 0 & 50 type: x & y 4`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c1 {
@@ -187,18 +193,20 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 4`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -210,7 +218,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 4`] = `
   onWheel={[Function]}
   style={
     Object {
-      "height": "300px",
+      "height": "25em",
     }
   }
 >
@@ -220,8 +228,8 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 4`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "height": "90px",
-        "top": "15px",
+        "height": "7.5em",
+        "top": "1.25em",
       }
     }
   />
@@ -231,11 +239,11 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 4`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 1`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  height: 12px;
+  height: 1em;
 }
 
 .c1 {
@@ -244,18 +252,20 @@ exports[`Scroller props value: 0 & 50 type: x & y 1`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  height: 8px;
-  margin-bottom: 2px;
-  margin-top: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  height: 0.6666666666666667em;
+  margin-bottom: 0.16666666666666669em;
+  margin-top: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -267,7 +277,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 1`] = `
   onWheel={[Function]}
   style={
     Object {
-      "width": "300px",
+      "width": "25em",
     }
   }
 >
@@ -277,8 +287,8 @@ exports[`Scroller props value: 0 & 50 type: x & y 1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "left": "0px",
-        "width": "90px",
+        "left": "0em",
+        "width": "7.5em",
       }
     }
   />
@@ -288,11 +298,11 @@ exports[`Scroller props value: 0 & 50 type: x & y 1`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 2`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  height: 12px;
+  height: 1em;
 }
 
 .c1 {
@@ -301,18 +311,20 @@ exports[`Scroller props value: 0 & 50 type: x & y 2`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  height: 8px;
-  margin-bottom: 2px;
-  margin-top: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  height: 0.6666666666666667em;
+  margin-bottom: 0.16666666666666669em;
+  margin-top: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -324,7 +336,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 2`] = `
   onWheel={[Function]}
   style={
     Object {
-      "width": "300px",
+      "width": "25em",
     }
   }
 >
@@ -334,8 +346,8 @@ exports[`Scroller props value: 0 & 50 type: x & y 2`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "left": "0px",
-        "width": "90px",
+        "left": "0em",
+        "width": "7.5em",
       }
     }
   />
@@ -345,11 +357,11 @@ exports[`Scroller props value: 0 & 50 type: x & y 2`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 3`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c1 {
@@ -358,18 +370,20 @@ exports[`Scroller props value: 0 & 50 type: x & y 3`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -381,7 +395,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 3`] = `
   onWheel={[Function]}
   style={
     Object {
-      "height": "300px",
+      "height": "25em",
     }
   }
 >
@@ -391,8 +405,8 @@ exports[`Scroller props value: 0 & 50 type: x & y 3`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "height": "90px",
-        "top": "0px",
+        "height": "7.5em",
+        "top": "0em",
       }
     }
   />
@@ -402,11 +416,11 @@ exports[`Scroller props value: 0 & 50 type: x & y 3`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 4`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  height: 12px;
+  height: 1em;
 }
 
 .c1 {
@@ -415,18 +429,20 @@ exports[`Scroller props value: 0 & 50 type: x & y 4`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  height: 8px;
-  margin-bottom: 2px;
-  margin-top: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  height: 0.6666666666666667em;
+  margin-bottom: 0.16666666666666669em;
+  margin-top: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -438,7 +454,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 4`] = `
   onWheel={[Function]}
   style={
     Object {
-      "width": "300px",
+      "width": "25em",
     }
   }
 >
@@ -448,8 +464,8 @@ exports[`Scroller props value: 0 & 50 type: x & y 4`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "left": "15px",
-        "width": "90px",
+        "left": "1.25em",
+        "width": "7.5em",
       }
     }
   />
@@ -459,11 +475,11 @@ exports[`Scroller props value: 0 & 50 type: x & y 4`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 5`] = `
 .c0 {
   position: relative;
-  background: #e3e3e6;
-  width: 20px;
-  height: 300px;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
   z-index: 996;
-  width: 12px;
+  width: 1em;
 }
 
 .c1 {
@@ -472,18 +488,20 @@ exports[`Scroller props value: 0 & 50 type: x & y 5`] = `
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  background: #49a9ee;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 30px;
-  width: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
 }
 
 .c1:hover {
-  background-color: #49a9ee96;
+  background-color: #7a7a7a;
 }
 
 <div
@@ -495,7 +513,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 5`] = `
   onWheel={[Function]}
   style={
     Object {
-      "height": "300px",
+      "height": "25em",
     }
   }
 >
@@ -505,8 +523,8 @@ exports[`Scroller props value: 0 & 50 type: x & y 5`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "height": "90px",
-        "top": "15px",
+        "height": "7.5em",
+        "top": "1.25em",
       }
     }
   />
