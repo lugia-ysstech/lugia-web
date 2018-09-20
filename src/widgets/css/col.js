@@ -18,6 +18,9 @@ type BasicType = {
 };
 export type ColProps = {
   children?: any,
+  onMouseEnter?: Function,
+  onMouseOut?: Function,
+  onMouseOver?: Function,
   scrrenSize?: string,
 } & BasicType;
 export type ColState = {};

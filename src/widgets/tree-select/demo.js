@@ -105,103 +105,54 @@ function getNumberKey() {
   }
 }
 
-// const rowData: Array<Object> = [
-//   { key: '1', title: '选项A' },
-//   { key: '1.1', title: '选项A.A', pid: '1', path: '1', isLeaf: true },
-//   { key: '1.2', title: '选项A.B', pid: '1', path: '1' },
-//   { key: '1.2.1', title: '选项A.B.A', pid: '1.2', path: '1/1.2', isLeaf: true },
-//   { key: '1.2.2', title: '选项A.B.B', pid: '1.2', path: '1/1.2' },
-//   { key: '1.2.2.1', title: '选项A.B.B.A', pid: '1.2.2', path: '1/1.2/1.2.2' },
-//   {
-//     key: '1.2.2.1.1',
-//     title: '选项A.B.B.A.A',
-//     pid: '1.2.2.1',
-//     path: '1/1.2/1.2.2/1.2.2.1',
-//     isLeaf: true,
-//   },
-//   {
-//     key: '1.2.2.1.2',
-//     title: '选项A.B.B.A.B',
-//     pid: '1.2.2.1',
-//     path: '1/1.2/1.2.2/1.2.2.1',
-//     isLeaf: true,
-//     not: true,
-//   },
-//   { key: '1.2.2.2', title: '选项A.B.B.B', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
-
-//   { key: '1.3', title: '选项A.C', pid: '1', path: '1' },
-//   { key: '1.3.1', title: '选项A.C.A', pid: '1.3', path: '1/1.3' },
-//   { key: '1.3.1.1', title: '选项A.C.A.A', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-//   { key: '1.3.1.2', title: '选项A.C.A.B', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-//   { key: '1.3.2', title: '选项A.C.B', pid: '1.3', path: '1/1.3' },
-//   { key: '1.3.2.1', title: '选项A.C.B.A', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-//   { key: '1.3.2.2', title: '选项A.C.B.B', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-//   { key: '1.3.3', title: '选项A.C.C', pid: '1.3', path: '1/1.3', isLeaf: true },
-
-//   { key: '2', title: '选项B' },
-//   { key: '2.1', title: '选项B.A', pid: '2', path: '2' },
-//   { key: '2.1.1', title: '选项B.A.A', pid: '2.1', path: '2/2.1', isLeaf: true },
-//   { key: '2.1.2', title: '选项B.A.B', pid: '2.1', path: '2/2.1' },
-//   { key: '2.1.2.1', title: '选项B.A.B.A', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
-//   { key: '2.2', title: '选项B.B', pid: '2', path: '2' },
-//   { key: '2.2.1', title: '选项B.B.A', pid: '2.2', path: '2/2.2' },
-//   { key: '2.2.1.1', title: '选项B.B.A.A', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-//   { key: '2.2.1.2', title: '选项B.B.A.B', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-//   { key: '2.2.2', title: '选项B.B.B', pid: '2.2', path: '2/2.2', isLeaf: true },
-
-//   { key: '3', title: '选项C' },
-//   { key: '3.1', title: '选项C.A', pid: '3', path: '3', isLeaf: true },
-//   { key: '3.2', title: '选项C.B', pid: '3', path: '3', isLeaf: true },
-//   { key: '4', title: '选项D', isLeaf: true },
-// ];
 const rowData: Array<Object> = [
-  { key: '1', title: '1', isLeaf: true },
-  // { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true },
-  // { key: '1.2', title: '1.2', pid: '1', path: '1' },
-  // { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
-  // { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
-  // { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
-  // {
-  //   key: '1.2.2.1.1',
-  //   title: '1.2.2.1.1',
-  //   pid: '1.2.2.1',
-  //   path: '1/1.2/1.2.2/1.2.2.1',
-  //   isLeaf: true,
-  // },
-  // {
-  //   key: '1.2.2.1.2',
-  //   title: '1.2.2.1.2',
-  //   pid: '1.2.2.1',
-  //   path: '1/1.2/1.2.2/1.2.2.1',
-  //   isLeaf: true,
-  //   not: true,
-  // },
-  // { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
+  { key: '1', title: '1' },
+  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true },
+  { key: '1.2', title: '1.2', pid: '1', path: '1' },
+  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
+  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
+  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
+  {
+    key: '1.2.2.1.1',
+    title: '1.2.2.1.1',
+    pid: '1.2.2.1',
+    path: '1/1.2/1.2.2/1.2.2.1',
+    isLeaf: true,
+  },
+  {
+    key: '1.2.2.1.2',
+    title: '1.2.2.1.2',
+    pid: '1.2.2.1',
+    path: '1/1.2/1.2.2/1.2.2.1',
+    isLeaf: true,
+    not: true,
+  },
+  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
 
-  // { key: '1.3', title: '1.3', pid: '1', path: '1' },
-  // { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3' },
-  // { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  // { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  // { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3' },
-  // { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  // { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  // { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
+  { key: '1.3', title: '1.3', pid: '1', path: '1' },
+  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3' },
+  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
 
-  // { key: '2', title: '2' },
-  // { key: '2.1', title: '2.1', pid: '2', path: '2' },
-  // { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
-  // { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1' },
-  // { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
-  // { key: '2.2', title: '2.2', pid: '2', path: '2' },
-  // { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2' },
-  // { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-  // { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-  // { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true },
+  { key: '2', title: '2' },
+  { key: '2.1', title: '2.1', pid: '2', path: '2' },
+  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
+  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1' },
+  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
+  { key: '2.2', title: '2.2', pid: '2', path: '2' },
+  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2' },
+  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
+  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
+  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true },
 
-  // { key: '3', title: '3' },
-  // { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true },
-  // { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
-  // { key: '4', title: '4', isLeaf: true },
+  { key: '3', title: '3' },
+  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true },
+  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
+  { key: '4', title: '4', isLeaf: true },
 ];
 const Data = styled.div`
   height: ${props => props.height}px;
@@ -251,11 +202,10 @@ export default class extends React.Component<any, any> {
           // limitCount={5}
           validateStatus={validateStatus}
           expandAll
-          canSearch
-          // value={value}
+          value={value}
           help={help}
           limitCount={limitCount}
-          // displayValue={displayValue}
+          displayValue={displayValue}
           mutliple
           placeholder="请输入xxx"
           // disabled
@@ -264,13 +214,14 @@ export default class extends React.Component<any, any> {
           label="test label"
           labelSize={150}
         />
-        w <input value={width} onChange={this.onWidthChange} />h
-        <input value={height} onChange={this.onHeightChange} />
-        onValidateStatusChange
-        <input value={validateStatus} onChange={this.onValidateStatusChange} />
-        help
-        <input value={help} onChange={this.onHelpChange} />h
-        <input value={limitCount} onChange={this.onHeightChange} />
+        w <input value={width} onChange={this.onWidthChange} />
+        h<input value={height} onChange={this.onHeightChange} />
+        onValidateStatusChange<input
+          value={validateStatus}
+          onChange={this.onValidateStatusChange}
+        />
+        help<input value={help} onChange={this.onHelpChange} />
+        h<input value={limitCount} onChange={this.onHeightChange} />
         <Box>
           <h2>颜色变化状态</h2>
           <DIV>正常色 color #684fff</DIV>

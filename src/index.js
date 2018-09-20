@@ -7,15 +7,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactServer from 'react-dom/server';
 
-// import App from './widgets/select/demo';
+import App from './widgets/slider/demo';
 //import App from './widgets/switch/demo';
 //import App from './widgets/loading/demo';
-// import {CheckBoxDemo} from './widgets/checkbox/demo';
-// import CheckBoxDemo from './widgets/checkbox/checkAll';
-// import App from './widgets/checkbox/demo2';
-import App from './widgets/tree-select/demo';
-// import App from './widgets/tree/demo';
-// import App from './widgets/breadcrumb/demo';
+//import App from './widgets/icon/demo';
+//import App from './widgets/tree-select/demo';
+// import App from './widgets/trigger/demo';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
