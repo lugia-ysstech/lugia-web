@@ -80,8 +80,8 @@ declare module '@lugia/lugia-web' {
   declare type RadiusType = number | RadiusSize;
 
   declare type MarginObject = { top?: number, right?: number, bottom?: number, left?: number };
-  declare type PositionType = { top: number, right: number, bottom: number, left: number };
-  declare type BorderSizeObject = { top: number, right: number, bottom: number, left: number };
+  declare type PositionType = { top?: number, right?: number, bottom?: number, left?: number };
+  declare type BorderSizeObject = { top?: number, right?: number, bottom?: number, left?: number };
 
   declare type RadiusSize = {
     topLeft: number,

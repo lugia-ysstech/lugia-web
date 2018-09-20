@@ -1,0 +1,894 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tabsDemo Component JSON 1`] = `
+.c0 {
+  text-align: left;
+  margin: 50px;
+}
+
+.c1 {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  width: 66.66666666666667em;
+}
+
+.c13 {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  width: NaNem;
+}
+
+.c2 {
+  height: 2.666666666666667em;
+  position: relative;
+  border-bottom: 0.08333333333333334em solid #e8e8e8;
+  -webkit-transform: translateX(%);
+  -ms-transform: translateX(%);
+  transform: translateX(%);
+  background: none;
+  text-align: bottom;
+  padding: 0 2em;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.c26 {
+  height: 2.666666666666667em;
+  position: relative;
+  border-top: 0.08333333333333334em solid #e8e8e8;
+  -webkit-transform: translateX(%);
+  -ms-transform: translateX(%);
+  transform: translateX(%);
+  background: none;
+  text-align: bottom;
+  padding: 0 2em;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.c29 {
+  height: 3.1666666666666665em;
+  position: relative;
+  -webkit-transform: translateX(%);
+  -ms-transform: translateX(%);
+  transform: translateX(%);
+  background: #f8f8f8;
+  text-align: bottom;
+  padding: 0 2em;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.c3 {
+  background-color: blue;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 3;
+  border-radius: 0.16666666666666669em;
+  height: 0.16666666666666669em;
+  width: 8.333333333333334em;
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
+  bottom: 0;
+  -webkit-transition: width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.c27 {
+  background-color: blue;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 3;
+  border-radius: 0.16666666666666669em;
+  height: 0.16666666666666669em;
+  width: 8.333333333333334em;
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
+  top: 0;
+  -webkit-transition: width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transition: transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: transform 0.3s cubic-bezier(0.645,0.045,0.355,1), width 0.3s cubic-bezier(0.645,0.045,0.355,1), -webkit-transform 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.c4 {
+  position: absolute;
+  font-size: 1rem;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 100%;
+  top: 50%;
+  left: 0.8333333333333334em;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c7 {
+  height: 2.666666666666667em;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.c8 {
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+  height: 2.666666666666667em;
+  padding: 0 1.25em;
+  line-height: 2.666666666666667em;
+  background: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 0 0.5em none;
+  bottom: 0;
+  z-index: 2;
+}
+
+.c9 {
+  color: #684fff;
+  display: inline-block;
+}
+
+.c9:hover {
+  color: #684fff;
+}
+
+.c10 {
+  color: #333333;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  padding: 0 0.8333333333333334em;
+  padding-right: 1.6666666666666667em;
+  height: 2.666666666666667em;
+  line-height: 2.666666666666667em;
+}
+
+.c10:hover {
+  color: #684fff;
+}
+
+.c11 {
+  position: absolute;
+  font-size: 1rem;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 100%;
+  top: 50%;
+  right: 0.8333333333333334em;
+}
+
+.c12 {
+  position: absolute;
+  display: inline-block;
+  bottom: -1.6666666666666667em;
+  left: 2em;
+}
+
+.c20 {
+  position: absolute;
+  display: inline-block;
+  top: 2em;
+}
+
+.c25 {
+  position: absolute;
+  display: inline-block;
+  left: 1.6666666666666667em;
+  top: 2em;
+}
+
+.c28 {
+  position: absolute;
+  display: inline-block;
+  top: -1.6666666666666667em;
+  left: 2em;
+}
+
+.c14 {
+  color: #333333;
+  border-right: 0.08333333333333334em solid #e8e8e8;
+  display: inline-block;
+  position: relative;
+  -webkit-transform: translateY(%);
+  -ms-transform: translateY(%);
+  transform: translateY(%);
+  padding: 2em 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.c22 {
+  color: #333333;
+  border-left: 0.08333333333333334em solid #e8e8e8;
+  display: inline-block;
+  position: relative;
+  -webkit-transform: translateY(%);
+  -ms-transform: translateY(%);
+  transform: translateY(%);
+  padding: 2em 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.c15 {
+  background-color: blue;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 3;
+  border-radius: 0.16666666666666669em;
+  height: 2.666666666666667em;
+  width: 0.16666666666666669em;
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  right: 0;
+}
+
+.c23 {
+  background-color: blue;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 3;
+  border-radius: 0.16666666666666669em;
+  height: 2.666666666666667em;
+  width: 0.16666666666666669em;
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  left: 0;
+}
+
+.c16 {
+  position: absolute;
+  font-size: 1rem;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  top: 0.5em;
+}
+
+.c17 {
+  height: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.c18 {
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: right;
+  padding: 0 0.8333333333333334em;
+  display: block;
+}
+
+.c24 {
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: left;
+  padding: 0 0.8333333333333334em;
+  display: block;
+}
+
+.c19 {
+  position: absolute;
+  font-size: 1rem;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  -webkit-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%);
+  bottom: 0.5em;
+}
+
+.c21 {
+  margin: 50px;
+  text-align: right;
+}
+
+.c30 {
+  position: absolute;
+  width: 100%;
+  height: 0.08333333333333334em;
+  box-shadow: 0 -0.08333333333333334em 0.5em rgba(104,79,255,0.2);
+}
+
+<div>
+  <span>
+    <div
+      className="c0"
+    >
+      <span>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+          >
+            <div
+              className="c3"
+              x={0}
+            />
+            <span
+              className="c4"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_Left c5 c6"
+              />
+            </span>
+            <div
+              className="c7"
+            >
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <i
+                  className="lugia-icon-financial_archive c9 c6"
+                />
+                <span
+                  className="c10"
+                >
+                  1111
+                </span>
+              </div>
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <span
+                  className="c10"
+                >
+                  2222
+                </span>
+              </div>
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <span
+                  className="c10"
+                >
+                  3333
+                </span>
+              </div>
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <span
+                  className="c10"
+                >
+                  4444
+                </span>
+              </div>
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <span
+                  className="c10"
+                >
+                  555555
+                </span>
+              </div>
+            </div>
+            <span
+              className="c11"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_right c5 c6"
+              />
+            </span>
+          </div>
+          <div
+            className="c12"
+          >
+            11111111111111111111111111
+          </div>
+        </div>
+      </span>
+    </div>
+    <div
+      className="c0"
+    >
+      <div
+        className="c13"
+      >
+        <div
+          className="c14"
+        >
+          <div
+            className="c15"
+            y={0}
+          />
+          <span
+            className="c16"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_up c5 c6"
+            />
+          </span>
+          <div
+            className="c17"
+          >
+            <div
+              className="c18"
+              onClick={[Function]}
+            >
+              <span
+                className="c10"
+              >
+                11111
+              </span>
+            </div>
+            <div
+              className="c18"
+              onClick={[Function]}
+            >
+              <span
+                className="c10"
+              >
+                2222
+              </span>
+            </div>
+            <div
+              className="c18"
+              onClick={[Function]}
+            >
+              <span
+                className="c10"
+              >
+                3333
+              </span>
+            </div>
+          </div>
+          <span
+            className="c19"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_down c5 c6"
+            />
+          </span>
+        </div>
+        <div
+          className="c20"
+        >
+          11111111111111111111111111
+        </div>
+      </div>
+    </div>
+    <div
+      className="c21"
+    >
+      <div
+        className="c13"
+      >
+        <div
+          className="c22"
+        >
+          <div
+            className="c23"
+            y={0}
+          />
+          <span
+            className="c16"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_up c5 c6"
+            />
+          </span>
+          <div
+            className="c17"
+          >
+            <div
+              className="c24"
+              onClick={[Function]}
+            >
+              <span
+                className="c10"
+              >
+                11111
+              </span>
+            </div>
+            <div
+              className="c24"
+              onClick={[Function]}
+            >
+              <span
+                className="c10"
+              >
+                2222
+              </span>
+            </div>
+            <div
+              className="c24"
+              onClick={[Function]}
+            >
+              <span
+                className="c10"
+              >
+                3333
+              </span>
+            </div>
+          </div>
+          <span
+            className="c19"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_down c5 c6"
+            />
+          </span>
+        </div>
+        <div
+          className="c25"
+        >
+          11111111111111111111111111
+        </div>
+      </div>
+    </div>
+    <div
+      className="c0"
+    >
+      <span>
+        <div
+          className="c1"
+        >
+          <div
+            className="c26"
+          >
+            <div
+              className="c27"
+              x={0}
+            />
+            <span
+              className="c4"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_Left c5 c6"
+              />
+            </span>
+            <div
+              className="c7"
+            >
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <i
+                  className="lugia-icon-financial_archive c9 c6"
+                />
+                <span
+                  className="c10"
+                >
+                  11111
+                </span>
+              </div>
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <span
+                  className="c10"
+                >
+                  2222
+                </span>
+              </div>
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <span
+                  className="c10"
+                >
+                  3333
+                </span>
+              </div>
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <span
+                  className="c10"
+                >
+                  4444
+                </span>
+              </div>
+              <div
+                className="c8"
+                onClick={[Function]}
+              >
+                <span
+                  className="c10"
+                >
+                  555555
+                </span>
+              </div>
+            </div>
+            <span
+              className="c11"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_right c5 c6"
+              />
+            </span>
+          </div>
+          <div
+            className="c28"
+          >
+            11111111111111111111111111
+          </div>
+        </div>
+      </span>
+    </div>
+    <div
+      className="c0"
+    >
+      <span>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+          >
+            <div
+              className="c3"
+              x={0}
+            />
+            <span
+              className="c4"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_Left c5 c6"
+              />
+            </span>
+            <div
+              className="c7"
+            />
+            <span
+              className="c11"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_right c5 c6"
+              />
+            </span>
+          </div>
+          <div
+            className="c12"
+          >
+            1111
+          </div>
+        </div>
+      </span>
+    </div>
+    <br />
+    <div
+      className="c0"
+    >
+      <div
+        className="c13"
+      >
+        <div
+          className="c14"
+        >
+          <div
+            className="c15"
+            y={0}
+          />
+          <span
+            className="c16"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_up c5 c6"
+            />
+          </span>
+          <div
+            className="c17"
+          />
+          <span
+            className="c19"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_down c5 c6"
+            />
+          </span>
+        </div>
+        <div
+          className="c20"
+        >
+          <div>
+            1111111
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div
+      className="c21"
+    >
+      <div
+        className="c13"
+      >
+        <div
+          className="c22"
+        >
+          <div
+            className="c23"
+            y={0}
+          />
+          <span
+            className="c16"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_up c5 c6"
+            />
+          </span>
+          <div
+            className="c17"
+          />
+          <span
+            className="c19"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_down c5 c6"
+            />
+          </span>
+        </div>
+        <div
+          className="c25"
+        >
+          <div>
+            1111111
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div
+      className="c0"
+    >
+      <span>
+        <div
+          className="c1"
+        >
+          <div
+            className="c26"
+          >
+            <div
+              className="c27"
+              x={0}
+            />
+            <span
+              className="c4"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_Left c5 c6"
+              />
+            </span>
+            <div
+              className="c7"
+            />
+            <span
+              className="c11"
+              onClick={[Function]}
+            >
+              <i
+                className="lugia-icon-direction_right c5 c6"
+              />
+            </span>
+          </div>
+          <div
+            className="c28"
+          >
+            1111
+          </div>
+        </div>
+      </span>
+    </div>
+    <br />
+    <div
+      className="c0"
+    >
+      <div
+        className="c1"
+      >
+        <div
+          className="c29"
+        >
+          <span
+            className="c4"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_Left c5 c6"
+            />
+          </span>
+          <div
+            className="c7"
+          >
+             
+          </div>
+          <span
+            className="c11"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_right c5 c6"
+            />
+          </span>
+        </div>
+        <div
+          className="c30"
+        />
+      </div>
+    </div>
+    <br />
+  </span>
+</div>
+`;
