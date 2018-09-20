@@ -328,9 +328,9 @@ describe('ThemeProvider', () => {
   it('config:  3 level ', () => {
     const viewClass = 'ligx';
 
-    const levelA = { color: { red: 5, green: 5, blue: 5 } };
+    const levelA = { color: '#5514123' };
     const levelB = { color: 'red' };
-    const levelC = { color: { red: 5, green: 5, blue: 5 } };
+    const levelC = { color: '#4532431' };
 
     const configA = { [viewClass]: levelA };
     const configB = { [viewClass]: levelB };
@@ -362,9 +362,9 @@ describe('ThemeProvider', () => {
     const bgConfig = {
       background: 'red',
     };
-    const levelA = { color: { red: 5, green: 5, blue: 5 }, ...bgConfig };
+    const levelA = { color: '#abcdef', ...bgConfig };
     const levelB = { color: 'red', ...widthConfig };
-    const levelC = { color: { red: 5, green: 5, blue: 5 } };
+    const levelC = { color: '#bcdefg' };
 
     const configA = { [viewClass]: levelA };
     const configB = { [viewClass]: levelB };
