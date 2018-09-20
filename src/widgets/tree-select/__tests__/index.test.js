@@ -99,13 +99,14 @@ describe('TreeSelect', () => {
       [Widget.Input]: Object.assign(
         {},
         styleConfig,
-        { width: styleConfig.width - 6 },
+        { width: styleConfig.width },
         { svThemeConfigTree }
       ),
       [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9' },
     };
     createThemeCase(styleConfig, expResult);
   });
+
   it('未指定width', () => {
     const styleConfig = {};
 
@@ -142,41 +143,43 @@ describe('TreeSelect', () => {
     }
 
     const Target = createTestComponent(TestDemo, target => {
-      const resultTheme = target.treeSelect.getThemeTarget().getTheme();
-      exp(resultTheme).to.be.eql(expResult);
+      const resultTheme = target.treeSelect.getThemeTarget().getCurrentTheme();
+      expect(resultTheme).toEqual(expResult);
     });
     const cmp = mount(<Target />);
-    exp(
+    expect(
       cmp
         .find(Widget.Theme)
         .at(1)
         .props().config
-    ).to.be.eql(expResult);
+    ).toEqual(expResult);
   }
 
   it('测试查询功能 local', async () => {
-    const cmp = mount(<TreeSelect data={rowData} throttle={0} />);
+    const cmp = mount(<TreeSelect canSearch data={rowData} throttle={0} />);
     const firstValue = 'helloworld';
-    chagneQuery(cmp, firstValue);
+    showTrigger(cmp);
+    changeQuery(cmp, firstValue);
     exp(getTreeQuery(cmp)).to.be.equal(firstValue);
     exp(getQueryInputValue(cmp)).to.be.equal(firstValue);
 
     const secondValue = 'ligx';
-    chagneQuery(cmp, secondValue);
+    changeQuery(cmp, secondValue);
     exp(getTreeQuery(cmp)).to.be.equal(secondValue);
     exp(getQueryInputValue(cmp)).to.be.equal(secondValue);
   });
+
   it('测试查询功能 remote', async () => {
-    const cmp = mount(<TreeSelect data={rowData} throttle={0} mode="remote" />);
+    const cmp = mount(<TreeSelect canSearch data={rowData} throttle={0} mode="remote" />);
     const firstValue = 'helloworld';
-    chagneQuery(cmp, firstValue);
+    changeQuery(cmp, firstValue);
     exp(getTreeQuery(cmp)).to.be.equal('');
     exp(getQueryInputValue(cmp)).to.be.equal(firstValue);
   });
 
   it('选择全部', () => {
     const cmp = mount(
-      <TreeSelect data={rowData} throttle={0} mutliple igronSelectField="isLeaf" />
+      <TreeSelect data={rowData} canSearch throttle={0} mutliple igronSelectField="isLeaf" />
     );
     showTrigger(cmp);
     selctedAll(cmp);
@@ -185,10 +188,10 @@ describe('TreeSelect', () => {
   function createCanInput({ mutliple }) {
     it(`canInput mutliple: ${mutliple.toString()}`, () => {
       let onChange;
-      const cmp = mount(<TreeSelect data={rowData} mutliple={mutliple} canInput />);
+      const cmp = mount(<TreeSelect canSearch data={rowData} mutliple={mutliple} canInput />);
       showTrigger(cmp);
       const txt = '100';
-      chagneQuery(cmp, txt);
+      changeQuery(cmp, txt);
       queryInputEnter(cmp);
       mutliple
         ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt)
@@ -205,10 +208,12 @@ describe('TreeSelect', () => {
 
   function createSelectAll(expandAll) {
     it(`selectAll expandAll${expandAll.toString()}`, () => {
-      const cmp = mount(<TreeSelect data={rowData} mutliple expandAll={expandAll} canInput />);
+      const cmp = mount(
+        <TreeSelect canSearch data={rowData} mutliple expandAll={expandAll} canInput />
+      );
       showTrigger(cmp);
       selctedAll(cmp);
-      exp(findSelectAllButton(cmp).props().checked).to.be.true;
+      exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     });
   }
 
@@ -225,12 +230,13 @@ describe('TreeSelect', () => {
         onChange={onChange}
         igronSelectField="isLeaf"
         canInput
+        canSearch
       />
     );
 
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
 
     const value = [
       '1',
@@ -260,24 +266,28 @@ describe('TreeSelect', () => {
         onChange={onChange}
         onlySelectLeaf
         canInput
+        canSearch
       />
     );
 
     showTrigger(cmp);
     selctedAll(cmp);
 
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
 
     const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
     checkTreeSelectValue(cmp, value);
   });
+
   it('selectAll limitCount: 5', async () => {
-    const cmp = mount(<TreeSelect data={rowData} mutliple expandAll={true} limitCount={5} />);
+    const cmp = mount(
+      <TreeSelect canSearch data={rowData} mutliple expandAll={true} limitCount={5} />
+    );
 
     showTrigger(cmp);
     selctedAll(cmp);
 
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
 
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
     checkTreeSelectValue(cmp, value);
@@ -285,15 +295,15 @@ describe('TreeSelect', () => {
 
   it('selectAll limitCount: 5 caninput 先选全部再输入', async () => {
     const cmp = mount(
-      <TreeSelect data={rowData} mutliple canInput expandAll={true} limitCount={5} />
+      <TreeSelect data={rowData} canSearch mutliple canInput expandAll={true} limitCount={5} />
     );
 
     showTrigger(cmp);
     selctedAll(cmp);
     const txt = '100';
-    chagneQuery(cmp, txt);
+    changeQuery(cmp, txt);
     queryInputEnter(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
 
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
     checkTreeSelectValue(cmp, value);
@@ -310,6 +320,7 @@ describe('TreeSelect', () => {
         defaultValue={value}
         defaultDisplayValue={displayValue}
         canInput
+        canSearch
         expandAll={true}
         limitCount={limit}
       />
@@ -317,15 +328,16 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     const expValue = rowData
       .filter((item: Object, index: number) => index < 3)
       .map(item => item.key);
     checkTreeSelectValue(cmp, [...value, ...expValue], limit);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, value, limit);
   });
+
   it('selectAll 默认值为顶部的值 然后进行全选 limitCount: 5', () => {
     const value = ['1'];
     const displayValue = [];
@@ -337,6 +349,7 @@ describe('TreeSelect', () => {
         defaultValue={value}
         defaultDisplayValue={displayValue}
         canInput
+        canSearch
         expandAll={true}
         limitCount={limit}
       />
@@ -344,10 +357,10 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2'], limit);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, [], limit);
   });
 
@@ -370,6 +383,7 @@ describe('TreeSelect', () => {
           onChange={this.onChange}
           displayValue={displayValue}
           canInput
+          canSearch
           expandAll={true}
           limitCount={limitCount}
         />
@@ -388,12 +402,13 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2'], limit);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, [], limit);
   });
+
   it(' limitCount: 5 受限组件', () => {
     const limit = 5;
 
@@ -401,10 +416,10 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     checkTreeSelectValue(cmp, ['1', '1.1', '1.2', '1.2.1', '1.2.2'], limit);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, [], limit);
     checkTreeSelectValue(cmp, [], limit);
   });
@@ -433,6 +448,7 @@ describe('TreeSelect', () => {
         defaultValue={value}
         defaultDisplayValue={displayValue}
         canInput
+        canSearch
         expandAll={true}
         limitCount={5}
       />
@@ -440,12 +456,13 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     checkTreeSelectValue(cmp, [...value, '1', '1.1', '1.2']);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, []);
   });
+
   it('selectAll 默认值为底部的值 然后进行全选 limitCount: 5', () => {
     const value = ['4', '3.2', '3.1'];
     const displayValue = [];
@@ -456,6 +473,7 @@ describe('TreeSelect', () => {
         defaultValue={value}
         defaultDisplayValue={displayValue}
         canInput
+        canSearch
         expandAll={true}
         limitCount={5}
       />
@@ -463,10 +481,10 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     checkTreeSelectValue(cmp, [...value, '1', '1.1']);
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, []);
   });
 
@@ -495,6 +513,7 @@ describe('TreeSelect', () => {
         defaultValue={str}
         defaultDisplayValue={str}
         canInput
+        canSearch
         expandAll={true}
         limitCount={5}
       />
@@ -507,6 +526,7 @@ describe('TreeSelect', () => {
     exp(await refreshResult).to.be.eql(true);
     exp(await changeReuslt).to.be.eql({ value: [], displayValue: [] });
   });
+
   it('非受限 没有值直接刷新 操作', () => {
     const onChange = () => {
       throw new Error('不应触发change事件');
@@ -517,6 +537,7 @@ describe('TreeSelect', () => {
         data={rowData}
         onChange={onChange}
         mutliple
+        canSearch
         canInput
         expandAll={true}
         limitCount={5}
@@ -558,6 +579,7 @@ describe('TreeSelect', () => {
           value={value}
           displayValue={displayValue}
           canInput
+          canSearch
           expandAll={true}
         />
       </Theme>
@@ -600,6 +622,7 @@ describe('TreeSelect', () => {
           defaultValue={value}
           defaultDisplayValue={displayValue}
           canInput
+          canSearch
           expandAll={true}
         />
       </Theme>
@@ -636,6 +659,7 @@ describe('TreeSelect', () => {
         value={value}
         displayValue={displayValue}
         canInput
+        canSearch
         expandAll={true}
       />
     );
@@ -648,6 +672,7 @@ describe('TreeSelect', () => {
       displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
     });
   });
+
   it('受限组件 canInput: true  手工添加项 onChange', async () => {
     let onChange;
     const changeReuslt = new Promise(resolve => {
@@ -665,12 +690,13 @@ describe('TreeSelect', () => {
         value={value}
         displayValue={displayValue}
         canInput
+        canSearch
         expandAll={true}
       />
     );
     const txt = 'hello';
     showTrigger(cmp);
-    chagneQuery(cmp, txt);
+    changeQuery(cmp, txt);
     queryInputEnter(cmp);
     checkTreeSelectValue(cmp, [value]);
     const result = await changeReuslt;
@@ -679,6 +705,7 @@ describe('TreeSelect', () => {
       displayValue: [displayValue, txt],
     });
   });
+
   it('非受限组件 选择全部  onChange', async () => {
     let onChange;
     const changeReuslt = new Promise(resolve => {
@@ -696,6 +723,7 @@ describe('TreeSelect', () => {
         value={value}
         displayValue={displayValue}
         canInput
+        canSearch
         expandAll={true}
       />
     );
@@ -709,6 +737,7 @@ describe('TreeSelect', () => {
       displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
     });
   });
+
   it('非受限组件 选择全部  onChange', async () => {
     let onChange;
     const changeReuslt = new Promise(resolve => {
@@ -726,6 +755,7 @@ describe('TreeSelect', () => {
         defaultValue={value}
         defaultDisplayValue={displayValue}
         canInput
+        canSearch
         expandAll={true}
       />
     );
@@ -752,25 +782,19 @@ describe('TreeSelect', () => {
 
   it('selectAll limitCount: 5 caninput 先输入再选全部', async () => {
     const cmp = mount(
-      <TreeSelect data={rowData} mutliple canInput expandAll={true} limitCount={5} />
+      <TreeSelect data={rowData} mutliple canSearch canInput expandAll={true} limitCount={5} />
     );
 
     showTrigger(cmp);
     const txt = '100';
-    chagneQuery(cmp, txt);
+    changeQuery(cmp, txt);
     queryInputEnter(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.true;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
     checkTreeSelectValue(cmp, ['100', ...value]);
   });
-  const HalfChecked = 'sv-tree-checkbox-indeterminate';
-  const Checked = 'sv-tree-checkbox-checked';
-  const Selected = 'sv-tree-node-selected';
-  const CheckBox = '.sv-tree-checkbox';
-  const CheckBoxInner = '.sv-tree-checkbox-inner';
-  const TreeRow = '.sv-tree-node-content-wrapper';
 
   it('多选 选择第一个 onSelect 事件', async () => {
     let onSelect;
@@ -796,7 +820,7 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     cmp
-      .find(CheckBox)
+      .find(Widget.CheckBox)
       .at(0)
       .simulate('click');
     const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
@@ -804,7 +828,7 @@ describe('TreeSelect', () => {
       .filter((item: Object, index: number) => index < 5)
       .map(item => item.title);
     cmp
-      .find(CheckBox)
+      .find(Widget.CheckBox)
       .at(0)
       .simulate('click');
     const result = await selAllPromise;
@@ -823,12 +847,19 @@ describe('TreeSelect', () => {
       };
     });
     const cmp = mount(
-      <TreeSelect data={rowData} onSelect={onSelect} canInput expandAll={true} limitCount={5} />
+      <TreeSelect
+        data={rowData}
+        onSelect={onSelect}
+        canSearch
+        canInput
+        expandAll={true}
+        limitCount={5}
+      />
     );
 
     showTrigger(cmp);
     cmp
-      .find(TreeRow)
+      .find('titleSpan')
       .at(0)
       .simulate('click');
     const value = rowData.filter((item: Object, index: number) => index < 1).map(item => item.key);
@@ -836,7 +867,7 @@ describe('TreeSelect', () => {
       .filter((item: Object, index: number) => index < 1)
       .map(item => item.title);
     cmp
-      .find(TreeRow)
+      .find('titleSpan')
       .at(0)
       .simulate('click');
     const result = await selAllPromise;
@@ -936,15 +967,24 @@ describe('TreeSelect', () => {
       { key: '55', title: '55' },
     ];
     const cmp = mount(
-      <TreeSelect data={rowData} mutliple canInput onlySelectLeaf expandAll={true} limitCount={5} />
+      <TreeSelect
+        data={rowData}
+        mutliple
+        canSearch
+        canInput
+        onlySelectLeaf
+        expandAll={true}
+        limitCount={5}
+      />
     );
 
     showTrigger(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     selctedAll(cmp);
-    exp(findSelectAllButton(cmp).props().checked).to.be.false;
+    exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, []);
   });
+
   it('键盘子节点选择问题 shift选择 父节点', async () => {
     const cmp = mount(<TreeSelect data={rowData} mutliple expandAll={true} />);
     showTrigger(cmp);
@@ -952,6 +992,16 @@ describe('TreeSelect', () => {
     queryInputShift(cmp);
     checkTreeSelectValue(cmp, ['1']);
   });
+
+  it('键盘子节点选择问题 shift选择 子节点', async () => {
+    const cmp = mount(<TreeSelect data={rowData} canSearch mutliple expandAll={true} />);
+    showTrigger(cmp);
+    queryInputDown(cmp);
+    queryInputDown(cmp);
+    queryInputShift(cmp);
+    checkTreeSelectValue(cmp, ['1.1']);
+  });
+
   it('键盘子节点选择问题 shift选择 子节点', async () => {
     const cmp = mount(<TreeSelect data={rowData} mutliple expandAll={true} />);
     showTrigger(cmp);
@@ -960,6 +1010,7 @@ describe('TreeSelect', () => {
     queryInputShift(cmp);
     checkTreeSelectValue(cmp, ['1.1']);
   });
+
   it('键盘子节点选择问题 ctrl选择 父节点', async () => {
     const cmp = mount(<TreeSelect data={rowData} mutliple expandAll={true} />);
     showTrigger(cmp);
@@ -972,6 +1023,7 @@ describe('TreeSelect', () => {
       .map(item => item.key);
     checkTreeSelectValue(cmp, expectResult);
   });
+
   it('键盘子节点选择问题 ctrl选择 子节点', async () => {
     const cmp = mount(<TreeSelect data={rowData} mutliple expandAll={true} />);
     showTrigger(cmp);
@@ -980,6 +1032,7 @@ describe('TreeSelect', () => {
     queryInputCtrl(cmp);
     checkTreeSelectValue(cmp, ['1.1']);
   });
+
   it('点击删除查询内容', async () => {
     const value = 'hello';
     let onQuery;
@@ -999,12 +1052,13 @@ describe('TreeSelect', () => {
         throttle={0}
         onQuery={onQuery}
         mutliple
+        canSearch
         expandAll={true}
       />
     );
     showTrigger(cmp);
     const old = 'hello';
-    chagneQuery(cmp, old);
+    changeQuery(cmp, old);
     exp(getQueryInputValue(cmp)).to.be.equal(old);
     exp(findTree(cmp).props().query).to.be.equal(old);
     exp(findTree(cmp).props().value).to.be.eql([value]);
@@ -1015,6 +1069,7 @@ describe('TreeSelect', () => {
     exp(findTree(cmp).props().value).to.be.eql([value]);
     exp(await queryEventData).to.be.eql([old, '']);
   });
+
   it('弹出->输入查询条件->收齐->弹出面板 要触发onQuery为空的事件', async () => {
     const value = 'hello';
     let onQuery;
@@ -1033,16 +1088,18 @@ describe('TreeSelect', () => {
         value={value}
         throttle={0}
         onQuery={onQuery}
+        canSearch
         mutliple
         expandAll={true}
       />
     );
     const old = 'hello';
-    chagneQuery(cmp, old);
+    changeQuery(cmp, old);
     showTrigger(cmp);
     showTrigger(cmp);
     exp(await queryEventData).to.be.eql([old, '']);
   });
+
   it('弹出->输入查询条件->刷新按钮 要触发onQuery为空的事件', async () => {
     const value = 'hello';
     let onQuery;
@@ -1062,12 +1119,13 @@ describe('TreeSelect', () => {
         throttle={0}
         onQuery={onQuery}
         mutliple
+        canSearch
         expandAll={true}
       />
     );
     const old = 'hello';
     showTrigger(cmp);
-    chagneQuery(cmp, old);
+    changeQuery(cmp, old);
     refreshValue(cmp);
     exp(await queryEventData).to.be.eql([old, '']);
   });
@@ -1090,20 +1148,22 @@ describe('TreeSelect', () => {
         throttle={0}
         onQuery={onQuery}
         mutliple
+        canSearch
         expandAll={true}
       />
     );
     const ligx = 'hello';
     showTrigger(cmp);
-    chagneQuery(cmp, ligx);
+    changeQuery(cmp, ligx);
     queryInputEnter(cmp);
     checkTreeSelectValue(cmp, [ligx]);
     const kxy = 'kxy';
-    chagneQuery(cmp, kxy);
-    clickAdd(cmp);
+    changeQuery(cmp, kxy);
+    queryInputEnter(cmp);
     checkTreeSelectValue(cmp, [ligx, kxy]);
     exp(await queryEventData).to.be.eql([ligx, '', kxy, '']);
   });
+
   it('单选  canInput: true, 弹出->输入查询条件->点击添加项->输入查询条件->查询框回车 要触发onQuery为空的事件', async () => {
     let onQuery;
     const queryEventData = new Promise(resolve => {
@@ -1116,16 +1176,23 @@ describe('TreeSelect', () => {
       };
     });
     const cmp = mount(
-      <TreeSelect data={rowData} canInput={true} throttle={0} onQuery={onQuery} expandAll={true} />
+      <TreeSelect
+        data={rowData}
+        canSearch
+        canInput={true}
+        throttle={0}
+        onQuery={onQuery}
+        expandAll={true}
+      />
     );
     const ligx = 'hello';
     showTrigger(cmp);
-    chagneQuery(cmp, ligx);
+    changeQuery(cmp, ligx);
     queryInputEnter(cmp);
     checkTreeSelectValue(cmp, [ligx]);
     const kxy = 'kxy';
-    chagneQuery(cmp, kxy);
-    clickAdd(cmp);
+    changeQuery(cmp, kxy);
+    queryInputEnter(cmp);
     checkTreeSelectValue(cmp, [kxy]);
     exp(await queryEventData).to.be.eql([ligx, '', kxy, '']);
   });
@@ -1152,6 +1219,7 @@ describe('TreeSelect', () => {
     exp(getInputTagValue(cmp)).to.be.eql([value]);
     exp(getInputTagDisplayValue(cmp)).to.be.eql([displayValue]);
   });
+
   it('多选 value displayValue 逗号分隔', async () => {
     const value = '1,2,3,4';
     const displayValue = '1,2,3,4';
@@ -1221,7 +1289,7 @@ describe('TreeSelect', () => {
   }
 
   function clearQueryInput(cmp: Object) {
-    cmp.find(Widget.ClearIcon).simulate('click');
+    cmp.find('ClearButton').simulate('click');
   }
 
   function clearInputTagValue(cmp: Object) {
@@ -1229,7 +1297,7 @@ describe('TreeSelect', () => {
   }
 
   function refreshValue(cmp: Object) {
-    cmp.find(Widget.RefershIcon).simulate('click');
+    cmp.find('RefreshButton').simulate('click');
   }
 
   function clickAdd(cmp: Object) {
@@ -1237,7 +1305,7 @@ describe('TreeSelect', () => {
   }
 
   function getAddIcon(cmp: Object) {
-    return cmp.find(Widget.AddIcon);
+    return cmp.find('addIcon');
   }
 
   function selctedAll(cmp: Object) {
@@ -1245,10 +1313,10 @@ describe('TreeSelect', () => {
   }
 
   function findSelectAllButton(cmp) {
-    return cmp.find(Widget.CheckIcon);
+    return cmp.find('CheckAllButton');
   }
 
-  function chagneQuery(cmp: Object, value: string) {
+  function changeQuery(cmp: Object, value: string) {
     getQueryInput(cmp).simulate('change', { target: { value } });
   }
 

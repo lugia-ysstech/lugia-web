@@ -1,17 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
-.c3 {
+.c4 {
   position: relative;
   background: #e3e3e6;
   width: 20px;
   height: 300px;
-  border-radius: 5px;
   z-index: 996;
   width: 12px;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   top: 0;
   left: 0;
@@ -27,15 +26,8 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
   margin-right: 2px;
 }
 
-.c4:hover {
+.c5:hover {
   background-color: #49a9ee96;
-}
-
-.c1 {
-  height: 50px;
-  width: 288px;
-  position: absolute;
-  display: inline-block;
 }
 
 .c2 {
@@ -43,33 +35,55 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
   width: 288px;
   position: absolute;
   display: inline-block;
-  left: 288px;
-  width: 12px;
 }
 
-.c0 {
+.c1 {
   overflow: hidden;
   height: 50px;
   width: 300px;
   position: relative;
 }
 
+.c0:hover .fbGKtl {
+  opacity: 1;
+}
+
+.c0:hover .griAXB {
+  opacity: 1;
+}
+
+.c3 {
+  height: 50px;
+  width: 288px;
+  position: absolute;
+  display: inline-block;
+  left: 288px;
+  width: 12px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover .c3 {
+  opacity: 1;
+}
+
 <div
-  className="c0"
+  className="c0 c1"
   onWheel={[Function]}
 >
   <div
-    className="c1"
+    className="c2"
   >
     <div>
       1
     </div>
   </div>
   <div
-    className="c2"
+    className="c3"
   >
     <div
-      className="c3"
+      className="c4"
       onMouseDown={[Function]}
       onMouseMove={[Function]}
       onMouseOut={[Function]}
@@ -82,7 +96,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
       }
     >
       <div
-        className="c4"
+        className="c5"
         onMouseDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -98,17 +112,16 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
 `;
 
 exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
-.c3 {
+.c4 {
   position: relative;
   background: #e3e3e6;
   width: 20px;
   height: 300px;
-  border-radius: 5px;
   z-index: 996;
   width: 12px;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   top: 0;
   left: 0;
@@ -124,15 +137,8 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   margin-right: 2px;
 }
 
-.c4:hover {
+.c5:hover {
   background-color: #49a9ee96;
-}
-
-.c1 {
-  height: 250px;
-  width: 238px;
-  position: absolute;
-  display: inline-block;
 }
 
 .c2 {
@@ -140,23 +146,45 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   width: 238px;
   position: absolute;
   display: inline-block;
-  left: 238px;
-  width: 12px;
 }
 
-.c0 {
+.c1 {
   overflow: hidden;
   height: 250px;
   width: 250px;
   position: relative;
 }
 
+.c0:hover .fbGKtl {
+  opacity: 1;
+}
+
+.c3 {
+  height: 250px;
+  width: 238px;
+  position: absolute;
+  display: inline-block;
+  left: 238px;
+  width: 12px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover .c3 {
+  opacity: 1;
+}
+
+.c0:hover .dVEvgP {
+  opacity: 1;
+}
+
 <div
-  className="c0"
+  className="c0 c1"
   onWheel={[Function]}
 >
   <div
-    className="c1"
+    className="c2"
   >
     <div>
       <div>
@@ -462,10 +490,10 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
     </div>
   </div>
   <div
-    className="c2"
+    className="c3"
   >
     <div
-      className="c3"
+      className="c4"
       onMouseDown={[Function]}
       onMouseMove={[Function]}
       onMouseOut={[Function]}
@@ -478,7 +506,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
       }
     >
       <div
-        className="c4"
+        className="c5"
         onMouseDown={[Function]}
         onMouseUp={[Function]}
         style={
@@ -500,17 +528,16 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
 `;
 
 exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 100 len 1`] = `
-.c3 {
+.c4 {
   position: relative;
   background: #e3e3e6;
   width: 20px;
   height: 300px;
-  border-radius: 5px;
   z-index: 996;
   width: 12px;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   top: 0;
   left: 0;
@@ -526,15 +553,8 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   margin-right: 2px;
 }
 
-.c4:hover {
+.c5:hover {
   background-color: #49a9ee96;
-}
-
-.c1 {
-  height: 250px;
-  width: 238px;
-  position: absolute;
-  display: inline-block;
 }
 
 .c2 {
@@ -542,33 +562,55 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   width: 238px;
   position: absolute;
   display: inline-block;
-  left: 238px;
-  width: 12px;
 }
 
-.c0 {
+.c1 {
   overflow: hidden;
   height: 250px;
   width: 250px;
   position: relative;
 }
 
+.c0:hover .fbGKtl {
+  opacity: 1;
+}
+
+.c3 {
+  height: 250px;
+  width: 238px;
+  position: absolute;
+  display: inline-block;
+  left: 238px;
+  width: 12px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover .c3 {
+  opacity: 1;
+}
+
+.c0:hover .dVEvgP {
+  opacity: 1;
+}
+
 <div
-  className="c0"
+  className="c0 c1"
   onWheel={[Function]}
 >
   <div
-    className="c1"
+    className="c2"
   >
     <div>
       1
     </div>
   </div>
   <div
-    className="c2"
+    className="c3"
   >
     <div
-      className="c3"
+      className="c4"
       onMouseDown={[Function]}
       onMouseMove={[Function]}
       onMouseOut={[Function]}
@@ -581,7 +623,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
       }
     >
       <div
-        className="c4"
+        className="c5"
         onMouseDown={[Function]}
         onMouseUp={[Function]}
         style={

@@ -8,7 +8,15 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
-import { BackgroundColor, MenuItemHeight, SelectIcon } from '../css/menu';
+import {
+  ItemBackgroundColor,
+  MenuItemHeight,
+  SelectIcon,
+  themeColor,
+  blackColor,
+} from '../css/menu';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
@@ -19,23 +27,14 @@ type MenuItemProps = {
   children?: React.Node,
 };
 
-const getBackGroundColor = (props: MenuItemProps) => {
-  return props.checked
-    ? `
-    background-color: ${BackgroundColor};
-    font-weight: 600;
-    color: rgba(0,0,0,.65);
-    `
-    : '';
-};
 const getMulipleCheckedStyle = (props: MenuItemProps) => {
   return props.checked
     ? `
     :after{
-      color: #108ee9;
+      color: ${themeColor};
     } 
     :hover:after{
-      color: #108ee9;
+      color: ${themeColor};
     }
     `
     : `
@@ -44,14 +43,26 @@ const getMulipleCheckedStyle = (props: MenuItemProps) => {
     }
     `;
 };
+
+const getItemColor = (props: MenuItemProps) => {
+  return props.checked
+    ? `
+    color: ${themeColor};
+    font-weight: 900;
+  `
+    : `
+    color: ${blackColor};
+    font-weight: 500;
+  `;
+};
 const SingleItem = styled.li`
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: ${MenuItemHeight}px;
-  padding: 7px 8px;
+  height: ${em(MenuItemHeight)};
+  padding: ${em(7)} ${em(8)};
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.65);
+  ${getItemColor};
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -59,11 +70,11 @@ const SingleItem = styled.li`
   transition: background 0.3s ease;
 
   &:hover {
-    background-color: #ecf6fd;
+    background-color: ${ItemBackgroundColor};
+    font-weight: 900;
   }
-
-  ${getBackGroundColor};
 `;
+
 const MutlipleItem = SingleItem.extend`
     &::after {
       font-family: "sviconfont" !important;
@@ -78,13 +89,14 @@ const MutlipleItem = SingleItem.extend`
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 8px;
+      right: ${em(10)};
       font-weight: 700;
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
     }
     
     ${getMulipleCheckedStyle}
 `;
+MutlipleItem.displayName = 'mutlipleMenuItem';
 
 class MenuItem extends React.Component<MenuItemProps> {
   static defaultProps = {
@@ -103,7 +115,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       }
     });
     return (
-      <Item checked={checked} onClick={onClick} title={title}>
+      <Item onClick={onClick} title={title} checked={checked}>
         {children}
       </Item>
     );

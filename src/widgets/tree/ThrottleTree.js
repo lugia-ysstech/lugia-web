@@ -129,19 +129,36 @@ class ScrollerTree extends React.Component<any, any> {
     return theme;
   }
 
-  loopNode = (data: Array<RowData>) =>
-    data.map(item => {
+  loopNode = (data: Array<RowData>) => {
+    const { igronSelectField } = this.props;
+    return data.map(item => {
       const { selectable, displayField } = this.props;
       const { children, key, [displayField]: title, isLeaf } = item;
+      const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
-          <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable}>
+          <TreeNode
+            key={key}
+            title={title}
+            isLeaf={isLeaf}
+            selectable={selectable}
+            notCanSelect={notCanSelect}
+          >
             {this.loopNode(children)}
           </TreeNode>
         );
       }
-      return <TreeNode key={key} title={title} isLeaf={isLeaf} selectable={selectable} />;
+      return (
+        <TreeNode
+          key={key}
+          title={title}
+          isLeaf={isLeaf}
+          notCanSelect={notCanSelect}
+          selectable={selectable}
+        />
+      );
     });
+  };
 }
 
 export default ThrottleScroller(ScrollerTree, MenuItemHeight);

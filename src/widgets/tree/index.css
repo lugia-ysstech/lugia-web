@@ -2,517 +2,426 @@
 /* stylelint-disable declaration-bang-space-before */
 /* stylelint-disable declaration-bang-space-before */
 @-webkit-keyframes antCheckboxEffect {
-    0% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 0.5;
-    }
-    100% {
-        -webkit-transform: scale(1.6);
-        transform: scale(1.6);
-        opacity: 0;
-    }
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }
 
 @keyframes antCheckboxEffect {
-    0% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 0.5;
-    }
-    100% {
-        -webkit-transform: scale(1.6);
-        transform: scale(1.6);
-        opacity: 0;
-    }
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }
 
 :global(.sv-tree-checkbox) {
-    white-space: nowrap;
-    cursor: pointer;
-    outline: none;
-    display: inline-block;
-    line-height: 1;
-    position: relative;
-    vertical-align: text-bottom;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  vertical-align: text-bottom;
 }
 
 :global(.sv-tree-checkbox-wrapper:hover .sv-tree-checkbox-inner),
 :global(.sv-tree-checkbox:hover .sv-tree-checkbox-inner),
 :global(.sv-tree-checkbox-input:focus + .sv-tree-checkbox-inner) {
-    border-color: #108ee9;
+  border-color: #108ee9;
 }
 
 :global(.sv-tree-checkbox-checked:after) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 2px;
-    border: 1px solid #108ee9;
-    content: '';
-    animation: antCheckboxEffect 0.36s ease-in-out;
-    animation-fill-mode: both;
-    visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  border: 1px solid #108ee9;
+  content: '';
+  animation: antCheckboxEffect 0.36s ease-in-out;
+  animation-fill-mode: both;
+  visibility: hidden;
 }
 
 :global(.sv-tree-checkbox:hover:after),
 :global(.sv-tree-checkbox-wrapper:hover .sv-tree-checkbox:after) {
-    visibility: visible;
+  visibility: visible;
 }
 
 :global(.sv-tree-checkbox-inner) {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 12px;
-    height: 12px;
-    border: 1px solid #d9d9d9;
-    border-radius: 2px;
-    background-color: #fff;
-    transition: all .3s;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  background-color: #fff;
+  transition: all 1s;
 }
 
 :global(.sv-tree-checkbox-inner:after) {
-    transform: rotate(0) scale(0);
-    position: absolute;
-    left: 4px;
-    top: 1px;
-    display: table;
-    width: 5px;
-    height: 8px;
-    border: 2px solid #fff;
-    border-top: 0;
-    border-left: 0;
-    content: ' ';
-    transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
-    color: white;
+  transform: rotate(0) scale(0);
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  display: table;
+  width: 5px;
+  height: 8px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+  color: white;
 }
 
 :global(.sv-tree-checkbox-input) {
-    position: absolute;
-    left: 0;
-    z-index: 1;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 
+/* 半选中的小减号 */
 :global(.sv-tree-checkbox-indeterminate .sv-tree-checkbox-inner:after) {
-    box-sizing: border-box;
-    content: ' ';
-    transform: scale(1);
-    position: absolute;
-    left: 2px;
-    top: 5px;
-    width: 6px;
-    height: 0px;
+  box-sizing: border-box;
+  content: ' ';
+  transform: scale(1);
+  /* background: red; */
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 10px;
+  height: 10px;
 }
 
 :global(.sv-tree-checkbox-indeterminate.sv-tree-checkbox-disabled .sv-tree-checkbox-inner:after) {
-    border-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 0, 0, 0.25);
 }
 
+/* 选中的对勾 */
 :global(.sv-tree-checkbox-checked .sv-tree-checkbox-inner:after) {
-    transform: rotate(35deg) scale(1);
-    position: absolute;
-    left: 30%;
-    top: 0px;
-    display: table;
-    width: 45%;
-    height: 90%;
-    box-sizing: border-box;
-    border: 2px solid #fff;
-    border-top: 0;
-    border-left: 0;
-    content: ' ';
+  transform: rotate(35deg) scale(1);
+  position: absolute;
+  left: 50%;
+  top: 0px;
+  display: table;
+  width: 45%;
+  height: 90%;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
 }
 
 :global(.sv-tree-checkbox-checked .sv-tree-checkbox-inner),
 :global(.sv-tree-checkbox-indeterminate .sv-tree-checkbox-inner) {
-    background-color: #108ee9;
-    border-color: #108ee9;
+  background-color: #108ee9;
+  border-color: #108ee9;
 }
 
 :global(.sv-tree-checkbox-disabled) {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 :global(.sv-tree-checkbox-disabled.sv-tree-checkbox-checked .sv-tree-checkbox-inner:after) {
-    animation-name: none;
-    border-color: rgba(0, 0, 0, 0.25);
+  animation-name: none;
+  border-color: rgba(0, 0, 0, 0.25);
 }
 
-:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-input ) {
-    cursor: not-allowed;
+:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-input) {
+  cursor: not-allowed;
 }
 
-:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-inner ) {
-    border-color: #d9d9d9 !important;
-    background-color: #f7f7f7;
+:global(.sv-tree-checkbox-disabled .sv-tree-checkbox-inner) {
+  border-color: #d9d9d9 !important;
+  background-color: #f7f7f7;
 }
 
 :global(.sv-tree-checkbox-disabled .sv-tree-checkbox-inner:after) {
-    animation-name: none;
-    border-color: #f7f7f7;
+  animation-name: none;
+  border-color: #f7f7f7;
 }
 
 :global(.sv-tree-checkbox-disabled + span) {
-    color: rgba(0, 0, 0, 0.25);
-    cursor: not-allowed;
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
 }
 
-:global(.sv-tree-checkbox-wrapper ) {
-    cursor: pointer;
-    font-size: 12px;
-    display: inline-block;
+:global(.sv-tree-checkbox-wrapper) {
+  cursor: pointer;
+  font-size: 12px;
+  display: inline-block;
 }
 
 :global(.sv-tree-checkbox-wrapper:not(:last-child)) {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 :global(.sv-tree-checkbox-wrapper + span),
 :global(.sv-tree-checkbox + span) {
-    padding-left: 8px;
-    padding-right: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 :global(.sv-tree-checkbox-group) {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .sv-tree-checkbox-group-item {
-    display: inline-block;
+  display: inline-block;
 }
 
 :global(.sv-tree) {
-    font-family: tahoma, arial, helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    user-select: none;
+  font-family: tahoma, arial, helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  user-select: none;
 }
 :global(.sv-tree li) {
-    min-height: 17px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    white-space: nowrap;
-    outline: 0;
+  min-height: 17px;
+  line-height: 30px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  white-space: nowrap;
+  outline: 0;
 }
 
-:global(.sv-tree li span[draggable],
-.sv-tree li span[draggable="true"]) {
-    user-select: none;
-    border-top: 2px transparent solid;
-    border-bottom: 2px transparent solid;
-    margin-top: -2px;
-    /* Required to make elements draggable in old WebKit */
-    -khtml-user-drag: element;
-    -webkit-user-drag: element;
-}
+/* draggle 拖动 */
+/* :global(.sv-tree li span[draggable], .sv-tree li span[draggable='true']) {
+  user-select: none;
+  border-top: 2px transparent solid;
+  border-bottom: 2px transparent solid;
+  margin-top: -2px; */
+/* Required to make elements draggable in old WebKit */
+/* -khtml-user-drag: element;
+  -webkit-user-drag: element;
+} */
 
-:global(.sv-tree li.drag-over) > :global(span[draggable]) {
-    background-color: #108ee9;
-    color: white;
-    opacity: 0.8;
-}
+/* :global(.sv-tree li.drag-over) > :global(span[draggable]) {
+  background-color: #108ee9;
+  color: white;
+  opacity: 0.8;
+} */
 
-:global(.sv-tree li.drag-over-gap-top) > :global(span[draggable]) {
-    border-top-color: #108ee9;
-}
+/* :global(.sv-tree li.drag-over-gap-top) > :global(span[draggable]) {
+  border-top-color: #108ee9;
+} */
 
-:global(.sv-tree li.drag-over-gap-bottom) > :global(span[draggable]) {
-    border-bottom-color: #108ee9;
-}
+/* :global(.sv-tree li.drag-over-gap-bottom) > :global(span[draggable]) {
+  border-bottom-color: #108ee9;
+} */
 
-:global(.sv-tree li.filter-node ) > :global(span) {
-    color: #f04134 !important;
-    font-weight: 500 !important;
-}
+/* :global(.sv-tree li.filter-node) > :global(span) {
+  color: #f04134 !important;
+  font-weight: 500 !important;
+} */
 
 :global(.sv-tree li ul) {
-    margin: 0;
-    padding: 0 0 0 18px;
+  margin: 0;
+  padding: 0 0 0 18px;
 }
 
+/* 小箭头公共样式 */
 :global(.sv-tree .sv-tree-switcher) {
-    min-height: 17px;
+  min-height: 17px;
+  margin-left: 10px;
 }
 
 :global(.sv-tree .sv-tree-checkbox) {
-    min-height: 17px;
+  min-height: 17px;
 }
 
+/* 每一项的li */
 :global(.sv-tree li .sv-tree-node-content-wrapper) {
-    min-height: 17px;
-    box-sizing: border-box;
-    text-overflow: ellipsis;
-    width: 100%;
-    overflow: hidden;
-    margin-left: -33px;
-    padding-left: 33px;
-    display: inline-block;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-right: 0;
-    border-radius: 2px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    cursor: pointer;
-    text-decoration: none;
-    vertical-align: top;
-    color: rgba(0, 0, 0, 0.65);
-    transition: all 0.3s ease;
+  min-height: 17px;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  width: 70%;
+  overflow: hidden;
+  margin-left: 0px;
+  padding-left: 5px;
+  display: inline-block;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  border-radius: 2px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  text-decoration: none;
+  vertical-align: top;
+  color: rgba(0, 0, 0, 0.65);
+  transition: all 0.3s ease;
 }
 
-:global(.sv-tree li .sv-tree-node-content-wrapper:hover) {
-    background-color: #ecf6fd;
-}
+/* 选项hover时改变背景颜色 */
 
-:global(.sv-tree li .sv-tree-node-content-wrapper.sv-tree-node-selected ) {
-    background-color: #d2eafb;
-}
 
-:global(.sv-tree li .sv-tree-node-content-wrapper.sv-tree-node-highlight ) {
-    background-color: #49a9ee;
-}
 
 :global(.sv-tree li span.sv-tree-checkbox) {
-    width: 12px;
-    margin: 0 4px 0 2px;
-    vertical-align: middle;
+  width: 12px;
+  /* margin: 0 4px 0 2px; */
+  vertical-align: middle;
 }
 
 :global(.sv-tree li span.sv-tree-switcher),
 :global(.sv-tree li span.sv-tree-iconEle) {
-    margin: 0;
-    width: 15px;
-    height: 15px;
-    line-height: 15px;
-    display: inline-block;
-    vertical-align: middle;
-    border: 0 none;
-    cursor: pointer;
-    outline: none;
-    text-align: center;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 0 none;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
 }
 
 :global(.sv-tree li span.sv-tree-icon_loading:after) {
-    display: inline-block;
-    font-family: "sviconfont" !important;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\e6ae";
-    animation: loadingCircle 1s infinite linear;
-    color: #108ee9;
+  display: inline-block;
+  font-family: 'sviconfont' !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e6ae';
+  animation: loadingCircle 1s infinite linear;
+  color: #108ee9;
 }
 
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher-noop) {
-    cursor: default;
+  cursor: default;
 }
 
+/* 打开后小箭头的样式 */
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after) {
-    font-size: 15px;
-    transform: scale(0.58333333) rotate(0deg);
-    /* IE6-IE8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
-    zoom: 1;
-    display: inline-block;
-    font-family: "sviconfont" !important;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\e682";
-    font-weight: bold;
-    transition: transform .3s;
+  font-size: 15px;
+  color: red;
+  transform: scale(0.58333333) rotate(0deg);
+  /* IE6-IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
+  zoom: 1;
+  display: inline-block;
+  font-family: 'sviconfont' !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e682';
+  font-weight: bold;
+  transition: transform 1s;
 }
 
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after) {
-    filter: none;
+  filter: none;
 }
 
 :global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_open:after) {
-    font-size: 15px;
+  font-size: 15px;
 }
 
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close ) {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-}
-
-:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
-    font-size: 20px;
-    transform: scale(0.58333333) rotate(0deg);
-    /* IE6-IE8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
-    zoom: 1;
-    display: inline-block;
-    font-family: "sviconfont" !important;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\e606";
-    font-weight: bold;
-    transition: transform .3s;
-}
-
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
-    filter: none;
-}
-
-:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
-    font-size: 12px;
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close) {
+  -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=3)';
 }
 
 :global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
-    transform: rotate(270deg) scale(0.59);
+  font-size: 20px;
+  transform: scale(0.58333333) rotate(0deg);
+  /* IE6-IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
+  zoom: 1;
+  display: inline-block;
+  font-family: 'sviconfont' !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e606';
+  font-weight: bold;
+  transition: transform 0.3s;
+}
+
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
+  filter: none;
+}
+
+:global(:root .sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
+  font-size: 12px;
+}
+
+:global(.sv-tree li span.sv-tree-switcher.sv-tree-switcher_close:after) {
+  transform: rotate(270deg) scale(0.59);
 }
 
 :global(.sv-tree li:last-child) > :global(span.sv-tree-switcher:before),
 :global(.sv-tree li:last-child) > :global(span.sv-tree-iconEle:before) {
-    display: none;
+  display: none;
 }
 
 :global(.sv-tree) > :global(li:first-child) {
-    padding-top: 0px;
+  padding-top: 0px;
 }
 
 :global(.sv-tree) > :global(li:last-child) {
-    padding-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 :global(.sv-tree-child-tree) {
-    display: none;
+  display: none;
 }
 
 :global(.sv-tree-child-tree-open) {
-    display: block;
+  display: block;
 }
 
 :global(li.sv-tree-treenode-disabled) > :global(span),
 :global(li.sv-tree-treenode-disabled) > :global(.sv-tree-node-content-wrapper),
 :global(li.sv-tree-treenode-disabled) > :global(.sv-tree-node-content-wrapper span),
 :global(li.sv-tree-treenode-disabled) > :global(span.sv-tree-switcher) {
-    color: rgba(0, 0, 0, 0.25);
-    cursor: not-allowed;
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
 }
 
 :global(li.sv-tree-treenode-disabled) > :global(.sv-tree-node-content-wrapper:hover) {
-    background: transparent;
+  background: transparent;
 }
 
 :global(.sv-tree-icon__open) {
-    margin-right: 2px;
-    vertical-align: top;
+  margin-right: 2px;
+  vertical-align: top;
 }
 
 :global(.sv-tree-icon__close) {
-    margin-right: 2px;
-    vertical-align: top;
+  margin-right: 2px;
+  vertical-align: top;
 }
 
-:global(.sv-tree.sv-tree-show-line li ) {
-    position: relative;
-}
-
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher) {
-    background: #fff;
-    color: rgba(0, 0, 0, 0.65);
-}
-
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after ) {
-    font-size: 15px;
-    transform: scale(1) rotate(0deg);
-    /* IE6-IE8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
-    zoom: 1;
-    display: inline-block;
-    font-family: "sviconfont" !important;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\e7b3";
-    vertical-align: baseline;
-    font-weight: normal;
-    transition: transform .3s;
-}
-
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
-    filter: none;
-}
-
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher-noop:after) {
-    font-size: 15px;
-}
-
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open) {
-    color: rgba(0, 0, 0, 0.43);
-}
-
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after) {
-    font-size: 20px;
-    transform: scale(1) rotate(0deg);
-    /* IE6-IE8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
-    zoom: 1;
-    display: inline-block;
-    font-family: "sviconfont" !important;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\e682";
-    vertical-align: baseline;
-    font-weight: normal;
-    transition: transform .3s;
-}
-
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after) {
-    filter: none;
-}
-
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_open:after) {
-    font-size: 15px;
-}
-
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_close) {
-    color: rgba(0, 0, 0, 0.43);
-}
-
-:global(.sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_close:after) {
-    font-size: 20px;
-    transform: scale(1) rotate(0deg);
-    /* IE6-IE8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
-    zoom: 1;
-    display: inline-block;
-    font-family: "sviconfont" !important;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\e609";
-    vertical-align: baseline;
-    font-weight: normal;
-    transition: transform .3s;
-}
-
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_close:after) {
-    filter: none;
-}
-
-:global(:root .sv-tree.sv-tree-show-line li span.sv-tree-switcher.sv-tree-switcher_close:after) {
-    font-size: 20px;
-}
-
-:global(.sv-tree.sv-tree-show-line li:before) {
-    margin: 18px 0;
+:global(.sv-tree.sv-tree-show-line li) {
+  position: relative;
 }

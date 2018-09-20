@@ -12,9 +12,11 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import Input from '../input';
 import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
-import { Height } from '../css/input';
+import { Height } from '../css/menu';
 import { adjustValue } from '../utils';
-import { MenuItemHeight, DefaultHeight, DefaultWidth } from '../css/menu';
+import { MenuItemHeight, DefaultHeight, DefaultWidth, lightGreyColor } from '../css/menu';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 
 type DropMenuProps = {
   action: Array<string>,
@@ -25,11 +27,12 @@ type DropMenuProps = {
   onQuery: Function,
   getTheme: Function,
   query: string,
+  needQueryInput: boolean,
 };
 const MenuContainer = styled.div`
   background-color: #fff;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  box-shadow: 0 ${em(1)} ${em(6)} ${lightGreyColor};
+  border-radius: ${em(4)};
   box-sizing: border-box;
 `;
 type DropMenuState = {};
@@ -38,6 +41,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
     action: ['click'],
     hideAction: ['click'],
+    needQueryInput: false,
     getTheme() {
       return {};
     },
@@ -53,10 +57,10 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render() {
-    const { menus, children, action, hideAction, query } = this.props;
+    const { menus, children, action, hideAction } = this.props;
     const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
 
-    const queryInputWidth = width - 2 * QueryInputPadding;
+    const queryInputWidth = width;
     const oldMenuHeight = height - (Height + 2 * QueryInputPadding);
     const menuHeight = adjustValue(oldMenuHeight, MenuItemHeight);
     const menuConfig = {
@@ -64,12 +68,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       [Widget.Input]: { width: queryInputWidth },
       [Widget.Trigger]: { width, height: height + (menuHeight - oldMenuHeight) },
     };
-    const popup = [
-      <QueryInput key="queryContainer">
-        <Input onChange={this.onQuery} key="quernInput" value={query} />
-      </QueryInput>,
-      <MenuContainer key="menus">{menus}</MenuContainer>,
-    ];
+    const popup = [this.isNeedQueryInput(), <MenuContainer key="menus">{menus}</MenuContainer>];
     return (
       <Theme config={menuConfig}>
         <Trigger
@@ -84,6 +83,18 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
         </Trigger>
       </Theme>
     );
+  }
+
+  isNeedQueryInput() {
+    const { needQueryInput, query } = this.props;
+    if (needQueryInput) {
+      return (
+        <QueryInput key="queryContainer">
+          <Input onChange={this.onQuery} key="quernInput" value={query} />
+        </QueryInput>
+      );
+    }
+    return null;
   }
 
   onQuery = value => {

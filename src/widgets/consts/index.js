@@ -61,6 +61,18 @@ const Avatar = 'sv_widget_Avatar';
 const Badge = 'sv_widget_Badge';
 const NumberTurn = 'sv_widget_NumberTurn';
 
+/* add by szfeng */
+const Select = 'sv_widget_Select';
+const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
+
+const Layout = 'sv_widget_Layout';
+const Header = 'sv_widget_Header';
+const Content = 'sv_widget_Content';
+const Footer = 'sv_widget_Footer';
+const Aside = 'sv_widget_Aside';
+
+const QueryInput = 'sv_widget_QueryInput';
+
 export default {
   Button,
   Input,
@@ -111,4 +123,12 @@ export default {
   Avatar,
   Badge,
   NumberTurn,
+  Select,
+  SelectLimitTitle,
+  Layout,
+  Header,
+  Content,
+  Footer,
+  Aside,
+  QueryInput,
 };

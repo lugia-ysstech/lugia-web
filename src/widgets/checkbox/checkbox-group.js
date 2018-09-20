@@ -108,15 +108,20 @@ export default ThemeProvider(
 
     constructor(props: CheckBoxGroupProps) {
       super(props);
-      const { displayValue = [] } = getValueAndDisplayValue(props, null);
-      updateMapData(props, displayValue, this.updateMapData);
+      const { displayValue } = getValueAndDisplayValue(props, null);
+      const disV = displayValue ? displayValue : [];
+      updateMapData(props, disV, this.updateMapData);
     }
 
     static getDerivedStateFromProps(props, state) {
       const { data = [] } = props;
       const dataLength = data.length;
+      const { value, displayValue } = getValueAndDisplayValue(props, state);
+      const stateValue = value ? value : [];
+      const stateDisplayValue = displayValue ? displayValue : [];
       return {
-        ...getValueAndDisplayValue(props, state),
+        value: stateValue,
+        displayValue: stateDisplayValue,
         dataLength,
       };
     }
