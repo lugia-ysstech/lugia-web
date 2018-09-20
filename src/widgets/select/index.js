@@ -364,7 +364,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     );
   }
 
-  getItem(targetValue: string[] | [], isNeedDisplayValue: boolean) {
+  getItem(targetValue: string[], isNeedDisplayValue: boolean) {
     const handler = {
       updateHanlder: this.updateMapData,
       needUpdate: this.needUpdate,
