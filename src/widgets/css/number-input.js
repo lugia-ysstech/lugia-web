@@ -6,6 +6,7 @@
 import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
+import { createGetWidthOrHeight } from '../common/ThemeUtils';
 
 const { themeColor, disableColor } = colorsFunc();
 
@@ -36,11 +37,7 @@ type ButtonProps = {
   hover: ClickType,
 };
 
-export const getWidth = (props: CommonNumberInputProps) => {
-  const { theme } = props;
-  const { width } = theme;
-  return `width:${theme ? em(width) : em(200)};`;
-};
+export const getWidth = createGetWidthOrHeight('width', { fontSize: 1.2, defaultWidth: 200 });
 
 export const getButtonSize = (props: CommonNumberInputProps) => {
   const { size } = props;
