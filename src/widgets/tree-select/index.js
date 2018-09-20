@@ -18,7 +18,7 @@ import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import { FontSize } from '../css';
 import QueryInput from '../common/QueryInput';
-import { DefaultHeight, MenuItemHeight, themeColor } from '../css/tree';
+import { themeColor } from '../css/tree';
 
 import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
 

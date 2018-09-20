@@ -578,7 +578,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     const isCheckedAll = this.getIsCheckedAll(newValue);
 
     const { value: oldValue = [] } = this.state;
-    console.log('value', oldValue);
     const { items: oldItem } = this.getItem(oldValue, false);
     const { items: newItem } = this.getItem(newValue, false);
     const obj = {
