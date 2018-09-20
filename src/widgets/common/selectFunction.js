@@ -4,11 +4,9 @@
  * @flow
  */
 
-import Support from '../common/FormFieldWidgetSupport';
 import Widget from '../consts/index';
 import { DefaultHeight, MenuItemHeight } from '../css/select';
 import { adjustValue } from '../utils';
-import  { QueryInputPadding } from '../common/QueryInputContainer';
 
 export const SelectedIcon = 'SelectedIcon';
 export const DefaultLimitCount = 99999;
@@ -22,7 +20,7 @@ export function getTheme(props: Object, triggerChild: string): Object {
   const { width } = theme;
   let queryInputConfig = {};
   if (width) {
-    queryInputConfig.width = width - 2 * QueryInputPadding;
+    queryInputConfig.width = width;
   }
   const inputTag = { ...theme };
   queryInputConfig = Object.assign({}, theme, queryInputConfig);
@@ -36,17 +34,6 @@ export function getTheme(props: Object, triggerChild: string): Object {
     [Widget.InputTag]: inputTag,
     [Widget.Input]: queryInputConfig,
     [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9' },
-  };
-}
-
-/**
- * 获取初始值
- */
-export function getInitValue(props: Object) {
-  const { value, displayValue } = Support.getCodeItemArray(props);
-  return {
-    value,
-    displayValue,
   };
 }
 

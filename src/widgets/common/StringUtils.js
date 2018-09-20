@@ -57,3 +57,45 @@ export function toMatchFromType(val: ?string, query: Array<string>, type: QueryT
       return false;
   }
 }
+
+export function getDefault(str: any, defaultValue: string = ''): string {
+  if (str === 0) {
+    return '0';
+  }
+
+  if (str === '') {
+    return str;
+  }
+
+  str = str ? str : defaultValue;
+
+  return str.toString();
+}
+
+const repaceSepator = path => getDefault(path, '').replace(/^\//, '');
+
+export function getHrefs(paths: string[]): string[] {
+  const result = [];
+  paths &&
+    paths.map(repaceSepator).reduce((pre, cur) => {
+      const sep = '/';
+      const next = getDefault(cur) === '' ? pre : pre + sep + getDefault(cur);
+      result.push(next);
+      return next;
+    }, '');
+  return result;
+}
+
+export function replaceStr(target: string, param: Object = {}): string {
+  target = getDefault(target);
+  if (!target) {
+    return '';
+  }
+  if (!param) {
+    return target;
+  }
+  Object.keys(param).forEach(key => {
+    target = target.replace(`:${key}`, param[key]);
+  });
+  return target;
+}

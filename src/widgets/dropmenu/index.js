@@ -60,7 +60,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     const { menus, children, action, hideAction } = this.props;
     const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
 
-    const queryInputWidth = width - 2 * QueryInputPadding;
+    const queryInputWidth = width;
     const oldMenuHeight = height - (Height + 2 * QueryInputPadding);
     const menuHeight = adjustValue(oldMenuHeight, MenuItemHeight);
     const menuConfig = {

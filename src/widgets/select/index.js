@@ -55,6 +55,7 @@ type SelectProps = {
   onTrigger?: Function,
   onQuery?: Function,
   onSelect?: Function,
+  onRefresh?: Function,
   value?: string[],
   displayValue?: string[],
   defaultValue?: string[],
@@ -231,14 +232,14 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   refreshValue = (event: Object) => {
-    console.log('refresh', event);
-    const { searchType } = this.props;
+    const { searchType, onRefresh } = this.props;
     this.onQueryInputChange('');
     const value = [];
     const displayValue = [];
     this.search('', searchType);
     this.setValue(value, displayValue, {});
     this.onChangeHandle({ value, displayValue, event });
+    onRefresh && onRefresh();
   };
 
   onCheckAll = (event: Object) => {
@@ -461,9 +462,9 @@ class Select extends React.Component<SelectProps, SelectState> {
     } else if (queryChanging) {
       const queryArray = this.getQueryArray(query);
       const rowSet = [];
-      const len = data.length - 1;
+      const len = data.length;
 
-      for (let i = len; i >= 0; i--) {
+      for (let i = 0; i < len; i++) {
         const row: RowData = data[i];
         const searchKey = row[displayField];
         if (toMatchFromType(searchKey, queryArray, searchType)) {
