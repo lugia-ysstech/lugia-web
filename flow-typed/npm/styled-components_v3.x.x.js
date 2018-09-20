@@ -61,9 +61,10 @@ type $npm$styledComponents$ReactComponentStyledStaticPropsWithComponent<Props, C
 // ---- STYLED FUNCTION ----
 // Error: styled(CustomComponent).withComponent('a')
 // Ok:    styled('div').withComponent('a')
-type $npm$styledComponents$Call<ComponentListKeys> =
-  & (ComponentListKeys => $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteralWithComponent<{}, ComponentListKeys>)
-  & (<Props>($npm$styledComponents$ReactComponentUnion<Props>) => $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteral<Props, ComponentListKeys>)
+type $npm$styledComponents$Call<ComponentListKeys> ={
+  [[call]](ComponentListKeys): $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteralWithComponent<{}, ComponentListKeys>,
+  [[call]]<Props>($npm$styledComponents$ReactComponentUnion<Props>): $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteral<Props, ComponentListKeys>,
+}
 
 // ---- STYLED COMPONENT ----
 type $npm$styledComponents$ReactComponentStyled<Props, ComponentList, DefaultProps = *> =
@@ -355,12 +356,12 @@ declare module 'styled-components' {
   declare export var StyleSheetManager: typeof Npm$StyledComponents$StyleSheetManager;
   declare export var ThemeProvider: typeof Npm$StyledComponents$ThemeProvider;
 
+
   declare export default {
-    $call: $npm$styledComponents$Call<ComponentListKeys>,
     css: TaggedTemplateLiteral<Array<Interpolation>>,
-    ...$npm$styledComponents$StyledComponentsComponentList,
-    ...$npm$styledComponents$StyledComponentsNativeComponentList,
-  }
+  } & $npm$styledComponents$Call<ComponentListKeys>
+  & $npm$styledComponents$StyledComponentsComponentList
+  & $npm$styledComponents$StyledComponentsNativeComponentList
 }
 
 declare module 'styled-components/native' {
@@ -385,8 +386,7 @@ declare module 'styled-components/native' {
   declare export var withTheme: $npm$styledComponents$WithTheme;
   declare export var ThemeProvider: typeof Npm$StyledComponents$ThemeProvider;
   declare export default {
-    $call: $npm$styledComponents$Call<NativeComponentListKeys>,
     css: TaggedTemplateLiteral<Array<Interpolation>>,
-    ...$npm$styledComponents$StyledComponentsNativeComponentList,
-  }
+  } & $npm$styledComponents$Call<NativeComponentListKeys>
+    & $npm$styledComponents$StyledComponentsNativeComponentList
 }
