@@ -1,112 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`row css 1`] = `
-.c2 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 25%;
-  margin-left: 0%;
-}
-
-.c3 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 25%;
-  margin-left: 25%;
-}
-
-.c4 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 75%;
-  margin-left: 0%;
-  left: 25%;
-}
-
-.c5 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 25%;
-  margin-left: 0%;
-  right: 75%;
-}
-
-.c7 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 16.666666666666668%;
-  margin-left: 0%;
-}
-
-.c15 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 16.666666666666668%;
-  margin-left: 0%;
-  -webkit-order: 3;
-  -ms-flex-order: 3;
-  order: 3;
-}
-
-.c16 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 16.666666666666668%;
-  margin-left: 0%;
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
-.c17 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 16.666666666666668%;
-  margin-left: 0%;
-  -webkit-order: 1;
-  -ms-flex-order: 1;
-  order: 1;
-}
-
-.c18 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 16.666666666666668%;
-  margin-left: 0%;
-  -webkit-order: 4;
-  -ms-flex-order: 4;
-  order: 4;
-}
-
-.c20 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 25%;
-  margin-left: 0%;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-
 .c1 {
   position: relative;
   margin-left: 0;
@@ -281,6 +175,112 @@ exports[`row css 1`] = `
   display: table;
 }
 
+.c2 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 0%;
+}
+
+.c3 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 25%;
+}
+
+.c4 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 75%;
+  margin-left: 0%;
+  left: 25%;
+}
+
+.c5 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 0%;
+  right: 75%;
+}
+
+.c7 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+}
+
+.c15 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
+}
+
+.c16 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+}
+
+.c17 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+.c18 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 16.666666666666668%;
+  margin-left: 0%;
+  -webkit-order: 4;
+  -ms-flex-order: 4;
+  order: 4;
+}
+
+.c20 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 25%;
+  margin-left: 0%;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 .c0 > div > div {
   padding: 8px;
   text-align: center;
@@ -300,28 +300,43 @@ exports[`row css 1`] = `
   >
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="default"
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6
@@ -334,28 +349,43 @@ exports[`row css 1`] = `
   >
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="default"
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6
@@ -368,11 +398,17 @@ exports[`row css 1`] = `
   >
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="default"
     >
       <div
         className="c3"
         offset={6}
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6 col-offset-6
@@ -380,6 +416,9 @@ exports[`row css 1`] = `
       <div
         className="c3"
         offset={6}
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6 col-offset-6
@@ -392,16 +431,25 @@ exports[`row css 1`] = `
   >
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="default"
     >
       <div
         className="c4"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={18}
       >
         col-18 col-push-6
       </div>
       <div
         className="c5"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-6 col-pull-18
@@ -417,28 +465,43 @@ exports[`row css 1`] = `
   >
     <div
       className="c6"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-start
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-start
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-start
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-start
@@ -451,28 +514,43 @@ exports[`row css 1`] = `
   >
     <div
       className="c8"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-center
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-center
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-center
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-center
@@ -485,28 +563,43 @@ exports[`row css 1`] = `
   >
     <div
       className="c9"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-end
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-end
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-end
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-end
@@ -519,28 +612,43 @@ exports[`row css 1`] = `
   >
     <div
       className="c10"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-spaceBetween
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-spaceBetween
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-spaceBetween
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-spaceBetween
@@ -553,28 +661,43 @@ exports[`row css 1`] = `
   >
     <div
       className="c11"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-spacAround
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-spacAround
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-spacAround
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         col-4 justify-spacAround
@@ -590,10 +713,16 @@ exports[`row css 1`] = `
   >
     <div
       className="c12"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -608,6 +737,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -622,6 +754,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -636,6 +771,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -656,10 +794,16 @@ exports[`row css 1`] = `
   >
     <div
       className="c13"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -674,6 +818,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -688,6 +835,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -702,6 +852,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -722,10 +875,16 @@ exports[`row css 1`] = `
   >
     <div
       className="c14"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -740,6 +899,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -754,6 +916,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -768,6 +933,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={4}
       >
         <div
@@ -791,10 +959,16 @@ exports[`row css 1`] = `
   >
     <div
       className="c8"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="flex"
     >
       <div
         className="c15"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         order={3}
         span={4}
       >
@@ -802,6 +976,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c16"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         order={2}
         span={4}
       >
@@ -809,6 +986,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c17"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         order={1}
         span={4}
       >
@@ -816,6 +996,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c18"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         order={4}
         span={4}
       >
@@ -833,10 +1016,16 @@ exports[`row css 1`] = `
   >
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="default"
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         <div
@@ -851,6 +1040,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         <div
@@ -865,6 +1057,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         <div
@@ -879,6 +1074,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         <div
@@ -903,10 +1101,16 @@ exports[`row css 1`] = `
   >
     <div
       className="c19"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="default"
     >
       <div
         className="c20"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         <div
@@ -921,6 +1125,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c20"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         <div
@@ -935,6 +1142,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c20"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         <div
@@ -949,6 +1159,9 @@ exports[`row css 1`] = `
       </div>
       <div
         className="c20"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         <div
@@ -972,28 +1185,43 @@ exports[`row css 1`] = `
     </p>
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       type="default"
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
         span={6}
       >
         col-
@@ -1001,70 +1229,5 @@ exports[`row css 1`] = `
     </div>
   </div>
   <br />
-</div>
-`;
-
-exports[`row css children has space 1`] = `
-.c1 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 25%;
-  margin-left: 0%;
-}
-
-.c0 {
-  position: relative;
-  margin-left: 0;
-  margin-right: 0;
-  height: auto;
-  zoom: 1;
-  display: block;
-  box-sizing: border-box;
-}
-
-.c0:after {
-  content: "";
-  clear: both;
-  display: block;
-  width: 0;
-  height: 0;
-  visibility: hidden;
-}
-
-.c0::before {
-  content: "";
-  display: table;
-}
-
-<div
-  className="c0"
-  type="default"
->
-  <div
-    className="c1"
-    span={6}
-  >
-    col-6
-  </div>
-  <div
-    className="c1"
-    span={6}
-  >
-    col-6
-  </div>
-  <div
-    className="c1"
-    span={6}
-  >
-    col-6
-  </div>
-  <div
-    className="c1"
-    span={6}
-  >
-    col-6
-  </div>
 </div>
 `;

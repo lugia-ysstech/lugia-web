@@ -573,61 +573,57 @@ exports[`CheckBox CheckBox CSS 1`] = `
   <div
     className="c0"
   >
-    <span>
-      <label
-        className="c12"
-        onClick={[Function]}
+    <label
+      className="c12"
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+        onClick={null}
       >
+        <input
+          className="c3"
+          onBlur={[Function]}
+          type="checkbox"
+        />
         <span
-          className="c2"
-          onClick={null}
-        >
-          <input
-            className="c3"
-            onBlur={[Function]}
-            type="checkbox"
-          />
-          <span
-            className="c13"
-          />
-        </span>
-        <span
-          className="c5"
-        >
-          CheckBox
-        </span>
-      </label>
-    </span>
+          className="c13"
+        />
+      </span>
+      <span
+        className="c5"
+      >
+        CheckBox
+      </span>
+    </label>
   </div>
   <div
     className="c0"
   >
-    <span>
-      <label
-        className="c12"
-        onClick={[Function]}
+    <label
+      className="c12"
+      onClick={[Function]}
+    >
+      <span
+        className="c2"
+        onClick={null}
       >
+        <input
+          className="c3"
+          onBlur={[Function]}
+          type="checkbox"
+        />
         <span
-          className="c2"
-          onClick={null}
-        >
-          <input
-            className="c3"
-            onBlur={[Function]}
-            type="checkbox"
-          />
-          <span
-            checked={true}
-            className="c14"
-          />
-        </span>
-        <span
-          className="c5"
-        >
-          CheckBox
-        </span>
-      </label>
-    </span>
+          checked={true}
+          className="c14"
+        />
+      </span>
+      <span
+        className="c5"
+      >
+        CheckBox
+      </span>
+    </label>
   </div>
 </div>
 `;

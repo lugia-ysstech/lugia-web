@@ -57,24 +57,22 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
-<span>
-  <span
-    className="sv c0"
-  >
-    <input
-      className="c1"
-      disabled={false}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      size="default"
-      value=""
-    />
-  </span>
+<span
+  className="sv c0"
+>
+  <input
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    size="default"
+    value=""
+  />
 </span>
 `;
 
