@@ -46,7 +46,8 @@ const HTab = BaseTab.extend`
   border-top-right-radius: ${props => (props.tabType === 'card' && props.isSelect ? em(5) : 0)};
   ${getFocusShadow};
   bottom: ${props => (props.tabType === 'card' ? em(-6) : 0)};
-  z-index: 2;
+  left: ${props => (props.tabType === 'card' ? em(6) : 0)};
+  z-index: 3;
 `;
 const Title = styled.span`
   ${getColor};

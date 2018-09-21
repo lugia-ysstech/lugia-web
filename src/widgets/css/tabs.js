@@ -4,7 +4,7 @@ import colorsFunc from '../css/stateColor';
 const { themeColor, blackColor, mediumGreyColor, darkGreyColor, superLightColor } = colorsFunc();
 type TabType = 'line' | 'card';
 type TabPositionType = 'left' | 'right' | 'top' | 'bottom';
-
+type EditType = 'next' | 'pre';
 const em = px2emcss(1.2);
 
 export const matchTabPosition = (tabPosition: TabPositionType, expect: TabPositionType) => {
@@ -77,12 +77,12 @@ export const getContainerBorder = (props: Object) => {
 };
 export const getFocusShadow = (props: Object) => {
   const { tabType, isSelect } = props;
-  const color = isSelect && tabType === 'card' ? 'rgba(104, 79, 255, 0.2)' : 'none';
+  const color = isSelect && tabType === 'card' ? 'rgba(104, 79, 255)' : 'none';
   return `box-shadow: 0 0 ${em(6)} ` + color;
 };
 export const getBackgroundShadow = (props: Object) => {
   const { tabType } = props;
-  const color = tabType === 'card' ? 'rgba(104, 79, 255, 0.2)' : 'none';
+  const color = tabType === 'card' ? 'rgba(104, 79, 255)' : 'none';
   return `box-shadow: 0 ${em(-1)} ${em(6)} ` + color;
 };
 export const backgroundColor = (props: Object) => {
@@ -95,6 +95,11 @@ export const hContainerWidth = props => {
   const { width } = theme;
   return `${em(width)};`;
 };
+export const vContainerHeight = props => {
+  const { theme } = props;
+  const { height } = theme;
+  return `${em(height)};`;
+};
 export const hContainerHeight = props => {
   const { tabType } = props;
   const height = matchTabType(tabType, 'card') ? em(38) : em(32);
@@ -102,6 +107,6 @@ export const hContainerHeight = props => {
 };
 export const lineWidth = props => {
   const { lineWidth } = props;
-  const width = lineWidth ? em(lineWidth) : em(100);
+  const width = lineWidth ? em(lineWidth - 40) : em(100);
   return width;
 };

@@ -74,7 +74,7 @@ const Aside = 'sv_widget_Aside';
 
 const Tabs = 'sv_widget_Tabs';
 const Tabpano = 'sv_widget_Tabpano';
-const TabsHContainer = 'sv_widget_TabsHContainer';
+const TabsContainer = 'sv_widget_TabsContainer';
 
 export default {
   Button,
@@ -136,5 +136,5 @@ export default {
   QueryInput,
   Tabs,
   Tabpano,
-  TabsHContainer,
+  TabsContainer,
 };

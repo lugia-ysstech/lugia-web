@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import type { TabType, TabsSizeType, TabPositionType } from '../css/tabs';
+import type { TabType, TabPositionType, EditType } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
@@ -27,6 +27,7 @@ import {
   matchTabType,
   backgroundColor,
   lineWidth,
+  vContainerHeight,
 } from '../css/tabs';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
@@ -44,8 +45,9 @@ const BaseLine = styled.div`
 const HLine = BaseLine.extend`
   height: ${em(2)};
   width: ${lineWidth};
-  transform: translateX(${props => props.x}%);
   ${getLinePosition};
+  transform: translate3d(${props => em(props.x)}, 0, 0);
+  transition: all 0.3s;
 `;
 const ShadowLine = styled.div`
   position: absolute;
@@ -57,19 +59,21 @@ const VLine = BaseLine.extend`
   height: ${em(32)};
   width: ${em(2)};
   transform: translateY(${props => props.y}%);
+  transition: all 0.3s;
   ${getLinePosition};
 `;
 
 const ArrowContainer = styled.span`
   position: absolute;
   font-size: 1rem;
+  display: ${props => (props.arrowShow === false ? 'none' : 'inline-block')};
+  z-index: 5;
 `;
 
 const HBasePage = ArrowContainer.extend`
   transform: translateY(-50%);
   line-height: 100%;
   top: 50%;
-  display: ${props => (!props.arrowShow ? 'none' : 'block')};
 `;
 
 const HPrePage = HBasePage.extend`
@@ -79,38 +83,52 @@ const HNextPage = HBasePage.extend`
   right: ${em(10)};
 `;
 const VBasePage = ArrowContainer.extend`
-  z-index: 2;
   width: 100%;
   text-align: center;
+  height: ${em(24)};
 `;
 const VPrePage = VBasePage.extend`
-  top: ${em(6)};
+  top: ${em(12)};
 `;
 const VNextPage = VBasePage.extend`
   transform: translateX(-100%);
-  bottom: ${em(6)};
+  bottom: ${em(-6)};
 `;
 const OutContainer = styled.div`
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
   width: ${hContainerWidth};
+  height: ${vContainerHeight};
 `;
 const HTabsContainer = styled.div`
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+`;
+const HscrollerContainer = styled.div`
   height: ${hContainerHeight};
   display: inline-block;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 100%;
   white-space: nowrap;
+  transition: all 0.5s;
+  transform: translate3d(${props => em(props.x)}, 0, 0);
 `;
 const VTabsContainer = styled.div`
   height: 100%;
   box-sizing: border-box;
   white-space: nowrap;
   display: inline-block;
+  overflow: hidden;
 `;
-
+const YscrollerContainer = styled.div`
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  transition: all 0.5s;
+  transform: translate3d(0, ${props => em(props.y)}, 0);
+`;
 const HTabsOutContainer = styled.div`
   height: ${hContainerHeight};
   position: relative;
@@ -122,7 +140,7 @@ const HTabsOutContainer = styled.div`
   overflow: hidden;
   box-sizing: border-box;
 `;
-OutContainer.displayName = Widget.TabsHContainer;
+OutContainer.displayName = Widget.TabsContainer;
 
 const VTabsOutContainer = styled.div`
   ${getColor};
@@ -133,11 +151,14 @@ const VTabsOutContainer = styled.div`
   padding: ${em(24)} 0;
   box-sizing: border-box;
   white-space: nowrap;
+  overflow: hidden;
+  height: 100%;
 `;
 const HContentContainer = styled.div`
   position: absolute;
   display: inline-block;
   ${getContentPosition};
+  overflow: hidden;
 `;
 const PageIcon: Object = styled(Icon)`
   display: inline-block;
@@ -149,17 +170,17 @@ const PageIcon: Object = styled(Icon)`
 type TabsState = {|
   activityKey: number,
   data: Array<Object>,
-  children: React$Element<any>,
+  currentPage: number,
+  arrowShow: boolean,
 |};
 
 type TabsProps = {
   activityKey: string,
   defaultActivityKey: string,
   defaultTabs: string,
-  onTabClick: Event,
+  onTabClick: Function,
   animated: boolean,
   hideAdd: boolean,
-  size: TabsSizeType,
   tabBarGutter: number,
   tabPosition: TabPositionType,
   tabType: TabType,
@@ -185,19 +206,21 @@ class TabsBox extends Component<TabsProps, TabsState> {
   containerRef: any;
   static displayName = Widget.Tabs;
   offsetWidth: number;
+  offsetHeight: number;
   childrenWidth: Array<number>;
+  totalPage: number;
 
   constructor(props: TabsProps) {
     super(props);
     this.containerRef = React.createRef();
     this.childrenWidth = [];
+    this.totalPage = 0;
   }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activityKey, defaultActivityKey, defaultData, data, children } = props;
     const hasActivityKeyInprops = 'activityKey' in props;
     const hasDataInprops = 'data' in props;
-    const hasChildrenInprops = 'children' in props;
 
     if (!state) {
       return {
@@ -206,8 +229,17 @@ class TabsBox extends Component<TabsProps, TabsState> {
           : defaultActivityKey
             ? defaultActivityKey
             : 0,
-        data: hasDataInprops ? data : defaultData,
-        children: hasChildrenInprops ? children : '',
+        data: hasDataInprops
+          ? data
+          : children
+            ? children
+            : state.data
+              ? state.data
+              : defaultData
+                ? defaultData
+                : [],
+        currentPage: 1,
+        arrowShow: false,
       };
     }
     if (hasActivityKeyInprops) {
@@ -216,47 +248,47 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { onNextClick, onPrevClick, tabType, tabPosition, getTheme } = this.props;
-    const transValue = this.state.activityKey;
-
-    const config = { width: this.getContainerWidth() };
-    const theme = {
-      [Widget.TabsHContainer]: config,
-    };
+    const { tabType, tabPosition, getTheme } = this.props;
+    const { activityKey, currentPage, arrowShow } = this.state;
+    const config = { width: this.getContainerWidth(), height: this.getContainerHeight() };
+    const theme = { [Widget.TabsContainer]: config };
     if (matchTabType(tabType, 'line')) {
       if (matchTabPosition(tabPosition, 'left') || matchTabPosition(tabPosition, 'right')) {
         return (
-          <OutContainer>
-            <VTabsOutContainer tabPosition={tabPosition}>
-              <VLine y={transValue * 100} tabPosition={tabPosition} />
-              <VPrePage tabPosition={tabPosition} onClick={onPrevClick}>
-                <PageIcon iconClass="lugia-icon-direction_up" />
-              </VPrePage>
-              <VTabsContainer>{this.getChildren()}</VTabsContainer>
-              <VNextPage tabPosition={tabPosition} onClick={onNextClick}>
-                <PageIcon iconClass="lugia-icon-direction_down" />
-              </VNextPage>
-            </VTabsOutContainer>
-            {this.getChildrenContent()}
-          </OutContainer>
+          <Theme config={theme}>
+            <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
+              <VTabsOutContainer tabPosition={tabPosition}>
+                <VPrePage
+                  tabPosition={tabPosition}
+                  onClick={this.onPrevClick}
+                  arrowShow={arrowShow}
+                >
+                  <PageIcon iconClass="lugia-icon-direction_up" />
+                </VPrePage>
+                <VTabsContainer>
+                  <YscrollerContainer y={(currentPage - 1) * this.offsetHeight * -1}>
+                    <VLine y={activityKey * 100} tabPosition={tabPosition} />
+                    {this.getChildren()}
+                  </YscrollerContainer>
+                </VTabsContainer>
+                <VNextPage
+                  tabPosition={tabPosition}
+                  onClick={this.onNextClick}
+                  arrowShow={arrowShow}
+                >
+                  <PageIcon iconClass="lugia-icon-direction_down" />
+                </VNextPage>
+              </VTabsOutContainer>
+              {this.getChildrenContent()}
+            </OutContainer>
+          </Theme>
         );
       }
       return (
         <Theme config={theme}>
           <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
             <HTabsOutContainer tabPosition={tabPosition} tabType={tabType}>
-              <HLine
-                lineWidth={this.childrenWidth[transValue]}
-                x={transValue * 100}
-                tabPosition={tabPosition}
-              />
-              <HPrePage onClick={onPrevClick}>
-                <PageIcon iconClass="lugia-icon-direction_Left" />
-              </HPrePage>
-              <HTabsContainer>{this.getChildren()}</HTabsContainer>
-              <HNextPage onClick={onNextClick}>
-                <PageIcon iconClass="lugia-icon-direction_right" />
-              </HNextPage>
+              {this.getHtabsChildren(currentPage)}
             </HTabsOutContainer>
             {this.getChildrenContent()}
           </OutContainer>
@@ -267,13 +299,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       return (
         <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
           <HTabsOutContainer tabType={tabType}>
-            <HPrePage onClick={onPrevClick}>
-              <PageIcon iconClass="lugia-icon-direction_Left" />
-            </HPrePage>
-            <HTabsContainer> {this.getChildren()}</HTabsContainer>
-            <HNextPage onClick={onNextClick}>
-              <PageIcon iconClass="lugia-icon-direction_right" />
-            </HNextPage>
+            {this.getHtabsChildren(currentPage)}
           </HTabsOutContainer>
           <ShadowLine tabType={tabType} />
         </OutContainer>
@@ -281,26 +307,67 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
   }
 
+  getHline(activityKey) {
+    const { tabType, tabPosition } = this.props;
+    if (matchTabType(tabType, 'line')) {
+      return (
+        <HLine
+          lineWidth={this.childrenWidth[activityKey]}
+          x={this.plusWidth(activityKey - 1, this.childrenWidth) + 15 * this.state.currentPage}
+          tabPosition={tabPosition}
+        />
+      );
+    }
+    return null;
+  }
+
+  getHtabsChildren(currentPage) {
+    const { activityKey, arrowShow } = this.state;
+    const { tabType } = this.props;
+    return [
+      <HPrePage arrowShow={arrowShow} onClick={this.onPrevClick}>
+        <PageIcon iconClass="lugia-icon-direction_Left" />
+      </HPrePage>,
+      <HTabsContainer tabType={tabType}>
+        <HscrollerContainer tabType={tabType} x={(currentPage - 1) * this.offsetWidth * -1}>
+          {this.getChildren()}
+          {this.getHline(activityKey)}
+        </HscrollerContainer>
+      </HTabsContainer>,
+      <HNextPage arrowShow={arrowShow} onClick={this.onNextClick}>
+        <PageIcon iconClass="lugia-icon-direction_right" />
+      </HNextPage>,
+    ];
+  }
+
   componentDidMount() {
     this.getContainerWidth();
+    this.getContainerHeight();
     this.handleData();
   }
 
   handleData() {
-    const { data, children } = this.state;
-    const currentData = [];
-    let currentWidth = this.offsetWidth - 2 * 24;
-    for (let i = 0; i < this.childrenWidth.length; i++) {
-      if (currentWidth >= this.childrenWidth[i]) {
-        currentWidth -= this.childrenWidth[i];
-        if (data !== undefined) {
-          currentData.push(data[i]);
-        } else {
-          currentData.push(children[i]);
-        }
-      }
+    const { currentPage } = this.state;
+    const { tabPosition } = this.props;
+    const actualWidth = this.plusWidth(this.childrenWidth.length - 1, this.childrenWidth);
+    const actualHeight = this.childrenWidth.length * 32;
+
+    if (matchTabPosition(tabPosition, 'left') || matchTabPosition(tabPosition, 'right')) {
+      this.totalPage = this.computePage(this.offsetHeight, actualHeight);
+      const arrowShow = currentPage < this.totalPage;
+      this.setState({ arrowShow });
+    } else {
+      this.totalPage = this.computePage(this.offsetWidth, actualWidth);
+      const arrowShow = currentPage < this.totalPage;
+      this.setState({ arrowShow });
     }
-    this.setState({ data: currentData });
+  }
+
+  computePage(offset, actualSize) {
+    const dataTotalSize = offset - 2 * 24;
+    const totalPage = Math.ceil(actualSize / dataTotalSize);
+    console.log('page', totalPage);
+    return totalPage;
   }
 
   getContainerWidth() {
@@ -309,6 +376,14 @@ class TabsBox extends Component<TabsProps, TabsState> {
       const { width } = getTheme();
       this.offsetWidth = this.containerRef.offsetWidth;
       return width ? width : this.offsetWidth;
+    }
+  }
+  getContainerHeight() {
+    if (this.containerRef) {
+      const { getTheme } = this.props;
+      const { height } = getTheme();
+      this.offsetHeight = this.containerRef.offsetHeight;
+      return height ? height : this.offsetHeight;
     }
   }
 
@@ -383,19 +458,51 @@ class TabsBox extends Component<TabsProps, TabsState> {
     );
   }
   onTabClick = (activityKey: number) => {
+    const { onTabClick } = this.props;
     if (activityKey !== this.state.activityKey) {
       this.setState({ activityKey });
     }
+    onTabClick && onTabClick(activityKey);
   };
   onDelClick = (activityKey: number) => {
-    const { data } = this.state;
     const { onDelClick } = this.props;
+    const { data } = this.state;
     data.splice(activityKey, 1);
     this.setState({ data });
-    onDelClick && onDelClick();
+    onDelClick && onDelClick(activityKey);
   };
   handleWidth = (width: number) => {
     this.childrenWidth.push(width);
+  };
+  onNextClick = (e: Event) => {
+    const { onNextClick } = this.props;
+    this.transWidth('next');
+    onNextClick && onNextClick(e);
+  };
+  onPrevClick = e => {
+    const { onPrevClick } = this.props;
+    this.transWidth('pre');
+    onPrevClick && onPrevClick(e);
+  };
+  plusWidth = (index: number, width: Array<number>): number => {
+    let sum = 0;
+    for (let i = 0; i <= index; i++) {
+      sum += width[i];
+    }
+    return sum;
+  };
+
+  transWidth = (type: EditType) => {
+    let { currentPage, arrowShow } = this.state;
+    if (type === 'next') {
+      if (currentPage < this.totalPage) {
+        currentPage++;
+        arrowShow = true;
+      }
+    } else {
+      if (currentPage > 1) currentPage--;
+    }
+    this.setState({ currentPage, arrowShow });
   };
 }
 
