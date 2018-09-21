@@ -18,10 +18,16 @@ export default class AffixDemo extends React.Component {
       display: true,
     };
   }
+  handleClick = () => {
+    const { display } = this.state;
+    this.setState({
+      display: !display,
+    });
+  };
   render() {
     const { display } = this.state;
     return (
-      <div>
+      <div onClick={this.handleClick}>
         {display ? (
           <div style={{ width: '200px', height: '1200px' }}>
             <div style={{ width: '200px', height: '200px' }} />
