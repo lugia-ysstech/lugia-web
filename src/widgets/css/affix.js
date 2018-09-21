@@ -11,7 +11,7 @@ const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
 type CSSProps = {
-  start: boolean,
+  fixed: boolean,
   offsetTop?: number,
   offsetBottom?: number,
 };
@@ -21,11 +21,11 @@ export type AffixProps = {
   onChange?: Function,
 };
 export type AffixState = {
-  start: boolean,
+  fixed: boolean,
 };
-const getStartCSS = (props: CSSProps) => {
-  const { start } = props;
-  if (start) {
+const getFixedCSS = (props: CSSProps) => {
+  const { fixed } = props;
+  if (fixed) {
     return `
       position: fixed;
     `;
@@ -47,5 +47,5 @@ const getTopOrBottomCSS = (props: CSSProps) => {
 
 export const Affix = styled.div`
   font-size: ${FontSize}rem;
-  ${getStartCSS} ${getTopOrBottomCSS};
+  ${getFixedCSS} ${getTopOrBottomCSS};
 `;
