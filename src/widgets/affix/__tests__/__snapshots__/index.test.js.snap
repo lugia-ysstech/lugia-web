@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Affix css 1`] = `
+.c0 {
+  font-size: 1.2rem;
+  top: 4.166666666666667em;
+}
+
+.c2 {
+  font-size: 1.2rem;
+  bottom: 4.166666666666667em;
+}
+
+.c1 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #666666;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  width: 6.666666666666667em;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c1:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c1:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c1:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+<div
+  onClick={[Function]}
+>
+  <div
+    style={
+      Object {
+        "height": "1200px",
+        "width": "200px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "200px",
+          "width": "200px",
+        }
+      }
+    />
+    <div
+      className="c0"
+    >
+      <button
+        className="c1"
+        onClick={[Function]}
+      >
+        <span>
+          affix-top
+        </span>
+      </button>
+    </div>
+    <div
+      style={
+        Object {
+          "height": "200px",
+          "overflowY": "scroll",
+          "width": "200px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "height": "400px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "height": "100px",
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="c0"
+        >
+          <button
+            className="c1"
+            onClick={[Function]}
+          >
+            <span>
+              affix-top
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "height": "200px",
+          "overflowY": "scroll",
+          "width": "200px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "height": "400px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "height": "200px",
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="c2"
+        >
+          <button
+            className="c1"
+            onClick={[Function]}
+          >
+            <span>
+              affix2-bottom
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "height": "500px",
+          "width": "200px",
+        }
+      }
+    />
+    <div
+      className="c2"
+    >
+      <button
+        className="c1"
+        onClick={[Function]}
+      >
+        <span>
+          affix-bottom
+        </span>
+      </button>
+    </div>
+    <div
+      style={
+        Object {
+          "height": "500px",
+          "width": "200px",
+        }
+      }
+    />
+  </div>
+</div>
+`;

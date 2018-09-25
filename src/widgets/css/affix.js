@@ -19,9 +19,13 @@ export type AffixProps = {
   offsetTop?: number,
   offsetBottom?: number,
   onChange?: Function,
+  target?: Function,
+  children?: any,
 };
 export type AffixState = {
   fixed: boolean,
+  offsetTop?: number,
+  offsetBottom?: number,
 };
 const getFixedCSS = (props: CSSProps) => {
   const { fixed } = props;
@@ -30,14 +34,14 @@ const getFixedCSS = (props: CSSProps) => {
       position: fixed;
     `;
   }
-  return 'color: #333;';
+  return '';
 };
 const getTopOrBottomCSS = (props: CSSProps) => {
   const { offsetTop, offsetBottom } = props;
-  if (offsetTop || offsetTop == 0) {
+  if (typeof offsetTop === 'number') {
     return `top: ${em(offsetTop)}`;
   }
-  if (offsetBottom || offsetBottom == 0) {
+  if (typeof offsetBottom === 'number') {
     return `bottom: ${em(offsetBottom)}`;
   }
   return `

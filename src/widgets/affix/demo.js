@@ -9,7 +9,9 @@ import styled from 'styled-components';
 import Affix from './affix';
 import Button from '../button';
 
-export default class AffixDemo extends React.Component {
+export default class AffixDemo extends React.Component<any, any> {
+  EleRef: any;
+  Ele2Ref: any;
   constructor() {
     super();
     this.EleRef = null;
@@ -65,7 +67,7 @@ export default class AffixDemo extends React.Component {
             <div style={{ width: '200px', height: '500px' }} />
           </div>
         ) : (
-          <div style={{ width: '200px', height: '1200px' }} />
+          <div style={{ width: '200px', height: '1200px' }}>unmount Affix</div>
         )}
       </div>
     );
