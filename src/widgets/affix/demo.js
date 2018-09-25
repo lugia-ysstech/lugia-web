@@ -25,6 +25,9 @@ export default class AffixDemo extends React.Component<any, any> {
       display: !display,
     });
   };
+  handleChange = (val: boolean) => {
+    console.info(val);
+  };
   render() {
     const { display } = this.state;
     return (
@@ -32,7 +35,7 @@ export default class AffixDemo extends React.Component<any, any> {
         {display ? (
           <div style={{ width: '200px', height: '1200px' }}>
             <div style={{ width: '200px', height: '200px' }} />
-            <Affix offsetTop={50}>
+            <Affix offsetTop={50} onChange={this.handleChange}>
               <Button>affix-top</Button>
             </Affix>
 
@@ -42,7 +45,7 @@ export default class AffixDemo extends React.Component<any, any> {
             >
               <div style={{ height: '400px' }}>
                 <div style={{ width: '20px', height: '100px' }} />
-                <Affix offsetTop={50} target={() => this.EleRef}>
+                <Affix offsetTop={50} target={() => this.EleRef} onChange={this.handleChange}>
                   <Button>affix-top</Button>
                 </Affix>
               </div>

@@ -24,11 +24,13 @@ export default class extends React.Component<AffixProps, AffixState> {
   affix: any;
   defaultPos: Object;
   defaultOffsetTop: number;
+  isChange: boolean;
   constructor() {
     super();
     this.state = {
       fixed: false,
     };
+    this.isChange = true;
   }
   componentDidMount() {
     this.defaultOffsetTop = this.affix && this.affix.offsetTop;
@@ -37,6 +39,7 @@ export default class extends React.Component<AffixProps, AffixState> {
     setTimeout(() => {
       if (target && typeof target === 'function') {
         target().addEventListener('scroll', () => this.addTargetListener(this.defaultPos));
+        return;
       }
       window.addEventListener('scroll', this.addWindowListener);
     }, 100);
@@ -56,12 +59,14 @@ export default class extends React.Component<AffixProps, AffixState> {
     }
     if (hasTop) {
       if (this.affix.offsetTop - scrollTop <= offsetTop) {
+        this.handleChange(true);
         this.setState({
           fixed: true,
           offsetTop: undefined,
         });
       }
       if (this.defaultOffsetTop >= scrollTop + offsetTop) {
+        this.handleChange(false);
         this.setState({
           fixed: false,
           offsetTop: undefined,
@@ -71,12 +76,14 @@ export default class extends React.Component<AffixProps, AffixState> {
     if (hasBottom) {
       const elementPos = this.affix.getBoundingClientRect();
       if (windowHeight - elementPos.bottom <= offsetBottom) {
+        this.handleChange(true);
         this.setState({
           fixed: true,
           offsetBottom: undefined,
         });
       }
       if (this.defaultOffsetTop <= scrollTop + this.affix.offsetTop - offsetBottom) {
+        this.handleChange(false);
         this.setState({
           fixed: false,
           offsetBottom: undefined,
@@ -99,12 +106,14 @@ export default class extends React.Component<AffixProps, AffixState> {
     const targetScroll = target().scrollTop;
     if (hasTop) {
       if (defaultPos.top - targetPos.top - targetScroll <= offsetTop) {
+        this.handleChange(true);
         this.setState({
           fixed: true,
           offsetTop: offsetTop + targetPos.top,
         });
       }
       if (defaultPos.top >= targetScroll + targetPos.top + offsetTop) {
+        this.handleChange(false);
         this.setState({
           fixed: false,
           offsetTop: undefined,
@@ -114,12 +123,14 @@ export default class extends React.Component<AffixProps, AffixState> {
     if (hasBottom) {
       const elementPos = this.affix.getBoundingClientRect();
       if (targetPos.bottom - elementPos.bottom <= offsetBottom) {
+        this.handleChange(true);
         this.setState({
           fixed: true,
           offsetBottom: windowHeight - targetPos.bottom + offsetBottom,
         });
       }
       if (defaultPos.top <= targetScroll + this.affix.offsetTop - offsetBottom) {
+        this.handleChange(false);
         this.setState({
           fixed: false,
           offsetBottom: undefined,
@@ -128,6 +139,13 @@ export default class extends React.Component<AffixProps, AffixState> {
     }
   };
 
+  handleChange = (val: boolean) => {
+    const { onChange } = this.props;
+    if (this.isChange == val) {
+      onChange && onChange(val);
+      this.isChange = !val;
+    }
+  };
   componentWillUnmount() {
     window.removeEventListener('scroll', this.addWindowListener);
   }
