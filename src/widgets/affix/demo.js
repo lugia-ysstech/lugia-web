@@ -5,7 +5,6 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
 import Affix from './affix';
 import Button from '../button';
 
