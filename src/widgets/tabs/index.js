@@ -28,6 +28,7 @@ import {
   backgroundColor,
   lineWidth,
   vContainerHeight,
+  getContentTransform,
 } from '../css/tabs';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
@@ -50,8 +51,9 @@ const HLine = BaseLine.extend`
   transition: all 0.3s;
 `;
 const ShadowLine = styled.div`
-  position: absolute;
   width: 100%;
+  position: absolute;
+  bottom: -1px;
   height: ${em(1)};
   ${getBackgroundShadow};
 `;
@@ -133,12 +135,11 @@ const HTabsOutContainer = styled.div`
   height: ${hContainerHeight};
   position: relative;
   ${getContainerBorder};
-  transform: translateX(${props => props.x}%);
   background: ${backgroundColor};
-  text-align: bottom;
   padding: 0 ${em(24)};
   overflow: hidden;
   box-sizing: border-box;
+  margin: ${em(20)} 0;
 `;
 OutContainer.displayName = Widget.TabsContainer;
 
@@ -147,18 +148,19 @@ const VTabsOutContainer = styled.div`
   ${getContainerBorder};
   display: inline-block;
   position: relative;
-  transform: translateY(${props => props.y}%);
   padding: ${em(24)} 0;
   box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
   height: 100%;
+  margin: 0 ${em(20)};
 `;
-const HContentContainer = styled.div`
+const ContentContainer = styled.div`
   position: absolute;
   display: inline-block;
-  ${getContentPosition};
   overflow: hidden;
+  ${getContentPosition};
+  margin-left: ${props => props.x}%;
 `;
 const PageIcon: Object = styled(Icon)`
   display: inline-block;
@@ -266,7 +268,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
                   <PageIcon iconClass="lugia-icon-direction_up" />
                 </VPrePage>
                 <VTabsContainer>
-                  <YscrollerContainer y={(currentPage - 1) * this.offsetHeight * -1}>
+                  <YscrollerContainer
+                    y={(currentPage - 1) * this.offsetHeight * -1 + (currentPage - 1) * 40}
+                  >
                     <VLine y={activityKey * 100} tabPosition={tabPosition} />
                     {this.getChildren()}
                   </YscrollerContainer>
@@ -288,7 +292,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         <Theme config={theme}>
           <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
             <HTabsOutContainer tabPosition={tabPosition} tabType={tabType}>
-              {this.getHtabsChildren(currentPage)}
+              {this.getHtabsChildren()}
             </HTabsOutContainer>
             {this.getChildrenContent()}
           </OutContainer>
@@ -299,21 +303,22 @@ class TabsBox extends Component<TabsProps, TabsState> {
       return (
         <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
           <HTabsOutContainer tabType={tabType}>
-            {this.getHtabsChildren(currentPage)}
+            {this.getHtabsChildren()}
+            <ShadowLine tabType={tabType} />
           </HTabsOutContainer>
-          <ShadowLine tabType={tabType} />
         </OutContainer>
       );
     }
   }
 
-  getHline(activityKey) {
+  getHline() {
     const { tabType, tabPosition } = this.props;
+    const { activityKey, currentPage } = this.state;
     if (matchTabType(tabType, 'line')) {
       return (
         <HLine
           lineWidth={this.childrenWidth[activityKey]}
-          x={this.plusWidth(activityKey - 1, this.childrenWidth) + 15 * this.state.currentPage}
+          x={this.plusWidth(activityKey - 1, this.childrenWidth) + 15 * currentPage}
           tabPosition={tabPosition}
         />
       );
@@ -321,17 +326,17 @@ class TabsBox extends Component<TabsProps, TabsState> {
     return null;
   }
 
-  getHtabsChildren(currentPage) {
-    const { activityKey, arrowShow } = this.state;
+  getHtabsChildren() {
+    const { arrowShow, currentPage } = this.state;
     const { tabType } = this.props;
     return [
       <HPrePage arrowShow={arrowShow} onClick={this.onPrevClick}>
         <PageIcon iconClass="lugia-icon-direction_Left" />
       </HPrePage>,
       <HTabsContainer tabType={tabType}>
-        <HscrollerContainer tabType={tabType} x={(currentPage - 1) * this.offsetWidth * -1}>
+        <HscrollerContainer tabType={tabType} x={(currentPage - 1) * (this.offsetWidth * -1 + 48)}>
           {this.getChildren()}
-          {this.getHline(activityKey)}
+          {this.getHline()}
         </HscrollerContainer>
       </HTabsContainer>,
       <HNextPage arrowShow={arrowShow} onClick={this.onNextClick}>
@@ -364,9 +369,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   computePage(offset, actualSize) {
-    const dataTotalSize = offset - 2 * 24;
+    const dataTotalSize = offset - 2 * 16;
     const totalPage = Math.ceil(actualSize / dataTotalSize);
-    console.log('page', totalPage);
     return totalPage;
   }
 
@@ -436,27 +440,38 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getChildrenContent() {
-    const { data, tabPosition, children, forceRender } = this.props;
-    let content;
+    const { data, children, forceRender } = this.props;
+    const { activityKey } = this.state;
+    let childrenContent;
     if (data && data.length) {
-      content = data.map(child => {
-        if (child.activityKey === this.state.activityKey) {
+      childrenContent = data.map(child => {
+        if (child.activityKey === activityKey) {
           if (!forceRender) {
-            return <HContentContainer tabPosition={tabPosition}>{child.content}</HContentContainer>;
+            const content = child.content;
+            return this.getContent(content);
           }
         }
       });
-      return content;
+      return childrenContent;
     }
-    content = React.Children.map(children, child => {
-      if (child.props.activityKey === this.state.activityKey) {
+    childrenContent = React.Children.map(children, child => {
+      if (child.props.activityKey === activityKey) {
         return React.cloneElement(child, this.getContentConfig(child));
       }
     });
+    return this.getContent(childrenContent[0].props.content);
+  }
+
+  getContent(content: React$Element<any>) {
+    const { tabPosition } = this.props;
+    const { activityKey } = this.state;
     return (
-      <HContentContainer tabPosition={tabPosition}>{content[0].props.content}</HContentContainer>
+      <ContentContainer x={activityKey * -100} y={activityKey * 100} tabPosition={tabPosition}>
+        {content}
+      </ContentContainer>
     );
   }
+
   onTabClick = (activityKey: number) => {
     const { onTabClick } = this.props;
     if (activityKey !== this.state.activityKey) {
@@ -494,13 +509,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   transWidth = (type: EditType) => {
     let { currentPage, arrowShow } = this.state;
-    if (type === 'next') {
-      if (currentPage < this.totalPage) {
-        currentPage++;
-        arrowShow = true;
-      }
-    } else {
-      if (currentPage > 1) currentPage--;
+    if (type === 'next' && currentPage < this.totalPage) {
+      currentPage++;
+      arrowShow = true;
+    } else if (type === 'pre' && currentPage > 1) {
+      currentPage--;
     }
     this.setState({ currentPage, arrowShow });
   };
