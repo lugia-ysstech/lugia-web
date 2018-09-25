@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 
-gulp.task('default', ['js', 'css', 'font']);
+gulp.task('default', ['js', 'css', 'font', 'interface']);
 gulp.task('js', () => {
   return gulp
     .src(['src/widgets/**/*.js'])
@@ -26,4 +26,7 @@ gulp.task('font', () => {
       'src/widgets/**/*.woff2',
     ])
     .pipe(gulp.dest('dist'));
+});
+gulp.task('interface', () => {
+  return gulp.src(['src/interface/**/*.js']).pipe(gulp.dest('interface'));
 });
