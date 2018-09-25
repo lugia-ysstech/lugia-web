@@ -106,11 +106,11 @@ export const createGetInputBorderRadius = (
         'bottomRight',
         bottomRight
       );
-      return `
-    border-top-left-radius:${em(borderRadiusTopLeft)};
-    border-top-right-radius:${em(borderRadiusTopRight)};
-    border-bottom-left-radius:${em(borderRadiusBottomLeft)};
-    border-bottom-right-radius:${em(borderRadiusBottomRight)};`;
+      return `border-top-left-radius:${em(borderRadiusTopLeft)};border-top-right-radius:${em(
+        borderRadiusTopRight
+      )};border-bottom-left-radius:${em(borderRadiusBottomLeft)};border-bottom-right-radius:${em(
+        borderRadiusBottomRight
+      )};`;
     }
     return `border-radius:${RadiusSize}`;
   };
