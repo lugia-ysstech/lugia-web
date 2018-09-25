@@ -28,7 +28,8 @@ export const getHoverColor = () => {
   return `color: ${themeColor};`;
 };
 export const getColor = (props: Object) => {
-  return `color: ${props.isSelect ? themeColor : blackColor};`;
+  const { isSelect } = props;
+  return `color: ${isSelect ? themeColor : blackColor};`;
 };
 export const getLinePosition = (props: Object) => {
   const { tabPosition } = props;
@@ -48,16 +49,13 @@ export const getLinePosition = (props: Object) => {
 export const getContentPosition = (props: Object) => {
   const { tabPosition } = props;
   if (matchTabPosition(tabPosition, 'right')) {
-    return `left:${em(20)};top: ${em(24)};`;
-  }
-  if (matchTabPosition(tabPosition, 'top')) {
-    return `bottom :${em(-20)}; left: ${em(24)};`;
+    return `left:${em(0)};`;
   }
   if (matchTabPosition(tabPosition, 'bottom')) {
-    return `top :${em(-20)}; left: ${em(24)};`;
+    return `top :${em(-20)};`;
   }
   if (matchTabPosition(tabPosition, 'left')) {
-    return `top :${em(24)};`;
+    return `top :${em(0)};`;
   }
 };
 export const getContainerBorder = (props: Object) => {
@@ -77,12 +75,12 @@ export const getContainerBorder = (props: Object) => {
 };
 export const getFocusShadow = (props: Object) => {
   const { tabType, isSelect } = props;
-  const color = isSelect && tabType === 'card' ? 'rgba(104, 79, 255)' : 'none';
+  const color = isSelect && tabType === 'card' ? 'rgba(104, 79, 255,0.2)' : 'none';
   return `box-shadow: 0 0 ${em(6)} ` + color;
 };
 export const getBackgroundShadow = (props: Object) => {
   const { tabType } = props;
-  const color = tabType === 'card' ? 'rgba(104, 79, 255)' : 'none';
+  const color = tabType === 'card' ? 'rgba(104, 79, 255,0.2)' : 'none';
   return `box-shadow: 0 ${em(-1)} ${em(6)} ` + color;
 };
 export const backgroundColor = (props: Object) => {
@@ -109,4 +107,11 @@ export const lineWidth = props => {
   const { lineWidth } = props;
   const width = lineWidth ? em(lineWidth - 40) : em(100);
   return width;
+};
+export const getContentTransform = props => {
+  const { tabPosition, x, y } = props;
+  if (matchTabPosition(tabPosition, 'right') || matchTabPosition(tabPosition, 'left')) {
+    return `transform: translateY(${y}%);`;
+  }
+  return `transform: translate3d(${em(x)}, 0, 0); `;
 };

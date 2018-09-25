@@ -123,7 +123,7 @@ class Tabpane extends Component<TabsProps, TabsState> {
     ) {
       return (
         <VTab tabPosition={tabPosition} onClick={this.handleClick} isSelect={isSelect}>
-          <Title>{tab}</Title>
+          <Title isSelect={isSelect}>{tab}</Title>
         </VTab>
       );
     }
@@ -135,7 +135,7 @@ class Tabpane extends Component<TabsProps, TabsState> {
         innerRef={cmp => (this.ref = cmp)}
       >
         {this.getTabIcon()}
-        <Title>{tab}</Title>
+        <Title isSelect={isSelect}>{tab}</Title>
         {this.getClearButton()}
       </HTab>
     );

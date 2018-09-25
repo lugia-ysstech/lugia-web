@@ -330,8 +330,8 @@ export default () => {
             />
           </Tabs>
         </Wrapper>
+        <p>children tabPosition=right</p>
         <RightWrapper>
-          <p>children tabPosition=right</p>
           <Tabs
             tabType={'line'}
             tabPosition={'right'}
@@ -435,8 +435,8 @@ export default () => {
           />
         </Wrapper>
         <br />
+        <p>data tabPosition=right</p>
         <RightWrapper>
-          <p>data tabPosition=right</p>
           <Tabs
             tabType={'line'}
             tabPosition={'right'}
