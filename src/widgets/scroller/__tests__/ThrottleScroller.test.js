@@ -11,6 +11,8 @@ import { mockObject } from '@lugia/jverify';
 import renderer from 'react-test-renderer';
 
 import SVScroller from '../';
+import { px2emcss } from '../../css/units';
+const em = px2emcss(1.2);
 
 const { expect: exp } = chai;
 
@@ -49,7 +51,7 @@ describe('ThrottleScroller', function() {
     mount(<Target />);
   });
 
-  it('isNeedScrolelr is false  data的数量为0', () => {
+  it('isNeedScroller is false  data的数量为0', () => {
     const Menus = () => {
       return <div>1</div>;
     };
@@ -61,12 +63,12 @@ describe('ThrottleScroller', function() {
       canSeeCount.returned(0);
       getTarget.returned([]);
       canSeeCount.returned(10);
-      exp(target.isNeedScrolelr()).to.be.false;
-      exp(target.isNeedScrolelr()).to.be.false;
+      exp(target.isNeedScroller()).to.be.false;
+      exp(target.isNeedScroller()).to.be.false;
     });
     mount(<Target />);
   });
-  it('isNeedScrolelr is false 可见的数大于总数', () => {
+  it('isNeedScroller is false 可见的数大于总数', () => {
     const Menus = () => {
       return <div>1</div>;
     };
@@ -77,11 +79,11 @@ describe('ThrottleScroller', function() {
       const canSeeCount = mock.mockFunction('canSeeCount');
       getTarget.returned([]);
       canSeeCount.returned(5);
-      exp(target.isNeedScrolelr()).to.be.false;
+      exp(target.isNeedScroller()).to.be.false;
     });
     mount(<Target />);
   });
-  it('isNeedScrolelr is true 可见的数小于总数', () => {
+  it('isNeedScroller is true 可见的数小于总数', () => {
     const Menus = () => {
       return <div>1</div>;
     };
@@ -92,7 +94,7 @@ describe('ThrottleScroller', function() {
       const canSeeCount = mock.mockFunction('canSeeCount');
       getTarget.returned([1, 2, 3, 4, 5, 6]);
       canSeeCount.returned(5);
-      exp(target.isNeedScrolelr()).to.be.true;
+      exp(target.isNeedScroller()).to.be.true;
     });
     mount(<Target />);
   });
@@ -276,7 +278,7 @@ describe('ThrottleScroller', function() {
     };
     const Target = createTestComponent(ThrottleScroller(Menus, 20), target => {
       const mock = mockObject.create(target);
-      mock.mockFunction('isNeedScrolelr').returned(false);
+      mock.mockFunction('isNeedScroller').returned(false);
     });
     const cmp = mount(<Target />);
     cmp.render();
@@ -304,7 +306,7 @@ describe('ThrottleScroller', function() {
       const mock = mockObject.create(target);
       mock.mockFunction('fetchViewSize').forever(viewSize);
       mock.mockFunction('fetchTotalSize').returned(totalSize);
-      mock.mockFunction('isNeedScrolelr').mock(() => {
+      mock.mockFunction('isNeedScroller').mock(() => {
         return true;
       });
     });
@@ -315,14 +317,14 @@ describe('ThrottleScroller', function() {
     cmp = cmp.setState({ start: 1 });
     exp(cmp.find(SVScroller).length).to.be.equal(1);
     exp(cmp.find(SVScroller).props().onChange).to.be.equal(_this.onScroller);
-    exp(cmp.find(SVScroller).props()).to.be.eql({
+    expect(cmp.find(SVScroller).props()).toEqual({
       viewSize,
       totalSize,
       value: 0,
       type: type ? type : 'y',
       onChange: _this.onScroller,
       throttle: 100,
-      step: 1,
+      step: 30,
     });
     exp(_this.scroller).to.be.not.null;
 
@@ -359,7 +361,7 @@ describe('ThrottleScroller', function() {
       mock.mockFunction('fetchTotalSize').forever(totalSize);
       mock.mockFunction('fetchEnd').returned(end);
 
-      mock.mockFunction('isNeedScrolelr').mock(() => {
+      mock.mockFunction('isNeedScroller').mock(() => {
         return true;
       });
     });
