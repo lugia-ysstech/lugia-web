@@ -36,7 +36,7 @@ export default class AffixDemo extends React.Component<any, any> {
           <div style={{ width: '200px', height: '1200px' }}>
             <div style={{ width: '200px', height: '200px' }} />
             <Affix offsetTop={50} onChange={this.handleChange}>
-              <Button>affix-top</Button>
+              <Button>windows-top-50</Button>
             </Affix>
 
             <div
@@ -46,7 +46,7 @@ export default class AffixDemo extends React.Component<any, any> {
               <div style={{ height: '400px' }}>
                 <div style={{ width: '20px', height: '100px' }} />
                 <Affix offsetTop={50} target={() => this.EleRef} onChange={this.handleChange}>
-                  <Button>affix-top</Button>
+                  <Button>target-top-50</Button>
                 </Affix>
               </div>
             </div>
@@ -57,14 +57,14 @@ export default class AffixDemo extends React.Component<any, any> {
               <div style={{ height: '400px' }}>
                 <div style={{ width: '20px', height: '200px' }} />
                 <Affix offsetBottom={50} target={() => this.Ele2Ref}>
-                  <Button>affix2-bottom</Button>
+                  <Button>target-bottom-50</Button>
                 </Affix>
               </div>
             </div>
 
             <div style={{ width: '200px', height: '500px' }} />
             <Affix offsetBottom={50}>
-              <Button>affix-bottom</Button>
+              <Button>window-bottom-50</Button>
             </Affix>
             <div style={{ width: '200px', height: '500px' }} />
           </div>
