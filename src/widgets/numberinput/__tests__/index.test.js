@@ -72,8 +72,9 @@ describe('NumberInput', () => {
 
   function placeholderTest(placeholder) {
     it('props: placeholder ', () => {
-      const component = mount(<NumberInput placeholder={placeholder} />);
-      expect(renderer.create(component).toJSON()).toMatchSnapshot();
+      const jsx = <NumberInput placeholder={placeholder} />;
+      const component = mount(jsx);
+      expect(renderer.create(jsx).toJSON()).toMatchSnapshot();
       exp(component.props().placeholder).to.be.equal(placeholder);
     });
   }
@@ -87,12 +88,12 @@ describe('NumberInput', () => {
         width: 300,
       },
     };
-    const component = mount(
+    const jsx = (
       <Theme config={view}>
         <NumberInput />
       </Theme>
     );
-    expect(renderer.create(component).toJSON()).toMatchSnapshot();
+    expect(renderer.create(jsx)).toMatchSnapshot();
   });
 
   it('props: keyboard event is null but fire keyup event', () => {
