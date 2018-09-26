@@ -98,8 +98,9 @@ describe('Input', () => {
 
   function placeholderTest(placeholder) {
     it('props: placeholder ', () => {
-      const component = mount(<Input placeholder={placeholder} />);
-      expect(renderer.create(component).toJSON()).toMatchSnapshot();
+      const jsx = <Input placeholder={placeholder} />;
+      const component = mount(jsx);
+      expect(renderer.create(jsx).toJSON()).toMatchSnapshot();
       exp(component.props().placeholder).to.be.equal(placeholder);
     });
   }
@@ -114,12 +115,12 @@ describe('Input', () => {
         margin: 10,
       },
     };
-    const component = mount(
+    const jsx = (
       <Theme config={view}>
         <Input />
       </Theme>
     );
-    expect(renderer.create(component).toJSON()).toMatchSnapshot();
+    expect(renderer.create(jsx).toJSON()).toMatchSnapshot();
   });
 
   it('props: prefix', () => {
