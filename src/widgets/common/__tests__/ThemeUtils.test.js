@@ -7,6 +7,8 @@ import {
   createGetWidthOrHeight,
   getWidth,
   getHeight,
+  createGetInputBorderRadius,
+  getInputBorderRadius,
 } from '../ThemeUtils';
 
 describe('ThemeUtils', () => {
@@ -161,4 +163,184 @@ describe('ThemeUtils', () => {
   testGetHeight({ theme: { width: 0 } }, 'height: 0em;');
   testGetHeight({ theme: { width: 1.2 } }, 'height: 0.1em;');
   testGetHeight({ theme: { width: -1.2 } }, 'height: -0.1em;');
+
+  function testGetInputBorderRadius(theme: { theme: ThemeType }, expectRadius: string) {
+    it(`getBorderRadius = theme:${JSON.stringify(theme)} `, () => {
+      expect(getInputBorderRadius(theme)).toBe(expectRadius);
+    });
+  }
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topLeft: 12,
+        },
+      },
+    },
+    'border-top-left-radius:1em;border-top-right-radius:0em;border-bottom-left-radius:0em;border-bottom-right-radius:0em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topRight: 24,
+        },
+      },
+    },
+    'border-top-left-radius:0em;border-top-right-radius:2em;border-bottom-left-radius:0em;border-bottom-right-radius:0em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topLeft: 12,
+          topRight: 24,
+        },
+      },
+    },
+    'border-top-left-radius:1em;border-top-right-radius:2em;border-bottom-left-radius:0em;border-bottom-right-radius:0em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          bottomLeft: 36,
+          bottomRight: 48,
+        },
+      },
+    },
+    'border-top-left-radius:0em;border-top-right-radius:0em;border-bottom-left-radius:3em;border-bottom-right-radius:4em;'
+  );
+
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topLeft: 12,
+          bottomLeft: 36,
+        },
+      },
+    },
+    'border-top-left-radius:1em;border-top-right-radius:0em;border-bottom-left-radius:3em;border-bottom-right-radius:0em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topLeft: 12,
+          topRight: 24,
+          bottomLeft: 36,
+        },
+      },
+    },
+    'border-top-left-radius:1em;border-top-right-radius:2em;border-bottom-left-radius:3em;border-bottom-right-radius:0em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topLeft: 12,
+          topRight: 24,
+          bottomLeft: 36,
+          bottomRight: 48,
+        },
+      },
+    },
+    'border-top-left-radius:1em;border-top-right-radius:2em;border-bottom-left-radius:3em;border-bottom-right-radius:4em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topLeft: 12,
+          topRight: 24,
+          bottomLeft: 36,
+          bottomRight: 48,
+        },
+      },
+    },
+    'border-top-left-radius:1em;border-top-right-radius:2em;border-bottom-left-radius:3em;border-bottom-right-radius:4em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: 12,
+      },
+    },
+    'border-radius:1em'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {},
+      },
+    },
+    'border-top-left-radius:0em;border-top-right-radius:0em;border-bottom-left-radius:0em;border-bottom-right-radius:0em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topLeft: 12,
+          topRight: 24,
+          bottomLeft: 36,
+          bottomRight: 48,
+        },
+      },
+    },
+    'border-top-left-radius:1em;border-top-right-radius:2em;border-bottom-left-radius:3em;border-bottom-right-radius:4em;'
+  );
+  testGetInputBorderRadius(
+    {
+      theme: {
+        borderRadius: {
+          topLeft: -12,
+          topRight: 24,
+          bottomLeft: 0,
+          bottomRight: 48,
+        },
+      },
+    },
+    'border-top-left-radius:-1em;border-top-right-radius:2em;border-bottom-left-radius:0em;border-bottom-right-radius:4em;'
+  );
+  it('createGetInputBorderRadius', () => {
+    const getBorderRadius = createGetInputBorderRadius({
+      fontSize: 1.2,
+      default: {
+        topLeft: 0,
+        topRight: 0,
+        bottomLeft: 0,
+        bottomRight: 0,
+      },
+    });
+    expect(
+      getBorderRadius({
+        theme: {
+          borderRadius: {},
+        },
+      })
+    ).toBe(
+      'border-top-left-radius:0em;border-top-right-radius:0em;border-bottom-left-radius:0em;border-bottom-right-radius:0em;'
+    );
+  });
+  it('createGetInputBorderRadius', () => {
+    const getBorderRadius = createGetInputBorderRadius({
+      fontSize: 1,
+      default: {
+        topLeft: 1,
+        topRight: 2,
+        bottomLeft: 3,
+        bottomRight: 4,
+      },
+    });
+    expect(
+      getBorderRadius({
+        theme: {
+          borderRadius: {},
+        },
+      })
+    ).toBe(
+      'border-top-left-radius:0.1em;border-top-right-radius:0.2em;border-bottom-left-radius:0.3em;border-bottom-right-radius:0.4em;'
+    );
+  });
 });
