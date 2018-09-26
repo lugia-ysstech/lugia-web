@@ -2,7 +2,6 @@
   "name": "@lugia/lugia-web",
   "version": "1.0.43-1",
   "dependencies": {
-    "@lugia/mega-scripts": "^1.0.0",
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
@@ -37,6 +36,7 @@
     "dist": "npm run clean && npx cross-env BABEL_ENV=production gulp"
   },
   "devDependencies": {
+    "@lugia/mega-scripts": "^1.0.0",
     "@lugia/jverify": "1.0.6",
     "@lugia/react-test-utils": "^1.0.0",
     "autoprefixer": "7.1.6",
