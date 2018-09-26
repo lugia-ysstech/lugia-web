@@ -19,7 +19,6 @@ import {
   getFontColor,
   getInputBorderColor,
   getInputBorderHoverColor,
-  getInputBorderRadius,
   getInputBorderSize,
   getPadding,
   getRightPadding,
@@ -32,7 +31,7 @@ import { FontSize } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import { getMargin } from '../common/ThemeUtils';
+import { getMargin, getInputBorderRadius } from '../common/ThemeUtils';
 
 const em = px2emcss(1.2);
 
