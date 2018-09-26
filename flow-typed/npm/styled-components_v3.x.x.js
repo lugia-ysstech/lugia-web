@@ -1,5 +1,5 @@
-// flow-typed signature: 8e8f10c16b7f1b7249a269ae3938551e
-// flow-typed version: b0f6644f4d/styled-components_v3.x.x/flow_>=v0.57.x
+// flow-typed signature: 7170a83be03bbdcd4e80b9dc910cb18d
+// flow-typed version: a92e9b07d7/styled-components_v3.x.x/flow_>=v0.75.x
 
 // @flow
 
@@ -61,10 +61,9 @@ type $npm$styledComponents$ReactComponentStyledStaticPropsWithComponent<Props, C
 // ---- STYLED FUNCTION ----
 // Error: styled(CustomComponent).withComponent('a')
 // Ok:    styled('div').withComponent('a')
-type $npm$styledComponents$Call<ComponentListKeys> ={
-  [[call]](ComponentListKeys): $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteralWithComponent<{}, ComponentListKeys>,
-  [[call]]<Props>($npm$styledComponents$ReactComponentUnion<Props>): $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteral<Props, ComponentListKeys>,
-}
+type $npm$styledComponents$Call<ComponentListKeys> =
+  & (ComponentListKeys => $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteralWithComponent<{}, ComponentListKeys>)
+  & (<Props>($npm$styledComponents$ReactComponentUnion<Props>) => $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteral<Props, ComponentListKeys>)
 
 // ---- STYLED COMPONENT ----
 type $npm$styledComponents$ReactComponentStyled<Props, ComponentList, DefaultProps = *> =
@@ -112,7 +111,7 @@ type $npm$styledComponents$WithTheme =
   & $npm$styledComponents$WithThemeReactComponentFunctionalUndefinedDefaultProps
 
 // ---- MISC ----
-type $npm$styledComponents$Theme = {[key: string]: mixed};
+type $npm$styledComponents$Theme = $ReadOnly<{[key: string]: mixed}>;
 type $npm$styledComponents$ThemeProviderProps = {
   theme: $npm$styledComponents$Theme | ((outerTheme: $npm$styledComponents$Theme) => void)
 };
@@ -303,6 +302,7 @@ type $npm$styledComponents$StyledComponentsNativeComponentList = {|
   ProgressViewIOS:              $npm$styledComponents$StyledComponentsNativeComponentListValue,
   RecyclerViewBackedScrollView: $npm$styledComponents$StyledComponentsNativeComponentListValue,
   RefreshControl:               $npm$styledComponents$StyledComponentsNativeComponentListValue,
+  SafeAreaView:                 $npm$styledComponents$StyledComponentsNativeComponentListValue,
   ScrollView:                   $npm$styledComponents$StyledComponentsNativeComponentListValue,
   SectionList:                  $npm$styledComponents$StyledComponentsNativeComponentListValue,
   SegmentedControlIOS:          $npm$styledComponents$StyledComponentsNativeComponentListValue,
@@ -356,37 +356,40 @@ declare module 'styled-components' {
   declare export var StyleSheetManager: typeof Npm$StyledComponents$StyleSheetManager;
   declare export var ThemeProvider: typeof Npm$StyledComponents$ThemeProvider;
 
-
   declare export default {
     css: TaggedTemplateLiteral<Array<Interpolation>>,
-  } & $npm$styledComponents$Call<ComponentListKeys>
-  & $npm$styledComponents$StyledComponentsComponentList
-  & $npm$styledComponents$StyledComponentsNativeComponentList
+    ...$npm$styledComponents$StyledComponentsComponentList,
+    ...$npm$styledComponents$StyledComponentsNativeComponentList,
+  } & {
+    [[call]]: $npm$styledComponents$Call<ComponentListKeys>
+  }
 }
 
 declare module 'styled-components/native' {
-  declare type Interpolation                                              = $npm$styledComponents$Interpolation;
-  declare type NameGenerator                                              = $npm$styledComponents$NameGenerator;
-  declare type Theme                                                      = $npm$styledComponents$Theme;
-  declare type ThemeProviderProps                                         = $npm$styledComponents$ThemeProviderProps;
-  declare type TaggedTemplateLiteral<R>                                   = $npm$styledComponents$TaggedTemplateLiteral<R>;
-  declare type NativeComponentListKeys                                    = $npm$styledComponents$StyledComponentsNativeComponentListKeys;
+  declare export type Interpolation                                              = $npm$styledComponents$Interpolation;
+  declare export type NameGenerator                                              = $npm$styledComponents$NameGenerator;
+  declare export type Theme                                                      = $npm$styledComponents$Theme;
+  declare export type ThemeProviderProps                                         = $npm$styledComponents$ThemeProviderProps;
+  declare export type TaggedTemplateLiteral<R>                                   = $npm$styledComponents$TaggedTemplateLiteral<R>;
+  declare export type NativeComponentListKeys                                    = $npm$styledComponents$StyledComponentsNativeComponentListKeys;
 
-  declare type ReactComponentFunctional<Props: {}, DefaultProps: ?{} = *> = $npm$styledComponents$ReactComponentFunctional<Props, DefaultProps>;
-  declare type ReactComponentFunctionalUndefinedDefaultProps<Props: {}>   = $npm$styledComponents$ReactComponentFunctionalUndefinedDefaultProps<Props>;
-  declare type ReactComponentClass<Props: {}, DefaultProps: ?{} = *>      = $npm$styledComponents$ReactComponentClass<Props, DefaultProps>;
-  declare type ReactComponentClassUndefinedDefaultProps<Props: {}>        = $npm$styledComponents$ReactComponentClassUndefinedDefaultProps<Props>;
-  declare type ReactComponentUnion<Props>                                 = $npm$styledComponents$ReactComponentUnion<Props>;
-  declare type ReactComponentIntersection<Props>                          = $npm$styledComponents$ReactComponentIntersection<Props>;
-  declare type ReactComponentStyledStaticProps<Props>                     = $npm$styledComponents$ReactComponentStyledStaticPropsWithComponent<Props, NativeComponentListKeys>;
-  declare type ReactComponentStyled<Props>                                = $npm$styledComponents$ReactComponentStyled<Props, NativeComponentListKeys>;
-  declare type ReactComponentStyledTaggedTemplateLiteral<Props>           = $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteralWithComponent<Props, NativeComponentListKeys>;
+  declare export type ReactComponentFunctional<Props: {}, DefaultProps: ?{} = *> = $npm$styledComponents$ReactComponentFunctional<Props, DefaultProps>;
+  declare export type ReactComponentFunctionalUndefinedDefaultProps<Props: {}>   = $npm$styledComponents$ReactComponentFunctionalUndefinedDefaultProps<Props>;
+  declare export type ReactComponentClass<Props: {}, DefaultProps: ?{} = *>      = $npm$styledComponents$ReactComponentClass<Props, DefaultProps>;
+  declare export type ReactComponentClassUndefinedDefaultProps<Props: {}>        = $npm$styledComponents$ReactComponentClassUndefinedDefaultProps<Props>;
+  declare export type ReactComponentUnion<Props>                                 = $npm$styledComponents$ReactComponentUnion<Props>;
+  declare export type ReactComponentIntersection<Props>                          = $npm$styledComponents$ReactComponentIntersection<Props>;
+  declare export type ReactComponentStyledStaticProps<Props>                     = $npm$styledComponents$ReactComponentStyledStaticPropsWithComponent<Props, NativeComponentListKeys>;
+  declare export type ReactComponentStyled<Props>                                = $npm$styledComponents$ReactComponentStyled<Props, NativeComponentListKeys>;
+  declare export type ReactComponentStyledTaggedTemplateLiteral<Props>           = $npm$styledComponents$ReactComponentStyledTaggedTemplateLiteralWithComponent<Props, NativeComponentListKeys>;
 
   declare export var keyframes: TaggedTemplateLiteral<string>;
   declare export var withTheme: $npm$styledComponents$WithTheme;
   declare export var ThemeProvider: typeof Npm$StyledComponents$ThemeProvider;
   declare export default {
     css: TaggedTemplateLiteral<Array<Interpolation>>,
-  } & $npm$styledComponents$Call<NativeComponentListKeys>
-    & $npm$styledComponents$StyledComponentsNativeComponentList
+    ...$npm$styledComponents$StyledComponentsNativeComponentList,
+  } & {
+    [[call]]: $npm$styledComponents$Call<NativeComponentListKeys>
+  }
 }
