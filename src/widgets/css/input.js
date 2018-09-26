@@ -8,7 +8,6 @@ import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
-import { createGetInputBorderRadius } from '../common/ThemeUtils';
 
 const {
   themeColor,
@@ -125,15 +124,7 @@ export const getInputBorderSize = (props: CommonInputProps) => {
   }
   return `border:${colorsFunc().borderSize}`;
 };
-export const getInputBorderRadius = createGetInputBorderRadius({
-  fontSize: FontSize,
-  default: {
-    topLeft: 0,
-    topRight: 0,
-    bottomLeft: 0,
-    bottomRight: 0,
-  },
-});
+
 export const getFontColor = (props: CommonInputProps) => {
   const { validateType, validateStatus } = props;
   return `color: ${
