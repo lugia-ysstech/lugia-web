@@ -71,6 +71,7 @@ const Header = 'sv_widget_Header';
 const Content = 'sv_widget_Content';
 const Footer = 'sv_widget_Footer';
 const Aside = 'sv_widget_Aside';
+const Affix = 'sv_widget_Affix';
 
 const Tabs = 'sv_widget_Tabs';
 const Tabpano = 'sv_widget_Tabpano';
@@ -137,4 +138,5 @@ export default {
   Tabs,
   Tabpano,
   TabsHContainer,
+  Affix,
 };
