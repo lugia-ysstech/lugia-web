@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import warning from 'warning';
 import { getOffset, isInclude, traverseTreeNodes, updateCheckState } from './util';
-
+import { TreeUl } from '../../css/tree';
 function noop() {}
 
 export const contextTypes = {
@@ -468,7 +468,7 @@ class Tree extends React.Component {
     }
 
     return (
-      <ul
+      <TreeUl
         {...domProps}
         className={className}
         role="tree-node"
@@ -476,7 +476,7 @@ class Tree extends React.Component {
         style={props.style}
       >
         {React.Children.map(props.children, this.renderTreeNode, this)}
-      </ul>
+      </TreeUl>
     );
   }
 }

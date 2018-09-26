@@ -26,6 +26,11 @@ export const NullSwitcher = Switcher.extend`
   opacity: 0;
 `;
 
+export const TreeUl = styled.ul`
+  padding-right: ${em(18)};
+  margin: 0;
+`;
+
 export const Li = styled.li`
   min-height: ${em(MenuItemHeight)};
   line-height: ${em(MenuItemHeight)};
