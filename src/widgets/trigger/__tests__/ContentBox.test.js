@@ -1,6 +1,5 @@
 //@flow
 import React from 'react';
-import chai from 'chai';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 import VisibleBox from '../../common/VisibleBox';
@@ -9,7 +8,6 @@ import ContentBox from '../ContentBox';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-const { expect: exp } = chai;
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('ContentBox', () => {
@@ -22,7 +20,8 @@ describe('ContentBox', () => {
         </ContentBox>
       )
       .toJSON();
-    expect(contentBox).toMatchObject(onlySpan);
+    expect(onlySpan).not.toEqual(null);
+    onlySpan && expect(contentBox).toMatchObject(onlySpan);
     expect(contentBox).toMatchSnapshot();
   });
 
@@ -43,7 +42,7 @@ describe('ContentBox', () => {
         </ContentBox>
       )
       .toJSON();
-    expect(contentBox).toMatchObject(visibleBox);
+    visibleBox && expect(contentBox).toMatchObject(visibleBox);
     expect(contentBox).toMatchSnapshot();
   });
 
@@ -56,7 +55,8 @@ describe('ContentBox', () => {
         </ContentBox>
       )
       .toJSON();
-    expect(contentBox).toMatchObject(onlySpan);
+    expect(onlySpan).not.toEqual(null);
+    onlySpan && expect(contentBox).toMatchObject(onlySpan);
     expect(contentBox).toMatchSnapshot();
   });
 
@@ -75,7 +75,8 @@ describe('ContentBox', () => {
         </ContentBox>
       )
       .toJSON();
-    expect(contentBox).toMatchObject(maskBox);
+    expect(maskBox).not.toEqual(null);
+    maskBox && expect(contentBox).toMatchObject(maskBox);
     expect(contentBox).toMatchSnapshot();
   });
 
@@ -97,7 +98,8 @@ describe('ContentBox', () => {
       )
       .toJSON();
     expect(contentBox).toMatchSnapshot();
-    expect(contentBox).toMatchObject(visibleBox);
+    expect(visibleBox).not.toEqual(null);
+    visibleBox && expect(contentBox).toMatchObject(visibleBox);
     expect(contentBox).toHaveStyleRule('display', 'none');
   });
   it('mask: true, children: more, visible: false', () => {
@@ -118,7 +120,8 @@ describe('ContentBox', () => {
       )
       .toJSON();
     expect(contentBox).toMatchSnapshot();
-    expect(contentBox).toMatchObject(maskBox);
+    expect(maskBox).not.toEqual(null);
+    maskBox && expect(contentBox).toMatchObject(maskBox);
     expect(contentBox).toHaveStyleRule('display', 'none');
   });
 
@@ -140,7 +143,8 @@ describe('ContentBox', () => {
       )
       .toJSON();
     expect(contentBox).toMatchSnapshot();
-    expect(contentBox).toMatchObject(visibleBox);
+    expect(visibleBox).not.toEqual(null);
+    visibleBox && expect(contentBox).toMatchObject(visibleBox);
     expect(contentBox).toHaveStyleRule('display', 'none');
   });
 
@@ -151,9 +155,9 @@ describe('ContentBox', () => {
         <div>{txt}</div>
       </ContentBox>
     );
-    exp(cmp.text()).to.be.equal(txt);
+    expect(cmp.text()).toEqual(txt);
     const textTwo = '全中国';
     cmp.setProps({ children: <div>{textTwo}</div> });
-    exp(cmp.text()).to.be.equal(textTwo);
+    expect(cmp.text()).toEqual(textTwo);
   });
 });

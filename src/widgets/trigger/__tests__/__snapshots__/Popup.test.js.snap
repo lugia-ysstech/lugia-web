@@ -1,25 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Popup Popup snapshot 1`] = `
-Array [
-  undefined,
-  <sv_widget_Align
-    align="bottom"
-    autoResize={true}
-    getTargetDom={[Function]}
-    offsetX={0}
-    offsetY={0}
-    onAlign={[Function]}
-    visible={true}
+.c0 {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  z-index: 1051;
+}
+
+<div
+  className=""
+>
+  <div
+    className="c0"
   >
-    <PopupInner
+    <div
       className=""
-      getTheme={[Function]}
-      style={Object {}}
-      visible={true}
     >
        
-    </PopupInner>
-  </sv_widget_Align>,
-]
+      <div>
+        hello
+      </div>
+    </div>
+  </div>
+</div>
 `;
