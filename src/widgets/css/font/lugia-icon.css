@@ -1,941 +1,935 @@
 @font-face {
-    font-family: "lugia-icon";
-    src: url("./lugia-icon.eot?10be6f7fcb583fcc5094fd8e061f8b84?#iefix") format("embedded-opentype"),
-url("./lugia-icon.woff2?10be6f7fcb583fcc5094fd8e061f8b84") format("woff2"),
-url("./lugia-icon.woff?10be6f7fcb583fcc5094fd8e061f8b84") format("woff"),
-url("./lugia-icon.ttf?10be6f7fcb583fcc5094fd8e061f8b84") format("truetype"),
-url("./lugia-icon.svg?10be6f7fcb583fcc5094fd8e061f8b84#lugia-icon") format("svg");
+  font-family: 'lugia-icon';
+  src: url('./lugia-icon.eot?10be6f7fcb583fcc5094fd8e061f8b84?#iefix') format('embedded-opentype'),
+    url('./lugia-icon.woff2?10be6f7fcb583fcc5094fd8e061f8b84') format('woff2'),
+    url('./lugia-icon.woff?10be6f7fcb583fcc5094fd8e061f8b84') format('woff'),
+    url('./lugia-icon.ttf?10be6f7fcb583fcc5094fd8e061f8b84') format('truetype'),
+    url('./lugia-icon.svg?10be6f7fcb583fcc5094fd8e061f8b84#lugia-icon') format('svg');
 }
 
-:global(i) {
-    line-height: 1;
+i {
+  line-height: 1;
 }
 
-:global(i[class^="lugia-icon-"]) {
-    display: inline-block;
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    vertical-align: baseline;
-    text-align: center;
-    text-rendering: optimizeLegibility;
-    text-transform: none;
-    line-height: 1;
-    text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+i[class^='lugia-icon-'] {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  vertical-align: baseline;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  line-height: 1;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-:global(i[class*=" lugia-icon-"]) {
-    display: inline-block;
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    vertical-align: baseline;
-    text-align: center;
-    text-rendering: optimizeLegibility;
-    text-transform: none;
-    line-height: 1;
-    text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+i[class*=' lugia-icon-'] {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  vertical-align: baseline;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  line-height: 1;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-:global(i[class^="lugia-icon-"]:before) {
-    display: block;
-    font-family: lugia-icon;
-    line-height: 1;
+i[class^='lugia-icon-']:before {
+  display: block;
+  font-family: lugia-icon;
+  line-height: 1;
 }
 
-:global(i[class*=" lugia-icon-"]:before) {
-    display: block;
-    font-family: lugia-icon;
-    line-height: 1;
+i[class*=' lugia-icon-']:before {
+  display: block;
+  font-family: lugia-icon;
+  line-height: 1;
 }
 
-:global(.lugia-icon-direction_arrow_down:before) {
-    content: "\f101";
+.lugia-icon-direction_arrow_down:before {
+  content: '\f101';
 }
-:global(.lugia-icon-direction_arrow_left:before) {
-    content: "\f102";
+.lugia-icon-direction_arrow_left:before {
+  content: '\f102';
 }
-:global(.lugia-icon-direction_arrow_right:before) {
-    content: "\f103";
+.lugia-icon-direction_arrow_right:before {
+  content: '\f103';
 }
-:global(.lugia-icon-direction_arrow_up:before) {
-    content: "\f104";
+.lugia-icon-direction_arrow_up:before {
+  content: '\f104';
 }
-:global(.lugia-icon-direction_arrows_alt:before) {
-    content: "\f105";
+.lugia-icon-direction_arrows_alt:before {
+  content: '\f105';
 }
-:global(.lugia-icon-direction_backward:before) {
-    content: "\f106";
+.lugia-icon-direction_backward:before {
+  content: '\f106';
 }
-:global(.lugia-icon-direction_caret_down:before) {
-    content: "\f107";
+.lugia-icon-direction_caret_down:before {
+  content: '\f107';
 }
-:global(.lugia-icon-direction_caret_left:before) {
-    content: "\f108";
+.lugia-icon-direction_caret_left:before {
+  content: '\f108';
 }
-:global(.lugia-icon-direction_caret_right:before) {
-    content: "\f109";
+.lugia-icon-direction_caret_right:before {
+  content: '\f109';
 }
-:global(.lugia-icon-direction_caret_up:before) {
-    content: "\f10a";
+.lugia-icon-direction_caret_up:before {
+  content: '\f10a';
 }
-:global(.lugia-icon-direction_Center_alignment:before) {
-    content: "\f10b";
+.lugia-icon-direction_Center_alignment:before {
+  content: '\f10b';
 }
-:global(.lugia-icon-direction_double_left:before) {
-    content: "\f10c";
+.lugia-icon-direction_double_left:before {
+  content: '\f10c';
 }
-:global(.lugia-icon-direction_double_right:before) {
-    content: "\f10d";
+.lugia-icon-direction_double_right:before {
+  content: '\f10d';
 }
-:global(.lugia-icon-direction_down_circle_o:before) {
-    content: "\f10e";
+.lugia-icon-direction_down_circle_o:before {
+  content: '\f10e';
 }
-:global(.lugia-icon-direction_down_circle:before) {
-    content: "\f10f";
+.lugia-icon-direction_down_circle:before {
+  content: '\f10f';
 }
-:global(.lugia-icon-direction_down_square_o:before) {
-    content: "\f110";
+.lugia-icon-direction_down_square_o:before {
+  content: '\f110';
 }
-:global(.lugia-icon-direction_down-square:before) {
-    content: "\f111";
+.lugia-icon-direction_down-square:before {
+  content: '\f111';
 }
-:global(.lugia-icon-direction_down:before) {
-    content: "\f112";
+.lugia-icon-direction_down:before {
+  content: '\f112';
 }
-:global(.lugia-icon-direction_enter-57:before) {
-    content: "\f113";
+.lugia-icon-direction_enter-57:before {
+  content: '\f113';
 }
-:global(.lugia-icon-direction_enter:before) {
-    content: "\f114";
+.lugia-icon-direction_enter:before {
+  content: '\f114';
 }
-:global(.lugia-icon-direction_fast_backward:before) {
-    content: "\f115";
+.lugia-icon-direction_fast_backward:before {
+  content: '\f115';
 }
-:global(.lugia-icon-direction_fast_forward:before) {
-    content: "\f116";
+.lugia-icon-direction_fast_forward:before {
+  content: '\f116';
 }
-:global(.lugia-icon-direction_forward:before) {
-    content: "\f117";
+.lugia-icon-direction_forward:before {
+  content: '\f117';
 }
-:global(.lugia-icon-direction_Left_aligned:before) {
-    content: "\f118";
+.lugia-icon-direction_Left_aligned:before {
+  content: '\f118';
 }
-:global(.lugia-icon-direction_left_circle_o:before) {
-    content: "\f119";
+.lugia-icon-direction_left_circle_o:before {
+  content: '\f119';
 }
-:global(.lugia-icon-direction_left_circle:before) {
-    content: "\f11a";
+.lugia-icon-direction_left_circle:before {
+  content: '\f11a';
 }
-:global(.lugia-icon-direction_left_square_o:before) {
-    content: "\f11b";
+.lugia-icon-direction_left_square_o:before {
+  content: '\f11b';
 }
-:global(.lugia-icon-direction_left-square:before) {
-    content: "\f11c";
+.lugia-icon-direction_left-square:before {
+  content: '\f11c';
 }
-:global(.lugia-icon-direction_Left:before) {
-    content: "\f11d";
+.lugia-icon-direction_Left:before {
+  content: '\f11d';
 }
-:global(.lugia-icon-direction_login:before) {
-    content: "\f11e";
+.lugia-icon-direction_login:before {
+  content: '\f11e';
 }
-:global(.lugia-icon-direction_logout:before) {
-    content: "\f11f";
+.lugia-icon-direction_logout:before {
+  content: '\f11f';
 }
-:global(.lugia-icon-direction_menu_food:before) {
-    content: "\f120";
+.lugia-icon-direction_menu_food:before {
+  content: '\f120';
 }
-:global(.lugia-icon-direction_menu_unfood:before) {
-    content: "\f121";
+.lugia-icon-direction_menu_unfood:before {
+  content: '\f121';
 }
-:global(.lugia-icon-direction_play_circle_o:before) {
-    content: "\f122";
+.lugia-icon-direction_play_circle_o:before {
+  content: '\f122';
 }
-:global(.lugia-icon-direction_play_circle:before) {
-    content: "\f123";
+.lugia-icon-direction_play_circle:before {
+  content: '\f123';
 }
-:global(.lugia-icon-direction_retweet:before) {
-    content: "\f124";
+.lugia-icon-direction_retweet:before {
+  content: '\f124';
 }
-:global(.lugia-icon-direction_right_aligned:before) {
-    content: "\f125";
+.lugia-icon-direction_right_aligned:before {
+  content: '\f125';
 }
-:global(.lugia-icon-direction_right_circle_o:before) {
-    content: "\f126";
+.lugia-icon-direction_right_circle_o:before {
+  content: '\f126';
 }
-:global(.lugia-icon-direction_right_circle:before) {
-    content: "\f127";
+.lugia-icon-direction_right_circle:before {
+  content: '\f127';
 }
-:global(.lugia-icon-direction_right_square_o:before) {
-    content: "\f128";
+.lugia-icon-direction_right_square_o:before {
+  content: '\f128';
 }
-:global(.lugia-icon-direction_right-square:before) {
-    content: "\f129";
+.lugia-icon-direction_right-square:before {
+  content: '\f129';
 }
-:global(.lugia-icon-direction_right:before) {
-    content: "\f12a";
+.lugia-icon-direction_right:before {
+  content: '\f12a';
 }
-:global(.lugia-icon-direction_rollback:before) {
-    content: "\f12b";
+.lugia-icon-direction_rollback:before {
+  content: '\f12b';
 }
-:global(.lugia-icon-direction_shrink:before) {
-    content: "\f12c";
+.lugia-icon-direction_shrink:before {
+  content: '\f12c';
 }
-:global(.lugia-icon-direction_step_backward:before) {
-    content: "\f12d";
+.lugia-icon-direction_step_backward:before {
+  content: '\f12d';
 }
-:global(.lugia-icon-direction_step_forward:before) {
-    content: "\f12e";
+.lugia-icon-direction_step_forward:before {
+  content: '\f12e';
 }
-:global(.lugia-icon-direction_swap_left:before) {
-    content: "\f12f";
+.lugia-icon-direction_swap_left:before {
+  content: '\f12f';
 }
-:global(.lugia-icon-direction_swap_right:before) {
-    content: "\f130";
+.lugia-icon-direction_swap_right:before {
+  content: '\f130';
 }
-:global(.lugia-icon-direction_swap:before) {
-    content: "\f131";
+.lugia-icon-direction_swap:before {
+  content: '\f131';
 }
-:global(.lugia-icon-direction_Telescopic:before) {
-    content: "\f132";
+.lugia-icon-direction_Telescopic:before {
+  content: '\f132';
 }
-:global(.lugia-icon-direction_up_circle_o:before) {
-    content: "\f133";
+.lugia-icon-direction_up_circle_o:before {
+  content: '\f133';
 }
-:global(.lugia-icon-direction_up_circle:before) {
-    content: "\f134";
+.lugia-icon-direction_up_circle:before {
+  content: '\f134';
 }
-:global(.lugia-icon-direction_up_square_o:before) {
-    content: "\f135";
+.lugia-icon-direction_up_square_o:before {
+  content: '\f135';
 }
-:global(.lugia-icon-direction_up-square:before) {
-    content: "\f136";
+.lugia-icon-direction_up-square:before {
+  content: '\f136';
 }
-:global(.lugia-icon-direction_up:before) {
-    content: "\f137";
+.lugia-icon-direction_up:before {
+  content: '\f137';
 }
-:global(.lugia-icon-direction_verticle_left:before) {
-    content: "\f138";
+.lugia-icon-direction_verticle_left:before {
+  content: '\f138';
 }
-:global(.lugia-icon-direction_verticle_right:before) {
-    content: "\f139";
+.lugia-icon-direction_verticle_right:before {
+  content: '\f139';
 }
-:global(.lugia-icon-finacial1_check_all:before) {
-    content: "\f13a";
+.lugia-icon-finacial1_check_all:before {
+  content: '\f13a';
 }
-:global(.lugia-icon-finacial1_deselection:before) {
-    content: "\f13b";
+.lugia-icon-finacial1_deselection:before {
+  content: '\f13b';
 }
-:global(.lugia-icon-financial_abort:before) {
-    content: "\f13c";
+.lugia-icon-financial_abort:before {
+  content: '\f13c';
 }
-:global(.lugia-icon-financial_add_pic:before) {
-    content: "\f13d";
+.lugia-icon-financial_add_pic:before {
+  content: '\f13d';
 }
-:global(.lugia-icon-financial_amplification:before) {
-    content: "\f13e";
+.lugia-icon-financial_amplification:before {
+  content: '\f13e';
 }
-:global(.lugia-icon-financial_archive:before) {
-    content: "\f13f";
+.lugia-icon-financial_archive:before {
+  content: '\f13f';
 }
-:global(.lugia-icon-financial_audit:before) {
-    content: "\f140";
+.lugia-icon-financial_audit:before {
+  content: '\f140';
 }
-:global(.lugia-icon-financial_Back_file:before) {
-    content: "\f141";
+.lugia-icon-financial_Back_file:before {
+  content: '\f141';
 }
-:global(.lugia-icon-financial_bank:before) {
-    content: "\f142";
+.lugia-icon-financial_bank:before {
+  content: '\f142';
 }
-:global(.lugia-icon-financial_bar_code:before) {
-    content: "\f143";
+.lugia-icon-financial_bar_code:before {
+  content: '\f143';
 }
-:global(.lugia-icon-financial_bell:before) {
-    content: "\f144";
+.lugia-icon-financial_bell:before {
+  content: '\f144';
 }
-:global(.lugia-icon-financial_bold:before) {
-    content: "\f145";
+.lugia-icon-financial_bold:before {
+  content: '\f145';
 }
-:global(.lugia-icon-financial_calculator:before) {
-    content: "\f146";
+.lugia-icon-financial_calculator:before {
+  content: '\f146';
 }
-:global(.lugia-icon-financial_camera:before) {
-    content: "\f147";
+.lugia-icon-financial_camera:before {
+  content: '\f147';
 }
-:global(.lugia-icon-financial_choose:before) {
-    content: "\f148";
+.lugia-icon-financial_choose:before {
+  content: '\f148';
 }
-:global(.lugia-icon-financial_classification:before) {
-    content: "\f149";
+.lugia-icon-financial_classification:before {
+  content: '\f149';
 }
-:global(.lugia-icon-financial_clip:before) {
-    content: "\f14a";
+.lugia-icon-financial_clip:before {
+  content: '\f14a';
 }
-:global(.lugia-icon-financial_cloud:before) {
-    content: "\f14b";
+.lugia-icon-financial_cloud:before {
+  content: '\f14b';
 }
-:global(.lugia-icon-financial_code:before) {
-    content: "\f14c";
+.lugia-icon-financial_code:before {
+  content: '\f14c';
 }
-:global(.lugia-icon-financial_column_width:before) {
-    content: "\f14d";
+.lugia-icon-financial_column_width:before {
+  content: '\f14d';
 }
-:global(.lugia-icon-financial_columns:before) {
-    content: "\f14e";
+.lugia-icon-financial_columns:before {
+  content: '\f14e';
 }
-:global(.lugia-icon-financial_compass:before) {
-    content: "\f14f";
+.lugia-icon-financial_compass:before {
+  content: '\f14f';
 }
-:global(.lugia-icon-financial_conference:before) {
-    content: "\f150";
+.lugia-icon-financial_conference:before {
+  content: '\f150';
 }
-:global(.lugia-icon-financial_contacts:before) {
-    content: "\f151";
+.lugia-icon-financial_contacts:before {
+  content: '\f151';
 }
-:global(.lugia-icon-financial_copy:before) {
-    content: "\f152";
+.lugia-icon-financial_copy:before {
+  content: '\f152';
 }
-:global(.lugia-icon-financial_credit_card:before) {
-    content: "\f153";
+.lugia-icon-financial_credit_card:before {
+  content: '\f153';
 }
-:global(.lugia-icon-financial_database:before) {
-    content: "\f154";
+.lugia-icon-financial_database:before {
+  content: '\f154';
 }
-:global(.lugia-icon-financial_date:before) {
-    content: "\f155";
+.lugia-icon-financial_date:before {
+  content: '\f155';
 }
-:global(.lugia-icon-financial_delete:before) {
-    content: "\f156";
+.lugia-icon-financial_delete:before {
+  content: '\f156';
 }
-:global(.lugia-icon-financial_describe:before) {
-    content: "\f157";
+.lugia-icon-financial_describe:before {
+  content: '\f157';
 }
-:global(.lugia-icon-financial_disconnect:before) {
-    content: "\f158";
+.lugia-icon-financial_disconnect:before {
+  content: '\f158';
 }
-:global(.lugia-icon-financial_download_cloud:before) {
-    content: "\f159";
+.lugia-icon-financial_download_cloud:before {
+  content: '\f159';
 }
-:global(.lugia-icon-financial_download:before) {
-    content: "\f15a";
+.lugia-icon-financial_download:before {
+  content: '\f15a';
 }
-:global(.lugia-icon-financial_e-mail:before) {
-    content: "\f15b";
+.lugia-icon-financial_e-mail:before {
+  content: '\f15b';
 }
-:global(.lugia-icon-financial_editor:before) {
-    content: "\f15c";
+.lugia-icon-financial_editor:before {
+  content: '\f15c';
 }
-:global(.lugia-icon-financial_environment:before) {
-    content: "\f15d";
+.lugia-icon-financial_environment:before {
+  content: '\f15d';
 }
-:global(.lugia-icon-financial_excle:before) {
-    content: "\f15e";
+.lugia-icon-financial_excle:before {
+  content: '\f15e';
 }
-:global(.lugia-icon-financial_export:before) {
-    content: "\f15f";
+.lugia-icon-financial_export:before {
+  content: '\f15f';
 }
-:global(.lugia-icon-financial_file_unknown:before) {
-    content: "\f160";
+.lugia-icon-financial_file_unknown:before {
+  content: '\f160';
 }
-:global(.lugia-icon-financial_filing_cabinet:before) {
-    content: "\f161";
+.lugia-icon-financial_filing_cabinet:before {
+  content: '\f161';
 }
-:global(.lugia-icon-financial_filter:before) {
-    content: "\f162";
+.lugia-icon-financial_filter:before {
+  content: '\f162';
 }
-:global(.lugia-icon-financial_folder_add:before) {
-    content: "\f163";
+.lugia-icon-financial_folder_add:before {
+  content: '\f163';
 }
-:global(.lugia-icon-financial_folder_open:before) {
-    content: "\f164";
+.lugia-icon-financial_folder_open:before {
+  content: '\f164';
 }
-:global(.lugia-icon-financial_folder:before) {
-    content: "\f165";
+.lugia-icon-financial_folder:before {
+  content: '\f165';
 }
-:global(.lugia-icon-financial_font_colors:before) {
-    content: "\f166";
+.lugia-icon-financial_font_colors:before {
+  content: '\f166';
 }
-:global(.lugia-icon-financial_font_size:before) {
-    content: "\f167";
+.lugia-icon-financial_font_size:before {
+  content: '\f167';
 }
-:global(.lugia-icon-financial_form:before) {
-    content: "\f168";
+.lugia-icon-financial_form:before {
+  content: '\f168';
 }
-:global(.lugia-icon-financial_founder:before) {
-    content: "\f169";
+.lugia-icon-financial_founder:before {
+  content: '\f169';
 }
-:global(.lugia-icon-financial_framework:before) {
-    content: "\f16a";
+.lugia-icon-financial_framework:before {
+  content: '\f16a';
 }
-:global(.lugia-icon-financial_global:before) {
-    content: "\f16b";
+.lugia-icon-financial_global:before {
+  content: '\f16b';
 }
-:global(.lugia-icon-financial_graph:before) {
-    content: "\f16c";
+.lugia-icon-financial_graph:before {
+  content: '\f16c';
 }
-:global(.lugia-icon-financial_group:before) {
-    content: "\f16d";
+.lugia-icon-financial_group:before {
+  content: '\f16d';
 }
-:global(.lugia-icon-financial_hard_disk:before) {
-    content: "\f16e";
+.lugia-icon-financial_hard_disk:before {
+  content: '\f16e';
 }
-:global(.lugia-icon-financial_head:before) {
-    content: "\f16f";
+.lugia-icon-financial_head:before {
+  content: '\f16f';
 }
-:global(.lugia-icon-financial_heart_o:before) {
-    content: "\f170";
+.lugia-icon-financial_heart_o:before {
+  content: '\f170';
 }
-:global(.lugia-icon-financial_heart:before) {
-    content: "\f171";
+.lugia-icon-financial_heart:before {
+  content: '\f171';
 }
-:global(.lugia-icon-financial_histogram:before) {
-    content: "\f172";
+.lugia-icon-financial_histogram:before {
+  content: '\f172';
 }
-:global(.lugia-icon-financial_home:before) {
-    content: "\f173";
+.lugia-icon-financial_home:before {
+  content: '\f173';
 }
-:global(.lugia-icon-financial_Hourglass:before) {
-    content: "\f174";
+.lugia-icon-financial_Hourglass:before {
+  content: '\f174';
 }
-:global(.lugia-icon-financial_information-124:before) {
-    content: "\f175";
+.lugia-icon-financial_information-124:before {
+  content: '\f175';
 }
-:global(.lugia-icon-financial_information-89:before) {
-    content: "\f176";
+.lugia-icon-financial_information-89:before {
+  content: '\f176';
 }
-:global(.lugia-icon-financial_italic:before) {
-    content: "\f177";
+.lugia-icon-financial_italic:before {
+  content: '\f177';
 }
-:global(.lugia-icon-financial_jpg:before) {
-    content: "\f178";
+.lugia-icon-financial_jpg:before {
+  content: '\f178';
 }
-:global(.lugia-icon-financial_key:before) {
-    content: "\f179";
+.lugia-icon-financial_key:before {
+  content: '\f179';
 }
-:global(.lugia-icon-financial_layout:before) {
-    content: "\f17a";
+.lugia-icon-financial_layout:before {
+  content: '\f17a';
 }
-:global(.lugia-icon-financial_like_o:before) {
-    content: "\f17b";
+.lugia-icon-financial_like_o:before {
+  content: '\f17b';
 }
-:global(.lugia-icon-financial_like:before) {
-    content: "\f17c";
+.lugia-icon-financial_like:before {
+  content: '\f17c';
 }
-:global(.lugia-icon-financial_line_height:before) {
-    content: "\f17d";
+.lugia-icon-financial_line_height:before {
+  content: '\f17d';
 }
-:global(.lugia-icon-financial_line:before) {
-    content: "\f17e";
+.lugia-icon-financial_line:before {
+  content: '\f17e';
 }
-:global(.lugia-icon-financial_link:before) {
-    content: "\f17f";
+.lugia-icon-financial_link:before {
+  content: '\f17f';
 }
-:global(.lugia-icon-financial_loading_o:before) {
-    content: "\f180";
+.lugia-icon-financial_loading_o:before {
+  content: '\f180';
 }
-:global(.lugia-icon-financial_loading:before) {
-    content: "\f181";
+.lugia-icon-financial_loading:before {
+  content: '\f181';
 }
-:global(.lugia-icon-financial_lock:before) {
-    content: "\f182";
+.lugia-icon-financial_lock:before {
+  content: '\f182';
 }
-:global(.lugia-icon-financial_man:before) {
-    content: "\f183";
+.lugia-icon-financial_man:before {
+  content: '\f183';
 }
-:global(.lugia-icon-financial_markdown:before) {
-    content: "\f184";
+.lugia-icon-financial_markdown:before {
+  content: '\f184';
 }
-:global(.lugia-icon-financial_meh_o:before) {
-    content: "\f185";
+.lugia-icon-financial_meh_o:before {
+  content: '\f185';
 }
-:global(.lugia-icon-financial_meh:before) {
-    content: "\f186";
+.lugia-icon-financial_meh:before {
+  content: '\f186';
 }
-:global(.lugia-icon-financial_monitoring:before) {
-    content: "\f187";
+.lugia-icon-financial_monitoring:before {
+  content: '\f187';
 }
-:global(.lugia-icon-financial_more:before) {
-    content: "\f188";
+.lugia-icon-financial_more:before {
+  content: '\f188';
 }
-:global(.lugia-icon-financial_move:before) {
-    content: "\f189";
+.lugia-icon-financial_move:before {
+  content: '\f189';
 }
-:global(.lugia-icon-financial_notification:before) {
-    content: "\f18a";
+.lugia-icon-financial_notification:before {
+  content: '\f18a';
 }
-:global(.lugia-icon-financial_number:before) {
-    content: "\f18b";
+.lugia-icon-financial_number:before {
+  content: '\f18b';
 }
-:global(.lugia-icon-financial_omit:before) {
-    content: "\f18c";
+.lugia-icon-financial_omit:before {
+  content: '\f18c';
 }
-:global(.lugia-icon-financial_ordered_list:before) {
-    content: "\f18d";
+.lugia-icon-financial_ordered_list:before {
+  content: '\f18d';
 }
-:global(.lugia-icon-financial_paper_clip:before) {
-    content: "\f18e";
+.lugia-icon-financial_paper_clip:before {
+  content: '\f18e';
 }
-:global(.lugia-icon-financial_pay:before) {
-    content: "\f18f";
+.lugia-icon-financial_pay:before {
+  content: '\f18f';
 }
-:global(.lugia-icon-financial_pdf:before) {
-    content: "\f190";
+.lugia-icon-financial_pdf:before {
+  content: '\f190';
 }
-:global(.lugia-icon-financial_pic_center:before) {
-    content: "\f191";
+.lugia-icon-financial_pic_center:before {
+  content: '\f191';
 }
-:global(.lugia-icon-financial_pic_left:before) {
-    content: "\f192";
+.lugia-icon-financial_pic_left:before {
+  content: '\f192';
 }
-:global(.lugia-icon-financial_pic_right:before) {
-    content: "\f193";
+.lugia-icon-financial_pic_right:before {
+  content: '\f193';
 }
-:global(.lugia-icon-financial_pic:before) {
-    content: "\f194";
+.lugia-icon-financial_pic:before {
+  content: '\f194';
 }
-:global(.lugia-icon-financial_pie-chart:before) {
-    content: "\f195";
+.lugia-icon-financial_pie-chart:before {
+  content: '\f195';
 }
-:global(.lugia-icon-financial_pin:before) {
-    content: "\f196";
+.lugia-icon-financial_pin:before {
+  content: '\f196';
 }
-:global(.lugia-icon-financial_poweroff:before) {
-    content: "\f197";
+.lugia-icon-financial_poweroff:before {
+  content: '\f197';
 }
-:global(.lugia-icon-financial_ppt:before) {
-    content: "\f198";
+.lugia-icon-financial_ppt:before {
+  content: '\f198';
 }
-:global(.lugia-icon-financial_print:before) {
-    content: "\f199";
+.lugia-icon-financial_print:before {
+  content: '\f199';
 }
-:global(.lugia-icon-financial_progress:before) {
-    content: "\f19a";
+.lugia-icon-financial_progress:before {
+  content: '\f19a';
 }
-:global(.lugia-icon-financial_QR_code:before) {
-    content: "\f19b";
+.lugia-icon-financial_QR_code:before {
+  content: '\f19b';
 }
-:global(.lugia-icon-financial_questionnaire:before) {
-    content: "\f19c";
+.lugia-icon-financial_questionnaire:before {
+  content: '\f19c';
 }
-:global(.lugia-icon-financial_release_letter:before) {
-    content: "\f19d";
+.lugia-icon-financial_release_letter:before {
+  content: '\f19d';
 }
-:global(.lugia-icon-financial_release:before) {
-    content: "\f19e";
+.lugia-icon-financial_release:before {
+  content: '\f19e';
 }
-:global(.lugia-icon-financial_remind:before) {
-    content: "\f19f";
+.lugia-icon-financial_remind:before {
+  content: '\f19f';
 }
-:global(.lugia-icon-financial_remote_control:before) {
-    content: "\f1a0";
+.lugia-icon-financial_remote_control:before {
+  content: '\f1a0';
 }
-:global(.lugia-icon-financial_resd:before) {
-    content: "\f1a1";
+.lugia-icon-financial_resd:before {
+  content: '\f1a1';
 }
-:global(.lugia-icon-financial_sad_o:before) {
-    content: "\f1a2";
+.lugia-icon-financial_sad_o:before {
+  content: '\f1a2';
 }
-:global(.lugia-icon-financial_sad:before) {
-    content: "\f1a3";
+.lugia-icon-financial_sad:before {
+  content: '\f1a3';
 }
-:global(.lugia-icon-financial_safe:before) {
-    content: "\f1a4";
+.lugia-icon-financial_safe:before {
+  content: '\f1a4';
 }
-:global(.lugia-icon-financial_save:before) {
-    content: "\f1a5";
+.lugia-icon-financial_save:before {
+  content: '\f1a5';
 }
-:global(.lugia-icon-financial_scan:before) {
-    content: "\f1a6";
+.lugia-icon-financial_scan:before {
+  content: '\f1a6';
 }
-:global(.lugia-icon-financial_search:before) {
-    content: "\f1a7";
+.lugia-icon-financial_search:before {
+  content: '\f1a7';
 }
-:global(.lugia-icon-financial_service:before) {
-    content: "\f1a8";
+.lugia-icon-financial_service:before {
+  content: '\f1a8';
 }
-:global(.lugia-icon-financial_setting:before) {
-    content: "\f1a9";
+.lugia-icon-financial_setting:before {
+  content: '\f1a9';
 }
-:global(.lugia-icon-financial_share:before) {
-    content: "\f1aa";
+.lugia-icon-financial_share:before {
+  content: '\f1aa';
 }
-:global(.lugia-icon-financial_shrink:before) {
-    content: "\f1ab";
+.lugia-icon-financial_shrink:before {
+  content: '\f1ab';
 }
-:global(.lugia-icon-financial_skin:before) {
-    content: "\f1ac";
+.lugia-icon-financial_skin:before {
+  content: '\f1ac';
 }
-:global(.lugia-icon-financial_smile_o:before) {
-    content: "\f1ad";
+.lugia-icon-financial_smile_o:before {
+  content: '\f1ad';
 }
-:global(.lugia-icon-financial_smile:before) {
-    content: "\f1ae";
+.lugia-icon-financial_smile:before {
+  content: '\f1ae';
 }
-:global(.lugia-icon-financial_sort_ascending:before) {
-    content: "\f1af";
+.lugia-icon-financial_sort_ascending:before {
+  content: '\f1af';
 }
-:global(.lugia-icon-financial_sort_descending:before) {
-    content: "\f1b0";
+.lugia-icon-financial_sort_descending:before {
+  content: '\f1b0';
 }
-:global(.lugia-icon-financial_special_focus:before) {
-    content: "\f1b1";
+.lugia-icon-financial_special_focus:before {
+  content: '\f1b1';
 }
-:global(.lugia-icon-financial_star_o:before) {
-    content: "\f1b2";
+.lugia-icon-financial_star_o:before {
+  content: '\f1b2';
 }
-:global(.lugia-icon-financial_star:before) {
-    content: "\f1b3";
+.lugia-icon-financial_star:before {
+  content: '\f1b3';
 }
-:global(.lugia-icon-financial_statistical_add:before) {
-    content: "\f1b4";
+.lugia-icon-financial_statistical_add:before {
+  content: '\f1b4';
 }
-:global(.lugia-icon-financial_statistics:before) {
-    content: "\f1b5";
+.lugia-icon-financial_statistics:before {
+  content: '\f1b5';
 }
-:global(.lugia-icon-financial_strikethrough:before) {
-    content: "\f1b6";
+.lugia-icon-financial_strikethrough:before {
+  content: '\f1b6';
 }
-:global(.lugia-icon-financial_subtasks:before) {
-    content: "\f1b7";
+.lugia-icon-financial_subtasks:before {
+  content: '\f1b7';
 }
-:global(.lugia-icon-financial_switch_e_and_c:before) {
-    content: "\f1b8";
+.lugia-icon-financial_switch_e_and_c:before {
+  content: '\f1b8';
 }
-:global(.lugia-icon-financial_table:before) {
-    content: "\f1b9";
+.lugia-icon-financial_table:before {
+  content: '\f1b9';
 }
-:global(.lugia-icon-financial_tag:before) {
-    content: "\f1ba";
+.lugia-icon-financial_tag:before {
+  content: '\f1ba';
 }
-:global(.lugia-icon-financial_tags:before) {
-    content: "\f1bb";
+.lugia-icon-financial_tags:before {
+  content: '\f1bb';
 }
-:global(.lugia-icon-financial_text:before) {
-    content: "\f1bc";
+.lugia-icon-financial_text:before {
+  content: '\f1bc';
 }
-:global(.lugia-icon-financial_tools:before) {
-    content: "\f1bd";
+.lugia-icon-financial_tools:before {
+  content: '\f1bd';
 }
-:global(.lugia-icon-financial_transfer_i:before) {
-    content: "\f1be";
+.lugia-icon-financial_transfer_i:before {
+  content: '\f1be';
 }
-:global(.lugia-icon-financial_transfer_u:before) {
-    content: "\f1bf";
+.lugia-icon-financial_transfer_u:before {
+  content: '\f1bf';
 }
-:global(.lugia-icon-financial_underline:before) {
-    content: "\f1c0";
+.lugia-icon-financial_underline:before {
+  content: '\f1c0';
 }
-:global(.lugia-icon-financial_unlike_o:before) {
-    content: "\f1c1";
+.lugia-icon-financial_unlike_o:before {
+  content: '\f1c1';
 }
-:global(.lugia-icon-financial_unlike:before) {
-    content: "\f1c2";
+.lugia-icon-financial_unlike:before {
+  content: '\f1c2';
 }
-:global(.lugia-icon-financial_unlock:before) {
-    content: "\f1c3";
+.lugia-icon-financial_unlock:before {
+  content: '\f1c3';
 }
-:global(.lugia-icon-financial_unordered_list:before) {
-    content: "\f1c4";
+.lugia-icon-financial_unordered_list:before {
+  content: '\f1c4';
 }
-:global(.lugia-icon-financial_upload_cloud:before) {
-    content: "\f1c5";
+.lugia-icon-financial_upload_cloud:before {
+  content: '\f1c5';
 }
-:global(.lugia-icon-financial_upload:before) {
-    content: "\f1c6";
+.lugia-icon-financial_upload:before {
+  content: '\f1c6';
 }
-:global(.lugia-icon-financial_usb:before) {
-    content: "\f1c7";
+.lugia-icon-financial_usb:before {
+  content: '\f1c7';
 }
-:global(.lugia-icon-financial_user:before) {
-    content: "\f1c8";
+.lugia-icon-financial_user:before {
+  content: '\f1c8';
 }
-:global(.lugia-icon-financial_video_camera:before) {
-    content: "\f1c9";
+.lugia-icon-financial_video_camera:before {
+  content: '\f1c9';
 }
-:global(.lugia-icon-financial_voice-102:before) {
-    content: "\f1ca";
+.lugia-icon-financial_voice-102:before {
+  content: '\f1ca';
 }
-:global(.lugia-icon-financial_voice-53:before) {
-    content: "\f1cb";
+.lugia-icon-financial_voice-53:before {
+  content: '\f1cb';
 }
-:global(.lugia-icon-financial_wallet:before) {
-    content: "\f1cc";
+.lugia-icon-financial_wallet:before {
+  content: '\f1cc';
 }
-:global(.lugia-icon-financial_warnings:before) {
-    content: "\f1cd";
+.lugia-icon-financial_warnings:before {
+  content: '\f1cd';
 }
-:global(.lugia-icon-financial_wifi:before) {
-    content: "\f1ce";
+.lugia-icon-financial_wifi:before {
+  content: '\f1ce';
 }
-:global(.lugia-icon-financial_women:before) {
-    content: "\f1cf";
+.lugia-icon-financial_women:before {
+  content: '\f1cf';
 }
-:global(.lugia-icon-financial_word:before) {
-    content: "\f1d0";
+.lugia-icon-financial_word:before {
+  content: '\f1d0';
 }
-:global(.lugia-icon-reminder_refresh:before) {
-    content: "\f1d1";
+.lugia-icon-reminder_refresh:before {
+  content: '\f1d1';
 }
-:global(.lugia-icon-logo_aliyun:before) {
-    content: "\f1d2";
+.lugia-icon-logo_aliyun:before {
+  content: '\f1d2';
 }
-:global(.lugia-icon-logo_android_o:before) {
-    content: "\f1d3";
+.lugia-icon-logo_android_o:before {
+  content: '\f1d3';
 }
-:global(.lugia-icon-logo_android:before) {
-    content: "\f1d4";
+.lugia-icon-logo_android:before {
+  content: '\f1d4';
 }
-:global(.lugia-icon-logo_apple_o:before) {
-    content: "\f1d5";
+.lugia-icon-logo_apple_o:before {
+  content: '\f1d5';
 }
-:global(.lugia-icon-logo_apple:before) {
-    content: "\f1d6";
+.lugia-icon-logo_apple:before {
+  content: '\f1d6';
 }
-:global(.lugia-icon-logo_baidu:before) {
-    content: "\f1d7";
+.lugia-icon-logo_baidu:before {
+  content: '\f1d7';
 }
-:global(.lugia-icon-logo_behance:before) {
-    content: "\f1d8";
+.lugia-icon-logo_behance:before {
+  content: '\f1d8';
 }
-:global(.lugia-icon-logo_chrome:before) {
-    content: "\f1d9";
+.lugia-icon-logo_chrome:before {
+  content: '\f1d9';
 }
-:global(.lugia-icon-logo_codepen_ciecle:before) {
-    content: "\f1da";
+.lugia-icon-logo_codepen_ciecle:before {
+  content: '\f1da';
 }
-:global(.lugia-icon-logo_codepen:before) {
-    content: "\f1db";
+.lugia-icon-logo_codepen:before {
+  content: '\f1db';
 }
-:global(.lugia-icon-logo_csswizardry:before) {
-    content: "\f1dc";
+.lugia-icon-logo_csswizardry:before {
+  content: '\f1dc';
 }
-:global(.lugia-icon-logo_datastream:before) {
-    content: "\f1dd";
+.lugia-icon-logo_datastream:before {
+  content: '\f1dd';
 }
-:global(.lugia-icon-logo_dingding_circle:before) {
-    content: "\f1de";
+.lugia-icon-logo_dingding_circle:before {
+  content: '\f1de';
 }
-:global(.lugia-icon-logo_dingding:before) {
-    content: "\f1df";
+.lugia-icon-logo_dingding:before {
+  content: '\f1df';
 }
-:global(.lugia-icon-logo_dribbble:before) {
-    content: "\f1e0";
+.lugia-icon-logo_dribbble:before {
+  content: '\f1e0';
 }
-:global(.lugia-icon-logo_dropbox:before) {
-    content: "\f1e1";
+.lugia-icon-logo_dropbox:before {
+  content: '\f1e1';
 }
-:global(.lugia-icon-logo_facebook:before) {
-    content: "\f1e2";
+.lugia-icon-logo_facebook:before {
+  content: '\f1e2';
 }
-:global(.lugia-icon-logo_github:before) {
-    content: "\f1e3";
+.lugia-icon-logo_github:before {
+  content: '\f1e3';
 }
-:global(.lugia-icon-logo_gitlab:before) {
-    content: "\f1e4";
+.lugia-icon-logo_gitlab:before {
+  content: '\f1e4';
 }
-:global(.lugia-icon-logo_google_plus:before) {
-    content: "\f1e5";
+.lugia-icon-logo_google_plus:before {
+  content: '\f1e5';
 }
-:global(.lugia-icon-logo_google:before) {
-    content: "\f1e6";
+.lugia-icon-logo_google:before {
+  content: '\f1e6';
 }
-:global(.lugia-icon-logo_henghe:before) {
-    content: "\f1e7";
+.lugia-icon-logo_henghe:before {
+  content: '\f1e7';
 }
-:global(.lugia-icon-logo_html5:before) {
-    content: "\f1e8";
+.lugia-icon-logo_html5:before {
+  content: '\f1e8';
 }
-:global(.lugia-icon-logo_ie:before) {
-    content: "\f1e9";
+.lugia-icon-logo_ie:before {
+  content: '\f1e9';
 }
-:global(.lugia-icon-logo_instagram:before) {
-    content: "\f1ea";
+.lugia-icon-logo_instagram:before {
+  content: '\f1ea';
 }
-:global(.lugia-icon-logo_linkedin:before) {
-    content: "\f1eb";
+.lugia-icon-logo_linkedin:before {
+  content: '\f1eb';
 }
-:global(.lugia-icon-logo_lugia:before) {
-    content: "\f1ec";
+.lugia-icon-logo_lugia:before {
+  content: '\f1ec';
 }
-:global(.lugia-icon-logo_medium:before) {
-    content: "\f1ed";
+.lugia-icon-logo_medium:before {
+  content: '\f1ed';
 }
-:global(.lugia-icon-logo_QQ:before) {
-    content: "\f1ee";
+.lugia-icon-logo_QQ:before {
+  content: '\f1ee';
 }
-:global(.lugia-icon-logo_skype:before) {
-    content: "\f1ef";
+.lugia-icon-logo_skype:before {
+  content: '\f1ef';
 }
-:global(.lugia-icon-logo_twitter:before) {
-    content: "\f1f0";
+.lugia-icon-logo_twitter:before {
+  content: '\f1f0';
 }
-:global(.lugia-icon-logo_visa:before) {
-    content: "\f1f1";
+.lugia-icon-logo_visa:before {
+  content: '\f1f1';
 }
-:global(.lugia-icon-logo_wechat:before) {
-    content: "\f1f2";
+.lugia-icon-logo_wechat:before {
+  content: '\f1f2';
 }
-:global(.lugia-icon-logo_weibo_circle:before) {
-    content: "\f1f3";
+.lugia-icon-logo_weibo_circle:before {
+  content: '\f1f3';
 }
-:global(.lugia-icon-logo_weibo:before) {
-    content: "\f1f4";
+.lugia-icon-logo_weibo:before {
+  content: '\f1f4';
 }
-:global(.lugia-icon-logo_windows_o:before) {
-    content: "\f1f5";
+.lugia-icon-logo_windows_o:before {
+  content: '\f1f5';
 }
-:global(.lugia-icon-logo_windows:before) {
-    content: "\f1f6";
+.lugia-icon-logo_windows:before {
+  content: '\f1f6';
 }
-:global(.lugia-icon-logo_ysstech:before) {
-    content: "\f1f7";
+.lugia-icon-logo_ysstech:before {
+  content: '\f1f7';
 }
-:global(.lugia-icon-logo_zhifubao_circle:before) {
-    content: "\f1f8";
+.lugia-icon-logo_zhifubao_circle:before {
+  content: '\f1f8';
 }
-:global(.lugia-icon-logo_zhifubao:before) {
-    content: "\f1f9";
+.lugia-icon-logo_zhifubao:before {
+  content: '\f1f9';
 }
-:global(.lugia-icon-reminder_ban:before) {
-    content: "\f1fa";
+.lugia-icon-reminder_ban:before {
+  content: '\f1fa';
 }
-:global(.lugia-icon-reminder_check_circle_o:before) {
-    content: "\f1fb";
+.lugia-icon-reminder_check_circle_o:before {
+  content: '\f1fb';
 }
-:global(.lugia-icon-reminder_check_circle:before) {
-    content: "\f1fc";
+.lugia-icon-reminder_check_circle:before {
+  content: '\f1fc';
 }
-:global(.lugia-icon-reminder_check_square_o:before) {
-    content: "\f1fd";
+.lugia-icon-reminder_check_square_o:before {
+  content: '\f1fd';
 }
-:global(.lugia-icon-reminder_check_square:before) {
-    content: "\f1fe";
+.lugia-icon-reminder_check_square:before {
+  content: '\f1fe';
 }
-:global(.lugia-icon-reminder_check:before) {
-    content: "\f1ff";
+.lugia-icon-reminder_check:before {
+  content: '\f1ff';
 }
-:global(.lugia-icon-reminder_clock_circle_o:before) {
-    content: "\f200";
+.lugia-icon-reminder_clock_circle_o:before {
+  content: '\f200';
 }
-:global(.lugia-icon-reminder_clock_circle:before) {
-    content: "\f201";
+.lugia-icon-reminder_clock_circle:before {
+  content: '\f201';
 }
-:global(.lugia-icon-reminder_close_circle_o:before) {
-    content: "\f202";
+.lugia-icon-reminder_close_circle_o:before {
+  content: '\f202';
 }
-:global(.lugia-icon-reminder_close_circle:before) {
-    content: "\f203";
+.lugia-icon-reminder_close_circle:before {
+  content: '\f203';
 }
-:global(.lugia-icon-reminder_close_square_o:before) {
-    content: "\f204";
+.lugia-icon-reminder_close_square_o:before {
+  content: '\f204';
 }
-:global(.lugia-icon-reminder_close_square:before) {
-    content: "\f205";
+.lugia-icon-reminder_close_square:before {
+  content: '\f205';
 }
-:global(.lugia-icon-reminder_close:before) {
-    content: "\f206";
+.lugia-icon-reminder_close:before {
+  content: '\f206';
 }
-:global(.lugia-icon-reminder_exclamation_circle_o:before) {
-    content: "\f207";
+.lugia-icon-reminder_exclamation_circle_o:before {
+  content: '\f207';
 }
-:global(.lugia-icon-reminder_exclamation_circle:before) {
-    content: "\f208";
+.lugia-icon-reminder_exclamation_circle:before {
+  content: '\f208';
 }
-:global(.lugia-icon-reminder_exclamation:before) {
-    content: "\f209";
+.lugia-icon-reminder_exclamation:before {
+  content: '\f209';
 }
-:global(.lugia-icon-reminder_info_circle_o:before) {
-    content: "\f20a";
+.lugia-icon-reminder_info_circle_o:before {
+  content: '\f20a';
 }
-:global(.lugia-icon-reminder_info_circle:before) {
-    content: "\f20b";
+.lugia-icon-reminder_info_circle:before {
+  content: '\f20b';
 }
-:global(.lugia-icon-reminder_info:before) {
-    content: "\f20c";
+.lugia-icon-reminder_info:before {
+  content: '\f20c';
 }
-:global(.lugia-icon-reminder_minus_circle_o:before) {
-    content: "\f20d";
+.lugia-icon-reminder_minus_circle_o:before {
+  content: '\f20d';
 }
-:global(.lugia-icon-reminder_minus_circle:before) {
-    content: "\f20e";
+.lugia-icon-reminder_minus_circle:before {
+  content: '\f20e';
 }
-:global(.lugia-icon-reminder_minus_square_o:before) {
-    content: "\f20f";
+.lugia-icon-reminder_minus_square_o:before {
+  content: '\f20f';
 }
-:global(.lugia-icon-reminder_minus_square:before) {
-    content: "\f210";
+.lugia-icon-reminder_minus_square:before {
+  content: '\f210';
 }
-:global(.lugia-icon-reminder_minus:before) {
-    content: "\f211";
+.lugia-icon-reminder_minus:before {
+  content: '\f211';
 }
-:global(.lugia-icon-reminder_pause_circle_o:before) {
-    content: "\f212";
+.lugia-icon-reminder_pause_circle_o:before {
+  content: '\f212';
 }
-:global(.lugia-icon-reminder_pause_circle:before) {
-    content: "\f213";
+.lugia-icon-reminder_pause_circle:before {
+  content: '\f213';
 }
-:global(.lugia-icon-reminder_pause_cycle:before) {
-    content: "\f214";
+.lugia-icon-reminder_pause_cycle:before {
+  content: '\f214';
 }
-:global(.lugia-icon-reminder_pause:before) {
-    content: "\f215";
+.lugia-icon-reminder_pause:before {
+  content: '\f215';
 }
-:global(.lugia-icon-reminder_plus_circle_o:before) {
-    content: "\f216";
+.lugia-icon-reminder_plus_circle_o:before {
+  content: '\f216';
 }
-:global(.lugia-icon-reminder_plus_circle:before) {
-    content: "\f217";
+.lugia-icon-reminder_plus_circle:before {
+  content: '\f217';
 }
-:global(.lugia-icon-reminder_plus_square_o:before) {
-    content: "\f218";
+.lugia-icon-reminder_plus_square_o:before {
+  content: '\f218';
 }
-:global(.lugia-icon-reminder_plus_square:before) {
-    content: "\f219";
+.lugia-icon-reminder_plus_square:before {
+  content: '\f219';
 }
-:global(.lugia-icon-reminder_plus:before) {
-    content: "\f21a";
+.lugia-icon-reminder_plus:before {
+  content: '\f21a';
 }
-:global(.lugia-icon-reminder_question_circle_o:before) {
-    content: "\f21b";
+.lugia-icon-reminder_question_circle_o:before {
+  content: '\f21b';
 }
-:global(.lugia-icon-reminder_question_circle:before) {
-    content: "\f21c";
+.lugia-icon-reminder_question_circle:before {
+  content: '\f21c';
 }
-:global(.lugia-icon-reminder_question:before) {
-    content: "\f21d";
+.lugia-icon-reminder_question:before {
+  content: '\f21d';
 }
-:global(.lugia-icon-reminder_replay:before) {
-    content: "\f21e";
+.lugia-icon-reminder_replay:before {
+  content: '\f21e';
 }
-:global(.lugia-icon-reminder_square_o:before) {
-    content: "\f21f";
+.lugia-icon-reminder_square_o:before {
+  content: '\f21f';
 }
-:global(.lugia-icon-reminder_warning:before) {
-    content: "\f220";
+.lugia-icon-reminder_warning:before {
+  content: '\f220';
 }
 
-:global(.lugia-icon-utils-loading:before) {
-    display: block;
-    animation: loadingCircle 1s infinite linear;
+.lugia-icon-utils-loading:before {
+  display: block;
+  animation: loadingCircle 1s infinite linear;
 }
 
 @keyframes loadingCircle {
-    0% {
-        transform-origin: 50% 50%;
-        transform: rotate(0deg);
-    }
-    100% {
-        transform-origin: 50% 50%;
-        transform: rotate(360deg);
-    }
-}
-body {
-    font-family: Helvetica Neue, Helvetica, Arial
-}
-body {
-    font-family: Helvetica Neue, Helvetica, Arial
+  0% {
+    transform-origin: 50% 50%;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform-origin: 50% 50%;
+    transform: rotate(360deg);
+  }
 }

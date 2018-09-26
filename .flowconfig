@@ -5,6 +5,7 @@
 .*/public/.*
 .*/scripts/.*
 .*/flow-typed/.*
+.*/.history/.*
 [include]
 src
 [libs]

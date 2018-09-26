@@ -1,4 +1,4 @@
-// flow-typed signature: c7b1e1d8d9c2230d131299ddc21dcb0e
+// flow-typed signature: eb21df0fc64a67493c080140013ec7c3
 // flow-typed version: da30fe6876/debug_v2.x.x/flow_>=v0.28.x
 
 declare module "debug" {
