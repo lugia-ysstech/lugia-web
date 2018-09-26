@@ -122,8 +122,9 @@ describe('AmountInputDemo', () => {
   function placeholderTest(placeholder) {
     it('props: placeholder ', () => {
       global.svtest = true;
-      const component = mount(<AmountInput placeholder={placeholder} />);
-      expect(renderer.create(component).toJSON()).toMatchSnapshot();
+      const jsx = <AmountInput placeholder={placeholder} />;
+      const component = mount(jsx);
+      expect(renderer.create(jsx).toJSON()).toMatchSnapshot();
       exp(component.props().placeholder).to.be.equal(placeholder);
       global.svtest = false;
     });
