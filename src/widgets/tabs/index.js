@@ -15,6 +15,7 @@ import type { TabType, TabPositionType, EditType } from '../css/tabs';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
+import { isVertical, plusWidth } from './utils';
 import {
   getLinePosition,
   getColor,
@@ -23,12 +24,10 @@ import {
   hContainerWidth,
   hContainerHeight,
   getBackgroundShadow,
-  matchTabPosition,
   matchTabType,
   backgroundColor,
   lineWidth,
   vContainerHeight,
-  getContentTransform,
 } from '../css/tabs';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
@@ -160,7 +159,6 @@ const ContentContainer = styled.div`
   display: inline-block;
   overflow: hidden;
   ${getContentPosition};
-  margin-left: ${props => props.x}%;
 `;
 const PageIcon: Object = styled(Icon)`
   display: inline-block;
@@ -187,7 +185,6 @@ type TabsProps = {
   tabPosition: TabPositionType,
   tabType: TabType,
   onChange: Function,
-  onEdit: void,
   onNextClick: Function,
   onPrevClick: Function,
   children: React$Element<any>,
@@ -196,7 +193,7 @@ type TabsProps = {
   tab: string,
   forceRender: boolean,
   getTheme: Function,
-  onDelClick: Function,
+  onDeleteClick: Function,
 };
 
 class TabsBox extends Component<TabsProps, TabsState> {
@@ -209,13 +206,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
   static displayName = Widget.Tabs;
   offsetWidth: number;
   offsetHeight: number;
-  childrenWidth: Array<number>;
+  childrenSize: Array<number>;
   totalPage: number;
 
   constructor(props: TabsProps) {
     super(props);
     this.containerRef = React.createRef();
-    this.childrenWidth = [];
+    this.childrenSize = [];
     this.totalPage = 0;
   }
 
@@ -250,75 +247,71 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { tabType, tabPosition, getTheme } = this.props;
+    const { tabPosition, getTheme } = this.props;
     const { activityKey, currentPage, arrowShow } = this.state;
-    const config = { width: this.getContainerWidth(), height: this.getContainerHeight() };
+    const config = {
+      width: this.getContainerSize('width'),
+      height: this.getContainerSize('height'),
+    };
     const theme = { [Widget.TabsContainer]: config };
-    if (matchTabType(tabType, 'line')) {
-      if (matchTabPosition(tabPosition, 'left') || matchTabPosition(tabPosition, 'right')) {
-        return (
-          <Theme config={theme}>
-            <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
-              <VTabsOutContainer tabPosition={tabPosition}>
-                <VPrePage
-                  tabPosition={tabPosition}
-                  onClick={this.onPrevClick}
-                  arrowShow={arrowShow}
-                >
-                  <PageIcon iconClass="lugia-icon-direction_up" />
-                </VPrePage>
-                <VTabsContainer>
-                  <YscrollerContainer
-                    y={(currentPage - 1) * this.offsetHeight * -1 + (currentPage - 1) * 40}
-                  >
-                    <VLine y={activityKey * 100} tabPosition={tabPosition} />
-                    {this.getChildren()}
-                  </YscrollerContainer>
-                </VTabsContainer>
-                <VNextPage
-                  tabPosition={tabPosition}
-                  onClick={this.onNextClick}
-                  arrowShow={arrowShow}
-                >
-                  <PageIcon iconClass="lugia-icon-direction_down" />
-                </VNextPage>
-              </VTabsOutContainer>
-              {this.getChildrenContent()}
-            </OutContainer>
-          </Theme>
-        );
-      }
+
+    const y = (currentPage - 1) * this.offsetHeight * -1 + (currentPage - 1) * 40;
+    if (isVertical(tabPosition)) {
       return (
         <Theme config={theme}>
           <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
-            <HTabsOutContainer tabPosition={tabPosition} tabType={tabType}>
-              {this.getHtabsChildren()}
-            </HTabsOutContainer>
+            <VTabsOutContainer tabPosition={tabPosition}>
+              <VPrePage tabPosition={tabPosition} onClick={this.onPrevClick} arrowShow={arrowShow}>
+                <PageIcon iconClass="lugia-icon-direction_up" />
+              </VPrePage>
+              <VTabsContainer>
+                <YscrollerContainer y={y}>
+                  <VLine y={activityKey * 100} tabPosition={tabPosition} />
+                  {this.getChildren()}
+                </YscrollerContainer>
+              </VTabsContainer>
+              <VNextPage tabPosition={tabPosition} onClick={this.onNextClick} arrowShow={arrowShow}>
+                <PageIcon iconClass="lugia-icon-direction_down" />
+              </VNextPage>
+            </VTabsOutContainer>
             {this.getChildrenContent()}
           </OutContainer>
         </Theme>
       );
     }
+    return <Theme config={theme}>{this.getHTabs()}</Theme>;
+  }
+
+  getHTabs() {
+    const { tabType, getTheme, tabPosition } = this.props;
+    return (
+      <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
+        <HTabsOutContainer tabType={tabType} tabPosition={tabPosition}>
+          {this.getHtabsChildren()}
+          {this.getShadowLine()}
+        </HTabsOutContainer>
+        {this.getChildrenContent()}
+      </OutContainer>
+    );
+  }
+
+  getShadowLine() {
+    const { tabType } = this.props;
     if (matchTabType(tabType, 'card')) {
-      return (
-        <OutContainer theme={getTheme()} innerRef={cmp => (this.containerRef = cmp)}>
-          <HTabsOutContainer tabType={tabType}>
-            {this.getHtabsChildren()}
-            <ShadowLine tabType={tabType} />
-          </HTabsOutContainer>
-        </OutContainer>
-      );
+      return <ShadowLine tabType={tabType} />;
     }
+    return null;
   }
 
   getHline() {
     const { tabType, tabPosition } = this.props;
     const { activityKey, currentPage } = this.state;
+
     if (matchTabType(tabType, 'line')) {
       return (
         <HLine
-          lineWidth={this.childrenWidth[activityKey]}
-          x={this.plusWidth(activityKey - 1, this.childrenWidth) + 15 * currentPage}
+          lineWidth={this.childrenSize[activityKey]}
+          x={plusWidth(activityKey - 1, this.childrenSize) + 20 * currentPage}
           tabPosition={tabPosition}
         />
       );
@@ -329,12 +322,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
   getHtabsChildren() {
     const { arrowShow, currentPage } = this.state;
     const { tabType } = this.props;
+    const x = (currentPage - 1) * (this.offsetWidth * -1 + 48);
     return [
       <HPrePage arrowShow={arrowShow} onClick={this.onPrevClick}>
         <PageIcon iconClass="lugia-icon-direction_Left" />
       </HPrePage>,
       <HTabsContainer tabType={tabType}>
-        <HscrollerContainer tabType={tabType} x={(currentPage - 1) * (this.offsetWidth * -1 + 48)}>
+        <HscrollerContainer tabType={tabType} x={x}>
           {this.getChildren()}
           {this.getHline()}
         </HscrollerContainer>
@@ -346,26 +340,30 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   componentDidMount() {
-    this.getContainerWidth();
-    this.getContainerHeight();
-    this.handleData();
+    this.getContainerSize('width');
+    this.getContainerSize('height');
+    this.matchPage();
   }
 
-  handleData() {
+  componentDidUpdate(props, preState, snapshot) {
+    if (preState.data !== this.state.data) {
+      this.matchPage();
+    }
+  }
+  matchPage() {
     const { currentPage } = this.state;
     const { tabPosition } = this.props;
-    const actualWidth = this.plusWidth(this.childrenWidth.length - 1, this.childrenWidth);
-    const actualHeight = this.childrenWidth.length * 32;
-
-    if (matchTabPosition(tabPosition, 'left') || matchTabPosition(tabPosition, 'right')) {
+    const actualWidth = plusWidth(this.childrenSize.length - 1, this.childrenSize);
+    const actualHeight = this.childrenSize.length * 32;
+    let arrowShow;
+    if (isVertical(tabPosition)) {
       this.totalPage = this.computePage(this.offsetHeight, actualHeight);
-      const arrowShow = currentPage < this.totalPage;
-      this.setState({ arrowShow });
+      arrowShow = currentPage < this.totalPage;
     } else {
       this.totalPage = this.computePage(this.offsetWidth, actualWidth);
-      const arrowShow = currentPage < this.totalPage;
-      this.setState({ arrowShow });
+      arrowShow = currentPage < this.totalPage;
     }
+    this.setState({ arrowShow, currentPage });
   }
 
   computePage(offset, actualSize) {
@@ -374,18 +372,14 @@ class TabsBox extends Component<TabsProps, TabsState> {
     return totalPage;
   }
 
-  getContainerWidth() {
+  getContainerSize(type: string) {
     if (this.containerRef) {
       const { getTheme } = this.props;
-      const { width } = getTheme();
-      this.offsetWidth = this.containerRef.offsetWidth;
-      return width ? width : this.offsetWidth;
-    }
-  }
-  getContainerHeight() {
-    if (this.containerRef) {
-      const { getTheme } = this.props;
-      const { height } = getTheme();
+      const { width, height } = getTheme();
+      if (type === 'width') {
+        this.offsetWidth = this.containerRef.offsetWidth;
+        return width ? width : this.offsetWidth;
+      }
       this.offsetHeight = this.containerRef.offsetHeight;
       return height ? height : this.offsetHeight;
     }
@@ -393,13 +387,14 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getConfig(child: React$Element<any>) {
     const { tabPosition, tabType } = this.props;
+    const { activityKey } = this.state;
     return {
       tabPosition,
       tabType,
-      tab:
-        getAttributeFromObject(child, 'tab', '') !== ''
-          ? getAttributeFromObject(child, 'tab', '')
-          : getAttributeFromObject(child.props, 'tab', ''),
+      title:
+        getAttributeFromObject(child, 'title', '') !== ''
+          ? getAttributeFromObject(child, 'title', '')
+          : getAttributeFromObject(child.props, 'title', ''),
       icon:
         getAttributeFromObject(child, 'icon', '') !== ''
           ? getAttributeFromObject(child, 'icon', '')
@@ -412,54 +407,40 @@ class TabsBox extends Component<TabsProps, TabsState> {
       isSelect:
         (getAttributeFromObject(child, 'activityKey', 0) !== 0
           ? getAttributeFromObject(child, 'activityKey', 0)
-          : getAttributeFromObject(child.props, 'activityKey', 0)) === this.state.activityKey,
-      handleWidth: this.handleWidth,
-      onDelClick: this.onDelClick,
-    };
-  }
-  getContentConfig(child: React$Element<any>) {
-    return {
-      content: getAttributeFromObject(child.props, 'content', ''),
+          : getAttributeFromObject(child.props, 'activityKey', 0)) === activityKey,
+      getTabpaneWidth: this.getTabpaneWidth,
+      onDeleteClick: this.onDeleteClick,
     };
   }
 
   getChildren() {
     const { data } = this.state;
-    const { children } = this.props;
     const childrenWithProps =
       data && data.length
         ? data.map(child => {
-            return <Tabpane {...this.props} {...this.getConfig(child)} />;
+            return <Tabpane {...this.getConfig(child)} />;
           })
-        : children
-          ? React.Children.map(children, child => {
-              return React.cloneElement(child, this.getConfig(child));
-            })
-          : null;
+        : null;
     return childrenWithProps;
   }
 
   getChildrenContent() {
-    const { data, children, forceRender } = this.props;
-    const { activityKey } = this.state;
-    let childrenContent;
+    const { forceRender } = this.props;
+    const { activityKey, data } = this.state;
     if (data && data.length) {
-      childrenContent = data.map(child => {
-        if (child.activityKey === activityKey) {
+      const childrenContent = data.map(child => {
+        const childActivityKey =
+          child.activityKey !== undefined ? child.activityKey : child.props.activityKey;
+        if (childActivityKey === activityKey) {
           if (!forceRender) {
-            const content = child.content;
+            const content = child.content !== undefined ? child.content : child.props.content;
             return this.getContent(content);
           }
         }
       });
       return childrenContent;
     }
-    childrenContent = React.Children.map(children, child => {
-      if (child.props.activityKey === activityKey) {
-        return React.cloneElement(child, this.getContentConfig(child));
-      }
-    });
-    return this.getContent(childrenContent[0].props.content);
+    return null;
   }
 
   getContent(content: React$Element<any>) {
@@ -479,35 +460,42 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     onTabClick && onTabClick(activityKey);
   };
-  onDelClick = (activityKey: number) => {
-    const { onDelClick } = this.props;
-    const { data } = this.state;
-    data.splice(activityKey, 1);
-    this.setState({ data });
-    onDelClick && onDelClick(activityKey);
+  onDeleteClick = (e: Event, index: number) => {
+    const { onDeleteClick } = this.props;
+    let { data } = this.state;
+    if (data.length > 1) {
+      let delIndex = 0;
+      data = data.filter((tabpane, i) => {
+        if (tabpane.activityKey !== index) {
+          return true;
+        }
+        delIndex = i;
+        return false;
+      });
+      setTimeout(() => {
+        this.setState({
+          data,
+        });
+      }, 100);
+    }
+    onDeleteClick && onDeleteClick(index);
   };
-  handleWidth = (width: number) => {
-    this.childrenWidth.push(width);
+  getTabpaneWidth = (width: number) => {
+    console.log(111111111111);
+    this.childrenSize.push(width);
   };
   onNextClick = (e: Event) => {
     const { onNextClick } = this.props;
-    this.transWidth('next');
+    this.handleChangePage('next');
     onNextClick && onNextClick(e);
   };
   onPrevClick = e => {
     const { onPrevClick } = this.props;
-    this.transWidth('pre');
+    this.handleChangePage('pre');
     onPrevClick && onPrevClick(e);
   };
-  plusWidth = (index: number, width: Array<number>): number => {
-    let sum = 0;
-    for (let i = 0; i <= index; i++) {
-      sum += width[i];
-    }
-    return sum;
-  };
 
-  transWidth = (type: EditType) => {
+  handleChangePage = (type: EditType) => {
     let { currentPage, arrowShow } = this.state;
     if (type === 'next' && currentPage < this.totalPage) {
       currentPage++;

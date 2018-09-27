@@ -108,10 +108,8 @@ export const lineWidth = props => {
   const width = lineWidth ? em(lineWidth - 40) : em(100);
   return width;
 };
-export const getContentTransform = props => {
-  const { tabPosition, x, y } = props;
-  if (matchTabPosition(tabPosition, 'right') || matchTabPosition(tabPosition, 'left')) {
-    return `transform: translateY(${y}%);`;
-  }
-  return `transform: translate3d(${em(x)}, 0, 0); `;
+export const getTitlePadding = props => {
+  const { icon, tabType } = props;
+  const padding = icon === null && tabType !== 'card' ? em(0) : em(10);
+  return `padding:0 ${padding}`;
 };

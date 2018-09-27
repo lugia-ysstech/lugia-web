@@ -23,49 +23,49 @@ export default () => {
   const data = [
     {
       icon: 'lugia-icon-financial_archive',
-      tab: 1111111111,
+      title: 1111111111,
       content: 1111,
       activityKey: 0,
     },
     {
       icon: 'lugia-icon-financial_archive',
-      tab: 22222222222,
+      title: 22222222222,
       content: 22222,
       activityKey: 1,
     },
     {
       icon: 'lugia-icon-financial_archive',
-      tab: 3333333,
+      title: 3333333,
       content: 333,
       activityKey: 2,
     },
     {
       icon: 'lugia-icon-financial_archive',
-      tab: 44444444,
+      title: 44444444,
       content: 4444444,
       activityKey: 3,
     },
     {
       icon: 'lugia-icon-financial_archive',
-      tab: 55555,
+      title: 55555,
       content: 555555,
       activityKey: 4,
     },
     {
       icon: 'lugia-icon-financial_archive',
-      tab: 666666,
+      title: 666666,
       content: 66666,
       activityKey: 5,
     },
     {
       icon: 'lugia-icon-financial_archive',
-      tab: 7777777,
+      title: 7777777,
       content: 777777,
       activityKey: 6,
     },
     {
       icon: 'lugia-icon-financial_archive',
-      tab: 88888,
+      title: 88888,
       content: 888888,
       activityKey: 7,
     },
@@ -73,12 +73,12 @@ export default () => {
   const data1 = [
     {
       activityKey: 0,
-      tab: 111,
+      title: 111,
       content: <div>1111111</div>,
     },
     {
       activityKey: 1,
-      tab: 222222,
+      title: 222222,
       content: (
         <div>
           <div>222222</div>
@@ -87,23 +87,33 @@ export default () => {
     },
     {
       activityKey: 2,
-      tab: 333,
+      title: 333,
       content: 333,
     },
     {
       activityKey: 3,
-      tab: 222222,
-      content: 22222,
+      title: 44444,
+      content: 44444,
     },
     {
       activityKey: 4,
-      tab: 333,
-      content: 333,
+      title: 55555,
+      content: 55555,
     },
     {
       activityKey: 5,
-      tab: 4444,
-      content: 44444,
+      title: 66666,
+      content: 66666,
+    },
+    {
+      activityKey: 6,
+      title: 777777,
+      content: 77777,
+    },
+    {
+      activityKey: 7,
+      title: 888888,
+      content: 888888,
     },
   ];
   const view = {
@@ -114,22 +124,19 @@ export default () => {
   };
   const onPrevClick = e => {};
   const onNextClick = e => {};
-  const onDelClick = e => {};
+  const onDelClick = e => {
+    console.log(1234567890);
+  };
   return (
     <div>
       <Theme config={view}>
         <Wrapper>
           <p>在一屏内显示</p>
           <Tabs tabType={'line'} tabPosition={'top'}>
+            <Tabpane title={'1111'} content={'11111111111111111111111111'} activityKey={0} />
+            <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={1} />
             <Tabpane
-              tab={'1111'}
-              content={'11111111111111111111111111'}
-              activityKey={0}
-              icon={'lugia-icon-financial_archive'}
-            />
-            <Tabpane tab={'2222'} content={<div>22222222222222</div>} activityKey={1} />
-            <Tabpane
-              tab={'3333'}
+              title={'3333'}
               content={
                 <div>
                   <div>
@@ -144,20 +151,15 @@ export default () => {
         <Wrapper>
           <p>children tabPosition=top</p>
           <Tabs
-            tabType={'line'}
+            titleType={'line'}
             tabPosition={'top'}
             onPrevClick={onPrevClick}
             onNextClick={onNextClick}
           >
+            <Tabpane title={'1111'} content={'11111111111111111111111111'} activityKey={0} />
+            <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={1} />
             <Tabpane
-              tab={'1111'}
-              content={'11111111111111111111111111'}
-              activityKey={0}
-              icon={'lugia-icon-financial_archive'}
-            />
-            <Tabpane tab={'2222'} content={<div>22222222222222</div>} activityKey={1} />
-            <Tabpane
-              tab={'3333'}
+              title={'3333'}
               content={
                 <div>
                   <div>
@@ -168,7 +170,7 @@ export default () => {
               activityKey={2}
             />
             <Tabpane
-              tab={'4444'}
+              title={'4444'}
               content={
                 <div>
                   <div>
@@ -179,7 +181,7 @@ export default () => {
               activityKey={3}
             />
             <Tabpane
-              tab={'555555'}
+              title={'555555'}
               content={
                 <div>
                   <div>
@@ -200,15 +202,10 @@ export default () => {
             onPrevClick={onPrevClick}
             onNextClick={onNextClick}
           >
+            <Tabpane title={'11111'} content={'11111111111111111111111111'} activityKey={0} />
+            <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={1} />
             <Tabpane
-              tab={'11111'}
-              content={'11111111111111111111111111'}
-              activityKey={0}
-              icon={'lugia-icon-financial_archive'}
-            />
-            <Tabpane tab={'2222'} content={<div>22222222222222</div>} activityKey={1} />
-            <Tabpane
-              tab={'3333'}
+              title={'3333'}
               content={
                 <div>
                   <div>
@@ -219,7 +216,7 @@ export default () => {
               activityKey={2}
             />
             <Tabpane
-              tab={'44444'}
+              title={'44444'}
               content={
                 <div>
                   <div>
@@ -230,7 +227,7 @@ export default () => {
               activityKey={3}
             />
             <Tabpane
-              tab={'555555'}
+              title={'555555'}
               content={
                 <div>
                   <div>
@@ -241,7 +238,7 @@ export default () => {
               activityKey={4}
             />
             <Tabpane
-              tab={'666666'}
+              title={'666666'}
               content={
                 <div>
                   <div>
@@ -252,7 +249,7 @@ export default () => {
               activityKey={5}
             />
             <Tabpane
-              tab={'7777777'}
+              title={'7777777'}
               content={
                 <div>
                   <div>
@@ -263,7 +260,7 @@ export default () => {
               activityKey={6}
             />
             <Tabpane
-              tab={'8888888'}
+              title={'8888888'}
               content={
                 <div>
                   <div>
@@ -274,7 +271,7 @@ export default () => {
               activityKey={7}
             />
             <Tabpane
-              tab={'999999'}
+              title={'999999'}
               content={
                 <div>
                   <div>
@@ -285,7 +282,7 @@ export default () => {
               activityKey={8}
             />
             <Tabpane
-              tab={'10101010'}
+              title={'10101010'}
               content={
                 <div>
                   <div>
@@ -296,7 +293,7 @@ export default () => {
               activityKey={9}
             />
             <Tabpane
-              tab={'1111111'}
+              title={'1111111'}
               content={
                 <div>
                   <div>
@@ -307,7 +304,7 @@ export default () => {
               activityKey={10}
             />
             <Tabpane
-              tab={'12121212'}
+              title={'12121212'}
               content={
                 <div>
                   <div>
@@ -318,7 +315,7 @@ export default () => {
               activityKey={11}
             />
             <Tabpane
-              tab={'131313'}
+              title={'131313'}
               content={
                 <div>
                   <div>
@@ -339,14 +336,14 @@ export default () => {
             onNextClick={onNextClick}
           >
             <Tabpane
-              tab={'11111'}
+              title={'11111'}
               content={'11111111111111111111111111'}
               activityKey={0}
               icon={'lugia-icon-financial_archive'}
             />
-            <Tabpane tab={'2222'} content={<div>22222222222222</div>} activityKey={1} />
+            <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={1} />
             <Tabpane
-              tab={'3333'}
+              title={'3333'}
               content={
                 <div>
                   <div>
@@ -365,15 +362,10 @@ export default () => {
             onPrevClick={onPrevClick}
             onNextClick={onNextClick}
           >
+            <Tabpane title={'11111'} content={'11111111111111111111111111'} activityKey={0} />
+            <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={1} />
             <Tabpane
-              tab={'11111'}
-              content={'11111111111111111111111111'}
-              activityKey={0}
-              icon={'lugia-icon-financial_archive'}
-            />
-            <Tabpane tab={'2222'} content={<div>22222222222222</div>} activityKey={1} />
-            <Tabpane
-              tab={'3333'}
+              title={'3333'}
               content={
                 <div>
                   <div>
@@ -384,7 +376,7 @@ export default () => {
               activityKey={2}
             />
             <Tabpane
-              tab={'4444'}
+              title={'4444'}
               content={
                 <div>
                   <div>
@@ -395,7 +387,7 @@ export default () => {
               activityKey={3}
             />
             <Tabpane
-              tab={'555555'}
+              title={'555555'}
               content={
                 <div>
                   <div>
@@ -406,7 +398,7 @@ export default () => {
               activityKey={4}
             />
             <Tabpane
-              tab={'666666'}
+              title={'666666'}
               content={
                 <div>
                   <div>
