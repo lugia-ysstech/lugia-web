@@ -56,80 +56,77 @@ export default class extends React.Component<AffixProps, AffixState> {
   }
 
   addWindowListener = () => {
-    const { offsetTop = 0, offsetBottom = 0 } = this.props;
+    const { props } = this;
+    const { offsetTop = 0, offsetBottom = 0 } = props;
     const windowHeight = window.innerHeight;
-    const hasTop = this.isInProps('offsetTop');
-    const hasBottom = this.isInProps('offsetBottom');
     const scrollTop = getScrollTop() || 0;
 
-    if (hasTop) {
-      if (this.affix.offsetTop - scrollTop <= offsetTop) {
-        this.setState({
-          fixed: true,
-          offsetTop,
-        });
-      }
-      if (this.defaultOffsetTop >= scrollTop + offsetTop) {
-        this.setState({
-          fixed: false,
-        });
-      }
+    if (this.hasTop(props)) {
+      this.setState(
+        this.getPositionFixed({
+          needFixed: this.affix.offsetTop - scrollTop < offsetTop,
+          offset: offsetTop,
+        })
+      );
     }
-    if (hasBottom) {
+    if (this.hasBottom(props)) {
       const currentPos = this.affix.getBoundingClientRect();
-      if (windowHeight - currentPos.bottom <= offsetBottom) {
-        this.setState({
-          fixed: true,
-          offsetBottom,
-        });
-      }
-      if (this.defaultOffsetTop <= scrollTop + this.affix.offsetTop - offsetBottom) {
-        this.setState({
-          fixed: false,
-        });
-      }
+
+      this.setState(
+        this.getPositionFixed({
+          needFixed:
+            !(this.defaultOffsetTop <= scrollTop + this.affix.offsetTop - offsetBottom) &&
+            windowHeight - currentPos.bottom,
+          offset: offsetBottom,
+        })
+      );
     }
   };
   addTargetListener = (defaultPos: Object) => {
+    const { props } = this;
     const {
       offsetTop = 0,
       offsetBottom = 0,
       target = (): Object => {
         return {};
       },
-    } = this.props;
+    } = props;
     const windowHeight = window.innerHeight;
-    const hasTop = this.isInProps('offsetTop');
-    const hasBottom = this.isInProps('offsetBottom');
     const targetPos = target().getBoundingClientRect();
     const targetScroll = target().scrollTop;
-    if (hasTop) {
-      if (defaultPos.top - targetPos.top - targetScroll <= offsetTop) {
-        this.setState({
-          fixed: true,
-          offsetTop: offsetTop + targetPos.top,
-        });
-      } else {
-        this.setState({
-          fixed: false,
-        });
-      }
+    if (this.hasTop(props)) {
+      this.setState(
+        this.getPositionFixed({
+          needFixed: defaultPos.top - targetPos.top - targetScroll <= offsetTop,
+          offset: offsetTop + targetPos.top,
+        })
+      );
     }
-    if (hasBottom) {
+    if (this.hasBottom(props)) {
       const elementPos = this.affix.getBoundingClientRect();
-      if (targetPos.bottom - elementPos.bottom <= offsetBottom) {
-        this.setState({
-          fixed: true,
-          offsetBottom: windowHeight - targetPos.bottom + offsetBottom,
-        });
-      }
-      if (defaultPos.top <= targetScroll + this.affix.offsetTop - offsetBottom) {
-        this.setState({
-          fixed: false,
-        });
-      }
+      this.setState(
+        this.getPositionFixed({
+          needFixed:
+            !(defaultPos.top <= targetScroll + this.affix.offsetTop - offsetBottom) &&
+            targetPos.bottom - elementPos.bottom <= offsetBottom,
+          offset: windowHeight - targetPos.bottom + offsetBottom,
+        })
+      );
     }
   };
+
+  getPositionFixed(param: Object) {
+    const { needFixed, offset } = param;
+    if (needFixed) {
+      return {
+        fixed: true,
+        offset,
+      };
+    }
+    return {
+      fixed: false,
+    };
+  }
 
   handleChange = (val: boolean) => {
     const { onChange } = this.props;
@@ -144,21 +141,36 @@ export default class extends React.Component<AffixProps, AffixState> {
   }
 
   render() {
-    const { children } = this.props;
-    const { fixed, offsetTop, offsetBottom } = this.state;
+    const { props, state } = this;
+    const { children } = props;
+    const { fixed } = state;
     return (
       <Affix
         innerRef={node => (this.affix = node)}
         fixed={fixed}
-        offsetTop={offsetTop}
-        offsetBottom={offsetBottom}
+        {...this.getOffsetValue(props, state)}
       >
         {children}
       </Affix>
     );
   }
 
-  isInProps(value: 'offsetTop' | 'offsetBottom') {
-    return value in this.props;
+  getOffsetValue(props: Object, state: Object) {
+    const { offset } = state;
+    let res = {
+      offsetTop: offset,
+    };
+    if (this.hasTop(props)) {
+      return res;
+    }
+    if (this.hasBottom(props)) {
+      res = {
+        offsetBottom: offset,
+      };
+    }
+    return res;
   }
+
+  hasTop = (props: Object) => 'offsetTop' in props;
+  hasBottom = (props: Object) => 'offsetBottom' in props;
 }
