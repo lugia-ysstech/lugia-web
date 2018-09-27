@@ -15,14 +15,15 @@ import {
   getHoverColor,
   getColor,
   getFocusShadow,
-  matchTabPosition,
   matchTabType,
+  getTitlePadding,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
+import { isVertical } from './utils';
 
 const em = px2emcss(1.2);
 
@@ -39,14 +40,18 @@ const VTab = BaseTab.extend`
 const HTab = BaseTab.extend`
   display: inline-block;
   height: ${em(32)};
-  padding: 0 ${em(15)};
+  padding: 0 ${em(20)};
   line-height: ${em(32)};
-  background: ${props => (props.tabType === 'card' && props.isSelect ? 'white' : 'none')};
-  border-top-left-radius: ${props => (props.tabType === 'card' && props.isSelect ? em(5) : 0)};
-  border-top-right-radius: ${props => (props.tabType === 'card' && props.isSelect ? em(5) : 0)};
+  background: ${props =>
+    (matchTabType(props.tabType, 'card') && props.isSelect ? 'white' : 'none')};
+  border-top-left-radius: ${props =>
+    (matchTabType(props.tabType, 'card') && props.isSelect ? em(5) : 0)};
+  border-top-right-radius: ${props =>
+    (matchTabType(props.tabType, 'card') && props.isSelect ? em(5) : 0)};
   ${getFocusShadow};
-  bottom: ${props => (props.tabType === 'card' ? em(-6) : 0)};
-  z-index: 2;
+  bottom: ${props => (matchTabType(props.tabType, 'card') ? em(-6) : 0)};
+  left: ${props => (matchTabType(props.tabType, 'card') ? em(6) : 0)};
+  z-index: 3;
 `;
 const Title = styled.span`
   ${getColor};
@@ -58,8 +63,7 @@ const Title = styled.span`
   box-sizing: border-box;
   user-select: none;
   text-align: left;
-  padding: 0 ${em(10)};
-  padding-right: ${em(20)};
+  ${getTitlePadding};
   height: ${em(32)};
   line-height: ${em(32)};
 `;
@@ -82,21 +86,18 @@ const ClearButton: Object = styled(Icon)`
 
   display: inline-block;
 `;
-type TabsState = {|
-  activityKey: string,
-  tabs: Array<Object>,
-|};
+type TabsState = {};
 
 type TabsProps = {
-  tab: string,
-  onDelClick: Function,
+  title: string,
+  onDeleteClick: Function,
   icon: string,
   tabType: TabType,
   tabPosition: TabPositionType,
   activityKey: number,
   isSelect: boolean,
   onClick: Function,
-  handleWidth: Function,
+  getTabpaneWidth: Function,
 };
 
 class Tabpane extends Component<TabsProps, TabsState> {
@@ -114,15 +115,12 @@ class Tabpane extends Component<TabsProps, TabsState> {
   static getDerivedStateFromProps(nextProps: TabsProps, state: TabsState) {}
 
   render() {
-    const { tab, tabType, tabPosition, isSelect } = this.props;
+    const { title, tabType, tabPosition, isSelect } = this.props;
 
-    if (
-      matchTabType(tabType, 'line') &&
-      (matchTabPosition(tabPosition, 'left') || matchTabPosition(tabPosition, 'right'))
-    ) {
+    if (matchTabType(tabType, 'line') && isVertical(tabPosition)) {
       return (
         <VTab tabPosition={tabPosition} onClick={this.handleClick} isSelect={isSelect}>
-          <Title>{tab}</Title>
+          <Title isSelect={isSelect}>{title}</Title>
         </VTab>
       );
     }
@@ -134,7 +132,9 @@ class Tabpane extends Component<TabsProps, TabsState> {
         innerRef={cmp => (this.ref = cmp)}
       >
         {this.getTabIcon()}
-        <Title>{tab}</Title>
+        <Title icon={this.getTabIcon()} tabType={tabType} isSelect={isSelect}>
+          {title}
+        </Title>
         {this.getClearButton()}
       </HTab>
     );
@@ -150,14 +150,14 @@ class Tabpane extends Component<TabsProps, TabsState> {
     }
     return null;
   }
-  onDelClick = () => {
-    const { onDelClick, activityKey } = this.props;
-    onDelClick && onDelClick(activityKey);
+  onDeleteClick = (e: Event) => {
+    const { onDeleteClick, activityKey } = this.props;
+    onDeleteClick && onDeleteClick(e, activityKey);
   };
   getClearButton() {
     const { tabType } = this.props;
     if (matchTabType(tabType, 'card')) {
-      return <ClearButton iconClass="lugia-icon-reminder_close" onClick={this.onDelClick} />;
+      return <ClearButton iconClass="lugia-icon-reminder_close" onClick={this.onDeleteClick} />;
     }
   }
 
@@ -165,16 +165,12 @@ class Tabpane extends Component<TabsProps, TabsState> {
     this.getContainerWidth();
   }
 
-  componentDidUpdate() {
-    this.getContainerWidth();
-  }
-
   getContainerWidth() {
-    const { handleWidth } = this.props;
+    const { getTabpaneWidth } = this.props;
     if (this.ref) {
       this.offsetWidth = this.ref.offsetWidth;
     }
-    handleWidth && handleWidth(this.offsetWidth);
+    getTabpaneWidth && getTabpaneWidth(this.offsetWidth);
   }
 }
 
