@@ -21,6 +21,8 @@ function getScrollTop(): ?number {
   return scrollPos;
 }
 
+const OffsetBottom = 'offsetBottom';
+const OffsetTop = 'offsetTop';
 export default class extends React.Component<AffixProps, AffixState> {
   affix: any;
   defaultPos: Object;
@@ -41,7 +43,7 @@ export default class extends React.Component<AffixProps, AffixState> {
     const { target } = this.props;
     setTimeout(() => {
       if (target && typeof target === 'function') {
-        target().addEventListener('scroll', () => this.addTargetListener(this.defaultPos));
+        target().addEventListener('scroll', () => this.addTargetListener());
         window.addEventListener('scroll', () => {
           if (this.state.fixed) {
             // this.setState({ fixed: false }, () => {
@@ -60,72 +62,86 @@ export default class extends React.Component<AffixProps, AffixState> {
     const { offsetTop = 0, offsetBottom = 0 } = props;
     const windowHeight = window.innerHeight;
     const scrollTop = getScrollTop() || 0;
+    const affixOffsetTop = this.affix.offsetTop;
+    const defaultOffsetTop = this.defaultOffsetTop;
 
     if (this.hasTop(props)) {
       this.setState(
         this.getPositionFixed({
-          needFixed: this.affix.offsetTop - scrollTop < offsetTop,
+          needFixed: affixOffsetTop - scrollTop < offsetTop,
           offset: offsetTop,
         })
       );
     }
     if (this.hasBottom(props)) {
       const currentPos = this.affix.getBoundingClientRect();
-
       this.setState(
         this.getPositionFixed({
           needFixed:
-            !(this.defaultOffsetTop <= scrollTop + this.affix.offsetTop - offsetBottom) &&
+            !(defaultOffsetTop <= scrollTop + affixOffsetTop - offsetBottom) &&
             windowHeight - currentPos.bottom,
           offset: offsetBottom,
         })
       );
     }
   };
-  addTargetListener = (defaultPos: Object) => {
-    const { props } = this;
+
+  addTargetListener = () => {
+    const { props, defaultPos } = this;
     const {
-      offsetTop = 0,
-      offsetBottom = 0,
       target = (): Object => {
         return {};
       },
     } = props;
-    const windowHeight = window.innerHeight;
-    const targetPos = target().getBoundingClientRect();
-    const targetScroll = target().scrollTop;
-    if (this.hasTop(props)) {
-      this.setState(
-        this.getPositionFixed({
-          needFixed: defaultPos.top - targetPos.top - targetScroll <= offsetTop,
-          offset: offsetTop + targetPos.top,
-        })
-      );
-    }
-    if (this.hasBottom(props)) {
-      const elementPos = this.affix.getBoundingClientRect();
-      this.setState(
-        this.getPositionFixed({
-          needFixed:
-            !(defaultPos.top <= targetScroll + this.affix.offsetTop - offsetBottom) &&
-            targetPos.bottom - elementPos.bottom <= offsetBottom,
-          offset: windowHeight - targetPos.bottom + offsetBottom,
-        })
-      );
-    }
+    const fahterRect = target().getBoundingClientRect();
+
+    const affixRect = this.affix.getBoundingClientRect();
+
+    this.changeFixed(props, {
+      defaultWinAffixTop: defaultPos.top,
+      fatherWinTop: fahterRect.top,
+      affixOffsetTop: this.affix.offsetTop,
+      affixWinBottom: affixRect.bottom,
+      fatherWinBottom: fahterRect.bottom,
+      scrollTop: target().scrollTop,
+      winHeight: window.innerHeight,
+    });
   };
 
-  getPositionFixed(param: Object): Object {
-    const { needFixed, offset } = param;
-    if (needFixed) {
-      return {
-        fixed: true,
-        offset,
-      };
+  changeFixed(props, param: Object) {
+    const { offsetTop, offsetBottom } = props;
+    const type = this.getOffsetType(props);
+    const {
+      defaultWinAffixTop,
+      fatherWinTop,
+      affixOffsetTop,
+      affixWinBottom,
+      fatherWinBottom,
+      scrollTop,
+      winHeight,
+    } = param;
+    switch (type) {
+      case OffsetTop:
+        this.setState(
+          this.getPositionFixed({
+            needFixed: defaultWinAffixTop - fatherWinTop - scrollTop <= offsetTop,
+            offset: offsetTop + fatherWinTop,
+          })
+        );
+        break;
+
+      case OffsetBottom:
+        this.setState(
+          this.getPositionFixed({
+            needFixed:
+              !(defaultWinAffixTop <= scrollTop + affixOffsetTop - offsetBottom) &&
+              fatherWinBottom - affixWinBottom <= offsetBottom,
+            offset: winHeight - fatherWinBottom + offsetBottom,
+          })
+        );
+        break;
+      default:
     }
-    return {
-      fixed: false,
-    };
   }
 
   handleChange = (val: boolean) => {
@@ -155,22 +171,37 @@ export default class extends React.Component<AffixProps, AffixState> {
     );
   }
 
+  getPositionFixed(param: Object): Object {
+    const { needFixed, offset } = param;
+    if (needFixed) {
+      return {
+        fixed: true,
+        offset,
+      };
+    }
+    return {
+      fixed: false,
+    };
+  }
+
   getOffsetValue(props: Object, state: Object) {
     const { offset } = state;
-    let res = {
-      offsetTop: offset,
+    return {
+      [this.getOffsetType(props)]: offset,
     };
+  }
+
+  getOffsetType(props: Object): OffsetTop | OffsetBottom {
+    let res = OffsetTop;
     if (this.hasTop(props)) {
       return res;
     }
     if (this.hasBottom(props)) {
-      res = {
-        offsetBottom: offset,
-      };
+      res = OffsetBottom;
     }
     return res;
   }
 
-  hasTop = (props: Object) => 'offsetTop' in props;
-  hasBottom = (props: Object) => 'offsetBottom' in props;
+  hasTop = (props: Object) => OffsetTop in props;
+  hasBottom = (props: Object) => OffsetBottom in props;
 }
