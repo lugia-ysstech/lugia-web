@@ -108,7 +108,7 @@ export default class extends React.Component<AffixProps, AffixState> {
     });
   };
 
-  changeFixed(props, param: Object) {
+  changeFixed(props: Object, param: Object) {
     const { offsetTop, offsetBottom } = props;
     const type = this.getOffsetType(props);
     const {
@@ -191,7 +191,7 @@ export default class extends React.Component<AffixProps, AffixState> {
     };
   }
 
-  getOffsetType(props: Object): OffsetTop | OffsetBottom {
+  getOffsetType(props: Object): 'offsetBottom' | 'offsetTop' {
     let res = OffsetTop;
     if (this.hasTop(props)) {
       return res;
