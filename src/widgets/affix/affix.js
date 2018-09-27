@@ -115,7 +115,7 @@ export default class extends React.Component<AffixProps, AffixState> {
     }
   };
 
-  getPositionFixed(param: Object) {
+  getPositionFixed(param: Object): Object {
     const { needFixed, offset } = param;
     if (needFixed) {
       return {
