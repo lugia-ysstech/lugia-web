@@ -88,11 +88,7 @@ describe('Select', () => {
       queryInputEnter(cmp);
       mutliple
         ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(text)
-        : exp(
-            getInputTag(cmp)
-              .text()
-              .trim()
-          ).to.be.equal(text);
+        : exp(getInputTagValue(cmp)[0]).to.be.equal(text);
     });
   }
 

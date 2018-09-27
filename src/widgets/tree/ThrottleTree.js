@@ -32,11 +32,11 @@ const WrapRcTree = styled(RcTree)`
   position: relative;
   top: ${getTop}px;
   ${getWidth};
+  padding: 0;
 `;
 
 class ScrollerTree extends React.Component<any, any> {
   static defaultProps = {
-    prefixCls: 'sv-tree',
     mutliple: false,
     displayField: 'title',
     expandAll: false,
@@ -46,10 +46,6 @@ class ScrollerTree extends React.Component<any, any> {
   };
 
   utils: TreeUtils;
-
-  constructor(props) {
-    super(props);
-  }
 
   shouldComponentUpdate(nexProps: Object, nextState: Object) {
     const endChange = nexProps.end != this.props.end;
@@ -86,9 +82,7 @@ class ScrollerTree extends React.Component<any, any> {
   };
 
   render() {
-    const { prefixCls, className: classNme, data } = this.props;
-
-    const classString = classNames([`${prefixCls}-show-line`, classNme]);
+    const { data } = this.props;
     if (data) {
       const { mutliple, onExpand, utils, onSelect, id2ExtendInfo } = this.props;
       let { start, end } = this.props;
@@ -111,9 +105,8 @@ class ScrollerTree extends React.Component<any, any> {
           onSelect={onSelect}
           top={top}
           theme={treeTheme}
-          className={classString}
           onExpand={onExpand}
-          checkable={mutliple ? <span className={`${prefixCls}-checkbox-inner`} /> : mutliple}
+          checkable={mutliple ? <span /> : mutliple}
         >
           {treeNodes}
         </WrapRcTree>
