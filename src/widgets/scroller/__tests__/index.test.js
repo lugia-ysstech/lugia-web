@@ -629,6 +629,7 @@ describe('Scroller', function() {
       type: 'y',
       viewSize,
       totalSize,
+      step: 1,
     };
     const Target = createTestComponent(Scroller, (target: Object) => {});
     const cmp = mount(<Target {...config} />);
@@ -647,6 +648,7 @@ describe('Scroller', function() {
       type: 'y',
       viewSize,
       totalSize,
+      step: 1,
       defaultValue: 900,
     };
     const Target = createTestComponent(Scroller, (target: Object) => {});
