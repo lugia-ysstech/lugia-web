@@ -63,6 +63,30 @@ describe('autocomplete', () => {
     expect(getInputValue(cmp)).toBe('szfeng');
   });
 
+  it('data is { value: Number[]}', () => {
+    const numberData = [1, 2, 3];
+    const cmp = mount(<AutoComplete data={numberData} />);
+    changeInputValue(cmp, 'szfeng');
+    expect(getInputValue(cmp)).toBe('szfeng');
+    expect(getMenuData(cmp)).toEqual([
+      { value: '1', text: '1' },
+      { value: '2', text: '2' },
+      { value: '3', text: '3' },
+    ]);
+  });
+
+  it('data is { value: Number[]}', () => {
+    const numberData = [0, 1, 2];
+    const cmp = mount(<AutoComplete data={numberData} />);
+    changeInputValue(cmp, 'szfeng');
+    expect(getInputValue(cmp)).toBe('szfeng');
+    expect(getMenuData(cmp)).toEqual([
+      { value: '0', text: '0' },
+      { value: '1', text: '1' },
+      { value: '2', text: '2' },
+    ]);
+  });
+
   class AutoCompleteNotBounded extends React.Component<any, any> {
     static defaultProps = {
       data,
@@ -107,7 +131,6 @@ describe('autocomplete', () => {
     }
 
     searchValue = (query: string, row: string): boolean => {
-      console.log(query, row);
       return row.indexOf(query) !== -1;
     };
   }
@@ -213,6 +236,38 @@ describe('autocomplete', () => {
     expect(getMenuData(cmp)).toEqual([]);
   });
 
+  it('first select no oldValue', () => {
+    const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    changeInputValue(cmp, 'B');
+    expect(getInputValue(cmp)).toBe('B');
+    expect(getMenuData(cmp)).toEqual([
+      { value: 'Armin van Buuren', text: 'Armin van Buuren' },
+      { value: 'Bassjackers', text: 'Bassjackers' },
+    ]);
+    selectMenuItem(cmp, 0);
+    expect(getOldValue(cmp)).toBe('A');
+  });
+
+  it('input value on blur save old value', () => {
+    const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    changeInputValue(cmp, 'A');
+    expect(getInputValue(cmp)).toBe('A');
+
+    letInputOnBlur(cmp);
+
+    changeInputValue(cmp, 'B');
+
+    letInputOnBlur(cmp);
+    letInputonFocus(cmp);
+    expect(getInputValue(cmp)).toBe('B');
+
+    changeInputValue(cmp, 'C');
+    letInputOnBlur(cmp);
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('A');
+  });
+  // it('on blur switch twice value', () => {});
+
   class AutoCompleteBounded extends React.Component<any, any> {
     constructor(props) {
       super(props);
@@ -256,7 +311,6 @@ describe('autocomplete', () => {
     }
 
     searchValue = (query: string, row: string): boolean => {
-      console.log(query, row);
       return row.indexOf(query) !== -1;
     };
   }
@@ -531,9 +585,6 @@ describe('autocomplete', () => {
     expect(getMenuData(cmp)).toEqual([]);
   });
 
-  it('data is { value: Number[]}', () => {});
-  it('input value on blur save old value', () => {});
-  it('on blur switch twice value', () => {});
   function changeInputValue(cmp: Object, value: string) {
     return getInput(cmp).simulate('change', { target: { value } });
   }
@@ -548,6 +599,15 @@ describe('autocomplete', () => {
       .find('input')
       .at(0);
   }
+
+  function letInputOnBlur(cmp: Object) {
+    return getInput(cmp).simulate('blur', {});
+  }
+
+  function letInputonFocus(cmp: Object) {
+    return getInput(cmp).simulate('focus', {});
+  }
+
   function getMenuData(cmp: Object) {
     return getMenu(cmp).props().data;
   }
