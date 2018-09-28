@@ -75,7 +75,7 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
   render() {
     const { props, state } = this;
     const { value } = state;
-    const { valueField } = props;
+    const { valueField, disabled } = props;
 
     const { width = DefaultWidth } = props.getTheme();
     const data = this.getMenuData();
@@ -103,9 +103,15 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
     ];
     return (
       <Theme config={menuConfig}>
-        <Trigger align="bottomLeft" action={['focus']} hideAction={['focus']} popup={menu}>
+        <Trigger
+          align="bottomLeft"
+          action={disabled ? [] : ['click']}
+          hideAction={['click']}
+          popup={menu}
+        >
           <Input
             value={value}
+            disabled={disabled}
             ref={this.el}
             onChange={this.changeInputValue}
             onClear={this.clearInputValue}
@@ -154,7 +160,6 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
   menuItemClickHandler = (event: Object, selectedValue: Object) => {
     const { selectedKeys } = selectedValue;
     this.clckingOldValue = true;
-    this.focusInput();
     this.changeOldValue(selectedKeys[0]);
   };
 
@@ -195,14 +200,17 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
     const { onBlur } = this.props;
     onBlur && onBlur(e);
     const { value } = this.state;
+    const change = () => {
+      if (value !== this.enterValue) {
+        this.changeOldValue(this.state.value);
+      }
+    };
     setTimeout(() => {
       if (this.clckingOldValue) {
         this.clckingOldValue = false;
         return;
       }
-      if (value !== this.enterValue) {
-        this.changeOldValue(this.state.value);
-      }
+      change();
     }, 0);
   };
 
