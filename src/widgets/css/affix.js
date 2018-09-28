@@ -18,14 +18,12 @@ type CSSProps = {
 export type AffixProps = {
   offsetTop?: number,
   offsetBottom?: number,
-  onChange?: Function,
   target?: Function,
   children?: any,
 };
 export type AffixState = {
   fixed: boolean,
-  offsetTop?: number,
-  offsetBottom?: number,
+  offset?: number,
 };
 const getFixedCSS = (props: CSSProps) => {
   const { fixed } = props;
