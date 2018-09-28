@@ -146,7 +146,11 @@ class Tabpane extends Component<TabsProps, TabsState> {
   getTabIcon() {
     const { icon, isSelect } = this.props;
     if (icon) {
-      return <TabIcon isSelect={isSelect} iconClass={icon} />;
+      return (
+        <span style={{ display: 'inline-block', height: '12px', width: '12px' }}>
+          <TabIcon isSelect={isSelect} iconClass={icon} />
+        </span>
+      );
     }
     return null;
   }

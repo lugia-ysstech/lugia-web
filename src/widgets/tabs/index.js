@@ -10,28 +10,29 @@ import styled from 'styled-components';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import type { TabType, TabPositionType, EditType } from '../css/tabs';
+import type { EditType, TabPositionType, TabType } from '../css/tabs';
+import {
+  backgroundColor,
+  getBackgroundShadow,
+  getColor,
+  getContainerBorder,
+  getContentPosition,
+  getLinePosition,
+  hContainerHeight,
+  hContainerWidth,
+  lineWidth,
+  matchTabType,
+  vContainerHeight,
+} from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import { isVertical, plusWidth } from './utils';
-import {
-  getLinePosition,
-  getColor,
-  getContainerBorder,
-  getContentPosition,
-  hContainerWidth,
-  hContainerHeight,
-  getBackgroundShadow,
-  matchTabType,
-  backgroundColor,
-  lineWidth,
-  vContainerHeight,
-} from '../css/tabs';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
+
 const em = px2emcss(1.2);
 
 const BaseLine = styled.div`
@@ -306,7 +307,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
   getHline() {
     const { tabType, tabPosition } = this.props;
     const { activityKey, currentPage } = this.state;
-
     if (matchTabType(tabType, 'line')) {
       return (
         <HLine
@@ -350,6 +350,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       this.matchPage();
     }
   }
+
   matchPage() {
     const { currentPage } = this.state;
     const { tabPosition } = this.props;
@@ -428,17 +429,14 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { forceRender } = this.props;
     const { activityKey, data } = this.state;
     if (data && data.length) {
-      const childrenContent = data.map(child => {
+      return data.map(child => {
         const childActivityKey =
           child.activityKey !== undefined ? child.activityKey : child.props.activityKey;
-        if (childActivityKey === activityKey) {
-          if (!forceRender) {
-            const content = child.content !== undefined ? child.content : child.props.content;
-            return this.getContent(content);
-          }
+        if (forceRender || childActivityKey === activityKey) {
+          const content = child.content !== undefined ? child.content : child.props.content;
+          return this.getContent(content);
         }
       });
-      return childrenContent;
     }
     return null;
   }
@@ -464,14 +462,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { onDeleteClick } = this.props;
     let { data } = this.state;
     if (data.length > 1) {
-      let delIndex = 0;
-      data = data.filter((tabpane, i) => {
-        if (tabpane.activityKey !== index) {
-          return true;
-        }
-        delIndex = i;
-        return false;
-      });
+      data = data.filter(tabpane => tabpane.activityKey !== index);
       setTimeout(() => {
         this.setState({
           data,
@@ -481,29 +472,26 @@ class TabsBox extends Component<TabsProps, TabsState> {
     onDeleteClick && onDeleteClick(index);
   };
   getTabpaneWidth = (width: number) => {
-    console.log(111111111111);
     this.childrenSize.push(width);
   };
-  onNextClick = (e: Event) => {
-    const { onNextClick } = this.props;
-    this.handleChangePage('next');
-    onNextClick && onNextClick(e);
-  };
-  onPrevClick = e => {
-    const { onPrevClick } = this.props;
-    this.handleChangePage('pre');
-    onPrevClick && onPrevClick(e);
+
+  onNextClick = this.createNativeClick('onNextClick', 'next');
+  onPrevClick = this.createNativeClick('onPrevClick', 'pre');
+
+  createNativeClick = (evnetName: 'onNextClick' | 'onPrevClick', type: EditType) => e => {
+    const { [evnetName]: click } = this.props;
+    this.handleChangePage(type);
+    click && click(e);
   };
 
   handleChangePage = (type: EditType) => {
-    let { currentPage, arrowShow } = this.state;
+    let { currentPage } = this.state;
     if (type === 'next' && currentPage < this.totalPage) {
       currentPage++;
-      arrowShow = true;
     } else if (type === 'pre' && currentPage > 1) {
       currentPage--;
     }
-    this.setState({ currentPage, arrowShow });
+    this.setState({ currentPage });
   };
 }
 
