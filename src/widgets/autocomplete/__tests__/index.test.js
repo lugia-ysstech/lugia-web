@@ -43,7 +43,7 @@ const data = [
   'R3hab',
 ];
 
-describe('Select', () => {
+describe('autocomplete', () => {
   it('非受限：input框输入值', () => {
     const cmp = mount(<AutoComplete />);
     changeInputValue(cmp, 'szfeng');
@@ -531,6 +531,9 @@ describe('Select', () => {
     expect(getMenuData(cmp)).toEqual([]);
   });
 
+  it('data is { value: Number[]}', () => {});
+  it('input value on blur save old value', () => {});
+  it('on blur switch twice value', () => {});
   function changeInputValue(cmp: Object, value: string) {
     return getInput(cmp).simulate('change', { target: { value } });
   }

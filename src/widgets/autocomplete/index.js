@@ -12,8 +12,8 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import { DisplayField, ValueField } from '../consts/props';
 import CommonIcon from '../icon';
-import { OldValueItem, TimeIcon, OldValueTitle } from '../css/autocomplete';
-import { MenuItemHeight, DefaultWidth } from '../css/menu';
+import { OldValueItem, OldValueTitle, TimeIcon } from '../css/autocomplete';
+import { DefaultWidth, MenuItemHeight } from '../css/menu';
 
 const ScrollerStep = 30;
 
@@ -50,6 +50,7 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
   };
 
   el: any;
+
   constructor(props: AutoCompleteProps) {
     super(props);
     this.el = React.createRef();
@@ -77,21 +78,23 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
     const { valueField } = props;
 
     const { width = DefaultWidth } = props.getTheme();
-    const len = this.getMenuData().length;
-    const menuLen = len > 5 ? 5 : len;
+    const data = this.getMenuData();
+    const len = data.length;
+    const menuLen = Math.min(5, len);
     const menuHeight = menuLen * MenuItemHeight;
 
+    const themeConfig = { width, height: menuHeight };
     const menuConfig = {
-      [Widget.Menu]: { width, height: menuHeight },
-      [Widget.Input]: { width },
-      [Widget.Trigger]: { width, height: menuHeight },
+      [Widget.Menu]: themeConfig,
+      [Widget.Input]: { width: themeConfig.width },
+      [Widget.Trigger]: themeConfig,
     };
 
     const menu = [
       this.getOldValueItem(),
       <Menu
         valueField={valueField}
-        data={this.getMenuData()}
+        data={data}
         mutliple={false}
         selectedKeys={[value]}
         onClick={this.menuItemClickHandler}
@@ -115,7 +118,7 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
   }
 
   getOldValueItem() {
-    const { preSelectValue } = this.state;
+    const { preSelectValue = '' } = this.state;
     if (preSelectValue === '') {
       return null;
     }
@@ -140,52 +143,58 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
 
   getData() {
     const { data } = this.props;
-    const newData = [];
-    data.forEach(item => {
-      const newItem = {};
-      newItem[ValueField] = item;
-      newItem[DisplayField] = item;
-      newData.push(newItem);
+    return data.map(item => {
+      return {
+        [ValueField]: item,
+        [DisplayField]: item,
+      };
     });
-
-    return newData;
   }
 
   menuItemClickHandler = (event: Object, selectedValue: Object) => {
-    const { state } = this;
-    const { currentSelectValue } = state;
-
     const { selectedKeys } = selectedValue;
-    const newValue = selectedKeys[0];
-    this.el.current.getThemeTarget().input.focus();
-    this.setValue(newValue, { currentSelectValue: newValue, preSelectValue: currentSelectValue });
-    this.onChangeHandle(newValue);
+    this.focusInput();
+    this.changeOldValue(selectedKeys[0]);
   };
 
   handleClickOldValueItem = () => {
     const { state } = this;
     const { preSelectValue } = state;
-
-    this.setValue(preSelectValue, { currentSelectValue: preSelectValue, preSelectValue: '' });
-    this.onChangeHandle(preSelectValue);
+    this.changeOldValue(preSelectValue);
   };
+
+  changeOldValue(newValue: string) {
+    const { currentSelectValue } = this.state;
+    this.setValue(newValue, { currentSelectValue: newValue, preSelectValue: currentSelectValue });
+  }
 
   clearInputValue = () => {
-    const { state } = this;
-    const { currentSelectValue } = state;
-    this.el.current.getThemeTarget().input.focus();
-    this.onChangeHandle('');
-    this.setValue('', { currentSelectValue: '', preSelectValue: currentSelectValue });
+    this.focusInput();
+    this.changeOldValue('');
   };
 
+  focusInput() {
+    this.getInputDom().focus();
+  }
+
+  getInputDom(): Object {
+    return this.el.current.getThemeTarget().input;
+  }
+
+  enterValue: string;
   onFocus = (e: Object) => {
     const { onFocus } = this.props;
+    this.enterValue = this.state.value;
     onFocus && onFocus(e);
   };
 
   onBlur = (e: Object) => {
     const { onBlur } = this.props;
     onBlur && onBlur(e);
+    const { value } = this.state;
+    if (value !== this.enterValue) {
+      this.changeOldValue(this.state.value);
+    }
   };
 
   changeInputValue = (nextValue: any) => {
@@ -196,6 +205,7 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
 
   setValue(value: string, other: Object) {
     this.setState({ value, ...other });
+    this.onChangeHandle(value);
   }
 
   onChangeHandle(value: string) {
