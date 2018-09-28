@@ -26,7 +26,7 @@ export default class AffixDemo extends React.Component<any, any> {
     });
   };
   handleChange = (res: boolean) => {
-    console.info(res); 
+    console.info(res);
   };
   render() {
     const { display } = this.state;
