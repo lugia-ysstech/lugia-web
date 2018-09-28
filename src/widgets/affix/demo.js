@@ -31,11 +31,11 @@ export default class AffixDemo extends React.Component<any, any> {
   render() {
     const { display } = this.state;
     return (
-      <div onClick={this.handleClick}>
+      <div>
         {display ? (
           <div style={{ width: '200px', height: '1200px' }}>
             <div style={{ width: '200px', height: '200px' }} />
-            <Affix offsetTop={50} onChange={this.handleChange}>
+            <Affix offsetTop={50}>
               <Button>windows-top-50</Button>
             </Affix>
 

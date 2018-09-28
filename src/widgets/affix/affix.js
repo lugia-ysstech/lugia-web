@@ -20,15 +20,12 @@ function getScrollTop(): ?number {
   }
   return scrollPos;
 }
-
-const OffsetBottom = 'offsetBottom';
-const OffsetTop = 'offsetTop';
 export default class extends React.Component<AffixProps, AffixState> {
   affix: any;
   defaultPos: Object;
   defaultOffsetTop: number;
   isChange: boolean;
-
+  targetDefaultOffsetTop: number;
   constructor() {
     super();
     this.state = {
@@ -36,113 +33,118 @@ export default class extends React.Component<AffixProps, AffixState> {
     };
     this.isChange = true;
   }
-
   componentDidMount() {
-    this.defaultOffsetTop = this.affix && this.affix.offsetTop;
-    this.defaultPos = this.affix && this.affix.getBoundingClientRect();
     const { target } = this.props;
+    this.defaultOffsetTop = this.affix && this.affix.offsetTop;
+
     setTimeout(() => {
       if (target && typeof target === 'function') {
-        target().addEventListener('scroll', () => this.addTargetListener());
-        window.addEventListener('scroll', () => {
-          if (this.state.fixed) {
-            // this.setState({ fixed: false }, () => {
-            // });
-          }
-        });
-
+        this.targetDefaultOffsetTop = target().offsetTop;
+        target().addEventListener('scroll', this.addTargetListener);
         return;
       }
       window.addEventListener('scroll', this.addWindowListener);
     }, 100);
   }
-
   addWindowListener = () => {
-    const { props } = this;
-    const { offsetTop = 0, offsetBottom = 0 } = props;
-    const windowHeight = window.innerHeight;
+    const { offsetTop = 0, offsetBottom = 0 } = this.props;
+    const winHeight = window.innerHeight;
+    const hasTop = this.isInProps('offsetTop');
+    const hasBottom = this.isInProps('offsetBottom');
     const scrollTop = getScrollTop() || 0;
     const affixOffsetTop = this.affix.offsetTop;
     const defaultOffsetTop = this.defaultOffsetTop;
 
-    if (this.hasTop(props)) {
-      this.setState(
-        this.getPositionFixed({
-          needFixed: affixOffsetTop - scrollTop < offsetTop,
-          offset: offsetTop,
-        })
-      );
+    // if (this.props.target) {
+    //   this.setState({
+    //     fixed: false,
+    //     offsetTop: undefined,
+    //     offsetBottom: undefined,
+    //   });
+    // }
+    if (hasTop) {
+      let needFixed;
+      if (affixOffsetTop - scrollTop <= offsetTop) {
+        needFixed = true;
+      }
+      if (defaultOffsetTop >= scrollTop + offsetTop) {
+        needFixed = false;
+      }
+
+      this.setState({
+        fixed: needFixed,
+      });
     }
-    if (this.hasBottom(props)) {
+    if (hasBottom) {
       const currentPos = this.affix.getBoundingClientRect();
-      this.setState(
-        this.getPositionFixed({
-          needFixed:
-            !(defaultOffsetTop <= scrollTop + affixOffsetTop - offsetBottom) &&
-            windowHeight - currentPos.bottom,
-          offset: offsetBottom,
-        })
-      );
+      let needFixed;
+      if (winHeight - currentPos.bottom <= offsetBottom) {
+        needFixed = true;
+      }
+      if (defaultOffsetTop <= scrollTop + currentPos.top - offsetBottom) {
+        needFixed = false;
+      }
+      this.setState({
+        fixed: needFixed,
+      });
     }
   };
-
   addTargetListener = () => {
-    const { props, defaultPos } = this;
     const {
+      offsetTop = 0,
+      offsetBottom = 0,
       target = (): Object => {
         return {};
       },
-    } = props;
-    const fahterRect = target().getBoundingClientRect();
-
+    } = this.props;
     const affixRect = this.affix.getBoundingClientRect();
+    const winHeight = window.innerHeight;
+    const hasTop = this.isInProps('offsetTop');
+    const hasBottom = this.isInProps('offsetBottom');
+    const targetRect = target().getBoundingClientRect();
+    const targetScroll = target().scrollTop;
+    if (hasTop) {
+      if (
+        affixRect.top - targetRect.top - targetScroll <= offsetTop ||
+        affixRect.bottom >= targetRect.bottom
+      ) {
+        this.setState({
+          fixed: true,
+          offsetTop: offsetTop + targetRect.top,
+        });
+      }
 
-    this.changeFixed(props, {
-      defaultWinAffixTop: defaultPos.top,
-      fatherWinTop: fahterRect.top,
-      affixOffsetTop: this.affix.offsetTop,
-      affixWinBottom: affixRect.bottom,
-      fatherWinBottom: fahterRect.bottom,
-      scrollTop: target().scrollTop,
-      winHeight: window.innerHeight,
-    });
-  };
-
-  changeFixed(props: Object, param: Object) {
-    const { offsetTop, offsetBottom } = props;
-    const type = this.getOffsetType(props);
-    const {
-      defaultWinAffixTop,
-      fatherWinTop,
-      affixOffsetTop,
-      affixWinBottom,
-      fatherWinBottom,
-      scrollTop,
-      winHeight,
-    } = param;
-    switch (type) {
-      case OffsetTop:
-        this.setState(
-          this.getPositionFixed({
-            needFixed: defaultWinAffixTop - fatherWinTop - scrollTop <= offsetTop,
-            offset: offsetTop + fatherWinTop,
-          })
-        );
-        break;
-
-      case OffsetBottom:
-        this.setState(
-          this.getPositionFixed({
-            needFixed:
-              !(defaultWinAffixTop <= scrollTop + affixOffsetTop - offsetBottom) &&
-              fatherWinBottom - affixWinBottom <= offsetBottom,
-            offset: winHeight - fatherWinBottom + offsetBottom,
-          })
-        );
-        break;
-      default:
+      if (
+        this.defaultOffsetTop - this.targetDefaultOffsetTop >=
+        this.affix.offsetTop - targetRect.top + targetScroll
+      ) {
+        this.setState({
+          fixed: false,
+          offsetTop: undefined,
+        });
+      }
     }
-  }
+    if (hasBottom) {
+      if (
+        targetRect.bottom - affixRect.bottom - targetScroll <= offsetBottom ||
+        affixRect.top <= targetRect.top
+      ) {
+        this.setState({
+          fixed: true,
+          offsetBottom: winHeight - targetRect.bottom + offsetBottom,
+        });
+      }
+      if (
+        this.defaultOffsetTop - this.targetDefaultOffsetTop <=
+        targetScroll + this.affix.offsetTop - targetRect.top
+      ) {
+        this.setState({
+          fixed: false,
+          offsetBottom: undefined,
+        });
+      }
+    }
+  };
 
   handleChange = (val: boolean) => {
     const { onChange } = this.props;
@@ -151,25 +153,6 @@ export default class extends React.Component<AffixProps, AffixState> {
       this.isChange = !val;
     }
   };
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.addWindowListener);
-  }
-
-  render() {
-    const { props, state } = this;
-    const { children } = props;
-    const { fixed } = state;
-    return (
-      <Affix
-        innerRef={node => (this.affix = node)}
-        fixed={fixed}
-        {...this.getOffsetValue(props, state)}
-      >
-        {children}
-      </Affix>
-    );
-  }
 
   getPositionFixed(param: Object): Object {
     const { needFixed, offset } = param;
@@ -184,24 +167,34 @@ export default class extends React.Component<AffixProps, AffixState> {
     };
   }
 
-  getOffsetValue(props: Object, state: Object) {
-    const { offset } = state;
-    return {
-      [this.getOffsetType(props)]: offset,
-    };
+  componentWillUpdate(nextProps, nextState) {
+    const { onChange } = this.props;
+    // console.info('nextState.fixed',nextState.fixed);
+    // console.info('this.state.fixed',this.state.fixed);
+    if (nextState.fixed !== this.state.fixed) {
+      onChange && onChange(nextState.fixed);
+    }
   }
 
-  getOffsetType(props: Object): 'offsetBottom' | 'offsetTop' {
-    let res = OffsetTop;
-    if (this.hasTop(props)) {
-      return res;
-    }
-    if (this.hasBottom(props)) {
-      res = OffsetBottom;
-    }
-    return res;
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.addWindowListener);
+  }
+  render() {
+    const { children } = this.props;
+    const { fixed, offsetTop, offsetBottom } = this.state;
+    return (
+      <Affix
+        innerRef={node => (this.affix = node)}
+        fixed={fixed}
+        offsetTop={offsetTop ? offsetTop : this.props.offsetTop}
+        offsetBottom={offsetBottom ? offsetBottom : this.props.offsetBottom}
+      >
+        {children}
+      </Affix>
+    );
   }
 
-  hasTop = (props: Object) => OffsetTop in props;
-  hasBottom = (props: Object) => OffsetBottom in props;
+  isInProps(value: 'offsetTop' | 'offsetBottom') {
+    return value in this.props;
+  }
 }
