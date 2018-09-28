@@ -153,11 +153,14 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
 
   menuItemClickHandler = (event: Object, selectedValue: Object) => {
     const { selectedKeys } = selectedValue;
+    this.clckingOldValue = true;
     this.focusInput();
     this.changeOldValue(selectedKeys[0]);
   };
 
+  clckingOldValue: boolean;
   handleClickOldValueItem = () => {
+    this.clckingOldValue = true;
     const { state } = this;
     const { preSelectValue } = state;
     this.changeOldValue(preSelectValue);
@@ -192,9 +195,15 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
     const { onBlur } = this.props;
     onBlur && onBlur(e);
     const { value } = this.state;
-    if (value !== this.enterValue) {
-      this.changeOldValue(this.state.value);
-    }
+    setTimeout(() => {
+      if (this.clckingOldValue) {
+        this.clckingOldValue = false;
+        return;
+      }
+      if (value !== this.enterValue) {
+        this.changeOldValue(this.state.value);
+      }
+    }, 0);
   };
 
   changeInputValue = (nextValue: any) => {

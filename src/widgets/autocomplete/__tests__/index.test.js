@@ -259,12 +259,13 @@ describe('autocomplete', () => {
 
     letInputOnBlur(cmp);
     letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('A');
     expect(getInputValue(cmp)).toBe('B');
 
     changeInputValue(cmp, 'C');
     letInputOnBlur(cmp);
     letInputonFocus(cmp);
-    expect(getOldValue(cmp)).toBe('A');
+    expect(getOldValue(cmp)).toBe('B');
   });
   // it('on blur switch twice value', () => {});
 
