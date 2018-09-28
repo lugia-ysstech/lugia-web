@@ -478,8 +478,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   onNextClick = this.createNativeClick('onNextClick', 'next');
   onPrevClick = this.createNativeClick('onPrevClick', 'pre');
 
-  createNativeClick = (evnetName: 'onNextClick' | 'onPrevClick', type: EditType) => e => {
-    const { [evnetName]: click } = this.props;
+  createNativeClick = (eventName: 'onNextClick' | 'onPrevClick', type: EditType) => e => {
+    const { [eventName]: click } = this.props;
     this.handleChangePage(type);
     click && click(e);
   };
