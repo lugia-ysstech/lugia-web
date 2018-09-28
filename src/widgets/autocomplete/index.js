@@ -157,6 +157,7 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
 
     const { selectedKeys } = selectedValue;
     const newValue = selectedKeys[0];
+    this.el.current.getThemeTarget().input.focus();
     this.setValue(newValue, { currentSelectValue: newValue, preSelectValue: currentSelectValue });
     this.onChangeHandle(newValue);
   };
