@@ -25,7 +25,6 @@ export const DateWrapper = styled.div`
   padding: ${props => getDateWrrap(props).paddingStyle};
   border: 1px solid #ddd;
 `;
-export const DateWInner = styled.div;
 export const DateHeader = styled.div`
   font-size: 12px;
 `;

@@ -14,7 +14,6 @@ import {
   DateChildInner,
   DateHeader,
   DatePanel,
-  DateWInner,
   DateWrapper,
   HeaderTop,
   HeaderTopArrow,
@@ -847,7 +846,7 @@ class Date extends Component<TypeProps, TypeState> {
     const { firstWeekDay, lang } = this.state;
     return (
       <DateWrapper width={300}>
-        <DateWInner width={300}>
+        <div>
           <DateHeader>
             <HeaderTop>
               <HeaderTopArrow position={'left'} onClick={this.getDaysInMonth('year', 'subtract')}>
@@ -877,7 +876,7 @@ class Date extends Component<TypeProps, TypeState> {
             <WeekDays firstWeekDay={firstWeekDay} lang={lang} onChangeWeek={this.onChangeWeek} />
           </DateHeader>
           <DatePanel>{dateChildren}</DatePanel>
-        </DateWInner>
+        </div>
       </DateWrapper>
     );
   }
