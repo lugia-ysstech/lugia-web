@@ -3,12 +3,7 @@
 exports[`Affix css 1`] = `
 .c0 {
   font-size: 1.2rem;
-  top: 4.166666666666667em;
-}
-
-.c2 {
-  font-size: 1.2rem;
-  bottom: 4.166666666666667em;
+  top: 0em;
 }
 
 .c1 {
@@ -57,9 +52,7 @@ exports[`Affix css 1`] = `
   border: 1px solid #533fcc;
 }
 
-<div
-  onClick={[Function]}
->
+<div>
   <div
     style={
       Object {
@@ -84,7 +77,7 @@ exports[`Affix css 1`] = `
         onClick={[Function]}
       >
         <span>
-          affix-top
+          windows-top-50
         </span>
       </button>
     </div>
@@ -120,7 +113,7 @@ exports[`Affix css 1`] = `
             onClick={[Function]}
           >
             <span>
-              affix-top
+              target-top-50
             </span>
           </button>
         </div>
@@ -151,14 +144,14 @@ exports[`Affix css 1`] = `
           }
         />
         <div
-          className="c2"
+          className="c0"
         >
           <button
             className="c1"
             onClick={[Function]}
           >
             <span>
-              affix2-bottom
+              target-bottom-50
             </span>
           </button>
         </div>
@@ -173,14 +166,14 @@ exports[`Affix css 1`] = `
       }
     />
     <div
-      className="c2"
+      className="c0"
     >
       <button
         className="c1"
         onClick={[Function]}
       >
         <span>
-          affix-bottom
+          window-bottom-50
         </span>
       </button>
     </div>

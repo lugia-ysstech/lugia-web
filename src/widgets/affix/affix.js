@@ -26,14 +26,12 @@ const OffsetTop = 'offsetTop';
 export default class extends React.Component<AffixProps, AffixState> {
   affix: any;
   defaultOffsetTop: number;
-  isChange: boolean;
   targetDefaultOffsetTop: number;
   constructor() {
     super();
     this.state = {
       fixed: false,
     };
-    this.isChange = true;
   }
   componentDidMount() {
     const { target } = this.props;
