@@ -377,22 +377,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -408,7 +404,6 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c2"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
@@ -416,14 +411,13 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c3"
-        disabled={undefined}
         size="small"
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -439,22 +433,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
       月
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -470,22 +460,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c4"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={true}
     >
       开
       <span
         className="c5"
-        disabled={undefined}
-        size={undefined}
         value={true}
       >
-        
+
       </span>
     </span>
   </section>
@@ -501,22 +487,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c6"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -532,22 +514,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -563,22 +541,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -594,22 +568,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -625,22 +595,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -656,22 +622,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -687,22 +649,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -719,22 +677,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
       月
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -750,22 +704,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
       月
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -781,22 +731,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
       时
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -812,21 +758,17 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -842,22 +784,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c6"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -873,22 +811,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c7"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={true}
     >
-      
+
       <span
         className="c5"
-        disabled={undefined}
-        size={undefined}
         value={true}
       >
-        
+
       </span>
     </span>
   </section>
@@ -904,22 +838,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c7"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={true}
     >
-      
+
       <span
         className="c5"
-        disabled={undefined}
-        size={undefined}
         value={true}
       >
-        
+
       </span>
     </span>
   </section>
@@ -935,22 +865,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c7"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={true}
     >
-      
+
       <span
         className="c5"
-        disabled={undefined}
-        size={undefined}
         value={true}
       >
-        
+
       </span>
     </span>
   </section>
@@ -966,22 +892,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
       月
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -997,22 +919,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c7"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={true}
     >
       年
       <span
         className="c5"
-        disabled={undefined}
-        size={undefined}
         value={true}
       >
-        
+
       </span>
     </span>
   </section>
@@ -1028,22 +946,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
       月
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -1059,22 +973,18 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c0"
-      disabled={undefined}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
       月
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -1090,19 +1000,15 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c8"
-      disabled={undefined}
       onKeyDown={null}
       onMouseDown={null}
       onMouseUp={null}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
         <div
@@ -1175,19 +1081,15 @@ exports[`Switch Wrapper 1`] = `
     </h3>
     <span
       className="c8"
-      disabled={undefined}
       onKeyDown={null}
       onMouseDown={null}
       onMouseUp={null}
-      size={undefined}
       tabIndex={0}
       value={false}
     >
-      
+
       <span
         className="c1"
-        disabled={undefined}
-        size={undefined}
         value={false}
       >
         <div
@@ -1264,18 +1166,16 @@ exports[`Switch Wrapper 1`] = `
       onKeyDown={null}
       onMouseDown={null}
       onMouseUp={null}
-      size={undefined}
       tabIndex={-1}
       value={false}
     >
-      
+
       <span
         className="c1"
         disabled={true}
-        size={undefined}
         value={false}
       >
-        
+
       </span>
     </span>
   </section>
@@ -1295,15 +1195,13 @@ exports[`Switch Wrapper 1`] = `
       onKeyDown={null}
       onMouseDown={null}
       onMouseUp={null}
-      size={undefined}
       tabIndex={-1}
       value={false}
     >
-      
+
       <span
         className="c1"
         disabled={true}
-        size={undefined}
         value={false}
       >
         <div
@@ -1380,15 +1278,13 @@ exports[`Switch Wrapper 1`] = `
       onKeyDown={null}
       onMouseDown={null}
       onMouseUp={null}
-      size={undefined}
       tabIndex={-1}
       value={false}
     >
-      
+
       <span
         className="c1"
         disabled={true}
-        size={undefined}
         value={false}
       >
         <div

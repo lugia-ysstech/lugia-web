@@ -178,27 +178,6 @@ class Test extends React.Component<PropsType, StateType> {
             </a>
           </Trigger>
         </div>
-
-        <div>
-          <Trigger
-            //offsetX={this.state.offsetX}
-            //offsetY={this.state.offsetY}
-            // getPopupContainer={undefined && getPopupContainer}
-            //align={state.placement.toString()}
-            //destroyPopupOnHide={this.state.destroyPopupOnHide}
-            //mask={this.state.mask}
-            action={['focus']}
-            popup={
-              <div style={{ border: '1px solid red', padding: 10, background: 'white' }}>
-                弹出来了
-              </div>
-            }
-          >
-            <a href="#" style={{ margin: 20 }} onClick={preventDefault}>
-              trigger
-            </a>
-          </Trigger>
-        </div>
       </div>
     );
   }
