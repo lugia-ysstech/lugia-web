@@ -22,7 +22,7 @@ export default class AffixDemo extends React.Component<any, any> {
   handleClick = () => {
     const { display } = this.state;
     this.setState({
-      display: !display, 
+      display: !display,
     });
   };
   handleChange = (res: boolean) => {
