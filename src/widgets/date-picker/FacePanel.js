@@ -21,6 +21,7 @@ type TypeProps = {
   lang?: string,
   data?: Array<any>,
   getHeadInfo?: Function,
+  column: ?number,
 };
 type TypeState = {
   value: string,
@@ -166,6 +167,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
       lang,
       data,
       monthIndex,
+      column = 3,
     } = this.props;
     const { isWeek, isMonth, isYear } = modeStyle(mode);
     const weeksInYear = moment({ year }).weeksInYear();
@@ -216,7 +218,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
                   ? monthIndex
                   : Number(start);
           return (
-            <OtherChild onClick={this.getChildIndex(param)} key={index}>
+            <OtherChild onClick={this.getChildIndex(param)} key={index} column={column}>
               <OtherChildText isChose={currentStart === equalValue}>{text}</OtherChildText>
             </OtherChild>
           );

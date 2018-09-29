@@ -65,24 +65,16 @@ class Year extends Component<TypeProps, TypeState> {
   };
   getOnChange = (data: Object) => {
     const { onChange, from } = this.props;
-    //const {mode,from}=this.state;
     onChange && onChange({ ...data, from, mode: from });
   };
   getFreshPicker = (obj: Object) => {
-    // param=param.toString();
-    //const {moments,mode,from}=param;
-    // const moments=moment(param);
-    //console.log(param);
     const { moments } = obj;
-    // console.log(moments);
     const year = moments.year();
     const month = moments.month();
-    // console.log(year,month);
     this.setState({ start: year, month });
   };
   render() {
     const { showYears, start, end, title } = this.state;
-    //console.log(start);
     const { step = 12 } = this.props;
     return (
       <DateWrapper width={300}>

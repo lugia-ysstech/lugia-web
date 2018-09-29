@@ -6,6 +6,11 @@ const em = px2emcss(1.2);
 const distance = {
   iconLeft: 10,
 };
+const DateWrapperPadding = {
+  top: 30,
+  left: 20,
+  bottom: 44,
+};
 const { hoverColor, normalColor } = colorsFunc();
 
 export const Icons = styled.span`
@@ -17,12 +22,10 @@ export const Icons = styled.span`
 export const DateWrapper = styled.div`
   display: inline-block;
   width: ${props => props.width}px;
-  padding: 30px 30px 44px;
+  padding: ${props => getDateWrrap(props).paddingStyle};
   border: 1px solid #ddd;
 `;
-export const DateWInner = styled.div`
-  width: ${props => props.width}px;
-`;
+export const DateWInner = styled.div;
 export const DateHeader = styled.div`
   font-size: 12px;
 `;
@@ -68,12 +71,11 @@ export const HeaderWeekBox = styled.ul`
   margin-bottom: 12px;
 `;
 export const HeaderWeek = styled.li`
-  border: 1px solid transparent;
   display: inline-block;
-  width: ${props => (props.width - 14) / 7}px;
-  height: ${props => (props.width - 14) / 7}px;
+  width: ${props => em((props.width - DateWrapperPadding.left * 2 - 2) / 7)};
+  height: ${props => em((props.width - DateWrapperPadding.left * 2 - 2) / 7)};
   text-align: center;
-  line-height: ${props => (props.width - 14) / 7}px;
+  line-height: ${props => em((props.width - DateWrapperPadding.left * 2 - 2) / 7)};
   cursor: pointer;
 `;
 export const DatePanel = styled.div`
@@ -84,7 +86,7 @@ const dateSize = {
 };
 export const DateChild = styled.span`
   display: inline-block;
-  width: ${props => em(props.width / 7)};
+  width: ${props => em((props.width - DateWrapperPadding.left * 2 - 2) / 7)};
   text-align: center;
   vertical-align: middle;
   margin: ${em(3)} ${0};
@@ -96,10 +98,10 @@ export const DateChild = styled.span`
 export const DateChildInner = styled.i`
   font-style: normal;
   display: inline-block;
-  width: ${props => getDateChildInnerStyle(props).ChildInnerWidth};
-  height: ${props => getDateChildInnerStyle(props).ChildInnerWidth};
+  width: ${em(dateSize.DateChildWidth)};
+  height: ${em(dateSize.DateChildWidth)};
   text-align: center;
-  line-height: ${props => getDateChildInnerStyle(props).ChildInnerWidth};
+  line-height: ${em(dateSize.DateChildWidth)};
   vertical-align: text-top;
   cursor: pointer;
 
@@ -111,7 +113,7 @@ export const DateChildInner = styled.i`
 `;
 export const OtherChild = styled.span`
   display: inline-block;
-  width: 25%;
+  width: ${props => 100 / props.column}%;
   line-height: ${em(40)};
   font-size: 14px;
   text-align: center;
@@ -150,12 +152,11 @@ export const RangeInputInner = styled.span`
     box-shadow: none;
   }
 `;
-const getDateChildInnerStyle = props => {
-  const { isToday } = props;
-  const { DateChildWidth } = dateSize;
-  const ChildInnerWidth = isToday ? em(DateChildWidth - 2) : em(DateChildWidth);
+const getDateWrrap = props => {
+  const { top, left, bottom } = DateWrapperPadding;
+  const paddingStyle = ` ${em(top)}  ${em(left)} ${em(bottom)}`;
   return {
-    ChildInnerWidth,
+    paddingStyle,
   };
 };
 const getDateChildStyle = props => {
