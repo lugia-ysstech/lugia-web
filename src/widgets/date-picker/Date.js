@@ -7,10 +7,10 @@ import Icon from '../icon/index';
 import moment from 'moment';
 import WeekDays from './week';
 import { getDerived, modeStyle } from './getDerived';
+import { valueInRange, sortable } from '../common/Math';
 // import { getElementPosition } from '../utils';
 import {
   DateChild,
-  DateChildWrap,
   DateChildInner,
   DateHeader,
   DatePanel,
@@ -33,6 +33,11 @@ type TypeProps = {
   showToday?: boolean,
   weeks?: number,
   getMode: Function,
+  index?: number,
+  panelChoseDate?: string,
+  panelIndex?: number,
+  prePanelIndex?: number,
+  hasValue?: boolean,
 };
 type TypeState = {
   days: Array<Object>,
@@ -63,6 +68,11 @@ class Date extends Component<TypeProps, TypeState> {
   maxDay: number;
   value: string;
   weeksRange: number;
+  choseDate: string;
+  constructor(props: any) {
+    super(props);
+    this.changeValue = moment().format('YYYY-MM-DD');
+  }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { value, today, noToday, moments, format, weeks, firstWeekDay } = getDerived(
       nextProps,
@@ -83,6 +93,7 @@ class Date extends Component<TypeProps, TypeState> {
         format,
         weeks,
         firstWeekDay,
+        choseDayIndex: '',
       };
     }
 
@@ -93,7 +104,7 @@ class Date extends Component<TypeProps, TypeState> {
   }
 
   getDaysInMonth = (type: string, funName: string) => () => {
-    const { currentYear, currentMonth, value, choseDate } = this.state;
+    const { currentYear, currentMonth, value } = this.state;
     let { format } = this.state;
     const { mode } = this.props;
     const { isWeeks } = modeStyle(mode);
@@ -112,7 +123,6 @@ class Date extends Component<TypeProps, TypeState> {
     this.value = moments.format(format);
 
     this.setStateFunc('changeHead', moments, this.choseDate, value);
-
     if (isWeeks) {
       const { firstWeekDay } = this.state;
       const momen = moment(this.value);
@@ -169,13 +179,15 @@ class Date extends Component<TypeProps, TypeState> {
       index,
       child
     );
-
+    const { mode } = this.props;
+    const { isWeeks } = modeStyle(mode);
+    this.value = choseValue;
     this.setState(
       { value: choseValue, currentYear, currentMonth, choseDate, choseDayIndex },
       () => {
-        const { onChange, mode } = this.props; // 2018-08-28
+        const { onChange } = this.props;
         this.getDaysInMonth()();
-        if (mode === 'weeks') {
+        if (isWeeks) {
           this.value = choseValue;
           this.getWeeksRangeInDates(choseValue);
         } else {
@@ -188,7 +200,6 @@ class Date extends Component<TypeProps, TypeState> {
     const choseDate = child;
     const { weekIndex, format } = this.state;
     const { value } = this;
-
     const { choseDayIndex, choseValue } = this.getChoseDayIndex(
       'getNode',
       choseDate,
@@ -261,7 +272,8 @@ class Date extends Component<TypeProps, TypeState> {
     let { format } = this.state;
 
     const { mode } = this.props;
-    if (mode === 'weeks' || mode === 'date') {
+    const { isWeeks, isDate, isRange } = modeStyle(mode);
+    if (isWeeks || isDate) {
       format = 'YYYY-MM-DD';
     }
     const { firstWeekDay } = this.state;
@@ -275,9 +287,7 @@ class Date extends Component<TypeProps, TypeState> {
     const choseDate = newMoments.format('DD');
     this.choseDate = Number(choseDate);
 
-    if (mode === 'weeks') {
-      const { choseYear, choseWeeks } = this;
-
+    if (isWeeks) {
       let { year, month, weeks } = this.getWeeksFromValue(value);
       if (choseValue && month === 11 && weeks === 1) {
         weeks =
@@ -321,7 +331,25 @@ class Date extends Component<TypeProps, TypeState> {
       });
     }
     this.changeValue = this.value;
-
+    if (isRange) {
+      const { index, hasValue } = this.props;
+      const { rangeValue } = this.props;
+      console.log(this.value);
+      const { isSameYandM, year, month } = this.getIsSame(rangeValue);
+      const hasRangeValue = rangeValue[0] !== '' && rangeValue[1] !== '';
+      if (hasValue && isSameYandM) {
+        if (index === 1) {
+          newMoments = moment()
+            .set({ year, month })
+            .add('1', 'month');
+        }
+      }
+      if (index === 1 && !hasRangeValue && this.isChangeMonth) {
+        this.isChangeMonth = false;
+        newMoments = moment(this.value, format).add('1', 'month');
+      }
+      this.value = newMoments.format(format);
+    }
     this.setStateFunc('fresh', newMoments, this.choseDate, this.value);
   };
   setStateFunc = (funGoal: string, moments: Object, choseDate: number, value: string) => {
@@ -336,7 +364,6 @@ class Date extends Component<TypeProps, TypeState> {
       dateIndex,
       value
     );
-
     this.setState({
       days,
       weekDay,
@@ -358,14 +385,13 @@ class Date extends Component<TypeProps, TypeState> {
     this.getMode('week', 'date');
   };
   getMode = (mode: string, from: string) => {
-    const { currentYear, currentMonth, value } = this.state;
+    const { currentYear, currentMonth } = this.state;
     let { format } = this.state;
 
     if (this.props.mode === 'weeks') {
       format = 'YYYY-MM-DD';
     }
     const { changeValue } = this;
-
     const moments = moment(changeValue, format);
     const year = currentYear || moments.year();
     const month = currentMonth || moments.month();
@@ -453,8 +479,6 @@ class Date extends Component<TypeProps, TypeState> {
     newStartValue = this.getWeeksForFirstWeekDay(startValue, endValue, firstWeekDay).newStartValue;
     newEndValue = this.getWeeksForFirstWeekDay(startValue, endValue, firstWeekDay).newEndValue;
 
-    console.log('范围值', newStartValue, newEndValue, currentValue, weeks);
-
     const currentDate = moment(currentValue).date();
     const currentIndex = currentDate + weekIndex;
 
@@ -538,34 +562,57 @@ class Date extends Component<TypeProps, TypeState> {
     onChange && onChange({ newValue, choseValue: value, weeks });
   };
   onMouseOver = (index: number, child: number) => () => {
-    const { format } = this.state;
+    //const { format } = this.state;
+    const { mode } = this.props;
+    const { isWeeks, isRange } = modeStyle(mode);
     const { choseValue } = this.getYandM(index, child);
-    const { firstWeekDay } = this.state;
-    const moments = moment(moment(choseValue));
+    // const { firstWeekDay } = this.state;
+    if (isWeeks) {
+      const moments = moment(moment(choseValue));
 
-    let year = moments.year();
-    const weeks = moments.weeks();
-    const month = moments.month();
+      let year = moments.year();
+      const weeks = moments.weeks();
+      const month = moments.month();
 
-    if (month === 11 && weeks === 1) {
-      year = year + 1;
+      if (month === 11 && weeks === 1) {
+        year = year + 1;
+      }
+
+      // const start = moments.startOf('week').format('YYYY-MM-DD');
+      // const end = moments.endOf('week').format('YYYY-MM-DD');
+
+      const { endInWeeks, startInWeeks } = this.getDatesfromWeeks(
+        year,
+        weeks,
+        index,
+        child,
+        choseValue
+      );
+
+      this.setState({
+        weekHoverStart: startInWeeks,
+        weekHoverEnd: endInWeeks,
+      });
     }
+    if (isRange) {
+      const { panelChoseDate } = this.props;
+      //const rangeChange = rangeValue[0] !== '' || rangeValue[0] !== '';
+      //const { weekIndex, currentMonth, currentYear } = this.state;
 
-    const start = moments.startOf('week').format('YYYY-MM-DD');
-    const end = moments.endOf('week').format('YYYY-MM-DD');
+      const rangeIndex = this.props.index;
 
-    const { endInWeeks, startInWeeks } = this.getDatesfromWeeks(
-      year,
-      weeks,
-      index,
-      child,
-      choseValue
-    );
+      if (panelChoseDate) {
+        this.isHover = true;
+        const { rangeHoverChange } = this.props;
+        rangeHoverChange && rangeHoverChange({ rangeIndex, choseValue });
 
-    this.setState({
-      weekHoverStart: startInWeeks,
-      weekHoverEnd: endInWeeks,
-    });
+        // const rangeChoseIndex = choseValueIn && sameIndex ? [choseDayIndex, index + 1] : choseDayIndex;
+        console.log(panelChoseDate, choseValue);
+        const hoverRangeValue = this.getDateSort([panelChoseDate, choseValue]);
+        console.log(hoverRangeValue);
+        this.setState({ hoverRangeValue });
+      }
+    }
   };
   onMouseOut = () => {
     this.setState({
@@ -573,8 +620,116 @@ class Date extends Component<TypeProps, TypeState> {
       weekHoverEnd: '',
     });
   };
+  getDateSort = (arr: Array<any>) => {
+    const { format } = this.state;
+    const unixArr = [];
+    arr.forEach((item, index) => {
+      const unix = moment(item, format).valueOf();
+      unixArr.push(unix);
+    });
+    const sortUnixArr = unixArr.sort(sortable);
+    const valueArr = [];
+    sortUnixArr.forEach((item, index) => {
+      const value = moment(item).format(format);
+      valueArr.push(value);
+    });
+
+    return valueArr;
+  };
+  getMaxAndMinInMonth = (currentMonth: number, currentYear: number) => {
+    const { format } = this.state;
+    const moments = moment().set({ month: currentMonth, year: currentYear });
+    const maxValue = moments.endOf('month').format(format);
+    const minValue = moments.startOf('month').format(format);
+    return {
+      maxValue,
+      minValue,
+    };
+  };
+  getValueInRange = (maxValue: string, minValue: string, choseValue: string) => {
+    const { format } = this.state;
+    const maxUnix = moment(maxValue, format).valueOf();
+    const minUnix = moment(minValue, format).valueOf();
+    const choseValueUnix = moment(choseValue, format).valueOf();
+    const choseValueIn = valueInRange(choseValueUnix, [minUnix, maxUnix]);
+    return choseValueIn;
+  };
+  getIsSame = (rangeValue: Array<string>) => {
+    const { format } = this.state;
+    const momentS = moment(rangeValue[0], format);
+    const momentE = moment(rangeValue[1], format);
+    const isSamePanelS = momentS.format('YYYY-MM');
+    const isSamePanelE = momentE.format('YYYY-MM');
+    return {
+      isSameYandM: isSamePanelS === isSamePanelE,
+      dateS: momentS.date(),
+      dateE: momentE.date(),
+      year: momentS.year(),
+      month: momentS.month(),
+    };
+  };
+  getChoseDayIndexInRange = (index, currentValue, rangeValue) => {
+    const { weekIndex, currentMonth, currentYear, format } = this.state;
+    let { choseDayIndex } = this.state;
+    const { mode, hasValue } = this.props;
+    const { isRange } = modeStyle(mode);
+    let rangeChose = false;
+    let rangeStartIndex;
+    let rangeEndIndex;
+    let panelFistEndIndex;
+    let panelSecondStartIndex;
+    if (isRange) {
+      if (rangeValue) {
+        const { choseValue } = this.getYandM(index, currentValue);
+        const { maxValue, minValue } = this.getMaxAndMinInMonth(currentMonth, currentYear);
+
+        const choseValueIn = this.getValueInRange(maxValue, minValue, choseValue);
+        if (choseValueIn) {
+          rangeChose = this.getValueInRange(rangeValue[0], rangeValue[1], choseValue);
+          const { isSameYandM, dateS, dateE } = this.getIsSame(rangeValue);
+          if (isSameYandM) {
+            rangeStartIndex = dateS + weekIndex;
+            rangeEndIndex = dateE + weekIndex;
+            choseDayIndex = [rangeStartIndex, rangeEndIndex];
+          } else {
+            panelFistEndIndex = '';
+            panelSecondStartIndex = '';
+            const { index } = this.props;
+            if (index === 0) {
+              panelFistEndIndex = moment(maxValue, format).date() + weekIndex;
+            }
+            if (index === 1) {
+              panelSecondStartIndex = moment(minValue, format).date() + weekIndex;
+            }
+          }
+        }
+      }
+
+      const rangeIndex = this.props.index;
+      let { panelIndex } = this.props;
+      const { isSameYandM } = this.getIsSame(rangeValue);
+      panelIndex = isSameYandM && hasValue && panelIndex === 1 ? 0 : panelIndex;
+      const sameIndex = panelIndex !== rangeIndex;
+      // if(!this.isHover){
+      choseDayIndex =
+        (isSameYandM && sameIndex) || (!isSameYandM && sameIndex && !hasValue) ? '' : choseDayIndex;
+      // }
+
+      console.log(choseDayIndex);
+    }
+    return {
+      choseDayIndex,
+      rangeChose,
+      rangeStartIndex,
+      rangeEndIndex,
+      panelFistEndIndex,
+      panelSecondStartIndex,
+    };
+  };
   componentDidMount() {
     this.getDaysInMonth()();
+    this.isChangeMonth = true;
+    // this.getChoseDayIndexInRange();
   }
 
   render() {
@@ -586,36 +741,100 @@ class Date extends Component<TypeProps, TypeState> {
       noToday,
       weekIndex,
       lastDayIndexInMonth,
-      choseDayIndex,
       startInWeeks,
       endInWeeks,
       weekHoverStart,
       weekHoverEnd,
+      hoverRangeValue,
     } = this.state;
-    const { showToday, mode } = this.props;
-    const { isWeeks } = modeStyle(mode);
+    let {
+      choseDayIndex,
+      rangeChose,
+      rangeStartIndex,
+      rangeEndIndex,
+      panelFistEndIndex,
+      panelSecondStartIndex,
+    } = this.state;
+
+    const { showToday = true, mode, hasValue } = this.props;
+    const { isWeeks, isRange } = modeStyle(mode);
     const todayIndex = today + weekIndex;
 
     const dateChildren = days.map((currentValue, index) => {
+      // let rangeChose = false;
+      // let rangeStartIndex;
+      // let rangeEndIndex;
+      // let panelFistEndIndex;
+      // let panelSecondStartIndex;
+
+      if (isRange) {
+        let { rangeValue } = this.props;
+        console.log(hasValue, this.isHover);
+        if (hasValue) {
+          if (this.isHover) {
+            rangeValue = hoverRangeValue;
+          }
+          const obj = this.getChoseDayIndexInRange(index, currentValue, rangeValue);
+          choseDayIndex = obj.choseDayIndex;
+          rangeChose = obj.rangeChose;
+          rangeStartIndex = obj.rangeStartIndex;
+          rangeEndIndex = obj.rangeEndIndex;
+          panelFistEndIndex = obj.panelFistEndIndex;
+          panelSecondStartIndex = obj.panelSecondStartIndex;
+        }
+        // else{
+        //   const {index,panelIndex,preIndex}=this.props;
+        //   const sameIndex=index===panelIndex;
+        //   if(this.isHover){
+
+        //     choseDayIndex=this.state.choseDayIndex;
+        //     // if(preIndex ===panelIndex && !sameIndex  ){
+        //     //   choseDayIndex='';
+        //     // }
+        //   }else{
+        //     choseDayIndex='';
+        //   }
+        // }
+
+        //console.log(isSameYandM);
+        // if(this.isHover))){
+        //   choseDayIndex=this.state.choseDayIndex;
+        // }
+
+        console.log(this.isHover);
+      }
+
       return (
         <DateChild
           width={300}
           choseDayIndex={choseDayIndex}
+          todayIndex={todayIndex}
+          noToday={noToday}
           isChooseWeek={index >= startInWeeks && index < endInWeeks && mode === 'weeks'}
           isHoverWeek={index >= weekHoverStart && index < weekHoverEnd && mode === 'weeks'}
           startInWeeks={startInWeeks}
           endInWeeks={endInWeeks}
           weekHoverStart={weekHoverStart}
           weekHoverEnd={weekHoverEnd}
-          onMouseOver={isWeeks ? this.onMouseOver(index, currentValue) : ''}
-          onMouseOut={isWeeks ? this.onMouseOut : ''}
+          onMouseOver={isWeeks || isRange ? this.onMouseOver(index, currentValue) : ''}
+          onMouseOut={isWeeks || isRange ? this.onMouseOut : ''}
+          rangeChose={rangeChose}
+          rangeIndex={this.props.index}
+          rangeStartIndex={rangeStartIndex}
+          rangeEndIndex={rangeEndIndex}
+          panelFistEndIndex={panelFistEndIndex}
+          panelSecondStartIndex={panelSecondStartIndex}
+          index={index + 1}
         >
           <DateChildInner
             width={300}
             key={index}
             onClick={this.onDateChange(index, currentValue)}
             isToday={showToday && todayIndex === index + 1 ? true : false}
-            noToday={noToday}
+            showToday={showToday}
+            todayIndex={todayIndex}
+            // todayIndex={todayIndex}
+            // noToday={noToday}
             outMonth={index < weekIndex || index > lastDayIndexInMonth ? true : false}
             choseDayIndex={choseDayIndex}
           >

@@ -16,7 +16,7 @@ type TypeState = {
 class Month extends Component<TypeProps, TypeState> {
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { weeks, format, moments } = getDerived(nextProps, preState);
-    // console.log(preState && preState.monthIndex);
+
     if (!preState) {
       return {
         year: moments.year(),

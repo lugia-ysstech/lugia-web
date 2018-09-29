@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
+import { valueInRange } from '../common/Math';
 const em = px2emcss(1.2);
 const distance = {
   iconLeft: 10,
 };
-const { hoverColor } = colorsFunc();
+const { hoverColor, normalColor } = colorsFunc();
+
 export const Icons = styled.span`
   position: absolute;
   left: ${em(distance.iconLeft)};
@@ -13,6 +15,7 @@ export const Icons = styled.span`
   transform: translateY(-50%);
 `;
 export const DateWrapper = styled.div`
+  display: inline-block;
   width: ${props => props.width}px;
   padding: 30px 30px 44px;
   border: 1px solid #ddd;
@@ -21,6 +24,24 @@ export const DateWInner = styled.div`
   width: ${props => props.width}px;
 `;
 export const DateHeader = styled.div`
+  font-size: 12px;
+`;
+export const RangeInput = styled.div`
+  display: inline-block;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+
+  & input {
+    width: 200px;
+    border: none;
+    text-align: center;
+  }
+  & input:focus {
+    border: none;
+    box-shadow: none;
+  }
+`;
+export const RangeSpan = styled.span`
   font-size: 12px;
 `;
 export const HeaderTop = styled.div`
@@ -66,20 +87,20 @@ export const DateChild = styled.span`
   width: ${props => em(props.width / 7)};
   text-align: center;
   vertical-align: middle;
+  margin: ${em(3)} ${0};
   ${props => getDateChildStyle(props).chooseStyle};
   ${props => getDateChildStyle(props).chooseWeeks};
+  ${props => getDateChildStyle(props).rangeStyle};
+  ${props => getDateChildStyle(props).todayStyle};
 `;
 export const DateChildInner = styled.i`
   font-style: normal;
-  border: 1px solid ${props => (props.isToday ? '#684fff' : 'transparent')};
-  border-style: ${props => (props.noToday ? 'dashed' : '')};
-  ${props => (props.isToday ? 'border-radius:50%;' : '')};
   display: inline-block;
-  width: ${em(dateSize.DateChildWidth)};
-  height: ${em(dateSize.DateChildWidth)};
+  width: ${props => getDateChildInnerStyle(props).ChildInnerWidth};
+  height: ${props => getDateChildInnerStyle(props).ChildInnerWidth};
   text-align: center;
-  line-height: ${em(dateSize.DateChildWidth)};
-  vertical-align: middle;
+  line-height: ${props => getDateChildInnerStyle(props).ChildInnerWidth};
+  vertical-align: text-top;
   cursor: pointer;
 
   &:hover {
@@ -106,8 +127,37 @@ export const OtherChildText = styled.i`
   padding: 5px 10px;
   font-style: normal;
   border-radius: 3px;
-  ${props => (props.isChose ? 'background:#684fff;color:#fff;' : '')};
+  ${props => (props.isChose ? `background:${normalColor};color:#fff;` : '')};
 `;
+export const RangeWrap = styled.div`
+  display: inline-block;
+`;
+export const RangeInnerTop = styled.span`
+  display: block;
+`;
+export const RangeInputWrap = styled.span`
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+`;
+export const RangeInputInner = styled.span`
+  & input {
+    border: none;
+    text-align: center;
+  }
+  & input:focus {
+    border: none;
+    box-shadow: none;
+  }
+`;
+const getDateChildInnerStyle = props => {
+  const { isToday } = props;
+  const { DateChildWidth } = dateSize;
+  const ChildInnerWidth = isToday ? em(DateChildWidth - 2) : em(DateChildWidth);
+  return {
+    ChildInnerWidth,
+  };
+};
 const getDateChildStyle = props => {
   const {
     choseDayIndex,
@@ -117,20 +167,49 @@ const getDateChildStyle = props => {
     isHoverWeek,
     weekHoverStart,
     weekHoverEnd,
+    rangeChose,
+    rangeIndex,
+    index,
+    todayIndex,
+    noToday,
+    rangeStartIndex,
+    rangeEndIndex,
+    panelFistEndIndex,
+    panelSecondStartIndex,
   } = props;
-  const chooseStyle = `  
-        &:nth-child(${choseDayIndex})>i{
-          background:#684fff;
-          color:#fff;
-          border-radius:50%;
-        } 
-        `;
+
+  const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
+
+  const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
+    return `${p}
+    &:nth-child(${n})>i{
+      background:${normalColor};
+      color:#fff;
+      border-radius:50%;
+    }`;
+  }, '');
+  const todayInd = noToday ? '' : todayIndex;
+  let todayStyle = `
+      &:nth-child(${todayInd})>i{
+        border:1px solid ${normalColor};
+        border-radius:50%;
+      }
+  `;
   let chooseWeeks;
   let chooseWeekRadius;
   if (isChooseWeek || isHoverWeek) {
-    const backG = isChooseWeek ? '#684fff' : '#8f83ff';
+    const backG = isChooseWeek ? `${normalColor}` : '#8f83ff';
     const start = isChooseWeek ? startInWeeks + 1 : weekHoverStart + 1;
     const end = isChooseWeek ? endInWeeks : weekHoverEnd;
+    const todayIn = valueInRange(todayIndex, [start, end]);
+    if (todayIn) {
+      todayStyle = `
+      &:nth-child(${todayInd})>i{
+        border:1px solid transparent;
+        border-radius:50%;       
+      }
+  `;
+    }
     chooseWeeks = `
     background:${backG};
     
@@ -150,9 +229,58 @@ const getDateChildStyle = props => {
       } 
     `;
   }
+  let rangeStyle;
+  if (rangeChose) {
+    let isEnd = false;
+    const startOrEnd = index % 7;
+    let borderIndex;
+    if (startOrEnd === 0) {
+      isEnd = true;
+      borderIndex = index;
+    }
+    if (startOrEnd === 1) {
+      isEnd = false;
+      borderIndex = index;
+    }
+
+    const direction = rangeIndex === 0 ? 'left' : 'right';
+    const startDir = isEnd ? 'right' : 'left';
+    const borderStyle = (dire: string) => {
+      return `
+        border-top-${dire}-radius:20px;
+        border-bottom-${dire}-radius:20px;
+      `;
+    };
+    rangeStyle = `    
+      background:#684fff1f;
+      &:nth-child(${arrChoseDayIndex}){
+        border-top-${direction}-radius:20px; 
+        border-bottom-${direction}-radius:20px;
+      }    
+      &:nth-child(${borderIndex}){
+        border-top-${startDir}-radius:20px;
+        border-bottom-${startDir}-radius:20px;
+      }  
+     
+      &:nth-child(${rangeStartIndex}){       
+        ${borderStyle('left')}
+      } 
+      &:nth-child(${rangeEndIndex}){        
+        ${borderStyle('right')}
+      }
+      &:nth-child(${panelFistEndIndex}){        
+        ${borderStyle('right')}
+      }
+      &:nth-child(${panelSecondStartIndex}){        
+        ${borderStyle('left')}
+      }
+    `;
+  }
   return {
     chooseStyle,
     chooseWeeks,
     chooseWeekRadius,
+    rangeStyle,
+    todayStyle,
   };
 };

@@ -1,14 +1,14 @@
 import moment from 'moment';
 export const getDerived = (nextProps, preState) => {
-  const { defaultValue, mode, showToday } = nextProps;
-  const normalFormat =
-    mode === 'month'
-      ? 'YYYY-MM'
-      : mode === 'year'
-        ? 'YYYY'
-        : mode === 'week' || mode === 'weeks'
-          ? 'YYYY-WW'
-          : 'YYYY-MM-DD';
+  const { defaultValue, mode, showToday, placeholder } = nextProps;
+  const { isWeeks, isWeek, isMonth, isYear, isRange } = modeStyle(mode);
+  const normalFormat = isMonth
+    ? 'YYYY-MM'
+    : isYear
+      ? 'YYYY'
+      : isWeek || isWeeks
+        ? 'YYYY-WW'
+        : 'YYYY-MM-DD';
   let { value, format = normalFormat } = nextProps;
   let { firstWeekDay = 0 } = nextProps;
   if (firstWeekDay >= 7 || firstWeekDay <= 0) {
@@ -16,13 +16,27 @@ export const getDerived = (nextProps, preState) => {
   }
   const hasDefaultProps = 'defaultValue' in nextProps && moment(defaultValue, format)._isValid;
   const hasValueProps = 'value' in nextProps && moment(value, format)._isValid;
+  const hasPlaceholder = 'placeholder' in nextProps;
+
+  const newPlaceholder = hasPlaceholder
+    ? placeholder
+    : isRange
+      ? ['开始日期', '结束日期']
+      : '请选择日期';
   value = hasValueProps
     ? value
     : preState
       ? preState.value
       : hasDefaultProps
         ? defaultValue
-        : moment().format('YYYY-MM-DD');
+        : isRange
+          ? [
+              moment().format('YYYY-MM-DD'),
+              moment()
+                .add('1', 'month')
+                .format('YYYY-MM-DD'),
+            ]
+          : moment().format('YYYY-MM-DD');
 
   const moments = moment(value, format);
   const { weeks = moments.weeks() } = nextProps;
@@ -34,7 +48,6 @@ export const getDerived = (nextProps, preState) => {
     today = max;
     noToday = true;
   }
-
   return {
     value,
     noToday,
@@ -44,6 +57,28 @@ export const getDerived = (nextProps, preState) => {
     mode,
     weeks,
     firstWeekDay,
+    hasDefaultProps,
+    hasValueProps,
+    placeholder: newPlaceholder,
+  };
+};
+export const getDerivedForInput = (nextProps, preState) => {
+  const { defaultValue, mode } = nextProps;
+  const { hasDefaultProps, hasValueProps, format } = getDerived(nextProps, preState);
+  const { isRange } = modeStyle(mode);
+  const value = hasValueProps
+    ? nextProps.value
+    : preState
+      ? preState.value
+      : hasDefaultProps
+        ? defaultValue
+        : isRange
+          ? ['', '']
+          : '';
+  return {
+    value,
+    format,
+    hasValueProps,
   };
 };
 export const modeStyle = mode => {
@@ -52,11 +87,13 @@ export const modeStyle = mode => {
   const isMonth = mode === 'month';
   const isYear = mode === 'year';
   const isDate = mode === 'date';
+  const isRange = mode === 'range';
   return {
     isWeek,
     isMonth,
     isYear,
     isDate,
     isWeeks,
+    isRange,
   };
 };

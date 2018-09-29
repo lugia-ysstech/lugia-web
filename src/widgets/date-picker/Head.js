@@ -109,7 +109,7 @@ class Head extends Component<TypeProps, TypeState> {
   };
   render() {
     const { currentYear, showYears, title, secondTitle, isWeekInner } = this.state;
-    //console.log(title);
+
     return (
       <DateHeader width={200}>
         <HeaderTop>

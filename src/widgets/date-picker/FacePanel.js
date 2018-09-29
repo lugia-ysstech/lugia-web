@@ -45,7 +45,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
       const status = isWeekInner ? false : true;
       data = { ...choseValue, isWeekInner: status };
     }
-    //console.log(data);
+
     onChange && onChange(data);
   };
   getYears = (start: number, step: number, isYear: boolean) => {
@@ -114,7 +114,6 @@ class FacePanel extends Component<TypeProps, TypeState> {
         weeksDate.push({ text, start, end, index: i });
       }
     }
-    // console.log(weeks,rangeIndex);
     return {
       weeksDate,
       rangeIndex,
@@ -131,8 +130,6 @@ class FacePanel extends Component<TypeProps, TypeState> {
     const weeksInner = [];
     let weekIndex;
     if (isWeek) {
-      // console.log(weeksDate);
-      // console.log(rangeIndex);
       const { start, end, index } = weeksDate[rangeIndex];
       if (weeks >= start && weeks <= end) {
         weekIndex = index;
@@ -148,7 +145,6 @@ class FacePanel extends Component<TypeProps, TypeState> {
   };
   getHeadInfo = () => {
     const { step, mode, year, isWeekInner, weeks } = this.props;
-    //console.log(weeks);
     const { isWeek } = modeStyle(mode);
     const weeksInYear = moment({ year }).weeksInYear();
     const { weeksDate, rangeIndex } = this.getWeeksRange(weeks, isWeek, weeksInYear, step);

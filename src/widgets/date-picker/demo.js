@@ -7,11 +7,16 @@
  */
 import React, { Component } from 'react';
 import moment from 'moment';
-import { Date, Years, Months, Week } from './index';
+//import { Date, Years, Months, Week } from './index';
 import Head from './Head';
 import FacePanel from './FacePanel';
 import DatePicker from './index';
+import Date from './Date';
+import SwitchPanel from './SwitchPanel';
+import SingleRange from './SingleRange';
+import RangeInput from './RangeInput';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
+
 export default class Sl extends Component<any> {
   constructor() {
     super();
@@ -115,15 +120,21 @@ export default class Sl extends Component<any> {
         </div>
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>weeks</h2>
-          <WeeksPicker defaultValue={'2015-01周'} firstWeekDay={6} />
+          <WeeksPicker defaultValue={'2015-01周'} firstWeekDay={6} showToday={true} />
           {/* isFollow 默认为true */}
         </div>
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>RangePicker</h2>
-          <RangePicker />
+          <RangePicker placeholder={['开始日期', '结束日期']} mode={'range'} />
           {/* firstWeekday={2} isFollow */}
         </div>
 
+        {/*   
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>SingleRange</h2>
+          <SingleRange mode={'range'}/> */}
+        {/* firstWeekday={2} isFollow */}
+        {/* </div>    */}
         {/* <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>Month</h2>
           <Month defaultValue={'2015-07-03'} onChange={this.weekschange}/>
