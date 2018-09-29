@@ -4,7 +4,7 @@ import moment from 'moment';
 import Head from './Head';
 import FacePanel from './FacePanel';
 import DateInput from './DateInput';
-import { DateWrapper, DateWInner } from './styled';
+import { DateWrapper } from './styled';
 import { getDerived } from './getDerived';
 
 type TypeProps = {
@@ -72,7 +72,7 @@ class Month extends Component<TypeProps, TypeState> {
     // console.log(monthIndex,year);
     return (
       <DateWrapper width={300}>
-        <DateWInner width={300}>
+        <div>
           <Head
             {...this.props}
             onChange={this.arrorChange}
@@ -86,7 +86,7 @@ class Month extends Component<TypeProps, TypeState> {
             mode="month"
             monthIndex={monthIndex}
           />
-        </DateWInner>
+        </div>
       </DateWrapper>
     );
   }

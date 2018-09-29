@@ -7,7 +7,7 @@ import moment from 'moment';
 import Head from './Head';
 import FacePanel from './FacePanel';
 import DatePicker from './DateInput';
-import { DateWrapper, DateWInner } from './styled';
+import { DateWrapper } from './styled';
 import { getDerived } from './getDerived';
 type TypeProps = {
   step?: number,
@@ -105,7 +105,7 @@ class Weeks extends Component<TypeProps, TypeState> {
     const { step = 12 } = this.props;
     return (
       <DateWrapper width={300}>
-        <DateWInner width={300}>
+        <div width={300}>
           <Head
             {...this.props}
             start={year}
@@ -126,7 +126,7 @@ class Weeks extends Component<TypeProps, TypeState> {
             onChange={this.panelChange}
             ref={this.picker}
           />
-        </DateWInner>
+        </div>
       </DateWrapper>
     );
   }

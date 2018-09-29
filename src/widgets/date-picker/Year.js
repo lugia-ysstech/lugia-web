@@ -78,7 +78,7 @@ class Year extends Component<TypeProps, TypeState> {
     const { step = 12 } = this.props;
     return (
       <DateWrapper width={300}>
-        <DateWInner width={300}>
+        <div>
           <Head
             {...this.props}
             onChange={this.arrorChange}
@@ -99,7 +99,7 @@ class Year extends Component<TypeProps, TypeState> {
             title={title}
             mode={'year'}
           />
-        </DateWInner>
+        </div>
       </DateWrapper>
     );
   }
