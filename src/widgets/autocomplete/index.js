@@ -107,8 +107,8 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
       <Theme config={menuConfig}>
         <Trigger
           align="bottomLeft"
-          action={disabled ? [] : ['click']}
-          hideAction={['click']}
+          action={disabled ? [] : ['focus']}
+          hideAction={['focus']}
           popup={menu}
           ref={this.triggerEl}
         >
@@ -166,7 +166,7 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
   menuItemClickHandler = (event: Object, selectedValue: Object) => {
     const { selectedKeys } = selectedValue;
     this.clckingOldValue = true;
-    this.changeOldValue(selectedKeys[0]);
+    this.changeOldValueAnFocus(selectedKeys[0]);
   };
 
   clckingOldValue: boolean;
@@ -174,18 +174,22 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
     this.clckingOldValue = true;
     const { state } = this;
     const { preSelectValue } = state;
-    this.changeOldValue(preSelectValue);
+    this.changeOldValueAnFocus(preSelectValue);
   };
+
+  clearInputValue = () => {
+    this.changeOldValueAnFocus('');
+  };
+
+  changeOldValueAnFocus(newValue: string) {
+    this.changeOldValue(newValue);
+    this.focusInput();
+  }
 
   changeOldValue(newValue: string) {
     const { currentSelectValue } = this.state;
     this.setValue(newValue, { currentSelectValue: newValue, preSelectValue: currentSelectValue });
   }
-
-  clearInputValue = () => {
-    this.focusInput();
-    this.changeOldValue('');
-  };
 
   focusInput() {
     this.getInputDom().focus();
