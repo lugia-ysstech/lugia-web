@@ -2,7 +2,7 @@ import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 const { themeColor, blackColor, mediumGreyColor, darkGreyColor, superLightColor } = colorsFunc();
-type TabType = 'line' | 'card';
+type TabType = 'line' | 'card' | 'window';
 type TabPositionType = 'left' | 'right' | 'top' | 'bottom';
 type EditType = 'next' | 'pre';
 const em = px2emcss(1.2);
@@ -59,8 +59,8 @@ export const getContentPosition = (props: Object) => {
   }
 };
 export const getContainerBorder = (props: Object) => {
-  const { tabPosition } = props;
-  if (matchTabPosition(tabPosition, 'top')) {
+  const { tabPosition, tabType } = props;
+  if (matchTabPosition(tabPosition, 'top') && matchTabPosition(tabType, 'line')) {
     return `border-bottom: ${em(1)} solid ${superLightColor}`;
   }
   if (matchTabPosition(tabPosition, 'right')) {
@@ -75,17 +75,17 @@ export const getContainerBorder = (props: Object) => {
 };
 export const getFocusShadow = (props: Object) => {
   const { tabType, isSelect } = props;
-  const color = isSelect && tabType === 'card' ? 'rgba(104, 79, 255,0.2)' : 'none';
+  const color = isSelect && tabType === 'window' ? 'rgba(104, 79, 255,0.2)' : 'none';
   return `box-shadow: 0 0 ${em(6)} ` + color;
 };
 export const getBackgroundShadow = (props: Object) => {
   const { tabType } = props;
-  const color = tabType === 'card' ? 'rgba(104, 79, 255,0.2)' : 'none';
-  return `box-shadow: 0 ${em(-1)} ${em(6)} ` + color;
+  const color = tabType === 'window' ? 'rgba(104, 79, 255,0.2)' : 'none';
+  return `box-shadow: 0 ${em(-2)} ${em(6)} ` + color;
 };
 export const backgroundColor = (props: Object) => {
   const { tabType } = props;
-  const color = matchTabType(tabType, 'card') ? '#f8f8f8' : 'none';
+  const color = matchTabType(tabType, 'window') ? '#f8f8f8' : 'none';
   return color;
 };
 export const hContainerWidth = props => {
@@ -100,7 +100,7 @@ export const vContainerHeight = props => {
 };
 export const hContainerHeight = props => {
   const { tabType } = props;
-  const height = matchTabType(tabType, 'card') ? em(38) : em(32);
+  const height = matchTabType(tabType, 'window') ? em(38) : em(32);
   return height;
 };
 export const lineWidth = props => {
@@ -109,7 +109,37 @@ export const lineWidth = props => {
   return width;
 };
 export const getTitlePadding = props => {
-  const { icon, tabType } = props;
-  const padding = icon === null && tabType !== 'card' ? em(0) : em(10);
-  return `padding:0 ${padding}`;
+  const { isHasIcon, tabType } = props;
+  const leftPadding = isHasIcon && !matchTabType(tabType, 'window') ? em(10) : em(0);
+  const rightPadding = !matchTabType(tabType, 'line') ? em(10) : em(0);
+  return `padding: 0 ${rightPadding}  0 ${leftPadding}`;
+};
+export const getTabpanePadding = props => {
+  const { tabType } = props;
+  const rightPadding = !matchTabType(tabType, 'line') ? em(10) : em(20);
+  return `padding: 0 ${rightPadding}  0 ${em(20)}`;
+};
+export const getAddBackground = () => {
+  return 'background: #eeeeee;';
+};
+export const getAddHoverBackground = () => {
+  return 'background: #dddddd;';
+};
+export const getTabpaneBackground = props => {
+  const { tabType, isSelect } = props;
+  const background =
+    (matchTabType(tabType, 'window') && isSelect) || (matchTabType(tabType, 'card') && isSelect)
+      ? 'white'
+      : matchTabType(tabType, 'card') && !isSelect
+        ? '#f8f8f8'
+        : 'none';
+  return `background: ${background}`;
+};
+export const getTabpaneBorder = props => {
+  const { tabType } = props;
+  if (tabType === 'card') return `border: ${em(1)} solid #e8e8e8`;
+};
+export const getTabpaneMarginRight = props => {
+  const { tabType } = props;
+  if (tabType === 'card') return `  margin-right:${em(4)};`;
 };

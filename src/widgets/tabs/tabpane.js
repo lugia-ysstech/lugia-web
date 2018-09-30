@@ -17,6 +17,10 @@ import {
   getFocusShadow,
   matchTabType,
   getTitlePadding,
+  getTabpanePadding,
+  getTabpaneBackground,
+  getTabpaneBorder,
+  getTabpaneMarginRight,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -39,19 +43,21 @@ const VTab = BaseTab.extend`
 `;
 const HTab = BaseTab.extend`
   display: inline-block;
-  height: ${em(32)};
-  padding: 0 ${em(20)};
+  ${getTabpanePadding};
   line-height: ${em(32)};
-  background: ${props =>
-    (matchTabType(props.tabType, 'card') && props.isSelect ? 'white' : 'none')};
   border-top-left-radius: ${props =>
-    (matchTabType(props.tabType, 'card') && props.isSelect ? em(5) : 0)};
+    (matchTabType(props.tabType, 'window') && props.isSelect) ||
+    (matchTabType(props.tabType, 'card') ? em(4) : 0)};
   border-top-right-radius: ${props =>
-    (matchTabType(props.tabType, 'card') && props.isSelect ? em(5) : 0)};
+    (matchTabType(props.tabType, 'window') && props.isSelect) ||
+    (matchTabType(props.tabType, 'card') ? em(4) : 0)};
   ${getFocusShadow};
-  bottom: ${props => (matchTabType(props.tabType, 'card') ? em(-6) : 0)};
-  left: ${props => (matchTabType(props.tabType, 'card') ? em(6) : 0)};
-  z-index: 3;
+  bottom: ${props => (matchTabType(props.tabType, 'window') ? em(-6) : 0)};
+  left: ${props => (matchTabType(props.tabType, 'window') ? em(6) : 0)};
+  ${getTabpaneBackground};
+  ${getTabpaneBorder};
+  ${getTabpaneMarginRight};
+  z-index: 99;
 `;
 const Title = styled.span`
   ${getColor};
@@ -75,6 +81,11 @@ const TabIcon: Object = styled(Icon)`
     ${getHoverColor};
   }
 `;
+const IconContainer = styled.span`
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+`;
 
 const ClearButton: Object = styled(Icon)`
   z-index: 2;
@@ -94,7 +105,7 @@ type TabsProps = {
   icon: string,
   tabType: TabType,
   tabPosition: TabPositionType,
-  activityKey: number,
+  activityKey: string,
   isSelect: boolean,
   onClick: Function,
   getTabpaneWidth: Function,
@@ -103,12 +114,12 @@ type TabsProps = {
 class Tabpane extends Component<TabsProps, TabsState> {
   static defaultProps = {};
   static displayName = Widget.Tabpano;
-  ref: any;
+  tabpane: any;
   offsetWidth: number;
 
   constructor(props: TabsProps) {
     super(props);
-    this.ref = React.createRef();
+    this.tabpane = React.createRef();
     this.offsetWidth = 0;
   }
 
@@ -116,7 +127,6 @@ class Tabpane extends Component<TabsProps, TabsState> {
 
   render() {
     const { title, tabType, tabPosition, isSelect } = this.props;
-
     if (matchTabType(tabType, 'line') && isVertical(tabPosition)) {
       return (
         <VTab tabPosition={tabPosition} onClick={this.handleClick} isSelect={isSelect}>
@@ -129,10 +139,10 @@ class Tabpane extends Component<TabsProps, TabsState> {
         tabType={tabType}
         onClick={this.handleClick}
         isSelect={isSelect}
-        innerRef={cmp => (this.ref = cmp)}
+        innerRef={cmp => (this.tabpane = cmp)}
       >
         {this.getTabIcon()}
-        <Title icon={this.getTabIcon()} tabType={tabType} isSelect={isSelect}>
+        <Title isHasIcon={this.getTabIcon() !== null} tabType={tabType} isSelect={isSelect}>
           {title}
         </Title>
         {this.getClearButton()}
@@ -147,9 +157,9 @@ class Tabpane extends Component<TabsProps, TabsState> {
     const { icon, isSelect } = this.props;
     if (icon) {
       return (
-        <span style={{ display: 'inline-block', height: '12px', width: '12px' }}>
+        <IconContainer>
           <TabIcon isSelect={isSelect} iconClass={icon} />
-        </span>
+        </IconContainer>
       );
     }
     return null;
@@ -160,7 +170,7 @@ class Tabpane extends Component<TabsProps, TabsState> {
   };
   getClearButton() {
     const { tabType } = this.props;
-    if (matchTabType(tabType, 'card')) {
+    if (!matchTabType(tabType, 'line')) {
       return <ClearButton iconClass="lugia-icon-reminder_close" onClick={this.onDeleteClick} />;
     }
   }
@@ -171,8 +181,8 @@ class Tabpane extends Component<TabsProps, TabsState> {
 
   getContainerWidth() {
     const { getTabpaneWidth } = this.props;
-    if (this.ref) {
-      this.offsetWidth = this.ref.offsetWidth;
+    if (this.tabpane) {
+      this.offsetWidth = this.tabpane.offsetWidth;
     }
     getTabpaneWidth && getTabpaneWidth(this.offsetWidth);
   }
