@@ -9,6 +9,7 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts/index';
 import AutoComplete from '../';
+import { delay } from '@lugia/react-test-utils';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -236,14 +237,17 @@ describe('autocomplete', () => {
     expect(getMenuData(cmp)).toEqual([]);
   });
 
-  it('first select no oldValue', () => {
+  it('first select no oldValue', async () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
+
     expect(getMenuData(cmp)).toEqual([
       { value: 'Armin van Buuren', text: 'Armin van Buuren' },
       { value: 'Bassjackers', text: 'Bassjackers' },
     ]);
+    letInputOnBlur(cmp);
+    await delay(100);
     selectMenuItem(cmp, 0);
     letInputonFocus(cmp);
     expect(getOldValue(cmp)).toBe('B');

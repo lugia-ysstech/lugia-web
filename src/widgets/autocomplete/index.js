@@ -36,7 +36,6 @@ type AutoCompleteProps = {
 type AutoCompleteState = {
   menuData: String[],
   preSelectValue: string,
-  currentSelectValue: string,
   value: string,
 };
 
@@ -52,11 +51,12 @@ export default ShortKeyBoard(
       showOldValue: true,
       step: ScrollerStep,
     };
-
+    static displayName = 'AutoA';
     el: any;
 
     constructor(props: AutoCompleteProps) {
       super(props);
+      this.currentSelectValue = '';
       this.inputEl = React.createRef();
       this.triggerEl = React.createRef();
     }
@@ -68,7 +68,6 @@ export default ShortKeyBoard(
         return {
           menuData: [],
           preSelectValue: '',
-          currentSelectValue: '',
           value,
         };
       }
@@ -168,13 +167,14 @@ export default ShortKeyBoard(
 
     menuItemClickHandler = (event: Object, selectedValue: Object) => {
       const { selectedKeys } = selectedValue;
-      this.clckingOldValue = true;
+      this.changeClickingOldValue(true);
       this.changeOldValueAnFocus(selectedKeys[0]);
     };
 
-    clckingOldValue: boolean;
+    clickingOldValue: boolean;
+    currentSelectValue: string;
     handleClickOldValueItem = () => {
-      this.clckingOldValue = true;
+      this.changeClickingOldValue(true);
       const { state } = this;
       const { preSelectValue } = state;
       this.changeOldValueAnFocus(preSelectValue);
@@ -190,8 +190,9 @@ export default ShortKeyBoard(
     }
 
     changeOldValue(newValue: string) {
-      const { currentSelectValue } = this.state;
-      this.setValue(newValue, { currentSelectValue: newValue, preSelectValue: currentSelectValue });
+      const oldValue = this.currentSelectValue;
+      this.currentSelectValue = newValue;
+      this.setValue(newValue, { preSelectValue: oldValue });
     }
 
     focusInput() {
@@ -204,6 +205,7 @@ export default ShortKeyBoard(
 
     enterValue: string;
     onFocus = (e: Object) => {
+      !this.clickingOldValue && (this.currentSelectValue = this.state.value);
       const { onFocus } = this.props;
       this.enterValue = this.state.value;
       onFocus && onFocus(e);
@@ -212,20 +214,24 @@ export default ShortKeyBoard(
     onBlur = (e: Object) => {
       const { onBlur } = this.props;
       onBlur && onBlur(e);
-      const { value } = this.state;
       const change = () => {
+        const { value } = this.state;
         if (value !== this.enterValue) {
-          this.changeOldValue(this.state.value);
+          this.changeOldValue(value);
         }
       };
       setTimeout(() => {
-        if (this.clckingOldValue) {
-          this.clckingOldValue = false;
+        if (this.clickingOldValue) {
+          this.changeClickingOldValue(false);
           return;
         }
         change();
       }, 0);
     };
+
+    changeClickingOldValue(val) {
+      this.clickingOldValue = val;
+    }
 
     changeInputValue = (nextValue: any) => {
       const { newValue: value } = nextValue;
@@ -242,9 +248,8 @@ export default ShortKeyBoard(
       const { onChange } = this.props;
       onChange && onChange(value);
     }
-    onUp() {
-      console.info('hello');
-    }
+
+    onUp() {}
   },
   [
     {
