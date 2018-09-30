@@ -5,7 +5,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Icon from '../icon/index';
-import DatePicker from './DateInput';
 import { getDerived } from './getDerived';
 import { DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from './styled';
 type TypeProps = {
@@ -14,8 +13,12 @@ type TypeProps = {
   headOnChange: ?Function,
   start: number,
   mode: string,
-  step?: number,
+  step: number,
   showYears?: boolean,
+  title?: string,
+  secondTitle?: string,
+  isWeekInner?: boolean,
+  onHeadChange?: Function,
 };
 type TypeState = {
   currentYear: number,
@@ -25,19 +28,21 @@ type TypeState = {
   end: number,
   title: string,
   showYears: boolean,
+  secondTitle: string,
+  isWeekInner: boolean,
 };
 class Head extends Component<TypeProps, TypeState> {
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { value, format, moments, currentYear } = getDerived(nextProps, preState);
+    const { value, format, moments } = getDerived(nextProps, preState);
     const { start = moments.year(), title, mode, secondTitle, isWeekInner } = nextProps;
-    //console.log(start);
     const star = start - 1;
     const normalTitle = star + '-' + (star + 11);
+    const secontTit = isWeekInner && secondTitle ? `-${secondTitle}` : '';
     return {
       value,
       currentYear: moment(value, format).year() || moment().year(),
       title: mode !== 'year' ? start : title || normalTitle,
-      secondTitle: isWeekInner ? '-' + secondTitle : '',
+      secondTitle: secontTit,
     };
   }
   changeYear = (number: number) => () => {
@@ -47,7 +52,6 @@ class Head extends Component<TypeProps, TypeState> {
     if (mode === 'year' && start !== undefined) {
       number = number === -1 ? -step : step;
     }
-    //console.log(number);
     const moments = moment(value, format).set({ year: start });
     const newYear = moments.add(number, 'year').year();
     this.setState({ value: moments.format(format) });
@@ -89,7 +93,6 @@ class Head extends Component<TypeProps, TypeState> {
   };
   headClick = () => {
     const { currentYear } = this.state;
-    // console.log(currentYear);
     let { start, showYears, step } = this.props;
     if (!showYears) {
       start = start - 1;
@@ -108,7 +111,7 @@ class Head extends Component<TypeProps, TypeState> {
     onHeadChange && onHeadChange(secondTitle);
   };
   render() {
-    const { currentYear, showYears, title, secondTitle, isWeekInner } = this.state;
+    const { title, secondTitle } = this.state;
 
     return (
       <DateHeader width={200}>

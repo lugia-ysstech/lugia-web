@@ -25,7 +25,7 @@ type TypeProps = {
   value?: Object,
   firstWeekDay?: number,
   format?: string,
-  lang: string,
+  lang?: string,
   newValue: string,
   onChange: Function,
   mode?: string,
@@ -37,9 +37,12 @@ type TypeProps = {
   panelIndex?: number,
   prePanelIndex?: number,
   hasValue?: boolean,
+  rangeValue?: Array<string>,
+  isFollow?: boolean,
 };
 type TypeState = {
   days: Array<Object>,
+  dates: Array<string>,
   weekDay: number,
   firstWeekDay: number,
   today: number,
@@ -57,6 +60,8 @@ type TypeState = {
   endInWeeks: number,
   weekHoverStart: number,
   weekHoverEnd: number,
+  currentNodeIndex: number,
+  currentNodeValue: number,
 };
 
 class Date extends Component<TypeProps, TypeState> {
@@ -67,8 +72,13 @@ class Date extends Component<TypeProps, TypeState> {
   maxDay: number;
   value: string;
   weeksRange: number;
-  choseDate: string;
-  constructor(props: any) {
+  choseDate: number;
+  changeValue: string;
+  isCanChange: boolean;
+  choseWeeks: number;
+  choseYear: number;
+  isChangeMonth: boolean;
+  constructor(props: TypeProps) {
     super(props);
     this.changeValue = moment().format('YYYY-MM-DD');
   }
@@ -93,6 +103,8 @@ class Date extends Component<TypeProps, TypeState> {
         weeks,
         firstWeekDay,
         choseDayIndex: '',
+        currentNodeIndex: 0,
+        currentNodeValue: '',
       };
     }
 
@@ -102,7 +114,7 @@ class Date extends Component<TypeProps, TypeState> {
     };
   }
 
-  getDaysInMonth = (type: string, funName: string) => () => {
+  getDaysInMonth = (type?: string, funName?: string) => () => {
     const { currentYear, currentMonth, value } = this.state;
     let { format } = this.state;
     const { mode } = this.props;
@@ -179,10 +191,24 @@ class Date extends Component<TypeProps, TypeState> {
       child
     );
     const { mode } = this.props;
-    const { isWeeks } = modeStyle(mode);
+    const { isWeeks, isRange } = modeStyle(mode);
     this.value = choseValue;
+    let currentNodeIndex;
+    let currentNodeValue;
+    if (isRange) {
+      currentNodeIndex = index;
+      currentNodeValue = child;
+    }
     this.setState(
-      { value: choseValue, currentYear, currentMonth, choseDate, choseDayIndex },
+      {
+        value: choseValue,
+        currentYear,
+        currentMonth,
+        choseDate,
+        choseDayIndex,
+        currentNodeIndex,
+        currentNodeValue,
+      },
       () => {
         const { onChange } = this.props;
         this.getDaysInMonth()();
@@ -218,7 +244,7 @@ class Date extends Component<TypeProps, TypeState> {
     };
   };
   getChoseDayIndex = (
-    funGoal,
+    funGoal: string,
     choseDate: number,
     weekIndex: number,
     index: number,
@@ -348,6 +374,9 @@ class Date extends Component<TypeProps, TypeState> {
         newMoments = moment(this.value, format).add('1', 'month');
       }
       this.value = newMoments.format(format);
+      // console.log(this.state.days);
+      // const {currentNodeIndex,currentNodeValue}=this.state;
+      // this.getIndexInRange(currentNodeIndex,currentNodeValue,rangeValue);
     }
     this.setStateFunc('fresh', newMoments, this.choseDate, this.value);
   };
@@ -355,6 +384,16 @@ class Date extends Component<TypeProps, TypeState> {
     const { newMonth, newYear, days, weekDay, weekIndex, lastDayIndexInMonth } = this.getDates(
       moments
     );
+    const { mode } = this.props;
+    const { isRange } = modeStyle(mode);
+    const dates = [];
+    if (isRange) {
+      days.forEach((item, index) => {
+        const { choseValue } = this.getYandM(index, item);
+        dates.push(choseValue);
+      });
+    }
+
     const dateIndex = choseDate + weekIndex;
     const { choseDayIndex } = this.getChoseDayIndex(
       funGoal,
@@ -363,16 +402,28 @@ class Date extends Component<TypeProps, TypeState> {
       dateIndex,
       value
     );
-    this.setState({
-      days,
-      weekDay,
-      currentYear: newYear,
-      currentMonth: newMonth,
-      weekIndex,
-      lastDayIndexInMonth,
-      value,
-      choseDayIndex,
-    });
+    this.setState(
+      {
+        days,
+        dates,
+        weekDay,
+        currentYear: newYear,
+        currentMonth: newMonth,
+        weekIndex,
+        lastDayIndexInMonth,
+        value,
+        choseDayIndex,
+      },
+      () => {
+        const { mode } = this.props;
+        const { isRange } = modeStyle(mode);
+
+        if (isRange) {
+          const { rangeValue } = this.props;
+          this.getIndexInRange(rangeValue);
+        }
+      }
+    );
   };
   onChangeYear = () => {
     this.getMode('year', 'date');
@@ -667,7 +718,12 @@ class Date extends Component<TypeProps, TypeState> {
       month: momentS.month(),
     };
   };
-  getChoseDayIndexInRange = (index, currentValue, rangeValue) => {
+  getIndexInRange = rangeValue => {
+    const { dates } = this.state;
+    console.log(dates);
+    console.log(rangeValue);
+  };
+  getChoseDayIndexInRange = (index: number, currentValue: string, rangeValue: Array<string>) => {
     const { weekIndex, currentMonth, currentYear, format } = this.state;
     let { choseDayIndex } = this.state;
     const { mode, hasValue } = this.props;
@@ -727,8 +783,11 @@ class Date extends Component<TypeProps, TypeState> {
   };
   componentDidMount() {
     this.getDaysInMonth()();
-    this.isChangeMonth = true;
-    // this.getChoseDayIndexInRange();
+    const { mode } = this.props;
+    const { isRange } = modeStyle(mode);
+    if (isRange) {
+      this.isChangeMonth = true;
+    }
   }
 
   render() {
@@ -843,7 +902,8 @@ class Date extends Component<TypeProps, TypeState> {
         </DateChild>
       );
     });
-    const { firstWeekDay, lang } = this.state;
+    const { firstWeekDay } = this.state;
+    const { lang } = this.props;
     return (
       <DateWrapper width={300}>
         <div>

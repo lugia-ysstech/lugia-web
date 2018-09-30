@@ -1,19 +1,42 @@
+/*
+* by wangcuixia
+* @flow
+* */
 import type { ChangeEventParam } from '@lugia/lugia-web';
-
 import React, { Component } from 'react';
 import moment from 'moment';
-import Icon from '../icon/index';
 import Date from './Date';
 import Month from './Month';
 import Year from './Year';
 import Weeks from './Weeks';
-import Trigger from '../trigger/index';
-import Input from '../input';
 import { modeStyle } from './getDerived';
-import { RangeInput, RangeSpan } from './styled';
 
-class SwitchPanel extends Component {
-  constructor(props) {
+type TypeProps = {
+  defaultValue?: string,
+  format?: string,
+  value?: string,
+  onChange?: Function,
+  mode: string,
+};
+type TypeState = {
+  value: string,
+  format: string,
+  mode: string,
+  from: string,
+  changeYear: boolean,
+  choseValue: string,
+  isChose: boolean,
+  month: number,
+  year: number,
+  weeks: number,
+  date: string,
+  newDate: string,
+  moments: Object,
+};
+class SwitchPanel extends Component<TypeProps, TypeState> {
+  trigger: any;
+  picker: any;
+  constructor(props: TypeProps) {
     super(props);
     this.trigger = React.createRef();
     this.picker = React.createRef();
@@ -63,7 +86,7 @@ class SwitchPanel extends Component {
       };
     }
   }
-  getMode = (obj: string) => {
+  getMode = (obj: Object) => {
     const { mode, from, year, month, weeks, date, moments } = obj;
     const { format } = this.state;
     const newDate = moment(date, format)
@@ -74,10 +97,8 @@ class SwitchPanel extends Component {
     });
   };
   render() {
-    const { disabled, readOnly } = this.props;
     const { value, mode, from } = this.state;
-
-    const { isWeeks, isWeek, isMonth, isYear, isDate, isRange } = modeStyle(mode);
+    const { isWeek, isMonth, isYear } = modeStyle(mode);
     const config = {
       ...this.props,
       ref: this.picker,
@@ -92,21 +113,17 @@ class SwitchPanel extends Component {
     ) : isWeek ? (
       <Weeks {...config} onChange={this.changeWeek} onChangeYear={this.weekChangeYear} />
     ) : (
-      <Date {...config} getMode={this.getMode} getYearAndMonth={this.getYearAndMonth} />
+      <Date {...config} getMode={this.getMode} />
     );
   }
   changeYear = (obj: Object) => {
     const { newValue, mode, from } = obj;
     const { weeks, date } = this.state;
-    let { format, value, month } = this.state;
+    let { value, month } = this.state;
     if (!value) {
       value = moment().format('YYYY-MM-DD');
     }
-    const { isYear, isWeeks } = modeStyle(this.props.mode);
-    const { isWeek } = modeStyle(mode);
-    if (isWeek || isWeeks) {
-      format = 'YYYY-MM-DD';
-    }
+    const { isYear } = modeStyle(this.props.mode);
     const newDate = moment(date).date();
     const moments = moment().set({ year: newValue, month, weeks, date: newDate });
     this.setState({ year: newValue, mode, moments }, () => {
@@ -118,7 +135,7 @@ class SwitchPanel extends Component {
     }
   };
   changeMonth = (obj: Object) => {
-    const { newValue, mode, from } = obj;
+    const { newValue, mode } = obj;
     let { format } = this.state;
     let { value, date } = this.state;
     if (!value) {
@@ -145,7 +162,6 @@ class SwitchPanel extends Component {
   };
   monthChangeYear = (obj: Object) => {
     const { newValue, mode, from } = obj;
-    const { format } = this.state;
     const moments = moment(newValue, 'YYYY-MM');
     const year = moments.year();
     const month = moments.month();
@@ -154,8 +170,8 @@ class SwitchPanel extends Component {
     });
   };
   changeWeek = (obj: Object) => {
-    const { newValue, mode, from, year, weeks } = obj;
-    const { isWeek, isWeeks, isDate, isRange } = modeStyle(this.props.mode);
+    const { newValue, year, weeks } = obj;
+    const { isWeek } = modeStyle(this.props.mode);
     const moments = moment().set({ year, weeks });
     this.setState({ year, mode: 'date', moments, choseValue: '', from: 'week' }, () => {
       if (!isWeek) {
@@ -169,7 +185,7 @@ class SwitchPanel extends Component {
     });
   };
   weekChangeYear = (obj: Object) => {
-    const { newValue, mode, from, weeks, year } = obj;
+    const { mode, from, weeks, year } = obj;
     const moments = moment().set({ year, weeks });
     this.setState({ year, weeks, mode, from, moments }, () => {
       this.getFreshPicker({ moments, mode, from });
@@ -188,7 +204,6 @@ class SwitchPanel extends Component {
         month,
         changeYear: false,
         moments,
-        // choseValue,
         isChose: true,
       },
       () => {

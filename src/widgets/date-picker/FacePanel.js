@@ -4,9 +4,7 @@
 * */
 import React, { Component } from 'react';
 import moment from 'moment';
-import Icon from '../icon/index';
-import DatePicker from './DateInput';
-import { getDerived, modeStyle } from './getDerived';
+import { modeStyle } from './getDerived';
 import { OtherChild, OtherChildText, DatePanel } from './styled';
 type TypeProps = {
   onChange?: Function,
@@ -14,14 +12,14 @@ type TypeProps = {
   start: number,
   step: number,
   mode: string,
-  isWeekInner: boolean,
+  isWeekInner?: boolean,
   year?: number,
-  weeks: number,
-  monthIndex: number,
+  weeks?: number,
+  monthIndex?: number,
   lang?: string,
   data?: Array<any>,
   getHeadInfo?: Function,
-  column: ?number,
+  column?: number,
 };
 type TypeState = {
   value: string,
@@ -29,7 +27,7 @@ type TypeState = {
   currentYear: number,
 };
 class FacePanel extends Component<TypeProps, TypeState> {
-  getChildIndex = (choseValue: number | Object) => () => {
+  getChildIndex = (choseValue: any) => () => {
     const { showYears, onChange, mode, isWeekInner } = this.props;
     const { isWeek, isMonth, isYear } = modeStyle(mode);
     let data;
@@ -101,9 +99,17 @@ class FacePanel extends Component<TypeProps, TypeState> {
     }
     return { months };
   };
-  getWeeksRange = (weeks: number, isWeek: boolean, weeksInYear: number, step: number) => {
+  getWeeksRange = (
+    weeks: number,
+    isWeek: boolean,
+    weeksInYear: number,
+    step: number
+  ): {
+    weeksDate: Array<any>,
+    rangeIndex: number,
+  } => {
     const weeksDate = [];
-    let rangeIndex;
+    let rangeIndex = 0;
     if (isWeek) {
       for (let i = 0; i < 5; i++) {
         const start = step * i + 1;
@@ -145,7 +151,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
     return { weeksInner, weekIndex };
   };
   getHeadInfo = () => {
-    const { step, mode, year, isWeekInner, weeks } = this.props;
+    const { step, mode, year, isWeekInner, weeks = 1 } = this.props;
     const { isWeek } = modeStyle(mode);
     const weeksInYear = moment({ year }).weeksInYear();
     const { weeksDate, rangeIndex } = this.getWeeksRange(weeks, isWeek, weeksInYear, step);
@@ -163,7 +169,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
       mode,
       year,
       isWeekInner,
-      weeks,
+      weeks = 1,
       lang,
       data,
       monthIndex,
@@ -196,7 +202,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
 
     return (
       <DatePanel>
-        {ChildrenData.map((current, index) => {
+        {ChildrenData.map((current: any, index: number) => {
           const text = isWeek ? current.text : showYears ? current.text : current;
           const currentStart =
             isWeek && isWeekInner

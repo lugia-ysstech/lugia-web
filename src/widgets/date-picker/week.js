@@ -1,8 +1,17 @@
+/*
+* by wangcuixia
+* @flow
+* */
 import React, { Component } from 'react';
 import moment from 'moment';
 import { HeaderWeek, HeaderWeekBox } from './styled';
+type TypeProps = {
+  onChangeWeek?: Function,
+  lang?: Function,
+  firstWeekDay?: number,
+};
 
-class WeekDays extends Component {
+class WeekDays extends Component<TypeProps, null> {
   handleClick = () => {
     const { onChangeWeek } = this.props;
     onChangeWeek && onChangeWeek('week');

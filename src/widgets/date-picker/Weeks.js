@@ -6,20 +6,29 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import Head from './Head';
 import FacePanel from './FacePanel';
-import DatePicker from './DateInput';
 import { DateWrapper } from './styled';
 import { getDerived } from './getDerived';
 type TypeProps = {
   step?: number,
+  format?: string,
+  onChangeYear?: Function,
+  onChange?: Function,
+  mode: string,
+  from?: string,
 };
 type TypeState = {
   year: number,
   secondTitle: string,
   isWeekInner: boolean,
   weeks: number,
+  mode: string,
+  moments: Object,
+  format: string,
+  from: string,
 };
 class Weeks extends Component<TypeProps, TypeState> {
-  constructor(props) {
+  picker: any;
+  constructor(props: TypeProps) {
     super(props);
     this.picker = React.createRef();
   }
@@ -50,7 +59,6 @@ class Weeks extends Component<TypeProps, TypeState> {
     this.setState({ year });
   };
   onHeadChange = (param: Object) => {
-    const { start, end } = param;
     this.setState({ isWeekInner: false });
   };
   headOnChange = (parma: Object) => {
@@ -65,7 +73,7 @@ class Weeks extends Component<TypeProps, TypeState> {
   };
   panelChange = (param: Object) => {
     const { isWeekInner, start, text, weeks } = param;
-    const { year, moments, format, mode, from } = this.state;
+    const { year, mode, from } = this.state;
     this.setState({ weeks });
     if (isWeekInner) {
       this.setState({ secondTitle: text, isWeekInner, weeks: start + 1 });
@@ -75,7 +83,7 @@ class Weeks extends Component<TypeProps, TypeState> {
       this.getOnChange({ year, weeks, mode, from, newValue });
     }
   };
-  getHeadInfo = (param: Object) => {
+  getHeadInfo = () => {
     const { isWeekInner, text } = this.picker.current.getHeadInfo();
     this.setState({ secondTitle: text, isWeekInner });
   };
@@ -85,11 +93,9 @@ class Weeks extends Component<TypeProps, TypeState> {
   };
   getFreshPicker = (obj: Object) => {
     const { mode, from, moments } = obj;
-    const { format } = this.state;
     let year = moments.year();
     const month = moments.month();
     const weeks = moments.weeks();
-
     if (month === 11 && weeks === 1) {
       year = year + 1;
     }

@@ -4,18 +4,10 @@
 * */
 import React, { Component } from 'react';
 import moment from 'moment';
-import Icon from '../icon/index';
 import Head from './Head';
 import FacePanel from './FacePanel';
 import { getDerived } from './getDerived';
-import {
-  DateWrapper,
-  DateWInner,
-  DateHeader,
-  HeaderTop,
-  HeaderTopArrow,
-  HeaderTopText,
-} from './styled';
+import { DateWrapper } from './styled';
 type TypeProps = {
   step?: number,
   onChange: Function,
@@ -26,8 +18,10 @@ type TypeState = {
   start: number,
   end: number,
   title: string,
+  month: number,
 };
 class Year extends Component<TypeProps, TypeState> {
+  oldValue: number;
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { value, format } = getDerived(nextProps, preState);
     const start = (preState && preState.start) || moment(value, format).year() || moment().year();
@@ -57,7 +51,6 @@ class Year extends Component<TypeProps, TypeState> {
       data = { start: star, title: text };
     }
     this.setState(data);
-    const { month } = this.state;
     const newValue = star;
     if (showYears) {
       this.getOnChange({ newValue, oldValue: this.oldValue });
