@@ -28,6 +28,7 @@ type AutoCompleteProps = {
   defaultValue?: string,
   onFocus?: Function,
   onBlur?: Function,
+  disabled?: boolean,
 };
 
 type AutoCompleteState = {
@@ -53,7 +54,8 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
 
   constructor(props: AutoCompleteProps) {
     super(props);
-    this.el = React.createRef();
+    this.inputEl = React.createRef();
+    this.triggerEl = React.createRef();
   }
 
   static getDerivedStateFromProps(props: AutoCompleteProps, state: AutoCompleteState) {
@@ -108,11 +110,12 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
           action={disabled ? [] : ['click']}
           hideAction={['click']}
           popup={menu}
+          ref={this.triggerEl}
         >
           <Input
             value={value}
             disabled={disabled}
-            ref={this.el}
+            ref={this.inputEl}
             onChange={this.changeInputValue}
             onClear={this.clearInputValue}
             onFocus={this.onFocus}
@@ -150,6 +153,9 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
   getData() {
     const { data } = this.props;
     return data.map(item => {
+      if (typeof item === 'number') {
+        item += '';
+      }
       return {
         [ValueField]: item,
         [DisplayField]: item,
@@ -186,7 +192,7 @@ export default class AotuComplete extends React.Component<AutoCompleteProps, Aut
   }
 
   getInputDom(): Object {
-    return this.el.current.getThemeTarget().input;
+    return this.inputEl.current.getThemeTarget().input;
   }
 
   enterValue: string;

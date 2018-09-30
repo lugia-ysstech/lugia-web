@@ -245,7 +245,8 @@ describe('autocomplete', () => {
       { value: 'Bassjackers', text: 'Bassjackers' },
     ]);
     selectMenuItem(cmp, 0);
-    expect(getOldValue(cmp)).toBe('A');
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('B');
   });
 
   it('input value on blur save old value', () => {
@@ -267,7 +268,45 @@ describe('autocomplete', () => {
     letInputonFocus(cmp);
     expect(getOldValue(cmp)).toBe('B');
   });
-  // it('on blur switch twice value', () => {});
+
+  it('on blur switch twice value', () => {
+    const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    changeInputValue(cmp, 'A');
+    expect(getInputValue(cmp)).toBe('A');
+
+    letInputOnBlur(cmp);
+
+    changeInputValue(cmp, 'B');
+    letInputOnBlur(cmp);
+    letInputonFocus(cmp);
+    expect(getInputValue(cmp)).toBe('B');
+    expect(getOldValue(cmp)).toBe('A');
+
+    changeInputValue(cmp, 'C');
+    letInputOnBlur(cmp);
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('B');
+
+    expect(getMenuData(cmp)).toEqual([
+      { value: 'The Chainsmokers', text: 'The Chainsmokers' },
+      { value: 'Calvin Harris', text: 'Calvin Harris' },
+    ]);
+    selectMenuItem(cmp, 0);
+    expect(getInputValue(cmp)).toBe('The Chainsmokers');
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('C');
+
+    changeInputValue(cmp, 'B');
+    expect(getInputValue(cmp)).toBe('B');
+    expect(getMenuData(cmp)).toEqual([
+      { value: 'Armin van Buuren', text: 'Armin van Buuren' },
+      { value: 'Bassjackers', text: 'Bassjackers' },
+    ]);
+    selectMenuItem(cmp, 0);
+    expect(getInputValue(cmp)).toBe('Armin van Buuren');
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('The Chainsmokers');
+  });
 
   class AutoCompleteBounded extends React.Component<any, any> {
     constructor(props) {
