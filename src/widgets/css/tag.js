@@ -37,56 +37,72 @@ const judgeColors = (
   return isPrimary ? primaryColor : isBasic ? basicColor : isPresets ? presetsColor : defaultColor;
 };
 
+const isHasThemeColor = (color: boolean, hasColorTarget: string, noColorTarget: string) => {
+  return color ? hasColorTarget : noColorTarget;
+};
+
 const getColors = (color, type) => {
   const styles = {};
   const { spiritColor, disabledSpiritFontAndBorderColor, hoverColor } = colorsFunc(color);
-  styles.textColor = color
-    ? judgeColors(type, darkGreyColor, color, color, defaultColor)
-    : judgeColors(type, darkGreyColor, darkGreyColor, dangerColor, defaultColor);
+  styles.textColor = isHasThemeColor(
+    color,
+    judgeColors(type, darkGreyColor, color, color, defaultColor),
+    judgeColors(type, darkGreyColor, darkGreyColor, dangerColor, defaultColor)
+  );
 
-  styles.backgroundColor = color
-    ? judgeColors(type, color, defaultColor, spiritColor, color)
-    : judgeColors(
-        type,
-        borderDisableColor,
-        defaultColor,
-        colorsFunc(dangerColor).spiritColor,
-        themeColor
-      );
+  styles.backgroundColor = isHasThemeColor(
+    color,
+    judgeColors(type, color, defaultColor, spiritColor, color),
+    judgeColors(
+      type,
+      borderDisableColor,
+      defaultColor,
+      colorsFunc(dangerColor).spiritColor,
+      themeColor
+    )
+  );
 
-  styles.borderColor = color
-    ? judgeColors(type, color, disabledSpiritFontAndBorderColor, color, color)
-    : judgeColors(type, borderDisableColor, mediumGreyColor, dangerColor, themeColor);
+  styles.borderColor = isHasThemeColor(
+    color,
+    judgeColors(type, color, disabledSpiritFontAndBorderColor, color, color),
+    judgeColors(type, borderDisableColor, mediumGreyColor, dangerColor, themeColor)
+  );
 
-  styles.bgHoverColor = color
-    ? judgeColors(type, color, defaultColor, spiritColor, hoverColor)
-    : judgeColors(
-        type,
-        borderDisableColor,
-        defaultColor,
-        colorsFunc(dangerColor).spiritColor,
-        colorsFunc(themeColor).hoverColor
-      );
+  styles.bgHoverColor = isHasThemeColor(
+    color,
+    judgeColors(type, color, defaultColor, spiritColor, hoverColor),
+    judgeColors(
+      type,
+      borderDisableColor,
+      defaultColor,
+      colorsFunc(dangerColor).spiritColor,
+      colorsFunc(themeColor).hoverColor
+    )
+  );
 
-  styles.borderHoverColer = color
-    ? judgeColors(type, color, disabledSpiritFontAndBorderColor, hoverColor, hoverColor)
-    : judgeColors(
-        type,
-        borderDisableColor,
-        mediumGreyColor,
-        colorsFunc(dangerColor).hoverColor,
-        colorsFunc(themeColor).hoverColor
-      );
+  styles.borderHoverColer = isHasThemeColor(
+    color,
+    judgeColors(type, color, disabledSpiritFontAndBorderColor, hoverColor, hoverColor),
+    judgeColors(
+      type,
+      borderDisableColor,
+      mediumGreyColor,
+      colorsFunc(dangerColor).hoverColor,
+      colorsFunc(themeColor).hoverColor
+    )
+  );
 
-  styles.textHoverColor = color
-    ? judgeColors(type, hoverColor, hoverColor, hoverColor, defaultColor)
-    : judgeColors(
-        type,
-        mediumGreyColor,
-        mediumGreyColor,
-        colorsFunc(dangerColor).hoverColor,
-        defaultColor
-      );
+  styles.textHoverColor = isHasThemeColor(
+    color,
+    judgeColors(type, hoverColor, hoverColor, hoverColor, defaultColor),
+    judgeColors(
+      type,
+      mediumGreyColor,
+      mediumGreyColor,
+      colorsFunc(dangerColor).hoverColor,
+      defaultColor
+    )
+  );
 
   return styles;
 };
@@ -94,16 +110,23 @@ const getColors = (color, type) => {
 const getTypeCSS = props => {
   const { type, Theme } = props;
   const { color } = Theme;
-  const styles = getColors(color, type);
+  const {
+    textColor,
+    backgroundColor,
+    borderColor,
+    bgHoverColor,
+    textHoverColor,
+    borderHoverColer,
+  } = getColors(color, type);
 
-  return `background: ${styles.backgroundColor};
-            color: ${styles.textColor};
-            border: 1px solid ${styles.borderColor}; 
+  return `background: ${backgroundColor};
+            color: ${textColor};
+            border: 1px solid ${borderColor}; 
 
             :hover {
-                background: ${styles.bgHoverColor};
-                color: ${styles.textHoverColor};
-                border-color: ${styles.borderHoverColer};
+                background: ${bgHoverColor};
+                color: ${textHoverColor};
+                border-color: ${borderHoverColer};
     } `;
 };
 
@@ -119,6 +142,11 @@ const getAnimationCSS = props => {
     : 'opacity: 1; transform: scale(1,1)';
 };
 
+const getPadding = props => {
+  const { closeable } = props;
+  return closeable ? `0 ${em(5)} 0 ${em(8)}` : ` 0 ${em(8)}`;
+};
+
 export const TagContainer = styled.div`
   display: inline-block;
   height: ${em(20)};
@@ -127,7 +155,7 @@ export const TagContainer = styled.div`
   cursor: pointer;
   overflow: hidden;
   transition: all 0.15s ease-in;
-  ${props => (props.closeable ? `padding: 0 ${em(5)} 0 ${em(8)}` : `padding: 0 ${em(8)}`)};
+  padding: ${getPadding};
   ${getAnimationCSS};
   ${getTypeCSS};
 `;
