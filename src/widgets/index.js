@@ -85,3 +85,5 @@ export { default as ThrottleTree } from './tree/ThrottleTree';
 export { default as TreeSelect } from './tree-select';
 
 export { default as Trigger } from './trigger';
+
+export { default as Affix } from './affix';
