@@ -16,7 +16,7 @@ export default class AffixDemo extends React.Component<any, any> {
     this.EleRef = null;
     this.Ele2Ref = null;
     this.state = {
-      display: true,
+      display: true, 
     };
   }
   handleClick = () => {
