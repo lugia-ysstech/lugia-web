@@ -43,6 +43,7 @@ class Head extends Component<TypeProps, TypeState> {
       currentYear: moment(value, format).year() || moment().year(),
       title: mode !== 'year' ? start : title || normalTitle,
       secondTitle: secontTit,
+      format,
     };
   }
   changeYear = (number: number) => () => {
