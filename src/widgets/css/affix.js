@@ -20,6 +20,7 @@ export type AffixProps = {
   offsetBottom?: number,
   target?: Function,
   children?: any,
+  onChange?: Function,
 };
 export type AffixState = {
   fixed: boolean,
