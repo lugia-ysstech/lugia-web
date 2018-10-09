@@ -28,7 +28,6 @@ exports[`Affix css 1`] = `
   color: #666666;
   background-color: #fff;
   border: 1px solid #cccccc;
-  width: 6.666666666666667em;
   height: 2.666666666666667em;
   padding: 0.8333333333333334em;
   font-size: 1em;
@@ -56,7 +55,8 @@ exports[`Affix css 1`] = `
   <div
     style={
       Object {
-        "height": "1200px",
+        "height": "1600px",
+        "position": "relative",
         "width": "200px",
       }
     }
@@ -72,12 +72,15 @@ exports[`Affix css 1`] = `
     <div
       className="c0"
     >
+      <p>
+        window: affix-top
+      </p>
       <button
         className="c1"
         onClick={[Function]}
       >
         <span>
-          windows-top-50
+          Affix-top-50
         </span>
       </button>
     </div>
@@ -108,6 +111,9 @@ exports[`Affix css 1`] = `
         <div
           className="c0"
         >
+          <p>
+            target: target-top
+          </p>
           <button
             className="c1"
             onClick={[Function]}
@@ -124,6 +130,8 @@ exports[`Affix css 1`] = `
         Object {
           "height": "200px",
           "overflowY": "scroll",
+          "position": "absolute",
+          "top": "800px ",
           "width": "200px",
         }
       }
@@ -146,6 +154,9 @@ exports[`Affix css 1`] = `
         <div
           className="c0"
         >
+          <p>
+            target: target-bottom
+          </p>
           <button
             className="c1"
             onClick={[Function]}
@@ -160,7 +171,7 @@ exports[`Affix css 1`] = `
     <div
       style={
         Object {
-          "height": "500px",
+          "height": "600px",
           "width": "200px",
         }
       }
@@ -168,23 +179,18 @@ exports[`Affix css 1`] = `
     <div
       className="c0"
     >
+      <p>
+        window: affix-bottom
+      </p>
       <button
         className="c1"
         onClick={[Function]}
       >
         <span>
-          window-bottom-50
+          Affix-bottom-50
         </span>
       </button>
     </div>
-    <div
-      style={
-        Object {
-          "height": "500px",
-          "width": "200px",
-        }
-      }
-    />
   </div>
 </div>
 `;

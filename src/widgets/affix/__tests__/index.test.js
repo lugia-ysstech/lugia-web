@@ -38,8 +38,8 @@ describe('Affix', () => {
       offsetBottom: 0,
       winHeight: 900,
       scrollTop: 100,
-      affixOffsetTop: 150,
-      defaultOffsetTop: 100,
+      affixTop: 150,
+      defaultTop: 100,
     });
     expect(getState(target).fixed).toBe(true);
 
@@ -48,8 +48,8 @@ describe('Affix', () => {
       offsetBottom: 0,
       winHeight: 900,
       scrollTop: 100,
-      affixOffsetTop: 150,
-      defaultOffsetTop: 200,
+      affixTop: 150,
+      defaultTop: 200,
     });
     expect(getState(target).fixed).toBe(false);
   });
@@ -66,23 +66,14 @@ describe('Affix', () => {
         bottom: 850,
       };
     };
-    affixElement.setFixedForWin({
-      offsetTop: 0,
-      offsetBottom: 50,
-      winHeight: 900,
-      scrollTop: 100,
-      affixOffsetTop: 150,
-      defaultOffsetTop: 200,
-    });
-    expect(getState(target).fixed).toBe(true);
 
     affixElement.setFixedForWin({
       offsetTop: 50,
       offsetBottom: 0,
       winHeight: 900,
       scrollTop: 100,
-      affixOffsetTop: 150,
-      defaultOffsetTop: 200,
+      affixTop: 150,
+      defaultTop: 200,
     });
     expect(getState(target).fixed).toBe(false);
   });
@@ -92,38 +83,39 @@ describe('Affix', () => {
     const affixElement = target.instance();
 
     expect(getState(target).fixed).toBe(false);
-
+    affixElement.defaultOffsetTop = 10;
+    affixElement.targetDefaultOffsetTop = 10;
     affixElement.setFixedForTarget({
-      affixRect: {
-        top: 350,
-        bottom: 400,
-      },
+      affixTop: 250,
+      targetTop: 100,
+      targetScroll: 100,
+      offsetTop: 50,
+      winHeight: 900,
+      offsetBottom: 0,
       targetRect: {
         top: 200,
         bottom: 300,
       },
-      targetScroll: 100,
-      offsetTop: 50,
-      winHeight: 900,
-      offsetBottom: 0,
+      targetHeight: 200,
     });
     expect(getState(target).fixed).toBe(true);
 
+    affixElement.defaultOffsetTop = 250;
+    affixElement.targetDefaultOffsetTop = 100;
     affixElement.setFixedForTarget({
-      affixRect: {
-        top: 350,
-        bottom: 400,
-      },
-      targetRect: {
-        top: 100,
-        bottom: 400,
-      },
+      affixTop: 250,
+      targetTop: 150,
       targetScroll: 100,
       offsetTop: 50,
       winHeight: 900,
       offsetBottom: 0,
+      targetRect: {
+        top: 200,
+        bottom: 300,
+      },
+      targetHeight: 200,
     });
-    expect(getState(target).fixed).toBe(true);
+    expect(getState(target).fixed).toBe(false);
   });
 
   it('Affix props: targt offsetBottom setFixedForTarget ', () => {
@@ -131,38 +123,38 @@ describe('Affix', () => {
     const affixElement = target.instance();
 
     expect(getState(target).fixed).toBe(false);
-    // targetRect.bottom - affixRect.bottom - targetScroll <= offsetBottom ||
-    // affixRect.top <= targetRect.top
+    affixElement.defaultOffsetTop = 500;
+    affixElement.targetDefaultOffsetTop = 100;
     affixElement.setFixedForTarget({
-      affixRect: {
-        top: 350,
-        bottom: 550,
-      },
-      targetRect: {
-        top: 200,
-        bottom: 300,
-      },
+      affixTop: 500,
+      targetTop: 150,
       targetScroll: 100,
       offsetTop: 0,
       winHeight: 900,
       offsetBottom: 50,
+      targetRect: {
+        top: 200,
+        bottom: 300,
+      },
+      targetHeight: 200,
     });
     expect(getState(target).fixed).toBe(true);
 
+    affixElement.defaultOffsetTop = 500;
+    affixElement.targetDefaultOffsetTop = 100;
     affixElement.setFixedForTarget({
-      affixRect: {
-        top: 100,
-        bottom: 600,
-      },
-      targetRect: {
-        top: 150,
-        bottom: 400,
-      },
-      targetScroll: 100,
-      offsetTop: 50,
+      affixTop: 250,
+      targetTop: 150,
+      targetScroll: 500,
+      offsetTop: 0,
       winHeight: 900,
-      offsetBottom: 0,
+      offsetBottom: 50,
+      targetRect: {
+        top: 100,
+        bottom: 300,
+      },
+      targetHeight: 200,
     });
-    expect(getState(target).fixed).toBe(true);
+    expect(getState(target).fixed).toBe(false);
   });
 });
