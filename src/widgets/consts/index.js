@@ -76,6 +76,7 @@ const Affix = 'sv_widget_Affix';
 const Tabs = 'sv_widget_Tabs';
 const Tabpano = 'sv_widget_Tabpano';
 const TabsHContainer = 'sv_widget_TabsHContainer';
+const BackTop = 'sv_widget_BackTop';
 
 export default {
   Button,
@@ -139,4 +140,5 @@ export default {
   Tabpano,
   TabsHContainer,
   Affix,
+  BackTop,
 };

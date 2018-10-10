@@ -10,7 +10,7 @@ import type { AffixProps, AffixState } from '../css/affix';
 import { Affix } from '../css/affix';
 import { getElementPosition } from '../utils';
 
-function getScrollTop(): ?number {
+export function getScrollTop(): ?number {
   let scrollPos;
   if (window.pageYOffset) {
     scrollPos = window.pageYOffset;
