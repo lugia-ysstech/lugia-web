@@ -16,9 +16,10 @@ type TagProps = {
   closeable?: boolean,
   children: any,
   onClick?: Function,
-  onCloseClick?: Function,
+  onClose?: Function,
   shape: string,
   getTheme: Function,
+  type: string,
 };
 
 type TagState = {
@@ -41,13 +42,13 @@ class Tag extends React.Component<TagProps, TagState> {
     };
   }
 
+  itemText: Object;
   render() {
     const { isClose } = this.state;
-    const { type, className, getTheme, shape, closeable = true } = this.props;
+    const { type, getTheme, shape, closeable = true } = this.props;
     const Theme = getTheme();
     return (
       <TagContainer
-        className={className}
         closeable={closeable}
         onClick={this.onClick}
         shape={shape}

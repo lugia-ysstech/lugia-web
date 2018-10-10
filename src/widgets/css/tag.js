@@ -64,7 +64,7 @@ const getColors = (color, type) => {
 
   styles.borderColor = isHasThemeColor(
     color,
-    judgeColors(type, color, disabledSpiritFontAndBorderColor, color, color),
+    judgeColors(type, color, color, color, color),
     judgeColors(type, borderDisableColor, mediumGreyColor, dangerColor, themeColor)
   );
 
@@ -82,7 +82,7 @@ const getColors = (color, type) => {
 
   styles.borderHoverColer = isHasThemeColor(
     color,
-    judgeColors(type, color, disabledSpiritFontAndBorderColor, hoverColor, hoverColor),
+    judgeColors(type, color, hoverColor, hoverColor, hoverColor),
     judgeColors(
       type,
       borderDisableColor,
