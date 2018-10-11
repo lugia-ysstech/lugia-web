@@ -89,3 +89,5 @@ export { default as Trigger } from './trigger';
 export { default as Affix } from './affix';
 
 export { default as BackTop } from './back-top';
+
+export { default as Progress } from './progress';

@@ -77,6 +77,7 @@ const Tabs = 'sv_widget_Tabs';
 const Tabpano = 'sv_widget_Tabpano';
 const TabsHContainer = 'sv_widget_TabsHContainer';
 const BackTop = 'sv_widget_BackTop';
+const Progress = 'sv_widget_Progress';
 
 export default {
   Button,
@@ -141,4 +142,5 @@ export default {
   TabsHContainer,
   Affix,
   BackTop,
+  Progress,
 };
