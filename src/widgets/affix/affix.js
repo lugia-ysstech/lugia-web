@@ -10,7 +10,7 @@ import type { AffixProps, AffixState } from '../css/affix';
 import { Affix } from '../css/affix';
 import { getElementPosition } from '../utils';
 
-export function getScrollTop(): ?number {
+export function getScrollTop(): number {
   let scrollPos;
   if (window.pageYOffset) {
     scrollPos = window.pageYOffset;
@@ -19,7 +19,7 @@ export function getScrollTop(): ?number {
   } else if (document.body) {
     scrollPos = document.body.scrollTop;
   }
-  return scrollPos;
+  return scrollPos || 0;
 }
 
 const OffsetBottom = 'offsetBottom';
@@ -55,7 +55,7 @@ export default class extends React.Component<AffixProps, AffixState> {
   addWindowListener = () => {
     const { offsetTop = 0, offsetBottom = 0 } = this.props;
     const winHeight = window.innerHeight;
-    const scrollTop = getScrollTop() || 0;
+    const scrollTop = getScrollTop();
     const affixTop = this.affix && getElementPosition(this.affix).y;
     const defaultTop = this.defaultAffixOffsetTop;
 
@@ -166,7 +166,7 @@ export default class extends React.Component<AffixProps, AffixState> {
         break;
 
       case OffsetBottom:
-        const docScrollTop = getScrollTop() || 0;
+        const docScrollTop = getScrollTop();
         const affixHeight = this.affix && this.affix.offsetHeight;
         const affixBottomInDoc =
           (this.state.fixed ? affixTop + docScrollTop : affixTop) + affixHeight;

@@ -23,37 +23,45 @@ export default ThemeProvider(
     }
 
     componentDidMount() {
+      this.addWindowListener();
       window.addEventListener('scroll', this.addWindowListener);
     }
 
     addWindowListener = () => {
-      const scrollTop = getScrollTop() || 0;
+      const scrollTop = getScrollTop();
       const { visibilityHeight = 400 } = this.props;
-
       this.setState({ fixed: this.needFixed(scrollTop, visibilityHeight) });
     };
+
     needFixed = (scrollTop: number, visibilityHeight: number): boolean => {
       return scrollTop >= visibilityHeight;
     };
+
     handleClick = () => {
       if (document) {
-        const timer = setInterval(function() {
-          if (document.body) {
-            document.body.scrollTop -= 50;
-          }
-          if (document.documentElement) {
-            document.documentElement.scrollTop -= 50;
-          }
-          const scrollTop = getScrollTop() || 0;
+        const timer = setInterval(() => {
+          const scrollTop = getScrollTop();
           if (scrollTop <= 0) {
             clearInterval(timer);
           }
+          this.scrollerBodyTo(scrollTop - 50);
         }, 10);
       }
     };
+
+    scrollerBodyTo(top: number) {
+      if (document.body) {
+        document.body.scrollTop = top;
+      }
+      if (document.documentElement) {
+        document.documentElement.scrollTop = top;
+      }
+    }
+
     componentWillUnmount() {
       window.removeEventListener('scroll', this.addWindowListener);
     }
+
     render() {
       const { children, getTheme } = this.props;
       const { fixed } = this.state;
