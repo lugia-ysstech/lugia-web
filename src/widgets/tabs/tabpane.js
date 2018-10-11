@@ -11,23 +11,27 @@ import Widget from '../consts/index';
 import type { TabType, TabPositionType } from '../css/tabs';
 import {
   getClearButtonColor,
-  getClearButtonHoverColor,
-  getHoverColor,
-  getColor,
-  getFocusShadow,
-  matchTabType,
+  getTabpaneHoverColor,
+  getTabpaneIconHoverColor,
+  getSelectColor,
+  getTabpaneFocusShadow,
   getTitlePadding,
   getTabpanePadding,
   getTabpaneBackground,
   getTabpaneBorder,
   getTabpaneMarginRight,
+  getTabpaneBorderTopRadius,
+  getTabpaneHoverTransform,
+  getTabpaneBottom,
+  getTabpaneLeft,
+  getClearButtonShow,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import { isVertical } from './utils';
+import { isVertical, matchTab } from './utils';
 
 const em = px2emcss(1.2);
 
@@ -37,69 +41,79 @@ const BaseTab = styled.div`
   white-space: nowrap;
 `;
 const VTab = BaseTab.extend`
-  text-align: ${props => (props.tabPosition === 'left' ? 'right' : 'left')};
+  text-align: ${props => (matchTab(props.tabPosition, 'left') ? 'right' : 'left')};
   padding: 0 ${em(10)};
   display: block;
+  &:hover > div {
+    ${getTabpaneHoverColor};
+  }
 `;
+VTab.displayName = 'yTabpane';
 const HTab = BaseTab.extend`
   display: inline-block;
   ${getTabpanePadding};
-  line-height: ${em(32)};
-  border-top-left-radius: ${props =>
-    (matchTabType(props.tabType, 'window') && props.isSelect) ||
-    (matchTabType(props.tabType, 'card') ? em(4) : 0)};
-  border-top-right-radius: ${props =>
-    (matchTabType(props.tabType, 'window') && props.isSelect) ||
-    (matchTabType(props.tabType, 'card') ? em(4) : 0)};
-  ${getFocusShadow};
-  bottom: ${props => (matchTabType(props.tabType, 'window') ? em(-6) : 0)};
-  left: ${props => (matchTabType(props.tabType, 'window') ? em(6) : 0)};
+  line-height: ${em(30)};
+  ${getTabpaneFocusShadow};
+  ${getTabpaneBorderTopRadius};
+  ${getTabpaneBottom};
+  ${getTabpaneLeft};
   ${getTabpaneBackground};
   ${getTabpaneBorder};
   ${getTabpaneMarginRight};
-  z-index: 99;
-`;
-const Title = styled.span`
-  ${getColor};
-  &:hover {
-    ${getHoverColor};
+  z-index: 5;
+  &:hover > div {
+    ${getTabpaneHoverTransform};
+    ${getTabpaneHoverColor};
   }
 
+  &:hover > span > i:first-child {
+    ${getTabpaneIconHoverColor};
+  }
+`;
+HTab.displayName = 'hTabpane';
+const Title = styled.div`
+  ${getSelectColor};
   position: relative;
+  display: inline-block;
   box-sizing: border-box;
   user-select: none;
   text-align: left;
   ${getTitlePadding};
   height: ${em(32)};
   line-height: ${em(32)};
+  &:focus {
+    ${getTabpaneHoverColor};
+  }
 `;
 
 const TabIcon: Object = styled(Icon)`
-  ${getColor};
+  ${getSelectColor};
   display: inline-block;
-  &:hover {
-    ${getHoverColor};
-  }
 `;
 const IconContainer = styled.span`
   display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: ${em(12)};
+  width: ${em(12)};
+`;
+const ClearButtonContainer = styled.span`
+  ${getClearButtonShow};
+  transition: all 0.3s linear 0.1s;
+  z-index: 2;
+  display: inline-block;
 `;
 
 const ClearButton: Object = styled(Icon)`
-  z-index: 2;
   font-size: 1rem;
-  ${getClearButtonColor};
   &:hover {
-    ${getClearButtonHoverColor};
+    ${getClearButtonColor};
   }
-
-  display: inline-block;
 `;
-type TabsState = {};
+type TabpaneState = {
+  clearButtonShow: boolean,
+  iconClass: string,
+};
 
-type TabsProps = {
+type TabpaneProps = {
   title: string,
   onDeleteClick: Function,
   icon: string,
@@ -111,23 +125,30 @@ type TabsProps = {
   getTabpaneWidth: Function,
 };
 
-class Tabpane extends Component<TabsProps, TabsState> {
+class Tabpane extends Component<TabpaneProps, TabpaneState> {
   static defaultProps = {};
-  static displayName = Widget.Tabpano;
+  static displayName = Widget.Tabpane;
   tabpane: any;
   offsetWidth: number;
 
-  constructor(props: TabsProps) {
+  constructor(props: TabpaneProps) {
     super(props);
     this.tabpane = React.createRef();
     this.offsetWidth = 0;
   }
 
-  static getDerivedStateFromProps(nextProps: TabsProps, state: TabsState) {}
+  static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
+    if (!state) {
+      return {
+        clearButtonShow: false,
+        iconClass: 'lugia-icon-reminder_close',
+      };
+    }
+  }
 
   render() {
     const { title, tabType, tabPosition, isSelect } = this.props;
-    if (matchTabType(tabType, 'line') && isVertical(tabPosition)) {
+    if (matchTab(tabType, 'line') && isVertical(tabPosition)) {
       return (
         <VTab tabPosition={tabPosition} onClick={this.handleClick} isSelect={isSelect}>
           <Title isSelect={isSelect}>{title}</Title>
@@ -140,6 +161,8 @@ class Tabpane extends Component<TabsProps, TabsState> {
         onClick={this.handleClick}
         isSelect={isSelect}
         innerRef={cmp => (this.tabpane = cmp)}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
       >
         {this.getTabIcon()}
         <Title isHasIcon={this.getTabIcon() !== null} tabType={tabType} isSelect={isSelect}>
@@ -149,6 +172,18 @@ class Tabpane extends Component<TabsProps, TabsState> {
       </HTab>
     );
   }
+  componentDidMount() {
+    this.getContainerWidth();
+  }
+
+  onMouseEnter = () => {
+    this.setState({ clearButtonShow: true });
+  };
+
+  onMouseLeave = () => {
+    this.setState({ clearButtonShow: false });
+  };
+
   handleClick = () => {
     const { activityKey, onClick } = this.props;
     onClick && onClick(activityKey);
@@ -170,14 +205,28 @@ class Tabpane extends Component<TabsProps, TabsState> {
   };
   getClearButton() {
     const { tabType } = this.props;
-    if (!matchTabType(tabType, 'line')) {
-      return <ClearButton iconClass="lugia-icon-reminder_close" onClick={this.onDeleteClick} />;
+    const { clearButtonShow, iconClass } = this.state;
+    if (!matchTab(tabType, 'line')) {
+      return (
+        <ClearButtonContainer
+          onMouseEnter={this.clearButtonMouseEnter}
+          onMouseLeave={this.clearButtonMouseLeave}
+          onClick={this.onDeleteClick}
+          tabType={tabType}
+          show={clearButtonShow}
+        >
+          <ClearButton iconClass={iconClass} />
+        </ClearButtonContainer>
+      );
     }
+    return null;
   }
-
-  componentDidMount() {
-    this.getContainerWidth();
-  }
+  clearButtonMouseEnter = () => {
+    this.setState({ iconClass: 'lugia-icon-reminder_close_circle' });
+  };
+  clearButtonMouseLeave = () => {
+    this.setState({ iconClass: 'lugia-icon-reminder_close' });
+  };
 
   getContainerWidth() {
     const { getTabpaneWidth } = this.props;
@@ -188,5 +237,5 @@ class Tabpane extends Component<TabsProps, TabsState> {
   }
 }
 
-const TargetTabpano = ThemeProvider(KeyBoardEventAdaptor(Tabpane), Widget.Tabpano);
+const TargetTabpano = ThemeProvider(KeyBoardEventAdaptor(Tabpane), Widget.Tabpane);
 export default TargetTabpano;
