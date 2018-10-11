@@ -35,7 +35,6 @@ export default class extends React.Component<AffixProps, AffixState> {
     this.state = {
       fixed: false,
     };
-    this.i = 0;
   }
 
   componentDidMount() {
@@ -144,7 +143,6 @@ export default class extends React.Component<AffixProps, AffixState> {
       targetHeight,
     } = param;
     const type = this.getOffsetType();
-    this.i++;
     const defaultDistance = this.defaultAffixOffsetTop - this.targetDefaultOffsetTop;
     switch (type) {
       case OffsetTop:
