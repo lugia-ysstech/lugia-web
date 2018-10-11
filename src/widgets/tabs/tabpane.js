@@ -61,6 +61,7 @@ const HTab = BaseTab.extend`
   ${getTabpaneBorder};
   ${getTabpaneMarginRight};
   z-index: 5;
+  box-sizing: border-box;
   &:hover > div {
     ${getTabpaneHoverTransform};
     ${getTabpaneHoverColor};

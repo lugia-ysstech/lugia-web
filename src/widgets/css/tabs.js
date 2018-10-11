@@ -9,11 +9,17 @@ type PagingType = 'single' | 'page';
 type EditType = 'next' | 'pre';
 const em = px2emcss(1.2);
 export const addButtonSize = 18;
+export const cardBorderAndMarginWidth = 6;
+export const windowMarginLeft = 6;
+export const arrowContainerWidth = 48;
+export const yTabsHeight = 32;
 export const getCursor = (props: Object) => {
-  const { currentPage, totalPage, type } = props;
+  const { currentPage, totalPage, type, pagingType, clickCount, childrenSize } = props;
   const cursor =
-    (type === 'next' && currentPage === totalPage) || (type === 'pre' && currentPage === 1);
-  console.log(type);
+    pagingType === 'page'
+      ? (type === 'next' && currentPage === totalPage) || (type === 'pre' && currentPage === 1)
+      : (type === 'next' && clickCount >= childrenSize.length - 1) ||
+        (type === 'pre' && clickCount < 0);
   return `cursor:${cursor ? 'not-allowed' : 'pointer'}`;
 };
 export const getClearButtonColor = () => {

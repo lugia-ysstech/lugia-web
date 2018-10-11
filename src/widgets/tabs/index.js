@@ -11,7 +11,7 @@ import Tabpane from './tabpane';
 import TabContent from './tabcontent';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import type { TabPositionType, TabType, EditType } from '../css/tabs';
+import type { TabPositionType, TabType, EditType, PagingType } from '../css/tabs';
 import {
   backgroundColor,
   getBackgroundShadow,
@@ -32,8 +32,12 @@ import {
   getArrowTop,
   getAddButtonShow,
   getTabpaneBorder,
-  addButtonSize,
   getCursor,
+  addButtonSize,
+  cardBorderAndMarginWidth,
+  windowMarginLeft,
+  arrowContainerWidth,
+  yTabsHeight,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -65,13 +69,13 @@ const HLine = BaseLine.extend`
 const ShadowLine = styled.div`
   width: 100%;
   position: absolute;
-  bottom: -1px;
+  bottom: ${em(-1)};
   height: ${em(1)};
   z-index: -1;
   ${getBackgroundShadow};
 `;
 const VLine = BaseLine.extend`
-  height: ${em(32)};
+  height: ${em(yTabsHeight)};
   width: ${em(2)};
   transform: translateY(${props => props.y}%);
   transition: all 0.3s;
@@ -211,6 +215,7 @@ type TabsState = {|
   data: Array<Object>,
   currentPage: number,
   totalPage: number,
+  clickCount: number,
   arrowShow: boolean,
   addButtonShow: boolean,
   childrenSize: Array<number>,
@@ -232,6 +237,7 @@ type TabsProps = {
   getTheme: Function,
   onDeleteClick: Function,
   onAddClick: Function,
+  pagingType: PagingType,
 };
 
 class TabsBox extends Component<TabsProps, TabsState> {
@@ -276,6 +282,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 : [],
         currentPage: 1,
         totalPage: 1,
+        clickCount: -1,
         arrowShow: false,
         addButtonShow: false,
         childrenSize: [],
@@ -316,18 +323,21 @@ class TabsBox extends Component<TabsProps, TabsState> {
     return this.getHTabs();
   }
   getArrowConfig(type: EditType) {
-    const { currentPage, arrowShow, totalPage } = this.state;
+    const { currentPage, arrowShow, totalPage, clickCount, childrenSize } = this.state;
+    const { pagingType } = this.props;
     return {
       type,
+      pagingType,
       totalPage,
       currentPage,
       arrowShow,
+      clickCount,
+      childrenSize,
     };
   }
   getVtabs() {
     const { tabPosition } = this.props;
-    const { data, activityKey, currentPage } = this.state;
-    const y = (currentPage - 1) * this.offsetHeight * -1 + (currentPage - 1) * 40;
+    const { data, activityKey } = this.state;
     return (
       <VTabsOutContainer tabPosition={tabPosition}>
         <VPrePage
@@ -338,7 +348,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
           <PageIcon iconClass="lugia-icon-direction_up" {...this.getArrowConfig('pre')} />
         </VPrePage>
         <VTabsContainer>
-          <YscrollerContainer y={y}>
+          <YscrollerContainer>
             <VLine
               y={getIndexfromKey(data, 'activityKey', activityKey) * 100}
               tabPosition={tabPosition}
@@ -466,42 +476,30 @@ class TabsBox extends Component<TabsProps, TabsState> {
       : matchTab(tabType, 'card')
         ? width + childrenSize.length * 4 + addButtonSize + 4
         : width;
-    const actualHeight = data.length * 32;
+    const actualHeight = data.length * yTabsHeight;
     const totalPage = isVertical(tabPosition)
-      ? computePage(this.offsetHeight - 48, actualHeight)
-      : computePage(this.offsetWidth - 48, actualWidth);
+      ? computePage(this.offsetHeight - arrowContainerWidth, actualHeight)
+      : computePage(this.offsetWidth - arrowContainerWidth, actualWidth);
     const arrowShow = totalPage > 1 && currentPage <= totalPage;
     this.setState({ arrowShow, totalPage });
   }
 
   computePagingX() {
-    const { currentPage, totalPage } = this.state;
-    const x = totalPage > 1 ? (1 - currentPage) * (this.offsetWidth - 48) : 0;
-    // let showNumber = 0;
-    // childrenSize.filter((childrenWidth, i) => {
-    //   if (plusWidth(i, childrenSize) > 452) {
-    //     return true;
-    //   }
-    //   showNumber = i;
-    //   return false;
-    // });
+    const { currentPage, totalPage, clickCount, childrenSize } = this.state;
+    const { tabType } = this.props;
+    let x = totalPage > 1 ? (1 - currentPage) * (this.offsetWidth - arrowContainerWidth) : 0;
 
-    // if (matchTab(tabType, 'card')) {
-    //   x =
-    //     (1 - currentPage) *
-    //     (plusWidth(showNumber, childrenSize) + (showNumber + 1) * 5 - childrenSize[showNumber - 1]);
-    //   console.log('card', showNumber, currentPage);
-    //   console.log('card', x);
-    // } else if (matchTab(tabType, 'window')) {
-    //   x = -1 * (plusWidth(showNumber + 1, childrenSize) + 6 - 452);
-    //   console.log('line', plusWidth(showNumber, childrenSize) + 6, x);
-    //   console.log('window', showNumber);
-    // } else {
-    //   x = -1 * (plusWidth(showNumber + 1, childrenSize) - 452);
-    //   console.log('line', plusWidth(showNumber, childrenSize), x);
-    //   console.log('line', showNumber);
-    // }
-
+    if (clickCount >= 0) {
+      if (matchTab(tabType, 'card')) {
+        x =
+          -1 * (plusWidth(clickCount, childrenSize) + cardBorderAndMarginWidth * (clickCount + 1));
+        console.log('card', x);
+      } else if (matchTab(tabType, 'window')) {
+        x = -1 * (plusWidth(clickCount, childrenSize) + windowMarginLeft);
+      } else {
+        x = -1 * plusWidth(clickCount, childrenSize);
+      }
+    }
     return x;
   }
 
@@ -641,13 +639,22 @@ class TabsBox extends Component<TabsProps, TabsState> {
   onPrevClick = this.createNativeClick('onPrevClick', 'pre');
 
   handleChangePage = (type: EditType) => {
-    let { currentPage, totalPage } = this.state;
-    if (type === 'next' && currentPage < totalPage) {
-      currentPage++;
-    } else if (type === 'pre' && currentPage > 1) {
-      currentPage--;
+    let { currentPage, totalPage, clickCount, childrenSize } = this.state;
+    const { pagingType } = this.props;
+    if (pagingType === 'page') {
+      if (type === 'next' && currentPage < totalPage) {
+        currentPage++;
+      } else if (type === 'pre' && currentPage >= 2) {
+        currentPage--;
+      }
+    } else {
+      if (type === 'next' && clickCount < childrenSize.length - 1) {
+        clickCount++;
+      } else if (type === 'pre' && clickCount >= 0) {
+        clickCount--;
+      }
     }
-    this.setState({ currentPage });
+    this.setState({ currentPage, clickCount });
   };
 }
 

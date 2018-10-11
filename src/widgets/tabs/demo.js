@@ -453,6 +453,7 @@ export default () => {
           <p>tabType=card </p>
           <Tabs
             tabType={'card'}
+            pagingType={'single'}
             data={strangeData}
             onPrevClick={onPrevClick}
             onNextClick={onNextClick}
@@ -462,9 +463,10 @@ export default () => {
         <br />
         <br />
         <Wrapper>
-          <p>tabType=card </p>
+          <p>tabType=window </p>
           <Tabs
             tabType={'window'}
+            pagingType={'page'}
             data={strangeData}
             onPrevClick={onPrevClick}
             onNextClick={onNextClick}
