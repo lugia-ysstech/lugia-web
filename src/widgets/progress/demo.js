@@ -34,7 +34,7 @@ export default class ProgressDemo extends React.Component<any, any> {
       [Widget.Progress]: {
         color: 'red',
         width: 100,
-        height: 12,
+        height: 18,
       },
     };
     return (
@@ -92,10 +92,28 @@ export default class ProgressDemo extends React.Component<any, any> {
             <br />
             <Progress size="small" percent={30} status="error" />
           </div>
-          <div style={{ width: '200px', margin: '50px 0' }}>
-            <p>props: size=small percent={30}</p>
+          <div style={{ width: '300px', margin: '50px 0' }}>
+            <p>percent={0} showType="inside"</p>
             <br />
-            <Progress size="small" percent={30} showType="inside" />
+            <Progress percent={0} showType="inside" />
+            <p>percent={30} showType="inside" status="active"</p>
+            <br />
+            <Progress percent={30} showType="inside" status="active" />
+            <p>percent={30} showType="inside"</p>
+            <br />
+            <Progress percent={30} showType="inside" />
+            <p>percent={30} showType="inside" status="success"</p>
+            <br />
+            <Progress percent={130} showType="inside" />
+            <p>percent={30} showType="inside" status="error"</p>
+            <br />
+            <Progress percent={30} showType="inside" status="error" />
+            <br />
+            <p>Theme===>>> props: percent={30}</p>
+            <br />
+            <Theme config={view}>
+              <Progress percent={130} showType="inside" />
+            </Theme>
           </div>
         </div>
       </div>

@@ -51,12 +51,13 @@ type CSSProps = {
   status: 'success' | 'active' | 'error',
   theme: Object,
   showInfo: boolean,
+  inside: boolean,
   size: 'default' | 'small',
   showType: 'default' | 'inside',
 };
 const getProgtrssWidth = (props: CSSProps) => {
-  const { showInfo } = props;
-  if (showInfo) {
+  const { showInfo, showType } = props;
+  if (showInfo && showType === 'default') {
     return `width: calc(100% - ${em(30)});`;
   }
 
@@ -81,7 +82,7 @@ const getBackGroundWidth = (props: CSSProps) => {
   `;
 };
 const getStatusCSS = (props: CSSProps) => {
-  const { status, theme } = props;
+  const { status, theme, percent } = props;
   const { color } = theme;
   const defaultColor = color ? color : themeColor;
   const activeAnimate = keyframes`
@@ -114,7 +115,11 @@ const getStatusCSS = (props: CSSProps) => {
             background-color: ${defaultColor};
             `;
   }
-  const background = color ? color : BackgroundCSS[status].background;
+  const background = color
+    ? color
+    : percent >= 100
+      ? successColor
+      : BackgroundCSS[status].background;
 
   return `background-color: ${background};`;
 };
@@ -139,6 +144,7 @@ export const ProgressBackground = styled.div`
   ${getBackgroundHeight};
   border-radius: ${em(50)};
   position: relative;
+  text-align: right;
 `;
 const getTextColor = (props: CSSProps) => {
   const { status } = props;
@@ -172,7 +178,7 @@ export const ProgressText = styled.span`
 
 export const Icons = styled(Icon)`
   cursor: default;
-  vertical-align: bottom !important;
+  vertical-align: text-bottom !important;
   ${getTextFont};
 `;
 
@@ -182,10 +188,9 @@ export const Wrap = styled.div`
 `;
 export const InsideText = styled.span`
   display: inline-block;
-  ${getTextColor};
+  color: #fff;
   text-align: left;
   font-size: 1.4rem;
-  color: #fff;
   margin: 0 ${em(6)};
   white-space: nowrap;
   word-break: normal;

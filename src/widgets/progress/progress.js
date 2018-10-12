@@ -34,7 +34,7 @@ export default ThemeProvider(
       } = this.props;
       return (
         <Wrap theme={getTheme()}>
-          <Progress showInfo={showInfo}>
+          <Progress showInfo={showInfo} showType={showType}>
             <ProgressBackground
               theme={getTheme()}
               showType={showType}
@@ -42,10 +42,12 @@ export default ThemeProvider(
               status={status}
               size={size}
             >
-              {showType === 'default' ? null : <InsideText>inside</InsideText>}
+              {showType === 'default' ? null : (
+                <InsideText showType={showType}>{this.getText(true)}</InsideText>
+              )}
             </ProgressBackground>
           </Progress>
-          {showInfo ? (
+          {showInfo && showType === 'default' ? (
             <ProgressText size={size} status={status}>
               {this.getText()}
             </ProgressText>
@@ -53,15 +55,25 @@ export default ThemeProvider(
         </Wrap>
       );
     }
-    getText = () => {
+    getText = (inside?: boolean) => {
       const { percent = 0, successPercent, format, status, size = 'default' } = this.props;
       const hasFormat = this.hasFormat();
       if (hasFormat && typeof format === 'function') {
         return format(percent, successPercent);
-      } else if (status === 'success') {
-        return <Icons size={size} iconClass="lugia-icon-reminder_check_circle" />;
+      } else if (status === 'success' || percent >= 100) {
+        return (
+          <Icons
+            size={size}
+            iconClass={inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle'}
+          />
+        );
       } else if (status === 'error') {
-        return <Icons size={size} iconClass="lugia-icon-reminder_close_circle" />;
+        return (
+          <Icons
+            size={size}
+            iconClass={inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle'}
+          />
+        );
       }
 
       return `${percent}%`;
