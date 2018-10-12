@@ -13,6 +13,16 @@ const { themeColor, successColor, dangerColor, mediumGreyColor } = colorsFunc();
 const FontSize = 1.4;
 const em = px2emcss(FontSize);
 
+export const handlePercent = (per: number) => {
+  let percent = per;
+  if (per > 100) {
+    percent = 100;
+  } else if (per < 0) {
+    percent = 0;
+  }
+  return percent;
+};
+
 type StatusType = 'success' | 'active' | 'error' | 'default';
 const BackgroundCSS = {
   success: {
@@ -63,7 +73,7 @@ const getProgtrssWidth = (props: CSSProps) => {
 
   return 'width: 100%;';
 };
-export const Progress = styled.div`
+export const ProgressLine = styled.div`
   ${getProgtrssWidth};
   display: inline-block;
   background: #f5f5f5;
@@ -72,11 +82,7 @@ export const Progress = styled.div`
 `;
 const getBackGroundWidth = (props: CSSProps) => {
   let { percent } = props;
-  if (percent > 100) {
-    percent = 100;
-  } else if (percent < 0) {
-    percent = 0;
-  }
+  percent = handlePercent(percent);
   return `
     width: ${percent}%;
   `;

@@ -40,6 +40,7 @@ export default class ProgressDemo extends React.Component<any, any> {
     return (
       <div>
         <div style={{ width: '300px', margin: '50px' }}>
+          <h1>line</h1>
           <p>props: percent={30}</p>
           <br />
           <Progress percent={30} />
@@ -115,6 +116,20 @@ export default class ProgressDemo extends React.Component<any, any> {
               <Progress percent={130} showType="inside" />
             </Theme>
           </div>
+        </div>
+
+        <div style={{ margin: '50px' }}>
+          <h1>circle</h1>
+          <p>type="circle" props: percent={0}</p>
+          <br />
+          <Progress type="circle" percent={0} />
+          <br />
+          <p>type="circle" props: percent={30}</p>
+          <br />
+          <Progress type="circle" percent={this.state.percent} />
+          <Button onClick={() => this.handleClick('add')}>+10</Button>&nbsp;
+          <Button onClick={() => this.handleClick('sub')}>-10</Button>
+          <br />
         </div>
       </div>
     );
