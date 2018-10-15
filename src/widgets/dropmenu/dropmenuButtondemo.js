@@ -37,21 +37,21 @@ export default class extends React.Component<any, any> {
           {/* <h3>Type: default ; Divided: default; => Top Hover</h3> */}
           <Box>
             <DropMenu menus={menu} align={'top'} action={['hover']} hideAction={['hover']}>
-              <DropMenuButton _onClick={this._onClick}>Hover Right</DropMenuButton>
+              <DropMenuButton onClick={this.onClick}>Hover Right</DropMenuButton>
             </DropMenu>
           </Box>
 
           {/* <h3>Type: default => Divided: default;TopLeft Click</h3> */}
           <Box>
             <DropMenu menus={menu} align={'topLeft'}>
-              <DropMenuButton _onClick={this._onClick}>Click Right</DropMenuButton>
+              <DropMenuButton onClick={this.onClick}>Click Right</DropMenuButton>
             </DropMenu>
           </Box>
 
           {/* <h3>Type: primary ;Divided: default; TopRight Hover</h3> */}
           <Box>
             <DropMenu menus={menu} align={'topRight'} action={['hover']} hideAction={['hover']}>
-              <DropMenuButton _onClick={this._onClick} type="primary">
+              <DropMenuButton onClick={this.onClick} type="primary">
                 Hover Right
               </DropMenuButton>
             </DropMenu>
@@ -59,15 +59,17 @@ export default class extends React.Component<any, any> {
 
           {/* <h3>Type: default ;Divided: false; bottom Hover</h3> */}
           <Box>
-            <DropMenu menus={menu} align={'bottom'} action={['hover']} hideAciont={['hover']}>
-              <DropMenuButton divided={false}>Hover me</DropMenuButton>
+            <DropMenu menus={menu} align={'bottom'} action={['hover']} hideAction={['hover']}>
+              <DropMenuButton divided={false} onClick={this.onClick}>
+                Hover me
+              </DropMenuButton>
             </DropMenu>
           </Box>
 
           {/* <h3>Type: default ;Divided: false; bottomLeft Click</h3> */}
           <Box>
-            <DropMenu menus={menu} align={'bottomLeft'} action={['click']} hideAciont={['click']}>
-              <DropMenuButton type="primary" divided={false}>
+            <DropMenu menus={menu} align={'bottomLeft'} action={['click']} hideAction={['click']}>
+              <DropMenuButton type="primary" divided={false} onClick={this.onClick}>
                 參數設置
               </DropMenuButton>
             </DropMenu>
@@ -75,8 +77,10 @@ export default class extends React.Component<any, any> {
 
           {/* <h3>Type: basic ; bottomRight Click</h3> */}
           <Box>
-            <DropMenu menus={menu} align={'bottomRight'} action={['hover']} hideAciont={['hover']}>
-              <DropMenuButton type="basic">Hover me</DropMenuButton>
+            <DropMenu menus={menu} align={'bottomRight'} action={['hover']} hideAction={['hover']}>
+              <DropMenuButton type="basic" onClick={this.onClick}>
+                Hover me
+              </DropMenuButton>
             </DropMenu>
           </Box>
         </Theme>
@@ -84,7 +88,7 @@ export default class extends React.Component<any, any> {
     );
   }
 
-  _onClick = () => {
-    console.log('ClickLeftButton');
+  onClick = (...rest) => {
+    console.log('ClickLeftButton', rest);
   };
 }

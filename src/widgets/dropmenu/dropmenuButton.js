@@ -32,7 +32,7 @@ type DropMenuButtonProps = {
   type: string,
   children: any,
   onClick?: Function,
-  _onClick?: Function,
+  onClick?: Function,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
 };
@@ -155,18 +155,19 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   handleClickWrap = e => {
     const { onClick } = this.props;
     onClick && onClick(e);
+    this.onTriggerShow(e);
   };
 
   handleIconClick = e => {
-    this.handleClickWrap(e);
+    this.onTriggerShow(e);
     this.setState({
       hasIconChecked: true,
     });
   };
 
   handleLeftButtonClick = e => {
-    const { _onClick } = this.props;
-    _onClick && _onClick(e);
+    const { onClick } = this.props;
+    onClick && onClick(e);
     this.setState({
       hasButtonChecked: true,
     });
@@ -178,6 +179,10 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     });
   };
 
+  onTriggerShow(e) {
+    const { _onClick } = this.props;
+    _onClick && _onClick(e);
+  }
   handleButtonBlur = () => {
     this.setState({
       hasButtonChecked: false,
@@ -195,4 +200,4 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 }
 
-export default ThemeProvider(DropMenuButton, Widget.DropMenuButton);
+export default ThemeProvider(DropMenuButton, 'DropMenuButton');

@@ -295,9 +295,15 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const child = React.Children.only(children);
     const newChildProps = {};
     if (this.isClickToHide() || this.isClickToShow()) {
-      newChildProps.onClick = this.onClick;
-      newChildProps.onMouseDown = this.onMouseDown;
-      newChildProps.onTouchStart = this.onTouchStart;
+      if (child.type.displayName === 'sv_widget_ThemeWrapWidgetDropMenuButton') {
+        newChildProps._onClick = this.createOnClick('_onClick');
+        newChildProps._onMouseDown = this.onMouseDown;
+        newChildProps._onTouchStart = this.onTouchStart;
+      } else {
+        newChildProps.onClick = this.createOnClick('onClick');
+        newChildProps.onMouseDown = this.onMouseDown;
+        newChildProps.onTouchStart = this.onTouchStart;
+      }
     } else {
       newChildProps.onClick = this.createTwoChains('onClick');
       newChildProps.onMouseDown = this.createTwoChains('onMouseDown');
@@ -410,8 +416,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
   };
 
-  onClick = (e: Object) => {
-    this.fireEvents('onClick', e);
+  createOnClick = (eventName: string) => (e: Object) => {
+    this.fireEvents(eventName, e);
     // focus will trigger click
     if (this.focusTime) {
       let preTime = 0;
