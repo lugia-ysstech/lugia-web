@@ -37,6 +37,11 @@ export default class ProgressDemo extends React.Component<any, any> {
         height: 18,
       },
     };
+    const CircleView = {
+      [Widget.Progress]: {
+        color: 'red',
+      },
+    };
     return (
       <div>
         <div style={{ width: '300px', margin: '50px' }}>
@@ -130,6 +135,71 @@ export default class ProgressDemo extends React.Component<any, any> {
           <Button onClick={() => this.handleClick('add')}>+10</Button>&nbsp;
           <Button onClick={() => this.handleClick('sub')}>-10</Button>
           <br />
+          <p>type="circle" props: percent={100}</p>
+          <br />
+          <Progress type="circle" percent={100} />
+          <br />
+          <p>type="circle" props: percent={50}</p>
+          <br />
+          <Progress type="circle" status="success" percent={50} />
+          <br />
+          <p>type="circle" props: percent={50}</p>
+          <br />
+          <Progress type="circle" status="error" percent={50} />
+          <br />
+          <p>props: percent={50} status="error" format= percent => percent + '--'</p>
+          <br />
+          <Progress type="circle" status="error" percent={50} format={percent => percent + '--'} />
+          <br />
+          <p>Theme: color===>>> props: percent={30}</p>
+          <br />
+          <Theme config={CircleView}>
+            <Progress type="circle" percent={30} />
+          </Theme>
+          <p>type="circle" size="small" props: percent={0}</p>
+          <br />
+          <Progress type="circle" size="small" percent={0} />
+          <br />
+          <p>type="circle" props: percent={30}</p>
+          <br />
+          <Progress type="circle" size="small" percent={this.state.percent} />
+          <br />
+          <p>type="circle" props: percent={100}</p>
+          <br />
+          <Progress type="circle" size="small" percent={100} />
+          <br />
+          <p>type="circle" props: percent={50}</p>
+          <br />
+          <Progress type="circle" size="small" status="error" percent={50} />
+          <br />
+          <div style={{ margin: '50px' }}>
+            <h1>dashboard</h1>
+            <p>type="dashboard" props: percent={50}</p>
+            <br />
+            <Progress type="dashboard" percent={50} />
+            <br />
+            <p>type="dashboard" props: percent={100}</p>
+            <br />
+            <Progress type="dashboard" percent={100} />
+            <br />
+            <p>type="dashboard" props: percent={50} status="success"</p>
+            <br />
+            <Progress type="dashboard" status="success" percent={50} />
+            <br />
+            <p>type="dashboard" props: percent={50} status="error"</p>
+            <br />
+            <Progress type="dashboard" status="error" percent={50} />
+            <br />
+            <p>type="dashboard" props: percent={50} format= percent => percent + '--'</p>
+            <br />
+            <Progress type="dashboard" percent={50} format={percent => percent + '--'} />
+            <br />
+            <p>Theme: color===>>> props: percent={30}</p>
+            <br />
+            <Theme config={CircleView}>
+              <Progress type="dashboard" percent={50} />
+            </Theme>
+          </div>
         </div>
       </div>
     );

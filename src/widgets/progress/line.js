@@ -16,6 +16,39 @@ import {
   InsideText,
 } from '../css/progress-line';
 
+export const getText = (inside?: boolean, props: Object) => {
+  const {
+    percent = 0,
+    successPercent,
+    format,
+    status,
+    size = 'default',
+    type = 'line',
+    hasFormat = false,
+  } = props;
+  if (hasFormat && typeof format === 'function') {
+    return format(percent, successPercent);
+  } else if (status === 'success' || percent >= 100) {
+    return (
+      <Icons
+        size={size}
+        type={type}
+        iconClass={inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle'}
+      />
+    );
+  } else if (status === 'error') {
+    return (
+      <Icons
+        size={size}
+        type={type}
+        iconClass={inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle'}
+      />
+    );
+  }
+
+  return `${percent}%`;
+};
+
 export default class extends React.Component<ProgressProps, ProgressState> {
   render() {
     const {
@@ -45,35 +78,32 @@ export default class extends React.Component<ProgressProps, ProgressState> {
           </ProgressBackground>
         </ProgressLine>
         {showInfo && showType === 'default' ? (
-          <ProgressText size={size} status={status}>
-            {this.getText()}
+          <ProgressText size={size} type={type} status={status}>
+            {this.getText(false)}
           </ProgressText>
         ) : null}
       </Wrap>
     );
   }
-  getText = (inside?: boolean) => {
-    const { percent = 0, successPercent, format, status, size = 'default' } = this.props;
-    const hasFormat = this.hasFormat();
-    if (hasFormat && typeof format === 'function') {
-      return format(percent, successPercent);
-    } else if (status === 'success' || percent >= 100) {
-      return (
-        <Icons
-          size={size}
-          iconClass={inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle'}
-        />
-      );
-    } else if (status === 'error') {
-      return (
-        <Icons
-          size={size}
-          iconClass={inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle'}
-        />
-      );
-    }
+  getText = (inside: boolean) => {
+    const {
+      percent = 0,
+      successPercent,
+      format,
+      status,
+      size = 'default',
+      type = 'line',
+    } = this.props;
 
-    return `${percent}%`;
+    return getText(inside, {
+      hasFormat: this.hasFormat(),
+      percent,
+      successPercent,
+      format,
+      status,
+      size,
+      type,
+    });
   };
   hasFormat() {
     return 'format' in this.props;

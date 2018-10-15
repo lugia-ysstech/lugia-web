@@ -1,5 +1,5 @@
 /**
- * Layout
+ * Progress
  * create by guorg
  * @flow
  */
@@ -57,6 +57,7 @@ export type ProgressState = {
   fixed: boolean,
 };
 type CSSProps = {
+  type: 'line' | 'circle' | 'dashboard',
   percent: number,
   status: 'success' | 'active' | 'error',
   theme: Object,
@@ -152,9 +153,9 @@ export const ProgressBackground = styled.div`
   position: relative;
   text-align: right;
 `;
-const getTextColor = (props: CSSProps) => {
-  const { status } = props;
-  if (status === 'success') {
+export const getTextColor = (props: CSSProps) => {
+  const { status, percent = 0 } = props;
+  if (status === 'success' || percent >= 100) {
     return `color: ${successColor};`;
   } else if (status === 'error') {
     return `color: ${dangerColor};`;
@@ -163,9 +164,16 @@ const getTextColor = (props: CSSProps) => {
   return `color: ${mediumGreyColor};`;
 };
 const getTextFont = (props: CSSProps) => {
-  const { size } = props;
-  if (size === 'small') {
+  const { size, type } = props;
+
+  if (type === 'line' && size === 'small') {
     return 'font-size: 1.2rem;';
+  }
+  if (type === 'circle' || type === 'dashboard') {
+    if (size === 'small') {
+      return 'font-size: 2.6rem;';
+    }
+    return 'font-size: 4rem;';
   }
 
   return `font-size: ${FontSize}rem;`;

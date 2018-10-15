@@ -15,7 +15,7 @@ export default ThemeProvider(
   class extends React.Component<any, any> {
     render() {
       const { type = 'line' } = this.props;
-      if (type === 'circle') {
+      if (type === 'circle' || 'dashboard') {
         return <Circle {...this.props} />;
       }
       return <Line {...this.props} />;
