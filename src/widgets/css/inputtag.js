@@ -9,7 +9,14 @@ import { px2emcss } from './units';
 import colorsFunc from './stateColor';
 const em = px2emcss(1.2);
 
-export const { darkGreyColor, blackColor, mediumGreyColor, lightGreyColor } = colorsFunc();
+export const {
+  themeColor,
+  darkGreyColor,
+  blackColor,
+  mediumGreyColor,
+  lightGreyColor,
+  dangerColor,
+} = colorsFunc();
 
 export const MarginTop = 4;
 export const MarginRight = 4;

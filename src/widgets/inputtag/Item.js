@@ -11,7 +11,7 @@ import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
 import CommonIcon from '../icon';
-import { blackColor, mediumGreyColor } from '../css/inputtag';
+import { mediumGreyColor, darkGreyColor } from '../css/inputtag';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
 
@@ -24,9 +24,9 @@ const CloseButton = styled(CommonIcon)`
   top: 50%;
   transform: translateY(-50%);
   zoom: 1;
-
+  transition: all 0.3s;
   :hover {
-    color: ${blackColor};
+    color: ${darkGreyColor};
   }
 `;
 
