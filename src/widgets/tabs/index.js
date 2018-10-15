@@ -11,39 +11,39 @@ import Tabpane from './tabpane';
 import TabContent from './tabcontent';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import type { TabPositionType, TabType, EditEventType, PagedType } from '../css/tabs';
+import type { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
 import {
+  addButtonSize,
+  arrowContainerWidth,
   backgroundColor,
+  cardBorderAndMarginWidth,
+  getAddBackground,
+  getAddButtonBottom,
+  getAddButtonDisplay,
+  getAddButtonShow,
+  getAddHoverBackground,
+  getAddRadius,
+  getAddRight,
+  getAddTop,
+  getArrowTop,
   getBackgroundShadow,
-  getSelectColor,
   getContainerBorder,
+  getCursor,
   getLinePosition,
+  getSelectColor,
+  getTabpaneBorder,
   hContainerHeight,
   hContainerWidth,
   lineWidth,
   vContainerHeight,
-  getAddHoverBackground,
-  getAddBackground,
-  getAddRadius,
-  getAddTop,
-  getAddRight,
-  getAddButtonDisplay,
-  getAddButtonBottom,
-  getArrowTop,
-  getAddButtonShow,
-  getTabpaneBorder,
-  getCursor,
-  addButtonSize,
-  cardBorderAndMarginWidth,
   windowMarginLeft,
-  arrowContainerWidth,
   yTabsHeight,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
-import { isVertical, plusWidth, computePage, matchType } from './utils';
+import { computePage, isVertical, matchType, plusWidth } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
@@ -319,6 +319,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       </Theme>
     );
   }
+
   getTabs() {
     const { tabPosition } = this.props;
     if (isVertical(tabPosition)) {
@@ -326,6 +327,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     return this.getHTabs();
   }
+
   getArrowConfig(type: EditEventType) {
     const { currentPage, arrowShow, totalPage, pagedCount, childrenSize } = this.state;
     const { pagedType } = this.props;
@@ -339,6 +341,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       childrenSize,
     };
   }
+
   getVtabs() {
     const { tabPosition } = this.props;
     const { data, activityKey, pagedCount } = this.state;
@@ -448,6 +451,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     return null;
   }
+
   componentWillMount() {}
 
   componentDidUpdate(props, preState) {
@@ -456,9 +460,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
       this.measurePage();
     }
   }
+
   componentDidMount() {
     this.measurePage();
   }
+
   measurePage() {
     this.getContainerSize('width');
     this.getContainerSize('height');
@@ -520,6 +526,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       return height ? height : this.offsetHeight;
     }
   }
+
   getTabpaneConfig(child: React$Element<any>) {
     const { tabPosition, tabType } = this.props;
     const { activityKey } = this.state;
@@ -614,17 +621,21 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     onDeleteClick && onDeleteClick();
   };
+
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
-    const { data } = this.state;
-    const activityKey = `tab${data.length + 1}`;
-    const title = 'new Tab';
-    const newdata = [...data];
-    newdata.push({ title, content: 'new Tab content', activityKey });
-    this.setState({
-      data: newdata,
-    });
-    onAddClick && onAddClick(e);
+    if (onAddClick) {
+      const item = onAddClick(e);
+      if (item) {
+        const { data } = this.state;
+        const newdata = [...data];
+        const { title = '', content = '', activityKey } = item;
+        newdata.push({ title, content, activityKey });
+        this.setState({
+          data: newdata,
+        });
+      }
+    }
   };
   getTabpaneWidth = (width: number) => {
     const { childrenSize } = this.state;
