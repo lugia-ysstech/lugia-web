@@ -9,7 +9,7 @@ exports[`tabsDemo Component JSON 1`] = `
   cursor: pointer;
 }
 
-.c22 {
+.c23 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -18,11 +18,11 @@ exports[`tabsDemo Component JSON 1`] = `
   display: block;
 }
 
-.c22:hover > div {
+.c23:hover > div {
   color: #684fff;
 }
 
-.c30 {
+.c31 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -31,7 +31,7 @@ exports[`tabsDemo Component JSON 1`] = `
   display: block;
 }
 
-.c30:hover > div {
+.c31:hover > div {
   color: #684fff;
 }
 
@@ -47,6 +47,7 @@ exports[`tabsDemo Component JSON 1`] = `
   border-top-right-radius: 0;
   background: none;
   z-index: 5;
+  box-sizing: border-box;
 }
 
 .c8:hover > div {
@@ -71,6 +72,7 @@ exports[`tabsDemo Component JSON 1`] = `
   border: 0.08333333333333334em solid #e8e8e8;
   margin-right: 0.33333333333333337em;
   z-index: 5;
+  box-sizing: border-box;
 }
 
 .c37:hover > div {
@@ -100,6 +102,7 @@ exports[`tabsDemo Component JSON 1`] = `
   border: 0.08333333333333334em solid #e8e8e8;
   margin-right: 0.33333333333333337em;
   z-index: 5;
+  box-sizing: border-box;
 }
 
 .c40:hover > div {
@@ -129,6 +132,7 @@ exports[`tabsDemo Component JSON 1`] = `
   left: 0.5em;
   background: white;
   z-index: 5;
+  box-sizing: border-box;
 }
 
 .c47:hover > div {
@@ -153,6 +157,7 @@ exports[`tabsDemo Component JSON 1`] = `
   left: 0.5em;
   background: none;
   z-index: 5;
+  box-sizing: border-box;
 }
 
 .c50:hover > div {
@@ -201,27 +206,8 @@ exports[`tabsDemo Component JSON 1`] = `
   color: #684fff;
 }
 
-.c23 {
-  color: #684fff;
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-align: left;
-  padding: 0 0em 0 0em;
-  height: 2.666666666666667em;
-  line-height: 2.666666666666667em;
-}
-
-.c23:focus {
-  color: #684fff;
-}
-
 .c24 {
-  color: none;
+  color: #684fff;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -236,6 +222,25 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c24:focus {
+  color: #684fff;
+}
+
+.c25 {
+  color: none;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  padding: 0 0em 0 0em;
+  height: 2.666666666666667em;
+  line-height: 2.666666666666667em;
+}
+
+.c25:focus {
   color: #684fff;
 }
 
@@ -317,6 +322,38 @@ exports[`tabsDemo Component JSON 1`] = `
   color: #999999;
 }
 
+.c17 {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.c27 {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  top: 0em;
+}
+
+.c32 {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  left: 0em;
+  text-align: left;
+}
+
+.c35 {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  top: -1.6666666666666667em;
+}
+
 .c14 {
   background-color: blue;
   position: absolute;
@@ -333,7 +370,7 @@ exports[`tabsDemo Component JSON 1`] = `
   transition: all 0.3s;
 }
 
-.c33 {
+.c34 {
   background-color: blue;
   position: absolute;
   box-sizing: border-box;
@@ -352,13 +389,13 @@ exports[`tabsDemo Component JSON 1`] = `
 .c56 {
   width: 100%;
   position: absolute;
-  bottom: -1px;
+  bottom: -0.08333333333333334em;
   height: 0.08333333333333334em;
   z-index: -1;
   box-shadow: 0 -0.16666666666666669em 0.5em rgba(104,79,255,0.2);
 }
 
-.c21 {
+.c22 {
   background-color: blue;
   position: absolute;
   box-sizing: border-box;
@@ -374,7 +411,7 @@ exports[`tabsDemo Component JSON 1`] = `
   right: 0;
 }
 
-.c29 {
+.c30 {
   background-color: blue;
   position: absolute;
   box-sizing: border-box;
@@ -388,22 +425,6 @@ exports[`tabsDemo Component JSON 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   left: 0;
-}
-
-.c35 {
-  background-color: blue;
-  position: absolute;
-  box-sizing: border-box;
-  z-index: 3;
-  border-radius: 0.16666666666666669em;
-  height: 2.666666666666667em;
-  width: 0.16666666666666669em;
-  -webkit-transform: translateY(100%);
-  -ms-transform: translateY(100%);
-  transform: translateY(100%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  right: 0;
 }
 
 .c36 {
@@ -427,6 +448,7 @@ exports[`tabsDemo Component JSON 1`] = `
   font-size: 1.2rem;
   display: none;
   z-index: 5;
+  cursor: not-allowed;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -440,6 +462,7 @@ exports[`tabsDemo Component JSON 1`] = `
   font-size: 1.2rem;
   display: none;
   z-index: 5;
+  cursor: not-allowed;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -453,6 +476,7 @@ exports[`tabsDemo Component JSON 1`] = `
   font-size: 1.2rem;
   display: none;
   z-index: 5;
+  cursor: pointer;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -466,6 +490,7 @@ exports[`tabsDemo Component JSON 1`] = `
   font-size: 1.2rem;
   display: none;
   z-index: 5;
+  cursor: pointer;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -474,22 +499,24 @@ exports[`tabsDemo Component JSON 1`] = `
   right: 0.8333333333333334em;
 }
 
-.c18 {
+.c19 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
   z-index: 5;
+  cursor: not-allowed;
   width: 100%;
   text-align: center;
   height: 2em;
   top: 1em;
 }
 
-.c25 {
+.c26 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
   z-index: 5;
+  cursor: pointer;
   width: 100%;
   text-align: center;
   height: 2em;
@@ -602,7 +629,7 @@ exports[`tabsDemo Component JSON 1`] = `
   transform: translateX(0em);
 }
 
-.c19 {
+.c20 {
   height: 100%;
   box-sizing: border-box;
   white-space: nowrap;
@@ -610,15 +637,15 @@ exports[`tabsDemo Component JSON 1`] = `
   overflow: hidden;
 }
 
-.c20 {
+.c21 {
   display: inline-block;
   box-sizing: border-box;
   white-space: nowrap;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  -webkit-transform: translateY(NaNem);
-  -ms-transform: translateY(NaNem);
-  transform: translateY(NaNem);
+  -webkit-transform: translateY(0em);
+  -ms-transform: translateY(0em);
+  transform: translateY(0em);
 }
 
 .c2 {
@@ -632,7 +659,7 @@ exports[`tabsDemo Component JSON 1`] = `
   z-index: 99;
 }
 
-.c32 {
+.c33 {
   height: 2.8333333333333335em;
   line-height: 2.8333333333333335em;
   position: relative;
@@ -653,7 +680,7 @@ exports[`tabsDemo Component JSON 1`] = `
   z-index: 99;
 }
 
-.c17 {
+.c18 {
   color: none;
   border-right: 0.08333333333333334em solid #e8e8e8;
   display: inline-block;
@@ -666,7 +693,7 @@ exports[`tabsDemo Component JSON 1`] = `
   margin: 0 1.6666666666666667em;
 }
 
-.c28 {
+.c29 {
   color: none;
   border-left: 0.08333333333333334em solid #e8e8e8;
   display: inline-block;
@@ -679,38 +706,20 @@ exports[`tabsDemo Component JSON 1`] = `
   margin: 0 1.6666666666666667em;
 }
 
-.c16 {
-  position: absolute;
-  display: inline-block;
-  overflow: hidden;
-}
-
-.c26 {
-  position: absolute;
-  display: inline-block;
-  overflow: hidden;
-  top: 0em;
-}
-
-.c31 {
-  position: absolute;
-  display: inline-block;
-  overflow: hidden;
-  left: 0em;
-}
-
-.c34 {
-  position: absolute;
-  display: inline-block;
-  overflow: hidden;
-  top: -1.6666666666666667em;
-}
-
 .c4 {
   display: inline-block;
   font-style: normal;
   text-align: center;
   font-size: 1rem;
+  cursor: not-allowed;
+}
+
+.c16 {
+  display: inline-block;
+  font-style: normal;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .c0 {
@@ -718,7 +727,7 @@ exports[`tabsDemo Component JSON 1`] = `
   margin: 50px;
 }
 
-.c27 {
+.c28 {
   margin: 50px;
   text-align: right;
 }
@@ -739,6 +748,7 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c3"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_Left c4 c5"
@@ -912,14 +922,15 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c15"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_right c4 c5"
+            className="lugia-icon-direction_right c16 c5"
           />
         </span>
       </div>
       <div
-        className="c16"
+        className="c17"
       >
         1111
       </div>
@@ -935,153 +946,154 @@ exports[`tabsDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c17"
+        className="c18"
       >
         <span
-          className="c18"
+          className="c19"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_up c4 c5"
           />
         </span>
         <div
-          className="c19"
+          className="c20"
         >
           <div
-            className="c20"
-            y={NaN}
+            className="c21"
+            y={-0}
           >
             <div
-              className="c21"
+              className="c22"
               y={0}
             />
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c23"
+                className="c24"
               >
                 11111
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 2222
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 3333
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 44444
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 555555
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 666666
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 7777777
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 8888888
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 999999
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 10101010
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 1111111
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 12121212
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 131313
               </div>
@@ -1089,16 +1101,17 @@ exports[`tabsDemo Component JSON 1`] = `
           </div>
         </div>
         <span
-          className="c25"
+          className="c26"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_down c4 c5"
+            className="lugia-icon-direction_down c16 c5"
           />
         </span>
       </div>
       <div
-        className="c26"
+        className="c27"
       >
         1111
       </div>
@@ -1108,59 +1121,60 @@ exports[`tabsDemo Component JSON 1`] = `
     children tabPosition=right
   </p>
   <div
-    className="c27"
+    className="c28"
   >
     <div
       className="c1"
     >
       <div
-        className="c28"
+        className="c29"
       >
         <span
-          className="c18"
+          className="c19"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_up c4 c5"
           />
         </span>
         <div
-          className="c19"
+          className="c20"
         >
           <div
-            className="c20"
-            y={NaN}
+            className="c21"
+            y={-0}
           >
             <div
-              className="c29"
+              className="c30"
               y={0}
             />
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c23"
+                className="c24"
               >
                 11111
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 2222
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 3333
               </div>
@@ -1168,16 +1182,17 @@ exports[`tabsDemo Component JSON 1`] = `
           </div>
         </div>
         <span
-          className="c25"
+          className="c26"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_down c4 c5"
+            className="lugia-icon-direction_down c16 c5"
           />
         </span>
       </div>
       <div
-        className="c31"
+        className="c32"
       >
         11111111111111111111111111
       </div>
@@ -1190,11 +1205,12 @@ exports[`tabsDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c32"
+        className="c33"
       >
         <span
           className="c3"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_Left c4 c5"
@@ -1214,7 +1230,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c23"
+                className="c24"
               >
                 11111
               </div>
@@ -1226,7 +1242,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 2222
               </div>
@@ -1238,7 +1254,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 3333
               </div>
@@ -1250,7 +1266,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 4444
               </div>
@@ -1262,7 +1278,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 555555
               </div>
@@ -1274,13 +1290,13 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 666666
               </div>
             </div>
             <div
-              className="c33"
+              className="c34"
               x={20}
             />
           </div>
@@ -1288,14 +1304,15 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c15"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_right c4 c5"
+            className="lugia-icon-direction_right c16 c5"
           />
         </span>
       </div>
       <div
-        className="c34"
+        className="c35"
       >
         11111111111111111111111111
       </div>
@@ -1316,6 +1333,7 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c3"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_Left c4 c5"
@@ -1489,14 +1507,15 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c15"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_right c4 c5"
+            className="lugia-icon-direction_right c16 c5"
           />
         </span>
       </div>
       <div
-        className="c16"
+        className="c17"
       >
         1111
       </div>
@@ -1507,35 +1526,36 @@ exports[`tabsDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      data tabPosition=left
+      data tabPosition=left 
     </p>
     <div
       className="c1"
     >
       <div
-        className="c17"
+        className="c18"
       >
         <span
-          className="c18"
+          className="c19"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_up c4 c5"
           />
         </span>
         <div
-          className="c19"
+          className="c20"
         >
           <div
-            className="c20"
-            y={NaN}
+            className="c21"
+            y={-0}
           >
             <div
-              className="c35"
-              y={100}
+              className="c22"
+              y={0}
             />
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
@@ -1545,71 +1565,71 @@ exports[`tabsDemo Component JSON 1`] = `
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c23"
+                className="c25"
               >
                 222222
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 3333
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 44444
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 55555
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 66666
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 777777
               </div>
             </div>
             <div
-              className="c22"
+              className="c23"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 888888
               </div>
@@ -1617,133 +1637,133 @@ exports[`tabsDemo Component JSON 1`] = `
           </div>
         </div>
         <span
-          className="c25"
+          className="c26"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_down c4 c5"
+            className="lugia-icon-direction_down c16 c5"
           />
         </span>
       </div>
       <div
-        className="c26"
+        className="c27"
       >
         <div>
-          <div>
-            222222
-          </div>
+          1111111
         </div>
       </div>
     </div>
   </div>
   <br />
   <p>
-    data tabPosition=right
+    data tabPosition=right && pagedType=single
   </p>
   <div
-    className="c27"
+    className="c28"
   >
     <div
       className="c1"
     >
       <div
-        className="c28"
+        className="c29"
       >
         <span
-          className="c18"
+          className="c19"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_up c4 c5"
           />
         </span>
         <div
-          className="c19"
+          className="c20"
         >
           <div
-            className="c20"
-            y={NaN}
+            className="c21"
+            y={-0}
           >
             <div
               className="c36"
               y={200}
             />
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 1111
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 222222
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c23"
+                className="c24"
               >
                 3333
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 44444
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 55555
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 66666
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 777777
               </div>
             </div>
             <div
-              className="c30"
+              className="c31"
               onClick={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 888888
               </div>
@@ -1751,16 +1771,17 @@ exports[`tabsDemo Component JSON 1`] = `
           </div>
         </div>
         <span
-          className="c25"
+          className="c26"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_down c4 c5"
+            className="lugia-icon-direction_down c16 c5"
           />
         </span>
       </div>
       <div
-        className="c31"
+        className="c32"
       >
         <div>
           <div>
@@ -1783,11 +1804,12 @@ exports[`tabsDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c32"
+        className="c33"
       >
         <span
           className="c3"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_Left c4 c5"
@@ -1953,7 +1975,7 @@ exports[`tabsDemo Component JSON 1`] = `
               </div>
             </div>
             <div
-              className="c33"
+              className="c34"
               x={20}
             />
           </div>
@@ -1961,14 +1983,15 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c15"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_right c4 c5"
+            className="lugia-icon-direction_right c16 c5"
           />
         </span>
       </div>
       <div
-        className="c34"
+        className="c35"
       >
         1111
       </div>
@@ -1979,7 +2002,7 @@ exports[`tabsDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      tabType=card 
+      tabType=card pagedType=single
     </p>
     <div
       className="c1"
@@ -1990,6 +2013,7 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c3"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_Left c4 c5"
@@ -2009,7 +2033,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c23"
+                className="c24"
               >
                 1111
               </div>
@@ -2031,7 +2055,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 222222
               </div>
@@ -2053,7 +2077,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 3333
               </div>
@@ -2075,7 +2099,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 44444
               </div>
@@ -2097,7 +2121,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 55555
               </div>
@@ -2119,7 +2143,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 66666
               </div>
@@ -2141,7 +2165,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 777777
               </div>
@@ -2163,7 +2187,7 @@ exports[`tabsDemo Component JSON 1`] = `
               onMouseLeave={[Function]}
             >
               <div
-                className="c24"
+                className="c25"
               >
                 888888
               </div>
@@ -2197,14 +2221,15 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c15"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_right c4 c5"
+            className="lugia-icon-direction_right c16 c5"
           />
         </span>
       </div>
       <div
-        className="c16"
+        className="c17"
       >
         <div>
           1111111
@@ -2218,7 +2243,7 @@ exports[`tabsDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      tabType=card 
+      tabType=window pagedType=page
     </p>
     <div
       className="c1"
@@ -2229,6 +2254,7 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c45"
           onClick={[Function]}
+          type="pre"
         >
           <i
             className="lugia-icon-direction_Left c4 c5"
@@ -2436,9 +2462,10 @@ exports[`tabsDemo Component JSON 1`] = `
         <span
           className="c55"
           onClick={[Function]}
+          type="next"
         >
           <i
-            className="lugia-icon-direction_right c4 c5"
+            className="lugia-icon-direction_right c16 c5"
           />
         </span>
         <div
@@ -2446,7 +2473,7 @@ exports[`tabsDemo Component JSON 1`] = `
         />
       </div>
       <div
-        className="c16"
+        className="c17"
       >
         <div>
           1111111

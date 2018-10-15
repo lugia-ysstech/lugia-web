@@ -415,18 +415,17 @@ export default () => {
         </Wrapper>
         <br />
         <Wrapper>
-          <p>data tabPosition=left && activityKey 1</p>
+          <p>data tabPosition=left </p>
           <Tabs
             tabType={'line'}
             tabPosition={'left'}
             data={strangeData}
             onPrevClick={onPrevClick}
             onNextClick={onNextClick}
-            activityKey={'1'}
           />
         </Wrapper>
         <br />
-        <p>data tabPosition=right && defaultActivityKey 2</p>
+        <p>data tabPosition=right && pagedType=single</p>
         <RightWrapper>
           <Tabs
             tabType={'line'}
@@ -450,10 +449,10 @@ export default () => {
         </Wrapper>
         <br />
         <Wrapper>
-          <p>tabType=card </p>
+          <p>tabType=card pagedType=single</p>
           <Tabs
             tabType={'card'}
-            pagingType={'single'}
+            pagedType={'single'}
             data={strangeData}
             onPrevClick={onPrevClick}
             onNextClick={onNextClick}
@@ -463,10 +462,10 @@ export default () => {
         <br />
         <br />
         <Wrapper>
-          <p>tabType=window </p>
+          <p>tabType=window pagedType=page</p>
           <Tabs
             tabType={'window'}
-            pagingType={'page'}
+            pagedType={'page'}
             data={strangeData}
             onPrevClick={onPrevClick}
             onNextClick={onNextClick}

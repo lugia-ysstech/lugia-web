@@ -11,7 +11,7 @@ import Tabpane from './tabpane';
 import TabContent from './tabcontent';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import type { TabPositionType, TabType, EditType, PagingType } from '../css/tabs';
+import type { TabPositionType, TabType, EditEventType, PagedType } from '../css/tabs';
 import {
   backgroundColor,
   getBackgroundShadow,
@@ -43,7 +43,7 @@ import {
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
-import { isVertical, plusWidth, computePage, matchTab } from './utils';
+import { isVertical, plusWidth, computePage, matchType } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
@@ -140,6 +140,7 @@ const AddContainer = styled.div`
     ${getAddHoverBackground};
   }
 `;
+
 const AddOutContainer = styled.div`
   position: relative;
   text-align: center;
@@ -149,7 +150,7 @@ const AddOutContainer = styled.div`
   height: ${hContainerHeight};
   line-height: ${hContainerHeight};
 `;
-const AddButton: Object = styled(Icon)`
+const AddIcon: Object = styled(Icon)`
   position: relative;
   transition: all 0.3s linear 0.1s;
   font-size: 1rem;
@@ -157,6 +158,7 @@ const AddButton: Object = styled(Icon)`
   ${getAddButtonShow};
   ${getAddButtonDisplay};
 `;
+AddIcon.displayName = 'addIcon';
 const HscrollerContainer = styled.div`
   height: ${hContainerHeight};
   display: inline-block;
@@ -209,13 +211,14 @@ const PageIcon: Object = styled(Icon)`
   font-size: 1rem;
   ${getCursor};
 `;
+PageIcon.displayName = 'page';
 
 type TabsState = {|
   activityKey: string,
   data: Array<Object>,
   currentPage: number,
   totalPage: number,
-  clickCount: number,
+  pagedCount: number,
   arrowShow: boolean,
   addButtonShow: boolean,
   childrenSize: Array<number>,
@@ -237,7 +240,7 @@ type TabsProps = {
   getTheme: Function,
   onDeleteClick: Function,
   onAddClick: Function,
-  pagingType: PagingType,
+  pagedType: PagedType,
 };
 
 class TabsBox extends Component<TabsProps, TabsState> {
@@ -245,6 +248,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     tabType: 'line',
     defaultActivityKey: '0',
     tabPosition: 'top',
+    pagedType: 'single',
   };
   tabs: any;
   static displayName = Widget.Tabs;
@@ -282,7 +286,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 : [],
         currentPage: 1,
         totalPage: 1,
-        clickCount: -1,
+        pagedCount: -1,
         arrowShow: false,
         addButtonShow: false,
         childrenSize: [],
@@ -322,22 +326,25 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     return this.getHTabs();
   }
-  getArrowConfig(type: EditType) {
-    const { currentPage, arrowShow, totalPage, clickCount, childrenSize } = this.state;
-    const { pagingType } = this.props;
+  getArrowConfig(type: EditEventType) {
+    const { currentPage, arrowShow, totalPage, pagedCount, childrenSize } = this.state;
+    const { pagedType } = this.props;
     return {
       type,
-      pagingType,
+      pagedType,
       totalPage,
       currentPage,
       arrowShow,
-      clickCount,
+      pagedCount,
       childrenSize,
     };
   }
   getVtabs() {
     const { tabPosition } = this.props;
-    const { data, activityKey } = this.state;
+    const { data, activityKey, pagedCount } = this.state;
+    const arrowUp = 'lugia-icon-direction_up';
+    const arrowDown = 'lugia-icon-direction_down';
+    const y = -yTabsHeight * (pagedCount + 1);
     return (
       <VTabsOutContainer tabPosition={tabPosition}>
         <VPrePage
@@ -345,10 +352,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
           onClick={this.onPrevClick}
           {...this.getArrowConfig('pre')}
         >
-          <PageIcon iconClass="lugia-icon-direction_up" {...this.getArrowConfig('pre')} />
+          <PageIcon iconClass={arrowUp} {...this.getArrowConfig('pre')} />
         </VPrePage>
         <VTabsContainer>
-          <YscrollerContainer>
+          <YscrollerContainer y={y}>
             <VLine
               y={getIndexfromKey(data, 'activityKey', activityKey) * 100}
               tabPosition={tabPosition}
@@ -361,7 +368,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
           tabPosition={tabPosition}
           onClick={this.onNextClick}
         >
-          <PageIcon iconClass="lugia-icon-direction_down" {...this.getArrowConfig('next')} />
+          <PageIcon iconClass={arrowDown} {...this.getArrowConfig('next')} />
         </VNextPage>
       </VTabsOutContainer>
     );
@@ -379,7 +386,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getShadowLine() {
     const { tabType } = this.props;
-    if (matchTab(tabType, 'window')) {
+    if (matchType(tabType, 'window')) {
       return <ShadowLine tabType={tabType} />;
     }
     return null;
@@ -388,7 +395,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   getHline() {
     const { tabType, tabPosition } = this.props;
     const { activityKey, data, childrenSize } = this.state;
-    if (matchTab(tabType, 'line')) {
+    if (matchType(tabType, 'line')) {
       return (
         <HLine
           lineWidth={childrenSize[getIndexfromKey(data, 'activityKey', activityKey)]}
@@ -402,19 +409,21 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getHtabsChildren() {
     const { tabType } = this.props;
+    const arrowLeft = 'lugia-icon-direction_Left';
+    const arrowRight = 'lugia-icon-direction_right';
     return [
       <HPrePage {...this.getArrowConfig('pre')} onClick={this.onPrevClick} tabType={tabType}>
-        <PageIcon iconClass="lugia-icon-direction_Left" {...this.getArrowConfig('pre')} />
+        <PageIcon iconClass={arrowLeft} {...this.getArrowConfig('pre')} />
       </HPrePage>,
       <HTabsContainer tabType={tabType}>
-        <HscrollerContainer tabType={tabType} x={this.computePagingX()}>
+        <HscrollerContainer tabType={tabType} x={this.computePagedX()}>
           {this.getChildren()}
           {this.getAddButton()}
           {this.getHline()}
         </HscrollerContainer>
       </HTabsContainer>,
       <HNextPage {...this.getArrowConfig('next')} onClick={this.onNextClick} tabType={tabType}>
-        <PageIcon iconClass="lugia-icon-direction_right" {...this.getArrowConfig('next')} />
+        <PageIcon iconClass={arrowRight} {...this.getArrowConfig('next')} />
       </HNextPage>,
     ];
   }
@@ -422,7 +431,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   getAddButton() {
     const { tabType } = this.props;
     const { addButtonShow } = this.state;
-    if (!matchTab(tabType, 'line')) {
+    const add = 'lugia-icon-reminder_plus';
+    if (!matchType(tabType, 'line')) {
       return (
         <AddOutContainer tabType={tabType}>
           <AddContainer
@@ -431,11 +441,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
             onMouseEnter={this.addButtonMouseEnter}
             onMouseLeave={this.addButtonMouseLeave}
           >
-            <AddButton
-              tabType={tabType}
-              iconClass="lugia-icon-reminder_plus"
-              show={addButtonShow}
-            />
+            <AddIcon tabType={tabType} iconClass={add} show={addButtonShow} />
           </AddContainer>
         </AddOutContainer>
       );
@@ -447,12 +453,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
   componentDidUpdate(props, preState) {
     const { data } = this.state;
     if (data !== preState.data) {
-      this.getContainerSize('width');
-      this.getContainerSize('height');
-      this.matchPage();
+      this.measurePage();
     }
   }
   componentDidMount() {
+    this.measurePage();
+  }
+  measurePage() {
     this.getContainerSize('width');
     this.getContainerSize('height');
     this.matchPage();
@@ -471,10 +478,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { tabPosition, tabType } = this.props;
     const width = plusWidth(childrenSize.length - 1, childrenSize);
 
-    const actualWidth = matchTab(tabType, 'window')
+    const actualWidth = matchType(tabType, 'window')
       ? width + 6 + addButtonSize
-      : matchTab(tabType, 'card')
-        ? width + childrenSize.length * 4 + addButtonSize + 4
+      : matchType(tabType, 'card')
+        ? width + (childrenSize.length + 1) * 4 + addButtonSize
         : width;
     const actualHeight = data.length * yTabsHeight;
     const totalPage = isVertical(tabPosition)
@@ -484,20 +491,18 @@ class TabsBox extends Component<TabsProps, TabsState> {
     this.setState({ arrowShow, totalPage });
   }
 
-  computePagingX() {
-    const { currentPage, totalPage, clickCount, childrenSize } = this.state;
+  computePagedX() {
+    const { currentPage, totalPage, pagedCount, childrenSize } = this.state;
     const { tabType } = this.props;
+    const currentTabsWidth = plusWidth(pagedCount, childrenSize);
     let x = totalPage > 1 ? (1 - currentPage) * (this.offsetWidth - arrowContainerWidth) : 0;
-
-    if (clickCount >= 0) {
-      if (matchTab(tabType, 'card')) {
-        x =
-          -1 * (plusWidth(clickCount, childrenSize) + cardBorderAndMarginWidth * (clickCount + 1));
-        console.log('card', x);
-      } else if (matchTab(tabType, 'window')) {
-        x = -1 * (plusWidth(clickCount, childrenSize) + windowMarginLeft);
+    if (pagedCount >= 0) {
+      if (matchType(tabType, 'card')) {
+        x = -(currentTabsWidth + cardBorderAndMarginWidth * (pagedCount + 1));
+      } else if (matchType(tabType, 'window')) {
+        x = -(currentTabsWidth + windowMarginLeft);
       } else {
-        x = -1 * plusWidth(clickCount, childrenSize);
+        x = -currentTabsWidth;
       }
     }
     return x;
@@ -515,8 +520,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       return height ? height : this.offsetHeight;
     }
   }
-
-  getConfig(child: React$Element<any>) {
+  getTabpaneConfig(child: React$Element<any>) {
     const { tabPosition, tabType } = this.props;
     const { activityKey } = this.state;
     return {
@@ -550,7 +554,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const childrenWithProps =
       data && data.length
         ? data.map(child => {
-            return <Tabpane {...this.getConfig(child)} />;
+            return <Tabpane {...this.getTabpaneConfig(child)} />;
           })
         : null;
     return childrenWithProps;
@@ -629,7 +633,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     this.setState({ childrenSize: newchildrenSize });
   };
 
-  createNativeClick = (eventName: 'onNextClick' | 'onPrevClick', type: EditType) => e => {
+  createNativeClick = (eventName: 'onNextClick' | 'onPrevClick', type: EditEventType) => e => {
     const { [eventName]: click } = this.props;
     this.handleChangePage(type);
     click && click(e);
@@ -638,23 +642,23 @@ class TabsBox extends Component<TabsProps, TabsState> {
   onNextClick = this.createNativeClick('onNextClick', 'next');
   onPrevClick = this.createNativeClick('onPrevClick', 'pre');
 
-  handleChangePage = (type: EditType) => {
-    let { currentPage, totalPage, clickCount, childrenSize } = this.state;
-    const { pagingType } = this.props;
-    if (pagingType === 'page') {
-      if (type === 'next' && currentPage < totalPage) {
+  handleChangePage = (type: EditEventType) => {
+    let { currentPage, totalPage, pagedCount, childrenSize } = this.state;
+    const { pagedType } = this.props;
+    if (pagedType === 'page') {
+      if (matchType(type, 'next') && currentPage < totalPage) {
         currentPage++;
-      } else if (type === 'pre' && currentPage >= 2) {
+      } else if (matchType(type, 'pre') && currentPage >= 2) {
         currentPage--;
       }
     } else {
-      if (type === 'next' && clickCount < childrenSize.length - 1) {
-        clickCount++;
-      } else if (type === 'pre' && clickCount >= 0) {
-        clickCount--;
+      if (matchType(type, 'next') && pagedCount < childrenSize.length - 2) {
+        pagedCount++;
+      } else if (matchType(type, 'pre') && pagedCount >= 0) {
+        pagedCount--;
       }
     }
-    this.setState({ currentPage, clickCount });
+    this.setState({ currentPage, pagedCount });
   };
 }
 

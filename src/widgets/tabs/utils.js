@@ -4,15 +4,15 @@
  *
  * @flow
  */
-import type { TabPositionType, TabType } from '../css/tabs';
-export function matchTab(
-  tabPosition: TabPositionType | TabType,
-  expect: TabPositionType | TabType
+import type { TabPositionType, TabType, EditEventType } from '../css/tabs';
+export function matchType(
+  type: TabPositionType | TabType | EditEventType,
+  expectType: TabPositionType | TabType | EditEventType
 ) {
-  return tabPosition === expect;
+  return type === expectType;
 }
 export function isVertical(tabPosition: TabPositionType) {
-  return matchTab(tabPosition, 'left') || matchTab(tabPosition, 'right');
+  return matchType(tabPosition, 'left') || matchType(tabPosition, 'right');
 }
 export function plusWidth(index: number, width: Array<number>): number {
   let sum = 0;

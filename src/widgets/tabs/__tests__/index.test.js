@@ -5,16 +5,14 @@
  * @flow
  */
 import React from 'react';
-import chai from 'chai';
 import renderer from 'react-test-renderer';
 import Wrapper from '../demo';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tabs from '../index';
-import { data, children } from '../demo';
+import { data, strangeData } from '../demo';
 import { isVertical } from '../utils';
-const { expect: exp } = chai;
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -75,4 +73,33 @@ describe('tabsDemo', () => {
   }
   testActivityKey(createTabs({ data, activityKey: '1' }), '1');
   testActivityKey(createTabs({ data, activityKey: '3' }), '3');
+
+  const onAddClick = () => {};
+  function testAddClick(component: any) {
+    it('props onAddClick', () => {
+      const target = mount(createTabs({ data: strangeData, onAddClick, tabType: 'card' }));
+      const { data, children } = getCmp(target).props;
+      const length = data ? data.length : children ? children.length : 0;
+      target.find('addIcon').simulate('click');
+      expect(getCmp(target).state.data.length).toBe(length + 1);
+    });
+  }
+  testAddClick(createTabs({ data: strangeData, onAddClick, tabType: 'card' }));
+  testAddClick(createTabs({ data: strangeData, onAddClick, tabType: 'window' }));
+
+  const onDeleteClick = () => {};
+  function testDeleteClick(component: any) {
+    it('props onDeleteClick', () => {
+      const target = mount(component);
+      const { data, children } = getCmp(target).props;
+      const length = data ? data.length : children ? children.length : 0;
+      target
+        .find('deleteIcon')
+        .at(1)
+        .simulate('click');
+      expect(getCmp(target).state.data.length).toBe(length - 1);
+    });
+  }
+  testDeleteClick(createTabs({ data: strangeData, onDeleteClick, tabType: 'card' }));
+  testDeleteClick(createTabs({ data: strangeData, onDeleteClick, tabType: 'window' }));
 });

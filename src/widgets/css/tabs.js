@@ -1,12 +1,12 @@
 import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
-import { matchTab } from '../tabs/utils';
+import { matchType } from '../tabs/utils';
 const { themeColor, mediumGreyColor, superLightColor } = colorsFunc();
 type TabType = 'line' | 'card' | 'window';
 type TabPositionType = 'left' | 'right' | 'top' | 'bottom';
-type PagingType = 'single' | 'page';
-type EditType = 'next' | 'pre';
+type PagedType = 'single' | 'page';
+type EditEventType = 'next' | 'pre';
 const em = px2emcss(1.2);
 export const addButtonSize = 18;
 export const cardBorderAndMarginWidth = 6;
@@ -14,12 +14,13 @@ export const windowMarginLeft = 6;
 export const arrowContainerWidth = 48;
 export const yTabsHeight = 32;
 export const getCursor = (props: Object) => {
-  const { currentPage, totalPage, type, pagingType, clickCount, childrenSize } = props;
+  const { currentPage, totalPage, type, pagedType, pagedCount, childrenSize } = props;
   const cursor =
-    pagingType === 'page'
-      ? (type === 'next' && currentPage === totalPage) || (type === 'pre' && currentPage === 1)
-      : (type === 'next' && clickCount >= childrenSize.length - 1) ||
-        (type === 'pre' && clickCount < 0);
+    pagedType === 'page'
+      ? (matchType(type, 'next') && currentPage === totalPage) ||
+        (matchType(type, 'pre') && currentPage === 1)
+      : (matchType(type, 'next') && pagedCount >= childrenSize.length - 2) ||
+        (matchType(type, 'pre') && pagedCount < 0);
   return `cursor:${cursor ? 'not-allowed' : 'pointer'}`;
 };
 export const getClearButtonColor = () => {
@@ -27,7 +28,7 @@ export const getClearButtonColor = () => {
 };
 export const getTabpaneIconHoverColor = (props: Object) => {
   const { tabType } = props;
-  const color = matchTab(tabType, 'line') ? themeColor : 'none';
+  const color = matchType(tabType, 'line') ? themeColor : 'none';
   return `color: ${color};`;
 };
 export const getTabpaneHoverColor = () => {
@@ -39,44 +40,45 @@ export const getSelectColor = (props: Object) => {
 };
 export const getLinePosition = (props: Object) => {
   const { tabPosition } = props;
-  if (matchTab(tabPosition, 'left')) {
+  if (matchType(tabPosition, 'left')) {
     return 'right :0';
   }
-  if (matchTab(tabPosition, 'right')) {
+  if (matchType(tabPosition, 'right')) {
     return 'left :0';
   }
-  if (matchTab(tabPosition, 'top')) {
+  if (matchType(tabPosition, 'top')) {
     return 'bottom :0';
   }
-  if (matchTab(tabPosition, 'bottom')) {
+  if (matchType(tabPosition, 'bottom')) {
     return 'top :0';
   }
 };
 export const getContentPosition = (props: Object) => {
   const { tabPosition } = props;
-  if (matchTab(tabPosition, 'right')) {
+  if (matchType(tabPosition, 'right')) {
     return `left:${em(0)};text-align: left;`;
   }
-  if (matchTab(tabPosition, 'bottom')) {
+  if (matchType(tabPosition, 'bottom')) {
     return `top :${em(-20)};`;
   }
-  if (matchTab(tabPosition, 'left')) {
+  if (matchType(tabPosition, 'left')) {
     return `top :${em(0)};`;
   }
 };
 export const getContainerBorder = (props: Object) => {
   const { tabPosition, tabType } = props;
-  if ((matchTab(tabPosition, 'top') && matchTab(tabType, 'line')) || matchTab(tabType, 'card')) {
-    return `border-bottom: ${em(1)} solid ${superLightColor}`;
+  const border = `${em(1)} solid ${superLightColor}`;
+  if ((matchType(tabPosition, 'top') && matchType(tabType, 'line')) || matchType(tabType, 'card')) {
+    return `border-bottom: ${border}`;
   }
-  if (matchTab(tabPosition, 'right')) {
-    return `border-left: ${em(1)} solid ${superLightColor}`;
+  if (matchType(tabPosition, 'right')) {
+    return `border-left: ${border}`;
   }
-  if (matchTab(tabPosition, 'left')) {
-    return `border-right: ${em(1)} solid ${superLightColor}`;
+  if (matchType(tabPosition, 'left')) {
+    return `border-right: ${border}`;
   }
-  if (matchTab(tabPosition, 'bottom')) {
-    return `border-top: ${em(1)} solid ${superLightColor}`;
+  if (matchType(tabPosition, 'bottom')) {
+    return `border-top: ${border}`;
   }
 };
 export const getTabpaneFocusShadow = (props: Object) => {
@@ -91,7 +93,7 @@ export const getBackgroundShadow = (props: Object) => {
 };
 export const backgroundColor = (props: Object) => {
   const { tabType } = props;
-  const color = matchTab(tabType, 'window') ? '#f8f8f8' : 'none';
+  const color = matchType(tabType, 'window') ? '#f8f8f8' : 'none';
   return color;
 };
 export const hContainerWidth = props => {
@@ -106,7 +108,7 @@ export const vContainerHeight = props => {
 };
 export const hContainerHeight = props => {
   const { tabType } = props;
-  const height = matchTab(tabType, 'window') ? em(38) : em(34);
+  const height = matchType(tabType, 'window') ? em(38) : em(34);
   return height;
 };
 export const lineWidth = props => {
@@ -116,14 +118,14 @@ export const lineWidth = props => {
 };
 export const getTitlePadding = props => {
   const { isHasIcon, tabType } = props;
-  const leftPadding = isHasIcon && !matchTab(tabType, 'window') ? em(10) : em(0);
-  const rightPadding = matchTab(tabType, 'window') ? em(10) : em(0);
+  const leftPadding = isHasIcon && !matchType(tabType, 'window') ? em(10) : em(0);
+  const rightPadding = matchType(tabType, 'window') ? em(10) : em(0);
   return `padding: 0 ${rightPadding}  0 ${leftPadding}`;
 };
 export const getTabpanePadding = props => {
   const { tabType, isSelect } = props;
-  const rightPadding = !matchTab(tabType, 'line') ? em(10) : em(20);
-  const bottomPadding = matchTab(tabType, 'card') && isSelect ? em(2) : 0;
+  const rightPadding = !matchType(tabType, 'line') ? em(10) : em(20);
+  const bottomPadding = matchType(tabType, 'card') && isSelect ? em(2) : 0;
   return `padding: 0 ${rightPadding} ${bottomPadding} ${em(20)}`;
 };
 export const getAddBackground = () => {
@@ -135,71 +137,72 @@ export const getAddHoverBackground = () => {
 export const getTabpaneBackground = props => {
   const { tabType, isSelect } = props;
   const background =
-    (matchTab(tabType, 'window') && isSelect) || (matchTab(tabType, 'card') && isSelect)
+    (matchType(tabType, 'window') && isSelect) || (matchType(tabType, 'card') && isSelect)
       ? 'white'
-      : matchTab(tabType, 'card') && !isSelect
+      : matchType(tabType, 'card') && !isSelect
         ? '#f8f8f8'
         : 'none';
   return `background: ${background}`;
 };
 export const getTabpaneBorder = props => {
   const { tabType } = props;
-  if (matchTab(tabType, 'card')) return `border: ${em(1)} solid ${superLightColor}`;
+  if (matchType(tabType, 'card')) return `border: ${em(1)} solid ${superLightColor}`;
 };
 export const getTabpaneMarginRight = props => {
   const { tabType } = props;
-  if (matchTab(tabType, 'card')) return `  margin-right:${em(4)};`;
+  if (matchType(tabType, 'card')) return `  margin-right:${em(4)};`;
 };
 export const getAddRadius = props => {
   const { tabType } = props;
-  const radius = matchTab(tabType, 'window') ? '50%' : em(4);
+  const radius = matchType(tabType, 'window') ? '50%' : em(4);
   return ` border-radius: ${radius};`;
 };
 export const getAddTop = props => {
   const { tabType } = props;
-  if (matchTab(tabType, 'window')) return `top: ${em(7)};`;
+  if (matchType(tabType, 'window')) return `top: ${em(7)};`;
 };
 export const getAddRight = props => {
   const { tabType } = props;
-  if (matchTab(tabType, 'window')) return `right: ${em(-10)};`;
+  if (matchType(tabType, 'window')) return `right: ${em(-10)};`;
 };
 export const getAddButtonBottom = props => {
   const { tabType } = props;
-  const bottom = matchTab(tabType, 'window') ? em(10) : '-25%';
+  const bottom = matchType(tabType, 'window') ? em(10) : '-25%';
   return ` bottom: ${bottom};`;
 };
 export const getTabpaneBorderTopRadius = props => {
   const { tabType, isSelect } = props;
-  const radius = (matchTab(tabType, 'window') && isSelect) || matchTab(tabType, 'card') ? em(4) : 0;
+  const radius =
+    (matchType(tabType, 'window') && isSelect) || matchType(tabType, 'card') ? em(4) : 0;
   return ` border-top-left-radius: ${radius}; border-top-right-radius:${radius};`;
 };
 export const getTabpaneHoverTransform = props => {
   const { tabType } = props;
-  if (matchTab(tabType, 'card')) return `transform: translateX(${em(-10)}); transition: all 0.5s;`;
+  if (matchType(tabType, 'card')) return `transform: translateX(${em(-10)}); transition: all 0.5s;`;
 };
 export const getTabpaneBottom = props => {
   const { tabType } = props;
-  if (matchTab(tabType, 'window')) return `bottom: ${em(-6)};`;
+  if (matchType(tabType, 'window')) return `bottom: ${em(-6)};`;
 };
 export const getTabpaneLeft = props => {
   const { tabType } = props;
-  if (matchTab(tabType, 'window')) return `left: ${em(6)};`;
+  if (matchType(tabType, 'window')) return `left: ${em(6)};`;
 };
 export const getClearButtonShow = props => {
   const { show, tabType } = props;
-  return `opacity:${!show && matchTab(tabType, 'card') ? '0' : '1'}`;
+  return `opacity:${!show && matchType(tabType, 'card') ? '0' : '1'}`;
 };
 export const getAddButtonShow = props => {
   const { show, tabType } = props;
-  return `opacity:${!show && matchTab(tabType, 'card') ? '0' : '1'}`;
+  return `opacity:${!show && matchType(tabType, 'card') ? '0' : '1'}`;
 };
 export const getArrowTop = props => {
   const { tabType } = props;
-  const top = matchTab(tabType, 'window') ? em(24) : '50%';
+  const top = matchType(tabType, 'window') ? em(24) : '50%';
   return `top: ${top};`;
 };
 export const getAddButtonDisplay = props => {
   const { tabType } = props;
-  const display = matchTab(tabType, 'card') ? 'block !important' : 'inline-blick';
+  const display = matchType(tabType, 'card') ? 'block !important' : 'inline-blick';
   return `display:  ${display};`;
 };

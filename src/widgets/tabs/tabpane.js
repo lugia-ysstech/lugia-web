@@ -31,7 +31,7 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import { isVertical, matchTab } from './utils';
+import { isVertical, matchType } from './utils';
 
 const em = px2emcss(1.2);
 
@@ -41,7 +41,7 @@ const BaseTab = styled.div`
   white-space: nowrap;
 `;
 const VTab = BaseTab.extend`
-  text-align: ${props => (matchTab(props.tabPosition, 'left') ? 'right' : 'left')};
+  text-align: ${props => (matchType(props.tabPosition, 'left') ? 'right' : 'left')};
   padding: 0 ${em(10)};
   display: block;
   &:hover > div {
@@ -103,12 +103,13 @@ const ClearButtonContainer = styled.span`
   display: inline-block;
 `;
 
-const ClearButton: Object = styled(Icon)`
+const ClearIcon: Object = styled(Icon)`
   font-size: 1rem;
   &:hover {
     ${getClearButtonColor};
   }
 `;
+ClearIcon.displayName = 'deleteIcon';
 type TabpaneState = {
   clearButtonShow: boolean,
   iconClass: string,
@@ -149,7 +150,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
 
   render() {
     const { title, tabType, tabPosition, isSelect } = this.props;
-    if (matchTab(tabType, 'line') && isVertical(tabPosition)) {
+    if (matchType(tabType, 'line') && isVertical(tabPosition)) {
       return (
         <VTab tabPosition={tabPosition} onClick={this.handleClick} isSelect={isSelect}>
           <Title isSelect={isSelect}>{title}</Title>
@@ -207,7 +208,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   getClearButton() {
     const { tabType } = this.props;
     const { clearButtonShow, iconClass } = this.state;
-    if (!matchTab(tabType, 'line')) {
+    if (!matchType(tabType, 'line')) {
       return (
         <ClearButtonContainer
           onMouseEnter={this.clearButtonMouseEnter}
@@ -216,7 +217,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           tabType={tabType}
           show={clearButtonShow}
         >
-          <ClearButton iconClass={iconClass} />
+          <ClearIcon iconClass={iconClass} />
         </ClearButtonContainer>
       );
     }

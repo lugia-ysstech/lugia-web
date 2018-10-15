@@ -4,8 +4,8 @@
  *
  * @flow
  */
-import { isVertical, plusWidth, computePage, matchTab } from '../utils';
-import type { TabPositionType, TabType } from '../../css/tabs';
+import { isVertical, plusWidth, computePage, matchType } from '../utils';
+import type { EditEventType, TabPositionType, TabType } from '../../css/tabs';
 describe('utils', () => {
   function testIsVertical(tabPosition: string, expectValue: boolean) {
     it(` isVertical ${tabPosition} `, () => {
@@ -16,13 +16,14 @@ describe('utils', () => {
   testIsVertical('right', true);
   testIsVertical('top', false);
   testIsVertical('bottom', false);
+  testIsVertical('12323', false);
   function testmatchTab(
-    tabPosition: TabPositionType | TabType,
-    expectTabPosition: TabPositionType | TabType,
+    tabPosition: TabPositionType | TabType | EditEventType,
+    expectTabPosition: TabPositionType | TabType | EditEventType,
     expectValue: boolean
   ) {
     it(` matchTab ${tabPosition} `, () => {
-      expect(matchTab(tabPosition, expectTabPosition)).toBe(expectValue);
+      expect(matchType(tabPosition, expectTabPosition)).toBe(expectValue);
     });
   }
   testmatchTab('left', 'left', true);
@@ -51,6 +52,10 @@ describe('utils', () => {
   testmatchTab('card', 'window', false);
   testmatchTab('window', 'line', false);
   testmatchTab('window', 'card', false);
+  testmatchTab('next', 'next', true);
+  testmatchTab('next', 'pre', false);
+  testmatchTab('pre', 'pre', true);
+  testmatchTab('pre', 'next', false);
 
   function testPlusWidth(index: number, width: Array<number>, expectValue: number) {
     it(' PlusWidth  ', () => {
