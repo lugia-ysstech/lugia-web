@@ -416,8 +416,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
   };
 
-  createOnClick = (eventName: string) => (e: Object) => {
-    this.fireEvents(eventName, e);
+  createOnClick = (eventName: string, targetEvent?: string = 'onClick') => (e: Object) => {
+    this.fireChildrenEvents(eventName, e);
+    this.fireSelfEvents(targetEvent, e);
     // focus will trigger click
     if (this.focusTime) {
       let preTime = 0;
@@ -452,9 +453,15 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
   fireEvents(type: EventName, e: Object) {
+    this.fireChildrenEvents(type, e);
+    this.fireSelfEvents(type, e);
+  }
+
+  fireChildrenEvents(type: EventName, e: Object) {
     const childCallback = this.props.children.props[type];
     childCallback && childCallback(e);
-
+  }
+  fireSelfEvents(type: EventName, e: Object) {
     const callback = this.props[type];
     callback && callback(e);
   }

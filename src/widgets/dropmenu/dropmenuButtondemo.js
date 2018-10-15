@@ -2,6 +2,7 @@ import * as React from 'react';
 import DropMenuButton from './dropmenuButton';
 import Theme from '../theme';
 import Widget from '../consts/index';
+import Button from '../button';
 import styled from 'styled-components';
 import DropMenu from './';
 import Menu from '../menu';
@@ -11,7 +12,16 @@ const { MenuItem } = Menu;
 const items = [];
 
 for (let i = 0; i < 10; i++) {
-  items.push(<MenuItem key={i}>{i}</MenuItem>);
+  items.push(
+    <MenuItem
+      key={i}
+      onClick={rest => {
+        console.info(rest);
+      }}
+    >
+      {i}
+    </MenuItem>
+  );
 }
 
 const Box = styled.div`
@@ -22,7 +32,17 @@ const Box = styled.div`
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    this.state = { menu: items };
+    this.state = {
+      menu: (
+        <Menu
+          onClick={(...rest) => {
+            console.info('Menuclick', rest);
+          }}
+        >
+          {items}
+        </Menu>
+      ),
+    };
   }
 
   render() {
@@ -81,6 +101,16 @@ export default class extends React.Component<any, any> {
               <DropMenuButton type="basic" onClick={this.onClick}>
                 Hover me
               </DropMenuButton>
+            </DropMenu>
+          </Box>
+          <Box>
+            <DropMenu
+              menus={menu}
+              align={'bottomRight'}
+              action={['click', 'focus']}
+              hideAction={['click', 'focus']}
+            >
+              <Button onClick={this.onClick}>Hello</Button>
             </DropMenu>
           </Box>
         </Theme>
