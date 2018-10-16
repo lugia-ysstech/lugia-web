@@ -29,9 +29,9 @@ import {
 type DropMenuButtonProps = {
   getTheme: Function,
   divided: boolean,
-  type: string,
+  type: 'customs' | 'basic' | 'primary',
   children: any,
-  onClick?: Function,
+  _onClick?: Function,
   onClick?: Function,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
@@ -200,4 +200,4 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 }
 
-export default ThemeProvider(DropMenuButton, 'DropMenuButton');
+export default ThemeProvider(DropMenuButton, Widget.DropMenuButton);

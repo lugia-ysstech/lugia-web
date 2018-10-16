@@ -7,15 +7,13 @@
 import styled from 'styled-components';
 import '../css/sv.css';
 import colorsFunc from '../css/stateColor';
+import { FontSizeNumber, FontSize } from '../css';
 import { px2emcss } from '../css/units';
 
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 
 const { themeColor, defaultColor, lightGreyColor, darkGreyColor } = colorsFunc();
 
-/**
- * 控制是否选中的开关 Button
- */
 export const CheckInput = styled.input`
   position: absolute;
   left: 0;
@@ -27,11 +25,6 @@ export const CheckInput = styled.input`
   opacity: 0;
   cursor: pointer;
 `;
-
-/**
- * type: basic 、primary 、customs
- * 所有的公用方法
- */
 
 const getWidth = props => {
   const { Theme } = props;
@@ -95,13 +88,9 @@ const isPrimaryOrHoverOrCheckedCSS = (
   return type === 'primary' ? primaryValue : notPrimaryValue;
 };
 
-/**
- * type: basic 、primary 、customs
- * 所有的公用Container和Wrap
- */
-
 const CommonContainer = styled.div`
   width: ${getWidth};
+  font-size: ${FontSize};
   display: inline-block;
   overflow: hidden;
   cursor: pointer;
@@ -114,11 +103,6 @@ const CommonWrap = styled.div`
   text-align: center;
   overflow: hidden;
 `;
-
-/**
- * type: primary 、customs
- * 公用的container；
- */
 
 const getSeparatorBorderHoverCSS = props => {
   const { type } = props;
@@ -136,11 +120,6 @@ const DefaultContainer = styled(CommonContainer)`
     height: ${em(32)};
   }
 `;
-
-/**
- * type: primary 、customs
- *  divieded = false 没有分割线时的组件样式
- */
 
 const NoDividedBackgroundAndBorderAndTextColor = props => {
   const { type, checked } = props;
@@ -199,11 +178,6 @@ export const TextContainer = styled.span`
   ${getDefaultBorder};
 `;
 
-/**
- * type: primary 、customs
- *  divieded = true 有分割线时的组件样式
- */
-
 const DividedContainerBackgroundColor = props => {
   return isPrimaryCSS(props.type, 'background', defaultColor, themeColor);
 };
@@ -228,11 +202,6 @@ export const DevidedTextContainer = styled(TextContainer)`
   ${HoverBackgroundOrBorder};
 `;
 DevidedTextContainer.displayName = 'DevidedTextContainer';
-
-/**
- * type: Basic
- *  没有任何边框和背景色的样式
- */
 
 export const BasicContainer = styled(CommonContainer)`
   height: ${em(22)};
@@ -266,12 +235,6 @@ export const BasicIconWrap = styled(NoDividedIconWrap)`
   transition: all 0.3s;
 `;
 
-/**
- * type: primary 、customs
- *  divieded = true 有分割线时
- *  分割线右边的 下拉盒子样式
- */
-
 export const PullContainer = styled.span`
   display: inline-block;
   padding: ${em(2)} ${em(6)} 0;
@@ -299,11 +262,6 @@ const getSeparatorBorderCheckedCSS = props => {
   // const notPrimaryAttrValue = `${getCheckedCSS(checked, 'height', em(32), em(18))};`;
   return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, notPrimaryAttrValue);
 };
-
-/**
- * type: primary 、customs
- *  divieded = true 分割线的样式
- */
 
 const getSeparatorBorderColor = props => {
   return isPrimaryCSS(props.type, 'border-color', lightGreyColor, defaultColor);

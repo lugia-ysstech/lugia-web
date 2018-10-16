@@ -295,15 +295,13 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const child = React.Children.only(children);
     const newChildProps = {};
     if (this.isClickToHide() || this.isClickToShow()) {
-      if (child.type.displayName === 'sv_widget_ThemeWrapWidgetDropMenuButton') {
+      if (child.type.displayName === `${Widget.ThemeWrapWidget}${Widget.DropMenuButton}`) {
         newChildProps._onClick = this.createOnClick('_onClick');
-        newChildProps._onMouseDown = this.onMouseDown;
-        newChildProps._onTouchStart = this.onTouchStart;
       } else {
         newChildProps.onClick = this.createOnClick('onClick');
-        newChildProps.onMouseDown = this.onMouseDown;
-        newChildProps.onTouchStart = this.onTouchStart;
       }
+      newChildProps.onMouseDown = this.onMouseDown;
+      newChildProps.onTouchStart = this.onTouchStart;
     } else {
       newChildProps.onClick = this.createTwoChains('onClick');
       newChildProps.onMouseDown = this.createTwoChains('onMouseDown');
