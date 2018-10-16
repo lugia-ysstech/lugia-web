@@ -8,32 +8,39 @@
 import * as React from 'react';
 import type { ProgressProps, ProgressState } from '../css/progress-line';
 import {
-  Wrap,
-  ProgressLine,
-  ProgressBackground,
-  ProgressText,
   Icons,
   InsideText,
+  ProgressBackground,
+  ProgressLine,
+  ProgressText,
+  Wrap,
 } from '../css/progress-line';
 
 export const getText = (inside?: boolean, props: Object) => {
-  const { percent = 0, format, status, size = 'default', type = 'line', hasFormat = false } = props;
+  const { percent = 0, format, hasFormat = false } = props;
+
   if (hasFormat && typeof format === 'function') {
     return format(percent);
-  } else if (status === 'success' || percent >= 100) {
+  }
+
+  const { status, size = 'default', type = 'line' } = props;
+  const config = { size, type };
+  const Icon = Icons;
+
+  if (status === 'error') {
     return (
-      <Icons
-        size={size}
-        type={type}
-        iconClass={inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle'}
+      <Icon
+        {...config}
+        iconClass={inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle'}
       />
     );
-  } else if (status === 'error') {
+  }
+
+  if (status === 'success' || percent >= 100) {
     return (
-      <Icons
-        size={size}
-        type={type}
-        iconClass={inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle'}
+      <Icon
+        {...config}
+        iconClass={inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle'}
       />
     );
   }
@@ -53,8 +60,8 @@ export default class extends React.Component<ProgressProps, ProgressState> {
       getTheme,
     } = this.props;
     return (
-      <Wrap theme={getTheme()}>
-        <ProgressLine showInfo={showInfo} showType={showType}>
+      <Wrap theme={getTheme()} size={size}>
+        <ProgressLine showInfo={showInfo} showType={showType} size={size}>
           <ProgressBackground
             theme={getTheme()}
             showType={showType}
@@ -63,19 +70,22 @@ export default class extends React.Component<ProgressProps, ProgressState> {
             size={size}
           >
             {showType === 'default' ? null : (
-              <InsideText showType={showType}>{this.getText(true)}</InsideText>
+              <InsideText showType={showType} size={size}>
+                {this.getPercentText(true)}
+              </InsideText>
             )}
           </ProgressBackground>
         </ProgressLine>
         {showInfo && showType === 'default' ? (
           <ProgressText size={size} type={type} status={status}>
-            {this.getText(false)}
+            {this.getPercentText(false)}
           </ProgressText>
         ) : null}
       </Wrap>
     );
   }
-  getText = (inside: boolean) => {
+
+  getPercentText = (inside: boolean) => {
     const { percent = 0, format, status, size = 'default', type = 'line' } = this.props;
 
     return getText(inside, {
@@ -87,6 +97,7 @@ export default class extends React.Component<ProgressProps, ProgressState> {
       type,
     });
   };
+
   hasFormat() {
     return 'format' in this.props;
   }

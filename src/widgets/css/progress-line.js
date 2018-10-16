@@ -9,38 +9,7 @@ import { getWidth } from '../common/ThemeUtils';
 import { px2emcss } from './units';
 import Icon from '../icon';
 
-const { themeColor, successColor, dangerColor, mediumGreyColor } = colorsFunc();
-const FontSize = 1.4;
-const em = px2emcss(FontSize);
-
-export const handlePercent = (per: number) => {
-  let percent = per;
-  if (per > 100) {
-    percent = 100;
-  } else if (per < 0) {
-    percent = 0;
-  }
-  return percent;
-};
-
 type StatusType = 'success' | 'active' | 'error' | 'default';
-const BackgroundCSS = {
-  success: {
-    background: successColor,
-  },
-  default: {
-    background: themeColor,
-  },
-  error: {
-    background: dangerColor,
-  },
-};
-const getEM = (size: 'default' | 'small') => {
-  if (size === 'small') {
-    return px2emcss(1.2);
-  }
-  return px2emcss(1.4);
-};
 
 export type ProgressProps = {
   type?: 'line' | 'circle' | 'dashboard',
@@ -52,9 +21,11 @@ export type ProgressProps = {
   getTheme: Function,
   showType?: 'default' | 'inside',
 };
+
 export type ProgressState = {
   fixed: boolean,
 };
+
 type CSSProps = {
   type: 'line' | 'circle' | 'dashboard',
   percent: number,
@@ -65,28 +36,68 @@ type CSSProps = {
   size: 'default' | 'small',
   showType: 'default' | 'inside',
 };
+
+const { themeColor, successColor, dangerColor, mediumGreyColor } = colorsFunc();
+const FontSize = 1.4;
+const isSmall = size => size === 'small';
+export const getWrapFontSize = (props: Object) => {
+  const { size } = props;
+  if (isSmall(size)) {
+    return 1.2;
+  }
+  return FontSize;
+};
+export const getEM = (props: Object) => {
+  const { size } = props;
+  if (isSmall(size)) {
+    return px2emcss(1.2);
+  }
+  return px2emcss(FontSize);
+};
+
+export const handlePercent = (per: number) => {
+  per = per - 0;
+  per = per && !isNaN(per) ? per : 0;
+  return Math.min(Math.max(per, 0), 100);
+};
+
+const bgColor = background => ({ background });
+const BackgroundCSS = {
+  success: {
+    ...bgColor(successColor),
+  },
+  default: {
+    ...bgColor(themeColor),
+  },
+  error: {
+    ...bgColor(dangerColor),
+  },
+};
+
 const getProgtrssWidth = (props: CSSProps) => {
   const { showInfo, showType } = props;
+  const em = getEM(props);
   if (showInfo && showType === 'default') {
     return `width: calc(100% - ${em(30)});`;
   }
 
   return 'width: 100%;';
 };
+
 export const ProgressLine = styled.div`
   ${getProgtrssWidth};
   display: inline-block;
   background: #f5f5f5;
-  border-radius: ${em(50)};
-  font-size: ${FontSize}rem;
+  border-radius: ${props => getEM(props)(50)};
 `;
+
 const getBackGroundWidth = (props: CSSProps) => {
-  let { percent } = props;
-  percent = handlePercent(percent);
+  const { percent } = props;
   return `
-    width: ${percent}%;
+    width: ${handlePercent(percent)}%;
   `;
 };
+
 const getStatusCSS = (props: CSSProps) => {
   const { status, theme, percent } = props;
   const { color } = theme;
@@ -105,6 +116,7 @@ const getStatusCSS = (props: CSSProps) => {
       width: 100%;
     }
   `;
+
   if (status === 'active') {
     return `&::before{
                 content: '';
@@ -121,6 +133,7 @@ const getStatusCSS = (props: CSSProps) => {
             background-color: ${defaultColor};
             `;
   }
+
   const background = color
     ? color
     : percent >= 100
@@ -129,31 +142,36 @@ const getStatusCSS = (props: CSSProps) => {
 
   return `background-color: ${background};`;
 };
+
 const getBackgroundHeight = (props: CSSProps) => {
   const { size, theme, showType } = props;
   const { height } = theme;
+  const em = getEM(props);
   if (height && typeof height === 'number') {
     return `height: ${em(height)};`;
   }
   if (showType === 'inside') {
     return `height: ${em(16)};`;
   }
-  if (size === 'small') {
+  if (isSmall(size)) {
     return `height: ${em(6)};`;
   }
   return `height: ${em(8)};`;
 };
+
 export const ProgressBackground = styled.div`
   transition: all 0.3s;
   ${getBackGroundWidth};
   ${getStatusCSS};
   ${getBackgroundHeight};
-  border-radius: ${em(50)};
+  border-radius: ${props => getEM(props)(50)};
   position: relative;
   text-align: right;
 `;
+
 export const getTextColor = (props: CSSProps) => {
   const { status, percent = 0 } = props;
+
   if (status === 'success' || percent >= 100) {
     return `color: ${successColor};`;
   } else if (status === 'error') {
@@ -162,28 +180,33 @@ export const getTextColor = (props: CSSProps) => {
 
   return `color: ${mediumGreyColor};`;
 };
+
+export const CirleSvgTextFontSize = 2.4;
+
 const getTextFont = (props: CSSProps) => {
   const { size, type } = props;
-
-  if (type === 'line' && size === 'small') {
-    return 'font-size: 1.2rem;';
+  const em = getEM(props);
+  if (type === 'line' && isSmall(size)) {
+    return `font-size: ${em(12)};`;
   }
+
   if (type === 'circle' || type === 'dashboard') {
-    if (size === 'small') {
-      return 'font-size: 2.6rem;';
+    const em = px2emcss(CirleSvgTextFontSize);
+    if (isSmall(size)) {
+      return `font-size: ${em(26)};`;
     }
-    return 'font-size: 4rem;';
+    return `font-size: ${em(40)};`;
   }
-
-  return `font-size: ${FontSize}rem;`;
+  return `font-size: ${em(14)};`;
 };
+
 export const ProgressText = styled.span`
   display: inline-block;
   ${getTextFont};
-  width: ${props => getEM(props.size)(20)};
+  width: ${props => getEM(props)(20)};
   ${getTextColor};
   text-align: left;
-  margin-left: ${props => getEM(props.size)(10)};
+  margin-left: ${props => getEM(props)(10)};
   white-space: nowrap;
   word-break: normal;
   vertical-align: bottom;
@@ -196,15 +219,15 @@ export const Icons = styled(Icon)`
 `;
 
 export const Wrap = styled.div`
-  font-size: 1.2rem;
+  font-size: ${getWrapFontSize}rem;
   ${getWidth};
 `;
 export const InsideText = styled.span`
   display: inline-block;
   color: #fff;
   text-align: left;
-  font-size: 1.4rem;
-  margin: 0 ${em(6)};
+  font-size: ${getWrapFontSize};
+  margin: 0 ${props => getEM(props)(6)};
   white-space: nowrap;
   word-break: normal;
   vertical-align: bottom;

@@ -5,21 +5,28 @@
  */
 import styled from 'styled-components';
 import { px2emcss } from './units';
-import { getTextColor } from './progress-line';
+import { CirleSvgTextFontSize, getEM, getTextColor, getWrapFontSize } from './progress-line';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
 export const SvgInner = styled.div`
-  width: ${props => (props.size === 'default' ? em(120) : em(80))};
-  height: ${props => (props.size === 'default' ? em(120) : em(80))};
+  width: ${props => {
+    const em = getEM(props);
+    return props.size === 'default' ? em(120) : em(80);
+  }};
+  height: ${props => {
+    const em = getEM(props);
+    return props.size === 'default' ? em(120) : em(80);
+  }};
   position: relative;
-  font-size: ${FontSize}rem;
+  font-size: ${getWrapFontSize}rem;
 `;
+const px = CirleSvgTextFontSize * 10;
 export const SvgText = styled.span`
   display: block;
   position: absolute;
-  font-size: 2.4rem;
+  font-size: ${props => getEM(props)(px)};
   width: 100%;
   text-align: center;
   line-height: 1;

@@ -45,48 +45,50 @@ export default class extends React.Component<any, any> {
       fill: 'none',
     };
     return (
-      <div>
-        <SvgInner size={size}>
-          {type === 'circle' ? (
-            <svg width={viewWidth} height={viewHeight}>
-              <circle {...config} stroke="#f2f2f2" />
-              <circle
-                {...config}
-                stroke={this.getColor()}
-                transform={transform}
-                strokeLinecap="round"
-                strokeDasharray={`${(handlePercent(percent) / 100) * circleLength} ${circleLength}`}
-                style={{ transition: 'all .3s' }}
-              />
-            </svg>
-          ) : (
-            <svg width={viewWidth} height={viewHeight}>
-              {getPolyLine(56, 8, 100, '#f2f2f2')}
-              {getPolyLine(56, 8, handlePercent(percent), this.getColor())}
-            </svg>
-          )}
+      <SvgInner size={size}>
+        {type === 'circle' ? (
+          <svg width={viewWidth} height={viewHeight}>
+            <circle {...config} stroke="#f2f2f2" />
+            <circle
+              {...config}
+              stroke={this.getColor()}
+              transform={transform}
+              strokeLinecap="round"
+              strokeDasharray={`${(handlePercent(percent) / 100) * circleLength} ${circleLength}`}
+              style={{ transition: 'all .3s' }}
+            />
+          </svg>
+        ) : (
+          <svg width={viewWidth} height={viewHeight}>
+            {getPolyLine(56, 8, 100, '#f2f2f2')}
+            {getPolyLine(56, 8, handlePercent(percent), this.getColor())}
+          </svg>
+        )}
 
-          <SvgText percent={percent} status={status}>
-            {this.getText()}
-          </SvgText>
-        </SvgInner>
-      </div>
+        <SvgText percent={percent} status={status} size={size}>
+          {this.getPercentText()}
+        </SvgText>
+      </SvgInner>
     );
   }
+
   getCircleInfo = () => {
     const { size = 'default' } = this.props;
+    const isDefault = size === 'default';
+    const cxOrCy = isDefault ? 60 : 40;
+    const widthOrHeight = isDefault ? 120 : 80;
     return {
-      viewWidth: size === 'default' ? 120 : 80,
-      viewHeight: size === 'default' ? 120 : 80,
-      cx: size === 'default' ? 60 : 40,
-      cy: size === 'default' ? 60 : 40,
-      radius: size === 'default' ? 56 : 37,
-      strokeWidth: size === 'default' ? 8 : 6,
-      circleLength: size === 'default' ? 352 : 233,
-      transform: size === 'default' ? 'matrix(0,-1,1,0,0,120)' : 'matrix(0,-1,1,0,0,80)',
+      viewWidth: widthOrHeight,
+      viewHeight: widthOrHeight,
+      cx: cxOrCy,
+      cy: cxOrCy,
+      radius: isDefault ? 56 : 37,
+      strokeWidth: isDefault ? 8 : 6,
+      circleLength: isDefault ? 352 : 233,
+      transform: isDefault ? 'matrix(0,-1,1,0,0,120)' : 'matrix(0,-1,1,0,0,80)',
     };
   };
-  getText = () => {
+  getPercentText = () => {
     const { percent = 0, format, status, size = 'default', type = 'circle' } = this.props;
 
     return getText(true, {
@@ -99,23 +101,27 @@ export default class extends React.Component<any, any> {
     });
   };
   getColor = () => {
-    const { percent = 0, getTheme, status } = this.props;
-    const per = handlePercent(percent);
-    const theme = getTheme();
-    let color = theme.color || themeColor;
+    let { percent = 0 } = this.props;
+    percent = handlePercent(percent);
 
     if (percent === 0) {
-      color = '#f2f2f2';
-    } else {
-      if (status === 'success' || per === 100) {
-        color = successColor;
-      } else if (status === 'error') {
-        color = dangerColor;
-      }
+      return '#f2f2f2';
     }
 
-    return color;
+    const { status } = this.props;
+    if (status === 'error') {
+      return dangerColor;
+    }
+
+    if (status === 'success' || percent === 100) {
+      return successColor;
+    }
+
+    const { getTheme } = this.props;
+    const theme = getTheme();
+    return theme.color || themeColor;
   };
+
   hasFormat() {
     return 'format' in this.props;
   }
