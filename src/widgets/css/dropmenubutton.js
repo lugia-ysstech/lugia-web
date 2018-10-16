@@ -160,6 +160,7 @@ export const NoDividedContainer = styled(DefaultContainer)`
   border-style: solid;
   ${NoDividedBackgroundAndBorderAndTextColor};
 `;
+NoDividedContainer.displayName = 'NoDividedContainer';
 
 export const NoDividedWrap = styled(CommonWrap)`
   padding: 0 ${em(8)};
@@ -226,6 +227,7 @@ export const DevidedTextContainer = styled(TextContainer)`
   border-right: 0;
   ${HoverBackgroundOrBorder};
 `;
+DevidedTextContainer.displayName = 'DevidedTextContainer';
 
 /**
  * type: Basic
@@ -242,6 +244,7 @@ export const BasicWrap = styled(CommonWrap)`
   position: relative;
   ${getChildSpanHoverCSS('color')};
 `;
+BasicWrap.displayName = 'BasicWrap';
 
 const getBasicTextColor = props => {
   const { checked } = props;
@@ -282,6 +285,7 @@ export const PullContainer = styled.span`
   border-left: 0;
   ${HoverBackgroundOrBorder};
 `;
+PullContainer.displayName = 'DropMenuPullButton';
 
 const getSeparatorBorderCheckedCSS = props => {
   const { type, iconChecked, buttonChecked } = props;

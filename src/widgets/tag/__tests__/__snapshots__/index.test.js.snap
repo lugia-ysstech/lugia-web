@@ -1,0 +1,1085 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag Theme: type= basic, closeable=false shape= round 1`] = `
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: #ffffff;
+  color: ff5588;
+  border: 1px solid ff5588;
+}
+
+.c0:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="basic"
+>
+  <span
+    className="c1"
+  />
+</div>
+`;
+
+exports[`Tag Theme: type= basic, shape= round 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: #ffffff;
+  color: ff5588;
+  border: 1px solid ff5588;
+}
+
+.c0:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="basic"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag Theme: type= customs, closeable=false shape= round 1`] = `
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: ff5588;
+  color: #ffffff;
+  border: 1px solid ff5588;
+}
+
+.c0:hover {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="customs"
+>
+  <span
+    className="c1"
+  />
+</div>
+`;
+
+exports[`Tag Theme: type= customs, shape= round 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: ff5588;
+  color: #ffffff;
+  border: 1px solid ff5588;
+}
+
+.c0:hover {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="customs"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag Theme: type= presets, closeable=false shape= round 1`] = `
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: rgba(0,0,0,0.05);
+  color: ff5588;
+  border: 1px solid ff5588;
+}
+
+.c0:hover {
+  background: rgba(0,0,0,0.05);
+  color: #000000;
+  border-color: #000000;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="presets"
+>
+  <span
+    className="c1"
+  />
+</div>
+`;
+
+exports[`Tag Theme: type= presets, shape= round 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: rgba(0,0,0,0.05);
+  color: ff5588;
+  border: 1px solid ff5588;
+}
+
+.c0:hover {
+  background: rgba(0,0,0,0.05);
+  color: #000000;
+  border-color: #000000;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="presets"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag Theme: type= primary, closeable=false shape= round 1`] = `
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: ff5588;
+  color: #666666;
+  border: 1px solid ff5588;
+}
+
+.c0:hover {
+  background: ff5588;
+  color: #000000;
+  border-color: ff5588;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="primary"
+>
+  <span
+    className="c1"
+  />
+</div>
+`;
+
+exports[`Tag Theme: type= primary, shape= round 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: ff5588;
+  color: #666666;
+  border: 1px solid ff5588;
+}
+
+.c0:hover {
+  background: ff5588;
+  color: #000000;
+  border-color: ff5588;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="primary"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag default: type = basic 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 0.33333333333333337em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: #ffffff;
+  color: #666666;
+  border: 1px solid #999999;
+}
+
+.c0:hover {
+  background: #ffffff;
+  color: #999999;
+  border-color: #999999;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="basic"
+  type="basic"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag default: type = basic, shape = round 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: #ffffff;
+  color: #666666;
+  border: 1px solid #999999;
+}
+
+.c0:hover {
+  background: #ffffff;
+  color: #999999;
+  border-color: #999999;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="basic"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag default: type = customs 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 0.33333333333333337em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: #684fff;
+  color: #ffffff;
+  border: 1px solid #684fff;
+}
+
+.c0:hover {
+  background: #9482ff;
+  color: #ffffff;
+  border-color: #9482ff;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="basic"
+  type="customs"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag default: type = customs, shape = round 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: #684fff;
+  color: #ffffff;
+  border: 1px solid #684fff;
+}
+
+.c0:hover {
+  background: #9482ff;
+  color: #ffffff;
+  border-color: #9482ff;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="customs"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag default: type = presets 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 0.33333333333333337em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: rgba(242,39,53,0.05);
+  color: #f22735;
+  border: 1px solid #f22735;
+}
+
+.c0:hover {
+  background: rgba(242,39,53,0.05);
+  color: #f25762;
+  border-color: #f25762;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="basic"
+  type="presets"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag default: type = presets, shape = round 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: rgba(242,39,53,0.05);
+  color: #f22735;
+  border: 1px solid #f22735;
+}
+
+.c0:hover {
+  background: rgba(242,39,53,0.05);
+  color: #f25762;
+  border-color: #f25762;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="presets"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag default: type = primary 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 0.33333333333333337em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: #e8e8e8;
+  color: #666666;
+  border: 1px solid #e8e8e8;
+}
+
+.c0:hover {
+  background: #e8e8e8;
+  color: #999999;
+  border-color: #e8e8e8;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="basic"
+  type="primary"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`Tag default: type = primary, shape = round 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  display: inline-block;
+  height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  opacity: 1;
+  -webkit-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  transform: scale(1,1);
+  background: #e8e8e8;
+  color: #666666;
+  border: 1px solid #e8e8e8;
+}
+
+.c0:hover {
+  background: #e8e8e8;
+  color: #999999;
+  border-color: #e8e8e8;
+}
+
+.c1 {
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.6666666666666667em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.c2 {
+  padding: 0.125em 0 0 0.18749999999999997em;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1.3333333333333335em;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  shape="round"
+  type="primary"
+>
+  <span
+    className="c1"
+  />
+  <span
+    className="c2"
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+      onClick={[Function]}
+    />
+  </span>
+</div>
+`;

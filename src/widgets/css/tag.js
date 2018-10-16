@@ -7,6 +7,7 @@
 import styled from 'styled-components';
 import '../css/sv.css';
 import Widget from '../consts/index';
+import CommonIcon from '../icon';
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
 import { FontSize } from '../css';
@@ -43,7 +44,7 @@ const isHasThemeColor = (color: boolean, hasColorTarget: string, noColorTarget: 
 
 const getColors = (color, type) => {
   const styles = {};
-  const { spiritColor, disabledSpiritFontAndBorderColor, hoverColor } = colorsFunc(color);
+  const { spiritColor, hoverColor } = colorsFunc(color);
   styles.textColor = isHasThemeColor(
     color,
     judgeColors(type, darkGreyColor, color, color, defaultColor),
@@ -163,7 +164,7 @@ export const TagContainer = styled.div`
 export const ItemText = styled.span`
   display: inline-block;
   height: ${em(18)};
-  line-height: ${em(18)};
+  line-height: ${em(20)};
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
@@ -171,10 +172,13 @@ export const ItemText = styled.span`
   float: left;
 `;
 
-export const CloseButton = styled.span`
-  padding: ${px2emcss(1.6)(2)} 0 0 ${px2emcss(1.6)(3)};
-  font-size: ${em(16)};
+export const CloseButtonWrap = styled.span`
   display: inline-block;
+  padding: ${px2emcss(1.6)(2)} 0 0 ${px2emcss(1.6)(3)};
 `;
 
-CloseButton.displayName = Widget.InputTagCloseButton;
+export const CloseButton = styled(CommonIcon)`
+  font-size: ${em(16)};
+`;
+
+CloseButton.displayName = 'tagCloseButton';

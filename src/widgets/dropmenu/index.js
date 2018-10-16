@@ -28,6 +28,7 @@ type DropMenuProps = {
   getTheme: Function,
   query: string,
   needQueryInput: boolean,
+  align: string,
 };
 const MenuContainer = styled.div`
   background-color: #fff;
@@ -44,6 +45,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     action: ['click'],
     hideAction: ['click'],
     needQueryInput: false,
+    align: 'bottomLeft',
     getTheme() {
       return {};
     },
@@ -59,7 +61,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render() {
-    const { menus, children, action, hideAction } = this.props;
+    const { menus, children, action, hideAction, align } = this.props;
     const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
 
     const queryInputWidth = width;
@@ -78,15 +80,16 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
         {React.cloneElement(menu, this.ejectOnClick(menu))}
       </MenuContainer>,
     ];
+
     return (
       <Theme config={menuConfig}>
         <Trigger
           ref={cmp => (this.trigger = cmp)}
-          align="bottomLeft"
+          align={align}
           action={action}
+          hideAction={hideAction}
           onPopupVisibleChange={this.onPopupVisibleChange}
           popupVisible={this.state.visible}
-          hideAction={hideAction}
           popup={popup}
         >
           {children}

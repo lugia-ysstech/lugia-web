@@ -9,8 +9,7 @@ import React from 'react';
 import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import CommonIcon from '../icon';
-import { TagContainer, ItemText, CloseButton } from '../css/tag';
+import { TagContainer, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
 
 type TagProps = {
   closeable?: boolean,
@@ -45,7 +44,7 @@ class Tag extends React.Component<TagProps, TagState> {
   itemText: Object;
   render() {
     const { isClose } = this.state;
-    const { type, getTheme, shape, closeable = true } = this.props;
+    const { type, getTheme, shape, closeable = true, children } = this.props;
     const Theme = getTheme();
     return (
       <TagContainer
@@ -56,14 +55,14 @@ class Tag extends React.Component<TagProps, TagState> {
         type={type}
         Theme={Theme}
       >
-        <ItemText innerRef={cmp => (this.itemText = cmp)}>{this.props.children}</ItemText>
+        <ItemText innerRef={cmp => (this.itemText = cmp)}>{children}</ItemText>
         {closeable ? (
-          <CloseButton>
-            <CommonIcon
+          <CloseButtonWrap>
+            <CloseButton
               iconClass="lugia-icon-reminder_close"
               onClick={this.onCloseClick.bind(this)}
             />
-          </CloseButton>
+          </CloseButtonWrap>
         ) : null}
       </TagContainer>
     );
@@ -76,7 +75,7 @@ class Tag extends React.Component<TagProps, TagState> {
     });
     const { onClose } = this.props;
     setTimeout(() => {
-      onClose && onClose();
+      onClose && onClose(e);
     }, 150);
   }
 

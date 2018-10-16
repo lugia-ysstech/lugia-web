@@ -66,6 +66,7 @@ const Select = 'sv_widget_Select';
 const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
 const QueryInput = 'sv_widget_QueryInput';
 const Tag = 'sv_widget_Tag';
+const DropMenuButton = 'DropMenuButton';
 
 const Layout = 'sv_widget_Layout';
 const Header = 'sv_widget_Header';
@@ -141,4 +142,5 @@ export default {
   TabsHContainer,
   Affix,
   Tag,
+  DropMenuButton,
 };
