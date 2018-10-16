@@ -3,13 +3,10 @@
  * create by guorg
  * @flow
  */
-import styled, { keyframes } from 'styled-components';
-import colorsFunc from '../css/stateColor';
-import { getThemeColor, getWidth } from '../common/ThemeUtils';
+import styled from 'styled-components';
 import { px2emcss } from './units';
 import { getTextColor } from './progress-line';
 
-const { themeColor, successColor, dangerColor, mediumGreyColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 

@@ -5,7 +5,7 @@
  */
 import styled, { keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
-import { getThemeColor, getWidth } from '../common/ThemeUtils';
+import { getWidth } from '../common/ThemeUtils';
 import { px2emcss } from './units';
 import Icon from '../icon';
 
@@ -49,7 +49,6 @@ export type ProgressProps = {
   status?: StatusType,
   showInfo?: boolean,
   format?: Function,
-  successPercent?: number,
   getTheme: Function,
   showType?: 'default' | 'inside',
 };

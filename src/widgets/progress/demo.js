@@ -182,22 +182,28 @@ export default class ProgressDemo extends React.Component<any, any> {
             <br />
             <Progress type="dashboard" percent={100} />
             <br />
-            <p>type="dashboard" props: percent={50} status="success"</p>
+            <p>type="dashboard" props: percent={80} status="success"</p>
             <br />
-            <Progress type="dashboard" status="success" percent={50} />
+            <Progress type="dashboard" status="success" percent={80} />
             <br />
-            <p>type="dashboard" props: percent={50} status="error"</p>
+            <p>type="dashboard" props: percent={40} status="error"</p>
             <br />
-            <Progress type="dashboard" status="error" percent={50} />
+            <Progress type="dashboard" status="error" percent={40} />
             <br />
             <p>type="dashboard" props: percent={50} format= percent => percent + '--'</p>
             <br />
             <Progress type="dashboard" percent={50} format={percent => percent + '--'} />
             <br />
+            <p>type="circle" props: percent={this.state.percent}</p>
+            <br />
+            <Progress type="dashboard" percent={this.state.percent} />
+            <Button onClick={() => this.handleClick('add')}>+10</Button>&nbsp;
+            <Button onClick={() => this.handleClick('sub')}>-10</Button>
+            <br />
             <p>Theme: color===>>> props: percent={30}</p>
             <br />
             <Theme config={CircleView}>
-              <Progress type="dashboard" percent={50} />
+              <Progress type="dashboard" percent={30} />
             </Theme>
           </div>
         </div>

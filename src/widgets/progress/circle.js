@@ -17,12 +17,12 @@ function getPolyLine(radius: number, strokeWidth: number, cnt: number, stroke: s
     <polyline
       stroke-dasharray="5,5"
       points={getPoints(radius, strokeWidth, cnt)}
-      style={{ fill: 'none', stroke, strokeWidth }}
+      style={{ fill: 'none', stroke, strokeWidth, transition: 'all .3s' }}
     />
   );
 }
 
-const { themeColor, successColor, dangerColor, mediumGreyColor } = colorsFunc();
+const { themeColor, successColor, dangerColor } = colorsFunc();
 
 export default class extends React.Component<any, any> {
   render() {
@@ -62,7 +62,7 @@ export default class extends React.Component<any, any> {
           ) : (
             <svg width={viewWidth} height={viewHeight}>
               {getPolyLine(56, 8, 100, '#f2f2f2')}
-              {getPolyLine(56, 8, 45, this.getColor())}
+              {getPolyLine(56, 8, handlePercent(percent), this.getColor())}
             </svg>
           )}
 
@@ -87,19 +87,11 @@ export default class extends React.Component<any, any> {
     };
   };
   getText = () => {
-    const {
-      percent = 0,
-      successPercent,
-      format,
-      status,
-      size = 'default',
-      type = 'circle',
-    } = this.props;
+    const { percent = 0, format, status, size = 'default', type = 'circle' } = this.props;
 
     return getText(true, {
       hasFormat: this.hasFormat(),
       percent,
-      successPercent,
       format,
       status,
       size,

@@ -17,17 +17,9 @@ import {
 } from '../css/progress-line';
 
 export const getText = (inside?: boolean, props: Object) => {
-  const {
-    percent = 0,
-    successPercent,
-    format,
-    status,
-    size = 'default',
-    type = 'line',
-    hasFormat = false,
-  } = props;
+  const { percent = 0, format, status, size = 'default', type = 'line', hasFormat = false } = props;
   if (hasFormat && typeof format === 'function') {
-    return format(percent, successPercent);
+    return format(percent);
   } else if (status === 'success' || percent >= 100) {
     return (
       <Icons
@@ -58,8 +50,6 @@ export default class extends React.Component<ProgressProps, ProgressState> {
       showType = 'default',
       percent = 0,
       showInfo = true,
-      successPercent,
-      format = (percent, successPercent) => percent + '%',
       getTheme,
     } = this.props;
     return (
@@ -86,19 +76,11 @@ export default class extends React.Component<ProgressProps, ProgressState> {
     );
   }
   getText = (inside: boolean) => {
-    const {
-      percent = 0,
-      successPercent,
-      format,
-      status,
-      size = 'default',
-      type = 'line',
-    } = this.props;
+    const { percent = 0, format, status, size = 'default', type = 'line' } = this.props;
 
     return getText(inside, {
       hasFormat: this.hasFormat(),
       percent,
-      successPercent,
       format,
       status,
       size,
