@@ -99,7 +99,7 @@ const getBackGroundWidth = (props: CSSProps) => {
 };
 
 const getStatusCSS = (props: CSSProps) => {
-  const { status, theme, percent } = props;
+  const { status = 'default', theme, percent } = props;
   const { color } = theme;
   const defaultColor = color ? color : themeColor;
   const activeAnimate = keyframes`
@@ -130,15 +130,18 @@ const getStatusCSS = (props: CSSProps) => {
                 border-radius: 10px;
                 animation: ${activeAnimate} 2.4s ease infinite;
             }
-            background-color: ${defaultColor};
+            background-color: ${handlePercent(percent) === 100 ? successColor : defaultColor};
             `;
   }
 
-  const background = color
-    ? color
-    : percent >= 100
-      ? successColor
-      : BackgroundCSS[status].background;
+  if (handlePercent(percent) === 100) {
+    if (status === 'error') {
+      return `background-color: ${BackgroundCSS.error.background};`;
+    }
+    return `background-color: ${successColor};`;
+  }
+
+  const background = color ? color : BackgroundCSS[status].background;
 
   return `background-color: ${background};`;
 };
@@ -171,11 +174,11 @@ export const ProgressBackground = styled.div`
 
 export const getTextColor = (props: CSSProps) => {
   const { status, percent = 0 } = props;
-
-  if (status === 'success' || percent >= 100) {
-    return `color: ${successColor};`;
-  } else if (status === 'error') {
+  if (status === 'error') {
     return `color: ${dangerColor};`;
+  }
+  if (status === 'success' || handlePercent(percent) === 100) {
+    return `color: ${successColor};`;
   }
 
   return `color: ${mediumGreyColor};`;
@@ -226,7 +229,6 @@ export const InsideText = styled.span`
   display: inline-block;
   color: #fff;
   text-align: left;
-  font-size: ${getWrapFontSize};
   margin: 0 ${props => getEM(props)(6)};
   white-space: nowrap;
   word-break: normal;

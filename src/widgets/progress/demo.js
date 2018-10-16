@@ -66,6 +66,10 @@ export default class ProgressDemo extends React.Component<any, any> {
           <br />
           <Progress percent={30} status="error" />
           <br />
+          <p>props: percent={100} status="error"</p>
+          <br />
+          <Progress percent={100} status="error" />
+          <br />
           <p>props: percent=this.state.percent status="active"</p>
           <br />
           <Progress percent={this.state.percent} status="active" />
@@ -97,28 +101,41 @@ export default class ProgressDemo extends React.Component<any, any> {
             <p>props: size=small percent={30} status="error"</p>
             <br />
             <Progress size="small" percent={30} status="error" />
+            <br />
+            <p>props: size=small percent={100} status="error"</p>
+            <br />
+            <Progress size="small" percent={100} status="error" />
           </div>
           <div style={{ width: '300px', margin: '50px 0' }}>
             <p>percent={0} showType="inside"</p>
             <br />
             <Progress percent={0} showType="inside" />
+            <br />
             <p>percent={30} showType="inside" status="active"</p>
             <br />
             <Progress percent={30} showType="inside" status="active" />
+            <br />
             <p>percent={30} showType="inside"</p>
             <br />
             <Progress percent={30} showType="inside" />
+            <br />
             <p>percent={30} showType="inside" status="success"</p>
             <br />
             <Progress percent={130} showType="inside" />
+            <br />
             <p>percent={30} showType="inside" status="error"</p>
             <br />
             <Progress percent={30} showType="inside" status="error" />
             <br />
+            <br />
+            <p>percent={100} showType="inside" status="error"</p>
+            <br />
+            <Progress percent={100} showType="inside" status="error" />
+            <br />
             <p>Theme===>>> props: percent={30}</p>
             <br />
             <Theme config={view}>
-              <Progress percent={130} showType="inside" />
+              <Progress percent={30} showType="inside" />
             </Theme>
           </div>
         </div>
@@ -147,6 +164,10 @@ export default class ProgressDemo extends React.Component<any, any> {
           <br />
           <Progress type="circle" status="error" percent={50} />
           <br />
+          <p>type="circle" props: percent={100}</p>
+          <br />
+          <Progress type="circle" status="error" percent={100} />
+          <br />
           <p>props: percent={50} status="error" format= percent => percent + '--'</p>
           <br />
           <Progress type="circle" status="error" percent={50} format={percent => percent + '--'} />
@@ -172,6 +193,10 @@ export default class ProgressDemo extends React.Component<any, any> {
           <br />
           <Progress type="circle" size="small" status="error" percent={50} />
           <br />
+          <p>type="circle" props: percent={100}</p>
+          <br />
+          <Progress type="circle" size="small" status="error" percent={100} />
+          <br />
           <div style={{ margin: '50px' }}>
             <h1>dashboard</h1>
             <p>type="dashboard" props: percent={50}</p>
@@ -189,6 +214,10 @@ export default class ProgressDemo extends React.Component<any, any> {
             <p>type="dashboard" props: percent={40} status="error"</p>
             <br />
             <Progress type="dashboard" status="error" percent={40} />
+            <br />
+            <p>type="dashboard" props: percent={100} status="error"</p>
+            <br />
+            <Progress type="dashboard" status="error" percent={100} />
             <br />
             <p>type="dashboard" props: percent={50} format= percent => percent + '--'</p>
             <br />

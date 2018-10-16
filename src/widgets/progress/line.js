@@ -77,7 +77,7 @@ export default class extends React.Component<ProgressProps, ProgressState> {
           </ProgressBackground>
         </ProgressLine>
         {showInfo && showType === 'default' ? (
-          <ProgressText size={size} type={type} status={status}>
+          <ProgressText size={size} percent={percent} type={type} status={status}>
             {this.getPercentText(false)}
           </ProgressText>
         ) : null}
