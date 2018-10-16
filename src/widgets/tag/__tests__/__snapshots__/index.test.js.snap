@@ -95,8 +95,8 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -218,8 +218,8 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -341,8 +341,8 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -464,8 +464,8 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -538,8 +538,8 @@ exports[`Tag default: type = basic 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -612,8 +612,8 @@ exports[`Tag default: type = basic, shape = round 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -686,8 +686,8 @@ exports[`Tag default: type = customs 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -760,8 +760,8 @@ exports[`Tag default: type = customs, shape = round 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -834,8 +834,8 @@ exports[`Tag default: type = presets 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -908,8 +908,8 @@ exports[`Tag default: type = presets, shape = round 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -982,8 +982,8 @@ exports[`Tag default: type = primary 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {
@@ -1056,8 +1056,8 @@ exports[`Tag default: type = primary, shape = round 1`] = `
 }
 
 .c2 {
-  padding: 0.125em 0 0 0.18749999999999997em;
   display: inline-block;
+  padding: 0.16666666666666669em 0 0 0.25em;
 }
 
 .c3 {

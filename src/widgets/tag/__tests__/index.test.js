@@ -15,8 +15,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import { delay } from '@lugia/react-test-utils';
 Enzyme.configure({ adapter: new Adapter() });
 
-const { mockFunction, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
-
 const { expect: exp } = chai;
 
 const config = {
@@ -169,6 +167,7 @@ describe('Tag', () => {
 
     getTag = () => {
       const { data } = this.state;
+      console.info('re data', data);
       return data.map((item, index) => {
         return (
           <Tag key={item} onClose={this.onClose.bind(this, item)}>
@@ -182,17 +181,18 @@ describe('Tag', () => {
       const { data } = this.state;
       const index = data.indexOf(item);
       data.splice(index, 1);
+      console.info('data', data);
       this.setState({ data });
     }
   }
 
   it('click and close', async () => {
     const cmp = mount(<TagDemo />);
-    exp(findCloseButton(cmp).length).to.be.equal(10);
-
+    expect(findCloseButton(cmp).length).toEqual(10);
     clickCloseButton(cmp, 1);
-    await delay(1000);
-    exp(findCloseButton(cmp).length).to.be.equal(9);
+    await delay(500);
+    cmp.update();
+    expect(findCloseButton(cmp).length).toEqual(9);
   });
 
   function findCloseButton(cmp: Object) {
