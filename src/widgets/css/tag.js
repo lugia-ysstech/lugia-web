@@ -6,13 +6,12 @@
  */
 import styled from 'styled-components';
 import '../css/sv.css';
-import Widget from '../consts/index';
 import CommonIcon from '../icon';
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
-import { FontSize } from '../css';
+import { FontSize, FontSizeNumber } from '../css';
 
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 
 export const {
   themeColor,
@@ -38,20 +37,20 @@ const judgeColors = (
   return isPrimary ? primaryColor : isBasic ? basicColor : isPresets ? presetsColor : defaultColor;
 };
 
-const isHasThemeColor = (color: boolean, hasColorTarget: string, noColorTarget: string) => {
+const getColor = (color: boolean, hasColorTarget: string, noColorTarget: string): string => {
   return color ? hasColorTarget : noColorTarget;
 };
 
 const getColors = (color, type) => {
   const styles = {};
   const { spiritColor, hoverColor } = colorsFunc(color);
-  styles.textColor = isHasThemeColor(
+  styles.textColor = getColor(
     color,
     judgeColors(type, darkGreyColor, color, color, defaultColor),
     judgeColors(type, darkGreyColor, darkGreyColor, dangerColor, defaultColor)
   );
 
-  styles.backgroundColor = isHasThemeColor(
+  styles.backgroundColor = getColor(
     color,
     judgeColors(type, color, defaultColor, spiritColor, color),
     judgeColors(
@@ -63,13 +62,13 @@ const getColors = (color, type) => {
     )
   );
 
-  styles.borderColor = isHasThemeColor(
+  styles.borderColor = getColor(
     color,
     judgeColors(type, color, color, color, color),
     judgeColors(type, borderDisableColor, mediumGreyColor, dangerColor, themeColor)
   );
 
-  styles.bgHoverColor = isHasThemeColor(
+  styles.bgHoverColor = getColor(
     color,
     judgeColors(type, color, defaultColor, spiritColor, hoverColor),
     judgeColors(
@@ -81,7 +80,7 @@ const getColors = (color, type) => {
     )
   );
 
-  styles.borderHoverColer = isHasThemeColor(
+  styles.borderHoverColer = getColor(
     color,
     judgeColors(type, color, hoverColor, hoverColor, hoverColor),
     judgeColors(
@@ -93,7 +92,7 @@ const getColors = (color, type) => {
     )
   );
 
-  styles.textHoverColor = isHasThemeColor(
+  styles.textHoverColor = getColor(
     color,
     judgeColors(type, hoverColor, hoverColor, hoverColor, defaultColor),
     judgeColors(
@@ -171,10 +170,9 @@ export const ItemText = styled.span`
   padding: 0;
   float: left;
 `;
-
 export const CloseButtonWrap = styled.span`
   display: inline-block;
-  padding: ${px2emcss(1.6)(2)} 0 0 ${px2emcss(1.6)(3)};
+  padding: ${em(2)} 0 0 ${em(3)};
 `;
 
 export const CloseButton = styled(CommonIcon)`
