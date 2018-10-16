@@ -31,7 +31,7 @@ import {
   RadiusSize,
 } from '../css/input';
 
-import { FontSize } from '../css';
+import { FontSize, FontSizeNumber } from '../css';
 import { DefaultHeight } from '../css/menu';
 import {
   MarginRight,
@@ -45,7 +45,7 @@ import {
 import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 const ClearMenuItemButton = styled(Icon)`
   top: 50%;
   right: ${em(12)};

@@ -9,11 +9,11 @@ import styled from 'styled-components';
 import '../css/sv.css';
 import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
-import { FontSize } from '../css';
+import { FontSize, FontSizeNumber } from '../css';
 import CommonIcon from '../icon';
 import { mediumGreyColor, darkGreyColor } from '../css/inputtag';
 import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 
 const CloseButton = styled(CommonIcon)`
   font-size: ${FontSize};
