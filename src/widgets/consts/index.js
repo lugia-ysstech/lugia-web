@@ -71,9 +71,12 @@ const Header = 'sv_widget_Header';
 const Content = 'sv_widget_Content';
 const Footer = 'sv_widget_Footer';
 const Aside = 'sv_widget_Aside';
+const Affix = 'sv_widget_Affix';
 
 const Tabs = 'sv_widget_Tabs';
-const Tabpane = 'sv_widget_Tabpane';
+const Tabpano = 'sv_widget_Tabpano';
+const BackTop = 'sv_widget_BackTop';
+const Progress = 'sv_widget_Progress';
 const TabsContainer = 'sv_widget_TabsContainer';
 const TabContent = 'sv_widget_TabContent';
 
@@ -136,7 +139,10 @@ export default {
   Aside,
   QueryInput,
   Tabs,
-  Tabpane,
+  Tabpano,
+  Affix,
+  BackTop,
+  Progress,
   TabsContainer,
   TabContent,
 };
