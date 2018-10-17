@@ -81,6 +81,7 @@ const BackTop = 'sv_widget_BackTop';
 const Progress = 'sv_widget_Progress';
 const TabsContainer = 'sv_widget_TabsContainer';
 const TabContent = 'sv_widget_TabContent';
+const Alert = 'sv_widget_Alert';
 
 export default {
   Button,
@@ -149,4 +150,5 @@ export default {
   TabContent,
   Tag,
   DropMenuButton,
+  Alert,
 };
