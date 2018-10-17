@@ -34,14 +34,19 @@ describe('tabpaneDemo', () => {
     const target = mount(<Tabpane isSelect={true} />);
     expect(getCmp(target).props.isSelect).toBe(true);
   });
-
-  it('props title', () => {
-    const target = mount(<Tabpane title="1234" />);
-    expect(
-      target
-        .find('div')
-        .at(1)
-        .text()
-    ).toBe('1234');
-  });
+  function testTitle(title: string, expTitle: string) {
+    it('props title', () => {
+      const target = mount(<Tabpane title={title} />);
+      expect(
+        target
+          .find('div')
+          .at(1)
+          .text()
+      ).toBe(expTitle);
+    });
+  }
+  testTitle('1111', '1111');
+  testTitle('1234', '1234');
+  testTitle('tabs', 'tabs');
+  testTitle('', '');
 });

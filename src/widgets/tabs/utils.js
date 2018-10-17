@@ -5,6 +5,7 @@
  * @flow
  */
 import type { TabPositionType, TabType, EditEventType } from '../css/tabs';
+import { getAttributeFromObject, getKeyfromIndex } from '../common/ObjectUtils';
 export function matchType(
   type: TabPositionType | TabType | EditEventType,
   expectType: TabPositionType | TabType | EditEventType
@@ -24,4 +25,35 @@ export function plusWidth(index: number, width: Array<number>): number {
 export function computePage(offset: number, actualSize: number): number {
   const totalPage = Math.ceil(actualSize / offset);
   return totalPage;
+}
+
+export function addActivityKey2Data(data: Array<Object>) {
+  const newData = [];
+  if (data) {
+    data.map((item, i) => {
+      newData.push(
+        Object.assign({}, item, {
+          activityKey: getAttributeFromObject(
+            item,
+            'activityKey',
+            getKeyfromIndex(data, i, 'activityKey')
+          ),
+        })
+      );
+    });
+  }
+  return newData;
+}
+export function addWidth2Data(data: Array<Object>, widthSize: Array<number>) {
+  const newData = [];
+  if (data) {
+    data.map((item, i) => {
+      newData.push(
+        Object.assign({}, item, {
+          width: widthSize[i],
+        })
+      );
+    });
+  }
+  return newData;
 }

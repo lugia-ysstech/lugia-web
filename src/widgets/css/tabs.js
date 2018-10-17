@@ -8,19 +8,21 @@ type TabPositionType = 'left' | 'right' | 'top' | 'bottom';
 type PagedType = 'single' | 'page';
 type EditEventType = 'next' | 'pre';
 const em = px2emcss(1.2);
-export const addButtonSize = 18;
-export const cardBorderAndMarginWidth = 6;
-export const windowMarginLeft = 6;
-export const arrowContainerWidth = 48;
-export const yTabsHeight = 32;
+export const AddButtonSize = 18;
+export const CardBorderAndMarginWidth = 6;
+export const WindowMarginLeft = 6;
+export const ArrowContainerWidth = 48;
+export const YtabsHeight = 32;
+export const CardMarginRight = 4;
+export const LineMarginLeft = 20;
 export const getCursor = (props: Object) => {
   const { currentPage, totalPage, type, pagedType, pagedCount, childrenSize } = props;
   const cursor =
     pagedType === 'page'
-      ? (matchType(type, 'next') && currentPage === totalPage) ||
-        (matchType(type, 'pre') && currentPage === 1)
-      : (matchType(type, 'next') && pagedCount >= childrenSize.length - 2) ||
-        (matchType(type, 'pre') && pagedCount < 0);
+      ? (matchType(type, 'next') && currentPage + 1 > totalPage - 1) ||
+        (matchType(type, 'pre') && currentPage <= 0)
+      : (matchType(type, 'next') && pagedCount >= childrenSize.length - 1) ||
+        (matchType(type, 'pre') && pagedCount <= 0);
   return `cursor:${cursor ? 'not-allowed' : 'pointer'}`;
 };
 export const getClearButtonColor = () => {
@@ -150,7 +152,7 @@ export const getTabpaneBorder = props => {
 };
 export const getTabpaneMarginRight = props => {
   const { tabType } = props;
-  if (matchType(tabType, 'card')) return `  margin-right:${em(4)};`;
+  if (matchType(tabType, 'card')) return `  margin-right:${em(CardMarginRight)};`;
 };
 export const getAddRadius = props => {
   const { tabType } = props;

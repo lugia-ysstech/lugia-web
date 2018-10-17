@@ -10,10 +10,13 @@ import Wrapper from '../demo';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Tabs from '../index';
-import { data, strangeData } from '../demo';
+import Tabs, { _Tabs_ } from '../index';
+import { data, strangeData, children } from '../demo';
 import { isVertical } from '../utils';
-
+import Widgets from '../../consts';
+import Theme from '../../theme/';
+import { delay } from '@lugia/react-test-utils';
+const { mockFunction, mockObject } = require('@lugia/jverify');
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('tabsDemo', () => {
@@ -33,6 +36,7 @@ describe('tabsDemo', () => {
       .at(0)
       .instance();
   };
+
   it('props defaultActivityKey', () => {
     const target = mount(createTabs({ defaultActivityKey: '2', data }));
     const { activityKey } = getCmp(target).state;
@@ -53,15 +57,16 @@ describe('tabsDemo', () => {
       expect(getCmp(target).state.activityKey).toBe(expActicityKey);
     });
   }
-  testOnTabClick(createTabs(), 0, '0');
+  testOnTabClick(createTabs(), 0, '_key_0');
   testOnTabClick(createTabs(), 1, '1');
-  testOnTabClick(createTabs(), 2, '2');
-  testOnTabClick(createTabs(), 3, '3');
-  testOnTabClick(createTabs({ data, tabType: 'card' }), 2, '2');
-  testOnTabClick(createTabs({ data, tabType: 'window' }), 2, '2');
+  testOnTabClick(createTabs(), 2, '_key_2');
+  testOnTabClick(createTabs(), 3, '_key_3');
+  testOnTabClick(createTabs({ data, tabType: 'card' }), 2, '_key_2');
+  testOnTabClick(createTabs({ data, tabType: 'window' }), 2, '_key_2');
   testOnTabClick(createTabs({ data, tabType: 'line', tabPosition: 'left' }), 1, '1');
-  testOnTabClick(createTabs({ data, tabType: 'line', tabPosition: 'right' }), 2, '2');
-  testOnTabClick(createTabs({ data, tabType: 'line', tabPosition: 'top' }), 3, '3');
+  testOnTabClick(createTabs({ data, tabType: 'line', tabPosition: 'right' }), 2, '_key_2');
+  testOnTabClick(createTabs({ data, tabType: 'line', tabPosition: 'top' }), 3, '_key_3');
+
   function testActivityKey(component: any, expActicityKey: string) {
     it('props activityKey', () => {
       const target = mount(component);
@@ -74,18 +79,21 @@ describe('tabsDemo', () => {
   testActivityKey(createTabs({ data, activityKey: '1' }), '1');
   testActivityKey(createTabs({ data, activityKey: '3' }), '3');
 
-  const onAddClick = () => {};
-  function testAddClick(component: any) {
-    it('props onAddClick', () => {
-      const target = mount(createTabs({ data: strangeData, onAddClick, tabType: 'card' }));
-      const { data, children } = getCmp(target).props;
-      const length = data ? data.length : children ? children.length : 0;
-      target.find('addIcon').simulate('click');
-      expect(getCmp(target).state.data.length).toBe(length + 1);
+  it('props onAddClick', async () => {
+    let onAddClick;
+    const promise = new Promise(resolve => {
+      onAddClick = e => {
+        resolve(add);
+      };
     });
-  }
-  testAddClick(createTabs({ data: strangeData, onAddClick, tabType: 'card' }));
-  testAddClick(createTabs({ data: strangeData, onAddClick, tabType: 'window' }));
+    const add = {
+      title: 'new tabs',
+      content: 'new tabs content',
+    };
+    const target = mount(<Tabs data={strangeData} tabType="card" onAddClick={onAddClick} />);
+    target.find('addIcon').simulate('click', { add });
+    expect(await promise).toBe(add);
+  });
 
   const onDeleteClick = () => {};
   function testDeleteClick(component: any) {
@@ -102,4 +110,27 @@ describe('tabsDemo', () => {
   }
   testDeleteClick(createTabs({ data: strangeData, onDeleteClick, tabType: 'card' }));
   testDeleteClick(createTabs({ data: strangeData, onDeleteClick, tabType: 'window' }));
+  testDeleteClick(createTabs({ data, onDeleteClick, tabType: 'window' }));
+  it('props onNextClick pagedType: page ', async () => {
+    let onNextClick;
+    const promise = new Promise(resolve => {
+      onNextClick = e => {
+        resolve();
+      };
+    });
+    const target = mount(
+      <Theme config={{ [Widgets.Tabs]: { width: 500 } }}>
+        <Tabs data={strangeData} onNextClick={onNextClick} pagedType={'page'} tabType="card" />
+      </Theme>
+    );
+    target.unmount();
+    target.mount();
+    target
+      .find('page')
+      .at(1)
+      .simulate('click');
+    getCmp(target.children()).setState({ currentPage: 1 });
+    await promise;
+    expect(getCmp(target.children()).state.currentPage).toBe(1);
+  });
 });

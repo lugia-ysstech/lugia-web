@@ -13,10 +13,10 @@ import Widget from '../consts/index';
 import Theme from '../theme';
 import type { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
 import {
-  addButtonSize,
-  arrowContainerWidth,
+  AddButtonSize,
+  ArrowContainerWidth,
   backgroundColor,
-  cardBorderAndMarginWidth,
+  CardBorderAndMarginWidth,
   getAddBackground,
   getAddButtonBottom,
   getAddButtonDisplay,
@@ -36,18 +36,27 @@ import {
   hContainerWidth,
   lineWidth,
   vContainerHeight,
-  windowMarginLeft,
-  yTabsHeight,
+  WindowMarginLeft,
+  YtabsHeight,
+  CardMarginRight,
+  LineMarginLeft,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
-import { computePage, isVertical, matchType, plusWidth } from './utils';
+import {
+  computePage,
+  isVertical,
+  matchType,
+  plusWidth,
+  addActivityKey2Data,
+  addWidth2Data,
+} from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
-import { getIndexfromKey } from '../common/ObjectUtils';
+import { getIndexfromKey, getKeyfromIndex } from '../common/ObjectUtils';
 
 const em = px2emcss(1.2);
 
@@ -75,7 +84,7 @@ const ShadowLine = styled.div`
   ${getBackgroundShadow};
 `;
 const VLine = BaseLine.extend`
-  height: ${em(yTabsHeight)};
+  height: ${em(YtabsHeight)};
   width: ${em(2)};
   transform: translateY(${props => props.y}%);
   transition: all 0.3s;
@@ -134,8 +143,8 @@ const AddContainer = styled.div`
   ${getTabpaneBorder};
   ${getAddRadius};
   ${getAddTop};
-  width: ${em(addButtonSize)};
-  height: ${em(addButtonSize)};
+  width: ${em(AddButtonSize)};
+  height: ${em(AddButtonSize)};
   &:focus {
     ${getAddHoverBackground};
   }
@@ -232,7 +241,7 @@ type TabsProps = {
   tabType: TabType,
   onChange: Function,
   onNextClick: Function,
-  onPrevClick: Function,
+  onPreClick: Function,
   children: React$Element<any>,
   data: Array<Object>,
   defaultData: Array<Object>,
@@ -246,7 +255,6 @@ type TabsProps = {
 class TabsBox extends Component<TabsProps, TabsState> {
   static defaultProps = {
     tabType: 'line',
-    defaultActivityKey: '0',
     tabPosition: 'top',
     pagedType: 'single',
   };
@@ -258,6 +266,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   constructor(props: TabsProps) {
     super(props);
     this.tabs = React.createRef();
+    this.initContainerSize();
   }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
@@ -267,26 +276,28 @@ class TabsBox extends Component<TabsProps, TabsState> {
     if (!state) {
       const childrenData = [];
       React.Children.map(children, child => {
-        return childrenData.push(child.props);
+        childrenData.push(child.props);
       });
       return {
-        activityKey: hasActivityKeyInprops
-          ? activityKey
-          : defaultActivityKey
-            ? defaultActivityKey
-            : '0',
         data: hasDataInprops
-          ? data
-          : childrenData
-            ? childrenData
+          ? addActivityKey2Data(data)
+          : addActivityKey2Data(childrenData)
+            ? addActivityKey2Data(childrenData)
             : state.data
               ? state.data
               : defaultData
                 ? defaultData
                 : [],
-        currentPage: 1,
+        activityKey: hasActivityKeyInprops
+          ? activityKey
+          : defaultActivityKey
+            ? defaultActivityKey
+            : hasDataInprops
+              ? addActivityKey2Data(data)[0].activityKey
+              : addActivityKey2Data(childrenData)[0].activityKey,
+        currentPage: 0,
         totalPage: 1,
-        pagedCount: -1,
+        pagedCount: 0,
         arrowShow: false,
         addButtonShow: false,
         childrenSize: [],
@@ -300,8 +311,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   render() {
     const { getTheme } = this.props;
     const config = {
-      width: this.getContainerSize('width'),
-      height: this.getContainerSize('height'),
+      width: this.offsetWidth,
+      height: this.offsetHeight,
     };
     const theme = { [Widget.TabsContainer]: config };
 
@@ -347,12 +358,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { data, activityKey, pagedCount } = this.state;
     const arrowUp = 'lugia-icon-direction_up';
     const arrowDown = 'lugia-icon-direction_down';
-    const y = -yTabsHeight * (pagedCount + 1);
+    const y = -YtabsHeight * pagedCount;
     return (
       <VTabsOutContainer tabPosition={tabPosition}>
         <VPrePage
           tabPosition={tabPosition}
-          onClick={this.onPrevClick}
+          onClick={this.onPreClick}
           {...this.getArrowConfig('pre')}
         >
           <PageIcon iconClass={arrowUp} {...this.getArrowConfig('pre')} />
@@ -402,7 +413,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
       return (
         <HLine
           lineWidth={childrenSize[getIndexfromKey(data, 'activityKey', activityKey)]}
-          x={plusWidth(getIndexfromKey(data, 'activityKey', activityKey) - 1, childrenSize) + 20}
+          x={
+            plusWidth(getIndexfromKey(data, 'activityKey', activityKey) - 1, childrenSize) +
+            LineMarginLeft
+          }
           tabPosition={tabPosition}
         />
       );
@@ -414,9 +428,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { tabType } = this.props;
     const arrowLeft = 'lugia-icon-direction_Left';
     const arrowRight = 'lugia-icon-direction_right';
+    const pre = this.getArrowConfig('pre');
+    const next = this.getArrowConfig('next');
     return [
-      <HPrePage {...this.getArrowConfig('pre')} onClick={this.onPrevClick} tabType={tabType}>
-        <PageIcon iconClass={arrowLeft} {...this.getArrowConfig('pre')} />
+      <HPrePage onClick={this.onPreClick} tabType={tabType} {...pre}>
+        <PageIcon iconClass={arrowLeft} {...pre} />
       </HPrePage>,
       <HTabsContainer tabType={tabType}>
         <HscrollerContainer tabType={tabType} x={this.computePagedX()}>
@@ -425,8 +441,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
           {this.getHline()}
         </HscrollerContainer>
       </HTabsContainer>,
-      <HNextPage {...this.getArrowConfig('next')} onClick={this.onNextClick} tabType={tabType}>
-        <PageIcon iconClass={arrowRight} {...this.getArrowConfig('next')} />
+      <HNextPage {...next} onClick={this.onNextClick} tabType={tabType}>
+        <PageIcon iconClass={arrowRight} {...next} />
       </HNextPage>,
     ];
   }
@@ -452,9 +468,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     return null;
   }
 
-  componentWillMount() {}
-
-  componentDidUpdate(props, preState) {
+  componentDidUpdate(props: TabsProps, preState: TabsState) {
     const { data } = this.state;
     if (data !== preState.data) {
       this.measurePage();
@@ -466,8 +480,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   measurePage() {
-    this.getContainerSize('width');
-    this.getContainerSize('height');
+    this.updateContainerSize();
     this.matchPage();
   }
 
@@ -485,51 +498,64 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const width = plusWidth(childrenSize.length - 1, childrenSize);
 
     const actualWidth = matchType(tabType, 'window')
-      ? width + 6 + addButtonSize
+      ? width + WindowMarginLeft + AddButtonSize
       : matchType(tabType, 'card')
-        ? width + (childrenSize.length + 1) * 4 + addButtonSize
+        ? width + (childrenSize.length + 1) * CardMarginRight + AddButtonSize
         : width;
-    const actualHeight = data.length * yTabsHeight;
+    const actualHeight = data.length * YtabsHeight;
     const totalPage = isVertical(tabPosition)
-      ? computePage(this.offsetHeight - arrowContainerWidth, actualHeight)
-      : computePage(this.offsetWidth - arrowContainerWidth, actualWidth);
-    const arrowShow = totalPage > 1 && currentPage <= totalPage;
+      ? computePage(this.offsetHeight - ArrowContainerWidth, actualHeight)
+      : computePage(this.offsetWidth - ArrowContainerWidth, actualWidth);
+    const arrowShow = totalPage > 1 && currentPage < totalPage;
     this.setState({ arrowShow, totalPage });
   }
 
   computePagedX() {
     const { currentPage, totalPage, pagedCount, childrenSize } = this.state;
     const { tabType } = this.props;
-    const currentTabsWidth = plusWidth(pagedCount, childrenSize);
-    let x = totalPage > 1 ? (1 - currentPage) * (this.offsetWidth - arrowContainerWidth) : 0;
-    if (pagedCount >= 0) {
+    const currentTabsWidth = plusWidth(pagedCount - 1, childrenSize);
+    let x = totalPage > 1 ? currentPage * (this.offsetWidth - ArrowContainerWidth) : 0;
+    if (pagedCount > 0) {
       if (matchType(tabType, 'card')) {
-        x = -(currentTabsWidth + cardBorderAndMarginWidth * (pagedCount + 1));
+        x = currentTabsWidth + CardBorderAndMarginWidth * pagedCount;
       } else if (matchType(tabType, 'window')) {
-        x = -(currentTabsWidth + windowMarginLeft);
+        x = currentTabsWidth + WindowMarginLeft;
       } else {
-        x = -currentTabsWidth;
+        x = currentTabsWidth;
       }
     }
-    return x;
+    return -x;
   }
 
-  getContainerSize(type: string) {
+  initContainerSize() {
+    const { getTheme } = this.props;
+    const { width, height } = getTheme();
+    this.offsetWidth = width ? width : 0;
+    this.offsetHeight = height ? height : 0;
+  }
+
+  updateContainerSize() {
     if (this.tabs) {
-      const { getTheme } = this.props;
-      const { width, height } = getTheme();
-      if (type === 'width') {
-        this.offsetWidth = this.tabs.offsetWidth;
-        return width ? width : this.offsetWidth;
-      }
+      this.offsetWidth = this.tabs.offsetWidth;
       this.offsetHeight = this.tabs.offsetHeight;
-      return height ? height : this.offsetHeight;
     }
   }
 
-  getTabpaneConfig(child: React$Element<any>) {
+  getTabpaneConfig(child: React$Element<any>, i: number) {
     const { tabPosition, tabType } = this.props;
-    const { activityKey } = this.state;
+    const { activityKey, data } = this.state;
+    const TabpaneActivityKey = getAttributeFromObject(
+      child,
+      'activityKey',
+      child
+        ? getKeyfromIndex(data, i, 'activityKey')
+        : getAttributeFromObject(
+            child.props,
+            'activityKey',
+            child ? getKeyfromIndex(data, i, 'activityKey') : '0'
+          )
+    );
+
     return {
       tabPosition,
       tabType,
@@ -539,18 +565,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
         getAttributeFromObject(child.props, 'title', '')
       ),
       icon: getAttributeFromObject(child, 'icon', getAttributeFromObject(child.props, 'icon', '')),
-      activityKey: getAttributeFromObject(
-        child,
-        'activityKey',
-        getAttributeFromObject(child.props, 'activityKey', '0')
-      ),
+      activityKey: TabpaneActivityKey,
       onClick: this.onTabClick,
-      isSelect:
-        getAttributeFromObject(
-          child,
-          'activityKey',
-          getAttributeFromObject(child.props, 'activityKey', '0')
-        ) === activityKey,
+      isSelect: TabpaneActivityKey === activityKey,
       getTabpaneWidth: this.getTabpaneWidth,
       onDeleteClick: this.onDeleteClick,
     };
@@ -558,24 +575,27 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getChildren() {
     const { data } = this.state;
-    const childrenWithProps =
-      data && data.length
-        ? data.map(child => {
-            return <Tabpane {...this.getTabpaneConfig(child)} />;
-          })
-        : null;
+    const childrenWithProps = data
+      ? data.map((child, i) => {
+          return <Tabpane {...this.getTabpaneConfig(child, i)} />;
+        })
+      : null;
     return childrenWithProps;
   }
 
   getChildrenContent() {
     const { forceRender, tabPosition } = this.props;
     const { activityKey, data } = this.state;
-    if (data && data.length) {
-      return data.map(child => {
+    if (data && data.map) {
+      return data.map((child, i) => {
         const childActivityKey = getAttributeFromObject(
           child,
           'activityKey',
-          getAttributeFromObject(child.props, 'activityKey', undefined)
+          getAttributeFromObject(
+            child.props,
+            'activityKey',
+            getKeyfromIndex(data, i, 'activityKey')
+          )
         );
         if (forceRender || childActivityKey === activityKey) {
           const content = getAttributeFromObject(
@@ -583,7 +603,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
             'content',
             getAttributeFromObject(child.props, 'content', undefined)
           );
-          return <TabContent content={content} tabPosition={tabPosition} />;
+          return (
+            <TabContent
+              content={content}
+              activityKey={childActivityKey}
+              tabPosition={tabPosition}
+            />
+          );
         }
       });
     }
@@ -603,22 +629,18 @@ class TabsBox extends Component<TabsProps, TabsState> {
     onChange && onChange(activityKey, e);
   };
   onDeleteClick = (e: Event, activityKey: string) => {
-    const { onDeleteClick } = this.props;
-    let { data, childrenSize } = this.state;
-
+    const { data } = this.state;
+    let newdata = [];
     if (data.length > 1) {
-      let delIndex = 0;
-      data = data.filter((tabpane, i) => {
-        if (tabpane.activityKey !== activityKey) return true;
-        delIndex = i;
-        return false;
+      newdata = data.filter(tabpane => {
+        return tabpane.activityKey !== activityKey;
       });
-      childrenSize.splice(delIndex, 1);
       this.setState({
-        data,
-        childrenSize,
+        data: newdata,
       });
+      this.updataChildrenSize();
     }
+    const { onDeleteClick } = this.props;
     onDeleteClick && onDeleteClick();
   };
 
@@ -632,46 +654,65 @@ class TabsBox extends Component<TabsProps, TabsState> {
         const { title = '', content = '', activityKey } = item;
         newdata.push({ title, content, activityKey });
         this.setState({
-          data: newdata,
+          data: addActivityKey2Data(newdata),
         });
       }
     }
   };
+
   getTabpaneWidth = (width: number) => {
     const { childrenSize } = this.state;
     const newchildrenSize = childrenSize;
     newchildrenSize.push(width);
     this.setState({ childrenSize: newchildrenSize });
+    this.updataChildrenSize();
   };
 
-  createNativeClick = (eventName: 'onNextClick' | 'onPrevClick', type: EditEventType) => e => {
+  updataChildrenSize() {
+    const { data, childrenSize } = this.state;
+    const newData = addWidth2Data(data, childrenSize);
+    const newChildrenSize = [];
+    newData.map(item => {
+      return newChildrenSize.push(item.width);
+    });
+    this.setState({ childrenSize: newChildrenSize });
+  }
+
+  createNativeClick = (eventName: 'onNextClick' | 'onPreClick', type: EditEventType) => (
+    e: Event
+  ) => {
     const { [eventName]: click } = this.props;
     this.handleChangePage(type);
     click && click(e);
   };
 
   onNextClick = this.createNativeClick('onNextClick', 'next');
-  onPrevClick = this.createNativeClick('onPrevClick', 'pre');
+  onPreClick = this.createNativeClick('onPreClick', 'pre');
 
   handleChangePage = (type: EditEventType) => {
     let { currentPage, totalPage, pagedCount, childrenSize } = this.state;
     const { pagedType } = this.props;
+
     if (pagedType === 'page') {
-      if (matchType(type, 'next') && currentPage < totalPage) {
+      if (matchType(type, 'next')) {
         currentPage++;
-      } else if (matchType(type, 'pre') && currentPage >= 2) {
+      } else if (matchType(type, 'pre')) {
         currentPage--;
       }
+      currentPage = Math.max(Math.min(currentPage, totalPage - 1), 0);
     } else {
-      if (matchType(type, 'next') && pagedCount < childrenSize.length - 2) {
+      if (matchType(type, 'next')) {
         pagedCount++;
-      } else if (matchType(type, 'pre') && pagedCount >= 0) {
+      } else if (matchType(type, 'pre')) {
         pagedCount--;
       }
     }
+    pagedCount = Math.max(Math.min(pagedCount, childrenSize.length - 1), 0);
+
     this.setState({ currentPage, pagedCount });
   };
 }
 
 const TargetTabs = ThemeProvider(KeyBoardEventAdaptor(TabsBox), Widget.Tabs);
+export const _Tabs_ = TabsBox;
 export default TargetTabs;

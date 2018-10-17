@@ -20,10 +20,10 @@ export const getKeyfromIndex = (data: Array<Object>, index: number, expKey: stri
   });
   return newKey;
 };
-export const getIndexfromKey = (data: Array<Object>, key: string, keyValue: string): number => {
-  let index = -1;
+export const getIndexfromKey = (data: Array<Object>, keyName: string, keyValue: string): number => {
+  let index = -99;
   data.find((v, i) => {
-    if (v[key] === keyValue) {
+    if (v[keyName] === keyValue) {
       index = i;
     }
   });

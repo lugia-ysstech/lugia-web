@@ -174,6 +174,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       </HTab>
     );
   }
+
   componentDidMount() {
     this.getContainerWidth();
   }
@@ -231,10 +232,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   };
 
   getContainerWidth() {
-    const { getTabpaneWidth } = this.props;
     if (this.tabpane) {
       this.offsetWidth = this.tabpane.offsetWidth;
     }
+    const { getTabpaneWidth } = this.props;
     getTabpaneWidth && getTabpaneWidth(this.offsetWidth);
   }
 }

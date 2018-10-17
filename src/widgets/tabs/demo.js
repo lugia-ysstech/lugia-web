@@ -24,7 +24,6 @@ export const data = [
     icon: 'lugia-icon-financial_archive',
     title: 1111111111,
     content: 1111,
-    activityKey: '0',
   },
   {
     icon: 'lugia-icon-financial_archive',
@@ -36,31 +35,26 @@ export const data = [
     icon: 'lugia-icon-financial_archive',
     title: 3333333,
     content: 333,
-    activityKey: '2',
   },
   {
     icon: 'lugia-icon-financial_archive',
     title: 44444444,
     content: 4444444,
-    activityKey: '3',
   },
   {
     icon: 'lugia-icon-financial_archive',
     title: 55555,
     content: 555555,
-    activityKey: '4',
   },
   {
     icon: 'lugia-icon-financial_archive',
     title: 666666,
     content: 66666,
-    activityKey: '5',
   },
   {
     icon: 'lugia-icon-financial_archive',
     title: 7777777,
     content: 777777,
-    activityKey: '6',
   },
   {
     icon: 'lugia-icon-financial_archive',
@@ -71,7 +65,6 @@ export const data = [
 ];
 export const strangeData = [
   {
-    activityKey: '0',
     title: 1111,
     content: <div>1111111</div>,
   },
@@ -96,7 +89,6 @@ export const strangeData = [
     ),
   },
   {
-    activityKey: '3',
     title: 44444,
     content: (
       <div>
@@ -108,7 +100,6 @@ export const strangeData = [
     ),
   },
   {
-    activityKey: '4',
     title: 55555,
     content: 55555,
   },
@@ -118,7 +109,6 @@ export const strangeData = [
     content: 66666,
   },
   {
-    activityKey: '6',
     title: 777777,
     content: 77777,
   },
@@ -129,7 +119,7 @@ export const strangeData = [
   },
 ];
 export const children = [
-  <Tabpane title={'1111'} content={'11111'} activityKey={'0'} />,
+  <Tabpane title={'1111'} content={'11111'} />,
   <Tabpane title={'2222'} content={<div>2222</div>} activityKey={'1'} />,
   <Tabpane
     title={'3333'}
@@ -140,7 +130,6 @@ export const children = [
         </div>
       </div>
     }
-    activityKey={'2'}
   />,
   <Tabpane
     title={'4444'}
@@ -151,7 +140,6 @@ export const children = [
         </div>
       </div>
     }
-    activityKey={'3'}
   />,
   <Tabpane
     title={'555555'}
@@ -177,7 +165,6 @@ const longChildren = [
         </div>
       </div>
     }
-    activityKey={'2'}
   />,
   <Tabpane
     title={'44444'}
@@ -188,7 +175,6 @@ const longChildren = [
         </div>
       </div>
     }
-    activityKey={'3'}
   />,
   <Tabpane
     title={'555555'}
@@ -199,7 +185,6 @@ const longChildren = [
         </div>
       </div>
     }
-    activityKey={'4'}
   />,
   <Tabpane
     title={'666666'}
@@ -221,7 +206,6 @@ const longChildren = [
         </div>
       </div>
     }
-    activityKey={'6'}
   />,
   <Tabpane
     title={'8888888'}
@@ -298,9 +282,17 @@ export default () => {
       height: 200,
     },
   };
-  const onPrevClick = e => {};
+  const onPreClick = e => {};
   const onNextClick = e => {};
   const onDelClick = e => {};
+
+  const onAddClick = e => {
+    const newTabs = {
+      title: 'new tabs',
+      content: 'new tabs content',
+    };
+    return newTabs;
+  };
   return (
     <div>
       <Theme config={view}>
@@ -309,7 +301,7 @@ export default () => {
           <Tabs
             titleType={'line'}
             tabPosition={'top'}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
             children={children}
             data={data}
@@ -321,7 +313,7 @@ export default () => {
           <Tabs
             tabType={'line'}
             tabPosition={'left'}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
             children={longChildren}
           />
@@ -331,13 +323,12 @@ export default () => {
           <Tabs
             tabType={'line'}
             tabPosition={'right'}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
           >
             <Tabpane
               title={'11111'}
               content={'11111111111111111111111111'}
-              activityKey={'0'}
               icon={'lugia-icon-financial_archive'}
             />
             <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={'1'} />
@@ -358,10 +349,10 @@ export default () => {
           <Tabs
             tabType={'line'}
             tabPosition={'bottom'}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
           >
-            <Tabpane title={'11111'} content={'11111111111111111111111111'} activityKey={'0'} />
+            <Tabpane title={'11111'} content={'11111111111111111111111111'} />
             <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={'1'} />
             <Tabpane
               title={'3333'}
@@ -411,7 +402,7 @@ export default () => {
         </Wrapper>
         <Wrapper>
           <p>data tabPosition=top</p>
-          <Tabs tabType={'line'} data={data} onPrevClick={onPrevClick} onNextClick={onNextClick} />
+          <Tabs tabType={'line'} data={data} onPreClick={onPreClick} onNextClick={onNextClick} />
         </Wrapper>
         <br />
         <Wrapper>
@@ -420,7 +411,7 @@ export default () => {
             tabType={'line'}
             tabPosition={'left'}
             data={strangeData}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
           />
         </Wrapper>
@@ -431,7 +422,7 @@ export default () => {
             tabType={'line'}
             tabPosition={'right'}
             data={strangeData}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
             defaultActivityKey={'2'}
           />
@@ -443,7 +434,7 @@ export default () => {
             tabType={'line'}
             data={data}
             tabPosition={'bottom'}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
           />
         </Wrapper>
@@ -454,9 +445,10 @@ export default () => {
             tabType={'card'}
             pagedType={'single'}
             data={strangeData}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
             onDelClick={onDelClick}
+            onAddClick={onAddClick}
           />
         </Wrapper>
         <br />
@@ -467,9 +459,10 @@ export default () => {
             tabType={'window'}
             pagedType={'page'}
             data={strangeData}
-            onPrevClick={onPrevClick}
+            onPreClick={onPreClick}
             onNextClick={onNextClick}
             onDelClick={onDelClick}
+            onAddClick={onAddClick}
           />
         </Wrapper>
         <br />

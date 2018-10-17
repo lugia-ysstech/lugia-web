@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import { isVertical, plusWidth, computePage, matchType } from '../utils';
+import { isVertical, plusWidth, computePage, matchType, addActivityKey2Data } from '../utils';
 import type { EditEventType, TabPositionType, TabType } from '../../css/tabs';
 describe('utils', () => {
   function testIsVertical(tabPosition: string, expectValue: boolean) {
@@ -27,35 +27,9 @@ describe('utils', () => {
     });
   }
   testmatchTab('left', 'left', true);
-  testmatchTab('right', 'right', true);
-  testmatchTab('top', 'top', true);
-  testmatchTab('bottom', 'bottom', true);
   testmatchTab('left', 'right', false);
-  testmatchTab('left', 'top', false);
-  testmatchTab('left', 'bottom', false);
-  testmatchTab('right', 'top', false);
+  testmatchTab('right', 'right', true);
   testmatchTab('right', 'left', false);
-  testmatchTab('right', 'bottom', false);
-  testmatchTab('top', 'left', false);
-  testmatchTab('top', 'right', false);
-  testmatchTab('top', 'bottom', false);
-  testmatchTab('bottom', 'left', false);
-  testmatchTab('bottom', 'right', false);
-  testmatchTab('bottom', 'top', false);
-
-  testmatchTab('line', 'line', true);
-  testmatchTab('card', 'card', true);
-  testmatchTab('window', 'window', true);
-  testmatchTab('line', 'card', false);
-  testmatchTab('line', 'window', false);
-  testmatchTab('card', 'line', false);
-  testmatchTab('card', 'window', false);
-  testmatchTab('window', 'line', false);
-  testmatchTab('window', 'card', false);
-  testmatchTab('next', 'next', true);
-  testmatchTab('next', 'pre', false);
-  testmatchTab('pre', 'pre', true);
-  testmatchTab('pre', 'next', false);
 
   function testPlusWidth(index: number, width: Array<number>, expectValue: number) {
     it(' PlusWidth  ', () => {
