@@ -51,43 +51,44 @@ type ShapeStyle = {
 
 const Size = {
   bigger: {
-    width: 100,
     height: 42,
     padding: 14,
     fontSize: 14,
     borderRadius: 21,
   },
   large: {
-    width: 98,
     height: 38,
     padding: 12,
     fontSize: 14,
     borderRadius: 19,
   },
   default: {
-    width: 80,
     height: 32,
     padding: 10,
     fontSize: 12,
     borderRadius: 16,
   },
   small: {
-    width: 80,
     height: 28,
     padding: 8,
     fontSize: 12,
     borderRadius: 14,
   },
 };
-const white = '#fff';
-const disableColor = '#cccccc';
-const defaultColor = '#666666';
 
 const NotCircleSize = {
   width: 32,
   borderRadius: 4,
 };
-const { themeColor: globalThemeColor, successColor, warningColor, dangerColor } = colorsFunc();
+const {
+  themeColor: globalThemeColor,
+  successColor,
+  warningColor,
+  dangerColor,
+  lightGreyColor: disableColor,
+  darkGreyColor: defaultColor,
+  defaultColor: white,
+} = colorsFunc();
 
 function fetchType(type: string): Object {
   if (type === 'default') {
@@ -166,7 +167,6 @@ function fetchPlainCSS(color: string): { [key: ButtonType]: TypeColor } {
 function fetchSize(sizeType: string) {
   const size = Size[sizeType];
   return {
-    width: `${em(size.width)}`,
     height: `${em(size.height)}`,
     padding: `${em(size.padding)}`,
     fontSize: `${em(size.fontSize)}`,
@@ -246,10 +246,9 @@ export const getDisabledCSS = (props: ButtonOutProps) => {
 };
 export const getSizeCSS = (props: ButtonOutProps) => {
   const { size = 'default' } = props;
-  const { width, height, padding, fontSize } = fetchSize(size);
+  const { height, padding, fontSize } = fetchSize(size);
 
   return `
-    width: ${width};
     height: ${height};
     padding: ${padding};
     font-size: ${fontSize};
@@ -269,8 +268,7 @@ export const getCircleCSS = (props: ButtonOutProps) => {
 };
 export const getClickCSS = (props: ButtonOutProps) => {
   const { type = 'default', size = 'default', shape = 'default', circle = false, themes } = props;
-  const { width: sizeWidth, height: sizeHeight } = fetchSize(size);
-  const { width: ucCircleWidth } = NotCircleSize;
+  const { height: sizeHeight } = fetchSize(size);
   const themeColor = getThemeColor(themes);
   const backGround =
     type === 'default'
@@ -282,8 +280,6 @@ export const getClickCSS = (props: ButtonOutProps) => {
       ? em(NotCircleSize.borderRadius)
       : ShapeCSS[size].borderRadius;
 
-  const width = circle ? em(ucCircleWidth) : sizeWidth;
-
   const clickAnimate = keyframes`
   0% {
     width: 0;
@@ -293,14 +289,14 @@ export const getClickCSS = (props: ButtonOutProps) => {
     opacity: 0;
   }
   50% {
-    width: ${width};
+    width: 100%;
     height: ${sizeHeight};
     background: ${backGround};
     opacity: 0.15;
     border-radius: ${borderRadius};
   }
   100% {
-    width: ${width};
+    width: 100%;
     height: ${sizeHeight};
     background: ${backGround};
     opacity: 0;
@@ -311,7 +307,6 @@ export const getClickCSS = (props: ButtonOutProps) => {
   if (clicked) {
     return `&::after{
                 content: '';
-                width: 0;
                 height: 0;
                 border: 0;
                 position: absolute;
