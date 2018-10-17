@@ -12,7 +12,12 @@ import { px2emcss } from '../css/units';
 
 const em = px2emcss(FontSizeNumber);
 
-const { themeColor, defaultColor, lightGreyColor, darkGreyColor } = colorsFunc();
+const { themeColor, defaultColor, lightGreyColor, darkGreyColor, disableColor } = colorsFunc();
+
+const getCursor = props => {
+  const { disabled } = props;
+  return `cursor: ${disabled ? 'not-allowed' : 'pointer'}`;
+};
 
 export const CheckInput = styled.input`
   position: absolute;
@@ -23,7 +28,7 @@ export const CheckInput = styled.input`
   width: 100%;
   height: 100%;
   opacity: 0;
-  cursor: pointer;
+  ${getCursor};
 `;
 
 const getWidth = props => {
@@ -32,8 +37,9 @@ const getWidth = props => {
   return width ? `${em(width)}` : `${em(92)}`;
 };
 
-const hoverColor = colorsFunc(themeColor).hoverColor;
-const mouseDownColor = colorsFunc(themeColor).mouseDownColor;
+const getThemeColorState = (color: string, attrValue: string) => {
+  return color ? colorsFunc(color)[attrValue] : colorsFunc(themeColor)[attrValue];
+};
 
 const getCheckedCSS = (
   checked: boolean,
@@ -44,7 +50,7 @@ const getCheckedCSS = (
   return `${attribute} : ${checked ? checkedAttributeValue : defaultAttributeValue}`;
 };
 
-const getHoverAndActiveCSS = (attribute: string) => {
+const getHoverAndActiveCSS = (attribute: string, hoverColor: string, mouseDownColor: string) => {
   return `
         &:hover {
           ${attribute}: ${hoverColor}
@@ -55,7 +61,7 @@ const getHoverAndActiveCSS = (attribute: string) => {
       `;
 };
 
-const getChildSpanHoverCSS = (attribute: string) => {
+const getChildSpanHoverCSS = (attribute: string, hoverColor: string, mouseDownColor: string) => {
   return `
   &:hover > span {
     ${attribute}: ${hoverColor};
@@ -66,9 +72,17 @@ const getChildSpanHoverCSS = (attribute: string) => {
   `;
 };
 
-const getCheckedAndHoverCSS = (checked: boolean, attribute: string, defaultAttrValue: string) => {
+const getCheckedAndHoverCSS = (
+  color: string,
+  checked: boolean,
+  attribute: string,
+  defaultAttrValue: string
+) => {
+  const targetColor = color || themeColor;
+  const { hoverColor, mouseDownColor } = colorsFunc(targetColor);
+
   return `${getCheckedCSS(checked, attribute, hoverColor, defaultAttrValue)};
-          ${getHoverAndActiveCSS(attribute)}`;
+          ${getHoverAndActiveCSS(attribute, hoverColor, mouseDownColor)}`;
 };
 
 const isPrimaryCSS = (
@@ -93,7 +107,6 @@ const CommonContainer = styled.div`
   font-size: ${FontSize};
   display: inline-block;
   overflow: hidden;
-  cursor: pointer;
   position: relative;
 `;
 
@@ -105,8 +118,14 @@ const CommonWrap = styled.div`
 `;
 
 const getSeparatorBorderHoverCSS = props => {
-  const { type } = props;
-  const primaryAttrValue = getChildSpanHoverCSS('border-color');
+  const { type, disabled, Theme } = props;
+  if (disabled) {
+    return;
+  }
+  const { color } = Theme;
+  const targetColor = color || themeColor;
+  const { hoverColor, mouseDownColor } = colorsFunc(targetColor);
+  const primaryAttrValue = getChildSpanHoverCSS('border-color', hoverColor, mouseDownColor);
   return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, '');
 };
 
@@ -116,33 +135,55 @@ const DefaultContainer = styled(CommonContainer)`
   border-radius: ${em(4)};
   transition: all 0.3s;
   ${getSeparatorBorderHoverCSS};
-  &:hover > span {
+  ${props =>
+    (props.disabled
+      ? ''
+      : `&:hover > span {
     height: ${em(32)};
-  }
+  }`)};
 `;
 
-const NoDividedBackgroundAndBorderAndTextColor = props => {
-  const { type, checked } = props;
-  const primaryAttrValue = `background: ${defaultColor};
-    ${getCheckedAndHoverCSS(checked, 'border-color', lightGreyColor)};
-    ${getCheckedAndHoverCSS(checked, 'color', darkGreyColor)}
+const getDisabledCSS = props => {
+  const { Theme } = props;
+  const { color } = Theme;
+  const disabledColor = getThemeColorState(color, 'disabledColor');
+  return `
+  ${isPrimaryCSS(props.type, 'color', lightGreyColor, defaultColor)};
+  ${isPrimaryCSS(props.type, 'background', defaultColor, disabledColor)};
+  ${isPrimaryCSS(props.type, 'border-color', disableColor, disabledColor)};
   `;
-  const notPrimaryValue = `
-  ${getCheckedAndHoverCSS(checked, 'border-color', themeColor)};
-  ${getCheckedAndHoverCSS(checked, 'background', themeColor)};
-  color: #fff`;
-  return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, notPrimaryValue);
+};
+
+const HoverBackgroundAndBorderAndTextColor = props => {
+  const { type, checked, disabled, Theme } = props;
+  if (disabled) {
+    return getDisabledCSS(props);
+  }
+  const { color } = Theme;
+  const targetColor = color || themeColor;
+  const { hoverColor, mouseDownColor } = colorsFunc(targetColor);
+  const primaryAttrValue = `
+    background: ${defaultColor};
+    ${getCheckedAndHoverCSS(color, checked, 'border-color', lightGreyColor)};
+    ${getChildSpanHoverCSS('border-color', hoverColor, mouseDownColor)};
+    ${getCheckedAndHoverCSS(color, checked, 'color', darkGreyColor)};
+      `;
+  const notPrimaryAttrValue = `
+      ${getCheckedAndHoverCSS(color, checked, 'border-color', targetColor)};
+      ${getCheckedAndHoverCSS(color, checked, 'background', targetColor)};
+      color: ${defaultColor}`;
+  return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, notPrimaryAttrValue);
 };
 
 export const NoDividedContainer = styled(DefaultContainer)`
   border-width: ${em(1)};
   border-style: solid;
-  ${NoDividedBackgroundAndBorderAndTextColor};
+  ${HoverBackgroundAndBorderAndTextColor};
 `;
 NoDividedContainer.displayName = 'NoDividedContainer';
 
 export const NoDividedWrap = styled(CommonWrap)`
-  padding: 0 ${em(8)};
+  padding: 0 ${em(4)};
 `;
 
 export const NoDividedIconWrap = styled.span`
@@ -153,19 +194,11 @@ export const NoDividedIconWrap = styled.span`
   vertical-align: top;
 `;
 
-const HoverBackgroundOrBorder = props => {
-  const { type, checked } = props;
-  const primaryAttrValue = `
-    ${getCheckedAndHoverCSS(checked, 'border-color', lightGreyColor)};
-    ${getChildSpanHoverCSS('border-color')};
-    ${getCheckedAndHoverCSS(checked, 'color', darkGreyColor)};
-      `;
-  const notPrimaryAttrValue = getCheckedAndHoverCSS(checked, 'background', themeColor);
-  return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, notPrimaryAttrValue);
-};
-
 const getDefaultBorder = props => {
-  return isPrimaryCSS(props.type, 'border', `1px solid ${lightGreyColor}`, '0');
+  return `
+  ${isPrimaryCSS(props.type, 'border', `1px solid ${lightGreyColor}`, '0')};
+
+  `;
 };
 
 export const TextContainer = styled.span`
@@ -175,20 +208,10 @@ export const TextContainer = styled.span`
   height: 100%;
   border-top-left-radius: ${em(4)};
   border-bottom-left-radius: ${em(4)};
-  ${getDefaultBorder};
 `;
 
-const DividedContainerBackgroundColor = props => {
-  return isPrimaryCSS(props.type, 'background', defaultColor, themeColor);
-};
-
-const DividedTextColor = props => {
-  return isPrimaryCSS(props.type, 'color', darkGreyColor, defaultColor);
-};
-
 export const DividedContainer = styled(DefaultContainer)`
-  ${DividedTextColor};
-  ${DividedContainerBackgroundColor};
+  color: ${defaultColor};
 `;
 
 export const DividedWrap = styled(CommonWrap)`
@@ -198,31 +221,38 @@ export const DividedWrap = styled(CommonWrap)`
 
 export const DevidedTextContainer = styled(TextContainer)`
   transition: all 0.3s;
+  ${getDefaultBorder};
   border-right: 0;
-  ${HoverBackgroundOrBorder};
+  ${HoverBackgroundAndBorderAndTextColor};
 `;
 DevidedTextContainer.displayName = 'DevidedTextContainer';
 
 export const BasicContainer = styled(CommonContainer)`
   height: ${em(22)};
   line-height: ${em(22)};
-  padding: 0 ${em(8)};
+  padding: 0 ${em(4)};
 `;
 
+const getBasicTextHoverColor = props => {
+  const { Theme, disabled, checked } = props;
+  if (disabled) {
+    return `color: ${lightGreyColor};`;
+  }
+  const { color } = Theme;
+  const targetColor = color || themeColor;
+  const { hoverColor, mouseDownColor } = colorsFunc(targetColor);
+  return `${getChildSpanHoverCSS('color', hoverColor, mouseDownColor)};
+  ${getCheckedCSS(checked, 'color', hoverColor, darkGreyColor)};
+  `;
+};
 export const BasicWrap = styled(CommonWrap)`
   position: relative;
-  ${getChildSpanHoverCSS('color')};
+  ${getBasicTextHoverColor};
 `;
 BasicWrap.displayName = 'BasicWrap';
 
-const getBasicTextColor = props => {
-  const { checked } = props;
-  return getCheckedCSS(checked, 'color', hoverColor, darkGreyColor);
-};
-
 export const BasicTextContainer = styled.span`
   width: 100%;
-  ${getBasicTextColor};
 `;
 
 export const BasicText = styled.span`
@@ -246,13 +276,20 @@ export const PullContainer = styled.span`
   transition: all 0.3s;
   ${getDefaultBorder};
   border-left: 0;
-  ${HoverBackgroundOrBorder};
+  ${HoverBackgroundAndBorderAndTextColor};
 `;
 PullContainer.displayName = 'DropMenuPullButton';
 
 const getSeparatorBorderCheckedCSS = props => {
-  const { type, iconChecked, buttonChecked } = props;
+  const { type, iconChecked, buttonChecked, Theme, disabled } = props;
+  if (disabled) {
+    return `border-color: ${disableColor}`;
+  }
   const checked = iconChecked || buttonChecked;
+
+  const { color } = Theme;
+  const targetColor = color || themeColor;
+  const { hoverColor } = colorsFunc(targetColor);
 
   const primaryAttrValue = `
     ${getCheckedCSS(checked, 'border-color', hoverColor, lightGreyColor)};

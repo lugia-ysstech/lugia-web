@@ -16,7 +16,7 @@ for (let i = 0; i < 10; i++) {
     <MenuItem
       key={i}
       onClick={rest => {
-        console.info(rest);
+        // console.info(rest);
       }}
     >
       {i}
@@ -26,7 +26,12 @@ for (let i = 0; i < 10; i++) {
 
 const Box = styled.div`
   display: inline-block;
-  margin: 50px;
+  margin: 30px;
+`;
+
+const H2 = styled.h2`
+  margin: 30px;
+  text-align: center;
 `;
 
 export default class extends React.Component<any, any> {
@@ -36,7 +41,7 @@ export default class extends React.Component<any, any> {
       menu: (
         <Menu
           onClick={(...rest) => {
-            console.info('Menuclick', rest);
+            // console.info('Menuclick', rest);
           }}
         >
           {items}
@@ -47,70 +52,144 @@ export default class extends React.Component<any, any> {
 
   render() {
     const { menu } = this.state;
+    const defaultView = {
+      [Widget.DropMenu]: { width: 80 },
+    };
+
     const view = {
-      [Widget.DropMenuButton]: { width: 180 },
-      [Widget.DropMenu]: { width: 160 },
+      [Widget.DropMenuButton]: { width: 120, color: '#E01861' },
+      [Widget.DropMenu]: { width: 100 },
     };
     return (
       <div>
-        <Theme config={view}>
-          {/* <h3>Type: default ; Divided: default; => Top Hover</h3> */}
+        <H2>Default DropMenuButton</H2>
+        <Theme config={defaultView}>
           <Box>
-            <DropMenu menus={menu} align={'top'} action={['hover']} hideAction={['hover']}>
-              <DropMenuButton onClick={this.onClick}>Hover Right</DropMenuButton>
+            <DropMenu menus={menu} align={'bottom'} action={'hover'} hideAction={'hover'}>
+              <DropMenuButton onClick={this.onClick}>Hover</DropMenuButton>
             </DropMenu>
           </Box>
 
-          {/* <h3>Type: default => Divided: default;TopLeft Click</h3> */}
           <Box>
-            <DropMenu menus={menu} align={'topLeft'}>
-              <DropMenuButton onClick={this.onClick}>Click Right</DropMenuButton>
-            </DropMenu>
-          </Box>
-
-          {/* <h3>Type: primary ;Divided: default; TopRight Hover</h3> */}
-          <Box>
-            <DropMenu menus={menu} align={'topRight'} action={['hover']} hideAction={['hover']}>
+            <DropMenu menus={menu} align={'bottomLeft'} action={'click'} hideAction={'click'}>
               <DropMenuButton onClick={this.onClick} type="primary">
-                Hover Right
+                Click
               </DropMenuButton>
             </DropMenu>
           </Box>
 
-          {/* <h3>Type: default ;Divided: false; bottom Hover</h3> */}
           <Box>
-            <DropMenu menus={menu} align={'bottom'} action={['hover']} hideAction={['hover']}>
+            <DropMenu menus={menu} align={'bottomRight'} action={'hover'} hideAction={'hover'}>
               <DropMenuButton divided={false} onClick={this.onClick}>
                 Hover me
               </DropMenuButton>
             </DropMenu>
           </Box>
 
-          {/* <h3>Type: default ;Divided: false; bottomLeft Click</h3> */}
           <Box>
-            <DropMenu menus={menu} align={'bottomLeft'} action={['click']} hideAction={['click']}>
+            <DropMenu menus={menu} align={'bottomLeft'} action={'click'} hideAction={'click'}>
               <DropMenuButton type="primary" divided={false} onClick={this.onClick}>
-                參數設置
+                Click me
               </DropMenuButton>
             </DropMenu>
           </Box>
 
-          {/* <h3>Type: basic ; bottomRight Click</h3> */}
           <Box>
-            <DropMenu menus={menu} align={'bottomRight'} action={['hover']} hideAction={['hover']}>
+            <DropMenu menus={menu} align={'bottomRight'} action={'hover'} hideAction={'hover'}>
               <DropMenuButton type="basic" onClick={this.onClick}>
+                Basic
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+        </Theme>
+
+        <H2>Colorful DropMenuButton</H2>
+        <Theme config={view}>
+          <Box>
+            <DropMenu menus={menu} align={'topLeft'}>
+              <DropMenuButton direction={'up'} onClick={this.onClick}>
+                Click Right
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+
+          <Box>
+            <DropMenu menus={menu} align={'topRight'} action={'hover'} hideAction={'hover'}>
+              <DropMenuButton direction={'up'} onClick={this.onClick} type="primary">
+                Hover Right
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+
+          <Box>
+            <DropMenu menus={menu} align={'bottom'} action={'click'} hideAction={'click'}>
+              <DropMenuButton divided={false} onClick={this.onClick}>
+                Click me
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+
+          <Box>
+            <DropMenu menus={menu} align={'bottomRight'} action={'hover'} hideAction={'hover'}>
+              <DropMenuButton type="primary" divided={false} onClick={this.onClick}>
                 Hover me
               </DropMenuButton>
             </DropMenu>
           </Box>
+
           <Box>
-            <DropMenu
-              menus={menu}
-              align={'bottomRight'}
-              action={['click', 'focus']}
-              hideAction={['click', 'focus']}
-            >
-              <Button onClick={this.onClick}>Hello</Button>
+            <DropMenu menus={menu} align={'top'} action={'click'} hideAction={'click'}>
+              <DropMenuButton type="basic" direction={'up'} onClick={this.onClick}>
+                Click me
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+        </Theme>
+
+        <H2>Disabled DropMenuButton</H2>
+        <Theme config={view}>
+          <Box>
+            <DropMenu menus={menu} align={'topLeft'}>
+              <DropMenuButton disabled={true} direction={'up'} onClick={this.onClick}>
+                Click Right
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+
+          <Box>
+            <DropMenu menus={menu} align={'topRight'} action={'hover'} hideAction={'hover'}>
+              <DropMenuButton
+                disabled={true}
+                direction={'up'}
+                onClick={this.onClick}
+                type="primary"
+              >
+                Hover Right
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+
+          <Box>
+            <DropMenu menus={menu} align={'bottom'} action={'click'} hideAction={'click'}>
+              <DropMenuButton disabled={true} divided={false} onClick={this.onClick}>
+                Click me
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+
+          <Box>
+            <DropMenu menus={menu} align={'bottomRight'} action={'hover'} hideAction={'hover'}>
+              <DropMenuButton disabled={true} type="primary" divided={false} onClick={this.onClick}>
+                Hover me
+              </DropMenuButton>
+            </DropMenu>
+          </Box>
+
+          <Box>
+            <DropMenu menus={menu} align={'bottom'} action={'click'} hideAction={'click'}>
+              <DropMenuButton disabled={true} type="basic" onClick={this.onClick}>
+                Click me
+              </DropMenuButton>
             </DropMenu>
           </Box>
         </Theme>
@@ -118,7 +197,11 @@ export default class extends React.Component<any, any> {
     );
   }
 
+  onPopupVisibleChange = visible => {
+    console.log(visible);
+  };
+
   onClick = (...rest) => {
-    console.log('ClickLeftButton', rest);
+    // console.log('ClickLeftButton', rest);
   };
 }

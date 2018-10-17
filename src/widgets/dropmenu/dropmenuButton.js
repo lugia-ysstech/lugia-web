@@ -26,6 +26,7 @@ import {
   DevidedTextContainer,
 } from '../css/dropmenubutton';
 
+const direction = 'up' | 'down';
 type DropMenuButtonProps = {
   getTheme: Function,
   divided: boolean,
@@ -35,6 +36,8 @@ type DropMenuButtonProps = {
   onClick?: Function,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
+  disabled: boolean,
+  direction: direction,
 };
 
 type DropMenuButtonState = {
@@ -50,6 +53,8 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     },
     divided: true,
     type: 'customs',
+    disabled: false,
+    direction: 'down',
   };
 
   constructor(props: DropMenuButtonProps) {
@@ -70,22 +75,35 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     return divided ? this.getDevidedButton() : this.getNoDevidedButton();
   };
 
-  getBasicButton = () => {
-    const { getTheme, children } = this.props;
-    const { hasButtonChecked } = this.state;
+  getIconClass = (direction: direction) => {
+    return direction === 'up' ? 'lugia-icon-direction_up' : 'lugia-icon-direction_down';
+  };
 
+  getBasicButton = () => {
+    const { props, state } = this;
+    const { getTheme, children, disabled, direction } = props;
+    const { hasButtonChecked } = state;
+    const iconClass = this.getIconClass(direction);
     return (
       <BasicContainer Theme={getTheme()}>
         <BasicWrap
+          disabled={disabled}
           onClick={this.handleClickWrap}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
+          Theme={getTheme()}
+          checked={hasButtonChecked}
         >
-          <CheckInput type="button" onBlur={this.handleButtonBlur} />
-          <BasicTextContainer checked={hasButtonChecked}>
+          <CheckInput
+            disabled={disabled}
+            type="button"
+            onClick={this.handleLeftButtonClick}
+            onBlur={this.handleButtonBlur}
+          />
+          <BasicTextContainer Theme={getTheme()} checked={hasButtonChecked} disabled={disabled}>
             <BasicText>{children}</BasicText>
             <BasicIconWrap>
-              <CommonIcon iconClass="lugia-icon-direction_down" />
+              <CommonIcon iconClass={iconClass} />
             </BasicIconWrap>
           </BasicTextContainer>
         </BasicWrap>
@@ -94,33 +112,45 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   getDevidedButton = () => {
-    const { divided, type, getTheme, children } = this.props;
-    const { hasIconChecked, hasButtonChecked } = this.state;
+    const { props, state } = this;
+    const { divided, type, getTheme, children, disabled, direction } = props;
+    const { hasIconChecked, hasButtonChecked } = state;
+    const iconClass = this.getIconClass(direction);
     return (
-      <DividedContainer divided={divided} type={type} Theme={getTheme()}>
+      <DividedContainer disabled={disabled} divided={divided} type={type} Theme={getTheme()}>
         <SeparatorBorder
+          disabled={disabled}
           iconChecked={hasIconChecked}
           buttonChecked={hasButtonChecked}
           type={type}
+          Theme={getTheme()}
         />
         <DividedWrap>
-          <DevidedTextContainer type={type} checked={hasButtonChecked}>
+          <DevidedTextContainer
+            Theme={getTheme()}
+            disabled={disabled}
+            type={type}
+            checked={hasButtonChecked}
+          >
             {children}
             <CheckInput
               type="button"
+              disabled={disabled}
               onBlur={this.handleButtonBlur}
               onClick={this.handleLeftButtonClick}
             />
           </DevidedTextContainer>
           <PullContainer
+            disabled={disabled}
             type={type}
+            Theme={getTheme()}
             checked={hasIconChecked}
             onClick={this.handleIconClick}
             onMouseEnter={this.onMouseEnter}
             onMouseLeave={this.onMouseLeave}
           >
-            <CheckInput type="button" onBlur={this.handleIconBlur} />
-            <CommonIcon iconClass="lugia-icon-direction_down" />
+            <CheckInput disabled={disabled} type="button" onBlur={this.handleIconBlur} />
+            <CommonIcon iconClass={iconClass} />
           </PullContainer>
         </DividedWrap>
       </DividedContainer>
@@ -128,12 +158,13 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   getNoDevidedButton = () => {
-    const { divided, type, getTheme, children } = this.props;
+    const { divided, type, getTheme, children, disabled, direction } = this.props;
     const { hasButtonChecked } = this.state;
-
+    const iconClass = this.getIconClass(direction);
     return (
       <NoDividedContainer
         type={type}
+        disabled={disabled}
         Theme={getTheme()}
         checked={hasButtonChecked}
         divided={divided}
@@ -141,11 +172,16 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        <CheckInput type="button" onBlur={this.handleButtonBlur} />
+        <CheckInput
+          disabled={disabled}
+          onClick={this.handleLeftButtonClick}
+          type="button"
+          onBlur={this.handleButtonBlur}
+        />
         <NoDividedWrap>
           <TextContainer>{children}</TextContainer>
           <NoDividedIconWrap>
-            <CommonIcon iconClass="lugia-icon-direction_down" />
+            <CommonIcon iconClass={iconClass} />
           </NoDividedIconWrap>
         </NoDividedWrap>
       </NoDividedContainer>
@@ -153,12 +189,19 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   handleClickWrap = e => {
-    const { onClick } = this.props;
+    const { onClick, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     onClick && onClick(e);
     this.onTriggerShow(e);
   };
 
   handleIconClick = e => {
+    const { disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     this.onTriggerShow(e);
     this.setState({
       hasIconChecked: true,
@@ -166,7 +209,10 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   handleLeftButtonClick = e => {
-    const { onClick } = this.props;
+    const { onClick, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     onClick && onClick(e);
     this.setState({
       hasButtonChecked: true,
@@ -180,7 +226,10 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   onTriggerShow(e) {
-    const { _onClick } = this.props;
+    const { _onClick, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     _onClick && _onClick(e);
   }
   handleButtonBlur = () => {
@@ -190,12 +239,18 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   onMouseEnter = e => {
-    const { onMouseEnter } = this.props;
+    const { onMouseEnter, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     onMouseEnter && onMouseEnter(e);
   };
 
   onMouseLeave = e => {
-    const { onMouseLeave } = this.props;
+    const { onMouseLeave, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     onMouseLeave && onMouseLeave(e);
   };
 }
