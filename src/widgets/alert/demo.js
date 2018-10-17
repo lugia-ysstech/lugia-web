@@ -83,6 +83,8 @@ export default class AlertDemo extends React.Component<any, any> {
           showIcon
         />
 
+        <Alert showIcon icon="lugia-icon-logo_twitter" message="Alert-info" />
+
         <p>Theme</p>
         <Theme config={view}>
           <Alert message="Alert-info" />

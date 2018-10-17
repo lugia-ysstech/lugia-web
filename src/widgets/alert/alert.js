@@ -43,6 +43,7 @@ export default ThemeProvider(
         message,
         closable = false,
         description,
+        icon,
       } = this.props;
       const { visible, height, animateStart } = this.state;
       const hasDect = this.isInProps('description');
@@ -64,7 +65,7 @@ export default ThemeProvider(
                     theme={getTheme()}
                     hasDect={hasDect}
                     type={type}
-                    iconClass={AlertIcons[type]}
+                    iconClass={icon || AlertIcons[type]}
                   />
                 ) : null}
                 <Message hasDect={hasDect}>{message}</Message>

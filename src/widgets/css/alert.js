@@ -22,6 +22,7 @@ export type AlertProps = {
   banner?: boolean,
   description?: string | React.ReactNode,
   onClose?: Function,
+  icon?: string,
 };
 export type AlertState = {
   visible: boolean,
