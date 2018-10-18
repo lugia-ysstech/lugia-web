@@ -10,13 +10,11 @@ import Wrapper from '../demo';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Tabs, { _Tabs_ } from '../index';
-import { data, strangeData, children } from '../demo';
+import Tabs from '../index';
+import { data, strangeData } from '../demo';
 import { isVertical } from '../utils';
 import Widgets from '../../consts';
 import Theme from '../../theme/';
-import { delay } from '@lugia/react-test-utils';
-const { mockFunction, mockObject } = require('@lugia/jverify');
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('tabsDemo', () => {
@@ -110,7 +108,7 @@ describe('tabsDemo', () => {
   }
   testDeleteClick(createTabs({ data: strangeData, onDeleteClick, tabType: 'card' }));
   testDeleteClick(createTabs({ data: strangeData, onDeleteClick, tabType: 'window' }));
-  testDeleteClick(createTabs({ data, onDeleteClick, tabType: 'window' }));
+
   it('props onNextClick pagedType: page ', async () => {
     let onNextClick;
     const promise = new Promise(resolve => {
@@ -123,8 +121,32 @@ describe('tabsDemo', () => {
         <Tabs data={strangeData} onNextClick={onNextClick} pagedType={'page'} tabType="card" />
       </Theme>
     );
-    target.unmount();
-    target.mount();
+    target
+      .find('page')
+      .at(1)
+      .simulate('click');
+
+    getCmp(target.children()).setState({ currentPage: 1 });
+    await promise;
+    expect(getCmp(target.children()).state.currentPage).toBe(1);
+  });
+
+  it('props onPreClick pagedType: page ', async () => {
+    let onPreClick;
+    const promise = new Promise(resolve => {
+      onPreClick = e => {
+        resolve();
+      };
+    });
+    const target = mount(
+      <Theme config={{ [Widgets.Tabs]: { width: 500 } }}>
+        <Tabs data={strangeData} onPreClick={onPreClick} pagedType={'page'} tabType="card" />
+      </Theme>
+    );
+    target
+      .find('page')
+      .at(0)
+      .simulate('click');
     target
       .find('page')
       .at(1)
@@ -132,5 +154,54 @@ describe('tabsDemo', () => {
     getCmp(target.children()).setState({ currentPage: 1 });
     await promise;
     expect(getCmp(target.children()).state.currentPage).toBe(1);
+  });
+
+  const onChange = () => {};
+  it('props onChange limit activityKey="5" ', async () => {
+    let onChange;
+    const promise = new Promise(resolve => {
+      onChange = e => {
+        resolve(e);
+      };
+    });
+    const target = mount(<Tabs data={strangeData} activityKey="5" onChange={onChange} />);
+    const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
+    const tabpane = target.find(type);
+    expect(getCmp(target).state.activityKey).toBe('5');
+    tabpane.at(3).simulate('click');
+    await promise;
+    expect(getCmp(target).state.activityKey).toBe('5');
+  });
+
+  it('props onChange activityKey=state.activityKey', async () => {
+    let onChange;
+    const promise = new Promise(resolve => {
+      onChange = e => {
+        resolve(e);
+      };
+    });
+    const target = mount(<Tabs data={strangeData} onChange={onChange} />);
+    const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
+    const tabpane = target.find(type);
+    tabpane.at(5).simulate('click');
+    await promise;
+    expect(getCmp(target).state.activityKey).toBe('5');
+  });
+
+  it('props onChange activityKey!=state.activityKey', async () => {
+    let onChange;
+    const promise = new Promise(resolve => {
+      onChange = e => {
+        resolve(e);
+      };
+    });
+    const target = mount(<Tabs data={strangeData} onChange={onChange} />);
+    const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
+    const tabpane = target.find(type);
+    getCmp(target).setState({ activityKey: '5' });
+    expect(getCmp(target).state.activityKey).toBe('5');
+    tabpane.at(3).simulate('click');
+    await promise;
+    expect(getCmp(target).state.activityKey).toBe('_key_3');
   });
 });
