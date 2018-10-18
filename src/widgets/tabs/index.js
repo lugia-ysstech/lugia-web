@@ -17,6 +17,7 @@ import {
   ArrowContainerWidth,
   backgroundColor,
   CardBorderAndMarginWidth,
+  CardMarginRight,
   getAddBackground,
   getAddButtonBottom,
   getAddButtonDisplay,
@@ -34,24 +35,23 @@ import {
   getTabpaneBorder,
   hContainerHeight,
   hContainerWidth,
+  LineMarginLeft,
   lineWidth,
   vContainerHeight,
   WindowMarginLeft,
   YtabsHeight,
-  CardMarginRight,
-  LineMarginLeft,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import {
+  addActivityKey2Data,
+  addWidth2Data,
   computePage,
   isVertical,
   matchType,
   plusWidth,
-  addActivityKey2Data,
-  addWidth2Data,
 } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
@@ -273,28 +273,26 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { activityKey, defaultActivityKey, defaultData, data, children } = props;
     const hasActivityKeyInprops = 'activityKey' in props;
     const hasDataInprops = 'data' in props;
+    let configData;
     if (!state) {
-      const childrenData = [];
-      React.Children.map(children, child => {
-        childrenData.push(child.props);
-      });
+      if (hasDataInprops) {
+        configData = data ? data : [];
+      } else {
+        if (Array.isArray(children) && children.length > 0) {
+          configData = [];
+          React.Children.map(children, child => {
+            configData && configData.push(child.props);
+          });
+        }
+      }
+      const theData = configData ? addActivityKey2Data(configData) : defaultData ? defaultData : [];
       return {
-        data: hasDataInprops
-          ? addActivityKey2Data(data)
-          : addActivityKey2Data(childrenData)
-            ? addActivityKey2Data(childrenData)
-            : state.data
-              ? state.data
-              : defaultData
-                ? defaultData
-                : [],
+        data: theData,
         activityKey: hasActivityKeyInprops
           ? activityKey
           : defaultActivityKey
             ? defaultActivityKey
-            : hasDataInprops
-              ? addActivityKey2Data(data)[0].activityKey
-              : addActivityKey2Data(childrenData)[0].activityKey,
+            : theData[0].activityKey,
         currentPage: 0,
         totalPage: 1,
         pagedCount: 0,
@@ -694,23 +692,22 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { pagedType } = this.props;
 
     if (pagedType === 'page') {
-      if (matchType(type, 'next')) {
-        currentPage++;
-      } else if (matchType(type, 'pre')) {
-        currentPage--;
-      }
-      currentPage = Math.max(Math.min(currentPage, totalPage - 1), 0);
+      currentPage = this.changePage(currentPage, totalPage, type);
     } else {
-      if (matchType(type, 'next')) {
-        pagedCount++;
-      } else if (matchType(type, 'pre')) {
-        pagedCount--;
-      }
+      pagedCount = this.changePage(pagedCount, childrenSize.length, type);
     }
-    pagedCount = Math.max(Math.min(pagedCount, childrenSize.length - 1), 0);
 
     this.setState({ currentPage, pagedCount });
   };
+
+  changePage(currentPage: number, totalPage: number, type: EditEventType) {
+    if (matchType(type, 'next')) {
+      currentPage++;
+    } else if (matchType(type, 'pre')) {
+      currentPage--;
+    }
+    return Math.max(Math.min(currentPage, totalPage - 1), 0);
+  }
 }
 
 const TargetTabs = ThemeProvider(KeyBoardEventAdaptor(TabsBox), Widget.Tabs);
