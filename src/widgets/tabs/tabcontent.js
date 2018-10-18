@@ -32,7 +32,7 @@ type TabContentProps = {
 
 class TabContent extends Component<TabContentProps, TabContentState> {
   static defaultProps = {};
-  static displayName = Widget.Tabpane;
+  static displayName = Widget.TabContent;
 
   constructor(props: TabContentProps) {
     super(props);

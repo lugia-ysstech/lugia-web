@@ -74,7 +74,7 @@ const Aside = 'sv_widget_Aside';
 const Affix = 'sv_widget_Affix';
 
 const Tabs = 'sv_widget_Tabs';
-const Tabpano = 'sv_widget_Tabpano';
+const Tabpane = 'sv_widget_Tabpane';
 const BackTop = 'sv_widget_BackTop';
 const Progress = 'sv_widget_Progress';
 const TabsContainer = 'sv_widget_TabsContainer';
@@ -139,7 +139,7 @@ export default {
   Aside,
   QueryInput,
   Tabs,
-  Tabpano,
+  Tabpane,
   Affix,
   BackTop,
   Progress,
