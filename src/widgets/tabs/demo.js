@@ -19,7 +19,7 @@ const RightWrapper = styled.div`
   margin: 50px;
   text-align: right;
 `;
-export const data = [
+export const defaultData = [
   {
     icon: 'lugia-icon-financial_archive',
     title: 1111111111,
@@ -29,7 +29,6 @@ export const data = [
     icon: 'lugia-icon-financial_archive',
     title: 22222222222,
     content: 22222,
-    activityKey: '1',
   },
   {
     icon: 'lugia-icon-financial_archive',
@@ -60,22 +59,22 @@ export const data = [
     icon: 'lugia-icon-financial_archive',
     title: 88888,
     content: 888888,
-    activityKey: '7',
   },
 ];
-export const strangeData = [
+export const hasActivityKeyData = [
   {
     title: 1111,
     content: <div>1111111</div>,
+    activityKey: '0',
   },
   {
-    activityKey: '1',
     title: 222222,
     content: (
       <div>
         <div>222222</div>
       </div>
     ),
+    activityKey: '1',
   },
   {
     activityKey: '2',
@@ -89,6 +88,7 @@ export const strangeData = [
     ),
   },
   {
+    activityKey: '3',
     title: 44444,
     content: (
       <div>
@@ -100,6 +100,7 @@ export const strangeData = [
     ),
   },
   {
+    activityKey: '4',
     title: 55555,
     content: 55555,
   },
@@ -109,6 +110,7 @@ export const strangeData = [
     content: 66666,
   },
   {
+    activityKey: '6',
     title: 777777,
     content: 77777,
   },
@@ -119,7 +121,7 @@ export const strangeData = [
   },
 ];
 export const children = [
-  <Tabpane title={'1111'} content={'11111'} />,
+  <Tabpane title={'1111'} content={'11111'} activityKey={'0'} />,
   <Tabpane title={'2222'} content={<div>2222</div>} activityKey={'1'} />,
   <Tabpane
     title={'3333'}
@@ -127,6 +129,54 @@ export const children = [
       <div>
         <div>
           <div>3333</div>
+        </div>
+      </div>
+    }
+    activityKey={'2'}
+  />,
+  <Tabpane
+    title={'4444'}
+    content={
+      <div>
+        <div>
+          <div>44444</div>
+        </div>
+      </div>
+    }
+    activityKey={'3'}
+  />,
+  <Tabpane
+    title={'555555'}
+    content={
+      <div>
+        <div>
+          <div>55555</div>
+        </div>
+      </div>
+    }
+    activityKey={'4'}
+  />,
+  <Tabpane
+    title={'666666'}
+    content={
+      <div>
+        <div>
+          <div>66666</div>
+        </div>
+      </div>
+    }
+    activityKey={'5'}
+  />,
+];
+export const longChildren = [
+  <Tabpane title={'11111'} content={'11111111111111111111111111'} />,
+  <Tabpane title={'2222'} content={<div>22222222222222</div>} />,
+  <Tabpane
+    title={'3333'}
+    content={
+      <div>
+        <div>
+          <div>33333333</div>
         </div>
       </div>
     }
@@ -150,10 +200,38 @@ export const children = [
         </div>
       </div>
     }
-    activityKey={'4'}
+  />,
+  <Tabpane
+    title={'666666'}
+    content={
+      <div>
+        <div>
+          <div>66666</div>
+        </div>
+      </div>
+    }
   />,
 ];
-const longChildren = [
+export const shortChildren = [
+  <Tabpane
+    title={'11111'}
+    content={'11111111111111111111111111'}
+    icon={'lugia-icon-financial_archive'}
+  />,
+  <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={'1'} />,
+  <Tabpane
+    title={'3333'}
+    content={
+      <div>
+        <div>
+          <div>33333333</div>
+        </div>
+      </div>
+    }
+    activityKey={'2'}
+  />,
+];
+const hasActivityKeyChildren = [
   <Tabpane title={'11111'} content={'1111'} activityKey={'0'} />,
   <Tabpane title={'2222'} content={<div>2222</div>} activityKey={'1'} />,
   <Tabpane
@@ -165,6 +243,7 @@ const longChildren = [
         </div>
       </div>
     }
+    activityKey={'2'}
   />,
   <Tabpane
     title={'44444'}
@@ -175,6 +254,7 @@ const longChildren = [
         </div>
       </div>
     }
+    activityKey={'3'}
   />,
   <Tabpane
     title={'555555'}
@@ -185,6 +265,7 @@ const longChildren = [
         </div>
       </div>
     }
+    activityKey={'4'}
   />,
   <Tabpane
     title={'666666'}
@@ -206,6 +287,7 @@ const longChildren = [
         </div>
       </div>
     }
+    activityKey={'6'}
   />,
   <Tabpane
     title={'8888888'}
@@ -304,7 +386,7 @@ export default () => {
             onPreClick={onPreClick}
             onNextClick={onNextClick}
             children={children}
-            data={data}
+            data={defaultData}
           />
         </Wrapper>
 
@@ -315,7 +397,7 @@ export default () => {
             tabPosition={'left'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-            children={longChildren}
+            children={hasActivityKeyChildren}
           />
         </Wrapper>
         <p>children tabPosition=right</p>
@@ -325,25 +407,8 @@ export default () => {
             tabPosition={'right'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-          >
-            <Tabpane
-              title={'11111'}
-              content={'11111111111111111111111111'}
-              icon={'lugia-icon-financial_archive'}
-            />
-            <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={'1'} />
-            <Tabpane
-              title={'3333'}
-              content={
-                <div>
-                  <div>
-                    <div>33333333</div>
-                  </div>
-                </div>
-              }
-              activityKey={'2'}
-            />
-          </Tabs>
+            children={shortChildren}
+          />
         </RightWrapper>
         <Wrapper>
           <Tabs
@@ -351,58 +416,17 @@ export default () => {
             tabPosition={'bottom'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-          >
-            <Tabpane title={'11111'} content={'11111111111111111111111111'} />
-            <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={'1'} />
-            <Tabpane
-              title={'3333'}
-              content={
-                <div>
-                  <div>
-                    <div>33333333</div>
-                  </div>
-                </div>
-              }
-              activityKey={'2'}
-            />
-            <Tabpane
-              title={'4444'}
-              content={
-                <div>
-                  <div>
-                    <div>44444</div>
-                  </div>
-                </div>
-              }
-              activityKey={'3'}
-            />
-            <Tabpane
-              title={'555555'}
-              content={
-                <div>
-                  <div>
-                    <div>55555</div>
-                  </div>
-                </div>
-              }
-              activityKey={'4'}
-            />
-            <Tabpane
-              title={'666666'}
-              content={
-                <div>
-                  <div>
-                    <div>66666</div>
-                  </div>
-                </div>
-              }
-              activityKey={'5'}
-            />
-          </Tabs>
+            children={longChildren}
+          />
         </Wrapper>
         <Wrapper>
           <p>data tabPosition=top</p>
-          <Tabs tabType={'line'} data={data} onPreClick={onPreClick} onNextClick={onNextClick} />
+          <Tabs
+            tabType={'line'}
+            data={defaultData}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+          />
         </Wrapper>
         <br />
         <Wrapper>
@@ -410,7 +434,7 @@ export default () => {
           <Tabs
             tabType={'line'}
             tabPosition={'left'}
-            data={strangeData}
+            data={hasActivityKeyData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
           />
@@ -421,7 +445,7 @@ export default () => {
           <Tabs
             tabType={'line'}
             tabPosition={'right'}
-            data={strangeData}
+            data={hasActivityKeyData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
             defaultActivityKey={'2'}
@@ -432,7 +456,7 @@ export default () => {
         <Wrapper>
           <Tabs
             tabType={'line'}
-            data={data}
+            data={defaultData}
             tabPosition={'bottom'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
@@ -444,7 +468,7 @@ export default () => {
           <Tabs
             tabType={'card'}
             pagedType={'single'}
-            data={strangeData}
+            data={hasActivityKeyData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
             onDelClick={onDelClick}
@@ -458,7 +482,7 @@ export default () => {
           <Tabs
             tabType={'window'}
             pagedType={'page'}
-            data={strangeData}
+            data={hasActivityKeyData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
             onDelClick={onDelClick}

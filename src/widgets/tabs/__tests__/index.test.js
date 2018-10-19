@@ -11,7 +11,7 @@ import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tabs from '../index';
-import { data, strangeData } from '../demo';
+import { hasActivityKeyData, defaultData, shortChildren, longChildren } from '../demo';
 import { isVertical } from '../utils';
 import Widgets from '../../consts';
 import Theme from '../../theme/';
@@ -19,7 +19,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('tabsDemo', () => {
   const createTabs = (obj?: Object): any => {
-    const config = obj ? obj : { tabType: 'line', tabPosition: 'bottom', data };
+    const config = obj ? obj : { tabType: 'line', tabPosition: 'bottom', data: hasActivityKeyData };
     return <Tabs {...config} />;
   };
   it('Component JSON', () => {
@@ -36,14 +36,49 @@ describe('tabsDemo', () => {
   };
 
   it('props defaultActivityKey', () => {
-    const target = mount(createTabs({ defaultActivityKey: '2', data }));
+    const target = mount(createTabs({ defaultActivityKey: '2', data: hasActivityKeyData }));
     const { activityKey } = getCmp(target).state;
     expect(activityKey).toBe('2');
   });
   it('props activityKey', () => {
-    const target = mount(createTabs({ defaultActivityKey: '2', activityKey: '1', data }));
+    const target = mount(createTabs({ activityKey: '2', data: hasActivityKeyData }));
     const { activityKey } = getCmp(target).state;
-    expect(activityKey).toBe('1');
+    expect(activityKey).toBe('2');
+  });
+  it('props defaultData', () => {
+    const target = mount(createTabs({ defaultData }));
+    const { data } = getCmp(target).state;
+    expect(data).toBe(data);
+  });
+  it('props data', () => {
+    const target = mount(createTabs({ data: hasActivityKeyData, tabPosition: 'left' }));
+    const { data } = getCmp(target).state;
+    expect(data).toBe(data);
+  });
+  it('props data && defaultData', () => {
+    const target = mount(createTabs({ data: hasActivityKeyData, defaultData }));
+    const { data } = getCmp(target).state;
+    expect(data).toBe(data);
+  });
+  it('props data []', () => {
+    const target = mount(createTabs({ data: [] }));
+    const { data } = getCmp(target).state;
+    expect(data).toEqual([]);
+  });
+  it('props children shortChildren', () => {
+    const target = mount(createTabs({ children: shortChildren }));
+    const { activityKey } = getCmp(target).state;
+    expect(activityKey).toBe('_key_0');
+  });
+  it('props children longChildren', () => {
+    const target = mount(createTabs({ children: longChildren }));
+    const { activityKey } = getCmp(target).state;
+    expect(activityKey).toBe('_key_0');
+  });
+  it('props children&&data', () => {
+    const target = mount(createTabs({ data: hasActivityKeyData, children: shortChildren }));
+    const { activityKey } = getCmp(target).state;
+    expect(activityKey).toBe('0');
   });
 
   function testOnTabClick(component: any, expIndex: number, expActicityKey: string) {
@@ -55,15 +90,27 @@ describe('tabsDemo', () => {
       expect(getCmp(target).state.activityKey).toBe(expActicityKey);
     });
   }
-  testOnTabClick(createTabs(), 0, '_key_0');
+  testOnTabClick(createTabs(), 0, '0');
   testOnTabClick(createTabs(), 1, '1');
-  testOnTabClick(createTabs(), 2, '_key_2');
-  testOnTabClick(createTabs(), 3, '_key_3');
-  testOnTabClick(createTabs({ data, tabType: 'card' }), 2, '_key_2');
-  testOnTabClick(createTabs({ data, tabType: 'window' }), 2, '_key_2');
-  testOnTabClick(createTabs({ data, tabType: 'line', tabPosition: 'left' }), 1, '1');
-  testOnTabClick(createTabs({ data, tabType: 'line', tabPosition: 'right' }), 2, '_key_2');
-  testOnTabClick(createTabs({ data, tabType: 'line', tabPosition: 'top' }), 3, '_key_3');
+  testOnTabClick(createTabs(), 2, '2');
+  testOnTabClick(createTabs(), 3, '3');
+  testOnTabClick(createTabs({ data: hasActivityKeyData, tabType: 'card' }), 2, '2');
+  testOnTabClick(createTabs({ data: hasActivityKeyData, tabType: 'window' }), 2, '2');
+  testOnTabClick(
+    createTabs({ data: hasActivityKeyData, tabType: 'line', tabPosition: 'left' }),
+    1,
+    '1'
+  );
+  testOnTabClick(
+    createTabs({ data: hasActivityKeyData, tabType: 'line', tabPosition: 'right' }),
+    2,
+    '2'
+  );
+  testOnTabClick(
+    createTabs({ data: hasActivityKeyData, tabType: 'line', tabPosition: 'top' }),
+    3,
+    '3'
+  );
 
   function testActivityKey(component: any, expActicityKey: string) {
     it('props activityKey', () => {
@@ -74,8 +121,8 @@ describe('tabsDemo', () => {
       expect(getCmp(target).state.activityKey).toBe(expActicityKey);
     });
   }
-  testActivityKey(createTabs({ data, activityKey: '1' }), '1');
-  testActivityKey(createTabs({ data, activityKey: '3' }), '3');
+  testActivityKey(createTabs({ data: hasActivityKeyData, activityKey: '1' }), '1');
+  testActivityKey(createTabs({ data: hasActivityKeyData, activityKey: '3' }), '3');
 
   it('props onAddClick', async () => {
     let onAddClick;
@@ -88,26 +135,31 @@ describe('tabsDemo', () => {
       title: 'new tabs',
       content: 'new tabs content',
     };
-    const target = mount(<Tabs data={strangeData} tabType="card" onAddClick={onAddClick} />);
+    const target = mount(<Tabs data={hasActivityKeyData} tabType="card" onAddClick={onAddClick} />);
     target.find('addIcon').simulate('click', { add });
     expect(await promise).toBe(add);
   });
 
   const onDeleteClick = () => {};
-  function testDeleteClick(component: any) {
-    it('props onDeleteClick', () => {
-      const target = mount(component);
-      const { data, children } = getCmp(target).props;
-      const length = data ? data.length : children ? children.length : 0;
-      target
-        .find('deleteIcon')
-        .at(1)
-        .simulate('click');
-      expect(getCmp(target).state.data.length).toBe(length - 1);
+  it('props onDeleteClick', async () => {
+    let onDeleteClick;
+    const promise = new Promise(resolve => {
+      onDeleteClick = e => {
+        resolve();
+      };
     });
-  }
-  testDeleteClick(createTabs({ data: strangeData, onDeleteClick, tabType: 'card' }));
-  testDeleteClick(createTabs({ data: strangeData, onDeleteClick, tabType: 'window' }));
+    const target = mount(
+      <Tabs data={hasActivityKeyData} onDeleteClick={onDeleteClick} tabType="card" />
+    );
+    const { data, children } = getCmp(target).props;
+    target
+      .find('deleteIcon')
+      .at(2)
+      .simulate('click');
+    const newData = [...hasActivityKeyData];
+    newData.splice(2, 1);
+    expect(getCmp(target).state.data).toEqual(newData);
+  });
 
   it('props onNextClick pagedType: page ', async () => {
     let onNextClick;
@@ -118,7 +170,12 @@ describe('tabsDemo', () => {
     });
     const target = mount(
       <Theme config={{ [Widgets.Tabs]: { width: 500 } }}>
-        <Tabs data={strangeData} onNextClick={onNextClick} pagedType={'page'} tabType="card" />
+        <Tabs
+          data={hasActivityKeyData}
+          onNextClick={onNextClick}
+          pagedType={'page'}
+          tabType="card"
+        />
       </Theme>
     );
     target
@@ -140,7 +197,7 @@ describe('tabsDemo', () => {
     });
     const target = mount(
       <Theme config={{ [Widgets.Tabs]: { width: 500 } }}>
-        <Tabs data={strangeData} onPreClick={onPreClick} pagedType={'page'} tabType="card" />
+        <Tabs data={hasActivityKeyData} onPreClick={onPreClick} pagedType={'page'} tabType="card" />
       </Theme>
     );
     target
@@ -164,7 +221,7 @@ describe('tabsDemo', () => {
         resolve(e);
       };
     });
-    const target = mount(<Tabs data={strangeData} activityKey="5" onChange={onChange} />);
+    const target = mount(<Tabs data={hasActivityKeyData} activityKey="5" onChange={onChange} />);
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
     expect(getCmp(target).state.activityKey).toBe('5');
@@ -180,7 +237,7 @@ describe('tabsDemo', () => {
         resolve(e);
       };
     });
-    const target = mount(<Tabs data={strangeData} onChange={onChange} />);
+    const target = mount(<Tabs data={hasActivityKeyData} onChange={onChange} />);
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
     tabpane.at(5).simulate('click');
@@ -195,13 +252,13 @@ describe('tabsDemo', () => {
         resolve(e);
       };
     });
-    const target = mount(<Tabs data={strangeData} onChange={onChange} />);
+    const target = mount(<Tabs data={hasActivityKeyData} onChange={onChange} />);
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
     getCmp(target).setState({ activityKey: '5' });
     expect(getCmp(target).state.activityKey).toBe('5');
     tabpane.at(3).simulate('click');
     await promise;
-    expect(getCmp(target).state.activityKey).toBe('_key_3');
+    expect(getCmp(target).state.activityKey).toBe('3');
   });
 });

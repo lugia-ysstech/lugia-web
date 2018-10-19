@@ -4,7 +4,15 @@
  *
  * @flow
  */
-import { isVertical, plusWidth, computePage, matchType, addActivityKey2Data } from '../utils';
+import {
+  isVertical,
+  plusWidth,
+  computePage,
+  matchType,
+  addActivityKey2Data,
+  addWidth2Data,
+} from '../utils';
+import { hasActivityKeyData } from '../demo';
 import type { EditEventType, TabPositionType, TabType } from '../../css/tabs';
 describe('utils', () => {
   function testIsVertical(tabPosition: string, expectValue: boolean) {
@@ -53,4 +61,48 @@ describe('utils', () => {
   testComputePage(200, 330, 2);
   testComputePage(200, 390, 2);
   testComputePage(200, 410, 3);
+
+  const data = [{ a: 'a' }, { a: 'b' }, { a: 'c' }];
+  const singleActivityKey = [{ a: 'a', activityKey: '1' }, { a: 'b' }, { a: 'c' }];
+  const activityKeyDatas = [
+    { a: 'a', activityKey: '_key_0' },
+    { a: 'b', activityKey: '_key_1' },
+    { a: 'c', activityKey: '_key_2' },
+  ];
+  const newSingleActivityKey = [
+    { a: 'a', activityKey: '1' },
+    { a: 'b', activityKey: '_key_1' },
+    { a: 'c', activityKey: '_key_2' },
+  ];
+  const allActivityKey = [
+    { a: 'a', activityKey: '1' },
+    { a: 'b', activityKey: '2' },
+    { a: 'c', activityKey: '3' },
+  ];
+  function testAddActivityKey2Data(paramData: Array<Object>, expectData: Array<Object>) {
+    it(' testAddActivityKey2Data ', () => {
+      expect(addActivityKey2Data(paramData)).toEqual(expectData);
+    });
+  }
+  testAddActivityKey2Data(hasActivityKeyData, hasActivityKeyData);
+  testAddActivityKey2Data(data, activityKeyDatas);
+  testAddActivityKey2Data(singleActivityKey, newSingleActivityKey);
+  testAddActivityKey2Data(allActivityKey, allActivityKey);
+
+  const sampleWidthSize = [1, 2, 3];
+  const anotherWidthSize = [100, 2, 30];
+  const sampleWithWidths = [{ a: 'a', width: 1 }, { a: 'b', width: 2 }, { a: 'c', width: 3 }];
+  const anotherWithWidths = [{ a: 'a', width: 100 }, { a: 'b', width: 2 }, { a: 'c', width: 30 }];
+
+  function testAddWidth2Data(
+    paramData: Array<Object>,
+    widthSize: Array<number>,
+    expectData: Array<Object>
+  ) {
+    it(' testAddWidth2Data ', () => {
+      expect(addWidth2Data(paramData, widthSize)).toEqual(expectData);
+    });
+  }
+  testAddWidth2Data(data, sampleWidthSize, sampleWithWidths);
+  testAddWidth2Data(data, anotherWidthSize, anotherWithWidths);
 });
