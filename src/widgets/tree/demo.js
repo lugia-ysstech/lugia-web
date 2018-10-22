@@ -109,7 +109,7 @@ const onSelect = (selectedKeys, info) => {},
 
 const rowData = [
   { key: '1', title: '1' },
-  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true },
+  { key: '1.1', title: '1.1', pid: '1', path: '1' },
   { key: '1.1.1', title: '1.1.1', pid: '1.1', path: '1/1.1' },
   { key: '1.1.1.1', title: '1.1.1.1', pid: '1.1.1', path: '1/1.1/1.1.1' },
   {
@@ -206,22 +206,7 @@ const config = {
 export default () => {
   return [
     <Theme config={config}>
-      <LimitTree
-        data={[
-          { key: '1', title: 'hello1', igron: false },
-          {
-            key: '1.1',
-            title: 'hello2',
-            pid: '1',
-            isLeaf: false,
-            path: '1',
-            igron: true,
-          },
-        ]}
-        expandAll={true}
-        mutliple={true}
-        igronSelectField={'igron'}
-      />
+      <LimitTree data={rowData} expandAll={true} mutliple={true} igronSelectField={'igron'} />
     </Theme>,
   ];
 };

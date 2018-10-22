@@ -31,7 +31,7 @@ import {
   RadiusSize,
 } from '../css/input';
 
-import { FontSize } from '../css';
+import { FontSize, FontSizeNumber } from '../css';
 import { DefaultHeight } from '../css/menu';
 import {
   MarginRight,
@@ -40,11 +40,12 @@ import {
   lightGreyColor,
   mediumGreyColor,
   blackColor,
+  themeColor,
 } from '../css/inputtag';
 import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 const ClearMenuItemButton = styled(Icon)`
   top: 50%;
   right: ${em(12)};
@@ -102,30 +103,37 @@ const getBorderColor = props => {
   const { focus } = props;
   return focus ? `border-color: ${getInputBorderHoverColor(props)}; ${getFocusShadow(props)};` : '';
 };
-const OutContainer = styled.div`
-  background: white;
-  border: solid ${em(1)} ${getInputBorderColor};
-  border-radius: ${RadiusSize};
-  min-height: ${InputCSS.DefaultHeight};
-  padding-bottom: ${em(3)};
-  ${getBorderColor} :hover {
-    border-color: ${getInputBorderHoverColor};
-  }
-`;
+
 const IconButton: Object = styled(Icon)`
   top: 50%;
   right: 0;
   position: absolute;
   transform: translateY(-50%);
   color: ${lightGreyColor};
+  transition: all 0.3s;
 `;
 
 /** add by szfeng */
 const PullIcon: Object = IconButton.extend`
   font-size: ${FontSize};
 `;
-
 IconButton.displayName = Widget.InputTagClearButton;
+
+const OutContainer = styled.div`
+  background: white;
+  border: solid ${em(1)} ${getInputBorderColor};
+  border-radius: ${RadiusSize};
+  min-height: ${InputCSS.DefaultHeight};
+  padding-bottom: ${em(3)};
+  transition: all 0.3s;
+  ${getBorderColor} :hover {
+    border-color: ${themeColor};
+  }
+  &:hover > div > i {
+    color: ${themeColor};
+  }
+`;
+
 const marginLeft = 5;
 const marginRight = 7;
 
@@ -294,8 +302,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const config = { width: this.getWidth(), height: this.getHeight() };
     const theme = {
       [Widget.DropMenu]: config,
-      [Widget.Icon]: { hoverColor: blackColor },
-      [IconButton.displayName]: { hoverColor: mediumGreyColor },
+      [Widget.Icon]: { hoverColor: themeColor },
+      [IconButton.displayName]: { hoverColor: themeColor },
     };
     const fillFontItem: Function = (cmp: Object): any => (this.fontItem = cmp);
     const font = <FontItem ref={fillFontItem} key="fontItem" />;

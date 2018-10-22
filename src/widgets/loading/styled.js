@@ -1,8 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import { px2emcss } from '../css/units';
-import { FontSize } from '../css/index';
+import { FontSize, FontSizeNumber } from '../css/index';
 
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 type CssProps = {
   circleDiameter?: number,
   width?: number,

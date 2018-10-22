@@ -17,7 +17,7 @@ class RefershIcon extends React.Component<IconProps> {
   static displayName = Widget.RefershIcon;
 
   render() {
-    return <Icon iconClass="sv-icon-android-refresh" key="refresh" {...this.props} />;
+    return <Icon iconClass="lugia-icon-reminder_refresh" key="refresh" {...this.props} />;
   }
 }
 

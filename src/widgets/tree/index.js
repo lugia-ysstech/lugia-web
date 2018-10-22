@@ -18,7 +18,10 @@ import './index.css';
 import TreeUtils from './utils';
 import { deleteValue } from '../utils/index';
 import styled from 'styled-components';
-import { FontSize } from '../css';
+import { FontSizeNumber, FontSize } from '../css';
+import { px2emcss } from '../css/units';
+
+const em = px2emcss(FontSizeNumber);
 
 type RowData = { [key: string]: any };
 type TreeProps = {
@@ -62,7 +65,7 @@ type TreeState = {
 };
 const Empty = styled.span`
   font-size: ${FontSize};
-  line-height: 20px;
+  line-height: ${em(20)};
   text-align: center;
   display: block;
 `;
