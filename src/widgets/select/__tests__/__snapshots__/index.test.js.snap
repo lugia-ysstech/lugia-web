@@ -2,7 +2,7 @@
 
 exports[`Select 单选默认样式 1`] = `
 Array [
-  .c2 {
+  .c3 {
   margin-top: 0.33333333333333337em;
   height: 1.8333333333333335em;
   line-height: 1.8333333333333335em;
@@ -23,7 +23,7 @@ Array [
   padding: 0 1.6666666666666667em 0 0.8333333333333334em;
 }
 
-.c3 {
+.c4 {
   height: 1.6666666666666667em;
   line-height: 1.6666666666666667em;
   white-space: nowrap;
@@ -32,7 +32,7 @@ Array [
   padding: 0;
 }
 
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -40,11 +40,11 @@ Array [
   cursor: pointer;
 }
 
-.c5:hover {
+.c6:hover {
   color: #333333;
 }
 
-.c4 {
+.c5 {
   font-size: 1.2rem;
   color: #999999;
   position: absolute;
@@ -57,51 +57,17 @@ Array [
   zoom: 1;
 }
 
-.c4:hover {
+.c5:hover {
   color: #333333;
 }
 
-.c1 {
+.c2 {
   font-size: 1.2rem;
   position: absolute !important;
   top: -943124px;
 }
 
-.c0 {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-<ul
-    className="c0"
-  >
-    <li
-      className="c1 c2"
-    >
-      <span
-        className="c3"
-      >
-        
-      </span>
-      <i
-        className="lugia-icon-reminder_close_circle c4 c5"
-      />
-    </li>
-  </ul>,
-  .c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
-.c4:hover {
-  color: #333333;
-}
-
-.c0 {
+.c7 {
   width: 100%;
   display: inline-block;
   position: relative;
@@ -109,7 +75,7 @@ Array [
   font-size: 1.2rem;
 }
 
-.c1 {
+.c8 {
   background: white;
   border: solid 0.08333333333333334em #e8e8e8;
   border-radius: 0.33333333333333337em;
@@ -117,11 +83,11 @@ Array [
   padding-bottom: 0.25em;
 }
 
-.c1:hover {
+.c8:hover {
   border-color: #cccccc;
 }
 
-.c3 {
+.c10 {
   top: 50%;
   right: 0;
   position: absolute;
@@ -132,7 +98,7 @@ Array [
   font-size: 1.2rem;
 }
 
-.c2 {
+.c9 {
   background: white;
   width: 100%;
   height: 2.5em;
@@ -153,7 +119,19 @@ Array [
   color: #333333;
 }
 
-.c5 {
+.c1 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: block;
+  min-height: 2.666666666666667em;
+  height: 2.666666666666667em;
+}
+
+.c11 {
   position: absolute;
   left: -41.66666666666667em;
   width: 0.08333333333333334em;
@@ -162,27 +140,47 @@ Array [
   border: none;
 }
 
-<div
-    className="sv c0"
-    disabled={false}
-    onClick={[Function]}
+<span
+    className="c0"
   >
-    <div
+    <ul
       className="c1"
     >
-      <div
-        className="c2"
+      <li
+        className="c2 c3"
       >
-        
+        <span
+          className="c4"
+        >
+          
+        </span>
         <i
-          className="lugia-icon-direction_down c3 c4"
+          className="lugia-icon-reminder_close_circle c5 c6"
         />
-        <input
-          className="c5"
-        />
+      </li>
+    </ul>
+    <div
+      className="sv c7"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <div
+        className="c8"
+      >
+        <div
+          className="c9"
+        >
+          
+          <i
+            className="lugia-icon-direction_down c10 c6"
+          />
+          <input
+            className="c11"
+          />
+        </div>
       </div>
     </div>
-  </div>,
+  </span>,
   .c0 {
   display: none;
 }

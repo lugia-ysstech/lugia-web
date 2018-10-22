@@ -7,7 +7,7 @@
 import '../common/shirm';
 
 import * as React from 'react';
-import { findDOMNode } from 'react-dom';
+import { findDOMNode, createPortal } from 'react-dom';
 import contains from 'rc-util/lib/Dom/contains';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
@@ -27,7 +27,8 @@ type EventName =
   | 'onMouseEnter'
   | 'onMouseLeave'
   | 'onFocus'
-  | 'onBlur';
+  | 'onBlur'
+  | '_onClick';
 const ALL_HANDLERS: Array<EventName> = [
   'onClick',
   'onMouseDown',
@@ -36,11 +37,13 @@ const ALL_HANDLERS: Array<EventName> = [
   'onMouseLeave',
   'onFocus',
   'onBlur',
+  '_onClick',
 ];
 
 type TriggerProps = {
   getTheme: Function,
   onClick?: Function,
+  _onClick?: Function,
   onMouseDown?: Function,
   onTouchStart?: Function,
   onMouseEnter?: Function,
@@ -136,7 +139,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     popupContainer.style.position = 'releative';
     popupContainer.style.top = '0';
     popupContainer.style.left = '0';
-
     const mountNode = getPopupContainer ? getPopupContainer(findDOMNode(this)) : getDocument().body;
 
     mountNode.appendChild(popupContainer);
@@ -295,7 +297,11 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const child = React.Children.only(children);
     const newChildProps = {};
     if (this.isClickToHide() || this.isClickToShow()) {
-      newChildProps.onClick = this.onClick;
+      if (child.type.displayName === `${Widget.ThemeWrapWidget}${Widget.DropMenuButton}`) {
+        newChildProps._onClick = this.createOnClick('_onClick');
+      } else {
+        newChildProps.onClick = this.createOnClick('onClick');
+      }
       newChildProps.onMouseDown = this.onMouseDown;
       newChildProps.onTouchStart = this.onTouchStart;
     } else {
@@ -321,7 +327,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
     newChildProps.key = 'container';
-    return [React.cloneElement(child, newChildProps), this.getComponent()];
+    const portal = createPortal(this.getComponent(), this.getContainer());
+    return [React.cloneElement(child, newChildProps), portal];
   }
 
   isClickToShow() {
@@ -410,8 +417,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
   };
 
-  onClick = (e: Object) => {
-    this.fireEvents('onClick', e);
+  createOnClick = (eventName: EventName, targetEvent?: EventName = 'onClick') => (e: Object) => {
+    this.fireChildrenEvents(eventName, e);
+    this.fireSelfEvents(targetEvent, e);
     // focus will trigger click
     if (this.focusTime) {
       let preTime = 0;
@@ -446,9 +454,15 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
   fireEvents(type: EventName, e: Object) {
+    this.fireChildrenEvents(type, e);
+    this.fireSelfEvents(type, e);
+  }
+
+  fireChildrenEvents(type: EventName, e: Object) {
     const childCallback = this.props.children.props[type];
     childCallback && childCallback(e);
-
+  }
+  fireSelfEvents(type: EventName, e: Object) {
     const callback = this.props[type];
     callback && callback(e);
   }
