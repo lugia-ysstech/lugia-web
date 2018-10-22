@@ -327,14 +327,18 @@ describe('autocomplete', () => {
   it('on blur switch twice value', async () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
     changeInputValue(cmp, 'A');
+    letInputonFocus(cmp);
     expect(getInputValue(cmp)).toBe('A');
 
     letInputOnBlur(cmp);
+    await delay(100);
     expect(getInputValue(cmp)).toBe('A');
 
+    letInputonFocus(cmp);
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     letInputOnBlur(cmp);
+    await delay(100);
     expect(getInputValue(cmp)).toBe('B');
 
     await delay(100);

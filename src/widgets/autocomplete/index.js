@@ -4,7 +4,6 @@
  * @flow
  */
 import * as React from 'react';
-import type { QueryType } from '@lugia/lugia-web';
 import Menu from '../menu';
 import Input from '../input';
 import Trigger from '../trigger';
@@ -52,7 +51,9 @@ export default ShortKeyBoard(
       step: ScrollerStep,
     };
     static displayName = 'AutoA';
-    el: any;
+    inputEl: any;
+    triggerEl: any;
+    currentSelectValue: string;
 
     constructor(props: AutoCompleteProps) {
       super(props);

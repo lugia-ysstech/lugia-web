@@ -26,7 +26,6 @@ import {
   DevidedTextContainer,
 } from '../css/dropmenubutton';
 
-const direction = 'up' | 'down';
 type DropMenuButtonProps = {
   getTheme: Function,
   divided: boolean,
@@ -37,7 +36,7 @@ type DropMenuButtonProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   disabled: boolean,
-  direction: direction,
+  direction: 'up' | 'down',
 };
 
 type DropMenuButtonState = {
@@ -75,7 +74,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     return divided ? this.getDevidedButton() : this.getNoDevidedButton();
   };
 
-  getIconClass = (direction: direction) => {
+  getIconClass = (direction: 'up' | 'down') => {
     return direction === 'up' ? 'lugia-icon-direction_up' : 'lugia-icon-direction_down';
   };
 

@@ -20,7 +20,7 @@ for (let i = 10; i < 20; i++) {
 }
 
 export class LimitCase extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = { data };
   }
@@ -29,7 +29,7 @@ export class LimitCase extends React.Component<any, any> {
     return this.getTag();
   }
 
-  onClose(item, e) {
+  onClose(item: string, e: Object) {
     const { data } = this.state;
     const index = data.indexOf(item);
     data.splice(index, 1);
@@ -53,7 +53,7 @@ export class LimitCase extends React.Component<any, any> {
 }
 
 export class NormalCase extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = { data };
   }
@@ -226,7 +226,7 @@ export class NormalCase extends React.Component<any, any> {
     );
   }
 
-  onClose(item, e) {}
+  onClose(item: string, e: Object) {}
 
   onClick = () => {
     console.log('cc');
