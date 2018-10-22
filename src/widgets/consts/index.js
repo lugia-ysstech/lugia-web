@@ -74,10 +74,11 @@ const Aside = 'sv_widget_Aside';
 const Affix = 'sv_widget_Affix';
 
 const Tabs = 'sv_widget_Tabs';
-const Tabpano = 'sv_widget_Tabpano';
-const TabsHContainer = 'sv_widget_TabsHContainer';
+const Tabpane = 'sv_widget_Tabpane';
 const BackTop = 'sv_widget_BackTop';
 const Progress = 'sv_widget_Progress';
+const TabsContainer = 'sv_widget_TabsContainer';
+const TabContent = 'sv_widget_TabContent';
 
 export default {
   Button,
@@ -138,9 +139,10 @@ export default {
   Aside,
   QueryInput,
   Tabs,
-  Tabpano,
-  TabsHContainer,
+  Tabpane,
   Affix,
   BackTop,
   Progress,
+  TabsContainer,
+  TabContent,
 };
