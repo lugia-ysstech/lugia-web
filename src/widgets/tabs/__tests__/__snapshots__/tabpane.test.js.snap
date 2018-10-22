@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tabpaneDemo Component JSON 1`] = `
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+  padding: 0 0.8333333333333334em 0 1.6666666666666667em;
+  line-height: 2.5em;
+  box-shadow: 0 0 0.5em none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: none;
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.c0:hover > div {
+  color: #684fff;
+}
+
+.c0:hover > span > i:first-child {
+  color: none;
+}
+
+.c1 {
+  color: none;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  padding: 0 0em 0 0em;
+  height: 2.666666666666667em;
+  line-height: 2.666666666666667em;
+}
+
+.c1:focus {
+  color: #684fff;
+}
+
+.c2 {
+  opacity: 1;
+  -webkit-transition: all 0.3s linear 0.1s;
+  transition: all 0.3s linear 0.1s;
+  z-index: 2;
+  display: inline-block;
+}
+
+.c3 {
+  font-size: 1rem;
+}
+
+.c3:hover {
+  color: #999999;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="c1"
+  />
+  <span
+    className="c2"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <i
+      className="lugia-icon-reminder_close c3 c4"
+    />
+  </span>
+</div>
+`;
