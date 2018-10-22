@@ -9,9 +9,10 @@ import styled from 'styled-components';
 import Scroller from './index';
 import '../css/sv.css';
 import Widget from '../consts/index';
+import { FontSizeNumber } from '../css';
 import { DefaultHeight, DefaultWidth, BarDefaultSize } from '../css/scroller';
 import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 
 const height = props => {
   const height = props.theme.height;
@@ -49,7 +50,6 @@ const ScrollerContainer = styled.div`
 
 const ScrollerCol = Col.extend`
   ${scrollerLeft};
-  ${height};
   width: ${em(BarDefaultSize)};
   opacity: 0;
   ${ScrollerContainer}:hover & {

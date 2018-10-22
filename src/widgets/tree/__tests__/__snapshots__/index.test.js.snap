@@ -214,7 +214,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -227,7 +226,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
@@ -742,7 +741,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 
 .c0 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
@@ -1033,7 +1032,6 @@ Array [
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1046,7 +1044,7 @@ Array [
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
@@ -1609,7 +1607,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1622,7 +1619,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
