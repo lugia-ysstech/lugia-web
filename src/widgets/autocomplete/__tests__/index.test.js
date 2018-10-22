@@ -248,12 +248,12 @@ describe('autocomplete', () => {
     ]);
     letInputOnBlur(cmp);
     await delay(100);
+    letInputonFocus(cmp);
     selectMenuItem(cmp, 0);
-    letInputonFocus(cmp);
     expect(getOldValue(cmp)).toBe('B');
   });
 
-  it('input value on blur save old value', () => {
+  it('input value on blur save old value', async () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
@@ -261,19 +261,22 @@ describe('autocomplete', () => {
     letInputOnBlur(cmp);
 
     changeInputValue(cmp, 'B');
-
-    letInputOnBlur(cmp);
-    letInputonFocus(cmp);
-    expect(getOldValue(cmp)).toBe('A');
     expect(getInputValue(cmp)).toBe('B');
+    letInputOnBlur(cmp);
+
+    await delay(100);
+    letInputonFocus(cmp);
+
+    expect(getOldValue(cmp)).toBe('A');
 
     changeInputValue(cmp, 'C');
     letInputOnBlur(cmp);
+    await delay(100);
     letInputonFocus(cmp);
     expect(getOldValue(cmp)).toBe('B');
   });
 
-  it('on blur switch twice value', () => {
+  it('on blur switch twice value', async () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
@@ -281,13 +284,16 @@ describe('autocomplete', () => {
     letInputOnBlur(cmp);
 
     changeInputValue(cmp, 'B');
-    letInputOnBlur(cmp);
-    letInputonFocus(cmp);
     expect(getInputValue(cmp)).toBe('B');
+    letInputOnBlur(cmp);
+
+    await delay(100);
+    letInputonFocus(cmp);
     expect(getOldValue(cmp)).toBe('A');
 
     changeInputValue(cmp, 'C');
     letInputOnBlur(cmp);
+    await delay(100);
     letInputonFocus(cmp);
     expect(getOldValue(cmp)).toBe('B');
 

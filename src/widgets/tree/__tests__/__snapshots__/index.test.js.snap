@@ -197,7 +197,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c2 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -211,11 +210,11 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c16 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
+  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -228,7 +227,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 
 .c3 {
   position: relative;
-  top: 0px;
+  top: NaNem;
   width: 100%;
   padding: 0;
 }
@@ -743,7 +742,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 
 .c0 {
   position: relative;
-  top: 0px;
+  top: NaNem;
   width: 100%;
   padding: 0;
 }
@@ -1017,7 +1016,6 @@ Array [
 }
 
 .c2 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -1031,11 +1029,11 @@ Array [
 }
 
 .c13 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
+  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1048,7 +1046,7 @@ Array [
 
 .c3 {
   position: relative;
-  top: 0px;
+  top: NaNem;
   width: 100%;
   padding: 0;
 }
@@ -1594,7 +1592,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c2 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -1608,11 +1605,11 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c16 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
+  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1625,7 +1622,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 
 .c3 {
   position: relative;
-  top: 0px;
+  top: NaNem;
   width: 100%;
   padding: 0;
 }
