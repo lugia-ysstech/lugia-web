@@ -4,16 +4,17 @@
  * @flow
  */
 import * as React from 'react';
-import type { QueryType } from '@lugia/lugia-web';
 import Menu from '../menu';
 import Input from '../input';
 import Trigger from '../trigger';
+import ShortKeyBoard from '../common/ShortKeyBoard';
+import Keys from '../consts/KeyBoard';
 import Theme from '../theme';
 import Widget from '../consts/index';
 import { DisplayField, ValueField } from '../consts/props';
 import CommonIcon from '../icon';
-import { OldValueItem, TimeIcon, OldValueTitle } from '../css/autocomplete';
-import { MenuItemHeight, DefaultWidth } from '../css/menu';
+import { OldValueItem, OldValueTitle, TimeIcon } from '../css/autocomplete';
+import { DefaultWidth, MenuItemHeight } from '../css/menu';
 
 const ScrollerStep = 30;
 
@@ -28,177 +29,234 @@ type AutoCompleteProps = {
   defaultValue?: string,
   onFocus?: Function,
   onBlur?: Function,
+  disabled?: boolean,
 };
 
 type AutoCompleteState = {
   menuData: String[],
   preSelectValue: string,
-  currentSelectValue: string,
   value: string,
 };
 
-export default class AotuComplete extends React.Component<AutoCompleteProps, AutoCompleteState> {
-  static defaultProps = {
-    getTheme() {
-      return {};
-    },
-    valueField: ValueField,
-    displayField: DisplayField,
-    data: [],
-    showOldValue: true,
-    step: ScrollerStep,
-  };
+export default ShortKeyBoard(
+  class AotuComplete extends React.Component<AutoCompleteProps, AutoCompleteState> {
+    static defaultProps = {
+      getTheme() {
+        return {};
+      },
+      valueField: ValueField,
+      displayField: DisplayField,
+      data: [],
+      showOldValue: true,
+      step: ScrollerStep,
+    };
+    static displayName = 'AutoA';
+    inputEl: any;
+    triggerEl: any;
+    currentSelectValue: string;
 
-  el: any;
-  constructor(props: AutoCompleteProps) {
-    super(props);
-    this.el = React.createRef();
-  }
+    constructor(props: AutoCompleteProps) {
+      super(props);
+      this.currentSelectValue = '';
+      this.inputEl = React.createRef();
+      this.triggerEl = React.createRef();
+    }
 
-  static getDerivedStateFromProps(props: AutoCompleteProps, state: AutoCompleteState) {
-    const hasValueInProps = 'value' in props;
-    const value = hasValueInProps ? props.value : state ? state.value : props.defaultValue;
-    if (!state) {
+    static getDerivedStateFromProps(props: AutoCompleteProps, state: AutoCompleteState) {
+      const hasValueInProps = 'value' in props;
+      const value = hasValueInProps ? props.value : state ? state.value : props.defaultValue;
+      if (!state) {
+        return {
+          menuData: [],
+          preSelectValue: '',
+          value,
+        };
+      }
       return {
-        menuData: [],
-        preSelectValue: '',
-        currentSelectValue: '',
         value,
       };
     }
-    return {
-      value,
-    };
-  }
 
-  render() {
-    const { props, state } = this;
-    const { value } = state;
-    const { valueField } = props;
+    render() {
+      const { props, state } = this;
+      const { value } = state;
+      const { valueField, disabled } = props;
 
-    const { width = DefaultWidth } = props.getTheme();
-    const len = this.getMenuData().length;
-    const menuLen = len > 5 ? 5 : len;
-    const menuHeight = menuLen * MenuItemHeight;
+      const { width = DefaultWidth } = props.getTheme();
+      const data = this.getMenuData();
+      const len = data.length;
+      const menuLen = Math.min(5, len);
+      const menuHeight = menuLen * MenuItemHeight;
 
-    const menuConfig = {
-      [Widget.Menu]: { width, height: menuHeight },
-      [Widget.Input]: { width },
-      [Widget.Trigger]: { width, height: menuHeight },
-    };
+      const themeConfig = { width, height: menuHeight };
+      const menuConfig = {
+        [Widget.Menu]: themeConfig,
+        [Widget.Input]: { width: themeConfig.width },
+        [Widget.Trigger]: themeConfig,
+      };
 
-    const menu = [
-      this.getOldValueItem(),
-      <Menu
-        valueField={valueField}
-        data={this.getMenuData()}
-        mutliple={false}
-        selectedKeys={[value]}
-        onClick={this.menuItemClickHandler}
-        step={ScrollerStep}
-      />,
-    ];
-    return (
-      <Theme config={menuConfig}>
-        <Trigger align="bottomLeft" action={['focus']} hideAction={['focus']} popup={menu}>
-          <Input
-            value={value}
-            ref={this.el}
-            onChange={this.changeInputValue}
-            onClear={this.clearInputValue}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-          />
-        </Trigger>
-      </Theme>
-    );
-  }
-
-  getOldValueItem() {
-    const { preSelectValue } = this.state;
-    if (preSelectValue === '') {
-      return null;
+      const menu = [
+        this.getOldValueItem(),
+        <Menu
+          valueField={valueField}
+          data={data}
+          mutliple={false}
+          selectedKeys={[value]}
+          onClick={this.menuItemClickHandler}
+          step={ScrollerStep}
+        />,
+      ];
+      return (
+        <Theme config={menuConfig}>
+          <Trigger
+            align="bottomLeft"
+            action={disabled ? [] : ['focus']}
+            hideAction={['focus']}
+            popup={menu}
+            ref={this.triggerEl}
+          >
+            <Input
+              value={value}
+              disabled={disabled}
+              ref={this.inputEl}
+              onChange={this.changeInputValue}
+              onClear={this.clearInputValue}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+            />
+          </Trigger>
+        </Theme>
+      );
     }
-    const { showOldValue } = this.props;
-    return showOldValue ? (
-      <OldValueItem onClick={this.handleClickOldValueItem}>
-        <TimeIcon>
-          <CommonIcon iconClass={'lugia-icon-reminder_clock_circle_o'} />
-        </TimeIcon>
-        <OldValueTitle>{preSelectValue}</OldValueTitle>
-      </OldValueItem>
-    ) : null;
-  }
 
-  getMenuData = () => {
-    const { value } = this.state;
-    if (!value) {
-      return [];
+    getOldValueItem() {
+      const { preSelectValue = '' } = this.state;
+      if (preSelectValue === '') {
+        return null;
+      }
+      const { showOldValue } = this.props;
+      return showOldValue ? (
+        <OldValueItem onClick={this.handleClickOldValueItem}>
+          <TimeIcon>
+            <CommonIcon iconClass={'lugia-icon-reminder_clock_circle_o'} />
+          </TimeIcon>
+          <OldValueTitle>{preSelectValue}</OldValueTitle>
+        </OldValueItem>
+      ) : null;
     }
-    return this.getData();
-  };
 
-  getData() {
-    const { data } = this.props;
-    const newData = [];
-    data.forEach(item => {
-      const newItem = {};
-      newItem[ValueField] = item;
-      newItem[DisplayField] = item;
-      newData.push(newItem);
-    });
+    getMenuData = () => {
+      const { value } = this.state;
+      if (!value) {
+        return [];
+      }
+      return this.getData();
+    };
 
-    return newData;
-  }
+    getData() {
+      const { data } = this.props;
+      return data.map(item => {
+        if (typeof item === 'number') {
+          item += '';
+        }
+        return {
+          [ValueField]: item,
+          [DisplayField]: item,
+        };
+      });
+    }
 
-  menuItemClickHandler = (event: Object, selectedValue: Object) => {
-    const { state } = this;
-    const { currentSelectValue } = state;
+    menuItemClickHandler = (event: Object, selectedValue: Object) => {
+      const { selectedKeys } = selectedValue;
+      this.changeClickingOldValue(true);
+      this.changeOldValueAnFocus(selectedKeys[0]);
+    };
 
-    const { selectedKeys } = selectedValue;
-    const newValue = selectedKeys[0];
-    this.setValue(newValue, { currentSelectValue: newValue, preSelectValue: currentSelectValue });
-    this.onChangeHandle(newValue);
-  };
+    clickingOldValue: boolean;
+    currentSelectValue: string;
+    handleClickOldValueItem = () => {
+      this.changeClickingOldValue(true);
+      const { state } = this;
+      const { preSelectValue } = state;
+      this.changeOldValueAnFocus(preSelectValue);
+    };
 
-  handleClickOldValueItem = () => {
-    const { state } = this;
-    const { preSelectValue } = state;
+    clearInputValue = () => {
+      this.changeOldValueAnFocus('');
+    };
 
-    this.setValue(preSelectValue, { currentSelectValue: preSelectValue, preSelectValue: '' });
-    this.onChangeHandle(preSelectValue);
-  };
+    changeOldValueAnFocus(newValue: string) {
+      this.changeOldValue(newValue);
+      this.focusInput();
+    }
 
-  clearInputValue = () => {
-    const { state } = this;
-    const { currentSelectValue } = state;
-    this.el.current.getThemeTarget().input.focus();
-    this.onChangeHandle('');
-    this.setValue('', { currentSelectValue: '', preSelectValue: currentSelectValue });
-  };
+    changeOldValue(newValue: string) {
+      const oldValue = this.currentSelectValue;
+      this.currentSelectValue = newValue;
+      this.setValue(newValue, { preSelectValue: oldValue });
+    }
 
-  onFocus = (e: Object) => {
-    const { onFocus } = this.props;
-    onFocus && onFocus(e);
-  };
+    focusInput() {
+      this.getInputDom().focus();
+    }
 
-  onBlur = (e: Object) => {
-    const { onBlur } = this.props;
-    onBlur && onBlur(e);
-  };
+    getInputDom(): Object {
+      return this.inputEl.current.getThemeTarget().input;
+    }
 
-  changeInputValue = (nextValue: any) => {
-    const { newValue: value } = nextValue;
-    this.onChangeHandle(value);
-    this.setValue(value, {});
-  };
+    enterValue: string;
+    onFocus = (e: Object) => {
+      !this.clickingOldValue && (this.currentSelectValue = this.state.value);
+      const { onFocus } = this.props;
+      this.enterValue = this.state.value;
+      onFocus && onFocus(e);
+    };
 
-  setValue(value: string, other: Object) {
-    this.setState({ value, ...other });
-  }
+    onBlur = (e: Object) => {
+      const { onBlur } = this.props;
+      onBlur && onBlur(e);
+      const change = () => {
+        const { value } = this.state;
+        if (value !== this.enterValue) {
+          this.changeOldValue(value);
+        }
+      };
+      setTimeout(() => {
+        if (this.clickingOldValue) {
+          this.changeClickingOldValue(false);
+          return;
+        }
+        change();
+      }, 0);
+    };
 
-  onChangeHandle(value: string) {
-    const { onChange } = this.props;
-    onChange && onChange(value);
-  }
-}
+    changeClickingOldValue(val) {
+      this.clickingOldValue = val;
+    }
+
+    changeInputValue = (nextValue: any) => {
+      const { newValue: value } = nextValue;
+      this.onChangeHandle(value);
+      this.setValue(value, {});
+    };
+
+    setValue(value: string, other: Object) {
+      this.setState({ value, ...other });
+      this.onChangeHandle(value);
+    }
+
+    onChangeHandle(value: string) {
+      const { onChange } = this.props;
+      onChange && onChange(value);
+    }
+
+    onUp() {}
+  },
+  [
+    {
+      shiftKey: true,
+      keyCode: Keys.UP,
+      method: ['onUp'],
+    },
+  ]
+);

@@ -22,9 +22,9 @@ import {
   maxWidth,
   RadiusSize,
 } from '../css/tooltip';
-import { FontSize } from '../css';
+import { FontSize, FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 
 const ToolTrigger = styled(Trigger)`
   ${getTriggerByArrow};
@@ -63,20 +63,6 @@ const Message = styled.div`
   border-radius: ${RadiusSize};
   box-shadow: 0 ${em(2)} ${em(8)} rgba(0, 0, 0, 0.15);
 `;
-const builtinPlacements = {
-  left: ['cr', 'cl'],
-  leftTop: ['tr', 'tl'],
-  leftBottom: ['br', 'bl'],
-  right: ['cl', 'cr'],
-  rightTop: ['tl', 'tr'],
-  rightBottom: ['bl', 'br'],
-  top: ['bc', 'tc'],
-  bottom: ['tc', 'bc'],
-  topLeft: ['bl', 'tl'],
-  topRight: ['br', 'tr'],
-  bottomRight: ['tr', 'br'],
-  bottomLeft: ['tl', 'bl'],
-};
 
 type TooltipProps = {
   placement: string,

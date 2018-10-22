@@ -5,11 +5,9 @@
  * @flow
  */
 
-import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo } from '@lugia/lugia-web';
 import animation from '../common/openAnimation';
 import * as React from 'react';
 import RcTree, { TreeNode } from './rc-tree';
-import classNames from 'classnames';
 import ThrottleScroller from '../scroller/ThrottleScroller';
 import '../css/sv.css';
 import './index.css';
@@ -18,7 +16,10 @@ import styled from 'styled-components';
 import { BarDefaultSize } from '../css/scroller';
 import { adjustValue } from '../utils';
 import { MenuItemHeight, DefaultHeight } from '../css/tree';
+import { FontSizeNumber } from '../css';
+import { px2emcss } from '../css/units';
 
+const em = px2emcss(FontSizeNumber);
 type RowData = { [key: string]: any };
 
 const getTop = props => props.top;
@@ -26,11 +27,11 @@ const getWidth = props => {
   const { theme = {} } = props;
   const { width } = theme;
 
-  return width ? `width:${props.theme.width}px;` : 'width: 100%';
+  return width ? `width:${em(props.theme.width)};` : 'width: 100%';
 };
 const WrapRcTree = styled(RcTree)`
   position: relative;
-  top: ${getTop}px;
+  top: ${em(getTop)};
   ${getWidth};
   padding: 0;
 `;

@@ -74,6 +74,6 @@ export default class Demo extends React.Component<any, any> {
   }
 
   searchValue = (query: string, row: string): boolean => {
-    return row.indexOf(query) !== -1;
+    return row.indexOf(query) !== -1 || row === query;
   };
 }

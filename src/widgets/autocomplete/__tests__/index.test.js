@@ -9,6 +9,7 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts/index';
 import AutoComplete from '../';
+import { delay } from '@lugia/react-test-utils';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -43,7 +44,7 @@ const data = [
   'R3hab',
 ];
 
-describe('Select', () => {
+describe('autocomplete', () => {
   it('非受限：input框输入值', () => {
     const cmp = mount(<AutoComplete />);
     changeInputValue(cmp, 'szfeng');
@@ -61,6 +62,30 @@ describe('Select', () => {
     expect(getInputValue(cmp)).toBe('hades');
     changeInputValue(cmp, 'szfeng');
     expect(getInputValue(cmp)).toBe('szfeng');
+  });
+
+  it('data is { value: Number[]}', () => {
+    const numberData = [1, 2, 3];
+    const cmp = mount(<AutoComplete data={numberData} />);
+    changeInputValue(cmp, 'szfeng');
+    expect(getInputValue(cmp)).toBe('szfeng');
+    expect(getMenuData(cmp)).toEqual([
+      { value: '1', text: '1' },
+      { value: '2', text: '2' },
+      { value: '3', text: '3' },
+    ]);
+  });
+
+  it('data is { value: Number[]}', () => {
+    const numberData = [0, 1, 2];
+    const cmp = mount(<AutoComplete data={numberData} />);
+    changeInputValue(cmp, 'szfeng');
+    expect(getInputValue(cmp)).toBe('szfeng');
+    expect(getMenuData(cmp)).toEqual([
+      { value: '0', text: '0' },
+      { value: '1', text: '1' },
+      { value: '2', text: '2' },
+    ]);
   });
 
   class AutoCompleteNotBounded extends React.Component<any, any> {
@@ -107,7 +132,6 @@ describe('Select', () => {
     }
 
     searchValue = (query: string, row: string): boolean => {
-      console.log(query, row);
       return row.indexOf(query) !== -1;
     };
   }
@@ -213,14 +237,161 @@ describe('Select', () => {
     expect(getMenuData(cmp)).toEqual([]);
   });
 
+  it('first select no oldValue', async () => {
+    const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    changeInputValue(cmp, 'B');
+    expect(getInputValue(cmp)).toBe('B');
+
+    expect(getMenuData(cmp)).toEqual([
+      { value: 'Armin van Buuren', text: 'Armin van Buuren' },
+      { value: 'Bassjackers', text: 'Bassjackers' },
+    ]);
+    letInputOnBlur(cmp);
+    await delay(100);
+    letInputonFocus(cmp);
+    selectMenuItem(cmp, 0);
+    expect(getOldValue(cmp)).toBe('B');
+  });
+
+  it('input value on blur save old value', async () => {
+    const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    changeInputValue(cmp, 'A');
+    letInputonFocus(cmp);
+    expect(getInputValue(cmp)).toBe('A');
+    letInputOnBlur(cmp);
+    await delay(100);
+
+    letInputonFocus(cmp);
+    changeInputValue(cmp, 'B');
+    expect(getInputValue(cmp)).toBe('B');
+    letInputOnBlur(cmp);
+
+    await delay(100);
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('A');
+
+    changeInputValue(cmp, 'C');
+    letInputOnBlur(cmp);
+    await delay(100);
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('B');
+  });
+  it('input value on blur save old value , value is In AutoCompleteBounded.state.value', async () => {
+    const cmp = mount(<AutoCompleteBounded data={data} />);
+    changeInputValue(cmp, 'A');
+    letInputonFocus(cmp);
+    expect(getInputValue(cmp)).toBe('A');
+    letInputOnBlur(cmp);
+    await delay(100);
+
+    letInputonFocus(cmp);
+    changeInputValue(cmp, 'B');
+    expect(getInputValue(cmp)).toBe('B');
+    letInputOnBlur(cmp);
+
+    await delay(100);
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('A');
+
+    changeInputValue(cmp, 'C');
+    letInputOnBlur(cmp);
+    await delay(100);
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('B');
+  });
+
+  it('input value on blur save old value is limit', async () => {
+    const cmp = mount(<AutoCompleteBounded data={data} value={'A'} />);
+    changeInputValue(cmp, 'A');
+    letInputonFocus(cmp);
+    expect(getInputValue(cmp)).toBe('A');
+    letInputOnBlur(cmp);
+    await delay(100);
+
+    letInputonFocus(cmp);
+    changeInputValue(cmp, 'B');
+    expect(getInputValue(cmp)).toBe('A');
+    letInputOnBlur(cmp);
+
+    await delay(100);
+    letInputonFocus(cmp);
+    expect(findOldValueSpan(cmp).length).toBe(0);
+
+    changeInputValue(cmp, 'C');
+    letInputOnBlur(cmp);
+    await delay(100);
+    letInputonFocus(cmp);
+    expect(findOldValueSpan(cmp).length).toBe(0);
+  });
+
+  it('on blur switch twice value', async () => {
+    const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    changeInputValue(cmp, 'A');
+    letInputonFocus(cmp);
+    expect(getInputValue(cmp)).toBe('A');
+
+    letInputOnBlur(cmp);
+    await delay(100);
+    expect(getInputValue(cmp)).toBe('A');
+
+    letInputonFocus(cmp);
+    changeInputValue(cmp, 'B');
+    expect(getInputValue(cmp)).toBe('B');
+    letInputOnBlur(cmp);
+    await delay(100);
+    expect(getInputValue(cmp)).toBe('B');
+
+    await delay(100);
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('A');
+
+    changeInputValue(cmp, 'C');
+    letInputOnBlur(cmp);
+    await delay(100);
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('B');
+
+    expect(getMenuData(cmp)).toEqual([
+      { value: 'The Chainsmokers', text: 'The Chainsmokers' },
+      { value: 'Calvin Harris', text: 'Calvin Harris' },
+    ]);
+    selectMenuItem(cmp, 0);
+    expect(getInputValue(cmp)).toBe('The Chainsmokers');
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('C');
+
+    changeInputValue(cmp, 'B');
+    expect(getInputValue(cmp)).toBe('B');
+    expect(getMenuData(cmp)).toEqual([
+      { value: 'Armin van Buuren', text: 'Armin van Buuren' },
+      { value: 'Bassjackers', text: 'Bassjackers' },
+    ]);
+    selectMenuItem(cmp, 0);
+    expect(getInputValue(cmp)).toBe('Armin van Buuren');
+    letInputonFocus(cmp);
+    expect(getOldValue(cmp)).toBe('The Chainsmokers');
+  });
+
   class AutoCompleteBounded extends React.Component<any, any> {
     constructor(props) {
       super(props);
       this.state = {
         menuData: data,
-        value: '',
       };
     }
+    static getDerivedStateFromProps(props: any, state: any) {
+      const hasValueInProps = 'value' in props;
+      const value = hasValueInProps ? props.value : state ? state.value : props.defaultValue;
+      if (!state) {
+        return {
+          value,
+        };
+      }
+      return {
+        value,
+      };
+    }
+
     render() {
       const { menuData, value } = this.state;
       return <AutoComplete value={value} data={menuData} onChange={this.onChange} />;
@@ -256,7 +427,6 @@ describe('Select', () => {
     }
 
     searchValue = (query: string, row: string): boolean => {
-      console.log(query, row);
       return row.indexOf(query) !== -1;
     };
   }
@@ -545,6 +715,15 @@ describe('Select', () => {
       .find('input')
       .at(0);
   }
+
+  function letInputOnBlur(cmp: Object) {
+    return getInput(cmp).simulate('blur', {});
+  }
+
+  function letInputonFocus(cmp: Object) {
+    return getInput(cmp).simulate('focus', {});
+  }
+
   function getMenuData(cmp: Object) {
     return getMenu(cmp).props().data;
   }
@@ -560,9 +739,11 @@ describe('Select', () => {
       .simulate('click', {});
   }
 
+  function findOldValueSpan(cmp: Object) {
+    return cmp.find('oldValueTitleSpan');
+  }
   function getOldValue(cmp: Object) {
-    return cmp
-      .find('oldValueTitleSpan')
+    return findOldValueSpan(cmp)
       .at(0)
       .text();
   }
