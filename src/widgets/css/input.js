@@ -12,17 +12,17 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 const {
   themeColor,
   disableColor,
-  borderDisableColor,
   dangerColor,
   blackColor,
   mediumGreyColor,
   darkGreyColor,
+  lightGreyColor,
 } = colorsFunc();
 
 export const getInputBorderColor = (props: Object) => {
   const { validateStatus = Success } = props;
 
-  const color = isSuccess(validateStatus) ? borderDisableColor : dangerColor;
+  const color = isSuccess(validateStatus) ? lightGreyColor : dangerColor;
   return color;
 };
 const Success = 'success';
@@ -34,11 +34,7 @@ function isSuccess(validateStatus) {
 export const getInputBorderHoverColor = (props: Object) => {
   const { validateStatus = Success, theme } = props;
   const { borderColor } = theme;
-  return borderColor
-    ? borderColor
-    : isSuccess(validateStatus)
-      ? colorsFunc().borderColor
-      : dangerColor;
+  return borderColor ? borderColor : isSuccess(validateStatus) ? themeColor : dangerColor;
 };
 
 export const getFocusShadow = (props: Object) => {
