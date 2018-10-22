@@ -214,7 +214,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1033,7 +1032,6 @@ Array [
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1609,7 +1607,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
