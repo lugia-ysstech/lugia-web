@@ -14,7 +14,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -33,7 +33,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c1:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -89,7 +89,7 @@ exports[`Input props: null 1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -108,7 +108,7 @@ exports[`Input props: null 1`] = `
 }
 
 .c1:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -164,7 +164,7 @@ exports[`Input props: placeholder  1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -183,7 +183,7 @@ exports[`Input props: placeholder  1`] = `
 }
 
 .c1:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -240,7 +240,7 @@ exports[`Input props: placeholder  2`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -259,7 +259,7 @@ exports[`Input props: placeholder  2`] = `
 }
 
 .c1:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -316,7 +316,7 @@ exports[`Input props: size 1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -335,7 +335,7 @@ exports[`Input props: size 1`] = `
 }
 
 .c1:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -391,7 +391,7 @@ exports[`Input props: size 2`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -410,7 +410,7 @@ exports[`Input props: size 2`] = `
 }
 
 .c1:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
