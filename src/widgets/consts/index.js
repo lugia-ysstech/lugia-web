@@ -82,6 +82,7 @@ const Progress = 'sv_widget_Progress';
 const TabsContainer = 'sv_widget_TabsContainer';
 const TabContent = 'sv_widget_TabContent';
 const Alert = 'sv_widget_Alert';
+const Message = 'sv_widget_Message';
 
 export default {
   Button,
@@ -151,4 +152,5 @@ export default {
   Tag,
   DropMenuButton,
   Alert,
+  Message,
 };

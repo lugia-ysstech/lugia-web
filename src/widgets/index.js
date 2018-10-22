@@ -93,3 +93,5 @@ export { default as BackTop } from './back-top';
 export { default as Progress } from './progress';
 
 export { default as Alert } from './alert';
+
+export { default as Message } from './message';
