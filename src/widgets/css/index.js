@@ -4,4 +4,5 @@
  *
  * @flow
  */
-export const FontSize = '1.2rem';
+export const FontSizeNumber = 1.2;
+export const FontSize = `${FontSizeNumber}rem`;

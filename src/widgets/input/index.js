@@ -27,13 +27,13 @@ import {
   getWidth,
   isValidateSuccess,
 } from '../css/input';
-import { FontSize } from '../css';
+import { FontSize, FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
 import { getMargin, getInputBorderRadius } from '../common/ThemeUtils';
 
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 
 const CommonInputStyle = styled.input`
   ${getSize};
@@ -120,7 +120,6 @@ const ClearButton: Object = styled(Icon)`
   z-index: 2;
   bottom: 50%;
   line-height: ${em(10)};
-  font-size: 1.2em;
   right: ${em(10)};
   ${getClearButtonColor};
   &:hover {

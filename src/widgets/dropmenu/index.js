@@ -12,10 +12,10 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import Input from '../input';
 import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
-import { Height } from '../css/menu';
+import { DefaultHeight, DefaultWidth, Height, lightGreyColor, MenuItemHeight } from '../css/menu';
 import { adjustValue } from '../utils';
-import { MenuItemHeight, DefaultHeight, DefaultWidth, lightGreyColor } from '../css/menu';
 import { px2emcss } from '../css/units';
+
 const em = px2emcss(1.2);
 
 type DropMenuProps = {
@@ -28,6 +28,7 @@ type DropMenuProps = {
   getTheme: Function,
   query: string,
   needQueryInput: boolean,
+  align: string,
 };
 const MenuContainer = styled.div`
   background-color: #fff;
@@ -35,13 +36,16 @@ const MenuContainer = styled.div`
   border-radius: ${em(4)};
   box-sizing: border-box;
 `;
-type DropMenuState = {};
+type DropMenuState = {
+  visible: boolean,
+};
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
     action: ['click'],
     hideAction: ['click'],
     needQueryInput: false,
+    align: 'bottomLeft',
     getTheme() {
       return {};
     },
@@ -53,13 +57,13 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   constructor(props: DropMenuProps) {
     super(props);
-    this.state = { filter: '' };
+    this.state = { filter: '', visible: false };
   }
 
   render() {
-    const { menus, children, action, hideAction } = this.props;
+    const { menus, children, action, hideAction, align } = this.props;
     const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
-
+    const offsetY = this.getOffSetY(align);
     const queryInputWidth = width;
     const oldMenuHeight = height - (Height + 2 * QueryInputPadding);
     const menuHeight = adjustValue(oldMenuHeight, MenuItemHeight);
@@ -68,15 +72,25 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       [Widget.Input]: { width: queryInputWidth },
       [Widget.Trigger]: { width, height: height + (menuHeight - oldMenuHeight) },
     };
-    const popup = [this.isNeedQueryInput(), <MenuContainer key="menus">{menus}</MenuContainer>];
+    const menu = React.Children.only(menus);
+
+    const popup = [
+      this.isNeedQueryInput(),
+      <MenuContainer key="menus">
+        {React.cloneElement(menu, this.ejectOnClick(menu))}
+      </MenuContainer>,
+    ];
+
     return (
       <Theme config={menuConfig}>
         <Trigger
-          onPopupVisibleChange={this.onPopupVisibleChange}
           ref={cmp => (this.trigger = cmp)}
-          align="bottomLeft"
+          align={align}
           action={action}
+          offsetY={offsetY}
           hideAction={hideAction}
+          onPopupVisibleChange={this.onPopupVisibleChange}
+          popupVisible={this.state.visible}
           popup={popup}
         >
           {children}
@@ -84,6 +98,28 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       </Theme>
     );
   }
+
+  ejectOnClick = (menu: Object): Object => {
+    const newChildProps = {};
+
+    if (!menu.props.onClick) {
+      newChildProps.onClick = this.onMenuClick;
+    } else {
+      newChildProps.onClick = (...rest) => {
+        menu.props.onClick.call(menu, ...rest);
+        this.onMenuClick();
+      };
+    }
+    return newChildProps;
+  };
+  onMenuClick = () => {
+    this.onPopupVisibleChange(false);
+  };
+
+  getOffSetY = (align: string) => {
+    const isTop = align === 'topLeft' || align === 'topRight' || align === 'top';
+    return isTop ? -4 : 4;
+  };
 
   isNeedQueryInput() {
     const { needQueryInput, query } = this.props;
@@ -103,6 +139,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   };
   onPopupVisibleChange = (visible: boolean) => {
     const { onPopupVisibleChange } = this.props;
+    this.setState({ visible });
     onPopupVisibleChange && onPopupVisibleChange(visible);
   };
 }

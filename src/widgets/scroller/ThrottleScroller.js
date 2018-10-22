@@ -35,19 +35,21 @@ const scrollerLeft = props => {
 };
 
 const Col = styled.div`
-  ${height} ${contentWidth}
+  ${contentWidth};
   position: absolute;
   display: inline-block;
 `;
 
 const ScrollerContainer = styled.div`
   overflow: hidden;
-  ${height} ${width}
+  ${height};
+  ${width};
   position: relative;
 `;
 
 const ScrollerCol = Col.extend`
-  ${scrollerLeft}
+  ${scrollerLeft};
+  ${height};
   width: ${em(BarDefaultSize)};
   opacity: 0;
   ${ScrollerContainer}:hover & {

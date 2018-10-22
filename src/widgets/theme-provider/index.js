@@ -63,7 +63,7 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
     config: PropTypes.object,
     svThemeConfigTree: PropTypes.object,
   };
-  ThemeWrapWidget.displayName = Widgets.ThemeWrapWidget;
+  ThemeWrapWidget.displayName = Widgets.ThemeWrapWidget + widgetName;
   return ThemeWrapWidget;
 };
 export default ThemeProvider;

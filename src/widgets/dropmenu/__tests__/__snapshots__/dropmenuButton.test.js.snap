@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropMenuButton default 1`] = `
+<div
+  className="sc-gisBJw OxUQr sc-fMiknA YRjgA sc-jhAzac bvtXQW"
+  disabled={false}
+  type="customs"
+>
+  <span
+    className="sc-kvZOFW ixeWQL"
+    disabled={false}
+    type="customs"
+  />
+  <div
+    className="sc-kjoXOD fIKkXt sc-fBuWsC bZdrlD"
+  >
+    <span
+      checked={false}
+      className="sc-cHGsZl vQeQd sc-caSCKo eFDpIn"
+      disabled={false}
+      type="customs"
+    >
+      <input
+        className="sc-hzDkRC bqRBKL"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        type="button"
+      />
+    </span>
+    <span
+      checked={false}
+      className="sc-frDJqD WyXcy"
+      disabled={false}
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="customs"
+    >
+      <input
+        className="sc-hzDkRC bqRBKL"
+        disabled={false}
+        onBlur={[Function]}
+        type="button"
+      />
+      <i
+        className="lugia-icon-direction_down  sc-gzVnrw VXFcC"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`DropMenuButton divided={false} 1`] = `
+<div
+  checked={false}
+  className="sc-dVhcbM dYpjTK sc-fMiknA YRjgA sc-jhAzac bvtXQW"
+  disabled={false}
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  type="customs"
+>
+  <input
+    className="sc-hzDkRC bqRBKL"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    type="button"
+  />
+  <div
+    className="sc-eqIVtm iizcuQ sc-fBuWsC bZdrlD"
+  >
+    <span
+      className="sc-caSCKo eFDpIn"
+    />
+    <span
+      className="sc-fAjcbJ hyvIgY"
+    >
+      <i
+        className="lugia-icon-direction_down  sc-gzVnrw VXFcC"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`DropMenuButton type=basic 1`] = `
+<div
+  className="sc-TOsTZ Mlkgj sc-jhAzac bvtXQW"
+>
+  <div
+    checked={false}
+    className="sc-kgAjT dvDHYC sc-fBuWsC bZdrlD"
+    disabled={false}
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <input
+      className="sc-hzDkRC bqRBKL"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      type="button"
+    />
+    <span
+      checked={false}
+      className="sc-cJSrbW bSsugf"
+      disabled={false}
+    >
+      <span
+        className="sc-ksYbfQ ftarlv"
+      />
+      <span
+        className="sc-hmzhuo gOhxUM sc-fAjcbJ hyvIgY"
+      >
+        <i
+          className="lugia-icon-direction_down  sc-gzVnrw VXFcC"
+        />
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`DropMenuButton type=primary,divided={true} 1`] = `
+<div
+  className="sc-gisBJw OxUQr sc-fMiknA dgeWSi sc-jhAzac bvtXQW"
+  disabled={false}
+  type="primary"
+>
+  <span
+    className="sc-kvZOFW gRHzTc"
+    disabled={false}
+    type="primary"
+  />
+  <div
+    className="sc-kjoXOD fIKkXt sc-fBuWsC bZdrlD"
+  >
+    <span
+      checked={false}
+      className="sc-cHGsZl hVHkhG sc-caSCKo eFDpIn"
+      disabled={false}
+      type="primary"
+    >
+      <input
+        className="sc-hzDkRC bqRBKL"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        type="button"
+      />
+    </span>
+    <span
+      checked={false}
+      className="sc-frDJqD fPInXD"
+      disabled={false}
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="primary"
+    >
+      <input
+        className="sc-hzDkRC bqRBKL"
+        disabled={false}
+        onBlur={[Function]}
+        type="button"
+      />
+      <i
+        className="lugia-icon-direction_down  sc-gzVnrw VXFcC"
+      />
+    </span>
+  </div>
+</div>
+`;

@@ -195,11 +195,7 @@ describe('TreeSelect', () => {
       queryInputEnter(cmp);
       mutliple
         ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt)
-        : exp(
-            getInputTag(cmp)
-              .text()
-              .trim()
-          ).to.be.equal(txt);
+        : exp(getInputTagValue(cmp)[0]).to.be.equal(txt);
     });
   }
 

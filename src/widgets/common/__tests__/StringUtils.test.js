@@ -42,14 +42,14 @@ describe('StringUtils', () => {
   it('getHref item is empty', () => {
     expect(getHrefs([undefined, 'b', 'c'])).toEqual(['', '/b', '/b/c']);
     expect(getHrefs([null, 'b', 'c'])).toEqual(['', '/b', '/b/c']);
-    expect(getHrefs(['', 'b', 'c'])).toEqual(['/', '//b', '//b/c']);
+    expect(getHrefs(['', 'b', 'c'])).toEqual(['', '/b', '/b/c']);
 
     expect(getHrefs(['/a', null, 'c'])).toEqual(['/a', '/a', '/a/c']);
-    expect(getHrefs(['/a', '', 'c'])).toEqual(['/a', '/a/', '/a//c']);
+    expect(getHrefs(['/a', '', 'c'])).toEqual(['/a', '/a', '/a/c']);
     expect(getHrefs(['/a', undefined, 'c'])).toEqual(['/a', '/a', '/a/c']);
 
     expect(getHrefs(['/a', 'b', null])).toEqual(['/a', '/a/b', '/a/b']);
-    expect(getHrefs(['/a', 'b', ''])).toEqual(['/a', '/a/b', '/a/b/']);
+    expect(getHrefs(['/a', 'b', ''])).toEqual(['/a', '/a/b', '/a/b']);
     expect(getHrefs(['/a', 'b', undefined])).toEqual(['/a', '/a/b', '/a/b']);
   });
   it('replaceStr', () => {

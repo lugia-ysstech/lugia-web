@@ -335,10 +335,10 @@ describe('InputTag', () => {
           cmp.update();
           exp(cmp.find(Widgets.DropMenu).length).to.be.equal(1);
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(3);
-          exp(cmp.find(Widgets.Icon).length).to.be.equal(4);
+          exp(cmp.find(Widgets.Icon).length).to.be.equal(5);
           cmp
             .find(Widgets.Icon)
-            .at(1)
+            .at(2)
             .simulate('click');
           await delay(0, async () => {
             cmp.update();
@@ -384,7 +384,10 @@ describe('InputTag', () => {
         moreItem.simulate('click');
         await delay(0, async () => {
           cmp.update();
-          cmp.find(Widgets.Input).simulate('change', { target: { value: '我' } });
+          cmp
+            .find(Widgets.Input)
+            .find('input')
+            .simulate('change', { target: { value: '我' } });
           exp(cmp.find(Widgets.MenuItem).length).to.be.equal(1);
           exp(
             cmp

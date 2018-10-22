@@ -66,12 +66,7 @@ const rowData = [
   { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
   { key: '4', title: '4', isLeaf: true },
 ];
-// const HalfChecked = 'sv-tree-checkbox-indeterminate';
-// const Checked = 'sv-tree-checkbox-checked';
-// const Selected = 'sv-tree-node-selected';
-// const CheckBox = '.sv-tree-checkbox';
-// const CheckBoxInner = '.sv-tree-checkbox-inner';
-// const TreeRow = '.sv-tree-node-content-wrapper';
+
 describe('Tree', () => {
   let order;
   beforeEach(() => {
@@ -718,9 +713,6 @@ describe('Tree', () => {
     exp(cmp.find('liItem').length).to.be.equal(9);
   }
 
-  // const Switcher = '.sv-tree-switcher';
-  // const SwitcherOpen = 'sv-tree-switcher_open';
-  // const SwitcherClose = 'sv-tree-switcher_close';
   it('expandAll: false 折叠测试', () => {
     const expandAll = true;
     const cmp = mount(<Tree data={rowData} expandAll={expandAll} />);

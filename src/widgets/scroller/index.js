@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import { FontSize } from '../css';
+import { FontSize, FontSizeNumber } from '../css';
 import {
   BarDefaultSize,
   BarDefaultSizePadding,
@@ -19,7 +19,7 @@ import {
   BarHoverBackgroundColor,
 } from '../css/scroller';
 import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+const em = px2emcss(FontSizeNumber);
 
 type ScrollerProps = {
   totalSize: number,

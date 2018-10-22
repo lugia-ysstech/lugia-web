@@ -16,13 +16,16 @@ import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
-import { FontSize } from '../css';
 import QueryInput from '../common/QueryInput';
 import { themeColor } from '../css/tree';
 
 import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
 
 import { DefaultHelp } from '../css/input';
+import { FontSizeNumber, FontSize } from '../css';
+import { px2emcss } from '../css/units';
+
+const em = px2emcss(FontSizeNumber);
 
 type ValidateStatus = 'success' | 'error';
 
@@ -81,14 +84,14 @@ const Text = styled.span`
   background: ${themeColor};
   padding: 0.1rem;
   position: absolute;
-  border-radius: 3px;
+  border-radius: ${em(3)};
 `;
 
 /* create by ZhangBoPing */
 const Label = styled.span`
   display: inline-block;
   text-overflow: ellipsis;
-  width: ${props => (props.size ? `${props.size}px` : 'auto')};
+  width: ${props => (props.size ? `${em(props.size)}` : 'auto')};
   overflow: hidden;
   white-space: nowrap;
   float: left;

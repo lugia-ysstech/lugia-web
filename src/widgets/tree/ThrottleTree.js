@@ -5,11 +5,9 @@
  * @flow
  */
 
-import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo } from '@lugia/lugia-web';
 import animation from '../common/openAnimation';
 import * as React from 'react';
 import RcTree, { TreeNode } from './rc-tree';
-import classNames from 'classnames';
 import ThrottleScroller from '../scroller/ThrottleScroller';
 import '../css/sv.css';
 import './index.css';
@@ -18,25 +16,28 @@ import styled from 'styled-components';
 import { BarDefaultSize } from '../css/scroller';
 import { adjustValue } from '../utils';
 import { MenuItemHeight, DefaultHeight } from '../css/tree';
+import { FontSizeNumber } from '../css';
+import { px2emcss } from '../css/units';
 
+const em = px2emcss(FontSizeNumber);
 type RowData = { [key: string]: any };
 
-const getTop = props => props.top;
+const getTop = props => em(props.top);
 const getWidth = props => {
   const { theme = {} } = props;
   const { width } = theme;
 
-  return width ? `width:${props.theme.width}px;` : 'width: 100%';
+  return width ? `width:${em(props.theme.width)};` : 'width: 100%';
 };
 const WrapRcTree = styled(RcTree)`
   position: relative;
-  top: ${getTop}px;
+  top: ${getTop};
   ${getWidth};
+  padding: 0;
 `;
 
 class ScrollerTree extends React.Component<any, any> {
   static defaultProps = {
-    prefixCls: 'sv-tree',
     mutliple: false,
     displayField: 'title',
     expandAll: false,
@@ -46,10 +47,6 @@ class ScrollerTree extends React.Component<any, any> {
   };
 
   utils: TreeUtils;
-
-  constructor(props) {
-    super(props);
-  }
 
   shouldComponentUpdate(nexProps: Object, nextState: Object) {
     const endChange = nexProps.end != this.props.end;
@@ -86,9 +83,7 @@ class ScrollerTree extends React.Component<any, any> {
   };
 
   render() {
-    const { prefixCls, className: classNme, data } = this.props;
-
-    const classString = classNames([`${prefixCls}-show-line`, classNme]);
+    const { data } = this.props;
     if (data) {
       const { mutliple, onExpand, utils, onSelect, id2ExtendInfo } = this.props;
       let { start, end } = this.props;
@@ -111,9 +106,8 @@ class ScrollerTree extends React.Component<any, any> {
           onSelect={onSelect}
           top={top}
           theme={treeTheme}
-          className={classString}
           onExpand={onExpand}
-          checkable={mutliple ? <span className={`${prefixCls}-checkbox-inner`} /> : mutliple}
+          checkable={mutliple ? <span /> : mutliple}
         >
           {treeNodes}
         </WrapRcTree>
