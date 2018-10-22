@@ -63,7 +63,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   render() {
     const { menus, children, action, hideAction, align } = this.props;
     const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
-
+    const offsetY = this.getOffSetY(align);
     const queryInputWidth = width;
     const oldMenuHeight = height - (Height + 2 * QueryInputPadding);
     const menuHeight = adjustValue(oldMenuHeight, MenuItemHeight);
@@ -87,6 +87,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
           ref={cmp => (this.trigger = cmp)}
           align={align}
           action={action}
+          offsetY={offsetY}
           hideAction={hideAction}
           onPopupVisibleChange={this.onPopupVisibleChange}
           popupVisible={this.state.visible}
@@ -113,6 +114,11 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   };
   onMenuClick = () => {
     this.onPopupVisibleChange(false);
+  };
+
+  getOffSetY = (align: string) => {
+    const isTop = align === 'topLeft' || align === 'topRight' || align === 'top';
+    return isTop ? -4 : 4;
   };
 
   isNeedQueryInput() {
