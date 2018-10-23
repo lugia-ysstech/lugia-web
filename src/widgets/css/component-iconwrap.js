@@ -5,7 +5,7 @@
  */
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Icon from '../icon';
 
 export type Type = 'info' | 'success' | 'error' | 'warning' | 'loading';
@@ -29,6 +29,23 @@ export const IconInfo = {
   loading: { class: 'lugia-icon-financial_loading_o', color: themeColor },
 };
 
+const getLoadingIconStyle = (props: IconConProps) => {
+  const { iconType } = props;
+  if (iconType === 'loading') {
+    const IconSpin = keyframes`
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  `;
+
+    return `
+      animation: ${IconSpin} 1s infinite linear;
+    `;
+  }
+};
 export const Icons = styled(Icon)`
   color: ${props => IconInfo[props.iconType].color};
   position: relative;
@@ -36,4 +53,5 @@ export const Icons = styled(Icon)`
   margin-right: ${iconEM(10)};
   font-size: ${em(16)};
   cursor: default;
+  ${getLoadingIconStyle};
 `;
