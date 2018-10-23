@@ -97,7 +97,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       const pack = (element: Object) => {
         return (
           <ScrollerContainer theme={theme} onWheel={this.onWheel}>
-            {element};
+            {element}
           </ScrollerContainer>
         );
       };
