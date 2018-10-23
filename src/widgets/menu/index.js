@@ -16,11 +16,11 @@ import '../css/sv.css';
 import { adjustValue } from '../utils';
 import { px2emcss } from '../css/units';
 import Trigger from '../trigger';
-import contains from 'rc-util/lib/Dom/contains';
 import { findDOMNode } from 'react-dom';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import { FontSize, FontSizeNumber } from '../css';
 import CommonIcon from '../icon';
+import contains from 'rc-util/lib/Dom/contains';
 
 const em = px2emcss(FontSizeNumber);
 const RightIcon = styled.span`
@@ -32,6 +32,7 @@ const RightIcon = styled.span`
 
 type MenuProps = {
   start: number,
+  level: number,
   end: number,
   getTheme: Function,
   getPrefix: Function,
@@ -84,12 +85,13 @@ function getSelectedKeys(props: MenuProps, state: ?MenuState): Array<string> {
   return state ? state.selectedKeys : [];
 }
 
-let Result = null;
+let Result = () => <div />;
 
 class Menu extends React.Component<MenuProps, MenuState> {
   static defaultProps = {
     mutliple: false,
     start: 0,
+    level: 0,
     displayField: 'text',
     valueField: 'value',
     end: 0,
@@ -108,6 +110,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       init: true,
     };
     this.updateIsSelect(this.state, this.props);
+    this.level2MenuInstance = {};
   }
 
   static getDerivedStateFromProps(props: MenuProps, state: MenuState) {
@@ -184,6 +187,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       <Trigger
         ref={cmp => (this.trigger = cmp)}
         align={'rightTop'}
+        createPortal
         action={'hover'}
         hideAction={'hover'}
         popupVisible={this.state.popupVisible}
@@ -275,6 +279,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
          *  add by szfeng
          */
         onClick && onClick(event, keys, str);
+        event.preventDefault();
+        event.stopPropagation();
       },
       onMouseEnter: () => {
         // const newState = { childData: [], popupVisible: false };
@@ -291,8 +297,55 @@ class Menu extends React.Component<MenuProps, MenuState> {
     this.isSelect = this.createSelect(state, props);
   }
 
+  level2MenuInstance: { [level: string]: Object };
+
+  pushMenuInstance = (level: number, instance: Object) => {
+    this.level2MenuInstance[level + ''] = instance;
+    console.info('this.level2MenuInstanc', this.level2MenuInstance);
+  };
+
+  deleteMenuInstance = (level: number) => {
+    delete this.level2MenuInstance[level + ''];
+    console.info('this.level2MenuInstanc', this.level2MenuInstance);
+  };
+
+  mouseDownInMenus = (target: Object) => {
+    const isInMenuRange = Object.values(this.level2MenuInstance).some((instance: Object) => {
+      const domNode = findDOMNode(instance);
+      console.info(domNode.parentNode.parentNode);
+      return contains(domNode.parentNode.parentNode, target);
+    });
+    console.info('mouseDownInMenus', this.props.level, target, isInMenuRange);
+    return isInMenuRange;
+  };
+
   getPopupMenu(childrenData: Object[] = []) {
-    return <Result mutliple={false} hello={'lgx'} owner={this} data={childrenData} />;
+    return (
+      <Result
+        mutliple={false}
+        data={childrenData}
+        pushMenuInstance={this.getPushMenuInstance()}
+        deleteMenuInstance={this.getDeleteMenuInstance()}
+        mouseDownInMenus={this.getMouseDownInMenus()}
+        level={this.props.level + 1}
+      />
+    );
+  }
+
+  isRoot() {
+    return this.props.level === 0;
+  }
+
+  getMouseDownInMenus() {
+    return this.isRoot() ? this.mouseDownInMenus : this.props.mouseDownInMenus;
+  }
+
+  getPushMenuInstance() {
+    return this.isRoot() ? this.pushMenuInstance : this.props.pushMenuInstance;
+  }
+
+  getDeleteMenuInstance() {
+    return this.isRoot() ? this.deleteMenuInstance : this.props.deleteMenuInstance;
   }
 
   createSelect = (state: MenuState, props: MenuProps) => {
@@ -316,6 +369,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   componentDidMount() {
+    const pushMenuInstance = this.getPushMenuInstance();
+    pushMenuInstance(this.props.level, this);
     let currentDocument;
     if (!this.clickOutsideHandler) {
       currentDocument = document;
@@ -349,22 +404,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   onDocumentClick = (e: Object) => {
-    let { owner } = this.props;
-    const target = e.target;
-
-    console.info('begin');
-    while (owner) {
-      console.info(findDOMNode(owner));
-      owner = owner.props.owner;
+    const mouseDownInMenus = this.getMouseDownInMenus();
+    if (!mouseDownInMenus(e.target)) {
+      this.setState({ childData: [], popupVisible: false });
     }
-    console.info(findDOMNode(this));
-
-    console.info('end');
   };
 
   componentWillUnmount() {
+    const deleteMenuInstance = this.getDeleteMenuInstance();
+    deleteMenuInstance(this.props.level);
     this.clearOutsideHandler();
   }
+
   getCascaderIcon = (children: Object[]) => {
     if (children && children.length > 0) {
       return (
