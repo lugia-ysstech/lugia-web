@@ -15,7 +15,20 @@ import Widget from '../consts/index';
 import '../css/sv.css';
 import { adjustValue } from '../utils';
 import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+import Trigger from '../trigger';
+import contains from 'rc-util/lib/Dom/contains';
+import { findDOMNode } from 'react-dom';
+import addEventListener from 'rc-util/lib/Dom/addEventListener';
+import { FontSize, FontSizeNumber } from '../css';
+import CommonIcon from '../icon';
+
+const em = px2emcss(FontSizeNumber);
+const RightIcon = styled.span`
+  position: absolute;
+  right: ${em(12)};
+  top: 50%;
+  transform: translateY(-50%);
+`;
 
 type MenuProps = {
   start: number,
@@ -70,6 +83,8 @@ function getSelectedKeys(props: MenuProps, state: ?MenuState): Array<string> {
   return state ? state.selectedKeys : [];
 }
 
+let Result = null;
+
 class Menu extends React.Component<MenuProps, MenuState> {
   static defaultProps = {
     mutliple: false,
@@ -117,8 +132,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
     if (dataChanged || selectedChange) {
       this.updateIsSelect(nextState, nextProps);
     }
+    const popupChanged =
+      nextState.popupVisible !== state.popupVisible || nextState.childData !== state.childData;
     return (
       dataChanged ||
+      popupChanged ||
       props.start !== nextProps.start ||
       props.svThemVersion !== nextProps.svThemVersion ||
       selectedChange
@@ -135,15 +153,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
     if (data && data.length > 0) {
       items = this.computeItems(data, start, end, (obj: Object) => {
         const { valueField, displayField } = this.props;
-        const { [valueField]: key, [displayField]: value } = obj;
+        const { [valueField]: key, [displayField]: value, children } = obj;
         const { getPrefix, getSuffix } = props;
+
         const prefix = getPrefix && getPrefix(obj);
         const suffix = getSuffix && getSuffix(obj);
+        const rightIcon = this.getCascaderIcon(children);
         return (
           <Item key={key}>
             {prefix}
             {value}
             {suffix}
+            {rightIcon}
           </Item>
         );
       });
@@ -153,8 +174,23 @@ class Menu extends React.Component<MenuProps, MenuState> {
         items = this.computeItems(children, start, end, (obj: Object) => obj);
       }
     }
-
-    return <MenuContainer theme={this.getTheme()}>{items}</MenuContainer>;
+    console.info(this.state.popupVisible);
+    const bodyContent = <MenuContainer theme={this.getTheme()}>{items}</MenuContainer>;
+    if (!Array.isArray(this.state.childData) || this.state.childData.length === 0) {
+      return bodyContent;
+    }
+    return (
+      <Trigger
+        ref={cmp => (this.trigger = cmp)}
+        align={'rightTop'}
+        action={'hover'}
+        hideAction={'hover'}
+        popupVisible={this.state.popupVisible}
+        popup={this.getPopupMenu(this.state.childData)}
+      >
+        {bodyContent}
+      </Trigger>
+    );
   }
 
   getTheme() {
@@ -168,26 +204,27 @@ class Menu extends React.Component<MenuProps, MenuState> {
   computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
     const items = [];
     for (let i = start; i < end; i++) {
-      items.push(this.renderMenuItem(getItem(data[i]), this.isSelect));
+      const item = data[i];
+      items.push(this.renderMenuItem(getItem(item), this.isSelect, item));
     }
     return items;
   }
 
-  renderMenuItem = (child: React.Element<typeof Item>, isSelect: Function) => {
+  renderMenuItem = (child: React.Element<typeof Item>, isSelect: Function, item: Object) => {
     const { key } = child;
-    return React.cloneElement(child, this.fetchExtendProps(key, isSelect));
+    return React.cloneElement(child, this.fetchExtendProps(key, isSelect, item));
   };
 
-  fetchExtendProps(key?: null | number | string, isSelect: Function): MenuItemProps {
+  fetchExtendProps(key?: null | number | string, isSelect: Function, item: Object): MenuItemProps {
     const { mutliple } = this.props;
-    const onClick = this.onMenuItemClick(key);
+    const eventConfig = this.onMenuItemEventHandler(key, item);
     if (!key || !isSelect(key)) {
-      return { mutliple, ...onClick, checked: false };
+      return { mutliple, ...eventConfig, checked: false };
     }
-    return { checked: true, mutliple, ...onClick };
+    return { checked: true, mutliple, ...eventConfig };
   }
 
-  onMenuItemClick = (key?: null | number | string): Object => {
+  onMenuItemEventHandler = (key?: null | number | string, item): Object => {
     if (!key) {
       return {};
     }
@@ -215,17 +252,36 @@ class Menu extends React.Component<MenuProps, MenuState> {
           selectedKeys = [str];
         }
         const keys = { selectedKeys: [...selectedKeys] };
-        this.setState(keys);
+
+        const newState = { selectedKeys: [...selectedKeys], popupVisible: false, childData: [] };
+        if (item.children) {
+          newState.childData = item.children;
+          newState.popupVisible = true;
+        }
+        this.setState(newState);
+
         /**
          *  add by szfeng
          */
         onClick && onClick(event, keys, str);
+      },
+      onMouseEnter: () => {
+        // const newState = { childData: [], popupVisible: false };
+        // if (item.children) {
+        //   newState.childData = item.children;
+        //   newState.popupVisible = true;
+        // }
+        // this.setState(newState);
       },
     };
   };
 
   updateIsSelect(state: MenuState, props: MenuProps) {
     this.isSelect = this.createSelect(state, props);
+  }
+
+  getPopupMenu(childrenData: Object[] = []) {
+    return <Result mutliple={false} hello={'lgx'} owner={this} data={childrenData} />;
   }
 
   createSelect = (state: MenuState, props: MenuProps) => {
@@ -247,8 +303,70 @@ class Menu extends React.Component<MenuProps, MenuState> {
       return existKey[key];
     };
   };
+
+  componentDidMount() {
+    let currentDocument;
+    if (!this.clickOutsideHandler) {
+      currentDocument = document;
+      this.clickOutsideHandler = addEventListener(
+        currentDocument,
+        'mousedown',
+        this.onDocumentClick
+      );
+    }
+    // always hide on mobile
+    if (!this.touchOutsideHandler) {
+      currentDocument = currentDocument || document;
+      this.touchOutsideHandler = addEventListener(
+        currentDocument,
+        'touchstart',
+        this.onDocumentClick
+      );
+    }
+  }
+
+  clearOutsideHandler() {
+    if (this.clickOutsideHandler) {
+      this.clickOutsideHandler.remove();
+      this.clickOutsideHandler = null;
+    }
+
+    if (this.touchOutsideHandler) {
+      this.touchOutsideHandler.remove();
+      this.touchOutsideHandler = null;
+    }
+  }
+
+  onDocumentClick = (e: Object) => {
+    let { owner } = this.props;
+    const target = e.target;
+
+    console.info('begin');
+    while (owner) {
+      console.info(findDOMNode(owner));
+      owner = owner.props.owner;
+    }
+    console.info(findDOMNode(this));
+
+    console.info('end');
+  };
+
+  componentWillUnmount() {
+    this.clearOutsideHandler();
+  }
+  getCascaderIcon = (children: Object[]) => {
+    if (children && children.length > 0) {
+      return (
+        <RightIcon>
+          <CommonIcon iconClass="lugia-icon-direction_right" />
+        </RightIcon>
+      );
+    }
+    return null;
+  };
 }
 
-const Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
+Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
+
 Result.MenuItem = Item;
 export default Result;

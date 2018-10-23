@@ -7,7 +7,7 @@
 import '../common/shirm';
 
 import * as React from 'react';
-import { findDOMNode, createPortal } from 'react-dom';
+import { createPortal, findDOMNode } from 'react-dom';
 import contains from 'rc-util/lib/Dom/contains';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import Popup from './Popup';
@@ -133,15 +133,20 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     };
   }
 
+  popupContainer: Object;
+
   getContainer() {
+    if (this.popupContainer) {
+      return this.popupContainer;
+    }
     const { getPopupContainer, getDocument } = this.props;
     const popupContainer = document.createElement('div');
     popupContainer.style.position = 'releative';
     popupContainer.style.top = '0';
     popupContainer.style.left = '0';
     const mountNode = getPopupContainer ? getPopupContainer(findDOMNode(this)) : getDocument().body;
-
     mountNode.appendChild(popupContainer);
+    this.popupContainer = popupContainer;
     return popupContainer;
   }
 
@@ -225,6 +230,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   componentWillUnmount() {
     this.clearDelayTimer();
     this.clearOutsideHandler();
+    this.popupContainer && document.body.removeChild(this.popupContainer);
+    this.popupContainer = null;
   }
 
   getPopupDomNode() {
@@ -376,8 +383,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
 
   onPopupMouseLeave = (e: Object) => {
-    // https://github.com/react-component/trigger/pull/13
-    // react bug?
     if (
       e.relatedTarget &&
       !e.relatedTarget.setTimeout &&
@@ -462,6 +467,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const childCallback = this.props.children.props[type];
     childCallback && childCallback(e);
   }
+
   fireSelfEvents(type: EventName, e: Object) {
     const callback = this.props[type];
     callback && callback(e);

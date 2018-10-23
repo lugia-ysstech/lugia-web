@@ -143,16 +143,7 @@ class MenuItem extends React.Component<MenuItemProps> {
   static displayName = Widget.MenuItem;
 
   render() {
-    const {
-      children,
-      mutliple,
-      checked,
-      onClick,
-      checkbox,
-      disabled,
-      handleItemWrap,
-      childrenData,
-    } = this.props;
+    const { children, mutliple, checked, onClick, checkbox, disabled, onMouseEnter } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
     React.Children.forEach(children, (item: Object) => {
@@ -164,6 +155,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     const target = (
       <Item
         onClick={onClick}
+        onMouseEnter={onMouseEnter}
         title={title}
         checked={checked}
         checkbox={checkbox}
@@ -183,7 +175,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       </Item>
     );
 
-    return handleItemWrap(target, childrenData);
+    return target;
   }
 }
 

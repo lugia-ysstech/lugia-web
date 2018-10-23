@@ -10,8 +10,9 @@ import Scroller from './index';
 import '../css/sv.css';
 import Widget from '../consts/index';
 import { FontSizeNumber } from '../css';
-import { DefaultHeight, DefaultWidth, BarDefaultSize } from '../css/scroller';
+import { BarDefaultSize, DefaultHeight, DefaultWidth } from '../css/scroller';
 import { px2emcss } from '../css/units';
+
 const em = px2emcss(FontSizeNumber);
 
 const height = props => {
@@ -48,6 +49,13 @@ const ScrollerContainer = styled.div`
   position: relative;
 `;
 
+const getOpacity = (props: Object) => {
+  const { isDrag } = props;
+  if (isDrag) {
+    return 'opacity: 1;';
+  }
+  return '';
+};
 const ScrollerCol = Col.extend`
   ${scrollerLeft};
   width: ${em(BarDefaultSize)};
@@ -55,7 +63,7 @@ const ScrollerCol = Col.extend`
   ${ScrollerContainer}:hover & {
     opacity: 1;
   }
-  transition: opacity 0.3s;
+  ${getOpacity} transition: opacity 0.3s;
 `;
 
 type ThrottleScrollerState = {
@@ -83,40 +91,54 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       const { props } = this;
 
       const start = this.getStart(props, this.state);
+      const { getTheme } = props;
+      const theme = getTheme();
+
+      const pack = (element: Object) => {
+        return (
+          <ScrollerContainer theme={theme} onWheel={this.onWheel}>
+            {element};
+          </ScrollerContainer>
+        );
+      };
 
       if (!this.isNeedScroller()) {
         const { length } = this.getTarget();
         //TODO: 待测试
-        return <Target {...props} start={0} end={length} canSeeCount={length} />;
+        return pack(<Target {...props} start={0} end={length} canSeeCount={length} />);
       }
 
-      const { type, getTheme, step } = props;
+      const { type, step } = props;
       const viewSize = this.fetchViewSize();
       const totalSize = this.fetchTotalSize();
 
       const end = this.fetchEnd(start);
-      const theme = getTheme();
       const canSeeCount = this.canSeeCount();
 
-      return (
-        <ScrollerContainer theme={theme} onWheel={this.onWheel}>
-          <Col theme={theme}>
-            <Target {...props} canSeeCount={canSeeCount} start={start} end={end} />
-          </Col>
-          <ScrollerCol theme={theme}>
-            <Scroller
-              ref={cmp => (this.scroller = cmp)}
-              type={type}
-              value={menuItemHeight * start}
-              viewSize={viewSize}
-              totalSize={totalSize}
-              onChange={this.onScroller}
-              step={step}
-            />
-          </ScrollerCol>
-        </ScrollerContainer>
-      );
+      return pack([
+        <Col theme={theme}>
+          <Target {...props} canSeeCount={canSeeCount} start={start} end={end} />
+        </Col>,
+        <ScrollerCol theme={theme} isDrag={this.isDrag}>
+          <Scroller
+            ref={cmp => (this.scroller = cmp)}
+            type={type}
+            onDrag={this.onDrag}
+            value={menuItemHeight * start}
+            viewSize={viewSize}
+            totalSize={totalSize}
+            onChange={this.onScroller}
+            step={step}
+          />
+        </ScrollerCol>,
+      ]);
     }
+
+    isDrag: boolean;
+
+    onDrag = (drag: boolean) => {
+      this.isDrag = drag;
+    };
 
     getStart(props: Object, state: Object): number {
       const { length } = this.getTarget();
@@ -176,6 +198,8 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
     }
 
     onWheel = (e: Object) => {
+      e.stopPropagation();
+      e.preventDefault();
       this.scroller && this.scroller.onWheel && this.scroller.onWheel.call(this.scroller, e);
     };
 
