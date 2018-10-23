@@ -56,6 +56,7 @@ type TriggerProps = {
   mouseEnterDelay: number,
   mouseLeaveDelay: number,
   focusDelay: number,
+  createPortal: boolean,
   blurDelay: number,
   className: string,
   destroyPopupOnHide: boolean,
@@ -334,7 +335,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
     newChildProps.key = 'container';
-    const portal = createPortal(this.getComponent(), this.getContainer());
+    const portal = this.props.createPortal
+      ? createPortal(this.getComponent(), this.getContainer())
+      : this.getComponent();
     return [React.cloneElement(child, newChildProps), portal];
   }
 
