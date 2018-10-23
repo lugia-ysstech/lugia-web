@@ -5,7 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import Menu from '../menu/test';
+import Menu from '../menu';
 import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
@@ -26,9 +26,10 @@ export default class Cascader extends React.Component<any, any> {
     const { data } = this.props;
     return (
       <CascaderContainer>
-        <Theme config={{ [Widget.Menu]: { width: 168 } }}>
+        <Theme config={{ [Widget.Menu]: { width: 168 } }} onMouseEnter={this.props.onMouseEnter}>
           <Menu
             mutliple={false}
+            onMouseEnter={this.props.onMouseEnter}
             data={data}
             onClick={this.onClick}
             handleItemWrap={this.handleItemWrap}
@@ -43,14 +44,16 @@ export default class Cascader extends React.Component<any, any> {
     this.setState({ selectedKeys });
   };
 
-  handleItemWrap = (target: Object, childrenData: Object[]) => {
+  handleItemWrap = (target: Object, childrenData: Object[], key) => {
     if (childrenData && childrenData.length > 0) {
       return (
         <Trigger
+          thename={key}
           ref={cmp => (this.trigger = cmp)}
           align={'rightTop'}
           action={'hover'}
           hideAction={'hover'}
+          popupVisible={true}
           popup={this.getPopupMenu(childrenData)}
         >
           {target}
