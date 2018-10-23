@@ -2,26 +2,26 @@
 
 exports[`DropMenuButton default 1`] = `
 <div
-  className="sc-iRbamj fnZPlr sc-brqgnP kbvsdM sc-cvbbAY LWVqH"
+  className="sc-gisBJw OxUQr sc-fMiknA YRjgA sc-jhAzac bvtXQW"
   disabled={false}
   type="customs"
 >
   <span
-    className="sc-fMiknA dBUfWv"
+    className="sc-kvZOFW ixeWQL"
     disabled={false}
     type="customs"
   />
   <div
-    className="sc-jlyJG esuLIv sc-jWBwVP kcUcpt"
+    className="sc-kjoXOD fIKkXt sc-fBuWsC bZdrlD"
   >
     <span
       checked={false}
-      className="sc-gipzik imnXrh sc-gPEVay gfTKug"
+      className="sc-cHGsZl vQeQd sc-caSCKo eFDpIn"
       disabled={false}
       type="customs"
     >
       <input
-        className="sc-eHgmQL jmRilE"
+        className="sc-hzDkRC bqRBKL"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -30,7 +30,7 @@ exports[`DropMenuButton default 1`] = `
     </span>
     <span
       checked={false}
-      className="sc-fBuWsC hxlDcL"
+      className="sc-frDJqD WyXcy"
       disabled={false}
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -38,7 +38,7 @@ exports[`DropMenuButton default 1`] = `
       type="customs"
     >
       <input
-        className="sc-eHgmQL jmRilE"
+        className="sc-hzDkRC bqRBKL"
         disabled={false}
         onBlur={[Function]}
         type="button"
@@ -54,7 +54,7 @@ exports[`DropMenuButton default 1`] = `
 exports[`DropMenuButton divided={false} 1`] = `
 <div
   checked={false}
-  className="sc-cMljjf hyqmPG sc-brqgnP kbvsdM sc-cvbbAY LWVqH"
+  className="sc-dVhcbM dYpjTK sc-fMiknA YRjgA sc-jhAzac bvtXQW"
   disabled={false}
   onClick={[Function]}
   onMouseEnter={[Function]}
@@ -62,20 +62,20 @@ exports[`DropMenuButton divided={false} 1`] = `
   type="customs"
 >
   <input
-    className="sc-eHgmQL jmRilE"
+    className="sc-hzDkRC bqRBKL"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
     type="button"
   />
   <div
-    className="sc-jAaTju iSZmQv sc-jWBwVP kcUcpt"
+    className="sc-eqIVtm iizcuQ sc-fBuWsC bZdrlD"
   >
     <span
-      className="sc-gPEVay gfTKug"
+      className="sc-caSCKo eFDpIn"
     />
     <span
-      className="sc-jDwBTQ cDkhzV"
+      className="sc-fAjcbJ hyvIgY"
     >
       <i
         className="lugia-icon-direction_down  sc-gzVnrw VXFcC"
@@ -87,18 +87,18 @@ exports[`DropMenuButton divided={false} 1`] = `
 
 exports[`DropMenuButton type=basic 1`] = `
 <div
-  className="sc-csuQGl kiSxMq sc-cvbbAY LWVqH"
+  className="sc-TOsTZ Mlkgj sc-jhAzac bvtXQW"
 >
   <div
     checked={false}
-    className="sc-Rmtcm kgfwWJ sc-jWBwVP kcUcpt"
+    className="sc-kgAjT dvDHYC sc-fBuWsC bZdrlD"
     disabled={false}
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
     <input
-      className="sc-eHgmQL jmRilE"
+      className="sc-hzDkRC bqRBKL"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -106,14 +106,14 @@ exports[`DropMenuButton type=basic 1`] = `
     />
     <span
       checked={false}
-      className="sc-bRBYWo joyODz"
+      className="sc-cJSrbW bSsugf"
       disabled={false}
     >
       <span
-        className="sc-hzDkRC gCtYQo"
+        className="sc-ksYbfQ ftarlv"
       />
       <span
-        className="sc-jhAzac ewRgCT sc-jDwBTQ cDkhzV"
+        className="sc-hmzhuo gOhxUM sc-fAjcbJ hyvIgY"
       >
         <i
           className="lugia-icon-direction_down  sc-gzVnrw VXFcC"
@@ -126,26 +126,26 @@ exports[`DropMenuButton type=basic 1`] = `
 
 exports[`DropMenuButton type=primary,divided={true} 1`] = `
 <div
-  className="sc-iRbamj fnZPlr sc-brqgnP lgJaqY sc-cvbbAY LWVqH"
+  className="sc-gisBJw OxUQr sc-fMiknA dgeWSi sc-jhAzac bvtXQW"
   disabled={false}
   type="primary"
 >
   <span
-    className="sc-fMiknA dmgNtv"
+    className="sc-kvZOFW gRHzTc"
     disabled={false}
     type="primary"
   />
   <div
-    className="sc-jlyJG esuLIv sc-jWBwVP kcUcpt"
+    className="sc-kjoXOD fIKkXt sc-fBuWsC bZdrlD"
   >
     <span
       checked={false}
-      className="sc-gipzik cIYZkz sc-gPEVay gfTKug"
+      className="sc-cHGsZl hVHkhG sc-caSCKo eFDpIn"
       disabled={false}
       type="primary"
     >
       <input
-        className="sc-eHgmQL jmRilE"
+        className="sc-hzDkRC bqRBKL"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -154,7 +154,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
     </span>
     <span
       checked={false}
-      className="sc-fBuWsC elndBn"
+      className="sc-frDJqD fPInXD"
       disabled={false}
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -162,7 +162,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
       type="primary"
     >
       <input
-        className="sc-eHgmQL jmRilE"
+        className="sc-hzDkRC bqRBKL"
         disabled={false}
         onBlur={[Function]}
         type="button"
