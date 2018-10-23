@@ -25,7 +25,7 @@ import CommonIcon from '../icon';
 const em = px2emcss(FontSizeNumber);
 const RightIcon = styled.span`
   position: absolute;
-  right: ${em(12)};
+  right: ${em(FontSize)};
   top: 50%;
   transform: translateY(-50%);
 `;
@@ -46,6 +46,7 @@ type MenuProps = {
   defaultSelectedKeys?: Array<string>,
   onClick?: Function,
   limitCount?: number,
+  disabled?: boolean,
 };
 const getHeight = props => {
   const themeHeight = props.theme.height;
@@ -152,15 +153,15 @@ class Menu extends React.Component<MenuProps, MenuState> {
     let items = [];
     if (data && data.length > 0) {
       items = this.computeItems(data, start, end, (obj: Object) => {
-        const { valueField, displayField } = this.props;
-        const { [valueField]: key, [displayField]: value, children } = obj;
+        const { valueField, displayField, checkbox } = this.props;
+        const { [valueField]: key, [displayField]: value, disabled, children } = obj;
         const { getPrefix, getSuffix } = props;
 
         const prefix = getPrefix && getPrefix(obj);
         const suffix = getSuffix && getSuffix(obj);
-        const rightIcon = this.getCascaderIcon(children);
+        const rightIcon = checkbox ? null : this.getCascaderIcon(children);
         return (
-          <Item key={key}>
+          <Item key={key} disabled={disabled}>
             {prefix}
             {value}
             {suffix}
@@ -211,21 +212,31 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   renderMenuItem = (child: React.Element<typeof Item>, isSelect: Function, item: Object) => {
-    const { key } = child;
-    return React.cloneElement(child, this.fetchExtendProps(key, isSelect, item));
+    const { key, props } = child;
+    const { disabled } = props;
+    return React.cloneElement(child, this.fetchExtendProps(key, isSelect, item, disabled));
   };
 
-  fetchExtendProps(key?: null | number | string, isSelect: Function, item: Object): MenuItemProps {
-    const { mutliple } = this.props;
-    const eventConfig = this.onMenuItemEventHandler(key, item);
+  fetchExtendProps(
+    key?: null | number | string,
+    isSelect: Function,
+    item: Object,
+    disabled: boolean
+  ): MenuItemProps {
+    const { mutliple, checkbox } = this.props;
+    const eventConfig = this.onMenuItemEventHandler(key, item, disabled);
     if (!key || !isSelect(key)) {
-      return { mutliple, ...eventConfig, checked: false };
+      return { mutliple, ...eventConfig, checked: false, checkbox, disabled };
     }
-    return { checked: true, mutliple, ...eventConfig };
+    return { checked: true, mutliple, ...eventConfig, disabled };
   }
 
-  onMenuItemEventHandler = (key?: null | number | string, item): Object => {
-    if (!key) {
+  onMenuItemEventHandler = (
+    key?: null | number | string,
+    item: Object,
+    disabled: boolean
+  ): Object => {
+    if (!key || disabled) {
       return {};
     }
     return {

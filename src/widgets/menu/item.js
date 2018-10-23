@@ -29,7 +29,8 @@ type MenuItemProps = {
   mutliple: boolean,
   onClick?: Function,
   children?: React.Node,
-  handleItemWrap: Function,
+  disabled: boolean,
+  checkbox: boolean,
 };
 
 const TextContainer = styled.span`
@@ -130,15 +131,12 @@ const MutlipleItem = SingleItem.extend`
 `;
 MutlipleItem.displayName = 'mutlipleMenuItem';
 
-function defaultHandleItemWrap(Item) {
-  return Item;
-}
-
 class MenuItem extends React.Component<MenuItemProps> {
   static defaultProps = {
     checked: false,
     mutliple: false,
-    handleItemWrap: defaultHandleItemWrap,
+    disabled: false,
+    checkbox: false,
   };
   static displayName = Widget.MenuItem;
 
