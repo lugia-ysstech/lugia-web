@@ -8,13 +8,17 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
+
 import {
   ItemBackgroundColor,
   MenuItemHeight,
   SelectIcon,
   themeColor,
   blackColor,
+  lightGreyColor,
 } from '../css/menu';
+import CheckBox from '../checkbox';
+import Theme from '../theme';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
 
@@ -25,7 +29,17 @@ type MenuItemProps = {
   mutliple: boolean,
   onClick?: Function,
   children?: React.Node,
+  handleItemWrap: Function,
 };
+
+const TextContainer = styled.span`
+  padding: ${em(7)} ${em(8)};
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+`;
 
 const getMulipleCheckedStyle = (props: MenuItemProps) => {
   return props.checked
@@ -45,22 +59,26 @@ const getMulipleCheckedStyle = (props: MenuItemProps) => {
 };
 
 const getItemColor = (props: MenuItemProps) => {
-  return props.checked
-    ? `
+  const { checked, disabled } = props;
+  return disabled
+    ? `color: ${lightGreyColor};
+     font-weight: 500;`
+    : checked
+      ? `
     color: ${themeColor};
     font-weight: 900;
   `
-    : `
+      : `
     color: ${blackColor};
     font-weight: 500;
   `;
 };
+
 const SingleItem = styled.li`
   box-sizing: border-box;
   position: relative;
   display: block;
   height: ${em(MenuItemHeight)};
-  padding: ${em(7)} ${em(8)};
   font-weight: 400;
   ${getItemColor};
   white-space: nowrap;
@@ -68,14 +86,19 @@ const SingleItem = styled.li`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: background 0.3s ease;
-
   &:hover {
     background-color: ${ItemBackgroundColor};
     font-weight: 900;
   }
 `;
 
-const MutlipleItem = SingleItem.extend`
+const getIcon = props => {
+  const { checkbox } = props;
+  return `
+    ${
+      checkbox
+        ? ''
+        : `
     &::after {
       font-family: "sviconfont" !important;
       text-rendering: optimizeLegibility;
@@ -92,21 +115,44 @@ const MutlipleItem = SingleItem.extend`
       right: ${em(10)};
       font-weight: 700;
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
+    `
     }
+  `;
+};
+
+const MutlipleItem = SingleItem.extend`
+    ${getIcon}
+    
+  }
+    
     
     ${getMulipleCheckedStyle}
 `;
 MutlipleItem.displayName = 'mutlipleMenuItem';
 
+function defaultHandleItemWrap(Item) {
+  return Item;
+}
+
 class MenuItem extends React.Component<MenuItemProps> {
   static defaultProps = {
     checked: false,
     mutliple: false,
+    handleItemWrap: defaultHandleItemWrap,
   };
   static displayName = Widget.MenuItem;
 
   render() {
-    const { children, mutliple, checked, onClick } = this.props;
+    const {
+      children,
+      mutliple,
+      checked,
+      onClick,
+      checkbox,
+      disabled,
+      handleItemWrap,
+      childrenData,
+    } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
     React.Children.forEach(children, (item: Object) => {
@@ -114,11 +160,30 @@ class MenuItem extends React.Component<MenuItemProps> {
         title = item;
       }
     });
-    return (
-      <Item onClick={onClick} title={title} checked={checked}>
-        {children}
+
+    const target = (
+      <Item
+        onClick={onClick}
+        title={title}
+        checked={checked}
+        checkbox={checkbox}
+        disabled={disabled}
+      >
+        {checkbox && mutliple ? (
+          <Theme>
+            <TextContainer>
+              <CheckBox checked={checked} disabled={disabled} onChange={onClick}>
+                {children}
+              </CheckBox>
+            </TextContainer>
+          </Theme>
+        ) : (
+          <TextContainer>{children}</TextContainer>
+        )}
       </Item>
     );
+
+    return handleItemWrap(target, childrenData);
   }
 }
 
