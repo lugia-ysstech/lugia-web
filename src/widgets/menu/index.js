@@ -278,7 +278,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         /**
          *  add by szfeng
          */
-        onClick && onClick(event, keys, str);
+        onClick && onClick(event, keys, item);
         event.preventDefault();
         event.stopPropagation();
       },
