@@ -12,6 +12,7 @@ import Widget from '../consts/index';
 import { FontSizeNumber } from '../css';
 import { BarDefaultSize, DefaultHeight, DefaultWidth } from '../css/scroller';
 import { px2emcss } from '../css/units';
+import { getCanSeeCount } from './support';
 
 const em = px2emcss(FontSizeNumber);
 
@@ -163,11 +164,7 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
     }
 
     canSeeCount(): number {
-      const viewHeight = this.fetchViewSize();
-      if (viewHeight <= 0 || menuItemHeight <= 0) {
-        return 0;
-      }
-      return Math.ceil(viewHeight / menuItemHeight);
+      return getCanSeeCount(this.fetchViewSize(), menuItemHeight);
     }
 
     fetchViewSize() {
