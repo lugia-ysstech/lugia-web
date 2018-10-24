@@ -10,6 +10,7 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 
+const Placeholder = Menu.Placeholder;
 const MenuWrap = styled.div`
   display: inline-block;
 `;
@@ -70,12 +71,18 @@ const data = [
   { text: '选项8', value: '选项8', disabled: false },
   { text: '选项9', value: '选项9', disabled: true },
   { text: '选项10', value: '选项10', disabled: false },
+  Placeholder,
+  Placeholder,
+  Placeholder,
+  Placeholder,
+  Placeholder,
+  Placeholder,
 ];
 
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    this.state = { items, selectedKeys: [], scrollerValue: 0 };
+    this.state = { items, selectedKeys: [], scrollerValue: 0, start: 0 };
   }
 
   render() {
@@ -144,13 +151,25 @@ export default class extends React.Component<any, any> {
 
         <h2>checkedCSS 为 ‘background’ 单选Menu样式 ( 不可展开子项)</h2>
         <Theme config={{ [Widget.Menu]: { width: 100 } }}>
-          <Menu mutliple={false} checkedCSS={'background'} data={data} onClick={this.onClick} />
+          <Menu
+            start={this.state.start}
+            onScroller={this.onScroller}
+            mutliple={false}
+            checkedCSS={'background'}
+            data={data}
+            onClick={this.onClick}
+          />
         </Theme>
       </div>
     );
   }
 
   onClick = (e, keys, item) => {
-    const { selectedKeys } = keys;
+    const start = data.indexOf(item);
+    this.setState({ start });
+  };
+
+  onScroller = (start, end) => {
+    this.setState({ start });
   };
 }

@@ -16,7 +16,6 @@ import {
   themeColor,
   blackColor,
   lightGreyColor,
-  defaultColor,
 } from '../css/menu';
 import CheckBox from '../checkbox';
 import Theme from '../theme';
@@ -125,17 +124,15 @@ const getIcon = props => {
       right: ${em(12)};
       font-weight: 700;
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
+    }
     `
     }
   `;
 };
 
 const MutlipleItem = SingleItem.extend`
-    ${getIcon}
-  }
-    
-    
-    ${getMulipleCheckedStyle}
+  ${getIcon};
+  ${getMulipleCheckedStyle};
 `;
 MutlipleItem.displayName = 'mutlipleMenuItem';
 

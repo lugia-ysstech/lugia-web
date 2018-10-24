@@ -22,6 +22,7 @@ import { FontSizeNumber } from '../css';
 import CommonIcon from '../icon';
 import { DisplayField, ValueField } from '../consts/props';
 import contains from 'rc-util/lib/Dom/contains';
+import { getCanSeeCountRealy } from '../scroller/support';
 
 const em = px2emcss(FontSizeNumber);
 const RightIcon = styled.span`
@@ -30,6 +31,7 @@ const RightIcon = styled.span`
   top: 50%;
   transform: translateY(-50%);
 `;
+const Placeholder = {};
 
 type MenuProps = {
   start: number,
@@ -175,7 +177,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
         const suffix = getSuffix && getSuffix(obj);
         const rightIcon =
           checkedCSS !== 'none' || mutliple === true ? null : this.getCascaderIcon(children);
-        console.log('icon', checkedCSS);
+
+        if (obj === Placeholder) {
+          return <li />;
+        }
         return (
           <Item key={key} disabled={disabled} checkedCSS={checkedCSS}>
             {prefix}
@@ -460,5 +465,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
 Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
 
+Result.Placeholder = Placeholder;
+Result.computeCanSeeCount = (height?: number = DefaultHeight): number => {
+  return Math.floor(getCanSeeCountRealy(height, MenuItemHeight));
+};
 Result.MenuItem = Item;
 export default Result;
