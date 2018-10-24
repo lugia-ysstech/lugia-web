@@ -18,14 +18,15 @@ import { px2emcss } from '../css/units';
 import Trigger from '../trigger';
 import { findDOMNode } from 'react-dom';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import { FontSize, FontSizeNumber } from '../css';
+import { FontSizeNumber } from '../css';
 import CommonIcon from '../icon';
+import { DisplayField, ValueField } from '../consts/props';
 import contains from 'rc-util/lib/Dom/contains';
 
 const em = px2emcss(FontSizeNumber);
 const RightIcon = styled.span`
   position: absolute;
-  right: ${em(FontSize)};
+  right: ${em(12)};
   top: 50%;
   transform: translateY(-50%);
 `;
@@ -48,6 +49,8 @@ type MenuProps = {
   onClick?: Function,
   limitCount?: number,
   disabled?: boolean,
+  checkbox?: boolean,
+  checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
 };
 const getHeight = props => {
   const themeHeight = props.theme.height;
@@ -69,10 +72,14 @@ const MenuContainer = styled.ul`
 type MenuItemProps = {|
   mutliple: boolean,
   onClick: Function,
+  popupVisible?: boolean,
+  checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
 |};
 type MenuState = {
   init: boolean,
   selectedKeys: Array<string>,
+  popupVisible: boolean,
+  childData: Array<string> | [],
 };
 
 function getSelectedKeys(props: MenuProps, state: ?MenuState): Array<string> {
@@ -92,15 +99,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
     mutliple: false,
     start: 0,
     level: 0,
-    displayField: 'text',
-    valueField: 'value',
+    displayField: DisplayField,
+    valueField: ValueField,
     end: 0,
+    checkedCSS: 'none',
     getTheme: () => {
       return {};
     },
   };
   static displayName = Widget.Menu;
   isSelect: Function;
+  trigger: Object;
 
   constructor(props: MenuProps) {
     super(props);
@@ -108,6 +117,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
       start: 0,
       selectedKeys: getSelectedKeys(props, null),
       init: true,
+      popupVisible: false,
+      childData: [],
     };
     this.updateIsSelect(this.state, this.props);
     this.level2MenuInstance = {};
@@ -150,21 +161,23 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const { data } = props;
-    let { start, end } = this.props;
+    let { start, end, checkedCSS, mutliple } = this.props;
     start = Math.round(start);
     end = Math.round(end);
     let items = [];
     if (data && data.length > 0) {
       items = this.computeItems(data, start, end, (obj: Object) => {
-        const { valueField, displayField, checkbox } = this.props;
+        const { valueField, displayField } = this.props;
         const { [valueField]: key, [displayField]: value, disabled, children } = obj;
         const { getPrefix, getSuffix } = props;
 
         const prefix = getPrefix && getPrefix(obj);
         const suffix = getSuffix && getSuffix(obj);
-        const rightIcon = checkbox ? null : this.getCascaderIcon(children);
+        const rightIcon =
+          checkedCSS !== 'none' || mutliple === true ? null : this.getCascaderIcon(children);
+        console.log('icon', checkedCSS);
         return (
-          <Item key={key} disabled={disabled}>
+          <Item key={key} disabled={disabled} checkedCSS={checkedCSS}>
             {prefix}
             {value}
             {suffix}
@@ -178,7 +191,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         items = this.computeItems(children, start, end, (obj: Object) => obj);
       }
     }
-    console.info(this.state.popupVisible);
+
     const bodyContent = <MenuContainer theme={this.getTheme()}>{items}</MenuContainer>;
     if (!Array.isArray(this.state.childData) || this.state.childData.length === 0) {
       return bodyContent;
@@ -187,9 +200,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
       <Trigger
         ref={cmp => (this.trigger = cmp)}
         align={'rightTop'}
+        offsetX={4}
         createPortal
-        action={'hover'}
-        hideAction={'hover'}
         popupVisible={this.state.popupVisible}
         popup={this.getPopupMenu(this.state.childData)}
       >
@@ -243,13 +255,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
     if (!key || disabled) {
       return {};
     }
+    const { mutliple, onClick, limitCount = 999999, action = 'click', checkedCSS } = this.props;
     return {
       onClick: (event: Object) => {
         if (!key) {
           return;
         }
         const str = key + '';
-        const { mutliple, onClick, limitCount = 999999 } = this.props;
         let { selectedKeys } = this.state;
         if (mutliple) {
           const index = selectedKeys.indexOf(str);
@@ -267,13 +279,23 @@ class Menu extends React.Component<MenuProps, MenuState> {
           selectedKeys = [str];
         }
         const keys = { selectedKeys: [...selectedKeys] };
+        this.setState({ selectedKeys: [...selectedKeys] });
 
-        const newState = { selectedKeys: [...selectedKeys], popupVisible: false, childData: [] };
-        if (item.children) {
-          newState.childData = item.children;
-          newState.popupVisible = true;
+        if (action === 'click' && checkedCSS === 'none' && mutliple === false) {
+          const newState = { popupVisible: false, childData: [] };
+
+          if (item.children) {
+            newState.childData = item.children;
+            newState.popupVisible = true;
+          }
+
+          const { popupVisible } = this.state;
+          if (popupVisible) {
+            newState.childData = [];
+            newState.popupVisible = false;
+          }
+          this.setState(newState);
         }
-        this.setState(newState);
 
         /**
          *  add by szfeng
@@ -283,12 +305,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
         event.stopPropagation();
       },
       onMouseEnter: () => {
-        // const newState = { childData: [], popupVisible: false };
-        // if (item.children) {
-        //   newState.childData = item.children;
-        //   newState.popupVisible = true;
-        // }
-        // this.setState(newState);
+        const { action = 'click', checkedCSS } = this.props;
+        if (action !== 'hover' || checkedCSS !== 'none' || mutliple === true) {
+          return;
+        }
+        const newState = { childData: [], popupVisible: false };
+
+        if (item.children) {
+          newState.childData = item.children;
+          newState.popupVisible = true;
+        }
+        this.setState(newState);
       },
     };
   };
@@ -301,29 +328,32 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   pushMenuInstance = (level: number, instance: Object) => {
     this.level2MenuInstance[level + ''] = instance;
-    console.info('this.level2MenuInstanc', this.level2MenuInstance);
+    // console.info('this.level2MenuInstanc', this.level2MenuInstance);
   };
 
   deleteMenuInstance = (level: number) => {
     delete this.level2MenuInstance[level + ''];
-    console.info('this.level2MenuInstanc', this.level2MenuInstance);
+    // console.info('this.level2MenuInstanc', this.level2MenuInstance);
   };
 
   mouseDownInMenus = (target: Object) => {
     const isInMenuRange = Object.values(this.level2MenuInstance).some((instance: Object) => {
       const domNode = findDOMNode(instance);
-      console.info(domNode.parentNode.parentNode);
+      // console.info(domNode.parentNode.parentNode);
       return contains(domNode.parentNode.parentNode, target);
     });
-    console.info('mouseDownInMenus', this.props.level, target, isInMenuRange);
+    // console.info('mouseDownInMenus', this.props.level, target, isInMenuRange);
     return isInMenuRange;
   };
 
   getPopupMenu(childrenData: Object[] = []) {
+    const { action, checkedCSS } = this.props;
     return (
       <Result
         mutliple={false}
         data={childrenData}
+        checkedCSS={checkedCSS}
+        action={action}
         pushMenuInstance={this.getPushMenuInstance()}
         deleteMenuInstance={this.getDeleteMenuInstance()}
         mouseDownInMenus={this.getMouseDownInMenus()}

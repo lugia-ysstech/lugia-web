@@ -16,6 +16,7 @@ import {
   themeColor,
   blackColor,
   lightGreyColor,
+  defaultColor,
 } from '../css/menu';
 import CheckBox from '../checkbox';
 import Theme from '../theme';
@@ -59,17 +60,24 @@ const getMulipleCheckedStyle = (props: MenuItemProps) => {
     `;
 };
 
-const getItemColor = (props: MenuItemProps) => {
-  const { checked, disabled } = props;
+const getItemColorAndBackground = (props: MenuItemProps) => {
+  const { checked, disabled, checkedCSS } = props;
+  console.log('background', checkedCSS);
   return disabled
     ? `color: ${lightGreyColor};
      font-weight: 500;`
-    : checked
+    : checked && checkedCSS !== 'background'
       ? `
     color: ${themeColor};
     font-weight: 900;
   `
-      : `
+      : checked && checkedCSS === 'background'
+        ? `
+      color: ${blackColor};
+      font-weight: 900;
+      background: ${lightGreyColor}
+    `
+        : `
     color: ${blackColor};
     font-weight: 500;
   `;
@@ -81,7 +89,7 @@ const SingleItem = styled.li`
   display: block;
   height: ${em(MenuItemHeight)};
   font-weight: 400;
-  ${getItemColor};
+  ${getItemColorAndBackground};
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
@@ -94,10 +102,11 @@ const SingleItem = styled.li`
 `;
 
 const getIcon = props => {
-  const { checkbox } = props;
+  const { checkedCSS } = props;
+  console.log(checkedCSS === 'mark');
   return `
     ${
-      checkbox
+      checkedCSS !== 'mark'
         ? ''
         : `
     &::after {
@@ -113,7 +122,7 @@ const getIcon = props => {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: ${em(10)};
+      right: ${em(12)};
       font-weight: 700;
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
     `
@@ -123,7 +132,6 @@ const getIcon = props => {
 
 const MutlipleItem = SingleItem.extend`
     ${getIcon}
-    
   }
     
     
@@ -141,7 +149,7 @@ class MenuItem extends React.Component<MenuItemProps> {
   static displayName = Widget.MenuItem;
 
   render() {
-    const { children, mutliple, checked, onClick, checkbox, disabled, onMouseEnter } = this.props;
+    const { children, mutliple, checked, onClick, disabled, onMouseEnter, checkedCSS } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
     React.Children.forEach(children, (item: Object) => {
@@ -149,17 +157,17 @@ class MenuItem extends React.Component<MenuItemProps> {
         title = item;
       }
     });
-
+    const isCheckbox = checkedCSS === 'checkbox';
     const target = (
       <Item
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         title={title}
         checked={checked}
-        checkbox={checkbox}
         disabled={disabled}
+        checkedCSS={checkedCSS}
       >
-        {checkbox && mutliple ? (
+        {isCheckbox ? (
           <Theme>
             <TextContainer>
               <CheckBox checked={checked} disabled={disabled} onChange={onClick}>
