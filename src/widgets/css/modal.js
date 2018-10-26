@@ -38,6 +38,8 @@ export type ModalState = {
 type CSSProps = {
   showIcon: boolean,
   iconType: IconType,
+  closing: boolean,
+  opening: boolean,
 };
 
 const FontSize = 1.4;

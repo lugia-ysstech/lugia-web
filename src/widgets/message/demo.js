@@ -13,7 +13,7 @@ import Widget from '../consts/index';
 import Theme from '../theme';
 import { createMessage } from './create-message';
 
-export default class AlertDemo extends React.Component<any, any> {
+export default class MessageDemo extends React.Component<any, any> {
   showMessage = (type: 'info' | 'success' | 'error' | 'warning' | 'loading') => () => {
     message[type]('哈哈哈哈', 2);
   };

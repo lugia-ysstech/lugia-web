@@ -83,6 +83,7 @@ const TabsContainer = 'sv_widget_TabsContainer';
 const TabContent = 'sv_widget_TabContent';
 const Alert = 'sv_widget_Alert';
 const Message = 'sv_widget_Message';
+const Notification = 'sv_widget_Notification';
 
 export default {
   Button,
@@ -153,4 +154,5 @@ export default {
   DropMenuButton,
   Alert,
   Message,
+  Notification,
 };
