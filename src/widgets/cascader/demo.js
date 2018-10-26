@@ -8,6 +8,8 @@ import * as React from 'react';
 import Cascader from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
+import Trigger from '../trigger';
+import InputTag from '../inputtag';
 
 const items = [
   {
@@ -65,12 +67,20 @@ export default class extends React.Component<any, any> {
   render() {
     return (
       <div>
-        <Theme config={{ [Widget.Menu]: { width: 200 } }}>
-          <Cascader data={items} onMouseEnter={() => console.info('onMouseEnter')} />
-        </Theme>
+        {/* <Theme config={{ [Widget.Menu]: { width: 200 } }}> */}
+        <Cascader data={items} />
+        {/* </Theme> */}
       </div>
     );
   }
+
+  getPopupMenu = () => {
+    return (
+      <Theme config={{ [Widget.Menu]: { width: 200 } }}>
+        <Cascader data={items} />
+      </Theme>
+    );
+  };
 
   onClick = (e: Object, keys: Object) => {
     const { selectedKeys } = keys;

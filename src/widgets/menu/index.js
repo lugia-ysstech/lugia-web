@@ -53,9 +53,12 @@ type MenuProps = {
   disabled?: boolean,
   checkbox?: boolean,
   checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
+  offsetX: number,
+  offsetY: number,
 };
 const getHeight = props => {
-  const themeHeight = props.theme.height;
+  const { theme } = props;
+  const { height: themeHeight } = theme;
   const height = themeHeight || themeHeight === 0 ? themeHeight : DefaultHeight;
   return `${em(height)}`;
 };
@@ -121,6 +124,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       init: true,
       popupVisible: false,
       childData: [],
+      indexOffsetY: props.indexofY,
     };
     this.updateIsSelect(this.state, this.props);
     this.level2MenuInstance = {};
@@ -197,23 +201,73 @@ class Menu extends React.Component<MenuProps, MenuState> {
       }
     }
 
-    const bodyContent = <MenuContainer theme={this.getTheme()}>{items}</MenuContainer>;
+    const length = data.length;
+    const bodyContent = (
+      <MenuContainer
+        onMouseLeave={this.onMouseLeaveContainer}
+        onMouseEnter={this.onMouseEnterContainer}
+        onMouseDown={this.onMouseDownContainer}
+        onMouseMove={this.onMouseMoveContainer}
+        length={length}
+        theme={this.getTheme()}
+      >
+        {items}
+      </MenuContainer>
+    );
     if (!Array.isArray(this.state.childData) || this.state.childData.length === 0) {
       return bodyContent;
     }
+    const { offsetX } = this.props;
+    const { popupVisible, childData } = this.state;
+    const x = offsetX === 0 || offsetX ? offsetX : 4;
     return (
       <Trigger
         ref={cmp => (this.trigger = cmp)}
         align={'rightTop'}
-        offsetX={4}
+        offsetX={x}
+        offsetY={this.getOffSetY()}
         createPortal
-        popupVisible={this.state.popupVisible}
-        popup={this.getPopupMenu(this.state.childData)}
+        popupVisible={popupVisible}
+        popup={this.getPopupMenu(childData)}
       >
         {bodyContent}
       </Trigger>
     );
   }
+
+  onMouseEnterContainer = () => {
+    const { onMouseEnter } = this.props;
+    onMouseEnter && onMouseEnter();
+  };
+
+  onMouseMoveContainer = () => {
+    const { onMouseMove } = this.props;
+    onMouseMove && onMouseMove();
+  };
+
+  onMouseDownContainer = () => {
+    const { onMouseDown } = this.props;
+    onMouseDown && onMouseDown();
+  };
+
+  onMouseLeaveContainer = () => {
+    const { onMouseLeave } = this.props;
+    onMouseLeave && onMouseLeave();
+  };
+
+  getOffSetY = () => {
+    const { offsetY } = this.props;
+    const { indexOffsetY } = this.state;
+    if (offsetY === 0) {
+      return 0;
+    }
+    return offsetY || indexOffsetY * MenuItemHeight;
+  };
+
+  onMouseLeave = (e: Object) => {
+    const { onMouseLeave } = this.props;
+    onMouseLeave && onMouseLeave(e);
+  };
 
   getTheme() {
     const { getTheme } = this.props;
@@ -227,25 +281,35 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const items = [];
     for (let i = start; i < end; i++) {
       const item = data[i];
-      items.push(this.renderMenuItem(getItem(item), this.isSelect, item));
+      const indexOffsetY = i - start;
+      items.push(this.renderMenuItem(getItem(item), this.isSelect, item, indexOffsetY));
     }
     return items;
   }
 
-  renderMenuItem = (child: React.Element<typeof Item>, isSelect: Function, item: Object) => {
+  renderMenuItem = (
+    child: React.Element<typeof Item>,
+    isSelect: Function,
+    item: Object,
+    indexOffsetY: number
+  ) => {
     const { key, props } = child;
     const { disabled } = props;
-    return React.cloneElement(child, this.fetchExtendProps(key, isSelect, item, disabled));
+    return React.cloneElement(
+      child,
+      this.fetchExtendProps(key, isSelect, item, disabled, indexOffsetY)
+    );
   };
 
   fetchExtendProps(
     key?: null | number | string,
     isSelect: Function,
     item: Object,
-    disabled: boolean
+    disabled: boolean,
+    indexOffsetY: number
   ): MenuItemProps {
     const { mutliple, checkbox } = this.props;
-    const eventConfig = this.onMenuItemEventHandler(key, item, disabled);
+    const eventConfig = this.onMenuItemEventHandler(key, item, disabled, indexOffsetY);
     if (!key || !isSelect(key)) {
       return { mutliple, ...eventConfig, checked: false, checkbox, disabled };
     }
@@ -255,7 +319,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
   onMenuItemEventHandler = (
     key?: null | number | string,
     item: Object,
-    disabled: boolean
+    disabled: boolean,
+    indexOffsetY: number
   ): Object => {
     if (!key || disabled) {
       return {};
@@ -266,6 +331,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         if (!key) {
           return;
         }
+        this.setState({ indexOffsetY });
         const str = key + '';
         let { selectedKeys } = this.state;
         if (mutliple) {
@@ -296,8 +362,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
           const { popupVisible } = this.state;
           if (popupVisible) {
-            newState.childData = [];
-            newState.popupVisible = false;
+            if (item.children === []) {
+              newState.childData = [];
+              newState.popupVisible = false;
+            } else {
+              newState.childData = item.children;
+              newState.popupVisible = true;
+            }
           }
           this.setState(newState);
         }
@@ -309,7 +380,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         event.preventDefault();
         event.stopPropagation();
       },
-      onMouseEnter: () => {
+      onMouseEnter: (event: Object) => {
         const { action = 'click', checkedCSS } = this.props;
         if (action !== 'hover' || checkedCSS !== 'none' || mutliple === true) {
           return;
@@ -322,6 +393,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
         }
         this.setState(newState);
       },
+      getIndexOffsetY: () => {
+        const { getIndexOffsetY } = this.props;
+        getIndexOffsetY && getIndexOffsetY(indexOffsetY);
+      },
     };
   };
 
@@ -333,32 +408,41 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   pushMenuInstance = (level: number, instance: Object) => {
     this.level2MenuInstance[level + ''] = instance;
-    // console.info('this.level2MenuInstanc', this.level2MenuInstance);
   };
 
   deleteMenuInstance = (level: number) => {
     delete this.level2MenuInstance[level + ''];
-    // console.info('this.level2MenuInstanc', this.level2MenuInstance);
   };
 
   mouseDownInMenus = (target: Object) => {
     const isInMenuRange = Object.values(this.level2MenuInstance).some((instance: Object) => {
       const domNode = findDOMNode(instance);
-      // console.info(domNode.parentNode.parentNode);
       return contains(domNode.parentNode.parentNode, target);
     });
-    // console.info('mouseDownInMenus', this.props.level, target, isInMenuRange);
     return isInMenuRange;
   };
 
   getPopupMenu(childrenData: Object[] = []) {
-    const { action, checkedCSS } = this.props;
+    const { action, checkedCSS, offsetX, offsetY, popupVisible } = this.props;
+    const x = offsetX === 0 || offsetX ? offsetX : 4;
+    const y = offsetY === 0 || offsetY ? offsetY : null;
+    console.log('menu', popupVisible);
+    if (!popupVisible) {
+      return null;
+    }
     return (
       <Result
         mutliple={false}
         data={childrenData}
+        popupVisible={popupVisible}
+        onMouseDown={this.props.onMouseDown}
+        onMouseEnter={this.props.onMouseEnter}
+        onMouseLeave={this.props.onMouseLeave}
+        onMouseMove={this.props.onMouseMove}
         checkedCSS={checkedCSS}
         action={action}
+        offsetX={x}
+        offsetY={y}
         pushMenuInstance={this.getPushMenuInstance()}
         deleteMenuInstance={this.getDeleteMenuInstance()}
         mouseDownInMenus={this.getMouseDownInMenus()}

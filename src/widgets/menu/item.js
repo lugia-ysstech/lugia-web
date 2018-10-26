@@ -16,6 +16,7 @@ import {
   themeColor,
   blackColor,
   lightGreyColor,
+  disableColor,
 } from '../css/menu';
 import CheckBox from '../checkbox';
 import Theme from '../theme';
@@ -28,9 +29,11 @@ type MenuItemProps = {
   checked: boolean,
   mutliple: boolean,
   onClick?: Function,
+  onMouseEnter?: Function,
   children?: React.Node,
   disabled: boolean,
   checkbox: boolean,
+  checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
 };
 
 const TextContainer = styled.span`
@@ -61,7 +64,6 @@ const getMulipleCheckedStyle = (props: MenuItemProps) => {
 
 const getItemColorAndBackground = (props: MenuItemProps) => {
   const { checked, disabled, checkedCSS } = props;
-  console.log('background', checkedCSS);
   return disabled
     ? `color: ${lightGreyColor};
      font-weight: 500;`
@@ -74,7 +76,7 @@ const getItemColorAndBackground = (props: MenuItemProps) => {
         ? `
       color: ${blackColor};
       font-weight: 900;
-      background: ${lightGreyColor}
+      background: ${disableColor}
     `
         : `
     color: ${blackColor};
@@ -102,7 +104,6 @@ const SingleItem = styled.li`
 
 const getIcon = props => {
   const { checkedCSS } = props;
-  console.log(checkedCSS === 'mark');
   return `
     ${
       checkedCSS !== 'mark'
