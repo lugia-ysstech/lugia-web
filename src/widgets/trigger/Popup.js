@@ -139,5 +139,4 @@ class Popup extends React.Component<PopupProps> {
     return style;
   }
 }
-
 export default Popup;

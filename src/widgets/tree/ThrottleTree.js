@@ -22,7 +22,7 @@ import { px2emcss } from '../css/units';
 const em = px2emcss(FontSizeNumber);
 type RowData = { [key: string]: any };
 
-const getTop = props => props.top;
+const getTop = props => em(props.top);
 const getWidth = props => {
   const { theme = {} } = props;
   const { width } = theme;
@@ -31,7 +31,7 @@ const getWidth = props => {
 };
 const WrapRcTree = styled(RcTree)`
   position: relative;
-  top: ${em(getTop)};
+  top: ${getTop};
   ${getWidth};
   padding: 0;
 `;

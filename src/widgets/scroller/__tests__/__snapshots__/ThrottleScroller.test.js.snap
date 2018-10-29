@@ -33,7 +33,6 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
 }
 
 .c2 {
-  height: 4.166666666666667em;
   width: 24em;
   position: absolute;
   display: inline-block;
@@ -50,12 +49,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
   opacity: 1;
 }
 
-.c0:hover .c7 {
-  opacity: 1;
-}
-
 .c3 {
-  height: 4.166666666666667em;
   width: 24em;
   position: absolute;
   display: inline-block;
@@ -146,7 +140,6 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
 }
 
 .c2 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -159,12 +152,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   position: relative;
 }
 
-.c0:hover .c6 {
-  opacity: 1;
-}
-
 .c3 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -179,7 +167,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   opacity: 1;
 }
 
-.c0:hover .c7 {
+.c0:hover .c6 {
   opacity: 1;
 }
 
@@ -564,7 +552,6 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
 }
 
 .c2 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -577,12 +564,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   position: relative;
 }
 
-.c0:hover .c6 {
-  opacity: 1;
-}
-
 .c3 {
-  height: 20.833333333333336em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -597,7 +579,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   opacity: 1;
 }
 
-.c0:hover .c7 {
+.c0:hover .c6 {
   opacity: 1;
 }
 
