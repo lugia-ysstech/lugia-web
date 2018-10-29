@@ -9,18 +9,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Message from './message';
 
+let wrap = '';
 export const createMessage = (
   iconType: 'info' | 'success' | 'error' | 'warning' | 'loading' = 'info'
 ) => {
   return (content: string, time?: number = 2, callBack?: Function) => {
-    const div = document.getElementsByClassName('lugia-message');
-    let wrap = div && div[0];
+    if (typeof document === 'undefined') {
+      return;
+    }
     if (!wrap) {
       wrap = document.createElement('div');
-      wrap.className = 'lugia-message';
       wrap.style.cssText =
         'line-height: 1.5;text-align: center;color: #333;box-sizing: border-box;margin: 0;padding: 0;list-style: none;position: fixed;z-index: 1010;width: 100%;top: 16px;left: 0;pointer-events: none;';
-      document.body && document.body.appendChild(wrap);
+      if (wrap) {
+        document.body && document.body.appendChild(wrap);
+      }
     }
     const divs = document.createElement('div');
     wrap.appendChild(divs);

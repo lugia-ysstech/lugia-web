@@ -5,6 +5,7 @@
  * @flow
  *
  */
+import { unmountComponentAtNode } from 'react-dom';
 import * as React from 'react';
 import { Message, MessageContent } from '../css/message';
 import type { MessageProps, MessageState } from '../css/message';
@@ -69,7 +70,8 @@ export default class extends React.Component<MessageProps, MessageState> {
     return null;
   }
   removeDom = () => {
-    if (this.parentDom && this.rootDom) {
+    if (this.parentDom) {
+      unmountComponentAtNode(this.parentDom);
       this.rootDom.removeChild(this.parentDom);
     }
   };

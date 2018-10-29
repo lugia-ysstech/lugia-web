@@ -50,19 +50,20 @@ const getAnimate = (props: CSSProps) => {
   const { opening, closing } = props;
   const Direction = getAnimateDirection(props);
   const value = em(-410);
+  const zero = em(0);
   const openAnimate = keyframes`
     0% {
       ${Direction}: ${value};
     }
     
     50% {
-      ${Direction}: ${em(0)};
+      ${Direction}: ${zero};
     }
   `;
   const closeAnimate = keyframes`
     0% {
       opacity: 1;
-      ${Direction}: ${em(0)};
+      ${Direction}: ${zero};
     }
     
     50% {

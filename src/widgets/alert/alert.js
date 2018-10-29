@@ -8,8 +8,8 @@
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import { Alert, Icons, Message, CloseText, CloseIcon, Description } from '../css/alert';
 import type { AlertProps, AlertState } from '../css/alert';
+import { Alert, CloseIcon, CloseText, Description, Icons, Message } from '../css/alert';
 
 const AlertIcons = {
   info: 'lugia-icon-reminder_info_circle',
@@ -21,6 +21,7 @@ const AlertIcons = {
 export default ThemeProvider(
   class extends React.Component<AlertProps, AlertState> {
     alert: any;
+
     constructor() {
       super();
       this.state = {
@@ -29,12 +30,14 @@ export default ThemeProvider(
         height: 0,
       };
     }
+
     componentDidMount() {
       const height = this.alert && this.alert.offsetHeight;
       this.setState({
         height,
       });
     }
+
     render() {
       const {
         type = 'info',
@@ -47,36 +50,31 @@ export default ThemeProvider(
       } = this.props;
       const { visible, height, animateStart } = this.state;
       const hasDect = this.isInProps('description');
-      return (
-        <div>
-          {visible ? (
-            <Alert
-              innerRef={(node: any) => (this.alert = node)}
-              type={type}
-              showIcon={showIcon}
+      return visible ? (
+        <Alert
+          innerRef={(node: any) => (this.alert = node)}
+          type={type}
+          showIcon={showIcon}
+          theme={getTheme()}
+          visible={visible}
+          animateStart={animateStart}
+          height={height}
+        >
+          {showIcon ? (
+            <Icons
               theme={getTheme()}
-              visible={visible}
-              animateStart={animateStart}
-              height={height}
-            >
-              <div>
-                {showIcon ? (
-                  <Icons
-                    theme={getTheme()}
-                    hasDect={hasDect}
-                    type={type}
-                    iconClass={icon || AlertIcons[type]}
-                  />
-                ) : null}
-                <Message hasDect={hasDect}>{message}</Message>
-              </div>
-              <Description showIcon={showIcon}>{description}</Description>
-              {closable && this.getCloseText()}
-            </Alert>
+              hasDect={hasDect}
+              type={type}
+              iconClass={icon || AlertIcons[type]}
+            />
           ) : null}
-        </div>
-      );
+          <Message hasDect={hasDect}>{message}</Message>
+          <Description showIcon={showIcon}>{description}</Description>
+          {closable && this.getCloseText()}
+        </Alert>
+      ) : null;
     }
+
     getCloseText = () => {
       const { closeText, type = 'info', getTheme } = this.props;
       return (
@@ -101,6 +99,7 @@ export default ThemeProvider(
         this.setState({ visible: false });
       }, 250);
     };
+
     isInProps(value: string): boolean {
       return value in this.props;
     }
