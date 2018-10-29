@@ -19,7 +19,7 @@ export type NotificationProps = {
   icon?: string,
   iconType?: string,
   placement?: 'topRight' | 'bottomLeft' | 'bottomRight' | 'topLeft',
-};
+} & ForTestType;
 export type NotificationState = {
   visible: boolean,
   opening: boolean,
@@ -29,6 +29,9 @@ type CSSProps = {
   opening: boolean,
   closing: boolean,
   placement: 'topRight' | 'bottomLeft' | 'bottomRight' | 'topLeft',
+};
+type ForTestType = {
+  create?: boolean,
 };
 
 const FontSize = 1.4;

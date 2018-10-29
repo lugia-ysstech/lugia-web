@@ -108,8 +108,11 @@ export default class extends React.Component<NotificationProps, NotificationStat
     return false;
   };
   removeDom = () => {
-    if (this.parentDom && this.rootDom) {
-      this.rootDom.removeChild(this.parentDom);
+    const { create = false } = this.props;
+    if (create) {
+      if (this.parentDom && this.rootDom) {
+        this.rootDom.removeChild(this.parentDom);
+      }
     }
   };
 }

@@ -82,6 +82,7 @@ const Progress = 'sv_widget_Progress';
 const TabsContainer = 'sv_widget_TabsContainer';
 const TabContent = 'sv_widget_TabContent';
 const Alert = 'sv_widget_Alert';
+const Modal = 'sv_widget_Modal';
 const Message = 'sv_widget_Message';
 const Notification = 'sv_widget_Notification';
 
@@ -155,4 +156,5 @@ export default {
   Alert,
   Message,
   Notification,
+  Modal,
 };

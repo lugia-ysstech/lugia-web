@@ -7,6 +7,7 @@
 import * as React from 'react';
 import message from './index';
 import Button from '../button';
+import Message from './icon-content';
 
 export default class MessageDemo extends React.Component<any, any> {
   showMessage = (type: 'info' | 'success' | 'error' | 'warning' | 'loading') => () => {
@@ -39,3 +40,14 @@ export default class MessageDemo extends React.Component<any, any> {
     );
   }
 }
+export const MessageStyle = () => {
+  return (
+    <div>
+      <Message iconType="info" content="hello world" />
+      <Message iconType="success" content="hello world" />
+      <Message iconType="error" content="hello world" />
+      <Message iconType="warning" content="hello world" />
+      <Message iconType="loading" content="hello world" />
+    </div>
+  );
+};

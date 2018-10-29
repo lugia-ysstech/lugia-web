@@ -29,7 +29,7 @@ export const createNotification = (iconType?: 'info' | 'success' | 'error' | 'wa
     }
     const divs = document.createElement('div');
     wrap.appendChild(divs);
-    const config = iconType ? { iconType } : null;
+    const config = iconType ? { iconType, create: true } : null;
     ReactDOM.render(<Notification {...props} {...config} />, divs);
   };
 };

@@ -134,5 +134,5 @@ export default ThemeProvider(
       return target in this.props;
     }
   },
-  Widget.Message
+  Widget.Modal
 );
