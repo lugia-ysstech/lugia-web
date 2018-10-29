@@ -5,12 +5,8 @@
  */
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import changeColor from './utilsColor';
-import type { ThemeType } from '@lugia/lugia-web';
-import { createGetWidthOrHeight } from '../common/ThemeUtils';
 import styled, { keyframes } from 'styled-components';
 import Icon from '../icon';
-import Button from '../button';
 
 type IconType = 'confirm' | 'info' | 'success' | 'warning' | 'error';
 type FunctionPropsType = {
@@ -50,11 +46,8 @@ const {
   successColor,
   warningColor,
   dangerColor,
-  mediumGreyColor,
   blackColor,
   darkGreyColor,
-  padding,
-  marginToSameElement,
 } = colorsFunc();
 export const IconInfo = {
   info: { class: 'lugia-icon-reminder_info_circle', color: themeColor },
@@ -117,8 +110,8 @@ export const Modal = styled.div`
   box-sizing: border-box;
   font-size: ${FontSize}rem;
   position: relative;
-  width: 520px;
-  top: 100px;
+  width: ${em(520)};
+  top: ${em(100)};
   margin: 0 auto;
   z-index: 1000;
   ${getAnimate};
@@ -127,8 +120,8 @@ export const ModalContent = styled.div`
   position: relative;
   background-color: #fff;
   border: 0;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: ${em(4)};
+  box-shadow: 0 ${em(4)} ${em(12)} rgba(0, 0, 0, 0.15);
   ${props => (props.showIcon ? `padding-left: ${em(20)};` : '')};
 `;
 export const ModalClose = styled.div`

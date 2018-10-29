@@ -5,13 +5,10 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
 import Modal from './index';
 import Widget from '../consts/index';
 import Theme from '../theme';
 import Button from '../button';
-// import ReactDOM from 'react-dom';
-import { quickcall } from './quickcall';
 
 export default class ModalDemo extends React.Component<any, any> {
   constructor() {
@@ -20,8 +17,6 @@ export default class ModalDemo extends React.Component<any, any> {
       visable1: false,
       visable2: false,
       visable3: false,
-      visable4: false,
-      visable5: false,
     };
   }
   Click = (cur: number) => () => {
@@ -48,7 +43,7 @@ export default class ModalDemo extends React.Component<any, any> {
     Modal[type]({ title: type, content: `this ${type} text!` });
   };
   render() {
-    const { visable1, visable2, visable3, visable4, visable5, confirmLoading } = this.state;
+    const { visable1, visable2, visable3, confirmLoading } = this.state;
     return (
       <div>
         <Button onClick={this.Click(1)}>Modal</Button>

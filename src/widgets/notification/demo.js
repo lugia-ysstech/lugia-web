@@ -5,56 +5,62 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
-import Notification from './notification';
 import notification from './index';
 import Button from '../button';
-import Widget from '../consts/index';
-import Theme from '../theme';
-import { createNotification } from './create';
 
 export default class NotificationDemo extends React.Component<any, any> {
-  render() {
+  defaultOpen = () => {
     notification.open({ title: '今天天气很好！', description: '因为今天的太阳很大。' });
-    notification.info({
-      duration: 6,
-      title: '今天天气很好！',
-      description: '因为今天的太阳很大。',
-    });
-    notification.success({
-      duration: 0,
-      title: '今天天气很好！',
-      description: '因为今天的太阳又升起来了。',
-    });
-    notification.error({
-      duration: null,
-      title: '今天天气太糟糕了！',
-      description: '因为今天的太阳不在家。',
-    });
-    notification.warning({ title: '今天天气不太好！', description: '因为今天是阴天。' });
+  };
+  durationOpen = (duration: number) => {
+    notification.open({ title: '今天天气很好！', description: '因为今天的太阳很大。', duration });
+  };
+  statusOpen = (type: 'info' | 'success' | 'error' | 'warning') => {
+    notification[type]({ title: '今天天气很好！', description: '因为今天的太阳很大。' });
+  };
+  customIconOpen = (icon: string) => {
+    notification.open({ title: '今天天气很好！', description: '因为今天的太阳很大。', icon });
+  };
+  placementOpen = (placement: 'bottomLeft' | 'bottomRight' | 'topLeft') => {
     notification.open({
       icon: 'lugia-icon-reminder_check_circle',
       title: '今天天气很好！',
       description: '因为今天的太阳很大。',
+      placement,
     });
-    notification.open({
-      icon: 'lugia-icon-reminder_check_circle',
-      title: '今天天气很好！',
-      description: '因为今天的太阳很大。',
-      placement: 'topLeft',
-    });
-    notification.open({
-      icon: 'lugia-icon-reminder_check_circle',
-      title: '今天天气很好！1',
-      description: '因为今天的太阳很大1。',
-      placement: 'bottomLeft',
-    });
-    notification.open({
-      icon: 'lugia-icon-reminder_check_circle',
-      title: '今天天气很好！2',
-      description: '因为今天的太阳很大2。',
-      placement: 'bottomLeft',
-    });
-    return <div />;
+  };
+  render() {
+    return (
+      <div>
+        <br />
+        <br />
+        <Button onClick={this.defaultOpen}>基本用法</Button>
+        <br />
+        <br />
+        <Button onClick={() => this.durationOpen(6)}>自定义延时关闭</Button>
+        &nbsp;&nbsp;
+        <Button onClick={() => this.durationOpen(0)}>自定义延时关闭</Button>
+        <br />
+        <br />
+        <Button onClick={() => this.statusOpen('info')}>info</Button>&nbsp;&nbsp;
+        <Button onClick={() => this.statusOpen('success')}>success</Button>&nbsp;&nbsp;
+        <Button onClick={() => this.statusOpen('error')}>error</Button>&nbsp;&nbsp;
+        <Button onClick={() => this.statusOpen('warning')}>warning</Button>&nbsp;&nbsp;
+        <br />
+        <br />
+        <Button onClick={() => this.customIconOpen('lugia-icon-reminder_check_circle')}>
+          自定义图标
+        </Button>
+        <br />
+        <br />
+        <Button onClick={() => this.placementOpen('bottomLeft')}>
+          自定义方向-bottomLeft
+        </Button>&nbsp;&nbsp;
+        <Button onClick={() => this.placementOpen('bottomRight')}>
+          自定义方向-bottomRight
+        </Button>&nbsp;&nbsp;
+        <Button onClick={() => this.placementOpen('topLeft')}>自定义方向-topLeft</Button>
+      </div>
+    );
   }
 }

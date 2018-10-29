@@ -38,7 +38,6 @@ export default ThemeProvider(
   class extends React.Component<ModalProps, ModalState> {
     static getDerivedStateFromProps(props, state) {
       const { visible = false } = props;
-      const hasLoading = 'confirmLoading' in props;
       const closing = state ? state.closing : false;
 
       return {
@@ -109,7 +108,6 @@ export default ThemeProvider(
       );
     }
     handleMaskClick = () => {
-      console.info('mask');
       const { maskClosable = true } = this.props;
       maskClosable && this.handleCancel();
     };

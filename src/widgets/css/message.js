@@ -4,18 +4,14 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
-import changeColor from './utilsColor';
-import type { ThemeType } from '@lugia/lugia-web';
-import { createGetWidthOrHeight } from '../common/ThemeUtils';
 import styled, { keyframes } from 'styled-components';
 import type { Type } from './component-iconwrap';
-import Icon from '../icon';
 
 export type MessageProps = {
   iconType?: Type,
   time: number,
   content: string,
+  callBack?: Function,
 };
 export type MessageState = {
   visible: boolean,
@@ -28,20 +24,7 @@ type CSSProps = {
 };
 
 const FontSize = 1.4;
-const IconFontSize = 1.6;
 const em = px2emcss(FontSize);
-const iconEM = px2emcss(IconFontSize);
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  mediumGreyColor,
-  blackColor,
-  darkGreyColor,
-  padding,
-  marginToSameElement,
-} = colorsFunc();
 
 export const Message = styled.div`
   font-size: ${FontSize}rem;
@@ -53,20 +36,25 @@ const getAnimate = (props: CSSProps) => {
   const { opening, closing } = props;
   const openAnimate = keyframes`
     0% {
+      opacity: 0.2;
       margin-top: -30px;
     }
     70% {
+      opacity: 1;
       margin-top: 0;
     }
     100% {
+      opacity: 1;
       margin-top: 0;
     }
   `;
   const closeAnimate = keyframes`
     0% {
+      opacity: 1;
       margin-top: 0;
     }
     100% {
+      opacity: 0.2;
       margin-top: -30px;
     }
   `;

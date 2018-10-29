@@ -5,7 +5,6 @@
  */
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import type { ThemeType } from '@lugia/lugia-web';
 import styled, { keyframes } from 'styled-components';
 import type { Type } from './component-iconwrap';
 import Icon from '../icon';
@@ -36,17 +35,7 @@ const FontSize = 1.4;
 const IconFontSize = 1.6;
 const em = px2emcss(FontSize);
 const iconEM = px2emcss(IconFontSize);
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  mediumGreyColor,
-  blackColor,
-  darkGreyColor,
-  padding,
-  marginToSameElement,
-} = colorsFunc();
+const { themeColor, mediumGreyColor, blackColor, darkGreyColor } = colorsFunc();
 const getAnimateDirection = (props: CSSProps): 'left' | 'right' => {
   const { placement } = props;
   if (placement === 'bottomLeft' || placement === 'topLeft') {
