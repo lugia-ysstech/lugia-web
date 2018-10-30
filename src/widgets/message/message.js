@@ -12,9 +12,6 @@ import type { MessageProps, MessageState } from '../css/message';
 import IconContent from './icon-content';
 
 export default class extends React.Component<MessageProps, MessageState> {
-  node: any;
-  parentDom: (SyntheticEvent<HTMLButtonElement>) => any;
-  rootDom: (SyntheticEvent<HTMLButtonElement>) => any;
   closeTimer: any;
   removeTimer: any;
   constructor() {
@@ -26,8 +23,6 @@ export default class extends React.Component<MessageProps, MessageState> {
     };
   }
   componentDidMount() {
-    this.parentDom = this.node && this.node.parentNode;
-    this.rootDom = this.parentDom && this.parentDom.parentNode;
     setTimeout(() => {
       this.setState({
         opening: false,
@@ -60,7 +55,7 @@ export default class extends React.Component<MessageProps, MessageState> {
     const { visible, opening, closing } = this.state;
     if (visible) {
       return (
-        <Message innerRef={node => (this.node = node)}>
+        <Message>
           <MessageContent opening={opening} closing={closing}>
             <IconContent iconType={iconType} content={content} />
           </MessageContent>
@@ -70,9 +65,10 @@ export default class extends React.Component<MessageProps, MessageState> {
     return null;
   }
   removeDom = () => {
-    if (this.parentDom && this.rootDom) {
-      unmountComponentAtNode(this.parentDom);
-      this.rootDom.removeChild(this.parentDom);
+    const { parentDom, rootDom } = this.props;
+    if (parentDom && rootDom) {
+      unmountComponentAtNode(parentDom);
+      rootDom.removeChild(parentDom);
     }
   };
 }

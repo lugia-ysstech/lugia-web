@@ -12,6 +12,10 @@ export type MessageProps = {
   time: number,
   content: string,
   callBack?: Function,
+} & ForRemoveType;
+type ForRemoveType = {
+  parentDom: any,
+  rootDom: any,
 };
 export type MessageState = {
   visible: boolean,

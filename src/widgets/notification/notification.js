@@ -20,9 +20,6 @@ import type { NotificationProps, NotificationState } from '../css/notification';
 import { IconInfo } from '../css/modal';
 
 export default class extends React.Component<NotificationProps, NotificationState> {
-  node: (SyntheticEvent<HTMLButtonElement>) => any;
-  parentDom: (SyntheticEvent<HTMLButtonElement>) => any;
-  rootDom: (SyntheticEvent<HTMLButtonElement>) => any;
   timer: any;
   constructor() {
     super();
@@ -33,9 +30,6 @@ export default class extends React.Component<NotificationProps, NotificationStat
     };
   }
   componentDidMount() {
-    this.parentDom = this.node && this.node.parentNode;
-    this.rootDom = this.parentDom && this.parentDom.parentNode;
-
     const { duration } = this.props;
     const time = this.handleDuration(duration);
     if (typeof time === 'number') {
@@ -60,7 +54,6 @@ export default class extends React.Component<NotificationProps, NotificationStat
       return (
         <Notification
           needIcon={this.needIcon()}
-          innerRef={node => (this.node = node)}
           opening={opening}
           closing={closing}
           placement={placement}
@@ -109,12 +102,10 @@ export default class extends React.Component<NotificationProps, NotificationStat
     return false;
   };
   removeDom = () => {
-    const { create = false } = this.props;
-    if (create) {
-      if (this.parentDom && this.rootDom) {
-        unmountComponentAtNode(this.parentDom);
-        this.rootDom.removeChild(this.parentDom);
-      }
+    const { parentDom, rootDom } = this.props;
+    if (parentDom && rootDom) {
+      unmountComponentAtNode(parentDom);
+      rootDom.removeChild(parentDom);
     }
   };
 }

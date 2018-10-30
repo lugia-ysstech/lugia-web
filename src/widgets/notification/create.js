@@ -17,20 +17,24 @@ export const createNotification = (iconType?: 'info' | 'success' | 'error' | 'wa
     if (!wrap) {
       wrap = document.createElement('div');
       wrap.className = `lugia-notification-${placement}`;
-      wrap.style.cssText =
-        'line-height: 1.5; color: rgba(0, 0, 0, 0.65);\n' +
-        'box-sizing: border-box; margin: 0;\n' +
-        'padding: 0; list-style: none;\n' +
-        'position: fixed; z-index: 1010;\n' +
-        'width: 384px; margin-right: 24px;\n' +
-        `${getPosition(placement)}`;
+      wrap.style.cssText = `line-height: 1.5; 
+        color: rgba(0, 0, 0, 0.65);
+        box-sizing: border-box; 
+        margin: 0;
+        padding: 0; 
+        list-style: none;
+        position: fixed; 
+        z-index: 1010;
+        width: 384px; 
+        margin-right: 24px;
+        ${getPosition(placement)}`;
 
       document.body && document.body.appendChild(wrap);
     }
     const divs = document.createElement('div');
     wrap.appendChild(divs);
-    const config = iconType ? { iconType, create: true } : null;
-    ReactDOM.render(<Notification {...props} {...config} />, divs);
+    const config = iconType ? { iconType } : null;
+    ReactDOM.render(<Notification {...props} {...config} rootDom={wrap} parentDom={divs} />, divs);
   };
 };
 function getPosition(placement: string): string {

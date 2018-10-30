@@ -19,8 +19,19 @@ export const createMessage = (
     }
     if (!wrap) {
       wrap = document.createElement('div');
-      wrap.style.cssText =
-        'line-height: 1.5;text-align: center;color: #333;box-sizing: border-box;margin: 0;padding: 0;list-style: none;position: fixed;z-index: 1010;width: 100%;top: 16px;left: 0;pointer-events: none;';
+      wrap.style.cssText = `line-height:
+        1.5;text-align:
+        center;color: #333;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        position: fixed;
+        z-index: 1010;
+        width: 100%;
+        top: 16px;
+        left: 0;
+        pointer-events: none;`;
       if (wrap) {
         document.body && document.body.appendChild(wrap);
       }
@@ -33,6 +44,6 @@ export const createMessage = (
       time,
       callBack,
     };
-    ReactDOM.render(<Message {...config} />, divs);
+    ReactDOM.render(<Message {...config} rootDom={wrap} parentDom={divs} />, divs);
   };
 };

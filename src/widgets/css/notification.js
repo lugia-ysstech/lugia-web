@@ -17,7 +17,12 @@ export type NotificationProps = {
   icon?: string,
   iconType?: string,
   placement?: 'topRight' | 'bottomLeft' | 'bottomRight' | 'topLeft',
-} & ForTestType;
+} & ForTestType &
+  ForRemoveType;
+type ForRemoveType = {
+  parentDom: any,
+  rootDom: any,
+};
 export type NotificationState = {
   visible: boolean,
   opening: boolean,
