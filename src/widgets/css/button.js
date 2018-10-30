@@ -373,10 +373,8 @@ const getMarginCSS = (margin?: MarginType): string => {
       marginCss = em(margin);
     }
     if (typeof margin === 'object') {
-      const { top, right, bottom, left } = margin;
-      if (top && right && bottom && left) {
-        marginCss = `${em(top)} ${em(right)} ${em(bottom)} ${em(left)}`;
-      }
+      const { top = 0, right = 0, bottom = 0, left = 0 } = margin;
+      marginCss = `${em(top)} ${em(right)} ${em(bottom)} ${em(left)}`;
     }
   }
   return marginCss;
