@@ -15,7 +15,7 @@ export const quickcall = (
   return (props: Object) => {
     const { title, content, cancelText = '取消', okText = '确定', footer } = props;
 
-    const config = {
+    const config: Object = {
       title,
       cancelText,
       okText,
@@ -23,9 +23,12 @@ export const quickcall = (
       iconType,
       content,
     };
+    if (footer || footer === null) {
+      config.footer = footer;
+    }
     const div = document.createElement('div');
     document.body && document.body.appendChild(div);
 
-    ReactDOM.render(<FncModal {...config} />, div);
+    ReactDOM.render(<FncModal parentDom={div} {...config} />, div);
   };
 };

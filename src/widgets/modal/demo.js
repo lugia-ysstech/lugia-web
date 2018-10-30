@@ -20,7 +20,6 @@ class ModalBox extends React.Component<any, any> {
     this.setState({
       visable: true,
     });
-    console.info('click');
   };
 
   buttonClick = () => {
@@ -31,7 +30,6 @@ class ModalBox extends React.Component<any, any> {
 
   render() {
     const { visable } = this.state;
-    console.info('visable', visable);
     return (
       <div>
         <Button onClick={this.click}>弹出</Button>
@@ -55,6 +53,7 @@ export default class ModalDemo extends React.Component<any, any> {
       visable1: false,
       visable2: false,
       visable3: false,
+      visable4: false,
     };
   }
 
@@ -78,14 +77,22 @@ export default class ModalDemo extends React.Component<any, any> {
       });
     }, 2000);
   };
-  showModal = (type: 'confirm' | 'info' | 'success' | 'warning' | 'error') => {
-    Modal[type]({ title: type, content: `this ${type} text!` });
-  };
 
   render() {
-    const { visable1, visable2, visable3, confirmLoading } = this.state;
+    const { visable1, visable2, visable3, visable4, confirmLoading } = this.state;
     return (
       <div>
+        <Button onClick={this.Click(4)}>Modal</Button>
+        <Modal
+          visible={visable4}
+          title="这是标题！"
+          onOk={this.buttonClick(4)}
+          onCancel={this.buttonClick(4)}
+        >
+          这是内容！
+        </Modal>
+        <br />
+        <br />
         <Button onClick={this.Click(1)}>Modal</Button>
         <Modal
           visible={visable1}
@@ -123,19 +130,29 @@ export default class ModalDemo extends React.Component<any, any> {
         </Modal>
         <br />
         <br />
-        <Button onClick={() => this.showModal('confirm')}>confirm</Button>
+        <Button onClick={() => Modal.confirm({ title: 'confirm', content: 'this confirm text!' })}>
+          confirm
+        </Button>
         <br />
         <br />
-        <Button onClick={() => this.showModal('info')}>info</Button>
+        <Button onClick={() => Modal.info({ title: 'info', content: 'this info text!' })}>
+          info
+        </Button>
         <br />
         <br />
-        <Button onClick={() => this.showModal('success')}>success</Button>
+        <Button onClick={() => Modal.success({ title: 'success', content: 'this success text!' })}>
+          success
+        </Button>
         <br />
         <br />
-        <Button onClick={() => this.showModal('error')}>error</Button>
+        <Button onClick={() => Modal.error({ title: 'error', content: 'this error text!' })}>
+          error
+        </Button>
         <br />
         <br />
-        <Button onClick={() => this.showModal('warning')}>warning</Button>
+        <Button onClick={() => Modal.warning({ title: 'warning', content: 'this warning text!' })}>
+          warning
+        </Button>
       </div>
     );
   }

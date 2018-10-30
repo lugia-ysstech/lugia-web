@@ -6,6 +6,7 @@
  *
  */
 import * as React from 'react';
+import { unmountComponentAtNode } from 'react-dom';
 import {
   Notification,
   Content,
@@ -111,6 +112,7 @@ export default class extends React.Component<NotificationProps, NotificationStat
     const { create = false } = this.props;
     if (create) {
       if (this.parentDom && this.rootDom) {
+        unmountComponentAtNode(this.parentDom);
         this.rootDom.removeChild(this.parentDom);
       }
     }

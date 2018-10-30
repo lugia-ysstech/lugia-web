@@ -114,17 +114,20 @@ export default ThemeProvider(
     handleOk = () => {
       const { onOk } = this.props;
       const isLoading = this.isInprops('confirmLoading');
-      if (!isLoading) {
+      const hasVisible = this.isInprops('visible');
+      if (!isLoading && !hasVisible) {
         this.setState({
           closing: true,
         });
+        setTimeout(() => {
+          this.setState({
+            closing: false,
+          });
+          onOk && onOk();
+        }, 300);
+        return;
       }
-      setTimeout(() => {
-        this.setState({
-          closing: false,
-        });
-        onOk && onOk();
-      }, 300);
+      onOk && onOk();
     };
     handleCancel = () => {
       const { onCancel } = this.props;

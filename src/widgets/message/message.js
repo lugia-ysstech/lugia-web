@@ -70,7 +70,7 @@ export default class extends React.Component<MessageProps, MessageState> {
     return null;
   }
   removeDom = () => {
-    if (this.parentDom) {
+    if (this.parentDom && this.rootDom) {
       unmountComponentAtNode(this.parentDom);
       this.rootDom.removeChild(this.parentDom);
     }

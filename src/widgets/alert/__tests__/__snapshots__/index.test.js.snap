@@ -248,1430 +248,496 @@ exports[`Alert css 1`] = `
 <div
   className="c0"
 >
-  <div>
-    <div
-      className="c1"
-      height={null}
+  <div
+    className="c1"
+    height={null}
+    type="info"
+  >
+    <span
+      className="c2"
+    >
+      Alert-info
+    </span>
+    <span
+      className="c3"
+    />
+  </div>
+  <div
+    className="c4"
+    height={null}
+    type="success"
+  >
+    <span
+      className="c2"
+    >
+      Alert-success
+    </span>
+    <span
+      className="c3"
+    />
+  </div>
+  <div
+    className="c5"
+    height={null}
+    type="error"
+  >
+    <span
+      className="c2"
+    >
+      Alert-error
+    </span>
+    <span
+      className="c3"
+    />
+  </div>
+  <div
+    className="c6"
+    height={null}
+    type="warning"
+  >
+    <span
+      className="c2"
+    >
+      Alert-warning
+    </span>
+    <span
+      className="c3"
+    />
+  </div>
+  <div
+    className="c1"
+    height={null}
+    type="info"
+  >
+    <span
+      className="c2"
+    >
+      Alert-info
+    </span>
+    <span
+      className="c3"
+    />
+    <a
+      className="c7"
+      onClick={[Function]}
       type="info"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c3"
+      <i
+        className="lugia-icon-reminder_close c8 c9"
       />
-    </div>
+    </a>
   </div>
-  <div>
-    <div
-      className="c4"
-      height={null}
+  <div
+    className="c4"
+    height={null}
+    type="success"
+  >
+    <span
+      className="c2"
+    >
+      Alert-success
+    </span>
+    <span
+      className="c3"
+    />
+    <a
+      className="c7"
+      onClick={[Function]}
       type="success"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c3"
+      <i
+        className="lugia-icon-reminder_close c8 c9"
       />
-    </div>
+    </a>
   </div>
-  <div>
-    <div
-      className="c5"
-      height={null}
+  <div
+    className="c5"
+    height={null}
+    type="error"
+  >
+    <span
+      className="c2"
+    >
+      Alert-error
+    </span>
+    <span
+      className="c3"
+    />
+    <a
+      className="c10"
+      onClick={[Function]}
       type="error"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-    </div>
+      确定
+    </a>
   </div>
-  <div>
-    <div
-      className="c6"
-      height={null}
+  <div
+    className="c6"
+    height={null}
+    type="warning"
+  >
+    <span
+      className="c2"
+    >
+      Alert-warning
+    </span>
+    <span
+      className="c3"
+    />
+    <a
+      className="c11"
+      onClick={[Function]}
       type="warning"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-    </div>
+      ok
+    </a>
   </div>
-  <div>
-    <div
-      className="c1"
-      height={null}
+  <div
+    className="c12"
+    height={null}
+    type="info"
+  >
+    <i
+      className="lugia-icon-reminder_info_circle c13 c9"
+    />
+    <span
+      className="c2"
+    >
+      Alert-info
+    </span>
+    <span
+      className="c14"
+    />
+  </div>
+  <div
+    className="c15"
+    height={null}
+    type="success"
+  >
+    <i
+      className="lugia-icon-reminder_check_circle c16 c9"
+    />
+    <span
+      className="c2"
+    >
+      Alert-success
+    </span>
+    <span
+      className="c14"
+    />
+  </div>
+  <div
+    className="c17"
+    height={null}
+    type="error"
+  >
+    <i
+      className="lugia-icon-reminder_close_circle c18 c9"
+    />
+    <span
+      className="c2"
+    >
+      Alert-error
+    </span>
+    <span
+      className="c14"
+    />
+  </div>
+  <div
+    className="c19"
+    height={null}
+    type="warning"
+  >
+    <i
+      className="lugia-icon-reminder_exclamation_circle c20 c9"
+    />
+    <span
+      className="c2"
+    >
+      Alert-warning
+    </span>
+    <span
+      className="c14"
+    />
+  </div>
+  <div
+    className="c1"
+    height={null}
+    type="info"
+  >
+    <span
+      className="c21"
+    >
+      Alert-info
+    </span>
+    <span
+      className="c3"
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c7"
+      onClick={[Function]}
       type="info"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c3"
+      <i
+        className="lugia-icon-reminder_close c8 c9"
       />
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="info"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
+    </a>
   </div>
-  <div>
-    <div
-      className="c4"
-      height={null}
+  <div
+    className="c4"
+    height={null}
+    type="success"
+  >
+    <span
+      className="c21"
+    >
+      Alert-success
+    </span>
+    <span
+      className="c3"
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c7"
+      onClick={[Function]}
       type="success"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c3"
+      <i
+        className="lugia-icon-reminder_close c8 c9"
       />
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="success"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
+    </a>
   </div>
-  <div>
-    <div
-      className="c5"
-      height={null}
+  <div
+    className="c5"
+    height={null}
+    type="error"
+  >
+    <span
+      className="c21"
+    >
+      Alert-error
+    </span>
+    <span
+      className="c3"
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c10"
+      onClick={[Function]}
       type="error"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-      <a
-        className="c10"
-        onClick={[Function]}
-        type="error"
-      >
-        确定
-      </a>
-    </div>
+      确定
+    </a>
   </div>
-  <div>
-    <div
-      className="c6"
-      height={null}
+  <div
+    className="c6"
+    height={null}
+    type="warning"
+  >
+    <span
+      className="c21"
+    >
+      Alert-warning
+    </span>
+    <span
+      className="c3"
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c11"
+      onClick={[Function]}
       type="warning"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-      <a
-        className="c11"
-        onClick={[Function]}
-        type="warning"
-      >
-        ok
-      </a>
-    </div>
+      ok
+    </a>
   </div>
-  <div>
-    <div
-      className="c12"
-      height={null}
+  <div
+    className="c12"
+    height={null}
+    type="info"
+  >
+    <i
+      className="lugia-icon-reminder_info_circle c22 c9"
+    />
+    <span
+      className="c21"
+    >
+      Alert-info
+    </span>
+    <span
+      className="c14"
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c7"
+      onClick={[Function]}
       type="info"
     >
-      <div>
-        <i
-          className="lugia-icon-reminder_info_circle c13 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
+      <i
+        className="lugia-icon-reminder_close c8 c9"
       />
-    </div>
+    </a>
   </div>
-  <div>
-    <div
-      className="c15"
-      height={null}
+  <div
+    className="c15"
+    height={null}
+    type="success"
+  >
+    <i
+      className="lugia-icon-reminder_check_circle c23 c9"
+    />
+    <span
+      className="c21"
+    >
+      Alert-success
+    </span>
+    <span
+      className="c14"
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c7"
+      onClick={[Function]}
       type="success"
     >
-      <div>
-        <i
-          className="lugia-icon-reminder_check_circle c16 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c14"
+      <i
+        className="lugia-icon-reminder_close c8 c9"
       />
-    </div>
+    </a>
   </div>
-  <div>
-    <div
-      className="c17"
-      height={null}
+  <div
+    className="c17"
+    height={null}
+    type="error"
+  >
+    <i
+      className="lugia-icon-reminder_close_circle c24 c9"
+    />
+    <span
+      className="c21"
+    >
+      Alert-error
+    </span>
+    <span
+      className="c14"
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c10"
+      onClick={[Function]}
       type="error"
     >
-      <div>
-        <i
-          className="lugia-icon-reminder_close_circle c18 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
+      确定
+    </a>
   </div>
-  <div>
-    <div
-      className="c19"
-      height={null}
+  <div
+    className="c19"
+    height={null}
+    type="warning"
+  >
+    <i
+      className="lugia-icon-reminder_exclamation_circle c25 c9"
+    />
+    <span
+      className="c21"
+    >
+      Alert-warning
+    </span>
+    <span
+      className="c14"
+    >
+      这是辅助性文字介绍
+    </span>
+    <a
+      className="c11"
+      onClick={[Function]}
       type="warning"
     >
-      <div>
-        <i
-          className="lugia-icon-reminder_exclamation_circle c20 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
+      ok
+    </a>
   </div>
-  <div>
-    <div
-      className="c1"
-      height={null}
-      type="info"
+  <div
+    className="c12"
+    height={null}
+    type="info"
+  >
+    <i
+      className="lugia-icon-logo_twitter c13 c9"
+    />
+    <span
+      className="c2"
     >
-      <div>
-        <span
-          className="c21"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c3"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="info"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c4"
-      height={null}
-      type="success"
-    >
-      <div>
-        <span
-          className="c21"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c3"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="success"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c5"
-      height={null}
-      type="error"
-    >
-      <div>
-        <span
-          className="c21"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c3"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c10"
-        onClick={[Function]}
-        type="error"
-      >
-        确定
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c6"
-      height={null}
-      type="warning"
-    >
-      <div>
-        <span
-          className="c21"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c3"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c11"
-        onClick={[Function]}
-        type="warning"
-      >
-        ok
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c12"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_info_circle c22 c9"
-        />
-        <span
-          className="c21"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="info"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c15"
-      height={null}
-      type="success"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_check_circle c23 c9"
-        />
-        <span
-          className="c21"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c14"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="success"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c17"
-      height={null}
-      type="error"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_close_circle c24 c9"
-        />
-        <span
-          className="c21"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c14"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c10"
-        onClick={[Function]}
-        type="error"
-      >
-        确定
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c19"
-      height={null}
-      type="warning"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_exclamation_circle c25 c9"
-        />
-        <span
-          className="c21"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c14"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c11"
-        onClick={[Function]}
-        type="warning"
-      >
-        ok
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c12"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-logo_twitter c13 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
+      Alert-info
+    </span>
+    <span
+      className="c14"
+    />
   </div>
   <p>
     Theme
   </p>
-  <div>
-    <div
-      className="c26"
-      height={null}
+  <div
+    className="c26"
+    height={null}
+    type="info"
+  >
+    <span
+      className="c2"
+    >
+      Alert-info
+    </span>
+    <span
+      className="c3"
+    />
+  </div>
+  <div
+    className="c27"
+    height={null}
+    type="info"
+  >
+    <i
+      className="lugia-icon-reminder_info_circle c28 c9"
+    />
+    <span
+      className="c2"
+    >
+      Alert-info
+    </span>
+    <span
+      className="c14"
+    />
+  </div>
+  <div
+    className="c27"
+    height={null}
+    type="info"
+  >
+    <i
+      className="lugia-icon-reminder_info_circle c28 c9"
+    />
+    <span
+      className="c2"
+    >
+      Alert-info
+    </span>
+    <span
+      className="c14"
+    />
+    <a
+      className="c29"
+      onClick={[Function]}
       type="info"
     >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c27"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_info_circle c28 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c27"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_info_circle c28 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-      <a
-        className="c29"
-        onClick={[Function]}
-        type="info"
-      >
-        ok
-      </a>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Avatar css 1`] = `
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
-.c1 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #684fff;
-  background: rgba(104,79,255,0.2);
-}
-
-.c4 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #56c22d;
-  background: rgba(86,194,45,0.2);
-}
-
-.c5 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #f22735;
-  background: rgba(242,39,53,0.2);
-}
-
-.c6 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #f8ac30;
-  background: rgba(248,172,48,0.2);
-}
-
-.c12 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  background: rgba(104,79,255,0.2);
-}
-
-.c15 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  background: rgba(86,194,45,0.2);
-}
-
-.c17 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  background: rgba(242,39,53,0.2);
-}
-
-.c19 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  background: rgba(248,172,48,0.2);
-}
-
-.c26 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #ffa500;
-  background: rgba(255,165,0,0.2);
-  width: 14.285714285714286em;
-}
-
-.c27 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  background: rgba(255,165,0,0.2);
-  width: 14.285714285714286em;
-}
-
-.c13 {
-  color: #684fff;
-  margin-right: 0.5em;
-}
-
-.c16 {
-  color: #56c22d;
-  margin-right: 0.5em;
-}
-
-.c18 {
-  color: #f22735;
-  margin-right: 0.5em;
-}
-
-.c20 {
-  color: #f8ac30;
-  margin-right: 0.5em;
-}
-
-.c22 {
-  color: #684fff;
-  font-size: 1.4285714285714286em;
-  margin-right: 0.5em;
-}
-
-.c23 {
-  color: #56c22d;
-  font-size: 1.4285714285714286em;
-  margin-right: 0.5em;
-}
-
-.c24 {
-  color: #f22735;
-  font-size: 1.4285714285714286em;
-  margin-right: 0.5em;
-}
-
-.c25 {
-  color: #f8ac30;
-  font-size: 1.4285714285714286em;
-  margin-right: 0.5em;
-}
-
-.c28 {
-  color: #ffa500;
-  margin-right: 0.5em;
-}
-
-.c8 {
-  font-size: 1.142857142857143em;
-  color: #999999;
-}
-
-.c2 {
-  color: #333333;
-  vertical-align: text-bottom;
-  font-size: 1em;
-}
-
-.c21 {
-  color: #333333;
-  vertical-align: text-bottom;
-  font-size: 1.2857142857142858em;
-}
-
-.c7 {
-  overflow: hidden;
-  position: absolute;
-  top: 1.7142857142857144em;
-  right: 1em;
-}
-
-.c10 {
-  overflow: hidden;
-  position: absolute;
-  top: 1.7142857142857144em;
-  right: 1em;
-  color: #f22735;
-}
-
-.c11 {
-  overflow: hidden;
-  position: absolute;
-  top: 1.7142857142857144em;
-  right: 1em;
-  color: #f8ac30;
-}
-
-.c29 {
-  overflow: hidden;
-  position: absolute;
-  top: 1.7142857142857144em;
-  right: 1em;
-  color: #ffa500;
-}
-
-.c3 {
-  display: block;
-  color: #666666;
-  font-size: 1em;
-  margin-left: 0;
-}
-
-.c14 {
-  display: block;
-  color: #666666;
-  font-size: 1em;
-  margin-left: 2.142857142857143em;
-}
-
-.c0 {
-  margin: 50px;
-}
-
-.c0 > div {
-  margin-bottom: 16px;
-}
-
-<div
-  className="c0"
->
-  <div>
-    <div
-      className="c1"
-      height={null}
-      type="info"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c4"
-      height={null}
-      type="success"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c5"
-      height={null}
-      type="error"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c6"
-      height={null}
-      type="warning"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c1"
-      height={null}
-      type="info"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="info"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c4"
-      height={null}
-      type="success"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="success"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c5"
-      height={null}
-      type="error"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-      <a
-        className="c10"
-        onClick={[Function]}
-        type="error"
-      >
-        确定
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c6"
-      height={null}
-      type="warning"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-      <a
-        className="c11"
-        onClick={[Function]}
-        type="warning"
-      >
-        ok
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c12"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_info_circle c13 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c15"
-      height={null}
-      type="success"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_check_circle c16 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c17"
-      height={null}
-      type="error"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_close_circle c18 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c19"
-      height={null}
-      type="warning"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_exclamation_circle c20 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c1"
-      height={null}
-      type="info"
-    >
-      <div>
-        <span
-          className="c21"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c3"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="info"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c4"
-      height={null}
-      type="success"
-    >
-      <div>
-        <span
-          className="c21"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c3"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="success"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c5"
-      height={null}
-      type="error"
-    >
-      <div>
-        <span
-          className="c21"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c3"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c10"
-        onClick={[Function]}
-        type="error"
-      >
-        确定
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c6"
-      height={null}
-      type="warning"
-    >
-      <div>
-        <span
-          className="c21"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c3"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c11"
-        onClick={[Function]}
-        type="warning"
-      >
-        ok
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c12"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_info_circle c22 c9"
-        />
-        <span
-          className="c21"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="info"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c15"
-      height={null}
-      type="success"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_check_circle c23 c9"
-        />
-        <span
-          className="c21"
-        >
-          Alert-success
-        </span>
-      </div>
-      <span
-        className="c14"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c7"
-        onClick={[Function]}
-        type="success"
-      >
-        <i
-          className="lugia-icon-reminder_close c8 c9"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c17"
-      height={null}
-      type="error"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_close_circle c24 c9"
-        />
-        <span
-          className="c21"
-        >
-          Alert-error
-        </span>
-      </div>
-      <span
-        className="c14"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c10"
-        onClick={[Function]}
-        type="error"
-      >
-        确定
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c19"
-      height={null}
-      type="warning"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_exclamation_circle c25 c9"
-        />
-        <span
-          className="c21"
-        >
-          Alert-warning
-        </span>
-      </div>
-      <span
-        className="c14"
-      >
-        这是辅助性文字介绍
-      </span>
-      <a
-        className="c11"
-        onClick={[Function]}
-        type="warning"
-      >
-        ok
-      </a>
-    </div>
-  </div>
-  <div>
-    <div
-      className="c12"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-logo_twitter c13 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
-  </div>
-  <p>
-    Theme
-  </p>
-  <div>
-    <div
-      className="c26"
-      height={null}
-      type="info"
-    >
-      <div>
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c3"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c27"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_info_circle c28 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-    </div>
-  </div>
-  <div>
-    <div
-      className="c27"
-      height={null}
-      type="info"
-    >
-      <div>
-        <i
-          className="lugia-icon-reminder_info_circle c28 c9"
-        />
-        <span
-          className="c2"
-        >
-          Alert-info
-        </span>
-      </div>
-      <span
-        className="c14"
-      />
-      <a
-        className="c29"
-        onClick={[Function]}
-        type="info"
-      >
-        ok
-      </a>
-    </div>
+      ok
+    </a>
   </div>
 </div>
 `;

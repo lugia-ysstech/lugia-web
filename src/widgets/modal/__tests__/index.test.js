@@ -40,7 +40,7 @@ describe('Modal', () => {
       .find('hello')
       .at(0)
       .simulate('click');
-    expect(getState(target).closing).toBe(true);
+    expect(getState(target).closing).toBe(false);
     await delay(500);
     expect(getState(target).closing).toBe(false);
     expect(getState(target).visible).toBe(true);

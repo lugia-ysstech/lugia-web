@@ -11,8 +11,6 @@ import Icon from '../icon';
 
 export type NotificationProps = {
   iconType?: Type,
-  time: number,
-  content: string,
   duration?: number | null,
   title: string | React.ReactNode,
   description: string | React.ReactNode,

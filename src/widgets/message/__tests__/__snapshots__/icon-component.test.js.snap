@@ -57,45 +57,35 @@ exports[`Message css 1`] = `
 }
 
 <div>
-  <div>
-    <i
-      className="lugia-icon-reminder_info_circle c0 c1"
-    />
-    <span>
-      hello world
-    </span>
-  </div>
-  <div>
-    <i
-      className="lugia-icon-reminder_check_circle c2 c1"
-    />
-    <span>
-      hello world
-    </span>
-  </div>
-  <div>
-    <i
-      className="lugia-icon-reminder_close_circle c3 c1"
-    />
-    <span>
-      hello world
-    </span>
-  </div>
-  <div>
-    <i
-      className="lugia-icon-reminder_exclamation_circle c4 c1"
-    />
-    <span>
-      hello world
-    </span>
-  </div>
-  <div>
-    <i
-      className="lugia-icon-financial_loading_o c5 c1"
-    />
-    <span>
-      hello world
-    </span>
-  </div>
+  <i
+    className="lugia-icon-reminder_info_circle c0 c1"
+  />
+  <span>
+    hello world
+  </span>
+  <i
+    className="lugia-icon-reminder_check_circle c2 c1"
+  />
+  <span>
+    hello world
+  </span>
+  <i
+    className="lugia-icon-reminder_close_circle c3 c1"
+  />
+  <span>
+    hello world
+  </span>
+  <i
+    className="lugia-icon-reminder_exclamation_circle c4 c1"
+  />
+  <span>
+    hello world
+  </span>
+  <i
+    className="lugia-icon-financial_loading_o c5 c1"
+  />
+  <span>
+    hello world
+  </span>
 </div>
 `;

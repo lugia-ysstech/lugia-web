@@ -6,6 +6,7 @@
  *
  */
 import * as React from 'react';
+import { unmountComponentAtNode } from 'react-dom';
 import Modal from './modal';
 
 export class FncModal extends React.Component<any, any> {
@@ -21,6 +22,7 @@ export class FncModal extends React.Component<any, any> {
       visible: false,
     });
     onOk && onOk();
+    this.removeDom();
   };
   handleCancel = () => {
     const { onCancel } = this.props;
@@ -28,6 +30,7 @@ export class FncModal extends React.Component<any, any> {
       visible: false,
     });
     onCancel && onCancel();
+    this.removeDom();
   };
   render() {
     const { visible } = this.state;
@@ -38,4 +41,12 @@ export class FncModal extends React.Component<any, any> {
       </Modal>
     );
   }
+  removeDom = () => {
+    const { visible } = this.state;
+    const { parentDom } = this.props;
+    if (!visible && parentDom) {
+      unmountComponentAtNode(parentDom);
+      document.body && document.body.removeChild(parentDom);
+    }
+  };
 }
