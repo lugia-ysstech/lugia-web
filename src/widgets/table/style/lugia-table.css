@@ -1,0 +1,30 @@
+.wrap {
+  padding: 0;
+  margin: 0;
+}
+:global(.lugia-table-zebraStripe .rc-table-body table) {
+  border-collapse: collapse;
+}
+:global(.lugia-table-zebraStripe .rc-table-body table tbody tr:nth-of-type(even)) {
+  background-color: #f2f2f2;
+}
+:global(.lugia-table-linear .rc-table-body table) {
+  border-collapse: collapse;
+}
+:global(.lugia-table-linear .rc-table-body table thead) {
+    border-bottom: 1px solid #e8e8e8;
+}
+:global(.lugia-table-bordered .rc-table-body table) {
+  border-collapse: collapse;
+  border: 1px solid #e8e8e8;
+}
+:global(.lugia-table-bordered .rc-table-body table thead tr th) {
+  border-left: 1px solid #e8e8e8;
+}
+:global(.lugia-table-bordered .rc-table-body table tbody tr td) {
+  border-left: 1px solid #e8e8e8;
+}
+
+:global(.lugia-table-bordered .rc-table-body table) {
+  border-collapse: collapse;
+}
