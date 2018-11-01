@@ -78,6 +78,7 @@ type MenuItemProps = {|
   mutliple: boolean,
   onClick: Function,
   popupVisible?: boolean,
+  separator: string,
   checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
 |};
 type MenuState = {
@@ -107,6 +108,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     displayField: DisplayField,
     valueField: ValueField,
     end: 0,
+    separator: '|',
     checkedCSS: 'none',
     getTheme: () => {
       return {};
@@ -167,7 +169,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const { data } = props;
-    let { start, end, checkedCSS, mutliple } = this.props;
+    let { start, end, checkedCSS, mutliple, separator } = this.props;
     start = Math.round(start);
     end = Math.round(end);
     let items = [];
@@ -415,10 +417,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   mouseDownInMenus = (target: Object) => {
+    const { handleIsInMenu } = this.props;
     const isInMenuRange = Object.values(this.level2MenuInstance).some((instance: Object) => {
       const domNode = findDOMNode(instance);
       return contains(domNode.parentNode.parentNode, target);
     });
+    handleIsInMenu && handleIsInMenu(isInMenuRange);
     return isInMenuRange;
   };
 
@@ -426,19 +430,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { action, checkedCSS, offsetX, offsetY, popupVisible } = this.props;
     const x = offsetX === 0 || offsetX ? offsetX : 4;
     const y = offsetY === 0 || offsetY ? offsetY : null;
-    console.log('menu', popupVisible);
     if (!popupVisible) {
-      return null;
+      return <div />;
     }
     return (
       <Result
         mutliple={false}
         data={childrenData}
         popupVisible={popupVisible}
-        onMouseDown={this.props.onMouseDown}
-        onMouseEnter={this.props.onMouseEnter}
-        onMouseLeave={this.props.onMouseLeave}
-        onMouseMove={this.props.onMouseMove}
         checkedCSS={checkedCSS}
         action={action}
         offsetX={x}
