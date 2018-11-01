@@ -41,7 +41,7 @@ Array [
 }
 
 .c6:hover {
-  color: #333333;
+  color: #684fff;
 }
 
 .c5 {
@@ -55,10 +55,12 @@ Array [
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   zoom: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .c5:hover {
-  color: #333333;
+  color: #666666;
 }
 
 .c2 {
@@ -75,18 +77,6 @@ Array [
   font-size: 1.2rem;
 }
 
-.c8 {
-  background: white;
-  border: solid 0.08333333333333334em #e8e8e8;
-  border-radius: 0.33333333333333337em;
-  min-height: 2.666666666666667em;
-  padding-bottom: 0.25em;
-}
-
-.c8:hover {
-  border-color: #cccccc;
-}
-
 .c10 {
   top: 50%;
   right: 0;
@@ -95,7 +85,27 @@ Array [
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   color: #cccccc;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   font-size: 1.2rem;
+}
+
+.c8 {
+  background: white;
+  border: solid 0.08333333333333334em #cccccc;
+  border-radius: 0.33333333333333337em;
+  min-height: 2.666666666666667em;
+  padding-bottom: 0.25em;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c8:hover {
+  border-color: #684fff;
+}
+
+.c8:hover > div > i {
+  color: #684fff;
 }
 
 .c9 {
@@ -196,12 +206,22 @@ Array [
   z-index: 1051;
 }
 
+.c7 {
+  padding: 0.5833333333333334em 0.6666666666666667em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
 .c6 {
   box-sizing: border-box;
   position: relative;
   display: block;
   height: 2.916666666666667em;
-  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
   color: #333333;
   font-weight: 500;
@@ -218,7 +238,7 @@ Array [
   font-weight: 900;
 }
 
-.c8 {
+.c9 {
   position: relative;
   background: #fbfbfb;
   width: 1.6666666666666667em;
@@ -227,7 +247,7 @@ Array [
   width: 1em;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   top: 0;
   left: 0;
@@ -245,12 +265,11 @@ Array [
   margin-right: 0.16666666666666669em;
 }
 
-.c9:hover {
+.c10:hover {
   background-color: #7a7a7a;
 }
 
 .c4 {
-  height: 22.5em;
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -263,8 +282,7 @@ Array [
   position: relative;
 }
 
-.c7 {
-  height: 22.5em;
+.c8 {
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
@@ -275,7 +293,7 @@ Array [
   transition: opacity 0.3s;
 }
 
-.c2:hover .c7 {
+.c2:hover .c8 {
   opacity: 1;
 }
 
@@ -311,62 +329,114 @@ Array [
           >
             <ul
               className="c5"
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
             >
               <li
                 checked={false}
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
+                onMouseEnter={[Function]}
                 title=""
-              />
+              >
+                <span
+                  className="c7"
+                />
+              </li>
               <li
                 checked={false}
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
+                onMouseEnter={[Function]}
                 title=""
-              />
+              >
+                <span
+                  className="c7"
+                />
+              </li>
               <li
                 checked={false}
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
+                onMouseEnter={[Function]}
                 title=""
-              />
+              >
+                <span
+                  className="c7"
+                />
+              </li>
               <li
                 checked={false}
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
+                onMouseEnter={[Function]}
                 title=""
-              />
+              >
+                <span
+                  className="c7"
+                />
+              </li>
               <li
                 checked={false}
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
+                onMouseEnter={[Function]}
                 title=""
-              />
+              >
+                <span
+                  className="c7"
+                />
+              </li>
               <li
                 checked={false}
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
+                onMouseEnter={[Function]}
                 title=""
-              />
+              >
+                <span
+                  className="c7"
+                />
+              </li>
               <li
                 checked={false}
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
+                onMouseEnter={[Function]}
                 title=""
-              />
+              >
+                <span
+                  className="c7"
+                />
+              </li>
               <li
                 checked={false}
                 className="c6"
+                disabled={false}
                 onClick={[Function]}
+                onMouseEnter={[Function]}
                 title=""
-              />
+              >
+                <span
+                  className="c7"
+                />
+              </li>
             </ul>
           </div>
           <div
-            className="c7"
+            className="c8"
           >
             <div
-              className="c8"
+              className="c9"
               onMouseDown={[Function]}
               onMouseMove={[Function]}
               onMouseOut={[Function]}
@@ -379,7 +449,7 @@ Array [
               }
             >
               <div
-                className="c9"
+                className="c10"
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
                 style={
