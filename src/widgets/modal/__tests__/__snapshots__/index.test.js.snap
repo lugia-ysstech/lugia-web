@@ -1,0 +1,677 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal css 1`] = `
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c1 {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.c2 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.65);
+  z-index: 1000;
+}
+
+.c3 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.c4 {
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  position: relative;
+  width: 37.142857142857146em;
+  top: 7.142857142857143em;
+  margin: 0 auto;
+  z-index: 1000;
+}
+
+.c5 {
+  position: relative;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0.28571428571428575em;
+  box-shadow: 0 0.28571428571428575em 0.8571428571428572em rgba(0,0,0,0.15);
+}
+
+.c6 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4.571428571428572em;
+  height: 4.571428571428572em;
+  cursor: pointer;
+  text-align: center;
+  line-height: 4.571428571428572em;
+}
+
+.c9 {
+  padding: 1.875em 5em 1em 1.875em;
+  border-radius: 0.25em 0.25em 0 0;
+  background: #fff;
+  color: #333333;
+  font-size: 1.142857142857143em;
+  font-weight: 500;
+}
+
+.c10 {
+  padding: 0 5.714285714285714em 0 2.142857142857143em;
+  color: #666666;
+  word-wrap: break-word;
+}
+
+.c11 {
+  padding: 1.5714285714285716em 5.714285714285714em 1.8571428571428574em 2.142857142857143em;
+  border-radius: 0 0 4px 4px;
+}
+
+.c11 > button {
+  margin-left: 1em;
+}
+
+.c11 > button:first-child {
+  margin-left: 0;
+}
+
+.c7 {
+  font-size: 1.142857142857143em;
+}
+
+.c0 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #666666;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c0:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c0:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c0:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c12 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #ffffff;
+  background-color: #684fff;
+  border: none;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  width: 6.666666666666667em;
+}
+
+.c12:hover {
+  color: #ffffff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c12:focus {
+  color: #ffffff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c12:active {
+  background-color: #533fcc;
+}
+
+.c13 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #666666;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+  width: 6.666666666666667em;
+}
+
+.c13:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c13:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c13:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+.c14 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #ffffff;
+  background-color: #684fff;
+  border: none;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c14:hover {
+  color: #ffffff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c14:focus {
+  color: #ffffff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c14:active {
+  background-color: #533fcc;
+}
+
+<div>
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      Modal
+    </span>
+  </button>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+      onClick={[Function]}
+    />
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
+        >
+          <div
+            className="c6"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c7 c8"
+            />
+          </div>
+          <div
+            className="c9"
+          >
+            这是标题！
+          </div>
+          <div
+            className="c10"
+          >
+            这是内容！
+          </div>
+          <div
+            className="c11"
+          >
+            <button
+              className="c12"
+              onClick={[Function]}
+              type="primary"
+            >
+              <span>
+                确定
+              </span>
+            </button>
+            <button
+              className="c13"
+              onClick={[Function]}
+            >
+              <span>
+                取消
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      Modal
+    </span>
+  </button>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+      onClick={[Function]}
+    />
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
+        >
+          <div
+            className="c6"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c7 c8"
+            />
+          </div>
+          <div
+            className="c9"
+          >
+            这是标题！
+          </div>
+          <div
+            className="c10"
+          >
+            <div>
+              <button
+                className="c0"
+                onClick={[Function]}
+              >
+                <span>
+                  弹出
+                </span>
+              </button>
+              <div
+                className="c1"
+              >
+                <div
+                  className="c2"
+                  onClick={[Function]}
+                />
+                <div
+                  className="c3"
+                >
+                  <div
+                    className="c4"
+                  >
+                    <div
+                      className="c5"
+                    >
+                      <div
+                        className="c6"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="lugia-icon-reminder_close c7 c8"
+                        />
+                      </div>
+                      <div
+                        className="c9"
+                      >
+                        另一个对话框！
+                      </div>
+                      <div
+                        className="c10"
+                      >
+                        <div
+                          style={
+                            Object {
+                              "height": "300px",
+                              "width": "100px",
+                            }
+                          }
+                        >
+                          我也是一个对话框
+                        </div>
+                      </div>
+                      <div
+                        className="c11"
+                      >
+                        <button
+                          className="c12"
+                          onClick={[Function]}
+                          type="primary"
+                        >
+                          <span>
+                            确定
+                          </span>
+                        </button>
+                        <button
+                          className="c13"
+                          onClick={[Function]}
+                        >
+                          <span>
+                            取消
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c11"
+          >
+            <button
+              className="c12"
+              onClick={[Function]}
+              type="primary"
+            >
+              <span>
+                确定
+              </span>
+            </button>
+            <button
+              className="c13"
+              onClick={[Function]}
+            >
+              <span>
+                取消
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      异步关闭
+    </span>
+  </button>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+      onClick={[Function]}
+    />
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
+        >
+          <div
+            className="c6"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c7 c8"
+            />
+          </div>
+          <div
+            className="c9"
+          >
+            这是标题！
+          </div>
+          <div
+            className="c10"
+          >
+            这是内容！
+          </div>
+          <div
+            className="c11"
+          >
+            <button
+              className="c12"
+              onClick={[Function]}
+              type="primary"
+            >
+              <span>
+                确定
+              </span>
+            </button>
+            <button
+              className="c13"
+              onClick={[Function]}
+            >
+              <span>
+                取消
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      自定义页脚
+    </span>
+  </button>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+      onClick={[Function]}
+    />
+    <div
+      className="c3"
+    >
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
+        >
+          <div
+            className="c6"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c7 c8"
+            />
+          </div>
+          <div
+            className="c9"
+          >
+            这是标题！
+          </div>
+          <div
+            className="c10"
+          >
+            这是内容！
+          </div>
+          <div
+            className="c11"
+          >
+            <button
+              className="c14"
+              onClick={[Function]}
+              type="primary"
+            >
+              <span>
+                自定义页脚
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      confirm
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      info
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      success
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      error
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      warning
+    </span>
+  </button>
+</div>
+`;

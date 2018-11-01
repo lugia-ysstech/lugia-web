@@ -82,6 +82,12 @@ const BackTop = 'sv_widget_BackTop';
 const Progress = 'sv_widget_Progress';
 const TabsContainer = 'sv_widget_TabsContainer';
 const TabContent = 'sv_widget_TabContent';
+const Alert = 'sv_widget_Alert';
+const Modal = 'sv_widget_Modal';
+const Message = 'sv_widget_Message';
+const Notification = 'sv_widget_Notification';
+const Step = 'sv_widget_Step';
+const Steps = 'sv_widget_Steps';
 
 export default {
   Button,
@@ -150,5 +156,11 @@ export default {
   TabContent,
   Tag,
   DropMenuButton,
+  Alert,
+  Message,
+  Notification,
+  Modal,
+  Step,
+  Steps,
   Cascader,
 };

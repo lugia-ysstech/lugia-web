@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message css 1`] = `
+.c0 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #666666;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c0:hover {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c0:focus {
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
+}
+
+.c0:active {
+  color: #533fcc;
+  border: 1px solid #533fcc;
+}
+
+<div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      普通提示
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      成功提示
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      错误提示
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      警告提示
+    </span>
+  </button>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+  >
+    <span>
+      加载提示
+    </span>
+  </button>
+</div>
+`;
