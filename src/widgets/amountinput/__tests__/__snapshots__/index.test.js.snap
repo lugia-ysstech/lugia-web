@@ -149,6 +149,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   color: #333333;
   padding-left: 0.8333333333333334em;
   padding-right: 2.916666666666667em;
+  background: #f2f2f2;
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -156,7 +157,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c13:hover {
-  border-color: #684fff;
+  border-color: #cccccc;
 }
 
 .c13::-webkit-input-placeholder {
@@ -392,6 +393,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -455,6 +457,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -518,6 +521,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c2"
+        disabled={true}
       >
         <input
           className="c13"
@@ -584,6 +588,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c15"
+        disabled={false}
       >
         <input
           className="c16"
@@ -647,6 +652,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c15"
+        disabled={false}
       >
         <input
           className="c17"
@@ -710,6 +716,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c15"
+        disabled={false}
       >
         <input
           className="c18"
@@ -777,6 +784,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -839,6 +847,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -899,6 +908,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -959,6 +969,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -1121,6 +1132,7 @@ Array [
   >
     <span
       className="sv c1"
+      disabled={false}
     >
       <input
         className="c2"
@@ -1345,6 +1357,7 @@ Array [
   >
     <span
       className="sv c1"
+      disabled={false}
     >
       <input
         className="c2"

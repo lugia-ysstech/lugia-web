@@ -1,0 +1,3057 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stepsDemo Component JSON 1`] = `
+.c1 {
+  display: inline-block;
+  position: relative;
+}
+
+.c2 {
+  font-variant: tabular-nums;
+  color: rgba(0,0,0,0.65);
+  box-sizing: border-box;
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c77 {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  vertical-align: bottom;
+  color: #ffffff;
+  background-color: #684fff;
+  border: none;
+  height: 2.666666666666667em;
+  padding: 0.8333333333333334em;
+  font-size: 1em;
+  border-radius: 0.33333333333333337em;
+}
+
+.c77:hover {
+  color: #ffffff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c77:focus {
+  color: #ffffff;
+  border: none;
+  background-color: #9482ff;
+}
+
+.c77:active {
+  background-color: #533fcc;
+}
+
+.c11 {
+  position: relative;
+  cursor: pointer;
+  width: 29.166666666666668em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #684fff;
+}
+
+.c21 {
+  position: relative;
+  cursor: pointer;
+  width: 29.166666666666668em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #cccccc;
+}
+
+.c25 {
+  position: relative;
+  cursor: pointer;
+  width: 29.166666666666668em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #f22735;
+}
+
+.c10 {
+  font-size: 1.4rem;
+  color: #333333;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c20 {
+  font-size: 1.4rem;
+  color: #cccccc;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c30 {
+  font-size: 1.4rem;
+  color: #f22735;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c43 {
+  font-size: 1.4rem;
+  color: rgb(148,130,255);
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c56 {
+  line-height: 1.6666666666666667em;
+  font-weight: 400;
+  color: #333333;
+  margin-top: 0.5em;
+}
+
+.c58 {
+  line-height: 1.6666666666666667em;
+  font-weight: 400;
+  color: #cccccc;
+  margin-top: 0.5em;
+}
+
+.c59 {
+  line-height: 1.6666666666666667em;
+  font-weight: 400;
+  color: #f22735;
+  margin-top: 0.5em;
+}
+
+.c9 {
+  position: absolute;
+  white-space: normal;
+  text-align: right;
+  display: block;
+  color: #684fff;
+  top: 1.6666666666666667em;
+}
+
+.c24 {
+  position: absolute;
+  white-space: normal;
+  text-align: right;
+  display: block;
+  color: #cccccc;
+  top: 1.6666666666666667em;
+}
+
+.c29 {
+  position: absolute;
+  white-space: normal;
+  text-align: right;
+  display: block;
+  color: #f22735;
+  top: 1.6666666666666667em;
+}
+
+.c13 {
+  display: inline-block;
+  position: relative;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0 0.5em;
+}
+
+.c44 {
+  display: inline-block;
+  position: relative;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0 0;
+}
+
+.c14 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: #684fff;
+}
+
+.c22 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: #cccccc;
+}
+
+.c26 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: #f22735;
+}
+
+.c45 {
+  position: relative;
+  height: 0.33333333333333337em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: #684fff;
+}
+
+.c46 {
+  position: relative;
+  height: 0.33333333333333337em;
+  border-top: 0.08333333333333334em solid #684fff;
+  border-bottom: 0.08333333333333334em solid #684fff;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: #684fff;
+}
+
+.c48 {
+  position: relative;
+  height: 0.33333333333333337em;
+  border-top: 0.08333333333333334em solid #cccccc;
+  border-bottom: 0.08333333333333334em solid #cccccc;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: #cccccc;
+}
+
+.c50 {
+  position: relative;
+  height: 0.33333333333333337em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: #f22735;
+}
+
+.c68 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-bottom: 0.08333333333333334em dashed #684fff;
+}
+
+.c70 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-bottom: 0.08333333333333334em dashed #cccccc;
+}
+
+.c72 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-bottom: 0.08333333333333334em dashed #f22735;
+}
+
+.c74 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-bottom: 0.08333333333333334em solid #684fff;
+}
+
+.c75 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-bottom: 0.08333333333333334em solid #cccccc;
+}
+
+.c76 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-bottom: 0.08333333333333334em solid #f22735;
+}
+
+.c3 {
+  position: relative;
+  width: 2.666666666666667em;
+}
+
+.c12 {
+  position: relative;
+  width: 100%;
+}
+
+.c31 {
+  position: relative;
+  width: 2em;
+}
+
+.c64 {
+  position: relative;
+  width: 1em;
+}
+
+.c67 {
+  position: relative;
+  background-color: #56c22d;
+  display: inLine-block;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+}
+
+.c69 {
+  position: relative;
+  background-color: #684fff;
+  display: inLine-block;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+}
+
+.c71 {
+  position: relative;
+  background-color: #cccccc;
+  display: inLine-block;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+}
+
+.c73 {
+  position: relative;
+  background-color: #f22735;
+  display: inLine-block;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+}
+
+.c60 {
+  position: relative;
+  display: inLine-block;
+  width: 2em;
+  height: 2em;
+}
+
+.c17 {
+  display: inLine-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 1.8rem;
+  z-index: 9;
+  color: #ffffff;
+}
+
+.c36 {
+  display: inLine-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 1.6rem;
+  z-index: 9;
+  color: #ffffff;
+}
+
+.c6 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #56c22d;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c15 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  background-color: #684fff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #684fff;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c19 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #684fff;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c23 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #cccccc;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c27 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #f22735;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c34 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #56c22d;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c35 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  background-color: #684fff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #684fff;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c38 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 1em;
+  height: 1em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #684fff;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c39 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 1em;
+  height: 1em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #cccccc;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c40 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #f22735;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c41 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  background-color: rgb(148,130,255);
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: rgb(148,130,255);
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c47 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #684fff;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c49 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #cccccc;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c51 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  background-color: #f22735;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #f22735;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c52 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  background-color: rgb(148,130,255);
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: rgb(148,130,255);
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c53 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #684fff;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c54 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #cccccc;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c55 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  background-color: #f22735;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #f22735;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c57 {
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  background-color: #684fff;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid;
+  border-color: #cccccc;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c4 {
+  position: relative;
+  width: 100%;
+  height: 2.666666666666667em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c32 {
+  position: relative;
+  width: 100%;
+  height: 2em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c65 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c5 {
+  z-index: 99;
+  text-align: center;
+  position: relative;
+  width: 2.666666666666667em;
+}
+
+.c18 {
+  z-index: 99;
+  text-align: center;
+  position: relative;
+  width: 1.6666666666666667em;
+}
+
+.c33 {
+  z-index: 99;
+  text-align: center;
+  position: relative;
+  width: 2em;
+}
+
+.c37 {
+  z-index: 99;
+  text-align: center;
+  position: relative;
+  width: 1em;
+}
+
+.c66 {
+  z-index: 99;
+  text-align: center;
+  position: relative;
+  width: 12;
+  height: 12;
+}
+
+.c7 {
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  color: #56c22d;
+  z-index: 5;
+}
+
+.c16 {
+  display: none !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  color: #684fff;
+  z-index: 5;
+}
+
+.c28 {
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  color: #f22735;
+  z-index: 5;
+}
+
+.c42 {
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  z-index: 5;
+}
+
+.c61 {
+  position: absolute;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 2em;
+  border-color: #684fff;
+  color: #684fff;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c62 {
+  position: absolute;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 2em;
+  border-color: #cccccc;
+  color: #cccccc;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c63 {
+  position: absolute;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 2em;
+  border-color: #f22735;
+  color: #f22735;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c78 {
+  margin-top: 30px;
+  margin-left: 45px;
+}
+
+.c0 {
+  text-align: left;
+  margin: 50px;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <p>
+      简洁风格 size normal
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="h"
+      >
+        <div
+          className="c3"
+          size="normal"
+        >
+          <div
+            className="c4"
+            size="normal"
+          >
+            <div
+              className="c5"
+              size="normal"
+            >
+              <div
+                className="c6"
+                size="normal"
+              >
+                <i
+                  className="lugia-icon-reminder_check c7 c8"
+                />
+              </div>
+              <div
+                className="c9"
+              >
+                <div
+                  className="c10"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c14"
+                />
+              </div>
+              <div
+                className="c5"
+                size="normal"
+              >
+                <div
+                  className="c15"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c14"
+                />
+              </div>
+              <div
+                className="c18"
+                size="normal"
+              >
+                <div
+                  className="c19"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c20"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c22"
+                />
+              </div>
+              <div
+                className="c18"
+                size="normal"
+              >
+                <div
+                  className="c23"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c24"
+                >
+                  <div
+                    className="c20"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c25"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c26"
+                />
+              </div>
+              <div
+                className="c5"
+                size="normal"
+              >
+                <div
+                  className="c27"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c28 c8"
+                  />
+                </div>
+                <div
+                  className="c29"
+                >
+                  <div
+                    className="c30"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      简洁风格 size mini
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="h"
+      >
+        <div
+          className="c31"
+          size="mini"
+        >
+          <div
+            className="c32"
+            size="mini"
+          >
+            <div
+              className="c33"
+              size="mini"
+            >
+              <div
+                className="c34"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-reminder_check c7 c8"
+                />
+              </div>
+              <div
+                className="c9"
+              >
+                <div
+                  className="c10"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c14"
+                />
+              </div>
+              <div
+                className="c33"
+                size="mini"
+              >
+                <div
+                  className="c35"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c14"
+                />
+              </div>
+              <div
+                className="c37"
+                size="mini"
+              >
+                <div
+                  className="c38"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c20"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c22"
+                />
+              </div>
+              <div
+                className="c37"
+                size="mini"
+              >
+                <div
+                  className="c39"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c24"
+                >
+                  <div
+                    className="c20"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c25"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c26"
+                />
+              </div>
+              <div
+                className="c33"
+                size="mini"
+              >
+                <div
+                  className="c40"
+                  size="mini"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c28 c8"
+                  />
+                </div>
+                <div
+                  className="c29"
+                >
+                  <div
+                    className="c30"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      半扁平风格
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="h"
+      >
+        <div
+          className="c31"
+          size="mini"
+        >
+          <div
+            className="c32"
+            size="mini"
+          >
+            <div
+              className="c33"
+              size="mini"
+            >
+              <div
+                className="c41"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-reminder_check c42 c8"
+                />
+              </div>
+              <div
+                className="c9"
+              >
+                <div
+                  className="c43"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c44"
+              >
+                <div
+                  className="c45"
+                />
+              </div>
+              <div
+                className="c33"
+                size="mini"
+              >
+                <div
+                  className="c35"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c44"
+              >
+                <div
+                  className="c46"
+                />
+              </div>
+              <div
+                className="c37"
+                size="mini"
+              >
+                <div
+                  className="c47"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c20"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c44"
+              >
+                <div
+                  className="c48"
+                />
+              </div>
+              <div
+                className="c37"
+                size="mini"
+              >
+                <div
+                  className="c49"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c24"
+                >
+                  <div
+                    className="c20"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c25"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c44"
+              >
+                <div
+                  className="c50"
+                />
+              </div>
+              <div
+                className="c33"
+                size="mini"
+              >
+                <div
+                  className="c51"
+                  size="mini"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c42 c8"
+                  />
+                </div>
+                <div
+                  className="c29"
+                >
+                  <div
+                    className="c30"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      半扁平风格
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="h"
+      >
+        <div
+          className="c3"
+          size="normal"
+        >
+          <div
+            className="c4"
+            size="normal"
+          >
+            <div
+              className="c5"
+              size="normal"
+            >
+              <div
+                className="c52"
+                size="normal"
+              >
+                <i
+                  className="lugia-icon-reminder_check c42 c8"
+                />
+              </div>
+              <div
+                className="c9"
+              >
+                <div
+                  className="c43"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c44"
+              >
+                <div
+                  className="c45"
+                />
+              </div>
+              <div
+                className="c5"
+                size="normal"
+              >
+                <div
+                  className="c15"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c44"
+              >
+                <div
+                  className="c46"
+                />
+              </div>
+              <div
+                className="c18"
+                size="normal"
+              >
+                <div
+                  className="c53"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c20"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c44"
+              >
+                <div
+                  className="c48"
+                />
+              </div>
+              <div
+                className="c18"
+                size="normal"
+              >
+                <div
+                  className="c54"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c24"
+                >
+                  <div
+                    className="c20"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c25"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c44"
+              >
+                <div
+                  className="c50"
+                />
+              </div>
+              <div
+                className="c5"
+                size="normal"
+              >
+                <div
+                  className="c55"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c42 c8"
+                  />
+                </div>
+                <div
+                  className="c29"
+                >
+                  <div
+                    className="c30"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      带有描述
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="h"
+      >
+        <div
+          className="c31"
+          size="mini"
+        >
+          <div
+            className="c32"
+            size="mini"
+          >
+            <div
+              className="c33"
+              size="mini"
+            >
+              <div
+                className="c34"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-reminder_check c7 c8"
+                />
+              </div>
+              <div
+                className="c9"
+              >
+                <div
+                  className="c10"
+                >
+                  1111
+                </div>
+                <div
+                  className="c56"
+                >
+                  description111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c22"
+                />
+              </div>
+              <div
+                className="c33"
+                size="mini"
+              >
+                <div
+                  className="c57"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                  >
+                    222
+                  </div>
+                  <div
+                    className="c56"
+                  >
+                    description2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c22"
+                />
+              </div>
+              <div
+                className="c37"
+                size="mini"
+              >
+                <div
+                  className="c39"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c20"
+                  >
+                    33
+                  </div>
+                  <div
+                    className="c58"
+                  >
+                    description33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c22"
+                />
+              </div>
+              <div
+                className="c37"
+                size="mini"
+              >
+                <div
+                  className="c39"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c36"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c24"
+                >
+                  <div
+                    className="c20"
+                  >
+                    444
+                  </div>
+                  <div
+                    className="c58"
+                  >
+                    description444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c25"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c26"
+                />
+              </div>
+              <div
+                className="c33"
+                size="mini"
+              >
+                <div
+                  className="c40"
+                  size="mini"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c28 c8"
+                  />
+                </div>
+                <div
+                  className="c29"
+                >
+                  <div
+                    className="c30"
+                  >
+                    555
+                  </div>
+                  <div
+                    className="c59"
+                  >
+                    description5555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      icon
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="h"
+      >
+        <div
+          className="c31"
+          size="mini"
+        >
+          <div
+            className="c32"
+            size="mini"
+          >
+            <div
+              className="c60"
+              size="mini"
+            >
+              <i
+                className="lugia-icon-financial_cloud c61 c8"
+              />
+              <div
+                className="c9"
+              >
+                <div
+                  className="c10"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c14"
+                />
+              </div>
+              <div
+                className="c60"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c61 c8"
+                />
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c10"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c14"
+                />
+              </div>
+              <div
+                className="c60"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c61 c8"
+                />
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c20"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c22"
+                />
+              </div>
+              <div
+                className="c60"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c62 c8"
+                />
+                <div
+                  className="c24"
+                >
+                  <div
+                    className="c20"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c25"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c32"
+              size="mini"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c26"
+                />
+              </div>
+              <div
+                className="c60"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c63 c8"
+                />
+                <div
+                  className="c29"
+                >
+                  <div
+                    className="c30"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      点状 虚线
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="h"
+      >
+        <div
+          className="c64"
+          size="normal"
+        >
+          <div
+            className="c65"
+          >
+            <div
+              className="c66"
+              size="normal"
+            >
+              <div
+                className="c67"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c65"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c68"
+                />
+              </div>
+              <div
+                className="c66"
+                size="normal"
+              >
+                <div
+                  className="c69"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c65"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c68"
+                />
+              </div>
+              <div
+                className="c66"
+                size="normal"
+              >
+                <div
+                  className="c69"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c65"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c70"
+                />
+              </div>
+              <div
+                className="c66"
+                size="normal"
+              >
+                <div
+                  className="c71"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c25"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c65"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c72"
+                />
+              </div>
+              <div
+                className="c66"
+                size="normal"
+              >
+                <div
+                  className="c73"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      点状 实线
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="h"
+      >
+        <div
+          className="c64"
+          size="normal"
+        >
+          <div
+            className="c65"
+          >
+            <div
+              className="c66"
+              size="normal"
+            >
+              <div
+                className="c67"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c65"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c74"
+                />
+              </div>
+              <div
+                className="c66"
+                size="normal"
+              >
+                <div
+                  className="c69"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c65"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c74"
+                />
+              </div>
+              <div
+                className="c66"
+                size="normal"
+              >
+                <div
+                  className="c69"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c65"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c75"
+                />
+              </div>
+              <div
+                className="c66"
+                size="normal"
+              >
+                <div
+                  className="c71"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c25"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c65"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c76"
+                />
+              </div>
+              <div
+                className="c66"
+                size="normal"
+              >
+                <div
+                  className="c73"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button
+      className="c77"
+      onClick={[Function]}
+      type="primary"
+    >
+      <span>
+        Next
+      </span>
+    </button>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="c3"
+          size="normal"
+        >
+          <div
+            className="c4"
+            size="normal"
+          >
+            <div
+              className="c5"
+              size="normal"
+            >
+              <div
+                className="c15"
+                size="normal"
+              >
+                <i
+                  className=" c16 c8"
+                />
+                <div
+                  className="c17"
+                  size="normal"
+                >
+                  1
+                </div>
+              </div>
+              <div
+                className="c9"
+              >
+                <div
+                  className="c10"
+                >
+                  First
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c14"
+                />
+              </div>
+              <div
+                className="c18"
+                size="normal"
+              >
+                <div
+                  className="c19"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c9"
+                >
+                  <div
+                    className="c20"
+                  >
+                    Second
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c21"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c4"
+              size="normal"
+            >
+              <div
+                className="c13"
+              >
+                <div
+                  className="c22"
+                />
+              </div>
+              <div
+                className="c18"
+                size="normal"
+              >
+                <div
+                  className="c23"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c24"
+                >
+                  <div
+                    className="c20"
+                  >
+                    Last
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c78"
+    >
+      First-content
+    </div>
+  </div>
+</div>
+`;

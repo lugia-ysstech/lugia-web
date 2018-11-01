@@ -85,6 +85,8 @@ const Alert = 'sv_widget_Alert';
 const Modal = 'sv_widget_Modal';
 const Message = 'sv_widget_Message';
 const Notification = 'sv_widget_Notification';
+const Step = 'sv_widget_Step';
+const Steps = 'sv_widget_Steps';
 
 export default {
   Button,
@@ -157,4 +159,6 @@ export default {
   Message,
   Notification,
   Modal,
+  Step,
+  Steps,
 };
