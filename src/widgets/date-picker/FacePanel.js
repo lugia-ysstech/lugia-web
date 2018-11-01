@@ -3,9 +3,9 @@
 * @flow
 * */
 import React, { Component } from 'react';
-import moment from 'moment';
 import { modeStyle } from './getDerived';
 import { OtherChild, OtherChildText, DatePanel } from './styled';
+const moment = require('moment');
 type TypeProps = {
   onChange?: Function,
   showYears?: boolean,

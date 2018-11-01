@@ -3,11 +3,11 @@
 * @flow
 * */
 import React, { Component } from 'react';
-import moment from 'moment';
 import Head from './Head';
 import FacePanel from './FacePanel';
 import { getDerived } from './getDerived';
 import { DateWrapper } from './styled';
+const moment = require('moment');
 type TypeProps = {
   step?: number,
   onChange: Function,

@@ -3,10 +3,10 @@
 * @flow
 * */
 import React, { Component } from 'react';
-import moment from 'moment';
 import Icon from '../icon/index';
 import { getDerived } from './getDerived';
 import { DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from './styled';
+const moment = require('moment');
 type TypeProps = {
   defaultValue?: string,
   onChange?: Function,
@@ -113,7 +113,6 @@ class Head extends Component<TypeProps, TypeState> {
   };
   render() {
     const { title, secondTitle } = this.state;
-
     return (
       <DateHeader width={200}>
         <HeaderTop>

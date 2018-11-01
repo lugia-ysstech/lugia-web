@@ -11,8 +11,7 @@ const DateWrapperPadding = {
   left: 20,
   bottom: 44,
 };
-const { hoverColor, normalColor } = colorsFunc();
-
+const { hoverColor, normalColor, disableColor } = colorsFunc();
 export const Icons = styled.span`
   position: absolute;
   left: ${em(distance.iconLeft)};
@@ -147,10 +146,14 @@ export const RangeInputInner = styled.span`
     border: none;
     text-align: center;
   }
+
   & input:focus {
     border: none;
     box-shadow: none;
   }
+
+  display: inline-block;
+  background: ${props => (props.disabled ? disableColor : '')};
 `;
 const getDateWrrap = props => {
   const { top, left, bottom } = DateWrapperPadding;

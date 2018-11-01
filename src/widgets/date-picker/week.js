@@ -3,8 +3,8 @@
 * @flow
 * */
 import React, { Component } from 'react';
-import moment from 'moment';
 import { HeaderWeek, HeaderWeekBox } from './styled';
+const moment = require('moment');
 type TypeProps = {
   onChangeWeek?: Function,
   lang?: Function,

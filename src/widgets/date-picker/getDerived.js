@@ -1,14 +1,16 @@
 import moment from 'moment';
 export const getDerived = (nextProps, preState) => {
-  const { defaultValue, mode, showToday, placeholder } = nextProps;
-  const { isWeeks, isWeek, isMonth, isYear, isRange } = modeStyle(mode);
+  const { defaultValue, mode, placeholder } = nextProps;
+  const { isWeeks, isWeek, isMonth, isYear, isRange, isTime, isTimes } = modeStyle(mode);
   const normalFormat = isMonth
     ? 'YYYY-MM'
     : isYear
       ? 'YYYY'
       : isWeek || isWeeks
         ? 'YYYY-WW'
-        : 'YYYY-MM-DD';
+        : isTime || isTimes
+          ? 'HH:mm:ss'
+          : 'YYYY-MM-DD';
   let { value, format = normalFormat } = nextProps;
   let { firstWeekDay = 0 } = nextProps;
   if (firstWeekDay >= 7 || firstWeekDay <= 0) {
@@ -22,7 +24,10 @@ export const getDerived = (nextProps, preState) => {
     ? placeholder
     : isRange
       ? ['开始日期', '结束日期']
-      : '请选择日期';
+      : isTime || isTimes
+        ? '请选择时间'
+        : '请选择日期';
+
   value = hasValueProps
     ? value
     : preState
@@ -31,12 +36,14 @@ export const getDerived = (nextProps, preState) => {
         ? defaultValue
         : isRange
           ? [
-              moment().format('YYYY-MM-DD'),
+              moment().format(format),
               moment()
                 .add('1', 'month')
-                .format('YYYY-MM-DD'),
+                .format(format),
             ]
-          : moment().format('YYYY-MM-DD');
+          : isTime || isTimes
+            ? moment().format(format)
+            : moment().format(format);
 
   const moments = moment(value, format);
   const { weeks = moments.weeks() } = nextProps;
@@ -75,6 +82,13 @@ export const getDerivedForInput = (nextProps, preState) => {
         : isRange
           ? ['', '']
           : '';
+  // if(Array.isArray(value) && value[0]!=='' && value[1] !==''&&!preState){
+  //    value=[moment(value[0],format).format(format),moment(value[1],format).format(format)];
+  // }
+
+  // if(typeof value === 'string' && value!==''&& !preState){
+  //   value=moment(value,format).format(format);
+  // }
   return {
     value,
     format,
@@ -88,6 +102,8 @@ export const modeStyle = mode => {
   const isYear = mode === 'year';
   const isDate = mode === 'date';
   const isRange = mode === 'range';
+  const isTime = mode === 'time';
+  const isTimes = mode === 'times';
   return {
     isWeek,
     isMonth,
@@ -95,5 +111,7 @@ export const modeStyle = mode => {
     isDate,
     isWeeks,
     isRange,
+    isTime,
+    isTimes,
   };
 };

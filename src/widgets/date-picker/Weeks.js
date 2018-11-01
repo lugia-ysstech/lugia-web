@@ -3,11 +3,11 @@
 * @flow
 * */
 import React, { Component } from 'react';
-import moment from 'moment';
 import Head from './Head';
 import FacePanel from './FacePanel';
 import { DateWrapper } from './styled';
 import { getDerived } from './getDerived';
+const moment = require('moment');
 type TypeProps = {
   step?: number,
   format?: string,
@@ -33,8 +33,8 @@ class Weeks extends Component<TypeProps, TypeState> {
     this.picker = React.createRef();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { moments } = getDerived(nextProps, preState);
-    const format = nextProps.format || 'YYYY-WW周';
+    const { moments, format } = getDerived(nextProps, preState);
+    //const format = nextProps.format || 'YYYY-WW周';
 
     if (!preState) {
       return {
@@ -63,23 +63,25 @@ class Weeks extends Component<TypeProps, TypeState> {
   };
   headOnChange = (parma: Object) => {
     const { year } = parma;
-    const { weeks } = this.state;
+    const { weeks, format } = this.state;
     this.setState({ year });
     const { onChangeYear } = this.props;
     const newValue = moment()
       .set({ year, weeks })
-      .format('YYYY-W周');
+      .format(format);
     onChangeYear && onChangeYear({ newValue, mode: 'year', from: 'week', year, weeks });
   };
   panelChange = (param: Object) => {
     const { isWeekInner, start, text, weeks } = param;
-    const { year, mode, from } = this.state;
+    const { year, mode, from, format } = this.state;
     this.setState({ weeks });
     if (isWeekInner) {
       this.setState({ secondTitle: text, isWeekInner, weeks: start + 1 });
     }
     if (!isWeekInner) {
-      const newValue = year + '-' + weeks + '周';
+      const newValue = moment()
+        .set({ year, weeks })
+        .format(format);
       this.getOnChange({ year, weeks, mode, from, newValue });
     }
   };

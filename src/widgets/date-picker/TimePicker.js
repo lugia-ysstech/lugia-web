@@ -2,12 +2,13 @@
 import React, { Component } from 'react';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import DateInput from './DateInput';
+import TimeInput from './TimeInput';
+
 export default ThemeProvider(
-  class DatePicker extends Component {
+  class TimePicker extends Component {
     render() {
-      return <DateInput {...this.props} mode={'date'} />;
+      return <TimeInput {...this.props} mode={'times'} />;
     }
   },
-  Widget.DatePicker
+  Widget.TimePicker
 );

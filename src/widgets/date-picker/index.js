@@ -14,6 +14,8 @@ import MonthPicker from './MonthPicker';
 import WeekPicker from './WeekPicker';
 import WeeksPicker from './WeeksPicker';
 import RangePicker from './RangePicker';
+import Time from './TimeSiglePicker';
+import TimePicker from './TimePicker';
 //import Month from './MonthPicker';
 // import Year from './YearPicker';
 // import Week from './WeekPicker';
@@ -23,6 +25,8 @@ DatePicker.YearPicker = YearPicker;
 DatePicker.WeekPicker = WeekPicker;
 DatePicker.WeeksPicker = WeeksPicker;
 DatePicker.RangePicker = RangePicker;
+DatePicker.TimePicker = TimePicker;
+DatePicker.Time = Time;
 //export default ThemeProvider(DatePicker, Widget.DatePicker);
 export default DatePicker;
 

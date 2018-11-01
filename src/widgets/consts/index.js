@@ -88,6 +88,8 @@ const Message = 'sv_widget_Message';
 const Notification = 'sv_widget_Notification';
 const Step = 'sv_widget_Step';
 const Steps = 'sv_widget_Steps';
+const TimePicker = 'sv_widget_TimePicker';
+const Time = 'sv_widget_Time';
 
 /*add by wangcuixia*/
 const DatePicker = 'sv_widget_DatePicker';
@@ -176,4 +178,6 @@ export default {
   WeekPicker,
   WeeksPicker,
   RangePicker,
+  TimePicker,
+  Time,
 };

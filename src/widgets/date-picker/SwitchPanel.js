@@ -4,19 +4,19 @@
 * */
 import type { ChangeEventParam } from '@lugia/lugia-web';
 import React, { Component } from 'react';
-import moment from 'moment';
 import Date from './Date';
 import Month from './Month';
 import Year from './Year';
 import Weeks from './Weeks';
-import { modeStyle } from './getDerived';
-
+import { modeStyle, getDerivedForInput } from './getDerived';
+const moment = require('moment');
 type TypeProps = {
   defaultValue?: string,
   format?: string,
   value?: string,
   onChange?: Function,
   mode: string,
+  setTriggerVisible?: boolean,
 };
 type TypeState = {
   value: string,
@@ -32,6 +32,7 @@ type TypeState = {
   date: string,
   newDate: string,
   moments: Object,
+  weeksYear: number,
 };
 class SwitchPanel extends Component<TypeProps, TypeState> {
   trigger: any;
@@ -43,33 +44,11 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { mode } = nextProps;
-    const { isWeek, isMonth, isYear, isWeeks } = modeStyle(mode);
-    const normalFormat = isMonth
-      ? 'YYYY-MM'
-      : isYear
-        ? 'YYYY'
-        : isWeek || isWeeks
-          ? 'YYYY-WW周'
-          : 'YYYY-MM-DD';
-    let { defaultValue, format = normalFormat, value } = nextProps;
-    const defaultProps = 'defaultValue' in nextProps && moment(defaultValue, format)._isValid;
-    const hasValueProps = 'value' in nextProps && moment(value, format)._isValid;
-
-    value = hasValueProps
-      ? nextProps.value
-      : preState
-        ? preState.value
-        : defaultProps
-          ? defaultValue
-          : '';
-
-    const newValue =
-      (value && isWeeks) || isWeek ? value : value ? moment(value, format).format(format) : '';
-
+    const { format, value, hasValueProps } = getDerivedForInput(nextProps, preState);
     const mod = 'mode' in nextProps ? mode || (preState && preState.mode) : 'date';
     if (!preState) {
       return {
-        value: newValue,
+        value,
         format,
         mode: mod,
         from: 'date',
@@ -95,6 +74,14 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     this.setState({ mode, from, year, month, newDate, weeks, date }, () => {
       this.picker.current.getFreshPicker({ moments });
     });
+    const { isRange } = modeStyle(this.props.mode);
+    if (isRange) {
+      this.setTriggerVisible();
+    }
+  };
+  setTriggerVisible = () => {
+    const { setTriggerVisible } = this.props;
+    setTriggerVisible && setTriggerVisible();
   };
   render() {
     const { value, mode, from } = this.state;
@@ -103,7 +90,6 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       ...this.props,
       ref: this.picker,
       newValue: value,
-      onChange: this.onChange,
       from,
     };
     return isYear ? (
@@ -113,7 +99,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     ) : isWeek ? (
       <Weeks {...config} onChange={this.changeWeek} onChangeYear={this.weekChangeYear} />
     ) : (
-      <Date {...config} getMode={this.getMode} />
+      <Date {...config} onChange={this.onChange} getMode={this.getMode} />
     );
   }
   changeYear = (obj: Object) => {
@@ -126,18 +112,18 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     const { isYear } = modeStyle(this.props.mode);
     const newDate = moment(date).date();
     const moments = moment().set({ year: newValue, month, weeks, date: newDate });
-    this.setState({ year: newValue, mode, moments }, () => {
-      this.getFreshPicker({ moments, mode, from });
+    this.setState({ year: newValue, mode, moments, weeksYear: '' }, () => {
+      this.getFreshPicker({ moments, mode, from, come: 'year' });
     });
     if (isYear) {
       this.setState({ value: newValue });
-      this.publicOnchange({ newValue, openTriger: false });
+      this.publicOnchange({ newValue, openTriger: false, action: 'click' });
     }
   };
   changeMonth = (obj: Object) => {
     const { newValue, mode } = obj;
     let { format } = this.state;
-    let { value, date } = this.state;
+    let { value } = this.state;
     if (!value) {
       value = moment().format('YYYY-MM-DD');
     }
@@ -145,11 +131,14 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     if (mode === 'week' || isWeeks) {
       format = 'YYYY-MM-DD';
     }
-
-    const newDate = moment(date).date();
+    const newDate = moment(value).date();
     const year = moment(newValue, format).year();
     const month = moment(newValue, format).month();
-    const moments = moment().set({ date: newDate, year, month });
+    const maxDate = moment()
+      .set({ month })
+      .daysInMonth();
+    const currentDate = newDate > maxDate ? maxDate : newDate;
+    const moments = moment().set({ date: currentDate, year, month });
     const choseValue = moments.format(format);
     this.setState({ month, year, mode: 'date', moments, choseValue }, () => {
       this.getFreshPicker({ moments });
@@ -180,7 +169,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       }
       if (isWeek) {
         this.setState({ value: newValue });
-        this.publicOnchange({ newValue, openTriger: false });
+        this.publicOnchange({ newValue, openTriger: false, action: 'click' });
       }
     });
   };
@@ -196,6 +185,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     const moments = moment(moment(choseValue || newValue));
     const year = moments.year();
     const month = moments.month();
+    const { isRange, isWeeks } = modeStyle(this.props.mode);
     this.setState(
       {
         value: newValue,
@@ -205,21 +195,33 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
         changeYear: false,
         moments,
         isChose: true,
+        weeksYear: isWeeks ? param.year : '',
       },
       () => {
+        const { inRange } = param;
+        if (isRange && !inRange) {
+          return;
+        }
         this.getChangeValue(newValue);
         this.getFreshPicker({ moments });
       }
     );
-    this.publicOnchange({ newValue, openTriger: false });
+    this.publicOnchange({ ...param, openTriger: false });
   };
   publicOnchange = (obj: Object) => {
     const { onChange } = this.props;
     onChange && onChange(obj);
   };
   onFocus = () => {
-    const { value, choseValue } = this.state;
-    this.getChangeValue(choseValue || value);
+    const { value, choseValue, format, weeksYear } = this.state;
+    const { mode } = this.props;
+    const { isWeeks } = modeStyle(mode);
+    if (isWeeks) {
+      const newYear = !weeksYear ? moment(value, format).year() : weeksYear;
+      this.setState({ weeksYear: newYear });
+    } else {
+      this.getChangeValue(value || choseValue);
+    }
   };
   getChangeValue = (value: string) => {
     let { format, from } = this.state;
@@ -235,10 +237,9 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
   };
   getFreshPicker = (obj: Object) => {
     const { moments } = obj;
-    const { choseValue } = this.state;
+    const { value, year, weeksYear } = this.state;
     const isValid = moments.isValid();
-    isValid && this.picker.current.getFreshPicker({ moments, choseValue });
+    isValid && this.picker.current.getFreshPicker({ moments, value, year: weeksYear || year });
   };
 }
-
 export default SwitchPanel;

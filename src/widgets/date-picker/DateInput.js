@@ -1,50 +1,40 @@
+/*
+* by wangcuixia
+* @flow
+* */
 import type { ChangeEventParam } from '@lugia/lugia-web';
-
 import React, { Component } from 'react';
 import moment from 'moment';
 import Icon from '../icon/index';
-import Date from './Date';
-import Month from './Month';
-import Year from './Year';
-import Weeks from './Weeks';
 import Trigger from '../trigger/index';
 import Input from '../input';
-import { modeStyle, getDerivedForInput } from './getDerived';
-import { RangeInput, RangeSpan } from './styled';
+import { getDerivedForInput } from './getDerived';
 import SwitchPanel from './SwitchPanel';
-class DateInput extends Component {
+import { getValueIndex, getValueIsValid } from './utils';
+type TypeProps = {
+  disabled?: boolean,
+  readOnly?: boolean,
+};
+type TypeState = {
+  value: string,
+  format: string,
+  isValid: boolean,
+};
+class DateInput extends Component<TypeProps, TypeState> {
+  normalStyleValueObj: Object;
+  trigger: any;
+  picker: any;
   constructor(props) {
     super(props);
     this.trigger = React.createRef();
     this.picker = React.createRef();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { mode } = nextProps;
-    const { isWeek, isMonth, isYear, isWeeks } = modeStyle(mode);
-    // const normalFormat = isMonth
-    //   ? 'YYYY-MM'
-    //   : isYear
-    //     ? 'YYYY'
-    //     : isWeek || isWeeks
-    //       ? 'YYYY-WW周'
-    //       : 'YYYY-MM-DD';
-    // let { defaultValue, format = normalFormat } = nextProps;
-    // const defaultProps = 'defaultValue' in nextProps && moment(defaultValue, format)._isValid;
-    // const hasValueProps = 'value' in nextProps && moment(value, format)._isValid;
     const { value, format, hasValueProps } = getDerivedForInput(nextProps, preState);
-    // value = hasValueProps
-    //   ? nextProps.value
-    //   : preState
-    //     ? preState.value
-    //     : defaultProps
-    //       ? defaultValue
-    //       : '';
-
-    const newValue =
-      (value && isWeeks) || isWeek ? value : value ? moment(value, format).format(format) : '';
     if (!preState) {
       return {
-        value: newValue,
+        value,
+        format,
       };
     }
     if (hasValueProps) {
@@ -52,6 +42,11 @@ class DateInput extends Component {
         value,
       };
     }
+  }
+  componentDidMount() {
+    const { format } = this.state;
+    const value = moment().format(format);
+    this.normalStyleValueObj = getValueIndex(value);
   }
   render() {
     const { disabled, readOnly } = this.props;
@@ -62,7 +57,7 @@ class DateInput extends Component {
         align="bottomLeft"
         key="trigger"
         ref={this.trigger}
-        action={disabled ? [] : ['click']}
+        action={disabled || readOnly ? [] : ['click']}
         hideAction={['click']}
       >
         <Input
@@ -80,14 +75,29 @@ class DateInput extends Component {
   }
 
   onChange = (param: ChangeEventParam) => {
-    const { newValue, openTriger } = param;
-    this.setState({ value: newValue });
-    this.picker.current.getChangeValue(newValue);
-    this.picker.current.getFreshPicker({ moments: moment(newValue) });
-    this.setTreePopupVisible(openTriger);
+    const { newValue, action } = param;
+    const { normalStyleValueObj } = this;
+    const isValid = action === 'click' ? true : getValueIsValid(normalStyleValueObj, newValue);
+    this.setState({ value: newValue, isValid });
+    if (isValid) {
+      const { onChange } = this.props;
+      onChange && onChange({ newValue, oldValue: this.oldValue });
+      this.picker.current.getChangeValue(newValue);
+      this.picker.current.getFreshPicker({ moments: moment(newValue) });
+      this.setTreePopupVisible(false);
+      this.oldValue = newValue;
+    }
   };
   onFocus = () => {
+    const { value } = this.state;
+    this.oldValue = value;
     this.picker.current.onFocus();
+  };
+  onBlur = () => {
+    const { isValid } = this.state;
+    if (!isValid) {
+      this.setState({ value: this.oldValue });
+    }
   };
 
   setTreePopupVisible(visible: boolean) {

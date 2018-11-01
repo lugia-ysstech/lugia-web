@@ -1,22 +1,27 @@
 //import type { ChangeEventParam } from '@lugia/lugia-web';
 import React, { Component } from 'react';
-import moment from 'moment';
+
 import Head from './Head';
 import FacePanel from './FacePanel';
-import DateInput from './DateInput';
 import { DateWrapper } from './styled';
 import { getDerived } from './getDerived';
-
+const moment = require('moment');
 type TypeProps = {
   onChnge?: Function,
+  onChangeYear?: Function,
+  from?: 'string',
 };
 type TypeState = {
   monthIndex: number,
+  year: number,
+  format: string,
+  moments: Object,
 };
 class Month extends Component<TypeProps, TypeState> {
+  oldValue: number;
+  oldY: number;
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { weeks, format, moments } = getDerived(nextProps, preState);
-
+    const { format, moments } = getDerived(nextProps, preState);
     if (!preState) {
       return {
         year: moments.year(),
@@ -32,7 +37,7 @@ class Month extends Component<TypeProps, TypeState> {
   };
   panelChange = (param: Object) => {
     const { monthIndex } = param;
-    const { year, format, moments } = this.state;
+    const { year, moments } = this.state;
     this.oldValue = this.state.monthIndex;
     this.oldY = year;
     this.setState({ monthIndex });
@@ -46,30 +51,18 @@ class Month extends Component<TypeProps, TypeState> {
   };
   getFreshPicker = (obj: string) => {
     const { moments } = obj;
-    console.log(moments);
-    let { format } = this.state;
-    //console.log(value,format);
-    if (this.props.mode === 'weeks') {
-      format = 'YYYY-MM-DD';
-    }
-    // const moments=moment(value,format);
-    //const moments=moment(value,format);
     const year = moments.year();
     const month = moments.month();
-    console.log(year, month);
     this.setState({ year, monthIndex: month });
   };
   headOnChange = () => {
-    const { year, format, moments, monthIndex } = this.state;
+    const { year, moments, monthIndex } = this.state;
     const { onChangeYear } = this.props;
-
     const newValue = moments.set({ year, month: monthIndex }).format('YYYY-MM');
     onChangeYear && onChangeYear({ newValue, mode: 'year', from: 'month' });
-    //this.getOnChange({newValue,mode:'year',from:'month'});
   };
   render() {
     const { monthIndex, year } = this.state;
-    // console.log(monthIndex,year);
     return (
       <DateWrapper width={300}>
         <div>
@@ -83,7 +76,7 @@ class Month extends Component<TypeProps, TypeState> {
           <FacePanel
             {...this.props}
             onChange={this.panelChange}
-            mode="month"
+            mode={'month'}
             monthIndex={monthIndex}
           />
         </div>
