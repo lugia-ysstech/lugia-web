@@ -32,9 +32,15 @@ function isSuccess(validateStatus) {
 }
 
 export const getInputBorderHoverColor = (props: Object) => {
-  const { validateStatus = Success, theme } = props;
+  const { validateStatus = Success, theme, disabled } = props;
   const { borderColor } = theme;
-  return borderColor ? borderColor : isSuccess(validateStatus) ? themeColor : dangerColor;
+  return borderColor
+    ? borderColor
+    : disabled
+      ? lightGreyColor
+      : isSuccess(validateStatus)
+        ? themeColor
+        : dangerColor;
 };
 
 export const getFocusShadow = (props: Object) => {
@@ -90,7 +96,7 @@ export const getSize = (props: CommonInputProps) => {
 
 export const getBackground = (props: CommonInputProps) => {
   const { disabled } = props;
-  return `background:${disabled ? disableColor : ''}`;
+  return `background:${disabled === true ? disableColor : ''}`;
 };
 
 export const getCursor = (props: CommonInputProps) => {
