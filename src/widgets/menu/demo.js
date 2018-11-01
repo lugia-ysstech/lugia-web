@@ -11,6 +11,7 @@ import Widget from '../consts/index';
 import styled from 'styled-components';
 
 const Placeholder = Menu.Placeholder;
+const computeCanSeeCount = Menu.computeCanSeeCount;
 const MenuWrap = styled.div`
   display: inline-block;
 `;
@@ -89,33 +90,31 @@ export default class extends React.Component<any, any> {
     const { items = [], selectedKeys } = this.state;
     return (
       <div>
-        {/* <MenuWrap> */}
         <h2>级联Menu样式， click 展开 ( 必须为单选，默认为‘click’, checkedCSS必须为‘none’ )</h2>
         <Theme config={{ [Widget.Menu]: { width: 200 } }}>
           <Menu
             mutliple={false}
             data={data}
             action={'click'}
-            onClick={this.onClick}
-            onMouseEnter={() => console.info('onMouseEnter')}
+            // offsetX={30}
+            offsetY={1}
+            // start={this.state.start}
+            // onScroller={this.onScroller}
+            // onClick={this.onClick}
           />
         </Theme>
-        {/* </MenuWrap> */}
 
-        {/* <MenuWrap> */}
-        <h2>级联Menu样式， hover 展开 ( 必须为单选，默认为‘click’ , checkedCSS必须为‘none’)</h2>
+        {/* <h2>级联Menu样式， hover 展开 ( 必须为单选，默认为‘click’ , checkedCSS必须为‘none’)</h2>
         <Theme config={{ [Widget.Menu]: { width: 200 } }}>
           <Menu
             mutliple={false}
             data={data}
             action={'hover'}
             onClick={this.onClick}
-            onMouseEnter={() => console.info('onMouseEnter')}
+            // onMouseEnter={() => console.info('onMouseEnter')}
           />
         </Theme>
-        {/* </MenuWrap> */}
 
-        {/* <MenuWrap> */}
         <h2>穿梭框多选样式 ( checkedCSS 属性为 checkbox , 不可展开子项 )</h2>
         <Theme config={{ [Widget.Menu]: { width: 180 } }}>
           <Menu
@@ -126,28 +125,21 @@ export default class extends React.Component<any, any> {
             onClick={this.onClick}
           />
         </Theme>
-        {/* </MenuWrap> */}
 
-        {/* <MenuWrap> */}
         <h2>穿梭框单选样式 ( checkedCSS 属性为 checkbox 不可展开子项 )</h2>
         <Theme config={{ [Widget.Menu]: { width: 180 } }}>
           <Menu mutliple={false} checkedCSS={'checkbox'} data={data} onClick={this.onClick} />
         </Theme>
-        {/* </MenuWrap> */}
 
-        {/* <MenuWrap> */}
         <h2>checkedCSS 为 mark 对勾 ( 必须是多选才生效 )</h2>
         <Theme config={{ [Widget.Menu]: { width: 168 } }}>
           <Menu mutliple={true} checkedCSS={'mark'} data={data} onClick={this.onClick} />
         </Theme>
-        {/* </MenuWrap> */}
 
-        {/* <MenuWrap> */}
         <h2>checked 为 background 背景色，多选 ( 不可展开子项 )</h2>
         <Theme config={{ [Widget.Menu]: { width: 100 } }}>
           <Menu mutliple={true} checkedCSS={'background'} data={data} onClick={this.onClick} />
         </Theme>
-        {/* </MenuWrap> */}
 
         <h2>checkedCSS 为 ‘background’ 单选Menu样式 ( 不可展开子项)</h2>
         <Theme config={{ [Widget.Menu]: { width: 100 } }}>
@@ -159,7 +151,7 @@ export default class extends React.Component<any, any> {
             data={data}
             onClick={this.onClick}
           />
-        </Theme>
+        </Theme> */}
       </div>
     );
   }

@@ -67,20 +67,14 @@ export default class extends React.Component<any, any> {
   render() {
     return (
       <div>
-        {/* <Theme config={{ [Widget.Menu]: { width: 200 } }}> */}
-        <Cascader data={items} />
-        {/* </Theme> */}
+        <Theme
+          config={{ [Widget.Cascader]: { width: 200, menuWidth: 100, offsetY: 10, offsetX: 10 } }}
+        >
+          <Cascader data={items} action={'hover'} />
+        </Theme>
       </div>
     );
   }
-
-  getPopupMenu = () => {
-    return (
-      <Theme config={{ [Widget.Menu]: { width: 200 } }}>
-        <Cascader data={items} />
-      </Theme>
-    );
-  };
 
   onClick = (e: Object, keys: Object) => {
     const { selectedKeys } = keys;
