@@ -11,127 +11,100 @@ import Widget from '../consts/index';
 import styled from 'styled-components';
 import Trigger from '../trigger';
 import InputTag from '../inputtag';
-import { createTrue } from 'typescript';
-import { TypedRule } from 'tslint/lib/rules';
+import ThemeProvider from '../theme-provider';
 
 const CascaderContainer = styled.div`
   display: inline-block;
   position: relative;
 `;
 
-const CheckedButton = styled.input`
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  z-index: 100;
-  left: 0;
-  top: 300px;
-`;
-
-export default class Cascader extends React.Component<any, any> {
+class Cascader extends React.Component<any, any> {
+  static defaultProps = {
+    getTheme: () => {
+      return {};
+    },
+  };
   constructor(props: any) {
     super(props);
-    this.state = { popupVisible: false, isInMenu: false };
+    this.state = { popupVisible: false, checked: false, mouseInTarget: false };
   }
 
   render() {
     const { props, state } = this;
     const { popupVisible } = state;
+    const { getTheme } = props;
+    const theme = getTheme();
+    const { width = 200, offsetY = 0 } = theme;
     return (
-      <div>
-        <CascaderContainer onClick={this.handleClickContainer}>
-          <Theme config={{ [Widget.InputTag]: { width: 200 } }}>
-            <Trigger
-              ref={cmp => (this.trigger = cmp)}
-              align={'bottomLeft'}
-              // action={'click'}
-              // hideAction={'click'}
-              popupVisible={popupVisible}
-              popup={this.getMenu()}
-            >
-              <InputTag
-                onClick={this.onClick}
-                mutliple={false}
-                defaultValue={['1']}
-                defaultDisplayValue={['1']}
-              />
-            </Trigger>
-          </Theme>
-        </CascaderContainer>
-        <CheckedButton
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          innerRef={cmp => (this.input = cmp)}
-        />
-      </div>
+      <CascaderContainer
+        onMouseEnter={this.onMouseEnterContainer}
+        onMouseLeave={this.onMouseLeaveContainer}
+      >
+        <Theme config={{ [Widget.InputTag]: { width } }}>
+          <Trigger
+            ref={cmp => (this.trigger = cmp)}
+            align={'bottomLeft'}
+            offsetY={offsetY}
+            popupVisible={popupVisible}
+            popup={this.getMenu(theme)}
+          >
+            <InputTag onClick={this.handleClickInputTag} mutliple={false} />
+          </Trigger>
+        </Theme>
+      </CascaderContainer>
     );
   }
 
-  handleClickMenu = e => {};
+  handleClickInputTag = () => {
+    const { checked, mouseInTarget } = this.state;
 
-  _onMouseEnterContainer = () => {
-    const { isInMenu } = this.state;
-    this.input.focus();
-    if (isInMenu) {
+    if (checked) {
+      this.setState({ checked: false });
       return;
     }
-    this.setState({ isInMenu: true });
+
+    this.setState({ popupVisible: true, checked: true });
   };
 
-  _onMouseLeaveContainer = () => {
-    const { isInMenu } = this.state;
-
-    this.setState({ isInMenu: false }, () => {});
-  };
-
-  _onMouseDownContainer = (e: Object) => {};
-
-  _onMouseMouveContainer = (e: Object) => {
-    const { isInMenu } = this.state;
-    this.input.focus();
-    if (isInMenu) {
-      return;
-    }
-    this.setState({ isInMenu: true });
-  };
-
-  onBlur = () => {
-    const { isInMenu } = this.state;
-    if (!isInMenu) {
-      this.setState({ popupVisible: false });
-    }
-    document.body.click;
-  };
-  onFocus = () => {
-    this.setState({ popupVisible: true });
-  };
-  handleClickContainer = (e: Object) => {
-    const { popupVisible, isInMenu } = this.state;
-
-    this.setState({ popupVisible: true });
-
-    this.input.focus();
-  };
-
-  getMenu = () => {
-    const { data } = this.props;
+  getMenu = (theme: Object) => {
+    const { data, action } = this.props;
     const { popupVisible } = this.state;
+    const { menuWidth = 150, offsetX } = theme;
+    console.log('offsetX', offsetX);
     return (
-      <Theme config={{ [Widget.Menu]: { width: 168 } }}>
+      <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
           mutliple={false}
           onClick={this.handleClickMenu}
+          action={action}
           popupVisible={popupVisible}
-          onMouseEnter={this._onMouseEnterContainer}
-          onMouseMove={this._onMouseMouveContainer}
-          onMouseLeave={this._onMouseLeaveContainer}
-          onMouseDown={this._onMouseDownContainer}
+          handleIsInMenu={this.handleIsInMenu}
           data={data}
-          offsetX={1}
+          offsetX={offsetX}
           offsetY={0}
           handleItemWrap={this.handleItemWrap}
         />
       </Theme>
     );
   };
+
+  handleIsInMenu = popupVisible => {
+    const { checked, mouseInTarget } = this.state;
+    if (!popupVisible) {
+      if (checked && !mouseInTarget) {
+        this.setState({ popupVisible, checked: false });
+      }
+      this.setState({ popupVisible });
+    }
+  };
+
+  onMouseEnterContainer = () => {
+    this.setState({ mouseInTarget: true });
+  };
+
+  onMouseLeaveContainer = () => {
+    this.setState({ mouseInTarget: false });
+  };
 }
+
+export default ThemeProvider(Cascader, Widget.Cascader);
