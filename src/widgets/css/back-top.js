@@ -17,13 +17,19 @@ export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
   getTheme: Function,
+  target?: Function,
 };
 export type BackTopState = {
   fixed: boolean,
+  posRight: number,
+  posBottom: number,
 };
 type CSSProps = {
   fixed: boolean,
   theme: Object,
+  posRight: number,
+  posBottom: number,
+  hasTarget: boolean,
 };
 
 const getFixedCSS = (props: CSSProps) => {
@@ -32,10 +38,15 @@ const getFixedCSS = (props: CSSProps) => {
     return 'position: fixed;';
   }
 };
+const getLeftOrRight = (props: CSSProps) => {
+  const { hasTarget, posRight, posBottom } = props;
+  if (hasTarget) {
+    return `left: ${em(posRight)};top: ${em(posBottom)}`;
+  }
+  return `right: ${em(posRight)};bottom: ${em(posBottom)}`;
+};
 export const BackTop = styled.div`
-  ${getFixedCSS}
-  bottom: ${em(50)};
-  right: ${em(30)};
+  ${getFixedCSS} ${getLeftOrRight};
   cursor: pointer;
 `;
 
