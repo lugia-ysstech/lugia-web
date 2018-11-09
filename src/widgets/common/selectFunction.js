@@ -5,7 +5,8 @@
  */
 
 import Widget from '../consts/index';
-import { DefaultHeight, MenuItemHeight } from '../css/select';
+import { DefaultHeight, MenuItemHeight, DefaultWidth } from '../css/select';
+
 import { adjustValue } from '../utils';
 
 export const SelectedIcon = 'SelectedIcon';
@@ -18,10 +19,8 @@ export function getTheme(props: Object, triggerChild: string): Object {
   const { getTheme = () => ({}), label } = props;
   const theme = getTheme();
   const { width } = theme;
+  theme.width = width ? width : DefaultWidth;
   let queryInputConfig = {};
-  if (width) {
-    queryInputConfig.width = width;
-  }
   const inputTag = { ...theme };
   queryInputConfig = Object.assign({}, theme, queryInputConfig);
   delete queryInputConfig.height;
