@@ -10,7 +10,7 @@ import Wrapper from '../demo';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Tabs from '../index';
+import Tabs from '../tabs';
 import { hasActivityKeyData, defaultData, shortChildren, longChildren } from '../demo';
 import { isVertical } from '../utils';
 import Widgets from '../../consts';
