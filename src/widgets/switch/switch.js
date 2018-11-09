@@ -6,9 +6,11 @@
 * */
 import * as React from 'react';
 import { SwitchWrapper, SwitchCircle } from './styled';
-import Loading from '../loading/loading';
+import Loading from '../loading/index';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
+import Widgets from '../consts/index';
+import Theme from '../theme/index';
 
 type TypeProps = {
   value?: boolean,
@@ -162,7 +164,13 @@ class Switch extends React.Component<TypeProps, TypeState> {
       >
         {text}
         <SwitchCircle {...config}>
-          {loading ? <Loading width={10} color={'#ccc'} /> : ''}
+          {loading ? (
+            <Theme config={{ [Widgets.Loading]: { width: 10, color: '#ccc' } }}>
+              <Loading />
+            </Theme>
+          ) : (
+            ''
+          )}
         </SwitchCircle>
       </SwitchWrapper>
     );

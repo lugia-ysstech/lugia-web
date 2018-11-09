@@ -8,12 +8,17 @@ import moment from 'moment';
 import Icon from '../icon/index';
 import Trigger from '../trigger/index';
 import Input from '../input';
+import PageFooter from './PageFooter';
 import { getDerivedForInput } from './getDerived';
 import SwitchPanel from './SwitchPanel';
 import { getValueIndex, getValueIsValid } from './utils';
+import { getTheme } from './utils';
+import Theme from '../theme';
+import Widget from '../consts/index';
 type TypeProps = {
   disabled?: boolean,
   readOnly?: boolean,
+  theme?: Object,
 };
 type TypeState = {
   value: string,
@@ -49,28 +54,41 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.normalStyleValueObj = getValueIndex(value);
   }
   render() {
-    const { disabled, readOnly } = this.props;
+    const { disabled, readOnly, theme } = this.props;
     const { value } = this.state;
+    const hasStateValue = value ? true : false;
     return (
-      <Trigger
-        popup={<SwitchPanel {...this.props} ref={this.picker} onChange={this.onChange} />}
-        align="bottomLeft"
-        key="trigger"
-        ref={this.trigger}
-        action={disabled || readOnly ? [] : ['click']}
-        hideAction={['click']}
-      >
-        <Input
-          prefix={<Icon className="lugia-icon-financial_date" />}
-          value={value}
-          onChange={this.onChange}
-          placeholder={'请选择日期'}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          disabled={disabled}
-          readOnly={readOnly}
-        />
-      </Trigger>
+      <Theme config={{ [Widget.Input]: { ...theme } }}>
+        <Trigger
+          popup={
+            <div>
+              <SwitchPanel
+                {...this.props}
+                hasStateValue={hasStateValue}
+                ref={this.picker}
+                onChange={this.onChange}
+              />
+              <PageFooter />
+            </div>
+          }
+          align="bottomLeft"
+          key="trigger"
+          ref={this.trigger}
+          action={disabled || readOnly ? [] : ['click']}
+          hideAction={['click']}
+        >
+          <Input
+            prefix={<Icon className="lugia-icon-financial_date" />}
+            value={value}
+            onChange={this.onChange}
+            placeholder={'请选择日期'}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            disabled={disabled}
+            readOnly={readOnly}
+          />
+        </Trigger>
+      </Theme>
     );
   }
 

@@ -76,22 +76,29 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     });
     const { isRange } = modeStyle(this.props.mode);
     if (isRange) {
-      this.setTriggerVisible();
+      this.setTriggerVisible(true);
     }
   };
-  setTriggerVisible = () => {
+  setTriggerVisible = (open: boolean) => {
     const { setTriggerVisible } = this.props;
-    setTriggerVisible && setTriggerVisible();
+    setTriggerVisible && setTriggerVisible(open);
   };
   render() {
     const { value, mode, from } = this.state;
-    const { isWeek, isMonth, isYear } = modeStyle(mode);
+    const { isWeek, isMonth, isYear, isRange } = modeStyle(mode);
     const config = {
       ...this.props,
       ref: this.picker,
       newValue: value,
       from,
     };
+    const { hasNormalvalue } = this.props;
+    let isHasNormalValue;
+    if (isRange) {
+      isHasNormalValue = hasNormalvalue;
+    } else {
+      isHasNormalValue = value ? true : false;
+    }
     return isYear ? (
       <Year {...config} onChange={this.changeYear} />
     ) : isMonth ? (
@@ -99,7 +106,13 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     ) : isWeek ? (
       <Weeks {...config} onChange={this.changeWeek} onChangeYear={this.weekChangeYear} />
     ) : (
-      <Date {...config} onChange={this.onChange} getMode={this.getMode} />
+      <Date
+        {...config}
+        isHasNormalValue={isHasNormalValue}
+        onChange={this.onChange}
+        getMode={this.getMode}
+        setTriggerVisible={this.setTriggerVisible}
+      />
     );
   }
   changeYear = (obj: Object) => {
@@ -218,12 +231,15 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     const { isWeeks } = modeStyle(mode);
     if (isWeeks) {
       const newYear = !weeksYear ? moment(value, format).year() : weeksYear;
-      this.setState({ weeksYear: newYear });
+      this.setState({ weeksYear: newYear }, () => {
+        this.getChangeValue(value || choseValue);
+      });
     } else {
       this.getChangeValue(value || choseValue);
     }
   };
   getChangeValue = (value: string) => {
+    console.log(value);
     let { format, from } = this.state;
     const { mode } = this.props;
     const { isDate } = modeStyle(mode);
@@ -231,6 +247,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       format = 'YYYY-WW';
     }
     const moments = value ? moment(value, format) : moment();
+    console.log(moments.format(format));
     this.setState({ mode, from: mode }, () => {
       this.getFreshPicker({ moments, mode, from: mode });
     });

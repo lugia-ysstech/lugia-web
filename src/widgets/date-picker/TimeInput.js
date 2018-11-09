@@ -87,8 +87,7 @@ class TimeInput extends Component<TypeProps, TypeState> {
 
   render() {
     const { value, panelValue, isFocus } = this.state;
-    const { disabled, readOnly } = this.props;
-    const { theme } = getTheme(this.props, 'TimePicker');
+    const { disabled, readOnly, theme } = this.props;
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger

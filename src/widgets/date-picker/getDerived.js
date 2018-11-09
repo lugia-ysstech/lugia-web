@@ -59,6 +59,7 @@ export const getDerived = (nextProps, preState) => {
     value,
     noToday,
     today,
+    todayDate: moment().format(format),
     moments,
     format,
     mode,

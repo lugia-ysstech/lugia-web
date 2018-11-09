@@ -70,6 +70,7 @@ class Dates extends Component<TypeProps, TypeState> {
     onDateChange && onDateChange(index, child, inRange);
   };
   onMouseOver = (index: number, child: number) => () => {
+    console.log(45555);
     const { mode } = this.props;
     const { isRange } = modeStyle(mode);
     if (!isRange) {
@@ -79,6 +80,7 @@ class Dates extends Component<TypeProps, TypeState> {
     if (isRange) {
       const { choseValue } = this.getYandM(index, child);
       const { panelChoseDate } = this.props;
+      console.log(panelChoseDate);
       if (panelChoseDate) {
         this.getIndexInRange([panelChoseDate, choseValue]);
         this.rangeHoverChange(choseValue);
@@ -145,28 +147,32 @@ class Dates extends Component<TypeProps, TypeState> {
     index: number,
     value: string
   ) => {
+    console.log(choseDate, weekIndex, index, value);
     let { format } = this.props;
     const { mode } = this.props;
     if (mode === 'weeks') {
       format = 'YYYY-MM-DD';
     }
     const { firstDayIndex, maxDay } = this.props;
+
     const first = firstDayIndex && firstDayIndex[0];
     const second = firstDayIndex && firstDayIndex[1];
     const moments = moment(value, format);
     if (funGoal === 'changeHead' && choseDate > maxDay) {
       choseDate = maxDay;
     }
-
+    console.log(first, second, index);
     let choseDayIndex = choseDate + weekIndex;
     let choseValue = this.getChoseValue(moments, 'add', 0, choseDate);
 
     if (index < first) {
+      console.log(456);
       choseDayIndex = index + 1;
       choseValue = this.getChoseValue(moments, 'subtract', 1, choseDate);
     }
 
     if (index >= second) {
+      console.log(556);
       choseDayIndex = weekIndex + choseDate;
       choseValue = this.getChoseValue(moments, 'add', 1, choseDate);
     }
@@ -237,7 +243,7 @@ class Dates extends Component<TypeProps, TypeState> {
   };
   render() {
     const {
-      todayIndex,
+      today,
       noToday,
       startInWeeks,
       endInWeeks,
@@ -248,7 +254,11 @@ class Dates extends Component<TypeProps, TypeState> {
       weekIndex,
       lastDayIndexInMonth,
       days,
-      width = 300,
+      theme,
+      isHasNormalValue,
+      todayDate,
+      value,
+      fromat,
     } = this.props;
     const {
       rangeChoseIndex,
@@ -268,12 +278,19 @@ class Dates extends Component<TypeProps, TypeState> {
       if (!isRange) {
         choseDayIndex = this.props.choseDayIndex;
       }
-
+      const todayIndex = today + weekIndex;
       return (
         <DateChild
-          width={width}
+          {...theme}
+          value={value}
+          todayDate={todayDate}
+          mode={mode}
           choseDayIndex={choseDayIndex}
           todayIndex={todayIndex}
+          fromat={fromat}
+          showToday={showToday}
+          isHasNormalValue={isHasNormalValue}
+          panelIndex={this.props.index}
           noToday={noToday}
           isChooseWeek={index >= startInWeeks && index < endInWeeks && mode === 'weeks'}
           isHoverWeek={index >= weekHoverStart && index < weekHoverEnd && mode === 'weeks'}
@@ -292,7 +309,8 @@ class Dates extends Component<TypeProps, TypeState> {
           index={index + 1}
         >
           <DateChildInner
-            width={width}
+            {...theme}
+            mode={mode}
             key={index}
             onClick={this.onDateChange(index, currentValue)}
             isToday={showToday && todayIndex === index + 1 ? true : false}

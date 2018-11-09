@@ -31,6 +31,7 @@ type TypeProps = {
   isFollow?: boolean,
   differAmonth?: boolean,
   differAyear?: boolean,
+  theme?: Object,
 };
 type TypeState = {
   days: Array<Object>,
@@ -77,7 +78,7 @@ class Date extends Component<TypeProps, TypeState> {
     this.DatesPicker = React.createRef();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { value, today, noToday, moments, format, weeks, firstWeekDay } = getDerived(
+    const { value, today, todayDate, noToday, moments, format, weeks, firstWeekDay } = getDerived(
       nextProps,
       preState
     );
@@ -87,6 +88,7 @@ class Date extends Component<TypeProps, TypeState> {
         days: [],
         weekDay: 0,
         today,
+        todayDate,
         noToday,
         choseDate: moments.date() || moment().date(),
         currentYear: moments.year() || moment().year(),
@@ -110,7 +112,7 @@ class Date extends Component<TypeProps, TypeState> {
     const { currentYear, currentMonth, value } = this.state;
     let { format } = this.state;
     const { mode } = this.props;
-    const { isWeeks } = modeStyle(mode);
+    const { isWeeks, isRange } = modeStyle(mode);
     if (isWeeks) {
       format = 'YYYY-MM-DD';
     }
@@ -134,6 +136,10 @@ class Date extends Component<TypeProps, TypeState> {
       this.setState({ weekIndex }, () => {
         this.getWeeksSandEFromValue(this.value);
       });
+    }
+    if (isRange) {
+      const { setTriggerVisible } = this.props;
+      setTriggerVisible && setTriggerVisible(true);
     }
   };
   getWeekIndex = (moments: Object, firstWeekDay: number) => {
@@ -288,6 +294,7 @@ class Date extends Component<TypeProps, TypeState> {
     const { newMonth, newYear, days, weekDay, weekIndex, lastDayIndexInMonth } = this.getDates(
       moments
     );
+
     const dateIndex = choseDate + weekIndex;
     const { choseDayIndex } = this.DatesPicker.current.getChoseDayIndex(
       funGoal,
@@ -296,6 +303,8 @@ class Date extends Component<TypeProps, TypeState> {
       dateIndex,
       value
     );
+    //  this.DatesPicker.current.getYandM(index, child);
+    console.log(funGoal, choseDate, weekIndex, dateIndex, value);
     this.setState(
       {
         days,
@@ -305,7 +314,7 @@ class Date extends Component<TypeProps, TypeState> {
         weekIndex,
         lastDayIndexInMonth,
         value,
-        choseDayIndex,
+        choseDayIndex: dateIndex,
       },
       () => {
         const { mode } = this.props;
@@ -567,17 +576,22 @@ class Date extends Component<TypeProps, TypeState> {
   render() {
     const { currentYear, currentMonth } = this.state;
     const { firstWeekDay } = this.state;
-    const { lang } = this.props;
-    const { index, differAmonth, differAyear } = this.props;
+    const { lang, mode } = this.props;
+    const { index, differAmonth, differAyear, theme } = this.props;
+    console.log(this.state.value);
     return (
-      <DateWrapper width={300}>
+      <DateWrapper {...theme} mode={mode}>
         <div>
           <DateHeader>
-            <HeaderTop>
+            <HeaderTop {...theme}>
               {differAyear && index === 1 ? (
                 ''
               ) : (
-                <HeaderTopArrow position={'left'} onClick={this.getDaysInMonth('year', 'subtract')}>
+                <HeaderTopArrow
+                  position={'left'}
+                  {...theme}
+                  onClick={this.getDaysInMonth('year', 'subtract')}
+                >
                   <Icon iconClass={'lugia-icon-direction_double_right'} />
                 </HeaderTopArrow>
               )}
@@ -586,6 +600,7 @@ class Date extends Component<TypeProps, TypeState> {
               ) : (
                 <HeaderTopArrow
                   position={'left'}
+                  {...theme}
                   margin={20}
                   onClick={this.getDaysInMonth('month', 'subtract')}
                 >
@@ -593,12 +608,20 @@ class Date extends Component<TypeProps, TypeState> {
                 </HeaderTopArrow>
               )}
 
-              <HeaderTopText onClick={this.onChangeYear}>{currentYear}年</HeaderTopText>
-              <HeaderTopText onClick={this.onChangeMonth}>{currentMonth + 1}月</HeaderTopText>
+              <HeaderTopText {...theme} onClick={this.onChangeYear}>
+                {currentYear}年
+              </HeaderTopText>
+              <HeaderTopText {...theme} onClick={this.onChangeMonth}>
+                {currentMonth + 1}月
+              </HeaderTopText>
               {differAyear && index === 0 ? (
                 ''
               ) : (
-                <HeaderTopArrow position={'right'} onClick={this.getDaysInMonth('year', 'add')}>
+                <HeaderTopArrow
+                  position={'right'}
+                  {...theme}
+                  onClick={this.getDaysInMonth('year', 'add')}
+                >
                   <Icon iconClass={'lugia-icon-direction_double_left'} />
                 </HeaderTopArrow>
               )}
@@ -607,6 +630,7 @@ class Date extends Component<TypeProps, TypeState> {
               ) : (
                 <HeaderTopArrow
                   position={'right'}
+                  {...theme}
                   margin={20}
                   onClick={this.getDaysInMonth('month', 'add')}
                 >
@@ -614,11 +638,18 @@ class Date extends Component<TypeProps, TypeState> {
                 </HeaderTopArrow>
               )}
             </HeaderTop>
-            <WeekDays firstWeekDay={firstWeekDay} lang={lang} onChangeWeek={this.onChangeWeek} />
+            <WeekDays
+              firstWeekDay={firstWeekDay}
+              lang={lang}
+              onChangeWeek={this.onChangeWeek}
+              {...theme}
+              mode={this.props.mode}
+            />
           </DateHeader>
           <Dates
             {...this.props}
             {...this.state}
+            {...theme}
             firstDayIndex={this.firstDayIndex}
             maxDay={this.maxDay}
             val={this.value}

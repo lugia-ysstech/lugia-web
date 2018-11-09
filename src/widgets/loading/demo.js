@@ -1,11 +1,14 @@
 import React from 'react';
-import Loading from './loading';
+import Loading from './index';
+import Widgets from '../consts/index';
+import Theme from '../theme/index';
 class LoadingDemo extends React.Component {
   render() {
-    // const { value, displayValue, } = this.state;
     return (
       <div>
-        <Loading width={14} color={'red'} />
+        <Theme config={{ [Widgets.Loading]: { width: 14, color: 'red' } }}>
+          <Loading />
+        </Theme>
         <br />
         <br />
         <br />

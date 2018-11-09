@@ -49,8 +49,10 @@ export default class Sl extends Component<any> {
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Date</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>date-normal</h2>
-            <DatePicker />
+            <h2>date-normal-theme</h2>
+            <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>
+              <DatePicker showToday />
+            </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>date-defaultValue</h2>
@@ -76,8 +78,10 @@ export default class Sl extends Component<any> {
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Year</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>Year-normal</h2>
-            <YearPicker />
+            <h2>Year-normal-theme</h2>
+            <Theme config={{ [Widget.YearPicker]: { width: 400 } }}>
+              <YearPicker />
+            </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>Year-defaultValue</h2>
@@ -103,8 +107,10 @@ export default class Sl extends Component<any> {
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Month</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>month-normal</h2>
-            <MonthPicker />
+            <h2>month-normal-theme</h2>
+            <Theme config={{ [Widget.MonthPicker]: { width: 400 } }}>
+              <MonthPicker />
+            </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>month-defaultValue</h2>
@@ -129,6 +135,12 @@ export default class Sl extends Component<any> {
         </div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Weeks</h2>
+          <div style={{ float: 'left', marginRight: '30px' }}>
+            <h2>weeks-normal-Theme</h2>
+            <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
+              <WeeksPicker />
+            </Theme>
+          </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>weeks-defaultValue</h2>
             <WeeksPicker
@@ -161,8 +173,10 @@ export default class Sl extends Component<any> {
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Week</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>week</h2>
-            <WeekPicker />
+            <h2>week-normal</h2>
+            <Theme config={{ [Widget.WeekPicker]: { width: 400 } }}>
+              <WeekPicker />
+            </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>week-defaultValue</h2>
@@ -185,7 +199,9 @@ export default class Sl extends Component<any> {
           <h2 style={{ margin: '10px' }}>Range</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>RangePicker-normal</h2>
-            <RangePicker />
+            <Theme>
+              <RangePicker />
+            </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>RangePicker-defaultValue </h2>
@@ -225,44 +241,54 @@ export default class Sl extends Component<any> {
           <h2 style={{ margin: '10px' }}>Times</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>TimePicker-normal</h2>
-            <Theme config={{ [Widget.TimePicker]: { width: 300 } }}>
+            <Theme config={{ [Widget.TimePicker]: { width: 500 } }}>
               <TimePicker />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>TimePicker-defaultValue</h2>
-            <Theme config={{ [Widget.TimePicker]: { width: 300 } }}>
-              <TimePicker defaultValue={'0时03分04秒'} onChange={this.onChange} />
-            </Theme>
+            <TimePicker defaultValue={'0时03分04秒'} onChange={this.onChange} />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>TimePicker-value</h2>
-            <Theme config={{ [Widget.TimePicker]: { width: 300 } }}>
-              <TimePicker value={'0时03分04秒'} format={'HH时mm分ss秒'} onChange={this.onChange} />
-            </Theme>
+            <TimePicker value={'0时03分04秒'} format={'HH时mm分ss秒'} onChange={this.onChange} />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>TimePicker-readOnly</h2>
-            <Theme config={{ [Widget.TimePicker]: { width: 300 } }}>
-              <TimePicker defaultValue={'0时03分04秒'} readOnly />
-            </Theme>
+            <TimePicker defaultValue={'0时03分04秒'} readOnly />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>TimePicker-disabled</h2>
-            <Theme config={{ [Widget.TimePicker]: { width: 300 } }}>
-              <TimePicker defaultValue={'0时03分04秒'} disabled />
-            </Theme>
+            <TimePicker defaultValue={'0时03分04秒'} disabled />
           </div>
         </div>
-        <div style={{ margin: '30px', overflow: 'hidden' }}>
+        {/* <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>TimePanel</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>Time</h2>
-            <Theme config={{ [Widget.Time]: { width: 200 } }}>
+            <Theme config={{ [Widget.Time]: { width: 500 } }}>
               <Time />
             </Theme>
           </div>
-        </div>
+        </div> */}
+        {/* <div style={{ float: 'left', marginRight: '30px' }}>
+            <h2>RangePicker-normal</h2>
+            <Theme>
+              <RangePicker showToday />
+            </Theme>
+          </div> */}
+        {/* <div style={{ float: 'left', marginRight: '30px' }}>
+            <h2>date-normal-theme</h2>
+            <Theme config={{ [Widget.DatePicker]: { width: 200,color:'#e05959' } }}>
+             <DatePicker />
+            </Theme>
+          </div>
+          <div style={{ float: 'left', marginRight: '30px' }}>
+            <h2>date-normal-theme</h2>
+            <Theme config={{ [Widget.DatePicker]: { width: 200,color:'#e05959' } }}>
+             <DatePicker defaultValue={'2015-02-03'} />
+            </Theme>
+          </div> */}
       </div>
     );
   }

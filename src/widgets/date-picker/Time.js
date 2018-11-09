@@ -125,12 +125,10 @@ class Time extends Component<TypeProps, TypeState> {
   render() {
     const { hours, minutes, seconds } = this.times;
     const { keys, starts } = this.state;
-    const { mode } = this.props;
-    const { isTime } = modeStyle(mode);
-    const picker = isTime ? 'Time' : 'TimePicker';
-    const { theme } = getTheme(this.props, picker);
-    const width = theme ? theme.width : 200;
-    const menuWidth = width / 3;
+    const { theme } = this.props;
+    const { width } = theme && theme;
+    const newWidth = theme && width ? width : 200;
+    const menuWidth = newWidth / 3;
     const config = {
       [Widget.Menu]: { ...theme, width: menuWidth },
     };
