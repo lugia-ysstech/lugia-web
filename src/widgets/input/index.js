@@ -65,13 +65,13 @@ const CommonInputStyle = styled.input`
 
   padding-left: ${getPadding};
   padding-right: ${getRightPadding};
+  ${getBackground};
 `;
 const BaseInputContainer = styled.span`
   position: relative;
   display: inline-block;
 `;
 const InputContainer = BaseInputContainer.extend`
-  ${getBackground};
   ${getMargin};
 `;
 
@@ -270,20 +270,20 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   getInputContainer(fetcher: Function) {
-    const { getTheme } = this.props;
+    const { getTheme, disabled } = this.props;
     return (
-      <InputContainer className="sv" theme={getTheme()}>
+      <InputContainer className="sv" theme={getTheme()} disabled={disabled}>
         {fetcher()}
       </InputContainer>
     );
   }
 
   getInputInner = () => {
-    const { validateType, validateStatus, help } = this.props;
+    const { validateType, validateStatus, help, disabled } = this.props;
 
     if (validateType === 'bottom') {
       const result = [
-        <BaseInputContainer>
+        <BaseInputContainer disabled={disabled}>
           {this.generatePrefix()}
           {this.generateInput()}
           {this.generateSuffix()}

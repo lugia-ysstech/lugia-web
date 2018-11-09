@@ -87,7 +87,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -106,7 +106,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c3:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c3::-webkit-input-placeholder {
@@ -137,7 +137,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -149,6 +149,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   color: #333333;
   padding-left: 0.8333333333333334em;
   padding-right: 2.916666666666667em;
+  background: #f2f2f2;
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -187,7 +188,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -206,7 +207,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c16:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c16::-webkit-input-placeholder {
@@ -237,7 +238,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -256,7 +257,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c17:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c17::-webkit-input-placeholder {
@@ -287,7 +288,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -306,7 +307,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c18:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c18::-webkit-input-placeholder {
@@ -338,7 +339,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   z-index: 2;
   bottom: 50%;
   line-height: 0.8333333333333334em;
-  font-size: 1.2em;
   right: 0.8333333333333334em;
   color: #999999;
   display: inline-block;
@@ -387,12 +387,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       formatter AmountInput
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -450,12 +451,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       default AmountInput
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -513,12 +515,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       禁用状态 
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c2"
+        disabled={true}
       >
         <input
           className="c13"
@@ -579,12 +582,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       small size
     </p>
     <span
-      className="sv c14"
+      className="c14"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c15"
+        disabled={false}
       >
         <input
           className="c16"
@@ -642,12 +646,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       default size
     </p>
     <span
-      className="sv c14"
+      className="c14"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c15"
+        disabled={false}
       >
         <input
           className="c17"
@@ -705,12 +710,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       large size
     </p>
     <span
-      className="sv c14"
+      className="c14"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c15"
+        disabled={false}
       >
         <input
           className="c18"
@@ -772,12 +778,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       受限Input
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -834,12 +841,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       有默认值的 受限Input
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -894,12 +902,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       amountPrefix: '¥' transform: false 
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -954,12 +963,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       amountPrefix: '$' transform: false 
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
         className="sv c2"
+        disabled={false}
       >
         <input
           className="c3"
@@ -1036,7 +1046,7 @@ Array [
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -1055,7 +1065,7 @@ Array [
 }
 
 .c2:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -1087,7 +1097,6 @@ Array [
   z-index: 2;
   bottom: 50%;
   line-height: 0.8333333333333334em;
-  font-size: 1.2em;
   right: 0.8333333333333334em;
   color: #999999;
   display: inline-block;
@@ -1117,12 +1126,13 @@ Array [
 }
 
 <span
-    className="sv c0"
+    className="c0"
     onBlur={[Function]}
     onFocus={[Function]}
   >
     <span
       className="sv c1"
+      disabled={false}
     >
       <input
         className="c2"
@@ -1261,7 +1271,7 @@ Array [
   border-radius: 0.33333333333333337em;
   border: 1px;
   border-style: solid;
-  border-color: #e8e8e8;
+  border-color: #cccccc;
   line-height: 1.5;
   font-size: 1.2rem;
   display: inline-block;
@@ -1280,7 +1290,7 @@ Array [
 }
 
 .c2:hover {
-  border-color: #cccccc;
+  border-color: #684fff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -1312,7 +1322,6 @@ Array [
   z-index: 2;
   bottom: 50%;
   line-height: 0.8333333333333334em;
-  font-size: 1.2em;
   right: 0.8333333333333334em;
   color: #999999;
   display: inline-block;
@@ -1342,12 +1351,13 @@ Array [
 }
 
 <span
-    className="sv c0"
+    className="c0"
     onBlur={[Function]}
     onFocus={[Function]}
   >
     <span
       className="sv c1"
+      disabled={false}
     >
       <input
         className="c2"
