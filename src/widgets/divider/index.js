@@ -21,7 +21,6 @@ const Divider = styled.div`
   font-weight: 500;
   color: ${getColor};
   margin: ${em(24)} ${em(10)};
-  width: 100%;
   height: ${em(1)};
   ::before {
     content: '';

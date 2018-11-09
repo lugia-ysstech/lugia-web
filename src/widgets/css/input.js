@@ -44,9 +44,16 @@ export const getInputBorderHoverColor = (props: Object) => {
 };
 
 export const getFocusShadow = (props: Object) => {
-  const { validateStatus = Success } = props;
+  const { validateStatus = Success, theme } = props;
+  const { borderSize } = theme;
+  const noShadow =
+    borderSize === 0 ||
+    (borderSize && borderSize.top === 0) ||
+    (borderSize && borderSize.bottom === 0) ||
+    (borderSize && borderSize.left === 0) ||
+    (borderSize && borderSize.right === 0);
   const color = isSuccess(validateStatus) ? 'rgba(104, 79, 255, 0.2)' : 'rgba(248, 172, 48, 0.2)';
-  return 'box-shadow: 0 0 6px ' + color;
+  return noShadow ? '' : 'box-shadow: 0 0 6px ' + color;
 };
 const FontSize = 1.2;
 const em = px2emcss(FontSize);

@@ -387,7 +387,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       formatter AmountInput
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -451,7 +451,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       default AmountInput
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -515,7 +515,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       禁用状态
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -582,7 +582,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       small size
     </p>
     <span
-      className="sv c14"
+      className="c14"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -646,7 +646,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       default size
     </p>
     <span
-      className="sv c14"
+      className="c14"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -710,7 +710,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       large size
     </p>
     <span
-      className="sv c14"
+      className="c14"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -778,7 +778,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       受限Input
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -841,7 +841,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       有默认值的 受限Input
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -902,7 +902,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       amountPrefix: '¥' transform: false
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -963,7 +963,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
       amountPrefix: '$' transform: false
     </p>
     <span
-      className="sv c1"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
     >
@@ -1126,7 +1126,7 @@ Array [
 }
 
 <span
-    className="sv c0"
+    className="c0"
     onBlur={[Function]}
     onFocus={[Function]}
   >
@@ -1351,7 +1351,7 @@ Array [
 }
 
 <span
-    className="sv c0"
+    className="c0"
     onBlur={[Function]}
     onFocus={[Function]}
   >

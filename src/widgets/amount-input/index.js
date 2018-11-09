@@ -224,7 +224,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   getInputContainer() {
     const { getTheme } = this.props;
     return (
-      <InputContainer className="sv" theme={getTheme()}>
+      <InputContainer theme={getTheme()}>
         {this.generateInput()}
         {this.getPlaceholder()}
       </InputContainer>
