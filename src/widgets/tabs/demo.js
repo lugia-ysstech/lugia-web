@@ -5,7 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import Tabs from './index';
+import Tabs from './tabs';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import Theme from '../theme/';
