@@ -9,7 +9,6 @@ exports[`Divider css 1`] = `
   font-weight: 500;
   color: #e8e8e8;
   margin: 2em 0.8333333333333334em;
-  width: 100%;
   height: 0.08333333333333334em;
 }
 
@@ -45,7 +44,6 @@ exports[`Divider css 1`] = `
   font-weight: 500;
   color: #e8e8e8;
   margin: 2em 0.8333333333333334em;
-  width: 100%;
   height: 0.08333333333333334em;
 }
 
@@ -81,7 +79,6 @@ exports[`Divider css 1`] = `
   font-weight: 500;
   color: #e8e8e8;
   margin: 2em 0.8333333333333334em;
-  width: 100%;
   height: 0.08333333333333334em;
 }
 
@@ -117,7 +114,6 @@ exports[`Divider css 1`] = `
   font-weight: 500;
   color: #e8e8e8;
   margin: 2em 0.8333333333333334em;
-  width: 100%;
   height: 0.08333333333333334em;
 }
 
@@ -153,7 +149,6 @@ exports[`Divider css 1`] = `
   font-weight: 500;
   color: #e8e8e8;
   margin: 2em 0.8333333333333334em;
-  width: 100%;
   height: 0.08333333333333334em;
 }
 
