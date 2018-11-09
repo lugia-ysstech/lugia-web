@@ -37,7 +37,7 @@ class WeekDays extends Component<TypeProps, null> {
       <HeaderWeekBox>
         {newWeeks.map((currentValue, index) => {
           return (
-            <HeaderWeek width={300} key={index} onClick={this.handleClick}>
+            <HeaderWeek {...this.props} key={index} onClick={this.handleClick}>
               {newWeeks[index]}
             </HeaderWeek>
           );

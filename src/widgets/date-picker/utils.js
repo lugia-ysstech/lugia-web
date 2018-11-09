@@ -49,11 +49,10 @@ export const getTimes = (number: number) => {
   }
   return Times;
 };
-export const getTheme = (props: Object, componentName) => {
+export const getTheme = (props: Object) => {
   const { getTheme } = props;
-  const component = `sv_widget_${componentName}`;
-  const theme = getTheme().svThemeConfigTree[component];
-  return { theme };
+  const theme = getTheme();
+  return { ...theme };
 };
 export const getValueIndex = (value: string) => {
   const { length } = value;
@@ -71,6 +70,11 @@ export const getValueIndex = (value: string) => {
     symbolCont,
     numberIndex,
   };
+};
+export const formatValueIsValid = (normalStyleValueObj: Object, value: string, format: string) => {
+  const isSame = getValueIsValid(normalStyleValueObj, value);
+  const isValid = moment(value, format).isValid();
+  return isSame && isValid;
 };
 export const getValueIsValid = (normalStyleValueObj: Object, value: string) => {
   const { symbolCont, numberIndex } = getValueIndex(value);

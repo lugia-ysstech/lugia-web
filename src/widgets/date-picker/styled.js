@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
 import { valueInRange } from '../common/Math';
-const em = px2emcss(1.2);
+import { modeStyle } from './getDerived';
+import { getIsSame } from './utils';
+
+const fontSize = 1.4;
+const em = px2emcss(fontSize);
 const distance = {
   iconLeft: 10,
 };
@@ -11,7 +15,23 @@ const DateWrapperPadding = {
   left: 20,
   bottom: 44,
 };
-const { hoverColor, normalColor, disableColor } = colorsFunc();
+const borderRadius = 3;
+const { hoverColor, normalColor, disableColor, spiritColor } = colorsFunc();
+const getThemeProperty = props => {
+  const { isRange } = modeStyle(props.mode);
+  const { width, color, backgroundColor } = props;
+  let newWidth = isRange ? width / 2 + 100 : width * 1 + 100;
+  if (!newWidth) {
+    newWidth = 300;
+  }
+  const weekTitleWIdth = em((newWidth - DateWrapperPadding.left * 2 - 2) / 7);
+  return {
+    width: newWidth,
+    color,
+    backgroundColor,
+    weekTitleWIdth,
+  };
+};
 export const Icons = styled.span`
   position: absolute;
   left: ${em(distance.iconLeft)};
@@ -20,21 +40,21 @@ export const Icons = styled.span`
 `;
 export const DateWrapper = styled.div`
   display: inline-block;
-  width: ${props => props.width}px;
+  width: ${props => em(getThemeProperty(props).width)};
   padding: ${props => getDateWrrap(props).paddingStyle};
-  border: 1px solid #ddd;
+  vertical-align: top;
+  font-size: ${fontSize}rem;
 `;
 
 export const DateHeader = styled.div`
-  font-size: 12px;
+  font-size: ${em(14)};
 `;
 export const RangeInput = styled.div`
   display: inline-block;
   border: 1px solid #e8e8e8;
-  border-radius: 3px;
+  border-radius: ${em(borderRadius)};
 
   & input {
-    width: 200px;
     border: none;
     text-align: center;
   }
@@ -44,15 +64,15 @@ export const RangeInput = styled.div`
   }
 `;
 export const RangeSpan = styled.span`
-  font-size: 12px;
+  font-size: ${em(14)};
 `;
 export const HeaderTop = styled.div`
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: ${em(12)};
 `;
 export const HeaderTopText = styled.span`
   color: #333;
-  font-size: 14px;
+  font-size: ${em(14)};
   font-weight: 500;
   cursor: pointer;
   &:hover {
@@ -67,25 +87,26 @@ export const HeaderTopArrow = HeaderTopText.extend`
 export const HeaderWeekBox = styled.ul`
   padding: 0;
   margin: 0;
-  margin-bottom: 12px;
+  margin-bottom: ${em(12)};
 `;
 export const HeaderWeek = styled.li`
   display: inline-block;
-  width: ${props => em((props.width - DateWrapperPadding.left * 2 - 2) / 7)};
-  height: ${props => em((props.width - DateWrapperPadding.left * 2 - 2) / 7)};
+  font-size: ${em(14)};
+  width: ${props => getThemeProperty(props).weekTitleWIdth};
+  height: ${props => getThemeProperty(props).weekTitleWIdth};
   text-align: center;
-  line-height: ${props => em((props.width - DateWrapperPadding.left * 2 - 2) / 7)};
+  line-height: ${props => getThemeProperty(props).weekTitleWIdth};
   cursor: pointer;
 `;
 export const DatePanel = styled.div`
-  font-size: 12px;
+  font-size: ${em(14)};
 `;
 const dateSize = {
   DateChildWidth: 26,
 };
 export const DateChild = styled.span`
   display: inline-block;
-  width: ${props => em((props.width - DateWrapperPadding.left * 2 - 2) / 7)};
+  width: ${props => getThemeProperty(props).weekTitleWIdth};
   text-align: center;
   vertical-align: middle;
   margin: ${em(3)} ${0};
@@ -103,9 +124,11 @@ export const DateChildInner = styled.i`
   line-height: ${em(dateSize.DateChildWidth)};
   vertical-align: text-top;
   cursor: pointer;
-
+  font-size: ${em(14)};
   &:hover {
     background: ${hoverColor};
+    color: #fff;
+    border-radius: 50%;
   }
 
   color: ${props => (props.outMonth ? '#ccc' : '#666')};
@@ -114,7 +137,7 @@ export const OtherChild = styled.span`
   display: inline-block;
   width: ${props => 100 / props.column}%;
   line-height: ${em(40)};
-  font-size: 14px;
+  font-size: ${em(14)};
   text-align: center;
   white-space: nowrap;
 
@@ -125,9 +148,9 @@ export const OtherChild = styled.span`
   cursor: pointer;
 `;
 export const OtherChildText = styled.i`
-  padding: 5px 10px;
+  padding: ${em(5)} ${em(10)};
   font-style: normal;
-  border-radius: 3px;
+  border-radius: ${em(borderRadius)};
   ${props => (props.isChose ? `background:${normalColor};color:#fff;` : '')};
 `;
 export const RangeWrap = styled.div`
@@ -139,7 +162,7 @@ export const RangeInnerTop = styled.span`
 export const RangeInputWrap = styled.span`
   display: inline-block;
   border: 1px solid #ddd;
-  border-radius: 3px;
+  border-radius: ${em(borderRadius)};
 `;
 export const RangeInputInner = styled.span`
   & input {
@@ -155,6 +178,16 @@ export const RangeInputInner = styled.span`
   display: inline-block;
   background: ${props => (props.disabled ? disableColor : '')};
 `;
+export const RangeMiddleSpan = styled.span`
+  display: inline-block;
+  width: ${props => em(props.width)};
+  text-align: center;
+`;
+export const Footer = styled.div`
+  border-top: 1px solid #ddd;
+  padding: ${em(10)} 0;
+  color: red;
+`;
 const getDateWrrap = props => {
   const { top, left, bottom } = DateWrapperPadding;
   const paddingStyle = ` ${em(top)}  ${em(left)} ${em(bottom)}`;
@@ -162,6 +195,7 @@ const getDateWrrap = props => {
     paddingStyle,
   };
 };
+
 const getDateChildStyle = props => {
   const {
     choseDayIndex,
@@ -174,35 +208,42 @@ const getDateChildStyle = props => {
     rangeChose,
     rangeIndex,
     index,
+    panelIndex,
     todayIndex,
     noToday,
     rangeStartIndex,
     rangeEndIndex,
     panelFistEndIndex,
     panelSecondStartIndex,
+    isHasNormalValue,
+    showToday,
+    todayDate,
+    value,
   } = props;
-
   const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
-
-  const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
-    return `${p}
+  const chooseStyle =
+    isHasNormalValue &&
+    arrChoseDayIndex.reduce((p, n) => {
+      return `${p}
     &:nth-child(${n})>i{
       background:${normalColor};
       color:#fff;
       border-radius:50%;
     }`;
-  }, '');
-  const todayInd = noToday ? '' : todayIndex;
+    }, '');
+  const todayInd = noToday ? '' : value === todayDate && showToday ? todayIndex : '';
   let todayStyle = `
       &:nth-child(${todayInd})>i{
-        border:1px solid ${normalColor};
+        border:1px solid ${normalColor};        
+        color:#666;
+        background:#fff;      
         border-radius:50%;
       }
   `;
   let chooseWeeks;
   let chooseWeekRadius;
   if (isChooseWeek || isHoverWeek) {
-    const backG = isChooseWeek ? `${normalColor}` : '#8f83ff';
+    const backG = isChooseWeek ? `${normalColor}` : `${hoverColor}`;
     const start = isChooseWeek ? startInWeeks + 1 : weekHoverStart + 1;
     const end = isChooseWeek ? endInWeeks : weekHoverEnd;
     const todayIn = valueInRange(todayIndex, [start, end]);
@@ -255,22 +296,23 @@ const getDateChildStyle = props => {
         border-bottom-${dire}-radius:20px;
       `;
     };
+
+    const rangeStartIsSmall = rangeStartIndex && rangeEndIndex && rangeStartIndex < rangeEndIndex;
+    const rangeStartDir = rangeStartIsSmall ? 'left' : 'right';
+    const rangeEndDir = rangeStartIsSmall ? 'right' : 'left';
     rangeStyle = `    
-      background:#684fff1f;
-      &:nth-child(${arrChoseDayIndex}){
-        border-top-${direction}-radius:20px; 
-        border-bottom-${direction}-radius:20px;
-      }    
+      background:${spiritColor};
+      
       &:nth-child(${borderIndex}){
         border-top-${startDir}-radius:20px;
         border-bottom-${startDir}-radius:20px;
       }  
      
       &:nth-child(${rangeStartIndex}){       
-        ${borderStyle('left')}
+        ${borderStyle(rangeStartDir)}
       } 
       &:nth-child(${rangeEndIndex}){        
-        ${borderStyle('right')}
+        ${borderStyle(rangeEndDir)}
       }
       &:nth-child(${panelFistEndIndex}){        
         ${borderStyle('right')}

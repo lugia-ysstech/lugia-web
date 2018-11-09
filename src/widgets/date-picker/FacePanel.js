@@ -199,7 +199,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
             : showYears
               ? doubleYear
               : years;
-
+    const { theme } = this.props;
     return (
       <DatePanel>
         {ChildrenData.map((current: any, index: number) => {
@@ -224,8 +224,10 @@ class FacePanel extends Component<TypeProps, TypeState> {
                   ? monthIndex
                   : Number(start);
           return (
-            <OtherChild onClick={this.getChildIndex(param)} key={index} column={column}>
-              <OtherChildText isChose={currentStart === equalValue}>{text}</OtherChildText>
+            <OtherChild {...theme} onClick={this.getChildIndex(param)} key={index} column={column}>
+              <OtherChildText {...theme} isChose={currentStart === equalValue}>
+                {text}
+              </OtherChildText>
             </OtherChild>
           );
         })}

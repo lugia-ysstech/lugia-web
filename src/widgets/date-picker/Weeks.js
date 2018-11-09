@@ -110,10 +110,10 @@ class Weeks extends Component<TypeProps, TypeState> {
   }
   render() {
     const { year, secondTitle, isWeekInner, weeks } = this.state;
-    const { step = 12 } = this.props;
+    const { step = 12, theme } = this.props;
     return (
-      <DateWrapper width={300}>
-        <div width={300}>
+      <DateWrapper {...theme} mode={this.props.mode}>
+        <div>
           <Head
             {...this.props}
             start={year}

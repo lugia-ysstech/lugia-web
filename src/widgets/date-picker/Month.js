@@ -10,6 +10,7 @@ type TypeProps = {
   onChnge?: Function,
   onChangeYear?: Function,
   from?: 'string',
+  theme?: Object,
 };
 type TypeState = {
   monthIndex: number,
@@ -63,8 +64,9 @@ class Month extends Component<TypeProps, TypeState> {
   };
   render() {
     const { monthIndex, year } = this.state;
+    const { theme } = this.props;
     return (
-      <DateWrapper width={300}>
+      <DateWrapper {...theme}>
         <div>
           <Head
             {...this.props}
