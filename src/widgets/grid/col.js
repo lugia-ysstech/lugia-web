@@ -16,8 +16,9 @@ export default ThemeProvider(
   MouseEventAdaptor(
     class extends React.Component<ColProps, ColState> {
       render() {
-        const { children, span = 1, offset, push, pull, order, gutter } = this.props;
+        const { children, span = 1, offset, push, pull, order, gutter, equable } = this.props;
         const propsSizeData: Object = this.handlePropsData();
+        const width = 100 / equable;
         return (
           <ColWrap
             span={propsSizeData.span || span}
@@ -29,6 +30,7 @@ export default ThemeProvider(
             onMouseOut={this.props.onMouseOut}
             onMouseEnter={this.props.onMouseEnter}
             onMouseOver={this.props.onMouseOver}
+            width={width}
           >
             {children}
           </ColWrap>

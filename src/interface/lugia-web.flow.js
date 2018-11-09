@@ -89,4 +89,17 @@ declare module '@lugia/lugia-web' {
     bottomLeft?: number,
     bottomRight?: number,
   };
+
+  declare type ChangeEventParam = {
+    newValue: any,
+    oldValue: any,
+    choseValue?: any,
+    weeks?: any,
+  };
+  declare type ChangeItemEventParam = ChangeEventParam & {
+    newDisplayValue: any,
+    oldDisplayValue: any,
+    newItem: any,
+    oldItem: any,
+  };
 }

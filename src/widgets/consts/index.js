@@ -66,7 +66,8 @@ const Select = 'sv_widget_Select';
 const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
 const QueryInput = 'sv_widget_QueryInput';
 const Tag = 'sv_widget_Tag';
-const DropMenuButton = 'DropMenuButton';
+const DropMenuButton = 'sv_widget_DropMenuButton';
+const Cascader = 'sv_widget_Cascader';
 
 const Layout = 'sv_widget_Layout';
 const Header = 'sv_widget_Header';
@@ -85,7 +86,18 @@ const Alert = 'sv_widget_Alert';
 const Modal = 'sv_widget_Modal';
 const Message = 'sv_widget_Message';
 const Notification = 'sv_widget_Notification';
+const Step = 'sv_widget_Step';
+const Steps = 'sv_widget_Steps';
+const TimePicker = 'sv_widget_TimePicker';
+const Time = 'sv_widget_Time';
 
+/*add by wangcuixia*/
+const DatePicker = 'sv_widget_DatePicker';
+const YearPicker = 'sv_widget_YearPicker';
+const MonthPicker = 'sv_widget_MonthPicker';
+const WeekPicker = 'sv_widget_WeekPicker';
+const WeeksPicker = 'sv_widget_WeeksPicker';
+const RangePicker = 'sv_widget_RangePicker';
 export default {
   Button,
   Input,
@@ -157,4 +169,15 @@ export default {
   Message,
   Notification,
   Modal,
+  Step,
+  Steps,
+  Cascader,
+  DatePicker,
+  YearPicker,
+  MonthPicker,
+  WeekPicker,
+  WeeksPicker,
+  RangePicker,
+  TimePicker,
+  Time,
 };

@@ -21,19 +21,31 @@ let i = 0;
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    this.state = { menu: null };
+
+    this.state = {
+      menu: (
+        <Menu
+          onClick={(...rest) => {
+            // // console.info('Me('Menuclick', rest);
+          }}
+        >
+          {items}
+        </Menu>
+      ),
+    };
   }
 
   render() {
     const { menu } = this.state;
     return (
       <div>
-        <button onClick={this.onClick}>test</button>
+        [
         <Theme config={{ [Widget.DropMenu]: { width: 200 } }}>
           <DropMenu menus={menu}>
             <input type="text" />
           </DropMenu>
         </Theme>
+        ]
       </div>
     );
   }

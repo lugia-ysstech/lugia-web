@@ -18,7 +18,7 @@ export const Row = grid.Row;
 
 export { default as Align } from './align';
 
-export { default as AmountInput } from './amountinput';
+export { default as AmountInput } from './amount-input';
 
 export { default as Avatar } from './avatar';
 
@@ -54,7 +54,7 @@ export { default as Loading } from './loading/loading';
 
 export { default as Menu } from './menu';
 
-export { default as NumberInput } from './numberinput';
+export { default as NumberInput } from './number-input';
 
 export { default as Radio } from './radio';
 

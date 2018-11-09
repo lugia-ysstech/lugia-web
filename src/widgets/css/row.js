@@ -14,14 +14,17 @@ type BaseProps = {
   gutter?: number | Object,
   getTheme: Function,
 };
-
+type ForDesignType = {
+  equable?: number,
+};
 export type RowProps = {
   onMouseEnter?: Function,
   onMouseOut?: Function,
   onMouseOver?: Function,
   type?: 'default' | 'flex',
   children: any,
-} & BaseProps;
+} & BaseProps &
+  ForDesignType;
 
 export type screensType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export type RowState = {
