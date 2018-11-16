@@ -217,7 +217,7 @@ export default class extends React.Component<AffixProps, AffixState> {
     const { target } = this.props;
     window.removeEventListener('scroll', this.addWindowListener);
     if (target && typeof target === 'function') {
-      target().removeEventListener('scroll', this.addTargetListener);
+      target() && target().removeEventListener('scroll', this.addTargetListener);
     }
   }
 

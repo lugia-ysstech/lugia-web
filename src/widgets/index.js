@@ -97,3 +97,5 @@ export { default as Alert } from './alert';
 export { default as Message } from './message';
 
 export { default as Modal } from './modal';
+
+export { default as notification } from './notification';
