@@ -15,6 +15,23 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c89 {
+  font-variant: tabular-nums;
+  color: rgba(0,0,0,0.65);
+  box-sizing: border-box;
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c8 {
@@ -25,7 +42,7 @@ exports[`stepsDemo Component JSON 1`] = `
   cursor: pointer;
 }
 
-.c77 {
+.c86 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -53,23 +70,23 @@ exports[`stepsDemo Component JSON 1`] = `
   border-radius: 0.33333333333333337em;
 }
 
-.c77:hover {
+.c86:hover {
   color: #ffffff;
   border: none;
   background-color: #9482ff;
 }
 
-.c77:focus {
+.c86:focus {
   color: #ffffff;
   border: none;
   background-color: #9482ff;
 }
 
-.c77:active {
+.c86:active {
   background-color: #533fcc;
 }
 
-.c11 {
+.c12 {
   position: relative;
   cursor: pointer;
   width: 29.166666666666668em;
@@ -83,7 +100,7 @@ exports[`stepsDemo Component JSON 1`] = `
   color: #684fff;
 }
 
-.c21 {
+.c24 {
   position: relative;
   cursor: pointer;
   width: 29.166666666666668em;
@@ -97,7 +114,7 @@ exports[`stepsDemo Component JSON 1`] = `
   color: #cccccc;
 }
 
-.c25 {
+.c28 {
   position: relative;
   cursor: pointer;
   width: 29.166666666666668em;
@@ -109,103 +126,550 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   color: #f22735;
+}
+
+.c56 {
+  position: relative;
+  cursor: pointer;
+  width: 29.166666666666668em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: rgb(148,130,255);
+}
+
+.c94 {
+  position: relative;
+  cursor: pointer;
+  height: 8.333333333333334em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #684fff;
+}
+
+.c100 {
+  position: relative;
+  cursor: pointer;
+  height: 8.333333333333334em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #cccccc;
+}
+
+.c103 {
+  position: relative;
+  cursor: pointer;
+  height: 8.333333333333334em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #f22735;
+}
+
+.c118 {
+  position: relative;
+  cursor: pointer;
+  height: 8.333333333333334em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: rgb(148,130,255);
 }
 
 .c10 {
   font-size: 1.4rem;
   color: #333333;
-  margin-top: 0.8333333333333334em;
-  text-align: left;
+  text-align: inherit;
 }
 
-.c20 {
+.c22 {
   font-size: 1.4rem;
   color: #cccccc;
-  margin-top: 0.8333333333333334em;
-  text-align: left;
+  text-align: inherit;
 }
 
-.c30 {
+.c33 {
   font-size: 1.4rem;
   color: #f22735;
-  margin-top: 0.8333333333333334em;
-  text-align: left;
+  text-align: inherit;
 }
 
-.c43 {
+.c55 {
   font-size: 1.4rem;
   color: rgb(148,130,255);
-  margin-top: 0.8333333333333334em;
-  text-align: left;
+  text-align: inherit;
 }
 
-.c56 {
+.c93 {
+  font-size: 1.4rem;
+  color: #333333;
+  text-align: inherit;
+  line-height: 2em;
+}
+
+.c99 {
+  font-size: 1.4rem;
+  color: #cccccc;
+  text-align: inherit;
+  line-height: 1em;
+}
+
+.c106 {
+  font-size: 1.4rem;
+  color: #f22735;
+  text-align: inherit;
+  line-height: 2em;
+}
+
+.c109 {
+  font-size: 1.4rem;
+  color: #333333;
+  text-align: inherit;
+  line-height: 2.666666666666667em;
+}
+
+.c112 {
+  font-size: 1.4rem;
+  color: #cccccc;
+  text-align: inherit;
   line-height: 1.6666666666666667em;
+}
+
+.c115 {
+  font-size: 1.4rem;
+  color: #f22735;
+  text-align: inherit;
+  line-height: 2.666666666666667em;
+}
+
+.c117 {
+  font-size: 1.4rem;
+  color: rgb(148,130,255);
+  text-align: inherit;
+  line-height: 2.666666666666667em;
+}
+
+.c122 {
+  font-size: 1.4rem;
+  color: #cccccc;
+  text-align: inherit;
+  line-height: 2.666666666666667em;
+}
+
+.c126 {
+  font-size: 1.4rem;
+  color: #333333;
+  text-align: inherit;
+  line-height: 1em;
+}
+
+.c131 {
+  font-size: 1.4rem;
+  color: #f22735;
+  text-align: inherit;
+  line-height: 1em;
+}
+
+.c11 {
   font-weight: 400;
   color: #333333;
   margin-top: 0.5em;
+  text-align: inherit;
 }
 
-.c58 {
-  line-height: 1.6666666666666667em;
+.c23 {
   font-weight: 400;
   color: #cccccc;
   margin-top: 0.5em;
+  text-align: inherit;
 }
 
-.c59 {
-  line-height: 1.6666666666666667em;
+.c34 {
   font-weight: 400;
   color: #f22735;
   margin-top: 0.5em;
+  text-align: inherit;
 }
 
 .c9 {
   position: absolute;
   white-space: normal;
-  text-align: right;
+  display: block;
+  color: #56c22d;
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c19 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #684fff;
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c27 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #cccccc;
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c32 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #f22735;
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c35 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #56c22d;
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: center;
+  -webkit-transform: translateX(-40%);
+  -ms-transform: translateX(-40%);
+  transform: translateX(-40%);
+  width: 12.5em;
+}
+
+.c36 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #684fff;
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: center;
+  -webkit-transform: translateX(-40%);
+  -ms-transform: translateX(-40%);
+  transform: translateX(-40%);
+  width: 12.5em;
+}
+
+.c37 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #cccccc;
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: center;
+  -webkit-transform: translateX(-40%);
+  -ms-transform: translateX(-40%);
+  transform: translateX(-40%);
+  width: 12.5em;
+}
+
+.c38 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #f22735;
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: center;
+  -webkit-transform: translateX(-40%);
+  -ms-transform: translateX(-40%);
+  transform: translateX(-40%);
+  width: 12.5em;
+}
+
+.c42 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #56c22d;
+  top: 1.6666666666666667em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c45 {
+  position: absolute;
+  white-space: normal;
   display: block;
   color: #684fff;
   top: 1.6666666666666667em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
 }
 
-.c24 {
+.c49 {
   position: absolute;
   white-space: normal;
-  text-align: right;
   display: block;
   color: #cccccc;
   top: 1.6666666666666667em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
 }
 
-.c29 {
+.c51 {
   position: absolute;
   white-space: normal;
-  text-align: right;
   display: block;
   color: #f22735;
   top: 1.6666666666666667em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
 }
 
-.c13 {
+.c54 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: rgb(148,130,255);
+  top: 1.6666666666666667em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c65 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: rgb(148,130,255);
+  top: 2.5em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c77 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #56c22d;
+  top: 0.8333333333333334em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c80 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #684fff;
+  top: 0.8333333333333334em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c82 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #cccccc;
+  top: 0.8333333333333334em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c84 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #f22735;
+  top: 0.8333333333333334em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c92 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #56c22d;
+  left: 1.6666666666666667em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c97 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #684fff;
+  left: 1.6666666666666667em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c102 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #cccccc;
+  left: 1.6666666666666667em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c105 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #f22735;
+  left: 1.6666666666666667em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c108 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #56c22d;
+  left: 2.5em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c110 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #684fff;
+  left: 2.5em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c113 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #cccccc;
+  left: 2.5em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c114 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #f22735;
+  left: 2.5em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c116 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: rgb(148,130,255);
+  left: 2.5em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c125 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #56c22d;
+  left: 0.8333333333333334em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c128 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #684fff;
+  left: 0.8333333333333334em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c129 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #cccccc;
+  left: 0.8333333333333334em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c130 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #f22735;
+  left: 0.8333333333333334em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c14 {
   display: inline-block;
   position: relative;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   padding: 0 0.5em;
+  z-index: 10;
 }
 
-.c44 {
+.c57 {
   display: inline-block;
   position: relative;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   padding: 0 0;
+  z-index: 10;
 }
 
-.c14 {
+.c95 {
+  display: inline-block;
+  position: relative;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0.5em 0;
+  z-index: 10;
+}
+
+.c15 {
   position: relative;
   height: 0.08333333333333334em;
   width: 100%;
@@ -217,7 +681,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #684fff;
 }
 
-.c22 {
+.c25 {
   position: relative;
   height: 0.08333333333333334em;
   width: 100%;
@@ -229,7 +693,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #cccccc;
 }
 
-.c26 {
+.c29 {
   position: relative;
   height: 0.08333333333333334em;
   width: 100%;
@@ -241,10 +705,68 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #f22735;
 }
 
-.c45 {
+.c58 {
   position: relative;
-  height: 0.33333333333333337em;
+  height: 0.5em;
   width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: rgb(148,130,255);
+}
+
+.c59 {
+  position: relative;
+  height: 0.5em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 0.33333333333333337em rgba(104,79,255,0.3) inset;
+}
+
+.c59::before {
+  content: '';
+  opacity: 1;
+  position: absolute;
+  width: 0.5em;
+  top: 0.08333333333333334em;
+  left: -0.16666666666666669em;
+  background: #ffffff;
+  height: 0.33333333333333337em;
+}
+
+.c59::after {
+  content: '';
+  opacity: 1;
+  position: absolute;
+  width: 0.5em;
+  top: 0.08333333333333334em;
+  right: -0.16666666666666669em;
+  background: #ffffff;
+  height: 0.33333333333333337em;
+}
+
+.c62 {
+  position: relative;
+  height: 0.5em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  background-color: #f22735;
+}
+
+.c96 {
+  position: relative;
+  width: 0.08333333333333334em;
+  height: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
@@ -253,26 +775,10 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #684fff;
 }
 
-.c46 {
+.c101 {
   position: relative;
-  height: 0.33333333333333337em;
-  border-top: 0.08333333333333334em solid #684fff;
-  border-bottom: 0.08333333333333334em solid #684fff;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  background-color: #684fff;
-}
-
-.c48 {
-  position: relative;
-  height: 0.33333333333333337em;
-  border-top: 0.08333333333333334em solid #cccccc;
-  border-bottom: 0.08333333333333334em solid #cccccc;
-  width: 100%;
+  width: 0.08333333333333334em;
+  height: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
@@ -281,10 +787,10 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #cccccc;
 }
 
-.c50 {
+.c104 {
   position: relative;
-  height: 0.33333333333333337em;
-  width: 100%;
+  width: 0.08333333333333334em;
+  height: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
@@ -293,67 +799,65 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #f22735;
 }
 
-.c68 {
+.c119 {
   position: relative;
-  height: 0.08333333333333334em;
-  width: 100%;
+  width: 0.5em;
+  height: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  border-bottom: 0.08333333333333334em dashed #684fff;
+  background-color: rgb(148,130,255);
 }
 
-.c70 {
+.c120 {
   position: relative;
-  height: 0.08333333333333334em;
-  width: 100%;
+  width: 0.5em;
+  height: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  border-bottom: 0.08333333333333334em dashed #cccccc;
+  box-shadow: 0 0 0.33333333333333337em rgba(104,79,255,0.3) inset;
 }
 
-.c72 {
-  position: relative;
-  height: 0.08333333333333334em;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  border-bottom: 0.08333333333333334em dashed #f22735;
+.c120::before {
+  content: '';
+  opacity: 1;
+  position: absolute;
+  width: 0.33333333333333337em;
+  left: 0.08333333333333334em;
+  top: -0.16666666666666669em;
+  background: #ffffff;
+  height: 0.5em;
 }
 
-.c74 {
-  position: relative;
-  height: 0.08333333333333334em;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  border-bottom: 0.08333333333333334em solid #684fff;
+.c120::after {
+  content: '';
+  opacity: 1;
+  position: absolute;
+  width: 0.33333333333333337em;
+  left: 0.08333333333333334em;
+  bottom: -0.16666666666666669em;
+  background: #ffffff;
+  height: 0.5em;
 }
 
-.c75 {
+.c123 {
   position: relative;
-  height: 0.08333333333333334em;
-  width: 100%;
+  width: 0.5em;
+  height: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  border-bottom: 0.08333333333333334em solid #cccccc;
+  background-color: #f22735;
 }
 
-.c76 {
+.c78 {
   position: relative;
   height: 0.08333333333333334em;
   width: 100%;
@@ -362,7 +866,43 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  border-bottom: 0.08333333333333334em solid #f22735;
+  border-bottom: 0.08333333333333334em dashed;
+}
+
+.c85 {
+  position: relative;
+  height: 0.08333333333333334em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-bottom: 0.08333333333333334em solid;
+}
+
+.c127 {
+  position: relative;
+  width: 0.08333333333333334em;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-left: 0.08333333333333334em dashed;
+}
+
+.c132 {
+  position: relative;
+  width: 0.08333333333333334em;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  border-left: 0.08333333333333334em solid;
 }
 
 .c3 {
@@ -370,22 +910,22 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2.666666666666667em;
 }
 
-.c12 {
+.c13 {
   position: relative;
   width: 100%;
 }
 
-.c31 {
+.c39 {
   position: relative;
   width: 2em;
 }
 
-.c64 {
+.c73 {
   position: relative;
   width: 1em;
 }
 
-.c67 {
+.c76 {
   position: relative;
   background-color: #56c22d;
   display: inLine-block;
@@ -394,7 +934,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
 }
 
-.c69 {
+.c79 {
   position: relative;
   background-color: #684fff;
   display: inLine-block;
@@ -403,7 +943,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
 }
 
-.c71 {
+.c81 {
   position: relative;
   background-color: #cccccc;
   display: inLine-block;
@@ -412,7 +952,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
 }
 
-.c73 {
+.c83 {
   position: relative;
   background-color: #f22735;
   display: inLine-block;
@@ -421,14 +961,14 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
 }
 
-.c60 {
+.c69 {
   position: relative;
   display: inLine-block;
   width: 2em;
   height: 2em;
 }
 
-.c17 {
+.c18 {
   display: inLine-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -438,11 +978,10 @@ exports[`stepsDemo Component JSON 1`] = `
   font-weight: 700;
   line-height: 1;
   font-size: 1.8rem;
-  z-index: 9;
   color: #ffffff;
 }
 
-.c36 {
+.c44 {
   display: inLine-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -452,12 +991,11 @@ exports[`stepsDemo Component JSON 1`] = `
   font-weight: 700;
   line-height: 1;
   font-size: 1.6rem;
-  z-index: 9;
   color: #ffffff;
 }
 
 .c6 {
-  z-index: 99;
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -473,19 +1011,14 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2.666666666666667em;
   height: 2.666666666666667em;
   box-sizing: border-box;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid #56c22d;
+  background-color: #56c22d;
   background-color: #ffffff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #56c22d;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
-.c15 {
-  z-index: 99;
+.c16 {
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -501,19 +1034,14 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2.666666666666667em;
   height: 2.666666666666667em;
   box-sizing: border-box;
-  background-color: #684fff;
   border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #684fff;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  border: 0.08333333333333334em solid #684fff;
+  background-color: #684fff;
+  background-color: #684fff;
 }
 
-.c19 {
-  z-index: 99;
+.c21 {
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -529,19 +1057,14 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 1.6666666666666667em;
   height: 1.6666666666666667em;
   box-sizing: border-box;
-  background-color: #ffffff;
   border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #684fff;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  border: 0.08333333333333334em solid #684fff;
+  background-color: #684fff;
+  background-color: #ffffff;
 }
 
-.c23 {
-  z-index: 99;
+.c26 {
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -557,19 +1080,14 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 1.6666666666666667em;
   height: 1.6666666666666667em;
   box-sizing: border-box;
-  background-color: #ffffff;
   border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #cccccc;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  border: 0.08333333333333334em solid #cccccc;
+  background-color: #cccccc;
+  background-color: #ffffff;
 }
 
-.c27 {
-  z-index: 99;
+.c30 {
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -585,159 +1103,14 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2.666666666666667em;
   height: 2.666666666666667em;
   box-sizing: border-box;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid #f22735;
+  background-color: #f22735;
   background-color: #ffffff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #f22735;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c34 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 2em;
-  height: 2em;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #56c22d;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c35 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 2em;
-  height: 2em;
-  box-sizing: border-box;
-  background-color: #684fff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #684fff;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c38 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 1em;
-  height: 1em;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #684fff;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c39 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 1em;
-  height: 1em;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #cccccc;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c40 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 2em;
-  height: 2em;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #f22735;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 .c41 {
-  z-index: 99;
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -753,19 +1126,37 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2em;
   height: 2em;
   box-sizing: border-box;
-  background-color: rgb(148,130,255);
   border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: rgb(148,130,255);
+  border: 0.08333333333333334em solid #56c22d;
+  background-color: #56c22d;
+  background-color: #ffffff;
+}
+
+.c43 {
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid #684fff;
+  background-color: #684fff;
+  background-color: #684fff;
 }
 
 .c47 {
-  z-index: 99;
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -778,22 +1169,17 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 2em;
-  height: 2em;
+  width: 1em;
+  height: 1em;
   box-sizing: border-box;
-  background-color: #ffffff;
   border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #684fff;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  border: 0.08333333333333334em solid #684fff;
+  background-color: #684fff;
+  background-color: #ffffff;
 }
 
-.c49 {
-  z-index: 99;
+.c48 {
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -806,22 +1192,17 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 2em;
-  height: 2em;
+  width: 1em;
+  height: 1em;
   box-sizing: border-box;
-  background-color: #ffffff;
   border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #cccccc;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  border: 0.08333333333333334em solid #cccccc;
+  background-color: #cccccc;
+  background-color: #ffffff;
 }
 
-.c51 {
-  z-index: 99;
+.c50 {
+  position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -837,131 +1218,14 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2em;
   height: 2em;
   box-sizing: border-box;
+  border-radius: 50%;
+  border: 0.08333333333333334em solid #f22735;
   background-color: #f22735;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #f22735;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  background-color: #ffffff;
 }
 
 .c52 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  box-sizing: border-box;
-  background-color: rgb(148,130,255);
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: rgb(148,130,255);
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c53 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #684fff;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c54 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #cccccc;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c55 {
-  z-index: 99;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  box-sizing: border-box;
-  background-color: #f22735;
-  border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #f22735;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c57 {
-  z-index: 99;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -977,79 +1241,345 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2em;
   height: 2em;
   box-sizing: border-box;
-  background-color: #684fff;
   border-radius: 50%;
-  border: 0.08333333333333334em solid;
-  border-color: #cccccc;
+  background-color: rgb(148,130,255);
+  background-color: rgb(148,130,255);
+}
+
+.c61 {
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  border-radius: 50%;
+  box-shadow: 0 0 0.33333333333333337em rgba(104,79,255,0.3) inset;
+  background-color: #ffffff;
+}
+
+.c63 {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #f22735;
+  background-color: #f22735;
+}
+
+.c64 {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: rgb(148,130,255);
+  background-color: rgb(148,130,255);
+}
+
+.c67 {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  border-radius: 50%;
+  box-shadow: 0 0 0.33333333333333337em rgba(104,79,255,0.3) inset;
+  background-color: #ffffff;
+}
+
+.c68 {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #f22735;
+  background-color: #f22735;
 }
 
 .c4 {
   position: relative;
-  width: 100%;
-  height: 2.666666666666667em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c32 {
-  position: relative;
-  width: 100%;
   height: 2em;
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
-.c65 {
+.c90 {
+  position: relative;
+  width: 2em;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c74 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 100%;
+}
+
+.c124 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
 }
 
 .c5 {
-  z-index: 99;
   text-align: center;
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 2.666666666666667em;
+  z-index: 11;
 }
 
-.c18 {
-  z-index: 99;
+.c20 {
   text-align: center;
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 1.6666666666666667em;
+  z-index: 11;
 }
 
-.c33 {
-  z-index: 99;
+.c40 {
   text-align: center;
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 2em;
+  z-index: 11;
 }
 
-.c37 {
-  z-index: 99;
+.c46 {
   text-align: center;
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 1em;
+  z-index: 11;
+}
+
+.c60 {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2em;
+  z-index: 9;
 }
 
 .c66 {
-  z-index: 99;
   text-align: center;
   position: relative;
-  width: 12;
-  height: 12;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  z-index: 9;
+}
+
+.c91 {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2em;
+  z-index: 11;
+}
+
+.c98 {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 1em;
+  z-index: 11;
+}
+
+.c107 {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2.666666666666667em;
+  z-index: 11;
+}
+
+.c111 {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 1.6666666666666667em;
+  z-index: 11;
+}
+
+.c121 {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2.666666666666667em;
+  z-index: 9;
+}
+
+.c75 {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 1em;
+  height: 1em;
 }
 
 .c7 {
@@ -1065,7 +1595,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 5;
 }
 
-.c16 {
+.c17 {
   display: none !important;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1078,7 +1608,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 5;
 }
 
-.c28 {
+.c31 {
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1091,7 +1621,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 5;
 }
 
-.c42 {
+.c53 {
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1104,7 +1634,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 5;
 }
 
-.c61 {
+.c70 {
   position: absolute;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1122,7 +1652,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translateY(-50%);
 }
 
-.c62 {
+.c71 {
   position: absolute;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1140,7 +1670,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translateY(-50%);
 }
 
-.c63 {
+.c72 {
   position: absolute;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1158,7 +1688,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translateY(-50%);
 }
 
-.c78 {
+.c87 {
   margin-top: 30px;
   margin-left: 45px;
 }
@@ -1168,19 +1698,25 @@ exports[`stepsDemo Component JSON 1`] = `
   margin: 50px;
 }
 
+.c88 {
+  text-align: left;
+  margin: 50px;
+  display: inline-block;
+}
+
 <div>
   <div
     className="c0"
   >
     <p>
-      简洁风格 size normal
+      带有描述
     </p>
     <div
       className="c1"
     >
       <div
         className="c2"
-        orientation="h"
+        orientation="horizontal"
       >
         <div
           className="c3"
@@ -1188,14 +1724,17 @@ exports[`stepsDemo Component JSON 1`] = `
         >
           <div
             className="c4"
+            orientation="horizontal"
             size="normal"
           >
             <div
               className="c5"
+              orientation="horizontal"
               size="normal"
             >
               <div
                 className="c6"
+                orientation="horizontal"
                 size="normal"
               >
                 <i
@@ -1204,160 +1743,214 @@ exports[`stepsDemo Component JSON 1`] = `
               </div>
               <div
                 className="c9"
+                orientation="horizontal"
+                size="normal"
               >
                 <div
                   className="c10"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   1111
+                </div>
+                <div
+                  className="c11"
+                >
+                  description111
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
               className="c4"
+              orientation="horizontal"
               size="normal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c14"
+                  className="c15"
+                  orientation="horizontal"
                 />
               </div>
               <div
                 className="c5"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c15"
+                  className="c16"
+                  orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c17"
+                    className="c18"
                     size="normal"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c9"
+                  className="c19"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
                     className="c10"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     222
                   </div>
+                  <div
+                    className="c11"
+                  >
+                    description2
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
               className="c4"
+              orientation="horizontal"
               size="normal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c14"
+                  className="c15"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c18"
+                className="c20"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c19"
+                  className="c21"
+                  orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c17"
+                    className="c18"
                     size="normal"
                   >
                     
                   </div>
                 </div>
                 <div
-                  className="c9"
+                  className="c19"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     33
                   </div>
+                  <div
+                    className="c23"
+                  >
+                    description33
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c21"
+          className="c24"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
               className="c4"
+              orientation="horizontal"
               size="normal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c22"
+                  className="c25"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c18"
+                className="c20"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c23"
+                  className="c26"
+                  orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c17"
+                    className="c18"
                     size="normal"
                   >
                     
                   </div>
                 </div>
                 <div
-                  className="c24"
+                  className="c27"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     444
+                  </div>
+                  <div
+                    className="c23"
+                  >
+                    description444
                   </div>
                 </div>
               </div>
@@ -1365,43 +1958,372 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c25"
+          className="c28"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
               className="c4"
+              orientation="horizontal"
               size="normal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c26"
+                  className="c29"
+                  orientation="horizontal"
                 />
               </div>
               <div
                 className="c5"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c27"
+                  className="c30"
+                  orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className="lugia-icon-reminder_close c28 c8"
+                    className="lugia-icon-reminder_close c31 c8"
                   />
                 </div>
                 <div
-                  className="c29"
+                  className="c32"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
-                    className="c30"
+                    className="c33"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     555
+                  </div>
+                  <div
+                    className="c34"
+                  >
+                    description5555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      带有描述 居中显示
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="horizontal"
+      >
+        <div
+          className="c3"
+          size="normal"
+        >
+          <div
+            className="c4"
+            orientation="horizontal"
+            size="normal"
+          >
+            <div
+              className="c5"
+              orientation="horizontal"
+              size="normal"
+            >
+              <div
+                className="c6"
+                orientation="horizontal"
+                size="normal"
+              >
+                <i
+                  className="lugia-icon-reminder_check c7 c8"
+                />
+              </div>
+              <div
+                className="c35"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c10"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  1111
+                </div>
+                <div
+                  className="c11"
+                >
+                  description111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c12"
+          orientation="horizontal"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="normal"
+            >
+              <div
+                className="c14"
+                orientation="horizontal"
+              >
+                <div
+                  className="c15"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c5"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c16"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c36"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c10"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                  <div
+                    className="c11"
+                  >
+                    description2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c12"
+          orientation="horizontal"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="normal"
+            >
+              <div
+                className="c14"
+                orientation="horizontal"
+              >
+                <div
+                  className="c15"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c20"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c21"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c36"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                  <div
+                    className="c23"
+                  >
+                    description33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c24"
+          orientation="horizontal"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="normal"
+            >
+              <div
+                className="c14"
+                orientation="horizontal"
+              >
+                <div
+                  className="c25"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c20"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c26"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c37"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                  <div
+                    className="c23"
+                  >
+                    description444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c28"
+          orientation="horizontal"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="normal"
+            >
+              <div
+                className="c14"
+                orientation="horizontal"
+              >
+                <div
+                  className="c29"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c5"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c30"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c31 c8"
+                  />
+                </div>
+                <div
+                  className="c38"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c33"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                  <div
+                    className="c34"
+                  >
+                    description5555
                   </div>
                 </div>
               </div>
@@ -1422,22 +2344,25 @@ exports[`stepsDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        orientation="h"
+        orientation="horizontal"
       >
         <div
-          className="c31"
+          className="c39"
           size="mini"
         >
           <div
-            className="c32"
+            className="c4"
+            orientation="horizontal"
             size="mini"
           >
             <div
-              className="c33"
+              className="c40"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c34"
+                className="c41"
+                orientation="horizontal"
                 size="mini"
               >
                 <i
@@ -1445,10 +2370,14 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c9"
+                className="c42"
+                orientation="horizontal"
+                size="mini"
               >
                 <div
                   className="c10"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   1111
                 </div>
@@ -1457,289 +2386,57 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="mini"
         >
           <div
-            className="c12"
+            className="c13"
             size="mini"
           >
             <div
-              className="c32"
+              className="c4"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c14"
+                  className="c15"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c33"
+                className="c40"
+                orientation="horizontal"
                 size="mini"
-              >
-                <div
-                  className="c35"
-                  size="mini"
-                >
-                  <i
-                    className=" c16 c8"
-                  />
-                  <div
-                    className="c36"
-                    size="mini"
-                  >
-                    2
-                  </div>
-                </div>
-                <div
-                  className="c9"
-                >
-                  <div
-                    className="c10"
-                  >
-                    222
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c11"
-          size="mini"
-        >
-          <div
-            className="c12"
-            size="mini"
-          >
-            <div
-              className="c32"
-              size="mini"
-            >
-              <div
-                className="c13"
-              >
-                <div
-                  className="c14"
-                />
-              </div>
-              <div
-                className="c37"
-                size="mini"
-              >
-                <div
-                  className="c38"
-                  size="mini"
-                >
-                  <i
-                    className=" c16 c8"
-                  />
-                  <div
-                    className="c36"
-                    size="mini"
-                  >
-                    
-                  </div>
-                </div>
-                <div
-                  className="c9"
-                >
-                  <div
-                    className="c20"
-                  >
-                    33
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c21"
-          size="mini"
-        >
-          <div
-            className="c12"
-            size="mini"
-          >
-            <div
-              className="c32"
-              size="mini"
-            >
-              <div
-                className="c13"
-              >
-                <div
-                  className="c22"
-                />
-              </div>
-              <div
-                className="c37"
-                size="mini"
-              >
-                <div
-                  className="c39"
-                  size="mini"
-                >
-                  <i
-                    className=" c16 c8"
-                  />
-                  <div
-                    className="c36"
-                    size="mini"
-                  >
-                    
-                  </div>
-                </div>
-                <div
-                  className="c24"
-                >
-                  <div
-                    className="c20"
-                  >
-                    444
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c25"
-          size="mini"
-        >
-          <div
-            className="c12"
-            size="mini"
-          >
-            <div
-              className="c32"
-              size="mini"
-            >
-              <div
-                className="c13"
-              >
-                <div
-                  className="c26"
-                />
-              </div>
-              <div
-                className="c33"
-                size="mini"
-              >
-                <div
-                  className="c40"
-                  size="mini"
-                >
-                  <i
-                    className="lugia-icon-reminder_close c28 c8"
-                  />
-                </div>
-                <div
-                  className="c29"
-                >
-                  <div
-                    className="c30"
-                  >
-                    555
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c0"
-  >
-    <p>
-      半扁平风格
-    </p>
-    <div
-      className="c1"
-    >
-      <div
-        className="c2"
-        orientation="h"
-      >
-        <div
-          className="c31"
-          size="mini"
-        >
-          <div
-            className="c32"
-            size="mini"
-          >
-            <div
-              className="c33"
-              size="mini"
-            >
-              <div
-                className="c41"
-                size="mini"
-              >
-                <i
-                  className="lugia-icon-reminder_check c42 c8"
-                />
-              </div>
-              <div
-                className="c9"
               >
                 <div
                   className="c43"
-                >
-                  1111
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c11"
-          size="mini"
-        >
-          <div
-            className="c12"
-            size="mini"
-          >
-            <div
-              className="c32"
-              size="mini"
-            >
-              <div
-                className="c44"
-              >
-                <div
-                  className="c45"
-                />
-              </div>
-              <div
-                className="c33"
-                size="mini"
-              >
-                <div
-                  className="c35"
+                  orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c36"
+                    className="c44"
                     size="mini"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c9"
+                  className="c45"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   <div
                     className="c10"
+                    orientation="horizontal"
+                    size="mini"
                   >
                     222
                   </div>
@@ -1749,47 +2446,57 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="mini"
         >
           <div
-            className="c12"
+            className="c13"
             size="mini"
           >
             <div
-              className="c32"
+              className="c4"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c44"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c46"
+                  className="c15"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c37"
+                className="c46"
+                orientation="horizontal"
                 size="mini"
               >
                 <div
                   className="c47"
+                  orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c36"
+                    className="c44"
                     size="mini"
                   >
                     
                   </div>
                 </div>
                 <div
-                  className="c9"
+                  className="c45"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="mini"
                   >
                     33
                   </div>
@@ -1799,47 +2506,57 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c21"
+          className="c24"
+          orientation="horizontal"
           size="mini"
         >
           <div
-            className="c12"
+            className="c13"
             size="mini"
           >
             <div
-              className="c32"
+              className="c4"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c44"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c48"
+                  className="c25"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c37"
+                className="c46"
+                orientation="horizontal"
                 size="mini"
               >
                 <div
-                  className="c49"
+                  className="c48"
+                  orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c36"
+                    className="c44"
                     size="mini"
                   >
                     
                   </div>
                 </div>
                 <div
-                  className="c24"
+                  className="c49"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="mini"
                   >
                     444
                   </div>
@@ -1849,41 +2566,51 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c25"
+          className="c28"
+          orientation="horizontal"
           size="mini"
         >
           <div
-            className="c12"
+            className="c13"
             size="mini"
           >
             <div
-              className="c32"
+              className="c4"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c44"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c50"
+                  className="c29"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c33"
+                className="c40"
+                orientation="horizontal"
                 size="mini"
               >
                 <div
-                  className="c51"
+                  className="c50"
+                  orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className="lugia-icon-reminder_close c42 c8"
+                    className="lugia-icon-reminder_close c31 c8"
                   />
                 </div>
                 <div
-                  className="c29"
+                  className="c51"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   <div
-                    className="c30"
+                    className="c33"
+                    orientation="horizontal"
+                    size="mini"
                   >
                     555
                   </div>
@@ -1906,7 +2633,296 @@ exports[`stepsDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        orientation="h"
+        orientation="horizontal"
+      >
+        <div
+          className="c39"
+          size="mini"
+        >
+          <div
+            className="c4"
+            orientation="horizontal"
+            size="mini"
+          >
+            <div
+              className="c40"
+              orientation="horizontal"
+              size="mini"
+            >
+              <div
+                className="c52"
+                orientation="horizontal"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-reminder_check c53 c8"
+                />
+              </div>
+              <div
+                className="c54"
+                orientation="horizontal"
+                size="mini"
+              >
+                <div
+                  className="c55"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c56"
+          orientation="horizontal"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="mini"
+            >
+              <div
+                className="c57"
+                orientation="horizontal"
+              >
+                <div
+                  className="c58"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c40"
+                orientation="horizontal"
+                size="mini"
+              >
+                <div
+                  className="c52"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c44"
+                    size="mini"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c54"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  <div
+                    className="c10"
+                    orientation="horizontal"
+                    size="mini"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c12"
+          orientation="horizontal"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="mini"
+            >
+              <div
+                className="c57"
+                orientation="horizontal"
+              >
+                <div
+                  className="c59"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c60"
+                orientation="horizontal"
+                size="mini"
+              >
+                <div
+                  className="c61"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c44"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c45"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  <div
+                    className="c22"
+                    orientation="horizontal"
+                    size="mini"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c24"
+          orientation="horizontal"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="mini"
+            >
+              <div
+                className="c57"
+                orientation="horizontal"
+              >
+                <div
+                  className="c59"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c60"
+                orientation="horizontal"
+                size="mini"
+              >
+                <div
+                  className="c61"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c44"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c49"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  <div
+                    className="c22"
+                    orientation="horizontal"
+                    size="mini"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c28"
+          orientation="horizontal"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="mini"
+            >
+              <div
+                className="c57"
+                orientation="horizontal"
+              >
+                <div
+                  className="c62"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c40"
+                orientation="horizontal"
+                size="mini"
+              >
+                <div
+                  className="c63"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c53 c8"
+                  />
+                </div>
+                <div
+                  className="c51"
+                  orientation="horizontal"
+                  size="mini"
+                >
+                  <div
+                    className="c33"
+                    orientation="horizontal"
+                    size="mini"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      半扁平风格
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        orientation="horizontal"
       >
         <div
           className="c3"
@@ -1914,438 +2930,213 @@ exports[`stepsDemo Component JSON 1`] = `
         >
           <div
             className="c4"
+            orientation="horizontal"
             size="normal"
           >
             <div
               className="c5"
+              orientation="horizontal"
               size="normal"
             >
               <div
-                className="c52"
+                className="c64"
+                orientation="horizontal"
                 size="normal"
               >
                 <i
-                  className="lugia-icon-reminder_check c42 c8"
+                  className="lugia-icon-reminder_check c53 c8"
                 />
               </div>
               <div
-                className="c9"
-              >
-                <div
-                  className="c43"
-                >
-                  1111
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c11"
-          size="normal"
-        >
-          <div
-            className="c12"
-            size="normal"
-          >
-            <div
-              className="c4"
-              size="normal"
-            >
-              <div
-                className="c44"
-              >
-                <div
-                  className="c45"
-                />
-              </div>
-              <div
-                className="c5"
-                size="normal"
-              >
-                <div
-                  className="c15"
-                  size="normal"
-                >
-                  <i
-                    className=" c16 c8"
-                  />
-                  <div
-                    className="c17"
-                    size="normal"
-                  >
-                    2
-                  </div>
-                </div>
-                <div
-                  className="c9"
-                >
-                  <div
-                    className="c10"
-                  >
-                    222
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c11"
-          size="normal"
-        >
-          <div
-            className="c12"
-            size="normal"
-          >
-            <div
-              className="c4"
-              size="normal"
-            >
-              <div
-                className="c44"
-              >
-                <div
-                  className="c46"
-                />
-              </div>
-              <div
-                className="c18"
-                size="normal"
-              >
-                <div
-                  className="c53"
-                  size="normal"
-                >
-                  <i
-                    className=" c16 c8"
-                  />
-                  <div
-                    className="c17"
-                    size="normal"
-                  >
-                    
-                  </div>
-                </div>
-                <div
-                  className="c9"
-                >
-                  <div
-                    className="c20"
-                  >
-                    33
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c21"
-          size="normal"
-        >
-          <div
-            className="c12"
-            size="normal"
-          >
-            <div
-              className="c4"
-              size="normal"
-            >
-              <div
-                className="c44"
-              >
-                <div
-                  className="c48"
-                />
-              </div>
-              <div
-                className="c18"
-                size="normal"
-              >
-                <div
-                  className="c54"
-                  size="normal"
-                >
-                  <i
-                    className=" c16 c8"
-                  />
-                  <div
-                    className="c17"
-                    size="normal"
-                  >
-                    
-                  </div>
-                </div>
-                <div
-                  className="c24"
-                >
-                  <div
-                    className="c20"
-                  >
-                    444
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c25"
-          size="normal"
-        >
-          <div
-            className="c12"
-            size="normal"
-          >
-            <div
-              className="c4"
-              size="normal"
-            >
-              <div
-                className="c44"
-              >
-                <div
-                  className="c50"
-                />
-              </div>
-              <div
-                className="c5"
+                className="c65"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
                   className="c55"
+                  orientation="horizontal"
                   size="normal"
-                >
-                  <i
-                    className="lugia-icon-reminder_close c42 c8"
-                  />
-                </div>
-                <div
-                  className="c29"
-                >
-                  <div
-                    className="c30"
-                  >
-                    555
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c0"
-  >
-    <p>
-      带有描述
-    </p>
-    <div
-      className="c1"
-    >
-      <div
-        className="c2"
-        orientation="h"
-      >
-        <div
-          className="c31"
-          size="mini"
-        >
-          <div
-            className="c32"
-            size="mini"
-          >
-            <div
-              className="c33"
-              size="mini"
-            >
-              <div
-                className="c34"
-                size="mini"
-              >
-                <i
-                  className="lugia-icon-reminder_check c7 c8"
-                />
-              </div>
-              <div
-                className="c9"
-              >
-                <div
-                  className="c10"
                 >
                   1111
                 </div>
-                <div
-                  className="c56"
-                >
-                  description111
-                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c21"
-          size="mini"
+          className="c56"
+          orientation="horizontal"
+          size="normal"
         >
           <div
-            className="c12"
-            size="mini"
+            className="c13"
+            size="normal"
           >
             <div
-              className="c32"
-              size="mini"
+              className="c4"
+              orientation="horizontal"
+              size="normal"
             >
               <div
-                className="c13"
+                className="c57"
+                orientation="horizontal"
               >
                 <div
-                  className="c22"
+                  className="c58"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c33"
-                size="mini"
+                className="c5"
+                orientation="horizontal"
+                size="normal"
               >
                 <div
-                  className="c57"
-                  size="mini"
+                  className="c64"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c36"
-                    size="mini"
+                    className="c18"
+                    size="normal"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c9"
+                  className="c65"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
                     className="c10"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     222
                   </div>
-                  <div
-                    className="c56"
-                  >
-                    description2
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c21"
-          size="mini"
+          className="c12"
+          orientation="horizontal"
+          size="normal"
         >
           <div
-            className="c12"
-            size="mini"
+            className="c13"
+            size="normal"
           >
             <div
-              className="c32"
-              size="mini"
+              className="c4"
+              orientation="horizontal"
+              size="normal"
             >
               <div
-                className="c13"
+                className="c57"
+                orientation="horizontal"
               >
                 <div
-                  className="c22"
+                  className="c59"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c37"
-                size="mini"
+                className="c66"
+                orientation="horizontal"
+                size="normal"
               >
                 <div
-                  className="c39"
-                  size="mini"
+                  className="c67"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c36"
-                    size="mini"
+                    className="c18"
+                    size="normal"
                   >
                     
                   </div>
                 </div>
                 <div
-                  className="c9"
+                  className="c19"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     33
                   </div>
-                  <div
-                    className="c58"
-                  >
-                    description33
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c21"
-          size="mini"
+          className="c24"
+          orientation="horizontal"
+          size="normal"
         >
           <div
-            className="c12"
-            size="mini"
+            className="c13"
+            size="normal"
           >
             <div
-              className="c32"
-              size="mini"
+              className="c4"
+              orientation="horizontal"
+              size="normal"
             >
               <div
-                className="c13"
+                className="c57"
+                orientation="horizontal"
               >
                 <div
-                  className="c22"
+                  className="c59"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c37"
-                size="mini"
+                className="c66"
+                orientation="horizontal"
+                size="normal"
               >
                 <div
-                  className="c39"
-                  size="mini"
+                  className="c67"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c36"
-                    size="mini"
+                    className="c18"
+                    size="normal"
                   >
                     
                   </div>
                 </div>
                 <div
-                  className="c24"
+                  className="c27"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     444
-                  </div>
-                  <div
-                    className="c58"
-                  >
-                    description444
                   </div>
                 </div>
               </div>
@@ -2353,48 +3144,53 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c25"
-          size="mini"
+          className="c28"
+          orientation="horizontal"
+          size="normal"
         >
           <div
-            className="c12"
-            size="mini"
+            className="c13"
+            size="normal"
           >
             <div
-              className="c32"
-              size="mini"
+              className="c4"
+              orientation="horizontal"
+              size="normal"
             >
               <div
-                className="c13"
+                className="c57"
+                orientation="horizontal"
               >
                 <div
-                  className="c26"
+                  className="c62"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c33"
-                size="mini"
+                className="c5"
+                orientation="horizontal"
+                size="normal"
               >
                 <div
-                  className="c40"
-                  size="mini"
+                  className="c68"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <i
-                    className="lugia-icon-reminder_close c28 c8"
+                    className="lugia-icon-reminder_close c53 c8"
                   />
                 </div>
                 <div
-                  className="c29"
+                  className="c32"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
-                    className="c30"
+                    className="c33"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     555
-                  </div>
-                  <div
-                    className="c59"
-                  >
-                    description5555
                   </div>
                 </div>
               </div>
@@ -2415,64 +3211,77 @@ exports[`stepsDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        orientation="h"
+        orientation="horizontal"
       >
         <div
-          className="c31"
+          className="c39"
           size="mini"
         >
           <div
-            className="c32"
+            className="c4"
+            orientation="horizontal"
             size="mini"
           >
             <div
-              className="c60"
+              className="c69"
               size="mini"
             >
               <i
-                className="lugia-icon-financial_cloud c61 c8"
+                className="lugia-icon-financial_cloud c70 c8"
               />
               <div
-                className="c9"
+                className="c45"
+                orientation="horizontal"
+                size="mini"
               >
                 <div
                   className="c10"
+                  orientation="horizontal"
+                  size="mini"
                 />
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="mini"
         >
           <div
-            className="c12"
+            className="c13"
             size="mini"
           >
             <div
-              className="c32"
+              className="c4"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c14"
+                  className="c15"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c60"
+                className="c69"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c61 c8"
+                  className="lugia-icon-financial_cloud c70 c8"
                 />
                 <div
-                  className="c9"
+                  className="c45"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   <div
                     className="c10"
+                    orientation="horizontal"
+                    size="mini"
                   />
                 </div>
               </div>
@@ -2480,36 +3289,44 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="mini"
         >
           <div
-            className="c12"
+            className="c13"
             size="mini"
           >
             <div
-              className="c32"
+              className="c4"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c14"
+                  className="c15"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c60"
+                className="c69"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c61 c8"
+                  className="lugia-icon-financial_cloud c70 c8"
                 />
                 <div
-                  className="c9"
+                  className="c45"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="mini"
                   />
                 </div>
               </div>
@@ -2517,36 +3334,44 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c21"
+          className="c24"
+          orientation="horizontal"
           size="mini"
         >
           <div
-            className="c12"
+            className="c13"
             size="mini"
           >
             <div
-              className="c32"
+              className="c4"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c22"
+                  className="c25"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c60"
+                className="c69"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c62 c8"
+                  className="lugia-icon-financial_cloud c71 c8"
                 />
                 <div
-                  className="c24"
+                  className="c49"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="mini"
                   />
                 </div>
               </div>
@@ -2554,36 +3379,44 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c25"
+          className="c28"
+          orientation="horizontal"
           size="mini"
         >
           <div
-            className="c12"
+            className="c13"
             size="mini"
           >
             <div
-              className="c32"
+              className="c4"
+              orientation="horizontal"
               size="mini"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
-                <div
-                  className="c26"
-                />
-              </div>
-              <div
-                className="c60"
-                size="mini"
-              >
-                <i
-                  className="lugia-icon-financial_cloud c63 c8"
-                />
                 <div
                   className="c29"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c69"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c72 c8"
+                />
+                <div
+                  className="c51"
+                  orientation="horizontal"
+                  size="mini"
                 >
                   <div
-                    className="c30"
+                    className="c33"
+                    orientation="horizontal"
+                    size="mini"
                   />
                 </div>
               </div>
@@ -2604,137 +3437,219 @@ exports[`stepsDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        orientation="h"
+        orientation="horizontal"
       >
         <div
-          className="c64"
+          className="c73"
           size="normal"
         >
           <div
-            className="c65"
+            className="c74"
+            orientation="horizontal"
           >
             <div
-              className="c66"
+              className="c75"
               size="normal"
             >
               <div
-                className="c67"
+                className="c76"
               />
-            </div>
-          </div>
-        </div>
-        <div
-          className="c11"
-          size="normal"
-        >
-          <div
-            className="c12"
-            size="normal"
-          >
-            <div
-              className="c65"
-            >
               <div
-                className="c13"
-              >
-                <div
-                  className="c68"
-                />
-              </div>
-              <div
-                className="c66"
+                className="c77"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c69"
-                />
+                  className="c10"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  1111
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
-              className="c65"
+              className="c74"
+              orientation="horizontal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c68"
+                  className="c78"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c66"
+                className="c75"
                 size="normal"
               >
                 <div
-                  className="c69"
+                  className="c79"
                 />
+                <div
+                  className="c80"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c10"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c21"
+          className="c12"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
-              className="c65"
+              className="c74"
+              orientation="horizontal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c70"
+                  className="c78"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c66"
+                className="c75"
                 size="normal"
               >
                 <div
-                  className="c71"
+                  className="c79"
                 />
+                <div
+                  className="c80"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c25"
+          className="c24"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
-              className="c65"
+              className="c74"
+              orientation="horizontal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c72"
+                  className="c78"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c66"
+                className="c75"
                 size="normal"
               >
                 <div
-                  className="c73"
+                  className="c81"
                 />
+                <div
+                  className="c82"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c28"
+          orientation="horizontal"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c74"
+              orientation="horizontal"
+            >
+              <div
+                className="c14"
+                orientation="horizontal"
+              >
+                <div
+                  className="c78"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c83"
+                />
+                <div
+                  className="c84"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c33"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2753,137 +3668,219 @@ exports[`stepsDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        orientation="h"
+        orientation="horizontal"
       >
         <div
-          className="c64"
+          className="c73"
           size="normal"
         >
           <div
-            className="c65"
+            className="c74"
+            orientation="horizontal"
           >
             <div
-              className="c66"
+              className="c75"
               size="normal"
             >
               <div
-                className="c67"
+                className="c76"
               />
-            </div>
-          </div>
-        </div>
-        <div
-          className="c11"
-          size="normal"
-        >
-          <div
-            className="c12"
-            size="normal"
-          >
-            <div
-              className="c65"
-            >
               <div
-                className="c13"
-              >
-                <div
-                  className="c74"
-                />
-              </div>
-              <div
-                className="c66"
+                className="c77"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c69"
-                />
+                  className="c10"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  1111
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
-              className="c65"
+              className="c74"
+              orientation="horizontal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c74"
+                  className="c85"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c66"
+                className="c75"
                 size="normal"
               >
                 <div
-                  className="c69"
+                  className="c79"
                 />
+                <div
+                  className="c80"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c10"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c21"
+          className="c12"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
-              className="c65"
+              className="c74"
+              orientation="horizontal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c75"
+                  className="c85"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c66"
+                className="c75"
                 size="normal"
               >
                 <div
-                  className="c71"
+                  className="c79"
                 />
+                <div
+                  className="c80"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c25"
+          className="c24"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
-              className="c65"
+              className="c74"
+              orientation="horizontal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c76"
+                  className="c85"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c66"
+                className="c75"
                 size="normal"
               >
                 <div
-                  className="c73"
+                  className="c81"
                 />
+                <div
+                  className="c82"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c28"
+          orientation="horizontal"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c74"
+              orientation="horizontal"
+            >
+              <div
+                className="c14"
+                orientation="horizontal"
+              >
+                <div
+                  className="c85"
+                  orientation="horizontal"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c83"
+                />
+                <div
+                  className="c84"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c33"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2893,7 +3890,7 @@ exports[`stepsDemo Component JSON 1`] = `
   </div>
   <div>
     <button
-      className="c77"
+      className="c86"
       onClick={[Function]}
       type="primary"
     >
@@ -2906,6 +3903,7 @@ exports[`stepsDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        orientation="horizontal"
       >
         <div
           className="c3"
@@ -2913,31 +3911,38 @@ exports[`stepsDemo Component JSON 1`] = `
         >
           <div
             className="c4"
+            orientation="horizontal"
             size="normal"
           >
             <div
               className="c5"
+              orientation="horizontal"
               size="normal"
             >
               <div
-                className="c15"
+                className="c16"
+                orientation="horizontal"
                 size="normal"
               >
                 <i
-                  className=" c16 c8"
+                  className=" c17 c8"
                 />
                 <div
-                  className="c17"
+                  className="c18"
                   size="normal"
                 >
                   1
                 </div>
               </div>
               <div
-                className="c9"
+                className="c19"
+                orientation="horizontal"
+                size="normal"
               >
                 <div
                   className="c10"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   First
                 </div>
@@ -2946,47 +3951,57 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c11"
+          className="c12"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
               className="c4"
+              orientation="horizontal"
               size="normal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c14"
+                  className="c15"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c18"
+                className="c20"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c19"
+                  className="c21"
+                  orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c17"
+                    className="c18"
                     size="normal"
                   >
                     
                   </div>
                 </div>
                 <div
-                  className="c9"
+                  className="c19"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     Second
                   </div>
@@ -2996,47 +4011,57 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c21"
+          className="c24"
+          orientation="horizontal"
           size="normal"
         >
           <div
-            className="c12"
+            className="c13"
             size="normal"
           >
             <div
               className="c4"
+              orientation="horizontal"
               size="normal"
             >
               <div
-                className="c13"
+                className="c14"
+                orientation="horizontal"
               >
                 <div
-                  className="c22"
+                  className="c25"
+                  orientation="horizontal"
                 />
               </div>
               <div
-                className="c18"
+                className="c20"
+                orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c23"
+                  className="c26"
+                  orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c16 c8"
+                    className=" c17 c8"
                   />
                   <div
-                    className="c17"
+                    className="c18"
                     size="normal"
                   >
                     
                   </div>
                 </div>
                 <div
-                  className="c24"
+                  className="c27"
+                  orientation="horizontal"
+                  size="normal"
                 >
                   <div
-                    className="c20"
+                    className="c22"
+                    orientation="horizontal"
+                    size="normal"
                   >
                     Last
                   </div>
@@ -3048,9 +4073,1888 @@ exports[`stepsDemo Component JSON 1`] = `
       </div>
     </div>
     <div
-      className="c78"
+      className="c87"
     >
       First-content
+    </div>
+  </div>
+  <div
+    className="c88"
+  >
+    <p>
+      简洁风格 size mini
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c89"
+        orientation="vertical"
+      >
+        <div
+          className="c39"
+          size="mini"
+        >
+          <div
+            className="c90"
+            orientation="vertical"
+            size="mini"
+          >
+            <div
+              className="c91"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c41"
+                orientation="vertical"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-reminder_check c7 c8"
+                />
+              </div>
+              <div
+                className="c92"
+                orientation="vertical"
+                size="mini"
+              >
+                <div
+                  className="c93"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c96"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c91"
+                orientation="vertical"
+                size="mini"
+              >
+                <div
+                  className="c43"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c44"
+                    size="mini"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c97"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c93"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c96"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c98"
+                orientation="vertical"
+                size="mini"
+              >
+                <div
+                  className="c47"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c44"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c97"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c99"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c100"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c101"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c98"
+                orientation="vertical"
+                size="mini"
+              >
+                <div
+                  className="c48"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c44"
+                    size="mini"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c102"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c99"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c103"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c104"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c91"
+                orientation="vertical"
+                size="mini"
+              >
+                <div
+                  className="c50"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c31 c8"
+                  />
+                </div>
+                <div
+                  className="c105"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c106"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c88"
+  >
+    <p>
+      简洁风格 size normal
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c89"
+        orientation="vertical"
+      >
+        <div
+          className="c3"
+          size="normal"
+        >
+          <div
+            className="c90"
+            orientation="vertical"
+            size="normal"
+          >
+            <div
+              className="c107"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c6"
+                orientation="vertical"
+                size="normal"
+              >
+                <i
+                  className="lugia-icon-reminder_check c7 c8"
+                />
+              </div>
+              <div
+                className="c108"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c109"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c96"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c107"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c16"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c110"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c109"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c96"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c111"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c21"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c110"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c112"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c100"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c101"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c111"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c26"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c113"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c112"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c103"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c104"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c107"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c30"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c31 c8"
+                  />
+                </div>
+                <div
+                  className="c114"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c115"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c88"
+  >
+    <p>
+      带有描述
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c89"
+        orientation="vertical"
+      >
+        <div
+          className="c3"
+          size="normal"
+        >
+          <div
+            className="c90"
+            orientation="vertical"
+            size="normal"
+          >
+            <div
+              className="c107"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c6"
+                orientation="vertical"
+                size="normal"
+              >
+                <i
+                  className="lugia-icon-reminder_check c7 c8"
+                />
+              </div>
+              <div
+                className="c108"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c10"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  1111
+                </div>
+                <div
+                  className="c11"
+                >
+                  description111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c96"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c107"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c16"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c110"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c10"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                  <div
+                    className="c11"
+                  >
+                    description2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c96"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c111"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c21"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c110"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c22"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                  <div
+                    className="c23"
+                  >
+                    description33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c100"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c101"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c111"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c26"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c113"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c22"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                  <div
+                    className="c23"
+                  >
+                    description444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c103"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c104"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c107"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c30"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c31 c8"
+                  />
+                </div>
+                <div
+                  className="c114"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c33"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                  <div
+                    className="c34"
+                  >
+                    description5555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c88"
+  >
+    <p>
+      半扁平风格 size normal
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c89"
+        orientation="vertical"
+      >
+        <div
+          className="c3"
+          size="normal"
+        >
+          <div
+            className="c90"
+            orientation="vertical"
+            size="normal"
+          >
+            <div
+              className="c107"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c64"
+                orientation="vertical"
+                size="normal"
+              >
+                <i
+                  className="lugia-icon-reminder_check c53 c8"
+                />
+              </div>
+              <div
+                className="c116"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c117"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c118"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c57"
+                orientation="vertical"
+              >
+                <div
+                  className="c119"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c107"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c64"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c116"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c109"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c57"
+                orientation="vertical"
+              >
+                <div
+                  className="c120"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c121"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c67"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c110"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c122"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c100"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c57"
+                orientation="vertical"
+              >
+                <div
+                  className="c120"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c121"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c67"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c17 c8"
+                  />
+                  <div
+                    className="c18"
+                    size="normal"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="c113"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c122"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c103"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c57"
+                orientation="vertical"
+              >
+                <div
+                  className="c123"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c107"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c68"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c53 c8"
+                  />
+                </div>
+                <div
+                  className="c114"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c115"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c88"
+  >
+    <p>
+      icon
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c89"
+        orientation="vertical"
+      >
+        <div
+          className="c39"
+          size="mini"
+        >
+          <div
+            className="c90"
+            orientation="vertical"
+            size="mini"
+          >
+            <div
+              className="c69"
+              size="mini"
+            >
+              <i
+                className="lugia-icon-financial_cloud c70 c8"
+              />
+              <div
+                className="c97"
+                orientation="vertical"
+                size="mini"
+              >
+                <div
+                  className="c93"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c96"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c69"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c70 c8"
+                />
+                <div
+                  className="c97"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c93"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c96"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c69"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c70 c8"
+                />
+                <div
+                  className="c97"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c99"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    333
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c100"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c101"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c69"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c71 c8"
+                />
+                <div
+                  className="c102"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c99"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c103"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c13"
+            size="mini"
+          >
+            <div
+              className="c90"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c104"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c69"
+                size="mini"
+              >
+                <i
+                  className="lugia-icon-financial_cloud c72 c8"
+                />
+                <div
+                  className="c105"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c106"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c88"
+  >
+    <p>
+      点状 虚线 size normal
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c89"
+        orientation="vertical"
+      >
+        <div
+          className="c73"
+          size="normal"
+        >
+          <div
+            className="c124"
+            orientation="vertical"
+          >
+            <div
+              className="c75"
+              size="normal"
+            >
+              <div
+                className="c76"
+              />
+              <div
+                className="c125"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c126"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c124"
+              orientation="vertical"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c127"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c79"
+                />
+                <div
+                  className="c128"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c126"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c124"
+              orientation="vertical"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c127"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c79"
+                />
+                <div
+                  className="c128"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c99"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c100"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c124"
+              orientation="vertical"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c127"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c81"
+                />
+                <div
+                  className="c129"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c99"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c103"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c124"
+              orientation="vertical"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c127"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c83"
+                />
+                <div
+                  className="c130"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c131"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c88"
+  >
+    <p>
+      点状风格 size normal
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c89"
+        orientation="vertical"
+      >
+        <div
+          className="c73"
+          size="normal"
+        >
+          <div
+            className="c124"
+            orientation="vertical"
+          >
+            <div
+              className="c75"
+              size="normal"
+            >
+              <div
+                className="c76"
+              />
+              <div
+                className="c125"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c126"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  1111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c124"
+              orientation="vertical"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c132"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c79"
+                />
+                <div
+                  className="c128"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c126"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c94"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c124"
+              orientation="vertical"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c132"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c79"
+                />
+                <div
+                  className="c128"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c99"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c100"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c124"
+              orientation="vertical"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c132"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c81"
+                />
+                <div
+                  className="c129"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c99"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c103"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c13"
+            size="normal"
+          >
+            <div
+              className="c124"
+              orientation="vertical"
+            >
+              <div
+                className="c95"
+                orientation="vertical"
+              >
+                <div
+                  className="c132"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c75"
+                size="normal"
+              >
+                <div
+                  className="c83"
+                />
+                <div
+                  className="c130"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c131"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
