@@ -55,7 +55,7 @@ export function getSelectKeys(mapData: Object, selectKey: string[]): Object {
   }
   return { validKeys, disabledKeys };
 }
-export function isContained(a: string[], b: string[]) {
+export function isContained(a: Array, b: string[]) {
   if (!(a instanceof Array) || !(b instanceof Array)) return false;
   if (a.length < b.length) return false;
   const aStr = a.toString();

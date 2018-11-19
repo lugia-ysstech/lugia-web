@@ -29,16 +29,21 @@ export type GroupProps = {
   targetSelectedKeys?: string[],
   defaultSourceSelectedKeys?: string[],
   defaultTargetSelectedKeys?: string[],
+  filterOption: (inputValue: string, option: Object) => {},
 };
 export type GroupState = {
   inputValue: string,
   sourceSelectedKeys: string[],
   targetSelectedKeys: string[],
-  sourceData: string[],
-  targetData: string[],
+  sourceData: Object[],
+  targetData: Object[],
   targetKeys: string[],
   sourceKeys: string[],
   mapData: Object,
+  sourceSearchData: Object[],
+  targetSearchData: Object[],
+  sourceCheckKeys: string[],
+  targetCheckKeys: string[],
 };
 type CSSProps = {
   isWrap?: boolean,

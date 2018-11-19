@@ -14,12 +14,16 @@ const em = px2emcss(FontSize);
 export type TransferProps = {
   getTheme: Function,
   data: Object[],
-  selectedKeys: Object[],
+  selectedKeys: string[],
   showSearch?: boolean,
   onSelect: Function,
+  onSearch: (inputValue: string) => {},
+  onCheckAll: Function,
+  canCheckKeys: string[],
 };
 export type TransferState = {
   inputValue: string,
+  searchData: Object[],
 };
 type CSSProps = {
   isWrap?: boolean,
@@ -47,4 +51,10 @@ export const CheckText = styled.span`
 
 export const MenuWrap = styled.div`
   padding-left: ${em(2)};
+`;
+export const NoData = styled.div`
+  font-size: ${em(14)};
+  height: ${px2emcss(1.4)(250)};
+  color: #ccc;
+  text-align: center;
 `;

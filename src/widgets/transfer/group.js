@@ -8,10 +8,8 @@
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import Theme from '../theme';
 import TransFer from './transfer';
 import Button from '../button';
-import Icon from '../icon';
 import { TransFerWrap, OperationBtn, BtnText } from '../css/transfer-group';
 import type { GroupProps, GroupState } from '../css/transfer-group';
 import { getSourceDataAndTargetData, getSelectKeys } from './utils';
@@ -19,6 +17,10 @@ import { getSourceDataAndTargetData, getSelectKeys } from './utils';
 export default ThemeProvider(
   class extends React.Component<GroupProps, GroupState> {
     static displayName = 'Transfer';
+    sourceInputValue: string;
+    targetInputValue: string;
+    maping: boolean;
+
     static getDerivedStateFromProps(props, state) {
       const hasSourceSelectedKeys = 'sourceSelectedKeys' in props;
       const hasTargetSelectedKeys = 'targetSelectedKeys' in props;
@@ -77,17 +79,23 @@ export default ThemeProvider(
         targetSelectedKeys,
         sourceCheckKeys,
         targetCheckKeys,
+        sourceSearchData,
+        targetSearchData,
       } = this.state;
+      const theSourceData = this.sourceInputValue ? sourceSearchData : sourceData;
+      const theTargetData = this.targetInputValue ? targetSearchData : targetData;
+
       return (
         <TransFerWrap>
           <TransFer
             key="1"
             onSelect={this.handleSourceSelect}
-            data={sourceData}
+            data={theSourceData}
             selectedKeys={sourceSelectedKeys}
             showSearch={showSearch}
-            oncheckAll={this.checkAll('left')}
+            onCheckAll={this.checkAll('left')}
             canCheckKeys={sourceCheckKeys}
+            onSearch={this.searchCallback('left')}
           />
           <OperationBtn>
             <Button
@@ -109,11 +117,12 @@ export default ThemeProvider(
           <TransFer
             key="2"
             onSelect={this.handleTargetSelect}
-            data={targetData}
+            data={theTargetData}
             selectedKeys={targetSelectedKeys}
             showSearch={showSearch}
-            oncheckAll={this.checkAll('right')}
+            onCheckAll={this.checkAll('right')}
             canCheckKeys={targetCheckKeys}
+            onSearch={this.searchCallback('right')}
           />
         </TransFerWrap>
       );
@@ -184,7 +193,6 @@ export default ThemeProvider(
         nextTargetKeys = [...nextTargetKeys, ...moveKey];
       }
       const { onDirectionClick } = this.props;
-      console.info('onDirectionClick nextTargetKeys ===>>', nextTargetKeys);
       onDirectionClick && onDirectionClick(nextTargetKeys, type, moveKey);
       const hasTargetKeys = this.isInProps('targetKeys');
       if (hasTargetKeys) {
@@ -194,6 +202,11 @@ export default ThemeProvider(
     };
     moveData = (moveKey: string[], disabledCheckedKeys: string[], type: 'left' | 'right') => {
       const { targetKeys } = this.state;
+      const {
+        filterOption = (value: string, option: Object): boolean => {
+          return option.value.indexOf(value) > -1;
+        },
+      } = this.props;
       let addKey = [];
       if (type === 'right') {
         const arr = new Set([...targetKeys, ...moveKey]);
@@ -211,9 +224,29 @@ export default ThemeProvider(
           targetSelectedKeys: disabledCheckedKeys,
         });
       }
-      this.setState({
-        targetKeys: addKey,
-      });
+      this.setState(
+        {
+          targetKeys: addKey,
+        },
+        () => {
+          if (this.sourceInputValue) {
+            const SearchData = this.searchFilter(
+              this.state.sourceData,
+              this.sourceInputValue,
+              filterOption
+            );
+            this.setState({ sourceSearchData: SearchData });
+          }
+          if (this.targetInputValue) {
+            const SearchData = this.searchFilter(
+              this.state.targetData,
+              this.targetInputValue,
+              filterOption
+            );
+            this.setState({ targetSearchData: SearchData });
+          }
+        }
+      );
     };
     checkAll = (type: 'left' | 'right') => (checked: boolean) => {
       const {
@@ -250,6 +283,41 @@ export default ThemeProvider(
         this.setState({
           targetSelectedKeys: checkKeys,
         });
+      }
+    };
+    searchCallback = (type: 'left' | 'right') => (inputValue: string) => {
+      const {
+        filterOption = (value, option) => {
+          return option.value.indexOf(value) > -1;
+        },
+      } = this.props;
+      const { sourceData, targetData } = this.state;
+      if (type === 'left') {
+        this.sourceInputValue = inputValue;
+        const SearchData = this.searchFilter(sourceData, inputValue, filterOption);
+        this.setState({ sourceSearchData: SearchData });
+      } else {
+        this.targetInputValue = inputValue;
+        const SearchData = this.searchFilter(targetData, inputValue, filterOption);
+        this.setState({ targetSearchData: SearchData });
+      }
+    };
+    searchFilter = (data: Object[], searchValue: string, filterOption: Function) => {
+      if (data && data.length > 0 && filterOption && typeof filterOption === 'function') {
+        const searchData = [];
+        if (this.maping) {
+          return;
+        }
+        if (!this.maping) {
+          this.maping = true;
+          data.forEach(item => {
+            if (filterOption(searchValue, item)) {
+              searchData.push(item);
+            }
+          });
+          this.maping = false;
+          return searchData;
+        }
       }
     };
     isInProps(value: string) {
