@@ -5,7 +5,7 @@
  * @flow
  */
 import colorsFunc from './stateColor';
-export const { themeColor, disableColor, blackColor, lightGreyColor } = colorsFunc();
+export const { themeColor, disableColor, blackColor, lightGreyColor, defaultColor } = colorsFunc();
 export const MenuItemHeight = 35;
 export const DefaultHeight = 250;
 export const DefaultWidth = 250;

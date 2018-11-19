@@ -257,6 +257,15 @@ export const RowDemo = () => {
         </Row>
       </Wrapper>
       <br />
+      <Wrapper>
+        <Row equable={30}>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+        </Row>
+      </Wrapper>
+      <br />
     </div>
   );
 };

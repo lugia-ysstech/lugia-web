@@ -1,5 +1,5 @@
 /*
-*
+*by wangcuixia
 * @flow
 * */
 import React from 'react';
@@ -24,7 +24,9 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
     };
   }
   static getDerivedStateFromProps(props: PropsCheck, state: StateCheck) {
-    let { width, color, scale } = props;
+    let { scale, getTheme } = props;
+    const theme = getTheme && getTheme();
+    let { width, color } = theme;
     if (!width) {
       width = 200;
     }
@@ -36,7 +38,6 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
     } else {
       scale = false;
     }
-
     return {
       width,
       color,

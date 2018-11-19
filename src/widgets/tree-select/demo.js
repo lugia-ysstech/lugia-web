@@ -165,7 +165,7 @@ export default class extends React.Component<any, any> {
     this.state = {
       data: [],
       validateStatus: 'sucess',
-      value: '1',
+      value: ['1.1'],
       displayValue: '1',
       limitCount: 12,
       help: 'yes',
@@ -201,7 +201,7 @@ export default class extends React.Component<any, any> {
           throttle={500}
           // limitCount={5}
           validateStatus={validateStatus}
-          expandAll
+          expandAll={false}
           value={value}
           help={help}
           limitCount={limitCount}

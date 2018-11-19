@@ -49,16 +49,11 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
   opacity: 1;
 }
 
-.c0:hover .c7 {
-  opacity: 1;
-}
-
 .c3 {
   width: 24em;
   position: absolute;
   display: inline-block;
   left: 24em;
-  height: 4.166666666666667em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -157,16 +152,11 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   position: relative;
 }
 
-.c0:hover .c6 {
-  opacity: 1;
-}
-
 .c3 {
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -177,7 +167,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
   opacity: 1;
 }
 
-.c0:hover .c7 {
+.c0:hover .c6 {
   opacity: 1;
 }
 
@@ -524,8 +514,28 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
 `;
 
 exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10 len 1`] = `
-<div>
-  1
+.c1 {
+  overflow: hidden;
+  height: 20.833333333333336em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c0:hover .c2 {
+  opacity: 1;
+}
+
+.c0:hover .c3 {
+  opacity: 1;
+}
+
+<div
+  className="c0 c1"
+  onWheel={[Function]}
+>
+  <div>
+    1
+  </div>
 </div>
 `;
 
@@ -574,16 +584,11 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   position: relative;
 }
 
-.c0:hover .c6 {
-  opacity: 1;
-}
-
 .c3 {
   width: 19.833333333333336em;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -594,7 +599,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
   opacity: 1;
 }
 
-.c0:hover .c7 {
+.c0:hover .c6 {
   opacity: 1;
 }
 

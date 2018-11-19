@@ -441,7 +441,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             <span
               onClick={[Function]}
             >
-              
+
             </span>
           </div>
         </div>
@@ -483,7 +483,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onClick={[Function]}
       >
         请填写金额
-         
+
       </span>
     </span>
     <div
@@ -505,14 +505,14 @@ exports[`AmountInputDemo Component JSON 1`] = `
             <span
               onClick={[Function]}
             >
-              
+
             </span>
           </div>
         </div>
       </div>
     </div>
     <p>
-      禁用状态 
+      禁用状态
     </p>
     <span
       className="c1"
@@ -546,7 +546,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         className="c6"
         onClick={[Function]}
       >
-         
+
       </span>
     </span>
     <div
@@ -568,7 +568,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             <span
               onClick={[Function]}
             >
-              
+
             </span>
           </div>
         </div>
@@ -614,7 +614,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onClick={[Function]}
       >
         请填写金额
-         
+
       </span>
     </span>
     <div
@@ -636,7 +636,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             <span
               onClick={[Function]}
             >
-              
+
             </span>
           </div>
         </div>
@@ -678,7 +678,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onClick={[Function]}
       >
         请填写金额
-         
+
       </span>
     </span>
     <div
@@ -700,7 +700,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             <span
               onClick={[Function]}
             >
-              
+
             </span>
           </div>
         </div>
@@ -742,7 +742,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onClick={[Function]}
       >
         请填写金额
-         
+
       </span>
     </span>
     <div
@@ -764,7 +764,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             <span
               onClick={[Function]}
             >
-              
+
             </span>
           </div>
         </div>
@@ -809,7 +809,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         className="c6"
         onClick={[Function]}
       >
-         
+
       </span>
     </span>
     <div
@@ -831,7 +831,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
             <span
               onClick={[Function]}
             >
-              
+
             </span>
           </div>
         </div>
@@ -899,7 +899,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      amountPrefix: '¥' transform: false 
+      amountPrefix: '¥' transform: false
     </p>
     <span
       className="c1"
@@ -933,7 +933,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         className="c6"
         onClick={[Function]}
       >
-         
+
       </span>
     </span>
     <div
@@ -953,14 +953,14 @@ exports[`AmountInputDemo Component JSON 1`] = `
             className="c12"
           >
             <span>
-              
+
             </span>
           </div>
         </div>
       </div>
     </div>
     <p>
-      amountPrefix: '$' transform: false 
+      amountPrefix: '$' transform: false
     </p>
     <span
       className="c1"
@@ -994,7 +994,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         className="c6"
         onClick={[Function]}
       >
-         
+
       </span>
     </span>
     <div
@@ -1158,7 +1158,7 @@ Array [
       onClick={[Function]}
     >
       请填写内容
-       
+
     </span>
   </span>,
   .c0 {
@@ -1240,7 +1240,7 @@ Array [
           <span
             onClick={[Function]}
           >
-            
+
           </span>
         </div>
       </div>
@@ -1382,8 +1382,8 @@ Array [
       className="c5"
       onClick={[Function]}
     >
-      
-       
+
+
     </span>
   </span>,
   .c0 {
@@ -1465,7 +1465,7 @@ Array [
           <span
             onClick={[Function]}
           >
-            
+
           </span>
         </div>
       </div>

@@ -50,7 +50,7 @@ export default ShortKeyBoard(
       showOldValue: true,
       step: ScrollerStep,
     };
-    static displayName = 'AutoA';
+    static displayName = 'AutoComplete';
     inputEl: any;
     triggerEl: any;
     currentSelectValue: string;
@@ -87,7 +87,6 @@ export default ShortKeyBoard(
       const len = data.length;
       const menuLen = Math.min(5, len);
       const menuHeight = menuLen * MenuItemHeight;
-
       const themeConfig = { width, height: menuHeight };
       const menuConfig = {
         [Widget.Menu]: themeConfig,
@@ -109,7 +108,7 @@ export default ShortKeyBoard(
       return (
         <Theme config={menuConfig}>
           <Trigger
-            align="bottomLeft"
+            align={'bottomLeft'}
             action={disabled ? [] : ['focus']}
             hideAction={['focus']}
             popup={menu}

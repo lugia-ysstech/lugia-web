@@ -12,18 +12,20 @@ import { cacheOnlyFirstCall, getElementPosition } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import { FontSize, FontSizeNumber } from '../css';
 import {
+  BarBackgroundColor,
   BarDefaultSize,
   BarDefaultSizePadding,
-  ContainerBackgroundColor,
-  BarBackgroundColor,
   BarHoverBackgroundColor,
+  ContainerBackgroundColor,
 } from '../css/scroller';
 import { px2emcss } from '../css/units';
+
 const em = px2emcss(FontSizeNumber);
 
 type ScrollerProps = {
   totalSize: number,
   viewSize: number,
+  onDrag?: Function,
   type?: 'x' | 'y',
   onChange?: Function,
   value?: number,
@@ -217,7 +219,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       }
       if (this.bodyMouseUpHandle === undefined) {
         this.bodyMouseUpHandle = this.bindDoc('mouseup', () => {
-          this.isDrag = false;
+          this.changeDrag(false);
         });
       }
     }
@@ -231,7 +233,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     e.preventDefault();
     e.stopPropagation();
     this.sliderAbsoulateSize = this.getPos(e) - this.getCurrentPos();
-    this.isDrag = true;
+    this.changeDrag(true);
   };
 
   getDirection(fx: number): Direction {
@@ -270,8 +272,14 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
     this.processDomEvent(this.getPos(e));
     this.clearMove();
-    this.isDrag = false;
+    this.changeDrag(false);
   };
+
+  changeDrag(val: boolean) {
+    this.isDrag = val;
+    const { onDrag } = this.props;
+    onDrag && onDrag(this.isDrag);
+  }
 
   getPos(e: Object) {
     const arg = this.posGetter.func(this.htmlScroller);
@@ -295,10 +303,13 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   onSliderBarMouseUp = (e: Object) => {
     e.preventDefault();
     e.stopPropagation();
-    this.isDrag = false;
+    this.changeDrag(false);
   };
 
   onContainerMouseOut = () => {
+    if (this.isDrag) {
+      return;
+    }
     this.clearMove();
   };
 
@@ -377,7 +388,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const min = Math.max(0, theValue);
     const max = this.maxValue;
     const value = Math.min(min, max);
-
     this.setState({ value }, () => {
       this.scrolling(value);
     });

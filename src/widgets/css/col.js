@@ -5,8 +5,8 @@
  */
 import styled from 'styled-components';
 
-const share = 24;
-const width = 100 / share;
+// const share = 24;
+// const width = 100 / share;
 
 type BasicType = {
   span: number,
@@ -16,30 +16,36 @@ type BasicType = {
   order?: number,
   gutter?: number,
 };
+type ForDesignType = {
+  equable: number,
+};
 export type ColProps = {
   children?: any,
   onMouseEnter?: Function,
   onMouseOut?: Function,
   onMouseOver?: Function,
   scrrenSize?: string,
-} & BasicType;
+} & BasicType &
+  ForDesignType;
 export type ColState = {};
-type ColCSSProps = BasicType;
+type ColCSSProps = {
+  width: number,
+} & BasicType;
 
 const getSpanCSS = (props: ColCSSProps): string => {
-  const { span = 1 } = props;
+  const { span = 1, width } = props;
   return `
       width: ${width * span}%;
     `;
 };
 const getOffsetCSS = (props: ColCSSProps): string => {
-  const { offset = 0 } = props;
+  const { offset = 0, width } = props;
   return `
       margin-left: ${width * offset}%;
     `;
 };
 const getPullAndPushCSS = (props: ColCSSProps) => {
-  const { push = 0, pull = 0 } = props;
+  const { push = 0, pull = 0, width } = props;
   if (push) {
     return `
       left: ${width * push}%;
