@@ -23,7 +23,6 @@ export type TransferProps = {
 };
 export type TransferState = {
   inputValue: string,
-  searchData: Object[],
 };
 type CSSProps = {
   isWrap?: boolean,

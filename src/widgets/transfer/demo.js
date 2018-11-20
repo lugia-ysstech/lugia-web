@@ -30,17 +30,34 @@ export default class TransferDemo extends React.Component<any, any> {
     };
   }
   handleSelectChange = (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {
-    console.info('sourceSelectedKeys ====>>>', sourceSelectedKeys);
-    console.info('targetSelectedKeys ====>>>', targetSelectedKeys);
     this.setState({
       sourceSelectedKeys,
       targetSelectedKeys,
     });
   };
   handleDirectionClick = (nextTargetKeys: string[], type: 'right' | 'left', moveKey: string[]) => {
+    const { sourceSelectedKeys, targetSelectedKeys } = this.state;
+    if (type === 'left') {
+      this.setState({
+        targetSelectedKeys: this.getKeys(targetSelectedKeys, moveKey),
+      });
+    } else {
+      this.setState({
+        sourceSelectedKeys: this.getKeys(sourceSelectedKeys, moveKey),
+      });
+    }
     this.setState({
       targetKeys: nextTargetKeys,
     });
+  };
+  getKeys = (oldKey: string[], moveKey: string[]) => {
+    const keys = [];
+    oldKey.forEach(item => {
+      if (!moveKey.includes(item)) {
+        keys.push(item);
+      }
+    });
+    return keys;
   };
   render() {
     const { targetKeys, sourceSelectedKeys, targetSelectedKeys } = this.state;

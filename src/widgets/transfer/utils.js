@@ -5,6 +5,7 @@
  * @flow
  *
  */
+export function getTruthValue(inProps: boolean, propsParam: Object, state?: Object) {}
 export function getSourceDataAndTargetData(data: Object[], targetKeys: string[]): Object {
   const sourceData = [],
     targetData = [],
@@ -55,7 +56,7 @@ export function getSelectKeys(mapData: Object, selectKey: string[]): Object {
   }
   return { validKeys, disabledKeys };
 }
-export function isContained(a: Array, b: string[]) {
+export function isContained(a: [], b: string[]) {
   if (!(a instanceof Array) || !(b instanceof Array)) return false;
   if (a.length < b.length) return false;
   const aStr = a.toString();

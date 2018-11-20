@@ -24,7 +24,6 @@ export default ThemeProvider(
       super(props);
       this.state = {
         inputValue: '',
-        searchData: [],
       };
       this.maping = false;
     }
@@ -45,7 +44,7 @@ export default ThemeProvider(
         },
       };
       const { showSearch, selectedKeys = [], data = [], canCheckKeys } = this.props;
-      const { inputValue, searchData } = this.state;
+      const { inputValue } = this.state;
       const inputConfig = {};
       if (!inputValue) {
         inputConfig.suffix = <SearchIcon />;
