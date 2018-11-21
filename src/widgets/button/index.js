@@ -137,6 +137,7 @@ export default ThemeProvider(
               shape={shape}
               circle={circle}
               loading={loading}
+              onClick={this.onClick}
               onMouseOut={this.props.onMouseOut}
               onMouseEnter={this.props.onMouseEnter}
               onMouseOver={this.props.onMouseOver}
