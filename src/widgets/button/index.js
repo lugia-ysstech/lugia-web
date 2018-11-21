@@ -10,7 +10,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Icon from '../icon';
 import DelayHoc from '../common/DelayHoc';
-import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
+import MouseEventAdaptor from '../common/MouseEventAdaptor';
 
 import {
   getTypeCSS,
@@ -74,7 +74,7 @@ const IconWrap = styled(Icon)`
 ButtonOut.displayName = 'hello';
 
 export default ThemeProvider(
-  KeyBoardEventAdaptor(
+  MouseEventAdaptor(
     DelayHoc(
       class extends React.Component<ButtonOutProps, ButtonState> {
         static getDerivedStateFromProps(nextProps, prevState) {
@@ -137,7 +137,11 @@ export default ThemeProvider(
               shape={shape}
               circle={circle}
               loading={loading}
-              onClick={this.onClick}
+              onMouseOut={this.props.onMouseOut}
+              onMouseEnter={this.props.onMouseEnter}
+              onMouseOver={this.props.onMouseOver}
+              onMouseUp={this.props.onMouseUp}
+              onMouseDown={this.props.onMouseDown}
               themes={getTheme()}
             >
               <span>{this.handleChildren()}</span>
