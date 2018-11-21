@@ -23,8 +23,6 @@ export type GroupProps = {
     direction: 'left' | 'right',
     moveKeys: string[]
   ) => {},
-  onSourceSelect?: (key: string, item: Object) => {},
-  onTargetSelect?: (key: string, item: Object) => {},
   sourceSelectedKeys?: string[],
   targetSelectedKeys?: string[],
   defaultSourceSelectedKeys?: string[],

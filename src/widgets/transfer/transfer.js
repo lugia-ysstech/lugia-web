@@ -50,7 +50,6 @@ export default ThemeProvider(
         inputConfig.suffix = <SearchIcon />;
       }
       const length = canCheckKeys && canCheckKeys.length;
-
       const checked =
         selectedKeys.length === 0
           ? false

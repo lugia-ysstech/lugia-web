@@ -12,7 +12,7 @@ import TransFer from './transfer';
 import Button from '../button';
 import { TransFerWrap, OperationBtn, BtnText } from '../css/transfer-group';
 import type { GroupProps, GroupState } from '../css/transfer-group';
-import { getSourceDataAndTargetData, getSelectKeys } from './utils';
+import { getTruthValue, getSourceDataAndTargetData, splitSelectKeys } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<GroupProps, GroupState> {
@@ -22,40 +22,22 @@ export default ThemeProvider(
     maping: boolean;
 
     static getDerivedStateFromProps(props, state) {
-      const hasSourceSelectedKeys = 'sourceSelectedKeys' in props;
-      const hasTargetSelectedKeys = 'targetSelectedKeys' in props;
-      const hasTargetKeys = 'targetKeys' in props;
-      const {
-        sourceSelectedKeys,
-        targetSelectedKeys,
-        defaultSourceSelectedKeys,
-        defaultTargetSelectedKeys,
-        targetKeys = [],
-        defaultTargetKeys,
-        data = [],
-      } = props;
-      const sourceSelctKeys = hasSourceSelectedKeys
-        ? sourceSelectedKeys
-        : state
-          ? state.sourceSelectedKeys
-          : defaultSourceSelectedKeys || [];
-      const targetSelctKeys = hasTargetSelectedKeys
-        ? targetSelectedKeys
-        : state
-          ? state.targetSelectedKeys
-          : defaultTargetSelectedKeys || [];
-      const theTargetKeys = hasTargetKeys
-        ? targetKeys
-        : state
-          ? state.targetKeys
-          : defaultTargetKeys || [];
-
+      const { data = [] } = props;
+      const sourceSelctKeys = getTruthValue(
+        'sourceSelectedKeys',
+        props,
+        state,
+        'defaultSourceSelectedKeys'
+      );
+      const targetSelctKeys = getTruthValue(
+        'targetSelectedKeys',
+        props,
+        state,
+        'defaultTargetSelectedKeys'
+      );
+      const theTargetKeys = getTruthValue('targetKeys', props, state, 'defaultTargetKeys');
       const utilMapData = getSourceDataAndTargetData(data, theTargetKeys);
-      const sourceData = utilMapData.sourceData;
-      const targetData = utilMapData.targetData;
-      const sourceKeys = utilMapData.sourceKeys;
-      const targetCheckKeys = utilMapData.targetCheckKeys;
-      const sourceCheckKeys = utilMapData.sourceCheckKeys;
+      const { sourceData, targetData, sourceKeys, targetCheckKeys, sourceCheckKeys } = utilMapData;
 
       return {
         sourceSelectedKeys: sourceSelctKeys,
@@ -69,9 +51,36 @@ export default ThemeProvider(
         mapData: utilMapData.mapData,
       };
     }
+    shouldComponentUpdate(nextProps: GroupProps, nextState: GroupState) {
+      const {
+        filterOption = (value: string, option: Object): boolean => {
+          return option.value.indexOf(value) > -1;
+        },
+      } = nextProps;
+      if (nextState.targetKeys !== this.state.targetKeys) {
+        if (this.sourceInputValue) {
+          const SearchData = this.searchFilter(
+            nextState.sourceData,
+            this.sourceInputValue,
+            filterOption
+          );
+          this.setState({ sourceSearchData: SearchData });
+        }
+        if (this.targetInputValue) {
+          const SearchData = this.searchFilter(
+            nextState.targetData,
+            this.targetInputValue,
+            filterOption
+          );
+          this.setState({ targetSearchData: SearchData });
+        }
+      }
+
+      return true;
+    }
 
     render() {
-      const { showSearch, onSelectChange } = this.props;
+      const { showSearch } = this.props;
       const {
         sourceData,
         targetData,
@@ -93,13 +102,13 @@ export default ThemeProvider(
             data={theSourceData}
             selectedKeys={sourceSelectedKeys}
             showSearch={showSearch}
-            onCheckAll={this.checkAll('left')}
+            onCheckAll={this.checkAllForLeft}
             canCheckKeys={sourceCheckKeys}
-            onSearch={this.searchCallback('left')}
+            onSearch={this.searchCallbackForLeft}
           />
           <OperationBtn>
             <Button
-              onClick={this.handleClick('right')}
+              onClick={this.handleToRight}
               type="primary"
               disabled={sourceSelectedKeys.length === 0}
             >
@@ -107,7 +116,7 @@ export default ThemeProvider(
             </Button>
             <br />
             <Button
-              onClick={this.handleClick('left')}
+              onClick={this.handleToLeft}
               type="primary"
               disabled={targetSelectedKeys.length === 0}
             >
@@ -120,17 +129,16 @@ export default ThemeProvider(
             data={theTargetData}
             selectedKeys={targetSelectedKeys}
             showSearch={showSearch}
-            onCheckAll={this.checkAll('right')}
+            onCheckAll={this.checkAllForRight}
             canCheckKeys={targetCheckKeys}
-            onSearch={this.searchCallback('right')}
+            onSearch={this.searchCallbackForRight}
           />
         </TransFerWrap>
       );
     }
     handleSourceSelect = (e, keys, item) => {
       const selectKey = item.value;
-      const { onSelectChange, onSourceSelect } = this.props;
-      // onSourceSelect && onSourceSelect(selectKey, item);
+      const { onSelectChange } = this.props;
       const { sourceSelectedKeys, targetSelectedKeys } = this.state;
       const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
       const selectKeys = this.checkSelectKeys(sourceSelectedKeys, selectKey);
@@ -140,16 +148,14 @@ export default ThemeProvider(
       }
 
       this.setState(
-        {
-          sourceSelectedKeys: selectKeys,
-        },
+        { sourceSelectedKeys: selectKeys },
         () => onSelectChange && onSelectChange(selectKeys, targetSelectedKeys)
       );
     };
+
     handleTargetSelect = (e, keys, item) => {
       const selectKey = item.value;
-      const { onSelectChange, onTargetSelect } = this.props;
-      // onTargetSelect && onTargetSelect(selectKey, item);
+      const { onSelectChange } = this.props;
       const { sourceSelectedKeys, targetSelectedKeys } = this.state;
       const hasTargetSelectedKeys = this.isInProps('targetSelectedKeys');
       const selectKeys = this.checkSelectKeys(targetSelectedKeys, selectKey);
@@ -159,12 +165,11 @@ export default ThemeProvider(
       }
 
       this.setState(
-        {
-          targetSelectedKeys: selectKeys,
-        },
+        { targetSelectedKeys: selectKeys },
         () => onSelectChange && onSelectChange(sourceSelectedKeys, selectKeys)
       );
     };
+
     checkSelectKeys = (stateKeys: string[], key: string): string[] => {
       const isRepeat = stateKeys.includes(key);
       const data = [...stateKeys];
@@ -176,132 +181,145 @@ export default ThemeProvider(
       data.push(key);
       return data;
     };
-    handleClick = (type: 'left' | 'right') => () => {
-      const { mapData, sourceSelectedKeys, targetSelectedKeys, targetKeys } = this.state;
-      let moveKey, disabledCheckedKeys;
-      let nextTargetKeys = [...targetKeys];
-      if (type === 'left') {
-        moveKey = getSelectKeys(mapData, targetSelectedKeys).validKeys;
-        disabledCheckedKeys = getSelectKeys(mapData, targetSelectedKeys).disabledKeys;
-        moveKey.forEach(item => {
-          const index = nextTargetKeys.indexOf(item);
-          nextTargetKeys.splice(index, 1);
-        });
-      } else {
-        moveKey = getSelectKeys(mapData, sourceSelectedKeys).validKeys;
-        disabledCheckedKeys = getSelectKeys(mapData, sourceSelectedKeys).disabledKeys;
-        nextTargetKeys = [...nextTargetKeys, ...moveKey];
-      }
+
+    handleToLeft = () => {
+      const { mapData, targetSelectedKeys, targetKeys } = this.state;
+      const nextTargetKeys = [...targetKeys];
+      const { validKeys: moveKey, disabledKeys: disabledCheckedKeys } = splitSelectKeys(
+        mapData,
+        targetSelectedKeys
+      );
+      moveKey.forEach(item => {
+        const index = nextTargetKeys.indexOf(item);
+        nextTargetKeys.splice(index, 1);
+      });
       const { onDirectionClick } = this.props;
-      onDirectionClick && onDirectionClick(nextTargetKeys, type, moveKey);
+      onDirectionClick && onDirectionClick(nextTargetKeys, 'left', moveKey);
       const hasTargetKeys = this.isInProps('targetKeys');
       if (hasTargetKeys) {
         return;
       }
-      this.moveData(moveKey, disabledCheckedKeys, type);
+      this.moveDataToLeft(moveKey, disabledCheckedKeys);
     };
-    moveData = (moveKey: string[], disabledCheckedKeys: string[], type: 'left' | 'right') => {
+
+    moveDataToLeft = (moveKey: string[], disabledCheckedKeys: string[]) => {
       const { targetKeys } = this.state;
-      const {
-        filterOption = (value: string, option: Object): boolean => {
-          return option.value.indexOf(value) > -1;
-        },
-      } = this.props;
-      let addKey = [];
-      if (type === 'right') {
-        const arr = new Set([...targetKeys, ...moveKey]);
-        addKey = [...arr];
-        this.setState({
-          sourceSelectedKeys: disabledCheckedKeys,
-        });
-      } else {
-        addKey = [...targetKeys];
-        moveKey.forEach(item => {
-          const index = addKey.indexOf(item);
-          addKey.splice(index, 1);
-        });
-        this.setState({
-          targetSelectedKeys: disabledCheckedKeys,
-        });
-      }
-      this.setState(
-        {
-          targetKeys: addKey,
-        },
-        () => {
-          if (this.sourceInputValue) {
-            const SearchData = this.searchFilter(
-              this.state.sourceData,
-              this.sourceInputValue,
-              filterOption
-            );
-            this.setState({ sourceSearchData: SearchData });
-          }
-          if (this.targetInputValue) {
-            const SearchData = this.searchFilter(
-              this.state.targetData,
-              this.targetInputValue,
-              filterOption
-            );
-            this.setState({ targetSearchData: SearchData });
-          }
-        }
-      );
+      const targetOddKeys = [...targetKeys];
+      moveKey.forEach(item => {
+        const index = targetOddKeys.indexOf(item);
+        targetOddKeys.splice(index, 1);
+      });
+      this.setState({ targetSelectedKeys: disabledCheckedKeys, targetKeys: targetOddKeys });
     };
-    checkAll = (type: 'left' | 'right') => (checked: boolean) => {
-      const {
+
+    handleToRight = () => {
+      const { mapData, sourceSelectedKeys, targetKeys } = this.state;
+      const { validKeys: moveKey, disabledKeys: disabledCheckedKeys } = splitSelectKeys(
         mapData,
-        sourceSelectedKeys,
-        targetSelectedKeys,
-        targetCheckKeys,
-        sourceCheckKeys,
-      } = this.state;
-      const { onSelectChange } = this.props;
-      if (type === 'left') {
-        const disabledCheckedKeys = getSelectKeys(mapData, sourceSelectedKeys).disabledKeys;
-        const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
-        const checkKeys = checked
-          ? [...sourceCheckKeys, ...disabledCheckedKeys]
-          : disabledCheckedKeys || [];
-        onSelectChange && onSelectChange(checkKeys, targetSelectedKeys);
-        if (hasSourceSelectedKeys) {
-          return;
-        }
-        this.setState({
-          sourceSelectedKeys: checkKeys,
-        });
-      } else {
-        const hasTargetSelectedKeys = this.isInProps('targetSelectedKeys');
-        const disabledCheckedKeys = getSelectKeys(mapData, targetSelectedKeys).disabledKeys;
-        const checkKeys = checked
-          ? [...targetCheckKeys, ...disabledCheckedKeys]
-          : disabledCheckedKeys || [];
-        onSelectChange && onSelectChange(sourceSelectedKeys, checkKeys);
-        if (hasTargetSelectedKeys) {
-          return;
-        }
-        this.setState({
-          targetSelectedKeys: checkKeys,
-        });
+        sourceSelectedKeys
+      );
+      const nextTargetKeys = [...targetKeys, ...moveKey];
+      const { onDirectionClick } = this.props;
+      onDirectionClick && onDirectionClick(nextTargetKeys, 'right', moveKey);
+      const hasTargetKeys = this.isInProps('targetKeys');
+      if (hasTargetKeys) {
+        return;
       }
+      this.moveDataToRight(moveKey, disabledCheckedKeys);
     };
-    searchCallback = (type: 'left' | 'right') => (inputValue: string) => {
+
+    moveDataToRight = (moveKey: string[], disabledCheckedKeys: string[]) => {
+      const { targetKeys } = this.state;
+      const addKey = [...new Set([...targetKeys, ...moveKey])];
+      this.setState({ sourceSelectedKeys: disabledCheckedKeys, targetKeys: addKey });
+    };
+
+    checkAllForLeft = (checked: boolean) => {
+      const { mapData, sourceSelectedKeys, targetSelectedKeys, sourceCheckKeys } = this.state;
+      const { onSelectChange } = this.props;
+      const disabledCheckedKeys = splitSelectKeys(mapData, sourceSelectedKeys).disabledKeys;
+      const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
+      const checkKeys = checked
+        ? [...sourceCheckKeys, ...disabledCheckedKeys]
+        : disabledCheckedKeys || [];
+      onSelectChange && onSelectChange(checkKeys, targetSelectedKeys);
+      if (hasSourceSelectedKeys) {
+        return;
+      }
+      this.setState({
+        sourceSelectedKeys: checkKeys,
+      });
+    };
+    checkAllForRight = (checked: boolean) => {
+      const { mapData, sourceSelectedKeys, targetSelectedKeys, targetCheckKeys } = this.state;
+      const { onSelectChange } = this.props;
+      const hasTargetSelectedKeys = this.isInProps('targetSelectedKeys');
+      const disabledCheckedKeys = splitSelectKeys(mapData, targetSelectedKeys).disabledKeys;
+      const checkKeys = checked
+        ? [...targetCheckKeys, ...disabledCheckedKeys]
+        : disabledCheckedKeys || [];
+      onSelectChange && onSelectChange(sourceSelectedKeys, checkKeys);
+      if (hasTargetSelectedKeys) {
+        return;
+      }
+      this.setState({
+        targetSelectedKeys: checkKeys,
+      });
+    };
+    // checkAll = (
+    //   selectedKeys: string[],
+    //   canSelectedKeys: string[],
+    //   target: 'targetSelectedKeys' | 'sourceSelectedKeys',
+    //   checked: boolean,
+    // ) => {
+    //   const { mapData, targetCheckKeys } = this.state;
+    //   const { onSelectChange } = this.props;
+    //   const inProps = this.isInProps(target);
+    //   const disabledCheckedKeys = splitSelectKeys(mapData, selectedKeys).disabledKeys;
+    //   const checkKeys = checked
+    //     ? [...canSelectedKeys, ...disabledCheckedKeys]
+    //     : disabledCheckedKeys || [];
+    //
+    //   // onSelectChange && onSelectChange(sourceSelectedKeys, checkKeys);
+    //   if (inProps) {
+    //     return;
+    //   }
+    //   this.setState({
+    //     [target]: checkKeys,
+    //   });
+    // };
+
+    searchCallbackForLeft = (inputValue: string) => {
       const {
         filterOption = (value, option) => {
           return option.value.indexOf(value) > -1;
         },
       } = this.props;
-      const { sourceData, targetData } = this.state;
-      if (type === 'left') {
-        this.sourceInputValue = inputValue;
+      const { sourceData } = this.state;
+      this.sourceInputValue = inputValue;
+      if (inputValue) {
         const SearchData = this.searchFilter(sourceData, inputValue, filterOption);
         this.setState({ sourceSearchData: SearchData });
       } else {
-        this.targetInputValue = inputValue;
-        const SearchData = this.searchFilter(targetData, inputValue, filterOption);
-        this.setState({ targetSearchData: SearchData });
+        this.setState({ sourceSearchData: sourceData });
       }
     };
+    searchCallbackForRight = (inputValue: string) => {
+      const {
+        filterOption = (value, option) => {
+          return option.value.indexOf(value) > -1;
+        },
+      } = this.props;
+      const { targetData } = this.state;
+      this.targetInputValue = inputValue;
+      if (inputValue) {
+        const SearchData = this.searchFilter(targetData, inputValue, filterOption);
+        this.setState({ targetSearchData: SearchData });
+      } else {
+        this.setState({ targetSearchData: targetData });
+      }
+    };
+
     searchFilter = (data: Object[], searchValue: string, filterOption: Function) => {
       if (data && data.length > 0 && filterOption && typeof filterOption === 'function') {
         const searchData = [];

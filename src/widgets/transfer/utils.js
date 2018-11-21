@@ -5,7 +5,17 @@
  * @flow
  *
  */
-export function getTruthValue(inProps: boolean, propsParam: Object, state?: Object) {}
+export function getTruthValue(
+  target: string,
+  props: Object,
+  state?: Object,
+  defaultTarget: string
+) {
+  const inProps = target in props;
+  const result = inProps ? props[target] : state ? state[target] : props[defaultTarget] || [];
+
+  return result;
+}
 export function getSourceDataAndTargetData(data: Object[], targetKeys: string[]): Object {
   const sourceData = [],
     targetData = [],
@@ -41,7 +51,7 @@ export function getSourceDataAndTargetData(data: Object[], targetKeys: string[])
     sourceCheckKeys,
   };
 }
-export function getSelectKeys(mapData: Object, selectKey: string[]): Object {
+export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
   const validKeys = [],
     disabledKeys = [];
   if (selectKey && selectKey.length > 0) {
@@ -56,7 +66,7 @@ export function getSelectKeys(mapData: Object, selectKey: string[]): Object {
   }
   return { validKeys, disabledKeys };
 }
-export function isContained(a: [], b: string[]) {
+export function isContained(a: Array<any>, b: string[]) {
   if (!(a instanceof Array) || !(b instanceof Array)) return false;
   if (a.length < b.length) return false;
   const aStr = a.toString();

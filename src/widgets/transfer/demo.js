@@ -26,7 +26,7 @@ export default class TransferDemo extends React.Component<any, any> {
     this.state = {
       targetKeys: [],
       sourceSelectedKeys: ['选项5'],
-      targetSelectedKeys: ['选项2'],
+      targetSelectedKeys: [],
     };
   }
   handleSelectChange = (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {

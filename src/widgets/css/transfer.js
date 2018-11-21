@@ -13,8 +13,8 @@ const em = px2emcss(FontSize);
 
 export type TransferProps = {
   getTheme: Function,
-  data: Object[],
-  selectedKeys: string[],
+  data?: Object[],
+  selectedKeys?: string[],
   showSearch?: boolean,
   onSelect: Function,
   onSearch: (inputValue: string) => {},
