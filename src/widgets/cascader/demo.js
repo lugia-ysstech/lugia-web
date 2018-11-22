@@ -30,30 +30,16 @@ const items = [
       {
         text: '次级菜单2',
         value: '次级菜单2',
-        children: [{ text: 'e', value: 'e' }, { text: 'f', value: 'f' }, { text: 'g', value: 'g' }],
-      },
-      {
-        text: '次级菜单3',
-        value: '次级菜单3',
         children: [
           {
             text: '三级菜单1',
             value: '三级菜单1',
             children: [
-              { text: 'a', value: 'a' },
-              { text: 'b', value: 'b' },
-              { text: 'c', value: 'c' },
+              { text: 'sub1', value: 'sub1', children: [{ text: 'sub2', value: 'sub2' }] },
             ],
           },
           { text: '三级菜单2', value: '三级菜单2' },
           { text: '三级菜单3', value: '三级菜单3' },
-          { text: '三级菜单4', value: '三级菜单4' },
-          { text: '三级菜单5', value: '三级菜单5' },
-          { text: '三级菜单6', value: '三级菜单6' },
-          { text: '三级菜单7', value: '三级菜单7' },
-          { text: '三级菜单8', value: '三级菜单8' },
-          { text: '三级菜单9', value: '三级菜单9' },
-          { text: '三级菜单10', value: '三级菜单10' },
         ],
       },
     ],
@@ -63,14 +49,32 @@ const items = [
   { text: '选项9', value: '选项9', disabled: true },
   { text: '选项10', value: '选项10', disabled: false },
 ];
+
 export default class extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      selectedKeys: ['选项6/次级菜单2/三级菜单1/a/sub2'],
+    };
+  }
   render() {
+    const { selectedKeys } = this.state;
+
     return (
       <div>
-        <Theme
-          config={{ [Widget.Cascader]: { width: 200, menuWidth: 100, offsetY: 10, offsetX: 10 } }}
-        >
-          <Cascader data={items} action={'hover'} />
+        <Theme config={{ [Widget.Cascader]: { width: 200, menuWidth: 100 } }}>
+          <Cascader
+            data={items}
+            action={'hover'}
+            value={selectedKeys}
+            selectedKeys={selectedKeys}
+            separator={'/'}
+            // popupVisible={true}
+            // offsetX={10}
+            onClick={this.onClick}
+            onChange={this.onChange}
+            disabled={false}
+          />
         </Theme>
       </div>
     );
@@ -79,5 +83,8 @@ export default class extends React.Component<any, any> {
   onClick = (e: Object, keys: Object) => {
     const { selectedKeys } = keys;
     this.setState({ selectedKeys });
+  };
+  onChange = (target: Object) => {
+    // console.log('target', target);
   };
 }

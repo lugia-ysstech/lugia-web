@@ -18,23 +18,56 @@ const CascaderContainer = styled.div`
   position: relative;
 `;
 
-class Cascader extends React.Component<any, any> {
+type CascaderProps = {
+  getTheme?: Function,
+  offsetY: number,
+  offsetX: number,
+  action?: string,
+  placeholder?: string,
+  data?: Object[],
+  onClick?: Function,
+  separator?: string,
+  value: string[] | string,
+  selectedKeys: string[],
+  disabled: boolean,
+  displayField: string,
+  valueField: string,
+  popupVisible?: boolean,
+};
+type CascaderState = {
+  popupVisible: boolean,
+  checked: boolean,
+  mouseInTarget: boolean,
+  value: [] | string[],
+};
+
+class Cascader extends React.Component<CascaderProps, CascaderState> {
   static defaultProps = {
+    offsetY: 0,
+    offsetX: 0,
+    disabled: false,
+    popupVisible: false,
     getTheme: () => {
       return {};
     },
   };
-  constructor(props: any) {
+  constructor(props: CascaderProps) {
     super(props);
-    this.state = { popupVisible: false, checked: false, mouseInTarget: false };
+    const { popupVisible } = props;
+    this.state = {
+      popupVisible: popupVisible ? popupVisible : false,
+      checked: false,
+      mouseInTarget: false,
+      value: props.value ? props.value : [],
+    };
   }
 
   render() {
     const { props, state } = this;
-    const { popupVisible } = state;
-    const { getTheme } = props;
+    const { popupVisible, value } = state;
+    const { getTheme, placeholder, offsetY, disabled } = props;
     const theme = getTheme();
-    const { width = 200, offsetY = 0 } = theme;
+    const { width = 200 } = theme;
     return (
       <CascaderContainer
         onMouseEnter={this.onMouseEnterContainer}
@@ -42,13 +75,20 @@ class Cascader extends React.Component<any, any> {
       >
         <Theme config={{ [Widget.InputTag]: { width } }}>
           <Trigger
-            ref={cmp => (this.trigger = cmp)}
             align={'bottomLeft'}
             offsetY={offsetY}
             popupVisible={popupVisible}
             popup={this.getMenu(theme)}
+            onPopupVisibleChange={this.onPopupVisibleChange}
           >
-            <InputTag onClick={this.handleClickInputTag} mutliple={false} />
+            <InputTag
+              onClick={this.handleClickInputTag}
+              value={value}
+              displayValue={value}
+              mutliple={false}
+              placeholder={placeholder}
+              disabled={disabled}
+            />
           </Trigger>
         </Theme>
       </CascaderContainer>
@@ -57,7 +97,11 @@ class Cascader extends React.Component<any, any> {
 
   handleClickInputTag = () => {
     const { checked, mouseInTarget } = this.state;
-
+    const { disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+    console.log('checked', checked);
     if (checked) {
       this.setState({ checked: false });
       return;
@@ -67,22 +111,26 @@ class Cascader extends React.Component<any, any> {
   };
 
   getMenu = (theme: Object) => {
-    const { data, action } = this.props;
+    const { data, action, selectedKeys, separator, offsetX, valueField, displayField } = this.props;
     const { popupVisible } = this.state;
-    const { menuWidth = 150, offsetX } = theme;
-    console.log('offsetX', offsetX);
+    const { menuWidth = 150 } = theme;
     return (
       <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
           mutliple={false}
-          onClick={this.handleClickMenu}
           action={action}
           popupVisible={popupVisible}
+          onChange={this.onChange}
           handleIsInMenu={this.handleIsInMenu}
           data={data}
+          displayField={displayField}
+          valueField={valueField}
+          onClick={this.onClick}
+          separator={separator}
+          selectedKeys={selectedKeys}
           offsetX={offsetX}
           offsetY={0}
-          handleItemWrap={this.handleItemWrap}
+          onClear={this.onClear}
         />
       </Theme>
     );
@@ -96,6 +144,31 @@ class Cascader extends React.Component<any, any> {
       }
       this.setState({ popupVisible });
     }
+  };
+
+  onClick = (event, keys, item) => {
+    const { selectedKeys } = keys;
+    const { children } = item;
+    if (!children) {
+      this.setState({ popupVisible: false });
+    }
+    this.setState({ value: selectedKeys });
+    const { onClick } = this.props;
+    onClick && onClick(event, keys, item);
+  };
+
+  onClear = (e: Object) => {
+    const { onClear } = this.props;
+    onClear && onClear(e);
+  };
+
+  onChange = (target: Object) => {
+    const { onChange } = this.props;
+    onChange && onChange(target);
+  };
+
+  onPopupVisibleChange = () => {
+    console.log('onPopupVisibleChange');
   };
 
   onMouseEnterContainer = () => {
