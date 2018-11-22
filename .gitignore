@@ -9,6 +9,8 @@
 
 # production
 /build
+/dist
+/interface
 
 # vscode local history
 .history
