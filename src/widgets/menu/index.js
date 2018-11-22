@@ -531,6 +531,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
   getPathArr = (key: string) => {
     const { pathData, separator } = this.props;
     const pathArr = [];
+    if (this.isRoot()) {
+      return [key];
+    }
     pathData.forEach(item => {
       if (key === item.key) {
         const newPath = item.path + '/' + key;
