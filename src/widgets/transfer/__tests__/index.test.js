@@ -118,6 +118,68 @@ describe('Transfer', () => {
     expect(result3).toBe(false);
   });
 
+  it('Transfer: state -> sourceSelectedKeys targetSelectedKeys', () => {
+    const target = mount(<Transfer data={data} sourceSelectedKeys={[]} targetSelectedKeys={[]} />);
+    const component = getComponent(target);
+    component.setState({
+      sourceSelectedKeys: ['1'],
+      targetSelectedKeys: ['1'],
+    });
+    const { sourceSelectedKeys, targetSelectedKeys } = component.state;
+
+    expect(sourceSelectedKeys).toEqual([]);
+    expect(targetSelectedKeys).toEqual([]);
+
+    const newTarget = mount(
+      <Transfer
+        data={data}
+        targetKeys={['选项2', '选项3']}
+        defaultSourceSelectedKeys={[]}
+        defaultTargetSelectedKeys={[]}
+      />
+    );
+    const newComponent = getComponent(newTarget);
+    newComponent.setState({
+      sourceSelectedKeys: ['选项1'],
+      targetSelectedKeys: ['选项2'],
+    });
+    const {
+      sourceSelectedKeys: newSourceSelectedKeys,
+      targetSelectedKeys: newTargetSelectedKeys,
+    } = newComponent.state;
+
+    expect(newSourceSelectedKeys).toEqual(['选项1']);
+    expect(newTargetSelectedKeys).toEqual(['选项2']);
+  });
+
+  it('Transfer: state -> sourceKeys targetKeys', () => {
+    const target = mount(<Transfer data={data} defaultTargetKeys={['选项2', '选项3']} />);
+    const component = getComponent(target);
+    expect(component.state.targetKeys).toEqual(['选项2', '选项3']);
+    expect(component.state.sourceKeys).toEqual(['选项1', '选项4', '选项5', '选项6']);
+
+    component.setState({
+      targetKeys: ['选项2'],
+    });
+    const { targetKeys, sourceKeys } = component.state;
+    expect(targetKeys).toEqual(['选项2']);
+    expect(sourceKeys).toEqual(['选项1', '选项3', '选项4', '选项5', '选项6']);
+
+    const newTarget = mount(<Transfer data={data} targetKeys={['选项2', '选项3']} />);
+    const newComponent = getComponent(newTarget);
+    expect(newComponent.state.targetKeys).toEqual(['选项2', '选项3']);
+    expect(newComponent.state.sourceKeys).toEqual(['选项1', '选项4', '选项5', '选项6']);
+
+    newComponent.setState({
+      targetKeys: ['选项2'],
+    });
+    const { targetKeys: newTargetKeys, sourceKeys: newSourceKeys } = newComponent.state;
+    expect(newTargetKeys).toEqual(['选项2', '选项3']);
+    expect(newSourceKeys).toEqual(['选项1', '选项4', '选项5', '选项6']);
+  });
+  it('Transfer: state -> sourceData targetData', () => {});
+  it('Transfer: state -> sourceCheckKeys targetCheckKeys', () => {});
+
   it('Transfer: checkSelectKeys ', () => {
     const target = mount(<Transfer data={data} />);
     const component = getComponent(target);
