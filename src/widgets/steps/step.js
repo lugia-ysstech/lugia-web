@@ -230,8 +230,8 @@ class Step extends Component<StepProps, StepState> {
       const theStepStatus = hasStatusInprops
         ? stepStatus
         : currentNumber > stepNumber
-          ? 'finish'
-          : 'wait';
+        ? 'finish'
+        : 'wait';
       return { stepStatus: theStepStatus };
     }
     if (hasStatusInprops) {
@@ -331,15 +331,18 @@ class Step extends Component<StepProps, StepState> {
     return <Line {...this.getConfigs()} isFirst={isFirst} orientation={orientation} />;
   }
 
+  getIcon(stepStatus: StepStatus): string {
+    return stepStatus === 'finish'
+      ? 'lugia-icon-reminder_check'
+      : stepStatus === 'error'
+      ? 'lugia-icon-reminder_close'
+      : '';
+  }
+
   getStep() {
     const { icon, stepType, size, orientation } = this.props;
     const { stepStatus } = this.state;
-    const theIcon =
-      stepStatus === 'finish'
-        ? 'lugia-icon-reminder_check'
-        : stepStatus === 'error'
-          ? 'lugia-icon-reminder_close'
-          : '';
+    const theIcon = this.getIcon(stepStatus);
     if (stepType === 'flat' || stepType === 'simple') {
       return (
         <StepInnerContainer size={size} {...this.getConfigs()} orientation={orientation}>
@@ -360,14 +363,16 @@ class Step extends Component<StepProps, StepState> {
       );
     }
   }
-
+  getStepValue(stepNumber: number, stepStatus: StepStatus): number {
+    return (stepStatus === 'finish' || stepStatus === 'process') && stepNumber > 0 ? stepNumber : 0;
+  }
   getStepNumber() {
     const { size, stepNumber } = this.props;
     const { stepStatus } = this.state;
-    const theStepNumber =
-      (stepStatus === 'finish' || stepStatus === 'process') && stepNumber > 0 ? stepNumber : '';
-    if (stepStatus !== 'finish' && stepStatus !== 'error')
+    const theStepNumber = this.getStepValue(stepNumber, stepStatus);
+    if (stepStatus !== 'finish' && stepStatus !== 'error') {
       return <StepNumber size={size}>{theStepNumber}</StepNumber>;
+    }
     return null;
   }
 
@@ -380,6 +385,6 @@ class Step extends Component<StepProps, StepState> {
     };
   }
 }
-
+export const _Step = Step;
 const TargetStep = ThemeProvider(KeyBoardEventAdaptor(Step), Widget.Step);
 export default TargetStep;
