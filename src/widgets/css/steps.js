@@ -48,10 +48,10 @@ export const getStepBackgroundColor = (props: Object) => {
     (stepStatus === 'finish' || stepStatus === 'process') && stepType === 'flat'
       ? lightThemeColor
       : stepStatus === 'process'
-        ? themeColor
-        : stepStatus === 'error' && stepType === 'flat'
-          ? dangerColor
-          : defaultColor;
+      ? themeColor
+      : stepStatus === 'error' && stepType === 'flat'
+      ? dangerColor
+      : defaultColor;
   return color;
 };
 export const getStepFontColor = (props: Object) => {
@@ -60,10 +60,10 @@ export const getStepFontColor = (props: Object) => {
     stepStatus === 'error'
       ? dangerColor
       : stepStatus === 'finish' && stepType === 'flat'
-        ? lightThemeColor
-        : stepStatus === 'finish' || stepStatus === 'process'
-          ? blackColor
-          : lightGreyColor;
+      ? lightThemeColor
+      : stepStatus === 'finish' || stepStatus === 'process'
+      ? blackColor
+      : lightGreyColor;
   return color;
 };
 export const getFinishDisplay = props => {
@@ -83,10 +83,10 @@ export const getFinishIconColor = props => {
     stepType === 'flat' && (stepStatus === 'finish' || stepStatus === 'error')
       ? defaultColor
       : stepStatus === 'finish'
-        ? successColor
-        : stepStatus === 'error'
-          ? dangerColor
-          : themeColor;
+      ? successColor
+      : stepStatus === 'error'
+      ? dangerColor
+      : themeColor;
   return color;
 };
 
@@ -131,10 +131,10 @@ export const getStepSize = props => {
         size === 'normal' && stepType === 'flat'
           ? em(32)
           : size === 'mini' && stepType === 'flat'
-            ? em(24)
-            : size === 'normal'
-              ? em(20)
-              : em(12);
+          ? em(24)
+          : size === 'normal'
+          ? em(20)
+          : em(12);
       break;
     default:
       break;
@@ -184,10 +184,10 @@ export const getStepContainerWidth = props => {
     stepType === 'dot' && isFirst
       ? em(12)
       : size === 'normal' && isFirst
-        ? em(32)
-        : size === 'mini' && isFirst
-          ? em(24)
-          : '100%';
+      ? em(32)
+      : size === 'mini' && isFirst
+      ? em(24)
+      : '100%';
   return `width:${width};`;
 };
 export const getLinePadding = props => {
@@ -245,44 +245,35 @@ export const getTextAlign = props => {
 };
 export const getBeforeGap = props => {
   const { orientation } = props;
-  let width = em(4);
-  let height = em(6);
-  let beforeDirection = 'left';
-  let afterDirection = 'top';
-  if (orientation === 'horizontal') {
-    width = em(6);
-    height = em(4);
-    beforeDirection = 'top';
-    afterDirection = 'left';
-  }
+
   return getGap({
     ...props,
-    ...{ afterDirection },
-    ...{ beforeDirection },
-    ...{ width },
-    ...{ height },
+    ...getGapPropsByOperation(orientation, 'before'),
   });
 };
 export const getAfterGap = props => {
   const { orientation } = props;
+  return getGap({
+    ...props,
+    ...getGapPropsByOperation(orientation, 'after'),
+  });
+};
+
+function getGapPropsByOperation(orientation: string, type: 'after' | 'before') {
   let width = em(4);
   let height = em(6);
   let beforeDirection = 'left';
-  let afterDirection = 'bottom';
+  const before = type === 'before';
+  let afterDirection = before ? 'top' : 'bottom';
   if (orientation === 'horizontal') {
     width = em(6);
     height = em(4);
     beforeDirection = 'top';
-    afterDirection = 'right';
+    afterDirection = before ? 'left' : 'right';
   }
-  return getGap({
-    ...props,
-    ...{ afterDirection },
-    ...{ beforeDirection },
-    ...{ width },
-    ...{ height },
-  });
-};
+  return { afterDirection, beforeDirection, width, height };
+}
+
 export const getGap = props => {
   const { stepType, stepStatus, afterDirection, beforeDirection, width, height } = props;
   if (stepType === 'flat' && (stepStatus === 'next' || stepStatus === 'wait')) {
