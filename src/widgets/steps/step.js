@@ -8,24 +8,36 @@ import '../common/shirm';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
-import type { StepType, StepStatus, SizeType } from '../css/steps';
+import type { StepType, StepStatus, SizeType, OrientationType, AlignType } from '../css/steps';
+import { DotSize } from '../css/steps';
 import {
   getStepColor,
   getFinishDisplay,
   getStepBackgroundColor,
-  getLineHeight,
-  getStepWidth,
+  getLineSize,
+  getStepOutContanerSize,
   getStepContainerWidth,
   getFinishIconColor,
   getStepNumberSize,
   getStepSize,
   getStepFontColor,
+  stepContainerSize,
+  getStepInnerContainerPosition,
+  stepInnerContainerPosition,
   getStepContainerSize,
-  getDashed,
-  getLineMargin,
+  getLinePadding,
   getShow,
-  getContentTop,
-  getLineBorder,
+  getContentPosition,
+  getLineColor,
+  getFlexDirection,
+  getDotLineSize,
+  getContentMargin,
+  getStepInnerBorder,
+  getTitleLineHeight,
+  getBeforeGap,
+  getAfterGap,
+  getIndex,
+  getTextAlign,
 } from '../css/steps';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -38,7 +50,7 @@ const em = px2emcss(1.2);
 const BaseStep = styled.div`
   position: relative;
   cursor: pointer;
-  ${getStepWidth};
+  ${getStepOutContanerSize};
   flex: 1;
 `;
 const HStep = BaseStep.extend`
@@ -48,28 +60,27 @@ const HStep = BaseStep.extend`
 const Title = styled.div`
   font-size: 1.4rem;
   color: ${getStepFontColor};
-  margin-top: ${em(10)};
-  text-align: left;
+  text-align: inherit;
+  ${getTitleLineHeight};
 `;
 const Description = styled.div`
-  line-height: ${em(20)};
   font-weight: 400;
   color: ${getStepFontColor};
   margin-top: ${em(6)};
+  text-align: inherit;
 `;
 const Content = styled.div`
   position: absolute;
   white-space: normal;
-  text-align: right;
   display: block;
   color: ${getStepColor};
-  ${getContentTop};
+  ${getContentPosition};
+  ${getContentMargin};
+  ${getTextAlign};
 `;
 const BaseLine = styled.div`
   position: relative;
-  height: ${getLineHeight};
-  ${getLineBorder};
-  width: 100%;
+  ${getLineSize};
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -78,14 +89,21 @@ const LineContainer = styled.div`
   display: inline-block;
   position: relative;
   ${getShow};
-  ${getLineMargin};
+  ${getLinePadding};
+  z-index: 10;
 `;
 const Line = BaseLine.extend`
-  background-color: ${getStepColor};
+  ${getLineColor};
+  &::before {
+    ${getBeforeGap};
+  }
+  &::after {
+    ${getAfterGap};
+  }
 `;
 
 const DotLine = BaseLine.extend`
-  border-bottom: ${em(1)} ${getDashed} ${getStepColor};
+  ${getDotLineSize}: ;
 `;
 const StepHeadContainer = styled.div`
   position: relative;
@@ -97,8 +115,8 @@ const Dot = styled.div`
   background-color: ${getStepColor};
   display: inLine-block;
   border-radius: 50%;
-  width: ${em(12)};
-  height: ${em(12)};
+  width: ${em(DotSize)};
+  height: ${em(DotSize)};
 `;
 const IconContainer = styled.div`
   position: relative;
@@ -113,47 +131,47 @@ const StepNumber = styled.div`
   font-weight: 700;
   line-height: 1;
   font-size: ${getStepNumberSize};
-  z-index: 9;
   color: ${getStepColor};
 `;
 const StepInner = styled.div`
-  z-index: 99;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: ${getStepSize};
   height: ${getStepSize};
   box-sizing: border-box;
-  background-color: ${getStepBackgroundColor};
   border-radius: 50%;
-  border: ${em(1)} solid;
-  border-color: ${getStepColor};
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  ${getStepInnerBorder};
+  ${getLineColor};
+  background-color: ${getStepBackgroundColor};
 `;
 const StepContainer = styled.div`
   position: relative;
-  width: 100%;
-  height: ${getStepContainerSize};
+  ${getStepContainerSize};
   display: flex;
+  ${getFlexDirection};
 `;
 const DotContainer = styled.div`
   position: relative;
   display: flex;
+  ${getFlexDirection};
+  height: 100%;
 `;
 
 const BaseInnerContainer = styled.div`
-  z-index: 99;
   text-align: center;
   position: relative;
+  display: flex;
 `;
 const StepInnerContainer = BaseInnerContainer.extend`
-  width: ${getStepSize};
+  ${getStepInnerContainerPosition};
+  ${stepInnerContainerPosition}: ${getStepSize};
+  ${getIndex};
 `;
 const DotInnerContainer = BaseInnerContainer.extend`
-  width: ${12};
-  height: ${12};
+  width: ${em(DotSize)};
+  height: ${em(DotSize)};
 `;
 
 const IconFinish: Object = styled(Icon)`
@@ -171,7 +189,7 @@ const IconStep: Object = styled(Icon)`
   text-align: center;
   font-weight: 700;
   line-height: 1;
-  font-size: ${getStepContainerSize};
+  font-size: ${stepContainerSize};
   border-color: ${getStepColor};
   color: ${getStepColor};
   top: 50%;
@@ -186,14 +204,15 @@ type StepProps = {
   description: string,
   stepType: StepType,
   stepNumber: number,
-  currentNumber: number,
+  currentStepNumber: number,
   stepStatus: StepStatus,
   descDirection: string,
-  orientation: string,
+  orientation: OrientationType,
   size: SizeType,
   getTheme: Function,
   isFirst: boolean,
   isDashed: boolean,
+  desAlign: AlignType,
 };
 
 class Step extends Component<StepProps, StepState> {
@@ -205,28 +224,28 @@ class Step extends Component<StepProps, StepState> {
   }
 
   static getDerivedStateFromProps(props: StepProps, state: StepState) {
-    const { currentNumber, stepNumber, stepStatus } = props;
+    const { currentStepNumber, stepNumber, stepStatus } = props;
     const hasStatusInprops = 'stepStatus' in props;
-    if (!state) {
-      const theStepStatus = hasStatusInprops
-        ? stepStatus
-        : currentNumber > stepNumber
-          ? 'finish'
+    const theStepStatus = hasStatusInprops
+      ? stepStatus
+      : currentStepNumber > stepNumber
+        ? 'finish'
+        : currentStepNumber === stepNumber
+          ? 'process'
           : 'wait';
-      return { stepStatus: theStepStatus };
-    }
     if (hasStatusInprops) {
       return { stepStatus };
     }
+    return { stepStatus: theStepStatus };
   }
 
   render() {
-    const { getTheme, size, isFirst } = this.props;
+    const { getTheme, size, isFirst, orientation } = this.props;
     if (isFirst) {
       return this.getStepContainer();
     }
     return (
-      <HStep {...this.getConfigs()} theme={getTheme()} size={size}>
+      <HStep {...this.getConfigs()} theme={getTheme()} size={size} orientation={orientation}>
         {this.getStepContainer()}
       </HStep>
     );
@@ -241,39 +260,46 @@ class Step extends Component<StepProps, StepState> {
     );
   }
 
-  getDesc(description, stepStatus) {
-    if (description) {
+  getDesc() {
+    const { description } = this.props;
+    const { stepStatus } = this.state;
+    if (description && description !== undefined) {
       return <Description stepStatus={stepStatus}>{description}</Description>;
     }
     return null;
   }
   getContent() {
-    const { title, description, stepType } = this.props;
-    const { stepStatus } = this.state;
+    const { title, description, size, orientation, desAlign } = this.props;
     return (
-      <Content stepStatus={stepStatus}>
-        <Title stepType={stepType} stepStatus={stepStatus}>
+      <Content {...this.getConfigs()} orientation={orientation} size={size} desAlign={desAlign}>
+        <Title
+          {...this.getConfigs()}
+          orientation={orientation}
+          size={size}
+          description={description}
+        >
           {title}
         </Title>
-        {this.getDesc(description, stepStatus)}
+        {this.getDesc()}
       </Content>
     );
   }
 
   getStepHead() {
-    const { isFirst, stepType, size } = this.props;
+    const { isFirst, stepType, size, orientation } = this.props;
     if (stepType === 'dot') {
       return (
-        <DotContainer isFirst={isFirst}>
+        <DotContainer isFirst={isFirst} orientation={orientation}>
           {this.matchLine()}
-          <DotInnerContainer size={size} {...this.getConfigs()}>
+          <DotInnerContainer {...this.getConfigs()} size={size}>
             <Dot {...this.getConfigs()} />
+            {this.getContent()}
           </DotInnerContainer>
         </DotContainer>
       );
     }
     return (
-      <StepContainer size={size} isFirst={isFirst}>
+      <StepContainer size={size} isFirst={isFirst} orientation={orientation}>
         {this.matchLine()}
         {this.getStep()}
       </StepContainer>
@@ -281,32 +307,47 @@ class Step extends Component<StepProps, StepState> {
   }
 
   matchLine() {
-    const { stepType, isFirst } = this.props;
-    if (!isFirst) return <LineContainer stepType={stepType}>{this.getLine()}</LineContainer>;
+    const { stepType, isFirst, orientation } = this.props;
+    if (!isFirst)
+      return (
+        <LineContainer orientation={orientation} stepType={stepType} {...this.getConfigs()}>
+          {this.getLine()}
+        </LineContainer>
+      );
     return null;
   }
 
   getLine() {
-    const { isDashed, stepType, isFirst } = this.props;
+    const { isDashed, stepType, isFirst, orientation } = this.props;
     if (stepType === 'dot') {
-      return <DotLine {...this.getConfigs()} isDashed={isDashed} isFirst={isFirst} />;
+      return (
+        <DotLine
+          {...this.getConfigs()}
+          isDashed={isDashed}
+          isFirst={isFirst}
+          orientation={orientation}
+        />
+      );
     }
-    return <Line {...this.getConfigs()} isFirst={isFirst} />;
+    return <Line {...this.getConfigs()} isFirst={isFirst} orientation={orientation} />;
+  }
+
+  getIcon(stepStatus: StepStatus): string {
+    return stepStatus === 'finish'
+      ? 'lugia-icon-reminder_check'
+      : stepStatus === 'error'
+        ? 'lugia-icon-reminder_close'
+        : '';
   }
 
   getStep() {
-    const { icon, stepType, size } = this.props;
+    const { icon, stepType, size, orientation } = this.props;
     const { stepStatus } = this.state;
-    const theIcon =
-      stepStatus === 'finish'
-        ? 'lugia-icon-reminder_check'
-        : stepStatus === 'error'
-          ? 'lugia-icon-reminder_close'
-          : '';
-    if (stepType === 'flat' || stepType === 'description' || stepType === 'simple') {
+    const theIcon = this.getIcon(stepStatus);
+    if (stepType === 'flat' || stepType === 'simple') {
       return (
-        <StepInnerContainer size={size} stepStatus={stepStatus}>
-          <StepInner {...this.getConfigs()} size={size}>
+        <StepInnerContainer size={size} {...this.getConfigs()} orientation={orientation}>
+          <StepInner {...this.getConfigs()} size={size} orientation={orientation}>
             <IconFinish {...this.getConfigs()} iconClass={theIcon} />
             {this.getStepNumber()}
           </StepInner>
@@ -323,14 +364,16 @@ class Step extends Component<StepProps, StepState> {
       );
     }
   }
-
+  getStepValue(stepNumber: number, stepStatus: StepStatus): number {
+    return (stepStatus === 'finish' || stepStatus === 'process') && stepNumber > 0 ? stepNumber : 0;
+  }
   getStepNumber() {
     const { size, stepNumber } = this.props;
     const { stepStatus } = this.state;
-    const theStepNumber =
-      (stepStatus === 'finish' || stepStatus === 'process') && stepNumber > 0 ? stepNumber : '';
-    if (stepStatus !== 'finish' && stepStatus !== 'error')
+    const theStepNumber = this.getStepValue(stepNumber, stepStatus);
+    if (stepStatus !== 'finish' && stepStatus !== 'error') {
       return <StepNumber size={size}>{theStepNumber}</StepNumber>;
+    }
     return null;
   }
 
@@ -343,6 +386,6 @@ class Step extends Component<StepProps, StepState> {
     };
   }
 }
-
+export const _Step = Step;
 const TargetStep = ThemeProvider(KeyBoardEventAdaptor(Step), Widget.Step);
 export default TargetStep;
