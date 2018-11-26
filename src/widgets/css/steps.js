@@ -10,11 +10,11 @@ const {
   dangerColor,
   defaultColor,
 } = colorsFunc();
-type StepType = 'simple' | 'flat' | 'icon' | 'dot';
-type StepStatus = 'finish' | 'process' | 'next' | 'wait' | 'error';
-type SizeType = 'normal' | 'mini';
-type OrientationType = 'horizontal' | 'vertical';
-type AlignType = 'center' | 'left';
+export type StepType = 'simple' | 'flat' | 'icon' | 'dot';
+export type StepStatus = 'finish' | 'process' | 'next' | 'wait' | 'error';
+export type SizeType = 'normal' | 'mini';
+export type OrientationType = 'horizontal' | 'vertical';
+export type AlignType = 'center' | 'left';
 const em = px2emcss(1.2);
 export const DotSize = 12;
 const lightThemeColor = changeColor(themeColor, 20).rgb;
@@ -245,14 +245,12 @@ export const getTextAlign = props => {
 };
 export const getBeforeGap = props => {
   const { orientation } = props;
-  const direction = orientation === 'horizontal' ? 'left' : 'top';
-  props.direction = direction;
+  props.direction = orientation === 'horizontal' ? 'left' : 'top';
   return getGap(props);
 };
 export const getAfterGap = props => {
   const { orientation } = props;
-  const direction = orientation === 'horizontal' ? 'right' : 'bottom';
-  props.direction = direction;
+  props.direction = orientation === 'horizontal' ? 'right' : 'bottom';
   return getGap(props);
 };
 export const getGap = props => {

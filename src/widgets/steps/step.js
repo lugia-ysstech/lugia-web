@@ -204,7 +204,7 @@ type StepProps = {
   description: string,
   stepType: StepType,
   stepNumber: number,
-  currentNumber: number,
+  currentStepNumber: number,
   stepStatus: StepStatus,
   descDirection: string,
   orientation: OrientationType,
@@ -224,19 +224,19 @@ class Step extends Component<StepProps, StepState> {
   }
 
   static getDerivedStateFromProps(props: StepProps, state: StepState) {
-    const { currentNumber, stepNumber, stepStatus } = props;
+    const { currentStepNumber, stepNumber, stepStatus } = props;
     const hasStatusInprops = 'stepStatus' in props;
-    if (!state) {
-      const theStepStatus = hasStatusInprops
-        ? stepStatus
-        : currentNumber > stepNumber
+    const theStepStatus = hasStatusInprops
+      ? stepStatus
+      : currentStepNumber > stepNumber
         ? 'finish'
-        : 'wait';
-      return { stepStatus: theStepStatus };
-    }
+        : currentStepNumber === stepNumber
+          ? 'process'
+          : 'wait';
     if (hasStatusInprops) {
       return { stepStatus };
     }
+    return { stepStatus: theStepStatus };
   }
 
   render() {
@@ -261,7 +261,8 @@ class Step extends Component<StepProps, StepState> {
   }
 
   getDesc() {
-    const { description, stepStatus } = this.props;
+    const { description } = this.props;
+    const { stepStatus } = this.state;
     if (description && description !== undefined) {
       return <Description stepStatus={stepStatus}>{description}</Description>;
     }
@@ -335,8 +336,8 @@ class Step extends Component<StepProps, StepState> {
     return stepStatus === 'finish'
       ? 'lugia-icon-reminder_check'
       : stepStatus === 'error'
-      ? 'lugia-icon-reminder_close'
-      : '';
+        ? 'lugia-icon-reminder_close'
+        : '';
   }
 
   getStep() {

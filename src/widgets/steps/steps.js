@@ -38,7 +38,6 @@ type StepsProps = {
   stepType: string,
   currentStepNumber: number,
   status: string,
-  descDirection: string,
   orientation: string,
   size: string,
   getTheme: Function,

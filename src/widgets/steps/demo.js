@@ -26,38 +26,52 @@ const steps = [
     content: 'Third-content',
   },
 ];
-const status = ['process', 'next', 'wait'];
 const StepContent = styled.div`
   margin-top: 30px;
   margin-left: 45px;
+  border: 1px solid #ccc;
+  height: 100px;
+`;
+const ButtonContainer = styled.div`
+  margin-bottom: 30px;
 `;
 
 class StepsDemo extends React.Component<Object, Object> {
   constructor(props) {
     super(props);
     this.state = {
-      currentStepNumber: 0,
+      currentStepNumber: 1,
     };
   }
   next() {
-    const currentStepNumber = this.state.currentStepNumber + 1;
-    status.splice(0, 0, 'finish');
+    const currentStepNumber =
+      this.state.currentStepNumber > 3 ? 1 : this.state.currentStepNumber + 1;
+    this.setState({ currentStepNumber });
+  }
+  pre() {
+    const currentStepNumber =
+      this.state.currentStepNumber <= 1 ? 3 : this.state.currentStepNumber - 1;
     this.setState({ currentStepNumber });
   }
   render() {
     const { currentStepNumber } = this.state;
-    const content =
-      this.state.currentStepNumber < steps.length
-        ? steps[this.state.currentStepNumber].content
-        : '';
+    const matchCurrentNumber = currentStepNumber > 0 && currentStepNumber <= 3;
+    const theCurrentStepNumber = matchCurrentNumber ? currentStepNumber : 1;
+    const content = matchCurrentNumber ? steps[theCurrentStepNumber - 1].content : '';
+
     return (
       <div>
-        <Button type="primary" onClick={() => this.next()}>
-          Next
-        </Button>
         <Theme config={view}>
+          <ButtonContainer>
+            <Button type="primary" onClick={() => this.pre()}>
+              pre
+            </Button>
+            <Button type="primary" onClick={() => this.next()}>
+              Next
+            </Button>
+          </ButtonContainer>
           <Steps currentStepNumber={currentStepNumber} stepType={'simple'} size={'normal'}>
-            {steps.map((item, i) => <Step stepStatus={status[i]} title={item.title} />)}
+            {steps.map((item, i) => <Step title={item.title} />)}
           </Steps>
           <StepContent>{content}</StepContent>
         </Theme>
