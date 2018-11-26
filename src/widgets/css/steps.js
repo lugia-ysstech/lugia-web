@@ -245,32 +245,54 @@ export const getTextAlign = props => {
 };
 export const getBeforeGap = props => {
   const { orientation } = props;
-  props.direction = orientation === 'horizontal' ? 'left' : 'top';
-  return getGap(props);
+  let width = em(4);
+  let height = em(6);
+  let beforeDirection = 'left';
+  let afterDirection = 'top';
+  if (orientation === 'horizontal') {
+    width = em(6);
+    height = em(4);
+    beforeDirection = 'top';
+    afterDirection = 'left';
+  }
+  return getGap({
+    ...props,
+    ...{ afterDirection },
+    ...{ beforeDirection },
+    ...{ width },
+    ...{ height },
+  });
 };
 export const getAfterGap = props => {
   const { orientation } = props;
-  props.direction = orientation === 'horizontal' ? 'right' : 'bottom';
-  return getGap(props);
+  let width = em(4);
+  let height = em(6);
+  let beforeDirection = 'left';
+  let afterDirection = 'bottom';
+  if (orientation === 'horizontal') {
+    width = em(6);
+    height = em(4);
+    beforeDirection = 'top';
+    afterDirection = 'right';
+  }
+  return getGap({
+    ...props,
+    ...{ afterDirection },
+    ...{ beforeDirection },
+    ...{ width },
+    ...{ height },
+  });
 };
 export const getGap = props => {
-  const { stepType, stepStatus, direction, orientation } = props;
+  const { stepType, stepStatus, afterDirection, beforeDirection, width, height } = props;
   if (stepType === 'flat' && (stepStatus === 'next' || stepStatus === 'wait')) {
-    let width = em(4);
-    let height = em(6);
-    let beforeDirection = 'left';
-    if (orientation === 'horizontal') {
-      beforeDirection = 'top';
-      width = em(6);
-      height = em(4);
-    }
     return `
     content: '';
     opacity: 1;
     position: absolute;
     width: ${width};
     ${beforeDirection}:${em(1)};
-    ${direction}: ${em(-2)};
+    ${afterDirection}: ${em(-2)};
     background: ${defaultColor};
     height: ${height};
    `;
