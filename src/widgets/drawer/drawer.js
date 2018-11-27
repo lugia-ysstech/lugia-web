@@ -24,6 +24,9 @@ import {
 
 export const DrawerContext = React.createContext();
 
+DrawerMask.displayName = 'DrawerMask';
+CloseText.displayName = 'CloseText';
+
 export default ThemeProvider(
   class extends React.Component<DrawerProps, DrawerState> {
     static displayName = 'Drawer';
@@ -78,6 +81,7 @@ export default ThemeProvider(
         mask = true,
         placement,
         getTheme,
+        maskClosable = true,
       } = this.props;
       const Doms = (
         <Drawer visible={visible}>
@@ -92,7 +96,7 @@ export default ThemeProvider(
           >
             <DrawerContent>
               <DrawerContentHeader>{title}</DrawerContentHeader>
-              {closable ? (
+              {closable || !maskClosable ? (
                 <DrawerClose>
                   <CloseText onClick={this.handleClose}>
                     <Icon iconClass="lugia-icon-reminder_close" />

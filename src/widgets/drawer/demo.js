@@ -93,14 +93,14 @@ export default class DrawerDemo extends React.Component<any, any> {
             click me
           </Button>
         </DemoBox>
-        <Drawer cur={1} title="Drawer-Header" onClose={this.onClick(3)} visible={visible3}>
+        <Drawer title="Drawer-Header" onClose={this.onClick(3)} visible={visible3}>
           <p>First contents...</p>
           <p>First contents...</p>
           <p>First contents...</p>
           <Button type="primary" onClick={this.openDrawer(4)}>
             Second Drawer
           </Button>
-          <Drawer cur={2} onClose={this.onClick(4)} visible={visible4}>
+          <Drawer onClose={this.onClick(4)} visible={visible4}>
             <p>Second contents...</p>
             <p>Second contents...</p>
             <p>Second contents...</p>

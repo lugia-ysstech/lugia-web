@@ -149,9 +149,12 @@ const getWidthOrHeightByDirection = (props: CSSProps) => {
   return `width: ${em(distance)};height: 100%;`;
 };
 const getTransform = (props: CSSProps) => {
-  const { transform } = props;
+  const { transform, placement } = props;
   if (transform) {
-    return `transform: translateX(${em(-180)});`;
+    if (placement === 'top' || placement === 'bottom') {
+      return `transform: translateY(${placement === 'top' ? em(180) : em(-180)});`;
+    }
+    return `transform: translateX(${placement === 'left' ? em(180) : em(-180)});`;
   }
 };
 export const DrawerContentWrap = styled.div`
