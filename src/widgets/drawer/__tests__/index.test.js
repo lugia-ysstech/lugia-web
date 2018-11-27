@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import chai from 'chai';
-
+import jsdom from 'jsdom';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -15,12 +15,16 @@ import renderer from 'react-test-renderer';
 import Drawer from '../drawer';
 
 const { expect: exp } = chai;
+const { JSDOM } = jsdom;
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Drawer', () => {
   // it('css', () => {
   //   const Target = <DrawerDemo />;
+  //   const documentHTML = '<！DOCTYPE html><body><div id="root"></div></body>';
+  //   global.window = new JSDOM(documentHTML).window;
+  //   global.document = global.window.document;
   //   expect(renderer.create(Target).toJSON()).toMatchSnapshot();
   // });
 
