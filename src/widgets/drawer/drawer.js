@@ -22,17 +22,25 @@ import {
   CloseText,
 } from '../css/drawer';
 
+export const DrawerContext = React.createContext();
+
 export default ThemeProvider(
   class extends React.Component<DrawerProps, DrawerState> {
     static displayName = 'Drawer';
     node: any;
+    isOpen: boolean;
+    isClose: boolean;
     constructor(props) {
       super(props);
       this.state = {
         open: false,
         opening: false,
         closing: false,
+        transform: false,
       };
+      this.isOpen = false;
+      this.isClose = false;
+
       const doc = window && window.document;
       if (doc) {
         this.node = doc.createElement('div');
@@ -61,7 +69,7 @@ export default ThemeProvider(
     }
 
     render() {
-      const { open, closing, opening } = this.state;
+      const { open, closing, opening, transform } = this.state;
       const {
         visible,
         children,
@@ -71,7 +79,7 @@ export default ThemeProvider(
         placement,
         getTheme,
       } = this.props;
-      return createPortal(
+      const Doms = (
         <Drawer visible={visible}>
           {mask ? <DrawerMask onClick={this.handleMaskClick} visible={visible} /> : null}
           <DrawerContentWrap
@@ -80,6 +88,7 @@ export default ThemeProvider(
             open={open}
             opening={opening}
             closing={closing}
+            transform={transform}
           >
             <DrawerContent>
               <DrawerContentHeader>{title}</DrawerContentHeader>
@@ -93,10 +102,44 @@ export default ThemeProvider(
               <DrawerContentMain>{children}</DrawerContentMain>
             </DrawerContent>
           </DrawerContentWrap>
-        </Drawer>,
+        </Drawer>
+      );
+      return createPortal(
+        <DrawerContext.Consumer>
+          {context => {
+            if (!context) {
+              return (
+                <DrawerContext.Provider value={{ level: 0, clickLevel0: this.handleTransform }}>
+                  {Doms}
+                </DrawerContext.Provider>
+              );
+            }
+            this.fatherLevel = context.level;
+            context.level += 1;
+            context['clickLevel' + context.level] = this.handleTransform;
+
+            if (open && !this.isOpen) {
+              context['clickLevel' + this.fatherLevel](true);
+              this.isOpen = true;
+              this.isClose = false;
+            }
+            if (closing && !this.isClose) {
+              context['clickLevel' + this.fatherLevel](false);
+              this.isOpen = false;
+              this.isClose = true;
+            }
+            return Doms;
+          }}
+        </DrawerContext.Consumer>,
         this.node
       );
     }
+
+    handleTransform = (transform: boolean) => {
+      this.setState({
+        transform,
+      });
+    };
 
     handleMaskClick = () => {
       const { onClose, maskClosable = true } = this.props;

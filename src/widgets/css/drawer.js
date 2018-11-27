@@ -24,6 +24,7 @@ export type DrawerState = {
   open: boolean,
   opening: boolean,
   closing: boolean,
+  transform: boolean,
 };
 type CSSProps = {
   open: boolean,
@@ -147,11 +148,19 @@ const getWidthOrHeightByDirection = (props: CSSProps) => {
   }
   return `width: ${em(distance)};height: 100%;`;
 };
+const getTransform = (props: CSSProps) => {
+  const { transform } = props;
+  if (transform) {
+    return `transform: translateX(${em(-180)});`;
+  }
+};
 export const DrawerContentWrap = styled.div`
   position: fixed;
   ${getWidthOrHeightByDirection};
   ${getDrawerAnimate};
   box-shadow: ${em(-2)} 0 ${em(8)} rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+  ${getTransform};
 `;
 export const DrawerContent = styled.div`
   width: 100%;
