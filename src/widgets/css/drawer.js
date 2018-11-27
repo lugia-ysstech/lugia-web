@@ -110,7 +110,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
   const openFrom = `${Direction}: ${em(-distance)};`;
   const openTo = `${Direction}: 0;`;
   const closeFrom = `${Direction}: 0;`;
-  const closeTo = `${Direction}: ${em(-distance)};`;
+  const closeTo = `${Direction}: ${em(-(distance + 8))};`;
   const OpenKeyframe = keyframes`
     from { ${openFrom} }
     to { ${openTo} }
@@ -127,7 +127,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
   }
   if (closing) {
     return `
-      ${Direction}: ${em(-distance)};
+      ${Direction}: ${em(-(distance + 8))};
       animation: ${CloseKeyframe} .3s;
     `;
   }
@@ -137,7 +137,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
     `;
   }
   return `
-    ${Direction}: ${em(-distance)};
+    ${Direction}: ${em(-(distance + 8))};
   `;
 };
 const getWidthOrHeightByDirection = (props: CSSProps) => {
