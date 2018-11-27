@@ -105,6 +105,8 @@ const TimeLine = 'sv_widget_TimeLine';
 const TimeLineItem = 'sv_widget_TimeLineItem';
 
 const Transfer = 'sv_widget_Transfer';
+const Drawer = 'sv_widget_Drawer';
+
 export default {
   Button,
   Input,
@@ -193,4 +195,5 @@ export default {
   Skeleton,
   Carousel,
   Transfer,
+  Drawer,
 };

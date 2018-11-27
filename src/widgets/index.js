@@ -99,3 +99,7 @@ export { default as Message } from './message';
 export { default as Modal } from './modal';
 
 export { default as notification } from './notification';
+
+export { default as Trasfer } from './trasfer';
+
+export { default as Drawer } from './drawer';
