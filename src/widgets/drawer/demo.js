@@ -28,6 +28,9 @@ export default class DrawerDemo extends React.Component<any, any> {
       visible4: false,
       visible5: false,
       visible6: false,
+      visible7: false,
+      visible8: false,
+      visible9: false,
       radioValue: 'right',
     };
   }
@@ -104,6 +107,30 @@ export default class DrawerDemo extends React.Component<any, any> {
             <p>Second contents...</p>
             <p>Second contents...</p>
             <p>Second contents...</p>
+            <Button type="primary" onClick={this.openDrawer(7)}>
+              Three Drawer
+            </Button>
+            <Drawer onClose={this.onClick(7)} visible={this.state.visible7}>
+              <p>Three contents...</p>
+              <p>Three contents...</p>
+              <p>Three contents...</p>
+              <Button type="primary" onClick={this.openDrawer(8)}>
+                Four Drawer
+              </Button>
+              <Drawer onClose={this.onClick(8)} visible={this.state.visible8}>
+                <p>Four contents...</p>
+                <p>Four contents...</p>
+                <p>Four contents...</p>
+                <Button type="primary" onClick={this.openDrawer(9)}>
+                  Five Drawer
+                </Button>
+                <Drawer onClose={this.onClick(9)} visible={this.state.visible9}>
+                  <p>Five contents...</p>
+                  <p>Five contents...</p>
+                  <p>Five contents...</p>
+                </Drawer>
+              </Drawer>
+            </Drawer>
           </Drawer>
         </Drawer>
 
