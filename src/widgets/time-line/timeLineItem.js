@@ -61,6 +61,7 @@ const Content = styled.div`
 const DotContainer = styled.div`
   position: relative;
   width: ${em(20)};
+  text-align: center;
 `;
 
 const Line = styled.div`

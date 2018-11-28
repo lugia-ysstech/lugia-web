@@ -31,7 +31,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   width: 100%;
 }
 
-.c14 {
+.c13 {
   position: relative;
   height: 4.500000000000001em;
   width: 100%;
@@ -46,7 +46,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   color: #333333;
 }
 
-.c16 {
+.c15 {
   text-align: inherit;
   font-size: 1.4rem;
   max-width: 12.5em;
@@ -64,7 +64,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   margin-left: 2.0833333333333335em;
 }
 
-.c13 {
+.c17 {
   position: absolute;
   top: 0;
   text-align: right;
@@ -75,6 +75,7 @@ exports[`timeLineDemo Component JSON 1`] = `
 .c3 {
   position: relative;
   width: 1.6666666666666667em;
+  text-align: center;
 }
 
 .c5 {
@@ -110,7 +111,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c15 {
+.c14 {
   position: relative;
   left: 0.8333333333333334em;
   height: inherit;
@@ -118,7 +119,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c17 {
+.c16 {
   position: relative;
   left: 0.8333333333333334em;
   height: inherit;
@@ -193,7 +194,8 @@ exports[`timeLineDemo Component JSON 1`] = `
 
 .c0 {
   text-align: left;
-  margin: 100px;
+  margin-top: 50px;
+  margin-left: 100px;
   display: inline-block;
 }
 
@@ -202,7 +204,7 @@ exports[`timeLineDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      simple
+       调节高度的 简洁样式
     </p>
     <br />
     <div
@@ -339,7 +341,174 @@ exports[`timeLineDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      mode alternate
+      有详情描述 简洁样式 
+    </p>
+    <br />
+    <div
+      className="c1"
+    >
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c14"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-01
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description111
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c14"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-02
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description222
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c14"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-03
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description333
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c14"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-04
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description444
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c16"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-05
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description555
+             
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      左右分散排列 简洁样式
     </p>
     <br />
     <div
@@ -359,7 +528,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           className="c9"
         />
         <div
-          className="c13"
+          className="c17"
           direction="left"
         >
           <div
@@ -409,7 +578,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           className="c9"
         />
         <div
-          className="c13"
+          className="c17"
           direction="left"
         >
           <div
@@ -459,7 +628,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           className="c12"
         />
         <div
-          className="c13"
+          className="c17"
           direction="left"
         >
           <div
@@ -476,14 +645,14 @@ exports[`timeLineDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      正常
+       左右分散排列 有详情描述 简洁样式
     </p>
     <br />
     <div
       className="c1"
     >
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -493,11 +662,11 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
-          className="c6"
-          direction="right"
+          className="c17"
+          direction="left"
         >
           <div
             className="c7"
@@ -506,7 +675,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description111
              
@@ -514,7 +683,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -524,7 +693,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -537,7 +706,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description222
              
@@ -545,7 +714,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -555,11 +724,11 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
-          className="c6"
-          direction="right"
+          className="c17"
+          direction="left"
         >
           <div
             className="c7"
@@ -568,7 +737,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description333
              
@@ -576,7 +745,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -586,7 +755,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -599,7 +768,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description444
              
@@ -607,7 +776,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -617,11 +786,11 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c17"
+          className="c16"
         />
         <div
-          className="c6"
-          direction="right"
+          className="c17"
+          direction="left"
         >
           <div
             className="c7"
@@ -630,7 +799,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description555
              
@@ -643,174 +812,7 @@ exports[`timeLineDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      mode:alternate 
-    </p>
-    <br />
-    <div
-      className="c1"
-    >
-      <div
-        className="c14"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-          />
-        </div>
-        <div
-          className="c15"
-        />
-        <div
-          className="c13"
-          direction="left"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c16"
-          >
-            description111
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c14"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-          />
-        </div>
-        <div
-          className="c15"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c16"
-          >
-            description222
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c14"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-          />
-        </div>
-        <div
-          className="c15"
-        />
-        <div
-          className="c13"
-          direction="left"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c16"
-          >
-            description333
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c14"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-          />
-        </div>
-        <div
-          className="c15"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c16"
-          >
-            description444
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c14"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-          />
-        </div>
-        <div
-          className="c17"
-        />
-        <div
-          className="c13"
-          direction="left"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-05
-             
-          </div>
-          <div
-            className="c16"
-          >
-            description555
-             
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c0"
-  >
-    <p>
-      不同状态
+      不同状态 简洁样式
     </p>
     <br />
     <div
@@ -947,25 +949,25 @@ exports[`timeLineDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      type icon 
+      自定义元素 图标样式 
     </p>
     <br />
     <div
       className="c1"
     >
       <div
-        className="c14"
+        className="c13"
         type="icon"
       >
         <div
           className="c3"
         >
           <i
-            className="lugia-icon-financial_archive c20 c21"
+            className="lugia-icon-financial_progress c20 c21"
           />
         </div>
         <div
-          className="c15"
+          className="c14"
           type="icon"
         />
         <div
@@ -979,7 +981,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description111
              
@@ -987,7 +989,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -997,7 +999,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1010,7 +1012,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description222
              
@@ -1018,7 +1020,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1028,7 +1030,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1041,7 +1043,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description333
              
@@ -1049,18 +1051,18 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
         type="icon"
       >
         <div
           className="c3"
         >
           <i
-            className="lugia-icon-financial_archive c20 c21"
+            className="lugia-icon-financial_progress c20 c21"
           />
         </div>
         <div
-          className="c15"
+          className="c14"
           type="icon"
         />
         <div
@@ -1074,7 +1076,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description444
              
@@ -1082,7 +1084,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1092,7 +1094,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c17"
+          className="c16"
         />
         <div
           className="c6"
@@ -1105,7 +1107,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description555
              
@@ -1118,14 +1120,14 @@ exports[`timeLineDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      pending 
+       默认 幽灵节点样式 
     </p>
     <br />
     <div
       className="c1"
     >
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1135,7 +1137,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1148,7 +1150,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description111
              
@@ -1156,7 +1158,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1166,7 +1168,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1179,7 +1181,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description222
              
@@ -1187,7 +1189,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1197,7 +1199,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1210,7 +1212,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description333
              
@@ -1218,7 +1220,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1228,7 +1230,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1241,7 +1243,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description444
              
@@ -1249,7 +1251,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1259,7 +1261,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c17"
+          className="c16"
         />
         <div
           className="c6"
@@ -1272,7 +1274,174 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
+          >
+            description555
+             
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      自定义 幽灵节点内容为 Icon 
+    </p>
+    <br />
+    <div
+      className="c1"
+    >
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c14"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-01
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description111
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c14"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-02
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description222
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c14"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-03
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description333
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+          />
+        </div>
+        <div
+          className="c14"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-04
+             
+          </div>
+          <div
+            className="c15"
+          >
+            description444
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c13"
+      >
+        <div
+          className="c3"
+        >
+          <i
+            className="lugia-icon-financial_abort  c21"
+          />
+        </div>
+        <div
+          className="c16"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2018-01-05
+             
+          </div>
+          <div
+            className="c15"
           >
             description555
              
@@ -1298,7 +1467,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1308,7 +1477,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1321,7 +1490,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description111
              
@@ -1329,7 +1498,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1339,7 +1508,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1352,7 +1521,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description222
              
@@ -1360,7 +1529,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1370,7 +1539,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1383,7 +1552,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description333
              
@@ -1391,7 +1560,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1401,7 +1570,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c15"
+          className="c14"
         />
         <div
           className="c6"
@@ -1414,7 +1583,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description444
              
@@ -1422,7 +1591,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
           className="c3"
@@ -1432,7 +1601,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c17"
+          className="c16"
         />
         <div
           className="c6"
@@ -1445,7 +1614,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c16"
+            className="c15"
           >
             description555
              

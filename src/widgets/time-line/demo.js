@@ -8,7 +8,7 @@ import * as React from 'react';
 import TimeLine from './timeLine';
 import TimeLineItem from './timeLineItem';
 import Theme from '../theme/';
-import Loading from '../loading/';
+import Icon from '../icon/';
 import styled from 'styled-components';
 
 class TimeLinePending extends React.Component<Object, Object> {
@@ -40,7 +40,8 @@ class TimeLinePending extends React.Component<Object, Object> {
 
 const Wrapper = styled.div`
   text-align: left;
-  margin: 100px;
+  margin-top: 50px;
+  margin-left: 100px;
   display: inline-block;
 `;
 const view = {
@@ -56,7 +57,7 @@ export const SimpleDemo = () => {
     <Theme config={view}>
       <div>
         <Wrapper>
-          <p>simple</p>
+          <p> 调节高度的 简洁样式</p>
           <br />
           <TimeLine>
             <TimeLineItem viewClass={'long'} time="2018-01-01" />
@@ -67,7 +68,18 @@ export const SimpleDemo = () => {
           </TimeLine>
         </Wrapper>
         <Wrapper>
-          <p>mode alternate</p>
+          <p>有详情描述 简洁样式 </p>
+          <br />
+          <TimeLine>
+            <TimeLineItem time="2018-01-01" description={'description111'} />
+            <TimeLineItem time="2018-01-02" description={'description222'} />
+            <TimeLineItem time="2018-01-03" description={'description333'} />
+            <TimeLineItem time="2018-01-04" description={'description444'} />
+            <TimeLineItem time="2018-01-05" description={'description555'} />
+          </TimeLine>
+        </Wrapper>
+        <Wrapper>
+          <p>左右分散排列 简洁样式</p>
           <br />
           <TimeLine mode={'alternate'}>
             <TimeLineItem time="2018-01-01" />
@@ -78,18 +90,7 @@ export const SimpleDemo = () => {
           </TimeLine>
         </Wrapper>
         <Wrapper>
-          <p>正常</p>
-          <br />
-          <TimeLine>
-            <TimeLineItem time="2018-01-01" description={'description111'} />
-            <TimeLineItem time="2018-01-02" description={'description222'} />
-            <TimeLineItem time="2018-01-03" description={'description333'} />
-            <TimeLineItem time="2018-01-04" description={'description444'} />
-            <TimeLineItem time="2018-01-05" description={'description555'} />
-          </TimeLine>
-        </Wrapper>
-        <Wrapper>
-          <p>mode:alternate </p>
+          <p> 左右分散排列 有详情描述 简洁样式</p>
           <br />
           <TimeLine mode={'alternate'}>
             <TimeLineItem time="2018-01-01" description={'description111'} />
@@ -100,7 +101,7 @@ export const SimpleDemo = () => {
           </TimeLine>
         </Wrapper>
         <Wrapper>
-          <p>不同状态</p>
+          <p>不同状态 简洁样式</p>
           <br />
           <TimeLine direction={'left'}>
             <TimeLineItem time="2018-01-01" status={'success'} />
@@ -111,14 +112,14 @@ export const SimpleDemo = () => {
           </TimeLine>
         </Wrapper>
         <Wrapper>
-          <p>type icon </p>
+          <p>自定义元素 图标样式 </p>
           <br />
           <TimeLine>
             <TimeLineItem
               time="2018-01-01"
               description={'description111'}
               type={'icon'}
-              icon={'lugia-icon-financial_archive'}
+              icon={'lugia-icon-financial_progress'}
             />
             <TimeLineItem time="2018-01-02" description={'description222'} />
             <TimeLineItem time="2018-01-03" description={'description333'} />
@@ -126,15 +127,26 @@ export const SimpleDemo = () => {
               time="2018-01-04"
               description={'description444'}
               type={'icon'}
-              icon={'lugia-icon-financial_archive'}
+              icon={'lugia-icon-financial_progress'}
             />
             <TimeLineItem time="2018-01-05" description={'description555'} />
           </TimeLine>
         </Wrapper>
         <Wrapper>
-          <p>pending </p>
+          <p> 默认 幽灵节点样式 </p>
           <br />
           <TimeLine pending={true}>
+            <TimeLineItem time="2018-01-01" description={'description111'} />
+            <TimeLineItem time="2018-01-02" description={'description222'} />
+            <TimeLineItem time="2018-01-03" description={'description333'} />
+            <TimeLineItem time="2018-01-04" description={'description444'} />
+            <TimeLineItem time="2018-01-05" description={'description555'} />
+          </TimeLine>
+        </Wrapper>
+        <Wrapper>
+          <p>自定义 幽灵节点内容为 Icon </p>
+          <br />
+          <TimeLine pending={true} pendingDot={<Icon iconClass={'lugia-icon-financial_abort'} />}>
             <TimeLineItem time="2018-01-01" description={'description111'} />
             <TimeLineItem time="2018-01-02" description={'description222'} />
             <TimeLineItem time="2018-01-03" description={'description333'} />
@@ -151,7 +163,18 @@ export const OtherDemo = () => {
   return (
     <div>
       <Wrapper>
-        <p>pending </p>
+        <p>节点说明样式 </p>
+        <br />
+        <TimeLine>
+          <TimeLineItem time="2018-01-01" />
+          <TimeLineItem time="2018-01-02" type="explain" />
+          <TimeLineItem time="2018-01-03" />
+          <TimeLineItem time="2018-01-04" type="explain" />
+          <TimeLineItem time="2018-01-05" />
+        </TimeLine>
+      </Wrapper>
+      <Wrapper>
+        <p>节点说明样式 </p>
         <br />
         <TimeLine>
           <TimeLineItem time="2018-01-01" description={'description111'} />
@@ -159,17 +182,6 @@ export const OtherDemo = () => {
           <TimeLineItem time="2018-01-03" description={'description333'} />
           <TimeLineItem time="2018-01-04" description={'description444'} type="explain" />
           <TimeLineItem time="2018-01-05" description={'description555'} />
-        </TimeLine>
-      </Wrapper>
-      <Wrapper>
-        <p>pending </p>
-        <br />
-        <TimeLine>
-          <TimeLineItem time="2018-01-01" />
-          <TimeLineItem time="2018-01-02" type="explain" />
-          <TimeLineItem time="2018-01-03" type="explain" />
-          <TimeLineItem time="2018-01-04" type="explain" />
-          <TimeLineItem time="2018-01-05" />
         </TimeLine>
       </Wrapper>
     </div>
