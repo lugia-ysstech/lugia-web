@@ -8,6 +8,7 @@ import * as React from 'react';
 import TimeLine from './timeLine';
 import TimeLineItem from './timeLineItem';
 import Theme from '../theme/';
+import Loading from '../loading/';
 import styled from 'styled-components';
 
 class TimeLinePending extends React.Component<Object, Object> {

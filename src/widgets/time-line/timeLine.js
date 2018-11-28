@@ -24,7 +24,7 @@ type TimeLineProps = {
   getTheme: Function,
   children: React$Element<any>,
   reverse: boolean,
-  pendingDot: string,
+  pendingDot: string | React$Element<any>,
   pending: boolean,
 };
 

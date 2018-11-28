@@ -55,6 +55,7 @@ const Message = styled.div`
   font-size: ${FontSize};
   line-height: 1.5;
   max-width: ${em(maxWidth)};
+  overflow: hidden;
   padding: ${em(6)} ${em(8)};
   color: ${getFontColor};
   text-align: left;

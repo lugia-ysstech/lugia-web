@@ -39,19 +39,19 @@ const ItemContainer = styled.div`
   ${getContainerHeight};
   width: 100%;
 `;
-const Time = styled.div`
+const BaseText = styled.div`
   text-align: inherit;
   font-size: 1.4rem;
-  ${getTimeColor};
-  width: ${em(100)};
-`;
-const Description = styled.div`
-  text-align: inherit;
-  line-height: 1.5;
-  font-size: 1.4rem;
-  ${getDescriptionColor};
-  width: ${em(100)};
+  max-width: ${em(150)};
+  overflow: hidden;
   white-space: nowrap;
+`;
+const Time = BaseText.extend`
+  ${getTimeColor};
+`;
+const Description = BaseText.extend`
+  line-height: 1.5;
+  ${getDescriptionColor};
 `;
 const Content = styled.div`
   position: absolute;
@@ -107,7 +107,7 @@ type TimeLineProps = {
   status: TimeLineStatus,
   type: TimeLineType,
   pendingDot: string | React$Element<any>,
-  pending: boolean | string | React$Element<any>,
+  pending: boolean,
 };
 
 class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
@@ -148,8 +148,11 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
     const { icon, type, pending, pendingDot, isLast, time, description } = this.props;
     const hasIcon = icon !== null && icon !== undefined;
     if (pending === true) {
-      if (isLast) {
-        return <TimeLineIcon pending={pending} iconClass={pendingDot} />;
+      if (isLast && pendingDot !== null) {
+        if (typeof pendingDot === 'string') {
+          return <TimeLineIcon pending={pending} iconClass={pendingDot} />;
+        }
+        return pendingDot;
       }
     } else if (type === 'icon' && hasIcon) {
       return <TimeLineIcon iconClass={icon} />;
