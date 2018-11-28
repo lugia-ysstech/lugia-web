@@ -193,7 +193,7 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
     const target = {
       keyCode: Keys.UP,
     };
-    expect(instance.matchKeyCode(source)(target)).toBeFalsy();
+    expect(instance.matchKeyCode(source)(target)).toBeTruthy();
   });
 
   it('pickMethod param is empty', () => {
@@ -207,6 +207,7 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
     expect(instance.pickMethod({ method: '   ' })).toEqual([]);
     expect(instance.pickMethod({ method: '   hello' })).toEqual(['hello']);
     expect(instance.pickMethod({ method: ['', 'hello', ''] })).toEqual(['hello']);
+    expect(instance.pickMethod({ method: [null, 'hello', undefined] })).toEqual(['hello']);
     expect(instance.pickMethod({ method: ['', '   ', 'hello'] })).toEqual(['hello']);
   });
   it('pickMethod param ', () => {

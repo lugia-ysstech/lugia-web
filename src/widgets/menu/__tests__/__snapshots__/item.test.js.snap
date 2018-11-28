@@ -1,12 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Item Mutliple MenuItem 1`] = `
+.c1 {
+  padding: 0.5833333333333334em 0.6666666666666667em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
 .c0 {
   box-sizing: border-box;
   position: relative;
   display: block;
   height: 2.916666666666667em;
-  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
   color: #333333;
   font-weight: 500;
@@ -23,29 +33,6 @@ exports[`Item Mutliple MenuItem 1`] = `
   font-weight: 900;
 }
 
-.c0::after {
-  font-family: "sviconfont" !important;
-  text-rendering: optimizeLegibility;
-  content: "\\e73e";
-  color: transparent;
-  display: inline-block;
-  font-size: 1.2rem;
-  -webkit-transform: scale(.83333333) rotate(0deg);
-  -ms-transform: scale(.83333333) rotate(0deg);
-  transform: scale(.83333333) rotate(0deg);
-  zoom: 1;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 0.8333333333333334em;
-  font-weight: 700;
-  text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
-}
-
 .c0:hover:after {
   color: #d0c8c8;
 }
@@ -53,21 +40,36 @@ exports[`Item Mutliple MenuItem 1`] = `
 <li
   checked={false}
   className="c0"
+  disabled={false}
   title=""
 >
-  <a>
-    hello
-  </a>
+  <span
+    className="c1"
+  >
+    <a>
+      hello
+    </a>
+  </span>
 </li>
 `;
 
 exports[`Item Mutliple MenuItem checked 1`] = `
+.c1 {
+  padding: 0.5833333333333334em 0.6666666666666667em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
 .c0 {
   box-sizing: border-box;
   position: relative;
   display: block;
   height: 2.916666666666667em;
-  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
   color: #684fff;
   font-weight: 900;
@@ -82,29 +84,6 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 .c0:hover {
   background-color: #edf0fe;
   font-weight: 900;
-}
-
-.c0::after {
-  font-family: "sviconfont" !important;
-  text-rendering: optimizeLegibility;
-  content: "\\e73e";
-  color: transparent;
-  display: inline-block;
-  font-size: 1.2rem;
-  -webkit-transform: scale(.83333333) rotate(0deg);
-  -ms-transform: scale(.83333333) rotate(0deg);
-  transform: scale(.83333333) rotate(0deg);
-  zoom: 1;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 0.8333333333333334em;
-  font-weight: 700;
-  text-shadow: 0 0.1px 0,0.1px 0 0,0 -0.1px 0,-0.1px 0;
 }
 
 .c0:after {
@@ -118,21 +97,36 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 <li
   checked={true}
   className="c0"
+  disabled={false}
   title=""
 >
-  <a>
-    hello
-  </a>
+  <span
+    className="c1"
+  >
+    <a>
+      hello
+    </a>
+  </span>
 </li>
 `;
 
 exports[`Item Single MenuItem 1`] = `
+.c1 {
+  padding: 0.5833333333333334em 0.6666666666666667em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
 .c0 {
   box-sizing: border-box;
   position: relative;
   display: block;
   height: 2.916666666666667em;
-  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
   color: #333333;
   font-weight: 500;
@@ -152,19 +146,34 @@ exports[`Item Single MenuItem 1`] = `
 <li
   checked={false}
   className="c0"
+  disabled={false}
   title="hello"
 >
-  hello
+  <span
+    className="c1"
+  >
+    hello
+  </span>
 </li>
 `;
 
 exports[`Item Single MenuItem checked 1`] = `
+.c1 {
+  padding: 0.5833333333333334em 0.6666666666666667em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
 .c0 {
   box-sizing: border-box;
   position: relative;
   display: block;
   height: 2.916666666666667em;
-  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
   color: #684fff;
   font-weight: 900;
@@ -184,21 +193,36 @@ exports[`Item Single MenuItem checked 1`] = `
 <li
   checked={true}
   className="c0"
+  disabled={false}
   title=""
 >
-  <a>
-    hello
-  </a>
+  <span
+    className="c1"
+  >
+    <a>
+      hello
+    </a>
+  </span>
 </li>
 `;
 
 exports[`Item children: null 1`] = `
+.c1 {
+  padding: 0.5833333333333334em 0.6666666666666667em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
 .c0 {
   box-sizing: border-box;
   position: relative;
   display: block;
   height: 2.916666666666667em;
-  padding: 0.5833333333333334em 0.6666666666666667em;
   font-weight: 400;
   color: #333333;
   font-weight: 500;
@@ -218,6 +242,11 @@ exports[`Item children: null 1`] = `
 <li
   checked={false}
   className="c0"
+  disabled={false}
   title=""
-/>
+>
+  <span
+    className="c1"
+  />
+</li>
 `;

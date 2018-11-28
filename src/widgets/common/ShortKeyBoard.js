@@ -37,18 +37,33 @@ export default (Target, keyConfig: Object[]) =>
     }
 
     matchKeyCode(target: Object) {
+      const targetKeyCode = target.keyCode;
+      const targetAltKey = !!target.altKey;
+      const targetShiftKey = !!target.shiftKey;
+      const targetCtrlKey = !!target.ctrlKey;
       return item => {
         const { keyCode = false, altKey = false, shiftKey = false, ctrlKey = false } = item;
         return (
-          keyCode === target.keyCode &&
-          altKey === target.altKey &&
-          shiftKey === target.shiftKey &&
-          ctrlKey === target.ctrlKey
+          keyCode === targetKeyCode &&
+          altKey === targetAltKey &&
+          shiftKey === targetShiftKey &&
+          ctrlKey === targetCtrlKey
         );
       };
     }
 
     pickMethod(item: Object) {
-      return item.method;
+      const { method = [] } = item;
+      if (!method) {
+        return [];
+      }
+      const trim = str => str.toString().trim();
+      const result = Array.isArray(method) ? method : [method];
+
+      return result
+        .filter(item => {
+          return item !== null && item !== undefined && trim(item) !== '';
+        })
+        .map(trim);
     }
   };

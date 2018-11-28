@@ -8522,12 +8522,9 @@ exports[`default css 1`] = `
   z-index: 2;
 }
 
-<span
-  className={undefined}
->
+<span>
   <div
     className="c0"
-    disabled={undefined}
     onMouseDown={[Function]}
     onMouseUp={[Function]}
     value={
@@ -8538,7 +8535,6 @@ exports[`default css 1`] = `
   >
     <div
       className="c1"
-      disabled={undefined}
       value={
         Array [
           0,
@@ -8547,7 +8543,6 @@ exports[`default css 1`] = `
     />
     <span
       className="c2"
-      disabled={undefined}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}

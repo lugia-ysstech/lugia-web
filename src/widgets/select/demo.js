@@ -8,6 +8,11 @@ import * as React from 'react';
 import Select from './index';
 import Widget from '../consts/index';
 import Theme from '../theme/index';
+import styled from 'styled-components';
+
+const H2 = styled.h2`
+  padding: 20px;
+`;
 
 const data = (function(t) {
   const res = [];
@@ -23,7 +28,8 @@ export default class Demo extends React.Component {
     this.state = {
       menu: null,
       value: ['key-a', 'key+', 'key++'],
-      config: { [Widget.Select]: { width } },
+      // config: { [Widget.Select]: { width } },
+      config: {},
     };
   }
 
@@ -33,7 +39,7 @@ export default class Demo extends React.Component {
     return (
       <Theme config={config}>
         <div>
-          <h2>single</h2>
+          <H2>single</H2>
           <Select
             data={data}
             displayField={'label'}
@@ -44,16 +50,16 @@ export default class Demo extends React.Component {
             mutliple
           />
 
-          <h2>single search</h2>
+          <H2>single search</H2>
           <Select canSearch displayField={'label'} data={data} />
 
-          <h2>single canInput</h2>
+          <H2>single canInput</H2>
           <Select canSearch canInput displayField={'label'} data={data} />
 
-          <h2>非受限 mutliple</h2>
+          <H2>非受限 mutliple</H2>
           <Select data={data} displayField={'label'} mutliple limitCount={5} />
 
-          <h2>非受限 mutliple DefaultValue</h2>
+          <H2>非受限 mutliple DefaultValue</H2>
           <Select
             mutliple
             defaultValue={['key-0', 'key-1']}
@@ -64,7 +70,7 @@ export default class Demo extends React.Component {
             onSelect={this.onSelect}
           />
 
-          <h2>受限 mutliple canInput</h2>
+          <H2>受限 mutliple canInput</H2>
           <Select
             value={value}
             displayValue={[]}

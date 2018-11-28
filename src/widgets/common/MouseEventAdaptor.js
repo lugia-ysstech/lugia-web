@@ -13,6 +13,14 @@ export default Target =>
           const { onMouseOut } = this.props;
           onMouseOut && onMouseOut(...rest);
         },
+        onMouseDown = (...rest) => {
+          const { onMouseDown } = this.props;
+          onMouseDown && onMouseDown(...rest);
+        },
+        onMouseUp = (...rest) => {
+          const { onMouseUp } = this.props;
+          onMouseUp && onMouseUp(...rest);
+        },
         onMouseOver = (...rest) => {
           const { onMouseOver } = this.props;
           onMouseOver && onMouseOver(...rest);
@@ -25,6 +33,8 @@ export default Target =>
           onMouseOut={onMouseOut}
           onMouseEnter={onMouseEnter}
           onMouseOver={onMouseOver}
+          onMouseUp={onMouseUp}
+          onMouseDown={onMouseDown}
         />
       );
     }

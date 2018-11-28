@@ -114,12 +114,13 @@ export default ThemeProvider(
       };
 
       renderChildren = (scrrenSize?: string, gutter?: number | Object) => {
-        const { children } = this.props;
+        const { children, equable = 24 } = this.props;
         return React.Children.map(children, child => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, {
               scrrenSize,
               gutter,
+              equable,
             });
           }
         });

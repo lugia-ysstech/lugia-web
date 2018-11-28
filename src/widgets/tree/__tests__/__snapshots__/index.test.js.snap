@@ -214,7 +214,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -227,7 +226,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
@@ -672,7 +671,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 `;
 
 exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
-.c3 {
+.c4 {
   font-size: 1em;
   color: #999999;
   display: inline-block;
@@ -680,7 +679,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   vertical-align: top;
 }
 
-.c8 {
+.c9 {
   font-size: 1em;
   color: #999999;
   display: inline-block;
@@ -689,12 +688,12 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   opacity: 0;
 }
 
-.c1 {
+.c2 {
   padding-right: 1.5em;
   margin: 0;
 }
 
-.c2 {
+.c3 {
   min-height: 2.5em;
   line-height: 2.5em;
   list-style: none;
@@ -703,12 +702,12 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   overflow: hidden;
 }
 
-.c7 {
+.c8 {
   margin: 0;
   padding: 0 0 0 1.5em;
 }
 
-.c5 {
+.c6 {
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
@@ -724,15 +723,15 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   color: #666666;
 }
 
-.c5:hover {
+.c6:hover {
   background-color: #edf0fe;
 }
 
-.c6 {
+.c7 {
   opacity: 1;
 }
 
-.c4 {
+.c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -741,156 +740,168 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 }
 
 .c0 {
+  overflow: hidden;
+  height: 20.833333333333336em;
+  width: 20.833333333333336em;
   position: relative;
-  top: NaNem;
+}
+
+.c1 {
+  position: relative;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
 
-<ul
-  className="rc-tree c0 rc-tree-show-line c1"
-  role="tree-node"
-  unselectable="on"
+<div
+  className="c0"
+  onWheel={[Function]}
 >
-  <li
-    className="c2"
-    selected={false}
-    title="2"
+  <ul
+    className="rc-tree c1 rc-tree-show-line c2"
+    role="tree-node"
     unselectable="on"
   >
-    <span
+    <li
       className="c3"
-      onClick={[Function]}
-    >
-      <i
-        className="lugia-icon-direction_caret_down  c4"
-      />
-    </span>
-    <span
-      className="c5"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       selected={false}
       title="2"
+      unselectable="on"
     >
       <span
+        className="c4"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
         className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
         title="2"
       >
-        2
-      </span>
-    </span>
-    <ul
-      className="c7"
-      data-expanded={true}
-    >
-      <li
-        className="c2"
-        selected={false}
-        title="2.1"
-        unselectable="on"
-      >
         <span
-          className="c3"
-          onClick={[Function]}
+          className="c7"
+          title="2"
         >
-          <i
-            className="lugia-icon-direction_caret_down  c4"
-          />
+          2
         </span>
-        <span
-          className="c5"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
+      </span>
+      <ul
+        className="c8"
+        data-expanded={true}
+      >
+        <li
+          className="c3"
           selected={false}
           title="2.1"
+          unselectable="on"
         >
           <span
+            className="c4"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_caret_down  c5"
+            />
+          </span>
+          <span
             className="c6"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
             title="2.1"
           >
-            2.1
-          </span>
-        </span>
-        <ul
-          className="c7"
-          data-expanded={true}
-        >
-          <li
-            className="c2"
-            selected={false}
-            title="2.1.2"
-            unselectable="on"
-          >
             <span
-              className="c3"
-              onClick={[Function]}
+              className="c7"
+              title="2.1"
             >
-              <i
-                className="lugia-icon-direction_caret_down  c4"
-              />
+              2.1
             </span>
-            <span
-              className="c5"
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
+          </span>
+          <ul
+            className="c8"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
               selected={false}
               title="2.1.2"
+              unselectable="on"
             >
               <span
+                className="c4"
+                onClick={[Function]}
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
                 className="c6"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
                 title="2.1.2"
               >
-                2.1.2
-              </span>
-            </span>
-            <ul
-              className="c7"
-              data-expanded={true}
-            >
-              <li
-                className="c2"
-                selected={false}
-                title="2.1.2.1"
-                unselectable="on"
-              >
                 <span
-                  className="c8"
+                  className="c7"
+                  title="2.1.2"
                 >
-                  <i
-                    className="lugia-icon-direction_caret_down  c4"
-                  />
+                  2.1.2
                 </span>
-                <span
-                  className="c5"
-                  onClick={[Function]}
-                  onContextMenu={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
+              </span>
+              <ul
+                className="c8"
+                data-expanded={true}
+              >
+                <li
+                  className="c3"
                   selected={false}
                   title="2.1.2.1"
+                  unselectable="on"
                 >
                   <span
+                    className="c9"
+                  >
+                    <i
+                      className="lugia-icon-direction_caret_down  c5"
+                    />
+                  </span>
+                  <span
                     className="c6"
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    selected={false}
                     title="2.1.2.1"
                   >
-                    2.1.2.1
+                    <span
+                      className="c7"
+                      title="2.1.2.1"
+                    >
+                      2.1.2.1
+                    </span>
                   </span>
-                </span>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
 `;
 
 exports[`Tree props: value: 1 mutliple: false onChange监听 limit 1`] = `
@@ -1033,7 +1044,6 @@ Array [
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1046,7 +1056,7 @@ Array [
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
@@ -1609,7 +1619,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1622,7 +1631,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
