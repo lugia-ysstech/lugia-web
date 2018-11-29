@@ -45,11 +45,13 @@ export default ThemeProvider(
       };
       this.isOpen = false;
       this.isClose = false;
-
-      const doc = window && window.document;
-      if (doc) {
-        this.node = doc.createElement('div');
-        doc.body && doc.body.appendChild(this.node);
+      this.node = null;
+      if (typeof window !== 'undefined') {
+        const doc = window && window.document;
+        if (doc) {
+          this.node = doc.createElement('div');
+          doc.body && doc.body.appendChild(this.node);
+        }
       }
     }
     static getDerivedStateFromProps(props, state) {
@@ -73,6 +75,9 @@ export default ThemeProvider(
       }
     }
     render() {
+      if (!this.node) {
+        return null;
+      }
       const { open, closing, opening, transform } = this.state;
       const {
         visible,
