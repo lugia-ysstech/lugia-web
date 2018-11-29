@@ -75,3 +75,41 @@ export function isContained(a: Array<any>, b: string[]) {
   }
   return true;
 }
+export function forData(
+  data: Object[],
+  target: Object[],
+  parentKey?: string[],
+  parentPath?: string[]
+) {
+  data.map((item, index) => {
+    const { children } = item;
+    const newObj = {};
+    newObj.key = item.value;
+    newObj.title = item.text;
+    let pidArr;
+    if (!parentKey) {
+      newObj.pid = undefined;
+      newObj.path = undefined;
+      pidArr = [];
+    } else {
+      newObj.pid = parentKey;
+      if (parentPath.indexOf(parentKey) === -1) {
+        parentPath.push(parentKey);
+      }
+      pidArr = [...parentPath];
+      newObj.path = pidArr.join('/');
+    }
+
+    if (!children || children.length === 0) {
+      newObj.isLeaf = true;
+      target.push(newObj);
+    } else {
+      newObj.alwaysExpanded = item.alwaysExpanded;
+      target.push(newObj);
+      forData(children, target, item.value, pidArr);
+    }
+  });
+}
+// export function forData(){
+//
+// };

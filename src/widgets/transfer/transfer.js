@@ -9,13 +9,63 @@ import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Menu from '../menu';
+import Tree from '../tree';
 import Input from '../input';
 import CheckBox from '../checkbox';
 import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
 import { TransFer, MenuWrap, Check, CheckText, NoData } from '../css/transfer';
-import { isContained } from './utils';
+import { isContained, forData } from './utils';
+
+// const treeData = [
+//   {
+//     text: '0-0',
+//     value: '0-0',
+//     children: [
+//       {
+//         text: '0-0-0',
+//         value: '0-0-0',
+//         children: [
+//           { text: '0-0-0-0', value: '0-0-0-0' },
+//           { text: '0-0-0-1', value: '0-0-0-1' },
+//           { text: '0-0-0-2', value: '0-0-0-2' },
+//         ],
+//       },
+//       {
+//         text: '0-0-1',
+//         value: '0-0-1',
+//         children: [
+//           { text: '0-0-1-0', value: '0-0-1-0' },
+//           { text: '0-0-1-1', value: '0-0-1-1' },
+//           { text: '0-0-1-2', value: '0-0-1-2' },
+//         ],
+//       },
+//       {
+//         text: '0-0-2',
+//         value: '0-0-2',
+//       },
+//     ],
+//   },
+//   {
+//     text: '0-1',
+//     value: '0-1',
+//     children: [
+//       { text: '0-1-0-0', value: '0-1-0-0' },
+//       { text: '0-1-0-1', value: '0-1-0-1' },
+//       { text: '0-1-0-2', value: '0-1-0-2' },
+//     ],
+//   },
+//   {
+//     text: '0-2',
+//     value: '0-2',
+//   },
+// ];
+//
+// const testData = [
+//   { text: '1', value: '1', children: [{ text: '1.1', value: '1.1' }] },
+//   { text: '1', value: '1', children: [{ text: '1.2', value: '1.2' }] },
+// ];
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -56,7 +106,9 @@ export default ThemeProvider(
           : length
             ? isContained(selectedKeys, canCheckKeys)
             : isContained(data, selectedKeys);
-
+      // const newData = [];
+      // forData(testData, newData);
+      // console.info(newData);
       return (
         <TransFer>
           <Check>
@@ -91,6 +143,13 @@ export default ThemeProvider(
                 selectedKeys={selectedKeys}
                 onClick={this.onClick}
               />
+              {/*<Tree*/}
+              {/*data={newData}*/}
+              {/*// value={['1.1.1.1.1']}*/}
+              {/*expandAll*/}
+              {/*mutliple*/}
+              {/*onClick={this.handleTreeChange}*/}
+              {/*/>*/}
             </MenuWrap>
           ) : (
             <NoData style={{ height: '250px' }}>{inputValue ? '无匹配数据' : '无数据'}</NoData>
@@ -106,6 +165,9 @@ export default ThemeProvider(
       });
       onSearch && onSearch(newValue);
     };
+    // handleTreeChange = (value, a, b, c) => {
+    //   console.info(value, a, b, c);
+    // };
   },
   Widget.Transfer
 );
