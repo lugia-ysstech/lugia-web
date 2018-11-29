@@ -1,4 +1,4 @@
-import { getDefault, getHrefs, replaceStr } from '../StringUtils';
+import { getDefault, getHrefs, replaceStr, getString } from '../StringUtils';
 
 describe('StringUtils', () => {
   it('getDefault', () => {
@@ -81,4 +81,17 @@ describe('StringUtils', () => {
     expect(replaceStr(undefined, undefined)).toBe('');
     expect(replaceStr('', {})).toBe('');
   });
+  function testGetString(str, expectStr) {
+    it(`getString ${str}`, () => {
+      expect(getString(str)).toBe(expectStr);
+    });
+  }
+  testGetString('123', '123');
+  testGetString(0, '0');
+  testGetString(1, '1');
+  const date = new Date();
+  testGetString(date, date.toString());
+  testGetString(0, '');
+  testGetString(1, '');
+  testGetString(NaN, '');
 });
