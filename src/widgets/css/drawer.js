@@ -32,6 +32,7 @@ type CSSProps = {
   close: boolean,
   closing: boolean,
   visible: boolean,
+  transform: boolean,
   placement: Direction,
   theme: Object,
 };
@@ -144,10 +145,15 @@ const getWidthOrHeightByDirection = (props: CSSProps) => {
 const getTransform = (props: CSSProps) => {
   const { transform, placement } = props;
   if (transform) {
+    const defaultOffset = 180;
     if (placement === 'top' || placement === 'bottom') {
-      return `transform: translateY(${placement === 'top' ? em(180) : em(-180)});`;
+      return `transform: translateY(${
+        placement === 'top' ? em(defaultOffset) : em(-defaultOffset)
+      });`;
     }
-    return `transform: translateX(${placement === 'left' ? em(180) : em(-180)});`;
+    return `transform: translateX(${
+      placement === 'left' ? em(defaultOffset) : em(-defaultOffset)
+    });`;
   }
 };
 export const DrawerContentWrap = styled.div`
