@@ -40,14 +40,7 @@ const FontSize = 1.2;
 const em = px2emcss(FontSize);
 const HeaderEM = px2emcss(1.6);
 const ContentEM = px2emcss(1.4);
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  blackColor,
-  darkGreyColor,
-} = colorsFunc();
+
 const direction = ['top', 'right', 'bottom', 'left'];
 
 const getDrawerWidth = (props: CSSProps) => {

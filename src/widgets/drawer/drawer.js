@@ -89,9 +89,22 @@ export default ThemeProvider(
         getTheme,
         maskClosable = true,
       } = this.props;
-      const Doms = (
+
+      const maskElement = mask ? (
+        <DrawerMask onClick={this.handleMaskClick} visible={visible} />
+      ) : null;
+      const hasCloseIcon = closable || !maskClosable;
+      const closeIcon = hasCloseIcon ? (
+        <DrawerClose>
+          <CloseText onClick={this.handleClose}>
+            <Icon iconClass="lugia-icon-reminder_close" />
+          </CloseText>
+        </DrawerClose>
+      ) : null;
+
+      const drawer = (
         <Drawer visible={visible}>
-          {mask ? <DrawerMask onClick={this.handleMaskClick} visible={visible} /> : null}
+          {maskElement}
           <DrawerContentWrap
             theme={getTheme()}
             placement={placement}
@@ -102,13 +115,7 @@ export default ThemeProvider(
           >
             <DrawerContent>
               <DrawerContentHeader>{title}</DrawerContentHeader>
-              {closable || !maskClosable ? (
-                <DrawerClose>
-                  <CloseText onClick={this.handleClose}>
-                    <Icon iconClass="lugia-icon-reminder_close" />
-                  </CloseText>
-                </DrawerClose>
-              ) : null}
+              {closeIcon}
               <DrawerContentMain>{children}</DrawerContentMain>
             </DrawerContent>
           </DrawerContentWrap>
@@ -120,25 +127,28 @@ export default ThemeProvider(
             if (!context) {
               return (
                 <DrawerContext.Provider value={{ level: 0, clickLevel0: this.handleTransform }}>
-                  {Doms}
+                  {drawer}
                 </DrawerContext.Provider>
               );
             }
-            this.fatherLevel = context.level;
-            context.level += 1;
-            context[this.getLevelSymbol(context.level)] = this.handleTransform;
 
+            const { level: ctxLevel } = context;
+            this.fatherLevel = ctxLevel;
+            const selfLevel = ctxLevel + 1;
+            context[this.getLevelSymbol(selfLevel)] = this.handleTransform;
+            const transform = context[this.getLevelSymbol(this.fatherLevel)];
             if (open && !this.isOpen) {
-              context[this.getLevelSymbol(this.fatherLevel)](true);
+              transform(true);
               this.isOpen = true;
               this.isClose = false;
             }
             if (closing && !this.isClose) {
-              context[this.getLevelSymbol(this.fatherLevel)](false);
+              transform(false);
               this.isOpen = false;
               this.isClose = true;
             }
-            return Doms;
+            context.level = selfLevel;
+            return drawer;
           }}
         </DrawerContext.Consumer>,
         this.node
