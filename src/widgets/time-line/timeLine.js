@@ -5,7 +5,8 @@
  * @flow
  */
 import '../common/shirm';
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 
@@ -22,9 +23,9 @@ type TimeLineState = {};
 type TimeLineProps = {
   mode: TimeLineMode,
   getTheme: Function,
-  children: React$Element<any>,
+  children: React.Node,
   reverse: boolean,
-  pendingDot: string | React$Element<any>,
+  pendingDot: React.Node,
   pending: boolean,
 };
 
@@ -57,20 +58,27 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
     }
   }
 
-  getMapChildren(children) {
+  getMapChildren(children: Object[]) {
     const { reverse, mode, pendingDot, pending } = this.props;
+
+    const getDirection = this.getDirection(mode);
+    const size = children.length;
     return React.Children.map(children, (child, i) => {
-      const isLast = reverse ? i === 0 : children.length - 1 === i;
-      const direction = mode === 'alternate' && i % 2 === 0 ? 'left' : 'right';
-      return [
-        React.cloneElement(child, {
-          isLast,
-          direction,
-          pending,
-          pendingDot,
-        }),
-      ];
+      return React.cloneElement(child, {
+        isLast: this.isLast(i, size, reverse),
+        direction: getDirection(i),
+        pending,
+        pendingDot,
+      });
     });
+  }
+
+  getDirection(mode: TimeLineMode): (index: number) => 'left' | 'right' {
+    return (index: number) => (mode === 'alternate' && index % 2 === 0 ? 'left' : 'right');
+  }
+
+  isLast(index: number, size: number, reverse: boolean): boolean {
+    return reverse ? index === 0 : size - 1 === index;
   }
 }
 

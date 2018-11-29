@@ -4,26 +4,29 @@
  *
  * @flow
  */
+import type { TimeLineStatus, TimeLineType } from '../css/time-line';
+
 import '../common/shirm';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
-import type { TimeLineType, TimeLineStatus } from '../css/time-line';
+import { ObjectUtils } from '@lugia/type-utils';
+
 import {
-  getLineDisplay,
-  getDirection,
+  getBorderColor,
   getContainerHeight,
+  getDescriptionColor,
+  getDirection,
   getDotBackground,
-  getDotSize,
   getDotLeft,
+  getDotSize,
   getHoverBackground,
   getIconBackground,
   getIconIndex,
-  getLineHeight,
   getKeyframes,
+  getLineDisplay,
+  getLineHeight,
   getTimeColor,
-  getDescriptionColor,
-  getBorderColor,
 } from '../css/time-line';
 
 import ThemeProvider from '../theme-provider';
@@ -148,13 +151,11 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
   getDot() {
     const { icon, type, pending, pendingDot, isLast, time, description } = this.props;
     const hasIcon = icon !== null && icon !== undefined;
-    if (pending === true) {
-      if (isLast && pendingDot !== null) {
-        if (typeof pendingDot === 'string') {
-          return <TimeLineIcon pending={pending} iconClass={pendingDot} />;
-        }
-        return pendingDot;
+    if (pending === true && isLast && pendingDot) {
+      if (ObjectUtils.isString(pendingDot)) {
+        return <TimeLineIcon pending={pending} iconClass={pendingDot} />;
       }
+      return pendingDot;
     } else if (type === 'icon' && hasIcon) {
       return <TimeLineIcon iconClass={icon} />;
     }
@@ -178,7 +179,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
 
   getDescription() {
     const { type, description } = this.props;
-    if (type !== 'explain' && description !== null && description !== undefined) {
+    if (type !== 'explain' && ObjectUtils.isString(description)) {
       return <Description>{description} </Description>;
     }
     return null;
