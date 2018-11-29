@@ -33,6 +33,8 @@ export default ThemeProvider(
     node: any;
     isOpen: boolean;
     isClose: boolean;
+    fatherLevel: number;
+
     constructor(props) {
       super(props);
       this.state = {
@@ -70,7 +72,6 @@ export default ThemeProvider(
         window.document.body.removeChild(this.node);
       }
     }
-
     render() {
       const { open, closing, opening, transform } = this.state;
       const {
