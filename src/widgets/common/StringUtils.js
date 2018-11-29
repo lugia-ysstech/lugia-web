@@ -100,6 +100,13 @@ export function replaceStr(target: string, param: Object = {}): string {
   });
   return target;
 }
+
 export function getString(str: string): any {
-  return ObjectUtils.isString(str) ? str : '';
+  if (str === 0) {
+    return '0';
+  }
+  if (ObjectUtils.isString(str)) {
+    return str;
+  }
+  return str && str.toString ? str.toString() : '';
 }

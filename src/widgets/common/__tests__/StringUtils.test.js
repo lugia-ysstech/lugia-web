@@ -87,8 +87,10 @@ describe('StringUtils', () => {
     });
   }
   testGetString('123', '123');
-  testGetString(0, '');
-  testGetString(1, '');
+  testGetString(0, '0');
+  testGetString(1, '1');
+  const date = new Date();
+  testGetString(date, date.toString());
   testGetString(null, '');
   testGetString(undefined, '');
   testGetString('', '');
