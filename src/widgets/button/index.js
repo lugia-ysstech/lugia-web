@@ -125,7 +125,21 @@ export default ThemeProvider(
           return children;
         };
         render() {
-          const { type, shape, disabled, plain, size, circle, getTheme, loading } = this.props;
+          const {
+            type,
+            shape,
+            disabled,
+            plain,
+            size,
+            circle,
+            getTheme,
+            loading,
+            onMouseOut,
+            onMouseEnter,
+            onMouseOver,
+            onMouseUp,
+            onMouseDown,
+          } = this.props;
           const { clicked } = this.state;
           return (
             <ButtonOut
@@ -137,11 +151,12 @@ export default ThemeProvider(
               shape={shape}
               circle={circle}
               loading={loading}
-              onMouseOut={this.props.onMouseOut}
-              onMouseEnter={this.props.onMouseEnter}
-              onMouseOver={this.props.onMouseOver}
-              onMouseUp={this.props.onMouseUp}
-              onMouseDown={this.props.onMouseDown}
+              onClick={this.onClick}
+              onMouseOut={onMouseOut}
+              onMouseEnter={onMouseEnter}
+              onMouseOver={onMouseOver}
+              onMouseUp={onMouseUp}
+              onMouseDown={onMouseDown}
               themes={getTheme()}
             >
               <span>{this.handleChildren()}</span>
