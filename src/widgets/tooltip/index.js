@@ -19,7 +19,6 @@ import {
   Right,
   Down,
   Up,
-  maxWidth,
   RadiusSize,
 } from '../css/tooltip';
 import { FontSize, FontSizeNumber } from '../css';
@@ -54,7 +53,6 @@ const Message = styled.div`
   user-select: none;
   font-size: ${FontSize};
   line-height: 1.5;
-  max-width: ${em(maxWidth)};
   overflow: hidden;
   padding: ${em(6)} ${em(8)};
   color: ${getFontColor};
