@@ -528,3 +528,15 @@ samp {
 /* icon font */
 @import './font/lugia-icon.css';
 /* icon font END */
+.rr{
+    position: relative;
+    color: #f8ac30;
+    font-size: 30px;
+}
+.rr:before{
+    content: attr(text) ;
+    position: absolute;
+    z-index: 10;
+    color:#e8e8e8;
+    -webkit-mask: linear-gradient(to left, #f8ac30 30%, transparent );
+}

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal css 1`] = `
-.c8 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -67,7 +67,7 @@ exports[`Modal css 1`] = `
   line-height: 4.571428571428572em;
 }
 
-.c9 {
+.c8 {
   padding: 1.875em 5em 1em 1.875em;
   border-radius: 0.25em 0.25em 0 0;
   background: #fff;
@@ -76,27 +76,23 @@ exports[`Modal css 1`] = `
   font-weight: 500;
 }
 
-.c10 {
+.c9 {
   padding: 0 5.714285714285714em 0 2.142857142857143em;
   color: #666666;
   word-wrap: break-word;
 }
 
-.c11 {
+.c10 {
   padding: 1.5714285714285716em 5.714285714285714em 1.8571428571428574em 2.142857142857143em;
   border-radius: 0 0 4px 4px;
 }
 
-.c11 > button {
+.c10 > button {
   margin-left: 1em;
 }
 
-.c11 > button:first-child {
+.c10 > button:first-child {
   margin-left: 0;
-}
-
-.c7 {
-  font-size: 1.142857142857143em;
 }
 
 .c0 {
@@ -144,7 +140,7 @@ exports[`Modal css 1`] = `
   border: 1px solid #533fcc;
 }
 
-.c12 {
+.c11 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -173,23 +169,23 @@ exports[`Modal css 1`] = `
   width: 6.666666666666667em;
 }
 
-.c12:hover {
+.c11:hover {
   color: #ffffff;
   border: none;
   background-color: #9482ff;
 }
 
-.c12:focus {
+.c11:focus {
   color: #ffffff;
   border: none;
   background-color: #9482ff;
 }
 
-.c12:active {
+.c11:active {
   background-color: #533fcc;
 }
 
-.c13 {
+.c12 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -218,24 +214,24 @@ exports[`Modal css 1`] = `
   width: 6.666666666666667em;
 }
 
-.c13:hover {
+.c12:hover {
   color: #9482ff;
   border: 1px solid #9482ff;
   background-color: rgba(104,79,255,0.05);
 }
 
-.c13:focus {
+.c12:focus {
   color: #9482ff;
   border: 1px solid #9482ff;
   background-color: rgba(104,79,255,0.05);
 }
 
-.c13:active {
+.c12:active {
   color: #533fcc;
   border: 1px solid #533fcc;
 }
 
-.c14 {
+.c13 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -263,19 +259,19 @@ exports[`Modal css 1`] = `
   border-radius: 0.33333333333333337em;
 }
 
-.c14:hover {
+.c13:hover {
   color: #ffffff;
   border: none;
   background-color: #9482ff;
 }
 
-.c14:focus {
+.c13:focus {
   color: #ffffff;
   border: none;
   background-color: #9482ff;
 }
 
-.c14:active {
+.c13:active {
   background-color: #533fcc;
 }
 
@@ -309,24 +305,24 @@ exports[`Modal css 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c7 c8"
+              className="lugia-icon-reminder_close  c7"
             />
           </div>
           <div
-            className="c9"
+            className="c8"
           >
             这是标题！
           </div>
           <div
-            className="c10"
+            className="c9"
           >
             这是内容！
           </div>
           <div
-            className="c11"
+            className="c10"
           >
             <button
-              className="c12"
+              className="c11"
               onClick={[Function]}
               type="primary"
             >
@@ -335,7 +331,7 @@ exports[`Modal css 1`] = `
               </span>
             </button>
             <button
-              className="c13"
+              className="c12"
               onClick={[Function]}
             >
               <span>
@@ -378,16 +374,16 @@ exports[`Modal css 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c7 c8"
+              className="lugia-icon-reminder_close  c7"
             />
           </div>
           <div
-            className="c9"
+            className="c8"
           >
             这是标题！
           </div>
           <div
-            className="c10"
+            className="c9"
           >
             <div>
               <button
@@ -419,16 +415,16 @@ exports[`Modal css 1`] = `
                         onClick={[Function]}
                       >
                         <i
-                          className="lugia-icon-reminder_close c7 c8"
+                          className="lugia-icon-reminder_close  c7"
                         />
                       </div>
                       <div
-                        className="c9"
+                        className="c8"
                       >
                         另一个对话框！
                       </div>
                       <div
-                        className="c10"
+                        className="c9"
                       >
                         <div
                           style={
@@ -442,10 +438,10 @@ exports[`Modal css 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c11"
+                        className="c10"
                       >
                         <button
-                          className="c12"
+                          className="c11"
                           onClick={[Function]}
                           type="primary"
                         >
@@ -454,7 +450,7 @@ exports[`Modal css 1`] = `
                           </span>
                         </button>
                         <button
-                          className="c13"
+                          className="c12"
                           onClick={[Function]}
                         >
                           <span>
@@ -469,10 +465,10 @@ exports[`Modal css 1`] = `
             </div>
           </div>
           <div
-            className="c11"
+            className="c10"
           >
             <button
-              className="c12"
+              className="c11"
               onClick={[Function]}
               type="primary"
             >
@@ -481,7 +477,7 @@ exports[`Modal css 1`] = `
               </span>
             </button>
             <button
-              className="c13"
+              className="c12"
               onClick={[Function]}
             >
               <span>
@@ -524,24 +520,24 @@ exports[`Modal css 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c7 c8"
+              className="lugia-icon-reminder_close  c7"
             />
           </div>
           <div
-            className="c9"
+            className="c8"
           >
             这是标题！
           </div>
           <div
-            className="c10"
+            className="c9"
           >
             这是内容！
           </div>
           <div
-            className="c11"
+            className="c10"
           >
             <button
-              className="c12"
+              className="c11"
               onClick={[Function]}
               type="primary"
             >
@@ -550,7 +546,7 @@ exports[`Modal css 1`] = `
               </span>
             </button>
             <button
-              className="c13"
+              className="c12"
               onClick={[Function]}
             >
               <span>
@@ -593,24 +589,24 @@ exports[`Modal css 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c7 c8"
+              className="lugia-icon-reminder_close  c7"
             />
           </div>
           <div
-            className="c9"
+            className="c8"
           >
             这是标题！
           </div>
           <div
-            className="c10"
+            className="c9"
           >
             这是内容！
           </div>
           <div
-            className="c11"
+            className="c10"
           >
             <button
-              className="c14"
+              className="c13"
               onClick={[Function]}
               type="primary"
             >

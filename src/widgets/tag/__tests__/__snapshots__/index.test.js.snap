@@ -50,7 +50,7 @@ exports[`Tag Theme: type= basic, closeable=false shape= round 1`] = `
 `;
 
 exports[`Tag Theme: type= basic, shape= round 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -99,10 +99,6 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -116,7 +112,7 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -173,7 +169,7 @@ exports[`Tag Theme: type= customs, closeable=false shape= round 1`] = `
 `;
 
 exports[`Tag Theme: type= customs, shape= round 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -222,10 +218,6 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -239,7 +231,7 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -296,7 +288,7 @@ exports[`Tag Theme: type= presets, closeable=false shape= round 1`] = `
 `;
 
 exports[`Tag Theme: type= presets, shape= round 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -345,10 +337,6 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -362,7 +350,7 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -419,7 +407,7 @@ exports[`Tag Theme: type= primary, closeable=false shape= round 1`] = `
 `;
 
 exports[`Tag Theme: type= primary, shape= round 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -468,10 +456,6 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -485,7 +469,7 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -493,7 +477,7 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
 `;
 
 exports[`Tag default: type = basic 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -542,10 +526,6 @@ exports[`Tag default: type = basic 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -559,7 +539,7 @@ exports[`Tag default: type = basic 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -567,7 +547,7 @@ exports[`Tag default: type = basic 1`] = `
 `;
 
 exports[`Tag default: type = basic, shape = round 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -616,10 +596,6 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -633,7 +609,7 @@ exports[`Tag default: type = basic, shape = round 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -641,7 +617,7 @@ exports[`Tag default: type = basic, shape = round 1`] = `
 `;
 
 exports[`Tag default: type = customs 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -690,10 +666,6 @@ exports[`Tag default: type = customs 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -707,7 +679,7 @@ exports[`Tag default: type = customs 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -715,7 +687,7 @@ exports[`Tag default: type = customs 1`] = `
 `;
 
 exports[`Tag default: type = customs, shape = round 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -764,10 +736,6 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -781,7 +749,7 @@ exports[`Tag default: type = customs, shape = round 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -789,7 +757,7 @@ exports[`Tag default: type = customs, shape = round 1`] = `
 `;
 
 exports[`Tag default: type = presets 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -838,10 +806,6 @@ exports[`Tag default: type = presets 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -855,7 +819,7 @@ exports[`Tag default: type = presets 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -863,7 +827,7 @@ exports[`Tag default: type = presets 1`] = `
 `;
 
 exports[`Tag default: type = presets, shape = round 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -912,10 +876,6 @@ exports[`Tag default: type = presets, shape = round 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -929,7 +889,7 @@ exports[`Tag default: type = presets, shape = round 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -937,7 +897,7 @@ exports[`Tag default: type = presets, shape = round 1`] = `
 `;
 
 exports[`Tag default: type = primary 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -986,10 +946,6 @@ exports[`Tag default: type = primary 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -1003,7 +959,7 @@ exports[`Tag default: type = primary 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>
@@ -1011,7 +967,7 @@ exports[`Tag default: type = primary 1`] = `
 `;
 
 exports[`Tag default: type = primary, shape = round 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1060,10 +1016,6 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   padding: 0.16666666666666669em 0 0 0.25em;
 }
 
-.c3 {
-  font-size: 1.3333333333333335em;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -1077,7 +1029,7 @@ exports[`Tag default: type = primary, shape = round 1`] = `
     className="c2"
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
       onClick={[Function]}
     />
   </span>

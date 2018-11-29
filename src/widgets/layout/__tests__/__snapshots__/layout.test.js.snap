@@ -29,7 +29,7 @@ exports[`Layout css 1`] = `
   flex-direction: row;
 }
 
-.c11 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -45,7 +45,7 @@ exports[`Layout css 1`] = `
   margin: 1.6666666666666667em 3.3333333333333335em 2.5em 4.166666666666667em;
 }
 
-.c14 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,7 +61,7 @@ exports[`Layout css 1`] = `
   height: 41.66666666666667em;
 }
 
-.c15 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,7 +77,7 @@ exports[`Layout css 1`] = `
   height: 41.66666666666667em;
 }
 
-.c8 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -103,7 +103,7 @@ exports[`Layout css 1`] = `
   position: relative;
 }
 
-.c12 {
+.c11 {
   font-size: 1.2rem;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -113,7 +113,7 @@ exports[`Layout css 1`] = `
   margin: 0.8333333333333334em 1.6666666666666667em 0.8333333333333334em 1.6666666666666667em;
 }
 
-.c13 {
+.c12 {
   font-size: 1.2rem;
   -webkit-flex: auto;
   -ms-flex: auto;
@@ -123,7 +123,7 @@ exports[`Layout css 1`] = `
   margin: 1.6666666666666667em 0.8333333333333334em 1.6666666666666667em 0.8333333333333334em;
 }
 
-.c16 {
+.c15 {
   position: absolute;
   top: 0.8333333333333334em;
   right: 0.8333333333333334em;
@@ -132,10 +132,6 @@ exports[`Layout css 1`] = `
   text-align: center;
   background: #e8e8e8;
   cursor: pointer;
-}
-
-.c17 {
-  vertical-align: bottom !important;
 }
 
 .c4 {
@@ -159,7 +155,7 @@ exports[`Layout css 1`] = `
   cursor: pointer;
 }
 
-.c10 {
+.c9 {
   position: absolute;
   bottom: 0;
   height: 4em;
@@ -172,16 +168,12 @@ exports[`Layout css 1`] = `
   cursor: pointer;
 }
 
-.c7 {
-  color: #fff;
-}
-
 .c5 {
   height: 100%;
   background: #684fff;
 }
 
-.c9 {
+.c8 {
   height: 100%;
   background: red;
 }
@@ -690,7 +682,7 @@ exports[`Layout css 1`] = `
           onClick={[Function]}
         >
           <i
-            className="lugia-icon-direction_right c7 c8"
+            className="lugia-icon-direction_right  c7"
           />
         </div>
       </div>
@@ -719,7 +711,7 @@ exports[`Layout css 1`] = `
           onClick={[Function]}
         >
           <i
-            className="lugia-icon-direction_Left c7 c8"
+            className="lugia-icon-direction_Left  c7"
           />
         </div>
       </div>
@@ -846,7 +838,7 @@ exports[`Layout css 1`] = `
       className="c4"
     >
       <div
-        className="c9"
+        className="c8"
       >
         <div>
           <div>
@@ -854,11 +846,11 @@ exports[`Layout css 1`] = `
           </div>
         </div>
         <div
-          className="c10"
+          className="c9"
           onClick={[Function]}
         >
           <i
-            className="lugia-icon-direction_right c7 c8"
+            className="lugia-icon-direction_right  c7"
           />
         </div>
       </div>
@@ -868,10 +860,10 @@ exports[`Layout css 1`] = `
     theme
   </p>
   <div
-    className="c11"
+    className="c10"
   >
     <div
-      className="c12"
+      className="c11"
       display={true}
     >
       <div
@@ -888,7 +880,7 @@ exports[`Layout css 1`] = `
       </div>
     </div>
     <div
-      className="c13"
+      className="c12"
       display={true}
     >
       <div
@@ -905,7 +897,7 @@ exports[`Layout css 1`] = `
       </div>
     </div>
     <div
-      className="c12"
+      className="c11"
       display={true}
     >
       <div
@@ -926,7 +918,7 @@ exports[`Layout css 1`] = `
     flex-direction: row;
   </p>
   <div
-    className="c14"
+    className="c13"
     direction="row"
   >
     <div
@@ -953,7 +945,7 @@ exports[`Layout css 1`] = `
       </div>
     </div>
     <div
-      className="c15"
+      className="c14"
     >
       <div
         className="c1"
@@ -985,12 +977,12 @@ exports[`Layout css 1`] = `
           content
         </div>
         <div
-          className="c16"
+          className="c15"
           onClick={[Function]}
           order={2}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17 c8"
+            className="lugia-icon-direction_arrows_alt  c7"
           />
         </div>
       </div>
@@ -1015,7 +1007,7 @@ exports[`Layout css 1`] = `
     flex-direction: row;
   </p>
   <div
-    className="c14"
+    className="c13"
     direction="row"
   >
     <div
@@ -1042,7 +1034,7 @@ exports[`Layout css 1`] = `
       </div>
     </div>
     <div
-      className="c15"
+      className="c14"
     >
       <div
         className="c1"
@@ -1059,12 +1051,12 @@ exports[`Layout css 1`] = `
           heder
         </div>
         <div
-          className="c16"
+          className="c15"
           onClick={[Function]}
           order={1}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17 c8"
+            className="lugia-icon-direction_arrows_alt  c7"
           />
         </div>
       </div>
@@ -1104,7 +1096,7 @@ exports[`Layout css 1`] = `
     flex-direction: row;
   </p>
   <div
-    className="c14"
+    className="c13"
     direction="row"
   >
     <div
@@ -1131,7 +1123,7 @@ exports[`Layout css 1`] = `
       </div>
     </div>
     <div
-      className="c15"
+      className="c14"
     >
       <div
         className="c1"
@@ -1148,12 +1140,12 @@ exports[`Layout css 1`] = `
           heder
         </div>
         <div
-          className="c16"
+          className="c15"
           onClick={[Function]}
           order={1}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17 c8"
+            className="lugia-icon-direction_arrows_alt  c7"
           />
         </div>
       </div>
@@ -1162,7 +1154,7 @@ exports[`Layout css 1`] = `
         display={true}
       >
         <div
-          className="c14"
+          className="c13"
           direction="row"
         >
           <div
@@ -1181,12 +1173,12 @@ exports[`Layout css 1`] = `
               好好好好
             </div>
             <div
-              className="c16"
+              className="c15"
               onClick={[Function]}
               order={3}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17 c8"
+                className="lugia-icon-direction_arrows_alt  c7"
               />
             </div>
           </div>
@@ -1205,12 +1197,12 @@ exports[`Layout css 1`] = `
               好
             </div>
             <div
-              className="c16"
+              className="c15"
               onClick={[Function]}
               order={4}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17 c8"
+                className="lugia-icon-direction_arrows_alt  c7"
               />
             </div>
           </div>
@@ -1230,12 +1222,12 @@ exports[`Layout css 1`] = `
               好好好好
             </div>
             <div
-              className="c16"
+              className="c15"
               onClick={[Function]}
               order={5}
             >
               <i
-                className="lugia-icon-direction_arrows_alt c17 c8"
+                className="lugia-icon-direction_arrows_alt  c7"
               />
             </div>
           </div>
@@ -1256,12 +1248,12 @@ exports[`Layout css 1`] = `
           footer
         </div>
         <div
-          className="c16"
+          className="c15"
           onClick={[Function]}
           order={6}
         >
           <i
-            className="lugia-icon-direction_arrows_alt c17 c8"
+            className="lugia-icon-direction_arrows_alt  c7"
           />
         </div>
       </div>

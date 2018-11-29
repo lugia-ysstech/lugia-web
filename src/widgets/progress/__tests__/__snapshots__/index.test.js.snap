@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Progress css 1`] = `
-.c8 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -16,14 +16,14 @@ exports[`Progress css 1`] = `
   border-radius: 3.5714285714285716em;
 }
 
-.c13 {
+.c12 {
   width: 100%;
   display: inline-block;
   background: #f5f5f5;
   border-radius: 3.5714285714285716em;
 }
 
-.c17 {
+.c16 {
   width: calc(100% - 2.5em);
   display: inline-block;
   background: #f5f5f5;
@@ -77,7 +77,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c9 {
+.c8 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -88,7 +88,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c11 {
+.c10 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 100%;
@@ -99,7 +99,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c15 {
+.c14 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -110,7 +110,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c18 {
+.c17 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -121,7 +121,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c20 {
+.c19 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -132,7 +132,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c20::before {
+.c19::before {
   content: '';
   opacity: 0;
   position: absolute;
@@ -146,7 +146,7 @@ exports[`Progress css 1`] = `
   animation: evMZmO 2.4s ease infinite;
 }
 
-.c21 {
+.c20 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -157,7 +157,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c23 {
+.c22 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -168,7 +168,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c25 {
+.c24 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 100%;
@@ -179,7 +179,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c26 {
+.c25 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 0%;
@@ -188,6 +188,31 @@ exports[`Progress css 1`] = `
   border-radius: 3.5714285714285716em;
   position: relative;
   text-align: right;
+}
+
+.c27 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  background-color: #684fff;
+  height: 1.142857142857143em;
+  border-radius: 3.5714285714285716em;
+  position: relative;
+  text-align: right;
+}
+
+.c27::before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 10px;
+  -webkit-animation: evMZmO 2.4s ease infinite;
+  animation: evMZmO 2.4s ease infinite;
 }
 
 .c28 {
@@ -201,32 +226,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c28::before {
-  content: '';
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #fff;
-  border-radius: 10px;
-  -webkit-animation: evMZmO 2.4s ease infinite;
-  animation: evMZmO 2.4s ease infinite;
-}
-
 .c29 {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  width: 30%;
-  background-color: #684fff;
-  height: 1.142857142857143em;
-  border-radius: 3.5714285714285716em;
-  position: relative;
-  text-align: right;
-}
-
-.c30 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 100%;
@@ -237,7 +237,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c31 {
+.c30 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
@@ -248,7 +248,7 @@ exports[`Progress css 1`] = `
   text-align: right;
 }
 
-.c32 {
+.c31 {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 100%;
@@ -283,7 +283,7 @@ exports[`Progress css 1`] = `
   vertical-align: bottom;
 }
 
-.c10 {
+.c9 {
   display: inline-block;
   font-size: 1em;
   width: 1.4285714285714286em;
@@ -295,7 +295,7 @@ exports[`Progress css 1`] = `
   vertical-align: bottom;
 }
 
-.c19 {
+.c18 {
   display: inline-block;
   font-size: 1em;
   width: 1.6666666666666667em;
@@ -307,7 +307,7 @@ exports[`Progress css 1`] = `
   vertical-align: bottom;
 }
 
-.c22 {
+.c21 {
   display: inline-block;
   font-size: 1em;
   width: 1.6666666666666667em;
@@ -319,7 +319,7 @@ exports[`Progress css 1`] = `
   vertical-align: bottom;
 }
 
-.c24 {
+.c23 {
   display: inline-block;
   font-size: 1em;
   width: 1.6666666666666667em;
@@ -331,38 +331,20 @@ exports[`Progress css 1`] = `
   vertical-align: bottom;
 }
 
-.c7 {
-  cursor: default;
-  vertical-align: text-bottom !important;
-  font-size: 1em;
-}
-
-.c36 {
-  cursor: default;
-  vertical-align: text-bottom !important;
-  font-size: 1.6666666666666667em;
-}
-
-.c41 {
-  cursor: default;
-  vertical-align: text-bottom !important;
-  font-size: 1.0833333333333335em;
-}
-
 .c0 {
   font-size: 1.4rem;
 }
 
-.c14 {
+.c13 {
   font-size: 1.4rem;
   width: 8.333333333333334em;
 }
 
-.c16 {
+.c15 {
   font-size: 1.2rem;
 }
 
-.c27 {
+.c26 {
   display: inline-block;
   color: #fff;
   text-align: left;
@@ -372,18 +354,38 @@ exports[`Progress css 1`] = `
   vertical-align: bottom;
 }
 
-.c33 {
+.c32 {
   width: 8.571428571428571em;
   height: 8.571428571428571em;
   position: relative;
   font-size: 1.4rem;
 }
 
-.c38 {
+.c36 {
   width: 6.666666666666667em;
   height: 6.666666666666667em;
   position: relative;
   font-size: 1.2rem;
+}
+
+.c33 {
+  display: block;
+  position: absolute;
+  font-size: 1.7142857142857144em;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+  margin: 0;
+  color: #999999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: normal;
+  white-space: nowrap;
 }
 
 .c34 {
@@ -399,7 +401,7 @@ exports[`Progress css 1`] = `
   transform: translateY(-50%);
   left: 0;
   margin: 0;
-  color: #999999;
+  color: #56c22d;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: normal;
@@ -419,26 +421,6 @@ exports[`Progress css 1`] = `
   transform: translateY(-50%);
   left: 0;
   margin: 0;
-  color: #56c22d;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: normal;
-  white-space: nowrap;
-}
-
-.c37 {
-  display: block;
-  position: absolute;
-  font-size: 1.7142857142857144em;
-  width: 100%;
-  text-align: center;
-  line-height: 1;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  left: 0;
-  margin: 0;
   color: #f22735;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -446,7 +428,7 @@ exports[`Progress css 1`] = `
   white-space: nowrap;
 }
 
-.c39 {
+.c37 {
   display: block;
   position: absolute;
   font-size: 2em;
@@ -466,7 +448,7 @@ exports[`Progress css 1`] = `
   white-space: nowrap;
 }
 
-.c40 {
+.c38 {
   display: block;
   position: absolute;
   font-size: 2em;
@@ -486,7 +468,7 @@ exports[`Progress css 1`] = `
   white-space: nowrap;
 }
 
-.c42 {
+.c39 {
   display: block;
   position: absolute;
   font-size: 2em;
@@ -506,7 +488,7 @@ exports[`Progress css 1`] = `
   white-space: nowrap;
 }
 
-.c12 {
+.c11 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -526,7 +508,7 @@ exports[`Progress css 1`] = `
   outline: 0;
   vertical-align: bottom;
   color: #666666;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid #cccccc;
   height: 2.666666666666667em;
   padding: 0.8333333333333334em;
@@ -534,19 +516,19 @@ exports[`Progress css 1`] = `
   border-radius: 0.33333333333333337em;
 }
 
-.c12:hover {
+.c11:hover {
   color: #9482ff;
   border: 1px solid #9482ff;
   background-color: rgba(104,79,255,0.05);
 }
 
-.c12:focus {
+.c11:focus {
   color: #9482ff;
   border: 1px solid #9482ff;
   background-color: rgba(104,79,255,0.05);
 }
 
-.c12:active {
+.c11:active {
   color: #533fcc;
   border: 1px solid #533fcc;
 }
@@ -671,7 +653,7 @@ exports[`Progress css 1`] = `
         type="line"
       >
         <i
-          className="lugia-icon-reminder_check_circle c7 c8"
+          className="lugia-icon-reminder_check_circle  c7"
         />
       </span>
     </div>
@@ -691,17 +673,17 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c9"
+          className="c8"
           size="default"
         />
       </div>
       <span
-        className="c10"
+        className="c9"
         size="default"
         type="line"
       >
         <i
-          className="lugia-icon-reminder_close_circle c7 c8"
+          className="lugia-icon-reminder_close_circle  c7"
         />
       </span>
     </div>
@@ -721,17 +703,17 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c11"
+          className="c10"
           size="default"
         />
       </div>
       <span
-        className="c10"
+        className="c9"
         size="default"
         type="line"
       >
         <i
-          className="lugia-icon-reminder_close_circle c7 c8"
+          className="lugia-icon-reminder_close_circle  c7"
         />
       </span>
     </div>
@@ -762,7 +744,7 @@ exports[`Progress css 1`] = `
       </span>
     </div>
     <button
-      className="c12"
+      className="c11"
       onClick={[Function]}
     >
       <span>
@@ -771,7 +753,7 @@ exports[`Progress css 1`] = `
     </button>
      
     <button
-      className="c12"
+      className="c11"
       onClick={[Function]}
     >
       <span>
@@ -790,7 +772,7 @@ exports[`Progress css 1`] = `
       size="default"
     >
       <div
-        className="c13"
+        className="c12"
         size="default"
       >
         <div
@@ -806,7 +788,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c14"
+      className="c13"
       size="default"
     >
       <div
@@ -814,7 +796,7 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c15"
+          className="c14"
           size="default"
         />
       </div>
@@ -840,20 +822,20 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c16"
+        className="c15"
         size="small"
       >
         <div
-          className="c17"
+          className="c16"
           size="small"
         >
           <div
-            className="c18"
+            className="c17"
             size="small"
           />
         </div>
         <span
-          className="c19"
+          className="c18"
           size="small"
           type="line"
         >
@@ -868,20 +850,20 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c16"
+        className="c15"
         size="small"
       >
         <div
-          className="c17"
+          className="c16"
           size="small"
         >
           <div
-            className="c20"
+            className="c19"
             size="small"
           />
         </div>
         <span
-          className="c19"
+          className="c18"
           size="small"
           type="line"
         >
@@ -896,25 +878,25 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c16"
+        className="c15"
         size="small"
       >
         <div
-          className="c17"
+          className="c16"
           size="small"
         >
           <div
-            className="c21"
+            className="c20"
             size="small"
           />
         </div>
         <span
-          className="c22"
+          className="c21"
           size="small"
           type="line"
         >
           <i
-            className="lugia-icon-reminder_check_circle c7 c8"
+            className="lugia-icon-reminder_check_circle  c7"
           />
         </span>
       </div>
@@ -926,25 +908,25 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c16"
+        className="c15"
         size="small"
       >
         <div
-          className="c17"
+          className="c16"
           size="small"
         >
           <div
-            className="c23"
+            className="c22"
             size="small"
           />
         </div>
         <span
-          className="c24"
+          className="c23"
           size="small"
           type="line"
         >
           <i
-            className="lugia-icon-reminder_close_circle c7 c8"
+            className="lugia-icon-reminder_close_circle  c7"
           />
         </span>
       </div>
@@ -956,25 +938,25 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c16"
+        className="c15"
         size="small"
       >
         <div
-          className="c17"
+          className="c16"
           size="small"
         >
           <div
-            className="c25"
+            className="c24"
             size="small"
           />
         </div>
         <span
-          className="c24"
+          className="c23"
           size="small"
           type="line"
         >
           <i
-            className="lugia-icon-reminder_close_circle c7 c8"
+            className="lugia-icon-reminder_close_circle  c7"
           />
         </span>
       </div>
@@ -998,15 +980,15 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c13"
+          className="c12"
           size="default"
         >
           <div
-            className="c26"
+            className="c25"
             size="default"
           >
             <span
-              className="c27"
+              className="c26"
               size="default"
             >
               0%
@@ -1026,15 +1008,15 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c13"
+          className="c12"
           size="default"
         >
           <div
-            className="c28"
+            className="c27"
             size="default"
           >
             <span
-              className="c27"
+              className="c26"
               size="default"
             >
               30%
@@ -1054,15 +1036,15 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c13"
+          className="c12"
           size="default"
         >
           <div
-            className="c29"
+            className="c28"
             size="default"
           >
             <span
-              className="c27"
+              className="c26"
               size="default"
             >
               30%
@@ -1082,19 +1064,19 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c13"
+          className="c12"
           size="default"
         >
           <div
-            className="c30"
+            className="c29"
             size="default"
           >
             <span
-              className="c27"
+              className="c26"
               size="default"
             >
               <i
-                className="lugia-icon-reminder_check c7 c8"
+                className="lugia-icon-reminder_check  c7"
               />
             </span>
           </div>
@@ -1112,19 +1094,19 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c13"
+          className="c12"
           size="default"
         >
           <div
-            className="c31"
+            className="c30"
             size="default"
           >
             <span
-              className="c27"
+              className="c26"
               size="default"
             >
               <i
-                className="lugia-icon-reminder_close c7 c8"
+                className="lugia-icon-reminder_close  c7"
               />
             </span>
           </div>
@@ -1143,19 +1125,19 @@ exports[`Progress css 1`] = `
         size="default"
       >
         <div
-          className="c13"
+          className="c12"
           size="default"
         >
           <div
-            className="c32"
+            className="c31"
             size="default"
           >
             <span
-              className="c27"
+              className="c26"
               size="default"
             >
               <i
-                className="lugia-icon-reminder_close c7 c8"
+                className="lugia-icon-reminder_close  c7"
               />
             </span>
           </div>
@@ -1168,19 +1150,19 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c14"
+        className="c13"
         size="default"
       >
         <div
-          className="c13"
+          className="c12"
           size="default"
         >
           <div
-            className="c15"
+            className="c14"
             size="default"
           >
             <span
-              className="c27"
+              className="c26"
               size="default"
             >
               30%
@@ -1206,7 +1188,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c33"
+      className="c32"
       size="default"
     >
       <svg
@@ -1239,7 +1221,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c34"
+        className="c33"
         size="default"
       >
         0%
@@ -1252,7 +1234,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c33"
+      className="c32"
       size="default"
     >
       <svg
@@ -1285,14 +1267,14 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c34"
+        className="c33"
         size="default"
       >
         30%
       </span>
     </div>
     <button
-      className="c12"
+      className="c11"
       onClick={[Function]}
     >
       <span>
@@ -1301,7 +1283,7 @@ exports[`Progress css 1`] = `
     </button>
      
     <button
-      className="c12"
+      className="c11"
       onClick={[Function]}
     >
       <span>
@@ -1315,7 +1297,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c33"
+      className="c32"
       size="default"
     >
       <svg
@@ -1348,11 +1330,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c35"
+        className="c34"
         size="default"
       >
         <i
-          className="lugia-icon-reminder_check c36 c8"
+          className="lugia-icon-reminder_check  c7"
         />
       </span>
     </div>
@@ -1363,7 +1345,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c33"
+      className="c32"
       size="default"
     >
       <svg
@@ -1396,11 +1378,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c35"
+        className="c34"
         size="default"
       >
         <i
-          className="lugia-icon-reminder_check c36 c8"
+          className="lugia-icon-reminder_check  c7"
         />
       </span>
     </div>
@@ -1411,7 +1393,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c33"
+      className="c32"
       size="default"
     >
       <svg
@@ -1444,11 +1426,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c37"
+        className="c35"
         size="default"
       >
         <i
-          className="lugia-icon-reminder_close c36 c8"
+          className="lugia-icon-reminder_close  c7"
         />
       </span>
     </div>
@@ -1459,7 +1441,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c33"
+      className="c32"
       size="default"
     >
       <svg
@@ -1492,11 +1474,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c37"
+        className="c35"
         size="default"
       >
         <i
-          className="lugia-icon-reminder_close c36 c8"
+          className="lugia-icon-reminder_close  c7"
         />
       </span>
     </div>
@@ -1508,7 +1490,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c33"
+      className="c32"
       size="default"
     >
       <svg
@@ -1541,7 +1523,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c37"
+        className="c35"
         size="default"
       >
         50--
@@ -1554,7 +1536,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c33"
+      className="c32"
       size="default"
     >
       <svg
@@ -1587,7 +1569,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c34"
+        className="c33"
         size="default"
       >
         30%
@@ -1599,7 +1581,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c38"
+      className="c36"
       size="small"
     >
       <svg
@@ -1632,7 +1614,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c39"
+        className="c37"
         size="small"
       >
         0%
@@ -1645,7 +1627,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c38"
+      className="c36"
       size="small"
     >
       <svg
@@ -1678,7 +1660,7 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c39"
+        className="c37"
         size="small"
       >
         30%
@@ -1691,7 +1673,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c38"
+      className="c36"
       size="small"
     >
       <svg
@@ -1724,11 +1706,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c40"
+        className="c38"
         size="small"
       >
         <i
-          className="lugia-icon-reminder_check c41 c8"
+          className="lugia-icon-reminder_check  c7"
         />
       </span>
     </div>
@@ -1739,7 +1721,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c38"
+      className="c36"
       size="small"
     >
       <svg
@@ -1772,11 +1754,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c42"
+        className="c39"
         size="small"
       >
         <i
-          className="lugia-icon-reminder_close c41 c8"
+          className="lugia-icon-reminder_close  c7"
         />
       </span>
     </div>
@@ -1787,7 +1769,7 @@ exports[`Progress css 1`] = `
     </p>
     <br />
     <div
-      className="c38"
+      className="c36"
       size="small"
     >
       <svg
@@ -1820,11 +1802,11 @@ exports[`Progress css 1`] = `
         />
       </svg>
       <span
-        className="c42"
+        className="c39"
         size="small"
       >
         <i
-          className="lugia-icon-reminder_close c41 c8"
+          className="lugia-icon-reminder_close  c7"
         />
       </span>
     </div>
@@ -1845,7 +1827,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c33"
+        className="c32"
         size="default"
       >
         <svg
@@ -2036,7 +2018,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c34"
+          className="c33"
           size="default"
         >
           50%
@@ -2049,7 +2031,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c33"
+        className="c32"
         size="default"
       >
         <svg
@@ -2290,11 +2272,11 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c35"
+          className="c34"
           size="default"
         >
           <i
-            className="lugia-icon-reminder_check c36 c8"
+            className="lugia-icon-reminder_check  c7"
           />
         </span>
       </div>
@@ -2306,7 +2288,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c33"
+        className="c32"
         size="default"
       >
         <svg
@@ -2527,11 +2509,11 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c35"
+          className="c34"
           size="default"
         >
           <i
-            className="lugia-icon-reminder_check c36 c8"
+            className="lugia-icon-reminder_check  c7"
           />
         </span>
       </div>
@@ -2543,7 +2525,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c33"
+        className="c32"
         size="default"
       >
         <svg
@@ -2724,11 +2706,11 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c37"
+          className="c35"
           size="default"
         >
           <i
-            className="lugia-icon-reminder_close c36 c8"
+            className="lugia-icon-reminder_close  c7"
           />
         </span>
       </div>
@@ -2740,7 +2722,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c33"
+        className="c32"
         size="default"
       >
         <svg
@@ -2981,11 +2963,11 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c37"
+          className="c35"
           size="default"
         >
           <i
-            className="lugia-icon-reminder_close c36 c8"
+            className="lugia-icon-reminder_close  c7"
           />
         </span>
       </div>
@@ -2997,7 +2979,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c33"
+        className="c32"
         size="default"
       >
         <svg
@@ -3188,7 +3170,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c34"
+          className="c33"
           size="default"
         >
           50--
@@ -3201,7 +3183,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c33"
+        className="c32"
         size="default"
       >
         <svg
@@ -3372,14 +3354,14 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c34"
+          className="c33"
           size="default"
         >
           30%
         </span>
       </div>
       <button
-        className="c12"
+        className="c11"
         onClick={[Function]}
       >
         <span>
@@ -3388,7 +3370,7 @@ exports[`Progress css 1`] = `
       </button>
        
       <button
-        className="c12"
+        className="c11"
         onClick={[Function]}
       >
         <span>
@@ -3402,7 +3384,7 @@ exports[`Progress css 1`] = `
       </p>
       <br />
       <div
-        className="c33"
+        className="c32"
         size="default"
       >
         <svg
@@ -3573,7 +3555,7 @@ exports[`Progress css 1`] = `
           />
         </svg>
         <span
-          className="c34"
+          className="c33"
           size="default"
         >
           30%

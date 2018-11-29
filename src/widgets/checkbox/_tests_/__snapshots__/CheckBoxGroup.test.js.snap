@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckBox CheckBoxGroup CSS 1`] = `
-.c32 {
+.c31 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -556,12 +556,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   color: #666666;
   background: #cccccc;
   z-index: -2;
-}
-
-.c31 {
-  vertical-align: text-bottom !important;
-  font-size: 1.3333333333333335em!important;
-  color: #999999;
 }
 
 .c1 > label:first-child > span {
@@ -1221,7 +1215,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c31 c32"
+              className="lugia-icon-reminder_close  c31"
             />
           </span>
         </span>
@@ -1319,7 +1313,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c31 c32"
+              className="lugia-icon-reminder_close  c31"
             />
           </span>
         </span>

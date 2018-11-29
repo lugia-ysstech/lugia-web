@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`tabpaneDemo Component JSON 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -59,14 +59,6 @@ exports[`tabpaneDemo Component JSON 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  font-size: 1rem;
-}
-
-.c3:hover {
-  color: #999999;
-}
-
 <div
   className="c0"
   onClick={[Function]}
@@ -83,7 +75,7 @@ exports[`tabpaneDemo Component JSON 1`] = `
     onMouseLeave={[Function]}
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close  c3"
     />
   </span>
 </div>

@@ -1,7 +1,7 @@
 /*
-* by wangcuixia
-* @flow
-* */
+ * by wangcuixia
+ * @flow
+ * */
 import React, { Component } from 'react';
 import Icon from '../icon/index';
 import Widget from '../consts/index';
@@ -314,7 +314,6 @@ class Slider extends Component<TypeProps, TypeState> {
     if (!sliderRangeNode) {
       return { offsetLeft: 0, offsetTop: 0 };
     }
-
     const { x, y } = getElementPosition(sliderRangeNode);
     return { offsetLeft: x, offsetTop: y };
   }
