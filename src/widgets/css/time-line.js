@@ -25,13 +25,7 @@ export const getContainerHeight = props => {
   const { theme, description, type } = props;
   const { height } = theme;
   const theHeight =
-    height && height > 0
-      ? em(height)
-      : type === 'explain'
-        ? ''
-        : description !== null && description !== undefined
-          ? em(54)
-          : em(42);
+    height && height > 0 ? em(height) : type === 'explain' ? '' : description ? em(54) : em(42);
   return `height:${theHeight};`;
 };
 export const getLineHeight = props => {
@@ -41,10 +35,10 @@ export const getLineHeight = props => {
     height && height > 0
       ? em(height)
       : type === 'explain'
-        ? em(24)
-        : description !== null && description !== undefined
-          ? 'inherit'
-          : '100%';
+      ? em(24)
+      : description
+      ? 'inherit'
+      : '100%';
   return `height:${theHeight};`;
 };
 
@@ -59,12 +53,12 @@ export const getDotBackground = props => {
   const background = backgroundColor
     ? backgroundColor
     : type === 'explain'
-      ? lightGreyColor
-      : status === 'success'
-        ? successColor
-        : status === 'failed'
-          ? dangerColor
-          : themeColor;
+    ? lightGreyColor
+    : status === 'success'
+    ? successColor
+    : status === 'failed'
+    ? dangerColor
+    : themeColor;
   return `background: ${background};`;
 };
 export const getDotSize = props => {

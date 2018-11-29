@@ -5,30 +5,30 @@
  * @flow
  */
 import type { TimeLineStatus, TimeLineType } from '../css/time-line';
-
 import '../common/shirm';
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
+import { getString } from '../common/StringUtils';
 import { ObjectUtils } from '@lugia/type-utils';
 
 import {
-  getBorderColor,
-  getContainerHeight,
-  getDescriptionColor,
+  getLineDisplay,
   getDirection,
+  getContainerHeight,
   getDotBackground,
-  getDotLeft,
   getDotSize,
+  getDotLeft,
   getHoverBackground,
   getIconBackground,
   getIconIndex,
-  getKeyframes,
-  getLineDisplay,
   getLineHeight,
+  getKeyframes,
   getTimeColor,
+  getDescriptionColor,
+  getBorderColor,
 } from '../css/time-line';
-
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
@@ -110,7 +110,7 @@ type TimeLineProps = {
   isLast: boolean,
   status: TimeLineStatus,
   type: TimeLineType,
-  pendingDot: string | React$Element<any>,
+  pendingDot: React.Node,
   pending: boolean,
 };
 
@@ -150,21 +150,22 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
 
   getDot() {
     const { icon, type, pending, pendingDot, isLast, time, description } = this.props;
-    const hasIcon = icon !== null && icon !== undefined;
     if (pending === true && isLast && pendingDot) {
       if (ObjectUtils.isString(pendingDot)) {
         return <TimeLineIcon pending={pending} iconClass={pendingDot} />;
       }
       return pendingDot;
-    } else if (type === 'icon' && hasIcon) {
+    } else if (type === 'icon' && getString(icon)) {
       return <TimeLineIcon iconClass={icon} />;
     }
 
     if (type === 'explain') {
-      const theDescription = description !== null && description !== undefined ? description : '';
-      const theTime = time !== null && time !== undefined ? time : '';
       return (
-        <Explain placement="right" title={theTime + ' ' + theDescription} action={'hover'}>
+        <Explain
+          placement="right"
+          title={getString(time) + ' ' + getString(description)}
+          action={'hover'}
+        >
           {this.getInnerDot()}
         </Explain>
       );
@@ -179,7 +180,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
 
   getDescription() {
     const { type, description } = this.props;
-    if (type !== 'explain' && ObjectUtils.isString(description)) {
+    if (type !== 'explain' && getString(description)) {
       return <Description>{description} </Description>;
     }
     return null;

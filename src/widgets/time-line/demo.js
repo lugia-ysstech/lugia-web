@@ -9,6 +9,7 @@ import TimeLine from './timeLine';
 import TimeLineItem from './timeLineItem';
 import Theme from '../theme/';
 import Icon from '../icon/';
+import Button from '../button/';
 import styled from 'styled-components';
 
 class TimeLinePending extends React.Component<Object, Object> {
@@ -23,9 +24,9 @@ class TimeLinePending extends React.Component<Object, Object> {
   render() {
     return (
       <div style={{ margin: 30 }}>
-        <button type="primary" onClick={this.handleClick}>
+        <Button type="primary" onClick={this.handleClick}>
           点击反转
-        </button>
+        </Button>
         <TimeLine reverse={this.state.reverse}>
           <TimeLineItem time="2018-01-01" description={'description111'} />
           <TimeLineItem time="2018-01-02" description={'description222'} />
