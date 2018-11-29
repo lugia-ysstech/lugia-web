@@ -99,6 +99,8 @@ const WeekPicker = 'sv_widget_WeekPicker';
 const WeeksPicker = 'sv_widget_WeeksPicker';
 const RangePicker = 'sv_widget_RangePicker';
 const Loading = 'sv_widget_Loading';
+const TimeLine = 'sv_widget_TimeLine';
+const TimeLineItem = 'sv_widget_TimeLineItem';
 export default {
   Button,
   Input,
@@ -182,4 +184,6 @@ export default {
   TimePicker,
   Time,
   Loading,
+  TimeLine,
+  TimeLineItem,
 };

@@ -26,7 +26,6 @@ type ToolTipStyleProps = {
   size?: ToolTipSize,
 };
 export const RadiusSize = em(4);
-export const maxWidth = 250;
 export const Left = 'left';
 export const Right = 'right';
 export const Down = 'bottom';

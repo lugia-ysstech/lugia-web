@@ -4,6 +4,7 @@
  *@flow
  */
 import type { QueryType } from '@lugia/lugia-web';
+import { ObjectUtils } from '@lugia/type-utils';
 
 function isMatch(val: string, queryArray: Array<string>, match: Function): boolean {
   for (let i = 0; i < queryArray.length; i++) {
@@ -98,4 +99,14 @@ export function replaceStr(target: string, param: Object = {}): string {
     target = target.replace(`:${key}`, param[key]);
   });
   return target;
+}
+
+export function getString(str: string): any {
+  if (str === 0) {
+    return '0';
+  }
+  if (ObjectUtils.isString(str)) {
+    return str;
+  }
+  return str && str.toString ? str.toString() : '';
 }
