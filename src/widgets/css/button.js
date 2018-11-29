@@ -34,6 +34,11 @@ type CSSProps = {
 export type ButtonOutProps = CSSProps & {
   clicked: boolean,
   themes: ThemeType,
+  onMouseOut: Function,
+  onMouseEnter: Function,
+  onMouseOver: Function,
+  onMouseUp: Function,
+  onMouseDown: Function,
 };
 
 type IconLoadingProps = {
