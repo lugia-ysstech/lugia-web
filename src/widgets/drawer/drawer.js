@@ -126,15 +126,15 @@ export default ThemeProvider(
             }
             this.fatherLevel = context.level;
             context.level += 1;
-            context['clickLevel' + context.level] = this.handleTransform;
+            context[this.getLevelSymbol(context.level)] = this.handleTransform;
 
             if (open && !this.isOpen) {
-              context['clickLevel' + this.fatherLevel](true);
+              context[this.getLevelSymbol(this.fatherLevel)](true);
               this.isOpen = true;
               this.isClose = false;
             }
             if (closing && !this.isClose) {
-              context['clickLevel' + this.fatherLevel](false);
+              context[this.getLevelSymbol(this.fatherLevel)](false);
               this.isOpen = false;
               this.isClose = true;
             }
@@ -145,6 +145,9 @@ export default ThemeProvider(
       );
     }
 
+    getLevelSymbol(level: string | number): string {
+      return 'clickLevel' + level;
+    }
     handleTransform = (transform: boolean) => {
       this.setState({
         transform,
