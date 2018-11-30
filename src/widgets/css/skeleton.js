@@ -6,6 +6,8 @@
 import styled, { keyframes } from 'styled-components';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
+import { toNumber } from '../common/NumberUtils';
+
 const em = px2emcss(FontSizeNumber);
 const getCommonAnimation = (props: Object) => {
   const { distance = 1000 } = props;
@@ -56,20 +58,23 @@ export const CommonAvatar = styled.div`
  * paragraph
  */
 
-const getPaddingBottom = (props: ParagraphProps) => {
+const getPaddingBottom = (props: Object) => {
   const { type } = props;
   return `padding-bottom: ${type === 'title' ? em(16) : em(8)}`;
 };
 
-const getWidth = (props: ParagraphProps) => {
-  const { type, lastItem, paragraphWidth, titleWidth } = props;
+const getWidth = (props: Object) => {
+  let { paragraphWidth, titleWidth } = props;
+  const { type, lastItem } = props;
+
+  titleWidth = toNumber(titleWidth, 176);
+  paragraphWidth = toNumber(paragraphWidth, lastItem ? 400 : 480);
+
   if (type === 'title') {
-    return `width: ${titleWidth === 0 || titleWidth ? em(titleWidth) : em(176)}`;
+    return `width: ${em(titleWidth)}`;
   }
 
-  return `width: ${
-    paragraphWidth === 0 || paragraphWidth ? em(paragraphWidth) : lastItem ? em(400) : em(480)
-  }`;
+  return `width: ${em(paragraphWidth)}`;
 };
 
 export const ParagraphWrap = styled.div`
@@ -89,14 +94,16 @@ export const CommonParagraph = styled.div`
  * picture
  */
 
-const getPictureWidth = (props: PictrueProps) => {
-  const { pictureWidth } = props;
-  return `width: ${pictureWidth ? em(pictureWidth) : em(180)}`;
+const getPictureWidth = (props: Object) => {
+  let { pictureWidth } = props;
+  pictureWidth = toNumber(pictureWidth, 180);
+  return `width: ${em(pictureWidth)}`;
 };
 
-const getPictureHeight = (props: PictrueProps) => {
-  const { pictureHeight } = props;
-  return `height: ${pictureHeight ? em(pictureHeight) : em(180)}`;
+const getPictureHeight = (props: Object) => {
+  let { pictureHeight } = props;
+  pictureHeight = toNumber(pictureHeight, 180);
+  return `height: ${em(pictureHeight)}`;
 };
 
 export const CommonPicture = styled.div`

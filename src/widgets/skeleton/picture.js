@@ -4,13 +4,7 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
-import Theme from '../theme';
-import { CommonPicture, AnimationItem } from '../css/skeleton';
-import { FontSizeNumber } from '../css';
-import { px2emcss } from '../css/units';
-
-const em = px2emcss(FontSizeNumber);
+import { AnimationItem, CommonPicture } from '../css/skeleton';
 
 type PictrueProps = {
   pictureWidth: number,

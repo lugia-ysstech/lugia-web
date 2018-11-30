@@ -4,7 +4,7 @@
  * @flow
  */
 import * as React from 'react';
-import { ParagraphWrap, CommonParagraph, AnimationItem } from '../css/skeleton';
+import { AnimationItem, CommonParagraph, ParagraphWrap } from '../css/skeleton';
 
 type ParagraphProps = {
   type: 'title' | 'pragraph',

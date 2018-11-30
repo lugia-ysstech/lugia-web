@@ -5,11 +5,11 @@
  * @flow
  */
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Skeleton from '../index';
+import Skeleton from '../skeleton';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Skeleton', () => {
@@ -21,16 +21,6 @@ describe('Skeleton', () => {
   it('no title ,return how many paragraph', () => {
     const cmp = mount(<Skeleton title={false} />);
     expect(findParagraph(cmp).length).toBe(3);
-  });
-
-  it('paragraph: {false} ,return how many paragraph', () => {
-    const cmp = mount(<Skeleton paragraph={false} />);
-    expect(findParagraph(cmp).length).toBe(1);
-  });
-
-  it('paragraph: {true} ,return how many paragraph', () => {
-    const cmp = mount(<Skeleton paragraph={true} />);
-    expect(findParagraph(cmp).length).toBe(4);
   });
 
   it('paragraph: {undefined} ,return how many paragraph', () => {
@@ -103,6 +93,11 @@ describe('Skeleton', () => {
   //   expect(findParagraph(cmp).length).toBe(4);
   //   expect(findTitle).toBe(100);
   // });
+
+  it('isLastItem', () => {
+    expect(Skeleton.prototype.isLastItem(5, 2)).toBeFalsy();
+    expect(Skeleton.prototype.isLastItem(3, 2)).toBeTruthy();
+  });
 
   function findParagraph(cmp: Object) {
     return cmp.find('ParagraphItem');

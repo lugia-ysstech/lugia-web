@@ -62,6 +62,7 @@ const Badge = 'sv_widget_Badge';
 const NumberTurn = 'sv_widget_NumberTurn';
 
 /* add by szfeng */
+const Skeleton = 'sv_widget_Skeleton';
 const Select = 'sv_widget_Select';
 const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
 const QueryInput = 'sv_widget_QueryInput';
@@ -182,4 +183,5 @@ export default {
   TimePicker,
   Time,
   Loading,
+  Skeleton,
 };

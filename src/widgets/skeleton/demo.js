@@ -46,7 +46,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
         </div>
         <Theme config={config}>
           <Skeleton
-            // paragraphWidth={['100', '200', '300', '250', '260', '180', 'sadf', '200']}
+            paragraphWidth={[111]}
             // paragraphWidth={'100'}
             // titleWidth={100}
             avatar={true}
@@ -54,7 +54,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
             // title={false}
             // pictureWidth={400}
             // pictureHeight={600}
-            // paragraph={{ rows: 8 }}
+            paragraph={{ rows: 8 }}
             animation={true}
             loading={this.state.loading}
           >

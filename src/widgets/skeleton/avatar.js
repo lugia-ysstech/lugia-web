@@ -4,11 +4,7 @@
  * @flow
  */
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { FontSizeNumber } from '../css';
-import { CommonAvatar, AnimationItem } from '../css/skeleton';
-import { px2emcss } from '../css/units';
-const em = px2emcss(FontSizeNumber);
+import { AnimationItem, CommonAvatar } from '../css/skeleton';
 
 type AvatarProps = {
   animation?: boolean,
