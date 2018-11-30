@@ -20,6 +20,7 @@ export type TransferProps = {
   onSearch: (inputValue: string) => {},
   onCheckAll: Function,
   canCheckKeys: string[],
+  needCancelBox?: boolean,
 };
 export type TransferState = {
   inputValue: string,
@@ -56,4 +57,8 @@ export const NoData = styled.div`
   height: ${px2emcss(1.4)(250)};
   color: #ccc;
   text-align: center;
+`;
+export const CancelBox = styled.div`
+  height: ${em(60)};
+  border: 1px solid #e8e8e8;
 `;

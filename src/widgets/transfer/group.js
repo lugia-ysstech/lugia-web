@@ -132,6 +132,7 @@ export default ThemeProvider(
             onCheckAll={this.checkAllForRight}
             canCheckKeys={targetCheckKeys}
             onSearch={this.searchCallbackForRight}
+            needCancelBox
           />
         </TransFerWrap>
       );

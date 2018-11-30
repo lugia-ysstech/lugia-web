@@ -15,57 +15,8 @@ import CheckBox from '../checkbox';
 import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
-import { TransFer, MenuWrap, Check, CheckText, NoData } from '../css/transfer';
+import { TransFer, MenuWrap, Check, CheckText, NoData, CancelBox } from '../css/transfer';
 import { isContained, forData } from './utils';
-
-// const treeData = [
-//   {
-//     text: '0-0',
-//     value: '0-0',
-//     children: [
-//       {
-//         text: '0-0-0',
-//         value: '0-0-0',
-//         children: [
-//           { text: '0-0-0-0', value: '0-0-0-0' },
-//           { text: '0-0-0-1', value: '0-0-0-1' },
-//           { text: '0-0-0-2', value: '0-0-0-2' },
-//         ],
-//       },
-//       {
-//         text: '0-0-1',
-//         value: '0-0-1',
-//         children: [
-//           { text: '0-0-1-0', value: '0-0-1-0' },
-//           { text: '0-0-1-1', value: '0-0-1-1' },
-//           { text: '0-0-1-2', value: '0-0-1-2' },
-//         ],
-//       },
-//       {
-//         text: '0-0-2',
-//         value: '0-0-2',
-//       },
-//     ],
-//   },
-//   {
-//     text: '0-1',
-//     value: '0-1',
-//     children: [
-//       { text: '0-1-0-0', value: '0-1-0-0' },
-//       { text: '0-1-0-1', value: '0-1-0-1' },
-//       { text: '0-1-0-2', value: '0-1-0-2' },
-//     ],
-//   },
-//   {
-//     text: '0-2',
-//     value: '0-2',
-//   },
-// ];
-//
-// const testData = [
-//   { text: '1', value: '1', children: [{ text: '1.1', value: '1.1' }] },
-//   { text: '1', value: '1', children: [{ text: '1.2', value: '1.2' }] },
-// ];
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -93,7 +44,18 @@ export default ThemeProvider(
           },
         },
       };
-      const { showSearch, selectedKeys = [], data = [], canCheckKeys } = this.props;
+      const menuView = {
+        // [Widget.Menu]: {
+        //   height: 190,
+        // },
+      };
+      const {
+        showSearch,
+        selectedKeys = [],
+        data = [],
+        canCheckKeys,
+        needCancelBox = false,
+      } = this.props;
       const { inputValue } = this.state;
       const inputConfig = {};
       if (!inputValue) {
@@ -109,6 +71,11 @@ export default ThemeProvider(
       // const newData = [];
       // forData(testData, newData);
       // console.info(newData);
+      const cancelBox = needCancelBox ? (
+        <CancelBox>
+          <CheckBox cancel>取消项</CheckBox>
+        </CancelBox>
+      ) : null;
       return (
         <TransFer>
           <Check>
@@ -136,13 +103,15 @@ export default ThemeProvider(
 
           {data.length > 0 ? (
             <MenuWrap>
-              <Menu
-                checkedCSS={'checkbox'}
-                mutliple={true}
-                data={data}
-                selectedKeys={selectedKeys}
-                onClick={this.onClick}
-              />
+              <Theme config={menuView}>
+                <Menu
+                  checkedCSS={'checkbox'}
+                  mutliple={true}
+                  data={data}
+                  selectedKeys={selectedKeys}
+                  onClick={this.onClick}
+                />
+              </Theme>
               {/*<Tree*/}
               {/*data={newData}*/}
               {/*// value={['1.1.1.1.1']}*/}
@@ -154,6 +123,7 @@ export default ThemeProvider(
           ) : (
             <NoData style={{ height: '250px' }}>{inputValue ? '无匹配数据' : '无数据'}</NoData>
           )}
+          {cancelBox}
         </TransFer>
       );
     }
