@@ -10,10 +10,8 @@ import React from 'react';
 import Rate from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import colorsFunc from '../css/stateColor';
 import Icon from '../icon';
 import styled from 'styled-components';
-const { warningColor } = colorsFunc();
 const TitleBox = styled.div`
   position: relative;
   padding: 10px;
@@ -40,14 +38,13 @@ class RateDemo extends React.Component<any, any> {
       disabled: false,
       allowHalf: false,
       classify: false,
-      className: 'cccc',
-      onClick: (x: any) => {
+      onClick: (e: Object, x: any) => {
         console.log('onClick defaultProps', x);
-        this.setStateValue('defaultProps', x);
+        this.setStateValue('defaultProps', x.currentValue);
       },
-      onChange: (x: any) => {
+      onChange: (e: Object, x: any) => {
         console.log('onChange defaultProps', x);
-        this.setStateValue('defaultProps', x);
+        this.setStateValue('defaultProps', x.currentValue);
       },
     };
     const defaultProps1 = {
@@ -69,14 +66,13 @@ class RateDemo extends React.Component<any, any> {
         // primary:'lugia-icon-financial_star',
         // half:'lugia-icon-financial_sad',
       },
-      className: 'cccc',
-      onClick: (x: any) => {
+      onClick: (e: Object, x: any) => {
         console.log('onClick defaultProps1', x);
-        this.setStateValue('defaultProps1', x);
+        this.setStateValue('defaultProps1', x.currentValue);
       },
-      onChange: (x: any) => {
+      onChange: (e: Object, x: any) => {
         console.log('onChange defaultProps1', x);
-        this.setStateValue('defaultProps1', x);
+        this.setStateValue('defaultProps1', x.currentValue);
       },
     };
     const defaultProps2 = {
@@ -86,29 +82,28 @@ class RateDemo extends React.Component<any, any> {
       disabled: false,
       allowHalf: true,
       classify: false,
-      className: 'cccc',
-      onClick: (x: any) => {
+      onClick: (e: Object, x: any) => {
         console.log('onClick defaultProps2', x);
-        this.setStateValue('defaultProps2', x);
+        this.setStateValue('defaultProps2', x.currentValue);
       },
-      onChange: (x: any) => {
+      onChange: (e: Object, x: any) => {
         console.log('onChange defaultProps2', x);
-        this.setStateValue('defaultProps2', x);
+        this.setStateValue('defaultProps2', x.currentValue);
       },
     };
     const defaultProps3 = {
       count: 5,
       max: 5,
-      value: 3.5,
+      value: 3.6,
       disabled: true,
-      allowHalf: false,
+      allowHalf: true,
       className: 'cccc',
-      onClick: (x: any) => {
+      onClick: (e: Object, x: any) => {
         console.log('onClick defaultProps3', x);
       },
-      onChange: (x: any) => {
+      onChange: (e: Object, x: any) => {
         console.log('onChange defaultProps3', x);
-        this.setStateValue('defaultProps3', x);
+        this.setStateValue('defaultProps3', x.currentValue);
       },
     };
     const defaultProps4 = {
@@ -124,13 +119,13 @@ class RateDemo extends React.Component<any, any> {
         amazed: 'lugia-icon-financial_smile',
       },
       className: 'cccc',
-      onClick: (x: any) => {
+      onClick: (e: Object, x: any) => {
         console.log('onClick defaultProps4', x);
-        this.setStateValue('defaultProps4', x);
+        this.setStateValue('defaultProps4', x.currentValue);
       },
-      onChange: (x: any) => {
+      onChange: (e: Object, x: any) => {
         console.log('onChange defaultProps4', x);
-        this.setStateValue('defaultProps4', x);
+        this.setStateValue('defaultProps4', x.currentValue);
       },
     };
     const defaultProps5 = {
@@ -145,14 +140,13 @@ class RateDemo extends React.Component<any, any> {
         danger: 'lugia-icon-financial_sad',
         amazed: 'lugia-icon-financial_smile',
       },
-      className: 'cccc',
-      onClick: (x: any) => {
+      onClick: (e: Object, x: any) => {
         console.log('onClick defaultProps5', x);
-        this.setStateValue('defaultProps5', x);
+        this.setStateValue('defaultProps5', x.currentValue);
       },
-      onChange: (x: any) => {
+      onChange: (e: Object, x: any) => {
         console.log('onChange defaultProps5', x);
-        this.setStateValue('defaultProps5', x);
+        this.setStateValue('defaultProps5', x.currentValue);
       },
     };
     const defaultProps6 = {
@@ -167,34 +161,34 @@ class RateDemo extends React.Component<any, any> {
         danger: 'lugia-icon-financial_sad',
         amazed: 'lugia-icon-financial_smile',
       },
-      className: 'cccc',
-      onClick: (x: any) => {
+      onClick: (e: Object, x: any) => {
         console.log('onClick defaultProps6', x);
-        this.setStateValue('defaultProps6', x);
+        this.setStateValue('defaultProps6', x.currentValue);
       },
-      onChange: (x: any) => {
+      onChange: (e: Object, x: any) => {
         console.log('onChange defaultProps6', x);
-        this.setStateValue('defaultProps6', x);
+        this.setStateValue('defaultProps6', x.currentValue);
       },
     };
     const defaultProps7 = {
       count: 5,
-      onClick: (x: any) => {
+      allowHalf: true,
+      onClick: (e: Object, x: any) => {
         console.log('onClick defaultProps7', x);
-        this.setStateValue('defaultProps7', x);
+        this.setStateValue('defaultProps7', x.currentValue);
       },
-      onChange: (x: any) => {
+      onChange: (e: Object, x: any) => {
         console.log('onChange defaultProps7', x);
-        this.setStateValue('defaultProps7', x);
+        this.setStateValue('defaultProps7', x.currentValue);
       },
     };
     return (
       <div>
-        <Theme config={config}>
+        <div>
           <TitleBox>基础用法 default：</TitleBox>
           <Rate {...defaultProps7} />
           <TextBox>{this.state.defaultProps7} 颗星</TextBox>
-        </Theme>
+        </div>
         <Theme config={config}>
           <TitleBox>基础用法 default：</TitleBox>
           <Rate {...defaultProps} />

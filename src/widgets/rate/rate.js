@@ -10,14 +10,15 @@ import React from 'react';
 import Icon from '../icon';
 import styled, { keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
+import { getElementPosition } from '../utils';
+import { ObjectUtils } from '@lugia/type-utils';
 
 const { warningColor } = colorsFunc();
-
 const Container = styled.div`
   position: relative;
   padding: 10px;
   display: inline-block;
-  font-size: ${props => props.theme.fontSize};
+  font-size: ${props => (props.theme.fontSize ? props.theme.fontSize : '18px')};
 `;
 const showUp = keyframes`
   from {
@@ -28,7 +29,6 @@ const showUp = keyframes`
     opacity: 1;
   }
 `;
-
 const Ratespan = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,
   default: props => props.theme.default || '#e8e8e8',
@@ -64,13 +64,10 @@ const Ratespan = styled.span.attrs({
     position: relative;
   }
 `;
-
 Ratespan.displayName = 'Ratespan';
-
 const RateIcon = styled(Icon)`
   vertical-align: middle !important;
 `;
-
 RateIcon.displayName = 'rate';
 const RateText = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,
@@ -135,75 +132,67 @@ type rateProps = {
   onChange: Function,
   character: any,
 };
-
-export const createArr = (
-  num: number,
-  value?: number = 0,
-  allowHalf?: boolean,
-  Classify?: boolean = false
-) => {
+export const createCalssArr = (num: number, condition?: Object): Array<string> => {
   let arr = [...Array(num)].map(() => 'default');
-  if (!value) return arr;
+  if (!condition) return arr;
+  const { starNum, allowHalf, classify } = condition;
   if (allowHalf) {
-    arr = setHalf(arr, value, Classify);
+    arr = setHalf(arr, starNum, classify);
     return arr;
   }
   const mid = Math.ceil(arr.length / 2);
-  const classname = setClass(Classify, mid, value);
+  const classname = setClass(classify, mid, starNum);
   arr.map((v, i) => {
-    arr[i] = i > value - 1 || !value ? 'default' : classname;
+    arr[i] = i > starNum - 1 || !starNum ? 'default' : classname;
   });
   return arr;
 };
-export const calcValue = (val: number = 0, allowHalf: boolean) => {
+export const calcValue = (val: number = 0, allowHalf: boolean): number => {
   if (allowHalf) {
-    const score = Math.floor(val * 2) / 2; //星星  整理得分  3.2=>3  3.7=>3.5
-    return score;
+    //星星  整理得分  3.2=>3  3.7=>3.5
+    return Math.floor(val * 2) / 2;
   }
-  const score = Math.floor(val);
-  return score;
+  return Math.floor(val);
 };
-export const InitValue = (props: Object) => {
+export const InitValue = (props: Object): number => {
   const { max, count, value = 0 } = props;
   const multiple = max && count ? max / count : 1;
   return value / multiple;
 };
-export const multipleValue = (val: number, props: Object) => {
+export const multipleValue = (val: number, props: Object): number => {
   const { max, count } = props;
   const multiple = max && count ? max / count : 1;
   return val * multiple;
 };
-export const setClass = (Classify?: boolean, mid: number, value: number) => {
+export const setClass = (classify?: boolean, mid: number, starNum: number): string => {
   let classname = 'primary';
-  switch (true) {
-    case !Classify:
-      break;
-    case value < mid:
-      classname = 'danger';
-      break;
-    case value > mid:
-      classname = 'amazed';
-      break;
-    default:
-      classname = 'primary';
+  if (!classify || starNum === mid) return classname;
+  if (starNum < mid) {
+    classname = 'danger';
+  }
+  if (starNum > mid) {
+    classname = 'amazed';
   }
   return classname;
 };
-export const setHalf = (arr: Array<string>, value: number, Classify?: boolean) => {
+export const setHalf = (arr: Array<string>, starNum: number, Classify?: boolean): Array<string> => {
+  if (!arr) {
+    return [];
+  }
   const mid = Math.ceil(arr.length / 2);
-  const classname = setClass(Classify, mid, value);
-  arr.map((v, i) => {
+  const classname = setClass(Classify, mid, starNum);
+  arr.forEach((v, i) => {
     arr[i] =
-      i > Math.ceil(value - 1)
+      i > Math.ceil(starNum - 1)
         ? 'default'
-        : i === Math.ceil(value - 1) && value % 1 !== 0
+        : i === Math.ceil(starNum - 1) && starNum % 1 !== 0
         ? 'half'
         : classname;
   });
 
   return arr;
 };
-export const setIconClass = (iconClass: Object = {}) => {
+export const getIconClass = (iconClass: Object = {}): Object => {
   return {
     default: iconClass.default || 'lugia-icon-financial_star',
     primary: iconClass.primary || iconClass.default || 'lugia-icon-financial_star',
@@ -212,49 +201,44 @@ export const setIconClass = (iconClass: Object = {}) => {
     half: iconClass.half || iconClass.default || 'lugia-icon-financial_star_o',
   };
 };
-const getOffset = RateRangeNode => {
+const getOffset = (RateRangeNode: Object) => {
+  console.log('RateRangeNode', RateRangeNode.offsetLeft, RateRangeNode.offsetWidth);
   if (!RateRangeNode) {
     return { offsetLeft: 0, offsetTop: 0 };
   }
-  const { x, y, w, h } = getElementPosition(RateRangeNode);
-  return { offsetLeft: x, offsetTop: y, offsetWidth: w, offsetHeight: h };
+  const { x } = getElementPosition(RateRangeNode);
+  const w = RateRangeNode.offsetWidth;
+  return { offsetLeft: x, offsetWidth: w };
 };
-const calcPosition = (index: number, offsetLeft: number, offsetWidth: number, pageX: number) => {
+const calcPosition = (
+  index: number,
+  offsetLeft: number,
+  offsetWidth: number,
+  pageX: number
+): boolean => {
   const p = offsetLeft + offsetWidth / 2;
   return pageX < p;
 };
-const getElementPosition = (e: Object) => {
-  let x = 0,
-    y = 0,
-    w = 0,
-    h = 0;
-  if (e) {
-    x += e.offsetLeft;
-    y += e.offsetTop;
-    w = e.clientWidth;
-    h = e.offsetHeight;
-  }
-  return { x, y, w, h };
+const getReturnObj = (state: Object, multiple: number) => {
+  const returnObj = {
+    defaultValue: state.value,
+    starNum: state.starNum,
+    currentValue: multiple >= 0 ? multiple : 0,
+  };
+  return returnObj;
 };
-const checkCharacter = (target: any) => {
-  if (typeof target === 'string') {
-    return false;
-  }
-  return true;
-};
+
 class Rate extends React.Component<rateProps, any> {
-  RateRange: any;
   Ratespan: any;
   Temporary: string;
-  fontsize: number;
   static defaultProps = {
     count: 5,
     max: 5,
     disabled: false,
     allowHalf: false,
     classify: false,
-    onClick: (x: any) => {},
-    onChange: (x: any) => {
+    onClick: (e: Object, x: any) => {},
+    onChange: (e: Object, x: any) => {
       return {};
     },
     iconClass: {
@@ -270,53 +254,49 @@ class Rate extends React.Component<rateProps, any> {
   };
   constructor(props: Object) {
     super(props);
-    this.RateRange = React.createRef();
-    const num = this.props.count;
+    // console.log(props);
+    const num = props ? props.count : 5;
     this.Ratespan = [];
-    createArr(num).map((x, i) => {
+    createCalssArr(num).map((x, i) => {
       this.Ratespan[i] = React.createRef();
     });
   }
   componentDidMount() {
     this.Temporary = JSON.stringify(this.state);
     const { onChange, value = 0, allowHalf } = this.props;
-    onChange(calcValue(value, allowHalf));
+    onChange({}, getReturnObj(this.state, value));
   }
   static getDerivedStateFromProps(defProps: rateProps, current: Object) {
+    const condition = {
+      starNum: InitValue(defProps),
+      allowHalf: defProps.allowHalf,
+      classify: defProps.classify,
+    };
     if (!current) {
       return {
-        count: createArr(
-          defProps.count,
-          InitValue(defProps),
-          defProps.allowHalf,
-          defProps.classify
-        ),
+        count: createCalssArr(defProps.count, condition),
         value: calcValue(defProps.value, defProps.allowHalf) || 0,
+        starNum: calcValue(defProps.value, defProps.allowHalf) || 0,
         current: defProps.value === 0 ? null : InitValue(defProps),
         hasClick: false,
       };
     }
     return {
-      count:
-        'count' in current
-          ? current.count
-          : createArr(defProps.count, defProps.value, defProps.allowHalf, defProps.classify),
+      count: 'count' in current ? current.count : createCalssArr(defProps.count, condition),
       value: 'value' in defProps ? defProps.value : current.value,
+      starNum: 'starNum' in current ? current.starNum : 0,
       current: 'current' in current ? current.current : -1,
       hasClick: 'hasClick' in current ? current.hasClick : false,
     };
   }
   render() {
-    const { getTheme, className, iconClass, disabled, character } = this.props;
+    const { getTheme } = this.props;
     const { count } = this.state;
-    this.fontsize = getTheme().fontSize || 18;
-    const IconClass = setIconClass(iconClass);
-    return checkCharacter(character) ? (
+    return (
       <Container
         theme={getTheme()}
-        innerRef={this.RateRange}
         onMouseLeave={e => {
-          this.mouseLeave();
+          this.mouseLeave(e);
         }}
       >
         {count.map((x, i) => (
@@ -330,108 +310,99 @@ class Rate extends React.Component<rateProps, any> {
               this.mouseMove(e, i, true);
             }}
           >
-            <RateIcon
-              iconClass={`${IconClass[x]} ${defautClass[x]} ${className} ${
-                disabled ? '' : 'hoverd'
-              }`}
-            />
-          </Ratespan>
-        ))}
-      </Container>
-    ) : (
-      <Container
-        theme={getTheme()}
-        innerRef={this.RateRange}
-        onMouseLeave={e => {
-          this.mouseLeave();
-        }}
-      >
-        {count.map((x, i) => (
-          <Ratespan
-            innerRef={this.Ratespan[i]}
-            theme={getTheme()}
-            onMouseMove={e => {
-              this.mouseMove(e, i);
-            }}
-            onClick={e => {
-              this.mouseMove(e, i, true);
-            }}
-          >
-            <RateText
-              character={character}
-              className={`${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`}
-            >
-              {character}
-            </RateText>
+            {this.getElement(x)}
           </Ratespan>
         ))}
       </Container>
     );
   }
-
   mouseMove = (e: Object, i: number, hasClick?: boolean) => {
     let { count, current } = this.state;
     const { disabled, onChange, classify } = this.props;
     if (disabled) return;
-    this.fontsize = parseInt(this.fontsize, 0);
-    const { offsetLeft } = getOffset(this.Ratespan[i].current);
-    const values = this.moveType(i, offsetLeft, this.fontsize, e.pageX);
-    count = setHalf(count, values, classify);
-    this.handleClick(values, count, current, hasClick);
-    onChange(multipleValue(values, this.props));
+    const { offsetLeft, offsetWidth } = this.getOffset(i);
+    console.info(' offsetLeft,offsetWidth ', offsetLeft, offsetWidth);
+    const stars = this.moveType(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
+    count = setHalf(count, stars, classify);
+    this.handleClick(e, stars, count, current, hasClick);
+    onChange(e, getReturnObj(this.state, multipleValue(stars, this.props)));
   };
-  mouseLeave = () => {
+  mouseLeave = (e: Object) => {
     const { hasClick, current } = this.state;
     const { onChange } = this.props;
     if (hasClick || this.Temporary) {
       const { value, count } = JSON.parse(this.Temporary);
       this.setValue(value, count, current, false);
-      onChange(multipleValue(current, this.props));
+      onChange(e, getReturnObj(this.state, multipleValue(current, this.props)));
       return;
     }
-    const value = 0,
-      count = createArr(this.props.count);
-    this.setValue(value, count, current, hasClick);
-    onChange(multipleValue(value, this.props));
+    const count = createCalssArr(this.props.count);
+    this.setValue(0, count, current, hasClick);
+    onChange(e, getReturnObj(this.state, multipleValue(0, this.props)));
   };
   moveType = (index: number, offsetLeft: number, offsetWidth: number, pageX: number) => {
     const { allowHalf } = this.props;
     const isLeft = calcPosition(index, offsetLeft, offsetWidth, pageX);
     if (allowHalf && isLeft) {
-      const value = calcValue(index + 0.5, allowHalf);
-
-      return value;
+      return calcValue(index + 0.5, allowHalf);
     }
-    const value = calcValue(index + 1, allowHalf);
-    return value;
+    return calcValue(index + 1, allowHalf);
   };
-
-  handleClick = (val: number, cou: Array<string>, index: number, hasClicked?: boolean) => {
-    const { onClick, max, count: pcount, allowHalf } = this.props;
+  getOffset(index: number) {
+    console.log('getOffset', this.Ratespan[index].current.offsetLeft);
+    return getOffset(this.Ratespan[index].current);
+  }
+  getElement = (x: number) => {
+    const { className, iconClass, disabled, character } = this.props;
+    const IconClass = getIconClass(iconClass);
+    if (ObjectUtils.isString(character)) {
+      return (
+        <RateText
+          character={character}
+          className={`${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`}
+        >
+          {character}
+        </RateText>
+      );
+    }
+    return (
+      <RateIcon
+        iconClass={`${IconClass[x]} ${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`}
+      />
+    );
+  };
+  handleClick = (
+    e: Object,
+    val: number,
+    cou: Array<string>,
+    index: number,
+    hasClicked?: boolean
+  ) => {
+    const { onClick, max, count, allowHalf } = this.props;
     const { current, hasClick } = this.state;
     if (hasClicked) {
       index = val;
       if (index === current) {
-        cou.map((v, i) => {
+        cou.forEach((v, i) => {
           cou[i] = 'default';
         });
         val = calcValue(0, allowHalf);
-        index = null;
+        index = -1;
         hasClicked = !hasClicked;
         this.Temporary = JSON.stringify(null);
       }
       this.setValue(val, cou, index, hasClicked);
       this.Temporary = JSON.stringify(this.state);
-      const multiple = max && pcount ? (max / pcount) * val : val;
-      onClick(multiple);
+      const multiple = max && count ? (max / count) * val : val;
+      onClick(e, getReturnObj(this.state, multiple));
       return;
     }
     this.setValue(val, cou, index, hasClick);
   };
-
   setValue = (val: number, cou: Array<string>, index: number, hasClicked: boolean) => {
     this.setState({
       value: val,
+      starNum: val,
       count: cou,
       current: index,
       hasClick: hasClicked,

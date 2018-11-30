@@ -13,6 +13,7 @@ exports[`Rate Test css 1`] = `
   position: relative;
   padding: 10px;
   display: inline-block;
+  font-size: 18px;
 }
 
 .c1 {
