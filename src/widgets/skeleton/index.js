@@ -3,7 +3,6 @@
  *
  * @flow
  */
-import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Skeleton from './skeleton';
 import Widget from '../consts';

@@ -11,7 +11,6 @@ import styled from 'styled-components';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 import { toNumber } from '../common/NumberUtils';
-import { isNumber, isString } from '@lugia/type-utils';
 
 const em = px2emcss(FontSizeNumber);
 type ParagraphType = {
@@ -68,10 +67,6 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
     animation: false,
   };
 
-  constructor(props: SkeletonProps) {
-    super(props);
-  }
-
   render() {
     const { paragraph, loading, children } = this.props;
     return loading ? (
@@ -124,7 +119,7 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
   };
 
   getParagraphWidth(paragraphWidth: ParagraphWidth, paragraphCount: number): any {
-    if (Array.isArray(paragraphWidth)) {
+    if (Array.isArray(paragraphWidth) && paragraphWidth.length > 0) {
       return paragraphWidth;
     }
     const res = {};
@@ -139,13 +134,13 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
     return index === getLastIndex(paragraphCount);
   }
 
-  getParagraphCount = (paragraph?: ParagraphType = { rows: DefaultParagraphCount }): number => {
+  getParagraphCount(paragraph?: ParagraphType = { rows: DefaultParagraphCount }): number {
     if (paragraph === null) {
       return DefaultParagraphCount;
     }
     const { rows = DefaultParagraphCount } = paragraph;
     return toNumber(rows, DefaultParagraphCount);
-  };
+  }
 
   getPictrue = () => {
     const { picture } = this.props;

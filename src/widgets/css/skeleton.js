@@ -7,9 +7,23 @@ import styled, { keyframes } from 'styled-components';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 import { toNumber } from '../common/NumberUtils';
+import colorsFunc from '../css/stateColor';
+const { disableColor, superLightColor } = colorsFunc();
+
+type SkeletonProps = {
+  distance?: number,
+  width?: number,
+  height?: number,
+  type?: 'type' | 'paragraph',
+  lastItem?: boolean,
+  paragraphWidth?: number | string,
+  titleWidth?: number | string,
+  pictureWidth?: number | string,
+  pictureHeight?: number | string,
+};
 
 const em = px2emcss(FontSizeNumber);
-const getCommonAnimation = (props: Object) => {
+const getCommonAnimation = (props: SkeletonProps) => {
   const { distance = 1000 } = props;
   const animationCSS = keyframes`
     0% {
@@ -22,11 +36,11 @@ const getCommonAnimation = (props: Object) => {
   return animationCSS;
 };
 
-const getAnimationItemCSS = (props: Object) => {
+const getAnimationItemCSS = (props: SkeletonProps) => {
   const { width, height } = props;
   return `width: ${em(width)};
   height: ${em(height)};
-  box-shadow: 0 0 ${em(width * 2)} ${em(width)} #f2f2f2;
+  box-shadow: 0 0 ${em(width * 2)} ${em(width)} ${disableColor};
   left: -${em(width * 2)}; 
   `;
 };
@@ -36,7 +50,7 @@ export const AnimationItem = styled.div`
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  background: #f2f2f2;
+  background: ${disableColor};
   animation: ${getCommonAnimation} 1s linear infinite;
 `;
 
@@ -49,7 +63,7 @@ export const CommonAvatar = styled.div`
   width: ${em(32)};
   height: ${em(32)};
   border-radius: 50%;
-  background: #e8e8e8;
+  background: ${superLightColor};
   position: relative;
   overflow: hidden;
 `;
@@ -58,12 +72,12 @@ export const CommonAvatar = styled.div`
  * paragraph
  */
 
-const getPaddingBottom = (props: Object) => {
+const getPaddingBottom = (props: SkeletonProps) => {
   const { type } = props;
   return `padding-bottom: ${type === 'title' ? em(16) : em(8)}`;
 };
 
-const getWidth = (props: Object) => {
+const getWidth = (props: SkeletonProps) => {
   let { paragraphWidth, titleWidth } = props;
   const { type, lastItem } = props;
 
@@ -85,7 +99,7 @@ export const ParagraphWrap = styled.div`
 
 export const CommonParagraph = styled.div`
   height: ${em(16)};
-  background: #e8e8e8;
+  background: ${superLightColor};
   position: relative;
   overflow: hidden;
 `;
@@ -94,13 +108,13 @@ export const CommonParagraph = styled.div`
  * picture
  */
 
-const getPictureWidth = (props: Object) => {
+const getPictureWidth = (props: SkeletonProps) => {
   let { pictureWidth } = props;
   pictureWidth = toNumber(pictureWidth, 180);
   return `width: ${em(pictureWidth)}`;
 };
 
-const getPictureHeight = (props: Object) => {
+const getPictureHeight = (props: SkeletonProps) => {
   let { pictureHeight } = props;
   pictureHeight = toNumber(pictureHeight, 180);
   return `height: ${em(pictureHeight)}`;
@@ -109,7 +123,7 @@ const getPictureHeight = (props: Object) => {
 export const CommonPicture = styled.div`
   ${getPictureWidth};
   ${getPictureHeight};
-  background: #e8e8e8;
+  background: ${superLightColor};
   position: relative;
   overflow: hidden;
 `;
