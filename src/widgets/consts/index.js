@@ -69,6 +69,7 @@ const QueryInput = 'sv_widget_QueryInput';
 const Tag = 'sv_widget_Tag';
 const DropMenuButton = 'sv_widget_DropMenuButton';
 const Cascader = 'sv_widget_Cascader';
+const Carousel = 'sv_widget_Carousel';
 
 const Layout = 'sv_widget_Layout';
 const Header = 'sv_widget_Header';
@@ -184,4 +185,5 @@ export default {
   Time,
   Loading,
   Skeleton,
+  Carousel,
 };
