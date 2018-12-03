@@ -6,92 +6,106 @@
 import * as React from 'react';
 import { toNumber } from '../common/NumberUtils';
 import {
-  Wrap,
+  AllItemsContainer,
   CarouselContainer,
-  PreButton,
-  SwitchIcon,
-  NextButton,
-  IndicatorWrap,
   Indicator,
   IndicatorContainer,
-  AllItemsContainer,
+  IndicatorWrap,
   ItemWrap,
+  NextButton,
+  PreButton,
+  SwitchIcon,
+  Wrap,
 } from '../css/carousel';
+import { limit } from '../common/Math';
 
 const defaultWidth = 400;
 const defaultHeight = 200;
 const defaultDelay = 4000;
-
+type IndicatorType = 'horizontal' | 'vertical' | 'outside';
+type SwitchType = 'horizontal' | 'vertical' | 'fade';
 type CarouselProps = {
   children?: React.Node[],
   getTheme?: Function,
   start?: number,
+  defaultStart?: number,
   autoPlay?: boolean,
+  onChange?: Function,
   delay?: number,
   action?: 'hover' | 'click',
-  indicatorType?: 'horizontal' | 'vertical' | 'outside',
-  switchType?: 'horizontal' | 'vertical' | 'fade',
+  indicatorType?: IndicatorType,
+  switchType?: SwitchType,
 };
 
 type CarouselState = {
   start: number,
 };
 
+const getInitStart = (props: CarouselProps, start: number): number => {
+  const { children } = props;
+  if (!children || children.length === 0) {
+    return 0;
+  }
+  const len = children.length;
+  start = toNumber(start, 0);
+  start = start >= len ? 0 : start;
+  return limit(start, [0, len - 1]);
+};
+
+export const isHasStart = (props: CarouselProps): boolean => {
+  return 'start' in props;
+};
 export default class Carousel extends React.Component<any, CarouselProps> {
   static defaultProps = {
     getTheme: () => {},
-    start: 0,
+    defaultStart: 0,
     autoPlay: false,
     delay: 3000,
     action: 'hover',
     indicatorType: 'horizontal',
     switchType: 'horizontal',
   };
+
   constructor(props: CarouselProps) {
     super(props);
-    this.state = {
-      start: this.getInitStart(props),
-    };
     this.clickDisabled = false;
     this.preStart = toNumber(props.start, 0);
   }
+
   clickDisabled: boolean;
   preStart: any;
   interval: any;
 
-  getInitStart = (props: CarouselProps) => {
-    const { children } = props;
-    let start;
-    if (children && children.length > 0) {
-      const len = children.length;
-      const propsStart = toNumber(props.start, 0);
-      start = propsStart - len > 0 ? 0 : propsStart;
-    } else {
-      start = 0;
-    }
-    return start;
-  };
-
   static getDerivedStateFromProps(props: CarouselProps, state: CarouselState) {
-    if (!state) {
-      return {};
+    const { start, defaultStart } = props;
+    if (isHasStart(props)) {
+      return { start: getInitStart(props, start) };
     }
-    return { start: state.start };
+    if (!state) {
+      return { start: defaultStart };
+    }
   }
+
   render() {
     const { width, height } = this.getShadowWidthAndHeight();
     const { indicatorType } = this.props;
-    const isIndicatorAtOutSide = indicatorType === 'outside';
+
     return (
       <Wrap width={width} height={height} indicatorType={indicatorType}>
         <CarouselContainer height={height} width={width}>
           {this.getSwitchButton()}
           {this.getItems()}
-          {isIndicatorAtOutSide ? null : this.getIndicators()}
+          {this.getIndicatros(indicatorType, false)}
         </CarouselContainer>
-        {isIndicatorAtOutSide ? this.getIndicators() : null}
+        {this.getIndicatros(indicatorType, true)}
       </Wrap>
     );
+  }
+
+  getIndicatros(indicatorType: IndicatorType, targetValue: boolean) {
+    const isIndicatorAtOutSide = indicatorType === 'outside';
+    const indicators = this.createIndicators();
+    return isIndicatorAtOutSide === targetValue ? indicators : null;
   }
 
   getSwitchButton = () => {
@@ -114,18 +128,15 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     return [preItem, NextItem];
   };
 
-  getIndicators = () => {
-    const items = [];
+  createIndicators = () => {
+    let items = [];
     const { indicatorType, children } = this.props;
-    if (children && children.length > 0) {
-      const length = children.length;
+    if (children) {
       const { start } = this.state;
-      children.forEach((item, index) => {
-        let checked = false;
-        if (start === index || (index === 0 && start === length)) {
-          checked = true;
-        }
-        items.push(
+      const length = children.length;
+      items = children.map((item, index) => {
+        const checked = start === index || (index === 0 && start === length);
+        return (
           <IndicatorWrap
             indicatorType={indicatorType}
             onMouseEnter={this.handleMouseEnterIndicator.bind(this, index)}
@@ -142,73 +153,19 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   handleMouseEnterIndicator(index: number) {
     const { action } = this.props;
-    if (action === 'hover') {
-      this.changeIndicatorState(index);
+    if (action !== 'hover') {
+      return;
     }
+    this.changeIndicatorState(index);
   }
 
   handleClickIndicator(index: number) {
     const { action } = this.props;
-    if (action !== 'hover') {
-      this.changeIndicatorState(index);
+    if (action === 'hover') {
+      return;
     }
+    this.changeIndicatorState(index);
   }
-
-  changeIndicatorState = (index: number) => {
-    const { state, props } = this;
-    const { start } = state;
-    const len = props.children.length;
-    clearInterval(this.interval);
-    this.handleAutoPlay(props);
-    if (index === start || (start === len && index === 0)) {
-      return;
-    }
-
-    if (start === len) {
-      this.preStart = 0;
-    } else {
-      this.preStart = start;
-    }
-    this.setState({ start: index });
-  };
-
-  clickSwitchButton = (switchType: string) => {
-    if (this.clickDisabled) {
-      return;
-    }
-    const { state, props } = this;
-    const { start = 0 } = state;
-    clearInterval(this.interval);
-    this.handleAutoPlay(props);
-    const len = props.children.length;
-    let newStart;
-
-    if (switchType === 'pre') {
-      if (start === 0) {
-        this.preStart = len;
-        newStart = len - 1;
-      } else {
-        this.preStart = start;
-        newStart = start - 1;
-      }
-    } else {
-      if (start === len) {
-        this.preStart = 0;
-        newStart = 1;
-      } else {
-        this.preStart = start;
-        newStart = start + 1;
-      }
-    }
-
-    this.setState({
-      start: newStart,
-    });
-    this.clickDisabled = true;
-    setTimeout(() => {
-      this.clickDisabled = false;
-    }, 300);
-  };
 
   preClick = () => {
     this.clickSwitchButton('pre');
@@ -217,6 +174,63 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   nextClick = () => {
     this.clickSwitchButton('next');
   };
+
+  changeIndicatorState = (index: number) => {
+    this.resetHandleAutoPlay(this.props);
+    const { state, props } = this;
+    const { start } = state;
+    const len = props.children.length;
+    if (index === start || (start === len && index === 0)) {
+      return;
+    }
+    this.preStart = start === len ? 0 : start;
+    this.setStart(index);
+  };
+
+  clickSwitchButton = (switchType: SwitchType) => {
+    if (this.clickDisabled) {
+      return;
+    }
+    this.clickDisabled = true;
+    this.resetHandleAutoPlay(this.props);
+    const { state, props } = this;
+    const { children = [] } = props;
+    const { start = 0 } = state;
+    const len = children.length;
+    const { newStart, preStart } = this.getPreStart(switchType, start, len);
+    this.preStart = preStart;
+    this.setStart(newStart);
+    setTimeout(() => {
+      this.clickDisabled = false;
+    }, 300);
+  };
+
+  getPreStart(
+    switchType: SwitchType,
+    start: number,
+    len: number
+  ): { preStart: number, newStart: number } {
+    if (switchType === 'pre') {
+      const preStart = start === 0 ? len : start;
+      return { preStart, newStart: preStart - 1 };
+    }
+    const preStart = start === len ? 0 : start;
+    return { preStart, newStart: preStart + 1 };
+  }
+
+  setStart(start: number) {
+    const { onChange } = this.props;
+    onChange &&
+      onChange({
+        newValue: start,
+        oldValue: this.state.start,
+      });
+    if (!isHasStart(this.props)) {
+      this.setState({
+        start,
+      });
+    }
+  }
 
   getItems = () => {
     const { children, switchType } = this.props;
@@ -252,47 +266,78 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { switchType } = props;
     const { start } = state;
     const { width, height } = this.getShadowWidthAndHeight();
-    const items = [];
-    children.forEach((item, index) => {
-      const checked = start === index;
-      items.push(
-        <ItemWrap switchType={switchType} checked={checked} width={width} height={height}>
-          {item}
-        </ItemWrap>
-      );
+    if (!children || children.length === 0) {
+      return [];
+    }
+
+    const items = children.map((item, index) => {
+      return this.getItemWrap({
+        switchType,
+        start,
+        index,
+        width,
+        height,
+        item,
+      });
     });
-    const checked = start === children.length;
     items.push(
-      <ItemWrap switchType={switchType} checked={checked} width={width} height={height}>
-        {children[0]}
-      </ItemWrap>
+      this.getItemWrap({
+        switchType,
+        start,
+        index: children.length,
+        width,
+        height,
+        item: children[0],
+      })
     );
     return items;
   };
+
+  getItemWrap(param: {
+    switchType: SwitchType,
+    start: number,
+    index: number,
+    width: number,
+    height: nubmer,
+    item: Object,
+  }) {
+    const { switchType, start, index, width, height, item } = param;
+    return (
+      <ItemWrap switchType={switchType} checked={start === index} width={width} height={height}>
+        {item}
+      </ItemWrap>
+    );
+  }
 
   getShadowWidthAndHeight = () => {
     const { getTheme } = this.props;
     const theme = getTheme();
     const { width = defaultWidth, height = defaultHeight } = theme;
-
     return { width, height };
-  };
-
-  handleAutoPlay = (props: CarouselProps) => {
-    const { autoPlay, delay } = props;
-    let delayNumber = parseInt(delay);
-    if (isNaN(delayNumber)) {
-      delayNumber = defaultDelay;
-    }
-
-    if (autoPlay === true) {
-      this.interval = setInterval(() => {
-        this.nextClick();
-      }, delayNumber);
-    }
   };
 
   componentDidMount() {
     this.handleAutoPlay(this.props);
   }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  resetHandleAutoPlay(props: CarouselProps) {
+    clearInterval(this.interval);
+    this.handleAutoPlay(props);
+  }
+
+  handleAutoPlay = (props: CarouselProps) => {
+    const { autoPlay } = props;
+    if (!autoPlay) {
+      return;
+    }
+    const { delay } = props;
+    const delayNumber = toNumber(delay, defaultDelay);
+    this.interval = setInterval(() => {
+      this.nextClick();
+    }, delayNumber);
+  };
 }

@@ -48,11 +48,49 @@ const H2 = styled.h2`
   padding: 10px 40px;
 `;
 
+const getImgWrap = () => {
+  const len = data.length;
+  const items = [];
+  for (let i = 0; i < len; i++) {
+    items.push(
+      <ItemWrap i={i}>
+        <Img src={data[i]} />
+      </ItemWrap>
+    );
+  }
+  return items;
+};
+
+class CarouselLimtDemo extends React.Component<any, any> {
+  constructor() {
+    super();
+    this.state = { start: 0 };
+  }
+
+  onChange = (param: Object) => {
+    const { newValue, oldValue } = param;
+    console.info('onAfter', newValue, oldValue);
+    this.setState({ start: newValue });
+  };
+
+  render() {
+    return (
+      <DemoWrap>
+        <h2>图片轮播图 start=2 从索引值为2的图开始</h2>
+        <Carousel autoPlay={true} delay={3000} start={this.state.start} onChange={this.onChange}>
+          {getImgWrap()}
+        </Carousel>
+      </DemoWrap>
+    );
+  }
+}
+
 export default class SkeletonDemo extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {};
   }
+
   render() {
     const config = { [Widget.Carousel]: { width: 700, height: 350 } };
     // const config = {};
@@ -61,7 +99,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
         <H2>3s自动切换</H2>
         <DemoWrap>
           <Theme config={config}>
-            <Carousel autoPlay={true} start={null} delay={3000}>
+            <Carousel autoPlay={true} delay={3000}>
               {this.getItemWrap()}
             </Carousel>
           </Theme>
@@ -93,51 +131,28 @@ export default class SkeletonDemo extends React.Component<any, any> {
         <H2>透明度切换 switchType === fade indicatorType=vertical</H2>
         <DemoWrap>
           <Theme config={config}>
-            <Carousel autoPlay={true} start={'3'} delay={3000} switchType={'fade'}>
+            <Carousel autoPlay={true} deafultStart={3} delay={3000} switchType={'fade'}>
               {this.getItemWrap()}
             </Carousel>
           </Theme>
         </DemoWrap>
 
-        <h2>图片轮播图 start=2 从索引值为2的图开始</h2>
+        <h2>图片轮播图 deafultStart=2 从索引值为2的图开始</h2>
         <DemoWrap>
           <Theme config={config}>
-            <Carousel autoPlay={true} delay={3000} start={2}>
-              {this.getImgWrap()}
+            <Carousel autoPlay={true} delay={3000} deafultStart={2}>
+              {getImgWrap()}
             </Carousel>
           </Theme>
         </DemoWrap>
 
+        <CarouselLimtDemo />
         <h2>图片轮播图 switchType === fade 透明度切换</h2>
         <DemoWrap>
           <Theme config={config}>
-            <Carousel autoPlay={true} switchType={'fade'} delay={3000} start={2}>
-              {this.getImgWrap()}
-            </Carousel>
+            <Carousel autoPlay={true} switchType={'fade'} delay={3000} deafultStart={2} />
           </Theme>
         </DemoWrap>
-        {/* <DemoWrap>
-          <Theme config={config}>
-            <Carousel
-              indicatorType={'horizontal'}
-              // indicatorType={'vertical'}
-              // indicatorType={'outside'}
-              action={'hover'}
-              // vertical={true}
-              start={3}
-              autoPlay={false}
-              delay={3000}
-            >
-              <ItemWrap href="http://www.w3school.com.cn">
-                <Img
-                  src={
-                    'http://5b0988e595225.cdn.sohucs.com/images/20180123/5ab3cab613cb4eb6a79cb02cd7408f2a.jpeg'
-                  }
-                />
-              </ItemWrap>
-            </Carousel>
-          </Theme>
-        </DemoWrap> */}
       </div>
     );
   }
@@ -148,19 +163,6 @@ export default class SkeletonDemo extends React.Component<any, any> {
     for (let i = 0; i < len; i++) {
       const index = i + 1;
       items.push(<ItemWrap i={i}>{'Banner0' + index}</ItemWrap>);
-    }
-    return items;
-  };
-
-  getImgWrap = () => {
-    const len = data.length;
-    const items = [];
-    for (let i = 0; i < len; i++) {
-      items.push(
-        <ItemWrap i={i}>
-          <Img src={data[i]} />
-        </ItemWrap>
-      );
     }
     return items;
   };
