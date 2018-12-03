@@ -6,14 +6,7 @@
 import React from 'react';
 import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import Rate, {
-  createCalssArr,
-  calcValue,
-  InitValue,
-  multipleValue,
-  setHalf,
-  getIconClass,
-} from '../rate';
+import Rate, { createCalssArr, calcValue, multipleValue, setHalf, getIconClass } from '../rate';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -21,7 +14,6 @@ const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify')
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const { expect: exp } = chai;
 describe('Rate Test', () => {
   const target = mount(<Rate />);
   it('css', () => {
@@ -86,7 +78,7 @@ describe('Rate Test', () => {
   checkCalcValue(null, false, 0);
   function checkInitValue(props: Object, expectation) {
     it('Function checkInitValue', () => {
-      const res = InitValue(props);
+      const res = multipleValue(props);
       expect(res).toEqual(expectation);
     });
   }
@@ -98,7 +90,7 @@ describe('Rate Test', () => {
   checkInitValue({ max: 10, count: 5, value: 4 }, 2);
   function checkMultipleValue(val: number, props: Object, expectation) {
     it('Function multipleValue', () => {
-      const res = multipleValue(val, props);
+      const res = multipleValue(props, val);
       expect(res).toEqual(expectation);
     });
   }
@@ -250,7 +242,6 @@ describe('Rate Test', () => {
     });
     const target = mount(<Rate value={4} allowHalf={true} onClick={onClick} />);
     const order = VerifyOrder.create();
-    // const mockObjectTarget = new Rate();
     const mockGetOffset = mockObject.create(
       target.instance(),
       VerifyOrderConfig.create('offset', order)
@@ -261,18 +252,13 @@ describe('Rate Test', () => {
     findRate(target, 2).simulate('click', { pageX: 80 }, 2, true);
     expect(target.state().value).toEqual(4);
     expect(await changePromise).toBe(2.5);
-    order.verify((tar: Object) => {
-      console.log('1111111', tar);
-      const { offset } = tar;
-      offset.getOffset(2);
-    });
-    // expect(btn.click()).toBe(11);
-    // target.setProps({ value: 2 });
-    // expect(target.state().value).toEqual(2);
 
-    // findRate(target, 2).simulate('click', { pageX: 13 }, 2, true);
-    // expect(target.state().value).toEqual(2);
-    // expect(await changePromise).toBe(2.5);
+    target.setProps({ value: 2 });
+    expect(target.state().value).toEqual(2);
+
+    findRate(target, 2).simulate('click', { pageX: 80 }, 2, true);
+    expect(target.state().value).toEqual(2);
+    expect(await changePromise).toBe(2.5);
   });
   it('Function:onClick unlimit value', async () => {
     let onClick = () => true;
@@ -287,13 +273,22 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(4);
     expect(await changePromise).toBe(4);
   });
-  it.skip('Function:onClick unlimit value allowHalf', async () => {
+  it('Function:onClick unlimit value allowHalf', async () => {
     const target = mount(<Rate allowHalf={true} />);
+
+    const order = VerifyOrder.create();
+    const mockGetOffset = mockObject.create(
+      target.instance(),
+      VerifyOrderConfig.create('offset', order)
+    );
+    const getOffset = mockGetOffset.mockFunction('getOffset');
+    getOffset.forever({ offsetLeft: 76, offsetWidth: 18 });
+
+    findRate(target, 2).simulate('click', { pageX: 80 }, 2, true);
+    expect(target.state().value).toEqual(2.5);
 
     findRate(target, 0).simulate('click', { pageX: 13 }, 0, true);
     expect(target.state().value).toEqual(0.5);
-    findRate(target, 0).simulate('click', { pageX: 17 }, 0, true);
-    expect(target.state().value).toEqual(1);
   });
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;

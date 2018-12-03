@@ -149,20 +149,15 @@ export const createCalssArr = (num: number, condition?: Object): Array<string> =
 };
 export const calcValue = (val: number = 0, allowHalf: boolean): number => {
   if (allowHalf) {
-    //星星  整理得分  3.2=>3  3.7=>3.5
-    return Math.floor(val * 2) / 2;
+    return Math.floor(val * 2) / 2; //星星  整理得分  3.2=>3  3.7=>3.5
   }
   return Math.floor(val);
 };
-export const InitValue = (props: Object): number => {
+export const multipleValue = (props: Object, val: number): number => {
   const { max, count, value = 0 } = props;
   const multiple = max && count ? max / count : 1;
+  if (val) return val * multiple;
   return value / multiple;
-};
-export const multipleValue = (val: number, props: Object): number => {
-  const { max, count } = props;
-  const multiple = max && count ? max / count : 1;
-  return val * multiple;
 };
 export const setClass = (classify?: boolean, mid: number, starNum: number): string => {
   let classname = 'primary';
@@ -202,7 +197,6 @@ export const getIconClass = (iconClass: Object = {}): Object => {
   };
 };
 const getOffset = (RateRangeNode: Object) => {
-  console.log('RateRangeNode', RateRangeNode.offsetLeft, RateRangeNode.offsetWidth);
   if (!RateRangeNode) {
     return { offsetLeft: 0, offsetTop: 0 };
   }
@@ -254,7 +248,6 @@ class Rate extends React.Component<rateProps, any> {
   };
   constructor(props: Object) {
     super(props);
-    // console.log(props);
     const num = props ? props.count : 5;
     this.Ratespan = [];
     createCalssArr(num).map((x, i) => {
@@ -268,7 +261,7 @@ class Rate extends React.Component<rateProps, any> {
   }
   static getDerivedStateFromProps(defProps: rateProps, current: Object) {
     const condition = {
-      starNum: InitValue(defProps),
+      starNum: multipleValue(defProps),
       allowHalf: defProps.allowHalf,
       classify: defProps.classify,
     };
@@ -277,7 +270,7 @@ class Rate extends React.Component<rateProps, any> {
         count: createCalssArr(defProps.count, condition),
         value: calcValue(defProps.value, defProps.allowHalf) || 0,
         starNum: calcValue(defProps.value, defProps.allowHalf) || 0,
-        current: defProps.value === 0 ? null : InitValue(defProps),
+        current: defProps.value === 0 ? null : multipleValue(defProps),
         hasClick: false,
       };
     }
@@ -321,11 +314,10 @@ class Rate extends React.Component<rateProps, any> {
     const { disabled, onChange, classify } = this.props;
     if (disabled) return;
     const { offsetLeft, offsetWidth } = this.getOffset(i);
-    console.info(' offsetLeft,offsetWidth ', offsetLeft, offsetWidth);
     const stars = this.moveType(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
     count = setHalf(count, stars, classify);
     this.handleClick(e, stars, count, current, hasClick);
-    onChange(e, getReturnObj(this.state, multipleValue(stars, this.props)));
+    onChange(e, getReturnObj(this.state, multipleValue(this.props, stars)));
   };
   mouseLeave = (e: Object) => {
     const { hasClick, current } = this.state;
@@ -333,12 +325,12 @@ class Rate extends React.Component<rateProps, any> {
     if (hasClick || this.Temporary) {
       const { value, count } = JSON.parse(this.Temporary);
       this.setValue(value, count, current, false);
-      onChange(e, getReturnObj(this.state, multipleValue(current, this.props)));
+      onChange(e, getReturnObj(this.state, multipleValue(this.props, current)));
       return;
     }
     const count = createCalssArr(this.props.count);
     this.setValue(0, count, current, hasClick);
-    onChange(e, getReturnObj(this.state, multipleValue(0, this.props)));
+    onChange(e, getReturnObj(this.state, multipleValue(this.props, 0)));
   };
   moveType = (index: number, offsetLeft: number, offsetWidth: number, pageX: number) => {
     const { allowHalf } = this.props;
@@ -349,7 +341,6 @@ class Rate extends React.Component<rateProps, any> {
     return calcValue(index + 1, allowHalf);
   };
   getOffset(index: number) {
-    console.log('getOffset', this.Ratespan[index].current.offsetLeft);
     return getOffset(this.Ratespan[index].current);
   }
   getElement = (x: number) => {
