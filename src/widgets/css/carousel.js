@@ -123,8 +123,8 @@ const getIndicatorBackground = (props: CarouselProps) => {
   return !checked
     ? `background: ${lightGreyColor}; opacity: 0.6;`
     : indicatorType === 'outside'
-      ? `background : ${mediumGreyColor}`
-      : `background : ${defaultColor}`;
+    ? `background : ${mediumGreyColor}`
+    : `background : ${defaultColor}`;
 };
 
 const getIndicatorWrapCSS = (props: CarouselProps) => {
@@ -135,11 +135,11 @@ const getIndicatorWrapCSS = (props: CarouselProps) => {
          padding-right: ${em(10)};
         `
     : indicatorType === 'outside'
-      ? `
+    ? `
     display: inline-block;
     padding-top: ${em(10)};
     `
-      : `
+    : `
          display: inline-block;
          padding-bottom: ${em(10)};
         `;
@@ -177,8 +177,6 @@ const getAnimation = (props: CarouselProps) => {
   const { preStart = 0, nextStart = 0, width = 0, height = 0, switchType } = props;
   console.log('switchType', switchType);
   if (nextStart === preStart || switchType === 'fade') {
-    console.log('null');
-
     return null;
   }
 
@@ -264,8 +262,8 @@ const getIsFadeCSS = (props: CarouselProps) => {
   return switchType === 'fade' && checked
     ? 'position: absolute;opacity: 1;'
     : switchType === 'fade'
-      ? 'position: absolute;opacity: 0;'
-      : 'null';
+    ? 'position: absolute;opacity: 0;'
+    : '';
 };
 
 export const ItemWrap = styled.div`

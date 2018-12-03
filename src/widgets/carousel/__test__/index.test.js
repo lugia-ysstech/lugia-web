@@ -27,7 +27,6 @@ describe('Carousel', () => {
       item,
     });
 
-    const Target = <div>{result}</div>;
-    expect(renderer.create(Target).toJSON()).toMatchSnapshot();
+    expect(renderer.create(<div>{result}</div>).toJSON()).toMatchSnapshot();
   });
 });

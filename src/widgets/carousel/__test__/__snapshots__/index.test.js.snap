@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel getItemWrap 1`] = `
+.c0 {
+  display: inline-block;
+  height: 4.166666666666667em;
+  width: 4.166666666666667em;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+<div>
+  <div
+    checked={false}
+    className="c0"
+    height={50}
+    width={50}
+  >
+    hello world
+  </div>
+</div>
+`;
