@@ -37,6 +37,7 @@ exports[`Anchor css 1`] = `
   height: 0.6666666666666667em;
   border-radius: 8px;
   left: -0.08333333333333334em;
+  display: none;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   -webkit-transform: translateX(-50%);
@@ -49,6 +50,7 @@ exports[`Anchor css 1`] = `
   width: 0.16666666666666669em;
   height: 2em;
   left: -0.08333333333333334em;
+  display: none;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   -webkit-transform: translateX(-50%);

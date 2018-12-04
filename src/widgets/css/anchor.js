@@ -52,6 +52,7 @@ const getTop = (props: CSSProps) => {
     }
     return `top: ${em(res)};background: ${themeColor};`;
   }
+  return 'display: none';
 };
 const getCircleCSS = (props: CSSProps) => {
   const { slideType } = props;

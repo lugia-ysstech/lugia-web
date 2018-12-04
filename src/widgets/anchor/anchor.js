@@ -18,7 +18,7 @@ export const AnchorContext = React.createContext({
   activeLink: undefined,
   onClick: undefined,
 });
-//todo: 滑动圆点的滑出时隐藏；
+
 export default ThemeProvider(
   class extends React.Component<AnchorProps, AnchorState> {
     static displayName = 'Anchor';
@@ -60,7 +60,6 @@ export default ThemeProvider(
           }
         }
       });
-
       this.setScrollActiveLink(linkInfo);
     };
     setScrollActiveLink = (linkInfo: Object[]) => {
@@ -68,6 +67,10 @@ export default ThemeProvider(
         const currentLink = linkInfo.reduce((prev, curr) => (curr.top > prev.top ? curr : prev));
         this.setState({
           activeLink: currentLink.link,
+        });
+      } else {
+        this.setState({
+          activeLink: '',
         });
       }
     };
@@ -109,7 +112,6 @@ export default ThemeProvider(
     }
     getLinks = (links: string[]) => {
       this.links = [...links];
-      console.info(links);
     };
   },
   Widget.Anchor
