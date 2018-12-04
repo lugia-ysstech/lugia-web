@@ -40,10 +40,12 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
         const currConfig = { ...widgetNameResult, ...viewClassResult };
         return Object.assign({}, { ...currConfig }, { svThemeConfigTree });
       };
+      const getThemeByDisplayName = (displayName: string) => {};
       return (
         <Target
           {...this.props}
           getTheme={getTheme}
+          getThemeByDisplayName={getThemeByDisplayName}
           svThemVersion={this.state.svThemVersion}
           ref={cmp => (this.svtarget = cmp)}
         />
