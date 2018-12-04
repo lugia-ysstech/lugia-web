@@ -30,6 +30,7 @@ export default ThemeProvider(
         activeLink: '',
       };
       this.isClick = false;
+      this.links = [];
     }
 
     componentDidMount() {
@@ -39,12 +40,15 @@ export default ThemeProvider(
     }
     addWindowScrollListener = () => {
       const { offsetTop = 0 } = this.props;
-      const linkInfo = [];
       if (this.isClick) {
         return;
       }
 
-      this.links.forEach(item => {
+      this.getAcrossLinks(this.links, offsetTop);
+    };
+    getAcrossLinks = (links: string[], offsetTop: number) => {
+      const linkInfo = [];
+      links.forEach(item => {
         const linkId = this.getId(item);
         if (linkId) {
           const dom = document.getElementById(linkId);
@@ -57,6 +61,9 @@ export default ThemeProvider(
         }
       });
 
+      this.setScrollActiveLink(linkInfo);
+    };
+    setScrollActiveLink = (linkInfo: Object[]) => {
       if (linkInfo.length) {
         const currentLink = linkInfo.reduce((prev, curr) => (curr.top > prev.top ? curr : prev));
         this.setState({
@@ -102,6 +109,7 @@ export default ThemeProvider(
     }
     getLinks = (links: string[]) => {
       this.links = [...links];
+      console.info(links);
     };
   },
   Widget.Anchor

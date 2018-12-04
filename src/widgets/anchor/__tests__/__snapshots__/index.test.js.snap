@@ -1,0 +1,417 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anchor css 1`] = `
+.c1 {
+  font-size: 1.2rem;
+  top: 0em;
+}
+
+.c2 {
+  font-size: 1.2rem;
+  position: relative;
+  background-color: #fff;
+  border-left: 0.16666666666666669em solid #e8e8e8;
+  box-sizing: border-box;
+  padding-bottom: 0.5em;
+}
+
+.c2 > div:first-child {
+  padding-top: 0.5em;
+}
+
+.c9 {
+  font-size: 1.2rem;
+  position: relative;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding-bottom: 0.5em;
+}
+
+.c9 > div:first-child {
+  padding-top: 0.5em;
+}
+
+.c5 {
+  position: absolute;
+  width: 0.6666666666666667em;
+  height: 0.6666666666666667em;
+  border-radius: 8px;
+  left: -0.08333333333333334em;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.c7 {
+  position: absolute;
+  width: 0.16666666666666669em;
+  height: 2em;
+  left: -0.08333333333333334em;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.c3 {
+  font-size: 1.2rem;
+  padding-top: 1em;
+  padding-left: 0.8333333333333334em;
+  line-height: 1;
+}
+
+.c4 {
+  display: block;
+  color: #333;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4:hover {
+  color: #684fff;
+}
+
+.c4:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  padding: 20px;
+  margin-left: 120px;
+  width: 209px;
+  height: 203px;
+}
+
+.c6 {
+  padding: 20px;
+  margin-left: 240px;
+  width: 209px;
+  height: 203px;
+}
+
+.c8 {
+  padding: 20px;
+  margin-left: 360px;
+  width: 209px;
+  height: 203px;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <div
+      style={null}
+    >
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+        >
+          <div
+            className="c3"
+          >
+            <a
+              className="c4"
+              href="#anchor-link1"
+              onClick={[Function]}
+            >
+              anchor-link1
+            </a>
+          </div>
+          <div
+            className="c3"
+          >
+            <a
+              className="c4"
+              href="#anchor-link2"
+              onClick={[Function]}
+            >
+              anchor-link2
+            </a>
+          </div>
+          <div
+            className="c3"
+          >
+            <a
+              className="c4"
+              href="#anchor-link3"
+              onClick={[Function]}
+            >
+              anchor-link3
+            </a>
+            <div
+              className="c3"
+            >
+              <a
+                className="c4"
+                href="#anchor-link3.1"
+                onClick={[Function]}
+              >
+                anchor-link3.1
+              </a>
+            </div>
+            <div
+              className="c3"
+            >
+              <a
+                className="c4"
+                href="#anchor-link3.2"
+                onClick={[Function]}
+              >
+                anchor-link3.2
+              </a>
+            </div>
+          </div>
+          <div
+            className="c3"
+          >
+            <a
+              className="c4"
+              href="#anchor-link4"
+              onClick={[Function]}
+            >
+              anchor-link4
+            </a>
+          </div>
+          <div
+            className="c5"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c6"
+  >
+    <div
+      style={null}
+    >
+      <div
+        className="c1"
+      >
+        <div
+          className="c2"
+        >
+          <div
+            className="c3"
+          >
+            <a
+              className="c4"
+              href="#anchor-link1"
+              onClick={[Function]}
+            >
+              anchor-link1
+            </a>
+          </div>
+          <div
+            className="c3"
+          >
+            <a
+              className="c4"
+              href="#anchor-link2"
+              onClick={[Function]}
+            >
+              anchor-link2
+            </a>
+          </div>
+          <div
+            className="c3"
+          >
+            <a
+              className="c4"
+              href="#anchor-link3"
+              onClick={[Function]}
+            >
+              anchor-link3
+            </a>
+            <div
+              className="c3"
+            >
+              <a
+                className="c4"
+                href="#anchor-link3.1"
+                onClick={[Function]}
+              >
+                anchor-link3.1
+              </a>
+            </div>
+            <div
+              className="c3"
+            >
+              <a
+                className="c4"
+                href="#anchor-link3.2"
+                onClick={[Function]}
+              >
+                anchor-link3.2
+              </a>
+            </div>
+          </div>
+          <div
+            className="c3"
+          >
+            <a
+              className="c4"
+              href="#anchor-link4"
+              onClick={[Function]}
+            >
+              anchor-link4
+            </a>
+          </div>
+          <div
+            className="c7"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c8"
+  >
+    <div
+      className="c9"
+    >
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="#anchor-link1"
+          onClick={[Function]}
+        >
+          anchor-link1
+        </a>
+      </div>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="#anchor-link2"
+          onClick={[Function]}
+        >
+          anchor-link2
+        </a>
+      </div>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="#anchor-link3"
+          onClick={[Function]}
+        >
+          anchor-link3
+        </a>
+        <div
+          className="c3"
+        >
+          <a
+            className="c4"
+            href="#anchor-link3.1"
+            onClick={[Function]}
+          >
+            anchor-link3.1
+          </a>
+        </div>
+        <div
+          className="c3"
+        >
+          <a
+            className="c4"
+            href="#anchor-link3.2"
+            onClick={[Function]}
+          >
+            anchor-link3.2
+          </a>
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="#anchor-link4"
+          onClick={[Function]}
+        >
+          anchor-link4
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    id="anchor-link1"
+    name="anchor-link1"
+    style={
+      Object {
+        "marginTop": "100px",
+      }
+    }
+  >
+    anchor-link1
+  </div>
+  <div
+    id="anchor-link2"
+    name="anchor-link2"
+    style={
+      Object {
+        "marginTop": "300px",
+      }
+    }
+  >
+    anchor-link2
+  </div>
+  <div
+    id="anchor-link3"
+    name="anchor-link3"
+    style={
+      Object {
+        "marginTop": "300px",
+      }
+    }
+  >
+    anchor-link3
+  </div>
+  <div
+    id="anchor-link3.1"
+    name="anchor-link3.1"
+    style={
+      Object {
+        "marginTop": "100px",
+      }
+    }
+  >
+    anchor-link3.1
+  </div>
+  <div
+    id="anchor-link3.2"
+    name="anchor-link3.2"
+    style={
+      Object {
+        "marginTop": "100px",
+      }
+    }
+  >
+    anchor-link3.2
+  </div>
+  <div
+    id="anchor-link4"
+    name="anchor-link4"
+    style={
+      Object {
+        "marginTop": "300px",
+      }
+    }
+  >
+    anchor-link4
+  </div>
+</div>
+`;
