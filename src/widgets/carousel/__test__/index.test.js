@@ -191,6 +191,11 @@ describe('Carousel', () => {
     );
     expect(findIndicatorWrap(cmp).length).toBe(4);
     expect(getIndicatorIndex(cmp, 0).props().checked).toBeTruthy();
+    clickIndicator(cmp, 1);
+    await delay(1000);
+    expect(getIndicatorIndex(cmp, 0).props().checked).toBeTruthy();
+    expect(getIndicatorIndex(cmp, 1).props().checked).toBeFalsy();
+
     hoverIndicator(cmp, 2);
     await delay(1000);
     expect(getIndicatorIndex(cmp, 0).props().checked).toBeFalsy();
@@ -208,6 +213,12 @@ describe('Carousel', () => {
     );
     expect(findIndicatorWrap(cmp).length).toBe(4);
     expect(getIndicatorIndex(cmp, 0).props().checked).toBeTruthy();
+
+    hoverIndicator(cmp, 1);
+    await delay(1000);
+    expect(getIndicatorIndex(cmp, 0).props().checked).toBeTruthy();
+    expect(getIndicatorIndex(cmp, 1).props().checked).toBeFalsy();
+
     clickIndicator(cmp, 2);
     await delay(1000);
     expect(getIndicatorIndex(cmp, 0).props().checked).toBeFalsy();
