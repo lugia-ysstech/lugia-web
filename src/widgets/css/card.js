@@ -7,6 +7,7 @@
 import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
+import { ObjectUtils } from '@lugia/type-utils';
 
 const { blackColor, darkGreyColor, superLightColor, defaultColor } = colorsFunc();
 const FontSize = 1.2;
@@ -67,35 +68,29 @@ export const getCardContainerSize = (props: Object) => {
 
 export const getCardContainerShadow = (props: Object) => {
   const { shadow } = props;
-  const boxShadow = `box-shadow: 0 0 ${em(6)} rgba(0, 0, 50,0.1)`;
-  return shadow === 'always'
-    ? `${boxShadow};`
-    : shadow === 'hover'
-    ? `&:hover {${boxShadow}};`
-    : 'none';
+  const boxShadow = `box-shadow: 0 0 ${em(6)} rgba(0, 0, 50,0.1);`;
+  return shadow === 'always' ? `${boxShadow}` : shadow === 'hover' ? `&:hover {${boxShadow}};` : '';
 };
 export const getImageContainerSize = (props: Object) => {
   const { imageOrientation, size } = props;
   const { width, height } = size;
-  const theWidth =
-    width && typeof width === 'number'
-      ? em(width)
-      : imageOrientation === 'horizontal'
-      ? em(120)
-      : 'inherit';
-  const theHeight =
-    height && typeof height === 'number'
-      ? em(height)
-      : imageOrientation === 'horizontal'
-      ? 'inherit'
-      : em(112);
+  const theWidth = ObjectUtils.isNumber(width)
+    ? em(width)
+    : imageOrientation === 'horizontal'
+    ? em(120)
+    : 'inherit';
+  const theHeight = ObjectUtils.isNumber(height)
+    ? em(height)
+    : imageOrientation === 'horizontal'
+    ? 'inherit'
+    : em(112);
   return `width :${theWidth};height:${theHeight};`;
 };
 export const getAvatarSize = (props: Object) => {
   const { size } = props;
   const { width, height } = size;
-  const theWidth = width && typeof width === 'number' ? em(width) : em(70);
-  const theHeight = height && typeof height === 'number' ? em(height) : em(70);
+  const theWidth = ObjectUtils.isNumber(width) ? em(width) : em(70);
+  const theHeight = ObjectUtils.isNumber(height) ? em(height) : em(70);
   return `width :${theWidth};height:${theHeight};`;
 };
 
@@ -125,7 +120,6 @@ export const getCardContainerBackground = () => {
 };
 export const getContentTextAlign = (props: Object) => {
   const { type, imageOrientation } = props;
-  console.log(props);
   if (type === 'avatar' && imageOrientation === 'vertical') return 'text-align:center;';
   return `
   margin-bottom: ${em(14)};
