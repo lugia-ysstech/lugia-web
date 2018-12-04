@@ -161,7 +161,6 @@
       "react-app"
     ],
     "plugins": [
-      "react-flow-props-to-prop-types"
     ]
   },
   "engines": {
