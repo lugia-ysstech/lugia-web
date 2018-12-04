@@ -20,6 +20,7 @@ const Container = styled.div`
   display: inline-block;
   font-size: ${props => (props.theme.fontSize ? props.theme.fontSize : '18px')};
 `;
+
 const showUp = keyframes`
   from {
     opacity: 0;
@@ -29,6 +30,7 @@ const showUp = keyframes`
     opacity: 1;
   }
 `;
+
 const Ratespan = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,
   default: props => props.theme.default || '#e8e8e8',
@@ -64,12 +66,13 @@ const Ratespan = styled.span.attrs({
     position: relative;
   }
 `;
+
 Ratespan.displayName = 'Ratespan';
-const RateIcon = styled(Icon)`
+const RateIcon: Object = styled(Icon)`
   vertical-align: middle !important;
 `;
 RateIcon.displayName = 'rate';
-const RateText = styled.span.attrs({
+const RateText: Object = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,
   default: props => props.theme.default || '#e8e8e8',
   danger: props => props.theme.danger || props.theme.primary || `${warningColor}`,
@@ -118,11 +121,12 @@ const defautClass = {
   amazed: 'amazed',
   half: 'half',
 };
+
 type rateProps = {
   count: number,
   max?: number,
   value?: number,
-  disabled: boolean,
+  disabled?: boolean,
   allowHalf: boolean,
   iconClass?: Object,
   className: any,
@@ -130,9 +134,13 @@ type rateProps = {
   getTheme: Function,
   onClick: Function,
   onChange: Function,
-  character: any,
+  character?: any,
 };
-export const createCalssArr = (num: number, condition?: Object): Array<string> => {
+
+export const createCalssArr = (num: number | string, condition?: Object): Array<string> => {
+  if (!ObjectUtils.isString(num)) {
+    num = Number(num);
+  }
   let arr = [...Array(num)].map(() => 'default');
   if (!condition) return arr;
   const { starNum, allowHalf, classify } = condition;
@@ -142,23 +150,26 @@ export const createCalssArr = (num: number, condition?: Object): Array<string> =
   }
   const mid = Math.ceil(arr.length / 2);
   const classname = setClass(classify, mid, starNum);
-  arr.map((v, i) => {
+  arr.forEach((v, i) => {
     arr[i] = i > starNum - 1 || !starNum ? 'default' : classname;
   });
   return arr;
 };
+
 export const calcValue = (val: number = 0, allowHalf: boolean): number => {
   if (allowHalf) {
     return Math.floor(val * 2) / 2; //星星  整理得分  3.2=>3  3.7=>3.5
   }
   return Math.floor(val);
 };
-export const multipleValue = (props: Object, val: number): number => {
+
+export const multipleValue = (props: Object, val?: number): number => {
   const { max, count, value = 0 } = props;
   const multiple = max && count ? max / count : 1;
-  if (val) return val * multiple;
+  if (val || val === 0) return val * multiple;
   return value / multiple;
 };
+
 export const setClass = (classify?: boolean, mid: number, starNum: number): string => {
   let classname = 'primary';
   if (!classify || starNum === mid) return classname;
@@ -170,6 +181,7 @@ export const setClass = (classify?: boolean, mid: number, starNum: number): stri
   }
   return classname;
 };
+
 export const setHalf = (arr: Array<string>, starNum: number, Classify?: boolean): Array<string> => {
   if (!arr) {
     return [];
@@ -187,6 +199,7 @@ export const setHalf = (arr: Array<string>, starNum: number, Classify?: boolean)
 
   return arr;
 };
+
 export const getIconClass = (iconClass: Object = {}): Object => {
   return {
     default: iconClass.default || 'lugia-icon-financial_star',
@@ -196,27 +209,24 @@ export const getIconClass = (iconClass: Object = {}): Object => {
     half: iconClass.half || iconClass.default || 'lugia-icon-financial_star_o',
   };
 };
+
 const getOffset = (RateRangeNode: Object) => {
   if (!RateRangeNode) {
-    return { offsetLeft: 0, offsetTop: 0 };
+    return { offsetLeft: 0, offsetWidth: 18 };
   }
   const { x } = getElementPosition(RateRangeNode);
   const w = RateRangeNode.offsetWidth;
   return { offsetLeft: x, offsetWidth: w };
 };
-const calcPosition = (
-  index: number,
-  offsetLeft: number,
-  offsetWidth: number,
-  pageX: number
-): boolean => {
+
+const calcPosition = (offsetLeft: number, offsetWidth: number, pageX: number): boolean => {
   const p = offsetLeft + offsetWidth / 2;
   return pageX < p;
 };
+
 const getReturnObj = (state: Object, multiple: number) => {
   const returnObj = {
     defaultValue: state.value,
-    starNum: state.starNum,
     currentValue: multiple >= 0 ? multiple : 0,
   };
   return returnObj;
@@ -231,6 +241,7 @@ class Rate extends React.Component<rateProps, any> {
     disabled: false,
     allowHalf: false,
     classify: false,
+    className: '',
     onClick: (e: Object, x: any) => {},
     onChange: (e: Object, x: any) => {
       return {};
@@ -246,6 +257,7 @@ class Rate extends React.Component<rateProps, any> {
       return {};
     },
   };
+
   constructor(props: Object) {
     super(props);
     const num = props ? props.count : 5;
@@ -254,11 +266,13 @@ class Rate extends React.Component<rateProps, any> {
       this.Ratespan[i] = React.createRef();
     });
   }
+
   componentDidMount() {
     this.Temporary = JSON.stringify(this.state);
-    const { onChange, value = 0, allowHalf } = this.props;
+    const { onChange, value = 0 } = this.props;
     onChange({}, getReturnObj(this.state, value));
   }
+
   static getDerivedStateFromProps(defProps: rateProps, current: Object) {
     const condition = {
       starNum: multipleValue(defProps),
@@ -282,6 +296,7 @@ class Rate extends React.Component<rateProps, any> {
       hasClick: 'hasClick' in current ? current.hasClick : false,
     };
   }
+
   render() {
     const { getTheme } = this.props;
     const { count } = this.state;
@@ -309,6 +324,7 @@ class Rate extends React.Component<rateProps, any> {
       </Container>
     );
   }
+
   mouseMove = (e: Object, i: number, hasClick?: boolean) => {
     let { count, current } = this.state;
     const { disabled, onChange, classify } = this.props;
@@ -319,10 +335,11 @@ class Rate extends React.Component<rateProps, any> {
     this.handleClick(e, stars, count, current, hasClick);
     onChange(e, getReturnObj(this.state, multipleValue(this.props, stars)));
   };
+
   mouseLeave = (e: Object) => {
     const { hasClick, current } = this.state;
     const { onChange } = this.props;
-    if (hasClick || this.Temporary) {
+    if (hasClick || (this.Temporary && this.Temporary !== 'null')) {
       const { value, count } = JSON.parse(this.Temporary);
       this.setValue(value, count, current, false);
       onChange(e, getReturnObj(this.state, multipleValue(this.props, current)));
@@ -332,17 +349,20 @@ class Rate extends React.Component<rateProps, any> {
     this.setValue(0, count, current, hasClick);
     onChange(e, getReturnObj(this.state, multipleValue(this.props, 0)));
   };
+
   moveType = (index: number, offsetLeft: number, offsetWidth: number, pageX: number) => {
     const { allowHalf } = this.props;
-    const isLeft = calcPosition(index, offsetLeft, offsetWidth, pageX);
+    const isLeft = calcPosition(offsetLeft, offsetWidth, pageX);
     if (allowHalf && isLeft) {
       return calcValue(index + 0.5, allowHalf);
     }
     return calcValue(index + 1, allowHalf);
   };
+
   getOffset(index: number) {
     return getOffset(this.Ratespan[index].current);
   }
+
   getElement = (x: number) => {
     const { className, iconClass, disabled, character } = this.props;
     const IconClass = getIconClass(iconClass);
@@ -362,6 +382,7 @@ class Rate extends React.Component<rateProps, any> {
       />
     );
   };
+
   handleClick = (
     e: Object,
     val: number,
@@ -369,7 +390,7 @@ class Rate extends React.Component<rateProps, any> {
     index: number,
     hasClicked?: boolean
   ) => {
-    const { onClick, max, count, allowHalf } = this.props;
+    const { onClick, allowHalf } = this.props;
     const { current, hasClick } = this.state;
     if (hasClicked) {
       index = val;
@@ -379,25 +400,34 @@ class Rate extends React.Component<rateProps, any> {
         });
         val = calcValue(0, allowHalf);
         index = -1;
-        hasClicked = !hasClicked;
+        hasClicked = false;
         this.Temporary = JSON.stringify(null);
       }
       this.setValue(val, cou, index, hasClicked);
-      this.Temporary = JSON.stringify(this.state);
-      const multiple = max && count ? (max / count) * val : val;
-      onClick(e, getReturnObj(this.state, multiple));
+      onClick(e, getReturnObj(this.state, multipleValue(this.props, val)));
       return;
     }
     this.setValue(val, cou, index, hasClick);
   };
   setValue = (val: number, cou: Array<string>, index: number, hasClicked: boolean) => {
-    this.setState({
-      value: val,
-      starNum: val,
-      count: cou,
-      current: index,
-      hasClick: hasClicked,
-    });
+    this.setState(
+      {
+        value: val,
+        starNum: val,
+        count: cou,
+        current: index,
+        hasClick: hasClicked,
+      },
+      () => {
+        if (hasClicked) {
+          this.Temporary = JSON.stringify(this.state);
+          this.setState({
+            hasClick: false,
+          });
+        }
+      }
+    );
   };
 }
+
 export default Rate;

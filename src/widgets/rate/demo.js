@@ -10,7 +10,6 @@ import React from 'react';
 import Rate from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import Icon from '../icon';
 import styled from 'styled-components';
 const TitleBox = styled.div`
   position: relative;
@@ -23,7 +22,7 @@ const TextBox = styled.span`
   color: #333;
 `;
 class RateDemo extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
     this.state = {};
   }
@@ -182,6 +181,16 @@ class RateDemo extends React.Component<any, any> {
         this.setStateValue('defaultProps7', x.currentValue);
       },
     };
+    const defaultProps8 = {
+      // onClick: (e: Object, x: any) => {
+      //   console.log('onClick defaultProps8', x);
+      //   this.setStateValue('defaultProps8', x.currentValue);
+      // },
+      // onChange: (e: Object, x: any) => {
+      //   console.log('onChange defaultProps8', x);
+      //   this.setStateValue('defaultProps8', x.currentValue);
+      // },
+    };
     return (
       <div>
         <div>
@@ -190,7 +199,7 @@ class RateDemo extends React.Component<any, any> {
           <TextBox>{this.state.defaultProps7} 颗星</TextBox>
         </div>
         <Theme config={config}>
-          <TitleBox>基础用法 default：</TitleBox>
+          <TitleBox>基础用法 default limit：</TitleBox>
           <Rate {...defaultProps} />
           <TextBox>{this.state.defaultProps} 颗星</TextBox>
         </Theme>
@@ -224,10 +233,14 @@ class RateDemo extends React.Component<any, any> {
           <Rate {...defaultProps6} />
           <TextBox>{this.state.defaultProps6} 颗星</TextBox>
         </Theme>
+        <div>
+          <TitleBox>默认设置 noProps：</TitleBox>
+          <Rate />
+        </div>
       </div>
     );
   }
-  setStateValue = (target: sring, val: number) => {
+  setStateValue = (target: string, val: number) => {
     this.setState({
       [target]: val,
     });

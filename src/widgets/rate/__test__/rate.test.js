@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import Rate, { createCalssArr, calcValue, multipleValue, setHalf, getIconClass } from '../rate';
 import Enzyme, { mount } from 'enzyme';
@@ -17,7 +16,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Rate Test', () => {
   const target = mount(<Rate />);
   it('css', () => {
-    const target = <Rate />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('count=10', () => {
@@ -45,7 +43,12 @@ describe('Rate Test', () => {
     expect(target.props().allowHalf).toEqual(false);
     expect(target.state().value).toEqual(3);
   });
-  function checkCreateArr(num: number, index: number, isallowHalf: boolean, expectation: Array) {
+  function checkCreateArr(
+    num: ?number | string,
+    index: number,
+    isallowHalf: boolean,
+    expectation: Array<string>
+  ) {
     const condition = {
       starNum: index,
       allowHalf: isallowHalf,
@@ -63,7 +66,7 @@ describe('Rate Test', () => {
   checkCreateArr(undefined, 0, false, ['default']);
   checkCreateArr('5', 0, false, ['default']);
   checkCreateArr(5, 2.5, true, ['primary', 'primary', 'half', 'default', 'default']);
-  function checkCalcValue(val: number, allowHalf: boolean, expectation) {
+  function checkCalcValue(val: ?number, allowHalf: boolean, expectation) {
     it('Function calcValue', () => {
       const res = calcValue(val, allowHalf);
       expect(res).toEqual(expectation);
@@ -195,7 +198,13 @@ describe('Rate Test', () => {
   iconArr.map((v, i) => {
     checkGetIconClass(v.iconClass, iconArr[i].excp);
   });
-  function setValue(val: number, cou: array, current: number, hasClicked?: boolean, expectation) {
+  function setValue(
+    val: number,
+    cou: Array<string>,
+    current: number,
+    hasClicked?: boolean,
+    expectation
+  ) {
     it('Function setValue', () => {
       target.instance().setValue(val, cou, current, hasClicked);
       expect(target.state().value).toEqual(expectation.value);
@@ -207,7 +216,7 @@ describe('Rate Test', () => {
     current: 0,
     count: ['primary', 'default', 'default'],
   });
-  setValue(2, ['primary', 'primary', 'default'], 1, null, {
+  setValue(2, ['primary', 'primary', 'default'], 1, undefined, {
     value: 2,
     current: 1,
     count: ['primary', 'primary', 'default'],
@@ -333,16 +342,56 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(4);
   });
   it('Function:mouseMove unlimit value', async () => {
-    const target = mount(<Rate />);
     target.instance().mouseMove({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(3);
   });
   it('Function:mouseMove unlimit ->limit ', async () => {
-    const target = mount(<Rate />);
     target.instance().mouseMove({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(3);
     target.setProps({ value: 2 });
     target.instance().mouseMove({ pageX: 10 }, 4);
     expect(target.state().value).toEqual(2);
+  });
+  it('Function:mouseLeave lilmit', async () => {
+    const target = mount(<Rate value={4} />);
+    target.instance().mouseLeave({});
+    expect(target.state().value).toEqual(4);
+    expect(target.state().starNum).toEqual(4);
+  });
+  it('Function:mouseLeave unlilmit', async () => {
+    const target = mount(<Rate />);
+    target.instance().mouseLeave({});
+    expect(target.state().value).toEqual(0);
+    expect(target.state().starNum).toEqual(0);
+  });
+  it('Function:mouseLeave onClick unlimit value', async () => {
+    let onClick = () => true;
+    const changePromise = new Promise(res => {
+      onClick = (e, val) => {
+        res(val.currentValue);
+      };
+    });
+    const target = mount(<Rate onClick={onClick} />);
+
+    findRate(target, 3).simulate('click', {}, 3, true);
+    expect(target.state().value).toEqual(4);
+    expect(await changePromise).toBe(4);
+    target.instance().mouseLeave({});
+    expect(target.state().value).toEqual(4);
+  });
+  it('Function:mouseLeave onClick limit value', async () => {
+    let onClick = () => true;
+    const changePromise = new Promise(res => {
+      onClick = (e, val) => {
+        res(val.currentValue);
+      };
+    });
+    const target = mount(<Rate value={5} onClick={onClick} />);
+    findRate(target, 3).simulate('click', {}, 3, true);
+    expect(target.state().value).toEqual(5);
+    expect(await changePromise).toBe(4);
+    target.instance().mouseLeave({});
+    expect(target.state().value).toEqual(5);
+    expect(target.state().starNum).toEqual(5);
   });
 });
