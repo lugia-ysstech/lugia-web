@@ -16,6 +16,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Rate Test', () => {
   const target = mount(<Rate />);
   it('css', () => {
+    const target = <Rate />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('count=10', () => {
@@ -43,42 +44,7 @@ describe('Rate Test', () => {
     expect(target.props().allowHalf).toEqual(false);
     expect(target.state().value).toEqual(3);
   });
-  function checkCreateArr(
-    num: ?number | string,
-    index: number,
-    isallowHalf: boolean,
-    expectation: Array<string>
-  ) {
-    const condition = {
-      starNum: index,
-      allowHalf: isallowHalf,
-    };
-    it('Function createArr', () => {
-      const res = createCalssArr(num, condition);
-      expect(res).toEqual(expectation);
-    });
-  }
-  checkCreateArr(5, 0, false, ['default', 'default', 'default', 'default', 'default']);
-  checkCreateArr(5, 1, false, ['primary', 'default', 'default', 'default', 'default']);
-  checkCreateArr(3, 1, false, ['primary', 'default', 'default']);
-  checkCreateArr(0, 0, false, []);
-  checkCreateArr(null, 0, false, ['default']);
-  checkCreateArr(undefined, 0, false, ['default']);
-  checkCreateArr('5', 0, false, ['default']);
-  checkCreateArr(5, 2.5, true, ['primary', 'primary', 'half', 'default', 'default']);
-  function checkCalcValue(val: ?number, allowHalf: boolean, expectation) {
-    it('Function calcValue', () => {
-      const res = calcValue(val, allowHalf);
-      expect(res).toEqual(expectation);
-    });
-  }
-  checkCalcValue(3.2, false, 3);
-  checkCalcValue(3.7, true, 3.5);
-  checkCalcValue(4, false, 4);
-  checkCalcValue(1.2, false, 1);
-  checkCalcValue(0, false, 0);
-  checkCalcValue(0, false, 0);
-  checkCalcValue(null, false, 0);
+
   function checkInitValue(props: Object, expectation) {
     it('Function checkInitValue', () => {
       const res = multipleValue(props);
