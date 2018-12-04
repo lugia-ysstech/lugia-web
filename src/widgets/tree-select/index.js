@@ -9,7 +9,7 @@ import '../common/shirm';
 import React from 'react';
 import InputTag from '../inputtag';
 import Trigger from '../trigger';
-import Tree from '../tree';
+import Tree from '../tree/index.js';
 import Theme from '../theme';
 import '../css/sv.css';
 import Widget from '../consts/index';
@@ -32,7 +32,6 @@ type ValidateStatus = 'success' | 'error';
 type TreeSelectProps = {
   validateStatus: ValidateStatus,
   help?: string,
-
   data: Array<Object>,
   getTheme: Function,
   value?: Array<string>,

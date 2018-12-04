@@ -73,6 +73,7 @@ type InputTagProps = {
   defaultValue?: string,
   defaultDisplayValue?: string,
   onClick?: Function,
+  onClear?: Function,
   onPopupVisibleChange?: Function,
 };
 const Clear = 'lugia-icon-reminder_close';
@@ -490,10 +491,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   onClear = (e: Object) => {
-    const { disabled } = this.props;
+    const { disabled, onClear } = this.props;
     if (disabled) {
       return;
     }
+    onClear && onClear(e);
     this.onChange([], []);
     e.preventDefault();
     e.stopPropagation();

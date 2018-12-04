@@ -33,6 +33,7 @@ type CascaderProps = {
   displayField: string,
   valueField: string,
   popupVisible?: boolean,
+  inputValu: string | string[],
 };
 type CascaderState = {
   popupVisible: boolean,
@@ -59,39 +60,41 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
       checked: false,
       mouseInTarget: false,
       value: props.value ? props.value : [],
+      expandedPath: props.value ? props.value : [],
     };
   }
 
   render() {
     const { props, state } = this;
     const { popupVisible, value } = state;
-    const { getTheme, placeholder, offsetY, disabled } = props;
+    const { getTheme, placeholder, offsetY, disabled, inputValue = value } = props;
     const theme = getTheme();
     const { width = 200 } = theme;
     return (
-      <CascaderContainer
-        onMouseEnter={this.onMouseEnterContainer}
-        onMouseLeave={this.onMouseLeaveContainer}
-      >
-        <Theme config={{ [Widget.InputTag]: { width } }}>
-          <Trigger
-            align={'bottomLeft'}
-            offsetY={offsetY}
-            popupVisible={popupVisible}
-            popup={this.getMenu(theme)}
-            onPopupVisibleChange={this.onPopupVisibleChange}
-          >
-            <InputTag
-              onClick={this.handleClickInputTag}
-              value={value}
-              displayValue={value}
-              mutliple={false}
-              placeholder={placeholder}
-              disabled={disabled}
-            />
-          </Trigger>
-        </Theme>
-      </CascaderContainer>
+      // <CascaderContainer
+      //   onMouseEnter={this.onMouseEnterContainer}
+      //   onMouseLeave={this.onMouseLeaveContainer}
+      // >
+      //   <Theme config={{ [Widget.InputTag]: { width } }}>
+      //     <Trigger
+      //       align={'bottomLeft'}
+      //       offsetY={offsetY}
+      //       popupVisible={true}
+      //       popup={this.getMenu(theme)}
+      //       onPopupVisibleChange={this.onPopupVisibleChange}
+      //     >
+      //       <InputTag
+      //         onClick={this.handleClickInputTag}
+      //         value={inputValue}
+      //         displayValue={value}
+      //         mutliple={false}
+      //         placeholder={placeholder}
+      //         disabled={disabled}
+      //       />
+      //     </Trigger>
+      //   </Theme>
+      // </CascaderContainer>
+      this.getMenu(theme)
     );
   }
 
@@ -101,7 +104,6 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
     if (disabled) {
       return;
     }
-    console.log('checked', checked);
     if (checked) {
       this.setState({ checked: false });
       return;
@@ -111,26 +113,28 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
   };
 
   getMenu = (theme: Object) => {
-    const { data, action, selectedKeys, separator, offsetX, valueField, displayField } = this.props;
-    const { popupVisible } = this.state;
+    const { data, action, separator, offsetX, valueField, displayField } = this.props;
+    const { popupVisible, expandedPath, value } = this.state;
     const { menuWidth = 150 } = theme;
     return (
       <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
           mutliple={false}
-          action={action}
-          popupVisible={popupVisible}
-          onChange={this.onChange}
-          handleIsInMenu={this.handleIsInMenu}
+          // action={action}
+          // popupVisible={true}
+          // onChange={this.onChange}
+          // handleIsInMenu={this.handleIsInMenu}
           data={data}
-          displayField={displayField}
-          valueField={valueField}
-          onClick={this.onClick}
+          // displayField={displayField}
+          // valueField={valueField}
+          // onClick={this.onClick}
           separator={separator}
-          selectedKeys={selectedKeys}
-          offsetX={offsetX}
-          offsetY={0}
-          onClear={this.onClear}
+          selectedKeys={value}
+          expandedPath={expandedPath}
+          // offsetX={offsetX}
+          // offsetY={0}
+          // onClear={this.onClear}
+          // onMouseEnter={this.onMouseEnter}
         />
       </Theme>
     );
@@ -148,13 +152,19 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
 
   onClick = (event, keys, item) => {
     const { selectedKeys } = keys;
-    const { children } = item;
-    if (!children) {
-      this.setState({ popupVisible: false });
-    }
-    this.setState({ value: selectedKeys });
+    // const { children } = item;
+    // if (!children) {
+    //   this.setState({ popupVisible: false });
+    // }
+    // console.log('selectedKeys', selectedKeys);
+    this.setState({ value: selectedKeys, expandedPath: selectedKeys });
     const { onClick } = this.props;
     onClick && onClick(event, keys, item);
+  };
+
+  onMouseEnter = (expandedPath: strting[]) => {
+    this.setState({ expandedPath });
+    // console.log('expandedPath+++++++++++', expandedPath);
   };
 
   onClear = (e: Object) => {
@@ -168,7 +178,7 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
   };
 
   onPopupVisibleChange = () => {
-    console.log('onPopupVisibleChange');
+    // console.log('onPopupVisibleChange');
   };
 
   onMouseEnterContainer = () => {

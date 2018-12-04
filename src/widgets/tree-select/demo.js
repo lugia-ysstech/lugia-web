@@ -198,14 +198,16 @@ export default class extends React.Component<any, any> {
           igronSelectField="not"
           canInput
           onQuery={this.onQuery}
+          canSearch={true}
           throttle={500}
           // limitCount={5}
-          validateStatus={validateStatus}
+          // validateStatus={validateStatus}
           expandAll={false}
           value={value}
           help={help}
           limitCount={limitCount}
           displayValue={displayValue}
+          // mutliple={false}
           mutliple
           placeholder="请输入xxx"
           // disabled
@@ -214,15 +216,15 @@ export default class extends React.Component<any, any> {
           label="test label"
           labelSize={150}
         />
-        w <input value={width} onChange={this.onWidthChange} />
+        {/* w <input value={width} onChange={this.onWidthChange} />
         h<input value={height} onChange={this.onHeightChange} />
         onValidateStatusChange<input
           value={validateStatus}
           onChange={this.onValidateStatusChange}
         />
         help<input value={help} onChange={this.onHelpChange} />
-        h<input value={limitCount} onChange={this.onHeightChange} />
-        <Box>
+        h<input value={limitCount} onChange={this.onHeightChange} /> */}
+        {/* <Box>
           <h2>颜色变化状态</h2>
           <DIV>正常色 color #684fff</DIV>
           <DIV1>划过-S值降低20% color #9482ff</DIV1>
@@ -230,7 +232,7 @@ export default class extends React.Component<any, any> {
           <DIV3>禁用-S值降低45% color #cac2ff</DIV3>
           <DIV4>幽灵 正常色透明5% rgba(104,79,255,0.05)</DIV4>
           <DIV5>禁用幽灵 正常幽灵透明30%（正常色透明1.5%）rgba(104,79,255,0.015)</DIV5>
-        </Box>
+        </Box> */}
       </Theme>
     );
   }

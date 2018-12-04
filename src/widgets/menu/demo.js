@@ -20,148 +20,105 @@ const items = [];
 for (let i = 0; i < 100000; i++) {
   items.push({ text: i, value: i, disabled: false });
 }
-
 const data = [
   {
-    text: '选项1',
-    value: '选项1',
+    text: '一级菜单1',
+    value: '一级菜单1',
     disabled: false,
   },
-  { text: '选项2', value: '选项2', disabled: false },
-  { text: '选项3', value: '选项3', disabled: false },
-  { text: '选项4', value: '选项4', disabled: false },
-  { text: '选项5', value: '选项5', disabled: true },
+  { text: '一级菜单2', value: '一级菜单2', disabled: false },
+  { text: '一级菜单3', value: '一级菜单3', disabled: false },
   {
-    text: '选项6',
-    value: '选项6',
+    text: '一级菜单4',
+    value: '一级菜单4',
     disabled: false,
     children: [
-      { text: '次级菜单1', value: '次级菜单1' },
       {
-        text: '次级菜单2',
-        value: '次级菜单2',
-        children: [{ text: 'e', value: 'e' }, { text: 'f', value: 'f' }, { text: 'g', value: 'g' }],
+        text: '次级菜单4-1',
+        value: '次级菜单4-1',
+        children: [{ text: '三级菜单4-1-1', value: '三级菜单4-1-1' }],
       },
+    ],
+  },
+  { text: '一级菜单5', value: '一级菜单5', disabled: true },
+  {
+    text: '一级菜单6',
+    value: '一级菜单6',
+    disabled: false,
+    children: [
+      { text: '次级菜单6-1', value: '次级菜单6-1' },
       {
-        text: '次级菜单3',
-        value: '次级菜单3',
+        text: '次级菜单6-2',
+        value: '次级菜单6-2',
         children: [
           {
-            text: '三级菜单1',
-            value: '三级菜单1',
+            text: '三级菜单6-2-1',
+            value: '三级菜单6-2-1',
             children: [
-              { text: 'a', value: 'a' },
-              { text: 'b', value: 'b' },
-              { text: 'c', value: 'c' },
+              { text: 'sub1', value: 'sub1', children: [{ text: 'sub2', value: 'sub2' }] },
             ],
           },
-          { text: '三级菜单2', value: '三级菜单2' },
-          { text: '三级菜单3', value: '三级菜单3' },
-          { text: '三级菜单4', value: '三级菜单4' },
-          { text: '三级菜单5', value: '三级菜单5' },
-          { text: '三级菜单6', value: '三级菜单6' },
-          { text: '三级菜单7', value: '三级菜单7' },
-          { text: '三级菜单8', value: '三级菜单8' },
-          { text: '三级菜单9', value: '三级菜单9' },
-          { text: '三级菜单10', value: '三级菜单10' },
+          { text: '三级菜单6-2-2', value: '三级菜单6-2-2' },
+          { text: '三级菜单6-2-3', value: '三级菜单6-2-3' },
         ],
       },
     ],
   },
-  { text: '选项7', value: '选项7', disabled: true },
-  { text: '选项8', value: '选项8', disabled: false },
-  { text: '选项9', value: '选项9', disabled: true },
-  { text: '选项10', value: '选项10', disabled: false },
-  Placeholder,
-  Placeholder,
-  Placeholder,
-  Placeholder,
-  Placeholder,
-  Placeholder,
+  { text: '一级菜单7', value: '一级菜单7', disabled: true },
+  { text: '一级菜单8', value: '一级菜单8', disabled: false },
+  { text: '一级菜单9', value: '一级菜单9', disabled: true },
+  { text: '一级菜单10', value: '一级菜单10', disabled: false },
 ];
-
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    this.state = { items, selectedKeys: [], scrollerValue: 0, start: 0 };
+    this.state = {
+      items,
+      selectedKeys: ['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1'],
+      expandedPath: ['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1'],
+      scrollerValue: 0,
+      start: 0,
+    };
   }
 
   render() {
-    const { items = [], selectedKeys } = this.state;
+    const { items = [], selectedKeys, expandedPath } = this.state;
     return (
       <div>
-        <h2>级联Menu样式， click 展开 ( 必须为单选，默认为‘click’, checkedCSS必须为‘none’ )</h2>
-        <Theme config={{ [Widget.Menu]: { width: 200 } }}>
+        <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
           <Menu
+            separator={'/'}
             mutliple={false}
-            data={data}
+            expandedPath={expandedPath}
+            // popupVisible={true}
             action={'click'}
-            // offsetX={30}
-            offsetY={1}
-            // start={this.state.start}
-            // onScroller={this.onScroller}
-            // onClick={this.onClick}
-          />
-        </Theme>
-
-        {/* <h2>级联Menu样式， hover 展开 ( 必须为单选，默认为‘click’ , checkedCSS必须为‘none’)</h2>
-        <Theme config={{ [Widget.Menu]: { width: 200 } }}>
-          <Menu
-            mutliple={false}
+            onChange={this.onChange}
+            handleIsInMenu={this.handleIsInMenu}
             data={data}
-            action={'hover'}
-            onClick={this.onClick}
-            // onMouseEnter={() => console.info('onMouseEnter')}
-          />
-        </Theme>
-
-        <h2>穿梭框多选样式 ( checkedCSS 属性为 checkbox , 不可展开子项 )</h2>
-        <Theme config={{ [Widget.Menu]: { width: 180 } }}>
-          <Menu
-            mutliple={true}
-            checkedCSS={'checkbox'}
-            // selectedKeys={selectedKeys}
-            data={data}
+            selectedKeys={selectedKeys}
+            offsetY={0}
+            onClear={this.onClear}
+            onMouseEnter={this.onMouseEnter}
             onClick={this.onClick}
           />
         </Theme>
-
-        <h2>穿梭框单选样式 ( checkedCSS 属性为 checkbox 不可展开子项 )</h2>
-        <Theme config={{ [Widget.Menu]: { width: 180 } }}>
-          <Menu mutliple={false} checkedCSS={'checkbox'} data={data} onClick={this.onClick} />
-        </Theme>
-
-        <h2>checkedCSS 为 mark 对勾 ( 必须是多选才生效 )</h2>
-        <Theme config={{ [Widget.Menu]: { width: 168 } }}>
-          <Menu mutliple={true} checkedCSS={'mark'} data={data} onClick={this.onClick} />
-        </Theme>
-
-        <h2>checked 为 background 背景色，多选 ( 不可展开子项 )</h2>
-        <Theme config={{ [Widget.Menu]: { width: 100 } }}>
-          <Menu mutliple={true} checkedCSS={'background'} data={data} onClick={this.onClick} />
-        </Theme>
-
-        <h2>checkedCSS 为 ‘background’ 单选Menu样式 ( 不可展开子项)</h2>
-        <Theme config={{ [Widget.Menu]: { width: 100 } }}>
-          <Menu
-            start={this.state.start}
-            onScroller={this.onScroller}
-            mutliple={false}
-            checkedCSS={'background'}
-            data={data}
-            onClick={this.onClick}
-          />
-        </Theme> */}
       </div>
     );
   }
 
   onClick = (e, keys, item) => {
-    const start = data.indexOf(item);
-    this.setState({ start });
+    // const start = data.indexOf(item);
+    // this.setState({ start });
+    const { selectedKeys } = keys;
+    // console.log('selectedKeys', selectedKeys);
+    this.setState({ selectedKeys, expandedPath: selectedKeys });
+  };
+
+  onMouseEnter = (event, expandedPath, item) => {
+    this.setState({ expandedPath });
   };
 
   onScroller = (start, end) => {
-    this.setState({ start });
+    // this.setState({ start });
   };
 }
