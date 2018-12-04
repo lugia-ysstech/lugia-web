@@ -22,6 +22,7 @@ import { limit } from '../common/Math';
 const defaultWidth = 400;
 const defaultHeight = 200;
 const defaultDelay = 4000;
+const defaultAnimationTime = 500;
 type IndicatorType = 'horizontal' | 'vertical' | 'outside';
 type SwitchType = 'horizontal' | 'vertical' | 'fade';
 type clickButtonType = 'pre' | 'next';
@@ -66,7 +67,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     action: 'hover',
     indicatorType: 'horizontal',
     switchType: 'horizontal',
-    animationTime: 500,
+    animationTime: defaultAnimationTime,
   };
 
   constructor(props: CarouselProps) {
@@ -132,9 +133,8 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   };
 
   getAnimationTime(props: CarouselProps): number {
-    const { animationTime } = props;
-    const time = limit(toNumber(animationTime, 500), [200, 10000]);
-    return time;
+    const { animationTime = defaultAnimationTime } = props;
+    return limit(toNumber(animationTime, defaultAnimationTime), [200, 100000]);
   }
 
   createIndicators = () => {

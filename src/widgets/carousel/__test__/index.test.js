@@ -79,7 +79,7 @@ describe('Carousel', () => {
   it('getAnimationTime ', () => {
     expect(Carousel.prototype.getAnimationTime({ animationTime: 1000 })).toBe(1000);
     expect(Carousel.prototype.getAnimationTime({ animationTime: 100 })).toBe(200);
-    expect(Carousel.prototype.getAnimationTime({ animationTime: 20000 })).toBe(10000);
+    expect(Carousel.prototype.getAnimationTime({ animationTime: 200000 })).toBe(100000);
     expect(Carousel.prototype.getAnimationTime({ animationTime: 0 })).toBe(200);
     expect(Carousel.prototype.getAnimationTime({ animationTime: undefined })).toBe(500);
   });
@@ -293,6 +293,43 @@ describe('Carousel', () => {
     clickNextButton(cmp);
     await delay(1000);
     expect(getIndicatorIndex(cmp, 1).props().checked).toBeTruthy();
+  });
+
+  it('handleAutoPlay', async () => {
+    const cmp = mount(
+      <Target defaultStart={0} autoPlay delay={200} animationTime={200}>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+      </Target>
+    );
+    expect(findIndicatorWrap(cmp).length).toBe(4);
+    expect(getIndicatorIndex(cmp, 0).props().checked).toBeTruthy();
+    expect(getIndicatorIndex(cmp, 1).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 2).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 3).props().checked).toBeFalsy();
+
+    await delay(250);
+    cmp.update();
+    expect(getIndicatorIndex(cmp, 0).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 1).props().checked).toBeTruthy();
+    expect(getIndicatorIndex(cmp, 2).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 3).props().checked).toBeFalsy();
+
+    await delay(550);
+    cmp.update();
+    expect(getIndicatorIndex(cmp, 0).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 1).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 2).props().checked).toBeTruthy;
+    expect(getIndicatorIndex(cmp, 3).props().checked).toBeFalsy();
+
+    await delay(550);
+    cmp.update();
+    expect(getIndicatorIndex(cmp, 0).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 1).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 2).props().checked).toBeFalsy;
+    expect(getIndicatorIndex(cmp, 3).props().checked).toBeTruthy();
   });
 
   function findPreButton(cmp: Object) {
