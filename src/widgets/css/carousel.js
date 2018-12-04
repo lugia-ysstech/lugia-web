@@ -24,9 +24,13 @@ type CarouselProps = {
   height?: number,
   switchType?: 'horizontal' | 'vertical' | 'fade',
   initStart?: number,
+  checked: boolean,
+  animationTime: number,
+  activeWidth?: number,
+  activeHeight?: number,
 };
 
-const CommonButton = styled.span`
+export const CommonButton = styled.span`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -41,9 +45,13 @@ export const PreButton = CommonButton.extend`
   left: -${em(30)};
 `;
 
+PreButton.displayName = 'preButton';
+
 export const NextButton = CommonButton.extend`
   right: -${em(30)};
 `;
+
+NextButton.displayName = 'nextButton';
 
 export const SwitchIcon = styled(Icon)`
   font-size: ${em(30)};
@@ -55,17 +63,17 @@ export const SwitchIcon = styled(Icon)`
 `;
 
 const getShadowWidth = (props: CarouselProps) => {
-  const { width } = props;
+  const { width = 0 } = props;
   return `width: ${em(width)}`;
 };
 
 const getShadowHeight = (props: CarouselProps) => {
-  const { height } = props;
+  const { height = 0 } = props;
   return `height: ${em(height)}`;
 };
 
 const getWrapWidthAndHeight = (props: CarouselProps) => {
-  const { width, height } = props;
+  const { width = 0, height = 0 } = props;
   return `width: ${em(width)};height: ${em(height)}`;
 };
 
@@ -123,8 +131,8 @@ const getIndicatorBackground = (props: CarouselProps) => {
   return !checked
     ? `background: ${lightGreyColor}; opacity: 0.6;`
     : indicatorType === 'outside'
-    ? `background : ${mediumGreyColor}`
-    : `background : ${defaultColor}`;
+      ? `background : ${mediumGreyColor}`
+      : `background : ${defaultColor}`;
 };
 
 const getIndicatorWrapCSS = (props: CarouselProps) => {
@@ -135,11 +143,11 @@ const getIndicatorWrapCSS = (props: CarouselProps) => {
          padding-right: ${em(10)};
         `
     : indicatorType === 'outside'
-    ? `
+      ? `
     display: inline-block;
     padding-top: ${em(10)};
     `
-    : `
+      : `
          display: inline-block;
          padding-bottom: ${em(10)};
         `;
@@ -149,6 +157,7 @@ export const IndicatorWrap = styled.div`
   ${getIndicatorWrapCSS};
   cursor: pointer;
 `;
+IndicatorWrap.displayName = 'indicatorWrap';
 
 const getIndicatorCSS = (props: CarouselProps) => {
   const { indicatorType } = props;
@@ -166,16 +175,21 @@ const getIndicatorCSS = (props: CarouselProps) => {
         `;
 };
 
+const getAnimationTime = (props: CarouselProps) => {
+  const { animationTime } = props;
+  return `${animationTime}s`;
+};
+
 export const Indicator = styled.div`
   ${getIndicatorCSS};
   border-radius: ${em(2)};
   ${getIndicatorBackground};
-  transition: all 0.5s;
+  transition: all ${getAnimationTime};
 `;
+Indicator.displayName = 'indicator';
 
 const getAnimation = (props: CarouselProps) => {
   const { preStart = 0, nextStart = 0, width = 0, height = 0, switchType } = props;
-  console.log('switchType', switchType);
   if (nextStart === preStart || switchType === 'fade') {
     return null;
   }
@@ -226,19 +240,19 @@ const getInitTop = (props: CarouselProps) => {
 };
 
 const getActiveWidth = (props: CarouselProps) => {
-  const { activeWidth, switchType, width } = props;
+  const { activeWidth = 0, switchType, width = 0 } = props;
   return `width: ${switchType === 'vertical' ? em(width) : em(activeWidth)}`;
 };
 
 const getActiveHeight = (props: CarouselProps) => {
-  const { activeHeight, switchType, height } = props;
+  const { activeHeight = 0, switchType, height = 0 } = props;
 
   return `height: ${switchType === 'vertical' ? em(activeHeight) : em(height)}`;
 };
 
 export const AllItemsContainer = styled.div`
   position: absolute;
-  animation: ${getAnimation} 0.3s linear;
+  animation: ${getAnimation} ${getAnimationTime} linear;
   ${getInitLeft};
   ${getInitTop};
   ${getActiveWidth};
@@ -248,12 +262,12 @@ export const AllItemsContainer = styled.div`
 `;
 
 const getImgWidth = (props: CarouselProps) => {
-  const { width } = props;
+  const { width = 0 } = props;
   return `width: ${em(width)}`;
 };
 
 const getImgHeight = (props: CarouselProps) => {
-  const { height } = props;
+  const { height = 0 } = props;
   return `height: ${em(height)}`;
 };
 
@@ -262,8 +276,8 @@ const getIsFadeCSS = (props: CarouselProps) => {
   return switchType === 'fade' && checked
     ? 'position: absolute;opacity: 1;'
     : switchType === 'fade'
-    ? 'position: absolute;opacity: 0;'
-    : '';
+      ? 'position: absolute;opacity: 0;'
+      : '';
 };
 
 export const ItemWrap = styled.div`
@@ -271,7 +285,7 @@ export const ItemWrap = styled.div`
   ${getIsFadeCSS};
   ${getImgHeight};
   ${getImgWidth};
-  transition: opacity 1s;
+  transition: opacity ${getAnimationTime};
   overflow: hidden;
   vertical-align: top;
 `;

@@ -37,7 +37,7 @@ const getCommonAnimation = (props: SkeletonProps) => {
 };
 
 const getAnimationItemCSS = (props: SkeletonProps) => {
-  const { width, height } = props;
+  const { width = 0, height = 0 } = props;
   return `width: ${em(width)};
   height: ${em(height)};
   box-shadow: 0 0 ${em(width * 2)} ${em(width)} ${disableColor};
