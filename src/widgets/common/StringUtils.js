@@ -100,7 +100,6 @@ export function replaceStr(target: string, param: Object = {}): string {
   });
   return target;
 }
-
 export function getString(str: string): any {
   if (str === 0) {
     return '0';
