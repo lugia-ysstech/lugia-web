@@ -101,6 +101,9 @@ const RangePicker = 'sv_widget_RangePicker';
 const Loading = 'sv_widget_Loading';
 const TimeLine = 'sv_widget_TimeLine';
 const TimeLineItem = 'sv_widget_TimeLineItem';
+const Card = 'sv_widget_Card';
+const CardImage = 'sv_widget_CardImage';
+const CardAvatar = 'sv_widget_CardAvatar';
 export default {
   Button,
   Input,
@@ -186,4 +189,7 @@ export default {
   Loading,
   TimeLine,
   TimeLineItem,
+  Card,
+  CardImage,
+  CardAvatar,
 };
