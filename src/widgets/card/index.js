@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import { getAttributeFromObject } from '../common/ObjectUtils';
+import Avatar from '../avatar';
 
 import {
   getCardContainerSize,
@@ -22,7 +22,6 @@ import {
   getOutContainerDirection,
   getCardContainerBackground,
   getContentTextAlign,
-  getAvatarSize,
   getContentMargin,
   getAvatarMargin,
 } from '../css/card';
@@ -62,13 +61,10 @@ const ImageContainer = styled.div`
 `;
 ImageContainer.displayName = Widget.CardImage;
 
-const Avatar = styled.img`
-  ${getAvatarSize};
+const CardAvatar = styled(Avatar)`
   ${getAvatarMargin};
-  font-size: 1.4rem;
   border-radius: 50%;
 `;
-Avatar.displayName = Widget.CardAvatar;
 
 const Basetext = styled.div`
   text-align: inherit;
@@ -87,7 +83,7 @@ const Descripition = Basetext.extend`
   margin-top: ${em(12)};
   ${getDescripitionColor};
 `;
-const Operation = Basetext.extend`
+const Operation = styled.div`
   position: absolute;
   font-size: 1.4rem;
   font-weight: 400;
@@ -127,12 +123,8 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getImageContainer() {
-    const { type, imageOrientation, getTheme } = this.props;
-    const { width, height } = getAttributeFromObject(
-      getAttributeFromObject(getTheme(), 'svThemeConfigTree', {}),
-      'sv_widget_CardImage',
-      {}
-    );
+    const { type, imageOrientation, getThemeByDisplayName } = this.props;
+    const { width, height } = getThemeByDisplayName(Widget.CardImage);
     const view = {
       [Widget.CardImage]: {
         width,
@@ -175,24 +167,9 @@ class Card extends React.Component<CardProps, CardState> {
     return image;
   }
   getAvatar() {
-    const { avatar, imageOrientation, getTheme } = this.props;
-    const { width, height } = getAttributeFromObject(
-      getAttributeFromObject(getTheme(), 'svThemeConfigTree', {}),
-      'sv_widget_CardAvatar',
-      {}
-    );
-    const view = {
-      [Widget.CardAvatar]: {
-        width,
-        height,
-      },
-    };
+    const { avatar, imageOrientation } = this.props;
     if (ObjectUtils.isString(avatar)) {
-      return (
-        <Theme config={view}>
-          <Avatar imageOrientation={imageOrientation} src={avatar} size={{ width, height }} />
-        </Theme>
-      );
+      return <CardAvatar shape={'circle'} imageOrientation={imageOrientation} src={avatar} />;
     }
     return avatar;
   }

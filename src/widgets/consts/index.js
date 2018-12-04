@@ -103,7 +103,6 @@ const TimeLine = 'sv_widget_TimeLine';
 const TimeLineItem = 'sv_widget_TimeLineItem';
 const Card = 'sv_widget_Card';
 const CardImage = 'sv_widget_CardImage';
-const CardAvatar = 'sv_widget_CardAvatar';
 export default {
   Button,
   Input,
@@ -191,5 +190,4 @@ export default {
   TimeLineItem,
   Card,
   CardImage,
-  CardAvatar,
 };

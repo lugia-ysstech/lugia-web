@@ -26,6 +26,7 @@ export type CardProps = {
   avatar: React.Node,
   content: React.Node,
   getTheme: Function,
+  getThemeByDisplayName: Function,
   type: CardType,
   imageOrientation: ImageOrientation,
   shadow: shadowType,
@@ -84,13 +85,6 @@ export const getImageContainerSize = (props: Object) => {
     : imageOrientation === 'horizontal'
     ? 'inherit'
     : em(112);
-  return `width :${theWidth};height:${theHeight};`;
-};
-export const getAvatarSize = (props: Object) => {
-  const { size } = props;
-  const { width, height } = size;
-  const theWidth = ObjectUtils.isNumber(width) ? em(width) : em(70);
-  const theHeight = ObjectUtils.isNumber(height) ? em(height) : em(70);
   return `width :${theWidth};height:${theHeight};`;
 };
 

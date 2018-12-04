@@ -7,6 +7,7 @@
 import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
+import { ObjectUtils } from '@lugia/type-utils';
 
 const { borderColor } = colorsFunc();
 
@@ -39,12 +40,12 @@ export const getIconFontSize = (props: AvatarProps) => {
   const { size } = props;
   return `font-size:${size === 'large' ? '2.2em' : size === 'small' ? '1.2em' : '1.8em'}`;
 };
-export const getSize = (props: AvatarProps) => {
-  const { size } = props;
-  return `
-    height:${getMeasure(size)};
-    width: ${getMeasure(size)};
-     `;
+export const getSize = (props: Object) => {
+  const { size, theme } = props;
+  const { width, height } = theme;
+  const theWidth = ObjectUtils.isNumber(width) ? em(width) : getMeasure(size);
+  const theHeight = ObjectUtils.isNumber(height) ? em(height) : getMeasure(size);
+  return `width :${theWidth};height:${theHeight};`;
 };
 export const lineHeight = (props: AvatarProps) => {
   const { size } = props;

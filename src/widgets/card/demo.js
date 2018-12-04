@@ -73,24 +73,30 @@ class AmountCard extends React.Component<Object, Object> {
 export default () => {
   const view = {
     [Widget.Card]: {
-      // width: 600,
-      // height: 400,
+      width: 300,
+      height: 200,
     },
-    // [Widget.CardImage]: {
-    //   width: 300,
-    //   height: 200,
-    // },
-    // [Widget.CardAvatar]: {
-    //   width: 100,
-    //   height: 100,
-    // },
+  };
+  const combo = {
     register: {
-      width: 800,
+      width: 700,
       height: 300,
     },
     vertical: {
       width: 200,
       height: 220,
+    },
+  };
+  const avatar = {
+    [Widget.Avatar]: {
+      width: 80,
+      height: 80,
+    },
+  };
+  const cardImage = {
+    [Widget.CardImage]: {
+      width: 200,
+      height: 130,
     },
   };
   const defaultData = [
@@ -122,17 +128,17 @@ export default () => {
   ];
   return (
     <Wrapper>
+      <p>基本样式</p>
+      <Wrapper>
+        <Card
+          title={'this is title'}
+          description={'this is description'}
+          shadow={'always'}
+          operation={'操作'}
+        />
+      </Wrapper>
+      <p>基本样式</p>
       <Theme config={view}>
-        <p>基本样式</p>
-        <Wrapper>
-          <Card
-            title={'this is title'}
-            description={'this is description'}
-            shadow={'always'}
-            oper={'操作'}
-          />
-        </Wrapper>
-        <p>基本样式</p>
         <Wrapper>
           <Card
             title={<div>{'this is title'}</div>}
@@ -145,7 +151,9 @@ export default () => {
             shadow={'always'}
           />
         </Wrapper>
-        <p>头像样式</p>
+      </Theme>
+      <p>头像样式</p>
+      <Theme config={avatar}>
         <Wrapper>
           <Card
             type={'avatar'}
@@ -157,6 +165,8 @@ export default () => {
             shadow={'hover'}
           />
         </Wrapper>
+      </Theme>
+      <Theme config={avatar}>
         <p>头像样式</p>
         <Wrapper>
           <Card
@@ -170,19 +180,21 @@ export default () => {
             shadow={'hover'}
           />
         </Wrapper>
-        <p>图片样式</p>
-        <Wrapper>
-          <Card
-            type={'image'}
-            title={'this is title'}
-            imageOrientation={'horizontal'}
-            description={'this is description'}
-            image={
-              'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=4f88e0c6b3de9c82b268f1dd0de8eb6f/f9198618367adab4973d1fbc8bd4b31c8601e464.jpg'
-            }
-            shadow={'hover'}
-          />
-        </Wrapper>
+      </Theme>
+      <p>图片样式</p>
+      <Wrapper>
+        <Card
+          type={'image'}
+          title={'this is title'}
+          imageOrientation={'horizontal'}
+          description={'this is description'}
+          image={
+            'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=4f88e0c6b3de9c82b268f1dd0de8eb6f/f9198618367adab4973d1fbc8bd4b31c8601e464.jpg'
+          }
+          shadow={'hover'}
+        />
+      </Wrapper>
+      <Theme config={cardImage}>
         <p>图片样式</p>
         <Wrapper>
           <Card
@@ -197,15 +209,19 @@ export default () => {
             shadow={'hover'}
           />
         </Wrapper>
-        <p>组合样式</p>
+      </Theme>
+      <p>组合样式</p>
+      <Theme config={combo}>
         <Wrapper>
           <Card
+            operation={'操作'}
             viewClass={'register'}
             type={'combo'}
             content={<Tabs data={defaultData} />}
             shadow={'hover'}
           />
         </Wrapper>
+
         <p>组合样式</p>
         <Wrapper>
           <Card viewClass={'vertical'} type={'combo'} content={<AmountCard />} shadow={'hover'} />

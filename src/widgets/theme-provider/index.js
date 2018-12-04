@@ -6,6 +6,8 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Widgets from '../consts/index';
 import getConfig from '../theme/utils';
+import { getAttributeFromObject } from '../common/ObjectUtils';
+import Widget from '../consts';
 
 type ProviderComponent = React.ComponentType<any>;
 const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {
@@ -40,7 +42,15 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
         const currConfig = { ...widgetNameResult, ...viewClassResult };
         return Object.assign({}, { ...currConfig }, { svThemeConfigTree });
       };
-      const getThemeByDisplayName = (displayName: string) => {};
+
+      const getThemeByDisplayName = (displayName: string) => {
+        return getAttributeFromObject(
+          getAttributeFromObject(getTheme(), 'svThemeConfigTree', {}),
+          displayName,
+          {}
+        );
+      };
+
       return (
         <Target
           {...this.props}
