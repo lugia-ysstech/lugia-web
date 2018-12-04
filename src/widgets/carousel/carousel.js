@@ -250,33 +250,33 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   getItems = () => {
     const { children, switchType } = this.props;
-
-    if (children && children.length > 0) {
-      const { start: nextStart } = this.state;
-      const { start: initStart } = this.props;
-      const len = children.length;
-      const isVertical = switchType === 'vertical';
-      const isFade = switchType === 'fade';
-      const { width, height } = this.getShadowWidthAndHeight();
-      const activeWidth = isVertical || isFade ? width : (len + 1) * width;
-      const activeHeight = isVertical ? (len + 1) * height : height;
-      const animationTime = this.getAnimationTime(this.props) / 1000;
-      return (
-        <AllItemsContainer
-          animationTime={animationTime}
-          width={width}
-          height={height}
-          activeWidth={activeWidth}
-          activeHeight={activeHeight}
-          switchType={switchType}
-          nextStart={nextStart}
-          initStart={initStart}
-          preStart={this.preStart}
-        >
-          {this.getChildren(children)}
-        </AllItemsContainer>
-      );
+    if (!children || children.length === 0) {
+      return null;
     }
+    const { start: nextStart } = this.state;
+    const { start: initStart } = this.props;
+    const len = children.length;
+    const isVertical = switchType === 'vertical';
+    const isFade = switchType === 'fade';
+    const { width, height } = this.getShadowWidthAndHeight();
+    const activeWidth = isVertical || isFade ? width : (len + 1) * width;
+    const activeHeight = isVertical ? (len + 1) * height : height;
+    const animationTime = this.getAnimationTime(this.props) / 1000;
+    return (
+      <AllItemsContainer
+        animationTime={animationTime}
+        width={width}
+        height={height}
+        activeWidth={activeWidth}
+        activeHeight={activeHeight}
+        switchType={switchType}
+        nextStart={nextStart}
+        initStart={initStart}
+        preStart={this.preStart}
+      >
+        {this.getChildren(children)}
+      </AllItemsContainer>
+    );
   };
 
   getChildren = (children: string[]) => {

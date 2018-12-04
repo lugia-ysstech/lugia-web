@@ -71,28 +71,17 @@ describe('Carousel', () => {
     const children = ['知行合一', '拙能胜巧', '有求皆苦', '无欲则刚'];
     expect(getInitStart({}, 0)).toBe(0);
     expect(getInitStart({ children }, 1)).toBe(1);
-    expect(getInitStart({ children }, '1')).toBe(1);
     expect(getInitStart({ children }, -1)).toBe(0);
     expect(getInitStart({ children }, 5)).toBe(0);
     expect(getInitStart({ children }, 4)).toBe(4);
-    expect(getInitStart({ children }, null)).toBe(0);
-    expect(getInitStart({ children }, '')).toBe(0);
-    expect(getInitStart({ children }, [])).toBe(0);
-    expect(getInitStart({ children }, undefined)).toBe(0);
-    expect(getInitStart({ children }, {})).toBe(0);
   });
 
   it('getAnimationTime ', () => {
     expect(Carousel.prototype.getAnimationTime({ animationTime: 1000 })).toBe(1000);
-    expect(Carousel.prototype.getAnimationTime({ animationTime: '1000' })).toBe(1000);
     expect(Carousel.prototype.getAnimationTime({ animationTime: 100 })).toBe(200);
     expect(Carousel.prototype.getAnimationTime({ animationTime: 20000 })).toBe(10000);
     expect(Carousel.prototype.getAnimationTime({ animationTime: 0 })).toBe(200);
     expect(Carousel.prototype.getAnimationTime({ animationTime: undefined })).toBe(500);
-    expect(Carousel.prototype.getAnimationTime({ animationTime: null })).toBe(500);
-    expect(Carousel.prototype.getAnimationTime({ animationTime: '' })).toBe(500);
-    expect(Carousel.prototype.getAnimationTime({ animationTime: {} })).toBe(500);
-    expect(Carousel.prototype.getAnimationTime({ animationTime: [] })).toBe(500);
   });
 
   it('getPreStart ', () => {
