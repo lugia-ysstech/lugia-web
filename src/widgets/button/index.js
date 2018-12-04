@@ -10,6 +10,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Icon from '../icon';
 import DelayHoc from '../common/DelayHoc';
+import MouseEventAdaptor from '../common/MouseEventAdaptor';
 
 import {
   getTypeCSS,
@@ -73,76 +74,97 @@ const IconWrap = styled(Icon)`
 ButtonOut.displayName = 'hello';
 
 export default ThemeProvider(
-  DelayHoc(
-    class extends React.Component<ButtonOutProps, ButtonState> {
-      static getDerivedStateFromProps(nextProps, prevState) {
-        if (!prevState) {
-          return {
-            clicked: false,
-          };
-        }
-      }
-
-      onClick = e => {
-        const { onClick, disabled, loading } = this.props;
-        if (!disabled && !loading) {
-          this.setState({
-            clicked: true,
-          });
-          setTimeout(() => {
-            this.setState({
+  MouseEventAdaptor(
+    DelayHoc(
+      class extends React.Component<ButtonOutProps, ButtonState> {
+        static getDerivedStateFromProps(nextProps, prevState) {
+          if (!prevState) {
+            return {
               clicked: false,
-            });
-          }, 500);
-          onClick && onClick(e);
+            };
+          }
         }
-      };
 
-      handleChildren = () => {
-        const { children, icon, circle, loading } = this.props;
-        if (circle) {
-          const iconType = icon || 'lugia-icon-direction_logout';
-          return <Icon iconClass={iconType} />;
-        }
-        if (loading) {
+        onClick = e => {
+          const { onClick, disabled, loading } = this.props;
+          if (!disabled && !loading) {
+            this.setState({
+              clicked: true,
+            });
+            setTimeout(() => {
+              this.setState({
+                clicked: false,
+              });
+            }, 500);
+            onClick && onClick(e);
+          }
+        };
+
+        handleChildren = () => {
+          const { children, icon, circle, loading } = this.props;
+          if (circle) {
+            const iconType = icon || 'lugia-icon-direction_logout';
+            return <Icon iconClass={iconType} />;
+          }
+          if (loading) {
+            return (
+              <span>
+                <IconWrap loading iconClass="lugia-icon-financial_loading_o" />
+                {children}
+              </span>
+            );
+          }
+          if (icon) {
+            return (
+              <span>
+                <IconWrap iconClass={icon} />
+                {children}
+              </span>
+            );
+          }
+          return children;
+        };
+        render() {
+          const {
+            type,
+            shape,
+            disabled,
+            plain,
+            size,
+            circle,
+            getTheme,
+            loading,
+            onMouseOut,
+            onMouseEnter,
+            onMouseOver,
+            onMouseUp,
+            onMouseDown,
+          } = this.props;
+          const { clicked } = this.state;
           return (
-            <span>
-              <IconWrap loading iconClass="lugia-icon-financial_loading_o" />
-              {children}
-            </span>
+            <ButtonOut
+              clicked={clicked}
+              type={type}
+              disabled={disabled}
+              size={size}
+              plain={plain}
+              shape={shape}
+              circle={circle}
+              loading={loading}
+              onClick={this.onClick}
+              onMouseOut={onMouseOut}
+              onMouseEnter={onMouseEnter}
+              onMouseOver={onMouseOver}
+              onMouseUp={onMouseUp}
+              onMouseDown={onMouseDown}
+              themes={getTheme()}
+            >
+              <span>{this.handleChildren()}</span>
+            </ButtonOut>
           );
         }
-        if (icon) {
-          return (
-            <span>
-              <IconWrap iconClass={icon} />
-              {children}
-            </span>
-          );
-        }
-        return children;
-      };
-      render() {
-        const { type, shape, disabled, plain, size, circle, getTheme, loading } = this.props;
-        const { clicked } = this.state;
-        return (
-          <ButtonOut
-            clicked={clicked}
-            type={type}
-            disabled={disabled}
-            size={size}
-            plain={plain}
-            shape={shape}
-            circle={circle}
-            loading={loading}
-            onClick={this.onClick}
-            themes={getTheme()}
-          >
-            <span>{this.handleChildren()}</span>
-          </ButtonOut>
-        );
       }
-    }
+    )
   ),
   Widget.Button
 );

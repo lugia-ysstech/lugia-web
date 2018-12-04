@@ -44,7 +44,7 @@ const CommonInputStyle = styled.input`
   border-style: solid;
   border-color: ${getInputBorderColor};
   line-height: 1.5;
-  font-size: ${FontSize};
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   &:hover {
@@ -56,7 +56,7 @@ const CommonInputStyle = styled.input`
   background-image: none;
   ${getFontColor};
   &::placeholder {
-    color: rgba(0, 0, 0, 0.25);
+    color: #ccc;
   }
   &:focus {
     ${getFocusBorderColor};
