@@ -7,10 +7,10 @@
  */
 import * as React from 'react';
 import { AnchorContext } from './anchor';
-import type {} from '../css/anchor-link';
+import type { AnchorLinkProps, AnchorLinkState } from '../css/anchor-link';
 import { LinkWrap, Link } from '../css/anchor-link';
 
-export default class extends React.Component<any, any> {
+export default class extends React.Component<AnchorLinkProps, AnchorLinkState> {
   static displayName = 'AnchorLink';
   isLoad: boolean;
   constructor() {
