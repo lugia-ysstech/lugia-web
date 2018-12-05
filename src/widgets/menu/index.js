@@ -120,7 +120,7 @@ type MenuState = {
   childData: Array<string> | [],
   indexOffsetY: number,
 };
-
+const EmptyData = [];
 function getSelectedKeys(props: MenuProps, state: ?MenuState): Array<string> {
   const { selectedKeys = [], defaultSelectedKeys = [] } = props;
   if ('selectedKeys' in props) {
@@ -133,6 +133,9 @@ function getSelectedKeys(props: MenuProps, state: ?MenuState): Array<string> {
 
 function getPopupVisible(props: MenuProps, state: MenuState, popup: boolean) {
   const { popupVisible } = props;
+  if ('popupVisible' in props) {
+    return popupVisible;
+  }
   return state.childData && state.childData.length > 0 && popupVisible ? true : false;
 }
 
@@ -194,7 +197,7 @@ function getInitChildData(props: MenuProps) {
   if (expandedPath.length === 0) {
     return [];
   }
-  const childData = getChildData(props) || [];
+  const childData = getChildData(props) || EmptyData;
   return childData;
 }
 
@@ -226,7 +229,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       selectedKeys: getSelectedKeys(props, null),
       expandedPath: getExpandedPath(props, null),
       popupVisible: false,
-      // childData: this.getInitChildData(),
       childData: getInitChildData(props),
     };
     // 将menu数组展开成属性解构数据，方便去遍历取出单项数据path路径
@@ -255,10 +257,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   shouldComponentUpdate(nextProps: MenuProps, nextState: MenuState) {
     const { props, state } = this;
-    const dataChanged =
-      props.data !== nextProps.data ||
-      props.children !== nextProps.children ||
-      nextProps.selectedKeys !== props.selectedKeys;
+    const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
 
     if (dataChanged || selectedChange) {
@@ -266,17 +265,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
       this.updateIsSelect(nextState, nextProps);
     }
 
-    const expandedPathChanged =
-      nextState.expandedPath !== state.expandedPath ||
-      nextProps.expandedPath !== props.expandedPath;
+    const expandedPathChanged = nextState.expandedPath !== state.expandedPath;
     if (expandedPathChanged) {
       // this.activeLevelData = this.getInitLevelData(nextProps);
       // this.allChildData = this.getInitAllChildData(nextProps);
     }
     const popupChanged =
-      nextState.popupVisible !== state.popupVisible ||
-      nextProps.popupVisible !== props.popupVisible ||
-      nextState.childData !== state.childData;
+      nextState.popupVisible !== state.popupVisible || nextState.childData !== state.childData;
     if (popupChanged) {
       // console.log('ccccccccc');
     }
@@ -380,16 +375,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
       });
       return childData;
     }
-  };
-
-  getInitChildData = () => {
-    const { expandedPath = [], data, level } = this.props;
-    if (expandedPath.length === 0) {
-      return [];
-    }
-    const childData = this.getChildData() || [];
-    // console.log('childData', level, childData);
-    return childData;
   };
 
   getPathData = (props: Object) => {
@@ -850,7 +835,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         const selectedKeysData = this.isRoot()
           ? this.selectedKeysData
           : this.props.selectedKeysData;
-        existKey[selectedKeysData[level]] = true;
+        // existKey[selectedKeysData[level]] = true;
         // } else {
         // existKey[selectedKeys[selectedKeys.length - 1]] = true;
         // }
@@ -867,6 +852,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
       this.childMenu.getThemeTarget().scrollerTarget.forceAlign();
     }
   }
+  componentDidUpdate() {
+    const { level } = this.props;
+    if (level === 0) {
+      console.info('king componentDidUpdate', level);
+      this.forceAlign();
+    }
+  }
+
   componentDidMount() {
     const { level } = this.props;
     if (level === 0) {
@@ -910,7 +903,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   onDocumentClick = (e: Object) => {
     const mouseDownInMenus = this.getMouseDownInMenus();
     if (!mouseDownInMenus(e.target)) {
-      this.setState({ childData: [], popupVisible: false });
+      this.setState({ childData: EmptyData, popupVisible: false });
     }
   };
 

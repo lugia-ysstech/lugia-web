@@ -8,8 +8,6 @@ import * as React from 'react';
 import Cascader from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import Trigger from '../trigger';
-import InputTag from '../inputtag';
 
 const items = [
   {
@@ -60,13 +58,13 @@ const items = [
   { text: '一级菜单9', value: '一级菜单9', disabled: true },
   { text: '一级菜单10', value: '一级菜单10', disabled: false },
 ];
-
+//一级菜单6/次级菜单2/三级菜单1/sub1
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      selectedKeys: ['一级菜单6/次级菜单2/三级菜单1/sub1'],
-      expandedPath: ['一级菜单6/次级菜单2/三级菜单1/sub1'],
+      selectedKeys: ['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1'],
+      expandedPath: ['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1'],
     };
   }
   render() {
@@ -79,11 +77,7 @@ export default class extends React.Component<any, any> {
             data={items}
             action={'click'}
             value={selectedKeys}
-            // selectedKeys={selectedKeys}
-            // expandedPath={expandedPath}
             separator={'/'}
-            // popupVisible={true}
-            // offsetX={10}
             onClick={this.onClick}
             onChange={this.onChange}
             disabled={false}

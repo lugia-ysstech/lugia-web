@@ -36,7 +36,7 @@ const data = [
       {
         text: '次级菜单4-1',
         value: '次级菜单4-1',
-        children: [{ text: '三级菜单4-1-1', value: '三级菜单4-1-1' }],
+        children: [{ test: '三级菜单4-1-1', value: '三级菜单4-1-1' }],
       },
     ],
   },
@@ -74,8 +74,8 @@ export default class extends React.Component<any, any> {
     super(props);
     this.state = {
       items,
-      selectedKeys: ['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1'],
-      expandedPath: ['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1'],
+      selectedKeys: ['一级菜单7'],
+      expandedPath: ['一级菜单7'],
       scrollerValue: 0,
       start: 0,
     };
@@ -83,6 +83,7 @@ export default class extends React.Component<any, any> {
 
   render() {
     const { items = [], selectedKeys, expandedPath } = this.state;
+    console.info('king menu demo', 'selectedKeys', selectedKeys, 'expandedPath', expandedPath);
     return (
       <div>
         <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
@@ -92,19 +93,24 @@ export default class extends React.Component<any, any> {
             expandedPath={expandedPath}
             popupVisible={true}
             action={'hover'}
-            onChange={this.onChange}
             handleIsInMenu={this.handleIsInMenu}
             data={data}
             selectedKeys={selectedKeys}
             offsetY={0}
-            onClear={this.onClear}
             onMouseEnter={this.onMouseEnter}
-            onClick={this.onClick}
           />
         </Theme>
+        <button onClick={this.btnClick}>hello</button>
       </div>
     );
   }
+
+  btnClick = (e, keys, item) => {
+    this.setState({
+      selectedKeys: ['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1'],
+      expandedPath: ['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1'],
+    });
+  };
 
   onClick = (e, keys, item) => {
     // const start = data.indexOf(item);

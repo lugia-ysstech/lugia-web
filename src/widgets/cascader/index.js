@@ -37,8 +37,6 @@ type CascaderProps = {
 };
 type CascaderState = {
   popupVisible: boolean,
-  checked: boolean,
-  mouseInTarget: boolean,
   value: [] | string[],
 };
 
@@ -52,16 +50,20 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
       return {};
     },
   };
+
+  checked: boolean;
+  mouseInTarget: boolean;
+  menu: Object;
+
   constructor(props: CascaderProps) {
     super(props);
     const { popupVisible } = props;
     this.state = {
       popupVisible: popupVisible ? popupVisible : false,
-      checked: false,
-      mouseInTarget: false,
       value: props.value ? props.value : [],
       expandedPath: props.value ? props.value : [],
     };
+    this.menu = React.createRef();
   }
 
   render() {
@@ -95,32 +97,38 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
           </Trigger>
         </Theme>
       </CascaderContainer>
-      // this.getMenu(theme)
     );
   }
 
   handleClickInputTag = () => {
-    const { checked, mouseInTarget } = this.state;
+    const { checked } = this;
     const { disabled } = this.props;
+
     if (disabled) {
       return;
     }
-    if (checked) {
-      this.setState({ checked: false });
+    const { popupVisible } = this.state;
+    if (popupVisible) {
       return;
     }
-
-    this.setState({ popupVisible: true, checked: true });
+    if (checked) {
+      this.checked = false;
+      return;
+    }
+    this.checked = true;
+    this.setState({ popupVisible: true });
   };
 
   getMenu = (theme: Object) => {
     const { data, action, separator, offsetX, valueField, displayField } = this.props;
     const { popupVisible, expandedPath, value } = this.state;
     const { menuWidth = 150 } = theme;
+    console.info('king', value, 'separator', separator, 'popupVisible', popupVisible);
     return (
       <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
           mutliple={false}
+          ref={this.menu}
           // action={action}
           popupVisible={popupVisible}
           // onChange={this.onChange}
@@ -142,10 +150,11 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
   };
 
   handleIsInMenu = popupVisible => {
-    const { checked, mouseInTarget } = this.state;
+    const { checked } = this;
+    const { mouseInTarget } = this;
     if (!popupVisible) {
       if (checked && !mouseInTarget) {
-        this.setState({ popupVisible, checked: false });
+        this.checked = false;
       }
       this.setState({ popupVisible });
     }
@@ -165,7 +174,7 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
   };
 
   onMouseEnter = (expandedPath: strting[]) => {
-    this.setState({ expandedPath });
+    // this.setState({ expandedPath });
     // console.log('expandedPath+++++++++++', expandedPath);
   };
 
@@ -184,12 +193,20 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
   };
 
   onMouseEnterContainer = () => {
-    this.setState({ mouseInTarget: true });
+    this.mouseInTarget = true;
   };
 
   onMouseLeaveContainer = () => {
-    this.setState({ mouseInTarget: false });
+    this.mouseInTarget = false;
   };
+
+  componentDidUpdate() {
+    if (this.menu) {
+      this.menu.current.getThemeTarget().scrollerTarget.forceAlign();
+    }
+
+    console.info('king cascader didupdate');
+  }
 }
 
 export default ThemeProvider(Cascader, Widget.Cascader);
