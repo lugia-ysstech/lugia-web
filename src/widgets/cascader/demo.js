@@ -65,7 +65,7 @@ export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      selectedKeys: ['一级菜单6/次级菜单2/三级菜单1/a/sub2'],
+      selectedKeys: ['一级菜单6/次级菜单2/三级菜单1/sub1'],
       expandedPath: ['一级菜单6/次级菜单2/三级菜单1/sub1'],
     };
   }
@@ -74,13 +74,13 @@ export default class extends React.Component<any, any> {
 
     return (
       <div>
-        <Theme config={{ [Widget.Cascader]: { width: 200, menuWidth: 100 } }}>
+        <Theme config={{ [Widget.Cascader]: { width: 200, menuWidth: 200 } }}>
           <Cascader
             data={items}
             action={'click'}
             value={selectedKeys}
-            selectedKeys={selectedKeys}
-            expandedPath={expandedPath}
+            // selectedKeys={selectedKeys}
+            // expandedPath={expandedPath}
             separator={'/'}
             // popupVisible={true}
             // offsetX={10}
@@ -95,6 +95,7 @@ export default class extends React.Component<any, any> {
 
   onClick = (e: Object, keys: Object) => {
     const { selectedKeys } = keys;
+    console.log('selectedKeys', selectedKeys);
     this.setState({ selectedKeys });
   };
   onChange = (target: Object) => {

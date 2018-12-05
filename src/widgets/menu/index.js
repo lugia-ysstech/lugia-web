@@ -131,12 +131,71 @@ function getSelectedKeys(props: MenuProps, state: ?MenuState): Array<string> {
   return state ? state.selectedKeys : [];
 }
 
+function getPopupVisible(props: MenuProps, state: MenuState, popup: boolean) {
+  const { popupVisible } = props;
+  return state.childData && state.childData.length > 0 && popupVisible ? true : false;
+}
+
 function getExpandedPath(props: MenuProps, state: ?MenuState): Array<string> {
   const { expandedPath = [] } = props;
   if ('expandedPath' in props) {
     return expandedPath;
   }
   return state ? state.expandedPath : [];
+}
+
+function mapDataAndGetSelectedKeys(data: Object[], targetArr: string[], currentArr: [] | string[]) {
+  if (targetArr.length === 0) {
+    return currentArr;
+  }
+  const target = targetArr[0];
+  data.map(item => {
+    if (item.value === target) {
+      currentArr.push(item.value);
+      if (item.children && item.children.length > 0) {
+        targetArr.splice(0, 1);
+        mapDataAndGetSelectedKeys(item.children, targetArr, currentArr);
+      } else {
+        return currentArr;
+      }
+    }
+    return currentArr;
+  });
+}
+
+function getInitLevelData(props: MenuProps) {
+  const { expandedPath = [], separator, data, level } = props;
+
+  if (expandedPath.length === 0) {
+    return [];
+  }
+  const initLevelArray = [];
+  const cascaderData = expandedPath[0].split(separator);
+  mapDataAndGetSelectedKeys(data, cascaderData, initLevelArray);
+  return initLevelArray;
+}
+
+function getChildData(props: MenuProps) {
+  const { thisActiveLevelData, level, data } = props;
+  const levelData = level === 0 ? getInitLevelData(props) : thisActiveLevelData;
+  let childData = [];
+  if (levelData.length > 0) {
+    data.forEach(item => {
+      if (item.value === levelData[level]) {
+        childData = item.children;
+      }
+    });
+    return childData;
+  }
+}
+
+function getInitChildData(props: MenuProps) {
+  const { expandedPath = [], data, level } = props;
+  if (expandedPath.length === 0) {
+    return [];
+  }
+  const childData = getChildData(props) || [];
+  return childData;
 }
 
 let Result = () => <div />;
@@ -166,39 +225,31 @@ class Menu extends React.Component<MenuProps, MenuState> {
     this.state = {
       selectedKeys: getSelectedKeys(props, null),
       expandedPath: getExpandedPath(props, null),
-      // popupVisible: getPopupVisible(props, null),
       popupVisible: false,
-      childData: this.getInitChildData(),
+      // childData: this.getInitChildData(),
+      childData: getInitChildData(props),
     };
     // 将menu数组展开成属性解构数据，方便去遍历取出单项数据path路径
     this.treeData = this.getPathData(this.props);
     this.activeLevelData = this.getInitLevelData(props);
-    this.allChildData = this.getInitAllChildData(props);
+    this.selectedKeysData = this.getSelectedKeysData(props);
     this.updateIsSelect(this.state, this.props);
     this.level2MenuInstance = {};
-    this.rootMenuPopupVisible = this.getRootPopupVisible(props);
   }
-
-  getRootPopupVisible = (props: MenuProps) => {
-    const { level } = props;
-    if (level === 0) {
-      // console.log('props.Visible', props.popupVisible);
-    }
-  };
 
   static getDerivedStateFromProps(props: MenuProps, state: MenuState) {
     if (!state) {
       return {
         start: 0,
         indexOffsetY: 0,
-        // 静态方法没有this
       };
     }
 
     return {
       selectedKeys: getSelectedKeys(props, state),
       expandedPath: getExpandedPath(props, state),
-      popupVisible: state.childData && state.childData.length > 0 ? true : false,
+      childData: getInitChildData(props),
+      popupVisible: getPopupVisible(props, state),
     };
   }
 
@@ -211,6 +262,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
 
     if (dataChanged || selectedChange) {
+      // this.selectedKeysData = this.getSelectedKeysData(nextProps);
       this.updateIsSelect(nextState, nextProps);
     }
 
@@ -218,13 +270,16 @@ class Menu extends React.Component<MenuProps, MenuState> {
       nextState.expandedPath !== state.expandedPath ||
       nextProps.expandedPath !== props.expandedPath;
     if (expandedPathChanged) {
-      this.activeLevelData = this.getInitLevelData(nextProps);
-      this.allChildData = this.getInitAllChildData(nextProps);
+      // this.activeLevelData = this.getInitLevelData(nextProps);
+      // this.allChildData = this.getInitAllChildData(nextProps);
     }
     const popupChanged =
       nextState.popupVisible !== state.popupVisible ||
       nextProps.popupVisible !== props.popupVisible ||
       nextState.childData !== state.childData;
+    if (popupChanged) {
+      // console.log('ccccccccc');
+    }
 
     return (
       dataChanged ||
@@ -261,28 +316,27 @@ class Menu extends React.Component<MenuProps, MenuState> {
     if (expandedPath.length === 0) {
       return [];
     }
-    if (level === 0) {
-      console.log('expandedPath', expandedPath);
-    }
+    // if (level === 0) {
+    // console.log('expandedPath', expandedPath);
+    // }
     const initLevelArray = [];
     const cascaderData = expandedPath[0].split(separator);
     this.mapDataAndGetSelectedKeys(data, cascaderData, initLevelArray);
     return initLevelArray;
   };
 
-  // 将所有ChildData在第一层Menu中遍历出来，然后逐层传递
-  getChildData = () => {
-    const { thisActiveLevelData, level, data } = this.props;
-    const levelData = this.isRoot() ? this.getInitLevelData(this.props) : thisActiveLevelData;
-    let childData = [];
-    if (levelData.length > 0) {
-      data.forEach(item => {
-        if (item.value === levelData[level]) {
-          childData = item.children;
-        }
-      });
-      return childData;
+  getSelectedKeysData = (props: MenuProps) => {
+    const { selectedKeys = [] } = this.state;
+    const { separator, data } = props;
+
+    if (selectedKeys.length === 0) {
+      return [];
     }
+
+    const selectedKeysData = [];
+    const cascaderData = selectedKeys[0].split(separator);
+    this.mapDataAndGetSelectedKeys(data, cascaderData, selectedKeysData);
+    return selectedKeysData;
   };
 
   mapGetAllChildData = (data: Object[], levelArray: string[], index: number): Object => {
@@ -307,18 +361,34 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const levelData = this.activeLevelData;
     const res = this.mapGetAllChildData(data, levelData, 0);
     if (level === 0) {
-      console.log('res', res);
+      // console.log('res', res);
     }
     return res;
   };
 
   // 第二种方法，在每一层的state中，独自遍历获取自己的ChildData
+  // 将所有ChildData在第一层Menu中遍历出来，然后逐层传递
+  getChildData = () => {
+    const { thisActiveLevelData, level, data } = this.props;
+    const levelData = this.isRoot() ? this.getInitLevelData(this.props) : thisActiveLevelData;
+    let childData = [];
+    if (levelData.length > 0) {
+      data.forEach(item => {
+        if (item.value === levelData[level]) {
+          childData = item.children;
+        }
+      });
+      return childData;
+    }
+  };
+
   getInitChildData = () => {
     const { expandedPath = [], data, level } = this.props;
     if (expandedPath.length === 0) {
       return [];
     }
     const childData = this.getChildData() || [];
+    // console.log('childData', level, childData);
     return childData;
   };
 
@@ -365,8 +435,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     let { start, end, checkedCSS, mutliple, cancelData, size, data, level, expandedPath } = props;
-    console.log('nextProps', level, expandedPath);
+    // console.log('nextProps', level, expandedPath);
     // console.log('allChildrenArray', allChildData);
+    // console.log('expandedPath', expandedPath);
 
     start = Math.round(start);
     end = Math.round(end);
@@ -413,7 +484,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     const { offsetX, getTheme } = this.props;
-    const { popupVisible = false, childData } = this.state;
+    const { popupVisible = false, childData, selectedKeys } = this.state;
+    console.log('popupVisible', level, popupVisible, childData, expandedPath, selectedKeys);
+
+    if (childData) {
+      this.setState({ popupVisible: true });
+    }
+
     const x = offsetX === 0 || offsetX ? offsetX : 4;
     const { submenuWidth } = getTheme();
     return (
@@ -542,29 +619,30 @@ class Menu extends React.Component<MenuProps, MenuState> {
           const setActiveLevelData = this.getSetActiveLevelData();
           const newLevelData = setActiveLevelData(pathArr);
           selectedKeys = [newLevelData.join(separator)];
-        }
 
-        const keys = { selectedKeys: [...selectedKeys] };
+          const setSelectedKeys = this.getSetSelectedKeys();
 
-        const setSelectedKeys = this.getSetSelectedKeys();
-        setSelectedKeys(selectedKeys);
-
-        if (action === 'click' && checkedCSS === 'none' && mutliple === false) {
-          const newState = { popupVisible: false, childData: [] };
-          this.setState(newState);
-
-          setTimeout(() => {
-            if (item.children) {
-              newState.childData = item.children;
-              newState.popupVisible = true;
-            }
+          const isExpandedPath = 'expandedPath' in this.props;
+          if (action === 'click' && checkedCSS === 'none' && !isExpandedPath) {
+            const newState = { popupVisible: false, childData: [] };
             this.setState(newState);
-          }, 0);
+            setSelectedKeys(selectedKeys);
+
+            setTimeout(() => {
+              if (item.children) {
+                newState.childData = item.children;
+                newState.popupVisible = true;
+              }
+              this.setState(newState);
+            }, 0);
+          }
         }
 
         /**
          *  add by szfeng
          */
+
+        const keys = { selectedKeys: [...selectedKeys] };
         onClick && onClick(event, keys, item);
         onChange && onChange(keys);
 
@@ -576,6 +654,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         if (action !== 'hover' || checkedCSS !== 'none' || mutliple === true) {
           return;
         }
+        const { selectedKeys } = this.props;
         const pathArr = this.getPathArr(key);
         const setActiveLevelData = this.getSetActiveLevelData();
         const newLevelData = setActiveLevelData(pathArr);
@@ -674,6 +753,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { selectedKeys, expandedPath: rootExpandedPath, allChildData } = this.state;
     const treeData = this.isRoot() ? this.treeData : this.props.treeData;
     const expandedPath = this.isRoot() ? rootExpandedPath : this.props.expandedPath;
+    // console.log('this.selectedKeysData', level, this.selectedKeysData);
+    // const selectedKeysData = this.isRoot() ? this.selectedKeysData : this.props.selectedKeysData;
+    const rootMenuPopupVisible = this.isRoot()
+      ? this.rootMenuPopupVisible
+      : this.props.rootMenuPopupVisible;
     const x = offsetX === 0 || offsetX ? offsetX : 4;
     const y = offsetY === 0 || offsetY ? offsetY : null;
     return (
@@ -699,8 +783,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
         setActiveLevelData={this.getSetActiveLevelData()}
         setSelectedKeys={this.getSetSelectedKeys()}
         thisActiveLevelData={this.getThisActiveLevelData()}
+        // selectedKeysData={selectedKeysData}
         treeData={treeData}
         expandedPath={expandedPath}
+        rootMenuPopupVisible={rootMenuPopupVisible}
       />
     );
   }
@@ -745,7 +831,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
   createSelect = (state: MenuState, props: MenuProps) => {
     const existKey = {};
     const { selectedKeys } = state;
-    const { level, thisActiveLevelData } = props;
+    console.log('state.selectedKeys', selectedKeys);
+    const { level } = props;
     const len = selectedKeys.length;
     if (selectedKeys && len > 0) {
       const { mutliple } = props;
@@ -754,11 +841,16 @@ class Menu extends React.Component<MenuProps, MenuState> {
           existKey[selectedKeys[i]] = true;
         }
       } else {
-        // console.log('this.isCascaderData()', this.isCascaderData());
         // if (this.isCascaderData()) {
-        // 出现BUG，当点击第一层，再点击第二层时，会出现selectedKeys不生效
-        const activeLevelData = this.isRoot() ? this.activeLevelData : thisActiveLevelData;
-        existKey[activeLevelData[level]] = true;
+        const { separator, data } = props;
+
+        if (selectedKeys.length === 0) {
+          return [];
+        }
+        const selectedKeysData = this.isRoot()
+          ? this.selectedKeysData
+          : this.props.selectedKeysData;
+        existKey[selectedKeysData[level]] = true;
         // } else {
         // existKey[selectedKeys[selectedKeys.length - 1]] = true;
         // }

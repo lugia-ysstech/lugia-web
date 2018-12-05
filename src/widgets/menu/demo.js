@@ -90,8 +90,8 @@ export default class extends React.Component<any, any> {
             separator={'/'}
             mutliple={false}
             expandedPath={expandedPath}
-            // popupVisible={true}
-            action={'click'}
+            popupVisible={true}
+            action={'hover'}
             onChange={this.onChange}
             handleIsInMenu={this.handleIsInMenu}
             data={data}
@@ -110,7 +110,7 @@ export default class extends React.Component<any, any> {
     // const start = data.indexOf(item);
     // this.setState({ start });
     const { selectedKeys } = keys;
-    // console.log('selectedKeys', selectedKeys);
+    console.log('selectedKeys', selectedKeys);
     this.setState({ selectedKeys, expandedPath: selectedKeys });
   };
 
