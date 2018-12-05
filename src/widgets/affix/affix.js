@@ -29,6 +29,8 @@ export default class extends React.Component<AffixProps, AffixState> {
   affix: any;
   defaultAffixOffsetTop: number;
   targetDefaultOffsetTop: number;
+  contentWidth: number;
+  contentHeight: number;
 
   constructor() {
     super();
@@ -39,6 +41,8 @@ export default class extends React.Component<AffixProps, AffixState> {
 
   componentDidMount() {
     const { target } = this.props;
+    this.contentWidth = this.affix && this.affix.offsetWidth;
+    this.contentHeight = this.affix && this.affix.offsetHeight;
     this.defaultAffixOffsetTop = this.affix && getElementPosition(this.affix).y;
     setTimeout(() => {
       if (target && typeof target === 'function') {
@@ -217,17 +221,20 @@ export default class extends React.Component<AffixProps, AffixState> {
     const { target } = this.props;
     window.removeEventListener('scroll', this.addWindowListener);
     if (target && typeof target === 'function') {
-      target().removeEventListener('scroll', this.addTargetListener);
+      target() && target().removeEventListener('scroll', this.addTargetListener);
     }
   }
 
   render() {
     const { children } = this.props;
     const { fixed } = this.state;
+    const { contentWidth, contentHeight } = this;
     return (
-      <Affix innerRef={node => (this.affix = node)} fixed={fixed} {...this.getOffsetValue()}>
-        {children}
-      </Affix>
+      <div style={fixed ? { width: contentWidth, height: contentHeight } : null}>
+        <Affix innerRef={node => (this.affix = node)} fixed={fixed} {...this.getOffsetValue()}>
+          {children}
+        </Affix>
+      </div>
     );
   }
 

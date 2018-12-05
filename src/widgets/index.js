@@ -18,7 +18,7 @@ export const Row = grid.Row;
 
 export { default as Align } from './align';
 
-export { default as AmountInput } from './amount-input';
+export { default as AmountInput } from './amountinput';
 
 export { default as Avatar } from './avatar';
 
@@ -54,7 +54,7 @@ export { default as Loading } from './loading/loading';
 
 export { default as Menu } from './menu';
 
-export { default as NumberInput } from './number-input';
+export { default as NumberInput } from './numberinput';
 
 export { default as Radio } from './radio';
 
@@ -95,3 +95,11 @@ export { default as Progress } from './progress';
 export { default as Alert } from './alert';
 
 export { default as Message } from './message';
+
+export { default as Modal } from './modal';
+
+export { default as notification } from './notification';
+
+export { default as Trasfer } from './trasfer';
+
+export { default as Drawer } from './drawer';

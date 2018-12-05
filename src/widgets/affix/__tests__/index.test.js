@@ -98,7 +98,7 @@ describe('Affix', () => {
       },
       targetHeight: 200,
     });
-    expect(getState(target).fixed).toBe(true);
+    expect(getState(target).fixed).toBe(false);
 
     affixElement.defaultOffsetTop = 250;
     affixElement.targetDefaultOffsetTop = 100;
@@ -115,7 +115,7 @@ describe('Affix', () => {
       },
       targetHeight: 200,
     });
-    expect(getState(target).fixed).toBe(false);
+    expect(getState(target).fixed).toBe(true);
   });
 
   it('Affix props: targt offsetBottom setFixedForTarget ', () => {
@@ -138,7 +138,7 @@ describe('Affix', () => {
       },
       targetHeight: 200,
     });
-    expect(getState(target).fixed).toBe(true);
+    expect(getState(target).fixed).toBe(false);
 
     affixElement.defaultOffsetTop = 500;
     affixElement.targetDefaultOffsetTop = 100;

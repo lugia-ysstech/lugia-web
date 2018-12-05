@@ -6,8 +6,8 @@ exports[`Col css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
-  width: 25%;
-  margin-left: 0%;
+  width: NaN%;
+  margin-left: NaN%;
 }
 
 .c1 {
@@ -15,8 +15,9 @@ exports[`Col css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
-  width: 25%;
-  margin-left: 25%;
+  width: NaN%;
+  margin-left: NaN%;
+  left: NaN%;
 }
 
 .c2 {
@@ -24,9 +25,9 @@ exports[`Col css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
-  width: 25%;
-  margin-left: 0%;
-  left: 25%;
+  width: NaN%;
+  margin-left: NaN%;
+  right: NaN%;
 }
 
 .c3 {
@@ -34,18 +35,8 @@ exports[`Col css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
-  width: 25%;
-  margin-left: 0%;
-  right: 25%;
-}
-
-.c4 {
-  display: block;
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 25%;
-  margin-left: 0%;
+  width: NaN%;
+  margin-left: NaN%;
   -webkit-order: 1;
   -ms-flex-order: 1;
   order: 1;
@@ -58,19 +49,32 @@ exports[`Col css 1`] = `
     onMouseOut={[Function]}
     onMouseOver={[Function]}
     span={6}
+    width={NaN}
   >
     col-6
   </div>
   <br />
   <div
-    className="c1"
+    className="c0"
     offset={6}
     onMouseEnter={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
     span={6}
+    width={NaN}
   >
     col-6 col-offset-6
+  </div>
+  <br />
+  <div
+    className="c1"
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    span={6}
+    width={NaN}
+  >
+    col-6 col-push-6
   </div>
   <br />
   <div
@@ -79,8 +83,9 @@ exports[`Col css 1`] = `
     onMouseOut={[Function]}
     onMouseOver={[Function]}
     span={6}
+    width={NaN}
   >
-    col-6 col-push-6
+    col-6 col-pull-6
   </div>
   <br />
   <div
@@ -88,18 +93,9 @@ exports[`Col css 1`] = `
     onMouseEnter={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
-    span={6}
-  >
-    col-6 col-pull-6
-  </div>
-  <br />
-  <div
-    className="c4"
-    onMouseEnter={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
     order={1}
     span={6}
+    width={NaN}
   >
     col-6 col-order-1
   </div>

@@ -98,9 +98,11 @@ const MonthPicker = 'sv_widget_MonthPicker';
 const WeekPicker = 'sv_widget_WeekPicker';
 const WeeksPicker = 'sv_widget_WeeksPicker';
 const RangePicker = 'sv_widget_RangePicker';
-const Loading = 'sv_widget_Loading';
-const TimeLine = 'sv_widget_TimeLine';
-const TimeLineItem = 'sv_widget_TimeLineItem';
+
+const Transfer = 'sv_widget_Transfer';
+const Drawer = 'sv_widget_Drawer';
+const Anchor = 'sv_widget_Anchor';
+
 export default {
   Button,
   Input,
@@ -183,7 +185,7 @@ export default {
   RangePicker,
   TimePicker,
   Time,
-  Loading,
-  TimeLine,
-  TimeLineItem,
+  Transfer,
+  Drawer,
+  Anchor,
 };
