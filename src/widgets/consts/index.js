@@ -62,12 +62,14 @@ const Badge = 'sv_widget_Badge';
 const NumberTurn = 'sv_widget_NumberTurn';
 
 /* add by szfeng */
+const Skeleton = 'sv_widget_Skeleton';
 const Select = 'sv_widget_Select';
 const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
 const QueryInput = 'sv_widget_QueryInput';
 const Tag = 'sv_widget_Tag';
 const DropMenuButton = 'sv_widget_DropMenuButton';
 const Cascader = 'sv_widget_Cascader';
+const Carousel = 'sv_widget_Carousel';
 
 const Layout = 'sv_widget_Layout';
 const Header = 'sv_widget_Header';
@@ -98,11 +100,16 @@ const MonthPicker = 'sv_widget_MonthPicker';
 const WeekPicker = 'sv_widget_WeekPicker';
 const WeeksPicker = 'sv_widget_WeeksPicker';
 const RangePicker = 'sv_widget_RangePicker';
+const Loading = 'sv_widget_Loading';
+const TimeLine = 'sv_widget_TimeLine';
+const TimeLineItem = 'sv_widget_TimeLineItem';
 
 const Transfer = 'sv_widget_Transfer';
 const Drawer = 'sv_widget_Drawer';
 const Anchor = 'sv_widget_Anchor';
 
+const Card = 'sv_widget_Card';
+const CardImage = 'sv_widget_CardImage';
 export default {
   Button,
   Input,
@@ -185,7 +192,14 @@ export default {
   RangePicker,
   TimePicker,
   Time,
+  Loading,
+  TimeLine,
+  TimeLineItem,
+  Skeleton,
+  Carousel,
   Transfer,
   Drawer,
   Anchor,
+  Card,
+  CardImage,
 };
