@@ -11,6 +11,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import '../common/shirm';
 import Input from '../input';
+import DropMenuButton from './dropmenuButton';
 import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
 import { DefaultHeight, DefaultWidth, Height, lightGreyColor, MenuItemHeight } from '../css/menu';
 import { adjustValue } from '../utils';
@@ -144,4 +145,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   };
 }
 
-export default ThemeProvider(DropMenu, Widget.DropMenu);
+const Result = ThemeProvider(DropMenu, Widget.DropMenu);
+
+Result.Button = DropMenuButton;
+
+export default Result;

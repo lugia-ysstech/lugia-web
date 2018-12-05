@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 import ReactServer from 'react-dom/server';
 import './widgets/css/global.css';
 
-import App from './widgets/steps/demo';
+import App from './widgets/card/demo';
 //import App from './widgets/switch/demo';
 //import App from './widgets/loading/demo';
 //import App from './widgets/icon/demo';

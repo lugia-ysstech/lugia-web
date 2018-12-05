@@ -475,6 +475,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const callback = this.props[type];
     callback && callback(e);
   }
+  forceAlign() {
+    this.component.forceAlign();
+  }
 
   close() {
     this.setPopupVisible(false);

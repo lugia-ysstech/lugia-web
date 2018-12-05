@@ -62,12 +62,14 @@ const Badge = 'sv_widget_Badge';
 const NumberTurn = 'sv_widget_NumberTurn';
 
 /* add by szfeng */
+const Skeleton = 'sv_widget_Skeleton';
 const Select = 'sv_widget_Select';
 const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
 const QueryInput = 'sv_widget_QueryInput';
 const Tag = 'sv_widget_Tag';
 const DropMenuButton = 'sv_widget_DropMenuButton';
 const Cascader = 'sv_widget_Cascader';
+const Carousel = 'sv_widget_Carousel';
 
 const Layout = 'sv_widget_Layout';
 const Header = 'sv_widget_Header';
@@ -186,4 +188,6 @@ export default {
   Loading,
   TimeLine,
   TimeLineItem,
+  Skeleton,
+  Carousel,
 };

@@ -54,6 +54,7 @@ type SelectProps = {
   onChange?: Function,
   onTrigger?: Function,
   onQuery?: Function,
+  onClear?: Function,
   onSelect?: Function,
   onRefresh?: Function,
   value?: string[],
@@ -338,6 +339,7 @@ class Select extends React.Component<SelectProps, SelectState> {
             disabled={disabled}
             placeholder={placeholder}
             mutliple={isMutliple(props)}
+            onClear={this.onClear}
           />
         </Trigger>
       </Theme>
@@ -493,6 +495,11 @@ class Select extends React.Component<SelectProps, SelectState> {
     if (isEnter) {
       this.appendValue();
     }
+  };
+
+  onClear = (e: Object) => {
+    const { onClear } = this.props;
+    onClear && onClear(e);
   };
 
   appendValue() {

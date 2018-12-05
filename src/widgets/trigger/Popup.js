@@ -129,6 +129,9 @@ class Popup extends React.Component<PopupProps> {
     }
     return maskElement;
   }
+  forceAlign() {
+    this.alignInstance.forceAlign();
+  }
 
   getZIndexStyle() {
     const style = {};

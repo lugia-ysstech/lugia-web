@@ -70,7 +70,7 @@ Array [
 }
 
 .c7 {
-  width: 100%;
+  width: 20.833333333333336em;
   display: inline-block;
   position: relative;
   color: #999999;
@@ -110,7 +110,7 @@ Array [
 
 .c9 {
   background: white;
-  width: 100%;
+  width: 19.833333333333336em;
   height: 2.5em;
   margin-left: 0.4166666666666667em;
   margin-right: 0.5833333333333334em;
@@ -197,6 +197,7 @@ Array [
 
 .c1 {
   position: absolute;
+  width: 250px;
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(0,0,0,0.2);
   border-radius: 4px;
@@ -298,6 +299,7 @@ Array [
 }
 
 .c5 {
+  width: 20.833333333333336em;
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -329,10 +331,6 @@ Array [
           >
             <ul
               className="c5"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
             >
               <li
                 checked={false}

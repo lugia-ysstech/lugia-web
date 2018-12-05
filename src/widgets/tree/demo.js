@@ -184,7 +184,6 @@ class LimitTree extends React.Component<Object, Object> {
         // value={value}
         onChange={this.onChange}
       />,
-      <button onClick={this.onClick} />,
     ];
   }
 
@@ -200,13 +199,13 @@ class LimitTree extends React.Component<Object, Object> {
 
 const config = {
   [Widget.Tree]: {
-    height: 200,
+    height: 500,
   },
 };
 export default () => {
   return [
     <Theme config={config}>
-      <LimitTree data={rowData} expandAll={true} mutliple={true} igronSelectField={'igron'} />
+      <LimitTree data={rowData} expandAll={true} mutliple={false} igronSelectField={'igron'} />
     </Theme>,
   ];
 };

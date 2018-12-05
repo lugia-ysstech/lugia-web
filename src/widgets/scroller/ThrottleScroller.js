@@ -106,7 +106,15 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       if (!this.isNeedScroller()) {
         const { length } = this.getTarget();
         //TODO: 待测试
-        return pack(<Target {...props} start={0} end={length} canSeeCount={length} />);
+        return pack(
+          <Target
+            {...props}
+            start={0}
+            end={length}
+            canSeeCount={length}
+            ref={cmp => (this.scrollerTarget = cmp)}
+          />
+        );
       }
 
       const { type, step } = props;
@@ -118,7 +126,13 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
       return pack([
         <Col theme={theme}>
-          <Target {...props} canSeeCount={canSeeCount} start={start} end={end} />
+          <Target
+            {...props}
+            canSeeCount={canSeeCount}
+            start={start}
+            end={end}
+            ref={cmp => (this.scrollerTarget = cmp)}
+          />
         </Col>,
         <ScrollerCol theme={theme} isDrag={this.isDrag}>
           <Scroller

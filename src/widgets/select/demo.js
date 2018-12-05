@@ -68,6 +68,7 @@ export default class Demo extends React.Component {
             limitCount={5}
             data={data}
             onSelect={this.onSelect}
+            onChange={this.onChange}
           />
 
           <H2>受限 mutliple canInput</H2>

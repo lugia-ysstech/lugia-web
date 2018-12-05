@@ -86,7 +86,10 @@ export default class Align extends React.Component<PropsType> {
       this.rcAlign.current &&
       (pY !== offsetY || pX !== offsetX || align !== pAlign)
     ) {
-      this.rcAlign.current.forceAlign();
+      this.forceAlign();
     }
+  }
+  forceAlign() {
+    this.rcAlign.current.forceAlign();
   }
 }
