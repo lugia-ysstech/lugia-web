@@ -108,6 +108,8 @@ const Transfer = 'sv_widget_Transfer';
 const Drawer = 'sv_widget_Drawer';
 const Anchor = 'sv_widget_Anchor';
 
+const Card = 'sv_widget_Card';
+const CardImage = 'sv_widget_CardImage';
 export default {
   Button,
   Input,
@@ -198,4 +200,6 @@ export default {
   Transfer,
   Drawer,
   Anchor,
+  Card,
+  CardImage,
 };
