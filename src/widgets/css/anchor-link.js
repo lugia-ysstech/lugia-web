@@ -29,13 +29,16 @@ export const LinkWrap = styled.div`
   padding-left: ${em(10)};
   line-height: 1;
 `;
+
 const getLinkColor = (props: CSSProps) => {
   const { active } = props;
+  let color = '#333';
   if (active) {
-    return `color: ${themeColor};`;
+    color = themeColor;
   }
-  return 'color: #333;';
+  return `color: ${color};`;
 };
+
 export const Link = styled.a`
   display: block;
   ${getLinkColor};

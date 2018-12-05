@@ -71,14 +71,14 @@ describe('Anchor', () => {
     expect(component.getId()).toBeUndefined();
   });
 
-  it('Anchor: getLinks ', () => {
+  it('Anchor: updateLinks ', () => {
     const target = mount(<Anchor />);
     const component = getComponent(target);
-    component.getLinks([1, 2]);
+    component.updateLinks([1, 2]);
     const { links } = component;
     expect(links).toEqual([1, 2]);
 
-    component.getLinks([3, 4]);
+    component.updateLinks([3, 4]);
     const { links: newLink } = component;
     expect(newLink).toEqual([3, 4]);
   });

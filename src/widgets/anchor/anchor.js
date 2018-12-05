@@ -24,6 +24,7 @@ export default ThemeProvider(
     static displayName = 'Anchor';
     links: string[];
     isClick: boolean;
+
     constructor(props) {
       super(props);
       this.state = {
@@ -38,42 +39,46 @@ export default ThemeProvider(
         window.addEventListener('scroll', this.addWindowScrollListener);
       }, 100);
     }
+
     addWindowScrollListener = () => {
-      const { offsetTop = 0 } = this.props;
       if (this.isClick) {
         return;
       }
 
-      this.getAcrossLinks(this.links, offsetTop);
+      const { offsetTop = 0 } = this.props;
+      const linkInfo = this.getAcrossLinks(this.links, offsetTop);
+      this.setScrollActiveLink(linkInfo);
     };
-    getAcrossLinks = (links: string[], offsetTop: number) => {
+
+    getAcrossLinks = (links: string[], offsetTop: number): Object[] => {
       const linkInfo = [];
       links.forEach(item => {
         const linkId = this.getId(item);
         if (linkId) {
           const dom = document.getElementById(linkId);
           if (dom) {
-            const domTop = dom.getBoundingClientRect().top;
-            if (domTop < offsetTop) {
-              linkInfo.push({ link: item, top: domTop });
+            const top = dom.getBoundingClientRect().top;
+            if (top < offsetTop) {
+              linkInfo.push({ link: item, top });
             }
           }
         }
       });
-      this.setScrollActiveLink(linkInfo);
+      return linkInfo;
     };
+
     setScrollActiveLink = (linkInfo: Object[]) => {
-      if (linkInfo.length) {
-        const currentLink = linkInfo.reduce((prev, curr) => (curr.top > prev.top ? curr : prev));
-        this.setState({
-          activeLink: currentLink.link,
-        });
-      } else {
-        this.setState({
-          activeLink: '',
-        });
-      }
+      this.setState({
+        activeLink: this.getMaxTopLink(linkInfo),
+      });
     };
+
+    getMaxTopLink(linkInfo: Object[]): string {
+      if (!Array.isArray(linkInfo) || linkInfo.length === 0) {
+        return '';
+      }
+      return linkInfo.reduce((prev, curr) => (curr.top > prev.top ? curr : prev)).link;
+    }
 
     render() {
       const { affix = true, offsetTop = 0, children, slideType = 'circle' } = this.props;
@@ -90,7 +95,12 @@ export default ThemeProvider(
       );
       return (
         <AnchorContext.Provider
-          value={{ links: [], getLinks: this.getLinks, activeLink, onClick: this.handleLinkClick }}
+          value={{
+            links: [],
+            getLinks: this.updateLinks,
+            activeLink,
+            onClick: this.handleLinkClick,
+          }}
         >
           {affix ? <Affix offsetTop={offsetTop}>{element}</Affix> : element}
         </AnchorContext.Provider>
@@ -104,13 +114,15 @@ export default ThemeProvider(
         this.isClick = false;
       }, 50);
     };
+
     getId(href: string): ?string {
       const result = /#([^#]+)$/.exec(href);
       if (result) {
         return result[1];
       }
     }
-    getLinks = (links: string[]) => {
+
+    updateLinks = (links: string[]) => {
       this.links = [...links];
     };
   },

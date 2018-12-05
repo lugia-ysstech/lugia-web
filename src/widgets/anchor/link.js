@@ -19,23 +19,23 @@ export default class extends React.Component<AnchorLinkProps, AnchorLinkState> {
   }
 
   render() {
-    const { href, title, children } = this.props;
     return (
       <AnchorContext.Consumer>
         {context => {
+          const { title, href, children } = this.props;
           if (!this.isLoad) {
-            const { href } = this.props;
             const { getLinks } = context;
             this.isLoad = true;
             context && context.links.push(href);
             getLinks && getLinks(context.links);
           }
+          const { onClick, activeLink } = context;
           return (
             <LinkWrap>
               <Link
-                onClick={e => context.onClick && context.onClick(e, href)}
+                onClick={e => onClick && onClick(e, href)}
                 href={href}
-                active={context.activeLink === href}
+                active={activeLink === href}
               >
                 {title}
               </Link>

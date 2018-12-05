@@ -43,17 +43,20 @@ export const Anchor = styled.div`
     padding-top: ${em(6)};
   }
 `;
+
 const getTop = (props: CSSProps) => {
   const { index, slideType } = props;
   if ((index || index === 0) && index > -1) {
     const res = index * 24;
+    let top = res;
     if (slideType === 'circle') {
-      return `top: ${em(8 + res)};background: ${themeColor};`;
+      top += 8;
     }
-    return `top: ${em(res)};background: ${themeColor};`;
+    return `top: ${em(top)};background: ${themeColor};`;
   }
   return 'display: none';
 };
+
 const getCircleCSS = (props: CSSProps) => {
   const { slideType } = props;
   if (slideType === 'circle') {
@@ -68,6 +71,7 @@ const getCircleCSS = (props: CSSProps) => {
     height: ${em(24)};
   `;
 };
+
 export const Circle = styled.div`
   position: absolute;
   ${getCircleCSS};
