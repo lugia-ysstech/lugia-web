@@ -82,4 +82,17 @@ describe('Anchor', () => {
     const { links: newLink } = component;
     expect(newLink).toEqual([3, 4]);
   });
+
+  it('Anchor: getMaxTopLink ', () => {
+    const target = mount(<Anchor />);
+    const component = getComponent(target);
+    const result = component.getMaxTopLink();
+    expect(result).toBe('');
+
+    const wrongMax = component.getMaxTopLink({});
+    expect(wrongMax).toBe('');
+
+    const max = component.getMaxTopLink([{ top: 1, link: '1' }, { top: 2, link: '2' }]);
+    expect(max).toBe('2');
+  });
 });

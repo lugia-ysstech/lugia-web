@@ -73,10 +73,10 @@ export default class DrawerDemo extends React.Component<any, any> {
         <div style={{ marginTop: '300px' }} id="anchor-link3" name="anchor-link3">
           anchor-link3
         </div>
-        <div style={{ marginTop: '100px' }} id="anchor-link3.1" name="anchor-link3.1">
+        <div style={{ marginTop: '200px' }} id="anchor-link3.1" name="anchor-link3.1">
           anchor-link3.1
         </div>
-        <div style={{ marginTop: '100px' }} id="anchor-link3.2" name="anchor-link3.2">
+        <div style={{ marginTop: '200px' }} id="anchor-link3.2" name="anchor-link3.2">
           anchor-link3.2
         </div>
         <div style={{ marginTop: '300px' }} id="anchor-link4" name="anchor-link4">

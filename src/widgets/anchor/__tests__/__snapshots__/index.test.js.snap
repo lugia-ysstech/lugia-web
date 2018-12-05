@@ -387,7 +387,7 @@ exports[`Anchor css 1`] = `
     name="anchor-link3.1"
     style={
       Object {
-        "marginTop": "100px",
+        "marginTop": "200px",
       }
     }
   >
@@ -398,7 +398,7 @@ exports[`Anchor css 1`] = `
     name="anchor-link3.2"
     style={
       Object {
-        "marginTop": "100px",
+        "marginTop": "200px",
       }
     }
   >
