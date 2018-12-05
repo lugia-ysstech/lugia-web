@@ -74,10 +74,11 @@ const getClickedCSS = (props: RadioType): string => {
   if (checked) {
     return `
       position: absolute;
-      width: ${em(12)};
-      height: ${em(12)};
-      left: ${em(2)};
-      top: ${em(2)};
+      width: ${em(10)};
+      height: ${em(10)};
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
       border-radius: ${em(10)};
       display: table;
       border-top: 0;
@@ -136,6 +137,7 @@ export const RadioWrap = styled.label`
   line-height: 1.5;
   color: ${props => (props.disabled ? lightGreyColor : blackColor)};
   padding: 0;
+  box-sizing: border-box;
   list-style: none;
   display: inline-block;
   position: relative;
