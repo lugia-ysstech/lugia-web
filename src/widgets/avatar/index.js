@@ -84,7 +84,7 @@ class AvatarBox extends Component<AvatarProps, AvatarState> {
     const { src, icon, getTheme, name, size, shape } = this.props;
 
     if (src !== undefined && src !== null) {
-      return <Picture src={src} shape={shape} />;
+      return <Picture src={src} shape={shape} theme={getTheme()} />;
     } else if (icon !== undefined && icon !== null) {
       return <AvatarIcon size={size} iconClass={icon} theme={getTheme()} />;
     }

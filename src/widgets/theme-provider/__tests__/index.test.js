@@ -11,8 +11,14 @@ import Adapter from 'enzyme-adapter-react-16';
 import ThemeProvider from '../index';
 import Theme from '../../theme/';
 import { delay } from '@lugia/react-test-utils';
+import styled from 'styled-components';
 
 Enzyme.configure({ adapter: new Adapter() });
+
+const Input = styled.div`
+  width: 100px;
+`;
+Input.displayName = 'input';
 
 describe('ThemeProvider', () => {
   const HelloMyButton = 'HelloMyButton';
@@ -27,6 +33,20 @@ describe('ThemeProvider', () => {
     },
     HelloMyButtonTheme
   );
+  const ThemeInput = ThemeProvider(
+    class extends React.Component<any, any> {
+      static displayName = 'themeInput';
+
+      render() {
+        return (
+          <div>
+            <Input />
+          </div>
+        );
+      }
+    },
+    HelloMyButtonTheme
+  );
   const svThemeConfigTree = 'svThemeConfigTree';
 
   const getTheme = function(target: Object, widgetDisplayName: string) {
@@ -35,6 +55,17 @@ describe('ThemeProvider', () => {
       .at(0)
       .props()
       .getTheme();
+  };
+  const getThemeByDisplayName = function(
+    target: Object,
+    widgetDisplayName: string,
+    OtherWidgetDisplayName: string
+  ) {
+    return target
+      .find(widgetDisplayName)
+      .at(0)
+      .props()
+      .getThemeByDisplayName(OtherWidgetDisplayName);
   };
   it('config: {}', () => {
     const config = {};
@@ -387,6 +418,134 @@ describe('ThemeProvider', () => {
       [svThemeConfigTree]: {
         [viewClass]: { ...levelC, ...widthConfig, ...bgConfig },
       },
+    });
+  });
+  it('config:  inner level theme', () => {
+    const viewClassA = 'ligx';
+    const viewClassB = 'input';
+    const levelA = { width: 400 };
+    const levelB = { width: 500 };
+
+    const configA = { [viewClassA]: levelA, [viewClassB]: { levelB } };
+
+    const target = mount(
+      <Theme config={configA}>
+        <ThemeInput />
+      </Theme>
+    );
+
+    expect(getThemeByDisplayName(target, 'themeInput', 'input')).toEqual({ levelB });
+  });
+  it('config:  inner level theme null', () => {
+    const viewClassA = 'ligx';
+    const viewClassB = 'input';
+    const levelA = { width: 400 };
+    const levelB = {};
+
+    const configA = { [viewClassA]: levelA, [viewClassB]: { levelB } };
+
+    const target = mount(
+      <Theme config={configA}>
+        <ThemeInput />
+      </Theme>
+    );
+
+    expect(getThemeByDisplayName(target, 'themeInput', 'input')).toEqual({ levelB });
+  });
+  it('config:   multiple level theme', () => {
+    const viewClassB = 'input';
+    const levelA = { width: 400 };
+    const levelB = { width: 500 };
+    const levelC = { width: 600 };
+
+    const configA = { [viewClassB]: levelA };
+    const configB = { [viewClassB]: levelB };
+    const configC = { [viewClassB]: levelC };
+
+    const target = mount(
+      <Theme config={configA}>
+        <Theme config={configB}>
+          <Theme config={configC}>
+            <ThemeInput viewClass={viewClassB} />
+          </Theme>
+        </Theme>
+      </Theme>
+    );
+
+    expect(getThemeByDisplayName(target, 'themeInput', 'input')).toEqual(levelC);
+  });
+  it('config:   multiple level theme', () => {
+    const viewClassB = 'input';
+    const levelA = { width: 400 };
+    const levelB = { width: 500 };
+    const levelC = { width: 600 };
+
+    const configA = { [viewClassB]: levelA };
+    const configB = { [viewClassB]: levelB };
+    const configC = { [viewClassB]: levelC };
+
+    const target = mount(
+      <Theme config={configA}>
+        <Theme config={configB}>
+          <Theme config={configC}>
+            <ThemeInput viewClass={viewClassB} />
+          </Theme>
+        </Theme>
+      </Theme>
+    );
+
+    expect(getThemeByDisplayName(target, 'themeInput', 'input')).toEqual(levelC);
+  });
+  it('config:   multiple level theme', () => {
+    const viewClassB = 'input';
+    const levelA = { width: 400 };
+    const levelB = { width: 500 };
+    const levelC = { width: 600 };
+
+    const configA = { [viewClassB]: levelA };
+    const configB = { [viewClassB]: levelB };
+    const configC = { [viewClassB]: levelC };
+
+    const target = mount(
+      <Theme config={configA}>
+        <Theme config={configB}>
+          <Theme config={configC}>
+            <ThemeInput viewClass={viewClassB} />
+          </Theme>
+        </Theme>
+      </Theme>
+    );
+
+    expect(getThemeByDisplayName(target, 'themeInput', 'input')).toEqual(levelC);
+  });
+  it('config:   multiple level multiple attr theme', () => {
+    const viewClassB = 'input';
+    const viewClassA = 'button';
+    const levelA = { width: 400, color: 'red' };
+    const levelB = { width: 500 };
+    const levelC = { width: 600 };
+
+    const configA = { [viewClassA]: levelA, [viewClassB]: levelA };
+    const configB = { [viewClassA]: levelB, [viewClassB]: levelB };
+    const configC = { [viewClassB]: levelC };
+
+    const target = mount(
+      <Theme config={configA}>
+        <Theme config={configB}>
+          <Theme config={configC}>
+            <ThemeInput viewClass={viewClassB} />
+          </Theme>
+        </Theme>
+      </Theme>
+    );
+
+    expect(getThemeByDisplayName(target, 'themeInput', viewClassB)).toEqual({
+      ...levelA,
+      ...levelC,
+    });
+    expect(getThemeByDisplayName(target, 'themeInput', viewClassA)).toEqual({
+      ...levelA,
+      ...levelB,
     });
   });
 });
