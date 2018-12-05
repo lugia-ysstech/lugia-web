@@ -125,20 +125,12 @@ class Card extends React.Component<CardProps, CardState> {
   getImageContainer() {
     const { type, imageOrientation, getThemeByDisplayName } = this.props;
     const { width, height } = getThemeByDisplayName(Widget.CardImage);
-    const view = {
-      [Widget.CardImage]: {
-        width,
-        height,
-      },
-    };
     if (type === 'avatar' || type === 'image')
       return (
-        <Theme config={view}>
-          <ImageContainer type={type} imageOrientation={imageOrientation} size={{ width, height }}>
-            {this.getAvatar()}
-            {this.getImage()}
-          </ImageContainer>
-        </Theme>
+        <ImageContainer type={type} imageOrientation={imageOrientation} size={{ width, height }}>
+          {this.getAvatar()}
+          {this.getImage()}
+        </ImageContainer>
       );
     return null;
   }
