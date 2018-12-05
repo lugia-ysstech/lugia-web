@@ -26,7 +26,7 @@ exports[`Affix css 1`] = `
   outline: 0;
   vertical-align: bottom;
   color: #666666;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid #cccccc;
   height: 2.666666666666667em;
   padding: 0.8333333333333334em;
@@ -51,7 +51,9 @@ exports[`Affix css 1`] = `
   border: 1px solid #533fcc;
 }
 
-<div>
+<div
+  onClick={[Function]}
+>
   <div
     style={
       Object {
@@ -70,19 +72,23 @@ exports[`Affix css 1`] = `
       }
     />
     <div
-      className="c0"
+      style={null}
     >
-      <p>
-        window: affix-top
-      </p>
-      <button
-        className="c1"
-        onClick={[Function]}
+      <div
+        className="c0"
       >
-        <span>
-          Affix-top-50
-        </span>
-      </button>
+        <p>
+          window: affix-top
+        </p>
+        <button
+          className="c1"
+          onClick={[Function]}
+        >
+          <span>
+            Affix-top-50
+          </span>
+        </button>
+      </div>
     </div>
     <div
       style={
@@ -109,19 +115,23 @@ exports[`Affix css 1`] = `
           }
         />
         <div
-          className="c0"
+          style={null}
         >
-          <p>
-            target: target-top
-          </p>
-          <button
-            className="c1"
-            onClick={[Function]}
+          <div
+            className="c0"
           >
-            <span>
-              target-top-50
-            </span>
-          </button>
+            <p>
+              target: target-top
+            </p>
+            <button
+              className="c1"
+              onClick={[Function]}
+            >
+              <span>
+                target-top-50
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -152,19 +162,23 @@ exports[`Affix css 1`] = `
           }
         />
         <div
-          className="c0"
+          style={null}
         >
-          <p>
-            target: target-bottom
-          </p>
-          <button
-            className="c1"
-            onClick={[Function]}
+          <div
+            className="c0"
           >
-            <span>
-              target-bottom-50
-            </span>
-          </button>
+            <p>
+              target: target-bottom
+            </p>
+            <button
+              className="c1"
+              onClick={[Function]}
+            >
+              <span>
+                target-bottom-50
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -177,19 +191,23 @@ exports[`Affix css 1`] = `
       }
     />
     <div
-      className="c0"
+      style={null}
     >
-      <p>
-        window: affix-bottom
-      </p>
-      <button
-        className="c1"
-        onClick={[Function]}
+      <div
+        className="c0"
       >
-        <span>
-          Affix-bottom-50
-        </span>
-      </button>
+        <p>
+          window: affix-bottom
+        </p>
+        <button
+          className="c1"
+          onClick={[Function]}
+        >
+          <span>
+            Affix-bottom-50
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
