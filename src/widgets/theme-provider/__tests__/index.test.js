@@ -12,6 +12,7 @@ import ThemeProvider from '../index';
 import Theme from '../../theme/';
 import { delay } from '@lugia/react-test-utils';
 import styled from 'styled-components';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 const Input = styled.div`
@@ -520,13 +521,13 @@ describe('ThemeProvider', () => {
   it('config:   multiple level multiple attr theme', () => {
     const viewClassB = 'input';
     const viewClassA = 'button';
-    const levelA = { width: 400 };
+    const levelA = { width: 400, color: 'red' };
     const levelB = { width: 500 };
     const levelC = { width: 600 };
 
     const configA = { [viewClassA]: levelA, [viewClassB]: levelA };
     const configB = { [viewClassA]: levelB, [viewClassB]: levelB };
-    const configC = { [viewClassA]: levelC, [viewClassB]: levelC };
+    const configC = { [viewClassB]: levelC };
 
     const target = mount(
       <Theme config={configA}>
@@ -538,6 +539,13 @@ describe('ThemeProvider', () => {
       </Theme>
     );
 
-    expect(getThemeByDisplayName(target, 'themeInput', 'input')).toEqual(levelC);
+    expect(getThemeByDisplayName(target, 'themeInput', viewClassB)).toEqual({
+      ...levelA,
+      ...levelC,
+    });
+    expect(getThemeByDisplayName(target, 'themeInput', viewClassA)).toEqual({
+      ...levelA,
+      ...levelB,
+    });
   });
 });
