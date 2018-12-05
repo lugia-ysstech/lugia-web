@@ -5,7 +5,7 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Rate, { createCalssArr, calcValue, multipleValue, setHalf, getIconClass } from '../rate';
+import Rate, { calcValue, getClass, getClassNames, getIconClass, multipleValue } from '../rate';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -80,8 +80,8 @@ describe('Rate Test', () => {
   checkMultipleValue(2, { max: 15, count: 5 }, 6);
 
   function checkSetHalf(arr: Array<string>, value: number, Classify: boolean, expectation) {
-    it('Function setHalf', () => {
-      const res = setHalf(arr, value, Classify);
+    it('Function getClassNames', () => {
+      const res = getClassNames(arr, value, Classify);
       expect(res).toEqual(expectation);
     });
   }
@@ -210,7 +210,7 @@ describe('Rate Test', () => {
   });
 
   function findRate(target, index) {
-    return target.find('Ratespan').at(index);
+    return target.find('sv_rate_Ratespan').at(index);
   }
 
   it('Function:onClick limit value', async () => {
@@ -330,22 +330,22 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(0);
   });
 
-  it('Function:mouseMove limit ', async () => {
+  it('Function:onMouseMoveOrClick limit ', async () => {
     const target = mount(<Rate value={4} />);
-    target.instance().mouseMove({ pageX: 10 }, 2);
+    target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(4);
   });
 
-  it('Function:mouseMove unlimit value', async () => {
-    target.instance().mouseMove({ pageX: 10 }, 2);
+  it('Function:onMouseMoveOrClick unlimit value', async () => {
+    target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(3);
   });
 
-  it('Function:mouseMove unlimit ->limit ', async () => {
-    target.instance().mouseMove({ pageX: 10 }, 2);
+  it('Function:onMouseMoveOrClick unlimit ->limit ', async () => {
+    target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(3);
     target.setProps({ value: 2 });
-    target.instance().mouseMove({ pageX: 10 }, 4);
+    target.instance().onMouseMoveOrClick({ pageX: 10 }, 4);
     expect(target.state().value).toEqual(2);
   });
 
@@ -392,5 +392,18 @@ describe('Rate Test', () => {
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(5);
     expect(target.state().starNum).toEqual(5);
+  });
+  it('getClass', () => {
+    expect(getClass(100, 1000, false)).toBe('primary');
+    expect(getClass(100, 100, true)).toBe('primary');
+    expect(getClass(100, 200, true)).toBe('danger');
+    expect(getClass(200, 100, true)).toBe('amazed');
+  });
+  it('calcValue', () => {
+    expect(calcValue(100, false)).toEqual(100);
+    expect(calcValue(5.5, false)).toEqual(5);
+    expect(calcValue(5.5, true)).toEqual(5.5);
+    expect(calcValue(3.2, true)).toEqual(3);
+    expect(calcValue(3.7, true)).toEqual(3.5);
   });
 });

@@ -1,6 +1,12 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Rate, { createCalssArr, calcValue, multipleValue, setHalf, getIconClass } from '../rate';
+import Rate, {
+  createCalssArray,
+  calcValue,
+  multipleValue,
+  getClassNames,
+  getIconClass,
+} from '../rate';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -20,7 +26,7 @@ describe('Rate igflow Test', () => {
       allowHalf: isallowHalf,
     };
     it('Function createArr', () => {
-      const res = createCalssArr(num, condition);
+      const res = createCalssArray(num, condition);
       expect(res).toEqual(expectation);
     });
   }

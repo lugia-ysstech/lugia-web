@@ -30,6 +30,8 @@ const showUp = keyframes`
     opacity: 1;
   }
 `;
+const StarIconClass = 'lugia-icon-financial_star';
+const StarIconClassOpen = 'lugia-icon-financial_star_o';
 
 const Ratespan = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,
@@ -67,11 +69,12 @@ const Ratespan = styled.span.attrs({
   }
 `;
 
-Ratespan.displayName = 'Ratespan';
+Ratespan.displayName = 'sv_rate_Ratespan';
 const RateIcon: Object = styled(Icon)`
   vertical-align: middle !important;
 `;
-RateIcon.displayName = 'rate';
+
+RateIcon.displayName = 'sv_rate_icon';
 
 const RateText: Object = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,
@@ -114,7 +117,9 @@ const RateText: Object = styled.span.attrs({
     -webkit-mask: linear-gradient(to left,#e8e8e8 30%, ${props => props.half} 40%, transparent );
   }
 `;
-RateText.displayName = 'RateText';
+
+RateText.displayName = 'sv_rate_RateText';
+
 const defautClass = {
   default: 'default',
   primary: 'primary',
@@ -123,7 +128,7 @@ const defautClass = {
   half: 'half',
 };
 
-type rateProps = {
+type RateProps = {
   count: number,
   max?: number,
   value?: number,
@@ -138,105 +143,114 @@ type rateProps = {
   character?: any,
 };
 
-export const createCalssArr = (num: number | string, condition?: Object): Array<string> => {
-  console.info('ObjectUtils', num, ObjectUtils.isString(num));
+export function getDefaultClassNames(count: number): Array<string> {
+  return [...Array(count)].map(() => 'default');
+}
+
+export const createCalssArray = (num: number | string, condition?: Object): Array<string> => {
   if (!ObjectUtils.isString(num) && num) {
     num = Number(num);
   }
-  let arr = [...Array(num)].map(() => 'default');
-  if (!condition) return arr;
+  const classNames = getDefaultClassNames(num);
+
+  if (!condition) return classNames;
+
   const { starNum, allowHalf, classify } = condition;
+
   if (allowHalf) {
-    arr = setHalf(arr, starNum, classify);
-    return arr;
+    return getClassNames(classNames, starNum, classify);
   }
-  const mid = Math.ceil(arr.length / 2);
-  const classname = setClass(classify, mid, starNum);
-  arr.forEach((v, i) => {
-    arr[i] = i > starNum - 1 || !starNum ? 'default' : classname;
+
+  const mid = Math.ceil(classNames.length / 2);
+  const classname = getClass(starNum, mid, classify);
+  return classNames.map((v, i) => {
+    return i > starNum - 1 || !starNum ? 'default' : classname;
   });
-  return arr;
 };
 
 export const calcValue = (val: number = 0, allowHalf: boolean): number => {
-  if (allowHalf) {
-    return Math.floor(val * 2) / 2; //星星  整理得分  3.2=>3  3.7=>3.5
-  }
-  return Math.floor(val);
+  return allowHalf ? Math.floor(val * 2) / 2 : Math.floor(val);
 };
 
 export const multipleValue = (props: Object, val?: number): number => {
+  if (!props || val === 0) {
+    return 0;
+  }
+
   const { max, count, value = 0 } = props;
   const multiple = max && count ? max / count : 1;
-  if (val || val === 0) return val * multiple;
+
+  if (val) {
+    return val * multiple;
+  }
+
   return value / multiple;
 };
 
-export const setClass = (classify?: boolean, mid: number, starNum: number): string => {
-  let classname = 'primary';
-  if (!classify || starNum === mid) return classname;
-  if (starNum < mid) {
-    classname = 'danger';
+export const getClass = (starNum: number, mid: number, classify: boolean): string => {
+  if (!classify || starNum === mid) {
+    return 'primary';
   }
-  if (starNum > mid) {
-    classname = 'amazed';
-  }
-  return classname;
+
+  return starNum < mid ? 'danger' : 'amazed';
 };
 
-export const setHalf = (arr: Array<string>, starNum: number, Classify?: boolean): Array<string> => {
-  if (!arr) {
+export const getClassNames = (
+  classNames: Array<string>,
+  starNum: number,
+  classify: boolean
+): Array<string> => {
+  if (!classNames) {
     return [];
   }
-  const mid = Math.ceil(arr.length / 2);
-  const classname = setClass(Classify, mid, starNum);
-  arr.forEach((v, i) => {
-    arr[i] =
-      i > Math.ceil(starNum - 1)
-        ? 'default'
-        : i === Math.ceil(starNum - 1) && starNum % 1 !== 0
-        ? 'half'
-        : classname;
-  });
 
-  return arr;
+  const startIndex = Math.ceil(starNum - 1);
+  const mid = Math.ceil(classNames.length / 2);
+  const classname = getClass(starNum, mid, classify);
+
+  return classNames.map((v, i) => {
+    const isFloatNumber = starNum % 1 !== 0;
+    return i > startIndex ? 'default' : i === startIndex && isFloatNumber ? 'half' : classname;
+  });
 };
 
 export const getIconClass = (iconClass: Object = {}): Object => {
+  const { primary, danger, amazed, half } = iconClass;
+  const iconDefault = iconClass.default;
+
   return {
-    default: iconClass.default || 'lugia-icon-financial_star',
-    primary: iconClass.primary || iconClass.default || 'lugia-icon-financial_star',
-    danger: iconClass.danger || iconClass.default || 'lugia-icon-financial_star',
-    amazed: iconClass.amazed || iconClass.default || 'lugia-icon-financial_star',
-    half: iconClass.half || iconClass.default || 'lugia-icon-financial_star_o',
+    default: iconDefault || StarIconClass,
+    primary: primary || iconDefault || StarIconClass,
+    danger: danger || iconDefault || StarIconClass,
+    amazed: amazed || iconDefault || StarIconClass,
+    half: half || iconDefault || StarIconClassOpen,
   };
 };
 
-const getOffset = (RateRangeNode: Object) => {
-  if (!RateRangeNode) {
+const getOffset = (rateRangeNode: Object) => {
+  if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
-  const { x } = getElementPosition(RateRangeNode);
-  const w = RateRangeNode.offsetWidth;
-  return { offsetLeft: x, offsetWidth: w };
+  const { x } = getElementPosition(rateRangeNode);
+  return { offsetLeft: x, offsetWidth: rateRangeNode.offsetWidth };
 };
 
-const calcPosition = (offsetLeft: number, offsetWidth: number, pageX: number): boolean => {
-  const p = offsetLeft + offsetWidth / 2;
-  return pageX < p;
+const isLeft = (offsetX: number, offsetWidth: number, x: number): boolean => {
+  const halfX = offsetX + offsetWidth / 2;
+  return x < halfX;
 };
 
 const getReturnObj = (state: Object, multiple: number) => {
-  const returnObj = {
+  return {
     defaultValue: state.value,
     currentValue: multiple >= 0 ? multiple : 0,
   };
-  return returnObj;
 };
+const loop = () => true;
 
-class Rate extends React.Component<rateProps, any> {
-  Ratespan: any;
-  Temporary: string;
+class Rate extends React.Component<RateProps, any> {
+  ratespan: any;
+  temporary: string;
   static defaultProps = {
     count: 5,
     max: 5,
@@ -244,16 +258,14 @@ class Rate extends React.Component<rateProps, any> {
     allowHalf: false,
     classify: false,
     className: '',
-    onClick: (e: Object, x: any) => {},
-    onChange: (e: Object, x: any) => {
-      return {};
-    },
+    onClick: loop,
+    onChange: loop,
     iconClass: {
-      default: 'lugia-icon-financial_star',
-      primary: 'lugia-icon-financial_star',
-      danger: 'lugia-icon-financial_star',
-      amazed: 'lugia-icon-financial_star',
-      half: 'lugia-icon-financial_star_o',
+      default: StarIconClass,
+      primary: StarIconClass,
+      danger: StarIconClass,
+      amazed: StarIconClass,
+      half: StarIconClassOpen,
     },
     getTheme: () => {
       return {};
@@ -263,39 +275,49 @@ class Rate extends React.Component<rateProps, any> {
   constructor(props: Object) {
     super(props);
     const num = props ? props.count : 5;
-    this.Ratespan = [];
-    createCalssArr(num).map((x, i) => {
-      this.Ratespan[i] = React.createRef();
-    });
+    this.ratespan = [...Array(num)].map(() => React.createRef());
   }
 
   componentDidMount() {
-    this.Temporary = JSON.stringify(this.state);
+    this.saveState();
     const { onChange, value = 0 } = this.props;
     onChange({}, getReturnObj(this.state, value));
   }
 
-  static getDerivedStateFromProps(defProps: rateProps, current: Object) {
+  saveState() {
+    this.updateTemporary(this.state);
+  }
+
+  updateTemporary(data: Object) {
+    this.temporary = JSON.stringify(data);
+  }
+
+  static getDerivedStateFromProps(defProps: RateProps, currentState: Object) {
+    const starNum = multipleValue(defProps);
+    const { allowHalf } = defProps;
     const condition = {
-      starNum: multipleValue(defProps),
-      allowHalf: defProps.allowHalf,
+      starNum,
+      allowHalf,
       classify: defProps.classify,
     };
-    if (!current) {
+    const { value, count } = defProps;
+    const classNames = createCalssArray(count, condition);
+    if (!currentState) {
+      const theValue = calcValue(value, allowHalf);
       return {
-        count: createCalssArr(defProps.count, condition),
-        value: calcValue(defProps.value, defProps.allowHalf) || 0,
-        starNum: calcValue(defProps.value, defProps.allowHalf) || 0,
-        current: defProps.value === 0 ? null : multipleValue(defProps),
+        count: classNames,
+        value: theValue,
+        starNum: theValue,
+        current: value === 0 ? null : starNum,
         hasClick: false,
       };
     }
     return {
-      count: 'count' in current ? current.count : createCalssArr(defProps.count, condition),
-      value: 'value' in defProps ? defProps.value : current.value,
-      starNum: 'starNum' in current ? current.starNum : 0,
-      current: 'current' in current ? current.current : -1,
-      hasClick: 'hasClick' in current ? current.hasClick : false,
+      count: 'count' in currentState ? currentState.count : classNames,
+      value: 'value' in defProps ? value : currentState.value,
+      starNum: 'starNum' in currentState ? currentState.starNum : 0,
+      current: 'current' in currentState ? currentState.current : -1,
+      hasClick: 'hasClick' in currentState ? currentState.hasClick : false,
     };
   }
 
@@ -303,21 +325,16 @@ class Rate extends React.Component<rateProps, any> {
     const { getTheme } = this.props;
     const { count } = this.state;
     return (
-      <Container
-        theme={getTheme()}
-        onMouseLeave={e => {
-          this.mouseLeave(e);
-        }}
-      >
+      <Container theme={getTheme()} onMouseLeave={this.mouseLeave}>
         {count.map((x, i) => (
           <Ratespan
-            innerRef={this.Ratespan[i]}
+            innerRef={this.ratespan[i]}
             theme={getTheme()}
             onMouseMove={e => {
-              this.mouseMove(e, i);
+              this.onMouseMoveOrClick(e, i);
             }}
             onClick={e => {
-              this.mouseMove(e, i, true);
+              this.onMouseMoveOrClick(e, i, true);
             }}
           >
             {this.getElement(x)}
@@ -327,102 +344,122 @@ class Rate extends React.Component<rateProps, any> {
     );
   }
 
-  mouseMove = (e: Object, i: number, hasClick?: boolean) => {
-    let { count, current } = this.state;
-    const { disabled, onChange, classify } = this.props;
+  onMouseMoveOrClick = (e: Object, i: number, hasClick?: boolean = false) => {
+    const { disabled } = this.props;
     if (disabled) return;
+
     const { offsetLeft, offsetWidth } = this.getOffset(i);
-    const stars = this.moveType(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
-    count = setHalf(count, stars, classify);
-    this.handleClick(e, stars, count, current, hasClick);
-    onChange(e, getReturnObj(this.state, multipleValue(this.props, stars)));
+    const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
+
+    const { onChange, classify } = this.props;
+    const { count, current } = this.state;
+    const classNames = getClassNames(count, starCount, !!classify);
+
+    if (hasClick) {
+      this.handleClick(e, starCount, classNames, current);
+    } else {
+      const { hasClick } = this.state;
+      this.setValue(starCount, classNames, current, hasClick);
+    }
+
+    onChange(e, getReturnObj(this.state, multipleValue(this.props, starCount)));
   };
 
   mouseLeave = (e: Object) => {
-    const { hasClick, current } = this.state;
-    const { onChange } = this.props;
-    if (hasClick || (this.Temporary && this.Temporary !== 'null')) {
-      const { value, count } = JSON.parse(this.Temporary);
+    const { props } = this;
+    const { onChange } = props;
+    const { current } = this.state;
+
+    const temporary = this.getTemporary();
+    if (temporary) {
+      const { value, count } = temporary;
       this.setValue(value, count, current, false);
-      onChange(e, getReturnObj(this.state, multipleValue(this.props, current)));
+      onChange(e, getReturnObj(this.state, multipleValue(props, current)));
       return;
     }
-    const count = createCalssArr(this.props.count);
-    this.setValue(0, count, current, hasClick);
-    onChange(e, getReturnObj(this.state, multipleValue(this.props, 0)));
+
+    const { hasClick } = this.state;
+    const { count } = props;
+    const classNames = createCalssArray(count);
+    this.setValue(0, classNames, current, hasClick);
+    onChange(e, getReturnObj(this.state, multipleValue(props, 0)));
   };
 
-  moveType = (index: number, offsetLeft: number, offsetWidth: number, pageX: number) => {
+  getTemporary = () => {
+    if (!this.temporary) {
+      return null;
+    }
+    return JSON.parse(this.temporary);
+  };
+
+  getStarCount = (
+    index: number,
+    offsetLeft: number,
+    offsetWidth: number,
+    pageX: number
+  ): number => {
     const { allowHalf } = this.props;
-    const isLeft = calcPosition(offsetLeft, offsetWidth, pageX);
-    if (allowHalf && isLeft) {
+    if (allowHalf && isLeft(offsetLeft, offsetWidth, pageX)) {
       return calcValue(index + 0.5, allowHalf);
     }
     return calcValue(index + 1, allowHalf);
   };
 
   getOffset(index: number) {
-    return getOffset(this.Ratespan[index].current);
+    return getOffset(this.ratespan[index].current);
   }
 
   getElement = (x: number) => {
     const { className, iconClass, disabled, character } = this.props;
     const IconClass = getIconClass(iconClass);
+
+    const theClassName = `${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`;
+
     if (ObjectUtils.isString(character)) {
       return (
-        <RateText
-          character={character}
-          className={`${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`}
-        >
+        <RateText character={character} className={theClassName}>
           {character}
         </RateText>
       );
     }
-    return (
-      <RateIcon
-        iconClass={`${IconClass[x]} ${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`}
-      />
-    );
+    return <RateIcon iconClass={`${IconClass[x]} ${theClassName}`} />;
   };
 
-  handleClick = (
-    e: Object,
-    val: number,
-    cou: Array<string>,
-    index: number,
-    hasClicked?: boolean
-  ) => {
-    const { onClick, allowHalf } = this.props;
-    const { current, hasClick } = this.state;
-    if (hasClicked) {
-      index = val;
-      if (index === current) {
-        cou.forEach((v, i) => {
-          cou[i] = 'default';
-        });
-        val = calcValue(0, allowHalf);
-        index = -1;
-        hasClicked = false;
-        this.Temporary = JSON.stringify(null);
-      }
-      this.setValue(val, cou, index, hasClicked);
-      onClick(e, getReturnObj(this.state, multipleValue(this.props, val)));
-      return;
+  handleClick = (e: Object, val: number, classNames: Array<string>, index: number) => {
+    const { state } = this;
+    const { current } = state;
+    let hasClicked = true;
+    index = val;
+
+    const { props } = this;
+
+    if (index === current) {
+      const { allowHalf } = props;
+      val = calcValue(0, allowHalf);
+
+      index = -1;
+      hasClicked = false;
+      classNames = getDefaultClassNames(classNames.length);
+      this.updateTemporary(null);
     }
-    this.setValue(val, cou, index, hasClick);
+
+    this.setValue(val, classNames, index, hasClicked);
+
+    const { onClick } = props;
+    onClick(e, getReturnObj(state, multipleValue(props, val)));
   };
-  setValue = (val: number, cou: Array<string>, index: number, hasClicked: boolean) => {
+  setValue = (val: number, count: Array<string>, index: number, hasClick: boolean) => {
     this.setState(
       {
         value: val,
         starNum: val,
-        count: cou,
+        count,
         current: index,
-        hasClick: hasClicked,
+        hasClick,
       },
       () => {
-        if (hasClicked) {
-          this.Temporary = JSON.stringify(this.state);
+        if (hasClick) {
+          this.saveState();
           this.setState({
             hasClick: false,
           });
