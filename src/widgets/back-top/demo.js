@@ -24,6 +24,7 @@ const DemoBack = styled.div`
   border: 1px solid #e8e8e8;
 `;
 export default class AffixDemo extends React.Component<any, any> {
+  EleRef: any;
   render() {
     const view = {
       [Widget.BackTop]: {
@@ -44,6 +45,15 @@ export default class AffixDemo extends React.Component<any, any> {
             <BackTop />
           </Theme>
         </Demo>
+        <div
+          style={{ width: '200px', height: '200px', overflowY: 'scroll', marginTop: '400px' }}
+          ref={node => (this.EleRef = node)}
+        >
+          <Demo cur={3}>
+            <div style={{ width: '20px', height: '300px' }} />
+            <BackTop visibilityHeight={80} target={() => this.EleRef} />
+          </Demo>
+        </div>
       </div>
     );
   }
