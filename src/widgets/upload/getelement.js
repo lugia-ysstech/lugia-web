@@ -9,9 +9,9 @@
 import React from 'react';
 import Icon from '../icon';
 import styled, { keyframes } from 'styled-components';
+import FileInput from './fileInput';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import { ButtonOutProps } from '../css/button';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
 
@@ -22,11 +22,6 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  display: none;
 `;
 
 const rotate = keyframes`
@@ -70,6 +65,12 @@ const InputContent = styled.div`
     border-radius: 4px 0 0 4px;
     border: 1px solid #9482ff;
     width: 286px;
+  }
+  & i.right {
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 20px;
   }
 `;
 
@@ -201,9 +202,12 @@ const TextBlue = styled.span`
   border-bottom: 1px solid #684fff;
 `;
 
-const getIcon = (status: string, type?: number): Object => {
+const getIcon = (status: string, type?: number): ?Object | string => {
   if (!status) return;
   if (type === 1 && status === 'default') return '上传';
+  if (status === 'default') {
+    return <LoadIcon iconClass="lugia-icon-financial_upload right" />;
+  }
   if (status === 'loading') {
     return <LoadIcon iconClass="lugia-icon-financial_loading_o loadIcon" />;
   }
@@ -227,17 +231,17 @@ const getIcon = (status: string, type?: number): Object => {
   }
 };
 
-export const getElement = (props: Object, state: Object): Object => {
-  const { listType, getTheme, size } = props;
+export const getElement = (props: Object, state: Object): ?Object => {
+  const { listType, getTheme, size, inputId } = props;
   const { status } = state;
-  const className = '';
+  const className = status;
   if (!listType) return;
   if (listType === 'default') {
     return (
       <Container theme={getTheme()}>
-        <Input type="file" id="upload" />
-        <label for="upload">
-          <InputContent className={className}>{getIcon(status)}请将文件拖到此处</InputContent>
+        <FileInput id={inputId} {...props} />
+        <label for={inputId}>
+          <InputContent className={className}>请将文件拖到此处 {getIcon(status)}</InputContent>
         </label>
       </Container>
     );
@@ -245,8 +249,8 @@ export const getElement = (props: Object, state: Object): Object => {
   if (listType === 'both') {
     return (
       <Container theme={getTheme()}>
-        <Input type="file" id="upload" />
-        <label for="upload">
+        <FileInput id={inputId} {...props} />
+        <label for={inputId}>
           <InputContent className={`${className} hasBtn`}>请将文件拖到此处</InputContent>
         </label>
         <Button>{getIcon(status, 1)}</Button>
@@ -256,8 +260,8 @@ export const getElement = (props: Object, state: Object): Object => {
   if (listType === 'button') {
     return (
       <Container theme={getTheme()}>
-        <Input type="file" id="upload" />
-        <label for="upload">
+        <FileInput id={inputId} {...props} />
+        <label for={inputId}>
           <Button className="button">点击上传</Button>
         </label>
         <ul style={{ width: '100%' }}>
@@ -271,8 +275,8 @@ export const getElement = (props: Object, state: Object): Object => {
   if (listType === 'picture') {
     return (
       <Container theme={getTheme()}>
-        <Input type="file" id="upload" />
-        <label for="upload">
+        <FileInput id={inputId} {...props} />
+        <label for={inputId}>
           <PictureView size={size}>{getIcon('add')} </PictureView>
         </label>
       </Container>
@@ -281,8 +285,8 @@ export const getElement = (props: Object, state: Object): Object => {
   if (listType === 'area') {
     return (
       <Container theme={getTheme()}>
-        <Input type="file" id="upload" />
-        <label for="upload">
+        <FileInput id={inputId} {...props} />
+        <label for={inputId}>
           <AreaView size={'bigger'}>
             {getIcon('uploadcloud')}
             <Text>

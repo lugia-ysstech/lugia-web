@@ -9,24 +9,29 @@ import Rate, { createCalssArr, calcValue, multipleValue, setHalf, getIconClass }
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
+
 const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Rate Test', () => {
   const target = mount(<Rate />);
+
   it('css', () => {
     const target = <Rate />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
+
   it('count=10', () => {
     const target = mount(<Rate count={10} />);
     expect(target.props().count).toEqual(10);
   });
+
   it('value=4', () => {
     const target = mount(<Rate value={4} />);
     expect(target.state().value).toEqual(4);
   });
+
   it('disabled=true', () => {
     const target = mount(<Rate disabled={true} />);
     expect(target.props().disabled).toEqual(true);
@@ -34,11 +39,13 @@ describe('Rate Test', () => {
     findRate(target, 3).simulate('click', {}, 3);
     expect(target.state().value).toEqual(0);
   });
+
   it('allowHalf=true', () => {
     const target = mount(<Rate allowHalf={true} value={3.5} />);
     expect(target.props().allowHalf).toEqual(true);
     expect(target.state().value).toEqual(3.5);
   });
+
   it('allowHalf=false value=3.5 ->3', () => {
     const target = mount(<Rate allowHalf={false} value={3.5} />);
     expect(target.props().allowHalf).toEqual(false);
@@ -51,29 +58,34 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkInitValue({ max: 5, count: 5, value: 2 }, 2);
   checkInitValue({ max: 10, count: 5, value: 2 }, 1);
   checkInitValue({ count: 5, value: 2 }, 2);
   checkInitValue({ value: 2 }, 2);
   checkInitValue({}, 0);
   checkInitValue({ max: 10, count: 5, value: 4 }, 2);
+
   function checkMultipleValue(val: number, props: Object, expectation) {
     it('Function multipleValue', () => {
       const res = multipleValue(props, val);
       expect(res).toEqual(expectation);
     });
   }
+
   checkMultipleValue(2, { max: 5, count: 5 }, 2);
   checkMultipleValue(2, { max: 10, count: 5 }, 4);
   checkMultipleValue(2, { count: 5 }, 2);
   checkMultipleValue(2, {}, 2);
   checkMultipleValue(2, { max: 15, count: 5 }, 6);
+
   function checkSetHalf(arr: Array<string>, value: number, Classify: boolean, expectation) {
     it('Function setHalf', () => {
       const res = setHalf(arr, value, Classify);
       expect(res).toEqual(expectation);
     });
   }
+
   checkSetHalf(['default', 'default', 'default', 'default', 'default'], 2, false, [
     'primary',
     'primary',
@@ -81,6 +93,7 @@ describe('Rate Test', () => {
     'default',
     'default',
   ]);
+
   checkSetHalf(['default', 'default', 'default', 'default', 'default'], 4, false, [
     'primary',
     'primary',
@@ -88,6 +101,7 @@ describe('Rate Test', () => {
     'primary',
     'default',
   ]);
+
   checkSetHalf(['default', 'default', 'default', 'default', 'default'], 3.5, false, [
     'primary',
     'primary',
@@ -95,6 +109,7 @@ describe('Rate Test', () => {
     'half',
     'default',
   ]);
+
   checkSetHalf(['default', 'default', 'default', 'default', 'default'], 2, true, [
     'danger',
     'danger',
@@ -102,6 +117,7 @@ describe('Rate Test', () => {
     'default',
     'default',
   ]);
+
   checkSetHalf(['default', 'default', 'default', 'default', 'default'], 4, true, [
     'amazed',
     'amazed',
@@ -109,6 +125,7 @@ describe('Rate Test', () => {
     'amazed',
     'default',
   ]);
+
   checkSetHalf(['default', 'default', 'default', 'default', 'default'], 3.5, true, [
     'amazed',
     'amazed',
@@ -123,6 +140,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   const iconArr = [
     {
       iconClass: {},
@@ -164,6 +182,7 @@ describe('Rate Test', () => {
   iconArr.map((v, i) => {
     checkGetIconClass(v.iconClass, iconArr[i].excp);
   });
+
   function setValue(
     val: number,
     cou: Array<string>,
@@ -177,11 +196,13 @@ describe('Rate Test', () => {
       expect(target.state().count).toEqual(expectation.count);
     });
   }
+
   setValue(1, ['primary', 'default', 'default'], 0, true, {
     value: 1,
     current: 0,
     count: ['primary', 'default', 'default'],
   });
+
   setValue(2, ['primary', 'primary', 'default'], 1, undefined, {
     value: 2,
     current: 1,
@@ -208,6 +229,7 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(1);
     expect(await changePromise).toBe(3);
   });
+
   it('Function:onClick limit value allowHalf', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
@@ -235,6 +257,7 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(2);
     expect(await changePromise).toBe(2.5);
   });
+
   it('Function:onClick unlimit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
@@ -248,6 +271,7 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(4);
     expect(await changePromise).toBe(4);
   });
+
   it('Function:onClick unlimit value allowHalf', async () => {
     const target = mount(<Rate allowHalf={true} />);
 
@@ -265,6 +289,7 @@ describe('Rate Test', () => {
     findRate(target, 0).simulate('click', { pageX: 13 }, 0, true);
     expect(target.state().value).toEqual(0.5);
   });
+
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
@@ -281,6 +306,7 @@ describe('Rate Test', () => {
     target.setProps({ value: 2 });
     expect(target.state().value).toEqual(2);
   });
+
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
@@ -296,21 +322,25 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(2);
     expect(await changePromise).toBe(3);
   });
+
   it('Check disabled Status', () => {
     const target = mount(<Rate disabled={true} />);
     expect(target.state().value).toEqual(0);
     findRate(target, 2).simulate('click', {}, 2);
     expect(target.state().value).toEqual(0);
   });
+
   it('Function:mouseMove limit ', async () => {
     const target = mount(<Rate value={4} />);
     target.instance().mouseMove({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(4);
   });
+
   it('Function:mouseMove unlimit value', async () => {
     target.instance().mouseMove({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(3);
   });
+
   it('Function:mouseMove unlimit ->limit ', async () => {
     target.instance().mouseMove({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(3);
@@ -318,6 +348,7 @@ describe('Rate Test', () => {
     target.instance().mouseMove({ pageX: 10 }, 4);
     expect(target.state().value).toEqual(2);
   });
+
   it('Function:mouseLeave lilmit', async () => {
     const target = mount(<Rate value={4} />);
     target.instance().mouseLeave({});
@@ -330,6 +361,7 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(0);
     expect(target.state().starNum).toEqual(0);
   });
+
   it('Function:mouseLeave onClick unlimit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
@@ -345,6 +377,7 @@ describe('Rate Test', () => {
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(4);
   });
+
   it('Function:mouseLeave onClick limit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {

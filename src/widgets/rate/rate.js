@@ -72,6 +72,7 @@ const RateIcon: Object = styled(Icon)`
   vertical-align: middle !important;
 `;
 RateIcon.displayName = 'rate';
+
 const RateText: Object = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,
   default: props => props.theme.default || '#e8e8e8',
@@ -138,7 +139,8 @@ type rateProps = {
 };
 
 export const createCalssArr = (num: number | string, condition?: Object): Array<string> => {
-  if (!ObjectUtils.isString(num)) {
+  console.info('ObjectUtils', num, ObjectUtils.isString(num));
+  if (!ObjectUtils.isString(num) && num) {
     num = Number(num);
   }
   let arr = [...Array(num)].map(() => 'default');
