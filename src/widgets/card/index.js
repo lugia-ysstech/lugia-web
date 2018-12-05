@@ -8,7 +8,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import Theme from '../theme';
 import Avatar from '../avatar';
 
 import {

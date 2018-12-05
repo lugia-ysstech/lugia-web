@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import Widgets from '../consts/index';
 import getConfig from '../theme/utils';
 import { getAttributeFromObject } from '../common/ObjectUtils';
-import Widget from '../consts';
 
 type ProviderComponent = React.ComponentType<any>;
 const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function => {
