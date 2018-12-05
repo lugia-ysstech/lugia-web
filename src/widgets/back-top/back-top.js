@@ -19,10 +19,19 @@ export default ThemeProvider(
       super(props);
       this.state = {
         fixed: false,
+        posBottom: 50,
+        posRight: 30,
       };
     }
 
     componentDidMount() {
+      const { target } = this.props;
+      if (target && typeof target === 'function') {
+        setTimeout(() => {
+          target().addEventListener('scroll', this.addTargetListener);
+        }, 100);
+        return;
+      }
       this.addWindowListener();
       window.addEventListener('scroll', this.addWindowListener);
     }
@@ -33,11 +42,41 @@ export default ThemeProvider(
       this.setState({ fixed: this.needFixed(scrollTop, visibilityHeight) });
     };
 
+    addTargetListener = () => {
+      const { visibilityHeight = 400, target } = this.props;
+      if (target) {
+        const targetPos = target().getBoundingClientRect();
+        const targetBottom = targetPos.bottom;
+        const targetRight = targetPos.right;
+        const posRight = targetRight - 60;
+        const posBottom = targetBottom - 50;
+        const targetScroll = target().scrollTop;
+        this.setState({
+          fixed: this.needFixed(targetScroll, visibilityHeight),
+          posRight,
+          posBottom,
+        });
+      }
+    };
+
     needFixed = (scrollTop: number, visibilityHeight: number): boolean => {
       return scrollTop >= visibilityHeight;
     };
 
     handleClick = () => {
+      if (this.hasTarget()) {
+        const { target } = this.props;
+        if (target && typeof target === 'function') {
+          const timer = setInterval(() => {
+            const targetScroll = target().scrollTop;
+            if (targetScroll <= 0) {
+              clearInterval(timer);
+            }
+            this.scrollerTargetTo(targetScroll - 50);
+          });
+        }
+        return;
+      }
       if (document) {
         const timer = setInterval(() => {
           const scrollTop = getScrollTop();
@@ -57,18 +96,36 @@ export default ThemeProvider(
         document.documentElement.scrollTop = top;
       }
     }
+    scrollerTargetTo(top: number) {
+      const { target } = this.props;
+      if (target) {
+        target().scrollTop = top;
+      }
+    }
 
     componentWillUnmount() {
       window.removeEventListener('scroll', this.addWindowListener);
+      if (this.hasTarget()) {
+        const { target } = this.props;
+        if (target && typeof target === 'function') {
+          target().removeEventListener('scroll', this.addTargetListener);
+        }
+      }
     }
 
     render() {
       const { children, getTheme } = this.props;
-      const { fixed } = this.state;
+      const { fixed, posRight, posBottom } = this.state;
       return (
         <div>
           {fixed ? (
-            <BackTop fixed={fixed} onClick={this.handleClick}>
+            <BackTop
+              fixed={fixed}
+              posRight={posRight}
+              posBottom={posBottom}
+              onClick={this.handleClick}
+              hasTarget={this.hasTarget()}
+            >
               {children ? (
                 children
               ) : (
@@ -80,6 +137,9 @@ export default ThemeProvider(
           ) : null}
         </div>
       );
+    }
+    hasTarget() {
+      return 'target' in this.props;
     }
   },
   Widget.BackTop
