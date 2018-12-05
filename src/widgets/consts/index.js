@@ -103,6 +103,11 @@ const RangePicker = 'sv_widget_RangePicker';
 const Loading = 'sv_widget_Loading';
 const TimeLine = 'sv_widget_TimeLine';
 const TimeLineItem = 'sv_widget_TimeLineItem';
+
+const Transfer = 'sv_widget_Transfer';
+const Drawer = 'sv_widget_Drawer';
+const Anchor = 'sv_widget_Anchor';
+
 export default {
   Button,
   Input,
@@ -190,4 +195,7 @@ export default {
   TimeLineItem,
   Skeleton,
   Carousel,
+  Transfer,
+  Drawer,
+  Anchor,
 };
