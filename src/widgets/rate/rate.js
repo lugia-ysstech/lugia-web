@@ -12,6 +12,7 @@ import styled, { keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { getElementPosition } from '../utils';
 import { ObjectUtils } from '@lugia/type-utils';
+import { toNumber } from '../common/NumberUtils';
 
 const { warningColor } = colorsFunc();
 const Container = styled.div`
@@ -155,10 +156,7 @@ export function getDefaultClassNames(count: number): Array<string> {
 }
 
 export const createCalssArray = (num: number | string, condition?: Object): Array<string> => {
-  if (num && ObjectUtils.isString(num)) {
-    num = Number(num);
-  }
-  const classNames = getDefaultClassNames(num);
+  const classNames = getDefaultClassNames(toNumber(num, 0));
 
   if (!condition) return classNames;
 
