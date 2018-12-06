@@ -37,7 +37,7 @@ describe('Rate igflow Test', () => {
   checkCreateArr(0, 0, false, []);
   checkCreateArr(null, 0, false, ['default']);
   checkCreateArr(undefined, 0, false, ['default']);
-  checkCreateArr('5', 0, false, ['default']);
+  checkCreateArr('5', 0, false, ['default', 'default', 'default', 'default', 'default']);
   checkCreateArr(5, 2.5, true, ['primary', 'primary', 'half', 'default', 'default']);
 
   function checkCalcValue(val: ?number, allowHalf: boolean, expectation) {
