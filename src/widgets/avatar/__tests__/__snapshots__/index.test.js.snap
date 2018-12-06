@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Avatar css 1`] = `
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -18,8 +18,8 @@ exports[`Avatar css 1`] = `
   background: #cccccc;
   white-space: nowrap;
   position: relative;
-  height: 2.666666666666667em;
   width: 2.666666666666667em;
+  height: 2.666666666666667em;
   line-height: 2.666666666666667em;
   border-radius: 10%;
   margin: 0.8333333333333334em;
@@ -34,8 +34,8 @@ exports[`Avatar css 1`] = `
   background: #cccccc;
   white-space: nowrap;
   position: relative;
-  height: 2.666666666666667em;
   width: 2.666666666666667em;
+  height: 2.666666666666667em;
   line-height: 2.666666666666667em;
   border-radius: 50%;
   margin: 0.8333333333333334em;
@@ -50,25 +50,9 @@ exports[`Avatar css 1`] = `
   background: #4d63ff;
   white-space: nowrap;
   position: relative;
-  height: 2em;
   width: 2em;
+  height: 2em;
   line-height: 2em;
-  border-radius: 10%;
-  margin: 0.8333333333333334em;
-}
-
-.c6 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  background: #4d63ff;
-  white-space: nowrap;
-  position: relative;
-  height: 2.666666666666667em;
-  width: 2.666666666666667em;
-  line-height: 2.666666666666667em;
   border-radius: 10%;
   margin: 0.8333333333333334em;
 }
@@ -82,26 +66,10 @@ exports[`Avatar css 1`] = `
   background: #4d63ff;
   white-space: nowrap;
   position: relative;
-  height: 3.3333333333333335em;
-  width: 3.3333333333333335em;
-  line-height: 3.3333333333333335em;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  line-height: 2.666666666666667em;
   border-radius: 10%;
-  margin: 0.8333333333333334em;
-}
-
-.c8 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  background: #cccccc;
-  white-space: nowrap;
-  position: relative;
-  height: 2em;
-  width: 2em;
-  line-height: 2em;
-  border-radius: 50%;
   margin: 0.8333333333333334em;
 }
 
@@ -111,17 +79,17 @@ exports[`Avatar css 1`] = `
   box-sizing: border-box;
   display: inline-block;
   text-align: center;
-  background: #cccccc;
+  background: #4d63ff;
   white-space: nowrap;
   position: relative;
-  height: 3.3333333333333335em;
   width: 3.3333333333333335em;
+  height: 3.3333333333333335em;
   line-height: 3.3333333333333335em;
-  border-radius: 50%;
+  border-radius: 10%;
   margin: 0.8333333333333334em;
 }
 
-.c15 {
+.c11 {
   font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
@@ -130,10 +98,72 @@ exports[`Avatar css 1`] = `
   background: #cccccc;
   white-space: nowrap;
   position: relative;
-  height: 3.3333333333333335em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 50%;
+  margin: 0.8333333333333334em;
+}
+
+.c12 {
+  font-variant: tabular-nums;
+  color: rgba(0,0,0,0.65);
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  background: #cccccc;
+  white-space: nowrap;
+  position: relative;
   width: 3.3333333333333335em;
+  height: 3.3333333333333335em;
+  line-height: 3.3333333333333335em;
+  border-radius: 50%;
+  margin: 0.8333333333333334em;
+}
+
+.c18 {
+  font-variant: tabular-nums;
+  color: rgba(0,0,0,0.65);
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  background: #cccccc;
+  white-space: nowrap;
+  position: relative;
+  width: 3.3333333333333335em;
+  height: 3.3333333333333335em;
   line-height: 3.3333333333333335em;
   border-radius: 10%;
+}
+
+.c5 {
+  display: inline-block;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  vertical-align: middle !important;
+  font-size: 1.2em;
+  color: white;
+}
+
+.c8 {
+  display: inline-block;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  vertical-align: middle !important;
+  font-size: 1.8em;
+  color: white;
+}
+
+.c10 {
+  display: inline-block;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  vertical-align: middle !important;
+  font-size: 2.2em;
+  color: white;
 }
 
 .c2 {
@@ -143,45 +173,45 @@ exports[`Avatar css 1`] = `
   user-select: none;
   color: white;
   font-size: 1.0em;
-  height: 2.666666666666667em;
   width: 2.666666666666667em;
+  height: 2.666666666666667em;
 }
 
-.c10 {
+.c13 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   color: white;
   font-size: 0.8em;
-  height: 2em;
   width: 2em;
+  height: 2em;
 }
 
-.c11 {
+.c14 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   color: white;
   font-size: 1.2em;
-  height: 3.3333333333333335em;
   width: 3.3333333333333335em;
+  height: 3.3333333333333335em;
 }
 
-.c12 {
+.c15 {
   border-radius: 10%;
-  height: 2.666666666666667em;
   width: 2.666666666666667em;
-}
-
-.c13 {
-  border-radius: 50%;
   height: 2.666666666666667em;
-  width: 2.666666666666667em;
 }
 
 .c16 {
+  border-radius: 50%;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+}
+
+.c19 {
   font-size: 1rem;
   box-sizing: border-box;
   position: absolute;
@@ -214,7 +244,7 @@ exports[`Avatar css 1`] = `
   box-shadow: 0 0 0 0.1em #fff;
 }
 
-.c21 {
+.c24 {
   font-size: 1rem;
   box-sizing: border-box;
   position: absolute;
@@ -247,7 +277,7 @@ exports[`Avatar css 1`] = `
   box-shadow: 0 0 0 0.1em #fff;
 }
 
-.c17 {
+.c20 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -259,7 +289,7 @@ exports[`Avatar css 1`] = `
   display: inline-block;
 }
 
-.c19 {
+.c22 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -271,14 +301,14 @@ exports[`Avatar css 1`] = `
   display: inline-block;
 }
 
-.c18 {
+.c21 {
   height: 1.4em;
   text-align: center;
   box-sizing: border-box;
   margin: 0;
 }
 
-.c20 {
+.c23 {
   font-size: 1rem;
   box-sizing: border-box;
   position: absolute;
@@ -300,7 +330,7 @@ exports[`Avatar css 1`] = `
   box-shadow: 0 0 0 0.08333333333333334em #fff;
 }
 
-.c22 {
+.c25 {
   font-size: 1rem;
   box-sizing: border-box;
   position: absolute;
@@ -322,7 +352,7 @@ exports[`Avatar css 1`] = `
   box-shadow: 0 0 0 0.08333333333333334em #fff;
 }
 
-.c14 {
+.c17 {
   background: transparent;
   box-sizing: border-box;
   position: relative;
@@ -511,24 +541,7 @@ exports[`Avatar css 1`] = `
       size="small"
     >
       <i
-        className="lugia-icon-financial_user  c5"
-      />
-    </span>
-    <span
-      className="c6"
-      icon="lugia-icon-financial_user"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
-    >
-      <i
-        className="lugia-icon-financial_user  c5"
+        className="lugia-icon-financial_user c5 c6"
       />
     </span>
     <span
@@ -542,15 +555,32 @@ exports[`Avatar css 1`] = `
       onKeyPress={[Function]}
       onKeyUp={[Function]}
       shape="square"
+      size="default"
+    >
+      <i
+        className="lugia-icon-financial_user c8 c6"
+      />
+    </span>
+    <span
+      className="c9"
+      icon="lugia-icon-financial_user"
+      name="lugia"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      shape="square"
       size="large"
     >
       <i
-        className="lugia-icon-financial_user  c5"
+        className="lugia-icon-financial_user c10 c6"
       />
     </span>
     <br />
     <span
-      className="c8"
+      className="c11"
       icon="lugia-icon-financial_user"
       name="lugia"
       onBlur={[Function]}
@@ -563,7 +593,7 @@ exports[`Avatar css 1`] = `
       size="small"
     >
       <i
-        className="lugia-icon-financial_user  c5"
+        className="lugia-icon-financial_user c5 c6"
       />
     </span>
     <span
@@ -580,11 +610,11 @@ exports[`Avatar css 1`] = `
       size="default"
     >
       <i
-        className="lugia-icon-financial_user  c5"
+        className="lugia-icon-financial_user c8 c6"
       />
     </span>
     <span
-      className="c9"
+      className="c12"
       icon="lugia-icon-financial_user"
       name="lugia"
       onBlur={[Function]}
@@ -597,7 +627,7 @@ exports[`Avatar css 1`] = `
       size="large"
     >
       <i
-        className="lugia-icon-financial_user  c5"
+        className="lugia-icon-financial_user c10 c6"
       />
     </span>
   </div>
@@ -617,14 +647,14 @@ exports[`Avatar css 1`] = `
       size="small"
     >
       <span
-        className="c10"
+        className="c13"
         size="small"
       >
         lugia
       </span>
     </span>
     <span
-      className="c6"
+      className="c7"
       name="lugia"
       onBlur={[Function]}
       onClick={[Function]}
@@ -643,7 +673,7 @@ exports[`Avatar css 1`] = `
       </span>
     </span>
     <span
-      className="c7"
+      className="c9"
       name="lugia"
       onBlur={[Function]}
       onClick={[Function]}
@@ -655,7 +685,7 @@ exports[`Avatar css 1`] = `
       size="large"
     >
       <span
-        className="c11"
+        className="c14"
         size="large"
       >
         lugia
@@ -663,7 +693,7 @@ exports[`Avatar css 1`] = `
     </span>
     <br />
     <span
-      className="c8"
+      className="c11"
       name="lugia"
       onBlur={[Function]}
       onClick={[Function]}
@@ -675,7 +705,7 @@ exports[`Avatar css 1`] = `
       size="small"
     >
       <span
-        className="c10"
+        className="c13"
         size="small"
       >
         lugia
@@ -701,7 +731,7 @@ exports[`Avatar css 1`] = `
       </span>
     </span>
     <span
-      className="c9"
+      className="c12"
       name="lugia"
       onBlur={[Function]}
       onClick={[Function]}
@@ -713,7 +743,7 @@ exports[`Avatar css 1`] = `
       size="large"
     >
       <span
-        className="c11"
+        className="c14"
         size="large"
       >
         lugia
@@ -744,7 +774,7 @@ exports[`Avatar css 1`] = `
     </span>
     <span
       className="c1"
-      icon="lugia-icon-direction_left-square"
+      icon="lugia-icon-financial_user"
       name="lugia"
       onBlur={[Function]}
       onClick={[Function]}
@@ -756,7 +786,7 @@ exports[`Avatar css 1`] = `
       size="default"
     >
       <i
-        className="lugia-icon-direction_left-square  c5"
+        className="lugia-icon-financial_user c8 c6"
       />
     </span>
     <span
@@ -773,7 +803,7 @@ exports[`Avatar css 1`] = `
       src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
     >
       <img
-        className="c12"
+        className="c15"
         shape="square"
         src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
       />
@@ -812,7 +842,7 @@ exports[`Avatar css 1`] = `
       size="default"
     >
       <i
-        className="lugia-icon-financial_user  c5"
+        className="lugia-icon-financial_user c8 c6"
       />
     </span>
     <span
@@ -829,7 +859,7 @@ exports[`Avatar css 1`] = `
       src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
     >
       <img
-        className="c13"
+        className="c16"
         shape="circle"
         src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
       />
@@ -839,10 +869,10 @@ exports[`Avatar css 1`] = `
     className="c0"
   >
     <span
-      className="c14"
+      className="c17"
     >
       <span
-        className="c15"
+        className="c18"
         name="lugia"
         onBlur={[Function]}
         onClick={[Function]}
@@ -854,7 +884,7 @@ exports[`Avatar css 1`] = `
         size="large"
       >
         <span
-          className="c11"
+          className="c14"
           size="large"
         >
           lugia
@@ -864,115 +894,115 @@ exports[`Avatar css 1`] = `
         className=""
       >
         <sup
-          className="c16"
+          className="c19"
           overflow={false}
         >
           <span
-            className="c17"
+            className="c20"
             y={-100}
           >
             <p
-              className="c18"
+              className="c21"
             >
               0
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               1
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               2
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               3
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               4
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               5
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               6
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               7
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               8
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               9
             </p>
           </span>
           <span
-            className="c19"
+            className="c22"
             y={-0}
           >
             <p
-              className="c18"
+              className="c21"
             >
               0
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               1
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               2
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               3
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               4
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               5
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               6
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               7
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               8
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               9
             </p>
@@ -983,10 +1013,10 @@ exports[`Avatar css 1`] = `
     <br />
     <br />
     <span
-      className="c14"
+      className="c17"
     >
       <span
-        className="c15"
+        className="c18"
         name="lugia"
         onBlur={[Function]}
         onClick={[Function]}
@@ -998,23 +1028,23 @@ exports[`Avatar css 1`] = `
         size="large"
       >
         <span
-          className="c11"
+          className="c14"
           size="large"
         >
           lugia
         </span>
       </span>
       <sup
-        className="c20"
+        className="c23"
       />
     </span>
     <br />
     <br />
     <span
-      className="c14"
+      className="c17"
     >
       <span
-        className="c9"
+        className="c12"
         icon="lugia-icon-financial_user"
         name="lugia"
         onBlur={[Function]}
@@ -1027,122 +1057,122 @@ exports[`Avatar css 1`] = `
         size="large"
       >
         <i
-          className="lugia-icon-financial_user  c5"
+          className="lugia-icon-financial_user c10 c6"
         />
       </span>
       <div
         className=""
       >
         <sup
-          className="c21"
+          className="c24"
           overflow={false}
         >
           <span
-            className="c17"
+            className="c20"
             y={-100}
           >
             <p
-              className="c18"
+              className="c21"
             >
               0
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               1
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               2
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               3
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               4
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               5
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               6
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               7
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               8
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               9
             </p>
           </span>
           <span
-            className="c19"
+            className="c22"
             y={-0}
           >
             <p
-              className="c18"
+              className="c21"
             >
               0
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               1
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               2
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               3
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               4
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               5
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               6
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               7
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               8
             </p>
             <p
-              className="c18"
+              className="c21"
             >
               9
             </p>
@@ -1153,10 +1183,10 @@ exports[`Avatar css 1`] = `
     <br />
     <br />
     <span
-      className="c14"
+      className="c17"
     >
       <span
-        className="c9"
+        className="c12"
         icon="lugia-icon-financial_user"
         name="lugia"
         onBlur={[Function]}
@@ -1169,11 +1199,11 @@ exports[`Avatar css 1`] = `
         size="large"
       >
         <i
-          className="lugia-icon-financial_user  c5"
+          className="lugia-icon-financial_user c10 c6"
         />
       </span>
       <sup
-        className="c22"
+        className="c25"
       />
     </span>
   </div>
