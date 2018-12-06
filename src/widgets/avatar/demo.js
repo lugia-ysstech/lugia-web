@@ -84,7 +84,7 @@ export default () => {
         </Wrapper>
         <Wrapper>
           <Avatar shape={'square'} name={'lugia'} msgNum={1} />
-          <Avatar shape={'square'} icon={'lugia-icon-direction_left-square'} msgNum={2} />
+          <Avatar shape={'square'} icon={'lugia-icon-financial_user'} msgNum={2} />
           <Avatar
             shape={'square'}
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
