@@ -31,7 +31,7 @@ const showUp = keyframes`
   }
 `;
 const StarIconClass = 'lugia-icon-financial_star';
-const StarIconClassOpen = 'lugia-icon-financial_star_o';
+const StarIconClassOpen = 'lugia-icon-finacial1_half_star';
 
 const Ratespan = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,
@@ -41,8 +41,15 @@ const Ratespan = styled.span.attrs({
   half: props => props.theme.half || props.theme.primary || `${warningColor}`,
 })`
   margin: 6px;
+  position: relative;
   & > i.hoverd:hover {
     transform: scale(1.2);
+  }
+  & > i.bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
   }
   & > i {
     vertical-align: middle !important;
@@ -148,10 +155,10 @@ export function getDefaultClassNames(count: number): Array<string> {
 }
 
 export const createCalssArray = (num: number | string, condition?: Object): Array<string> => {
-  if (!ObjectUtils.isString(num) && num) {
+  if (num && ObjectUtils.isString(num)) {
     num = Number(num);
   }
-  const classNames = getDefaultClassNames(Number(num));
+  const classNames = getDefaultClassNames(num);
 
   if (!condition) return classNames;
 
@@ -422,7 +429,12 @@ class Rate extends React.Component<RateProps, any> {
         </RateText>
       );
     }
-    return <RateIcon iconClass={`${IconClass[x]} ${theClassName}`} />;
+    return (
+      <React.Fragment>
+        <RateIcon iconClass={`${IconClass[x]} ${theClassName}`} />
+        <RateIcon iconClass={`${IconClass.default}  default bottom`} />
+      </React.Fragment>
+    );
   };
 
   handleClick = (e: Object, val: number, classNames: Array<string>, index: number) => {

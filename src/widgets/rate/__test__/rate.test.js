@@ -149,7 +149,7 @@ describe('Rate Test', () => {
         primary: 'lugia-icon-financial_star',
         danger: 'lugia-icon-financial_star',
         amazed: 'lugia-icon-financial_star',
-        half: 'lugia-icon-financial_star_o',
+        half: 'lugia-icon-finacial1_half_star',
       },
     },
     {
