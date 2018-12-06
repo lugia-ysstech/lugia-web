@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rate Test css 1`] = `
+.c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c0 {
+  position: relative;
+  padding: 10px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.c1 {
+  margin: 6px;
+}
+
+.c1 > i.hoverd:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.c1 > i {
+  vertical-align: middle !important;
+}
+
+.c1 > i.primary {
+  color: #f8ac30;
+  -webkit-animation: eMLfYp 0.3s linear forwards;
+  animation: eMLfYp 0.3s linear forwards;
+}
+
+.c1 > i.danger {
+  color: #999999;
+  -webkit-animation: eMLfYp 0.3s linear forwards;
+  animation: eMLfYp 0.3s linear forwards;
+}
+
+.c1 > i.default {
+  color: #e8e8e8;
+}
+
+.c1 > i.amazed {
+  color: #f88e30;
+  -webkit-animation: eMLfYp 0.3s linear forwards;
+  animation: eMLfYp 0.3s linear forwards;
+}
+
+.c1 > i.half {
+  color: #f8ac30;
+  -webkit-animation: eMLfYp 0.3s linear forwards;
+  animation: eMLfYp 0.3s linear forwards;
+  position: relative;
+}
+
+<div
+  className="c0"
+  onMouseLeave={[Function]}
+>
+  <span
+    amazed="#f88e30"
+    className="c1"
+    danger="#999999"
+    default="#e8e8e8"
+    half="#f8ac30"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    primary="#f8ac30"
+  >
+    <i
+      className="lugia-icon-financial_star default  hoverd  c2"
+    />
+  </span>
+  <span
+    amazed="#f88e30"
+    className="c1"
+    danger="#999999"
+    default="#e8e8e8"
+    half="#f8ac30"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    primary="#f8ac30"
+  >
+    <i
+      className="lugia-icon-financial_star default  hoverd  c2"
+    />
+  </span>
+  <span
+    amazed="#f88e30"
+    className="c1"
+    danger="#999999"
+    default="#e8e8e8"
+    half="#f8ac30"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    primary="#f8ac30"
+  >
+    <i
+      className="lugia-icon-financial_star default  hoverd  c2"
+    />
+  </span>
+  <span
+    amazed="#f88e30"
+    className="c1"
+    danger="#999999"
+    default="#e8e8e8"
+    half="#f8ac30"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    primary="#f8ac30"
+  >
+    <i
+      className="lugia-icon-financial_star default  hoverd  c2"
+    />
+  </span>
+  <span
+    amazed="#f88e30"
+    className="c1"
+    danger="#999999"
+    default="#e8e8e8"
+    half="#f8ac30"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    primary="#f8ac30"
+  >
+    <i
+      className="lugia-icon-financial_star default  hoverd  c2"
+    />
+  </span>
+</div>
+`;

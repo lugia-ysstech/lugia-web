@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rate Test css 1`] = `
+.c3 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c1 {
+  width: 100%;
+  display: none;
+}
+
+.c0 {
+  width: 366px;
+  position: relative;
+  padding: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.c2 {
+  width: 346px;
+  height: 30px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  color: #ccc;
+  padding: 0 0 0 10px;
+  line-height: 30px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.c2.done {
+  border: 1px solid #684fff;
+  color: #333;
+  position: relative;
+}
+
+.c2.done i {
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 10px;
+}
+
+.c2.loading {
+  border: 1px solid #684fff;
+}
+
+.c2.loading .loadIcon {
+  margin-right: 10px;
+  -webkit-animation: iVXCSc 0.8s linear infinite;
+  animation: iVXCSc 0.8s linear infinite;
+}
+
+.c2.hasBtn {
+  border-radius: 4px 0 0 4px;
+  border: 1px solid #9482ff;
+  width: 286px;
+}
+
+.c2 i.right {
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <input
+      accept="*"
+      className="c1"
+      id="upload"
+      multiple={false}
+      onChange={[Function]}
+      type="file"
+    />
+    <label>
+      <div
+        className="default c2"
+      >
+        请将文件拖到此处 
+        <i
+          className="lugia-icon-financial_upload right  c3"
+        />
+      </div>
+    </label>
+  </div>
+</div>
+`;

@@ -110,6 +110,9 @@ const Anchor = 'sv_widget_Anchor';
 
 const Card = 'sv_widget_Card';
 const CardImage = 'sv_widget_CardImage';
+/* add by LYQ */
+const Rate = 'sv_widget_Rate';
+const Upload = 'sv_widget_Upload';
 export default {
   Button,
   Input,
@@ -202,4 +205,6 @@ export default {
   Anchor,
   Card,
   CardImage,
+  Rate,
+  Upload,
 };

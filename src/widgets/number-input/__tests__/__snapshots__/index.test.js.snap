@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
-.c7 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -77,21 +77,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   right: 0.4166666666666667em;
 }
 
-.c6 {
-  cursor: pointer;
-  z-index: 3;
-  font-size: 0.6em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  text-align: center;
-}
-
 .c4 {
   opacity: 0;
   height: 2.5em;
@@ -106,7 +91,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   z-index: 2;
 }
 
-.c8 {
+.c7 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -122,7 +107,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   height: 50%;
 }
 
-.c8:hover {
+.c7:hover {
   color: #684fff;
 }
 
@@ -203,17 +188,17 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up c6 c7"
+        className="lugia-icon-direction_up  c6"
       />
     </span>
     <span
-      className="c8"
+      className="c7"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down c6 c7"
+        className="lugia-icon-direction_down  c6"
       />
     </span>
   </div>
@@ -221,7 +206,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 `;
 
 exports[`NumberInput props: null 1`] = `
-.c7 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -297,21 +282,6 @@ exports[`NumberInput props: null 1`] = `
   right: 0.4166666666666667em;
 }
 
-.c6 {
-  cursor: pointer;
-  z-index: 3;
-  font-size: 0.6em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  text-align: center;
-}
-
 .c4 {
   opacity: 0;
   height: 2.5em;
@@ -326,7 +296,7 @@ exports[`NumberInput props: null 1`] = `
   z-index: 2;
 }
 
-.c8 {
+.c7 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -342,7 +312,7 @@ exports[`NumberInput props: null 1`] = `
   height: 50%;
 }
 
-.c8:hover {
+.c7:hover {
   color: #684fff;
 }
 
@@ -423,17 +393,17 @@ exports[`NumberInput props: null 1`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up c6 c7"
+        className="lugia-icon-direction_up  c6"
       />
     </span>
     <span
-      className="c8"
+      className="c7"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down c6 c7"
+        className="lugia-icon-direction_down  c6"
       />
     </span>
   </div>
@@ -441,7 +411,7 @@ exports[`NumberInput props: null 1`] = `
 `;
 
 exports[`NumberInput props: placeholder  1`] = `
-.c7 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -517,21 +487,6 @@ exports[`NumberInput props: placeholder  1`] = `
   right: 0.4166666666666667em;
 }
 
-.c6 {
-  cursor: pointer;
-  z-index: 3;
-  font-size: 0.6em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  text-align: center;
-}
-
 .c4 {
   opacity: 0;
   height: 2.5em;
@@ -546,7 +501,7 @@ exports[`NumberInput props: placeholder  1`] = `
   z-index: 2;
 }
 
-.c8 {
+.c7 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -562,7 +517,7 @@ exports[`NumberInput props: placeholder  1`] = `
   height: 50%;
 }
 
-.c8:hover {
+.c7:hover {
   color: #684fff;
 }
 
@@ -644,17 +599,17 @@ exports[`NumberInput props: placeholder  1`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up c6 c7"
+        className="lugia-icon-direction_up  c6"
       />
     </span>
     <span
-      className="c8"
+      className="c7"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down c6 c7"
+        className="lugia-icon-direction_down  c6"
       />
     </span>
   </div>
@@ -662,7 +617,7 @@ exports[`NumberInput props: placeholder  1`] = `
 `;
 
 exports[`NumberInput props: placeholder  2`] = `
-.c7 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -738,21 +693,6 @@ exports[`NumberInput props: placeholder  2`] = `
   right: 0.4166666666666667em;
 }
 
-.c6 {
-  cursor: pointer;
-  z-index: 3;
-  font-size: 0.6em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  text-align: center;
-}
-
 .c4 {
   opacity: 0;
   height: 2.5em;
@@ -767,7 +707,7 @@ exports[`NumberInput props: placeholder  2`] = `
   z-index: 2;
 }
 
-.c8 {
+.c7 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -783,7 +723,7 @@ exports[`NumberInput props: placeholder  2`] = `
   height: 50%;
 }
 
-.c8:hover {
+.c7:hover {
   color: #684fff;
 }
 
@@ -865,17 +805,17 @@ exports[`NumberInput props: placeholder  2`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up c6 c7"
+        className="lugia-icon-direction_up  c6"
       />
     </span>
     <span
-      className="c8"
+      className="c7"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down c6 c7"
+        className="lugia-icon-direction_down  c6"
       />
     </span>
   </div>
@@ -883,7 +823,7 @@ exports[`NumberInput props: placeholder  2`] = `
 `;
 
 exports[`NumberInput props: size 1`] = `
-.c7 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -959,21 +899,6 @@ exports[`NumberInput props: size 1`] = `
   right: 0.4166666666666667em;
 }
 
-.c6 {
-  cursor: pointer;
-  z-index: 3;
-  font-size: 0.6em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  text-align: center;
-}
-
 .c4 {
   opacity: 0;
   height: 1.8333333333333335em;
@@ -988,7 +913,7 @@ exports[`NumberInput props: size 1`] = `
   z-index: 2;
 }
 
-.c8 {
+.c7 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -1004,7 +929,7 @@ exports[`NumberInput props: size 1`] = `
   height: 50%;
 }
 
-.c8:hover {
+.c7:hover {
   color: #684fff;
 }
 
@@ -1085,17 +1010,17 @@ exports[`NumberInput props: size 1`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up c6 c7"
+        className="lugia-icon-direction_up  c6"
       />
     </span>
     <span
-      className="c8"
+      className="c7"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down c6 c7"
+        className="lugia-icon-direction_down  c6"
       />
     </span>
   </div>
@@ -1103,7 +1028,7 @@ exports[`NumberInput props: size 1`] = `
 `;
 
 exports[`NumberInput props: size 2`] = `
-.c7 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1179,21 +1104,6 @@ exports[`NumberInput props: size 2`] = `
   right: 0.4166666666666667em;
 }
 
-.c6 {
-  cursor: pointer;
-  z-index: 3;
-  font-size: 0.6em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  text-align: center;
-}
-
 .c4 {
   opacity: 0;
   height: 3.1666666666666665em;
@@ -1208,7 +1118,7 @@ exports[`NumberInput props: size 2`] = `
   z-index: 2;
 }
 
-.c8 {
+.c7 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -1224,7 +1134,7 @@ exports[`NumberInput props: size 2`] = `
   height: 50%;
 }
 
-.c8:hover {
+.c7:hover {
   color: #684fff;
 }
 
@@ -1305,17 +1215,17 @@ exports[`NumberInput props: size 2`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up c6 c7"
+        className="lugia-icon-direction_up  c6"
       />
     </span>
     <span
-      className="c8"
+      className="c7"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down c6 c7"
+        className="lugia-icon-direction_down  c6"
       />
     </span>
   </div>

@@ -5,12 +5,12 @@ exports[`Collapse Collapse CSS 1`] = `
   font-size: 1.4rem;
 }
 
-.c13 {
+.c11 {
   font-size: 1.4rem;
   margin: 1.4285714285714286em;
 }
 
-.c6 {
+.c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -26,7 +26,7 @@ exports[`Collapse Collapse CSS 1`] = `
   background: #fff;
 }
 
-.c14 {
+.c12 {
   box-sizing: border-box;
   border-width: 0em;
   border-color: #e8e8e8;
@@ -48,7 +48,7 @@ exports[`Collapse Collapse CSS 1`] = `
   color: #333333;
 }
 
-.c12 {
+.c10 {
   box-sizing: border-box;
   overflow: hidden;
   height: 0em;
@@ -56,7 +56,7 @@ exports[`Collapse Collapse CSS 1`] = `
   background: #fff;
 }
 
-.c8 {
+.c7 {
   box-sizing: border-box;
   overflow: hidden;
   height: 0px;
@@ -64,32 +64,13 @@ exports[`Collapse Collapse CSS 1`] = `
   background: #fff;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   font-weight: 300;
   padding: 0.4285714285714286em 2.142857142857143em 1.5714285714285716em 2.428571428571429em;
 }
 
-.c10 {
-  font-size: 1.4rem;
-  display: inline-block;
-  position: absolute;
-  top: 1.2857142857142858em;
-  left: 0.7142857142857143em;
-}
-
-.c5 {
-  font-size: 1.4rem;
-  display: inline-block;
-  position: absolute;
-  top: 1.2857142857142858em;
-  left: 0.7142857142857143em;
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-.c11 {
+.c9 {
   box-sizing: border-box;
   -webkit-transition: left 0.3s;
   transition: left 0.3s;
@@ -102,7 +83,7 @@ exports[`Collapse Collapse CSS 1`] = `
   background: #fff;
 }
 
-.c7 {
+.c6 {
   box-sizing: border-box;
   -webkit-transition: left 0.3s;
   transition: left 0.3s;
@@ -152,27 +133,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c7"
+              className="c6"
               height={null}
               open={true}
             >
               <i
-                className="lugia-icon-direction_caret_right c5 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -196,27 +177,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c11"
+              className="c9"
               height={null}
               open={false}
             >
               <i
-                className="lugia-icon-direction_caret_right c10 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -249,27 +230,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c7"
+              className="c6"
               height={null}
               open={true}
             >
               <i
-                className="lugia-icon-direction_caret_right c5 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -293,27 +274,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c11"
+              className="c9"
               height={null}
               open={false}
             >
               <i
-                className="lugia-icon-direction_caret_right c10 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -346,27 +327,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c7"
+              className="c6"
               height={null}
               open={true}
             >
               <i
-                className="lugia-icon-direction_caret_right c5 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -390,27 +371,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c11"
+              className="c9"
               height={null}
               open={false}
             >
               <i
-                className="lugia-icon-direction_caret_right c10 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -439,27 +420,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c7"
+              className="c6"
               height={null}
               open={true}
             >
               <i
-                className="lugia-icon-direction_caret_right c5 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -483,27 +464,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c11"
+              className="c9"
               height={null}
               open={false}
             >
               <i
-                className="lugia-icon-direction_caret_right c10 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -527,27 +508,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c11"
+              className="c9"
               height={null}
               open={false}
             >
               <i
-                className="lugia-icon-direction_caret_right c10 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -571,27 +552,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c11"
+              className="c9"
               height={null}
               open={false}
             >
               <i
-                className="lugia-icon-direction_caret_right c10 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -606,13 +587,13 @@ exports[`Collapse Collapse CSS 1`] = `
     </div>
     <br />
     <div
-      className="c13"
+      className="c11"
     >
       <div
         className="c2"
       >
         <div
-          className="c14"
+          className="c12"
         >
           <div
             className="c4"
@@ -620,27 +601,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c7"
+              className="c6"
               height={null}
               open={true}
             >
               <i
-                className="lugia-icon-direction_caret_right c5 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
@@ -656,7 +637,7 @@ exports[`Collapse Collapse CSS 1`] = `
         className="c2"
       >
         <div
-          className="c14"
+          className="c12"
         >
           <div
             className="c4"
@@ -664,27 +645,27 @@ exports[`Collapse Collapse CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right  c5"
             />
             LUGIA
             <div
-              className="c11"
+              className="c9"
               height={null}
               open={false}
             >
               <i
-                className="lugia-icon-direction_caret_right c10 c6"
+                className="lugia-icon-direction_caret_right  c5"
               />
             </div>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
             >
               <div>
                 PanelContent...
