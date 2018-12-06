@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rate Test css 1`] = `
-.c3 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -80,6 +80,10 @@ exports[`Rate Test css 1`] = `
   right: 20px;
 }
 
+.c3.loadIcon {
+  margin-right: 10px;
+}
+
 <div>
   <div
     className="c0"
@@ -98,7 +102,7 @@ exports[`Rate Test css 1`] = `
       >
         请将文件拖到此处 
         <i
-          className="lugia-icon-financial_upload right  c3"
+          className="lugia-icon-financial_upload right c3 c4"
         />
       </div>
     </label>

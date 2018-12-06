@@ -7,6 +7,7 @@ import React from 'react';
 import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import Upload, { getClassName, findIndexfromkey, checkKeyInArr, getListIconType } from '../upload';
+import { getRequestXHR, getStringFromObject, getParamsData } from '../request';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -32,7 +33,7 @@ describe('Rate Test', () => {
   checkgetClassName('loading', 'loading');
   checkgetClassName('done', 'done');
 
-  function checkFindIndex(data: Array<string>, key: ?string, expectation: string) {
+  function checkFindIndex(data: Array<string>, key: string, expectation: number) {
     it('Function findIndexfromkey ', () => {
       const res = findIndexfromkey(data, key.toLowerCase());
       expect(res).toEqual(expectation);
@@ -45,7 +46,7 @@ describe('Rate Test', () => {
   checkFindIndex(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'ABC', -1);
   checkFindIndex(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'BMP', 5);
 
-  function funcheckKeyInArr(data: Array<string>, key: ?string, expectation: string) {
+  function funcheckKeyInArr(data: Array<string>, key: string, expectation: boolean) {
     it('Function findIndexfromkey ', () => {
       const res = checkKeyInArr(data, key.toLowerCase());
       expect(res).toEqual(expectation);
@@ -75,4 +76,29 @@ describe('Rate Test', () => {
   checkGetListIconType('', 'file');
   checkGetListIconType(null, 'file');
   checkGetListIconType(undefined, 'file');
+
+  it('Function getRequestXHR ', () => {
+    const res = getRequestXHR();
+    expect(res instanceof window.XMLHttpRequest).toEqual(true);
+  });
+
+  function checkGetStringFromObject(data: Object, expectation: string) {
+    it('Function getStringFromObject ', () => {
+      const res = getStringFromObject(data);
+      expect(res).toEqual(expectation);
+    });
+  }
+  checkGetStringFromObject({ u: 23, name: 'lll', file: 'xsdss' }, 'u=23&name=lll&file=xsdss');
+  checkGetStringFromObject({ cc: 66, df: 'lll', file: 'xsdss' }, 'cc=66&df=lll&file=xsdss');
+  checkGetStringFromObject(null, '');
+  checkGetStringFromObject(undefined, '');
+
+  function checkGetParamsData(data: Object) {
+    it('Function getParamsData ', () => {
+      const res = getParamsData(data);
+      expect(res instanceof FormData).toEqual(true);
+    });
+  }
+  checkGetParamsData({ data: { a: 123, b: 223 }, name: 'file', file: '666' });
+  checkGetParamsData({ data: { a: 777, b: 888 }, name: 'abc', file: '567' });
 });

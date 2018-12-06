@@ -10,8 +10,6 @@ import React from 'react';
 import Icon from '../icon';
 import styled, { keyframes } from 'styled-components';
 import FileInput from './fileInput';
-import Widget from '../consts/index';
-import Theme from '../theme';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
 
@@ -74,7 +72,7 @@ const InputContent = styled.div`
   }
 `;
 
-const LoadIcon: Object = styled(Icon)`
+const LoadIcon = styled(Icon)`
   &.loadIcon {
     margin-right: 10px;
   }
@@ -153,7 +151,7 @@ const getPictureViewSizeCSS = (props: Object) => {
   `;
 };
 
-const getPVIconSizeCSS = (props: Object) => {
+const getPictureViewIconSizeCSS = (props: Object) => {
   const { size = 'default' } = props;
   const { fontSize } = fetchSize(size);
   return `
@@ -171,7 +169,7 @@ const PictureView = styled.div`
   & i {
     font-size: 30px;
     color: #999;
-    ${getPVIconSizeCSS}
+    ${getPictureViewIconSizeCSS}
   }
 `;
 
@@ -179,30 +177,30 @@ const AreaView = styled.div`
   border: 1px dashed #999;
   border-radius: 4px;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: space-around;
   ${getPictureViewSizeCSS}
   & i {
     font-size: 30px;
     color: #999;
-    ${getPVIconSizeCSS}
+    ${getPictureViewIconSizeCSS}
   }
 `;
-const Text = styled.div`
+const AreaText = styled.div`
   width: 100%;
   font-size: 14px;
   text-align: center;
   margin-top: 24px;
 `;
-const TextBlue = styled.span`
+const AreaTextBlue = styled.span`
   font-size: 14px;
   color: #684fff;
   padding: 0 4px;
   border-bottom: 1px solid #684fff;
 `;
 
-const getIcon = (status: string, type?: number): ?Object | string => {
+const getIconByType = (status: string, type?: number): ?Object | string => {
   if (!status) return;
   if (type === 1 && status === 'default') return '上传';
   if (status === 'default') {
@@ -241,7 +239,9 @@ export const getElement = (props: Object, state: Object): ?Object => {
       <Container theme={getTheme()}>
         <FileInput id={inputId} {...props} />
         <label for={inputId}>
-          <InputContent className={className}>请将文件拖到此处 {getIcon(status)}</InputContent>
+          <InputContent className={className}>
+            请将文件拖到此处 {getIconByType(status)}
+          </InputContent>
         </label>
       </Container>
     );
@@ -253,7 +253,7 @@ export const getElement = (props: Object, state: Object): ?Object => {
         <label for={inputId}>
           <InputContent className={`${className} hasBtn`}>请将文件拖到此处</InputContent>
         </label>
-        <Button>{getIcon(status, 1)}</Button>
+        <Button>{getIconByType(status, 1)}</Button>
       </Container>
     );
   }
@@ -277,7 +277,7 @@ export const getElement = (props: Object, state: Object): ?Object => {
       <Container theme={getTheme()}>
         <FileInput id={inputId} {...props} />
         <label for={inputId}>
-          <PictureView size={size}>{getIcon('add')} </PictureView>
+          <PictureView size={size}>{getIconByType('add')} </PictureView>
         </label>
       </Container>
     );
@@ -288,10 +288,10 @@ export const getElement = (props: Object, state: Object): ?Object => {
         <FileInput id={inputId} {...props} />
         <label for={inputId}>
           <AreaView size={'bigger'}>
-            {getIcon('uploadcloud')}
-            <Text>
-              请将文件拖到此处,或<TextBlue>点击上传</TextBlue>
-            </Text>
+            {getIconByType('uploadcloud')}
+            <AreaText>
+              请将文件拖到此处,或<AreaTextBlue>点击上传</AreaTextBlue>
+            </AreaText>
           </AreaView>
         </label>
       </Container>

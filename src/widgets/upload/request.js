@@ -3,68 +3,94 @@
  *
  *2018-12-05
  *
- *
+ *@flow
  *
  */
-export const UPLOADING = 1;
-export const SUCCESS = 2;
-export const ERROR = 3;
 
-function createRequest(method, url) {
-  let xhr = new XMLHttpRequest();
-  if ('withCredentials' in xhr) {
-    // for Chrome/Firefox/Opera/Safari.
-    xhr.open(method, url, true);
-  } else if (typeof XDomainRequest !== 'undefined') {
-    // for IE.
-    xhr = new XDomainRequest();
-    xhr.open(method, url);
-  } else {
-    // CORS not supported.
-    xhr = null;
-  }
-  return xhr;
+export function getRequestXHR(): Object {
+  return window.XMLHttpRequest
+    ? new XMLHttpRequest()
+    : new window.ActiveXobject('Microsoft.XMLHTTP');
 }
 
-const request = function(args: Object) {
-  const {
-    url,
-    name,
-    cors,
-    file,
-    onProgress,
-    onLoad,
-    onError,
-    withCredentials,
-    params = {},
-    headers = {},
-  } = args;
+export function getParamsData(dataObject: Object): Object {
+  const { data } = dataObject;
+  const newData = new FormData();
+  Object.keys(data).forEach(k => {
+    newData.append(k, data[k]);
+  });
+  const { name, file } = dataObject;
+  newData.append(name, file);
+  return newData;
+}
 
-  if (!url) {
-    console.error(`action is required, but its value is ${url}`);
-    return undefined;
+export function getStringFromObject(data: Object): string {
+  if (!data) return '';
+  let resultString = '';
+  for (const i in data) {
+    resultString += i + '=' + data[i] + '&';
   }
+  resultString = resultString.slice(0, -1);
+  return resultString;
+}
 
-  const data = new FormData();
-  Object.keys(params).forEach(k => {
-    data.append(k, params[k]);
-  });
-
-  data.append(name, file);
-
-  const xhr = createRequest('post', url);
+function request(dataObject: Object) {
+  const { url } = dataObject;
+  if (!url) {
+    return;
+  }
+  const xhr = getRequestXHR();
+  const { withCredentials = false } = dataObject;
   xhr.withCredentials = withCredentials;
-  if (onProgress) xhr.upload.addEventListener('progress', onProgress, false);
-  xhr.onload = e => onLoad(e.currentTarget);
-  xhr.onerror = onError;
 
-  Object.keys(headers).forEach(k => {
-    xhr.setRequestHeader(k, headers[k]);
-  });
+  const { method = 'get', asynch = true, data } = dataObject;
+  const params = getParamsData(dataObject);
 
-  xhr.send(data);
+  if (method === 'get') {
+    if (data) {
+      xhr.open('get', url + '?' + getStringFromObject(params), asynch);
+    } else {
+      xhr.open('get', url, asynch);
+    }
+    xhr.send();
+  }
+  if (method === 'post') {
+    xhr.open('post', url, asynch);
 
-  return xhr;
-};
+    const { headers } = dataObject;
+    if (headers) {
+      Object.keys(headers).forEach(k => {
+        xhr.setRequestHeader(k, headers[k]);
+      });
+    } else {
+      xhr.setRequestHeader('Content-Type","application/x-www-form-urlencoded');
+    }
+    const { onProgress, onComplete } = dataObject;
+    if (onProgress) xhr.upload.addEventListener('progress', onProgress, false);
+    if (onComplete) xhr.upload.addEventListener('load', onComplete, false);
+
+    xhr.send(params);
+  }
+  const { success, fail, datetype = 'text' } = dataObject;
+  const { readyState, status } = xhr;
+  xhr.onreadystatechange = function() {
+    if (readyState === 4) {
+      if (status === 200) {
+        if (datetype === 'text') {
+          success && success(xhr.responseText);
+        }
+        if (datetype === 'xml') {
+          success && success(xhr.responseXML);
+        }
+        if (datetype === 'json') {
+          success && success(JSON.parse(xhr.responseText));
+        }
+      }
+      if (xhr.status === 404) {
+        fail && fail(xhr.responseText);
+      }
+    }
+  };
+}
 
 export default request;
