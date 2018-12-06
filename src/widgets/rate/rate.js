@@ -151,7 +151,7 @@ export const createCalssArray = (num: number | string, condition?: Object): Arra
   if (!ObjectUtils.isString(num) && num) {
     num = Number(num);
   }
-  const classNames = getDefaultClassNames(num);
+  const classNames = getDefaultClassNames(Number(num));
 
   if (!condition) return classNames;
 
@@ -288,7 +288,7 @@ class Rate extends React.Component<RateProps, any> {
     this.updateTemporary(this.state);
   }
 
-  updateTemporary(data: Object) {
+  updateTemporary(data: ?Object) {
     this.temporary = JSON.stringify(data);
   }
 
