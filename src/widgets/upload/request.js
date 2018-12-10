@@ -34,6 +34,15 @@ export function getStringFromObject(data: Object): string {
   return resultString;
 }
 
+function addEventListener(
+  target: Object,
+  event: string,
+  func: Function,
+  useCapture?: boolean = false
+) {
+  target.addEventListener(event, func, useCapture);
+}
+
 function request(dataObject: Object) {
   const { url } = dataObject;
   if (!url) {
@@ -66,28 +75,30 @@ function request(dataObject: Object) {
       xhr.setRequestHeader('Content-Type","application/x-www-form-urlencoded');
     }
     const { onProgress, onComplete } = dataObject;
-    if (onProgress) xhr.upload.addEventListener('progress', onProgress, false);
-    if (onComplete) xhr.upload.addEventListener('load', onComplete, false);
+    if (onProgress) addEventListener(xhr.upload, 'progress', onProgress, false);
+    if (onComplete) addEventListener(xhr, 'load', onComplete, false);
+    // if (onProgress) xhr.upload.addEventListener('progress', onProgress, false);
+    // if (onComplete) xhr.addEventListener('load', onComplete, false);
 
     xhr.send(params);
   }
-  const { success, fail, datetype = 'text' } = dataObject;
+  const { onSuccess, onFail, datetype = 'text' } = dataObject;
   const { readyState, status } = xhr;
   xhr.onreadystatechange = function() {
     if (readyState === 4) {
       if (status === 200) {
         if (datetype === 'text') {
-          success && success(xhr.responseText);
+          onSuccess && onSuccess(xhr.responseText);
         }
         if (datetype === 'xml') {
-          success && success(xhr.responseXML);
+          onSuccess && onSuccess(xhr.responseXML);
         }
         if (datetype === 'json') {
-          success && success(JSON.parse(xhr.responseText));
+          onSuccess && onSuccess(JSON.parse(xhr.responseText));
         }
       }
       if (xhr.status === 404) {
-        fail && fail(xhr.responseText);
+        onFail && onFail(xhr.responseText);
       }
     }
   };

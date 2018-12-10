@@ -13,7 +13,7 @@ import Widget from '../consts/index';
 import styled from 'styled-components';
 
 class UploadDemo extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
     this.state = {};
   }
@@ -21,6 +21,10 @@ class UploadDemo extends React.Component<any, any> {
     const defaultProps = {
       listType: 'default',
       inputId: 'upload',
+      multiple: true,
+      onChange: e => {
+        console.log('cbk', e);
+      },
     };
     const defaultProps1 = {
       listType: 'button',
@@ -52,16 +56,16 @@ class UploadDemo extends React.Component<any, any> {
     return (
       <div>
         <Upload {...defaultProps} />
-        <Upload {...defaultProps1} />
-        <Upload {...defaultProps2} />
-        <Upload {...defaultProps3} />
-        <Upload {...defaultProps4} />
-        <Upload {...defaultProps5} />
-        <Upload {...defaultProps6} />
+        {/*<Upload {...defaultProps1} />*/}
+        {/*<Upload {...defaultProps2} />*/}
+        {/*<Upload {...defaultProps3} />*/}
+        {/*<Upload {...defaultProps4} />*/}
+        {/*<Upload {...defaultProps5} />*/}
+        {/*<Upload {...defaultProps6} />*/}
       </div>
     );
   }
-  setStateValue = (target: sring, val: number) => {
+  setStateValue = (target: string, val: number) => {
     this.setState({
       [target]: val,
     });

@@ -86,17 +86,19 @@ exports[`Rate Test css 1`] = `
 
 <div>
   <div
-    className="c0"
+    onClick={[Function]}
   >
-    <input
-      accept="*"
-      className="c1"
-      id="upload"
-      multiple={false}
-      onChange={[Function]}
-      type="file"
-    />
-    <label>
+    <div
+      className="c0"
+    >
+      <input
+        accept="*"
+        className="c1"
+        id="upload"
+        multiple={false}
+        onChange={[Function]}
+        type="file"
+      />
       <div
         className="default c2"
       >
@@ -105,7 +107,7 @@ exports[`Rate Test css 1`] = `
           className="lugia-icon-financial_upload right c3 c4"
         />
       </div>
-    </label>
+    </div>
   </div>
 </div>
 `;

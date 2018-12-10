@@ -10,10 +10,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 type propTypes = {
-  accept: string,
-  multiple: boolean,
-  onChange: Function,
+  accept?: string,
+  multiple?: boolean,
+  onChange?: Function,
   inputId: string,
+  getChangeInfo: Function,
 };
 
 const Input = styled.input`
@@ -26,28 +27,35 @@ class FileInput extends React.Component<propTypes, any> {
   static defaultProps = {
     accept: '*',
     multiple: false,
-    onChange: () => {},
+    onChange: () => true,
     inputId: 'upload',
   };
   constructor(props: Object) {
     super(props);
     this.input = React.createRef();
   }
-
+  componentDidMount() {
+    const { getRegisterInput } = this.props;
+    getRegisterInput(this.input);
+  }
   render() {
-    const { accept, onChange, multiple, inputId } = this.props;
-
+    const { accept, multiple, inputId } = this.props;
     return (
       <Input
         innerRef={this.input}
         accept={accept}
         multiple={multiple}
-        onChange={onChange}
+        onChange={this.handleChange}
         id={inputId}
         type="file"
       />
     );
   }
+
+  handleChange = (e: Object) => {
+    const { getChangeInfo } = this.props;
+    getChangeInfo(e);
+  };
 }
 
 export default FileInput;

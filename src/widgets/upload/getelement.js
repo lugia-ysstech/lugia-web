@@ -200,7 +200,7 @@ const AreaTextBlue = styled.span`
   border-bottom: 1px solid #684fff;
 `;
 
-const getIconByType = (status: string, type?: number): ?Object | string => {
+export const getIconByType = (status: string, type?: number): ?Object | string => {
   if (!status) return;
   if (type === 1 && status === 'default') return '上传';
   if (status === 'default') {
@@ -229,38 +229,44 @@ const getIconByType = (status: string, type?: number): ?Object | string => {
   }
 };
 
-export const getElement = (props: Object, state: Object): ?Object => {
-  const { listType, getTheme, size, inputId } = props;
-  const { status } = state;
-  const className = status;
+const getElement = (that: Object): ?Object => {
+  const { props, state, getRegisterInput } = that;
+  const { listType } = props;
   if (!listType) return;
+  const { classNameStatus, getChangeInfo } = state;
+  const { getTheme, size, inputId } = props;
   if (listType === 'default') {
     return (
       <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} />
-        <label for={inputId}>
-          <InputContent className={className}>
-            请将文件拖到此处 {getIconByType(status)}
-          </InputContent>
-        </label>
+        <FileInput
+          id={inputId}
+          {...props}
+          getChangeInfo={getChangeInfo}
+          getRegisterInput={getRegisterInput}
+        />
+        {/*<label for={inputId}>*/}
+        <InputContent className={classNameStatus}>
+          请将文件拖到此处 {getIconByType(classNameStatus)}
+        </InputContent>
+        {/*</label>*/}
       </Container>
     );
   }
   if (listType === 'both') {
     return (
       <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} />
+        <FileInput id={inputId} {...props} getChangeInfo={getChangeInfo} />
         <label for={inputId}>
-          <InputContent className={`${className} hasBtn`}>请将文件拖到此处</InputContent>
+          <InputContent className={`${classNameStatus} hasBtn`}>请将文件拖到此处</InputContent>
         </label>
-        <Button>{getIconByType(status, 1)}</Button>
+        <Button>{getIconByType(classNameStatus, 1)}</Button>
       </Container>
     );
   }
   if (listType === 'button') {
     return (
       <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} />
+        <FileInput id={inputId} {...props} getChangeInfo={getChangeInfo} />
         <label for={inputId}>
           <Button className="button">点击上传</Button>
         </label>
@@ -275,9 +281,9 @@ export const getElement = (props: Object, state: Object): ?Object => {
   if (listType === 'picture') {
     return (
       <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} />
+        <FileInput id={inputId} {...props} getChangeInfo={getChangeInfo} />
         <label for={inputId}>
-          <PictureView size={size}>{getIconByType('add')} </PictureView>
+          <PictureView size={size}> {getIconByType('add')} </PictureView>
         </label>
       </Container>
     );
@@ -285,7 +291,7 @@ export const getElement = (props: Object, state: Object): ?Object => {
   if (listType === 'area') {
     return (
       <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} />
+        <FileInput id={inputId} {...props} getChangeInfo={getChangeInfo} />
         <label for={inputId}>
           <AreaView size={'bigger'}>
             {getIconByType('uploadcloud')}
@@ -298,3 +304,48 @@ export const getElement = (props: Object, state: Object): ?Object => {
     );
   }
 };
+
+type ElementProps = {};
+type stateProps = {
+  status: string,
+  getChangeInfo: Function,
+};
+class GetElement extends React.Component<any, stateProps> {
+  static defaultProps = {};
+  componentDidMount() {}
+  static getDerivedStateFromProps(defProps: any, stateProps: any) {
+    const getChangeInfoDefault = (e: Object) => {
+      const { setChoosedFile } = defProps;
+      if (setChoosedFile) {
+        setChoosedFile(e);
+      }
+    };
+    if (!stateProps) {
+      return {
+        classNameStatus: 'default',
+        getChangeInfo: getChangeInfoDefault,
+      };
+    }
+    const { classNameStatus, getChangeInfo } = stateProps;
+    return {
+      classNameStatus: 'classNameStatus' in stateProps ? classNameStatus : 'default',
+      getChangeInfo: 'getChangeInfo' in stateProps ? getChangeInfo : getChangeInfoDefault,
+    };
+  }
+  getRegisterInput = (input: Object) => {
+    this.setState({
+      inputElement: input.current,
+    });
+  };
+  render() {
+    return <div onClick={this.handleCick}>{getElement(this)}</div>;
+  }
+
+  handleCick = (e: Object) => {
+    console.log(this);
+    const { inputElement } = this.state;
+    inputElement.click();
+  };
+}
+
+export default GetElement;

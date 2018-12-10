@@ -4,10 +4,10 @@
  */
 
 import React from 'react';
-import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import Upload, { getClassName, findIndexfromkey, checkKeyInArr, getListIconType } from '../upload';
+import Upload, { getClassName, getIndexInArray, isKeyInArray, getListIconType } from '../upload';
 import { getRequestXHR, getStringFromObject, getParamsData } from '../request';
+import { getIconByType } from '../getelement';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -28,14 +28,14 @@ describe('Rate Test', () => {
     });
   }
   checkgetClassName(null, '');
-  checkgetClassName('normal', '');
-  checkgetClassName('default', '');
+  checkgetClassName('normal', 'normal');
+  checkgetClassName('default', 'default');
   checkgetClassName('loading', 'loading');
   checkgetClassName('done', 'done');
 
   function checkFindIndex(data: Array<string>, key: string, expectation: number) {
-    it('Function findIndexfromkey ', () => {
-      const res = findIndexfromkey(data, key.toLowerCase());
+    it('Function getIndexFromKey ', () => {
+      const res = getIndexInArray(data, key.toLowerCase());
       expect(res).toEqual(expectation);
     });
   }
@@ -46,21 +46,21 @@ describe('Rate Test', () => {
   checkFindIndex(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'ABC', -1);
   checkFindIndex(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'BMP', 5);
 
-  function funcheckKeyInArr(data: Array<string>, key: string, expectation: boolean) {
-    it('Function findIndexfromkey ', () => {
-      const res = checkKeyInArr(data, key.toLowerCase());
+  function checkKeyInArr(data: Array<string>, key: string, expectation: boolean) {
+    it('Function isKeyInArr ', () => {
+      const res = isKeyInArray(data, key.toLowerCase());
       expect(res).toEqual(expectation);
     });
   }
-  funcheckKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jpg', true);
-  funcheckKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jPg', true);
-  funcheckKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'JPG', true);
-  funcheckKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jpEg', true);
-  funcheckKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'ABC', false);
-  funcheckKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'BMP', true);
+  checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jpg', true);
+  checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jPg', true);
+  checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'JPG', true);
+  checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jpEg', true);
+  checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'ABC', false);
+  checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'BMP', true);
 
   function checkGetListIconType(fileName: ?string, expectation: string) {
-    it('Function findIndexfromkey ', () => {
+    it('Function getListIconType ', () => {
       const res = getListIconType(fileName);
       expect(res).toEqual(expectation);
     });
@@ -101,4 +101,20 @@ describe('Rate Test', () => {
   }
   checkGetParamsData({ data: { a: 123, b: 223 }, name: 'file', file: '666' });
   checkGetParamsData({ data: { a: 777, b: 888 }, name: 'abc', file: '567' });
+  // getIconByType
+  function checkGetIconByType(status: string, expectation: boolean, type?: number) {
+    it('Function GetIconByType ', () => {
+      const res = getIconByType(status, type);
+      console.log(res);
+      if (type === 1 && status === 'default') {
+        expect(res).toEqual(expectation);
+      } else {
+        expect(res instanceof Object).toEqual(expectation);
+      }
+    });
+  }
+  checkGetIconByType('default', '上传', 1);
+  checkGetIconByType('default', true);
+  checkGetIconByType('loading', true);
+  checkGetIconByType('done', true);
 });
