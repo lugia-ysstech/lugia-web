@@ -23,7 +23,7 @@ const responsiveMap: { [key: screensType]: string } = {
 };
 
 let enquire;
-if (typeof window !== undefined) {
+if (typeof window !== 'undefined') {
   const matchMediaPolyfill = (mediaQuery: string) => {
     return {
       media: mediaQuery,
