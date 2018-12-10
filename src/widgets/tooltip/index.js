@@ -14,7 +14,9 @@ import {
   getFontColor,
   getColor,
   getArrow,
-  getSize,
+  getNewArrow,
+  getContentAfter,
+  getDeg,
   Left,
   Right,
   Down,
@@ -31,11 +33,13 @@ const ToolTrigger = styled(Trigger)`
 `;
 
 const Content = styled.div`
-  ${getSize};
+  position: relative;
   font-size: ${FontSize};
   line-height: 1;
   color: ${getColor};
   box-sizing: border-box;
+  z-index: 2;
+  ${getContentAfter};
 `;
 
 const Arrow = styled.div`
@@ -46,6 +50,18 @@ const Arrow = styled.div`
   font-size: ${FontSize};
   line-height: 1;
   color: ${getColor};
+`;
+
+const NewArrow = styled.div`
+  ${getNewArrow};
+  position: absolute;
+  border-style: solid;
+  border-width: ${em(8)};
+  border-top-left-radius: ${RadiusSize};
+  border-color: ${getColor} transparent transparent ${getColor};
+  transform: rotateZ(${getDeg});
+  box-shadow: 0 0 ${em(6)} rgba(0, 0, 0, 0.15);
+  z-index: -1;
 `;
 
 const Message = styled.div`
@@ -63,19 +79,7 @@ const Message = styled.div`
   box-shadow: 0 ${em(2)} ${em(8)} rgba(0, 0, 0, 0.15);
 `;
 
-type TooltipProps = {
-  placement: string,
-  action: Array<string>,
-  children: any,
-  title: any,
-  getTheme: Function,
-};
-
-class Tooltip extends React.Component<TooltipProps, any> {
-  getTargetDom() {
-    return document.getElementById('root');
-  }
-
+class Tooltip extends React.Component<TooltipProps, TooltipState> {
   static displayName = Widget.Tooltip;
 
   static defaultProps = {
@@ -87,33 +91,44 @@ class Tooltip extends React.Component<TooltipProps, any> {
   trigger: Object;
 
   render() {
-    const { placement, action, title } = this.props;
-    const { getTheme } = this.props;
-    const theme = getTheme();
+    const { placement, action, title, isPop, getTheme, children, visible } = this.props;
     const fx = this.getFx(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
-
     return (
       <ToolTrigger
+        popupVisible={visible}
+        isPop={isPop}
         align={placement}
-        fx={fx}
         innerRef={getTarget}
+        onPopupVisibleChange={this.onVisibleChange}
         action={action}
+        fx={fx}
         popup={
-          <Content theme={theme}>
-            <Arrow fx={fx} theme={theme} />
-            <Message theme={theme}>{title}</Message>
+          <Content theme={getTheme()} isPop={isPop} fx={fx} placement={placement}>
+            {this.getArrow(fx)}
+            <Message theme={getTheme()}>{title}</Message>
           </Content>
         }
       >
-        {this.props.children}
+        {children}
       </ToolTrigger>
     );
   }
-
-  onSelectAlign = (align: string) => () => {
-    this.setState({ align });
+  onVisibleChange = (visible: boolean) => {
+    const { onVisibleChange } = this.props;
+    this.setState({ visible });
+    onVisibleChange && onVisibleChange(visible);
   };
+  getArrow(fx) {
+    const { placement, isPop } = this.props;
+    const { getTheme } = this.props;
+    const theme = getTheme();
+    if (isPop === true) {
+      return <NewArrow placement={placement} fx={fx} theme={theme} />;
+    }
+    return <Arrow fx={fx} theme={theme} />;
+  }
+
   getFx = (placement: string) => {
     if (!placement) {
       return 'down';
