@@ -22,6 +22,7 @@ export type TransferProps = {
   canCheckKeys: string[],
   needCancelBox?: boolean,
   type: 'panel' | 'tree',
+  direction: 'left' | 'right',
 };
 export type TransferState = {
   inputValue: string,

@@ -61,7 +61,6 @@ export default ThemeProvider(
           mapData: utilMapData.mapData,
         };
       }
-
       const obj = { target: [], mapData: [] };
       const { target: treeData, mapData: treeMapData } = getTreeData(data, obj);
       return {
@@ -116,7 +115,7 @@ export default ThemeProvider(
       } = this.state;
       const theSourceData = this.sourceInputValue ? sourceSearchData : sourceData;
       const theTargetData = this.targetInputValue ? targetSearchData : targetData;
-
+      console.info('render -> sourceSelectedKeys', sourceSelectedKeys);
       return (
         <TransFerWrap>
           <TransFer
@@ -129,6 +128,7 @@ export default ThemeProvider(
             onCheckAll={this.checkAllForLeft}
             canCheckKeys={sourceCheckKeys}
             onSearch={this.searchCallbackForLeft}
+            direction="left"
           />
           <OperationBtn>
             <Button
@@ -158,6 +158,7 @@ export default ThemeProvider(
             canCheckKeys={targetCheckKeys}
             onSearch={this.searchCallbackForRight}
             needCancelBox
+            direction="right"
           />
         </TransFerWrap>
       );
@@ -166,13 +167,15 @@ export default ThemeProvider(
       const selectKey = item.value;
       const { onSelectChange } = this.props;
       const { sourceSelectedKeys, targetSelectedKeys } = this.state;
+      console.info('state ->sourceSelectedKeys', sourceSelectedKeys);
+      console.info('selectKey', selectKey);
       const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
       const selectKeys = this.checkSelectKeys(sourceSelectedKeys, selectKey);
       if (hasSourceSelectedKeys) {
         onSelectChange && onSelectChange(selectKeys, targetSelectedKeys);
         return;
       }
-
+      console.info('selectKeys', selectKeys);
       this.setState(
         { sourceSelectedKeys: selectKeys },
         () => onSelectChange && onSelectChange(selectKeys, targetSelectedKeys)
@@ -199,12 +202,14 @@ export default ThemeProvider(
     checkSelectKeys = (stateKeys: string[], key: string): string[] => {
       const isRepeat = stateKeys.includes(key);
       const data = [...stateKeys];
+      console.info('stateKeys', stateKeys, 'key', key, 'data', data);
       if (isRepeat) {
         const index = data.indexOf(key);
         data.splice(index, 1);
         return data;
       }
       data.push(key);
+
       return data;
     };
 

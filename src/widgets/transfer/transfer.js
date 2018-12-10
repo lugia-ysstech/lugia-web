@@ -30,6 +30,7 @@ export default ThemeProvider(
     }
     onClick = (e, keys, item) => {
       const { onSelect } = this.props;
+      console.info(keys, item);
       onSelect && onSelect(e, keys, item);
     };
     render() {
@@ -45,9 +46,13 @@ export default ThemeProvider(
         },
       };
       const menuView = {
-        // [Widget.Menu]: {
-        //   height: 190,
-        // },
+        [Widget.Menu]: {
+          width: 290,
+          height: 310,
+        },
+        [Widget.Tree]: {
+          height: 310,
+        },
       };
       const {
         showSearch,
@@ -56,6 +61,7 @@ export default ThemeProvider(
         canCheckKeys,
         needCancelBox = false,
         type,
+        direction,
       } = this.props;
       const { inputValue } = this.state;
       const inputConfig = {};
@@ -69,22 +75,20 @@ export default ThemeProvider(
           : length
           ? isContained(selectedKeys, canCheckKeys)
           : isContained(data, selectedKeys);
-      // const newData = [];
-      // forData(testData, newData);
-      // console.info(newData);
-      console.info(
-        getTreeData(
-          [
-            { text: '1', value: '1' },
-            {
-              text: '2',
-              value: '2',
-              children: [{ text: '2.1', value: '2.1' }, { text: '2.2', value: '2.2' }],
-            },
-          ],
-          { target: [], mapData: {} }
-        )
-      );
+
+      // console.info(
+      //   getTreeData(
+      //     [
+      //       { text: '1', value: '1' },
+      //       {
+      //         text: '2',
+      //         value: '2',
+      //         children: [{ text: '2.1', value: '2.1' }, { text: '2.2', value: '2.2' }],
+      //       },
+      //     ],
+      //     { target: [], mapData: {} }
+      //   )
+      // );
       const cancelBox = needCancelBox ? (
         <CancelBox>
           <CheckBox cancel>取消项</CheckBox>
@@ -117,8 +121,8 @@ export default ThemeProvider(
 
           {data.length > 0 ? (
             <MenuWrap>
-              {type === 'panel' ? (
-                <Theme config={menuView}>
+              <Theme config={direction === 'left' ? menuView : {}}>
+                {type === 'panel' ? (
                   <Menu
                     checkedCSS={'checkbox'}
                     mutliple={true}
@@ -126,16 +130,16 @@ export default ThemeProvider(
                     selectedKeys={selectedKeys}
                     onClick={this.onClick}
                   />
-                </Theme>
-              ) : (
-                <Tree
-                  data={data}
-                  // value={['1.1.1.1.1']}
-                  expandAll
-                  mutliple
-                  onClick={this.handleTreeChange}
-                />
-              )}
+                ) : (
+                  <Tree
+                    data={data}
+                    // value={['1.1.1.1.1']}
+                    expandAll
+                    mutliple
+                    onClick={this.handleTreeChange}
+                  />
+                )}
+              </Theme>
             </MenuWrap>
           ) : (
             <NoData style={{ height: '250px' }}>{inputValue ? '无匹配数据' : '无数据'}</NoData>
