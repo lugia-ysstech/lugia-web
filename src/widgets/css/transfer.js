@@ -21,6 +21,7 @@ export type TransferProps = {
   onCheckAll: Function,
   canCheckKeys: string[],
   needCancelBox?: boolean,
+  type: 'panel' | 'tree',
 };
 export type TransferState = {
   inputValue: string,

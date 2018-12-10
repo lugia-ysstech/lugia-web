@@ -28,6 +28,7 @@ export type GroupProps = {
   defaultSourceSelectedKeys?: string[],
   defaultTargetSelectedKeys?: string[],
   filterOption: (inputValue: string, option: Object) => {},
+  type?: 'tree' | 'panel',
 };
 export type GroupState = {
   inputValue: string,
@@ -42,6 +43,7 @@ export type GroupState = {
   targetSearchData: Object[],
   sourceCheckKeys: string[],
   targetCheckKeys: string[],
+  treeData: Object[],
 };
 type CSSProps = {
   isWrap?: boolean,

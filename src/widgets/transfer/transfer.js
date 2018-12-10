@@ -16,7 +16,7 @@ import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
 import { TransFer, MenuWrap, Check, CheckText, NoData, CancelBox } from '../css/transfer';
-import { isContained, forData } from './utils';
+import { isContained, getTreeData } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -55,6 +55,7 @@ export default ThemeProvider(
         data = [],
         canCheckKeys,
         needCancelBox = false,
+        type,
       } = this.props;
       const { inputValue } = this.state;
       const inputConfig = {};
@@ -66,13 +67,13 @@ export default ThemeProvider(
         selectedKeys.length === 0
           ? false
           : length
-            ? isContained(selectedKeys, canCheckKeys)
-            : isContained(data, selectedKeys);
+          ? isContained(selectedKeys, canCheckKeys)
+          : isContained(data, selectedKeys);
       // const newData = [];
       // forData(testData, newData);
       // console.info(newData);
       console.info(
-        forData(
+        getTreeData(
           [
             { text: '1', value: '1' },
             {
@@ -116,22 +117,25 @@ export default ThemeProvider(
 
           {data.length > 0 ? (
             <MenuWrap>
-              <Theme config={menuView}>
-                <Menu
-                  checkedCSS={'checkbox'}
-                  mutliple={true}
+              {type === 'panel' ? (
+                <Theme config={menuView}>
+                  <Menu
+                    checkedCSS={'checkbox'}
+                    mutliple={true}
+                    data={data}
+                    selectedKeys={selectedKeys}
+                    onClick={this.onClick}
+                  />
+                </Theme>
+              ) : (
+                <Tree
                   data={data}
-                  selectedKeys={selectedKeys}
-                  onClick={this.onClick}
+                  // value={['1.1.1.1.1']}
+                  expandAll
+                  mutliple
+                  onClick={this.handleTreeChange}
                 />
-              </Theme>
-              {/*<Tree*/}
-              {/*data={newData}*/}
-              {/*// value={['1.1.1.1.1']}*/}
-              {/*expandAll*/}
-              {/*mutliple*/}
-              {/*onClick={this.handleTreeChange}*/}
-              {/*/>*/}
+              )}
             </MenuWrap>
           ) : (
             <NoData style={{ height: '250px' }}>{inputValue ? '无匹配数据' : '无数据'}</NoData>
@@ -148,9 +152,9 @@ export default ThemeProvider(
       });
       onSearch && onSearch(newValue);
     };
-    // handleTreeChange = (value, a, b, c) => {
-    //   console.info(value, a, b, c);
-    // };
+    handleTreeChange = (value, a, b, c) => {
+      console.info(value, a, b, c);
+    };
   },
   Widget.Transfer
 );

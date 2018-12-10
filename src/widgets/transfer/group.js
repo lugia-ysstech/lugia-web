@@ -12,7 +12,7 @@ import TransFer from './transfer';
 import Button from '../button';
 import { TransFerWrap, OperationBtn, BtnText } from '../css/transfer-group';
 import type { GroupProps, GroupState } from '../css/transfer-group';
-import { getTruthValue, getSourceDataAndTargetData, splitSelectKeys } from './utils';
+import { getTruthValue, getSourceDataAndTargetData, splitSelectKeys, getTreeData } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<GroupProps, GroupState> {
@@ -22,7 +22,7 @@ export default ThemeProvider(
     maping: boolean;
 
     static getDerivedStateFromProps(props, state) {
-      const { data = [] } = props;
+      const { data = [], type = 'panel' } = props;
       const sourceSelctKeys = getTruthValue(
         'sourceSelectedKeys',
         props,
@@ -36,43 +36,66 @@ export default ThemeProvider(
         'defaultTargetSelectedKeys'
       );
       const theTargetKeys = getTruthValue('targetKeys', props, state, 'defaultTargetKeys');
-      const utilMapData = getSourceDataAndTargetData(data, theTargetKeys);
-      const { sourceData, targetData, sourceKeys, targetCheckKeys, sourceCheckKeys } = utilMapData;
-
-      return {
+      const commonState = {
         sourceSelectedKeys: sourceSelctKeys,
         targetSelectedKeys: targetSelctKeys,
         targetKeys: theTargetKeys,
-        sourceKeys,
-        sourceData,
-        targetData,
-        targetCheckKeys,
-        sourceCheckKeys,
-        mapData: utilMapData.mapData,
+      };
+      if (type === 'panel') {
+        const utilMapData = getSourceDataAndTargetData(data, theTargetKeys);
+        const {
+          sourceData,
+          targetData,
+          sourceKeys,
+          targetCheckKeys,
+          sourceCheckKeys,
+        } = utilMapData;
+
+        return {
+          ...commonState,
+          sourceKeys,
+          sourceData,
+          targetData,
+          targetCheckKeys,
+          sourceCheckKeys,
+          mapData: utilMapData.mapData,
+        };
+      }
+
+      const obj = { target: [], mapData: [] };
+      const { target: treeData, mapData: treeMapData } = getTreeData(data, obj);
+      return {
+        ...commonState,
+        mapData: treeMapData,
+        sourceData: treeData,
+        targetData: treeData,
       };
     }
     shouldComponentUpdate(nextProps: GroupProps, nextState: GroupState) {
       const {
+        type = 'panel',
         filterOption = (value: string, option: Object): boolean => {
           return option.value.indexOf(value) > -1;
         },
       } = nextProps;
-      if (nextState.targetKeys !== this.state.targetKeys) {
-        if (this.sourceInputValue) {
-          const SearchData = this.searchFilter(
-            nextState.sourceData,
-            this.sourceInputValue,
-            filterOption
-          );
-          this.setState({ sourceSearchData: SearchData });
-        }
-        if (this.targetInputValue) {
-          const SearchData = this.searchFilter(
-            nextState.targetData,
-            this.targetInputValue,
-            filterOption
-          );
-          this.setState({ targetSearchData: SearchData });
+      if (type === 'panel') {
+        if (nextState.targetKeys !== this.state.targetKeys) {
+          if (this.sourceInputValue) {
+            const SearchData = this.searchFilter(
+              nextState.sourceData,
+              this.sourceInputValue,
+              filterOption
+            );
+            this.setState({ sourceSearchData: SearchData });
+          }
+          if (this.targetInputValue) {
+            const SearchData = this.searchFilter(
+              nextState.targetData,
+              this.targetInputValue,
+              filterOption
+            );
+            this.setState({ targetSearchData: SearchData });
+          }
         }
       }
 
@@ -80,7 +103,7 @@ export default ThemeProvider(
     }
 
     render() {
-      const { showSearch } = this.props;
+      const { showSearch, type = 'panel' } = this.props;
       const {
         sourceData,
         targetData,
@@ -98,6 +121,7 @@ export default ThemeProvider(
         <TransFerWrap>
           <TransFer
             key="1"
+            type={type}
             onSelect={this.handleSourceSelect}
             data={theSourceData}
             selectedKeys={sourceSelectedKeys}
@@ -125,6 +149,7 @@ export default ThemeProvider(
           </OperationBtn>
           <TransFer
             key="2"
+            type={type}
             onSelect={this.handleTargetSelect}
             data={theTargetData}
             selectedKeys={targetSelectedKeys}
@@ -296,7 +321,7 @@ export default ThemeProvider(
           return option.value.indexOf(value) > -1;
         },
       } = this.props;
-      const { sourceData } = this.state;
+      const { sourceData = [] } = this.state;
       this.sourceInputValue = inputValue;
       if (inputValue) {
         const SearchData = this.searchFilter(sourceData, inputValue, filterOption);
@@ -311,7 +336,7 @@ export default ThemeProvider(
           return option.value.indexOf(value) > -1;
         },
       } = this.props;
-      const { targetData } = this.state;
+      const { targetData = [] } = this.state;
       this.targetInputValue = inputValue;
       if (inputValue) {
         const SearchData = this.searchFilter(targetData, inputValue, filterOption);

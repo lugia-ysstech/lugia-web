@@ -75,12 +75,12 @@ export function isContained(a: Array<any>, b: string[]) {
   }
   return true;
 }
-export function forData(
+export function getTreeData(
   data: Object[],
   targetObj: Object,
   parentKey?: string,
   parentPath?: string[]
-) {
+): Object {
   if (data && data.length) {
     const { target = [], mapData = {} } = targetObj;
     data.forEach(item => {
@@ -110,7 +110,7 @@ export function forData(
       } else {
         newObj.alwaysExpanded = item.alwaysExpanded;
         target.push(newObj);
-        forData(children, targetObj, item.value, pidArr);
+        getTreeData(children, targetObj, item.value, pidArr);
       }
     });
 
@@ -119,6 +119,18 @@ export function forData(
 
   return { target: [], mapData: {} };
 }
-// export function forData(){
-//
-// };
+export function getCancelItem(value: string[], mapData: Object, displayValue?: string[]): Object[] {
+  const hasValue = value && value.length;
+  if (hasValue) {
+    const cancelItem = [];
+    if (displayValue && displayValue.length) {
+      value.forEach((item, index) => {
+        if (!mapData[item]) {
+          cancelItem.push({ text: item, value: displayValue && displayValue[index] });
+        }
+      });
+    }
+    return cancelItem;
+  }
+  return [];
+}

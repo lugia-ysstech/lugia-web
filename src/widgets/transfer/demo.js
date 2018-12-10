@@ -19,6 +19,25 @@ const data = [
   { text: '选项9', value: '选项9', disabled: false },
   { text: '选项0', value: '选项0', disabled: true },
 ];
+const treeData = [
+  { text: '1', value: '1' },
+  {
+    text: '2',
+    value: '2',
+    children: [
+      {
+        text: '2.1',
+        value: '2.1',
+        children: [{ text: '2.1.1', value: '2.1.1' }, { text: '2.2.2', value: '2.2.2' }],
+      },
+      {
+        text: '2.2',
+        value: '2.2',
+        children: [{ text: '2.2.1', value: '2..2.1' }, { text: '2.2.2', value: '2.2.2' }],
+      },
+    ],
+  },
+];
 
 export default class TransferDemo extends React.Component<any, any> {
   constructor() {
@@ -79,6 +98,7 @@ export default class TransferDemo extends React.Component<any, any> {
           defaultTargetSelectedKeys={['选项2']}
           defaultTargetKeys={['选项2', '选项3', '选项7']}
         />
+        <Transfer data={treeData} type="tree" showSearch />
       </div>
     );
   }
