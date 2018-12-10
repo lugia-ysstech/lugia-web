@@ -77,38 +77,47 @@ export function isContained(a: Array<any>, b: string[]) {
 }
 export function forData(
   data: Object[],
-  target: Object[],
-  parentKey?: string[],
+  targetObj: Object,
+  parentKey?: string,
   parentPath?: string[]
 ) {
-  data.map((item, index) => {
-    const { children } = item;
-    const newObj = {};
-    newObj.key = item.value;
-    newObj.title = item.text;
-    let pidArr;
-    if (!parentKey) {
-      newObj.pid = undefined;
-      newObj.path = undefined;
-      pidArr = [];
-    } else {
-      newObj.pid = parentKey;
-      if (parentPath.indexOf(parentKey) === -1) {
-        parentPath.push(parentKey);
+  if (data && data.length) {
+    const { target = [], mapData = {} } = targetObj;
+    data.forEach(item => {
+      const { children } = item;
+      const newObj = {};
+      newObj.key = item.value;
+      newObj.title = item.text;
+      let pidArr;
+      if (!parentKey) {
+        newObj.pid = undefined;
+        newObj.path = undefined;
+        pidArr = [];
+      } else {
+        if (parentPath) {
+          newObj.pid = parentKey;
+          if (parentPath.indexOf(parentKey) === -1) {
+            parentPath.push(parentKey);
+          }
+          pidArr = [...parentPath];
+          newObj.path = pidArr.join('/');
+        }
       }
-      pidArr = [...parentPath];
-      newObj.path = pidArr.join('/');
-    }
+      if (!children || children.length === 0) {
+        newObj.isLeaf = true;
+        target.push(newObj);
+        mapData[item.value] = item;
+      } else {
+        newObj.alwaysExpanded = item.alwaysExpanded;
+        target.push(newObj);
+        forData(children, targetObj, item.value, pidArr);
+      }
+    });
 
-    if (!children || children.length === 0) {
-      newObj.isLeaf = true;
-      target.push(newObj);
-    } else {
-      newObj.alwaysExpanded = item.alwaysExpanded;
-      target.push(newObj);
-      forData(children, target, item.value, pidArr);
-    }
-  });
+    return targetObj;
+  }
+
+  return { target: [], mapData: {} };
 }
 // export function forData(){
 //

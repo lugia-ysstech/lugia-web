@@ -71,6 +71,19 @@ export default ThemeProvider(
       // const newData = [];
       // forData(testData, newData);
       // console.info(newData);
+      console.info(
+        forData(
+          [
+            { text: '1', value: '1' },
+            {
+              text: '2',
+              value: '2',
+              children: [{ text: '2.1', value: '2.1' }, { text: '2.2', value: '2.2' }],
+            },
+          ],
+          { target: [], mapData: {} }
+        )
+      );
       const cancelBox = needCancelBox ? (
         <CancelBox>
           <CheckBox cancel>取消项</CheckBox>

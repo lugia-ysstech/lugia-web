@@ -13,7 +13,13 @@ import Adapter from 'enzyme-adapter-react-16';
 import TransferDemo from '../demo';
 import renderer from 'react-test-renderer';
 import Transfer from '../group';
-import { getSourceDataAndTargetData, getTruthValue, splitSelectKeys, isContained } from '../utils';
+import {
+  getSourceDataAndTargetData,
+  getTruthValue,
+  splitSelectKeys,
+  isContained,
+  forData,
+} from '../utils';
 
 const { expect: exp } = chai;
 
@@ -116,6 +122,28 @@ describe('Transfer', () => {
     // expect(result2).toBe(false);
     const result3 = isContained(['1'], ['1', '2']);
     expect(result3).toBe(false);
+  });
+
+  it('Transfer -> utils/forData', () => {
+    const result = forData([], { target: [] }).target;
+    expect(result).toEqual([]);
+    const result1 = forData(
+      [
+        { text: '1', value: '1' },
+        {
+          text: '2',
+          value: '2',
+          children: [{ text: '2.1', value: '2.1' }, { text: '2.2', value: '2.2' }],
+        },
+      ],
+      { target: [] }
+    ).target;
+    expect(result1).toEqual([
+      { key: '1', title: '1', pid: undefined, path: undefined, isLeaf: true },
+      { key: '2', title: '2', pid: undefined, path: undefined, alwaysExpanded: undefined },
+      { key: '2.1', title: '2.1', pid: '2', path: '2', isLeaf: true },
+      { key: '2.2', title: '2.2', pid: '2', path: '2', isLeaf: true },
+    ]);
   });
 
   it('Transfer: state -> sourceSelectedKeys targetSelectedKeys', () => {

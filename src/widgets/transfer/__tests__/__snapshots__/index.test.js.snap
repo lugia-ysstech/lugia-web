@@ -25,7 +25,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c3:hover > span span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c22 {
@@ -45,6 +45,21 @@ exports[`Transfer css 1`] = `
 
 .c22:hover > span span {
   border: 1px solid #e8e8e8;
+}
+
+.c34 {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333333;
+  width: none;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 2.142857142857143em;
 }
 
 .c4 {
@@ -94,14 +109,14 @@ exports[`Transfer css 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c6:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c6::after {
@@ -139,7 +154,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c20:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c20::after {
@@ -199,7 +214,41 @@ exports[`Transfer css 1`] = `
   content: ' ';
 }
 
-.c34 {
+.c35 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.2857142857142858em;
+  height: 1.2857142857142858em;
+  border-radius: 0.14285714285714288em;
+  background-color: #c0c8ff;
+  border: 1px solid #c0c8ff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c35::after {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0.35714285714285715em;
+  top: 0.14285714285714288em;
+  width: 0.4285714285714286em;
+  height: 0.7142857142857143em;
+  -webkit-transform: rotate(45deg) scale(0);
+  -ms-transform: rotate(45deg) scale(0);
+  transform: rotate(45deg) scale(0);
+  -webkit-transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+  display: table;
+  border: 0.14285714285714288em solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c37 {
   position: relative;
   box-sizing: border-box;
   top: 0;
@@ -214,11 +263,11 @@ exports[`Transfer css 1`] = `
   transition: all 0.3s;
 }
 
-.c34:hover {
+.c37:hover {
   border: 1px solid #e8e8e8;
 }
 
-.c34::after {
+.c37::after {
   position: absolute;
   box-sizing: border-box;
   left: 0.35714285714285715em;
@@ -237,7 +286,7 @@ exports[`Transfer css 1`] = `
   content: ' ';
 }
 
-.c36 {
+.c39 {
   position: relative;
   box-sizing: border-box;
   top: 0;
@@ -246,17 +295,17 @@ exports[`Transfer css 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
-.c36:hover {
-  border: 1px solid #684fff;
+.c39:hover {
+  border: 1px solid #4d63ff;
 }
 
-.c36::after {
+.c39::after {
   position: absolute;
   box-sizing: border-box;
   left: 0.35714285714285715em;
@@ -333,14 +382,14 @@ exports[`Transfer css 1`] = `
 }
 
 .c21:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c21:hover:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
-.c33 {
+.c36 {
   box-sizing: border-box;
   position: relative;
   display: block;
@@ -356,22 +405,22 @@ exports[`Transfer css 1`] = `
   transition: background 0.3s ease;
 }
 
-.c33:hover {
+.c36:hover {
   background-color: #edf0fe;
   font-weight: 900;
 }
 
-.c33:hover:after {
+.c36:hover:after {
   color: #d0c8c8;
 }
 
-.c35 {
+.c38 {
   box-sizing: border-box;
   position: relative;
   display: block;
   height: 2.916666666666667em;
   font-weight: 400;
-  color: #684fff;
+  color: #4d63ff;
   font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
@@ -381,17 +430,17 @@ exports[`Transfer css 1`] = `
   transition: background 0.3s ease;
 }
 
-.c35:hover {
+.c38:hover {
   background-color: #edf0fe;
   font-weight: 900;
 }
 
-.c35:after {
-  color: #684fff;
+.c38:after {
+  color: #4d63ff;
 }
 
-.c35:hover:after {
-  color: #684fff;
+.c38:hover:after {
+  color: #4d63ff;
 }
 
 .c26 {
@@ -482,7 +531,7 @@ exports[`Transfer css 1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -499,27 +548,27 @@ exports[`Transfer css 1`] = `
 }
 
 .c10:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c10::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c10::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c10:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c10::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c10:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -567,6 +616,11 @@ exports[`Transfer css 1`] = `
   text-align: center;
 }
 
+.c33 {
+  height: 5em;
+  border: 1px solid #e8e8e8;
+}
+
 .c29 {
   display: inline-block;
   margin-bottom: 0;
@@ -587,7 +641,7 @@ exports[`Transfer css 1`] = `
   outline: 0;
   vertical-align: bottom;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   height: 2.666666666666667em;
   padding: 0.8333333333333334em;
@@ -598,17 +652,17 @@ exports[`Transfer css 1`] = `
 .c29:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c29:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c29:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c31 {
@@ -631,13 +685,13 @@ exports[`Transfer css 1`] = `
   outline: 0;
   vertical-align: bottom;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   height: 2.666666666666667em;
   padding: 0.8333333333333334em;
   font-size: 1em;
   border-radius: 0.33333333333333337em;
-  background-color: #cac2ff;
+  background-color: #c0c8ff;
   color: #ffffff;
   border: none;
   cursor: not-allowed;
@@ -646,21 +700,21 @@ exports[`Transfer css 1`] = `
 .c31:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c31:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c31:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c31:hover {
-  background-color: #cac2ff;
+  background-color: #c0c8ff;
   color: #ffffff;
   border: none;
 }
@@ -771,10 +825,6 @@ exports[`Transfer css 1`] = `
           >
             <ul
               className="c17"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
             >
               <li
                 checked={false}
@@ -1135,6 +1185,11 @@ exports[`Transfer css 1`] = `
         className="c29"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
         type="primary"
       >
         <span>
@@ -1150,6 +1205,11 @@ exports[`Transfer css 1`] = `
         className="c31"
         disabled={true}
         onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
         type="primary"
       >
         <span>
@@ -1235,6 +1295,35 @@ exports[`Transfer css 1`] = `
       >
         无数据
       </div>
+      <div
+        className="c33"
+      >
+        <label
+          className="c34"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="c4"
+            onClick={[Function]}
+          >
+            <input
+              className="c5"
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="c35"
+            />
+          </span>
+          <span
+            className="c7"
+          >
+            取消项
+          </span>
+        </label>
+      </div>
     </div>
   </div>
   <div
@@ -1313,10 +1402,6 @@ exports[`Transfer css 1`] = `
         >
           <ul
             className="c17"
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
           >
             <li
               checked={false}
@@ -1558,7 +1643,7 @@ exports[`Transfer css 1`] = `
             </li>
             <li
               checked={false}
-              className="c33"
+              className="c36"
               disabled={true}
               title="选项0"
             >
@@ -1582,7 +1667,7 @@ exports[`Transfer css 1`] = `
                     />
                     <span
                       checked={false}
-                      className="c34"
+                      className="c37"
                       disabled={true}
                     />
                   </span>
@@ -1605,6 +1690,11 @@ exports[`Transfer css 1`] = `
         className="c29"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
         type="primary"
       >
         <span>
@@ -1620,6 +1710,11 @@ exports[`Transfer css 1`] = `
         className="c29"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
         type="primary"
       >
         <span>
@@ -1704,14 +1799,10 @@ exports[`Transfer css 1`] = `
         >
           <ul
             className="c17"
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
           >
             <li
               checked={true}
-              className="c35"
+              className="c38"
               disabled={false}
               onClick={[Function]}
               onMouseEnter={[Function]}
@@ -1737,7 +1828,7 @@ exports[`Transfer css 1`] = `
                     />
                     <span
                       checked={true}
-                      className="c36"
+                      className="c39"
                       disabled={false}
                     />
                   </span>
@@ -1831,6 +1922,35 @@ exports[`Transfer css 1`] = `
             </li>
           </ul>
         </div>
+      </div>
+      <div
+        className="c33"
+      >
+        <label
+          className="c34"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <span
+            className="c4"
+            onClick={[Function]}
+          >
+            <input
+              className="c5"
+              onBlur={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="c35"
+            />
+          </span>
+          <span
+            className="c7"
+          >
+            取消项
+          </span>
+        </label>
       </div>
     </div>
   </div>
