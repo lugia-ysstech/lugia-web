@@ -125,15 +125,21 @@ describe('Rate Test', () => {
   }
   setStateValue(
     { classNameStatus: 'done', defaultText: '文件已上传成功！' },
-    { classNameStatus: 'done', defaultText: '文件已上传成功！', fileList: [] }
+    { classNameStatus: 'done', defaultText: '文件已上传成功！', fileList: [], isAllowUpload: true }
   );
   setStateValue(
     { classNameStatus: 'loading', defaultText: '文件正在上传！' },
-    { classNameStatus: 'loading', defaultText: '文件正在上传！', fileList: [] }
+    { classNameStatus: 'loading', defaultText: '文件正在上传！', fileList: [], isAllowUpload: true }
   );
   setStateValue(
     { classNameStatus: 'default', defaultText: '文件已上传成功！', abc: 'abc' },
-    { abc: 'abc', classNameStatus: 'default', defaultText: '文件已上传成功！', fileList: [] }
+    {
+      abc: 'abc',
+      classNameStatus: 'default',
+      defaultText: '文件已上传成功！',
+      fileList: [],
+      isAllowUpload: true,
+    }
   );
 
   function getFileList(props: Object | number, expectation: Array<Object>, data?: Array<Object>) {
@@ -183,4 +189,29 @@ describe('Rate Test', () => {
     });
   }
   uploadSuccess({ currentTarget: {} }, 'done', [{ id: 1, name: '文件11111.jpg', status: 'done' }]);
+
+  function isIdInArray(id: number, props: Array<Object>, expectation: boolean) {
+    it('Function isIdInArray ', () => {
+      const res = target.instance().isIdInArray(id, props);
+      expect(res).toEqual(expectation);
+    });
+  }
+  isIdInArray(1, [{ id: 1, name: '文件11111.jpg', status: 'default' }], true);
+  isIdInArray(2, [{ id: 1, name: '文件11111.jpg', status: 'default' }], false);
+  isIdInArray(1, [], false);
+
+  function setAutoUploadState(
+    props: boolean,
+    choosedFileList: ?Array<Object>,
+    expectation: boolean
+  ) {
+    it('Function setAutoUploadState ', () => {
+      target.instance().setStateValue({ choosedFile: choosedFileList });
+      target.instance().setAutoUploadState(props);
+      expect(target.state().isAllowUpload).toEqual(expectation);
+    });
+  }
+  setAutoUploadState(false, undefined, true);
+  setAutoUploadState(true, [new FormData()], true);
+  setAutoUploadState(false, [new FormData()], false);
 });

@@ -12,6 +12,12 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 
+const Title = styled.div`
+  font-size: 16px;
+  padding: 10px 0 0 10px;
+  border-top: 1px solid #ccc;
+`;
+
 class UploadDemo extends React.Component<any, any> {
   constructor(props: Object) {
     super(props);
@@ -44,6 +50,7 @@ class UploadDemo extends React.Component<any, any> {
       inputId: 'upload1',
       url: 'xxxx.test',
       multiple: true,
+      showFileList: true,
       fileList: [
         { id: 1, name: '文件11111.jpg', status: 'done' },
         { id: 4, name: '文件666.doc', status: 'fail', percent: 30 },
@@ -54,11 +61,14 @@ class UploadDemo extends React.Component<any, any> {
     const defaultProps2 = {
       listType: 'both',
       inputId: 'upload2',
+      showFileList: true,
+      autoUpload: false,
     };
     const defaultProps3 = {
       listType: 'picture',
       inputId: 'upload3',
       size: 'large',
+      accept: 'image/*',
     };
     const defaultProps4 = {
       listType: 'picture',
@@ -76,12 +86,19 @@ class UploadDemo extends React.Component<any, any> {
 
     return (
       <div>
+        <Title>默认： </Title>
         <Upload {...defaultProps} />
+        <Title>Button： </Title>
         <Upload {...defaultProps1} />
+        <Title>Both： </Title>
         <Upload {...defaultProps2} />
+        <Title>picture large accept(image)： </Title>
         <Upload {...defaultProps3} />
+        <Title>picture middle： </Title>
         <Upload {...defaultProps4} />
+        <Title>picture small： </Title>
         <Upload {...defaultProps5} />
+        <Title>area： </Title>
         <Upload {...defaultProps6} />
       </div>
     );

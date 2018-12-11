@@ -243,6 +243,13 @@ const AreaTextBlue = styled.span`
   padding: 0 4px;
   border-bottom: 1px solid #684fff;
 `;
+const getPreviewInfo = (file: any) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onloadend = function(e) {
+    return reader.result;
+  };
+};
 
 export const getListIconType = (fileName: ?string): string => {
   if (!fileName) return 'file';
@@ -330,7 +337,7 @@ const getElement = (that: Object): ?Object => {
   if (!listType) return;
   const { classNameStatus } = state;
   const { size, inputId, defaultText } = props;
-  const { getRegisterInput, getChangeInfo } = that;
+  const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
   if (listType === 'default') {
     return (
       <React.Fragment>
@@ -340,13 +347,14 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <InputContent className={classNameStatus}>
+        <InputContent className={classNameStatus} onClick={handleClickToUpload}>
           {getIconByType(classNameStatus)} {defaultText}
         </InputContent>
       </React.Fragment>
     );
   }
   if (listType === 'both') {
+    const { handleClickToSubmit } = that;
     return (
       <React.Fragment>
         <FileInput
@@ -355,10 +363,12 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <label>
-          <InputContent className={`${classNameStatus} hasBtn`}>{defaultText}</InputContent>
-        </label>
-        <Button>{getIconByType(classNameStatus, 1)}</Button>
+
+        <InputContent className={`${classNameStatus} hasBtn`} onClick={handleClickToUpload}>
+          {defaultText}
+        </InputContent>
+
+        <Button onClick={handleClickToSubmit}>{getIconByType(classNameStatus, 1)}</Button>
       </React.Fragment>
     );
   }
@@ -371,11 +381,14 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <Button className="button">点击上传</Button>
+        <Button className="button" onClick={handleClickToUpload}>
+          点击上传
+        </Button>
       </React.Fragment>
     );
   }
   if (listType === 'picture') {
+    const { fileList } = props;
     return (
       <React.Fragment>
         <FileInput
@@ -384,9 +397,10 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <label for={inputId}>
-          <PictureView size={size}> {getIconByType('add')} </PictureView>
-        </label>
+        <PictureView size={size} onClick={handleClickToUpload}>
+          {' '}
+          {getIconByType('add')} <img src={fileList[0].previewUrl} alt="" />{' '}
+        </PictureView>
       </React.Fragment>
     );
   }
@@ -399,14 +413,12 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <label for={inputId}>
-          <AreaView size={'bigger'}>
-            {getIconByType('uploadcloud')}
-            <AreaText>
-              请将文件拖到此处,或<AreaTextBlue>点击上传</AreaTextBlue>
-            </AreaText>
-          </AreaView>
-        </label>
+        <AreaView size={'bigger'} onClick={handleClickToUpload}>
+          {getIconByType('uploadcloud')}
+          <AreaText>
+            请将文件拖到此处,或<AreaTextBlue>点击上传</AreaTextBlue>
+          </AreaText>
+        </AreaView>
       </React.Fragment>
     );
   }
@@ -446,25 +458,26 @@ class GetElement extends React.Component<any, stateProps> {
   };
   getChangeInfo = (e: Object) => {
     const { setChoosedFile } = this.props;
-    if (setChoosedFile) {
-      setChoosedFile(e);
-    }
+    setChoosedFile && setChoosedFile(e);
   };
   render() {
     const { showFileList, fileList, getTheme } = this.props;
     return (
       <React.Fragment>
-        <Container theme={getTheme()} onClick={this.handleClick}>
-          {getElement(this)}
-        </Container>
+        {/*<Container theme={getTheme()} onClick={this.handleClick}>*/}
+        <Container theme={getTheme()}>{getElement(this)}</Container>
         <React.Fragment> {showFileList ? getFileList(fileList) : null}</React.Fragment>
       </React.Fragment>
     );
   }
 
-  handleClick = (e: Object) => {
+  handleClickToUpload = () => {
     const { inputElement } = this.state;
     inputElement.click();
+  };
+  handleClickToSubmit = () => {
+    const { setAutoUploadState } = this.props;
+    setAutoUploadState && setAutoUploadState(true);
   };
 }
 

@@ -85,10 +85,6 @@ exports[`Rate Test css 1`] = `
   margin-right: 10px;
 }
 
-.c6 {
-  width: 100%;
-}
-
 .c0 {
   width: 366px;
   position: relative;
@@ -100,7 +96,6 @@ exports[`Rate Test css 1`] = `
 >
   <div
     className="c1"
-    onClick={[Function]}
   >
     <input
       accept="*"
@@ -112,6 +107,7 @@ exports[`Rate Test css 1`] = `
     />
     <div
       className="default c3"
+      onClick={[Function]}
     >
       <i
         className="lugia-icon-financial_upload right c4 c5"
@@ -121,8 +117,5 @@ exports[`Rate Test css 1`] = `
     </div>
   </div>
    
-  <ul
-    className="c6"
-  />
 </div>
 `;
