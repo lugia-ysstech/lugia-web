@@ -459,6 +459,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { handleIsInMenu } = this.props;
     const isInMenuRange = Object.values(this.level2MenuInstance).some((instance: any) => {
       const domNode = findDOMNode(instance);
+      if (!domNode || !domNode.parentNode || !domNode.parentNode.parentNode) {
+        return false;
+      }
       return contains(domNode.parentNode.parentNode, target);
     });
     handleIsInMenu && handleIsInMenu(isInMenuRange);
