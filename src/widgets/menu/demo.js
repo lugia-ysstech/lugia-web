@@ -36,7 +36,7 @@ const data = [
       {
         text: '次级菜单4-1',
         value: '次级菜单4-1',
-        children: [{ test: '三级菜单4-1-1', value: '三级菜单4-1-1' }],
+        children: [{ text: '三级菜单4-1-1', value: '三级菜单4-1-1' }],
       },
     ],
   },
@@ -69,13 +69,16 @@ const data = [
   { text: '一级菜单9', value: '一级菜单9', disabled: true },
   { text: '一级菜单10', value: '一级菜单10', disabled: false },
 ];
+
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       items,
-      selectedKeys: ['一级菜单7'],
-      expandedPath: ['一级菜单7'],
+      // selectedKeys: ['一级菜单6/次级菜单6-2/三级菜单a/sub1'],
+      // expandedPath: ['一级菜单6/次级菜单6-2/三级菜单a/sub1'],
+      selectedKeys: [],
+      expandedPath: [],
       scrollerValue: 0,
       start: 0,
     };
@@ -83,21 +86,22 @@ export default class extends React.Component<any, any> {
 
   render() {
     const { items = [], selectedKeys, expandedPath } = this.state;
-    console.info('king menu demo', 'selectedKeys', selectedKeys, 'expandedPath', expandedPath);
     return (
       <div>
         <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
           <Menu
             separator={'/'}
             mutliple={false}
-            expandedPath={expandedPath}
             popupVisible={true}
+            // action={'click'}
             action={'hover'}
+            // expandedPath={expandedPath}
+            // selectedKeys={selectedKeys}
             handleIsInMenu={this.handleIsInMenu}
             data={data}
-            selectedKeys={selectedKeys}
             offsetY={0}
             onMouseEnter={this.onMouseEnter}
+            onClick={this.onClick}
           />
         </Theme>
         <button onClick={this.btnClick}>hello</button>
@@ -116,7 +120,7 @@ export default class extends React.Component<any, any> {
     // const start = data.indexOf(item);
     // this.setState({ start });
     const { selectedKeys } = keys;
-    console.log('selectedKeys', selectedKeys);
+    // console.log('selectedKeys', selectedKeys);
     this.setState({ selectedKeys, expandedPath: selectedKeys });
   };
 

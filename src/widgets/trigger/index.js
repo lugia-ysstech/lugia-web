@@ -254,6 +254,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
           popupVisible,
         });
       }
+      console.log('popupVisible', popupVisible);
       this.props.onPopupVisibleChange(popupVisible);
     }
   }

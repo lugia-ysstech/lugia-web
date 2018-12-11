@@ -88,6 +88,8 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
       };
     }
 
+    isDrag: boolean;
+
     render() {
       const { props } = this;
 
@@ -148,8 +150,6 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
         </ScrollerCol>,
       ]);
     }
-
-    isDrag: boolean;
 
     onDrag = (drag: boolean) => {
       this.isDrag = drag;
