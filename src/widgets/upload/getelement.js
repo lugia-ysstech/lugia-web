@@ -9,8 +9,11 @@
 import React from 'react';
 import Icon from '../icon';
 import styled, { keyframes } from 'styled-components';
+import Progress from '../progress';
 import FileInput from './fileInput';
 import { px2emcss } from '../css/units';
+import Widget from '../consts';
+import { isKeyInArray } from './upload';
 const em = px2emcss(1.2);
 
 const Container = styled.div`
@@ -56,6 +59,7 @@ const InputContent = styled.div`
     border: 1px solid #684fff;
     & .loadIcon {
       margin-right: 10px;
+      color: #684fff;
       animation: ${rotate} 0.8s linear infinite;
     }
   }
@@ -100,13 +104,53 @@ const Button = styled.span`
     border-radius: 4px;
   }
 `;
-
+const Ul = styled.ul`
+  width: 100%;
+`;
 const Li = styled.li`
   height: 36px;
-  line-height: 36px;
   border-bottom: 1px dashed #e8e8e8;
+  position: relative;
   &:hover {
     background: #f2f2f2;
+  }
+  &.loading {
+    border-bottom: none;
+  }
+
+  & > span {
+    line-height: 36px;
+  }
+  & .progress {
+    margin-top: -10px;
+  }
+  & i.right {
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+  }
+  & i.success {
+    color: #56c22d;
+  }
+  & i.error {
+    color: #f22735;
+  }
+  & i.ccc {
+    color: #ccc;
+    vertical-align: middle;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+  & i.close {
+    color: #ccc;
+    display: none;
+  }
+  &.loading:hover {
+    i.close {
+      display: inline-block;
+      font-size: 14px;
+    }
   }
 `;
 
@@ -200,6 +244,17 @@ const AreaTextBlue = styled.span`
   border-bottom: 1px solid #684fff;
 `;
 
+export const getListIconType = (fileName: ?string): string => {
+  if (!fileName) return 'file';
+  const filetype = fileName.replace(/.+\./, '');
+  const picArr = ['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'];
+  if (isKeyInArray(picArr, filetype.toLowerCase())) return 'picture';
+
+  const videoArr = ['mpeg', 'avi', 'mov', 'asf', 'wmv', '3gp', 'mkv', 'flv', 'rmvb', 'mp4'];
+  if (isKeyInArray(videoArr, filetype.toLowerCase())) return 'video';
+  return 'file';
+};
+
 export const getIconByType = (status: string, type?: number): ?Object | string => {
   if (!status) return;
   if (type === 1 && status === 'default') return '上传';
@@ -213,13 +268,13 @@ export const getIconByType = (status: string, type?: number): ?Object | string =
     return <LoadIcon iconClass="lugia-icon-financial_upload" />;
   }
   if (status === 'picture') {
-    return <LoadIcon iconClass="lugia-icon-financial_pic" />;
+    return <LoadIcon iconClass="lugia-icon-financial_pic ccc" />;
   }
   if (status === 'video') {
-    return <LoadIcon iconClass="lugia-icon-financial_video_camera" />;
+    return <LoadIcon iconClass="lugia-icon-financial_video_camera ccc" />;
   }
   if (status === 'file') {
-    return <LoadIcon iconClass="lugia-icon-financial_folder" />;
+    return <LoadIcon iconClass="lugia-icon-financial_folder ccc" />;
   }
   if (status === 'add') {
     return <LoadIcon iconClass="lugia-icon-reminder_plus" />;
@@ -227,71 +282,123 @@ export const getIconByType = (status: string, type?: number): ?Object | string =
   if (status === 'uploadcloud') {
     return <LoadIcon iconClass="lugia-icon-financial_upload_cloud" />;
   }
+  if (status === 'li-done') {
+    return <LoadIcon iconClass="lugia-icon-reminder_check_circle right success" />;
+  }
+  if (status === 'li-fail') {
+    return <LoadIcon iconClass="lugia-icon-reminder_close_circle right error" />;
+  }
+  if (status === 'li-loading') {
+    return <LoadIcon iconClass="lugia-icon-reminder_close right close" />;
+  }
+};
+
+const getProgress = (item: Object) => {
+  const { status } = item;
+
+  if (status === 'done') return;
+  if (status === 'loading') {
+    const { percent } = item;
+    return (
+      <div className="progress">
+        <Progress size="small" percent={percent} />
+      </div>
+    );
+  }
+};
+
+const getFileList = (data: Array<Object>) => {
+  if (!data) return;
+  return (
+    <Ul>
+      {data.map(item => {
+        return (
+          <Li className={item.status}>
+            {' '}
+            {getIconByType(getListIconType(item.name))} <span>{item.name}</span>{' '}
+            {getIconByType('li-' + item.status)} {getProgress(item)}{' '}
+          </Li>
+        );
+      })}
+    </Ul>
+  );
 };
 
 const getElement = (that: Object): ?Object => {
-  const { props, state, getRegisterInput } = that;
+  const { props, state } = that;
   const { listType } = props;
   if (!listType) return;
-  const { classNameStatus, getChangeInfo } = state;
-  const { getTheme, size, inputId } = props;
+  const { classNameStatus } = state;
+  const { size, inputId, defaultText } = props;
+  const { getRegisterInput, getChangeInfo } = that;
   if (listType === 'default') {
     return (
-      <Container theme={getTheme()}>
+      <React.Fragment>
         <FileInput
           id={inputId}
           {...props}
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        {/*<label for={inputId}>*/}
         <InputContent className={classNameStatus}>
-          请将文件拖到此处 {getIconByType(classNameStatus)}
+          {getIconByType(classNameStatus)} {defaultText}
         </InputContent>
-        {/*</label>*/}
-      </Container>
+      </React.Fragment>
     );
   }
   if (listType === 'both') {
     return (
-      <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} getChangeInfo={getChangeInfo} />
-        <label for={inputId}>
-          <InputContent className={`${classNameStatus} hasBtn`}>请将文件拖到此处</InputContent>
+      <React.Fragment>
+        <FileInput
+          id={inputId}
+          {...props}
+          getChangeInfo={getChangeInfo}
+          getRegisterInput={getRegisterInput}
+        />
+        <label>
+          <InputContent className={`${classNameStatus} hasBtn`}>{defaultText}</InputContent>
         </label>
         <Button>{getIconByType(classNameStatus, 1)}</Button>
-      </Container>
+      </React.Fragment>
     );
   }
   if (listType === 'button') {
     return (
-      <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} getChangeInfo={getChangeInfo} />
-        <label for={inputId}>
-          <Button className="button">点击上传</Button>
-        </label>
-        <ul style={{ width: '100%' }}>
-          <Li>文件111111111111</Li>
-          <Li>文件2222222222</Li>
-          <Li>文件3333333333333</Li>
-        </ul>
-      </Container>
+      <React.Fragment>
+        <FileInput
+          id={inputId}
+          {...props}
+          getChangeInfo={getChangeInfo}
+          getRegisterInput={getRegisterInput}
+        />
+        <Button className="button">点击上传</Button>
+      </React.Fragment>
     );
   }
   if (listType === 'picture') {
     return (
-      <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} getChangeInfo={getChangeInfo} />
+      <React.Fragment>
+        <FileInput
+          id={inputId}
+          {...props}
+          getChangeInfo={getChangeInfo}
+          getRegisterInput={getRegisterInput}
+        />
         <label for={inputId}>
           <PictureView size={size}> {getIconByType('add')} </PictureView>
         </label>
-      </Container>
+      </React.Fragment>
     );
   }
   if (listType === 'area') {
     return (
-      <Container theme={getTheme()}>
-        <FileInput id={inputId} {...props} getChangeInfo={getChangeInfo} />
+      <React.Fragment>
+        <FileInput
+          id={inputId}
+          {...props}
+          getChangeInfo={getChangeInfo}
+          getRegisterInput={getRegisterInput}
+        />
         <label for={inputId}>
           <AreaView size={'bigger'}>
             {getIconByType('uploadcloud')}
@@ -300,49 +407,62 @@ const getElement = (that: Object): ?Object => {
             </AreaText>
           </AreaView>
         </label>
-      </Container>
+      </React.Fragment>
     );
   }
 };
 
-type ElementProps = {};
+type defProps = {
+  classNameStatus?: string,
+  defaultText: string,
+};
 type stateProps = {
   status: string,
-  getChangeInfo: Function,
+  inputElement: Object,
+  classNameStatus?: string,
+  defaultText: string,
 };
 class GetElement extends React.Component<any, stateProps> {
   static defaultProps = {};
   componentDidMount() {}
-  static getDerivedStateFromProps(defProps: any, stateProps: any) {
-    const getChangeInfoDefault = (e: Object) => {
-      const { setChoosedFile } = defProps;
-      if (setChoosedFile) {
-        setChoosedFile(e);
-      }
-    };
+  static getDerivedStateFromProps(defProps: defProps, stateProps: stateProps) {
+    const { classNameStatus, defaultText } = defProps;
     if (!stateProps) {
       return {
-        classNameStatus: 'default',
-        getChangeInfo: getChangeInfoDefault,
+        classNameStatus,
+        defaultText,
       };
     }
-    const { classNameStatus, getChangeInfo } = stateProps;
     return {
-      classNameStatus: 'classNameStatus' in stateProps ? classNameStatus : 'default',
-      getChangeInfo: 'getChangeInfo' in stateProps ? getChangeInfo : getChangeInfoDefault,
+      classNameStatus: 'classNameStatus' in defProps ? classNameStatus : stateProps.classNameStatus,
+      defaultText: 'defaultText' in defProps ? defaultText : stateProps.defaultText,
     };
   }
   getRegisterInput = (input: Object) => {
+    console.log('++++');
     this.setState({
       inputElement: input.current,
     });
   };
+  getChangeInfo = (e: Object) => {
+    const { setChoosedFile } = this.props;
+    if (setChoosedFile) {
+      setChoosedFile(e);
+    }
+  };
   render() {
-    return <div onClick={this.handleCick}>{getElement(this)}</div>;
+    const { showFileList, fileList, getTheme } = this.props;
+    return (
+      <React.Fragment>
+        <Container theme={getTheme()} onClick={this.handleClick}>
+          {getElement(this)}
+        </Container>
+        <React.Fragment> {showFileList ? getFileList(fileList) : null}</React.Fragment>
+      </React.Fragment>
+    );
   }
 
-  handleCick = (e: Object) => {
-    console.log(this);
+  handleClick = (e: Object) => {
     const { inputElement } = this.state;
     inputElement.click();
   };

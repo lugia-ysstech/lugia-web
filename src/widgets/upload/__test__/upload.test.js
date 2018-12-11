@@ -5,9 +5,9 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Upload, { getClassName, getIndexInArray, isKeyInArray, getListIconType } from '../upload';
+import Upload, { getClassName, getIndexInArray, isKeyInArray } from '../upload';
 import { getRequestXHR, getStringFromObject, getParamsData } from '../request';
-import { getIconByType } from '../getelement';
+import { getIconByType, getListIconType } from '../getelement';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -16,9 +16,9 @@ const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify')
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Rate Test', () => {
-  const target = mount(<Upload />);
+  const target = mount(<Upload url={'xxxx.test'} />);
   it('css', () => {
-    const target = <Upload />;
+    const target = <Upload url={'xxxx.test'} />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   function checkgetClassName(status: ?string, expectation: string) {
@@ -82,7 +82,7 @@ describe('Rate Test', () => {
     expect(res instanceof window.XMLHttpRequest).toEqual(true);
   });
 
-  function checkGetStringFromObject(data: Object, expectation: string) {
+  function checkGetStringFromObject(data: ?Object, expectation: string) {
     it('Function getStringFromObject ', () => {
       const res = getStringFromObject(data);
       expect(res).toEqual(expectation);
@@ -101,11 +101,10 @@ describe('Rate Test', () => {
   }
   checkGetParamsData({ data: { a: 123, b: 223 }, name: 'file', file: '666' });
   checkGetParamsData({ data: { a: 777, b: 888 }, name: 'abc', file: '567' });
-  // getIconByType
-  function checkGetIconByType(status: string, expectation: boolean, type?: number) {
+
+  function checkGetIconByType(status: string, expectation: boolean | string, type?: number) {
     it('Function GetIconByType ', () => {
       const res = getIconByType(status, type);
-      console.log(res);
       if (type === 1 && status === 'default') {
         expect(res).toEqual(expectation);
       } else {
@@ -117,4 +116,71 @@ describe('Rate Test', () => {
   checkGetIconByType('default', true);
   checkGetIconByType('loading', true);
   checkGetIconByType('done', true);
+
+  function setStateValue(props: Object, expectation: Object) {
+    it('Function setStateValue ', () => {
+      target.instance().setStateValue(props);
+      expect(target.state()).toEqual(expectation);
+    });
+  }
+  setStateValue(
+    { classNameStatus: 'done', defaultText: '文件已上传成功！' },
+    { classNameStatus: 'done', defaultText: '文件已上传成功！', fileList: [] }
+  );
+  setStateValue(
+    { classNameStatus: 'loading', defaultText: '文件正在上传！' },
+    { classNameStatus: 'loading', defaultText: '文件正在上传！', fileList: [] }
+  );
+  setStateValue(
+    { classNameStatus: 'default', defaultText: '文件已上传成功！', abc: 'abc' },
+    { abc: 'abc', classNameStatus: 'default', defaultText: '文件已上传成功！', fileList: [] }
+  );
+
+  function getFileList(props: Object | number, expectation: Array<Object>, data?: Array<Object>) {
+    it('Function getFileList ', () => {
+      const res = target.instance().getFileList(props, data);
+      expect(res).toEqual(expectation);
+    });
+  }
+  getFileList({ id: 1, name: '文件11111.jpg', status: 'loading' }, [
+    { id: 1, name: '文件11111.jpg', status: 'loading' },
+  ]);
+  getFileList({ id: 2, name: '文件22222222.jpg', status: 'loading' }, [
+    { id: 1, name: '文件11111.jpg', status: 'loading' },
+    { id: 2, name: '文件22222222.jpg', status: 'loading' },
+  ]);
+  getFileList(
+    1,
+    [
+      { id: 1, name: '文件11111.jpg', status: 'loading', percent: 20 },
+      { id: 2, name: '文件22222222.jpg', status: 'loading' },
+    ],
+    [{ target: 'percent', value: 20 }]
+  );
+
+  function uploadProgress(props: Object, expectation: string, expectation2: Array<Object>) {
+    it('Function uploadProgress ', () => {
+      target
+        .instance()
+        .setStateValue({ fileList: [{ id: 1, name: '文件11111.jpg', status: 'default' }] });
+      target.instance().uploadProgress(props, 1);
+      expect(target.state().classNameStatus).toEqual(expectation);
+      expect(target.state().fileList).toEqual(expectation2);
+    });
+  }
+  uploadProgress({ currentTarget: {} }, 'loading', [
+    { id: 1, name: '文件11111.jpg', status: 'loading', percent: 20 },
+  ]);
+
+  function uploadSuccess(props: Object, expectation: string, expectation2: Array<Object>) {
+    it('Function uploadSuccess ', () => {
+      target
+        .instance()
+        .setStateValue({ fileList: [{ id: 1, name: '文件11111.jpg', status: 'default' }] });
+      target.instance().uploadSuccess(props, 1);
+      expect(target.state().classNameStatus).toEqual(expectation);
+      expect(target.state().fileList).toEqual(expectation2);
+    });
+  }
+  uploadSuccess({ currentTarget: {} }, 'done', [{ id: 1, name: '文件11111.jpg', status: 'done' }]);
 });

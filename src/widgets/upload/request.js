@@ -15,16 +15,16 @@ export function getRequestXHR(): Object {
 
 export function getParamsData(dataObject: Object): Object {
   const { data } = dataObject;
-  const newData = new FormData();
-  Object.keys(data).forEach(k => {
-    newData.append(k, data[k]);
-  });
+  const newData: Object = new FormData();
+  for (const i in data) {
+    newData.append(i, data[i]);
+  }
   const { name, file } = dataObject;
   newData.append(name, file);
   return newData;
 }
 
-export function getStringFromObject(data: Object): string {
+export function getStringFromObject(data: ?Object): string {
   if (!data) return '';
   let resultString = '';
   for (const i in data) {
@@ -55,6 +55,12 @@ function request(dataObject: Object) {
   const { method = 'get', asynch = true, data } = dataObject;
   const params = getParamsData(dataObject);
 
+  const { onProgress, onComplete } = dataObject;
+  if (onProgress) addEventListener(xhr.upload, 'progress', onProgress, false);
+  if (onComplete) addEventListener(xhr, 'load', onComplete, false);
+  // if (onProgress) xhr.upload.addEventListener('progress', onProgress, false);
+  // if (onComplete) xhr.addEventListener('load', onComplete, false);
+
   if (method === 'get') {
     if (data) {
       xhr.open('get', url + '?' + getStringFromObject(params), asynch);
@@ -72,13 +78,8 @@ function request(dataObject: Object) {
         xhr.setRequestHeader(k, headers[k]);
       });
     } else {
-      xhr.setRequestHeader('Content-Type","application/x-www-form-urlencoded');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     }
-    const { onProgress, onComplete } = dataObject;
-    if (onProgress) addEventListener(xhr.upload, 'progress', onProgress, false);
-    if (onComplete) addEventListener(xhr, 'load', onComplete, false);
-    // if (onProgress) xhr.upload.addEventListener('progress', onProgress, false);
-    // if (onComplete) xhr.addEventListener('load', onComplete, false);
 
     xhr.send(params);
   }
@@ -102,6 +103,7 @@ function request(dataObject: Object) {
       }
     }
   };
+  return xhr;
 }
 
 export default request;

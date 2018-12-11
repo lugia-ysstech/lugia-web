@@ -15,6 +15,7 @@ type propTypes = {
   onChange?: Function,
   inputId: string,
   getChangeInfo: Function,
+  getRegisterInput: Function,
 };
 
 const Input = styled.input`

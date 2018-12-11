@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rate Test css 1`] = `
-.c4 {
+.c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -9,12 +9,12 @@ exports[`Rate Test css 1`] = `
   cursor: pointer;
 }
 
-.c1 {
+.c2 {
   width: 100%;
   display: none;
 }
 
-.c0 {
+.c1 {
   width: 366px;
   position: relative;
   padding: 10px;
@@ -28,7 +28,7 @@ exports[`Rate Test css 1`] = `
   box-sizing: border-box;
 }
 
-.c2 {
+.c3 {
   width: 346px;
   height: 30px;
   border: 1px solid #e8e8e8;
@@ -40,13 +40,13 @@ exports[`Rate Test css 1`] = `
   box-sizing: border-box;
 }
 
-.c2.done {
+.c3.done {
   border: 1px solid #684fff;
   color: #333;
   position: relative;
 }
 
-.c2.done i {
+.c3.done i {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -55,23 +55,24 @@ exports[`Rate Test css 1`] = `
   right: 10px;
 }
 
-.c2.loading {
+.c3.loading {
   border: 1px solid #684fff;
 }
 
-.c2.loading .loadIcon {
+.c3.loading .loadIcon {
   margin-right: 10px;
+  color: #684fff;
   -webkit-animation: iVXCSc 0.8s linear infinite;
   animation: iVXCSc 0.8s linear infinite;
 }
 
-.c2.hasBtn {
+.c3.hasBtn {
   border-radius: 4px 0 0 4px;
   border: 1px solid #9482ff;
   width: 286px;
 }
 
-.c2 i.right {
+.c3 i.right {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -80,34 +81,48 @@ exports[`Rate Test css 1`] = `
   right: 20px;
 }
 
-.c3.loadIcon {
+.c4.loadIcon {
   margin-right: 10px;
 }
 
-<div>
+.c6 {
+  width: 100%;
+}
+
+.c0 {
+  width: 366px;
+  position: relative;
+  padding: 10px;
+}
+
+<div
+  className="c0"
+>
   <div
+    className="c1"
     onClick={[Function]}
   >
+    <input
+      accept="*"
+      className="c2"
+      id="upload"
+      multiple={false}
+      onChange={[Function]}
+      type="file"
+    />
     <div
-      className="c0"
+      className="default c3"
     >
-      <input
-        accept="*"
-        className="c1"
-        id="upload"
-        multiple={false}
-        onChange={[Function]}
-        type="file"
+      <i
+        className="lugia-icon-financial_upload right c4 c5"
       />
-      <div
-        className="default c2"
-      >
-        请将文件拖到此处 
-        <i
-          className="lugia-icon-financial_upload right c3 c4"
-        />
-      </div>
+       
+      请将文件拖到此处
     </div>
   </div>
+   
+  <ul
+    className="c6"
+  />
 </div>
 `;
