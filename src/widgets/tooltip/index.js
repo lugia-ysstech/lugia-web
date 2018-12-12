@@ -113,7 +113,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
           </Content>
         }
       >
-        {children}
+        {this.props.children}
       </ToolTrigger>
     );
   }
