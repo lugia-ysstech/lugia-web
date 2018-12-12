@@ -217,7 +217,6 @@ export function getInitAllChildData(props: MenuProps, state: MenuState): Object 
   const { data } = props;
   const expandedData = getExpandedData(props, state);
   const res = mapGetAllChildData(data, expandedData, 0);
-  console.log('res', res);
   return res;
 }
 
