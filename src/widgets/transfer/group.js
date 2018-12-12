@@ -140,6 +140,7 @@ export default ThemeProvider(
         <TransFerWrap>
           <TransFer
             key="1"
+            direction="left"
             type={type}
             onSelect={this.handleSourceSelect}
             data={theSourceData}
@@ -148,7 +149,7 @@ export default ThemeProvider(
             onCheckAll={this.checkAllForLeft}
             canCheckKeys={sourceCheckKeys || leafKeys}
             onSearch={this.searchCallbackForLeft}
-            direction="left"
+            title="列表A"
             // 左侧 黑单
             blackList={targetKeys}
           />
@@ -171,18 +172,19 @@ export default ThemeProvider(
           </OperationBtn>
           <TransFer
             key="2"
+            direction="right"
             type={type}
             onSelect={this.handleTargetSelect}
             data={theTargetData}
             selectedKeys={[...targetSelectedKeys]}
             showSearch={showSearch}
             onCheckAll={this.checkAllForRight}
-            canCheckKeys={targetCheckKeys || leafKeys}
+            canCheckKeys={targetCheckKeys}
             onSearch={this.searchCallbackForRight}
             needCancelBox
-            onCancelItemClick={this.handleCancelItemClick}
-            direction="right"
             cancelItem={cancelItem}
+            onCancelItemClick={this.handleCancelItemClick}
+            title="列表B"
             //右侧 白单
             whiteList={targetKeys}
           />
@@ -198,15 +200,9 @@ export default ThemeProvider(
         selectKeys = this.checkSelectKeys(sourceSelectedKeys, selectKey);
       } else {
         selectKeys = item;
-        // targetKeys.forEach(key => {
-        //   const inSelectKeys = selectKeys.includes(key);
-        //   if (inSelectKeys) {
-        //     const index = selectKeys.indexOf(key);
-        //     selectKeys.splice(index, 1);
-        //   }
-        // });
       }
       onSelectChange && onSelectChange(selectKeys, targetSelectedKeys);
+      console.info('source-click: ', 'item', item, 'selectKeys', selectKeys);
 
       const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
       if (hasSourceSelectedKeys) {
@@ -254,12 +250,16 @@ export default ThemeProvider(
         mapData,
         targetSelectedKeys
       );
+      console.info('moveKey', moveKey);
+      console.info('mapData', mapData);
+      console.info('targetSelectedKeys', targetSelectedKeys);
       moveKey.forEach(item => {
         const index = nextTargetKeys.indexOf(item);
         nextTargetKeys.splice(index, 1);
       });
       const { onDirectionClick } = this.props;
       onDirectionClick && onDirectionClick(nextTargetKeys, 'left', moveKey);
+      console.info('nextTargetKeys', nextTargetKeys, 'moveKey', moveKey);
       const hasTargetKeys = this.isInProps('targetKeys');
       if (hasTargetKeys) {
         return;
@@ -288,6 +288,7 @@ export default ThemeProvider(
       const nextTargetKeys = [...targetKeys, ...moveKey];
       const { onDirectionClick } = this.props;
       onDirectionClick && onDirectionClick(nextTargetKeys, 'right', moveKey);
+      console.info('nextTargetKeys', nextTargetKeys, 'moveKey', moveKey);
       const hasTargetKeys = this.isInProps('targetKeys');
       if (hasTargetKeys) {
         return;
@@ -298,6 +299,7 @@ export default ThemeProvider(
     moveDataToRight = (moveKey: string[], disabledCheckedKeys: string[]) => {
       const { targetKeys } = this.state;
       const addKey = [...new Set([...targetKeys, ...moveKey])];
+      console.info('addKey', addKey);
       this.setState({ sourceSelectedKeys: disabledCheckedKeys, targetKeys: addKey });
     };
 
@@ -322,26 +324,15 @@ export default ThemeProvider(
       });
     };
     checkAllForRight = (checked: boolean) => {
-      const {
-        mapData,
-        sourceSelectedKeys,
-        targetSelectedKeys,
-        targetCheckKeys,
-        leafKeys,
-      } = this.state;
-      const { onSelectChange, type = 'panel' } = this.props;
+      const { mapData, sourceSelectedKeys, targetSelectedKeys, targetCheckKeys } = this.state;
+      const { onSelectChange } = this.props;
       const disabledCheckedKeys = splitSelectKeys(mapData, targetSelectedKeys).disabledKeys;
-      let canCheckKeys;
-      if (type === 'panel') {
-        canCheckKeys = targetCheckKeys;
-      } else {
-        canCheckKeys = leafKeys;
-      }
+
       const checkKeys = checked
-        ? [...canCheckKeys, ...disabledCheckedKeys]
+        ? [...targetCheckKeys, ...disabledCheckedKeys]
         : disabledCheckedKeys || [];
       onSelectChange && onSelectChange(sourceSelectedKeys, checkKeys);
-
+      console.info('right-checkall', checkKeys);
       const hasTargetSelectedKeys = this.isInProps('targetSelectedKeys');
       if (hasTargetSelectedKeys) {
         return;
@@ -423,21 +414,25 @@ export default ThemeProvider(
       }
     };
     handleCancelItemClick = (value: string) => {
-      const { displayValue } = this.state;
-      const index = displayValue.indexOf(value);
+      const { displayValue, targetKeys } = this.state;
       const newDisplayValue = [...displayValue];
+      const newTargetKeys = [...targetKeys];
+      const index = targetKeys.indexOf(value);
       newDisplayValue.splice(index, 1);
+      newTargetKeys.splice(index, 1);
       console.info('newDisplayValue', newDisplayValue);
       const { onCancelItemClick } = this.props;
       const hasDisplayValue = this.isInProps('displayValue');
+
+      onCancelItemClick && onCancelItemClick(newTargetKeys, newDisplayValue);
       if (hasDisplayValue) {
-        onCancelItemClick && onCancelItemClick(newDisplayValue);
         return;
       }
+
       this.setState({
         displayValue: newDisplayValue,
+        targetKeys: newTargetKeys,
       });
-      onCancelItemClick && onCancelItemClick(newDisplayValue);
     };
     isInProps(value: string) {
       return value in this.props;

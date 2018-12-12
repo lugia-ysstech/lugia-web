@@ -47,9 +47,21 @@ export default ThemeProvider(
       return null;
     };
     render() {
+      const {
+        showSearch,
+        selectedKeys = [],
+        data = [],
+        canCheckKeys,
+        needCancelBox = false,
+        type,
+        blackList,
+        whiteList,
+        title,
+        direction,
+      } = this.props;
+      const { inputValue } = this.state;
       const view = {
         [Widget.Input]: {
-          width: 238,
           margin: {
             top: 8,
             right: 10,
@@ -58,27 +70,16 @@ export default ThemeProvider(
           },
         },
       };
-      const menuView = {
-        [Widget.Menu]: {
+      const menuView = {};
+      if (direction === 'left') {
+        menuView[Widget.Menu] = {
           width: 290,
           height: 310,
-        },
-        [Widget.Tree]: {
+        };
+        menuView[Widget.Tree] = {
           height: 310,
-        },
-      };
-      const {
-        showSearch,
-        selectedKeys = [],
-        data = [],
-        canCheckKeys,
-        needCancelBox = false,
-        type,
-        direction,
-        blackList,
-        whiteList,
-      } = this.props;
-      const { inputValue } = this.state;
+        };
+      }
       const inputConfig = {};
       if (!inputValue) {
         inputConfig.suffix = <SearchIcon />;
@@ -90,7 +91,6 @@ export default ThemeProvider(
           : length
           ? isContained(selectedKeys, canCheckKeys)
           : isContained(data, selectedKeys);
-      console.info('checked', checked, 'length', length);
       const list = {};
       if (type === 'tree') {
         if (blackList) {
@@ -99,10 +99,10 @@ export default ThemeProvider(
         if (whiteList) {
           list.whiteList = whiteList;
         }
-        console.info('list', list);
       }
 
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
+      console.info(data, selectedKeys);
       return (
         <TransFer>
           <Check>
@@ -111,7 +111,7 @@ export default ThemeProvider(
               checked={checked}
               indeterminate={selectedKeys.length > 0}
             >
-              可配置
+              {title}
             </CheckBox>
 
             <CheckText>
@@ -130,7 +130,7 @@ export default ThemeProvider(
 
           {data.length > 0 ? (
             <MenuWrap>
-              <Theme config={direction === 'left' ? menuView : {}}>
+              <Theme config={menuView}>
                 {type === 'panel' ? (
                   <Menu
                     checkedCSS={'checkbox'}
@@ -142,26 +142,24 @@ export default ThemeProvider(
                 ) : (
                   <Tree
                     data={data}
-                    onlySelectLeaf
                     value={selectedKeys}
                     expandAll
                     mutliple
                     onChange={this.handleTreeChange}
                     query={inputValue}
-                    whiteList={whiteList}
+                    {...list}
                   />
                 )}
               </Theme>
             </MenuWrap>
           ) : (
-            <NoData style={{ height: '250px' }}>{inputValue ? '无匹配数据' : '无数据'}</NoData>
+            <NoData direction={direction}>{inputValue ? '无匹配数据' : '无数据'}</NoData>
           )}
           {cancelBox}
         </TransFer>
       );
     }
     cancelItemClick = (value: string) => {
-      console.info(value);
       const { onCancelItemClick } = this.props;
       onCancelItemClick && onCancelItemClick(value);
     };

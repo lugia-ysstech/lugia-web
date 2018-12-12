@@ -27,6 +27,7 @@ export type TransferProps = {
   direction: 'left' | 'right',
   blackList?: string[],
   whiteList?: string[],
+  title: string,
 };
 export type TransferState = {
   inputValue: string,
@@ -42,6 +43,8 @@ export const TransFer = styled.div`
   display: inline-block;
   font-size: ${FontSize}rem;
   overflow: hidden;
+  position: relative;
+  vertical-align: middle;
 `;
 export const Check = styled.div`
   background: #f8f8f8;
@@ -58,9 +61,16 @@ export const CheckText = styled.span`
 export const MenuWrap = styled.div`
   padding-left: ${em(2)};
 `;
+const getNoDataHeight = (props: CSSProps) => {
+  const { direction } = props;
+  if (direction === 'left') {
+    return px2emcss(1.4)(310);
+  }
+  px2emcss(1.4)(250);
+};
 export const NoData = styled.div`
   font-size: ${em(14)};
-  height: ${px2emcss(1.4)(250)};
+  height: ${getNoDataHeight};
   color: #ccc;
   text-align: center;
 `;

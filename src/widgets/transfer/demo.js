@@ -28,10 +28,7 @@ const treeData = [
       {
         text: '2.1',
         value: '2.1',
-        children: [
-          { text: '2.1.1', value: '2.1.1', disabled: true },
-          { text: '2.1.2', value: '2.1.2' },
-        ],
+        children: [{ text: '2.1.1', value: '2.1.1' }, { text: '2.1.2', value: '2.1.2' }],
       },
       {
         text: '2.2',
@@ -99,7 +96,18 @@ export default class TransferDemo extends React.Component<any, any> {
           showSearch
           defaultSourceSelectedKeys={['选项5']}
           defaultTargetSelectedKeys={['选项2']}
-          defaultTargetKeys={['选项2', '选项3', '选项7']}
+          defaultTargetKeys={[
+            '选项0',
+            '选项1',
+            '选项2',
+            '选项3',
+            '选项4',
+            '选项5',
+            '选项6',
+            '选项7',
+            '选项8',
+            '选项9',
+          ]}
         />
         <Transfer
           data={treeData}
@@ -117,7 +125,7 @@ export default class TransferDemo extends React.Component<any, any> {
           defaultTargetSelectedKeys={['2.1.1']}
           defaultTargetKeys={['3.1', '3.2', '2.1.1']}
           showSearch
-          displayValue={['dis1', 'dis2']}
+          displayValue={['dis1', 'dis2', '2.1.1']}
         />
       </div>
     );

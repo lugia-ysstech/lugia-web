@@ -112,6 +112,7 @@ export function getTreeData(
         mapData[item.value] = item;
       } else {
         target.push(newObj);
+        mapData[item.value] = item;
         getTreeData(children, targetObj, item.value, pidArr);
       }
     });
@@ -119,8 +120,9 @@ export function getTreeData(
     return targetObj;
   }
 
-  return { target: [], mapData: {}, leafKeys: [] };
+  return { target: [], leafKeys: [] };
 }
+
 export function getCancelItem(value: string[], mapData: Object, displayValue?: string[]): Object[] {
   const hasValue = value && value.length;
   if (hasValue) {
@@ -128,7 +130,7 @@ export function getCancelItem(value: string[], mapData: Object, displayValue?: s
     if (displayValue && displayValue.length) {
       value.forEach((item, index) => {
         if (!mapData[item]) {
-          cancelItem.push({ text: item, value: displayValue && displayValue[index] });
+          cancelItem.push({ text: displayValue && displayValue[index], value: item });
         }
       });
     }
