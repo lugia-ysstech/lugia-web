@@ -20,6 +20,7 @@ import { deleteValue } from '../utils/index';
 import styled from 'styled-components';
 import { FontSizeNumber, FontSize } from '../css';
 import { px2emcss } from '../css/units';
+import type { QueryType } from '@lugia/lugia-web';
 
 const em = px2emcss(FontSizeNumber);
 
@@ -53,6 +54,9 @@ type TreeProps = {
   splitQuery?: string,
   current: number,
   data?: Array<RowData>,
+  blackList: ?(string[]),
+  whiteList: ?(string[]),
+  searchType?: QueryType,
 };
 
 type TreeState = {
@@ -183,8 +187,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
       this.createQueryAllTreelUtils(props);
     }
     const queryChanged = this.props.query !== props.query;
+    const blackListChange = this.props.blackList !== props.blackList;
+    const whiteListChange = this.props.whiteList !== props.whiteList;
     const valueChanged = props.value != this.props.value;
-    if (dataChanged || queryChanged || valueChanged) {
+    if (dataChanged || queryChanged || valueChanged || blackListChange || whiteListChange) {
       const expand = this.updateExpandInfo(props);
       const { id2ExtendInfo } = expand;
       const newState: TreeState = {
@@ -305,7 +311,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
 
     this.createQueryTreeUtils(props);
-    this.search(this.getUtils(props), result, props.query);
+    const { query, blackList, whiteList, searchType = 'include' } = props;
+
+    this.search(this.getUtils(props), result, query, searchType, blackList, whiteList);
     return result;
   }
 
@@ -331,11 +339,14 @@ class Tree extends React.Component<TreeProps, TreeState> {
   shouldComponentUpdate(nexProps: TreeProps, nextState: TreeState) {
     const { props } = this;
     const dataChanged = props.data !== nexProps.data;
-
+    const blackListChange = props.blackList !== nexProps.blackList;
+    const whiteListChange = props.whiteList !== nexProps.whiteList;
     const { state } = this;
     return (
       props.query !== nexProps.query ||
       dataChanged ||
+      blackListChange ||
+      whiteListChange ||
       props.current != nexProps.current ||
       state.hasError !== nextState.hasError ||
       state.start !== nextState.start ||
@@ -396,12 +407,20 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (this.state.hasError) {
       return <ErrorTooltip>树形数据错误</ErrorTooltip>;
     }
-    const { query, current, igronSelectField } = props;
+    const {
+      query,
+      current,
+      igronSelectField,
+      blackList,
+      whiteList,
+      searchType = 'include',
+    } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;
     const { checked, halfchecked } = selectedInfo;
     const utils = this.getUtils(props);
-    const data = this.search(utils, expand, query);
+
+    const data = this.search(utils, expand, query, searchType, blackList, whiteList);
     this.data = data;
     if (data.length === 0) {
       return empty;
@@ -446,8 +465,15 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.canSeeCount = count;
   };
 
-  search(utils: TreeUtils, expand: ExpandInfo, query: string): Array<RowData> {
-    return (this.data = utils.search(expand, query));
+  search(
+    utils: TreeUtils,
+    expand: ExpandInfo,
+    query: string,
+    searchType: QueryType = 'include',
+    blackList: string[],
+    whiteList: string[]
+  ): Array<RowData> {
+    return (this.data = utils.search(expand, query, searchType, blackList, whiteList));
   }
 
   onSelect = (selectValue: Array<string>) => {

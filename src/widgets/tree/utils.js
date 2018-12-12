@@ -58,6 +58,8 @@ class TreeUtils {
   Error: Object;
   version: number;
   query: ?string;
+  blackList: ?(string[]);
+  whiteList: ?(string[]);
   oldTreeData: Array<RowData>;
   orignalData: Array<RowData>;
   treeData: Array<RowData>;
@@ -88,6 +90,8 @@ class TreeUtils {
     this.treeData = treeData;
     this.orignalData = treeData;
     this.query = null;
+    this.blackList = [];
+    this.whiteList = [];
     this.expandAll = expandAll;
     this.catchPathArray = {};
     this.onlySelectLeaf = onlySelectLeaf;
@@ -549,9 +553,20 @@ class TreeUtils {
     }
   }
 
-  search(expandInfo: ExpandInfo, query: string, searchType: QueryType = 'include'): Array<RowData> {
+  search(
+    expandInfo: ExpandInfo,
+    query: string,
+    searchType: QueryType = 'include',
+    blackList: ?(string[]),
+    whiteList: ?(string[])
+  ): Array<RowData> {
     const queryChanging = query !== this.query;
-    const noChanged = this.version === this.oldVersion && !queryChanging;
+    const blackListChanging = JSON.stringify(blackList) === JSON.stringify(this.blackList);
+    const whiteListChanging = JSON.stringify(whiteList) === JSON.stringify(this.whiteList);
+
+    //  要做性能优化，不然会一直重新遍历
+    const noChanged =
+      this.version === this.oldVersion && !queryChanging && blackListChanging && whiteListChanging;
 
     if (noChanged) {
       return this.oldTreeData;
@@ -564,41 +579,85 @@ class TreeUtils {
 
     const queryAll = query === '';
     if (queryAll) {
-      this.treeData = this.orignalData;
+      this.treeData = this.getFilterResult(blackList, whiteList);
     } else if (queryChanging) {
       const queryArray = this.getQueryArray(query);
-      const need: Object = {};
-      const containPath: Object = {};
-      const rowSet = [];
-      const len = this.orignalData.length - 1;
-      for (let i = len; i >= 0; i--) {
-        const row: RowData = this.orignalData[i];
-        const { [this.displayField]: title, key, path } = row;
-        if (this.match(title, queryArray, searchType)) {
-          if (path !== undefined && containPath[path] === undefined) {
-            const pathArray = this.getPathArray(path);
-            containPath[path] = true;
-            const len = pathArray.length;
-            for (let i = 0; i < len; i++) {
-              const key = pathArray[i];
-              need[key] = true;
-            }
-          }
-          rowSet.push(row);
-        } else if (need[key] === true) {
-          rowSet.push(row);
-          delete need[key];
-        }
-      }
-      if (rowSet.length === this.orignalData.length) {
-        this.treeData = this.orignalData;
+      const rows = this.getFilterResult(blackList, whiteList);
+      const matchCondition = (row: Object) => {
+        const { [this.displayField]: title } = row;
+        return this.match(title, queryArray, searchType);
+      };
+      const needPushCondition = () => true;
+      const rowSet = this.getRowSet(rows, matchCondition, needPushCondition);
+
+      if (rowSet.length === rows.length) {
+        this.treeData = rows;
       } else {
         this.treeData = rowSet.reverse();
       }
     }
     this.query = query;
+    this.blackList = blackList;
+    this.whiteList = whiteList;
     this.oldTreeData = this.generateRealTreeData(expandInfo);
+
     return this.oldTreeData;
+  }
+
+  getRowSet(rows: Array<Object>, matchCondition: Function, needPushCondition: Function) {
+    const need: Object = {};
+    const containPath: Object = {};
+    const rowSet = [];
+    const len = rows.length - 1;
+    for (let i = len; i >= 0; i--) {
+      const row: RowData = rows[i];
+      const { key, path } = row;
+      if (matchCondition(row)) {
+        if (
+          needPushCondition(row, need) &&
+          (path !== undefined && containPath[path] === undefined)
+        ) {
+          const pathArray = this.getPathArray(path);
+          containPath[path] = true;
+          const len = pathArray.length;
+          for (let i = 0; i < len; i++) {
+            const key = pathArray[i];
+            need[key] = true;
+          }
+        }
+        needPushCondition(row, need) && rowSet.push(row);
+      } else if (need[key] === true) {
+        rowSet.push(row);
+        delete need[key];
+      }
+    }
+    return rowSet;
+  }
+
+  getFilterResult(blackList: ?(string[]), whiteList: ?(string[])): Array<Object> {
+    if (!blackList && !whiteList) {
+      return this.orignalData;
+    }
+    const rows = this.orignalData;
+    const isMatch = (row: Object) => {
+      const { key } = row;
+      if (blackList) {
+        return !blackList.includes(key);
+      } else if (whiteList) {
+        return whiteList.includes(key);
+      }
+    };
+
+    const needPushCondition = (row, need) => {
+      const { key, isLeaf } = row;
+      return isLeaf || need[key] || !blackList;
+    };
+    const rowSet = this.getRowSet(rows, isMatch, needPushCondition);
+
+    if (rowSet.length === this.orignalData.length) {
+      return this.orignalData;
+    }
+    return rowSet.reverse();
   }
 
   match(val: ?string, query: Array<string>, type: QueryType): boolean {
@@ -704,7 +763,6 @@ class TreeUtils {
         }
       }
     }
-
     return (this.oldTreeData = result);
   }
 
