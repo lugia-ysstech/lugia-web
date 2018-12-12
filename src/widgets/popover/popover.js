@@ -13,6 +13,7 @@ import { getDescripitionColor, getTitleColor } from '../css/card';
 import { getIconColor } from '../css/popover';
 import { px2emcss } from '../css/units';
 import ThemeProvider from '../theme-provider';
+import type { PopoverProps, PopoverState } from '../css/popover';
 import { ObjectUtils } from '@lugia/type-utils';
 
 const em = px2emcss(1.2);
@@ -56,7 +57,8 @@ const TooltipWrapper = styled(Tooltip)`
 class Popover extends React.Component<PopoverProps, PopoverState> {
   static defaultProps = {
     defaultVisible: false,
-    action: 'click',
+    action: ['click'],
+    placement: 'top',
   };
   target: Object;
   constructor(props: PopoverProps) {
@@ -89,19 +91,18 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     const { description } = this.props;
     return description ? <Descripition>{description} </Descripition> : null;
   }
-  getClose(): React.Node | null {
+  getCloseContainer(): React.Node | null {
     const { clear } = this.props;
-    if (ObjectUtils.isString(clear))
-      return (
-        <ClearContainer onClick={this.onClearClick}>
-          <Clear iconClass={clear}> </Clear>
-        </ClearContainer>
-      );
-    return clear;
+    if (clear)
+      return <ClearContainer onClick={this.onClearClick}>{this.getIcon(clear)}</ClearContainer>;
+    return null;
+  }
+  getIcon(icon: React.Node): React.Node {
+    if (ObjectUtils.isString(icon)) return <Clear iconClass={icon}> </Clear>;
+    return icon;
   }
   onClearClick = e => {
     const { onClearClick } = this.props;
-
     this.setState({ visible: false });
     onClearClick && onClearClick(e);
   };
@@ -111,7 +112,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
       return (
         <Content>
           {content}
-          {this.getClose()}
+          {this.getCloseContainer()}
           {this.getTitle()}
           {this.getDescripition()}
         </Content>
@@ -120,7 +121,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     return null;
   }
   render() {
-    const { children, action, arrowPosition, getTheme } = this.props;
+    const { children, action, placement, getTheme } = this.props;
     const { visible } = this.state;
     const getTarget: Function = cmp => (this.target = cmp);
     return (
@@ -130,7 +131,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         onVisibleChange={this.onVisibleChange}
         theme={getTheme()}
         isPop={true}
-        placement={arrowPosition}
+        placement={placement}
         title={this.getContent()}
         ref={getTarget}
       >

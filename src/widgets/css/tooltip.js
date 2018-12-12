@@ -11,6 +11,11 @@ import colorsFunc from '../css/stateColor';
 const { defaultColor, blackColor } = colorsFunc();
 
 const em = px2emcss(1.2);
+export const LargeHeight = em(40);
+export const SmallHeight = em(24);
+export const DefaultHeight = em(32);
+
+export type ToolTipSize = 'small' | 'default' | 'large';
 export type DirectionType =
   | 'left'
   | 'leftTop'
@@ -33,7 +38,13 @@ export type TooltipProps = {
   children: React.Node,
   title: React.Node,
   getTheme: Function,
+  onVisibleChange: Function,
+  size: ToolTipSize,
   isPop?: boolean,
+  visible?: boolean,
+  defaultVisible?: boolean,
+};
+export type TooltipState = {
   visible?: boolean,
 };
 export const RadiusSize = em(4);
@@ -42,18 +53,24 @@ export const Right = 'right';
 export const Down = 'bottom';
 export const Up = 'top';
 
-export const getFontColor = (props: TooltipProps) => {
+export const getFontColor = (props: Object) => {
   const { theme } = props;
   const { fontColor } = theme;
   return fontColor ? fontColor : blackColor;
 };
-export const getColor = (props: TooltipProps) => {
+export const getColor = (props: Object) => {
   const { theme } = props;
   const { color } = theme;
   return color ? color : defaultColor;
 };
-
-export const getTriggerByArrow = (props: TooltipProps) => {
+export const getSize = (props: TooltipProps) => {
+  const { size, isPop } = props;
+  if (!isPop)
+    return `height:${
+      size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight
+    };`;
+};
+export const getTriggerByArrow = (props: Object) => {
   const { fx } = props;
   switch (fx) {
     case Up:
@@ -67,7 +84,7 @@ export const getTriggerByArrow = (props: TooltipProps) => {
       return `padding-right: ${em(10)}`;
   }
 };
-export const getDeg = (props: TooltipProps) => {
+export const getDeg = (props: Object) => {
   const { fx } = props;
   let angle = '';
   switch (fx) {
@@ -126,12 +143,9 @@ export const getArrow = (props: Object) => {
 };
 export const getNewArrow = (props: TooltipProps) => {
   const { placement } = props;
-  const theBottom = `top: ${em(-4)};
-        `;
-  const theTop = `bottom: ${em(-4)};
-        `;
-  const theLeft = `right: ${em(-4)};
-        `;
+  const theBottom = `top: ${em(-4)};`;
+  const theTop = `bottom: ${em(-4)};`;
+  const theLeft = `right: ${em(-4)};`;
   const theRight = `left: ${em(-4)};`;
   switch (placement) {
     case 'bottomLeft':

@@ -13,29 +13,31 @@ import Widget from '../consts/index';
 import styled from 'styled-components';
 import { getTitleColor } from '../css/card';
 import { px2emcss } from '../css/units';
-import { DirectionType } from '../css/tooltip';
+import type { DirectionType } from '../css/tooltip';
 import ThemeProvider from '../theme-provider';
 import { ObjectUtils } from '@lugia/type-utils';
 
 const em = px2emcss(1.2);
 
-type PopConfirmProps = {
+type PopconfirmProps = {
   description: React.Node,
   title: React.Node,
   content?: React.Node,
   getTheme: Function,
   onCancel: Function,
   onConfirm: Function,
-  arrowPosition: DirectionType,
+  onVisibleChange: Function,
+  placement: DirectionType,
   action: 'hover' | 'click' | 'focus',
   children: React.Node,
   visible?: boolean,
+  defaultVisible?: boolean,
   icon: React.Node,
   cancelText: string,
   okText: string,
   okType: string,
 };
-type PopConfirmState = {
+type PopconfirmState = {
   visible: boolean,
 };
 const IconContainer = styled.div`
@@ -69,6 +71,13 @@ const Operation = Basetext.extend`
   margin-top: ${em(12)};
   text-align: right;
 `;
+const CancelText = Basetext.extend``;
+
+CancelText.displayName = 'cancelText';
+
+const OkText = Basetext.extend``;
+
+CancelText.displayName = 'okText';
 
 const BaseButton = styled(Button)`
   font-size: 1.2rem;
@@ -80,17 +89,16 @@ const Cancel = BaseButton.extend`
 const Confirm = BaseButton.extend`
   font-size: 1.2rem;
 `;
-class PopConfirm extends React.Component<PopConfirmProps, PopConfirmState> {
+class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   static defaultProps = {
     defaultVisible: false,
-    action: 'click',
   };
   target: Object;
-  constructor(props: PopConfirmProps) {
+  constructor(props: PopconfirmProps) {
     super(props);
   }
 
-  static getDerivedStateFromProps(props: PopConfirmProps, state: PopConfirmState) {
+  static getDerivedStateFromProps(props: PopconfirmProps, state: PopconfirmState) {
     const hasVisibleInprops = 'visible' in props;
     const hasDefaultVisibleInprops = 'defaultVisible' in props;
     if (!state) {
@@ -125,10 +133,10 @@ class PopConfirm extends React.Component<PopConfirmProps, PopConfirmState> {
       <Theme config={margin}>
         <Operation>
           <Cancel size="small" onClick={this.onCancel}>
-            {cancelText}
+            <CancelText> {cancelText}</CancelText>
           </Cancel>
           <Confirm type={okType} size="small" onClick={this.onConfirm}>
-            {okText}
+            <OkText> {okText}</OkText>
           </Confirm>
         </Operation>
       </Theme>
@@ -163,7 +171,7 @@ class PopConfirm extends React.Component<PopConfirmProps, PopConfirmState> {
     return icon;
   }
   render() {
-    const { children, action, arrowPosition = 'top', getTheme } = this.props;
+    const { children, action, placement, getTheme } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     return (
       <Popover
@@ -173,7 +181,7 @@ class PopConfirm extends React.Component<PopConfirmProps, PopConfirmState> {
         theme={getTheme()}
         title={this.getContent()}
         ref={getTarget}
-        arrowPosition={arrowPosition}
+        placement={placement}
       >
         {children}
       </Popover>
@@ -189,4 +197,4 @@ class PopConfirm extends React.Component<PopConfirmProps, PopConfirmState> {
     onVisibleChange && onVisibleChange(visible);
   };
 }
-export default ThemeProvider(PopConfirm, Widget.PopConfirm);
+export default ThemeProvider(Popconfirm, Widget.Popconfirm);

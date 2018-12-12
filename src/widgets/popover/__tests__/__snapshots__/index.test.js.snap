@@ -481,6 +481,61 @@ exports[`popover Demo Component JSON 1`] = `
   padding: 0.5em 0.6666666666666667em;
 }
 
+.c37 {
+  position: relative;
+  display: inline-block;
+}
+
+.c38 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  line-height: 1.5;
+  font-size: 1.4rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c38:hover {
+  border-color: #4d63ff;
+}
+
+.c38::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.c38::-moz-placeholder {
+  color: #ccc;
+}
+
+.c38:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.c38::placeholder {
+  color: #ccc;
+}
+
+.c38:focus {
+  border-color: #4d63ff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
 .c0 {
   margin: 100px;
 }
@@ -491,7 +546,7 @@ exports[`popover Demo Component JSON 1`] = `
   <div
     style={
       Object {
-        "marginLeft": 70,
+        "marginLeft": 50,
         "whiteSpace": "nowrap",
       }
     }
@@ -667,7 +722,7 @@ exports[`popover Demo Component JSON 1`] = `
     style={
       Object {
         "float": "left",
-        "width": 70,
+        "width": 45,
       }
     }
   >
@@ -853,7 +908,7 @@ exports[`popover Demo Component JSON 1`] = `
     style={
       Object {
         "marginLeft": 200,
-        "width": 70,
+        "width": 50,
       }
     }
   >
@@ -1039,7 +1094,7 @@ exports[`popover Demo Component JSON 1`] = `
     style={
       Object {
         "clear": "both",
-        "marginLeft": 70,
+        "marginLeft": 50,
         "whiteSpace": "nowrap",
       }
     }
@@ -1223,36 +1278,43 @@ exports[`popover Demo Component JSON 1`] = `
     </div>
   </div>
   <br />
-  <button
-    className="c1"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
+  <p />
+  <span
+    className="sv c37"
+    disabled={false}
   >
-    <span>
-      聚焦
-    </span>
-  </button>
+    <input
+      className="c38"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      placeholder="聚焦弹出"
+      size="default"
+      value=""
+    />
+  </span>
   <div
     className="c2"
   >
     <div
-      className="c30 c4"
+      className="c3 c4"
     >
       <div
         className="c5"
-        fx="top"
+        fx="bottom"
       >
         <div
-          className="c33"
-          fx="top"
+          className="c11"
+          fx="bottom"
         />
         <div
-          className="c34"
-          fx="top"
+          className="c12"
+          fx="bottom"
         />
         <div
           className="c8"
@@ -1299,21 +1361,21 @@ exports[`popover Demo Component JSON 1`] = `
     className="c2"
   >
     <div
-      className="c30 c4"
+      className="c3 c4"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <div
         className="c5"
-        fx="top"
+        fx="bottom"
       >
         <div
-          className="c33"
-          fx="top"
+          className="c11"
+          fx="bottom"
         />
         <div
-          className="c34"
-          fx="top"
+          className="c12"
+          fx="bottom"
         />
         <div
           className="c8"

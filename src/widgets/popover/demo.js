@@ -8,6 +8,7 @@ import * as React from 'react';
 import Direction from '../button';
 import styled from 'styled-components';
 import Popover from './popover';
+import Input from '../input/index';
 
 class InnerCloseDemo extends React.Component {
   state = {
@@ -28,7 +29,7 @@ class InnerCloseDemo extends React.Component {
     const description = 'this is description';
     return (
       <Popover
-        arrowPosition="top"
+        placement="top"
         title="this is the title"
         action="click"
         visible={this.state.visible}
@@ -80,7 +81,7 @@ class HoverAndClcikDemo extends React.Component {
         description={hoverContent}
         title="This is  hover title"
         action={'hover'}
-        arrowPosition="topLeft"
+        placement="topLeft"
         visible={this.state.hovered}
         onVisibleChange={this.handleHoverChange}
       >
@@ -89,7 +90,7 @@ class HoverAndClcikDemo extends React.Component {
             description={clickContent}
             title="This is  click title"
             action={'click'}
-            arrowPosition="topLeft"
+            placement="topLeft"
             visible={this.state.clicked}
             clear={'lugia-icon-reminder_close'}
             onVisibleChange={this.handleClickChange}
@@ -111,88 +112,88 @@ export const WrapperDemo = () => {
   const description = 'this is description';
   return (
     <Wrapper>
-      <div style={{ marginLeft: 70, whiteSpace: 'nowrap' }}>
-        <Popover arrowPosition="topLeft" title={text} action={'click'}>
+      <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
+        <Popover placement="topLeft" title={text} action={'click'}>
           <Direction>TL</Direction>
         </Popover>
         <Popover
-          arrowPosition="top"
+          placement="top"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>Top</Direction>
         </Popover>
         <Popover
-          arrowPosition="topRight"
+          placement="topRight"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>TR</Direction>
         </Popover>
       </div>
-      <div style={{ width: 70, float: 'left' }}>
+      <div style={{ width: 45, float: 'left' }}>
         <Popover
-          arrowPosition="leftTop"
+          placement="leftTop"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>LT</Direction>
         </Popover>
         <Popover
-          arrowPosition="left"
+          placement="left"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>Left</Direction>
         </Popover>
         <Popover
-          arrowPosition="leftBottom"
+          placement="leftBottom"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>LB</Direction>
         </Popover>
       </div>
-      <div style={{ width: 70, marginLeft: 200 }}>
+      <div style={{ width: 50, marginLeft: 200 }}>
         <Popover
-          arrowPosition="rightTop"
+          placement="rightTop"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>RT</Direction>
         </Popover>
         <Popover
-          arrowPosition="right"
+          placement="right"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>Right</Direction>
         </Popover>
         <Popover
-          arrowPosition="rightBottom"
+          placement="rightBottom"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>RB</Direction>
         </Popover>
       </div>
-      <div style={{ marginLeft: 70, clear: 'both', whiteSpace: 'nowrap' }}>
+      <div style={{ marginLeft: 50, clear: 'both', whiteSpace: 'nowrap' }}>
         <Popover
-          arrowPosition="bottomLeft"
+          placement="bottomLeft"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>BL</Direction>
         </Popover>
         <Popover
-          arrowPosition="bottom"
+          placement="bottom"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
           <Direction>Bottom</Direction>
         </Popover>
         <Popover
-          arrowPosition="bottomRight"
+          placement="bottomRight"
           title={text}
           description={[<div>{description}</div>, <div>{description}</div>]}
         >
@@ -200,16 +201,15 @@ export const WrapperDemo = () => {
         </Popover>
       </div>
       <br />
+      <p />
       <Popover
-        arrowPosition="bottom"
         title={text}
         action={'focus'}
         description={[<div>{description}</div>, <div>{description}</div>]}
       >
-        <Direction>聚焦</Direction>
+        <Input placeholder={'聚焦弹出'} />
       </Popover>
       <Popover
-        arrowPosition="bottom"
         title={text}
         action={'hover'}
         description={[<div>{description}</div>, <div>{description}</div>]}
@@ -217,10 +217,8 @@ export const WrapperDemo = () => {
         <Direction> 悬停</Direction>
       </Popover>
       <Popover
-        arrowPosition="bottom"
         title={text}
         action={'click'}
-        arrowPosition="top"
         description={[<div>{description}</div>, <div>{description}</div>]}
       >
         <Direction>点击</Direction>
@@ -230,5 +228,10 @@ export const WrapperDemo = () => {
   );
 };
 export default () => {
-  return [<WrapperDemo />, <HoverAndClcikDemo />, <InnerCloseDemo />];
+  return [
+    <WrapperDemo />,
+    <Wrapper>
+      <HoverAndClcikDemo /> <InnerCloseDemo />
+    </Wrapper>,
+  ];
 };

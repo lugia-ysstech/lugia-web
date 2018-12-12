@@ -11,6 +11,7 @@ import Switch from '../switch';
 import notification from '../notification';
 import styled from 'styled-components';
 import Popconfirm from './popconfirm';
+import Input from '../input/index';
 
 const Wrapper = styled.div`
   margin: 100px;
@@ -19,32 +20,32 @@ const IconWrapper = styled.div`
   border-radius: 50%;
   width: 14px;
   height: 14px;
-  background: red;
 `;
 const HintIcon = styled(Icon)`
   color: white;
 `;
-export class Condition extends React.Component {
+export class Condition extends React.Component<any, any> {
   state = {
     visible: false,
     condition: true,
   };
 
-  changeCondition = value => {
-    this.setState({ condition: value });
+  changeCondition = (value: Object) => {
+    const condition = value.oldValue === true;
+    this.setState({ condition });
   };
 
   confirm = () => {
     this.setState({ visible: false });
-    notification.success({ title: 'Next step.' });
+    notification.success({ title: '操作成功 ' });
   };
 
   cancel = () => {
     this.setState({ visible: false });
-    notification.error({ title: 'click cancel.' });
+    notification.error({ title: '取消操作' });
   };
 
-  handleVisibleChange = visible => {
+  handleVisibleChange = (visible: Object) => {
     if (!visible) {
       this.setState({ visible });
       return;
@@ -59,7 +60,7 @@ export class Condition extends React.Component {
   render() {
     return (
       <div style={{ margin: 20 }}>
-        <p> 触发确认框</p>
+        <p> 触发弹出框</p>
         <Switch defaultChecked onChange={this.changeCondition} />
         <Popconfirm
           title="确定要删除吗?"
@@ -81,86 +82,99 @@ export const WrapperDemo = () => {
   const text = '确定删除这个选项吗?';
   return (
     <Wrapper>
-      <div style={{ marginLeft: 70, whiteSpace: 'nowrap' }}>
-        <Popconfirm arrowPosition="topLeft" title={text} action={'click'}>
+      <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
+        <Popconfirm placement="topLeft" title={text} action={'click'}>
           <Direction>TL</Direction>
         </Popconfirm>
-        <Popconfirm arrowPosition="top" title={text}>
+        <Popconfirm placement="top" title={text}>
           <Direction>Top</Direction>
         </Popconfirm>
-        <Popconfirm arrowPosition="topRight" title={text}>
+        <Popconfirm placement="topRight" title={text}>
           <Direction>TR</Direction>
         </Popconfirm>
       </div>
       <div style={{ width: 70, float: 'left' }}>
-        <Popconfirm arrowPosition="leftTop" title={text}>
+        <Popconfirm placement="leftTop" title={text}>
           <Direction>LT</Direction>
         </Popconfirm>
-        <Popconfirm arrowPosition="left" title={text}>
+        <Popconfirm placement="left" title={text}>
           <Direction>Left</Direction>
         </Popconfirm>
-        <Popconfirm arrowPosition="leftBottom" title={text}>
+        <Popconfirm placement="leftBottom" title={text}>
           <Direction>LB</Direction>
         </Popconfirm>
       </div>
       <div style={{ width: 70, marginLeft: 200 }}>
-        <Popconfirm arrowPosition="rightTop" title={text}>
+        <Popconfirm placement="rightTop" title={text}>
           <Direction>RT</Direction>
         </Popconfirm>
-        <Popconfirm arrowPosition="right" title={text}>
+        <Popconfirm placement="right" title={text}>
           <Direction>Right</Direction>
         </Popconfirm>
-        <Popconfirm arrowPosition="rightBottom" title={text}>
+        <Popconfirm placement="rightBottom" title={text}>
           <Direction>RB</Direction>
         </Popconfirm>
       </div>
-      <div style={{ marginLeft: 70, clear: 'both', whiteSpace: 'nowrap' }}>
-        <Popconfirm arrowPosition="bottomLeft" title={text}>
+      <div style={{ marginLeft: 50, clear: 'both', whiteSpace: 'nowrap' }}>
+        <Popconfirm placement="bottomLeft" title={text}>
           <Direction>BL</Direction>
         </Popconfirm>
-        <Popconfirm arrowPosition="bottom" title={text}>
+        <Popconfirm placement="bottom" title={text}>
           <Direction>Bottom</Direction>
         </Popconfirm>
-        <Popconfirm arrowPosition="bottomRight" title={text}>
+        <Popconfirm placement="bottomRight" title={text}>
           <Direction>BR</Direction>
         </Popconfirm>
       </div>
       <br />
-      <Popconfirm arrowPosition="bottom" title={text} action={'focus'}>
-        <Direction>聚焦</Direction>
+      <Popconfirm title={text} action={'focus'}>
+        <Input placeholder={'聚焦弹出'} />
       </Popconfirm>
-      <Popconfirm arrowPosition="bottom" title={text} action={'hover'}>
+      <Popconfirm title={text} action={'hover'}>
         <Direction> 悬停</Direction>
       </Popconfirm>
-      <Popconfirm
-        arrowPosition="bottom"
-        title={text}
-        action={'click'}
-        cancelText="No"
-        okText="yes"
-        okType="danger"
-      >
+      <Popconfirm title={text} action={'click'} cancelText="No" okText="yes" okType="danger">
         <Direction>点击</Direction>
       </Popconfirm>
-      <Popconfirm
-        arrowPosition="bottom"
-        title={text}
-        action={'click'}
-        cancelText="No"
-        okText="yes"
-        okType="danger"
-        icon={
-          <IconWrapper>
-            <HintIcon style={{ color: 'white' }} iconClass={'lugia-icon-reminder_exclamation'} />
-          </IconWrapper>
-        }
-      >
-        <Direction>自定义图标</Direction>
-      </Popconfirm>
       <br />
+      <div>
+        <Popconfirm
+          title={text}
+          action={'click'}
+          cancelText="No"
+          okText="yes"
+          okType="danger"
+          icon={
+            <IconWrapper style={{ background: 'orange' }}>
+              <HintIcon style={{ color: 'white' }} iconClass={'lugia-icon-reminder_exclamation'} />
+            </IconWrapper>
+          }
+        >
+          <Direction>提示</Direction>
+        </Popconfirm>
+        <Popconfirm
+          title={text}
+          action={'click'}
+          cancelText="No"
+          okText="yes"
+          okType="danger"
+          icon={
+            <IconWrapper style={{ background: 'red' }}>
+              <HintIcon style={{ color: 'white' }} iconClass={'lugia-icon-reminder_question'} />
+            </IconWrapper>
+          }
+        >
+          <Direction>危险操作</Direction>
+        </Popconfirm>
+      </div>
     </Wrapper>
   );
 };
 export default () => {
-  return [<WrapperDemo />, <Condition />];
+  return [
+    <WrapperDemo />,
+    <Wrapper>
+      <Condition />
+    </Wrapper>,
+  ];
 };

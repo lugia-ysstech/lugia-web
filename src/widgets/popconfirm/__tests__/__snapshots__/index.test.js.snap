@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`popconfirm Demo Component JSON 1`] = `
-.c45 {
+.c47 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -145,7 +145,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   background-color: #3e4fcc;
 }
 
-.c41 {
+.c43 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -174,19 +174,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
   margin: 0em 0em 0em 0.5em;
 }
 
-.c41:hover {
+.c43:hover {
   color: #ffffff;
   border: none;
   background-color: #f25762;
 }
 
-.c41:focus {
+.c43:focus {
   color: #ffffff;
   border: none;
   background-color: #f25762;
 }
 
-.c41:active {
+.c43:active {
   background-color: #bf1f2a;
 }
 
@@ -617,7 +617,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   padding: 0.5em 0.6666666666666667em;
 }
 
-.c42 {
+.c44 {
   position: relative;
   width: 1.25em;
   height: 1.25em;
@@ -652,18 +652,72 @@ exports[`popconfirm Demo Component JSON 1`] = `
   text-align: right;
 }
 
+.c41 {
+  position: relative;
+  display: inline-block;
+}
+
+.c42 {
+  height: 2.666666666666667em;
+  cursor: text;
+  width: 16.666666666666668em;
+  border-radius: 0.33333333333333337em;
+  border: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  line-height: 1.5;
+  font-size: 1.4rem;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-image: none;
+  color: #333333;
+  padding-left: 0.8333333333333334em;
+  padding-right: 2.916666666666667em;
+  outline: none;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.c42:hover {
+  border-color: #4d63ff;
+}
+
+.c42::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.c42::-moz-placeholder {
+  color: #ccc;
+}
+
+.c42:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.c42::placeholder {
+  color: #ccc;
+}
+
+.c42:focus {
+  border-color: #4d63ff;
+  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+}
+
 .c0 {
   margin: 100px;
 }
 
-.c43 {
+.c45 {
   border-radius: 50%;
   width: 14px;
   height: 14px;
-  background: red;
 }
 
-.c44 {
+.c46 {
   color: white;
 }
 
@@ -673,7 +727,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   <div
     style={
       Object {
-        "marginLeft": 70,
+        "marginLeft": 50,
         "whiteSpace": "nowrap",
       }
     }
@@ -1529,7 +1583,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
     style={
       Object {
         "clear": "both",
-        "marginLeft": 70,
+        "marginLeft": 50,
         "whiteSpace": "nowrap",
       }
     }
@@ -1812,36 +1866,42 @@ exports[`popconfirm Demo Component JSON 1`] = `
     </div>
   </div>
   <br />
-  <button
-    className="c1"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
+  <span
+    className="sv c41"
+    disabled={false}
   >
-    <span>
-      聚焦
-    </span>
-  </button>
+    <input
+      className="c42"
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      placeholder="聚焦弹出"
+      size="default"
+      value=""
+    />
+  </span>
   <div
     className="c2"
   >
     <div
-      className="c34 c4"
+      className="c3 c4"
     >
       <div
         className="c5"
-        fx="top"
+        fx="bottom"
       >
         <div
-          className="c37"
-          fx="top"
+          className="c16"
+          fx="bottom"
         />
         <div
-          className="c38"
-          fx="top"
+          className="c17"
+          fx="bottom"
         />
         <div
           className="c8"
@@ -1921,21 +1981,21 @@ exports[`popconfirm Demo Component JSON 1`] = `
     className="c2"
   >
     <div
-      className="c34 c4"
+      className="c3 c4"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <div
         className="c5"
-        fx="top"
+        fx="bottom"
       >
         <div
-          className="c37"
-          fx="top"
+          className="c16"
+          fx="bottom"
         />
         <div
-          className="c38"
-          fx="top"
+          className="c17"
+          fx="bottom"
         />
         <div
           className="c8"
@@ -2015,19 +2075,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
     className="c2"
   >
     <div
-      className="c34 c4"
+      className="c3 c4"
     >
       <div
         className="c5"
-        fx="top"
+        fx="bottom"
       >
         <div
-          className="c37"
-          fx="top"
+          className="c16"
+          fx="bottom"
         />
         <div
-          className="c38"
-          fx="top"
+          className="c17"
+          fx="bottom"
         />
         <div
           className="c8"
@@ -2067,110 +2127,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
                     </span>
                   </button>
                   <button
-                    className="c41"
-                    onClick={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    onMouseUp={[Function]}
-                    size="small"
-                    type="danger"
-                  >
-                    <span>
-                      yes
-                    </span>
-                  </button>
-                </div>
-              </div>
-               
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button
-    className="c1"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-  >
-    <span>
-      自定义图标
-    </span>
-  </button>
-  <div
-    className="c2"
-  >
-    <div
-      className="c34 c4"
-    >
-      <div
-        className="c5"
-        fx="top"
-      >
-        <div
-          className="c37"
-          fx="top"
-        />
-        <div
-          className="c38"
-          fx="top"
-        />
-        <div
-          className="c8"
-        >
-          <div
-            className="c9"
-          >
-            <div
-              className="c10"
-            >
-              <div
-                className="c11"
-              >
-                <div>
-                  <div
-                    className="c42"
-                  >
-                    <div
-                      className="c43"
-                    >
-                      <i
-                        className="lugia-icon-reminder_exclamation c44 c45"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    className="c12"
-                  >
-                    确定删除这个选项吗?
-                     
-                  </div>
-                </div>
-                <div
-                  className="c13"
-                >
-                  <button
-                    className="c14"
-                    onClick={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    onMouseUp={[Function]}
-                    size="small"
-                  >
-                    <span>
-                      No
-                    </span>
-                  </button>
-                  <button
-                    className="c41"
+                    className="c43"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseEnter={[Function]}
@@ -2194,5 +2151,223 @@ exports[`popconfirm Demo Component JSON 1`] = `
     </div>
   </div>
   <br />
+  <div>
+    <button
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span>
+        提示
+      </span>
+    </button>
+    <div
+      className="c2"
+    >
+      <div
+        className="c3 c4"
+      >
+        <div
+          className="c5"
+          fx="bottom"
+        >
+          <div
+            className="c16"
+            fx="bottom"
+          />
+          <div
+            className="c17"
+            fx="bottom"
+          />
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+              >
+                <div
+                  className="c11"
+                >
+                  <div>
+                    <div
+                      className="c44"
+                    >
+                      <div
+                        className="c45"
+                        style={
+                          Object {
+                            "background": "orange",
+                          }
+                        }
+                      >
+                        <i
+                          className="lugia-icon-reminder_exclamation c46 c47"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="c12"
+                    >
+                      确定删除这个选项吗?
+                       
+                    </div>
+                  </div>
+                  <div
+                    className="c13"
+                  >
+                    <button
+                      className="c14"
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseOut={[Function]}
+                      onMouseOver={[Function]}
+                      onMouseUp={[Function]}
+                      size="small"
+                    >
+                      <span>
+                        No
+                      </span>
+                    </button>
+                    <button
+                      className="c43"
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseOut={[Function]}
+                      onMouseOver={[Function]}
+                      onMouseUp={[Function]}
+                      size="small"
+                      type="danger"
+                    >
+                      <span>
+                        yes
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span>
+        危险操作
+      </span>
+    </button>
+    <div
+      className="c2"
+    >
+      <div
+        className="c3 c4"
+      >
+        <div
+          className="c5"
+          fx="bottom"
+        >
+          <div
+            className="c16"
+            fx="bottom"
+          />
+          <div
+            className="c17"
+            fx="bottom"
+          />
+          <div
+            className="c8"
+          >
+            <div
+              className="c9"
+            >
+              <div
+                className="c10"
+              >
+                <div
+                  className="c11"
+                >
+                  <div>
+                    <div
+                      className="c44"
+                    >
+                      <div
+                        className="c45"
+                        style={
+                          Object {
+                            "background": "red",
+                          }
+                        }
+                      >
+                        <i
+                          className="lugia-icon-reminder_question c46 c47"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="c12"
+                    >
+                      确定删除这个选项吗?
+                       
+                    </div>
+                  </div>
+                  <div
+                    className="c13"
+                  >
+                    <button
+                      className="c14"
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseOut={[Function]}
+                      onMouseOver={[Function]}
+                      onMouseUp={[Function]}
+                      size="small"
+                    >
+                      <span>
+                        No
+                      </span>
+                    </button>
+                    <button
+                      className="c43"
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseOut={[Function]}
+                      onMouseOver={[Function]}
+                      onMouseUp={[Function]}
+                      size="small"
+                      type="danger"
+                    >
+                      <span>
+                        yes
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

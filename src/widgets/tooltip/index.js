@@ -9,6 +9,7 @@ import Trigger from '../trigger';
 import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import type { TooltipProps, TooltipState } from '../css/tooltip';
 import {
   getTriggerByArrow,
   getFontColor,
@@ -16,6 +17,7 @@ import {
   getArrow,
   getNewArrow,
   getDeg,
+  getSize,
   Left,
   Right,
   Down,
@@ -33,6 +35,7 @@ const ToolTrigger = styled(Trigger)`
 
 const Content = styled.div`
   position: relative;
+  ${getSize};
   font-size: ${FontSize};
   line-height: 1;
   color: ${getColor};
@@ -84,15 +87,30 @@ const Message = styled.div`
 
 class Tooltip extends React.Component<TooltipProps, TooltipState> {
   static displayName = Widget.Tooltip;
-
   static defaultProps = {
-    action: ['click'],
     getTheme() {
       return {};
     },
   };
   trigger: Object;
-
+  static getDerivedStateFromProps(props: TooltipProps, state: TooltipState) {
+    const hasVisibleInprops = 'visible' in props;
+    const hasDefaultVisibleInprops = 'defaultVisible' in props;
+    if (!state) {
+      const theVisible = hasVisibleInprops
+        ? props.visible
+        : hasDefaultVisibleInprops
+        ? props.defaultVisible
+        : state.visible
+        ? state.visible
+        : false;
+      return { visible: theVisible };
+    }
+    if (hasVisibleInprops) {
+      return { visible: props.visible };
+    }
+    return { visible: state.visible };
+  }
   render() {
     const { placement, action, title, isPop, getTheme, children, visible } = this.props;
     const fx = this.getFx(placement);
@@ -113,11 +131,11 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
           </Content>
         }
       >
-        {this.props.children}
+        {children}
       </ToolTrigger>
     );
   }
-  onVisibleChange = (visible: boolean) => {
+  onVisibleChange = visible => {
     const { onVisibleChange } = this.props;
     this.setState({ visible });
     onVisibleChange && onVisibleChange(visible);
