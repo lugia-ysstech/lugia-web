@@ -1,0 +1,9 @@
+{
+  "ThemeType": {
+    "width": {
+      "type": "WidthType",
+      "desc": ""
+    }
+  },
+  "WidthType": "number"
+}
