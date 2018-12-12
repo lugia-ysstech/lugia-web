@@ -28,10 +28,23 @@ export default ThemeProvider(
       };
       this.maping = false;
     }
-    onClick = (e, keys, item) => {
-      const { onSelect } = this.props;
-      console.info(keys, item);
-      onSelect && onSelect(e, keys, item);
+    createCancelCheckBox = () => {
+      const { cancelItem = [] } = this.props;
+      const hasCancelItem = cancelItem && cancelItem.length > 0;
+      if (hasCancelItem) {
+        const elements = [];
+        cancelItem.forEach((item, index) => {
+          const { text, value } = item;
+          elements.push(
+            <CheckBox key={index} value={value} cancel handleCancelItemClick={this.cancelItemClick}>
+              {text}
+            </CheckBox>
+          );
+        });
+        return elements;
+      }
+
+      return null;
     };
     render() {
       const view = {
@@ -62,6 +75,8 @@ export default ThemeProvider(
         needCancelBox = false,
         type,
         direction,
+        blackList,
+        whiteList,
       } = this.props;
       const { inputValue } = this.state;
       const inputConfig = {};
@@ -75,25 +90,19 @@ export default ThemeProvider(
           : length
           ? isContained(selectedKeys, canCheckKeys)
           : isContained(data, selectedKeys);
+      console.info('checked', checked, 'length', length);
+      const list = {};
+      if (type === 'tree') {
+        if (blackList) {
+          list.blackList = blackList;
+        }
+        if (whiteList) {
+          list.whiteList = whiteList;
+        }
+        console.info('list', list);
+      }
 
-      // console.info(
-      //   getTreeData(
-      //     [
-      //       { text: '1', value: '1' },
-      //       {
-      //         text: '2',
-      //         value: '2',
-      //         children: [{ text: '2.1', value: '2.1' }, { text: '2.2', value: '2.2' }],
-      //       },
-      //     ],
-      //     { target: [], mapData: {} }
-      //   )
-      // );
-      const cancelBox = needCancelBox ? (
-        <CancelBox>
-          <CheckBox cancel>取消项</CheckBox>
-        </CancelBox>
-      ) : null;
+      const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
       return (
         <TransFer>
           <Check>
@@ -133,10 +142,13 @@ export default ThemeProvider(
                 ) : (
                   <Tree
                     data={data}
-                    // value={['1.1.1.1.1']}
+                    onlySelectLeaf
+                    value={selectedKeys}
                     expandAll
                     mutliple
-                    onClick={this.handleTreeChange}
+                    onChange={this.handleTreeChange}
+                    query={inputValue}
+                    whiteList={whiteList}
                   />
                 )}
               </Theme>
@@ -148,16 +160,28 @@ export default ThemeProvider(
         </TransFer>
       );
     }
+    cancelItemClick = (value: string) => {
+      console.info(value);
+      const { onCancelItemClick } = this.props;
+      onCancelItemClick && onCancelItemClick(value);
+    };
     handleInputChange = (value: Object) => {
       const { newValue } = value;
-      const { onSearch } = this.props;
+      const { onSearch, type = 'panel' } = this.props;
       this.setState({
         inputValue: newValue,
       });
-      onSearch && onSearch(newValue);
+      if (type === 'panel') {
+        onSearch && onSearch(newValue);
+      }
     };
-    handleTreeChange = (value, a, b, c) => {
-      console.info(value, a, b, c);
+    onClick = (e, keys, item) => {
+      const { onSelect } = this.props;
+      onSelect && onSelect([item.value]);
+    };
+    handleTreeChange = value => {
+      const { onSelect } = this.props;
+      onSelect && onSelect(value);
     };
   },
   Widget.Transfer

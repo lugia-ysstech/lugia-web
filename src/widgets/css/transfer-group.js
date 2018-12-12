@@ -18,6 +18,7 @@ export type GroupProps = {
   disabled?: boolean,
   targetKeys?: string[],
   onSelectChange?: (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {},
+  onCancelItemClick?: (newDisplayValue: string[]) => {},
   onDirectionClick?: (
     nextTargetKeys: string[],
     direction: 'left' | 'right',
@@ -44,6 +45,9 @@ export type GroupState = {
   sourceCheckKeys: string[],
   targetCheckKeys: string[],
   treeData: Object[],
+  cancelItem: Object[],
+  displayValue: string[],
+  leafKeys: string[],
 };
 type CSSProps = {
   isWrap?: boolean,

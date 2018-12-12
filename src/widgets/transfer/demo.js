@@ -28,12 +28,15 @@ const treeData = [
       {
         text: '2.1',
         value: '2.1',
-        children: [{ text: '2.1.1', value: '2.1.1' }, { text: '2.2.2', value: '2.2.2' }],
+        children: [
+          { text: '2.1.1', value: '2.1.1', disabled: true },
+          { text: '2.1.2', value: '2.1.2' },
+        ],
       },
       {
         text: '2.2',
         value: '2.2',
-        children: [{ text: '2.2.1', value: '2..2.1' }, { text: '2.2.2', value: '2.2.2' }],
+        children: [{ text: '2.2.1', value: '2.2.1' }, { text: '2.2.2', value: '2.2.2' }],
       },
     ],
   },
@@ -82,15 +85,15 @@ export default class TransferDemo extends React.Component<any, any> {
     const { targetKeys, sourceSelectedKeys, targetSelectedKeys } = this.state;
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
-        <Transfer
-          data={data}
-          showSearch
-          sourceSelectedKeys={sourceSelectedKeys}
-          targetSelectedKeys={targetSelectedKeys}
-          targetKeys={targetKeys}
-          onSelectChange={this.handleSelectChange}
-          onDirectionClick={this.handleDirectionClick}
-        />
+        {/*<Transfer*/}
+        {/*data={data}*/}
+        {/*showSearch*/}
+        {/*sourceSelectedKeys={sourceSelectedKeys}*/}
+        {/*targetSelectedKeys={targetSelectedKeys}*/}
+        {/*targetKeys={targetKeys}*/}
+        {/*onSelectChange={this.handleSelectChange}*/}
+        {/*onDirectionClick={this.handleDirectionClick}*/}
+        {/*/>*/}
         <Transfer
           data={data}
           showSearch
@@ -98,7 +101,24 @@ export default class TransferDemo extends React.Component<any, any> {
           defaultTargetSelectedKeys={['选项2']}
           defaultTargetKeys={['选项2', '选项3', '选项7']}
         />
-        <Transfer data={treeData} type="tree" showSearch />
+        <Transfer
+          data={treeData}
+          type="tree"
+          sourceSelectedKeys={['2.2.1']}
+          targetSelectedKeys={['2.1.1']}
+          targetKeys={['3.1', '3.2', '2.1.1']}
+          showSearch
+          displayValue={['dis1', 'dis2']}
+        />
+        <Transfer
+          data={treeData}
+          type="tree"
+          defaultSourceSelectedKeys={['2.2.1']}
+          defaultTargetSelectedKeys={['2.1.1']}
+          defaultTargetKeys={['3.1', '3.2', '2.1.1']}
+          showSearch
+          displayValue={['dis1', 'dis2']}
+        />
       </div>
     );
   }

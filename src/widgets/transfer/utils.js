@@ -82,7 +82,7 @@ export function getTreeData(
   parentPath?: string[]
 ): Object {
   if (data && data.length) {
-    const { target = [], mapData = {} } = targetObj;
+    const { target = [], mapData = {}, leafKeys = [] } = targetObj;
     data.forEach(item => {
       const { children } = item;
       const newObj = {};
@@ -105,10 +105,12 @@ export function getTreeData(
       }
       if (!children || children.length === 0) {
         newObj.isLeaf = true;
+        if (!item.disabled) {
+          leafKeys.push(item.value);
+        }
         target.push(newObj);
         mapData[item.value] = item;
       } else {
-        newObj.alwaysExpanded = item.alwaysExpanded;
         target.push(newObj);
         getTreeData(children, targetObj, item.value, pidArr);
       }
@@ -117,7 +119,7 @@ export function getTreeData(
     return targetObj;
   }
 
-  return { target: [], mapData: {} };
+  return { target: [], mapData: {}, leafKeys: [] };
 }
 export function getCancelItem(value: string[], mapData: Object, displayValue?: string[]): Object[] {
   const hasValue = value && value.length;
@@ -133,4 +135,17 @@ export function getCancelItem(value: string[], mapData: Object, displayValue?: s
     return cancelItem;
   }
   return [];
+}
+export function getCanCheckKeys(allKeys: string[], targetKeys: string[]) {
+  const sourceCanCheckKeys = [],
+    targetCanCheckKeys = [];
+  allKeys.forEach(item => {
+    const inTarget = targetKeys.includes(item);
+    if (inTarget) {
+      targetCanCheckKeys.push(item);
+    } else {
+      sourceCanCheckKeys.push(item);
+    }
+  });
+  return { targetCanCheckKeys, sourceCanCheckKeys };
 }

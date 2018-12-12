@@ -140,7 +140,7 @@ describe('Transfer', () => {
     ).target;
     expect(result1).toEqual([
       { key: '1', title: '1', pid: undefined, path: undefined, isLeaf: true },
-      { key: '2', title: '2', pid: undefined, path: undefined, alwaysExpanded: undefined },
+      { key: '2', title: '2', pid: undefined, path: undefined },
       { key: '2.1', title: '2.1', pid: '2', path: '2', isLeaf: true },
       { key: '2.2', title: '2.2', pid: '2', path: '2', isLeaf: true },
     ]);
