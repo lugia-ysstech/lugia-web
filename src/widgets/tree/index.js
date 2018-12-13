@@ -426,6 +426,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       blackList,
       whiteList,
       searchType = 'include',
+      valueField,
     } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;
@@ -443,7 +444,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const highlight = [];
     const row = data[current];
     if (row) {
-      const { key } = row;
+      const { [valueField]: key } = row;
       highlight.push(key + '');
     }
     return (
