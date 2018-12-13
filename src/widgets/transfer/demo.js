@@ -82,15 +82,15 @@ export default class TransferDemo extends React.Component<any, any> {
     const { targetKeys, sourceSelectedKeys, targetSelectedKeys } = this.state;
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
-        {/*<Transfer*/}
-        {/*data={data}*/}
-        {/*showSearch*/}
-        {/*sourceSelectedKeys={sourceSelectedKeys}*/}
-        {/*targetSelectedKeys={targetSelectedKeys}*/}
-        {/*targetKeys={targetKeys}*/}
-        {/*onSelectChange={this.handleSelectChange}*/}
-        {/*onDirectionClick={this.handleDirectionClick}*/}
-        {/*/>*/}
+        <Transfer
+          data={data}
+          showSearch
+          sourceSelectedKeys={sourceSelectedKeys}
+          targetSelectedKeys={targetSelectedKeys}
+          targetKeys={targetKeys}
+          onSelectChange={this.handleSelectChange}
+          onDirectionClick={this.handleDirectionClick}
+        />
         <Transfer
           data={data}
           showSearch

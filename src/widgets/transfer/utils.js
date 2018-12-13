@@ -71,12 +71,12 @@ export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
   }
   return { validKeys, disabledKeys };
 }
-export function isContained(a: Array<any>, b: string[]) {
-  if (!(a instanceof Array) || !(b instanceof Array)) return false;
-  if (a.length < b.length) return false;
-  const aStr = a.toString();
-  for (let i = 0, len = b.length; i < len; i++) {
-    if (aStr.indexOf(b[i]) === -1) return false;
+export function isContained(range: Array<any>, target: string[]) {
+  if (!(range instanceof Array) || !(target instanceof Array)) return false;
+  if (range.length < target.length) return false;
+  const aStr = range.toString();
+  for (let i = 0, len = target.length; i < len; i++) {
+    if (aStr.indexOf(target[i]) === -1) return false;
   }
   return true;
 }
@@ -148,7 +148,7 @@ export function getCancelItem(
         }
       });
     }
-    console.info('cancelItem', cancelItem);
+
     return cancelItem;
   }
   return [];
