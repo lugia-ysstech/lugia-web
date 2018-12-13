@@ -84,24 +84,6 @@ const getItemColorAndBackground = (props: MenuItemProps) => {
   `;
 };
 
-const SingleItem = styled.li`
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  height: ${em(MenuItemHeight)};
-  font-weight: 400;
-  ${getItemColorAndBackground};
-  white-space: nowrap;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: background 0.3s ease;
-  &:hover {
-    background-color: ${ItemBackgroundColor};
-    font-weight: 900;
-  }
-`;
-
 const getIcon = props => {
   const { checkedCSS } = props;
   return `
@@ -130,6 +112,26 @@ const getIcon = props => {
     }
   `;
 };
+
+const SingleItem = styled.li`
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  height: ${em(MenuItemHeight)};
+  font-weight: 400;
+  ${getItemColorAndBackground};
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.3s ease;
+  ${getIcon};
+  ${getMulipleCheckedStyle};
+  &:hover {
+    background-color: ${ItemBackgroundColor};
+    font-weight: 900;
+  }
+`;
 
 const MutlipleItem = SingleItem.extend`
   ${getIcon};

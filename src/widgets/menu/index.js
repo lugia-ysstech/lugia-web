@@ -45,8 +45,8 @@ type MenuItemProps = {|
 |};
 
 type treeDataItem = {
-  key: string,
-  title: string,
+  value: string,
+  text: string,
   pid: string,
   path: string,
   isLeaf: boolean,
@@ -168,7 +168,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { props, state } = this;
     const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
-
     if (dataChanged || selectedChange) {
       this.updateIsSelect(nextState, nextProps);
     }
@@ -299,6 +298,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     item: Object,
     indexOffsetY: number
   ) => {
+    console.log('isSelect', isSelect);
     const { key, props } = child;
     const { disabled } = props;
     return React.cloneElement(
@@ -316,6 +316,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   ): MenuItemProps {
     const { mutliple, checkbox } = this.props;
     const eventConfig = this.onMenuItemEventHandler(key, item, disabled, indexOffsetY);
+    console.log('isSelect(key)', item, isSelect(key));
     if (!key || !isSelect(key)) {
       return { mutliple, ...eventConfig, checked: false, checkbox, disabled };
     }
@@ -353,33 +354,34 @@ class Menu extends React.Component<MenuProps, MenuState> {
         }
         this.setState({ indexOffsetY });
         const str = key + '';
-        let { selectedKeys = [] } = this.state;
-
+        const { selectedKeys = [] } = this.state;
+        let newSelectedKeys = [...selectedKeys];
         if (mutliple) {
-          const index = selectedKeys.indexOf(str);
+          const index = newSelectedKeys.indexOf(str);
+
           const noIn = index === -1;
           if (noIn) {
-            if (selectedKeys.length < limitCount) {
-              selectedKeys.push(str);
+            if (newSelectedKeys.length < limitCount) {
+              newSelectedKeys.push(str);
             } else {
               return;
             }
           } else {
-            selectedKeys.splice(index, 1);
+            newSelectedKeys.splice(index, 1);
           }
         } else {
-          selectedKeys = this.getSelectedKeysOrExpandedPath(key, separator);
-          const setSelectedKeys = this.getSetSelectedKeys();
-          setSelectedKeys(selectedKeys);
+          newSelectedKeys = this.getSelectedKeysOrExpandedPath(key, separator);
 
           this.IsSetExpandedPath('click', selectedKeys);
         }
+        const setSelectedKeys = this.getSetSelectedKeys();
+        setSelectedKeys(newSelectedKeys);
 
         /**
          *  add by szfeng
          */
 
-        const keys = { selectedKeys: [...selectedKeys] };
+        const keys = { selectedKeys: [...newSelectedKeys] };
         onClick && onClick(event, keys, item);
         onChange && onChange(keys);
 
@@ -429,20 +431,20 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { treeData = [], separator } = this.props;
     let newPath = [];
     treeData.forEach(item => {
-      if (key === item.key) {
+      if (key === item.value) {
         newPath = this.getNewPath(item.path, separator, key);
       }
     });
     return newPath;
   }
 
-  getNewPath(oldPath: string, separator: string, key: string | number) {
+  getNewPath(oldPath: string, separator: string, key: any) {
     const newPathData = oldPath.split('/');
     newPathData.push(key);
     return newPathData;
   }
 
-  getSelectedKeysOrExpandedPath(key: number | string, separator: string) {
+  getSelectedKeysOrExpandedPath(key: any, separator: string) {
     const newExpandedData = this.getNewExpandedPathData(key);
     return [newExpandedData.join(separator)];
   }
@@ -595,7 +597,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   createSelect = (state: MenuState, props: MenuProps) => {
     const existKey = {};
     const { selectedKeys = [] } = state;
-    const { level } = props;
+    const { level, separator } = props;
     const len = selectedKeys.length;
     if (selectedKeys && len > 0) {
       const { mutliple } = props;
@@ -610,13 +612,16 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return () => {};
         }
 
-        const target = getTargetOrDefaultTarget(
-          this.isRoot(),
-          getExpandDataOrSelectData(props, selectedKeys),
-          selectedKeysData
-        );
-
-        existKey[target[level]] = true;
+        if (selectedKeys[0].indexOf(separator) === -1) {
+          existKey[selectedKeys[selectedKeys.length - 1]] = true;
+        } else {
+          const target = getTargetOrDefaultTarget(
+            this.isRoot(),
+            getExpandDataOrSelectData(props, selectedKeys),
+            selectedKeysData
+          );
+          existKey[target[level]] = true;
+        }
       }
     }
     return (key: number | string) => {

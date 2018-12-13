@@ -67,21 +67,21 @@ const data = [
 ];
 
 const treeData = [
-  { key: 'a1', title: '一级菜单1', pid: undefined, path: undefined, isLeaf: true },
-  { key: 'a2', title: '一级菜单2', pid: undefined, path: undefined, isLeaf: true },
-  { key: 'a3', title: '一级菜单3', pid: undefined, path: undefined, isLeaf: true },
-  { key: 'a4', title: '一级菜单4', pid: undefined, path: undefined },
-  { key: 'a4-1', title: '次级菜单4-1', pid: 'a4', path: 'a4' },
-  { key: 'a4-1-1', title: '三级菜单4-1-1', pid: 'a4-1', path: 'a4/a4-1', isLeaf: true },
-  { key: 'a5', title: '一级菜单5', pid: undefined, path: undefined, isLeaf: true },
-  { key: 'a6', title: '一级菜单6', pid: undefined, path: undefined },
-  { key: 'a6-1', title: '次级菜单6-1', pid: 'a6', path: 'a6', isLeaf: true },
-  { key: 'a6-2', title: '次级菜单6-2', pid: 'a6', path: 'a6' },
-  { key: 'a6-2-1', title: '三级菜单6-2-1', pid: 'a6-2', path: 'a6/a6-2' },
-  { key: 'suba1', title: 'sub1', pid: 'a6-2-1', path: 'a6/a6-2/a6-2-1' },
-  { key: 'suba2', title: 'sub2', pid: 'suba1', path: 'a6/a6-2/a6-2-1/suba1', isLeaf: true },
-  { key: 'a6-2-2', title: '三级菜单6-2-2', pid: 'a6-2', path: 'a6/a6-2', isLeaf: true },
-  { key: 'a6-2-3', title: '三级菜单6-2-3', pid: 'a6-2', path: 'a6/a6-2', isLeaf: true },
+  { value: 'a1', text: '一级菜单1', pid: undefined, path: undefined, isLeaf: true },
+  { value: 'a2', text: '一级菜单2', pid: undefined, path: undefined, isLeaf: true },
+  { value: 'a3', text: '一级菜单3', pid: undefined, path: undefined, isLeaf: true },
+  { value: 'a4', text: '一级菜单4', pid: undefined, path: undefined },
+  { value: 'a4-1', text: '次级菜单4-1', pid: 'a4', path: 'a4' },
+  { value: 'a4-1-1', text: '三级菜单4-1-1', pid: 'a4-1', path: 'a4/a4-1', isLeaf: true },
+  { value: 'a5', text: '一级菜单5', pid: undefined, path: undefined, isLeaf: true },
+  { value: 'a6', text: '一级菜单6', pid: undefined, path: undefined },
+  { value: 'a6-1', text: '次级菜单6-1', pid: 'a6', path: 'a6', isLeaf: true },
+  { value: 'a6-2', text: '次级菜单6-2', pid: 'a6', path: 'a6' },
+  { value: 'a6-2-1', text: '三级菜单6-2-1', pid: 'a6-2', path: 'a6/a6-2' },
+  { value: 'suba1', text: 'sub1', pid: 'a6-2-1', path: 'a6/a6-2/a6-2-1' },
+  { value: 'suba2', text: 'sub2', pid: 'suba1', path: 'a6/a6-2/a6-2-1/suba1', isLeaf: true },
+  { value: 'a6-2-2', text: '三级菜单6-2-2', pid: 'a6-2', path: 'a6/a6-2', isLeaf: true },
+  { value: 'a6-2-3', text: '三级菜单6-2-3', pid: 'a6-2', path: 'a6/a6-2', isLeaf: true },
 ];
 
 describe('Cascader', () => {

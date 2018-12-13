@@ -8,8 +8,8 @@ import * as React from 'react';
 import Item from './item';
 
 type treeDataItem = {
-  key: string,
-  title: string,
+  value: string,
+  text: string,
   pid: string,
   path: string,
   isLeaf: boolean,
@@ -142,6 +142,7 @@ export function getExpandDataOrSelectData(props: MenuProps, targetArray: string[
   if (!targetArray || targetArray.length === 0) {
     return [];
   }
+
   return letExpandpathOrSelectedKeysToArray(props, targetArray);
 }
 

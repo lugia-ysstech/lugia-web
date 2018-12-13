@@ -33,6 +33,7 @@ type CascaderState = {
   expandedPath: string[],
   inputValue: string[],
   treeData: Array<Object>,
+  selectedKeys: string[],
 };
 
 export function isHasValue(props: CascaderProps) {
@@ -100,7 +101,7 @@ export function mapTreeDataToGetLeaf(treeData: Array<Object>, filterValueData: s
   let isLeaf;
   treeData &&
     treeData.forEach(item => {
-      if (item.key === key) {
+      if (item.value === key) {
         isLeaf = item.isLeaf;
       }
     });
@@ -111,8 +112,8 @@ export function mapTreeDataToGetDisplayValue(treeData: Array<Object>, filterValu
   const displayValueData = [];
   treeData &&
     treeData.forEach(item => {
-      if (filterValueData.includes(item.key)) {
-        displayValueData.push(item.title);
+      if (filterValueData.includes(item.value)) {
+        displayValueData.push(item.text);
       }
     });
   return displayValueData;

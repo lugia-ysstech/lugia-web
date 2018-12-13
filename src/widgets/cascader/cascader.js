@@ -36,6 +36,7 @@ type CascaderProps = {
   onChange?: Function,
   separator?: string,
   value: string[],
+  displayValue?: string[],
   defaultValue?: string[],
   selectedKeys: string[],
   disabled: boolean,
@@ -51,6 +52,7 @@ type CascaderState = {
   expandedPath: string[],
   inputValue: string[],
   treeData: Array<Object>,
+  selectedKeys: string[],
 };
 
 export default class Cascader extends React.Component<CascaderProps, CascaderState> {
@@ -156,6 +158,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { data, action, separator, offsetX, valueField, displayField } = this.props;
     const { popupVisible, expandedPath, selectedKeys } = this.state;
     const { menuWidth = 150 } = theme;
+
     return (
       <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
@@ -192,7 +195,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     }
   };
 
-  onClick = (event, keys, item) => {
+  onClick = (event: Object, keys: Object, item: Object) => {
     const { selectedKeys } = keys;
     const { showAllLevels } = this.props;
 
@@ -208,7 +211,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     onClick && onClick(event, keys, item);
   };
 
-  onMouseEnter = (event, expandedPath: string[]) => {
+  onMouseEnter = (event: Object, expandedPath: string[]) => {
     this.mouseInTarget = true;
     const { action } = this.props;
     if (action !== 'hover') {
