@@ -93,7 +93,6 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     defaultPopupVisible: false,
     mask: false,
     action: [],
-    align: 'left',
     className: '',
     showAction: [],
     hideAction: [],
@@ -134,7 +133,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     };
   }
 
-  popupContainer: Object;
+  popupContainer: ?Object;
 
   getContainer() {
     if (this.popupContainer) {
@@ -231,8 +230,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   componentWillUnmount() {
     this.clearDelayTimer();
     this.clearOutsideHandler();
-    this.popupContainer && document.body.removeChild(this.popupContainer);
-    this.popupContainer = null;
+    this.popupContainer && document.body && document.body.removeChild(this.popupContainer);
+    this.popupContainer = undefined;
   }
 
   getPopupDomNode() {

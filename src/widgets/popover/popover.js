@@ -90,7 +90,6 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   static defaultProps = {
     defaultVisible: false,
     action: ['click'],
-    placement: 'top',
   };
   target: Object;
 

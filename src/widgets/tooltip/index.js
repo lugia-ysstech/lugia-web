@@ -158,7 +158,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
   getDirection = (placement: string) => {
     if (!placement) {
-      return 'down';
+      return;
     }
 
     if (placement.startsWith(Left)) return Right;
