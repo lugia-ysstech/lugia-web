@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import Popover from './popover';
 import Input from '../input/index';
 
-class InnerCloseDemo extends React.Component {
+class InnerCloseDemo extends React.Component<any, any> {
   state = {
     visible: false,
   };
@@ -43,7 +43,7 @@ class InnerCloseDemo extends React.Component {
     );
   }
 }
-class HoverAndClcikDemo extends React.Component {
+class HoverAndClcikDemo extends React.Component<any, any> {
   state = {
     clicked: false,
     hovered: false,
