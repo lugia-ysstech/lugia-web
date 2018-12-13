@@ -283,7 +283,7 @@ export function recurTreeData(
       } else {
         outTreeRowData.push(newObj);
         onAdd && onAdd(newObj);
-        recurTreeData(children, outTreeRowData, { parentKey: item.value, parentPath: path });
+        recurTreeData(children, outTreeRowData, { parentKey: item.value, parentPath: path }, opt);
       }
     });
 }
