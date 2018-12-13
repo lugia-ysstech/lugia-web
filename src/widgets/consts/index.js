@@ -113,6 +113,8 @@ const CardImage = 'sv_widget_CardImage';
 /* add by LYQ */
 const Rate = 'sv_widget_Rate';
 const Upload = 'sv_widget_Upload';
+const Popover = 'sv_widget_Popover';
+const Popconfirm = 'sv_widget_Popconfirm';
 export default {
   Button,
   Input,
@@ -207,4 +209,6 @@ export default {
   CardImage,
   Rate,
   Upload,
+  Popover,
+  Popconfirm,
 };

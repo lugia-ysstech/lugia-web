@@ -9,11 +9,14 @@ import Trigger from '../trigger';
 import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
+import type { TooltipProps, TooltipState } from '../css/tooltip';
 import {
   getTriggerByArrow,
   getFontColor,
   getColor,
   getArrow,
+  getNewArrow,
+  getDeg,
   getSize,
   Left,
   Right,
@@ -31,11 +34,13 @@ const ToolTrigger = styled(Trigger)`
 `;
 
 const Content = styled.div`
+  position: relative;
   ${getSize};
   font-size: ${FontSize};
   line-height: 1;
   color: ${getColor};
   box-sizing: border-box;
+  z-index: 2;
 `;
 
 const Arrow = styled.div`
@@ -46,6 +51,23 @@ const Arrow = styled.div`
   font-size: ${FontSize};
   line-height: 1;
   color: ${getColor};
+`;
+const BaseArrow = styled.div`
+  ${getNewArrow};
+  position: absolute;
+  border-style: solid;
+  border-width: ${em(8)};
+  border-top-left-radius: ${RadiusSize};
+  border-color: ${getColor} transparent transparent ${getColor};
+  transform: rotateZ(${getDeg});
+`;
+
+const NewArrow = BaseArrow.extend`
+  box-shadow: 0 0 ${em(6)} rgba(0, 0, 0, 0.15);
+  z-index: -1;
+`;
+const MaskArrow = BaseArrow.extend`
+  z-index: 0;
 `;
 
 const Message = styled.div`
@@ -63,60 +85,80 @@ const Message = styled.div`
   box-shadow: 0 ${em(2)} ${em(8)} rgba(0, 0, 0, 0.15);
 `;
 
-type TooltipProps = {
-  placement: string,
-  action: Array<string>,
-  children: any,
-  title: any,
-  getTheme: Function,
-};
-
-class Tooltip extends React.Component<TooltipProps, any> {
-  getTargetDom() {
-    return document.getElementById('root');
-  }
-
+class Tooltip extends React.Component<TooltipProps, TooltipState> {
   static displayName = Widget.Tooltip;
-
   static defaultProps = {
-    action: ['click'],
     getTheme() {
       return {};
     },
   };
   trigger: Object;
-
+  static getDerivedStateFromProps(props: TooltipProps, state: TooltipState) {
+    const hasVisibleInprops = 'visible' in props;
+    const hasDefaultVisibleInprops = 'defaultVisible' in props;
+    if (!state) {
+      const theVisible = hasVisibleInprops
+        ? props.visible
+        : hasDefaultVisibleInprops
+        ? props.defaultVisible
+        : state.visible
+        ? state.visible
+        : false;
+      return { visible: theVisible };
+    }
+    if (hasVisibleInprops) {
+      return { visible: props.visible };
+    }
+    return { visible: state.visible };
+  }
   render() {
-    const { placement, action, title } = this.props;
-    const { getTheme } = this.props;
-    const theme = getTheme();
-    const fx = this.getFx(placement);
+    const { placement, action, title, popArrowType, getTheme, children, visible } = this.props;
+    const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
-
     return (
       <ToolTrigger
+        popupVisible={visible}
+        popArrowType={popArrowType}
         align={placement}
-        fx={fx}
         innerRef={getTarget}
+        onPopupVisibleChange={this.onVisibleChange}
         action={action}
+        direction={direction}
         popup={
-          <Content theme={theme}>
-            <Arrow fx={fx} theme={theme} />
-            <Message theme={theme}>{title}</Message>
+          <Content
+            theme={getTheme()}
+            popArrowType={popArrowType}
+            direction={direction}
+            placement={placement}
+          >
+            {this.getArrow(direction)}
+            <Message theme={getTheme()}>{title}</Message>
           </Content>
         }
       >
-        {this.props.children}
+        {children}
       </ToolTrigger>
     );
   }
-
-  onSelectAlign = (align: string) => () => {
-    this.setState({ align });
+  onVisibleChange = visible => {
+    const { onVisibleChange } = this.props;
+    this.setState({ visible });
+    onVisibleChange && onVisibleChange(visible);
   };
-  getFx = (placement: string) => {
+  getArrow(direction) {
+    const { placement, popArrowType } = this.props;
+    const { getTheme } = this.props;
+    const theme = getTheme();
+    const arrowConfig = { placement, direction, theme };
+    if (popArrowType === 'round') {
+      return [<NewArrow {...arrowConfig} />, <MaskArrow {...arrowConfig} />];
+    }
+    return <Arrow direction={direction} theme={theme} />;
+  }
+
+  getDirection = (placement: string) => {
     if (!placement) {
-      return 'down';
+      return;
     }
 
     if (placement.startsWith(Left)) return Right;

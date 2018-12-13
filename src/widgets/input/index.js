@@ -80,6 +80,7 @@ export const Input = CommonInputStyle.extend`
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 `;
 
 export const InputOnly = CommonInputStyle.extend`
@@ -272,7 +273,7 @@ class TextBox extends Component<InputProps, InputState> {
   getInputContainer(fetcher: Function) {
     const { getTheme, disabled } = this.props;
     return (
-      <InputContainer className="sv" theme={getTheme()} disabled={disabled}>
+      <InputContainer theme={getTheme()} disabled={disabled}>
         {fetcher()}
       </InputContainer>
     );
