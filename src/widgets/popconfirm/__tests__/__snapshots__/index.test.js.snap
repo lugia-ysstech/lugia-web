@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`popconfirm Demo Component JSON 1`] = `
-.c47 {
+.c49 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -100,7 +100,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   border: 1px solid #3e4fcc;
 }
 
-.c15 {
+.c16 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -129,23 +129,23 @@ exports[`popconfirm Demo Component JSON 1`] = `
   margin: 0em 0em 0em 0.5em;
 }
 
-.c15:hover {
+.c16:hover {
   color: #ffffff;
   border: none;
   background-color: #8090ff;
 }
 
-.c15:focus {
+.c16:focus {
   color: #ffffff;
   border: none;
   background-color: #8090ff;
 }
 
-.c15:active {
+.c16:active {
   background-color: #3e4fcc;
 }
 
-.c43 {
+.c45 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -174,19 +174,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
   margin: 0em 0em 0em 0.5em;
 }
 
-.c43:hover {
+.c45:hover {
   color: #ffffff;
   border: none;
   background-color: #f25762;
 }
 
-.c43:focus {
+.c45:focus {
   color: #ffffff;
   border: none;
   background-color: #f25762;
 }
 
-.c43:active {
+.c45:active {
   background-color: #bf1f2a;
 }
 
@@ -210,17 +210,17 @@ exports[`popconfirm Demo Component JSON 1`] = `
   box-shadow: none;
 }
 
-.c20 {
+.c22 {
   padding-right: 0.8333333333333334em;
   box-shadow: none;
 }
 
-.c27 {
+.c29 {
   padding-left: 0.8333333333333334em;
   box-shadow: none;
 }
 
-.c34 {
+.c36 {
   padding-top: 0.8333333333333334em;
   box-shadow: none;
 }
@@ -249,7 +249,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c16 {
+.c18 {
   left: 46%;
   bottom: -0.33333333333333337em;
   position: absolute;
@@ -264,7 +264,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c18 {
+.c20 {
   right: 0.8333333333333334em;
   bottom: -0.33333333333333337em;
   position: absolute;
@@ -279,23 +279,8 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c21 {
-  top: 0.8333333333333334em;
-  right: -0.33333333333333337em;
-  position: absolute;
-  border-style: solid;
-  border-width: 0.6666666666666667em;
-  border-top-left-radius: 0.33333333333333337em;
-  border-color: #ffffff transparent transparent #ffffff;
-  -webkit-transform: rotateZ(135deg);
-  -ms-transform: rotateZ(135deg);
-  transform: rotateZ(135deg);
-  box-shadow: 0 0 0.5em rgba(0,0,0,0.15);
-  z-index: -1;
-}
-
 .c23 {
-  top: 46%;
+  top: 0.8333333333333334em;
   right: -0.33333333333333337em;
   position: absolute;
   border-style: solid;
@@ -310,6 +295,21 @@ exports[`popconfirm Demo Component JSON 1`] = `
 }
 
 .c25 {
+  top: 46%;
+  right: -0.33333333333333337em;
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6666666666666667em;
+  border-top-left-radius: 0.33333333333333337em;
+  border-color: #ffffff transparent transparent #ffffff;
+  -webkit-transform: rotateZ(135deg);
+  -ms-transform: rotateZ(135deg);
+  transform: rotateZ(135deg);
+  box-shadow: 0 0 0.5em rgba(0,0,0,0.15);
+  z-index: -1;
+}
+
+.c27 {
   bottom: 0.8333333333333334em;
   right: -0.33333333333333337em;
   position: absolute;
@@ -324,7 +324,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c28 {
+.c30 {
   top: 0.8333333333333334em;
   left: -0.33333333333333337em;
   position: absolute;
@@ -339,7 +339,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c30 {
+.c32 {
   top: 46%;
   left: -0.33333333333333337em;
   position: absolute;
@@ -354,7 +354,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c32 {
+.c34 {
   bottom: 0.8333333333333334em;
   left: -0.33333333333333337em;
   position: absolute;
@@ -369,7 +369,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c35 {
+.c37 {
   left: 0.8333333333333334em;
   top: -0.33333333333333337em;
   position: absolute;
@@ -384,7 +384,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c37 {
+.c39 {
   left: 46%;
   top: -0.33333333333333337em;
   position: absolute;
@@ -399,7 +399,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
-.c39 {
+.c41 {
   right: 0.8333333333333334em;
   top: -0.33333333333333337em;
   position: absolute;
@@ -428,7 +428,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c17 {
+.c19 {
   left: 46%;
   bottom: -0.33333333333333337em;
   position: absolute;
@@ -442,7 +442,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c19 {
+.c21 {
   right: 0.8333333333333334em;
   bottom: -0.33333333333333337em;
   position: absolute;
@@ -456,22 +456,8 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c22 {
-  top: 0.8333333333333334em;
-  right: -0.33333333333333337em;
-  position: absolute;
-  border-style: solid;
-  border-width: 0.6666666666666667em;
-  border-top-left-radius: 0.33333333333333337em;
-  border-color: #ffffff transparent transparent #ffffff;
-  -webkit-transform: rotateZ(135deg);
-  -ms-transform: rotateZ(135deg);
-  transform: rotateZ(135deg);
-  z-index: 0;
-}
-
 .c24 {
-  top: 46%;
+  top: 0.8333333333333334em;
   right: -0.33333333333333337em;
   position: absolute;
   border-style: solid;
@@ -485,6 +471,20 @@ exports[`popconfirm Demo Component JSON 1`] = `
 }
 
 .c26 {
+  top: 46%;
+  right: -0.33333333333333337em;
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6666666666666667em;
+  border-top-left-radius: 0.33333333333333337em;
+  border-color: #ffffff transparent transparent #ffffff;
+  -webkit-transform: rotateZ(135deg);
+  -ms-transform: rotateZ(135deg);
+  transform: rotateZ(135deg);
+  z-index: 0;
+}
+
+.c28 {
   bottom: 0.8333333333333334em;
   right: -0.33333333333333337em;
   position: absolute;
@@ -498,7 +498,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c29 {
+.c31 {
   top: 0.8333333333333334em;
   left: -0.33333333333333337em;
   position: absolute;
@@ -512,7 +512,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c31 {
+.c33 {
   top: 46%;
   left: -0.33333333333333337em;
   position: absolute;
@@ -526,7 +526,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c33 {
+.c35 {
   bottom: 0.8333333333333334em;
   left: -0.33333333333333337em;
   position: absolute;
@@ -540,7 +540,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c36 {
+.c38 {
   left: 0.8333333333333334em;
   top: -0.33333333333333337em;
   position: absolute;
@@ -554,7 +554,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c38 {
+.c40 {
   left: 46%;
   top: -0.33333333333333337em;
   position: absolute;
@@ -568,7 +568,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
-.c40 {
+.c42 {
   right: 0.8333333333333334em;
   top: -0.33333333333333337em;
   position: absolute;
@@ -617,7 +617,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   padding: 0.5em 0.6666666666666667em;
 }
 
-.c44 {
+.c46 {
   position: relative;
   width: 1.25em;
   height: 1.25em;
@@ -652,12 +652,22 @@ exports[`popconfirm Demo Component JSON 1`] = `
   text-align: right;
 }
 
-.c41 {
+.c15 {
+  font-size: 1.2rem;
+  display: block;
+}
+
+.c17 {
+  font-size: 1.2rem;
+  display: block;
+}
+
+.c43 {
   position: relative;
   display: inline-block;
 }
 
-.c42 {
+.c44 {
   height: 2.666666666666667em;
   cursor: text;
   width: 16.666666666666668em;
@@ -680,29 +690,30 @@ exports[`popconfirm Demo Component JSON 1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
-.c42:hover {
+.c44:hover {
   border-color: #4d63ff;
 }
 
-.c42::-webkit-input-placeholder {
+.c44::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.c42::-moz-placeholder {
+.c44::-moz-placeholder {
   color: #ccc;
 }
 
-.c42:-ms-input-placeholder {
+.c44:-ms-input-placeholder {
   color: #ccc;
 }
 
-.c42::placeholder {
+.c44::placeholder {
   color: #ccc;
 }
 
-.c42:focus {
+.c44:focus {
   border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
@@ -711,13 +722,13 @@ exports[`popconfirm Demo Component JSON 1`] = `
   margin: 100px;
 }
 
-.c45 {
+.c47 {
   border-radius: 50%;
   width: 14px;
   height: 14px;
 }
 
-.c46 {
+.c48 {
   color: white;
 }
 
@@ -753,15 +764,15 @@ exports[`popconfirm Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="bottom"
+          direction="bottom"
         >
           <div
             className="c6"
-            fx="bottom"
+            direction="bottom"
           />
           <div
             className="c7"
-            fx="bottom"
+            direction="bottom"
           />
           <div
             className="c8"
@@ -797,11 +808,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -812,7 +828,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -845,15 +866,15 @@ exports[`popconfirm Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="bottom"
+          direction="bottom"
         >
           <div
-            className="c16"
-            fx="bottom"
+            className="c18"
+            direction="bottom"
           />
           <div
-            className="c17"
-            fx="bottom"
+            className="c19"
+            direction="bottom"
           />
           <div
             className="c8"
@@ -889,11 +910,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -904,7 +930,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -937,15 +968,15 @@ exports[`popconfirm Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="bottom"
+          direction="bottom"
         >
           <div
-            className="c18"
-            fx="bottom"
+            className="c20"
+            direction="bottom"
           />
           <div
-            className="c19"
-            fx="bottom"
+            className="c21"
+            direction="bottom"
           />
           <div
             className="c8"
@@ -981,11 +1012,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -996,7 +1032,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1034,19 +1075,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c20 c4"
+        className="c22 c4"
       >
         <div
           className="c5"
-          fx="right"
+          direction="right"
         >
           <div
-            className="c21"
-            fx="right"
+            className="c23"
+            direction="right"
           />
           <div
-            className="c22"
-            fx="right"
+            className="c24"
+            direction="right"
           />
           <div
             className="c8"
@@ -1082,11 +1123,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1097,7 +1143,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1126,19 +1177,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c20 c4"
+        className="c22 c4"
       >
         <div
           className="c5"
-          fx="right"
+          direction="right"
         >
           <div
-            className="c23"
-            fx="right"
+            className="c25"
+            direction="right"
           />
           <div
-            className="c24"
-            fx="right"
+            className="c26"
+            direction="right"
           />
           <div
             className="c8"
@@ -1174,11 +1225,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1189,7 +1245,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1218,19 +1279,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c20 c4"
+        className="c22 c4"
       >
         <div
           className="c5"
-          fx="right"
+          direction="right"
         >
           <div
-            className="c25"
-            fx="right"
+            className="c27"
+            direction="right"
           />
           <div
-            className="c26"
-            fx="right"
+            className="c28"
+            direction="right"
           />
           <div
             className="c8"
@@ -1266,11 +1327,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1281,7 +1347,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1319,19 +1390,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c27 c4"
+        className="c29 c4"
       >
         <div
           className="c5"
-          fx="left"
+          direction="left"
         >
           <div
-            className="c28"
-            fx="left"
+            className="c30"
+            direction="left"
           />
           <div
-            className="c29"
-            fx="left"
+            className="c31"
+            direction="left"
           />
           <div
             className="c8"
@@ -1367,11 +1438,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1382,7 +1458,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1411,19 +1492,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c27 c4"
+        className="c29 c4"
       >
         <div
           className="c5"
-          fx="left"
+          direction="left"
         >
           <div
-            className="c30"
-            fx="left"
+            className="c32"
+            direction="left"
           />
           <div
-            className="c31"
-            fx="left"
+            className="c33"
+            direction="left"
           />
           <div
             className="c8"
@@ -1459,11 +1540,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1474,7 +1560,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1503,19 +1594,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c27 c4"
+        className="c29 c4"
       >
         <div
           className="c5"
-          fx="left"
+          direction="left"
         >
           <div
-            className="c32"
-            fx="left"
+            className="c34"
+            direction="left"
           />
           <div
-            className="c33"
-            fx="left"
+            className="c35"
+            direction="left"
           />
           <div
             className="c8"
@@ -1551,11 +1642,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1566,7 +1662,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1605,19 +1706,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c34 c4"
+        className="c36 c4"
       >
         <div
           className="c5"
-          fx="top"
+          direction="top"
         >
           <div
-            className="c35"
-            fx="top"
+            className="c37"
+            direction="top"
           />
           <div
-            className="c36"
-            fx="top"
+            className="c38"
+            direction="top"
           />
           <div
             className="c8"
@@ -1653,11 +1754,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1668,7 +1774,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1697,19 +1808,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c34 c4"
+        className="c36 c4"
       >
         <div
           className="c5"
-          fx="top"
+          direction="top"
         >
           <div
-            className="c37"
-            fx="top"
+            className="c39"
+            direction="top"
           />
           <div
-            className="c38"
-            fx="top"
+            className="c40"
+            direction="top"
           />
           <div
             className="c8"
@@ -1745,11 +1856,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1760,7 +1876,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1789,19 +1910,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c34 c4"
+        className="c36 c4"
       >
         <div
           className="c5"
-          fx="top"
+          direction="top"
         >
           <div
-            className="c39"
-            fx="top"
+            className="c41"
+            direction="top"
           />
           <div
-            className="c40"
-            fx="top"
+            className="c42"
+            direction="top"
           />
           <div
             className="c8"
@@ -1837,11 +1958,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        取消
+                        <div
+                          className="c15"
+                        >
+                           
+                          取消
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c15"
+                      className="c16"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -1852,7 +1978,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="primary"
                     >
                       <span>
-                        确定
+                        <div
+                          className="c17"
+                        >
+                           
+                          确定
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -1867,11 +1998,11 @@ exports[`popconfirm Demo Component JSON 1`] = `
   </div>
   <br />
   <span
-    className="sv c41"
+    className="c43"
     disabled={false}
   >
     <input
-      className="c42"
+      className="c44"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -1893,15 +2024,15 @@ exports[`popconfirm Demo Component JSON 1`] = `
     >
       <div
         className="c5"
-        fx="bottom"
+        direction="bottom"
       >
         <div
-          className="c16"
-          fx="bottom"
+          className="c18"
+          direction="bottom"
         />
         <div
-          className="c17"
-          fx="bottom"
+          className="c19"
+          direction="bottom"
         />
         <div
           className="c8"
@@ -1937,11 +2068,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                     size="small"
                   >
                     <span>
-                      取消
+                      <div
+                        className="c15"
+                      >
+                         
+                        取消
+                      </div>
                     </span>
                   </button>
                   <button
-                    className="c15"
+                    className="c16"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseEnter={[Function]}
@@ -1952,7 +2088,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                     type="primary"
                   >
                     <span>
-                      确定
+                      <div
+                        className="c17"
+                      >
+                         
+                        确定
+                      </div>
                     </span>
                   </button>
                 </div>
@@ -1987,15 +2128,15 @@ exports[`popconfirm Demo Component JSON 1`] = `
     >
       <div
         className="c5"
-        fx="bottom"
+        direction="bottom"
       >
         <div
-          className="c16"
-          fx="bottom"
+          className="c18"
+          direction="bottom"
         />
         <div
-          className="c17"
-          fx="bottom"
+          className="c19"
+          direction="bottom"
         />
         <div
           className="c8"
@@ -2031,11 +2172,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                     size="small"
                   >
                     <span>
-                      取消
+                      <div
+                        className="c15"
+                      >
+                         
+                        取消
+                      </div>
                     </span>
                   </button>
                   <button
-                    className="c15"
+                    className="c16"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseEnter={[Function]}
@@ -2046,7 +2192,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                     type="primary"
                   >
                     <span>
-                      确定
+                      <div
+                        className="c17"
+                      >
+                         
+                        确定
+                      </div>
                     </span>
                   </button>
                 </div>
@@ -2079,15 +2230,15 @@ exports[`popconfirm Demo Component JSON 1`] = `
     >
       <div
         className="c5"
-        fx="bottom"
+        direction="bottom"
       >
         <div
-          className="c16"
-          fx="bottom"
+          className="c18"
+          direction="bottom"
         />
         <div
-          className="c17"
-          fx="bottom"
+          className="c19"
+          direction="bottom"
         />
         <div
           className="c8"
@@ -2123,11 +2274,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                     size="small"
                   >
                     <span>
-                      No
+                      <div
+                        className="c15"
+                      >
+                         
+                        No
+                      </div>
                     </span>
                   </button>
                   <button
-                    className="c43"
+                    className="c45"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseEnter={[Function]}
@@ -2138,7 +2294,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                     type="danger"
                   >
                     <span>
-                      yes
+                      <div
+                        className="c17"
+                      >
+                         
+                        yes
+                      </div>
                     </span>
                   </button>
                 </div>
@@ -2173,15 +2334,15 @@ exports[`popconfirm Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="bottom"
+          direction="bottom"
         >
           <div
-            className="c16"
-            fx="bottom"
+            className="c18"
+            direction="bottom"
           />
           <div
-            className="c17"
-            fx="bottom"
+            className="c19"
+            direction="bottom"
           />
           <div
             className="c8"
@@ -2197,10 +2358,10 @@ exports[`popconfirm Demo Component JSON 1`] = `
                 >
                   <div>
                     <div
-                      className="c44"
+                      className="c46"
                     >
                       <div
-                        className="c45"
+                        className="c47"
                         style={
                           Object {
                             "background": "orange",
@@ -2208,7 +2369,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
                         }
                       >
                         <i
-                          className="lugia-icon-reminder_exclamation c46 c47"
+                          className="lugia-icon-reminder_exclamation c48 c49"
                         />
                       </div>
                     </div>
@@ -2233,11 +2394,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        No
+                        <div
+                          className="c15"
+                        >
+                           
+                          No
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c43"
+                      className="c45"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -2248,7 +2414,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="danger"
                     >
                       <span>
-                        yes
+                        <div
+                          className="c17"
+                        >
+                           
+                          yes
+                        </div>
                       </span>
                     </button>
                   </div>
@@ -2281,15 +2452,15 @@ exports[`popconfirm Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="bottom"
+          direction="bottom"
         >
           <div
-            className="c16"
-            fx="bottom"
+            className="c18"
+            direction="bottom"
           />
           <div
-            className="c17"
-            fx="bottom"
+            className="c19"
+            direction="bottom"
           />
           <div
             className="c8"
@@ -2305,10 +2476,10 @@ exports[`popconfirm Demo Component JSON 1`] = `
                 >
                   <div>
                     <div
-                      className="c44"
+                      className="c46"
                     >
                       <div
-                        className="c45"
+                        className="c47"
                         style={
                           Object {
                             "background": "red",
@@ -2316,7 +2487,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
                         }
                       >
                         <i
-                          className="lugia-icon-reminder_question c46 c47"
+                          className="lugia-icon-reminder_question c48 c49"
                         />
                       </div>
                     </div>
@@ -2341,11 +2512,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       size="small"
                     >
                       <span>
-                        No
+                        <div
+                          className="c15"
+                        >
+                           
+                          No
+                        </div>
                       </span>
                     </button>
                     <button
-                      className="c43"
+                      className="c45"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -2356,7 +2532,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       type="danger"
                     >
                       <span>
-                        yes
+                        <div
+                          className="c17"
+                        >
+                           
+                          yes
+                        </div>
                       </span>
                     </button>
                   </div>

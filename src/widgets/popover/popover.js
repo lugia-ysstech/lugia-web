@@ -154,7 +154,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         action={action}
         onVisibleChange={this.onVisibleChange}
         theme={getTheme()}
-        isPop={true}
+        popArrowType={'round'}
         placement={placement}
         title={this.getContent()}
         ref={getTarget}

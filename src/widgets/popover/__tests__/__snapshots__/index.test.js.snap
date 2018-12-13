@@ -509,6 +509,7 @@ exports[`popover Demo Component JSON 1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c38:hover {
@@ -572,15 +573,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="bottom"
+          direction="bottom"
         >
           <div
             className="c6"
-            fx="bottom"
+            direction="bottom"
           />
           <div
             className="c7"
-            fx="bottom"
+            direction="bottom"
           />
           <div
             className="c8"
@@ -620,15 +621,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="bottom"
+          direction="bottom"
         >
           <div
             className="c11"
-            fx="bottom"
+            direction="bottom"
           />
           <div
             className="c12"
-            fx="bottom"
+            direction="bottom"
           />
           <div
             className="c8"
@@ -679,15 +680,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="bottom"
+          direction="bottom"
         >
           <div
             className="c14"
-            fx="bottom"
+            direction="bottom"
           />
           <div
             className="c15"
-            fx="bottom"
+            direction="bottom"
           />
           <div
             className="c8"
@@ -747,15 +748,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="right"
+          direction="right"
         >
           <div
             className="c17"
-            fx="right"
+            direction="right"
           />
           <div
             className="c18"
-            fx="right"
+            direction="right"
           />
           <div
             className="c8"
@@ -806,15 +807,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="right"
+          direction="right"
         >
           <div
             className="c19"
-            fx="right"
+            direction="right"
           />
           <div
             className="c20"
-            fx="right"
+            direction="right"
           />
           <div
             className="c8"
@@ -865,15 +866,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="right"
+          direction="right"
         >
           <div
             className="c21"
-            fx="right"
+            direction="right"
           />
           <div
             className="c22"
-            fx="right"
+            direction="right"
           />
           <div
             className="c8"
@@ -933,15 +934,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="left"
+          direction="left"
         >
           <div
             className="c24"
-            fx="left"
+            direction="left"
           />
           <div
             className="c25"
-            fx="left"
+            direction="left"
           />
           <div
             className="c8"
@@ -992,15 +993,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="left"
+          direction="left"
         >
           <div
             className="c26"
-            fx="left"
+            direction="left"
           />
           <div
             className="c27"
-            fx="left"
+            direction="left"
           />
           <div
             className="c8"
@@ -1051,15 +1052,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="left"
+          direction="left"
         >
           <div
             className="c28"
-            fx="left"
+            direction="left"
           />
           <div
             className="c29"
-            fx="left"
+            direction="left"
           />
           <div
             className="c8"
@@ -1120,15 +1121,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="top"
+          direction="top"
         >
           <div
             className="c31"
-            fx="top"
+            direction="top"
           />
           <div
             className="c32"
-            fx="top"
+            direction="top"
           />
           <div
             className="c8"
@@ -1179,15 +1180,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="top"
+          direction="top"
         >
           <div
             className="c33"
-            fx="top"
+            direction="top"
           />
           <div
             className="c34"
-            fx="top"
+            direction="top"
           />
           <div
             className="c8"
@@ -1238,15 +1239,15 @@ exports[`popover Demo Component JSON 1`] = `
       >
         <div
           className="c5"
-          fx="top"
+          direction="top"
         >
           <div
             className="c35"
-            fx="top"
+            direction="top"
           />
           <div
             className="c36"
-            fx="top"
+            direction="top"
           />
           <div
             className="c8"
@@ -1280,7 +1281,7 @@ exports[`popover Demo Component JSON 1`] = `
   <br />
   <p />
   <span
-    className="sv c37"
+    className="c37"
     disabled={false}
   >
     <input
@@ -1306,15 +1307,15 @@ exports[`popover Demo Component JSON 1`] = `
     >
       <div
         className="c5"
-        fx="bottom"
+        direction="bottom"
       >
         <div
           className="c11"
-          fx="bottom"
+          direction="bottom"
         />
         <div
           className="c12"
-          fx="bottom"
+          direction="bottom"
         />
         <div
           className="c8"
@@ -1367,15 +1368,15 @@ exports[`popover Demo Component JSON 1`] = `
     >
       <div
         className="c5"
-        fx="bottom"
+        direction="bottom"
       >
         <div
           className="c11"
-          fx="bottom"
+          direction="bottom"
         />
         <div
           className="c12"
-          fx="bottom"
+          direction="bottom"
         />
         <div
           className="c8"
@@ -1426,15 +1427,15 @@ exports[`popover Demo Component JSON 1`] = `
     >
       <div
         className="c5"
-        fx="bottom"
+        direction="bottom"
       >
         <div
           className="c11"
-          fx="bottom"
+          direction="bottom"
         />
         <div
           className="c12"
-          fx="bottom"
+          direction="bottom"
         />
         <div
           className="c8"

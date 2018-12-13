@@ -112,21 +112,26 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     return { visible: state.visible };
   }
   render() {
-    const { placement, action, title, isPop, getTheme, children, visible } = this.props;
-    const fx = this.getFx(placement);
+    const { placement, action, title, popArrowType, getTheme, children, visible } = this.props;
+    const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
     return (
       <ToolTrigger
         popupVisible={visible}
-        isPop={isPop}
+        popArrowType={popArrowType}
         align={placement}
         innerRef={getTarget}
         onPopupVisibleChange={this.onVisibleChange}
         action={action}
-        fx={fx}
+        direction={direction}
         popup={
-          <Content theme={getTheme()} isPop={isPop} fx={fx} placement={placement}>
-            {this.getArrow(fx)}
+          <Content
+            theme={getTheme()}
+            popArrowType={popArrowType}
+            direction={direction}
+            placement={placement}
+          >
+            {this.getArrow(direction)}
             <Message theme={getTheme()}>{title}</Message>
           </Content>
         }
@@ -140,18 +145,18 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     this.setState({ visible });
     onVisibleChange && onVisibleChange(visible);
   };
-  getArrow(fx) {
-    const { placement, isPop } = this.props;
+  getArrow(direction) {
+    const { placement, popArrowType } = this.props;
     const { getTheme } = this.props;
     const theme = getTheme();
-    const arrowConfig = { placement, fx, theme };
-    if (isPop === true) {
+    const arrowConfig = { placement, direction, theme };
+    if (popArrowType === 'round') {
       return [<NewArrow {...arrowConfig} />, <MaskArrow {...arrowConfig} />];
     }
-    return <Arrow fx={fx} theme={theme} />;
+    return <Arrow direction={direction} theme={theme} />;
   }
 
-  getFx = (placement: string) => {
+  getDirection = (placement: string) => {
     if (!placement) {
       return 'down';
     }

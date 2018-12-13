@@ -40,7 +40,7 @@ export type TooltipProps = {
   getTheme: Function,
   onVisibleChange: Function,
   size: ToolTipSize,
-  isPop?: boolean,
+  popArrowType?: 'sharp' | 'round',
   visible?: boolean,
   defaultVisible?: boolean,
 };
@@ -64,15 +64,15 @@ export const getColor = (props: Object) => {
   return color ? color : defaultColor;
 };
 export const getSize = (props: TooltipProps) => {
-  const { size, isPop } = props;
-  if (!isPop)
+  const { size, popArrowType } = props;
+  if (popArrowType !== 'round')
     return `height:${
       size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight
     };`;
 };
 export const getTriggerByArrow = (props: Object) => {
-  const { fx } = props;
-  switch (fx) {
+  const { direction } = props;
+  switch (direction) {
     case Up:
       return `padding-top: ${em(10)}`;
     case Down:
@@ -85,9 +85,9 @@ export const getTriggerByArrow = (props: Object) => {
   }
 };
 export const getDeg = (props: Object) => {
-  const { fx } = props;
+  const { direction } = props;
   let angle = '';
-  switch (fx) {
+  switch (direction) {
     case Up:
       angle = '45deg';
       break;
@@ -107,8 +107,8 @@ export const getDeg = (props: Object) => {
 };
 
 export const getArrow = (props: Object) => {
-  const { fx } = props;
-  switch (fx) {
+  const { direction } = props;
+  switch (direction) {
     case Up:
       return `
         left: ${em(10)};
