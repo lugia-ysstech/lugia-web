@@ -12,6 +12,7 @@ import Icon from '../../icon';
 import Enzyme, { mount } from 'enzyme';
 import 'jest-styled-components';
 import Adapter from 'enzyme-adapter-react-16';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('popover Demo', () => {
@@ -157,6 +158,7 @@ describe('popover Demo', () => {
     component.setState({ visible: false });
     expect(getCmp(component).state.visible).toBe(true);
   });
+
   it('props: limit visible && onVisibleChange', () => {
     const component = mount(
       <Popover onVisibleChange={onVisibleChange} visible={false}>
@@ -165,5 +167,27 @@ describe('popover Demo', () => {
     );
     component.setState({ visible: true });
     expect(getCmp(component).state.visible).toBe(false);
+  });
+
+  it('props: onVisibleChange event', async () => {
+    let onVisibleChange = () => true;
+    const result = [];
+    const onVisibleChangePromise = new Promise(res => {
+      onVisibleChange = visbile => {
+        result.push(visbile);
+        if (result.length === 2) {
+          res(result);
+        }
+      };
+    });
+    const component = mount(
+      <Popover onVisibleChange={onVisibleChange}>
+        <input className={'input'} />
+      </Popover>
+    );
+    const input = component.find('.input');
+    input.simulate('click', {});
+    input.simulate('click', {});
+    expect(await onVisibleChangePromise).toEqual([true, false]);
   });
 });
