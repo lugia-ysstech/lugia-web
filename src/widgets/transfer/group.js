@@ -12,6 +12,7 @@ import TransFer from './transfer';
 import Button from '../button';
 import { TransFerWrap, OperationBtn, BtnText } from '../css/transfer-group';
 import type { GroupProps, GroupState } from '../css/transfer-group';
+import { DisplayField, ValueField } from '../consts/props';
 import {
   getTruthValue,
   getSourceDataAndTargetData,
@@ -29,7 +30,12 @@ export default ThemeProvider(
     maping: boolean;
 
     static getDerivedStateFromProps(props, state) {
-      const { data = [], type = 'panel' } = props;
+      const {
+        data = [],
+        type = 'panel',
+        valueField = ValueField,
+        displayField = DisplayField,
+      } = props;
       const sourceSelctKeys = getTruthValue(
         'sourceSelectedKeys',
         props,
@@ -51,7 +57,7 @@ export default ThemeProvider(
         displayValue: theDisplayValue,
       };
       if (type === 'panel') {
-        const utilMapData = getSourceDataAndTargetData(data, theTargetKeys);
+        const utilMapData = getSourceDataAndTargetData(data, theTargetKeys, valueField);
         const {
           sourceData,
           targetData,
@@ -60,7 +66,12 @@ export default ThemeProvider(
           sourceCheckKeys,
           mapData: mapDatas,
         } = utilMapData;
-        const cancelItem = getCancelItem(theTargetKeys, mapDatas, theDisplayValue);
+        const cancelItem = getCancelItem(
+          theTargetKeys,
+          mapDatas,
+          { valueField, displayField },
+          theDisplayValue
+        );
         return {
           ...commonState,
           cancelItem,
@@ -75,7 +86,12 @@ export default ThemeProvider(
 
       const obj = { target: [], mapData: [], leafKeys: [] };
       const { target: treeData, mapData: treeMapData, leafKeys } = getTreeData(data, obj);
-      const cancelItem = getCancelItem(theTargetKeys, treeMapData, theDisplayValue);
+      const cancelItem = getCancelItem(
+        theTargetKeys,
+        treeMapData,
+        { valueField, displayField },
+        theDisplayValue
+      );
       const { targetCanCheckKeys, sourceCanCheckKeys } = getCanCheckKeys(leafKeys, theTargetKeys);
       return {
         ...commonState,
@@ -89,10 +105,11 @@ export default ThemeProvider(
       };
     }
     shouldComponentUpdate(nextProps: GroupProps, nextState: GroupState) {
+      const { valueField = ValueField } = nextProps;
       const {
         type = 'panel',
         filterOption = (value: string, option: Object): boolean => {
-          return option.value.indexOf(value) > -1;
+          return option[valueField].indexOf(value) > -1;
         },
       } = nextProps;
       if (type === 'panel') {
@@ -120,7 +137,12 @@ export default ThemeProvider(
     }
 
     render() {
-      const { showSearch, type = 'panel' } = this.props;
+      const {
+        showSearch,
+        type = 'panel',
+        valueField = ValueField,
+        displayField = DisplayField,
+      } = this.props;
       const {
         sourceData,
         targetData,
@@ -140,6 +162,8 @@ export default ThemeProvider(
         <TransFerWrap>
           <TransFer
             key="1"
+            displayField={displayField}
+            valueField={valueField}
             direction="left"
             type={type}
             onSelect={this.handleSourceSelect}
@@ -172,6 +196,8 @@ export default ThemeProvider(
           </OperationBtn>
           <TransFer
             key="2"
+            displayField={displayField}
+            valueField={valueField}
             direction="right"
             type={type}
             onSelect={this.handleTargetSelect}
@@ -193,16 +219,16 @@ export default ThemeProvider(
     }
     handleSourceSelect = (item: string[]) => {
       const { type = 'panel', onSelectChange } = this.props;
-      const { sourceSelectedKeys, targetSelectedKeys, targetKeys } = this.state;
-      let selectKeys;
-      if (type === 'panel') {
-        const selectKey = item[0];
-        selectKeys = this.checkSelectKeys(sourceSelectedKeys, selectKey);
-      } else {
-        selectKeys = item;
-      }
+      const { sourceSelectedKeys, targetSelectedKeys } = this.state;
+      // let selectKeys;
+      // if (type === 'panel') {
+      //   const selectKey = item[0];
+      //   selectKeys = this.checkSelectKeys(sourceSelectedKeys, selectKey);
+      // } else {
+      //   selectKeys = item;
+      // }
+      const selectKeys = this.getSelectKeys(type, item, sourceSelectedKeys);
       onSelectChange && onSelectChange(selectKeys, targetSelectedKeys);
-      console.info('source-click: ', 'item', item, 'selectKeys', selectKeys);
 
       const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
       if (hasSourceSelectedKeys) {
@@ -213,14 +239,15 @@ export default ThemeProvider(
 
     handleTargetSelect = (item: string[]) => {
       const { type = 'panel', onSelectChange } = this.props;
-      const { sourceSelectedKeys, targetSelectedKeys, targetKeys } = this.state;
-      let selectKeys = [];
-      if (type === 'panel') {
-        const selectKey = item[0];
-        selectKeys = this.checkSelectKeys(targetSelectedKeys, selectKey);
-      } else {
-        selectKeys = item;
-      }
+      const { sourceSelectedKeys, targetSelectedKeys } = this.state;
+      // let selectKeys = [];
+      // if (type === 'panel') {
+      //   const selectKey = item[0];
+      //   selectKeys = this.checkSelectKeys(targetSelectedKeys, selectKey);
+      // } else {
+      //   selectKeys = item;
+      // }
+      const selectKeys = this.getSelectKeys(type, item, targetSelectedKeys);
       onSelectChange && onSelectChange(sourceSelectedKeys, selectKeys);
 
       const hasTargetSelectedKeys = this.isInProps('targetSelectedKeys');
@@ -230,6 +257,16 @@ export default ThemeProvider(
       this.setState({ targetSelectedKeys: selectKeys });
     };
 
+    getSelectKeys = (type: 'panel' | 'tree', item: string[], oldSelectKeys: string[]) => {
+      let selectKeys;
+      if (type === 'panel') {
+        const selectKey = item[0];
+        selectKeys = this.checkSelectKeys(oldSelectKeys, selectKey);
+      } else {
+        selectKeys = item;
+      }
+      return selectKeys;
+    };
     checkSelectKeys = (stateKeys: string[], key: string): string[] => {
       const isRepeat = stateKeys.includes(key);
       const data = [...stateKeys];
@@ -250,16 +287,13 @@ export default ThemeProvider(
         mapData,
         targetSelectedKeys
       );
-      console.info('moveKey', moveKey);
-      console.info('mapData', mapData);
-      console.info('targetSelectedKeys', targetSelectedKeys);
       moveKey.forEach(item => {
         const index = nextTargetKeys.indexOf(item);
         nextTargetKeys.splice(index, 1);
       });
       const { onDirectionClick } = this.props;
       onDirectionClick && onDirectionClick(nextTargetKeys, 'left', moveKey);
-      console.info('nextTargetKeys', nextTargetKeys, 'moveKey', moveKey);
+
       const hasTargetKeys = this.isInProps('targetKeys');
       if (hasTargetKeys) {
         return;
@@ -270,12 +304,10 @@ export default ThemeProvider(
     moveDataToLeft = (moveKey: string[], disabledCheckedKeys: string[]) => {
       const { targetKeys } = this.state;
       const targetOddKeys = [...targetKeys];
-      console.info('state ,targetKeys', targetKeys);
       moveKey.forEach(item => {
         const index = targetOddKeys.indexOf(item);
         targetOddKeys.splice(index, 1);
       });
-      console.info('moveKey', moveKey, 'targetKeys', targetOddKeys);
       this.setState({ targetSelectedKeys: disabledCheckedKeys, targetKeys: targetOddKeys });
     };
 
@@ -288,7 +320,7 @@ export default ThemeProvider(
       const nextTargetKeys = [...targetKeys, ...moveKey];
       const { onDirectionClick } = this.props;
       onDirectionClick && onDirectionClick(nextTargetKeys, 'right', moveKey);
-      console.info('nextTargetKeys', nextTargetKeys, 'moveKey', moveKey);
+
       const hasTargetKeys = this.isInProps('targetKeys');
       if (hasTargetKeys) {
         return;
@@ -299,21 +331,18 @@ export default ThemeProvider(
     moveDataToRight = (moveKey: string[], disabledCheckedKeys: string[]) => {
       const { targetKeys } = this.state;
       const addKey = [...new Set([...targetKeys, ...moveKey])];
-      console.info('addKey', addKey);
       this.setState({ sourceSelectedKeys: disabledCheckedKeys, targetKeys: addKey });
     };
 
     checkAllForLeft = (checked: boolean) => {
       const { mapData, sourceSelectedKeys, targetSelectedKeys, sourceCheckKeys } = this.state;
-      const { onSelectChange, type = 'panel' } = this.props;
+      const { onSelectChange } = this.props;
       const disabledCheckedKeys = splitSelectKeys(mapData, sourceSelectedKeys).disabledKeys;
 
       const checkKeys = checked
         ? [...sourceCheckKeys, ...disabledCheckedKeys]
         : disabledCheckedKeys || [];
       onSelectChange && onSelectChange(checkKeys, targetSelectedKeys);
-
-      console.info('checkAllForLeft', checkKeys, checked);
 
       const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
       if (hasSourceSelectedKeys) {
@@ -332,7 +361,7 @@ export default ThemeProvider(
         ? [...targetCheckKeys, ...disabledCheckedKeys]
         : disabledCheckedKeys || [];
       onSelectChange && onSelectChange(sourceSelectedKeys, checkKeys);
-      console.info('right-checkall', checkKeys);
+
       const hasTargetSelectedKeys = this.isInProps('targetSelectedKeys');
       if (hasTargetSelectedKeys) {
         return;
@@ -365,9 +394,10 @@ export default ThemeProvider(
     // };
 
     searchCallbackForLeft = (inputValue: string) => {
+      const { valueField = ValueField } = this.props;
       const {
         filterOption = (value, option) => {
-          return option.value.indexOf(value) > -1;
+          return option[valueField].indexOf(value) > -1;
         },
       } = this.props;
       const { sourceData = [] } = this.state;
@@ -380,9 +410,10 @@ export default ThemeProvider(
       }
     };
     searchCallbackForRight = (inputValue: string) => {
+      const { valueField = ValueField } = this.props;
       const {
         filterOption = (value, option) => {
-          return option.value.indexOf(value) > -1;
+          return option[valueField].indexOf(value) > -1;
         },
       } = this.props;
       const { targetData = [] } = this.state;
@@ -420,7 +451,6 @@ export default ThemeProvider(
       const index = targetKeys.indexOf(value);
       newDisplayValue.splice(index, 1);
       newTargetKeys.splice(index, 1);
-      console.info('newDisplayValue', newDisplayValue);
       const { onCancelItemClick } = this.props;
       const hasDisplayValue = this.isInProps('displayValue');
 

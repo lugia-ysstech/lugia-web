@@ -96,18 +96,7 @@ export default class TransferDemo extends React.Component<any, any> {
           showSearch
           defaultSourceSelectedKeys={['选项5']}
           defaultTargetSelectedKeys={['选项2']}
-          defaultTargetKeys={[
-            '选项0',
-            '选项1',
-            '选项2',
-            '选项3',
-            '选项4',
-            '选项5',
-            '选项6',
-            '选项7',
-            '选项8',
-            '选项9',
-          ]}
+          defaultTargetKeys={['选项2', '选项3', '选项4']}
         />
         <Transfer
           data={treeData}

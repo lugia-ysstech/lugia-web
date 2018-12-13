@@ -30,6 +30,8 @@ export type GroupProps = {
   defaultTargetSelectedKeys?: string[],
   filterOption: (inputValue: string, option: Object) => {},
   type?: 'tree' | 'panel',
+  displayField?: string,
+  valueField?: string,
 };
 export type GroupState = {
   inputValue: string,

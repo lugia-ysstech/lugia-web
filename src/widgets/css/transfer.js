@@ -28,6 +28,8 @@ export type TransferProps = {
   blackList?: string[],
   whiteList?: string[],
   title: string,
+  displayField: string,
+  valueField: string,
 };
 export type TransferState = {
   inputValue: string,
@@ -66,7 +68,7 @@ const getNoDataHeight = (props: CSSProps) => {
   if (direction === 'left') {
     return px2emcss(1.4)(310);
   }
-  px2emcss(1.4)(250);
+  return px2emcss(1.4)(250);
 };
 export const NoData = styled.div`
   font-size: ${em(14)};
@@ -76,6 +78,11 @@ export const NoData = styled.div`
 `;
 export const CancelBox = styled.div`
   height: ${em(60)};
-  padding: ${em(10)};
+  padding: ${em(5)} ${em(10)};
+  width: ${em(255)};
   border-top: 1px solid #e8e8e8;
+`;
+export const CancelBoxItem = styled.span`
+  display: inline-block;
+  padding: ${em(3)};
 `;

@@ -16,7 +16,11 @@ export function getTruthValue(
 
   return result;
 }
-export function getSourceDataAndTargetData(data: Object[], targetKeys: string[]): Object {
+export function getSourceDataAndTargetData(
+  data: Object[],
+  targetKeys: string[],
+  valueField: string
+): Object {
   const sourceData = [],
     targetData = [],
     mapData = {},
@@ -26,18 +30,19 @@ export function getSourceDataAndTargetData(data: Object[], targetKeys: string[])
 
   if (data && data.length > 0) {
     data.forEach(item => {
-      mapData[item.value] = item;
-      const inTarget = targetKeys.includes(item.value);
+      const itemValue = item[valueField];
+      mapData[itemValue] = item;
+      const inTarget = targetKeys.includes(itemValue);
       if (inTarget) {
         targetData.push(item);
         if (!item.disabled) {
-          targetCheckKeys.push(item.value);
+          targetCheckKeys.push(itemValue);
         }
       } else {
         sourceData.push(item);
-        sourceKeys.push(item.value);
+        sourceKeys.push(itemValue);
         if (!item.disabled) {
-          sourceCheckKeys.push(item.value);
+          sourceCheckKeys.push(itemValue);
         }
       }
     });
@@ -56,7 +61,7 @@ export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
     disabledKeys = [];
   if (selectKey && selectKey.length > 0) {
     selectKey.forEach(item => {
-      const disabled = mapData[item].disabled;
+      const disabled = mapData[item] && mapData[item].disabled;
       if (!disabled) {
         validKeys.push(item);
       } else {
@@ -123,17 +128,27 @@ export function getTreeData(
   return { target: [], leafKeys: [] };
 }
 
-export function getCancelItem(value: string[], mapData: Object, displayValue?: string[]): Object[] {
+export function getCancelItem(
+  value: string[],
+  mapData: Object,
+  field: Object,
+  displayValue?: string[]
+): Object[] {
+  const { valueField, displayField } = field;
   const hasValue = value && value.length;
   if (hasValue) {
     const cancelItem = [];
     if (displayValue && displayValue.length) {
       value.forEach((item, index) => {
         if (!mapData[item]) {
-          cancelItem.push({ text: displayValue && displayValue[index], value: item });
+          cancelItem.push({
+            [displayField]: displayValue && displayValue[index],
+            [valueField]: item,
+          });
         }
       });
     }
+    console.info('cancelItem', cancelItem);
     return cancelItem;
   }
   return [];

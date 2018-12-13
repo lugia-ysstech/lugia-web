@@ -15,7 +15,15 @@ import CheckBox from '../checkbox';
 import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
-import { TransFer, MenuWrap, Check, CheckText, NoData, CancelBox } from '../css/transfer';
+import {
+  TransFer,
+  MenuWrap,
+  Check,
+  CheckText,
+  NoData,
+  CancelBox,
+  CancelBoxItem,
+} from '../css/transfer';
 import { isContained, getTreeData } from './utils';
 
 export default ThemeProvider(
@@ -29,16 +37,22 @@ export default ThemeProvider(
       this.maping = false;
     }
     createCancelCheckBox = () => {
-      const { cancelItem = [] } = this.props;
+      const { cancelItem = [], displayField, valueField } = this.props;
       const hasCancelItem = cancelItem && cancelItem.length > 0;
       if (hasCancelItem) {
         const elements = [];
         cancelItem.forEach((item, index) => {
-          const { text, value } = item;
           elements.push(
-            <CheckBox key={index} value={value} cancel handleCancelItemClick={this.cancelItemClick}>
-              {text}
-            </CheckBox>
+            <CancelBoxItem>
+              <CheckBox
+                key={index}
+                value={item[valueField]}
+                cancel
+                handleCancelItemClick={this.cancelItemClick}
+              >
+                {item[displayField]}
+              </CheckBox>
+            </CancelBoxItem>
           );
         });
         return elements;
@@ -58,6 +72,8 @@ export default ThemeProvider(
         whiteList,
         title,
         direction,
+        displayField,
+        valueField,
       } = this.props;
       const { inputValue } = this.state;
       const view = {
@@ -73,7 +89,6 @@ export default ThemeProvider(
       const menuView = {};
       if (direction === 'left') {
         menuView[Widget.Menu] = {
-          width: 290,
           height: 310,
         };
         menuView[Widget.Tree] = {
@@ -102,7 +117,6 @@ export default ThemeProvider(
       }
 
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
-      console.info(data, selectedKeys);
       return (
         <TransFer>
           <Check>
@@ -138,6 +152,8 @@ export default ThemeProvider(
                     data={data}
                     selectedKeys={selectedKeys}
                     onClick={this.onClick}
+                    displayField={displayField}
+                    valueField={valueField}
                   />
                 ) : (
                   <Tree
@@ -174,8 +190,8 @@ export default ThemeProvider(
       }
     };
     onClick = (e, keys, item) => {
-      const { onSelect } = this.props;
-      onSelect && onSelect([item.value]);
+      const { onSelect, valueField } = this.props;
+      onSelect && onSelect([item[valueField]]);
     };
     handleTreeChange = value => {
       const { onSelect } = this.props;
