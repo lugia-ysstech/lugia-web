@@ -16,15 +16,15 @@ import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
 import {
-  TransFer,
-  MenuWrap,
-  Check,
-  CheckText,
-  NoData,
   CancelBox,
   CancelBoxItem,
+  Check,
+  CheckText,
+  MenuWrap,
+  NoData,
+  TransFer,
 } from '../css/transfer';
-import { isContained, getTreeData } from './utils';
+import { isContained, getKeys } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -105,7 +105,7 @@ export default ThemeProvider(
           ? false
           : length
           ? isContained(selectedKeys, canCheckKeys)
-          : isContained(data, selectedKeys);
+          : isContained(getKeys(data ? data : [], valueField), selectedKeys);
       const list = {};
       if (type === 'tree') {
         if (blackList) {
@@ -157,6 +157,8 @@ export default ThemeProvider(
                   />
                 ) : (
                   <Tree
+                    displayField={displayField}
+                    valueField={valueField}
                     data={data}
                     value={selectedKeys}
                     expandAll

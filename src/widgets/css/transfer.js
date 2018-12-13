@@ -35,11 +35,12 @@ export type TransferState = {
   inputValue: string,
 };
 type CSSProps = {
+  direction: 'left' | 'right',
   isWrap?: boolean,
   theme: ThemeType,
   disabled: boolean,
 };
-const { borderColor, blackColor, lightGreyColor } = colorsFunc();
+const { borderColor } = colorsFunc();
 export const TransFer = styled.div`
   border: 1px solid ${borderColor};
   display: inline-block;
