@@ -8,15 +8,6 @@ import * as React from 'react';
 import Cascader from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import styled from 'styled-components';
-const Button = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 200px;
-  height: 20px;
-  background: red;
-`;
 
 const data = [
   {
@@ -87,8 +78,7 @@ export default class extends React.Component<any, any> {
             // action={'hover'}
             value={selectedKeys}
             // value={null}
-            // displayValue={'title'}
-            // defaultValue={['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1']}
+            defaultValue={['a6/a6-2/a6-2-1/suba1/suba2']}
             separator={'/'}
             onClick={this.onClick}
             onChange={this.onChange}

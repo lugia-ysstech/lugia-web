@@ -59,11 +59,12 @@ export function letStringToArray(value: string[]) {
 
 export function getValue(props: CascaderProps, state: CascaderState | null): string[] {
   const { value = [], defaultValue = [] } = props;
+
   if (isHasValue(props)) {
-    return letStringToArray(value);
+    return value ? letStringToArray(value) : [];
   }
   if (!state) {
-    return isHasDefaultValue(props) ? letStringToArray(defaultValue) : [];
+    return isHasDefaultValue(props) && defaultValue ? letStringToArray(defaultValue) : [];
   }
 
   return state.value;
@@ -130,7 +131,9 @@ export function getInputValue(props: CascaderProps, state: CascaderState) {
 
   const displayValueData = mapTreeDataToGetDisplayValue(treeData, filterValueData);
   if (showAllLevels) {
-    return [displayValueData.join(separator)];
+    return isArrayLengthIsZero(displayValueData)
+      ? displayValueData
+      : [displayValueData.join(separator)];
   }
 
   const isLeaf = mapTreeDataToGetLeaf(treeData, filterValueData);

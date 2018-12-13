@@ -103,24 +103,24 @@ describe('Cascader', () => {
     expect(getValue({}, null)).toEqual([]);
     expect(getValue({ value: [] }, null)).toEqual([]);
     expect(getValue({ value: [''] }, null)).toEqual(['']);
-    expect(getValue({ value: null }, null)).toEqual([null]);
+    expect(getValue({ value: null }, null)).toEqual([]);
     expect(getValue({ value: undefined }, null)).toEqual([]);
-    expect(getValue({ value: 0 }, null)).toEqual([0]);
+    expect(getValue({ value: 0 }, null)).toEqual([]);
     expect(getValue({ value: [123, 345] }, null)).toEqual([123, 345]);
 
     expect(getValue({ defaultValue: ['深院月斜人静'] }, null)).toEqual(['深院月斜人静']);
     expect(getValue({ defaultValue: [] }, null)).toEqual([]);
     expect(getValue({ defaultValue: [''] }, null)).toEqual(['']);
-    expect(getValue({ defaultValue: null }, null)).toEqual([null]);
+    expect(getValue({ defaultValue: null }, null)).toEqual([]);
     expect(getValue({ defaultValue: undefined }, null)).toEqual([]);
-    expect(getValue({ defaultValue: 0 }, null)).toEqual([0]);
+    expect(getValue({ defaultValue: 0 }, null)).toEqual([]);
     expect(getValue({ defaultValue: [123, 345] }, null)).toEqual([123, 345]);
 
     expect(getValue({ value: [], defaultValue: ['深院月斜人静'] }, null)).toEqual([]);
     expect(getValue({ value: [''], defaultValue: ['深院月斜人静'] }, null)).toEqual(['']);
-    expect(getValue({ value: null, defaultValue: ['深院月斜人静'] }, null)).toEqual([null]);
+    expect(getValue({ value: null, defaultValue: ['深院月斜人静'] }, null)).toEqual([]);
     expect(getValue({ value: undefined, defaultValue: ['深院月斜人静'] }, null)).toEqual([]);
-    expect(getValue({ value: 0, defaultValue: ['深院月斜人静'] }, null)).toEqual([0]);
+    expect(getValue({ value: 0, defaultValue: ['深院月斜人静'] }, null)).toEqual([]);
     expect(getValue({ value: [123, 345], defaultValue: ['深院月斜人静'] }, null)).toEqual([
       123,
       345,
@@ -129,9 +129,9 @@ describe('Cascader', () => {
     expect(getValue({}, { value: [''] })).toEqual(['']);
     expect(getValue({ value: [] }, { value: ['苦莫苦于多愿'] })).toEqual([]);
     expect(getValue({ value: [''] }, { value: ['苦莫苦于多愿'] })).toEqual(['']);
-    expect(getValue({ value: null }, { value: ['苦莫苦于多愿'] })).toEqual([null]);
+    expect(getValue({ value: null }, { value: ['苦莫苦于多愿'] })).toEqual([]);
     expect(getValue({ value: undefined }, { value: ['苦莫苦于多愿'] })).toEqual([]);
-    expect(getValue({ value: 0 }, { value: ['苦莫苦于多愿'] })).toEqual([0]);
+    expect(getValue({ value: 0 }, { value: ['苦莫苦于多愿'] })).toEqual([]);
     expect(getValue({ value: [123, 345] }, { value: ['苦莫苦于多愿'] })).toEqual([123, 345]);
 
     expect(getValue({ defaultValue: ['深院月斜人静'] }, { value: undefined })).toEqual(undefined);
@@ -155,13 +155,13 @@ describe('Cascader', () => {
     ).toEqual(['']);
     expect(
       getValue({ value: null, defaultValue: ['深院月斜人静'] }, { value: ['苦莫苦于多愿'] })
-    ).toEqual([null]);
+    ).toEqual([]);
     expect(
       getValue({ value: ['123'], defaultValue: ['深院月斜人静'] }, { value: ['苦莫苦于多愿'] })
     ).toEqual(['123']);
     expect(
       getValue({ value: 0, defaultValue: ['深院月斜人静'] }, { value: ['苦莫苦于多愿'] })
-    ).toEqual([0]);
+    ).toEqual([]);
     expect(
       getValue({ value: [1, 2, 3], defaultValue: ['深院月斜人静'] }, { value: ['苦莫苦于多愿'] })
     ).toEqual([1, 2, 3]);
@@ -237,6 +237,142 @@ describe('Cascader', () => {
   });
 
   it('getInputValue ', () => {
-    expect(mapTreeDataToGetDisplayValue(treeData, [])).toEqual([]);
+    expect(
+      getInputValue(
+        { showAllLevels: true, separator: '/', data, value: ['a6/a6-2/a6-2-1/suba1/suba2'] },
+        { treeData }
+      )
+    ).toEqual(['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1/sub2']);
+
+    expect(
+      getInputValue(
+        {
+          showAllLevels: true,
+          separator: '/',
+          data,
+          value: ['苦乐莫多愿/a6-2/a6-2-1/suba1/suba2'],
+        },
+        { treeData }
+      )
+    ).toEqual([]);
+
+    expect(
+      getInputValue(
+        { showAllLevels: true, separator: '/', data, value: ['a6/苦乐莫多愿/a6-2-1/suba1/suba2'] },
+        { treeData }
+      )
+    ).toEqual(['一级菜单6']);
+
+    expect(
+      getInputValue(
+        { showAllLevels: true, separator: '/', data, value: ['a6/a6-2/苦乐莫多愿/suba1/suba2'] },
+        { treeData }
+      )
+    ).toEqual(['一级菜单6/次级菜单6-2']);
+
+    expect(
+      getInputValue(
+        { showAllLevels: true, separator: '/', data, value: ['a6/a6-2/a6-2-1/苦乐莫多愿/suba2'] },
+        { treeData }
+      )
+    ).toEqual(['一级菜单6/次级菜单6-2/三级菜单6-2-1']);
+
+    expect(
+      getInputValue(
+        { showAllLevels: true, separator: '/', data, value: ['a6/a6-2/a6-2-1/suba1/苦乐莫多愿'] },
+        { treeData }
+      )
+    ).toEqual(['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1']);
+
+    expect(
+      getInputValue(
+        { showAllLevels: false, separator: '/', data, value: ['a6/a6-2/a6-2-1/suba1/suba2'] },
+        { treeData }
+      )
+    ).toEqual(['sub2']);
+
+    expect(
+      getInputValue(
+        {
+          showAllLevels: false,
+          separator: '/',
+          data,
+          value: ['苦乐莫多愿/a6-2/a6-2-1/suba1/suba2'],
+        },
+        { treeData }
+      )
+    ).toEqual(undefined);
+
+    expect(
+      getInputValue(
+        {
+          showAllLevels: false,
+          separator: '/',
+          data,
+          value: ['苦乐莫多愿/a6-2/a6-2-1/suba1/suba2'],
+        },
+        { treeData, inputValue: ['笙歌散后酒初醒'] }
+      )
+    ).toEqual(['笙歌散后酒初醒']);
+
+    expect(
+      getInputValue(
+        {
+          showAllLevels: false,
+          separator: '/',
+          data,
+          value: ['a6/a6-2/a6-2-1/suba1/suba2'],
+        },
+        { treeData, inputValue: ['笙歌散后酒初醒'] }
+      )
+    ).toEqual(['sub2']);
+
+    expect(
+      getInputValue(
+        {
+          showAllLevels: false,
+          separator: '/',
+          data,
+          value: ['a6/a6-2/a6-2-1/suba1'],
+        },
+        { treeData, inputValue: ['笙歌散后酒初醒'] }
+      )
+    ).toEqual(['笙歌散后酒初醒']);
+
+    expect(
+      getInputValue(
+        {
+          showAllLevels: false,
+          separator: '/',
+          data,
+          value: ['a6/苦莫苦于多愿/a6-2-1/suba1'],
+        },
+        { treeData, inputValue: ['笙歌散后酒初醒'] }
+      )
+    ).toEqual(['笙歌散后酒初醒']);
+
+    expect(
+      getInputValue(
+        {
+          showAllLevels: false,
+          separator: '/',
+          data,
+          value: ['a6'],
+        },
+        { treeData, inputValue: ['笙歌散后酒初醒'] }
+      )
+    ).toEqual(['笙歌散后酒初醒']);
+
+    expect(
+      getInputValue(
+        {
+          showAllLevels: false,
+          separator: '/',
+          data,
+          value: ['a1'],
+        },
+        { treeData, inputValue: ['笙歌散后酒初醒'] }
+      )
+    ).toEqual(['一级菜单1']);
   });
 });
