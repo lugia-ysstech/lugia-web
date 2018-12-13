@@ -10,10 +10,10 @@ import Icon from '../icon/index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import { getDescripitionColor, getTitleColor } from '../css/card';
+import type { PopoverProps, PopoverState } from '../css/popover';
 import { getIconColor } from '../css/popover';
 import { px2emcss } from '../css/units';
 import ThemeProvider from '../theme-provider';
-import type { PopoverProps, PopoverState } from '../css/popover';
 import { ObjectUtils } from '@lugia/type-utils';
 
 const em = px2emcss(1.2);
@@ -54,6 +54,38 @@ const TooltipWrapper = styled(Tooltip)`
   display: inline-block;
   position: relative;
 `;
+
+export function hasVisibleInProps(props: PopoverProps) {
+  return 'visible' in props;
+}
+
+export function getStateFromProps(props: PopoverProps, state: PopoverState): PopoverState {
+  const isHasVisibleProps = hasVisibleInProps(props);
+  const hasDefaultVisibleInprops = 'defaultVisible' in props;
+  if (!state) {
+    const theVisible = isHasVisibleProps
+      ? props.visible
+      : hasDefaultVisibleInprops
+      ? props.defaultVisible
+      : false;
+    return { visible: !!theVisible };
+  }
+  if (isHasVisibleProps) {
+    return { visible: !!props.visible };
+  }
+  return { visible: state.visible };
+}
+
+export function processOnVisibleChange(visible: boolean) {
+  const { onVisibleChange } = this.props;
+  const isHasVisible = hasVisibleInProps(this.props);
+  const theVisible = isHasVisible ? this.props.visible : visible;
+  if (!isHasVisible) {
+    this.setState({ visible: theVisible });
+  }
+  onVisibleChange && onVisibleChange(visible);
+}
+
 class Popover extends React.Component<PopoverProps, PopoverState> {
   static defaultProps = {
     defaultVisible: false,
@@ -61,51 +93,42 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     placement: 'top',
   };
   target: Object;
+
   constructor(props: PopoverProps) {
     super(props);
   }
 
   static getDerivedStateFromProps(props: PopoverProps, state: PopoverState) {
-    const hasVisibleInprops = 'visible' in props;
-    const hasDefaultVisibleInprops = 'defaultVisible' in props;
-    if (!state) {
-      const theVisible = hasVisibleInprops
-        ? props.visible
-        : hasDefaultVisibleInprops
-        ? props.defaultVisible
-        : state.visible
-        ? state.visible
-        : false;
-      return { visible: theVisible };
-    }
-    if (hasVisibleInprops) {
-      return { visible: props.visible };
-    }
-    return { visible: state.visible };
+    return getStateFromProps(props, state);
   }
+
   getTitle(): React.Node | null {
     const { title } = this.props;
     return title ? <Title>{title} </Title> : null;
   }
+
   getDescripition(): React.Node | null {
     const { description } = this.props;
     return description ? <Descripition>{description} </Descripition> : null;
   }
+
   getCloseContainer(): React.Node | null {
     const { clear } = this.props;
-    if (clear)
-      return <ClearContainer onClick={this.onClearClick}>{this.getIcon(clear)}</ClearContainer>;
-    return null;
+    return clear ? (
+      <ClearContainer onClick={this.onClearClick}>{this.getIcon(clear)}</ClearContainer>
+    ) : null;
   }
+
   getIcon(icon: React.Node): React.Node {
-    if (ObjectUtils.isString(icon)) return <Clear iconClass={icon}> </Clear>;
-    return icon;
+    return ObjectUtils.isString(icon) ? <Clear iconClass={icon}> </Clear> : icon;
   }
+
   onClearClick = e => {
     const { onClearClick } = this.props;
     this.setState({ visible: false });
     onClearClick && onClearClick(e);
   };
+
   getContent() {
     const { content, title, description } = this.props;
     if (content || title || description) {
@@ -120,6 +143,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     }
     return null;
   }
+
   render() {
     const { children, action, placement, getTheme } = this.props;
     const { visible } = this.state;
@@ -139,14 +163,10 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
       </TooltipWrapper>
     );
   }
+
   onVisibleChange = (visible: boolean) => {
-    const { onVisibleChange } = this.props;
-    const hasVisibleInprops = 'visible' in this.props;
-    const theVisible = hasVisibleInprops ? this.props.visible : visible;
-    if (!hasVisibleInprops) {
-      this.setState({ visible: theVisible });
-    }
-    onVisibleChange && onVisibleChange(visible);
+    processOnVisibleChange.call(this, visible);
   };
 }
+
 export default ThemeProvider(Popover, Widget.Popover);

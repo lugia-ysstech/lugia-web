@@ -16,6 +16,8 @@ import { px2emcss } from '../css/units';
 import type { DirectionType } from '../css/tooltip';
 import ThemeProvider from '../theme-provider';
 import { ObjectUtils } from '@lugia/type-utils';
+import { getStateFromProps, processOnVisibleChange } from '../popover/popover';
+import type { PopoverProps, PopoverState } from '../css/popover';
 
 const em = px2emcss(1.2);
 
@@ -89,37 +91,26 @@ const Cancel = BaseButton.extend`
 const Confirm = BaseButton.extend`
   font-size: 1.2rem;
 `;
+
 class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   static defaultProps = {
     defaultVisible: false,
   };
   target: Object;
+
   constructor(props: PopconfirmProps) {
     super(props);
   }
 
-  static getDerivedStateFromProps(props: PopconfirmProps, state: PopconfirmState) {
-    const hasVisibleInprops = 'visible' in props;
-    const hasDefaultVisibleInprops = 'defaultVisible' in props;
-    if (!state) {
-      const theVisible = hasVisibleInprops
-        ? props.visible
-        : hasDefaultVisibleInprops
-        ? props.defaultVisible
-        : state.visible
-        ? state.visible
-        : false;
-      return { visible: theVisible };
-    }
-    if (hasVisibleInprops) {
-      return { visible: props.visible };
-    }
-    return { visible: state.visible };
+  static getDerivedStateFromProps(props: PopoverProps, state: PopoverState) {
+    return getStateFromProps(props, state);
   }
+
   getTitle(): React.Node | null {
     const { title } = this.props;
     return title ? <Title>{title} </Title> : null;
   }
+
   getOperation(): React.Node | null {
     const { cancelText = '取消', okText = '确定', okType = 'primary' } = this.props;
     const margin = {
@@ -142,6 +133,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       </Theme>
     );
   }
+
   getContent() {
     return (
       <Content>
@@ -153,23 +145,27 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       </Content>
     );
   }
+
   onCancel = e => {
     const { onCancel } = this.props;
+    this.onVisibleChange(false);
     return onCancel && onCancel(e);
   };
   onConfirm = e => {
     const { onConfirm } = this.props;
+    this.onVisibleChange(false);
     return onConfirm && onConfirm(e);
   };
+
   getIconContainer(): React.Node | null {
     const { icon } = this.props;
-    if (icon) return <IconContainer>{this.getIcon(icon)}</IconContainer>;
-    return null;
+    return icon ? <IconContainer>{this.getIcon(icon)}</IconContainer> : null;
   }
+
   getIcon(icon: React.Node): React.Node {
-    if (ObjectUtils.isString(icon)) return <HintIcon iconClass={icon}> </HintIcon>;
-    return icon;
+    return ObjectUtils.isString(icon) ? <HintIcon iconClass={icon}> </HintIcon> : icon;
   }
+
   render() {
     const { children, action, placement, getTheme } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
@@ -187,14 +183,10 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       </Popover>
     );
   }
+
   onVisibleChange = (visible: boolean) => {
-    const { onVisibleChange } = this.props;
-    const hasVisibleInprops = 'visible' in this.props;
-    const theVisible = hasVisibleInprops ? this.props.visible : visible;
-    if (!hasVisibleInprops) {
-      this.setState({ visible: theVisible });
-    }
-    onVisibleChange && onVisibleChange(visible);
+    processOnVisibleChange.call(this, visible);
   };
 }
+
 export default ThemeProvider(Popconfirm, Widget.Popconfirm);
