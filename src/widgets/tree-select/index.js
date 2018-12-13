@@ -500,9 +500,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   };
 
-  canSelect(row: Object): boolean {
+  canSelect(key: string): boolean {
     const tree = this.getTree();
-    return tree && tree.canSelect(row);
+    return tree && tree.canSelect(key);
   }
 
   getNotInTree(): Object {
