@@ -72,7 +72,7 @@ export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      selectedKeys: ['a6/a6-2/a6-2-1/suba1/suba2'],
+      selectedKeys: 'a6/a6-2/a6-2-1/suba1/suba2',
       data,
     };
   }
@@ -84,15 +84,16 @@ export default class extends React.Component<any, any> {
         <Theme config={{ [Widget.Cascader]: { width: 300, menuWidth: 120 } }}>
           <Cascader
             data={data}
-            action={'hover'}
+            // action={'hover'}
             value={selectedKeys}
+            // value={null}
             // displayValue={'title'}
             // defaultValue={['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1']}
             separator={'/'}
             onClick={this.onClick}
             onChange={this.onChange}
             disabled={false}
-            // showAllLevels={false}
+            showAllLevels={false}
             placeholder={'请选择'}
             allowClear={true}
             onClear={this.onClear}

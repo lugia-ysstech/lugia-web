@@ -3,13 +3,10 @@
  * create by ligx
  *
  */
-import React from 'react';
-
 import 'jest-styled-components';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Carousel, { getInitStart } from '../carousel';
-import { delay } from '@lugia/react-test-utils';
 
 Enzyme.configure({ adapter: new Adapter() });
 

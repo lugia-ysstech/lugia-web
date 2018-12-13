@@ -43,48 +43,78 @@ export function isHasDefaultValue(props: CascaderProps) {
   return 'defaultValue' in props;
 }
 
+export function getLastIndex(array: Array<any>): number {
+  return array.length - 1;
+}
+
 export function getInitExpandedPath(props: CascaderProps) {
-  const { value = [] } = props;
-  if (isHasValue(props)) {
-    return value;
-  }
-  return [];
+  const initExpanded = getValue(props, null);
+
+  return initExpanded;
+}
+
+export function letStringToArray(value: string[]) {
+  return Array.isArray(value) ? value : [value];
 }
 
 export function getValue(props: CascaderProps, state: CascaderState | null): string[] {
   const { value = [], defaultValue = [] } = props;
   if (isHasValue(props)) {
-    return value;
+    return letStringToArray(value);
   }
   if (!state) {
-    return isHasDefaultValue(props) ? defaultValue : [];
+    return isHasDefaultValue(props) ? letStringToArray(defaultValue) : [];
   }
 
   return state.value;
 }
 
-export function getValueData(value: string[] = [], separator: string): string[] {
-  const len = value.length;
-  return len === 0 ? [] : value[0].split(separator);
+export function isArrayLengthIsZero(value: string[]): boolean {
+  return value.length === 0;
 }
 
-export function getLastLevelValue(valueData: string[]): string[] {
-  if (!valueData || valueData.length === 0) {
-    return [];
+// 如果value是数字呢？
+// split不Number的方法，如果传数字会报错
+// 考虑容错
+export function letValueSplitToArray(value: string[] = [], separator: string): string[] {
+  if (Array.isArray(value)) {
+    return isArrayLengthIsZero(value) ? [] : value[0].split(separator);
   }
-  const len = valueData.length;
-  return [valueData[len - 1]];
+  return value.split(separator);
 }
 
-export function mapTreeDataToGetLeaf(props: CascaderProps, state: CascaderState) {
-  const { treeData } = state;
-  const valueData = filterValueData(props, state);
-  const len = valueData.length;
-  const key = valueData[len - 1];
-  const lastItem = treeData.filter(item => {
-    return item.key === key;
-  });
-  return lastItem[0].isLeaf;
+export function getLastLevelValue(valueData: string[]): any {
+  if (!valueData || isArrayLengthIsZero(valueData)) {
+    return undefined;
+  }
+  const lastIndex = getLastIndex(valueData);
+  return valueData[lastIndex];
+}
+
+export function mapTreeDataToGetLeaf(treeData: Array<Object>, filterValueData: string[]): boolean {
+  const key = getLastLevelValue(filterValueData);
+  if (!key) {
+    return false;
+  }
+  let isLeaf;
+  treeData &&
+    treeData.forEach(item => {
+      if (item.key === key) {
+        isLeaf = item.isLeaf;
+      }
+    });
+  return !!isLeaf;
+}
+
+export function mapTreeDataToGetDisplayValue(treeData: Array<Object>, filterValueData: string[]) {
+  const displayValueData = [];
+  treeData &&
+    treeData.forEach(item => {
+      if (filterValueData.includes(item.key)) {
+        displayValueData.push(item.title);
+      }
+    });
+  return displayValueData;
 }
 
 export function getInitInputValue(props: CascaderProps) {
@@ -93,35 +123,24 @@ export function getInitInputValue(props: CascaderProps) {
 }
 
 export function getInputValue(props: CascaderProps, state: CascaderState) {
-  const { showAllLevels, separator } = props;
-  const displayValueData = mapTreeDataToGetDisplayValue(props, state);
+  const { showAllLevels, separator = '/', data = [] } = props;
+  const { treeData } = state;
+  const value = getValue(props, state);
+  const filterValueData = getFilterValueData(data, value, separator);
 
+  const displayValueData = mapTreeDataToGetDisplayValue(treeData, filterValueData);
   if (showAllLevels) {
     return [displayValueData.join(separator)];
   }
-  const isLeaf = mapTreeDataToGetLeaf(props, state);
-  const newInputValue = isLeaf ? getLastLevelValue(displayValueData) : state.inputValue;
+
+  const isLeaf = mapTreeDataToGetLeaf(treeData, filterValueData);
+  const newInputValue = isLeaf ? [getLastLevelValue(displayValueData)] : state.inputValue;
 
   return newInputValue;
 }
 
-export function mapTreeDataToGetDisplayValue(props: CascaderProps, state: CascaderState) {
-  const { treeData } = state;
-  const valueData = filterValueData(props, state);
-  const displayValueData = [];
-  treeData &&
-    treeData.forEach(item => {
-      if (valueData.includes(item.key)) {
-        displayValueData.push(item.title);
-      }
-    });
-  return displayValueData;
-}
-
-export function filterValueData(props: CascaderProps, state: CascaderState) {
-  const { separator = '|', data = [] } = props;
-  const value = isHasValue(props) ? props.value : state.value;
-  const valueData = getValueData(value, separator);
+export function getFilterValueData(data: Array<Object>, value: string[], separator: string) {
+  const valueData = letValueSplitToArray(value, separator);
   const filterData = [];
   mapDataAndGetSelectedKeys(data, valueData, filterData);
   return filterData;

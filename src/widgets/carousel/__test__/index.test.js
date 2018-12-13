@@ -7,7 +7,7 @@
 import React from 'react';
 
 import 'jest-styled-components';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Target from '../index';
 import Carousel, { isHasStart, getInitStart } from '../carousel';

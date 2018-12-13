@@ -48,7 +48,6 @@ type CascaderProps = {
   valueField: string,
   popupVisible?: boolean,
   showAllLevels?: boolean,
-  placeholder?: string,
   allowClear?: boolean,
 };
 type CascaderState = {
@@ -82,6 +81,7 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
       popupVisible: false,
       value: getValue(props, null),
       expandedPath: getInitExpandedPath(props),
+      selectedKeys: getInitExpandedPath(props),
       inputValue: getInitInputValue(props),
       treeData: getTreeData(props),
     };
@@ -95,6 +95,7 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
 
     return {
       value: getValue(props, state),
+      selectedKeys: state.value,
       expandedPath: state.expandedPath,
       inputValue: getInputValue(props, state),
     };
@@ -158,8 +159,9 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
 
   getMenu = (theme: Object) => {
     const { data, action, separator, offsetX, valueField, displayField } = this.props;
-    const { popupVisible, expandedPath, value } = this.state;
+    const { popupVisible, expandedPath, value, selectedKeys, treeData } = this.state;
     const { menuWidth = 150 } = theme;
+    console.log('treeData', treeData);
     return (
       <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
@@ -174,7 +176,7 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
           valueField={valueField}
           onClick={this.onClick}
           separator={separator}
-          selectedKeys={value}
+          selectedKeys={selectedKeys}
           expandedPath={expandedPath}
           offsetX={offsetX}
           offsetY={0}
