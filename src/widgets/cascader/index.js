@@ -10,45 +10,66 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import Trigger from '../trigger';
+// import DropMenu from '../dropmenu';
 import InputTag from '../inputtag';
 import ThemeProvider from '../theme-provider';
-
+import { getValueAndDisplayValue } from '../common/translateData';
+import { getTreeData } from '../menu/utils';
+import { DisplayField, ValueField } from '../consts/props';
+import {
+  isHasValue,
+  getValue,
+  getInitExpandedPath,
+  getInitInputValue,
+  getInputValue,
+} from './utils';
 const CascaderContainer = styled.div`
   display: inline-block;
   position: relative;
 `;
 
 type CascaderProps = {
-  getTheme?: Function,
+  getTheme: Function,
   offsetY: number,
   offsetX: number,
   action?: string,
   placeholder?: string,
   data?: Object[],
   onClick?: Function,
+  onClear?: Function,
+  onChange?: Function,
   separator?: string,
-  value: string[] | string,
+  value: string[],
+  displayValue?: string[],
+  defaultValue?: string[],
   selectedKeys: string[],
   disabled: boolean,
   displayField: string,
   valueField: string,
   popupVisible?: boolean,
-  inputValu: string | string[],
+  showAllLevels?: boolean,
+  placeholder?: string,
+  allowClear?: boolean,
 };
 type CascaderState = {
   popupVisible: boolean,
-  value: [] | string[],
+  value: string[],
+  expandedPath: string[],
+  inputValue: string[],
+  treeData: Array<Object>,
 };
 
 class Cascader extends React.Component<CascaderProps, CascaderState> {
   static defaultProps = {
-    offsetY: 0,
-    offsetX: 0,
+    offsetY: 5,
+    offsetX: 2,
     disabled: false,
     popupVisible: false,
-    getTheme: () => {
-      return {};
-    },
+    getTheme: () => {},
+    showAllLevels: true,
+    displayField: DisplayField,
+    valueField: ValueField,
+    allowClear: true,
   };
 
   checked: boolean;
@@ -57,19 +78,32 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
 
   constructor(props: CascaderProps) {
     super(props);
-    const { popupVisible } = props;
     this.state = {
-      popupVisible: popupVisible ? popupVisible : false,
-      value: props.value ? props.value : [],
-      expandedPath: props.value ? props.value : [],
+      popupVisible: false,
+      value: getValue(props, null),
+      expandedPath: getInitExpandedPath(props),
+      inputValue: getInitInputValue(props),
+      treeData: getTreeData(props),
     };
     this.menu = React.createRef();
   }
 
+  static getDerivedStateFromProps(props: CascaderProps, state: CascaderState) {
+    if (!state) {
+      return {};
+    }
+
+    return {
+      value: getValue(props, state),
+      expandedPath: state.expandedPath,
+      inputValue: getInputValue(props, state),
+    };
+  }
+
   render() {
     const { props, state } = this;
-    const { popupVisible, value } = state;
-    const { getTheme, placeholder, offsetY, disabled, inputValue = value } = props;
+    const { popupVisible, inputValue } = state;
+    const { getTheme, placeholder, offsetY, disabled } = props;
     const theme = getTheme();
     const { width = 200 } = theme;
     return (
@@ -84,15 +118,15 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
             popupVisible={popupVisible}
             popup={this.getMenu(theme)}
             createPortal
-            onPopupVisibleChange={this.onPopupVisibleChange}
           >
             <InputTag
               onClick={this.handleClickInputTag}
               value={inputValue}
-              displayValue={value}
+              displayValue={inputValue}
               mutliple={false}
               placeholder={placeholder}
               disabled={disabled}
+              onClear={this.onClear}
             />
           </Trigger>
         </Theme>
@@ -100,96 +134,112 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
     );
   }
 
-  handleClickInputTag = () => {
-    const { checked } = this;
-    const { disabled } = this.props;
+  setPopupVisible(popupVisible: boolean, otherTarget?: Object = {}) {
+    this.setState({ popupVisible, ...otherTarget });
+  }
 
+  handleClickInputTag = () => {
+    const { checked, props } = this;
+    const { disabled } = props;
     if (disabled) {
       return;
     }
-    const { popupVisible } = this.state;
-    if (popupVisible) {
-      return;
-    }
-    if (checked) {
-      this.checked = false;
-      return;
-    }
-    this.checked = true;
-    this.setState({ popupVisible: true });
+    this.changeCheckedAndSetVisible(checked);
   };
+
+  changeCheckedAndSetVisible(checked: boolean) {
+    this.checked = !checked;
+    if (!checked) {
+      this.setPopupVisible(true);
+    } else {
+      this.setPopupVisible(false);
+    }
+  }
 
   getMenu = (theme: Object) => {
     const { data, action, separator, offsetX, valueField, displayField } = this.props;
     const { popupVisible, expandedPath, value } = this.state;
     const { menuWidth = 150 } = theme;
-    console.info('king', value, 'separator', separator, 'popupVisible', popupVisible);
     return (
       <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
           mutliple={false}
           ref={this.menu}
-          // action={action}
+          action={action}
           popupVisible={popupVisible}
-          // onChange={this.onChange}
-          // handleIsInMenu={this.handleIsInMenu}
+          onChange={this.onChange}
+          handleIsInMenu={this.handleIsInMenu}
           data={data}
-          // displayField={displayField}
-          // valueField={valueField}
+          displayField={displayField}
+          valueField={valueField}
           onClick={this.onClick}
           separator={separator}
           selectedKeys={value}
-          expandedPath={value}
-          // offsetX={offsetX}
+          expandedPath={expandedPath}
+          offsetX={offsetX}
           offsetY={0}
-          // onClear={this.onClear}
-          // onMouseEnter={this.onMouseEnter}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
         />
       </Theme>
     );
   };
 
-  handleIsInMenu = popupVisible => {
-    const { checked } = this;
-    const { mouseInTarget } = this;
-    if (!popupVisible) {
-      if (checked && !mouseInTarget) {
-        this.checked = false;
-      }
-      this.setState({ popupVisible });
+  handleIsInMenu = (isInMenuRange: boolean) => {
+    const { checked, mouseInTarget } = this;
+    if (mouseInTarget) {
+      return;
+    }
+    if (!isInMenuRange && checked) {
+      this.setPopupVisible(false, { expandedPath: this.state.value });
+      this.checked = false;
     }
   };
 
   onClick = (event, keys, item) => {
     const { selectedKeys } = keys;
-    // const { children } = item;
-    // if (!children) {
-    //   this.setState({ popupVisible: false });
-    // }
-    // console.log('selectedKeys', selectedKeys);
-    this.setState({ value: selectedKeys });
+    const { showAllLevels } = this.props;
+
+    if (!item.children || item.children.length === 0) {
+      this.setPopupVisible(false);
+      this.checked = false;
+      if (showAllLevels === false) {
+        this.setState({ inputValue: selectedKeys });
+      }
+    }
+    this.setState({ value: selectedKeys, expandedPath: selectedKeys });
     const { onClick } = this.props;
-    console.log('cascader', selectedKeys);
     onClick && onClick(event, keys, item);
   };
 
-  onMouseEnter = (expandedPath: strting[]) => {
-    // this.setState({ expandedPath });
-    // console.log('expandedPath+++++++++++', expandedPath);
+  onMouseEnter = (event, expandedPath: string[]) => {
+    this.mouseInTarget = true;
+    const { action } = this.props;
+    if (action !== 'hover') {
+      return;
+    }
+    this.setState({ expandedPath });
+  };
+
+  onMouseLeave = () => {
+    this.mouseInTarget = false;
   };
 
   onClear = (e: Object) => {
-    const { onClear } = this.props;
+    const { onClear, allowClear } = this.props;
+
     onClear && onClear(e);
+    if (!allowClear || isHasValue(this.props)) {
+      return;
+    }
+
+    this.setPopupVisible(false, { expandedPath: [], value: [], inputValue: [] });
+    this.checked = false;
   };
 
   onChange = (target: Object) => {
     const { onChange } = this.props;
     onChange && onChange(target);
-  };
-
-  onPopupVisibleChange = () => {
-    // console.log('onPopupVisibleChange');
   };
 
   onMouseEnterContainer = () => {
@@ -204,8 +254,6 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
     if (this.menu) {
       this.menu.current.getThemeTarget().scrollerTarget.forceAlign();
     }
-
-    console.info('king cascader didupdate');
   }
 }
 

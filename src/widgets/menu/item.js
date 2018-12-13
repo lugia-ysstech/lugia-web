@@ -68,17 +68,17 @@ const getItemColorAndBackground = (props: MenuItemProps) => {
     ? `color: ${lightGreyColor};
      font-weight: 500;`
     : checked && checkedCSS !== 'background'
-      ? `
+    ? `
     color: ${themeColor};
     font-weight: 900;
   `
-      : checked && checkedCSS === 'background'
-        ? `
+    : checked && checkedCSS === 'background'
+    ? `
       color: ${blackColor};
       font-weight: 900;
       background: ${disableColor}
     `
-        : `
+    : `
     color: ${blackColor};
     font-weight: 500;
   `;

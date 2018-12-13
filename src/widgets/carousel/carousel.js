@@ -69,16 +69,15 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     switchType: 'horizontal',
     animationTime: defaultAnimationTime,
   };
+  clickDisabled: boolean;
+  preStart: any;
+  interval: any;
 
   constructor(props: CarouselProps) {
     super(props);
     this.clickDisabled = false;
     this.preStart = toNumber(props.start, 0);
   }
-
-  clickDisabled: boolean;
-  preStart: any;
-  interval: any;
 
   static getDerivedStateFromProps(props: CarouselProps, state: CarouselState) {
     const { start = 0, defaultStart } = props;
