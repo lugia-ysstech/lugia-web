@@ -16,7 +16,11 @@ export function getTruthValue(
 
   return result;
 }
-export function getSourceDataAndTargetData(data: Object[], targetKeys: string[]): Object {
+export function getSourceDataAndTargetData(
+  data: Object[],
+  targetKeys: string[],
+  valueField: string
+): Object {
   const sourceData = [],
     targetData = [],
     mapData = {},
@@ -26,18 +30,19 @@ export function getSourceDataAndTargetData(data: Object[], targetKeys: string[])
 
   if (data && data.length > 0) {
     data.forEach(item => {
-      mapData[item.value] = item;
-      const inTarget = targetKeys.includes(item.value);
+      const itemValue = item[valueField];
+      mapData[itemValue] = item;
+      const inTarget = targetKeys.includes(itemValue);
       if (inTarget) {
         targetData.push(item);
         if (!item.disabled) {
-          targetCheckKeys.push(item.value);
+          targetCheckKeys.push(itemValue);
         }
       } else {
         sourceData.push(item);
-        sourceKeys.push(item.value);
+        sourceKeys.push(itemValue);
         if (!item.disabled) {
-          sourceCheckKeys.push(item.value);
+          sourceCheckKeys.push(itemValue);
         }
       }
     });
@@ -56,7 +61,7 @@ export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
     disabledKeys = [];
   if (selectKey && selectKey.length > 0) {
     selectKey.forEach(item => {
-      const disabled = mapData[item].disabled;
+      const disabled = mapData[item] && mapData[item].disabled;
       if (!disabled) {
         validKeys.push(item);
       } else {
@@ -66,50 +71,98 @@ export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
   }
   return { validKeys, disabledKeys };
 }
-export function isContained(a: Array<any>, b: string[]) {
-  if (!(a instanceof Array) || !(b instanceof Array)) return false;
-  if (a.length < b.length) return false;
-  const aStr = a.toString();
-  for (let i = 0, len = b.length; i < len; i++) {
-    if (aStr.indexOf(b[i]) === -1) return false;
+export function isContained(range: Array<any>, target: string[]) {
+  if (!(range instanceof Array) || !(target instanceof Array)) return false;
+  if (range.length < target.length) return false;
+  const aStr = range.toString();
+  for (let i = 0, len = target.length; i < len; i++) {
+    if (aStr.indexOf(target[i]) === -1) return false;
   }
   return true;
 }
-export function forData(
+export function getTreeData(
   data: Object[],
-  target: Object[],
-  parentKey?: string[],
+  targetObj: Object,
+  parentKey?: string,
   parentPath?: string[]
-) {
-  data.map((item, index) => {
-    const { children } = item;
-    const newObj = {};
-    newObj.key = item.value;
-    newObj.title = item.text;
-    let pidArr;
-    if (!parentKey) {
-      newObj.pid = undefined;
-      newObj.path = undefined;
-      pidArr = [];
-    } else {
-      newObj.pid = parentKey;
-      if (parentPath.indexOf(parentKey) === -1) {
-        parentPath.push(parentKey);
+): Object {
+  if (data && data.length) {
+    const { target = [], mapData = {}, leafKeys = [] } = targetObj;
+    data.forEach(item => {
+      const { children } = item;
+      const newObj = {};
+      newObj.key = item.value;
+      newObj.title = item.text;
+      let pidArr;
+      if (!parentKey) {
+        newObj.pid = undefined;
+        newObj.path = undefined;
+        pidArr = [];
+      } else {
+        if (parentPath) {
+          newObj.pid = parentKey;
+          if (parentPath.indexOf(parentKey) === -1) {
+            parentPath.push(parentKey);
+          }
+          pidArr = [...parentPath];
+          newObj.path = pidArr.join('/');
+        }
       }
-      pidArr = [...parentPath];
-      newObj.path = pidArr.join('/');
+      if (!children || children.length === 0) {
+        newObj.isLeaf = true;
+        if (!item.disabled) {
+          leafKeys.push(item.value);
+        }
+        target.push(newObj);
+        mapData[item.value] = item;
+      } else {
+        target.push(newObj);
+        mapData[item.value] = item;
+        getTreeData(children, targetObj, item.value, pidArr);
+      }
+    });
+
+    return targetObj;
+  }
+
+  return { target: [], leafKeys: [] };
+}
+
+export function getCancelItem(
+  value: string[],
+  mapData: Object,
+  field: Object,
+  displayValue?: string[]
+): Object[] {
+  const { valueField, displayField } = field;
+  const hasValue = value && value.length;
+  if (hasValue) {
+    const cancelItem = [];
+    if (displayValue && displayValue.length) {
+      value.forEach((item, index) => {
+        if (!mapData[item]) {
+          cancelItem.push({
+            [displayField]: displayValue && displayValue[index],
+            [valueField]: item,
+          });
+        }
+      });
     }
 
-    if (!children || children.length === 0) {
-      newObj.isLeaf = true;
-      target.push(newObj);
+    return cancelItem;
+  }
+  return [];
+}
+export function getCanCheckKeys(allKeys: string[], targetKeys: string[]) {
+  const sourceCanCheckKeys = [],
+    targetCanCheckKeys = [];
+  allKeys.forEach(item => {
+    const inTarget = targetKeys.includes(item);
+    if (inTarget) {
+      targetCanCheckKeys.push(item);
     } else {
-      newObj.alwaysExpanded = item.alwaysExpanded;
-      target.push(newObj);
-      forData(children, target, item.value, pidArr);
+      sourceCanCheckKeys.push(item);
     }
   });
+  return { targetCanCheckKeys, sourceCanCheckKeys };
 }
-// export function forData(){
-//
-// };

@@ -18,9 +18,18 @@ export type TransferProps = {
   showSearch?: boolean,
   onSelect: Function,
   onSearch: (inputValue: string) => {},
+  onCancelItemClick: Function,
   onCheckAll: Function,
   canCheckKeys: string[],
+  cancelItem?: Object[],
   needCancelBox?: boolean,
+  type: 'panel' | 'tree',
+  direction: 'left' | 'right',
+  blackList?: string[],
+  whiteList?: string[],
+  title: string,
+  displayField: string,
+  valueField: string,
 };
 export type TransferState = {
   inputValue: string,
@@ -36,6 +45,8 @@ export const TransFer = styled.div`
   display: inline-block;
   font-size: ${FontSize}rem;
   overflow: hidden;
+  position: relative;
+  vertical-align: middle;
 `;
 export const Check = styled.div`
   background: #f8f8f8;
@@ -52,13 +63,26 @@ export const CheckText = styled.span`
 export const MenuWrap = styled.div`
   padding-left: ${em(2)};
 `;
+const getNoDataHeight = (props: CSSProps) => {
+  const { direction } = props;
+  if (direction === 'left') {
+    return px2emcss(1.4)(310);
+  }
+  return px2emcss(1.4)(250);
+};
 export const NoData = styled.div`
   font-size: ${em(14)};
-  height: ${px2emcss(1.4)(250)};
+  height: ${getNoDataHeight};
   color: #ccc;
   text-align: center;
 `;
 export const CancelBox = styled.div`
   height: ${em(60)};
-  border: 1px solid #e8e8e8;
+  padding: ${em(5)} ${em(10)};
+  width: ${em(255)};
+  border-top: 1px solid #e8e8e8;
+`;
+export const CancelBoxItem = styled.span`
+  display: inline-block;
+  padding: ${em(3)};
 `;

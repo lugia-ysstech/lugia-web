@@ -18,6 +18,7 @@ export type GroupProps = {
   disabled?: boolean,
   targetKeys?: string[],
   onSelectChange?: (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {},
+  onCancelItemClick?: (newTargetKeys: string[], newDisplayValue: string[]) => {},
   onDirectionClick?: (
     nextTargetKeys: string[],
     direction: 'left' | 'right',
@@ -28,6 +29,9 @@ export type GroupProps = {
   defaultSourceSelectedKeys?: string[],
   defaultTargetSelectedKeys?: string[],
   filterOption: (inputValue: string, option: Object) => {},
+  type?: 'tree' | 'panel',
+  displayField?: string,
+  valueField?: string,
 };
 export type GroupState = {
   inputValue: string,
@@ -42,6 +46,10 @@ export type GroupState = {
   targetSearchData: Object[],
   sourceCheckKeys: string[],
   targetCheckKeys: string[],
+  treeData: Object[],
+  cancelItem: Object[],
+  displayValue: string[],
+  leafKeys: string[],
 };
 type CSSProps = {
   isWrap?: boolean,
@@ -52,10 +60,13 @@ const { borderColor, blackColor, lightGreyColor } = colorsFunc();
 export const TransFerWrap = styled.div`
   box-sizing: border-box;
   font-size: ${FontSize}rem;
+  position: relative;
 `;
-export const OperationBtn = styled.div`
+export const OperationBtn = styled.span`
   display: inline-block;
   padding: ${em(8)};
+  position: relative;
+  vertical-align: middle;
 
   & > button {
     margin-bottom: ${em(10)};
