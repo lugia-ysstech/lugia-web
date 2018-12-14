@@ -3,19 +3,19 @@
  */
 import 'jest-styled-components';
 import {
-  isRoot,
-  getSelectedKeys,
-  getPopupVisible,
-  getTargetOrDefaultTarget,
-  getExpandedPath,
-  getCascaderData,
-  getExpandDataOrSelectData,
-  letExpandpathOrSelectedKeysToArray,
-  getExpandedPathFromPropsOrState,
-  getExpandedData,
+  getCascaderKeys,
   getChildData,
-  getTreeData,
+  getExpandDataOrSelectData,
+  getExpandedData,
+  getExpandedPath,
+  getExpandedPathFromPropsOrState,
   getInitAllChildData,
+  getPopupVisible,
+  getSelectedKeys,
+  getTargetOrDefaultTarget,
+  getTreeData,
+  isRoot,
+  letExpandpathOrSelectedKeysToArray,
 } from '../utils';
 
 describe('Menu utils', () => {
@@ -110,14 +110,14 @@ describe('Menu utils', () => {
     { isLeaf: true, value: '3', path: undefined, pid: undefined, text: '3' },
   ];
 
-  it('getCascaderData ', () => {
-    expect(getCascaderData([], '/')).toEqual([]);
-    expect(getCascaderData(['苦'], '/')).toEqual(['苦']);
-    expect(getCascaderData(['苦/乐'], '/')).toEqual(['苦', '乐']);
-    expect(getCascaderData(['苦/乐/莫/多/愿'], '/')).toEqual(['苦', '乐', '莫', '多', '愿']);
-    expect(getCascaderData(['苦'], '|')).toEqual(['苦']);
-    expect(getCascaderData(['苦|乐'], '|')).toEqual(['苦', '乐']);
-    expect(getCascaderData(['苦|乐|莫|多|愿'], '|')).toEqual(['苦', '乐', '莫', '多', '愿']);
+  it('getCascaderKeys ', () => {
+    expect(getCascaderKeys([], '/')).toEqual([]);
+    expect(getCascaderKeys(['苦'], '/')).toEqual(['苦']);
+    expect(getCascaderKeys(['苦/乐'], '/')).toEqual(['苦', '乐']);
+    expect(getCascaderKeys(['苦/乐/莫/多/愿'], '/')).toEqual(['苦', '乐', '莫', '多', '愿']);
+    expect(getCascaderKeys(['苦'], '|')).toEqual(['苦']);
+    expect(getCascaderKeys(['苦|乐'], '|')).toEqual(['苦', '乐']);
+    expect(getCascaderKeys(['苦|乐|莫|多|愿'], '|')).toEqual(['苦', '乐', '莫', '多', '愿']);
   });
 
   it('letExpandpathOrSelectedKeysToArray ', () => {
@@ -268,6 +268,79 @@ describe('Menu utils', () => {
     ],
   };
 
+  it('getInitAllChildData more level tree', () => {
+    const data = [
+      {
+        text: '1',
+        value: '1',
+        disabled: false,
+        children: [
+          {
+            text: '1-1',
+            value: '1-1',
+            disabled: false,
+            children: [
+              {
+                text: '1-1-1',
+                value: '1-1-1',
+                disabled: false,
+                children: [
+                  {
+                    text: '1-1-1-1',
+                    value: '1-1-1-1',
+                    disabled: false,
+                    children: [{ text: '1-1-1-1-1', value: '1-1-1-1-1', disabled: false }],
+                  },
+                  {
+                    text: '2-1-1-1',
+                    value: '2-1-1-1',
+                    disabled: false,
+                    children: [
+                      { text: '2-1-1-1-1', value: '2-1-1-1-1', disabled: false },
+                      { text: '2-1-1-1-2', value: '2-1-1-1-2', disabled: false },
+                    ],
+                  },
+                ],
+              },
+              {
+                text: '2-1-1',
+                value: '2-1-1',
+                disabled: false,
+              },
+            ],
+          },
+          {
+            text: '2-1',
+            value: '2-1',
+            disabled: false,
+          },
+        ],
+      },
+      {
+        text: 'a2',
+        value: 'a2',
+        disabled: false,
+        children: [
+          {
+            text: 'a2-1',
+            value: 'a2-1',
+            disabled: false,
+          },
+        ],
+      },
+    ];
+
+    expect(
+      getInitAllChildData(
+        { data, expandedData: ['1'], level: 0, expandedPath: ['1/1-1/1-1-1'], separator: '/' },
+        {}
+      )
+    ).toEqual({
+      0: data[0].children,
+      1: data[0].children[0].children,
+      2: data[0].children[0].children[0].children,
+    });
+  });
   it('getInitAllChildData ', () => {
     expect(getInitAllChildData({}, {})).toEqual({});
     expect(getInitAllChildData({ data }, {})).toEqual({});
