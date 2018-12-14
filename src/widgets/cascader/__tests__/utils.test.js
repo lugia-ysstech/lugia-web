@@ -5,17 +5,17 @@ import 'jest-styled-components';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {
-  isHasValue,
-  isHasDefaultValue,
-  getValue,
-  getLastLevelValue,
-  getInitExpandedPath,
-  letValueSplitToArray,
   getFilterValueData,
-  getLastIndex,
-  mapTreeDataToGetLeaf,
-  mapTreeDataToGetDisplayValue,
+  getInitExpandedPath,
   getInputValue,
+  getLastIndex,
+  getLastLevelValue,
+  getValue,
+  isHasDefaultValue,
+  isHasValue,
+  letValueSplitToArray,
+  mapTreeDataToGetDisplayValue,
+  isLeafPath,
 } from '../utils';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -210,12 +210,12 @@ describe('Cascader', () => {
     expect(getFilterValueData(data, ['a6/c/a6-2-1/s/suba2'], '/')).toEqual(['a6']);
   });
 
-  it('mapTreeDataToGetLeaf ', () => {
-    expect(mapTreeDataToGetLeaf([], data, treeData, '/')).toBe(false);
-    expect(mapTreeDataToGetLeaf(treeData, ['a6', 'a6-2', 'a6-2-1', 'suba1', 'suba2'])).toBe(true);
-    expect(mapTreeDataToGetLeaf(treeData, ['a1'])).toBe(true);
-    expect(mapTreeDataToGetLeaf(treeData, ['a6'])).toBe(false);
-    expect(mapTreeDataToGetLeaf(treeData, ['a6', 'a6-2'])).toBe(false);
+  it('isLeafPath ', () => {
+    expect(isLeafPath([], data, treeData, '/')).toBe(false);
+    expect(isLeafPath(treeData, ['a6', 'a6-2', 'a6-2-1', 'suba1', 'suba2'])).toBe(true);
+    expect(isLeafPath(treeData, ['a1'])).toBe(true);
+    expect(isLeafPath(treeData, ['a6'])).toBe(false);
+    expect(isLeafPath(treeData, ['a6', 'a6-2'])).toBe(false);
   });
 
   it('mapTreeDataToGetDisplayValue ', () => {
