@@ -100,7 +100,6 @@ exports[`Rate Test css 1`] = `
     <input
       accept="*"
       className="c2"
-      id="upload"
       multiple={false}
       onChange={[Function]}
       type="file"

@@ -13,14 +13,13 @@ export function getRequestXHR(): Object {
     : new window.ActiveXobject('Microsoft.XMLHTTP');
 }
 
-export function getParamsData(dataObject: Object): Object {
-  const { data } = dataObject;
+export function getParamsData(data: Object, file: Object): Object {
   const newData: Object = new FormData();
+
   for (const i in data) {
     newData.append(i, data[i]);
   }
-  const { name, file } = dataObject;
-  newData.append(name, file);
+  newData.append('file', file);
   return newData;
 }
 
@@ -43,7 +42,7 @@ function addEventListener(
   target.addEventListener(event, func, useCapture);
 }
 
-function request(dataObject: Object) {
+export function request(dataObject: Object): Object {
   const { url } = dataObject;
   if (!url) {
     return;
@@ -52,16 +51,15 @@ function request(dataObject: Object) {
   const { withCredentials = false } = dataObject;
   xhr.withCredentials = withCredentials;
 
-  const { method = 'get', asynch = true, data } = dataObject;
-  const params = getParamsData(dataObject);
+  const { method = 'get', asynch = true, data, file } = dataObject;
+  const params = getParamsData(data, file);
 
   const { onProgress, onComplete } = dataObject;
+  xhr.upload.onprogress = onProgress;
   if (onProgress) addEventListener(xhr.upload, 'progress', onProgress, false);
   if (onComplete) addEventListener(xhr, 'load', onComplete, false);
-  // if (onProgress) xhr.upload.addEventListener('progress', onProgress, false);
-  // if (onComplete) xhr.addEventListener('load', onComplete, false);
 
-  if (method === 'get') {
+  if (method.toLocaleLowerCase() === 'get') {
     if (data) {
       xhr.open('get', url + '?' + getStringFromObject(params), asynch);
     } else {
@@ -69,23 +67,23 @@ function request(dataObject: Object) {
     }
     xhr.send();
   }
-  if (method === 'post') {
+  if (method.toLocaleLowerCase() === 'post') {
     xhr.open('post', url, asynch);
-
     const { headers } = dataObject;
     if (headers) {
       Object.keys(headers).forEach(k => {
         xhr.setRequestHeader(k, headers[k]);
       });
     } else {
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     }
-
     xhr.send(params);
   }
-  const { onSuccess, onFail, datetype = 'text' } = dataObject;
-  const { readyState, status } = xhr;
+
+  const { onFail, datetype = 'text', onSuccess } = dataObject;
+
   xhr.onreadystatechange = function() {
+    const { readyState, status } = xhr;
     if (readyState === 4) {
       if (status === 200) {
         if (datetype === 'text') {
@@ -97,13 +95,13 @@ function request(dataObject: Object) {
         if (datetype === 'json') {
           onSuccess && onSuccess(JSON.parse(xhr.responseText));
         }
-      }
-      if (xhr.status === 404) {
+      } else {
         onFail && onFail(xhr.responseText);
       }
     }
   };
+  console.log('------', xhr);
   return xhr;
 }
 
-export default request;
+// export default request;

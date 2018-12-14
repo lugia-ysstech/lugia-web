@@ -27,7 +27,8 @@ class UploadDemo extends React.Component<any, any> {
     const defaultProps = {
       listType: 'default',
       inputId: 'upload',
-      url: 'xxxx.test',
+      showFileList: true,
+      url: 'http://localhost:7001/upload',
       multiple: true,
       onChange: res => {
         console.log('cbk', res);
@@ -48,7 +49,7 @@ class UploadDemo extends React.Component<any, any> {
     const defaultProps1 = {
       listType: 'button',
       inputId: 'upload1',
-      url: 'xxxx.test',
+      url: 'http://localhost:7001/upload',
       multiple: true,
       showFileList: true,
       fileList: [
@@ -61,6 +62,7 @@ class UploadDemo extends React.Component<any, any> {
     const defaultProps2 = {
       listType: 'both',
       inputId: 'upload2',
+      url: 'http://localhost:7001/upload',
       showFileList: true,
       autoUpload: false,
     };
@@ -68,20 +70,25 @@ class UploadDemo extends React.Component<any, any> {
       listType: 'picture',
       inputId: 'upload3',
       size: 'large',
+      url: 'http://localhost:7001/upload',
       accept: 'image/*',
     };
     const defaultProps4 = {
       listType: 'picture',
       inputId: 'upload4',
+      url: 'http://localhost:7001/upload',
     };
     const defaultProps5 = {
       listType: 'picture',
       inputId: 'upload5',
       size: 'small',
+      url: 'http://localhost:7001/upload',
     };
     const defaultProps6 = {
       listType: 'area',
       inputId: 'upload6',
+      showFileList: true,
+      url: 'http://localhost:7001/upload',
     };
 
     return (

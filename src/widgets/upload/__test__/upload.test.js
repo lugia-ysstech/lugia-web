@@ -5,15 +5,26 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Upload, { getClassName, getIndexInArray, isKeyInArray } from '../upload';
+import Upload, { getClassName, getIndexInArray, isKeyInArray, getPercentValue } from '../upload';
 import { getRequestXHR, getStringFromObject, getParamsData } from '../request';
 import { getIconByType, getListIconType } from '../getelement';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
+import Widget from '../../consts/index';
 import 'jest-styled-components';
+import Icon from '../../icon';
+import styled from 'styled-components';
 const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
 Enzyme.configure({ adapter: new Adapter() });
+const LoadIcon = styled(Icon)`
+  &.loadIcon {
+    margin-right: 10px;
+  }
+`;
+const getIcon = (status: string): React.Node | null => {
+  return status ? <LoadIcon iconClass={status} /> : null;
+};
 
 describe('Rate Test', () => {
   const target = mount(<Upload url={'xxxx.test'} />);
@@ -59,6 +70,17 @@ describe('Rate Test', () => {
   checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'ABC', false);
   checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'BMP', true);
 
+  function checkGetPercentValue(current: ?number, total: ?number, expectation: number) {
+    it('Function getPercentValue ', () => {
+      const res = getPercentValue(current, total);
+      expect(res).toEqual(expectation);
+    });
+  }
+  checkGetPercentValue(2345, 3455, 67);
+  checkGetPercentValue(null, 3455, 0);
+  checkGetPercentValue(2345, undefined, 0);
+  checkGetPercentValue(3488, 3455, 100);
+
   function checkGetListIconType(fileName: ?string, expectation: string) {
     it('Function getListIconType ', () => {
       const res = getListIconType(fileName);
@@ -95,7 +117,7 @@ describe('Rate Test', () => {
 
   function checkGetParamsData(data: Object) {
     it('Function getParamsData ', () => {
-      const res = getParamsData(data);
+      const res = getParamsData(data, {});
       expect(res instanceof FormData).toEqual(true);
     });
   }
@@ -105,17 +127,22 @@ describe('Rate Test', () => {
   function checkGetIconByType(status: string, expectation: boolean | string, type?: number) {
     it('Function GetIconByType ', () => {
       const res = getIconByType(status, type);
-      if (type === 1 && status === 'default') {
+      if (!status) {
+        expect(res).toBe(expectation);
+      } else if (type === 1 && status === 'default') {
         expect(res).toEqual(expectation);
       } else {
-        expect(res instanceof Object).toEqual(expectation);
+        const { iconClass } = res.props;
+        expect(iconClass).toBe(expectation);
       }
     });
   }
   checkGetIconByType('default', '上传', 1);
-  checkGetIconByType('default', true);
-  checkGetIconByType('loading', true);
-  checkGetIconByType('done', true);
+  checkGetIconByType('default', 'lugia-icon-financial_upload right');
+  checkGetIconByType('loading', 'lugia-icon-financial_loading_o loadIcon');
+  checkGetIconByType(null, undefined);
+  checkGetIconByType(undefined, undefined);
+  checkGetIconByType(undefined, undefined, 1);
 
   function setStateValue(props: Object, expectation: Object) {
     it('Function setStateValue ', () => {
@@ -175,7 +202,7 @@ describe('Rate Test', () => {
     });
   }
   uploadProgress({ currentTarget: {} }, 'loading', [
-    { id: 1, name: '文件11111.jpg', status: 'loading', percent: 20 },
+    { id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
   ]);
 
   function uploadSuccess(props: Object, expectation: string, expectation2: Array<Object>) {

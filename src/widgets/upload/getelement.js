@@ -104,6 +104,7 @@ const Button = styled.span`
     border-radius: 4px;
   }
 `;
+
 const Ul = styled.ul`
   width: 100%;
 `;
@@ -209,11 +210,15 @@ const PictureView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   ${getPictureViewSizeCSS}
   & i {
     font-size: 30px;
     color: #999;
     ${getPictureViewIconSizeCSS}
+  }
+  & img {
+    width: 100%;
   }
 `;
 
@@ -243,13 +248,6 @@ const AreaTextBlue = styled.span`
   padding: 0 4px;
   border-bottom: 1px solid #684fff;
 `;
-const getPreviewInfo = (file: any) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onloadend = function(e) {
-    return reader.result;
-  };
-};
 
 export const getListIconType = (fileName: ?string): string => {
   if (!fileName) return 'file';
@@ -321,8 +319,7 @@ const getFileList = (data: Array<Object>) => {
       {data.map(item => {
         return (
           <Li className={item.status}>
-            {' '}
-            {getIconByType(getListIconType(item.name))} <span>{item.name}</span>{' '}
+            {getIconByType(getListIconType(item.name))} <span>{item.name}</span>
             {getIconByType('li-' + item.status)} {getProgress(item)}{' '}
           </Li>
         );
@@ -339,6 +336,7 @@ const getElement = (that: Object): ?Object => {
   const { size, inputId, defaultText } = props;
   const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
   if (listType === 'default') {
+    const { dropArea } = that;
     return (
       <React.Fragment>
         <FileInput
@@ -347,14 +345,14 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <InputContent className={classNameStatus} onClick={handleClickToUpload}>
+        <InputContent className={classNameStatus} onClick={handleClickToUpload} innerRef={dropArea}>
           {getIconByType(classNameStatus)} {defaultText}
         </InputContent>
       </React.Fragment>
     );
   }
   if (listType === 'both') {
-    const { handleClickToSubmit } = that;
+    const { handleClickToSubmit, dropArea } = that;
     return (
       <React.Fragment>
         <FileInput
@@ -364,7 +362,11 @@ const getElement = (that: Object): ?Object => {
           getRegisterInput={getRegisterInput}
         />
 
-        <InputContent className={`${classNameStatus} hasBtn`} onClick={handleClickToUpload}>
+        <InputContent
+          className={`${classNameStatus} hasBtn`}
+          onClick={handleClickToUpload}
+          innerRef={dropArea}
+        >
           {defaultText}
         </InputContent>
 
@@ -388,23 +390,24 @@ const getElement = (that: Object): ?Object => {
     );
   }
   if (listType === 'picture') {
-    const { fileList } = props;
+    const { previewUrl } = props;
     return (
       <React.Fragment>
         <FileInput
-          id={inputId}
+          // id={inputId}
           {...props}
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <PictureView size={size} onClick={handleClickToUpload}>
-          {' '}
-          {getIconByType('add')} <img src={fileList[0].previewUrl} alt="" />{' '}
+        <PictureView id={inputId} size={size} onClick={handleClickToUpload}>
+          {/*{' '}*/}
+          {!previewUrl ? getIconByType('add') : <img src={previewUrl} alt="" />}
         </PictureView>
       </React.Fragment>
     );
   }
   if (listType === 'area') {
+    const { dropArea } = that;
     return (
       <React.Fragment>
         <FileInput
@@ -413,7 +416,7 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <AreaView size={'bigger'} onClick={handleClickToUpload}>
+        <AreaView size={'bigger'} innerRef={dropArea} onClick={handleClickToUpload}>
           {getIconByType('uploadcloud')}
           <AreaText>
             请将文件拖到此处,或<AreaTextBlue>点击上传</AreaTextBlue>
@@ -427,6 +430,7 @@ const getElement = (that: Object): ?Object => {
 type defProps = {
   classNameStatus?: string,
   defaultText: string,
+  fileName?: string,
 };
 type stateProps = {
   status: string,
@@ -436,9 +440,48 @@ type stateProps = {
 };
 class GetElement extends React.Component<any, stateProps> {
   static defaultProps = {};
-  componentDidMount() {}
+  dropArea: any;
+  constructor(props: Object) {
+    super(props);
+    this.dropArea = React.createRef();
+  }
+
+  componentDidMount() {
+    const { dropArea, getChangeInfo } = this;
+    if (!dropArea.current) return;
+    const dragDrop = dropArea.current;
+    dragDrop.addEventListener(
+      'dragover',
+      function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+      },
+      false
+    );
+    dragDrop.addEventListener(
+      'dragleave',
+      function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+      },
+      false
+    );
+    dragDrop.addEventListener(
+      'drop',
+      function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        const files = e.target.files || e.dataTransfer.files;
+        getChangeInfo('drag', files);
+      },
+      false
+    );
+  }
+
   static getDerivedStateFromProps(defProps: defProps, stateProps: stateProps) {
     const { classNameStatus, defaultText } = defProps;
+    console.log(defaultText);
     if (!stateProps) {
       return {
         classNameStatus,
@@ -451,14 +494,13 @@ class GetElement extends React.Component<any, stateProps> {
     };
   }
   getRegisterInput = (input: Object) => {
-    console.log('++++');
     this.setState({
       inputElement: input.current,
     });
   };
-  getChangeInfo = (e: Object) => {
+  getChangeInfo = (types: string, e: Object) => {
     const { setChoosedFile } = this.props;
-    setChoosedFile && setChoosedFile(e);
+    setChoosedFile && setChoosedFile(types, e);
   };
   render() {
     const { showFileList, fileList, getTheme } = this.props;
