@@ -126,7 +126,7 @@ export default class extends React.Component<any, any> {
                 handleIsInMenu={this.handleIsInMenu}
                 data={hasChildrenData}
                 offsetY={0}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.onClick}
               />
             </Theme>
@@ -142,7 +142,7 @@ export default class extends React.Component<any, any> {
                 mutliple={false}
                 data={items}
                 checkedCSS={'checkbox'}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
               />
             </Theme>
@@ -155,7 +155,7 @@ export default class extends React.Component<any, any> {
                 mutliple={true}
                 data={items}
                 checkedCSS={'checkbox'}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
               />
             </Theme>
@@ -170,7 +170,7 @@ export default class extends React.Component<any, any> {
                 mutliple={false}
                 data={items}
                 checkedCSS={'background'}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
               />
             </Theme>
@@ -183,7 +183,7 @@ export default class extends React.Component<any, any> {
                 mutliple={true}
                 data={items}
                 checkedCSS={'background'}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
               />
             </Theme>
@@ -198,7 +198,7 @@ export default class extends React.Component<any, any> {
                 mutliple={false}
                 data={items}
                 checkedCSS={'mark'}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
               />
             </Theme>
@@ -211,7 +211,7 @@ export default class extends React.Component<any, any> {
                 mutliple={false}
                 data={items}
                 checkedCSS={'mark'}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
               />
             </Theme>
@@ -226,7 +226,7 @@ export default class extends React.Component<any, any> {
                 mutliple={false}
                 data={items}
                 checkedCSS={'none'}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
               />
             </Theme>
@@ -239,7 +239,7 @@ export default class extends React.Component<any, any> {
                 mutliple={true}
                 data={items}
                 checkedCSS={'none'}
-                onMouseEnter={this.onMouseEnter}
+                onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
               />
             </Theme>
@@ -266,7 +266,7 @@ export default class extends React.Component<any, any> {
     this.setState({ selectedKeys, expandedPath: selectedKeys });
   };
 
-  onMouseEnter = (event, expandedPath, item) => {
+  onExpandPathChange = expandedPath => {
     this.setState({ expandedPath });
   };
 

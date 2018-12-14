@@ -97,6 +97,15 @@ export function getTargetOrDefaultTarget(condition: boolean, target: any, defaul
   return condition ? target : defaultTarget;
 }
 
+export function getTargetOrDefaultTargetLazy(
+  condition: boolean,
+  target: Function,
+  defaultTarget: Function
+) {
+  const matchFunc = getTargetOrDefaultTarget(condition, target, defaultTarget);
+  return matchFunc();
+}
+
 export function getExpandedPath(props: MenuProps, state: ?MenuState): Array<string> {
   const { expandedPath = [] } = props;
   if ('expandedPath' in props) {
@@ -167,10 +176,10 @@ export function getExpandedData(props: MenuProps, state: MenuState) {
   const { expandedData = [], level } = props;
 
   const rootExpandedPath = getExpandedPathFromPropsOrState(props, state);
-  return getTargetOrDefaultTarget(
+  return getTargetOrDefaultTargetLazy(
     isRoot(level),
-    getExpandDataOrSelectData(props, rootExpandedPath),
-    expandedData
+    () => getExpandDataOrSelectData(props, rootExpandedPath),
+    () => expandedData
   );
 }
 
@@ -181,10 +190,10 @@ export function getChildData(props: MenuProps, state: MenuState) {
   if (rootExpandedPath.length === 0) {
     return EmptyData;
   }
-  const activeAllChildData = getTargetOrDefaultTarget(
+  const activeAllChildData = getTargetOrDefaultTargetLazy(
     isRoot(level),
-    getInitAllChildData(props, state),
-    allChildData
+    () => getInitAllChildData(props, state),
+    () => allChildData
   );
   return activeAllChildData[level];
 }
@@ -277,13 +286,10 @@ export function recurTreeData(
         newObj.path = path.join('/');
       }
 
-      if (!children || children.length === 0) {
-        newObj.isLeaf = true;
-        outTreeRowData.push(newObj);
-        onAdd && onAdd(newObj);
-      } else {
-        outTreeRowData.push(newObj);
-        onAdd && onAdd(newObj);
+      const isLeaf = (newObj.isLeaf = !children || children.length === 0);
+      outTreeRowData.push(newObj);
+      onAdd && onAdd(newObj);
+      if (!isLeaf) {
         recurTreeData(children, outTreeRowData, { parentKey: item.value, parentPath: path }, opt);
       }
     });
