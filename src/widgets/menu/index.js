@@ -1,6 +1,6 @@
 /**
  * 菜单
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
@@ -298,7 +298,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     item: Object,
     indexOffsetY: number
   ) => {
-    console.log('isSelect', isSelect);
     const { key, props } = child;
     const { disabled } = props;
     return React.cloneElement(
@@ -316,7 +315,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
   ): MenuItemProps {
     const { mutliple, checkbox } = this.props;
     const eventConfig = this.onMenuItemEventHandler(key, item, disabled, indexOffsetY);
-    console.log('isSelect(key)', item, isSelect(key));
     if (!key || !isSelect(key)) {
       return { mutliple, ...eventConfig, checked: false, checkbox, disabled };
     }
@@ -372,7 +370,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         } else {
           newSelectedKeys = this.getSelectedKeysOrExpandedPath(key, separator);
 
-          this.IsSetExpandedPath('click', selectedKeys);
+          this.IsSetExpandedPath('click', newSelectedKeys);
         }
         const setSelectedKeys = this.getSetSelectedKeys();
         setSelectedKeys(newSelectedKeys);
@@ -415,7 +413,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     if (notSetExpandedPathCondition) {
       return;
     }
-
     const setExpandedPath = this.getSetExpandedPath();
     setExpandedPath(expandedPath);
   }

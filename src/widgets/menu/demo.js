@@ -1,8 +1,7 @@
 /**
  *
- * create by ligx
+ * create by szfeng
  *
- * @flow
  */
 import * as React from 'react';
 import Menu from './index';
