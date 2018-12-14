@@ -16,8 +16,7 @@ import { px2emcss } from '../css/units';
 import type { DirectionType } from '../css/tooltip';
 import ThemeProvider from '../theme-provider';
 import { ObjectUtils } from '@lugia/type-utils';
-import { getStateFromProps, processOnVisibleChange } from '../popover/popover';
-import type { PopoverProps, PopoverState } from '../css/popover';
+import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 
 const em = px2emcss(1.2);
 
@@ -32,7 +31,7 @@ type PopconfirmProps = {
   placement: DirectionType,
   action: 'hover' | 'click' | 'focus',
   children: React.Node,
-  visible?: boolean,
+  visible: boolean,
   defaultVisible?: boolean,
   icon: React.Node,
   cancelText: string,
@@ -93,6 +92,7 @@ const Confirm = BaseButton.extend`
 `;
 
 class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
+  static displayName = Widget.Popconfirm;
   static defaultProps = {
     defaultVisible: false,
   };
@@ -102,7 +102,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
     super(props);
   }
 
-  static getDerivedStateFromProps(props: PopoverProps, state: PopoverState) {
+  static getDerivedStateFromProps(props: PopconfirmProps, state: PopconfirmState) {
     return getStateFromProps(props, state);
   }
 

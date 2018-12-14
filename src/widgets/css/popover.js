@@ -18,7 +18,7 @@ export type PopoverProps = {
   placement: DirectionType,
   action: 'hover' | 'click' | 'focus',
   children: React.Node,
-  visible?: boolean,
+  visible: boolean,
   defaultVisible: boolean,
   onVisibleChange: Function,
   clear?: React.Node,

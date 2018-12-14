@@ -84,13 +84,46 @@ const Message = styled.div`
   border-radius: ${RadiusSize};
   box-shadow: 0 ${em(2)} ${em(8)} rgba(0, 0, 0, 0.15);
 `;
+export function hasVisibleInProps(props: TooltipProps) {
+  return 'visible' in props;
+}
+
+export function processOnVisibleChange(visible: boolean) {
+  const { onVisibleChange } = this.props;
+  const isHasVisible = hasVisibleInProps(this.props);
+  const theVisible = isHasVisible ? this.props.visible : visible;
+  if (!isHasVisible) {
+    this.setState({ visible: theVisible });
+  }
+  onVisibleChange && onVisibleChange(visible);
+}
+
+export function getStateFromProps(props: TooltipProps, state: TooltipState) {
+  const isHasVisibleProps = hasVisibleInProps(props);
+  const hasDefaultVisibleInprops = 'defaultVisible' in props;
+  if (!state) {
+    const theVisible = isHasVisibleProps
+      ? props.visible
+      : hasDefaultVisibleInprops
+      ? props.defaultVisible
+      : false;
+    return { visible: !!theVisible };
+  }
+  if (isHasVisibleProps) {
+    return { visible: !!props.visible };
+  }
+  return { visible: state.visible };
+}
 
 class Tooltip extends React.Component<TooltipProps, TooltipState> {
   static displayName = Widget.Tooltip;
+
   static defaultProps = {
     getTheme() {
       return {};
     },
+    defaultVisible: false,
+    action: 'click',
   };
   trigger: Object;
   static getDerivedStateFromProps(props: TooltipProps, state: TooltipState) {
@@ -101,8 +134,6 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         ? props.visible
         : hasDefaultVisibleInprops
         ? props.defaultVisible
-        : state.visible
-        ? state.visible
         : false;
       return { visible: theVisible };
     }
@@ -112,7 +143,8 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     return { visible: state.visible };
   }
   render() {
-    const { placement, action, title, popArrowType, getTheme, children, visible } = this.props;
+    const { placement, action, title, popArrowType, getTheme, children } = this.props;
+    const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
     return (
@@ -140,11 +172,6 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       </ToolTrigger>
     );
   }
-  onVisibleChange = visible => {
-    const { onVisibleChange } = this.props;
-    this.setState({ visible });
-    onVisibleChange && onVisibleChange(visible);
-  };
   getArrow(direction) {
     const { placement, popArrowType } = this.props;
     const { getTheme } = this.props;
@@ -165,6 +192,9 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     if (placement.startsWith(Right)) return Left;
     if (placement.startsWith(Down)) return Up;
     if (placement.startsWith(Up)) return Down;
+  };
+  onVisibleChange = (visible: boolean) => {
+    processOnVisibleChange.call(this, visible);
   };
 }
 
