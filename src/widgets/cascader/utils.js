@@ -125,7 +125,7 @@ export function getInitInputValue(props: CascaderProps) {
 }
 
 export function getInputValue(props: CascaderProps, state: CascaderState) {
-  const { showAllLevels, separator = '/', data = [] } = props;
+  const { showAllLevels, separator = '|', data = [] } = props;
   const { treeData } = state;
   const value = getValue(props, state);
   const filterValueData = getFilterValueData(data, value, separator);
