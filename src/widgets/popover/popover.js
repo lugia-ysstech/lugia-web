@@ -15,7 +15,7 @@ import { getIconColor } from '../css/popover';
 import { px2emcss } from '../css/units';
 import ThemeProvider from '../theme-provider';
 import { ObjectUtils } from '@lugia/type-utils';
-
+import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 const em = px2emcss(1.2);
 
 const ClearContainer = styled.div`
@@ -55,38 +55,8 @@ const TooltipWrapper = styled(Tooltip)`
   position: relative;
 `;
 
-export function hasVisibleInProps(props: PopoverProps) {
-  return 'visible' in props;
-}
-
-export function getStateFromProps(props: PopoverProps, state: PopoverState): PopoverState {
-  const isHasVisibleProps = hasVisibleInProps(props);
-  const hasDefaultVisibleInprops = 'defaultVisible' in props;
-  if (!state) {
-    const theVisible = isHasVisibleProps
-      ? props.visible
-      : hasDefaultVisibleInprops
-      ? props.defaultVisible
-      : false;
-    return { visible: !!theVisible };
-  }
-  if (isHasVisibleProps) {
-    return { visible: !!props.visible };
-  }
-  return { visible: state.visible };
-}
-
-export function processOnVisibleChange(visible: boolean) {
-  const { onVisibleChange } = this.props;
-  const isHasVisible = hasVisibleInProps(this.props);
-  const theVisible = isHasVisible ? this.props.visible : visible;
-  if (!isHasVisible) {
-    this.setState({ visible: theVisible });
-  }
-  onVisibleChange && onVisibleChange(visible);
-}
-
 class Popover extends React.Component<PopoverProps, PopoverState> {
+  static displayName = Widget.Popover;
   static defaultProps = {
     defaultVisible: false,
     action: ['click'],
