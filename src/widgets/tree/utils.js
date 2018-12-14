@@ -69,6 +69,7 @@ class TreeUtils {
   notInTree: { [key: string]: string };
   inTree: { [key: string]: boolean };
   displayField: string;
+  valueField: string;
   igronSelectField: ?string;
   limitCount: ?number;
   splitQuery: ?string;
@@ -79,6 +80,7 @@ class TreeUtils {
       expandAll,
       onlySelectLeaf = false,
       displayField = 'title',
+      valueField = 'key',
       igronSelectField,
       limitCount,
       splitQuery,
@@ -96,6 +98,7 @@ class TreeUtils {
     this.catchPathArray = {};
     this.onlySelectLeaf = onlySelectLeaf;
     this.displayField = displayField;
+    this.valueField = valueField;
     this.notInTree = {};
     this.inTree = {};
     this.igronSelectField = igronSelectField;
@@ -110,7 +113,7 @@ class TreeUtils {
   }
 
   isRightTreeRowData(data: Object): string {
-    const { key, [this.displayField]: title, pid, path } = data;
+    const { [this.valueField]: key, [this.displayField]: title, pid, path } = data;
 
     const required = notEmpty(key) && notEmpty(title);
     const existPid = notEmpty(pid);
@@ -149,18 +152,18 @@ class TreeUtils {
   isRightLevel(datas: Array<Object>): Array<string> {
     const result = [];
     const pidIsNotExist = pid => `找不到key:${pid}的结点.`;
-    const levelIsError = ({ key, pid }) =>
+    const levelIsError = ({ [this.valueField]: key, pid }) =>
       `${key}结点的层级位置错误，必须处于父节点【${pid}】的范围内!`;
 
-    function eachRowDatas(keys: Object = {}) {
+    const eachRowDatas = (keys: Object = {}) => {
       return (callback = (keys: Object, data: Object) => {}) => {
         datas.forEach((data: Object) => {
-          const { key } = data;
+          const { [this.valueField]: key } = data;
           keys[key] = data;
           callback && callback(keys, data);
         });
       };
-    }
+    };
 
     const keys = {},
       pids = [];
@@ -184,28 +187,28 @@ class TreeUtils {
     const key2PidIndex = {};
     let index = 0;
     eachRowDatas()((keys: Object, data: Object) => {
-      const { pid, key } = data;
+      const { pid, [this.valueField]: key } = data;
       key2PidIndex[key] = index++;
       if (notEmpty(pid) && !keys[pid]) {
         result.push(levelIsError(data));
       }
     });
 
-    const fetchPidPath = function(pid) {
+    const fetchPidPath = pid => {
       const pidPath = [];
       let node = keys[pid];
       while (node) {
-        const { key, pid } = node;
+        const { [this.valueField]: key, pid } = node;
         pidPath.push(key);
         node = keys[pid];
       }
       return pidPath.reverse();
     };
 
-    const pathIsError = ({ key }) => `${key}结点path信息错误!`;
+    const pathIsError = ({ [this.valueField]: key }) => `${key}结点path信息错误!`;
     const isPathError = {};
     datas.forEach((data: Object) => {
-      const { pid, path, key } = data;
+      const { pid, path, [this.valueField]: key } = data;
       if (pid) {
         const pidPathArray = fetchPidPath(pid);
         const pidPath = pidPathArray.join(Seperator);
@@ -224,13 +227,13 @@ class TreeUtils {
         const pathLen = pathIndex.length;
         if (pathLen > 0) {
           const start = pathIndex[pathLen - 1];
-          const { path, key } = datas[start];
+          const { path, [this.valueField]: key } = datas[start];
           const prePath = (path ? `${path}/` : '') + key;
           for (let i = start + 1; i < index; i++) {
             const node = datas[i];
             const { path } = node;
             if (path) {
-              if (!path.startsWith(prePath) && !isPathError[data.key]) {
+              if (!path.startsWith(prePath) && !isPathError[data[this.valueField]]) {
                 result.push(levelIsError(data));
                 break;
               }
@@ -249,7 +252,7 @@ class TreeUtils {
       const node = {};
       rowData.forEach(data => {
         const row = { ...data };
-        const { pid, key } = row;
+        const { pid, [this.valueField]: key } = row;
         node[key] = row;
         if (pid) {
           const parent = node[pid];
@@ -335,7 +338,7 @@ class TreeUtils {
       return [];
     }
     return nodes.map((node: RowData) => {
-      const { key } = node;
+      const { [this.valueField]: key } = node;
       return key;
     });
   }
@@ -387,7 +390,7 @@ class TreeUtils {
     for (let i = begin + 1; i < end; i++) {
       let founded = false;
       const row = nodes[i];
-      const { pid, path, key } = row;
+      const { pid, path, [this.valueField]: key } = row;
       const isChildren = pid === nodeId;
       if (isChildren) {
         children++;
@@ -427,7 +430,7 @@ class TreeUtils {
       const begats = nodes.length;
       for (let index = 0; index < begats; index++) {
         const row = nodes[index];
-        const { pid, key } = row;
+        const { pid, [this.valueField]: key } = row;
         if (!pid) {
           childrenIdx.push(index);
         }
@@ -611,7 +614,7 @@ class TreeUtils {
     const len = rows.length - 1;
     for (let i = len; i >= 0; i--) {
       const row: RowData = rows[i];
-      const { key, path } = row;
+      const { [this.valueField]: key, path } = row;
       if (matchCondition(row)) {
         if (
           needPushCondition(row, need) &&
@@ -640,7 +643,7 @@ class TreeUtils {
     }
     const rows = this.orignalData;
     const isMatch = (row: Object) => {
-      const { key } = row;
+      const { [this.valueField]: key } = row;
       if (blackList) {
         return !blackList.includes(key);
       } else if (whiteList) {
@@ -649,7 +652,7 @@ class TreeUtils {
     };
 
     const needPushCondition = (row, need) => {
-      const { key, isLeaf } = row;
+      const { [this.valueField]: key, isLeaf } = row;
       return isLeaf || need[key] || !blackList;
     };
     const rowSet = this.getRowSet(rows, isMatch, needPushCondition);
@@ -748,7 +751,7 @@ class TreeUtils {
     for (let i = 0; i < totalLen; i++) {
       const row = datas[i];
       result.push(row);
-      const { key } = row;
+      const { [this.valueField]: key } = row;
       const { childrenIdx = [], nowVisible = 0, children = 0, begats = 0 } = fetchNodeInfo(key);
       if (nowVisible === 0) {
         i += begats;
@@ -811,7 +814,7 @@ class TreeUtils {
     selectInfo: NodeId2SelectInfo,
     id2ExtendInfo: NodeId2ExtendInfo
   ): void {
-    const { key } = row;
+    const { [this.valueField]: key } = row;
     const { checked } = selectInfo;
     if (checked[key] === true) {
       return;
@@ -979,7 +982,7 @@ class TreeUtils {
 
     for (let i = targetNode; i <= range && i < len; i++) {
       const row = datas[i];
-      const { key } = row;
+      const { [this.valueField]: key } = row;
       switch (type) {
         case TreeUtils.Selected: {
           const extendInfo = this.fetchNodeExtendInfo(key, datas, id2ExtendInfo);
@@ -1129,7 +1132,7 @@ class TreeUtils {
       if (rows) {
         const rowLen = rows.length;
         for (let j = 0; j < rowLen; j++) {
-          const { key } = rows[j];
+          const { [this.valueField]: key } = rows[j];
           this.fetchNodeExtendInfo(key, this.treeData, id2ExtendInfo);
         }
       }
@@ -1155,7 +1158,7 @@ class TreeUtils {
       // 选择子节点
       for (let i = 0; i < rowLen; i++) {
         const targetRow = rows[i];
-        const { key } = targetRow;
+        const { [this.valueField]: key } = targetRow;
         checked[key] = true;
         const { begats = 0 } = this.fetchNodeExtendInfo(key, data, id2ExtendInfo);
         totalHalfCount += halfchecked[key] = begats + 1;
@@ -1177,7 +1180,7 @@ class TreeUtils {
     }
     const rootChildNodeLen = rootChildNode.length;
     for (let i = 0; i < rootChildNodeLen; i++) {
-      const { key } = rootChildNode[i];
+      const { [this.valueField]: key } = rootChildNode[i];
       checked[key] = true;
     }
     return { value: valueObject, halfchecked, checked };

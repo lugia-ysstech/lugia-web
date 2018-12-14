@@ -126,8 +126,8 @@ class ScrollerTree extends React.Component<any, any> {
   loopNode = (data: Array<RowData>) => {
     const { igronSelectField } = this.props;
     return data.map(item => {
-      const { selectable, displayField } = this.props;
-      const { children, key, [displayField]: title, isLeaf } = item;
+      const { selectable, displayField, valueField } = this.props;
+      const { children, [valueField]: key, [displayField]: title, isLeaf } = item;
       const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (

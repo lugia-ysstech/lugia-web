@@ -149,7 +149,7 @@ export function letExpandpathOrSelectedKeysToArray(
   props: MenuProps,
   target: string[] = []
 ): string[] {
-  if (target.length === 0) {
+  if (!target || target.length === 0) {
     return [];
   }
   const { separator, data } = props;
@@ -239,45 +239,51 @@ export function mapGetAllChildData(data: Object[], expandedData: string[], index
 
 export function getTreeData(props: Object) {
   const newData = [];
-  const { data } = props;
+  const { data, valueField = 'value', displayField = 'text' } = props;
   if (data && data.length > 0) {
-    forData(data, newData);
+    recurTreeData(data, newData, { displayField, valueField });
   }
   return newData;
 }
 
-export function forData(
-  data: Object[],
-  target: Object[],
-  parentKey?: string,
-  parentPath?: string[] = []
+export function recurTreeData(
+  inTreeChildData: Object[],
+  outTreeRowData: Object[],
+  recursion: {
+    parentKey?: string,
+    parentPath?: string[],
+  },
+  opt?: { onAdd?: Function, displayField?: string, valueField?: string } = {}
 ) {
-  data &&
-    data.forEach((item, index) => {
-      const { children } = item;
+  const { parentKey, parentPath = [] } = recursion;
+  const { displayField = 'text', valueField = 'value' } = opt;
+  const { onAdd } = opt;
+  inTreeChildData &&
+    inTreeChildData.forEach(item => {
+      const { children, [valueField]: value, [displayField]: text } = item;
       const newObj = {};
-      newObj.key = item.value;
-      newObj.title = item.text;
-      let pidArr;
+      newObj.pid = parentKey;
+      newObj[valueField] = value;
+      newObj[displayField] = text;
+      let path;
       if (!parentKey) {
-        newObj.pid = undefined;
-        newObj.path = undefined;
-        pidArr = [];
+        path = [];
       } else {
-        newObj.pid = parentKey;
         if (parentPath.indexOf(parentKey) === -1) {
           parentPath.push(parentKey);
         }
-        pidArr = [...parentPath];
-        newObj.path = pidArr.join('/');
+        path = [...parentPath];
+        newObj.path = path.join('/');
       }
 
       if (!children || children.length === 0) {
         newObj.isLeaf = true;
-        target.push(newObj);
+        outTreeRowData.push(newObj);
+        onAdd && onAdd(newObj);
       } else {
-        target.push(newObj);
-        forData(children, target, item.value, pidArr);
+        outTreeRowData.push(newObj);
+        onAdd && onAdd(newObj);
+        recurTreeData(children, outTreeRowData, { parentKey: item.value, parentPath: path }, opt);
       }
     });
 }

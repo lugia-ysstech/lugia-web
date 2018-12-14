@@ -6,7 +6,6 @@
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import styled from 'styled-components';
-import colorsFunc from '../css/stateColor';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -49,14 +48,8 @@ export type GroupState = {
   treeData: Object[],
   cancelItem: Object[],
   displayValue: string[],
-  leafKeys: string[],
+  enableKeys: string[],
 };
-type CSSProps = {
-  isWrap?: boolean,
-  theme: ThemeType,
-};
-const { borderColor, blackColor, lightGreyColor } = colorsFunc();
-
 export const TransFerWrap = styled.div`
   box-sizing: border-box;
   font-size: ${FontSize}rem;

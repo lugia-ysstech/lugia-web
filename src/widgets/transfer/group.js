@@ -15,7 +15,7 @@ import type { GroupProps, GroupState } from '../css/transfer-group';
 import { DisplayField, ValueField } from '../consts/props';
 import {
   getTruthValue,
-  getSourceDataAndTargetData,
+  getPanelSourceDataAndTargetData,
   splitSelectKeys,
   getTreeData,
   getCancelItem,
@@ -57,18 +57,18 @@ export default ThemeProvider(
         displayValue: theDisplayValue,
       };
       if (type === 'panel') {
-        const utilMapData = getSourceDataAndTargetData(data, theTargetKeys, valueField);
+        const utilMapData = getPanelSourceDataAndTargetData(data, theTargetKeys, valueField);
         const {
           sourceData,
           targetData,
           sourceKeys,
           targetCheckKeys,
           sourceCheckKeys,
-          mapData: mapDatas,
+          mapData: mapDataPanel,
         } = utilMapData;
         const cancelItem = getCancelItem(
           theTargetKeys,
-          mapDatas,
+          mapDataPanel,
           { valueField, displayField },
           theDisplayValue
         );
@@ -78,32 +78,35 @@ export default ThemeProvider(
           sourceKeys,
           sourceData,
           targetData,
-          targetCheckKeys,
           sourceCheckKeys,
-          mapData: mapDatas,
+          targetCheckKeys,
+          mapData: mapDataPanel,
         };
       }
 
-      const obj = { target: [], mapData: [], leafKeys: [] };
-      const { target: treeData, mapData: treeMapData, leafKeys } = getTreeData(data, obj);
+      const { target: treeData, mapData: treeMapData, enableKeys } = getTreeData(data, {
+        displayField,
+        valueField,
+      });
       const cancelItem = getCancelItem(
         theTargetKeys,
         treeMapData,
         { valueField, displayField },
         theDisplayValue
       );
-      const { targetCanCheckKeys, sourceCanCheckKeys } = getCanCheckKeys(leafKeys, theTargetKeys);
+      const { sourceCanCheckKeys, targetCanCheckKeys } = getCanCheckKeys(enableKeys, theTargetKeys);
       return {
         ...commonState,
         cancelItem,
-        leafKeys,
-        targetCheckKeys: targetCanCheckKeys,
+        enableKeys,
         sourceCheckKeys: sourceCanCheckKeys,
+        targetCheckKeys: targetCanCheckKeys,
         mapData: treeMapData,
         sourceData: treeData,
         targetData: treeData,
       };
     }
+
     shouldComponentUpdate(nextProps: GroupProps, nextState: GroupState) {
       const { type = 'panel' } = nextProps;
       if (type === 'panel') {
@@ -140,7 +143,7 @@ export default ThemeProvider(
         sourceSearchData,
         targetSearchData,
         cancelItem,
-        leafKeys,
+        enableKeys,
       } = this.state;
       const theSourceData = this.sourceInputValue ? sourceSearchData : sourceData;
       const theTargetData = this.targetInputValue ? targetSearchData : targetData;
@@ -157,7 +160,7 @@ export default ThemeProvider(
             selectedKeys={[...sourceSelectedKeys]}
             showSearch={showSearch}
             onCheckAll={this.checkAllForLeft}
-            canCheckKeys={sourceCheckKeys || leafKeys}
+            canCheckKeys={sourceCheckKeys || enableKeys}
             onSearch={this.searchCallbackForLeft}
             title="列表A"
             // 左侧 黑单

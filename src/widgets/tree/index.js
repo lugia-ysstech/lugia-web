@@ -38,6 +38,7 @@ type TreeProps = {
   expandAll: boolean,
   onlySelectLeaf: boolean,
   displayField: string,
+  valueField: string,
   igronSelectField?: string,
   value: ?Array<string>,
   displayValue: ?Array<string>,
@@ -85,6 +86,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     mutliple: false,
     defaultValue: '',
     displayField: 'title',
+    valueField: 'key',
     showIcon: false,
     query: '',
     current: -1,
@@ -375,7 +377,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   createUtils(
-    { data, onlySelectLeaf, expandAll, displayField, limitCount, splitQuery, igronSelectField },
+    {
+      data,
+      onlySelectLeaf,
+      expandAll,
+      displayField,
+      valueField,
+      limitCount,
+      splitQuery,
+      igronSelectField,
+    },
     realyExpandAll: boolean = expandAll
   ): ?TreeUtils {
     if (!data) {
@@ -385,6 +396,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       expandAll: realyExpandAll,
       onlySelectLeaf,
       displayField,
+      valueField,
       limitCount,
       splitQuery,
       igronSelectField,
@@ -414,6 +426,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       blackList,
       whiteList,
       searchType = 'include',
+      valueField,
     } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;
@@ -431,7 +444,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const highlight = [];
     const row = data[current];
     if (row) {
-      const { key } = row;
+      const { [valueField]: key } = row;
       highlight.push(key + '');
     }
     return (
