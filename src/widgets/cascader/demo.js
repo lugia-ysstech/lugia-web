@@ -75,7 +75,7 @@ export default class extends React.Component<any, any> {
         <Theme config={{ [Widget.Cascader]: { width: 300, menuWidth: 120 } }}>
           <Cascader
             data={data}
-            // action={'hover'}
+            action={'hover'}
             value={selectedKeys}
             // value={null}
             defaultValue={['a6/a6-2/a6-2-1/suba1/suba2']}

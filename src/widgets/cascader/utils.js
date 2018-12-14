@@ -3,7 +3,8 @@
  *
  * @flow
  */
-import { mapDataAndGetSelectedKeys } from '../menu/utils';
+import { recurDataAndGetSelectedKeys } from '../menu/utils';
+
 type CascaderProps = {
   getTheme: Function,
   offsetY: number,
@@ -49,9 +50,7 @@ export function getLastIndex(array: Array<any>): number {
 }
 
 export function getInitExpandedPath(props: CascaderProps) {
-  const initExpanded = getValue(props, null);
-
-  return initExpanded;
+  return getValue(props, null);
 }
 
 export function letStringToArray(value: string[]) {
@@ -67,7 +66,6 @@ export function getValue(props: CascaderProps, state: CascaderState | null): str
   if (!state) {
     return isHasDefaultValue(props) && defaultValue ? letStringToArray(defaultValue) : [];
   }
-
   return state.value;
 }
 
@@ -93,29 +91,39 @@ export function getLastLevelValue(valueData: string[]): any {
   return valueData[lastIndex];
 }
 
-export function mapTreeDataToGetLeaf(treeData: Array<Object>, filterValueData: string[]): boolean {
-  const key = getLastLevelValue(filterValueData);
+export function isLeafPath(treeData: Array<Object>, pathArray: string[]): boolean {
+  if (!treeData) {
+    return false;
+  }
+  const key = getLastLevelValue(pathArray);
   if (!key) {
     return false;
   }
-  let isLeaf;
-  treeData &&
-    treeData.forEach(item => {
-      if (item.value === key) {
-        isLeaf = item.isLeaf;
-      }
-    });
-  return !!isLeaf;
+  const item = treeData && treeData.find(item => item.value === key);
+  if (!item) {
+    return false;
+  }
+  return !!item.isLeaf;
 }
 
-export function mapTreeDataToGetDisplayValue(treeData: Array<Object>, filterValueData: string[]) {
+export function mapTreeDataToGetDisplayValue(treeData: Array<Object>, filterKeys: string[]) {
   const displayValueData = [];
+  if (!filterKeys || filterKeys.length === 0 || !treeData) {
+    return displayValueData;
+  }
+  const exisitMap = filterKeys.reduce((exist: Object, key: string) => {
+    exist[key] = true;
+    return exist;
+  }, {});
   treeData &&
     treeData.forEach(item => {
-      if (filterValueData.includes(item.value)) {
-        displayValueData.push(item.text);
+      const { value } = item;
+      if (exisitMap[value]) {
+        const { text } = item;
+        displayValueData.push(text);
       }
     });
+
   return displayValueData;
 }
 
@@ -129,23 +137,26 @@ export function getInputValue(props: CascaderProps, state: CascaderState) {
   const { treeData } = state;
   const value = getValue(props, state);
   const filterValueData = getFilterValueData(data, value, separator);
-
   const displayValueData = mapTreeDataToGetDisplayValue(treeData, filterValueData);
+
   if (showAllLevels) {
     return isArrayLengthIsZero(displayValueData)
       ? displayValueData
       : [displayValueData.join(separator)];
   }
 
-  const isLeaf = mapTreeDataToGetLeaf(treeData, filterValueData);
+  const isLeaf = isLeafPath(treeData, filterValueData);
   const newInputValue = isLeaf ? [getLastLevelValue(displayValueData)] : state.inputValue;
-
   return newInputValue;
 }
 
-export function getFilterValueData(data: Array<Object>, value: string[], separator: string) {
+export function getFilterValueData(
+  data: Array<Object>,
+  value: string[],
+  separator: string
+): string[] {
   const valueData = letValueSplitToArray(value, separator);
   const filterData = [];
-  mapDataAndGetSelectedKeys(data, valueData, filterData);
+  recurDataAndGetSelectedKeys(data, valueData, filterData);
   return filterData;
 }
