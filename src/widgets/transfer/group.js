@@ -262,10 +262,16 @@ export default ThemeProvider(
         mapData,
         targetSelectedKeys
       );
+      console.info('targetSelectedKeys', targetSelectedKeys);
+      console.info('moveKey', moveKey);
+      console.info('disabledCheckedKeys', disabledCheckedKeys);
       moveKey.forEach(item => {
         const index = nextTargetKeys.indexOf(item);
-        nextTargetKeys.splice(index, 1);
+        if (index > -1) {
+          nextTargetKeys.splice(index, 1);
+        }
       });
+      console.info('left nextTargetKeys', nextTargetKeys);
       const { onDirectionClick } = this.props;
       onDirectionClick && onDirectionClick(nextTargetKeys, 'left', moveKey);
 

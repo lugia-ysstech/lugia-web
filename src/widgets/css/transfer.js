@@ -39,6 +39,7 @@ type CSSProps = {
   isWrap?: boolean,
   theme: ThemeType,
   disabled: boolean,
+  direction: 'left' | 'right',
 };
 const { borderColor } = colorsFunc();
 export const TransFer = styled.div`
@@ -86,4 +87,7 @@ export const CancelBox = styled.div`
 export const CancelBoxItem = styled.span`
   display: inline-block;
   padding: ${em(3)};
+`;
+export const TreeWrap = styled.div`
+  height: ${getNoDataHeight};
 `;

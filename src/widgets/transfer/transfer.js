@@ -16,13 +16,14 @@ import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
 import {
-  CancelBox,
-  CancelBoxItem,
+  TransFer,
+  MenuWrap,
   Check,
   CheckText,
-  MenuWrap,
   NoData,
-  TransFer,
+  CancelBox,
+  CancelBoxItem,
+  TreeWrap,
 } from '../css/transfer';
 import { isContained, getKeys } from './utils';
 
@@ -156,17 +157,19 @@ export default ThemeProvider(
                     valueField={valueField}
                   />
                 ) : (
-                  <Tree
-                    displayField={displayField}
-                    valueField={valueField}
-                    data={data}
-                    value={selectedKeys}
-                    expandAll
-                    mutliple
-                    onChange={this.handleTreeChange}
-                    query={inputValue}
-                    {...list}
-                  />
+                  <TreeWrap direction={direction}>
+                    <Tree
+                      displayField={displayField}
+                      valueField={valueField}
+                      data={data}
+                      value={selectedKeys}
+                      expandAll
+                      mutliple
+                      onChange={this.handleTreeChange}
+                      query={inputValue}
+                      {...list}
+                    />
+                  </TreeWrap>
                 )}
               </Theme>
             </MenuWrap>
