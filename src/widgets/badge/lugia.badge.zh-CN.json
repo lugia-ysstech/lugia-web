@@ -1,0 +1,38 @@
+{
+  "widgetName": "Badge",
+  "title": "徽标数",
+  "desc": "图标右上角的圆形徽标数字",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "showZero": {
+      "type": "boolean",
+      "desc": "当数值为 0 时，是否展示 Badge",
+      "defaultValue": "false"
+    },
+    "overflowCount": {
+      "type": "number",
+      "desc": "超过 overflowCount 的会显示为 ${overflowCount}+，默认的 overflowCount 为 99",
+      "defaultValue": 99
+    },
+    "children": {
+      "type": "React$Element<any>",
+      "desc": "可作为显示徽标数的子组件",
+      "defaultValue": "undefined"
+    },
+    "count": {
+      "type": "number",
+      "desc": "展示的数字，大于封顶数时 显示为${overflowCount}+,为 0 时隐藏",
+      "defaultValue": "undefined"
+    }
+  },
+  "category": ["数据展示"]
+}

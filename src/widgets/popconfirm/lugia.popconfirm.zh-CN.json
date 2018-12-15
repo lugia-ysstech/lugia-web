@@ -1,0 +1,124 @@
+{
+  "widgetName": "Popconfirm",
+  "title": "气泡确认框",
+  "desc": "气泡式的确认框",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "title": {
+      "type": "React.Node",
+      "desc": "确认框标题显示内容",
+      "defaultValue": "undefined"
+    },
+    "description": {
+      "type": "React.Node",
+      "desc": "确认框描述显示内容",
+      "defaultValue": "undefined"
+    },
+    "content": {
+      "type": "React.Node",
+      "desc": "整个确认框显示内容",
+      "defaultValue": "undefined"
+    },
+    "icon": {
+      "type": "React.Node",
+      "desc": "确认框的标题的图标",
+      "defaultValue": "undefined"
+    },
+    "placement": {
+      "type": "DirectionType",
+      "desc": "气泡确认框显示的位置,十二个方向",
+      "defaultValue": "undefined"
+    },
+    "visible": {
+      "type": "boolean",
+      "desc": "是否显示出来",
+      "defaultValue": "false"
+    },
+    "defaultVisible": {
+      "type": "boolean",
+      "desc": "默认是否显示出来",
+      "defaultValue": "false"
+    },
+    "action": {
+      "type": "Array<string>",
+      "desc": "页签位置，可配置 click,hover,focus",
+      "defaultValue": "click"
+    },
+    "children": {
+      "type": "React.Node",
+      "desc": "气泡确认框需要包含的子组件",
+      "defaultValue": "undefined"
+    },
+    "okType": {
+      "type": "ButtonType",
+      "desc": "气泡确认框确认按钮的类型",
+      "defaultValue": "primary"
+    },
+    "cancelText": {
+      "type": "string",
+      "desc": "取消按钮文字",
+      "defaultValue": "取消"
+    },
+    "okText": {
+      "type": "string",
+      "desc": "确认按钮文字",
+      "defaultValue": "确定"
+    }
+  },
+  "events": {
+    "onVisibleChange": {
+      "desc": "气泡确认框改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "气泡确认框显示改变的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onCancel": {
+      "desc": "气泡确认框点击取消时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "气泡确认框点击取消的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onConfirm": {
+      "desc": "气泡确认框关闭时时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "气泡确认框点击确认的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "DirectionType": [
+      "left",
+      "leftTop",
+      "leftBottom",
+      "right",
+      "rightTop",
+      "rightBottom",
+      "top",
+      "bottom",
+      "topLeft",
+      "top",
+      "topRight",
+      "bottom",
+      "bottomRight",
+      "bottomLeft"
+    ],
+    "ButtonType": ["default", "primary", "success", "warning", "danger"]
+  },
+  "category": ["反馈"]
+}

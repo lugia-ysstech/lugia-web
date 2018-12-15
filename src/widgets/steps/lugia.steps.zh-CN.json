@@ -1,0 +1,49 @@
+{
+  "widgetName": "Steps",
+  "title": "步骤条",
+  "desc": "引导用户按照流程完成任务的导航条",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "children": {
+      "type": "React.Node",
+      "desc": "步骤条需要包含的子组件",
+      "defaultValue": "undefined"
+    },
+    "stepType": {
+      "type": "StepType",
+      "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择",
+      "defaultValue": "simple"
+    },
+    "size": {
+      "type": "SizeType",
+      "desc": "步骤条尺寸,有正常和迷你 两种尺寸可供选择",
+      "defaultValue": "normal"
+    },
+    "orientation": {
+      "type": "SizeType",
+      "desc": "步骤条方向,可选择水平,垂直",
+      "defaultValue": "horizontal"
+    },
+    "desAlign": {
+      "type": "AlignType",
+      "desc": "步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐",
+      "defaultValue": "left"
+    },
+    "currentStepNumber": {
+      "type": "number",
+      "desc": "当前显示的步骤条位置",
+      "defaultValue": 0
+    }
+  },
+  "type": {
+    "StepType": ["simple", "flat", "icon", "dot"],
+    "SizeType": ["normal", "mini"],
+    "OrientationType": ["horizontal", "vertical"],
+    "AlignType": ["center", "left"]
+  },
+  "category": ["导航"]
+}

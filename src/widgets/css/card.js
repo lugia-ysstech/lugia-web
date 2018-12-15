@@ -17,8 +17,7 @@ export type shadowType = 'always' | 'hover' | 'never';
 export type CardType = 'simple' | 'avatar' | 'image' | 'combo';
 export type ImageOrientation = 'horizontal' | 'vertical';
 export type CardProps = {
-  avatar: React.Node,
-  className: string,
+  viewClass: string,
   description: React.Node,
   title: React.Node,
   operation: React.Node,

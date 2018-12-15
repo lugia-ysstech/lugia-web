@@ -1,0 +1,86 @@
+{
+  "widgetName": "Tooltip",
+  "title": "文字提示",
+  "desc": "简单的文字气泡提示框",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "size": {
+      "type": "ToolTipSize",
+      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "defaultValue": "default"
+    },
+    "placement": {
+      "type": "DirectionType",
+      "desc": "气泡提示框显示的位置,十二个方向",
+      "defaultValue": "undefined"
+    },
+    "visible": {
+      "type": "boolean",
+      "desc": "是否显示出来",
+      "defaultValue": "false"
+    },
+    "defaultVisible": {
+      "type": "boolean",
+      "desc": "默认是否显示出来",
+      "defaultValue": "false"
+    },
+
+    "popArrowType": {
+      "type": "popArrowType",
+      "desc": "可配置两种风格的箭头. 尖角,圆角",
+      "defaultValue": "sharp"
+    },
+    "action": {
+      "type": "Array<string>",
+      "desc": "页签位置，可配置 click,hover,focus",
+      "defaultValue": "click"
+    },
+    "children": {
+      "type": "React.Node",
+      "desc": "气泡提示框需要包含的子组件",
+      "defaultValue": "undefined"
+    },
+    "title": {
+      "type": "React.Node",
+      "desc": "配置气泡提示框需要显示的内容",
+      "defaultValue": "undefined"
+    }
+  },
+  "events": {
+    "onVisibleChange": {
+      "desc": "气泡提示框改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "气泡提示框显示改变的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "ToolTipSize": ["small", "default", "large"],
+    "PopArrowType": ["sharp", "round"],
+    "DirectionType": [
+      "left",
+      "leftTop",
+      "leftBottom",
+      "right",
+      "rightTop",
+      "rightBottom",
+      "top",
+      "bottom",
+      "topLeft",
+      "top",
+      "topRight",
+      "bottom",
+      "bottomRight",
+      "bottomLeft"
+    ]
+  },
+  "category": ["数据展示"]
+}

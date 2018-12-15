@@ -1,0 +1,37 @@
+{
+  "widgetName": "Divider",
+  "title": "分割线",
+  "desc": "区隔内容的分割线",
+  "props": {
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "position": {
+      "type": "DividerPosition",
+      "desc": "分割线中显示内容的位置,与content 配合使用",
+      "defaultValue": "undefined"
+    },
+    "dashed": {
+      "type": "boolean",
+      "desc": "分割线是否是虚线",
+      "defaultValue": "false"
+    },
+    "content": {
+      "type": "string",
+      "desc": "分割线中可添加显示的内容",
+      "defaultValue": "undefined"
+    },
+    "type": {
+      "type": "DividerType",
+      "desc": "分割线的风格 水平或者 垂直",
+      "defaultValue": "horizontal"
+    }
+  },
+  "type": {
+    "DividerPosition": ["left", "right"],
+    "DividerType": ["horizontal", "vertical"]
+  },
+  "category": ["其他"]
+}

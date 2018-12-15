@@ -11,6 +11,57 @@ import Widget from '../consts/index';
 import Theme from '../theme/';
 import styled from 'styled-components';
 
+const onPreClick = e => {};
+const onNextClick = e => {};
+const onDelClick = e => {};
+
+const onAddClick = e => {
+  const newTabs = {
+    title: 'new tabs',
+    content: 'new tabs content',
+  };
+  return newTabs;
+};
+
+class Tabsdemo extends React.Component<any, any> {
+  state = {
+    data: defaultData,
+  };
+  change = e => {
+    // defaultData[0].content = '0000000000';
+    defaultData[0] = {
+      icon: 'lugia-icon-financial_archive',
+      title: '0000000000000',
+      content: '000000000',
+    };
+    this.setState({ data: defaultData });
+  };
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate nextState', nextState.data);
+  }
+  componentDidUpdate(props: TabsProps, preState: TabsState) {
+    console.log('componentDidUpdate preState', preState.data);
+  }
+  render() {
+    const { data } = this.state;
+    return (
+      <div>
+        <button style={{ width: 200 }} onClick={this.change}>
+          {'点我'}
+        </button>
+        <Tabs
+          tabType={'card'}
+          pagedType={'single'}
+          data={data}
+          onPreClick={onPreClick}
+          onNextClick={onNextClick}
+          onDelClick={onDelClick}
+          onAddClick={onAddClick}
+        />
+      </div>
+    );
+  }
+}
 const Wrapper = styled.div`
   text-align: left;
   margin: 50px;
@@ -64,7 +115,7 @@ export const defaultData = [
 export const hasActivityKeyData = [
   {
     title: 1111,
-    content: <div>1111111</div>,
+    content: <div>1111111111</div>,
     activityKey: '0',
   },
   {
@@ -364,17 +415,6 @@ export default () => {
       height: 200,
     },
   };
-  const onPreClick = e => {};
-  const onNextClick = e => {};
-  const onDelClick = e => {};
-
-  const onAddClick = e => {
-    const newTabs = {
-      title: 'new tabs',
-      content: 'new tabs content',
-    };
-    return newTabs;
-  };
   return (
     <div>
       <Theme config={view}>
@@ -489,6 +529,7 @@ export default () => {
             onAddClick={onAddClick}
           />
         </Wrapper>
+        <Tabsdemo />
         <br />
       </Theme>
     </div>
