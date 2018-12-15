@@ -61,7 +61,7 @@ const Picture = styled.img`
 `;
 
 type AvatarProps = {
-  className?: string,
+  viewClass?: string,
   shape?: AvatarShape,
   size?: AvatarSize,
   src?: string,
@@ -76,7 +76,6 @@ class AvatarBox extends Component<AvatarProps, AvatarState> {
     viewClass: Widget.Avatar,
     shape: 'circle',
     size: 'default',
-    name: 'lugia',
   };
   static displayName = Widget.Avatar;
 

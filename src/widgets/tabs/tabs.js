@@ -270,35 +270,39 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
+    console.log('getDerivedStateFromProps');
     const { activityKey, defaultActivityKey, defaultData, data, children } = props;
     const hasActivityKeyInprops = 'activityKey' in props;
     const hasDataInprops = 'data' in props;
     let configData;
-    if (!state) {
-      if (hasDataInprops) {
-        configData = data ? data : [];
-      } else {
-        if (Array.isArray(children) && children.length > 0) {
-          configData = [];
-          React.Children.map(children, child => {
-            configData && configData.push(child.props);
-          });
-        }
+    if (hasDataInprops) {
+      configData = data ? data : [];
+    } else {
+      if (Array.isArray(children) && children.length > 0) {
+        configData = [];
+        React.Children.map(children, child => {
+          configData && configData.push(child.props);
+        });
       }
-      const theData = configData
-        ? addActivityKey2Data(configData)
-        : addActivityKey2Data(defaultData)
-          ? addActivityKey2Data(defaultData)
-          : [];
+    }
+    const theData = configData
+      ? addActivityKey2Data(configData)
+      : addActivityKey2Data(defaultData)
+      ? addActivityKey2Data(defaultData)
+      : [];
+    const theActivityKey = hasActivityKeyInprops
+      ? activityKey
+      : defaultActivityKey
+      ? defaultActivityKey
+      : theData.length > 0
+      ? theData[0].activityKey
+      : undefined;
+
+    // console.log('getDerivedStateFromProps theData', theData);
+    if (!state) {
       return {
         data: theData,
-        activityKey: hasActivityKeyInprops
-          ? activityKey
-          : defaultActivityKey
-            ? defaultActivityKey
-            : theData.length > 0
-              ? theData[0].activityKey
-              : undefined,
+        activityKey: theActivityKey,
         currentPage: 0,
         totalPage: 1,
         pagedCount: 0,
@@ -307,9 +311,32 @@ class TabsBox extends Component<TabsProps, TabsState> {
         childrenSize: [],
       };
     }
-    if (hasActivityKeyInprops) {
-      return { activityKey };
+    const sData = state.data;
+    const sActivityKey = state.activityKey;
+    let newData = [...theData];
+    if (sData.length !== theData.length) {
+      newData = [...sData];
+      console.log('1111111111111newData', newData);
+    } else {
+      sData.some((child, index) => {
+        if (
+          theData[index].content !== child.content ||
+          theData[index].activityKey !== child.activityKey ||
+          theData[index].title !== child.title
+        ) {
+          newData = [...theData];
+          console.log('22222222222222newData', newData);
+        }
+      });
     }
+
+    // console.log('getDerivedStateFromProps 33333333333 newData', sData);
+    // console.log('getDerivedStateFromProps theData', theData);
+
+    return {
+      activityKey: hasActivityKeyInprops ? activityKey : sActivityKey,
+      data: newData,
+    };
   }
 
   render() {
@@ -319,7 +346,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
       height: this.offsetHeight,
     };
     const theme = { [Widget.TabsContainer]: config };
-
     return (
       <Theme config={theme}>
         <OutContainer
@@ -472,15 +498,50 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     return null;
   }
+  componentWillUpdate() {
+    console.log('componentWillUpdate');
+  }
+  componentWillReceiveProps() {
+    console.log('componentWillReceiveProps');
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
 
   componentDidUpdate(props: TabsProps, preState: TabsState) {
+    // const { data } = this.state;
+    // console.log('componentDidUpdate preState', preState.data);
+    // console.log('componentDidUpdate data', data);
+    // this.measurePage();
+  }
+
+  shouldComponentUpdate(nextProps: Readonly<P>, nextState: Readonly<S>, nextContext: any): boolean {
     const { data } = this.state;
-    if (data !== preState.data) {
-      this.measurePage();
-    }
+    const { data: newData } = nextState;
+    console.log('shouldComponentUpdate nextState', nextState.data);
+    console.log('shouldComponentUpdate data', data);
+
+    // if (nextState === null) {
+    //   return true;
+    // }
+    // if (data.length !== newData.length) {
+    //   return true;
+    // }
+    //
+    // return newData.some((child, index) => {
+    //   if (
+    //     data[index].content === child.content &&
+    //     data[index].activityKey === child.activityKey &&
+    //     data[index].title === child.title
+    //   ) {
+    //     return false;
+    //   }
+    return true;
+    // });
   }
 
   componentDidMount() {
+    console.log('componentDidMount');
     this.measurePage();
   }
 
@@ -505,13 +566,14 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const actualWidth = matchType(tabType, 'window')
       ? width + WindowMarginLeft + AddButtonSize
       : matchType(tabType, 'card')
-        ? width + (childrenSize.length + 1) * CardMarginRight + AddButtonSize
-        : width;
+      ? width + (childrenSize.length + 1) * CardMarginRight + AddButtonSize
+      : width;
     const actualHeight = data.length * YtabsHeight;
     const totalPage = isVertical(tabPosition)
       ? computePage(this.offsetHeight - ArrowContainerWidth, actualHeight)
       : computePage(this.offsetWidth - ArrowContainerWidth, actualWidth);
     const arrowShow = totalPage > 1 && currentPage < totalPage;
+    console.log(totalPage, currentPage, totalPage > 1 && currentPage < totalPage);
     this.setState({ arrowShow, totalPage });
   }
 
@@ -587,9 +649,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
       : null;
     return childrenWithProps;
   }
+
   getChildrenContent() {
     const { forceRender, tabPosition } = this.props;
     const { activityKey, data } = this.state;
+    // console.log(data, 'getChildrenContent');
     if (data && data.map) {
       return data.map((child, i) => {
         const childActivityKey = getAttributeFromObject(
@@ -639,10 +703,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
       newdata = data.filter(tabpane => {
         return tabpane.activityKey !== activityKey;
       });
-      this.setState({
-        data: newdata,
-      });
-      this.updataChildrenSize();
+      console.log(newdata, 'deleteData');
+      this.setState(
+        {
+          data: newdata,
+        },
+        () => {
+          this.updataChildrenSize();
+        }
+      );
     }
     const { onDeleteClick } = this.props;
     onDeleteClick && onDeleteClick(e);
@@ -650,6 +719,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
+    console.log('ADD newdata', 1111111111);
     if (onAddClick) {
       const item = onAddClick(e);
       if (item) {
@@ -657,9 +727,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
         const newdata = [...data];
         const { title = '', content = '', activityKey } = item;
         newdata.push({ title, content, activityKey });
-        this.setState({
-          data: addActivityKey2Data(newdata),
-        });
+        console.log('ADD newdata', newdata);
+        this.setState(
+          {
+            data: addActivityKey2Data(newdata),
+          },
+          () => {
+            this.updataChildrenSize();
+          }
+        );
       }
     }
   };
@@ -674,6 +750,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   updataChildrenSize() {
     const { data, childrenSize } = this.state;
+    console.log('updataChildrenSize', data);
     const newData = addWidth2Data(data, childrenSize);
     const newChildrenSize = [];
     newData.map(item => {

@@ -1,0 +1,128 @@
+{
+  "widgetName": "AmountInput",
+  "title": "金额文本输入框",
+  "desc": "用于金额数字的填写,可切换人民币大小写显示效果.",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "true 禁用 false 可用",
+      "defaultValue": "false"
+    },
+    "transform": {
+      "type": "boolean",
+      "desc": "是否开启转换",
+      "defaultValue": "true"
+    },
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置主题属性",
+      "defaultValue": "undefined"
+    },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "defaultValue": "default"
+    },
+    "placeholder": {
+      "type": "string",
+      "desc": "input输入提示信息",
+      "defaultValue": "undefined"
+    },
+    "amountPrefix": {
+      "type": "string",
+      "desc": "货币种类,默认'¥'",
+      "defaultValue": "¥"
+    },
+    "defaultValue": {
+      "type": "string",
+      "desc": "默认显示内容",
+      "defaultValue": "undefined"
+    },
+    "value": {
+      "type": "string",
+      "desc": "显示内容",
+      "defaultValue": "undefined"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "内容改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变内容的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onKeyUp": {
+      "desc": "键盘按下去并松开后执行",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onKeyDown": {
+      "desc": "键盘按下任何键时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onKeyPress": {
+      "desc": "键盘按下任何键时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onFocus": {
+      "desc": "输入框获得焦点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "获取焦点的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onBlur": {
+      "desc": "输入框失去焦点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "失去焦点的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onEnter": {
+      "desc": "当键入回车时触发事件",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当键入回车时触发",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "InputSize": ["small", "default", "large"]
+  },
+  "category": ["数据录入"]
+}

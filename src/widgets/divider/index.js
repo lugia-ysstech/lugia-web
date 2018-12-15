@@ -70,10 +70,7 @@ class LineBox extends Component<DividerProps, any> {
 
   getChildText() {
     const { content } = this.props;
-    if (content !== undefined && content !== null) {
-      return <ChildText>{content}</ChildText>;
-    }
-    return null;
+    return content ? <ChildText>{content}</ChildText> : null;
   }
   getDivider() {
     const { type, position, dashed, content } = this.props;

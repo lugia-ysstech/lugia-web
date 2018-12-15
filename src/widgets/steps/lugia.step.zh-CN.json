@@ -1,0 +1,85 @@
+{
+  "widgetName": "Step",
+  "title": "单步骤",
+  "desc": "步骤条中每一个步骤",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "children": {
+      "type": "React.Node",
+      "desc": "气泡卡片需要包含的子组件",
+      "defaultValue": "undefined"
+    },
+    "stepType": {
+      "type": "StepType",
+      "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择",
+      "defaultValue": "simple"
+    },
+    "size": {
+      "type": "SizeType",
+      "desc": "步骤条尺寸,有正常和迷你 两种尺寸可供选择",
+      "defaultValue": "normal"
+    },
+    "desAlign": {
+      "type": "AlignType",
+      "desc": "步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐",
+      "defaultValue": "left"
+    },
+    "orientation": {
+      "type": "SizeType",
+      "desc": "步骤条方向,可选择水平,垂直",
+      "defaultValue": "horizontal"
+    },
+    "currentStepNumber": {
+      "type": "number",
+      "desc": "当前显示的步骤条位置",
+      "defaultValue": 0
+    },
+    "stepNumber": {
+      "type": "number",
+      "desc": "步骤条位置",
+      "defaultValue": "undefined"
+    },
+    "stepStatus": {
+      "type": "StepStatus",
+      "desc": "步骤条状态,已完成,进行中,下一个,等待中,异常多种状态",
+      "defaultValue": "undefined"
+    },
+    "title": {
+      "type": "React.Node",
+      "desc": "步骤条显示的标题",
+      "defaultValue": "undefined"
+    },
+    "description": {
+      "type": "React.Node",
+      "desc": "步骤条显示的信息描述",
+      "defaultValue": "undefined"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "步骤条显示的图标",
+      "defaultValue": "undefined"
+    },
+    "isFirst": {
+      "type": "boolean",
+      "desc": "该步骤是否是第一步",
+      "defaultValue": "false"
+    },
+    "isDashed": {
+      "type": "boolean",
+      "desc": "步骤条进度是否用虚线显示",
+      "defaultValue": "false"
+    }
+  },
+  "type": {
+    "StepType": ["simple", "flat", "icon", "dot"],
+    "StepStatus": ["finish", "process", "next", "wait", "error"],
+    "SizeType": ["normal", "mini"],
+    "OrientationType": ["horizontal", "vertical"],
+    "AlignType": ["center", "left"]
+  },
+  "category": ["导航"]
+}

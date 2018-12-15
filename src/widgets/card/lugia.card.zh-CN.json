@@ -1,0 +1,73 @@
+{
+  "widgetName": "Card",
+  "title": "卡片",
+  "desc": "卡片容器，可添加文字、列表、图片等",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "getThemeByDisplayName": {
+      "type": "Function",
+      "desc": "用于配置组件内部图片的通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "title": {
+      "type": "React.Node",
+      "desc": "卡片标题显示内容",
+      "defaultValue": "undefined"
+    },
+    "description": {
+      "type": "React.Node",
+      "desc": "卡片描述显示内容",
+      "defaultValue": "undefined"
+    },
+    "operation": {
+      "type": "React.Node",
+      "desc": "卡片可操作内容",
+      "defaultValue": "undefined"
+    },
+    "image": {
+      "type": "React.Node",
+      "desc": "卡片片显示内容",
+      "defaultValue": "undefined"
+    },
+    "avatar": {
+      "type": "React.Node",
+      "desc": "卡片头像显示内容",
+      "defaultValue": "undefined"
+    },
+    "content": {
+      "type": "React.Node",
+      "desc": "整个卡片显示内容",
+      "defaultValue": "undefined"
+    },
+    "type": {
+      "type": "CardType",
+      "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格",
+      "defaultValue": "undefined"
+    },
+    "imageOrientation": {
+      "type": "ImageOrientation",
+      "desc": "当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直",
+      "defaultValue": "undefined"
+    },
+    "shadow": {
+      "type": "shadowType",
+      "desc": "卡片阴影,可以配置一直显示,hover时显示,和不显示阴影.",
+      "defaultValue": "undefined"
+    }
+  },
+  "type": {
+    "CardType": ["simple", "avatar", "image", "combo"],
+    "shadowType": ["always", "hover", "never"],
+    "ImageOrientation": ["horizontal", "vertical"]
+  },
+  "category": ["数据展示"]
+}

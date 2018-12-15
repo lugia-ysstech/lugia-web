@@ -1,0 +1,130 @@
+{
+  "widgetName": "Tabs",
+  "title": "标签页",
+  "desc": "选项卡切换组件",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "activityKey": {
+      "type": "string",
+      "desc": "当前激活 tab 面板的 key",
+      "defaultValue": "undefined"
+    },
+    "defaultActivityKey": {
+      "type": "string",
+      "desc": "默认激活 tab 面板的 key",
+      "defaultValue": "0"
+    },
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "tabType": {
+      "type": "TabType",
+      "desc": "可配置三种风格的标签页.可选 线性,卡片,窗口风格",
+      "defaultValue": "line"
+    },
+    "tabPosition": {
+      "type": "TabPositionType",
+      "desc": "页签位置，可配置 左,右,上,下",
+      "defaultValue": "top"
+    },
+    "children": {
+      "type": "React$Element<any>",
+      "desc": "配置标签页需要包含的子组件,若有data,以data优先",
+      "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "Array<Object>",
+      "desc": "配置标签页需要配置的数据,",
+      "defaultValue": "undefined"
+    },
+    "defaultData": {
+      "type": "Array<Object>",
+      "desc": "默认配置标签页需要配置的数据,",
+      "defaultValue": "undefined"
+    },
+    "forceRender": {
+      "type": "boolean",
+      "desc": "是否一次性显示标签页下的内容",
+      "defaultValue": "false"
+    },
+    "pagedType": {
+      "type": "PagedType",
+      "desc": "翻页类型,可配置单个滑动,整页滑动",
+      "defaultValue": "single"
+    }
+  },
+  "events": {
+    "onTabClick": {
+      "desc": "tab 被点击的回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击标签页时调用DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onChange": {
+      "desc": "tab改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "标签页改变内容的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onNextClick": {
+      "desc": "点击向下滑动按钮时调用",
+      "args": [
+        {
+          "name": "event",
+          "desc": "向下滑动时事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onPreClick": {
+      "desc": "点击向上滑动按钮时调用",
+      "args": [
+        {
+          "name": "event",
+          "desc": "向上滑动时事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onAddClick": {
+      "desc": "点击添加按钮后回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "要添加的标签页对象",
+          "type": "Object"
+        }
+      ]
+    },
+    "onDeleteClick": {
+      "desc": "点击清除按钮后回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "要删除的标签页对象",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "TabType": ["line", "card", "window"],
+    "PagedType": ["single", "page"],
+    "TabPositionType": ["top", "bottom", "inner", "default"]
+  },
+  "category": ["数据展示"]
+}
