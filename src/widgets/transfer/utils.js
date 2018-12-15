@@ -5,6 +5,9 @@
  * @flow
  *
  */
+import { recurTreeData } from '../menu/utils';
+import { createExistMap } from '../utils';
+
 export function getTruthValue(
   target: string,
   props: Object,
@@ -16,7 +19,8 @@ export function getTruthValue(
 
   return result;
 }
-export function getSourceDataAndTargetData(
+
+export function getPanelSourceDataAndTargetData(
   data: Object[],
   targetKeys: string[],
   valueField: string
@@ -28,25 +32,38 @@ export function getSourceDataAndTargetData(
     targetCheckKeys = [],
     sourceCheckKeys = [];
 
-  if (data && data.length > 0) {
-    data.forEach(item => {
-      const itemValue = item[valueField];
-      mapData[itemValue] = item;
-      const inTarget = targetKeys.includes(itemValue);
-      if (inTarget) {
-        targetData.push(item);
-        if (!item.disabled) {
-          targetCheckKeys.push(itemValue);
-        }
-      } else {
-        sourceData.push(item);
-        sourceKeys.push(itemValue);
-        if (!item.disabled) {
-          sourceCheckKeys.push(itemValue);
-        }
-      }
-    });
+  if (!data || !targetKeys || !valueField) {
+    return {
+      sourceData,
+      targetData,
+      mapData,
+      sourceKeys,
+      targetCheckKeys,
+      sourceCheckKeys,
+    };
   }
+
+  const existMap = createExistMap(targetKeys);
+
+  data.forEach(item => {
+    const key = item[valueField];
+    mapData[key] = item;
+    const inTarget = existMap[key];
+    const isEnable = !item.disabled;
+    if (inTarget) {
+      targetData.push(item);
+      if (isEnable) {
+        targetCheckKeys.push(key);
+      }
+    } else {
+      sourceData.push(item);
+      sourceKeys.push(key);
+      if (isEnable) {
+        sourceCheckKeys.push(key);
+      }
+    }
+  });
+
   return {
     sourceData,
     targetData,
@@ -56,76 +73,71 @@ export function getSourceDataAndTargetData(
     sourceCheckKeys,
   };
 }
+
 export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
   const validKeys = [],
     disabledKeys = [];
-  if (selectKey && selectKey.length > 0) {
-    selectKey.forEach(item => {
-      const disabled = mapData[item] && mapData[item].disabled;
-      if (!disabled) {
-        validKeys.push(item);
-      } else {
-        disabledKeys.push(item);
-      }
-    });
+  if (!mapData || !selectKey) {
+    return { validKeys, disabledKeys };
   }
+
+  selectKey.forEach(item => {
+    const theItem = mapData[item];
+    const disabled = theItem && theItem.disabled;
+    if (disabled) {
+      disabledKeys.push(item);
+    } else {
+      validKeys.push(item);
+    }
+  });
   return { validKeys, disabledKeys };
 }
-export function isContained(range: Array<any>, target: string[]) {
-  if (!(range instanceof Array) || !(target instanceof Array)) return false;
-  if (range.length < target.length) return false;
-  const aStr = range.toString();
-  for (let i = 0, len = target.length; i < len; i++) {
-    if (aStr.indexOf(target[i]) === -1) return false;
+
+export function isContained(sourceItems: string[], childItems: string[]): boolean {
+  if (!Array.isArray(sourceItems) || !Array.isArray(childItems)) {
+    return false;
   }
-  return true;
+
+  const childLen = childItems.length;
+  if (childLen === 0) {
+    return true;
+  }
+
+  if (sourceItems.length < childLen) {
+    return false;
+  }
+  const existMap = createExistMap(sourceItems);
+  return childItems.every(item => existMap[item]);
 }
+
 export function getTreeData(
   data: Object[],
-  targetObj: Object,
-  parentKey?: string,
-  parentPath?: string[]
+  opt: { displayField: string, valueField: string }
 ): Object {
-  if (data && data.length) {
-    const { target = [], mapData = {}, leafKeys = [] } = targetObj;
-    data.forEach(item => {
-      const { children } = item;
-      const newObj = {};
-      newObj.key = item.value;
-      newObj.title = item.text;
-      let pidArr;
-      if (!parentKey) {
-        newObj.pid = undefined;
-        newObj.path = undefined;
-        pidArr = [];
-      } else {
-        if (parentPath) {
-          newObj.pid = parentKey;
-          if (parentPath.indexOf(parentKey) === -1) {
-            parentPath.push(parentKey);
+  const target = [],
+    mapData = {},
+    enableKeys = [];
+  const { displayField, valueField } = opt;
+  recurTreeData(
+    data,
+    target,
+    {},
+    {
+      onAdd(newItem) {
+        const { isLeaf } = newItem;
+        const key = newItem[valueField];
+        if (isLeaf) {
+          if (!newItem.disabled) {
+            enableKeys.push(key);
           }
-          pidArr = [...parentPath];
-          newObj.path = pidArr.join('/');
         }
-      }
-      if (!children || children.length === 0) {
-        newObj.isLeaf = true;
-        if (!item.disabled) {
-          leafKeys.push(item.value);
-        }
-        target.push(newObj);
-        mapData[item.value] = item;
-      } else {
-        target.push(newObj);
-        mapData[item.value] = item;
-        getTreeData(children, targetObj, item.value, pidArr);
-      }
-    });
-
-    return targetObj;
-  }
-
-  return { target: [], leafKeys: [] };
+        mapData[key] = newItem;
+      },
+      displayField,
+      valueField,
+    }
+  );
+  return { target, mapData, enableKeys };
 }
 
 export function getCancelItem(
@@ -134,35 +146,55 @@ export function getCancelItem(
   field: Object,
   displayValue?: string[]
 ): Object[] {
-  const { valueField, displayField } = field;
-  const hasValue = value && value.length;
-  if (hasValue) {
-    const cancelItem = [];
-    if (displayValue && displayValue.length) {
-      value.forEach((item, index) => {
-        if (!mapData[item]) {
-          cancelItem.push({
-            [displayField]: displayValue && displayValue[index],
-            [valueField]: item,
-          });
-        }
-      });
-    }
+  const cancelItem = [];
 
+  if (!value || !value.length) {
     return cancelItem;
   }
-  return [];
+
+  const { valueField, displayField } = field;
+  if (!displayValue || !displayValue.length) {
+    return cancelItem;
+  }
+
+  value.forEach((item, index) => {
+    if (!mapData[item]) {
+      cancelItem.push({
+        [displayField]: displayValue && displayValue[index],
+        [valueField]: item,
+      });
+    }
+  });
+  return cancelItem;
 }
+
 export function getCanCheckKeys(allKeys: string[], targetKeys: string[]) {
   const sourceCanCheckKeys = [],
     targetCanCheckKeys = [];
-  allKeys.forEach(item => {
-    const inTarget = targetKeys.includes(item);
+
+  const existMap = createExistMap(targetKeys);
+
+  allKeys.forEach(key => {
+    const inTarget = existMap[key];
     if (inTarget) {
-      targetCanCheckKeys.push(item);
+      targetCanCheckKeys.push(key);
     } else {
-      sourceCanCheckKeys.push(item);
+      sourceCanCheckKeys.push(key);
     }
   });
-  return { targetCanCheckKeys, sourceCanCheckKeys };
+
+  return { sourceCanCheckKeys, targetCanCheckKeys };
+}
+
+export function getKeys(data: Object[], valueField: string): string[] {
+  if (!data || !valueField) {
+    return [];
+  }
+  return data.map(item => {
+    if (!item) {
+      return '';
+    }
+    const res = item[valueField];
+    return res ? res : '';
+  });
 }

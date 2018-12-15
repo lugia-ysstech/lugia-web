@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`popconfirm Demo Component JSON 1`] = `
-.c49 {
+.c51 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -145,7 +145,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   background-color: #3e4fcc;
 }
 
-.c45 {
+.c47 {
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -174,19 +174,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
   margin: 0em 0em 0em 0.5em;
 }
 
-.c45:hover {
+.c47:hover {
   color: #ffffff;
   border: none;
   background-color: #f25762;
 }
 
-.c45:focus {
+.c47:focus {
   color: #ffffff;
   border: none;
   background-color: #f25762;
 }
 
-.c45:active {
+.c47:active {
   background-color: #bf1f2a;
 }
 
@@ -414,6 +414,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: -1;
 }
 
+.c45 {
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6666666666666667em;
+  border-top-left-radius: 0.33333333333333337em;
+  border-color: #ffffff transparent transparent #ffffff;
+  -webkit-transform: rotateZ();
+  -ms-transform: rotateZ();
+  transform: rotateZ();
+  box-shadow: 0 0 0.5em rgba(0,0,0,0.15);
+  z-index: -1;
+}
+
 .c7 {
   left: 0.8333333333333334em;
   bottom: -0.33333333333333337em;
@@ -582,6 +595,18 @@ exports[`popconfirm Demo Component JSON 1`] = `
   z-index: 0;
 }
 
+.c46 {
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6666666666666667em;
+  border-top-left-radius: 0.33333333333333337em;
+  border-color: #ffffff transparent transparent #ffffff;
+  -webkit-transform: rotateZ();
+  -ms-transform: rotateZ();
+  transform: rotateZ();
+  z-index: 0;
+}
+
 .c8 {
   box-sizing: border-box;
   -webkit-user-select: none;
@@ -617,7 +642,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
   padding: 0.5em 0.6666666666666667em;
 }
 
-.c46 {
+.c48 {
   position: relative;
   width: 1.25em;
   height: 1.25em;
@@ -722,13 +747,13 @@ exports[`popconfirm Demo Component JSON 1`] = `
   margin: 100px;
 }
 
-.c47 {
+.c49 {
   border-radius: 50%;
   width: 14px;
   height: 14px;
 }
 
-.c48 {
+.c50 {
   color: white;
 }
 
@@ -2020,19 +2045,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
     className="c2"
   >
     <div
-      className="c3 c4"
+      className="c22 c4"
     >
       <div
         className="c5"
-        direction="bottom"
       >
         <div
-          className="c18"
-          direction="bottom"
+          className="c45"
         />
         <div
-          className="c19"
-          direction="bottom"
+          className="c46"
         />
         <div
           className="c8"
@@ -2122,21 +2144,18 @@ exports[`popconfirm Demo Component JSON 1`] = `
     className="c2"
   >
     <div
-      className="c3 c4"
+      className="c22 c4"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <div
         className="c5"
-        direction="bottom"
       >
         <div
-          className="c18"
-          direction="bottom"
+          className="c45"
         />
         <div
-          className="c19"
-          direction="bottom"
+          className="c46"
         />
         <div
           className="c8"
@@ -2226,19 +2245,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
     className="c2"
   >
     <div
-      className="c3 c4"
+      className="c22 c4"
     >
       <div
         className="c5"
-        direction="bottom"
       >
         <div
-          className="c18"
-          direction="bottom"
+          className="c45"
         />
         <div
-          className="c19"
-          direction="bottom"
+          className="c46"
         />
         <div
           className="c8"
@@ -2283,7 +2299,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
                     </span>
                   </button>
                   <button
-                    className="c45"
+                    className="c47"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseEnter={[Function]}
@@ -2330,19 +2346,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c3 c4"
+        className="c22 c4"
       >
         <div
           className="c5"
-          direction="bottom"
         >
           <div
-            className="c18"
-            direction="bottom"
+            className="c45"
           />
           <div
-            className="c19"
-            direction="bottom"
+            className="c46"
           />
           <div
             className="c8"
@@ -2358,10 +2371,10 @@ exports[`popconfirm Demo Component JSON 1`] = `
                 >
                   <div>
                     <div
-                      className="c46"
+                      className="c48"
                     >
                       <div
-                        className="c47"
+                        className="c49"
                         style={
                           Object {
                             "background": "orange",
@@ -2369,7 +2382,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
                         }
                       >
                         <i
-                          className="lugia-icon-reminder_exclamation c48 c49"
+                          className="lugia-icon-reminder_exclamation c50 c51"
                         />
                       </div>
                     </div>
@@ -2403,7 +2416,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       </span>
                     </button>
                     <button
-                      className="c45"
+                      className="c47"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -2448,19 +2461,16 @@ exports[`popconfirm Demo Component JSON 1`] = `
       className="c2"
     >
       <div
-        className="c3 c4"
+        className="c22 c4"
       >
         <div
           className="c5"
-          direction="bottom"
         >
           <div
-            className="c18"
-            direction="bottom"
+            className="c45"
           />
           <div
-            className="c19"
-            direction="bottom"
+            className="c46"
           />
           <div
             className="c8"
@@ -2476,10 +2486,10 @@ exports[`popconfirm Demo Component JSON 1`] = `
                 >
                   <div>
                     <div
-                      className="c46"
+                      className="c48"
                     >
                       <div
-                        className="c47"
+                        className="c49"
                         style={
                           Object {
                             "background": "red",
@@ -2487,7 +2497,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
                         }
                       >
                         <i
-                          className="lugia-icon-reminder_question c48 c49"
+                          className="lugia-icon-reminder_question c50 c51"
                         />
                       </div>
                     </div>
@@ -2521,7 +2531,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
                       </span>
                     </button>
                     <button
-                      className="c45"
+                      className="c47"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}

@@ -41,11 +41,11 @@ export type TooltipProps = {
   onVisibleChange: Function,
   size: ToolTipSize,
   popArrowType?: 'sharp' | 'round',
-  visible?: boolean,
+  visible: boolean,
   defaultVisible?: boolean,
 };
 export type TooltipState = {
-  visible?: boolean,
+  visible: boolean,
 };
 export const RadiusSize = em(4);
 export const Left = 'left';
@@ -119,7 +119,7 @@ export const getArrow = (props: Object) => {
     case Down:
       return `
         left: ${em(10)};
-        bottom: ${em(-5)};
+        bottom: ${em(-3)};
         border-width: ${em(5)} ${em(5)} 0;
         border-top-color: ${getColor(props)};
       `;
