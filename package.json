@@ -8,6 +8,7 @@
     "core-js": "^2.5.7",
     "css-animation": "1.4.1",
     "enquire.js": "^2.1.6",
+    "events": "^3.0.0",
     "flow": "^0.2.3",
     "flow-bin": "^0.87.0",
     "moment": "^2.22.2",
@@ -93,9 +94,9 @@
     "prettier": "^1.13.5",
     "promise": "8.0.1",
     "pump": "1.0.2",
+    "raf": "3.4.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "raf": "3.4.0",
     "react-test-renderer": "16.5.2",
     "rimraf": "^2.6.2",
     "shx": "0.2.2",
@@ -164,8 +165,7 @@
     "presets": [
       "react-app"
     ],
-    "plugins": [
-    ]
+    "plugins": []
   },
   "engines": {
     "node": ">=8.0.0",
