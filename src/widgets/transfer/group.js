@@ -151,18 +151,21 @@ export default ThemeProvider(
         <TransFerWrap>
           <TransFer
             key="1"
-            displayField={displayField}
-            valueField={valueField}
-            direction="left"
-            type={type}
+            // displayField={displayField}
+            // valueField={valueField}
+            direction="Source"
+            // type={type}
             onSelect={this.handleSourceSelect}
-            data={theSourceData}
+            // // data={theSourceData}
+            // data={this.props.data}
             selectedKeys={[...sourceSelectedKeys]}
-            showSearch={showSearch}
-            onCheckAll={this.checkAllForLeft}
-            canCheckKeys={sourceCheckKeys || enableKeys}
-            onSearch={this.searchCallbackForLeft}
-            title="列表A"
+            // showSearch={showSearch}
+            // onCheckAll={this.checkAllForLeft}
+            // canCheckKeys={sourceCheckKeys || enableKeys}
+            // onSearch={this.searchCallbackForLeft}
+            // title="列表A"
+            {...this.props}
+            type={type}
             // 左侧 黑单
             blackList={targetKeys}
           />
@@ -170,7 +173,7 @@ export default ThemeProvider(
             <Button
               onClick={this.handleToRight}
               type="primary"
-              disabled={sourceSelectedKeys.length === 0}
+              // disabled={sourceSelectedKeys.length === 0}
             >
               <BtnText>></BtnText>
             </Button>
@@ -178,28 +181,33 @@ export default ThemeProvider(
             <Button
               onClick={this.handleToLeft}
               type="primary"
-              disabled={targetSelectedKeys.length === 0}
+              // disabled={targetSelectedKeys.length === 0}
             >
               <BtnText>{'<'}</BtnText>
             </Button>
           </OperationBtn>
           <TransFer
             key="2"
+            // displayField={displayField}
+            // valueField={valueField}
+            direction="Target"
+            // type={type}
+            onSelect={this.handleTargetSelect}
+            // data={theTargetData}
+            selectedKeys={[...targetSelectedKeys]}
+            // showSearch={showSearch}
+            // onCheckAll={this.checkAllForRight}
+            // canCheckKeys={targetCheckKeys}
+            // onSearch={this.searchCallbackForRight}
+            // needCancelBox
+            // cancelItem={cancelItem}
+            // onCancelItemClick={this.handleCancelItemClick}
+            // title="列表B"
+            {...this.props}
             displayField={displayField}
             valueField={valueField}
-            direction="right"
             type={type}
-            onSelect={this.handleTargetSelect}
-            data={theTargetData}
-            selectedKeys={[...targetSelectedKeys]}
-            showSearch={showSearch}
-            onCheckAll={this.checkAllForRight}
-            canCheckKeys={targetCheckKeys}
-            onSearch={this.searchCallbackForRight}
-            needCancelBox
-            cancelItem={cancelItem}
-            onCancelItemClick={this.handleCancelItemClick}
-            title="列表B"
+            // onSelect={this.handleSelect}
             //右侧 白单
             whiteList={targetKeys}
           />

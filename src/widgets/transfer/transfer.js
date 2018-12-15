@@ -9,6 +9,7 @@ import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Menu from '../menu';
+import TransferMenu from './transfer-menu';
 import Tree from '../tree';
 import Input from '../input';
 import CheckBox from '../checkbox';
@@ -108,13 +109,12 @@ export default ThemeProvider(
           ? isContained(selectedKeys, canCheckKeys)
           : isContained(getKeys(data ? data : [], valueField), selectedKeys);
       const list = {};
-      if (type === 'tree') {
-        if (blackList) {
-          list.blackList = blackList;
-        }
-        if (whiteList) {
-          list.whiteList = whiteList;
-        }
+
+      if (blackList) {
+        list.blackList = blackList;
+      }
+      if (whiteList) {
+        list.whiteList = whiteList;
       }
 
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
@@ -147,15 +147,7 @@ export default ThemeProvider(
             <MenuWrap>
               <Theme config={menuView}>
                 {type === 'panel' ? (
-                  <Menu
-                    checkedCSS={'checkbox'}
-                    mutliple={true}
-                    data={data}
-                    selectedKeys={selectedKeys}
-                    onClick={this.onClick}
-                    displayField={displayField}
-                    valueField={valueField}
-                  />
+                  <TransferMenu {...this.props} query={inputValue} {...list} />
                 ) : (
                   <TreeWrap direction={direction}>
                     <Tree
@@ -190,9 +182,6 @@ export default ThemeProvider(
       this.setState({
         inputValue: newValue,
       });
-      if (type === 'panel') {
-        onSearch && onSearch(newValue);
-      }
     };
     onClick = (e, keys, item) => {
       const { onSelect, valueField } = this.props;

@@ -13,13 +13,21 @@ const em = px2emcss(FontSize);
 
 export type TransferMenuProps = {
   data: Object[],
-  selectKeys: string[],
   blackList?: string[],
   whiteList?: string[],
+  displayField: string,
+  valueField: string,
+  displayValue?: string[],
+  direction: 'Source' | 'Target',
+  onSelect: Function,
+  query?: string,
+  filterOption?: Function,
 };
 export type TransferMenuState = {
-  data: Object[],
-  selectKeys: string[],
-  blackList: string[],
-  whiteList: string[],
+  mapData: Object,
+  // selectKeys: string[],
+  menuData: Object[],
+  cancelItem: Object[],
+  // blackList?: string[],
+  // whiteList?: string[],
 };

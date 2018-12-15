@@ -24,7 +24,7 @@ export type TransferProps = {
   cancelItem?: Object[],
   needCancelBox?: boolean,
   type: 'panel' | 'tree',
-  direction: 'left' | 'right',
+  direction: 'Source' | 'Target',
   blackList?: string[],
   whiteList?: string[],
   title: string,
