@@ -16,15 +16,33 @@ export default class Listener<T> {
 
   on(eventName: T, cb: Function) {
     this.events.on(eventName, cb);
-    const removeListener = () => {
-      this.events.removeListener(eventName, cb);
-    };
     return {
-      removeListener,
+      removeListener: this.createRemoveListenerTarget(eventName, cb),
+    };
+  }
+
+  once(eventName: T, cb: Function) {
+    this.events.once(eventName, cb);
+    return {
+      removeListener: this.createRemoveListenerTarget(eventName, cb),
+    };
+  }
+
+  createRemoveListenerTarget(eventName: T, cb: Function) {
+    return () => {
+      this.events.removeListener(eventName, cb);
     };
   }
 
   emit(eventName: string, param: Object) {
     this.events.emit(eventName, param);
+  }
+
+  removeAllListeners() {
+    this.events.removeAllListeners();
+  }
+
+  removeListener(event: T) {
+    this.events.removeListener(event);
   }
 }
