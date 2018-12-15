@@ -15,7 +15,6 @@ import TreeUtils from './utils';
 import styled from 'styled-components';
 import { BarDefaultSize } from '../css/scroller';
 import { adjustValue } from '../utils';
-import { MenuItemHeight, DefaultHeight } from '../css/tree';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 
@@ -116,7 +115,8 @@ class ScrollerTree extends React.Component<any, any> {
   }
 
   getTheme() {
-    const { getTheme } = this.props;
+    const { getTheme, themeStyle } = this.props;
+    const { DefaultHeight, MenuItemHeight } = themeStyle;
     const theme = getTheme();
     const { height = DefaultHeight } = theme;
     theme.height = adjustValue(height, MenuItemHeight);
@@ -124,7 +124,7 @@ class ScrollerTree extends React.Component<any, any> {
   }
 
   loopNode = (data: Array<RowData>) => {
-    const { igronSelectField } = this.props;
+    const { igronSelectField, themeStyle } = this.props;
     return data.map(item => {
       const { selectable, displayField, valueField } = this.props;
       const { children, [valueField]: key, [displayField]: title, isLeaf } = item;
@@ -132,6 +132,7 @@ class ScrollerTree extends React.Component<any, any> {
       if (children !== undefined) {
         return (
           <TreeNode
+            themeStyle={themeStyle}
             key={key}
             title={title}
             isLeaf={isLeaf}
@@ -144,6 +145,7 @@ class ScrollerTree extends React.Component<any, any> {
       }
       return (
         <TreeNode
+          themeStyle={themeStyle}
           key={key}
           title={title}
           isLeaf={isLeaf}
@@ -155,4 +157,4 @@ class ScrollerTree extends React.Component<any, any> {
   };
 }
 
-export default ThrottleScroller(ScrollerTree, MenuItemHeight);
+export default ThrottleScroller(ScrollerTree, 32);

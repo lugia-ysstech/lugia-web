@@ -5,12 +5,24 @@
  * @flow
  */
 import * as React from 'react';
-import Tree from './tree';
+import Tree from '../tree';
 import Widget from '../consts/index';
 import Theme from '../theme';
 import Menu from '../menu';
 import styled from 'styled-components';
 import { getTreeData } from '../menu/utils';
+
+import { MenuItemHeight, DefaultHeight } from '../css/navmenu';
+import { TreeUl } from '../css/navmenu';
+import {
+  themeColor,
+  Switcher,
+  NullSwitcher,
+  Li,
+  ChildrenUl,
+  TitleWrap,
+  TitleSpan,
+} from '../css/navmenu';
 
 const MenuWrap = styled.div`
   display: inline-block;
@@ -53,6 +65,18 @@ type NavMenuProps = {
 
 type NavMenuState = {
   data: Object[],
+};
+const themeStyle = {
+  MenuItemHeight,
+  DefaultHeight,
+  TreeUl,
+  themeColor,
+  Switcher,
+  NullSwitcher,
+  Li,
+  ChildrenUl,
+  TitleWrap,
+  TitleSpan,
 };
 export default class MenuTree extends React.Component<NavMenuProps, NavMenuState> {
   static defaultProps = {
@@ -134,6 +158,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           onlySelectLeaf={true}
           onChange={this.onChange}
           onClick={this.onClick}
+          themeStyle={themeStyle}
           // onSelect={this.onSelect}
           onExpand={this.onExpand}
         />

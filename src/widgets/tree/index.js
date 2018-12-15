@@ -22,6 +22,18 @@ import { FontSizeNumber, FontSize } from '../css';
 import { px2emcss } from '../css/units';
 import type { QueryType } from '@lugia/lugia-web';
 
+import { MenuItemHeight, DefaultHeight } from '../css/tree';
+import { TreeUl } from '../css/tree';
+import {
+  themeColor,
+  Switcher,
+  NullSwitcher,
+  Li,
+  ChildrenUl,
+  TitleWrap,
+  TitleSpan,
+} from '../css/tree';
+
 const em = px2emcss(FontSizeNumber);
 
 type RowData = { [key: string]: any };
@@ -58,6 +70,7 @@ type TreeProps = {
   blackList: ?(string[]),
   whiteList: ?(string[]),
   searchType?: QueryType,
+  themeStyle: Object,
 };
 
 type TreeState = {
@@ -91,6 +104,18 @@ class Tree extends React.Component<TreeProps, TreeState> {
     query: '',
     current: -1,
     openAnimation: animation,
+    themeStyle: {
+      MenuItemHeight,
+      DefaultHeight,
+      TreeUl,
+      themeColor,
+      Switcher,
+      NullSwitcher,
+      Li,
+      ChildrenUl,
+      TitleWrap,
+      TitleSpan,
+    },
   };
 
   static TreeNode: TreeNode;
@@ -427,6 +452,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       whiteList,
       searchType = 'include',
       valueField,
+      themeStyle,
     } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;
@@ -466,6 +492,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         halfCheckedKeys={Object.keys(halfchecked)}
         utils={utils}
         expandedKeys={expandedKeys}
+        menuItemHeight={themeStyle.MenuItemHeight}
         onExpand={this.onExpand}
       />
     );

@@ -5,15 +5,7 @@ import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
 import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
-import {
-  themeColor,
-  Switcher,
-  NullSwitcher,
-  Li,
-  ChildrenUl,
-  TitleWrap,
-  TitleSpan,
-} from '../../css/tree';
+
 import Widget from '../../consts';
 import Theme from '../../theme';
 
@@ -154,6 +146,8 @@ class TreeNode extends React.Component {
       expandedState === 'open'
         ? 'lugia-icon-direction_caret_down'
         : 'lugia-icon-direction_caret_right';
+    const { Switcher } = props.themeStyle;
+
     return (
       <Switcher onClick={props.disabled ? null : this.onExpand} expandedState={expandedState}>
         <CommonIcon iconClass={iconClass} />
@@ -163,6 +157,8 @@ class TreeNode extends React.Component {
 
   renderCheckbox(props) {
     const { checked, halfChecked: indeterminate, notCanSelect: disabled, title } = props;
+    const { themeColor } = props.themeStyle;
+
     const view = {
       [Widget.CheckBox]: { color: themeColor },
     };
@@ -208,7 +204,7 @@ class TreeNode extends React.Component {
           delete animProps.animation.appear;
         }
       }
-
+      const { ChildrenUl } = props.themeStyle;
       newChildren = (
         <Animate
           {...animProps}
@@ -248,6 +244,7 @@ class TreeNode extends React.Component {
         iconState = 'docu';
       }
     }
+    const { TitleWrap, NullSwitcher, Li, TitleSpan } = props.themeStyle;
 
     const selectHandle = () => {
       const title = <TitleSpan title={content}>{content}</TitleSpan>;
@@ -273,6 +270,7 @@ class TreeNode extends React.Component {
       }
 
       const { checked, selected, notCanSelect } = this.props;
+
       return (
         <TitleWrap
           ref={this.saveSelectHandle}

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import warning from 'warning';
 import { getOffset, isInclude, traverseTreeNodes, updateCheckState } from './util';
-import { TreeUl } from '../../css/tree';
 function noop() {}
 
 export const contextTypes = {
@@ -466,7 +465,9 @@ class Tree extends React.Component {
       domProps.tabIndex = '0';
       domProps.onKeyDown = this.onKeyDown;
     }
-
+    const {
+      themeStyle: { TreeUl },
+    } = props;
     return (
       <TreeUl
         {...domProps}

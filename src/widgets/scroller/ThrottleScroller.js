@@ -125,7 +125,9 @@ export default (Target: React.ComponentType<any>, menuItemHeight: number) => {
 
       const end = this.fetchEnd(start);
       const canSeeCount = this.canSeeCount();
-
+      if ('menuItemHeight' in props) {
+        menuItemHeight = props.menuItemHeight;
+      }
       return pack([
         <Col theme={theme}>
           <Target
