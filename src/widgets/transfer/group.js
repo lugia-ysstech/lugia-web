@@ -10,17 +10,18 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import TransFer from './transfer';
 import Button from '../button';
-import { TransFerWrap, OperationBtn, BtnText } from '../css/transfer-group';
 import type { GroupProps, GroupState } from '../css/transfer-group';
+import { BtnText, OperationBtn, TransFerWrap } from '../css/transfer-group';
 import { DisplayField, ValueField } from '../consts/props';
 import {
-  getTruthValue,
-  getPanelSourceDataAndTargetData,
-  splitSelectKeys,
-  getTreeData,
   getCancelItem,
   getCanCheckKeys,
+  getPanelSourceDataAndTargetData,
+  getTreeData,
+  getTruthValue,
+  splitSelectKeys,
 } from './utils';
+import TransferModel from './model';
 
 export default ThemeProvider(
   class extends React.Component<GroupProps, GroupState> {
@@ -28,6 +29,37 @@ export default ThemeProvider(
     sourceInputValue: string;
     targetInputValue: string;
     maping: boolean;
+    sourceModel: TransferModel;
+    targetModel: TransferModel;
+    constructor(props: GroupProps) {
+      super(props);
+      const sourceSelctKeys = this.getSourceSelectedKeys(props);
+      const targetSelctKeys = this.getTaragetSelectedKeys(props);
+      const theTargetKeys = this.getTargetKeys(props);
+
+      this.targetModel = new TransferModel({
+        type: 'Target',
+        selectedKeys: targetSelctKeys,
+        list: theTargetKeys,
+      });
+      this.sourceModel = new TransferModel({
+        type: 'Source',
+        selectedKeys: sourceSelctKeys,
+        list: theTargetKeys,
+      });
+    }
+
+    getTaragetSelectedKeys(props) {
+      return getTruthValue('targetSelectedKeys', props, undefined, 'defaultTargetSelectedKeys');
+    }
+
+    getSourceSelectedKeys(props) {
+      return getTruthValue('sourceSelectedKeys', props, undefined, 'defaultSourceSelectedKeys');
+    }
+
+    getTargetKeys(props) {
+      return getTruthValue('targetKeys', props, undefined, 'defaultTargetKeys');
+    }
 
     static getDerivedStateFromProps(props, state) {
       const {
@@ -121,7 +153,19 @@ export default ThemeProvider(
           }
         }
       }
-
+      if (this.isInProps('targetSelectedKeys')) {
+        const targetSelctKeys = this.getTaragetSelectedKeys(nextProps);
+        this.targetModel.changeSelectedKeys(targetSelctKeys);
+      }
+      if (this.isInProps('sourceSelectedKeys')) {
+        const keys = this.getSourceSelectedKeys(nextProps);
+        this.sourceModel.changeSelectedKeys(keys);
+      }
+      if (this.isInProps('targetKeys')) {
+        const targetSelctKeys = this.getTargetKeys(nextProps);
+        this.targetModel.changeList(targetSelctKeys);
+        this.sourceModel.changeList(targetSelctKeys);
+      }
       return true;
     }
 
@@ -158,7 +202,7 @@ export default ThemeProvider(
             onSelect={this.handleSourceSelect}
             // // data={theSourceData}
             // data={this.props.data}
-            selectedKeys={[...sourceSelectedKeys]}
+            model={this.sourceModel}
             // showSearch={showSearch}
             // onCheckAll={this.checkAllForLeft}
             // canCheckKeys={sourceCheckKeys || enableKeys}
@@ -167,7 +211,6 @@ export default ThemeProvider(
             {...this.props}
             type={type}
             // 左侧 黑单
-            blackList={targetKeys}
           />
           <OperationBtn>
             <Button
@@ -190,11 +233,11 @@ export default ThemeProvider(
             key="2"
             // displayField={displayField}
             // valueField={valueField}
+            model={this.targetModel}
             direction="Target"
             // type={type}
             onSelect={this.handleTargetSelect}
             // data={theTargetData}
-            selectedKeys={[...targetSelectedKeys]}
             // showSearch={showSearch}
             // onCheckAll={this.checkAllForRight}
             // canCheckKeys={targetCheckKeys}
@@ -209,7 +252,6 @@ export default ThemeProvider(
             type={type}
             // onSelect={this.handleSelect}
             //右侧 白单
-            whiteList={targetKeys}
           />
         </TransFerWrap>
       );
@@ -224,7 +266,7 @@ export default ThemeProvider(
       if (hasSourceSelectedKeys) {
         return;
       }
-      this.setState({ sourceSelectedKeys: selectKeys });
+      this.sourceModel.changeSelectedKeys(selectKeys);
     };
 
     handleTargetSelect = (item: string[]) => {
@@ -237,7 +279,7 @@ export default ThemeProvider(
       if (hasTargetSelectedKeys) {
         return;
       }
-      this.setState({ targetSelectedKeys: selectKeys });
+      this.targetModel.changeSelectedKeys(selectKeys);
     };
 
     getSelectKeys = (type: 'panel' | 'tree', item: string[], oldSelectKeys: string[]) => {
@@ -287,10 +329,8 @@ export default ThemeProvider(
       if (hasTargetKeys) {
         return;
       }
-      this.setState({
-        targetSelectedKeys: disabledCheckedKeys,
-        targetKeys: nextTargetKeys,
-      });
+      this.targetModel.changeSelectedKeys(disabledCheckedKeys);
+      this.targetModel.changeList(nextTargetKeys);
     };
 
     handleToRight = () => {
@@ -307,10 +347,8 @@ export default ThemeProvider(
       if (hasTargetKeys) {
         return;
       }
-      this.setState({
-        sourceSelectedKeys: disabledCheckedKeys,
-        targetKeys: nextTargetKeys,
-      });
+      this.sourceModel.changeSelectedKeys(disabledCheckedKeys);
+      this.sourceModel.changeList(nextTargetKeys);
     };
 
     checkAllForLeft = (checked: boolean) => {

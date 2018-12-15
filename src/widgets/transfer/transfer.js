@@ -8,7 +8,6 @@
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import Menu from '../menu';
 import TransferMenu from './transfer-menu';
 import Tree from '../tree';
 import Input from '../input';
@@ -17,27 +16,48 @@ import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
 import {
-  TransFer,
-  MenuWrap,
-  Check,
-  CheckText,
-  NoData,
   CancelBox,
   CancelBoxItem,
+  Check,
+  CheckText,
+  MenuWrap,
+  NoData,
+  TransFer,
   TreeWrap,
 } from '../css/transfer';
-import { isContained, getKeys } from './utils';
+import { getKeys, isContained } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
     maping: boolean;
+
     constructor(props) {
       super(props);
+
+      const { model } = this.props;
+
       this.state = {
         inputValue: '',
+        selectedKeys: model.getSelectedkeys(),
+        typeList: model.getTypeList(),
       };
+
+      model.on('onSelectedKeyChange', param => {
+        const { data } = param;
+        this.setState({
+          selectedKeys: data,
+        });
+      });
+
+      model.on('onListChange', param => {
+        const { data } = param;
+        this.setState({
+          typeList: data,
+        });
+      });
       this.maping = false;
     }
+
     createCancelCheckBox = () => {
       const { cancelItem = [], displayField, valueField } = this.props;
       const hasCancelItem = cancelItem && cancelItem.length > 0;
@@ -62,16 +82,16 @@ export default ThemeProvider(
 
       return null;
     };
+
     render() {
+      const { selectedKeys = [], typeList } = this.state;
+
       const {
         showSearch,
-        selectedKeys = [],
         data = [],
         canCheckKeys,
         needCancelBox = false,
         type,
-        blackList,
-        whiteList,
         title,
         direction,
         displayField,
@@ -110,13 +130,6 @@ export default ThemeProvider(
           : isContained(getKeys(data ? data : [], valueField), selectedKeys);
       const list = {};
 
-      if (blackList) {
-        list.blackList = blackList;
-      }
-      if (whiteList) {
-        list.whiteList = whiteList;
-      }
-
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
       return (
         <TransFer>
@@ -147,7 +160,12 @@ export default ThemeProvider(
             <MenuWrap>
               <Theme config={menuView}>
                 {type === 'panel' ? (
-                  <TransferMenu {...this.props} query={inputValue} {...list} />
+                  <TransferMenu
+                    {...this.props}
+                    query={inputValue}
+                    {...typeList}
+                    selectedKeys={selectedKeys}
+                  />
                 ) : (
                   <TreeWrap direction={direction}>
                     <Tree
@@ -159,7 +177,7 @@ export default ThemeProvider(
                       mutliple
                       onChange={this.handleTreeChange}
                       query={inputValue}
-                      {...list}
+                      {...typeList}
                     />
                   </TreeWrap>
                 )}
@@ -172,6 +190,7 @@ export default ThemeProvider(
         </TransFer>
       );
     }
+
     cancelItemClick = (value: string) => {
       const { onCancelItemClick } = this.props;
       onCancelItemClick && onCancelItemClick(value);
@@ -191,6 +210,10 @@ export default ThemeProvider(
       const { onSelect } = this.props;
       onSelect && onSelect(value);
     };
+
+    componentWillUnmount(): void {
+      this.props.model.removeAllListeners();
+    }
   },
   Widget.Transfer
 );
