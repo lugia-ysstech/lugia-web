@@ -85,12 +85,12 @@ export function getSelectedKeys(props: MenuProps, state: ?MenuState): Array<stri
 }
 
 export function getPopupVisible(props: MenuProps, state: MenuState): boolean {
-  const { popupVisible = false } = props;
+  const { popupVisible = true } = props;
   if ('popupVisible' in props) {
     return popupVisible;
   }
-  const childData = state.childData;
-  return childData && childData.length > 0 && popupVisible ? true : false;
+
+  return true;
 }
 
 export function getTargetOrDefaultTarget(condition: boolean, target: any, defaultTarget: any) {
@@ -251,7 +251,7 @@ export function getTreeData(props: Object) {
   const newData = [];
   const { data, valueField = 'value', displayField = 'text' } = props;
   if (data && data.length > 0) {
-    recurTreeData(data, newData, { displayField, valueField });
+    recurTreeData(data, newData, {}, { displayField, valueField });
   }
   return newData;
 }
@@ -290,7 +290,12 @@ export function recurTreeData(
       outTreeRowData.push(newObj);
       onAdd && onAdd(newObj);
       if (!isLeaf) {
-        recurTreeData(children, outTreeRowData, { parentKey: item.value, parentPath: path }, opt);
+        recurTreeData(
+          children,
+          outTreeRowData,
+          { parentKey: item[valueField], parentPath: path },
+          opt
+        );
       }
     });
 }

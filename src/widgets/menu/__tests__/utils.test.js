@@ -95,19 +95,19 @@ describe('Menu utils', () => {
   ];
 
   const treeData = [
-    { value: '1', path: undefined, pid: undefined, text: '1' },
-    { value: '1-1', path: '1', pid: '1', text: '1-1' },
-    { value: '1-1-1', path: '1/1-1', pid: '1-1', text: '1-1-1' },
-    { value: '1-1-1-1', path: '1/1-1/1-1-1', pid: '1-1-1', text: '1-1-1-1' },
+    { isLeaf: false, pid: undefined, text: '1', value: '1' },
+    { isLeaf: false, path: '1', pid: '1', text: '1-1', value: '1-1' },
+    { isLeaf: false, path: '1/1-1', pid: '1-1', text: '1-1-1', value: '1-1-1' },
+    { isLeaf: false, path: '1/1-1/1-1-1', pid: '1-1-1', text: '1-1-1-1', value: '1-1-1-1' },
     {
       isLeaf: true,
-      value: '1-1-1-1-1',
       path: '1/1-1/1-1-1/1-1-1-1',
       pid: '1-1-1-1',
       text: '1-1-1-1-1',
+      value: '1-1-1-1-1',
     },
-    { isLeaf: true, value: '2', path: undefined, pid: undefined, text: '2' },
-    { isLeaf: true, value: '3', path: undefined, pid: undefined, text: '3' },
+    { isLeaf: true, pid: undefined, text: '2', value: '2' },
+    { isLeaf: true, pid: undefined, text: '3', value: '3' },
   ];
 
   it('getCascaderKeys ', () => {
