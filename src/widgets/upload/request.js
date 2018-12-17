@@ -42,7 +42,7 @@ function addEventListener(
   target.addEventListener(event, func, useCapture);
 }
 
-export function request(dataObject: Object): Object {
+function request(dataObject: Object) {
   const { url } = dataObject;
   if (!url) {
     return;
@@ -74,8 +74,6 @@ export function request(dataObject: Object): Object {
       Object.keys(headers).forEach(k => {
         xhr.setRequestHeader(k, headers[k]);
       });
-    } else {
-      // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     }
     xhr.send(params);
   }
@@ -86,13 +84,13 @@ export function request(dataObject: Object): Object {
     const { readyState, status } = xhr;
     if (readyState === 4) {
       if (status === 200) {
-        if (datetype === 'text') {
+        if (datetype.toLocaleLowerCase() === 'text') {
           onSuccess && onSuccess(xhr.responseText);
         }
-        if (datetype === 'xml') {
+        if (datetype.toLocaleLowerCase() === 'xml') {
           onSuccess && onSuccess(xhr.responseXML);
         }
-        if (datetype === 'json') {
+        if (datetype.toLocaleLowerCase() === 'json') {
           onSuccess && onSuccess(JSON.parse(xhr.responseText));
         }
       } else {
@@ -100,8 +98,7 @@ export function request(dataObject: Object): Object {
       }
     }
   };
-  console.log('------', xhr);
   return xhr;
 }
 
-// export default request;
+export default request;

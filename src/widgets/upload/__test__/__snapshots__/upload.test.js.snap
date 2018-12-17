@@ -17,7 +17,6 @@ exports[`Rate Test css 1`] = `
 .c1 {
   width: 366px;
   position: relative;
-  padding: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,6 +37,7 @@ exports[`Rate Test css 1`] = `
   line-height: 30px;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
 }
 
 .c3.done {
@@ -78,7 +78,15 @@ exports[`Rate Test css 1`] = `
   transform: translateY(-50%);
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 30px;
+}
+
+.c3 i.success {
+  color: #56c22d;
+}
+
+.c3 i.error {
+  color: #f22735;
 }
 
 .c4.loadIcon {
@@ -100,6 +108,7 @@ exports[`Rate Test css 1`] = `
     <input
       accept="*"
       className="c2"
+      id="upload"
       multiple={false}
       onChange={[Function]}
       type="file"

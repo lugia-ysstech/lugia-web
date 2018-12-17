@@ -8,8 +8,6 @@
  */
 import React from 'react';
 import Upload from './index';
-import Theme from '../theme';
-import Widget from '../consts/index';
 import styled from 'styled-components';
 
 const Title = styled.div`
@@ -54,17 +52,15 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       fileList: [
         { id: 1, name: '文件11111.jpg', status: 'done' },
-        { id: 4, name: '文件666.doc', status: 'fail', percent: 30 },
-        { id: 2, name: '文件22222222.mp4', status: 'loading' },
-        { id: 3, name: '文件333.jpg', status: 'loading', percent: 30 },
+        { id: 2, name: '文件666.doc', status: 'fail' },
       ],
     };
     const defaultProps2 = {
       listType: 'both',
       inputId: 'upload2',
       url: 'http://localhost:7001/upload',
-      showFileList: true,
       autoUpload: false,
+      showFileList: false,
     };
     const defaultProps3 = {
       listType: 'picture',
@@ -94,19 +90,19 @@ class UploadDemo extends React.Component<any, any> {
     return (
       <div>
         <Title>默认： </Title>
-        <Upload {...defaultProps} />
+        <Upload {...defaultProps} key={'A123'} />
         <Title>Button： </Title>
-        <Upload {...defaultProps1} />
+        <Upload {...defaultProps1} key={'A223'} />
         <Title>Both： </Title>
-        <Upload {...defaultProps2} />
+        <Upload {...defaultProps2} key={'A323'} />
         <Title>picture large accept(image)： </Title>
-        <Upload {...defaultProps3} />
+        <Upload {...defaultProps3} key={'A423'} />
         <Title>picture middle： </Title>
-        <Upload {...defaultProps4} />
+        <Upload {...defaultProps4} key={'A523'} />
         <Title>picture small： </Title>
-        <Upload {...defaultProps5} />
+        <Upload {...defaultProps5} key={'A623'} />
         <Title>area： </Title>
-        <Upload {...defaultProps6} />
+        <Upload {...defaultProps6} key={'A723'} />
       </div>
     );
   }

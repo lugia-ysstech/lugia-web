@@ -22,7 +22,7 @@ const LoadIcon = styled(Icon)`
     margin-right: 10px;
   }
 `;
-const getIcon = (status: string): React.Node | null => {
+const getIcon = (status: string) => {
   return status ? <LoadIcon iconClass={status} /> : null;
 };
 
@@ -124,9 +124,10 @@ describe('Rate Test', () => {
   checkGetParamsData({ data: { a: 123, b: 223 }, name: 'file', file: '666' });
   checkGetParamsData({ data: { a: 777, b: 888 }, name: 'abc', file: '567' });
 
-  function checkGetIconByType(status: string, expectation: boolean | string, type?: number) {
+  function checkGetIconByType(status: ?string, expectation: ?string, props?: Object = {}) {
     it('Function GetIconByType ', () => {
-      const res = getIconByType(status, type);
+      const res = getIconByType(status, props);
+      const { type } = props;
       if (!status) {
         expect(res).toBe(expectation);
       } else if (type === 1 && status === 'default') {
@@ -137,12 +138,11 @@ describe('Rate Test', () => {
       }
     });
   }
-  checkGetIconByType('default', '上传', 1);
+  checkGetIconByType('default', '上传', { type: 1 });
   checkGetIconByType('default', 'lugia-icon-financial_upload right');
   checkGetIconByType('loading', 'lugia-icon-financial_loading_o loadIcon');
-  checkGetIconByType(null, undefined);
-  checkGetIconByType(undefined, undefined);
-  checkGetIconByType(undefined, undefined, 1);
+  checkGetIconByType(undefined, null);
+  checkGetIconByType(undefined, null, { type: 1 });
 
   function setStateValue(props: Object, expectation: Object) {
     it('Function setStateValue ', () => {
@@ -152,11 +152,21 @@ describe('Rate Test', () => {
   }
   setStateValue(
     { classNameStatus: 'done', defaultText: '文件已上传成功！' },
-    { classNameStatus: 'done', defaultText: '文件已上传成功！', fileList: [], isAllowUpload: true }
+    {
+      classNameStatus: 'done',
+      defaultText: '文件已上传成功！',
+      fileListDone: [],
+      isAllowUpload: true,
+    }
   );
   setStateValue(
     { classNameStatus: 'loading', defaultText: '文件正在上传！' },
-    { classNameStatus: 'loading', defaultText: '文件正在上传！', fileList: [], isAllowUpload: true }
+    {
+      classNameStatus: 'loading',
+      defaultText: '文件正在上传！',
+      fileListDone: [],
+      isAllowUpload: true,
+    }
   );
   setStateValue(
     { classNameStatus: 'default', defaultText: '文件已上传成功！', abc: 'abc' },
@@ -164,7 +174,7 @@ describe('Rate Test', () => {
       abc: 'abc',
       classNameStatus: 'default',
       defaultText: '文件已上传成功！',
-      fileList: [],
+      fileListDone: [],
       isAllowUpload: true,
     }
   );
@@ -195,10 +205,10 @@ describe('Rate Test', () => {
     it('Function uploadProgress ', () => {
       target
         .instance()
-        .setStateValue({ fileList: [{ id: 1, name: '文件11111.jpg', status: 'default' }] });
+        .setStateValue({ fileListDone: [{ id: 1, name: '文件11111.jpg', status: 'default' }] });
       target.instance().uploadProgress(props, 1);
       expect(target.state().classNameStatus).toEqual(expectation);
-      expect(target.state().fileList).toEqual(expectation2);
+      expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
   uploadProgress({ currentTarget: {} }, 'loading', [
@@ -209,10 +219,10 @@ describe('Rate Test', () => {
     it('Function uploadSuccess ', () => {
       target
         .instance()
-        .setStateValue({ fileList: [{ id: 1, name: '文件11111.jpg', status: 'default' }] });
+        .setStateValue({ fileListDone: [{ id: 1, name: '文件11111.jpg', status: 'default' }] });
       target.instance().uploadSuccess(props, 1);
       expect(target.state().classNameStatus).toEqual(expectation);
-      expect(target.state().fileList).toEqual(expectation2);
+      expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
   uploadSuccess({ currentTarget: {} }, 'done', [{ id: 1, name: '文件11111.jpg', status: 'done' }]);

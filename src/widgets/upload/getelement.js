@@ -12,14 +12,12 @@ import styled, { keyframes } from 'styled-components';
 import Progress from '../progress';
 import FileInput from './fileInput';
 import { px2emcss } from '../css/units';
-import Widget from '../consts';
 import { isKeyInArray } from './upload';
 const em = px2emcss(1.2);
 
 const Container = styled.div`
   width: ${props => (props.theme.width ? props.theme.width : '366px')};
   position: relative;
-  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -44,6 +42,7 @@ const InputContent = styled.div`
   line-height: 30px;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
   &.done {
     border: 1px solid #684fff;
     color: #333;
@@ -72,7 +71,13 @@ const InputContent = styled.div`
     transform: translateY(-50%);
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: 30px;
+  }
+  & i.success {
+    color: #56c22d;
+  }
+  & i.error {
+    color: #f22735;
   }
 `;
 
@@ -112,13 +117,19 @@ const Li = styled.li`
   height: 36px;
   border-bottom: 1px dashed #e8e8e8;
   position: relative;
-  &:hover {
-    background: #f2f2f2;
+  padding-left: 5px;
+  &.fail {
+    color: #f22735;
   }
   &.loading {
     border-bottom: none;
   }
-
+  & i.success {
+    color: #56c22d;
+  }
+  & i.error {
+    color: #f22735;
+  }
   & > span {
     line-height: 36px;
   }
@@ -129,14 +140,9 @@ const Li = styled.li`
     transform: translateY(-50%);
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: 10px;
   }
-  & i.success {
-    color: #56c22d;
-  }
-  & i.error {
-    color: #f22735;
-  }
+
   & i.ccc {
     color: #ccc;
     vertical-align: middle;
@@ -147,10 +153,15 @@ const Li = styled.li`
     color: #ccc;
     display: none;
   }
-  &.loading:hover {
+  &:hover {
+    background: #f2f2f2;
     i.close {
-      display: inline-block;
+      display: block;
       font-size: 14px;
+    }
+    i.error,
+    i.success {
+      display: none;
     }
   }
 `;
@@ -211,6 +222,18 @@ const PictureView = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  padding: 6px;
+  &.done {
+    border: 1px dashed #684fff;
+  }
+  &.fail {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #666;
+  }
+
   ${getPictureViewSizeCSS}
   & i {
     font-size: 30px;
@@ -260,9 +283,10 @@ export const getListIconType = (fileName: ?string): string => {
   return 'file';
 };
 
-export const getIconByType = (status: string, type?: number): ?Object | string => {
-  if (!status) return;
-  if (type === 1 && status === 'default') return '上传';
+export const getIconByType = (status: ?string, props?: Object = {}): ?Object | string => {
+  if (!status) return null;
+  const { type } = props;
+  if (type === 1 && status !== 'loading') return '上传';
   if (status === 'default') {
     return <LoadIcon iconClass="lugia-icon-financial_upload right" />;
   }
@@ -281,8 +305,11 @@ export const getIconByType = (status: string, type?: number): ?Object | string =
   if (status === 'file') {
     return <LoadIcon iconClass="lugia-icon-financial_folder ccc" />;
   }
-  if (status === 'add') {
+  if (status === 'p-default') {
     return <LoadIcon iconClass="lugia-icon-reminder_plus" />;
+  }
+  if (status === 'p-fail') {
+    return <LoadIcon iconClass="lugia-icon-financial_monitoring" />;
   }
   if (status === 'uploadcloud') {
     return <LoadIcon iconClass="lugia-icon-financial_upload_cloud" />;
@@ -293,14 +320,21 @@ export const getIconByType = (status: string, type?: number): ?Object | string =
   if (status === 'li-fail') {
     return <LoadIcon iconClass="lugia-icon-reminder_close_circle right error" />;
   }
-  if (status === 'li-loading') {
-    return <LoadIcon iconClass="lugia-icon-reminder_close right close" />;
+  if (status === 'li-delete') {
+    const { doFunction, index } = props;
+    return (
+      <LoadIcon
+        iconClass="lugia-icon-reminder_close right close"
+        onClick={e => {
+          doFunction(index);
+        }}
+      />
+    );
   }
 };
 
 const getProgress = (item: Object) => {
   const { status } = item;
-
   if (status === 'done') return;
   if (status === 'loading') {
     const { percent } = item;
@@ -312,15 +346,17 @@ const getProgress = (item: Object) => {
   }
 };
 
-const getFileList = (data: Array<Object>) => {
+const getFileList = (data: Array<Object>, close: Function) => {
   if (!data) return;
   return (
     <Ul>
-      {data.map(item => {
+      {data.map((item, index) => {
         return (
           <Li className={item.status}>
             {getIconByType(getListIconType(item.name))} <span>{item.name}</span>
-            {getIconByType('li-' + item.status)} {getProgress(item)}{' '}
+            {getIconByType('li-' + item.status)}
+            {getIconByType('li-delete', { doFunction: close, index })}
+            {getProgress(item)}
           </Li>
         );
       })}
@@ -329,14 +365,14 @@ const getFileList = (data: Array<Object>) => {
 };
 
 const getElement = (that: Object): ?Object => {
-  const { props, state } = that;
+  const { props } = that;
   const { listType } = props;
   if (!listType) return;
+  const { state } = that;
   const { classNameStatus } = state;
-  const { size, inputId, defaultText } = props;
-  const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
   if (listType === 'default') {
-    const { dropArea } = that;
+    const { dropArea, getRegisterInput, getChangeInfo, handleClickToUpload } = that;
+    const { inputId, defaultText } = props;
     return (
       <React.Fragment>
         <FileInput
@@ -352,7 +388,14 @@ const getElement = (that: Object): ?Object => {
     );
   }
   if (listType === 'both') {
-    const { handleClickToSubmit, dropArea } = that;
+    const {
+      handleClickToSubmit,
+      dropArea,
+      getRegisterInput,
+      getChangeInfo,
+      handleClickToUpload,
+    } = that;
+    const { inputId, defaultText, showFileList } = props;
     return (
       <React.Fragment>
         <FileInput
@@ -368,13 +411,16 @@ const getElement = (that: Object): ?Object => {
           innerRef={dropArea}
         >
           {defaultText}
+          {showFileList ? null : getIconByType('li-' + classNameStatus)}
         </InputContent>
 
-        <Button onClick={handleClickToSubmit}>{getIconByType(classNameStatus, 1)}</Button>
+        <Button onClick={handleClickToSubmit}>{getIconByType(classNameStatus, { type: 1 })}</Button>
       </React.Fragment>
     );
   }
   if (listType === 'button') {
+    const { inputId } = props;
+    const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
     return (
       <React.Fragment>
         <FileInput
@@ -390,24 +436,31 @@ const getElement = (that: Object): ?Object => {
     );
   }
   if (listType === 'picture') {
-    const { previewUrl } = props;
+    const { previewUrl, size, inputId } = props;
+    const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
     return (
       <React.Fragment>
         <FileInput
-          // id={inputId}
+          id={inputId}
           {...props}
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <PictureView id={inputId} size={size} onClick={handleClickToUpload}>
-          {/*{' '}*/}
-          {!previewUrl ? getIconByType('add') : <img src={previewUrl} alt="" />}
+        <PictureView
+          id={inputId}
+          size={size}
+          className={classNameStatus}
+          onClick={handleClickToUpload}
+        >
+          {!previewUrl ? getIconByType('p-' + classNameStatus) : <img src={previewUrl} alt="" />}
+          {classNameStatus === 'fail' && size !== 'small' ? <span>图片上传失败请重试</span> : null}
         </PictureView>
       </React.Fragment>
     );
   }
   if (listType === 'area') {
-    const { dropArea } = that;
+    const { dropArea, getRegisterInput, getChangeInfo, handleClickToUpload } = that;
+    const { inputId } = props;
     return (
       <React.Fragment>
         <FileInput
@@ -471,7 +524,6 @@ class GetElement extends React.Component<any, stateProps> {
       function(e) {
         e.stopPropagation();
         e.preventDefault();
-
         const files = e.target.files || e.dataTransfer.files;
         getChangeInfo('drag', files);
       },
@@ -481,7 +533,6 @@ class GetElement extends React.Component<any, stateProps> {
 
   static getDerivedStateFromProps(defProps: defProps, stateProps: stateProps) {
     const { classNameStatus, defaultText } = defProps;
-    console.log(defaultText);
     if (!stateProps) {
       return {
         classNameStatus,
@@ -500,15 +551,23 @@ class GetElement extends React.Component<any, stateProps> {
   };
   getChangeInfo = (types: string, e: Object) => {
     const { setChoosedFile } = this.props;
-    setChoosedFile && setChoosedFile(types, e);
+    if (types === 'drag') {
+      setChoosedFile && setChoosedFile(types, e);
+    } else {
+      setChoosedFile && setChoosedFile(types, e.target.files);
+    }
   };
+
   render() {
-    const { showFileList, fileList, getTheme } = this.props;
+    const { showFileList, fileListDone, getTheme } = this.props;
     return (
       <React.Fragment>
         {/*<Container theme={getTheme()} onClick={this.handleClick}>*/}
         <Container theme={getTheme()}>{getElement(this)}</Container>
-        <React.Fragment> {showFileList ? getFileList(fileList) : null}</React.Fragment>
+        <React.Fragment>
+          {' '}
+          {showFileList ? getFileList(fileListDone, this.handleClickToDelete) : null}
+        </React.Fragment>
       </React.Fragment>
     );
   }
@@ -520,6 +579,10 @@ class GetElement extends React.Component<any, stateProps> {
   handleClickToSubmit = () => {
     const { setAutoUploadState } = this.props;
     setAutoUploadState && setAutoUploadState(true);
+  };
+  handleClickToDelete = (index: number) => {
+    const { setDeleteList } = this.props;
+    setDeleteList && setDeleteList(index);
   };
 }
 

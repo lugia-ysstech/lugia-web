@@ -47,15 +47,16 @@ class FileInput extends React.Component<propTypes, any> {
         accept={accept}
         multiple={multiple}
         onChange={this.handleChange}
-        // id={inputId}
+        id={inputId}
         type="file"
       />
     );
   }
 
   handleChange = (e: Object) => {
+    if (e.target.files.length <= 0) return;
     const { getChangeInfo } = this.props;
-    getChangeInfo('choose', e);
+    getChangeInfo && getChangeInfo('choose', e);
   };
 }
 

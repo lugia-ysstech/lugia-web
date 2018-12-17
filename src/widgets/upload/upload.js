@@ -7,12 +7,9 @@
  *
  */
 import React from 'react';
-import Icon from '../icon';
-import styled, { keyframes } from 'styled-components';
-import Widget from '../consts/index';
-import Theme from '../theme';
+import styled from 'styled-components';
 import GetElement from './getelement';
-import { request, getParamsData } from './request';
+import request from './request';
 
 const Container = styled.div`
   width: ${props => (props.theme.width ? props.theme.width : '366px')};
@@ -41,7 +38,7 @@ type uploadProps = {
 type stateProps = {
   defaultText?: string,
   classNameStatus?: string,
-  fileList: Array<Object>,
+  fileListDone: Array<Object>,
   isAllowUpload: boolean,
   fileName?: string,
 };
@@ -74,7 +71,6 @@ class Upload extends React.Component<uploadProps, any> {
     multiple: false,
     showFileList: false,
     limit: 5,
-    fileList: [],
     withCredentials: false,
     autoUpload: true,
     onProgress: loop,
@@ -94,15 +90,15 @@ class Upload extends React.Component<uploadProps, any> {
       return {
         classNameStatus: 'default',
         defaultText: '请将文件拖到此处',
-        fileList: defProps.fileList,
+        fileListDone: defProps.fileList || [],
         isAllowUpload: defProps.autoUpload,
       };
     }
-    const { classNameStatus, defaultText, fileList, isAllowUpload } = stateProps;
+    const { classNameStatus, defaultText, fileListDone, isAllowUpload } = stateProps;
     return {
       classNameStatus: 'classNameStatus' in stateProps ? classNameStatus : 'default',
       defaultText: 'defaultText' in stateProps ? defaultText : '请将文件拖到此处',
-      fileList: 'fileList' in stateProps ? fileList : defProps.fileList,
+      fileListDone: 'fileListDone' in stateProps ? fileListDone : defProps.fileList,
       isAllowUpload: 'isAllowUpload' in stateProps ? isAllowUpload : defProps.autoUpload,
     };
   }
@@ -114,30 +110,20 @@ class Upload extends React.Component<uploadProps, any> {
           {...this.state}
           setChoosedFile={this.setChoosedFile}
           setAutoUploadState={this.setAutoUploadState}
+          setDeleteList={this.setDeleteList}
         />
       </Container>
     );
   }
   setChoosedFile = (types: string, res: Object): void => {
-    if (types === 'choose') {
-      this.setState(
-        {
-          choosedFile: res.target.files,
-        },
-        () => {
-          this.uploadFiles();
-        }
-      );
-    } else if (types === 'drag') {
-      this.setState(
-        {
-          choosedFile: res,
-        },
-        () => {
-          this.uploadFiles();
-        }
-      );
-    }
+    this.setState(
+      {
+        choosedFile: res,
+      },
+      () => {
+        this.uploadFiles();
+      }
+    );
   };
 
   uploadFiles = () => {
@@ -147,9 +133,9 @@ class Upload extends React.Component<uploadProps, any> {
   };
 
   getChangeUploadState = (typeState: string, i: number, id: number) => {
-    const { choosedFile, fileList } = this.state;
+    const { choosedFile, fileListDone } = this.state;
     let list;
-    if (this.isIdInArray(id, fileList)) {
+    if (this.isIdInArray(id, fileListDone)) {
       list = this.getFileList(id, [{ target: 'status', value: 'loading' }]);
     } else {
       const { listType } = this.props;
@@ -164,7 +150,7 @@ class Upload extends React.Component<uploadProps, any> {
     return {
       classNameStatus: typeState,
       fileName: choosedFile[i].name,
-      fileList: list,
+      fileListDone: list,
       defaultText: choosedFile[i].name,
     };
   };
@@ -178,29 +164,30 @@ class Upload extends React.Component<uploadProps, any> {
   };
 
   addRequest = (dataObject: Object): void => {
-    const { choosedFile, fileList } = this.state;
+    const { choosedFile, fileListDone } = this.state;
     let { i = 0 } = dataObject;
-    // const { i = 0 } = dataObject;
-    const id = fileList.length + 1 + i;
+    let id = fileListDone.length + 1 + i;
 
     const { isAllowUpload } = this.state;
     const { autoUpload } = this.props;
     let list;
     if (!autoUpload && isAllowUpload) {
-      list = this.getChangeUploadState('loading', i, fileList[i].id);
+      id = fileListDone[i].id;
+      list = this.getChangeUploadState('loading', i, id);
+      this.setStateValue({ ...list });
     } else {
       list = this.getChangeUploadState('default', i, id);
+      this.setStateValue({ ...list });
+      if (!isAllowUpload) return;
     }
-
-    this.setStateValue({ ...list });
 
     const { url, withCredentials, data } = dataObject;
     const that = this;
-
     request({
       url,
       withCredentials,
       method: 'post',
+      datetype: 'json',
       data,
       file: choosedFile[i],
       onSuccess: res => {
@@ -226,23 +213,20 @@ class Upload extends React.Component<uploadProps, any> {
   };
 
   uploadSuccess = (res: Object, id: number): void => {
-    const that = this;
-    // setTimeout(function() {
-    //   const list = that.getFileList(id, [{ target: 'status', value: 'done' }]);
-    //   that.setStateValue({ classNameStatus: 'done', fileList: list });
-    //   onSuccess && onSuccess(res);
-    // },5000);
-
     const list = this.getFileList(id, [{ target: 'status', value: 'done' }]);
-    this.setStateValue({ classNameStatus: 'done', fileList: list });
-
+    this.setStateValue({ classNameStatus: 'done', fileListDone: list });
+    const { listType } = this.props;
+    const { choosedFile } = this.state;
+    if (listType === 'picture') {
+      this.getPreviewInfo(choosedFile[0]);
+    }
     const { onSuccess } = this.props;
     onSuccess && onSuccess(res);
   };
 
   uploadComplete = (res: Object, id: number): void => {
     const { onComplete } = this.props;
-    onComplete && onComplete(res.currentTarget);
+    onComplete && onComplete(res.currentTarget.response);
   };
 
   uploadProgress = (res: Object, id: number): void => {
@@ -252,47 +236,33 @@ class Upload extends React.Component<uploadProps, any> {
       { target: 'percent', value: percent },
       { target: 'status', value: 'loading' },
     ]);
-    this.setStateValue({ classNameStatus: 'loading', fileList: list });
+    this.setStateValue({ classNameStatus: 'loading', fileListDone: list });
     const { onProgress } = this.props;
-    onProgress && onProgress(res);
+    onProgress && onProgress({ loaded, total });
   };
 
   uploadFail = (res: Object, id: number): void => {
     const list = this.getFileList(id, [{ target: 'status', value: 'fail' }]);
-    this.setStateValue({ classNameStatus: 'fail', fileList: list });
+    this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
     const { onFail } = this.props;
     onFail && onFail(res);
   };
 
   getFileList = (props: Object | number, data?: Array<Object> = []): Array<Object> => {
-    const { fileList, choosedFile } = this.state;
-
+    const { fileListDone } = this.state;
     if (typeof props === 'number' && data) {
-      fileList.forEach(i => {
+      fileListDone.forEach(i => {
         if (i.id === props) {
           data.forEach(j => {
             i[j.target] = j.value;
           });
         }
-        // if (i.listType === 'picture') {
-        //
-        //   this.getPreviewInfo(choosedFile[i]);
-        //   const {previewUrl} = this.state;
-        //   console.log('+++++++',previewUrl);
-        //   i.previewUrl = previewUrl;
-        // }
       });
-      return fileList;
+      return fileListDone;
     }
-    const { listType } = this.props;
-    if (listType === 'picture') {
-      this.getPreviewInfo(choosedFile[0]);
-      console.log('+++++++', this.getPreviewInfo(choosedFile[0]));
-      // props.previewUrl = previewUrl;
-      // props.previewUrl = this.getPreviewInfo(choosedFile[0]);
-    }
-    fileList.push(props);
-    return fileList;
+
+    fileListDone.push(props);
+    return fileListDone;
   };
 
   getPreviewInfo = (file: any): void => {
@@ -300,10 +270,14 @@ class Upload extends React.Component<uploadProps, any> {
     reader.readAsDataURL(file);
     const that = this;
     reader.onloadend = function(e) {
-      // const ccc = reader.result;
       that.setStateValue({ previewUrl: reader.result });
-      // return reader.result;
     };
+  };
+
+  setDeleteList = (index: number) => {
+    const { fileListDone } = this.state;
+    fileListDone.splice(index, 1);
+    this.setStateValue({ fileListDone });
   };
 
   setAutoUploadState = (value: boolean) => {
@@ -321,6 +295,16 @@ class Upload extends React.Component<uploadProps, any> {
         cbk && cbk();
       }
     );
+  };
+
+  abc = (a, b) => {
+    console.log(a, b);
+    return a;
+  };
+
+  abc = (a: number, b: string): number => {
+    console.log(a, b);
+    return a;
   };
 }
 
