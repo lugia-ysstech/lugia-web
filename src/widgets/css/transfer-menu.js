@@ -22,6 +22,7 @@ export type TransferMenuProps = {
   onSelect: Function,
   query?: string,
   filterOption?: Function,
+  selectedKeys: string[],
 };
 export type TransferMenuState = {
   mapData: Object,
