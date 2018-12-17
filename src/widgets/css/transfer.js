@@ -30,9 +30,12 @@ export type TransferProps = {
   title: string,
   displayField: string,
   valueField: string,
+  model: Object,
 };
 export type TransferState = {
   inputValue: string,
+  selectedKeys: string[],
+  typeList: Object,
 };
 type CSSProps = {
   direction: 'left' | 'right',
