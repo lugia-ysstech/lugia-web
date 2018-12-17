@@ -13,6 +13,7 @@ import Progress from '../progress';
 import FileInput from './fileInput';
 import { px2emcss } from '../css/units';
 import { isKeyInArray } from './upload';
+import addEventListener from 'rc-util/lib/Dom/addEventListener';
 const em = px2emcss(1.2);
 
 const Container = styled.div`
@@ -71,7 +72,7 @@ const InputContent = styled.div`
     transform: translateY(-50%);
     position: absolute;
     top: 50%;
-    right: 30px;
+    right: 10px;
   }
   & i.success {
     color: #56c22d;
@@ -277,7 +278,6 @@ export const getListIconType = (fileName: ?string): string => {
   const filetype = fileName.replace(/.+\./, '');
   const picArr = ['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'];
   if (isKeyInArray(picArr, filetype.toLowerCase())) return 'picture';
-
   const videoArr = ['mpeg', 'avi', 'mov', 'asf', 'wmv', '3gp', 'mkv', 'flv', 'rmvb', 'mp4'];
   if (isKeyInArray(videoArr, filetype.toLowerCase())) return 'video';
   return 'file';
@@ -287,39 +287,6 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
   if (!status) return null;
   const { type } = props;
   if (type === 1 && status !== 'loading') return '上传';
-  if (status === 'default') {
-    return <LoadIcon iconClass="lugia-icon-financial_upload right" />;
-  }
-  if (status === 'loading') {
-    return <LoadIcon iconClass="lugia-icon-financial_loading_o loadIcon" />;
-  }
-  if (status === 'done') {
-    return <LoadIcon iconClass="lugia-icon-financial_upload" />;
-  }
-  if (status === 'picture') {
-    return <LoadIcon iconClass="lugia-icon-financial_pic ccc" />;
-  }
-  if (status === 'video') {
-    return <LoadIcon iconClass="lugia-icon-financial_video_camera ccc" />;
-  }
-  if (status === 'file') {
-    return <LoadIcon iconClass="lugia-icon-financial_folder ccc" />;
-  }
-  if (status === 'p-default') {
-    return <LoadIcon iconClass="lugia-icon-reminder_plus" />;
-  }
-  if (status === 'p-fail') {
-    return <LoadIcon iconClass="lugia-icon-financial_monitoring" />;
-  }
-  if (status === 'uploadcloud') {
-    return <LoadIcon iconClass="lugia-icon-financial_upload_cloud" />;
-  }
-  if (status === 'li-done') {
-    return <LoadIcon iconClass="lugia-icon-reminder_check_circle right success" />;
-  }
-  if (status === 'li-fail') {
-    return <LoadIcon iconClass="lugia-icon-reminder_close_circle right error" />;
-  }
   if (status === 'li-delete') {
     const { doFunction, index } = props;
     return (
@@ -331,6 +298,42 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
       />
     );
   }
+
+  let className;
+  if (status === 'default') {
+    className = 'lugia-icon-financial_upload right';
+  }
+  if (status === 'loading') {
+    className = 'lugia-icon-financial_loading_o loadIcon';
+  }
+  if (status === 'done') {
+    className = 'lugia-icon-financial_upload';
+  }
+  if (status === 'picture') {
+    className = 'lugia-icon-financial_pic ccc';
+  }
+  if (status === 'video') {
+    className = 'lugia-icon-financial_video_camera ccc';
+  }
+  if (status === 'file') {
+    className = 'lugia-icon-financial_folder ccc';
+  }
+  if (status === 'p-default') {
+    className = 'lugia-icon-reminder_plus';
+  }
+  if (status === 'p-fail') {
+    className = 'lugia-icon-financial_monitoring';
+  }
+  if (status === 'uploadcloud') {
+    className = 'lugia-icon-financial_upload_cloud';
+  }
+  if (status === 'li-done') {
+    className = 'lugia-icon-reminder_check_circle right success';
+  }
+  if (status === 'li-fail') {
+    className = 'lugia-icon-reminder_close_circle right error';
+  }
+  return className ? <LoadIcon iconClass={className} /> : null;
 };
 
 const getProgress = (item: Object) => {
@@ -484,6 +487,12 @@ type defProps = {
   classNameStatus?: string,
   defaultText: string,
   fileName?: string,
+  setChoosedFile: Function,
+  showFileList: boolean,
+  fileListDone: Array<Object>,
+  getTheme: Function,
+  setAutoUploadState: Function,
+  setDeleteList: Function,
 };
 type stateProps = {
   status: string,
@@ -491,7 +500,7 @@ type stateProps = {
   classNameStatus?: string,
   defaultText: string,
 };
-class GetElement extends React.Component<any, stateProps> {
+class GetElement extends React.Component<defProps, stateProps> {
   static defaultProps = {};
   dropArea: any;
   constructor(props: Object) {
@@ -503,32 +512,19 @@ class GetElement extends React.Component<any, stateProps> {
     const { dropArea, getChangeInfo } = this;
     if (!dropArea.current) return;
     const dragDrop = dropArea.current;
-    dragDrop.addEventListener(
-      'dragover',
-      function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-      },
-      false
-    );
-    dragDrop.addEventListener(
-      'dragleave',
-      function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-      },
-      false
-    );
-    dragDrop.addEventListener(
-      'drop',
-      function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        const files = e.target.files || e.dataTransfer.files;
-        getChangeInfo('drag', files);
-      },
-      false
-    );
+    const stopPropagation = (e: Object) => {
+      e.stopPropagation();
+      e.preventDefault();
+    };
+    addEventListener(dragDrop, 'dragover', stopPropagation);
+    addEventListener(dragDrop, 'dragleave', stopPropagation);
+
+    dragDrop.addEventListener('drop', function(e) {
+      console.log(e);
+      stopPropagation(e);
+      const files = e.target.files || e.dataTransfer.files;
+      getChangeInfo('drag', files);
+    });
   }
 
   static getDerivedStateFromProps(defProps: defProps, stateProps: stateProps) {
@@ -552,9 +548,9 @@ class GetElement extends React.Component<any, stateProps> {
   getChangeInfo = (types: string, e: Object) => {
     const { setChoosedFile } = this.props;
     if (types === 'drag') {
-      setChoosedFile && setChoosedFile(types, e);
+      setChoosedFile && setChoosedFile(e);
     } else {
-      setChoosedFile && setChoosedFile(types, e.target.files);
+      setChoosedFile && setChoosedFile(e.target.files);
     }
   };
 
@@ -562,7 +558,6 @@ class GetElement extends React.Component<any, stateProps> {
     const { showFileList, fileListDone, getTheme } = this.props;
     return (
       <React.Fragment>
-        {/*<Container theme={getTheme()} onClick={this.handleClick}>*/}
         <Container theme={getTheme()}>{getElement(this)}</Container>
         <React.Fragment>
           {' '}

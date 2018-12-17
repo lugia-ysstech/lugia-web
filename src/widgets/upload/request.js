@@ -15,7 +15,6 @@ export function getRequestXHR(): Object {
 
 export function getParamsData(data: Object, file: Object): Object {
   const newData: Object = new FormData();
-
   for (const i in data) {
     newData.append(i, data[i]);
   }
@@ -33,7 +32,7 @@ export function getStringFromObject(data: ?Object): string {
   return resultString;
 }
 
-function addEventListener(
+export function addEventListener(
   target: Object,
   event: string,
   func: Function,
@@ -79,7 +78,6 @@ function request(dataObject: Object) {
   }
 
   const { onFail, datetype = 'text', onSuccess } = dataObject;
-
   xhr.onreadystatechange = function() {
     const { readyState, status } = xhr;
     if (readyState === 4) {
