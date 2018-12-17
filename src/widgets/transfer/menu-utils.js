@@ -20,10 +20,17 @@ export function getMapData(data: Object[], valueField: string): Object {
   return mapData;
 }
 
-export function getMenuDataByBlackList(data: Object[], valueField: string, blackList?: string[]) {
+export function getMenuDataByBlackList(
+  data: ?(Object[]),
+  valueField: string,
+  blackList?: string[]
+) {
   const blackListData = [];
-  if (!data || !blackList || blackList.length === 0) {
+  if (!data) {
     return blackListData;
+  }
+  if (!blackList || blackList.length === 0) {
+    return data;
   }
 
   const existMap = createExistMap(blackList);
@@ -66,7 +73,7 @@ export function getWhiteListDataAndCancelItem(
   return { whiteListData, cancelItem };
 }
 
-export function getSearchData(data: Object[], query: string, filter: Function): Object[] {
+export function getSearchData(data: Object[], query?: string, filter: Function): Object[] {
   if (!data || !data.length) {
     return [];
   }
@@ -98,7 +105,7 @@ export function splitSelectKeys(
   }
   const { blackList, whiteList } = opt;
 
-  const exist = blackList ? blackList : whiteList;
+  const exist = blackList ? blackList : whiteList || [];
   const existMap = createExistMap(exist);
   const isBlack = !!blackList;
   selectKeys.forEach(item => {

@@ -30,9 +30,9 @@ describe('Transfer.menu-utils', () => {
     const blackList = ['22', '33'];
     const result = [{ title: '1', key: '11' }];
     expect(getMenuDataByBlackList(data, valueField, blackList)).toEqual(result);
-    expect(getMenuDataByBlackList('', valueField)).toEqual([]);
-    expect(getMenuDataByBlackList(data, valueField)).toEqual([]);
-    expect(getMenuDataByBlackList(data, valueField, [])).toEqual([]);
+    expect(getMenuDataByBlackList(undefined, valueField)).toEqual([]);
+    expect(getMenuDataByBlackList(data, valueField)).toEqual(data);
+    expect(getMenuDataByBlackList(data, valueField, [])).toEqual(data);
   });
 
   it('getWhiteListDataAndCancelItem', () => {
@@ -76,16 +76,15 @@ describe('Transfer.menu-utils', () => {
   });
 
   it('splitSelectKeys', () => {
-    const mapData = {
+    const theMapData = {
       11: { title: '1', key: '11' },
       22: { title: '2', key: '22' },
       33: { title: '3', key: '33' },
       44: { title: '4', key: '44', disabled: true },
     };
     const blackList = ['22', '33'];
-    const white
     const keys = ['11', '22', '33', '44'];
-    const { canMoveKey, checkDisabledKey } = splitSelectKeys(mapData, keys, { blackList });
+    const { canMoveKey, checkDisabledKey } = splitSelectKeys(theMapData, keys, { blackList });
     expect(canMoveKey).toEqual(['11']);
     expect(checkDisabledKey).toEqual(['44']);
   });

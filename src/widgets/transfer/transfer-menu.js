@@ -13,6 +13,7 @@ import Input from '../input';
 import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferMenuProps, TransferMenuState } from '../css/transfer-menu';
+import { NoData } from '../css/transfer';
 import {
   getMapData,
   getMenuDataByBlackList,
@@ -78,14 +79,18 @@ export default class TransferMenu extends React.Component<TransferMenuProps, Tra
 
     return {
       menuData: getSearchData(whiteListData, query, filterOption),
-      cancelItem,
-      selectKeys: targetSelectKeys,
+      // cancelItem,
+      // selectKeys: targetSelectKeys,
     };
   }
 
   render() {
     const { menuData } = this.state;
-    const { displayField, valueField, selectedKeys } = this.props;
+    const { displayField, valueField, selectedKeys, query } = this.props;
+    if (query && !menuData.length) {
+      //todo: nodata 左右 两侧 样式高度（direction）；
+      return <NoData>无匹配数据</NoData>;
+    }
     return (
       <Menu
         checkedCSS={'checkbox'}

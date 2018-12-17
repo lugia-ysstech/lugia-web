@@ -5,6 +5,7 @@
  * @flow
  */
 import EventEmitter from '../common/EventEmitter';
+import { splitSelectKeys } from './utils';
 
 type TransferModelEventType = 'onSelectedKeyChange' | 'onListChange';
 
@@ -19,6 +20,8 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
   type: TransferModelType;
   selectedKeys: string[];
   list: string[];
+  mapData: Object;
+  cancelItem: Object[];
 
   constructor(props: TransferModelProps) {
     super();
@@ -28,6 +31,36 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
     this.selectedKeys = selectedKeys;
   }
 
+  setMapData(mapData: Object) {
+    this.mapData = mapData;
+  }
+
+  getMoveAfterKeysForSource() {
+    const { validKeys: moveKey, disabledKeys } = splitSelectKeys(this.mapData, this.selectedKeys);
+    const nextTargetKeys = [...new Set([...this.list, ...moveKey])];
+    return { moveKey, disabledKeys, nextTargetKeys };
+  }
+
+  getMoveAfterKeysForTarget() {
+    const { validKeys: moveKey, disabledKeys } = splitSelectKeys(this.mapData, this.selectedKeys);
+    const nextTargetKeys = [...this.list];
+    moveKey.forEach(item => {
+      const index = nextTargetKeys.indexOf(item);
+      if (index > -1) {
+        nextTargetKeys.splice(index, 1);
+      }
+    });
+    return { moveKey, disabledKeys, nextTargetKeys };
+  }
+
+  setCancelItem(item: Object[]) {
+    this.cancelItem = item;
+  }
+
+  getCancelItem(): Object[] {
+    return this.cancelItem;
+  }
+
   changeSelectedKeys(selectKeys: string[]) {
     this.selectedKeys = selectKeys;
     this.emit('onSelectedKeyChange', { data: selectKeys });
@@ -35,10 +68,11 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
 
   changeList(list: string[]) {
     this.list = list;
-    this.emit('onListChange', { data: list });
+    this.emit('onListChange', { data: this.getTypeList() });
   }
 
   getSelectedkeys(): string[] {
+    //todo: 过滤掉 disabled 项 和 黑白 单 里面 的项；
     return this.selectedKeys;
   }
 

@@ -198,3 +198,20 @@ export function getKeys(data: Object[], valueField: string): string[] {
     return res ? res : '';
   });
 }
+export function filterEnableKeysFromSelectKeys(list: string[], selectKeys: string[]) {
+  if (!list || !list.length) {
+    return selectKeys;
+  }
+  if (!selectKeys || !selectKeys.length) {
+    return [];
+  }
+  const existMap = createExistMap(list);
+  const selectedKeys = [];
+  selectKeys.forEach(item => {
+    if (!existMap[item]) {
+      selectedKeys.push(item);
+    }
+  });
+
+  return selectedKeys;
+}

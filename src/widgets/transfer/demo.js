@@ -18,6 +18,7 @@ const data = [
   { text: '选项8', value: '选项8', disabled: false },
   { text: '选项9', value: '选项9', disabled: false },
   { text: '选项0', value: '选项0', disabled: true },
+  { text: '选项10', value: '选项10', disabled: true },
 ];
 const treeData = [
   { text: '1', value: '1' },
@@ -91,31 +92,31 @@ export default class TransferDemo extends React.Component<any, any> {
           onSelectChange={this.handleSelectChange}
           onDirectionClick={this.handleDirectionClick}
         />
-        {/*<Transfer*/}
-        {/*data={data}*/}
-        {/*showSearch*/}
-        {/*defaultSourceSelectedKeys={['选项5']}*/}
-        {/*defaultTargetSelectedKeys={['选项2']}*/}
-        {/*defaultTargetKeys={['选项2', '选项3', '选项4']}*/}
-        {/*/>*/}
-        {/*<Transfer*/}
-        {/*data={treeData}*/}
-        {/*type="tree"*/}
-        {/*sourceSelectedKeys={['2.2.1']}*/}
-        {/*targetSelectedKeys={['2.1.1']}*/}
-        {/*targetKeys={['3.1', '3.2', '2.1.1']}*/}
-        {/*showSearch*/}
-        {/*displayValue={['dis1', 'dis2']}*/}
-        {/*/>*/}
-        {/*<Transfer*/}
-        {/*data={treeData}*/}
-        {/*type="tree"*/}
-        {/*defaultSourceSelectedKeys={['2.2.1']}*/}
-        {/*defaultTargetSelectedKeys={['2.1.1']}*/}
-        {/*defaultTargetKeys={['3.1', '3.2', '2.1.1']}*/}
-        {/*showSearch*/}
-        {/*displayValue={['dis1', 'dis2', '2.1.1']}*/}
-        {/*/>*/}
+        <Transfer
+          data={data}
+          showSearch
+          defaultSourceSelectedKeys={['选项5']}
+          defaultTargetSelectedKeys={['选项2']}
+          defaultTargetKeys={['选项2', '选项3', '选项4']}
+        />
+        <Transfer
+          data={treeData}
+          type="tree"
+          sourceSelectedKeys={['2.2.1']}
+          targetSelectedKeys={['2.1.1']}
+          targetKeys={['3.1', '3.2', '2.1.1']}
+          showSearch
+          displayValue={['dis1', 'dis2']}
+        />
+        <Transfer
+          data={treeData}
+          type="tree"
+          defaultSourceSelectedKeys={['2.2.1']}
+          defaultTargetSelectedKeys={['2.1.1']}
+          defaultTargetKeys={['3.1', '3.2', '2.1.1']}
+          showSearch
+          displayValue={['dis1', 'dis2', '2.1.1']}
+        />
       </div>
     );
   }

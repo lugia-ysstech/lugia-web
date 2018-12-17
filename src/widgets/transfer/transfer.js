@@ -25,20 +25,17 @@ import {
   TransFer,
   TreeWrap,
 } from '../css/transfer';
-import { getKeys, isContained } from './utils';
+import { getKeys, isContained, filterEnableKeysFromSelectKeys } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
-    maping: boolean;
-
     constructor(props) {
       super(props);
-
       const { model } = this.props;
-
+      const selectedKeys = filterEnableKeysFromSelectKeys(model.getList(), model.getSelectedkeys());
       this.state = {
         inputValue: '',
-        selectedKeys: model.getSelectedkeys(),
+        selectedKeys,
         typeList: model.getTypeList(),
       };
 
@@ -51,11 +48,11 @@ export default ThemeProvider(
 
       model.on('onListChange', param => {
         const { data } = param;
+        console.info('data', data);
         this.setState({
           typeList: data,
         });
       });
-      this.maping = false;
     }
 
     createCancelCheckBox = () => {
@@ -85,7 +82,7 @@ export default ThemeProvider(
 
     render() {
       const { selectedKeys = [], typeList } = this.state;
-
+      console.info('typeList', typeList);
       const {
         showSearch,
         data = [],
@@ -128,7 +125,6 @@ export default ThemeProvider(
           : length
           ? isContained(selectedKeys, canCheckKeys)
           : isContained(getKeys(data ? data : [], valueField), selectedKeys);
-      const list = {};
 
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
       return (
@@ -156,36 +152,33 @@ export default ThemeProvider(
             </Theme>
           ) : null}
 
-          {data.length > 0 ? (
-            <MenuWrap>
-              <Theme config={menuView}>
-                {type === 'panel' ? (
-                  <TransferMenu
-                    {...this.props}
+          <MenuWrap>
+            <Theme config={menuView}>
+              {type === 'panel' ? (
+                <TransferMenu
+                  {...this.props}
+                  query={inputValue}
+                  {...typeList}
+                  selectedKeys={selectedKeys}
+                />
+              ) : (
+                <TreeWrap direction={direction}>
+                  <Tree
+                    displayField={displayField}
+                    valueField={valueField}
+                    data={data}
+                    value={selectedKeys}
+                    expandAll
+                    mutliple
+                    onChange={this.handleTreeChange}
                     query={inputValue}
                     {...typeList}
-                    selectedKeys={selectedKeys}
                   />
-                ) : (
-                  <TreeWrap direction={direction}>
-                    <Tree
-                      displayField={displayField}
-                      valueField={valueField}
-                      data={data}
-                      value={selectedKeys}
-                      expandAll
-                      mutliple
-                      onChange={this.handleTreeChange}
-                      query={inputValue}
-                      {...typeList}
-                    />
-                  </TreeWrap>
-                )}
-              </Theme>
-            </MenuWrap>
-          ) : (
-            <NoData direction={direction}>{inputValue ? '无匹配数据' : '无数据'}</NoData>
-          )}
+                </TreeWrap>
+              )}
+            </Theme>
+          </MenuWrap>
+
           {cancelBox}
         </TransFer>
       );
