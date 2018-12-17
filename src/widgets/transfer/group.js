@@ -265,7 +265,7 @@ export default ThemeProvider(
             // onSearch={this.searchCallbackForRight}
             needCancelBox
             // cancelItem={cancelItem}
-            // onCancelItemClick={this.handleCancelItemClick}
+            onCancelItemClick={this.handleCancelItemClick}
             title="列表B"
             {...this.props}
             {...treeData}
