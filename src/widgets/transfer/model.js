@@ -72,7 +72,6 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
   }
 
   getSelectedkeys(): string[] {
-    //todo: 过滤掉 disabled 项 和 黑白 单 里面 的项；
     return this.selectedKeys;
   }
 

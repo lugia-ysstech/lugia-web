@@ -37,6 +37,7 @@ export default ThemeProvider(
         inputValue: '',
         selectedKeys,
         typeList: model.getTypeList(),
+        cancelItem: model.getCancelItem(),
       };
 
       model.on('onSelectedKeyChange', param => {
@@ -56,7 +57,8 @@ export default ThemeProvider(
     }
 
     createCancelCheckBox = () => {
-      const { cancelItem = [], displayField, valueField } = this.props;
+      const { displayField, valueField } = this.props;
+      const { cancelItem = [] } = this.state;
       const hasCancelItem = cancelItem && cancelItem.length > 0;
       if (hasCancelItem) {
         const elements = [];

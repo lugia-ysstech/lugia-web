@@ -263,7 +263,7 @@ export default ThemeProvider(
             onCheckAll={this.checkAllForRight}
             // canCheckKeys={targetCheckKeys}
             // onSearch={this.searchCallbackForRight}
-            // needCancelBox
+            needCancelBox
             // cancelItem={cancelItem}
             // onCancelItemClick={this.handleCancelItemClick}
             title="列表B"

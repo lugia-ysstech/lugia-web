@@ -36,6 +36,7 @@ export type TransferState = {
   inputValue: string,
   selectedKeys: string[],
   typeList: Object,
+  cancelItem?: Object[],
 };
 type CSSProps = {
   direction: 'left' | 'right',
