@@ -35,19 +35,19 @@ export default ThemeProvider(
     targetModel: TransferModel;
     constructor(props: GroupProps) {
       super(props);
-      const sourceSelctKeys = this.getSourceSelectedKeys(props);
-      const targetSelctKeys = this.getTaragetSelectedKeys(props);
+      const sourceSelectKeys = this.getSourceSelectedKeys(props);
+      const targetSelectKeys = this.getTargetSelectedKeys(props);
       const theTargetKeys = this.getTargetKeys(props);
-      const theDisplayValue = this.getDisplavValue(props);
+      const theDisplayValue = this.getDisplayValue(props);
 
       this.targetModel = new TransferModel({
         type: 'Target',
-        selectedKeys: targetSelctKeys,
+        selectedKeys: targetSelectKeys,
         list: theTargetKeys,
       });
       this.sourceModel = new TransferModel({
         type: 'Source',
-        selectedKeys: sourceSelctKeys,
+        selectedKeys: sourceSelectKeys,
         list: theTargetKeys,
       });
       const { data, valueField = 'value', type = 'panel', displayField = 'text' } = props;
@@ -55,10 +55,13 @@ export default ThemeProvider(
       if (type === 'panel') {
         mapData = getMapData(data, valueField);
       } else {
-        mapData = getTreeData(data, {
+        const { mapData: maps, target } = getTreeData(data, {
           displayField,
           valueField,
-        }).mapData;
+        });
+        mapData = maps;
+        this.targetModel.setTreeData(target);
+        this.sourceModel.setTreeData(target);
       }
       this.targetModel.setMapData(mapData);
       this.sourceModel.setMapData(mapData);
@@ -71,7 +74,7 @@ export default ThemeProvider(
       this.targetModel.setCancelItem(cancelItem);
     }
 
-    getTaragetSelectedKeys(props) {
+    getTargetSelectedKeys(props) {
       return getTruthValue('targetSelectedKeys', props, undefined, 'defaultTargetSelectedKeys');
     }
 
@@ -83,92 +86,30 @@ export default ThemeProvider(
       return getTruthValue('targetKeys', props, undefined, 'defaultTargetKeys');
     }
 
-    getDisplavValue(props) {
+    getDisplayValue(props) {
       return getTruthValue('displayValue', props, undefined, 'defaultDisplayValue');
     }
 
-    static getDerivedStateFromProps(props, state) {
-      const {
-        data = [],
-        type = 'panel',
-        valueField = ValueField,
-        displayField = DisplayField,
-      } = props;
-      const sourceSelctKeys = getTruthValue(
-        'sourceSelectedKeys',
-        props,
-        state,
-        'defaultSourceSelectedKeys'
-      );
-      const targetSelctKeys = getTruthValue(
-        'targetSelectedKeys',
-        props,
-        state,
-        'defaultTargetSelectedKeys'
-      );
-      const theTargetKeys = getTruthValue('targetKeys', props, state, 'defaultTargetKeys');
-      const theDisplayValue = getTruthValue('displayValue', props, state, 'defaultDisplayValue');
-      const commonState = {
-        sourceSelectedKeys: sourceSelctKeys,
-        targetSelectedKeys: targetSelctKeys,
-        targetKeys: theTargetKeys,
-        displayValue: theDisplayValue,
-      };
-      // if (type === 'panel') {
-      //   const utilMapData = getPanelSourceDataAndTargetData(data, theTargetKeys, valueField);
-      //   const {
-      //     sourceData,
-      //     targetData,
-      //     sourceKeys,
-      //     targetCheckKeys,
-      //     sourceCheckKeys,
-      //     mapData: mapDataPanel,
-      //   } = utilMapData;
-      //   const cancelItem = getCancelItem(
-      //     theTargetKeys,
-      //     mapDataPanel,
-      //     { valueField, displayField },
-      //     theDisplayValue
-      //   );
-      //   return {
-      //     ...commonState,
-      //     cancelItem,
-      //     sourceKeys,
-      //     sourceData,
-      //     targetData,
-      //     sourceCheckKeys,
-      //     targetCheckKeys,
-      //     mapData: mapDataPanel,
-      //   };
-      // }
-
-      const { target: treeData, mapData: treeMapData, enableKeys } = getTreeData(data, {
-        displayField,
-        valueField,
-      });
-
-      const cancelItem = getCancelItem(
-        theTargetKeys,
-        treeMapData,
-        { valueField, displayField },
-        theDisplayValue
-      );
-      const { sourceCanCheckKeys, targetCanCheckKeys } = getCanCheckKeys(enableKeys, theTargetKeys);
-      return {
-        ...commonState,
-        cancelItem,
-        enableKeys,
-        sourceCheckKeys: sourceCanCheckKeys,
-        targetCheckKeys: targetCanCheckKeys,
-        mapData: treeMapData,
-        sourceData: treeData,
-        targetData: treeData,
-      };
-    }
-
     shouldComponentUpdate(nextProps: GroupProps, nextState: GroupState) {
+      if (nextProps.data.length !== this.props.data.length || nextProps.data !== this.props.data) {
+        const { data, valueField = 'value', type = 'panel', displayField = 'text' } = nextProps;
+        let mapData;
+        if (type === 'panel') {
+          mapData = getMapData(data, valueField);
+        } else {
+          const { mapData: maps, target } = getTreeData(data, {
+            displayField,
+            valueField,
+          });
+          mapData = maps;
+          this.targetModel.setTreeData(target);
+          this.sourceModel.setTreeData(target);
+        }
+        this.targetModel.setMapData(mapData);
+        this.sourceModel.setMapData(mapData);
+      }
       if (this.isInProps('targetSelectedKeys')) {
-        const targetSelctKeys = this.getTaragetSelectedKeys(nextProps);
+        const targetSelctKeys = this.getTargetSelectedKeys(nextProps);
         this.targetModel.changeSelectedKeys(targetSelctKeys);
       }
       if (this.isInProps('sourceSelectedKeys')) {
@@ -190,25 +131,25 @@ export default ThemeProvider(
         valueField = ValueField,
         displayField = DisplayField,
       } = this.props;
-      const {
-        sourceData,
-        targetData,
-        targetKeys,
-        sourceSelectedKeys,
-        targetSelectedKeys,
-        sourceCheckKeys,
-        targetCheckKeys,
-        sourceSearchData,
-        targetSearchData,
-        cancelItem,
-        enableKeys,
-      } = this.state;
+      // const {
+      //   sourceData,
+      //   targetData,
+      //   targetKeys,
+      //   sourceSelectedKeys,
+      //   targetSelectedKeys,
+      //   sourceCheckKeys,
+      //   targetCheckKeys,
+      //   sourceSearchData,
+      //   targetSearchData,
+      //   cancelItem,
+      //   enableKeys,
+      // } = this.state;
       // const theSourceData = this.sourceInputValue ? sourceSearchData : sourceData;
       // const theTargetData = this.targetInputValue ? targetSearchData : targetData;
-      const treeData = {};
-      if (type === 'tree') {
-        treeData.data = sourceData;
-      }
+      // const treeData = {};
+      // if (type === 'tree') {
+      //   treeData.data = sourceData;
+      // }
       return (
         <TransFerWrap>
           <TransFer
@@ -227,7 +168,6 @@ export default ThemeProvider(
             // onSearch={this.searchCallbackForLeft}
             title="列表A"
             {...this.props}
-            {...treeData}
             displayField={displayField}
             valueField={valueField}
             type={type}
@@ -268,7 +208,6 @@ export default ThemeProvider(
             onCancelItemClick={this.handleCancelItemClick}
             title="列表B"
             {...this.props}
-            {...treeData}
             displayField={displayField}
             valueField={valueField}
             type={type}

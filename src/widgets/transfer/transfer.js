@@ -38,6 +38,7 @@ export default ThemeProvider(
         selectedKeys,
         typeList: model.getTypeList(),
         cancelItem: model.getCancelItem(),
+        treeData: model.getTreeData(),
       };
 
       model.on('onSelectedKeyChange', param => {
@@ -83,7 +84,7 @@ export default ThemeProvider(
     };
 
     render() {
-      const { selectedKeys = [], typeList } = this.state;
+      const { selectedKeys = [], typeList, treeData } = this.state;
       console.info('typeList', typeList);
       const {
         showSearch,
@@ -108,12 +109,13 @@ export default ThemeProvider(
           },
         },
       };
-      const menuView = {};
+      const menuView = {},
+        treeView = {};
       if (direction === 'Source') {
         menuView[Widget.Menu] = {
           height: 310,
         };
-        menuView[Widget.Tree] = {
+        treeView[Widget.Tree] = {
           height: 310,
         };
       }
@@ -166,17 +168,19 @@ export default ThemeProvider(
                 />
               ) : (
                 <TreeWrap direction={direction}>
-                  <Tree
-                    displayField={displayField}
-                    valueField={valueField}
-                    data={data}
-                    value={selectedKeys}
-                    expandAll
-                    mutliple
-                    onChange={this.handleTreeChange}
-                    query={inputValue}
-                    {...typeList}
-                  />
+                  <Theme config={treeView}>
+                    <Tree
+                      displayField={displayField}
+                      valueField={valueField}
+                      data={treeData}
+                      value={selectedKeys}
+                      expandAll
+                      mutliple
+                      onChange={this.handleTreeChange}
+                      query={inputValue}
+                      {...typeList}
+                    />
+                  </Theme>
                 </TreeWrap>
               )}
             </Theme>

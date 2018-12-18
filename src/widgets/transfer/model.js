@@ -22,6 +22,7 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
   list: string[];
   mapData: Object;
   cancelItem: Object[];
+  treeData: Object[];
 
   constructor(props: TransferModelProps) {
     super();
@@ -33,6 +34,14 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
 
   setMapData(mapData: Object) {
     this.mapData = mapData;
+  }
+
+  setTreeData(treeData: Object[]) {
+    this.treeData = treeData;
+  }
+
+  getTreeData() {
+    return this.treeData;
   }
 
   getMoveAfterKeysForSource() {

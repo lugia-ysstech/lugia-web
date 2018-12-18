@@ -37,6 +37,7 @@ export type TransferState = {
   selectedKeys: string[],
   typeList: Object,
   cancelItem?: Object[],
+  treeData: Object[],
 };
 type CSSProps = {
   direction: 'left' | 'right',
