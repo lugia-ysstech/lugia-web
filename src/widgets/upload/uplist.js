@@ -7,10 +7,7 @@
  *
  */
 import React from 'react';
-import Icon from '../icon';
-import styled, { keyframes } from 'styled-components';
-import Widget from '../consts/index';
-import { getElement } from './getelement';
+import styled from 'styled-components';
 
 const Li = styled.li`
   height: 36px;

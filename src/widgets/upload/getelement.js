@@ -14,6 +14,7 @@ import FileInput from './fileInput';
 import { px2emcss } from '../css/units';
 import { isKeyInArray } from './upload';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
+
 const em = px2emcss(1.2);
 
 const Container = styled.div`

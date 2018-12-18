@@ -5,15 +5,13 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Upload, { getIndexInArray, isKeyInArray, getPercentValue } from '../upload';
-import { getRequestXHR, getStringFromObject, getParamsData } from '../request';
+import Upload, { getIndexInArray, getPercentValue, isKeyInArray } from '../upload';
+import { getParamsData, getRequestXHR, getStringFromObject } from '../request';
 import { getIconByType, getListIconType } from '../getelement';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-import Widget from '../../consts/index';
 import 'jest-styled-components';
-import Icon from '../../icon';
-import styled from 'styled-components';
+
 const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
 Enzyme.configure({ adapter: new Adapter() });
