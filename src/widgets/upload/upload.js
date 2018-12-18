@@ -78,8 +78,6 @@ class Upload extends React.Component<uploadProps, stateProps> {
     },
   };
 
-  componentDidMount() {}
-
   static getDerivedStateFromProps(defProps: uploadProps, stateProps: stateProps) {
     if (!stateProps) {
       return {

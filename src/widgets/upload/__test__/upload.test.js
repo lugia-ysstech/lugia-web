@@ -12,8 +12,6 @@ import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 
-const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
-
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Rate Test', () => {
