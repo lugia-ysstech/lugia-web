@@ -25,7 +25,12 @@ import {
   TransFer,
   TreeWrap,
 } from '../css/transfer';
-import { getKeys, isContained, filterEnableKeysFromSelectKeys } from './utils';
+import {
+  getKeys,
+  isContained,
+  filterEnableKeysFromSelectKeys,
+  getPanelSourceDataAndTargetData,
+} from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -50,7 +55,6 @@ export default ThemeProvider(
 
       model.on('onListChange', param => {
         const { data } = param;
-        console.info('data', data);
         this.setState({
           typeList: data,
         });
@@ -84,12 +88,12 @@ export default ThemeProvider(
     };
 
     render() {
-      const { selectedKeys = [], typeList, treeData } = this.state;
+      const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
       console.info('typeList', typeList);
+      console.info('type', this.props.type);
       const {
         showSearch,
         data = [],
-        canCheckKeys,
         needCancelBox = false,
         type,
         title,
@@ -97,7 +101,7 @@ export default ThemeProvider(
         displayField,
         valueField,
       } = this.props;
-      const { inputValue } = this.state;
+
       const view = {
         [Widget.Input]: {
           width: 235,
@@ -123,14 +127,17 @@ export default ThemeProvider(
       if (!inputValue) {
         inputConfig.suffix = <SearchIcon />;
       }
-      const length = canCheckKeys && canCheckKeys.length;
+      const canCheckKeys = this.props.model.getCanCheckKeys();
+      const length = (canCheckKeys && canCheckKeys.length) || 0;
+      console.info('canCheckKeys', canCheckKeys);
+      console.info('selectedKeys', selectedKeys);
       const checked =
         selectedKeys.length === 0
           ? false
           : length
           ? isContained(selectedKeys, canCheckKeys)
           : isContained(getKeys(data ? data : [], valueField), selectedKeys);
-
+      // const checked = selectedKeys.length >= length;
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
       return (
         <TransFer>

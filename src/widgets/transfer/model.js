@@ -23,6 +23,7 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
   mapData: Object;
   cancelItem: Object[];
   treeData: Object[];
+  canCheckKeys: string[];
 
   constructor(props: TransferModelProps) {
     super();
@@ -36,12 +37,32 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
     this.mapData = mapData;
   }
 
+  getMapData(): Object {
+    return this.mapData;
+  }
+
   setTreeData(treeData: Object[]) {
     this.treeData = treeData;
   }
 
   getTreeData() {
     return this.treeData;
+  }
+
+  setCanCheckKeys(keys: string[]) {
+    this.canCheckKeys = keys;
+  }
+
+  getCanCheckKeys() {
+    return this.canCheckKeys;
+  }
+
+  getCheckAllKeys(checked: boolean) {
+    const { disabledKeys: disabledCheckedKeys } = splitSelectKeys(this.mapData, this.selectedKeys);
+    const checkKeys = checked
+      ? [...this.canCheckKeys, ...disabledCheckedKeys]
+      : disabledCheckedKeys || [];
+    return checkKeys;
   }
 
   getMoveAfterKeysForSource() {
