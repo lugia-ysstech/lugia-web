@@ -289,14 +289,12 @@ describe('Rate Test', () => {
 
   function setDeleteList(index: number, expectation: Array<Object>) {
     it('Function setDeleteList ', () => {
-      target
-        .instance()
-        .setStateValue({
-          fileListDone: [
-            { id: 1, name: '文件11111.jpg', status: 'done' },
-            { id: 2, name: '文件2222.jpg', status: 'default' },
-          ],
-        });
+      target.instance().setStateValue({
+        fileListDone: [
+          { id: 1, name: '文件11111.jpg', status: 'done' },
+          { id: 2, name: '文件2222.jpg', status: 'default' },
+        ],
+      });
       target.instance().setDeleteList(index);
       expect(target.state().fileListDone).toEqual(expectation);
     });
@@ -336,20 +334,11 @@ describe('Rate Test', () => {
       webkitRelativePath: '',
     },
   ];
-  function checkSetChoosedFile(expectation: string) {
+  function checkSetChoosedFile(expectation: Array<Object>) {
     it('Function checkSetChoosedFile ', () => {
       target.instance().setChoosedFile(files);
       expect(target.state().choosedFile).toEqual(expectation);
-      target.instance().getPreviewInfo(new Blob(files));
-      expect(target.state().previewUrl).toEqual(expectation);
     });
   }
   checkSetChoosedFile(files);
-
-  function checkGetPreviewInfo(expectation: string) {
-    it('Function getPreviewInfo ', () => {
-      target.instance().setChoosedFile(files);
-      expect(target.state().choosedFile).toEqual(expectation);
-    });
-  }
 });

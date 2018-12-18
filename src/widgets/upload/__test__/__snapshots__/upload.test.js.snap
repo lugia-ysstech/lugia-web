@@ -78,7 +78,7 @@ exports[`Rate Test css 1`] = `
   transform: translateY(-50%);
   position: absolute;
   top: 50%;
-  right: 30px;
+  right: 10px;
 }
 
 .c3 i.success {
