@@ -26,7 +26,6 @@ class UploadDemo extends React.Component<any, any> {
       listType: 'default',
       inputId: 'upload',
       showFileList: true,
-      limit: 2,
       url: 'http://localhost:7001/upload',
       multiple: true,
       onChange: res => {
@@ -62,6 +61,9 @@ class UploadDemo extends React.Component<any, any> {
       url: 'http://localhost:7001/upload',
       autoUpload: false,
       showFileList: false,
+      onChange: res => {
+        console.log('cbk', res);
+      },
     };
     const defaultProps3 = {
       listType: 'picture',
@@ -113,28 +115,38 @@ class UploadDemo extends React.Component<any, any> {
         { id: 2, name: '文件666.doc', status: 'fail' },
       ],
     };
+    const defaultProps10 = {
+      listType: 'button',
+      inputId: 'upload1',
+      url: 'http://localhost:7001/upload',
+      multiple: true,
+      showFileList: true,
+      limit: 3,
+    };
     return (
       <div>
         <Title>默认： </Title>
-        <Upload {...defaultProps} key={'A123'} />
+        <Upload {...defaultProps} />
         <Title>Button： </Title>
-        <Upload {...defaultProps1} key={'A223'} />
+        <Upload {...defaultProps1} />
         <Title>Both： </Title>
-        <Upload {...defaultProps2} key={'A323'} />
+        <Upload {...defaultProps2} />
         <Title>picture large accept(image)： </Title>
-        <Upload {...defaultProps3} key={'A423'} />
+        <Upload {...defaultProps3} />
         <Title>picture middle disabled： </Title>
-        <Upload {...defaultProps4} key={'A523'} />
+        <Upload {...defaultProps4} />
         <Title>picture small： </Title>
-        <Upload {...defaultProps5} key={'A623'} />
+        <Upload {...defaultProps5} />
         <Title>area： </Title>
-        <Upload {...defaultProps6} key={'A723'} />
+        <Upload {...defaultProps6} />
         <Title>default disabled： </Title>
-        <Upload {...defaultProps7} key={'A723'} />
+        <Upload {...defaultProps7} />
         <Title>Button disabled： </Title>
-        <Upload {...defaultProps8} key={'A223'} />
+        <Upload {...defaultProps8} />
         <Title>area disabled： </Title>
-        <Upload {...defaultProps9} key={'A723'} />
+        <Upload {...defaultProps9} />
+        <Title>button limit 3： </Title>
+        <Upload {...defaultProps10} />
       </div>
     );
   }

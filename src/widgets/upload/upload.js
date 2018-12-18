@@ -119,6 +119,8 @@ class Upload extends React.Component<uploadProps, stateProps> {
         this.uploadFiles();
       }
     );
+    const { onChange } = this.props;
+    onChange && onChange(res);
   };
 
   uploadFiles = () => {
@@ -199,6 +201,8 @@ class Upload extends React.Component<uploadProps, stateProps> {
         if (i >= choosedFile.length) {
           that.uploadComplete(res, id);
         } else {
+          const { limit } = that.props;
+          if (limit && i > limit - 1) return;
           dataObject.i = i;
           that.addRequest(dataObject);
           that.uploadComplete(res, id);

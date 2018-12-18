@@ -418,7 +418,7 @@ const getElement = (that: Object): ?Object => {
           getRegisterInput={getRegisterInput}
         />
         <InputContent
-          className={`${disabled ? 'disabled' : ''} classNameStatus`}
+          className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
           onClick={handleClickToUpload}
           innerRef={dropArea}
         >
@@ -478,20 +478,22 @@ const getElement = (that: Object): ?Object => {
     );
   }
   if (listType === 'picture') {
-    const { previewUrl, size, inputId, disabled } = props;
+    const { previewUrl, size, inputId, disabled, accept, multiple } = props;
     const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
     return (
       <React.Fragment>
         <FileInput
           id={inputId}
-          {...props}
+          multiple={multiple}
+          disabled={disabled}
+          accept={accept ? accept : 'image/*'}
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
         <PictureView
           id={inputId}
           size={size}
-          className={`${disabled ? 'disabled' : ''} classNameStatus`}
+          className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
           onClick={handleClickToUpload}
         >
           {!previewUrl ? getIconByType('p-' + classNameStatus) : <img src={previewUrl} alt="" />}
@@ -564,7 +566,6 @@ class GetElement extends React.Component<defProps, stateProps> {
     addEventListener(dragDrop, 'dragleave', stopPropagation);
 
     dragDrop.addEventListener('drop', function(e) {
-      console.log(e);
       stopPropagation(e);
       const files = e.target.files || e.dataTransfer.files;
       getChangeInfo('drag', files);

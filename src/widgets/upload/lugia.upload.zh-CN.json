@@ -23,6 +23,11 @@
       "desc": "禁用状态",
       "defaultValue": "false"
     },
+    "limit": {
+      "type": "number",
+      "desc": "一次性可允许上传的最大文件数",
+      "defaultValue": "undefined"
+    },
     "multiple": {
       "type": "boolean",
       "desc": "是否允许多个文件上传",
@@ -92,11 +97,11 @@
       ]
     },
     "onChange": {
-      "desc": "上传进行中时触发",
+      "desc": "添加上传文件时触发",
       "args": [
         {
           "name": "result",
-          "desc": "上传进行中的状态",
+          "desc": "选中文件列表",
           "type": "Object"
         }
       ]
