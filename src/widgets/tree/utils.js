@@ -556,6 +556,18 @@ class TreeUtils {
     }
   }
 
+  fixedNullAndUndefined(val: any): string {
+    return val === null || val === undefined ? '' : val;
+  }
+
+  fixedNullAndUndefinedArray(val: any): any {
+    return val === null || val === undefined ? [] : val;
+  }
+
+  whiteOrBlackListChanged: boolean;
+  isWhiteOrBlackListChanged() {
+    return this.whiteOrBlackListChanged;
+  }
   search(
     expandInfo: ExpandInfo,
     query: string,
@@ -563,20 +575,25 @@ class TreeUtils {
     blackList: ?(string[]),
     whiteList: ?(string[])
   ): Array<RowData> {
-    const queryChanging = query !== this.query;
-    const blackListChanging = JSON.stringify(blackList) === JSON.stringify(this.blackList);
-    const whiteListChanging = JSON.stringify(whiteList) === JSON.stringify(this.whiteList);
-
+    const queryChanging =
+      this.fixedNullAndUndefined(query) !== this.fixedNullAndUndefined(this.query);
+    const blackListChanging =
+      JSON.stringify(this.fixedNullAndUndefinedArray(blackList)) !==
+      JSON.stringify(this.fixedNullAndUndefinedArray(this.blackList));
+    const whiteListChanging =
+      JSON.stringify(this.fixedNullAndUndefinedArray(whiteList)) !==
+      JSON.stringify(this.fixedNullAndUndefinedArray(this.whiteList));
+    this.whiteOrBlackListChanged = blackListChanging || whiteListChanging;
+    const conditionChanging = queryChanging || blackListChanging || whiteListChanging;
+    if (conditionChanging) {
+      this.updateVersion();
+    }
     //  要做性能优化，不然会一直重新遍历
-    const noChanged =
-      this.version === this.oldVersion && !queryChanging && blackListChanging && whiteListChanging;
-
-    if (noChanged) {
+    if (!this.isVersionChange()) {
       return this.oldTreeData;
     }
 
-    if (queryChanging) {
-      this.updateVersion();
+    if (conditionChanging) {
       expandInfo.id2ExtendInfo = {};
     }
 
@@ -662,12 +679,15 @@ class TreeUtils {
     }
     return rowSet.reverse();
   }
+  isVersionChange() {
+    return this.version !== this.oldVersion;
+  }
 
   match(val: ?string, query: Array<string>, type: QueryType): boolean {
     if (val === undefined || val === null) {
       return false;
     }
-    if (!query || query === '') {
+    if (!query) {
       return false;
     }
     val += '';
@@ -720,7 +740,7 @@ class TreeUtils {
 
   generateRealTreeData(expandInfo: ExpandInfo): Array<RowData> {
     const datas = this.treeData;
-    const noChanged = this.version === this.oldVersion;
+    const noChanged = !this.isVersionChange();
     if (noChanged) {
       return this.oldTreeData;
     }

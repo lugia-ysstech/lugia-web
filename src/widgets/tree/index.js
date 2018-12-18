@@ -352,7 +352,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   getExpandedKeys(props: TreeProps, id2ExtendInfo): Array<string> {
     if (this.isQueryAll(props)) {
-      if (this.allExpandKeys == undefined) {
+      const utils = this.getUtils(props);
+      if (this.allExpandKeys == undefined || utils.isWhiteOrBlackListChanged()) {
         const { expandAll } = this.props;
         this.allExpandKeys = expandAll ? Object.keys(id2ExtendInfo) : [];
       }
