@@ -219,7 +219,7 @@ export default ThemeProvider(
     }
     handleSourceSelect = (item: string[]) => {
       const { onSelectChange } = this.props;
-      const { targetSelectedKeys } = this.state;
+      const targetSelectedKeys = this.targetModel.getSelectedkeys();
       console.info('source selected', item);
       onSelectChange && onSelectChange(item, targetSelectedKeys);
 
@@ -232,7 +232,7 @@ export default ThemeProvider(
 
     handleTargetSelect = (item: string[]) => {
       const { onSelectChange } = this.props;
-      const { sourceSelectedKeys } = this.state;
+      const sourceSelectedKeys = this.sourceModel.getSelectedkeys();
       console.info('target selected', item);
       onSelectChange && onSelectChange(sourceSelectedKeys, item);
 
