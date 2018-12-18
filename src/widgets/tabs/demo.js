@@ -13,35 +13,40 @@ import styled from 'styled-components';
 
 const onPreClick = e => {};
 const onNextClick = e => {};
-const onDelClick = e => {};
-
-const onAddClick = e => {
-  const newTabs = {
-    title: 'new tabs',
-    content: 'new tabs content',
-  };
-  return newTabs;
-};
-
 class Tabsdemo extends React.Component<any, any> {
   state = {
-    data: defaultData,
+    data: hasActivityKeyData,
+    activeKey: '0',
   };
   change = e => {
-    // defaultData[0].content = '0000000000';
-    defaultData[0] = {
-      icon: 'lugia-icon-financial_archive',
-      title: '0000000000000',
-      content: '000000000',
+    hasActivityKeyData[0] = {
+      title: 1000000000000,
+      content: 1000000000,
+      activityKey: '-1',
     };
-    this.setState({ data: defaultData });
+    this.setState({ data: hasActivityKeyData });
   };
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldComponentUpdate nextState', nextState.data);
-  }
-  componentDidUpdate(props: TabsProps, preState: TabsState) {
-    console.log('componentDidUpdate preState', preState.data);
-  }
+  onAddClick = () => {
+    const data = this.state.data;
+    const activityKey = `newTab${this.state.data.length++}`;
+    data.push({
+      title: 'New Tab',
+      content: 'Content of new Tab',
+      activityKey,
+    });
+    this.setState({ data });
+  };
+
+  onDeleteClick = activityKey => {
+    const { data } = this.state;
+    let newdata = [];
+    if (data.length > 1) {
+      newdata = data.filter(child => {
+        return child.activityKey !== activityKey;
+      });
+    }
+    this.setState({ data: newdata });
+  };
   render() {
     const { data } = this.state;
     return (
@@ -55,8 +60,8 @@ class Tabsdemo extends React.Component<any, any> {
           data={data}
           onPreClick={onPreClick}
           onNextClick={onNextClick}
-          onDelClick={onDelClick}
-          onAddClick={onAddClick}
+          onAddClick={this.onAddClick}
+          onDeleteClick={this.onDeleteClick}
         />
       </div>
     );
@@ -511,8 +516,6 @@ export default () => {
             data={hasActivityKeyData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-            onDelClick={onDelClick}
-            onAddClick={onAddClick}
           />
         </Wrapper>
         <br />
@@ -525,8 +528,6 @@ export default () => {
             data={hasActivityKeyData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-            onDelClick={onDelClick}
-            onAddClick={onAddClick}
           />
         </Wrapper>
         <Tabsdemo />

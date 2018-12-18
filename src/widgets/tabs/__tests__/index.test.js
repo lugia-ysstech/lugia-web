@@ -158,7 +158,8 @@ describe('tabsDemo', () => {
       .simulate('click');
     const newData = [...hasActivityKeyData];
     newData.splice(2, 1);
-    expect(getCmp(target).state.data).toEqual(newData);
+    target.setProps({ data: newData });
+    expect(getCmp(target).props.data).toEqual(newData);
   });
 
   it('props onNextClick pagedType: page ', async () => {
