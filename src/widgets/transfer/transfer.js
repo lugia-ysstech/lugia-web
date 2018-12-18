@@ -99,6 +99,7 @@ export default ThemeProvider(
       const { inputValue } = this.state;
       const view = {
         [Widget.Input]: {
+          width: 235,
           margin: {
             top: 8,
             right: 10,
@@ -108,7 +109,7 @@ export default ThemeProvider(
         },
       };
       const menuView = {};
-      if (direction === 'left') {
+      if (direction === 'Source') {
         menuView[Widget.Menu] = {
           height: 310,
         };
@@ -192,7 +193,6 @@ export default ThemeProvider(
     };
     handleInputChange = (value: Object) => {
       const { newValue } = value;
-      const { onSearch, type = 'panel' } = this.props;
       this.setState({
         inputValue: newValue,
       });
