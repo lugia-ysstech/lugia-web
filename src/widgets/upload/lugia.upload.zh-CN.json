@@ -1,0 +1,121 @@
+{
+  "widgetName": "Rate",
+  "title": "评分",
+  "desc": "评分组件",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "Object",
+      "desc": "上传时附带的额外参数",
+      "defaultValue": "undefined"
+    },
+    "listType": {
+      "type": "string",
+      "desc": "文件列表的类型 支持5种类型(default/both/button/picture/area)",
+      "defaultValue": "default"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态",
+      "defaultValue": "false"
+    },
+    "multiple": {
+      "type": "boolean",
+      "desc": "是否允许多个文件上传",
+      "defaultValue": "false"
+    },
+    "showFileList":{
+      "type": "boolean",
+      "desc": "是否显示上传列表",
+      "defaultValue": "false"
+    },
+    "fileList":{
+      "type": "array",
+      "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
+      "defaultValue":"undefined"
+    },
+    "withCredentials":{
+      "type": "boolean",
+      "desc": "上传请求时是否允许携带cookie凭证",
+      "defaultValue": "false"
+    },
+    "autoUpload":{
+      "type": "boolean",
+      "desc": "是否允许自动上传",
+      "defaultValue": "true"
+    },
+    "url":{
+      "type": "string",
+      "desc": "上传的请求地址(必填参数)",
+      "defaultValue": "undefined"
+    },
+    "size":{
+      "type": "UploadSize",
+      "desc": "picture类型可配置的三种尺寸(small/default/large)",
+      "defaultValue": "default"
+    }
+
+  },
+  "events": {
+    "onProgress": {
+      "desc": "上传进行中时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传进行中服务器响应内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onSuccess": {
+      "desc": "上传成功时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传成功后服务器响应内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onComplete": {
+      "desc": "上传完成时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传完成后服务器响应内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onChange": {
+      "desc": "上传进行中时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传进行中的状态",
+          "type": "Object"
+        }
+      ]
+    },
+    "onFail": {
+      "desc": "上传失败时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传失败后服务器响应内容",
+          "type": "Object"
+        }
+      ]
+    }
+
+  },
+  "type": {
+    "UploadSize": ["small", "default", "large"]
+  },
+
+  "category": ["数据录入"]
+}
