@@ -169,6 +169,7 @@ const Li = styled.li`
   }
   &:hover {
     background: #f2f2f2;
+    cursor: pointer;
     i.close {
       display: block;
       font-size: 14px;
@@ -177,6 +178,63 @@ const Li = styled.li`
     i.success {
       display: none;
     }
+  }
+`;
+const PrevCon = styled.div`
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  position: relative;
+  &:hover {
+    .prev {
+      display: block;
+    }
+  }
+`;
+const PrevImg = styled.div`
+  display: none;
+  position: absolute;
+  left: -5px;
+  top: 23px;
+  width: 120px;
+  height: 90px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(104, 79, 255, 0.2);
+  z-index: 10;
+  & img {
+    width: 100%;
+    height: 80%;
+  }
+  & div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  & .triangle {
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #ccc;
+    position: absolute;
+    top: -16px;
+    left: 5px;
+  }
+  & .triangle::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #fff;
+    position: absolute;
+    top: -7px;
+    left: -8px;
   }
 `;
 
@@ -331,6 +389,18 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
       />
     );
   }
+  if (status === 'picture') {
+    return (
+      <PrevCon>
+        <LoadIcon iconClass="lugia-icon-financial_pic ccc" />
+        {getListIconType(props.name) === 'picture' && props.url ? (
+          <PrevImg className="prev">
+            <img src={props.url} alt="" /> <span className="triangle" /> <div>{props.url}</div>{' '}
+          </PrevImg>
+        ) : null}
+      </PrevCon>
+    );
+  }
 
   let className;
   if (status === 'default') {
@@ -387,9 +457,10 @@ const getFileList = (data: Array<Object>, close: Function) => {
   return (
     <Ul>
       {data.map((item, index) => {
+        console.log(item);
         return (
           <Li className={item.status}>
-            {getIconByType(getListIconType(item.name))} <span>{item.name}</span>
+            {getIconByType(getListIconType(item.name), item)} <span>{item.name}</span>
             {getIconByType('li-' + item.status)}
             {getIconByType('li-delete', { doFunction: close, index })}
             {getProgress(item)}

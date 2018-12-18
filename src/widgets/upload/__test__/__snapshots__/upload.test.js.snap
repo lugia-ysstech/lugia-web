@@ -72,6 +72,12 @@ exports[`Rate Test css 1`] = `
   width: 286px;
 }
 
+.c3.disabled {
+  border: 1px solid #e8e8e8;
+  width: 286px;
+  cursor: not-allowed;
+}
+
 .c3 i.right {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -108,13 +114,14 @@ exports[`Rate Test css 1`] = `
     <input
       accept="*"
       className="c2"
+      disabled={false}
       id="upload"
       multiple={false}
       onChange={[Function]}
       type="file"
     />
     <div
-      className="default c3"
+      className=" default c3"
       onClick={[Function]}
     >
       <i

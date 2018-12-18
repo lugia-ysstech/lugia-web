@@ -256,7 +256,9 @@ describe('Rate Test', () => {
       expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
-  uploadSuccess({ currentTarget: {} }, 'done', [{ id: 1, name: '文件11111.jpg', status: 'done' }]);
+  uploadSuccess({ data: { url: 'test.jpg' } }, 'done', [
+    { id: 1, name: '文件11111.jpg', status: 'done', url: 'test.jpg' },
+  ]);
 
   function isIdInArray(id: number, props: Array<Object>, expectation: boolean) {
     it('Function isIdInArray ', () => {

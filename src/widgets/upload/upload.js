@@ -210,7 +210,10 @@ class Upload extends React.Component<uploadProps, stateProps> {
   };
 
   uploadSuccess = (res: Object, id: number): void => {
-    const list = this.getFileList(id, [{ target: 'status', value: 'done' }]);
+    const list = this.getFileList(id, [
+      { target: 'status', value: 'done' },
+      { target: 'url', value: res.data.url },
+    ]);
     this.setStateValue({ classNameStatus: 'done', fileListDone: list });
     const { listType } = this.props;
     const { choosedFile = [] } = this.state;
