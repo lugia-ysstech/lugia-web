@@ -270,7 +270,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
-    console.log('getDerivedStateFromProps');
     const { activityKey, defaultActivityKey, defaultData, data, children } = props;
     const hasActivityKeyInprops = 'activityKey' in props;
     const hasDataInprops = 'data' in props;
@@ -298,7 +297,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
       ? theData[0].activityKey
       : undefined;
 
-    // console.log('getDerivedStateFromProps theData', theData);
     if (!state) {
       return {
         data: theData,
@@ -313,29 +311,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     const sData = state.data;
     const sActivityKey = state.activityKey;
-    let newData = [...theData];
-    if (sData.length !== theData.length) {
-      newData = [...sData];
-      console.log('1111111111111newData', newData);
-    } else {
-      sData.some((child, index) => {
-        if (
-          theData[index].content !== child.content ||
-          theData[index].activityKey !== child.activityKey ||
-          theData[index].title !== child.title
-        ) {
-          newData = [...theData];
-          console.log('22222222222222newData', newData);
-        }
-      });
-    }
-
-    // console.log('getDerivedStateFromProps 33333333333 newData', sData);
-    // console.log('getDerivedStateFromProps theData', theData);
 
     return {
       activityKey: hasActivityKeyInprops ? activityKey : sActivityKey,
-      data: newData,
+      data: hasDataInprops ? theData : sData,
     };
   }
 
@@ -498,50 +477,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     return null;
   }
-  componentWillUpdate() {
-    console.log('componentWillUpdate');
-  }
-  componentWillReceiveProps() {
-    console.log('componentWillReceiveProps');
-  }
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  }
-
-  componentDidUpdate(props: TabsProps, preState: TabsState) {
-    // const { data } = this.state;
-    // console.log('componentDidUpdate preState', preState.data);
-    // console.log('componentDidUpdate data', data);
-    // this.measurePage();
-  }
-
-  shouldComponentUpdate(nextProps: Readonly<P>, nextState: Readonly<S>, nextContext: any): boolean {
-    const { data } = this.state;
-    const { data: newData } = nextState;
-    console.log('shouldComponentUpdate nextState', nextState.data);
-    console.log('shouldComponentUpdate data', data);
-
-    // if (nextState === null) {
-    //   return true;
-    // }
-    // if (data.length !== newData.length) {
-    //   return true;
-    // }
-    //
-    // return newData.some((child, index) => {
-    //   if (
-    //     data[index].content === child.content &&
-    //     data[index].activityKey === child.activityKey &&
-    //     data[index].title === child.title
-    //   ) {
-    //     return false;
-    //   }
-    return true;
-    // });
-  }
 
   componentDidMount() {
-    console.log('componentDidMount');
     this.measurePage();
   }
 
@@ -573,7 +510,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
       ? computePage(this.offsetHeight - ArrowContainerWidth, actualHeight)
       : computePage(this.offsetWidth - ArrowContainerWidth, actualWidth);
     const arrowShow = totalPage > 1 && currentPage < totalPage;
-    console.log(totalPage, currentPage, totalPage > 1 && currentPage < totalPage);
     this.setState({ arrowShow, totalPage });
   }
 
@@ -653,7 +589,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
   getChildrenContent() {
     const { forceRender, tabPosition } = this.props;
     const { activityKey, data } = this.state;
-    // console.log(data, 'getChildrenContent');
     if (data && data.map) {
       return data.map((child, i) => {
         const childActivityKey = getAttributeFromObject(
@@ -697,47 +632,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
     onChange && onChange(activityKey, e);
   };
   onDeleteClick = (e: Event, activityKey: string) => {
-    const { data } = this.state;
-    let newdata = [];
-    if (data.length > 1) {
-      newdata = data.filter(tabpane => {
-        return tabpane.activityKey !== activityKey;
-      });
-      console.log(newdata, 'deleteData');
-      this.setState(
-        {
-          data: newdata,
-        },
-        () => {
-          this.updataChildrenSize();
-        }
-      );
-    }
     const { onDeleteClick } = this.props;
-    onDeleteClick && onDeleteClick(e);
+    onDeleteClick && onDeleteClick(activityKey);
   };
 
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
-    console.log('ADD newdata', 1111111111);
-    if (onAddClick) {
-      const item = onAddClick(e);
-      if (item) {
-        const { data } = this.state;
-        const newdata = [...data];
-        const { title = '', content = '', activityKey } = item;
-        newdata.push({ title, content, activityKey });
-        console.log('ADD newdata', newdata);
-        this.setState(
-          {
-            data: addActivityKey2Data(newdata),
-          },
-          () => {
-            this.updataChildrenSize();
-          }
-        );
-      }
-    }
+    onAddClick && onAddClick();
   };
 
   getTabpaneWidth = (width: number) => {
@@ -750,7 +651,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   updataChildrenSize() {
     const { data, childrenSize } = this.state;
-    console.log('updataChildrenSize', data);
     const newData = addWidth2Data(data, childrenSize);
     const newChildrenSize = [];
     newData.map(item => {

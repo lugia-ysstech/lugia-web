@@ -199,14 +199,11 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   };
   getTabIcon() {
     const { icon, isSelect } = this.props;
-    if (icon) {
-      return (
-        <IconContainer>
-          <TabIcon isSelect={isSelect} iconClass={icon} />
-        </IconContainer>
-      );
-    }
-    return null;
+    return icon ? (
+      <IconContainer>
+        <TabIcon isSelect={isSelect} iconClass={icon} />
+      </IconContainer>
+    ) : null;
   }
   onDeleteClick = (e: Event) => {
     const { onDeleteClick, activityKey } = this.props;
