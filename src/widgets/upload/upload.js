@@ -270,7 +270,6 @@ class Upload extends React.Component<UploadProps, StateProps> {
       { target: 'url', value: res.data.url },
     ]);
     this.setStateValue({ classNameStatus: 'done', fileListDone: list });
-
     const { listType } = this.props;
     if (listType === 'picture') {
       this.loadPreviewInfo(file);
