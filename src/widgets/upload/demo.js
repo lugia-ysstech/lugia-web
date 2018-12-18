@@ -26,6 +26,7 @@ class UploadDemo extends React.Component<any, any> {
       listType: 'default',
       inputId: 'upload',
       showFileList: true,
+      limit: 2,
       url: 'http://localhost:7001/upload',
       multiple: true,
       onChange: res => {
@@ -72,6 +73,7 @@ class UploadDemo extends React.Component<any, any> {
     const defaultProps4 = {
       listType: 'picture',
       inputId: 'upload4',
+      disabled: true,
       url: 'http://localhost:7001/upload',
     };
     const defaultProps5 = {
@@ -86,7 +88,31 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       url: 'http://localhost:7001/upload',
     };
-
+    const defaultProps7 = {
+      listType: 'default',
+      inputId: 'upload',
+      showFileList: true,
+      url: 'http://localhost:7001/upload',
+      disabled: true,
+    };
+    const defaultProps9 = {
+      listType: 'area',
+      inputId: 'upload6',
+      showFileList: true,
+      disabled: true,
+      url: 'http://localhost:7001/upload',
+    };
+    const defaultProps8 = {
+      listType: 'button',
+      inputId: 'upload1',
+      url: 'http://localhost:7001/upload',
+      disabled: true,
+      showFileList: true,
+      fileList: [
+        { id: 1, name: '文件11111.jpg', status: 'done' },
+        { id: 2, name: '文件666.doc', status: 'fail' },
+      ],
+    };
     return (
       <div>
         <Title>默认： </Title>
@@ -97,12 +123,18 @@ class UploadDemo extends React.Component<any, any> {
         <Upload {...defaultProps2} key={'A323'} />
         <Title>picture large accept(image)： </Title>
         <Upload {...defaultProps3} key={'A423'} />
-        <Title>picture middle： </Title>
+        <Title>picture middle disabled： </Title>
         <Upload {...defaultProps4} key={'A523'} />
         <Title>picture small： </Title>
         <Upload {...defaultProps5} key={'A623'} />
         <Title>area： </Title>
         <Upload {...defaultProps6} key={'A723'} />
+        <Title>default disabled： </Title>
+        <Upload {...defaultProps7} key={'A723'} />
+        <Title>Button disabled： </Title>
+        <Upload {...defaultProps8} key={'A223'} />
+        <Title>area disabled： </Title>
+        <Upload {...defaultProps9} key={'A723'} />
       </div>
     );
   }

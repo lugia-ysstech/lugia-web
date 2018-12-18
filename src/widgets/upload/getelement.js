@@ -14,6 +14,8 @@ import FileInput from './fileInput';
 import { px2emcss } from '../css/units';
 import { isKeyInArray } from './upload';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
+import colorsFunc from '../css/stateColor';
+const { disableColor } = colorsFunc();
 
 const em = px2emcss(1.2);
 
@@ -69,6 +71,11 @@ const InputContent = styled.div`
     border: 1px solid #9482ff;
     width: 286px;
   }
+  &.disabled {
+    border: 1px solid #e8e8e8;
+    width: 286px;
+    cursor: not-allowed;
+  }
   & i.right {
     transform: translateY(-50%);
     position: absolute;
@@ -100,6 +107,11 @@ const Button = styled.span`
   line-height: 30px;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
+  &.disabled {
+    background: ${disableColor};
+    color: #ccc;
+    cursor: not-allowed;
+  }
   &.loading {
     background: #9482ff;
   }
@@ -225,6 +237,11 @@ const PictureView = styled.div`
   align-items: center;
   overflow: hidden;
   padding: 6px;
+  &.disabled {
+    background: ${disableColor};
+    color: #ccc;
+    cursor: not-allowed;
+  }
   &.done {
     border: 1px dashed #684fff;
   }
@@ -245,6 +262,9 @@ const PictureView = styled.div`
   & img {
     width: 100%;
   }
+  &.disabled i {
+    cursor: not-allowed;
+  }
 `;
 
 const AreaView = styled.div`
@@ -260,6 +280,14 @@ const AreaView = styled.div`
     color: #999;
     ${getPictureViewIconSizeCSS}
   }
+  &.disabled {
+    background: ${disableColor};
+    color: #ccc;
+    cursor: not-allowed;
+  }
+  &.disabled i {
+    cursor: not-allowed;
+  }
 `;
 const AreaText = styled.div`
   width: 100%;
@@ -272,6 +300,10 @@ const AreaTextBlue = styled.span`
   color: #684fff;
   padding: 0 4px;
   border-bottom: 1px solid #684fff;
+  .disabled & {
+    color: #ccc;
+    border-bottom: none;
+  }
 `;
 
 export const getListIconType = (fileName: ?string): string => {
@@ -376,7 +408,7 @@ const getElement = (that: Object): ?Object => {
   const { classNameStatus } = state;
   if (listType === 'default') {
     const { dropArea, getRegisterInput, getChangeInfo, handleClickToUpload } = that;
-    const { inputId, defaultText } = props;
+    const { inputId, defaultText, disabled } = props;
     return (
       <React.Fragment>
         <FileInput
@@ -385,7 +417,11 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <InputContent className={classNameStatus} onClick={handleClickToUpload} innerRef={dropArea}>
+        <InputContent
+          className={`${disabled ? 'disabled' : ''} classNameStatus`}
+          onClick={handleClickToUpload}
+          innerRef={dropArea}
+        >
           {getIconByType(classNameStatus)} {defaultText}
         </InputContent>
       </React.Fragment>
@@ -399,7 +435,7 @@ const getElement = (that: Object): ?Object => {
       getChangeInfo,
       handleClickToUpload,
     } = that;
-    const { inputId, defaultText, showFileList } = props;
+    const { inputId, defaultText, showFileList, disabled } = props;
     return (
       <React.Fragment>
         <FileInput
@@ -410,7 +446,7 @@ const getElement = (that: Object): ?Object => {
         />
 
         <InputContent
-          className={`${classNameStatus} hasBtn`}
+          className={`${classNameStatus} ${disabled ? 'disabled' : ''} hasBtn`}
           onClick={handleClickToUpload}
           innerRef={dropArea}
         >
@@ -418,12 +454,14 @@ const getElement = (that: Object): ?Object => {
           {showFileList ? null : getIconByType('li-' + classNameStatus)}
         </InputContent>
 
-        <Button onClick={handleClickToSubmit}>{getIconByType(classNameStatus, { type: 1 })}</Button>
+        <Button className={disabled ? 'disabled' : ''} onClick={handleClickToSubmit}>
+          {getIconByType(classNameStatus, { type: 1 })}
+        </Button>
       </React.Fragment>
     );
   }
   if (listType === 'button') {
-    const { inputId } = props;
+    const { inputId, disabled } = props;
     const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
     return (
       <React.Fragment>
@@ -433,14 +471,14 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <Button className="button" onClick={handleClickToUpload}>
+        <Button className={`${disabled ? 'disabled' : ''} button `} onClick={handleClickToUpload}>
           点击上传
         </Button>
       </React.Fragment>
     );
   }
   if (listType === 'picture') {
-    const { previewUrl, size, inputId } = props;
+    const { previewUrl, size, inputId, disabled } = props;
     const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
     return (
       <React.Fragment>
@@ -453,7 +491,7 @@ const getElement = (that: Object): ?Object => {
         <PictureView
           id={inputId}
           size={size}
-          className={classNameStatus}
+          className={`${disabled ? 'disabled' : ''} classNameStatus`}
           onClick={handleClickToUpload}
         >
           {!previewUrl ? getIconByType('p-' + classNameStatus) : <img src={previewUrl} alt="" />}
@@ -464,7 +502,7 @@ const getElement = (that: Object): ?Object => {
   }
   if (listType === 'area') {
     const { dropArea, getRegisterInput, getChangeInfo, handleClickToUpload } = that;
-    const { inputId } = props;
+    const { inputId, disabled } = props;
     return (
       <React.Fragment>
         <FileInput
@@ -473,7 +511,12 @@ const getElement = (that: Object): ?Object => {
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />
-        <AreaView size={'bigger'} innerRef={dropArea} onClick={handleClickToUpload}>
+        <AreaView
+          className={disabled ? 'disabled' : ''}
+          size={'bigger'}
+          innerRef={dropArea}
+          onClick={handleClickToUpload}
+        >
           {getIconByType('uploadcloud')}
           <AreaText>
             请将文件拖到此处,或<AreaTextBlue>点击上传</AreaTextBlue>
