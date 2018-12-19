@@ -16,6 +16,7 @@ type propTypes = {
   inputId: string,
   getChangeInfo: Function,
   getRegisterInput: Function,
+  disabled?: boolean,
 };
 
 const Input = styled.input`
@@ -30,6 +31,7 @@ class FileInput extends React.Component<propTypes, any> {
     multiple: false,
     onChange: () => true,
     inputId: 'upload',
+    disabled: false,
   };
   constructor(props: Object) {
     super(props);
