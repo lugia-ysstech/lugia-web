@@ -21,16 +21,10 @@ import {
   Check,
   CheckText,
   MenuWrap,
-  NoData,
   TransFer,
   TreeWrap,
 } from '../css/transfer';
-import {
-  getKeys,
-  isContained,
-  filterEnableKeysFromSelectKeys,
-  getPanelSourceDataAndTargetData,
-} from './utils';
+import { getKeys, isContained, filterEnableKeysFromSelectKeys } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {

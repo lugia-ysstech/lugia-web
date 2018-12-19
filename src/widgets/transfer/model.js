@@ -8,14 +8,13 @@ import EventEmitter from '../common/EventEmitter';
 import { splitSelectKeys } from './utils';
 
 type TransferModelEventType = 'onSelectedKeyChange' | 'onListChange';
-
+type TransferModelType = 'Source' | 'Target';
 type TransferModelProps = {
   type: TransferModelType,
   selectedKeys: string[],
   list: string[],
 };
 
-type TransferModelType = 'Source' | 'Target';
 export default class TransferModel extends EventEmitter<TransferModelEventType> {
   type: TransferModelType;
   selectedKeys: string[];
@@ -71,6 +70,7 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
     const checkKeys = checked
       ? [...this.canCheckKeys, ...disabledCheckedKeys]
       : disabledCheckedKeys || [];
+
     return checkKeys;
   }
 
