@@ -33,7 +33,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   static defaultProps = {
     pending: false,
     pendingDot: 'lugia-icon-financial_loading_o',
-    mode: 'simple',
+    mode: 'right',
   };
   static displayName = Widget.TimeLine;
 

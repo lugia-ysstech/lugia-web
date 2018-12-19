@@ -11,6 +11,94 @@ import Widget from '../consts/index';
 import Theme from '../theme/';
 import styled from 'styled-components';
 
+const onPreClick = e => {};
+const onNextClick = e => {};
+class Tabsdemo extends React.Component<any, any> {
+  state = {
+    data: hasActivityKeyData,
+    activeKey: '0',
+  };
+  onAddClick = () => {
+    const activityKey = `newTab${this.state.data.length++}`;
+    const item = {
+      title: 'New Tab',
+      content: 'Content of new Tab',
+      activityKey,
+    };
+    return item;
+  };
+
+  onDeleteClick = activityKey => {};
+  render() {
+    return (
+      <div>
+        <Tabs
+          tabType={'card'}
+          pagedType={'single'}
+          onPreClick={onPreClick}
+          onNextClick={onNextClick}
+          onAddClick={this.onAddClick}
+          onDeleteClick={this.onDeleteClick}
+        />
+      </div>
+    );
+  }
+}
+
+class TabsLimitdemo extends React.Component<any, any> {
+  state = {
+    data: hasActivityKeyData,
+    activeKey: '0',
+  };
+  change = e => {
+    hasActivityKeyData[0] = {
+      title: 1000000000000,
+      content: 1000000000,
+      activityKey: '-1',
+    };
+    this.setState({ data: hasActivityKeyData });
+  };
+  onAddClick = () => {
+    const data = this.state.data;
+    const activityKey = `newTab${this.state.data.length++}`;
+    data.push({
+      title: 'New Tab',
+      content: 'Content of new Tab',
+      activityKey,
+    });
+    this.setState({ data });
+  };
+
+  onDeleteClick = activityKey => {
+    const { data } = this.state;
+    let newdata = [];
+    if (data.length > 1) {
+      newdata = data.filter(child => {
+        return child.activityKey !== activityKey;
+      });
+    }
+    this.setState({ data: newdata });
+  };
+  render() {
+    const { data } = this.state;
+    return (
+      <div>
+        <button style={{ width: 200 }} onClick={this.change}>
+          {'点击修改data内容'}
+        </button>
+        <Tabs
+          tabType={'card'}
+          pagedType={'single'}
+          data={data}
+          onPreClick={onPreClick}
+          onNextClick={onNextClick}
+          onAddClick={this.onAddClick}
+          onDeleteClick={this.onDeleteClick}
+        />
+      </div>
+    );
+  }
+}
 const Wrapper = styled.div`
   text-align: left;
   margin: 50px;
@@ -64,7 +152,7 @@ export const defaultData = [
 export const hasActivityKeyData = [
   {
     title: 1111,
-    content: <div>1111111</div>,
+    content: <div>1111111111</div>,
     activityKey: '0',
   },
   {
@@ -364,17 +452,6 @@ export default () => {
       height: 200,
     },
   };
-  const onPreClick = e => {};
-  const onNextClick = e => {};
-  const onDelClick = e => {};
-
-  const onAddClick = e => {
-    const newTabs = {
-      title: 'new tabs',
-      content: 'new tabs content',
-    };
-    return newTabs;
-  };
   return (
     <div>
       <Theme config={view}>
@@ -471,8 +548,6 @@ export default () => {
             data={hasActivityKeyData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-            onDelClick={onDelClick}
-            onAddClick={onAddClick}
           />
         </Wrapper>
         <br />
@@ -485,10 +560,12 @@ export default () => {
             data={hasActivityKeyData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-            onDelClick={onDelClick}
-            onAddClick={onAddClick}
           />
         </Wrapper>
+        <p>非受限 不传data 展示数据由state 控制</p>
+        <Tabsdemo />
+        <p>受限 展示数据 由props控制</p>
+        <TabsLimitdemo />
         <br />
       </Theme>
     </div>

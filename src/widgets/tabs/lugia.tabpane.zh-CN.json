@@ -1,0 +1,65 @@
+{
+  "widgetName": "Tabpane",
+  "title": "单个标签页",
+  "desc": "单个标签页组件",
+
+  "props": {
+    "activityKey": {
+      "type": "string",
+      "desc": "当前激活 tab 面板的 key",
+      "defaultValue": "undefined"
+    },
+    "title": {
+      "type": "string",
+      "desc": "标签页标题",
+      "defaultValue": "undefined"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "标签页图标资源",
+      "defaultValue": "undefined"
+    },
+    "tabType": {
+      "type": "TabType",
+      "desc": "可配置三种风格的标签页.可选 线性,卡片,窗口风格",
+      "defaultValue": "line"
+    },
+    "tabPosition": {
+      "type": "TabPositionType",
+      "desc": "页签位置，可配置 左,右,上,下",
+      "defaultValue": "top"
+    },
+    "isSelect": {
+      "type": "boolean",
+      "desc": "标签页是否被选中",
+      "defaultValue": "false"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "tab 被点击的回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击标签页时调用DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onDeleteClick": {
+      "desc": "点击清除按钮后回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "要删除的标签页对象",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "TabType": ["line", "card", "window"],
+    "TabPositionType": ["top", "bottom", "inner", "default"]
+  },
+  "category": ["数据展示"]
+}

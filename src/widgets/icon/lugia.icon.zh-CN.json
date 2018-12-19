@@ -1,0 +1,35 @@
+{
+  "widgetName": "Icon",
+  "title": "图标",
+  "desc": "语义化的矢量图形",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "iconClass": {
+      "type": "string",
+      "desc": "图标资源,需从图标库中获取.",
+      "defaultValue": "undefined"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "category": ["通用"]
+}

@@ -5,7 +5,7 @@
  * @flow
  */
 import '../common/shirm';
-import React, { Component } from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 import type { StepType, StepStatus, SizeType, OrientationType, AlignType } from '../css/steps';
@@ -199,14 +199,13 @@ const IconStep: Object = styled(Icon)`
 type StepState = { stepStatus: StepStatus };
 
 type StepProps = {
-  title: string,
+  title: React.Node,
   icon: string,
-  description: string,
+  description: React.Node,
   stepType: StepType,
   stepNumber: number,
   currentStepNumber: number,
   stepStatus: StepStatus,
-  descDirection: string,
   orientation: OrientationType,
   size: SizeType,
   getTheme: Function,
@@ -215,7 +214,7 @@ type StepProps = {
   desAlign: AlignType,
 };
 
-class Step extends Component<StepProps, StepState> {
+class Step extends React.Component<StepProps, StepState> {
   static defaultProps = {};
   static displayName = Widget.Step;
 
@@ -229,10 +228,10 @@ class Step extends Component<StepProps, StepState> {
     const theStepStatus = hasStatusInprops
       ? stepStatus
       : currentStepNumber > stepNumber
-        ? 'finish'
-        : currentStepNumber === stepNumber
-          ? 'process'
-          : 'wait';
+      ? 'finish'
+      : currentStepNumber === stepNumber
+      ? 'process'
+      : 'wait';
     if (hasStatusInprops) {
       return { stepStatus };
     }
@@ -336,8 +335,8 @@ class Step extends Component<StepProps, StepState> {
     return stepStatus === 'finish'
       ? 'lugia-icon-reminder_check'
       : stepStatus === 'error'
-        ? 'lugia-icon-reminder_close'
-        : '';
+      ? 'lugia-icon-reminder_close'
+      : '';
   }
 
   getStep() {

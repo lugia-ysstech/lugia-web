@@ -12,7 +12,7 @@ const {
   superLightColor,
 } = colorsFunc();
 export type TimeLineType = 'icon' | 'explain';
-export type TimeLineMode = 'simple' | 'alternate';
+export type TimeLineMode = 'right' | 'alternate';
 export type TimeLineStatus = 'success' | 'failed' | 'normal';
 const em = px2emcss(1.2);
 
@@ -35,10 +35,10 @@ export const getLineHeight = props => {
     height && height > 0
       ? em(height)
       : type === 'explain'
-        ? em(24)
-        : description
-          ? 'inherit'
-          : '100%';
+      ? em(24)
+      : description
+      ? 'inherit'
+      : '100%';
   return `height:${theHeight};`;
 };
 
@@ -53,12 +53,12 @@ export const getDotBackground = props => {
   const background = backgroundColor
     ? backgroundColor
     : type === 'explain'
-      ? lightGreyColor
-      : status === 'success'
-        ? successColor
-        : status === 'failed'
-          ? dangerColor
-          : themeColor;
+    ? lightGreyColor
+    : status === 'success'
+    ? successColor
+    : status === 'failed'
+    ? dangerColor
+    : themeColor;
   return `background: ${background};`;
 };
 export const getDotSize = props => {

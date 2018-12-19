@@ -13,7 +13,6 @@ export type PopoverProps = {
   description: React.Node,
   title: React.Node,
   content?: React.Node,
-  operation: React.Node,
   getTheme: Function,
   placement: DirectionType,
   action: 'hover' | 'click' | 'focus',

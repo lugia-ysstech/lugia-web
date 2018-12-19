@@ -3,10 +3,10 @@ import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { matchType } from '../tabs/utils';
 const { themeColor, mediumGreyColor, superLightColor } = colorsFunc();
-type TabType = 'line' | 'card' | 'window';
-type TabPositionType = 'left' | 'right' | 'top' | 'bottom';
-type PagedType = 'single' | 'page';
-type EditEventType = 'next' | 'pre';
+export type TabType = 'line' | 'card' | 'window';
+export type TabPositionType = 'left' | 'right' | 'top' | 'bottom';
+export type PagedType = 'single' | 'page';
+export type EditEventType = 'next' | 'pre';
 const em = px2emcss(1.2);
 export const AddButtonSize = 18;
 export const CardBorderAndMarginWidth = 6;
@@ -142,8 +142,8 @@ export const getTabpaneBackground = props => {
     (matchType(tabType, 'window') && isSelect) || (matchType(tabType, 'card') && isSelect)
       ? 'white'
       : matchType(tabType, 'card') && !isSelect
-        ? '#f8f8f8'
-        : 'none';
+      ? '#f8f8f8'
+      : 'none';
   return `background: ${background}`;
 };
 export const getTabpaneBorder = props => {
@@ -190,13 +190,16 @@ export const getTabpaneLeft = props => {
   const { tabType } = props;
   if (matchType(tabType, 'window')) return `left: ${em(6)};`;
 };
-export const getClearButtonShow = props => {
-  const { show, tabType } = props;
-  return `opacity:${!show && matchType(tabType, 'card') ? '0' : '1'}`;
+export const getButtonShow = props => {
+  const { tabType } = props;
+  if (matchType(tabType, 'card')) {
+    return 'opacity: 1;';
+  }
 };
-export const getAddButtonShow = props => {
-  const { show, tabType } = props;
-  return `opacity:${!show && matchType(tabType, 'card') ? '0' : '1'}`;
+export const getClearButtonOpacity = props => {
+  const { tabType } = props;
+  const opacity = matchType(tabType, 'card') ? 0 : 1;
+  return `opacity: ${opacity};`;
 };
 export const getArrowTop = props => {
   const { tabType } = props;

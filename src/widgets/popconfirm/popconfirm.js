@@ -14,6 +14,7 @@ import styled from 'styled-components';
 import { getTitleColor } from '../css/card';
 import { px2emcss } from '../css/units';
 import type { DirectionType } from '../css/tooltip';
+import type { ButtonType } from '../css/button';
 import ThemeProvider from '../theme-provider';
 import { ObjectUtils } from '@lugia/type-utils';
 import { getStateFromProps, processOnVisibleChange } from '../tooltip';
@@ -36,7 +37,7 @@ type PopconfirmProps = {
   icon: React.Node,
   cancelText: string,
   okText: string,
-  okType: string,
+  okType: ButtonType,
 };
 type PopconfirmState = {
   visible: boolean,

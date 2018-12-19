@@ -40,7 +40,6 @@ class TabContent extends Component<TabContentProps, TabContentState> {
 
   render() {
     const { tabPosition, content, activityKey } = this.props;
-
     return (
       <ContentContainer activityKey={activityKey} tabPosition={tabPosition}>
         {content}

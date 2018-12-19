@@ -1,0 +1,63 @@
+{
+  "widgetName": "TimeLineItem",
+  "title": "时间轴节点",
+  "desc": "时间轴每一个节点",
+
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "time": {
+      "type": "string",
+      "desc": "时间轴显示的时间",
+      "defaultValue": "undefined"
+    },
+    "description": {
+      "type": "string",
+      "desc": "时间轴显示的节点描述",
+      "defaultValue": "undefined"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "时间轴显示的节点图标资源",
+      "defaultValue": "undefined"
+    },
+    "direction": {
+      "type": "string",
+      "desc": "时间轴显示内容的方向,根据父组件mode属性来显示",
+      "defaultValue": "right"
+    },
+    "isLast": {
+      "type": "boolean",
+      "desc": "是否是最后一个时间节点",
+      "defaultValue": "false"
+    },
+    "status": {
+      "type": "TimeLineStatus",
+      "desc": "时间节点的状态",
+      "defaultValue": "normal"
+    },
+    "type": {
+      "type": "TimeLineType",
+      "desc": "时间节点的风格 可配置 图标风格和隐藏解释类型",
+      "defaultValue": "undefined"
+    },
+    "pending": {
+      "type": "boolean",
+      "desc": "最后一个是否是幽灵节点",
+      "defaultValue": "false"
+    },
+    "pendingDot": {
+      "type": "React.Node",
+      "desc": "当最后一个是幽灵节点时,指定其图标资源",
+      "defaultValue": "undefined"
+    }
+  },
+  "type": {
+    "TimeLineType": ["icon", "explain"],
+    "TimeLineStatus": ["success", "failed", "normal"]
+  },
+  "category": ["数据展示"]
+}
