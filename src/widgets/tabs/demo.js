@@ -13,7 +13,7 @@ import styled from 'styled-components';
 
 const onPreClick = e => {};
 const onNextClick = e => {};
-class Tabsdemo extends React.Component<any, any> {
+export class Tabsdemo extends React.Component<any, any> {
   state = {
     data: hasActivityKeyData,
     activeKey: '0',
@@ -27,8 +27,7 @@ class Tabsdemo extends React.Component<any, any> {
     };
     return item;
   };
-
-  onDeleteClick = activityKey => {};
+  onDeleteClick = (activityKey: string) => {};
   render() {
     return (
       <div>
@@ -45,12 +44,12 @@ class Tabsdemo extends React.Component<any, any> {
   }
 }
 
-class TabsLimitdemo extends React.Component<any, any> {
+export class TabsLimitdemo extends React.Component<any, any> {
   state = {
     data: hasActivityKeyData,
     activeKey: '0',
   };
-  change = e => {
+  change = (e: Object) => {
     hasActivityKeyData[0] = {
       title: 1000000000000,
       content: 1000000000,
@@ -69,7 +68,7 @@ class TabsLimitdemo extends React.Component<any, any> {
     this.setState({ data });
   };
 
-  onDeleteClick = activityKey => {
+  onDeleteClick = (activityKey: string) => {
     const { data } = this.state;
     let newdata = [];
     if (data.length > 1) {

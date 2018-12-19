@@ -2502,7 +2502,7 @@ exports[`tabsDemo Component JSON 1`] = `
         }
       }
     >
-      点我
+      点击修改data内容
     </button>
     <div
       className="c1"
