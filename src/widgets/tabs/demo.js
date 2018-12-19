@@ -18,6 +18,38 @@ class Tabsdemo extends React.Component<any, any> {
     data: hasActivityKeyData,
     activeKey: '0',
   };
+  onAddClick = () => {
+    const activityKey = `newTab${this.state.data.length++}`;
+    const item = {
+      title: 'New Tab',
+      content: 'Content of new Tab',
+      activityKey,
+    };
+    return item;
+  };
+
+  onDeleteClick = activityKey => {};
+  render() {
+    return (
+      <div>
+        <Tabs
+          tabType={'card'}
+          pagedType={'single'}
+          onPreClick={onPreClick}
+          onNextClick={onNextClick}
+          onAddClick={this.onAddClick}
+          onDeleteClick={this.onDeleteClick}
+        />
+      </div>
+    );
+  }
+}
+
+class TabsLimitdemo extends React.Component<any, any> {
+  state = {
+    data: hasActivityKeyData,
+    activeKey: '0',
+  };
   change = e => {
     hasActivityKeyData[0] = {
       title: 1000000000000,
@@ -52,7 +84,7 @@ class Tabsdemo extends React.Component<any, any> {
     return (
       <div>
         <button style={{ width: 200 }} onClick={this.change}>
-          {'点我'}
+          {'点击修改data内容'}
         </button>
         <Tabs
           tabType={'card'}
@@ -530,7 +562,10 @@ export default () => {
             onNextClick={onNextClick}
           />
         </Wrapper>
+        <p>非受限 不传data 展示数据由state 控制</p>
         <Tabsdemo />
+        <p>受限 展示数据 由props控制</p>
+        <TabsLimitdemo />
         <br />
       </Theme>
     </div>

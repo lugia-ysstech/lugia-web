@@ -24,7 +24,8 @@ import {
   getTabpaneHoverTransform,
   getTabpaneBottom,
   getTabpaneLeft,
-  getClearButtonShow,
+  getButtonShow,
+  getClearButtonOpacity,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -70,6 +71,10 @@ const HTab = BaseTab.extend`
   &:hover > span > i:first-child {
     ${getTabpaneIconHoverColor};
   }
+
+  &:hover > span {
+    ${getButtonShow};
+  }
 `;
 HTab.displayName = 'hTabpane';
 const Title = styled.div`
@@ -97,12 +102,11 @@ const IconContainer = styled.span`
   width: ${em(12)};
 `;
 const ClearButtonContainer = styled.span`
-  ${getClearButtonShow};
   transition: all 0.3s linear 0.1s;
   z-index: 2;
   display: inline-block;
+  ${getClearButtonOpacity};
 `;
-
 const ClearIcon: Object = styled(Icon)`
   font-size: 1rem;
   &:hover {
@@ -111,7 +115,6 @@ const ClearIcon: Object = styled(Icon)`
 `;
 ClearIcon.displayName = 'deleteIcon';
 type TabpaneState = {
-  clearButtonShow: boolean,
   iconClass: string,
 };
 
@@ -142,7 +145,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
     if (!state) {
       return {
-        clearButtonShow: false,
         iconClass: 'lugia-icon-reminder_close',
       };
     }
@@ -168,8 +170,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         onClick={this.handleClick}
         isSelect={isSelect}
         innerRef={cmp => (this.tabpane = cmp)}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
       >
         {this.getTabIcon()}
         <Title isHasIcon={this.getTabIcon() !== null} tabType={tabType} isSelect={isSelect}>
@@ -184,14 +184,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   componentDidMount() {
     this.getContainerWidth();
   }
-
-  onMouseEnter = () => {
-    this.setState({ clearButtonShow: true });
-  };
-
-  onMouseLeave = () => {
-    this.setState({ clearButtonShow: false });
-  };
 
   handleClick = () => {
     const { activityKey, onClick } = this.props;
@@ -211,7 +203,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   };
   getClearButton() {
     const { tabType } = this.props;
-    const { clearButtonShow, iconClass } = this.state;
+    const { iconClass } = this.state;
     if (!matchType(tabType, 'line')) {
       return (
         <ClearButtonContainer
@@ -219,7 +211,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           onMouseLeave={this.clearButtonMouseLeave}
           onClick={this.onDeleteClick}
           tabType={tabType}
-          show={clearButtonShow}
         >
           <ClearIcon iconClass={iconClass} />
         </ClearButtonContainer>

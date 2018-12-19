@@ -21,7 +21,7 @@ import {
   getAddBackground,
   getAddButtonBottom,
   getAddButtonDisplay,
-  getAddButtonShow,
+  getButtonShow,
   getAddHoverBackground,
   getAddRadius,
   getAddRight,
@@ -57,6 +57,7 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
 import { getIndexfromKey, getKeyfromIndex } from '../common/ObjectUtils';
+import type { TooltipProps } from '../css/tooltip';
 
 const em = px2emcss(1.2);
 
@@ -164,8 +165,11 @@ const AddIcon: Object = styled(Icon)`
   transition: all 0.3s linear 0.1s;
   font-size: 1rem;
   ${getAddButtonBottom};
-  ${getAddButtonShow};
   ${getAddButtonDisplay};
+  opacity: 0;
+  &:hover {
+    ${getButtonShow};
+  }
 `;
 AddIcon.displayName = 'addIcon';
 const HscrollerContainer = styled.div`
@@ -229,7 +233,6 @@ type TabsState = {|
   totalPage: number,
   pagedCount: number,
   arrowShow: boolean,
-  addButtonShow: boolean,
   childrenSize: Array<number>,
 |};
 
@@ -305,7 +308,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
         totalPage: 1,
         pagedCount: 0,
         arrowShow: false,
-        addButtonShow: false,
         childrenSize: [],
       };
     }
@@ -459,25 +461,18 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getAddButton() {
     const { tabType } = this.props;
-    const { addButtonShow } = this.state;
     const add = 'lugia-icon-reminder_plus';
     if (!matchType(tabType, 'line')) {
       return (
         <AddOutContainer tabType={tabType}>
-          <AddContainer
-            tabType={tabType}
-            onClick={this.onAddClick}
-            onMouseEnter={this.addButtonMouseEnter}
-            onMouseLeave={this.addButtonMouseLeave}
-          >
-            <AddIcon tabType={tabType} iconClass={add} show={addButtonShow} />
+          <AddContainer tabType={tabType} onClick={this.onAddClick}>
+            <AddIcon tabType={tabType} iconClass={add} />
           </AddContainer>
         </AddOutContainer>
       );
     }
     return null;
   }
-
   componentDidMount() {
     this.measurePage();
   }
@@ -486,14 +481,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
     this.updateContainerSize();
     this.matchPage();
   }
-
-  addButtonMouseEnter = () => {
-    this.setState({ addButtonShow: true });
-  };
-
-  addButtonMouseLeave = () => {
-    this.setState({ addButtonShow: false });
-  };
 
   matchPage() {
     const { currentPage, childrenSize, data } = this.state;
@@ -578,12 +565,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getChildren() {
     const { data } = this.state;
-    const childrenWithProps = data
+    return data
       ? data.map((child, i) => {
           return <Tabpane {...this.getTabpaneConfig(child, i)} />;
         })
       : null;
-    return childrenWithProps;
   }
 
   getChildrenContent() {
@@ -631,14 +617,47 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     onChange && onChange(activityKey, e);
   };
+
   onDeleteClick = (e: Event, activityKey: string) => {
+    const { data } = this.state;
+    let newdata = [];
+    const hasDataInprops = 'data' in this.props;
+    if (!hasDataInprops) {
+      newdata = data.filter(tabpane => {
+        return tabpane.activityKey !== activityKey;
+      });
+      this.setState(
+        {
+          data: newdata,
+        },
+        () => {
+          this.updataChildrenSize();
+        }
+      );
+    }
     const { onDeleteClick } = this.props;
     onDeleteClick && onDeleteClick(activityKey);
   };
 
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
-    onAddClick && onAddClick();
+    const hasDataInprops = 'data' in this.props;
+
+    if (!hasDataInprops && onAddClick(e)) {
+      const { data } = this.state;
+      const newdata = [...data];
+      const { title = '', content = '', activityKey } = onAddClick(e);
+      newdata.push({ title, content, activityKey });
+      this.setState(
+        {
+          data: addActivityKey2Data(newdata),
+        },
+        () => {
+          this.updataChildrenSize();
+        }
+      );
+    }
+    onAddClick && onAddClick(e);
   };
 
   getTabpaneWidth = (width: number) => {
@@ -682,7 +701,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
   handleChangePage = (type: EditEventType) => {
     let { currentPage, totalPage, pagedCount, childrenSize } = this.state;
     const { pagedType } = this.props;
-
     if (pagedType === 'page') {
       currentPage = this.getPagedCount(currentPage, totalPage, type);
     } else {
