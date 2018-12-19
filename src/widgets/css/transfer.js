@@ -38,13 +38,13 @@ export type TransferState = {
   typeList: Object,
   cancelItem?: Object[],
   treeData: Object[],
+  treeDataLength: ?number,
 };
 type CSSProps = {
-  direction: 'left' | 'right',
   isWrap?: boolean,
   theme: ThemeType,
   disabled: boolean,
-  direction: 'left' | 'right',
+  direction: 'Source' | 'Target',
 };
 const { borderColor } = colorsFunc();
 export const TransFer = styled.div`
@@ -72,10 +72,10 @@ export const MenuWrap = styled.div`
 `;
 const getNoDataHeight = (props: CSSProps) => {
   const { direction } = props;
-  if (direction === 'left') {
-    return px2emcss(1.4)(310);
+  if (direction === 'Source') {
+    return px2emcss(1.4)(300);
   }
-  return px2emcss(1.4)(250);
+  return px2emcss(1.4)(240);
 };
 export const NoData = styled.div`
   font-size: ${em(14)};

@@ -15,22 +15,17 @@ import { BtnText, OperationBtn, TransFerWrap } from '../css/transfer-group';
 import { DisplayField, ValueField } from '../consts/props';
 import {
   getCancelItem,
-  getCanCheckKeys,
   getPanelSourceDataAndTargetData,
   getTreeData,
   getTruthValue,
   splitSelectKeys,
 } from './utils';
 import { getMapData } from './menu-utils';
-import { recurTreeData } from '../menu/utils';
 import TransferModel from './model';
 
 export default ThemeProvider(
   class extends React.Component<GroupProps, GroupState> {
     static displayName = 'Transfer';
-    sourceInputValue: string;
-    targetInputValue: string;
-    maping: boolean;
     sourceModel: TransferModel;
     targetModel: TransferModel;
     constructor(props: GroupProps) {
@@ -62,7 +57,7 @@ export default ThemeProvider(
         this.targetModel.setCanCheckKeys(targetCheckKeys);
         this.sourceModel.setCanCheckKeys(sourceCheckKeys);
       } else {
-        const { mapData: maps, target, enableKeys } = getTreeData(data, {
+        const { mapData: maps, target } = getTreeData(data, {
           displayField,
           valueField,
         });
@@ -79,6 +74,7 @@ export default ThemeProvider(
       }
       this.targetModel.setMapData(mapData);
       this.sourceModel.setMapData(mapData);
+      this.targetModel.setDisplayValue(theDisplayValue);
       const cancelItem = getCancelItem(
         theTargetKeys,
         mapData,
@@ -86,6 +82,7 @@ export default ThemeProvider(
         theDisplayValue
       );
       this.targetModel.setCancelItem(cancelItem);
+      this.sourceModel.setCancelItem(cancelItem);
     }
 
     getTargetSelectedKeys(props) {
@@ -137,37 +134,43 @@ export default ThemeProvider(
         this.sourceModel.changeSelectedKeys(keys);
       }
       if (this.isInProps('targetKeys')) {
-        const targetSelctKeys = this.getTargetKeys(nextProps);
-        this.targetModel.changeList(targetSelctKeys);
-        this.sourceModel.changeList(targetSelctKeys);
+        const targetSelectKeys = this.getTargetKeys(nextProps);
+        this.targetModel.changeList(targetSelectKeys);
+        this.sourceModel.changeList(targetSelectKeys);
 
         const { sourceEnableKeys, targetEnableKeys } = this.getEnableKeys(type, targetKeys);
         this.targetModel.setCanCheckKeys(targetEnableKeys);
         this.sourceModel.setCanCheckKeys(sourceEnableKeys);
       }
+      if (this.isInProps('displayValue')) {
+        const theTargetKeys = this.targetModel.getList();
+        const mapData = this.targetModel.getMapData();
+        const theDisplayValue = this.getDisplayValue(nextProps);
+        const cancelItem = getCancelItem(
+          theTargetKeys,
+          mapData,
+          { valueField, displayField },
+          theDisplayValue
+        );
+        this.targetModel.changeCancelItem(cancelItem);
+        this.sourceModel.setCancelItem(cancelItem);
+        this.targetModel.setDisplayValue(theDisplayValue);
+      }
+
       return true;
     }
 
     render() {
-      const {
-        showSearch,
-        type = 'panel',
-        valueField = ValueField,
-        displayField = DisplayField,
-      } = this.props;
+      const { type = 'panel', valueField = ValueField, displayField = DisplayField } = this.props;
 
       return (
         <TransFerWrap>
           <TransFer
             key="1"
             direction="Source"
-            // type={type}
             onSelect={this.handleSourceSelect}
             model={this.sourceModel}
-            // showSearch={showSearch}
             onCheckAll={this.checkAllForLeft}
-            // canCheckKeys={sourceCheckKeys || enableKeys}
-            // onSearch={this.searchCallbackForLeft}
             title="列表A"
             {...this.props}
             displayField={displayField}
@@ -391,47 +394,49 @@ export default ThemeProvider(
       return checkKeys;
     };
 
-    searchCallbackForLeft = (inputValue: string) => {
-      const { sourceData = [] } = this.state;
-      this.sourceInputValue = inputValue;
-      this.setSearchData(sourceData, inputValue, 'sourceSearchData');
-    };
-    searchCallbackForRight = (inputValue: string) => {
-      const { targetData = [] } = this.state;
-      this.targetInputValue = inputValue;
-      this.setSearchData(targetData, inputValue, 'targetSearchData');
-    };
-    setSearchData = (data: Object[], inputValue: string, target: string) => {
-      const SearchData = this.searchFilter(data, inputValue);
-      this.setState({ [target]: inputValue ? SearchData : data });
-    };
-    searchFilter = (data: Object[], searchValue: string) => {
-      const { valueField = ValueField } = this.props;
-      const {
-        filterOption = (value, option) => {
-          return option[valueField].indexOf(value) > -1;
-        },
-      } = this.props;
-      if (data && data.length > 0 && filterOption && typeof filterOption === 'function') {
-        const searchData = [];
-        if (this.maping) {
-          return;
-        }
-        if (!this.maping) {
-          this.maping = true;
-          data.forEach(item => {
-            if (filterOption(searchValue, item)) {
-              searchData.push(item);
-            }
-          });
-          this.maping = false;
-          return searchData;
-        }
-      }
-    };
+    // searchCallbackForLeft = (inputValue: string) => {
+    //   const { sourceData = [] } = this.state;
+    //   this.sourceInputValue = inputValue;
+    //   this.setSearchData(sourceData, inputValue, 'sourceSearchData');
+    // };
+    // searchCallbackForRight = (inputValue: string) => {
+    //   const { targetData = [] } = this.state;
+    //   this.targetInputValue = inputValue;
+    //   this.setSearchData(targetData, inputValue, 'targetSearchData');
+    // };
+    // setSearchData = (data: Object[], inputValue: string, target: string) => {
+    //   const SearchData = this.searchFilter(data, inputValue);
+    //   this.setState({ [target]: inputValue ? SearchData : data });
+    // };
+    // searchFilter = (data: Object[], searchValue: string) => {
+    //   const { valueField = ValueField } = this.props;
+    //   const {
+    //     filterOption = (value, option) => {
+    //       return option[valueField].indexOf(value) > -1;
+    //     },
+    //   } = this.props;
+    //   if (data && data.length > 0 && filterOption && typeof filterOption === 'function') {
+    //     const searchData = [];
+    //     if (this.maping) {
+    //       return;
+    //     }
+    //     if (!this.maping) {
+    //       this.maping = true;
+    //       data.forEach(item => {
+    //         if (filterOption(searchValue, item)) {
+    //           searchData.push(item);
+    //         }
+    //       });
+    //       this.maping = false;
+    //       return searchData;
+    //     }
+    //   }
+    // };
 
     handleCancelItemClick = (value: string) => {
-      const { displayValue, targetKeys } = this.state;
+      // const { displayValue, targetKeys } = this.state;
+      const displayValue = this.targetModel.getDisplayValue();
+      const targetKeys = this.targetModel.getList();
       const newDisplayValue = [...displayValue];
       const newTargetKeys = [...targetKeys];
       const index = targetKeys.indexOf(value);
@@ -445,10 +450,23 @@ export default ThemeProvider(
         return;
       }
 
-      this.setState({
-        displayValue: newDisplayValue,
-        targetKeys: newTargetKeys,
-      });
+      const mapData = this.targetModel.getMapData();
+      const { displayField = 'text', valueField = 'value' } = this.props;
+      const cancelItem = getCancelItem(
+        newTargetKeys,
+        mapData,
+        { valueField, displayField },
+        newDisplayValue
+      );
+      this.targetModel.changeCancelItem(cancelItem);
+      this.sourceModel.setCancelItem(cancelItem);
+      this.targetModel.setDisplayValue(newDisplayValue);
+      this.targetModel.changeList(newTargetKeys);
+      this.sourceModel.changeList(newTargetKeys);
+      // this.setState({
+      //   displayValue: newDisplayValue,
+      //   targetKeys: newTargetKeys,
+      // });
     };
     isInProps(value: string) {
       return value in this.props;

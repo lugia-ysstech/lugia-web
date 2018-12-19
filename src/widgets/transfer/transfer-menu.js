@@ -86,10 +86,10 @@ export default class TransferMenu extends React.Component<TransferMenuProps, Tra
 
   render() {
     const { menuData } = this.state;
-    const { displayField, valueField, selectedKeys, query } = this.props;
+    const { displayField, valueField, selectedKeys, query, direction } = this.props;
     if (query && !menuData.length) {
       //todo: nodata 左右 两侧 样式高度（direction）；
-      return <NoData>无匹配数据</NoData>;
+      return <NoData direction={direction}>无匹配数据</NoData>;
     }
     return (
       <Menu

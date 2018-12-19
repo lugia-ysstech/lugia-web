@@ -34,6 +34,8 @@ import {
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
+    treeData: Object[];
+
     constructor(props) {
       super(props);
       const { model } = this.props;
@@ -44,6 +46,7 @@ export default ThemeProvider(
         typeList: model.getTypeList(),
         cancelItem: model.getCancelItem(),
         treeData: model.getTreeData(),
+        treeDataLength: undefined,
       };
 
       model.on('onSelectedKeyChange', param => {
@@ -57,6 +60,13 @@ export default ThemeProvider(
         const { data } = param;
         this.setState({
           typeList: data,
+        });
+      });
+
+      model.on('onCancelItemChange', param => {
+        const { data } = param;
+        this.setState({
+          cancelItem: data,
         });
       });
     }
@@ -88,9 +98,7 @@ export default ThemeProvider(
     };
 
     render() {
-      const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
-      console.info('typeList', typeList);
-      console.info('type', this.props.type);
+      const { selectedKeys = [], typeList, treeData, inputValue, treeDataLength } = this.state;
       const {
         showSearch,
         data = [],
@@ -117,10 +125,14 @@ export default ThemeProvider(
         treeView = {};
       if (direction === 'Source') {
         menuView[Widget.Menu] = {
-          height: 310,
+          height: 300,
         };
         treeView[Widget.Tree] = {
-          height: 310,
+          height: 300,
+        };
+      } else {
+        menuView[Widget.Menu] = {
+          height: 240,
         };
       }
       const inputConfig = {};
@@ -129,16 +141,14 @@ export default ThemeProvider(
       }
       const canCheckKeys = this.props.model.getCanCheckKeys();
       const length = (canCheckKeys && canCheckKeys.length) || 0;
-      console.info('canCheckKeys', canCheckKeys);
-      console.info('selectedKeys', selectedKeys);
       const checked =
         selectedKeys.length === 0
           ? false
           : length
           ? isContained(selectedKeys, canCheckKeys)
           : isContained(getKeys(data ? data : [], valueField), selectedKeys);
-      // const checked = selectedKeys.length >= length;
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
+      const dataLength = this.getDataLength(type, direction);
       return (
         <TransFer>
           <Check>
@@ -151,7 +161,7 @@ export default ThemeProvider(
             </CheckBox>
 
             <CheckText>
-              {selectedKeys.length}/{data.length}
+              {selectedKeys.length}/{type === 'panel' ? dataLength : treeDataLength}
             </CheckText>
           </Check>
           {showSearch ? (
@@ -186,6 +196,7 @@ export default ThemeProvider(
                       onChange={this.handleTreeChange}
                       query={inputValue}
                       {...typeList}
+                      getTreeData={this.getTreeData}
                     />
                   </Theme>
                 </TreeWrap>
@@ -197,6 +208,32 @@ export default ThemeProvider(
         </TransFer>
       );
     }
+
+    getTreeData = (data: Object[]) => {
+      const oldLength = this.treeData && this.treeData.length;
+      if (data.length !== oldLength) {
+        this.setState({
+          treeDataLength: data.length,
+        });
+      }
+      this.treeData = data;
+    };
+
+    getDataLength = (type: 'panel' | 'tree', direction: 'Source' | 'Target'): number => {
+      let length;
+      const { data = [], model } = this.props;
+      const { cancelItem = [] } = this.state;
+      if (type === 'panel') {
+        if (direction === 'Source') {
+          length = data.length - model.getList().length + cancelItem.length;
+        } else {
+          length = model.getList().length - cancelItem.length;
+        }
+        return length;
+      }
+
+      return 0;
+    };
 
     cancelItemClick = (value: string) => {
       const { onCancelItemClick } = this.props;

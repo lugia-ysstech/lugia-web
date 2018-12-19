@@ -24,6 +24,7 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
   cancelItem: Object[];
   treeData: Object[];
   canCheckKeys: string[];
+  displayValue: string[];
 
   constructor(props: TransferModelProps) {
     super();
@@ -39,6 +40,14 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
 
   getMapData(): Object {
     return this.mapData;
+  }
+
+  setDisplayValue(displayValue: string[]) {
+    this.displayValue = displayValue;
+  }
+
+  getDisplayValue(): string[] {
+    return this.displayValue;
   }
 
   setTreeData(treeData: Object[]) {
@@ -89,6 +98,11 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
 
   getCancelItem(): Object[] {
     return this.cancelItem;
+  }
+
+  changeCancelItem(item: Object[]) {
+    this.cancelItem = item;
+    this.emit('onCancelItemChange', { data: item });
   }
 
   changeSelectedKeys(selectKeys: string[]) {

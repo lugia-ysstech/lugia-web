@@ -115,7 +115,7 @@ export default class TransferDemo extends React.Component<any, any> {
           defaultTargetSelectedKeys={['2.1.1']}
           defaultTargetKeys={['3.1', '3.2', '2.1.1']}
           showSearch
-          displayValue={['dis1', 'dis2', '2.1.1']}
+          defaultDisplayValue={['dis1', 'dis2', '2.1.1']}
         />
       </div>
     );
