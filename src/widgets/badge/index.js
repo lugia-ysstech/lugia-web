@@ -34,7 +34,7 @@ const Container = styled.span`
 `;
 
 type BadgeProps = {
-  className?: string,
+  viewClass?: string,
   getTheme: Function,
   count?: number,
   showZero?: boolean,

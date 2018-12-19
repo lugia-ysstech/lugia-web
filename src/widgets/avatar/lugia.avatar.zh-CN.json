@@ -1,0 +1,47 @@
+{
+  "widgetName": "Avatar",
+  "title": "头像",
+  "desc": "用来代表用户或事物，支持图片、图标或字符展示。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "size": {
+      "type": "AvatarSize",
+      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "defaultValue": "default"
+    },
+    "name": {
+      "type": "string",
+      "desc": "头像显示内容",
+      "defaultValue": "undefined"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "头像显示图标资源",
+      "defaultValue": "undefined"
+    },
+    "src": {
+      "type": "string",
+      "desc": "头像显示图片资源",
+      "defaultValue": "undefined"
+    },
+    "shape": {
+      "type": "AvatarShape",
+      "desc": "头像显示形状风格",
+      "defaultValue": "circle"
+    }
+  },
+  "type": {
+    "AvatarSize": ["small", "default", "large"],
+    "AvatarShape": ["circle", "square"]
+  },
+  "category": ["数据展示"]
+}

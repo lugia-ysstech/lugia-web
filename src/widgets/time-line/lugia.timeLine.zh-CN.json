@@ -1,0 +1,41 @@
+{
+  "widgetName": "Timeline",
+  "title": "时间轴",
+  "desc": "垂直展示的时间流信息",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "children": {
+      "type": "React.Node",
+      "desc": "时间轴需要包含的子组件",
+      "defaultValue": "undefined"
+    },
+    "reverse": {
+      "type": "boolean",
+      "desc": "控制节点排序，false 正序,true 倒序",
+      "defaultValue": "false"
+    },
+    "pending": {
+      "type": "boolean",
+      "desc": "最后一个是否是幽灵节点",
+      "defaultValue": "false"
+    },
+    "pendingDot": {
+      "type": "React.Node",
+      "desc": "当最后一个是幽灵节点时,指定其图标资源",
+      "defaultValue": "undefined"
+    },
+    "mode": {
+      "type": "TimeLineMode",
+      "desc": "时间轴 描述信息的显示位置 ,可选择右侧或者交错显示.",
+      "defaultValue": "right"
+    }
+  },
+  "type": {
+    "TimeLineMode": ["right", "alternate"]
+  },
+  "category": ["数据展示"]
+}

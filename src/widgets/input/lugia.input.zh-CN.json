@@ -1,0 +1,180 @@
+{
+  "widgetName": "Input",
+  "title": "文本输入框",
+  "desc": "常用于昵称,名称,表格内容等填写.",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "true 禁用 false 可用",
+      "defaultValue": "false"
+    },
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "defaultValue": "default"
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "input校验状态, 'success' 成功 | 'error'错误",
+      "defaultValue": "success"
+    },
+    "validateType": {
+      "type": "InputValidateType",
+      "desc": "input校验信息显示类型, 'top' | 'bottom' | 'inner' | 'default'",
+      "defaultValue": "default"
+    },
+    "help": {
+      "type": "string",
+      "desc": "input校验提示信息",
+      "defaultValue": "undefined"
+    },
+    "placeholder": {
+      "type": "string",
+      "desc": "input输入提示信息",
+      "defaultValue": "undefined"
+    },
+    "prefix": {
+      "type": "React$Element<any>",
+      "desc": "带有前缀的 input",
+      "defaultValue": "undefined"
+    },
+    "suffix": {
+      "type": "React$Element<any>",
+      "desc": "带有后缀的 input",
+      "defaultValue": "undefined"
+    },
+    "defaultValue": {
+      "type": "string",
+      "desc": "默认显示内容",
+      "defaultValue": "undefined"
+    },
+    "value": {
+      "type": "string",
+      "desc": "显示内容",
+      "defaultValue": "undefined"
+    },
+    "formatter": {
+      "type": "function",
+      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用",
+      "defaultValue": "undefined"
+    },
+    "parser": {
+      "type": "function",
+      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用",
+      "defaultValue": "undefined"
+    },
+    "readOnly": {
+      "type": "boolean",
+      "desc": "只读input",
+      "defaultValue": "false"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onChange": {
+      "desc": "内容改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变内容的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onKeyUp": {
+      "desc": "键盘按下去并松开后执行",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onKeyDown": {
+      "desc": "键盘按下任何键时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onKeyPress": {
+      "desc": "键盘按下任何键时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onFocus": {
+      "desc": "输入框获得焦点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "获取焦点的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onBlur": {
+      "desc": "输入框失去焦点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "失去焦点的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onClear": {
+      "desc": "清除输入框内容时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "清除输入框内容事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onEnter": {
+      "desc": "当键入回车时触发事件",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当键入回车时触发",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "InputSize": ["small", "default", "large"],
+    "ValidateStatus": ["success", "error"],
+    "InputValidateType": ["top", "bottom", "inner", "default"]
+  },
+  "category": ["数据录入"]
+}

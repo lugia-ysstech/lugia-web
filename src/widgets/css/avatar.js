@@ -21,22 +21,20 @@ export type AvatarShape = 'circle' | 'square';
 
 export type AvatarSize = 'small' | 'default' | 'large';
 
-type AvatarProps = {
+type AvatarCssProps = {
   theme: ThemeType,
   size: AvatarSize,
   shape: AvatarShape,
-  avatarBackground: string,
-  avatarColor: string,
 };
 
 const getMeasure = (size: AvatarSize) => {
   return size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
 };
-export const getNameFontSize = (props: AvatarProps) => {
+export const getNameFontSize = (props: AvatarCssProps) => {
   const { size } = props;
   return `font-size:${size === 'large' ? '1.2em' : size === 'small' ? '0.8em' : '1.0em'}`;
 };
-export const getIconFontSize = (props: AvatarProps) => {
+export const getIconFontSize = (props: AvatarCssProps) => {
   const { size } = props;
   return `font-size:${size === 'large' ? '2.2em' : size === 'small' ? '1.2em' : '1.8em'}`;
 };
@@ -47,20 +45,20 @@ export const getSize = (props: Object) => {
   const theHeight = ObjectUtils.isNumber(height) ? em(height) : getMeasure(size);
   return `width :${theWidth};height:${theHeight};`;
 };
-export const lineHeight = (props: AvatarProps) => {
+export const lineHeight = (props: AvatarCssProps) => {
   const { size } = props;
   return `${getMeasure(size)};`;
 };
-export const getBorderRadius = (props: AvatarProps) => {
+export const getBorderRadius = (props: AvatarCssProps) => {
   const { shape } = props;
   return `border-radius:${shape === 'circle' ? '50%' : '10%'};`;
 };
-export const getAvatarBackground = (props: AvatarProps) => {
+export const getAvatarBackground = (props: AvatarCssProps) => {
   const { theme } = props;
   const { backgroundColor } = theme;
   return `background:${backgroundColor ? backgroundColor : borderColor}`;
 };
-export const getAvatarColor = (props: AvatarProps) => {
+export const getAvatarColor = (props: AvatarCssProps) => {
   const { theme } = props;
   const { color } = theme;
   return `color:${color ? color : 'white'}`;

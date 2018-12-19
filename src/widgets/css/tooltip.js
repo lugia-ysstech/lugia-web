@@ -16,6 +16,7 @@ export const SmallHeight = em(24);
 export const DefaultHeight = em(32);
 
 export type ToolTipSize = 'small' | 'default' | 'large';
+export type PopArrowType = 'sharp' | 'round';
 export type DirectionType =
   | 'left'
   | 'leftTop'
@@ -40,7 +41,7 @@ export type TooltipProps = {
   getTheme: Function,
   onVisibleChange: Function,
   size: ToolTipSize,
-  popArrowType?: 'sharp' | 'round',
+  popArrowType?: PopArrowType,
   visible: boolean,
   defaultVisible?: boolean,
 };

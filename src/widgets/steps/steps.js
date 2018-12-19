@@ -12,7 +12,7 @@ import Widget from '../consts/index';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { getFlexDirection } from '../css/steps';
-import type { AlignType } from '../css/steps';
+import type { AlignType, StepType, OrientationType, SizeType } from '../css/steps';
 
 const OutContainer = styled.div`
   display: inline-block;
@@ -32,14 +32,10 @@ const HStepsOutContainer = styled.div`
 type StepsState = {};
 
 type StepsProps = {
-  title: string,
-  icon: string,
-  description: string,
-  stepType: string,
+  stepType: StepType,
   currentStepNumber: number,
-  status: string,
-  orientation: string,
-  size: string,
+  orientation: OrientationType,
+  size: SizeType,
   getTheme: Function,
   children: React$Element<any>,
   desAlign: AlignType,
