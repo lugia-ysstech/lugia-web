@@ -11,7 +11,7 @@ import { createExistMap } from '../utils';
 export function getTruthValue(
   target: string,
   props: Object,
-  state?: Object,
+  state: ?Object,
   defaultTarget: string
 ) {
   const inProps = target in props;
