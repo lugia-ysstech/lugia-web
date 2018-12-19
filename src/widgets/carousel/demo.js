@@ -101,7 +101,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
     const config = { [Widget.Carousel]: { width: 700, height: 350 } };
     return (
       <div>
-        {/* <H2>3s自动切换</H2>
+        <H2>3s自动切换</H2>
         <DemoWrap>
           <Theme config={config}>
             <Carousel autoPlay={true} delay={3000}>
@@ -155,19 +155,19 @@ export default class SkeletonDemo extends React.Component<any, any> {
               {getImgWrap()}
             </Carousel>
           </Theme>
-        </DemoWrap> */}
+        </DemoWrap>
 
         <h2>受限</h2>
         <CarouselLimtDemo />
 
-        {/* <h2>图片轮播图 switchType === fade 透明度切换</h2>
+        <h2>图片轮播图 switchType === fade 透明度切换</h2>
         <DemoWrap>
           <Theme config={config}>
             <Carousel autoPlay={true} switchType={'fade'} delay={3000} deafultStart={2}>
               {getImgWrap()}
             </Carousel>
           </Theme>
-        </DemoWrap> */}
+        </DemoWrap>
       </div>
     );
   }

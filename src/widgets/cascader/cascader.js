@@ -158,7 +158,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { menuWidth = 150 } = theme;
 
     return (
-      <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
+      <Theme config={{ [Widget.Menu]: { width: menuWidth, submenuWidth: menuWidth } }}>
         <Menu
           mutliple={false}
           ref={this.menu}

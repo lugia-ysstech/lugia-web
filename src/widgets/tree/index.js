@@ -67,6 +67,7 @@ type TreeProps = {
   splitQuery?: string,
   current: number,
   data?: Array<RowData>,
+  inlineType: 'primary' | 'ellipse',
   blackList: ?(string[]),
   whiteList: ?(string[]),
   searchType?: QueryType,
@@ -104,6 +105,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     query: '',
     current: -1,
     openAnimation: animation,
+    inlineType: 'primary',
     themeStyle: {
       MenuItemHeight,
       DefaultHeight,
@@ -517,6 +519,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onSelect = (selectValue: Array<string>) => {
+    const { onSelect } = this.props;
+    onSelect && onSelect(selectValue);
     this.select(selectValue);
   };
 

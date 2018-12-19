@@ -39,12 +39,12 @@ type SelectProps = {
   getTheme?: Function,
   mutliple: boolean,
   canInput: boolean,
+  valueField?: string,
   displayField?: string,
   data?: Object[],
   mode?: 'local' | 'remote',
   throttle?: number,
   disabled?: boolean,
-  valueField?: string,
   validateStatus: ValidateStatus,
   canSearch: boolean,
   splitQuery: string,
@@ -94,6 +94,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     validateStatus: 'success',
     canSearch: false,
     splitQuery: ',',
+    searchType: 'include',
   };
   static displayName = Widget.Select;
 

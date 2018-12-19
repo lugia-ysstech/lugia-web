@@ -33,6 +33,22 @@ export default class Demo extends React.Component {
     };
   }
 
+  handleChange = obj => {
+    console.log('obj', obj);
+  };
+
+  onTrigger = () => {
+    console.log('visible');
+  };
+
+  handleQuery = value => {
+    console.log('query', value);
+  };
+
+  handleSelect = obj => {
+    console.log('handleSelect', obj);
+  };
+
   render() {
     const { config, value, displayValue } = this.state;
 
@@ -44,10 +60,14 @@ export default class Demo extends React.Component {
             data={data}
             displayField={'label'}
             value={value}
-            throttle={0}
+            throttle={1000}
             onQuery={this.onQuery}
             canSearch
             mutliple
+            onChange={this.handleChange}
+            onTrigger={this.onTrigger}
+            onQuery={this.handleQuery}
+            onSelect={this.handleSelect}
           />
 
           <H2>single search</H2>

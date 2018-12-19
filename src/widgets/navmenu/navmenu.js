@@ -59,12 +59,17 @@ type NavMenuProps = {
   splitQuery?: string,
   current: number,
   data?: Array<RowData>,
-  type: 'primary' | 'ellipse',
+  inlineType: 'primary' | 'ellipse',
   mode: 'vertical' | 'inline',
+  onClick?: Function,
+  valueField?: string,
+  displayField?: string,
+  action?: 'click' | 'hover',
 };
 
 type NavMenuState = {
-  data: Object[],
+  data: Array<RowData>,
+  popupVisible: boolean,
 };
 const themeStyle = {
   MenuItemHeight,
@@ -90,7 +95,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   constructor(props: NavMenuProps) {
     super(props);
     this.state = {
-      data: props ? props.data : [],
+      data: props.data ? props.data : [],
       popupVisible: false,
     };
     this.treeData = getTreeData(this.props);
@@ -110,12 +115,14 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getVerticalNavMenu = () => {
-    const { data, displayField, valueField, actoin } = this.props;
+    const { data, displayField, valueField, action = 'click' } = this.props;
     const { popupVisible } = this.state;
     const menuConfig = {
       [Widget.Menu]: {
-        width: 200,
-        submenuWidth: 150,
+        // width: 200,
+        // submenuWidth: 180,
+        // autoHeight: true,
+        // height: 300,
       },
     };
     return (
@@ -124,11 +131,12 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           <Menu
             data={data}
             separator={'/'}
-            size={'large'}
             popupVisible={popupVisible}
             valueField={valueField}
-            action={actoin}
+            size={'large'}
+            subsize={'bigger'}
             displayField={displayField}
+            action={action}
             mutliple={false}
             handleIsInMenu={this.handleIsInMenu}
           />
@@ -140,27 +148,28 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   getInlineNavMenu = () => {
     const config = {
       [Widget.Tree]: {
-        height: 800,
-        width: 220,
+        // height: 800,
+        // width: 220,
+        // submenuWidth: 180,
+        autoHeight: true,
+        // height: 300,
       },
     };
-    const { type, expandAll, valueField, displayField } = this.props;
+    const { inlineType, expandAll, valueField, displayField } = this.props;
     const treeData = this.treeData;
     return (
       <Theme config={config}>
         <Tree
           expandAll={expandAll}
-          type={type}
+          inlineType={inlineType}
           data={treeData}
           mutliple={false}
           valueField={valueField}
           displayField={displayField}
           onlySelectLeaf={true}
           onChange={this.onChange}
-          onClick={this.onClick}
           themeStyle={themeStyle}
           // onSelect={this.onSelect}
-          onExpand={this.onExpand}
         />
       </Theme>
     );
@@ -183,6 +192,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   getCheckedItem(value: string[]): Object {
     const key = value[0];
     const { valueField } = this.props;
+
     return this.treeData.find(item => item[valueField] === key);
   }
 

@@ -84,6 +84,14 @@ const hasChildrenData = [
           { text: '三级菜单6-2-3', value: '三级菜单6-2-3' },
         ],
       },
+      { text: '次级菜单6-3', value: '次级菜单6-3' },
+      { text: '次级菜单6-4', value: '次级菜单6-4' },
+      { text: '次级菜单6-5', value: '次级菜单6-5' },
+      { text: '次级菜单6-6', value: '次级菜单6-6' },
+      { text: '次级菜单6-7', value: '次级菜单6-7' },
+      { text: '次级菜单6-8', value: '次级菜单6-8' },
+      { text: '次级菜单6-9', value: '次级菜单6-9' },
+      { text: '次级菜单6-10', value: '次级菜单6-10' },
     ],
   },
   { text: '一级菜单7', value: '一级菜单7', disabled: true },
@@ -164,11 +172,14 @@ export default class extends React.Component<any, any> {
 
         <MenuWrap>
           <Box>
-            <H2>单选框 checkedCSS: background</H2>
+            <H2>
+              单选框 checkedCSS: background, 注意容错，当selectKeys中是数字的数组是number[] 会报错
+            </H2>
             <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
               <Menu
                 mutliple={false}
                 data={items}
+                selectedKeys={['0']}
                 checkedCSS={'background'}
                 onExpandPathChange={this.onExpandPathChange}
                 onClick={this.clickDefaultMenu}
@@ -208,7 +219,7 @@ export default class extends React.Component<any, any> {
             <H2>多选框 checkedCSS: mark</H2>
             <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
               <Menu
-                mutliple={false}
+                mutliple={true}
                 data={items}
                 checkedCSS={'mark'}
                 onExpandPathChange={this.onExpandPathChange}

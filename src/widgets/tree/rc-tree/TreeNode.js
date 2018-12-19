@@ -205,6 +205,7 @@ class TreeNode extends React.Component {
         }
       }
       const { ChildrenUl } = props.themeStyle;
+      const { inlineType } = this.props;
       newChildren = (
         <Animate
           {...animProps}
@@ -213,7 +214,7 @@ class TreeNode extends React.Component {
           component=""
         >
           {!props.expanded ? null : (
-            <ChildrenUl data-expanded={props.expanded}>
+            <ChildrenUl data-expanded={props.expanded} inlineType={inlineType}>
               {React.Children.map(
                 children,
                 (item, index) => {
@@ -231,6 +232,7 @@ class TreeNode extends React.Component {
 
   render() {
     const { props } = this;
+    const { checked, selected, notCanSelect, inlineType, pos } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
 
@@ -247,7 +249,11 @@ class TreeNode extends React.Component {
     const { TitleWrap, NullSwitcher, Li, TitleSpan } = props.themeStyle;
 
     const selectHandle = () => {
-      const title = <TitleSpan title={content}>{content}</TitleSpan>;
+      const title = (
+        <TitleSpan pos={pos} selected={selected} inlineType={inlineType} title={content}>
+          {content}
+        </TitleSpan>
+      );
       const domProps = {
         onMouseEnter: this.onMouseEnter,
         onMouseLeave: this.onMouseLeave,
@@ -260,6 +266,7 @@ class TreeNode extends React.Component {
 
           if (this.isSelectable()) {
             this.onSelect();
+            this.onExpand();
           }
         };
         if (props.draggable) {
@@ -269,13 +276,13 @@ class TreeNode extends React.Component {
         }
       }
 
-      const { checked, selected, notCanSelect } = this.props;
-
       return (
         <TitleWrap
           ref={this.saveSelectHandle}
           title={typeof content === 'string' ? content : ''}
           {...domProps}
+          pos={props.pos}
+          inlineType={inlineType}
           checked={checked}
           selected={selected}
           notCanSelect={notCanSelect}
@@ -303,7 +310,9 @@ class TreeNode extends React.Component {
     return (
       <Li
         unselectable="on"
+        inlineType={inlineType}
         {...liProps}
+        pos={props.pos}
         isLeaf={props.isLeaf}
         selected={props.selected}
         title={props.title}

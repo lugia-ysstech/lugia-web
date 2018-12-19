@@ -62,7 +62,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   static defaultProps = {
     getTheme: () => {},
     defaultStart: 0,
-    autoPlay: false,
+    autoPlay: true,
     delay: 3000,
     action: 'hover',
     indicatorType: 'horizontal',

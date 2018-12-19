@@ -7,7 +7,16 @@
 import '../common/shirm';
 import * as React from 'react';
 import Item from './item';
-import { DefaultHeight, LeftIcon, MenuContainer, MenuItemHeight, RightIcon } from '../css/menu';
+import {
+  DefaultHeight,
+  LeftIcon,
+  MenuContainer,
+  RightIcon,
+  MenuItemHeight,
+  DefaultMenuItemHeight,
+  DefaultWidth,
+  getMenuItemHeight,
+} from '../css/menu';
 import ThemeProvider from '../theme-provider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
@@ -41,7 +50,7 @@ type MenuItemProps = {|
   onClick: Function,
   popupVisible?: boolean,
   separator: string,
-  size: 'large' | 'small' | 'bigger',
+  size: 'large' | 'default' | 'bigger',
   checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
 |};
 
@@ -84,7 +93,8 @@ type MenuProps = {
   separator: string,
   cancelData: Array<Object>,
   action: 'hover' | 'click',
-  size: string,
+  size: 'large' | 'default' | 'bigger',
+  subsize: 'large' | 'default' | 'bigger',
   mouseDownInMenus?: Function,
   pushMenuInstance?: Function,
   deleteMenuInstance?: Function,
@@ -122,7 +132,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     getTheme: () => {
       return {};
     },
-    size: 'bigger',
+    size: 'default',
   };
   static displayName = Widget.Menu;
   isSelect: Function;
@@ -195,9 +205,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const items = this.getItems(props);
-
+    const { data, size } = props;
+    const length = data.length;
     const bodyContent = (
-      <MenuContainer theme={this.getTheme()} level={this.props.level}>
+      <MenuContainer length={length} size={size} theme={this.getTheme()} level={this.props.level}>
         {items}
       </MenuContainer>
     );
@@ -212,12 +223,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const isOffsetX = !!(offsetX === 0 || offsetX);
     const activeOffsetX = getTargetOrDefaultTarget(isOffsetX, offsetX, 4);
 
+    const itemHeight = getMenuItemHeight(size);
+
     const isOffsetY = !!(offsetY === 0 || offsetY);
-    const activeOffsetY = getTargetOrDefaultTarget(
-      isOffsetY,
-      offsetY,
-      indexOffsetY * MenuItemHeight
-    );
+    const activeOffsetY = getTargetOrDefaultTarget(isOffsetY, offsetY, indexOffsetY * itemHeight);
 
     const { getTheme } = this.props;
     const { popupVisible = false, childData } = this.state;
@@ -246,7 +255,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
     if (data && data.length > 0) {
       return this.computeItems(data, start, end, (obj: Object) => {
-        const { valueField, displayField } = this.props;
+        const { valueField, displayField, size } = this.props;
         const { [valueField]: key, [displayField]: value, disabled, children, icon } = obj;
         const { getPrefix, getSuffix } = props;
 
@@ -287,8 +296,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
   getTheme() {
     const { getTheme } = this.props;
     const theme = getTheme();
-    const { height = DefaultHeight } = theme;
-    theme.height = adjustValue(height, MenuItemHeight);
+    // const { height = DefaultHeight, width = DefaultWidth } = theme;
+    // theme.height = adjustValue(height, MenuItemHeight);
+    const { width = DefaultWidth, submenuWidth = DefaultWidth } = theme;
+    theme.width = width;
+    theme.submenuWidth = submenuWidth;
     return theme;
   }
 
@@ -390,7 +402,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
         if (!mutliple) {
           this.updateExpandedPath('click', newSelectedKeys);
         }
-
         const setSelectedKeys = this.getSetSelectedKeys();
         setSelectedKeys(newSelectedKeys);
 
@@ -406,6 +417,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         if (mutliple === true) {
           return;
         }
+        this.setState({ indexOffsetY });
 
         const expandedPath = this.getSelectedKeysOrExpandedPath(key, separator);
         this.updateExpandedPath('hover', expandedPath);
@@ -536,14 +548,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
       displayField,
       valueField,
       mutliple,
+      subsize,
     } = this.props;
 
     const { selectedKeys, expandedPath } = this.state;
     const x = offsetX === 0 || offsetX ? offsetX : 4;
     const y = offsetY === 0 || offsetY ? offsetY : null;
+
     return (
       <Result
         mutliple={mutliple}
+        size={subsize}
         displayField={displayField}
         valueField={valueField}
         popupVisible={popupVisible}
@@ -757,8 +772,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
 Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
 
 Result.Placeholder = Placeholder;
-Result.computeCanSeeCount = (height?: number = DefaultHeight): number => {
-  return Math.floor(getCanSeeCountRealy(height, MenuItemHeight));
+Result.computeCanSeeCount = (
+  height?: number = DefaultHeight,
+  menuItemHeight?: number = DefaultMenuItemHeight
+): number => {
+  return Math.floor(getCanSeeCountRealy(height, menuItemHeight));
 };
 Result.MenuItem = Item;
 export default Result;

@@ -467,6 +467,7 @@ class Tree extends React.Component {
     }
     const {
       themeStyle: { TreeUl },
+      type,
     } = props;
     return (
       <TreeUl

@@ -60,8 +60,8 @@ const getHeight = props => {
 };
 
 const getLiIcon = props => {
-  const { type } = props;
-  return type === 'ellipse'
+  const { inlineType } = props;
+  return inlineType === 'ellipse'
     ? ''
     : `
   ::before {
@@ -94,8 +94,8 @@ export const Li = styled.li`
 Li.displayName = 'liItem';
 
 const getChildrenUlBackground = props => {
-  const { type } = props;
-  return type === 'ellipse' ? '' : `background: ${ItemBackgroundColor} `;
+  const { inlineType } = props;
+  return inlineType === 'ellipse' ? '' : `background: ${ItemBackgroundColor} `;
 };
 
 export const ChildrenUl = styled.ul`
@@ -105,8 +105,9 @@ export const ChildrenUl = styled.ul`
 `;
 
 function getSelected(props) {
-  const { selected, type } = props;
-  if (type === 'ellipse') {
+  const { selected, inlineType } = props;
+
+  if (inlineType === 'ellipse') {
     return selected
       ? `color: ${defaultColor};
       &:hover {
@@ -175,8 +176,8 @@ const getTitleSpanPadding = props => {
 };
 
 const getSelectedBackground = props => {
-  const { type, selected } = props;
-  if (type === 'ellipse') {
+  const { inlineType, selected } = props;
+  if (inlineType === 'ellipse') {
     return selected ? `background: ${themeColor};` : `background: ${defaultColor};`;
   }
   return 'background: transparent;';
