@@ -6,7 +6,7 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Upload, { getIndexInArray, getPercentValue, isKeyInArray } from '../upload';
-import { getParamsData, getRequestXHR, getStringFromObject } from '../request';
+import { getFormData, getRequestXHR, getQueryString } from '../request';
 import { getIconByType, getListIconType } from '../getelement';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
@@ -118,8 +118,8 @@ describe('Rate Test', () => {
   });
 
   function checkGetStringFromObject(data: ?Object, expectation: string) {
-    it('Function getStringFromObject ', () => {
-      const res = getStringFromObject(data);
+    it('Function getQueryString ', () => {
+      const res = getQueryString(data);
       expect(res).toEqual(expectation);
     });
   }
@@ -127,10 +127,12 @@ describe('Rate Test', () => {
   checkGetStringFromObject({ cc: 66, df: 'lll', file: 'xsdss' }, 'cc=66&df=lll&file=xsdss');
   checkGetStringFromObject(null, '');
   checkGetStringFromObject(undefined, '');
+  checkGetStringFromObject({}, '');
+  checkGetStringFromObject({ hello: 'world' }, 'hello=world');
 
   function checkGetParamsData(data: Object) {
-    it('Function getParamsData ', () => {
-      const res = getParamsData(data, {});
+    it('Function getFormData ', () => {
+      const res = getFormData(data, {});
       expect(res instanceof FormData).toEqual(true);
     });
   }
