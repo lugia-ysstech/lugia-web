@@ -455,6 +455,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       whiteList,
       searchType = 'include',
       valueField,
+      getTreeData,
       themeStyle,
     } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
@@ -464,7 +465,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     const data = this.search(utils, expand, query, searchType, blackList, whiteList);
     this.data = data;
-    this.props.getTreeData(data);
+    getTreeData && getTreeData(data);
 
     if (data.length === 0) {
       return empty;
