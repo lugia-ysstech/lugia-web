@@ -21,13 +21,13 @@ import {
   getAddBackground,
   getAddButtonBottom,
   getAddButtonDisplay,
-  getButtonShow,
   getAddHoverBackground,
   getAddRadius,
   getAddRight,
   getAddTop,
   getArrowTop,
   getBackgroundShadow,
+  getButtonShow,
   getContainerBorder,
   getCursor,
   getLinePosition,
@@ -57,7 +57,6 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
 import { getIndexfromKey, getKeyfromIndex } from '../common/ObjectUtils';
-import type { TooltipProps } from '../css/tooltip';
 
 const em = px2emcss(1.2);
 
