@@ -5,7 +5,13 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Upload, { getIndexInArray, getPercentValue, isKeyInArray } from '../upload';
+import Upload, {
+  getIndexInArray,
+  getPercentValue,
+  isKeyInArray,
+  isEmptyObject,
+  isIdInArray,
+} from '../upload';
 import { getFormData, getRequestXHR, getQueryString } from '../request';
 import { getIconByType, getListIconType } from '../getelement';
 import Enzyme, { mount } from 'enzyme';
@@ -195,23 +201,21 @@ describe('Rate Test', () => {
   );
 
   function checkGetFileList(
-    props: Object | number,
+    fileListDone: Array<Object>,
+    props: number,
     expectation: Array<Object>,
-    data?: Array<Object>
+    data: Array<Object>
   ) {
     it('Function getFileList ', () => {
-      const res = target.instance().getFileList(props, data);
+      const res = target.instance().getFileList(fileListDone, props, data);
       expect(res).toEqual(expectation);
     });
   }
-  checkGetFileList({ id: 1, name: '文件11111.jpg', status: 'loading' }, [
-    { id: 1, name: '文件11111.jpg', status: 'loading' },
-  ]);
-  checkGetFileList({ id: 2, name: '文件22222222.jpg', status: 'loading' }, [
-    { id: 1, name: '文件11111.jpg', status: 'loading' },
-    { id: 2, name: '文件22222222.jpg', status: 'loading' },
-  ]);
   checkGetFileList(
+    [
+      { id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
+      { id: 2, name: '文件22222222.jpg', status: 'loading' },
+    ],
     1,
     [
       { id: 1, name: '文件11111.jpg', status: 'loading', percent: 20 },
@@ -220,6 +224,10 @@ describe('Rate Test', () => {
     [{ target: 'percent', value: 20 }]
   );
   checkGetFileList(
+    [
+      { id: 1, name: '文件11111.jpg', status: 'loading', percent: 20 },
+      { id: 2, name: '文件22222222.jpg', status: 'loading' },
+    ],
     3,
     [
       { id: 1, name: '文件11111.jpg', status: 'loading', percent: 20 },
@@ -227,6 +235,37 @@ describe('Rate Test', () => {
     ],
     [{ target: 'percent', value: 50 }]
   );
+
+  function checkIsEmptyObject(data: Object, expectation: boolean) {
+    it('Function isEmptyObject ', () => {
+      const res = isEmptyObject(data);
+      expect(res).toEqual(expectation);
+    });
+  }
+  checkIsEmptyObject({}, true);
+  checkIsEmptyObject({ aa: 1 }, false);
+
+  function checkAppendFileList(
+    fileListDone: Array<Object>,
+    props: Object,
+    expectation: Array<Object>
+  ) {
+    it('Function getFileList ', () => {
+      const res = target.instance().appendFileList(fileListDone, props);
+      expect(res).toEqual(expectation);
+    });
+  }
+  checkAppendFileList(
+    [{ id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 }],
+    { id: 2, name: '文件2222.jpg', status: 'loading' },
+    [
+      { id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
+      { id: 2, name: '文件2222.jpg', status: 'loading' },
+    ]
+  );
+  checkAppendFileList([{ id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 }], {}, [
+    { id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
+  ]);
 
   function uploadProgress(props: Object, expectation: string, expectation2: Array<Object>) {
     it('Function uploadProgress ', () => {
@@ -262,15 +301,15 @@ describe('Rate Test', () => {
     { id: 1, name: '文件11111.jpg', status: 'done', url: 'test.jpg' },
   ]);
 
-  function isIdInArray(id: number, props: Array<Object>, expectation: boolean) {
+  function checkisIdInArray(id: number, array: Array<Object>, expectation: boolean) {
     it('Function isIdInArray ', () => {
-      const res = target.instance().isIdInArray(id, props);
+      const res = isIdInArray(id, array);
       expect(res).toEqual(expectation);
     });
   }
-  isIdInArray(1, [{ id: 1, name: '文件11111.jpg', status: 'default' }], true);
-  isIdInArray(2, [{ id: 1, name: '文件11111.jpg', status: 'default' }], false);
-  isIdInArray(1, [], false);
+  checkisIdInArray(1, [{ id: 1, name: '文件11111.jpg', status: 'default' }], true);
+  checkisIdInArray(2, [{ id: 1, name: '文件11111.jpg', status: 'default' }], false);
+  checkisIdInArray(1, [], false);
 
   function setAutoUploadState(
     props: boolean,

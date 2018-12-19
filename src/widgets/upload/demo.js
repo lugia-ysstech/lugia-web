@@ -28,6 +28,9 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       url: 'http://localhost:7001/upload',
       multiple: true,
+      data: {
+        token: '123jsfkdshfkw3242',
+      },
       onChange: res => {
         console.log('cbk', res);
       },

@@ -52,6 +52,19 @@ export const isKeyInArray = (data: Array<string>, key: string): boolean => {
   return getIndexInArray(data, key) !== -1;
 };
 
+export const isEmptyObject = (obj: Object): boolean => {
+  if (!obj) return false;
+  return Object.keys(obj).length === 0;
+};
+
+export const isIdInArray = (id: number, array: Array<Object>) => {
+  if (!array.length) return false;
+  const res = array.some(function(item) {
+    return item.id === id;
+  });
+  return res;
+};
+
 export const getPercentValue = (current: ?number, total: ?number): number => {
   if (!current || !total) return 0;
   return current / total < 0 ? 0 : current / total > 1 ? 100 : Math.floor((current / total) * 100);
@@ -130,11 +143,11 @@ class Upload extends React.Component<uploadProps, stateProps> {
   getChangeUploadState = (typeState: string, i: number, id: number) => {
     const { choosedFile = [], fileListDone } = this.state;
     let list;
-    if (this.isIdInArray(id, fileListDone)) {
-      list = this.getFileList(id, [{ target: 'status', value: 'loading' }]);
+    if (isIdInArray(id, fileListDone)) {
+      list = this.getFileList(fileListDone, id, [{ target: 'status', value: 'loading' }]);
     } else {
       const { listType } = this.props;
-      list = this.getFileList({
+      list = this.appendFileList(fileListDone, {
         id,
         name: choosedFile[i].name,
         listType,
@@ -147,14 +160,6 @@ class Upload extends React.Component<uploadProps, stateProps> {
       fileListDone: list,
       defaultText: choosedFile[i].name,
     };
-  };
-
-  isIdInArray = (id: number, array: Array<Object>) => {
-    if (!array.length) return false;
-    for (const i of array) {
-      if (i.id === id) return true;
-    }
-    return false;
   };
 
   addRequest = (dataObject: Object): void => {
@@ -177,7 +182,7 @@ class Upload extends React.Component<uploadProps, stateProps> {
 
     const { url, withCredentials, data } = dataObject;
     const { choosedFile = [] } = this.state;
-    const that = this;
+
     request({
       url,
       withCredentials,
@@ -186,31 +191,32 @@ class Upload extends React.Component<uploadProps, stateProps> {
       data,
       file: choosedFile[i],
       onSuccess: res => {
-        that.uploadSuccess(res, id);
+        this.uploadSuccess(res, id);
       },
       onFail: res => {
-        that.uploadFail(res, id);
+        this.uploadFail(res, id);
       },
       onProgress: res => {
-        that.uploadProgress(res, id);
+        this.uploadProgress(res, id);
       },
       onComplete: res => {
         i++;
         if (i >= choosedFile.length) {
-          that.uploadComplete(res, id);
+          this.uploadComplete(res, id);
         } else {
-          const { limit } = that.props;
+          const { limit } = this.props;
           if (limit && i > limit - 1) return;
           dataObject.i = i;
-          that.addRequest(dataObject);
-          that.uploadComplete(res, id);
+          this.addRequest(dataObject);
+          this.uploadComplete(res, id);
         }
       },
     });
   };
 
   uploadSuccess = (res: Object, id: number): void => {
-    const list = this.getFileList(id, [
+    const { fileListDone } = this.state;
+    const list = this.getFileList(fileListDone, id, [
       { target: 'status', value: 'done' },
       { target: 'url', value: res.data.url },
     ]);
@@ -218,7 +224,7 @@ class Upload extends React.Component<uploadProps, stateProps> {
     const { listType } = this.props;
     const { choosedFile = [] } = this.state;
     if (listType === 'picture') {
-      this.getPreviewInfo(choosedFile[0]);
+      this.loadPreviewInfo(choosedFile[0]);
     }
     const { onSuccess } = this.props;
     onSuccess && onSuccess(res);
@@ -232,7 +238,8 @@ class Upload extends React.Component<uploadProps, stateProps> {
   uploadProgress = (res: Object, id: number): void => {
     const { loaded, total } = res;
     const percent = getPercentValue(loaded, total);
-    const list = this.getFileList(id, [
+    const { fileListDone } = this.state;
+    const list = this.getFileList(fileListDone, id, [
       { target: 'percent', value: percent },
       { target: 'status', value: 'loading' },
     ]);
@@ -242,35 +249,40 @@ class Upload extends React.Component<uploadProps, stateProps> {
   };
 
   uploadFail = (res: Object, id: number): void => {
-    const list = this.getFileList(id, [{ target: 'status', value: 'fail' }]);
+    const { fileListDone } = this.state;
+    const list = this.getFileList(fileListDone, id, [{ target: 'status', value: 'fail' }]);
     this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
     const { onFail } = this.props;
     onFail && onFail(res);
   };
 
-  getFileList = (props: Object | number, data?: Array<Object> = []): Array<Object> => {
-    const { fileListDone } = this.state;
-    if (typeof props === 'number') {
-      fileListDone.forEach(i => {
-        if (i.id === props) {
-          data.forEach(j => {
-            i[j.target] = j.value;
-          });
-        }
-      });
-      return fileListDone;
+  getFileList = (
+    fileListDone: Array<Object>,
+    props: number,
+    data: Array<Object> = []
+  ): Array<Object> => {
+    fileListDone.forEach(i => {
+      if (i.id === props) {
+        data.forEach(j => {
+          i[j.target] = j.value;
+        });
+      }
+    });
+    return fileListDone;
+  };
+  appendFileList = (fileListDone: Array<Object>, props: Object): Array<Object> => {
+    if (!isEmptyObject(props)) {
+      fileListDone.push(props);
     }
-
-    fileListDone.push(props);
     return fileListDone;
   };
 
-  getPreviewInfo = (file: any): void => {
+  loadPreviewInfo = (file: any): void => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    const that = this;
-    reader.onloadend = function(e) {
-      that.setStateValue({ previewUrl: reader.result });
+    reader.onloadend = () => {
+      this.setStateValue({ previewUrl: reader.result });
+      reader.onloadend = null;
     };
   };
 

@@ -14,7 +14,7 @@
       "defaultValue": "undefined"
     },
     "listType": {
-      "type": "string",
+      "type": "UploadType",
       "desc": "文件列表的类型 支持5种类型(default/both/button/picture/area)",
       "defaultValue": "default"
     },
@@ -119,7 +119,8 @@
 
   },
   "type": {
-    "UploadSize": ["small", "default", "large"]
+    "UploadSize": ["small", "default", "large"],
+    "UploadType":["default","both","button","picture","area"]
   },
 
   "category": ["数据录入"]

@@ -213,18 +213,19 @@ const PrevImg = styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  & .triangle {
-    display: block;
-    width: 0;
-    height: 0;
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent transparent #ccc;
-    position: absolute;
-    top: -16px;
-    left: 5px;
-  }
-  & .triangle::after {
+`;
+
+const Triangle = styled.span`
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent #ccc;
+  position: absolute;
+  top: -16px;
+  left: 5px;
+  &::after {
     content: '';
     display: block;
     width: 0;
@@ -374,6 +375,19 @@ export const getListIconType = (fileName: ?string): string => {
   return 'file';
 };
 
+const iconClassMap = {
+  default: 'lugia-icon-financial_upload right',
+  loading: 'lugia-icon-financial_loading_o loadIcon',
+  done: 'lugia-icon-financial_upload',
+  video: 'lugia-icon-financial_video_camera ccc',
+  file: 'lugia-icon-financial_folder ccc',
+  uploadcloud: 'lugia-icon-financial_upload_cloud',
+  'p-default': 'lugia-icon-reminder_plus',
+  'p-fail': 'lugia-icon-financial_monitoring',
+  'li-done': 'lugia-icon-reminder_check_circle right success',
+  'li-fail': 'lugia-icon-reminder_close_circle right error',
+};
+
 export const getIconByType = (status: ?string, props?: Object = {}): ?Object | string => {
   if (!status) return null;
   const { type } = props;
@@ -395,48 +409,13 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
         <LoadIcon iconClass="lugia-icon-financial_pic ccc" />
         {getListIconType(props.name) === 'picture' && props.url ? (
           <PrevImg className="prev">
-            <img src={props.url} alt="" /> <span className="triangle" /> <div>{props.url}</div>{' '}
+            <img src={props.url} alt="" /> <Triangle /> <div>{props.url}</div>{' '}
           </PrevImg>
         ) : null}
       </PrevCon>
     );
   }
-
-  let className;
-  if (status === 'default') {
-    className = 'lugia-icon-financial_upload right';
-  }
-  if (status === 'loading') {
-    className = 'lugia-icon-financial_loading_o loadIcon';
-  }
-  if (status === 'done') {
-    className = 'lugia-icon-financial_upload';
-  }
-  if (status === 'picture') {
-    className = 'lugia-icon-financial_pic ccc';
-  }
-  if (status === 'video') {
-    className = 'lugia-icon-financial_video_camera ccc';
-  }
-  if (status === 'file') {
-    className = 'lugia-icon-financial_folder ccc';
-  }
-  if (status === 'p-default') {
-    className = 'lugia-icon-reminder_plus';
-  }
-  if (status === 'p-fail') {
-    className = 'lugia-icon-financial_monitoring';
-  }
-  if (status === 'uploadcloud') {
-    className = 'lugia-icon-financial_upload_cloud';
-  }
-  if (status === 'li-done') {
-    className = 'lugia-icon-reminder_check_circle right success';
-  }
-  if (status === 'li-fail') {
-    className = 'lugia-icon-reminder_close_circle right error';
-  }
-  return className ? <LoadIcon iconClass={className} /> : null;
+  return <LoadIcon iconClass={iconClassMap[status]} />;
 };
 
 const getProgress = (item: Object) => {
@@ -453,7 +432,7 @@ const getProgress = (item: Object) => {
 };
 
 const getFileList = (data: Array<Object>, close: Function) => {
-  if (!data) return;
+  if (!data || data.length === 0) return;
   return (
     <Ul>
       {data.map((item, index) => {
@@ -471,150 +450,28 @@ const getFileList = (data: Array<Object>, close: Function) => {
   );
 };
 
-const getElement = (that: Object): ?Object => {
-  const { props } = that;
-  const { listType } = props;
-  if (!listType) return;
-  const { state } = that;
-  const { classNameStatus } = state;
-  if (listType === 'default') {
-    const { dropArea, getRegisterInput, getChangeInfo, handleClickToUpload } = that;
-    const { inputId, defaultText, disabled } = props;
-    return (
-      <React.Fragment>
-        <FileInput
-          id={inputId}
-          {...props}
-          getChangeInfo={getChangeInfo}
-          getRegisterInput={getRegisterInput}
-        />
-        <InputContent
-          className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
-          onClick={handleClickToUpload}
-          innerRef={dropArea}
-        >
-          {getIconByType(classNameStatus)} {defaultText}
-        </InputContent>
-      </React.Fragment>
-    );
-  }
-  if (listType === 'both') {
-    const {
-      handleClickToSubmit,
-      dropArea,
-      getRegisterInput,
-      getChangeInfo,
-      handleClickToUpload,
-    } = that;
-    const { inputId, defaultText, showFileList, disabled } = props;
-    return (
-      <React.Fragment>
-        <FileInput
-          id={inputId}
-          {...props}
-          getChangeInfo={getChangeInfo}
-          getRegisterInput={getRegisterInput}
-        />
-
-        <InputContent
-          className={`${classNameStatus} ${disabled ? 'disabled' : ''} hasBtn`}
-          onClick={handleClickToUpload}
-          innerRef={dropArea}
-        >
-          {defaultText}
-          {showFileList ? null : getIconByType('li-' + classNameStatus)}
-        </InputContent>
-
-        <Button className={disabled ? 'disabled' : ''} onClick={handleClickToSubmit}>
-          {getIconByType(classNameStatus, { type: 1 })}
-        </Button>
-      </React.Fragment>
-    );
-  }
-  if (listType === 'button') {
-    const { inputId, disabled } = props;
-    const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
-    return (
-      <React.Fragment>
-        <FileInput
-          id={inputId}
-          {...props}
-          getChangeInfo={getChangeInfo}
-          getRegisterInput={getRegisterInput}
-        />
-        <Button className={`${disabled ? 'disabled' : ''} button `} onClick={handleClickToUpload}>
-          点击上传
-        </Button>
-      </React.Fragment>
-    );
-  }
-  if (listType === 'picture') {
-    const { previewUrl, size, inputId, disabled, accept, multiple } = props;
-    const { getRegisterInput, getChangeInfo, handleClickToUpload } = that;
-    return (
-      <React.Fragment>
-        <FileInput
-          id={inputId}
-          multiple={multiple}
-          disabled={disabled}
-          accept={accept ? accept : 'image/*'}
-          getChangeInfo={getChangeInfo}
-          getRegisterInput={getRegisterInput}
-        />
-        <PictureView
-          id={inputId}
-          size={size}
-          className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
-          onClick={handleClickToUpload}
-        >
-          {!previewUrl ? getIconByType('p-' + classNameStatus) : <img src={previewUrl} alt="" />}
-          {classNameStatus === 'fail' && size !== 'small' ? <span>图片上传失败请重试</span> : null}
-        </PictureView>
-      </React.Fragment>
-    );
-  }
-  if (listType === 'area') {
-    const { dropArea, getRegisterInput, getChangeInfo, handleClickToUpload } = that;
-    const { inputId, disabled } = props;
-    return (
-      <React.Fragment>
-        <FileInput
-          id={inputId}
-          {...props}
-          getChangeInfo={getChangeInfo}
-          getRegisterInput={getRegisterInput}
-        />
-        <AreaView
-          className={disabled ? 'disabled' : ''}
-          size={'bigger'}
-          innerRef={dropArea}
-          onClick={handleClickToUpload}
-        >
-          {getIconByType('uploadcloud')}
-          <AreaText>
-            请将文件拖到此处,或<AreaTextBlue>点击上传</AreaTextBlue>
-          </AreaText>
-        </AreaView>
-      </React.Fragment>
-    );
-  }
-};
-
 type defProps = {
   classNameStatus?: string,
   defaultText: string,
   fileName?: string,
   setChoosedFile: Function,
   showFileList: boolean,
+  disabled?: boolean,
   fileListDone: Array<Object>,
   getTheme: Function,
   setAutoUploadState: Function,
   setDeleteList: Function,
+  listType: string,
+  previewUrl: string,
+  size: string,
+  inputId: string,
+  accept: string,
+  multiple: boolean,
 };
 type stateProps = {
   status: string,
   inputElement: Object,
-  classNameStatus?: string,
+  classNameStatus: string,
   defaultText: string,
 };
 class GetElement extends React.Component<defProps, stateProps> {
@@ -674,7 +531,7 @@ class GetElement extends React.Component<defProps, stateProps> {
     const { showFileList, fileListDone, getTheme } = this.props;
     return (
       <React.Fragment>
-        <Container theme={getTheme()}>{getElement(this)}</Container>
+        <Container theme={getTheme()}>{this.getElement()}</Container>
         <React.Fragment>
           {' '}
           {showFileList ? getFileList(fileListDone, this.handleClickToDelete) : null}
@@ -683,8 +540,107 @@ class GetElement extends React.Component<defProps, stateProps> {
     );
   }
 
+  getElement = (): ?Object => {
+    const { props } = this;
+    const { listType } = props;
+    if (!listType) return;
+    const { state } = this;
+    const { classNameStatus } = state;
+    let children;
+    if (listType === 'default') {
+      const { dropArea, handleClickToUpload } = this;
+      const { defaultText, disabled } = props;
+      children = (
+        <InputContent
+          className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
+          onClick={handleClickToUpload}
+          innerRef={dropArea}
+        >
+          {getIconByType(classNameStatus)} {defaultText}
+        </InputContent>
+      );
+    }
+    if (listType === 'both') {
+      const { handleClickToSubmit, dropArea, handleClickToUpload } = this;
+      const { defaultText, showFileList, disabled } = props;
+      children = (
+        <React.Fragment>
+          <InputContent
+            className={`${classNameStatus} ${disabled ? 'disabled' : ''} hasBtn`}
+            onClick={handleClickToUpload}
+            innerRef={dropArea}
+          >
+            {defaultText}
+            {showFileList ? null : getIconByType('li-' + classNameStatus)}
+          </InputContent>
+
+          <Button className={disabled ? 'disabled' : ''} onClick={handleClickToSubmit}>
+            {getIconByType(classNameStatus, { type: 1 })}
+          </Button>
+        </React.Fragment>
+      );
+    }
+    if (listType === 'button') {
+      const { disabled } = props;
+      const { handleClickToUpload } = this;
+      children = (
+        <Button className={`${disabled ? 'disabled' : ''} button `} onClick={handleClickToUpload}>
+          点击上传
+        </Button>
+      );
+    }
+    if (listType === 'picture') {
+      const { previewUrl, size, inputId, disabled } = props;
+      const { handleClickToUpload } = this;
+      children = (
+        <PictureView
+          id={inputId}
+          size={size}
+          className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
+          onClick={handleClickToUpload}
+        >
+          {!previewUrl ? getIconByType('p-' + classNameStatus) : <img src={previewUrl} alt="" />}
+          {classNameStatus === 'fail' && size !== 'small' ? <span>图片上传失败请重试</span> : null}
+        </PictureView>
+      );
+    }
+    if (listType === 'area') {
+      const { dropArea, handleClickToUpload } = this;
+      const { disabled } = props;
+      children = (
+        <AreaView
+          className={disabled ? 'disabled' : ''}
+          size={'bigger'}
+          innerRef={dropArea}
+          onClick={handleClickToUpload}
+        >
+          {getIconByType('uploadcloud')}
+          <AreaText>
+            请将文件拖到此处,或<AreaTextBlue>点击上传</AreaTextBlue>
+          </AreaText>
+        </AreaView>
+      );
+    }
+    const { inputId, disabled, accept, multiple } = props;
+    const { getRegisterInput, getChangeInfo } = this;
+    return (
+      <React.Fragment>
+        <FileInput
+          id={inputId}
+          multiple={multiple}
+          disabled={disabled}
+          accept={accept}
+          getChangeInfo={getChangeInfo}
+          getRegisterInput={getRegisterInput}
+        />
+        {children}
+      </React.Fragment>
+    );
+  };
   handleClickToUpload = () => {
     const { inputElement } = this.state;
+    const { disabled } = this.props;
+    if (disabled) return;
     inputElement.click();
   };
   handleClickToSubmit = () => {
