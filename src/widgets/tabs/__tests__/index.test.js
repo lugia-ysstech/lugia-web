@@ -262,4 +262,170 @@ describe('tabsDemo', () => {
     await promise;
     expect(getCmp(target).state.activityKey).toBe('3');
   });
+  it('props 受限 data', async () => {
+    const target = mount(<Tabs data={hasActivityKeyData} />);
+    expect(getCmp(target).state.data).toBe(hasActivityKeyData);
+    getCmp(target).setState({ data: [] });
+    expect(getCmp(target).state.data).toBe(hasActivityKeyData);
+    target.setProps({ data: [] });
+    expect(getCmp(target).state.data).toEqual([]);
+    target.setProps({ data: hasActivityKeyData });
+    expect(getCmp(target).state.data).toEqual(hasActivityKeyData);
+  });
+  it('props 非受限 data 默认addClick ', async () => {
+    let onAddClick;
+    const promise = new Promise(resolve => {
+      onAddClick = e => {
+        resolve();
+      };
+    });
+    let onDeleteClick;
+    const deleteClick = new Promise(resolve => {
+      onDeleteClick = e => {
+        resolve();
+      };
+    });
+    const defaultAddItem = {
+      activityKey: 'newTab1',
+      content: 'content of new tab 1',
+      title: 'new tab 1',
+    };
+    const target = mount(
+      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} />
+    );
+    expect(getCmp(target).state.data).toEqual([]);
+    target.find('addIcon').simulate('click');
+    await promise;
+    expect(getCmp(target).state.data).toEqual([defaultAddItem]);
+    target
+      .find('deleteIcon')
+      .at(0)
+      .simulate('click');
+    await deleteClick;
+    expect(getCmp(target).state.data).toEqual([]);
+  });
+  it('props 非受限 data add Item', async () => {
+    let onAddClick;
+    const promise = new Promise(resolve => {
+      onAddClick = e => {
+        resolve();
+      };
+    });
+    let onDeleteClick;
+    const deleteClick = new Promise(resolve => {
+      onDeleteClick = e => {
+        resolve();
+      };
+    });
+    const firstItem = {
+      activityKey: 'newTab1',
+      content: 'content of new tab 1',
+      title: 'new tab 1',
+    };
+    const target = mount(
+      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} />
+    );
+    expect(getCmp(target).state.data).toEqual([]);
+    target.find('addIcon').simulate('click', { firstItem });
+    await promise;
+    expect(getCmp(target).state.data).toEqual([firstItem]);
+    target
+      .find('deleteIcon')
+      .at(0)
+      .simulate('click', { activityKey: 'newTab1' });
+    await deleteClick;
+    expect(getCmp(target).state.data).toEqual([]);
+  });
+  it('props 非受限 data 逐次 add 逐次 delete ', async () => {
+    let onAddClick;
+    const promise = new Promise(resolve => {
+      onAddClick = e => {
+        resolve();
+      };
+    });
+    let onDeleteClick;
+    const deleteClick = new Promise(resolve => {
+      onDeleteClick = e => {
+        resolve();
+      };
+    });
+    const firstItem = {
+      activityKey: 'newTab1',
+      content: 'content of new tab 1',
+      title: 'new tab 1',
+    };
+    const secondItem = {
+      activityKey: 'newTab2',
+      content: 'content of new tab 2',
+      title: 'new tab 2',
+    };
+    const target = mount(
+      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} />
+    );
+    expect(getCmp(target).state.data).toEqual([]);
+    target.find('addIcon').simulate('click', { firstItem });
+    await promise;
+    expect(getCmp(target).state.data).toEqual([firstItem]);
+    target.find('addIcon').simulate('click', { secondItem });
+    await promise;
+    expect(getCmp(target).state.data).toEqual([firstItem, secondItem]);
+    target
+      .find('deleteIcon')
+      .at(0)
+      .simulate('click', { activityKey: 'newTab1' });
+    await deleteClick;
+    expect(getCmp(target).state.data).toEqual([secondItem]);
+    target
+      .find('deleteIcon')
+      .at(0)
+      .simulate('click', { activityKey: 'newTab2' });
+    await deleteClick;
+    expect(getCmp(target).state.data).toEqual([]);
+  });
+  it('props 非受限 data  分别delete ', async () => {
+    let onAddClick;
+    const promise = new Promise(resolve => {
+      onAddClick = e => {
+        resolve();
+      };
+    });
+    let onDeleteClick;
+    const deleteClick = new Promise(resolve => {
+      onDeleteClick = e => {
+        resolve();
+      };
+    });
+    const firstItem = {
+      activityKey: 'newTab1',
+      content: 'content of new tab 1',
+      title: 'new tab 1',
+    };
+    const secondItem = {
+      activityKey: 'newTab2',
+      content: 'content of new tab 2',
+      title: 'new tab 2',
+    };
+    const target = mount(
+      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} />
+    );
+    expect(getCmp(target).state.data).toEqual([]);
+    target.find('addIcon').simulate('click', { firstItem });
+    await promise;
+    expect(getCmp(target).state.data).toEqual([firstItem]);
+    target.find('addIcon').simulate('click', { secondItem });
+    await promise;
+    expect(getCmp(target).state.data).toEqual([firstItem, secondItem]);
+    target
+      .find('deleteIcon')
+      .at(1)
+      .simulate('click', { activityKey: 'newTab2' });
+    await deleteClick;
+    expect(getCmp(target).state.data).toEqual([firstItem]);
+    target
+      .find('deleteIcon')
+      .at(0)
+      .simulate('click', { activityKey: 'newTab1' });
+    await deleteClick;
+    expect(getCmp(target).state.data).toEqual([]);
+  });
 });

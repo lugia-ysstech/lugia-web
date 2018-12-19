@@ -254,6 +254,9 @@ type TabsProps = {
   onAddClick: Function,
   pagedType: PagedType,
 };
+function hasDataInProps(props: TabsProps) {
+  return 'data' in props;
+}
 
 class TabsBox extends Component<TabsProps, TabsState> {
   static defaultProps = {
@@ -275,9 +278,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activityKey, defaultActivityKey, defaultData, data, children } = props;
     const hasActivityKeyInprops = 'activityKey' in props;
-    const hasDataInprops = 'data' in props;
     let configData;
-    if (hasDataInprops) {
+    if (hasDataInProps(props)) {
       configData = data ? data : [];
     } else {
       if (Array.isArray(children) && children.length > 0) {
@@ -287,20 +289,20 @@ class TabsBox extends Component<TabsProps, TabsState> {
         });
       }
     }
-    const theData = configData
-      ? addActivityKey2Data(configData)
-      : addActivityKey2Data(defaultData)
-      ? addActivityKey2Data(defaultData)
-      : [];
-    const theActivityKey = hasActivityKeyInprops
-      ? activityKey
-      : defaultActivityKey
-      ? defaultActivityKey
-      : theData.length > 0
-      ? theData[0].activityKey
-      : undefined;
 
     if (!state) {
+      const theData = configData
+        ? addActivityKey2Data(configData)
+        : defaultData
+        ? addActivityKey2Data(defaultData)
+        : [];
+      const theActivityKey = hasActivityKeyInprops
+        ? activityKey
+        : defaultActivityKey
+        ? defaultActivityKey
+        : theData.length > 0
+        ? theData[0].activityKey
+        : undefined;
       return {
         data: theData,
         activityKey: theActivityKey,
@@ -313,10 +315,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     const sData = state.data;
     const sActivityKey = state.activityKey;
-
     return {
       activityKey: hasActivityKeyInprops ? activityKey : sActivityKey,
-      data: hasDataInprops ? theData : sData,
+      data: hasDataInProps(props) ? configData : sData,
     };
   }
 
@@ -621,8 +622,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   onDeleteClick = (e: Event, activityKey: string) => {
     const { data } = this.state;
     let newdata = [];
-    const hasDataInprops = 'data' in this.props;
-    if (!hasDataInprops) {
+    if (!hasDataInProps(this.props)) {
       newdata = data.filter(tabpane => {
         return tabpane.activityKey !== activityKey;
       });
@@ -641,13 +641,18 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
-    const hasDataInprops = 'data' in this.props;
-
-    if (!hasDataInprops && onAddClick(e)) {
+    if (!hasDataInProps(this.props)) {
       const { data } = this.state;
       const newdata = [...data];
-      const { title = '', content = '', activityKey } = onAddClick(e);
-      newdata.push({ title, content, activityKey });
+      const tabIndex = this.state.data.length + 1;
+      const item = onAddClick(e)
+        ? onAddClick(e)
+        : {
+            title: `new tab ${tabIndex}`,
+            content: `content of new tab ${tabIndex}`,
+            activityKey: `newTab${tabIndex}`,
+          };
+      newdata.push(item);
       this.setState(
         {
           data: addActivityKey2Data(newdata),
