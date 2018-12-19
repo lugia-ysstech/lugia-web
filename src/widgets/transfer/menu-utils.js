@@ -92,33 +92,3 @@ export function getSearchData(data: Object[], query?: string, filter: Function):
 
   return searchData;
 }
-
-export function splitSelectKeys(
-  mapData: Object,
-  selectKeys: string[],
-  opt: { blackList?: string[], whiteList?: string[] }
-) {
-  const canMoveKey = [],
-    checkDisabledKey = [];
-  if (!selectKeys || !selectKeys.length) {
-    return { canMoveKey, checkDisabledKey };
-  }
-  const { blackList, whiteList } = opt;
-
-  const exist = blackList ? blackList : whiteList || [];
-  const existMap = createExistMap(exist);
-  const isBlack = !!blackList;
-  selectKeys.forEach(item => {
-    const inExistMap = existMap[item];
-    const split = isBlack ? !inExistMap : inExistMap;
-    if (split) {
-      if (mapData[item] && mapData[item].disabled) {
-        checkDisabledKey.push(item);
-      } else {
-        canMoveKey.push(item);
-      }
-    }
-  });
-
-  return { canMoveKey, checkDisabledKey };
-}

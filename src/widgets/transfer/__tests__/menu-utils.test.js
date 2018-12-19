@@ -4,12 +4,7 @@
  *
  * @flow
  */
-import {
-  getMapData,
-  getMenuDataByBlackList,
-  getWhiteListDataAndCancelItem,
-  splitSelectKeys,
-} from '../menu-utils';
+import { getMapData, getMenuDataByBlackList, getWhiteListDataAndCancelItem } from '../menu-utils';
 
 describe('Transfer.menu-utils', () => {
   const data = [{ title: '1', key: '11' }, { title: '2', key: '22' }, { title: '3', key: '33' }];
@@ -73,19 +68,5 @@ describe('Transfer.menu-utils', () => {
     expect(
       getWhiteListDataAndCancelItem(mapData, [], valueField, displayField, []).cancelItem
     ).toEqual([]);
-  });
-
-  it('splitSelectKeys', () => {
-    const theMapData = {
-      11: { title: '1', key: '11' },
-      22: { title: '2', key: '22' },
-      33: { title: '3', key: '33' },
-      44: { title: '4', key: '44', disabled: true },
-    };
-    const blackList = ['22', '33'];
-    const keys = ['11', '22', '33', '44'];
-    const { canMoveKey, checkDisabledKey } = splitSelectKeys(theMapData, keys, { blackList });
-    expect(canMoveKey).toEqual(['11']);
-    expect(checkDisabledKey).toEqual(['44']);
   });
 });
