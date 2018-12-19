@@ -88,6 +88,10 @@ exports[`tabsDemo Component JSON 1`] = `
   color: none;
 }
 
+.c39:hover > span {
+  opacity: 1;
+}
+
 .c42 {
   position: relative;
   cursor: pointer;
@@ -116,6 +120,10 @@ exports[`tabsDemo Component JSON 1`] = `
 
 .c42:hover > span > i:first-child {
   color: none;
+}
+
+.c42:hover > span {
+  opacity: 1;
 }
 
 .c49 {
@@ -299,19 +307,19 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c40 {
-  opacity: 0;
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   z-index: 2;
   display: inline-block;
+  opacity: 0;
 }
 
 .c51 {
-  opacity: 1;
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   z-index: 2;
   display: inline-block;
+  opacity: 1;
 }
 
 .c41 {
@@ -471,6 +479,20 @@ exports[`tabsDemo Component JSON 1`] = `
   left: 0.8333333333333334em;
 }
 
+.c59 {
+  position: absolute;
+  font-size: 1.2rem;
+  display: none;
+  z-index: 5;
+  cursor: not-allowed;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 100%;
+  top: 50%;
+  right: 0.8333333333333334em;
+}
+
 .c57 {
   position: absolute;
   font-size: 1.2rem;
@@ -618,8 +640,12 @@ exports[`tabsDemo Component JSON 1`] = `
   transition: all 0.3s linear 0.1s;
   font-size: 1rem;
   bottom: -25%;
-  opacity: 0;
   display: block !important;
+  opacity: 0;
+}
+
+.c45:hover {
+  opacity: 1;
 }
 
 .c56 {
@@ -628,8 +654,8 @@ exports[`tabsDemo Component JSON 1`] = `
   transition: all 0.3s linear 0.1s;
   font-size: 1rem;
   bottom: 0.8333333333333334em;
-  opacity: 1;
   display: inline-blick;
+  opacity: 0;
 }
 
 .c7 {
@@ -791,8 +817,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -810,8 +834,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -829,8 +851,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -848,8 +868,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -867,8 +885,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -886,8 +902,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -905,8 +919,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -924,8 +936,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1253,8 +1263,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c24"
@@ -1265,8 +1273,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -1277,8 +1283,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -1289,8 +1293,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -1301,8 +1303,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -1313,8 +1313,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -1376,8 +1374,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1395,8 +1391,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1414,8 +1408,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1433,8 +1425,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1452,8 +1442,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1471,8 +1459,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1490,8 +1476,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1509,8 +1493,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1852,8 +1834,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1871,8 +1851,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1890,8 +1868,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1909,8 +1885,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1928,8 +1902,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1947,8 +1919,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1966,8 +1936,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -1985,8 +1953,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c8"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <span
                 className="c9"
@@ -2056,8 +2022,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c39"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c24"
@@ -2078,8 +2042,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2100,8 +2062,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2122,8 +2082,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2144,8 +2102,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2166,8 +2122,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2188,8 +2142,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2210,8 +2162,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2235,8 +2185,6 @@ exports[`tabsDemo Component JSON 1`] = `
               <div
                 className="c44"
                 onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
               >
                 <i
                   className="lugia-icon-reminder_plus c45 c5"
@@ -2297,8 +2245,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c49"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c50"
@@ -2319,8 +2265,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c52"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c53"
@@ -2341,8 +2285,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c52"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c53"
@@ -2363,8 +2305,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c52"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c53"
@@ -2385,8 +2325,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c52"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c53"
@@ -2407,8 +2345,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c52"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c53"
@@ -2429,8 +2365,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c52"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c53"
@@ -2451,8 +2385,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c52"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c53"
@@ -2476,8 +2408,6 @@ exports[`tabsDemo Component JSON 1`] = `
               <div
                 className="c55"
                 onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
               >
                 <i
                   className="lugia-icon-reminder_plus c56 c5"
@@ -2508,6 +2438,61 @@ exports[`tabsDemo Component JSON 1`] = `
       </div>
     </div>
   </div>
+  <p>
+    非受限 不传data 展示数据由state 控制
+  </p>
+  <div>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <span
+          className="c3"
+          onClick={[Function]}
+          type="pre"
+        >
+          <i
+            className="lugia-icon-direction_Left c4 c5"
+          />
+        </span>
+        <div
+          className="c6"
+        >
+          <div
+            className="c7"
+            x={-0}
+          >
+            <div
+              className="c43"
+            >
+              <div
+                className="c44"
+                onClick={[Function]}
+              >
+                <i
+                  className="lugia-icon-reminder_plus c45 c5"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <span
+          className="c59"
+          onClick={[Function]}
+          type="next"
+        >
+          <i
+            className="lugia-icon-direction_right c4 c5"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+  <p>
+    受限 展示数据 由props控制
+  </p>
   <div>
     <button
       onClick={[Function]}
@@ -2544,8 +2529,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c39"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c24"
@@ -2566,8 +2549,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2588,8 +2569,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2610,8 +2589,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2632,8 +2609,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2654,8 +2629,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2676,8 +2649,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2698,8 +2669,6 @@ exports[`tabsDemo Component JSON 1`] = `
             <div
               className="c42"
               onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
             >
               <div
                 className="c25"
@@ -2723,8 +2692,6 @@ exports[`tabsDemo Component JSON 1`] = `
               <div
                 className="c44"
                 onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
               >
                 <i
                   className="lugia-icon-reminder_plus c45 c5"

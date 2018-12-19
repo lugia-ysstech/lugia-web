@@ -52,11 +52,11 @@ exports[`tabpaneDemo Component JSON 1`] = `
 }
 
 .c2 {
-  opacity: 1;
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   z-index: 2;
   display: inline-block;
+  opacity: 1;
 }
 
 .c3 {
@@ -70,8 +70,6 @@ exports[`tabpaneDemo Component JSON 1`] = `
 <div
   className="c0"
   onClick={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <div
     className="c1"

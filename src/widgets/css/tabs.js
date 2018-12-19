@@ -190,13 +190,16 @@ export const getTabpaneLeft = props => {
   const { tabType } = props;
   if (matchType(tabType, 'window')) return `left: ${em(6)};`;
 };
-export const getClearButtonShow = props => {
-  const { show, tabType } = props;
-  return `opacity:${!show && matchType(tabType, 'card') ? '0' : '1'}`;
+export const getButtonShow = props => {
+  const { tabType } = props;
+  if (matchType(tabType, 'card')) {
+    return 'opacity: 1;';
+  }
 };
-export const getAddButtonShow = props => {
-  const { show, tabType } = props;
-  return `opacity:${!show && matchType(tabType, 'card') ? '0' : '1'}`;
+export const getClearButtonOpacity = props => {
+  const { tabType } = props;
+  const opacity = matchType(tabType, 'card') ? 0 : 1;
+  return `opacity: ${opacity};`;
 };
 export const getArrowTop = props => {
   const { tabType } = props;

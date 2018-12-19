@@ -66,7 +66,7 @@
         {
           "name": "event",
           "desc": "点击标签页时调用DOM事件",
-          "type": "Object"
+          "type": ""
         }
       ]
     },
