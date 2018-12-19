@@ -111,8 +111,16 @@ export default ThemeProvider(
       } = nextProps;
       if (nextProps.data.length !== this.props.data.length || nextProps.data !== this.props.data) {
         let mapData;
+        const theTargetKeys = this.getTargetKeys(nextProps);
         if (type === 'panel') {
           mapData = getMapData(data, valueField);
+          const { targetCheckKeys, sourceCheckKeys } = getPanelSourceDataAndTargetData(
+            data,
+            theTargetKeys,
+            valueField
+          );
+          this.targetModel.setCanCheckKeys(targetCheckKeys);
+          this.sourceModel.setCanCheckKeys(sourceCheckKeys);
         } else {
           const { mapData: maps, target } = getTreeData(data, {
             displayField,
@@ -121,13 +129,20 @@ export default ThemeProvider(
           mapData = maps;
           this.targetModel.setTreeData(target);
           this.sourceModel.setTreeData(target);
+
+          const { sourceEnableKeys, targetEnableKeys } = this.getTreeCanCheckKeys(
+            maps,
+            theTargetKeys
+          );
+          this.targetModel.setCanCheckKeys(targetEnableKeys);
+          this.sourceModel.setCanCheckKeys(sourceEnableKeys);
         }
         this.targetModel.setMapData(mapData);
         this.sourceModel.setMapData(mapData);
       }
       if (this.isInProps('targetSelectedKeys')) {
-        const targetSelctKeys = this.getTargetSelectedKeys(nextProps);
-        this.targetModel.changeSelectedKeys(targetSelctKeys);
+        const targetSelectKeys = this.getTargetSelectedKeys(nextProps);
+        this.targetModel.changeSelectedKeys(targetSelectKeys);
       }
       if (this.isInProps('sourceSelectedKeys')) {
         const keys = this.getSourceSelectedKeys(nextProps);
