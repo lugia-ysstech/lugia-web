@@ -180,7 +180,10 @@ export function getKeys(data: ?(Object[]), valueField: ?string): string[] {
     return res ? res : '';
   });
 }
-export function filterEnableKeysFromSelectKeys(list: ?(string[]), selectKeys: ?(string[])) {
+export function filterEnableKeysFromSelectKeys(
+  list: ?(string[]),
+  selectKeys: ?(string[])
+): string[] {
   if (!list || !list.length) {
     return selectKeys;
   }
