@@ -1,7 +1,7 @@
 {
-  "widgetName": "Rate",
-  "title": "评分",
-  "desc": "评分组件",
+  "widgetName": "Upload",
+  "title": "上传",
+  "desc": "上传组件,可通过文件选择和拖拽上传",
   "props": {
     "getTheme": {
       "type": "Function",
@@ -101,7 +101,7 @@
       "args": [
         {
           "name": "result",
-          "desc": "选中文件列表",
+          "desc": "选中文件",
           "type": "Object"
         }
       ]
