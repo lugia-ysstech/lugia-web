@@ -182,7 +182,7 @@ class Upload extends React.Component<uploadProps, stateProps> {
       url,
       withCredentials,
       method: 'post',
-      datetype: 'json',
+      dataType: 'json',
       data,
       file: choosedFile[i],
       onSuccess: res => {

@@ -15,8 +15,10 @@ export function getRequestXHR(): Object {
 
 export function getFormData(data: Object, file: Object): Object {
   const newData: Object = new FormData();
-  for (const i in data) {
-    newData.append(i, data[i]);
+  if (data) {
+    for (const field in data) {
+      newData.append(field, data[field]);
+    }
   }
   newData.append('file', file);
   return newData;
@@ -43,6 +45,44 @@ export function addEventListener(
   target.addEventListener(event, func, useCapture);
 }
 
+const doGet = function(xhr, url, data, asynch) {
+  const queryString = getQueryString(data);
+  xhr.open('get', url + (queryString ? `?${queryString}` : queryString), asynch);
+  xhr.send();
+};
+
+const doPost = function(xhr, url, { data, headers, file }, asynch) {
+  const params = getFormData(data, file);
+  xhr.open('post', url, asynch);
+
+  if (headers) {
+    Object.keys(headers).forEach(field => {
+      xhr.setRequestHeader(field, headers[field]);
+    });
+  }
+  xhr.send(params);
+};
+
+function parseResponse(xhr, dataType) {
+  const type = dataType.toLocaleLowerCase();
+
+  const { responseText, responseXML } = xhr;
+  let res;
+  switch (type) {
+    case 'text':
+      res = responseText;
+      break;
+    case 'xml':
+      res = responseXML;
+      break;
+    case 'json':
+      res = JSON.parse(responseText);
+      break;
+    default:
+  }
+  return res;
+}
+
 function request(dataObject: Object) {
   const { url } = dataObject;
   if (!url) {
@@ -50,55 +90,46 @@ function request(dataObject: Object) {
   }
 
   const xhr = getRequestXHR();
+
   const { withCredentials = false } = dataObject;
   xhr.withCredentials = withCredentials;
-
-  const { method = 'get', asynch = true, data, file } = dataObject;
 
   const { onProgress, onComplete } = dataObject;
 
   xhr.upload.onprogress = onProgress;
 
-  if (onProgress) addEventListener(xhr.upload, 'progress', onProgress, false);
-  if (onComplete) addEventListener(xhr, 'load', onComplete, false);
-
-  if (method.toLocaleLowerCase() === 'get') {
-    if (data) {
-      xhr.open('get', url + '?' + getQueryString(data), asynch);
-    } else {
-      xhr.open('get', url, asynch);
-    }
-    xhr.send();
+  if (onProgress) {
+    addEventListener(xhr.upload, 'progress', onProgress, false);
   }
 
-  if (method.toLocaleLowerCase() === 'post') {
-    const params = getFormData(data, file);
-    xhr.open('post', url, asynch);
-    const { headers } = dataObject;
-    if (headers) {
-      Object.keys(headers).forEach(k => {
-        xhr.setRequestHeader(k, headers[k]);
-      });
-    }
-    xhr.send(params);
+  if (onComplete) {
+    addEventListener(xhr, 'load', onComplete, false);
   }
 
-  const { onFail, datetype = 'text', onSuccess } = dataObject;
+  const { method = 'get', asynch = true, data } = dataObject;
+  const type = method.toLocaleLowerCase();
+  switch (type) {
+    case 'get':
+      doGet(xhr, url, data, asynch);
+      break;
+    case 'post':
+    default:
+      const { headers, file } = dataObject;
+      doPost(xhr, url, { data, file, headers }, asynch);
+      break;
+  }
+
+  const { onFail, dataType = 'text', onSuccess } = dataObject;
   xhr.onreadystatechange = function() {
-    const { readyState, status } = xhr;
+    const { readyState } = xhr;
     if (readyState === 4) {
+      const { status } = xhr;
       if (status === 200) {
-        if (datetype.toLocaleLowerCase() === 'text') {
-          onSuccess && onSuccess(xhr.responseText);
-        }
-        if (datetype.toLocaleLowerCase() === 'xml') {
-          onSuccess && onSuccess(xhr.responseXML);
-        }
-        if (datetype.toLocaleLowerCase() === 'json') {
-          onSuccess && onSuccess(JSON.parse(xhr.responseText));
-        }
+        const res = parseResponse(xhr, dataType);
+        onSuccess && onSuccess(res);
       } else {
-        onFail && onFail(xhr.responseText);
+        const { responseText } = xhr;
+        onFail && onFail(responseText);
       }
     }
   };
