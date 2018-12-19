@@ -12,7 +12,7 @@ import CommonIcon from '../icon';
 const em = px2emcss(FontSizeNumber);
 
 export const { themeColor, disableColor, blackColor, lightGreyColor, defaultColor } = colorsFunc();
-export const DefaultMenuItemHeight = 35;
+export const DefaultMenuItemHeight = 30;
 export const LargeMenuItemHeight = 60;
 export const BiggerMenuItemHeight = 40;
 export const MenuItemHeight = 40;

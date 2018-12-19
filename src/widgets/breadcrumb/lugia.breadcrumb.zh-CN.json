@@ -1,0 +1,39 @@
+{
+  "widgetName": "Breadcrumb",
+  "title": "Breadcrumb面包屑",
+  "desc": "显示系统的层级关系和当先所在的位置,并能向上返回",
+  "props": {
+    "separator": {
+      "type": "string",
+      "desc": "自定义层级分隔符",
+      "defaultValue": "/"
+    },
+    "lastSeparator": {
+      "type": "string | React.Element<any>",
+      "desc": "最后一个显示的元素后所",
+      "defaultValue": ""
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "ButtonShape": ["default", "round"],
+    "ButtonStyle": {
+      "width": {
+        "type": "number",
+        "desc": "组件宽度"
+      }
+    }
+  },
+  "category": ["通用"]
+}
