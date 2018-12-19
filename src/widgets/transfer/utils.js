@@ -168,24 +168,6 @@ export function getCancelItem(
   return cancelItem;
 }
 
-export function getCanCheckKeys(allKeys: string[], targetKeys: string[]) {
-  const sourceCanCheckKeys = [],
-    targetCanCheckKeys = [];
-
-  const existMap = createExistMap(targetKeys);
-
-  allKeys.forEach(key => {
-    const inTarget = existMap[key];
-    if (inTarget) {
-      targetCanCheckKeys.push(key);
-    } else {
-      sourceCanCheckKeys.push(key);
-    }
-  });
-
-  return { sourceCanCheckKeys, targetCanCheckKeys };
-}
-
 export function getKeys(data: Object[], valueField: string): string[] {
   if (!data || !valueField) {
     return [];
