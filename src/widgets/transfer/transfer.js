@@ -134,7 +134,7 @@ export default ThemeProvider(
         inputConfig.suffix = <SearchIcon />;
       }
       const canCheckKeys = this.props.model.getCanCheckKeys();
-      const length = (canCheckKeys && canCheckKeys.length) || 0;
+      const length = canCheckKeys && canCheckKeys.length;
       const checked =
         selectedKeys.length === 0
           ? false

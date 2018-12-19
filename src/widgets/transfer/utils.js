@@ -21,9 +21,9 @@ export function getTruthValue(
 }
 
 export function getPanelSourceDataAndTargetData(
-  data: Object[],
-  targetKeys: string[],
-  valueField: string
+  data: ?(Object[]),
+  targetKeys: ?(string[]),
+  valueField: ?string
 ): Object {
   const sourceData = [],
     targetData = [],
@@ -74,7 +74,7 @@ export function getPanelSourceDataAndTargetData(
   };
 }
 
-export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
+export function splitSelectKeys(mapData: ?Object, selectKey: ?(string[])): Object {
   const validKeys = [],
     disabledKeys = [];
   if (!mapData || !selectKey) {
@@ -82,7 +82,7 @@ export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
   }
 
   selectKey.forEach(item => {
-    const theItem = mapData[item];
+    const theItem = mapData && mapData[item];
     const disabled = theItem && theItem.disabled;
     if (disabled) {
       disabledKeys.push(item);
@@ -141,7 +141,7 @@ export function getTreeData(
 }
 
 export function getCancelItem(
-  value: string[],
+  value: ?(string[]),
   mapData: Object,
   field: Object,
   displayValue?: string[]
@@ -152,7 +152,7 @@ export function getCancelItem(
     return cancelItem;
   }
 
-  const { valueField, displayField } = field;
+  const { valueField = 'value', displayField = 'text' } = field;
   if (!displayValue || !displayValue.length) {
     return cancelItem;
   }
@@ -168,7 +168,7 @@ export function getCancelItem(
   return cancelItem;
 }
 
-export function getKeys(data: Object[], valueField: string): string[] {
+export function getKeys(data: ?(Object[]), valueField: ?string): string[] {
   if (!data || !valueField) {
     return [];
   }
@@ -180,7 +180,7 @@ export function getKeys(data: Object[], valueField: string): string[] {
     return res ? res : '';
   });
 }
-export function filterEnableKeysFromSelectKeys(list: string[], selectKeys: string[]) {
+export function filterEnableKeysFromSelectKeys(list: ?(string[]), selectKeys: ?(string[])) {
   if (!list || !list.length) {
     return selectKeys;
   }
