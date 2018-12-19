@@ -192,19 +192,11 @@ export default ThemeProvider(
             type={type}
           />
           <OperationBtn>
-            <Button
-              onClick={this.handleToRight}
-              type="primary"
-              // disabled={sourceSelectedKeys.length === 0}
-            >
+            <Button onClick={this.handleToRight} type="primary">
               <BtnText>></BtnText>
             </Button>
             <br />
-            <Button
-              onClick={this.handleToLeft}
-              type="primary"
-              // disabled={targetSelectedKeys.length === 0}
-            >
+            <Button onClick={this.handleToLeft} type="primary">
               <BtnText>{'<'}</BtnText>
             </Button>
           </OperationBtn>

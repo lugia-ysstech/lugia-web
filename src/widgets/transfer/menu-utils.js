@@ -7,9 +7,9 @@
  */
 import { createExistMap } from '../utils';
 
-export function getMapData(data: Object[], valueField: string): Object {
+export function getMapData(data: ?(Object[]), valueField: string): Object {
   const mapData = {};
-  if (!data) {
+  if (!data || !data.length) {
     return mapData;
   }
   data.forEach(item => {
