@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 
-gulp.task('default', ['js', 'css', 'font', 'interface']);
+gulp.task('default', ['js', 'css', 'font', 'interface', 'meta']);
 gulp.task('js', () => {
   return gulp
     .src(['src/widgets/**/*.js'])
@@ -16,6 +16,9 @@ gulp.task('js', () => {
 gulp.task('css', () => {
   return gulp.src('src/widgets/**/*.css').pipe(gulp.dest('dist'));
 });
+gulp.task('meta', () => {
+  return gulp.src('src/widgets/**/*.json').pipe(gulp.dest('dist'));
+});
 gulp.task('font', () => {
   return gulp
     .src([
@@ -28,5 +31,5 @@ gulp.task('font', () => {
     .pipe(gulp.dest('dist'));
 });
 gulp.task('interface', () => {
-  return gulp.src(['src/interface/**/*.js']).pipe(gulp.dest('interface'));
+  return gulp.src(['src/interface/*.js','src/interface/*.json']).pipe(gulp.dest('interface'));
 });
