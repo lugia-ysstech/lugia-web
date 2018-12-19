@@ -29,7 +29,7 @@ import { getKeys, isContained, filterEnableKeysFromSelectKeys } from './utils';
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
     treeData: Object[];
-
+    static displayName = 'TransferPanel';
     constructor(props) {
       super(props);
       const { model } = this.props;

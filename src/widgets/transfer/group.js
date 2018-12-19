@@ -241,19 +241,6 @@ export default ThemeProvider(
       this.targetModel.changeSelectedKeys(item);
     };
 
-    checkSelectKeys = (stateKeys: string[], key: string): string[] => {
-      const isRepeat = stateKeys.includes(key);
-      const data = [...stateKeys];
-      if (isRepeat) {
-        const index = data.indexOf(key);
-        data.splice(index, 1);
-        return data;
-      }
-      data.push(key);
-
-      return data;
-    };
-
     handleToLeft = () => {
       const {
         moveKey,
