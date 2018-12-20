@@ -12,7 +12,7 @@ import CommonIcon from '../icon';
 const em = px2emcss(FontSizeNumber);
 
 export const { themeColor, disableColor, blackColor, lightGreyColor, defaultColor } = colorsFunc();
-export const DefaultMenuItemHeight = 30;
+export const DefaultMenuItemHeight = 35;
 export const LargeMenuItemHeight = 60;
 export const BiggerMenuItemHeight = 40;
 export const MenuItemHeight = 40;
@@ -76,7 +76,7 @@ const getWidth = props => {
   if (level === 0) {
     return width ? `width: ${em(width)};` : '';
   }
-  return submenuWidth ? `width: ${em(submenuWidth)};` : '';
+  return submenuWidth ? `width: ${em(submenuWidth)};` : `width: ${em(width)}`;
 };
 export const MenuContainer = styled.ul`
   ${getWidth};

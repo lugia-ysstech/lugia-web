@@ -142,12 +142,12 @@ class TreeNode extends React.Component {
   };
 
   renderSwitcher(props, expandedState) {
-    const iconClass =
-      expandedState === 'open'
-        ? 'lugia-icon-direction_caret_down'
-        : 'lugia-icon-direction_caret_right';
-    const { Switcher } = props.themeStyle;
-
+    const { themeStyle, describe = false } = props;
+    if (describe) {
+      return null;
+    }
+    const { Switcher, openClassName, closeClassName } = themeStyle;
+    const iconClass = expandedState === 'open' ? openClassName : closeClassName;
     return (
       <Switcher onClick={props.disabled ? null : this.onExpand} expandedState={expandedState}>
         <CommonIcon iconClass={iconClass} />
@@ -232,7 +232,7 @@ class TreeNode extends React.Component {
 
   render() {
     const { props } = this;
-    const { checked, selected, notCanSelect, inlineType, pos } = this.props;
+    const { checked, selected, notCanSelect, inlineType, pos, describe = false } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
 
@@ -285,6 +285,7 @@ class TreeNode extends React.Component {
           inlineType={inlineType}
           checked={checked}
           selected={selected}
+          describe={describe}
           notCanSelect={notCanSelect}
         >
           {title}

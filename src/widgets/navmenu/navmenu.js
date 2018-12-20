@@ -1,6 +1,6 @@
 /**
  *
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
@@ -26,38 +26,22 @@ import {
 
 const MenuWrap = styled.div`
   display: inline-block;
-  box-shadow: 0 0 1px 2px #ccc;
 `;
-//
+
 type RowData = { [key: string]: any };
 type NavMenuProps = {
   getTheme: Function,
-  start: number,
-  end: number,
-  query: string,
   onScroller?: Function,
-  /** 是否支持多选 */
-  mutliple?: boolean,
-  limitCount?: number,
-  /** 默认展开所有树节点 */
-  expandAll: boolean,
   onlySelectLeaf: boolean,
   displayField: string,
   igronSelectField?: string,
   value: ?Array<string>,
   displayValue: ?Array<string>,
   defaultValue: ?Array<string>,
-  svThemVersion?: number,
-  /** 展开/收起节点时触发 */
   onExpand?: Function,
-  /** 点击树节点触发 */
   onSelect?: Function,
-  /**
-   * 当值发生变化的时候出发
-   */
   onChange?: Function,
-  splitQuery?: string,
-  current: number,
+  inlineExpandAll?: boolean,
   data?: Array<RowData>,
   inlineType: 'primary' | 'ellipse',
   mode: 'vertical' | 'inline',
@@ -71,6 +55,8 @@ type NavMenuState = {
   data: Array<RowData>,
   popupVisible: boolean,
 };
+const openClassName = 'lugia-icon-direction_up';
+const closeClassName = 'lugia-icon-direction_down';
 const themeStyle = {
   MenuItemHeight,
   DefaultHeight,
@@ -82,12 +68,16 @@ const themeStyle = {
   ChildrenUl,
   TitleWrap,
   TitleSpan,
+  openClassName,
+  closeClassName,
 };
+
 export default class MenuTree extends React.Component<NavMenuProps, NavMenuState> {
   static defaultProps = {
     mode: 'inline',
     valueField: 'value',
     displayField: 'text',
+    inlineExpandAll: true,
   };
 
   treeData: Array<Object>;
@@ -115,14 +105,16 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getVerticalNavMenu = () => {
-    const { data, displayField, valueField, action = 'click' } = this.props;
+    const { data, displayField, valueField, action = 'click', getTheme } = this.props;
     const { popupVisible } = this.state;
+    const theme = getTheme();
+    const { width, submenuWidth, height } = theme;
     const menuConfig = {
       [Widget.Menu]: {
-        // width: 200,
-        // submenuWidth: 180,
-        // autoHeight: true,
-        // height: 300,
+        width,
+        submenuWidth,
+        height,
+        autoHeight: true,
       },
     };
     return (
@@ -133,7 +125,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
             separator={'/'}
             popupVisible={popupVisible}
             valueField={valueField}
-            size={'large'}
+            size={'bigger'}
             subsize={'bigger'}
             displayField={displayField}
             action={action}
@@ -146,33 +138,49 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getInlineNavMenu = () => {
+    const { inlineType, inlineExpandAll, valueField, displayField, getTheme } = this.props;
+    const theme = getTheme();
+    const { width } = theme;
     const config = {
       [Widget.Tree]: {
-        // height: 800,
-        // width: 220,
-        // submenuWidth: 180,
+        width,
         autoHeight: true,
-        // height: 300,
       },
     };
-    const { inlineType, expandAll, valueField, displayField } = this.props;
     const treeData = this.treeData;
     return (
       <Theme config={config}>
         <Tree
-          expandAll={expandAll}
+          expandAll={inlineExpandAll}
           inlineType={inlineType}
           data={treeData}
+          size={'bigger'}
           mutliple={false}
           valueField={valueField}
           displayField={displayField}
           onlySelectLeaf={true}
           onChange={this.onChange}
           themeStyle={themeStyle}
-          // onSelect={this.onSelect}
+          onSelect={this.onSelect}
         />
       </Theme>
     );
+  };
+
+  getItemObj = (value: string) => {
+    const { data } = this.state;
+    const { valueField } = this.props;
+    if (!data || data.length === 0) {
+      return {};
+    }
+
+    const item = data.find(item => item[valueField] === value);
+    console.log('item', valueField);
+  };
+
+  onSelect = obj => {
+    console.log('onSelect', obj);
+    this.getItemObj(obj[0]);
   };
 
   handleIsInMenu = (isInMenu: boolean) => {

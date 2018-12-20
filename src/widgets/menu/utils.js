@@ -270,8 +270,9 @@ export function recurTreeData(
   const { onAdd } = opt;
   inTreeChildData &&
     inTreeChildData.forEach(item => {
-      const { children, [valueField]: value, [displayField]: text } = item;
+      const { children, [valueField]: value, [displayField]: text, describe } = item;
       const newObj = {};
+      newObj.describe = describe;
       newObj.pid = parentKey;
       newObj[valueField] = value;
       newObj[displayField] = text;

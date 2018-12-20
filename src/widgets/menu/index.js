@@ -230,9 +230,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
     const { getTheme } = this.props;
     const { popupVisible = false, childData } = this.state;
-    const { submenuWidth } = getTheme();
+    const { submenuWidth, width } = getTheme();
+    const activeSubmenuWidth = submenuWidth ? submenuWidth : width ? width : DefaultWidth;
+    // console.log('activeSubmenuWidth', activeSubmenuWidth);
     return (
-      <Theme config={{ [Widget.Trigger]: { width: submenuWidth } }}>
+      <Theme config={{ [Widget.Trigger]: { width: activeSubmenuWidth } }}>
         <Trigger
           ref={cmp => (this.trigger = cmp)}
           align={'rightTop'}
@@ -296,11 +298,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
   getTheme() {
     const { getTheme } = this.props;
     const theme = getTheme();
-    // const { height = DefaultHeight, width = DefaultWidth } = theme;
-    // theme.height = adjustValue(height, MenuItemHeight);
-    const { width = DefaultWidth, submenuWidth = DefaultWidth } = theme;
+    const { width = DefaultWidth } = theme;
     theme.width = width;
-    theme.submenuWidth = submenuWidth;
     return theme;
   }
 

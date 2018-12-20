@@ -72,6 +72,7 @@ type TreeProps = {
   whiteList: ?(string[]),
   searchType?: QueryType,
   themeStyle: Object,
+  size: 'large' | 'default' | 'bigger',
 };
 
 type TreeState = {
@@ -92,6 +93,9 @@ const Empty = styled.span`
 const ErrorTooltip = Empty.extend`
   color: red;
 `;
+
+const openClassName = 'lugia-icon-direction_caret_down';
+const closeClassName = 'lugia-icon-direction_caret_right';
 
 class Tree extends React.Component<TreeProps, TreeState> {
   static displayName = Widget.Tree;
@@ -117,6 +121,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
       ChildrenUl,
       TitleWrap,
       TitleSpan,
+      openClassName,
+      closeClassName,
     },
   };
 

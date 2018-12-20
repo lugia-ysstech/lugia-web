@@ -15,7 +15,7 @@ export const {
   mediumGreyColor,
   defaultColor,
 } = colorsFunc();
-export const MenuItemHeight = 60;
+export const MenuItemHeight = 40;
 export const DefaultHeight = 1000;
 export const ItemBackgroundColor = '#edf0fe';
 const { hoverColor } = colorsFunc(themeColor);
@@ -37,10 +37,7 @@ export const NullSwitcher = Switcher.extend`
 `;
 
 export const TreeUl = styled.ul`
-  /* padding-right: ${em(18)}; */
   margin: 0;
-  border-right: 1px solid #ccc;
-  box-shadow: 1px 0 1px 1px #ccc;
 `;
 
 const getSelectIconOpacity = props => {
@@ -54,8 +51,8 @@ const getChildrenSelected = props => {
 const getHeight = props => {
   const { pos } = props;
   const num = pos.split('-').length - 2;
-  return `min-height: ${num ? `${em(40)}` : `${em(60)}`};
-  line-height: ${num ? `${em(40)}` : `${em(60)}`}
+  return `min-height: ${num ? `${em(40)}` : `${em(40)}`};
+  line-height: ${num ? `${em(40)}` : `${em(40)}`}
     `;
 };
 
@@ -105,8 +102,10 @@ export const ChildrenUl = styled.ul`
 `;
 
 function getSelected(props) {
-  const { selected, inlineType } = props;
-
+  const { selected, inlineType, describe } = props;
+  if (describe) {
+    return 'color: #b5b6c1';
+  }
   if (inlineType === 'ellipse') {
     return selected
       ? `color: ${defaultColor};
@@ -178,15 +177,17 @@ const getTitleSpanPadding = props => {
 const getSelectedBackground = props => {
   const { inlineType, selected } = props;
   if (inlineType === 'ellipse') {
-    return selected ? `background: ${themeColor};` : `background: ${defaultColor};`;
+    return selected
+      ? `background: linear-gradient(to right, ${themeColor}, #808eff);`
+      : `background: ${defaultColor};`;
   }
   return 'background: transparent;';
 };
 
 export const TitleSpan = styled.span`
   opacity: 1;
-  height: 32px;
-  line-height: 32px;
+  height: 35px;
+  line-height: 35px;
   display: inline-block;
   width: 100%;
   box-sizing: border-box;

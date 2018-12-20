@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import { px2emcss } from './units';
 const em = px2emcss(1.2);
 export const { themeColor, darkGreyColor, mediumGreyColor } = colorsFunc();
-export const MenuItemHeight = 35;
+export const MenuItemHeight = 34;
 export const DefaultHeight = 250;
 export const ItemBackgroundColor = '#edf0fe';
 
