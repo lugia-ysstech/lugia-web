@@ -9,9 +9,9 @@ import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import TransFer from './transfer';
-import Button from '../button';
+import TransFerButton from './transfer-button';
 import type { GroupProps, GroupState } from '../css/transfer-group';
-import { BtnText, OperationBtn, TransFerWrap } from '../css/transfer-group';
+import { TransFerWrap } from '../css/transfer-group';
 import { DisplayField, ValueField } from '../consts/props';
 import {
   getCancelItem,
@@ -91,6 +91,9 @@ export default ThemeProvider(
     }
 
     getTargetSelectedKeys(props) {
+      console.info(
+        getTruthValue('targetSelectedKeys', props, undefined, 'defaultTargetSelectedKeys')
+      );
       return getTruthValue('targetSelectedKeys', props, undefined, 'defaultTargetSelectedKeys');
     }
 
@@ -167,15 +170,12 @@ export default ThemeProvider(
             valueField={valueField}
             type={type}
           />
-          <OperationBtn>
-            <Button onClick={this.handleToRight} type="primary">
-              <BtnText>></BtnText>
-            </Button>
-            <br />
-            <Button onClick={this.handleToLeft} type="primary">
-              <BtnText>{'<'}</BtnText>
-            </Button>
-          </OperationBtn>
+          <TransFerButton
+            leftModel={this.sourceModel}
+            rightModel={this.targetModel}
+            onLeftClick={this.handleToRight}
+            onRightClick={this.handleToLeft}
+          />
           <TransFer
             key="2"
             model={this.targetModel}
