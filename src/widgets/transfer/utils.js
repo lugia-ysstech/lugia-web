@@ -180,13 +180,21 @@ export function getKeys(data: ?(Object[]), valueField: ?string): string[] {
     return res ? res : '';
   });
 }
-export function filterEnableKeysFromSelectKeys(list: ?(string[]), selectKeys: string[]): string[] {
+export function filterEnableKeysFromSelectKeys(
+  list: ?(string[]),
+  selectKeys: string[],
+  direction: 'Source' | 'Target'
+): string[] {
   if (!list || !list.length) {
     return selectKeys;
   }
   if (!selectKeys || !selectKeys.length) {
     return [];
   }
+
   const existMap = createExistMap(list);
-  return selectKeys.filter(item => !existMap[item]);
+  if (direction === 'Source') {
+    return selectKeys.filter(item => !existMap[item]);
+  }
+  return selectKeys.filter(item => existMap[item]);
 }

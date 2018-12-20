@@ -105,7 +105,7 @@ describe('Transfer.utils', () => {
     expect(newErrSourceCheckKeys).toEqual([]);
   });
 
-  it('splitSelectKeys', () => {
+  it('handleSplitSelectKeys', () => {
     const { validKeys, disabledKeys } = splitSelectKeys(mapData, ['value1', 'value2', 'value3']);
     expect(validKeys).toEqual(['value2', 'value3']);
     expect(disabledKeys).toEqual(['value1']);
@@ -136,20 +136,76 @@ describe('Transfer.utils', () => {
       },
     ];
     const expTarget = [
-      { pid: undefined, value: 'value1', text: '1' },
-      { pid: 'value1', value: 'value11', text: '1-1', path: 'value1', isLeaf: true },
-      { pid: 'value1', value: 'value12', text: '1-2', path: 'value1', isLeaf: true },
-      { pid: undefined, value: 'value2', text: '2' },
-      { pid: 'value2', value: 'value21', text: '2-1', path: 'value2', isLeaf: true },
-      { pid: 'value2', value: 'value22', text: '2-2', path: 'value2', isLeaf: true },
+      { describe: undefined, isLeaf: false, pid: undefined, text: '1', value: 'value1' },
+      {
+        describe: undefined,
+        isLeaf: true,
+        path: 'value1',
+        pid: 'value1',
+        text: '1-1',
+        value: 'value11',
+      },
+      {
+        describe: undefined,
+        isLeaf: true,
+        path: 'value1',
+        pid: 'value1',
+        text: '1-2',
+        value: 'value12',
+      },
+      { describe: undefined, isLeaf: false, pid: undefined, text: '2', value: 'value2' },
+      {
+        describe: undefined,
+        isLeaf: true,
+        path: 'value2',
+        pid: 'value2',
+        text: '2-1',
+        value: 'value21',
+      },
+      {
+        describe: undefined,
+        isLeaf: true,
+        path: 'value2',
+        pid: 'value2',
+        text: '2-2',
+        value: 'value22',
+      },
     ];
     const expMapData = {
-      value1: { pid: undefined, value: 'value1', text: '1' },
-      value11: { pid: 'value1', value: 'value11', text: '1-1', path: 'value1', isLeaf: true },
-      value12: { pid: 'value1', value: 'value12', text: '1-2', path: 'value1', isLeaf: true },
-      value2: { pid: undefined, value: 'value2', text: '2' },
-      value21: { pid: 'value2', value: 'value21', text: '2-1', path: 'value2', isLeaf: true },
-      value22: { pid: 'value2', value: 'value22', text: '2-2', path: 'value2', isLeaf: true },
+      value1: { describe: undefined, isLeaf: false, pid: undefined, text: '1', value: 'value1' },
+      value11: {
+        describe: undefined,
+        isLeaf: true,
+        path: 'value1',
+        pid: 'value1',
+        text: '1-1',
+        value: 'value11',
+      },
+      value12: {
+        describe: undefined,
+        isLeaf: true,
+        path: 'value1',
+        pid: 'value1',
+        text: '1-2',
+        value: 'value12',
+      },
+      value2: { describe: undefined, isLeaf: false, pid: undefined, text: '2', value: 'value2' },
+      value21: {
+        describe: undefined,
+        isLeaf: true,
+        path: 'value2',
+        pid: 'value2',
+        text: '2-1',
+        value: 'value21',
+      },
+      value22: {
+        describe: undefined,
+        isLeaf: true,
+        path: 'value2',
+        pid: 'value2',
+        text: '2-2',
+        value: 'value22',
+      },
     };
     const expEnableKeys = ['value11', 'value12', 'value21', 'value22'];
     const { target, mapData, enableKeys } = getTreeData(data, {
@@ -185,9 +241,17 @@ describe('Transfer.utils', () => {
   it('filterEnableKeysFromSelectKeys', () => {
     const selectedKeys = filterEnableKeysFromSelectKeys(
       ['value1', 'value2'],
-      ['value1', 'value2', 'value3']
+      ['value1', 'value2', 'value3'],
+      'Source'
     );
     expect(selectedKeys).toEqual(['value3']);
+
+    const newSelectedKeys = filterEnableKeysFromSelectKeys(
+      ['value1', 'value2'],
+      ['value1', 'value2', 'value3'],
+      'Target'
+    );
+    expect(newSelectedKeys).toEqual(['value1', 'value2']);
 
     expect(filterEnableKeysFromSelectKeys([], ['value3'])).toEqual(['value3']);
     expect(filterEnableKeysFromSelectKeys(undefined, ['value3'])).toEqual(['value3']);
