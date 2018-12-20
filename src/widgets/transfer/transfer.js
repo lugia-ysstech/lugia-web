@@ -128,6 +128,9 @@ export default ThemeProvider(
         menuView[Widget.Menu] = {
           height: 240,
         };
+        treeView[Widget.Tree] = {
+          height: 240,
+        };
       }
       const inputConfig = {};
       if (!inputValue) {

@@ -95,5 +95,6 @@ export const CancelBoxItem = styled.span`
 `;
 export const TreeWrap = styled.div`
   font-size: ${em(14)};
+  width: ${px2emcss(1.4)(255)};
   height: ${getNoDataHeight};
 `;
