@@ -65,32 +65,32 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
     return this.canCheckKeys;
   }
 
-  getCheckAllKeys(checked: boolean) {
-    const { disabledKeys: disabledCheckedKeys } = this.splitSelectKeys();
+  getCheckAllKeys = (checked: boolean) => {
+    const { disabledKeys: disabledCheckedKeys } = this.handleSplitSelectKeys();
     const checkKeys = checked
       ? [...this.canCheckKeys, ...disabledCheckedKeys]
       : disabledCheckedKeys || [];
 
     return checkKeys;
-  }
+  };
 
-  getMoveAfterKeysForSource() {
-    const { validKeys: moveKey, disabledKeys } = this.splitSelectKeys();
+  getMoveAfterKeysForSource = () => {
+    const { validKeys: moveKey, disabledKeys } = this.handleSplitSelectKeys();
     const nextTargetKeys = [...new Set([...this.list, ...moveKey])];
     return { moveKey, disabledKeys, nextTargetKeys };
-  }
+  };
 
-  getMoveAfterKeysForTarget() {
-    const { validKeys: moveKey, disabledKeys } = this.splitSelectKeys();
+  getMoveAfterKeysForTarget = () => {
+    const { validKeys: moveKey, disabledKeys } = this.handleSplitSelectKeys();
     const nextTargetKeys: string[] = this.list.filter(
       (item: string): boolean => {
         return !moveKey.includes(item);
       }
     );
     return { moveKey, disabledKeys, nextTargetKeys };
-  }
+  };
 
-  splitSelectKeys() {
+  handleSplitSelectKeys() {
     return splitSelectKeys(this.mapData, this.selectedKeys);
   }
 
