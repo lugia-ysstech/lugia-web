@@ -24,7 +24,7 @@ import {
   TransFer,
   TreeWrap,
 } from '../css/transfer';
-import { getKeys, isContained, filterEnableKeysFromSelectKeys } from './utils';
+import { filterEnableKeysFromSelectKeys } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -32,8 +32,12 @@ export default ThemeProvider(
     static displayName = 'TransferPanel';
     constructor(props) {
       super(props);
-      const { model } = this.props;
-      const selectedKeys = filterEnableKeysFromSelectKeys(model.getList(), model.getSelectedkeys());
+      const { model, direction } = this.props;
+      const selectedKeys = filterEnableKeysFromSelectKeys(
+        model.getList(),
+        model.getSelectedkeys(),
+        direction
+      );
       this.state = {
         inputValue: '',
         selectedKeys,
@@ -91,19 +95,16 @@ export default ThemeProvider(
 
     render() {
       const { selectedKeys = [], treeDataLength } = this.state;
-      const { data = [], needCancelBox = false, type, title, valueField } = this.props;
-
-      const canCheckKeys = this.props.model.getCanCheckKeys();
-      const length = canCheckKeys && canCheckKeys.length;
-      const checked =
-        selectedKeys.length === 0
-          ? false
-          : length
-          ? isContained(selectedKeys, canCheckKeys)
-          : isContained(getKeys(data ? data : [], valueField), selectedKeys);
+      const { needCancelBox = false, type, title } = this.props;
 
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
       const dataLength = type === 'panel' ? this.getDataLength() : treeDataLength;
+      const checked =
+        selectedKeys.length === 0
+          ? false
+          : type === 'panel'
+          ? selectedKeys.length >= this.getDataLength()
+          : selectedKeys.length >= treeDataLength;
       return (
         <TransFer>
           <Check>
@@ -218,8 +219,15 @@ export default ThemeProvider(
     }
 
     getTreeData = (data: Object[]) => {
+      const { valueField = 'value', model } = this.props;
       const oldLength = this.treeData && this.treeData.length;
       if (data.length !== oldLength) {
+        model.setCanCheckKeys(
+          data.map(item => {
+            return item[valueField];
+          })
+        );
+
         this.setState({
           treeDataLength: data.length,
         });
