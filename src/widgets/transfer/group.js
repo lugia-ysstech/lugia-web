@@ -91,9 +91,6 @@ export default ThemeProvider(
     }
 
     getTargetSelectedKeys(props) {
-      console.info(
-        getTruthValue('targetSelectedKeys', props, undefined, 'defaultTargetSelectedKeys')
-      );
       return getTruthValue('targetSelectedKeys', props, undefined, 'defaultTargetSelectedKeys');
     }
 
