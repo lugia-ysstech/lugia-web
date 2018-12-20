@@ -478,11 +478,25 @@ describe('Transfer', () => {
       />
     );
     const component = getComponent(target, 'TransferPanel', 0);
-    component.state.cancelItem = [{}, {}];
-    const sourceLength = component.getDataLength(data);
-    const targetLength = component.getDataLength(data);
-    expect(sourceLength).toBe(5);
+    component.props.model.cancelItem = [{}, {}];
+    const targetLength = component.getDataLength();
     expect(targetLength).toBe(1);
-    expect(component.getDataLength('tree', 'Source')).toBe(0);
+
+    const source = mount(
+      <TransferPanel
+        data={data}
+        model={
+          new TransferModel({
+            type: 'Source',
+            selectedKeys: [],
+            list: ['选项4', '选项5', '选项6'],
+          })
+        }
+      />
+    );
+    const newComponent = getComponent(source, 'TransferPanel', 0);
+    newComponent.props.model.cancelItem = [{}, {}];
+    const sourceLength = newComponent.getDataLength();
+    expect(sourceLength).toBe(5);
   });
 });

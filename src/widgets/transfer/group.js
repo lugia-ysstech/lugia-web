@@ -231,7 +231,11 @@ export default ThemeProvider(
 
     handleTransfer = (direction: 'left' | 'right') => {
       const targetModel = direction === 'right' ? this.sourceModel : this.targetModel;
-      const { moveKey, disabledKeys, nextTargetKeys } = targetModel.getMoveAfterKeysForSource();
+      const modelFunction =
+        direction === 'right'
+          ? this.sourceModel.getMoveAfterKeysForSource
+          : this.targetModel.getMoveAfterKeysForTarget;
+      const { moveKey, disabledKeys, nextTargetKeys } = modelFunction();
 
       const { onDirectionClick } = this.props;
       onDirectionClick && onDirectionClick(nextTargetKeys, direction, moveKey);
