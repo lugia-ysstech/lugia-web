@@ -436,7 +436,6 @@ const getFileList = (data: Array<Object>, close: Function) => {
   return (
     <Ul>
       {data.map((item, index) => {
-        console.log(item);
         return (
           <Li className={item.status}>
             {getIconByType(getListIconType(item.name), item)} <span>{item.name}</span>

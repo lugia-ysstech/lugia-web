@@ -9,6 +9,7 @@
 import React from 'react';
 import Upload from './index';
 import styled from 'styled-components';
+import request from './request';
 
 const Title = styled.div`
   font-size: 16px;
@@ -28,23 +29,47 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       url: 'http://localhost:7001/upload',
       multiple: true,
-      data: {
-        token: '123jsfkdshfkw3242',
+      accessKey: 'uploadToken',
+      beforeUpload: (file: Object) => {
+        console.log('file', file);
+        return new Promise((resolve, reject) => {
+          request({
+            url: 'http://localhost:7001/getToken',
+            method: 'post',
+            dataType: 'json',
+            onSuccess: res => {
+              if (res.code === 200) {
+                file.uploadToken = res.data;
+                resolve({ status: true, file });
+              } else {
+                reject();
+              }
+            },
+            onFail: res => {
+              reject();
+            },
+          });
+        });
       },
+      // headers:{
+      //   'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'
+      //   // 'Content-Type':'multipart/form-data '
+      // },
+      data: {},
       onChange: res => {
-        console.log('cbk', res);
+        // console.log('cbk', res);
       },
       onSuccess: res => {
-        console.log('onSuccess', res);
+        // console.log('onSuccess', res);
       },
       onComplete: res => {
-        console.log('onComplete', res);
+        // console.log('onComplete', res);
       },
       onProgress: res => {
-        console.log('onProgress', res);
+        // console.log('onProgress', res);
       },
       onFail: res => {
-        console.log('onFail', res);
+        // console.log('onFail', res);
       },
     };
     const defaultProps1 = {

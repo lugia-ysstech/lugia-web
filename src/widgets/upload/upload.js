@@ -28,7 +28,13 @@ type uploadProps = {
   showFileList?: boolean,
   withCredentials?: boolean,
   autoUpload?: boolean,
+  accept?: string,
   url: string,
+  headers?: Object,
+  inputId?: string,
+  size?: string,
+  accessKey?: string,
+  beforeUpload?: Function,
   onProgress?: Function,
   onSuccess?: Function,
   onComplete?: Function,
@@ -41,6 +47,7 @@ type stateProps = {
   fileListDone: Array<Object>,
   isAllowUpload: boolean,
   choosedFile?: Array<Object>,
+  previewUrl?: string,
 };
 
 export const getIndexInArray = (data: Array<string>, key: string): number => {
@@ -57,10 +64,10 @@ export const isEmptyObject = (obj: Object): boolean => {
   return Object.keys(obj).length === 0;
 };
 
-export const isIdInArray = (id: number, array: Array<Object>) => {
+export const isIdInArray = (hashMark: string, array: Array<Object>) => {
   if (!array.length) return false;
   const res = array.some(function(item) {
-    return item.id === id;
+    return item.hashMark === hashMark;
   });
   return res;
 };
@@ -70,7 +77,17 @@ export const getPercentValue = (current: ?number, total: ?number): number => {
   return current / total < 0 ? 0 : current / total > 1 ? 100 : Math.floor((current / total) * 100);
 };
 
+export const getHashMark = (): string => {
+  return 'r' + new Date().getTime();
+};
+
 const loop = () => true;
+// const p = (): Promise<Object> => {
+//   return new Promise(res => {
+//       res({status:true});
+//   });
+// };
+
 class Upload extends React.Component<uploadProps, stateProps> {
   input: Object;
   static defaultProps = {
@@ -135,20 +152,20 @@ class Upload extends React.Component<uploadProps, stateProps> {
   };
 
   uploadFiles = () => {
-    const { url, withCredentials, data } = this.props;
-    const dataObject = { url, withCredentials, data };
-    this.addRequest(dataObject);
+    const { url, withCredentials, data, headers } = this.props;
+    const dataObject = { url, withCredentials, data, headers };
+    this.beforeUpload(dataObject);
   };
 
-  getChangeUploadState = (typeState: string, i: number, id: number) => {
+  getChangeUploadState = (typeState: string, i: number, hashMark: string) => {
     const { choosedFile = [], fileListDone } = this.state;
     let list;
-    if (isIdInArray(id, fileListDone)) {
-      list = this.getFileList(fileListDone, id, [{ target: 'status', value: 'loading' }]);
+    if (isIdInArray(hashMark, fileListDone)) {
+      list = this.getFileList(fileListDone, hashMark, [{ target: 'status', value: 'loading' }]);
     } else {
       const { listType } = this.props;
       list = this.appendFileList(fileListDone, {
-        id,
+        hashMark,
         name: choosedFile[i].name,
         listType,
         status: typeState,
@@ -162,61 +179,86 @@ class Upload extends React.Component<uploadProps, stateProps> {
     };
   };
 
-  addRequest = (dataObject: Object): void => {
+  beforeUpload = (dataObject: Object) => {
+    const { choosedFile = [] } = this.state;
+    const { i = 0 } = dataObject;
+
+    const { beforeUpload } = this.props;
+    if (!beforeUpload) {
+      this.addRequest(dataObject);
+    } else {
+      beforeUpload(choosedFile[i]).then(message => {
+        if (message.status) {
+          const { accessKey } = this.props;
+          const { file } = message;
+          if (accessKey) {
+            dataObject.data[accessKey] = file[accessKey];
+            delete file[accessKey];
+            console.log(file, dataObject);
+          }
+          this.addRequest(dataObject, file);
+        }
+      });
+    }
+  };
+
+  addRequest = (dataObject: Object, file?: Object): void => {
     const { fileListDone } = this.state;
     let { i = 0 } = dataObject;
-    let id = fileListDone.length + 1 + i;
-
+    // let hashMark = fileListDone.length + 1 + i;
+    let hashMark = getHashMark();
     const { isAllowUpload } = this.state;
     const { autoUpload } = this.props;
     let list;
     if (!autoUpload && isAllowUpload) {
-      id = fileListDone[i].id;
-      list = this.getChangeUploadState('loading', i, id);
+      console.log(i, fileListDone);
+      hashMark = fileListDone[i].hashMark;
+      list = this.getChangeUploadState('loading', i, hashMark);
+      console.log('list', list, file);
       this.setStateValue({ ...list });
     } else {
-      list = this.getChangeUploadState('default', i, id);
+      list = this.getChangeUploadState('default', i, hashMark);
       this.setStateValue({ ...list });
       if (!isAllowUpload) return;
     }
 
-    const { url, withCredentials, data } = dataObject;
     const { choosedFile = [] } = this.state;
-
+    const { url, withCredentials, data, headers } = dataObject;
     request({
       url,
       withCredentials,
       method: 'post',
       dataType: 'json',
       data,
-      file: choosedFile[i],
+      file: file || choosedFile[i],
+      headers,
       onSuccess: res => {
-        this.uploadSuccess(res, id);
+        this.uploadSuccess(res, hashMark);
       },
       onFail: res => {
-        this.uploadFail(res, id);
+        this.uploadFail(res, hashMark);
       },
       onProgress: res => {
-        this.uploadProgress(res, id);
+        this.uploadProgress(res, hashMark);
       },
       onComplete: res => {
         i++;
         if (i >= choosedFile.length) {
-          this.uploadComplete(res, id);
+          this.uploadComplete(res, hashMark);
         } else {
           const { limit } = this.props;
           if (limit && i > limit - 1) return;
           dataObject.i = i;
-          this.addRequest(dataObject);
-          this.uploadComplete(res, id);
+          this.beforeUpload(dataObject);
+          this.uploadComplete(res, hashMark);
         }
       },
     });
   };
 
-  uploadSuccess = (res: Object, id: number): void => {
+  uploadSuccess = (res: Object, hashMark: string): void => {
     const { fileListDone } = this.state;
-    const list = this.getFileList(fileListDone, id, [
+    const list = this.getFileList(fileListDone, hashMark, [
       { target: 'status', value: 'done' },
       { target: 'url', value: res.data.url },
     ]);
@@ -230,16 +272,16 @@ class Upload extends React.Component<uploadProps, stateProps> {
     onSuccess && onSuccess(res);
   };
 
-  uploadComplete = (res: Object, id: number): void => {
+  uploadComplete = (res: Object, hashMark: string): void => {
     const { onComplete } = this.props;
     onComplete && onComplete(res.currentTarget.response);
   };
 
-  uploadProgress = (res: Object, id: number): void => {
+  uploadProgress = (res: Object, hashMark: string): void => {
     const { loaded, total } = res;
     const percent = getPercentValue(loaded, total);
     const { fileListDone } = this.state;
-    const list = this.getFileList(fileListDone, id, [
+    const list = this.getFileList(fileListDone, hashMark, [
       { target: 'percent', value: percent },
       { target: 'status', value: 'loading' },
     ]);
@@ -248,9 +290,9 @@ class Upload extends React.Component<uploadProps, stateProps> {
     onProgress && onProgress({ loaded, total });
   };
 
-  uploadFail = (res: Object, id: number): void => {
+  uploadFail = (res: Object, hashMark: string): void => {
     const { fileListDone } = this.state;
-    const list = this.getFileList(fileListDone, id, [{ target: 'status', value: 'fail' }]);
+    const list = this.getFileList(fileListDone, hashMark, [{ target: 'status', value: 'fail' }]);
     this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
     const { onFail } = this.props;
     onFail && onFail(res);
@@ -258,11 +300,11 @@ class Upload extends React.Component<uploadProps, stateProps> {
 
   getFileList = (
     fileListDone: Array<Object>,
-    props: number,
+    props: string,
     data: Array<Object> = []
   ): Array<Object> => {
     fileListDone.forEach(i => {
-      if (i.id === props) {
+      if (i.hashMark === props) {
         data.forEach(j => {
           i[j.target] = j.value;
         });

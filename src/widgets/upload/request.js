@@ -20,7 +20,7 @@ export function getFormData(data: Object, file: Object): Object {
       newData.append(field, data[field]);
     }
   }
-  newData.append('file', file);
+  if (file) newData.append('file', file);
   return newData;
 }
 

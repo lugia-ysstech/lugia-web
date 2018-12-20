@@ -213,13 +213,13 @@ describe('Rate Test', () => {
   }
   checkGetFileList(
     [
-      { id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
-      { id: 2, name: '文件22222222.jpg', status: 'loading' },
+      { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
+      { hashMark: 2, name: '文件22222222.jpg', status: 'loading' },
     ],
     1,
     [
-      { id: 1, name: '文件11111.jpg', status: 'loading', percent: 20 },
-      { id: 2, name: '文件22222222.jpg', status: 'loading' },
+      { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 20 },
+      { hashMark: 2, name: '文件22222222.jpg', status: 'loading' },
     ],
     [{ target: 'percent', value: 20 }]
   );
@@ -256,49 +256,55 @@ describe('Rate Test', () => {
     });
   }
   checkAppendFileList(
-    [{ id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 }],
-    { id: 2, name: '文件2222.jpg', status: 'loading' },
+    [{ hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 }],
+    { hashMark: 2, name: '文件2222.jpg', status: 'loading' },
     [
-      { id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
-      { id: 2, name: '文件2222.jpg', status: 'loading' },
+      { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
+      { hashMark: 2, name: '文件2222.jpg', status: 'loading' },
     ]
   );
-  checkAppendFileList([{ id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 }], {}, [
-    { id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
+  checkAppendFileList([{ hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 }], {}, [
+    { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
   ]);
 
   function uploadProgress(props: Object, expectation: string, expectation2: Array<Object>) {
     it('Function uploadProgress ', () => {
       target
         .instance()
-        .setStateValue({ fileListDone: [{ id: 1, name: '文件11111.jpg', status: 'default' }] });
+        .setStateValue({
+          fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
+        });
       target.instance().uploadProgress(props, 1);
       expect(target.state().classNameStatus).toEqual(expectation);
       expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
   uploadProgress({ loaded: 0, total: 2048 }, 'loading', [
-    { id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
+    { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
   ]);
   uploadProgress({ loaded: 1024, total: 2048 }, 'loading', [
-    { id: 1, name: '文件11111.jpg', status: 'loading', percent: 50 },
+    { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 50 },
   ]);
   uploadProgress({ loaded: 2048, total: 2048 }, 'loading', [
-    { id: 1, name: '文件11111.jpg', status: 'loading', percent: 100 },
+    { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 100 },
   ]);
-  uploadProgress({}, 'loading', [{ id: 1, name: '文件11111.jpg', status: 'loading', percent: 0 }]);
+  uploadProgress({}, 'loading', [
+    { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
+  ]);
   function uploadSuccess(props: Object, expectation: string, expectation2: Array<Object>) {
     it('Function uploadSuccess ', () => {
       target
         .instance()
-        .setStateValue({ fileListDone: [{ id: 1, name: '文件11111.jpg', status: 'default' }] });
+        .setStateValue({
+          fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
+        });
       target.instance().uploadSuccess(props, 1);
       expect(target.state().classNameStatus).toEqual(expectation);
       expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
   uploadSuccess({ data: { url: 'test.jpg' } }, 'done', [
-    { id: 1, name: '文件11111.jpg', status: 'done', url: 'test.jpg' },
+    { hashMark: 1, name: '文件11111.jpg', status: 'done', url: 'test.jpg' },
   ]);
 
   function checkisIdInArray(id: number, array: Array<Object>, expectation: boolean) {
@@ -307,8 +313,8 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
-  checkisIdInArray(1, [{ id: 1, name: '文件11111.jpg', status: 'default' }], true);
-  checkisIdInArray(2, [{ id: 1, name: '文件11111.jpg', status: 'default' }], false);
+  checkisIdInArray(1, [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }], true);
+  checkisIdInArray(2, [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }], false);
   checkisIdInArray(1, [], false);
 
   function setAutoUploadState(
@@ -330,19 +336,19 @@ describe('Rate Test', () => {
     it('Function setDeleteList ', () => {
       target.instance().setStateValue({
         fileListDone: [
-          { id: 1, name: '文件11111.jpg', status: 'done' },
-          { id: 2, name: '文件2222.jpg', status: 'default' },
+          { hashMark: 1, name: '文件11111.jpg', status: 'done' },
+          { hashMark: 2, name: '文件2222.jpg', status: 'default' },
         ],
       });
       target.instance().setDeleteList(index);
       expect(target.state().fileListDone).toEqual(expectation);
     });
   }
-  setDeleteList(1, [{ id: 1, name: '文件11111.jpg', status: 'done' }]);
-  setDeleteList(0, [{ id: 2, name: '文件2222.jpg', status: 'default' }]);
+  setDeleteList(1, [{ hashMark: 1, name: '文件11111.jpg', status: 'done' }]);
+  setDeleteList(0, [{ hashMark: 2, name: '文件2222.jpg', status: 'default' }]);
   setDeleteList(2, [
-    { id: 1, name: '文件11111.jpg', status: 'done' },
-    { id: 2, name: '文件2222.jpg', status: 'default' },
+    { hashMark: 1, name: '文件11111.jpg', status: 'done' },
+    { hashMark: 2, name: '文件2222.jpg', status: 'default' },
   ]);
 
   function checkUploadFail(
@@ -354,14 +360,16 @@ describe('Rate Test', () => {
     it('Function checkUploadFail ', () => {
       target
         .instance()
-        .setStateValue({ fileListDone: [{ id: 1, name: '文件11111.jpg', status: 'loading' }] });
+        .setStateValue({
+          fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'loading' }],
+        });
       target.instance().uploadFail(props, id);
       expect(target.state().classNameStatus).toEqual(expectation);
       expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
-  checkUploadFail({}, 1, 'fail', [{ id: 1, name: '文件11111.jpg', status: 'fail' }]);
-  checkUploadFail({}, 2, 'fail', [{ id: 1, name: '文件11111.jpg', status: 'loading' }]);
+  checkUploadFail({}, 1, 'fail', [{ hashMark: 1, name: '文件11111.jpg', status: 'fail' }]);
+  checkUploadFail({}, 2, 'fail', [{ hashMark: 1, name: '文件11111.jpg', status: 'loading' }]);
 
   const files = [
     {
