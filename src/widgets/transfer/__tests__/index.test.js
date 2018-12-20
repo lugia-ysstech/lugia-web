@@ -13,6 +13,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import TransferDemo from '../demo';
 import renderer from 'react-test-renderer';
 import Transfer from '../group';
+import TransferPanel from '../transfer';
 
 const { expect: exp } = chai;
 const { JSDOM } = jsdom;
@@ -35,6 +36,14 @@ describe('Transfer', () => {
     { text: '选项5', value: '选项5', disabled: true },
     { text: '选项6', value: '选项6', disabled: false },
   ];
+  const mapData = {
+    选项1: { text: '选项1', value: '选项1', disabled: false },
+    选项2: { text: '选项2', value: '选项2', disabled: false },
+    选项3: { text: '选项3', value: '选项3', disabled: false },
+    选项4: { text: '选项4', value: '选项4', disabled: false },
+    选项5: { text: '选项5', value: '选项5', disabled: true },
+    选项6: { text: '选项6', value: '选项6', disabled: false },
+  };
   const getComponent = (target: any, displayName: string, at: number) => {
     return target
       .find(displayName)
@@ -136,5 +145,310 @@ describe('Transfer', () => {
     expect(newSourceSelectedKeys).toEqual([]);
     expect(newDisplayValue).toEqual([]);
     expect(newTargetKeys).toEqual([]);
+  });
+
+  it('Transfer: handleSourceSelect -> props: onSelectChange , sourcePanelState: selectedKeys', () => {
+    let keys;
+    const selectChange = (item: string[]) => {
+      keys = item;
+    };
+    expect(keys).toBeUndefined();
+    const target = mount(<Transfer data={data} onSelectChange={selectChange} />);
+    const component = getComponent(target, 'Transfer', 0);
+    component.handleSourceSelect(['1', '2']);
+    expect(keys).toEqual(['1', '2']);
+    const sourcePanelCom = getComponent(target, 'TransferPanel', 0);
+    const { selectedKeys } = sourcePanelCom.state;
+    expect(selectedKeys).toEqual(['1', '2']);
+
+    const newTarget = mount(
+      <Transfer data={data} sourceSelectedKeys={['1']} onSelectChange={selectChange} />
+    );
+    const newComponent = getComponent(newTarget, 'Transfer', 0);
+    newComponent.handleSourceSelect(['1', '2', '3']);
+    expect(keys).toEqual(['1', '2', '3']);
+    const newSourcePanelCom = getComponent(newTarget, 'TransferPanel', 0);
+    const { selectedKeys: newSelectedKeys } = newSourcePanelCom.state;
+    expect(newSelectedKeys).toEqual(['1']);
+    newTarget.setProps({ sourceSelectedKeys: ['2'] });
+    expect(getComponent(newTarget, 'TransferPanel', 0).state.selectedKeys).toEqual(['2']);
+  });
+
+  it('Transfer: handleTargetSelect -> props: onSelectChange , targetPanelState: selectedKeys', () => {
+    let sourceKey, targetKey;
+    const selectChange = (sourceKeys, item: string[]) => {
+      targetKey = item;
+      sourceKey = sourceKeys;
+    };
+    expect(sourceKey).toBeUndefined();
+    expect(targetKey).toBeUndefined();
+    const target = mount(<Transfer data={data} onSelectChange={selectChange} />);
+    const component = getComponent(target, 'Transfer', 0);
+    component.handleTargetSelect(['1', '2']);
+    expect(targetKey).toEqual(['1', '2']);
+    expect(sourceKey).toEqual([]);
+    const targetPanelCom = getComponent(target, 'TransferPanel', 1);
+    const { selectedKeys } = targetPanelCom.state;
+    expect(selectedKeys).toEqual(['1', '2']);
+
+    const newTarget = mount(
+      <Transfer data={data} targetSelectedKeys={['1']} onSelectChange={selectChange} />
+    );
+    const newComponent = getComponent(newTarget, 'Transfer', 0);
+    newComponent.handleTargetSelect(['1', '2', '3']);
+    expect(targetKey).toEqual(['1', '2', '3']);
+    expect(sourceKey).toEqual([]);
+    const newTargetPanelCom = getComponent(newTarget, 'TransferPanel', 1);
+    const { selectedKeys: newSelectedKeys } = newTargetPanelCom.state;
+    expect(newSelectedKeys).toEqual(['1']);
+    newTarget.setProps({ targetSelectedKeys: ['2'] });
+    expect(getComponent(newTarget, 'TransferPanel', 1).state.selectedKeys).toEqual(['2']);
+  });
+
+  it('Transfer: handleToRight', () => {
+    let nextTargetKeys, direction, moveKey;
+    const directionClick = (keys: string[], dir: string, moveKeys: string[]) => {
+      nextTargetKeys = keys;
+      direction = dir;
+      moveKey = moveKeys;
+    };
+    const target = mount(
+      <Transfer data={data} targetKeys={['选项4']} onDirectionClick={directionClick} />
+    );
+    const component = getComponent(target, 'Transfer', 0);
+    component.sourceModel.getMoveAfterKeysForSource = function() {
+      return {
+        moveKey: ['选项2', '选项3'],
+        disabledKeys: ['选项5'],
+        nextTargetKeys: ['选项2', '选项3', '选项4'],
+      };
+    };
+    component.handleToRight();
+    expect(nextTargetKeys).toEqual(['选项2', '选项3', '选项4']);
+    expect(direction).toBe('right');
+    expect(moveKey).toEqual(['选项2', '选项3']);
+    const sourcePanelCom = getComponent(target, 'TransferPanel', 0);
+    expect(sourcePanelCom.state.selectedKeys).toEqual([]);
+
+    const newTarget = mount(
+      <Transfer data={data} defaultTargetKeys={['选项4']} onDirectionClick={directionClick} />
+    );
+    const newComponent = getComponent(newTarget, 'Transfer', 0);
+    newComponent.sourceModel.getMoveAfterKeysForSource = function() {
+      return {
+        moveKey: ['选项1', '选项2'],
+        disabledKeys: ['选项5'],
+        nextTargetKeys: ['选项1', '选项2', '选项4'],
+      };
+    };
+    newComponent.handleToRight();
+    expect(nextTargetKeys).toEqual(['选项1', '选项2', '选项4']);
+    expect(direction).toBe('right');
+    expect(moveKey).toEqual(['选项1', '选项2']);
+    const newSourcePanelCom = getComponent(newTarget, 'TransferPanel', 0);
+    expect(newSourcePanelCom.state.selectedKeys).toEqual(['选项5']);
+    expect(newComponent.sourceModel.getList()).toEqual(['选项1', '选项2', '选项4']);
+    expect(newComponent.targetModel.getList()).toEqual(['选项1', '选项2', '选项4']);
+  });
+
+  it('Transfer: handleToLeft', () => {
+    let nextTargetKeys, direction, moveKey;
+    const directionClick = (keys: string[], dir: string, moveKeys: string[]) => {
+      nextTargetKeys = keys;
+      direction = dir;
+      moveKey = moveKeys;
+    };
+    const target = mount(
+      <Transfer
+        data={data}
+        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        onDirectionClick={directionClick}
+      />
+    );
+    const component = getComponent(target, 'Transfer', 0);
+    component.targetModel.getMoveAfterKeysForTarget = function() {
+      return {
+        moveKey: ['选项2', '选项3'],
+        disabledKeys: ['选项5'],
+        nextTargetKeys: ['选项4', '选项5'],
+      };
+    };
+    component.handleToLeft();
+    expect(nextTargetKeys).toEqual(['选项4', '选项5']);
+    expect(direction).toBe('left');
+    expect(moveKey).toEqual(['选项2', '选项3']);
+    const targetPanelCom = getComponent(target, 'TransferPanel', 1);
+    expect(targetPanelCom.state.selectedKeys).toEqual([]);
+
+    const newTarget = mount(
+      <Transfer
+        data={data}
+        defaultTargetKeys={['选项2', '选项3', '选项4', '选项5']}
+        onDirectionClick={directionClick}
+      />
+    );
+    const newComponent = getComponent(newTarget, 'Transfer', 0);
+    newComponent.targetModel.getMoveAfterKeysForTarget = function() {
+      return {
+        moveKey: ['选项2', '选项3'],
+        disabledKeys: ['选项5'],
+        nextTargetKeys: ['选项4', '选项5'],
+      };
+    };
+    newComponent.handleToLeft();
+    expect(nextTargetKeys).toEqual(['选项4', '选项5']);
+    expect(direction).toBe('left');
+    expect(moveKey).toEqual(['选项2', '选项3']);
+    const newTargetPanelCom = getComponent(newTarget, 'TransferPanel', 1);
+    expect(newTargetPanelCom.state.selectedKeys).toEqual(['选项5']);
+    expect(newComponent.targetModel.getList()).toEqual(['选项4', '选项5']);
+    expect(newComponent.sourceModel.getList()).toEqual(['选项4', '选项5']);
+  });
+
+  it('Transfer: getTreeCanCheckKeys', () => {
+    const target = mount(
+      <Transfer data={data} targetKeys={['选项2', '选项3', '选项4', '选项5']} />
+    );
+    const component = getComponent(target, 'Transfer', 0);
+    const { sourceEnableKeys, targetEnableKeys } = component.getTreeCanCheckKeys(mapData, [
+      '选项4',
+      '选项5',
+      '选项6',
+    ]);
+    expect(sourceEnableKeys).toEqual(['选项1', '选项2', '选项3']);
+    expect(targetEnableKeys).toEqual(['选项4', '选项5', '选项6']);
+    const {
+      sourceEnableKeys: newSourceEnableKeys,
+      targetEnableKeys: newTargetEnableKeys,
+    } = component.getTreeCanCheckKeys(mapData, []);
+    expect(newSourceEnableKeys).toEqual(['选项1', '选项2', '选项3', '选项4', '选项5', '选项6']);
+    expect(newTargetEnableKeys).toEqual([]);
+  });
+
+  it('Transfer: checkAllForLeft', () => {
+    let sourceKeys, targetKeys;
+    const checkAll = (sKeys: string[], tKeys: string[]) => {
+      sourceKeys = sKeys;
+      targetKeys = tKeys;
+    };
+    const target = mount(
+      <Transfer
+        data={data}
+        onSelectChange={checkAll}
+        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        targetSelectedKeys={['选项2', '选项3']}
+      />
+    );
+    const component = getComponent(target, 'Transfer', 0);
+    component.sourceModel.getCheckAllKeys = function() {
+      const checkKeys = ['选项1', '选项6'];
+      return checkKeys;
+    };
+    component.checkAllForLeft();
+    expect(sourceKeys).toEqual(['选项1', '选项6']);
+    expect(targetKeys).toEqual(['选项2', '选项3']);
+    expect(component.sourceModel.getSelectedkeys()).toEqual(['选项1', '选项6']);
+
+    const newTarget = mount(
+      <Transfer
+        data={data}
+        onSelectChange={checkAll}
+        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        sourceSelectedKeys={['选项2', '选项3']}
+      />
+    );
+    const newComponent = getComponent(newTarget, 'Transfer', 0);
+    newComponent.sourceModel.getCheckAllKeys = function() {
+      const checkKeys = ['选项1', '选项6'];
+      return checkKeys;
+    };
+    newComponent.checkAllForLeft();
+    expect(newComponent.sourceModel.getSelectedkeys()).toEqual(['选项2', '选项3']);
+  });
+
+  it('Transfer: checkAllForRight', () => {
+    let sourceKeys, targetKeys;
+    const checkAll = (sKeys: string[], tKeys: string[]) => {
+      sourceKeys = sKeys;
+      targetKeys = tKeys;
+    };
+    const target = mount(
+      <Transfer
+        data={data}
+        onSelectChange={checkAll}
+        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        targetSelectedKeys={['选项2', '选项3']}
+      />
+    );
+    const component = getComponent(target, 'Transfer', 0);
+    component.targetModel.getCheckAllKeys = function() {
+      const checkKeys = ['选项1', '选项6'];
+      return checkKeys;
+    };
+    component.checkAllForRight();
+    expect(sourceKeys).toEqual([]);
+    expect(targetKeys).toEqual(['选项1', '选项6']);
+    expect(component.targetModel.getSelectedkeys()).toEqual(['选项2', '选项3']);
+
+    const newTarget = mount(
+      <Transfer
+        data={data}
+        onSelectChange={checkAll}
+        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        sourceSelectedKeys={['选项2', '选项3']}
+      />
+    );
+    const newComponent = getComponent(newTarget, 'Transfer', 0);
+    newComponent.targetModel.getCheckAllKeys = function() {
+      const checkKeys = ['选项1', '选项6'];
+      return checkKeys;
+    };
+    newComponent.checkAllForRight();
+    expect(newComponent.targetModel.getSelectedkeys()).toEqual(['选项1', '选项6']);
+  });
+
+  it('Transfer: handleCancelItemClick', () => {
+    let taragetKeys, displayValue;
+    const cancelClick = (newTKeys: string[], newDisplay: string[]) => {
+      taragetKeys = newTKeys;
+      displayValue = newDisplay;
+    };
+    const target = mount(
+      <Transfer
+        data={data}
+        targetKeys={['选项2', '选项3', 'a']}
+        displayValue={['选项2', '选项3', 'A']}
+        onCancelItemClick={cancelClick}
+      />
+    );
+    const component = getComponent(target, 'Transfer', 0);
+    component.handleCancelItemClick('a');
+    expect(taragetKeys).toEqual(['选项2', '选项3']);
+    expect(displayValue).toEqual(['选项2', '选项3']);
+    expect(component.targetModel.getCancelItem()).toEqual([{ text: 'A', value: 'a' }]);
+
+    const newTarget = mount(
+      <Transfer
+        data={data}
+        targetKeys={['选项2', '选项3', 'a']}
+        defaultDisplayValue={['选项2', '选项3', 'A']}
+        onCancelItemClick={cancelClick}
+      />
+    );
+    const newComponent = getComponent(newTarget, 'Transfer', 0);
+    newComponent.handleCancelItemClick('a');
+    expect(taragetKeys).toEqual(['选项2', '选项3']);
+    expect(displayValue).toEqual(['选项2', '选项3']);
+    expect(newComponent.targetModel.getCancelItem()).toEqual([]);
+  });
+
+  it('TransferPanel: getTreeData', () => {
+    const target = mount(
+      <TransferPanel data={data} model={{ getList: () => {}, getSelectedkeys: () => {} }} />
+    );
+    const component = getComponent(target, 'TransferPanel', 0);
+    expect(component.state.treeDataLength).toBeUndefined();
+    component.getTreeData([{}, {}]);
+    expect(component.state.treeDataLength).toBe(2);
   });
 });

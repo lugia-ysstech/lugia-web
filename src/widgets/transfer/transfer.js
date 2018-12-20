@@ -168,35 +168,35 @@ export default ThemeProvider(
             </Theme>
           ) : null}
 
-          <MenuWrap>
-            <Theme config={menuView}>
-              {type === 'panel' ? (
+          {type === 'panel' ? (
+            <MenuWrap>
+              <Theme config={menuView}>
                 <TransferMenu
                   {...this.props}
                   query={inputValue}
                   {...typeList}
                   selectedKeys={selectedKeys}
                 />
-              ) : (
-                <TreeWrap direction={direction}>
-                  <Theme config={treeView}>
-                    <Tree
-                      displayField={displayField}
-                      valueField={valueField}
-                      data={treeData}
-                      value={selectedKeys}
-                      expandAll
-                      mutliple
-                      onChange={this.handleTreeChange}
-                      query={inputValue}
-                      {...typeList}
-                      getTreeData={this.getTreeData}
-                    />
-                  </Theme>
-                </TreeWrap>
-              )}
-            </Theme>
-          </MenuWrap>
+              </Theme>
+            </MenuWrap>
+          ) : (
+            <TreeWrap direction={direction}>
+              <Theme config={treeView}>
+                <Tree
+                  displayField={displayField}
+                  valueField={valueField}
+                  data={treeData}
+                  value={selectedKeys}
+                  expandAll
+                  mutliple
+                  onChange={this.handleTreeChange}
+                  query={inputValue}
+                  {...typeList}
+                  getTreeData={this.getTreeData}
+                />
+              </Theme>
+            </TreeWrap>
+          )}
 
           {cancelBox}
         </TransFer>
