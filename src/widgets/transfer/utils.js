@@ -188,12 +188,5 @@ export function filterEnableKeysFromSelectKeys(list: ?(string[]), selectKeys: st
     return [];
   }
   const existMap = createExistMap(list);
-  const selectedKeys = [];
-  selectKeys.forEach(item => {
-    if (!existMap[item]) {
-      selectedKeys.push(item);
-    }
-  });
-
-  return selectedKeys;
+  return selectKeys.filter(item => !existMap[item]);
 }

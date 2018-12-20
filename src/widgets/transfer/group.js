@@ -27,6 +27,7 @@ export default ThemeProvider(
     static displayName = 'Transfer';
     sourceModel: TransferModel;
     targetModel: TransferModel;
+
     constructor(props: GroupProps) {
       super(props);
       const sourceSelectKeys = this.getSourceSelectedKeys(props);
@@ -44,6 +45,20 @@ export default ThemeProvider(
         selectedKeys: sourceSelectKeys,
         list: theTargetKeys,
       });
+      const { valueField = 'value', displayField = 'text' } = props;
+      this.initModel(props, theTargetKeys);
+      this.targetModel.setDisplayValue(theDisplayValue);
+      const cancelItem = getCancelItem(
+        theTargetKeys,
+        this.sourceModel.getMapData(),
+        { valueField, displayField },
+        theDisplayValue
+      );
+      this.targetModel.setCancelItem(cancelItem);
+      this.sourceModel.setCancelItem(cancelItem);
+    }
+
+    initModel(props: GroupProps, theTargetKeys) {
       const { data, valueField = 'value', type = 'panel', displayField = 'text' } = props;
       let mapData;
       if (type === 'panel') {
@@ -73,15 +88,6 @@ export default ThemeProvider(
       }
       this.targetModel.setMapData(mapData);
       this.sourceModel.setMapData(mapData);
-      this.targetModel.setDisplayValue(theDisplayValue);
-      const cancelItem = getCancelItem(
-        theTargetKeys,
-        mapData,
-        { valueField, displayField },
-        theDisplayValue
-      );
-      this.targetModel.setCancelItem(cancelItem);
-      this.sourceModel.setCancelItem(cancelItem);
     }
 
     getTargetSelectedKeys(props) {
@@ -102,60 +108,30 @@ export default ThemeProvider(
 
     shouldComponentUpdate(nextProps: GroupProps, nextState: GroupState) {
       const {
-        data,
         valueField = 'value',
         type = 'panel',
         displayField = 'text',
         targetKeys = [],
       } = nextProps;
+
       if (nextProps.data.length !== this.props.data.length || nextProps.data !== this.props.data) {
         const theTargetKeys = this.getTargetKeys(nextProps);
-        let mapData;
-        if (type === 'panel') {
-          mapData = getMapData(data, valueField);
-          const { targetCheckKeys, sourceCheckKeys } = getPanelSourceDataAndTargetData(
-            data,
-            theTargetKeys,
-            valueField
-          );
-          this.targetModel.setCanCheckKeys(targetCheckKeys);
-          this.sourceModel.setCanCheckKeys(sourceCheckKeys);
-        } else {
-          const { mapData: maps, target } = getTreeData(data, {
-            displayField,
-            valueField,
-          });
-          mapData = maps;
-          this.targetModel.setTreeData(target);
-          this.sourceModel.setTreeData(target);
+        this.initModel(nextProps, theTargetKeys);
+      }
 
-          const { sourceEnableKeys, targetEnableKeys } = this.getTreeCanCheckKeys(
-            maps,
-            theTargetKeys
-          );
-          this.targetModel.setCanCheckKeys(targetEnableKeys);
-          this.sourceModel.setCanCheckKeys(sourceEnableKeys);
-        }
-        this.targetModel.setMapData(mapData);
-        this.sourceModel.setMapData(mapData);
-      }
       if (this.isInProps('targetSelectedKeys')) {
-        const targetSelectKeys = this.getTargetSelectedKeys(nextProps);
-        this.targetModel.changeSelectedKeys(targetSelectKeys);
+        this.targetModel.changeSelectedKeys(this.getTargetSelectedKeys(nextProps));
       }
+
       if (this.isInProps('sourceSelectedKeys')) {
-        const keys = this.getSourceSelectedKeys(nextProps);
-        this.sourceModel.changeSelectedKeys(keys);
+        this.sourceModel.changeSelectedKeys(this.getSourceSelectedKeys(nextProps));
       }
+
       if (this.isInProps('targetKeys')) {
         const targetSelectKeys = this.getTargetKeys(nextProps);
-        this.targetModel.changeList(targetSelectKeys);
-        this.sourceModel.changeList(targetSelectKeys);
-
-        const { sourceEnableKeys, targetEnableKeys } = this.getEnableKeys(type, targetKeys);
-        this.targetModel.setCanCheckKeys(targetEnableKeys);
-        this.sourceModel.setCanCheckKeys(sourceEnableKeys);
+        this.updateChangeList(targetSelectKeys);
       }
+
       if (this.isInProps('displayValue')) {
         const theTargetKeys = this.targetModel.getList();
         const mapData = this.targetModel.getMapData();
@@ -217,75 +193,67 @@ export default ThemeProvider(
         </TransFerWrap>
       );
     }
-    handleSourceSelect = (item: string[]) => {
-      const { onSelectChange } = this.props;
-      const targetSelectedKeys = this.targetModel.getSelectedkeys();
-      onSelectChange && onSelectChange(item, targetSelectedKeys);
 
-      const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
-      if (hasSourceSelectedKeys) {
-        return;
-      }
-      this.sourceModel.changeSelectedKeys(item);
+    handleSourceSelect = (item: string[]) => {
+      const targetSelectedKeys = this.targetModel.getSelectedkeys();
+      this.onSelectChange(item, targetSelectedKeys);
+      this.changeSelectedKeys('sourceSelectedKeys', item);
     };
 
     handleTargetSelect = (item: string[]) => {
-      const { onSelectChange } = this.props;
       const sourceSelectedKeys = this.sourceModel.getSelectedkeys();
-      onSelectChange && onSelectChange(sourceSelectedKeys, item);
-
-      const hasTargetSelectedKeys = this.isInProps('targetSelectedKeys');
-      if (hasTargetSelectedKeys) {
-        return;
-      }
-      this.targetModel.changeSelectedKeys(item);
+      this.onSelectChange(sourceSelectedKeys, item);
+      this.changeSelectedKeys('targetSelectedKeys', item);
     };
 
-    handleToLeft = () => {
-      const {
-        moveKey,
-        disabledKeys,
-        nextTargetKeys,
-      } = this.targetModel.getMoveAfterKeysForTarget();
+    onSelectChange(source: string[], target: string[]) {
+      const { onSelectChange } = this.props;
+      onSelectChange && onSelectChange(source, target);
+    }
 
-      const { onDirectionClick, type = 'panel' } = this.props;
-      onDirectionClick && onDirectionClick(nextTargetKeys, 'left', moveKey);
-
-      const hasTargetKeys = this.isInProps('targetKeys');
-      if (hasTargetKeys) {
+    changeSelectedKeys(type: 'targetSelectedKeys' | 'sourceSelectedKeys', item: string[]) {
+      const isLimit = this.isInProps(type);
+      if (isLimit) {
         return;
       }
-      this.targetModel.changeSelectedKeys(disabledKeys);
-      this.targetModel.changeList(nextTargetKeys);
-      this.sourceModel.changeList(nextTargetKeys);
 
-      const { sourceEnableKeys, targetEnableKeys } = this.getEnableKeys(type, nextTargetKeys);
-      this.targetModel.setCanCheckKeys(targetEnableKeys);
-      this.sourceModel.setCanCheckKeys(sourceEnableKeys);
+      const targetModel = type === 'targetSelectedKeys' ? this.targetModel : this.sourceModel;
+      targetModel.changeSelectedKeys(item);
+    }
+
+    handleToLeft = () => {
+      this.handleTransfer('left');
     };
 
     handleToRight = () => {
-      const {
-        moveKey,
-        disabledKeys,
-        nextTargetKeys,
-      } = this.sourceModel.getMoveAfterKeysForSource();
+      this.handleTransfer('right');
+    };
 
-      const { onDirectionClick, type = 'panel' } = this.props;
-      onDirectionClick && onDirectionClick(nextTargetKeys, 'right', moveKey);
+    handleTransfer = (direction: 'left' | 'right') => {
+      const targetModel = direction === 'right' ? this.sourceModel : this.targetModel;
+      const { moveKey, disabledKeys, nextTargetKeys } = targetModel.getMoveAfterKeysForSource();
+
+      const { onDirectionClick } = this.props;
+      onDirectionClick && onDirectionClick(nextTargetKeys, direction, moveKey);
 
       const hasTargetKeys = this.isInProps('targetKeys');
       if (hasTargetKeys) {
         return;
       }
-      this.sourceModel.changeSelectedKeys(disabledKeys);
-      this.sourceModel.changeList(nextTargetKeys);
+      targetModel.changeSelectedKeys(disabledKeys);
+      this.updateChangeList(nextTargetKeys);
+    };
+
+    updateChangeList(nextTargetKeys) {
+      const { type = 'panel' } = this.props;
+
       this.targetModel.changeList(nextTargetKeys);
+      this.sourceModel.changeList(nextTargetKeys);
 
       const { sourceEnableKeys, targetEnableKeys } = this.getEnableKeys(type, nextTargetKeys);
       this.targetModel.setCanCheckKeys(targetEnableKeys);
       this.sourceModel.setCanCheckKeys(sourceEnableKeys);
-    };
+    }
 
     getEnableKeys = (type: 'panel' | 'tree', nextTargetKeys: string[]) => {
       const { data, valueField = 'value' } = this.props;
@@ -303,44 +271,34 @@ export default ThemeProvider(
     };
 
     getTreeCanCheckKeys(mapData: Object, targetKeys: string[]) {
-      const sourceData = { ...mapData },
-        targetEnableKeys = [];
+      const sourceData = { ...mapData };
       if (!targetKeys || !targetKeys.length) {
-        return { sourceEnableKeys: Object.keys(sourceData), targetEnableKeys };
+        return { sourceEnableKeys: Object.keys(sourceData), targetEnableKeys: [] };
       }
-      targetKeys.forEach(item => {
-        if (sourceData[item]) {
-          targetEnableKeys.push(item);
+      const targetEnableKeys = targetKeys.filter(item => {
+        const isInSource = sourceData[item];
+        if (isInSource) {
           delete sourceData[item];
         }
+        return isInSource;
       });
       return { sourceEnableKeys: Object.keys(sourceData), targetEnableKeys };
     }
 
     checkAllForLeft = (checked: boolean) => {
-      const { onSelectChange } = this.props;
       const checkKeys = this.sourceModel.getCheckAllKeys(checked);
       const targetSelectedKeys = this.targetModel.getSelectedkeys();
 
-      onSelectChange && onSelectChange(checkKeys, targetSelectedKeys);
-
-      const hasSourceSelectedKeys = this.isInProps('sourceSelectedKeys');
-      if (hasSourceSelectedKeys) {
-        return;
-      }
-      this.sourceModel.changeSelectedKeys(checkKeys);
+      this.onSelectChange(checkKeys, targetSelectedKeys);
+      this.changeSelectedKeys('sourceSelectedKeys', checkKeys);
     };
+
     checkAllForRight = (checked: boolean) => {
-      const { onSelectChange } = this.props;
       const checkKeys = this.targetModel.getCheckAllKeys(checked);
       const sourceSelectedKeys = this.sourceModel.getSelectedkeys();
-      onSelectChange && onSelectChange(sourceSelectedKeys, checkKeys);
 
-      const hasTargetSelectedKeys = this.isInProps('targetSelectedKeys');
-      if (hasTargetSelectedKeys) {
-        return;
-      }
-      this.targetModel.changeSelectedKeys(checkKeys);
+      this.onSelectChange(sourceSelectedKeys, checkKeys);
+      this.changeSelectedKeys('targetSelectedKeys', checkKeys);
     };
 
     handleCancelItemClick = (value: string) => {
@@ -367,12 +325,15 @@ export default ThemeProvider(
         { valueField, displayField },
         newDisplayValue
       );
+
       this.targetModel.changeCancelItem(cancelItem);
-      this.sourceModel.setCancelItem(cancelItem);
       this.targetModel.setDisplayValue(newDisplayValue);
       this.targetModel.changeList(newTargetKeys);
+
+      this.sourceModel.setCancelItem(cancelItem);
       this.sourceModel.changeList(newTargetKeys);
     };
+
     isInProps(value: string) {
       return value in this.props;
     }

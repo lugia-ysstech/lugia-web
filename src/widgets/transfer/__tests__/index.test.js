@@ -479,8 +479,8 @@ describe('Transfer', () => {
     );
     const component = getComponent(target, 'TransferPanel', 0);
     component.state.cancelItem = [{}, {}];
-    const sourceLength = component.getDataLength('panel', 'Source');
-    const targetLength = component.getDataLength('panel', 'Target');
+    const sourceLength = component.getDataLength(data);
+    const targetLength = component.getDataLength(data);
     expect(sourceLength).toBe(5);
     expect(targetLength).toBe(1);
     expect(component.getDataLength('tree', 'Source')).toBe(0);

@@ -43,23 +43,21 @@ export default class TransferMenu extends React.Component<TransferMenuProps, Tra
         return option[valueField].indexOf(value) > -1;
       },
     } = props;
+    let targetData = [];
     if (direction === 'Source') {
-      const menuWhiteListData = getMenuDataByBlackList(data, valueField, blackList);
-      return {
-        menuData: getSearchData(menuWhiteListData, query, filterOption),
-      };
+      targetData = getMenuDataByBlackList(data, valueField, blackList);
+    } else {
+      const { mapData = {} } = state;
+      ({ whiteListData: targetData } = getWhiteListDataAndCancelItem(
+        mapData,
+        displayValue,
+        valueField,
+        displayField,
+        whiteList
+      ));
     }
-    const { mapData = {} } = state;
-    const { whiteListData } = getWhiteListDataAndCancelItem(
-      mapData,
-      displayValue,
-      valueField,
-      displayField,
-      whiteList
-    );
-
     return {
-      menuData: getSearchData(whiteListData, query, filterOption),
+      menuData: getSearchData(targetData, query, filterOption),
     };
   }
 
@@ -82,7 +80,7 @@ export default class TransferMenu extends React.Component<TransferMenuProps, Tra
     );
   }
 
-  onClick = (e: Event, keys: Object, item: Object) => {
+  onClick = (e: Event, keys: Object) => {
     const { onSelect } = this.props;
     const { selectedKeys } = keys;
     onSelect && onSelect(selectedKeys);
