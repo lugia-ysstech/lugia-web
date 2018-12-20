@@ -14,6 +14,7 @@ import TransferDemo from '../demo';
 import renderer from 'react-test-renderer';
 import Transfer from '../group';
 import TransferPanel from '../transfer';
+import TransferModel from '../model';
 
 const { expect: exp } = chai;
 const { JSDOM } = jsdom;
@@ -444,11 +445,44 @@ describe('Transfer', () => {
 
   it('TransferPanel: getTreeData', () => {
     const target = mount(
-      <TransferPanel data={data} model={{ getList: () => {}, getSelectedkeys: () => {} }} />
+      <TransferPanel
+        data={data}
+        model={
+          new TransferModel({
+            type: 'Target',
+            selectedKeys: [],
+            list: [],
+          })
+        }
+      />
     );
     const component = getComponent(target, 'TransferPanel', 0);
     expect(component.state.treeDataLength).toBeUndefined();
     component.getTreeData([{}, {}]);
     expect(component.state.treeDataLength).toBe(2);
+    component.getTreeData([1, 2]);
+    expect(component.state.treeDataLength).toBe(2);
+  });
+
+  it('TransferPanel: getDataLength', () => {
+    const target = mount(
+      <TransferPanel
+        data={data}
+        model={
+          new TransferModel({
+            type: 'Target',
+            selectedKeys: [],
+            list: ['选项4', '选项5', '选项6'],
+          })
+        }
+      />
+    );
+    const component = getComponent(target, 'TransferPanel', 0);
+    component.state.cancelItem = [{}, {}];
+    const sourceLength = component.getDataLength('panel', 'Source');
+    const targetLength = component.getDataLength('panel', 'Target');
+    expect(sourceLength).toBe(5);
+    expect(targetLength).toBe(1);
+    expect(component.getDataLength('tree', 'Source')).toBe(0);
   });
 });
