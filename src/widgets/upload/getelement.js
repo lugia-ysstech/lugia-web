@@ -612,11 +612,16 @@ class GetElement extends React.Component<defProps, stateProps> {
             ))}
           <PictureView
             size={size}
-            className={`${disabled ? 'disabled' : ''} default`}
+            className={`${disabled ? 'disabled' : ''} ${
+              classNameStatus === 'done' ? 'default' : classNameStatus
+            }`}
             onClick={handleClickToUpload}
           >
-            {/*{getIconByType('p-default')}*/}
-            {!previewUrl ? getIconByType('p-' + classNameStatus) : <img src={previewUrl} alt="" />}
+            {!previewUrl || fileListDone.length > 1 ? (
+              getIconByType(`p-${classNameStatus === 'done' ? 'default' : classNameStatus}`)
+            ) : (
+              <img src={previewUrl} alt="" />
+            )}
             {classNameStatus === 'fail' && size !== 'small' ? (
               <span>图片上传失败请重试</span>
             ) : null}

@@ -294,7 +294,7 @@ describe('Rate Test', () => {
       target.instance().setStateValue({
         fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
       });
-      target.instance().uploadSuccess(props, 1);
+      target.instance().uploadSuccess(props, files, 1);
       expect(target.state().classNameStatus).toEqual(expectation);
       expect(target.state().fileListDone).toEqual(expectation2);
     });
@@ -330,7 +330,8 @@ describe('Rate Test', () => {
     expectation: boolean
   ) {
     it('Function setAutoUploadState ', () => {
-      target.instance().setStateValue({ choosedFile: choosedFileList });
+      const target = mount(<Upload url={'xxxx.test'} />);
+      choosedFileList && target.instance().setStateValue({ choosedFile: choosedFileList });
       target.instance().setAutoUploadState(props);
       expect(target.state().isAllowUpload).toEqual(expectation);
     });

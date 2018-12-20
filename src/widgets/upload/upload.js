@@ -68,10 +68,9 @@ export const isEmptyObject = (obj: Object): boolean => {
 
 export const isIdInArray = (hashMark: string, array: Array<Object>) => {
   if (!array.length) return false;
-  const res = array.some(function(item) {
+  return array.some(function(item) {
     return item.hashMark === hashMark;
   });
-  return res;
 };
 
 export const getPercentValue = (current: ?number, total: ?number): number => {
@@ -80,7 +79,7 @@ export const getPercentValue = (current: ?number, total: ?number): number => {
 };
 
 export const getHashMark = (): string => {
-  return 'r' + new Date().getTime();
+  return 'lugia' + new Date().getTime();
 };
 
 const loop = () => true;
