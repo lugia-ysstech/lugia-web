@@ -269,11 +269,9 @@ describe('Rate Test', () => {
 
   function uploadProgress(props: Object, expectation: string, expectation2: Array<Object>) {
     it('Function uploadProgress ', () => {
-      target
-        .instance()
-        .setStateValue({
-          fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
-        });
+      target.instance().setStateValue({
+        fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
+      });
       target.instance().uploadProgress(props, 1);
       expect(target.state().classNameStatus).toEqual(expectation);
       expect(target.state().fileListDone).toEqual(expectation2);
@@ -293,11 +291,9 @@ describe('Rate Test', () => {
   ]);
   function uploadSuccess(props: Object, expectation: string, expectation2: Array<Object>) {
     it('Function uploadSuccess ', () => {
-      target
-        .instance()
-        .setStateValue({
-          fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
-        });
+      target.instance().setStateValue({
+        fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
+      });
       target.instance().uploadSuccess(props, 1);
       expect(target.state().classNameStatus).toEqual(expectation);
       expect(target.state().fileListDone).toEqual(expectation2);
@@ -307,15 +303,26 @@ describe('Rate Test', () => {
     { hashMark: 1, name: '文件11111.jpg', status: 'done', url: 'test.jpg' },
   ]);
 
-  function checkisIdInArray(id: number, array: Array<Object>, expectation: boolean) {
+  function checkisIdInArray(id: string, array: Array<Object>, expectation: boolean) {
     it('Function isIdInArray ', () => {
       const res = isIdInArray(id, array);
       expect(res).toEqual(expectation);
     });
   }
-  checkisIdInArray(1, [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }], true);
-  checkisIdInArray(2, [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }], false);
-  checkisIdInArray(1, [], false);
+  checkisIdInArray('1', [{ hashMark: '1', name: '文件11111.jpg', status: 'default' }], true);
+  checkisIdInArray('2', [{ hashMark: '1', name: '文件11111.jpg', status: 'default' }], false);
+  checkisIdInArray('1', [], false);
+
+  const files = [
+    {
+      lastModified: 1541066150245,
+      lastModifiedDate: new Date(1541066150245),
+      name: 'headPic.jpg',
+      size: 53021,
+      type: 'image/jpeg',
+      webkitRelativePath: '',
+    },
+  ];
 
   function setAutoUploadState(
     props: boolean,
@@ -329,8 +336,8 @@ describe('Rate Test', () => {
     });
   }
   setAutoUploadState(false, undefined, true);
-  setAutoUploadState(true, [new FormData()], true);
-  setAutoUploadState(false, [new FormData()], false);
+  setAutoUploadState(true, files, true);
+  setAutoUploadState(false, files, false);
 
   function setDeleteList(index: number, expectation: Array<Object>) {
     it('Function setDeleteList ', () => {
@@ -358,11 +365,9 @@ describe('Rate Test', () => {
     expectation2: Array<Object>
   ) {
     it('Function checkUploadFail ', () => {
-      target
-        .instance()
-        .setStateValue({
-          fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'loading' }],
-        });
+      target.instance().setStateValue({
+        fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'loading' }],
+      });
       target.instance().uploadFail(props, id);
       expect(target.state().classNameStatus).toEqual(expectation);
       expect(target.state().fileListDone).toEqual(expectation2);
@@ -371,16 +376,6 @@ describe('Rate Test', () => {
   checkUploadFail({}, 1, 'fail', [{ hashMark: 1, name: '文件11111.jpg', status: 'fail' }]);
   checkUploadFail({}, 2, 'fail', [{ hashMark: 1, name: '文件11111.jpg', status: 'loading' }]);
 
-  const files = [
-    {
-      lastModified: 1541066150245,
-      lastModifiedDate: new Date(1541066150245),
-      name: 'headPic.jpg',
-      size: 53021,
-      type: 'image/jpeg',
-      webkitRelativePath: '',
-    },
-  ];
   function checkSetChoosedFile(expectation: Array<Object>) {
     it('Function checkSetChoosedFile ', () => {
       target.instance().setChoosedFile(files);

@@ -29,7 +29,7 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       url: 'http://localhost:7001/upload',
       multiple: true,
-      accessKey: 'uploadToken',
+      accessKey: ['uploadToken'],
       beforeUpload: (file: Object) => {
         console.log('file', file);
         return new Promise((resolve, reject) => {
@@ -37,6 +37,7 @@ class UploadDemo extends React.Component<any, any> {
             url: 'http://localhost:7001/getToken',
             method: 'post',
             dataType: 'json',
+            data: { name: file.name },
             onSuccess: res => {
               if (res.code === 200) {
                 file.uploadToken = res.data;
@@ -59,8 +60,8 @@ class UploadDemo extends React.Component<any, any> {
       onChange: res => {
         // console.log('cbk', res);
       },
-      onSuccess: res => {
-        // console.log('onSuccess', res);
+      onSuccess: (res, fileList) => {
+        console.log('onSuccess', res, fileList);
       },
       onComplete: res => {
         // console.log('onComplete', res);
@@ -108,6 +109,7 @@ class UploadDemo extends React.Component<any, any> {
       listType: 'picture',
       inputId: 'upload3',
       size: 'large',
+      multiple: true,
       url: 'http://localhost:7001/upload',
       accept: 'image/*',
     };

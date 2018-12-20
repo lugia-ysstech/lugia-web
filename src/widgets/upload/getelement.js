@@ -296,6 +296,7 @@ const PictureView = styled.div`
   align-items: center;
   overflow: hidden;
   padding: 6px;
+  margin: 10px;
   &.disabled {
     background: ${disableColor};
     color: #ccc;
@@ -409,7 +410,7 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
         <LoadIcon iconClass="lugia-icon-financial_pic ccc" />
         {getListIconType(props.name) === 'picture' && props.url ? (
           <PrevImg className="prev">
-            <img src={props.url} alt="" /> <Triangle /> <div>{props.url}</div>{' '}
+            <img src={props.url} alt="" /> <Triangle /> <div>{props.url}</div>
           </PrevImg>
         ) : null}
       </PrevCon>
@@ -589,18 +590,38 @@ class GetElement extends React.Component<defProps, stateProps> {
       );
     }
     if (listType === 'picture') {
-      const { previewUrl, size, inputId, disabled } = props;
+      const { size, disabled, fileListDone, multiple, previewUrl } = props;
       const { handleClickToUpload } = this;
       children = (
-        <PictureView
-          id={inputId}
-          size={size}
-          className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
-          onClick={handleClickToUpload}
-        >
-          {!previewUrl ? getIconByType('p-' + classNameStatus) : <img src={previewUrl} alt="" />}
-          {classNameStatus === 'fail' && size !== 'small' ? <span>图片上传失败请重试</span> : null}
-        </PictureView>
+        <React.Fragment>
+          {classNameStatus === 'done' &&
+            multiple &&
+            fileListDone.length > 1 &&
+            fileListDone.map(item => (
+              <PictureView
+                size={size}
+                className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
+                onClick={handleClickToUpload}
+              >
+                {classNameStatus === 'fail' && size !== 'small' ? (
+                  <span>图片上传失败请重试</span>
+                ) : (
+                  <img src={item.url} alt="" />
+                )}
+              </PictureView>
+            ))}
+          <PictureView
+            size={size}
+            className={`${disabled ? 'disabled' : ''} default`}
+            onClick={handleClickToUpload}
+          >
+            {/*{getIconByType('p-default')}*/}
+            {!previewUrl ? getIconByType('p-' + classNameStatus) : <img src={previewUrl} alt="" />}
+            {classNameStatus === 'fail' && size !== 'small' ? (
+              <span>图片上传失败请重试</span>
+            ) : null}
+          </PictureView>
+        </React.Fragment>
       );
     }
     if (listType === 'area') {
