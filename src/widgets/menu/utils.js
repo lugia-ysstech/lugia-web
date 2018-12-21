@@ -3,70 +3,8 @@
  *
  * @flow
  */
-
+import type { MenuProps, MenuState } from './index';
 import * as React from 'react';
-import Item from './item';
-
-type treeDataItem = {
-  value: string,
-  text: string,
-  pid: string,
-  path: string,
-  isLeaf: boolean,
-};
-
-type MenuProps = {
-  start: number,
-  level: number,
-  end: number,
-  getTheme: Function,
-  getPrefix: Function,
-  getSuffix: Function,
-  svThemVersion?: number,
-  mutliple: boolean,
-  children: Array<React.Element<typeof Item>>,
-  data: Array<Object>,
-  selectedKeys?: string[],
-  defaultSelectedKeys?: string[],
-  valueField?: string,
-  displayField?: string,
-  indexOffsetY?: number,
-  onClick?: Function,
-  onChange?: Function,
-  onMouseEnter?: Function,
-  onMouseLeave?: Function,
-  limitCount?: number,
-  disabled?: boolean,
-  checkbox?: boolean,
-  checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
-  offsetX: number,
-  offsetY: number,
-  popupVisible?: boolean,
-  separator: string,
-  cancelData: Array<Object>,
-  action: 'hover' | 'click',
-  size: string,
-  mouseDownInMenus?: Function,
-  pushMenuInstance?: Function,
-  deleteMenuInstance?: Function,
-  setSelectedKeys?: Function,
-  selectedKeysData?: string[],
-  expandedData?: string[],
-  expandedPath?: string[],
-  handleIsInMenu?: Function,
-  setExpandedPath: Function,
-  allChildData?: Array<Object>,
-  treeData?: treeDataItem[],
-  getIndexOffsetY?: Function,
-};
-
-type MenuState = {
-  selectedKeys: string[],
-  expandedPath: string[],
-  popupVisible: boolean,
-  childData: Array<Object>,
-  indexOffsetY: number,
-};
 
 const EmptyData = [];
 
