@@ -1041,7 +1041,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
 </div>
 `;
 
-exports[`NavMenu  mode inline,inlineType=ellipse,motif=dark 1`] = `
+exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 .c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3325,7 +3325,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 </div>
 `;
 
-exports[`NavMenu mode=inline,inlineType=primary,motif=dark  1`] = `
+exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 .c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
