@@ -35,6 +35,7 @@ export type GroupState = {
   sourceData: Object[],
   targetData: Object[],
   value: string[],
+  defaultValue: string[],
   sourceKeys: string[],
   mapData: Object,
   sourceSearchData: Object[],
