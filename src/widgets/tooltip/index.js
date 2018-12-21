@@ -28,7 +28,7 @@ import { FontSize, FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 const em = px2emcss(FontSizeNumber);
 
-const ToolTrigger = styled(Trigger)`
+const ToolTrigger: Object = styled(Trigger)`
   ${getTriggerByArrow};
   box-shadow: none;
 `;

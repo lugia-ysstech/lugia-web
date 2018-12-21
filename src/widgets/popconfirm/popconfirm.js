@@ -81,7 +81,7 @@ const OkText = Basetext.extend``;
 
 CancelText.displayName = 'okText';
 
-const BaseButton = styled(Button)`
+const BaseButton: Object = styled(Button)`
   font-size: 1.2rem;
   display: inline-block;
 `;

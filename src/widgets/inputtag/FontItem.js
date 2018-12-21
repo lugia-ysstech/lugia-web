@@ -12,7 +12,7 @@ import { FontSize } from '../css';
 type FontItemState = {
   text: string,
 };
-const HiddenItem = styled(Item)`
+const HiddenItem: Object = styled(Item)`
   font-size: ${FontSize};
   position: absolute !important;
   top: -943124px;

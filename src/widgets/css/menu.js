@@ -30,7 +30,7 @@ export const getMenuItemHeight = (size: sizeType) => {
     : DefaultMenuItemHeight;
 };
 
-export const TextIcon = styled(CommonIcon)`
+export const TextIcon: Object = styled(CommonIcon)`
   display: inline-block;
   position: relative;
   padding-right: ${em(6)};

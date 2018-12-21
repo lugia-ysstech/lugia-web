@@ -29,7 +29,7 @@ const getWidth = props => {
 
   return width ? `width:${em(props.theme.width)};` : 'width: 100%';
 };
-const WrapRcTree = styled(RcTree)`
+const WrapRcTree: Object = styled(RcTree)`
   position: relative;
   top: ${getTop};
   ${getWidth};
