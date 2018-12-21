@@ -6,6 +6,8 @@
  */
 import * as React from 'react';
 import Transfer from './group';
+import Widget from '../consts/index';
+import Theme from '../theme';
 
 const data = [
   { text: '选项1', value: '选项1', disabled: false },
@@ -81,6 +83,11 @@ export default class TransferDemo extends React.Component<any, any> {
   };
   render() {
     const { targetKeys, sourceSelectedKeys, targetSelectedKeys } = this.state;
+    const TransferView = {
+      [Widget.Transfer]: {
+        height: 400,
+      },
+    };
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
         <Transfer
@@ -99,6 +106,17 @@ export default class TransferDemo extends React.Component<any, any> {
           defaultTargetSelectedKeys={['选项2']}
           defaultValue={['选项2', '选项3', '选项4']}
         />
+        <p>theme: height:400</p>
+        <Theme config={TransferView}>
+          <Transfer
+            data={data}
+            showSearch
+            defaultSourceSelectedKeys={['选项5']}
+            defaultTargetSelectedKeys={['选项2']}
+            defaultValue={['选项2', '选项3', '选项4']}
+          />
+        </Theme>
+
         <Transfer
           data={treeData}
           type="tree"
@@ -117,6 +135,18 @@ export default class TransferDemo extends React.Component<any, any> {
           showSearch
           defaultDisplayValue={['dis1', 'dis2', '2.1.1']}
         />
+        <p>theme: height:400</p>
+        <Theme config={TransferView}>
+          <Transfer
+            data={treeData}
+            type="tree"
+            defaultSourceSelectedKeys={['2.2.1']}
+            defaultTargetSelectedKeys={['2.1.1']}
+            defaultValue={['3.1', '3.2', '2.1.1']}
+            showSearch
+            defaultDisplayValue={['dis1', 'dis2', '2.1.1']}
+          />
+        </Theme>
       </div>
     );
   }

@@ -146,7 +146,12 @@ export default ThemeProvider(
     }
 
     render() {
-      const { type = 'panel', valueField = ValueField, displayField = DisplayField } = this.props;
+      const {
+        type = 'panel',
+        valueField = ValueField,
+        displayField = DisplayField,
+        getTheme,
+      } = this.props;
 
       return (
         <TransFerWrap>
@@ -161,6 +166,7 @@ export default ThemeProvider(
             displayField={displayField}
             valueField={valueField}
             type={type}
+            theme={getTheme()}
           />
           <TransFerButton
             leftModel={this.sourceModel}
@@ -181,6 +187,7 @@ export default ThemeProvider(
             displayField={displayField}
             valueField={valueField}
             type={type}
+            theme={getTheme()}
           />
         </TransFerWrap>
       );

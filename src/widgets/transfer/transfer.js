@@ -154,7 +154,7 @@ export default ThemeProvider(
       const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
       const { type, direction, displayField, valueField } = this.props;
 
-      const { menuView, treeView } = this.getPanelThemeConfig(direction);
+      const { menuView, treeView, wrapHeight } = this.getPanelThemeConfig(direction);
 
       return type === 'panel' ? (
         <MenuWrap>
@@ -164,11 +164,12 @@ export default ThemeProvider(
               query={inputValue}
               {...typeList}
               selectedKeys={selectedKeys}
+              height={wrapHeight}
             />
           </Theme>
         </MenuWrap>
       ) : (
-        <TreeWrap direction={direction}>
+        <TreeWrap height={wrapHeight}>
           <Theme config={treeView}>
             <Tree
               displayField={displayField}
@@ -201,28 +202,32 @@ export default ThemeProvider(
       };
       return { inputView };
     }
-    getPanelThemeConfig(direction) {
+    getPanelThemeConfig = direction => {
+      const { theme = {} } = this.props;
+      const { height = 300 } = theme;
+      let wrapHeight = height;
       const menuView = {},
         treeView = {};
       if (direction === 'Source') {
         menuView[Widget.Menu] = {
-          height: 300,
+          height,
         };
         treeView[Widget.Tree] = {
-          height: 300,
+          height,
         };
       } else {
         const { cancelItem } = this.state;
-        const height = cancelItem && cancelItem.length ? 240 : 300;
+        const targetHeight = cancelItem && cancelItem.length ? height - 60 : height;
+        wrapHeight = targetHeight;
         menuView[Widget.Menu] = {
-          height,
+          height: targetHeight,
         };
         treeView[Widget.Tree] = {
-          height,
+          height: targetHeight,
         };
       }
-      return { menuView, treeView };
-    }
+      return { menuView, treeView, wrapHeight };
+    };
 
     getTreeData = (data: Object[]) => {
       const { valueField = 'value', model } = this.props;

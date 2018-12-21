@@ -23,12 +23,10 @@ export type TransferMenuProps = {
   query?: string,
   filterOption?: Function,
   selectedKeys: string[],
+  height: number,
 };
 export type TransferMenuState = {
   mapData: Object,
-  // selectKeys: string[],
   menuData: Object[],
   cancelItem: Object[],
-  // blackList?: string[],
-  // whiteList?: string[],
 };
