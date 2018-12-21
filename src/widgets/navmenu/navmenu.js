@@ -48,7 +48,6 @@ type NavMenuProps = {
   onClick?: Function,
   valueField?: string,
   displayField?: string,
-  action?: 'click' | 'hover',
   motif: 'light' | 'dark',
   separator?: string,
 };
@@ -126,7 +125,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getVerticalNavMenu = () => {
-    const { data, displayField, valueField, action = 'click', separator } = this.props;
+    const { data, displayField, valueField, separator } = this.props;
     const { popupVisible, selectedKeys, expandedPath } = this.state;
     const { width, submenuWidth, height } = this.getThemeTarget();
     const menuConfig = {
@@ -148,7 +147,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
             displayField={displayField}
             size={'large'}
             subsize={'bigger'}
-            action={action}
+            action={'hover'}
             mutliple={false}
             handleIsInMenu={this.handleIsInMenu}
             onClick={this.handleClickMenu}
@@ -162,22 +161,23 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   onExpandPathChange = (expandedPath: string[]) => {
-    this.setState({ expandedPath });
+    this.setState({ expandedPath, popupVisible: true });
+    this.setPopupVisible(true, { expandedPath });
   };
 
   handleClickMenu = (event: Object, keys: Object, item: Object) => {
     const { selectedKeys } = keys;
     if (!item || !item.children || item.children.length === 0) {
-      this.setPopupVisible(false);
-      this.setState({ value: selectedKeys });
+      this.setPopupVisible(false, { value: selectedKeys });
     }
 
-    const { onClick } = this.props;
+    const { onClick, onChange } = this.props;
+    onChange && onChange(keys, item);
     onClick && onClick(keys, item);
   };
 
-  setPopupVisible(popupVisible: boolean) {
-    this.setState({ popupVisible });
+  setPopupVisible(popupVisible: boolean, otherTarget?: Object = {}) {
+    this.setState({ popupVisible, ...otherTarget });
   }
 
   getThemeTarget = () => {
