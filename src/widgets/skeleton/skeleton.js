@@ -20,13 +20,12 @@ type ParagraphWidth = number | string | string[] | number[];
 const DefaultParagraphCount = 3;
 type SkeletonProps = {
   title?: boolean,
+  titleWidth?: number | string,
   avatar?: boolean,
   paragraph?: ParagraphType,
-  picture?: boolean,
   loading?: boolean,
   children?: any,
   paragraphWidth?: ParagraphWidth,
-  titleWidth?: number | string,
   picture?: boolean,
   pictureWidth?: number | string,
   pictureHeight?: number | string,
@@ -65,6 +64,7 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
     picture: false,
     loading: true,
     animation: false,
+    paragraph: { rows: DefaultParagraphCount },
   };
 
   render() {

@@ -47,9 +47,7 @@ export class LimitCase extends React.Component<any, any> {
     });
   };
 
-  onClick = () => {
-    console.log('cc');
-  };
+  onClick = e => {};
 }
 
 export class NormalCase extends React.Component<any, any> {
@@ -57,6 +55,10 @@ export class NormalCase extends React.Component<any, any> {
     super(props);
     this.state = { data };
   }
+
+  onClick = e => {
+    console.log('eeeeee', e);
+  };
 
   render() {
     const config = {
@@ -76,7 +78,7 @@ export class NormalCase extends React.Component<any, any> {
         <div>
           <Box>
             <Theme config={config}>
-              <Tag type="customs" closeable={false} onClose={this.onClose}>
+              <Tag type="customs" onClick={this.onClick} closeable={false} onClose={this.onClose}>
                 customs
               </Tag>
             </Theme>
@@ -227,10 +229,6 @@ export class NormalCase extends React.Component<any, any> {
   }
 
   onClose(item: string, e: Object) {}
-
-  onClick = () => {
-    console.log('cc');
-  };
 }
 
 export default () => {

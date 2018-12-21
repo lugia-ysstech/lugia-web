@@ -1,26 +1,48 @@
 /**
  *
- * create by ligx
+ * create by szfeng
  *
- * @flow
  */
 import * as React from 'react';
 import Menu from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-
+const { MenuItem } = Menu;
 const Placeholder = Menu.Placeholder;
 const computeCanSeeCount = Menu.computeCanSeeCount;
+
+const Button = styled.div`
+  width: 200px;
+  height: 40px;
+  background: cornflowerblue;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 40px;
+  margin: 10px;
+`;
+
+const H2 = styled.h2`
+  margin: 10px;
+  color: orangered;
+`;
+
 const MenuWrap = styled.div`
+  border: 1px solid #ccc;
+  margin: 10px;
+`;
+
+const Box = styled.div`
   display: inline-block;
+  border: 1px solid #ccc;
+  margin: 10px 30px;
 `;
 
 const items = [];
 for (let i = 0; i < 100000; i++) {
   items.push({ text: i, value: i, disabled: false });
 }
-const data = [
+const hasChildrenData = [
   {
     text: '一级菜单1',
     value: '一级菜单1',
@@ -62,6 +84,14 @@ const data = [
           { text: '三级菜单6-2-3', value: '三级菜单6-2-3' },
         ],
       },
+      { text: '次级菜单6-3', value: '次级菜单6-3' },
+      { text: '次级菜单6-4', value: '次级菜单6-4' },
+      { text: '次级菜单6-5', value: '次级菜单6-5' },
+      { text: '次级菜单6-6', value: '次级菜单6-6' },
+      { text: '次级菜单6-7', value: '次级菜单6-7' },
+      { text: '次级菜单6-8', value: '次级菜单6-8' },
+      { text: '次级菜单6-9', value: '次级菜单6-9' },
+      { text: '次级菜单6-10', value: '次级菜单6-10' },
     ],
   },
   { text: '一级菜单7', value: '一级菜单7', disabled: true },
@@ -86,28 +116,154 @@ export default class extends React.Component<any, any> {
 
   render() {
     const { items = [], selectedKeys, expandedPath } = this.state;
+    const checkedKey = '4';
     return (
       <div>
-        <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-          <Menu
-            separator={'/'}
-            mutliple={false}
-            popupVisible={true}
-            // action={'click'}
-            action={'hover'}
-            // expandedPath={expandedPath}
-            // selectedKeys={selectedKeys}
-            handleIsInMenu={this.handleIsInMenu}
-            data={data}
-            offsetY={0}
-            onMouseEnter={this.onMouseEnter}
-            onClick={this.onClick}
-          />
-        </Theme>
-        <button onClick={this.btnClick}>hello</button>
+        <MenuWrap>
+          <H2>级联嵌套菜单 </H2>
+          <Box>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                separator={'/'}
+                mutliple={false}
+                popupVisible={true}
+                // action={'click'}
+                action={'hover'}
+                expandedPath={expandedPath}
+                selectedKeys={selectedKeys}
+                handleIsInMenu={this.handleIsInMenu}
+                data={hasChildrenData}
+                offsetY={0}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.onClick}
+              />
+            </Theme>
+          </Box>
+          <Button onClick={this.btnClick}>hello</Button>
+        </MenuWrap>
+
+        <MenuWrap>
+          <Box>
+            <H2>单选框 checkedCSS: checkbox</H2>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                mutliple={false}
+                data={items}
+                checkedCSS={'checkbox'}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.clickDefaultMenu}
+              />
+            </Theme>
+          </Box>
+
+          <Box>
+            <H2>多选框 checkedCSS: checkbox</H2>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                mutliple={true}
+                data={items}
+                checkedCSS={'checkbox'}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.clickDefaultMenu}
+              />
+            </Theme>
+          </Box>
+        </MenuWrap>
+
+        <MenuWrap>
+          <Box>
+            <H2>
+              单选框 checkedCSS: background, 注意容错，当selectKeys中是数字的数组是number[] 会报错
+            </H2>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                mutliple={false}
+                data={items}
+                selectedKeys={['0']}
+                checkedCSS={'background'}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.clickDefaultMenu}
+              />
+            </Theme>
+          </Box>
+
+          <Box>
+            <H2>多选框 checkedCSS: background</H2>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                mutliple={true}
+                data={items}
+                checkedCSS={'background'}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.clickDefaultMenu}
+              />
+            </Theme>
+          </Box>
+        </MenuWrap>
+
+        <MenuWrap>
+          <Box>
+            <H2>单选框 checkedCSS: mark</H2>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                mutliple={false}
+                data={items}
+                checkedCSS={'mark'}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.clickDefaultMenu}
+              />
+            </Theme>
+          </Box>
+
+          <Box>
+            <H2>多选框 checkedCSS: mark</H2>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                mutliple={true}
+                data={items}
+                checkedCSS={'mark'}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.clickDefaultMenu}
+              />
+            </Theme>
+          </Box>
+        </MenuWrap>
+
+        <MenuWrap>
+          <Box>
+            <H2>单选框 checkedCSS: none</H2>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                mutliple={false}
+                data={items}
+                checkedCSS={'none'}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.clickDefaultMenu}
+              />
+            </Theme>
+          </Box>
+
+          <Box>
+            <H2>多选框 checkedCSS: none</H2>
+            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+              <Menu
+                mutliple={true}
+                data={items}
+                checkedCSS={'none'}
+                onExpandPathChange={this.onExpandPathChange}
+                onClick={this.clickDefaultMenu}
+              />
+            </Theme>
+          </Box>
+        </MenuWrap>
       </div>
     );
   }
+
+  clickDefaultMenu = (e, keys, item) => {
+    const { selectedKeys } = keys;
+    // console.log('selectedKeys', selectedKeys);
+  };
 
   btnClick = (e, keys, item) => {
     this.setState({
@@ -117,14 +273,11 @@ export default class extends React.Component<any, any> {
   };
 
   onClick = (e, keys, item) => {
-    // const start = data.indexOf(item);
-    // this.setState({ start });
     const { selectedKeys } = keys;
-    // console.log('selectedKeys', selectedKeys);
     this.setState({ selectedKeys, expandedPath: selectedKeys });
   };
 
-  onMouseEnter = (event, expandedPath, item) => {
+  onExpandPathChange = expandedPath => {
     this.setState({ expandedPath });
   };
 

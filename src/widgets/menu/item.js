@@ -1,6 +1,6 @@
 /**
  * 菜单
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
@@ -17,6 +17,7 @@ import {
   blackColor,
   lightGreyColor,
   disableColor,
+  getMenuItemHeight,
 } from '../css/menu';
 import CheckBox from '../checkbox';
 import Theme from '../theme';
@@ -25,6 +26,7 @@ const em = px2emcss(1.2);
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
+type sizeType = 'large' | 'default' | 'bigger';
 type MenuItemProps = {
   checked: boolean,
   mutliple: boolean,
@@ -33,6 +35,7 @@ type MenuItemProps = {
   children?: React.Node,
   disabled: boolean,
   checkbox: boolean,
+  size: sizeType,
   checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
 };
 
@@ -84,24 +87,6 @@ const getItemColorAndBackground = (props: MenuItemProps) => {
   `;
 };
 
-const SingleItem = styled.li`
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  height: ${em(MenuItemHeight)};
-  font-weight: 400;
-  ${getItemColorAndBackground};
-  white-space: nowrap;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: background 0.3s ease;
-  &:hover {
-    background-color: ${ItemBackgroundColor};
-    font-weight: 900;
-  }
-`;
-
 const getIcon = props => {
   const { checkedCSS } = props;
   return `
@@ -131,6 +116,32 @@ const getIcon = props => {
   `;
 };
 
+const getHeight = (props: Object) => {
+  const { size } = props;
+  const itemHeight = getMenuItemHeight(size);
+  return `height: ${em(itemHeight)}`;
+};
+
+const SingleItem = styled.li`
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  ${getHeight};
+  font-weight: 400;
+  ${getItemColorAndBackground};
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.3s ease;
+  ${getIcon};
+  ${getMulipleCheckedStyle};
+  &:hover {
+    background-color: ${ItemBackgroundColor};
+    font-weight: 900;
+  }
+`;
+
 const MutlipleItem = SingleItem.extend`
   ${getIcon};
   ${getMulipleCheckedStyle};
@@ -147,7 +158,17 @@ class MenuItem extends React.Component<MenuItemProps> {
   static displayName = Widget.MenuItem;
 
   render() {
-    const { children, mutliple, checked, onClick, disabled, onMouseEnter, checkedCSS } = this.props;
+    const {
+      children,
+      mutliple,
+      checked,
+      onClick,
+      disabled,
+      onMouseEnter,
+      checkedCSS,
+      menuItemHeight,
+      size,
+    } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
     React.Children.forEach(children, (item: Object) => {
@@ -164,6 +185,8 @@ class MenuItem extends React.Component<MenuItemProps> {
         checked={checked}
         disabled={disabled}
         checkedCSS={checkedCSS}
+        menuItemHeight={menuItemHeight}
+        size={size}
       >
         {isCheckbox ? (
           <Theme>

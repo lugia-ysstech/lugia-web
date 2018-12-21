@@ -15,9 +15,9 @@ import TreeUtils from './utils';
 import styled from 'styled-components';
 import { BarDefaultSize } from '../css/scroller';
 import { adjustValue } from '../utils';
-import { MenuItemHeight, DefaultHeight } from '../css/tree';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
+import { getMenuItemHeight } from '../css/menu';
 
 const em = px2emcss(FontSizeNumber);
 type RowData = { [key: string]: any };
@@ -83,7 +83,7 @@ class ScrollerTree extends React.Component<any, any> {
   };
 
   render() {
-    const { data } = this.props;
+    const { data, size } = this.props;
     if (data) {
       const { mutliple, onExpand, utils, onSelect, id2ExtendInfo } = this.props;
       let { start, end } = this.props;
@@ -92,7 +92,8 @@ class ScrollerTree extends React.Component<any, any> {
       const hasScroller = data.length > end;
       const { rows, parentCount } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
-      const top = -parentCount * 18;
+      const itemHeight = getMenuItemHeight(size);
+      const top = -parentCount * itemHeight;
       const treeNodes = this.loopNode(nodes);
       const treeTheme = this.getTheme();
       if (hasScroller) {
@@ -116,7 +117,8 @@ class ScrollerTree extends React.Component<any, any> {
   }
 
   getTheme() {
-    const { getTheme } = this.props;
+    const { getTheme, themeStyle } = this.props;
+    const { DefaultHeight, MenuItemHeight } = themeStyle;
     const theme = getTheme();
     const { height = DefaultHeight } = theme;
     theme.height = adjustValue(height, MenuItemHeight);
@@ -124,17 +126,29 @@ class ScrollerTree extends React.Component<any, any> {
   }
 
   loopNode = (data: Array<RowData>) => {
-    const { igronSelectField } = this.props;
+    const { igronSelectField, themeStyle, inlineType } = this.props;
     return data.map(item => {
       const { selectable, displayField, valueField } = this.props;
-      const { children, [valueField]: key, [displayField]: title, isLeaf } = item;
+      const {
+        children,
+        [valueField]: key,
+        [displayField]: title,
+        isLeaf,
+        describe = false,
+        disabled: dataDisabled,
+      } = item;
+      const disabled = describe ? true : !!dataDisabled;
       const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
           <TreeNode
+            themeStyle={themeStyle}
             key={key}
+            inlineType={inlineType}
             title={title}
             isLeaf={isLeaf}
+            describe={describe}
+            disabled={disabled}
             selectable={selectable}
             notCanSelect={notCanSelect}
           >
@@ -144,8 +158,10 @@ class ScrollerTree extends React.Component<any, any> {
       }
       return (
         <TreeNode
+          themeStyle={themeStyle}
           key={key}
           title={title}
+          inlineType={inlineType}
           isLeaf={isLeaf}
           notCanSelect={notCanSelect}
           selectable={selectable}
@@ -155,4 +171,4 @@ class ScrollerTree extends React.Component<any, any> {
   };
 }
 
-export default ThrottleScroller(ScrollerTree, MenuItemHeight);
+export default ThrottleScroller(ScrollerTree, 35);

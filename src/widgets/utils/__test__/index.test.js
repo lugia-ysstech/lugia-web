@@ -1,7 +1,15 @@
 //@flow
 import React from 'react';
 import chai from 'chai';
-import { adjustValue, cacheOnlyFirstCall, deleteValue, getElementPosition, splitStr,fixControlledValue } from '../';
+import {
+  adjustValue,
+  cacheOnlyFirstCall,
+  deleteValue,
+  getElementPosition,
+  splitStr,
+  fixControlledValue,
+  createExistMap,
+} from '../';
 
 const { expect: exp } = chai;
 
@@ -99,5 +107,10 @@ describe('utils', () => {
     exp(fixControlledValue('string')).to.be.equal('string');
     exp(fixControlledValue(true)).to.be.equal(true);
     exp(fixControlledValue(false)).to.be.equal(false);
+  });
+  it('createExistMap', () => {
+    expect(createExistMap(['a', 'b', 'c'])).toEqual({ a: true, b: true, c: true });
+    expect(createExistMap([])).toEqual({});
+    expect(createExistMap(undefined)).toEqual({});
   });
 });

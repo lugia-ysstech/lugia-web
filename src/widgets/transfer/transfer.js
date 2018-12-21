@@ -8,7 +8,7 @@
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import Menu from '../menu';
+import TransferMenu from './transfer-menu';
 import Tree from '../tree';
 import Input from '../input';
 import CheckBox from '../checkbox';
@@ -21,28 +21,61 @@ import {
   Check,
   CheckText,
   MenuWrap,
-  NoData,
   TransFer,
+  TreeWrap,
 } from '../css/transfer';
-import { isContained, getKeys } from './utils';
+import { filterEnableKeysFromSelectKeys } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
-    maping: boolean;
+    treeData: Object[];
+    static displayName = 'TransferPanel';
     constructor(props) {
       super(props);
+      const { model, direction } = this.props;
+      const selectedKeys = filterEnableKeysFromSelectKeys(
+        model.getList(),
+        model.getSelectedkeys(),
+        direction
+      );
       this.state = {
         inputValue: '',
+        selectedKeys,
+        typeList: model.getTypeList(),
+        cancelItem: model.getCancelItem(),
+        treeData: model.getTreeData(),
+        treeDataLength: 0,
       };
-      this.maping = false;
+
+      model.on('onSelectedKeyChange', param => {
+        const { data } = param;
+        this.setState({
+          selectedKeys: data,
+        });
+      });
+
+      model.on('onListChange', param => {
+        const { data } = param;
+        this.setState({
+          typeList: data,
+        });
+      });
+
+      model.on('onCancelItemChange', param => {
+        const { data } = param;
+        this.setState({
+          cancelItem: data,
+        });
+      });
     }
+
     createCancelCheckBox = () => {
-      const { cancelItem = [], displayField, valueField } = this.props;
+      const { displayField, valueField } = this.props;
+      const { cancelItem = [] } = this.state;
       const hasCancelItem = cancelItem && cancelItem.length > 0;
       if (hasCancelItem) {
-        const elements = [];
-        cancelItem.forEach((item, index) => {
-          elements.push(
+        return cancelItem.map((item, index) => {
+          return (
             <CancelBoxItem>
               <CheckBox
                 key={index}
@@ -55,68 +88,27 @@ export default ThemeProvider(
             </CancelBoxItem>
           );
         });
-        return elements;
       }
 
       return null;
     };
-    render() {
-      const {
-        showSearch,
-        selectedKeys = [],
-        data = [],
-        canCheckKeys,
-        needCancelBox = false,
-        type,
-        blackList,
-        whiteList,
-        title,
-        direction,
-        displayField,
-        valueField,
-      } = this.props;
-      const { inputValue } = this.state;
-      const view = {
-        [Widget.Input]: {
-          margin: {
-            top: 8,
-            right: 10,
-            bottom: 16,
-            left: 10,
-          },
-        },
-      };
-      const menuView = {};
-      if (direction === 'left') {
-        menuView[Widget.Menu] = {
-          height: 310,
-        };
-        menuView[Widget.Tree] = {
-          height: 310,
-        };
-      }
-      const inputConfig = {};
-      if (!inputValue) {
-        inputConfig.suffix = <SearchIcon />;
-      }
-      const length = canCheckKeys && canCheckKeys.length;
-      const checked =
-        selectedKeys.length === 0
-          ? false
-          : length
-          ? isContained(selectedKeys, canCheckKeys)
-          : isContained(getKeys(data ? data : [], valueField), selectedKeys);
-      const list = {};
-      if (type === 'tree') {
-        if (blackList) {
-          list.blackList = blackList;
-        }
-        if (whiteList) {
-          list.whiteList = whiteList;
-        }
-      }
 
-      const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
+    render() {
+      const { selectedKeys = [], treeDataLength, cancelItem } = this.state;
+      const { needCancelBox = false, type, title } = this.props;
+
+      const cancelBox =
+        needCancelBox && cancelItem && cancelItem.length ? (
+          <CancelBox>{this.createCancelCheckBox()}</CancelBox>
+        ) : null;
+      const dataLength = type === 'panel' ? this.getDataLength() : treeDataLength;
+      const selectKeyLength = (selectedKeys && selectedKeys.length) || 0;
+      const checked =
+        selectKeyLength === 0
+          ? false
+          : type === 'panel'
+          ? selectKeyLength >= this.getDataLength()
+          : selectKeyLength >= treeDataLength;
       return (
         <TransFer>
           <Check>
@@ -127,69 +119,148 @@ export default ThemeProvider(
             >
               {title}
             </CheckBox>
-
             <CheckText>
-              {selectedKeys.length}/{data.length}
+              {selectedKeys.length}/{dataLength}
             </CheckText>
           </Check>
-          {showSearch ? (
-            <Theme config={view}>
-              <Input
-                onChange={this.handleInputChange}
-                placeholder={'搜索您想知道的内容'}
-                {...inputConfig}
-              />
-            </Theme>
-          ) : null}
-
-          {data.length > 0 ? (
-            <MenuWrap>
-              <Theme config={menuView}>
-                {type === 'panel' ? (
-                  <Menu
-                    checkedCSS={'checkbox'}
-                    mutliple={true}
-                    data={data}
-                    selectedKeys={selectedKeys}
-                    onClick={this.onClick}
-                    displayField={displayField}
-                    valueField={valueField}
-                  />
-                ) : (
-                  <Tree
-                    displayField={displayField}
-                    valueField={valueField}
-                    data={data}
-                    value={selectedKeys}
-                    expandAll
-                    mutliple
-                    onChange={this.handleTreeChange}
-                    query={inputValue}
-                    {...list}
-                  />
-                )}
-              </Theme>
-            </MenuWrap>
-          ) : (
-            <NoData direction={direction}>{inputValue ? '无匹配数据' : '无数据'}</NoData>
-          )}
+          {this.getSearchBox()}
+          {this.getTransferPanel()}
           {cancelBox}
         </TransFer>
       );
     }
+
+    getSearchBox() {
+      const { inputView } = this.getInputThemeConfig();
+      const { inputValue } = this.state;
+      const { showSearch } = this.props;
+      const inputConfig = {};
+      if (!inputValue) {
+        inputConfig.suffix = <SearchIcon />;
+      }
+
+      return showSearch ? (
+        <Theme config={inputView}>
+          <Input
+            onChange={this.handleInputChange}
+            placeholder={'搜索您想知道的内容'}
+            {...inputConfig}
+          />
+        </Theme>
+      ) : null;
+    }
+
+    getTransferPanel() {
+      const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
+      const { type, direction, displayField, valueField } = this.props;
+
+      const { menuView, treeView, wrapHeight } = this.getPanelThemeConfig(direction);
+
+      return type === 'panel' ? (
+        <MenuWrap>
+          <Theme config={menuView}>
+            <TransferMenu
+              {...this.props}
+              query={inputValue}
+              {...typeList}
+              selectedKeys={selectedKeys}
+              height={wrapHeight}
+            />
+          </Theme>
+        </MenuWrap>
+      ) : (
+        <TreeWrap height={wrapHeight}>
+          <Theme config={treeView}>
+            <Tree
+              displayField={displayField}
+              valueField={valueField}
+              data={treeData}
+              value={selectedKeys}
+              expandAll
+              mutliple
+              onChange={this.handleTreeChange}
+              query={inputValue}
+              {...typeList}
+              getTreeData={this.getTreeData}
+            />
+          </Theme>
+        </TreeWrap>
+      );
+    }
+
+    getInputThemeConfig() {
+      const inputView = {
+        [Widget.Input]: {
+          width: 235,
+          margin: {
+            top: 8,
+            right: 10,
+            bottom: 16,
+            left: 10,
+          },
+        },
+      };
+      return { inputView };
+    }
+    getPanelThemeConfig = direction => {
+      const { theme = {} } = this.props;
+      const { height = 300 } = theme;
+      let wrapHeight = height;
+      const menuView = {},
+        treeView = {};
+      if (direction === 'Source') {
+        menuView[Widget.Menu] = {
+          height,
+        };
+        treeView[Widget.Tree] = {
+          height,
+        };
+      } else {
+        const { cancelItem } = this.state;
+        const targetHeight = cancelItem && cancelItem.length ? height - 60 : height;
+        wrapHeight = targetHeight;
+        menuView[Widget.Menu] = {
+          height: targetHeight,
+        };
+        treeView[Widget.Tree] = {
+          height: targetHeight,
+        };
+      }
+      return { menuView, treeView, wrapHeight };
+    };
+
+    getTreeData = (data: Object[]) => {
+      const { valueField = 'value', model } = this.props;
+      const oldLength = this.treeData && this.treeData.length;
+      if (data.length !== oldLength) {
+        model.setCanCheckKeys(
+          data.map(item => {
+            return item[valueField];
+          })
+        );
+
+        this.setState({
+          treeDataLength: data.length,
+        });
+      }
+      this.treeData = data;
+    };
+
+    getDataLength = (): number => {
+      const { model, data } = this.props;
+      return model.getDataLength(data);
+    };
+
     cancelItemClick = (value: string) => {
       const { onCancelItemClick } = this.props;
       onCancelItemClick && onCancelItemClick(value);
     };
+
     handleInputChange = (value: Object) => {
       const { newValue } = value;
-      const { onSearch, type = 'panel' } = this.props;
       this.setState({
         inputValue: newValue,
       });
-      if (type === 'panel') {
-        onSearch && onSearch(newValue);
-      }
     };
     onClick = (e, keys, item) => {
       const { onSelect, valueField } = this.props;
@@ -199,6 +270,10 @@ export default ThemeProvider(
       const { onSelect } = this.props;
       onSelect && onSelect(value);
     };
+
+    componentWillUnmount(): void {
+      this.props.model.removeAllListeners();
+    }
   },
   Widget.Transfer
 );

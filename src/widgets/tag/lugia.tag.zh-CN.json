@@ -1,0 +1,54 @@
+{
+  "widgetName": "Tag",
+  "title": "标签",
+  "desc": "标记和分类的标签",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "closeable": {
+      "type": "boolean",
+      "desc": "标签是否可关闭",
+      "defaultValue": "true"
+    },
+    "shape": {
+      "type": " basic | round ",
+      "desc": "标签的圆角, basic为4px圆角,round为圆角标签",
+      "defaultValue": "basic"
+    },
+    "type": {
+      "type": "customs | primary | basic | presets",
+      "desc": "标签的主题样式",
+      "defaultValue": "customs"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onClose": {
+      "desc": "关闭标签时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变内容的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "shape": ["basic", "round"],
+    "type": ["customs", "primary", "basic", "presets"]
+  },
+  "category": ["数据录入"]
+}

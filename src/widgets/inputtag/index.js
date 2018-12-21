@@ -85,7 +85,7 @@ type InputTagState = {
 };
 const getWidthBySpan = (spanWidth: number) => (props: Object) => {
   const w = props.theme.width - spanWidth;
-  return w ? `width: ${em(w)};` : 'width: 100%;';
+  return w ? `width: ${em(w)};` : 'width: 200;';
 };
 const getWidth = getWidthBySpan(0);
 const getBackground = props => {

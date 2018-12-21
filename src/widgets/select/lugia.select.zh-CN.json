@@ -1,0 +1,192 @@
+{
+  "widgetName": "Select",
+  "title": "Select 选择器",
+  "desc": "选项过多时，弹出下拉菜单给用户选择操作",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "[{valueField: '', displayField: ''}]",
+      "desc": "生成选择项的数据",
+      "defaultValue": "false"
+    },
+    "mutliple": {
+      "type": "boolean",
+      "desc": "是否多选",
+      "defaultValue": "false"
+    },
+    "canSearch": {
+      "type": "boolean",
+      "desc": "是否支持查询",
+      "defaultValue": "false"
+    },
+    "throttle": {
+      "type": "number",
+      "desc": "查询的延迟时间，单位为毫秒",
+      "defaultValue": "100"
+    },
+    "canInput": {
+      "type": "boolean",
+      "desc": "是否支持自定义值,只有在canSearch为true时才生效",
+      "defaultValue": "false"
+    },
+    "valueField": {
+      "type": "string",
+      "desc": "data数据的value值的名称",
+      "defaultValue": "value"
+    },
+    "displayField": {
+      "type": "string",
+      "desc": "data数据的displayValue值的名称",
+      "defaultValue": "text"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "是否禁选",
+      "defaultValue": "false"
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "input校验状态, 'success' 成功 | 'error'错误",
+      "defaultValue": "success"
+    },
+    "limitCount": {
+      "type": "number",
+      "desc": "多选时最多个数",
+      "defaultValue": "undefined"
+    },
+    "placeholder": {
+      "type": "string",
+      "desc": "占位符",
+      "defaultValue": "undefined"
+    },
+    "searchType": {
+      "type": "start | end | include | eql",
+      "desc": "查询的方式",
+      "defaultValue": "include"
+    },
+    "value": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目",
+      "defaultValue": "undefined"
+    },
+    "displayValue": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目的displayValue值",
+      "defaultValue": "undefined"
+    },
+    "defaultValue": {
+      "type": "string | string[] | number | number[]",
+      "desc": "初始状态下指定当前选中的条目,只生效一次",
+      "defaultValue": "undefined"
+    },
+    "defaultDisplayValue": {
+      "type": "string | string[] | number | number[]",
+      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次",
+      "defaultValue": "undefined"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "选中项发生变化时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        },
+        {
+          "name": "newDisplayValue",
+          "desc": "所有选中项的displayField的集合",
+          "type": "string[]"
+        },
+        {
+          "name": "newItem",
+          "desc": "所有选中项的数据的集合",
+          "type": "Object[]"
+        },
+        {
+          "name": "newValue",
+          "desc": "所有选中项的valueField的集合",
+          "type": "string[]"
+        },
+        {
+          "name": "oldItem",
+          "desc": "改变之前所有选中项的数据的集合",
+          "type": "Object[]"
+        },
+        {
+          "name": "oldValue",
+          "desc": "改变之前所有选中项的valueField的集合",
+          "type": "string[]"
+        }
+      ]
+    },
+    "onTrigger": {
+      "desc": "菜单展开是触发"
+    },
+    "onQuery": {
+      "desc": "键盘按下任何键时触发",
+      "args": [
+        {
+          "name": "query",
+          "desc": "输入的搜索关键字",
+          "type": "string"
+        }
+      ]
+    },
+    "onClear": {
+      "desc": "清除输入框内容时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "清除输入框内容事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onSelect": {
+      "desc": "选中时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        },
+        {
+          "name": "newDisplayValue",
+          "desc": "所有选中项的displayField的集合",
+          "type": "string[]"
+        },
+        {
+          "name": "newItem",
+          "desc": "所有选中项的数据的集合",
+          "type": "Object[]"
+        },
+        {
+          "name": "newValue",
+          "desc": "所有选中项的valueField的集合",
+          "type": "string[]"
+        },
+        {
+          "name": "oldItem",
+          "desc": "改变之前所有选中项的数据的集合",
+          "type": "Object[]"
+        },
+        {
+          "name": "oldValue",
+          "desc": "改变之前所有选中项的valueField的集合",
+          "type": "string[]"
+        }
+      ]
+    },
+    "onRefresh": {
+      "desc": "点击刷新按钮时触发"
+    }
+  },
+
+  "category": ["数据录入"]
+}

@@ -39,13 +39,11 @@ export default class extends React.Component<any, any> {
     const { menu } = this.state;
     return (
       <div>
-        [
         <Theme config={{ [Widget.DropMenu]: { width: 200 } }}>
           <DropMenu menus={menu}>
             <input type="text" />
           </DropMenu>
         </Theme>
-        ]
       </div>
     );
   }
