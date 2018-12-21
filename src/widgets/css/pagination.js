@@ -16,13 +16,9 @@ export type PaginationProps = {
   pageSizeOptions?: string[],
   showQuickJumper?: boolean,
   showQuickJumper?: boolean,
-  showTotal?: (total, range) => {},
+  showTotal?: (total: number, range: number) => void,
   simple?: boolean,
-  total?: boolean,
-  onChange?: (page, pageSize) => {},
+  total?: number,
+  onChange?: (page: number, pageSize: number) => void,
 };
 export type PaginationState = {};
-
-const FontSize = 1.2;
-const em = px2emcss(FontSize);
-const { themeColor } = colorsFunc();
