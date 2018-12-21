@@ -23,6 +23,7 @@ export default class TransferButton extends React.Component<
   TransferButtonProps,
   TransferButtonState
 > {
+  static displayName = 'TransferButton';
   constructor(props: TransferButtonProps) {
     super(props);
     const { leftModel, rightModel } = props;

@@ -15,6 +15,7 @@ import renderer from 'react-test-renderer';
 import Transfer from '../group';
 import TransferPanel from '../transfer';
 import TransferModel from '../model';
+import TransferButton from '../transfer-button';
 
 const { expect: exp } = chai;
 const { JSDOM } = jsdom;
@@ -498,5 +499,39 @@ describe('Transfer', () => {
     newComponent.props.model.cancelItem = [{}, {}];
     const sourceLength = newComponent.getDataLength();
     expect(sourceLength).toBe(5);
+  });
+
+  it('TransferButton: state disabled can not onClick run', () => {
+    let cur1 = 0,
+      cur2 = 0;
+    const leftClick = () => {
+      cur1 = cur1 + 1;
+    };
+    const rightClick = () => {
+      cur2++;
+    };
+    const target = mount(
+      <TransferButton
+        onLeftClick={leftClick}
+        onRightClick={rightClick}
+        leftModel={{ getSelectedkeys: () => ['1', '2'], on: () => {} }}
+        rightModel={{ getSelectedkeys: () => ['1', '2', '3'], on: () => {} }}
+      />
+    );
+    const component = getComponent(target, 'TransferButton', 0);
+    component.handleClick('left')();
+    component.handleClick('right')();
+    expect(cur1).toBe(1);
+    expect(cur2).toBe(1);
+
+    component.setState({
+      leftDisabled: true,
+      rightDisabled: true,
+    });
+
+    component.handleClick('left');
+    component.handleClick('right');
+    expect(cur1).toBe(1);
+    expect(cur2).toBe(1);
   });
 });
