@@ -293,6 +293,12 @@ declare module 'rc-pagination/lib/locale/fr_FR' {
 declare module 'rc-pagination/lib/locale/he_IL' {
   declare module.exports: any;
 }
+declare module 'rc-select/assets/index.css' {
+  declare module.exports: any;
+}
+declare module 'rc-pagination/assets/index.css' {
+  declare module.exports: any;
+}
 
 declare module 'rc-pagination/lib/locale/hu_HU' {
   declare module.exports: any;
