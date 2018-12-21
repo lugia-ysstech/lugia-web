@@ -67,6 +67,6 @@ export const BackTopContent = styled.div`
   box-shadow: 0 0 ${em(4)} #e8e8e8;
   ${getBackgroundCSS};
 `;
-export const IconWrap = styled(Icon)`
+export const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
 `;

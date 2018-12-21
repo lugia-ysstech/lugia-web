@@ -21,7 +21,7 @@ const IconWrapper = styled.div`
   width: 14px;
   height: 14px;
 `;
-const HintIcon = styled(Icon)`
+const HintIcon: Object = styled(Icon)`
   color: white;
 `;
 export class Condition extends React.Component<any, any> {

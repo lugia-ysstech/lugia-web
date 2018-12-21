@@ -4,13 +4,14 @@
  *
  * @flow
  */
+import type { SizeType } from '../menu/item';
+
 import colorsFunc from './stateColor';
 import styled from 'styled-components';
 import { FontSizeNumber } from './';
 import { px2emcss } from './units';
 import CommonIcon from '../icon';
 const em = px2emcss(FontSizeNumber);
-
 export const { themeColor, disableColor, blackColor, lightGreyColor, defaultColor } = colorsFunc();
 export const DefaultMenuItemHeight = 35;
 export const LargeMenuItemHeight = 60;
@@ -22,7 +23,7 @@ export const ItemBackgroundColor = '#edf0fe';
 export const SelectIcon = '\\e73e';
 export const Height = 30;
 
-export const getMenuItemHeight = (size: sizeType) => {
+export const getMenuItemHeight = (size: SizeType) => {
   return size === 'large'
     ? LargeMenuItemHeight
     : size === 'bigger'
@@ -30,7 +31,7 @@ export const getMenuItemHeight = (size: sizeType) => {
     : DefaultMenuItemHeight;
 };
 
-export const TextIcon = styled(CommonIcon)`
+export const TextIcon: Object = styled(CommonIcon)`
   display: inline-block;
   position: relative;
   padding-right: ${em(6)};

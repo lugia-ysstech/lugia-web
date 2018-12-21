@@ -153,12 +153,12 @@ const getIconFont = (props: CSSProps) => {
     return `font-size: ${em(20)};`;
   }
 };
-export const Icons = styled(Icon)`
+export const Icons: Object = styled(Icon)`
   ${getIconColor};
   ${getIconFont};
   margin-right: ${px2emcss(2)(marginToSameElement)};
 `;
-export const CloseIcon = styled(Icon)`
+export const CloseIcon: Object = styled(Icon)`
   font-size: ${em(16)};
   color: ${mediumGreyColor};
 `;

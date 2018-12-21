@@ -11,7 +11,6 @@ import { FontSize } from '../css';
 
 import {
   ItemBackgroundColor,
-  MenuItemHeight,
   SelectIcon,
   themeColor,
   blackColor,
@@ -26,8 +25,9 @@ const em = px2emcss(1.2);
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
-type sizeType = 'large' | 'default' | 'bigger';
-type MenuItemProps = {
+export type SizeType = 'large' | 'default' | 'bigger';
+export type MenuItemProps = {
+  key: any,
   checked: boolean,
   mutliple: boolean,
   onClick?: Function,
@@ -35,7 +35,7 @@ type MenuItemProps = {
   children?: React.Node,
   disabled: boolean,
   checkbox: boolean,
-  size: sizeType,
+  size: SizeType,
   checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
 };
 

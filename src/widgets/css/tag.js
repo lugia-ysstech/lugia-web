@@ -175,7 +175,7 @@ export const CloseButtonWrap = styled.span`
   padding: ${em(2)} 0 0 ${em(3)};
 `;
 
-export const CloseButton = styled(CommonIcon)`
+export const CloseButton: Object = styled(CommonIcon)`
   font-size: ${em(16)};
 `;
 

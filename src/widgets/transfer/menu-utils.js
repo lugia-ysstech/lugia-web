@@ -9,22 +9,23 @@ import { createExistMap } from '../utils';
 
 export function getMapData(data: ?(Object[]), valueField: string): Object {
   const mapData = {};
+
   if (!data || !data.length) {
     return mapData;
   }
-  data.forEach(item => {
+
+  return data.reduce((mapData: Object, item: Object) => {
     const key = item[valueField];
     mapData[key] = item;
-  });
-
-  return mapData;
+    return mapData;
+  }, mapData);
 }
 
 export function getMenuDataByBlackList(
   data: ?(Object[]),
   valueField: string,
   blackList?: string[]
-) {
+): Object[] {
   const blackListData = [];
   if (!data) {
     return blackListData;
@@ -34,15 +35,13 @@ export function getMenuDataByBlackList(
   }
 
   const existMap = createExistMap(blackList);
-  data.forEach(item => {
-    const key = item[valueField];
-    const inBlack = existMap[key];
-    if (!inBlack) {
-      blackListData.push(item);
+  return data.filter(
+    (item: Object): boolean => {
+      const key = item[valueField];
+      const inBlack = existMap[key];
+      return !inBlack;
     }
-  });
-
-  return blackListData;
+  );
 }
 
 export function getWhiteListDataAndCancelItem(
@@ -80,15 +79,12 @@ export function getSearchData(data: Object[], query?: string, filter: Function):
   if (!query) {
     return data;
   }
+
   if (!filter || typeof filter !== 'function') {
     return data;
   }
-  const searchData = [];
-  data.forEach(item => {
-    if (filter(query, item)) {
-      searchData.push(item);
-    }
-  });
 
-  return searchData;
+  return data.filter(item => {
+    return filter(query, item);
+  });
 }

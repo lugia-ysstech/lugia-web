@@ -13,7 +13,7 @@ const Wrap = styled.div`
   padding: 0 50px;
 `;
 
-const CommonIcon = styled(Icon)`
+const CommonIcon: Object = styled(Icon)`
   color: #000;
   border-radius: 50%;
 `;

@@ -25,7 +25,7 @@ const ClearContainer = styled.div`
   width: ${em(10)};
   height: ${em(10)};
 `;
-const Clear = styled(Icon)`
+const Clear: Object = styled(Icon)`
   font-size: 1rem;
   ${getIconColor};
 `;
@@ -49,7 +49,7 @@ const Content = styled.div`
   display: inline-block;
   padding: ${em(6)} ${em(8)};
 `;
-const TooltipWrapper = styled(Tooltip)`
+const TooltipWrapper: Object = styled(Tooltip)`
   font-size: 1.2rem;
   display: inline-block;
   position: relative;

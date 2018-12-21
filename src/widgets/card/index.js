@@ -60,7 +60,7 @@ const ImageContainer = styled.div`
 `;
 ImageContainer.displayName = Widget.CardImage;
 
-const CardAvatar = styled(Avatar)`
+const CardAvatar: Object = styled(Avatar)`
   ${getAvatarMargin};
   border-radius: 50%;
 `;

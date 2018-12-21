@@ -4,6 +4,8 @@
  *
  * @flow
  */
+import type { MenuItemProps } from './item';
+
 import '../common/shirm';
 import * as React from 'react';
 import Item from './item';
@@ -22,7 +24,6 @@ import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
 import '../css/sv.css';
 import Theme from '../theme';
-import { adjustValue } from '../utils';
 import Trigger from '../trigger';
 import { findDOMNode } from 'react-dom';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
@@ -44,17 +45,7 @@ import {
 
 const Placeholder = {};
 
-type MenuItemProps = {|
-  mutliple: boolean,
-  action: string,
-  onClick: Function,
-  popupVisible?: boolean,
-  separator: string,
-  size: 'large' | 'default' | 'bigger',
-  checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
-|};
-
-type treeDataItem = {
+export type TreeDataItem = {
   value: string,
   text: string,
   pid: string,
@@ -62,7 +53,7 @@ type treeDataItem = {
   isLeaf: boolean,
 };
 
-type MenuProps = {
+export type MenuProps = {
   start: number,
   level: number,
   end: number,
@@ -105,11 +96,12 @@ type MenuProps = {
   handleIsInMenu?: Function,
   setExpandedPath: Function,
   allChildData?: Array<Object>,
-  treeData?: treeDataItem[],
+  treeData?: TreeDataItem[],
   getIndexOffsetY?: Function,
 };
 const EmptyData = [];
-type MenuState = {
+
+export type MenuState = {
   selectedKeys: string[],
   expandedPath: string[],
   popupVisible: boolean,
@@ -332,7 +324,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   fetchExtendProps(
-    key?: null | number | string,
+    key: null | number | string,
     isSelect: Function,
     item: Object,
     disabled: boolean,
@@ -430,9 +422,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   fetchSelectedKeys = (config: {
     mutliple: boolean,
-    key: string,
+    key: any,
     separator: string,
     selectedKeys: string[],
+    index: number,
   }): ?(string[]) => {
     const { mutliple, separator } = config;
 

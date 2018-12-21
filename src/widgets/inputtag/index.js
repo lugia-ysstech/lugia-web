@@ -46,7 +46,7 @@ import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 const em = px2emcss(FontSizeNumber);
-const ClearMenuItemButton = styled(Icon)`
+const ClearMenuItemButton: Object = styled(Icon)`
   top: 50%;
   right: ${em(12)};
   position: absolute;

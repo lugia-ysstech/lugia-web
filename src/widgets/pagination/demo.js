@@ -17,10 +17,10 @@ export default class PaginationDemo extends React.Component<any, any> {
   constructor() {
     super();
   }
-  onShowSizeChange = (current, pageSize) => {
+  onShowSizeChange = (current: number, pageSize: number) => {
     console.log(current, pageSize);
   };
-  onChange(pageNumber) {
+  onChange(pageNumber: number, pageSize: number) {
     console.log('Page: ', pageNumber);
   }
   render() {

@@ -12,7 +12,7 @@ import type { MarginType, ThemeType } from '@lugia/lugia-web';
 
 const em = px2emcss(1.2);
 
-type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
+export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 type ButtonShape = 'default' | 'round';
 type ButtonSize = 'default' | 'small' | 'large' | 'bigger';
 
@@ -282,8 +282,8 @@ export const getClickCSS = (props: ButtonOutProps) => {
   const borderRadius = circle
     ? '50%'
     : shape === 'default'
-      ? em(NotCircleSize.borderRadius)
-      : ShapeCSS[size].borderRadius;
+    ? em(NotCircleSize.borderRadius)
+    : ShapeCSS[size].borderRadius;
 
   const clickAnimate = keyframes`
   0% {

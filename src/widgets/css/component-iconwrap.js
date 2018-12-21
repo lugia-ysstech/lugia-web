@@ -46,7 +46,7 @@ const getLoadingIconStyle = (props: IconConProps) => {
     `;
   }
 };
-export const Icons = styled(Icon)`
+export const Icons: Object = styled(Icon)`
   color: ${props => IconInfo[props.iconType].color};
   position: relative;
   top: ${iconEM(3)};

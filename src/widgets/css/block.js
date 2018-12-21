@@ -41,6 +41,6 @@ export const Enlarge = styled.div`
   background: #e8e8e8;
   cursor: pointer;
 `;
-export const IconWrap = styled(Icon)`
+export const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
 `;

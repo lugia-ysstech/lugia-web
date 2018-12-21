@@ -223,7 +223,7 @@ export const HoverSpan = styled.span`
   width: ${em(18)};
   height: ${em(18)};
 `;
-export const IconWrap = styled(Icon)`
+export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   font-size: ${em(18)};
   color: ${mediumGreyColor};

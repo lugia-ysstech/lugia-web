@@ -65,31 +65,33 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
     return this.canCheckKeys;
   }
 
-  getCheckAllKeys(checked: boolean) {
-    const { disabledKeys: disabledCheckedKeys } = splitSelectKeys(this.mapData, this.selectedKeys);
+  getCheckAllKeys = (checked: boolean) => {
+    const { disabledKeys: disabledCheckedKeys } = this.handleSplitSelectKeys();
     const checkKeys = checked
       ? [...this.canCheckKeys, ...disabledCheckedKeys]
       : disabledCheckedKeys || [];
 
     return checkKeys;
-  }
+  };
 
-  getMoveAfterKeysForSource() {
-    const { validKeys: moveKey, disabledKeys } = splitSelectKeys(this.mapData, this.selectedKeys);
+  getMoveAfterKeysForSource = () => {
+    const { validKeys: moveKey, disabledKeys } = this.handleSplitSelectKeys();
     const nextTargetKeys = [...new Set([...this.list, ...moveKey])];
     return { moveKey, disabledKeys, nextTargetKeys };
-  }
+  };
 
-  getMoveAfterKeysForTarget() {
-    const { validKeys: moveKey, disabledKeys } = splitSelectKeys(this.mapData, this.selectedKeys);
-    const nextTargetKeys = [...this.list];
-    moveKey.forEach(item => {
-      const index = nextTargetKeys.indexOf(item);
-      if (index > -1) {
-        nextTargetKeys.splice(index, 1);
+  getMoveAfterKeysForTarget = () => {
+    const { validKeys: moveKey, disabledKeys } = this.handleSplitSelectKeys();
+    const nextTargetKeys: string[] = this.list.filter(
+      (item: string): boolean => {
+        return !moveKey.includes(item);
       }
-    });
+    );
     return { moveKey, disabledKeys, nextTargetKeys };
+  };
+
+  handleSplitSelectKeys() {
+    return splitSelectKeys(this.mapData, this.selectedKeys);
   }
 
   setCancelItem(item: Object[]) {
@@ -142,4 +144,14 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
         };
     }
   }
+
+  getDataLength = (data: Object[]): number => {
+    let length;
+    if (this.type === 'Source') {
+      length = data.length - this.getList().length + this.cancelItem.length;
+    } else {
+      length = this.getList().length - this.cancelItem.length;
+    }
+    return length;
+  };
 }

@@ -31,6 +31,7 @@ export type TransferProps = {
   displayField: string,
   valueField: string,
   model: Object,
+  theme: Object,
 };
 export type TransferState = {
   inputValue: string,
@@ -38,13 +39,13 @@ export type TransferState = {
   typeList: Object,
   cancelItem?: Object[],
   treeData: Object[],
-  treeDataLength: ?number,
+  treeDataLength: number,
 };
 type CSSProps = {
   isWrap?: boolean,
   theme: ThemeType,
   disabled: boolean,
-  direction: 'Source' | 'Target',
+  height: number,
 };
 const { borderColor } = colorsFunc();
 export const TransFer = styled.div`
@@ -71,11 +72,9 @@ export const MenuWrap = styled.div`
   padding-left: ${em(2)};
 `;
 const getNoDataHeight = (props: CSSProps) => {
-  const { direction } = props;
-  if (direction === 'Source') {
-    return px2emcss(1.4)(300);
-  }
-  return px2emcss(1.4)(240);
+  const { height } = props;
+
+  return px2emcss(1.4)(height);
 };
 export const NoData = styled.div`
   font-size: ${em(14)};
@@ -94,5 +93,7 @@ export const CancelBoxItem = styled.span`
   padding: ${em(3)};
 `;
 export const TreeWrap = styled.div`
-  height: ${getNoDataHeight};
+  font-size: ${em(12)};
+  width: ${em(255)};
+  height: ${props => em(props.height)};
 `;

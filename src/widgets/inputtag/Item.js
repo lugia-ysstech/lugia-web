@@ -15,7 +15,7 @@ import { mediumGreyColor, darkGreyColor } from '../css/inputtag';
 import { px2emcss } from '../css/units';
 const em = px2emcss(FontSizeNumber);
 
-const CloseButton = styled(CommonIcon)`
+const CloseButton: Object = styled(CommonIcon)`
   font-size: ${FontSize};
   color: ${mediumGreyColor};
   position: absolute;

@@ -24,23 +24,27 @@ import {
   TransFer,
   TreeWrap,
 } from '../css/transfer';
-import { getKeys, isContained, filterEnableKeysFromSelectKeys } from './utils';
+import { filterEnableKeysFromSelectKeys } from './utils';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
     treeData: Object[];
-
+    static displayName = 'TransferPanel';
     constructor(props) {
       super(props);
-      const { model } = this.props;
-      const selectedKeys = filterEnableKeysFromSelectKeys(model.getList(), model.getSelectedkeys());
+      const { model, direction } = this.props;
+      const selectedKeys = filterEnableKeysFromSelectKeys(
+        model.getList(),
+        model.getSelectedkeys(),
+        direction
+      );
       this.state = {
         inputValue: '',
         selectedKeys,
         typeList: model.getTypeList(),
         cancelItem: model.getCancelItem(),
         treeData: model.getTreeData(),
-        treeDataLength: undefined,
+        treeDataLength: 0,
       };
 
       model.on('onSelectedKeyChange', param => {
@@ -70,9 +74,8 @@ export default ThemeProvider(
       const { cancelItem = [] } = this.state;
       const hasCancelItem = cancelItem && cancelItem.length > 0;
       if (hasCancelItem) {
-        const elements = [];
-        cancelItem.forEach((item, index) => {
-          elements.push(
+        return cancelItem.map((item, index) => {
+          return (
             <CancelBoxItem>
               <CheckBox
                 key={index}
@@ -85,64 +88,27 @@ export default ThemeProvider(
             </CancelBoxItem>
           );
         });
-        return elements;
       }
 
       return null;
     };
 
     render() {
-      const { selectedKeys = [], typeList, treeData, inputValue, treeDataLength } = this.state;
-      const {
-        showSearch,
-        data = [],
-        needCancelBox = false,
-        type,
-        title,
-        direction,
-        displayField,
-        valueField,
-      } = this.props;
+      const { selectedKeys = [], treeDataLength, cancelItem } = this.state;
+      const { needCancelBox = false, type, title } = this.props;
 
-      const view = {
-        [Widget.Input]: {
-          width: 235,
-          margin: {
-            top: 8,
-            right: 10,
-            bottom: 16,
-            left: 10,
-          },
-        },
-      };
-      const menuView = {},
-        treeView = {};
-      if (direction === 'Source') {
-        menuView[Widget.Menu] = {
-          height: 300,
-        };
-        treeView[Widget.Tree] = {
-          height: 300,
-        };
-      } else {
-        menuView[Widget.Menu] = {
-          height: 240,
-        };
-      }
-      const inputConfig = {};
-      if (!inputValue) {
-        inputConfig.suffix = <SearchIcon />;
-      }
-      const canCheckKeys = this.props.model.getCanCheckKeys();
-      const length = canCheckKeys && canCheckKeys.length;
+      const cancelBox =
+        needCancelBox && cancelItem && cancelItem.length ? (
+          <CancelBox>{this.createCancelCheckBox()}</CancelBox>
+        ) : null;
+      const dataLength = type === 'panel' ? this.getDataLength() : treeDataLength;
+      const selectKeyLength = (selectedKeys && selectedKeys.length) || 0;
       const checked =
-        selectedKeys.length === 0
+        selectKeyLength === 0
           ? false
-          : length
-          ? isContained(selectedKeys, canCheckKeys)
-          : isContained(getKeys(data ? data : [], valueField), selectedKeys);
-      const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
-      const dataLength = this.getDataLength(type, direction);
+          : type === 'panel'
+          ? selectKeyLength >= this.getDataLength()
+          : selectKeyLength >= treeDataLength;
       return (
         <TransFer>
           <Check>
@@ -153,59 +119,126 @@ export default ThemeProvider(
             >
               {title}
             </CheckBox>
-
             <CheckText>
-              {selectedKeys.length}/{type === 'panel' ? dataLength : treeDataLength}
+              {selectedKeys.length}/{dataLength}
             </CheckText>
           </Check>
-          {showSearch ? (
-            <Theme config={view}>
-              <Input
-                onChange={this.handleInputChange}
-                placeholder={'搜索您想知道的内容'}
-                {...inputConfig}
-              />
-            </Theme>
-          ) : null}
-
-          <MenuWrap>
-            <Theme config={menuView}>
-              {type === 'panel' ? (
-                <TransferMenu
-                  {...this.props}
-                  query={inputValue}
-                  {...typeList}
-                  selectedKeys={selectedKeys}
-                />
-              ) : (
-                <TreeWrap direction={direction}>
-                  <Theme config={treeView}>
-                    <Tree
-                      displayField={displayField}
-                      valueField={valueField}
-                      data={treeData}
-                      value={selectedKeys}
-                      expandAll
-                      mutliple
-                      onChange={this.handleTreeChange}
-                      query={inputValue}
-                      {...typeList}
-                      getTreeData={this.getTreeData}
-                    />
-                  </Theme>
-                </TreeWrap>
-              )}
-            </Theme>
-          </MenuWrap>
-
+          {this.getSearchBox()}
+          {this.getTransferPanel()}
           {cancelBox}
         </TransFer>
       );
     }
 
+    getSearchBox() {
+      const { inputView } = this.getInputThemeConfig();
+      const { inputValue } = this.state;
+      const { showSearch } = this.props;
+      const inputConfig = {};
+      if (!inputValue) {
+        inputConfig.suffix = <SearchIcon />;
+      }
+
+      return showSearch ? (
+        <Theme config={inputView}>
+          <Input
+            onChange={this.handleInputChange}
+            placeholder={'搜索您想知道的内容'}
+            {...inputConfig}
+          />
+        </Theme>
+      ) : null;
+    }
+
+    getTransferPanel() {
+      const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
+      const { type, direction, displayField, valueField } = this.props;
+
+      const { menuView, treeView, wrapHeight } = this.getPanelThemeConfig(direction);
+
+      return type === 'panel' ? (
+        <MenuWrap>
+          <Theme config={menuView}>
+            <TransferMenu
+              {...this.props}
+              query={inputValue}
+              {...typeList}
+              selectedKeys={selectedKeys}
+              height={wrapHeight}
+            />
+          </Theme>
+        </MenuWrap>
+      ) : (
+        <TreeWrap height={wrapHeight}>
+          <Theme config={treeView}>
+            <Tree
+              displayField={displayField}
+              valueField={valueField}
+              data={treeData}
+              value={selectedKeys}
+              expandAll
+              mutliple
+              onChange={this.handleTreeChange}
+              query={inputValue}
+              {...typeList}
+              getTreeData={this.getTreeData}
+            />
+          </Theme>
+        </TreeWrap>
+      );
+    }
+
+    getInputThemeConfig() {
+      const inputView = {
+        [Widget.Input]: {
+          width: 235,
+          margin: {
+            top: 8,
+            right: 10,
+            bottom: 16,
+            left: 10,
+          },
+        },
+      };
+      return { inputView };
+    }
+    getPanelThemeConfig = direction => {
+      const { theme = {} } = this.props;
+      const { height = 300 } = theme;
+      let wrapHeight = height;
+      const menuView = {},
+        treeView = {};
+      if (direction === 'Source') {
+        menuView[Widget.Menu] = {
+          height,
+        };
+        treeView[Widget.Tree] = {
+          height,
+        };
+      } else {
+        const { cancelItem } = this.state;
+        const targetHeight = cancelItem && cancelItem.length ? height - 60 : height;
+        wrapHeight = targetHeight;
+        menuView[Widget.Menu] = {
+          height: targetHeight,
+        };
+        treeView[Widget.Tree] = {
+          height: targetHeight,
+        };
+      }
+      return { menuView, treeView, wrapHeight };
+    };
+
     getTreeData = (data: Object[]) => {
+      const { valueField = 'value', model } = this.props;
       const oldLength = this.treeData && this.treeData.length;
       if (data.length !== oldLength) {
+        model.setCanCheckKeys(
+          data.map(item => {
+            return item[valueField];
+          })
+        );
+
         this.setState({
           treeDataLength: data.length,
         });
@@ -213,26 +246,16 @@ export default ThemeProvider(
       this.treeData = data;
     };
 
-    getDataLength = (type: 'panel' | 'tree', direction: 'Source' | 'Target'): number => {
-      let length;
-      const { data = [], model } = this.props;
-      const { cancelItem = [] } = this.state;
-      if (type === 'panel') {
-        if (direction === 'Source') {
-          length = data.length - model.getList().length + cancelItem.length;
-        } else {
-          length = model.getList().length - cancelItem.length;
-        }
-        return length;
-      }
-
-      return 0;
+    getDataLength = (): number => {
+      const { model, data } = this.props;
+      return model.getDataLength(data);
     };
 
     cancelItemClick = (value: string) => {
       const { onCancelItemClick } = this.props;
       onCancelItemClick && onCancelItemClick(value);
     };
+
     handleInputChange = (value: Object) => {
       const { newValue } = value;
       this.setState({

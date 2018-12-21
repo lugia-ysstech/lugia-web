@@ -61,7 +61,7 @@ const Title = styled.div`
   font-weight: 500;
   ${getTitleColor};
 `;
-const HintIcon = styled(Icon)`
+const HintIcon: Object = styled(Icon)`
   font-size: 1.4rem;
 `;
 const Basetext = styled.div`
@@ -81,7 +81,7 @@ const OkText = Basetext.extend``;
 
 CancelText.displayName = 'okText';
 
-const BaseButton = styled(Button)`
+const BaseButton: Object = styled(Button)`
   font-size: 1.2rem;
   display: inline-block;
 `;
