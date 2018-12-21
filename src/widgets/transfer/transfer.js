@@ -44,7 +44,7 @@ export default ThemeProvider(
         typeList: model.getTypeList(),
         cancelItem: model.getCancelItem(),
         treeData: model.getTreeData(),
-        treeDataLength: undefined,
+        treeDataLength: 0,
       };
 
       model.on('onSelectedKeyChange', param => {
@@ -99,12 +99,13 @@ export default ThemeProvider(
 
       const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
       const dataLength = type === 'panel' ? this.getDataLength() : treeDataLength;
+      const selectKeyLength = (selectedKeys && selectedKeys.length) || 0;
       const checked =
-        selectedKeys.length === 0
+        selectKeyLength === 0
           ? false
           : type === 'panel'
-          ? selectedKeys.length >= this.getDataLength()
-          : selectedKeys.length >= treeDataLength;
+          ? selectKeyLength >= this.getDataLength()
+          : selectKeyLength >= treeDataLength;
       return (
         <TransFer>
           <Check>

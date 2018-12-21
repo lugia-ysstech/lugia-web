@@ -38,7 +38,7 @@ export type TransferState = {
   typeList: Object,
   cancelItem?: Object[],
   treeData: Object[],
-  treeDataLength: ?number,
+  treeDataLength: number,
 };
 type CSSProps = {
   isWrap?: boolean,
