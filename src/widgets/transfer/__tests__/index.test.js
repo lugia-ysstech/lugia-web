@@ -458,7 +458,7 @@ describe('Transfer', () => {
       />
     );
     const component = getComponent(target, 'TransferPanel', 0);
-    expect(component.state.treeDataLength).toBeUndefined();
+    expect(component.state.treeDataLength).toBe(0);
     component.getTreeData([{}, {}]);
     expect(component.state.treeDataLength).toBe(2);
     component.getTreeData([1, 2]);
