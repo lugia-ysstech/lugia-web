@@ -64,6 +64,7 @@ type TreeProps = {
    * 当值发生变化的时候出发
    */
   onChange?: Function,
+  getTreeData?: Function,
   splitQuery?: string,
   current: number,
   data?: Array<RowData>,
@@ -522,8 +523,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     expand: ExpandInfo,
     query: string,
     searchType: QueryType = 'include',
-    blackList: string[],
-    whiteList: string[]
+    blackList: ?(string[]),
+    whiteList: ?(string[])
   ): Array<RowData> {
     return (this.data = utils.search(expand, query, searchType, blackList, whiteList));
   }

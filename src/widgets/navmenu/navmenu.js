@@ -50,11 +50,15 @@ type NavMenuProps = {
   displayField?: string,
   action?: 'click' | 'hover',
   motif: 'light' | 'dark',
+  separator?: string,
 };
 
 type NavMenuState = {
   data: Array<RowData>,
   popupVisible: boolean,
+  value: string[],
+  expandedPath: string[],
+  selectedKeys: string[],
 };
 const openClassName = 'lugia-icon-direction_up';
 const closeClassName = 'lugia-icon-direction_down';
@@ -96,7 +100,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     this.treeData = getTreeData(this.props);
   }
 
-  static getDerivedStateFromProps(props: CascaderProps, state: CascaderState) {
+  static getDerivedStateFromProps(props: NavMenuProps, state: NavMenuState) {
     if (!state) {
       return {};
     }
@@ -147,7 +151,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
             action={action}
             mutliple={false}
             handleIsInMenu={this.handleIsInMenu}
-            onMouseEnter={this.onMouseEnter}
             onClick={this.handleClickMenu}
             selectedKeys={selectedKeys}
             expandedPath={expandedPath}
@@ -173,9 +176,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     onClick && onClick(keys, item);
   };
 
-  setPopupVisible(popupVisible: boolean, otherTarget?: Object = {}) {
-    this.checked = popupVisible;
-    this.setState({ popupVisible, ...otherTarget });
+  setPopupVisible(popupVisible: boolean) {
+    this.setState({ popupVisible });
   }
 
   getThemeTarget = () => {
@@ -210,14 +212,13 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           onlySelectLeaf={true}
           onChange={this.onChange}
           themeStyle={themeStyle}
-          onSelect={this.onSelect}
         />
       </Theme>
     );
   };
 
   getExposeItem = (treeItem: Object) => {
-    const { valueField, displayField } = this.props;
+    const { valueField = 'value', displayField = 'text' } = this.props;
     const obj = {};
     obj[valueField] = treeItem[valueField];
     obj[displayField] = treeItem[displayField];
@@ -241,9 +242,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     this.setState({ value });
   };
 
-  getCheckedItem(value: string[]): Object {
+  getCheckedItem(value: string[]): any {
     const key = value[0];
-    const { valueField } = this.props;
+    const { valueField = 'value' } = this.props;
     return this.treeData.find(item => item[valueField] === key);
   }
 }
