@@ -75,7 +75,7 @@ const getLiIcon = props => {
     : `
   ::before {
     content: '';
-    width: ${em(4)};
+    width: ${em(6)};
     border-radius: ${em(4)};
     height: ${em(MenuItemHeight)};
     background: ${themeColor};
@@ -168,8 +168,8 @@ const getFontSize = props => {
 const getTitleWrapBackground = props => {
   const { motif, pos, inlineType } = props;
   const num = pos.split('-').length - 2;
-  return motif === 'dark' && inlineType === 'primary' && num !== 0
-    ? 'background: rgba(255, 255, 255, 0.2)'
+  return motif === 'dark' && inlineType === 'primary' && num === 0
+    ? 'background: rgba(255, 255, 255, 0.1)'
     : '';
 };
 export const TitleWrap = styled.span`
