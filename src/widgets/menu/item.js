@@ -39,8 +39,14 @@ type MenuItemProps = {
   checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
 };
 
+const getFontSize = (props: Object) => {
+  const { size = 'default' } = props;
+  return size === 'large' || size === 'bigger' ? em(14) : em(12);
+};
+
 const TextContainer = styled.span`
   padding: ${em(7)} ${em(8)};
+  font-size: ${getFontSize};
   position: absolute;
   left: 0;
   top: 50%;
@@ -166,7 +172,6 @@ class MenuItem extends React.Component<MenuItemProps> {
       disabled,
       onMouseEnter,
       checkedCSS,
-      menuItemHeight,
       size,
     } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
@@ -185,7 +190,6 @@ class MenuItem extends React.Component<MenuItemProps> {
         checked={checked}
         disabled={disabled}
         checkedCSS={checkedCSS}
-        menuItemHeight={menuItemHeight}
         size={size}
       >
         {isCheckbox ? (
@@ -197,7 +201,7 @@ class MenuItem extends React.Component<MenuItemProps> {
             </TextContainer>
           </Theme>
         ) : (
-          <TextContainer>{children}</TextContainer>
+          <TextContainer size={size}>{children}</TextContainer>
         )}
       </Item>
     );

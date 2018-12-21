@@ -1,12 +1,13 @@
 /**
- * UI颜色公共值
- * create by ligx
+ *
+ * create by szfeng
  *
  * @flow
  */
-import colorsFunc from '../css/stateColor';
+import colorsFunc from './stateColor';
 import styled from 'styled-components';
 import { px2emcss } from './units';
+import changeColor from './utilsColor.js';
 const em = px2emcss(1.2);
 export const {
   themeColor,
@@ -14,11 +15,22 @@ export const {
   blackColor,
   mediumGreyColor,
   defaultColor,
+  spiritColor,
 } = colorsFunc();
 export const MenuItemHeight = 40;
 export const DefaultHeight = 1000;
+export const DescribeColor = '#b5b6c1';
 export const ItemBackgroundColor = '#edf0fe';
-const { hoverColor } = colorsFunc(themeColor);
+
+// const getSpiritColor = (color: string) => {
+//   const { spiritColor } = colorsFunc(color);
+//   return spiritColor;
+// };
+
+// const getDarkBakcgroundColor = (color: string) => {
+// const darkColor = changeColor(color, -30, 80);
+// return darkColor;
+// };
 
 export const Switcher = styled.span`
   font-size: ${em(14)};
@@ -77,7 +89,14 @@ const getLiIcon = props => {
   `;
 };
 
+const getLiBackground = props => {
+  const { motif, color = themeColor } = props;
+  // const { color: darkBackColor } = getDarkBakcgroundColor(color);
+  return `background: ${motif === 'dark' ? '#000033' : ''}`;
+};
+
 export const Li = styled.li`
+  ${getLiBackground};
   ${getChildrenSelected};
   ${getHeight};
   list-style: none;
@@ -102,9 +121,9 @@ export const ChildrenUl = styled.ul`
 `;
 
 function getSelected(props) {
-  const { selected, inlineType, describe } = props;
+  const { selected, inlineType, describe, motif } = props;
   if (describe) {
-    return 'color: #b5b6c1';
+    return `color: ${DescribeColor}`;
   }
   if (inlineType === 'ellipse') {
     return selected
@@ -113,7 +132,7 @@ function getSelected(props) {
         color: ${defaultColor};
       }
       `
-      : `color: ${blackColor};
+      : `color: ${motif === 'dark' ? defaultColor : blackColor};
     &:hover {
       color: ${themeColor};
     }
@@ -125,7 +144,7 @@ function getSelected(props) {
       color: ${themeColor};
     }
     `
-    : `color: ${blackColor};
+    : `color: ${motif === 'dark' ? defaultColor : blackColor};
   &:hover {
     color: ${themeColor};
   }
@@ -146,7 +165,16 @@ const getFontSize = props => {
   return `font-size: ${num ? em(14) : em(16)}`;
 };
 
+const getTitleWrapBackground = props => {
+  const { motif, pos, inlineType } = props;
+  const num = pos.split('-').length - 2;
+  return motif === 'dark' && inlineType === 'primary' && num !== 0
+    ? 'background: rgba(255, 255, 255, 0.2)'
+    : '';
+};
 export const TitleWrap = styled.span`
+  ${getTitleWrapBackground};
+  ${getTitleWrapBackground};
   ${getFontSize};
   ${getTitleWrapPadding};
   box-sizing: border-box;
@@ -175,23 +203,34 @@ const getTitleSpanPadding = props => {
 };
 
 const getSelectedBackground = props => {
-  const { inlineType, selected } = props;
+  const { inlineType, selected, motif } = props;
   if (inlineType === 'ellipse') {
     return selected
       ? `background: linear-gradient(to right, ${themeColor}, #808eff);`
-      : `background: ${defaultColor};`;
+      : `background: ${motif === 'dark' ? '#000033' : defaultColor};`;
   }
   return 'background: transparent;';
 };
 
+const getTransitionTime = props => {
+  const { inlineType } = props;
+  return inlineType === 'ellipse' ? '0.5s' : '0s';
+};
+
+const getTitleSpanHeight = props => {
+  const { height } = props;
+  const { pos } = props;
+  const num = pos.split('-').length - 2;
+  return num ? `height: ${px2emcss(1.4)(height)}` : `height: ${px2emcss(1.6)(height)}`;
+};
+
 export const TitleSpan = styled.span`
-  opacity: 1;
-  height: 35px;
-  line-height: 35px;
+  height: ${getTitleSpanHeight};
+  line-height: ${getTitleSpanHeight};
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  transition: all 0.3s;
+  transition: all ${getTransitionTime};
   ${getTitleSpanPadding};
   ${getBorderRadius};
   ${getSelectedBackground};

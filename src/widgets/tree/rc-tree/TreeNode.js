@@ -5,10 +5,13 @@ import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
 import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
-
+import styled from 'styled-components';
 import Widget from '../../consts';
 import Theme from '../../theme';
-
+import { getMenuItemHeight, TextIcon } from '../../css/menu';
+import { px2emcss } from '../../css/units';
+import { FontSizeNumber } from '../../css';
+const em = px2emcss(FontSizeNumber);
 const defaultTitle = '---';
 
 class TreeNode extends React.Component {
@@ -158,7 +161,6 @@ class TreeNode extends React.Component {
   renderCheckbox(props) {
     const { checked, halfChecked: indeterminate, notCanSelect: disabled, title } = props;
     const { themeColor } = props.themeStyle;
-
     const view = {
       [Widget.CheckBox]: { color: themeColor },
     };
@@ -232,7 +234,19 @@ class TreeNode extends React.Component {
 
   render() {
     const { props } = this;
-    const { checked, selected, notCanSelect, inlineType, pos, describe = false } = this.props;
+    const {
+      checked,
+      selected,
+      notCanSelect,
+      inlineType,
+      pos,
+      describe = false,
+      themeStyle,
+      icon,
+      size,
+      motif,
+      color,
+    } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
 
@@ -246,11 +260,20 @@ class TreeNode extends React.Component {
         iconState = 'docu';
       }
     }
-    const { TitleWrap, NullSwitcher, Li, TitleSpan } = props.themeStyle;
-
+    const { TitleWrap, NullSwitcher, Li, TitleSpan } = themeStyle;
+    const iconHeight = getMenuItemHeight(size);
     const selectHandle = () => {
       const title = (
-        <TitleSpan pos={pos} selected={selected} inlineType={inlineType} title={content}>
+        <TitleSpan
+          color={color}
+          pos={pos}
+          selected={selected}
+          inlineType={inlineType}
+          title={content}
+          height={iconHeight}
+          motif={motif}
+        >
+          <TextIcon iconClass={icon} />
           {content}
         </TitleSpan>
       );
@@ -287,6 +310,8 @@ class TreeNode extends React.Component {
           selected={selected}
           describe={describe}
           notCanSelect={notCanSelect}
+          motif={motif}
+          color={color}
         >
           {title}
         </TitleWrap>
@@ -317,6 +342,8 @@ class TreeNode extends React.Component {
         isLeaf={props.isLeaf}
         selected={props.selected}
         title={props.title}
+        motif={motif}
+        color={color}
       >
         {/* 小箭头*/}
         {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : renderNoopSwitcher()}

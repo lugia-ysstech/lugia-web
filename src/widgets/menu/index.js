@@ -9,7 +9,7 @@ import * as React from 'react';
 import Item from './item';
 import {
   DefaultHeight,
-  LeftIcon,
+  TextIcon,
   MenuContainer,
   RightIcon,
   MenuItemHeight,
@@ -227,12 +227,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
     const isOffsetY = !!(offsetY === 0 || offsetY);
     const activeOffsetY = getTargetOrDefaultTarget(isOffsetY, offsetY, indexOffsetY * itemHeight);
-
     const { getTheme } = this.props;
     const { popupVisible = false, childData } = this.state;
     const { submenuWidth, width } = getTheme();
     const activeSubmenuWidth = submenuWidth ? submenuWidth : width ? width : DefaultWidth;
-    // console.log('activeSubmenuWidth', activeSubmenuWidth);
+
     return (
       <Theme config={{ [Widget.Trigger]: { width: activeSubmenuWidth } }}>
         <Trigger
@@ -251,7 +250,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   getItems(props: MenuProps): Object[] {
-    let { start, end, checkedCSS = 'none', mutliple, size, data } = props;
+    let { start, end, checkedCSS = 'none', mutliple, data } = props;
     start = Math.round(start);
     end = Math.round(end);
 
@@ -274,7 +273,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return <li />;
         }
 
-        const iconElement = icon ? <LeftIcon iconClass={icon} /> : null;
+        const iconElement = icon ? <TextIcon iconClass={icon} /> : null;
         return (
           <Item key={key} size={size} disabled={disabled} checkedCSS={checkedCSS}>
             {prefix}
@@ -436,6 +435,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     selectedKeys: string[],
   }): ?(string[]) => {
     const { mutliple, separator } = config;
+
     let { key } = config;
     key = key + '';
     if (!mutliple) {
@@ -482,17 +482,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   mapTreeDataAndGetPath(key: string | number): string[] {
-    const { treeData = [], separator } = this.props;
+    const { treeData = [] } = this.props;
     const targetItem = treeData.find(item => key === item.value);
     if (!targetItem) {
       return [];
     }
     const { path } = targetItem;
-    return this.getNewPath(path, key, separator);
+    return this.getNewPath(path, key);
   }
 
-  getNewPath(oldPath: string, key: string, separator: string) {
-    const newPathData = oldPath.split(separator);
+  getNewPath(oldPath: string, key: string) {
+    const newPathData = oldPath.split('/');
     newPathData.push(key);
     return newPathData;
   }
