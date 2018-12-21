@@ -206,8 +206,8 @@ describe('Rate Test', () => {
     expectation: Array<Object>,
     data: Array<Object>
   ) {
-    it('Function getFileList ', () => {
-      const res = target.instance().getFileList(fileListDone, props, data);
+    it('Function updateFieldList ', () => {
+      const res = target.instance().updateFieldList(fileListDone, props, data);
       expect(res).toEqual(expectation);
     });
   }
@@ -250,7 +250,7 @@ describe('Rate Test', () => {
     props: Object,
     expectation: Array<Object>
   ) {
-    it('Function getFileList ', () => {
+    it('Function updateFieldList ', () => {
       const res = target.instance().appendFileList(fileListDone, props);
       expect(res).toEqual(expectation);
     });

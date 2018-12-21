@@ -15,6 +15,7 @@ import { px2emcss } from '../css/units';
 import { isKeyInArray } from './upload';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import colorsFunc from '../css/stateColor';
+
 const { disableColor } = colorsFunc();
 
 const em = px2emcss(1.2);
@@ -418,7 +419,7 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
     return (
       <LoadIcon
         iconClass={iconClassMap[status]}
-        onClick={e => {
+        onClick={() => {
           doFunction(index);
         }}
       />
@@ -430,7 +431,8 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
         <LoadIcon iconClass="lugia-icon-financial_pic ccc" />
         {getListIconType(props.name) === 'picture' && props.url ? (
           <PrevImg className="prev">
-            <img src={props.url} alt="" /> <Triangle /> <div>{props.url}</div>
+            <img src={props.url} alt="" /> <Triangle />
+            <div>{props.url}</div>
           </PrevImg>
         ) : null}
       </PrevCon>
@@ -494,9 +496,11 @@ type StateProps = {
   classNameStatus: string,
   defaultText: string,
 };
+
 class GetElement extends React.Component<DefProps, StateProps> {
   static defaultProps = {};
   dropArea: any;
+
   constructor(props: Object) {
     super(props);
     this.dropArea = React.createRef();
@@ -533,6 +537,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       defaultText: 'defaultText' in defProps ? defaultText : stateProps.defaultText,
     };
   }
+
   getRegisterInput = (input: Object) => {
     this.setState({
       inputElement: input.current,
@@ -540,10 +545,13 @@ class GetElement extends React.Component<DefProps, StateProps> {
   };
   getChangeInfo = (types: string, e: Object) => {
     const { setChoosedFile } = this.props;
+    if (!setChoosedFile) {
+      return;
+    }
     if (types === 'drag') {
-      setChoosedFile && setChoosedFile(e);
+      setChoosedFile(e);
     } else {
-      setChoosedFile && setChoosedFile(e.target.files);
+      setChoosedFile(e.target.files);
     }
   };
 
@@ -566,6 +574,25 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (!listType) return;
     const { state } = this;
     const { classNameStatus } = state;
+    const children = this.getChildren(listType, props, classNameStatus);
+    const { inputId, disabled, accept, multiple } = props;
+    const { getRegisterInput, getChangeInfo } = this;
+    return (
+      <React.Fragment>
+        <FileInput
+          id={inputId}
+          multiple={multiple}
+          disabled={disabled}
+          accept={accept}
+          getChangeInfo={getChangeInfo}
+          getRegisterInput={getRegisterInput}
+        />
+        {children}
+      </React.Fragment>
+    );
+  };
+
+  getChildren(listType: string, props: DefProps, classNameStatus: string) {
     let children;
     if (listType === 'default') {
       const { dropArea, handleClickToUpload } = this;
@@ -665,22 +692,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
         </AreaView>
       );
     }
-    const { inputId, disabled, accept, multiple } = props;
-    const { getRegisterInput, getChangeInfo } = this;
-    return (
-      <React.Fragment>
-        <FileInput
-          id={inputId}
-          multiple={multiple}
-          disabled={disabled}
-          accept={accept}
-          getChangeInfo={getChangeInfo}
-          getRegisterInput={getRegisterInput}
-        />
-        {children}
-      </React.Fragment>
-    );
-  };
+    return children;
+  }
+
   handleClickToUpload = () => {
     const { inputElement } = this.state;
     const { disabled } = this.props;

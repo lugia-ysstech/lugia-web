@@ -151,7 +151,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     let list;
     const { fileListDone } = this.state;
     if (isIdInArray(hashMark, fileListDone)) {
-      list = this.getFileList(fileListDone, hashMark, [{ target: 'status', value: 'loading' }]);
+      list = this.updateFieldList(fileListDone, hashMark, [{ target: 'status', value: 'loading' }]);
     } else {
       const { listType } = this.props;
       list = this.appendFileList(fileListDone, {
@@ -252,7 +252,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
   uploadSuccess = (res: Object, file: Object, hashMark: string): void => {
     const { fileListDone } = this.state;
 
-    const list = this.getFileList(fileListDone, hashMark, [
+    const list = this.updateFieldList(fileListDone, hashMark, [
       { target: 'status', value: 'done' },
       { target: 'url', value: res.data.url },
     ]);
@@ -278,7 +278,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     const percent = getPercentValue(loaded, total);
 
     const { fileListDone } = this.state;
-    const list = this.getFileList(fileListDone, hashMark, [
+    const list = this.updateFieldList(fileListDone, hashMark, [
       { target: 'percent', value: percent },
       { target: 'status', value: 'loading' },
     ]);
@@ -290,14 +290,16 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
   uploadFail = (res: Object, hashMark: string): void => {
     const { fileListDone } = this.state;
-    const list = this.getFileList(fileListDone, hashMark, [{ target: 'status', value: 'fail' }]);
+    const list = this.updateFieldList(fileListDone, hashMark, [
+      { target: 'status', value: 'fail' },
+    ]);
     this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
 
     const { onFail } = this.props;
     onFail && onFail(res);
   };
 
-  getFileList = (
+  updateFieldList = (
     fileListDone: Array<Object>,
     props: string,
     data: Array<Object> = []
@@ -311,6 +313,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     });
     return fileListDone;
   };
+
   appendFileList = (fileListDone: Array<Object>, props: Object): Array<Object> => {
     if (!isEmptyObject(props)) {
       fileListDone.push(props);
@@ -323,7 +326,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       this.setStateValue({ previewUrl: reader.result });
-      reader.onloadend = null;
+      delete reader.onloadend;
     };
   };
 
