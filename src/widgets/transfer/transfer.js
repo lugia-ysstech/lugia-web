@@ -94,10 +94,13 @@ export default ThemeProvider(
     };
 
     render() {
-      const { selectedKeys = [], treeDataLength } = this.state;
+      const { selectedKeys = [], treeDataLength, cancelItem } = this.state;
       const { needCancelBox = false, type, title } = this.props;
 
-      const cancelBox = needCancelBox ? <CancelBox>{this.createCancelCheckBox()}</CancelBox> : null;
+      const cancelBox =
+        needCancelBox && cancelItem && cancelItem.length ? (
+          <CancelBox>{this.createCancelCheckBox()}</CancelBox>
+        ) : null;
       const dataLength = type === 'panel' ? this.getDataLength() : treeDataLength;
       const selectKeyLength = (selectedKeys && selectedKeys.length) || 0;
       const checked =
@@ -209,11 +212,13 @@ export default ThemeProvider(
           height: 300,
         };
       } else {
+        const { cancelItem } = this.state;
+        const height = cancelItem && cancelItem.length ? 240 : 300;
         menuView[Widget.Menu] = {
-          height: 240,
+          height,
         };
         treeView[Widget.Tree] = {
-          height: 240,
+          height,
         };
       }
       return { menuView, treeView };
