@@ -36,7 +36,17 @@ const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
-
+const getDisabled = props => {
+  const { disabled } = props;
+  if (!disabled) {
+    return '';
+  }
+  return `
+    border: 1px solid #e8e8e8;
+    width: 286px;
+    cursor: not-allowed;
+    `;
+};
 const InputContent = styled.div`
   width: ${props => (props.theme.width ? props.theme.width : '346px')};
   height: 30px;
@@ -72,11 +82,6 @@ const InputContent = styled.div`
     border: 1px solid #9482ff;
     width: 286px;
   }
-  &.disabled {
-    border: 1px solid #e8e8e8;
-    width: 286px;
-    cursor: not-allowed;
-  }
   & i.right {
     transform: translateY(-50%);
     position: absolute;
@@ -89,6 +94,8 @@ const InputContent = styled.div`
   & i.error {
     color: #f22735;
   }
+
+  ${getDisabled}
 `;
 
 const LoadIcon = styled(Icon)`
@@ -599,6 +606,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { defaultText, disabled } = props;
       children = (
         <InputContent
+          disabled={disabled}
+          status={classNameStatus}
           className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
           onClick={handleClickToUpload}
           innerRef={dropArea}
