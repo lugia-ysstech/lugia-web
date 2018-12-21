@@ -84,7 +84,7 @@ const Message = styled.div`
   border-radius: ${RadiusSize};
   box-shadow: 0 ${em(2)} ${em(8)} rgba(0, 0, 0, 0.15);
 `;
-export function hasVisibleInProps(props: TooltipProps) {
+export function hasVisibleInProps(props: Object) {
   return 'visible' in props;
 }
 
@@ -98,7 +98,10 @@ export function processOnVisibleChange(visible: boolean) {
   onVisibleChange && onVisibleChange(visible);
 }
 
-export function getStateFromProps(props: TooltipProps, state: TooltipState) {
+export function getStateFromProps(
+  props: { visible: boolean, defaultVisible: boolean },
+  state: TooltipState
+) {
   const isHasVisibleProps = hasVisibleInProps(props);
   const hasDefaultVisibleInprops = 'defaultVisible' in props;
   if (!state) {
