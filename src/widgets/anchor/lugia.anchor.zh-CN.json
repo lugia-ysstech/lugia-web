@@ -1,0 +1,31 @@
+{
+  "widgetName": "Anchor",
+  "title": "Anchor 锚点",
+  "desc": "用于跳转到页面指定位置。",
+  "props": {
+    "affix": {
+      "type": "boolean",
+      "desc": "是否固定在窗口",
+      "defaultValue": "true"
+    },
+    "offsetTop": {
+      "type": "number",
+      "desc": "距离窗口顶部达到指定值后触发",
+      "defaultValue": "0"
+    },
+    "offsetBottom": {
+      "type": "number",
+      "desc": "距离窗口底部达到指定值后触发",
+      "defaultValue": "undefined"
+    },
+    "slideType": {
+      "type": "SlideType",
+      "desc": "分割线样式",
+      "defaultValue": "circle"
+    }
+  },
+  "type": {
+    "SlideType": ["circle", "line", "none"]
+  },
+  "category": ["数据录入"]
+}

@@ -1,0 +1,73 @@
+{
+  "widgetName": "CheckBox",
+  "title": "CheckBox 多选框",
+  "desc": "多选框。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "checked": {
+      "type": "boolean",
+      "desc": "指定CheckBox是否选中",
+      "defaultValue": "undefined"
+    },
+    "defaultChecked": {
+      "type": "boolean",
+      "desc": "指定CheckBox初始是否选中",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "指定CheckBox是否禁用",
+      "defaultValue": "undefined"
+    },
+    "indeterminate": {
+      "type": "boolean",
+      "desc": "设置半选状态，只用于样式控制",
+      "defaultValue": "undefined"
+    },
+    "value": {
+      "type": "string",
+      "desc": "组件value值",
+      "defaultValue": "undefined"
+    },
+    "styles": {
+      "type": "CheckboxType",
+      "desc": "CheckBox展示方向，可选值为 vertical 或不设",
+      "defaultValue": "false"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "CheckBox改变时回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "关闭时的DOM事件",
+          "type": "Object"
+        },
+        {
+          "name": "value",
+          "desc": "变化CheckBox的value值",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "type": {
+    "CheckboxType": ["default", "vertical"],
+    "CheckBoxStyle": {
+      "width": {
+        "type": "number",
+        "desc": "CheckBox宽度"
+      },
+      "color": {
+        "type": "string",
+        "desc": "CheckBox颜色"
+      }
+    }
+  },
+  "category": ["数据录入"]
+}
