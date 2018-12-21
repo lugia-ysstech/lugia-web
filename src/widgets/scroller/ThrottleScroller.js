@@ -11,9 +11,9 @@ import '../css/sv.css';
 import Widget from '../consts/index';
 import { FontSizeNumber } from '../css';
 import { BarDefaultSize, DefaultHeight, DefaultWidth } from '../css/scroller';
-import { px2emcss } from '../css/units';
 import { getCanSeeCount } from './support';
 import { getMenuItemHeight } from '../css/menu';
+import { px2emcss } from '../css/units';
 
 const em = px2emcss(FontSizeNumber);
 

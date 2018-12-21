@@ -4,145 +4,186 @@
  *
  */
 import * as React from 'react';
-import Navmenu from './navmenu';
+import Navmenu from './';
 import Widget from '../consts/index';
 import Theme from '../theme';
+import styled from 'styled-components';
 
-// console.info(new Date() - now);
-const onSelect = (selectedKeys, info) => {},
-  onCheck = (checkedKeys, info) => {};
+const Box = styled.div`
+  display: inline-block;
+  box-shadow: 4px 0 3px 3px #ccc;
+  margin: 0 20px;
+  vertical-align: top;
+`;
 
-const data = [
-  {
-    key: '授权管理',
-    title: '授权管理',
-    alwaysExpanded: true,
-    icon: 'lugia-icon-financial_archive',
-    children: [
-      {
-        key: '授权参数设计',
-        title: '授权参数设计',
-        alwaysExpanded: true,
-        children: [
-          { key: '授权子参数一', title: '授权子参数一' },
-          { key: '授权子参数二', title: '授权子参数二' },
-        ],
-      },
-    ],
-  },
-  { key: '监控', title: '监控', icon: 'lugia-icon-financial_columns' },
-  {
-    key: '部署',
-    title: '部署',
-    icon: 'lugia-icon-financial_add_pic',
-    children: [
-      { key: '电脑部署', title: '电脑部署', children: [{ key: '显示器', title: '显示器' }] },
-      { key: '网络部署', title: '网络部署' },
-
-      {
-        key: '硬件部署',
-        title: '硬件部署',
-        children: [
-          { key: '鼠标部署', title: '鼠标部署', children: [{ key: '左键', title: '左键' }] },
-          { key: '键盘部署', title: '键盘部署', children: [{ key: '键A', title: '键A' }] },
-        ],
-      },
-    ],
-  },
-];
+const H3 = styled.h3`
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  background: cornflowerblue;
+  color: #fff;
+`;
 
 const newData = [
   {
-    value: '授权管理',
-    text: '授权管理',
-    alwaysExpanded: true,
-    icon: 'lugia-icon-financial_archive',
-    children: [
-      {
-        value: '授权参数设计',
-        text: '授权参数设计',
-        alwaysExpanded: true,
-        children: [
-          { value: '授权子参数一', text: '授权子参数一' },
-          { value: '授权子参数二', text: '授权子参数二' },
-        ],
-      },
-    ],
-  },
-
-  {
-    value: '部署',
-    text: '部署',
+    value: 'Lugia Design of React',
+    text: 'Lugia Design of React',
     icon: 'lugia-icon-financial_add_pic',
+  },
+  { value: '快速上手', text: '快速上手', icon: 'lugia-icon-financial_columns' },
+  { value: '项目实战', text: '项目实战' },
+  { value: '在Lugia-mega中使用', text: '在Lugia-mega中使用' },
+  {
+    value: 'Components',
+    text: 'Components',
     children: [
-      { value: '电脑部署', text: '电脑部署', children: [{ value: '显示器', text: '显示器' }] },
-      { value: '网络部署', text: '网络部署' },
-
       {
-        value: '硬件部署',
-        text: '硬件部署',
+        value: 'General',
+        text: 'General',
+        describe: true,
         children: [
-          { value: '鼠标部署', text: '鼠标部署', children: [{ value: '左键', text: '左键' }] },
-          { value: '键盘部署', text: '键盘部署', children: [{ value: '键A', text: '键A' }] },
+          { value: 'Button 按钮', text: 'Button 按钮', icon: 'lugia-icon-financial_add_pic' },
+          { value: 'Icon 图标', text: 'Icon 图标', icon: 'lugia-icon-financial_archive' },
         ],
       },
-      { value: '网络1', text: '网络1' },
-      { value: '网络2', text: '网络2' },
-      { value: '网络3', text: '网络3' },
-      { value: '网络4', text: '网络4' },
-      { value: '网络5', text: '网络5' },
-      { value: '网络6', text: '网络6' },
-      { value: '网络7', text: '网络7' },
-      { value: '网络8', text: '网络8' },
-      { value: '网络9', text: '网络9' },
-      { value: '网络10', text: '网络10' },
-      { value: '网络11', text: '网络11' },
-      { value: '网络12', text: '网络12' },
+
+      {
+        value: 'Layout',
+        text: 'Layout',
+        describe: true,
+        children: [
+          { value: 'Grid 栅格', text: 'Grid 栅格' },
+          { value: 'Layout 布局', text: 'Layout 布局' },
+        ],
+      },
+
+      {
+        value: 'Navigation',
+        text: 'Navigation',
+        describe: true,
+        children: [
+          { value: 'Affix 固钉', text: 'Affix 固钉' },
+          { value: 'Breadcrumb 面包屑', text: 'Breadcrumb 面包屑' },
+          { value: 'Dropdown 下拉菜单', text: 'Dropdown 下拉菜单' },
+          { value: 'Menu 导航菜单', text: 'Menu 导航菜单' },
+          { value: 'Pagination 分页', text: 'Pagination 分页' },
+          { value: 'Steps 步骤条', text: 'Steps 步骤条' },
+        ],
+      },
+
+      {
+        value: 'Data Entry',
+        text: 'Data Entry',
+        describe: true,
+        children: [
+          { value: 'AutoComplete 自动完成', text: 'AutoComplete 自动完成' },
+          { value: 'Cascader 级联选择', text: 'Cascader 级联选择' },
+          { value: 'Checkbox 多选框', text: 'Checkbox 多选框' },
+          { value: 'DatePicker 日期选择框', text: 'DatePicker 日期选择框' },
+          { value: 'Form 表单', text: 'Form 表单' },
+          { value: 'Input 输入框', text: 'Input 输入框' },
+        ],
+      },
     ],
   },
-  { value: '监控', text: '监控', icon: 'lugia-icon-financial_columns' },
-  { value: '监控2', text: '监控2', icon: 'lugia-icon-financial_columns' },
-  { value: '监控3', text: '监控3', icon: 'lugia-icon-financial_columns' },
-  { value: '监控4', text: '监控4', icon: 'lugia-icon-financial_columns' },
-  { value: '监控5', text: '监控5', icon: 'lugia-icon-financial_columns' },
-  { value: '监控6', text: '监控6', icon: 'lugia-icon-financial_columns' },
 ];
 
-export default class LimitTree extends React.Component<Object, Object> {
+export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
 
   constructor(props) {
     super(props);
-    const { value } = props;
-    this.state = { value };
+    this.state = { value: ['项目实战'] };
   }
 
   render() {
     const config = {
-      [Widget.Tree]: {
-        // height: 200,
-        width: 220,
+      [Widget.NavMenu]: {
+        width: 300,
+        // color: '#00ffff',
       },
     };
     return (
-      <Theme config={config}>
-        <Navmenu
-          inlineType={'ellipse'}
-          // inlineType={'primary'}
-          mode={'inline'}
-          // mode={'vertical'}
-          // valueField={'key'}
-          // displayField={'title'}
-          data={newData}
-          action={'hover'}
-          onChange={this.onChange}
-          expandAll={true}
-        />
-      </Theme>
+      <div>
+        <Box>
+          <H3>light主题 ellipse</H3>
+          <Theme config={config}>
+            <Navmenu
+              inlineType={'ellipse'}
+              mode={'inline'}
+              data={newData}
+              value={this.state.value}
+              inlineExpandAll={true}
+              onChange={this.onChange}
+              onSelect={this.onSelect}
+            />
+          </Theme>
+        </Box>
+
+        <Box>
+          <H3>dark主题 ellipse</H3>
+          <Theme config={config}>
+            <Navmenu
+              inlineType={'ellipse'}
+              // inlineType={'primary'}
+              mode={'inline'}
+              // mode={'vertical'}
+              motif={'dark'}
+              data={newData}
+              value={this.state.value}
+              inlineExpandAll={true}
+              onChange={this.onChange}
+              onSelect={this.onSelect}
+            />
+          </Theme>
+        </Box>
+
+        <Box>
+          <H3>light主题 primary</H3>
+          <Theme config={config}>
+            <Navmenu
+              inlineType={'primary'}
+              mode={'inline'}
+              // mode={'vertical'}
+              data={newData}
+              value={this.state.value}
+              inlineExpandAll={true}
+              onChange={this.onChange}
+              onSelect={this.onSelect}
+            />
+          </Theme>
+        </Box>
+
+        <Box>
+          <H3>dark主题 primary</H3>
+          <Theme config={config}>
+            <Navmenu
+              inlineType={'primary'}
+              mode={'inline'}
+              // mode={'vertical'}
+              data={newData}
+              motif={'dark'}
+              value={this.state.value}
+              inlineExpandAll={true}
+              onChange={this.onChange}
+              onSelect={this.onSelect}
+            />
+          </Theme>
+        </Box>
+      </div>
     );
   }
 
+  onSelect = target => {
+    console.log('target', target);
+    this.setState({ value: target.value });
+  };
   onChange = value => {
-    // console.log(value);
+    console.log(value);
+  };
+  onClick = (keys, item) => {
+    const { selectedKeys } = keys;
+    this.setState({ value: selectedKeys });
   };
 }

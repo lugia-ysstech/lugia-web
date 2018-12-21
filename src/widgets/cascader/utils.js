@@ -49,7 +49,7 @@ export function getLastIndex(array: Array<any>): number {
   return array.length - 1;
 }
 
-export function getInitExpandedPath(props: CascaderProps) {
+export function getInitExpandedPath(props: Object) {
   return getValue(props, null);
 }
 
@@ -57,7 +57,7 @@ export function letStringToArray(value: string[]) {
   return Array.isArray(value) ? value : [value];
 }
 
-export function getValue(props: CascaderProps, state: CascaderState | null): string[] {
+export function getValue(props: Object, state: Object | null): string[] {
   const { value = [], defaultValue = [] } = props;
 
   if (isHasValue(props)) {

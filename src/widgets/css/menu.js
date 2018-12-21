@@ -30,9 +30,11 @@ export const getMenuItemHeight = (size: sizeType) => {
     : DefaultMenuItemHeight;
 };
 
-export const LeftIcon = styled(CommonIcon)`
-  font-size: ${em(14)};
-  padding-right: ${px2emcss(1.4)(10)};
+export const TextIcon = styled(CommonIcon)`
+  display: inline-block;
+  position: relative;
+  padding-right: ${em(6)};
+  top: ${em(1.5)};
 `;
 export const RightIcon = styled.span`
   position: absolute;

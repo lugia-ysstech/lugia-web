@@ -11,7 +11,7 @@ import Theme from '../theme';
 import Menu from '../menu';
 import styled from 'styled-components';
 import { getTreeData } from '../menu/utils';
-
+import { getValue, getInitExpandedPath } from '../cascader/utils';
 import { MenuItemHeight, DefaultHeight } from '../css/navmenu';
 import { TreeUl } from '../css/navmenu';
 import {
@@ -48,12 +48,16 @@ type NavMenuProps = {
   onClick?: Function,
   valueField?: string,
   displayField?: string,
-  action?: 'click' | 'hover',
+  motif: 'light' | 'dark',
+  separator?: string,
 };
 
 type NavMenuState = {
   data: Array<RowData>,
   popupVisible: boolean,
+  value: string[],
+  expandedPath: string[],
+  selectedKeys: string[],
 };
 const openClassName = 'lugia-icon-direction_up';
 const closeClassName = 'lugia-icon-direction_down';
@@ -78,6 +82,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     valueField: 'value',
     displayField: 'text',
     inlineExpandAll: true,
+    motif: 'light',
   };
 
   treeData: Array<Object>;
@@ -87,8 +92,23 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     this.state = {
       data: props.data ? props.data : [],
       popupVisible: false,
+      value: getValue(props, null),
+      expandedPath: getInitExpandedPath(props),
+      selectedKeys: getInitExpandedPath(props),
     };
     this.treeData = getTreeData(this.props);
+  }
+
+  static getDerivedStateFromProps(props: NavMenuProps, state: NavMenuState) {
+    if (!state) {
+      return {};
+    }
+
+    return {
+      value: getValue(props, state),
+      selectedKeys: state.value,
+      expandedPath: state.expandedPath,
+    };
   }
 
   render() {
@@ -105,10 +125,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getVerticalNavMenu = () => {
-    const { data, displayField, valueField, action = 'click', getTheme } = this.props;
-    const { popupVisible } = this.state;
-    const theme = getTheme();
-    const { width, submenuWidth, height } = theme;
+    const { data, displayField, valueField, separator } = this.props;
+    const { popupVisible, selectedKeys, expandedPath } = this.state;
+    const { width, submenuWidth, height } = this.getThemeTarget();
     const menuConfig = {
       [Widget.Menu]: {
         width,
@@ -122,29 +141,59 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         <Theme config={menuConfig}>
           <Menu
             data={data}
-            separator={'/'}
+            separator={separator}
             popupVisible={popupVisible}
             valueField={valueField}
-            size={'bigger'}
-            subsize={'bigger'}
             displayField={displayField}
-            action={action}
+            size={'large'}
+            subsize={'bigger'}
+            action={'hover'}
             mutliple={false}
             handleIsInMenu={this.handleIsInMenu}
+            onClick={this.handleClickMenu}
+            selectedKeys={selectedKeys}
+            expandedPath={expandedPath}
+            onExpandPathChange={this.onExpandPathChange}
           />
         </Theme>
       </MenuWrap>
     );
   };
 
+  onExpandPathChange = (expandedPath: string[]) => {
+    this.setState({ expandedPath, popupVisible: true });
+    this.setPopupVisible(true, { expandedPath });
+  };
+
+  handleClickMenu = (event: Object, keys: Object, item: Object) => {
+    const { selectedKeys } = keys;
+    if (!item || !item.children || item.children.length === 0) {
+      this.setPopupVisible(false, { value: selectedKeys });
+    }
+
+    const { onClick, onChange } = this.props;
+    onChange && onChange(keys, item);
+    onClick && onClick(keys, item);
+  };
+
+  setPopupVisible(popupVisible: boolean, otherTarget?: Object = {}) {
+    this.setState({ popupVisible, ...otherTarget });
+  }
+
+  getThemeTarget = () => {
+    const { getTheme } = this.props;
+    return getTheme();
+  };
+
   getInlineNavMenu = () => {
-    const { inlineType, inlineExpandAll, valueField, displayField, getTheme } = this.props;
-    const theme = getTheme();
-    const { width } = theme;
+    const { value } = this.state;
+    const { inlineType, inlineExpandAll, valueField, displayField, motif } = this.props;
+    const { width, color } = this.getThemeTarget();
     const config = {
       [Widget.Tree]: {
         width,
         autoHeight: true,
+        color,
       },
     };
     const treeData = this.treeData;
@@ -152,35 +201,28 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       <Theme config={config}>
         <Tree
           expandAll={inlineExpandAll}
+          motif={motif}
           inlineType={inlineType}
           data={treeData}
           size={'bigger'}
+          value={value}
           mutliple={false}
           valueField={valueField}
           displayField={displayField}
           onlySelectLeaf={true}
           onChange={this.onChange}
           themeStyle={themeStyle}
-          onSelect={this.onSelect}
         />
       </Theme>
     );
   };
 
-  getItemObj = (value: string) => {
-    const { data } = this.state;
-    const { valueField } = this.props;
-    if (!data || data.length === 0) {
-      return {};
-    }
-
-    const item = data.find(item => item[valueField] === value);
-    console.log('item', valueField);
-  };
-
-  onSelect = obj => {
-    console.log('onSelect', obj);
-    this.getItemObj(obj[0]);
+  getExposeItem = (treeItem: Object) => {
+    const { valueField = 'value', displayField = 'text' } = this.props;
+    const obj = {};
+    obj[valueField] = treeItem[valueField];
+    obj[displayField] = treeItem[displayField];
+    return obj;
   };
 
   handleIsInMenu = (isInMenu: boolean) => {
@@ -192,19 +234,17 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   onChange = (value: string[]) => {
-    const item = this.getCheckedItem(value);
-    const { onChange } = this.props;
-    onChange && onChange(value);
+    const treeItem = this.getCheckedItem(value);
+    const item = this.getExposeItem(treeItem);
+    const { onChange, onSelect } = this.props;
+    onChange && onChange(item);
+    onSelect && onSelect(item);
+    this.setState({ value });
   };
 
-  getCheckedItem(value: string[]): Object {
+  getCheckedItem(value: string[]): any {
     const key = value[0];
-    const { valueField } = this.props;
-
+    const { valueField = 'value' } = this.props;
     return this.treeData.find(item => item[valueField] === key);
   }
-
-  // onExpand(expandedKeys: string[], data: Object[]) {
-  //   console.log('onExpand', expandedKeys, data);
-  // }
 }
