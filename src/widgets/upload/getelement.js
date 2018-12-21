@@ -339,6 +339,7 @@ const PictureView = styled.div`
   }
   & img {
     width: 100%;
+    max-height: 100%;
   }
   &.disabled i {
     cursor: not-allowed;

@@ -249,9 +249,10 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
     const list = this.getFileList(fileListDone, hashMark, [
       { target: 'status', value: 'done' },
-      { target: 'url', value: res.data.url },
+      // { target: 'url', value: res.data.url },
     ]);
     this.setStateValue({ classNameStatus: 'done', fileListDone: list });
+    this.uploadDonePreviewInfo(file, hashMark);
     console.log('fileListDone', fileListDone);
     const { listType } = this.props;
     if (listType === 'picture') {
@@ -314,6 +315,21 @@ class Upload extends React.Component<UploadProps, StateProps> {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       this.setStateValue({ previewUrl: reader.result });
+      reader.onloadend = null;
+    };
+  };
+
+  uploadDonePreviewInfo = (file: any, hashMark: string): void => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const { fileListDone } = this.state;
+      fileListDone.forEach((item, index) => {
+        if (item.hashMark === hashMark) {
+          item.url = reader.result;
+        }
+      });
+      this.setStateValue({ fileListDone });
       reader.onloadend = null;
     };
   };
