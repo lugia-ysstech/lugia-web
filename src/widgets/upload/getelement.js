@@ -294,9 +294,27 @@ const PictureView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   padding: 6px;
   margin: 10px;
+  position: relative;
+  & i.error {
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    font-size: 18px;
+    color: #f22735;
+    z-index: 10;
+    display: none;
+    background: #fff;
+    border: 2px solid #fff;
+  }
+
+  &:hover {
+    i.error {
+      display: inline-block;
+    }
+  }
+
   &.disabled {
     background: ${disableColor};
     color: #ccc;
@@ -387,17 +405,18 @@ const iconClassMap = {
   'p-fail': 'lugia-icon-financial_monitoring',
   'li-done': 'lugia-icon-reminder_check_circle right success',
   'li-fail': 'lugia-icon-reminder_close_circle right error',
+  'li-delete': 'lugia-icon-reminder_close right close',
 };
 
 export const getIconByType = (status: ?string, props?: Object = {}): ?Object | string => {
   if (!status) return null;
   const { type } = props;
   if (type === 1 && status !== 'loading') return '上传';
-  if (status === 'li-delete') {
+  if (props && (status === 'li-fail' || status === 'li-delete')) {
     const { doFunction, index } = props;
     return (
       <LoadIcon
-        iconClass="lugia-icon-reminder_close right close"
+        iconClass={iconClassMap[status]}
         onClick={e => {
           doFunction(index);
         }}
@@ -591,18 +610,17 @@ class GetElement extends React.Component<defProps, stateProps> {
     }
     if (listType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
-      const { handleClickToUpload } = this;
+      const { handleClickToUpload, handleClickToDelete } = this;
       children = (
         <React.Fragment>
           {classNameStatus === 'done' &&
             multiple &&
-            fileListDone.length > 1 &&
-            fileListDone.map(item => (
+            fileListDone.map((item, index) => (
               <PictureView
                 size={size}
                 className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
-                onClick={handleClickToUpload}
               >
+                {getIconByType('li-fail', { doFunction: handleClickToDelete, index })}
                 {classNameStatus === 'fail' && size !== 'small' ? (
                   <span>图片上传失败请重试</span>
                 ) : (
@@ -617,10 +635,10 @@ class GetElement extends React.Component<defProps, stateProps> {
             }`}
             onClick={handleClickToUpload}
           >
-            {!previewUrl || fileListDone.length > 1 ? (
-              getIconByType(`p-${classNameStatus === 'done' ? 'default' : classNameStatus}`)
-            ) : (
+            {!multiple && previewUrl ? (
               <img src={previewUrl} alt="" />
+            ) : (
+              getIconByType(`p-${classNameStatus === 'done' ? 'default' : classNameStatus}`)
             )}
             {classNameStatus === 'fail' && size !== 'small' ? (
               <span>图片上传失败请重试</span>
