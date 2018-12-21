@@ -46,7 +46,7 @@ import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 const em = px2emcss(FontSizeNumber);
-const ClearMenuItemButton = styled(Icon)`
+const ClearMenuItemButton: Object = styled(Icon)`
   top: 50%;
   right: ${em(12)};
   position: absolute;
@@ -85,7 +85,7 @@ type InputTagState = {
 };
 const getWidthBySpan = (spanWidth: number) => (props: Object) => {
   const w = props.theme.width - spanWidth;
-  return w ? `width: ${em(w)};` : 'width: 100%;';
+  return w ? `width: ${em(w)};` : 'width: 200;';
 };
 const getWidth = getWidthBySpan(0);
 const getBackground = props => {

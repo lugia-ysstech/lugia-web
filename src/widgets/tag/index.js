@@ -11,14 +11,16 @@ import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { TagContainer, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
 
+type shapeType = 'basic' | 'round';
+type styleType = 'customs' | 'primary' | 'basic' | 'presets';
 type TagProps = {
   closeable?: boolean,
   children: any,
   onClick?: Function,
   onClose?: Function,
-  shape: string,
+  shape: shapeType,
   getTheme: Function,
-  type: string,
+  type: styleType,
 };
 
 type TagState = {
@@ -31,6 +33,7 @@ class Tag extends React.Component<TagProps, TagState> {
     getTheme: () => {
       return {};
     },
+    closeable: true,
     shape: 'basic',
     type: 'customs',
   };
@@ -79,9 +82,9 @@ class Tag extends React.Component<TagProps, TagState> {
     }, 150);
   }
 
-  onClick = () => {
+  onClick = (e: Object) => {
     const { onClick } = this.props;
-    onClick && onClick();
+    onClick && onClick(e);
   };
 }
 

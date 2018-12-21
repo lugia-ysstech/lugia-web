@@ -13,7 +13,7 @@ const Wrap = styled.div`
   padding: 0 50px;
 `;
 
-const CommonIcon = styled(Icon)`
+const CommonIcon: Object = styled(Icon)`
   color: #000;
   border-radius: 50%;
 `;
@@ -47,7 +47,9 @@ export default class Demo extends React.Component<any, any> {
           <Breadcrumb.Item href="a">主页</Breadcrumb.Item>
           <Breadcrumb.Item href="b">一级菜单</Breadcrumb.Item>
           <Breadcrumb.Item href="c">二级菜单</Breadcrumb.Item>
-          <Breadcrumb.Item>三级菜单</Breadcrumb.Item>
+          <Breadcrumb.Item href="d" lastSeparator={'b'}>
+            三级菜单
+          </Breadcrumb.Item>
         </Breadcrumb>
         <Hr />
         <Breadcrumb separator={'>'}>

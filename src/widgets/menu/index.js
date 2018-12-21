@@ -1,19 +1,29 @@
 /**
  * 菜单
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
+import type { MenuItemProps } from './item';
+
 import '../common/shirm';
 import * as React from 'react';
 import Item from './item';
-import { DefaultHeight, MenuItemHeight, LeftIcon, RightIcon, MenuContainer } from '../css/menu';
+import {
+  DefaultHeight,
+  TextIcon,
+  MenuContainer,
+  RightIcon,
+  MenuItemHeight,
+  DefaultMenuItemHeight,
+  DefaultWidth,
+  getMenuItemHeight,
+} from '../css/menu';
 import ThemeProvider from '../theme-provider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
 import '../css/sv.css';
 import Theme from '../theme';
-import { adjustValue } from '../utils';
 import Trigger from '../trigger';
 import { findDOMNode } from 'react-dom';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
@@ -22,37 +32,28 @@ import { DisplayField, ValueField } from '../consts/props';
 import contains from 'rc-util/lib/Dom/contains';
 import { getCanSeeCountRealy } from '../scroller/support';
 import {
-  getTreeData,
-  getSelectedKeys,
-  getPopupVisible,
-  getExpandedPath,
-  getInitChildData,
-  getInitAllChildData,
-  getTargetOrDefaultTarget,
   getExpandDataOrSelectData,
+  getExpandedPath,
+  getInitAllChildData,
+  getInitChildData,
+  getPopupVisible,
+  getSelectedKeys,
+  getTargetOrDefaultTarget,
+  getTargetOrDefaultTargetLazy,
+  getTreeData,
 } from './utils';
 
 const Placeholder = {};
 
-type MenuItemProps = {|
-  mutliple: boolean,
-  action: string,
-  onClick: Function,
-  popupVisible?: boolean,
-  separator: string,
-  size: 'large' | 'small' | 'bigger',
-  checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
-|};
-
-type treeDataItem = {
-  key: string,
-  title: string,
+export type TreeDataItem = {
+  value: string,
+  text: string,
   pid: string,
   path: string,
   isLeaf: boolean,
 };
 
-type MenuProps = {
+export type MenuProps = {
   start: number,
   level: number,
   end: number,
@@ -71,6 +72,7 @@ type MenuProps = {
   onClick?: Function,
   onChange?: Function,
   onMouseEnter?: Function,
+  onExpandPathChange?: Function,
   onMouseLeave?: Function,
   limitCount?: number,
   disabled?: boolean,
@@ -82,7 +84,8 @@ type MenuProps = {
   separator: string,
   cancelData: Array<Object>,
   action: 'hover' | 'click',
-  size: string,
+  size: 'large' | 'default' | 'bigger',
+  subsize: 'large' | 'default' | 'bigger',
   mouseDownInMenus?: Function,
   pushMenuInstance?: Function,
   deleteMenuInstance?: Function,
@@ -93,11 +96,12 @@ type MenuProps = {
   handleIsInMenu?: Function,
   setExpandedPath: Function,
   allChildData?: Array<Object>,
-  treeData?: treeDataItem[],
+  treeData?: TreeDataItem[],
   getIndexOffsetY?: Function,
 };
 const EmptyData = [];
-type MenuState = {
+
+export type MenuState = {
   selectedKeys: string[],
   expandedPath: string[],
   popupVisible: boolean,
@@ -120,7 +124,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     getTheme: () => {
       return {};
     },
-    size: 'bigger',
+    size: 'default',
   };
   static displayName = Widget.Menu;
   isSelect: Function;
@@ -168,7 +172,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { props, state } = this;
     const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
-
     if (dataChanged || selectedChange) {
       this.updateIsSelect(nextState, nextProps);
     }
@@ -193,68 +196,36 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   render() {
     const { props } = this;
-    let { start, end, checkedCSS = 'none', mutliple, size, data } = props;
-    start = Math.round(start);
-    end = Math.round(end);
-    let items = [];
-    if (data && data.length > 0) {
-      items = this.computeItems(data, start, end, (obj: Object) => {
-        const { valueField, displayField } = this.props;
-        const { [valueField]: key, [displayField]: value, disabled, children, icon } = obj;
-        const { getPrefix, getSuffix } = props;
-
-        const prefix = getPrefix && getPrefix(obj);
-        const suffix = getSuffix && getSuffix(obj);
-        const isShowRightIconCondition = checkedCSS !== 'none' || mutliple === true;
-        const rightIcon = getTargetOrDefaultTarget(
-          isShowRightIconCondition,
-          null,
-          this.getCascaderIcon(children)
-        );
-
-        if (obj === Placeholder) {
-          return <li />;
-        }
-
-        const Icon = icon ? <LeftIcon iconClass={icon} /> : null;
-        return (
-          <Item key={key} size={size} disabled={disabled} checkedCSS={checkedCSS}>
-            {prefix}
-            {Icon}
-            {value}
-            {suffix}
-            {rightIcon}
-          </Item>
-        );
-      });
-    } else {
-      const { children } = props;
-      if (children && children.length > 0) {
-        items = this.computeItems(children, start, end, (obj: Object) => obj);
-      }
-    }
+    const items = this.getItems(props);
+    const { data, size } = props;
+    const length = data.length;
     const bodyContent = (
-      <MenuContainer theme={this.getTheme()} level={this.props.level}>
+      <MenuContainer length={length} size={size} theme={this.getTheme()} level={this.props.level}>
         {items}
       </MenuContainer>
     );
+
     if (!Array.isArray(this.state.childData) || this.state.childData.length === 0) {
       return bodyContent;
     }
 
-    const { offsetX, offsetY, getTheme } = this.props;
-    const { popupVisible = false, childData, indexOffsetY } = this.state;
-    const isOffsetX = offsetX === 0 || offsetX;
-    const isOffsetY = offsetY === 0 || offsetY;
-    const activeOffsetX = getTargetOrDefaultTarget(!!isOffsetX, offsetX, 4);
-    const activeOffsetY = getTargetOrDefaultTarget(
-      !!isOffsetY,
-      offsetY,
-      indexOffsetY * MenuItemHeight
-    );
-    const { submenuWidth } = getTheme();
+    const { offsetX, offsetY } = this.props;
+    const { indexOffsetY } = this.state;
+
+    const isOffsetX = !!(offsetX === 0 || offsetX);
+    const activeOffsetX = getTargetOrDefaultTarget(isOffsetX, offsetX, 4);
+
+    const itemHeight = getMenuItemHeight(size);
+
+    const isOffsetY = !!(offsetY === 0 || offsetY);
+    const activeOffsetY = getTargetOrDefaultTarget(isOffsetY, offsetY, indexOffsetY * itemHeight);
+    const { getTheme } = this.props;
+    const { popupVisible = false, childData } = this.state;
+    const { submenuWidth, width } = getTheme();
+    const activeSubmenuWidth = submenuWidth ? submenuWidth : width ? width : DefaultWidth;
+
     return (
-      <Theme config={{ [Widget.Trigger]: { width: submenuWidth } }}>
+      <Theme config={{ [Widget.Trigger]: { width: activeSubmenuWidth } }}>
         <Trigger
           ref={cmp => (this.trigger = cmp)}
           align={'rightTop'}
@@ -270,11 +241,56 @@ class Menu extends React.Component<MenuProps, MenuState> {
     );
   }
 
+  getItems(props: MenuProps): Object[] {
+    let { start, end, checkedCSS = 'none', mutliple, data } = props;
+    start = Math.round(start);
+    end = Math.round(end);
+
+    if (data && data.length > 0) {
+      return this.computeItems(data, start, end, (obj: Object) => {
+        const { valueField, displayField, size } = this.props;
+        const { [valueField]: key, [displayField]: value, disabled, children, icon } = obj;
+        const { getPrefix, getSuffix } = props;
+
+        const prefix = getPrefix && getPrefix(obj);
+        const suffix = getSuffix && getSuffix(obj);
+        const isShowRightIconCondition = checkedCSS !== 'none' || mutliple === true;
+        const rightIcon = getTargetOrDefaultTargetLazy(
+          isShowRightIconCondition,
+          () => null,
+          () => this.getCascaderIcon(children)
+        );
+
+        if (obj === Placeholder) {
+          return <li />;
+        }
+
+        const iconElement = icon ? <TextIcon iconClass={icon} /> : null;
+        return (
+          <Item key={key} size={size} disabled={disabled} checkedCSS={checkedCSS}>
+            {prefix}
+            {iconElement}
+            {value}
+            {suffix}
+            {rightIcon}
+          </Item>
+        );
+      });
+    }
+
+    const { children } = props;
+    if (children && children.length > 0) {
+      return this.computeItems(children, start, end, (obj: Object) => obj);
+    }
+
+    return [];
+  }
+
   getTheme() {
     const { getTheme } = this.props;
     const theme = getTheme();
-    const { height = DefaultHeight } = theme;
-    theme.height = adjustValue(height, MenuItemHeight);
+    const { width = DefaultWidth } = theme;
+    theme.width = width;
     return theme;
   }
 
@@ -288,12 +304,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
     for (let i = start; i < end; i++) {
       const item = data[i];
       const indexOffsetY = i - start;
-      items.push(this.renderMenuItem(getItem(item), this.isSelect, item, indexOffsetY));
+      items.push(this.createMenuItemElement(getItem(item), this.isSelect, item, indexOffsetY));
     }
     return items;
   }
 
-  renderMenuItem = (
+  createMenuItemElement = (
     child: React.Element<typeof Item>,
     isSelect: Function,
     item: Object,
@@ -308,7 +324,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   fetchExtendProps(
-    key?: null | number | string,
+    key: null | number | string,
     isSelect: Function,
     item: Object,
     disabled: boolean,
@@ -316,6 +332,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   ): MenuItemProps {
     const { mutliple, checkbox } = this.props;
     const eventConfig = this.onMenuItemEventHandler(key, item, disabled, indexOffsetY);
+
     if (!key || !isSelect(key)) {
       return { mutliple, ...eventConfig, checked: false, checkbox, disabled };
     }
@@ -324,7 +341,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   updateIsSelect(state: MenuState, props: MenuProps) {
-    this.isSelect = this.createSelect(state, props);
+    this.isSelect = this.createIsSelectFunction(state, props);
   }
 
   updataExpandedData(state: MenuState, props: MenuProps) {
@@ -351,35 +368,34 @@ class Menu extends React.Component<MenuProps, MenuState> {
         if (!key) {
           return;
         }
+
         this.setState({ indexOffsetY });
-        const str = key + '';
-        let { selectedKeys = [] } = this.state;
 
+        const { selectedKeys } = this.state;
+        let index = -1;
         if (mutliple) {
-          const index = selectedKeys.indexOf(str);
-          const noIn = index === -1;
-          if (noIn) {
-            if (selectedKeys.length < limitCount) {
-              selectedKeys.push(str);
-            } else {
-              return;
-            }
-          } else {
-            selectedKeys.splice(index, 1);
+          index = selectedKeys.indexOf(key);
+          const canSelect = selectedKeys.length < limitCount;
+          if (!canSelect) {
+            return;
           }
-        } else {
-          selectedKeys = this.getSelectedKeysOrExpandedPath(key, separator);
-          const setSelectedKeys = this.getSetSelectedKeys();
-          setSelectedKeys(selectedKeys);
-
-          this.IsSetExpandedPath('click', selectedKeys);
         }
 
-        /**
-         *  add by szfeng
-         */
+        const newSelectedKeys = this.fetchSelectedKeys({
+          mutliple,
+          key,
+          separator,
+          selectedKeys,
+          index,
+        });
 
-        const keys = { selectedKeys: [...selectedKeys] };
+        if (!mutliple) {
+          this.updateExpandedPath('click', newSelectedKeys);
+        }
+        const setSelectedKeys = this.getSetSelectedKeys();
+        setSelectedKeys(newSelectedKeys);
+
+        const keys = { selectedKeys: [...newSelectedKeys] };
         onClick && onClick(event, keys, item);
         onChange && onChange(keys);
 
@@ -391,11 +407,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
         if (mutliple === true) {
           return;
         }
+        this.setState({ indexOffsetY });
 
         const expandedPath = this.getSelectedKeysOrExpandedPath(key, separator);
-        this.IsSetExpandedPath('hover', expandedPath);
-
-        onMouseEnter && onMouseEnter(event, expandedPath, item);
+        this.updateExpandedPath('hover', expandedPath);
+        onMouseEnter && onMouseEnter(event, item);
       },
       getIndexOffsetY: () => {
         const { getIndexOffsetY } = this.props;
@@ -404,18 +420,51 @@ class Menu extends React.Component<MenuProps, MenuState> {
     };
   };
 
-  IsSetExpandedPath(targetAction: string, expandedPath: string[]) {
+  fetchSelectedKeys = (config: {
+    mutliple: boolean,
+    key: any,
+    separator: string,
+    selectedKeys: string[],
+    index: number,
+  }): ?(string[]) => {
+    const { mutliple, separator } = config;
+
+    let { key } = config;
+    key = key + '';
+    if (!mutliple) {
+      return this.getSelectedKeysOrExpandedPath(key, separator);
+    }
+
+    const { selectedKeys, index } = config;
+    const newSelectedKeys = [...selectedKeys];
+    const isNotInSelectedKeys = index === -1;
+    if (isNotInSelectedKeys) {
+      newSelectedKeys.push(key);
+    } else {
+      newSelectedKeys.splice(index, 1);
+    }
+
+    return newSelectedKeys;
+  };
+
+  updateExpandedPath(targetAction: string, expandedPath: string[]): boolean {
     const { props } = this;
+
+    const { onExpandPathChange } = props;
+    onExpandPathChange && onExpandPathChange(expandedPath);
+
     const { action, checkedCSS, level } = props;
     const isExpandedPathInProps = 'expandedPath' in props && level === 0;
     const notSetExpandedPathCondition =
       action !== targetAction || checkedCSS !== 'none' || isExpandedPathInProps;
+
     if (notSetExpandedPathCondition) {
-      return;
+      return false;
     }
 
     const setExpandedPath = this.getSetExpandedPath();
     setExpandedPath(expandedPath);
+    return true;
   }
 
   getNewExpandedPathData = (key: string | number): any => {
@@ -426,23 +475,22 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   mapTreeDataAndGetPath(key: string | number): string[] {
-    const { treeData = [], separator } = this.props;
-    let newPath = [];
-    treeData.forEach(item => {
-      if (key === item.key) {
-        newPath = this.getNewPath(item.path, separator, key);
-      }
-    });
-    return newPath;
+    const { treeData = [] } = this.props;
+    const targetItem = treeData.find(item => key === item.value);
+    if (!targetItem) {
+      return [];
+    }
+    const { path } = targetItem;
+    return this.getNewPath(path, key);
   }
 
-  getNewPath(oldPath: string, separator: string, key: string | number) {
+  getNewPath(oldPath: string, key: string) {
     const newPathData = oldPath.split('/');
     newPathData.push(key);
     return newPathData;
   }
 
-  getSelectedKeysOrExpandedPath(key: number | string, separator: string) {
+  getSelectedKeysOrExpandedPath(key: any, separator: string) {
     const newExpandedData = this.getNewExpandedPathData(key);
     return [newExpandedData.join(separator)];
   }
@@ -486,19 +534,23 @@ class Menu extends React.Component<MenuProps, MenuState> {
       level,
       onClick,
       onMouseEnter,
+      onExpandPathChange,
       onChange,
       popupVisible,
       displayField,
       valueField,
+      mutliple,
+      subsize,
     } = this.props;
+
     const { selectedKeys, expandedPath } = this.state;
     const x = offsetX === 0 || offsetX ? offsetX : 4;
     const y = offsetY === 0 || offsetY ? offsetY : null;
+
     return (
       <Result
-        mutliple={false}
-        ref={cmp => (this.childMenu = cmp)}
-        data={childrenData}
+        mutliple={mutliple}
+        size={subsize}
         displayField={displayField}
         valueField={valueField}
         popupVisible={popupVisible}
@@ -507,11 +559,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
         separator={separator}
         selectedKeys={selectedKeys}
         expandedPath={expandedPath}
-        offsetX={x}
-        offsetY={y}
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         onChange={onChange}
+        onExpandPathChange={onExpandPathChange}
+        ref={cmp => (this.childMenu = cmp)}
+        data={childrenData}
+        offsetX={x}
+        offsetY={y}
         level={level + 1}
         pushMenuInstance={this.getPushMenuInstance()}
         deleteMenuInstance={this.getDeleteMenuInstance()}
@@ -545,10 +600,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
   getSelectedKeysData() {
     const { props, state } = this;
     const { selectedKeys = [] } = state;
-    return getTargetOrDefaultTarget(
+    return getTargetOrDefaultTargetLazy(
       this.isRoot(),
-      getExpandDataOrSelectData(props, selectedKeys),
-      props.selectedKeysData
+      () => getExpandDataOrSelectData(props, selectedKeys),
+      () => props.selectedKeysData
     );
   }
 
@@ -592,10 +647,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
     );
   };
 
-  createSelect = (state: MenuState, props: MenuProps) => {
+  createIsSelectFunction = (state: MenuState, props: MenuProps) => {
     const existKey = {};
     const { selectedKeys = [] } = state;
-    const { level } = props;
+    const { level, separator } = props;
     const len = selectedKeys.length;
     if (selectedKeys && len > 0) {
       const { mutliple } = props;
@@ -610,13 +665,16 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return () => {};
         }
 
-        const target = getTargetOrDefaultTarget(
-          this.isRoot(),
-          getExpandDataOrSelectData(props, selectedKeys),
-          selectedKeysData
-        );
-
-        existKey[target[level]] = true;
+        if (selectedKeys[0].indexOf(separator) === -1) {
+          existKey[selectedKeys[selectedKeys.length - 1]] = true;
+        } else {
+          const target = getTargetOrDefaultTargetLazy(
+            this.isRoot(),
+            () => getExpandDataOrSelectData(props, selectedKeys),
+            () => selectedKeysData
+          );
+          existKey[target[level]] = true;
+        }
       }
     }
     return (key: number | string) => {
@@ -630,6 +688,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       this.childMenu.getThemeTarget().scrollerTarget.forceAlign();
     }
   }
+
   componentDidUpdate() {
     const { level } = this.props;
     if (level === 0) {
@@ -679,14 +738,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   onDocumentClick = (e: Object) => {
     const mouseDownInMenus = this.getMouseDownInMenus();
-    if (!mouseDownInMenus(e.target)) {
+    if (mouseDownInMenus && !mouseDownInMenus(e.target)) {
       this.setState({ childData: EmptyData, popupVisible: false });
     }
   };
 
   componentWillUnmount() {
     const deleteMenuInstance = this.getDeleteMenuInstance();
-    deleteMenuInstance(this.props.level);
+    deleteMenuInstance && deleteMenuInstance(this.props.level);
     this.clearOutsideHandler();
   }
 
@@ -705,8 +764,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
 Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
 
 Result.Placeholder = Placeholder;
-Result.computeCanSeeCount = (height?: number = DefaultHeight): number => {
-  return Math.floor(getCanSeeCountRealy(height, MenuItemHeight));
+Result.computeCanSeeCount = (
+  height?: number = DefaultHeight,
+  menuItemHeight?: number = DefaultMenuItemHeight
+): number => {
+  return Math.floor(getCanSeeCountRealy(height, menuItemHeight));
 };
 Result.MenuItem = Item;
 export default Result;

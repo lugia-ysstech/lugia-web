@@ -215,7 +215,7 @@ export const ProgressText = styled.span`
   vertical-align: bottom;
 `;
 
-export const Icons = styled(Icon)`
+export const Icons: Object = styled(Icon)`
   cursor: default;
   vertical-align: text-bottom !important;
   ${getTextFont};

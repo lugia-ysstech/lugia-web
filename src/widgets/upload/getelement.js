@@ -74,7 +74,7 @@ const InputContent = styled.div`
   }
 `;
 
-const LoadIcon = styled(Icon)`
+const LoadIcon: Object = styled(Icon)`
   &.loadIcon {
     margin-right: 10px;
   }

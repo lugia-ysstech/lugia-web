@@ -233,7 +233,7 @@ const getIconFont = (props: Object) => {
       font-size: ${em(18)}!important;
     `;
 };
-export const IconWrap = styled(Icon)`
+export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   ${getIconFont}
   color: ${mediumGreyColor};

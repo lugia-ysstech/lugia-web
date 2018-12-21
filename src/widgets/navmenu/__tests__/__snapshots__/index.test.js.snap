@@ -1,0 +1,4388 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  display: inline-block;
+  position: relative;
+  padding-right: 0.5em;
+  top: 0.125em;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 83.33333333333334em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c1 {
+  position: relative;
+  top: 0em;
+  width: 100%;
+  padding: 0;
+}
+
+.c9 {
+  font-size: 1.1666666666666667em;
+  color: #999999;
+  display: inline-block;
+  position: absolute;
+  right: 0.7142857142857143em;
+  top: 0;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+}
+
+.c4 {
+  font-size: 1.1666666666666667em;
+  color: #999999;
+  display: inline-block;
+  position: absolute;
+  right: 0.7142857142857143em;
+  top: 0;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+  opacity: 0;
+}
+
+.c2 {
+  margin: 0;
+}
+
+.c3 {
+  min-height: 3.3333333333333335em;
+  line-height: 3.3333333333333335em;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  outline: 0;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c10 {
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  font-size: 1.3333333333333335em;
+  padding: 0 2.5em 0 1.25em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #333333;
+}
+
+.c6:hover {
+  color: #4d63ff;
+}
+
+.c11 {
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.142857142857143em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #b5b6c1;
+}
+
+.c13 {
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.857142857142857em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #333333;
+}
+
+.c13:hover {
+  color: #4d63ff;
+}
+
+.c7 {
+  height: height:2.5em;
+  line-height: height:2.5em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  padding-left: 1.25em;
+  border-radius: 3.3333333333333335em;
+  background: #ffffff;
+}
+
+.c12 {
+  height: height:2.857142857142857em;
+  line-height: height:2.857142857142857em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  padding-left: 1.4285714285714286em;
+  border-radius: 5em;
+  background: #ffffff;
+}
+
+<div
+  className="c0"
+  onWheel={[Function]}
+  size="bigger"
+>
+  <ul
+    className="rc-tree c1 c2"
+    role="tree-node"
+    unselectable="on"
+  >
+    <li
+      className="c3"
+      selected={false}
+      title="Lugia Design of React"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="Lugia Design of React"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="Lugia Design of React"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          Lugia Design of React
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="快速上手"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="快速上手"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="快速上手"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          快速上手
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="项目实战"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="项目实战"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="项目实战"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          项目实战
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="在Lugia-mega中使用"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="在Lugia-mega中使用"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="在Lugia-mega中使用"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          在Lugia-mega中使用
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="Components"
+      unselectable="on"
+    >
+      <span
+        className="c9"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_up  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="Components"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="Components"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          Components
+        </span>
+      </span>
+      <ul
+        className="c10"
+        data-expanded={true}
+      >
+        <li
+          className="c3"
+          selected={false}
+          title="General"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="General"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="General"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              General
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Button 按钮"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Button 按钮"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Button 按钮"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Button 按钮
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Icon 图标"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Icon 图标"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Icon 图标"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Icon 图标
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Layout"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Layout"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Layout"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Layout
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Grid 栅格"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Grid 栅格"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Grid 栅格"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Grid 栅格
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Layout 布局"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Layout 布局"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Layout 布局"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Layout 布局
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Navigation"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Navigation"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Navigation"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Navigation
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Affix 固钉"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Affix 固钉"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Affix 固钉"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Affix 固钉
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Breadcrumb 面包屑"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Breadcrumb 面包屑"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Breadcrumb 面包屑"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Breadcrumb 面包屑
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Dropdown 下拉菜单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Dropdown 下拉菜单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Dropdown 下拉菜单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Dropdown 下拉菜单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Menu 导航菜单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Menu 导航菜单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Menu 导航菜单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Menu 导航菜单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Pagination 分页"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Pagination 分页"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Pagination 分页"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Pagination 分页
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Steps 步骤条"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Steps 步骤条"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Steps 步骤条"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Steps 步骤条
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Data Entry"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Data Entry"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Data Entry"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Data Entry
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="AutoComplete 自动完成"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="AutoComplete 自动完成"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="AutoComplete 自动完成"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  AutoComplete 自动完成
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Cascader 级联选择"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Cascader 级联选择"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Cascader 级联选择"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Cascader 级联选择
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Checkbox 多选框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Checkbox 多选框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Checkbox 多选框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Checkbox 多选框
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="DatePicker 日期选择框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="DatePicker 日期选择框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="DatePicker 日期选择框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  DatePicker 日期选择框
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Form 表单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Form 表单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Form 表单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Form 表单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Input 输入框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Input 输入框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Input 输入框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Input 输入框
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`NavMenu  mode inline,inlineType=ellipse,motif=dark 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  display: inline-block;
+  position: relative;
+  padding-right: 0.5em;
+  top: 0.125em;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 83.33333333333334em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c1 {
+  position: relative;
+  top: 0em;
+  width: 100%;
+  padding: 0;
+}
+
+.c9 {
+  font-size: 1.1666666666666667em;
+  color: #999999;
+  display: inline-block;
+  position: absolute;
+  right: 0.7142857142857143em;
+  top: 0;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+}
+
+.c4 {
+  font-size: 1.1666666666666667em;
+  color: #999999;
+  display: inline-block;
+  position: absolute;
+  right: 0.7142857142857143em;
+  top: 0;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+  opacity: 0;
+}
+
+.c2 {
+  margin: 0;
+}
+
+.c3 {
+  background: #000033;
+  min-height: 3.3333333333333335em;
+  line-height: 3.3333333333333335em;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  outline: 0;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c10 {
+  margin: 0;
+  padding: 0;
+}
+
+.c11 {
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.142857142857143em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #b5b6c1;
+}
+
+.c6 {
+  font-size: 1.3333333333333335em;
+  padding: 0 2.5em 0 1.25em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #ffffff;
+}
+
+.c6:hover {
+  color: #4d63ff;
+}
+
+.c13 {
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.857142857142857em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #ffffff;
+}
+
+.c13:hover {
+  color: #4d63ff;
+}
+
+.c7 {
+  height: height:2.5em;
+  line-height: height:2.5em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  padding-left: 1.25em;
+  border-radius: 3.3333333333333335em;
+  background: #000033;
+}
+
+.c12 {
+  height: height:2.857142857142857em;
+  line-height: height:2.857142857142857em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  padding-left: 1.4285714285714286em;
+  border-radius: 5em;
+  background: #000033;
+}
+
+<div
+  className="c0"
+  onWheel={[Function]}
+  size="bigger"
+>
+  <ul
+    className="rc-tree c1 c2"
+    role="tree-node"
+    unselectable="on"
+  >
+    <li
+      className="c3"
+      selected={false}
+      title="Lugia Design of React"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="Lugia Design of React"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="Lugia Design of React"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          Lugia Design of React
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="快速上手"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="快速上手"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="快速上手"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          快速上手
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="项目实战"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="项目实战"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="项目实战"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          项目实战
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="在Lugia-mega中使用"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="在Lugia-mega中使用"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="在Lugia-mega中使用"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          在Lugia-mega中使用
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="Components"
+      unselectable="on"
+    >
+      <span
+        className="c9"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_up  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="Components"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="Components"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          Components
+        </span>
+      </span>
+      <ul
+        className="c10"
+        data-expanded={true}
+      >
+        <li
+          className="c3"
+          selected={false}
+          title="General"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="General"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="General"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              General
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Button 按钮"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Button 按钮"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Button 按钮"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Button 按钮
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Icon 图标"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Icon 图标"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Icon 图标"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Icon 图标
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Layout"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Layout"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Layout"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Layout
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Grid 栅格"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Grid 栅格"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Grid 栅格"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Grid 栅格
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Layout 布局"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Layout 布局"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Layout 布局"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Layout 布局
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Navigation"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Navigation"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Navigation"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Navigation
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Affix 固钉"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Affix 固钉"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Affix 固钉"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Affix 固钉
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Breadcrumb 面包屑"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Breadcrumb 面包屑"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Breadcrumb 面包屑"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Breadcrumb 面包屑
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Dropdown 下拉菜单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Dropdown 下拉菜单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Dropdown 下拉菜单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Dropdown 下拉菜单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Menu 导航菜单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Menu 导航菜单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Menu 导航菜单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Menu 导航菜单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Pagination 分页"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Pagination 分页"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Pagination 分页"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Pagination 分页
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Steps 步骤条"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Steps 步骤条"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Steps 步骤条"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Steps 步骤条
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Data Entry"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Data Entry"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Data Entry"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Data Entry
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="AutoComplete 自动完成"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="AutoComplete 自动完成"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="AutoComplete 自动完成"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  AutoComplete 自动完成
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Cascader 级联选择"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Cascader 级联选择"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Cascader 级联选择"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Cascader 级联选择
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Checkbox 多选框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Checkbox 多选框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Checkbox 多选框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Checkbox 多选框
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="DatePicker 日期选择框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="DatePicker 日期选择框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="DatePicker 日期选择框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  DatePicker 日期选择框
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Form 表单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Form 表单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Form 表单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Form 表单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Input 输入框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Input 输入框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Input 输入框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Input 输入框
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`NavMenu  mode=vertical  1`] = `
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c5 {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c2 {
+  width: 20.833333333333336em;
+  outline: none;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 0;
+  list-style: none;
+  height: 25em;
+  max-height: 25em;
+  overflow: hidden;
+}
+
+.c1 {
+  overflow: hidden;
+  height: 25em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c4 {
+  padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1.1666666666666667em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.c3 {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  height: 5em;
+  font-weight: 400;
+  color: #333333;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+
+.c3:hover:after {
+  color: #d0c8c8;
+}
+
+.c3:hover {
+  background-color: #edf0fe;
+  font-weight: 900;
+}
+
+.c0 {
+  display: inline-block;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+    onWheel={[Function]}
+    size="large"
+  >
+    <ul
+      className="c2"
+      size="large"
+    >
+      <li
+        checked={false}
+        className="c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        size="large"
+        title="Lugia Design of React"
+      >
+        <span
+          className="c4"
+          size="large"
+        >
+          Lugia Design of React
+        </span>
+      </li>
+      <li
+        checked={false}
+        className="c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        size="large"
+        title="快速上手"
+      >
+        <span
+          className="c4"
+          size="large"
+        >
+          快速上手
+        </span>
+      </li>
+      <li
+        checked={false}
+        className="c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        size="large"
+        title="项目实战"
+      >
+        <span
+          className="c4"
+          size="large"
+        >
+          项目实战
+        </span>
+      </li>
+      <li
+        checked={false}
+        className="c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        size="large"
+        title="在Lugia-mega中使用"
+      >
+        <span
+          className="c4"
+          size="large"
+        >
+          在Lugia-mega中使用
+        </span>
+      </li>
+      <li
+        checked={false}
+        className="c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        size="large"
+        title="Components"
+      >
+        <span
+          className="c4"
+          size="large"
+        >
+          Components
+          <span
+            className="c5"
+          >
+            <i
+              className="lugia-icon-direction_right  c6"
+            />
+          </span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`NavMenu mode=inline,inlineType=primary  1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  display: inline-block;
+  position: relative;
+  padding-right: 0.5em;
+  top: 0.125em;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 83.33333333333334em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c1 {
+  position: relative;
+  top: 0em;
+  width: 100%;
+  padding: 0;
+}
+
+.c9 {
+  font-size: 1.1666666666666667em;
+  color: #999999;
+  display: inline-block;
+  position: absolute;
+  right: 0.7142857142857143em;
+  top: 0;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+}
+
+.c4 {
+  font-size: 1.1666666666666667em;
+  color: #999999;
+  display: inline-block;
+  position: absolute;
+  right: 0.7142857142857143em;
+  top: 0;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+  opacity: 0;
+}
+
+.c2 {
+  margin: 0;
+}
+
+.c3 {
+  min-height: 3.3333333333333335em;
+  line-height: 3.3333333333333335em;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  outline: 0;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3::before {
+  content: '';
+  width: 0.33333333333333337em;
+  border-radius: 0.33333333333333337em;
+  height: 3.3333333333333335em;
+  background: #4d63ff;
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.c10 {
+  margin: 0;
+  padding: 0;
+  background: #edf0fe;
+}
+
+.c11 {
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.142857142857143em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #b5b6c1;
+}
+
+.c6 {
+  font-size: 1.3333333333333335em;
+  padding: 0 2.5em 0 1.25em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #333333;
+}
+
+.c6:hover {
+  color: #4d63ff;
+}
+
+.c13 {
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.857142857142857em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #333333;
+}
+
+.c13:hover {
+  color: #4d63ff;
+}
+
+.c7 {
+  height: height:2.5em;
+  line-height: height:2.5em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: all 0s;
+  transition: all 0s;
+  padding-left: 1.25em;
+  border-radius: 3.3333333333333335em;
+  background: transparent;
+}
+
+.c12 {
+  height: height:2.857142857142857em;
+  line-height: height:2.857142857142857em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: all 0s;
+  transition: all 0s;
+  padding-left: 1.4285714285714286em;
+  border-radius: 5em;
+  background: transparent;
+}
+
+<div
+  className="c0"
+  onWheel={[Function]}
+  size="bigger"
+>
+  <ul
+    className="rc-tree c1 c2"
+    role="tree-node"
+    unselectable="on"
+  >
+    <li
+      className="c3"
+      selected={false}
+      title="Lugia Design of React"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="Lugia Design of React"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="Lugia Design of React"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          Lugia Design of React
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="快速上手"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="快速上手"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="快速上手"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          快速上手
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="项目实战"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="项目实战"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="项目实战"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          项目实战
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="在Lugia-mega中使用"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="在Lugia-mega中使用"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="在Lugia-mega中使用"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          在Lugia-mega中使用
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="Components"
+      unselectable="on"
+    >
+      <span
+        className="c9"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_up  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="Components"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="Components"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          Components
+        </span>
+      </span>
+      <ul
+        className="c10"
+        data-expanded={true}
+      >
+        <li
+          className="c3"
+          selected={false}
+          title="General"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="General"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="General"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              General
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Button 按钮"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Button 按钮"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Button 按钮"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Button 按钮
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Icon 图标"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Icon 图标"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Icon 图标"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Icon 图标
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Layout"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Layout"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Layout"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Layout
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Grid 栅格"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Grid 栅格"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Grid 栅格"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Grid 栅格
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Layout 布局"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Layout 布局"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Layout 布局"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Layout 布局
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Navigation"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Navigation"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Navigation"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Navigation
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Affix 固钉"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Affix 固钉"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Affix 固钉"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Affix 固钉
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Breadcrumb 面包屑"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Breadcrumb 面包屑"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Breadcrumb 面包屑"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Breadcrumb 面包屑
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Dropdown 下拉菜单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Dropdown 下拉菜单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Dropdown 下拉菜单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Dropdown 下拉菜单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Menu 导航菜单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Menu 导航菜单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Menu 导航菜单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Menu 导航菜单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Pagination 分页"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Pagination 分页"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Pagination 分页"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Pagination 分页
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Steps 步骤条"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Steps 步骤条"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Steps 步骤条"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Steps 步骤条
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Data Entry"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Data Entry"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Data Entry"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Data Entry
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="AutoComplete 自动完成"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="AutoComplete 自动完成"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="AutoComplete 自动完成"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  AutoComplete 自动完成
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Cascader 级联选择"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Cascader 级联选择"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Cascader 级联选择"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Cascader 级联选择
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Checkbox 多选框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Checkbox 多选框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Checkbox 多选框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Checkbox 多选框
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="DatePicker 日期选择框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="DatePicker 日期选择框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="DatePicker 日期选择框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  DatePicker 日期选择框
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Form 表单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Form 表单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Form 表单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Form 表单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Input 输入框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Input 输入框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Input 输入框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Input 输入框
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`NavMenu mode=inline,inlineType=primary,motif=dark  1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  display: inline-block;
+  position: relative;
+  padding-right: 0.5em;
+  top: 0.125em;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 83.33333333333334em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c1 {
+  position: relative;
+  top: 0em;
+  width: 100%;
+  padding: 0;
+}
+
+.c9 {
+  font-size: 1.1666666666666667em;
+  color: #999999;
+  display: inline-block;
+  position: absolute;
+  right: 0.7142857142857143em;
+  top: 0;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+}
+
+.c4 {
+  font-size: 1.1666666666666667em;
+  color: #999999;
+  display: inline-block;
+  position: absolute;
+  right: 0.7142857142857143em;
+  top: 0;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+  opacity: 0;
+}
+
+.c2 {
+  margin: 0;
+}
+
+.c3 {
+  background: #000033;
+  min-height: 3.3333333333333335em;
+  line-height: 3.3333333333333335em;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  outline: 0;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3::before {
+  content: '';
+  width: 0.33333333333333337em;
+  border-radius: 0.33333333333333337em;
+  height: 3.3333333333333335em;
+  background: #4d63ff;
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.c10 {
+  margin: 0;
+  padding: 0;
+  background: #edf0fe;
+}
+
+.c6 {
+  font-size: 1.3333333333333335em;
+  padding: 0 2.5em 0 1.25em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #ffffff;
+}
+
+.c6:hover {
+  color: #4d63ff;
+}
+
+.c11 {
+  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.2);
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.142857142857143em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #b5b6c1;
+}
+
+.c13 {
+  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.2);
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.857142857142857em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #ffffff;
+}
+
+.c13:hover {
+  color: #4d63ff;
+}
+
+.c7 {
+  height: height:2.5em;
+  line-height: height:2.5em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: all 0s;
+  transition: all 0s;
+  padding-left: 1.25em;
+  border-radius: 3.3333333333333335em;
+  background: transparent;
+}
+
+.c12 {
+  height: height:2.857142857142857em;
+  line-height: height:2.857142857142857em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: all 0s;
+  transition: all 0s;
+  padding-left: 1.4285714285714286em;
+  border-radius: 5em;
+  background: transparent;
+}
+
+<div
+  className="c0"
+  onWheel={[Function]}
+  size="bigger"
+>
+  <ul
+    className="rc-tree c1 c2"
+    role="tree-node"
+    unselectable="on"
+  >
+    <li
+      className="c3"
+      selected={false}
+      title="Lugia Design of React"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="Lugia Design of React"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="Lugia Design of React"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          Lugia Design of React
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="快速上手"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="快速上手"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="快速上手"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          快速上手
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="项目实战"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="项目实战"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="项目实战"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          项目实战
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="在Lugia-mega中使用"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="在Lugia-mega中使用"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="在Lugia-mega中使用"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          在Lugia-mega中使用
+        </span>
+      </span>
+    </li>
+    <li
+      className="c3"
+      selected={false}
+      title="Components"
+      unselectable="on"
+    >
+      <span
+        className="c9"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_up  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        title="Components"
+      >
+        <span
+          className="c7"
+          height={40}
+          selected={false}
+          title="Components"
+        >
+          <i
+            className="undefined c8 c5"
+          />
+          Components
+        </span>
+      </span>
+      <ul
+        className="c10"
+        data-expanded={true}
+      >
+        <li
+          className="c3"
+          selected={false}
+          title="General"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="General"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="General"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              General
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Button 按钮"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Button 按钮"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Button 按钮"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Button 按钮
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Icon 图标"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Icon 图标"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Icon 图标"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Icon 图标
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Layout"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Layout"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Layout"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Layout
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Grid 栅格"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Grid 栅格"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Grid 栅格"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Grid 栅格
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Layout 布局"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Layout 布局"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Layout 布局"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Layout 布局
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Navigation"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Navigation"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Navigation"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Navigation
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="Affix 固钉"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Affix 固钉"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Affix 固钉"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Affix 固钉
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Breadcrumb 面包屑"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Breadcrumb 面包屑"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Breadcrumb 面包屑"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Breadcrumb 面包屑
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Dropdown 下拉菜单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Dropdown 下拉菜单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Dropdown 下拉菜单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Dropdown 下拉菜单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Menu 导航菜单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Menu 导航菜单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Menu 导航菜单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Menu 导航菜单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Pagination 分页"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Pagination 分页"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Pagination 分页"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Pagination 分页
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Steps 步骤条"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Steps 步骤条"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Steps 步骤条"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Steps 步骤条
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li
+          className="c3"
+          selected={false}
+          title="Data Entry"
+          unselectable="on"
+        >
+          <span
+            className="c11"
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            title="Data Entry"
+          >
+            <span
+              className="c12"
+              height={40}
+              selected={false}
+              title="Data Entry"
+            >
+              <i
+                className="undefined c8 c5"
+              />
+              Data Entry
+            </span>
+          </span>
+          <ul
+            className="c10"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              selected={false}
+              title="AutoComplete 自动完成"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="AutoComplete 自动完成"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="AutoComplete 自动完成"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  AutoComplete 自动完成
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Cascader 级联选择"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Cascader 级联选择"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Cascader 级联选择"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Cascader 级联选择
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Checkbox 多选框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Checkbox 多选框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Checkbox 多选框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Checkbox 多选框
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="DatePicker 日期选择框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="DatePicker 日期选择框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="DatePicker 日期选择框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  DatePicker 日期选择框
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Form 表单"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Form 表单"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Form 表单"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Form 表单
+                </span>
+              </span>
+            </li>
+            <li
+              className="c3"
+              selected={false}
+              title="Input 输入框"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c13"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                title="Input 输入框"
+              >
+                <span
+                  className="c12"
+                  height={40}
+                  selected={false}
+                  title="Input 输入框"
+                >
+                  <i
+                    className="undefined c8 c5"
+                  />
+                  Input 输入框
+                </span>
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;

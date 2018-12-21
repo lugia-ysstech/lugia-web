@@ -22,6 +22,18 @@ import { FontSizeNumber, FontSize } from '../css';
 import { px2emcss } from '../css/units';
 import type { QueryType } from '@lugia/lugia-web';
 
+import { MenuItemHeight, DefaultHeight } from '../css/tree';
+import { TreeUl } from '../css/tree';
+import {
+  themeColor,
+  Switcher,
+  NullSwitcher,
+  Li,
+  ChildrenUl,
+  TitleWrap,
+  TitleSpan,
+} from '../css/tree';
+
 const em = px2emcss(FontSizeNumber);
 
 type RowData = { [key: string]: any };
@@ -52,12 +64,16 @@ type TreeProps = {
    * 当值发生变化的时候出发
    */
   onChange?: Function,
+  getTreeData?: Function,
   splitQuery?: string,
   current: number,
   data?: Array<RowData>,
+  inlineType: 'primary' | 'ellipse',
   blackList: ?(string[]),
   whiteList: ?(string[]),
   searchType?: QueryType,
+  themeStyle: Object,
+  size: 'large' | 'default' | 'bigger',
 };
 
 type TreeState = {
@@ -79,6 +95,9 @@ const ErrorTooltip = Empty.extend`
   color: red;
 `;
 
+const openClassName = 'lugia-icon-direction_caret_down';
+const closeClassName = 'lugia-icon-direction_caret_right';
+
 class Tree extends React.Component<TreeProps, TreeState> {
   static displayName = Widget.Tree;
   static defaultProps = {
@@ -91,6 +110,21 @@ class Tree extends React.Component<TreeProps, TreeState> {
     query: '',
     current: -1,
     openAnimation: animation,
+    inlineType: 'primary',
+    themeStyle: {
+      MenuItemHeight,
+      DefaultHeight,
+      TreeUl,
+      themeColor,
+      Switcher,
+      NullSwitcher,
+      Li,
+      ChildrenUl,
+      TitleWrap,
+      TitleSpan,
+      openClassName,
+      closeClassName,
+    },
   };
 
   static TreeNode: TreeNode;
@@ -325,7 +359,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   getExpandedKeys(props: TreeProps, id2ExtendInfo): Array<string> {
     if (this.isQueryAll(props)) {
-      if (this.allExpandKeys == undefined) {
+      const utils = this.getUtils(props);
+      if (this.allExpandKeys == undefined || utils.isWhiteOrBlackListChanged()) {
         const { expandAll } = this.props;
         this.allExpandKeys = expandAll ? Object.keys(id2ExtendInfo) : [];
       }
@@ -427,6 +462,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
       whiteList,
       searchType = 'include',
       valueField,
+      getTreeData,
+      themeStyle,
     } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;
@@ -435,6 +472,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
     const data = this.search(utils, expand, query, searchType, blackList, whiteList);
     this.data = data;
+    getTreeData && getTreeData(data);
+
     if (data.length === 0) {
       return empty;
     }
@@ -466,6 +505,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         halfCheckedKeys={Object.keys(halfchecked)}
         utils={utils}
         expandedKeys={expandedKeys}
+        menuItemHeight={themeStyle.MenuItemHeight}
         onExpand={this.onExpand}
       />
     );
@@ -483,13 +523,15 @@ class Tree extends React.Component<TreeProps, TreeState> {
     expand: ExpandInfo,
     query: string,
     searchType: QueryType = 'include',
-    blackList: string[],
-    whiteList: string[]
+    blackList: ?(string[]),
+    whiteList: ?(string[])
   ): Array<RowData> {
     return (this.data = utils.search(expand, query, searchType, blackList, whiteList));
   }
 
   onSelect = (selectValue: Array<string>) => {
+    const { onSelect } = this.props;
+    onSelect && onSelect(selectValue);
     this.select(selectValue);
   };
 

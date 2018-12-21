@@ -3,70 +3,8 @@
  *
  * @flow
  */
-
+import type { MenuProps, MenuState } from './index';
 import * as React from 'react';
-import Item from './item';
-
-type treeDataItem = {
-  key: string,
-  title: string,
-  pid: string,
-  path: string,
-  isLeaf: boolean,
-};
-
-type MenuProps = {
-  start: number,
-  level: number,
-  end: number,
-  getTheme: Function,
-  getPrefix: Function,
-  getSuffix: Function,
-  svThemVersion?: number,
-  mutliple: boolean,
-  children: Array<React.Element<typeof Item>>,
-  data: Array<Object>,
-  selectedKeys?: string[],
-  defaultSelectedKeys?: string[],
-  valueField?: string,
-  displayField?: string,
-  indexOffsetY?: number,
-  onClick?: Function,
-  onChange?: Function,
-  onMouseEnter?: Function,
-  onMouseLeave?: Function,
-  limitCount?: number,
-  disabled?: boolean,
-  checkbox?: boolean,
-  checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
-  offsetX: number,
-  offsetY: number,
-  popupVisible?: boolean,
-  separator: string,
-  cancelData: Array<Object>,
-  action: 'hover' | 'click',
-  size: string,
-  mouseDownInMenus?: Function,
-  pushMenuInstance?: Function,
-  deleteMenuInstance?: Function,
-  setSelectedKeys?: Function,
-  selectedKeysData?: string[],
-  expandedData?: string[],
-  expandedPath?: string[],
-  handleIsInMenu?: Function,
-  setExpandedPath: Function,
-  allChildData?: Array<Object>,
-  treeData?: treeDataItem[],
-  getIndexOffsetY?: Function,
-};
-
-type MenuState = {
-  selectedKeys: string[],
-  expandedPath: string[],
-  popupVisible: boolean,
-  childData: Array<Object>,
-  indexOffsetY: number,
-};
 
 const EmptyData = [];
 
@@ -85,16 +23,25 @@ export function getSelectedKeys(props: MenuProps, state: ?MenuState): Array<stri
 }
 
 export function getPopupVisible(props: MenuProps, state: MenuState): boolean {
-  const { popupVisible = false } = props;
+  const { popupVisible = true } = props;
   if ('popupVisible' in props) {
     return popupVisible;
   }
-  const childData = state.childData;
-  return childData && childData.length > 0 && popupVisible ? true : false;
+
+  return true;
 }
 
 export function getTargetOrDefaultTarget(condition: boolean, target: any, defaultTarget: any) {
   return condition ? target : defaultTarget;
+}
+
+export function getTargetOrDefaultTargetLazy(
+  condition: boolean,
+  target: Function,
+  defaultTarget: Function
+) {
+  const matchFunc = getTargetOrDefaultTarget(condition, target, defaultTarget);
+  return matchFunc();
 }
 
 export function getExpandedPath(props: MenuProps, state: ?MenuState): Array<string> {
@@ -105,58 +52,53 @@ export function getExpandedPath(props: MenuProps, state: ?MenuState): Array<stri
   return state ? state.expandedPath : [];
 }
 
-export function mapDataAndGetSelectedKeys(
-  data: Object[],
-  targetArr: string[],
-  currentArr: string[] = []
-) {
-  if (targetArr.length === 0) {
-    return currentArr;
+export function recurDataAndGetSelectedKeys(
+  inData: Object[],
+  inSelectedKeys: string[],
+  outSelectedKeys: string[] = []
+): void {
+  if (!inSelectedKeys || inSelectedKeys.length === 0) {
+    return;
   }
 
-  const target = targetArr[0];
-  data &&
-    data.map(item => {
-      if (item.value === target) {
-        currentArr.push(item.value);
-        if (item.children && item.children.length > 0) {
-          targetArr.splice(0, 1);
-          mapDataAndGetSelectedKeys(item.children, targetArr, currentArr);
-        } else {
-          return currentArr;
+  const target = inSelectedKeys[0];
+  inData &&
+    inData.forEach(item => {
+      const { value } = item;
+      if (value === target) {
+        outSelectedKeys.push(value);
+        const { children } = item;
+        if (children && children.length > 0) {
+          inSelectedKeys.splice(0, 1);
+          recurDataAndGetSelectedKeys(children, inSelectedKeys, outSelectedKeys);
         }
       }
-      return currentArr;
     });
 }
 
-export function getCascaderData(targetArray: string[] = [], separator: string): string[] {
-  if (targetArray.length === 0) {
+export function getCascaderKeys(targetArray: string[] = [], separator: string): string[] {
+  if (!targetArray || targetArray.length === 0) {
     return [];
   }
 
   return targetArray[0].split(separator);
 }
 
-export function getExpandDataOrSelectData(props: MenuProps, targetArray: string[] = []): string[] {
-  if (!targetArray || targetArray.length === 0) {
-    return [];
-  }
-  return letExpandpathOrSelectedKeysToArray(props, targetArray);
-}
+export const getExpandDataOrSelectData = letExpandpathOrSelectedKeysToArray;
 
 export function letExpandpathOrSelectedKeysToArray(
   props: MenuProps,
   target: string[] = []
 ): string[] {
-  if (!target || target.length === 0) {
-    return [];
-  }
-  const { separator, data } = props;
   const result = [];
 
-  const cascaderData = getCascaderData(target, separator);
-  mapDataAndGetSelectedKeys(data, cascaderData, result);
+  if (!props || !target || target.length === 0) {
+    return result;
+  }
+
+  const { separator, data } = props;
+  const cascaderKeys = getCascaderKeys(target, separator);
+  recurDataAndGetSelectedKeys(data, cascaderKeys, result);
   return result;
 }
 
@@ -172,10 +114,10 @@ export function getExpandedData(props: MenuProps, state: MenuState) {
   const { expandedData = [], level } = props;
 
   const rootExpandedPath = getExpandedPathFromPropsOrState(props, state);
-  return getTargetOrDefaultTarget(
+  return getTargetOrDefaultTargetLazy(
     isRoot(level),
-    getExpandDataOrSelectData(props, rootExpandedPath),
-    expandedData
+    () => getExpandDataOrSelectData(props, rootExpandedPath),
+    () => expandedData
   );
 }
 
@@ -186,10 +128,10 @@ export function getChildData(props: MenuProps, state: MenuState) {
   if (rootExpandedPath.length === 0) {
     return EmptyData;
   }
-  const activeAllChildData = getTargetOrDefaultTarget(
+  const activeAllChildData = getTargetOrDefaultTargetLazy(
     isRoot(level),
-    getInitAllChildData(props, state),
-    allChildData
+    () => getInitAllChildData(props, state),
+    () => allChildData
   );
   return activeAllChildData[level];
 }
@@ -204,8 +146,7 @@ export function getInitChildData(props: MenuProps, state: MenuState | null): any
     if (rootExpandedPath.length === 0) {
       return EmptyData;
     }
-    const childData = getChildData(props, state) || EmptyData;
-    return childData;
+    return getChildData(props, state) || EmptyData;
   }
 }
 
@@ -215,25 +156,32 @@ export function getInitChildData(props: MenuProps, state: MenuState | null): any
 
 export function getInitAllChildData(props: MenuProps, state: MenuState): Object {
   const { data } = props;
-  const expandedData = getExpandedData(props, state);
-  const res = mapGetAllChildData(data, expandedData, 0);
-  return res;
+  return mapGetAllChildData(data, getExpandedData(props, state), 0);
 }
 
-export function mapGetAllChildData(data: Object[], expandedData: string[], index: number): Object {
+export function mapGetAllChildData(
+  levelData: Object[],
+  expandedData: string[],
+  level: number
+): Object {
   let target = {};
   if (!expandedData || expandedData.length === 0) {
     return target;
   }
-  data &&
-    data.forEach(item => {
+  const expandKey = expandedData[level];
+
+  const expandItem =
+    levelData &&
+    levelData.find(item => {
       const { value, children } = item;
-      if (value === expandedData[index] && children && children.length > 0) {
-        target[index] = children;
-        index++;
-        target = { ...target, ...mapGetAllChildData(children, expandedData, index++) };
-      }
+      return value === expandKey && children && children.length > 0;
     });
+
+  if (expandItem) {
+    const { children } = expandItem;
+    target[level] = children;
+    target = { ...target, ...mapGetAllChildData(children, expandedData, level + 1) };
+  }
   return target;
 }
 
@@ -241,7 +189,7 @@ export function getTreeData(props: Object) {
   const newData = [];
   const { data, valueField = 'value', displayField = 'text' } = props;
   if (data && data.length > 0) {
-    recurTreeData(data, newData, { displayField, valueField });
+    recurTreeData(data, newData, {}, { displayField, valueField });
   }
   return newData;
 }
@@ -260,8 +208,10 @@ export function recurTreeData(
   const { onAdd } = opt;
   inTreeChildData &&
     inTreeChildData.forEach(item => {
-      const { children, [valueField]: value, [displayField]: text } = item;
+      const { children, [valueField]: value, [displayField]: text, describe, icon } = item;
       const newObj = {};
+      newObj.describe = describe;
+      newObj.icon = icon;
       newObj.pid = parentKey;
       newObj[valueField] = value;
       newObj[displayField] = text;
@@ -276,14 +226,16 @@ export function recurTreeData(
         newObj.path = path.join('/');
       }
 
-      if (!children || children.length === 0) {
-        newObj.isLeaf = true;
-        outTreeRowData.push(newObj);
-        onAdd && onAdd(newObj);
-      } else {
-        outTreeRowData.push(newObj);
-        onAdd && onAdd(newObj);
-        recurTreeData(children, outTreeRowData, { parentKey: item.value, parentPath: path }, opt);
+      const isLeaf = (newObj.isLeaf = !children || children.length === 0);
+      outTreeRowData.push(newObj);
+      onAdd && onAdd(newObj);
+      if (!isLeaf) {
+        recurTreeData(
+          children,
+          outTreeRowData,
+          { parentKey: item[valueField], parentPath: path },
+          opt
+        );
       }
     });
 }

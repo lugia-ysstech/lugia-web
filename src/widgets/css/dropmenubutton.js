@@ -175,14 +175,14 @@ const HoverBackgroundAndBorderAndTextColor = props => {
   return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, notPrimaryAttrValue);
 };
 
-export const NoDividedContainer = styled(DefaultContainer)`
+export const NoDividedContainer: Object = styled(DefaultContainer)`
   border-width: ${em(1)};
   border-style: solid;
   ${HoverBackgroundAndBorderAndTextColor};
 `;
 NoDividedContainer.displayName = 'NoDividedContainer';
 
-export const NoDividedWrap = styled(CommonWrap)`
+export const NoDividedWrap: Object = styled(CommonWrap)`
   padding: 0 ${em(4)};
 `;
 
@@ -210,16 +210,16 @@ export const TextContainer = styled.span`
   border-bottom-left-radius: ${em(4)};
 `;
 
-export const DividedContainer = styled(DefaultContainer)`
+export const DividedContainer: Object = styled(DefaultContainer)`
   color: ${defaultColor};
 `;
 
-export const DividedWrap = styled(CommonWrap)`
+export const DividedWrap: Object = styled(CommonWrap)`
   display: flex;
   position: relative;
 `;
 
-export const DevidedTextContainer = styled(TextContainer)`
+export const DevidedTextContainer: Object = styled(TextContainer)`
   transition: all 0.3s;
   ${getDefaultBorder};
   border-right: 0;
@@ -227,7 +227,7 @@ export const DevidedTextContainer = styled(TextContainer)`
 `;
 DevidedTextContainer.displayName = 'DevidedTextContainer';
 
-export const BasicContainer = styled(CommonContainer)`
+export const BasicContainer: Object = styled(CommonContainer)`
   height: ${em(22)};
   line-height: ${em(22)};
   padding: 0 ${em(4)};
@@ -245,7 +245,7 @@ const getBasicTextHoverColor = props => {
   ${getCheckedCSS(checked, 'color', hoverColor, darkGreyColor)};
   `;
 };
-export const BasicWrap = styled(CommonWrap)`
+export const BasicWrap: Object = styled(CommonWrap)`
   position: relative;
   ${getBasicTextHoverColor};
 `;
@@ -261,7 +261,7 @@ export const BasicText = styled.span`
   transition: all 0.3s;
 `;
 
-export const BasicIconWrap = styled(NoDividedIconWrap)`
+export const BasicIconWrap: Object = styled(NoDividedIconWrap)`
   transition: all 0.3s;
 `;
 

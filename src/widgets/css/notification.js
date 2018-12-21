@@ -113,7 +113,7 @@ export const Text = styled.div`
   font-weight: 500;
   color: ${darkGreyColor};
 `;
-export const CloseIcon = styled(Icon)`
+export const CloseIcon: Object = styled(Icon)`
   font-size: ${em(14)};
 `;
 export const CloseIconWrap = styled.div`
@@ -125,7 +125,7 @@ export const CloseIconWrap = styled.div`
   cursor: pointer;
 `;
 const leftIconEM = px2emcss(2);
-export const Icons = styled(Icon)`
+export const Icons: Object = styled(Icon)`
   position: absolute;
   font-size: ${em(20)};
   line-height: ${leftIconEM(22)};

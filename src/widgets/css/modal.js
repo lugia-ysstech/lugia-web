@@ -157,14 +157,14 @@ export const ModalFooter = styled.div`
     margin-left: 0;
   }
 `;
-export const Icons = styled(Icon)`
+export const Icons: Object = styled(Icon)`
   font-size: ${em(16)};
 `;
 const getIconColor = (props: CSSProps) => {
   const { iconType } = props;
   return `color: ${IconInfo[iconType].color};`;
 };
-export const BigIcons = styled(Icon)`
+export const BigIcons: Object = styled(Icon)`
   font-size: ${em(20)};
   position: absolute;
   left: ${px2emcss(2)(22)};
