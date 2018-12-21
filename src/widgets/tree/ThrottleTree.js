@@ -114,6 +114,7 @@ class ScrollerTree extends React.Component<any, any> {
         </WrapRcTree>
       );
     }
+    return null;
   }
 
   getTheme() {
