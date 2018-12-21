@@ -79,7 +79,7 @@ export const getPercentValue = (current: ?number, total: ?number): number => {
 };
 
 export const getHashMark = (): string => {
-  return 'lugia' + new Date().getTime();
+  return 'lugia' + new Date().getTime() + Math.round(Math.random() * 100000 + 1000);
 };
 
 const loop = () => true;
@@ -93,6 +93,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     limit: 5,
     withCredentials: false,
     autoUpload: true,
+    method: 'post',
     onProgress: loop,
     onSuccess: loop,
     onComplete: loop,
@@ -174,15 +175,33 @@ class Upload extends React.Component<UploadProps, StateProps> {
     const { choosedFile = [] } = this.state;
     const len = choosedFile.length;
     if (len <= 0) return;
+
+    const { isAllowUpload } = this.state;
+    const { autoUpload } = this.props;
     for (let i = 0; i < len; i++) {
-      this.beforeUpload(dataObject, choosedFile[i]);
+      let list;
+      const name = choosedFile[i].name;
+      const hashMark = getHashMark();
+      if (autoUpload || (!autoUpload && isAllowUpload)) {
+        list = this.getChangeUploadState('loading', name, hashMark);
+        this.setStateValue({ ...list });
+      } else {
+        list = this.getChangeUploadState('default', name, hashMark);
+        this.setStateValue({ ...list });
+        if (!isAllowUpload) return;
+      }
+    }
+
+    for (let i = 0; i < len; i++) {
+      const { fileListDone } = this.state;
+      this.beforeUpload(dataObject, choosedFile[i], fileListDone[i].hashMark);
     }
   };
 
-  beforeUpload = (dataObject: Object, file: Object) => {
+  beforeUpload = (dataObject: Object, file: Object, hashMark: string) => {
     const { beforeUpload } = this.props;
     if (!beforeUpload) {
-      this.startRequest(dataObject, file);
+      this.startRequest(dataObject, file, hashMark);
     } else {
       beforeUpload(file).then(message => {
         if (message.status) {
@@ -194,27 +213,13 @@ class Upload extends React.Component<UploadProps, StateProps> {
               delete file[item];
             });
           }
-          this.startRequest(dataObject, file);
+          this.startRequest(dataObject, file, hashMark);
         }
       });
     }
   };
 
-  startRequest = (dataObject: Object, file: Object): void => {
-    const { fileListDone } = this.state;
-    const { isAllowUpload } = this.state;
-    const { autoUpload } = this.props;
-    let list;
-    const name = file.name || '';
-    const hashMark = getHashMark();
-    if (autoUpload || (!autoUpload && isAllowUpload)) {
-      list = this.getChangeUploadState('loading', name, hashMark);
-      this.setStateValue({ ...list });
-    } else {
-      list = this.getChangeUploadState('default', name, hashMark);
-      this.setStateValue({ ...list });
-      if (!isAllowUpload) return;
-    }
+  startRequest = (dataObject: Object, file: Object, hashMark: string): void => {
     request({
       ...dataObject,
       file,
@@ -249,16 +254,16 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
     const list = this.getFileList(fileListDone, hashMark, [
       { target: 'status', value: 'done' },
-      // { target: 'url', value: res.data.url },
+      { target: 'url', value: res.data.url },
     ]);
     this.setStateValue({ classNameStatus: 'done', fileListDone: list });
-    this.uploadDonePreviewInfo(file, hashMark);
-    console.log('fileListDone', fileListDone);
+
     const { listType } = this.props;
     if (listType === 'picture') {
       this.loadPreviewInfo(file);
     }
     this.setStateValue({ isAllowUpload: false });
+
     const { onSuccess } = this.props;
     onSuccess && onSuccess(res, this.getResponse(fileListDone));
   };
@@ -271,12 +276,14 @@ class Upload extends React.Component<UploadProps, StateProps> {
   uploadProgress = (res: Object, hashMark: string): void => {
     const { loaded, total } = res;
     const percent = getPercentValue(loaded, total);
+
     const { fileListDone } = this.state;
     const list = this.getFileList(fileListDone, hashMark, [
       { target: 'percent', value: percent },
       { target: 'status', value: 'loading' },
     ]);
     this.setStateValue({ classNameStatus: 'loading', fileListDone: list });
+
     const { onProgress } = this.props;
     onProgress && onProgress({ loaded, total });
   };
@@ -285,6 +292,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     const { fileListDone } = this.state;
     const list = this.getFileList(fileListDone, hashMark, [{ target: 'status', value: 'fail' }]);
     this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
+
     const { onFail } = this.props;
     onFail && onFail(res);
   };
@@ -294,10 +302,10 @@ class Upload extends React.Component<UploadProps, StateProps> {
     props: string,
     data: Array<Object> = []
   ): Array<Object> => {
-    fileListDone.forEach(i => {
-      if (i.hashMark === props) {
-        data.forEach(j => {
-          i[j.target] = j.value;
+    fileListDone.forEach(file => {
+      if (file.hashMark === props) {
+        data.forEach(item => {
+          file[item.target] = item.value;
         });
       }
     });
@@ -315,21 +323,6 @@ class Upload extends React.Component<UploadProps, StateProps> {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       this.setStateValue({ previewUrl: reader.result });
-      reader.onloadend = null;
-    };
-  };
-
-  uploadDonePreviewInfo = (file: any, hashMark: string): void => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      const { fileListDone } = this.state;
-      fileListDone.forEach((item, index) => {
-        if (item.hashMark === hashMark) {
-          item.url = reader.result;
-        }
-      });
-      this.setStateValue({ fileListDone });
       reader.onloadend = null;
     };
   };

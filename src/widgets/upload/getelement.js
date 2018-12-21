@@ -470,7 +470,7 @@ const getFileList = (data: Array<Object>, close: Function) => {
   );
 };
 
-type defProps = {
+type DefProps = {
   classNameStatus?: string,
   defaultText: string,
   fileName?: string,
@@ -488,13 +488,13 @@ type defProps = {
   accept: string,
   multiple: boolean,
 };
-type stateProps = {
+type StateProps = {
   status: string,
   inputElement: Object,
   classNameStatus: string,
   defaultText: string,
 };
-class GetElement extends React.Component<defProps, stateProps> {
+class GetElement extends React.Component<DefProps, StateProps> {
   static defaultProps = {};
   dropArea: any;
   constructor(props: Object) {
@@ -520,7 +520,7 @@ class GetElement extends React.Component<defProps, stateProps> {
     });
   }
 
-  static getDerivedStateFromProps(defProps: defProps, stateProps: stateProps) {
+  static getDerivedStateFromProps(defProps: DefProps, stateProps: StateProps) {
     const { classNameStatus, defaultText } = defProps;
     if (!stateProps) {
       return {

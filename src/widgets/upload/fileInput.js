@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type propTypes = {
+type PropTypes = {
   accept?: string,
   multiple?: boolean,
   onChange?: Function,
@@ -24,7 +24,7 @@ const Input = styled.input`
   display: none;
 `;
 
-class FileInput extends React.Component<propTypes, any> {
+class FileInput extends React.Component<PropTypes, any> {
   input: any;
   static defaultProps = {
     accept: '*',
