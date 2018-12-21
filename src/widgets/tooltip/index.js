@@ -99,8 +99,8 @@ export function processOnVisibleChange(visible: boolean) {
 }
 
 export function getStateFromProps(
-  props: { visible: boolean, defaultVisible: boolean },
-  state: TooltipState
+  props: { visible: boolean, defaultVisible: ?boolean },
+  state: { visible: boolean }
 ) {
   const isHasVisibleProps = hasVisibleInProps(props);
   const hasDefaultVisibleInprops = 'defaultVisible' in props;
