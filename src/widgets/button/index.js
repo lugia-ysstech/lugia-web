@@ -66,7 +66,7 @@ const ButtonOut = styled.button`
   ${getThemeStyle}
 `;
 
-const IconWrap = styled(Icon)`
+const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
   ${getIconStyle};
   ${getLoadingIconStyle};

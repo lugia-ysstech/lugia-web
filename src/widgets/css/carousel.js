@@ -53,7 +53,7 @@ export const NextButton = CommonButton.extend`
 
 NextButton.displayName = 'nextButton';
 
-export const SwitchIcon = styled(Icon)`
+export const SwitchIcon: Object = styled(Icon)`
   font-size: ${em(30)};
   color: ${lightGreyColor};
   opacity: 0.6;

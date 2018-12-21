@@ -238,7 +238,7 @@ const getIconTransform = (props: CSSProps) => {
   }
 };
 
-export const IconWrap = styled(Icon)`
+export const IconWrap: Object = styled(Icon)`
   font-size: ${FontSize}rem;
   display: inline-block;
   position: absolute;

@@ -25,7 +25,7 @@ const ClearContainer = styled.div`
   width: ${em(10)};
   height: ${em(10)};
 `;
-const Clear = styled(Icon)`
+const Clear: Object = styled(Icon)`
   font-size: 1rem;
   ${getIconColor};
 `;
