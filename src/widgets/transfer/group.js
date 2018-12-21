@@ -99,7 +99,7 @@ export default ThemeProvider(
     }
 
     getTargetKeys(props) {
-      return getTruthValue('targetKeys', props, undefined, 'defaultTargetKeys');
+      return getTruthValue('value', props, undefined, 'defaultValue');
     }
 
     getDisplayValue(props) {
@@ -107,12 +107,7 @@ export default ThemeProvider(
     }
 
     shouldComponentUpdate(nextProps: GroupProps, nextState: GroupState) {
-      const {
-        valueField = 'value',
-        type = 'panel',
-        displayField = 'text',
-        targetKeys = [],
-      } = nextProps;
+      const { valueField = 'value', displayField = 'text' } = nextProps;
 
       if (nextProps.data.length !== this.props.data.length || nextProps.data !== this.props.data) {
         const theTargetKeys = this.getTargetKeys(nextProps);
@@ -127,7 +122,7 @@ export default ThemeProvider(
         this.sourceModel.changeSelectedKeys(this.getSourceSelectedKeys(nextProps));
       }
 
-      if (this.isInProps('targetKeys')) {
+      if (this.isInProps('value')) {
         const targetSelectKeys = this.getTargetKeys(nextProps);
         this.updateChangeList(targetSelectKeys);
       }
@@ -237,7 +232,7 @@ export default ThemeProvider(
       const { onDirectionClick } = this.props;
       onDirectionClick && onDirectionClick(nextTargetKeys, direction, moveKey);
 
-      const hasTargetKeys = this.isInProps('targetKeys');
+      const hasTargetKeys = this.isInProps('value');
       if (hasTargetKeys) {
         return;
       }

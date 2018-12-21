@@ -88,7 +88,7 @@ export default class TransferDemo extends React.Component<any, any> {
           showSearch
           sourceSelectedKeys={sourceSelectedKeys}
           targetSelectedKeys={targetSelectedKeys}
-          targetKeys={targetKeys}
+          value={targetKeys}
           onSelectChange={this.handleSelectChange}
           onDirectionClick={this.handleDirectionClick}
         />
@@ -97,14 +97,14 @@ export default class TransferDemo extends React.Component<any, any> {
           showSearch
           defaultSourceSelectedKeys={['选项5']}
           defaultTargetSelectedKeys={['选项2']}
-          defaultTargetKeys={['选项2', '选项3', '选项4']}
+          defaultValue={['选项2', '选项3', '选项4']}
         />
         <Transfer
           data={treeData}
           type="tree"
           sourceSelectedKeys={['2.2.1']}
           targetSelectedKeys={['2.1.1']}
-          targetKeys={['3.1', '3.2', '2.1.1']}
+          value={['3.1', '3.2', '2.1.1']}
           showSearch
           displayValue={['dis1', 'dis2']}
         />
@@ -113,7 +113,7 @@ export default class TransferDemo extends React.Component<any, any> {
           type="tree"
           defaultSourceSelectedKeys={['2.2.1']}
           defaultTargetSelectedKeys={['2.1.1']}
-          defaultTargetKeys={['3.1', '3.2', '2.1.1']}
+          defaultValue={['3.1', '3.2', '2.1.1']}
           showSearch
           defaultDisplayValue={['dis1', 'dis2', '2.1.1']}
         />

@@ -78,7 +78,7 @@ describe('Transfer', () => {
       <Transfer
         data={data}
         sourceSelectedKeys={[]}
-        targetKeys={['选项1', '选项2', 'A']}
+        value={['选项1', '选项2', 'A']}
         displayValue={['1', '2', 'a']}
       />
     );
@@ -91,7 +91,7 @@ describe('Transfer', () => {
     expect(newTargetPanelComponent.state.typeList).toEqual({
       whiteList: ['选项1', '选项2', 'A'],
     });
-    newTarget.setProps({ targetKeys: ['选项1', '选项2', '选项3'] });
+    newTarget.setProps({ value: ['选项1', '选项2', '选项3'] });
     const sourcePanmeState = getComponent(newTarget, 'TransferPanel', 0).state;
     const targetPanmeState = getComponent(newTarget, 'TransferPanel', 1).state;
     expect(sourcePanmeState.typeList).toEqual({
@@ -102,7 +102,7 @@ describe('Transfer', () => {
     });
     newTarget.setProps({
       displayValue: ['1', '2', 'a', 'b'],
-      targetKeys: ['选项1', '选项2', '选项3', 'B'],
+      value: ['选项1', '选项2', '选项3', 'B'],
     });
     expect(getComponent(newTarget, 'TransferPanel', 1).state.cancelItem).toEqual([
       { text: 'b', value: 'B' },
@@ -115,7 +115,7 @@ describe('Transfer', () => {
     const targetSelectedKeys = component.getTargetSelectedKeys({ targetSelectedKeys: ['1', '2'] });
     const sourceSelectedKeys = component.getSourceSelectedKeys({ sourceSelectedKeys: ['1', '2'] });
     const displayValue = component.getDisplayValue({ displayValue: ['1', '2'] });
-    const targetKeys = component.getTargetKeys({ targetKeys: ['1', '2'] });
+    const targetKeys = component.getTargetKeys({ value: ['1', '2'] });
 
     expect(targetSelectedKeys).toEqual(['1', '2']);
     expect(sourceSelectedKeys).toEqual(['1', '2']);
@@ -132,7 +132,7 @@ describe('Transfer', () => {
       defaultDisplayValue: ['1'],
     });
     const newDefaultTargetKeys = component.getTargetKeys({
-      defaultTargetKeys: ['1'],
+      defaultValue: ['1'],
     });
     expect(newDefaultTargetSelectedKeys).toEqual(['1']);
     expect(newDefaultSourceSelectedKeys).toEqual(['1']);
@@ -215,7 +215,7 @@ describe('Transfer', () => {
       moveKey = moveKeys;
     };
     const target = mount(
-      <Transfer data={data} targetKeys={['选项4']} onDirectionClick={directionClick} />
+      <Transfer data={data} value={['选项4']} onDirectionClick={directionClick} />
     );
     const component = getComponent(target, 'Transfer', 0);
     component.sourceModel.getMoveAfterKeysForSource = function() {
@@ -233,7 +233,7 @@ describe('Transfer', () => {
     expect(sourcePanelCom.state.selectedKeys).toEqual([]);
 
     const newTarget = mount(
-      <Transfer data={data} defaultTargetKeys={['选项4']} onDirectionClick={directionClick} />
+      <Transfer data={data} defaultValue={['选项4']} onDirectionClick={directionClick} />
     );
     const newComponent = getComponent(newTarget, 'Transfer', 0);
     newComponent.sourceModel.getMoveAfterKeysForSource = function() {
@@ -263,7 +263,7 @@ describe('Transfer', () => {
     const target = mount(
       <Transfer
         data={data}
-        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        value={['选项2', '选项3', '选项4', '选项5']}
         onDirectionClick={directionClick}
       />
     );
@@ -285,7 +285,7 @@ describe('Transfer', () => {
     const newTarget = mount(
       <Transfer
         data={data}
-        defaultTargetKeys={['选项2', '选项3', '选项4', '选项5']}
+        defaultValue={['选项2', '选项3', '选项4', '选项5']}
         onDirectionClick={directionClick}
       />
     );
@@ -308,9 +308,7 @@ describe('Transfer', () => {
   });
 
   it('Transfer: getTreeCanCheckKeys', () => {
-    const target = mount(
-      <Transfer data={data} targetKeys={['选项2', '选项3', '选项4', '选项5']} />
-    );
+    const target = mount(<Transfer data={data} value={['选项2', '选项3', '选项4', '选项5']} />);
     const component = getComponent(target, 'Transfer', 0);
     const { sourceEnableKeys, targetEnableKeys } = component.getTreeCanCheckKeys(mapData, [
       '选项4',
@@ -337,7 +335,7 @@ describe('Transfer', () => {
       <Transfer
         data={data}
         onSelectChange={checkAll}
-        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        value={['选项2', '选项3', '选项4', '选项5']}
         targetSelectedKeys={['选项2', '选项3']}
       />
     );
@@ -355,7 +353,7 @@ describe('Transfer', () => {
       <Transfer
         data={data}
         onSelectChange={checkAll}
-        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        value={['选项2', '选项3', '选项4', '选项5']}
         sourceSelectedKeys={['选项2', '选项3']}
       />
     );
@@ -378,7 +376,7 @@ describe('Transfer', () => {
       <Transfer
         data={data}
         onSelectChange={checkAll}
-        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        value={['选项2', '选项3', '选项4', '选项5']}
         targetSelectedKeys={['选项2', '选项3']}
       />
     );
@@ -396,7 +394,7 @@ describe('Transfer', () => {
       <Transfer
         data={data}
         onSelectChange={checkAll}
-        targetKeys={['选项2', '选项3', '选项4', '选项5']}
+        value={['选项2', '选项3', '选项4', '选项5']}
         sourceSelectedKeys={['选项2', '选项3']}
       />
     );
@@ -418,7 +416,7 @@ describe('Transfer', () => {
     const target = mount(
       <Transfer
         data={data}
-        targetKeys={['选项2', '选项3', 'a']}
+        value={['选项2', '选项3', 'a']}
         displayValue={['选项2', '选项3', 'A']}
         onCancelItemClick={cancelClick}
       />
@@ -432,7 +430,7 @@ describe('Transfer', () => {
     const newTarget = mount(
       <Transfer
         data={data}
-        targetKeys={['选项2', '选项3', 'a']}
+        value={['选项2', '选项3', 'a']}
         defaultDisplayValue={['选项2', '选项3', 'A']}
         onCancelItemClick={cancelClick}
       />
