@@ -33,14 +33,17 @@ class FileInput extends React.Component<PropTypes, any> {
     inputId: 'upload',
     disabled: false,
   };
+
   constructor(props: Object) {
     super(props);
     this.input = React.createRef();
   }
+
   componentDidMount() {
     const { getRegisterInput } = this.props;
     getRegisterInput(this.input);
   }
+
   render() {
     const { accept, multiple, inputId, disabled } = this.props;
     return (

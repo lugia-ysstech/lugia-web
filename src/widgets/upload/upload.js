@@ -83,6 +83,7 @@ export const getHashMark = (): string => {
 };
 
 const loop = () => true;
+
 class Upload extends React.Component<UploadProps, StateProps> {
   input: Object;
   static defaultProps = {
@@ -90,7 +91,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     listType: 'default',
     multiple: false,
     showFileList: false,
-    limit: 5,
+    limit: Infinity,
     withCredentials: false,
     autoUpload: true,
     method: 'post',
@@ -121,6 +122,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
       isAllowUpload: 'isAllowUpload' in stateProps ? isAllowUpload : defProps.autoUpload,
     };
   }
+
   render() {
     return (
       <Container>
@@ -134,17 +136,23 @@ class Upload extends React.Component<UploadProps, StateProps> {
       </Container>
     );
   }
+
   setChoosedFile = (res: Array<Object>): void => {
+    const { multiple } = this.props;
+    let choosedFiles = res;
+    if (!multiple) {
+      choosedFiles = [res[0]];
+    }
     this.setStateValue(
       {
-        choosedFile: res,
+        choosedFile: choosedFiles,
       },
       () => {
         this.startUpload();
       }
     );
     const { onChange } = this.props;
-    onChange && onChange(res);
+    onChange && onChange(choosedFiles);
   };
 
   getChangeUploadState = (typeState: string, name: string, hashMark: string) => {
@@ -170,31 +178,36 @@ class Upload extends React.Component<UploadProps, StateProps> {
   };
 
   startUpload = (): void => {
-    const { url, withCredentials, data, headers, method = 'post', dataType = 'json' } = this.props;
-    const dataObject = { url, withCredentials, data, headers, method, dataType };
     const { choosedFile = [] } = this.state;
     const len = choosedFile.length;
     if (len <= 0) return;
 
     const { isAllowUpload } = this.state;
-    const { autoUpload } = this.props;
-    for (let i = 0; i < len; i++) {
-      let list;
-      const name = choosedFile[i].name;
-      const hashMark = getHashMark();
-      if (autoUpload || (!autoUpload && isAllowUpload)) {
-        list = this.getChangeUploadState('loading', name, hashMark);
-        this.setStateValue({ ...list });
-      } else {
-        list = this.getChangeUploadState('default', name, hashMark);
-        this.setStateValue({ ...list });
-        if (!isAllowUpload) return;
-      }
-    }
+    const { autoUpload, limit } = this.props;
 
     for (let i = 0; i < len; i++) {
-      const { fileListDone } = this.state;
-      this.beforeUpload(dataObject, choosedFile[i], fileListDone[i].hashMark);
+      if (i >= limit) break;
+      let list;
+      const name = choosedFile[i].name;
+      const hashMark = choosedFile[i].hashMark || getHashMark();
+      choosedFile[i].hashMark = hashMark;
+      if (autoUpload || (!autoUpload && isAllowUpload)) {
+        list = this.getChangeUploadState('loading', name, hashMark);
+        this.setStateValue({ ...list, choosedFile });
+      } else {
+        list = this.getChangeUploadState('default', name, hashMark);
+        this.setStateValue({ ...list, choosedFile });
+      }
+    }
+    if (!autoUpload && !isAllowUpload) return;
+
+    const { url, withCredentials, data, headers, method = 'post', dataType = 'json' } = this.props;
+    const dataObject = { url, withCredentials, data, headers, method, dataType };
+
+    for (let i = 0; i < len; i++) {
+      if (i >= limit) break;
+      this.beforeUpload(dataObject, choosedFile[i], choosedFile[i].hashMark);
+      delete choosedFile[i].hashMark;
     }
   };
 

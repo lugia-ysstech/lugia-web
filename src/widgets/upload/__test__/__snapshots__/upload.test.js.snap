@@ -38,15 +38,10 @@ exports[`Rate Test css 1`] = `
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-}
-
-.c3.done {
   border: 1px solid #684fff;
-  color: #333;
-  position: relative;
 }
 
-.c3.done i {
+.c4 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -55,48 +50,47 @@ exports[`Rate Test css 1`] = `
   right: 10px;
 }
 
-.c3.loading {
-  border: 1px solid #684fff;
+.c7 .c4 {
+  color: #fff;
+  margin: 0;
 }
 
-.c3.loading .loadIcon {
-  margin-right: 10px;
-  color: #684fff;
-  -webkit-animation: iVXCSc 0.8s linear infinite;
-  animation: iVXCSc 0.8s linear infinite;
+.c6:hover .c4 {
+  background: #f2f2f2;
+  cursor: pointer;
 }
 
-.c3.hasBtn {
-  border-radius: 4px 0 0 4px;
-  border: 1px solid #9482ff;
-  width: 286px;
+.c4 i {
+  font-size: 30px;
+  color: #999;
+  font-size: 1.6666666666666667em;
 }
 
-.c3.disabled {
-  border: 1px solid #e8e8e8;
-  width: 286px;
-  cursor: not-allowed;
+.c9 .c4 {
+  font-size: 55px;
+  color: #999;
 }
 
-.c3 i.right {
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+.c8 .c4 {
+  font-size: 30px;
+  color: #999;
+  font-size: 1.6666666666666667em;
+}
+
+.c8 .c4.error {
   position: absolute;
-  top: 50%;
-  right: 10px;
-}
-
-.c3 i.success {
-  color: #56c22d;
-}
-
-.c3 i.error {
+  right: -8px;
+  top: 0;
+  font-size: 18px;
   color: #f22735;
+  z-index: 10;
+  display: none;
+  background: #fff;
+  border: 2px solid #fff;
 }
 
-.c4.loadIcon {
-  margin-right: 10px;
+.c8:hover .c4 {
+  display: inline-block;
 }
 
 .c0 {
@@ -121,7 +115,8 @@ exports[`Rate Test css 1`] = `
       type="file"
     />
     <div
-      className=" default c3"
+      className="c3"
+      disabled={false}
       onClick={[Function]}
     >
       <i

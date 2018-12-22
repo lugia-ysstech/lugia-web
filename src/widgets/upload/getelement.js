@@ -47,6 +47,29 @@ const getDisabled = props => {
     cursor: not-allowed;
     `;
 };
+const getclassNameStatus = props => {
+  const { status } = props;
+  let defaultStye = 'border: 1px solid #684fff';
+  if (!status) {
+    return defaultStye;
+  }
+  const { hasBtn } = props;
+  if (hasBtn) {
+    defaultStye += `
+      border-radius: 4px 0 0 4px;
+      border: 1px solid #9482ff;
+      width: 286px;
+    `;
+  }
+  if (status === 'done') {
+    return `
+      ${defaultStye};
+      color: #333;
+      position: relative;
+    `;
+  }
+  return defaultStye;
+};
 const InputContent = styled.div`
   width: ${props => (props.theme.width ? props.theme.width : '346px')};
   height: 30px;
@@ -58,146 +81,85 @@ const InputContent = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-  &.done {
-    border: 1px solid #684fff;
-    color: #333;
-    position: relative;
-    & i {
-      transform: translateY(-50%);
-      position: absolute;
-      top: 50%;
-      right: 10px;
-    }
-  }
-  &.loading {
-    border: 1px solid #684fff;
-    & .loadIcon {
-      margin-right: 10px;
-      color: #684fff;
-      animation: ${rotate} 0.8s linear infinite;
-    }
-  }
-  &.hasBtn {
-    border-radius: 4px 0 0 4px;
-    border: 1px solid #9482ff;
-    width: 286px;
-  }
-  & i.right {
-    transform: translateY(-50%);
-    position: absolute;
-    top: 50%;
-    right: 10px;
-  }
-  & i.success {
-    color: #56c22d;
-  }
-  & i.error {
-    color: #f22735;
-  }
-
   ${getDisabled}
-`;
-
-const LoadIcon = styled(Icon)`
-  &.loadIcon {
-    margin-right: 10px;
-  }
-`;
-
-const Button = styled.span`
-  width: 60px;
-  height: 30px;
-  background: #684fff;
-  display: inline-block;
-  float: right;
-  text-align: center;
-  color: #fff;
-  line-height: 30px;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  &.disabled {
-    background: ${disableColor};
-    color: #ccc;
-    cursor: not-allowed;
-  }
-  &.loading {
-    background: #9482ff;
-  }
-  & .loadIcon {
-    animation: ${rotate} 0.8s linear infinite;
-  }
-  &.button {
-    width: 100px;
-    border-radius: 4px;
-  }
+  ${getclassNameStatus}
 `;
 
 const Ul = styled.ul`
   width: 100%;
 `;
+
+const getLiStyle = props => {
+  const { status } = props;
+  if (!status) return '';
+  if (status === 'fail') {
+    return `
+    color: #f22735;
+    `;
+  }
+  if (status === 'loading') {
+    return `
+      border-bottom: none;
+    `;
+  }
+};
+
+const ProgressCon = styled.div`
+  margin-top: -10px;
+`;
+
 const Li = styled.li`
   height: 36px;
   border-bottom: 1px dashed #e8e8e8;
   position: relative;
   padding-left: 5px;
-  &.fail {
-    color: #f22735;
-  }
-  &.loading {
-    border-bottom: none;
-  }
-  & i.success {
-    color: #56c22d;
-  }
-  & i.error {
-    color: #f22735;
-  }
   & > span {
     line-height: 36px;
-  }
-  & .progress {
-    margin-top: -10px;
-  }
-  & i.right {
-    transform: translateY(-50%);
-    position: absolute;
-    top: 50%;
-    right: 10px;
-  }
-
-  & i.ccc {
-    color: #ccc;
-    vertical-align: middle;
-    margin-right: 5px;
-    font-size: 14px;
-  }
-  & i.close {
-    color: #ccc;
-    display: none;
   }
   &:hover {
     background: #f2f2f2;
     cursor: pointer;
-    i.close {
-      display: block;
-      font-size: 14px;
-    }
-    i.error,
-    i.success {
-      display: none;
-    }
   }
+
+  ${getLiStyle}
 `;
+
+const getButtonStatus = props => {
+  const { listType } = props;
+  let onlyButton = '';
+
+  if (listType && listType === 'button') {
+    onlyButton = 'width: 100px;border-radius: 4px';
+  }
+  const { disabled } = props;
+  if (!disabled) return `${onlyButton}`;
+
+  return `
+    ${onlyButton}
+    background: ${disableColor};
+    color: #ccc;
+    cursor: not-allowed;
+  `;
+};
+const Button = styled.span`
+  width: 60px;
+  height: 30px;
+  background: #684fff;
+  display: inline-block;
+  border-radius: 0 4px 4px 0;
+  float: right;
+  text-align: center;
+  color: #fff;
+  line-height: 30px;
+  cursor: pointer;
+  ${getButtonStatus}
+`;
+
 const PrevCon = styled.div`
   width: 15px;
   height: 15px;
   display: inline-block;
   position: relative;
-  &:hover {
-    .prev {
-      display: block;
-    }
-  }
 `;
 const PrevImg = styled.div`
   display: none;
@@ -220,6 +182,10 @@ const PrevImg = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  ${PrevCon}:hover & {
+    display: block;
   }
 `;
 
@@ -296,6 +262,44 @@ const getPictureViewIconSizeCSS = (props: Object) => {
   `;
 };
 
+const getPictureOrAreaViewDisabled = props => {
+  const { disabled } = props;
+  if (!disabled) {
+    return '';
+  }
+  return `
+    background: ${disableColor};
+    color: #ccc;
+    cursor: not-allowed;
+    & i {
+      cursor: not-allowed;
+    }
+    `;
+};
+
+const getPictureViewStatus = props => {
+  const { status } = props;
+  if (!status) {
+    return '';
+  }
+  let defaultStyle = '';
+  if (status === 'done') {
+    defaultStyle = `
+      border: 1px dashed #684fff;
+    `;
+  }
+  if (status === 'fail') {
+    defaultStyle = `
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #666;
+    `;
+  }
+  return defaultStyle;
+};
+
 const PictureView = styled.div`
   border: 1px dashed #999;
   border-radius: 4px;
@@ -305,52 +309,13 @@ const PictureView = styled.div`
   padding: 6px;
   margin: 10px;
   position: relative;
-  & i.error {
-    position: absolute;
-    right: -7px;
-    top: -7px;
-    font-size: 18px;
-    color: #f22735;
-    z-index: 10;
-    display: none;
-    background: #fff;
-    border: 2px solid #fff;
-  }
-
-  &:hover {
-    i.error {
-      display: inline-block;
-    }
-  }
-
-  &.disabled {
-    background: ${disableColor};
-    color: #ccc;
-    cursor: not-allowed;
-  }
-  &.done {
-    border: 1px dashed #684fff;
-  }
-  &.fail {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #666;
-  }
-
+  ${getPictureOrAreaViewDisabled}
+  ${getPictureViewStatus}
   ${getPictureViewSizeCSS}
-  & i {
-    font-size: 30px;
-    color: #999;
-    ${getPictureViewIconSizeCSS}
-  }
+ 
   & img {
     width: 100%;
     max-height: 100%;
-  }
-  &.disabled i {
-    cursor: not-allowed;
   }
 `;
 
@@ -362,19 +327,7 @@ const AreaView = styled.div`
   justify-content: center;
   align-items: space-around;
   ${getPictureViewSizeCSS}
-  & i {
-    font-size: 30px;
-    color: #999;
-    ${getPictureViewIconSizeCSS}
-  }
-  &.disabled {
-    background: ${disableColor};
-    color: #ccc;
-    cursor: not-allowed;
-  }
-  &.disabled i {
-    cursor: not-allowed;
-  }
+  ${getPictureOrAreaViewDisabled}
 `;
 const AreaText = styled.div`
   width: 100%;
@@ -382,14 +335,155 @@ const AreaText = styled.div`
   text-align: center;
   margin-top: 24px;
 `;
+
+const getAreaTextBlueDisabled = props => {
+  const { disabled } = props;
+  if (!disabled) {
+    return '';
+  }
+  return `
+    color: #ccc;
+    border-bottom:none;
+    `;
+};
+
 const AreaTextBlue = styled.span`
-  font-size: 14px;
   color: #684fff;
   padding: 0 4px;
   border-bottom: 1px solid #684fff;
-  .disabled & {
-    color: #ccc;
-    border-bottom: none;
+  ${getAreaTextBlueDisabled}
+`;
+
+const isClassInString = (target, key) => {
+  return target.indexOf(key) !== -1;
+};
+
+const getIconClass = props => {
+  const { iconClass } = props;
+  if (!iconClass) {
+    return '';
+  }
+  let loadIconStyle = '';
+  if (isClassInString(iconClass, 'loadIcon')) {
+    loadIconStyle = `margin-right: 10px;color: #684fff;animation: ${rotate} 0.8s linear infinite;`;
+  }
+  let rightStyle = '';
+  if (isClassInString(iconClass, 'right')) {
+    rightStyle = `
+      transform: translateY(-50%);
+      position: absolute;
+      top: 50%;
+      right: 10px;
+    `;
+  }
+  let successStyle = '';
+  if (isClassInString(iconClass, 'success')) {
+    successStyle = `
+       color: #56c22d;
+    `;
+  }
+  let errorStyle = '';
+  if (isClassInString(iconClass, 'error')) {
+    errorStyle = `
+       color: #f22735;
+    `;
+  }
+  let cccStyle = '';
+  if (isClassInString(iconClass, 'ccc')) {
+    cccStyle = `
+      color: #ccc;
+      vertical-align: middle;
+      margin-right: 5px;
+      font-size: 14px;
+    `;
+  }
+
+  let deleteStyle = '';
+  if (isClassInString(iconClass, 'delete')) {
+    deleteStyle = `
+      color: #ccc;
+      display: none !important;
+    `;
+  }
+
+  return `
+     ${loadIconStyle}
+     ${rightStyle}
+     ${successStyle}
+     ${errorStyle}
+     ${cccStyle}
+     ${deleteStyle}
+     
+    `;
+};
+
+const gethoverStyle = props => {
+  const { iconClass } = props;
+  if (!iconClass) {
+    return '';
+  }
+  let deleteStyle = '';
+  if (iconClass.indexOf('delete') !== -1) {
+    deleteStyle = `
+      display: block !important;
+      font-size: 14px;
+    `;
+  }
+  let statusIconStye = '';
+  if (iconClass.indexOf('success') !== -1 || iconClass.indexOf('error') !== -1) {
+    statusIconStye = `
+      display: none;
+    `;
+  }
+  return `
+     ${statusIconStye}
+     ${deleteStyle}
+     
+    `;
+};
+
+const LoadIcon = styled(Icon)`
+  ${getIconClass}
+  ${Button} & {
+    color: #fff;
+    margin: 0;
+  }
+
+  ${Li}:hover & {
+    background: #f2f2f2;
+    cursor: pointer;
+    ${gethoverStyle}
+  }
+  & i {
+    font-size: 30px;
+    color: #999;
+    ${getPictureViewIconSizeCSS}
+  }
+
+  ${AreaView} & {
+    font-size: 55px;
+    color: #999;
+  }
+
+  ${PictureView} & {
+    font-size: 30px;
+    color: #999;
+    ${getPictureViewIconSizeCSS}
+    &.error {
+      position: absolute;
+      right: -8px;
+      top: 0;
+      font-size: 18px;
+      color: #f22735;
+      z-index: 10;
+      display: none;
+      background: #fff;
+      border: 2px solid #fff;
+    }
+  }
+
+  ${PictureView}:hover & {
+    display: inline-block;
   }
 `;
 
@@ -406,7 +500,7 @@ export const getListIconType = (fileName: ?string): string => {
 const iconClassMap = {
   default: 'lugia-icon-financial_upload right',
   loading: 'lugia-icon-financial_loading_o loadIcon',
-  done: 'lugia-icon-financial_upload',
+  done: 'lugia-icon-financial_upload right',
   video: 'lugia-icon-financial_video_camera ccc',
   file: 'lugia-icon-financial_folder ccc',
   uploadcloud: 'lugia-icon-financial_upload_cloud',
@@ -414,7 +508,7 @@ const iconClassMap = {
   'p-fail': 'lugia-icon-financial_monitoring',
   'li-done': 'lugia-icon-reminder_check_circle right success',
   'li-fail': 'lugia-icon-reminder_close_circle right error',
-  'li-delete': 'lugia-icon-reminder_close right close',
+  'li-delete': 'lugia-icon-reminder_close right delete',
 };
 
 export const getIconByType = (status: ?string, props?: Object = {}): ?Object | string => {
@@ -437,7 +531,7 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
       <PrevCon>
         <LoadIcon iconClass="lugia-icon-financial_pic ccc" />
         {getListIconType(props.name) === 'picture' && props.url ? (
-          <PrevImg className="prev">
+          <PrevImg>
             <img src={props.url} alt="" /> <Triangle />
             <div>{props.url}</div>
           </PrevImg>
@@ -454,9 +548,9 @@ const getProgress = (item: Object) => {
   if (status === 'loading') {
     const { percent } = item;
     return (
-      <div className="progress">
+      <ProgressCon>
         <Progress size="small" percent={percent} />
-      </div>
+      </ProgressCon>
     );
   }
 };
@@ -467,7 +561,7 @@ const getFileList = (data: Array<Object>, close: Function) => {
     <Ul>
       {data.map((item, index) => {
         return (
-          <Li className={item.status}>
+          <Li status={item.status}>
             {getIconByType(getListIconType(item.name), item)} <span>{item.name}</span>
             {getIconByType('li-' + item.status)}
             {getIconByType('li-delete', { doFunction: close, index })}
@@ -608,7 +702,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
         <InputContent
           disabled={disabled}
           status={classNameStatus}
-          className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
           onClick={handleClickToUpload}
           innerRef={dropArea}
         >
@@ -622,7 +715,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
       children = (
         <React.Fragment>
           <InputContent
-            className={`${classNameStatus} ${disabled ? 'disabled' : ''} hasBtn`}
+            status={classNameStatus}
+            hasBtn="hasBtn"
             onClick={handleClickToUpload}
             innerRef={dropArea}
           >
@@ -630,7 +724,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             {showFileList ? null : getIconByType('li-' + classNameStatus)}
           </InputContent>
 
-          <Button className={disabled ? 'disabled' : ''} onClick={handleClickToSubmit}>
+          <Button disabled={disabled} onClick={handleClickToSubmit}>
             {getIconByType(classNameStatus, { type: 1 })}
           </Button>
         </React.Fragment>
@@ -640,7 +734,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { disabled } = props;
       const { handleClickToUpload } = this;
       children = (
-        <Button className={`${disabled ? 'disabled' : ''} button `} onClick={handleClickToUpload}>
+        <Button disabled={disabled} listType={listType} onClick={handleClickToUpload}>
           点击上传
         </Button>
       );
@@ -653,10 +747,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           {classNameStatus === 'done' &&
             multiple &&
             fileListDone.map((item, index) => (
-              <PictureView
-                size={size}
-                className={`${disabled ? 'disabled' : ''} ${classNameStatus}`}
-              >
+              <PictureView size={size} disabled={disabled} status={classNameStatus}>
                 {getIconByType('li-fail', { doFunction: handleClickToDelete, index })}
                 {classNameStatus === 'fail' && size !== 'small' ? (
                   <span>图片上传失败请重试</span>
@@ -667,9 +758,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
             ))}
           <PictureView
             size={size}
-            className={`${disabled ? 'disabled' : ''} ${
-              classNameStatus === 'done' ? 'default' : classNameStatus
-            }`}
+            disabled={disabled}
+            status={multiple && classNameStatus === 'done' ? 'default' : classNameStatus}
             onClick={handleClickToUpload}
           >
             {!multiple && previewUrl ? (
@@ -689,14 +779,14 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { disabled } = props;
       children = (
         <AreaView
-          className={disabled ? 'disabled' : ''}
+          disabled={disabled}
           size={'bigger'}
           innerRef={dropArea}
           onClick={handleClickToUpload}
         >
           {getIconByType('uploadcloud')}
           <AreaText>
-            请将文件拖到此处,或<AreaTextBlue>点击上传</AreaTextBlue>
+            请将文件拖到此处,或<AreaTextBlue disabled={disabled}>点击上传</AreaTextBlue>
           </AreaText>
         </AreaView>
       );

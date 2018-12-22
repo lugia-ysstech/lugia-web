@@ -22,6 +22,7 @@ class UploadDemo extends React.Component<any, any> {
     super(props);
     this.state = {};
   }
+
   render() {
     const defaultProps = {
       listType: 'default',
@@ -31,7 +32,7 @@ class UploadDemo extends React.Component<any, any> {
       multiple: true,
       accessKey: ['uploadToken'],
       beforeUpload: (file: Object) => {
-        console.log('file', file);
+        // console.log('file', file);
         return new Promise((resolve, reject) => {
           request({
             url: 'http://localhost:7001/getToken',
@@ -99,8 +100,9 @@ class UploadDemo extends React.Component<any, any> {
       listType: 'both',
       inputId: 'upload2',
       url: 'http://localhost:7001/upload',
-      autoUpload: false,
-      showFileList: false,
+      // autoUpload: false,
+      showFileList: true,
+      multiple: true,
       onChange: res => {
         console.log('cbk', res);
       },
@@ -123,12 +125,15 @@ class UploadDemo extends React.Component<any, any> {
       listType: 'picture',
       inputId: 'upload5',
       size: 'small',
+
       url: 'http://localhost:7001/upload',
     };
     const defaultProps6 = {
       listType: 'area',
       inputId: 'upload6',
       showFileList: true,
+      // multiple: true,
+      // limit:3,
       url: 'http://localhost:7001/upload',
     };
     const defaultProps7 = {
@@ -191,10 +196,12 @@ class UploadDemo extends React.Component<any, any> {
       </div>
     );
   }
+
   setStateValue = (target: string, val: number) => {
     this.setState({
       [target]: val,
     });
   };
 }
+
 export default UploadDemo;

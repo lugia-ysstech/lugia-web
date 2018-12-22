@@ -69,6 +69,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkFindIndex(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jpg', 0);
   checkFindIndex(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jPg', 0);
   checkFindIndex(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'JPG', 0);
@@ -82,6 +83,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jpg', true);
   checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'jPg', true);
   checkKeyInArr(['jpg', 'png', 'jpeg', 'gif', 'svg', 'bmp'], 'JPG', true);
@@ -95,6 +97,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkGetPercentValue(2345, 3455, 67);
   checkGetPercentValue(null, 3455, 0);
   checkGetPercentValue(2345, undefined, 0);
@@ -106,6 +109,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkGetListIconType('http://jshdfj.jpg', 'picture');
   checkGetListIconType('http://jshdfj.png', 'picture');
   checkGetListIconType('http://jshdfj.JPEG', 'picture');
@@ -129,6 +133,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkGetStringFromObject({ u: 23, name: 'lll', file: 'xsdss' }, 'u=23&name=lll&file=xsdss');
   checkGetStringFromObject({ cc: 66, df: 'lll', file: 'xsdss' }, 'cc=66&df=lll&file=xsdss');
   checkGetStringFromObject(null, '');
@@ -142,6 +147,7 @@ describe('Rate Test', () => {
       expect(res instanceof FormData).toEqual(true);
     });
   }
+
   checkGetParamsData({ data: { a: 123, b: 223 }, name: 'file', file: '666' });
   checkGetParamsData({ data: { a: 777, b: 888 }, name: 'abc', file: '567' });
 
@@ -159,6 +165,7 @@ describe('Rate Test', () => {
       }
     });
   }
+
   checkGetIconByType('default', '上传', { type: 1 });
   checkGetIconByType('default', 'lugia-icon-financial_upload right');
   checkGetIconByType('loading', 'lugia-icon-financial_loading_o loadIcon');
@@ -171,6 +178,7 @@ describe('Rate Test', () => {
       expect(target.state()).toEqual(expectation);
     });
   }
+
   setStateValue(
     { classNameStatus: 'done', defaultText: '文件已上传成功！' },
     {
@@ -211,6 +219,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkGetFileList(
     [
       { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
@@ -242,6 +251,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkIsEmptyObject({}, true);
   checkIsEmptyObject({ aa: 1 }, false);
 
@@ -255,6 +265,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkAppendFileList(
     [{ hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 }],
     { hashMark: 2, name: '文件2222.jpg', status: 'loading' },
@@ -277,6 +288,7 @@ describe('Rate Test', () => {
       expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
+
   uploadProgress({ loaded: 0, total: 2048 }, 'loading', [
     { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
   ]);
@@ -289,6 +301,7 @@ describe('Rate Test', () => {
   uploadProgress({}, 'loading', [
     { hashMark: 1, name: '文件11111.jpg', status: 'loading', percent: 0 },
   ]);
+
   function uploadSuccess(props: Object, expectation: string, expectation2: Array<Object>) {
     it('Function uploadSuccess ', () => {
       target.instance().setStateValue({
@@ -299,6 +312,7 @@ describe('Rate Test', () => {
       expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
+
   uploadSuccess({ data: { url: 'test.jpg' } }, 'done', [
     { hashMark: 1, name: '文件11111.jpg', status: 'done', url: 'test.jpg' },
   ]);
@@ -309,6 +323,7 @@ describe('Rate Test', () => {
       expect(res).toEqual(expectation);
     });
   }
+
   checkisIdInArray('1', [{ hashMark: '1', name: '文件11111.jpg', status: 'default' }], true);
   checkisIdInArray('2', [{ hashMark: '1', name: '文件11111.jpg', status: 'default' }], false);
   checkisIdInArray('1', [], false);
@@ -336,6 +351,7 @@ describe('Rate Test', () => {
       expect(target.state().isAllowUpload).toEqual(expectation);
     });
   }
+
   setAutoUploadState(false, undefined, true);
   setAutoUploadState(true, files, true);
   setAutoUploadState(false, files, false);
@@ -352,6 +368,7 @@ describe('Rate Test', () => {
       expect(target.state().fileListDone).toEqual(expectation);
     });
   }
+
   setDeleteList(1, [{ hashMark: 1, name: '文件11111.jpg', status: 'done' }]);
   setDeleteList(0, [{ hashMark: 2, name: '文件2222.jpg', status: 'default' }]);
   setDeleteList(2, [
@@ -374,6 +391,7 @@ describe('Rate Test', () => {
       expect(target.state().fileListDone).toEqual(expectation2);
     });
   }
+
   checkUploadFail({}, 1, 'fail', [{ hashMark: 1, name: '文件11111.jpg', status: 'fail' }]);
   checkUploadFail({}, 2, 'fail', [{ hashMark: 1, name: '文件11111.jpg', status: 'loading' }]);
 
@@ -383,5 +401,6 @@ describe('Rate Test', () => {
       expect(target.state().choosedFile).toEqual(expectation);
     });
   }
+
   checkSetChoosedFile(files);
 });
