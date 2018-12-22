@@ -1,0 +1,63 @@
+{
+  "widgetName": "Collapse",
+  "title": "Collapse 折叠面板",
+  "desc": "折叠面板，用于展开/折叠内容区域。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "activeValue": {
+      "type": "CollapseActiveType",
+      "desc": "当前展开面板的 value值 或者 value 集合",
+      "defaultValue": "undefined"
+    },
+    "defaultActiveValue": {
+      "type": "CollapseActiveType",
+      "desc": "初始时展开面板的 value值 或者 value 集合",
+      "defaultValue": "undefined"
+    },
+    "showArrow": {
+      "type": "boolean",
+      "desc": "是否展示面板箭头",
+      "defaultValue": "undefined"
+    },
+    "accordion": {
+      "type": "boolean",
+      "desc": "设置是否为手风琴模式",
+      "defaultValue": "undefined"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "Collapse面板展开/折叠时回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "关闭时的DOM事件",
+          "type": "Object"
+        },
+        {
+          "name": "value",
+          "desc": "变化Collapse的value值",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "type": {
+    "CollapseActiveType": ["string", "string[]"],
+    "CollapseStyle": {
+      "width": {
+        "type": "number",
+        "desc": "Collapse宽度"
+      },
+      "color": {
+        "type": "string",
+        "desc": "Collapse颜色"
+      }
+    }
+  },
+  "category": ["数据录入"]
+}

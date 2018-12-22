@@ -15,7 +15,6 @@ export type DrawerProps = {
   mask?: boolean,
   maskClosable?: boolean,
   closable?: boolean,
-  maskClosable?: boolean,
   onClose?: Function,
   children: any,
   getTheme: Function,

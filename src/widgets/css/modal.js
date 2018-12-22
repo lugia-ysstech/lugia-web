@@ -16,7 +16,6 @@ type FunctionPropsType = {
 export type ModalProps = {
   title?: string | React.ReactNode,
   children: string | React.ReactNode,
-  confirmLoading?: boolean,
   visible: boolean,
   cancelText?: string,
   okText?: string,

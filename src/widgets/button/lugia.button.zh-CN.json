@@ -1,0 +1,85 @@
+{
+  "widgetName": "Button",
+  "title": "Button 按钮",
+  "desc": "方便用户点击操作",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "按钮是否禁用，true 禁用 false 可用",
+      "defaultValue": true
+    },
+    "shape": {
+      "type": "ButtonShape",
+      "desc": "设置按钮形状，可以设置为 circle 或者不设",
+      "defaultValue": "default"
+    },
+    "type": {
+      "type": "ButtonType",
+      "desc": "支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设",
+      "defaultValue": "default"
+    },
+    "plain": {
+      "type": "boolean",
+      "desc": "是否为朴素按钮",
+      "defaultValue": "undefined"
+    },
+    "size": {
+      "type": "ButtonSize",
+      "desc": "设置按钮大小，可选值为 small、large、bigger 或者不设",
+      "defaultValue": "default"
+    },
+    "loading": {
+      "type": "boolean",
+      "desc": "设置按钮加载状态",
+      "defaultValue": "undefined"
+    },
+    "circle": {
+      "type": "boolean",
+      "desc": "设置圆形按钮",
+      "defaultValue": "undefined"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "设置按钮图标类型",
+      "defaultValue": "undefined"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "ButtonShape": ["default", "round"],
+    "ButtonType": ["default", "primary", "success", "warning", "danger"],
+    "ButtonSize": ["default", "small", "large", "bigger"],
+    "MarginType": ["number", "Object"],
+    "ButtonStyle": {
+      "width": {
+        "type": "number",
+        "desc": "组件宽度"
+      },
+      "margin": {
+        "type": "MarginType",
+        "desc": "组件外间距"
+      },
+      "color": {
+        "type": "string",
+        "desc": "组件颜色"
+      }
+    }
+  },
+  "category": ["通用"]
+}

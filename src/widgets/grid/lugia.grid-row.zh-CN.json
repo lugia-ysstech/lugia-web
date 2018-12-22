@@ -1,0 +1,34 @@
+{
+  "widgetName": "Row",
+  "title": "Grid 栅格",
+  "desc": "栅格。",
+  "props": {
+    "type": {
+      "type": "RowType",
+      "desc": "布局方式，可设为 flex 或不设",
+      "defaultValue": "undefined"
+    },
+    "justify": {
+      "type": "JustifyType",
+      "desc": "flex 布局下的水平排列方式，可设置为 start、end、center、spaceAround、spaceBetween",
+      "defaultValue": "undefined"
+    },
+    "align": {
+      "type": "AlignType",
+      "desc": "flex 布局下的垂直排列方式，可设置为 top、middle、bottom",
+      "defaultValue": "undefined"
+    },
+    "gutter": {
+      "type": "GutterType",
+      "desc": "栅格之间的间隔，可写为 number 格式 或支持响应式 对象写法：{xs: 8,sm: 16,md: 24}",
+      "defaultValue": "undefined"
+    }
+  },
+  "type": {
+    "RowType": ["flex", "default"],
+    "JustifyType": ["start", "end", "center", "spaceAround", "spaceBetween"],
+    "AlignType": ["top", "middle", "bottom"],
+    "GutterType": ["number", "Object"]
+  },
+  "category": ["数据录入"]
+}

@@ -1,0 +1,53 @@
+{
+  "widgetName": "Radio",
+  "title": "Radio 单选框",
+  "desc": "单选框。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "checked": {
+      "type": "boolean",
+      "desc": "单选框是否选中",
+      "defaultValue": "undefined"
+    },
+    "defaultChecked": {
+      "type": "boolean",
+      "desc": "单选框初始是否选中",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "单选框是否禁用",
+      "defaultValue": "undefined"
+    },
+    "value": {
+      "type": "string",
+      "desc": "单选框的 value 值",
+      "defaultValue": "true"
+    }
+  },
+  "event": {
+    "onChange": {
+      "desc": "单选框改变时的回调",
+      "args": [
+        {
+          "name": "value",
+          "desc": "Radio 改变时 value、displayValue 和 item 对应的值",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "RadioStyle": {
+      "color": {
+        "type": "string",
+        "desc": "Radio的颜色"
+      }
+    }
+  },
+  "category": ["数据录入"]
+}

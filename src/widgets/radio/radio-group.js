@@ -28,7 +28,6 @@ type RadioGroupProps = {
   data?: Array<Object>,
   value?: string,
   onChange?: Function,
-  size?: string,
   displayField?: string,
   valueField?: string,
   displayValue?: string,
