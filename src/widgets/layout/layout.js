@@ -11,7 +11,7 @@ import Widget from '../consts/index';
 import type { LayoutProps, LayoutState } from '../css/layout';
 import { Layout } from '../css/layout';
 
-export const EnlargeContext = React.createContext({});
+export const EnlargeContext: Object = React.createContext({});
 
 export default ThemeProvider(
   class extends React.Component<LayoutProps, LayoutState> {
