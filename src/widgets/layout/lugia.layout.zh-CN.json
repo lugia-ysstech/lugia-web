@@ -1,0 +1,37 @@
+{
+  "widgetName": "Layout",
+  "title": "Layout 布局",
+  "desc": "页面整体布局。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "direction": {
+      "type": "LayoutDirectionType",
+      "desc": "指定Layout嵌套组件排列顺序，row 横向排列，column 纵向排列",
+      "defaultValue": "column"
+    },
+    "needEnlarge": {
+      "type": "boolean",
+      "desc": "指定Layout嵌套组件中是否有被放大元素",
+      "defaultValue": "undefined"
+    }
+  },
+  "type": {
+    "LayoutDirectionType": ["row", "column"],
+    "MarginType": ["number", "Object"],
+    "LayoutStyle": {
+      "width": {
+        "type": "number",
+        "desc": "Layout 宽度"
+      },
+      "margin": {
+        "type": "MarginType",
+        "desc": "Layout 间距"
+      }
+    }
+  },
+  "category": ["数据录入"]
+}
