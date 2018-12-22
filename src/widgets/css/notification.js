@@ -19,8 +19,8 @@ export type NotificationProps = {
 } & ForTestType &
   ForRemoveType;
 type ForRemoveType = {
-  parentDom: any,
-  rootDom: any,
+  parentDom?: any,
+  rootDom?: any,
 };
 export type NotificationState = {
   visible: boolean,
