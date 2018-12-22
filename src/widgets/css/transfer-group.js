@@ -14,7 +14,6 @@ export type GroupProps = {
   getTheme: Function,
   data: Object[],
   showSearch?: boolean,
-  disabled?: boolean,
   value?: string[],
   defaultValue?: string[],
   onSelectChange?: (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {},

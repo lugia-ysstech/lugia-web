@@ -1,0 +1,135 @@
+{
+  "widgetName": "Transfer",
+  "title": "Transfer 单选框",
+  "desc": "单选框。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "Object[]",
+      "desc": "左右两个面板数据源",
+      "defaultValue": "undefined"
+    },
+    "showSearch": {
+      "type": "boolean",
+      "desc": "是否展示搜索框",
+      "defaultValue": "undefined"
+    },
+    "filterOption": {
+      "type": "Function",
+      "desc": "搜索条件函数，接收 inputValue 和 option 两个参数，可以自定义筛选条件",
+      "defaultValue": "undefined"
+    },
+    "value": {
+      "type": "string[]",
+      "desc": "显示在右侧面板数据集合",
+      "defaultValue": "undefined"
+    },
+    "defaultValue": {
+      "type": "string[]",
+      "desc": "显示在右侧面板初始数据集合",
+      "defaultValue": "undefined"
+    },
+    "sourceSelectedKeys": {
+      "type": "string[]",
+      "desc": "左侧面板选中值的集合",
+      "defaultValue": "undefined"
+    },
+    "targetSelectedKeys": {
+      "type": "string[]",
+      "desc": "右侧面板选中值的集合",
+      "defaultValue": "undefined"
+    },
+    "defaultSourceSelectedKeys": {
+      "type": "string[]",
+      "desc": "左侧面板初始选中值的集合",
+      "defaultValue": "undefined"
+    },
+    "defaultTargetSelectedKeys": {
+      "type": "string[]",
+      "desc": "右侧面板初始选中值的集合",
+      "defaultValue": "undefined"
+    },
+    "type": {
+      "type": "TransferType",
+      "desc": "指定 Transfer 类型，可设置为tree 或不设",
+      "defaultValue": "panel"
+    },
+    "displayField": {
+      "type": "string",
+      "desc": "指定 Transfer 面板展示字段值",
+      "defaultValue": "text"
+    },
+    "valueField": {
+      "type": "string",
+      "desc": "指定 Transfer 面板选项 value 字段值",
+      "defaultValue": "value"
+    }
+  },
+  "event": {
+    "onSelectChange": {
+      "desc": "Transfer 选中回调",
+      "args": [
+        {
+          "name": "sourceSelectedKeys",
+          "desc": "Transfer选中后，左侧面板选中值集合",
+          "type": "string[]"
+        },
+        {
+          "name": "targetSelectedKeys",
+          "desc": "Transfer选中后，右侧面板选中值集合",
+          "type": "string[]"
+        }
+      ]
+    },
+    "onDirectionClick": {
+      "desc": "Transfer 穿梭回调",
+      "args": [
+        {
+          "name": "nextValue",
+          "desc": "Transfer穿梭后，右侧面板值的集合",
+          "type": "string[]"
+        },
+        {
+          "name": "direction",
+          "desc": "穿梭的方向，left、right",
+          "type": "DirectionType"
+        },
+        {
+          "name": "moveKeys",
+          "desc": "移动值的集合",
+          "type": "string[]"
+        }
+      ]
+    },
+    "onCancelItemClick": {
+      "desc": "Transfer 取消选项点击回调",
+      "args": [
+        {
+          "name": "nextValue",
+          "desc": "Transfer 右侧面板值的集合",
+          "type": "string[]"
+        },
+        {
+          "name": "newDisplayValue",
+          "desc": "Transfer 右侧面板值的备用集合",
+          "type": "string[]"
+        }
+      ]
+    }
+  },
+  "type": {
+    "TransferType": ["panel", "tree"],
+    "DirectionType": ["left", "right"],
+    "TransferStyle": {
+      "height": {
+        "type": "number",
+        "desc": "Transfer 的高度"
+      }
+    }
+  },
+  "category": ["数据录入"]
+}

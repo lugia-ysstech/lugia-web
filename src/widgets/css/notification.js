@@ -10,7 +10,6 @@ import type { Type } from './component-iconwrap';
 import Icon from '../icon';
 
 export type NotificationProps = {
-  iconType?: Type,
   duration?: number | null,
   title: string | React.ReactNode,
   description: string | React.ReactNode,

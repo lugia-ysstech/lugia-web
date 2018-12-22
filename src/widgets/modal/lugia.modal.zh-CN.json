@@ -1,0 +1,58 @@
+{
+  "widgetName": "Modal",
+  "title": "Modal 对话框",
+  "desc": "Modal 对话框。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "title": {
+      "type": "React.node",
+      "desc": "标题",
+      "defaultValue": "undefined"
+    },
+    "visible": {
+      "type": "boolean",
+      "desc": "Modal 是否可见",
+      "defaultValue": "undefined"
+    },
+    "cancelText": {
+      "type": "string",
+      "desc": "取消按钮文字",
+      "defaultValue": "取消"
+    },
+    "okText": {
+      "type": "string",
+      "desc": "确认按钮文字",
+      "defaultValue": "确定"
+    },
+    "confirmLoading": {
+      "type": "boolean",
+      "desc": "确定按钮是否 loading",
+      "defaultValue": "undefined"
+    },
+    "footer": {
+      "type": "React.node",
+      "desc": "自定义底部内容，不需要底部内容可设置为 null",
+      "defaultValue": "undefined"
+    },
+    "maskClosable": {
+      "type": "boolean",
+      "desc": "点击蒙层是否允许关闭",
+      "defaultValue": "true"
+    }
+  },
+  "events": {
+    "onOk": {
+      "desc": "点击确定时的回调",
+      "args": []
+    },
+    "onCancel": {
+      "desc": "点击取消时的回调",
+      "args": []
+    }
+  },
+  "category": ["数据录入"]
+}
