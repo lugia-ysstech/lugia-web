@@ -5,7 +5,7 @@
  * @flow
  */
 import type { MenuItemProps } from './item';
-
+import SubMenu from './submenu';
 import '../common/shirm';
 import * as React from 'react';
 import Item from './item';
@@ -548,7 +548,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const y = offsetY === 0 || offsetY ? offsetY : null;
 
     return (
-      <Result
+      <SubMenu
         mutliple={mutliple}
         size={subsize}
         displayField={displayField}
