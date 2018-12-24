@@ -5,19 +5,18 @@
  * @flow
  */
 import type { MenuItemProps } from './item';
-import SubMenu from './submenu';
+import Item from './item';
 import '../common/shirm';
 import * as React from 'react';
-import Item from './item';
 import {
   DefaultHeight,
-  TextIcon,
-  MenuContainer,
-  RightIcon,
-  MenuItemHeight,
   DefaultMenuItemHeight,
   DefaultWidth,
   getMenuItemHeight,
+  MenuContainer,
+  MenuItemHeight,
+  RightIcon,
+  TextIcon,
 } from '../css/menu';
 import ThemeProvider from '../theme-provider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
@@ -109,7 +108,7 @@ export type MenuState = {
   indexOffsetY: number,
 };
 
-let Result = () => <div />;
+let SubMenu = () => <div />;
 
 class Menu extends React.Component<MenuProps, MenuState> {
   static defaultProps = {
@@ -761,7 +760,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 }
 
-Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
+const Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
 
 Result.Placeholder = Placeholder;
 Result.computeCanSeeCount = (
@@ -771,4 +770,24 @@ Result.computeCanSeeCount = (
   return Math.floor(getCanSeeCountRealy(height, menuItemHeight));
 };
 Result.MenuItem = Item;
+
+SubMenu = ThemeProvider(
+  class SubMenu extends React.Component<MenuProps> {
+    static displayName = Widget.SubMenu;
+    svtarget: ?Object;
+
+    render() {
+      const { props } = this;
+      const { getTheme } = props;
+      console.info('sub', getTheme());
+      return (
+        <Theme config={{ [Widget.Menu]: getTheme() }}>
+          <Result {...props} ref={cmp => (this.svtarget = cmp)} />
+        </Theme>
+      );
+    }
+  },
+  Widget.SubMenu
+);
+
 export default Result;
