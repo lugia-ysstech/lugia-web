@@ -72,6 +72,7 @@ const Cascader = 'sv_widget_Cascader';
 const Carousel = 'sv_widget_Carousel';
 const Breadcrumb = 'sv_widget_Breadcrumb';
 const NavMenu = 'sv_widget_NavMenu';
+const SubMenu = 'sv_widget_SubMenu';
 
 const Layout = 'sv_widget_Layout';
 const Header = 'sv_widget_Header';
@@ -135,6 +136,7 @@ export default {
   Theme,
   Menu,
   MenuItem,
+  SubMenu,
   Icon,
   AddIcon,
   RefershIcon,
