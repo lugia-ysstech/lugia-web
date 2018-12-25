@@ -27,7 +27,7 @@ const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
 export type SizeType = 'large' | 'default' | 'bigger';
 export type MenuItemProps = {
-  key: any,
+  key?: any,
   checked: boolean,
   mutliple: boolean,
   onClick?: Function,

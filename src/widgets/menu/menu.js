@@ -423,7 +423,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     separator: string,
     selectedKeys: string[],
     index: number,
-  }): ?(string[]) => {
+  }): string[] => {
     const { mutliple, separator } = config;
 
     let { key } = config;
