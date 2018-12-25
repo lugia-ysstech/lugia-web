@@ -182,4 +182,4 @@ class ScrollerTree extends React.Component<any, any> {
   };
 }
 
-export default ThrottleScroller(ScrollerTree, 35);
+export default ThrottleScroller(ScrollerTree, 34);
