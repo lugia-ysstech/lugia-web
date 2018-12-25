@@ -16,7 +16,7 @@ export const { themeColor, disableColor, blackColor, lightGreyColor, defaultColo
 export const DefaultMenuItemHeight = 35;
 export const LargeMenuItemHeight = 60;
 export const BiggerMenuItemHeight = 40;
-export const MenuItemHeight = 40;
+export const MenuItemHeight = 35;
 export const DefaultHeight = 250;
 export const DefaultWidth = 250;
 export const ItemBackgroundColor = '#edf0fe';

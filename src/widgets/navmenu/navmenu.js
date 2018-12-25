@@ -48,7 +48,7 @@ type NavMenuProps = {
   onClick?: Function,
   valueField?: string,
   displayField?: string,
-  motif: 'light' | 'dark',
+  theme: 'light' | 'dark',
   separator?: string,
 };
 
@@ -57,7 +57,6 @@ type NavMenuState = {
   popupVisible: boolean,
   value: string[],
   expandedPath: string[],
-  selectedKeys: string[],
 };
 const openClassName = 'lugia-icon-direction_up';
 const closeClassName = 'lugia-icon-direction_down';
@@ -82,7 +81,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     valueField: 'value',
     displayField: 'text',
     inlineExpandAll: true,
-    motif: 'light',
+    theme: 'light',
   };
 
   treeData: Array<Object>;
@@ -94,7 +93,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       popupVisible: false,
       value: getValue(props, null),
       expandedPath: getInitExpandedPath(props),
-      selectedKeys: getInitExpandedPath(props),
     };
     this.treeData = getTreeData(this.props);
   }
@@ -106,7 +104,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
     return {
       value: getValue(props, state),
-      selectedKeys: state.value,
       expandedPath: state.expandedPath,
     };
   }
@@ -126,7 +123,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   getVerticalNavMenu = () => {
     const { data, displayField, valueField, separator } = this.props;
-    const { popupVisible, selectedKeys, expandedPath } = this.state;
+    const { popupVisible, value, expandedPath } = this.state;
     const { width, submenuWidth, height } = this.getThemeTarget();
     const menuConfig = {
       [Widget.Menu]: {
@@ -151,7 +148,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
             mutliple={false}
             handleIsInMenu={this.handleIsInMenu}
             onClick={this.handleClickMenu}
-            selectedKeys={selectedKeys}
+            selectedKeys={value}
             expandedPath={expandedPath}
             onExpandPathChange={this.onExpandPathChange}
           />
@@ -187,7 +184,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   getInlineNavMenu = () => {
     const { value } = this.state;
-    const { inlineType, inlineExpandAll, valueField, displayField, motif } = this.props;
+    const { inlineType, inlineExpandAll, valueField, displayField, theme } = this.props;
     const { width, color } = this.getThemeTarget();
     const config = {
       [Widget.Tree]: {
@@ -201,7 +198,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       <Theme config={config}>
         <Tree
           expandAll={inlineExpandAll}
-          motif={motif}
+          theme={theme}
           inlineType={inlineType}
           data={treeData}
           size={'bigger'}
@@ -217,9 +214,12 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     );
   };
 
-  getExposeItem = (treeItem: Object) => {
-    const { valueField = 'value', displayField = 'text' } = this.props;
+  getExposeItem = (treeItem: ?Object) => {
     const obj = {};
+    if (!treeItem) {
+      return obj;
+    }
+    const { valueField = 'value', displayField = 'text' } = this.props;
     obj[valueField] = treeItem[valueField];
     obj[displayField] = treeItem[displayField];
     return obj;
@@ -234,7 +234,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   onChange = (value: string[]) => {
-    const treeItem = this.getCheckedItem(value);
+    const key = value[0];
+    const treeItem = this.getCheckedItem(key);
     const item = this.getExposeItem(treeItem);
     const { onChange, onSelect } = this.props;
     onChange && onChange(item);
@@ -242,8 +243,10 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     this.setState({ value });
   };
 
-  getCheckedItem(value: string[]): any {
-    const key = value[0];
+  getCheckedItem(key: string): ?Object {
+    if (!key) {
+      return {};
+    }
     const { valueField = 'value' } = this.props;
     return this.treeData.find(item => item[valueField] === key);
   }

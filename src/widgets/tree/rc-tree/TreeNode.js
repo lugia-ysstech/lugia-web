@@ -244,8 +244,10 @@ class TreeNode extends React.Component {
       themeStyle,
       icon,
       size,
-      motif,
+      theme,
       color,
+      isLeaf,
+      title,
     } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
@@ -255,7 +257,7 @@ class TreeNode extends React.Component {
     let newChildren = this.renderChildren(props);
     if (!newChildren || newChildren === props.children) {
       newChildren = null;
-      if (props.isLeaf) {
+      if (isLeaf) {
         canRenderSwitcher = false;
         iconState = 'docu';
       }
@@ -271,7 +273,7 @@ class TreeNode extends React.Component {
           inlineType={inlineType}
           title={content}
           height={iconHeight}
-          motif={motif}
+          theme={theme}
         >
           <TextIcon iconClass={icon} />
           {content}
@@ -310,7 +312,7 @@ class TreeNode extends React.Component {
           selected={selected}
           describe={describe}
           notCanSelect={notCanSelect}
-          motif={motif}
+          theme={theme}
           color={color}
         >
           {title}
@@ -338,11 +340,11 @@ class TreeNode extends React.Component {
         unselectable="on"
         inlineType={inlineType}
         {...liProps}
-        pos={props.pos}
-        isLeaf={props.isLeaf}
-        selected={props.selected}
-        title={props.title}
-        motif={motif}
+        pos={pos}
+        isLeaf={isLeaf}
+        selected={selected}
+        title={title}
+        theme={theme}
         color={color}
       >
         {/* 小箭头*/}

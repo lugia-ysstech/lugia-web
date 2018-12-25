@@ -19,7 +19,7 @@ export const {
 } = colorsFunc();
 export const MenuItemHeight = 40;
 export const DefaultHeight = 1000;
-export const DescribeColor = '#b5b6c1';
+export const DescribeColor = '#999';
 export const ItemBackgroundColor = '#edf0fe';
 
 // const getSpiritColor = (color: string) => {
@@ -75,7 +75,7 @@ const getLiIcon = props => {
     : `
   ::before {
     content: '';
-    width: ${em(4)};
+    width: ${em(6)};
     border-radius: ${em(4)};
     height: ${em(MenuItemHeight)};
     background: ${themeColor};
@@ -90,9 +90,9 @@ const getLiIcon = props => {
 };
 
 const getLiBackground = props => {
-  const { motif, color = themeColor } = props;
+  const { theme, color = themeColor } = props;
   // const { color: darkBackColor } = getDarkBakcgroundColor(color);
-  return `background: ${motif === 'dark' ? '#000033' : ''}`;
+  return `background: ${theme === 'dark' ? '#000033' : ''}`;
 };
 
 export const Li = styled.li`
@@ -121,9 +121,9 @@ export const ChildrenUl = styled.ul`
 `;
 
 function getSelected(props) {
-  const { selected, inlineType, describe, motif } = props;
+  const { selected, inlineType, describe, theme } = props;
   if (describe) {
-    return `color: ${DescribeColor}`;
+    return `color: ${theme === 'light' ? '#bbb' : DescribeColor}`;
   }
   if (inlineType === 'ellipse') {
     return selected
@@ -132,7 +132,7 @@ function getSelected(props) {
         color: ${defaultColor};
       }
       `
-      : `color: ${motif === 'dark' ? defaultColor : blackColor};
+      : `color: ${theme === 'dark' ? defaultColor : blackColor};
     &:hover {
       color: ${themeColor};
     }
@@ -144,7 +144,7 @@ function getSelected(props) {
       color: ${themeColor};
     }
     `
-    : `color: ${motif === 'dark' ? defaultColor : blackColor};
+    : `color: ${theme === 'dark' ? defaultColor : blackColor};
   &:hover {
     color: ${themeColor};
   }
@@ -166,10 +166,10 @@ const getFontSize = props => {
 };
 
 const getTitleWrapBackground = props => {
-  const { motif, pos, inlineType } = props;
+  const { theme, pos, inlineType } = props;
   const num = pos.split('-').length - 2;
-  return motif === 'dark' && inlineType === 'primary' && num !== 0
-    ? 'background: rgba(255, 255, 255, 0.2)'
+  return theme === 'dark' && inlineType === 'primary' && num === 0
+    ? 'background: rgba(255, 255, 255, 0.1)'
     : '';
 };
 export const TitleWrap = styled.span`
@@ -203,18 +203,13 @@ const getTitleSpanPadding = props => {
 };
 
 const getSelectedBackground = props => {
-  const { inlineType, selected, motif } = props;
+  const { inlineType, selected, theme } = props;
   if (inlineType === 'ellipse') {
     return selected
       ? `background: linear-gradient(to right, ${themeColor}, #808eff);`
-      : `background: ${motif === 'dark' ? '#000033' : defaultColor};`;
+      : `background: ${theme === 'dark' ? '#000033' : defaultColor};`;
   }
   return 'background: transparent;';
-};
-
-const getTransitionTime = props => {
-  const { inlineType } = props;
-  return inlineType === 'ellipse' ? '0.5s' : '0s';
 };
 
 const getTitleSpanHeight = props => {
@@ -230,7 +225,6 @@ export const TitleSpan = styled.span`
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  transition: all ${getTransitionTime};
   ${getTitleSpanPadding};
   ${getBorderRadius};
   ${getSelectedBackground};
