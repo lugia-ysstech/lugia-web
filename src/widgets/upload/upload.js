@@ -183,7 +183,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     if (len <= 0) return;
 
     const { isAllowUpload } = this.state;
-    const { autoUpload, limit } = this.props;
+    const { autoUpload, limit = Infinity } = this.props;
 
     for (let i = 0; i < len; i++) {
       if (i >= limit) break;
