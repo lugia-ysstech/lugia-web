@@ -3,68 +3,137 @@
  *
  *2018-12-05
  *
- *
+ *@flow
  *
  */
-export const UPLOADING = 1;
-export const SUCCESS = 2;
-export const ERROR = 3;
 
-function createRequest(method, url) {
-  let xhr = new XMLHttpRequest();
-  if ('withCredentials' in xhr) {
-    // for Chrome/Firefox/Opera/Safari.
-    xhr.open(method, url, true);
-  } else if (typeof XDomainRequest !== 'undefined') {
-    // for IE.
-    xhr = new XDomainRequest();
-    xhr.open(method, url);
-  } else {
-    // CORS not supported.
-    xhr = null;
-  }
-  return xhr;
+export function getRequestXHR(): Object {
+  return window.XMLHttpRequest
+    ? new XMLHttpRequest()
+    : new window.ActiveXobject('Microsoft.XMLHTTP');
 }
 
-const request = function(args: Object) {
-  const {
-    url,
-    name,
-    cors,
-    file,
-    onProgress,
-    onLoad,
-    onError,
-    withCredentials,
-    params = {},
-    headers = {},
-  } = args;
+export function getFormData(data: Object, file: Object): Object {
+  const newData: Object = new FormData();
+  if (data) {
+    for (const field in data) {
+      newData.append(field, data[field]);
+    }
+  }
+  if (file) newData.append('file', file);
+  return newData;
+}
 
-  if (!url) {
-    console.error(`action is required, but its value is ${url}`);
-    return undefined;
+export function getQueryString(data: ?Object): string {
+  if (!data) return '';
+
+  const result = [];
+
+  for (const field in data) {
+    result.push(`${field}=${data[field]}`);
   }
 
-  const data = new FormData();
-  Object.keys(params).forEach(k => {
-    data.append(k, params[k]);
-  });
+  return result.join('&');
+}
 
-  data.append(name, file);
+export function addEventListener(
+  target: Object,
+  event: string,
+  func: Function,
+  useCapture?: boolean = false
+) {
+  target.addEventListener(event, func, useCapture);
+}
 
-  const xhr = createRequest('post', url);
-  xhr.withCredentials = withCredentials;
-  if (onProgress) xhr.upload.addEventListener('progress', onProgress, false);
-  xhr.onload = e => onLoad(e.currentTarget);
-  xhr.onerror = onError;
-
-  Object.keys(headers).forEach(k => {
-    xhr.setRequestHeader(k, headers[k]);
-  });
-
-  xhr.send(data);
-
-  return xhr;
+const doGet = function(xhr, url, data, asynch) {
+  const queryString = getQueryString(data);
+  xhr.open('get', url + (queryString ? `?${queryString}` : queryString), asynch);
+  xhr.send();
 };
+
+const doPost = function(xhr, url, { data, headers, file }, asynch) {
+  const params = getFormData(data, file);
+  xhr.open('post', url, asynch);
+
+  if (headers) {
+    Object.keys(headers).forEach(field => {
+      xhr.setRequestHeader(field, headers[field]);
+    });
+  }
+  xhr.send(params);
+};
+
+function parseResponse(xhr, dataType) {
+  const type = dataType.toLocaleLowerCase();
+
+  const { responseText, responseXML } = xhr;
+  let res;
+  switch (type) {
+    case 'text':
+      res = responseText;
+      break;
+    case 'xml':
+      res = responseXML;
+      break;
+    case 'json':
+      res = JSON.parse(responseText);
+      break;
+    default:
+  }
+  return res;
+}
+
+function request(dataObject: Object) {
+  const { url } = dataObject;
+  if (!url) {
+    return;
+  }
+
+  const xhr = getRequestXHR();
+
+  const { withCredentials = false } = dataObject;
+  xhr.withCredentials = withCredentials;
+
+  const { onProgress, onComplete } = dataObject;
+
+  xhr.upload.onprogress = onProgress;
+
+  if (onProgress) {
+    addEventListener(xhr.upload, 'progress', onProgress, false);
+  }
+
+  if (onComplete) {
+    addEventListener(xhr, 'load', onComplete, false);
+  }
+
+  const { method = 'get', asynch = true, data } = dataObject;
+  const type = method.toLocaleLowerCase();
+  switch (type) {
+    case 'get':
+      doGet(xhr, url, data, asynch);
+      break;
+    case 'post':
+    default:
+      const { headers, file } = dataObject;
+      doPost(xhr, url, { data, file, headers }, asynch);
+      break;
+  }
+
+  const { onFail, dataType = 'text', onSuccess } = dataObject;
+  xhr.onreadystatechange = function() {
+    const { readyState } = xhr;
+    if (readyState === 4) {
+      const { status } = xhr;
+      if (status === 200) {
+        const res = parseResponse(xhr, dataType);
+        onSuccess && onSuccess(res);
+      } else {
+        const { responseText } = xhr;
+        onFail && onFail(responseText);
+      }
+    }
+  };
+  return xhr;
+}
 
 export default request;
