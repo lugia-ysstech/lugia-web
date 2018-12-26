@@ -12,3 +12,27 @@
 
 则得到的value值为2016年03月02日
 
+showToday : 显示today按钮
+showTime  :显示时间选择器
+disabledTime：禁用的时间，配合showTime
+extraFooter: {message:'string',style:{...}} 添加额外的页脚，展示信息
+ButtonOptions:{}自定义页脚展示的一些按钮
+onOK：展示确定按钮
+
+
+firstWeekDay :number   设置一周的第一天是星期几 范围 1-7 ，范围以外的一律按周日计算 
+
+props：
+defaultVaule
+value
+format
+disabled
+readOnly
+firstWeekDay
+
+事件
+onChange
+onFocus
+onBlur
+onOk
+

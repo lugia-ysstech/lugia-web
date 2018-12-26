@@ -8,14 +8,13 @@
  */
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import DatePicker from './DatePicker';
-import YearPicker from './YearPicker';
-import MonthPicker from './MonthPicker';
-import WeekPicker from './WeekPicker';
-import WeeksPicker from './WeeksPicker';
-import RangePicker from './RangePicker';
-import Time from './TimeSiglePicker';
-import TimePicker from './TimePicker';
+import DatePicker from './picker/DatePicker';
+import YearPicker from './picker/YearPicker';
+import MonthPicker from './picker/MonthPicker';
+import WeekPicker from './picker/WeekPicker';
+import WeeksPicker from './picker/WeeksPicker';
+import RangePicker from './picker/RangePicker';
+import TimePicker from './picker/TimePicker';
 //import Month from './MonthPicker';
 // import Year from './YearPicker';
 // import Week from './WeekPicker';
@@ -26,7 +25,6 @@ DatePicker.WeekPicker = WeekPicker;
 DatePicker.WeeksPicker = WeeksPicker;
 DatePicker.RangePicker = RangePicker;
 DatePicker.TimePicker = TimePicker;
-DatePicker.Time = Time;
 //export default ThemeProvider(DatePicker, Widget.DatePicker);
 export default DatePicker;
 
