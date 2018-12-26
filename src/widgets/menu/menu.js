@@ -197,7 +197,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { props } = this;
     const items = this.getItems(props);
     const { data = [], size } = props;
-    const length = data.length;
+    const length = data ? data.length : 0;
     const menuItemHeight = getMenuItemHeight(size);
     const bodyContent = (
       <MenuContainer length={length} size={size} theme={this.getTheme()} level={this.props.level}>
