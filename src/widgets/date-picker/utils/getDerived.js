@@ -13,6 +13,7 @@ type typeProps = {
   mode: string,
   firstWeekDay: number,
   format: string,
+  valueIsValid: boolean,
 };
 export const getNormalFormat = (mode: string): string => {
   const { isWeeks, isWeek, isMonth, isYear, isTime, isTimes } = modeStyle(mode);
@@ -35,7 +36,7 @@ export const getFirstWeekDay = (firstWeekDay: number = 0): number => {
   return newFirstWeekDay;
 };
 export const getDerived = (nextProps: typeProps, preState: any) => {
-  const { value, format, mode, firstWeekDay } = nextProps;
+  const { value, format, mode, firstWeekDay, valueIsValid } = nextProps;
   const { isWeeks } = modeStyle(mode);
   const newValue = preState ? preState.value : value;
   const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
@@ -47,7 +48,7 @@ export const getDerived = (nextProps: typeProps, preState: any) => {
     .date(1)
     .weekday();
   const weekIndex = weekDay;
-  const choseDayIndex = date + weekIndex;
+  const choseDayIndex = valueIsValid ? date + weekIndex : '';
   const lastDayIndexInMonth = weekIndex + momentsB.daysInMonth() - 1;
   const days = getDays(momentsB);
   const max = momentsB.daysInMonth();
@@ -104,16 +105,16 @@ type typePropsForgetDerivedForInput = {
   mode: string,
 };
 type typeStateForgetDerivedForInput = {
-  value: Array<string> | string,
+  value: Array<string>,
 };
 type typeResultForgetDerivedForInput = {
-  value: Array<string> | string | void,
+  value: Array<string> | void,
   format: string,
   placeholder: Array<string> | string,
   firstWeekDay: number,
   valueIsValid: boolean,
-  panelValue: Array<string> | string | void,
-  normalValue: Array<string> | string | void,
+  panelValue: Array<string> | void,
+  normalValue: Array<string> | void,
 };
 export function getDerivedForInput(
   nextProps: typePropsForgetDerivedForInput,
@@ -132,7 +133,7 @@ export function getDerivedForInput(
   let panelValue = modeWithValid ? newValue : getInValidValue(newValue, format);
   const normalValue = panelValue;
   if (isWeeks) {
-    panelValue = getValueFromWeekToDate(panelValue, format);
+    panelValue = [getValueFromWeekToDate(panelValue[0], format)];
   }
   return {
     value: newValue,
@@ -180,6 +181,9 @@ function getValueFromValue(
     }
     newValue = rangeValue;
   }
+  if (typeof newValue === 'string') {
+    newValue = [newValue];
+  }
   return newValue;
 }
 function getPlaceholder(nextProps: Object): Array<string> | string {
@@ -205,18 +209,18 @@ export function getValueWhetherValid(value?: Array<string> | string, format: str
         valueIsValid = false;
       }
     });
-  if (!Array.isArray(value)) {
-    valueIsValid = formatValueIsValid(normalvalueFormatObj, value, format);
-  }
+  // if (!Array.isArray(value)) {
+  //   valueIsValid = formatValueIsValid(normalvalueFormatObj, value, format);
+  // }
   return valueIsValid;
 }
 
-function getInValidValue(value?: Array<string> | string, format: string): Array<string> | string {
+function getInValidValue(value?: Array<string>, format: string): Array<string> {
   const normalFormatbyValue = moment().format(format);
   const normalvalueFormatObj = getformatSymbol(normalFormatbyValue);
   const normalValue = [];
   const normal = moment().format(format);
-  const isArr = Array.isArray(value);
+  const isArr = value && Array.isArray(value);
   isArr &&
     value.forEach((item, index) => {
       let newVal = item;
@@ -235,8 +239,8 @@ function getInValidValue(value?: Array<string> | string, format: string): Array<
     }
   }
 
-  const newValue = isArr ? normalValue : normal;
-  return newValue;
+  //const newValue = isArr ? normalValue : normal;
+  return normalValue;
 }
 
 export function modeStyle(mode: string): Object {

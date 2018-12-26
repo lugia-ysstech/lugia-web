@@ -33,6 +33,7 @@ type TypeProps = {
   hasTimeWrapBorder?: boolean,
   choseDayIndex?: Array<number>,
   timeIndex?: number,
+  valueIsValid: boolean,
 };
 type TypeState = {
   value: string,

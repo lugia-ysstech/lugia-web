@@ -293,7 +293,6 @@ export const getweekFormatValue = (year: number, weeks: number, format: string) 
     .format(format);
 };
 export const getValueFromWeekToDate = (value: number, format: string) => {
-  console.log(value, format);
   return moment(value, format)
     .startOf('week')
     .format('YYYY-MM-DD');

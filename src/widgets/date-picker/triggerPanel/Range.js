@@ -11,6 +11,33 @@ import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol } from '../utils/utils';
+type TypeProps = {
+  defaultValue?: Array<string>,
+  value?: Array<string>,
+  format?: string,
+  disabled?: boolean,
+  readOnly?: boolean,
+  onChange?: Function,
+  onFocus?: Function,
+  onBlur?: Function,
+  showTime?: any,
+  onOk?: any,
+  firstWeekDay?: number,
+  theme: Object,
+  mode: string,
+};
+type TypeState = {
+  value: Array<string>,
+  placeholder: Array<string>,
+  format: string,
+  isValid: boolean,
+  timeValue: string,
+  status: string,
+  isScroll: boolean,
+  firstWeekDay: number,
+  panelValue: Array<string>,
+  valueIsValid: boolean,
+};
 class Range extends Component {
   static displayName = 'Range';
   constructor(props) {

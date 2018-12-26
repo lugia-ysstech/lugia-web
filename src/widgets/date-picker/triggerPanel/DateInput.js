@@ -49,15 +49,12 @@ class DateInput extends Component<TypeProps, TypeState> {
   static displayName = 'DateInput';
   normalStyleValueObj: Object;
   trigger: any;
-  picker: any;
-  footerPanel: any;
   oldValue: string;
   targetMode: SwitchPanelMode;
   isClear: boolean;
-  constructor(props: TypeProps) {
-    super(props);
+  constructor() {
+    super();
     this.trigger = React.createRef();
-    this.footerPanel = React.createRef();
     this.targetMode = new SwitchPanelMode();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
@@ -68,8 +65,16 @@ class DateInput extends Component<TypeProps, TypeState> {
       normalValue,
       firstWeekDay,
       valueIsValid,
-    } = getDerivedForInput(nextProps, preState);
-    return { value, panelValue, normalValue, format, firstWeekDay, valueIsValid };
+    } = getDerivedForInput(nextProps, { value: [preState && preState.value] });
+
+    return {
+      value: value && value[0],
+      panelValue: panelValue && panelValue[0],
+      normalValue: normalValue && normalValue[0],
+      format,
+      firstWeekDay,
+      valueIsValid,
+    };
   }
   componentDidMount() {
     const { format } = this.state;
@@ -86,6 +91,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const newProps = { ...this.props };
     delete newProps.defaultValue;
     delete newProps.value;
+
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
@@ -109,7 +115,6 @@ class DateInput extends Component<TypeProps, TypeState> {
               />
               <PageFooter
                 {...this.props}
-                ref={this.footerPanel}
                 format={format}
                 onChange={this.onChange}
                 footerChange={this.footerChange}
@@ -198,7 +203,6 @@ class DateInput extends Component<TypeProps, TypeState> {
 
     this.setState({ value });
     const newValue = valueIsValid ? value : normalValue;
-    console.log(newValue);
     this.setModeState(newValue, format, isWeeks || isWeek);
 
     const { onFocus } = this.props;
