@@ -36,7 +36,7 @@ export const getFirstWeekDay = (firstWeekDay: number = 0): number => {
   return newFirstWeekDay;
 };
 export const getDerived = (nextProps: typeProps, preState: any) => {
-  const { value, format, mode, firstWeekDay, valueIsValid } = nextProps;
+  const { value, format, mode, firstWeekDay, valueIsValid, hasOldValue } = nextProps;
   const { isWeeks } = modeStyle(mode);
   const newValue = preState ? preState.value : value;
   const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
@@ -48,7 +48,7 @@ export const getDerived = (nextProps: typeProps, preState: any) => {
     .date(1)
     .weekday();
   const weekIndex = weekDay;
-  const choseDayIndex = valueIsValid ? date + weekIndex : '';
+  const choseDayIndex = valueIsValid || hasOldValue ? date + weekIndex : '';
   const lastDayIndexInMonth = weekIndex + momentsB.daysInMonth() - 1;
   const days = getDays(momentsB);
   const max = momentsB.daysInMonth();
@@ -130,11 +130,14 @@ export function getDerivedForInput(
   const valueIsValid = getValueWhetherValid(newValue, format);
   const { isSameYandM } = isRange && getIsSame(newValue, format);
   const modeWithValid = isRange ? valueIsValid && !isSameYandM : valueIsValid;
-  let panelValue = modeWithValid ? newValue : getInValidValue(newValue, format);
-  const normalValue = panelValue;
+  let panelValue = modeWithValid ? [...newValue] : getInValidValue(newValue, format);
+
+  const normalValue = [...panelValue];
+  console.log(newValue, panelValue, normalValue);
   if (isWeeks) {
     panelValue = [getValueFromWeekToDate(panelValue[0], format)];
   }
+  console.log(newValue, panelValue, normalValue);
   return {
     value: newValue,
     format,
@@ -184,6 +187,7 @@ function getValueFromValue(
   if (typeof newValue === 'string') {
     newValue = [newValue];
   }
+  console.log(newValue);
   return newValue;
 }
 function getPlaceholder(nextProps: Object): Array<string> | string {

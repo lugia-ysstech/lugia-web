@@ -158,8 +158,9 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { isWeeks, isWeek } = modeStyle(mode);
     const isValid =
       action === 'click' ? true : formatValueIsValid(normalStyleValueObj, newValue, format);
-
+    console.log('setModeState', isValid);
     if (isValid) {
+      console.log('setModeState', 34434);
       this.oldValue = newValue;
       visible = false;
       const { onChange, showTime, onOk } = this.props;
@@ -173,6 +174,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.setTreePopupVisible(visible);
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
+    console.log('setModeState', 23323);
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
     let newVal = value;
     if (isWeeks) {
@@ -186,6 +188,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       weeks: moments.weeks(),
       value: newVal,
     };
+    console.log(modeParams);
     this.targetMode.onChange(modeParams);
   };
   onFocus = () => {
