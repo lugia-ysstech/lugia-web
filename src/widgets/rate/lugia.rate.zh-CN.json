@@ -1,0 +1,98 @@
+{
+  "widgetName": "Rate",
+  "title": "评分",
+  "desc": "评分组件",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "count": {
+      "type": "number",
+      "desc": "展示的 star 总数",
+      "defaultValue": "5"
+    },
+    "max": {
+      "type": "number",
+      "desc": "最大分值",
+      "defaultValue": "5"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,不可进行交互",
+      "defaultValue": "false"
+    },
+    "allowHalf": {
+      "type": "boolean",
+      "desc": "是否允许半选",
+      "defaultValue": "false"
+    },
+    "classify":{
+      "type": "boolean",
+      "desc": "是否区分颜色",
+      "defaultValue": "false"
+    },
+    "iconClass":{
+      "type": "object",
+      "desc": "自定义图标对象",
+      "defaultValue": {
+        "default": "lugia-icon-financial_star",
+        "primary": "lugia-icon-financial_star",
+        "danger": "lugia-icon-financial_star",
+        "amazed": "lugia-icon-financial_star",
+        "half": "lugia-icon-finacial1_half_star"
+      }
+    },
+    "className":{
+      "type": "string",
+      "desc": "自定义样式类名",
+      "defaultValue": ""
+    },
+    "value":{
+      "type": "number",
+      "desc": "当前分值",
+      "defaultValue": "0"
+    },
+    "character":{
+      "type": "string | React$Element<any>",
+      "desc": "自定义展示字符",
+      "defaultValue": "undefined"
+    }
+
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "DOM 事件"
+        },
+        {
+          "name": "result",
+          "desc": "点击后的所选值",
+          "type": "Object"
+        }
+      ]
+    },
+    "onChange": {
+      "desc": "分值改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "鼠标移动的DOM事件",
+          "type": "DOM 事件"
+        },
+        {
+          "name": "result",
+          "desc": "鼠标移动时的所选值",
+          "type": "Object"
+        }
+      ]
+    }
+
+  },
+  "category": ["数据录入"]
+}
