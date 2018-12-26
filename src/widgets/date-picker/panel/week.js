@@ -3,7 +3,7 @@
  * @flow
  * */
 import React, { Component } from 'react';
-import { HeaderWeek, HeaderWeekBox } from '../styled';
+import { HeaderWeek, HeaderWeekBox } from '../styled/styled';
 import moment from 'moment';
 type TypeProps = {
   onChangeWeek?: Function,

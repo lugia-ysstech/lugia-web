@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import Head from './Head';
 import FacePanel from './FacePanel';
-import { DateWrapper } from '../styled';
+import { DateWrapper } from '../styled/styled';
 import moment from 'moment';
 type TypeProps = {
   onChange?: Function,

@@ -6,7 +6,7 @@ import Trigger from '../../trigger/index';
 import RangeInput from './RangeInput';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
-import { RangeWrap } from '../styled';
+import { RangeWrap } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';

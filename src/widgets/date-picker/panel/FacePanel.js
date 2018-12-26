@@ -4,7 +4,7 @@
  * */
 import React, { Component } from 'react';
 import { modeStyle } from '../utils/booleanUtils';
-import { OtherChild, OtherChildText, DatePanel } from '../styled';
+import { OtherChild, OtherChildText, DatePanel } from '../styled/styled';
 import { getWeeksRange } from '../utils/differUtils';
 const moment = require('moment');
 type TypeProps = {

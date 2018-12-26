@@ -58,6 +58,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.targetMode = new SwitchPanelMode();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
+    console.log(preState && preState.value);
     const {
       value,
       format,
@@ -65,7 +66,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       normalValue,
       firstWeekDay,
       valueIsValid,
-    } = getDerivedForInput(nextProps, { value: [preState && preState.value] });
+    } = getDerivedForInput(nextProps, preState);
 
     return {
       value: value && value[0],
@@ -91,7 +92,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const newProps = { ...this.props };
     delete newProps.defaultValue;
     delete newProps.value;
-
+    console.log(panelValue);
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
