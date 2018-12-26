@@ -21,6 +21,7 @@ import SwitchPanelMode from '../mode';
 type TypeProps = {
   defaultValue?: Array<string> | string,
   value?: Array<string> | string,
+  placeholder?: Array<string> | string,
   format?: string,
   disabled?: boolean,
   readOnly?: boolean,
@@ -44,6 +45,7 @@ type TypeState = {
   panelValue: string,
   valueIsValid: boolean,
   normalValue: string,
+  placeholder: Array<string>,
 };
 class DateInput extends Component<TypeProps, TypeState> {
   static displayName = 'DateInput';
@@ -58,7 +60,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.targetMode = new SwitchPanelMode();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    console.log(preState && preState.value);
     const {
       value,
       format,
@@ -66,6 +67,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       normalValue,
       firstWeekDay,
       valueIsValid,
+      placeholder,
     } = getDerivedForInput(nextProps, preState);
 
     return {
@@ -75,6 +77,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       format,
       firstWeekDay,
       valueIsValid,
+      placeholder,
     };
   }
   componentDidMount() {
@@ -84,7 +87,16 @@ class DateInput extends Component<TypeProps, TypeState> {
   }
   render() {
     const { disabled, readOnly, theme } = this.props;
-    const { value, status, format, panelValue, isScroll, firstWeekDay, valueIsValid } = this.state;
+    const {
+      value,
+      status,
+      format,
+      panelValue,
+      isScroll,
+      firstWeekDay,
+      valueIsValid,
+      placeholder,
+    } = this.state;
     const hasStateValue = value ? true : false;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { oldValue } = this;
@@ -92,7 +104,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     const newProps = { ...this.props };
     delete newProps.defaultValue;
     delete newProps.value;
-    console.log(panelValue);
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
@@ -134,7 +145,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             prefix={<Icon className="lugia-icon-financial_date" />}
             value={value}
             onChange={this.onChange}
-            placeholder={'请选择日期'}
+            placeholder={placeholder[0]}
             onFocus={this.onFocus}
             onBlur={this.onBlur}
             onClear={this.onClear}

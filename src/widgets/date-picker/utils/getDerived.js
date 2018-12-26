@@ -130,10 +130,8 @@ export function getDerivedForInput(
   const valueIsValid = getValueWhetherValid(newValue, format);
   const { isSameYandM } = isRange && getIsSame(newValue, format);
   const modeWithValid = isRange ? valueIsValid && !isSameYandM : valueIsValid;
-  let panelValue = modeWithValid ? [...newValue] : getInValidValue(newValue, format);
-
-  const normalValue = [...panelValue];
-  console.log(newValue, panelValue, normalValue);
+  let panelValue = modeWithValid ? newValue : getInValidValue(newValue, format);
+  const normalValue = panelValue;
   if (isWeeks) {
     panelValue = [getValueFromWeekToDate(panelValue[0], format)];
   }
@@ -187,20 +185,23 @@ function getValueFromValue(
   if (typeof newValue === 'string') {
     newValue = [newValue];
   }
-  console.log(newValue);
   return newValue;
 }
 function getPlaceholder(nextProps: Object): Array<string> | string {
   const { mode, placeholder } = nextProps;
   const hasPlaceholder = 'placeholder' in nextProps;
   const { isRange, isTime, isTimes } = modeStyle(mode);
-  return hasPlaceholder
+  let newPlaceholder = hasPlaceholder
     ? placeholder
     : isRange
     ? ['开始日期', '结束日期']
     : isTime || isTimes
     ? '请选择时间'
     : '请选择日期';
+  if (typeof newPlaceholder === 'string') {
+    newPlaceholder = [newPlaceholder];
+  }
+  return newPlaceholder;
 }
 export function getValueWhetherValid(value?: Array<string> | string, format: string): boolean {
   const normalFormatbyValue = moment().format(format);
