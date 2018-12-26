@@ -1,37 +1,15 @@
 import styled from 'styled-components';
-import colorsFunc from '../css/stateColor';
-import { px2emcss } from '../css/units';
-import { valueInRange } from '../common/Math';
-import { modeStyle } from './getDerived';
-import { getIsSame } from './utils';
-
-const fontSize = 1.4;
-const em = px2emcss(fontSize);
-const distance = {
-  iconLeft: 10,
-};
-const DateWrapperPadding = {
-  top: 30,
-  left: 20,
-  bottom: 44,
-};
-const borderRadius = 3;
-const { hoverColor, normalColor, disableColor, spiritColor } = colorsFunc();
-const getThemeProperty = props => {
-  const { isRange } = modeStyle(props.mode);
-  const { width, color, backgroundColor } = props;
-  let newWidth = isRange ? width / 2 + 100 : width * 1 + 100;
-  if (!newWidth) {
-    newWidth = 300;
-  }
-  const weekTitleWIdth = em((newWidth - DateWrapperPadding.left * 2 - 2) / 7);
-  return {
-    width: newWidth,
-    color,
-    backgroundColor,
-    weekTitleWIdth,
-  };
-};
+import { valueInRange } from '../../common/Math';
+import {
+  getThemeProperty,
+  getDateWrrap,
+  themeColor,
+  distance,
+  borderRadius,
+  fontSize,
+  em,
+} from './utils';
+const { hoverColor, normalColor, disableColor, spiritColor } = themeColor;
 export const Icons = styled.span`
   position: absolute;
   left: ${em(distance.iconLeft)};
@@ -110,10 +88,14 @@ export const DateChild = styled.span`
   text-align: center;
   vertical-align: middle;
   margin: ${em(3)} ${0};
-  ${props => getDateChildStyle(props).chooseStyle};
-  ${props => getDateChildStyle(props).chooseWeeks};
-  ${props => getDateChildStyle(props).rangeStyle};
+  ${props => getDateChildStyle(props).chooseWeeks};  
+  ${props => (props.rangeChose ? `background:${spiritColor}` : '')};  
   ${props => getDateChildStyle(props).todayStyle};
+  ${props => getDateChildStyle(props).chooseStyle};
+  ${rangeBorderDireStyle('7n', 'right')}
+  ${rangeBorderDireStyle('7n+1', 'left')}
+  ${props => props && props.rangeStartIndex && rangeBorderDireStyle(props.rangeStartIndex, 'left')}
+  ${props => props && props.rangeEndIndex && rangeBorderDireStyle(props.rangeEndIndex, 'right')}
 `;
 export const DateChildInner = styled.i`
   font-style: normal;
@@ -154,15 +136,18 @@ export const OtherChildText = styled.i`
   ${props => (props.isChose ? `background:${normalColor};color:#fff;` : '')};
 `;
 export const RangeWrap = styled.div`
-  display: inline-block;
+  font-size: ${fontSize}rem;
+  width: ${props => em(getThemeProperty(props).rangeWrapWidth)};
 `;
 export const RangeInnerTop = styled.span`
   display: block;
 `;
-export const RangeInputWrap = styled.span`
+export const RangeInputWrap = styled.div`
+  font-size: ${fontSize}rem;
   display: inline-block;
   border: 1px solid #ddd;
   border-radius: ${em(borderRadius)};
+  width: ${props => em(props.width)};
 `;
 export const RangeInputInner = styled.span`
   & input {
@@ -183,19 +168,6 @@ export const RangeMiddleSpan = styled.span`
   width: ${props => em(props.width)};
   text-align: center;
 `;
-export const Footer = styled.div`
-  border-top: 1px solid #ddd;
-  padding: ${em(10)} 0;
-  color: red;
-`;
-const getDateWrrap = props => {
-  const { top, left, bottom } = DateWrapperPadding;
-  const paddingStyle = ` ${em(top)}  ${em(left)} ${em(bottom)}`;
-  return {
-    paddingStyle,
-  };
-};
-
 const getDateChildStyle = props => {
   const {
     choseDayIndex,
@@ -205,46 +177,38 @@ const getDateChildStyle = props => {
     isHoverWeek,
     weekHoverStart,
     weekHoverEnd,
-    rangeChose,
-    rangeIndex,
-    index,
-    panelIndex,
     todayIndex,
     noToday,
-    rangeStartIndex,
-    rangeEndIndex,
-    panelFistEndIndex,
-    panelSecondStartIndex,
-    isHasNormalValue,
-    showToday,
-    todayDate,
-    value,
+    selectToday,
   } = props;
   const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
-  const chooseStyle =
-    isHasNormalValue &&
-    arrChoseDayIndex.reduce((p, n) => {
-      return `${p}
+  const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
+    return `${p}
     &:nth-child(${n})>i{
       background:${normalColor};
       color:#fff;
       border-radius:50%;
     }`;
-    }, '');
-  const todayInd = noToday ? '' : value === todayDate && showToday ? todayIndex : '';
+  }, '');
+  const todayInd = noToday ? '' : selectToday ? todayIndex : '';
   let todayStyle = `
       &:nth-child(${todayInd})>i{
         border:1px solid ${normalColor};        
         color:#666;
         background:#fff;      
         border-radius:50%;
+        &:hover {
+          background: ${hoverColor};
+          color: #fff;
+          border-radius: 50%;
+        }
       }
+      
   `;
   let chooseWeeks;
-  let chooseWeekRadius;
   if (isChooseWeek || isHoverWeek) {
     const backG = isChooseWeek ? `${normalColor}` : `${hoverColor}`;
-    const start = isChooseWeek ? startInWeeks + 1 : weekHoverStart + 1;
+    const start = isChooseWeek ? startInWeeks : weekHoverStart;
     const end = isChooseWeek ? endInWeeks : weekHoverEnd;
     const todayIn = valueInRange(todayIndex, [start, end]);
     if (todayIn) {
@@ -274,59 +238,16 @@ const getDateChildStyle = props => {
       } 
     `;
   }
-  let rangeStyle;
-  if (rangeChose) {
-    let isEnd = false;
-    const startOrEnd = index % 7;
-    let borderIndex;
-    if (startOrEnd === 0) {
-      isEnd = true;
-      borderIndex = index;
-    }
-    if (startOrEnd === 1) {
-      isEnd = false;
-      borderIndex = index;
-    }
-
-    const direction = rangeIndex === 0 ? 'left' : 'right';
-    const startDir = isEnd ? 'right' : 'left';
-    const borderStyle = (dire: string) => {
-      return `
-        border-top-${dire}-radius:20px;
-        border-bottom-${dire}-radius:20px;
-      `;
-    };
-
-    const rangeStartIsSmall = rangeStartIndex && rangeEndIndex && rangeStartIndex < rangeEndIndex;
-    const rangeStartDir = rangeStartIsSmall ? 'left' : 'right';
-    const rangeEndDir = rangeStartIsSmall ? 'right' : 'left';
-    rangeStyle = `    
-      background:${spiritColor};
-      
-      &:nth-child(${borderIndex}){
-        border-top-${startDir}-radius:20px;
-        border-bottom-${startDir}-radius:20px;
-      }  
-     
-      &:nth-child(${rangeStartIndex}){       
-        ${borderStyle(rangeStartDir)}
-      } 
-      &:nth-child(${rangeEndIndex}){        
-        ${borderStyle(rangeEndDir)}
-      }
-      &:nth-child(${panelFistEndIndex}){        
-        ${borderStyle('right')}
-      }
-      &:nth-child(${panelSecondStartIndex}){        
-        ${borderStyle('left')}
-      }
-    `;
-  }
   return {
     chooseStyle,
     chooseWeeks,
-    chooseWeekRadius,
-    rangeStyle,
     todayStyle,
   };
 };
+function rangeBorderDireStyle(index, dire) {
+  return `
+  &:nth-child(${index}){
+    border-top-${dire}-radius:${em(20)};
+    border-bottom-${dire}-radius:${em(20)};
+  }`;
+}
