@@ -3,7 +3,7 @@
  * @flow
  * */
 import React, { Component } from 'react';
-import { DateChild, DateChildInner, DatePanel } from '../styled';
+import { DateChild, DateChildInner, DatePanel } from '../styled/styled';
 import { modeStyle } from '../utils/booleanUtils';
 import { valueInRange, getMinAndMax } from '../../common/Math';
 import { getYandM } from '../utils/differUtils';

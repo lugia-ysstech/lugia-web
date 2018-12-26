@@ -3,7 +3,7 @@
  * @flow
  * */
 import React, { Component } from 'react';
-import { FooterWrap, ExtraFooter, Footer, FooterBtn } from '../styled';
+import { FooterWrap, ExtraFooter, Footer, FooterBtn } from '../styled/styledFooter';
 import { modeStyle } from '../utils/booleanUtils';
 import moment from 'moment';
 

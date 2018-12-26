@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import Input from '../../input';
 import Icon from '../../icon/index';
-import { RangeInputWrap, RangeInputInner, RangeMiddleSpan } from '../styled';
+import { RangeInputWrap, RangeInputInner, RangeMiddleSpan } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 type TypeProps = {

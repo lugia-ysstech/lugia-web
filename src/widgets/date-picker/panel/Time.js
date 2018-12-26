@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Menu from '../../menu/index';
-import { TimeWrap, TimeCol, TimeTitle } from '../styled';
+import { TimeWrap, TimeCol, TimeTitle } from '../styled/styledTime';
 import { modeStyle } from '../utils/booleanUtils';
 import { getTimes, getShowTime, getCoversTimes, getBoundaryValue } from '../utils/differUtils';
 const Placeholder = Menu.Placeholder;

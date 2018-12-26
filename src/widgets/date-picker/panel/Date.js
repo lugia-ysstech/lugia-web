@@ -8,7 +8,13 @@ import WeekDays from './week';
 import { modeStyle } from '../utils/booleanUtils';
 import { getFirstDayIndex, getYandM, getDatesfromWeeks } from '../utils/differUtils';
 import Dates from './DatePanel';
-import { DateHeader, DateWrapper, HeaderTop, HeaderTopArrow, HeaderTopText } from '../styled';
+import {
+  DateHeader,
+  DateWrapper,
+  HeaderTop,
+  HeaderTopArrow,
+  HeaderTopText,
+} from '../styled/styled';
 import moment from 'moment';
 type TypeProps = {
   value?: string,

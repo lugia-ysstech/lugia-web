@@ -4,7 +4,7 @@
  * */
 import React, { Component } from 'react';
 import Icon from '../../icon/index';
-import { DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from '../styled';
+import { DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from '../styled/styled';
 const moment = require('moment');
 type TypeProps = {
   onChange?: Function,

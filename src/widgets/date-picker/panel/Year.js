@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import Head from './Head';
 import FacePanel from './FacePanel';
-import { DateWrapper } from '../styled';
+import { DateWrapper } from '../styled/styled';
 type TypeProps = {
   step?: number,
   onChange: Function,
