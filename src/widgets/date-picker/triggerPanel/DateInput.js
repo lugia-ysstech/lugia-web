@@ -11,7 +11,7 @@ import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
-import { getformatSymbol } from '../utils/utils';
+import { getformatSymbol, getNewProps } from '../utils/utils';
 import { formatValueIsValid, modeStyle } from '../utils/booleanUtils';
 
 import Theme from '../../theme';
@@ -19,9 +19,9 @@ import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
 //import type { DateInputProps } from '../typeFlow/typeFlow';
 type TypeProps = {
-  defaultValue?: Array<string> | string,
-  value?: Array<string> | string,
-  placeholder?: Array<string> | string,
+  defaultValue?: string,
+  value?: string,
+  placeholder?: string,
   format?: string,
   disabled?: boolean,
   readOnly?: boolean,
@@ -45,7 +45,7 @@ type TypeState = {
   panelValue: string,
   valueIsValid: boolean,
   normalValue: string,
-  placeholder: Array<string>,
+  placeholder: string,
 };
 class DateInput extends Component<TypeProps, TypeState> {
   static displayName = 'DateInput';
@@ -69,7 +69,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       valueIsValid,
       placeholder,
     } = getDerivedForInput(nextProps, preState);
-
     return {
       value: value && value[0],
       panelValue: panelValue && panelValue[0],
@@ -77,7 +76,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       format,
       firstWeekDay,
       valueIsValid,
-      placeholder,
+      placeholder: placeholder && placeholder[0],
     };
   }
   componentDidMount() {
@@ -101,9 +100,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { oldValue } = this;
     const hasOldValue = oldValue ? true : false;
-    const newProps = { ...this.props };
-    delete newProps.defaultValue;
-    delete newProps.value;
+    const newProps = getNewProps(this.props);
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
@@ -145,7 +142,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             prefix={<Icon className="lugia-icon-financial_date" />}
             value={value}
             onChange={this.onChange}
-            placeholder={placeholder[0]}
+            placeholder={placeholder}
             onFocus={this.onFocus}
             onBlur={this.onBlur}
             onClear={this.onClear}
@@ -189,6 +186,8 @@ class DateInput extends Component<TypeProps, TypeState> {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
     let newVal = value;
     if (isWeeks) {
+      console.log(moment(value, format).year());
+      console.log(moment(value, format).format('W'));
       newVal = getValueFromWeekToDate(value, format);
     }
     const moments = moment(newVal, newFormat);
@@ -218,6 +217,7 @@ class DateInput extends Component<TypeProps, TypeState> {
 
     this.setState({ value });
     const newValue = valueIsValid ? value : normalValue;
+    console.log(newValue);
     this.setModeState(newValue, format, isWeeks || isWeek);
 
     const { onFocus } = this.props;

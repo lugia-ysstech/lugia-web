@@ -7,14 +7,6 @@ import moment from 'moment';
 import { getformatSymbol } from './utils';
 import { getIsSame, formatValueIsValid } from './booleanUtils';
 import { getDays, getDatesfromWeeks, getValueFromWeekToDate } from './differUtils';
-type typeProps = {
-  value: string,
-  format: string,
-  mode: string,
-  firstWeekDay: number,
-  format: string,
-  valueIsValid: boolean,
-};
 export const getNormalFormat = (mode: string): string => {
   const { isWeeks, isWeek, isMonth, isYear, isTime, isTimes } = modeStyle(mode);
   const normalFormat = isMonth
@@ -35,7 +27,7 @@ export const getFirstWeekDay = (firstWeekDay: number = 0): number => {
   }
   return newFirstWeekDay;
 };
-export const getDerived = (nextProps: typeProps, preState: any) => {
+export const getDerived = (nextProps: Object, preState: Object) => {
   const { value, format, mode, firstWeekDay, valueIsValid, hasOldValue } = nextProps;
   const { isWeeks } = modeStyle(mode);
   const newValue = preState ? preState.value : value;
@@ -64,6 +56,7 @@ export const getDerived = (nextProps: typeProps, preState: any) => {
     startInWeek = startInWeeks;
     endInWeek = endInWeeks;
   }
+  console.log(weeks);
   return {
     value: newValue,
     days,
@@ -88,38 +81,7 @@ export const getDerived = (nextProps: typeProps, preState: any) => {
     maxDay: max,
   };
 };
-type typePropsForgetDerivedForInput = {
-  defaultValue?: Array<string> | string,
-  value?: Array<string> | string,
-  format?: string,
-  mode: string,
-  disabled?: boolean,
-  readOnly?: boolean,
-  onChange?: Function,
-  onFocus?: Function,
-  onBlur?: Function,
-  showTime?: any,
-  onOk?: any,
-  firstWeekDay?: number,
-  theme: Object,
-  mode: string,
-};
-type typeStateForgetDerivedForInput = {
-  value: Array<string>,
-};
-type typeResultForgetDerivedForInput = {
-  value: Array<string> | void,
-  format: string,
-  placeholder: Array<string> | string,
-  firstWeekDay: number,
-  valueIsValid: boolean,
-  panelValue: Array<string> | void,
-  normalValue: Array<string> | void,
-};
-export function getDerivedForInput(
-  nextProps: typePropsForgetDerivedForInput,
-  preState: typeStateForgetDerivedForInput
-): typeResultForgetDerivedForInput {
+export function getDerivedForInput(nextProps: Object, preState: Object): Object {
   const { mode } = nextProps;
   const { isRange, isWeeks } = modeStyle(mode);
   const firstWeekDay = getFirstWeekDay(nextProps.firstWeekDay);
@@ -133,9 +95,8 @@ export function getDerivedForInput(
   let panelValue = modeWithValid ? newValue : getInValidValue(newValue, format);
   const normalValue = panelValue;
   if (isWeeks) {
-    panelValue = [getValueFromWeekToDate(panelValue[0], format)];
+    panelValue = panelValue && [getValueFromWeekToDate(panelValue[0], format)];
   }
-  console.log(newValue, panelValue, normalValue);
   return {
     value: newValue,
     format,
@@ -146,18 +107,7 @@ export function getDerivedForInput(
     normalValue,
   };
 }
-type propsgetValueFromValue = {
-  defaultValue?: Array<string> | string,
-  value?: Array<string> | string,
-  mode: string,
-};
-type stategetValueFromValue = {
-  value: Array<string> | string,
-};
-function getValueFromValue(
-  nextProps: propsgetValueFromValue,
-  preState: stategetValueFromValue
-): Array<string> | string | void {
+function getValueFromValue(nextProps: Object, preState: Object): Array<string> | void {
   const { defaultValue, value, mode } = nextProps;
   const { isRange } = modeStyle(mode);
   const hasDefaultProps = 'defaultValue' in nextProps;
@@ -187,7 +137,7 @@ function getValueFromValue(
   }
   return newValue;
 }
-function getPlaceholder(nextProps: Object): Array<string> | string {
+function getPlaceholder(nextProps: Object): Array<string> {
   const { mode, placeholder } = nextProps;
   const hasPlaceholder = 'placeholder' in nextProps;
   const { isRange, isTime, isTimes } = modeStyle(mode);
@@ -203,11 +153,11 @@ function getPlaceholder(nextProps: Object): Array<string> | string {
   }
   return newPlaceholder;
 }
-export function getValueWhetherValid(value?: Array<string> | string, format: string): boolean {
+export function getValueWhetherValid(value?: Array<string>, format: string): boolean {
   const normalFormatbyValue = moment().format(format);
   const normalvalueFormatObj = getformatSymbol(normalFormatbyValue);
   let valueIsValid = true;
-  Array.isArray(value) &&
+  value &&
     value.forEach((item, index) => {
       const isValid = formatValueIsValid(normalvalueFormatObj, item, format);
       if (!isValid) {
@@ -225,8 +175,9 @@ function getInValidValue(value?: Array<string>, format: string): Array<string> {
   const normalvalueFormatObj = getformatSymbol(normalFormatbyValue);
   const normalValue = [];
   const normal = moment().format(format);
-  const isArr = value && Array.isArray(value);
-  isArr &&
+  // const isArr = value && Array.isArray(value);
+  // isArr &&
+  value &&
     value.forEach((item, index) => {
       let newVal = item;
       const isValid = formatValueIsValid(normalvalueFormatObj, newVal, format);
