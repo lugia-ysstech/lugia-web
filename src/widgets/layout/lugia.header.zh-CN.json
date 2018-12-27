@@ -1,0 +1,31 @@
+{
+  "widgetName": "Layout",
+  "title": "Layout 布局",
+  "desc": "页面整体布局。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "enlarged": {
+      "type": "boolean",
+      "desc": "指定 Header 是否可以放大",
+      "defaultValue": "undefined"
+    }
+  },
+  "type": {
+    "MarginType": ["number", "Object"],
+    "HeaderStyle": {
+      "height": {
+        "type": "number",
+        "desc": "Header 高度"
+      },
+      "margin": {
+        "type": "MarginType",
+        "desc": "Header 间距"
+      }
+    }
+  },
+  "category": ["数据录入"]
+}

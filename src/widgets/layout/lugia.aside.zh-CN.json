@@ -1,0 +1,61 @@
+{
+  "widgetName": "Layout",
+  "title": "Layout 布局",
+  "desc": "页面整体布局。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "collapsible": {
+      "type": "boolean",
+      "desc": "指定 Aside 是否可以收起",
+      "defaultValue": "column"
+    },
+    "trigger": {
+      "type": "React.node",
+      "desc": "指定 Aside 收起元素",
+      "defaultValue": "undefined"
+    },
+    "reverseArrow": {
+      "type": "string",
+      "desc": "触发响应式的断点，可选 xs、sm、md、lg、xl、xxl",
+      "defaultValue": "undefined"
+    },
+    "collapsedWidth": {
+      "type": "number",
+      "desc": "收缩宽度",
+      "defaultValue": "undefined"
+    },
+    "collapsed": {
+      "type": "boolean",
+      "desc": "当前收缩状态",
+      "defaultValue": "undefined"
+    }
+  },
+  "type": {
+    "LayoutDirectionType": ["row", "column"],
+    "AsideStyle": {
+      "height": {
+        "type": "number",
+        "desc": "Aside 高度"
+      },
+      "backgroundColor": {
+        "type": "string",
+        "desc": "Aside 背景色"
+      }
+    }
+  },
+  "events": {
+    "onCollapse": {
+      "desc": "展开-收起时的回调函数",
+      "args": [{ "name": "collapsed", "desc": "收起状态", "type": "boolean" }]
+    },
+    "onBreakpoint": {
+      "desc": "触发响应式时的回调函数",
+      "args": [{ "name": "broken", "desc": "收起状态", "type": "boolean" }]
+    }
+  },
+  "category": ["数据录入"]
+}

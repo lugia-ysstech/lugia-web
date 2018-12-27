@@ -1,0 +1,33 @@
+{
+  "widgetName": "Row",
+  "title": "Grid 栅格",
+  "desc": "栅格。",
+  "props": {
+    "span": {
+      "type": "number",
+      "desc": "栅格占位格数，共 24格",
+      "defaultValue": "1"
+    },
+    "offset": {
+      "type": "number",
+      "desc": "栅格左侧的间隔格数，间隔内不可以有栅格",
+      "defaultValue": "undefined"
+    },
+    "pull": {
+      "type": "number",
+      "desc": "栅格向左移动格数",
+      "defaultValue": "undefined"
+    },
+    "push": {
+      "type": "number",
+      "desc": "栅格向右移动格数",
+      "defaultValue": "undefined"
+    },
+    "order": {
+      "type": "number",
+      "desc": "栅格的顺序，flex 布局下有效",
+      "defaultValue": "undefined"
+    }
+  },
+  "category": ["数据录入"]
+}

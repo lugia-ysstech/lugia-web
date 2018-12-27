@@ -12,7 +12,7 @@ import Affix from '../affix/index';
 import type { AnchorProps, AnchorState } from '../css/anchor';
 import { Anchor, Circle } from '../css/anchor';
 
-export const AnchorContext = React.createContext({
+export const AnchorContext: Object = React.createContext({
   links: [],
   getLinks: undefined,
   activeLink: undefined,

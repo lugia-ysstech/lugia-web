@@ -122,7 +122,7 @@ export default class extends React.Component<any, any> {
         <MenuWrap>
           <H2>级联嵌套菜单 </H2>
           <Box>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
+            <Theme config={{ [Widget.Menu]: { width: 200 }, [Widget.SubMenu]: { width: 150 } }}>
               <Menu
                 separator={'/'}
                 mutliple={false}
@@ -140,121 +140,6 @@ export default class extends React.Component<any, any> {
             </Theme>
           </Box>
           <Button onClick={this.btnClick}>hello</Button>
-        </MenuWrap>
-
-        <MenuWrap>
-          <Box>
-            <H2>单选框 checkedCSS: checkbox</H2>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-              <Menu
-                mutliple={false}
-                data={items}
-                checkedCSS={'checkbox'}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.clickDefaultMenu}
-              />
-            </Theme>
-          </Box>
-
-          <Box>
-            <H2>多选框 checkedCSS: checkbox</H2>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-              <Menu
-                mutliple={true}
-                data={items}
-                checkedCSS={'checkbox'}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.clickDefaultMenu}
-              />
-            </Theme>
-          </Box>
-        </MenuWrap>
-
-        <MenuWrap>
-          <Box>
-            <H2>
-              单选框 checkedCSS: background, 注意容错，当selectKeys中是数字的数组是number[] 会报错
-            </H2>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-              <Menu
-                mutliple={false}
-                data={items}
-                selectedKeys={['0']}
-                checkedCSS={'background'}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.clickDefaultMenu}
-              />
-            </Theme>
-          </Box>
-
-          <Box>
-            <H2>多选框 checkedCSS: background</H2>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-              <Menu
-                mutliple={true}
-                data={items}
-                checkedCSS={'background'}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.clickDefaultMenu}
-              />
-            </Theme>
-          </Box>
-        </MenuWrap>
-
-        <MenuWrap>
-          <Box>
-            <H2>单选框 checkedCSS: mark</H2>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-              <Menu
-                mutliple={false}
-                data={items}
-                checkedCSS={'mark'}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.clickDefaultMenu}
-              />
-            </Theme>
-          </Box>
-
-          <Box>
-            <H2>多选框 checkedCSS: mark</H2>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-              <Menu
-                mutliple={true}
-                data={items}
-                checkedCSS={'mark'}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.clickDefaultMenu}
-              />
-            </Theme>
-          </Box>
-        </MenuWrap>
-
-        <MenuWrap>
-          <Box>
-            <H2>单选框 checkedCSS: none</H2>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-              <Menu
-                mutliple={false}
-                data={items}
-                checkedCSS={'none'}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.clickDefaultMenu}
-              />
-            </Theme>
-          </Box>
-
-          <Box>
-            <H2>多选框 checkedCSS: none</H2>
-            <Theme config={{ [Widget.Menu]: { width: 200, submenuWidth: 150 } }}>
-              <Menu
-                mutliple={true}
-                data={items}
-                checkedCSS={'none'}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.clickDefaultMenu}
-              />
-            </Theme>
-          </Box>
         </MenuWrap>
       </div>
     );

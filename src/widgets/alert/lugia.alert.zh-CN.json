@@ -1,0 +1,78 @@
+{
+  "widgetName": "Alert",
+  "title": "Alert 警告提示",
+  "desc": "警告提示信息。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "type": {
+      "type": "AlertType",
+      "desc": "指定警告提示的样式，有四种可以选择：success、error、info、warning",
+      "defaultValue": "0"
+    },
+    "message": {
+      "type": "React.node",
+      "desc": "警告提示内容",
+      "defaultValue": "undefined"
+    },
+    "showIcon": {
+      "type": "boolean",
+      "desc": "是否展示图标",
+      "defaultValue": "false"
+    },
+    "closeText": {
+      "type": "React.node",
+      "desc": "自定义关闭按钮",
+      "defaultValue": "undefined"
+    },
+    "closable": {
+      "type": "boolean",
+      "desc": "是否显示关闭按钮",
+      "defaultValue": "false"
+    },
+    "banner": {
+      "type": "boolean",
+      "desc": "是否是顶部公告",
+      "defaultValue": "false"
+    },
+    "description": {
+      "type": "React.node",
+      "desc": "提示内容的辅助性文字介绍",
+      "defaultValue": "undefined"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "自定义图标，showIcon 为 true 时有效",
+      "defaultValue": "undefined"
+    }
+  },
+  "events": {
+    "onClose": {
+      "desc": "关闭时触发的回调函数",
+      "args": [
+        {
+          "name": "event",
+          "desc": "关闭时的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "AlertType": ["info", "success", "error", "warning"],
+    "AlertStyle": {
+      "width": {
+        "type": "number",
+        "desc": "组件宽度"
+      },
+      "color": {
+        "type": "string",
+        "desc": "组件颜色"
+      }
+    }
+  },
+  "category": ["数据录入"]
+}

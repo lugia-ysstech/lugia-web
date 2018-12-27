@@ -11,7 +11,7 @@ import styled from 'styled-components';
 
 const Box = styled.div`
   display: inline-block;
-  box-shadow: 4px 0 3px 3px #ccc;
+  box-shadow: 4px 0 3px 3px #f8f8f8;
   margin: 0 20px;
   vertical-align: top;
 `;
@@ -94,14 +94,13 @@ export default class LimitDemo extends React.Component<Object, Object> {
 
   constructor(props) {
     super(props);
-    this.state = { value: ['项目实战'] };
+    this.state = { value: ['Affix 固钉'] };
   }
 
   render() {
     const config = {
       [Widget.NavMenu]: {
         width: 300,
-        // color: '#00ffff',
       },
     };
     return (
@@ -129,7 +128,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
               // inlineType={'primary'}
               mode={'inline'}
               // mode={'vertical'}
-              motif={'dark'}
+              theme={'dark'}
               data={newData}
               value={this.state.value}
               inlineExpandAll={true}
@@ -163,7 +162,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
               mode={'inline'}
               // mode={'vertical'}
               data={newData}
-              motif={'dark'}
+              theme={'dark'}
               value={this.state.value}
               inlineExpandAll={true}
               onChange={this.onChange}
@@ -184,6 +183,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
   };
   onClick = (keys, item) => {
     const { selectedKeys } = keys;
+    console.log(selectedKeys);
     this.setState({ value: selectedKeys });
   };
 }

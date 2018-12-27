@@ -129,7 +129,7 @@ class ScrollerTree extends React.Component<any, any> {
   loopNode = (data: Array<RowData>) => {
     const { igronSelectField, themeStyle, inlineType, size } = this.props;
     return data.map(item => {
-      const { selectable, displayField, valueField, motif } = this.props;
+      const { selectable, displayField, valueField, theme } = this.props;
       const {
         children,
         [valueField]: key,
@@ -156,7 +156,7 @@ class ScrollerTree extends React.Component<any, any> {
             notCanSelect={notCanSelect}
             icon={icon}
             size={size}
-            motif={motif}
+            theme={theme}
             color={color}
           >
             {this.loopNode(children)}
@@ -174,7 +174,7 @@ class ScrollerTree extends React.Component<any, any> {
           selectable={selectable}
           icon={icon}
           size={size}
-          motif={motif}
+          theme={theme}
           color={color}
         />
       );
@@ -182,4 +182,4 @@ class ScrollerTree extends React.Component<any, any> {
   };
 }
 
-export default ThrottleScroller(ScrollerTree, 35);
+export default ThrottleScroller(ScrollerTree, 34);

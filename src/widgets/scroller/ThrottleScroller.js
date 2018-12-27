@@ -12,39 +12,27 @@ import Widget from '../consts/index';
 import { FontSizeNumber } from '../css';
 import { BarDefaultSize, DefaultHeight, DefaultWidth } from '../css/scroller';
 import { getCanSeeCount } from './support';
-import { getMenuItemHeight } from '../css/menu';
 import { px2emcss } from '../css/units';
 
 const em = px2emcss(FontSizeNumber);
 
-const getItemHeight = (props: Object) => {
-  const { size } = props;
-  return getMenuItemHeight(size);
-};
-
 const height = props => {
-  const { theme, length } = props;
+  const { theme, totalSize } = props;
   const { autoHeight = false, height: themeHeight } = theme;
   if (!autoHeight) {
     return themeHeight ? `height:${em(themeHeight)};` : `height:${em(DefaultHeight)};`;
   }
-  const menuItemHeight = getItemHeight(props);
-  const allItemHeight = menuItemHeight * length;
 
-  if (!themeHeight || themeHeight > allItemHeight) {
-    return `height: ${em(allItemHeight)}`;
+  if (!themeHeight || themeHeight > totalSize) {
+    return `height: ${em(totalSize)}`;
   }
   return `height: ${em(themeHeight)}`;
 };
 
 const getActiveWidth = props => {
-  const { level, theme } = props;
-  const { width, submenuWidth } = theme;
-  if (!level || level === 0) {
-    return width;
-  }
-
-  return submenuWidth ? submenuWidth : width;
+  const { theme } = props;
+  const { width } = theme;
+  return width;
 };
 
 const width = props => {
@@ -109,28 +97,38 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
     scroller: ?Object;
     scrollerTarget: ?Object;
 
+    itemHeight: number;
+
+    isDrag: boolean;
+
     constructor(props: any) {
       super(props);
       this.state = {
         start: 0,
       };
+      this.itemHeight = this.getActiveItemHeight(props);
     }
 
-    isDrag: boolean;
+    getActiveItemHeight = (props: Object) => {
+      const { menuItemHeight } = props;
+      const menuItemHeightIsInProps = 'menuItemHeight' in props;
+      return menuItemHeightIsInProps ? menuItemHeight : MenuItemHeight;
+    };
 
     render() {
       const { props } = this;
+
       const start = this.getStart(props, this.state);
       const { getTheme } = props;
       const theme = getTheme();
-      const { data, size, level } = props;
-      const length = data.length;
+      const { level } = props;
+      const totalSize = this.fetchTotalSize();
+
       const pack = (element: Object | Array<Object>) => {
         return (
           <ScrollerContainer
-            size={size}
             level={level}
-            length={length}
+            totalSize={totalSize}
             theme={theme}
             onWheel={this.onWheel}
           >
@@ -155,11 +153,10 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
 
       const { type, step } = props;
       const viewSize = this.fetchViewSize();
-      const totalSize = this.fetchTotalSize();
 
       const end = this.fetchEnd(start);
       const canSeeCount = this.canSeeCount();
-      const menuItemHeight = getItemHeight(props);
+      const menuItemHeight = this.itemHeight;
       return pack([
         <Col theme={theme} level={level}>
           <Target
@@ -212,8 +209,7 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
     }
 
     canSeeCount(): number {
-      const menuItemHeight = getItemHeight(this.props);
-      return getCanSeeCount(this.fetchViewSize(), menuItemHeight);
+      return getCanSeeCount(this.fetchViewSize(), this.itemHeight);
     }
 
     fetchViewSize = () => {
@@ -222,8 +218,7 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
         return themeHeight || themeHeight === 0 ? themeHeight : DefaultHeight;
       }
       const { data } = this.props;
-      const menuItemHeight = getItemHeight(this.props);
-      const allItemHeight = menuItemHeight * data.length;
+      const allItemHeight = this.itemHeight * data.length;
       if (!themeHeight || themeHeight > allItemHeight) {
         return allItemHeight;
       }
@@ -232,8 +227,7 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
 
     fetchTotalSize(): number {
       const { length } = this.getTarget();
-      const menuItemHeight = getItemHeight(this.props);
-      return length * menuItemHeight;
+      return length * this.itemHeight;
     }
 
     getTarget(): Array<any> {
@@ -262,8 +256,7 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
 
     onScroller = (value: number) => {
       const { onScroller } = this.props;
-      const menuItemHeight = getItemHeight(this.props);
-      const start = value / menuItemHeight;
+      const start = value / this.itemHeight;
       onScroller ? onScroller(start, this.fetchEnd(start)) : this.setState({ start });
     };
   };

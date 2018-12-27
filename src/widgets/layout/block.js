@@ -10,7 +10,7 @@ import type { BlockProps, BlockState } from '../css/block';
 import { Block, Enlarge, IconWrap } from '../css/block';
 import { EnlargeContext } from './layout';
 
-export const BlockContext = React.createContext({});
+export const BlockContext: Object = React.createContext({});
 
 export default class extends React.Component<BlockProps, BlockState> {
   order: number;

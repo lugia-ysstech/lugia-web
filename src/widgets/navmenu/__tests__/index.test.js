@@ -83,12 +83,12 @@ describe('NavMenu', () => {
     expect(renderer.create(cmp).toJSON()).toMatchSnapshot();
   });
 
-  it(' mode inline,inlineType=ellipse,motif=dark', () => {
+  it(' mode inline,inlineType=ellipse,theme=dark', () => {
     const cmp = (
       <Target
         data={data}
         mode={'inline'}
-        motif={'dark'}
+        theme={'dark'}
         inlineExpandAll={true}
         inlineType={'ellipse'}
       />
@@ -103,12 +103,12 @@ describe('NavMenu', () => {
     expect(renderer.create(cmp).toJSON()).toMatchSnapshot();
   });
 
-  it('mode=inline,inlineType=primary,motif=dark ', () => {
+  it('mode=inline,inlineType=primary,theme=dark ', () => {
     const cmp = (
       <Target
         data={data}
         mode={'inline'}
-        motif={'dark'}
+        theme={'dark'}
         inlineExpandAll={true}
         inlineType={'primary'}
       />

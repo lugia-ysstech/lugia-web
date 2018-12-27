@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rate Test css 1`] = `
-.c3 {
+.c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -9,15 +9,14 @@ exports[`Rate Test css 1`] = `
   cursor: pointer;
 }
 
-.c1 {
+.c2 {
   width: 100%;
   display: none;
 }
 
-.c0 {
+.c1 {
   width: 366px;
   position: relative;
-  padding: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28,7 +27,7 @@ exports[`Rate Test css 1`] = `
   box-sizing: border-box;
 }
 
-.c2 {
+.c3 {
   width: 346px;
   height: 30px;
   border: 1px solid #e8e8e8;
@@ -38,15 +37,11 @@ exports[`Rate Test css 1`] = `
   line-height: 30px;
   overflow: hidden;
   box-sizing: border-box;
-}
-
-.c2.done {
-  border: 1px solid #684fff;
-  color: #333;
   position: relative;
+  border: 1px solid #684fff;
 }
 
-.c2.done i {
+.c4 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -55,53 +50,82 @@ exports[`Rate Test css 1`] = `
   right: 10px;
 }
 
-.c2.loading {
-  border: 1px solid #684fff;
+.c7 .c4 {
+  color: #fff;
+  margin: 0;
 }
 
-.c2.loading .loadIcon {
-  margin-right: 10px;
-  -webkit-animation: iVXCSc 0.8s linear infinite;
-  animation: iVXCSc 0.8s linear infinite;
+.c6:hover .c4 {
+  background: #f2f2f2;
+  cursor: pointer;
 }
 
-.c2.hasBtn {
-  border-radius: 4px 0 0 4px;
-  border: 1px solid #9482ff;
-  width: 286px;
+.c4 i {
+  font-size: 30px;
+  color: #999;
+  font-size: 1.6666666666666667em;
 }
 
-.c2 i.right {
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+.c9 .c4 {
+  font-size: 55px;
+  color: #999;
+}
+
+.c8 .c4 {
+  font-size: 30px;
+  color: #999;
+  font-size: 1.6666666666666667em;
+}
+
+.c8 .c4.error {
   position: absolute;
-  top: 50%;
-  right: 20px;
+  right: -8px;
+  top: 0;
+  font-size: 18px;
+  color: #f22735;
+  z-index: 10;
+  display: none;
+  background: #fff;
+  border: 2px solid #fff;
 }
 
-<div>
+.c8:hover .c4 {
+  display: inline-block;
+}
+
+.c0 {
+  width: 366px;
+  position: relative;
+  padding: 10px;
+}
+
+<div
+  className="c0"
+>
   <div
-    className="c0"
+    className="c1"
   >
     <input
       accept="*"
-      className="c1"
+      className="c2"
+      disabled={false}
       id="upload"
       multiple={false}
       onChange={[Function]}
       type="file"
     />
-    <label>
-      <div
-        className="default c2"
-      >
-        请将文件拖到此处 
-        <i
-          className="lugia-icon-financial_upload right  c3"
-        />
-      </div>
-    </label>
+    <div
+      className="c3"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <i
+        className="lugia-icon-financial_upload right c4 c5"
+      />
+       
+      请将文件拖到此处
+    </div>
   </div>
+   
 </div>
 `;

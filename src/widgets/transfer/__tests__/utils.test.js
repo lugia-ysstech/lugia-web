@@ -253,8 +253,8 @@ describe('Transfer.utils', () => {
     );
     expect(newSelectedKeys).toEqual(['value1', 'value2']);
 
-    expect(filterEnableKeysFromSelectKeys([], ['value3'])).toEqual(['value3']);
-    expect(filterEnableKeysFromSelectKeys(undefined, ['value3'])).toEqual(['value3']);
-    expect(filterEnableKeysFromSelectKeys(['value1', 'value2'], [])).toEqual([]);
+    expect(filterEnableKeysFromSelectKeys([], ['value3'], 'Source')).toEqual(['value3']);
+    expect(filterEnableKeysFromSelectKeys(undefined, ['value3'], 'Source')).toEqual(['value3']);
+    expect(filterEnableKeysFromSelectKeys(['value1', 'value2'], [], 'Source')).toEqual([]);
   });
 });

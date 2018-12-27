@@ -1,0 +1,23 @@
+{
+  "widgetName": "Message",
+  "title": "Message 全局提示",
+  "desc": "全局提示，展示操作反馈信息。",
+  "props": {
+    "content": {
+      "type": "React.node",
+      "desc": "提示消息的内容",
+      "defaultValue": "undefined"
+    },
+    "time": {
+      "type": "number",
+      "desc": "自动延时关闭，单位为 秒",
+      "defaultValue": "2"
+    },
+    "callBack": {
+      "type": "Function",
+      "desc": "关闭时的回调",
+      "defaultValue": "undefined"
+    }
+  },
+  "category": ["数据录入"]
+}

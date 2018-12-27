@@ -30,20 +30,20 @@ exports[`Notification css 1`] = `
 }
 
 .c0:hover {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c0:focus {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c0:active {
-  color: #533fcc;
-  border: 1px solid #533fcc;
+  color: #3e4fcc;
+  border: 1px solid #3e4fcc;
 }
 
 <div>
@@ -52,6 +52,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       基本用法
@@ -62,6 +67,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       自定义延时关闭
@@ -71,6 +81,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       自定义延时关闭
@@ -81,6 +96,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       info
@@ -90,6 +110,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       success
@@ -99,6 +124,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       error
@@ -108,6 +138,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       warning
@@ -119,6 +154,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       自定义图标
@@ -129,6 +169,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       自定义方向-bottomLeft
@@ -138,6 +183,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       自定义方向-bottomRight
@@ -147,6 +197,11 @@ exports[`Notification css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
   >
     <span>
       自定义方向-topLeft
