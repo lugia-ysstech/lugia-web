@@ -37,5 +37,6 @@
   "type": {
     "TimeLineMode": ["right", "alternate"]
   },
+  "childrenWidget": ["timeLineItem"],
   "category": ["数据展示"]
 }

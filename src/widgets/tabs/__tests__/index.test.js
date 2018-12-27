@@ -264,9 +264,9 @@ describe('tabsDemo', () => {
   });
   it('props 受限 data', async () => {
     const target = mount(<Tabs data={hasActivityKeyData} />);
-    expect(getCmp(target).state.data).toBe(hasActivityKeyData);
+    expect(getCmp(target).state.data).toEqual(hasActivityKeyData);
     getCmp(target).setState({ data: [] });
-    expect(getCmp(target).state.data).toBe(hasActivityKeyData);
+    expect(getCmp(target).state.data).toEqual(hasActivityKeyData);
     target.setProps({ data: [] });
     expect(getCmp(target).state.data).toEqual([]);
     target.setProps({ data: hasActivityKeyData });

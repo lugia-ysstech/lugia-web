@@ -457,7 +457,7 @@ export default () => {
         <Wrapper>
           <p>children tabPosition=top</p>
           <Tabs
-            titleType={'line'}
+            tabType={'line'}
             tabPosition={'top'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}

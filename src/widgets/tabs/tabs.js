@@ -277,7 +277,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activityKey, defaultActivityKey, defaultData, data, children } = props;
     const hasActivityKeyInprops = 'activityKey' in props;
-    let configData;
+    let configData = [];
     if (hasDataInProps(props)) {
       configData = data ? data : [];
     } else {
@@ -316,7 +316,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const sActivityKey = state.activityKey;
     return {
       activityKey: hasActivityKeyInprops ? activityKey : sActivityKey,
-      data: hasDataInProps(props) ? configData : sData,
+      data: hasDataInProps(props) ? addActivityKey2Data(configData) : sData,
     };
   }
 
@@ -420,7 +420,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
   getHline() {
     const { tabType, tabPosition } = this.props;
     const { activityKey, data, childrenSize } = this.state;
-
     if (matchType(tabType, 'line')) {
       return (
         <HLine
