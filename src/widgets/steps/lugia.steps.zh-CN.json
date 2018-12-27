@@ -45,5 +45,6 @@
     "OrientationType": ["horizontal", "vertical"],
     "AlignType": ["center", "left"]
   },
+  "childrenWidget": ["step"],
   "category": ["导航"]
 }

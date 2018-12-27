@@ -10,12 +10,12 @@
     },
     "disabled": {
       "type": "boolean",
-      "desc": "true 禁用 false 可用",
+      "desc": "禁用状态,是否不可用",
       "defaultValue": "false"
     },
     "transform": {
       "type": "boolean",
-      "desc": "是否开启转换",
+      "desc": "是否开启转换,仅在amountPrefix='¥'时生效",
       "defaultValue": "true"
     },
     "viewClass": {
@@ -56,7 +56,7 @@
         {
           "name": "event",
           "desc": "改变内容的DOM事件",
-          "type": "Object"
+          "type": "ChangeType"
         }
       ]
     },
@@ -66,7 +66,7 @@
         {
           "name": "event",
           "desc": "改变键盘输入的内容",
-          "type": "Object"
+          "type": "KeyboardEvent"
         }
       ]
     },
@@ -76,7 +76,7 @@
         {
           "name": "event",
           "desc": "改变键盘输入的内容",
-          "type": "Object"
+          "type": "KeyboardEvent"
         }
       ]
     },
@@ -86,7 +86,7 @@
         {
           "name": "event",
           "desc": "改变键盘输入的内容",
-          "type": "Object"
+          "type": "KeyboardEvent"
         }
       ]
     },
@@ -96,7 +96,7 @@
         {
           "name": "event",
           "desc": "获取焦点的DOM事件",
-          "type": "Object"
+          "type": "FocusEvent"
         }
       ]
     },
@@ -106,7 +106,7 @@
         {
           "name": "event",
           "desc": "失去焦点的DOM事件",
-          "type": "Object"
+          "type": "FocusEvent"
         }
       ]
     },
@@ -116,13 +116,18 @@
         {
           "name": "event",
           "desc": "当键入回车时触发",
-          "type": "Object"
+          "type": "KeyboardEvent"
         }
       ]
     }
   },
   "type": {
-    "InputSize": ["small", "default", "large"]
+    "InputSize": ["small", "default", "large"],
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
+    }
   },
   "category": ["数据录入"]
 }

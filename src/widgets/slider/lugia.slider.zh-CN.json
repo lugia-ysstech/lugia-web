@@ -1,0 +1,70 @@
+{
+  "widgetName": "Slider",
+  "title": "滑动输入条",
+  "desc": "滑动型输入器，展示当前值和可选范围",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "maxValue": {
+      "type": "number",
+      "desc": "最大值限制",
+      "defaultValue": "Infinity"
+    },
+    "minValue": {
+      "type": "number",
+      "desc": "最小值限制",
+      "defaultValue": "-Infinity"
+    },
+    "defaultValue": {
+      "type": "number | Array<number>",
+      "desc": "滑动输入条默认显示值",
+      "defaultValue": "undefined"
+    },
+    "value": {
+      "type": "number | Array<number>",
+      "desc": "滑动输入条显示值",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,是否不可用",
+      "defaultValue": "false"
+    },
+    "tips": {
+      "type": "boolean",
+      "desc": "显示滑动输入条信息",
+      "defaultValue": "false"
+    },
+    "vertical": {
+      "type": "boolean",
+      "desc": "是否垂直显示",
+      "defaultValue": "undefined"
+    },
+    "icons": {
+      "type": "Array<Object>,",
+      "desc": "显示的图标资源",
+      "defaultValue": "undefined"
+    },
+    "marks": {
+      "type": "{ [key: number]: string | Object }",
+      "desc": "刻度标记，key 的类型必须为 number 且取值在闭区间 min, max 内，每个标签可以单独设置样式",
+      "defaultValue": "undefined"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "滑动输入条值改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "滑动输入条值触发的事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "category": ["数据录入"]
+}

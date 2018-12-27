@@ -1,0 +1,65 @@
+{
+  "widgetName": "Switch",
+  "title": "开关",
+  "desc": "开关选择器",
+  "props": {
+    "defaultValue": {
+      "type": "boolean",
+      "desc": "默认开关状态",
+      "defaultValue": "false"
+    },
+    "value": {
+      "type": "boolean",
+      "desc": "开关状态",
+      "defaultValue": "false"
+    },
+    "data": {
+      "type": "Object",
+      "desc": "开关配置的展示信息",
+      "defaultValue": "undefined"
+    },
+    "size": {
+      "type": "small||'normal'",
+      "desc": "开关尺寸大小 有30px,38px可选择",
+      "defaultValue": "normal"
+    },
+    "isInverse": {
+      "type": "boolean",
+      "desc": "开关翻转",
+      "defaultValue": "false"
+    },
+    "loading": {
+      "type": "boolean",
+      "desc": "是否配置加载",
+      "defaultValue": "false"
+    },
+    "autoFocus": {
+      "type": "boolean",
+      "desc": "是否自动聚焦",
+      "defaultValue": "false"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,是否不可用",
+      "defaultValue": "false"
+    },
+    "displayFiled": {
+      "type": "string",
+      "desc": "匹配需要显示的文本,读取data中需要显示的内容名",
+      "defaultValue": "Text"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "开关状态改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变状态出发的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "category": ["数据录入"]
+}

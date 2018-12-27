@@ -126,5 +126,6 @@
     "PagedType": ["single", "page"],
     "TabPositionType": ["top", "bottom", "inner", "default"]
   },
+  "childrenWidget": ["tabpane","tabcontent"],
   "category": ["数据展示"]
 }

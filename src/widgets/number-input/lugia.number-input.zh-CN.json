@@ -10,7 +10,7 @@
     },
     "disabled": {
       "type": "boolean",
-      "desc": "true 禁用 false 可用",
+      "desc": "禁用状态,是否不可用",
       "defaultValue": "false"
     },
     "viewClass": {
@@ -101,7 +101,7 @@
         {
           "name": "event",
           "desc": "改变内容的DOM事件",
-          "type": "Object"
+          "type": "ChangeType"
         }
       ]
     },
@@ -111,7 +111,7 @@
         {
           "name": "event",
           "desc": "改变键盘输入的内容",
-          "type": "Object"
+          "type": "KeyboardEvent"
         }
       ]
     },
@@ -121,7 +121,7 @@
         {
           "name": "event",
           "desc": "改变键盘输入的内容",
-          "type": "Object"
+          "type": "KeyboardEvent"
         }
       ]
     },
@@ -131,7 +131,7 @@
         {
           "name": "event",
           "desc": "改变键盘输入的内容",
-          "type": "Object"
+          "type": "KeyboardEvent"
         }
       ]
     },
@@ -141,7 +141,7 @@
         {
           "name": "event",
           "desc": "获取焦点的DOM事件",
-          "type": "Object"
+          "type": "FocusEvent"
         }
       ]
     },
@@ -151,7 +151,7 @@
         {
           "name": "event",
           "desc": "失去焦点的DOM事件",
-          "type": "Object"
+          "type": "FocusEvent"
         }
       ]
     },
@@ -161,7 +161,7 @@
         {
           "name": "event",
           "desc": "当键入回车时触发的事件",
-          "type": "Object"
+          "type": "KeyboardEvent"
         }
       ]
     },
@@ -189,7 +189,12 @@
   "type": {
     "InputSize": ["small", "default", "large"],
     "ValidateStatus": ["success", "error"],
-    "InputValidateType": ["top", "bottom", "inner", "default"]
+    "InputValidateType": ["top", "bottom", "inner", "default"],
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
+    }
   },
   "category": ["数据录入"]
 }
