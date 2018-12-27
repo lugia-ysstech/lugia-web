@@ -8,7 +8,7 @@
       "desc": "用于配置通用主题属性",
       "defaultValue": "undefined"
     },
-    "closeable": {
+    "closable": {
       "type": "boolean",
       "desc": "标签是否可关闭",
       "defaultValue": "true"

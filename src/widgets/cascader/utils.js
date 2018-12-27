@@ -91,7 +91,11 @@ export function getLastLevelValue(valueData: string[]): any {
   return valueData[lastIndex];
 }
 
-export function isLeafPath(treeData: Array<Object>, pathArray: string[]): boolean {
+export function isLeafPath(
+  treeData: Array<Object>,
+  pathArray: string[],
+  valueField: string
+): boolean {
   if (!treeData) {
     return false;
   }
@@ -99,14 +103,18 @@ export function isLeafPath(treeData: Array<Object>, pathArray: string[]): boolea
   if (!key) {
     return false;
   }
-  const item = treeData && treeData.find(item => item.value === key);
+  const item = treeData && treeData.find(item => item.valueField === key);
   if (!item) {
     return false;
   }
   return !!item.isLeaf;
 }
 
-export function mapTreeDataToGetDisplayValue(treeData: Array<Object>, filterKeys: string[]) {
+export function mapTreeDataToGetDisplayValue(
+  treeData: Array<Object>,
+  filterKeys: string[],
+  valueField: string
+) {
   const displayValueData = [];
   if (!filterKeys || filterKeys.length === 0 || !treeData) {
     return displayValueData;
@@ -117,8 +125,8 @@ export function mapTreeDataToGetDisplayValue(treeData: Array<Object>, filterKeys
   }, {});
   treeData &&
     treeData.forEach(item => {
-      const { value } = item;
-      if (exisitMap[value]) {
+      const { valueField } = item;
+      if (exisitMap[valueField]) {
         const { text } = item;
         displayValueData.push(text);
       }
@@ -133,11 +141,11 @@ export function getInitInputValue(props: CascaderProps) {
 }
 
 export function getInputValue(props: CascaderProps, state: CascaderState) {
-  const { showAllLevels, separator = '|', data = [] } = props;
+  const { showAllLevels, separator = '|', data = [], valueField } = props;
   const { treeData } = state;
   const value = getValue(props, state);
   const filterValueData = getFilterValueData(data, value, separator);
-  const displayValueData = mapTreeDataToGetDisplayValue(treeData, filterValueData);
+  const displayValueData = mapTreeDataToGetDisplayValue(treeData, filterValueData, valueField);
 
   if (showAllLevels) {
     return isArrayLengthIsZero(displayValueData)
@@ -145,7 +153,7 @@ export function getInputValue(props: CascaderProps, state: CascaderState) {
       : [displayValueData.join(separator)];
   }
 
-  const isLeaf = isLeafPath(treeData, filterValueData);
+  const isLeaf = isLeafPath(treeData, filterValueData, valueField);
   const newInputValue = isLeaf ? [getLastLevelValue(displayValueData)] : state.inputValue;
   return newInputValue;
 }

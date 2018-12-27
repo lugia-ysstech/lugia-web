@@ -9,103 +9,61 @@ import Tree from './';
 import Widget from '../consts/index';
 import Theme from '../theme';
 
-const { TreeNode } = Tree;
+const newData = [
+  {
+    value: 'Components',
+    text: 'Components',
+    children: [
+      {
+        value: 'General',
+        text: 'General',
+        describe: true,
+        children: [
+          { value: 'Button 按钮', text: 'Button 按钮', icon: 'lugia-icon-financial_add_pic' },
+          { value: 'Icon 图标', text: 'Icon 图标', icon: 'lugia-icon-financial_archive' },
+        ],
+      },
 
-const bigTree = [];
+      {
+        value: 'Layout',
+        text: 'Layout',
+        describe: true,
+        children: [
+          { value: 'Grid 栅格', text: 'Grid 栅格' },
+          { value: 'Layout 布局', text: 'Layout 布局' },
+        ],
+      },
 
-function getStringKey() {
-  for (let a = 0; a < 5; a++) {
-    bigTree.push({
-      key: `${a}`,
-      title: `${a}`,
-    });
-    for (let b = 0; b < 5; b++) {
-      const keyb = `${a}.${b}`;
-      bigTree.push({
-        key: keyb,
-        title: keyb,
-        pid: `${a}`,
-        path: `${a}`,
-      });
-      for (let c = 0; c < 20; c++) {
-        const keyc = `${a}.${b}.${c}`;
-        bigTree.push({
-          key: keyc,
-          title: keyc,
-          pid: `${keyb}`,
-          path: `${a}/${keyb}`,
-        });
-        for (let d = 0; d < 400; d++) {
-          const key = `${a}.${b}.${c}.${d}`;
-          bigTree.push({
-            key,
-            title: key,
-            pid: `${keyc}`,
-            isLeaf: true,
-            path: `${a}/${keyb}/${keyc}`,
-          });
-        }
-      }
-    }
-  }
-}
+      {
+        value: 'Navigation',
+        text: 'Navigation',
+        describe: true,
+        children: [
+          { value: 'Affix 固钉', text: 'Affix 固钉' },
+          { value: 'Breadcrumb 面包屑', text: 'Breadcrumb 面包屑' },
+          { value: 'Dropdown 下拉菜单', text: 'Dropdown 下拉菜单' },
+          { value: 'Menu 导航菜单', text: 'Menu 导航菜单' },
+          { value: 'Pagination 分页', text: 'Pagination 分页' },
+          { value: 'Steps 步骤条', text: 'Steps 步骤条' },
+        ],
+      },
 
-getNumberKey();
-
-function getNumberKey() {
-  let key = 0;
-  for (let a = 0; a < 5; a++) {
-    const keyA = key++;
-    bigTree.push({
-      key: `${keyA}`,
-      title: `${a}`,
-    });
-    for (let b = 0; b < 5; b++) {
-      const titleB = `${a}.${b}`;
-      const keyb = key++;
-      bigTree.push({
-        key: keyb,
-        title: titleB,
-        pid: `${keyA}`,
-        path: `${keyA}`,
-      });
-      for (let c = 0; c < 20; c++) {
-        const titleC = `${a}.${b}.${c}`;
-        const keyc = key++;
-        bigTree.push({
-          key: keyc,
-          title: titleC,
-          pid: `${keyb}`,
-          path: `${keyA}/${keyb}`,
-        });
-        for (let d = 0; d < 400; d++) {
-          const title = `${a}.${b}.${c}.${d}`;
-          const keyD = key++;
-          bigTree.push({
-            key: keyD,
-            title,
-            pid: `${keyc}`,
-            isLeaf: true,
-            path: `${keyA}/${keyb}/${keyc}`,
-          });
-        }
-      }
-    }
-  }
-}
-
-const now = new Date();
-const len = bigTree.length;
-let root = 0;
-for (let i = 0; i < len; i++) {
-  const node = bigTree[i];
-  if (!node.pid) {
-    root++;
-  }
-}
-console.info(new Date() - now);
-const onSelect = (selectedKeys, info) => {},
-  onCheck = (checkedKeys, info) => {};
+      {
+        value: 'Data Entry',
+        text: 'Data Entry',
+        describe: true,
+        children: [
+          { value: 'AutoComplete 自动完成', text: 'AutoComplete 自动完成' },
+          { value: 'Cascader 级联选择', text: 'Cascader 级联选择' },
+          { value: 'Checkbox 多选框', text: 'Checkbox 多选框' },
+          { value: 'DatePicker 日期选择框', text: 'DatePicker 日期选择框' },
+          { value: 'Form 表单', text: 'Form 表单' },
+          { value: 'Input 输入框', text: 'Input 输入框' },
+        ],
+      },
+    ],
+  },
+];
 
 const rowData = [
   { key: '1', title: '1' },
@@ -165,47 +123,29 @@ const rowData = [
   { key: '4', title: '4', isLeaf: true },
 ];
 
-console.info(bigTree.length);
-
 class LimitTree extends React.Component<Object, Object> {
-  constructor(props) {
-    super(props);
-    const { value } = props;
-    this.state = { value };
-  }
-
   render() {
-    const { value } = this.state;
-    console.info('render', value);
-    return [
-      <Tree
-        expandAll
-        {...this.props}
-        // value={value}
-        onChange={this.onChange}
-      />,
-    ];
+    return [<Tree expandAll {...this.props} onChange={this.onChange} />];
   }
 
-  onChange = (value, displayValue) => {
-    console.info(value);
-    // this.setState({ value, });
-  };
-  all: boolean;
-  onClick = () => {
-    this.setState({ value: '1.1' });
-  };
+  onChange = (value, displayValue) => {};
 }
 
 const config = {
   [Widget.Tree]: {
-    height: 300,
+    height: 320,
   },
 };
 export default () => {
   return [
     <Theme config={config}>
-      <LimitTree data={rowData} expandAll={true} mutliple={true} igronSelectField={'igron'} />
+      <LimitTree
+        data={newData}
+        translateTreeData={true}
+        expandAll={true}
+        mutliple={true}
+        igronSelectField={'igron'}
+      />
     </Theme>,
   ];
 };

@@ -45,11 +45,11 @@ describe('Tag', () => {
     expect(target).toMatchSnapshot();
   });
 
-  it('Theme: type= basic, closeable=false shape= round', () => {
+  it('Theme: type= basic, closable=false shape= round', () => {
     const target = renderer
       .create(
         <Theme config={config}>
-          <Tag type={'basic'} closeable={false} shape={'round'} />
+          <Tag type={'basic'} closable={false} shape={'round'} />
         </Theme>
       )
       .toJSON();
@@ -77,11 +77,11 @@ describe('Tag', () => {
     expect(target).toMatchSnapshot();
   });
 
-  it('Theme: type= customs, closeable=false shape= round', () => {
+  it('Theme: type= customs, closable=false shape= round', () => {
     const target = renderer
       .create(
         <Theme config={config}>
-          <Tag type={'customs'} closeable={false} shape={'round'} />
+          <Tag type={'customs'} closable={false} shape={'round'} />
         </Theme>
       )
       .toJSON();
@@ -109,11 +109,11 @@ describe('Tag', () => {
     expect(target).toMatchSnapshot();
   });
 
-  it('Theme: type= primary, closeable=false shape= round', () => {
+  it('Theme: type= primary, closable=false shape= round', () => {
     const target = renderer
       .create(
         <Theme config={config}>
-          <Tag type={'primary'} closeable={false} shape={'round'} />
+          <Tag type={'primary'} closable={false} shape={'round'} />
         </Theme>
       )
       .toJSON();
@@ -141,11 +141,11 @@ describe('Tag', () => {
     expect(target).toMatchSnapshot();
   });
 
-  it('Theme: type= presets, closeable=false shape= round', () => {
+  it('Theme: type= presets, closable=false shape= round', () => {
     const target = renderer
       .create(
         <Theme config={config}>
-          <Tag type={'presets'} closeable={false} shape={'round'} />
+          <Tag type={'presets'} closable={false} shape={'round'} />
         </Theme>
       )
       .toJSON();

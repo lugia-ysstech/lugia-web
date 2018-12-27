@@ -9,7 +9,7 @@ import chai from 'chai';
 import DropMenu from '../';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Menu from '../../menu';
+import Menu from '../../menu/menu.js';
 import DropMenuButton from '../dropmenuButton';
 import renderer from 'react-test-renderer';
 import Widget from '../../consts/index';

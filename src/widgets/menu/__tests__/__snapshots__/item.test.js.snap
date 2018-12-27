@@ -3,6 +3,7 @@
 exports[`Item Mutliple MenuItem 1`] = `
 .c1 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;
@@ -60,6 +61,7 @@ exports[`Item Mutliple MenuItem 1`] = `
 exports[`Item Mutliple MenuItem checked 1`] = `
 .c1 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;
@@ -125,6 +127,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 exports[`Item Single MenuItem 1`] = `
 .c1 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;
@@ -176,6 +179,7 @@ exports[`Item Single MenuItem 1`] = `
 exports[`Item Single MenuItem checked 1`] = `
 .c1 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;
@@ -233,6 +237,7 @@ exports[`Item Single MenuItem checked 1`] = `
 exports[`Item children: null 1`] = `
 .c1 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;

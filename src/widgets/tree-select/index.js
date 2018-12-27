@@ -38,6 +38,7 @@ type TreeSelectProps = {
   displayValue?: Array<string>,
   svThemVersion?: number,
   onRefresh?: Function,
+  valueField: string,
   displayField: string,
   defaultValue?: string,
   mutliple: boolean,
@@ -118,7 +119,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     mutliple: false,
     onlySelectLeaf: false,
     canInput: false,
-    displayField: 'title',
+    valueField: 'value',
+    displayField: 'text',
     mode: 'local',
     throttle: 200,
     disabled: false,
@@ -233,7 +235,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       mutliple,
       canInput,
       igronSelectField,
+      valueField,
+      displayField,
     } = props;
+
     const {
       current,
       start,
@@ -274,6 +279,8 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         ref={getTree}
         value={value}
         onChange={this.onTreeChange}
+        valueField={valueField}
+        displayField={displayField}
         displayValue={displayValue}
         igronSelectField={igronSelectField}
       />,
@@ -536,7 +543,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getTree() {
-    return this.treeCmp.getThemeTarget();
+    return this.treeCmp.innerTree.current.getThemeTarget();
   }
 
   isSelectAll(): boolean {
@@ -547,7 +554,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   treeCompontIsEmpty() {
-    return !this.treeCmp || !this.treeCmp.getThemeTarget();
+    // this.treeCmp.current.menu.current.
+    console.log('this.treeCmp', this.treeCmp.innerTree.current);
+    return !this.treeCmp || !this.treeCmp.innerTree.current.getThemeTarget();
   }
 
   onQueryInputChange = (nextValue: any) => {

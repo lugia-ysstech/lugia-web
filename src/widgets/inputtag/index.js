@@ -89,16 +89,21 @@ const getWidthBySpan = (spanWidth: number) => (props: Object) => {
 };
 const getWidth = getWidthBySpan(0);
 const getBackground = props => {
-  return props.disabled ? 'background: rgba(0,0,0,.05);' : '';
+  return props.disabled ? 'background: rgba(0,0,0,.1);' : '#ffffff';
+};
+
+const getCursor = props => {
+  const { disabled } = props;
+  return disabled ? 'no-drop' : 'pointer';
 };
 
 const Container = styled.div`
   ${getWidth};
-  ${getBackground};
   display: inline-block;
   position: relative;
   color: ${mediumGreyColor};
   font-size: ${FontSize};
+  cursor: ${getCursor};
 `;
 const getBorderColor = props => {
   const { focus } = props;
@@ -121,7 +126,7 @@ const PullIcon: Object = IconButton.extend`
 IconButton.displayName = Widget.InputTagClearButton;
 
 const OutContainer = styled.div`
-  background: white;
+  ${getBackground};
   border: solid ${em(1)} ${getInputBorderColor};
   border-radius: ${RadiusSize};
   min-height: ${InputCSS.DefaultHeight};
@@ -142,7 +147,6 @@ const getContentWidth = (w: number) => {
   return w - marginRight - marginLeft;
 };
 const InnerContainer = styled.div`
-  background: white;
   ${getWidthBySpan(-getContentWidth(0))}
   height: ${em(Height - Padding)};
   margin-left: ${em(marginLeft)};
@@ -319,8 +323,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           innerRef={cmp => (this.container = cmp)}
           onClick={this.onClick}
         >
-          <OutContainer focus={focus} validateStatus={validateStatus}>
-            <SingleInnerContainer theme={props.getTheme()}>
+          <OutContainer focus={focus} disabled={disabled} validateStatus={validateStatus}>
+            <SingleInnerContainer disabled={disabled} theme={props.getTheme()}>
               {placeholder}
               {this.getSingleValue()}
               {clearButton}
