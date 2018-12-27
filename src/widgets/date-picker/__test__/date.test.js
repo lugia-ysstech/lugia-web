@@ -5,15 +5,12 @@ import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import Enzyme, { mount, shallow } from 'enzyme';
 import 'jest-styled-components';
-import { async } from 'rxjs/internal/scheduler/async';
-import Theme from '../../theme/index';
-import Widget from '../../consts/index';
 import DatePicker from '../index';
-import { consoleTestResultHandler } from 'tslint/lib/test';
 import { delay } from '@lugia/react-test-utils';
+import moment from 'moment';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
 const { expect: exp } = chai;
-const moment = require('moment');
+
 Enzyme.configure({ adapter: new Adapter() });
 describe('default', () => {
   function getTarget(target, component) {

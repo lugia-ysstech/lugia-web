@@ -23,13 +23,9 @@ type TypeProps = {
   column?: number,
   theme?: Object,
 };
-type TypeState = {
-  value: string,
-  format: string,
-  currentYear: number,
-};
+
 OtherChild.displayName = 'OtherChild';
-class FacePanel extends Component<TypeProps, TypeState> {
+class FacePanel extends Component<TypeProps, any> {
   static displayName = 'FacePanel';
   render() {
     const { start, step, mode, year, weeks = 1, lang, data, column = 3, showYears } = this.props;
@@ -146,7 +142,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
     step: number
   ) => {
     const weeksInner = [];
-    let weekIndex;
+    let weekIndex = 0;
     const { start, end, index } = weeksDate[rangeIndex];
     if (weeks >= start && weeks <= end) {
       weekIndex = index;
@@ -170,16 +166,7 @@ class FacePanel extends Component<TypeProps, TypeState> {
       ? month
       : Number(start);
   };
-  getChildrenData = (
-    props: Object,
-    datas: {
-      months: Array<Object>,
-      weeksDate: Array<Object>,
-      weeksInner: Array<Object>,
-      doubleYear: Array<Object>,
-      years: Array<Object>,
-    }
-  ): Array<Object> => {
+  getChildrenData = (props: Object, datas: Object): Array<Object> => {
     const { months, weeksDate, weeksInner, doubleYear, years } = datas;
     const { showYears, mode, isWeekInner } = props;
     const { isWeek, isMonth } = modeStyle(mode);

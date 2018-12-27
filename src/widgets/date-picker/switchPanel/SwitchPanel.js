@@ -20,8 +20,8 @@ type TypeProps = {
   format: string,
   value: string,
   firstWeekDay: number,
-  onChange: Function,
-  onFocus: Function,
+  onChange?: Function,
+  onFocus?: Function,
   mode: string,
   model: Object,
   setTriggerVisible?: Function,
@@ -33,7 +33,8 @@ type TypeProps = {
   hasTimeWrapBorder?: boolean,
   choseDayIndex?: Array<number>,
   timeIndex?: number,
-  valueIsValid: boolean,
+  valueIsValid?: boolean,
+  hasOldValue?: boolean,
 };
 type TypeState = {
   value: string,
@@ -68,6 +69,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       });
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
+    console.log(nextProps);
     const panelStates = getDerived(nextProps, preState);
     const { format, value, year, month, weeks, choseDayIndex } = panelStates;
     const { timeValue } = nextProps;

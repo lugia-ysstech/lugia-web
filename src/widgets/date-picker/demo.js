@@ -16,7 +16,7 @@ import { setMomentLocal } from './momentConfig';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker, TimePicker } = DatePicker;
 
 //组件的部分local是从组件的属性中读取的，所以请先正确设置moment的local
-const firstWeekDay = 1;
+const firstWeekDay = 0;
 setMomentLocal(firstWeekDay);
 export default class Sl extends Component<any> {
   constructor() {
