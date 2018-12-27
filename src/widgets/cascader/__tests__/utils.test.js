@@ -66,6 +66,9 @@ const data = [
   },
 ];
 
+const valueField = 'value';
+const displayField = 'text';
+
 const treeData = [
   { value: 'a1', text: '一级菜单1', pid: undefined, path: undefined, isLeaf: true },
   { value: 'a2', text: '一级菜单2', pid: undefined, path: undefined, isLeaf: true },
@@ -211,35 +214,48 @@ describe('Cascader', () => {
   });
 
   it('isLeafPath ', () => {
-    expect(isLeafPath([], data, treeData, '/')).toBe(false);
-    expect(isLeafPath(treeData, ['a6', 'a6-2', 'a6-2-1', 'suba1', 'suba2'])).toBe(true);
-    expect(isLeafPath(treeData, ['a1'])).toBe(true);
-    expect(isLeafPath(treeData, ['a6'])).toBe(false);
-    expect(isLeafPath(treeData, ['a6', 'a6-2'])).toBe(false);
+    expect(isLeafPath([], data, valueField)).toBe(false);
+    expect(isLeafPath(treeData, ['a6', 'a6-2', 'a6-2-1', 'suba1', 'suba2'], valueField)).toBe(true);
+    expect(isLeafPath(treeData, ['a1'], valueField)).toBe(true);
+    expect(isLeafPath(treeData, ['a6'], valueField)).toBe(false);
+    expect(isLeafPath(treeData, ['a6', 'a6-2'], valueField)).toBe(false);
   });
 
   it('mapTreeDataToGetDisplayValue ', () => {
-    expect(mapTreeDataToGetDisplayValue(treeData, [])).toEqual([]);
+    expect(mapTreeDataToGetDisplayValue(treeData, [], valueField, displayField)).toEqual([]);
     expect(
-      mapTreeDataToGetDisplayValue(treeData, ['a6', 'a6-2', 'a6-2-1', 'suba1', 'suba2'])
+      mapTreeDataToGetDisplayValue(
+        treeData,
+        ['a6', 'a6-2', 'a6-2-1', 'suba1', 'suba2'],
+        valueField,
+        displayField
+      )
     ).toEqual(['一级菜单6', '次级菜单6-2', '三级菜单6-2-1', 'sub1', 'sub2']);
 
-    expect(mapTreeDataToGetDisplayValue(treeData, ['a6', 'a6-2'])).toEqual([
-      '一级菜单6',
-      '次级菜单6-2',
-    ]);
-    expect(mapTreeDataToGetDisplayValue(treeData, ['a6', 'a6-2', 'a6-2-1', 'suba1'])).toEqual([
-      '一级菜单6',
-      '次级菜单6-2',
-      '三级菜单6-2-1',
-      'sub1',
-    ]);
+    expect(
+      mapTreeDataToGetDisplayValue(treeData, ['a6', 'a6-2'], valueField, displayField)
+    ).toEqual(['一级菜单6', '次级菜单6-2']);
+    expect(
+      mapTreeDataToGetDisplayValue(
+        treeData,
+        ['a6', 'a6-2', 'a6-2-1', 'suba1'],
+        valueField,
+        displayField
+      )
+    ).toEqual(['一级菜单6', '次级菜单6-2', '三级菜单6-2-1', 'sub1']);
   });
 
   it('getInputValue ', () => {
     expect(
       getInputValue(
-        { showAllLevels: true, separator: '/', data, value: ['a6/a6-2/a6-2-1/suba1/suba2'] },
+        {
+          showAllLevels: true,
+          separator: '/',
+          data,
+          value: ['a6/a6-2/a6-2-1/suba1/suba2'],
+          valueField,
+          displayField,
+        },
         { treeData }
       )
     ).toEqual(['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1/sub2']);
@@ -250,6 +266,8 @@ describe('Cascader', () => {
           showAllLevels: true,
           separator: '/',
           data,
+          valueField,
+          displayField,
           value: ['苦乐莫多愿/a6-2/a6-2-1/suba1/suba2'],
         },
         { treeData }
@@ -258,35 +276,70 @@ describe('Cascader', () => {
 
     expect(
       getInputValue(
-        { showAllLevels: true, separator: '/', data, value: ['a6/苦乐莫多愿/a6-2-1/suba1/suba2'] },
+        {
+          showAllLevels: true,
+          separator: '/',
+          data,
+          valueField,
+          displayField,
+          value: ['a6/苦乐莫多愿/a6-2-1/suba1/suba2'],
+        },
         { treeData }
       )
     ).toEqual(['一级菜单6']);
 
     expect(
       getInputValue(
-        { showAllLevels: true, separator: '/', data, value: ['a6/a6-2/苦乐莫多愿/suba1/suba2'] },
+        {
+          showAllLevels: true,
+          separator: '/',
+          data,
+          valueField,
+          displayField,
+          value: ['a6/a6-2/苦乐莫多愿/suba1/suba2'],
+        },
         { treeData }
       )
     ).toEqual(['一级菜单6/次级菜单6-2']);
 
     expect(
       getInputValue(
-        { showAllLevels: true, separator: '/', data, value: ['a6/a6-2/a6-2-1/苦乐莫多愿/suba2'] },
+        {
+          showAllLevels: true,
+          separator: '/',
+          data,
+          valueField,
+          displayField,
+          value: ['a6/a6-2/a6-2-1/苦乐莫多愿/suba2'],
+        },
         { treeData }
       )
     ).toEqual(['一级菜单6/次级菜单6-2/三级菜单6-2-1']);
 
     expect(
       getInputValue(
-        { showAllLevels: true, separator: '/', data, value: ['a6/a6-2/a6-2-1/suba1/苦乐莫多愿'] },
+        {
+          showAllLevels: true,
+          separator: '/',
+          data,
+          valueField,
+          displayField,
+          value: ['a6/a6-2/a6-2-1/suba1/苦乐莫多愿'],
+        },
         { treeData }
       )
     ).toEqual(['一级菜单6/次级菜单6-2/三级菜单6-2-1/sub1']);
 
     expect(
       getInputValue(
-        { showAllLevels: false, separator: '/', data, value: ['a6/a6-2/a6-2-1/suba1/suba2'] },
+        {
+          showAllLevels: false,
+          separator: '/',
+          data,
+          valueField,
+          displayField,
+          value: ['a6/a6-2/a6-2-1/suba1/suba2'],
+        },
         { treeData }
       )
     ).toEqual(['sub2']);
@@ -297,6 +350,8 @@ describe('Cascader', () => {
           showAllLevels: false,
           separator: '/',
           data,
+          valueField,
+          displayField,
           value: ['苦乐莫多愿/a6-2/a6-2-1/suba1/suba2'],
         },
         { treeData }
@@ -309,6 +364,8 @@ describe('Cascader', () => {
           showAllLevels: false,
           separator: '/',
           data,
+          valueField,
+          displayField,
           value: ['苦乐莫多愿/a6-2/a6-2-1/suba1/suba2'],
         },
         { treeData, inputValue: ['笙歌散后酒初醒'] }
@@ -321,6 +378,8 @@ describe('Cascader', () => {
           showAllLevels: false,
           separator: '/',
           data,
+          valueField,
+          displayField,
           value: ['a6/a6-2/a6-2-1/suba1/suba2'],
         },
         { treeData, inputValue: ['笙歌散后酒初醒'] }
@@ -333,6 +392,8 @@ describe('Cascader', () => {
           showAllLevels: false,
           separator: '/',
           data,
+          valueField,
+          displayField,
           value: ['a6/a6-2/a6-2-1/suba1'],
         },
         { treeData, inputValue: ['笙歌散后酒初醒'] }
@@ -345,6 +406,8 @@ describe('Cascader', () => {
           showAllLevels: false,
           separator: '/',
           data,
+          valueField,
+          displayField,
           value: ['a6/苦莫苦于多愿/a6-2-1/suba1'],
         },
         { treeData, inputValue: ['笙歌散后酒初醒'] }
@@ -357,6 +420,8 @@ describe('Cascader', () => {
           showAllLevels: false,
           separator: '/',
           data,
+          valueField,
+          displayField,
           value: ['a6'],
         },
         { treeData, inputValue: ['笙歌散后酒初醒'] }
@@ -369,6 +434,8 @@ describe('Cascader', () => {
           showAllLevels: false,
           separator: '/',
           data,
+          valueField,
+          displayField,
           value: ['a1'],
         },
         { treeData, inputValue: ['笙歌散后酒初醒'] }

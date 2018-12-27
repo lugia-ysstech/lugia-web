@@ -619,7 +619,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "4.833333333333333em",
+            "height": "4.916666666666667em",
             "top": "0em",
           }
         }
@@ -1394,7 +1394,7 @@ Array [
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "4.833333333333333em",
+              "height": "4.916666666666667em",
               "top": "0em",
             }
           }
@@ -2027,7 +2027,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "4.833333333333333em",
+            "height": "4.916666666666667em",
             "top": "0em",
           }
         }

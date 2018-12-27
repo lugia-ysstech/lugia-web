@@ -2,6 +2,7 @@
 
 exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 .c1 {
+  width: 20.833333333333336em;
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -10,13 +11,14 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 23.333333333333336em;
-  max-height: 23.333333333333336em;
+  height: 20.833333333333336em;
+  max-height: 20.833333333333336em;
   overflow: hidden;
 }
 
 .c3 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;
@@ -105,6 +107,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 >
   <ul
     className="c1"
+    size="default"
   >
     <li
       checked={false}
@@ -168,6 +171,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu single selectedKeys 2 1`] = `
 .c1 {
+  width: 20.833333333333336em;
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -176,13 +180,14 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 23.333333333333336em;
-  max-height: 23.333333333333336em;
+  height: 20.833333333333336em;
+  max-height: 20.833333333333336em;
   overflow: hidden;
 }
 
 .c3 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;
@@ -259,6 +264,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 >
   <ul
     className="c1"
+    size="default"
   >
     <li
       checked={false}
@@ -331,13 +337,14 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 29.166666666666668em;
-  max-height: 29.166666666666668em;
+  height: 27.75em;
+  max-height: 27.75em;
   overflow: hidden;
 }
 
 .c3 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;
@@ -385,6 +392,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 >
   <ul
     className="c1"
+    size="default"
   >
     <li
       checked={false}
@@ -457,13 +465,14 @@ exports[`Menu children: items 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 23.333333333333336em;
-  max-height: 23.333333333333336em;
+  height: 20.833333333333336em;
+  max-height: 20.833333333333336em;
   overflow: hidden;
 }
 
 .c5 {
   padding: 0.5833333333333334em 0.6666666666666667em;
+  font-size: 1em;
   position: absolute;
   left: 0;
   top: 50%;
@@ -574,6 +583,7 @@ exports[`Menu children: items 1`] = `
   >
     <ul
       className="c3"
+      size="default"
     >
       <li
         checked={false}
