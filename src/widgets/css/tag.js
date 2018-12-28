@@ -162,8 +162,8 @@ export const TagContainer = styled.div`
 
 export const ItemText = styled.span`
   display: inline-block;
-  height: ${em(18)};
-  line-height: ${em(20)};
+  height: ${em(20)};
+  line-height: ${em(19)};
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;

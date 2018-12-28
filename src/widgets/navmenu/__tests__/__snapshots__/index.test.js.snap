@@ -109,7 +109,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   vertical-align: top;
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
-  color: #b5b6c1;
+  color: #bbb;
 }
 
 .c13 {
@@ -138,8 +138,6 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
   padding-left: 1.25em;
   border-radius: 3.3333333333333335em;
   background: #ffffff;
@@ -151,8 +149,6 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
   padding-left: 1.4285714285714286em;
   border-radius: 5em;
   background: #ffffff;
@@ -161,7 +157,6 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
 <div
   className="c0"
   onWheel={[Function]}
-  size="bigger"
 >
   <ul
     className="rc-tree c1 c2"
@@ -1118,22 +1113,6 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   padding: 0;
 }
 
-.c11 {
-  font-size: 1.1666666666666667em;
-  padding: 0 2.857142857142857em 0 2.142857142857143em;
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  vertical-align: top;
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
-  color: #b5b6c1;
-}
-
 .c6 {
   font-size: 1.3333333333333335em;
   padding: 0 2.5em 0 1.25em;
@@ -1152,6 +1131,22 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 
 .c6:hover {
   color: #4d63ff;
+}
+
+.c11 {
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.142857142857143em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #999;
 }
 
 .c13 {
@@ -1180,8 +1175,6 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
   padding-left: 1.25em;
   border-radius: 3.3333333333333335em;
   background: #000033;
@@ -1193,8 +1186,6 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
   padding-left: 1.4285714285714286em;
   border-radius: 5em;
   background: #000033;
@@ -1203,7 +1194,6 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 <div
   className="c0"
   onWheel={[Function]}
-  size="bigger"
 >
   <ul
     className="rc-tree c1 c2"
@@ -2170,7 +2160,6 @@ exports[`NavMenu  mode=vertical  1`] = `
   <div
     className="c1"
     onWheel={[Function]}
-    size="large"
   >
     <ul
       className="c2"
@@ -2341,7 +2330,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 
 .c3::before {
   content: '';
-  width: 0.33333333333333337em;
+  width: 0.5em;
   border-radius: 0.33333333333333337em;
   height: 3.3333333333333335em;
   background: #4d63ff;
@@ -2373,7 +2362,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   vertical-align: top;
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
-  color: #b5b6c1;
+  color: #bbb;
 }
 
 .c6 {
@@ -2422,8 +2411,6 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition: all 0s;
-  transition: all 0s;
   padding-left: 1.25em;
   border-radius: 3.3333333333333335em;
   background: transparent;
@@ -2435,8 +2422,6 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition: all 0s;
-  transition: all 0s;
   padding-left: 1.4285714285714286em;
   border-radius: 5em;
   background: transparent;
@@ -2445,7 +2430,6 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 <div
   className="c0"
   onWheel={[Function]}
-  size="bigger"
 >
   <ul
     className="rc-tree c1 c2"
@@ -3399,7 +3383,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 
 .c3::before {
   content: '';
-  width: 0.33333333333333337em;
+  width: 0.5em;
   border-radius: 0.33333333333333337em;
   height: 3.3333333333333335em;
   background: #4d63ff;
@@ -3418,7 +3402,25 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   background: #edf0fe;
 }
 
+.c11 {
+  font-size: 1.1666666666666667em;
+  padding: 0 2.857142857142857em 0 2.142857142857143em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: top;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  color: #999;
+}
+
 .c6 {
+  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.1);
   font-size: 1.3333333333333335em;
   padding: 0 2.5em 0 1.25em;
   box-sizing: border-box;
@@ -3438,27 +3440,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   color: #4d63ff;
 }
 
-.c11 {
-  background: rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.2);
-  font-size: 1.1666666666666667em;
-  padding: 0 2.857142857142857em 0 2.142857142857143em;
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  vertical-align: top;
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
-  color: #b5b6c1;
-}
-
 .c13 {
-  background: rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.2);
   font-size: 1.1666666666666667em;
   padding: 0 2.857142857142857em 0 2.857142857142857em;
   box-sizing: border-box;
@@ -3484,8 +3466,6 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition: all 0s;
-  transition: all 0s;
   padding-left: 1.25em;
   border-radius: 3.3333333333333335em;
   background: transparent;
@@ -3497,8 +3477,6 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition: all 0s;
-  transition: all 0s;
   padding-left: 1.4285714285714286em;
   border-radius: 5em;
   background: transparent;
@@ -3507,7 +3485,6 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 <div
   className="c0"
   onWheel={[Function]}
-  size="bigger"
 >
   <ul
     className="rc-tree c1 c2"

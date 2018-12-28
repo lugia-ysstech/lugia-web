@@ -11,6 +11,7 @@ import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Menu from '../menu';
 import Theme from '../theme';
+import styled from 'styled-components';
 import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
@@ -34,6 +35,10 @@ import { toMatchFromType } from '../common/StringUtils';
 
 type ValidateStatus = 'success' | 'error';
 type RowData = { [key: string]: any };
+
+const SelectContainer = styled.div`
+  display: inline-block;
+`;
 
 type SelectProps = {
   getTheme?: Function,
@@ -134,7 +139,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     const length = data.length;
 
     const { value, displayValue } = getValueAndDisplayValue(props, state);
-
+    console.log('valuevalue', value);
     const theValue = value ? value : [];
 
     if (!state) {
@@ -212,9 +217,9 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   isLimit(): boolean {
-    const { length } = this.state;
+    const { length, value } = this.state;
     const { limitCount = length } = this.props;
-    return this.state.value.length >= limitCount;
+    return value.length >= limitCount;
   }
 
   render() {
@@ -320,29 +325,31 @@ class Select extends React.Component<SelectProps, SelectState> {
 
     return (
       <Theme config={getTheme(props, Widget.Menu)} key="select_theme">
-        <Trigger
-          popup={menu}
-          align="bottomLeft"
-          key="trigger"
-          ref={getMenuTriger}
-          action={disabled ? [] : ['click']}
-          hideAction={['click']}
-          onPopupVisibleChange={this.onMenuPopupVisibleChange}
-        >
-          <InputTag
-            ref={getInputTag}
-            key="inputtag"
-            value={[...value]}
-            displayValue={[...displayValue]}
-            validateStatus={validateStatus}
-            onChange={this.onInputTagChange}
-            onPopupVisibleChange={this.onInputTagPopupVisibleChange}
-            disabled={disabled}
-            placeholder={placeholder}
-            mutliple={isMutliple(props)}
-            onClear={this.onClear}
-          />
-        </Trigger>
+        <SelectContainer>
+          <Trigger
+            popup={menu}
+            align="bottomLeft"
+            key="trigger"
+            ref={getMenuTriger}
+            action={disabled ? [] : ['click']}
+            hideAction={['click']}
+            onPopupVisibleChange={this.onMenuPopupVisibleChange}
+          >
+            <InputTag
+              ref={getInputTag}
+              key="inputtag"
+              value={[...value]}
+              displayValue={[...displayValue]}
+              validateStatus={validateStatus}
+              onChange={this.onInputTagChange}
+              onPopupVisibleChange={this.onInputTagPopupVisibleChange}
+              disabled={disabled}
+              placeholder={placeholder}
+              mutliple={isMutliple(props)}
+              onClear={this.onClear}
+            />
+          </Trigger>
+        </SelectContainer>
       </Theme>
     );
   }

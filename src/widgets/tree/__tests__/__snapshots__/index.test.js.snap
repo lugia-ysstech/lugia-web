@@ -1,42 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
-.c6 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-}
-
-.c14 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-  opacity: 0;
-}
-
-.c4 {
-  padding-right: 1.5em;
-  margin: 0;
-}
-
-.c5 {
-  min-height: 2.5em;
-  line-height: 2.5em;
-  list-style: none;
-  white-space: nowrap;
-  outline: 0;
-  overflow: hidden;
-}
-
-.c13 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
 .c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -61,7 +25,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c8:hover > span span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c9 {
@@ -105,7 +69,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c15:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c15::after {
@@ -136,14 +100,14 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c11:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c11::after {
@@ -229,6 +193,42 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   top: 0em;
   width: 100%;
   padding: 0;
+}
+
+.c6 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+}
+
+.c14 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+  opacity: 0;
+}
+
+.c4 {
+  padding-right: 1.5em;
+  margin: 0;
+}
+
+.c5 {
+  min-height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+  list-style: none;
+  white-space: nowrap;
+  outline: 0;
+  overflow: hidden;
+}
+
+.c13 {
+  margin: 0;
+  padding: 0 0 0 1.5em;
 }
 
 <div
@@ -589,47 +589,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                       </li>
                     </ul>
                   </li>
-                  <li
-                    className="c5"
-                    selected={false}
-                    title="1.2.2.2"
-                    unselectable="on"
-                  >
-                    <span
-                      className="c14"
-                    >
-                      <i
-                        className="lugia-icon-direction_caret_down  c7"
-                      />
-                    </span>
-                    <label
-                      className="c8"
-                      disabled={false}
-                      onClick={[Function]}
-                    >
-                      <span
-                        className="c9"
-                        onClick={null}
-                      >
-                        <input
-                          className="c10"
-                          disabled={false}
-                          onBlur={[Function]}
-                          type="checkbox"
-                        />
-                        <span
-                          checked={false}
-                          className="c15"
-                          disabled={false}
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                      >
-                        1.2.2.2
-                      </span>
-                    </label>
-                  </li>
                 </ul>
               </li>
             </ul>
@@ -660,7 +619,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "5.583333333333334em",
+            "height": "4.916666666666667em",
             "top": "0em",
           }
         }
@@ -671,6 +630,35 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 `;
 
 exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c8 {
+  display: inline-block;
+  position: relative;
+  padding-right: 0.5em;
+  top: 0.125em;
+}
+
+.c0 {
+  overflow: hidden;
+  height: 20.833333333333336em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c1 {
+  position: relative;
+  top: 0em;
+  width: 100%;
+  padding: 0;
+}
+
 .c4 {
   font-size: 1em;
   color: #999999;
@@ -679,7 +667,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   vertical-align: top;
 }
 
-.c9 {
+.c10 {
   font-size: 1em;
   color: #999999;
   display: inline-block;
@@ -694,15 +682,15 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 }
 
 .c3 {
-  min-height: 2.5em;
-  line-height: 2.5em;
+  min-height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
   list-style: none;
   white-space: nowrap;
   outline: 0;
   overflow: hidden;
 }
 
-.c8 {
+.c9 {
   margin: 0;
   padding: 0 0 0 1.5em;
 }
@@ -729,28 +717,6 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 
 .c7 {
   opacity: 1;
-}
-
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
-.c0 {
-  overflow: hidden;
-  height: 20.833333333333336em;
-  width: 20.833333333333336em;
-  position: relative;
-}
-
-.c1 {
-  position: relative;
-  top: 0em;
-  width: 100%;
-  padding: 0;
 }
 
 <div
@@ -787,13 +753,18 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
       >
         <span
           className="c7"
+          height={35}
+          selected={false}
           title="2"
         >
+          <i
+            className="undefined c8 c5"
+          />
           2
         </span>
       </span>
       <ul
-        className="c8"
+        className="c9"
         data-expanded={true}
       >
         <li
@@ -821,13 +792,18 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
           >
             <span
               className="c7"
+              height={35}
+              selected={false}
               title="2.1"
             >
+              <i
+                className="undefined c8 c5"
+              />
               2.1
             </span>
           </span>
           <ul
-            className="c8"
+            className="c9"
             data-expanded={true}
           >
             <li
@@ -855,13 +831,18 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
               >
                 <span
                   className="c7"
+                  height={35}
+                  selected={false}
                   title="2.1.2"
                 >
+                  <i
+                    className="undefined c8 c5"
+                  />
                   2.1.2
                 </span>
               </span>
               <ul
-                className="c8"
+                className="c9"
                 data-expanded={true}
               >
                 <li
@@ -871,7 +852,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
                   unselectable="on"
                 >
                   <span
-                    className="c9"
+                    className="c10"
                   >
                     <i
                       className="lugia-icon-direction_caret_down  c5"
@@ -888,8 +869,13 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
                   >
                     <span
                       className="c7"
+                      height={35}
+                      selected={false}
                       title="2.1.2.1"
                     >
+                      <i
+                        className="undefined c8 c5"
+                      />
                       2.1.2.1
                     </span>
                   </span>
@@ -906,7 +892,88 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 
 exports[`Tree props: value: 1 mutliple: false onChange监听 limit 1`] = `
 Array [
-  .c6 {
+  .c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c10 {
+  display: inline-block;
+  position: relative;
+  padding-right: 0.5em;
+  top: 0.125em;
+}
+
+.c15 {
+  position: relative;
+  background: #fbfbfb;
+  width: 1.6666666666666667em;
+  height: 25em;
+  z-index: 996;
+  width: 1em;
+}
+
+.c16 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 0.6666666666666667em;
+  background: #c2c2c2;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 2.5em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0.6666666666666667em;
+  margin-left: 0.16666666666666669em;
+  margin-right: 0.16666666666666669em;
+}
+
+.c16:hover {
+  background-color: #7a7a7a;
+}
+
+.c2 {
+  width: 19.833333333333336em;
+  position: absolute;
+  display: inline-block;
+}
+
+.c1 {
+  overflow: hidden;
+  height: 20.833333333333336em;
+  width: 20.833333333333336em;
+  position: relative;
+}
+
+.c14 {
+  width: 19.833333333333336em;
+  position: absolute;
+  display: inline-block;
+  left: 19.833333333333336em;
+  width: 1em;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.c0:hover .c14 {
+  opacity: 1;
+}
+
+.c3 {
+  position: relative;
+  top: 0em;
+  width: 100%;
+  padding: 0;
+}
+
+.c6 {
   font-size: 1em;
   color: #999999;
   display: inline-block;
@@ -914,7 +981,7 @@ Array [
   vertical-align: top;
 }
 
-.c11 {
+.c12 {
   font-size: 1em;
   color: #999999;
   display: inline-block;
@@ -929,20 +996,20 @@ Array [
 }
 
 .c5 {
-  min-height: 2.5em;
-  line-height: 2.5em;
+  min-height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
   list-style: none;
   white-space: nowrap;
   outline: 0;
   overflow: hidden;
 }
 
-.c10 {
+.c11 {
   margin: 0;
   padding: 0 0 0 1.5em;
 }
 
-.c12 {
+.c13 {
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
@@ -958,7 +1025,7 @@ Array [
   color: #666666;
 }
 
-.c12:hover {
+.c13:hover {
   background-color: #edf0fe;
 }
 
@@ -985,80 +1052,6 @@ Array [
 
 .c9 {
   opacity: 1;
-}
-
-.c7 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
-.c14 {
-  position: relative;
-  background: #fbfbfb;
-  width: 1.6666666666666667em;
-  height: 25em;
-  z-index: 996;
-  width: 1em;
-}
-
-.c15 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 0.6666666666666667em;
-  background: #c2c2c2;
-  color: #fff;
-  font-size: 1.2rem;
-  line-height: 2.5em;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  width: 0.6666666666666667em;
-  margin-left: 0.16666666666666669em;
-  margin-right: 0.16666666666666669em;
-}
-
-.c15:hover {
-  background-color: #7a7a7a;
-}
-
-.c2 {
-  width: 19.833333333333336em;
-  position: absolute;
-  display: inline-block;
-}
-
-.c1 {
-  overflow: hidden;
-  height: 20.833333333333336em;
-  width: 20.833333333333336em;
-  position: relative;
-}
-
-.c13 {
-  width: 19.833333333333336em;
-  position: absolute;
-  display: inline-block;
-  left: 19.833333333333336em;
-  width: 1em;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-}
-
-.c0:hover .c13 {
-  opacity: 1;
-}
-
-.c3 {
-  position: relative;
-  top: 0em;
-  width: 100%;
-  padding: 0;
 }
 
 <div
@@ -1098,13 +1091,18 @@ Array [
           >
             <span
               className="c9"
+              height={35}
+              selected={true}
               title="1"
             >
+              <i
+                className="undefined c10 c7"
+              />
               1
             </span>
           </span>
           <ul
-            className="c10"
+            className="c11"
             data-expanded={true}
           >
             <li
@@ -1114,14 +1112,14 @@ Array [
               unselectable="on"
             >
               <span
-                className="c11"
+                className="c12"
               >
                 <i
                   className="lugia-icon-direction_caret_down  c7"
                 />
               </span>
               <span
-                className="c12"
+                className="c13"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onMouseEnter={[Function]}
@@ -1131,8 +1129,13 @@ Array [
               >
                 <span
                   className="c9"
+                  height={35}
+                  selected={false}
                   title="1.1"
                 >
+                  <i
+                    className="undefined c10 c7"
+                  />
                   1.1
                 </span>
               </span>
@@ -1152,7 +1155,7 @@ Array [
                 />
               </span>
               <span
-                className="c12"
+                className="c13"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onMouseEnter={[Function]}
@@ -1162,13 +1165,18 @@ Array [
               >
                 <span
                   className="c9"
+                  height={35}
+                  selected={false}
                   title="1.2"
                 >
+                  <i
+                    className="undefined c10 c7"
+                  />
                   1.2
                 </span>
               </span>
               <ul
-                className="c10"
+                className="c11"
                 data-expanded={true}
               >
                 <li
@@ -1178,14 +1186,14 @@ Array [
                   unselectable="on"
                 >
                   <span
-                    className="c11"
+                    className="c12"
                   >
                     <i
                       className="lugia-icon-direction_caret_down  c7"
                     />
                   </span>
                   <span
-                    className="c12"
+                    className="c13"
                     onClick={[Function]}
                     onContextMenu={[Function]}
                     onMouseEnter={[Function]}
@@ -1195,8 +1203,13 @@ Array [
                   >
                     <span
                       className="c9"
+                      height={35}
+                      selected={false}
                       title="1.2.1"
                     >
+                      <i
+                        className="undefined c10 c7"
+                      />
                       1.2.1
                     </span>
                   </span>
@@ -1216,7 +1229,7 @@ Array [
                     />
                   </span>
                   <span
-                    className="c12"
+                    className="c13"
                     onClick={[Function]}
                     onContextMenu={[Function]}
                     onMouseEnter={[Function]}
@@ -1226,13 +1239,18 @@ Array [
                   >
                     <span
                       className="c9"
+                      height={35}
+                      selected={false}
                       title="1.2.2"
                     >
+                      <i
+                        className="undefined c10 c7"
+                      />
                       1.2.2
                     </span>
                   </span>
                   <ul
-                    className="c10"
+                    className="c11"
                     data-expanded={true}
                   >
                     <li
@@ -1250,7 +1268,7 @@ Array [
                         />
                       </span>
                       <span
-                        className="c12"
+                        className="c13"
                         onClick={[Function]}
                         onContextMenu={[Function]}
                         onMouseEnter={[Function]}
@@ -1260,13 +1278,18 @@ Array [
                       >
                         <span
                           className="c9"
+                          height={35}
+                          selected={false}
                           title="1.2.2.1"
                         >
+                          <i
+                            className="undefined c10 c7"
+                          />
                           1.2.2.1
                         </span>
                       </span>
                       <ul
-                        className="c10"
+                        className="c11"
                         data-expanded={true}
                       >
                         <li
@@ -1276,14 +1299,14 @@ Array [
                           unselectable="on"
                         >
                           <span
-                            className="c11"
+                            className="c12"
                           >
                             <i
                               className="lugia-icon-direction_caret_down  c7"
                             />
                           </span>
                           <span
-                            className="c12"
+                            className="c13"
                             onClick={[Function]}
                             onContextMenu={[Function]}
                             onMouseEnter={[Function]}
@@ -1293,8 +1316,13 @@ Array [
                           >
                             <span
                               className="c9"
+                              height={35}
+                              selected={false}
                               title="1.2.2.1.1"
                             >
+                              <i
+                                className="undefined c10 c7"
+                              />
                               1.2.2.1.1
                             </span>
                           </span>
@@ -1306,14 +1334,14 @@ Array [
                           unselectable="on"
                         >
                           <span
-                            className="c11"
+                            className="c12"
                           >
                             <i
                               className="lugia-icon-direction_caret_down  c7"
                             />
                           </span>
                           <span
-                            className="c12"
+                            className="c13"
                             onClick={[Function]}
                             onContextMenu={[Function]}
                             onMouseEnter={[Function]}
@@ -1323,43 +1351,18 @@ Array [
                           >
                             <span
                               className="c9"
+                              height={35}
+                              selected={false}
                               title="1.2.2.1.2"
                             >
+                              <i
+                                className="undefined c10 c7"
+                              />
                               1.2.2.1.2
                             </span>
                           </span>
                         </li>
                       </ul>
-                    </li>
-                    <li
-                      className="c5"
-                      selected={false}
-                      title="1.2.2.2"
-                      unselectable="on"
-                    >
-                      <span
-                        className="c11"
-                      >
-                        <i
-                          className="lugia-icon-direction_caret_down  c7"
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        selected={false}
-                        title="1.2.2.2"
-                      >
-                        <span
-                          className="c9"
-                          title="1.2.2.2"
-                        >
-                          1.2.2.2
-                        </span>
-                      </span>
                     </li>
                   </ul>
                 </li>
@@ -1370,10 +1373,10 @@ Array [
       </ul>
     </div>
     <div
-      className="c13"
+      className="c14"
     >
       <div
-        className="c14"
+        className="c15"
         onMouseDown={[Function]}
         onMouseMove={[Function]}
         onMouseOut={[Function]}
@@ -1386,12 +1389,12 @@ Array [
         }
       >
         <div
-          className="c15"
+          className="c16"
           onMouseDown={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "5.583333333333334em",
+              "height": "4.916666666666667em",
               "top": "0em",
             }
           }
@@ -1406,42 +1409,6 @@ Array [
 `;
 
 exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
-.c6 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-}
-
-.c14 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-  opacity: 0;
-}
-
-.c4 {
-  padding-right: 1.5em;
-  margin: 0;
-}
-
-.c5 {
-  min-height: 2.5em;
-  line-height: 2.5em;
-  list-style: none;
-  white-space: nowrap;
-  outline: 0;
-  overflow: hidden;
-}
-
-.c13 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
 .c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1466,7 +1433,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c8:hover > span span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c9 {
@@ -1510,7 +1477,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c15:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c15::after {
@@ -1541,14 +1508,14 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c11:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c11::after {
@@ -1634,6 +1601,42 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   top: 0em;
   width: 100%;
   padding: 0;
+}
+
+.c6 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+}
+
+.c14 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin: 0 0.8333333333333334em;
+  vertical-align: top;
+  opacity: 0;
+}
+
+.c4 {
+  padding-right: 1.5em;
+  margin: 0;
+}
+
+.c5 {
+  min-height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+  list-style: none;
+  white-space: nowrap;
+  outline: 0;
+  overflow: hidden;
+}
+
+.c13 {
+  margin: 0;
+  padding: 0 0 0 1.5em;
 }
 
 <div
@@ -1994,47 +1997,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                       </li>
                     </ul>
                   </li>
-                  <li
-                    className="c5"
-                    selected={false}
-                    title="1.2.2.2"
-                    unselectable="on"
-                  >
-                    <span
-                      className="c14"
-                    >
-                      <i
-                        className="lugia-icon-direction_caret_down  c7"
-                      />
-                    </span>
-                    <label
-                      className="c8"
-                      disabled={false}
-                      onClick={[Function]}
-                    >
-                      <span
-                        className="c9"
-                        onClick={null}
-                      >
-                        <input
-                          className="c10"
-                          disabled={false}
-                          onBlur={[Function]}
-                          type="checkbox"
-                        />
-                        <span
-                          checked={false}
-                          className="c15"
-                          disabled={false}
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                      >
-                        1.2.2.2
-                      </span>
-                    </label>
-                  </li>
                 </ul>
               </li>
             </ul>
@@ -2065,7 +2027,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "5.583333333333334em",
+            "height": "4.916666666666667em",
             "top": "0em",
           }
         }

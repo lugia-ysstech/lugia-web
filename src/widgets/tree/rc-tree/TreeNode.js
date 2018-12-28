@@ -145,8 +145,8 @@ class TreeNode extends React.Component {
   };
 
   renderSwitcher(props, expandedState) {
-    const { themeStyle, describe = false } = props;
-    if (describe) {
+    const { themeStyle, describe = false, mutliple } = props;
+    if (describe && !mutliple) {
       return null;
     }
     const { Switcher, openClassName, closeClassName } = themeStyle;

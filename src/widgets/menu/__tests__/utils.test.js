@@ -44,7 +44,7 @@ describe('Menu utils', () => {
     expect(getPopupVisible({ popupVisible: false }, {})).toBeFalsy();
     expect(getPopupVisible({ popupVisible: true }, { childData: [1, 2, 3] })).toBeTruthy();
     expect(getPopupVisible({ popupVisible: false }, { childData: [1, 2, 3] })).toBeFalsy();
-    expect(getPopupVisible({}, { childData: [1, 2, 3] })).toBeFalsy();
+    expect(getPopupVisible({}, { childData: [1, 2, 3] })).toBeTruthy();
   });
 
   it('getTargetOrDefaultTarget ', () => {

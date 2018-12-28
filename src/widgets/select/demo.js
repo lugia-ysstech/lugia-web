@@ -20,16 +20,15 @@ const data = (function(t) {
     res.push({ value: `key-${i}`, label: `txt${i}` });
   }
   return res;
-})(20 * 1);
+})(5);
 export default class Demo extends React.Component {
   constructor(props) {
     super(props);
     const width = 300;
     this.state = {
       menu: null,
-      value: ['key-a', 'key+', 'key++'],
-      // config: { [Widget.Select]: { width } },
-      config: {},
+      value: ['key-a'],
+      config: { [Widget.Select]: { width, autoHeight: true } },
     };
   }
 
@@ -60,18 +59,20 @@ export default class Demo extends React.Component {
             data={data}
             displayField={'label'}
             value={value}
+            displayValue={value}
             throttle={1000}
             onQuery={this.onQuery}
             canSearch
-            mutliple
-            onChange={this.handleChange}
+            // onChange={this.handleChange}
             onTrigger={this.onTrigger}
             onQuery={this.handleQuery}
-            onSelect={this.handleSelect}
+            // onSelect={this.handleSelect}
           />
 
-          <H2>single search</H2>
+          {/* <H2>single search</H2>
           <Select canSearch displayField={'label'} data={data} />
+
+          <Select canSearch displayField={'label'} disabled data={data} />
 
           <H2>single canInput</H2>
           <Select canSearch canInput displayField={'label'} data={data} />
@@ -103,7 +104,7 @@ export default class Demo extends React.Component {
             data={data}
             onQuery={this.onQuery}
             onChange={this.onChange}
-          />
+          /> */}
         </div>
       </Theme>
     );
