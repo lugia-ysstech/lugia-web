@@ -57,5 +57,5 @@
       "args": [{ "name": "broken", "desc": "收起状态", "type": "boolean" }]
     }
   },
-  "category": ["数据录入"]
+  "category": ["布局"]
 }

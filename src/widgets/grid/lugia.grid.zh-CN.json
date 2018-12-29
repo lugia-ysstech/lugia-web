@@ -1,0 +1,7 @@
+{
+  "widgetName": "Grid",
+  "title": "Grid 栅格",
+  "desc": "栅格",
+  "childrenWidget": ["col", "row"],
+  "category": ["布局"]
+}
