@@ -17,9 +17,8 @@ import {
 } from '../utils/differUtils';
 import moment from 'moment';
 type TypeProps = {
-  format: string,
+  format?: string,
   value: string,
-  firstWeekDay: number,
   onChange?: Function,
   onFocus?: Function,
   mode: string,
@@ -69,7 +68,6 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       });
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    console.log(nextProps);
     const panelStates = getDerived(nextProps, preState);
     const { format, value, year, month, weeks, choseDayIndex } = panelStates;
     const { timeValue } = nextProps;
@@ -100,7 +98,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
   componentDidMount() {
     const { getCurrentYandM, index } = this.props;
     const { year, month } = this.state;
-    getCurrentYandM && getCurrentYandM({ currentYear: year, currentMonth: month, index });
+    getCurrentYandM && getCurrentYandM({ year, month, index });
   }
   render() {
     let { mode, from, format, panelStates, choseDayIndex } = this.state;
@@ -117,8 +115,6 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       panelStates,
       value,
     };
-
-    console.log(year, month, weeks);
     return isYear ? (
       <Year {...config} year={year} onChange={this.changeYear} />
     ) : isMonth ? (
@@ -165,9 +161,14 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     const { isYear, isWeeks } = modeStyle(this.props.mode);
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
     const moments = moment(value, newFormat).set({ year });
-    const newValue = moments.format(newFormat);
+    let newValue = moments.format(newFormat);
     if (isYear) {
       this.publicOnchange({ newValue, event, openTriger: false, action: 'click' });
+    }
+    if (isWeeks) {
+      newValue = moment(newValue, newFormat)
+        .set({ date: '9' })
+        .format(newFormat);
     }
     this.setStateFunc({ value: newValue, year, mode });
   };
@@ -182,9 +183,14 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       .daysInMonth();
     const currentDate = newDate > maxDate ? maxDate : newDate;
     const moments = moment(value, newFormat).set({ date: currentDate, year, month });
-    const newValue = moments.format(newFormat);
+    let newValue = moments.format(newFormat);
     if (isMonth) {
       this.publicOnchange({ newValue, openTriger: false, event });
+    }
+    if (isWeeks) {
+      newValue = moment(newValue, newFormat)
+        .set({ date: '9' })
+        .format(newFormat);
     }
     this.setStateFunc({ month, year, mode, value: newValue });
   };
@@ -212,11 +218,14 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     const { newValue } = param;
     const { isRange, isWeeks } = modeStyle(this.props.mode);
     let newVal = newValue;
+    let value = newValue;
     if (isWeeks) {
       const { format } = this.state;
       const { year, weeks } = getWeeksRangeInDates(moment(newValue, 'YYYY-MM-DD'));
       newVal = getweekFormatValue(year, weeks, format);
+      value = getValueFromWeekToDate(newValue, format);
     }
+    console.log(newValue, newVal, value);
     !isRange && this.setStateFunc({ value: newValue });
     this.publicOnchange({ ...param, newValue: newVal, openTriger: false });
   };
@@ -232,14 +241,11 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     this.setStateFunc({ value });
   };
   setStateFunc = (state: Object) => {
-    console.log(333);
     const { status } = this.props;
     this.setState({ ...state }, () => {
       const { getCurrentYandM, index } = this.props;
       const { year, month } = this.state;
-      status !== 'showTime' &&
-        getCurrentYandM &&
-        getCurrentYandM({ currentYear: year, currentMonth: month, index });
+      status !== 'showTime' && getCurrentYandM && getCurrentYandM({ year, month, index });
     });
   };
 }

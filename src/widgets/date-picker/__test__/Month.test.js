@@ -1,20 +1,10 @@
 import * as React from 'react';
-
 import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import renderer from 'react-test-renderer';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import 'jest-styled-components';
-import { async } from 'rxjs/internal/scheduler/async';
-import Theme from '../../theme/index';
-import Widget from '../../consts/index';
-import DatePicker from '../index';
-import { consoleTestResultHandler } from 'tslint/lib/test';
-import { delay } from '@lugia/react-test-utils';
-import Month from '../Month';
-const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
+import Month from '../panel/Month';
 const { expect: exp } = chai;
-const moment = require('moment');
 Enzyme.configure({ adapter: new Adapter() });
 describe('default', () => {
   function getTarget(target, component) {
@@ -46,8 +36,7 @@ describe('default', () => {
       };
       const target = mount(<Month {...props} onChange={onChange} />);
       const newTarget = getTarget(target, 'Month');
-      const { monthIndex } = params;
-      newTarget.panelChange({ monthIndex });
+      newTarget.panelChange(params);
       for (const i in expValue) {
         expect(onChangeResult[i]).toBe(expValue[i]);
       }
@@ -55,27 +44,27 @@ describe('default', () => {
   }
   panelChange(
     'onChange 1',
-    { defaultValue: '2015-03', from: 'date' },
-    { monthIndex: 1 },
-    { newValue: '2015-02-01', oldValue: '2015-03-01', mode: 'date', from: 'date' }
+    { year: 2015, month: 4, mode: 'date' },
+    { month: 5 },
+    { mode: 'date', from: 'date', year: 2015, month: 5 }
   );
   panelChange(
     'onChange 2',
-    { defaultValue: '2015-05', from: 'year' },
-    { monthIndex: 2 },
-    { newValue: '2015-03-01', oldValue: '2015-05-01', mode: 'year', from: 'year' }
+    { year: 2015, month: 4, mode: 'year' },
+    { month: 6 },
+    { mode: 'year', from: 'year', year: 2015, month: 6 }
   );
   panelChange(
     'onChange 3',
-    { defaultValue: '2015-07', from: 'week' },
-    { monthIndex: 5 },
-    { newValue: '2015-06-01', oldValue: '2015-07-01', mode: 'week', from: 'week' }
+    { year: 2015, month: 4, mode: 'month' },
+    { month: 6 },
+    { mode: 'month', from: 'month', year: 2015, month: 6 }
   );
   panelChange(
     'onChange 4',
-    { value: '2015-07', from: 'week' },
-    { monthIndex: 5 },
-    { newValue: '2015-06-01', oldValue: '2015-07-01', mode: 'week', from: 'week' }
+    { year: 2019, month: 5, mode: 'month' },
+    { month: 3 },
+    { mode: 'month', from: 'month', year: 2019, month: 3 }
   );
 
   function headOnChange(title: string, props: Object, expValue: Object) {
@@ -94,36 +83,17 @@ describe('default', () => {
   }
   headOnChange(
     'headOnChange 1',
-    { defaultValue: '2015-02' },
-    { newValue: '2015-02', mode: 'year', from: 'month' }
+    { year: 2015, month: 5 },
+    { newValue: '2015-06', mode: 'year', from: 'month' }
   );
   headOnChange(
     'headOnChange 2',
-    { defaultValue: '2015-03' },
-    { newValue: '2015-03', mode: 'year', from: 'month' }
+    { year: 2017, month: 5 },
+    { newValue: '2017-06', mode: 'year', from: 'month' }
   );
   headOnChange(
     'headOnChange 3',
-    { defaultValue: '2015-04' },
-    { newValue: '2015-04', mode: 'year', from: 'month' }
+    { year: 2019, month: 4 },
+    { newValue: '2019-05', mode: 'year', from: 'month' }
   );
-
-  function getFreshPicker(title: string, params: Object, expValue: Object) {
-    it(`onChange ${title}`, () => {
-      const target = mount(<Month />);
-      const newTarget = getTarget(target, 'Month');
-      const { format } = newTarget.state;
-      const { value } = params;
-      const moments = moment(value, format);
-      newTarget.getFreshPicker({ moments });
-      for (const i in expValue) {
-        expect(newTarget.state[i]).toBe(expValue[i]);
-      }
-    });
-  }
-  getFreshPicker('getFreshPicker 1', { value: '2018-02' }, { year: 2018, monthIndex: 1 });
-  getFreshPicker('getFreshPicker 2', { value: '2018-03' }, { year: 2018, monthIndex: 2 });
-  getFreshPicker('getFreshPicker 2', { value: '2017-03' }, { year: 2017, monthIndex: 2 });
-  getFreshPicker('getFreshPicker 2', { value: '2016-12' }, { year: 2016, monthIndex: 11 });
-  getFreshPicker('getFreshPicker 2', { value: '2016-01' }, { year: 2016, monthIndex: 0 });
 });

@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { modeStyle } from '../utils/booleanUtils';
 import { OtherChild, OtherChildText, DatePanel } from '../styled/styled';
 import { getWeeksRange } from '../utils/differUtils';
-const moment = require('moment');
+import moment from 'moment';
 type TypeProps = {
   onChange?: Function,
   showYears?: boolean,

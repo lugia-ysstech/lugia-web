@@ -19,7 +19,7 @@ type TypeProps = {
   onHeadChange?: Function,
 };
 type TypeState = {
-  currentYear: number,
+  year: number,
   value: string,
   format: string,
   start: number,
@@ -37,7 +37,7 @@ class Head extends Component<TypeProps, TypeState> {
     const normalTitle = star + '-' + (star + 11);
     const secontTit = isWeekInner && secondTitle ? `-${secondTitle}` : '';
     return {
-      currentYear: start,
+      year: start,
       title: mode !== 'year' ? start : title || normalTitle,
       secondTitle: secontTit,
     };
@@ -50,7 +50,7 @@ class Head extends Component<TypeProps, TypeState> {
     }
     const moments = moment().set({ year: start });
     const newYear = moments.add(number, 'year').year();
-    this.setState({ currentYear: newYear });
+    this.setState({ year: newYear });
     const titStart = newYear - 1;
     const titEnd = titStart + step - 1;
     const title = titStart + '-' + titEnd;
@@ -88,7 +88,7 @@ class Head extends Component<TypeProps, TypeState> {
     };
   };
   headClick = () => {
-    const { currentYear } = this.state;
+    const { year } = this.state;
     let { start, showYears, step } = this.props;
     if (!showYears) {
       start = start - 1;
@@ -98,8 +98,7 @@ class Head extends Component<TypeProps, TypeState> {
       const en = start + times * (times + 1) - 1;
       const title = star + '-' + en;
       const { headOnChange } = this.props;
-      headOnChange &&
-        headOnChange({ start: star + step, end, year: currentYear, showYears: true, title });
+      headOnChange && headOnChange({ start: star + step, end, year, showYears: true, title });
     }
   };
   secondHeadClick = () => {

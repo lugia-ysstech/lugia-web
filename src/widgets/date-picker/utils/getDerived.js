@@ -5,7 +5,7 @@
 
 import moment from 'moment';
 import { getformatSymbol } from './utils';
-import { getIsSame, formatValueIsValid } from './booleanUtils';
+import { getIsSame, formatValueIsValid, modeStyle } from './booleanUtils';
 import { getDays, getDatesfromWeeks, getValueFromWeekToDate } from './differUtils';
 export const getNormalFormat = (mode: string): string => {
   const { isWeeks, isWeek, isMonth, isYear, isTime, isTimes } = modeStyle(mode);
@@ -20,17 +20,13 @@ export const getNormalFormat = (mode: string): string => {
     : 'YYYY-MM-DD';
   return normalFormat;
 };
-export const getFirstWeekDay = (firstWeekDay: number = 0): number => {
-  let newFirstWeekDay = firstWeekDay;
-  if (newFirstWeekDay >= 7 || newFirstWeekDay <= 0) {
-    newFirstWeekDay = 0;
-  }
-  return newFirstWeekDay;
-};
+
 export const getDerived = (nextProps: Object, preState: Object) => {
-  const { value, format, mode, firstWeekDay, valueIsValid, hasOldValue } = nextProps;
+  const { value, format, mode, valueIsValid, hasOldValue } = nextProps;
+
   const { isWeeks } = modeStyle(mode);
   const newValue = preState ? preState.value : value;
+  console.log(value, newValue);
   const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
   const momentsA = moment(newValue, newFormat);
   const momentsB = momentsA.clone();
@@ -56,7 +52,7 @@ export const getDerived = (nextProps: Object, preState: Object) => {
     startInWeek = startInWeeks;
     endInWeek = endInWeeks;
   }
-  console.log(weeks);
+  console.log(newValue, newFormat, startInWeek, endInWeek);
   return {
     value: newValue,
     days,
@@ -65,8 +61,6 @@ export const getDerived = (nextProps: Object, preState: Object) => {
     todayDate: moment().format(format),
     format,
     mode: preState ? preState.mode : mode,
-    currentYear: years,
-    currentMonth: months,
     weekDay,
     year: years,
     weeks,
@@ -75,7 +69,6 @@ export const getDerived = (nextProps: Object, preState: Object) => {
     lastDayIndexInMonth,
     choseDate: date,
     choseDayIndex,
-    firstWeekDay,
     startInWeeks: startInWeek,
     endInWeeks: endInWeek,
     maxDay: max,
@@ -84,7 +77,6 @@ export const getDerived = (nextProps: Object, preState: Object) => {
 export function getDerivedForInput(nextProps: Object, preState: Object): Object {
   const { mode } = nextProps;
   const { isRange, isWeeks } = modeStyle(mode);
-  const firstWeekDay = getFirstWeekDay(nextProps.firstWeekDay);
   const normalFormat = getNormalFormat(mode);
   const { format = normalFormat } = nextProps;
   const newPlaceholder = getPlaceholder(nextProps);
@@ -94,14 +86,14 @@ export function getDerivedForInput(nextProps: Object, preState: Object): Object 
   const modeWithValid = isRange ? valueIsValid && !isSameYandM : valueIsValid;
   let panelValue = modeWithValid ? newValue : getInValidValue(newValue, format);
   const normalValue = panelValue;
-  if (isWeeks) {
-    panelValue = panelValue && [getValueFromWeekToDate(panelValue[0], format)];
+  if (isWeeks && panelValue) {
+    panelValue = [getValueFromWeekToDate(panelValue[0], format)];
   }
+  console.log(panelValue, newValue);
   return {
     value: newValue,
     format,
     placeholder: newPlaceholder,
-    firstWeekDay,
     valueIsValid,
     panelValue,
     normalValue,
@@ -164,9 +156,6 @@ export function getValueWhetherValid(value?: Array<string>, format: string): boo
         valueIsValid = false;
       }
     });
-  // if (!Array.isArray(value)) {
-  //   valueIsValid = formatValueIsValid(normalvalueFormatObj, value, format);
-  // }
   return valueIsValid;
 }
 
@@ -174,9 +163,8 @@ function getInValidValue(value?: Array<string>, format: string): Array<string> {
   const normalFormatbyValue = moment().format(format);
   const normalvalueFormatObj = getformatSymbol(normalFormatbyValue);
   const normalValue = [];
+  //isWeeks?moment().startOf('week').format('YYYY-MM-DD'):
   const normal = moment().format(format);
-  // const isArr = value && Array.isArray(value);
-  // isArr &&
   value &&
     value.forEach((item, index) => {
       let newVal = item;
@@ -194,28 +182,6 @@ function getInValidValue(value?: Array<string>, format: string): Array<string> {
         .format(format);
     }
   }
-
-  //const newValue = isArr ? normalValue : normal;
+  console.log(normalValue);
   return normalValue;
-}
-
-export function modeStyle(mode: string): Object {
-  const isWeek = mode === 'week';
-  const isWeeks = mode === 'weeks';
-  const isMonth = mode === 'month';
-  const isYear = mode === 'year';
-  const isDate = mode === 'date';
-  const isRange = mode === 'range';
-  const isTime = mode === 'time';
-  const isTimes = mode === 'times';
-  return {
-    isWeek,
-    isMonth,
-    isYear,
-    isDate,
-    isWeeks,
-    isRange,
-    isTime,
-    isTimes,
-  };
 }

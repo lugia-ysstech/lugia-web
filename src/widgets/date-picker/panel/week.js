@@ -23,8 +23,9 @@ class WeekDays extends Component<TypeProps, null> {
     if (lang === 'en') {
       weeks = moment.weekdaysShort();
     }
-    const { firstWeekDay } = props;
-    const moments = moment(moment().day(firstWeekDay));
+    const localeData = moment.localeData();
+    const firstDayOfWeek = localeData.firstDayOfWeek();
+    const moments = moment(moment().day(firstDayOfWeek));
     const newWeeks = [weeks[moments.day()]];
     for (let i = 1; i < 7; i++) {
       const newMoments = moment(moments);
