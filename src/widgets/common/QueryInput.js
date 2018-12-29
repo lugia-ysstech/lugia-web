@@ -211,8 +211,8 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
     const { isCheckedAll, onCheckAll } = this.props;
 
     const iconClassName = isCheckedAll
-      ? 'lugia-icon-finacial1_deselection'
-      : 'lugia-icon-finacial1_check_all';
+      ? 'lugia-icon-finacial_deselection'
+      : 'lugia-icon-finacial_check_all';
     return (
       <CheckAllButton isCheckedAll={isCheckedAll} onClick={onCheckAll}>
         <CommonIcon iconClass={iconClassName} />

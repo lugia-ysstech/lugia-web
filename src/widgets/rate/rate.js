@@ -32,7 +32,7 @@ const showUp = keyframes`
   }
 `;
 const StarIconClass = 'lugia-icon-financial_star';
-const StarIconClassOpen = 'lugia-icon-finacial1_half_star';
+const StarIconClassOpen = 'lugia-icon-finacial_half_star';
 
 const Ratespan = styled.span.attrs({
   primary: props => props.theme.primary || `${warningColor}`,

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rate Test css 1`] = `
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -67,6 +67,10 @@ exports[`Rate Test css 1`] = `
   position: relative;
 }
 
+.c2 {
+  vertical-align: middle !important;
+}
+
 <div
   className="c0"
   onMouseLeave={[Function]}
@@ -82,27 +86,10 @@ exports[`Rate Test css 1`] = `
     primary="#f8ac30"
   >
     <i
-      className="lugia-icon-financial_star default  hoverd  c2"
+      className="lugia-icon-financial_star default  hoverd c2 c3"
     />
     <i
-      className="lugia-icon-financial_star default bottom  c2"
-    />
-  </span>
-  <span
-    amazed="#f88e30"
-    className="c1"
-    danger="#999999"
-    default="#e8e8e8"
-    half="#f8ac30"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    primary="#f8ac30"
-  >
-    <i
-      className="lugia-icon-financial_star default  hoverd  c2"
-    />
-    <i
-      className="lugia-icon-financial_star default bottom  c2"
+      className="lugia-icon-financial_star  default bottom c2 c3"
     />
   </span>
   <span
@@ -116,27 +103,10 @@ exports[`Rate Test css 1`] = `
     primary="#f8ac30"
   >
     <i
-      className="lugia-icon-financial_star default  hoverd  c2"
+      className="lugia-icon-financial_star default  hoverd c2 c3"
     />
     <i
-      className="lugia-icon-financial_star default bottom  c2"
-    />
-  </span>
-  <span
-    amazed="#f88e30"
-    className="c1"
-    danger="#999999"
-    default="#e8e8e8"
-    half="#f8ac30"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    primary="#f8ac30"
-  >
-    <i
-      className="lugia-icon-financial_star default  hoverd  c2"
-    />
-    <i
-      className="lugia-icon-financial_star default bottom  c2"
+      className="lugia-icon-financial_star  default bottom c2 c3"
     />
   </span>
   <span
@@ -150,10 +120,44 @@ exports[`Rate Test css 1`] = `
     primary="#f8ac30"
   >
     <i
-      className="lugia-icon-financial_star default  hoverd  c2"
+      className="lugia-icon-financial_star default  hoverd c2 c3"
     />
     <i
-      className="lugia-icon-financial_star default bottom  c2"
+      className="lugia-icon-financial_star  default bottom c2 c3"
+    />
+  </span>
+  <span
+    amazed="#f88e30"
+    className="c1"
+    danger="#999999"
+    default="#e8e8e8"
+    half="#f8ac30"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    primary="#f8ac30"
+  >
+    <i
+      className="lugia-icon-financial_star default  hoverd c2 c3"
+    />
+    <i
+      className="lugia-icon-financial_star  default bottom c2 c3"
+    />
+  </span>
+  <span
+    amazed="#f88e30"
+    className="c1"
+    danger="#999999"
+    default="#e8e8e8"
+    half="#f8ac30"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    primary="#f8ac30"
+  >
+    <i
+      className="lugia-icon-financial_star default  hoverd c2 c3"
+    />
+    <i
+      className="lugia-icon-financial_star  default bottom c2 c3"
     />
   </span>
 </div>

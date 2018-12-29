@@ -1,10 +1,10 @@
 @font-face {
     font-family: "lugia-icon";
-    src: url("./lugia-icon.eot?49ab235cc8d9d29b8d9519bceca7377e?#iefix") format("embedded-opentype"),
-url("./lugia-icon.woff2?49ab235cc8d9d29b8d9519bceca7377e") format("woff2"),
-url("./lugia-icon.woff?49ab235cc8d9d29b8d9519bceca7377e") format("woff"),
-url("./lugia-icon.ttf?49ab235cc8d9d29b8d9519bceca7377e") format("truetype"),
-url("./lugia-icon.svg?49ab235cc8d9d29b8d9519bceca7377e#lugia-icon") format("svg");
+    src: url("./lugia-icon.eot?e88a7a66b734194c4df15e21c2c488b2?#iefix") format("embedded-opentype"),
+url("./lugia-icon.woff2?e88a7a66b734194c4df15e21c2c488b2") format("woff2"),
+url("./lugia-icon.woff?e88a7a66b734194c4df15e21c2c488b2") format("woff"),
+url("./lugia-icon.ttf?e88a7a66b734194c4df15e21c2c488b2") format("truetype"),
+url("./lugia-icon.svg?e88a7a66b734194c4df15e21c2c488b2#lugia-icon") format("svg");
 }
 
 i {
@@ -89,7 +89,7 @@ i[class^="lugia-icon-"]:before, i[class*=" lugia-icon-"]:before {
 .lugia-icon-direction_down:before {
     content: "\f113";
 }
-.lugia-icon-direction_enter-57:before {
+.lugia-icon-direction_enter_c:before {
     content: "\f114";
 }
 .lugia-icon-direction_enter:before {
@@ -206,22 +206,22 @@ i[class^="lugia-icon-"]:before, i[class*=" lugia-icon-"]:before {
 .lugia-icon-direction_verticle_right:before {
     content: "\f13a";
 }
-.lugia-icon-finacial1_check_all:before {
+.lugia-icon-finacial_check_all:before {
     content: "\f13b";
 }
-.lugia-icon-finacial1_copy:before {
+.lugia-icon-finacial_copy:before {
     content: "\f13c";
 }
-.lugia-icon-finacial1_deselection:before {
+.lugia-icon-finacial_deselection:before {
     content: "\f13d";
 }
-.lugia-icon-finacial1_fail:before {
+.lugia-icon-finacial_fail:before {
     content: "\f13e";
 }
-.lugia-icon-finacial1_half_star:before {
+.lugia-icon-finacial_half_star:before {
     content: "\f13f";
 }
-.lugia-icon-finacial1_hide_code:before {
+.lugia-icon-finacial_hide_code:before {
     content: "\f140";
 }
 .lugia-icon-financial_abort:before {
@@ -395,10 +395,10 @@ i[class^="lugia-icon-"]:before, i[class*=" lugia-icon-"]:before {
 .lugia-icon-financial_Hourglass:before {
     content: "\f179";
 }
-.lugia-icon-financial_information-124:before {
+.lugia-icon-financial_information_c:before {
     content: "\f17a";
 }
-.lugia-icon-financial_information-89:before {
+.lugia-icon-financial_information:before {
     content: "\f17b";
 }
 .lugia-icon-financial_italic:before {
@@ -650,10 +650,10 @@ i[class^="lugia-icon-"]:before, i[class*=" lugia-icon-"]:before {
 .lugia-icon-financial_video_camera:before {
     content: "\f1ce";
 }
-.lugia-icon-financial_voice-102:before {
+.lugia-icon-financial_voice_z:before {
     content: "\f1cf";
 }
-.lugia-icon-financial_voice-53:before {
+.lugia-icon-financial_voice:before {
     content: "\f1d0";
 }
 .lugia-icon-financial_wallet:before {
