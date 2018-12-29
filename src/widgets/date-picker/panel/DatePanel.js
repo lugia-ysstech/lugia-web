@@ -14,10 +14,9 @@ type TypeProps = {
   onDateChange: Function,
   panelChoseDate: string,
   rangeHoverChange?: Function,
-  currentMonth: number,
-  currentYear: number,
+  month: number,
+  year: number,
   mode: string,
-  val: string,
   weekIndex: number,
   format: string,
   index: number,
@@ -42,49 +41,14 @@ type TypeProps = {
   rangeRenderIndex: Array<number>,
   rangeChoseDayIndex: Array<number>,
 };
-type TypeState = {
-  choseDayIndex: Array<number> | number | string,
-  rangeChoseIndex: Array<number>,
-  rangeStartIndex: number,
-  rangeEndIndex: number,
-  panelFistEndIndex: number,
-  panelSecondStartIndex: number,
-  islessThanMin: boolean,
-  isGreaterThanMax: boolean,
-};
-class Dates extends Component<TypeProps, TypeState> {
+class Dates extends Component<TypeProps, any> {
   static displayName = 'Dates';
-  value: string;
-  static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { choseDayIndex } = nextProps;
-    if (!preState) {
-      return {
-        choseDayIndex,
-        rangeChoseIndex: '',
-        rangeStartIndex: '',
-        rangeEndIndex: '',
-        panelFistEndIndex: '',
-        panelSecondStartIndex: '',
-        islessThanMin: undefined,
-        isGreaterThanMax: undefined,
-        dates: [],
-      };
-    }
-  }
   onDateChange = (index: number, child: number) => (e: any) => {
-    const {
-      onDateChange,
-      currentMonth,
-      currentYear,
-      format,
-      firstDayIndex,
-      maxDay,
-      weekIndex,
-    } = this.props;
-    const { val, mode } = this.props;
+    const { onDateChange, month, year, format, firstDayIndex, maxDay, weekIndex } = this.props;
+    const { value, mode } = this.props;
     const paramsGetYandMProps = {
-      currentYear,
-      currentMonth,
+      year,
+      month,
       maxDay,
       weekIndex,
       format,
@@ -92,17 +56,19 @@ class Dates extends Component<TypeProps, TypeState> {
     const getYandMParams = {
       index,
       child,
-      val,
+      value,
       mode,
       firstDayIndex,
       props: paramsGetYandMProps,
     };
+
     const { choseValue } = getYandM(getYandMParams);
+    console.log(choseValue);
     const { isRange } = modeStyle(mode);
     const rangeParames = {};
     if (isRange) {
-      rangeParames.currentMonth = currentMonth;
-      rangeParames.currentYear = currentYear;
+      rangeParames.month = month;
+      rangeParames.year = year;
     }
     onDateChange && onDateChange({ choseValue, event: e });
   };
@@ -120,19 +86,10 @@ class Dates extends Component<TypeProps, TypeState> {
       onMouseOver && onMouseOver(index, child);
     }
     if (isRange) {
-      const {
-        val,
-        mode,
-        firstDayIndex,
-        currentYear,
-        currentMonth,
-        maxDay,
-        weekIndex,
-        format,
-      } = this.props;
+      const { value, mode, firstDayIndex, year, month, maxDay, weekIndex, format } = this.props;
       const paramsGetYandMProps = {
-        currentYear,
-        currentMonth,
+        year,
+        month,
         maxDay,
         weekIndex,
         format,
@@ -140,7 +97,7 @@ class Dates extends Component<TypeProps, TypeState> {
       const getYandMParams = {
         index,
         child,
-        val,
+        value,
         mode,
         firstDayIndex,
         props: paramsGetYandMProps,

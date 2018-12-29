@@ -28,7 +28,7 @@ describe('default', () => {
     });
   }
 
-  getnewWeeks('getnewWeeks 0', {}, ['日', '一', '二', '三', '四', '五', '六']);
+  getnewWeeks('getnewWeeks 0', { firstWeekDay: 0 }, ['日', '一', '二', '三', '四', '五', '六']);
   getnewWeeks('getnewWeeks 1', { firstWeekDay: 0 }, ['日', '一', '二', '三', '四', '五', '六']);
   getnewWeeks('getnewWeeks 2', { firstWeekDay: 1 }, ['一', '二', '三', '四', '五', '六', '日']);
   getnewWeeks('getnewWeeks 3', { firstWeekDay: 2 }, ['二', '三', '四', '五', '六', '日', '一']);

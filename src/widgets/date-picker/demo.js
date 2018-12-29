@@ -8,16 +8,16 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 //import { Date, Years, Months, Week } from './index';
-import DatePicker from './index';
+import DatePicker, { momentConfig } from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import SwitchPanel from './switchPanel/SwitchPanel';
-import { setMomentLocal } from './momentConfig';
+//import SwitchPanel from './switchPanel/SwitchPanel';
+//import { setMomentLocal } from './momentConfig';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker, TimePicker } = DatePicker;
 
 //组件的部分local是从组件的属性中读取的，所以请先正确设置moment的local
-const firstWeekDay = 0;
-setMomentLocal(firstWeekDay);
+const firstWeekDay = 2;
+momentConfig(firstWeekDay);
 export default class Sl extends Component<any> {
   constructor() {
     super();
@@ -69,7 +69,6 @@ export default class Sl extends Component<any> {
               <DatePicker
                 selectToday
                 showToday
-                firstWeekDay={firstWeekDay}
                 onChange={this.onChange}
                 onFocus={this.onFocus}
                 onBlur={this.onBlur}
@@ -83,24 +82,19 @@ export default class Sl extends Component<any> {
               defaultValue={'2015年02月03日'}
               format={dateFormate}
               onChange={this.onChange}
-              firstWeekDay={firstWeekDay}
             />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>date-value</h2>
-            <DatePicker
-              value={'2015年02月03日'}
-              firstWeekDay={firstWeekDay}
-              onChange={this.onChange}
-            />
+            <DatePicker value={'2015年02月03日'} onChange={this.onChange} />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>date-readOnly</h2>
-            <DatePicker defaultValue={'2015年02月03日'} firstWeekDay={firstWeekDay} readOnly />
+            <DatePicker defaultValue={'2015年02月03日'} readOnly />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>date-disabled</h2>
-            <DatePicker defaultValue={'2015年02月03日'} firstWeekDay={firstWeekDay} disabled />
+            <DatePicker defaultValue={'2015年02月03日'} disabled />
           </div>
         </div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
@@ -167,18 +161,13 @@ export default class Sl extends Component<any> {
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>weeks-normal-Theme</h2>
             <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-              <WeeksPicker
-                firstWeekDay={firstWeekDay}
-                defaultValue={'2022-01'}
-                onChange={this.onChange}
-              />
+              <WeeksPicker defaultValue={'2022-01'} onChange={this.onChange} />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>weeks-defaultValue</h2>
             <WeeksPicker
               defaultValue={'2021-05'}
-              firstWeekDay={firstWeekDay}
               format={'YYYY-WW'}
               selectToday={true}
               onChange={this.onChange}
@@ -189,28 +178,17 @@ export default class Sl extends Component<any> {
             <WeeksPicker
               value={'2014-10'}
               format={'YYYY年第WW周'}
-              firstWeekDay={firstWeekDay}
               selectToday={true}
               onChange={this.onChange}
             />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>weeks-disabled</h2>
-            <WeeksPicker
-              defaultValue={'2014-10'}
-              format={'YYYY年第WW周'}
-              firstWeekDay={firstWeekDay}
-              disabled
-            />
+            <WeeksPicker defaultValue={'2014-10'} format={'YYYY年第WW周'} disabled />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>weeks-readOnly</h2>
-            <WeeksPicker
-              defaultValue={'2014-10'}
-              format={'YYYY年第WW周'}
-              firstWeekDay={firstWeekDay}
-              readOnly
-            />
+            <WeeksPicker defaultValue={'2014-10'} format={'YYYY年第WW周'} readOnly />
           </div>
         </div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
@@ -218,28 +196,24 @@ export default class Sl extends Component<any> {
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>week-normal</h2>
             <Theme config={{ [Widget.WeekPicker]: { width: 400 } }}>
-              <WeekPicker firstWeekDay={firstWeekDay} onChange={this.onChange} />
+              <WeekPicker onChange={this.onChange} />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>week-defaultValue</h2>
-            <WeekPicker
-              defaultValue={'2015-01周'}
-              firstWeekDay={firstWeekDay}
-              onChange={this.onChange}
-            />
+            <WeekPicker defaultValue={'2015-01周'} onChange={this.onChange} />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>week-value</h2>
-            <WeekPicker value={'2015-01周'} firstWeekDay={firstWeekDay} onChange={this.onChange} />
+            <WeekPicker value={'2015-01周'} onChange={this.onChange} />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>week-readOnly</h2>
-            <WeekPicker defaultValue={'2015-01周'} firstWeekDay={firstWeekDay} readOnly />
+            <WeekPicker defaultValue={'2015-01周'} readOnly />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>week-disabled</h2>
-            <WeekPicker defaultValue={'2015-01周'} firstWeekDay={firstWeekDay} disabled />
+            <WeekPicker defaultValue={'2015-01周'} disabled />
           </div>
         </div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
@@ -247,7 +221,7 @@ export default class Sl extends Component<any> {
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>RangePicker-normal</h2>
             <Theme>
-              <RangePicker firstWeekDay={firstWeekDay} onChange={this.onChange} />
+              <RangePicker onChange={this.onChange} />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -257,7 +231,6 @@ export default class Sl extends Component<any> {
               placeholder={['开始日期', '结束日期']}
               format={'YYYY-MM-DD'}
               onChange={this.onChange}
-              firstWeekDay={firstWeekDay}
             />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -266,7 +239,6 @@ export default class Sl extends Component<any> {
               value={['2015年02月03日', '2015年03月03日']}
               placeholder={['开始日期', '结束日期']}
               onChange={this.onChange}
-              firstWeekDay={firstWeekDay}
             />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -275,7 +247,6 @@ export default class Sl extends Component<any> {
               value={['2015年02月03日', '2015年03月03日']}
               placeholder={['开始日期', '结束日期']}
               readOnly
-              firstWeekDay={firstWeekDay}
             />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -284,7 +255,6 @@ export default class Sl extends Component<any> {
               defaultValue={['2015年02月03日', '2015年03月03日']}
               placeholder={['开始日期', '结束日期']}
               disabled
-              firstWeekDay={firstWeekDay}
             />
           </div>
         </div>
@@ -318,7 +288,6 @@ export default class Sl extends Component<any> {
           <Theme>
             <RangePicker
               defaultValue={['2015-02-03 12:02:00', '2015-02-04 00:08:01']}
-              firstWeekDay={firstWeekDay}
               showToday
               showTime={{}}
               ButtonOptions={{
@@ -337,7 +306,6 @@ export default class Sl extends Component<any> {
           <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>
             <DatePicker
               showToday
-              firstWeekDay={firstWeekDay}
               showTime={function s() {}}
               ButtonOptions={{
                 options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
@@ -352,7 +320,6 @@ export default class Sl extends Component<any> {
           <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>
             <DatePicker
               showToday
-              firstWeekDay={firstWeekDay}
               onOk={{ message: 'onOk', Function: this.onOk }}
               showTime
               ButtonOptions={{
@@ -366,25 +333,25 @@ export default class Sl extends Component<any> {
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>date-normal-theme344</h2>
           <Theme>
-            <DatePicker firstWeekDay={firstWeekDay} showToday showTime />
+            <DatePicker showToday showTime />
           </Theme>
         </div>
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>date-normal-theme</h2>
           <Theme>
-            <DatePicker firstWeekDay={firstWeekDay} showToday showTime />
+            <DatePicker showToday showTime />
           </Theme>
         </div>
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>date-normal-theme</h2>
           <Theme>
-            <DatePicker firstWeekDay={firstWeekDay} showToday showTime />
+            <DatePicker showToday showTime />
           </Theme>
         </div>
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>weeks-normal-Theme</h2>
           <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-            <WeeksPicker defaultValue={'2018-90'} firstWeekDay={firstWeekDay} />
+            <WeeksPicker defaultValue={'2018-90'} />
           </Theme>
         </div>
       </div>

@@ -1,19 +1,10 @@
 import * as React from 'react';
-
 import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import renderer from 'react-test-renderer';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import 'jest-styled-components';
-import { async } from 'rxjs/internal/scheduler/async';
-import Theme from '../../theme/index';
-import Widget from '../../consts/index';
 import DatePicker from '../index';
-import { consoleTestResultHandler } from 'tslint/lib/test';
-import { delay } from '@lugia/react-test-utils';
-const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
 const { expect: exp } = chai;
-const moment = require('moment');
 Enzyme.configure({ adapter: new Adapter() });
 describe('default', () => {
   function getTarget(target, component) {
@@ -38,12 +29,7 @@ describe('default', () => {
         expect(oldValue).toBe(undefined);
       } else {
         newTarget.onFocus();
-        target
-          .find('Date')
-          .at(0)
-          .instance()
-          .onDateChange(params.index, params.child);
-
+        newTarget.onChange(params);
         for (const i in expValue) {
           expect(onChangeParams[i]).toBe(expValue[i]);
         }
@@ -53,27 +39,37 @@ describe('default', () => {
   DateInputOnChange(
     'onChange datePicker click Panel defaultValue 1',
     { defaultValue: '2015-02-03' },
-    { index: 0, child: 1 },
+    { newValue: '2015-02-01', action: 'click' },
     { newValue: '2015-02-01', oldValue: '2015-02-03' }
   );
   DateInputOnChange(
     'onChange datePicker click Panel defaultValue 2',
+    { defaultValue: '2015-02-03' },
+    { newValue: '2015-03-01', action: 'click' },
+    { newValue: '2015-03-01', oldValue: '2015-02-03' }
+  );
+  DateInputOnChange(
+    'onChange datePicker click Panel defaultValue 3',
     { defaultValue: '2018-11-20' },
-    { index: 0, child: 28 },
+    { newValue: '2018-10-28', action: 'click' },
     { newValue: '2018-10-28', oldValue: '2018-11-20' }
   );
   DateInputOnChange(
-    'onChange datePicker click Panel value 2',
+    'onChange datePicker click Panel value 3',
     { value: '2018-11-20' },
-    { index: 5, child: 2 },
-    { newValue: '2018-11-02', oldValue: '2018-11-20' }
+    { newValue: '2018-09-20', action: 'click' },
+    { newValue: '2018-09-20', oldValue: '2018-11-20' }
   );
-  DateInputOnChange('onChange datePicker click Panel value disabled', {
+  DateInputOnChange('onChange datePicker click Panel value 3 disabled', {
     value: '2018-11-20',
     disabled: true,
   });
-  DateInputOnChange('onChange datePicker click Panel value readOnly', {
+  DateInputOnChange('onChange datePicker click Panel value 3 readOnly', {
     value: '2018-11-20',
+    readOnly: true,
+  });
+  DateInputOnChange('onChange datePicker click Panel value 3 readOnly', {
+    defaultValue: '2018-10-20',
     readOnly: true,
   });
 
@@ -132,7 +128,7 @@ describe('default', () => {
     { stateValue: '2015-02-0' },
     { value: '2015-02-03' }
   );
-  dateInputOnBlur('dateInputOnBlur ', {}, { stateValue: '2015-02-0' }, { value: '' });
+  dateInputOnBlur('dateInputOnBlur ', {}, { stateValue: '2015-02-02' }, {});
   dateInputOnBlur(
     'dateInputOnBlur value',
     { value: '2018-01-02' },

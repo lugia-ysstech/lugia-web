@@ -110,15 +110,15 @@ export function getCurrentPageDates(monthAndYear: Array<string>, format: string)
   monthAndYear.forEach((item, index) => {
     const moments = moment(item);
     const days = getDays(moments);
-    const currentYear = moments.year();
-    const currentMonth = moments.month();
+    const year = moments.year();
+    const month = moments.month();
     const { weekIndex } = getWeekIndex(moments);
     const maxDay = moments.daysInMonth();
     const parmasGetDates = {
       weekIndex,
       format,
-      currentYear,
-      currentMonth,
+      year,
+      month,
       maxDay,
     };
     const { dates } = getDates(days, 'range', item, parmasGetDates);
@@ -128,17 +128,17 @@ export function getCurrentPageDates(monthAndYear: Array<string>, format: string)
 }
 //public
 export const getYandM = (obj: Object) => {
-  const { index, child, val, mode, firstDayIndex, props } = obj;
+  const { index, child, value, mode, firstDayIndex, props } = obj;
   const choseDate = child;
   const { weekIndex, format } = props;
-  const { currentYear, currentMonth } = props;
+  const { year, month } = props;
   const { isRange, isWeeks } = modeStyle(mode);
   const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
-  const value = isRange
+  const newValue = isRange
     ? moment()
-        .set({ month: currentMonth, year: currentYear })
+        .set({ month, year })
         .format(format)
-    : val;
+    : value;
 
   const { choseDayIndex, choseValue } = getChoseDayIndex(
     'getNode',
@@ -146,17 +146,17 @@ export const getYandM = (obj: Object) => {
     weekIndex,
     firstDayIndex,
     index,
-    value,
+    newValue,
     mode,
     props
   );
   const moments = moment(choseValue, newFormat);
-  const year = moments.year();
-  const month = moments.month();
+  const newYear = moments.year();
+  const newMonth = moments.month();
   return {
     choseValue: moments.format(newFormat),
-    currentYear: year,
-    currentMonth: month,
+    year: newYear,
+    month: newMonth,
     choseDate,
     choseDayIndex,
   };
@@ -225,8 +225,8 @@ export const getDates = (
   params: {
     weekIndex: number,
     format: string,
-    currentYear: number,
-    currentMonth: number,
+    year: number,
+    month: number,
     maxDay: number,
   }
 ) => {
@@ -236,7 +236,7 @@ export const getDates = (
     const getYandMParams = {
       index,
       child: item,
-      val: value,
+      value,
       mode,
       firstDayIndex,
       props: params,
@@ -287,15 +287,20 @@ export const getDatesfromWeeks = (moments: moment.Moment, weekIndex: number, ind
   };
 };
 export const getweekFormatValue = (year: number, weeks: number, format: string) => {
-  console.log(year, weeks, format);
-  return moment()
+  const weekValue = moment()
     .set({ year, weeks })
-    .format(format);
+    .format('YYYY-WW');
+  return weekValue;
 };
-export const getValueFromWeekToDate = (value: number, format: string) => {
-  return moment(value, format)
+export const getValueFromWeekToDate = (value: string, format: string) => {
+  const moments = moment(value, format);
+  const weeks = moments.format('W');
+  const year = moment(value, 'YYYY').year();
+  const result = moment()
+    .set({ year, weeks })
     .startOf('week')
     .format('YYYY-MM-DD');
+  return result;
 };
 export function getWeeksRange(
   weeks: number,
@@ -321,22 +326,17 @@ export function getWeeksRange(
     rangeIndex,
   };
 }
-export const getWeeksRangeInDates = (moments: moment.Moment) => {
-  // const moments = moment(value,format);
+export const getWeeksRangeInDates = (moments: moment.Moment): Object => {
   const month = moments.month();
   const weeks = moments.weeks();
   let year = moments.year();
-  const maxWeeks = moment()
-    .set({ year: year - 1 })
-    .weeksInYear();
-
   if (month === 11 && weeks === 1) {
     year = year + 1;
   }
-  if (month === 0 && weeks === maxWeeks) {
+  if (month === 0 && weeks > 40) {
     year = year - 1;
   }
-  console.log(moments, year, weeks, month);
+  console.log(year, weeks);
   return {
     year,
     weeks,
@@ -367,7 +367,7 @@ export const getShowTime = (value: string, format: string): Array<number> => {
   }
   return newValue;
 };
-export const getCoversTimes = (times: Array<number>, number, item) => {
+export const getCoversTimes = (times: Array<number>, number: number, item: any) => {
   const newTimes = [...times];
   for (let i = 0; i < number - 1; i++) {
     newTimes.push(item);

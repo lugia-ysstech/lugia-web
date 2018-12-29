@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import Trigger from '../../trigger/index';
-import RangeInput from './RangeInput';
+import RangeInput from '../panel/RangeInput';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
 import { RangeWrap } from '../styled/styled';
@@ -22,7 +22,6 @@ type TypeProps = {
   onBlur?: Function,
   showTime?: any,
   onOk?: any,
-  firstWeekDay?: number,
   theme: Object,
   mode: string,
 };
@@ -34,7 +33,6 @@ type TypeState = {
   timeValue: string,
   status: string,
   isScroll: boolean,
-  firstWeekDay: number,
   panelValue: Array<string>,
   valueIsValid: boolean,
 };
@@ -50,21 +48,16 @@ class Range extends Component {
     this.targetModeSecond = new SwitchPanelMode();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const {
-      value,
-      format,
-      placeholder,
-      panelValue,
-      firstWeekDay,
-      valueIsValid,
-    } = getDerivedForInput(nextProps, preState);
+    const { value, format, placeholder, panelValue, valueIsValid } = getDerivedForInput(
+      nextProps,
+      preState
+    );
     const isHover = preState ? preState.isHover : false;
     return {
       placeholder,
       value,
       panelValue,
       format,
-      firstWeekDay,
       valueIsValid,
       visible: preState ? preState.visible : false,
       isClear: preState ? preState.isClear : false,
@@ -251,9 +244,9 @@ class Range extends Component {
     this.drawPageAgain(hoverRangeValue, format);
   };
   getCurrentYandM = (obj: Object) => {
-    const { currentMonth, currentYear, index } = obj;
+    const { month, year, index } = obj;
     const date = moment()
-      .set({ month: currentMonth, year: currentYear })
+      .set({ month, year })
       .format('YYYY-MM');
     const { monthAndYear } = this;
     monthAndYear[index] = date;
@@ -356,7 +349,6 @@ class Range extends Component {
       rangeIndex,
       choseDayIndex,
       rangeValue,
-      firstWeekDay,
       valueIsValid,
     } = this.state;
     const { disabled, readOnly, theme } = this.props;
@@ -375,7 +367,6 @@ class Range extends Component {
       status,
       timeChange: this.timeChange,
       format,
-      firstWeekDay,
     };
     return (
       <Trigger

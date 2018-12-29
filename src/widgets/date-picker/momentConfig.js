@@ -1,5 +1,4 @@
 import moment from 'moment';
-import { getFirstWeekDay } from './utils/getDerived';
 export function setMomentLocal(firstWeekDay: number) {
   const newFirstWeekDay = getFirstWeekDay(firstWeekDay);
   // // 过满一周才算一周
@@ -11,3 +10,10 @@ export function setMomentLocal(firstWeekDay: number) {
     },
   });
 }
+export const getFirstWeekDay = (firstWeekDay: number = 0): number => {
+  let newFirstWeekDay = firstWeekDay;
+  if (newFirstWeekDay >= 7 || newFirstWeekDay <= 0) {
+    newFirstWeekDay = 0;
+  }
+  return newFirstWeekDay;
+};

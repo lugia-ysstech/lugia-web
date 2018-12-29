@@ -1,20 +1,10 @@
 import * as React from 'react';
-
 import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import renderer from 'react-test-renderer';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import 'jest-styled-components';
-import { async } from 'rxjs/internal/scheduler/async';
-import Theme from '../../theme/index';
-import Widget from '../../consts/index';
-import DatePicker from '../index';
-import FacePanel from '../FacePanel';
-import { consoleTestResultHandler } from 'tslint/lib/test';
-import { delay } from '@lugia/react-test-utils';
-const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
+import FacePanel from '../panel/FacePanel';
 const { expect: exp } = chai;
-const moment = require('moment');
 Enzyme.configure({ adapter: new Adapter() });
 describe('default', () => {
   function getTarget(target, component) {
@@ -293,78 +283,6 @@ describe('default', () => {
     { text: '十二月', value: 11 },
   ]);
 
-  function getWeeksRange(title: string, props: Object, params: Object, expValue: Object) {
-    it(`onChange ${title}`, async () => {
-      const target = mount(<FacePanel {...props} />);
-      const newTarget = getTarget(target, 'FacePanel');
-      const { weeks, step } = props;
-      const { weeksInYear } = params;
-      const { weeksDate, rangeIndex } = newTarget.getWeeksRange(weeks, weeksInYear, step);
-      expect(weeksDate).toEqual(expValue.weeksDate);
-      expect(rangeIndex).toEqual(expValue.rangeIndex);
-    });
-  }
-  getWeeksRange(
-    'getWeeksRange 1',
-    { mode: 'week', weeks: 2, step: 12 },
-    { weeksInYear: 52 },
-    {
-      weeksDate: [
-        { end: 12, index: 0, start: 1, text: '1-12周', value: 0 },
-        { end: 24, index: 1, start: 13, text: '13-24周', value: 1 },
-        { end: 36, index: 2, start: 25, text: '25-36周', value: 2 },
-        { end: 48, index: 3, start: 37, text: '37-48周', value: 3 },
-        { end: 52, index: 4, start: 49, text: '49-52周', value: 4 },
-      ],
-      rangeIndex: 0,
-    }
-  );
-  getWeeksRange(
-    'getWeeksRange 2',
-    { mode: 'week', weeks: 10, step: 12 },
-    { weeksInYear: 53 },
-    {
-      weeksDate: [
-        { end: 12, index: 0, start: 1, text: '1-12周', value: 0 },
-        { end: 24, index: 1, start: 13, text: '13-24周', value: 1 },
-        { end: 36, index: 2, start: 25, text: '25-36周', value: 2 },
-        { end: 48, index: 3, start: 37, text: '37-48周', value: 3 },
-        { end: 53, index: 4, start: 49, text: '49-53周', value: 4 },
-      ],
-      rangeIndex: 0,
-    }
-  );
-  getWeeksRange(
-    'getWeeksRange 3',
-    { mode: 'week', weeks: 11, step: 10 },
-    { weeksInYear: 53 },
-    {
-      weeksDate: [
-        { end: 10, index: 0, start: 1, text: '1-10周', value: 0 },
-        { end: 20, index: 1, start: 11, text: '11-20周', value: 1 },
-        { end: 30, index: 2, start: 21, text: '21-30周', value: 2 },
-        { end: 40, index: 3, start: 31, text: '31-40周', value: 3 },
-        { end: 53, index: 4, start: 41, text: '41-53周', value: 4 },
-      ],
-      rangeIndex: 1,
-    }
-  );
-  getWeeksRange(
-    'getWeeksRange 4',
-    { mode: 'month', weeks: 53, step: 10 },
-    { weeksInYear: 53 },
-    {
-      weeksDate: [
-        { end: 10, index: 0, start: 1, text: '1-10周', value: 0 },
-        { end: 20, index: 1, start: 11, text: '11-20周', value: 1 },
-        { end: 30, index: 2, start: 21, text: '21-30周', value: 2 },
-        { end: 40, index: 3, start: 31, text: '31-40周', value: 3 },
-        { end: 53, index: 4, start: 41, text: '41-53周', value: 4 },
-      ],
-      rangeIndex: 4,
-    }
-  );
-
   function getWeeks(title: string, props: Object, params: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
       const target = mount(<FacePanel {...props} />);
@@ -505,7 +423,7 @@ describe('default', () => {
     'getEqualValue month 4',
     {
       mode: 'month',
-      monthIndex: 1,
+      month: 1,
     },
     { weekIndex: '' },
     { value: 1 }
@@ -514,7 +432,7 @@ describe('default', () => {
     'getEqualValue month 5',
     {
       mode: 'month',
-      monthIndex: 2,
+      month: 2,
     },
     { weekIndex: '' },
     { value: 2 }
@@ -523,7 +441,7 @@ describe('default', () => {
     'getEqualValue month 6',
     {
       mode: 'month',
-      monthIndex: 3,
+      month: 3,
     },
     { weekIndex: '' },
     { value: 3 }

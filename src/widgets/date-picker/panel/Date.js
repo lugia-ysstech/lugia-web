@@ -48,8 +48,8 @@ type TypeState = {
   firstWeekDay: number,
   today: number,
   noToday: boolean,
-  currentYear: number,
-  currentMonth: number,
+  year: number,
+  month: number,
   lastDayIndexInMonth: number,
   value: string,
   weekIndex: number,
@@ -109,18 +109,8 @@ class Date extends Component<TypeProps, TypeState> {
     this.getMode('week', 'date');
   };
   getMode = (mode: string, from: string) => {
-    const { currentYear, currentMonth, value } = this.state;
-    let { format } = this.state;
-
-    if (this.props.mode === 'weeks') {
-      format = 'YYYY-MM-DD';
-    }
-    const moments = moment(value, format);
-    const year = currentYear || moments.year();
-    const month = currentMonth || moments.month();
-    const weeks = moments.weeks();
     const { getMode } = this.props;
-    getMode && getMode({ mode, from, year, month, weeks, date: value, moments });
+    getMode && getMode({ mode, from });
   };
   onMouseOver = (index: number, child: number) => {
     const { days, value } = this.state;
@@ -150,12 +140,13 @@ class Date extends Component<TypeProps, TypeState> {
   };
 
   render() {
-    const { currentYear, currentMonth } = this.state;
+    const { year, month } = this.state;
     const { firstWeekDay, maxDay, value } = this.state;
     const { lang, mode } = this.props;
     const { index, differAmonth, differAyear, theme, choseDayIndex } = this.props;
     const { days } = this.state;
     const { firstDayIndex } = getFirstDayIndex(days);
+    console.log(days);
     return (
       <DateWrapper {...theme} mode={mode}>
         <div>
@@ -186,10 +177,10 @@ class Date extends Component<TypeProps, TypeState> {
               )}
 
               <HeaderTopText {...theme} onClick={this.onChangeYear}>
-                {currentYear}年
+                {year}年
               </HeaderTopText>
               <HeaderTopText {...theme} onClick={this.onChangeMonth}>
-                {currentMonth + 1}月
+                {month + 1}月
               </HeaderTopText>
               {differAyear && index === 0 ? (
                 ''
@@ -231,7 +222,7 @@ class Date extends Component<TypeProps, TypeState> {
             firstDayIndex={firstDayIndex}
             choseDayIndex={choseDayIndex}
             maxDay={maxDay}
-            val={value}
+            value={value}
             onDateChange={this.onDateChange}
             onMouseOver={this.onMouseOver}
             onMouseOut={this.onMouseOut}

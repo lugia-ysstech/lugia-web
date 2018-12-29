@@ -30,7 +30,6 @@ type TypeProps = {
   onBlur?: Function,
   showTime?: any,
   onOk?: any,
-  firstWeekDay?: number,
   theme: Object,
   mode: string,
 };
@@ -41,7 +40,6 @@ type TypeState = {
   timeValue: string,
   status: string,
   isScroll: boolean,
-  firstWeekDay: number,
   panelValue: string,
   valueIsValid: boolean,
   normalValue: string,
@@ -65,7 +63,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       format,
       panelValue,
       normalValue,
-      firstWeekDay,
       valueIsValid,
       placeholder,
     } = getDerivedForInput(nextProps, preState);
@@ -74,7 +71,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       panelValue: panelValue && panelValue[0],
       normalValue: normalValue && normalValue[0],
       format,
-      firstWeekDay,
       valueIsValid,
       placeholder: placeholder && placeholder[0],
     };
@@ -86,21 +82,13 @@ class DateInput extends Component<TypeProps, TypeState> {
   }
   render() {
     const { disabled, readOnly, theme } = this.props;
-    const {
-      value,
-      status,
-      format,
-      panelValue,
-      isScroll,
-      firstWeekDay,
-      valueIsValid,
-      placeholder,
-    } = this.state;
+    const { value, status, format, panelValue, isScroll, valueIsValid, placeholder } = this.state;
     const hasStateValue = value ? true : false;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { oldValue } = this;
     const hasOldValue = oldValue ? true : false;
     const newProps = getNewProps(this.props);
+    console.log(value, panelValue);
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
@@ -117,7 +105,6 @@ class DateInput extends Component<TypeProps, TypeState> {
                 timeChange={this.timeChange}
                 model={this.targetMode}
                 isScroll={isScroll}
-                firstWeekDay={firstWeekDay}
                 valueIsValid={valueIsValid}
                 index={0}
                 hasOldValue={hasOldValue}
@@ -166,10 +153,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { isWeeks, isWeek } = modeStyle(mode);
     const isValid =
       action === 'click' ? true : formatValueIsValid(normalStyleValueObj, newValue, format);
-    console.log('setModeState', isValid);
     if (isValid) {
-      console.log('setModeState', 34434);
-      this.oldValue = newValue;
       visible = false;
       const { onChange, showTime, onOk } = this.props;
       if (showTime || onOk) {
@@ -182,13 +166,11 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.setTreePopupVisible(visible);
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
-    console.log('setModeState', 23323);
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
     let newVal = value;
     if (isWeeks) {
-      console.log(moment(value, format).year());
-      console.log(moment(value, format).format('W'));
       newVal = getValueFromWeekToDate(value, format);
+      console.log(newVal, value);
     }
     const moments = moment(newVal, newFormat);
     const { years, months } = moments.toObject();
@@ -203,21 +185,16 @@ class DateInput extends Component<TypeProps, TypeState> {
   };
   onFocus = () => {
     this.isClear = false;
-    const { value, valueIsValid, normalValue, format } = this.state;
+    const { value, valueIsValid, normalValue, panelValue, format } = this.state;
     if (valueIsValid) {
       this.oldValue = value;
     }
     const { mode } = this.props;
     const { isTime, isTimes, isWeeks, isWeek } = modeStyle(mode);
-    // let isScroll;
-    // if (isTime || isTimes) {
-    //   isScroll = false;
-    //   //this.targetMode.onFocus(isScroll);
-    // }
 
     this.setState({ value });
     const newValue = valueIsValid ? value : normalValue;
-    console.log(newValue);
+    console.log(newValue, normalValue, panelValue);
     this.setModeState(newValue, format, isWeeks || isWeek);
 
     const { onFocus } = this.props;
