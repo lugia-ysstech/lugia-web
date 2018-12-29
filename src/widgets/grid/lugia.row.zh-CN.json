@@ -30,5 +30,5 @@
     "AlignType": ["top", "middle", "bottom"],
     "GutterType": ["number", "Object"]
   },
-  "category": ["数据录入"]
+  "category": ["布局"]
 }
