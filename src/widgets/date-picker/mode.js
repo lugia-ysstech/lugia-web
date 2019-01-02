@@ -8,7 +8,7 @@ export default class SwitchPanelMode extends EventEmitter<SwitchPanelModeEventTy
   onChange(params: Object) {
     this.emit('inputOnChange', params);
   }
-  onFocus(params: boolean) {
+  onFocus(params: Object) {
     this.emit('inputOnFocus', params);
   }
 }

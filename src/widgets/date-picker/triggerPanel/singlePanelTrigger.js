@@ -50,6 +50,7 @@ class DateInput extends Component<TypeProps, TypeState> {
   trigger: any;
   oldValue: string;
   targetMode: SwitchPanelMode;
+  pageFooterChange: SwitchPanelMode;
   isClear: boolean;
   constructor() {
     super();
