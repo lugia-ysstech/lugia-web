@@ -336,7 +336,6 @@ export const getWeeksRangeInDates = (moments: moment.Moment): Object => {
   if (month === 0 && weeks > 40) {
     year = year - 1;
   }
-  console.log(year, weeks);
   return {
     year,
     weeks,

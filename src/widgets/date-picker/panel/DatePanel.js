@@ -63,7 +63,6 @@ class Dates extends Component<TypeProps, any> {
     };
 
     const { choseValue } = getYandM(getYandMParams);
-    console.log(choseValue);
     const { isRange } = modeStyle(mode);
     const rangeParames = {};
     if (isRange) {

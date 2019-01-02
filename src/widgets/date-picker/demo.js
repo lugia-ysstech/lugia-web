@@ -7,15 +7,12 @@
  */
 import React, { Component } from 'react';
 import moment from 'moment';
-//import { Date, Years, Months, Week } from './index';
 import DatePicker, { momentConfig } from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-//import SwitchPanel from './switchPanel/SwitchPanel';
-//import { setMomentLocal } from './momentConfig';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker, TimePicker } = DatePicker;
 
-//组件的部分local是从组件的属性中读取的，所以请先正确设置moment的local
+//如需指定周开始是星期几，请配置momentConfig，此函数接受一个number类型参数，表示周开始是星期几
 const firstWeekDay = 2;
 momentConfig(firstWeekDay);
 export default class Sl extends Component<any> {
@@ -61,6 +58,25 @@ export default class Sl extends Component<any> {
             />
           </Theme>
           </div> */}
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>RangePicker-normal</h2>
+          <Theme>
+            <RangePicker
+              defaultValue={['2015-02-03 12:02:00', '2015-02-04 00:08:01']}
+              showToday
+              showTime={{}}
+              ButtonOptions={{
+                options: {
+                  today: ['2015-02-03 00:00:00', '2015-03-03 00:00:00'],
+                  此刻: ['2015-02-05 00:00:00', '2015-04-06 00:00:00'],
+                },
+              }}
+              extraFooter={{ message: 'extraFooter' }}
+              format={'YYYY-MM-DD HH:mm:ss'}
+              onChange={this.onChange}
+            />
+          </Theme>
+        </div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Date</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -283,24 +299,7 @@ export default class Sl extends Component<any> {
             <TimePicker defaultValue={'0时03分04秒'} disabled />
           </div>
         </div>
-        <div style={{ float: 'left', marginRight: '30px' }}>
-          <h2>RangePicker-normal</h2>
-          <Theme>
-            <RangePicker
-              defaultValue={['2015-02-03 12:02:00', '2015-02-04 00:08:01']}
-              showToday
-              showTime={{}}
-              ButtonOptions={{
-                options: {
-                  today: ['2015-02-03 00:00:00', '2015-03-03 00:00:00'],
-                  此刻: ['2015-02-05 00:00:00', '2015-04-06 00:00:00'],
-                },
-              }}
-              extraFooter={{ message: 'extraFooter' }}
-              format={'YYYY-MM-DD HH:mm:ss'}
-            />
-          </Theme>
-        </div>
+
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>date-normal-theme5656</h2>
           <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>

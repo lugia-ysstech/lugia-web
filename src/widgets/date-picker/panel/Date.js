@@ -146,7 +146,6 @@ class Date extends Component<TypeProps, TypeState> {
     const { index, differAmonth, differAyear, theme, choseDayIndex } = this.props;
     const { days } = this.state;
     const { firstDayIndex } = getFirstDayIndex(days);
-    console.log(days);
     return (
       <DateWrapper {...theme} mode={mode}>
         <div>

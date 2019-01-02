@@ -48,6 +48,15 @@ function getShowTimeMessage(showTime) {
 class PageFooter extends Component<TypeProps, TypeState> {
   static displayName = 'PageFooter';
   timeMessage: string;
+  constructor(props: TypeProps) {
+    super(props);
+    const { model } = props;
+    model &&
+      model.on('inputOnFocus', (data: Object) => {
+        const { status } = data;
+        this.setState({ status });
+      });
+  }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { onOk, extraFooter, showTime, ButtonOptions, showToday } = nextProps;
     const showExtraFooter = extraFooter && extraFooter.message;
@@ -179,7 +188,9 @@ class PageFooter extends Component<TypeProps, TypeState> {
                 showTimeButton={showTimeBtnIsDisabled}
                 onClick={this.statusClick(showTimeBtnIsDisabled ? status : '')}
               >
-                {showTimeMessage && showTimeMessage[status]}
+                {showTimeMessage && status === 'date'
+                  ? showTimeMessage.showTime
+                  : showTimeMessage[status]}
               </FooterBtn>
             ) : (
               ''
