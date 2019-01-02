@@ -20,6 +20,7 @@ type TypeProps = {
   showTimeBtnIsDisabled?: boolean,
   format?: string,
   mode?: string,
+  model?: Object,
 };
 
 type TypeState = {
