@@ -46,6 +46,7 @@ class Range extends Component {
     this.oldValue = ['', ''];
     this.targetModeFirst = new SwitchPanelMode();
     this.targetModeSecond = new SwitchPanelMode();
+    this.pageFooterChange = new SwitchPanelMode();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { value, format, placeholder, panelValue, valueIsValid } = getDerivedForInput(
@@ -62,7 +63,7 @@ class Range extends Component {
       visible: preState ? preState.visible : false,
       isClear: preState ? preState.isClear : false,
       rangeValue: preState ? preState.rangeValue : [],
-      RangeValue: preState ? preState.RangeValue : [],
+      status: preState && preState.status,
       isHover,
     };
   }
@@ -128,15 +129,16 @@ class Range extends Component {
       ? this.oldMonthandYear
       : formatIsValids[number]
       ? [newValue[number], newValue[number]]
-      : newValue;
+      : [];
     const { format } = this.state;
     if (formatIsValids[number]) {
       this.choseDate = rangeValue[0];
     }
+    const noValue = newValue[0] === '' && newValue[1] === '';
     this.setState(
       {
         value: newValue,
-        rangeValue: isValid || hasOldValue ? [] : rangeValue,
+        rangeValue: isValid || hasOldValue || noValue ? [] : rangeValue,
         visible,
       },
       () => {
@@ -152,6 +154,9 @@ class Range extends Component {
     );
     const { onChange } = this.props;
     isValid && onChange && onChange({ newValue, oldValue, event });
+    if (noValue) {
+      this.drawPageAgain(['', ''], this.state.format);
+    }
   };
   getIsValid = (newValue: []) => {
     const { normalStyleValueObj } = this;
@@ -179,7 +184,7 @@ class Range extends Component {
   panelChange = (parmas: Object) => {
     this.isClear = false;
     let visible = true;
-    const { newValue } = parmas;
+    const { newValue, event } = parmas;
     const { format } = this.state;
     const { rangeValue } = this.state;
     const newRangeValue = rangeValue.length > 0 ? [rangeValue[0]] : [];
@@ -191,7 +196,6 @@ class Range extends Component {
       renderValue = [newRangeValue[0], newRangeValue[0]];
       setStateData = {
         hasNormalvalue: true,
-        RangeValue: [this.choseDate, ''],
         rangeValue: newRangeValue,
       };
     }
@@ -204,9 +208,10 @@ class Range extends Component {
       }
       const { isValid } = this.getIsValid(renderValue);
       const { onChange } = this.props;
-      const { oldValue } = this;
       const sortValue = this.getSortValue(renderValue, format);
-      isValid && onChange && onChange({ newValue: sortValue, oldValue });
+      isValid &&
+        onChange &&
+        onChange({ newValue: sortValue, oldValue: this.changeOldValue, event });
       setStateData = { value: sortValue, rangeValue: [], isHover: false };
     }
     this.setTreePopupVisible(visible);
@@ -221,13 +226,14 @@ class Range extends Component {
     return [min, max];
   };
   setTargetMode = (panelValue: Array<string>) => {
-    this.targetModeFirst.onChange({ value: panelValue[0] });
-    this.targetModeSecond.onChange({ value: panelValue[1] });
+    const { status } = this.state;
+    this.targetModeFirst.onChange({ value: panelValue[0], isScroll: false, status });
+    this.targetModeSecond.onChange({ value: panelValue[1], isScroll: false, status });
   };
   rangeHoverChange = (obj: Object) => {
     const { value, format, rangeValue } = this.state;
     const { formatIsValids } = this.getIsValid(value);
-    if (value[0] || value[1]) {
+    if ((value[0] || value[1]) && !(value[0] !== '' && value[1] !== '')) {
       value.forEach((item, index) => {
         if (formatIsValids[index]) {
           this.validValue = item;
@@ -240,7 +246,7 @@ class Range extends Component {
     }
     const { choseValue } = obj;
     const hoverRangeValue = [rangeValue[0], choseValue];
-    this.setState({ RangeValue: hoverRangeValue, rangeValue: hoverRangeValue, isHover: true });
+    this.setState({ rangeValue: hoverRangeValue, isHover: true });
     this.drawPageAgain(hoverRangeValue, format);
   };
   getCurrentYandM = (obj: Object) => {
@@ -260,28 +266,51 @@ class Range extends Component {
     this.setTreePopupVisible(open);
   };
   onFocus = () => {
-    const { value, panelValue } = this.state;
+    const { value, panelValue, status } = this.state;
     const { isValid } = this.getIsValid(value);
     this.isClear = false;
+    this.changeOldValue = [...value];
+    const { format } = this.state;
     if (isValid) {
       this.oldValue = [...value];
       this.oldMonthandYear = [...this.monthAndYear];
       this.monthAndYear = [...panelValue];
-      const { format } = this.state;
       this.panelDatesArray = getCurrentPageDates(panelValue, format);
       this.setState({ rangeValue: [] });
     }
+    const noValue = value[0] === '' && value[1] === '';
+    if (noValue) {
+      this.setState({ rangeValue: [] });
+      this.drawPageAgain(['', ''], this.state.format);
+    }
+    if (status === 'showTime') {
+      this.pageFooterChange.onFocus({ status: 'showTime' });
+      this.setState({ status: 'showDate' });
+    }
     this.onClickTrigger(true);
   };
-  onBlur = () => {
+  onBlur = (index: number) => {
     const { value } = this.state;
-    const { isValid } = this.getIsValid(value);
-    if (value[0] === '' && value[1] === '') {
+    const { isValid, formatIsValids } = this.getIsValid(value);
+    const hasValue = value[0] !== '' && value[1] !== '';
+    const noValue = value[0] === '' && value[1] === '';
+    if (noValue) {
       this.oldValue = ['', ''];
     }
-    if (!isValid) {
-      const newValue = this.oldValue[0] && this.oldValue[1] ? this.oldValue : ['', ''];
+    if (hasValue && !isValid) {
+      const newValue =
+        this.oldValue[0] && this.oldValue[1]
+          ? this.oldValue
+          : this.changeOldValue
+          ? this.changeOldValue
+          : ['', ''];
       this.setState({ value: newValue });
+    }
+    if ((value[0] || value[1]) && !(value[0] !== '' && value[1] !== '')) {
+      if (!formatIsValids[index]) {
+        value[index] = '';
+        this.setState({ value });
+      }
     }
   };
   onClear = () => {
@@ -307,10 +336,11 @@ class Range extends Component {
       const { value, panelValue } = this.state;
       status === 'showTime' && this.setTargetMode(value);
       status === 'showDate' && this.setTargetMode(panelValue);
+      status === 'showDate' && this.drawPageAgain(value, this.state.format);
       stateData = { status };
     }
     this.setTreePopupVisible(visible);
-    this.setState({ ...stateData, visible });
+    this.setState({ ...stateData, visible, rangeValue: [] });
   };
   timeChange = (obj: Object) => {
     const { keys, timeIndex } = obj;
@@ -319,7 +349,7 @@ class Range extends Component {
     const { value } = this.state;
     const newValue = [...value];
     newValue[timeIndex] = timeValue;
-    this.setState({ value: newValue, RangeValue: newValue });
+    this.setState({ value: newValue });
   };
   drawPageAgain = (rangeValue: Array<string>, format: string) => {
     const { monthAndYear, panelDatesArray } = this;
@@ -354,7 +384,6 @@ class Range extends Component {
     const { disabled, readOnly, theme } = this.props;
     const { monthAndYear } = this;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
-    const renderValue = valueIsValid ? value : monthAndYear;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
     const config = {
       panelChoseDate: rangeValue && rangeValue[0],
@@ -402,6 +431,7 @@ class Range extends Component {
               format={format}
               onChange={this.onChange}
               footerChange={this.footerChange}
+              model={this.pageFooterChange}
               showTimeBtnIsDisabled={showTimeBtnIsDisabled}
             />
           </RangeWrap>

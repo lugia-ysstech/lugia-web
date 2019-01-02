@@ -167,7 +167,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     }
     if (isWeeks) {
       newValue = moment(newValue, newFormat)
-        .set({ date: '9' })
+        .set({ date: 9 })
         .format(newFormat);
     }
     this.setStateFunc({ value: newValue, year, mode });
@@ -189,7 +189,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     }
     if (isWeeks) {
       newValue = moment(newValue, newFormat)
-        .set({ date: '9' })
+        .set({ date: 9 })
         .format(newFormat);
     }
     this.setStateFunc({ month, year, mode, value: newValue });
@@ -218,14 +218,11 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     const { newValue } = param;
     const { isRange, isWeeks } = modeStyle(this.props.mode);
     let newVal = newValue;
-    let value = newValue;
     if (isWeeks) {
       const { format } = this.state;
       const { year, weeks } = getWeeksRangeInDates(moment(newValue, 'YYYY-MM-DD'));
       newVal = getweekFormatValue(year, weeks, format);
-      value = getValueFromWeekToDate(newValue, format);
     }
-    console.log(newValue, newVal, value);
     !isRange && this.setStateFunc({ value: newValue });
     this.publicOnchange({ ...param, newValue: newVal, openTriger: false });
   };
@@ -236,8 +233,9 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
   changeTime = (obj: Object) => {
     const { timeIndex } = this.props;
     const { value } = obj;
-    const { timeChange } = this.props;
+    const { timeChange, onChange } = this.props;
     timeChange && timeChange({ ...obj, timeIndex });
+    onChange && onChange(obj);
     this.setStateFunc({ value });
   };
   setStateFunc = (state: Object) => {

@@ -6,7 +6,7 @@ export function setMomentLocal(firstWeekDay: number) {
   moment.locale('en', {
     week: {
       dow: newFirstWeekDay, // 每周的第一天
-      doy: 1, // 每年的第一周是一月几号
+      doy: 4, // 每年的第一周是一月几号
     },
   });
 }

@@ -50,7 +50,7 @@ class Time extends Component<TypeProps, TypeState> {
     };
     const { model } = props;
     model &&
-      model.on('inputOnFocus', (data: Object) => {
+      model.on('inputOnChange', (data: Object) => {
         const { isScroll } = data;
         this.setState({ isScroll });
       });
@@ -61,6 +61,7 @@ class Time extends Component<TypeProps, TypeState> {
     const keys = value ? getShowTime(value, format) : ['', '', ''];
     const starts = value ? [...keys] : ['', '', ''];
     const newStarts = newIsScroll && preState ? preState.starts : starts;
+    console.log(keys, preState && preState.starts, newStarts);
     return {
       format,
       keys,
@@ -82,7 +83,7 @@ class Time extends Component<TypeProps, TypeState> {
     starts[index] = obj.value;
     const val = this.getValue(keys);
     const { onChange } = this.props;
-    onChange && onChange({ value: val, keys });
+    onChange && onChange({ value: val, keys, newValue: val, event: e });
     const newVal = getShowTime(val, format);
     this.setState({ keys: [...newVal], starts, isScroll: true });
   };
@@ -119,14 +120,13 @@ class Time extends Component<TypeProps, TypeState> {
     const { keys, starts } = this.state;
     const { theme, mode, value, hasTimeWrapBorder } = this.props;
     const { isTime } = modeStyle(mode);
-    console.log(keys, starts);
     const config = {
       ...theme,
       mode,
       hasTimeWrapBorder,
     };
     const { TimeColWidth } = getThemeProperty(config);
-    console.log(TimeColWidth);
+    console.log(keys, starts);
     return (
       <Theme config={{ [Widget.Menu]: { width: TimeColWidth } }}>
         <TimeWrap {...config}>

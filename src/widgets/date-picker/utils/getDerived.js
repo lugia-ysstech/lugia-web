@@ -26,7 +26,6 @@ export const getDerived = (nextProps: Object, preState: Object) => {
 
   const { isWeeks } = modeStyle(mode);
   const newValue = preState ? preState.value : value;
-  console.log(value, newValue);
   const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
   const momentsA = moment(newValue, newFormat);
   const momentsB = momentsA.clone();
@@ -52,7 +51,6 @@ export const getDerived = (nextProps: Object, preState: Object) => {
     startInWeek = startInWeeks;
     endInWeek = endInWeeks;
   }
-  console.log(newValue, newFormat, startInWeek, endInWeek);
   return {
     value: newValue,
     days,
@@ -89,7 +87,6 @@ export function getDerivedForInput(nextProps: Object, preState: Object): Object 
   if (isWeeks && panelValue) {
     panelValue = [getValueFromWeekToDate(panelValue[0], format)];
   }
-  console.log(panelValue, newValue);
   return {
     value: newValue,
     format,
@@ -163,7 +160,6 @@ function getInValidValue(value?: Array<string>, format: string): Array<string> {
   const normalFormatbyValue = moment().format(format);
   const normalvalueFormatObj = getformatSymbol(normalFormatbyValue);
   const normalValue = [];
-  //isWeeks?moment().startOf('week').format('YYYY-MM-DD'):
   const normal = moment().format(format);
   value &&
     value.forEach((item, index) => {
@@ -182,6 +178,5 @@ function getInValidValue(value?: Array<string>, format: string): Array<string> {
         .format(format);
     }
   }
-  console.log(normalValue);
   return normalValue;
 }

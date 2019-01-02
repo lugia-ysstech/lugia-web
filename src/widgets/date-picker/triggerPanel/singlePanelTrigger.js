@@ -17,7 +17,6 @@ import { formatValueIsValid, modeStyle } from '../utils/booleanUtils';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
-//import type { DateInputProps } from '../typeFlow/typeFlow';
 type TypeProps = {
   defaultValue?: string,
   value?: string,
@@ -56,6 +55,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     super();
     this.trigger = React.createRef();
     this.targetMode = new SwitchPanelMode();
+    this.pageFooterChange = new SwitchPanelMode();
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const {
@@ -73,6 +73,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       format,
       valueIsValid,
       placeholder: placeholder && placeholder[0],
+      status: preState ? preState.status : 'showDate',
     };
   }
   componentDidMount() {
@@ -88,7 +89,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { oldValue } = this;
     const hasOldValue = oldValue ? true : false;
     const newProps = getNewProps(this.props);
-    console.log(value, panelValue);
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
@@ -116,6 +116,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                 footerChange={this.footerChange}
                 setTreePopupVisible={this.setTreePopupVisible}
                 showTimeBtnIsDisabled={showTimeBtnIsDisabled}
+                model={this.pageFooterChange}
               />
             </div>
           }
@@ -170,7 +171,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     let newVal = value;
     if (isWeeks) {
       newVal = getValueFromWeekToDate(value, format);
-      console.log(newVal, value);
     }
     const moments = moment(newVal, newFormat);
     const { years, months } = moments.toObject();
@@ -179,24 +179,22 @@ class DateInput extends Component<TypeProps, TypeState> {
       month: months,
       weeks: moments.weeks(),
       value: newVal,
+      isScroll: false,
     };
-    console.log(modeParams);
     this.targetMode.onChange(modeParams);
   };
   onFocus = () => {
     this.isClear = false;
-    const { value, valueIsValid, normalValue, panelValue, format } = this.state;
-    if (valueIsValid) {
-      this.oldValue = value;
-    }
+    const { value, valueIsValid, normalValue, format, status } = this.state;
+    this.oldValue = value;
     const { mode } = this.props;
-    const { isTime, isTimes, isWeeks, isWeek } = modeStyle(mode);
-
-    this.setState({ value });
+    const { isWeeks, isWeek } = modeStyle(mode);
+    this.setState({ value, status: 'showDate' });
     const newValue = valueIsValid ? value : normalValue;
-    console.log(newValue, normalValue, panelValue);
     this.setModeState(newValue, format, isWeeks || isWeek);
-
+    if (status === 'showTime') {
+      this.pageFooterChange.onFocus({ status: 'showTime' });
+    }
     const { onFocus } = this.props;
     onFocus && onFocus();
   };
