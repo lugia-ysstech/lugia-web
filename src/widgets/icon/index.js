@@ -10,7 +10,7 @@ import '../css/font/lugia-icon.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
-
+import { getMargin } from '../common/ThemeUtils';
 const getColor = (props: Object) => {
   const { color } = props.theme;
   return color ? `color: ${color};` : '';
@@ -23,6 +23,7 @@ const IconTag = styled.i`
   user-select: none;
   cursor: pointer;
   ${getColor} ${hover};
+  ${getMargin};
 `;
 type IconProps = {
   className?: string,
