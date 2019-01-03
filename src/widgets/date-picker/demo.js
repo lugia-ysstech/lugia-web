@@ -13,7 +13,7 @@ import Widget from '../consts/index';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker, TimePicker } = DatePicker;
 
 //如需指定周开始是星期几，请配置momentConfig，此函数接受一个number类型参数，表示周开始是星期几
-const firstWeekDay = 1;
+const firstWeekDay = 2;
 momentConfig(firstWeekDay);
 export default class Sl extends Component<any> {
   constructor() {
@@ -42,6 +42,41 @@ export default class Sl extends Component<any> {
     const dateFormate = 'YYYY年MM月DD日';
     return (
       <div>
+        {/* <SwitchPanel defaultValue={'2015-02-03'} />
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>date-normal-theme</h2>
+          <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>
+            <DatePicker
+              showToday
+              onOk={{ message: 'onOk', Function: this.onOk }}
+              showTime={{message:{showTime:'选择时间',showDate:'选择日期'}}}
+              ButtonOptions={{
+                options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
+              }}
+              extraFooter={{ message: 'extraFooter' }}
+              format={'YYYY-MM-DD HH:mm:ss'}
+            />
+          </Theme>
+          </div> */}
+        <div style={{ float: 'left', marginRight: '30px' }}>
+          <h2>RangePicker-normal</h2>
+          <Theme>
+            <RangePicker
+              defaultValue={['2015-02-03 12:02:00', '2015-02-04 00:08:01']}
+              showToday
+              showTime={{}}
+              ButtonOptions={{
+                options: {
+                  today: ['2015-02-03 00:00:00', '2015-03-03 00:00:00'],
+                  此刻: ['2015-02-05 00:00:00', '2015-04-06 00:00:00'],
+                },
+              }}
+              extraFooter={{ message: 'extraFooter' }}
+              format={'YYYY-MM-DD HH:mm:ss'}
+              onChange={this.onChange}
+            />
+          </Theme>
+        </div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Date</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -83,14 +118,7 @@ export default class Sl extends Component<any> {
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>Year-normal-theme</h2>
             <Theme config={{ [Widget.YearPicker]: { width: 400 } }}>
-              <YearPicker
-                onChange={this.onChange}
-                step={10}
-                extraFooter={{ message: 'extraFooter' }}
-                buttonOptions={{
-                  options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-                }}
-              />
+              <YearPicker onChange={this.onChange} step={10} />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -149,7 +177,7 @@ export default class Sl extends Component<any> {
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>weeks-normal-Theme</h2>
             <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-              <WeeksPicker defaultValue={'2022-01'} step={10} onChange={this.onChange} />
+              <WeeksPicker defaultValue={'2022-01'} onChange={this.onChange} />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -184,14 +212,7 @@ export default class Sl extends Component<any> {
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>week-normal</h2>
             <Theme config={{ [Widget.WeekPicker]: { width: 400 } }}>
-              <WeekPicker
-                onChange={this.onChange}
-                showToday
-                step={10}
-                buttonOptions={{
-                  options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-                }}
-              />
+              <WeekPicker onChange={this.onChange} />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -254,103 +275,28 @@ export default class Sl extends Component<any> {
           </div>
         </div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
-          <h2 style={{ margin: '10px' }}>event</h2>
+          <h2 style={{ margin: '10px' }}>Times</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>DatePicker</h2>
-            <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-              <DatePicker
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                showToday
-                showTime
-                onOk={this.onOk}
-              />
+            <h2>TimePicker-normal</h2>
+            <Theme config={{ [Widget.TimePicker]: { width: 500 } }}>
+              <TimePicker onChange={this.onChange} />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>YearPicker</h2>
-            <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-              <YearPicker
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                showToday
-                showTime
-                buttonOptions={{
-                  options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-                }}
-                extraFooter={{ message: 'extraFooter' }}
-                onOk={this.onOk}
-              />
-            </Theme>
+            <h2>TimePicker-defaultValue</h2>
+            <TimePicker defaultValue={'0时03分04秒'} onChange={this.onChange} />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>MonthPicker</h2>
-            <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-              <MonthPicker
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                showToday
-                showTime
-                buttonOptions={{
-                  options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-                }}
-                extraFooter={{ message: 'extraFooter' }}
-                onOk={this.onOk}
-              />
-            </Theme>
+            <h2>TimePicker-value</h2>
+            <TimePicker value={'0时03分04秒'} format={'HH时mm分ss秒'} onChange={this.onChange} />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>WeeksPicker</h2>
-            <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-              <WeeksPicker
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                showToday
-                showTime
-                buttonOptions={{
-                  options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-                }}
-                extraFooter={{ message: 'extraFooter' }}
-                onOk={this.onOk}
-              />
-            </Theme>
+            <h2>TimePicker-readOnly</h2>
+            <TimePicker defaultValue={'0时03分04秒'} readOnly />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>WeekPicker</h2>
-            <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-              <WeekPicker
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                showToday
-                showTime
-                buttonOptions={{
-                  options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-                }}
-                extraFooter={{ message: 'extraFooter' }}
-                onOk={this.onOk}
-              />
-            </Theme>
-          </div>
-          <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2> RangePicker</h2>
-            <Theme config={{ [Widget.WeeksPicker]: { width: 400 } }}>
-              <RangePicker
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                showTime
-                buttonOptions={{
-                  options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-                }}
-                extraFooter={{ message: 'extraFooter' }}
-                onOk={this.onOk}
-              />
-            </Theme>
+            <h2>TimePicker-disabled</h2>
+            <TimePicker defaultValue={'0时03分04秒'} disabled />
           </div>
         </div>
 
@@ -360,7 +306,7 @@ export default class Sl extends Component<any> {
             <DatePicker
               showToday
               showTime={function s() {}}
-              buttonOptions={{
+              ButtonOptions={{
                 options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
               }}
               extraFooter={{ message: 'extraFooter' }}
@@ -375,7 +321,7 @@ export default class Sl extends Component<any> {
               showToday
               onOk={{ message: 'onOk', Function: this.onOk }}
               showTime
-              buttonOptions={{
+              ButtonOptions={{
                 options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
               }}
               extraFooter={{ message: 'extraFooter' }}
