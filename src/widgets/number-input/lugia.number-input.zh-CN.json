@@ -1,6 +1,6 @@
 {
   "widgetName": "NumberInput",
-  "title": "NumberInput  数字输入框",
+  "title": "数字输入框",
   "desc": "常用于数字输入,可以进行快速加减显示",
   "props": {
     "getTheme": {

@@ -1,6 +1,6 @@
 {
   "widgetName": "Input",
-  "title": "Input  文本输入框",
+  "title": "文本输入框",
   "desc": "常用于昵称,名称,表格内容等填写.",
   "props": {
     "getTheme": {

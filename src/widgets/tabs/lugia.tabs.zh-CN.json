@@ -1,6 +1,6 @@
 {
   "widgetName": "Tabs",
-  "title": "Tabs  标签页",
+  "title": "标签页",
   "desc": "选项卡切换组件",
   "props": {
     "getTheme": {
