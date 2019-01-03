@@ -1,6 +1,6 @@
 {
   "widgetName": "Anchor",
-  "title": "Anchor 锚点",
+  "title": "锚点",
   "desc": "用于跳转到页面指定位置。",
   "props": {
     "affix": {

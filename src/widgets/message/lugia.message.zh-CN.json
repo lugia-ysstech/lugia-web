@@ -1,6 +1,6 @@
 {
   "widgetName": "Message",
-  "title": "Message 全局提示",
+  "title": "全局提示",
   "desc": "全局提示，展示操作反馈信息。",
   "props": {
     "content": {

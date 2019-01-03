@@ -1,6 +1,6 @@
 {
   "widgetName": "Row",
-  "title": "Grid 栅格",
+  "title": "栅格",
   "desc": "栅格。",
   "props": {
     "type": {

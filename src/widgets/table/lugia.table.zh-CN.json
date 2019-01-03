@@ -1,0 +1,45 @@
+{
+  "widgetName": "Table",
+  "title": "表格",
+  "desc": "Table  表格。",
+  "props": {
+    "columns": {
+      "type": "Object[]",
+      "desc": "表格每一行展示的内容",
+      "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "Object[]",
+      "desc": "数据源，指定 table 组件的数据",
+      "defaultValue": "undefined"
+    },
+    "defaultExpandedRowKeys": {
+      "type": "string[]",
+      "desc": "初始展开的行的集合",
+      "defaultValue": "undefined"
+    },
+    "expandedRowKeys": {
+      "type": "string[]",
+      "desc": "展开的行的集合",
+      "defaultValue": "undefined"
+    },
+    "defaultExpandAllRows": {
+      "type": "boolean",
+      "desc": "初始是否展开所有的行",
+      "defaultValue": "undefined"
+    }
+  },
+  "event": {
+    "onExpandedRowsChange": {
+      "desc": "展开的行改变时的回调",
+      "args": [
+        {
+          "name": "expandedRows",
+          "desc": "当前展开的行",
+          "type": "string[]"
+        }
+      ]
+    }
+  },
+  "category": ["数据录入"]
+}

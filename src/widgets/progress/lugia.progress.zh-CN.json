@@ -1,6 +1,6 @@
 {
   "widgetName": "Progress",
-  "title": "Progress 进度条",
+  "title": "进度条",
   "desc": "展示操作的当前进度。",
   "props": {
     "getTheme": {

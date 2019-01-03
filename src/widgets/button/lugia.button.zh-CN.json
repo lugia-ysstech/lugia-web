@@ -1,6 +1,6 @@
 {
   "widgetName": "Button",
-  "title": "Button 按钮",
+  "title": "按钮",
   "desc": "方便用户点击操作",
   "props": {
     "getTheme": {

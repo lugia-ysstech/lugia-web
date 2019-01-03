@@ -1,6 +1,6 @@
 {
   "widgetName": "CheckBoxGroup",
-  "title": "CheckBox 多选框",
+  "title": "多选框",
   "desc": "多选框。",
   "props": {
     "getTheme": {
