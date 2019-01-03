@@ -97,6 +97,7 @@ export type MenuProps = {
   allChildData?: Array<Object>,
   treeData?: TreeDataItem[],
   getIndexOffsetY?: Function,
+  autoHeight?: boolean,
 };
 const EmptyData = [];
 
@@ -196,11 +197,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const items = this.getItems(props);
-    const { data = [], size } = props;
+    const { data = [], size, autoHeight = false } = props;
     const length = data ? data.length : 0;
     const menuItemHeight = getMenuItemHeight(size);
     const bodyContent = (
-      <MenuContainer length={length} size={size} theme={this.getTheme()} level={this.props.level}>
+      <MenuContainer
+        length={length}
+        size={size}
+        theme={this.getTheme()}
+        level={this.props.level}
+        autoHeight={autoHeight}
+      >
         {items}
       </MenuContainer>
     );
@@ -538,6 +545,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       valueField,
       mutliple,
       subsize,
+      autoHeight,
     } = this.props;
 
     const { selectedKeys, expandedPath } = this.state;
@@ -549,6 +557,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         mutliple={mutliple}
         size={subsize}
         subsize={subsize}
+        autoHeight={autoHeight}
         menuItemHeight={subMenuItenHeight}
         displayField={displayField}
         valueField={valueField}
@@ -648,7 +657,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   createIsSelectFunction = (state: MenuState, props: MenuProps) => {
     const existKey = {};
-    const { selectedKeys = [] } = state;
+    let { selectedKeys = [] } = state;
+    if (typeof selectedKeys === 'number') {
+      selectedKeys = selectedKeys.toString();
+    }
+
     const { level, separator } = props;
     const len = selectedKeys.length;
     if (selectedKeys && len > 0) {
