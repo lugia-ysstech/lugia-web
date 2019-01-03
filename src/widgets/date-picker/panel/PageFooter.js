@@ -13,7 +13,7 @@ type TypeProps = {
   onOk?: boolean | Object,
   extraFooter?: Object,
   showTime?: Object,
-  buttonOptions?: Object,
+  ButtonOptions?: Object,
   showToday?: boolean | Object,
   theme?: Object,
   status?: string,
@@ -59,19 +59,12 @@ class PageFooter extends Component<TypeProps, TypeState> {
       });
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
-    const { onOk, extraFooter, showTime, buttonOptions, showToday, mode } = nextProps;
-    const { isDate, isRange } = modeStyle(mode);
+    const { onOk, extraFooter, showTime, ButtonOptions, showToday } = nextProps;
     const showExtraFooter = extraFooter && extraFooter.message;
-    const includMode = isDate || isRange;
-    const newOnOk = onOk && includMode;
-    const newShowTime = showTime && includMode;
-    const newShowToday = showToday && includMode;
-    const newButtonOptions = buttonOptions && buttonOptions.options && includMode;
-    const showFooter =
-      newOnOk || newShowTime || showExtraFooter || newButtonOptions || newShowToday;
-    const isShowTime = newShowTime;
-    const isOnOk = newOnOk || isShowTime;
-    const isShowToday = newShowToday;
+    const showFooter = onOk || showTime || (ButtonOptions && ButtonOptions.options) || showToday;
+    const isShowTime = !!showTime;
+    const isOnOk = !!onOk || isShowTime;
+    const isShowToday = !!showToday;
     const status = preState && preState.status ? preState.status : 'showTime';
     const onOkMessage = onOk ? (onOk.message ? onOk.message : '确定') : isShowTime ? '确定' : '';
     const typeShowTime =
@@ -96,9 +89,9 @@ class PageFooter extends Component<TypeProps, TypeState> {
     };
   }
 
-  handleClick = (value: string | Array<string>) => (e: any) => {
+  handleClick = (value: string | Array<string>) => () => {
     const { onChange } = this.props;
-    onChange && onChange({ newValue: value, event: e });
+    onChange && onChange({ newValue: value });
   };
   onOkClick = (status: string) => () => {
     this.publicOnChange('onOk');
@@ -119,11 +112,11 @@ class PageFooter extends Component<TypeProps, TypeState> {
     footerChange && footerChange(status);
   };
   render() {
-    const { extraFooter, buttonOptions, theme } = this.props;
+    const { extraFooter, ButtonOptions, theme } = this.props;
     let ChildrenNode;
-    if (buttonOptions && buttonOptions.options) {
+    if (ButtonOptions && ButtonOptions.options) {
       const optionsKeys = [];
-      const { options } = buttonOptions;
+      const { options } = ButtonOptions;
       for (const key in options) {
         optionsKeys.push(key);
       }
@@ -137,7 +130,7 @@ class PageFooter extends Component<TypeProps, TypeState> {
           newItemValue = newOptions;
         }
         return (
-          <FooterBtn buttonOptions onClick={this.handleClick(newItemValue)}>
+          <FooterBtn ButtonOptions onClick={this.handleClick(newItemValue)}>
             {item}
           </FooterBtn>
         );
@@ -160,13 +153,12 @@ class PageFooter extends Component<TypeProps, TypeState> {
     const todayValueEnd = moment()
       .set({ hour: 23, minute: 59, second: 59 })
       .format(format);
-    const { isRange, isDate } = modeStyle(mode);
+    const { isRange } = modeStyle(mode);
     let newTodayValue = todayValueStar;
     if (isRange) {
       newTodayValue = [todayValueStar, todayValueEnd];
     }
     const { showTimeBtnIsDisabled } = this.props;
-    const newChildrenNode = (isDate || isRange) && buttonOptions ? ChildrenNode : '';
     return (
       <FooterWrap {...theme} showFooter={showFooter}>
         {showFooter ? (
@@ -176,7 +168,7 @@ class PageFooter extends Component<TypeProps, TypeState> {
             ) : (
               ''
             )}
-            {newChildrenNode}
+            {ButtonOptions ? ChildrenNode : ''}
             {isShowToday ? (
               <FooterBtn showToday onClick={this.handleClick(newTodayValue)}>
                 {showTodayMessage}

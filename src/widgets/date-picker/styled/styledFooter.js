@@ -28,7 +28,7 @@ export const FooterBtn = styled.span`
   color: ${props => (props.showTime && !props.showTimeButton ? '#ddd' : normalColor)};
   ${props => getFooterStyle(props).marginSize};
   cursor: pointer;
-  float: ${props => (props.onOk || props.showTime ? 'right' : props.buttonOptions ? 'left' : '')};
+  float: ${props => (props.onOk || props.showTime ? 'right' : props.ButtonOptions ? 'left' : '')};
   ${props => (props.onOk ? `padding:0 ${em(10)};color:#fff;` : '')};
 `;
 export const ExtraFooter = styled.div`
@@ -38,8 +38,8 @@ export const ExtraFooter = styled.div`
   color: #999;
 `;
 const getFooterStyle = props => {
-  const { buttonOptions, showToday } = props;
-  const direction = buttonOptions ? 'right' : 'left';
+  const { ButtonOptions, showToday } = props;
+  const direction = ButtonOptions ? 'right' : 'left';
   const distance = showToday ? '' : footerSize(5);
   const marginSize = `margin-${direction}:${distance}`;
   return {
