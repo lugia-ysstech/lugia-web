@@ -16,7 +16,7 @@ showToday : 显示today按钮
 showTime  :显示时间选择器
 disabledTime：禁用的时间，配合showTime
 extraFooter: {message:'string',style:{...}} 添加额外的页脚，展示信息
-ButtonOptions:{}自定义页脚展示的一些按钮
+buttonOptions:{}自定义页脚展示的一些按钮
 onOK：展示确定按钮
 
 
@@ -28,7 +28,7 @@ value
 format
 disabled
 readOnly
-firstWeekDay
+//firstWeekDay
 
 事件
 onChange

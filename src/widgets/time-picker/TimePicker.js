@@ -1,9 +1,9 @@
 //import type { ChangeEventParam } from '@lugia/lugia-web';
 import React, { Component } from 'react';
-import Widget from '../../consts/index';
-import ThemeProvider from '../../theme-provider';
-import DateInput from '../triggerPanel/singlePanelTrigger';
-import { getTheme } from '../utils/utils';
+import Widget from '../consts/index';
+import ThemeProvider from '../theme-provider';
+import DateInput from '../date-picker/triggerPanel/singlePanelTrigger';
+import { getTheme } from '../date-picker/utils/utils';
 export default ThemeProvider(
   class TimePicker extends Component {
     render() {

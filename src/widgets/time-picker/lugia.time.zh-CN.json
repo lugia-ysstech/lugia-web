@@ -1,0 +1,63 @@
+{
+  "widgetName": "TimePicker",
+  "title": "时间选择器",
+  "desc": "用于时间选择,",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "defaultValue": {
+      "type": "string",
+      "desc": "时间默认显示值",
+      "defaultValue": "undefined"
+    },
+    "value": {
+      "type": "string",
+      "desc": "时间显示值",
+      "defaultValue": "undefined"
+    },
+    "format": {
+      "type": "string",
+      "desc": "用于指定输入框时间显示的格式",
+      "defaultValue": "HH:mm:ss"
+    },
+    "placeholder": {
+      "type": "string",
+      "desc": "input输入提示信息",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,是否不可用",
+      "defaultValue": "false"
+    },
+    "readOnly": {
+      "type": "boolean",
+      "desc": "只读input",
+      "defaultValue": "false"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "时间值发生变化时的回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "时间值发生变化时的回调",
+          "type": "Object"
+        }
+      ]
+    },
+    "onFocus":{
+      "desc": "输入框获取焦点",
+      "args":[]
+    },
+    "onBlur":{
+      "desc": "输入框失去焦点",
+      "args":[]
+    }
+  },
+  "category": ["数据录入"]
+}
