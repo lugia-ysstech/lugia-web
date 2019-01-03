@@ -1,6 +1,6 @@
 {
   "widgetName": "Steps",
-  "title": "Steps  步骤条",
+  "title": "步骤条",
   "desc": "引导用户按照流程完成任务的导航条",
   "props": {
     "getTheme": {

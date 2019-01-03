@@ -1,6 +1,6 @@
 {
   "widgetName": "Affix",
-  "title": "Affix 固钉",
+  "title": "固钉",
   "desc": "将元素展示在可视区域。",
   "props": {
     "getTheme": {

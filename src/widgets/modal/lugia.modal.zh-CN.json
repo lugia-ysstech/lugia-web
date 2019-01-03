@@ -1,6 +1,6 @@
 {
   "widgetName": "Modal",
-  "title": "Modal 对话框",
+  "title": "对话框",
   "desc": "Modal 对话框。",
   "props": {
     "getTheme": {

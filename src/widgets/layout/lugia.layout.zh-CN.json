@@ -1,6 +1,6 @@
 {
   "widgetName": "Layout",
-  "title": "Layout 布局",
+  "title": "布局",
   "desc": "页面整体布局。",
   "props": {
     "getTheme": {

@@ -1,6 +1,6 @@
 {
   "widgetName": "Badge",
-  "title": "Badge  徽标数",
+  "title": "徽标数",
   "desc": "图标右上角的圆形徽标数字",
   "props": {
     "getTheme": {

@@ -1,6 +1,6 @@
 {
   "widgetName": "Slider",
-  "title": "Slider  滑动输入条",
+  "title": "滑动输入条",
   "desc": "滑动型输入器，展示当前值和可选范围",
   "props": {
     "getTheme": {

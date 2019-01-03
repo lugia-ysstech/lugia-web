@@ -1,6 +1,6 @@
 {
   "widgetName": "Tooltip",
-  "title": "Tooltip  文字提示",
+  "title": "文字提示",
   "desc": "简单的文字气泡提示框",
   "props": {
     "getTheme": {

@@ -1,6 +1,6 @@
 {
   "widgetName": "Skeleton",
-  "title": "Skeleton 加载占位符",
+  "title": "加载占位符",
   "desc": "在等待加载内容时，提供一个占位的图形组合",
   "props": {
     "title": {

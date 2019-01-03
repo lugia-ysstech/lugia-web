@@ -1,6 +1,6 @@
 {
   "widgetName": "Notification",
-  "title": "Notification 通知提醒框",
+  "title": "通知提醒框",
   "desc": "Notification 通知提醒框。",
   "props": {
     "title": {
