@@ -288,6 +288,8 @@ class Range extends Component {
       this.setState({ status: 'showDate' });
     }
     this.onClickTrigger(true);
+    const { onFocus } = this.props;
+    onFocus && onFocus();
   };
   onBlur = (index: number) => {
     const { value } = this.state;
@@ -312,6 +314,8 @@ class Range extends Component {
         this.setState({ value });
       }
     }
+    const { onBlur } = this.props;
+    onBlur && onBlur();
   };
   onClear = () => {
     const { value } = this.state;
@@ -330,6 +334,10 @@ class Range extends Component {
     if (status === 'onOk') {
       visible = false;
       stateData = { status: 'showDate' };
+      const { onOk } = this.props;
+      const onOkChange =
+        typeof onOk === 'function' ? onOk : onOk && onOk.Function ? onOk.Function : '';
+      onOkChange && onOkChange();
     }
     if (status !== 'onOk') {
       visible = true;

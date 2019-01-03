@@ -11,7 +11,7 @@ import MonthPicker from './picker/MonthPicker';
 import WeekPicker from './picker/WeekPicker';
 import WeeksPicker from './picker/WeeksPicker';
 import RangePicker from './picker/RangePicker';
-import TimePicker from './picker/TimePicker';
+import TimePicker from '../time-picker/TimePicker';
 import { setMomentLocal } from './momentConfig';
 DatePicker.MonthPicker = MonthPicker;
 DatePicker.YearPicker = YearPicker;
