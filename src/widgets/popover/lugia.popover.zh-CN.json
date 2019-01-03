@@ -1,6 +1,6 @@
 {
   "widgetName": "Popover",
-  "title": "Popover  气泡卡片",
+  "title": "气泡卡片",
   "desc": "气泡式的卡片浮层",
   "props": {
     "getTheme": {

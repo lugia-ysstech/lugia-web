@@ -1,6 +1,6 @@
 {
   "widgetName": "TimeLineItem",
-  "title": "TimeLineItem  时间轴节点",
+  "title": "时间轴节点",
   "desc": "时间轴每一个节点",
 
   "props": {

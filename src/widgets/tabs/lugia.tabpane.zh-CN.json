@@ -1,6 +1,6 @@
 {
   "widgetName": "Tabpane",
-  "title": "Tabpane  单个标签页",
+  "title": "单个标签页",
   "desc": "单个标签页组件",
 
   "props": {
