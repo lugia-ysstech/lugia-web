@@ -1,308 +1,363 @@
 import * as React from 'react';
-
-import Wrapper from '../demo';
-import DateInput from '../DateInput';
-
 import chai from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import renderer from 'react-test-renderer';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import 'jest-styled-components';
-import { async } from 'rxjs/internal/scheduler/async';
-import Theme from '../../theme/index';
-import Widgets from '../../consts/index';
-
-import DatePicker from '../index';
-import Year from '../Year';
-import Weeks from '../Weeks';
-import Month from '../Month';
-import Date from '../Date';
-import moment from 'moment';
-const { MonthPicker, YearPicker, WeekPicker, WeeksPicker } = DatePicker;
+import Date from '../panel/Date';
+import { getDerived } from '../utils/getDerived';
 const { expect: exp } = chai;
+
 Enzyme.configure({ adapter: new Adapter() });
 describe('default', () => {
-  it('Year', () => {
-    const target = <Year />;
-    expect(renderer.create(target).toJSON()).toMatchSnapshot();
-  });
-  it('Weeks', () => {
-    const target = <Weeks />;
-    expect(renderer.create(target).toJSON()).toMatchSnapshot();
-  });
-  it('Month', () => {
-    const target = <Month />;
-    expect(renderer.create(target).toJSON()).toMatchSnapshot();
-  });
-  it('Date', () => {
-    const target = <Date />;
-    expect(renderer.create(target).toJSON()).toMatchSnapshot();
-  });
-  function getTarget(target) {
+  function getTarget(target, component) {
     const newTarget = target
-      .children()
-      .at(0)
-      .children()
+      .find(component)
       .at(0)
       .instance();
-    const targetCurrent = newTarget.picker.current;
-    return {
-      newTarget,
-      targetCurrent,
-    };
+    return newTarget;
   }
   function getDaysInMonth(
     title: string,
-    elem: Object,
+    props: Object,
     type: string,
     funName: string,
     expVal: Object
   ) {
     it(`getDaysInMonth ${title}`, () => {
-      const target = mount(elem);
-      const { newTarget, targetCurrent } = getTarget(target);
-      targetCurrent.getDaysInMonth(type, funName)();
-      console.log(targetCurrent.state.value);
-      for (const i in expVal) {
-        expect(targetCurrent.state[i]).toBe(expVal[i]);
-      }
+      const nextProps = getDerived(props);
+      let changeHeadValue = '';
+      const changeHead = (value: string) => {
+        changeHeadValue = value;
+      };
+      const target = mount(<Date panelStates={nextProps} changeHead={changeHead} />);
+      const newTarget = getTarget(target, 'Date');
+      newTarget.getDaysInMonth(type, funName)();
+      expect(changeHeadValue).toBe(expVal.newValue);
     });
   }
-  getDaysInMonth('click changeMonth', <DatePicker />, 'month', 'add', {
-    currentYear: 2018,
-    currentMonth: 9,
-    choseDate: 17,
-    weekIndex: 1,
-    lastDayIndexInMonth: 31,
-    value: '2018-09-17',
-    choseDayIndex: 18,
-    today: 17,
-    weekDay: 1,
-  });
   getDaysInMonth(
-    'click changeMonth',
-    <DatePicker defaultValue={'2015年2月3日'} format={'YYYY年MM月DD日'} />,
+    'click month add',
+    {
+      value: '2018-10-01',
+      format: 'YYYY-MM-DD',
+      mode: 'date',
+      firstWeekDay: 0,
+      valueIsValid: true,
+      hasOldValue: true,
+    },
     'month',
     'add',
     {
-      currentYear: 2015,
-      currentMonth: 2,
-      choseDate: 3,
-      weekIndex: 0,
-      lastDayIndexInMonth: 30,
-      value: '2015年2月3日',
-      choseDayIndex: 3,
-      today: 17,
-      weekDay: 0,
+      newValue: '2018-11-01',
     }
   );
-  // getDaysInMonth(
-  //   'click changeMonth',
-  //   <WeeksPicker defaultValue={'2015-02'} firstWeekDay={2} isFollow/>,
-  //   'month',
-  //   'add',
-  //   {
-  //    currentYear:2015,
-  //    currentMonth:0,
-  //   // choseDate:3,
-  //   // weekIndex:0,
-  //   // lastDayIndexInMonth:30,
-  //    value:'2015-02',
-  //   // choseDayIndex:3,
-  //   // today:17,
-  //   // weekDay:0,
-  //   weeks:2
-  // });
-
-  it('onFocus ', () => {
-    const target = mount(<WeeksPicker defaultValue={'2015-02'} firstWeekDay={2} isFollow />);
-    const { newTarget, targetCurrent } = getTarget(target);
-    newTarget.onFocus();
-    console.log(targetCurrent.state.value);
-    // for (const i in expVal){
-    //   expect(targetCurrent.state[i]).toBe(expVal[i]);
-    // }
-  });
-
-  function testGetDatesfromWeeks(
-    title: string,
-    year: number,
-    weeks: number,
-    weekIndex: number,
-    value: string,
-    expValue: Array<number>,
-    index?: number,
-    child?: number,
-    choseValue?: string
-  ) {
+  getDaysInMonth(
+    'click month subtract',
+    {
+      value: '2018-10-01',
+      format: 'YYYY-MM-DD',
+      mode: 'date',
+      firstWeekDay: 0,
+      valueIsValid: true,
+      hasOldValue: true,
+    },
+    'month',
+    'subtract',
+    {
+      newValue: '2018-09-01',
+    }
+  );
+  getDaysInMonth(
+    'click year add',
+    {
+      value: '2018-10-01',
+      format: 'YYYY-MM-DD',
+      mode: 'date',
+      firstWeekDay: 0,
+      valueIsValid: true,
+      hasOldValue: true,
+    },
+    'year',
+    'add',
+    {
+      newValue: '2019-10-01',
+    }
+  );
+  getDaysInMonth(
+    'click year subtract',
+    {
+      value: '2018-10-01',
+      format: 'YYYY-MM-DD',
+      mode: 'date',
+      firstWeekDay: 0,
+      valueIsValid: true,
+      hasOldValue: true,
+    },
+    'year',
+    'subtract',
+    {
+      newValue: '2017-10-01',
+    }
+  );
+  function onDateChange(title: string, props: Object, params: string, expValue: Object) {
     it(`DatePicker ${title}`, () => {
-      const target = mount(<WeeksPicker />);
-      const { newTarget, targetCurrent } = getTarget(target);
-      targetCurrent.setState({ weekIndex });
-      targetCurrent.value = value;
-      const { endInWeeks, startInWeeks } = targetCurrent.getDatesfromWeeks(
-        year,
-        weeks,
-        index,
-        child,
-        choseValue
-      );
-      expect(startInWeeks).toBe(expValue[0]);
-      expect(endInWeeks).toBe(expValue[1]);
+      const nextProps = getDerived(props);
+      let onChangeValue = '';
+      const onChange = (obj: string) => {
+        onChangeValue = obj;
+      };
+      const target = mount(<Date panelStates={nextProps} onChange={onChange} />);
+      const newTarget = getTarget(target, 'Dates');
+      const { index, child } = params;
+      newTarget.onDateChange(index, child)();
+      expect(onChangeValue.newValue).toBe(expValue.newValue);
     });
   }
-  testGetDatesfromWeeks('getDatesfromWeeks-1', 2018, 37, 6, '2018-09-14', [14, 21]);
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-2 hover',
-    2018,
-    35,
-    6,
-    '2018-09-14',
-    [0, 7],
+  const onDateChangeDays = [
+    30,
+    1,
     2,
-    28,
-    '2018-08-28'
-  );
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-3 hover',
-    2018,
-    35,
+    3,
+    4,
+    5,
     6,
-    '2018-09-14',
-    [0, 7],
-    0,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
     26,
-    '2018-08-26'
+    27,
+    28,
+    29,
+    30,
+    31,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+  ];
+  for (let i = 0; i < 1; i++) {
+    onDateChange(
+      `onDateChange index ${i} child ${onDateChangeDays[i]}`,
+      {
+        value: '2018-10-01',
+        format: 'YYYY-MM-DD',
+        mode: 'date',
+        firstWeekDay: 0,
+        valueIsValid: true,
+        hasOldValue: true,
+      },
+      { index: i, child: onDateChangeDays[i] },
+      { newValue: '2018-09-30' }
+    );
+  }
+  for (let i = 1; i < 32; i++) {
+    let item = onDateChangeDays[i];
+    if (onDateChangeDays[i].toString().length === 1) {
+      item = '0' + onDateChangeDays[i];
+    }
+    onDateChange(
+      `onDateChange index ${i} child ${onDateChangeDays[i]}`,
+      {
+        value: '2018-10-01',
+        format: 'YYYY-MM-DD',
+        mode: 'date',
+        firstWeekDay: 0,
+        valueIsValid: true,
+        hasOldValue: true,
+      },
+      { index: i, child: onDateChangeDays[i] },
+      { newValue: `2018-10-${item}` }
+    );
+  }
+  for (let i = 32; i < 42; i++) {
+    let item = onDateChangeDays[i];
+    if (onDateChangeDays[i].toString().length === 1) {
+      item = '0' + onDateChangeDays[i];
+    }
+    onDateChange(
+      `onDateChange index ${i} child ${onDateChangeDays[i]}`,
+      {
+        value: '2018-10-01',
+        format: 'YYYY-MM-DD',
+        mode: 'date',
+        firstWeekDay: 0,
+        valueIsValid: true,
+        hasOldValue: true,
+      },
+      { index: i, child: onDateChangeDays[i] },
+      { newValue: `2018-11-${item}` }
+    );
+  }
+  function changeGetMode(title: string, props: Object, params, expValue?: Object) {
+    it(`DatePicker ${title}`, () => {
+      const nextProps = getDerived(props);
+      let getModeValue = '';
+      const getMode = (obj: string) => {
+        getModeValue = obj;
+      };
+      const target = mount(<Date panelStates={nextProps} getMode={getMode} />);
+      const newTarget = getTarget(target, 'Date');
+      newTarget.getMode(params.mode, params.from);
+      for (const i in expValue) {
+        expect(getModeValue[i]).toBe(expValue[i]);
+      }
+    });
+  }
+  changeGetMode(
+    'getMode year',
+    {
+      value: '2018-10-01',
+      format: 'YYYY-MM-DD',
+      mode: 'date',
+      firstWeekDay: 0,
+      valueIsValid: true,
+      hasOldValue: true,
+    },
+    { mode: 'year', from: 'date' },
+    { mode: 'year', from: 'date' }
+  );
+  changeGetMode(
+    'getMode getMode month',
+    {
+      value: '2018-10-01',
+      format: 'YYYY-MM-DD',
+      mode: 'date',
+      firstWeekDay: 0,
+      valueIsValid: true,
+      hasOldValue: true,
+    },
+    { mode: 'month', from: 'date' },
+    { mode: 'month', from: 'date' }
+  );
+  changeGetMode(
+    'getMode getMode month',
+    {
+      value: '2018-10-01',
+      format: 'YYYY-MM-DD',
+      mode: 'date',
+      firstWeekDay: 0,
+      valueIsValid: true,
+      hasOldValue: true,
+    },
+    { mode: 'week', from: 'date' },
+    { mode: 'week', from: 'date' }
   );
 
-  function getNormalWeekValues(
+  // //onMouseOver
+  function onMouseWeeks(
     title: string,
     props: Object,
-    year: number,
-    weeks: number,
-    expValue?: string
+    params: Object,
+    expValue?: Object,
+    funcName?: string
   ) {
     it(`WeeksPicker ${title}`, () => {
-      const target = mount(<WeeksPicker {...props} />);
-      const { targetCurrent } = getTarget(target);
-      const { startValue, endValue } = targetCurrent.getNormalWeekValues(year, weeks);
-      expect(startValue).toBe(expValue[0]);
-      expect(endValue).toBe(expValue[1]);
+      const nextProps = getDerived(props);
+      const target = mount(<Date panelStates={nextProps} />);
+      const newTarget = getTarget(target, 'Date');
+      const { index, child } = params;
+      newTarget.onMouseOver(index, child);
+      if (funcName === 'onMouseOut') {
+        newTarget.onMouseOut();
+      }
+      const { weekHoverStart, weekHoverEnd } = newTarget.state;
+      expect(weekHoverStart).toBe(expValue.weekHoverStart);
+      expect(weekHoverEnd).toBe(expValue.weekHoverEnd);
     });
   }
-  getNormalWeekValues('getNormalWeekValues one', {}, 2015, 6, ['2015-02-01', '2015-02-07']);
-  getNormalWeekValues('getNormalWeekValues two', {}, 2015, 1, ['2014-12-28', '2015-01-03']);
-  getNormalWeekValues('getNormalWeekValues three', {}, 2015, 5, ['2015-01-25', '2015-01-31']);
-
-  function getWeeksForFirstWeekDay(
-    title: string,
-    props: Object,
-    startValue: number,
-    endValue: number,
-    expValue?: string
-  ) {
-    it(`WeeksPicker ${title}`, () => {
-      const target = mount(<WeeksPicker {...props} />);
-      const { targetCurrent } = getTarget(target);
-      const { firstWeekDay } = targetCurrent.state;
-      const { newStartValue, newEndValue } = targetCurrent.getWeeksForFirstWeekDay(
-        startValue,
-        endValue,
-        firstWeekDay
-      );
-      expect(newStartValue).toBe(expValue[0]);
-      expect(newEndValue).toBe(expValue[1]);
-    });
-  }
-  getWeeksForFirstWeekDay(
-    'firstWeekDay 1',
-    { firstWeekDay: 1, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-02', '2015-02-08']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-02' },
+    { index: 14, child: 14 },
+    { weekHoverStart: 15, weekHoverEnd: 21 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay 2',
-    { firstWeekDay: 2, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-03', '2015-02-09']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-02' },
+    { index: 10, child: 10 },
+    { weekHoverStart: 8, weekHoverEnd: 14 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay 3',
-    { firstWeekDay: 3, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-04', '2015-02-10']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-10' },
+    { index: 0, child: 25 },
+    { weekHoverStart: 1, weekHoverEnd: 7 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay 4',
-    { firstWeekDay: 4, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-05', '2015-02-11']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-05' },
+    { index: 35, child: 4 },
+    { weekHoverStart: 36, weekHoverEnd: 42 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay 5',
-    { firstWeekDay: 5, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-06', '2015-02-12']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-05', firstWeekDay: 1 },
+    { index: 7, child: 5 },
+    { weekHoverStart: 8, weekHoverEnd: 14 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay 6',
-    { firstWeekDay: 6, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-07', '2015-02-13']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-05', firstWeekDay: 2 },
+    { index: 7, child: 6 },
+    { weekHoverStart: 8, weekHoverEnd: 14 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay 7',
-    { firstWeekDay: 7, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-01', '2015-02-07']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-05', firstWeekDay: 2 },
+    { index: 14, child: 13 },
+    { weekHoverStart: 15, weekHoverEnd: 21 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay 8',
-    { firstWeekDay: 8, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-01', '2015-02-07']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-05', firstWeekDay: 3 },
+    { index: 14, child: 14 },
+    { weekHoverStart: 15, weekHoverEnd: 21 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay -1',
-    { firstWeekDay: -1, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-01', '2015-02-07']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-05', firstWeekDay: 4 },
+    { index: 0, child: 1 },
+    { weekHoverStart: 1, weekHoverEnd: 7 }
   );
-  getWeeksForFirstWeekDay(
-    'firstWeekDay -2',
-    { firstWeekDay: -2, isFollow: true },
-    '2015-02-01',
-    '2015-02-07',
-    ['2015-02-01', '2015-02-07']
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-05', firstWeekDay: 5 },
+    { index: 14, child: 9 },
+    { weekHoverStart: 15, weekHoverEnd: 21 }
   );
-
-  function getWeeksFromValue(title: string, props: Object, value: string, expValue?: Object) {
-    it(`WeeksPicker ${title}`, () => {
-      const target = mount(<WeeksPicker {...props} />);
-      const { targetCurrent } = getTarget(target);
-      const { year, weeks } = targetCurrent.getWeeksFromValue(value);
-      expect(year).toBe(expValue.year);
-      expect(weeks).toBe(expValue.weeks);
-    });
-  }
-  getWeeksFromValue('getWeeksFromValue 1', {}, '2015-01-01', { year: 2015, weeks: 1 });
-  getWeeksFromValue('getWeeksFromValue 1', {}, '2015-03-08', { year: 2015, weeks: 11 });
-
-  // it('Function getDatesfromWeeks', async () => {
-  //   const target = mount(<Wrapper />);
-  //   // getTarget(target).setState({ offsetLeft: 70 });
-  //   // getTarget(target).mouseleave();
-  //   // expect(getTarget(target).state.isInBall).toBe(false);
-  //   // expect(getTarget(target).state.changeBackground).toBe(false);
-  //   expect(renderer.create(target).toJSON()).toMatchSnapshot();
-  // });
+  onMouseWeeks(
+    'onMouseOver Function',
+    { value: '2018-05', firstWeekDay: 6 },
+    { index: 0, child: 30 },
+    { weekHoverStart: 1, weekHoverEnd: 7 }
+  );
+  onMouseWeeks(
+    'onMouseOut Function',
+    { value: '2018-05', firstWeekDay: 6 },
+    { index: 0, child: 30 },
+    { weekHoverStart: '', weekHoverEnd: '' },
+    'onMouseOut'
+  );
 });

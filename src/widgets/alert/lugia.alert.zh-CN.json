@@ -33,11 +33,6 @@
       "desc": "是否显示关闭按钮",
       "defaultValue": "false"
     },
-    "banner": {
-      "type": "boolean",
-      "desc": "是否是顶部公告",
-      "defaultValue": "false"
-    },
     "description": {
       "type": "React.node",
       "desc": "提示内容的辅助性文字介绍",

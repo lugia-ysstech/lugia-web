@@ -19,7 +19,6 @@ export type AlertProps = {
   getTheme: Function,
   closeText?: string | React.ReactNode,
   closable?: boolean,
-  banner?: boolean,
   description?: string | React.ReactNode,
   onClose?: Function,
   icon?: string,
@@ -39,7 +38,6 @@ type CSSProps = {
   visible: boolean,
   height: number,
   animateStart: boolean,
-  banner: boolean,
 };
 
 const FontSize = 1.4;
