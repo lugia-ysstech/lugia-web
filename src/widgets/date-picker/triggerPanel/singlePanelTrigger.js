@@ -28,7 +28,7 @@ type TypeProps = {
   onFocus?: Function,
   onBlur?: Function,
   showTime?: any,
-  onOk?: any,
+  onOk?: Object,
   theme: Object,
   mode: string,
 };
@@ -90,6 +90,8 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { oldValue } = this;
     const hasOldValue = oldValue ? true : false;
     const newProps = getNewProps(this.props);
+    const { mode } = this.props;
+    const { isTime } = modeStyle(mode);
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
@@ -110,15 +112,19 @@ class DateInput extends Component<TypeProps, TypeState> {
                 index={0}
                 hasOldValue={hasOldValue}
               />
-              <PageFooter
-                {...this.props}
-                format={format}
-                onChange={this.onChange}
-                footerChange={this.footerChange}
-                setTreePopupVisible={this.setTreePopupVisible}
-                showTimeBtnIsDisabled={showTimeBtnIsDisabled}
-                model={this.pageFooterChange}
-              />
+              {isTime ? (
+                ''
+              ) : (
+                <PageFooter
+                  {...this.props}
+                  format={format}
+                  onChange={this.onChange}
+                  footerChange={this.footerChange}
+                  setTreePopupVisible={this.setTreePopupVisible}
+                  showTimeBtnIsDisabled={showTimeBtnIsDisabled}
+                  model={this.pageFooterChange}
+                />
+              )}
             </div>
           }
           align="bottomLeft"
@@ -152,18 +158,21 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { normalStyleValueObj } = this;
     const { format } = this.state;
     const { mode } = this.props;
-    const { isWeeks, isWeek } = modeStyle(mode);
+    const { isWeeks, isWeek, isYear, isMonth } = modeStyle(mode);
     const isValid =
       action === 'click' ? true : formatValueIsValid(normalStyleValueObj, newValue, format);
+    const { onChange } = this.props;
+    let changeParams = { isValid: false };
     if (isValid) {
       visible = false;
-      const { onChange, showTime, onOk } = this.props;
-      if (showTime || onOk) {
+      const { showTime, onOk } = this.props;
+      if ((showTime || onOk) && !(isWeek || isYear || isMonth)) {
         visible = true;
       }
-      onChange && onChange({ event, newValue, oldValue: this.oldValue });
+      changeParams = { event, newValue, oldValue: this.oldValue };
       this.setModeState(newValue, format, isWeeks || isWeek);
     }
+    onChange && onChange(changeParams);
     this.setState({ value: newValue, isValid });
     this.setTreePopupVisible(visible);
   };
@@ -218,6 +227,10 @@ class DateInput extends Component<TypeProps, TypeState> {
     let stateData: Object;
     if (status === 'onOk') {
       visible = false;
+      const { onOk } = this.props;
+      const onOkChange =
+        typeof onOk === 'function' ? onOk : onOk && onOk.Function ? onOk.Function : '';
+      onOkChange && onOkChange();
       stateData = { status: 'showDate', visible: false };
     }
     if (status !== 'onOk') {
