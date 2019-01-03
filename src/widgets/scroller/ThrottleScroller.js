@@ -17,8 +17,8 @@ import { px2emcss } from '../css/units';
 const em = px2emcss(FontSizeNumber);
 
 const height = props => {
-  const { theme, totalSize } = props;
-  const { autoHeight = false, height: themeHeight } = theme;
+  const { theme, totalSize, autoHeight = false } = props;
+  const { height: themeHeight } = theme;
   if (!autoHeight) {
     return themeHeight ? `height:${em(themeHeight)};` : `height:${em(DefaultHeight)};`;
   }
@@ -121,7 +121,7 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
       const start = this.getStart(props, this.state);
       const { getTheme } = props;
       const theme = getTheme();
-      const { level } = props;
+      const { level, autoHeight = false } = props;
       const totalSize = this.fetchTotalSize();
 
       const pack = (element: Object | Array<Object>) => {
@@ -130,6 +130,7 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
             level={level}
             totalSize={totalSize}
             theme={theme}
+            autoHeight={autoHeight}
             onWheel={this.onWheel}
           >
             {element}
@@ -213,7 +214,8 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
     }
 
     fetchViewSize = () => {
-      const { height: themeHeight, autoHeight = false } = this.props.getTheme();
+      const { autoHeight = false } = this.props;
+      const { height: themeHeight } = this.props.getTheme();
       if (!autoHeight) {
         return themeHeight || themeHeight === 0 ? themeHeight : DefaultHeight;
       }

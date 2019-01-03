@@ -1,6 +1,6 @@
 {
   "widgetName": "Upload",
-  "title": "上传",
+  "title": "Upload  上传",
   "desc": "上传组件,可通过文件选择和拖拽上传",
   "props": {
     "getTheme": {
