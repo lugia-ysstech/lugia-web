@@ -33,6 +33,6 @@
       }
     }
   },
-  "childrenWidget": ["header","footer","content","aside"],
+  "childrenWidget": ["header", "aside"],
   "category": ["布局"]
 }
