@@ -1,13 +1,16 @@
 /*
-*by wangcuixia
-* @flow
-* */
+ *by wangcuixia
+ *@flow
+ * */
 import React from 'react';
 import { LodingWrapper, LodingInner, LodingInnerCircle } from './styled';
+import colorsFunc from '../css/stateColor';
+export const { themeColor } = colorsFunc();
 type PropsCheck = {
   width?: number,
   color?: string,
   scale?: boolean,
+  getTheme: Function,
 };
 type StateCheck = {
   width?: number,
@@ -31,13 +34,9 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
       width = 200;
     }
     if (!color) {
-      color = '#13bef7';
+      color = themeColor;
     }
-    if (scale) {
-      scale = true;
-    } else {
-      scale = false;
-    }
+    scale = scale === true;
     return {
       width,
       color,
@@ -46,8 +45,8 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
   }
   render() {
     const { scale, color, width = 0 } = this.state;
-    //loading的直径和圆点直径比例为8：1；
-    let circleDiameter = Math.round(width * 0.125);
+    //loading的直径和圆点直径比例为8：1；后改为6:1
+    let circleDiameter = Math.round(width / 6);
     const children = [];
     let delay = 0.6;
     for (let i = 0; i < 5; i++) {
