@@ -45,8 +45,8 @@ export const RightIcon = styled.span`
 `;
 
 const getMaxHeight = props => {
-  const { theme, length, size } = props;
-  const { height: themeHeight, autoHeight = false } = theme;
+  const { theme, length, size, autoHeight = false } = props;
+  const { height: themeHeight } = theme;
   let height;
   if (!autoHeight && !themeHeight) {
     height = DefaultHeight;
@@ -61,8 +61,8 @@ const getMaxHeight = props => {
 };
 
 const getHeight = props => {
-  const { theme, length, size } = props;
-  const { height: themeHeight, autoHeight = false } = theme;
+  const { theme, length, size, autoHeight = false } = props;
+  const { height: themeHeight } = theme;
   let height;
   if (autoHeight) {
     const menuItemHeight = getMenuItemHeight(size);
@@ -74,12 +74,9 @@ const getHeight = props => {
 };
 
 const getWidth = props => {
-  const { theme, level } = props;
-  const { width, submenuWidth } = theme;
-  if (level === 0) {
-    return width ? `width: ${em(width)};` : '';
-  }
-  return submenuWidth ? `width: ${em(submenuWidth)};` : `width: ${em(width)}`;
+  const { theme } = props;
+  const { width } = theme;
+  return `width: ${em(width)}`;
 };
 export const MenuContainer = styled.ul`
   ${getWidth};

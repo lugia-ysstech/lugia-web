@@ -82,6 +82,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     displayField: 'text',
     inlineExpandAll: true,
     theme: 'light',
+    inlineType: 'primary',
+    separator: '|',
   };
 
   treeData: Array<Object>;
@@ -130,7 +132,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         width,
         submenuWidth,
         height,
-        autoHeight: true,
       },
     };
     return (
@@ -139,6 +140,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           <Menu
             data={data}
             separator={separator}
+            autoHeight={true}
             popupVisible={popupVisible}
             valueField={valueField}
             displayField={displayField}
@@ -185,11 +187,11 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   getInlineNavMenu = () => {
     const { value } = this.state;
     const { inlineType, inlineExpandAll, valueField, displayField, theme } = this.props;
-    const { width, color } = this.getThemeTarget();
+    const { width, color, height } = this.getThemeTarget();
     const config = {
       [Widget.Tree]: {
         width,
-        autoHeight: true,
+        height,
         color,
       },
     };
@@ -199,6 +201,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         <Tree
           expandAll={inlineExpandAll}
           theme={theme}
+          autoHeight={true}
           inlineType={inlineType}
           data={treeData}
           size={'bigger'}
