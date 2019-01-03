@@ -1,6 +1,6 @@
 {
   "widgetName": "RadioGroup",
-  "title": "RadioGroup 单选框",
+  "title": "单选框",
   "desc": "单选框。",
   "props": {
     "getTheme": {

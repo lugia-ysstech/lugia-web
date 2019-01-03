@@ -1,6 +1,6 @@
 {
   "widgetName": "Select",
-  "title": "Select 选择器",
+  "title": "选择器",
   "desc": "选项过多时，弹出下拉菜单给用户选择操作",
   "props": {
     "getTheme": {

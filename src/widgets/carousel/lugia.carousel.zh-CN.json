@@ -1,6 +1,6 @@
 {
   "widgetName": "Carousel",
-  "title": "Carousel 走马灯",
+  "title": "走马灯",
   "desc": "常用于展示一组图片或卡片轮播",
   "props": {
     "getTheme": {
