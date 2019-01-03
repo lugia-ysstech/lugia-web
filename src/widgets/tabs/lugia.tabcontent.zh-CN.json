@@ -1,6 +1,6 @@
 {
   "widgetName": "Tabcontent",
-  "title": "标签页内容",
+  "title": "Tabcontent  标签页内容",
   "desc": "选项卡内容显示组件",
   "props": {
     "activityKey": {

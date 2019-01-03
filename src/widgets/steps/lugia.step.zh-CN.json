@@ -1,6 +1,6 @@
 {
   "widgetName": "Step",
-  "title": "单步骤",
+  "title": "Step  单步骤",
   "desc": "步骤条中每一个步骤",
   "props": {
     "getTheme": {

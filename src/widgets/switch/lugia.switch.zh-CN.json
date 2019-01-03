@@ -1,6 +1,6 @@
 {
   "widgetName": "Switch",
-  "title": "开关",
+  "title": "Switch  开关",
   "desc": "开关选择器",
   "props": {
     "defaultValue": {
