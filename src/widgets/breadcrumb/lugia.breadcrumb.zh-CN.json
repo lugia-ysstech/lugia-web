@@ -1,6 +1,6 @@
 {
   "widgetName": "Breadcrumb",
-  "title": "Breadcrumb面包屑",
+  "title": "面包屑",
   "desc": "显示系统的层级关系和当先所在的位置,并能向上返回",
   "props": {
     "separator": {

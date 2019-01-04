@@ -1,0 +1,91 @@
+{
+  "widgetName": "Navmenu",
+  "title": "导航菜单",
+  "desc": "为页面提供导航功能的菜单",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "[{valueField: '', displayField: ''}]",
+      "desc": "生成选择项的数据",
+      "defaultValue": "undefined"
+    },
+    "valueField": {
+      "type": "string",
+      "desc": "data数据的value值的名称",
+      "defaultValue": "value"
+    },
+    "displayField": {
+      "type": "string",
+      "desc": "data数据的displayValue值的名称",
+      "defaultValue": "text"
+    },
+    "value": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目",
+      "defaultValue": "undefined"
+    },
+    "mode": {
+      "type": "vertical | inline",
+      "desc": "菜单类型，支持垂直和内嵌模式",
+      "defaultValue": "inline"
+    },
+    "inlineType": {
+      "type": "primary | ellipse",
+      "desc": "菜单类型为inline(内嵌模式)时,支持两种风格",
+      "defaultValue": "primary"
+    },
+    "theme": {
+      "type": "light | dark",
+      "desc": "菜单类型为inline(内嵌模式)时,支持两种主题",
+      "defaultValue": "light"
+    },
+    "inlineExpandAll": {
+      "type": "boolean",
+      "desc": "菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true",
+      "defaultValue": "true"
+    },
+
+    "separator": {
+      "type": "string",
+      "desc": "自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ",
+      "defaultValue": "|"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "mode为vertical时生效,点击选中项时触发",
+      "args": [
+        {
+          "name": "target",
+          "desc": "点击项所包含的数据信息",
+          "type": "Object"
+        }
+      ]
+    },
+    "onChange": {
+      "desc": "选中值改变时触发",
+      "args": [
+        {
+          "name": "target",
+          "desc": "改变的值,所包含的数据信息",
+          "type": "Object"
+        }
+      ]
+    },
+    "onSelect": {
+      "desc": "mode为inline时生效,选中项时触发",
+      "args": [
+        {
+          "name": "target",
+          "desc": "选中项所包含的数据信息",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "category": ["导航"]
+}

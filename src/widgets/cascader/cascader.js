@@ -37,12 +37,9 @@ type CascaderProps = {
   separator?: string,
   value: string[],
   displayValue?: string[],
-  defaultValue?: string[],
-  selectedKeys: string[],
   disabled: boolean,
   displayField: string,
   valueField: string,
-  popupVisible?: boolean,
   showAllLevels?: boolean,
   allowClear?: boolean,
 };
@@ -60,7 +57,6 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     offsetY: 5,
     offsetX: 2,
     disabled: false,
-    popupVisible: false,
     getTheme: () => {},
     showAllLevels: true,
     displayField: DisplayField,
@@ -208,7 +204,16 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     this.setState({ value: selectedKeys, expandedPath: selectedKeys, ...inputValueState });
 
     const { onClick } = this.props;
-    onClick && onClick(event, keys, item);
+    const obj = this.getExposeTarget(event, selectedKeys, item);
+    onClick && onClick(obj);
+  };
+
+  getExposeTarget = (event: Object, selectedKeys: string[], item: Object) => {
+    const obj = {};
+    obj[event] = event;
+    obj[selectedKeys] = selectedKeys;
+    obj[item] = item;
+    return obj;
   };
 
   onMouseEnter = (event: Object, expandedPath: string[]) => {
@@ -239,9 +244,10 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     this.setPopupVisible(false, { expandedPath: [], value: [], inputValue: [] });
   };
 
-  onChange = (target: Object) => {
+  onChange = (target: Object, item) => {
+    const { selectedKeys } = target;
     const { onChange } = this.props;
-    onChange && onChange(target);
+    onChange && onChange(selectedKeys);
   };
 
   onMouseEnterContainer = () => {

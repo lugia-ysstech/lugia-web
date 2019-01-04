@@ -26,19 +26,13 @@ import {
 
 const MenuWrap = styled.div`
   display: inline-block;
+  vertical-align: top;
 `;
 
 type RowData = { [key: string]: any };
 type NavMenuProps = {
   getTheme: Function,
-  onScroller?: Function,
-  onlySelectLeaf: boolean,
-  displayField: string,
-  igronSelectField?: string,
   value: ?Array<string>,
-  displayValue: ?Array<string>,
-  defaultValue: ?Array<string>,
-  onExpand?: Function,
   onSelect?: Function,
   onChange?: Function,
   inlineExpandAll?: boolean,
@@ -170,9 +164,18 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       this.setPopupVisible(false, { value: selectedKeys });
     }
 
+    const exposeTarget = this.getExposeTarget(event, item, keys);
     const { onClick, onChange } = this.props;
-    onChange && onChange(keys, item);
-    onClick && onClick(keys, item);
+    onChange && onChange(exposeTarget);
+    onClick && onClick(exposeTarget);
+  };
+
+  getExposeTarget = (event: Object, item: Object, keys: string[]) => {
+    const obj = {};
+    obj[event] = event;
+    obj[item] = item;
+    obj[keys] = keys;
+    return obj;
   };
 
   setPopupVisible(popupVisible: boolean, otherTarget?: Object = {}) {
@@ -197,23 +200,25 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     };
     const treeData = this.treeData;
     return (
-      <Theme config={config}>
-        <Tree
-          expandAll={inlineExpandAll}
-          theme={theme}
-          autoHeight={true}
-          inlineType={inlineType}
-          data={treeData}
-          size={'bigger'}
-          value={value}
-          mutliple={false}
-          valueField={valueField}
-          displayField={displayField}
-          onlySelectLeaf={true}
-          onChange={this.onChange}
-          themeStyle={themeStyle}
-        />
-      </Theme>
+      <MenuWrap>
+        <Theme config={config}>
+          <Tree
+            expandAll={inlineExpandAll}
+            theme={theme}
+            autoHeight={true}
+            inlineType={inlineType}
+            data={treeData}
+            size={'bigger'}
+            value={value}
+            mutliple={false}
+            valueField={valueField}
+            displayField={displayField}
+            onlySelectLeaf={true}
+            onChange={this.onChange}
+            themeStyle={themeStyle}
+          />
+        </Theme>
+      </MenuWrap>
     );
   };
 

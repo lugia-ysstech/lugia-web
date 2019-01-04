@@ -34,7 +34,6 @@ export type MenuItemProps = {
   onMouseEnter?: Function,
   children?: React.Node,
   disabled: boolean,
-  checkbox: boolean,
   size: SizeType,
   checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
 };
@@ -159,7 +158,6 @@ class MenuItem extends React.Component<MenuItemProps> {
     checked: false,
     mutliple: false,
     disabled: false,
-    checkbox: false,
   };
   static displayName = Widget.MenuItem;
 

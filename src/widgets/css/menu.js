@@ -50,7 +50,7 @@ const getMaxHeight = props => {
   let height;
   if (!autoHeight && !themeHeight) {
     height = DefaultHeight;
-  } else if (themeHeight) {
+  } else if (themeHeight || themeHeight === 0) {
     height = themeHeight;
   } else {
     const menuItemHeight = getMenuItemHeight(size);

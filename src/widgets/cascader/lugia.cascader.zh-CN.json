@@ -1,0 +1,124 @@
+{
+  "widgetName": "Cascader",
+  "title": "级联选择",
+  "desc": "通过级联选择,可以清晰地显示层级数据结构",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "action": {
+      "type": "hover | click",
+      "desc": "展开子菜单的方式",
+      "defaultValue": "undefined"
+    },
+
+    "offsetX": {
+      "type": "number",
+      "desc": "菜单间的间隔",
+      "defaultValue": "2"
+    },
+
+    "offsetY": {
+      "type": "number",
+      "desc": "显示框与菜单的间隔",
+      "defaultValue": "5"
+    },
+
+    "placeholder": {
+      "type": "string",
+      "desc": "显示框占位符",
+      "defaultValue": "undefined"
+    },
+
+    "valueField": {
+      "type": "string",
+      "desc": "data数据的value值的名称",
+      "defaultValue": "value"
+    },
+    "displayField": {
+      "type": "string",
+      "desc": "data数据的displayValue值的名称",
+      "defaultValue": "text"
+    },
+
+    "data": {
+      "type": "[{valueField: '', displayField: ''}]",
+      "desc": "级联选择的数据",
+      "defaultValue": "undefined"
+    },
+
+    "separator": {
+      "type": "string",
+      "desc": "自定义级联数据分隔符",
+      "defaultValue": "|"
+    },
+
+    "value": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目",
+      "defaultValue": "undefined"
+    },
+
+    "displayValue": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目的displayValue值",
+      "defaultValue": "undefined"
+    },
+
+    "disabled": {
+      "type": "boolean",
+      "desc": "是否禁选",
+      "defaultValue": "false"
+    },
+
+    "allowClear": {
+      "type": "boolean",
+      "desc": "是否允许清空选中值",
+      "defaultValue": "true"
+    },
+
+    "showAllLevels": {
+      "type": "boolean",
+      "desc": "是否显示所有层级关系的值",
+      "defaultValue": "true"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击选择项时触发",
+      "args": [
+        {
+          "name": "target",
+          "desc": "包含事件对象event,选中的层级数据(通过自定义分隔符separator连接),点击项的数据item",
+          "type": "Object"
+        }
+      ]
+    },
+
+    "onClear": {
+      "desc": "点击清空图标时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+
+    "onChange": {
+      "desc": "选中值改变时触发",
+      "args": [
+        {
+          "name": "selectedKeys",
+          "desc": "选中的层级数据(通过自定义分隔符separator连接),点击项的数据item",
+          "type": "string[]"
+        }
+      ]
+    }
+  },
+  "type": {},
+  "category": ["数据录用"]
+}

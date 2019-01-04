@@ -74,14 +74,11 @@ export type MenuProps = {
   onExpandPathChange?: Function,
   onMouseLeave?: Function,
   limitCount?: number,
-  disabled?: boolean,
-  checkbox?: boolean,
   checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
   offsetX: number,
   offsetY: number,
   popupVisible?: boolean,
   separator: string,
-  cancelData: Array<Object>,
   action: 'hover' | 'click',
   size: 'large' | 'default' | 'bigger',
   subsize: 'large' | 'default' | 'bigger',
@@ -334,11 +331,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
     disabled: boolean,
     indexOffsetY: number
   ): MenuItemProps {
-    const { mutliple, checkbox } = this.props;
+    const { mutliple } = this.props;
     const eventConfig = this.onMenuItemEventHandler(key, item, disabled, indexOffsetY);
 
     if (!key || !isSelect(key)) {
-      return { mutliple, ...eventConfig, checked: false, checkbox, disabled };
+      return { mutliple, ...eventConfig, checked: false, disabled };
     }
 
     return { checked: true, mutliple, ...eventConfig, disabled };
