@@ -138,33 +138,44 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
 
 function fetchPlainCSS(color: string): { [key: ButtonType]: TypeColor } {
   const defaultColor = color || globalThemeColor;
+  const bgReduceA = 5;
   const bgReduce = 55;
   const borderReduceS = 45;
   return {
     default: {
-      color: defaultColor,
+      color: changeColor('#333', borderReduceS).color,
+      disabledColor: '',
       backgroundColor: white,
       border: `1px solid ${disableColor}`,
+      disabledBorder: `1px solid ${changeColor('#333', borderReduceS).color}`, //正常颜色下调s 45%
     },
     primary: {
       color: defaultColor,
-      backgroundColor: changeColor(defaultColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(defaultColor, borderReduceS).color}`, //正常颜色下调s 45%
+      disabledColor: changeColor(defaultColor, borderReduceS).color, //正常颜色下调s 45%
+      backgroundColor: changeColor(defaultColor, 0, 0, bgReduceA).rgba, //正常颜色透明度 5%；
+      border: `1px solid ${defaultColor}`, //正常颜se
+      disabledBorder: `1px solid ${changeColor(defaultColor, borderReduceS).color}`, //正常颜色下调s 45%
     },
     success: {
       color: successColor,
-      backgroundColor: changeColor(successColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(successColor, borderReduceS).color}`, //正常颜色下调s 45%
+      disabledColor: changeColor(successColor, borderReduceS).color, //正常颜色下调s 45%
+      backgroundColor: changeColor(successColor, 0, 0, bgReduceA).rgba, //正常颜色透明度 5%；
+      border: `1px solid ${successColor}`, //正常颜色
+      disabledBorder: `1px solid ${changeColor(successColor, borderReduceS).color}`, //正常颜色下调s 45%
     },
     warning: {
       color: warningColor,
-      backgroundColor: changeColor(warningColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(warningColor, borderReduceS).color}`, //正常颜色下调s 45%
+      disabledColor: changeColor(warningColor, borderReduceS).color, //正常颜色下调s 45%
+      backgroundColor: changeColor(warningColor, 0, 0, bgReduceA).rgba, //正常颜色透明度 5%；
+      border: `1px solid ${warningColor}`, //正常颜色
+      disabledBorder: `1px solid ${changeColor(warningColor, borderReduceS).color}`, //正常颜色下调s 45%
     },
     danger: {
       color: dangerColor,
-      backgroundColor: changeColor(dangerColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(dangerColor, borderReduceS).color}`, //正常颜色下调s 45%
+      disabledColor: changeColor(dangerColor, borderReduceS).color, //正常颜色下调s 45%
+      backgroundColor: changeColor(dangerColor, 0, 0, bgReduceA).rgba, //正常颜色透明度 5%；
+      border: `1px solid ${dangerColor}`, //正常颜色
+      disabledBorder: `1px solid ${changeColor(dangerColor, borderReduceS).color}`, //正常颜色下调s 45%
     },
   };
 }
@@ -223,17 +234,29 @@ export const getDisabledCSS = (props: ButtonOutProps) => {
     color = '',
     border = '';
   const cursor = 'not-allowed';
-  const { disabled, type = 'default', themes } = props;
+  const { disabled, type = 'default', themes, plain } = props;
   const themeColor = getThemeColor(themes);
   const colorChange = fetchTypeCSS(themeColor)[type].backgroundColor;
+
   if (type === 'default') {
     color = disableColor;
     border = '1px solid #e8e8e8';
     backgroundColor = white;
   } else {
-    color = white;
-    border = 'none';
-    backgroundColor = changeColor(colorChange, 45).color; //orange: 正常色S下调45%
+    if (plain) {
+      const {
+        disabledColor,
+        disabledBorder,
+        backgroundColor: disabledBackgroundColor,
+      } = fetchPlainCSS()[type];
+      color = disabledColor;
+      border = disabledBorder;
+      backgroundColor = disabledBackgroundColor;
+    } else {
+      color = white;
+      border = 'none';
+      backgroundColor = changeColor(colorChange, 45).color; //orange: 正常色S下调45%
+    }
   }
   if (disabled) {
     return `

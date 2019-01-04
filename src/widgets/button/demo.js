@@ -29,40 +29,6 @@ export default () => {
   return (
     <div>
       <Wrapper>
-        <p>type</p>
-        <p>default</p>
-        <Button>Default</Button>
-        <p>primary</p>
-        <Button type="primary">Primary</Button>
-        <p>success</p>
-        <Button type="success">Success</Button>
-        <p>warning</p>
-        <Button type="warning">Warning</Button>
-        <p>danger</p>
-        <Button type="danger">Danger</Button>
-      </Wrapper>
-      <Wrapper>
-        <p>shape</p>
-        <p>default</p>
-        <Button shape="round">Hello</Button>
-        <p>primary</p>
-        <Button type="primary" shape="round">
-          Primary
-        </Button>
-        <p>success</p>
-        <Button type="success" shape="round">
-          Primary
-        </Button>
-        <p>warning</p>
-        <Button type="warning" shape="round">
-          Primary
-        </Button>
-        <p>danger</p>
-        <Button type="danger" shape="round">
-          Primary
-        </Button>
-      </Wrapper>
-      <Wrapper>
         <p>plain</p>
         <p>default</p>
         <Button shape="round" plain>
