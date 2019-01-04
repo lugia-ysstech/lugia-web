@@ -89,6 +89,5 @@
       "args":[]
     }
   },
-  "childrenWidget": ["month","year","content","aside"],
   "category": ["数据录入"]
 }
