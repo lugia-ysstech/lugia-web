@@ -98,11 +98,18 @@ const getBackgroundCSS = (props: CSSProps) => {
 
   return getColor(type, 'background');
 };
+const getPadding = (props: CSSProps): string => {
+  const { hasDect } = props;
+  if (hasDect) {
+    return `${em(18)} ${em(padding)}`;
+  }
+  return `${em(12)} ${em(padding)}`;
+};
 const getAlertAnimate = (props: CSSProps) => {
   const { height, animateStart } = props;
   const closeAnimate = keyframes`
     0% {
-      padding: ${em(24)} ${em(padding)};
+      padding: ${getPadding(props)};
       height: ${height}px;
     }
    
@@ -126,7 +133,7 @@ export const Alert = styled.div`
   box-sizing: border-box;
   font-size: ${FontSize}rem;
   overflow: hidden;
-  padding: ${em(24)} ${em(padding)};
+  padding: ${props => getPadding(props)};
   line-height: 1.5;
   border-radius: ${em(4)};
   ${getAlertBorderCSS};

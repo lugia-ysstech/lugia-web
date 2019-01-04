@@ -1,6 +1,6 @@
 {
   "widgetName": "Icon",
-  "title": "Icon  图标",
+  "title": "图标",
   "desc": "语义化的矢量图形",
   "props": {
     "getTheme": {

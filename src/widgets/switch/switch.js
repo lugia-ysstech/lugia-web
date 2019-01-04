@@ -1,16 +1,13 @@
 /*
-*
-* by wangcuixia
-* @flow
-*2018/7/9
-* */
+ *
+ * by wangcuixia
+ * @flow
+ *2018/7/9
+ * */
 import * as React from 'react';
-import { SwitchWrapper, SwitchCircle } from './styled';
-import Loading from '../loading/index';
+import { SwitchWrapper, SwitchCircle, LoadingIcon } from './styled';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
-import Widgets from '../consts/index';
-import Theme from '../theme/index';
 
 type TypeProps = {
   value?: boolean,
@@ -165,12 +162,8 @@ class Switch extends React.Component<TypeProps, TypeState> {
         {text}
         <SwitchCircle {...config}>
           {loading ? (
-            <Theme config={{ [Widgets.Loading]: { width: 10, color: '#ccc' } }}>
-              <Loading />
-            </Theme>
-          ) : (
-            ''
-          )}
+            <LoadingIcon loading={loading} iconClass="lugia-icon-financial_loading_o" />
+          ) : null}
         </SwitchCircle>
       </SwitchWrapper>
     );

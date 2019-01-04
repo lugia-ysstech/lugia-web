@@ -16,7 +16,7 @@ export default (svThemeConfigTree: Object, contextConfig: Object, propsConfig: O
   ]);
 
   function getObject(obj, key) {
-    return obj ? obj[key] : {};
+    return obj && key ? obj[key] : {};
   }
 
   const result = {};

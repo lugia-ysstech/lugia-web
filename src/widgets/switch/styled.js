@@ -1,9 +1,10 @@
 /*
-* by wangcuixia
-* */
+ * by wangcuixia
+ * */
 import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
+import Icon from '../icon';
 const em = px2emcss(1.2);
 const { themeColor, successColor, dangerColor } = colorsFunc();
 const { disabledColor } = colorsFunc(themeColor);
@@ -56,16 +57,16 @@ export const SwitchWrapper = styled.span`
     (props.loading
       ? `${disabledColor}`
       : props.disabled
-        ? `${disabledColor}`
-        : props.value
-          ? props.isInverse
-            ? `${successColor}`
-            : `${themeColor}`
-          : props.isInverse
-            ? `${dangerColor}`
-            : props.isInverse !== undefined
-              ? `${themeColor}`
-              : '#ccc')};
+      ? `${disabledColor}`
+      : props.value
+      ? props.isInverse
+        ? `${successColor}`
+        : `${themeColor}`
+      : props.isInverse
+      ? `${dangerColor}`
+      : props.isInverse !== undefined
+      ? `${themeColor}`
+      : '#ccc')};
   position: relative;
   text-align: ${props => (props.value ? 'left' : 'right')};
   padding: 0 ${em(4)};  
@@ -116,3 +117,21 @@ const getStyled = (props: CssProps) => {
     circleSize,
   };
 };
+
+const getKeyframes = () => {
+  return `animation: rotate 1s linear infinite;
+@keyframes rotate{from{transform: rotate(0deg)}
+    to{transform: rotate(359deg)}`;
+};
+
+export const LoadingIcon: Object = styled(Icon)`
+  position: absolute;
+  user-select: none;
+  text-align: center;
+  font-size: 1.2rem;
+  color: ${disabledColor};
+  border-radius: 50%;
+  left: ${em(1)};
+  top: ${em(1)};
+  ${getKeyframes};
+`;

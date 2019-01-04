@@ -12,10 +12,10 @@ import type { AlertProps, AlertState } from '../css/alert';
 import { Alert, CloseIcon, CloseText, Description, Icons, Message } from '../css/alert';
 
 const AlertIcons = {
-  info: 'lugia-icon-reminder_info_circle',
-  success: 'lugia-icon-reminder_check_circle',
-  error: 'lugia-icon-reminder_close_circle',
-  warning: 'lugia-icon-reminder_exclamation_circle',
+  info: 'lugia-icon-reminder_info_circle_o',
+  success: 'lugia-icon-reminder_check_circle_o',
+  error: 'lugia-icon-reminder_close_circle_o',
+  warning: 'lugia-icon-reminder_exclamation_circle_o',
 };
 
 export default ThemeProvider(
@@ -59,6 +59,7 @@ export default ThemeProvider(
           visible={visible}
           animateStart={animateStart}
           height={height}
+          hasDect={hasDect}
         >
           {showIcon ? (
             <Icons

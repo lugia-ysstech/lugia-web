@@ -1,6 +1,6 @@
 {
   "widgetName": "Loading",
-  "title": "Loading  加载中",
+  "title": "加载中",
   "desc": "用于页面和区块的加载中状态",
   "props": {
     "getTheme": {

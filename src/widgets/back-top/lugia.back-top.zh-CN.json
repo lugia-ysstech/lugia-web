@@ -1,6 +1,6 @@
 {
   "widgetName": "BackTop",
-  "title": "BackTop 回到顶部",
+  "title": "回到顶部",
   "desc": "返回页面顶部。",
   "props": {
     "getTheme": {

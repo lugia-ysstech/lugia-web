@@ -1,6 +1,6 @@
 {
   "widgetName": "Collapse",
-  "title": "Collapse 折叠面板",
+  "title": "折叠面板",
   "desc": "折叠面板，用于展开/折叠内容区域。",
   "props": {
     "getTheme": {

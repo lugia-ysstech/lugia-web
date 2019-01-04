@@ -61,7 +61,6 @@ class Time extends Component<TypeProps, TypeState> {
     const keys = value ? getShowTime(value, format) : ['', '', ''];
     const starts = value ? [...keys] : ['', '', ''];
     const newStarts = newIsScroll && preState ? preState.starts : starts;
-    console.log(keys, preState && preState.starts, newStarts);
     return {
       format,
       keys,
@@ -126,7 +125,6 @@ class Time extends Component<TypeProps, TypeState> {
       hasTimeWrapBorder,
     };
     const { TimeColWidth } = getThemeProperty(config);
-    console.log(keys, starts);
     return (
       <Theme config={{ [Widget.Menu]: { width: TimeColWidth } }}>
         <TimeWrap {...config}>
