@@ -40,14 +40,13 @@ type TreeSelectProps = {
   onRefresh?: Function,
   valueField: string,
   displayField: string,
-  defaultValue?: string,
   mutliple: boolean,
   onlySelectLeaf: boolean,
   igronSelectField?: string,
   onTrigger?: Function,
   onChange?: Function,
   onSelect?: Function,
-
+  expandAll: boolean,
   splitQuery?: string,
   onQuery?: Function,
   mode: 'local' | 'remote',
@@ -56,12 +55,11 @@ type TreeSelectProps = {
   canInput: boolean,
   disabled: boolean,
   placeholder?: string,
-  defaultDisplayValue?: string,
 
   /* create by ZhangBoPing */
-  label: string,
+  label: string, //
   labelSize: number,
-  canSearch: boolean,
+  canSearch: boolean, //
 };
 type TreeSelectState = {
   open: boolean,
@@ -125,6 +123,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     throttle: 200,
     disabled: false,
     canSearch: false,
+    expandAll: false,
   };
 
   state: TreeSelectState;
@@ -237,6 +236,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       igronSelectField,
       valueField,
       displayField,
+      expandAll,
     } = props;
 
     const {
@@ -274,6 +274,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         className="sv"
         current={current}
         start={start}
+        expandAll={expandAll}
         onScroller={this.onScroller}
         query={treeFilter}
         ref={getTree}
@@ -355,14 +356,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   onClearQuery = () => {
     this.onQueryInputChange('');
   };
-  onRefresh = () => {
+  onRefresh = (e: Object) => {
     const { props } = this;
     this.onQueryInputChange('');
     this.setValue([], [], {
       start: 0,
     });
     const { onRefresh } = props;
-    onRefresh && onRefresh();
+    onRefresh && onRefresh(e);
   };
 
   isMutliple() {

@@ -1,0 +1,136 @@
+{
+  "widgetName": "Tree",
+  "title": "树形控件",
+  "desc": "清晰地展示层级结构的信息,可展开或折叠。",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "start": {
+      "type": "number",
+      "desc": "开始展示数据的索引值",
+      "defaultValue": "0"
+    },
+    "query": {
+      "type": "string",
+      "desc": "用于过滤数据的关键字",
+      "defaultValue": " '' "
+    },
+    "mutliple": {
+      "type": "boolean",
+      "desc": "是否多选",
+      "defaultValue": "false"
+    },
+    "limitCount": {
+      "type": "number",
+      "desc": "多选时的最大选中数",
+      "defaultValue": "999999"
+    },
+    "expandAll": {
+      "type": "boolean",
+      "desc": "是否展开所有子元素",
+      "defaultValue": "false"
+    },
+    "onlySelectLeaf": {
+      "type": "boolean",
+      "desc": "是否只能选择根节点选项",
+      "defaultValue": "false"
+    },
+    "valueField": {
+      "type": "string",
+      "desc": "data数据的value值的名称",
+      "defaultValue": "key"
+    },
+    "displayField": {
+      "type": "string",
+      "desc": "data数据的displayValue值的名称",
+      "defaultValue": "title"
+    },
+    "value": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目的valueField值",
+      "defaultValue": "undefined"
+    },
+    "displayValue": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目的displayField值",
+      "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "Array<Object>",
+      "desc": "生成选择项的数据",
+      "defaultValue": "false"
+    },
+    "searchType": {
+      "type": "start | end | include | eql",
+      "desc": "生成过滤数据的方式",
+      "defaultValue": "include"
+    },
+    "translateTreeData": {
+      "type": "boolean",
+      "desc": "是否开启嵌套数据生成Tree",
+      "defaultValue": "false"
+    }
+  },
+  "events": {
+    "onScroller": {
+      "desc": "滚动条滚动时触发",
+      "args": [
+        {
+          "name": "start",
+          "desc": "显示区域内，第一个树节点所在数据中的索引值",
+          "type": "number"
+        },
+        {
+          "name": "end",
+          "desc": "显示区域内，最后树节点所在数据中的索引值",
+          "type": "number"
+        }
+      ]
+    },
+    "onExpand": {
+      "desc": "展开/收起节点时触发",
+      "args": [
+        {
+          "name": "expandedKeys",
+          "desc": "所有展开节点的valueField值的集合",
+          "type": "string[]"
+        },
+        {
+          "name": "data",
+          "desc": "所有的树形数据信息",
+          "type": "Array<Object>"
+        }
+      ]
+    },
+    "onSelect": {
+      "desc": "选择树节点时触发",
+      "args": [
+        {
+          "name": "selectValue",
+          "desc": "所有选中项的valueField值的集合",
+          "type": "string[]"
+        }
+      ]
+    },
+    "onChange": {
+      "desc": "选中节点发生改变时触发",
+      "args": [
+        {
+          "name": "selectValue",
+          "desc": "所有选中项的valueField值的集合",
+          "type": "string[]"
+        },
+        {
+          "name": "selectDisplayValue",
+          "desc": "所有选中项的displayField值的集合",
+          "type": "string[]"
+        }
+      ]
+    }
+  },
+
+  "category": ["数据录入"]
+}
