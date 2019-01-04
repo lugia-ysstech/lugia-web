@@ -21,6 +21,8 @@ export const {
   borderRadius,
   defaultColor,
   borderDisableColor,
+  mouseDownColor,
+  lightGreyColor,
 } = colorsFunc();
 
 const judgeColors = (
@@ -108,7 +110,7 @@ const getColors = (color, type) => {
 };
 
 const getTypeCSS = props => {
-  const { type, Theme } = props;
+  const { type, Theme, closable, checked } = props;
   const { color } = Theme;
   const {
     textColor,
@@ -119,12 +121,41 @@ const getTypeCSS = props => {
     borderHoverColer,
   } = getColors(color, type);
 
+  if (type === 'optional') {
+    if (checked) {
+      return `color: ${defaultColor};
+        background: ${themeColor}
+      `;
+    }
+    return `color: ${darkGreyColor};
+    
+      :hover {
+        color: ${themeColor}
+      }
+      
+      :active {
+        color: ${themeColor};
+        background: ${mouseDownColor}
+      }
+    `;
+  }
+
+  if (type === 'primary') {
+    return `background: ${borderDisableColor};
+            color: ${darkGreyColor}`;
+  }
+
+  if (type === 'basic') {
+    return `color: ${darkGreyColor};
+            border: 1px solid ${lightGreyColor}`;
+  }
+
   return `background: ${backgroundColor};
             color: ${textColor};
             border: 1px solid ${borderColor}; 
 
             :hover {
-                background: ${bgHoverColor};
+                background: ${closable ? bgHoverColor : backgroundColor};
                 color: ${textHoverColor};
                 border-color: ${borderHoverColer};
     } `;
@@ -154,16 +185,22 @@ export const TagContainer = styled.div`
   font-size: ${FontSize};
   cursor: pointer;
   overflow: hidden;
+  user-select: none;
   transition: all 0.15s ease-in;
   padding: ${getPadding};
   ${getAnimationCSS};
   ${getTypeCSS};
 `;
 
+const getLineHeight = props => {
+  const { type } = props;
+  return `line-height: ${type === 'primary' || type === 'optional' ? em(20) : em(18)}`;
+};
+
 export const ItemText = styled.span`
   display: inline-block;
   height: ${em(20)};
-  line-height: ${em(19)};
+  ${getLineHeight};
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;

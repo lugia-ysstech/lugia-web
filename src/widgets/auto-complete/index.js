@@ -20,13 +20,11 @@ const ScrollerStep = 30;
 
 type AutoCompleteProps = {
   getTheme: Function,
-  valueField?: string,
   data: String[],
-  step: number,
   showOldValue: boolean,
-  onChange?: Function,
   value?: string,
   defaultValue?: string,
+  onChange?: Function,
   onFocus?: Function,
   onBlur?: Function,
   disabled?: boolean,
@@ -44,11 +42,8 @@ export default ShortKeyBoard(
       getTheme() {
         return {};
       },
-      valueField: ValueField,
-      displayField: DisplayField,
       data: [],
       showOldValue: true,
-      step: ScrollerStep,
     };
     static displayName = 'AutoComplete';
     inputEl: any;
@@ -80,7 +75,7 @@ export default ShortKeyBoard(
     render() {
       const { props, state } = this;
       const { value } = state;
-      const { valueField, disabled } = props;
+      const { disabled } = props;
 
       const { width = DefaultWidth } = props.getTheme();
       const data = this.getMenuData();
@@ -94,17 +89,24 @@ export default ShortKeyBoard(
         [Widget.Trigger]: themeConfig,
       };
 
-      const menu = [
-        this.getOldValueItem(),
-        <Menu
-          valueField={valueField}
-          data={data}
-          mutliple={false}
-          selectedKeys={[value]}
-          onClick={this.menuItemClickHandler}
-          step={ScrollerStep}
-        />,
-      ];
+      const menu =
+        menuHeight === 0 ? (
+          <div />
+        ) : (
+          [
+            this.getOldValueItem(),
+            <Menu
+              data={data}
+              mutliple={false}
+              selectedKeys={value}
+              onClick={this.menuItemClickHandler}
+              step={ScrollerStep}
+              valueField={ValueField}
+              displayField={DisplayField}
+            />,
+          ]
+        );
+
       return (
         <Theme config={menuConfig}>
           <Trigger
@@ -149,6 +151,7 @@ export default ShortKeyBoard(
       if (!value) {
         return [];
       }
+      console.log('this.getData', this.getData);
       return this.getData();
     };
 

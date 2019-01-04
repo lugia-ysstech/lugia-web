@@ -1,38 +1,14 @@
 {
-  "widgetName": "Select",
-  "title": "选择器",
-  "desc": "选项过多时，弹出下拉菜单给用户选择操作",
+  "widgetName": "Menu",
+  "title": "菜单",
+  "desc": "为用户提供菜单列表",
   "props": {
     "getTheme": {
       "type": "Function",
       "desc": "用于配置通用主题属性",
       "defaultValue": "undefined"
     },
-    "data": {
-      "type": "[{valueField: '', displayField: ''}]",
-      "desc": "生成选择项的数据",
-      "defaultValue": "undefined"
-    },
-    "mutliple": {
-      "type": "boolean",
-      "desc": "是否多选",
-      "defaultValue": "false"
-    },
-    "canSearch": {
-      "type": "boolean",
-      "desc": "是否支持查询",
-      "defaultValue": "false"
-    },
-    "throttle": {
-      "type": "number",
-      "desc": "查询的延迟时间，单位为毫秒",
-      "defaultValue": "100"
-    },
-    "canInput": {
-      "type": "boolean",
-      "desc": "是否支持自定义值,只有在canSearch为true时才生效",
-      "defaultValue": "false"
-    },
+
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
@@ -43,50 +19,58 @@
       "desc": "data数据的displayValue值的名称",
       "defaultValue": "text"
     },
-    "disabled": {
-      "type": "boolean",
-      "desc": "是否禁选",
+
+    "data": {
+      "type": "[{valueField: '', displayField: '', children}]",
+      "desc": "生成选择项的数据",
       "defaultValue": "false"
     },
-    "validateStatus": {
-      "type": "ValidateStatus",
-      "desc": "input校验状态, 'success' 成功 | 'error'错误",
-      "defaultValue": "success"
+    "mutliple": {
+      "type": "boolean",
+      "desc": "是否多选",
+      "defaultValue": "false"
     },
+
+    "start": {
+      "type": "number",
+      "desc": "开始展示数据的索引值",
+      "defaultValue": "0"
+    },
+
+    "selectedKeys": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的项",
+      "defaultValue": "undefined"
+    },
+
+    "defaultSelectedKeys": {
+      "type": "string | string[] | number | number[]",
+      "desc": "默认指定当前选中的项,仅第一次生效",
+      "defaultValue": "undefined"
+    },
+
+    "checkedCSS": {
+      "type": "background | checkbox | mark | none",
+      "desc": "选中项的样式",
+      "defaultValue": "none"
+    },
+
+    "size": {
+      "type": "large | default | bigger",
+      "desc": "设置列表项的高度",
+      "defaultValue": "default"
+    },
+
     "limitCount": {
       "type": "number",
-      "desc": "多选时最多个数",
-      "defaultValue": "undefined"
+      "desc": "多选时的最大选中数",
+      "defaultValue": "999999"
     },
-    "placeholder": {
-      "type": "string",
-      "desc": "占位符",
-      "defaultValue": "undefined"
-    },
-    "searchType": {
-      "type": "start | end | include | eql",
-      "desc": "查询的方式",
-      "defaultValue": "include"
-    },
-    "value": {
-      "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目",
-      "defaultValue": "undefined"
-    },
-    "displayValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的displayValue值",
-      "defaultValue": "undefined"
-    },
-    "defaultValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目,只生效一次",
-      "defaultValue": "undefined"
-    },
-    "defaultDisplayValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次",
-      "defaultValue": "undefined"
+
+    "offsetX": {
+      "type": "number",
+      "desc": "菜单间的间隔",
+      "defaultValue": "4"
     }
   },
   "events": {

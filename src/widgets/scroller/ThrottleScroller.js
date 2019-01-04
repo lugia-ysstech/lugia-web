@@ -251,8 +251,10 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
     }
 
     onWheel = (e: Object) => {
-      e.stopPropagation();
-      e.preventDefault();
+      if (this.isNeedScroller()) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
       this.scroller && this.scroller.onWheel && this.scroller.onWheel.call(this.scroller, e);
     };
 

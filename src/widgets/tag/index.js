@@ -12,9 +12,10 @@ import ThemeProvider from '../theme-provider';
 import { TagContainer, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
 
 type shapeType = 'basic' | 'round';
-type styleType = 'customs' | 'primary' | 'basic' | 'presets';
+type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
 type TagProps = {
   closable?: boolean,
+  checked: boolean,
   children: any,
   onClick?: Function,
   onClose?: Function,
@@ -25,6 +26,16 @@ type TagProps = {
 
 type TagState = {
   isClose: boolean,
+  checked: boolean,
+};
+
+const getChecked = (props: TagProps, state: Object) => {
+  const isCheckedInProps = 'checked' in props;
+  if (isCheckedInProps) {
+    return props.checked;
+  }
+
+  return state ? state.checked : false;
 };
 
 class Tag extends React.Component<TagProps, TagState> {
@@ -39,26 +50,41 @@ class Tag extends React.Component<TagProps, TagState> {
   };
   constructor(props: TagProps) {
     super(props);
+
     this.state = {
       isClose: false,
+      checked: getChecked(props, null),
+    };
+  }
+
+  static getDerivedStateFromProps(props: MenuProps, state: MenuState) {
+    if (!state) {
+      return {};
+    }
+
+    return {
+      checked: getChecked(props, state),
     };
   }
 
   itemText: Object;
   render() {
-    const { isClose } = this.state;
+    const { isClose, checked } = this.state;
     const { type, getTheme, shape, closable = false, children } = this.props;
     const Theme = getTheme();
     return (
       <TagContainer
         closable={closable}
+        checked={checked}
         onClick={this.onClick}
         shape={shape}
         isClose={isClose}
         type={type}
         Theme={Theme}
       >
-        <ItemText innerRef={cmp => (this.itemText = cmp)}>{children}</ItemText>
+        <ItemText innerRef={cmp => (this.itemText = cmp)} type={type}>
+          {children}
+        </ItemText>
         {closable ? (
           <CloseButtonWrap>
             <CloseButton
@@ -83,8 +109,10 @@ class Tag extends React.Component<TagProps, TagState> {
   }
 
   onClick = (e: Object) => {
+    const { checked } = this.state;
+    this.setState({ checked: !checked });
     const { onClick } = this.props;
-    onClick && onClick(e);
+    onClick && onClick(e, !checked);
   };
 }
 

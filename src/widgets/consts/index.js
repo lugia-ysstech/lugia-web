@@ -73,6 +73,7 @@ const Carousel = 'sv_widget_Carousel';
 const Breadcrumb = 'sv_widget_Breadcrumb';
 const NavMenu = 'sv_widget_NavMenu';
 const SubMenu = 'sv_widget_SubMenu';
+const AutoComplete = 'sv_widget_AutoComplete';
 
 const Layout = 'sv_widget_Layout';
 const Header = 'sv_widget_Header';
@@ -217,4 +218,5 @@ export default {
   Popconfirm,
   Breadcrumb,
   NavMenu,
+  AutoComplete,
 };
