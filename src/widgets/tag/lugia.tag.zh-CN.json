@@ -19,7 +19,7 @@
       "defaultValue": "basic"
     },
     "type": {
-      "type": "customs | primary | basic | presets",
+      "type": "customs | primary | basic | presets | optional",
       "desc": "标签的主题样式",
       "defaultValue": "customs"
     }
@@ -32,6 +32,11 @@
           "name": "event",
           "desc": "点击的DOM事件",
           "type": "Object"
+        },
+        {
+          "name": "checked",
+          "desc": "是否选中标签，只有在可选择标签( type: optional )生效",
+          "type": "boolean"
         }
       ]
     },
