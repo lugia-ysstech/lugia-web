@@ -11,6 +11,7 @@ import Widget from '../consts/index';
 import Icon from '../icon';
 import DelayHoc from '../common/DelayHoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
+import { px2emcss } from '../css/units';
 
 import {
   getTypeCSS,
@@ -24,6 +25,8 @@ import {
   getThemeStyle,
   getIconStyle,
   getLoadingIconStyle,
+  getChildrenLineHeight,
+  getCircleIconFont,
 } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
 
@@ -32,6 +35,7 @@ type ButtonState = { clicked: boolean, loading: boolean };
 const ButtonOut = styled.button`
   display: inline-block;
   margin-bottom: 0;
+  box-sizing: border-box;
   text-align: center;
   touch-action: manipulation;
   cursor: pointer;
@@ -43,7 +47,6 @@ const ButtonOut = styled.button`
   position: relative;
   text-transform: none;
   outline: 0;
-  vertical-align: bottom;
   &:hover {
     ${hoverStyle}
   }
@@ -66,10 +69,19 @@ const ButtonOut = styled.button`
   ${getThemeStyle}
 `;
 
+const ChildrenSpan = styled.span`
+  display: inline-block;
+  ${getChildrenLineHeight}
+`;
+
 const IconWrap: Object = styled(Icon)`
-  vertical-align: bottom !important;
+  vertical-align: -${props => props.em(1.75)} !important;
   ${getIconStyle};
   ${getLoadingIconStyle};
+`;
+const CircleIcon: Object = styled(Icon)`
+  vertical-align: -${props => props.em(1.75)} !important;
+  ${getCircleIconFont};
 `;
 ButtonOut.displayName = 'hello';
 
@@ -101,15 +113,20 @@ export default ThemeProvider(
         };
 
         handleChildren = () => {
-          const { children, icon, circle, loading } = this.props;
+          const { children, icon, circle, loading, size = 'default' } = this.props;
+          let em = px2emcss(1.4);
+          if (size === 'small') {
+            em = px2emcss(1.2);
+          }
           if (circle) {
             const iconType = icon || 'lugia-icon-direction_logout';
-            return <Icon iconClass={iconType} />;
+            return <CircleIcon size={size} em={em} iconClass={iconType} />;
           }
+
           if (loading) {
             return (
               <span>
-                <IconWrap loading iconClass="lugia-icon-financial_loading_o" />
+                <IconWrap em={em} loading iconClass="lugia-icon-financial_loading_o" />
                 {children}
               </span>
             );
@@ -117,7 +134,7 @@ export default ThemeProvider(
           if (icon) {
             return (
               <span>
-                <IconWrap iconClass={icon} />
+                <IconWrap em={em} iconClass={icon} />
                 {children}
               </span>
             );
@@ -130,7 +147,7 @@ export default ThemeProvider(
             shape,
             disabled,
             plain,
-            size,
+            size = 'default',
             circle,
             getTheme,
             loading,
@@ -141,6 +158,10 @@ export default ThemeProvider(
             onMouseDown,
           } = this.props;
           const { clicked } = this.state;
+          let em = px2emcss(1.4);
+          if (size === 'small') {
+            em = px2emcss(1.2);
+          }
           return (
             <ButtonOut
               clicked={clicked}
@@ -158,8 +179,11 @@ export default ThemeProvider(
               onMouseUp={onMouseUp}
               onMouseDown={onMouseDown}
               themes={getTheme()}
+              em={em}
             >
-              <span>{this.handleChildren()}</span>
+              <ChildrenSpan em={em} size={size}>
+                {this.handleChildren()}
+              </ChildrenSpan>
             </ButtonOut>
           );
         }
