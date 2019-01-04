@@ -198,6 +198,10 @@ export default ThemeProvider(
             bottom: 16,
             left: 10,
           },
+          borderColor: '#e8e8e8',
+        },
+        [Widget.Icon]: {
+          color: '#999999',
         },
       };
       return { inputView };
