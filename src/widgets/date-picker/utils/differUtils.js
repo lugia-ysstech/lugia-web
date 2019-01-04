@@ -312,9 +312,10 @@ export function getWeeksRange(
 } {
   const weeksDate = [];
   let rangeIndex = 0;
-  for (let i = 0; i < 5; i++) {
+  const howNumber = Math.ceil(weeksInYear / step);
+  for (let i = 0; i < howNumber; i++) {
     const start = step * i + 1;
-    const end = i === 4 ? weeksInYear : step * i + step;
+    const end = i === howNumber - 1 ? weeksInYear : step * i + step;
     const text = `${start}-${end}周`;
     if (weeks >= start && weeks <= end) {
       rangeIndex = i;
@@ -366,6 +367,34 @@ export const getShowTime = (value: string, format: string): Array<number> => {
   }
   return newValue;
 };
+export function haveWhichOneItemInTime(format) {
+  let hasHour = false;
+  let hasMinutes = false;
+  let hasSeconds = false;
+  for (let i = 0; i < format.length; i++) {
+    if (format[i] === 'H' || format[i] === 'h') {
+      hasHour = true;
+    }
+    if (format[i] === 'M' || format[i] === 'm') {
+      hasMinutes = true;
+    }
+    if (format[i] === 'S' || format[i] === 's') {
+      hasSeconds = true;
+    }
+  }
+  const result = [hasHour, hasMinutes, hasSeconds];
+  let hasItemNumber = 3;
+  let number = 0;
+  for (let i = 0; i < result.length; i++) {
+    if (result[i]) {
+      number += 1;
+    }
+  }
+  if (number < hasItemNumber) {
+    hasItemNumber = number;
+  }
+  return { hasHour, hasMinutes, hasSeconds, hasItemNumber };
+}
 export const getCoversTimes = (times: Array<number>, number: number, item: any) => {
   const newTimes = [...times];
   for (let i = 0; i < number - 1; i++) {

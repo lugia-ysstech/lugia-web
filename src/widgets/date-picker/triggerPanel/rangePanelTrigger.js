@@ -153,7 +153,7 @@ class Range extends Component {
       }
     );
     const { onChange } = this.props;
-    isValid && onChange && onChange({ newValue, oldValue, event });
+    onChange && onChange({ newValue, oldValue, event });
     if (noValue) {
       this.drawPageAgain(['', ''], this.state.format);
     }
