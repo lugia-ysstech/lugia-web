@@ -210,9 +210,9 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
 
   getExposeTarget = (event: Object, selectedKeys: string[], item: Object) => {
     const obj = {};
-    obj[event] = event;
-    obj[selectedKeys] = selectedKeys;
-    obj[item] = item;
+    obj.event = event;
+    obj.selectedKeys = selectedKeys;
+    obj.item = item;
     return obj;
   };
 
