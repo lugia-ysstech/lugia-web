@@ -89,6 +89,7 @@ export default ThemeProvider(
   MouseEventAdaptor(
     DelayHoc(
       class extends React.Component<ButtonOutProps, ButtonState> {
+        static displayName = 'Button';
         static getDerivedStateFromProps(nextProps, prevState) {
           if (!prevState) {
             return {
