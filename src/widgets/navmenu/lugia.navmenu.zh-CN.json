@@ -1,5 +1,5 @@
 {
-  "widgetName": "Navmenu",
+  "widgetName": "NavMenu",
   "title": "导航菜单",
   "desc": "为页面提供导航功能的菜单",
   "props": {

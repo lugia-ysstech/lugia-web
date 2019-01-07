@@ -140,7 +140,7 @@ class ScrollerTree extends React.Component<any, any> {
         icon,
       } = item;
       const { color } = this.getTheme();
-      const disabled = describe ? true : !!dataDisabled;
+      const disabled = describe || dataDisabled ? true : !!dataDisabled;
       const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
@@ -172,6 +172,7 @@ class ScrollerTree extends React.Component<any, any> {
           inlineType={inlineType}
           isLeaf={isLeaf}
           notCanSelect={notCanSelect}
+          disabled={disabled}
           selectable={selectable}
           icon={icon}
           size={size}
