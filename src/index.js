@@ -7,13 +7,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './widgets/css/global.css';
 
-import App from './widgets/date-picker/demo';
+// import App from './widgets/date-picker/demo';
 //import App from './widgets/popconfirm/demo';
 //import App from './widgets/switch/demo';
 //import App from './widgets/loading/demo';
-//import App from './widgets/icon/demo';
-//import App from './widgets/tree-select/demo';
-// import App from './widgets/trigger/demo';
+// import App from './widgets/tag/demo';
+// import App from './widgets/tree-select/demo';
+// import App from './widgets/tree-select/defaultTreeSelect';
+import App from './widgets/cascader/DefaultCascader';
+
+// import App from './widgets/tree/InlineDataSingleTree';
+// import App from './widgets/tree/InlineDataMutlipleTree';
+// import App from './widgets/tree/DefaultMutlipleTree';
+// import App from './widgets/tree/DefaultTree';
+// import App from './widgets/tree/demo';
+
 import registerServiceWorker from './registerServiceWorker';
 
 // console.info(ReactServer.renderToString(<App />));
