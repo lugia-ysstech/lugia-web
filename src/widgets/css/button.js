@@ -7,10 +7,7 @@ import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
 import { getThemeColor } from '../common/ThemeUtils';
 import { keyframes } from 'styled-components';
-import { px2emcss } from '../css/units';
 import type { MarginType, ThemeType } from '@lugia/lugia-web';
-
-// const em = px2emcss(1.2);
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 type ButtonShape = 'default' | 'round';
@@ -30,11 +27,11 @@ type CSSProps = {
   getTheme: Function,
   viewClass?: string,
   loading?: boolean,
+  em: Function,
 };
 export type ButtonOutProps = CSSProps & {
   clicked: boolean,
   themes: ThemeType,
-  em: Function,
   onMouseOut: Function,
   onMouseEnter: Function,
   onMouseOver: Function,
@@ -59,7 +56,7 @@ type PlainTypeColor = {
   disabledBorder: string,
 };
 type ShapeStyle = {
-  borderRadius: string,
+  borderRadius: number,
 };
 
 const Size = {
@@ -287,7 +284,7 @@ export const getDisabledCSS = (props: ButtonOutProps) => {
 };
 export const getSizeCSS = (props: ButtonOutProps) => {
   const { size = 'default', em } = props;
-  const { height, vPadding, dPadding, fontSize } = fetchSize(size, em);
+  const { dPadding, fontSize } = fetchSize(size, em);
 
   return `
     
@@ -296,7 +293,7 @@ export const getSizeCSS = (props: ButtonOutProps) => {
   `;
 };
 export const getCircleCSS = (props: ButtonOutProps) => {
-  const { circle = false, em, size } = props;
+  const { circle = false, em, size = 'default' } = props;
   const borderRadius = '50%';
   const width = `${em(Size[size].height)}`;
   if (circle) {
@@ -440,7 +437,7 @@ export const getThemeStyle = (props: ButtonOutProps) => {
     color: ${colorCss};
   `;
 };
-export const getIconStyle = props => {
+export const getIconStyle = (props: CSSProps) => {
   const { em } = props;
   return `
     margin-right: ${em(10)};
@@ -463,7 +460,7 @@ export const getLoadingIconStyle = (props: IconLoadingProps) => {
   }
 };
 export const getChildrenLineHeight = (props: CSSProps) => {
-  const { size, em } = props;
+  const { size = 'default', em } = props;
   const { height } = Size[size];
 
   return `
@@ -471,7 +468,7 @@ export const getChildrenLineHeight = (props: CSSProps) => {
   `;
 };
 export const getCircleIconFont = (props: CSSProps) => {
-  const { size, em } = props;
+  const { size = 'default', em } = props;
   const fontSize = CircleCSS[size].font;
   return `font-size: ${em(fontSize)};`;
 };
