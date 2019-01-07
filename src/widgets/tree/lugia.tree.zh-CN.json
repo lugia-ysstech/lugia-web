@@ -28,6 +28,7 @@
       "desc": "多选时的最大选中数",
       "defaultValue": "999999"
     },
+
     "expandAll": {
       "type": "boolean",
       "desc": "是否展开所有子元素",
