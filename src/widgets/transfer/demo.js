@@ -86,6 +86,7 @@ export default class TransferDemo extends React.Component<any, any> {
     const TransferView = {
       [Widget.Transfer]: {
         height: 400,
+        width: 300,
       },
     };
     return (
