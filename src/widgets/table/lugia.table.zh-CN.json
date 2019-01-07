@@ -100,5 +100,6 @@
       ]
     }
   },
+  "childrenWidget": ["column"],
   "category": ["数据录入"]
 }
