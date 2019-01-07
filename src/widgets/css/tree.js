@@ -61,13 +61,18 @@ function getCheckedStyled(props) {
   return props.selected ? `background-color: ${ItemBackgroundColor}` : null;
 }
 
+const getCursor = (props: Object) => {
+  const { disabled } = props;
+  return `cursor: ${disabled ? 'not-allowed' : 'pointer'}`;
+};
+
 export const TitleWrap = styled.span`
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
   padding-left: ${em(6)};
   display: inline-block;
-  cursor: pointer;
+  ${getCursor};
   text-decoration: none;
   vertical-align: top;
   transition: all 0.5s ease;

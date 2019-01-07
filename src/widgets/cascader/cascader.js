@@ -42,6 +42,7 @@ type CascaderProps = {
   valueField: string,
   showAllLevels?: boolean,
   allowClear?: boolean,
+  menuWidth: number,
 };
 type CascaderState = {
   popupVisible: boolean,
@@ -51,6 +52,8 @@ type CascaderState = {
   treeData: Array<Object>,
   selectedKeys: string[],
 };
+
+const DefaultMenuWidth = 150;
 
 export default class Cascader extends React.Component<CascaderProps, CascaderState> {
   static defaultProps = {
@@ -62,6 +65,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     displayField: DisplayField,
     valueField: ValueField,
     allowClear: true,
+    menuWidth: DefaultMenuWidth,
   };
 
   checked: boolean;
@@ -148,12 +152,20 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     this.setPopupVisible(!checked);
   }
 
+  getMenuWidth = () => {
+    const { menuWidth } = this.props;
+    if (isNaN(menuWidth) || !menuWidth) {
+      return DefaultMenuWidth;
+    }
+    return menuWidth;
+  };
+
   getMenu = (theme: Object) => {
     const { data, action, separator, offsetX, valueField, displayField } = this.props;
     const { popupVisible, expandedPath, selectedKeys } = this.state;
-    const { menuWidth = 150 } = theme;
+    const menuWidth = this.getMenuWidth();
     return (
-      <Theme config={{ [Widget.Menu]: { width: menuWidth, submenuWidth: menuWidth } }}>
+      <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
           mutliple={false}
           ref={this.menu}
@@ -210,9 +222,9 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
 
   getExposeTarget = (event: Object, selectedKeys: string[], item: Object) => {
     const obj = {};
-    obj[event] = event;
-    obj[selectedKeys] = selectedKeys;
-    obj[item] = item;
+    obj.event = event;
+    obj.selectedKeys = selectedKeys;
+    obj.item = item;
     return obj;
   };
 

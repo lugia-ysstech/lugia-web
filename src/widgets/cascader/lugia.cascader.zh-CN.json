@@ -32,6 +32,12 @@
       "defaultValue": "undefined"
     },
 
+    "menuWidth": {
+      "type": "number",
+      "desc": "层级菜单的宽度",
+      "defaultValue": "150"
+    },
+
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
@@ -119,6 +125,5 @@
       ]
     }
   },
-  "type": {},
   "category": ["数据录用"]
 }
