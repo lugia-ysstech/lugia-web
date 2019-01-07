@@ -8,73 +8,28 @@
       "desc": "用于配置通用主题属性",
       "defaultValue": "undefined"
     },
-    "validateStatus": {
-      "type": "ValidateStatus",
-      "desc": "input校验状态, 'success' 成功 | 'error'错误",
-      "defaultValue": "success"
+    "action": {
+      "type": "click | hover",
+      "desc": "弹出项的打开方式",
+      "defaultValue": "click"
     },
-    "placeholder": {
-      "type": "string",
-      "desc": "占位符",
+    "hideAction": {
+      "type": "click | hover",
+      "desc": "弹出项的隐藏方式",
+      "defaultValue": "click"
+    },
+    "menus": {
+      "type": "React.Node",
+      "desc": "弹出项组件",
       "defaultValue": "undefined"
     },
-    "disabled": {
-      "type": "boolean",
-      "desc": "是否禁选",
-      "defaultValue": "false"
-    },
-    "mutliple": {
-      "type": "boolean",
-      "desc": "是否多选",
-      "defaultValue": "false"
-    },
-    "valueField": {
-      "type": "string",
-      "desc": "data数据的value值的名称",
-      "defaultValue": "value"
-    },
-    "displayField": {
-      "type": "string",
-      "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
-    },
-    "value": {
-      "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目",
-      "defaultValue": "undefined"
-    },
-    "defaultValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目,只生效一次",
-      "defaultValue": "undefined"
-    },
-    "displayValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的displayValue值",
-      "defaultValue": "undefined"
-    },
-    "defaultDisplayValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次",
-      "defaultValue": "undefined"
+    "align": {
+      "type": "React.Node",
+      "desc": "弹出方向",
+      "defaultValue": "'topLeft | top | topRight | bottomLeft | bottom | bottomRight'"
     }
   },
   "events": {
-    "onChange": {
-      "desc": "选中项发生变化时触发",
-      "args": [
-        {
-          "name": "value",
-          "desc": "所有选中项的valueField的集合",
-          "type": "string[]"
-        },
-        {
-          "name": "displayValue",
-          "desc": "所有选中项的displayField的集合",
-          "type": "string[]"
-        }
-      ]
-    },
     "onPopupVisibleChange": {
       "desc": "弹出项展开/隐藏时触发",
       "args": [
@@ -84,81 +39,9 @@
           "type": "boolean"
         }
       ]
-    },
-    "onClick": {
-      "desc": "点击按钮时触发",
-      "args": [
-        {
-          "name": "event",
-          "desc": "点击的DOM事件",
-          "type": "Object"
-        }
-      ]
-    },
-    "onClear": {
-      "desc": "清除输入框内容时触发",
-      "args": [
-        {
-          "name": "event",
-          "desc": "清除输入框内容事件",
-          "type": "Object"
-        }
-      ]
-    },
-    "onFocus": {
-      "desc": "inputtag框获得焦点时触发"
-    },
-    "onBlur": {
-      "desc": "inputtag框获得焦点时触发框失去焦点时触发"
-    },
-    "onQuery": {
-      "desc": "键盘按下任何键时触发",
-      "args": [
-        {
-          "name": "query",
-          "desc": "输入的搜索关键字",
-          "type": "string"
-        }
-      ]
-    },
-    "onSelect": {
-      "desc": "选中时触发",
-      "args": [
-        {
-          "name": "event",
-          "desc": "点击的DOM事件",
-          "type": "Object"
-        },
-        {
-          "name": "newDisplayValue",
-          "desc": "所有选中项的displayField的集合",
-          "type": "string[]"
-        },
-        {
-          "name": "newItem",
-          "desc": "所有选中项的数据的集合",
-          "type": "Object[]"
-        },
-        {
-          "name": "newValue",
-          "desc": "所有选中项的valueField的集合",
-          "type": "string[]"
-        },
-        {
-          "name": "oldItem",
-          "desc": "改变之前所有选中项的数据的集合",
-          "type": "Object[]"
-        },
-        {
-          "name": "oldValue",
-          "desc": "改变之前所有选中项的valueField的集合",
-          "type": "string[]"
-        }
-      ]
-    },
-    "onRefresh": {
-      "desc": "点击刷新按钮时触发"
     }
   },
+
+  "childrenWidget": ["dropmenuButton"],
   "category": ["数据录入"]
 }

@@ -1,7 +1,7 @@
 /**
- * 下拉菜单
- * by ligx
- * @flow
+ *
+ * create by szfeng
+ *
  */
 import * as React from 'react';
 import styled from 'styled-components';
@@ -19,6 +19,8 @@ import { px2emcss } from '../css/units';
 
 const em = px2emcss(1.2);
 
+const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
+
 type DropMenuProps = {
   action: Array<string>,
   hideAction: Array<string>,
@@ -29,7 +31,7 @@ type DropMenuProps = {
   getTheme: Function,
   query: string,
   needQueryInput: boolean,
-  align: string,
+  align: alignType,
 };
 const MenuContainer = styled.div`
   background-color: #fff;
@@ -43,10 +45,10 @@ type DropMenuState = {
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
-    action: ['click'],
-    hideAction: ['click'],
+    action: 'click',
+    hideAction: 'click',
     needQueryInput: false,
-    align: 'bottomLeft',
+    align: 'bottom',
     getTheme() {
       return {};
     },
