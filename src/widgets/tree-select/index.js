@@ -555,8 +555,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   treeCompontIsEmpty() {
-    // this.treeCmp.current.menu.current.
-    console.log('this.treeCmp', this.treeCmp.innerTree.current);
     return !this.treeCmp || !this.treeCmp.innerTree.current.getThemeTarget();
   }
 

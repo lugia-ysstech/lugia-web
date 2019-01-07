@@ -28,6 +28,7 @@ type AutoCompleteProps = {
   onFocus?: Function,
   onBlur?: Function,
   disabled?: boolean,
+  placeholder?: string,
 };
 
 type AutoCompleteState = {
@@ -43,7 +44,7 @@ export default ShortKeyBoard(
         return {};
       },
       data: [],
-      showOldValue: true,
+      showOldValue: false,
     };
     static displayName = 'AutoComplete';
     inputEl: any;
@@ -75,8 +76,7 @@ export default ShortKeyBoard(
     render() {
       const { props, state } = this;
       const { value } = state;
-      const { disabled } = props;
-
+      const { disabled, placeholder } = props;
       const { width = DefaultWidth } = props.getTheme();
       const data = this.getMenuData();
       const len = data.length;
@@ -124,6 +124,7 @@ export default ShortKeyBoard(
               onClear={this.clearInputValue}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              placeholder={placeholder}
             />
           </Trigger>
         </Theme>
