@@ -99,8 +99,8 @@ export function getDerivedForInput(nextProps: Object, preState: Object): Object 
 function getValueFromValue(nextProps: Object, preState: Object): Array<string> | void {
   const { defaultValue, value, mode } = nextProps;
   const { isRange } = modeStyle(mode);
-  const hasDefaultProps = 'defaultValue' in nextProps;
-  const hasValueProps = 'value' in nextProps;
+  const hasDefaultProps = defaultValue && 'defaultValue' in nextProps;
+  const hasValueProps = value && 'value' in nextProps;
   let newValue = hasValueProps
     ? value
     : preState
@@ -128,7 +128,7 @@ function getValueFromValue(nextProps: Object, preState: Object): Array<string> |
 }
 function getPlaceholder(nextProps: Object): Array<string> {
   const { mode, placeholder } = nextProps;
-  const hasPlaceholder = 'placeholder' in nextProps;
+  const hasPlaceholder = placeholder && 'placeholder' in nextProps;
   const { isRange, isTime, isTimes } = modeStyle(mode);
   let newPlaceholder = hasPlaceholder
     ? placeholder

@@ -19,6 +19,8 @@ export default class Sl extends Component<any> {
   constructor() {
     super();
     this.state = {
+      value: '',
+      rangeValue: ['', ''],
       currentValue: 0,
       btnWidth: 20,
       disabled: false,
@@ -38,6 +40,16 @@ export default class Sl extends Component<any> {
   onOk = () => {
     console.log('onOk');
   };
+  chengedate = obj => {
+    const { newValue } = obj;
+    console.log(obj);
+    this.setState({ value: newValue });
+  };
+  onChangeRange = obj => {
+    const { newValue } = obj;
+    console.log(obj);
+    this.setState({ rangeValue: newValue });
+  };
   render() {
     const dateFormate = 'YYYY年MM月DD日';
     return (
@@ -47,14 +59,7 @@ export default class Sl extends Component<any> {
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>date-normal-selectToday-theme</h2>
             <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>
-              <DatePicker
-                selectToday
-                showToday
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                defaultValue={'2018-02-03'}
-              />
+              <DatePicker value={this.state.value} onChange={this.chengedate} step={9} />
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -231,9 +236,9 @@ export default class Sl extends Component<any> {
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>RangePicker-value </h2>
             <RangePicker
-              value={['2015年02月03日', '2015年03月03日']}
+              value={this.state.rangeValue}
               placeholder={['开始日期', '结束日期']}
-              onChange={this.onChange}
+              onChange={this.onChangeRange}
             />
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>

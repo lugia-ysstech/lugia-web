@@ -21,14 +21,14 @@ export const themeColor = {
   spiritColor,
 };
 export function getThemeProperty(props: Object) {
-  const { hasTimeWrapBorder } = props;
+  const { hasTimeWrapBorder, hasItemNumber = 3 } = props;
   const { isRange, isTime } = modeStyle(props.mode);
   const normalWidth = isRange ? 400 : 200;
   const { width = normalWidth, color, backgroundColor } = props;
   const newWidth = isRange ? width / 2 + 100 : isTime ? width : width * 1 + 100;
   const rangeWrapWidth = newWidth * 2;
   const TimeWrapWidth = isRange && hasTimeWrapBorder ? newWidth - 1 : newWidth;
-  const TimeColWidth = TimeWrapWidth / 3;
+  const TimeColWidth = TimeWrapWidth / hasItemNumber;
   const weekTitleWIdth = em((newWidth - DateWrapperPadding.left * 2 - 2) / 7);
   return {
     width: newWidth,

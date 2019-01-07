@@ -95,6 +95,6 @@
       "args":[]
     }
   },
-  "childrenWidget": ["month","year","month","week","weeks","range"],
+  "childrenWidget": ["month","year","week","weeks","range"],
   "category": ["数据录入"]
 }

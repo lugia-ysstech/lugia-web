@@ -11,7 +11,13 @@ import Theme from '../../theme';
 import { TimeWrap, TimeCol, TimeTitle } from '../styled/styledTime';
 import { getThemeProperty } from '../styled/utils';
 import { modeStyle } from '../utils/booleanUtils';
-import { getTimes, getShowTime, getCoversTimes, getBoundaryValue } from '../utils/differUtils';
+import {
+  getTimes,
+  getShowTime,
+  getCoversTimes,
+  getBoundaryValue,
+  haveWhichOneItemInTime,
+} from '../utils/differUtils';
 import Widget from '../../consts';
 const Placeholder = InnerMenu.Placeholder;
 const computeCanSeeCount = InnerMenu.computeCanSeeCount();
@@ -117,48 +123,65 @@ class Time extends Component<TypeProps, TypeState> {
   render() {
     const { hours, minutes, seconds } = this.times;
     const { keys, starts } = this.state;
-    const { theme, mode, value, hasTimeWrapBorder } = this.props;
+    const { theme, mode, value, hasTimeWrapBorder, showTime } = this.props;
     const { isTime } = modeStyle(mode);
+    const { format } = this.state;
+    const { hasHour, hasMinutes, hasSeconds, hasItemNumber } =
+      isTime && haveWhichOneItemInTime(format);
     const config = {
       ...theme,
+      hasItemNumber,
       mode,
       hasTimeWrapBorder,
     };
     const { TimeColWidth } = getThemeProperty(config);
+
     return (
       <Theme config={{ [Widget.Menu]: { width: TimeColWidth } }}>
         <TimeWrap {...config}>
           {isTime ? '' : <TimeTitle>{moment(value).format('YYYY年MM月DD日')}</TimeTitle>}
-          <TimeCol {...config}>
-            <Menu
-              data={hours}
-              onClick={this.onClickHours}
-              start={starts[0]}
-              selectedKeys={keys[0]}
-              checkedCSS={'background'}
-              onScroller={this.onScrollerFirst}
-            />
-          </TimeCol>
-          <TimeCol {...config}>
-            <Menu
-              data={minutes}
-              onClick={this.onClickMinutes}
-              start={starts[1]}
-              selectedKeys={keys[1]}
-              checkedCSS={'background'}
-              onScroller={this.onScrollerSecond}
-            />
-          </TimeCol>
-          <TimeCol {...config} noBorder>
-            <Menu
-              data={seconds}
-              onClick={this.onClickSeconds}
-              start={starts[2]}
-              selectedKeys={keys[2]}
-              checkedCSS={'background'}
-              onScroller={this.onScrollerThird}
-            />
-          </TimeCol>
+          {isTime && !hasHour ? (
+            ''
+          ) : (
+            <TimeCol {...config}>
+              <Menu
+                data={hours}
+                onClick={this.onClickHours}
+                start={starts[0]}
+                selectedKeys={keys[0]}
+                checkedCSS={'background'}
+                onScroller={this.onScrollerFirst}
+              />
+            </TimeCol>
+          )}
+          {isTime && !hasMinutes ? (
+            ''
+          ) : (
+            <TimeCol {...config}>
+              <Menu
+                data={minutes}
+                onClick={this.onClickMinutes}
+                start={starts[1]}
+                selectedKeys={keys[1]}
+                checkedCSS={'background'}
+                onScroller={this.onScrollerSecond}
+              />
+            </TimeCol>
+          )}
+          {isTime && !hasSeconds ? (
+            ''
+          ) : (
+            <TimeCol {...config} noBorder>
+              <Menu
+                data={seconds}
+                onClick={this.onClickSeconds}
+                start={starts[2]}
+                selectedKeys={keys[2]}
+                checkedCSS={'background'}
+                onScroller={this.onScrollerThird}
+              />
+            </TimeCol>
+          )}
         </TimeWrap>
       </Theme>
     );

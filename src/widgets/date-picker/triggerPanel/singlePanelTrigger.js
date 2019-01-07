@@ -162,17 +162,15 @@ class DateInput extends Component<TypeProps, TypeState> {
     const isValid =
       action === 'click' ? true : formatValueIsValid(normalStyleValueObj, newValue, format);
     const { onChange } = this.props;
-    let changeParams = { isValid: false };
     if (isValid) {
       visible = false;
       const { showTime, onOk } = this.props;
       if ((showTime || onOk) && !(isWeek || isYear || isMonth)) {
         visible = true;
       }
-      changeParams = { event, newValue, oldValue: this.oldValue };
       this.setModeState(newValue, format, isWeeks || isWeek);
     }
-    onChange && onChange(changeParams);
+    onChange && onChange({ event, newValue, oldValue: this.oldValue });
     this.setState({ value: newValue, isValid });
     this.setTreePopupVisible(visible);
   };

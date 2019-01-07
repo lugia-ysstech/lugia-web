@@ -40,7 +40,7 @@ export default class Sl extends Component<any> {
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>TimePicker-normal</h2>
           <Theme config={{ [Widget.TimePicker]: { width: 500 } }}>
-            <TimePicker onChange={this.onChange} />
+            <TimePicker onChange={this.onChange} format={'HH:mm'} />
           </Theme>
         </div>
         <div style={{ float: 'left', marginRight: '30px' }}>
