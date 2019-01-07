@@ -189,31 +189,39 @@ export default ThemeProvider(
     }
 
     getInputThemeConfig() {
+      const { theme = {} } = this.props;
+      const { width = 200 } = theme;
       const inputView = {
         [Widget.Input]: {
-          width: 235,
+          width: width - 20,
           margin: {
             top: 8,
             right: 10,
             bottom: 16,
             left: 10,
           },
+          borderColor: '#e8e8e8',
+        },
+        [Widget.Icon]: {
+          color: '#999999',
         },
       };
       return { inputView };
     }
     getPanelThemeConfig = direction => {
       const { theme = {} } = this.props;
-      const { height = 300 } = theme;
+      const { height = 205, width = 200 } = theme;
       let wrapHeight = height;
       const menuView = {},
         treeView = {};
       if (direction === 'Source') {
         menuView[Widget.Menu] = {
           height,
+          width,
         };
         treeView[Widget.Tree] = {
           height,
+          width,
         };
       } else {
         const { cancelItem } = this.state;
@@ -221,9 +229,11 @@ export default ThemeProvider(
         wrapHeight = targetHeight;
         menuView[Widget.Menu] = {
           height: targetHeight,
+          width,
         };
         treeView[Widget.Tree] = {
           height: targetHeight,
+          width,
         };
       }
       return { menuView, treeView, wrapHeight };

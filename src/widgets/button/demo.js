@@ -29,40 +29,6 @@ export default () => {
   return (
     <div>
       <Wrapper>
-        <p>type</p>
-        <p>default</p>
-        <Button>Default</Button>
-        <p>primary</p>
-        <Button type="primary">Primary</Button>
-        <p>success</p>
-        <Button type="success">Success</Button>
-        <p>warning</p>
-        <Button type="warning">Warning</Button>
-        <p>danger</p>
-        <Button type="danger">Danger</Button>
-      </Wrapper>
-      <Wrapper>
-        <p>shape</p>
-        <p>default</p>
-        <Button shape="round">Hello</Button>
-        <p>primary</p>
-        <Button type="primary" shape="round">
-          Primary
-        </Button>
-        <p>success</p>
-        <Button type="success" shape="round">
-          Primary
-        </Button>
-        <p>warning</p>
-        <Button type="warning" shape="round">
-          Primary
-        </Button>
-        <p>danger</p>
-        <Button type="danger" shape="round">
-          Primary
-        </Button>
-      </Wrapper>
-      <Wrapper>
         <p>plain</p>
         <p>default</p>
         <Button shape="round" plain>
@@ -89,15 +55,11 @@ export default () => {
         <p>size</p>
         <p>default</p>
         <Button>Default</Button>
-        <p>medium</p>
+        <p>large</p>
         <Button type="primary" size="large">
           Primary
         </Button>
         <p>small</p>
-        <Button type="success" size="bigger">
-          Success
-        </Button>
-        <p>mini</p>
         <Button type="warning" size="small">
           Warning
         </Button>
@@ -149,6 +111,14 @@ export default () => {
       <Wrapper>
         <p>circle</p>
         <Button circle plain>
+          我爱
+        </Button>
+        <br />
+        <Button circle size="large" type="primary">
+          我爱
+        </Button>
+        <br />
+        <Button circle size="small">
           我爱
         </Button>
         <p>loading</p>

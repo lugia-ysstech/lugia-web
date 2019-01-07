@@ -69,7 +69,9 @@ export default ThemeProvider(
               iconClass={icon || AlertIcons[type]}
             />
           ) : null}
-          <Message hasDect={hasDect}>{message}</Message>
+          <Message hasDect={hasDect} showIcon={showIcon}>
+            {message}
+          </Message>
           <Description showIcon={showIcon}>{description}</Description>
           {closable && this.getCloseText()}
         </Alert>
@@ -84,6 +86,7 @@ export default ThemeProvider(
           theme={getTheme()}
           type={type}
           textInProps={this.isInProps('closeText')}
+          hasDect={this.isInProps('description')}
         >
           {closeText || <CloseIcon iconClass="lugia-icon-reminder_close" />}
         </CloseText>

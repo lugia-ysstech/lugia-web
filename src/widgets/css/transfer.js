@@ -85,7 +85,6 @@ export const NoData = styled.div`
 export const CancelBox = styled.div`
   height: ${em(60)};
   padding: ${em(5)} ${em(10)};
-  width: ${em(255)};
   border-top: 1px solid #e8e8e8;
 `;
 export const CancelBoxItem = styled.span`
@@ -94,6 +93,5 @@ export const CancelBoxItem = styled.span`
 `;
 export const TreeWrap = styled.div`
   font-size: ${em(12)};
-  width: ${em(255)};
   height: ${props => em(props.height)};
 `;

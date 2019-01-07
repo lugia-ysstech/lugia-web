@@ -51,8 +51,6 @@ const {
   mediumGreyColor,
   blackColor,
   darkGreyColor,
-  padding,
-  marginToSameElement,
 } = colorsFunc();
 const TypeCSS = {
   info: {
@@ -98,12 +96,30 @@ const getBackgroundCSS = (props: CSSProps) => {
 
   return getColor(type, 'background');
 };
-const getPadding = (props: CSSProps): string => {
+const getLineHeight = (props: CSSProps): number => {
   const { hasDect } = props;
   if (hasDect) {
-    return `${em(18)} ${em(padding)}`;
+    return 1.5;
   }
-  return `${em(12)} ${em(padding)}`;
+  return 1;
+};
+const getPadding = (props: CSSProps): string => {
+  const { hasDect, showIcon } = props;
+  let verticalPad = em(12);
+  let leftPad = em(10);
+
+  if (showIcon) {
+    if (hasDect) {
+      leftPad = em(40);
+    } else {
+      leftPad = em(34);
+    }
+  }
+  if (hasDect) {
+    verticalPad = em(18);
+  }
+
+  return `${verticalPad} ${em(10)} ${verticalPad} ${leftPad}`;
 };
 const getAlertAnimate = (props: CSSProps) => {
   const { height, animateStart } = props;
@@ -134,7 +150,7 @@ export const Alert = styled.div`
   font-size: ${FontSize}rem;
   overflow: hidden;
   padding: ${props => getPadding(props)};
-  line-height: 1.5;
+  line-height: ${props => getLineHeight(props)};
   border-radius: ${em(4)};
   ${getAlertBorderCSS};
   ${getBackgroundCSS};
@@ -158,10 +174,17 @@ const getIconFont = (props: CSSProps) => {
     return `font-size: ${em(20)};`;
   }
 };
+const getPosition = (props: CSSProps) => {
+  const { hasDect } = props;
+  const Em = hasDect ? px2emcss(2) : em;
+
+  return `top: ${hasDect ? Em(18) : Em(12)};left: ${Em(10)}`;
+};
 export const Icons: Object = styled(Icon)`
   ${getIconColor};
   ${getIconFont};
-  margin-right: ${px2emcss(2)(marginToSameElement)};
+  ${getPosition}
+  position: absolute;
 `;
 export const CloseIcon: Object = styled(Icon)`
   font-size: ${em(16)};
@@ -199,10 +222,17 @@ const getCloseTextColor = (props: CSSProps) => {
     `;
   }
 };
+const getCloseTop = (props: CSSProps): string => {
+  const { hasDect } = props;
+  if (hasDect) {
+    return em(24);
+  }
+  return em(14);
+};
 export const CloseText = styled.a`
   overflow: hidden;
   position: absolute;
-  top: ${em(24)};
+  top: ${props => getCloseTop(props)};
   right: ${em(14)};
   ${getCloseTextColor};
 `;
@@ -210,5 +240,4 @@ export const Description = styled.span`
   display: block;
   color: ${darkGreyColor};
   font-size: ${em(14)};
-  margin-left: ${props => (props.showIcon ? em(30) : 0)};
 `;

@@ -64,7 +64,7 @@
   "type": {
     "ButtonShape": ["default", "round"],
     "ButtonType": ["default", "primary", "success", "warning", "danger"],
-    "ButtonSize": ["default", "small", "large", "bigger"],
+    "ButtonSize": ["default", "small", "large"],
     "MarginType": ["number", "Object"],
     "ButtonStyle": {
       "width": {

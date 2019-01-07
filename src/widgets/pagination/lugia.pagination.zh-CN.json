@@ -47,6 +47,16 @@
       "type": "boolean",
       "desc": "只有一页时是否隐藏分页器",
       "defaultValue": "false"
+    },
+    "showSizeChanger": {
+      "type": "boolean",
+      "desc": "是否显示可以改变 pageSize",
+      "defaultValue": "false"
+    },
+    "simple": {
+      "type": "boolean",
+      "desc": "当添加该属性时，显示为简单分页",
+      "defaultValue": "undefined"
     }
   },
   "event": {
@@ -60,6 +70,21 @@
         },
         {
           "name": "pageSize",
+          "desc": "每页条数",
+          "type": "number"
+        }
+      ]
+    },
+    "onShowSizeChange": {
+      "desc": "pageSize 变化的回调",
+      "args": [
+        {
+          "name": "current",
+          "desc": "当前页数",
+          "type": "number"
+        },
+        {
+          "name": "size",
           "desc": "每页条数",
           "type": "number"
         }
