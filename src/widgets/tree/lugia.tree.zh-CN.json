@@ -63,6 +63,12 @@
       "desc": "生成选择项的数据",
       "defaultValue": "false"
     },
+    "igronSelectField": {
+      "type": "string",
+      "desc": "指定不可选的标识",
+      "defaultValue": "undefined"
+    },
+
     "searchType": {
       "type": "start | end | include | eql",
       "desc": "生成过滤数据的方式",
