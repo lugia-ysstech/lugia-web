@@ -67,7 +67,7 @@ export type TreeProps = {
   getTreeData?: Function,
   splitQuery?: string,
   current: number,
-  data?: Array<RowData>,
+  data?: Array<RowData>, //
   inlineType: 'primary' | 'ellipse',
   blackList: ?(string[]),
   whiteList: ?(string[]),
@@ -106,7 +106,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     defaultValue: '',
     displayField: 'title',
     valueField: 'key',
-    showIcon: false,
+    onlySelectLeaf: false,
     query: '',
     current: -1,
     openAnimation: animation,
@@ -635,9 +635,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.value = value;
     const { props } = this;
     const { onChange } = props;
-    if (onChange) {
-      onChange(value, this.getTitle(value));
-    }
+
+    onChange && onChange(value, this.getTitle(value));
   };
 
   getTitle(value: Array<string>): Array<string> {
@@ -690,6 +689,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       expandedKeys,
     });
     const { onExpand, data = [] } = props;
+
     onExpand && onExpand(expandedKeys, data);
   }
 
@@ -697,6 +697,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     if (!this.isLimitStart()) {
       this.setState({ start });
     }
+
     const { onScroller } = this.props;
     onScroller && onScroller(start, end);
   };

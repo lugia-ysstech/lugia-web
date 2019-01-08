@@ -32,7 +32,11 @@
       "desc": "是否显示上一次选中的值",
       "defaultValue": "true"
     },
-
+    "placeholder": {
+      "type": "string",
+      "desc": "input输入提示信息",
+      "defaultValue": "undefined"
+    },
     "showAllLevels": {
       "type": "boolean",
       "desc": "是否显示所有层级关系的值",
@@ -72,5 +76,5 @@
     }
   },
   "type": {},
-  "category": ["数据录用"]
+  "category": ["数据录入"]
 }

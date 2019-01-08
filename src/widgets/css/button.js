@@ -7,14 +7,11 @@ import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
 import { getThemeColor } from '../common/ThemeUtils';
 import { keyframes } from 'styled-components';
-import { px2emcss } from '../css/units';
 import type { MarginType, ThemeType } from '@lugia/lugia-web';
-
-const em = px2emcss(1.2);
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 type ButtonShape = 'default' | 'round';
-type ButtonSize = 'default' | 'small' | 'large' | 'bigger';
+type ButtonSize = 'default' | 'small' | 'large';
 
 type CSSProps = {
   shape?: ButtonShape,
@@ -30,6 +27,7 @@ type CSSProps = {
   getTheme: Function,
   viewClass?: string,
   loading?: boolean,
+  em: Function,
 };
 export type ButtonOutProps = CSSProps & {
   clicked: boolean,
@@ -50,40 +48,55 @@ type TypeColor = {
   backgroundColor: string,
   border: string,
 };
+type PlainTypeColor = {
+  color: string,
+  backgroundColor: string,
+  border: string,
+  disabledColor: string,
+  disabledBorder: string,
+};
 type ShapeStyle = {
-  borderRadius: string,
+  borderRadius: number,
 };
 
 const Size = {
-  bigger: {
-    height: 42,
-    padding: 14,
-    fontSize: 14,
-    borderRadius: 21,
-  },
   large: {
-    height: 38,
-    padding: 12,
-    fontSize: 14,
-    borderRadius: 19,
+    height: 40,
+    vPadding: 13,
+    dPadding: 18,
+    fontSize: 1.4,
+    borderRadius: 20,
   },
   default: {
     height: 32,
-    padding: 10,
-    fontSize: 12,
+    vPadding: 9,
+    dPadding: 18,
+    fontSize: 1.4,
     borderRadius: 16,
   },
   small: {
-    height: 28,
-    padding: 8,
-    fontSize: 12,
-    borderRadius: 14,
+    height: 24,
+    vPadding: 6,
+    dPadding: 14,
+    fontSize: 1.2,
+    borderRadius: 12,
   },
 };
 
 const NotCircleSize = {
   width: 32,
   borderRadius: 4,
+};
+const CircleCSS = {
+  default: {
+    font: 16,
+  },
+  small: {
+    font: 12,
+  },
+  large: {
+    font: 18,
+  },
 };
 const {
   themeColor: globalThemeColor,
@@ -136,60 +149,68 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
   };
 }
 
-function fetchPlainCSS(color: string): { [key: ButtonType]: TypeColor } {
+function fetchPlainCSS(color: string): { [key: ButtonType]: PlainTypeColor } {
   const defaultColor = color || globalThemeColor;
-  const bgReduce = 55;
+  const bgReduceA = 5;
   const borderReduceS = 45;
   return {
     default: {
-      color: defaultColor,
+      color: changeColor('#333', borderReduceS).color,
+      disabledColor: changeColor('#333', borderReduceS).color,
       backgroundColor: white,
       border: `1px solid ${disableColor}`,
+      disabledBorder: `1px solid ${changeColor('#333', borderReduceS).color}`, //正常颜色下调s 45%
     },
     primary: {
       color: defaultColor,
-      backgroundColor: changeColor(defaultColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(defaultColor, borderReduceS).color}`, //正常颜色下调s 45%
+      disabledColor: changeColor(defaultColor, borderReduceS).color, //正常颜色下调s 45%
+      backgroundColor: changeColor(defaultColor, 0, 0, bgReduceA).rgba, //正常颜色透明度 5%；
+      border: `1px solid ${defaultColor}`, //正常颜se
+      disabledBorder: `1px solid ${changeColor(defaultColor, borderReduceS).color}`, //正常颜色下调s 45%
     },
     success: {
       color: successColor,
-      backgroundColor: changeColor(successColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(successColor, borderReduceS).color}`, //正常颜色下调s 45%
+      disabledColor: changeColor(successColor, borderReduceS).color, //正常颜色下调s 45%
+      backgroundColor: changeColor(successColor, 0, 0, bgReduceA).rgba, //正常颜色透明度 5%；
+      border: `1px solid ${successColor}`, //正常颜色
+      disabledBorder: `1px solid ${changeColor(successColor, borderReduceS).color}`, //正常颜色下调s 45%
     },
     warning: {
       color: warningColor,
-      backgroundColor: changeColor(warningColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(warningColor, borderReduceS).color}`, //正常颜色下调s 45%
+      disabledColor: changeColor(warningColor, borderReduceS).color, //正常颜色下调s 45%
+      backgroundColor: changeColor(warningColor, 0, 0, bgReduceA).rgba, //正常颜色透明度 5%；
+      border: `1px solid ${warningColor}`, //正常颜色
+      disabledBorder: `1px solid ${changeColor(warningColor, borderReduceS).color}`, //正常颜色下调s 45%
     },
     danger: {
       color: dangerColor,
-      backgroundColor: changeColor(dangerColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(dangerColor, borderReduceS).color}`, //正常颜色下调s 45%
+      disabledColor: changeColor(dangerColor, borderReduceS).color, //正常颜色下调s 45%
+      backgroundColor: changeColor(dangerColor, 0, 0, bgReduceA).rgba, //正常颜色透明度 5%；
+      border: `1px solid ${dangerColor}`, //正常颜色
+      disabledBorder: `1px solid ${changeColor(dangerColor, borderReduceS).color}`, //正常颜色下调s 45%
     },
   };
 }
 
-function fetchSize(sizeType: string) {
-  const size = Size[sizeType];
+function fetchSize(sizeType: string, em: Function) {
+  const { height, vPadding, dPadding, fontSize } = Size[sizeType];
   return {
-    height: `${em(size.height)}`,
-    padding: `${em(size.padding)}`,
-    fontSize: `${em(size.fontSize)}`,
+    height: `${em(height)}`,
+    vPadding: `${em(vPadding)}`,
+    dPadding: `${em(dPadding)}`,
+    fontSize,
   };
 }
 
 const ShapeCSS: { [key: ButtonSize]: ShapeStyle } = {
-  bigger: {
-    borderRadius: `${em(Size.bigger.borderRadius)}`,
-  },
   default: {
-    borderRadius: `${em(Size.default.borderRadius)}`,
+    borderRadius: Size.default.borderRadius,
   },
   large: {
-    borderRadius: `${em(Size.large.borderRadius)}`,
+    borderRadius: Size.large.borderRadius,
   },
   small: {
-    borderRadius: `${em(Size.small.borderRadius)}`,
+    borderRadius: Size.small.borderRadius,
   },
 };
 
@@ -207,12 +228,12 @@ export const getTypeCSS = (props: ButtonOutProps) => {
 };
 
 export const getShapeCSS = (props: ButtonOutProps) => {
-  const { shape = 'default', size = 'default' } = props;
+  const { shape = 'default', size = 'default', em } = props;
   let borderRadius = `${em(21)}`;
   if (shape === 'default') {
     borderRadius = `${em(4)}`;
   } else {
-    borderRadius = ShapeCSS[size].borderRadius;
+    borderRadius = em(ShapeCSS[size].borderRadius);
   }
   return `
     border-radius: ${borderRadius};
@@ -223,17 +244,29 @@ export const getDisabledCSS = (props: ButtonOutProps) => {
     color = '',
     border = '';
   const cursor = 'not-allowed';
-  const { disabled, type = 'default', themes } = props;
+  const { disabled, type = 'default', themes, plain } = props;
   const themeColor = getThemeColor(themes);
   const colorChange = fetchTypeCSS(themeColor)[type].backgroundColor;
+
   if (type === 'default') {
     color = disableColor;
     border = '1px solid #e8e8e8';
     backgroundColor = white;
   } else {
-    color = white;
-    border = 'none';
-    backgroundColor = changeColor(colorChange, 45).color; //orange: 正常色S下调45%
+    if (plain) {
+      const {
+        disabledColor,
+        disabledBorder,
+        backgroundColor: disabledBackgroundColor,
+      } = fetchPlainCSS(themeColor)[type];
+      color = disabledColor;
+      border = disabledBorder;
+      backgroundColor = disabledBackgroundColor;
+    } else {
+      color = white;
+      border = 'none';
+      backgroundColor = changeColor(colorChange, 45).color; //orange: 正常色S下调45%
+    }
   }
   if (disabled) {
     return `
@@ -250,30 +283,38 @@ export const getDisabledCSS = (props: ButtonOutProps) => {
   }
 };
 export const getSizeCSS = (props: ButtonOutProps) => {
-  const { size = 'default' } = props;
-  const { height, padding, fontSize } = fetchSize(size);
+  const { size = 'default', em } = props;
+  const { dPadding, fontSize } = fetchSize(size, em);
 
   return `
-    height: ${height};
-    padding: ${padding};
-    font-size: ${fontSize};
+    
+    padding: 0 ${dPadding};
+    font-size: ${fontSize}rem;
   `;
 };
 export const getCircleCSS = (props: ButtonOutProps) => {
-  const { circle = false } = props;
+  const { circle = false, em, size = 'default' } = props;
   const borderRadius = '50%';
-  const width = `${em(NotCircleSize.width)}`;
+  const width = `${em(Size[size].height)}`;
   if (circle) {
     return `
       width: ${width};
+      height: ${width};
       border-radius: ${borderRadius};
       padding: 0;
   `;
   }
 };
 export const getClickCSS = (props: ButtonOutProps) => {
-  const { type = 'default', size = 'default', shape = 'default', circle = false, themes } = props;
-  const { height: sizeHeight } = fetchSize(size);
+  const {
+    type = 'default',
+    size = 'default',
+    shape = 'default',
+    circle = false,
+    themes,
+    em,
+  } = props;
+  const { height: sizeHeight } = fetchSize(size, em);
   const themeColor = getThemeColor(themes);
   const backGround =
     type === 'default'
@@ -283,7 +324,7 @@ export const getClickCSS = (props: ButtonOutProps) => {
     ? '50%'
     : shape === 'default'
     ? em(NotCircleSize.borderRadius)
-    : ShapeCSS[size].borderRadius;
+    : em(ShapeCSS[size].borderRadius);
 
   const clickAnimate = keyframes`
   0% {
@@ -371,7 +412,7 @@ export const hoverStyle = (props: ButtonOutProps) => {
   `;
 };
 
-const getMarginCSS = (margin?: MarginType): string => {
+const getMarginCSS = (em: Function, margin?: MarginType): string => {
   let marginCss = '';
   if (margin) {
     if (typeof margin === 'number') {
@@ -385,9 +426,9 @@ const getMarginCSS = (margin?: MarginType): string => {
   return marginCss;
 };
 export const getThemeStyle = (props: ButtonOutProps) => {
-  const { themes } = props;
+  const { themes, em } = props;
   const { width, color, margin } = themes;
-  const marginCss = getMarginCSS(margin);
+  const marginCss = getMarginCSS(em, margin);
   const withCss = width && typeof width === 'number' ? em(width) : '';
   const colorCss = color ? color : '';
   return `
@@ -396,7 +437,8 @@ export const getThemeStyle = (props: ButtonOutProps) => {
     color: ${colorCss};
   `;
 };
-export const getIconStyle = () => {
+export const getIconStyle = (props: CSSProps) => {
+  const { em } = props;
   return `
     margin-right: ${em(10)};
   `;
@@ -416,4 +458,17 @@ export const getLoadingIconStyle = (props: IconLoadingProps) => {
       animation: ${IconSoin} 1s infinite linear;
     `;
   }
+};
+export const getChildrenLineHeight = (props: CSSProps) => {
+  const { size = 'default', em } = props;
+  const { height } = Size[size];
+
+  return `
+    line-height: ${em(height)};
+  `;
+};
+export const getCircleIconFont = (props: CSSProps) => {
+  const { size = 'default', em } = props;
+  const fontSize = CircleCSS[size].font;
+  return `font-size: ${em(fontSize)};`;
 };

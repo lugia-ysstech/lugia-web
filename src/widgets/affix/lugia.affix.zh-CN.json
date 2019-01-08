@@ -15,7 +15,7 @@
     },
     "offsetBottom": {
       "type": "number",
-      "desc": "距离指定容器顶部达到指定偏移量后触发",
+      "desc": "距离指定容器底部达到指定偏移量后触发",
       "defaultValue": "0"
     },
     "target": {

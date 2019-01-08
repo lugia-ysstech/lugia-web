@@ -172,9 +172,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   getExposeTarget = (event: Object, item: Object, keys: string[]) => {
     const obj = {};
-    obj[event] = event;
-    obj[item] = item;
-    obj[keys] = keys;
+    obj.event = event;
+    obj.item = item;
+    obj.keys = keys;
     return obj;
   };
 

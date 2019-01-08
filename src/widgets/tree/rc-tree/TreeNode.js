@@ -159,7 +159,15 @@ class TreeNode extends React.Component {
   }
 
   renderCheckbox(props) {
-    const { checked, halfChecked: indeterminate, notCanSelect: disabled, title } = props;
+    const {
+      checked,
+      halfChecked: indeterminate,
+      notCanSelect,
+      title,
+      disabled: dataDisabled,
+    } = props;
+
+    const disabled = notCanSelect || dataDisabled;
     const { themeColor } = props.themeStyle;
     const view = {
       [Widget.CheckBox]: { color: themeColor },
@@ -238,6 +246,7 @@ class TreeNode extends React.Component {
       checked,
       selected,
       notCanSelect,
+      disabled: dataDisabled,
       inlineType,
       pos,
       describe = false,
@@ -251,6 +260,7 @@ class TreeNode extends React.Component {
     } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
+    const disabled = notCanSelect || dataDisabled;
 
     let canRenderSwitcher = true;
     const content = props.title;
@@ -275,7 +285,7 @@ class TreeNode extends React.Component {
           height={iconHeight}
           theme={theme}
         >
-          <TextIcon iconClass={icon} />
+          {icon ? <TextIcon iconClass={icon} /> : null}
           {content}
         </TitleSpan>
       );
@@ -311,7 +321,8 @@ class TreeNode extends React.Component {
           checked={checked}
           selected={selected}
           describe={describe}
-          notCanSelect={notCanSelect}
+          disabled={disabled}
+          notCanSelect={disabled}
           theme={theme}
           color={color}
         >

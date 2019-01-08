@@ -5,7 +5,7 @@
   "props": {
     "getTheme": {
       "type": "Function",
-      "desc": "用于配置通用主题属性",
+      "desc": "用于配置通用主题属性，可配置 width、height",
       "defaultValue": "undefined"
     },
     "data": {
@@ -128,6 +128,10 @@
       "height": {
         "type": "number",
         "desc": "Transfer 的高度"
+      },
+      "width": {
+        "type": "number",
+        "desc": "Transfer 的宽度"
       }
     }
   },

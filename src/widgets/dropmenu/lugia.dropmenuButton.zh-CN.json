@@ -1,0 +1,46 @@
+{
+  "widgetName": "DropmenuButton",
+  "title": "下拉菜单的按钮",
+  "desc": "用于Dropmenu的按钮",
+  "props": {
+    "getTheme": {
+      "type": "Function",
+      "desc": "用于配置通用主题属性",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "是否禁选",
+      "defaultValue": "false"
+    },
+    "type": {
+      "type": "customs | basic | primary",
+      "desc": "按钮的风格,默认为customs",
+      "defaultValue": "customs"
+    },
+    "direction": {
+      "type": "up | bottom",
+      "desc": "按钮箭头的方向",
+      "defaultValue": "bottom"
+    },
+    "divided": {
+      "type": "boolean",
+      "desc": "是否有分割线",
+      "defaultValue": "true"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+
+  "category": ["数据录入"]
+}

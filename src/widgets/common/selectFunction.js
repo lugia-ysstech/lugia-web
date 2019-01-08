@@ -26,6 +26,7 @@ export function getTheme(props: Object, triggerChild: string): Object {
   delete queryInputConfig.height;
   const targetConfig: Object = { ...theme };
   const { height = DefaultHeight } = targetConfig;
+
   targetConfig.height = adjustValue(height, MenuItemHeight);
   return {
     [triggerChild]: targetConfig,

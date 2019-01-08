@@ -27,6 +27,51 @@
       "type": "boolean",
       "desc": "初始是否展开所有的行",
       "defaultValue": "undefined"
+    },
+    "expandedRowRender": {
+      "type": "Function(recode, index, indent, expanded):ReactNode",
+      "desc": "额外的展开行",
+      "defaultValue": "undefined"
+    },
+    "useFixedHeader": {
+      "type": "boolean",
+      "desc": "固定 Table 标题，使其固定在最上方",
+      "defaultValue": "undefined"
+    },
+    "footer": {
+      "type": "Function(currentPageData)",
+      "desc": "表格尾部",
+      "defaultValue": "undefined"
+    },
+    "indentSize": {
+      "type": "number",
+      "desc": "展示树形数据时，每层缩进的宽度，以 px 为单位",
+      "defaultValue": "15"
+    },
+    "rowKey": {
+      "type": "{ x: number | true, y: number }",
+      "desc": "表格行 key 的取值，可以是字符串或一个函数",
+      "defaultValue": "key"
+    },
+    "showHeader": {
+      "type": "boolean",
+      "desc": "是否展示标头",
+      "defaultValue": "true"
+    },
+    "title": {
+      "type": "Function(currentPageData)",
+      "desc": "表格标题",
+      "defaultValue": "undefined"
+    },
+    "onHeaderRow": {
+      "type": "Function(column, index)",
+      "desc": "设置头部行属性",
+      "defaultValue": "undefined"
+    },
+    "onRow": {
+      "type": "Function(record, index)",
+      "desc": "设置行属性",
+      "defaultValue": "undefined"
     }
   },
   "event": {
@@ -39,7 +84,22 @@
           "type": "string[]"
         }
       ]
+    },
+    "onExpand": {
+      "desc": "点击展开图标时触发",
+      "args": [
+        {
+          "name": "expanded",
+          "desc": "当前是否展开",
+          "type": "boolean"
+        },{
+          "name": "record",
+          "desc": "当前行数据",
+          "type": "Object"
+        }
+      ]
     }
   },
+  "childrenWidget": ["column"],
   "category": ["数据录入"]
 }
