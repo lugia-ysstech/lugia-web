@@ -161,9 +161,9 @@ export const getPlaceholderFontColor = () => {
 export const getClearButtonColor = () => {
   return `color: ${mediumGreyColor}`;
 };
-export const getOpacity = (props: Object) => {
+export const getDisplay = (props: Object) => {
   const { show } = props;
-  return show ? 1 : 0;
+  return show ? 'inline-block' : 'none !important';
 };
 export const getClearButtonHoverColor = () => {
   return `color: ${darkGreyColor}`;

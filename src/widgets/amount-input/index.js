@@ -12,7 +12,6 @@ import {
   getBackground,
   getPlaceholderFontColor,
   getWidth,
-  getOpacity,
 } from '../css/input';
 
 import InputTip from '../tooltip';

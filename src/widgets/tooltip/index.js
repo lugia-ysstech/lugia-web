@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { TooltipProps, TooltipState } from '../css/tooltip';
-import { getOpacity } from '../css/input';
+import { getDisplay } from '../css/input';
 import {
   getTriggerByArrow,
   getFontColor,
@@ -30,7 +30,7 @@ import { px2emcss } from '../css/units';
 const em = px2emcss(FontSizeNumber);
 
 const ToolTrigger: Object = styled(Trigger)`
-  opacity: ${getOpacity};
+  display: ${getDisplay};
   ${getTriggerByArrow};
   box-shadow: none;
 `;

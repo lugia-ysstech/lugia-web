@@ -12,7 +12,7 @@ import {
   DefaultHelp,
   getBackground,
   getClearButtonColor,
-  getOpacity,
+  getDisplay,
   getClearButtonHoverColor,
   getCursor,
   getFocusBorderColor,
@@ -123,14 +123,11 @@ const ClearButton: Object = styled(Icon)`
   bottom: 50%;
   line-height: ${em(10)};
   right: ${em(10)};
-  opacity: ${getOpacity};
+  display: ${getDisplay};
   ${getClearButtonColor};
-
   &:hover {
     ${getClearButtonHoverColor};
   }
-
-  display: inline-block;
 `;
 ClearButton.displayName = 'ClearButton';
 
