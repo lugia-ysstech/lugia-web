@@ -56,6 +56,13 @@ describe('ThemeProvider', () => {
       .props()
       .getTheme();
   };
+  const getWidgetThemeName = function(target: Object, widgetDisplayName: string) {
+    return target
+      .find(widgetDisplayName)
+      .at(0)
+      .props()
+      .getWidgetThemeName();
+  };
   const getThemeByDisplayName = function(
     target: Object,
     widgetDisplayName: string,
@@ -75,6 +82,7 @@ describe('ThemeProvider', () => {
       </Theme>
     );
 
+    expect(getWidgetThemeName(target, HelloMyButton)).toEqual(HelloMyButtonTheme);
     expect(getTheme(target, HelloMyButton)).toEqual({
       [svThemeConfigTree]: {},
     });

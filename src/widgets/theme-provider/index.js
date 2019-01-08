@@ -54,6 +54,7 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
         <Target
           {...this.props}
           getTheme={getTheme}
+          getWidgetThemeName={() => widgetName}
           getThemeByDisplayName={getThemeByDisplayName}
           svThemVersion={this.state.svThemVersion}
           ref={cmp => (this.svtarget = cmp)}
