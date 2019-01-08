@@ -23,7 +23,7 @@ export const themeColor = {
 export function getThemeProperty(props: Object) {
   const { hasTimeWrapBorder, hasItemNumber = 3 } = props;
   const { isRange, isTime } = modeStyle(props.mode);
-  const normalWidth = isRange ? 400 : 200;
+  const normalWidth = isRange ? 420 : 200;
   const { width = normalWidth, color, backgroundColor } = props;
   const newWidth = isRange ? width / 2 + 100 : isTime ? width : width * 1 + 100;
   const rangeWrapWidth = newWidth * 2;
