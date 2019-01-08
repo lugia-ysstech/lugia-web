@@ -12,6 +12,7 @@ import {
   DefaultHelp,
   getBackground,
   getClearButtonColor,
+  getDisplay,
   getClearButtonHoverColor,
   getCursor,
   getFocusBorderColor,
@@ -122,12 +123,11 @@ const ClearButton: Object = styled(Icon)`
   bottom: 50%;
   line-height: ${em(10)};
   right: ${em(10)};
+  display: ${getDisplay};
   ${getClearButtonColor};
   &:hover {
     ${getClearButtonHoverColor};
   }
-
-  display: inline-block;
 `;
 ClearButton.displayName = 'ClearButton';
 
@@ -187,7 +187,6 @@ class TextBox extends Component<InputProps, InputState> {
   input: any;
   static displayName = Widget.Input;
   actualValue = '';
-
   constructor(props: InputProps) {
     super(props);
   }
@@ -199,6 +198,7 @@ class TextBox extends Component<InputProps, InputState> {
     if (!preState) {
       return {
         value: hasValueInprops ? value : defaultValue,
+        clearButtonShow: false,
       };
     }
     if (hasValueInprops) {
@@ -240,6 +240,7 @@ class TextBox extends Component<InputProps, InputState> {
     if (isValidateSuccess(validateStatus, validateType, 'inner')) {
       this.setState({ value: this.actualValue });
     }
+    this.setState({ clearButtonShow: true });
     onFocus && onFocus(event);
   };
 
@@ -249,6 +250,7 @@ class TextBox extends Component<InputProps, InputState> {
       this.setState({ value: help });
       this.actualValue = this.state.value;
     }
+    this.setState({ clearButtonShow: false });
     onBlur && onBlur(event);
   };
 
@@ -340,7 +342,12 @@ class TextBox extends Component<InputProps, InputState> {
       return null;
     }
     return (
-      <ClearButton iconClass={Clear} viewClass={ClearButton.displayName} onClick={this.onClear} />
+      <ClearButton
+        iconClass={Clear}
+        viewClass={ClearButton.displayName}
+        onClick={this.onClear}
+        show={this.state.clearButtonShow}
+      />
     );
   }
 

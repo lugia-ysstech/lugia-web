@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { TooltipProps, TooltipState } from '../css/tooltip';
+import { getDisplay } from '../css/input';
 import {
   getTriggerByArrow,
   getFontColor,
@@ -29,6 +30,7 @@ import { px2emcss } from '../css/units';
 const em = px2emcss(FontSizeNumber);
 
 const ToolTrigger: Object = styled(Trigger)`
+  display: ${getDisplay};
   ${getTriggerByArrow};
   box-shadow: none;
 `;
@@ -146,7 +148,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     return { visible: state.visible };
   }
   render() {
-    const { placement, action, title, popArrowType, getTheme, children } = this.props;
+    const { placement, action, title, popArrowType, getTheme, children, show } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
@@ -159,6 +161,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         onPopupVisibleChange={this.onVisibleChange}
         action={action}
         direction={direction}
+        show={show}
         popup={
           <Content
             theme={getTheme()}
