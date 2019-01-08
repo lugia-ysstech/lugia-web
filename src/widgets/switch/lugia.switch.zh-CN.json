@@ -19,9 +19,9 @@
       "defaultValue": "undefined"
     },
     "size": {
-      "type": "small||'normal'",
-      "desc": "开关尺寸大小 有30px,38px可选择",
-      "defaultValue": "normal"
+      "type": "string",
+      "desc": "设置开关大小",
+      "defaultValue": "undefined"
     },
     "isInverse": {
       "type": "boolean",

@@ -4,7 +4,6 @@
 import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
-import Icon from '../icon';
 const em = px2emcss(1.2);
 const { themeColor, successColor, dangerColor } = colorsFunc();
 const { disabledColor } = colorsFunc(themeColor);
@@ -40,46 +39,60 @@ const togglesize = {
 const getSwitchWrapper = (props, size) => {
   const { height, width } = getStyled(props)[size];
   const heightEm = em(height);
-  return `
+  const wrapperCss = `
     width: ${em(width)};
     height: ${heightEm};
     line-height: ${heightEm};
 `;
+  return { wrapperCss, heightEm };
 };
-
+const getBackground = (props: Object) => {
+  const { loading, disabled, value, isInverse } = props;
+  const color = loading
+    ? disabledColor
+    : disabled
+    ? disabledColor
+    : value
+    ? isInverse
+      ? successColor
+      : themeColor
+    : isInverse
+    ? dangerColor
+    : isInverse !== undefined
+    ? themeColor
+    : '#ccc';
+  return color;
+};
 export const SwitchWrapper = styled.span`
   font-size: ${em(12)};
   box-sizing: border-box;
   display: inline-block;
-  ${props => getSwitchWrapper(props, 'switchWrapperSize')}  
+  ${props => getSwitchWrapper(props, 'switchWrapperSize').wrapperCss};
   border-radius: ${em(20)};
-  background: ${props =>
-    (props.loading
-      ? `${disabledColor}`
-      : props.disabled
-      ? `${disabledColor}`
-      : props.value
-      ? props.isInverse
-        ? `${successColor}`
-        : `${themeColor}`
-      : props.isInverse
-      ? `${dangerColor}`
-      : props.isInverse !== undefined
-      ? `${themeColor}`
-      : '#ccc')};
+  background: ${props => getBackground(props)};
   position: relative;
   text-align: ${props => (props.value ? 'left' : 'right')};
-  padding: 0 ${em(4)};  
+  padding: 0 ${em(4)};
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   vertical-align: middle;
+
   &:focus {
     outline: none;
   }
 `;
+export const SwitchText = styled.span`
+  & > *:first-child {
+    display: inline-block;
+    line-height: ${props => getSwitchWrapper(props, 'switchWrapperSize').heightEm};
 
+    &::before {
+      line-height: ${props => getSwitchWrapper(props, 'switchWrapperSize').heightEm};
+    }
+  }
+`;
 export const SwitchCircle = styled.span`
-  ${props => getSwitchWrapper(props, 'circleSize')}  
+  ${props => getSwitchWrapper(props, 'circleSize').wrapperCss};
   border-radius: ${props => (props.isMouseDown ? `${em(7)}` : '50%')};
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
   background: #fff;
@@ -90,8 +103,28 @@ export const SwitchCircle = styled.span`
   -webkit-transform: translateY(-50%);
   transition: 1s;
   -webkit-transition: all 0.2s;
-`;
 
+  & > *:first-child {
+    display: block;
+    color: ${props => getBackground(props)};
+    line-height: ${props => getSwitchWrapper(props, 'circleSize').heightEm};
+    animation: rotate 1.5s linear infinite;
+
+    &::before {
+      transform: scale(0.65);
+      line-height: ${props => getSwitchWrapper(props, 'circleSize').heightEm};
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;
 const getStyled = (props: CssProps) => {
   const { size, isMouseDown, value } = props;
   const normallPosition = (normalSize.height - normallCircleSize.height) / 2;
@@ -117,21 +150,3 @@ const getStyled = (props: CssProps) => {
     circleSize,
   };
 };
-
-const getKeyframes = () => {
-  return `animation: rotate 1s linear infinite;
-@keyframes rotate{from{transform: rotate(0deg)}
-    to{transform: rotate(359deg)}`;
-};
-
-export const LoadingIcon: Object = styled(Icon)`
-  position: absolute;
-  user-select: none;
-  text-align: center;
-  font-size: 1.2rem;
-  color: ${disabledColor};
-  border-radius: 50%;
-  left: ${em(1)};
-  top: ${em(1)};
-  ${getKeyframes};
-`;
