@@ -674,7 +674,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return () => {};
         }
 
-        if (selectedKeys[0].indexOf(separator) === -1) {
+        const selectedKey = selectedKeys[0] + '';
+        if (selectedKey.indexOf(separator) === -1) {
           existKey[selectedKeys[selectedKeys.length - 1]] = true;
         } else {
           const target = getTargetOrDefaultTargetLazy(

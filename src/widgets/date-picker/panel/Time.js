@@ -123,7 +123,7 @@ class Time extends Component<TypeProps, TypeState> {
   render() {
     const { hours, minutes, seconds } = this.times;
     const { keys, starts } = this.state;
-    const { theme, mode, value, hasTimeWrapBorder, showTime } = this.props;
+    const { theme, mode, value, hasTimeWrapBorder } = this.props;
     const { isTime } = modeStyle(mode);
     const { format } = this.state;
     const { hasHour, hasMinutes, hasSeconds, hasItemNumber } =
@@ -148,7 +148,7 @@ class Time extends Component<TypeProps, TypeState> {
                 data={hours}
                 onClick={this.onClickHours}
                 start={starts[0]}
-                selectedKeys={keys[0]}
+                selectedKeys={[keys[0]]}
                 checkedCSS={'background'}
                 onScroller={this.onScrollerFirst}
               />
@@ -162,7 +162,7 @@ class Time extends Component<TypeProps, TypeState> {
                 data={minutes}
                 onClick={this.onClickMinutes}
                 start={starts[1]}
-                selectedKeys={keys[1]}
+                selectedKeys={[keys[1]]}
                 checkedCSS={'background'}
                 onScroller={this.onScrollerSecond}
               />
@@ -176,7 +176,7 @@ class Time extends Component<TypeProps, TypeState> {
                 data={seconds}
                 onClick={this.onClickSeconds}
                 start={starts[2]}
-                selectedKeys={keys[2]}
+                selectedKeys={[keys[2]]}
                 checkedCSS={'background'}
                 onScroller={this.onScrollerThird}
               />
