@@ -55,11 +55,10 @@ type TreeSelectProps = {
   canInput: boolean,
   disabled: boolean,
   placeholder?: string,
-
-  /* create by ZhangBoPing */
-  label: string, //
+  translateTreeData?: string,
+  label: string,
   labelSize: number,
-  canSearch: boolean, //
+  canSearch: boolean,
 };
 type TreeSelectState = {
   open: boolean,
@@ -85,7 +84,6 @@ const Text = styled.span`
   border-radius: ${em(3)};
 `;
 
-/* create by ZhangBoPing */
 const Label = styled.span`
   display: inline-block;
   text-overflow: ellipsis;
@@ -124,6 +122,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     disabled: false,
     canSearch: false,
     expandAll: false,
+    translateTreeData: false,
   };
 
   state: TreeSelectState;
@@ -237,6 +236,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       valueField,
       displayField,
       expandAll,
+      translateTreeData,
     } = props;
 
     const {
@@ -284,6 +284,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         displayField={displayField}
         displayValue={displayValue}
         igronSelectField={igronSelectField}
+        translateTreeData={translateTreeData}
       />,
     ];
 

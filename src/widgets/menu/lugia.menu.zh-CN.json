@@ -55,22 +55,63 @@
       "defaultValue": "none"
     },
 
-    "size": {
-      "type": "large | default | bigger",
-      "desc": "设置列表项的高度",
-      "defaultValue": "default"
-    },
-
     "limitCount": {
       "type": "number",
       "desc": "多选时的最大选中数",
       "defaultValue": "999999"
     },
 
-    "offsetX": {
+    "offsety": {
       "type": "number",
       "desc": "菜单间的间隔",
       "defaultValue": "4"
+    },
+
+    "autoHeight": {
+      "type": "boolean",
+      "desc": "根据data数量，自动计算菜单高度",
+      "defaultValue": "undefined"
+    },
+
+    "expandedPath": {
+      "type": "string[]",
+      "desc": "层级菜单时展开的数据",
+      "defaultValue": "undefined"
+    },
+    "separator": {
+      "type": "string",
+      "desc": "层级菜单时连接层级数据的分隔符",
+      "defaultValue": "|"
+    },
+    "offsetX": {
+      "type": "number",
+      "desc": "层级菜单时，菜单间的间隔",
+      "defaultValue": "4"
+    },
+    "offsetY": {
+      "type": "string",
+      "desc": "层级菜单时，子菜单相对父级菜单的top值",
+      "defaultValue": "undefined"
+    },
+    "action": {
+      "type": "click | hover",
+      "desc": "层级菜单时，展开子菜单的方式",
+      "defaultValue": "click"
+    },
+    "size": {
+      "type": "large | default | bigger",
+      "desc": "设置列表项的高度",
+      "defaultValue": "default"
+    },
+    "subsize": {
+      "type": "large | default | bigger",
+      "desc": "设置子菜单列表项的高度",
+      "defaultValue": "default"
+    },
+    "popupVisible": {
+      "type": "boolean",
+      "desc": "层级菜单,是否允许打开子菜单",
+      "defaultValue": "true"
     }
   },
   "events": {
@@ -78,97 +119,59 @@
       "desc": "选中项发生变化时触发",
       "args": [
         {
-          "name": "event",
-          "desc": "点击的DOM事件",
-          "type": "Object"
-        },
-        {
-          "name": "newDisplayValue",
-          "desc": "所有选中项的displayField的集合",
-          "type": "string[]"
-        },
-        {
-          "name": "newItem",
-          "desc": "所有选中项的数据的集合",
-          "type": "Object[]"
-        },
-        {
-          "name": "newValue",
-          "desc": "所有选中项的valueField的集合",
-          "type": "string[]"
-        },
-        {
-          "name": "oldItem",
-          "desc": "改变之前所有选中项的数据的集合",
-          "type": "Object[]"
-        },
-        {
-          "name": "oldValue",
-          "desc": "改变之前所有选中项的valueField的集合",
-          "type": "string[]"
-        }
-      ]
-    },
-    "onTrigger": {
-      "desc": "菜单展开是触发"
-    },
-    "onQuery": {
-      "desc": "键盘按下任何键时触发",
-      "args": [
-        {
-          "name": "query",
-          "desc": "输入的搜索关键字",
-          "type": "string"
-        }
-      ]
-    },
-    "onClear": {
-      "desc": "清除输入框内容时触发",
-      "args": [
-        {
-          "name": "event",
-          "desc": "清除输入框内容事件",
+          "name": "keys",
+          "desc": "所有的选中值",
           "type": "Object"
         }
       ]
     },
-    "onSelect": {
-      "desc": "选中时触发",
+
+    "onClick": {
+      "desc": "点击列表项时触发",
       "args": [
         {
           "name": "event",
-          "desc": "点击的DOM事件",
+          "desc": "选中DOM的事件对象",
           "type": "Object"
         },
         {
-          "name": "newDisplayValue",
-          "desc": "所有选中项的displayField的集合",
-          "type": "string[]"
+          "name": "keys",
+          "desc": "所有的选中值",
+          "type": "Object"
         },
         {
-          "name": "newItem",
-          "desc": "所有选中项的数据的集合",
-          "type": "Object[]"
-        },
-        {
-          "name": "newValue",
-          "desc": "所有选中项的valueField的集合",
-          "type": "string[]"
-        },
-        {
-          "name": "oldItem",
-          "desc": "改变之前所有选中项的数据的集合",
-          "type": "Object[]"
-        },
-        {
-          "name": "oldValue",
-          "desc": "改变之前所有选中项的valueField的集合",
-          "type": "string[]"
+          "name": "item",
+          "desc": "当前选中项的数据",
+          "type": "Object"
         }
       ]
     },
-    "onRefresh": {
-      "desc": "点击刷新按钮时触发"
+
+    "onMouseEnter": {
+      "desc": "鼠标进入列表项时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "选中DOM的事件对象",
+          "type": "Object"
+        },
+        {
+          "name": "item",
+          "desc": "当前鼠标进入的列表项数据",
+          "type": "Object"
+        }
+      ]
+    },
+
+    "onExpandPathChange": {
+      "desc": "层级菜单展开项发生改变时触发",
+      "args": [
+        {
+          "name": "expandedPath",
+          "desc": "通过separator连接的各级展开数据",
+          "type": "string[]"
+        }
+      ]
     }
   },
 
