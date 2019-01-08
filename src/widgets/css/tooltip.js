@@ -44,6 +44,7 @@ export type TooltipProps = {
   popArrowType?: PopArrowType,
   visible: boolean,
   defaultVisible?: boolean,
+  show?: boolean,
 };
 export type TooltipState = {
   visible: boolean,
@@ -70,6 +71,11 @@ export const getSize = (props: TooltipProps) => {
     return `height:${
       size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight
     };`;
+};
+export const getOpacity = (props: Object) => {
+  const { show } = props;
+  const opacity = show ? 1 : 0;
+  return `opacity:${opacity}`;
 };
 export const getTriggerByArrow = (props: Object) => {
   const { direction } = props;

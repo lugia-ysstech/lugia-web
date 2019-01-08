@@ -119,7 +119,6 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       return {
         value: getValue(theValue),
         rmb,
-        tipVisible: false,
       };
     }
     if (hasValueInprops) {
@@ -176,7 +175,6 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
 
   onFocus = (event: UIEvent) => {
     const { onFocus } = this.props;
-    this.setState({ tipVisible: true });
     onFocus && onFocus(event);
   };
 
@@ -215,30 +213,15 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       this.getInputDom().focus();
     }, 0);
   };
-  isHasValue(): boolean {
-    const { value } = this.state;
-    return !!(value && value.length);
-  }
   render() {
-    const { tipVisible } = this.state;
+    const { value } = this.state;
+    const show = !!(value && value.length);
     return (
-      <InputTip
-        placement={'topLeft'}
-        title={this.getTitle()}
-        action={'click'}
-        visible={tipVisible}
-        onVisibleChange={this.onVisibleChange}
-      >
+      <InputTip title={this.getTitle()} action={'focus'} show={show}>
         {this.getInputContainer()}
       </InputTip>
     );
   }
-
-  onVisibleChange = (visible: boolean) => {
-    let theVisible = true;
-    if (this.isHasValue()) theVisible = visible;
-    this.setState({ tipVisible: theVisible && this.isHasValue() });
-  };
 
   getInputContainer() {
     const { getTheme } = this.props;

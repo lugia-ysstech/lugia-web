@@ -23,6 +23,7 @@ import {
   Down,
   Up,
   RadiusSize,
+  getOpacity,
 } from '../css/tooltip';
 import { FontSize, FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
@@ -31,6 +32,7 @@ const em = px2emcss(FontSizeNumber);
 const ToolTrigger: Object = styled(Trigger)`
   ${getTriggerByArrow};
   box-shadow: none;
+  ${getOpacity};
 `;
 
 const Content = styled.div`
@@ -146,7 +148,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     return { visible: state.visible };
   }
   render() {
-    const { placement, action, title, popArrowType, getTheme, children } = this.props;
+    const { placement, action, title, popArrowType, getTheme, children, show = true } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
@@ -159,6 +161,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         onPopupVisibleChange={this.onVisibleChange}
         action={action}
         direction={direction}
+        show={show}
         popup={
           <Content
             theme={getTheme()}
