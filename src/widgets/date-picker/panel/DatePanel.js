@@ -177,12 +177,12 @@ class Dates extends Component<TypeProps, any> {
           data-index={index}
           data-child={currentValue}
           key={index}
+          onClick={this.onDateChange(index, currentValue)}
         >
           <DateChildInner
             {...theme}
             mode={mode}
             key={index}
-            onClick={this.onDateChange(index, currentValue)}
             isToday={showToday && todayIndex === index + 1 ? true : false}
             showToday={showToday}
             selectToday={selectToday}
