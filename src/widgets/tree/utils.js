@@ -38,7 +38,7 @@ const notEmpty = (obj: any) => {
   return obj !== null && obj !== undefined && obj !== '';
 };
 
-const VirtualRoot: string = 'sv_tree_root';
+const VirtualRoot: string = 'lugia_tree_root';
 
 class TreeUtils {
   VirtualRoot: string = VirtualRoot;

@@ -8,7 +8,6 @@ import '../common/shirm';
 
 import * as React from 'react';
 import styled from 'styled-components';
-import '../css/sv.css';
 
 import Item from './ItemOption';
 import Icon from '../icon';
@@ -317,7 +316,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (!this.isMutliple()) {
       result = this.generateOutter(
         <Container
-          className="sv"
           disabled={disabled}
           theme={getTheme()}
           innerRef={cmp => (this.container = cmp)}
@@ -337,7 +335,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const { items } = state;
       result = this.generateOutter(
         <Container
-          className="sv"
           disabled={disabled}
           theme={props.getTheme()}
           innerRef={cmp => (this.container = cmp)}
@@ -651,7 +648,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getMoreItem() {
-    return <MoreItem items={this.props.value} onClick={this.onMoreClick} key="sv_more_item" />;
+    return <MoreItem items={this.props.value} onClick={this.onMoreClick} key="more_item" />;
   }
 
   onMoreClick = (e: Object) => {

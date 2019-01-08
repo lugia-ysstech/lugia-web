@@ -11,7 +11,6 @@ import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Tree from '../tree/index.js';
 import Theme from '../theme';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
@@ -271,7 +270,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         data={data}
         key="tree"
         {...props}
-        className="sv"
         current={current}
         start={start}
         expandAll={expandAll}

@@ -12,7 +12,6 @@ import Trigger from '../trigger';
 import Menu from '../menu';
 import Theme from '../theme';
 import styled from 'styled-components';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import QueryInput from '../common/QueryInput';

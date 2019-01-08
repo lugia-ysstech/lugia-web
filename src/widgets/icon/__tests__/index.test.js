@@ -14,16 +14,18 @@ const { mockFunction, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify
 const { expect: exp } = chai;
 
 describe('Icon', () => {
-  it('iconClass: sv-icon-close', () => {
-    const target = renderer.create(<Icon iconClass="sv-icon-close" />).toJSON();
+  it('iconClass: lugia-icon-reminder_close_circle_o', () => {
+    const target = renderer
+      .create(<Icon iconClass="lugia-icon-reminder_close_circle_o" />)
+      .toJSON();
     expect(target).toMatchSnapshot();
   });
 
-  it('iconClass: sv-icon-close', () => {
+  it('iconClass: lugia-icon-reminder_close_circle_o', () => {
     const order = VerifyOrder.create();
     const mockClick = mockFunction.create(VerifyOrderConfig.create('eventHandle', order));
     const onClick = mockClick.getFunction();
-    const target = mount(<Icon iconClass="sv-icon-close" onClick={onClick} />);
+    const target = mount(<Icon iconClass="lugia-icon-reminder_close_circle_o" onClick={onClick} />);
     target.find('i').simulate('click', {});
     order.verify(obj => {
       const { eventHandle } = obj;
