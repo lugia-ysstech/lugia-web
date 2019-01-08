@@ -39,13 +39,14 @@ const width = props => {
   const width = getActiveWidth(props);
   return width ? `width:${em(width)};` : `width:${em(DefaultWidth)};`;
 };
-const getContentWidth = props => {
+const getContentWidthValue = props => {
   const width = getActiveWidth(props);
-  return width ? em(width - BarDefaultSize) : em(DefaultWidth - BarDefaultSize);
+  return width ? width - BarDefaultSize : DefaultWidth - BarDefaultSize;
 };
 
-const contentWidth = props => {
-  return `width:${getContentWidth(props)};`;
+const getContentWidth = props => {
+  const width = getContentWidthValue(props);
+  return em(width);
 };
 
 const scrollerLeft = props => {
@@ -53,13 +54,15 @@ const scrollerLeft = props => {
 };
 
 const Col = styled.div`
-  ${contentWidth};
+  ${width};
+  font-size: ${FontSizeNumber}rem;
   position: absolute;
   display: inline-block;
 `;
 
 const ScrollerContainer = styled.div`
   overflow: hidden;
+  font-size: ${FontSizeNumber}rem;
   ${height};
   ${width};
   position: relative;
