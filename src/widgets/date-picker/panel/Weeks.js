@@ -87,7 +87,7 @@ class Weeks extends Component<TypeProps, TypeState> {
     }
     if (!isWeekInner) {
       const { from } = this;
-      this.getOnChange({ year, weeks, mode: from, from, event });
+      this.getOnChange({ year, weeks, mode: from, event });
     }
   };
   getOnChange = (data: Object) => {
