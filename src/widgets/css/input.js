@@ -37,10 +37,10 @@ export const getInputBorderHoverColor = (props: Object) => {
   return borderColor
     ? borderColor
     : disabled
-      ? lightGreyColor
-      : isSuccess(validateStatus)
-        ? themeColor
-        : dangerColor;
+    ? lightGreyColor
+    : isSuccess(validateStatus)
+    ? themeColor
+    : dangerColor;
 };
 
 export const getFocusShadow = (props: Object) => {
@@ -160,6 +160,10 @@ export const getPlaceholderFontColor = () => {
 };
 export const getClearButtonColor = () => {
   return `color: ${mediumGreyColor}`;
+};
+export const getOpacity = (props: Object) => {
+  const { show } = props;
+  return show ? 1 : 0;
 };
 export const getClearButtonHoverColor = () => {
   return `color: ${darkGreyColor}`;

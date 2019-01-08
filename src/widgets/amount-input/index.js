@@ -12,9 +12,10 @@ import {
   getBackground,
   getPlaceholderFontColor,
   getWidth,
+  getOpacity,
 } from '../css/input';
 
-import InputTip from '../tooltip/';
+import InputTip from '../tooltip';
 import { fixControlledValue } from '../utils';
 import {
   amountFormatter,
@@ -115,6 +116,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     if (!state) {
       const theValue = hasValueInprops ? value : defaultValue ? defaultValue : '';
       const rmb = !isAmount(theValue);
+
       return {
         value: getValue(theValue),
         rmb,
@@ -214,8 +216,14 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
 
   render() {
+    const { value } = this.state;
     return (
-      <InputTip placement={'topLeft'} title={this.getTitle()} action={'focus'}>
+      <InputTip
+        placement={'topLeft'}
+        title={this.getTitle()}
+        action={'focus'}
+        show={!!(value && value.length)}
+      >
         {this.getInputContainer()}
       </InputTip>
     );
