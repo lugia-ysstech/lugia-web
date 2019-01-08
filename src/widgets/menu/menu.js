@@ -54,7 +54,6 @@ export type TreeDataItem = {
 
 export type MenuProps = {
   start: number,
-  level: number,
   end: number,
   getTheme: Function,
   getPrefix: Function,
@@ -72,7 +71,6 @@ export type MenuProps = {
   onChange?: Function,
   onMouseEnter?: Function,
   onExpandPathChange?: Function,
-  onMouseLeave?: Function,
   limitCount?: number,
   checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
   offsetX: number,
@@ -82,6 +80,7 @@ export type MenuProps = {
   action: 'hover' | 'click',
   size: 'large' | 'default' | 'bigger',
   subsize: 'large' | 'default' | 'bigger',
+  level: number,
   mouseDownInMenus?: Function,
   pushMenuInstance?: Function,
   deleteMenuInstance?: Function,
@@ -118,6 +117,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     end: 0,
     separator: '|',
     checkedCSS: 'none',
+    action: 'click',
     getTheme: () => {
       return {};
     },
@@ -294,11 +294,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     theme.width = width;
     return theme;
   }
-
-  onMouseLeave = (e: Object) => {
-    const { onMouseLeave } = this.props;
-    onMouseLeave && onMouseLeave(e);
-  };
 
   computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
     const items = [];
