@@ -285,7 +285,7 @@ class TreeNode extends React.Component {
           height={iconHeight}
           theme={theme}
         >
-          <TextIcon iconClass={icon} />
+          {icon ? <TextIcon iconClass={icon} /> : null}
           {content}
         </TitleSpan>
       );
