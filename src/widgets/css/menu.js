@@ -79,6 +79,7 @@ const getWidth = props => {
   return `width: ${em(width)}`;
 };
 export const MenuContainer = styled.ul`
+  font-size: ${FontSizeNumber}rem;
   ${getWidth};
   outline: none;
   margin: 0;
