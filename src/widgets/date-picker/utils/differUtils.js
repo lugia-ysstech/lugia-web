@@ -289,12 +289,12 @@ export const getDatesfromWeeks = (moments: moment.Moment, weekIndex: number, ind
 export const getweekFormatValue = (year: number, weeks: number, format: string) => {
   const weekValue = moment()
     .set({ year, weeks })
-    .format('YYYY-WW');
+    .format(format);
   return weekValue;
 };
 export const getValueFromWeekToDate = (value: string, format: string) => {
   const moments = moment(value, format);
-  const weeks = moments.format('W');
+  const weeks = moments.format('w');
   const year = moment(value, 'YYYY').year();
   const result = moment()
     .set({ year, weeks })
@@ -372,13 +372,14 @@ export function haveWhichOneItemInTime(format) {
   let hasMinutes = false;
   let hasSeconds = false;
   for (let i = 0; i < format.length; i++) {
-    if (format[i] === 'H' || format[i] === 'h') {
+    const newFormat = format[i].toUpperCase();
+    if (newFormat === 'H') {
       hasHour = true;
     }
-    if (format[i] === 'M' || format[i] === 'm') {
+    if (newFormat === 'M') {
       hasMinutes = true;
     }
-    if (format[i] === 'S' || format[i] === 's') {
+    if (newFormat === 'S') {
       hasSeconds = true;
     }
   }

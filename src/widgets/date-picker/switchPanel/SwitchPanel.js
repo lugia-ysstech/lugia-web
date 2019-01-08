@@ -107,7 +107,8 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       mode = 'time';
     }
     const { isWeek, isMonth, isYear, isTime, isTimes } = modeStyle(mode);
-    const { value, year, weeks, month, timeValue } = this.state;
+    const { value, month, timeValue } = this.state;
+    let { year, weeks } = this.state;
     const config = {
       ...this.props,
       format,
@@ -115,6 +116,11 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       panelStates,
       value,
     };
+    if (isWeek) {
+      const weekObj = getWeeksRangeInDates(moment(value, 'YYYY-MM-DD'));
+      year = weekObj.year;
+      weeks = weekObj.weeks;
+    }
     return isYear ? (
       <Year {...config} year={year} onChange={this.changeYear} />
     ) : isMonth ? (
@@ -199,14 +205,14 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     this.setStateFunc({ mode, from });
   };
   changeWeek = (obj: Object) => {
-    const { year, weeks, mode } = obj;
+    const { year, weeks, mode, event } = obj;
     const { format } = this.state;
     const { isWeek, isWeeks } = modeStyle(this.props.mode);
-    const newFormat = !isWeeks ? 'YYYY-WW' : format;
+    const newFormat = !(isWeeks || isWeek) ? 'YYYY-WW' : format;
     const newValue = getweekFormatValue(year, weeks, newFormat);
     const value = getValueFromWeekToDate(newValue, newFormat);
     if (isWeek || isWeeks) {
-      this.publicOnchange({ newValue, openTriger: false, action: 'click' });
+      this.publicOnchange({ newValue, openTriger: false, event, action: 'click' });
     }
     this.setStateFunc({ year, mode, from: 'week', value });
   };

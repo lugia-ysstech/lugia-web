@@ -19,7 +19,6 @@ type TypeProps = {
   theme?: Object,
   year: number,
   weeks: number,
-  //weekIndex:number
 };
 type TypeState = {
   year: number,
@@ -58,13 +57,12 @@ class Weeks extends Component<TypeProps, TypeState> {
     const { weeksDate, rangeIndex } = getWeeksRange(newWeeks, weeksInYear, step);
     const data = weeksDate[rangeIndex];
     const { text } = data;
-    const secondTitle = preState ? preState.secondTitle : text;
     return {
       year: newYear,
       weeks: Number(newWeeks),
       from: newFrom,
       isWeekInner,
-      secondTitle,
+      secondTitle: text,
       step,
     };
   }
@@ -82,14 +80,14 @@ class Weeks extends Component<TypeProps, TypeState> {
     onChangeYear && onChangeYear({ mode: 'year', from: 'week' });
   };
   panelChange = (param: Object) => {
-    const { isWeekInner, start, text, weeks } = param;
-    const { year } = this.props;
+    const { isWeekInner, start, weeks, event } = param;
+    const { year } = this.state;
     if (isWeekInner) {
-      this.setState({ secondTitle: text, isWeekInner, weeks: start + 1 });
+      this.setState({ isWeekInner, weeks: start + 1 });
     }
     if (!isWeekInner) {
       const { from } = this;
-      this.getOnChange({ year, weeks, mode: from, from });
+      this.getOnChange({ year, weeks, mode: from, event });
     }
   };
   getOnChange = (data: Object) => {
