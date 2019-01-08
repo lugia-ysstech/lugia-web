@@ -103,3 +103,7 @@ export { default as notification } from './notification';
 export { default as Trasfer } from './trasfer';
 
 export { default as Drawer } from './drawer';
+
+export { default as Table } from './table';
+
+export { default as Pagination } from './pagination';

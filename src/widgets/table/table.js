@@ -21,6 +21,7 @@ export default ThemeProvider(
         return (
           <div className={this.getClass(tableStyle)}>
             <RcTable
+              {...this.props}
               data={data}
               showHeader={showHeader}
               rowClassName={(record, i) => `row-${i}`}
@@ -33,7 +34,7 @@ export default ThemeProvider(
       }
       return (
         <div className={this.getClass(tableStyle)}>
-          <RcTable columns={columns} data={data} showHeader={showHeader} />
+          <RcTable {...this.props} columns={columns} data={data} showHeader={showHeader} />
         </div>
       );
     }
