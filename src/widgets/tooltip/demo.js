@@ -6,17 +6,42 @@
  */
 import * as React from 'react';
 import Tooltip from './';
+import Button from '../button';
 import Widget from '../consts/index';
 import Theme from '../theme';
 import styled from 'styled-components';
 
-const buttonWidth = 70;
+const buttonWidth = 80;
 const text = <span>prompt text</span>;
-const Content = styled.div`
-  margin: 100px;
-`;
-const Button = styled.button`
+const ButtonDemo = styled(Button)`
   width: ${buttonWidth}px;
+`;
+const ToolTipBaseWrapper = styled.div`
+  display: inline-block;
+`;
+const DirectionTopWrapper = styled.div`
+  margin-left: ${buttonWidth}px;
+  white-space: nowrap;
+  display: inline-block;
+`;
+const DirectionLeftWrapper = styled.div`
+  width: ${buttonWidth}px;
+  position: absolute;
+`;
+const DirectionRightWrapper = styled.div`
+  width: ${buttonWidth}px;
+  margin-left: ${buttonWidth * 4 + 24}px;
+`;
+const DirectionBottomWrapper = styled.div`
+  margin-left: ${buttonWidth}px;
+  white-space: nowrap;
+  display: inline-block;
+`;
+const ToolTipHWrapper = ToolTipBaseWrapper.extend`
+  margin-right: 10px;
+`;
+const ToolTipVWrapper = ToolTipBaseWrapper.extend`
+  margin-top: 10px;
 `;
 export default () => {
   const config = {
@@ -24,55 +49,80 @@ export default () => {
       color: '#fef0ef',
       fontColor: '#000',
     },
+    [Widget.Button]: {
+      width: buttonWidth,
+    },
   };
   return (
     <Theme config={config}>
-      <Content className="demo">
-        <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+      <DirectionTopWrapper>
+        <ToolTipHWrapper>
           <Tooltip placement="topLeft" title={text}>
-            <Button>TL</Button>
+            <ButtonDemo type="primary">TL</ButtonDemo>
           </Tooltip>
+        </ToolTipHWrapper>
+        <ToolTipHWrapper>
           <Tooltip placement="top" title={text}>
-            <Button>Top</Button>
+            <ButtonDemo type="primary">Top</ButtonDemo>
           </Tooltip>
+        </ToolTipHWrapper>
+        <ToolTipHWrapper>
           <Tooltip placement="topRight" title={text}>
-            <Button>TR</Button>
+            <ButtonDemo type="primary">TR</ButtonDemo>
           </Tooltip>
-        </div>
-        <div style={{ width: buttonWidth, float: 'left' }}>
+        </ToolTipHWrapper>
+      </DirectionTopWrapper>
+      <DirectionLeftWrapper>
+        <ToolTipVWrapper>
           <Tooltip placement="leftTop" title={text}>
-            <Button>LT</Button>
+            <ButtonDemo type="primary">LT</ButtonDemo>
           </Tooltip>
+        </ToolTipVWrapper>
+        <ToolTipVWrapper>
           <Tooltip placement="left" title={text}>
-            <Button>Left</Button>
+            <ButtonDemo type="primary">Left</ButtonDemo>
           </Tooltip>
+        </ToolTipVWrapper>
+        <ToolTipVWrapper>
           <Tooltip placement="leftBottom" title={text}>
-            <Button>LB</Button>
+            <ButtonDemo type="primary">LB</ButtonDemo>
           </Tooltip>
-        </div>
-        <div style={{ width: buttonWidth, marginLeft: buttonWidth * 4 + 24 }}>
+        </ToolTipVWrapper>
+      </DirectionLeftWrapper>
+      <DirectionRightWrapper>
+        <ToolTipVWrapper>
           <Tooltip placement="rightTop" title={text}>
-            <Button>RT</Button>
+            <ButtonDemo type="primary">RT</ButtonDemo>
           </Tooltip>
+        </ToolTipVWrapper>
+        <ToolTipVWrapper>
           <Tooltip placement="right" title={text}>
-            <Button>Right</Button>
+            <ButtonDemo type="primary">Right</ButtonDemo>
           </Tooltip>
+        </ToolTipVWrapper>
+        <ToolTipVWrapper>
           <Tooltip placement="rightBottom" title={text}>
-            <Button>RB</Button>
+            <ButtonDemo type="primary">RB</ButtonDemo>
           </Tooltip>
-        </div>
-        <div style={{ marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' }}>
+        </ToolTipVWrapper>
+      </DirectionRightWrapper>
+      <DirectionBottomWrapper>
+        <ToolTipHWrapper>
           <Tooltip placement="bottomLeft" title={text}>
-            <Button>BL</Button>
+            <ButtonDemo type="primary">BL</ButtonDemo>
           </Tooltip>
+        </ToolTipHWrapper>
+        <ToolTipHWrapper>
           <Tooltip placement="bottom" title={text}>
-            <Button>Bottom</Button>
+            <ButtonDemo type="primary">Bottom</ButtonDemo>
           </Tooltip>
+        </ToolTipHWrapper>
+        <ToolTipHWrapper>
           <Tooltip placement="bottomRight" title={text}>
-            <Button>BR</Button>
+            <ButtonDemo type="primary">BR</ButtonDemo>
           </Tooltip>
-        </div>
-      </Content>
+        </ToolTipHWrapper>
+      </DirectionBottomWrapper>
     </Theme>
   );
 };
