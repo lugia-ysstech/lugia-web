@@ -215,11 +215,18 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
   render() {
     const { value } = this.state;
-    const show = !!(value && value.length);
+    const opacity = value && value.length ? 1 : 0;
+    const view = {
+      [Widget.Tooltip]: {
+        opacity,
+      },
+    };
     return (
-      <InputTip title={this.getTitle()} action={'focus'} show={show}>
-        {this.getInputContainer()}
-      </InputTip>
+      <Theme config={view}>
+        <InputTip title={this.getTitle()} action={'focus'} theme={opacity}>
+          {this.getInputContainer()}
+        </InputTip>
+      </Theme>
     );
   }
 

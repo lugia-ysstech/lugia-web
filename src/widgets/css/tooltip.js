@@ -73,9 +73,10 @@ export const getSize = (props: TooltipProps) => {
     };`;
 };
 export const getOpacity = (props: Object) => {
-  const { show } = props;
-  const opacity = show ? 1 : 0;
-  return `opacity:${opacity}`;
+  const { theme } = props;
+  const { opacity } = theme;
+  const theOpacity = opacity !== null && opacity !== undefined ? opacity : 1;
+  return `opacity:${theOpacity}`;
 };
 export const getTriggerByArrow = (props: Object) => {
   const { direction } = props;
