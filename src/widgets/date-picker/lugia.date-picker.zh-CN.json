@@ -1,7 +1,7 @@
 {
   "widgetName": "DatePicker",
   "title": "日期选择器",
-  "desc": "用于日期选择,",
+  "desc": "用于日期选择",
   "props": {
     "getTheme": {
       "type": "Function",

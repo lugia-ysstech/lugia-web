@@ -5,7 +5,8 @@
  *2018/7/9
  * */
 import * as React from 'react';
-import { SwitchWrapper, SwitchCircle, LoadingIcon } from './styled';
+import Icon from '../icon/index';
+import { SwitchWrapper, SwitchText, SwitchCircle } from './styled';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
 
@@ -85,6 +86,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
     this.setState({
       isMouseDown: false,
     });
+    console.log(this.state.value);
     this.updateChecked(event, !this.state.value);
   };
   updateChecked(event?: any, value?: boolean): void {
@@ -98,7 +100,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
       function() {
         const { onChange } = this.props;
         if (onChange) {
-          const { value, items } = this.state;
+          let { value, items } = this.state;
+          if ('value' in this.props) {
+            value = !value;
+          }
           const newItem = getItem(value, items);
           const oldItem = getItem(!value, items);
           const opens = {
@@ -148,22 +153,21 @@ class Switch extends React.Component<TypeProps, TypeState> {
       size,
       disabled,
       loading,
+      isInverse,
     };
+    //console.log(text);
     return (
       <SwitchWrapper
         onMouseDown={isabled ? this.mousedown : null}
         onMouseUp={isabled ? this.mouseup : null}
         onKeyDown={isabled ? this.handleKeyDown : null}
         innerRef={this.switchNode}
-        isInverse={isInverse}
         tabIndex={switchTabIndex}
         {...config}
       >
-        {text}
+        <SwitchText {...config}>{text}</SwitchText>
         <SwitchCircle {...config}>
-          {loading ? (
-            <LoadingIcon loading={loading} iconClass="lugia-icon-financial_loading_o" />
-          ) : null}
+          {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
         </SwitchCircle>
       </SwitchWrapper>
     );
