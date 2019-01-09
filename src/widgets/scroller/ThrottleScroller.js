@@ -82,7 +82,8 @@ const ScrollerCol = Col.extend`
   ${ScrollerContainer}:hover & {
     opacity: 1;
   }
-  ${getOpacity} transition: opacity 0.3s;
+  ${getOpacity};
+  transition: opacity 0.3s;
 `;
 
 type ThrottleScrollerState = {
