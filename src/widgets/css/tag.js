@@ -5,7 +5,6 @@
  * @flow
  */
 import styled from 'styled-components';
-import '../css/sv.css';
 import CommonIcon from '../icon';
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from '../css/units';
