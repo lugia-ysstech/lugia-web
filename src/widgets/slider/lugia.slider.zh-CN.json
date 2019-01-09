@@ -20,12 +20,12 @@
     },
     "defaultValue": {
       "type": "number | Array<number>",
-      "desc": "滑动输入条默认显示值",
+      "desc": "滑动输入条默认显示值，值为number时,为单滑块，值为Array时,为双滑块",
       "defaultValue": "undefined"
     },
     "value": {
       "type": "number | Array<number>",
-      "desc": "滑动输入条显示值",
+      "desc": "滑动输入条显示值,值为number时,为单滑块，值为Array时,为双滑块",
       "defaultValue": "undefined"
     },
     "disabled": {
@@ -34,14 +34,14 @@
       "defaultValue": "false"
     },
     "tips": {
-      "type": "boolean",
-      "desc": "显示滑动输入条信息",
+      "type": "boolean | string | number",
+      "desc": "boolean 是否显示提示信息,number|string指定显示的文本内容,可自定义显示的文本格式",
       "defaultValue": "false"
     },
     "vertical": {
       "type": "boolean",
       "desc": "是否垂直显示",
-      "defaultValue": "undefined"
+      "defaultValue": "false"
     },
     "icons": {
       "type": "Array<Object>,",
@@ -50,7 +50,7 @@
     },
     "marks": {
       "type": "{ [key: number]: string | Object }",
-      "desc": "刻度标记，key 的类型必须为 number 且取值在闭区间 min, max 内，每个标签可以单独设置样式",
+      "desc": "刻度标记,key的类型必须为number且每个标签可以单独设置样式",
       "defaultValue": "undefined"
     }
   },

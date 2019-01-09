@@ -17,11 +17,14 @@ export default class Sl extends Component<any> {
       currentValue: 0,
       btnWidth: 20,
       disabled: false,
+      value: 0,
+      tipsValue: '0%',
     };
   }
 
-  onchange = v => {
-    console.log(v);
+  onchangeFirst = obj => {
+    const { newValue } = obj;
+    this.setState({ value: newValue, tipsValue: `${newValue}%` });
   };
   handleclick = () => {
     this.setState({
@@ -30,12 +33,12 @@ export default class Sl extends Component<any> {
   };
 
   render() {
-    const { btnWidth } = this.state;
+    const { value, tipsValue } = this.state;
     return (
       <div style={{ padding: '0 50px' }}>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> normal</h2>
-          <Slider defaultValue={5} tips onChange={this.onchange} />
+          <Slider value={value} tips={tipsValue} onChange={this.onchangeFirst} />
         </div>
 
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
@@ -169,8 +172,8 @@ export default class Sl extends Component<any> {
               minValue={0}
               tips
               icons={[
-                { name: 'lugia-icon-financial_global' },
-                { name: 'lugia-icon-financial_switch_e_and_c' },
+                { name: 'lugia-icon-financial_smile_o' },
+                { name: 'lugia-icon-financial_sad_o' },
               ]}
             />
           </Theme>
@@ -281,8 +284,8 @@ export default class Sl extends Component<any> {
             tips
             vertical
             icons={[
-              { name: 'lugia-icon-financial_global' },
-              { name: 'lugia-icon-financial_switch_e_and_c' },
+              { name: 'lugia-icon-financial_smile_o' },
+              { name: 'lugia-icon-financial_sad_o' },
             ]}
           />
         </div>

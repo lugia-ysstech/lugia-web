@@ -45,7 +45,6 @@ type TypeState = {
 };
 Button.displayName = 'Button';
 Button.displayName = 'SliderWrapper';
-
 class Slider extends Component<TypeProps, TypeState> {
   sliderRange: any;
   style: {
@@ -54,8 +53,6 @@ class Slider extends Component<TypeProps, TypeState> {
     btnHeight: number,
     rangeW: number,
     rangeH: number,
-    // maxValue: number,
-    // minValue: number,
     SliderInnerWidth: number,
     SliderInnerLeft: number,
   };
@@ -120,6 +117,7 @@ class Slider extends Component<TypeProps, TypeState> {
         offsetLeft: 0, //值在挂载完就固定了，元素距离窗口左边的距离
         offsetTop: 0, //值在挂载完就固定了，元素距离窗口顶部的距离
         value: newValue,
+        changeValue: value,
         disabled,
         index: 0,
         moveValue: 0,
@@ -130,6 +128,10 @@ class Slider extends Component<TypeProps, TypeState> {
         isInBall: false,
       };
     }
+    return {
+      value: newValue,
+      changeValue: preState && preState.changeValue,
+    };
   }
 
   ballIndex: number;
@@ -145,16 +147,21 @@ class Slider extends Component<TypeProps, TypeState> {
     const { disabled } = this.props;
     this.pageX = pageX;
     this.pageY = pageY;
-    if (!this.props.value && !disabled) {
+    if (!disabled) {
       setTimeout(() => (this.draging = isInBall), 0);
       if (!isInBall) {
-        this.publicmove(pageX, pageY, index);
+        this.publicmove(pageX, pageY, index, e);
       }
       this.ballIndex = index;
       this.setState({ changeBackground: true });
     }
   };
-  publicmove = (pageX: number, pageY: number, index: number) => {
+  publicmove = (
+    pageX: number,
+    pageY: number,
+    index: number,
+    e: SyntheticMouseEvent<HTMLButtonElement>
+  ) => {
     const { marksKeys, value } = this.state;
     const { moveValue } = this.getMoveState(pageX, pageY);
     if (value && value.length === 1) {
@@ -162,19 +169,25 @@ class Slider extends Component<TypeProps, TypeState> {
     }
     const { markValue } = this.getMarkValue(marksKeys, moveValue);
     value[index] = marksKeys.length > 0 ? markValue : moveValue;
-    this.setState({
-      value,
-      moveValue, //用于marks 时dot节点css样式的判断
-      index,
-      changeBackground: true,
-    });
+    this.setState(
+      {
+        value,
+        changeValue: value,
+        moveValue, //用于marks 时dot节点css样式的判断
+        index,
+        changeBackground: true,
+      },
+      () => {
+        this.onchange(e);
+      }
+    );
   };
 
   onchange(event: SyntheticMouseEvent<HTMLButtonElement>) {
     const { onChange } = this.props;
-    const { marks, marksKeys, value } = this.state;
+    const { marks, marksKeys, changeValue } = this.state;
     const { oldValue } = this;
-    const newValue = value.sort(sortable);
+    const newValue = changeValue.sort(sortable);
     const oldVal = oldValue && oldValue.sort(sortable);
     const { length } = newValue;
 
@@ -186,7 +199,7 @@ class Slider extends Component<TypeProps, TypeState> {
 
     const data: Object = {
       oldValue: length === 1 ? oldValue && oldValue[0] : oldValue,
-      newValue: length === 1 ? value[0] : value,
+      newValue: length === 1 ? changeValue[0] : changeValue,
       event,
     };
     const changeNewVal = length === 1 ? newValue : newValue.join(',');
@@ -196,23 +209,23 @@ class Slider extends Component<TypeProps, TypeState> {
     }
 
     if (marksKeys.length > 0) {
-      data.newItem = getItem(value);
+      data.newItem = getItem(changeValue);
       data.oldItem = getItem(oldVal);
     }
     onChange && onChange(data);
   }
 
   mouseup = (event: SyntheticMouseEvent<HTMLButtonElement>) => {
-    const { disabled, value } = this.props;
-    if (!disabled && !value) {
+    const { disabled } = this.props;
+    if (!disabled) {
       this.setState({ changeBackground: false });
       this.onchange(event);
     }
   };
   mouseenter = (index: number) => () => {
-    const { disabled, value } = this.props;
+    const { disabled } = this.props;
     let changeBackground = true;
-    if (disabled || value) {
+    if (disabled) {
       changeBackground = false;
     }
     this.setState({ index, changeBackground, isInBall: true });
@@ -266,13 +279,13 @@ class Slider extends Component<TypeProps, TypeState> {
 
   componentDidMount() {
     this.addDocListener();
-    const { disabled, value } = this.props;
+    const { disabled } = this.props;
     const { offsetLeft, offsetTop } = this.getOffset();
     this.setState({
       offsetLeft,
       offsetTop,
     });
-    if (disabled && value) {
+    if (disabled) {
       this.mousedown = null;
     }
   }
@@ -295,7 +308,7 @@ class Slider extends Component<TypeProps, TypeState> {
       if (samePoint) {
         return;
       }
-      this.publicmove(pageX, pageY, this.ballIndex);
+      this.publicmove(pageX, pageY, this.ballIndex, e);
     }
   };
 
@@ -348,7 +361,6 @@ class Slider extends Component<TypeProps, TypeState> {
       SliderInnerWidth: 0,
       SliderInnerLeft: 0,
     };
-
     function getSliderInnerSIze(name: 'left' | 'width') {
       const { length } = value;
       let difVal = length === 2 ? Math.abs(value[0] - value[1]) : value[0] - minValue;
@@ -403,6 +415,7 @@ class Slider extends Component<TypeProps, TypeState> {
       }
       const btnDisabled = index === i;
       size.btnDisabled = btnDisabled;
+      const tipsText = tips && (typeof tips === 'string' || typeof tips === 'number') ? tips : val;
       return (
         <Button
           onMouseDown={mousedown}
@@ -415,7 +428,7 @@ class Slider extends Component<TypeProps, TypeState> {
         >
           {showTip && btnDisabled ? (
             <Tips>
-              <Tipinner>{val}</Tipinner>
+              <Tipinner>{tipsText}</Tipinner>
               <Tiparrow />
             </Tips>
           ) : (
