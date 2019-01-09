@@ -4,121 +4,121 @@
  *
  * @flow
  */
-const Button = 'sv_widget_Button';
-const Input = 'sv_widget_Input';
-const Align = 'sv_widget_Align';
-const Trigger = 'sv_widget_Trigger';
-const Tooltip = 'sv_widget_Tooltip';
-const ThemeWrapWidget = 'sv_widget_ThemeWrapWidget';
+const Button = 'lugia_widget_Button';
+const Input = 'lugia_widget_Input';
+const Align = 'lugia_widget_Align';
+const Trigger = 'lugia_widget_Trigger';
+const Tooltip = 'lugia_widget_Tooltip';
+const ThemeWrapWidget = 'lugia_widget_ThemeWrapWidget';
 
-const InputTag = 'sv_widget_InputTag';
-const InputTagCloseButton = 'sv_widget_InputTagCloseButton';
-const InputTagFontItem = 'sv_widget_InputTagFontItem';
-const InputTagFocuInput = 'sv_widget_InputTagFocuInput';
-const InputTagMoreItem = 'sv_widget_InputTagMoreItem';
-const ItemTagOption = 'sv_widget_ItemTagOption';
-const InputTagItem = 'sv_widget_InputTagItem';
-const InputTagClearButton = 'sv_widget_InputTagClearButton';
+const InputTag = 'lugia_widget_InputTag';
+const InputTagCloseButton = 'lugia_widget_InputTagCloseButton';
+const InputTagFontItem = 'lugia_widget_InputTagFontItem';
+const InputTagFocuInput = 'lugia_widget_InputTagFocuInput';
+const InputTagMoreItem = 'lugia_widget_InputTagMoreItem';
+const ItemTagOption = 'lugia_widget_ItemTagOption';
+const InputTagItem = 'lugia_widget_InputTagItem';
+const InputTagClearButton = 'lugia_widget_InputTagClearButton';
 
-const Theme = 'sv_widget_Theme';
-const Menu = 'sv_widget_Menu';
-const MenuItem = 'sv_widget_MenuItem';
-const Icon = 'sv_widget_Icon';
-const AddIcon = 'sv_widget_AddIcon';
-const RefershIcon = 'sv_widget_RefershIcon';
-const CheckIcon = 'sv_widget_CheckIcon';
-const ClearIcon = 'sv_widget_ClearIcon';
-const DropMenu = 'sv_widget_DropMenu';
-const Tree = 'sv_widget_Tree';
-const TreeSelect = 'sv_widget_TreeSelect';
-const TreeSelectLimitTitle = 'sv_widget_TreeSelectLimitTitle';
-const ThrottleScroller = 'sv_widget_ThrottleScroller';
+const Theme = 'lugia_widget_Theme';
+const Menu = 'lugia_widget_Menu';
+const MenuItem = 'lugia_widget_MenuItem';
+const Icon = 'lugia_widget_Icon';
+const AddIcon = 'lugia_widget_AddIcon';
+const RefershIcon = 'lugia_widget_RefershIcon';
+const CheckIcon = 'lugia_widget_CheckIcon';
+const ClearIcon = 'lugia_widget_ClearIcon';
+const DropMenu = 'lugia_widget_DropMenu';
+const Tree = 'lugia_widget_Tree';
+const TreeSelect = 'lugia_widget_TreeSelect';
+const TreeSelectLimitTitle = 'lugia_widget_TreeSelectLimitTitle';
+const ThrottleScroller = 'lugia_widget_ThrottleScroller';
 
 /* add by wangcuixia */
-const Switch = 'sv_widget_Switch';
-const Slider = 'sv_widget_Slider';
-const SliderButton = 'sv_widget_Slider_Button';
-const SliderIcon = 'sv_widget_Slider_Icon';
+const Switch = 'lugia_widget_Switch';
+const Slider = 'lugia_widget_Slider';
+const SliderButton = 'lugia_widget_Slider_Button';
+const SliderIcon = 'lugia_widget_Slider_Icon';
 
 /* add by liangguodong */
-const SearchIcon = 'sv_widget_SearchIcon';
-const PullIcon = 'sv_widget_PullIcon';
+const SearchIcon = 'lugia_widget_SearchIcon';
+const PullIcon = 'lugia_widget_PullIcon';
 
-const ButtonGroup = 'sv_widget_ButtonGroup';
-const Radio = 'sv_widget_Radio';
-const RadioGroup = 'sv_widget_RadioGroup';
-const CheckBox = 'sv_widget_CheckBox';
-const CheckBoxGroup = 'sv_widget_CheckBoxGroup';
-const CheckButton = 'sv_widget_CheckButton';
-const AmountInput = 'sv_widget_AmountInput';
-const Col = 'sv_widget_Col';
-const Row = 'sv_widget_Row';
-const NumberInput = 'sv_widget_NumberInput';
-const Divider = 'sv_widget_Divider';
-const Panel = 'sv_widget_Panel';
-const Collapse = 'sv_widget_Collapse';
-const Avatar = 'sv_widget_Avatar';
-const Badge = 'sv_widget_Badge';
-const NumberTurn = 'sv_widget_NumberTurn';
+const ButtonGroup = 'lugia_widget_ButtonGroup';
+const Radio = 'lugia_widget_Radio';
+const RadioGroup = 'lugia_widget_RadioGroup';
+const CheckBox = 'lugia_widget_CheckBox';
+const CheckBoxGroup = 'lugia_widget_CheckBoxGroup';
+const CheckButton = 'lugia_widget_CheckButton';
+const AmountInput = 'lugia_widget_AmountInput';
+const Col = 'lugia_widget_Col';
+const Row = 'lugia_widget_Row';
+const NumberInput = 'lugia_widget_NumberInput';
+const Divider = 'lugia_widget_Divider';
+const Panel = 'lugia_widget_Panel';
+const Collapse = 'lugia_widget_Collapse';
+const Avatar = 'lugia_widget_Avatar';
+const Badge = 'lugia_widget_Badge';
+const NumberTurn = 'lugia_widget_NumberTurn';
 
 /* add by szfeng */
-const Skeleton = 'sv_widget_Skeleton';
-const Select = 'sv_widget_Select';
-const SelectLimitTitle = 'sv_widget_SelectLimitTitle';
-const QueryInput = 'sv_widget_QueryInput';
-const Tag = 'sv_widget_Tag';
-const DropMenuButton = 'sv_widget_DropMenuButton';
-const Cascader = 'sv_widget_Cascader';
-const Carousel = 'sv_widget_Carousel';
-const Breadcrumb = 'sv_widget_Breadcrumb';
-const NavMenu = 'sv_widget_NavMenu';
-const SubMenu = 'sv_widget_SubMenu';
-const AutoComplete = 'sv_widget_AutoComplete';
+const Skeleton = 'lugia_widget_Skeleton';
+const Select = 'lugia_widget_Select';
+const SelectLimitTitle = 'lugia_widget_SelectLimitTitle';
+const QueryInput = 'lugia_widget_QueryInput';
+const Tag = 'lugia_widget_Tag';
+const DropMenuButton = 'lugia_widget_DropMenuButton';
+const Cascader = 'lugia_widget_Cascader';
+const Carousel = 'lugia_widget_Carousel';
+const Breadcrumb = 'lugia_widget_Breadcrumb';
+const NavMenu = 'lugia_widget_NavMenu';
+const SubMenu = 'lugia_widget_SubMenu';
+const AutoComplete = 'lugia_widget_AutoComplete';
 
-const Layout = 'sv_widget_Layout';
-const Header = 'sv_widget_Header';
-const Content = 'sv_widget_Content';
-const Footer = 'sv_widget_Footer';
-const Aside = 'sv_widget_Aside';
-const Affix = 'sv_widget_Affix';
+const Layout = 'lugia_widget_Layout';
+const Header = 'lugia_widget_Header';
+const Content = 'lugia_widget_Content';
+const Footer = 'lugia_widget_Footer';
+const Aside = 'lugia_widget_Aside';
+const Affix = 'lugia_widget_Affix';
 
-const Tabs = 'sv_widget_Tabs';
-const Tabpane = 'sv_widget_Tabpane';
-const BackTop = 'sv_widget_BackTop';
-const Progress = 'sv_widget_Progress';
-const TabsContainer = 'sv_widget_TabsContainer';
-const TabContent = 'sv_widget_TabContent';
-const Alert = 'sv_widget_Alert';
-const Modal = 'sv_widget_Modal';
-const Message = 'sv_widget_Message';
-const Notification = 'sv_widget_Notification';
-const Step = 'sv_widget_Step';
-const Steps = 'sv_widget_Steps';
-const TimePicker = 'sv_widget_TimePicker';
-const Time = 'sv_widget_Time';
+const Tabs = 'lugia_widget_Tabs';
+const Tabpane = 'lugia_widget_Tabpane';
+const BackTop = 'lugia_widget_BackTop';
+const Progress = 'lugia_widget_Progress';
+const TabsContainer = 'lugia_widget_TabsContainer';
+const TabContent = 'lugia_widget_TabContent';
+const Alert = 'lugia_widget_Alert';
+const Modal = 'lugia_widget_Modal';
+const Message = 'lugia_widget_Message';
+const Notification = 'lugia_widget_Notification';
+const Step = 'lugia_widget_Step';
+const Steps = 'lugia_widget_Steps';
+const TimePicker = 'lugia_widget_TimePicker';
+const Time = 'lugia_widget_Time';
 
 /*add by wangcuixia*/
-const DatePicker = 'sv_widget_DatePicker';
-const YearPicker = 'sv_widget_YearPicker';
-const MonthPicker = 'sv_widget_MonthPicker';
-const WeekPicker = 'sv_widget_WeekPicker';
-const WeeksPicker = 'sv_widget_WeeksPicker';
-const RangePicker = 'sv_widget_RangePicker';
-const Loading = 'sv_widget_Loading';
-const TimeLine = 'sv_widget_TimeLine';
-const TimeLineItem = 'sv_widget_TimeLineItem';
+const DatePicker = 'lugia_widget_DatePicker';
+const YearPicker = 'lugia_widget_YearPicker';
+const MonthPicker = 'lugia_widget_MonthPicker';
+const WeekPicker = 'lugia_widget_WeekPicker';
+const WeeksPicker = 'lugia_widget_WeeksPicker';
+const RangePicker = 'lugia_widget_RangePicker';
+const Loading = 'lugia_widget_Loading';
+const TimeLine = 'lugia_widget_TimeLine';
+const TimeLineItem = 'lugia_widget_TimeLineItem';
 
-const Transfer = 'sv_widget_Transfer';
-const Drawer = 'sv_widget_Drawer';
-const Anchor = 'sv_widget_Anchor';
+const Transfer = 'lugia_widget_Transfer';
+const Drawer = 'lugia_widget_Drawer';
+const Anchor = 'lugia_widget_Anchor';
 
-const Card = 'sv_widget_Card';
-const CardImage = 'sv_widget_CardImage';
+const Card = 'lugia_widget_Card';
+const CardImage = 'lugia_widget_CardImage';
 /* add by LYQ */
-const Rate = 'sv_widget_Rate';
-const Upload = 'sv_widget_Upload';
-const Popover = 'sv_widget_Popover';
-const Popconfirm = 'sv_widget_Popconfirm';
+const Rate = 'lugia_widget_Rate';
+const Upload = 'lugia_widget_Upload';
+const Popover = 'lugia_widget_Popover';
+const Popconfirm = 'lugia_widget_Popconfirm';
 export default {
   Button,
   Input,

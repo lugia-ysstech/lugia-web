@@ -7,7 +7,6 @@ import '../common/shirm';
 import * as React from 'react';
 import Input from '../input';
 import Theme from '../theme';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import QueryInputContainer from '../common/QueryInputContainer';
 import styled from 'styled-components';

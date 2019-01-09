@@ -8,6 +8,7 @@
  */
 import React, { Component } from 'react';
 import Switch from './index';
+import Icon from '../icon/index';
 
 type TypeState = {
   load?: boolean,
@@ -17,6 +18,7 @@ export default class Sw extends Component<any, TypeState> {
     super();
     this.state = {
       load: false,
+      value: true,
     };
   }
   handleClick() {
@@ -25,7 +27,8 @@ export default class Sw extends Component<any, TypeState> {
     });
   }
   change = (item?: Object) => {
-    console.log(item);
+    const { newValue } = item;
+    this.setState({ value: newValue });
   };
   render() {
     return (
@@ -127,6 +130,18 @@ export default class Sw extends Component<any, TypeState> {
           <h3>onChange value false</h3>
           <Switch data={[{ text: '年' }, { text: '月' }]} value={false} onChange={this.change} />
         </section>
+        <section style={{ marginBottom: '20px' }}>
+          <h3>onChange value false</h3>
+          <Switch
+            data={[
+              { text: <Icon className={'lugia-icon-reminder_check'} /> },
+              { text: <Icon className={'lugia-icon-reminder_close'} /> },
+            ]}
+            value={this.state.value}
+            onChange={this.change}
+          />
+        </section>
+
         <section style={{ marginBottom: '20px' }}>
           <h3>loading</h3>
           <Switch loading />

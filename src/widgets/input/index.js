@@ -3,7 +3,6 @@ import '../common/shirm';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { fixControlledValue } from '.././utils';
@@ -133,6 +132,7 @@ ClearButton.displayName = 'ClearButton';
 
 type InputState = {|
   value: string,
+  clearButtonShow: boolean,
 |};
 
 type InputProps = {|

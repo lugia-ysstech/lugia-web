@@ -5,7 +5,6 @@
  * @flow
  */
 import styled from 'styled-components';
-import '../css/sv.css';
 import colorsFunc from '../css/stateColor';
 import { FontSizeNumber, FontSize } from '../css';
 import { px2emcss } from '../css/units';
