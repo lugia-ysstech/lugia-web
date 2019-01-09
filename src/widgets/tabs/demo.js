@@ -455,7 +455,17 @@ export default () => {
     <div>
       <Theme config={view}>
         <Wrapper>
-          <p>children tabPosition=top</p>
+          <p>defaultData </p>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'top'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            defaultData={defaultData}
+          />
+        </Wrapper>
+        <Wrapper>
+          <p>data tabPosition=top</p>
           <Tabs
             tabType={'line'}
             tabPosition={'top'}
