@@ -41,6 +41,16 @@
       "type": "boolean",
       "desc": "是否显示所有层级关系的值",
       "defaultValue": "true"
+    },
+    "prefix": {
+      "type": "ReactNode",
+      "desc": "输入框前缀",
+      "defaultValue": "undefined"
+    },
+    "suffix": {
+      "type": "ReactNode",
+      "desc": "输入框后缀",
+      "defaultValue": "undefined"
     }
   },
   "events": {
@@ -71,6 +81,16 @@
           "name": "event",
           "desc": "点击的DOM事件",
           "type": "Object"
+        }
+      ]
+    },
+    "onSelect": {
+      "desc": "点击选中项时触发",
+      "args": [
+        {
+          "name": "selectedKeys",
+          "desc": "选中项的数据",
+          "type": "string[]"
         }
       ]
     }

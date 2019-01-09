@@ -12,7 +12,6 @@ import ThrottleScroller from '../scroller/ThrottleScroller';
 import './index.css';
 import TreeUtils from './utils';
 import styled from 'styled-components';
-import { BarDefaultSize } from '../css/scroller';
 import { adjustValue } from '../utils';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
@@ -97,7 +96,7 @@ class ScrollerTree extends React.Component<any, any> {
       const treeTheme = this.getTheme();
       if (hasScroller) {
         if (treeTheme.width) {
-          treeTheme.width = treeTheme.width - BarDefaultSize;
+          treeTheme.width = treeTheme.width;
         }
       }
       return (
@@ -120,6 +119,7 @@ class ScrollerTree extends React.Component<any, any> {
     const { getTheme, themeStyle } = this.props;
     const { DefaultHeight, MenuItemHeight } = themeStyle;
     const theme = getTheme();
+
     const { height = DefaultHeight } = theme;
     theme.height = adjustValue(height, MenuItemHeight);
     return theme;
