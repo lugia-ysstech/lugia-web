@@ -5,7 +5,6 @@
  * @flow
  */
 import styled from 'styled-components';
-import '../css/sv.css';
 import {
   MarginRight,
   MarginTop,

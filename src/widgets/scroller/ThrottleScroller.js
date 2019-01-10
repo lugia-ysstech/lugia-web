@@ -7,7 +7,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Scroller from './index';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import { FontSizeNumber } from '../css';
 import { BarDefaultSize, DefaultHeight, DefaultWidth } from '../css/scroller';
@@ -82,7 +81,8 @@ const ScrollerCol = Col.extend`
   ${ScrollerContainer}:hover & {
     opacity: 1;
   }
-  ${getOpacity} transition: opacity 0.3s;
+  ${getOpacity};
+  transition: opacity 0.3s;
 `;
 
 type ThrottleScrollerState = {

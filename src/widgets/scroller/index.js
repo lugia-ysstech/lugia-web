@@ -41,7 +41,7 @@ type Direction = 'down' | 'up' | 'none';
 
 const Container = styled.div`
   position: relative;
-  background: ${ContainerBackgroundColor};
+  background: rgba(255, 255, 255, 0);
   width: ${em(20)};
   height: ${em(300)};
   z-index: 996;

@@ -4,7 +4,6 @@
  * @flow
  */
 import * as React from 'react';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import CommonIcon from '../icon';

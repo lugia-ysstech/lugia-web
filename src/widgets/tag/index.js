@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { TagContainer, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
@@ -29,7 +28,7 @@ type TagState = {
   checked: boolean,
 };
 
-const getChecked = (props: TagProps, state: Object) => {
+const getChecked = (props: TagProps, state: any) => {
   const isCheckedInProps = 'checked' in props;
   if (isCheckedInProps) {
     return props.checked;
@@ -57,7 +56,7 @@ class Tag extends React.Component<TagProps, TagState> {
     };
   }
 
-  static getDerivedStateFromProps(props: MenuProps, state: MenuState) {
+  static getDerivedStateFromProps(props: TagProps, state: TagState) {
     if (!state) {
       return {};
     }
