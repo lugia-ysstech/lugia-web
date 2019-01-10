@@ -6,13 +6,15 @@ class LoadingDemo extends React.Component {
   render() {
     return (
       <div>
-        <Theme config={{ [Widgets.Loading]: { width: 14, color: 'red' } }}>
+        <Theme config={{ [Widgets.Loading]: { width: 50, color: 'red' } }}>
           <Loading />
         </Theme>
         <br />
         <br />
         <br />
-        <Loading scale />
+        <div style={{ margin: '100px' }}>
+          <Loading scale />
+        </div>
       </div>
     );
   }
