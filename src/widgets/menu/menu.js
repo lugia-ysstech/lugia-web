@@ -21,7 +21,6 @@ import {
 import ThemeProvider from '../theme-provider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
-import '../css/sv.css';
 import Theme from '../theme';
 import Trigger from '../trigger';
 import { findDOMNode } from 'react-dom';

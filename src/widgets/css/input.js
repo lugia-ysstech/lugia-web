@@ -163,7 +163,7 @@ export const getClearButtonColor = () => {
 };
 export const getDisplay = (props: Object) => {
   const { show } = props;
-  return show ? 'inline-block' : 'none !important';
+  return show ? 'inline-block' : ' !important';
 };
 export const getClearButtonHoverColor = () => {
   return `color: ${darkGreyColor}`;

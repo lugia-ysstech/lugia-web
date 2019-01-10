@@ -790,7 +790,194 @@ exports[`tabsDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      children tabPosition=top
+      defaultData 
+    </p>
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        <span
+          className="c3"
+          onClick={[Function]}
+          type="pre"
+        >
+          <i
+            className="lugia-icon-direction_Left c4 c5"
+          />
+        </span>
+        <div
+          className="c6"
+        >
+          <div
+            className="c7"
+            x={-0}
+          >
+            <div
+              className="c8"
+              onClick={[Function]}
+            >
+              <span
+                className="c9"
+              >
+                <i
+                  className="lugia-icon-financial_archive c10 c5"
+                />
+              </span>
+              <div
+                className="c11"
+              >
+                1111111111
+              </div>
+            </div>
+            <div
+              className="c8"
+              onClick={[Function]}
+            >
+              <span
+                className="c9"
+              >
+                <i
+                  className="lugia-icon-financial_archive c12 c5"
+                />
+              </span>
+              <div
+                className="c13"
+              >
+                22222222222
+              </div>
+            </div>
+            <div
+              className="c8"
+              onClick={[Function]}
+            >
+              <span
+                className="c9"
+              >
+                <i
+                  className="lugia-icon-financial_archive c12 c5"
+                />
+              </span>
+              <div
+                className="c13"
+              >
+                3333333
+              </div>
+            </div>
+            <div
+              className="c8"
+              onClick={[Function]}
+            >
+              <span
+                className="c9"
+              >
+                <i
+                  className="lugia-icon-financial_archive c12 c5"
+                />
+              </span>
+              <div
+                className="c13"
+              >
+                44444444
+              </div>
+            </div>
+            <div
+              className="c8"
+              onClick={[Function]}
+            >
+              <span
+                className="c9"
+              >
+                <i
+                  className="lugia-icon-financial_archive c12 c5"
+                />
+              </span>
+              <div
+                className="c13"
+              >
+                55555
+              </div>
+            </div>
+            <div
+              className="c8"
+              onClick={[Function]}
+            >
+              <span
+                className="c9"
+              >
+                <i
+                  className="lugia-icon-financial_archive c12 c5"
+                />
+              </span>
+              <div
+                className="c13"
+              >
+                666666
+              </div>
+            </div>
+            <div
+              className="c8"
+              onClick={[Function]}
+            >
+              <span
+                className="c9"
+              >
+                <i
+                  className="lugia-icon-financial_archive c12 c5"
+                />
+              </span>
+              <div
+                className="c13"
+              >
+                7777777
+              </div>
+            </div>
+            <div
+              className="c8"
+              onClick={[Function]}
+            >
+              <span
+                className="c9"
+              >
+                <i
+                  className="lugia-icon-financial_archive c12 c5"
+                />
+              </span>
+              <div
+                className="c13"
+              >
+                88888
+              </div>
+            </div>
+            <div
+              className="c14"
+              x={20}
+            />
+          </div>
+        </div>
+        <span
+          className="c15"
+          onClick={[Function]}
+          type="next"
+        >
+          <i
+            className="lugia-icon-direction_right c16 c5"
+          />
+        </span>
+      </div>
+      <div
+        className="c17"
+      >
+        1111
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <p>
+      data tabPosition=top
     </p>
     <div
       className="c1"

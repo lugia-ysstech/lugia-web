@@ -48,17 +48,17 @@ describe('tabsDemo', () => {
   it('props defaultData', () => {
     const target = mount(createTabs({ defaultData }));
     const { data } = getCmp(target).state;
-    expect(data).toBe(data);
+    expect(data).toEqual(data);
   });
   it('props data', () => {
     const target = mount(createTabs({ data: hasActivityKeyData, tabPosition: 'left' }));
     const { data } = getCmp(target).state;
-    expect(data).toBe(data);
+    expect(data).toEqual(hasActivityKeyData);
   });
   it('props data && defaultData', () => {
     const target = mount(createTabs({ data: hasActivityKeyData, defaultData }));
     const { data } = getCmp(target).state;
-    expect(data).toBe(data);
+    expect(data).toEqual(hasActivityKeyData);
   });
   it('props data []', () => {
     const target = mount(createTabs({ data: [] }));

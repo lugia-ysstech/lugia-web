@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.0.61",
+  "version": "1.0.69",
   "dependencies": {
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",
@@ -79,7 +79,7 @@
     "gulp-changed": "3",
     "gulp-newer": "1",
     "gulp-rename": "1.2.2",
-    "gulp-uglify": "2",
+    "gulp-uglify": "^3.0.1",
     "gulp-watch": "4",
     "husky": "^1.0.0-rc.9",
     "identity-obj-proxy": "3.0.0",

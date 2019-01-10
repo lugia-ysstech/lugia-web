@@ -96,7 +96,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
           popup={
-            <div>
+            <React.Fragment>
               <SwitchPanel
                 {...newProps}
                 hasStateValue={hasStateValue}
@@ -125,7 +125,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                   model={this.pageFooterChange}
                 />
               )}
-            </div>
+            </React.Fragment>
           }
           align="bottomLeft"
           key="trigger"
@@ -158,7 +158,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { normalStyleValueObj } = this;
     const { format } = this.state;
     const { mode } = this.props;
-    const { isWeeks, isWeek, isYear, isMonth } = modeStyle(mode);
+    const { isWeeks, isWeek, isYear, isMonth, isTime } = modeStyle(mode);
     const isValid =
       action === 'click' ? true : formatValueIsValid(normalStyleValueObj, newValue, format);
     const { onChange } = this.props;
@@ -172,7 +172,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     }
     onChange && onChange({ event, newValue, oldValue: this.oldValue });
     this.setState({ value: newValue, isValid });
-    this.setTreePopupVisible(visible);
+    !isTime && this.setTreePopupVisible(visible);
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;

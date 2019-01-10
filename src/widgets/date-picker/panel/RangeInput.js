@@ -70,13 +70,17 @@ class RangeInput extends Component<TypeProps, TypeState> {
       disabled,
       readOnly,
     };
-    const { theme } = this.props;
-    const { width = 400 } = theme;
+    const { theme, mode } = this.props;
+    const { width = 420 } = theme;
     const newWidth = width - 15 - 2;
     const InputWidth = newWidth / 2;
     return (
       <Theme config={{ [Widget.Input]: { ...theme, width: InputWidth } }}>
-        <RangeInputWrap width={width} onClick={readOnly || disabled ? '' : this.onHandleClick}>
+        <RangeInputWrap
+          {...theme}
+          mode={mode}
+          onClick={readOnly || disabled ? '' : this.onHandleClick}
+        >
           <RangeInputInner disabled={disabled}>
             <Input
               prefix={<Icon className="lugia-icon-financial_date" />}

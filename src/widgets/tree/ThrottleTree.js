@@ -9,7 +9,6 @@ import animation from '../common/openAnimation';
 import * as React from 'react';
 import RcTree, { TreeNode } from './rc-tree';
 import ThrottleScroller from '../scroller/ThrottleScroller';
-import '../css/sv.css';
 import './index.css';
 import TreeUtils from './utils';
 import styled from 'styled-components';

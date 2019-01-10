@@ -6,7 +6,6 @@
  */
 import React from 'react';
 import styled from 'styled-components';
-import '../css/sv.css';
 import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
 import { FontSize, FontSizeNumber } from '../css';

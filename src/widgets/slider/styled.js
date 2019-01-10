@@ -1,7 +1,7 @@
 /*
-* by wangcuixia
-* @flow
-* */
+ * by wangcuixia
+ * @flow
+ * */
 import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { valueInRange } from '../common/Math';
@@ -40,6 +40,7 @@ type CssTypeProps = {
   maxValue: number,
   vertical?: boolean,
 };
+const transitionTime = '0.1';
 export const SliderWrapper = ThemeProvider(
   styled.div`
     width: ${props => getSliderWrapperStyle(props).rangeW};
@@ -58,6 +59,7 @@ export const SliderInner = styled.div`
   background: ${props => getSliderInnerStyle(props).innerBackground};
   border-radius: ${em(6)};
   position: absolute;
+  transition: ${transitionTime}s;
   ${props => getSliderInnerStyle(props).sliderInnerPosition};
 `;
 
@@ -92,6 +94,8 @@ export const Tipinner = styled.span`
   background: ${tipBackground};
   color: ${tipColor};
   border-radius: ${em(3)};
+  user-select: none;
+  -webkit-user-select: none;
 `;
 export const Tiparrow = styled.span`
   display: inline-block;
@@ -167,8 +171,8 @@ const getSliderInnerStyle = (props: CssTypeProps) => {
   const innerBackground = disabled
     ? trackDisabledBackground
     : changeBackground
-      ? doingBackground
-      : doneBackground;
+    ? doingBackground
+    : doneBackground;
   SliderInnerWidth = Number(SliderInnerWidth);
   SliderInnerLeft = Number(SliderInnerLeft);
 
@@ -208,8 +212,8 @@ const getButtonStyle = (props: CssTypeProps) => {
   const btnBackground = disabled
     ? btnDisabledBackground
     : isChangeBg
-      ? innerBackground
-      : doneBackground;
+    ? innerBackground
+    : doneBackground;
 
   if (isChangeBg) {
     btnWidth = btnWidth + 4;
@@ -228,7 +232,8 @@ const getButtonStyle = (props: CssTypeProps) => {
         ${btnTorBot};
         transform: ${btnTransform}(-50%);
         -webkit-transform: ${btnTransform}(-50%);
-        ${btnZIndex}
+        ${btnZIndex};
+        transition:${transitionTime}s; 
       `;
   return {
     btnWidth,

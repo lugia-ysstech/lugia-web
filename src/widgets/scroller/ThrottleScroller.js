@@ -7,7 +7,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Scroller from './index';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import { FontSizeNumber } from '../css';
 import { BarDefaultSize, DefaultHeight, DefaultWidth } from '../css/scroller';

@@ -42,6 +42,7 @@ const ALL_HANDLERS: Array<EventName> = [
 
 type TriggerProps = {
   getTheme: Function,
+  lazy?: boolean,
   onClick?: Function,
   _onClick?: Function,
   onMouseDown?: Function,
@@ -96,6 +97,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     className: '',
     showAction: [],
     hideAction: [],
+    lazy: true,
     getTheme() {
       return {};
     },
@@ -244,9 +246,13 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   getRootDomNode = () => {
     return findDOMNode(this);
   };
+  isFirstShow: boolean;
 
   setPopupVisible(popupVisible: boolean) {
     this.clearDelayTimer();
+    if (!this.isFirstShow && popupVisible) {
+      this.isFirstShow = popupVisible;
+    }
     if (this.state.popupVisible !== popupVisible) {
       if (!('popupVisible' in this.props)) {
         this.setState({
@@ -337,7 +343,13 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const portal = this.props.createPortal
       ? createPortal(this.getComponent(), this.getContainer())
       : this.getComponent();
-    return [React.cloneElement(child, newChildProps), portal];
+
+    return (
+      <React.Fragment>
+        {React.cloneElement(child, newChildProps)}
+        {this.props.lazy ? (this.isFirstShow ? portal : null) : portal}
+      </React.Fragment>
+    );
   }
 
   isClickToShow() {
@@ -474,6 +486,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const callback = this.props[type];
     callback && callback(e);
   }
+
   forceAlign() {
     this.component.forceAlign();
   }
