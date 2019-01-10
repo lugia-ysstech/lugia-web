@@ -119,6 +119,7 @@ const Rate = 'sv_widget_Rate';
 const Upload = 'sv_widget_Upload';
 const Popover = 'sv_widget_Popover';
 const Popconfirm = 'sv_widget_Popconfirm';
+const PageLoading = 'sv_widget_PageLoading';
 export default {
   Button,
   Input,
@@ -219,4 +220,5 @@ export default {
   Breadcrumb,
   NavMenu,
   AutoComplete,
+  PageLoading,
 };
