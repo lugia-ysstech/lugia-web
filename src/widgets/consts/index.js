@@ -115,10 +115,11 @@ const Anchor = 'lugia_widget_Anchor';
 const Card = 'lugia_widget_Card';
 const CardImage = 'lugia_widget_CardImage';
 /* add by LYQ */
-const Rate = 'lugia_widget_Rate';
-const Upload = 'lugia_widget_Upload';
-const Popover = 'lugia_widget_Popover';
-const Popconfirm = 'lugia_widget_Popconfirm';
+const Rate = 'sv_widget_Rate';
+const Upload = 'sv_widget_Upload';
+const Popover = 'sv_widget_Popover';
+const Popconfirm = 'sv_widget_Popconfirm';
+const PageLoading = 'sv_widget_PageLoading';
 export default {
   Button,
   Input,
@@ -219,4 +220,5 @@ export default {
   Breadcrumb,
   NavMenu,
   AutoComplete,
+  PageLoading,
 };

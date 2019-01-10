@@ -389,7 +389,7 @@ class Range extends Component {
       rangeValue,
       valueIsValid,
     } = this.state;
-    const { disabled, readOnly, theme } = this.props;
+    const { disabled, readOnly, theme, mode } = this.props;
     const { monthAndYear } = this;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -408,7 +408,7 @@ class Range extends Component {
     return (
       <Trigger
         popup={
-          <RangeWrap {...theme} isTime={status === 'showTime'}>
+          <RangeWrap {...theme} isTime={status === 'showTime'} mode={mode}>
             <SwitchPanel
               {...this.props}
               value={monthAndYear[0]}
