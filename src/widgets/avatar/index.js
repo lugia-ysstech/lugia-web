@@ -58,6 +58,7 @@ const Name = styled.span`
 const Picture = styled.img`
   ${getBorderRadius};
   ${getSize};
+  vertical-align: middle;
 `;
 
 type AvatarProps = {
