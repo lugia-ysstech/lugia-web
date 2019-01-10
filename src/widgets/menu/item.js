@@ -114,6 +114,7 @@ const getIcon = props => {
       transform: translateY(-50%);
       right: ${em(12)};
       font-weight: 700;
+      font-size: ${em(16)};
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
     }
     `
@@ -127,6 +128,19 @@ const getHeight = (props: Object) => {
   return `height: ${em(itemHeight)}`;
 };
 
+const getHoverCSS = (props: Object) => {
+  const { disabled } = props;
+  return `&:hover {
+    font-weight: 900;
+    background-color: ${disabled ? '' : ItemBackgroundColor};
+  }`;
+};
+
+const getDivided = (props: Object) => {
+  const { divided } = props;
+  console.log('divided', divided);
+  return divided ? 'border-top: 1px solid #ccc' : '';
+};
 const SingleItem = styled.li`
   box-sizing: border-box;
   position: relative;
@@ -141,10 +155,8 @@ const SingleItem = styled.li`
   transition: background 0.3s ease;
   ${getIcon};
   ${getMulipleCheckedStyle};
-  &:hover {
-    background-color: ${ItemBackgroundColor};
-    font-weight: 900;
-  }
+  ${getHoverCSS};
+  ${getDivided}
 `;
 
 const MutlipleItem = SingleItem.extend`
@@ -158,6 +170,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     checked: false,
     mutliple: false,
     disabled: false,
+    divided: false,
   };
   static displayName = Widget.MenuItem;
 
@@ -171,6 +184,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       onMouseEnter,
       checkedCSS,
       size,
+      divided,
     } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
@@ -187,6 +201,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         title={title}
         checked={checked}
         disabled={disabled}
+        divided={divided}
         checkedCSS={checkedCSS}
         size={size}
       >
