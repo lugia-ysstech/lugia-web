@@ -43,13 +43,9 @@ const getStyled = (props?: CssProps) => {
   const { width, color, circleDiameter, delay, scale } = props;
   const LodingWrapperStyle = `
       font-size:${FontSize};
-      position: absolute;
       width:${em(width)};
       height:${em(width)};
-      left:50%;
-      top:50%;
-      transform: translate(-50%,-50%);
-      -webkit-transform:translate(-50%,-50%);
+      position:relative;
   `;
   const LodingInnerStyle = `
       height: ${em(width)};

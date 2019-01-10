@@ -22,7 +22,7 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
   constructor() {
     super();
     this.state = {
-      width: 200,
+      width: 100,
       children: [],
     };
   }
@@ -31,7 +31,7 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
     const theme = getTheme && getTheme();
     let { width, color } = theme;
     if (!width) {
-      width = 200;
+      width = 100;
     }
     if (!color) {
       color = themeColor;
