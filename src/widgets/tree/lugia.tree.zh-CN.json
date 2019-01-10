@@ -75,6 +75,13 @@
       "desc": "生成过滤数据的方式",
       "defaultValue": "include"
     },
+
+    "shpale": {
+      "type": "default | round",
+      "desc": "单选树形控件,选中时的样式",
+      "defaultValue": "default"
+    },
+
     "translateTreeData": {
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",

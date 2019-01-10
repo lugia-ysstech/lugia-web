@@ -74,6 +74,7 @@ export type TreeProps = {
   searchType?: QueryType,
   themeStyle: Object,
   size: 'large' | 'default' | 'bigger',
+  shape: 'default' | 'round',
 };
 
 export type TreeState = {
@@ -111,6 +112,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     current: -1,
     openAnimation: animation,
     inlineType: 'primary',
+    shape: 'default',
     themeStyle: {
       MenuItemHeight,
       DefaultHeight,

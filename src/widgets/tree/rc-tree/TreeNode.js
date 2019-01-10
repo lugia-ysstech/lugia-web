@@ -152,7 +152,11 @@ class TreeNode extends React.Component {
     const { Switcher, openClassName, closeClassName } = themeStyle;
     const iconClass = expandedState === 'open' ? openClassName : closeClassName;
     return (
-      <Switcher onClick={props.disabled ? null : this.onExpand} expandedState={expandedState}>
+      <Switcher
+        mutliple={mutliple}
+        onClick={props.disabled ? null : this.onExpand}
+        expandedState={expandedState}
+      >
         <CommonIcon iconClass={iconClass} />
       </Switcher>
     );
@@ -257,6 +261,7 @@ class TreeNode extends React.Component {
       color,
       isLeaf,
       title,
+      shape,
     } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
@@ -318,6 +323,7 @@ class TreeNode extends React.Component {
           {...domProps}
           pos={props.pos}
           inlineType={inlineType}
+          shape={shape}
           checked={checked}
           selected={selected}
           describe={describe}
