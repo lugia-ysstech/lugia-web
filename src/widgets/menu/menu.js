@@ -54,6 +54,7 @@ export type TreeDataItem = {
 
 export type MenuProps = {
   start: number,
+  level: number,
   end: number,
   getTheme: Function,
   getPrefix: Function,
@@ -80,7 +81,6 @@ export type MenuProps = {
   action: 'hover' | 'click',
   size: 'large' | 'default' | 'bigger',
   subsize: 'large' | 'default' | 'bigger',
-  level: number,
   mouseDownInMenus?: Function,
   pushMenuInstance?: Function,
   deleteMenuInstance?: Function,
@@ -246,11 +246,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
     let { start, end, checkedCSS = 'none', mutliple, data } = props;
     start = Math.round(start);
     end = Math.round(end);
-
     if (data && data.length > 0) {
       return this.computeItems(data, start, end, (obj: Object) => {
         const { valueField, displayField, size } = this.props;
-        const { [valueField]: key, [displayField]: value, disabled, children, icon } = obj;
+        const { [valueField]: key, [displayField]: value, disabled, children, icon, divided } = obj;
         const { getPrefix, getSuffix } = props;
 
         const prefix = getPrefix && getPrefix(obj);
@@ -268,7 +267,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
         const iconElement = icon ? <TextIcon iconClass={icon} /> : null;
         return (
-          <Item key={key} size={size} disabled={disabled} checkedCSS={checkedCSS}>
+          <Item key={key} size={size} disabled={disabled} checkedCSS={checkedCSS} divided={divided}>
             {prefix}
             {iconElement}
             {value}

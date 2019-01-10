@@ -131,7 +131,7 @@ export default ShortKeyBoard(
                 onBlur={this.onBlur}
                 placeholder={placeholder}
                 prefix={prefix}
-                suffix={prefix}
+                suffix={suffix}
               />
             </Trigger>
           </Theme>
