@@ -29,6 +29,19 @@ export default () => {
   return (
     <div>
       <Wrapper>
+        <p>type</p>
+        <p>default</p>
+        <Button>hello</Button>
+        <p>Primary</p>
+        <Button type="primary">Primary</Button>
+        <p>Success</p>
+        <Button type="success">Success</Button>
+        <p>Warning</p>
+        <Button type="warning">Warning</Button>
+        <p>Danger</p>
+        <Button type="danger">Danger</Button>
+      </Wrapper>
+      <Wrapper>
         <p>plain</p>
         <p>default</p>
         <Button shape="round" plain>
@@ -40,7 +53,7 @@ export default () => {
         </Button>
         <p>success</p>
         <Button type="success" shape="round" plain>
-          Primary
+          Success
         </Button>
         <p>warning</p>
         <Button type="warning" shape="round" plain>
@@ -48,7 +61,7 @@ export default () => {
         </Button>
         <p>danger</p>
         <Button type="danger" shape="round" plain>
-          Primary
+          Danger
         </Button>
       </Wrapper>
       <Wrapper>

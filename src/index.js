@@ -14,7 +14,7 @@ import './widgets/css/global.css';
 // import App from './widgets/tag/demo';
 // import App from './widgets/tree-select/demo';
 // import App from './widgets/tree-select/defaultTreeSelect';
-import App from './widgets/cascader/DefaultCascader';
+import App from './widgets/button/demo';
 
 // import App from './widgets/tree/InlineDataSingleTree';
 // import App from './widgets/tree/InlineDataMutlipleTree';

@@ -460,8 +460,11 @@ export const getLoadingIconStyle = (props: IconLoadingProps) => {
   }
 };
 export const getChildrenLineHeight = (props: CSSProps) => {
-  const { size = 'default', em } = props;
+  const { size = 'default', em, type = 'default', plain } = props;
   const { height } = Size[size];
+  if (type === 'default' || plain) {
+    return `line-height: ${em(height - 2)};`;
+  }
 
   return `
     line-height: ${em(height)};
