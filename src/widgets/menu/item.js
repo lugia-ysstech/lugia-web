@@ -130,33 +130,39 @@ const getHeight = (props: Object) => {
 
 const getHoverCSS = (props: Object) => {
   const { disabled } = props;
-  return `&:hover {
+  return disabled
+    ? ''
+    : `&:hover {
     font-weight: 900;
-    background-color: ${disabled ? '' : ItemBackgroundColor};
+    background-color: ${ItemBackgroundColor};
   }`;
 };
 
 const getDivided = (props: Object) => {
   const { divided } = props;
-  console.log('divided', divided);
-  return divided ? 'border-top: 1px solid #ccc' : '';
+  return divided ? `border-top: 1px solid #e8e8e8;margin-top: ${em(4)}` : '';
+};
+
+const getCursor = (props: Object) => {
+  const { disabled } = props;
+  return `cursor: ${disabled ? 'not-allowed' : 'pointer'}`;
 };
 const SingleItem = styled.li`
   box-sizing: border-box;
   position: relative;
   display: block;
-  ${getHeight};
   font-weight: 400;
-  ${getItemColorAndBackground};
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: background 0.3s ease;
   ${getIcon};
-  ${getMulipleCheckedStyle};
-  ${getHoverCSS};
+  ${getHeight};
+  ${getCursor};
   ${getDivided}
+  ${getHoverCSS};
+  ${getMulipleCheckedStyle};
+  ${getItemColorAndBackground};
 `;
 
 const MutlipleItem = SingleItem.extend`
