@@ -286,15 +286,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
         React.Children.map(children, child => {
           configData && configData.push(child.props);
         });
+      } else {
+        configData = defaultData ? defaultData : [];
       }
     }
-
     if (!state) {
-      const theData = configData
-        ? addActivityKey2Data(configData)
-        : defaultData
-        ? addActivityKey2Data(defaultData)
-        : [];
+      const theData = configData ? addActivityKey2Data(configData) : [];
       const theActivityKey = hasActivityKeyInprops
         ? activityKey
         : defaultActivityKey

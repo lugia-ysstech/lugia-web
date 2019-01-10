@@ -44,7 +44,6 @@ export type TooltipProps = {
   popArrowType?: PopArrowType,
   visible: boolean,
   defaultVisible?: boolean,
-  show?: boolean,
 };
 export type TooltipState = {
   visible: boolean,
