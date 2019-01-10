@@ -182,7 +182,7 @@ export default ThemeProvider(
               themes={getTheme()}
               em={em}
             >
-              <ChildrenSpan em={em} size={size}>
+              <ChildrenSpan em={em} size={size} type={type} plain={plain}>
                 {this.handleChildren()}
               </ChildrenSpan>
             </ButtonOut>
