@@ -1,0 +1,18 @@
+{
+  "widgetName": "DatePicker",
+  "title": "日期选择器",
+  "desc": "用于日期选择",
+  "props": {
+    "loading": {
+      "type": "boolean",
+      "desc": "是否加载loading",
+      "defaultValue": "false"
+    },
+    "time": {
+      "type": "number",
+      "desc": "动画完成的时间(秒)",
+      "defaultValue": "undefined"
+    }
+  },
+  "category": ["数据录入"]
+}
