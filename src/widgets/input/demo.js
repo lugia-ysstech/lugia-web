@@ -142,6 +142,8 @@ const InputDemo = () => {
           <Input viewClass="register" disabled={true} value="色值:#333333" />
           <p>default input</p>
           <Input placeholder={'请填写内容'} />
+          <p>autoFocus</p>
+          <Input placeholder={'请填写内容'} autoFoucs />
           <p>禁用状态 </p>
           <Input size={'default'} disabled={true} />
         </Theme>
