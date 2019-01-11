@@ -124,6 +124,20 @@ const PullIcon: Object = IconButton.extend`
 `;
 IconButton.displayName = Widget.InputTagClearButton;
 
+const getHoverCSS = (props: Object) => {
+  const { disabled } = props;
+  return disabled
+    ? ''
+    : `
+  :hover {
+    border-color: ${themeColor};
+  }
+  &:hover > div > i {
+    color: ${themeColor};
+  }
+  `;
+};
+
 const OutContainer = styled.div`
   ${getBackground};
   border: solid ${em(1)} ${getInputBorderColor};
@@ -131,12 +145,8 @@ const OutContainer = styled.div`
   min-height: ${InputCSS.DefaultHeight};
   padding-bottom: ${em(3)};
   transition: all 0.3s;
-  ${getBorderColor} :hover {
-    border-color: ${themeColor};
-  }
-  &:hover > div > i {
-    color: ${themeColor};
-  }
+  ${getBorderColor};
+  ${getHoverCSS};
 `;
 
 const marginLeft = 5;
@@ -313,6 +323,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const font = <FontItem ref={fillFontItem} key="fontItem" />;
     const { focus } = state;
     const { getTheme, disabled, validateStatus } = props;
+
     if (!this.isMutliple()) {
       result = this.generateOutter(
         <Container
@@ -340,7 +351,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           innerRef={cmp => (this.container = cmp)}
           onClick={this.onClick}
         >
-          <OutContainer focus={focus} validateStatus={validateStatus}>
+          <OutContainer focus={focus} disabled={disabled} validateStatus={validateStatus}>
             <InnerContainer theme={props.getTheme()}>
               <List innerRef={cmp => (this.list = cmp)}>{items}</List>
               {placeholder}
