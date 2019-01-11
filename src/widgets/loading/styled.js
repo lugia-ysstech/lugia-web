@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import { px2emcss } from '../css/units';
 import { FontSize, FontSizeNumber } from '../css/index';
 
-const em = px2emcss(FontSizeNumber);
+export const em = px2emcss(FontSizeNumber);
 type CssProps = {
   circleDiameter?: number,
   width?: number,
@@ -56,7 +56,7 @@ const getStyled = (props?: CssProps) => {
       transform:translateY(-50%);
       -webkit-transform:translateY(-50%);
       transform: rotate(0deg);
-      animation: ${WrapperKeyframes} 2.5s infinite;
+      animation: ${WrapperKeyframes} ${props.time}s infinite;
       animation-timing-function: cubic-bezier(0.28, 0.8, 0.69, 1);
       animation-delay: ${delay}s;
   `;
@@ -83,6 +83,9 @@ const getStyled = (props?: CssProps) => {
     LodingInnerCircleStyle,
   };
 };
+export const LodingBox = styled.div`
+  display: inline-block;
+`;
 export const LodingWrapper = styled.div`
   ${props => getStyled(props).LodingWrapperStyle};
 `;
@@ -91,4 +94,27 @@ export const LodingInner = styled.div`
 `;
 export const LodingInnerCircle = styled.span`
   ${props => getStyled(props).LodingInnerCircleStyle};
+`;
+export const LoadingTip = styled.p`
+  font-size: 1.4rem;
+  line-height: ${em(24)};
+  text-align: center;
+  color: ${props => props.color};
+`;
+export const IconLoading = styled.span`
+  display: block;
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+  animation: rotate ${props => props.time}s linear infinite;
+  font-size: ${props => props.size}px;
+  color: ${props => props.color};
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 `;

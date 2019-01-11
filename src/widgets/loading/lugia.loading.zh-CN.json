@@ -8,10 +8,30 @@
       "desc": "用于配置通用主题属性",
       "defaultValue": "undefined"
     },
+    "size":{
+      "type": "small|default|large",
+      "desc": "Loading尺寸大小",
+      "defaultValue": "default"
+    },
+    "delay":{
+      "type": "number",
+      "desc": "延迟时间",
+      "defaultValue": "undefined"
+    },
     "scale": {
       "type": "boolean",
       "desc": "是否缩放",
       "defaultValue": "false"
+    },
+    "iconClass":{
+      "type": "string",
+      "desc": "自定义Loading,iconClass接受一个图标名的字符串",
+      "defaultValue": "undefined"
+    },
+    "tip":{
+      "type": "string",
+      "desc": "自定义Loading加载文本",
+      "defaultValue": "undefined"
     }
   },
   "category": ["其他"]
