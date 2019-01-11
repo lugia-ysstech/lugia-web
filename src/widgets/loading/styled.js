@@ -83,11 +83,52 @@ const getStyled = (props?: CssProps) => {
     LodingInnerCircleStyle,
   };
 };
+const getChildrenStyled = (props: Object) => {
+  const { hasChildren } = props;
+  const fatherMaskStyle = `
+    position:relative;    
+    
+    &::after{
+      content:'';
+      width:100%;
+      height:100%;
+      position:absolute;
+      left:0;
+      top:0;      
+      background:rgba(255,255,255,0.5);
+    }
+  `;
+  const childMaskStyle = `
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    z-index:2;
+  `;
+  return {
+    fatherMaskStyle: hasChildren ? fatherMaskStyle : null,
+    childMaskStyle: hasChildren ? childMaskStyle : null,
+  };
+};
+const getPositionWhenTip = (props: Object) => {
+  const { tip } = props;
+  const centerPosition = `
+    left:50%;
+    transform:translateX(-50%);
+  `;
+  return tip ? centerPosition : null;
+};
+export const LoadingFatherBox = styled.div`
+  display: inline-block;
+  ${props => getChildrenStyled(props).fatherMaskStyle}
+`;
 export const LodingBox = styled.div`
   display: inline-block;
+  ${props => getChildrenStyled(props).childMaskStyle}
 `;
 export const LodingWrapper = styled.div`
   ${props => getStyled(props).LodingWrapperStyle};
+  ${props => getPositionWhenTip(props)};
 `;
 export const LodingInner = styled.div`
   ${props => getStyled(props).LodingInnerStyle};

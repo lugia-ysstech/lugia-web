@@ -10,6 +10,7 @@ import {
   IconLoading,
   LoadingTip,
   LodingBox,
+  LoadingFatherBox,
 } from './styled';
 import Icon from '../icon/index';
 import colorsFunc from '../css/stateColor';
@@ -25,11 +26,14 @@ type PropsCheck = {
   tip?: string,
   delay?: number,
   icon?: string,
+  iconClass?: string,
+  time?: number,
 };
 type StateCheck = {
   width?: number,
   color?: string,
   scale?: boolean,
+  isLoading: boolean,
 };
 LodingWrapper.displayName = 'divs';
 class Loading extends React.Component<PropsCheck, StateCheck> {
@@ -38,7 +42,7 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
     this.state = {
       width: 100,
       children: [],
-      isLoading: true,
+      isLoading: false,
     };
   }
   static getDerivedStateFromProps(props: PropsCheck, state: StateCheck) {
@@ -61,9 +65,9 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
     const delayFun = (props: Object, callback) => {
       const { delay } = props;
       const newDelay = delay * 1000;
-      let isLoading = true;
+      let isLoading = false;
       setTimeout(function() {
-        isLoading = false;
+        isLoading = true;
         callback(isLoading);
       }, newDelay);
     };
@@ -103,13 +107,18 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
         <Icon iconClass={iconClass} />
       </IconLoading>
     );
+    const Children = this.props.children;
+    const hasChildren = !!Children;
     return (
-      <LodingBox>
-        <LodingWrapper width={width}>
-          {iconClass ? iconBox : isLoading ? children : ''}
-        </LodingWrapper>
-        {tip ? <LoadingTip color={color}>{tip}</LoadingTip> : ''}
-      </LodingBox>
+      <LoadingFatherBox hasChildren={hasChildren}>
+        {Children}
+        <LodingBox hasChildren={hasChildren}>
+          <LodingWrapper width={width} tip={tip}>
+            {iconClass ? iconBox : this.props.delay && !isLoading ? '' : children}
+          </LodingWrapper>
+          {tip ? <LoadingTip color={color}>{tip}</LoadingTip> : ''}
+        </LodingBox>
+      </LoadingFatherBox>
     );
   }
 }
