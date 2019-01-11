@@ -75,7 +75,7 @@
       "desc": "时间值发生变化时的回调",
       "args": [
         {
-          "name": "event",
+          "name": "{event,newValue,oldValue}",
           "desc": "时间值发生变化时的回调",
           "type": "Object"
         }

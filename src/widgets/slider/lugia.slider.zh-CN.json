@@ -59,7 +59,7 @@
       "desc": "滑动输入条值改变时触发",
       "args": [
         {
-          "name": "event",
+          "name": "{event,newValue,oldValue}",
           "desc": "滑动输入条值触发的事件",
           "type": "Object"
         }

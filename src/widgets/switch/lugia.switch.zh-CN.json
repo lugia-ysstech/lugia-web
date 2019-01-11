@@ -54,8 +54,8 @@
       "desc": "开关状态改变时触发",
       "args": [
         {
-          "name": "event",
-          "desc": "改变状态出发的DOM事件",
+          "name": "{event,newValue,oldValue}",
+          "desc": "改变状态触发的DOM事件",
           "type": "Object"
         }
       ]
