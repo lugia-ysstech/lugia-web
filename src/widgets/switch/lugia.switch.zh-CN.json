@@ -54,11 +54,18 @@
       "desc": "开关状态改变时触发",
       "args": [
         {
-          "name": "{event,newValue,oldValue}",
+          "name": "event",
           "desc": "改变状态触发的DOM事件",
-          "type": "Object"
+          "type": "ChangeType"
         }
       ]
+    }
+  },
+  "type": {
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
     }
   },
   "category": ["数据录入"]
