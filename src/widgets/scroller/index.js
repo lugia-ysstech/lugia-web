@@ -16,7 +16,6 @@ import {
   BarDefaultSize,
   BarDefaultSizePadding,
   BarHoverBackgroundColor,
-  ContainerBackgroundColor,
 } from '../css/scroller';
 import { px2emcss } from '../css/units';
 

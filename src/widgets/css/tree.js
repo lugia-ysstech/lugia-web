@@ -8,17 +8,23 @@ import colorsFunc from '../css/stateColor';
 import styled from 'styled-components';
 import { px2emcss } from './units';
 const em = px2emcss(1.2);
-export const { themeColor, darkGreyColor, mediumGreyColor } = colorsFunc();
+export const { themeColor, darkGreyColor, mediumGreyColor, hoverColor, spiritColor } = colorsFunc();
 export const MenuItemHeight = 34;
 export const DefaultHeight = 250;
 export const ItemBackgroundColor = '#edf0fe';
+
+const getSwitcherMargin = (props: Object) => {
+  const { mutliple } = props;
+  return `margin-right: ${mutliple ? em(10) : '0'}`;
+};
 
 export const Switcher = styled.span`
   font-size: ${em(12)};
   color: ${mediumGreyColor};
   display: inline-block;
-  margin: 0 ${em(10)};
+  margin-left: ${em(5)};
   vertical-align: top;
+  ${getSwitcherMargin};
 `;
 Switcher.displayName = 'switcherButton';
 
@@ -27,17 +33,18 @@ export const NullSwitcher = Switcher.extend`
 `;
 
 export const TreeUl = styled.ul`
-  padding-right: ${em(18)};
   margin: 0;
+  overflow: hidden;
+  padding-right: ${em(20)};
 `;
 
 export const Li = styled.li`
   min-height: ${em(MenuItemHeight)};
   line-height: ${em(MenuItemHeight)};
   list-style: none;
+  padding-right: ${em(12)};
   white-space: nowrap;
   outline: 0;
-  overflow: hidden;
 `;
 Li.displayName = 'liItem';
 
@@ -58,7 +65,7 @@ function getCheckedStyled(props) {
     return `color: ${mediumGreyColor}`;
   }
 
-  return props.selected ? `background-color: ${ItemBackgroundColor}` : null;
+  return props.selected ? 'background-color: rgba(77,99,255,0.2)' : null;
 }
 
 const getCursor = (props: Object) => {
@@ -66,22 +73,35 @@ const getCursor = (props: Object) => {
   return `cursor: ${disabled ? 'not-allowed' : 'pointer'}`;
 };
 
+const getHoverStyled = (props: Object) => {
+  const { notCanSelect, selected, disabled } = props;
+  return notCanSelect || selected || disabled
+    ? ''
+    : `&:hover {
+    background-color: ${spiritColor};
+  }`;
+};
+
+const getBorderRadius = (props: Object) => {
+  const { shape } = props;
+  return `border-radius: ${shape === 'round' ? em(35) : em(4)}`;
+};
+
 export const TitleWrap = styled.span`
-  box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  padding-left: ${em(6)};
-  display: inline-block;
-  ${getCursor};
-  text-decoration: none;
   vertical-align: top;
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  padding-left: ${em(10)};
   transition: all 0.5s ease;
   font-size: ${em(14)};
+  ${getCursor};
   ${getChecked};
+  ${getHoverStyled};
+  ${getBorderRadius}
   ${getCheckedStyled};
-  &:hover {
-    background-color: ${ItemBackgroundColor};
-  }
 `;
 
 export const TitleSpan = styled.span`
