@@ -242,7 +242,7 @@ export default ThemeProvider(
           key={value}
           value={value}
           checked={!!~this.state.value.indexOf(value)}
-          onChange={this.handleChange}
+          onChangeForGroup={this.handleChange}
           styles={styles}
           {...config}
           handleCancelItemClick={this.handleCancelItemClick}

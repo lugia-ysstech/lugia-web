@@ -49,9 +49,9 @@
           "type": "Object"
         },
         {
-          "name": "value",
-          "desc": "变化CheckBox的value值",
-          "type": "string"
+          "name": "checked",
+          "desc": "当前是否选中",
+          "type": "boolean"
         }
       ]
     }
@@ -69,5 +69,6 @@
       }
     }
   },
+  "childrenWidget": ["checkbox-group"],
   "category": ["数据录入"]
 }
