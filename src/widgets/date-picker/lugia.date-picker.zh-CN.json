@@ -78,7 +78,7 @@
         {
           "name": "event",
           "desc": "时间值发生变化时的回调",
-          "type": "Object"
+          "type": "ChangeType"
         }
       ]
     },
@@ -93,6 +93,13 @@
     "onBlur":{
       "desc": "输入框失去焦点",
       "args":[]
+    }
+  },
+  "type": {
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
     }
   },
   "childrenWidget": ["month","year","week","weeks","range"],

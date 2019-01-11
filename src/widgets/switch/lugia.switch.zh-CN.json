@@ -55,10 +55,17 @@
       "args": [
         {
           "name": "event",
-          "desc": "改变状态出发的DOM事件",
-          "type": "Object"
+          "desc": "改变状态触发的DOM事件",
+          "type": "ChangeType"
         }
       ]
+    }
+  },
+  "type": {
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
     }
   },
   "category": ["数据录入"]

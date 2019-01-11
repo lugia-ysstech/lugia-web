@@ -61,9 +61,16 @@
         {
           "name": "event",
           "desc": "滑动输入条值触发的事件",
-          "type": "Object"
+          "type": "ChangeType"
         }
       ]
+    }
+  },
+  "type": {
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
     }
   },
   "category": ["数据录入"]
