@@ -27,7 +27,7 @@ import {
   getWidth,
   isValidateSuccess,
 } from '../css/input';
-import { FontSize, FontSizeNumber } from '../css';
+import { FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
@@ -47,6 +47,7 @@ const CommonInputStyle = styled.input`
   font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
+  vertical-align: top;
   &:hover {
     border-color: ${getInputBorderHoverColor};
   }
@@ -163,11 +164,13 @@ type InputProps = {|
   formatter?: (value: number | string) => string,
   parser?: (displayValue: number | string) => string,
   readOnly: boolean,
+  autoFocus?: boolean,
 |};
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     disabled: false,
+    autoFocus: false,
     viewClass: Widget.Input,
     validateStatus: 'success',
     validateType: 'default',
@@ -376,6 +379,7 @@ class TextBox extends Component<InputProps, InputState> {
       placeholder,
       readOnly,
       onClick,
+      autoFocus,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
@@ -383,6 +387,7 @@ class TextBox extends Component<InputProps, InputState> {
 
     return (
       <Input
+        autoFocus={autoFocus}
         innerRef={node => (this.input = node)}
         validateStatus={validateStatus}
         validateType={validateType}
