@@ -31,6 +31,9 @@ export type CSStype = {
   hasChecked: boolean,
   hasCancel: boolean,
 };
+type ForGroupType = {
+  onChangeForGroup: (event: Object, value: any) => any,
+};
 export type CheckBoxProps = {
   checked?: boolean,
   defaultChecked?: boolean,
@@ -38,12 +41,12 @@ export type CheckBoxProps = {
   indeterminate?: boolean,
   cancel?: boolean,
   getTheme: Function,
-  onChange?: (event: Object, val: any) => any,
+  onChange?: (event: Object, checked: boolean) => any,
   value?: string,
   children?: any,
   styles?: 'default' | 'vertical',
   handleCancelItemClick: Function,
-};
+} & ForGroupType;
 type CheckBoxType = CheckBoxProps & CSStype;
 
 const getColors = (props: CheckBoxType): string => {

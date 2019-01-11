@@ -45,14 +45,15 @@ export default ThemeProvider(
     }
 
     handleClick = value => e => {
-      const { onChange, disabled } = this.props;
+      const { onChange, disabled, onChangeForGroup } = this.props;
       const { checked } = this.state;
       if (!disabled) {
         this.setState({
           checked: !checked,
           hasChecked: checked,
         });
-        onChange && onChange(e, value);
+        onChange && onChange(e, !checked);
+        onChangeForGroup && onChangeForGroup(e, value);
         e.stopPropagation();
         e.preventDefault();
       }

@@ -69,5 +69,6 @@
       }
     }
   },
+  "childrenWidget": ["checkbox-group"],
   "category": ["数据录入"]
 }

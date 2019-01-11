@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckBox CheckBoxGroup CSS 1`] = `
-.c31 {
+.c32 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -40,7 +40,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
 }
 
 .c16:hover > span span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c2 {
@@ -78,7 +78,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
 }
 
 .c7:hover > span span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c11 {
@@ -147,8 +147,8 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #cac2ff;
-  border: 1px solid #cac2ff;
+  background-color: #c0c8ff;
+  border: 1px solid #c0c8ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -181,14 +181,14 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c17:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c17::after {
@@ -226,7 +226,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
 }
 
 .c9:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c9::after {
@@ -421,7 +421,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
 }
 
 .c22:hover > span {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c26 {
@@ -450,9 +450,9 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   vertical-align: middle;
   padding: 0 0.8333333333333334em;
   cursor: pointer;
-  background-color: #684fff;
+  background-color: #4d63ff;
   color: #fff;
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
   border-right: 1px solid #fff;
   border-left: 0;
   text-align: center;
@@ -534,7 +534,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   vertical-align: middle;
   padding: 0 0.8333333333333334em;
   cursor: pointer;
-  background-color: #cac2ff;
+  background-color: #c0c8ff;
   color: #ffffff;
   cursor: pointer;
   border-left: 0;
@@ -558,6 +558,12 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
   z-index: -2;
 }
 
+.c31 {
+  vertical-align: text-bottom !important;
+  font-size: 1.3333333333333335em!important;
+  color: #999999;
+}
+
 .c1 > label:first-child > span {
   border-radius: 4px 0 0 4px;
 }
@@ -567,7 +573,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
 }
 
 .c18 > label:first-child > span {
-  border-left: 1px solid #684fff;
+  border-left: 1px solid #4d63ff;
   border-radius: 4px 0 0 4px;
 }
 
@@ -585,7 +591,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
 }
 
 .c28 > label:first-child > span {
-  border-left: 1px solid #cac2ff;
+  border-left: 1px solid #c0c8ff;
   border-radius: 4px 0 0 4px;
 }
 
@@ -1215,7 +1221,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close  c31"
+              className="lugia-icon-reminder_close c31 c32"
             />
           </span>
         </span>
@@ -1313,7 +1319,7 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close  c31"
+              className="lugia-icon-reminder_close c31 c32"
             />
           </span>
         </span>
