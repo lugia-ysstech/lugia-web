@@ -170,6 +170,7 @@ class ScrollerTree extends React.Component<any, any> {
           key={key}
           title={title}
           inlineType={inlineType}
+          mutliple={mutliple}
           shape={shape}
           isLeaf={isLeaf}
           notCanSelect={notCanSelect}

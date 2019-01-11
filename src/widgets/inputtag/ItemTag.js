@@ -11,9 +11,9 @@ import {
   PaddingLeft,
   PadingRight,
   Height,
-  ItemContainerBackgroundColor,
   darkGreyColor,
 } from '../css/inputtag';
+import { ItemBackgroundColor } from '../css/menu';
 import { Padding } from '../css/input';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
@@ -26,7 +26,7 @@ export const ItemContainer = styled.li`
   height: ${em(ItemTagHeight)};
   line-height: ${em(ItemTagHeight)};
   user-select: none;
-  background: ${ItemContainerBackgroundColor};
+  background: ${ItemBackgroundColor};
   border-radius: ${em(ItemTagHeight)};
   color: ${darkGreyColor};
   cursor: default;

@@ -152,11 +152,7 @@ class TreeNode extends React.Component {
     const { Switcher, openClassName, closeClassName } = themeStyle;
     const iconClass = expandedState === 'open' ? openClassName : closeClassName;
     return (
-      <Switcher
-        mutliple={mutliple}
-        onClick={props.disabled ? null : this.onExpand}
-        expandedState={expandedState}
-      >
+      <Switcher mutliple={mutliple} onClick={this.onExpand} expandedState={expandedState}>
         <CommonIcon iconClass={iconClass} />
       </Switcher>
     );

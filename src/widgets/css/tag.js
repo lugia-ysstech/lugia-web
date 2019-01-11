@@ -177,6 +177,12 @@ const getPadding = props => {
   return closeable ? `0 ${em(5)} 0 ${em(8)}` : ` 0 ${em(8)}`;
 };
 
+const getContainerWidth = props => {
+  const { Theme } = props;
+  const { width } = Theme;
+  return width ? `width: ${em(width)}` : '';
+};
+
 export const TagContainer = styled.div`
   display: inline-block;
   height: ${em(20)};
@@ -185,8 +191,11 @@ export const TagContainer = styled.div`
   cursor: pointer;
   overflow: hidden;
   user-select: none;
+  text-align: center;
+  vertical-align: top;
   transition: all 0.15s ease-in;
   padding: ${getPadding};
+  ${getContainerWidth};
   ${getAnimationCSS};
   ${getTypeCSS};
 `;
@@ -204,11 +213,11 @@ export const ItemText = styled.span`
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
+  vertical-align: top;
 `;
 export const CloseButtonWrap = styled.span`
   display: inline-block;
-  padding: ${em(2)} 0 0 ${em(3)};
+  padding: ${em(1)} 0 0 ${em(3)};
 `;
 
 export const CloseButton: Object = styled(CommonIcon)`

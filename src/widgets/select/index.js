@@ -320,7 +320,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
-
     return (
       <Theme config={getTheme(props, Widget.Menu)} key="select_theme">
         <SelectContainer>
@@ -437,10 +436,9 @@ class Select extends React.Component<SelectProps, SelectState> {
       clearTimeout(this.queryHandle);
     }
 
-    this.setState({ query: value });
-
     const doQuery = () => {
-      const { onQuery, mode } = props;
+      const { onQuery, mode = 'local' } = props;
+
       if (mode === 'local') {
         this.getCurrentRow(value);
       }
@@ -457,14 +455,16 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getCurrentRow(value: string) {
     this.search(value, this.props.searchType);
+    this.setState({ query: value });
   }
 
   search(query: string, searchType?: QueryType = 'include') {
-    const { data } = this.state;
+    const { data, query: stateQuery } = this.state;
+    console.log('query', query, data);
     const { displayField = DisplayField } = this.props;
     let menuData;
     const queryAll = query === '' || !query;
-    const queryChanging = query !== this.state.query;
+    const queryChanging = query !== stateQuery;
     if (queryAll) {
       menuData = data;
     } else if (queryChanging) {
@@ -485,6 +485,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         menuData = rowSet.reverse();
       }
     }
+    console.log('menuData', menuData);
     this.setState({ menuData });
   }
 

@@ -77,8 +77,10 @@ const Text = styled.span`
   color: white;
   font-size: ${FontSize};
   width: 100%;
+  height: ${em(22)};
+  line-height: ${em(22)};
   background: ${themeColor};
-  padding: 0.1rem;
+  padding: 0 ${em(10)};
   position: absolute;
   border-radius: ${em(3)};
 `;
