@@ -251,7 +251,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     const { props, state } = this;
     const { data, isCheckedAll, length, value } = state;
     const { displayValue } = this;
-    const { limitCount } = props;
+    const { limitCount = length } = props;
 
     if (isCheckedAll) {
       this.setValue([], [], {});
@@ -460,7 +460,6 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   search(query: string, searchType?: QueryType = 'include') {
     const { data, query: stateQuery } = this.state;
-    console.log('query', query, data);
     const { displayField = DisplayField } = this.props;
     let menuData;
     const queryAll = query === '' || !query;
