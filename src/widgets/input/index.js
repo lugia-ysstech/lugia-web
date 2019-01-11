@@ -47,7 +47,6 @@ const CommonInputStyle = styled.input`
   font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
-  vertical-align: top;
   &:hover {
     border-color: ${getInputBorderHoverColor};
   }
