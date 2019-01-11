@@ -104,7 +104,6 @@ export function getItems(
 
   if (value.length > 0) {
     const { updateHanlder, needUpdate = (val: any) => false, getMapData } = handler;
-    console.log(value);
     value.forEach(val => {
       if (needUpdate(val)) {
         updateMapData(params.props, params.state.displayValue, updateHanlder);
@@ -242,10 +241,10 @@ export const getValueAndDisplayValue = function(props: Object, state: ?Object): 
     displayValue: isDisplayValue
       ? displayValue
       : isInit
-        ? defaultDisplayValue
-        : sDisplayValue
-          ? sDisplayValue
-          : undefined,
+      ? defaultDisplayValue
+      : sDisplayValue
+      ? sDisplayValue
+      : undefined,
   };
   if (result.displayValue && result.displayValue.length === 0) {
     result.displayValue = undefined;

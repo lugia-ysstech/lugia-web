@@ -14,11 +14,13 @@ import {
   tipColor,
   trackBackground,
   trackDisabledBackground,
+  dotNormalColor,
+  dotThroughColor,
 } from './slider_public_color';
 import Widgets from '../consts';
 import ThemeProvider from '../theme-provider';
 
-const em = px2emcss(1.2);
+const em = px2emcss(1.4);
 type CssTypeProps = {
   background: string,
   changeBackground: boolean,
@@ -43,6 +45,7 @@ type CssTypeProps = {
 const transitionTime = '0.1';
 export const SliderWrapper = ThemeProvider(
   styled.div`
+    font-size: 1.4rem;
     width: ${props => getSliderWrapperStyle(props).rangeW};
     height: ${props => getSliderWrapperStyle(props).rangeH};
     background: ${props => getSliderWrapperStyle(props).wrapperBackground};
@@ -260,21 +263,32 @@ const getDotStyle = (props: CssTypeProps) => {
     marskText = marks.text || marks;
     isChangDotBg = moveValue >= dotIndex && !isShowDot;
     const { length } = value;
+    let isBiger = value[0] >= dotIndex;
     if (length === 2) {
       isChangDotBg = valueInRange(dotIndex, value);
+      isBiger = isChangDotBg;
     }
-    let dotBorder = '1px solid #cccccc';
+    let dotBorder = '#cccccc';
     let dotBg = '#ffffff';
+    let dotColor = dotNormalColor;
     if (isShowDot) {
-      dotBorder = 'none';
+      dotBorder = 'transparent';
       dotBg = 'none';
     }
     if (isChangDotBg) {
-      dotBorder = 'none';
+      dotBorder = 'transparent';
       dotBg = '#ffffff';
     }
+    if (isBiger) {
+      dotColor = dotThroughColor;
+    }
+    if (dotStyle && dotStyle.color) {
+      dotColor = dotStyle.color;
+    }
     dotBackground = `
-      border: ${dotBorder};
+      border-width:${em(1)};
+      border-style:solid;
+      border-color:${dotBorder};
       background: ${dotBg};
     `;
 
@@ -284,15 +298,17 @@ const getDotStyle = (props: CssTypeProps) => {
     const dotPosTrans = vertical ? 'translateX' : 'translateY';
 
     const dotTextLeft = vertical ? em(15) : '50%';
-    const dotTextTop = vertical ? '50%' : em(12);
+    const dotTextTop = vertical ? '50%' : em(16);
     const dotTextTrans = vertical ? 'translateY' : 'translateX';
     dotTextPosition = `
       left: ${dotTextLeft};
       transform: ${dotTextTrans}(-50%);
       -webkit-transform: ${dotTextTrans}(-50%);
       top: ${dotTextTop};
+      color:${dotColor};
     `;
     dotPosition = `
+      font-size:${em(14)};
       left: ${dotPosLeft}%;
       ${dotPosTorBot};
       transform: ${dotPosTrans}(-50%);

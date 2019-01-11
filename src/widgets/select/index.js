@@ -138,7 +138,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     const length = data.length;
 
     const { value, displayValue } = getValueAndDisplayValue(props, state);
-    console.log('valuevalue', value);
     const theValue = value ? value : [];
 
     if (!state) {
