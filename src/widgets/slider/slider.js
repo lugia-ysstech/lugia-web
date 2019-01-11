@@ -192,8 +192,8 @@ class Slider extends Component<TypeProps, TypeState> {
     const { length } = newValue;
 
     function getItem(val) {
-      const first = marks[val[0]];
-      const second = marks[val[1]];
+      const first = val && marks[val[0]];
+      const second = val && marks[val[1]];
       return length === 2 ? [first, second] : first;
     }
 
