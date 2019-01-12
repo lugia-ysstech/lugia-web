@@ -230,6 +230,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       <Trigger
         ref={cmp => (this.trigger = cmp)}
         align={'rightTop'}
+        lazy={false}
         offsetX={activeOffsetX}
         offsetY={activeOffsetY}
         createPortal
@@ -773,7 +774,6 @@ Result.computeCanSeeCount = (
 ): number => {
   return Math.floor(getCanSeeCountRealy(height, menuItemHeight));
 };
-Result.MenuItem = Item;
 
 SubMenu = ThemeProvider(
   class SubMenu extends React.Component<MenuProps> {
