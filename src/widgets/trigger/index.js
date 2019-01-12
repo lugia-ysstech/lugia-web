@@ -185,8 +185,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     );
   }
 
-  componentWillReceiveProps({ popupVisible }: Object) {
+  componentWillReceiveProps({ popupVisible }: TriggerProps, state: TriggerState) {
     if (popupVisible !== undefined) {
+      this.setFirstShow(popupVisible);
       this.setState({
         popupVisible,
       });
@@ -250,9 +251,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   setPopupVisible(popupVisible: boolean) {
     this.clearDelayTimer();
-    if (!this.isFirstShow && popupVisible) {
-      this.isFirstShow = popupVisible;
-    }
+    this.setFirstShow(popupVisible);
     if (this.state.popupVisible !== popupVisible) {
       if (!('popupVisible' in this.props)) {
         this.setState({
@@ -260,6 +259,12 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         });
       }
       this.props.onPopupVisibleChange(popupVisible);
+    }
+  }
+
+  setFirstShow(popupVisible: boolean) {
+    if (!this.isFirstShow && popupVisible) {
+      this.isFirstShow = popupVisible;
     }
   }
 
