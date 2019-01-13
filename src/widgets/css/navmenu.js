@@ -61,10 +61,10 @@ const getChildrenSelected = props => {
 };
 
 const getHeight = props => {
-  const { pos } = props;
+  const { pos, height = 40 } = props;
   const num = pos.split('-').length - 2;
-  return `min-height: ${num ? `${em(40)}` : `${em(40)}`};
-  line-height: ${num ? `${em(40)}` : `${em(40)}`}
+  return `min-height: ${num ? `${em(height)}` : `${em(height)}`};
+  line-height: ${num ? `${em(height)}` : `${em(height)}`}
     `;
 };
 
@@ -174,7 +174,6 @@ const getTitleWrapBackground = props => {
 };
 export const TitleWrap = styled.span`
   ${getTitleWrapBackground};
-  ${getTitleWrapBackground};
   ${getFontSize};
   ${getTitleWrapPadding};
   box-sizing: border-box;
@@ -197,9 +196,9 @@ const getBorderRadius = props => {
 };
 
 const getTitleSpanPadding = props => {
-  const { pos } = props;
+  const { pos, paddingLeft = 20 } = props;
   const num = pos.split('-').length - 2;
-  return num ? `padding-left: ${px2emcss(1.4)(20)}` : `padding-left: ${px2emcss(1.6)(20)}`;
+  return num ? `padding-left: ${px2emcss(1.4)(paddingLeft)}` : `padding-left: ${px2emcss(1.6)(20)}`;
 };
 
 const getSelectedBackground = props => {
@@ -213,10 +212,9 @@ const getSelectedBackground = props => {
 };
 
 const getTitleSpanHeight = props => {
-  const { height } = props;
   const { pos } = props;
   const num = pos.split('-').length - 2;
-  return num ? `height: ${px2emcss(1.4)(height)}` : `height: ${px2emcss(1.6)(height)}`;
+  return num ? px2emcss(1.4)(40) : px2emcss(1.6)(40);
 };
 
 export const TitleSpan = styled.span`

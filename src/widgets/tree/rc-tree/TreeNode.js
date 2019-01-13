@@ -258,6 +258,7 @@ class TreeNode extends React.Component {
       isLeaf,
       title,
       shape,
+      paddingLeft,
     } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
@@ -274,7 +275,7 @@ class TreeNode extends React.Component {
       }
     }
     const { TitleWrap, NullSwitcher, Li, TitleSpan } = themeStyle;
-    const iconHeight = getMenuItemHeight(size);
+    const itemHeight = getMenuItemHeight(size);
     const selectHandle = () => {
       const title = (
         <TitleSpan
@@ -283,8 +284,9 @@ class TreeNode extends React.Component {
           selected={selected}
           inlineType={inlineType}
           title={content}
-          height={iconHeight}
+          height={itemHeight}
           theme={theme}
+          paddingLeft={paddingLeft}
         >
           {icon ? <TextIcon iconClass={icon} /> : null}
           {content}
@@ -359,6 +361,7 @@ class TreeNode extends React.Component {
         title={title}
         theme={theme}
         color={color}
+        height={itemHeight}
       >
         {/* 小箭头*/}
         {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : renderNoopSwitcher()}
