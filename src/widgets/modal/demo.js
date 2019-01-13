@@ -130,7 +130,16 @@ export default class ModalDemo extends React.Component<any, any> {
         </Modal>
         <br />
         <br />
-        <Button onClick={() => Modal.confirm({ title: 'confirm', content: 'this confirm text!' })}>
+        <Button
+          onClick={() =>
+            Modal.confirm({
+              title: 'confirm',
+              content: 'this confirm text!',
+              onOk: () => console.log('ok'),
+              onCancel: () => console.log('onCancel'),
+            })
+          }
+        >
           confirm
         </Button>
         <br />

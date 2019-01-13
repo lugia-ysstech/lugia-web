@@ -32,8 +32,6 @@ export { default as ButtonGroup } from './button/button-group';
 
 export { default as CheckBox } from './checkbox';
 
-export { default as CheckButton } from './check-button/button';
-
 export { default as Collapse } from './collapse/collapse';
 
 export { default as Panel } from './collapse/panel';
@@ -98,12 +96,44 @@ export { default as Message } from './message';
 
 export { default as Modal } from './modal';
 
-export { default as notification } from './notification';
+export { default as Notification } from './notification';
 
-export { default as Trasfer } from './trasfer';
+export { default as Transfer } from './transfer';
 
 export { default as Drawer } from './drawer';
 
 export { default as Table } from './table';
 
 export { default as Pagination } from './pagination';
+
+export { default as Anchor } from './anchor';
+
+export { default as AutoComplete } from './auto-complete';
+
+export { default as Card } from './card';
+
+export { default as Carousel } from './carousel';
+
+export { default as Cascader } from './cascader';
+
+export { default as DatePicker } from './date-picker';
+
+export { default as NavMenu } from './navmenu';
+
+export { default as PopConfirm } from './popconfirm';
+
+export { default as Popover } from './popover';
+
+export { default as Rate } from './rate';
+
+export { default as Skeleton } from './skeleton';
+
+export { default as Steps } from './steps';
+
+export { default as Tag } from './tag';
+
+export { default as TimeLine } from './time-line';
+
+export { default as TimePicker } from './time-picker';
+
+export { default as Upload } from './upload';

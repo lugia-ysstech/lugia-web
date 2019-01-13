@@ -6,11 +6,11 @@
  */
 import { createMessage } from './create-message';
 
-const message = {};
-message.info = createMessage('info');
-message.success = createMessage('success');
-message.error = createMessage('error');
-message.warning = createMessage('warning');
-message.loading = createMessage('loading');
+const Message = {};
+Message.info = createMessage('info');
+Message.success = createMessage('success');
+Message.error = createMessage('error');
+Message.warning = createMessage('warning');
+Message.loading = createMessage('loading');
 
-export default message;
+export default Message;
