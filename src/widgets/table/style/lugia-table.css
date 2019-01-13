@@ -28,3 +28,6 @@
 :global(.lugia-table-bordered .rc-table-body table) {
   border-collapse: collapse;
 }
+:global(.rc-table tr:hover) {
+  background: rgba(77, 99, 255, .05);
+}
