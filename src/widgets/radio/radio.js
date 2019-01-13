@@ -11,29 +11,47 @@ import Widget from '../consts/index';
 import type { RadioProps } from '../css/radio';
 import { RadioChildrenSpan, RadioContent, RadioInnerSpan, RadioWrap } from '../css/radio';
 
-type RadioState = {};
+type RadioState = {
+  checked: boolean,
+};
 
 export default ThemeProvider(
   class extends React.Component<RadioProps, RadioState> {
+    static getDerivedStateFromProps(props, state) {
+      const hasChecked = 'checked' in props;
+      if (hasChecked) {
+        return {
+          checked: props.checked,
+        };
+      }
+      if (!state) {
+        const { defaultChecked } = props;
+        return {
+          checked: defaultChecked || false,
+        };
+      }
+      return { checked: state.checked };
+    }
+
     handleClick = (value: string) => (e: Event) => {
-      const { onChange, disabled, cancel } = this.props;
+      const { onChange, disabled, cancel, onChangeForGroup } = this.props;
       if (!disabled && !cancel) {
-        onChange && onChange(e, value);
+        const { checked } = this.state;
+        onChange && onChange(e, !checked);
+        onChangeForGroup && onChangeForGroup(e, value);
+        const inProps = 'checked' in this.props;
+        if (!inProps) {
+          this.setState({
+            checked: !checked,
+          });
+        }
         e.stopPropagation();
         e.preventDefault();
       }
     };
     render() {
-      const {
-        children,
-        value = '',
-        getTheme,
-        disabled,
-        styles,
-        checked,
-        cancel,
-        defaultChecked,
-      } = this.props;
+      const { children, value = '', getTheme, disabled, styles, cancel } = this.props;
+      const { checked } = this.state;
       return (
         <RadioWrap
           themes={getTheme()}
@@ -47,7 +65,7 @@ export default ThemeProvider(
               themes={getTheme()}
               cancel={cancel}
               disabled={disabled}
-              checked={checked || defaultChecked}
+              checked={checked}
             />
           </RadioContent>
           <RadioChildrenSpan>{children}</RadioChildrenSpan>

@@ -107,20 +107,22 @@ describe('RadioGroup', () => {
   });
   it('RadioGroup changeValue === stateValue onChange', () => {
     let a = 0;
-    function add() {
-      a++;
+    function add({ newValue }) {
+      a = newValue;
     }
     const target = mount(createMount({ onChange: add }));
     const label = target.find('label');
-    function simulateClick(repeat: boolean) {
+    const component = target
+      .find('RadioGroup')
+      .at(0)
+      .instance();
+    function simulateClick() {
       for (let i = 0; i < 3; i++) {
-        label.at(repeat ? 0 : i).simulate('click');
-        expect(a).toBe(repeat ? 1 : i + 1);
+        label.at(i).simulate('click');
+        expect(component.state.value).toBe(`${i + 1}`);
       }
     }
-    simulateClick(false);
-    a = 0;
-    simulateClick(true);
+    simulateClick();
   });
   it('RadioGroup onChange: oldItem oldValue newItem newValue', () => {
     let result = {},

@@ -38,6 +38,9 @@ export type RadioProps = {
   item?: Object,
   value?: string,
   children?: any,
+} & ForGroupType;
+type ForGroupType = {
+  onChangeForGroup?: Function,
 };
 type RadioType = RadioProps & CSStype;
 

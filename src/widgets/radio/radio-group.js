@@ -46,6 +46,7 @@ type RadioGroupState = {
 
 export default ThemeProvider(
   class extends React.Component<RadioGroupProps, RadioGroupState> {
+    static displayName = 'RadioGroup';
     oldItem: Object;
     cancelItem: Array<Object>;
 
@@ -129,7 +130,7 @@ export default ThemeProvider(
       return (
         <Theme config={this.getChildTheme()}>
           <Group themes={getTheme()} childType={childType}>
-            {handleCreate(_this, 'radio')}
+            {handleCreate(_this, 'radio', childType)}
           </Group>
         </Theme>
       );
@@ -169,7 +170,7 @@ export default ThemeProvider(
       }
       return (
         <Radio
-          onChange={this.handleChange(item)}
+          onChangeForGroup={this.handleChange(item)}
           key={itemValue}
           value={itemValue}
           checked={itemValue === value}

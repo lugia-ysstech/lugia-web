@@ -125,12 +125,16 @@ export function getItems(
   return { items, displayValue };
 }
 
-export function handleCreate(params: Object, type: 'radio' | 'checkbox') {
+export function handleCreate(
+  params: Object,
+  type: 'radio' | 'checkbox',
+  childType: 'default' | 'button'
+) {
   const { children, data = [] } = params.props;
   const result = [];
 
   if (children) {
-    return renderChildren(params, type);
+    return renderChildren(params, type, childType);
   }
 
   const pushItem = (cancel: boolean) => item => {
@@ -158,7 +162,11 @@ export function updateMapData(
   updateHandler({ cancelItem, cancelItemData, dataItem });
 }
 
-function renderChildren(params: Object, type: 'radio' | 'checkbox') {
+function renderChildren(
+  params: Object,
+  type: 'radio' | 'checkbox',
+  childType: 'default' | 'button'
+) {
   let { value } = params.state;
   if (!value) {
     value = type === 'radio' ? '' : [];
@@ -166,8 +174,12 @@ function renderChildren(params: Object, type: 'radio' | 'checkbox') {
   const { children, disabled, styles } = params.props;
   return React.Children.map(children, child => {
     if (React.isValidElement(child)) {
+      let change = 'onChangeForGroup';
+      if (childType === 'button') {
+        change = 'onChange';
+      }
       return React.cloneElement(child, {
-        onChange: type === 'radio' ? params.handleChange()() : params.handleChange(),
+        [change]: type === 'radio' ? params.handleChange()() : params.handleChange(),
         checked:
           type === 'radio' ? value === child.props.value : value.indexOf(child.props.value) !== -1,
         disabled: disabled || child.props.disabled,
