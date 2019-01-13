@@ -436,6 +436,8 @@ class Select extends React.Component<SelectProps, SelectState> {
       clearTimeout(this.queryHandle);
     }
 
+    this.setState({ query: value });
+
     const doQuery = () => {
       const { onQuery, mode = 'local' } = props;
 
@@ -446,6 +448,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     };
 
     const { throttle = -1 } = props;
+
     if (throttle > 0) {
       this.queryHandle = setTimeout(doQuery, throttle);
     } else {
@@ -455,18 +458,17 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getCurrentRow(value: string) {
     this.search(value, this.props.searchType);
-    this.setState({ query: value });
   }
 
   search(query: string, searchType?: QueryType = 'include') {
-    const { data, query: stateQuery } = this.state;
+    const { data } = this.state;
     const { displayField = DisplayField } = this.props;
     let menuData;
     const queryAll = query === '' || !query;
-    const queryChanging = query !== stateQuery;
+
     if (queryAll) {
       menuData = data;
-    } else if (queryChanging) {
+    } else {
       const queryArray = this.getQueryArray(query);
       const rowSet = [];
       const len = data.length;
@@ -484,7 +486,6 @@ class Select extends React.Component<SelectProps, SelectState> {
         menuData = rowSet.reverse();
       }
     }
-    console.log('menuData', menuData);
     this.setState({ menuData });
   }
 

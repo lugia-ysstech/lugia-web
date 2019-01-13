@@ -138,7 +138,7 @@ class ScrollerTree extends React.Component<any, any> {
         disabled: dataDisabled,
         icon,
       } = item;
-      const { color } = this.getTheme();
+      const { color, paddingLeft } = this.getTheme();
       const disabled = describe || dataDisabled ? true : !!dataDisabled;
       const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {
@@ -159,6 +159,7 @@ class ScrollerTree extends React.Component<any, any> {
             size={size}
             theme={theme}
             color={color}
+            paddingLeft={paddingLeft}
           >
             {this.loopNode(children)}
           </TreeNode>
@@ -180,6 +181,7 @@ class ScrollerTree extends React.Component<any, any> {
           size={size}
           theme={theme}
           color={color}
+          paddingLeft={paddingLeft}
         />
       );
     });
