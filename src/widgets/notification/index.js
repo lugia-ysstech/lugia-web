@@ -6,11 +6,11 @@
  */
 import { createNotification } from './create';
 
-const notification = {};
-notification.info = createNotification('info');
-notification.success = createNotification('success');
-notification.error = createNotification('error');
-notification.warning = createNotification('warning');
-notification.open = createNotification();
+const Notification = {};
+Notification.info = createNotification('info');
+Notification.success = createNotification('success');
+Notification.error = createNotification('error');
+Notification.warning = createNotification('warning');
+Notification.open = createNotification();
 
-export default notification;
+export default Notification;
