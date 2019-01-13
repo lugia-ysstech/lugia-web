@@ -40,6 +40,7 @@ import {
   mediumGreyColor,
   blackColor,
   themeColor,
+  defaultColor,
 } from '../css/inputtag';
 import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
@@ -100,6 +101,7 @@ const Container = styled.div`
   ${getWidth};
   display: inline-block;
   position: relative;
+  background: ${defaultColor};
   color: ${mediumGreyColor};
   font-size: ${FontSize};
   cursor: ${getCursor};

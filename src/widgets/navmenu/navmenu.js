@@ -12,8 +12,10 @@ import Menu from '../menu';
 import styled from 'styled-components';
 import { getTreeData } from '../menu/utils';
 import { getValue, getInitExpandedPath } from '../cascader/utils';
-import { MenuItemHeight, DefaultHeight } from '../css/navmenu';
+import { DefaultHeight } from '../css/navmenu';
 import { TreeUl } from '../css/navmenu';
+import { getMenuItemHeight } from '../css/menu';
+
 import {
   themeColor,
   Switcher,
@@ -55,7 +57,6 @@ type NavMenuState = {
 const openClassName = 'lugia-icon-direction_up';
 const closeClassName = 'lugia-icon-direction_down';
 const themeStyle = {
-  MenuItemHeight,
   DefaultHeight,
   TreeUl,
   themeColor,
@@ -189,16 +190,26 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   getInlineNavMenu = () => {
     const { value } = this.state;
-    const { inlineType, inlineExpandAll, valueField, displayField, theme } = this.props;
-    const { width, color, height } = this.getThemeTarget();
+    const {
+      inlineType,
+      inlineExpandAll,
+      valueField,
+      displayField,
+      theme,
+      size = 'bigger',
+    } = this.props;
+    const { width, color, height, paddingLeft } = this.getThemeTarget();
     const config = {
       [Widget.Tree]: {
         width,
         height,
+        paddingLeft,
         color,
       },
     };
     const treeData = this.treeData;
+    const activeMenuItemHeight = getMenuItemHeight(size);
+    themeStyle.MenuItemHeight = activeMenuItemHeight;
     return (
       <MenuWrap>
         <Theme config={config}>
@@ -208,7 +219,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
             autoHeight={true}
             inlineType={inlineType}
             data={treeData}
-            size={'bigger'}
+            size={size}
             value={value}
             mutliple={false}
             valueField={valueField}
