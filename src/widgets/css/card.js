@@ -8,13 +8,12 @@ import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { ObjectUtils } from '@lugia/type-utils';
-
-const { blackColor, darkGreyColor, lightGreyColor, defaultColor } = colorsFunc();
+const { blackColor, darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
 export type shadowType = 'always' | 'hover' | 'never';
-export type CardType = 'simple' | 'avatar' | 'image' | 'combo';
+export type CardType = 'simple' | 'avatar' | 'image' | 'combo' | 'tip';
 export type ImageOrientation = 'horizontal' | 'vertical';
 export type CardProps = {
   viewClass: string,
@@ -103,6 +102,10 @@ export const getOutContainerDirection = (props: Object) => {
 export const getTitleColor = () => {
   return `color:${blackColor};`;
 };
+export const getFontWeight = props => {
+  const { type } = props;
+  return type === 'tip' ? 'font-weight: 700;' : '500';
+};
 export const getDescripitionColor = () => {
   return `color:${darkGreyColor};`;
 };
@@ -111,6 +114,9 @@ export const getCardContainerBorder = () => {
 };
 export const getCardContainerBackground = () => {
   return `background: ${defaultColor};`;
+};
+export const getTipLineBackground = () => {
+  return `background: ${themeColor};`;
 };
 export const getContentTextAlign = (props: Object) => {
   const { type, imageOrientation } = props;
@@ -121,8 +127,13 @@ export const getContentTextAlign = (props: Object) => {
 };
 export const getContentMargin = (props: Object) => {
   const { type, imageOrientation } = props;
-  if ((type === 'avatar' && imageOrientation === 'vertical') || type === 'combo') return '';
-  return `margin-left: ${em(16)}`;
+  const left =
+    type === 'tip'
+      ? '30'
+      : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
+      ? ''
+      : '16';
+  return `margin-left: ${em(left)}`;
 };
 export const getAvatarMargin = (props: Object) => {
   const { imageOrientation } = props;

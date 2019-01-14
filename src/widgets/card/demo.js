@@ -152,6 +152,17 @@ export default () => {
           />
         </Wrapper>
       </Theme>
+      <p>Title样式</p>
+      <Theme config={view}>
+        <Wrapper>
+          <Card
+            type={'tip'}
+            title={<div>{'this is title'}</div>}
+            description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
+            shadow={'always'}
+          />
+        </Wrapper>
+      </Theme>
       <p>children样式 </p>
       <Wrapper>
         <Card>

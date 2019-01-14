@@ -16,6 +16,7 @@ import {
   getImageContainerSize,
   getImageContainerDisplay,
   getTitleColor,
+  getFontWeight,
   getDescripitionColor,
   getCardContainerBorder,
   getOutContainerDirection,
@@ -23,6 +24,7 @@ import {
   getContentTextAlign,
   getContentMargin,
   getAvatarMargin,
+  getTipLineBackground,
 } from '../css/card';
 import type { CardProps, CardState } from '../css/card';
 import { ObjectUtils } from '@lugia/type-utils';
@@ -72,10 +74,19 @@ const Title = Basetext.extend`
   display: inline-block;
   flex: 1;
   font-size: 1.6rem;
-  font-weight: 500;
   ${getTitleColor};
+  ${getFontWeight};
   overflow: hidden;
   white-space: nowrap;
+`;
+const TitleTipLine = styled.div`
+  left: ${em(14)};
+  position: absolute;
+  display: inline-block;
+  height: ${em(20)};
+  width: ${em(5)};
+  ${getTipLineBackground};
+  border-radius: ${em(5)};
 `;
 const Descripition = Basetext.extend`
   font-size: 1.4rem;
@@ -113,12 +124,18 @@ class Card extends React.Component<CardProps, CardState> {
         {this.getDetails('operation')}
         {this.getImageContainer()}
         <Content imageOrientation={imageOrientation} type={type} content={content}>
+          {this.getTitleTipLine()}
           {this.getDetails('title')}
           {this.getDetails('description')}
           {this.getContent()}
         </Content>
       </CardOutContainer>
     );
+  }
+
+  getTitleTipLine() {
+    const { type } = this.props;
+    return type === 'tip' ? <TitleTipLine /> : null;
   }
 
   getImageContainer() {
@@ -134,7 +151,7 @@ class Card extends React.Component<CardProps, CardState> {
     return null;
   }
   getDetails(information: string): React.Node | null {
-    const { operation, title, description, content, children } = this.props;
+    const { operation, title, description, content, children, type } = this.props;
     const hasNoContent = !(content && children);
     let details = '';
     switch (information) {
@@ -142,7 +159,7 @@ class Card extends React.Component<CardProps, CardState> {
         details = hasNoContent && operation ? <Operation>{operation}</Operation> : null;
         break;
       case 'title':
-        details = hasNoContent && title ? <Title>{title} </Title> : null;
+        details = hasNoContent && title ? <Title type={type}>{title} </Title> : null;
         break;
       case 'description':
         details = hasNoContent && description ? <Descripition>{description} </Descripition> : null;
