@@ -120,6 +120,7 @@ const Upload = 'lugia_widget_Upload';
 const Popover = 'lugia_widget_Popover';
 const Popconfirm = 'lugia_widget_Popconfirm';
 const PageLoading = 'lugia_widget_PageLoading';
+const Table = 'lugia_widget_Table';
 export default {
   Button,
   Input,
@@ -221,4 +222,5 @@ export default {
   NavMenu,
   AutoComplete,
   PageLoading,
+  Table,
 };

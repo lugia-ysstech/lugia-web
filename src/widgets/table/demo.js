@@ -6,6 +6,8 @@
  */
 import * as React from 'react';
 import Table from './index';
+import Theme from '../theme';
+import Widget from '../consts/index';
 
 const { ColumnGroup, Column } = Table;
 
@@ -73,10 +75,17 @@ const Data = [
 
 export default class ModalDemo extends React.Component<any, any> {
   render() {
+    const tableView = {
+      [Widget.Table]: {
+        width: 500,
+      },
+    };
     return (
       <div style={{ padding: '20px' }}>
         <h1>边框表格</h1>
-        <Table columns={columns} data={data} />
+        <Theme config={tableView}>
+          <Table columns={columns} data={data} />
+        </Theme>
         <br />
         <h1>斑马纹表格</h1>
         <Table columns={columns} data={data} tableStyle="zebraStripe" />
@@ -96,7 +105,13 @@ export default class ModalDemo extends React.Component<any, any> {
             title="Tags"
             dataIndex="tags"
             key="tags"
-            render={tags => <span>{tags.map(tag => <span>{tag}</span>)}</span>}
+            render={tags => (
+              <span>
+                {tags.map(tag => (
+                  <span>{tag}</span>
+                ))}
+              </span>
+            )}
           />
           <Column
             title="Action"
