@@ -462,9 +462,10 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
   onSelectAll = () => {
     const selectAll = !this.isSelectAll();
+    console.log('this.isSelectAll()', this.isSelectAll());
     const { onSelect } = this.props;
+    const { displayField, valueField } = this.props;
     if (selectAll === true) {
-      const { displayField } = this.props;
       const data = this.getQueryData();
       const { value: stateValue, displayValue: stateDisplayValue } = this.state;
       const value = [...stateValue];
@@ -475,7 +476,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       limitCount = limitCount - value.length;
       const inTreee = this.getInTree();
       for (let i = 0; i < data.length; i++) {
-        const { key, [displayField]: title } = data[i];
+        const { [valueField]: key, [displayField]: title } = data[i];
         if (inTreee[key]) {
           continue;
         }
@@ -490,19 +491,21 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     } else {
       //TODO: 这里修改了getInputTagValueObject方法的值.
       const valueObj = this.getInputTagValueObject();
+
       const items = this.getQueryData();
       const len = items.length;
       for (let i = 0; i < len; i++) {
-        const { key } = items[i];
+        const { [valueField]: key } = items[i];
         const item = valueObj[key];
         if (item) {
           delete valueObj[key];
         }
       }
       const valArray = Object.keys(valueObj);
+
       const dispArray = [];
       for (let i = 0; i < valArray.length; i++) {
-        dispArray.push(valueObj[valArray[i]].text);
+        dispArray.push(valueObj[valArray[i]][displayField]);
       }
       onSelect && onSelect({ value: [], displayValue: [] });
       this.setValue(valArray, dispArray, {});

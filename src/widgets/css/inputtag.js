@@ -16,6 +16,7 @@ export const {
   mediumGreyColor,
   lightGreyColor,
   dangerColor,
+  defaultColor,
 } = colorsFunc();
 
 export const MarginTop = 4;

@@ -39,6 +39,7 @@ import {
   getTargetOrDefaultTarget,
   getTargetOrDefaultTargetLazy,
   getTreeData,
+  getexpandedPathInProps,
 } from './utils';
 
 const Placeholder = {};
@@ -140,6 +141,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       expandedPath: getExpandedPath(props, null),
       popupVisible: false,
       childData: getInitChildData(props, null),
+      expandedPathInProps: getexpandedPathInProps(props, null),
       indexOffsetY: 0,
       start: 0,
     };
@@ -385,7 +387,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
         });
 
         if (!mutliple) {
-          this.updateExpandedPath('click', newSelectedKeys);
+          const { children } = item;
+          if (children) {
+            this.updateExpandedPath('click', newSelectedKeys);
+          } else {
+            this.clearExpandedPath();
+          }
         }
         const setSelectedKeys = this.getSetSelectedKeys();
         setSelectedKeys(newSelectedKeys);
@@ -413,6 +420,20 @@ class Menu extends React.Component<MenuProps, MenuState> {
         getIndexOffsetY && getIndexOffsetY(indexOffsetY);
       },
     };
+  };
+
+  clearExpandedPath = () => {
+    const expandedPathInProps = getTargetOrDefaultTarget(
+      this.isRoot(),
+      this.state.expandedPathInProps,
+      this.props.expandedPathInProps
+    );
+    if (!expandedPathInProps) {
+      setTimeout(() => {
+        this.updateExpandedPath('click', []);
+        this.updateExpandedPath('hover', []);
+      }, 100);
+    }
   };
 
   fetchSelectedKeys = (config: {
@@ -507,6 +528,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
       }
       return contains(domNode.parentNode.parentNode, target);
     });
+    if (!isInMenuRange) {
+      setTimeout(() => {
+        this.clearExpandedPath();
+      }, 100);
+    }
     handleIsInMenu && handleIsInMenu(isInMenuRange);
     return isInMenuRange;
   };
@@ -576,6 +602,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         setExpandedPath={this.getSetExpandedPath()}
         expandedData={this.getExpandedData()}
         selectedKeysData={this.getSelectedKeysData()}
+        expandedPathInProps={this.getExpandedPathInProps()}
       />
     );
   }
@@ -643,6 +670,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
       this.isRoot(),
       this.setExpandedPath,
       this.props.setExpandedPath
+    );
+  };
+
+  getExpandedPathInProps = () => {
+    return getTargetOrDefaultTarget(
+      this.isRoot(),
+      this.state.expandedPathInProps,
+      this.props.expandedPathInProps
     );
   };
 

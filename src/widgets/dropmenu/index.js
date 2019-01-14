@@ -91,6 +91,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
           align={align}
           action={action}
           offsetY={offsetY}
+          lazy={false}
           hideAction={hideAction}
           onPopupVisibleChange={this.onPopupVisibleChange}
           popupVisible={this.state.visible}
@@ -115,8 +116,11 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     }
     return newChildProps;
   };
-  onMenuClick = () => {
-    this.onPopupVisibleChange(false);
+  onMenuClick = (e: Object, keys: string[], items: Object) => {
+    const { children } = items;
+    if (!children) {
+      this.onPopupVisibleChange(false);
+    }
   };
 
   getOffSetY = (align: string) => {
@@ -142,7 +146,9 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   };
   onPopupVisibleChange = (visible: boolean) => {
     const { onPopupVisibleChange } = this.props;
-    this.setState({ visible });
+    setTimeout(() => {
+      this.setState({ visible });
+    }, 200);
     onPopupVisibleChange && onPopupVisibleChange(visible);
   };
 }

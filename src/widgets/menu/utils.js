@@ -44,9 +44,13 @@ export function getTargetOrDefaultTargetLazy(
   return matchFunc();
 }
 
+export function getexpandedPathInProps(props: MenuProps) {
+  return 'expandedPath' in props;
+}
+
 export function getExpandedPath(props: MenuProps, state: ?MenuState): Array<string> {
   const { expandedPath = [] } = props;
-  if ('expandedPath' in props) {
+  if (getexpandedPathInProps(props)) {
     return expandedPath;
   }
   return state ? state.expandedPath : [];
