@@ -27,7 +27,6 @@ import {
 import type { CardProps, CardState } from '../css/card';
 import { ObjectUtils } from '@lugia/type-utils';
 import { px2emcss } from '../css/units';
-import { Down, Left, Right, Up } from '../css/tooltip';
 
 const em = px2emcss(1.2);
 
