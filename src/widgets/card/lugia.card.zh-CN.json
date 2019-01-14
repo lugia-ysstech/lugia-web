@@ -70,7 +70,7 @@
     }
   },
   "type": {
-    "CardType": ["simple", "avatar", "image", "combo"],
+    "CardType": ["simple", "avatar", "image", "combo","tip"],
     "shadowType": ["always", "hover", "never"],
     "ImageOrientation": ["horizontal", "vertical"]
   },
