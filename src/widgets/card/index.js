@@ -159,7 +159,7 @@ class Card extends React.Component<CardProps, CardState> {
         details = hasNoContent && operation ? <Operation>{operation}</Operation> : null;
         break;
       case 'title':
-        details = hasNoContent && title ? <Title type={type}>{title} </Title> : null;
+        details = title ? <Title type={type}>{title} </Title> : null;
         break;
       case 'description':
         details = hasNoContent && description ? <Descripition>{description} </Descripition> : null;
