@@ -203,7 +203,7 @@ export default ThemeProvider(
       return (
         <Theme config={this.getChildTheme()}>
           <Group themes={getTheme()} childType={childType}>
-            {handleCreate(_this, 'checkbox')}
+            {handleCreate(_this, 'checkbox', childType)}
           </Group>
         </Theme>
       );

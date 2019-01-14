@@ -9,5 +9,6 @@ export type TableProps = {
   data: Object[],
   showHeader?: boolean,
   tableStyle?: 'zebraStripe' | 'linear' | 'bordered',
+  getTheme: Function,
 };
 export type TableState = {};
