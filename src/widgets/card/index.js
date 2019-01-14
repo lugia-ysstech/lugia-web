@@ -27,6 +27,7 @@ import {
 import type { CardProps, CardState } from '../css/card';
 import { ObjectUtils } from '@lugia/type-utils';
 import { px2emcss } from '../css/units';
+import { Down, Left, Right, Up } from '../css/tooltip';
 
 const em = px2emcss(1.2);
 
@@ -110,11 +111,11 @@ class Card extends React.Component<CardProps, CardState> {
         type={type}
         imageOrientation={imageOrientation}
       >
-        {this.getOperation()}
+        {this.getDetails('operation')}
         {this.getImageContainer()}
         <Content imageOrientation={imageOrientation} type={type} content={content}>
-          {this.getTitle()}
-          {this.getDescripition()}
+          {this.getDetails('title')}
+          {this.getDetails('description')}
           {this.getContent()}
         </Content>
       </CardOutContainer>
@@ -133,22 +134,28 @@ class Card extends React.Component<CardProps, CardState> {
       );
     return null;
   }
-
-  getOperation(): React.Node | null {
-    const { operation } = this.props;
-    return Operation ? <Operation>{operation}</Operation> : null;
-  }
-  getTitle(): React.Node | null {
-    const { title } = this.props;
-    return title ? <Title>{title} </Title> : null;
-  }
-  getDescripition(): React.Node | null {
-    const { description } = this.props;
-    return description ? <Descripition>{description} </Descripition> : null;
+  getDetails(information: string): React.Node | null {
+    const { operation, title, description, content, children } = this.props;
+    const hasNoContent = !(content && children);
+    let details = '';
+    switch (information) {
+      case 'operation':
+        details = hasNoContent && operation ? <Operation>{operation}</Operation> : null;
+        break;
+      case 'title':
+        details = hasNoContent && title ? <Title>{title} </Title> : null;
+        break;
+      case 'description':
+        details = hasNoContent && description ? <Descripition>{description} </Descripition> : null;
+        break;
+      default:
+        break;
+    }
+    return details;
   }
   getContent(): React.Node | null {
-    const { content } = this.props;
-    return content ? content : null;
+    const { content, children } = this.props;
+    return content ? content : children ? children : null;
   }
   getImage() {
     const { image, getTheme } = this.props;
