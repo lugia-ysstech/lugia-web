@@ -48,6 +48,11 @@
       "desc": "整个卡片显示内容",
       "defaultValue": "undefined"
     },
+    "children": {
+      "type": "React.Node",
+      "desc": "卡片的children 可作为content显示,但优先于content显示",
+      "defaultValue": "undefined"
+    },
     "type": {
       "type": "CardType",
       "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格",

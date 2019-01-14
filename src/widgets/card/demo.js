@@ -152,6 +152,12 @@ export default () => {
           />
         </Wrapper>
       </Theme>
+      <p>children样式 </p>
+      <Wrapper>
+        <Card>
+          <div>children 样式的卡片</div>
+        </Card>
+      </Wrapper>
       <p>头像样式</p>
       <Theme config={avatar}>
         <Wrapper>

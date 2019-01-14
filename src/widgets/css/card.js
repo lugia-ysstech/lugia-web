@@ -9,7 +9,7 @@ import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { ObjectUtils } from '@lugia/type-utils';
 
-const { blackColor, darkGreyColor, superLightColor, defaultColor } = colorsFunc();
+const { blackColor, darkGreyColor, lightGreyColor, defaultColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
@@ -24,6 +24,7 @@ export type CardProps = {
   image: React.Node,
   avatar: React.Node,
   content: React.Node,
+  children?: React.Node,
   getTheme: Function,
   getThemeByDisplayName: Function,
   type: CardType,
@@ -106,7 +107,7 @@ export const getDescripitionColor = () => {
   return `color:${darkGreyColor};`;
 };
 export const getCardContainerBorder = () => {
-  return `border:${em(1)} solid ${superLightColor};`;
+  return `border:${em(1)} solid ${lightGreyColor};`;
 };
 export const getCardContainerBackground = () => {
   return `background: ${defaultColor};`;
