@@ -14,9 +14,11 @@ import FileInput from './fileInput';
 import { px2emcss } from '../css/units';
 import { isKeyInArray } from './upload';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
+import Widget from '../consts/index';
+import Theme from '../theme';
 import colorsFunc from '../css/stateColor';
 
-const { disableColor } = colorsFunc();
+const { disableColor, themeColor } = colorsFunc();
 
 const em = px2emcss(1.2);
 
@@ -81,12 +83,13 @@ const InputContent = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-  ${getDisabled}
   ${getclassNameStatus}
+  ${getDisabled}
 `;
 
 const Ul = styled.ul`
   width: 100%;
+  padding: 6px 0 0;
 `;
 
 const getLiStyle = props => {
@@ -144,7 +147,7 @@ const getButtonStatus = props => {
 const Button = styled.span`
   width: 60px;
   height: 30px;
-  background: #684fff;
+  background: ${themeColor};
   display: inline-block;
   border-radius: 0 4px 4px 0;
   float: right;
@@ -160,6 +163,7 @@ const PrevCon = styled.div`
   height: 15px;
   display: inline-block;
   position: relative;
+  vertical-align: middle;
 `;
 const PrevImg = styled.div`
   display: none;
@@ -168,11 +172,10 @@ const PrevImg = styled.div`
   top: 23px;
   width: 120px;
   height: 90px;
-  border: 1px solid #ccc;
   border-radius: 4px;
   padding: 4px;
   background: #fff;
-  box-shadow: 0 0 6px rgba(104, 79, 255, 0.2);
+  box-shadow: 0 0 6px rgba(51, 51, 51, 0.2);
   z-index: 10;
   & img {
     width: 100%;
@@ -273,7 +276,11 @@ const getPictureOrAreaViewDisabled = props => {
     cursor: not-allowed;
     & i {
       cursor: not-allowed;
+      color:#ccc;
     }
+    &:hover{
+    border: 1px dashed #999;
+  }
     `;
 };
 
@@ -307,8 +314,9 @@ const PictureView = styled.div`
   justify-content: center;
   align-items: center;
   padding: 6px;
-  margin: 10px;
   position: relative;
+  cursor: pointer;
+  margin: 10px 10px 10px 0;
   ${getPictureOrAreaViewDisabled}
   ${getPictureViewStatus}
   ${getPictureViewSizeCSS}
@@ -319,6 +327,18 @@ const PictureView = styled.div`
   }
 `;
 
+const isDragIn = props => {
+  const { dragIn } = props;
+  if (!dragIn) {
+    return '';
+  }
+  return `
+    border: 1px dashed ${themeColor};
+    transition: border 0.2s;
+  }
+    `;
+};
+
 const AreaView = styled.div`
   border: 1px dashed #999;
   border-radius: 4px;
@@ -326,7 +346,13 @@ const AreaView = styled.div`
   flex-flow: column wrap;
   justify-content: center;
   align-items: space-around;
+  color: #999;
+  &:hover {
+    border: 1px dashed ${themeColor};
+  }
+
   ${getPictureViewSizeCSS}
+  ${isDragIn}
   ${getPictureOrAreaViewDisabled}
 `;
 const AreaText = styled.div`
@@ -344,6 +370,7 @@ const getAreaTextBlueDisabled = props => {
   return `
     color: #ccc;
     border-bottom:none;
+     cursor:not-allowed;
     `;
 };
 
@@ -351,6 +378,7 @@ const AreaTextBlue = styled.span`
   color: #684fff;
   padding: 0 4px;
   border-bottom: 1px solid #684fff;
+  cursor: pointer;
   ${getAreaTextBlueDisabled}
 `;
 
@@ -462,7 +490,6 @@ const LoadIcon = styled(Icon)`
 
   ${AreaView} & {
     font-size: 55px;
-    color: #999;
   }
 
   ${PictureView} & {
@@ -539,6 +566,9 @@ export const getIconByType = (status: ?string, props?: Object = {}): ?Object | s
       </PrevCon>
     );
   }
+  if (status === 'area-loading') {
+    return <LoadIcon iconClass={iconClassMap.loading} active={true} />;
+  }
   return <LoadIcon iconClass={iconClassMap[status]} />;
 };
 
@@ -549,7 +579,7 @@ const getProgress = (item: Object) => {
     const { percent } = item;
     return (
       <ProgressCon>
-        <Progress size="small" percent={percent} />
+        <Progress percent={percent} />
       </ProgressCon>
     );
   }
@@ -596,6 +626,7 @@ type StateProps = {
   inputElement: Object,
   classNameStatus: string,
   defaultText: string,
+  dragIn: boolean,
 };
 
 class GetElement extends React.Component<DefProps, StateProps> {
@@ -615,8 +646,18 @@ class GetElement extends React.Component<DefProps, StateProps> {
       e.stopPropagation();
       e.preventDefault();
     };
-    addEventListener(dragDrop, 'dragover', stopPropagation);
-    addEventListener(dragDrop, 'dragleave', stopPropagation);
+    addEventListener(dragDrop, 'dragover', e => {
+      stopPropagation(e);
+      this.setState({
+        dragIn: true,
+      });
+    });
+    addEventListener(dragDrop, 'dragleave', e => {
+      stopPropagation(e);
+      this.setState({
+        dragIn: false,
+      });
+    });
 
     dragDrop.addEventListener('drop', function(e) {
       stopPropagation(e);
@@ -658,13 +699,20 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
   render() {
     const { showFileList, fileListDone, getTheme } = this.props;
+    const config = {
+      [Widget.Progress]: {
+        height: 2,
+      },
+    };
     return (
       <React.Fragment>
-        <Container theme={getTheme()}>{this.getElement()}</Container>
-        <React.Fragment>
-          {' '}
-          {showFileList ? getFileList(fileListDone, this.handleClickToDelete) : null}
-        </React.Fragment>
+        <Theme config={config}>
+          <Container theme={getTheme()}>{this.getElement()}</Container>
+          <React.Fragment>
+            {' '}
+            {showFileList ? getFileList(fileListDone, this.handleClickToDelete) : null}
+          </React.Fragment>
+        </Theme>
       </React.Fragment>
     );
   }
@@ -674,8 +722,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const { listType } = props;
     if (!listType) return;
     const { state } = this;
-    const { classNameStatus } = state;
-    const children = this.getChildren(listType, props, classNameStatus);
+    const { classNameStatus, dragIn } = state;
+    const children = this.getChildren(listType, props, classNameStatus, dragIn);
     const { inputId, disabled, accept, multiple } = props;
     const { getRegisterInput, getChangeInfo } = this;
     return (
@@ -693,7 +741,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     );
   };
 
-  getChildren(listType: string, props: DefProps, classNameStatus: string) {
+  getChildren(listType: string, props: DefProps, classNameStatus: string, dragIn: boolean) {
     let children;
     if (listType === 'default') {
       const { dropArea, handleClickToUpload } = this;
@@ -741,7 +789,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     }
     if (listType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
-      const { handleClickToUpload, handleClickToDelete } = this;
+      const { handleClickToUpload, handleClickToDelete, dropArea } = this;
       children = (
         <React.Fragment>
           {classNameStatus === 'done' &&
@@ -759,6 +807,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           <PictureView
             size={size}
             disabled={disabled}
+            innerRef={dropArea}
             status={multiple && classNameStatus === 'done' ? 'default' : classNameStatus}
             onClick={handleClickToUpload}
           >
@@ -783,11 +832,19 @@ class GetElement extends React.Component<DefProps, StateProps> {
           size={'bigger'}
           innerRef={dropArea}
           onClick={handleClickToUpload}
+          dragIn={dragIn}
+          classNameStatus={classNameStatus}
         >
-          {getIconByType('uploadcloud')}
-          <AreaText>
-            请将文件拖到此处,或<AreaTextBlue disabled={disabled}>点击上传</AreaTextBlue>
-          </AreaText>
+          {classNameStatus === 'loading'
+            ? getIconByType('area-' + classNameStatus)
+            : getIconByType('uploadcloud')}
+          {classNameStatus === 'loading' ? (
+            <AreaText>文件上传中...</AreaText>
+          ) : (
+            <AreaText>
+              请将文件拖到此处,或<AreaTextBlue disabled={disabled}>点击上传</AreaTextBlue>
+            </AreaText>
+          )}
         </AreaView>
       );
     }
