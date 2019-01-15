@@ -320,12 +320,12 @@ class Select extends React.Component<SelectProps, SelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
+
     return (
       <Theme config={getTheme(props, Widget.Menu)} key="select_theme">
         <SelectContainer>
           <Trigger
             popup={menu}
-            align="bottomLeft"
             key="trigger"
             ref={getMenuTriger}
             action={disabled ? [] : ['click']}
