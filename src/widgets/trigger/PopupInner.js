@@ -12,6 +12,12 @@ const getWidth = props => {
   const { width } = theme;
   return `width: ${width ? `${width}px;` : ';'}`;
 };
+
+const getZIndex = props => {
+  const { theme = {} } = props;
+  const { zIndex } = theme;
+  return zIndex ? `z-index: ${zIndex ? zIndex : ZIndex + 1};` : '';
+};
 const PopupInnerBox = VisibleBox.extend`
   position: absolute;
   ${getWidth} background-color: #fff;
@@ -20,7 +26,7 @@ const PopupInnerBox = VisibleBox.extend`
   box-sizing: border-box;
   left: -9999px;
   top: -9999px;
-  z-index: ${ZIndex + 1};
+  ${getZIndex}
 `;
 
 type PopupInnerProps = {
