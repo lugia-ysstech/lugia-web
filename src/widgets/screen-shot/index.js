@@ -4,86 +4,86 @@
  *
  * @flow
  */
-export { default as Upload } from './上传.png';
+export { default as upload } from './upload.png';
 
-export { default as Select } from './下拉菜单.png';
+export { default as Select } from './select.png';
 
-export { default as Divider } from './分割线.png';
+export { default as divider } from './divider.png';
 
-export { default as Pagination } from './分页.png';
+export { default as pagination } from './pagination.png';
 
-export { default as List } from './列表.png';
+export { default as list } from './list.png';
 
-export { default as Radio } from './单选框.png';
+export { default as radio } from './radio.png';
 
-export { default as Card } from './卡片.png';
+export { default as card } from './card.png';
 
-export { default as Affix } from './固钉.png';
+export { default as affix } from './affix.png';
 
-export { default as CheckBox } from './多选框.png';
+export { default as checkBox } from './checkBox.png';
 
-export { default as Avatar } from './头像.png';
+export { default as avatar } from './avatar.png';
 
-export { default as Modal } from './对话框.png';
+export { default as modal } from './modal.png';
 
-export { default as NavMenu } from './导航菜单.png';
+export { default as navMenu } from './navMenu.png';
 
-export { default as Badge } from './小红点.png';
+export { default as badge } from './badge.png';
 
-export { default as Switch } from './开关.png';
+export { default as switch } from './switch.png';
 
-export { default as Notification } from './弹窗提醒.png';
+export { default as notification } from './notification.png';
 
-export { default as Collapse } from './折叠面板.png';
+export { default as collapse } from './collapse.png';
 
-export { default as Drawer } from './抽屉.png';
+export { default as drawer } from './drawer.png';
 
-export { default as Button } from './按钮.png';
+export { default as button } from './button.png';
 
-export { default as Mention } from './提及.png';
+export { default as mention } from './mention.png';
 
-export { default as NumberInput } from './数字选择器.png';
+export { default as numberInput } from './numberInput.png';
 
-export { default as ToolTip } from './文字提醒.png';
+export { default as toolTip } from './toolTip.png';
 
-export { default as Calendar } from './日历.png';
+export { default as calendar } from './calendar.png';
 
-export { default as Timeline } from './时间轴.png';
+export { default as timeline } from './timeline.png';
 
-export { default as DatePicker } from './时间选择器.png';
+export { default as datePicker } from './datePicker.png';
 
-export { default as Tag } from './标签.png';
+export { default as tag } from './tag.png';
 
-export { default as Tabs } from './标签页.png';
+export { default as tabs } from './tabs.png';
 
-export { default as Tree } from './树形控件.png';
+export { default as tree } from './tree.png';
 
-export { default as TreeSelect } from './树选择.png';
+export { default as treeSelect } from './treeSelect.png';
 
-export { default as Steps } from './步骤条.png';
+export { default as steps } from './steps.png';
 
-export { default as Popover } from './气泡卡片.png';
+export { default as popover } from './popover.png';
 
-export { default as Slider } from './滑块.png';
+export { default as slider } from './slider.png';
 
-export { default as Transfer } from './穿梭框.png';
+export { default as transfer } from './transfer.png';
 
-export { default as AutoComplete } from './自动完成.png';
+export { default as autoComplete } from './autoComplete.png';
 
-export { default as Table } from './表格.png';
+export { default as table } from './table.png';
 
-export { default as Alert } from './警告信息.png';
+export { default as alert } from './alert.png';
 
-export { default as Rate } from './评分.png';
+export { default as rate } from './rate.png';
 
-export { default as Carousel } from './走马灯.png';
+export { default as carousel } from './carousel.png';
 
-export { default as Input } from './输入框.png';
+export { default as input } from './input.png';
 
-export { default as BackTop } from './返回顶部.png';
+export { default as backTop } from './backTop.png';
 
-export { default as Progress } from './进度条.png';
+export { default as progress } from './progress.png';
 
-export { default as Anchor } from './锚点.png';
+export { default as anchor } from './anchor.png';
 
-export { default as Breadcrumb } from './面包屑.png';
+export { default as breadcrumb } from './breadcrumb.png';
