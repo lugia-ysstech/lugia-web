@@ -36,3 +36,7 @@ export const ALink = styled.a`
     color: ${HoverDefaultColor};
   }
 `;
+
+export const BreadcrumbContainer = styled.div`
+  display: inline-block;
+`;

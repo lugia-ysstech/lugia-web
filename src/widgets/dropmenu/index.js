@@ -65,6 +65,11 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   render() {
     const { menus, children, action, hideAction, align } = this.props;
+
+    if (!children) {
+      return <DropMenuButton>下拉菜单</DropMenuButton>;
+    }
+
     const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
     const offsetY = this.getOffSetY(align);
     const queryInputWidth = width;

@@ -285,7 +285,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       return this.computeItems(children, start, end, (obj: Object) => obj);
     }
 
-    return [];
+    return [<Item key={'暂无数据'}>暂无数据</Item>];
   }
 
   getTheme() {

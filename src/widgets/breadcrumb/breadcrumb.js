@@ -7,6 +7,7 @@ import * as React from 'react';
 import { cloneElement } from 'react';
 import BreadcrumbItem from './breadcrumbItem';
 import { getHrefs, replaceStr } from '../common/StringUtils';
+import { BreadcrumbContainer } from '../css/breadcrumb';
 
 export type Route = {
   path: string,
@@ -21,7 +22,7 @@ export type RenderFunc = (
 
 export type BreadcrumbProps = {
   routes?: Array<Route>,
-  params?: any,
+  params?: Object,
   separator: string | React.Element<any>,
   renderItem?: RenderFunc,
   lastSeparator: string | React.Element<any>,
@@ -106,7 +107,19 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       routes,
       params = {},
       renderItem = defaultRenderItem,
+      children,
     } = this.props;
+
+    if (!routes && !children) {
+      crumbs = [
+        <BreadcrumbItem separator={separator}>首页</BreadcrumbItem>,
+        <BreadcrumbItem separator={separator}>一级面包屑</BreadcrumbItem>,
+        <BreadcrumbItem separator={separator}>二级面包屑</BreadcrumbItem>,
+        <BreadcrumbItem separator={''} isLastItem>
+          三级面包屑
+        </BreadcrumbItem>,
+      ];
+    }
 
     if (routes && routes.length > 0) {
       const breadCrumbItemConfig = this.getBreadCrumbItemConfig(routes, params);
@@ -114,7 +127,6 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       return renderItem(breadCrumbItemConfig, separator, lastSeparator);
     }
 
-    const { children } = this.props;
     if (Array.isArray(children)) {
       const childConfig = this.getChildConfig(children);
       const childrenPro = this.getBreadCrumbItemConfig(childConfig, params);
@@ -140,7 +152,6 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
           key: 'one',
         }));
     }
-
-    return <div>{crumbs}</div>;
+    return <BreadcrumbContainer>{crumbs}</BreadcrumbContainer>;
   }
 }
