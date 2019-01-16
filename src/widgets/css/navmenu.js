@@ -155,8 +155,8 @@ const getTitleWrapPadding = props => {
   const { pos } = props;
   const num = pos.split('-').length - 2;
   return num
-    ? `padding: 0 ${px2emcss(1.4)(40)} 0 ${px2emcss(1.4)(num * 10)}`
-    : `padding: 0 ${px2emcss(1.6)(40)} 0 ${px2emcss(1.6)(num * 10)}`;
+    ? `padding: 0 ${px2emcss(1.4)(40)} 0 ${px2emcss(1.4)(10 + num * 10)}`
+    : `padding: 0 ${px2emcss(1.6)(40)} 0 ${px2emcss(1.6)(10 + num * 10)}`;
 };
 
 const getFontSize = props => {
@@ -214,7 +214,7 @@ const getSelectedBackground = props => {
 const getTitleSpanHeight = props => {
   const { pos } = props;
   const num = pos.split('-').length - 2;
-  return num ? px2emcss(1.4)(40) : px2emcss(1.6)(40);
+  return num ? px2emcss(1.4)(32) : px2emcss(1.6)(32);
 };
 
 export const TitleSpan = styled.span`
