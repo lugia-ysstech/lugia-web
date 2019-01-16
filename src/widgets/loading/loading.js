@@ -14,8 +14,6 @@ import {
 } from './styled';
 import Icon from '../icon/index';
 import colorsFunc from '../css/stateColor';
-import Widgets from '../consts/index';
-import Theme from '../theme/index';
 export const { themeColor } = colorsFunc();
 type PropsCheck = {
   width?: number,
@@ -28,25 +26,20 @@ type PropsCheck = {
   icon?: string,
   iconClass?: string,
   time?: number,
+  loading?: boolean,
+  children?: any,
 };
 type StateCheck = {
   width?: number,
   color?: string,
   scale?: boolean,
   isLoading: boolean,
+  loading: boolean,
 };
 LodingWrapper.displayName = 'divs';
 class Loading extends React.Component<PropsCheck, StateCheck> {
-  constructor() {
-    super();
-    this.state = {
-      width: 100,
-      children: [],
-      isLoading: false,
-    };
-  }
   static getDerivedStateFromProps(props: PropsCheck, state: StateCheck) {
-    let { scale, getTheme, size } = props;
+    let { scale, getTheme, size, loading = true } = props;
     const theme = getTheme && getTheme();
     let { color, width } = theme;
     width = width ? width : size === 'large' ? 100 : size === 'small' ? 36 : 64;
@@ -58,26 +51,38 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
       width,
       color,
       scale,
-      isLoading: state && state.isLoading,
+      isLoading: state ? state.isLoading : false,
+      loading,
     };
   }
+  delayFun = (props: Object, callback) => {
+    const { delay } = props;
+    const newDelay = delay * 1000;
+    setTimeout(function() {
+      callback(true);
+    }, newDelay);
+  };
+  componentDidUpdate(nextProps: PropsCheck, nextState: StateCheck) {
+    const { delay } = this.props;
+    if (nextProps.loading !== this.props.loading) {
+      const { loading } = this.props;
+      loading &&
+        delay &&
+        this.delayFun(this.props, (isLoading: boolean) => {
+          this.setState({ isLoading });
+        });
+    }
+  }
   componentDidMount() {
-    const delayFun = (props: Object, callback) => {
-      const { delay } = props;
-      const newDelay = delay * 1000;
-      let isLoading = false;
-      setTimeout(function() {
-        isLoading = true;
-        callback(isLoading);
-      }, newDelay);
-    };
+    const { loading } = this.state;
     this.props.delay &&
-      delayFun(this.props, (isLoading: boolean) => {
+      loading &&
+      this.delayFun(this.props, (isLoading: boolean) => {
         this.setState({ isLoading });
       });
   }
   render() {
-    const { scale, color, width = 0, isLoading } = this.state;
+    const { scale, color, width = 0, isLoading, loading } = this.state;
     const { iconClass, time = 3, tip, delay } = this.props;
     //loading的直径和圆点直径比例为8：1；后改为6:1
     let circleDiameter = Math.round(width / 6);
@@ -108,17 +113,22 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
       </IconLoading>
     );
     const Children = this.props.children;
-    const hasChildren = !!Children;
+    const hasChildren = delay ? !!Children && loading && isLoading : !!Children && loading;
     const showTips = delay ? isLoading && tip : tip;
+    const isShowLoading = delay ? loading && isLoading : loading;
     return (
       <LoadingFatherBox hasChildren={hasChildren}>
         {Children}
-        <LodingBox hasChildren={hasChildren}>
-          <LodingWrapper width={width} tip={tip}>
-            {iconClass ? iconBox : delay && !isLoading ? '' : children}
-          </LodingWrapper>
-          {showTips ? <LoadingTip color={color}>{tip}</LoadingTip> : ''}
-        </LodingBox>
+        {!isShowLoading ? (
+          ''
+        ) : (
+          <LodingBox hasChildren={hasChildren}>
+            <LodingWrapper width={width} tip={tip}>
+              {iconClass ? iconBox : delay && !isLoading ? '' : children}
+            </LodingWrapper>
+            {showTips ? <LoadingTip color={color}>{tip}</LoadingTip> : ''}
+          </LodingBox>
+        )}
       </LoadingFatherBox>
     );
   }
