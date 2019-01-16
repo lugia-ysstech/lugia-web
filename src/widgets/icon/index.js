@@ -42,7 +42,7 @@ class Icon extends React.Component<IconProps> {
   };
 
   render() {
-    const { iconClass, onClick, getTheme, className = '' } = this.props;
+    const { iconClass = 'lugia-icon-logo_lugia', onClick, getTheme, className = '' } = this.props;
     return <IconTag className={`${iconClass} ${className}`} onClick={onClick} theme={getTheme()} />;
   }
 }
