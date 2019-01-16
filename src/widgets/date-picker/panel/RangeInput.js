@@ -19,6 +19,7 @@ type TypeProps = {
   readOnly?: boolean,
   placeholder: Array<string>,
   theme: Object,
+  mode?: string,
 };
 type TypeState = {
   value: Array<string>,

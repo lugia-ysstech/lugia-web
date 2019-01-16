@@ -61,7 +61,7 @@ export const Wrap = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 99999;
 `;
 const getAnimate = (props: CSSProps) => {
   const { closing, opening } = props;
@@ -93,7 +93,7 @@ export const ModalMask = styled.div`
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.65);
-  z-index: 1000;
+  z-index: 99999;
   ${getAnimate};
 `;
 export const ModalWrap = styled.div`
@@ -102,7 +102,7 @@ export const ModalWrap = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 99999;
 `;
 
 export const Modal = styled.div`
@@ -112,7 +112,7 @@ export const Modal = styled.div`
   width: ${em(520)};
   top: ${em(100)};
   margin: 0 auto;
-  z-index: 1000;
+  z-index: 99999;
   ${getAnimate};
 `;
 export const ModalContent = styled.div`
