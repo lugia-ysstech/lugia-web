@@ -14,7 +14,7 @@ export { default as Pagination } from './分页.png';
 
 export { default as List } from './列表.png';
 
-export { default as Check } from './单选框.png';
+export { default as Radio } from './单选框.png';
 
 export { default as Card } from './卡片.png';
 
