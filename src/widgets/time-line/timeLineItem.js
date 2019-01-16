@@ -16,7 +16,7 @@ import { ObjectUtils } from '@lugia/type-utils';
 import {
   getLineDisplay,
   getDirection,
-  getContainerHeight,
+  getItemContainerHeight,
   getDotBackground,
   getDotSize,
   getDotLeft,
@@ -39,7 +39,7 @@ const em = px2emcss(1.2);
 
 const ItemContainer = styled.div`
   position: relative;
-  ${getContainerHeight};
+  ${getItemContainerHeight};
   width: 100%;
 `;
 const BaseText = styled.div`
