@@ -11,12 +11,13 @@ import Widget from '../consts/index';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
-import { getFlexDirection } from '../css/steps';
+import { getFlexDirection, getWidth } from '../css/steps';
 import type { AlignType, StepType, OrientationType, SizeType } from '../css/steps';
 
 const OutContainer = styled.div`
   display: inline-block;
   position: relative;
+  ${getWidth}
 `;
 OutContainer.displayName = Widget.TabsContainer;
 
