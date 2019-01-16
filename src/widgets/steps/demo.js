@@ -71,7 +71,9 @@ class StepsDemo extends React.Component<Object, Object> {
             </Button>
           </ButtonContainer>
           <Steps currentStepNumber={currentStepNumber} stepType={'simple'} size={'normal'}>
-            {steps.map((item, i) => <Step title={item.title} />)}
+            {steps.map((item, i) => (
+              <Step title={item.title} />
+            ))}
           </Steps>
           <StepContent>{content}</StepContent>
         </Theme>
@@ -91,11 +93,7 @@ const VWrapper = styled.div`
 `;
 const view = {
   [Widget.Steps]: {
-    width: 1000,
-  },
-  [Widget.Step]: {
-    width: 350,
-    height: 100,
+    width: 600,
   },
 };
 export default () => {

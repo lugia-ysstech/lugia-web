@@ -12,10 +12,12 @@ import Widget from '../consts/index';
 
 import ThemeProvider from '../theme-provider';
 import type { TimeLineMode } from '../css/time-line';
+import { getContainerHeight } from '../css/time-line';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
 
 const OutContainer = styled.div`
+  ${getContainerHeight};
   width: ${em(20)};
 `;
 type TimeLineState = {};

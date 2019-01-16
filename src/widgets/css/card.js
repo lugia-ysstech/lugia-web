@@ -102,7 +102,7 @@ export const getOutContainerDirection = (props: Object) => {
 export const getTitleColor = () => {
   return `color:${blackColor};`;
 };
-export const getFontWeight = props => {
+export const getFontWeight = (props: Object) => {
   const { type } = props;
   return type === 'tip' ? 'font-weight: 700;' : '500';
 };
@@ -112,8 +112,11 @@ export const getDescripitionColor = () => {
 export const getCardContainerBorder = () => {
   return `border:${em(1)} solid ${lightGreyColor};`;
 };
-export const getCardContainerBackground = () => {
-  return `background: ${defaultColor};`;
+export const getCardContainerBackground = (props: Object) => {
+  const { theme } = props;
+  const { backgroundColor } = theme;
+  const theBackgroundColor = backgroundColor ? backgroundColor : defaultColor;
+  return `background: ${theBackgroundColor};`;
 };
 export const getTipLineBackground = () => {
   return `background: ${themeColor};`;
@@ -129,10 +132,10 @@ export const getContentMargin = (props: Object) => {
   const { type, imageOrientation } = props;
   const left =
     type === 'tip'
-      ? '30'
+      ? 30
       : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
-      ? ''
-      : '16';
+      ? 0
+      : 16;
   return `margin-left: ${em(left)}`;
 };
 export const getAvatarMargin = (props: Object) => {

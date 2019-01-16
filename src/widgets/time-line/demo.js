@@ -11,6 +11,7 @@ import Theme from '../theme/';
 import Icon from '../icon/';
 import Button from '../button/';
 import styled from 'styled-components';
+import Widget from '../consts/index';
 
 class TimeLinePending extends React.Component<Object, Object> {
   state = {
@@ -46,6 +47,9 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 const view = {
+  [Widget.TimeLine]: {
+    height: 300,
+  },
   long: {
     height: 100,
   },
@@ -155,7 +159,7 @@ export const SimpleDemo = () => {
             <TimeLineItem time="2018-01-05" description={'description555'} />
           </TimeLine>
         </Wrapper>
-        <TimeLinePending />,
+        <TimeLinePending />
       </div>
     </Theme>
   );
