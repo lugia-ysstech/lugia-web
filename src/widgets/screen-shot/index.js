@@ -4,86 +4,86 @@
  *
  * @flow
  */
-export { default as upload } from './upload.png';
+export { default as Upload } from './upload.png';
 
 export { default as Select } from './select.png';
 
-export { default as divider } from './divider.png';
+export { default as Divider } from './divider.png';
 
-export { default as pagination } from './pagination.png';
+export { default as Pagination } from './pagination.png';
 
-export { default as list } from './list.png';
+export { default as List } from './list.png';
 
-export { default as radio } from './radio.png';
+export { default as Radio } from './radio.png';
 
-export { default as card } from './card.png';
+export { default as Card } from './card.png';
 
-export { default as affix } from './affix.png';
+export { default as Affix } from './affix.png';
 
-export { default as checkBox } from './checkBox.png';
+export { default as CheckBox } from './checkBox.png';
 
-export { default as avatar } from './avatar.png';
+export { default as Avatar } from './avatar.png';
 
-export { default as modal } from './modal.png';
+export { default as Modal } from './modal.png';
 
-export { default as navMenu } from './navMenu.png';
+export { default as NavMenu } from './navMenu.png';
 
-export { default as badge } from './badge.png';
+export { default as Badge } from './badge.png';
 
-export { default as switch } from './switch.png';
+export { default as Switch } from './switch.png';
 
-export { default as notification } from './notification.png';
+export { default as Notification } from './notification.png';
 
-export { default as collapse } from './collapse.png';
+export { default as Collapse } from './collapse.png';
 
-export { default as drawer } from './drawer.png';
+export { default as Drawer } from './drawer.png';
 
-export { default as button } from './button.png';
+export { default as Button } from './button.png';
 
-export { default as mention } from './mention.png';
+export { default as Mention } from './mention.png';
 
-export { default as numberInput } from './numberInput.png';
+export { default as NumberInput } from './numberInput.png';
 
-export { default as toolTip } from './toolTip.png';
+export { default as ToolTip } from './toolTip.png';
 
-export { default as calendar } from './calendar.png';
+export { default as Calendar } from './calendar.png';
 
-export { default as timeline } from './timeline.png';
+export { default as Timeline } from './timeline.png';
 
-export { default as datePicker } from './datePicker.png';
+export { default as DatePicker } from './datePicker.png';
 
-export { default as tag } from './tag.png';
+export { default as Tag } from './tag.png';
 
-export { default as tabs } from './tabs.png';
+export { default as Tabs } from './tabs.png';
 
-export { default as tree } from './tree.png';
+export { default as Tree } from './tree.png';
 
-export { default as treeSelect } from './treeSelect.png';
+export { default as TreeSelect } from './treeSelect.png';
 
-export { default as steps } from './steps.png';
+export { default as Steps } from './steps.png';
 
-export { default as popover } from './popover.png';
+export { default as Popover } from './popover.png';
 
-export { default as slider } from './slider.png';
+export { default as Slider } from './slider.png';
 
-export { default as transfer } from './transfer.png';
+export { default as Transfer } from './transfer.png';
 
-export { default as autoComplete } from './autoComplete.png';
+export { default as AutoComplete } from './autoComplete.png';
 
-export { default as table } from './table.png';
+export { default as Table } from './table.png';
 
-export { default as alert } from './alert.png';
+export { default as Alert } from './alert.png';
 
-export { default as rate } from './rate.png';
+export { default as Rate } from './rate.png';
 
-export { default as carousel } from './carousel.png';
+export { default as Carousel } from './carousel.png';
 
-export { default as input } from './input.png';
+export { default as Input } from './input.png';
 
-export { default as backTop } from './backTop.png';
+export { default as BackTop } from './backTop.png';
 
-export { default as progress } from './progress.png';
+export { default as Progress } from './progress.png';
 
-export { default as anchor } from './anchor.png';
+export { default as Anchor } from './anchor.png';
 
-export { default as breadcrumb } from './breadcrumb.png';
+export { default as Breadcrumb } from './breadcrumb.png';
