@@ -16,11 +16,12 @@ import {
   PreButton,
   SwitchIcon,
   Wrap,
+  Empty,
+  defaultWidth,
+  defaultHeight,
 } from '../css/carousel';
 import { limit } from '../common/Math';
 
-const defaultWidth = 400;
-const defaultHeight = 200;
 const defaultDelay = 4000;
 const defaultAnimationTime = 500;
 type IndicatorType = 'horizontal' | 'vertical' | 'outside';
@@ -250,7 +251,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   getItems = () => {
     const { children, switchType } = this.props;
     if (!children || children.length === 0) {
-      return null;
+      return <Empty>暂无切换框</Empty>;
     }
     const { start: nextStart } = this.state;
     const { start: initStart } = this.props;

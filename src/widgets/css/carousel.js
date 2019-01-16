@@ -11,6 +11,9 @@ import colorsFunc from '../css/stateColor';
 const { lightGreyColor, mediumGreyColor, defaultColor } = colorsFunc();
 const em = px2emcss(FontSizeNumber);
 
+export const defaultWidth = 400;
+export const defaultHeight = 200;
+
 type CarouselProps = {
   getTheme?: Function,
   start?: number,
@@ -288,4 +291,15 @@ export const ItemWrap = styled.div`
   transition: opacity ${getAnimationTime};
   overflow: hidden;
   vertical-align: top;
+`;
+
+export const Empty = styled.div`
+  display: block;
+  width: ${px2emcss(1.4)(defaultWidth)};
+  height: ${px2emcss(1.4)(defaultHeight)};
+  line-height: ${px2emcss(1.4)(defaultHeight)};
+  text-align: center;
+  background: #161651;
+  color: #fff;
+  font-size: 14px;
 `;
