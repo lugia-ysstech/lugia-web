@@ -346,8 +346,8 @@ class Slider extends Component<TypeProps, TypeState> {
     const {
       rangeW = styleSlider.width || 300,
       rangeH = styleSlider.height || 6,
-      btnWidth = (styleSliderButton && styleSliderButton.width) || 20,
-      btnHeight = (styleSliderButton && styleSliderButton.height) || 20,
+      btnWidth = (styleSliderButton && styleSliderButton.width) || 16,
+      btnHeight = (styleSliderButton && styleSliderButton.height) || 16,
     } = this.props;
 
     const { value, index, moveValue, minValue, maxValue, marksKeys, marks, isInBall } = this.state;
