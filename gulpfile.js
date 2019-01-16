@@ -27,6 +27,7 @@ gulp.task('font', () => {
     'src/widgets/**/*.ttf',
     'src/widgets/**/*.eot',
     'src/widgets/**/*.svg',
+    'src/widgets/**/*.png',
     'src/widgets/**/*.woff',
     'src/widgets/**/*.woff2',
   ])
