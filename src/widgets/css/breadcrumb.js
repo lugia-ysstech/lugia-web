@@ -37,8 +37,6 @@ export const ALink = styled.a`
   }
 `;
 
-export const EmptyBreadcrumb = styled.div`
+export const BreadcrumbContainer = styled.div`
   display: inline-block;
-  width: ${em(50)};
-  height: ${em(32)};
 `;

@@ -7,7 +7,7 @@ import * as React from 'react';
 import { cloneElement } from 'react';
 import BreadcrumbItem from './breadcrumbItem';
 import { getHrefs, replaceStr } from '../common/StringUtils';
-import { EmptyBreadcrumb } from '../css/breadcrumb';
+import { BreadcrumbContainer } from '../css/breadcrumb';
 
 export type Route = {
   path: string,
@@ -111,7 +111,14 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
     } = this.props;
 
     if (!routes && !children) {
-      crumbs = <EmptyBreadcrumb />;
+      crumbs = [
+        <BreadcrumbItem separator={separator}>首页</BreadcrumbItem>,
+        <BreadcrumbItem separator={separator}>一级面包屑</BreadcrumbItem>,
+        <BreadcrumbItem separator={separator}>二级面包屑</BreadcrumbItem>,
+        <BreadcrumbItem separator={''} isLastItem>
+          三级面包屑
+        </BreadcrumbItem>,
+      ];
     }
 
     if (routes && routes.length > 0) {
@@ -145,7 +152,6 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
           key: 'one',
         }));
     }
-
-    return <div>{crumbs}</div>;
+    return <BreadcrumbContainer>{crumbs}</BreadcrumbContainer>;
   }
 }
