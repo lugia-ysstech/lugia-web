@@ -36,3 +36,9 @@ export const ALink = styled.a`
     color: ${HoverDefaultColor};
   }
 `;
+
+export const EmptyBreadcrumb = styled.div`
+  display: inline-block;
+  width: ${em(50)};
+  height: ${em(32)};
+`;
