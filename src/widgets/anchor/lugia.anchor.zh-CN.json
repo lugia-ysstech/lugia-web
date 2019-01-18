@@ -22,10 +22,15 @@
       "type": "SlideType",
       "desc": "分割线样式",
       "defaultValue": "circle"
+    },
+    "slideLine": {
+      "type": "boolean",
+      "desc": "是否展示分割线",
+      "defaultValue": "true"
     }
   },
   "type": {
-    "SlideType": ["circle", "line", "none"]
+    "SlideType": ["circle", "line"]
   },
   "category": ["其他"]
 }

@@ -81,16 +81,22 @@ export default ThemeProvider(
     }
 
     render() {
-      const { affix = true, offsetTop = 0, children, slideType = 'circle' } = this.props;
+      const {
+        affix = true,
+        offsetTop = 0,
+        children,
+        slideType = 'circle',
+        slideLine = true,
+      } = this.props;
       const { activeLink } = this.state;
       let index;
       if (activeLink) {
         index = this.links ? this.links.indexOf(activeLink) : 0;
       }
       const element = (
-        <Anchor slideType={slideType}>
+        <Anchor slideType={slideType} slideLine={slideLine}>
           {children}
-          {slideType === 'none' ? null : <Circle slideType={slideType} index={index} />}
+          <Circle slideType={slideType} index={index} />
         </Anchor>
       );
       return (

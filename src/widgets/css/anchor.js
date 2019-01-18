@@ -11,7 +11,8 @@ export type AnchorProps = {
   children: any,
   affix?: boolean,
   offsetTop?: number,
-  slideType?: 'circle' | 'line' | 'none',
+  slideType?: 'circle' | 'line',
+  slideLine?: boolean,
 };
 export type AnchorState = {
   activeLink: string,
@@ -19,6 +20,7 @@ export type AnchorState = {
 type CSSProps = {
   index?: number,
   slideType: 'circle' | 'line',
+  slideLine: boolean,
 };
 
 const FontSize = 1.2;
@@ -26,9 +28,9 @@ const em = px2emcss(FontSize);
 const { themeColor } = colorsFunc();
 
 const getAnchorBorder = (props: CSSProps) => {
-  const { slideType } = props;
-  if (slideType !== 'none') {
-    return `border-left: ${em(2)} solid #e8e8e8;`;
+  const { slideLine = true } = props;
+  if (slideLine) {
+    return `border-left: ${em(1)} solid #e8e8e8;`;
   }
 };
 export const Anchor = styled.div`
@@ -75,7 +77,7 @@ const getCircleCSS = (props: CSSProps) => {
 export const Circle = styled.div`
   position: absolute;
   ${getCircleCSS};
-  left: -${em(1)};
+  left: -${em(0.5)};
   ${getTop};
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
