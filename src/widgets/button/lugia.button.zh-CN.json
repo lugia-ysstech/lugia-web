@@ -65,14 +65,13 @@
     "ButtonShape": ["default", "round"],
     "ButtonType": ["default", "primary", "success", "warning", "danger"],
     "ButtonSize": ["default", "small", "large"],
-    "MarginType": ["number", "Object"],
     "ButtonStyle": {
       "width": {
         "type": "number",
         "desc": "组件宽度"
       },
       "margin": {
-        "type": "MarginType",
+        "type": "number | Object",
         "desc": "组件外间距"
       },
       "color": {

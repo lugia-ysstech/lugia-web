@@ -9,12 +9,12 @@
       "defaultValue": "undefined"
     },
     "activeValue": {
-      "type": "CollapseActiveType",
+      "type": "string | string[]",
       "desc": "当前展开面板的 value值 或者 value 集合",
       "defaultValue": "undefined"
     },
     "defaultActiveValue": {
-      "type": "CollapseActiveType",
+      "type": "string | string[]",
       "desc": "初始时展开面板的 value值 或者 value 集合",
       "defaultValue": "undefined"
     },
@@ -47,7 +47,6 @@
     }
   },
   "type": {
-    "CollapseActiveType": ["string", "string[]"],
     "CollapseStyle": {
       "width": {
         "type": "number",
@@ -59,5 +58,5 @@
       }
     }
   },
-  "category": ["数据录入"]
+  "category": ["数据展示"]
 }

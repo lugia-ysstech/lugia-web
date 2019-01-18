@@ -32,5 +32,5 @@
   "type": {
     "PlacementType": ["topRight", "bottomLeft", "bottomRight", "topLeft"]
   },
-  "category": ["数据录入"]
+  "category": ["反馈"]
 }
