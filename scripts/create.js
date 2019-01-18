@@ -23,24 +23,28 @@ const Invalid = [
   'trigger',
   'utils',
 ];
+const fileRelativePath = '../src/widgets';
 createDesignInfo();
 
 function getPath(folderName) {
   return path.join(__dirname, folderName);
 }
+function getTargetPath() {
+  return path.join(__dirname, fileRelativePath);
+}
 async function getFolderNames() {
   return fs
-    .readdirSync(__dirname)
+    .readdirSync(getTargetPath())
     .filter(folderName => Invalid.indexOf(folderName) === -1 && folderName.indexOf('.') === -1);
 }
 function loadMeta(folderName) {
-  return require(`./${folderName}/lugia.${folderName}.zh-CN.json`);
+  return require(`${fileRelativePath}/${folderName}/lugia.${folderName}.zh-CN.json`);
 }
 async function getDemoFolderNames(allPathFile, cb) {
   const res = [];
   for (let index = 0; index < allPathFile.length; index++) {
     const folderName = allPathFile[index];
-    const stats = await fs.statSync(getPath(folderName));
+    const stats = await fs.statSync(getTargetPath());
     const pos = index + 1;
     if (stats.isDirectory()) {
       res.push(folderName);
@@ -87,7 +91,7 @@ async function createDesignInfo() {
 
     try {
       const designData = getComponent(widgetNames) + 'export default { ' + designInfo + ' };';
-      const designPath = getPath('designInfo.js');
+      const designPath = getPath('../src/widgets/designInfo.js');
       await fs.writeFileSync(designPath, designData);
     } catch (err) {
       console.log('写入文件 designInfo 失败  X');
@@ -101,7 +105,7 @@ async function createDesignInfo() {
 function joinChildrenwidgetName(targetObject, targetWidgetNames, folderName, childrenWidget) {
   if (childrenWidget && childrenWidget.length > 0) {
     childrenWidget.forEach(item => {
-      const childrenMeta = require(`./${folderName}/lugia.${item}.zh-CN.json`);
+      const childrenMeta = require(`${fileRelativePath}/${folderName}/lugia.${item}.zh-CN.json`);
       const { widgetName } = childrenMeta;
       //todo: 子组件导出形式全部更改后，可放开代码；否则报错；
       // targetWidgetNames.push(widgetName);

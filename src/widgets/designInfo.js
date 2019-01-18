@@ -206,7 +206,7 @@ export default {
         },
         slideType: { type: 'SlideType', desc: '分割线样式', defaultValue: 'circle' },
       },
-      type: { SlideType: ['circle', 'line', 'none'] },
+      type: { SlideType: ['circle', 'line'] },
       category: ['其他'],
     },
     target: Anchor,
