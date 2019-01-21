@@ -21,14 +21,13 @@
   },
   "type": {
     "LayoutDirectionType": ["row", "column"],
-    "MarginType": ["number", "Object"],
     "LayoutStyle": {
       "width": {
         "type": "number",
         "desc": "Layout 宽度"
       },
       "margin": {
-        "type": "MarginType",
+        "type": "number | Object",
         "desc": "Layout 间距"
       }
     }

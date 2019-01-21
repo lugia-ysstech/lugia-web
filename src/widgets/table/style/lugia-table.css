@@ -12,7 +12,7 @@
   border-collapse: collapse;
 }
 :global(.lugia-table-linear .rc-table-body table thead) {
-    border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
 }
 :global(.lugia-table-bordered .rc-table-body table) {
   border-collapse: collapse;
@@ -29,5 +29,8 @@
   border-collapse: collapse;
 }
 :global(.rc-table tr:hover) {
-  background: rgba(77, 99, 255, .05);
+  background: rgba(77, 99, 255, 0.05);
+}
+:global(.rc-table-expanded-row td) {
+  padding: 16px 20px;
 }

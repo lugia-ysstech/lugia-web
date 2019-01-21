@@ -19,7 +19,7 @@
       "defaultValue": "undefined"
     },
     "gutter": {
-      "type": "GutterType",
+      "type": "number | Object",
       "desc": "栅格之间的间隔，可写为 number 格式 或支持响应式 对象写法：{xs: 8,sm: 16,md: 24}",
       "defaultValue": "undefined"
     }
@@ -27,8 +27,7 @@
   "type": {
     "RowType": ["flex", "default"],
     "JustifyType": ["start", "end", "center", "spaceAround", "spaceBetween"],
-    "AlignType": ["top", "middle", "bottom"],
-    "GutterType": ["number", "Object"]
+    "AlignType": ["top", "middle", "bottom"]
   },
   "category": ["布局"]
 }

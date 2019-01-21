@@ -10,7 +10,7 @@ exports[`Anchor css 1`] = `
   font-size: 1.2rem;
   position: relative;
   background-color: #fff;
-  border-left: 0.16666666666666669em solid #e8e8e8;
+  border-left: 0.08333333333333334em solid #e8e8e8;
   box-sizing: border-box;
   padding-bottom: 0.5em;
 }
@@ -19,24 +19,12 @@ exports[`Anchor css 1`] = `
   padding-top: 0.5em;
 }
 
-.c9 {
-  font-size: 1.2rem;
-  position: relative;
-  background-color: #fff;
-  box-sizing: border-box;
-  padding-bottom: 0.5em;
-}
-
-.c9 > div:first-child {
-  padding-top: 0.5em;
-}
-
 .c5 {
   position: absolute;
   width: 0.6666666666666667em;
   height: 0.6666666666666667em;
   border-radius: 8px;
-  left: -0.08333333333333334em;
+  left: -0.04166666666666667em;
   display: none;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -49,7 +37,7 @@ exports[`Anchor css 1`] = `
   position: absolute;
   width: 0.16666666666666669em;
   height: 2em;
-  left: -0.08333333333333334em;
+  left: -0.04166666666666667em;
   display: none;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -75,7 +63,7 @@ exports[`Anchor css 1`] = `
 }
 
 .c4:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c4:focus {
@@ -279,7 +267,7 @@ exports[`Anchor css 1`] = `
     className="c8"
   >
     <div
-      className="c9"
+      className="c2"
     >
       <div
         className="c3"
@@ -347,6 +335,9 @@ exports[`Anchor css 1`] = `
           anchor-link4
         </a>
       </div>
+      <div
+        className="c7"
+      />
     </div>
   </div>
   <div

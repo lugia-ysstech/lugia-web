@@ -43,7 +43,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "cover": "node scripts/test.js --env=jsdom  --coverage",
     "clean": "npx shx rm -rf dist/ interface/ npm-shrinkwrap.all.json",
-    "dist": "npm run clean && npx cross-env BABEL_ENV=production gulp"
+    "dist": "npm run clean && npx cross-env BABEL_ENV=production gulp && node scripts/create.js"
   },
   "devDependencies": {
     "@lugia/jverify": "1.0.6",
