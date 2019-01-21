@@ -51,35 +51,35 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
       width,
       color,
       scale,
-      isLoading: state ? state.isLoading : false,
+      isLoading: state && loading ? state.isLoading : false,
       loading,
     };
   }
-  delayFun = (props: Object, callback) => {
-    const { delay } = props;
+  delayFun = (delay: Object, callback: Function) => {
     const newDelay = delay * 1000;
     setTimeout(function() {
       callback(true);
     }, newDelay);
   };
+  delayCallback = (props: Object) => {
+    const { loading, delay } = props;
+    loading &&
+      delay &&
+      this.delayFun(delay, (isLoading: boolean) => {
+        this.setState({ isLoading });
+      });
+  };
   componentDidUpdate(nextProps: PropsCheck, nextState: StateCheck) {
-    const { delay } = this.props;
     if (nextProps.loading !== this.props.loading) {
-      const { loading } = this.props;
-      loading &&
-        delay &&
-        this.delayFun(this.props, (isLoading: boolean) => {
-          this.setState({ isLoading });
-        });
+      this.delayCallback(this.props);
     }
   }
   componentDidMount() {
-    const { loading } = this.state;
-    this.props.delay &&
-      loading &&
-      this.delayFun(this.props, (isLoading: boolean) => {
-        this.setState({ isLoading });
-      });
+    const newProps = {
+      loading: this.state.loading,
+      delay: this.props.delay,
+    };
+    this.delayCallback(newProps);
   }
   render() {
     const { scale, color, width = 0, isLoading, loading } = this.state;
