@@ -31,10 +31,18 @@ import { ObjectUtils } from '@lugia/type-utils';
 import { px2emcss } from '../css/units';
 
 const em = px2emcss(1.2);
-
+const getPos = props => {
+  const { theme } = props;
+  const { left, top } = theme;
+  if (left !== undefined && top !== undefined) {
+    return `left: ${left}px; top: ${top}px`;
+  }
+  return '';
+};
 const CardOutContainer = styled.div`
   position: relative;
   display: flex;
+  ${getPos}
   ${getCardContainerSize};
   ${getCardContainerShadow};
   ${getCardContainerBorder};
