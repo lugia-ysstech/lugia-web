@@ -40,6 +40,7 @@ import {
   vContainerHeight,
   WindowMarginLeft,
   YtabsHeight,
+  getContainerPadding,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -199,7 +200,7 @@ const HTabsOutContainer = styled.div`
   position: relative;
   ${getContainerBorder};
   background: ${backgroundColor};
-  padding: 0 ${em(24)};
+  ${getContainerPadding};
   margin: ${em(20)} 0;
   z-index: 99;
 `;
@@ -209,7 +210,7 @@ const VTabsOutContainer = styled.div`
   ${getContainerBorder};
   display: inline-block;
   position: relative;
-  padding: ${em(24)} 0;
+  ${getContainerPadding};
   box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
@@ -224,6 +225,41 @@ const PageIcon: Object = styled(Icon)`
   ${getCursor};
 `;
 PageIcon.displayName = 'page';
+
+const defaultData = [
+  {
+    title: 'Tab1',
+    content: 'content of Tab1',
+  },
+  {
+    title: 'Tab2',
+    content: 'content of Tab2',
+  },
+  {
+    title: 'Tab3',
+    content: 'content of Tab3',
+  },
+  // {
+  //   title: 'Tab4',
+  //   content: 'content of Tab4'
+  // },
+  // {
+  //   title: 'Tab5',
+  //   content: 'content of Tab5'
+  // },
+  // {
+  //   title: 'Tab6',
+  //   content: 'content of Tab6'
+  // },
+  // {
+  //   title: 'Tab7',
+  //   content: 'content of Tab7'
+  // },
+  // {
+  //   title: 'Tab8',
+  //   content: 'content of Tab8'
+  // }
+];
 
 type TabsState = {|
   activityKey: string,
@@ -262,6 +298,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     tabType: 'line',
     tabPosition: 'top',
     pagedType: 'single',
+    defaultData,
   };
   tabs: any;
   static displayName = Widget.Tabs;
@@ -363,12 +400,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getVtabs() {
     const { tabPosition } = this.props;
-    const { data, activityKey, pagedCount } = this.state;
+    const { data, activityKey, pagedCount, totalPage } = this.state;
     const arrowUp = 'lugia-icon-direction_up';
     const arrowDown = 'lugia-icon-direction_down';
     const y = -YtabsHeight * pagedCount;
     return (
-      <VTabsOutContainer tabPosition={tabPosition}>
+      <VTabsOutContainer tabPosition={tabPosition} showPadding={totalPage > 1}>
         <VPrePage
           tabPosition={tabPosition}
           onClick={this.onPreClick}
@@ -398,8 +435,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getHTabs() {
     const { tabType, tabPosition } = this.props;
+    const { totalPage } = this.state;
     return [
-      <HTabsOutContainer tabType={tabType} tabPosition={tabPosition}>
+      <HTabsOutContainer tabType={tabType} tabPosition={tabPosition} showPadding={totalPage > 1}>
         {this.getHtabsChildren()}
         {this.getShadowLine()}
       </HTabsOutContainer>,

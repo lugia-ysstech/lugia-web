@@ -7,20 +7,28 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Divider from './';
-
+import Widget from '../consts/index';
+import Theme from '../theme';
 const Wrapper = styled.div`
   float: left;
   margin-left: 50px;
 `;
 export default () => {
+  const view = {
+    [Widget.Divider]: {
+      width: 200,
+    },
+  };
   return (
     <div>
-      <Wrapper>
-        <p>solid </p>
-        <Divider content={'solid'} type="horizontal" />
-        <p>dashed</p>
-        <Divider dashed={true} content={'dashed'} />
-      </Wrapper>
+      <Theme config={view}>
+        <Wrapper>
+          <p>solid </p>
+          <Divider content={'solid'} type="horizontal" />
+          <p>dashed</p>
+          <Divider dashed={true} content={'dashed'} />
+        </Wrapper>
+      </Theme>
       <Wrapper>
         <p>position left</p>
         <Divider content="position left" position="left" />

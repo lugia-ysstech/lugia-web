@@ -1,5 +1,4 @@
 import { px2emcss } from './units';
-import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { matchType } from '../tabs/utils';
 const { themeColor, mediumGreyColor, superLightColor } = colorsFunc();
@@ -210,4 +209,13 @@ export const getAddButtonDisplay = props => {
   const { tabType } = props;
   const display = matchType(tabType, 'card') ? 'block !important' : 'inline-blick';
   return `display:  ${display};`;
+};
+export const getContainerPadding = props => {
+  const { showPadding, tabPosition } = props;
+  const horizontal = matchType(tabPosition, 'bottom') || matchType(tabPosition, 'top');
+  if (showPadding) {
+    const hPadding = horizontal ? em(24) : 0;
+    const vPadding = !horizontal ? em(24) : 0;
+    return `padding: ${vPadding} ${hPadding};`;
+  }
 };

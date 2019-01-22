@@ -292,6 +292,6 @@ export const getGap = props => {
 export const getWidth = props => {
   const { theme } = props;
   const { width } = theme;
-  const theWidth = width ? width : '';
+  const theWidth = width ? width : 500;
   return ` width: ${em(theWidth)};`;
 };

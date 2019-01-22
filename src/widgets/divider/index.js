@@ -10,7 +10,8 @@ import styled from 'styled-components';
 import Widget from '../consts/index';
 import { px2emcss } from '../css/units';
 import type { DividerProps } from '../css/divider';
-import { getPositionCSS, getColor, getDashed } from '../css/divider';
+import { getPositionCSS, getColor, getDashed, getWidth } from '../css/divider';
+import ThemeProvider from '../theme-provider';
 const em = px2emcss(1.2);
 
 const Divider = styled.div`
@@ -20,8 +21,8 @@ const Divider = styled.div`
   background: transparent;
   font-weight: 500;
   color: ${getColor};
+  ${getWidth};
   margin: ${em(24)} ${em(10)};
-  height: ${em(1)};
   ::before {
     content: '';
     display: table-cell;
@@ -73,12 +74,12 @@ class LineBox extends Component<DividerProps, any> {
     return content ? <ChildText>{content}</ChildText> : null;
   }
   getDivider() {
-    const { type, position, dashed, content } = this.props;
+    const { type, position, dashed, content, getTheme } = this.props;
     if (type === 'vertical') {
       return <VerticalDivider />;
     }
     return (
-      <Divider dashed={dashed} position={position} content={content}>
+      <Divider dashed={dashed} position={position} content={content} theme={getTheme()}>
         {this.getChildText()}
       </Divider>
     );
@@ -87,4 +88,4 @@ class LineBox extends Component<DividerProps, any> {
     return this.getDivider();
   }
 }
-export default LineBox;
+export default ThemeProvider(LineBox, Widget.Divider);

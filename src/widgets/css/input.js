@@ -82,7 +82,8 @@ type CommonInputProps = {
 export const getWidth = (props: CommonInputProps) => {
   const { theme } = props;
   const { width } = theme;
-  return `width:${width ? em(width) : em(200)};`;
+  const theWidth = width ? em(width) : em(200);
+  return `width:${theWidth};`;
 };
 export const getPadding = (props: CommonInputProps) => {
   const { theme, prefix } = props;
