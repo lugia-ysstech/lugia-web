@@ -83,13 +83,12 @@ export const NoData = styled.div`
   text-align: center;
 `;
 export const CancelBox = styled.div`
-  height: ${em(60)};
-  padding: ${em(5)} ${em(10)};
-  border-top: 1px solid #e8e8e8;
+  border-top: 6px solid #f2f2f2;
+  box-sizing: border-box;
 `;
 export const CancelBoxItem = styled.span`
-  display: inline-block;
-  padding: ${em(3)};
+  display: block;
+  padding: ${em(5)};
 `;
 export const TreeWrap = styled.div`
   font-size: ${em(12)};

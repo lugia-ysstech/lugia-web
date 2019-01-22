@@ -128,7 +128,7 @@ export const Icons: Object = styled(Icon)`
   position: absolute;
   font-size: ${em(20)};
   line-height: ${leftIconEM(22)};
-  top: ${leftIconEM(20)};
+  top: ${leftIconEM(21)};
   left: ${leftIconEM(20)};
   cursor: default;
   color: ${props => props.iconColor || themeColor};

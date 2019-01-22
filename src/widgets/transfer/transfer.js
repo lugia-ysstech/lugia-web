@@ -10,6 +10,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import TransferMenu from './transfer-menu';
 import Tree from '../tree';
+import Menu from '../menu';
 import Input from '../input';
 import CheckBox from '../checkbox';
 import Theme from '../theme';
@@ -25,6 +26,8 @@ import {
   TreeWrap,
 } from '../css/transfer';
 import { filterEnableKeysFromSelectKeys } from './utils';
+
+const { MenuItem } = Menu;
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -76,16 +79,18 @@ export default ThemeProvider(
       if (hasCancelItem) {
         return cancelItem.map((item, index) => {
           return (
-            <CancelBoxItem>
-              <CheckBox
-                key={index}
-                value={item[valueField]}
-                cancel
-                handleCancelItemClick={this.cancelItemClick}
-              >
-                {item[displayField]}
-              </CheckBox>
-            </CancelBoxItem>
+            <MenuItem>
+              <CancelBoxItem>
+                <CheckBox
+                  key={index}
+                  value={item[valueField]}
+                  cancel
+                  handleCancelItemClick={this.cancelItemClick}
+                >
+                  {item[displayField]}
+                </CheckBox>
+              </CancelBoxItem>
+            </MenuItem>
           );
         });
       }
@@ -96,10 +101,15 @@ export default ThemeProvider(
     render() {
       const { selectedKeys = [], treeDataLength, cancelItem } = this.state;
       const { needCancelBox = false, type, title } = this.props;
-
+      const { theme = {} } = this.props;
+      const { width = 200 } = theme;
       const cancelBox =
         needCancelBox && cancelItem && cancelItem.length ? (
-          <CancelBox>{this.createCancelCheckBox()}</CancelBox>
+          <CancelBox>
+            <Theme config={{ [Widget.Menu]: { height: 70, width } }}>
+              <Menu>{this.createCancelCheckBox()}</Menu>
+            </Theme>
+          </CancelBox>
         ) : null;
       const dataLength = type === 'panel' ? this.getDataLength() : treeDataLength;
       const selectKeyLength = (selectedKeys && selectedKeys.length) || 0;
@@ -225,7 +235,7 @@ export default ThemeProvider(
         };
       } else {
         const { cancelItem } = this.state;
-        const targetHeight = cancelItem && cancelItem.length ? height - 60 : height;
+        const targetHeight = cancelItem && cancelItem.length ? height - 70 : height;
         wrapHeight = targetHeight;
         menuView[Widget.Menu] = {
           height: targetHeight,

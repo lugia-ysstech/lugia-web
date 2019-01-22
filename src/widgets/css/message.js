@@ -40,12 +40,12 @@ const getAnimate = (props: CSSProps) => {
   const { opening, closing } = props;
   const openAnimate = keyframes`
     0% {
-      opacity: 0.2;
+      opacity: 0;
       margin-top: -30px;
     }
-    70% {
-      opacity: 1;
-      margin-top: 0;
+    50% {
+      opacity: 0.1;
+      margin-top: -15px;
     }
     100% {
       opacity: 1;
@@ -58,18 +58,18 @@ const getAnimate = (props: CSSProps) => {
       margin-top: 0;
     }
     100% {
-      opacity: 0.2;
+      opacity: 0;
       margin-top: -30px;
     }
   `;
   if (opening) {
     return `
-      animation:${openAnimate} .2s ease-in;
+      animation:${openAnimate} .3s ease-in;
     `;
   }
   if (closing) {
     return `
-      animation:${closeAnimate} .2s ease-in;
+      animation:${closeAnimate} .3s ease-in;
     `;
   }
 };

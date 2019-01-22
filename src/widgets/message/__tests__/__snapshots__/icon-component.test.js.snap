@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Message css 1`] = `
-.c0 {
+.c1 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -9,33 +9,80 @@ exports[`Message css 1`] = `
   cursor: pointer;
 }
 
+.c0 {
+  color: #4d63ff;
+  position: relative;
+  top: 0.18749999999999997em;
+  margin-right: 0.625em;
+  font-size: 1.142857142857143em;
+  cursor: default;
+}
+
+.c2 {
+  color: #56c22d;
+  position: relative;
+  top: 0.18749999999999997em;
+  margin-right: 0.625em;
+  font-size: 1.142857142857143em;
+  cursor: default;
+}
+
+.c3 {
+  color: #f22735;
+  position: relative;
+  top: 0.18749999999999997em;
+  margin-right: 0.625em;
+  font-size: 1.142857142857143em;
+  cursor: default;
+}
+
+.c4 {
+  color: #f8ac30;
+  position: relative;
+  top: 0.18749999999999997em;
+  margin-right: 0.625em;
+  font-size: 1.142857142857143em;
+  cursor: default;
+}
+
+.c5 {
+  color: #4d63ff;
+  position: relative;
+  top: 0.18749999999999997em;
+  margin-right: 0.625em;
+  font-size: 1.142857142857143em;
+  cursor: default;
+  -webkit-animation: iECmZH 1s infinite linear;
+  animation: iECmZH 1s infinite linear;
+}
+
 <div>
   <i
-    className="lugia-icon-reminder_info_circle  c0"
+    className="lugia-icon-reminder_info_circle c0 c1"
   />
   <span>
     hello world
   </span>
   <i
-    className="lugia-icon-reminder_check_circle  c0"
+    className="lugia-icon-reminder_check_circle c2 c1"
   />
   <span>
     hello world
   </span>
   <i
-    className="lugia-icon-reminder_close_circle  c0"
+    className="lugia-icon-reminder_close_circle c3 c1"
   />
   <span>
     hello world
   </span>
   <i
-    className="lugia-icon-reminder_exclamation_circle  c0"
+    className="lugia-icon-reminder_exclamation_circle c4 c1"
   />
   <span>
     hello world
   </span>
   <i
-    className="lugia-icon-financial_loading_o  c0"
+    className="lugia-icon-financial_loading_o c5 c1"
   />
   <span>
     hello world
