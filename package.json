@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.0.81",
+  "version": "1.0.82",
   "dependencies": {
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",
@@ -43,7 +43,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "cover": "node scripts/test.js --env=jsdom  --coverage",
     "clean": "npx shx rm -rf dist/ interface/ npm-shrinkwrap.all.json",
-    "dist": "npm run clean && npx cross-env BABEL_ENV=production gulp"
+    "dist": "node scripts/create.js && npm run clean && npx cross-env BABEL_ENV=production gulp "
   },
   "devDependencies": {
     "@lugia/jverify": "1.0.6",

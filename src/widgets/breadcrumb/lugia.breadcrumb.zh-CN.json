@@ -12,19 +12,18 @@
       "type": "string | React.Element<any>",
       "desc": "最后一个显示的元素后所",
       "defaultValue": ""
+    },
+    "routes": {
+      "type": "Array<{path: , title: }>",
+      "desc": "生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本",
+      "defaultValue": "undefined"
+    },
+    "params": {
+      "type": "Object",
+      "desc": "可配置的参数",
+      "defaultValue": "undefined"
     }
   },
-  "routes": {
-    "type": "Array<{path: , title: }>",
-    "desc": "生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本",
-    "defaultValue": "undefined"
-  },
-  "params": {
-    "type": "Object",
-    "desc": "可配置的参数",
-    "defaultValue": "undefined"
-  }
-},
   "events": {
     "onClick": {
       "desc": "点击按钮时触发",
