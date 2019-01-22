@@ -323,6 +323,7 @@ export default () => {
         top: 10,
         bottom: 10,
       },
+      fontSize: 20,
     },
   };
   return <Theme config={view}>{getIcon(iconData)}</Theme>;
