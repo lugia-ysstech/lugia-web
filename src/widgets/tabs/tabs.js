@@ -239,26 +239,6 @@ const defaultData = [
     title: 'Tab3',
     content: 'content of Tab3',
   },
-  // {
-  //   title: 'Tab4',
-  //   content: 'content of Tab4'
-  // },
-  // {
-  //   title: 'Tab5',
-  //   content: 'content of Tab5'
-  // },
-  // {
-  //   title: 'Tab6',
-  //   content: 'content of Tab6'
-  // },
-  // {
-  //   title: 'Tab7',
-  //   content: 'content of Tab7'
-  // },
-  // {
-  //   title: 'Tab8',
-  //   content: 'content of Tab8'
-  // }
 ];
 
 type TabsState = {|
@@ -288,6 +268,7 @@ type TabsProps = {
   onDeleteClick: Function,
   onAddClick: Function,
   pagedType: PagedType,
+  isMenu: boolean,
 };
 function hasDataInProps(props: TabsProps) {
   return 'data' in props;

@@ -1,6 +1,6 @@
 import { px2emcss } from './units';
 import colorsFunc from '../css/stateColor';
-import { matchType } from '../tabs/utils';
+import { matchType, isVertical } from '../tabs/utils';
 const { themeColor, mediumGreyColor, superLightColor } = colorsFunc();
 export type TabType = 'line' | 'card' | 'window';
 export type TabPositionType = 'left' | 'right' | 'top' | 'bottom';
@@ -212,10 +212,14 @@ export const getAddButtonDisplay = props => {
 };
 export const getContainerPadding = props => {
   const { showPadding, tabPosition } = props;
-  const horizontal = matchType(tabPosition, 'bottom') || matchType(tabPosition, 'top');
   if (showPadding) {
-    const hPadding = horizontal ? em(24) : 0;
-    const vPadding = !horizontal ? em(24) : 0;
+    let hPadding = 0;
+    let vPadding = 0;
+    if (isVertical(tabPosition)) {
+      vPadding = em(24);
+    } else {
+      hPadding = em(24);
+    }
     return `padding: ${vPadding} ${hPadding};`;
   }
 };
