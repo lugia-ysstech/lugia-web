@@ -4,7 +4,9 @@
  * @flow
  */
 import colorsFunc from '../css/stateColor';
-
+import { px2emcss } from './units';
+const FontSize = 1.2;
+const em = px2emcss(FontSize);
 const { borderDisableColor } = colorsFunc();
 
 export type DividerType = 'horizontal' | 'vertical';
@@ -15,6 +17,7 @@ export type DividerProps = {
   position?: DividerPosition,
   type: DividerType,
   content?: string,
+  getTheme: Function,
 };
 
 export const getPositionCSS = ([left, right]: DividerPosition[]) => (props: DividerProps) => {
@@ -30,4 +33,10 @@ export const getColor = () => {
 export const getDashed = (props: DividerProps) => {
   const { dashed } = props;
   return `${dashed ? 'dashed' : 'solid'}`;
+};
+export const getWidth = (props: Object) => {
+  const { theme } = props;
+  const { width } = theme;
+  const theWidth = width ? width : 500;
+  return `width:${em(theWidth)}`;
 };

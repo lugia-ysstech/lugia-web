@@ -1,5 +1,4 @@
 /**
- * 菜单
  * create by ligx
  *
  * @flow
@@ -11,6 +10,8 @@ import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
 import { getMargin } from '../common/ThemeUtils';
+import { px2emcss } from '../css/units';
+const em = px2emcss(1.2);
 const getColor = (props: Object) => {
   const { color } = props.theme;
   return color ? `color: ${color};` : '';
@@ -19,9 +20,16 @@ const hover = (props: Object) => {
   const { hoverColor } = props.theme;
   return hoverColor ? `  &:hover { color: ${hoverColor}; }` : '';
 };
+const getFontSize = (props: Object) => {
+  const { theme } = props;
+  const { fontSize } = theme;
+  const thefontSize = fontSize ? fontSize : '1.2rem';
+  return `font-size:${em(thefontSize)}`;
+};
 const IconTag = styled.i`
   user-select: none;
   cursor: pointer;
+  ${getFontSize};
   ${getColor} ${hover};
   ${getMargin};
 `;

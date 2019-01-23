@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import Tabs from './tabs';
+import Button from '../button';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import Theme from '../theme/';
@@ -82,9 +83,9 @@ export class TabsLimitdemo extends React.Component<any, any> {
     const { data } = this.state;
     return (
       <div>
-        <button style={{ width: 200 }} onClick={this.change}>
+        <Button style={{ width: 200 }} onClick={this.change} type="primary">
           {'点击修改data内容'}
-        </button>
+        </Button>
         <Tabs
           tabType={'card'}
           pagedType={'single'}
@@ -106,46 +107,22 @@ const RightWrapper = styled.div`
   margin: 50px;
   text-align: right;
 `;
-export const defaultData = [
+const defaultData = [
   {
-    icon: 'lugia-icon-financial_archive',
-    title: 1111111111,
-    content: 1111,
+    title: 'Tab1',
+    content: 'content of Tab1',
   },
   {
-    icon: 'lugia-icon-financial_archive',
-    title: 22222222222,
-    content: 22222,
+    title: 'Tab2',
+    content: 'content of Tab2',
   },
   {
-    icon: 'lugia-icon-financial_archive',
-    title: 3333333,
-    content: 333,
+    title: 'Tab3',
+    content: 'content of Tab3',
   },
   {
-    icon: 'lugia-icon-financial_archive',
-    title: 44444444,
-    content: 4444444,
-  },
-  {
-    icon: 'lugia-icon-financial_archive',
-    title: 55555,
-    content: 555555,
-  },
-  {
-    icon: 'lugia-icon-financial_archive',
-    title: 666666,
-    content: 66666,
-  },
-  {
-    icon: 'lugia-icon-financial_archive',
-    title: 7777777,
-    content: 777777,
-  },
-  {
-    icon: 'lugia-icon-financial_archive',
-    title: 88888,
-    content: 888888,
+    title: 'Tab4',
+    content: 'content of Tab4',
   },
 ];
 export const hasActivityKeyData = [
