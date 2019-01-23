@@ -123,9 +123,9 @@ export default class TransferDemo extends React.Component<any, any> {
           type="tree"
           sourceSelectedKeys={['2.2.1']}
           targetSelectedKeys={['2.1.1']}
-          value={['3.1', '3.2', '2.1.1']}
+          value={['3.1', '3.2', '3.3', '2.1.1']}
           showSearch
-          displayValue={['dis1', 'dis2']}
+          displayValue={['dis1', 'dis2', 'dis3']}
         />
         <Transfer
           data={treeData}

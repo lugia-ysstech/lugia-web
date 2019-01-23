@@ -1,7 +1,7 @@
 {
   "widgetName": "Transfer",
   "title": "穿梭框",
-  "desc": "单选框。",
+  "desc": "穿梭框。",
   "props": {
     "getTheme": {
       "type": "Function",

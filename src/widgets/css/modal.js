@@ -75,7 +75,7 @@ const getAnimate = (props: CSSProps) => {
   `;
   if (closing) {
     return `
-     animation:${CloseKeyframe} .4s;
+     animation:${CloseKeyframe} 0.4s;
      `;
   }
   if (opening) {

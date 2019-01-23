@@ -14,7 +14,7 @@ import './widgets/css/global.css';
 // import App from './widgets/tag/demo';
 // import App from './widgets/tree-select/demo';
 // import App from './widgets/tree-select/defaultTreeSelect';
-import { CheckBoxGroupDemo, CheckBoxDemo } from './widgets/checkbox/demo';
+import App from './widgets/message/demo';
 
 // import App from './widgets/tree/InlineDataSingleTree';
 // import App from './widgets/tree/InlineDataMutlipleTree';
@@ -27,6 +27,6 @@ import registerServiceWorker from './registerServiceWorker';
 // console.info(ReactServer.renderToString(<App />));
 const root = document.getElementById('root');
 if (root) {
-  window.a = ReactDOM.render(<CheckBoxGroupDemo />, root);
+  window.a = ReactDOM.render(<App />, root);
 }
 registerServiceWorker();

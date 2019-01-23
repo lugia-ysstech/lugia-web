@@ -38,13 +38,26 @@ export default ThemeProvider(
   class extends React.Component<ModalProps, ModalState> {
     static getDerivedStateFromProps(props, state) {
       const { visible = false } = props;
-      const closing = state ? state.closing : false;
+      const { visible: stateVisible } = state || {};
+      const theClose = stateVisible === true && visible === false;
+      const closing = state ? theClose : false;
 
       return {
         visible,
         closing,
         opening: visible,
       };
+    }
+
+    componentDidUpdate() {
+      const { closing } = this.state;
+      if (closing === true) {
+        setTimeout(() => {
+          this.setState({
+            closing: false,
+          });
+        }, 300);
+      }
     }
 
     render() {
@@ -59,6 +72,7 @@ export default ThemeProvider(
         iconType = 'info',
       } = this.props;
       const { visible = false, closing, opening } = this.state;
+      console.log('closing', closing);
       const view = {
         [Widget.Button]: {
           width: 80,
@@ -69,7 +83,7 @@ export default ThemeProvider(
         footerBtnProps.type = BtnType[iconType];
       }
       return (
-        <Wrap visible={visible}>
+        <Wrap visible={closing ? true : visible}>
           <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
           <ModalWrap>
             <Modal closing={closing} opening={opening}>
