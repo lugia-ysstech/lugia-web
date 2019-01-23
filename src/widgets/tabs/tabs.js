@@ -268,7 +268,7 @@ type TabsProps = {
   onDeleteClick: Function,
   onAddClick: Function,
   pagedType: PagedType,
-  isMenu: boolean,
+  getTabpane: Function,
 };
 function hasDataInProps(props: TabsProps) {
   return 'data' in props;
@@ -560,7 +560,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
             child ? getKeyfromIndex(data, i, 'activityKey') : '0'
           )
     );
-
+    const disabled = getAttributeFromObject(
+      child,
+      'disabled',
+      getAttributeFromObject(child.props, 'disabled', false)
+    );
     return {
       tabPosition,
       tabType,
@@ -570,23 +574,30 @@ class TabsBox extends Component<TabsProps, TabsState> {
         getAttributeFromObject(child.props, 'title', '')
       ),
       icon: getAttributeFromObject(child, 'icon', getAttributeFromObject(child.props, 'icon', '')),
+      suffixIcon: getAttributeFromObject(
+        child,
+        'suffixIcon',
+        getAttributeFromObject(child.props, 'suffixIcon', '')
+      ),
       activityKey: TabpaneActivityKey,
       onClick: this.onTabClick,
-      isSelect: TabpaneActivityKey === activityKey,
+      isSelect: !disabled && TabpaneActivityKey === activityKey,
       getTabpaneWidth: this.getTabpaneWidth,
       onDeleteClick: this.onDeleteClick,
+      disabled,
     };
   }
 
   getChildren() {
     const { data } = this.state;
+    const { getTabpane } = this.props;
     return data
       ? data.map((child, i) => {
-          return <Tabpane {...this.getTabpaneConfig(child, i)} />;
+          const target = <Tabpane {...this.getTabpaneConfig(child, i)} />;
+          return getTabpane ? getTabpane(target, i) : target;
         })
       : null;
   }
-
   getChildrenContent() {
     const { forceRender, tabPosition } = this.props;
     const { activityKey, data } = this.state;
@@ -619,11 +630,18 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     return null;
   }
+  getTabpaneDisabled(activityKey: string) {
+    const { data } = this.state;
+    const index = getIndexfromKey(data, 'activityKey', activityKey);
+    return data[index].disabled;
+  }
 
   onTabClick = (activityKey: string, e: Event) => {
     const { onTabClick } = this.props;
-    onTabClick && onTabClick(activityKey, e);
-    this.setActiveKey(activityKey, e);
+    if (!this.getTabpaneDisabled(activityKey)) {
+      onTabClick && onTabClick(activityKey, e);
+      this.setActiveKey(activityKey, e);
+    }
   };
   setActiveKey = (activityKey: string, e: Event) => {
     const { onChange } = this.props;

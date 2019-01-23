@@ -26,6 +26,7 @@ import {
   getTabpaneLeft,
   getButtonShow,
   getClearButtonOpacity,
+  getTabpaneCursor,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -40,6 +41,7 @@ const BaseTab = styled.div`
   position: relative;
   cursor: pointer;
   white-space: nowrap;
+  ${getTabpaneCursor};
 `;
 const VTab = BaseTab.extend`
   text-align: ${props => (matchType(props.tabPosition, 'left') ? 'right' : 'left')};
@@ -52,8 +54,8 @@ const VTab = BaseTab.extend`
 VTab.displayName = 'yTabpane';
 const HTab = BaseTab.extend`
   display: inline-block;
-  ${getTabpanePadding};
   line-height: ${em(30)};
+  ${getTabpanePadding};
   ${getTabpaneFocusShadow};
   ${getTabpaneBorderTopRadius};
   ${getTabpaneBottom};
@@ -122,12 +124,17 @@ type TabpaneProps = {
   title: string,
   onDeleteClick: Function,
   icon: string,
+  suffixIcon: string,
   tabType: TabType,
   tabPosition: TabPositionType,
   activityKey: string,
   isSelect: boolean,
+  disabled: boolean,
   onClick: Function,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
   getTabpaneWidth: Function,
+  onSuffixClick?: Function,
 };
 
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
@@ -151,11 +158,18 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   render() {
-    const { title, tabType, tabPosition, isSelect } = this.props;
+    const { title, tabType, tabPosition, isSelect, disabled } = this.props;
     if (matchType(tabType, 'line') && isVertical(tabPosition)) {
       return (
-        <VTab tabPosition={tabPosition} onClick={this.handleClick} isSelect={isSelect}>
-          <Title isSelect={isSelect}>{title}</Title>
+        <VTab
+          tabPosition={tabPosition}
+          onClick={this.handleClick}
+          isSelect={isSelect}
+          disabled={disabled}
+        >
+          <Title isSelect={isSelect} disabled={disabled}>
+            {title}
+          </Title>
         </VTab>
       );
     }
@@ -163,18 +177,28 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   getHTabpane() {
-    const { title, tabType, isSelect } = this.props;
+    const { title, tabType, isSelect, icon, suffixIcon, disabled } = this.props;
     const Target = (
       <HTab
+        disabled={disabled}
         tabType={tabType}
         onClick={this.handleClick}
         isSelect={isSelect}
         innerRef={cmp => (this.tabpane = cmp)}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
       >
-        {this.getTabIcon()}
-        <Title isHasIcon={this.getTabIcon() !== null} tabType={tabType} isSelect={isSelect}>
+        {this.getTabIcon(icon)}
+        <Title
+          hasPreIcon={this.getTabIcon(icon) !== null}
+          hasSuffixIcon={this.getTabIcon(suffixIcon) !== null}
+          tabType={tabType}
+          isSelect={isSelect}
+          disabled={disabled}
+        >
           {title}
         </Title>
+        {this.getTabIcon(suffixIcon, 'suffix')}
         {this.getClearButton()}
       </HTab>
     );
@@ -186,14 +210,21 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   handleClick = () => {
-    const { activityKey, onClick } = this.props;
-    onClick && onClick(activityKey);
+    const { activityKey, onClick, disabled } = this.props;
+    if (!disabled) onClick && onClick(activityKey);
   };
-  getTabIcon() {
-    const { icon, isSelect } = this.props;
+  onSuffixClick = e => {
+    const { onSuffixClick } = this.props;
+    onSuffixClick && onSuffixClick(e);
+  };
+
+  getTabIcon(icon, type) {
+    const { isSelect, disabled } = this.props;
+    const noop = () => {};
+    const suffixClick = type === 'suffix' ? this.onSuffixClick : noop;
     return icon ? (
-      <IconContainer>
-        <TabIcon isSelect={isSelect} iconClass={icon} />
+      <IconContainer onClick={suffixClick}>
+        <TabIcon isSelect={isSelect} iconClass={icon} disabled={disabled} />
       </IconContainer>
     ) : null;
   }
@@ -223,6 +254,16 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   };
   clearButtonMouseLeave = () => {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
+  };
+  onMouseEnter = (e: Object) => {
+    const { onMouseEnter } = this.props;
+    console.log(111111111);
+    onMouseEnter && onMouseEnter(e);
+  };
+  onMouseLeave = (e: Object) => {
+    const { onMouseLeave } = this.props;
+    console.log(22222);
+    onMouseLeave && onMouseLeave(e);
   };
 
   getContainerWidth() {

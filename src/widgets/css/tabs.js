@@ -1,7 +1,7 @@
 import { px2emcss } from './units';
 import colorsFunc from '../css/stateColor';
 import { matchType, isVertical } from '../tabs/utils';
-const { themeColor, mediumGreyColor, superLightColor } = colorsFunc();
+const { themeColor, mediumGreyColor, superLightColor, disableColor } = colorsFunc();
 export type TabType = 'line' | 'card' | 'window';
 export type TabPositionType = 'left' | 'right' | 'top' | 'bottom';
 export type PagedType = 'single' | 'page';
@@ -28,16 +28,17 @@ export const getClearButtonColor = () => {
   return `color: ${mediumGreyColor}`;
 };
 export const getTabpaneIconHoverColor = (props: Object) => {
-  const { tabType } = props;
-  const color = matchType(tabType, 'line') ? themeColor : 'none';
+  const { tabType, disabled } = props;
+  const color = matchType(tabType, 'line') && !disabled ? themeColor : 'none';
   return `color: ${color};`;
 };
-export const getTabpaneHoverColor = () => {
-  return `color: ${themeColor};`;
+export const getTabpaneHoverColor = (props: Object) => {
+  const { disabled } = props;
+  return `color: ${disabled ? disableColor : themeColor};`;
 };
 export const getSelectColor = (props: Object) => {
-  const { isSelect } = props;
-  return `color: ${isSelect ? themeColor : 'none'};`;
+  const { isSelect, disabled } = props;
+  return `color: ${disabled ? disableColor : isSelect ? themeColor : ''};`;
 };
 export const getLinePosition = (props: Object) => {
   const { tabPosition } = props;
@@ -88,8 +89,8 @@ export const getTabpaneFocusShadow = (props: Object) => {
   return `box-shadow: 0 0 ${em(6)} ` + color;
 };
 export const getBackgroundShadow = (props: Object) => {
-  const { tabType } = props;
-  const color = tabType === 'window' ? 'rgba(104, 79, 255,0.2)' : 'none';
+  const { tabType, disabled } = props;
+  const color = tabType === 'window' && !disabled ? 'rgba(104, 79, 255,0.2)' : 'none';
   return `box-shadow: 0 ${em(-2)} ${em(6)} ` + color;
 };
 export const backgroundColor = (props: Object) => {
@@ -118,9 +119,9 @@ export const lineWidth = props => {
   return width;
 };
 export const getTitlePadding = props => {
-  const { isHasIcon, tabType } = props;
-  const leftPadding = isHasIcon && !matchType(tabType, 'window') ? em(10) : em(0);
-  const rightPadding = matchType(tabType, 'window') ? em(10) : em(0);
+  const { hasPreIcon, tabType, hasSuffixIcon } = props;
+  const leftPadding = hasPreIcon && !matchType(tabType, 'window') ? em(10) : em(0);
+  const rightPadding = matchType(tabType, 'window') || hasSuffixIcon ? em(10) : em(0);
   return `padding: 0 ${rightPadding}  0 ${leftPadding}`;
 };
 export const getTabpanePadding = props => {
@@ -222,4 +223,8 @@ export const getContainerPadding = props => {
     }
     return `padding: ${vPadding} ${hPadding};`;
   }
+};
+export const getTabpaneCursor = props => {
+  const { disabled } = props;
+  return `cursor:${disabled ? 'not-allowed' : 'text'}`;
 };

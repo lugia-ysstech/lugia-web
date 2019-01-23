@@ -52,8 +52,8 @@ export class TabsLimitdemo extends React.Component<any, any> {
   };
   change = (e: Object) => {
     hasActivityKeyData[0] = {
-      title: 1000000000000,
-      content: 1000000000,
+      title: ' changed Tab1',
+      content: 'Content of changed Tab1',
       activityKey: '-1',
     };
     this.setState({ data: hasActivityKeyData });
@@ -107,7 +107,7 @@ const RightWrapper = styled.div`
   margin: 50px;
   text-align: right;
 `;
-const defaultData = [
+export const defaultData = [
   {
     title: 'Tab1',
     content: 'content of Tab1',
@@ -120,19 +120,15 @@ const defaultData = [
     title: 'Tab3',
     content: 'content of Tab3',
   },
-  {
-    title: 'Tab4',
-    content: 'content of Tab4',
-  },
 ];
 export const hasActivityKeyData = [
   {
-    title: 1111,
+    title: 'Tab1',
     content: <div>1111111111</div>,
     activityKey: '0',
   },
   {
-    title: 222222,
+    title: 'Tab2',
     content: (
       <div>
         <div>222222</div>
@@ -142,7 +138,7 @@ export const hasActivityKeyData = [
   },
   {
     activityKey: '2',
-    title: 3333,
+    title: 'Tab3',
     content: (
       <div>
         <div>
@@ -153,7 +149,7 @@ export const hasActivityKeyData = [
   },
   {
     activityKey: '3',
-    title: 44444,
+    title: 'Tab4',
     content: (
       <div>
         <div>
@@ -165,22 +161,22 @@ export const hasActivityKeyData = [
   },
   {
     activityKey: '4',
-    title: 55555,
+    title: 'Tab5',
     content: 55555,
   },
   {
     activityKey: '5',
-    title: 66666,
+    title: 'Tab6',
     content: 66666,
   },
   {
     activityKey: '6',
-    title: 777777,
+    title: 'Tab7',
     content: 77777,
   },
   {
     activityKey: '7',
-    title: 888888,
+    title: 'Tab8',
     content: 888888,
   },
 ];
