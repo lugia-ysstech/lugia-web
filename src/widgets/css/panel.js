@@ -141,7 +141,7 @@ export const PanelHeader = styled.div`
   ${getHeaderPadding};
   font-size: ${FontSize}rem;
   cursor: ${(props: CSSProps) => (props.disabled ? 'not-allowed' : 'pointer')};
-  line-height: ${em(22)};
+  line-height: 1;
   user-select: none;
   ${getColorCSS};
 `;
@@ -175,7 +175,7 @@ const getPanelContent = (props: CSSProps): string => {
   }
   return `
     height: ${em(headerHeight)};
-`;
+  `;
 };
 const getContenColor = (props: CSSProps): string => {
   const { disabled, theme } = props;
@@ -214,6 +214,7 @@ export const PanelContentWrap = styled.div`
 export const PanelContent = styled.div`
   box-sizing: border-box;
   font-weight: 300;
+  line-height: 1.5;
   ${getContentPadding};
 `;
 
@@ -242,8 +243,9 @@ export const IconWrap: Object = styled(Icon)`
   font-size: ${FontSize}rem;
   display: inline-block;
   position: absolute;
-  top: ${em(18)};
+  top: ${em(16)};
   left: ${em(10)};
+  color: #666;
   ${getIconTransform};
 `;
 
