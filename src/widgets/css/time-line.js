@@ -24,7 +24,7 @@ export const getLineDisplay = props => {
 export const getContainerHeight = props => {
   const { theme } = props;
   const { height } = theme;
-  const theHeight = height && height > 0 ? em(height) : '';
+  const theHeight = height && height > 0 ? em(height) : 200;
   return `height:${theHeight};`;
 };
 export const getItemContainerHeight = props => {

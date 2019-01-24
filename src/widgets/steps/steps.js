@@ -13,6 +13,7 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { getFlexDirection, getWidth } from '../css/steps';
 import type { AlignType, StepType, OrientationType, SizeType } from '../css/steps';
+import Step from './step';
 
 const OutContainer = styled.div`
   display: inline-block;
@@ -41,6 +42,12 @@ type StepsProps = {
   children: React$Element<any>,
   desAlign: AlignType,
 };
+export const children = [
+  <Step title="step1" stepStatus="finish" />,
+  <Step title="step2" stepStatus="process" />,
+  <Step title="step3" stepStatus="next" />,
+  <Step title="step4" stepStatus="wait" />,
+];
 
 class Steps extends Component<StepsProps, StepsState> {
   static defaultProps = {
@@ -49,6 +56,7 @@ class Steps extends Component<StepsProps, StepsState> {
     size: 'normal',
     orientation: 'horizontal',
     desAlign: 'left',
+    children,
   };
   static displayName = Widget.Steps;
 

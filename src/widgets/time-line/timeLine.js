@@ -14,6 +14,7 @@ import ThemeProvider from '../theme-provider';
 import type { TimeLineMode } from '../css/time-line';
 import { getContainerHeight } from '../css/time-line';
 import { px2emcss } from '../css/units';
+import TimeLineItem from './timeLineItem';
 const em = px2emcss(1.2);
 
 const OutContainer = styled.div`
@@ -31,11 +32,19 @@ type TimeLineProps = {
   pending: boolean,
 };
 
+const children = [
+  <TimeLineItem time="2019-01-01" />,
+  <TimeLineItem time="2019-01-02" />,
+  <TimeLineItem time="2019-01-03" />,
+  <TimeLineItem time="2019-01-04" />,
+  <TimeLineItem time="2019-01-05" />,
+];
 class TimeLine extends Component<TimeLineProps, TimeLineState> {
   static defaultProps = {
     pending: false,
     pendingDot: 'lugia-icon-financial_loading_o',
     mode: 'right',
+    children,
   };
   static displayName = Widget.TimeLine;
 
