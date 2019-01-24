@@ -257,12 +257,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   };
   onMouseEnter = (e: Object) => {
     const { onMouseEnter } = this.props;
-    console.log(111111111);
     onMouseEnter && onMouseEnter(e);
   };
   onMouseLeave = (e: Object) => {
     const { onMouseLeave } = this.props;
-    console.log(22222);
     onMouseLeave && onMouseLeave(e);
   };
 
