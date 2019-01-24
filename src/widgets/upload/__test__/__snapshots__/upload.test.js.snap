@@ -7,6 +7,7 @@ exports[`Rate Test css 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: NaNem;
 }
 
 .c2 {
@@ -68,7 +69,6 @@ exports[`Rate Test css 1`] = `
 
 .c9 .c4 {
   font-size: 55px;
-  color: #999;
 }
 
 .c8 .c4 {
