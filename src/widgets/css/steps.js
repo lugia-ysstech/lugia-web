@@ -290,8 +290,8 @@ export const getGap = props => {
   }
 };
 export const getWidth = props => {
-  const { theme } = props;
+  const { theme, orientation } = props;
   const { width } = theme;
-  const theWidth = width ? width : 500;
-  return ` width: ${em(theWidth)};`;
+  const theWidth = orientation === 'vertical' ? '' : em(width) ? em(width) : em(500);
+  return ` width: ${theWidth};`;
 };

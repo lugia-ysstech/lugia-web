@@ -55,7 +55,7 @@ export const getFocusShadow = (props: Object) => {
   const color = isSuccess(validateStatus) ? 'rgba(104, 79, 255, 0.2)' : 'rgba(248, 172, 48, 0.2)';
   return noShadow ? '' : 'box-shadow: 0 0 6px ' + color;
 };
-const FontSize = 1.2;
+export const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
 export const RadiusSize = em(4);

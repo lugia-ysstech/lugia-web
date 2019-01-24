@@ -67,9 +67,13 @@ class Steps extends Component<StepsProps, StepsState> {
   static getDerivedStateFromProps(props: StepsProps, state: StepsState) {}
 
   render() {
-    const { getTheme } = this.props;
+    const { getTheme, orientation } = this.props;
 
-    return <OutContainer theme={getTheme()}>{this.getHSteps()}</OutContainer>;
+    return (
+      <OutContainer theme={getTheme()} orientation={orientation}>
+        {this.getHSteps()}
+      </OutContainer>
+    );
   }
 
   getHSteps() {
