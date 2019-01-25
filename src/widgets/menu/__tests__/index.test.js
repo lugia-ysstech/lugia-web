@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import chai from 'chai';
-import Menu from '../menu.js';
+import Menu from '../index.js';
 import Widgets from '../../consts/index';
 import Widget from '../../consts/index';
 import 'jest-styled-components';

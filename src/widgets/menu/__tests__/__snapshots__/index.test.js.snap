@@ -2,6 +2,7 @@
 
 exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 .c1 {
+  font-size: 1.2rem;
   width: 20.833333333333336em;
   outline: none;
   margin: 0;
@@ -32,25 +33,25 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #333333;
-  font-weight: 500;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 500;
+}
+
+.c2:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c2:hover:after {
   color: #d0c8c8;
-}
-
-.c2:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
 }
 
 .c2:hover:after {
@@ -61,16 +62,21 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #4d63ff;
-  font-weight: 900;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #4d63ff;
+  font-weight: 900;
+}
+
+.c4:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c4:after {
@@ -79,11 +85,6 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 
 .c4:hover:after {
   color: #4d63ff;
-}
-
-.c4:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
 }
 
 .c4:after {
@@ -96,6 +97,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 
 .c0 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 20.833333333333336em;
   position: relative;
@@ -171,6 +173,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu single selectedKeys 2 1`] = `
 .c1 {
+  font-size: 1.2rem;
   width: 20.833333333333336em;
   outline: none;
   margin: 0;
@@ -201,41 +204,46 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #333333;
-  font-weight: 500;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 500;
+}
+
+.c2:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c2:hover:after {
   color: #d0c8c8;
 }
 
-.c2:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
-}
-
 .c4 {
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #4d63ff;
-  font-weight: 900;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #4d63ff;
+  font-weight: 900;
+}
+
+.c4:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c4:after {
@@ -246,13 +254,9 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   color: #4d63ff;
 }
 
-.c4:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
-}
-
 .c0 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 20.833333333333336em;
   position: relative;
@@ -328,6 +332,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 .c1 {
+  font-size: 1.2rem;
   width: 45.833333333333336em;
   outline: none;
   margin: 0;
@@ -358,29 +363,30 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #333333;
-  font-weight: 500;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 500;
+}
+
+.c2:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c2:hover:after {
   color: #d0c8c8;
 }
 
-.c2:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
-}
-
 .c0 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 27.75em;
   width: 45.833333333333336em;
   position: relative;
@@ -456,6 +462,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 
 exports[`Menu children: items 1`] = `
 .c3 {
+  font-size: 1.2rem;
   width: 16.666666666666668em;
   outline: none;
   margin: 0;
@@ -486,25 +493,25 @@ exports[`Menu children: items 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #333333;
-  font-weight: 500;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 500;
+}
+
+.c4:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c4:hover:after {
   color: #d0c8c8;
-}
-
-.c4:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
 }
 
 .c4:hover:after {
@@ -513,7 +520,7 @@ exports[`Menu children: items 1`] = `
 
 .c7 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -543,13 +550,15 @@ exports[`Menu children: items 1`] = `
 }
 
 .c2 {
-  width: 15.666666666666668em;
+  width: 16.666666666666668em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 16.666666666666668em;
   position: relative;
@@ -560,7 +569,8 @@ exports[`Menu children: items 1`] = `
 }
 
 .c6 {
-  width: 15.666666666666668em;
+  width: 16.666666666666668em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
   left: 15.666666666666668em;

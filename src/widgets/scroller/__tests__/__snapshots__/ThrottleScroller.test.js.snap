@@ -3,7 +3,7 @@
 exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
 .c4 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -33,13 +33,15 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
 }
 
 .c2 {
-  width: 24em;
+  width: 25em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 4.166666666666667em;
   width: 25em;
   position: relative;
@@ -50,7 +52,8 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
 }
 
 .c3 {
-  width: 24em;
+  width: 25em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
   left: 24em;
@@ -110,7 +113,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 1`] = `
 exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
 .c4 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -140,20 +143,23 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
 }
 
 .c2 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 20.833333333333336em;
   position: relative;
 }
 
 .c3 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
@@ -516,6 +522,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 children 1`] = `
 exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10 len 1`] = `
 .c1 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 20.833333333333336em;
   position: relative;
@@ -542,7 +549,7 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
 exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 100 len 1`] = `
 .c4 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -572,20 +579,23 @@ exports[`ThrottleScroller 需要滚动条 HTML结构 theme is default data is 10
 }
 
 .c2 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 20.833333333333336em;
   position: relative;
 }
 
 .c3 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;

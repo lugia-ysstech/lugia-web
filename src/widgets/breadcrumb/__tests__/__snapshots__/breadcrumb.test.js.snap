@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链接 1`] = `
+.c2 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
 .c1 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-.c0 {
   color: #999999;
   font-weight: 500;
   font-size: 1.1666666666666667em;
@@ -17,147 +17,7 @@ exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链�
   text-decoration: none;
 }
 
-.c0:hover {
-  color: #333333;
-}
-
-.c2 {
-  color: #333333;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c2:hover {
-  color: #333333;
-}
-
-<div>
-  <a
-    className="c0"
-    href="/"
-  >
-    主页
-  </a>
-  <span
-    className="c1"
-    href="/"
-  >
-    &gt;
-  </span>
-  <a
-    className="c0"
-    href="/"
-  >
-    一级菜单
-  </a>
-  <span
-    className="c1"
-    href="/"
-  >
-    &gt;
-  </span>
-  <a
-    className="c2"
-    href="/"
-  >
-    二级菜单
-  </a>
-  <span
-    className="c1"
-    href="/"
-  >
-    
-  </span>
-</div>
-`;
-
-exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
-.c1 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-.c0 {
-  color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-.c2 {
-  color: #333333;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c2:hover {
-  color: #333333;
-}
-
-<div>
-  <a
-    className="c0"
-  >
-    主页
-  </a>
-  <span
-    className="c1"
-  >
-    &gt;
-  </span>
-  <a
-    className="c0"
-  >
-    一级菜单
-  </a>
-  <span
-    className="c1"
-  >
-    &gt;
-  </span>
-  <a
-    className="c2"
-  >
-    二级菜单
-  </a>
-  <span
-    className="c1"
-  >
-    
-  </span>
-</div>
-`;
-
-exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
-.c2 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-.c0 {
-  color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
+.c1:hover {
   color: #333333;
 }
 
@@ -173,24 +33,106 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
   color: #333333;
 }
 
-.c1 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
+.c0 {
+  display: inline-block;
 }
 
-<div>
+<div
+  className="c0"
+>
   <a
-    className="c0"
+    className="c1"
+    href="/"
   >
-    <i
-      className="lugia-icon-reminder_close_circle_o  c1"
-    />
-    <span>
-      主页
-    </span>
+    主页
+  </a>
+  <span
+    className="c2"
+    href="/"
+  >
+    &gt;
+  </span>
+  <a
+    className="c1"
+    href="/"
+  >
+    一级菜单
+  </a>
+  <span
+    className="c2"
+    href="/"
+  >
+    &gt;
+  </span>
+  <a
+    className="c3"
+    href="/"
+  >
+    二级菜单
+  </a>
+  <span
+    className="c2"
+    href="/"
+  >
+    
+  </span>
+</div>
+`;
+
+exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
+.c2 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+.c1 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1:hover {
+  color: #333333;
+}
+
+.c3 {
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:hover {
+  color: #333333;
+}
+
+.c0 {
+  display: inline-block;
+}
+
+<div
+  className="c0"
+>
+  <a
+    className="c1"
+  >
+    主页
+  </a>
+  <span
+    className="c2"
+  >
+    &gt;
+  </span>
+  <a
+    className="c1"
+  >
+    一级菜单
   </a>
   <span
     className="c2"
@@ -200,15 +142,92 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
   <a
     className="c3"
   >
+    二级菜单
+  </a>
+  <span
+    className="c2"
+  >
+    
+  </span>
+</div>
+`;
+
+exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
+.c3 {
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  margin-left: 0.8333333333333334em;
+  margin-right: 0.8333333333333334em;
+  color: #999999;
+}
+
+.c1 {
+  color: #999999;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1:hover {
+  color: #333333;
+}
+
+.c4 {
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.1666666666666667em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4:hover {
+  color: #333333;
+}
+
+.c0 {
+  display: inline-block;
+}
+
+.c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: NaNem;
+}
+
+<div
+  className="c0"
+>
+  <a
+    className="c1"
+  >
+    <i
+      className="lugia-icon-reminder_close_circle_o  c2"
+    />
+    <span>
+      主页
+    </span>
+  </a>
+  <span
+    className="c3"
+  >
+    &gt;
+  </span>
+  <a
+    className="c4"
+  >
     <span>
       一级面包屑菜单
     </span>
     <i
-      className="lugia-icon-reminder_close_circle_o  c1"
+      className="lugia-icon-reminder_close_circle_o  c2"
     />
   </a>
   <span
-    className="c2"
+    className="c3"
   >
     
   </span>
@@ -349,7 +368,7 @@ Array [
 `;
 
 exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
-.c1 {
+.c2 {
   font-weight: 500;
   font-size: 1.1666666666666667em;
   margin-left: 0.8333333333333334em;
@@ -357,7 +376,7 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
   color: #999999;
 }
 
-.c0 {
+.c1 {
   color: #999999;
   font-weight: 500;
   font-size: 1.1666666666666667em;
@@ -365,11 +384,11 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
   text-decoration: none;
 }
 
-.c0:hover {
+.c1:hover {
   color: #333333;
 }
 
-.c2 {
+.c3 {
   color: #333333;
   font-weight: 500;
   font-size: 1.1666666666666667em;
@@ -377,38 +396,44 @@ exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
   text-decoration: none;
 }
 
-.c2:hover {
+.c3:hover {
   color: #333333;
 }
 
-<div>
+.c0 {
+  display: inline-block;
+}
+
+<div
+  className="c0"
+>
   <a
-    className="c0"
+    className="c1"
   >
     主页
   </a>
   <span
-    className="c1"
+    className="c2"
   >
     /
   </span>
   <a
-    className="c0"
+    className="c1"
   >
     一级菜单
   </a>
   <span
-    className="c1"
+    className="c2"
   >
     /
   </span>
   <a
-    className="c2"
+    className="c3"
   >
     二级菜单
   </a>
   <span
-    className="c1"
+    className="c2"
   >
     
   </span>
