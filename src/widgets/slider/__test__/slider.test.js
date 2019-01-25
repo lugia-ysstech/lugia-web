@@ -792,61 +792,61 @@ describe('default', () => {
       newItem: { style: { color: 'pink' }, text: '20℃' },
     }
   );
-  // onChange(
-  //   '纵向 marks length=1',
-  //   { maxValue: 50, defaultValue: 10, minValue: 0, marks, vertical: true },
-  //   { offsetTop: 603 },
-  //   { pageX: 979, pageY: 855 },
-  //   {
-  //     oldValue: 10,
-  //     newValue: 10,
-  //     oldItem: { text: '10℃', style: { color: 'blue' } },
-  //     newItem: { text: '10℃', style: { color: 'blue' } },
-  //   }
-  // );
-  // onChange(
-  //   '纵向 marks length=1',
-  //   { maxValue: 50, defaultValue: 10, minValue: 0, marks, vertical: true },
-  //   { offsetTop: 603 },
-  //   { pageX: 980, pageY: 613 },
-  //   {
-  //     oldValue: 10,
-  //     newValue: 50,
-  //     oldItem: { text: '10℃', style: { color: 'blue' } },
-  //     newItem: '50',
-  //   }
-  // );
-  // onChange(
-  //   '纵向 marks length=2',
-  //   { maxValue: 50, defaultValue: [10, 20], minValue: 0, marks, vertical: true },
-  //   { offsetTop: 603 },
-  //   { pageX: 1116, pageY: 679 },
-  //   {
-  //     oldValue: [10, 20],
-  //     newValue: [10, 40],
-  //     oldItem: [
-  //       { text: '10℃', style: { color: 'blue' } },
-  //       { style: { color: 'pink' }, text: '20℃' },
-  //     ],
-  //     newItem: [
-  //       { text: '10℃', style: { color: 'blue' } },
-  //       { style: { color: 'red' }, text: '40℃' },
-  //     ],
-  //   }
-  // );
-  // onChange(
-  //   '纵向 marks length=2',
-  //   { maxValue: 50, defaultValue: [10, 20], minValue: 0, marks, vertical: true },
-  //   { offsetTop: 603 },
-  //   { pageX: 1116, pageY: 877 },
-  //   {
-  //     oldValue: [10, 20],
-  //     newValue: [0, 20],
-  //     oldItem: [
-  //       { text: '10℃', style: { color: 'blue' } },
-  //       { style: { color: 'pink' }, text: '20℃' },
-  //     ],
-  //     newItem: ['0', { style: { color: 'pink' }, text: '20℃' }],
-  //   }
-  // );
+  onChange(
+    '纵向 marks length=1',
+    { maxValue: 50, defaultValue: 10, minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 979, pageY: 855 },
+    {
+      oldValue: 10,
+      newValue: 10,
+      oldItem: { text: '10℃', style: { color: 'blue' } },
+      newItem: { text: '10℃', style: { color: 'blue' } },
+    }
+  );
+  onChange(
+    '纵向 marks length=1',
+    { maxValue: 50, defaultValue: 10, minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 980, pageY: 613 },
+    {
+      oldValue: 10,
+      newValue: 50,
+      oldItem: { text: '10℃', style: { color: 'blue' } },
+      newItem: '50',
+    }
+  );
+  onChange(
+    '纵向 marks length=2',
+    { maxValue: 50, defaultValue: [10, 20], minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 1116, pageY: 679 },
+    {
+      oldValue: [10, 20],
+      newValue: [10, 40],
+      oldItem: [
+        { text: '10℃', style: { color: 'blue' } },
+        { style: { color: 'pink' }, text: '20℃' },
+      ],
+      newItem: [
+        { text: '10℃', style: { color: 'blue' } },
+        { style: { color: 'red' }, text: '40℃' },
+      ],
+    }
+  );
+  onChange(
+    '纵向 marks length=2',
+    { maxValue: 50, defaultValue: [10, 20], minValue: 0, marks, vertical: true },
+    { offsetTop: 603 },
+    { pageX: 1116, pageY: 877 },
+    {
+      oldValue: [10, 20],
+      newValue: [0, 20],
+      oldItem: [
+        { text: '10℃', style: { color: 'blue' } },
+        { style: { color: 'pink' }, text: '20℃' },
+      ],
+      newItem: ['0', { style: { color: 'pink' }, text: '20℃' }],
+    }
+  );
 });

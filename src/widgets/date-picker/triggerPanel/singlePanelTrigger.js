@@ -188,7 +188,7 @@ class DateInput extends Component<TypeProps, TypeState> {
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
-    const newVal = this.getWeekStart(value, format, isWeeks);
+    const { newVal, isStartOfWeek } = this.getWeekStart(value, format, isWeeks);
     const moments = moment(newVal, newFormat);
     const { years, months } = moments.toObject();
     const modeParams = {
@@ -198,6 +198,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       value: newVal,
       isScroll: false,
     };
+    this.setState({ isStartOfWeek });
     this.targetMode.onChange(modeParams);
     this.getWeekStart(value, format, isWeeks);
   };
@@ -214,8 +215,7 @@ class DateInput extends Component<TypeProps, TypeState> {
         newVal = getValueFromWeekToDate(value, format, 'endOf');
       }
     }
-    this.setState({ isStartOfWeek });
-    return newVal;
+    return { newVal, isStartOfWeek };
   };
   onFocus = () => {
     this.isClear = false;
