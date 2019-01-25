@@ -30,13 +30,12 @@ describe('Rate igflow Test', () => {
       expect(res).toEqual(expectation);
     });
   }
-
   checkCreateArr(5, 0, false, ['default', 'default', 'default', 'default', 'default']);
   checkCreateArr(5, 1, false, ['primary', 'default', 'default', 'default', 'default']);
   checkCreateArr(3, 1, false, ['primary', 'default', 'default']);
   checkCreateArr(0, 0, false, []);
-  checkCreateArr(null, 0, false, ['default']);
-  checkCreateArr(undefined, 0, false, ['default']);
+  checkCreateArr(null, 0, false, []);
+  checkCreateArr(undefined, 0, false, []);
   checkCreateArr('5', 0, false, ['default', 'default', 'default', 'default', 'default']);
   checkCreateArr(5, 2.5, true, ['primary', 'primary', 'half', 'default', 'default']);
 
