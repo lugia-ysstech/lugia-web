@@ -44,7 +44,7 @@ exports[`DropMenuButton default 1`] = `
         type="button"
       />
       <i
-        className="lugia-icon-direction_down  sc-iwsKbI cXeQfc"
+        className="lugia-icon-direction_down  sc-iwsKbI jRhfSB"
       />
     </span>
   </div>
@@ -78,7 +78,7 @@ exports[`DropMenuButton divided={false} 1`] = `
       className="sc-hMqMXs bUVEqw"
     >
       <i
-        className="lugia-icon-direction_down  sc-iwsKbI cXeQfc"
+        className="lugia-icon-direction_down  sc-iwsKbI jRhfSB"
       />
     </span>
   </div>
@@ -116,7 +116,7 @@ exports[`DropMenuButton type=basic 1`] = `
         className="sc-cMljjf heWFwA sc-hMqMXs bUVEqw"
       >
         <i
-          className="lugia-icon-direction_down  sc-iwsKbI cXeQfc"
+          className="lugia-icon-direction_down  sc-iwsKbI jRhfSB"
         />
       </span>
     </span>
@@ -168,7 +168,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
         type="button"
       />
       <i
-        className="lugia-icon-direction_down  sc-iwsKbI cXeQfc"
+        className="lugia-icon-direction_down  sc-iwsKbI jRhfSB"
       />
     </span>
   </div>

@@ -17,25 +17,25 @@ exports[`Item Mutliple MenuItem 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #333333;
-  font-weight: 500;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 500;
+}
+
+.c0:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c0:hover:after {
   color: #d0c8c8;
-}
-
-.c0:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
 }
 
 .c0:hover:after {
@@ -75,16 +75,21 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #4d63ff;
-  font-weight: 900;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #4d63ff;
+  font-weight: 900;
+}
+
+.c0:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c0:after {
@@ -93,11 +98,6 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 
 .c0:hover:after {
   color: #4d63ff;
-}
-
-.c0:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
 }
 
 .c0:after {
@@ -141,25 +141,25 @@ exports[`Item Single MenuItem 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #333333;
-  font-weight: 500;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 500;
+}
+
+.c0:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c0:hover:after {
   color: #d0c8c8;
-}
-
-.c0:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
 }
 
 <li
@@ -193,16 +193,21 @@ exports[`Item Single MenuItem checked 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #4d63ff;
-  font-weight: 900;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #4d63ff;
+  font-weight: 900;
+}
+
+.c0:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c0:after {
@@ -211,11 +216,6 @@ exports[`Item Single MenuItem checked 1`] = `
 
 .c0:hover:after {
   color: #4d63ff;
-}
-
-.c0:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
 }
 
 <li
@@ -251,25 +251,25 @@ exports[`Item children: null 1`] = `
   box-sizing: border-box;
   position: relative;
   display: block;
-  height: 2.916666666666667em;
   font-weight: 400;
-  color: #333333;
-  font-weight: 500;
   white-space: nowrap;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
+  height: 2.916666666666667em;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 500;
+}
+
+.c0:hover {
+  font-weight: 900;
+  background-color: #edf0fe;
 }
 
 .c0:hover:after {
   color: #d0c8c8;
-}
-
-.c0:hover {
-  background-color: #edf0fe;
-  font-weight: 900;
 }
 
 <li

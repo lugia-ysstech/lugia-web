@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tag Theme: type= basic, closeable=false shape= round 1`] = `
+exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -8,6 +8,12 @@ exports[`Tag Theme: type= basic, closeable=false shape= round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   padding: 0 0.6666666666666667em;
@@ -15,29 +21,23 @@ exports[`Tag Theme: type= basic, closeable=false shape= round 1`] = `
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #ffffff;
-  color: ff5588;
-  border: 1px solid ff5588;
-}
-
-.c0:hover {
-  background: #ffffff;
-  color: #000000;
-  border-color: #000000;
+  color: #666666;
+  border: 1px solid #cccccc;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -45,19 +45,12 @@ exports[`Tag Theme: type= basic, closeable=false shape= round 1`] = `
 >
   <span
     className="c1"
+    type="basic"
   />
 </div>
 `;
 
 exports[`Tag Theme: type= basic, shape= round 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -65,41 +58,36 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #ffffff;
-  color: ff5588;
-  border: 1px solid ff5588;
-}
-
-.c0:hover {
-  background: #ffffff;
-  color: #000000;
-  border-color: #000000;
+  color: #666666;
+  border: 1px solid #cccccc;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -107,19 +95,12 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
 >
   <span
     className="c1"
+    type="basic"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
-exports[`Tag Theme: type= customs, closeable=false shape= round 1`] = `
+exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -127,6 +108,12 @@ exports[`Tag Theme: type= customs, closeable=false shape= round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   padding: 0 0.6666666666666667em;
@@ -140,23 +127,24 @@ exports[`Tag Theme: type= customs, closeable=false shape= round 1`] = `
 }
 
 .c0:hover {
-  background: #000000;
+  background: ff5588;
   color: #ffffff;
   border-color: #000000;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -164,19 +152,12 @@ exports[`Tag Theme: type= customs, closeable=false shape= round 1`] = `
 >
   <span
     className="c1"
+    type="customs"
   />
 </div>
 `;
 
 exports[`Tag Theme: type= customs, shape= round 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -184,9 +165,15 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
@@ -197,28 +184,24 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
 }
 
 .c0:hover {
-  background: #000000;
+  background: ff5588;
   color: #ffffff;
   border-color: #000000;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -226,19 +209,12 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
 >
   <span
     className="c1"
+    type="customs"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
-exports[`Tag Theme: type= presets, closeable=false shape= round 1`] = `
+exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -246,6 +222,12 @@ exports[`Tag Theme: type= presets, closeable=false shape= round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   padding: 0 0.6666666666666667em;
@@ -266,16 +248,17 @@ exports[`Tag Theme: type= presets, closeable=false shape= round 1`] = `
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -283,19 +266,12 @@ exports[`Tag Theme: type= presets, closeable=false shape= round 1`] = `
 >
   <span
     className="c1"
+    type="presets"
   />
 </div>
 `;
 
 exports[`Tag Theme: type= presets, shape= round 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -303,9 +279,15 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
@@ -323,21 +305,17 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -345,19 +323,12 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
 >
   <span
     className="c1"
+    type="presets"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
-exports[`Tag Theme: type= primary, closeable=false shape= round 1`] = `
+exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -365,6 +336,12 @@ exports[`Tag Theme: type= primary, closeable=false shape= round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
   padding: 0 0.6666666666666667em;
@@ -372,29 +349,23 @@ exports[`Tag Theme: type= primary, closeable=false shape= round 1`] = `
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: ff5588;
+  background: #e8e8e8;
   color: #666666;
-  border: 1px solid ff5588;
-}
-
-.c0:hover {
-  background: ff5588;
-  color: #000000;
-  border-color: ff5588;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
+  height: 1.6666666666666667em;
   line-height: 1.6666666666666667em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -402,19 +373,12 @@ exports[`Tag Theme: type= primary, closeable=false shape= round 1`] = `
 >
   <span
     className="c1"
+    type="primary"
   />
 </div>
 `;
 
 exports[`Tag Theme: type= primary, shape= round 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -422,41 +386,36 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: ff5588;
+  background: #e8e8e8;
   color: #666666;
-  border: 1px solid ff5588;
-}
-
-.c0:hover {
-  background: ff5588;
-  color: #000000;
-  border-color: ff5588;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
+  height: 1.6666666666666667em;
   line-height: 1.6666666666666667em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -464,27 +423,12 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
 >
   <span
     className="c1"
+    type="primary"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
 exports[`Tag default: type = basic 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -492,41 +436,36 @@ exports[`Tag default: type = basic 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #ffffff;
   color: #666666;
-  border: 1px solid #999999;
-}
-
-.c0:hover {
-  background: #ffffff;
-  color: #999999;
-  border-color: #999999;
+  border: 1px solid #cccccc;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="basic"
@@ -534,27 +473,12 @@ exports[`Tag default: type = basic 1`] = `
 >
   <span
     className="c1"
+    type="basic"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
 exports[`Tag default: type = basic, shape = round 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -562,41 +486,36 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #ffffff;
   color: #666666;
-  border: 1px solid #999999;
-}
-
-.c0:hover {
-  background: #ffffff;
-  color: #999999;
-  border-color: #999999;
+  border: 1px solid #cccccc;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -604,27 +523,12 @@ exports[`Tag default: type = basic, shape = round 1`] = `
 >
   <span
     className="c1"
+    type="basic"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
 exports[`Tag default: type = customs 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -632,41 +536,43 @@ exports[`Tag default: type = customs 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #684fff;
+  background: #4d63ff;
   color: #ffffff;
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c0:hover {
-  background: #9482ff;
+  background: #4d63ff;
   color: #ffffff;
-  border-color: #9482ff;
+  border-color: #8090ff;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="basic"
@@ -674,27 +580,12 @@ exports[`Tag default: type = customs 1`] = `
 >
   <span
     className="c1"
+    type="customs"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
 exports[`Tag default: type = customs, shape = round 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -702,41 +593,43 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #684fff;
+  background: #4d63ff;
   color: #ffffff;
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c0:hover {
-  background: #9482ff;
+  background: #4d63ff;
   color: #ffffff;
-  border-color: #9482ff;
+  border-color: #8090ff;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -744,27 +637,12 @@ exports[`Tag default: type = customs, shape = round 1`] = `
 >
   <span
     className="c1"
+    type="customs"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
 exports[`Tag default: type = presets 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -772,9 +650,15 @@ exports[`Tag default: type = presets 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
@@ -792,21 +676,17 @@ exports[`Tag default: type = presets 1`] = `
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="basic"
@@ -814,27 +694,12 @@ exports[`Tag default: type = presets 1`] = `
 >
   <span
     className="c1"
+    type="presets"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
 exports[`Tag default: type = presets, shape = round 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -842,9 +707,15 @@ exports[`Tag default: type = presets, shape = round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
@@ -862,21 +733,17 @@ exports[`Tag default: type = presets, shape = round 1`] = `
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
-  line-height: 1.6666666666666667em;
+  height: 1.6666666666666667em;
+  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -884,27 +751,12 @@ exports[`Tag default: type = presets, shape = round 1`] = `
 >
   <span
     className="c1"
+    type="presets"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
 exports[`Tag default: type = primary 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -912,41 +764,36 @@ exports[`Tag default: type = primary 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
   background: #e8e8e8;
   color: #666666;
-  border: 1px solid #e8e8e8;
-}
-
-.c0:hover {
-  background: #e8e8e8;
-  color: #999999;
-  border-color: #e8e8e8;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
+  height: 1.6666666666666667em;
   line-height: 1.6666666666666667em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="basic"
@@ -954,27 +801,12 @@ exports[`Tag default: type = primary 1`] = `
 >
   <span
     className="c1"
+    type="primary"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
 
 exports[`Tag default: type = primary, shape = round 1`] = `
-.c3 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   display: inline-block;
   height: 1.6666666666666667em;
@@ -982,41 +814,36 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.4166666666666667em 0 0.6666666666666667em;
+  padding: 0 0.6666666666666667em;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
   background: #e8e8e8;
   color: #666666;
-  border: 1px solid #e8e8e8;
-}
-
-.c0:hover {
-  background: #e8e8e8;
-  color: #999999;
-  border-color: #e8e8e8;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.5em;
+  height: 1.6666666666666667em;
   line-height: 1.6666666666666667em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  float: left;
-}
-
-.c2 {
-  display: inline-block;
-  padding: 0.16666666666666669em 0 0 0.25em;
+  vertical-align: top;
 }
 
 <div
+  checked={false}
   className="c0"
   onClick={[Function]}
   shape="round"
@@ -1024,14 +851,7 @@ exports[`Tag default: type = primary, shape = round 1`] = `
 >
   <span
     className="c1"
+    type="primary"
   />
-  <span
-    className="c2"
-  >
-    <i
-      className="lugia-icon-reminder_close  c3"
-      onClick={[Function]}
-    />
-  </span>
 </div>
 `;
