@@ -57,7 +57,8 @@ VTab.displayName = 'yTabpane';
 const HTab = BaseTab.extend`
   display: inline-block;
   line-height: ${getTabpaneHeight};
-  height: ${getTabpaneHeight} ${getTabpanePadding};
+  height: ${getTabpaneHeight};
+  ${getTabpanePadding};
   ${getTabpaneFocusShadow};
   ${getTabpaneBorderTopRadius};
   ${getTabpaneBottom};
