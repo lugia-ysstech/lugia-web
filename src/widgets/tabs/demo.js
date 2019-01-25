@@ -451,7 +451,14 @@ export default () => {
   const view = {
     [Widget.Tabs]: {
       width: 500,
-      height: 200,
+    },
+  };
+  const height = {
+    [Widget.Tabs]: {
+      height: 60,
+    },
+    [Widget.Tabpane]: {
+      height: 60,
     },
   };
   return (
@@ -467,6 +474,18 @@ export default () => {
             defaultData={defaultData}
           />
         </Wrapper>
+        <Theme config={height}>
+          <Wrapper>
+            <p>height 60 </p>
+            <Tabs
+              tabType={'line'}
+              tabPosition={'top'}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+              defaultData={defaultData}
+            />
+          </Wrapper>
+        </Theme>
         <Wrapper>
           <p>suffixIcon </p>
           <Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />
