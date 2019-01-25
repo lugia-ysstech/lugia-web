@@ -155,9 +155,9 @@ describe('Rate Test', () => {
     it('Function GetIconByType ', () => {
       const res = getIconByType(status, props);
       const { type } = props;
-      if (!status) {
+      if (!status || !res) {
         expect(res).toBe(expectation);
-      } else if (type === 1 && status === 'default') {
+      } else if (typeof res === 'string' || (type === 1 && status === 'default')) {
         expect(res).toEqual(expectation);
       } else {
         const { iconClass } = res.props;
