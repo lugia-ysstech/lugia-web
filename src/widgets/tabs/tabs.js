@@ -417,10 +417,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getHTabs() {
-    const { tabType, tabPosition } = this.props;
+    const { tabType, tabPosition, getTheme } = this.props;
     const { totalPage } = this.state;
     return [
-      <HTabsOutContainer tabType={tabType} tabPosition={tabPosition} showPadding={totalPage > 1}>
+      <HTabsOutContainer
+        tabType={tabType}
+        tabPosition={tabPosition}
+        showPadding={totalPage > 1}
+        theme={getTheme()}
+      >
         {this.getHtabsChildren()}
         {this.getShadowLine()}
       </HTabsOutContainer>,
@@ -454,7 +459,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getHtabsChildren() {
-    const { tabType } = this.props;
+    const { tabType, getTheme } = this.props;
     const arrowLeft = 'lugia-icon-direction_Left';
     const arrowRight = 'lugia-icon-direction_right';
     const pre = this.getArrowConfig('pre');
@@ -464,7 +469,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         <PageIcon iconClass={arrowLeft} {...pre} />
       </HPrePage>,
       <HTabsContainer tabType={tabType}>
-        <HscrollerContainer tabType={tabType} x={this.computePagedX()}>
+        <HscrollerContainer tabType={tabType} x={this.computePagedX()} theme={getTheme()}>
           {this.getChildren()}
           {this.getAddButton()}
           {this.getHline()}
@@ -477,11 +482,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getAddButton() {
-    const { tabType } = this.props;
+    const { tabType, getTheme } = this.props;
     const add = 'lugia-icon-reminder_plus';
     if (!matchType(tabType, 'line')) {
       return (
-        <AddOutContainer tabType={tabType}>
+        <AddOutContainer tabType={tabType} theme={getTheme()}>
           <AddContainer tabType={tabType} onClick={this.onAddClick}>
             <AddIcon tabType={tabType} iconClass={add} />
           </AddContainer>

@@ -109,9 +109,11 @@ export const vContainerHeight = props => {
   return `${em(height)};`;
 };
 export const hContainerHeight = props => {
-  const { tabType } = props;
-  const height = matchType(tabType, 'window') ? em(38) : em(34);
-  return height;
+  const { tabType, theme } = props;
+  const { height } = theme;
+  const theHeight =
+    height && height !== 0 ? em(height) : matchType(tabType, 'window') ? em(38) : em(34);
+  return theHeight;
 };
 export const lineWidth = props => {
   const { lineWidth } = props;
@@ -227,4 +229,10 @@ export const getContainerPadding = props => {
 export const getTabpaneCursor = props => {
   const { disabled } = props;
   return `cursor:${disabled ? 'not-allowed' : 'pointer'}`;
+};
+export const getTabpaneHeight = props => {
+  const { theme } = props;
+  const { height } = theme;
+  const theHeight = height && height !== 0 ? em(height) : em(34);
+  return theHeight;
 };

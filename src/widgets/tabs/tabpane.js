@@ -27,6 +27,7 @@ import {
   getButtonShow,
   getClearButtonOpacity,
   getTabpaneCursor,
+  getTabpaneHeight,
 } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -55,8 +56,8 @@ const VTab = BaseTab.extend`
 VTab.displayName = 'yTabpane';
 const HTab = BaseTab.extend`
   display: inline-block;
-  line-height: ${em(30)};
-  ${getTabpanePadding};
+  line-height: ${getTabpaneHeight};
+  height: ${getTabpaneHeight} ${getTabpanePadding};
   ${getTabpaneFocusShadow};
   ${getTabpaneBorderTopRadius};
   ${getTabpaneBottom};
@@ -88,8 +89,8 @@ const Title = styled.div`
   user-select: none;
   text-align: left;
   ${getTitlePadding};
-  height: ${em(32)};
-  line-height: ${em(32)};
+  height: ${getTabpaneHeight};
+  line-height: ${getTabpaneHeight};
   &:focus {
     ${getTabpaneHoverColor};
   }
@@ -177,7 +178,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   getHTabpane() {
-    const { title, tabType, isSelect, icon, suffixIcon, disabled } = this.props;
+    const { title, tabType, isSelect, icon, suffixIcon, disabled, getTheme } = this.props;
     const Target = (
       <HTab
         disabled={disabled}
@@ -187,6 +188,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         innerRef={cmp => (this.tabpane = cmp)}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
+        theme={getTheme()}
       >
         {this.getTabIconContainer(icon)}
         <Title
@@ -195,6 +197,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           tabType={tabType}
           isSelect={isSelect}
           disabled={disabled}
+          theme={getTheme()}
         >
           {title}
         </Title>
