@@ -64,6 +64,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     model &&
       model.on('inputOnChange', (data: Object) => {
         const { value } = data;
+        console.log(value);
         this.setState({ value });
       });
   }
@@ -74,6 +75,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     const mode = preState ? preState.mode : nextProps.mode;
     const from = preState ? preState.from : mode;
     const newTimeValue = preState ? preState.value : timeValue;
+    console.log(value, year);
     return {
       value,
       timeValue: newTimeValue,

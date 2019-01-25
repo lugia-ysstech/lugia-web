@@ -46,6 +46,7 @@ export const getDerived = (nextProps: Object, preState: Object) => {
     noToday = true;
   }
   let startInWeek, endInWeek;
+  console.log(newValue, weekIndex, lastDayIndexInMonth);
   if (isWeeks) {
     const { startInWeeks, endInWeeks } = getDatesfromWeeks(moment(newValue, newFormat), weekIndex);
     startInWeek = startInWeeks;
@@ -74,7 +75,7 @@ export const getDerived = (nextProps: Object, preState: Object) => {
 };
 export function getDerivedForInput(nextProps: Object, preState: Object): Object {
   const { mode } = nextProps;
-  const { isRange, isWeeks } = modeStyle(mode);
+  const { isRange, isWeeks, isWeek } = modeStyle(mode);
   const normalFormat = getNormalFormat(mode);
   const { format = normalFormat } = nextProps;
   const newPlaceholder = getPlaceholder(nextProps);
@@ -84,7 +85,7 @@ export function getDerivedForInput(nextProps: Object, preState: Object): Object 
   const modeWithValid = isRange ? valueIsValid && !isSameYandM : valueIsValid;
   let panelValue = modeWithValid ? newValue : getInValidValue(newValue, format);
   const normalValue = panelValue;
-  if (isWeeks && panelValue) {
+  if ((isWeeks || isWeek) && panelValue) {
     panelValue = [getValueFromWeekToDate(panelValue[0], format)];
   }
   return {
