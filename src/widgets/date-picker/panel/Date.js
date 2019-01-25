@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import Icon from '../../icon/index';
 import WeekDays from './week';
 import { modeStyle } from '../utils/booleanUtils';
-import { getFirstDayIndex, getYandM, getDatesfromWeeks } from '../utils/differUtils';
+import { getFirstDayIndex, getWeeksIndexRange } from '../utils/differUtils';
 import Dates from './DatePanel';
 import {
   DateHeader,
@@ -112,24 +112,11 @@ class Date extends Component<TypeProps, TypeState> {
     const { getMode } = this.props;
     getMode && getMode({ mode, from });
   };
-  onMouseOver = (index: number, child: number) => {
-    const { days, value } = this.state;
-    const { firstDayIndex } = getFirstDayIndex(days);
-    const getYandMParams = {
-      index,
-      child,
-      val: value,
-      mode: this.props.mode,
-      firstDayIndex,
-      props: this.state,
-    };
-    const { choseValue } = getYandM(getYandMParams);
-    const { weekIndex } = this.state;
-    const moments = moment(choseValue, 'YYYY-MM-DD');
-    const { endInWeeks, startInWeeks } = getDatesfromWeeks(moments, weekIndex, index);
+  onMouseOver = (index: number) => {
+    const { startIndex, endIndex } = getWeeksIndexRange(index);
     this.setState({
-      weekHoverStart: startInWeeks,
-      weekHoverEnd: endInWeeks,
+      weekHoverStart: startIndex,
+      weekHoverEnd: endIndex,
     });
   };
   onMouseOut = () => {

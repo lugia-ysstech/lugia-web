@@ -6,7 +6,7 @@
 import moment from 'moment';
 import { getformatSymbol } from './utils';
 import { getIsSame, formatValueIsValid, modeStyle } from './booleanUtils';
-import { getDays, getDatesfromWeeks, getValueFromWeekToDate } from './differUtils';
+import { getDays, getRangeIndexfromWeeks, getValueFromWeekToDate } from './differUtils';
 export const getNormalFormat = (mode: string): string => {
   const { isWeeks, isWeek, isMonth, isYear, isTime, isTimes } = modeStyle(mode);
   const normalFormat = isMonth
@@ -22,8 +22,7 @@ export const getNormalFormat = (mode: string): string => {
 };
 
 export const getDerived = (nextProps: Object, preState: Object) => {
-  const { value, format, mode, valueIsValid, hasOldValue } = nextProps;
-
+  const { value, format, mode, valueIsValid, hasOldValue, isStartOfWeek } = nextProps;
   const { isWeeks } = modeStyle(mode);
   const newValue = preState ? preState.value : value;
   const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
@@ -48,10 +47,16 @@ export const getDerived = (nextProps: Object, preState: Object) => {
   let startInWeek, endInWeek;
   console.log(newValue, weekIndex, lastDayIndexInMonth);
   if (isWeeks) {
-    const { startInWeeks, endInWeeks } = getDatesfromWeeks(moment(newValue, newFormat), weekIndex);
+    const { startInWeeks, endInWeeks } = getRangeIndexfromWeeks(
+      moment(newValue, newFormat),
+      weekIndex,
+      isStartOfWeek
+    );
+    console.log(startInWeeks, endInWeeks);
     startInWeek = startInWeeks;
     endInWeek = endInWeeks;
   }
+  console.log(isStartOfWeek, startInWeek, endInWeek);
   return {
     value: newValue,
     days,

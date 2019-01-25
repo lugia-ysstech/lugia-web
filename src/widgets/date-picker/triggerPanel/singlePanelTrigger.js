@@ -103,7 +103,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     const newProps = getNewProps(this.props);
     const { mode } = this.props;
     const { isTime } = modeStyle(mode);
-    console.log(panelValue);
     return (
       <Theme config={{ [Widget.Input]: { ...theme } }}>
         <Trigger
@@ -147,7 +146,7 @@ class DateInput extends Component<TypeProps, TypeState> {
           hideAction={['click']}
         >
           <Input
-            prefix={<Icon className="lugia-icon-financial_date" />}
+            prefix={<Icon iconClass="lugia-icon-financial_date" />}
             value={value}
             onChange={this.onChange}
             placeholder={placeholder}
@@ -192,7 +191,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     const newVal = this.getWeekStart(value, format, isWeeks);
     const moments = moment(newVal, newFormat);
     const { years, months } = moments.toObject();
-    console.log(newVal, years, months);
     const modeParams = {
       year: years,
       month: months,
@@ -203,15 +201,14 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.targetMode.onChange(modeParams);
     this.getWeekStart(value, format, isWeeks);
   };
-  getWeekStart = (value, format, isWeeks) => {
+  getWeekStart = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
     let newVal = value;
     let isStartOfWeek = true;
     if (isWeeks) {
       newVal = getValueFromWeekToDate(value, format);
-      const year = moment(value.format).year();
+      const year = moment(value).year();
       const years = moment(newVal, newFormat).year();
-
       if (year > years) {
         isStartOfWeek = false;
         newVal = getValueFromWeekToDate(value, format, 'endOf');
@@ -228,7 +225,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { isWeeks, isWeek } = modeStyle(mode);
     this.setState({ value, status: 'showDate' });
     const newValue = valueIsValid ? value : normalValue;
-    console.log(newValue);
     this.setModeState(newValue, format, isWeeks || isWeek);
     if (status === 'showTime') {
       this.pageFooterChange.onFocus({ status: 'showTime' });

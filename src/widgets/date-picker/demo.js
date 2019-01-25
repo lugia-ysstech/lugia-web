@@ -14,8 +14,8 @@ import Date from './panel/Date';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker, TimePicker } = DatePicker;
 
 //如需指定周开始是星期几，请配置momentConfig，此函数接受一个number类型参数，表示周开始是星期几
-const firstWeekDay = 1;
-//momentConfig(firstWeekDay);
+const firstWeekDay = 0;
+momentConfig(firstWeekDay);
 export default class Sl extends Component<any> {
   constructor() {
     super();
@@ -63,7 +63,7 @@ export default class Sl extends Component<any> {
         <br />
         <WeekPicker />
         <br />
-        <WeeksPicker />
+        <WeeksPicker defaultValue={'2022-01'} />
         <br />
         <RangePicker />
         <br />

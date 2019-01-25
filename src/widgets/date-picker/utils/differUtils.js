@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { getValueIsInRange, getIsSame, modeStyle } from './booleanUtils';
-
+import { sortable } from '../../common/Math';
 function getWeekIndex(moments: Object) {
   const momentA = moments.clone();
   const weekDay = momentA.date(1).weekday();
@@ -271,21 +271,26 @@ export const getWeeksIndexRange = (index: number) => {
     endIndex,
   };
 };
-export const getDatesfromWeeks = (moments: moment.Moment, weekIndex: number, index?: number) => {
-  const start = moments.startOf('week').date();
-  let startInWeeks = start + weekIndex;
-  let endInWeeks = startInWeeks + 7 - 1;
-  if (index !== undefined) {
-    const { startIndex, endIndex } = getWeeksIndexRange(index);
-    startInWeeks = startIndex;
-    endInWeeks = endIndex;
+export function getRangeIndexfromWeeks(
+  moments: moment.Moment,
+  weekIndex: number,
+  isStartOfWeek: boolean
+) {
+  let FuncName = 'startOf';
+  let number = 6;
+  if (!isStartOfWeek) {
+    FuncName = 'endOf';
+    number = -6;
   }
+  const start = moments[FuncName]('week').date();
+  const startInWeeks = start + weekIndex;
+  const endInWeeks = startInWeeks + number;
+  const indexs = [startInWeeks, endInWeeks].sort(sortable);
   return {
-    endInWeeks,
-    startInWeeks,
-    currentDateIndex: endInWeeks,
+    startInWeeks: indexs[0],
+    endInWeeks: indexs[1],
   };
-};
+}
 export const getweekFormatValue = (year: number, weeks: number, format: string) => {
   const weekValue = moment()
     .set({ year, weeks })
