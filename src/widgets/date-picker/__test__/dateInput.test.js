@@ -128,7 +128,7 @@ describe('default', () => {
     { stateValue: '2015-02-0' },
     { value: '2015-02-03' }
   );
-  dateInputOnBlur('dateInputOnBlur ', {}, { stateValue: '2015-02-02' }, {});
+  dateInputOnBlur('dateInputOnBlur ', {}, { stateValue: '2015-02-02' }, { value: '' });
   dateInputOnBlur(
     'dateInputOnBlur value',
     { value: '2018-01-02' },

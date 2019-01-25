@@ -17,14 +17,12 @@ class WeekDays extends Component<TypeProps, null> {
     const { onChangeWeek } = this.props;
     onChangeWeek && onChangeWeek('week');
   };
-  getnewWeeks = (props: Object) => {
+  getnewWeeks = (props: Object, firstDayOfWeek: number) => {
     const { lang } = props;
     let weeks = ['日', '一', '二', '三', '四', '五', '六'];
     if (lang === 'en') {
       weeks = moment.weekdaysShort();
     }
-    const localeData = moment.localeData();
-    const firstDayOfWeek = localeData.firstDayOfWeek();
     const moments = moment(moment().day(firstDayOfWeek));
     const newWeeks = [weeks[moments.day()]];
     for (let i = 1; i < 7; i++) {
@@ -34,7 +32,9 @@ class WeekDays extends Component<TypeProps, null> {
     return { newWeeks };
   };
   render() {
-    const { newWeeks } = this.getnewWeeks(this.props);
+    const localeData = moment.localeData();
+    const firstDayOfWeek = localeData.firstDayOfWeek();
+    const { newWeeks } = this.getnewWeeks(this.props, firstDayOfWeek);
     return (
       <HeaderWeekBox>
         {newWeeks.map((currentValue, index) => {

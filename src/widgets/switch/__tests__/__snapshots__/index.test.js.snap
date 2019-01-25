@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Switch Wrapper 1`] = `
+.c12 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: NaNem;
+}
+
 .c0 {
   font-size: 1em;
   box-sizing: border-box;
@@ -22,7 +31,7 @@ exports[`Switch Wrapper 1`] = `
   outline: none;
 }
 
-.c2 {
+.c3 {
   font-size: 1em;
   box-sizing: border-box;
   display: inline-block;
@@ -39,11 +48,11 @@ exports[`Switch Wrapper 1`] = `
   vertical-align: middle;
 }
 
-.c2:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4 {
+.c6 {
   font-size: 1em;
   box-sizing: border-box;
   display: inline-block;
@@ -60,11 +69,11 @@ exports[`Switch Wrapper 1`] = `
   vertical-align: middle;
 }
 
-.c4:focus {
+.c6:focus {
   outline: none;
 }
 
-.c6 {
+.c8 {
   font-size: 1em;
   box-sizing: border-box;
   display: inline-block;
@@ -81,11 +90,11 @@ exports[`Switch Wrapper 1`] = `
   vertical-align: middle;
 }
 
-.c6:focus {
+.c8:focus {
   outline: none;
 }
 
-.c7 {
+.c10 {
   font-size: 1em;
   box-sizing: border-box;
   display: inline-block;
@@ -93,7 +102,7 @@ exports[`Switch Wrapper 1`] = `
   height: 1.6666666666666667em;
   line-height: 1.6666666666666667em;
   border-radius: 1.6666666666666667em;
-  background: #684fff;
+  background: #4d63ff;
   position: relative;
   text-align: left;
   padding: 0 0.33333333333333337em;
@@ -102,11 +111,11 @@ exports[`Switch Wrapper 1`] = `
   vertical-align: middle;
 }
 
-.c7:focus {
+.c10:focus {
   outline: none;
 }
 
-.c8 {
+.c13 {
   font-size: 1em;
   box-sizing: border-box;
   display: inline-block;
@@ -114,7 +123,7 @@ exports[`Switch Wrapper 1`] = `
   height: 1.6666666666666667em;
   line-height: 1.6666666666666667em;
   border-radius: 1.6666666666666667em;
-  background: #cac2ff;
+  background: #c0c8ff;
   position: relative;
   text-align: right;
   padding: 0 0.33333333333333337em;
@@ -123,11 +132,29 @@ exports[`Switch Wrapper 1`] = `
   vertical-align: middle;
 }
 
-.c8:focus {
+.c13:focus {
   outline: none;
 }
 
-.c1 {
+.c1 > *:first-child {
+  display: inline-block;
+  line-height: 1.6666666666666667em;
+}
+
+.c1 > *:first-child::before {
+  line-height: 1.6666666666666667em;
+}
+
+.c4 > *:first-child {
+  display: inline-block;
+  line-height: 1.3333333333333335em;
+}
+
+.c4 > *:first-child::before {
+  line-height: 1.3333333333333335em;
+}
+
+.c2 {
   width: 1.1666666666666667em;
   height: 1.1666666666666667em;
   line-height: 1.1666666666666667em;
@@ -146,7 +173,22 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: all 0.2s;
 }
 
-.c3 {
+.c2 > *:first-child {
+  display: block;
+  color: #ccc;
+  line-height: 1.1666666666666667em;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+}
+
+.c2 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+  line-height: 1.1666666666666667em;
+}
+
+.c5 {
   width: 1em;
   height: 1em;
   line-height: 1em;
@@ -165,7 +207,22 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: all 0.2s;
 }
 
-.c5 {
+.c5 > *:first-child {
+  display: block;
+  color: #ccc;
+  line-height: 1em;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+}
+
+.c5 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+  line-height: 1em;
+}
+
+.c7 {
   width: 1.1666666666666667em;
   height: 1.1666666666666667em;
   line-height: 1.1666666666666667em;
@@ -184,177 +241,121 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: all 0.2s;
 }
 
+.c7 > *:first-child {
+  display: block;
+  color: #56c22d;
+  line-height: 1.1666666666666667em;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+}
+
+.c7 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+  line-height: 1.1666666666666667em;
+}
+
 .c9 {
-  font-size: 1.2rem;
+  width: 1.1666666666666667em;
+  height: 1.1666666666666667em;
+  line-height: 1.1666666666666667em;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  background: #fff;
   position: absolute;
-  width: 0.8333333333333334em;
-  height: 0.8333333333333334em;
-  left: 50%;
+  left: 0.25em;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-}
-
-.c10 {
-  height: 0.8333333333333334em;
-  width: 0.075em;
-  position: absolute;
-  left: 0.37916666666666665em;
-  top: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.7s;
-  animation-delay: 0.7s;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
 }
 
-.c12 {
-  height: 0.8333333333333334em;
-  width: 0.0675em;
-  position: absolute;
-  left: 0.3829166666666666em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.7999999999999999s;
-  animation-delay: 0.7999999999999999s;
+.c9 > *:first-child {
+  display: block;
+  color: #f22735;
+  line-height: 1.1666666666666667em;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
 }
 
-.c14 {
-  height: 0.8333333333333334em;
-  width: 0.060750000000000005em;
-  position: absolute;
-  left: 0.3862916666666667em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.8999999999999999s;
-  animation-delay: 0.8999999999999999s;
-}
-
-.c16 {
-  height: 0.8333333333333334em;
-  width: 0.054675000000000015em;
-  position: absolute;
-  left: 0.38932916666666667em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.9999999999999999s;
-  animation-delay: 0.9999999999999999s;
-}
-
-.c18 {
-  height: 0.8333333333333334em;
-  width: 0.049207500000000015em;
-  position: absolute;
-  left: 0.39206291666666665em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 1.0999999999999999s;
-  animation-delay: 1.0999999999999999s;
+.c9 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+  line-height: 1.1666666666666667em;
 }
 
 .c11 {
-  display: block;
-  width: 0.075em;
-  height: 0.075em;
-  background: #ccc;
+  width: 1.1666666666666667em;
+  height: 1.1666666666666667em;
+  line-height: 1.1666666666666667em;
   border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  background: #fff;
+  position: absolute;
+  right: 0.25em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
 }
 
-.c13 {
+.c11 > *:first-child {
   display: block;
-  width: 0.0675em;
-  height: 0.0675em;
-  background: #ccc;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+  color: #4d63ff;
+  line-height: 1.1666666666666667em;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
 }
 
-.c15 {
-  display: block;
-  width: 0.060750000000000005em;
-  height: 0.060750000000000005em;
-  background: #ccc;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+.c11 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+  line-height: 1.1666666666666667em;
 }
 
-.c17 {
-  display: block;
-  width: 0.054675000000000015em;
-  height: 0.054675000000000015em;
-  background: #ccc;
+.c14 {
+  width: 1.1666666666666667em;
+  height: 1.1666666666666667em;
+  line-height: 1.1666666666666667em;
   border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  background: #fff;
+  position: absolute;
+  left: 0.25em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
 }
 
-.c19 {
+.c14 > *:first-child {
   display: block;
-  width: 0.049207500000000015em;
-  height: 0.049207500000000015em;
-  background: #ccc;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+  color: #c0c8ff;
+  line-height: 1.1666666666666667em;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+}
+
+.c14 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+  line-height: 1.1666666666666667em;
 }
 
 <div
@@ -383,9 +384,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -403,7 +409,7 @@ exports[`Switch Wrapper 1`] = `
       size=‘small’
     </h3>
     <span
-      className="c2"
+      className="c3"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
@@ -411,9 +417,15 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
       <span
-        className="c3"
+        className="c4"
+        size="small"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c5"
         size="small"
         value={false}
       >
@@ -439,9 +451,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      月
       <span
         className="c1"
+        value={false}
+      >
+        月
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -459,16 +476,21 @@ exports[`Switch Wrapper 1`] = `
       data.length=2 isInverse defaultValue
     </h3>
     <span
-      className="c4"
+      className="c6"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       tabIndex={0}
       value={true}
     >
-      开
       <span
-        className="c5"
+        className="c1"
+        value={true}
+      >
+        开
+      </span>
+      <span
+        className="c7"
         value={true}
       >
         
@@ -486,16 +508,21 @@ exports[`Switch Wrapper 1`] = `
       data \`data.length=1 isInverse\`
     </h3>
     <span
-      className="c6"
+      className="c8"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c9"
         value={false}
       >
         
@@ -520,9 +547,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -547,9 +579,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -574,9 +611,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -601,9 +643,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -628,9 +675,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -655,9 +707,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -683,9 +740,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      月
       <span
         className="c1"
+        value={false}
+      >
+        月
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -710,9 +772,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      月
       <span
         className="c1"
+        value={false}
+      >
+        月
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -737,9 +804,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      时
       <span
         className="c1"
+        value={false}
+      >
+        时
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -767,6 +839,10 @@ exports[`Switch Wrapper 1`] = `
       <span
         className="c1"
         value={false}
+      />
+      <span
+        className="c2"
+        value={false}
       >
         
       </span>
@@ -783,16 +859,21 @@ exports[`Switch Wrapper 1`] = `
       isInverse
     </h3>
     <span
-      className="c6"
+      className="c8"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c9"
         value={false}
       >
         
@@ -810,16 +891,21 @@ exports[`Switch Wrapper 1`] = `
       data \`value\`
     </h3>
     <span
-      className="c7"
+      className="c10"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       tabIndex={0}
       value={true}
     >
-      
       <span
-        className="c5"
+        className="c1"
+        value={true}
+      >
+        
+      </span>
+      <span
+        className="c11"
         value={true}
       >
         
@@ -837,16 +923,21 @@ exports[`Switch Wrapper 1`] = `
       defaultValue
     </h3>
     <span
-      className="c7"
+      className="c10"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       tabIndex={0}
       value={true}
     >
-      
       <span
-        className="c5"
+        className="c1"
+        value={true}
+      >
+        
+      </span>
+      <span
+        className="c11"
         value={true}
       >
         
@@ -864,16 +955,21 @@ exports[`Switch Wrapper 1`] = `
       defaultValue && value
     </h3>
     <span
-      className="c7"
+      className="c10"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       tabIndex={0}
       value={true}
     >
-      
       <span
-        className="c5"
+        className="c1"
+        value={true}
+      >
+        
+      </span>
+      <span
+        className="c11"
         value={true}
       >
         
@@ -898,9 +994,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      月
       <span
         className="c1"
+        value={false}
+      >
+        月
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -918,16 +1019,21 @@ exports[`Switch Wrapper 1`] = `
       autoFocus && value
     </h3>
     <span
-      className="c7"
+      className="c10"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       tabIndex={0}
       value={true}
     >
-      年
       <span
-        className="c5"
+        className="c1"
+        value={true}
+      >
+        年
+      </span>
+      <span
+        className="c11"
         value={true}
       >
         
@@ -952,9 +1058,14 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      月
       <span
         className="c1"
+        value={false}
+      >
+        月
+      </span>
+      <span
+        className="c2"
         value={false}
       >
         
@@ -979,10 +1090,49 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={0}
       value={false}
     >
-      月
       <span
         className="c1"
         value={false}
+      >
+        月
+      </span>
+      <span
+        className="c2"
+        value={false}
+      >
+        
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      onChange value false
+    </h3>
+    <span
+      className="c10"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      tabIndex={0}
+      value={true}
+    >
+      <span
+        className="c1"
+        value={true}
+      >
+        <i
+          className="lugia-icon-logo_lugia lugia-icon-reminder_check c12"
+        />
+      </span>
+      <span
+        className="c11"
+        value={true}
       >
         
       </span>
@@ -999,73 +1149,26 @@ exports[`Switch Wrapper 1`] = `
       loading
     </h3>
     <span
-      className="c8"
+      className="c13"
       onKeyDown={null}
       onMouseDown={null}
       onMouseUp={null}
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
         value={false}
       >
-        <div
-          className="c9"
-          width={10}
-        >
-          <div
-            className="c10"
-            width={10}
-          >
-            <span
-              className="c11"
-              color="#ccc"
-              scale={false}
-            />
-          </div>
-          <div
-            className="c12"
-            width={10}
-          >
-            <span
-              className="c13"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c14"
-            width={10}
-          >
-            <span
-              className="c15"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c16"
-            width={10}
-          >
-            <span
-              className="c17"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c18"
-            width={10}
-          >
-            <span
-              className="c19"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-        </div>
+        
+      </span>
+      <span
+        className="c14"
+        value={false}
+      >
+        <i
+          className="lugia-icon-financial_loading_o  c12"
+        />
       </span>
     </span>
   </section>
@@ -1080,73 +1183,26 @@ exports[`Switch Wrapper 1`] = `
       'loading=delay:3000'
     </h3>
     <span
-      className="c8"
+      className="c13"
       onKeyDown={null}
       onMouseDown={null}
       onMouseUp={null}
       tabIndex={0}
       value={false}
     >
-      
       <span
         className="c1"
         value={false}
       >
-        <div
-          className="c9"
-          width={10}
-        >
-          <div
-            className="c10"
-            width={10}
-          >
-            <span
-              className="c11"
-              color="#ccc"
-              scale={false}
-            />
-          </div>
-          <div
-            className="c12"
-            width={10}
-          >
-            <span
-              className="c13"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c14"
-            width={10}
-          >
-            <span
-              className="c15"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c16"
-            width={10}
-          >
-            <span
-              className="c17"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c18"
-            width={10}
-          >
-            <span
-              className="c19"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-        </div>
+        
+      </span>
+      <span
+        className="c14"
+        value={false}
+      >
+        <i
+          className="lugia-icon-financial_loading_o  c12"
+        />
       </span>
     </span>
   </section>
@@ -1161,7 +1217,7 @@ exports[`Switch Wrapper 1`] = `
       disabled
     </h3>
     <span
-      className="c8"
+      className="c13"
       disabled={true}
       onKeyDown={null}
       onMouseDown={null}
@@ -1169,9 +1225,15 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={-1}
       value={false}
     >
-      
       <span
         className="c1"
+        disabled={true}
+        value={false}
+      >
+        
+      </span>
+      <span
+        className="c14"
         disabled={true}
         value={false}
       >
@@ -1190,7 +1252,7 @@ exports[`Switch Wrapper 1`] = `
       disabled loading
     </h3>
     <span
-      className="c8"
+      className="c13"
       disabled={true}
       onKeyDown={null}
       onMouseDown={null}
@@ -1198,67 +1260,21 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={-1}
       value={false}
     >
-      
       <span
         className="c1"
         disabled={true}
         value={false}
       >
-        <div
-          className="c9"
-          width={10}
-        >
-          <div
-            className="c10"
-            width={10}
-          >
-            <span
-              className="c11"
-              color="#ccc"
-              scale={false}
-            />
-          </div>
-          <div
-            className="c12"
-            width={10}
-          >
-            <span
-              className="c13"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c14"
-            width={10}
-          >
-            <span
-              className="c15"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c16"
-            width={10}
-          >
-            <span
-              className="c17"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c18"
-            width={10}
-          >
-            <span
-              className="c19"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-        </div>
+        
+      </span>
+      <span
+        className="c14"
+        disabled={true}
+        value={false}
+      >
+        <i
+          className="lugia-icon-financial_loading_o  c12"
+        />
       </span>
     </span>
   </section>
@@ -1273,7 +1289,7 @@ exports[`Switch Wrapper 1`] = `
       disabled loading=delay:3000
     </h3>
     <span
-      className="c8"
+      className="c13"
       disabled={true}
       onKeyDown={null}
       onMouseDown={null}
@@ -1281,67 +1297,21 @@ exports[`Switch Wrapper 1`] = `
       tabIndex={-1}
       value={false}
     >
-      
       <span
         className="c1"
         disabled={true}
         value={false}
       >
-        <div
-          className="c9"
-          width={10}
-        >
-          <div
-            className="c10"
-            width={10}
-          >
-            <span
-              className="c11"
-              color="#ccc"
-              scale={false}
-            />
-          </div>
-          <div
-            className="c12"
-            width={10}
-          >
-            <span
-              className="c13"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c14"
-            width={10}
-          >
-            <span
-              className="c15"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c16"
-            width={10}
-          >
-            <span
-              className="c17"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-          <div
-            className="c18"
-            width={10}
-          >
-            <span
-              className="c19"
-              color="#ccc"
-              scale=""
-            />
-          </div>
-        </div>
+        
+      </span>
+      <span
+        className="c14"
+        disabled={true}
+        value={false}
+      >
+        <i
+          className="lugia-icon-financial_loading_o  c12"
+        />
       </span>
     </span>
   </section>

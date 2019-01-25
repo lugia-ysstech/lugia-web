@@ -675,7 +675,8 @@ describe('default', () => {
         { end: 20, index: 1, start: 11, text: '11-20周', value: 1 },
         { end: 30, index: 2, start: 21, text: '21-30周', value: 2 },
         { end: 40, index: 3, start: 31, text: '31-40周', value: 3 },
-        { end: 53, index: 4, start: 41, text: '41-53周', value: 4 },
+        { end: 50, index: 4, start: 41, text: '41-50周', value: 4 },
+        { end: 53, index: 5, start: 51, text: '51-53周', value: 5 },
       ],
       rangeIndex: 1,
     }
@@ -690,9 +691,10 @@ describe('default', () => {
         { end: 20, index: 1, start: 11, text: '11-20周', value: 1 },
         { end: 30, index: 2, start: 21, text: '21-30周', value: 2 },
         { end: 40, index: 3, start: 31, text: '31-40周', value: 3 },
-        { end: 53, index: 4, start: 41, text: '41-53周', value: 4 },
+        { end: 50, index: 4, start: 41, text: '41-50周', value: 4 },
+        { end: 53, index: 5, start: 51, text: '51-53周', value: 5 },
       ],
-      rangeIndex: 4,
+      rangeIndex: 5,
     }
   );
 

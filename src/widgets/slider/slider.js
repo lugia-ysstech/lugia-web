@@ -8,7 +8,7 @@ import Widget from '../consts/index';
 import { getElementPosition } from '../utils';
 import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
 import { Button, Dot, Icons, SliderInner, SliderWrapper, Tiparrow, Tipinner, Tips } from './styled';
-
+import { getChangeValue } from './utils';
 type TypeProps = {
   btnWidth?: number | string,
   btnHeight?: number | string,
@@ -202,8 +202,8 @@ class Slider extends Component<TypeProps, TypeState> {
       newValue: length === 1 ? changeValue[0] : changeValue,
       event,
     };
-    const changeNewVal = length === 1 ? newValue : newValue.join(',');
-    const changeOldVal = length === 1 ? oldValue : oldValue.join(',');
+    const changeNewVal = length === 1 ? newValue : newValue && newValue.join(',');
+    const changeOldVal = length === 1 ? oldValue : oldValue && oldValue.join(',');
     if (changeNewVal === changeOldVal) {
       return;
     }

@@ -110,7 +110,7 @@ describe('default', () => {
     { year: 2015, weeks: 3, from: 'date', mode: 'date' },
     { isWeekInner: true, start: 1, text: '1-12', weeks: 2 },
     {
-      state: { secondTitle: '1-12', isWeekInner: true, weeks: 2, year: 2015 },
+      state: { secondTitle: '1-12周', isWeekInner: true, weeks: 2, year: 2015 },
       result: { year: 2015, weeks: 2, mode: 'date', from: 'week' },
     }
   );
@@ -119,7 +119,7 @@ describe('default', () => {
     { year: 2019, weeks: 5, from: 'weeks', mode: 'weeks' },
     { isWeekInner: true, start: 13, text: '13-24', weeks: 15 },
     {
-      state: { secondTitle: '13-24', isWeekInner: true, weeks: 14, year: 2019 },
+      state: { secondTitle: '13-24周', isWeekInner: true, weeks: 14, year: 2019 },
       result: { year: 2019, weeks: 15, mode: 'weeks', from: 'week' },
     }
   );
@@ -128,8 +128,8 @@ describe('default', () => {
     { year: 2019, weeks: 5, from: 'weeks', mode: 'weeks' },
     { isWeekInner: false, start: 13, text: '13-24', weeks: 15 },
     {
-      state: { secondTitle: '13-24', isWeekInner: true, weeks: 14, year: 2019 },
-      result: { year: 2019, weeks: 15, mode: 'weeks', from: 'weeks' },
+      state: { secondTitle: '13-24周', isWeekInner: true, weeks: 14, year: 2019 },
+      result: { year: 2019, weeks: 15, mode: 'weeks' },
     }
   );
   panelChange(
@@ -137,8 +137,8 @@ describe('default', () => {
     { year: 2020, weeks: 5, from: 'weeks', mode: 'weeks' },
     { isWeekInner: false, start: 25, text: '25-36', weeks: 30 },
     {
-      state: { secondTitle: '25-36', isWeekInner: true, weeks: 26, year: 2020 },
-      result: { year: 2020, weeks: 30, mode: 'weeks', from: 'weeks' },
+      state: { secondTitle: '25-36周', isWeekInner: true, weeks: 26, year: 2020 },
+      result: { year: 2020, weeks: 30, mode: 'weeks' },
     }
   );
 });
