@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import Input from '../../input';
 import Icon from '../../icon/index';
-import { RangeInputWrap, RangeInputInner, RangeMiddleSpan } from '../styled/styled';
+import { RangeInputWrap, RangeInputInner, RangeMiddleSpan } from '../styled/styledRangeInput';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 type TypeProps = {
@@ -80,6 +80,8 @@ class RangeInput extends Component<TypeProps, TypeState> {
         <RangeInputWrap
           {...theme}
           mode={mode}
+          disabled={disabled}
+          width={width}
           onClick={readOnly || disabled ? '' : this.onHandleClick}
         >
           <RangeInputInner disabled={disabled}>

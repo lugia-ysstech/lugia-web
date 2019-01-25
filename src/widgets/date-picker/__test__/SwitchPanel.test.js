@@ -158,7 +158,7 @@ describe('default', () => {
     { month: 0, mode: 'weeks' },
     {
       result: { newValue: '2026-01-03', oldValue: '2026-03-03', from: 'weeks', mode: 'weeks' },
-      state: { month: 0, year: 2026, mode: 'weeks', value: '2026-01-03' },
+      state: { month: 0, year: 2026, mode: 'weeks', value: '2026-01-09' },
     }
   );
   changeMonth(

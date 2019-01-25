@@ -452,6 +452,7 @@ describe('default', () => {
       mode: 'week',
       isWeekInner: false,
       weeks: '10',
+      step: 12,
     },
     { weekIndex: 2 },
     { value: 2 }
@@ -462,6 +463,7 @@ describe('default', () => {
       mode: 'week',
       isWeekInner: false,
       weeks: '20',
+      step: 12,
     },
     { weekIndex: 1 },
     { value: 1 }
@@ -472,6 +474,7 @@ describe('default', () => {
       mode: 'week',
       isWeekInner: false,
       weeks: '22',
+      step: 12,
     },
     { weekIndex: 3 },
     { value: 3 }

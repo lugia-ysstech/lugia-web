@@ -41,6 +41,7 @@ class Weeks extends Component<TypeProps, TypeState> {
     model &&
       model.on('inputOnChange', (data: Object) => {
         const { year, weeks } = data;
+        console.log(year);
         this.setState({
           year,
           weeks,
@@ -49,6 +50,7 @@ class Weeks extends Component<TypeProps, TypeState> {
   }
   static getDerivedStateFromProps(nextProps: TypeProps, preState: TypeState) {
     const { year, weeks, from, step = 12 } = nextProps;
+    console.log(year, weeks);
     const newYear = preState ? preState.year : year;
     const newWeeks = preState ? preState.weeks : weeks;
     const newFrom = preState ? preState.from : from;
@@ -57,6 +59,7 @@ class Weeks extends Component<TypeProps, TypeState> {
     const { weeksDate, rangeIndex } = getWeeksRange(newWeeks, weeksInYear, step);
     const data = weeksDate[rangeIndex];
     const { text } = data;
+    console.log(newYear);
     return {
       year: newYear,
       weeks: Number(newWeeks),
@@ -101,6 +104,7 @@ class Weeks extends Component<TypeProps, TypeState> {
   render() {
     const { year, secondTitle, isWeekInner, weeks, step } = this.state;
     const { theme } = this.props;
+    console.log(year);
     return (
       <DateWrapper {...theme} mode={this.props.mode}>
         <div>

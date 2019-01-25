@@ -448,7 +448,7 @@ describe('Switch', () => {
     { value: true, data: [{ text: '年' }, { text: '月' }] },
     null,
     [true],
-    [{ newValue: true, oldValue: false, newItem: { text: '年' }, oldItem: { text: '月' } }]
+    [{ newValue: false, oldValue: true, newItem: { text: '月' }, oldItem: { text: '年' } }]
   );
 
   testOnChange(
