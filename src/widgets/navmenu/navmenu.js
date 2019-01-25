@@ -9,7 +9,9 @@ import Tree from '../tree';
 import Widget from '../consts/index';
 import Theme from '../theme';
 import Menu from '../menu';
+import Tabs from '../tabs';
 import styled from 'styled-components';
+import Trigger from '../trigger';
 import { getTreeData } from '../menu/utils';
 import { getValue, getInitExpandedPath } from '../cascader/utils';
 import { DefaultHeight } from '../css/navmenu';
@@ -31,6 +33,13 @@ const MenuWrap = styled.div`
   vertical-align: top;
 `;
 
+const Box = styled.div`
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: red;
+`;
+
 type RowData = { [key: string]: any };
 type NavMenuProps = {
   getTheme: Function,
@@ -40,7 +49,7 @@ type NavMenuProps = {
   inlineExpandAll?: boolean,
   data?: Array<RowData>,
   inlineType: 'primary' | 'ellipse',
-  mode: 'vertical' | 'inline',
+  mode: 'vertical' | 'inline' | 'horizontal',
   onClick?: Function,
   valueField?: string,
   displayField?: string,
@@ -90,6 +99,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       popupVisible: false,
       value: getValue(props, null),
       expandedPath: getInitExpandedPath(props),
+      showMenuKey: '',
+      activityKey: '',
+      isInTabs: false,
     };
     this.treeData = getTreeData(this.props);
   }
@@ -113,6 +125,10 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const { mode } = this.props;
     if (mode === 'vertical') {
       return this.getVerticalNavMenu();
+    }
+
+    if (mode === 'horizontal') {
+      return this.getHorizontalNavMenu();
     }
 
     return this.getInlineNavMenu();
@@ -188,6 +204,121 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return getTheme();
   };
 
+  getHorizontalNavMenu = () => {
+    const tabsData = this.getTabsData();
+    const { width } = this.getThemeTarget();
+    return (
+      // <Theme config={{ [Widget.Tabs]: { width } }}>
+        <Tabs
+          tabType={'line'}
+          tabPosition={'top'}
+          onTabClick={this.onTabClick}
+          onTabMouseEnter={this.onTabMouseEnter}
+          onTabMouseLeave={this.onTabMouseLeave}
+          onChange={this.onNextClick}
+          data={tabsData}
+          activityKey={this.state.activityKey}
+          getTabpane={this.getTabpane}
+        />
+      // </Theme>
+    );
+  };
+
+  getTabpane = (target, i) => {
+    const { popupVisible } = this.state;
+    const popup = this.getHorizontaMenu(i);
+    return (
+      <Trigger
+        offsetY={4}
+        align={'bottomLeft'}
+        createPortal
+        popup={popup}
+        action={'hover'}
+        hideAction={'hover'}
+        popupVisible={popupVisible}
+      >
+        {target}
+      </Trigger>
+    );
+  };
+
+  getHorizontaMenu = (i: string) => {
+    const { data, valueField } = this.props;
+    const { showMenuKey } = this.state;
+    const { children } = data[i];
+    if (!children || children.length === 0 || showMenuKey !== data[i][valueField]) {
+      return <div />;
+    }
+    return (
+      <Theme config={{ [Widget.Menu]: { width: 120 } }}>
+        <Menu
+          action={'hover'}
+          autoHeight
+          data={children}
+          onClick={this.onClickTabsMenu}
+          handleIsInMenu={this.tabsHandleIsInMenu}
+        />
+      </Theme>
+    );
+  };
+
+  getParentValueField = (text: string) => {
+    const { valueField } = this.props;
+    return this.treeData.filter(treeItem => text === treeItem[valueField])[0].path.split('/')[0];
+  };
+
+  onClickTabsMenu = (event: Object, keys: string[], item: Object) => {
+    const { valueField } = this.props;
+    const { children } = item;
+
+    if (!children || children.length === 0) {
+      const activityKey = this.getParentValueField(item[valueField]);
+      this.setState({ activityKey });
+      setTimeout(() => {
+        this.setState({ popupVisible: false });
+      }, 100);
+    }
+  };
+
+  isHasChildren = (activeKeys: string) => {
+    const { data, valueField } = this.props;
+    const children = data.filter(item => item[valueField] === activeKeys)[0].children;
+    return !!children && !!children.length;
+  };
+
+  onTabClick = activityKey => {
+    const isHasChildren = this.isHasChildren(activityKey);
+    // const popupVisible = isHasChildren ? true : false;
+    if (!isHasChildren) {
+      this.setState({ activityKey });
+    } else {
+      return;
+    }
+  };
+
+  onTabMouseEnter = (activeKey: string) => {
+    const isHasChildren = this.isHasChildren(activeKey);
+    const popupVisible = isHasChildren ? true : false;
+    this.setState({ popupVisible, showMenuKey: activeKey, isInTabs: true });
+  };
+
+  onTabMouseLeave = (activeKey: string) => {
+    this.setState({ isInTabs: false });
+  };
+
+  getTabsData = () => {
+    const { data, displayField, valueField } = this.props;
+    const tabsData = [];
+    data.forEach((item, i) => {
+      const target = {};
+      target.title = item[displayField];
+      target.content = <div />;
+      target.activityKey = item[valueField];
+      tabsData.push(target);
+    });
+    return tabsData;
+  };
+
   getInlineNavMenu = () => {
     const { value } = this.state;
     const {
@@ -244,12 +375,24 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return obj;
   };
 
+  tabsHandleIsInMenu = (isInMenu: boolean) => {
+    const { isInTabs } = this.state;
+    if (isInTabs || isInMenu) {
+      return;
+    }
+    setTimeout(() => {
+      this.setState({ popupVisible: false });
+    }, 220);
+  };
+
   handleIsInMenu = (isInMenu: boolean) => {
     const { popupVisible } = this.state;
     if (popupVisible && isInMenu) {
       return;
     }
-    this.setState({ popupVisible: isInMenu });
+    setTimeout(() => {
+      this.setState({ popupVisible: isInMenu });
+    }, 220);
   };
 
   onChange = (value: string[]) => {
