@@ -226,5 +226,5 @@ export const getContainerPadding = props => {
 };
 export const getTabpaneCursor = props => {
   const { disabled } = props;
-  return `cursor:${disabled ? 'not-allowed' : 'text'}`;
+  return `cursor:${disabled ? 'not-allowed' : 'pointer'}`;
 };
