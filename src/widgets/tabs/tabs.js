@@ -269,6 +269,8 @@ type TabsProps = {
   onAddClick: Function,
   pagedType: PagedType,
   getTabpane: Function,
+  onTabMouseEnter?: Function,
+  onTabMouseLeave?: Function,
 };
 function hasDataInProps(props: TabsProps) {
   return 'data' in props;
@@ -585,6 +587,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
       getTabpaneWidth: this.getTabpaneWidth,
       onDeleteClick: this.onDeleteClick,
       disabled,
+      onMouseEnter: this.onTabMouseEnter,
+      onMouseLeave: this.onTabMouseLeave,
     };
   }
 
@@ -632,8 +636,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
   getTabpaneDisabled(activityKey: string) {
     const { data } = this.state;
-    const index = getIndexfromKey(data, 'activityKey', activityKey);
-    return data[index].disabled;
+    if (activityKey) {
+      const index = getIndexfromKey(data, 'activityKey', activityKey);
+      return data[index].disabled;
+    }
+    return false;
   }
 
   onTabClick = (activityKey: string, e: Event) => {
@@ -745,6 +752,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
 
     this.setState({ currentPage, pagedCount });
+  };
+  onTabMouseEnter = (activityKey: string, e: Event) => {
+    const { onTabMouseEnter } = this.props;
+    onTabMouseEnter && onTabMouseEnter(activityKey, e);
+  };
+
+  onTabMouseLeave = (activityKey: string, e: Event) => {
+    const { onTabMouseLeave } = this.props;
+    onTabMouseLeave && onTabMouseLeave(activityKey, e);
   };
 }
 

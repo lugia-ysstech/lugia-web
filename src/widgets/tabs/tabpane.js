@@ -34,6 +34,7 @@ import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
 import { isVertical, matchType } from './utils';
+import { ObjectUtils } from '@lugia/type-utils';
 
 const em = px2emcss(1.2);
 
@@ -134,7 +135,6 @@ type TabpaneProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   getTabpaneWidth: Function,
-  onSuffixClick?: Function,
 };
 
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
@@ -188,17 +188,17 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        {this.getTabIcon(icon)}
+        {this.getTabIconContainer(icon)}
         <Title
-          hasPreIcon={this.getTabIcon(icon) !== null}
-          hasSuffixIcon={this.getTabIcon(suffixIcon) !== null}
+          hasPreIcon={this.getTabIconContainer(icon) !== null}
+          hasSuffixIcon={this.getTabIconContainer(suffixIcon) !== null}
           tabType={tabType}
           isSelect={isSelect}
           disabled={disabled}
         >
           {title}
         </Title>
-        {this.getTabIcon(suffixIcon, 'suffix')}
+        {this.getTabIconContainer(suffixIcon, 'suffix')}
         {this.getClearButton()}
       </HTab>
     );
@@ -213,20 +213,16 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const { activityKey, onClick, disabled } = this.props;
     if (!disabled) onClick && onClick(activityKey);
   };
-  onSuffixClick = e => {
-    const { onSuffixClick } = this.props;
-    onSuffixClick && onSuffixClick(e);
-  };
 
-  getTabIcon(icon, type) {
+  getTabIconContainer(icon, type) {
+    return icon ? <IconContainer>{this.getIcon(icon)}</IconContainer> : null;
+  }
+  getIcon(icon) {
     const { isSelect, disabled } = this.props;
-    const noop = () => {};
-    const suffixClick = type === 'suffix' ? this.onSuffixClick : noop;
-    return icon ? (
-      <IconContainer onClick={suffixClick}>
-        <TabIcon isSelect={isSelect} iconClass={icon} disabled={disabled} />
-      </IconContainer>
-    ) : null;
+    if (ObjectUtils.isString(icon)) {
+      return <TabIcon isSelect={isSelect} iconClass={icon} disabled={disabled} />;
+    }
+    return icon;
   }
   onDeleteClick = (e: Event) => {
     const { onDeleteClick, activityKey } = this.props;

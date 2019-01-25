@@ -9,6 +9,7 @@ import Tabs from './tabs';
 import Button from '../button';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
+import Icon from '../icon';
 import Theme from '../theme/';
 import styled from 'styled-components';
 
@@ -115,6 +116,36 @@ export const defaultData = [
   {
     title: 'Tab2',
     content: 'content of Tab2',
+  },
+  {
+    title: 'Tab3',
+    content: 'content of Tab3',
+  },
+];
+export const suffixData = [
+  {
+    title: 'Tab1',
+    content: 'content of Tab1',
+    suffixIcon: <Icon iconClass={'lugia-icon-financial_archive'} />,
+  },
+  {
+    title: 'Tab2',
+    content: 'content of Tab2',
+  },
+  {
+    title: 'Tab3',
+    content: 'content of Tab3',
+  },
+];
+export const disabledData = [
+  {
+    title: 'Tab1',
+    content: 'content of Tab1',
+  },
+  {
+    title: 'Tab2',
+    content: 'content of Tab2',
+    disabled: true,
   },
   {
     title: 'Tab3',
@@ -416,7 +447,6 @@ const hasActivityKeyChildren = [
     activityKey={'12'}
   />,
 ];
-
 export default () => {
   const view = {
     [Widget.Tabs]: {
@@ -436,6 +466,14 @@ export default () => {
             onNextClick={onNextClick}
             defaultData={defaultData}
           />
+        </Wrapper>
+        <Wrapper>
+          <p>suffixIcon </p>
+          <Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />
+        </Wrapper>
+        <Wrapper>
+          <p>disabled </p>
+          <Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />
         </Wrapper>
         <Wrapper>
           <p>data tabPosition=top</p>
