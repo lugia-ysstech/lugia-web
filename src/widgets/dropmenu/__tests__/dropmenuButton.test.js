@@ -117,95 +117,95 @@ describe('DropMenuButton', () => {
     exp(cmp.state().visible).to.be.equal(false);
   });
 
-  // it('type: default, divided={true}, action = click , click MenuItem && click LeftButton', async () => {
-  //   const Demo = getTarget('click', true, 'default');
-  //   const cmp = mount(<Demo />);
+  it('type: default, divided={true}, action = click , click MenuItem && click LeftButton', async () => {
+    const Demo = getTarget('click', true, 'default');
+    const cmp = mount(<Demo />);
 
-  //   pullButtonClick(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   pullButtonClick(cmp);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
+    pullButtonClick(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    pullButtonClick(cmp);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
 
-  //   pullButtonClick(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   clickMenuItem(cmp, 1);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
+    pullButtonClick(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    clickMenuItem(cmp, 1);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
 
-  //   clickLeftButton(cmp);
-  //   exp(cmp.state().visible).to.be.equal(false);
-  //   await delay(100);
-  //   exp(cmp.state().clickedState).to.be.equal(true);
-  // });
+    clickLeftButton(cmp);
+    exp(cmp.state().visible).to.be.equal(false);
+    await delay(100);
+    exp(cmp.state().clickedState).to.be.equal(true);
+  });
 
-  // it('type: primary, divided={false}; action = hover , click MenuItem && hover LeftButton', async () => {
-  //   const Demo = getTarget('hover', false, 'primary');
-  //   const cmp = mount(<Demo />);
+  it('type: primary, divided={false}; action = hover , click MenuItem && hover LeftButton', async () => {
+    const Demo = getTarget('hover', false, 'primary');
+    const cmp = mount(<Demo />);
 
-  //   NoDividedButtonMouseEnter(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   NoDividedButtonMouseLeave(cmp);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
+    NoDividedButtonMouseEnter(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    NoDividedButtonMouseLeave(cmp);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
 
-  //   NoDividedButtonMouseEnter(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   clickMenuItem(cmp, 1);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
-  // });
+    NoDividedButtonMouseEnter(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    clickMenuItem(cmp, 1);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
+  });
 
-  // it('type: primary, divided={false}, action = click , click MenuItem', async () => {
-  //   const Demo = getTarget('click', false, 'primary');
-  //   const cmp = mount(<Demo />);
+  it('type: primary, divided={false}, action = click , click MenuItem', async () => {
+    const Demo = getTarget('click', false, 'primary');
+    const cmp = mount(<Demo />);
 
-  //   NoDividedButtonClick(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   NoDividedButtonClick(cmp);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
+    NoDividedButtonClick(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    NoDividedButtonClick(cmp);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
 
-  //   NoDividedButtonClick(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   clickMenuItem(cmp, 1);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
-  // });
+    NoDividedButtonClick(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    clickMenuItem(cmp, 1);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
+  });
 
-  // it('type: basic, action = hover , hover MenuItem', async () => {
-  //   const Demo = getTarget('hover', false, 'basic');
-  //   const cmp = mount(<Demo />);
+  it('type: basic, action = hover , hover MenuItem', async () => {
+    const Demo = getTarget('hover', false, 'basic');
+    const cmp = mount(<Demo />);
 
-  //   BasicButtonMouseEnter(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   BasicButtonMouseLeave(cmp);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
+    BasicButtonMouseEnter(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    BasicButtonMouseLeave(cmp);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
 
-  //   BasicButtonMouseEnter(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   clickMenuItem(cmp, 1);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
-  // });
+    BasicButtonMouseEnter(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    clickMenuItem(cmp, 1);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
+  });
 
-  // it('type: basic, action = click , click MenuItem', async () => {
-  //   const Demo = getTarget('click', false, 'basic');
-  //   const cmp = mount(<Demo />);
+  it('type: basic, action = click , click MenuItem', async () => {
+    const Demo = getTarget('click', false, 'basic');
+    const cmp = mount(<Demo />);
 
-  //   BasicButtonClick(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   BasicButtonClick(cmp);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
+    BasicButtonClick(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    BasicButtonClick(cmp);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
 
-  //   BasicButtonClick(cmp);
-  //   exp(cmp.state().visible).to.be.equal(true);
-  //   clickMenuItem(cmp, 1);
-  //   await delay(100);
-  //   exp(cmp.state().visible).to.be.equal(false);
-  // });
+    BasicButtonClick(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+    clickMenuItem(cmp, 1);
+    await delay(100);
+    exp(cmp.state().visible).to.be.equal(false);
+  });
 
   function findPullButton(cmp: Object) {
     return cmp.find('DropMenuPullButton');
