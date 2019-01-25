@@ -461,6 +461,11 @@ export default () => {
       height: 60,
     },
   };
+  const vStyle = {
+    [Widget.Tabs]: {
+      height: 200,
+    },
+  };
   return (
     <div>
       <Theme config={view}>
@@ -505,27 +510,28 @@ export default () => {
             data={defaultData}
           />
         </Wrapper>
-
-        <Wrapper>
-          <p>children tabPosition=left</p>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'left'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            children={hasActivityKeyChildren}
-          />
-        </Wrapper>
-        <p>children tabPosition=right</p>
-        <RightWrapper>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'right'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            children={shortChildren}
-          />
-        </RightWrapper>
+        <Theme config={vStyle}>
+          <Wrapper>
+            <p>children tabPosition=left</p>
+            <Tabs
+              tabType={'line'}
+              tabPosition={'left'}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+              children={hasActivityKeyChildren}
+            />
+          </Wrapper>
+          <p>children tabPosition=right</p>
+          <RightWrapper>
+            <Tabs
+              tabType={'line'}
+              tabPosition={'right'}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+              children={shortChildren}
+            />
+          </RightWrapper>
+        </Theme>
         <Wrapper>
           <Tabs
             tabType={'line'}
