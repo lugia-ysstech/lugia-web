@@ -10,7 +10,7 @@ exports[`Button ChedckButton CSS 1`] = `
 }
 
 .c1:hover > span {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c8 {
@@ -131,9 +131,9 @@ exports[`Button ChedckButton CSS 1`] = `
   vertical-align: middle;
   padding: 0 0.8333333333333334em;
   cursor: pointer;
-  background-color: #684fff;
+  background-color: #4d63ff;
   color: #fff;
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
   border-right: 1px solid #fff;
   border-left: 0;
   text-align: center;
@@ -176,7 +176,7 @@ exports[`Button ChedckButton CSS 1`] = `
   border: 1px solid #e8e8e8;
   color: #cccccc;
   cursor: not-allowed;
-  background: rgba(104,79,255,0.05);
+  background: rgba(77,99,255,0.05);
   border-left: 0;
   text-align: center;
   margin: 0;
