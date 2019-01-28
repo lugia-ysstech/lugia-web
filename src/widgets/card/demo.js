@@ -16,6 +16,10 @@ const Wrapper = styled.div`
   margin-top: 50px;
   display: inline-block;
 `;
+const TabsWrapper = styled.div`
+  display: inline-block;
+  margin-left: 20px;
+`;
 const CardContainer = styled.div`
   text-align: center;
   width: 100%;
@@ -79,8 +83,8 @@ export default () => {
   };
   const combo = {
     register: {
-      width: 700,
-      height: 300,
+      width: 360,
+      height: 240,
     },
     vertical: {
       width: 200,
@@ -156,20 +160,7 @@ export default () => {
           <div>children 样式的卡片</div>
         </Card>
       </Wrapper>
-      <p>头像样式</p>
-      <Theme config={avatar}>
-        <Wrapper>
-          <Card
-            type={'avatar'}
-            title={'this is title'}
-            description={'this is description'}
-            avatar={
-              'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=7878a9471d38534398c28f73f27adb1b/738b4710b912c8fc8e9cace6f1039245d68821a9.jpg'
-            }
-            shadow={'hover'}
-          />
-        </Wrapper>
-      </Theme>
+
       <Theme config={avatar}>
         <p>头像样式</p>
         <Wrapper>
@@ -179,7 +170,43 @@ export default () => {
             description={'this is description'}
             imageOrientation={'vertical'}
             avatar={
-              'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=7878a9471d38534398c28f73f27adb1b/738b4710b912c8fc8e9cace6f1039245d68821a9.jpg'
+              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'
+            }
+            shadow={'hover'}
+          />
+        </Wrapper>
+      </Theme>
+      <p>头像样式</p>
+      <Theme config={avatar}>
+        <Wrapper>
+          <Card
+            type={'avatar'}
+            title={'this is title'}
+            description={
+              <div>
+                <div>this is description</div>
+                <div>this is description</div>
+              </div>
+            }
+            avatar={
+              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'
+            }
+            shadow={'hover'}
+          />
+        </Wrapper>
+      </Theme>
+
+      <Theme config={cardImage}>
+        <p>图片样式</p>
+        <Wrapper>
+          <Card
+            viewClass={'cardImage'}
+            type={'image'}
+            imageOrientation={'vertical'}
+            title={'this is title'}
+            description={'this is description'}
+            image={
+              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
             }
             shadow={'hover'}
           />
@@ -193,27 +220,11 @@ export default () => {
           imageOrientation={'horizontal'}
           description={'this is description'}
           image={
-            'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=4f88e0c6b3de9c82b268f1dd0de8eb6f/f9198618367adab4973d1fbc8bd4b31c8601e464.jpg'
+            'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
           }
           shadow={'hover'}
         />
       </Wrapper>
-      <Theme config={cardImage}>
-        <p>图片样式</p>
-        <Wrapper>
-          <Card
-            viewClass={'cardImage'}
-            type={'image'}
-            imageOrientation={'vertical'}
-            title={'this is title'}
-            description={'this is description'}
-            image={
-              'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=4f88e0c6b3de9c82b268f1dd0de8eb6f/f9198618367adab4973d1fbc8bd4b31c8601e464.jpg'
-            }
-            shadow={'hover'}
-          />
-        </Wrapper>
-      </Theme>
       <p>组合样式</p>
       <Theme config={combo}>
         <Wrapper>
@@ -221,7 +232,12 @@ export default () => {
             operation={'操作'}
             viewClass={'register'}
             type={'combo'}
-            content={<Tabs data={defaultData} />}
+            content={
+              <TabsWrapper>
+                {' '}
+                <Tabs data={defaultData} />
+              </TabsWrapper>
+            }
             shadow={'hover'}
           />
         </Wrapper>

@@ -18,7 +18,6 @@ import {
   getTitleColor,
   getFontWeight,
   getDescripitionColor,
-  getCardContainerBorder,
   getOutContainerDirection,
   getCardContainerBackground,
   getContentTextAlign,
@@ -45,7 +44,6 @@ const CardOutContainer = styled.div`
   ${getPos}
   ${getCardContainerSize};
   ${getCardContainerShadow};
-  ${getCardContainerBorder};
   ${getCardContainerBackground};
   ${getOutContainerDirection};
   border-radius: ${em(5)};
@@ -98,7 +96,7 @@ const TitleTipLine = styled.div`
 `;
 const Descripition = Basetext.extend`
   font-size: 1.4rem;
-  margin-top: ${em(12)};
+  margin-top: ${em(4)};
   ${getDescripitionColor};
 `;
 const Operation = styled.div`
@@ -121,14 +119,9 @@ class Card extends React.Component<CardProps, CardState> {
   static getDerivedStateFromProps(nextProps, prevState) {}
 
   render() {
-    const { getTheme, shadow, type, imageOrientation, content } = this.props;
+    const { getTheme, type, imageOrientation, content } = this.props;
     return (
-      <CardOutContainer
-        theme={getTheme()}
-        shadow={shadow}
-        type={type}
-        imageOrientation={imageOrientation}
-      >
+      <CardOutContainer theme={getTheme()} type={type} imageOrientation={imageOrientation}>
         {this.getDetails('operation')}
         {this.getImageContainer()}
         <Content imageOrientation={imageOrientation} type={type} content={content}>
