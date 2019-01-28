@@ -9,7 +9,7 @@ import 'jest-styled-components';
 import {
   getDates,
   getWeeksRangeInDates,
-  getDatesfromWeeks,
+  getRangeIndexfromWeeks,
   getWeeksRange,
   getCoversTimes,
 } from '../utils/differUtils';
@@ -572,59 +572,67 @@ describe('default', () => {
     { month: 11, year: 2019, weeks: 1 }
   );
   //utils
-  const mockMoments = number => {
+  const mockMoments = (number: number, isStartOfWeek: boolean) => {
+    let funcName = 'startOf';
+    if (!isStartOfWeek) {
+      funcName = 'endOf';
+    }
     const startOf = () => {
       const date = () => {
         return number;
       };
       return { date };
     };
-    return { startOf };
+    return { [funcName]: startOf };
   };
 
-  function testGetDatesfromWeeks(title: string, params: Object, expValue: Array<number>) {
+  function testGetRangeIndexfromWeeks(title: string, params: Object, expValue: Array<number>) {
     it(`DatePicker ${title}`, () => {
-      const { weekStartDate, weekIndex, index } = params;
-      const moments = mockMoments(weekStartDate);
-      const { endInWeeks, startInWeeks } = getDatesfromWeeks(moments, weekIndex, index);
+      const { weekStartDate, weekIndex, isStartOfWeek } = params;
+      const moments = mockMoments(weekStartDate, isStartOfWeek);
+      const { endInWeeks, startInWeeks } = getRangeIndexfromWeeks(
+        moments,
+        weekIndex,
+        isStartOfWeek
+      );
       expect(startInWeeks).toBe(expValue[0]);
       expect(endInWeeks).toBe(expValue[1]);
     });
   }
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-1',
-    { weekStartDate: 9, weekIndex: 6, value: '2018-09-14' },
+  testGetRangeIndexfromWeeks(
+    'getRangeIndexfromWeeks-1 true',
+    { weekStartDate: 9, weekIndex: 6, isStartOfWeek: true },
     [15, 21]
   );
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-2',
-    { weekStartDate: 2, weekIndex: 6, value: '2018-09-14' },
+  testGetRangeIndexfromWeeks(
+    'getRangeIndexfromWeeks-2 true',
+    { weekStartDate: 2, weekIndex: 6, isStartOfWeek: true },
     [8, 14]
   );
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-2',
-    { weekStartDate: 2, weekIndex: 6, value: '2018-09-14' },
+  testGetRangeIndexfromWeeks(
+    'getRangeIndexfromWeeks-3 true',
+    { weekStartDate: 2, weekIndex: 6, isStartOfWeek: true },
     [8, 14]
   );
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-2',
-    { weekStartDate: 30, weekIndex: 6, value: '2018-09-14' },
+  testGetRangeIndexfromWeeks(
+    'getRangeIndexfromWeeks-4 true',
+    { weekStartDate: 30, weekIndex: 6, isStartOfWeek: true },
     [36, 42]
   );
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-2',
-    { weekStartDate: 16, weekIndex: 6, value: '2018-09-14' },
-    [22, 28]
-  );
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-2 hover',
-    { weekStartDate: 26, weekIndex: 6, index: 0, value: '2018-09-14' },
+  testGetRangeIndexfromWeeks(
+    'getRangeIndexfromWeeks-5 false',
+    { weekStartDate: 5, weekIndex: 2, isStartOfWeek: false },
     [1, 7]
   );
-  testGetDatesfromWeeks(
-    'getDatesfromWeeks-2 hover',
-    { weekStartDate: 9, weekIndex: 6, index: 15, value: '2018-09-14' },
-    [15, 21]
+  testGetRangeIndexfromWeeks(
+    'getRangeIndexfromWeeks-6 false',
+    { weekStartDate: 1, weekIndex: 6, isStartOfWeek: false },
+    [1, 7]
+  );
+  testGetRangeIndexfromWeeks(
+    'getRangeIndexfromWeeks-6 false',
+    { weekStartDate: 4, weekIndex: 3, isStartOfWeek: false },
+    [1, 7]
   );
   function utilsGetWeeksRange(title: string, props: Object, params: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {

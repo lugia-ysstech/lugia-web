@@ -5,7 +5,12 @@
 import React, { Component } from 'react';
 import Input from '../../input';
 import Icon from '../../icon/index';
-import { RangeInputWrap, RangeInputInner, RangeMiddleSpan } from '../styled/styledRangeInput';
+import {
+  RangeInputWrap,
+  RangeInputInner,
+  NewInput,
+  RangeMiddleSpan,
+} from '../styled/styledRangeInput';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 type TypeProps = {
@@ -73,7 +78,8 @@ class RangeInput extends Component<TypeProps, TypeState> {
     };
     const { theme, mode } = this.props;
     const { width = 420 } = theme;
-    const newWidth = width - 15 - 2;
+    const MiddleSpanWidth = 20;
+    const newWidth = width - MiddleSpanWidth;
     const InputWidth = newWidth / 2;
     return (
       <Theme config={{ [Widget.Input]: { ...theme, width: InputWidth } }}>
@@ -84,9 +90,9 @@ class RangeInput extends Component<TypeProps, TypeState> {
           width={width}
           onClick={readOnly || disabled ? '' : this.onHandleClick}
         >
-          <RangeInputInner disabled={disabled}>
+          <RangeInputInner {...theme} width={width} disabled={disabled}>
             <Input
-              prefix={<Icon className="lugia-icon-financial_date" />}
+              prefix={<Icon iconClass="lugia-icon-financial_date" />}
               value={value[0]}
               onChange={this.onChangeFirst}
               placeholder={placeholder[0]}
@@ -94,7 +100,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
               {...config}
               suffix={<i />}
             />
-            <RangeMiddleSpan width={15}>~</RangeMiddleSpan>
+            <RangeMiddleSpan width={MiddleSpanWidth}>~</RangeMiddleSpan>
             <Input
               value={value[1]}
               onChange={this.onChangeSecond}

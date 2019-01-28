@@ -43,6 +43,7 @@ type TypeState = {
   valueIsValid: boolean,
   normalValue: string,
   placeholder: string,
+  isStartOfWeek: boolean,
 };
 class DateInput extends Component<TypeProps, TypeState> {
   static displayName = 'DateInput';
@@ -75,6 +76,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       valueIsValid,
       placeholder: placeholder && placeholder[0],
       status: preState ? preState.status : 'showDate',
+      isStartOfWeek: preState ? preState.isStartOfWeek : true,
     };
   }
   componentDidMount() {
@@ -84,7 +86,16 @@ class DateInput extends Component<TypeProps, TypeState> {
   }
   render() {
     const { disabled, readOnly, theme } = this.props;
-    const { value, status, format, panelValue, isScroll, valueIsValid, placeholder } = this.state;
+    const {
+      value,
+      status,
+      format,
+      panelValue,
+      isScroll,
+      valueIsValid,
+      placeholder,
+      isStartOfWeek,
+    } = this.state;
     const hasStateValue = value ? true : false;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { oldValue } = this;
@@ -111,6 +122,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                 valueIsValid={valueIsValid}
                 index={0}
                 hasOldValue={hasOldValue}
+                isStartOfWeek={isStartOfWeek}
               />
               {isTime ? (
                 ''
@@ -134,7 +146,7 @@ class DateInput extends Component<TypeProps, TypeState> {
           hideAction={['click']}
         >
           <Input
-            prefix={<Icon className="lugia-icon-financial_date" />}
+            prefix={<Icon iconClass="lugia-icon-financial_date" />}
             value={value}
             onChange={this.onChange}
             placeholder={placeholder}
@@ -168,18 +180,15 @@ class DateInput extends Component<TypeProps, TypeState> {
       if ((showTime || onOk) && !(isWeek || isYear || isMonth)) {
         visible = true;
       }
-      this.setModeState(newValue, format, isWeeks || isWeek);
     }
+    this.setModeState(newValue, format, isWeeks || isWeek);
     onChange && onChange({ event, newValue, oldValue: this.oldValue });
     this.setState({ value: newValue, isValid });
     !isTime && this.setTreePopupVisible(visible);
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
-    let newVal = value;
-    if (isWeeks) {
-      newVal = getValueFromWeekToDate(value, format);
-    }
+    const { newVal, isStartOfWeek } = this.getWeekStart(value, format, isWeeks);
     const moments = moment(newVal, newFormat);
     const { years, months } = moments.toObject();
     const modeParams = {
@@ -189,7 +198,24 @@ class DateInput extends Component<TypeProps, TypeState> {
       value: newVal,
       isScroll: false,
     };
+    this.setState({ isStartOfWeek });
     this.targetMode.onChange(modeParams);
+    this.getWeekStart(value, format, isWeeks);
+  };
+  getWeekStart = (value: string, format: string, isWeeks: boolean) => {
+    const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
+    let newVal = value;
+    let isStartOfWeek = true;
+    if (isWeeks) {
+      newVal = getValueFromWeekToDate(value, format);
+      const year = moment(value).year();
+      const years = moment(newVal, newFormat).year();
+      if (year > years) {
+        isStartOfWeek = false;
+        newVal = getValueFromWeekToDate(value, format, 'endOf');
+      }
+    }
+    return { newVal, isStartOfWeek };
   };
   onFocus = () => {
     this.isClear = false;

@@ -23,12 +23,14 @@ export const RangeInputWrap = styled.div`
     border-color: ${props => getInputBorderHoverColor(props)};
   }
 
+  ${props => getBackground(props)};
   transition: all 0.3s;
 `;
 export const RangeInputInner = styled.span`
   & input {
     border: none;
     text-align: center;
+    background: transparent;
   }
 
   & input:focus {
@@ -36,8 +38,10 @@ export const RangeInputInner = styled.span`
     box-shadow: none;
   }
 
-  display: inline-block;
-  ${props => getBackground(props)};
+  display: block;
+  width: ${props => em(props.width)};
+  margin-left: -1px;
+  ${getInputBorderRadius};
 `;
 export const RangeMiddleSpan = styled.span`
   display: inline-block;

@@ -2,12 +2,15 @@ export function getChangeValue(changeValue, minValue, maxValue) {
   if (changeValue) {
     const newValue = [...changeValue];
     newValue.forEach((item, index) => {
+      let val = item;
       if (item < minValue) {
-        newValue[index] = minValue;
+        val = minValue;
       }
       if (item > maxValue) {
-        newValue[index] = maxValue;
+        val = maxValue;
       }
+      console.log(changeValue);
+      newValue[index] = val;
     });
     return newValue;
   }

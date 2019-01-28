@@ -55,7 +55,7 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
       loading,
     };
   }
-  delayFun = (delay: Object, callback: Function) => {
+  delayFun = (delay: number, callback: Function) => {
     const newDelay = delay * 1000;
     setTimeout(function() {
       callback(true);
@@ -69,7 +69,7 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
         this.setState({ isLoading });
       });
   };
-  componentDidUpdate(nextProps: PropsCheck, nextState: StateCheck) {
+  componentDidUpdate(nextProps: PropsCheck) {
     if (nextProps.loading !== this.props.loading) {
       this.delayCallback(this.props);
     }

@@ -128,9 +128,10 @@ class Slider extends Component<TypeProps, TypeState> {
         isInBall: false,
       };
     }
+    console.log(newValue);
     return {
       value: newValue,
-      changeValue: preState && preState.changeValue,
+      changeValue: preState && getChangeValue(preState.changeValue, minValue, maxValue),
     };
   }
 
@@ -141,6 +142,7 @@ class Slider extends Component<TypeProps, TypeState> {
   mousedown = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
     e = e || window.event;
     const { pageX, pageY } = e;
+    console.log(pageX, pageY);
     const { index } = this.getNewIndex(pageX, pageY);
     const { value, isInBall } = this.state;
     this.oldValue = [...value];
@@ -182,7 +184,18 @@ class Slider extends Component<TypeProps, TypeState> {
       }
     );
   };
-
+  getItem(length, val, marks) {
+    const first = val && marks[val[0]];
+    const second = val && marks[val[1]];
+    return length === 2 ? [first, second] : first;
+  }
+  getNewValue(lengthISOne: boolean, value: [], join: string) {
+    let newVal = lengthISOne ? value && value[0] : value;
+    if (join) {
+      newVal = lengthISOne ? value : value && value.join(',');
+    }
+    return newVal;
+  }
   onchange(event: SyntheticMouseEvent<HTMLButtonElement>) {
     const { onChange } = this.props;
     const { marks, marksKeys, changeValue } = this.state;
@@ -190,27 +203,20 @@ class Slider extends Component<TypeProps, TypeState> {
     const newValue = changeValue.sort(sortable);
     const oldVal = oldValue && oldValue.sort(sortable);
     const { length } = newValue;
-
-    function getItem(val) {
-      const first = val && marks[val[0]];
-      const second = val && marks[val[1]];
-      return length === 2 ? [first, second] : first;
-    }
-
+    const lengthISOne = length === 1;
     const data: Object = {
-      oldValue: length === 1 ? oldValue && oldValue[0] : oldValue,
-      newValue: length === 1 ? changeValue[0] : changeValue,
+      oldValue: this.getNewValue(lengthISOne, oldValue),
+      newValue: this.getNewValue(lengthISOne, changeValue),
       event,
     };
-    const changeNewVal = length === 1 ? newValue : newValue && newValue.join(',');
-    const changeOldVal = length === 1 ? oldValue : oldValue && oldValue.join(',');
+    const changeNewVal = this.getNewValue(lengthISOne, newValue, 'join');
+    const changeOldVal = this.getNewValue(lengthISOne, oldValue, 'join');
     if (changeNewVal === changeOldVal) {
       return;
     }
-
     if (marksKeys.length > 0) {
-      data.newItem = getItem(changeValue);
-      data.oldItem = getItem(oldVal);
+      data.newItem = this.getItem(length, changeValue, marks);
+      data.oldItem = this.getItem(length, oldVal, marks);
     }
     onChange && onChange(data);
   }
