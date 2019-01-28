@@ -12,7 +12,6 @@ const { blackColor, darkGreyColor, lightGreyColor, defaultColor, themeColor } = 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
-export type shadowType = 'always' | 'hover' | 'never';
 export type CardType = 'simple' | 'avatar' | 'image' | 'combo' | 'tip';
 export type ImageOrientation = 'horizontal' | 'vertical';
 export type CardProps = {
@@ -28,7 +27,6 @@ export type CardProps = {
   getThemeByDisplayName: Function,
   type: CardType,
   imageOrientation: ImageOrientation,
-  shadow: shadowType,
 };
 export type CardState = {};
 
@@ -66,10 +64,9 @@ export const getCardContainerSize = (props: Object) => {
   return `width: ${theWidth};height:${theHeight};`;
 };
 
-export const getCardContainerShadow = (props: Object) => {
-  const { shadow } = props;
+export const getCardContainerShadow = () => {
   const boxShadow = `box-shadow: 0 0 ${em(6)} rgba(0, 0, 50,0.1);`;
-  return shadow === 'always' ? `${boxShadow}` : shadow === 'hover' ? `&:hover {${boxShadow}};` : '';
+  return boxShadow;
 };
 export const getImageContainerSize = (props: Object) => {
   const { imageOrientation, size } = props;
@@ -104,7 +101,8 @@ export const getTitleColor = () => {
 };
 export const getFontWeight = (props: Object) => {
   const { type } = props;
-  return type === 'tip' ? 'font-weight: 700;' : '500';
+  const weight = type === 'tip' ? 700 : 500;
+  return `font-weight:${weight}`;
 };
 export const getDescripitionColor = () => {
   return `color:${darkGreyColor};`;
@@ -125,8 +123,8 @@ export const getContentTextAlign = (props: Object) => {
   const { type, imageOrientation } = props;
   if (type === 'avatar' && imageOrientation === 'vertical') return 'text-align:center;';
   return `
-  margin-bottom: ${em(14)};
-  margin-top: ${em(18)};`;
+  margin-bottom: ${em(12)};
+  margin-top: ${em(26)};`;
 };
 export const getContentMargin = (props: Object) => {
   const { type, imageOrientation } = props;
@@ -135,7 +133,7 @@ export const getContentMargin = (props: Object) => {
       ? 30
       : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
       ? 0
-      : 16;
+      : 10;
   return `margin-left: ${em(left)}`;
 };
 export const getAvatarMargin = (props: Object) => {

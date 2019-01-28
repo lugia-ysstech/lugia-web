@@ -23,8 +23,8 @@ const hover = (props: Object) => {
 const getFontSize = (props: Object) => {
   const { theme } = props;
   const { fontSize } = theme;
-  const thefontSize = fontSize ? fontSize : '1.2rem';
-  return `font-size:${em(thefontSize)}`;
+  const theFontSize = fontSize && fontSize !== 0 ? em(fontSize) : '1.2rem';
+  return `font-size:${theFontSize}`;
 };
 const IconTag = styled.i`
   user-select: none;
