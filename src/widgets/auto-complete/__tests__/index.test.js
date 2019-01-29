@@ -8,7 +8,7 @@ import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts/index';
-import AutoComplete from '../index';
+import AutoComplete from '../';
 import { delay } from '@lugia/react-test-utils';
 import chai from 'chai';
 
@@ -67,7 +67,7 @@ describe('autocomplete', () => {
     expect(getInputValue(cmp)).toBe('szfeng');
   });
 
-  it('data is { value: Number[]}', async () => {
+  it('data is { value: Number[]}', () => {
     const numberData = [1, 2, 3];
     const cmp = mount(<AutoComplete data={numberData} />);
     letInputonFocus(cmp);
