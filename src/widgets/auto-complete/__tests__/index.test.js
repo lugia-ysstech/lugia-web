@@ -8,10 +8,13 @@ import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts/index';
-import AutoComplete from '../';
+import AutoComplete from '../index';
 import { delay } from '@lugia/react-test-utils';
+import chai from 'chai';
 
 Enzyme.configure({ adapter: new Adapter() });
+
+const { expect: exp } = chai;
 
 const data = [
   'Nikcy Romero',
@@ -64,27 +67,17 @@ describe('autocomplete', () => {
     expect(getInputValue(cmp)).toBe('szfeng');
   });
 
-  it('data is { value: Number[]}', () => {
+  it('data is { value: Number[]}', async () => {
     const numberData = [1, 2, 3];
     const cmp = mount(<AutoComplete data={numberData} />);
-    changeInputValue(cmp, 'szfeng');
-    expect(getInputValue(cmp)).toBe('szfeng');
+    letInputonFocus(cmp);
+
+    changeInputValue(cmp, '1');
+    expect(getInputValue(cmp)).toBe('1');
     expect(getMenuData(cmp)).toEqual([
       { value: '1', text: '1' },
       { value: '2', text: '2' },
       { value: '3', text: '3' },
-    ]);
-  });
-
-  it('data is { value: Number[]}', () => {
-    const numberData = [0, 1, 2];
-    const cmp = mount(<AutoComplete data={numberData} />);
-    changeInputValue(cmp, 'szfeng');
-    expect(getInputValue(cmp)).toBe('szfeng');
-    expect(getMenuData(cmp)).toEqual([
-      { value: '0', text: '0' },
-      { value: '1', text: '1' },
-      { value: '2', text: '2' },
     ]);
   });
 
@@ -100,7 +93,7 @@ describe('autocomplete', () => {
     }
     render() {
       const { menuData } = this.state;
-      return <AutoComplete data={menuData} onChange={this.onChange} />;
+      return <AutoComplete data={menuData} onChange={this.onChange} showOldValue={true} />;
     }
 
     onChange = (value: string) => {
@@ -138,6 +131,7 @@ describe('autocomplete', () => {
 
   it('非受限：input框输入后，menu显示过滤后的值', () => {
     const cmp = mount(<AutoCompleteNotBounded />);
+    letInputonFocus(cmp);
 
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
@@ -151,7 +145,7 @@ describe('autocomplete', () => {
 
     changeInputValue(cmp, '');
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
 
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
@@ -162,11 +156,13 @@ describe('autocomplete', () => {
 
     changeInputValue(cmp, '');
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
   });
 
   it('非受限：输入》查询》点击MenuItem =》显示选中项', () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -177,8 +173,10 @@ describe('autocomplete', () => {
     expect(getInputValue(cmp)).toBe('Armin van Buuren');
   });
 
-  it('非受限：输入》查询》点击MenuItem》查询》点击MenuItem》显示旧值', () => {
+  it('非受限：输入》查询》点击MenuItem》查询》点击MenuItem》显示旧值', async () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -196,11 +194,16 @@ describe('autocomplete', () => {
     ]);
     selectMenuItem(cmp, 1);
     expect(getInputValue(cmp)).toBe('Bassjackers');
+
+    changeInputValue(cmp, 'C');
+    expect(getInputValue(cmp)).toBe('C');
     expect(getOldValue(cmp)).toBe('Armin van Buuren');
   });
 
   it('非受限：输入》查询》点击MenuItem》点击清除按钮》显示旧值为上一次值', () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -212,12 +215,17 @@ describe('autocomplete', () => {
 
     clickClearButton(cmp);
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
+
+    changeInputValue(cmp, 'C');
+    expect(getInputValue(cmp)).toBe('C');
     expect(getOldValue(cmp)).toBe('Armin van Buuren');
   });
 
   it('非受限：点击旧值 》Input显示旧值', () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -229,16 +237,20 @@ describe('autocomplete', () => {
 
     clickClearButton(cmp);
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
+    changeInputValue(cmp, 'C');
+    expect(getInputValue(cmp)).toBe('C');
     expect(getOldValue(cmp)).toBe('Armin van Buuren');
 
     selectOldValueItem(cmp);
     expect(getInputValue(cmp)).toBe('Armin van Buuren');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
   });
 
   it('first select no oldValue', async () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
 
@@ -250,13 +262,17 @@ describe('autocomplete', () => {
     await delay(100);
     letInputonFocus(cmp);
     selectMenuItem(cmp, 0);
+
+    changeInputValue(cmp, 'C');
+    expect(getInputValue(cmp)).toBe('C');
     expect(getOldValue(cmp)).toBe('B');
   });
 
   it('input value on blur save old value', async () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
-    changeInputValue(cmp, 'A');
     letInputonFocus(cmp);
+
+    changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     letInputOnBlur(cmp);
     await delay(100);
@@ -274,12 +290,16 @@ describe('autocomplete', () => {
     letInputOnBlur(cmp);
     await delay(100);
     letInputonFocus(cmp);
+    changeInputValue(cmp, 'C');
+    expect(getInputValue(cmp)).toBe('C');
     expect(getOldValue(cmp)).toBe('B');
   });
+
   it('input value on blur save old value , value is In AutoCompleteBounded.state.value', async () => {
     const cmp = mount(<AutoCompleteBounded data={data} />);
-    changeInputValue(cmp, 'A');
     letInputonFocus(cmp);
+
+    changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     letInputOnBlur(cmp);
     await delay(100);
@@ -289,19 +309,24 @@ describe('autocomplete', () => {
     expect(getInputValue(cmp)).toBe('B');
     letInputOnBlur(cmp);
 
+    cmp.update();
     await delay(100);
     letInputonFocus(cmp);
+    changeInputValue(cmp, 'C');
     expect(getOldValue(cmp)).toBe('A');
 
-    changeInputValue(cmp, 'C');
     letInputOnBlur(cmp);
     await delay(100);
     letInputonFocus(cmp);
+
+    changeInputValue(cmp, 'D');
     expect(getOldValue(cmp)).toBe('B');
   });
 
   it('input value on blur save old value is limit', async () => {
     const cmp = mount(<AutoCompleteBounded data={data} value={'A'} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     letInputonFocus(cmp);
     expect(getInputValue(cmp)).toBe('A');
@@ -321,11 +346,14 @@ describe('autocomplete', () => {
     letInputOnBlur(cmp);
     await delay(100);
     letInputonFocus(cmp);
+    changeInputValue(cmp, 'D');
     expect(findOldValueSpan(cmp).length).toBe(0);
   });
 
   it('on blur switch twice value', async () => {
     const cmp = mount(<AutoCompleteNotBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     letInputonFocus(cmp);
     expect(getInputValue(cmp)).toBe('A');
@@ -680,6 +708,8 @@ describe('autocomplete', () => {
 
   it('Email自动补全@后缀：点击旧值 》Input显示旧值', () => {
     const cmp = mount(<AutoCompleteEmailInput />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     expect(getMenuData(cmp)).toEqual([
@@ -700,6 +730,10 @@ describe('autocomplete', () => {
     expect(getInputValue(cmp)).toBe('A@gmail.com');
     expect(getMenuData(cmp)).toEqual([]);
   });
+
+  function findEmptyBox(cmp: Object) {
+    return cmp.find('emptyBox');
+  }
 
   function changeInputValue(cmp: Object, value: string) {
     return getInput(cmp).simulate('change', { target: { value } });
