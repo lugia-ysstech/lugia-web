@@ -10,8 +10,7 @@ import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
 import { getMargin } from '../common/ThemeUtils';
-import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+import { px2rem } from '../css/units';
 const getColor = (props: Object) => {
   const { color } = props.theme;
   return color ? `color: ${color};` : '';
@@ -23,7 +22,7 @@ const hover = (props: Object) => {
 const getFontSize = (props: Object) => {
   const { theme } = props;
   const { fontSize } = theme;
-  const theFontSize = fontSize && fontSize !== 0 ? em(fontSize) : '1.2rem';
+  const theFontSize = fontSize && fontSize !== 0 ? `${px2rem(fontSize)}rem` : '1.2rem';
   return `font-size:${theFontSize}`;
 };
 const IconTag = styled.i`
