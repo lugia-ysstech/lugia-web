@@ -7,7 +7,7 @@ exports[`Rate Test css 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c0 {

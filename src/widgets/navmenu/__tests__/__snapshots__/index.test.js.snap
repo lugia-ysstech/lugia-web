@@ -7,7 +7,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -1047,7 +1047,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -2088,7 +2088,7 @@ exports[`NavMenu  mode=vertical  1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c5 {
@@ -2276,7 +2276,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -3332,7 +3332,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c1 {
