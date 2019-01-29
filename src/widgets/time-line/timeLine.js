@@ -16,6 +16,7 @@ import { getContainerHeight } from '../css/time-line';
 import { px2emcss } from '../css/units';
 import TimeLineItem from './timeLineItem';
 import { getAttributeFromObject } from '../common/ObjectUtils';
+import moment from 'moment';
 const em = px2emcss(1.2);
 
 const OutContainer = styled.div`
@@ -35,12 +36,22 @@ type TimeLineProps = {
   defaultData: Array<Object>,
 };
 
+function getDay(i: number) {
+  return moment()
+    .add('day', i)
+    .format('YYYY-MM-DD');
+}
+const today = getDay(0);
+const tomorrow = getDay(1);
+const thirdDay = getDay(2);
+const fourthDay = getDay(3);
+const fifthDay = getDay(4);
 const defaultData = [
-  { time: '2019-01-01' },
-  { time: '2019-01-02' },
-  { time: '2019-01-03' },
-  { time: '2019-01-04' },
-  { time: '2019-01-05' },
+  { time: today },
+  { time: tomorrow },
+  { time: thirdDay },
+  { time: fourthDay },
+  { time: fifthDay },
 ];
 class TimeLine extends Component<TimeLineProps, TimeLineState> {
   static defaultProps = {
