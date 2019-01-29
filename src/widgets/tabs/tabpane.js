@@ -179,7 +179,16 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   getHTabpane() {
-    const { title, tabType, isSelect, icon, suffixIcon, disabled, getTheme } = this.props;
+    const {
+      title,
+      tabType,
+      isSelect,
+      icon,
+      suffixIcon,
+      disabled,
+      getTheme,
+      activityKey,
+    } = this.props;
     const Target = (
       <HTab
         disabled={disabled}
@@ -256,14 +265,13 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
   };
   onMouseEnter = (e: Object) => {
-    const { onMouseEnter } = this.props;
-    onMouseEnter && onMouseEnter(e);
+    const { onMouseEnter, activityKey } = this.props;
+    onMouseEnter && onMouseEnter(activityKey);
   };
   onMouseLeave = (e: Object) => {
-    const { onMouseLeave } = this.props;
-    onMouseLeave && onMouseLeave(e);
+    const { onMouseLeave, activityKey } = this.props;
+    onMouseLeave && onMouseLeave(activityKey);
   };
-
   getContainerWidth() {
     if (this.tabpane) {
       this.offsetWidth = this.tabpane.offsetWidth;
