@@ -14,7 +14,7 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import { DisplayField, ValueField } from '../consts/props';
 import CommonIcon from '../icon';
-import { OldValueItem, OldValueTitle, TimeIcon } from '../css/autocomplete';
+import { OldValueItem, OldValueTitle, TimeIcon, EmptyBox } from '../css/autocomplete';
 import { DefaultWidth, MenuItemHeight } from '../css/menu';
 
 const ScrollerStep = 30;
@@ -96,7 +96,7 @@ export default ShortKeyBoard(
 
         const menu =
           menuHeight === 0 ? (
-            <div />
+            <EmptyBox />
           ) : (
             [
               this.getOldValueItem(),
