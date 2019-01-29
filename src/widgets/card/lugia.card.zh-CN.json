@@ -62,7 +62,7 @@
       "type": "ImageOrientation",
       "desc": "当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直",
       "defaultValue": "undefined"
-    },
+    }
   },
   "type": {
     "CardType": ["simple", "avatar", "image", "combo","tip"],
