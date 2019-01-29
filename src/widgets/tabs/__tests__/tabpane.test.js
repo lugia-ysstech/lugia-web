@@ -10,7 +10,6 @@ import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tabpane from '../tabpane';
-import type { TabPositionType, TabType } from '../../css/tabs';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -49,4 +48,12 @@ describe('tabpaneDemo', () => {
   testTitle('1234', '1234');
   testTitle('tabs', 'tabs');
   testTitle('', '');
+  it('props disabled true  ', () => {
+    const target = mount(<Tabpane activityKey={'2'} disabled={true} />);
+    expect(getCmp(target).props.disabled).toBe(true);
+  });
+  it('props disabled false', () => {
+    const target = mount(<Tabpane activityKey={'2'} disabled={false} />);
+    expect(getCmp(target).props.disabled).toBe(false);
+  });
 });

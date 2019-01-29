@@ -5,7 +5,7 @@ import 'jest-styled-components';
 
 import Wrapper from '../demo';
 
-describe('Badge', () => {
+describe(' Badge', () => {
   it('css', () => {
     const Target = <Wrapper />;
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
