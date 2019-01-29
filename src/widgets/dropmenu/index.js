@@ -110,7 +110,6 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   ejectOnClick = (menu: Object): Object => {
     const newChildProps = {};
-
     if (!menu.props.onClick) {
       newChildProps.onClick = this.onMenuClick;
     } else {
@@ -123,7 +122,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   };
   onMenuClick = (e: Object, keys: string[], items: Object) => {
     const { children } = items;
-    if (!children) {
+    if (!children || children.length === 0) {
       this.onPopupVisibleChange(false);
     }
   };
@@ -160,6 +159,6 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
 const Result = ThemeProvider(DropMenu, Widget.DropMenu);
 
-Result.Button = DropMenuButton;
+// Result.Button = DropMenuButton;
 
 export default Result;
