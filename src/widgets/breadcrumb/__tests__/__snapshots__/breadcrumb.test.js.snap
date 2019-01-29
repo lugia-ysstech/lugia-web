@@ -195,7 +195,7 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 <div

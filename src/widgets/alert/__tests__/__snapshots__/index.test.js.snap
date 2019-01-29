@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Alert css 1`] = `
-.c8 {
+.c9 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -14,11 +15,11 @@ exports[`Alert css 1`] = `
   box-sizing: border-box;
   font-size: 1.4rem;
   overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 0.7142857142857143em;
+  line-height: 1;
   border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #684fff;
-  background: rgba(104,79,255,0.2);
+  border-left: 0.28571428571428575em solid #4d63ff;
+  background: rgba(77,99,255,0.2);
 }
 
 .c4 {
@@ -26,8 +27,8 @@ exports[`Alert css 1`] = `
   box-sizing: border-box;
   font-size: 1.4rem;
   overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 0.7142857142857143em;
+  line-height: 1;
   border-radius: 0.28571428571428575em;
   border-left: 0.28571428571428575em solid #56c22d;
   background: rgba(86,194,45,0.2);
@@ -38,8 +39,8 @@ exports[`Alert css 1`] = `
   box-sizing: border-box;
   font-size: 1.4rem;
   overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 0.7142857142857143em;
+  line-height: 1;
   border-radius: 0.28571428571428575em;
   border-left: 0.28571428571428575em solid #f22735;
   background: rgba(242,39,53,0.2);
@@ -50,33 +51,22 @@ exports[`Alert css 1`] = `
   box-sizing: border-box;
   font-size: 1.4rem;
   overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 0.7142857142857143em;
+  line-height: 1;
   border-radius: 0.28571428571428575em;
   border-left: 0.28571428571428575em solid #f8ac30;
   background: rgba(248,172,48,0.2);
 }
 
-.c11 {
+.c12 {
   position: relative;
   box-sizing: border-box;
   font-size: 1.4rem;
   overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 2.428571428571429em;
+  line-height: 1;
   border-radius: 0.28571428571428575em;
-  background: rgba(104,79,255,0.2);
-}
-
-.c13 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  background: rgba(86,194,45,0.2);
+  background: rgba(77,99,255,0.2);
 }
 
 .c14 {
@@ -84,34 +74,21 @@ exports[`Alert css 1`] = `
   box-sizing: border-box;
   font-size: 1.4rem;
   overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 2.428571428571429em;
+  line-height: 1;
+  border-radius: 0.28571428571428575em;
+  background: rgba(86,194,45,0.2);
+}
+
+.c16 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 2.428571428571429em;
+  line-height: 1;
   border-radius: 0.28571428571428575em;
   background: rgba(242,39,53,0.2);
-}
-
-.c15 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  background: rgba(248,172,48,0.2);
-}
-
-.c17 {
-  position: relative;
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
-  line-height: 1.5;
-  border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #ffa500;
-  background: rgba(255,165,0,0.2);
-  width: 14.285714285714286em;
 }
 
 .c18 {
@@ -119,11 +96,199 @@ exports[`Alert css 1`] = `
   box-sizing: border-box;
   font-size: 1.4rem;
   overflow: hidden;
-  padding: 1.7142857142857144em 0.7142857142857143em;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 2.428571428571429em;
+  line-height: 1;
+  border-radius: 0.28571428571428575em;
+  background: rgba(248,172,48,0.2);
+}
+
+.c20 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 0.7142857142857143em;
   line-height: 1.5;
+  border-radius: 0.28571428571428575em;
+  border-left: 0.28571428571428575em solid #4d63ff;
+  background: rgba(77,99,255,0.2);
+}
+
+.c23 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 0.7142857142857143em;
+  line-height: 1.5;
+  border-radius: 0.28571428571428575em;
+  border-left: 0.28571428571428575em solid #56c22d;
+  background: rgba(86,194,45,0.2);
+}
+
+.c24 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 0.7142857142857143em;
+  line-height: 1.5;
+  border-radius: 0.28571428571428575em;
+  border-left: 0.28571428571428575em solid #f22735;
+  background: rgba(242,39,53,0.2);
+}
+
+.c26 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 0.7142857142857143em;
+  line-height: 1.5;
+  border-radius: 0.28571428571428575em;
+  border-left: 0.28571428571428575em solid #f8ac30;
+  background: rgba(248,172,48,0.2);
+}
+
+.c28 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 2.857142857142857em;
+  line-height: 1.5;
+  border-radius: 0.28571428571428575em;
+  background: rgba(77,99,255,0.2);
+}
+
+.c30 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 2.857142857142857em;
+  line-height: 1.5;
+  border-radius: 0.28571428571428575em;
+  background: rgba(86,194,45,0.2);
+}
+
+.c32 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 2.857142857142857em;
+  line-height: 1.5;
+  border-radius: 0.28571428571428575em;
+  background: rgba(242,39,53,0.2);
+}
+
+.c34 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 2.857142857142857em;
+  line-height: 1.5;
+  border-radius: 0.28571428571428575em;
+  background: rgba(248,172,48,0.2);
+}
+
+.c36 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 0.7142857142857143em;
+  line-height: 1;
+  border-radius: 0.28571428571428575em;
+  border-left: 0.28571428571428575em solid #ffa500;
+  background: rgba(255,165,0,0.2);
+  width: 14.285714285714286em;
+}
+
+.c37 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 2.428571428571429em;
+  line-height: 1;
   border-radius: 0.28571428571428575em;
   background: rgba(255,165,0,0.2);
   width: 14.285714285714286em;
+}
+
+.c13 {
+  color: #4d63ff;
+  top: 0.8571428571428572em;
+  left: 0.7142857142857143em;
+  position: absolute;
+}
+
+.c15 {
+  color: #56c22d;
+  top: 0.8571428571428572em;
+  left: 0.7142857142857143em;
+  position: absolute;
+}
+
+.c17 {
+  color: #f22735;
+  top: 0.8571428571428572em;
+  left: 0.7142857142857143em;
+  position: absolute;
+}
+
+.c19 {
+  color: #f8ac30;
+  top: 0.8571428571428572em;
+  left: 0.7142857142857143em;
+  position: absolute;
+}
+
+.c29 {
+  color: #4d63ff;
+  font-size: 1.4285714285714286em;
+  top: 0.9em;
+  left: 0.5em;
+  position: absolute;
+}
+
+.c31 {
+  color: #56c22d;
+  font-size: 1.4285714285714286em;
+  top: 0.9em;
+  left: 0.5em;
+  position: absolute;
+}
+
+.c33 {
+  color: #f22735;
+  font-size: 1.4285714285714286em;
+  top: 0.9em;
+  left: 0.5em;
+  position: absolute;
+}
+
+.c35 {
+  color: #f8ac30;
+  font-size: 1.4285714285714286em;
+  top: 0.9em;
+  left: 0.5em;
+  position: absolute;
+}
+
+.c38 {
+  color: #ffa500;
+  top: 0.8571428571428572em;
+  left: 0.7142857142857143em;
+  position: absolute;
+}
+
+.c8 {
+  font-size: 1.142857142857143em;
+  color: #999999;
 }
 
 .c2 {
@@ -132,7 +297,7 @@ exports[`Alert css 1`] = `
   font-size: 1em;
 }
 
-.c16 {
+.c21 {
   color: #333333;
   vertical-align: text-bottom;
   font-size: 1.2857142857142858em;
@@ -141,11 +306,34 @@ exports[`Alert css 1`] = `
 .c7 {
   overflow: hidden;
   position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.c10 {
+  overflow: hidden;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: #f22735;
+}
+
+.c11 {
+  overflow: hidden;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: #f8ac30;
+}
+
+.c22 {
+  overflow: hidden;
+  position: absolute;
   top: 1.7142857142857144em;
   right: 1em;
 }
 
-.c9 {
+.c25 {
   overflow: hidden;
   position: absolute;
   top: 1.7142857142857144em;
@@ -153,7 +341,7 @@ exports[`Alert css 1`] = `
   color: #f22735;
 }
 
-.c10 {
+.c27 {
   overflow: hidden;
   position: absolute;
   top: 1.7142857142857144em;
@@ -161,10 +349,10 @@ exports[`Alert css 1`] = `
   color: #f8ac30;
 }
 
-.c19 {
+.c39 {
   overflow: hidden;
   position: absolute;
-  top: 1.7142857142857144em;
+  top: 1em;
   right: 1em;
   color: #ffa500;
 }
@@ -173,14 +361,6 @@ exports[`Alert css 1`] = `
   display: block;
   color: #666666;
   font-size: 1em;
-  margin-left: 0;
-}
-
-.c12 {
-  display: block;
-  color: #666666;
-  font-size: 1em;
-  margin-left: 2.142857142857143em;
 }
 
 .c0 {
@@ -269,7 +449,7 @@ exports[`Alert css 1`] = `
       type="info"
     >
       <i
-        className="lugia-icon-reminder_close  c8"
+        className="lugia-icon-reminder_close c8 c9"
       />
     </a>
   </div>
@@ -292,7 +472,7 @@ exports[`Alert css 1`] = `
       type="success"
     >
       <i
-        className="lugia-icon-reminder_close  c8"
+        className="lugia-icon-reminder_close c8 c9"
       />
     </a>
   </div>
@@ -310,7 +490,7 @@ exports[`Alert css 1`] = `
       className="c3"
     />
     <a
-      className="c9"
+      className="c10"
       onClick={[Function]}
       type="error"
     >
@@ -331,7 +511,7 @@ exports[`Alert css 1`] = `
       className="c3"
     />
     <a
-      className="c10"
+      className="c11"
       onClick={[Function]}
       type="warning"
     >
@@ -339,12 +519,12 @@ exports[`Alert css 1`] = `
     </a>
   </div>
   <div
-    className="c11"
+    className="c12"
     height={null}
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle  c8"
+      className="lugia-icon-reminder_info_circle_o c13 c9"
     />
     <span
       className="c2"
@@ -352,16 +532,16 @@ exports[`Alert css 1`] = `
       Alert-info
     </span>
     <span
-      className="c12"
+      className="c3"
     />
   </div>
   <div
-    className="c13"
+    className="c14"
     height={null}
     type="success"
   >
     <i
-      className="lugia-icon-reminder_check_circle  c8"
+      className="lugia-icon-reminder_check_circle_o c15 c9"
     />
     <span
       className="c2"
@@ -369,16 +549,16 @@ exports[`Alert css 1`] = `
       Alert-success
     </span>
     <span
-      className="c12"
+      className="c3"
     />
   </div>
   <div
-    className="c14"
+    className="c16"
     height={null}
     type="error"
   >
     <i
-      className="lugia-icon-reminder_close_circle  c8"
+      className="lugia-icon-reminder_close_circle_o c17 c9"
     />
     <span
       className="c2"
@@ -386,16 +566,16 @@ exports[`Alert css 1`] = `
       Alert-error
     </span>
     <span
-      className="c12"
+      className="c3"
     />
   </div>
   <div
-    className="c15"
+    className="c18"
     height={null}
     type="warning"
   >
     <i
-      className="lugia-icon-reminder_exclamation_circle  c8"
+      className="lugia-icon-reminder_exclamation_circle_o c19 c9"
     />
     <span
       className="c2"
@@ -403,16 +583,16 @@ exports[`Alert css 1`] = `
       Alert-warning
     </span>
     <span
-      className="c12"
+      className="c3"
     />
   </div>
   <div
-    className="c1"
+    className="c20"
     height={null}
     type="info"
   >
     <span
-      className="c16"
+      className="c21"
     >
       Alert-info
     </span>
@@ -422,22 +602,22 @@ exports[`Alert css 1`] = `
       这是辅助性文字介绍
     </span>
     <a
-      className="c7"
+      className="c22"
       onClick={[Function]}
       type="info"
     >
       <i
-        className="lugia-icon-reminder_close  c8"
+        className="lugia-icon-reminder_close c8 c9"
       />
     </a>
   </div>
   <div
-    className="c4"
+    className="c23"
     height={null}
     type="success"
   >
     <span
-      className="c16"
+      className="c21"
     >
       Alert-success
     </span>
@@ -447,22 +627,22 @@ exports[`Alert css 1`] = `
       这是辅助性文字介绍
     </span>
     <a
-      className="c7"
+      className="c22"
       onClick={[Function]}
       type="success"
     >
       <i
-        className="lugia-icon-reminder_close  c8"
+        className="lugia-icon-reminder_close c8 c9"
       />
     </a>
   </div>
   <div
-    className="c5"
+    className="c24"
     height={null}
     type="error"
   >
     <span
-      className="c16"
+      className="c21"
     >
       Alert-error
     </span>
@@ -472,7 +652,7 @@ exports[`Alert css 1`] = `
       这是辅助性文字介绍
     </span>
     <a
-      className="c9"
+      className="c25"
       onClick={[Function]}
       type="error"
     >
@@ -480,12 +660,12 @@ exports[`Alert css 1`] = `
     </a>
   </div>
   <div
-    className="c6"
+    className="c26"
     height={null}
     type="warning"
   >
     <span
-      className="c16"
+      className="c21"
     >
       Alert-warning
     </span>
@@ -495,7 +675,7 @@ exports[`Alert css 1`] = `
       这是辅助性文字介绍
     </span>
     <a
-      className="c10"
+      className="c27"
       onClick={[Function]}
       type="warning"
     >
@@ -503,81 +683,81 @@ exports[`Alert css 1`] = `
     </a>
   </div>
   <div
-    className="c11"
+    className="c28"
     height={null}
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle  c8"
+      className="lugia-icon-reminder_info_circle_o c29 c9"
     />
     <span
-      className="c16"
+      className="c21"
     >
       Alert-info
     </span>
     <span
-      className="c12"
+      className="c3"
     >
       这是辅助性文字介绍
     </span>
     <a
-      className="c7"
+      className="c22"
       onClick={[Function]}
       type="info"
     >
       <i
-        className="lugia-icon-reminder_close  c8"
+        className="lugia-icon-reminder_close c8 c9"
       />
     </a>
   </div>
   <div
-    className="c13"
+    className="c30"
     height={null}
     type="success"
   >
     <i
-      className="lugia-icon-reminder_check_circle  c8"
+      className="lugia-icon-reminder_check_circle_o c31 c9"
     />
     <span
-      className="c16"
+      className="c21"
     >
       Alert-success
     </span>
     <span
-      className="c12"
+      className="c3"
     >
       这是辅助性文字介绍
     </span>
     <a
-      className="c7"
+      className="c22"
       onClick={[Function]}
       type="success"
     >
       <i
-        className="lugia-icon-reminder_close  c8"
+        className="lugia-icon-reminder_close c8 c9"
       />
     </a>
   </div>
   <div
-    className="c14"
+    className="c32"
     height={null}
     type="error"
   >
     <i
-      className="lugia-icon-reminder_close_circle  c8"
+      className="lugia-icon-reminder_close_circle_o c33 c9"
     />
     <span
-      className="c16"
+      className="c21"
     >
       Alert-error
     </span>
     <span
-      className="c12"
+      className="c3"
     >
       这是辅助性文字介绍
     </span>
     <a
-      className="c9"
+      className="c25"
       onClick={[Function]}
       type="error"
     >
@@ -585,25 +765,25 @@ exports[`Alert css 1`] = `
     </a>
   </div>
   <div
-    className="c15"
+    className="c34"
     height={null}
     type="warning"
   >
     <i
-      className="lugia-icon-reminder_exclamation_circle  c8"
+      className="lugia-icon-reminder_exclamation_circle_o c35 c9"
     />
     <span
-      className="c16"
+      className="c21"
     >
       Alert-warning
     </span>
     <span
-      className="c12"
+      className="c3"
     >
       这是辅助性文字介绍
     </span>
     <a
-      className="c10"
+      className="c27"
       onClick={[Function]}
       type="warning"
     >
@@ -611,12 +791,12 @@ exports[`Alert css 1`] = `
     </a>
   </div>
   <div
-    className="c11"
+    className="c12"
     height={null}
     type="info"
   >
     <i
-      className="lugia-icon-logo_twitter  c8"
+      className="lugia-icon-logo_twitter c13 c9"
     />
     <span
       className="c2"
@@ -624,14 +804,14 @@ exports[`Alert css 1`] = `
       Alert-info
     </span>
     <span
-      className="c12"
+      className="c3"
     />
   </div>
   <p>
     Theme
   </p>
   <div
-    className="c17"
+    className="c36"
     height={null}
     type="info"
   >
@@ -645,12 +825,12 @@ exports[`Alert css 1`] = `
     />
   </div>
   <div
-    className="c18"
+    className="c37"
     height={null}
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle  c8"
+      className="lugia-icon-reminder_info_circle_o c38 c9"
     />
     <span
       className="c2"
@@ -658,16 +838,16 @@ exports[`Alert css 1`] = `
       Alert-info
     </span>
     <span
-      className="c12"
+      className="c3"
     />
   </div>
   <div
-    className="c18"
+    className="c37"
     height={null}
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle  c8"
+      className="lugia-icon-reminder_info_circle_o c38 c9"
     />
     <span
       className="c2"
@@ -675,10 +855,10 @@ exports[`Alert css 1`] = `
       Alert-info
     </span>
     <span
-      className="c12"
+      className="c3"
     />
     <a
-      className="c19"
+      className="c39"
       onClick={[Function]}
       type="info"
     >

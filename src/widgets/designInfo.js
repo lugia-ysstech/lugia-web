@@ -454,15 +454,9 @@ export default {
           desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
           defaultValue: 'undefined',
         },
-        shadow: {
-          type: 'shadowType',
-          desc: '卡片阴影,可以配置一直显示,hover时显示,和不显示阴影.',
-          defaultValue: 'undefined',
-        },
       },
       type: {
         CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
-        shadowType: ['always', 'hover', 'never'],
         ImageOrientation: ['horizontal', 'vertical'],
       },
       category: ['数据展示'],

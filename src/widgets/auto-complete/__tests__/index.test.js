@@ -156,6 +156,7 @@ describe('autocomplete', () => {
 
     changeInputValue(cmp, '');
     expect(getInputValue(cmp)).toBe('');
+
     expect(findEmptyBox(cmp).length).toBe(1);
   });
 
@@ -355,7 +356,6 @@ describe('autocomplete', () => {
     letInputonFocus(cmp);
 
     changeInputValue(cmp, 'A');
-    letInputonFocus(cmp);
     expect(getInputValue(cmp)).toBe('A');
 
     letInputOnBlur(cmp);
@@ -371,9 +371,9 @@ describe('autocomplete', () => {
 
     await delay(100);
     letInputonFocus(cmp);
+    changeInputValue(cmp, 'C');
     expect(getOldValue(cmp)).toBe('A');
 
-    changeInputValue(cmp, 'C');
     letInputOnBlur(cmp);
     await delay(100);
     letInputonFocus(cmp);
@@ -386,10 +386,10 @@ describe('autocomplete', () => {
     selectMenuItem(cmp, 0);
     expect(getInputValue(cmp)).toBe('The Chainsmokers');
     letInputonFocus(cmp);
-    expect(getOldValue(cmp)).toBe('C');
-
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
+    expect(getOldValue(cmp)).toBe('C');
+
     expect(getMenuData(cmp)).toEqual([
       { value: 'Armin van Buuren', text: 'Armin van Buuren' },
       { value: 'Bassjackers', text: 'Bassjackers' },
@@ -397,6 +397,7 @@ describe('autocomplete', () => {
     selectMenuItem(cmp, 0);
     expect(getInputValue(cmp)).toBe('Armin van Buuren');
     letInputonFocus(cmp);
+    changeInputValue(cmp, 'D');
     expect(getOldValue(cmp)).toBe('The Chainsmokers');
   });
 
@@ -422,7 +423,7 @@ describe('autocomplete', () => {
 
     render() {
       const { menuData, value } = this.state;
-      return <AutoComplete value={value} data={menuData} onChange={this.onChange} />;
+      return <AutoComplete showOldValue value={value} data={menuData} onChange={this.onChange} />;
     }
 
     onChange = (value: string) => {
@@ -461,6 +462,8 @@ describe('autocomplete', () => {
 
   it('受限：输入》查询》点击MenuItem =》显示选中项', () => {
     const cmp = mount(<AutoCompleteBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -471,8 +474,10 @@ describe('autocomplete', () => {
     expect(getInputValue(cmp)).toBe('Armin van Buuren');
   });
 
-  it('受限：输入》查询》点击MenuItem》查询》点击MenuItem》显示旧值', () => {
+  it('受限：输入》查询》点击MenuItem》查询》点击MenuItem》显示旧值', async () => {
     const cmp = mount(<AutoCompleteBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -481,7 +486,10 @@ describe('autocomplete', () => {
     ]);
     selectMenuItem(cmp, 0);
     expect(getInputValue(cmp)).toBe('Armin van Buuren');
+    letInputOnBlur(cmp);
+    await delay(100);
 
+    letInputonFocus(cmp);
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -490,11 +498,18 @@ describe('autocomplete', () => {
     ]);
     selectMenuItem(cmp, 1);
     expect(getInputValue(cmp)).toBe('Bassjackers');
+    letInputOnBlur(cmp);
+    await delay(100);
+
+    letInputonFocus(cmp);
+    changeInputValue(cmp, 'C');
     expect(getOldValue(cmp)).toBe('Armin van Buuren');
   });
 
   it('受限：输入》查询》点击MenuItem》点击清除按钮》显示旧值为上一次值', () => {
     const cmp = mount(<AutoCompleteBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -506,12 +521,16 @@ describe('autocomplete', () => {
 
     clickClearButton(cmp);
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
+
+    changeInputValue(cmp, 'B');
     expect(getOldValue(cmp)).toBe('Armin van Buuren');
   });
 
   it('受限：点击旧值 》Input显示旧值', () => {
     const cmp = mount(<AutoCompleteBounded data={data} />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
     expect(getMenuData(cmp)).toEqual([
@@ -523,12 +542,13 @@ describe('autocomplete', () => {
 
     clickClearButton(cmp);
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
+    changeInputValue(cmp, 'B');
     expect(getOldValue(cmp)).toBe('Armin van Buuren');
 
     selectOldValueItem(cmp);
     expect(getInputValue(cmp)).toBe('Armin van Buuren');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
   });
 
   // Email自动补全框
@@ -543,7 +563,7 @@ describe('autocomplete', () => {
     }
     render() {
       const { menuData } = this.state;
-      return <AutoComplete data={menuData} onChange={this.onChange} />;
+      return <AutoComplete showOldValue data={menuData} onChange={this.onChange} />;
     }
 
     onChange = value => {
@@ -565,6 +585,8 @@ describe('autocomplete', () => {
 
   it('Email自动补全@后缀：输入a，显示所有的后缀', () => {
     const cmp = mount(<AutoCompleteEmailInput />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     expect(getMenuData(cmp)).toEqual([
@@ -576,7 +598,7 @@ describe('autocomplete', () => {
 
     changeInputValue(cmp, '');
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
 
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
@@ -589,11 +611,13 @@ describe('autocomplete', () => {
 
     changeInputValue(cmp, '');
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
   });
 
   it('Email自动补全@后缀：输入@，不显示任何选项', () => {
     const cmp = mount(<AutoCompleteEmailInput />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     expect(getMenuData(cmp)).toEqual([
@@ -605,7 +629,7 @@ describe('autocomplete', () => {
 
     changeInputValue(cmp, 'A@');
     expect(getInputValue(cmp)).toBe('A@');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
 
     changeInputValue(cmp, 'B');
     expect(getInputValue(cmp)).toBe('B');
@@ -618,11 +642,13 @@ describe('autocomplete', () => {
 
     changeInputValue(cmp, '');
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
   });
 
   it('Email自动补全@后缀：输入A，点击menuItem，选中该项', () => {
     const cmp = mount(<AutoCompleteEmailInput />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     expect(getMenuData(cmp)).toEqual([
@@ -637,6 +663,8 @@ describe('autocomplete', () => {
 
   it('Email自动补全@后缀：输入》选中》再输入》选中，显示旧值', () => {
     const cmp = mount(<AutoCompleteEmailInput />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     expect(getMenuData(cmp)).toEqual([
@@ -658,11 +686,14 @@ describe('autocomplete', () => {
     ]);
     selectMenuItem(cmp, 1);
     expect(getInputValue(cmp)).toBe('B@sina.com');
+    changeInputValue(cmp, 'B');
     expect(getOldValue(cmp)).toBe('A@gmail.com');
   });
 
   it('Email自动补全@后缀：输入》查询》点击MenuItem》点击清除按钮》显示旧值为上一次值', () => {
     const cmp = mount(<AutoCompleteEmailInput />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     expect(getMenuData(cmp)).toEqual([
@@ -676,12 +707,15 @@ describe('autocomplete', () => {
 
     clickClearButton(cmp);
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
+    changeInputValue(cmp, 'B');
     expect(getOldValue(cmp)).toBe('A@gmail.com');
   });
 
   it('Email自动补全@后缀：选中旧值，input显示旧值', () => {
     const cmp = mount(<AutoCompleteEmailInput />);
+    letInputonFocus(cmp);
+
     changeInputValue(cmp, 'A');
     expect(getInputValue(cmp)).toBe('A');
     expect(getMenuData(cmp)).toEqual([
@@ -703,6 +737,7 @@ describe('autocomplete', () => {
     ]);
     selectMenuItem(cmp, 1);
     expect(getInputValue(cmp)).toBe('B@sina.com');
+    changeInputValue(cmp, 'B');
     expect(getOldValue(cmp)).toBe('A@gmail.com');
   });
 
@@ -723,12 +758,14 @@ describe('autocomplete', () => {
 
     clickClearButton(cmp);
     expect(getInputValue(cmp)).toBe('');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
+
+    changeInputValue(cmp, 'A');
     expect(getOldValue(cmp)).toBe('A@gmail.com');
 
     selectOldValueItem(cmp);
     expect(getInputValue(cmp)).toBe('A@gmail.com');
-    expect(getMenuData(cmp)).toEqual([]);
+    expect(findEmptyBox(cmp).length).toBe(1);
   });
 
   function findEmptyBox(cmp: Object) {

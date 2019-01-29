@@ -7,7 +7,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c8 {
@@ -651,7 +651,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c0 {
@@ -912,7 +912,7 @@ Array [
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c14 {
@@ -1427,7 +1427,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: NaNem;
+  font-size: 1.2rem;
 }
 
 .c8 {
