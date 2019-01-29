@@ -25,6 +25,42 @@ const H3 = styled.h3`
   color: #fff;
 `;
 
+const HoriBox = styled.div`
+  margin: 10px 0 50px;
+`;
+
+const horiData = [
+  {
+    value: 'Lugia Design of React',
+    text: 'Lugia Design of React',
+    icon: 'lugia-icon-financial_add_pic',
+  },
+  {
+    value: '快速上手',
+    text: '快速上手',
+    icon: 'lugia-icon-financial_columns',
+    children: [
+      { value: '快速上手子1-1', text: '快速上手1-1' },
+      { value: '快速上手子1-2', text: '快速上手1-2' },
+    ],
+  },
+  { value: '项目实战', text: '项目实战', children: [] },
+  { value: '在Lugia-mega中使用', text: '在Lugia-mega中使用' },
+  {
+    value: 'Components',
+    text: 'Components',
+
+    children: [
+      { value: 'AutoComplete 自动完成', text: '自动完成' },
+      { value: 'Cascader 级联选择', text: '级联选择' },
+      { value: 'Checkbox 多选框', text: '多选框' },
+      { value: 'DatePicker 日期选择框', text: '日期选择框' },
+      { value: 'Form 表单', text: '表单', children: [{ value: 'aa', text: 'aa' }] },
+      { value: 'Input 输入框', text: '输入框' },
+    ],
+  },
+];
+
 const newData = [
   {
     value: 'Lugia Design of React',
@@ -98,6 +134,11 @@ export default class LimitDemo extends React.Component<Object, Object> {
   }
 
   render() {
+    const horiConfig = {
+      [Widget.Menu]: {
+        width: 400,
+      },
+    };
     const config = {
       [Widget.NavMenu]: {
         width: 300,
@@ -105,6 +146,11 @@ export default class LimitDemo extends React.Component<Object, Object> {
     };
     return (
       <div>
+        <HoriBox>
+          <Theme config={horiConfig}>
+            <Navmenu data={horiData} mode={'horizontal'} />,
+          </Theme>
+        </HoriBox>
         <Box>
           <H3>light主题 ellipse</H3>
           <Theme config={config}>
@@ -125,9 +171,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
           <Theme config={config}>
             <Navmenu
               inlineType={'ellipse'}
-              // inlineType={'primary'}
               mode={'inline'}
-              // mode={'vertical'}
               theme={'dark'}
               data={newData}
               value={this.state.value}
@@ -144,7 +188,6 @@ export default class LimitDemo extends React.Component<Object, Object> {
             <Navmenu
               inlineType={'primary'}
               mode={'inline'}
-              // mode={'vertical'}
               data={newData}
               value={this.state.value}
               inlineExpandAll={true}
@@ -160,7 +203,6 @@ export default class LimitDemo extends React.Component<Object, Object> {
             <Navmenu
               inlineType={'primary'}
               mode={'inline'}
-              // mode={'vertical'}
               data={newData}
               theme={'dark'}
               value={this.state.value}
@@ -175,7 +217,6 @@ export default class LimitDemo extends React.Component<Object, Object> {
   }
 
   onSelect = target => {
-    console.log('target', target);
     this.setState({ value: target.value });
   };
   onChange = value => {
