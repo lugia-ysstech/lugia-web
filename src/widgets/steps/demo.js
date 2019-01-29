@@ -15,18 +15,18 @@ import styled from 'styled-components';
 const steps = [
   {
     title: 'First',
-    content: 'First-content',
+    description: 'First-description',
   },
   {
     title: 'Second',
-    content: 'Second-content',
+    description: 'Second-description',
   },
   {
     title: 'Last',
-    content: 'Third-content',
+    description: 'Third-description',
   },
 ];
-const StepContent = styled.div`
+const Stepdescription = styled.div`
   margin-top: 30px;
   margin-left: 45px;
   border: 1px solid #ccc;
@@ -57,7 +57,7 @@ class StepsDemo extends React.Component<Object, Object> {
     const { currentStepNumber } = this.state;
     const matchCurrentNumber = currentStepNumber > 0 && currentStepNumber <= 3;
     const theCurrentStepNumber = matchCurrentNumber ? currentStepNumber : 1;
-    const content = matchCurrentNumber ? steps[theCurrentStepNumber - 1].content : '';
+    const description = matchCurrentNumber ? steps[theCurrentStepNumber - 1].description : '';
 
     return (
       <div>
@@ -75,7 +75,7 @@ class StepsDemo extends React.Component<Object, Object> {
               <Step title={item.title} />
             ))}
           </Steps>
-          <StepContent>{content}</StepContent>
+          <Stepdescription>{description}</Stepdescription>
         </Theme>
       </div>
     );
@@ -96,11 +96,24 @@ const view = {
     width: 600,
   },
 };
+const data = [
+  { title: '1111', description: 'description111', stepStatus: 'finish' },
+  { title: '222', description: 'description2', stepStatus: 'process' },
+  { title: '33', description: 'description33', stepStatus: 'next' },
+  { title: '444', description: 'description444', stepStatus: 'wait' },
+  { title: '555', description: 'description5555', stepStatus: 'error' },
+];
 export default () => {
   return (
     <Theme config={view}>
       <div>
         <Wrapper>
+          <Wrapper>
+            <Steps />
+          </Wrapper>
+          <Wrapper>
+            <Steps data={data} />
+          </Wrapper>
           <p>带有描述</p>
           <Steps orientation="horizontal" size={'normal'}>
             <Step title="1111" description={'description111'} stepStatus="finish" />
@@ -186,22 +199,22 @@ export default () => {
           <p>简洁风格 size mini</p>
 
           <Steps orientation="vertical" stepType="simple" size="mini">
-            <Step title="1111" stepStatus="finish" content="content1" />
-            <Step title="222" stepStatus="process" content="content2" />
-            <Step title="33" stepStatus="next" content="content3" />
-            <Step title="444" stepStatus="wait" content="content4" />
-            <Step title="555" stepStatus="error" content="content5" />
+            <Step title="1111" stepStatus="finish" description="description1" />
+            <Step title="222" stepStatus="process" description="description2" />
+            <Step title="33" stepStatus="next" description="description3" />
+            <Step title="444" stepStatus="wait" description="description4" />
+            <Step title="555" stepStatus="error" description="description5" />
           </Steps>
         </VWrapper>
         <VWrapper>
           <p>简洁风格 size normal</p>
 
           <Steps orientation="vertical" stepType="simple" size="normal">
-            <Step title="1111" stepStatus="finish" content="content1" />
-            <Step title="222" stepStatus="process" content="content2" />
-            <Step title="33" stepStatus="next" content="content3" />
-            <Step title="444" stepStatus="wait" content="content4" />
-            <Step title="555" stepStatus="error" content="content5" />
+            <Step title="1111" stepStatus="finish" description="description1" />
+            <Step title="222" stepStatus="process" description="description2" />
+            <Step title="33" stepStatus="next" description="description3" />
+            <Step title="444" stepStatus="wait" description="description4" />
+            <Step title="555" stepStatus="error" description="description5" />
           </Steps>
         </VWrapper>
         <VWrapper>
@@ -218,11 +231,11 @@ export default () => {
           <p>半扁平风格 size normal</p>
 
           <Steps orientation="vertical" stepType="flat" size="normal">
-            <Step title="1111" stepStatus="finish" content="content1" />
-            <Step title="222" stepStatus="process" content="content2" />
-            <Step title="33" stepStatus="next" content="content3" />
-            <Step title="444" stepStatus="wait" content="content4" />
-            <Step title="555" stepStatus="error" content="content5" />
+            <Step title="1111" stepStatus="finish" description="description1" />
+            <Step title="222" stepStatus="process" description="description2" />
+            <Step title="33" stepStatus="next" description="description3" />
+            <Step title="444" stepStatus="wait" description="description4" />
+            <Step title="555" stepStatus="error" description="description5" />
           </Steps>
         </VWrapper>
         <VWrapper>
@@ -248,11 +261,11 @@ export default () => {
         <VWrapper>
           <p>点状风格 size normal</p>
           <Steps orientation="vertical" stepType="dot" size="normal">
-            <Step title="1111" stepStatus="finish" content="content1" />
-            <Step title="222" stepStatus="process" content="content2" />
-            <Step title="33" stepStatus="next" content="content3" />
-            <Step title="444" stepStatus="wait" content="content4" />
-            <Step title="555" stepStatus="error" content="content5" />
+            <Step title="1111" stepStatus="finish" description="description1" />
+            <Step title="222" stepStatus="process" description="description2" />
+            <Step title="33" stepStatus="next" description="description3" />
+            <Step title="444" stepStatus="wait" description="description4" />
+            <Step title="555" stepStatus="error" description="description5" />
           </Steps>
         </VWrapper>
       </div>

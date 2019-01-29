@@ -1,95 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`stepsDemo Component JSON 1`] = `
-.c1 {
-  display: inline-block;
-  position: relative;
-}
-
-.c2 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  list-style: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-.c90 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  list-style: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c8 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
-.c87 {
-  display: inline-block;
-  margin-bottom: 0;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  vertical-align: bottom;
-  color: #ffffff;
-  background-color: #4d63ff;
-  border: none;
-  height: 2.666666666666667em;
-  padding: 0.8333333333333334em;
-  font-size: 1em;
-  border-radius: 0.33333333333333337em;
-}
-
-.c87:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c87:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c87:active {
-  background-color: #3e4fcc;
-}
-
-.c12 {
+.c11 {
   position: relative;
   cursor: pointer;
-  width: 29.166666666666668em;
+  width: 17.666666666666668em;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -100,10 +24,10 @@ exports[`stepsDemo Component JSON 1`] = `
   color: #4d63ff;
 }
 
-.c24 {
+.c22 {
   position: relative;
   cursor: pointer;
-  width: 29.166666666666668em;
+  width: 17.666666666666668em;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -117,7 +41,7 @@ exports[`stepsDemo Component JSON 1`] = `
 .c28 {
   position: relative;
   cursor: pointer;
-  width: 29.166666666666668em;
+  width: 17.666666666666668em;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -128,24 +52,10 @@ exports[`stepsDemo Component JSON 1`] = `
   color: #f22735;
 }
 
-.c56 {
+.c43 {
   position: relative;
   cursor: pointer;
-  width: 29.166666666666668em;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  color: rgb(128,144,255);
-}
-
-.c95 {
-  position: relative;
-  cursor: pointer;
-  height: 8.333333333333334em;
+  width: 17em;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -156,10 +66,10 @@ exports[`stepsDemo Component JSON 1`] = `
   color: #4d63ff;
 }
 
-.c101 {
+.c49 {
   position: relative;
   cursor: pointer;
-  height: 8.333333333333334em;
+  width: 17em;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -170,10 +80,10 @@ exports[`stepsDemo Component JSON 1`] = `
   color: #cccccc;
 }
 
-.c104 {
+.c52 {
   position: relative;
   cursor: pointer;
-  height: 8.333333333333334em;
+  width: 17em;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -184,10 +94,122 @@ exports[`stepsDemo Component JSON 1`] = `
   color: #f22735;
 }
 
-.c119 {
+.c59 {
   position: relative;
   cursor: pointer;
-  height: 8.333333333333334em;
+  width: 17em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: rgb(128,144,255);
+}
+
+.c69 {
+  position: relative;
+  cursor: pointer;
+  width: 17.666666666666668em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: rgb(128,144,255);
+}
+
+.c100 {
+  position: relative;
+  cursor: pointer;
+  height: 6.166666666666667em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #4d63ff;
+}
+
+.c105 {
+  position: relative;
+  cursor: pointer;
+  height: 6.166666666666667em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #cccccc;
+}
+
+.c108 {
+  position: relative;
+  cursor: pointer;
+  height: 6.166666666666667em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #f22735;
+}
+
+.c113 {
+  position: relative;
+  cursor: pointer;
+  height: 6.833333333333333em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #4d63ff;
+}
+
+.c116 {
+  position: relative;
+  cursor: pointer;
+  height: 6.833333333333333em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #cccccc;
+}
+
+.c118 {
+  position: relative;
+  cursor: pointer;
+  height: 6.833333333333333em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #f22735;
+}
+
+.c121 {
+  position: relative;
+  cursor: pointer;
+  height: 6.833333333333333em;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -204,7 +226,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: inherit;
 }
 
-.c22 {
+.c21 {
   font-size: 1.4rem;
   color: #cccccc;
   text-align: inherit;
@@ -216,90 +238,20 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: inherit;
 }
 
-.c55 {
+.c58 {
   font-size: 1.4rem;
   color: rgb(128,144,255);
   text-align: inherit;
 }
 
-.c94 {
-  font-size: 1.4rem;
-  color: #333333;
-  text-align: inherit;
-  line-height: 2em;
-}
-
-.c100 {
-  font-size: 1.4rem;
-  color: #cccccc;
-  text-align: inherit;
-  line-height: 1em;
-}
-
-.c107 {
-  font-size: 1.4rem;
-  color: #f22735;
-  text-align: inherit;
-  line-height: 2em;
-}
-
-.c110 {
-  font-size: 1.4rem;
-  color: #333333;
-  text-align: inherit;
-  line-height: 2.666666666666667em;
-}
-
-.c113 {
-  font-size: 1.4rem;
-  color: #cccccc;
-  text-align: inherit;
-  line-height: 1.6666666666666667em;
-}
-
-.c116 {
-  font-size: 1.4rem;
-  color: #f22735;
-  text-align: inherit;
-  line-height: 2.666666666666667em;
-}
-
-.c118 {
-  font-size: 1.4rem;
-  color: rgb(128,144,255);
-  text-align: inherit;
-  line-height: 2.666666666666667em;
-}
-
-.c123 {
-  font-size: 1.4rem;
-  color: #cccccc;
-  text-align: inherit;
-  line-height: 2.666666666666667em;
-}
-
-.c127 {
-  font-size: 1.4rem;
-  color: #333333;
-  text-align: inherit;
-  line-height: 1em;
-}
-
-.c132 {
-  font-size: 1.4rem;
-  color: #f22735;
-  text-align: inherit;
-  line-height: 1em;
-}
-
-.c11 {
+.c26 {
   font-weight: 400;
   color: #333333;
   margin-top: 0.5em;
   text-align: inherit;
 }
 
-.c23 {
+.c27 {
   font-weight: 400;
   color: #cccccc;
   margin-top: 0.5em;
@@ -323,7 +275,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c19 {
+.c18 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -333,7 +285,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c27 {
+.c25 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -419,21 +371,11 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c45 {
+.c46 {
   position: absolute;
   white-space: normal;
   display: block;
   color: #4d63ff;
-  top: 1.6666666666666667em;
-  margin-top: 0.8333333333333334em;
-  text-align: left;
-}
-
-.c49 {
-  position: absolute;
-  white-space: normal;
-  display: block;
-  color: #cccccc;
   top: 1.6666666666666667em;
   margin-top: 0.8333333333333334em;
   text-align: left;
@@ -443,7 +385,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: #f22735;
+  color: #cccccc;
   top: 1.6666666666666667em;
   margin-top: 0.8333333333333334em;
   text-align: left;
@@ -453,13 +395,23 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
+  color: #f22735;
+  top: 1.6666666666666667em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c57 {
+  position: absolute;
+  white-space: normal;
+  display: block;
   color: rgb(128,144,255);
   top: 1.6666666666666667em;
   margin-top: 0.8333333333333334em;
   text-align: left;
 }
 
-.c65 {
+.c68 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -469,31 +421,11 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c77 {
+.c81 {
   position: absolute;
   white-space: normal;
   display: block;
   color: #56c22d;
-  top: 0.8333333333333334em;
-  margin-top: 0.8333333333333334em;
-  text-align: left;
-}
-
-.c80 {
-  position: absolute;
-  white-space: normal;
-  display: block;
-  color: #4d63ff;
-  top: 0.8333333333333334em;
-  margin-top: 0.8333333333333334em;
-  text-align: left;
-}
-
-.c82 {
-  position: absolute;
-  white-space: normal;
-  display: block;
-  color: #cccccc;
   top: 0.8333333333333334em;
   margin-top: 0.8333333333333334em;
   text-align: left;
@@ -503,27 +435,37 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
+  color: #4d63ff;
+  top: 0.8333333333333334em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c86 {
+  position: absolute;
+  white-space: normal;
+  display: block;
+  color: #cccccc;
+  top: 0.8333333333333334em;
+  margin-top: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c88 {
+  position: absolute;
+  white-space: normal;
+  display: block;
   color: #f22735;
   top: 0.8333333333333334em;
   margin-top: 0.8333333333333334em;
   text-align: left;
 }
 
-.c93 {
+.c99 {
   position: absolute;
   white-space: normal;
   display: block;
   color: #56c22d;
-  left: 1.6666666666666667em;
-  margin-left: 0.8333333333333334em;
-  text-align: left;
-}
-
-.c98 {
-  position: absolute;
-  white-space: normal;
-  display: block;
-  color: #4d63ff;
   left: 1.6666666666666667em;
   margin-left: 0.8333333333333334em;
   text-align: left;
@@ -533,13 +475,23 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
+  color: #4d63ff;
+  left: 1.6666666666666667em;
+  margin-left: 0.8333333333333334em;
+  text-align: left;
+}
+
+.c107 {
+  position: absolute;
+  white-space: normal;
+  display: block;
   color: #cccccc;
   left: 1.6666666666666667em;
   margin-left: 0.8333333333333334em;
   text-align: left;
 }
 
-.c106 {
+.c110 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -549,7 +501,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c109 {
+.c112 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -559,7 +511,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c111 {
+.c114 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -569,7 +521,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c114 {
+.c117 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -579,7 +531,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c115 {
+.c119 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -589,7 +541,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c117 {
+.c120 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -599,7 +551,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c126 {
+.c127 {
   position: absolute;
   white-space: normal;
   display: block;
@@ -639,7 +591,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c14 {
+.c13 {
   display: inline-block;
   position: relative;
   -webkit-flex: 1;
@@ -649,7 +601,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 10;
 }
 
-.c57 {
+.c60 {
   display: inline-block;
   position: relative;
   -webkit-flex: 1;
@@ -659,7 +611,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 10;
 }
 
-.c96 {
+.c101 {
   display: inline-block;
   position: relative;
   -webkit-flex: 1;
@@ -669,7 +621,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 10;
 }
 
-.c15 {
+.c14 {
   position: relative;
   height: 0.08333333333333334em;
   width: 100%;
@@ -681,7 +633,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #4d63ff;
 }
 
-.c25 {
+.c23 {
   position: relative;
   height: 0.08333333333333334em;
   width: 100%;
@@ -705,7 +657,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #f22735;
 }
 
-.c58 {
+.c61 {
   position: relative;
   height: 0.5em;
   width: 100%;
@@ -715,40 +667,6 @@ exports[`stepsDemo Component JSON 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   background-color: rgb(128,144,255);
-}
-
-.c59 {
-  position: relative;
-  height: 0.5em;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  box-shadow: 0 0 0.33333333333333337em rgba(104,79,255,0.3) inset;
-}
-
-.c59::before {
-  content: '';
-  opacity: 1;
-  position: absolute;
-  width: 0.5em;
-  top: 0.08333333333333334em;
-  left: -0.16666666666666669em;
-  background: #ffffff;
-  height: 0.33333333333333337em;
-}
-
-.c59::after {
-  content: '';
-  opacity: 1;
-  position: absolute;
-  width: 0.5em;
-  top: 0.08333333333333334em;
-  right: -0.16666666666666669em;
-  background: #ffffff;
-  height: 0.33333333333333337em;
 }
 
 .c62 {
@@ -760,19 +678,41 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  background-color: #f22735;
+  box-shadow: 0 0 0.33333333333333337em rgba(104,79,255,0.3) inset;
 }
 
-.c97 {
+.c62::before {
+  content: '';
+  opacity: 1;
+  position: absolute;
+  width: 0.5em;
+  top: 0.08333333333333334em;
+  left: -0.16666666666666669em;
+  background: #ffffff;
+  height: 0.33333333333333337em;
+}
+
+.c62::after {
+  content: '';
+  opacity: 1;
+  position: absolute;
+  width: 0.5em;
+  top: 0.08333333333333334em;
+  right: -0.16666666666666669em;
+  background: #ffffff;
+  height: 0.33333333333333337em;
+}
+
+.c65 {
   position: relative;
-  width: 0.08333333333333334em;
-  height: 100%;
+  height: 0.5em;
+  width: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  background-color: #4d63ff;
+  background-color: #f22735;
 }
 
 .c102 {
@@ -784,10 +724,22 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
+  background-color: #4d63ff;
+}
+
+.c106 {
+  position: relative;
+  width: 0.08333333333333334em;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
   background-color: #cccccc;
 }
 
-.c105 {
+.c109 {
   position: relative;
   width: 0.08333333333333334em;
   height: 100%;
@@ -799,7 +751,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #f22735;
 }
 
-.c120 {
+.c122 {
   position: relative;
   width: 0.5em;
   height: 100%;
@@ -811,7 +763,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: rgb(128,144,255);
 }
 
-.c121 {
+.c123 {
   position: relative;
   width: 0.5em;
   height: 100%;
@@ -823,7 +775,7 @@ exports[`stepsDemo Component JSON 1`] = `
   box-shadow: 0 0 0.33333333333333337em rgba(104,79,255,0.3) inset;
 }
 
-.c121::before {
+.c123::before {
   content: '';
   opacity: 1;
   position: absolute;
@@ -834,7 +786,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 0.5em;
 }
 
-.c121::after {
+.c123::after {
   content: '';
   opacity: 1;
   position: absolute;
@@ -845,7 +797,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 0.5em;
 }
 
-.c124 {
+.c125 {
   position: relative;
   width: 0.5em;
   height: 100%;
@@ -857,7 +809,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #f22735;
 }
 
-.c78 {
+.c82 {
   position: relative;
   height: 0.08333333333333334em;
   width: 100%;
@@ -869,7 +821,7 @@ exports[`stepsDemo Component JSON 1`] = `
   border-bottom: 0.08333333333333334em dashed;
 }
 
-.c85 {
+.c89 {
   position: relative;
   height: 0.08333333333333334em;
   width: 100%;
@@ -893,7 +845,7 @@ exports[`stepsDemo Component JSON 1`] = `
   border-left: 0.08333333333333334em dashed;
 }
 
-.c133 {
+.c132 {
   position: relative;
   width: 0.08333333333333334em;
   height: 100%;
@@ -910,7 +862,7 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2.666666666666667em;
 }
 
-.c13 {
+.c12 {
   position: relative;
   width: 100%;
 }
@@ -920,12 +872,12 @@ exports[`stepsDemo Component JSON 1`] = `
   width: 2em;
 }
 
-.c73 {
+.c77 {
   position: relative;
   width: 1em;
 }
 
-.c76 {
+.c80 {
   position: relative;
   background-color: #56c22d;
   display: inLine-block;
@@ -934,7 +886,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
 }
 
-.c79 {
+.c83 {
   position: relative;
   background-color: #4d63ff;
   display: inLine-block;
@@ -943,7 +895,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
 }
 
-.c81 {
+.c85 {
   position: relative;
   background-color: #cccccc;
   display: inLine-block;
@@ -952,7 +904,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
 }
 
-.c83 {
+.c87 {
   position: relative;
   background-color: #f22735;
   display: inLine-block;
@@ -961,14 +913,14 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
 }
 
-.c69 {
+.c73 {
   position: relative;
   display: inLine-block;
   width: 2em;
   height: 2em;
 }
 
-.c18 {
+.c17 {
   display: inLine-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -977,11 +929,11 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: center;
   font-weight: 700;
   line-height: 1;
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #ffffff;
 }
 
-.c44 {
+.c45 {
   display: inLine-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -990,7 +942,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: center;
   font-weight: 700;
   line-height: 1;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: #ffffff;
 }
 
@@ -1017,7 +969,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #ffffff;
 }
 
-.c16 {
+.c15 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1040,7 +992,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #4d63ff;
 }
 
-.c21 {
+.c20 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1063,7 +1015,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #ffffff;
 }
 
-.c26 {
+.c24 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1132,7 +1084,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #ffffff;
 }
 
-.c43 {
+.c44 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1155,7 +1107,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #4d63ff;
 }
 
-.c47 {
+.c48 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1178,7 +1130,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #ffffff;
 }
 
-.c48 {
+.c50 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1201,7 +1153,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #ffffff;
 }
 
-.c50 {
+.c53 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1224,7 +1176,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #ffffff;
 }
 
-.c52 {
+.c55 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1246,7 +1198,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: rgb(128,144,255);
 }
 
-.c61 {
+.c64 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1268,7 +1220,7 @@ exports[`stepsDemo Component JSON 1`] = `
   background-color: #ffffff;
 }
 
-.c63 {
+.c66 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1288,28 +1240,6 @@ exports[`stepsDemo Component JSON 1`] = `
   border-radius: 50%;
   background-color: #f22735;
   background-color: #f22735;
-}
-
-.c64 {
-  position: absolute;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  box-sizing: border-box;
-  border-radius: 50%;
-  background-color: rgb(128,144,255);
-  background-color: rgb(128,144,255);
 }
 
 .c67 {
@@ -1330,11 +1260,33 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 2.666666666666667em;
   box-sizing: border-box;
   border-radius: 50%;
+  background-color: rgb(128,144,255);
+  background-color: rgb(128,144,255);
+}
+
+.c71 {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  box-sizing: border-box;
+  border-radius: 50%;
   box-shadow: 0 0 0.33333333333333337em rgba(104,79,255,0.3) inset;
   background-color: #ffffff;
 }
 
-.c68 {
+.c72 {
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1369,7 +1321,7 @@ exports[`stepsDemo Component JSON 1`] = `
   flex-direction: row;
 }
 
-.c91 {
+.c97 {
   position: relative;
   width: 2em;
   height: 100%;
@@ -1382,7 +1334,7 @@ exports[`stepsDemo Component JSON 1`] = `
   flex-direction: column;
 }
 
-.c74 {
+.c78 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1394,7 +1346,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 100%;
 }
 
-.c125 {
+.c126 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1421,7 +1373,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 11;
 }
 
-.c20 {
+.c19 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1451,7 +1403,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 11;
 }
 
-.c46 {
+.c47 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1466,7 +1418,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 11;
 }
 
-.c60 {
+.c63 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1481,7 +1433,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 9;
 }
 
-.c66 {
+.c70 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1496,7 +1448,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 9;
 }
 
-.c92 {
+.c98 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1511,7 +1463,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 11;
 }
 
-.c99 {
+.c104 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1526,7 +1478,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 11;
 }
 
-.c108 {
+.c111 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1541,7 +1493,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 11;
 }
 
-.c112 {
+.c115 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1556,7 +1508,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 11;
 }
 
-.c122 {
+.c124 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1571,7 +1523,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 9;
 }
 
-.c75 {
+.c79 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -1595,7 +1547,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 5;
 }
 
-.c17 {
+.c16 {
   display: none !important;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1621,7 +1573,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 5;
 }
 
-.c53 {
+.c56 {
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1634,7 +1586,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 5;
 }
 
-.c70 {
+.c74 {
   position: absolute;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1652,7 +1604,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translateY(-50%);
 }
 
-.c71 {
+.c75 {
   position: absolute;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1670,7 +1622,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translateY(-50%);
 }
 
-.c72 {
+.c76 {
   position: absolute;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1688,14 +1640,101 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translateY(-50%);
 }
 
-.c88 {
+.c1 {
+  display: inline-block;
+  position: relative;
+  width: 50em;
+}
+
+.c95 {
+  display: inline-block;
+  position: relative;
+}
+
+.c2 {
+  font-variant: tabular-nums;
+  color: rgba(0,0,0,0.65);
+  box-sizing: border-box;
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c96 {
+  font-variant: tabular-nums;
+  color: rgba(0,0,0,0.65);
+  box-sizing: border-box;
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c91 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  color: #ffffff;
+  background-color: #4d63ff;
+  border: none;
+  padding: 0 1.2857142857142858em;
+  font-size: 1.4rem;
+  border-radius: 0.28571428571428575em;
+}
+
+.c91:hover {
+  color: #ffffff;
+  border: none;
+  background-color: #8090ff;
+}
+
+.c91:focus {
+  color: #ffffff;
+  border: none;
+  background-color: #8090ff;
+}
+
+.c91:active {
+  background-color: #3e4fcc;
+}
+
+.c92 {
+  display: inline-block;
+  line-height: 2.285714285714286em;
+}
+
+.c93 {
   margin-top: 30px;
   margin-left: 45px;
   border: 1px solid #ccc;
   height: 100px;
 }
 
-.c86 {
+.c90 {
   margin-bottom: 30px;
 }
 
@@ -1704,7 +1743,7 @@ exports[`stepsDemo Component JSON 1`] = `
   margin: 50px;
 }
 
-.c89 {
+.c94 {
   text-align: left;
   margin: 50px;
   display: inline-block;
@@ -1714,11 +1753,557 @@ exports[`stepsDemo Component JSON 1`] = `
   <div
     className="c0"
   >
+    <div
+      className="c0"
+    >
+      <div
+        className="c1"
+        orientation="horizontal"
+      >
+        <div
+          className="c2"
+          orientation="horizontal"
+        >
+          <div
+            className="c3"
+            size="normal"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="normal"
+            >
+              <div
+                className="c5"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c6"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_check c7 c8"
+                  />
+                </div>
+                <div
+                  className="c9"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c10"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    step1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c11"
+            orientation="horizontal"
+            size="normal"
+          >
+            <div
+              className="c12"
+              size="normal"
+            >
+              <div
+                className="c4"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c13"
+                  orientation="horizontal"
+                >
+                  <div
+                    className="c14"
+                    orientation="horizontal"
+                  />
+                </div>
+                <div
+                  className="c5"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c15"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <i
+                      className=" c16 c8"
+                    />
+                    <div
+                      className="c17"
+                      size="normal"
+                    >
+                      2
+                    </div>
+                  </div>
+                  <div
+                    className="c18"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <div
+                      className="c10"
+                      orientation="horizontal"
+                      size="normal"
+                    >
+                      step2
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c11"
+            orientation="horizontal"
+            size="normal"
+          >
+            <div
+              className="c12"
+              size="normal"
+            >
+              <div
+                className="c4"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c13"
+                  orientation="horizontal"
+                >
+                  <div
+                    className="c14"
+                    orientation="horizontal"
+                  />
+                </div>
+                <div
+                  className="c19"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c20"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <i
+                      className=" c16 c8"
+                    />
+                    <div
+                      className="c17"
+                      size="normal"
+                    >
+                      0
+                    </div>
+                  </div>
+                  <div
+                    className="c18"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <div
+                      className="c21"
+                      orientation="horizontal"
+                      size="normal"
+                    >
+                      step3
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c22"
+            orientation="horizontal"
+            size="normal"
+          >
+            <div
+              className="c12"
+              size="normal"
+            >
+              <div
+                className="c4"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c13"
+                  orientation="horizontal"
+                >
+                  <div
+                    className="c23"
+                    orientation="horizontal"
+                  />
+                </div>
+                <div
+                  className="c19"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c24"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <i
+                      className=" c16 c8"
+                    />
+                    <div
+                      className="c17"
+                      size="normal"
+                    >
+                      0
+                    </div>
+                  </div>
+                  <div
+                    className="c25"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <div
+                      className="c21"
+                      orientation="horizontal"
+                      size="normal"
+                    >
+                      step4
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c0"
+    >
+      <div
+        className="c1"
+        orientation="horizontal"
+      >
+        <div
+          className="c2"
+          orientation="horizontal"
+        >
+          <div
+            className="c3"
+            size="normal"
+          >
+            <div
+              className="c4"
+              orientation="horizontal"
+              size="normal"
+            >
+              <div
+                className="c5"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c6"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_check c7 c8"
+                  />
+                </div>
+                <div
+                  className="c9"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c10"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    1111
+                  </div>
+                  <div
+                    className="c26"
+                  >
+                    description111
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c11"
+            orientation="horizontal"
+            size="normal"
+          >
+            <div
+              className="c12"
+              size="normal"
+            >
+              <div
+                className="c4"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c13"
+                  orientation="horizontal"
+                >
+                  <div
+                    className="c14"
+                    orientation="horizontal"
+                  />
+                </div>
+                <div
+                  className="c5"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c15"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <i
+                      className=" c16 c8"
+                    />
+                    <div
+                      className="c17"
+                      size="normal"
+                    >
+                      2
+                    </div>
+                  </div>
+                  <div
+                    className="c18"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <div
+                      className="c10"
+                      orientation="horizontal"
+                      size="normal"
+                    >
+                      222
+                    </div>
+                    <div
+                      className="c26"
+                    >
+                      description2
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c11"
+            orientation="horizontal"
+            size="normal"
+          >
+            <div
+              className="c12"
+              size="normal"
+            >
+              <div
+                className="c4"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c13"
+                  orientation="horizontal"
+                >
+                  <div
+                    className="c14"
+                    orientation="horizontal"
+                  />
+                </div>
+                <div
+                  className="c19"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c20"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <i
+                      className=" c16 c8"
+                    />
+                    <div
+                      className="c17"
+                      size="normal"
+                    >
+                      0
+                    </div>
+                  </div>
+                  <div
+                    className="c18"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <div
+                      className="c21"
+                      orientation="horizontal"
+                      size="normal"
+                    >
+                      33
+                    </div>
+                    <div
+                      className="c27"
+                    >
+                      description33
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c22"
+            orientation="horizontal"
+            size="normal"
+          >
+            <div
+              className="c12"
+              size="normal"
+            >
+              <div
+                className="c4"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c13"
+                  orientation="horizontal"
+                >
+                  <div
+                    className="c23"
+                    orientation="horizontal"
+                  />
+                </div>
+                <div
+                  className="c19"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c24"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <i
+                      className=" c16 c8"
+                    />
+                    <div
+                      className="c17"
+                      size="normal"
+                    >
+                      0
+                    </div>
+                  </div>
+                  <div
+                    className="c25"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <div
+                      className="c21"
+                      orientation="horizontal"
+                      size="normal"
+                    >
+                      444
+                    </div>
+                    <div
+                      className="c27"
+                    >
+                      description444
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="c28"
+            orientation="horizontal"
+            size="normal"
+          >
+            <div
+              className="c12"
+              size="normal"
+            >
+              <div
+                className="c4"
+                orientation="horizontal"
+                size="normal"
+              >
+                <div
+                  className="c13"
+                  orientation="horizontal"
+                >
+                  <div
+                    className="c29"
+                    orientation="horizontal"
+                  />
+                </div>
+                <div
+                  className="c5"
+                  orientation="horizontal"
+                  size="normal"
+                >
+                  <div
+                    className="c30"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <i
+                      className="lugia-icon-reminder_close c31 c8"
+                    />
+                  </div>
+                  <div
+                    className="c32"
+                    orientation="horizontal"
+                    size="normal"
+                  >
+                    <div
+                      className="c33"
+                      orientation="horizontal"
+                      size="normal"
+                    >
+                      555
+                    </div>
+                    <div
+                      className="c34"
+                    >
+                      description5555
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <p>
       带有描述
     </p>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
@@ -1760,7 +2345,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   1111
                 </div>
                 <div
-                  className="c11"
+                  className="c26"
                 >
                   description111
                 </div>
@@ -1769,12 +2354,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -1783,11 +2368,11 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c15"
+                  className="c14"
                   orientation="horizontal"
                 />
               </div>
@@ -1797,22 +2382,22 @@ exports[`stepsDemo Component JSON 1`] = `
                 size="normal"
               >
                 <div
-                  className="c16"
+                  className="c15"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c19"
+                  className="c18"
                   orientation="horizontal"
                   size="normal"
                 >
@@ -1824,7 +2409,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     222
                   </div>
                   <div
-                    className="c11"
+                    className="c26"
                   >
                     description2
                   </div>
@@ -1834,12 +2419,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -1848,48 +2433,48 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c15"
+                  className="c14"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c20"
+                className="c19"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c21"
+                  className="c20"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c19"
+                  className="c18"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
                     33
                   </div>
                   <div
-                    className="c23"
+                    className="c27"
                   >
                     description33
                   </div>
@@ -1899,12 +2484,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c22"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -1913,48 +2498,48 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c25"
+                  className="c23"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c20"
+                className="c19"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c26"
+                  className="c24"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c27"
+                  className="c25"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
                     444
                   </div>
                   <div
-                    className="c23"
+                    className="c27"
                   >
                     description444
                   </div>
@@ -1969,7 +2554,7 @@ exports[`stepsDemo Component JSON 1`] = `
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -1978,7 +2563,7 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
@@ -2033,6 +2618,7 @@ exports[`stepsDemo Component JSON 1`] = `
     </p>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
@@ -2074,7 +2660,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   1111
                 </div>
                 <div
-                  className="c11"
+                  className="c26"
                 >
                   description111
                 </div>
@@ -2083,12 +2669,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -2097,11 +2683,11 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c15"
+                  className="c14"
                   orientation="horizontal"
                 />
               </div>
@@ -2111,15 +2697,15 @@ exports[`stepsDemo Component JSON 1`] = `
                 size="normal"
               >
                 <div
-                  className="c16"
+                  className="c15"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     2
@@ -2138,7 +2724,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     222
                   </div>
                   <div
-                    className="c11"
+                    className="c26"
                   >
                     description2
                   </div>
@@ -2148,12 +2734,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -2162,29 +2748,29 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c15"
+                  className="c14"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c20"
+                className="c19"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c21"
+                  className="c20"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
@@ -2196,14 +2782,14 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
                     33
                   </div>
                   <div
-                    className="c23"
+                    className="c27"
                   >
                     description33
                   </div>
@@ -2213,12 +2799,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c22"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -2227,29 +2813,29 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c25"
+                  className="c23"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c20"
+                className="c19"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c26"
+                  className="c24"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
@@ -2261,14 +2847,14 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
                     444
                   </div>
                   <div
-                    className="c23"
+                    className="c27"
                   >
                     description444
                   </div>
@@ -2283,7 +2869,7 @@ exports[`stepsDemo Component JSON 1`] = `
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -2292,7 +2878,7 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
@@ -2347,6 +2933,7 @@ exports[`stepsDemo Component JSON 1`] = `
     </p>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
@@ -2392,12 +2979,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c43"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -2406,11 +2993,11 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c15"
+                  className="c14"
                   orientation="horizontal"
                 />
               </div>
@@ -2420,22 +3007,22 @@ exports[`stepsDemo Component JSON 1`] = `
                 size="mini"
               >
                 <div
-                  className="c43"
+                  className="c44"
                   orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c44"
+                    className="c45"
                     size="mini"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c45"
+                  className="c46"
                   orientation="horizontal"
                   size="mini"
                 >
@@ -2452,12 +3039,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c43"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -2466,41 +3053,41 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c15"
+                  className="c14"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c46"
+                className="c47"
                 orientation="horizontal"
                 size="mini"
               >
                 <div
-                  className="c47"
+                  className="c48"
                   orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c44"
+                    className="c45"
                     size="mini"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c45"
+                  className="c46"
                   orientation="horizontal"
                   size="mini"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="mini"
                   >
@@ -2512,12 +3099,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c49"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -2526,41 +3113,41 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c25"
+                  className="c23"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c46"
+                className="c47"
                 orientation="horizontal"
                 size="mini"
               >
                 <div
-                  className="c48"
+                  className="c50"
                   orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c44"
+                    className="c45"
                     size="mini"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c49"
+                  className="c51"
                   orientation="horizontal"
                   size="mini"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="mini"
                   >
@@ -2572,12 +3159,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c28"
+          className="c52"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -2586,7 +3173,7 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
@@ -2600,7 +3187,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 size="mini"
               >
                 <div
-                  className="c50"
+                  className="c53"
                   orientation="horizontal"
                   size="mini"
                 >
@@ -2609,7 +3196,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   />
                 </div>
                 <div
-                  className="c51"
+                  className="c54"
                   orientation="horizontal"
                   size="mini"
                 >
@@ -2636,6 +3223,7 @@ exports[`stepsDemo Component JSON 1`] = `
     </p>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
@@ -2656,21 +3244,21 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c52"
+                className="c55"
                 orientation="horizontal"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-reminder_check c53 c8"
+                  className="lugia-icon-reminder_check c56 c8"
                 />
               </div>
               <div
-                className="c54"
+                className="c57"
                 orientation="horizontal"
                 size="mini"
               >
                 <div
-                  className="c55"
+                  className="c58"
                   orientation="horizontal"
                   size="mini"
                 >
@@ -2681,12 +3269,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c56"
+          className="c59"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -2695,11 +3283,11 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="horizontal"
               >
                 <div
-                  className="c58"
+                  className="c61"
                   orientation="horizontal"
                 />
               </div>
@@ -2709,22 +3297,22 @@ exports[`stepsDemo Component JSON 1`] = `
                 size="mini"
               >
                 <div
-                  className="c52"
+                  className="c55"
                   orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c44"
+                    className="c45"
                     size="mini"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c54"
+                  className="c57"
                   orientation="horizontal"
                   size="mini"
                 >
@@ -2741,12 +3329,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c43"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -2755,41 +3343,41 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="horizontal"
               >
                 <div
-                  className="c59"
+                  className="c62"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c60"
+                className="c63"
                 orientation="horizontal"
                 size="mini"
               >
                 <div
-                  className="c61"
+                  className="c64"
                   orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c44"
+                    className="c45"
                     size="mini"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c45"
+                  className="c46"
                   orientation="horizontal"
                   size="mini"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="mini"
                   >
@@ -2801,12 +3389,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c49"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -2815,41 +3403,41 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="horizontal"
               >
                 <div
-                  className="c59"
+                  className="c62"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c60"
+                className="c63"
                 orientation="horizontal"
                 size="mini"
               >
                 <div
-                  className="c61"
+                  className="c64"
                   orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c44"
+                    className="c45"
                     size="mini"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c49"
+                  className="c51"
                   orientation="horizontal"
                   size="mini"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="mini"
                   >
@@ -2861,12 +3449,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c28"
+          className="c52"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -2875,11 +3463,11 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="horizontal"
               >
                 <div
-                  className="c62"
+                  className="c65"
                   orientation="horizontal"
                 />
               </div>
@@ -2889,16 +3477,16 @@ exports[`stepsDemo Component JSON 1`] = `
                 size="mini"
               >
                 <div
-                  className="c63"
+                  className="c66"
                   orientation="horizontal"
                   size="mini"
                 >
                   <i
-                    className="lugia-icon-reminder_close c53 c8"
+                    className="lugia-icon-reminder_close c56 c8"
                   />
                 </div>
                 <div
-                  className="c51"
+                  className="c54"
                   orientation="horizontal"
                   size="mini"
                 >
@@ -2925,6 +3513,7 @@ exports[`stepsDemo Component JSON 1`] = `
     </p>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
@@ -2945,21 +3534,21 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c64"
+                className="c67"
                 orientation="horizontal"
                 size="normal"
               >
                 <i
-                  className="lugia-icon-reminder_check c53 c8"
+                  className="lugia-icon-reminder_check c56 c8"
                 />
               </div>
               <div
-                className="c65"
+                className="c68"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c55"
+                  className="c58"
                   orientation="horizontal"
                   size="normal"
                 >
@@ -2970,12 +3559,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c56"
+          className="c69"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -2984,11 +3573,11 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="horizontal"
               >
                 <div
-                  className="c58"
+                  className="c61"
                   orientation="horizontal"
                 />
               </div>
@@ -2998,22 +3587,22 @@ exports[`stepsDemo Component JSON 1`] = `
                 size="normal"
               >
                 <div
-                  className="c64"
+                  className="c67"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c65"
+                  className="c68"
                   orientation="horizontal"
                   size="normal"
                 >
@@ -3030,12 +3619,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -3044,41 +3633,41 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="horizontal"
               >
                 <div
-                  className="c59"
+                  className="c62"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c66"
+                className="c70"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c67"
+                  className="c71"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c19"
+                  className="c18"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
@@ -3090,12 +3679,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c22"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -3104,41 +3693,41 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="horizontal"
               >
                 <div
-                  className="c59"
+                  className="c62"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c66"
+                className="c70"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c67"
+                  className="c71"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c27"
+                  className="c25"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
@@ -3155,7 +3744,7 @@ exports[`stepsDemo Component JSON 1`] = `
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -3164,11 +3753,11 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="horizontal"
               >
                 <div
-                  className="c62"
+                  className="c65"
                   orientation="horizontal"
                 />
               </div>
@@ -3178,12 +3767,12 @@ exports[`stepsDemo Component JSON 1`] = `
                 size="normal"
               >
                 <div
-                  className="c68"
+                  className="c72"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className="lugia-icon-reminder_close c53 c8"
+                    className="lugia-icon-reminder_close c56 c8"
                   />
                 </div>
                 <div
@@ -3214,6 +3803,7 @@ exports[`stepsDemo Component JSON 1`] = `
     </p>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
@@ -3229,14 +3819,14 @@ exports[`stepsDemo Component JSON 1`] = `
             size="mini"
           >
             <div
-              className="c69"
+              className="c73"
               size="mini"
             >
               <i
-                className="lugia-icon-financial_cloud c70 c8"
+                className="lugia-icon-financial_cloud c74 c8"
               />
               <div
-                className="c45"
+                className="c46"
                 orientation="horizontal"
                 size="mini"
               >
@@ -3244,18 +3834,20 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c10"
                   orientation="horizontal"
                   size="mini"
-                />
+                >
+                  
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c12"
+          className="c43"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -3264,23 +3856,23 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c15"
+                  className="c14"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c69"
+                className="c73"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c70 c8"
+                  className="lugia-icon-financial_cloud c74 c8"
                 />
                 <div
-                  className="c45"
+                  className="c46"
                   orientation="horizontal"
                   size="mini"
                 >
@@ -3288,19 +3880,21 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     orientation="horizontal"
                     size="mini"
-                  />
+                  >
+                    
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c12"
+          className="c43"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -3309,43 +3903,45 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c15"
+                  className="c14"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c69"
+                className="c73"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c70 c8"
+                  className="lugia-icon-financial_cloud c74 c8"
                 />
                 <div
-                  className="c45"
+                  className="c46"
                   orientation="horizontal"
                   size="mini"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="mini"
-                  />
+                  >
+                    
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c24"
+          className="c49"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -3354,43 +3950,45 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c25"
+                  className="c23"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c69"
+                className="c73"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c71 c8"
+                  className="lugia-icon-financial_cloud c75 c8"
                 />
                 <div
-                  className="c49"
+                  className="c51"
                   orientation="horizontal"
                   size="mini"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="mini"
-                  />
+                  >
+                    
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c28"
+          className="c52"
           orientation="horizontal"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
@@ -3399,7 +3997,7 @@ exports[`stepsDemo Component JSON 1`] = `
               size="mini"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
@@ -3408,14 +4006,14 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c69"
+                className="c73"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c72 c8"
+                  className="lugia-icon-financial_cloud c76 c8"
                 />
                 <div
-                  className="c51"
+                  className="c54"
                   orientation="horizontal"
                   size="mini"
                 >
@@ -3423,7 +4021,9 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c33"
                     orientation="horizontal"
                     size="mini"
-                  />
+                  >
+                    
+                  </div>
                 </div>
               </div>
             </div>
@@ -3440,28 +4040,29 @@ exports[`stepsDemo Component JSON 1`] = `
     </p>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
         orientation="horizontal"
       >
         <div
-          className="c73"
+          className="c77"
           size="normal"
         >
           <div
-            className="c74"
+            className="c78"
             orientation="horizontal"
           >
             <div
-              className="c75"
+              className="c79"
               size="normal"
             >
               <div
-                className="c76"
+                className="c80"
               />
               <div
-                className="c77"
+                className="c81"
                 orientation="horizontal"
                 size="normal"
               >
@@ -3477,36 +4078,36 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c74"
+              className="c78"
               orientation="horizontal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c78"
+                  className="c82"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c79"
+                  className="c83"
                 />
                 <div
-                  className="c80"
+                  className="c84"
                   orientation="horizontal"
                   size="normal"
                 >
@@ -3523,41 +4124,41 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c74"
+              className="c78"
               orientation="horizontal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c78"
+                  className="c82"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c79"
+                  className="c83"
                 />
                 <div
-                  className="c80"
+                  className="c84"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
@@ -3569,41 +4170,41 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c22"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c74"
+              className="c78"
               orientation="horizontal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c78"
+                  className="c82"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c81"
+                  className="c85"
                 />
                 <div
-                  className="c82"
+                  className="c86"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
@@ -3620,31 +4221,31 @@ exports[`stepsDemo Component JSON 1`] = `
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c74"
+              className="c78"
               orientation="horizontal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c78"
+                  className="c82"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c83"
+                  className="c87"
                 />
                 <div
-                  className="c84"
+                  className="c88"
                   orientation="horizontal"
                   size="normal"
                 >
@@ -3671,28 +4272,29 @@ exports[`stepsDemo Component JSON 1`] = `
     </p>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
         orientation="horizontal"
       >
         <div
-          className="c73"
+          className="c77"
           size="normal"
         >
           <div
-            className="c74"
+            className="c78"
             orientation="horizontal"
           >
             <div
-              className="c75"
+              className="c79"
               size="normal"
             >
               <div
-                className="c76"
+                className="c80"
               />
               <div
-                className="c77"
+                className="c81"
                 orientation="horizontal"
                 size="normal"
               >
@@ -3708,36 +4310,36 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c74"
+              className="c78"
               orientation="horizontal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c85"
+                  className="c89"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c79"
+                  className="c83"
                 />
                 <div
-                  className="c80"
+                  className="c84"
                   orientation="horizontal"
                   size="normal"
                 >
@@ -3754,41 +4356,41 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c12"
+          className="c11"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c74"
+              className="c78"
               orientation="horizontal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c85"
+                  className="c89"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c79"
+                  className="c83"
                 />
                 <div
-                  className="c80"
+                  className="c84"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
@@ -3800,41 +4402,41 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c22"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c74"
+              className="c78"
               orientation="horizontal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c85"
+                  className="c89"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c81"
+                  className="c85"
                 />
                 <div
-                  className="c82"
+                  className="c86"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
@@ -3851,31 +4453,31 @@ exports[`stepsDemo Component JSON 1`] = `
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c74"
+              className="c78"
               orientation="horizontal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c85"
+                  className="c89"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c83"
+                  className="c87"
                 />
                 <div
-                  className="c84"
+                  className="c88"
                   orientation="horizontal"
                   size="normal"
                 >
@@ -3896,29 +4498,50 @@ exports[`stepsDemo Component JSON 1`] = `
   </div>
   <div>
     <div
-      className="c86"
+      className="c90"
     >
       <button
-        className="c87"
+        className="c91"
         onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         type="primary"
       >
-        <span>
+        <span
+          className="c92"
+          size="default"
+          type="primary"
+        >
           pre
         </span>
       </button>
       <button
-        className="c87"
+        className="c91"
         onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         type="primary"
       >
-        <span>
+        <span
+          className="c92"
+          size="default"
+          type="primary"
+        >
           Next
         </span>
       </button>
     </div>
     <div
       className="c1"
+      orientation="horizontal"
     >
       <div
         className="c2"
@@ -3934,32 +4557,32 @@ exports[`stepsDemo Component JSON 1`] = `
             size="normal"
           >
             <div
-              className="c5"
+              className="c19"
               orientation="horizontal"
               size="normal"
             >
               <div
-                className="c16"
+                className="c24"
                 orientation="horizontal"
                 size="normal"
               >
                 <i
-                  className=" c17 c8"
+                  className=" c16 c8"
                 />
                 <div
-                  className="c18"
+                  className="c17"
                   size="normal"
                 >
-                  1
+                  0
                 </div>
               </div>
               <div
-                className="c19"
+                className="c25"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c10"
+                  className="c21"
                   orientation="horizontal"
                   size="normal"
                 >
@@ -3970,12 +4593,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c22"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -3984,41 +4607,41 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c25"
+                  className="c23"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c20"
+                className="c19"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c26"
+                  className="c24"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c27"
+                  className="c25"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
@@ -4030,12 +4653,12 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c24"
+          className="c22"
           orientation="horizontal"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
@@ -4044,41 +4667,41 @@ exports[`stepsDemo Component JSON 1`] = `
               size="normal"
             >
               <div
-                className="c14"
+                className="c13"
                 orientation="horizontal"
               >
                 <div
-                  className="c25"
+                  className="c23"
                   orientation="horizontal"
                 />
               </div>
               <div
-                className="c20"
+                className="c19"
                 orientation="horizontal"
                 size="normal"
               >
                 <div
-                  className="c26"
+                  className="c24"
                   orientation="horizontal"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
                   </div>
                 </div>
                 <div
-                  className="c27"
+                  className="c25"
                   orientation="horizontal"
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="horizontal"
                     size="normal"
                   >
@@ -4092,22 +4715,23 @@ exports[`stepsDemo Component JSON 1`] = `
       </div>
     </div>
     <div
-      className="c88"
+      className="c93"
     >
-      First-content
+      First-description
     </div>
   </div>
   <div
-    className="c89"
+    className="c94"
   >
     <p>
       简洁风格 size mini
     </p>
     <div
-      className="c1"
+      className="c95"
+      orientation="vertical"
     >
       <div
-        className="c90"
+        className="c96"
         orientation="vertical"
       >
         <div
@@ -4115,12 +4739,12 @@ exports[`stepsDemo Component JSON 1`] = `
           size="mini"
         >
           <div
-            className="c91"
+            className="c97"
             orientation="vertical"
             size="mini"
           >
             <div
-              className="c92"
+              className="c98"
               orientation="vertical"
               size="mini"
             >
@@ -4134,157 +4758,42 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c93"
-                orientation="vertical"
-                size="mini"
-              >
-                <div
-                  className="c94"
-                  orientation="vertical"
-                  size="mini"
-                >
-                  1111
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c95"
-          orientation="vertical"
-          size="mini"
-        >
-          <div
-            className="c13"
-            size="mini"
-          >
-            <div
-              className="c91"
-              orientation="vertical"
-              size="mini"
-            >
-              <div
-                className="c96"
-                orientation="vertical"
-              >
-                <div
-                  className="c97"
-                  orientation="vertical"
-                />
-              </div>
-              <div
-                className="c92"
-                orientation="vertical"
-                size="mini"
-              >
-                <div
-                  className="c43"
-                  orientation="vertical"
-                  size="mini"
-                >
-                  <i
-                    className=" c17 c8"
-                  />
-                  <div
-                    className="c44"
-                    size="mini"
-                  >
-                    2
-                  </div>
-                </div>
-                <div
-                  className="c98"
-                  orientation="vertical"
-                  size="mini"
-                >
-                  <div
-                    className="c94"
-                    orientation="vertical"
-                    size="mini"
-                  >
-                    222
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c95"
-          orientation="vertical"
-          size="mini"
-        >
-          <div
-            className="c13"
-            size="mini"
-          >
-            <div
-              className="c91"
-              orientation="vertical"
-              size="mini"
-            >
-              <div
-                className="c96"
-                orientation="vertical"
-              >
-                <div
-                  className="c97"
-                  orientation="vertical"
-                />
-              </div>
-              <div
                 className="c99"
                 orientation="vertical"
                 size="mini"
               >
                 <div
-                  className="c47"
+                  className="c10"
                   orientation="vertical"
                   size="mini"
                 >
-                  <i
-                    className=" c17 c8"
-                  />
-                  <div
-                    className="c44"
-                    size="mini"
-                  >
-                    0
-                  </div>
+                  1111
                 </div>
                 <div
-                  className="c98"
-                  orientation="vertical"
-                  size="mini"
+                  className="c26"
                 >
-                  <div
-                    className="c100"
-                    orientation="vertical"
-                    size="mini"
-                  >
-                    33
-                  </div>
+                  description1
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c101"
+          className="c100"
           orientation="vertical"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="mini"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
@@ -4293,7 +4802,72 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c99"
+                className="c98"
+                orientation="vertical"
+                size="mini"
+              >
+                <div
+                  className="c44"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c45"
+                    size="mini"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c103"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c10"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    222
+                  </div>
+                  <div
+                    className="c26"
+                  >
+                    description2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c100"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c97"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c101"
+                orientation="vertical"
+              >
+                <div
+                  className="c102"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c104"
                 orientation="vertical"
                 size="mini"
               >
@@ -4303,10 +4877,10 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="mini"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c44"
+                    className="c45"
                     size="mini"
                   >
                     0
@@ -4318,11 +4892,16 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="mini"
                 >
                   <div
-                    className="c100"
+                    className="c21"
                     orientation="vertical"
                     size="mini"
                   >
-                    444
+                    33
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description3
                   </div>
                 </div>
               </div>
@@ -4330,30 +4909,30 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c104"
+          className="c105"
           orientation="vertical"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="mini"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c105"
+                  className="c106"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c92"
+                className="c104"
                 orientation="vertical"
                 size="mini"
               >
@@ -4363,21 +4942,91 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="mini"
                 >
                   <i
-                    className="lugia-icon-reminder_close c31 c8"
+                    className=" c16 c8"
                   />
+                  <div
+                    className="c45"
+                    size="mini"
+                  >
+                    0
+                  </div>
                 </div>
                 <div
-                  className="c106"
+                  className="c107"
                   orientation="vertical"
                   size="mini"
                 >
                   <div
-                    className="c107"
+                    className="c21"
+                    orientation="vertical"
+                    size="mini"
+                  >
+                    444
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description4
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c108"
+          orientation="vertical"
+          size="mini"
+        >
+          <div
+            className="c12"
+            size="mini"
+          >
+            <div
+              className="c97"
+              orientation="vertical"
+              size="mini"
+            >
+              <div
+                className="c101"
+                orientation="vertical"
+              >
+                <div
+                  className="c109"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c98"
+                orientation="vertical"
+                size="mini"
+              >
+                <div
+                  className="c53"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c31 c8"
+                  />
+                </div>
+                <div
+                  className="c110"
+                  orientation="vertical"
+                  size="mini"
+                >
+                  <div
+                    className="c33"
                     orientation="vertical"
                     size="mini"
                   >
                     555
                   </div>
+                  <div
+                    className="c34"
+                  >
+                    description5
+                  </div>
                 </div>
               </div>
             </div>
@@ -4387,16 +5036,17 @@ exports[`stepsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="c89"
+    className="c94"
   >
     <p>
       简洁风格 size normal
     </p>
     <div
-      className="c1"
+      className="c95"
+      orientation="vertical"
     >
       <div
-        className="c90"
+        className="c96"
         orientation="vertical"
       >
         <div
@@ -4404,12 +5054,12 @@ exports[`stepsDemo Component JSON 1`] = `
           size="normal"
         >
           <div
-            className="c91"
+            className="c97"
             orientation="vertical"
             size="normal"
           >
             <div
-              className="c108"
+              className="c111"
               orientation="vertical"
               size="normal"
             >
@@ -4423,296 +5073,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c109"
-                orientation="vertical"
-                size="normal"
-              >
-                <div
-                  className="c110"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  1111
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c95"
-          orientation="vertical"
-          size="normal"
-        >
-          <div
-            className="c13"
-            size="normal"
-          >
-            <div
-              className="c91"
-              orientation="vertical"
-              size="normal"
-            >
-              <div
-                className="c96"
-                orientation="vertical"
-              >
-                <div
-                  className="c97"
-                  orientation="vertical"
-                />
-              </div>
-              <div
-                className="c108"
-                orientation="vertical"
-                size="normal"
-              >
-                <div
-                  className="c16"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <i
-                    className=" c17 c8"
-                  />
-                  <div
-                    className="c18"
-                    size="normal"
-                  >
-                    2
-                  </div>
-                </div>
-                <div
-                  className="c111"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <div
-                    className="c110"
-                    orientation="vertical"
-                    size="normal"
-                  >
-                    222
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c95"
-          orientation="vertical"
-          size="normal"
-        >
-          <div
-            className="c13"
-            size="normal"
-          >
-            <div
-              className="c91"
-              orientation="vertical"
-              size="normal"
-            >
-              <div
-                className="c96"
-                orientation="vertical"
-              >
-                <div
-                  className="c97"
-                  orientation="vertical"
-                />
-              </div>
-              <div
                 className="c112"
-                orientation="vertical"
-                size="normal"
-              >
-                <div
-                  className="c21"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <i
-                    className=" c17 c8"
-                  />
-                  <div
-                    className="c18"
-                    size="normal"
-                  >
-                    0
-                  </div>
-                </div>
-                <div
-                  className="c111"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <div
-                    className="c113"
-                    orientation="vertical"
-                    size="normal"
-                  >
-                    33
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c101"
-          orientation="vertical"
-          size="normal"
-        >
-          <div
-            className="c13"
-            size="normal"
-          >
-            <div
-              className="c91"
-              orientation="vertical"
-              size="normal"
-            >
-              <div
-                className="c96"
-                orientation="vertical"
-              >
-                <div
-                  className="c102"
-                  orientation="vertical"
-                />
-              </div>
-              <div
-                className="c112"
-                orientation="vertical"
-                size="normal"
-              >
-                <div
-                  className="c26"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <i
-                    className=" c17 c8"
-                  />
-                  <div
-                    className="c18"
-                    size="normal"
-                  >
-                    0
-                  </div>
-                </div>
-                <div
-                  className="c114"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <div
-                    className="c113"
-                    orientation="vertical"
-                    size="normal"
-                  >
-                    444
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c104"
-          orientation="vertical"
-          size="normal"
-        >
-          <div
-            className="c13"
-            size="normal"
-          >
-            <div
-              className="c91"
-              orientation="vertical"
-              size="normal"
-            >
-              <div
-                className="c96"
-                orientation="vertical"
-              >
-                <div
-                  className="c105"
-                  orientation="vertical"
-                />
-              </div>
-              <div
-                className="c108"
-                orientation="vertical"
-                size="normal"
-              >
-                <div
-                  className="c30"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <i
-                    className="lugia-icon-reminder_close c31 c8"
-                  />
-                </div>
-                <div
-                  className="c115"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <div
-                    className="c116"
-                    orientation="vertical"
-                    size="normal"
-                  >
-                    555
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c89"
-  >
-    <p>
-      带有描述
-    </p>
-    <div
-      className="c1"
-    >
-      <div
-        className="c90"
-        orientation="vertical"
-      >
-        <div
-          className="c3"
-          size="normal"
-        >
-          <div
-            className="c91"
-            orientation="vertical"
-            size="normal"
-          >
-            <div
-              className="c108"
-              orientation="vertical"
-              size="normal"
-            >
-              <div
-                className="c6"
-                orientation="vertical"
-                size="normal"
-              >
-                <i
-                  className="lugia-icon-reminder_check c7 c8"
-                />
-              </div>
-              <div
-                className="c109"
                 orientation="vertical"
                 size="normal"
               >
@@ -4724,59 +5085,59 @@ exports[`stepsDemo Component JSON 1`] = `
                   1111
                 </div>
                 <div
-                  className="c11"
+                  className="c26"
                 >
-                  description111
+                  description1
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c95"
+          className="c113"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="normal"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c97"
+                  className="c102"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c108"
+                className="c111"
                 orientation="vertical"
                 size="normal"
               >
                 <div
-                  className="c16"
+                  className="c15"
                   orientation="vertical"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c111"
+                  className="c114"
                   orientation="vertical"
                   size="normal"
                 >
@@ -4788,7 +5149,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     222
                   </div>
                   <div
-                    className="c11"
+                    className="c26"
                   >
                     description2
                   </div>
@@ -4798,86 +5159,21 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c95"
+          className="c113"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="normal"
             >
               <div
-                className="c96"
-                orientation="vertical"
-              >
-                <div
-                  className="c97"
-                  orientation="vertical"
-                />
-              </div>
-              <div
-                className="c112"
-                orientation="vertical"
-                size="normal"
-              >
-                <div
-                  className="c21"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <i
-                    className=" c17 c8"
-                  />
-                  <div
-                    className="c18"
-                    size="normal"
-                  >
-                    0
-                  </div>
-                </div>
-                <div
-                  className="c111"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <div
-                    className="c22"
-                    orientation="vertical"
-                    size="normal"
-                  >
-                    33
-                  </div>
-                  <div
-                    className="c23"
-                  >
-                    description33
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c101"
-          orientation="vertical"
-          size="normal"
-        >
-          <div
-            className="c13"
-            size="normal"
-          >
-            <div
-              className="c91"
-              orientation="vertical"
-              size="normal"
-            >
-              <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
@@ -4886,20 +5182,20 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c112"
+                className="c115"
                 orientation="vertical"
                 size="normal"
               >
                 <div
-                  className="c26"
+                  className="c20"
                   orientation="vertical"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
@@ -4911,16 +5207,16 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c22"
+                    className="c21"
                     orientation="vertical"
                     size="normal"
                   >
-                    444
+                    33
                   </div>
                   <div
-                    className="c23"
+                    className="c27"
                   >
-                    description444
+                    description3
                   </div>
                 </div>
               </div>
@@ -4928,30 +5224,95 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c104"
+          className="c116"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="normal"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c105"
+                  className="c106"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c108"
+                className="c115"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c24"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  className="c117"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c21"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description4
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c118"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c97"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c101"
+                orientation="vertical"
+              >
+                <div
+                  className="c109"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c111"
                 orientation="vertical"
                 size="normal"
               >
@@ -4965,7 +5326,322 @@ exports[`stepsDemo Component JSON 1`] = `
                   />
                 </div>
                 <div
-                  className="c115"
+                  className="c119"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c33"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    555
+                  </div>
+                  <div
+                    className="c34"
+                  >
+                    description5
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c94"
+  >
+    <p>
+      带有描述
+    </p>
+    <div
+      className="c95"
+      orientation="vertical"
+    >
+      <div
+        className="c96"
+        orientation="vertical"
+      >
+        <div
+          className="c3"
+          size="normal"
+        >
+          <div
+            className="c97"
+            orientation="vertical"
+            size="normal"
+          >
+            <div
+              className="c111"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c6"
+                orientation="vertical"
+                size="normal"
+              >
+                <i
+                  className="lugia-icon-reminder_check c7 c8"
+                />
+              </div>
+              <div
+                className="c112"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c10"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  1111
+                </div>
+                <div
+                  className="c26"
+                >
+                  description111
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c113"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c97"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c101"
+                orientation="vertical"
+              >
+                <div
+                  className="c102"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c111"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c15"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="c114"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c10"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    222
+                  </div>
+                  <div
+                    className="c26"
+                  >
+                    description2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c113"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c97"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c101"
+                orientation="vertical"
+              >
+                <div
+                  className="c102"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c115"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c20"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  className="c114"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c21"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description33
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c116"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c97"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c101"
+                orientation="vertical"
+              >
+                <div
+                  className="c106"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c115"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c24"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className=" c16 c8"
+                  />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  className="c117"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c21"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description444
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c118"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c97"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c101"
+                orientation="vertical"
+              >
+                <div
+                  className="c109"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c111"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c30"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c31 c8"
+                  />
+                </div>
+                <div
+                  className="c119"
                   orientation="vertical"
                   size="normal"
                 >
@@ -4990,16 +5666,17 @@ exports[`stepsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="c89"
+    className="c94"
   >
     <p>
       半扁平风格 size normal
     </p>
     <div
-      className="c1"
+      className="c95"
+      orientation="vertical"
     >
       <div
-        className="c90"
+        className="c96"
         orientation="vertical"
       >
         <div
@@ -5007,154 +5684,104 @@ exports[`stepsDemo Component JSON 1`] = `
           size="normal"
         >
           <div
-            className="c91"
+            className="c97"
             orientation="vertical"
             size="normal"
           >
             <div
-              className="c108"
+              className="c111"
               orientation="vertical"
               size="normal"
             >
               <div
-                className="c64"
+                className="c67"
                 orientation="vertical"
                 size="normal"
               >
                 <i
-                  className="lugia-icon-reminder_check c53 c8"
+                  className="lugia-icon-reminder_check c56 c8"
                 />
               </div>
               <div
-                className="c117"
+                className="c120"
                 orientation="vertical"
                 size="normal"
               >
                 <div
-                  className="c118"
+                  className="c58"
                   orientation="vertical"
                   size="normal"
                 >
                   1111
+                </div>
+                <div
+                  className="c26"
+                >
+                  description1
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c119"
+          className="c121"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="normal"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="vertical"
               >
                 <div
-                  className="c120"
+                  className="c122"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c108"
+                className="c111"
                 orientation="vertical"
                 size="normal"
               >
                 <div
-                  className="c64"
+                  className="c67"
                   orientation="vertical"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     2
                   </div>
                 </div>
                 <div
-                  className="c117"
+                  className="c120"
                   orientation="vertical"
                   size="normal"
                 >
                   <div
-                    className="c110"
+                    className="c10"
                     orientation="vertical"
                     size="normal"
                   >
                     222
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c95"
-          orientation="vertical"
-          size="normal"
-        >
-          <div
-            className="c13"
-            size="normal"
-          >
-            <div
-              className="c91"
-              orientation="vertical"
-              size="normal"
-            >
-              <div
-                className="c57"
-                orientation="vertical"
-              >
-                <div
-                  className="c121"
-                  orientation="vertical"
-                />
-              </div>
-              <div
-                className="c122"
-                orientation="vertical"
-                size="normal"
-              >
-                <div
-                  className="c67"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <i
-                    className=" c17 c8"
-                  />
                   <div
-                    className="c18"
-                    size="normal"
+                    className="c26"
                   >
-                    0
-                  </div>
-                </div>
-                <div
-                  className="c111"
-                  orientation="vertical"
-                  size="normal"
-                >
-                  <div
-                    className="c123"
-                    orientation="vertical"
-                    size="normal"
-                  >
-                    33
+                    description2
                   </div>
                 </div>
               </div>
@@ -5162,43 +5789,43 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c101"
+          className="c113"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="normal"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="vertical"
               >
                 <div
-                  className="c121"
+                  className="c123"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c122"
+                className="c124"
                 orientation="vertical"
                 size="normal"
               >
                 <div
-                  className="c67"
+                  className="c71"
                   orientation="vertical"
                   size="normal"
                 >
                   <i
-                    className=" c17 c8"
+                    className=" c16 c8"
                   />
                   <div
-                    className="c18"
+                    className="c17"
                     size="normal"
                   >
                     0
@@ -5210,11 +5837,16 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c123"
+                    className="c21"
                     orientation="vertical"
                     size="normal"
                   >
-                    444
+                    33
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description3
                   </div>
                 </div>
               </div>
@@ -5222,53 +5854,123 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c104"
+          className="c116"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="normal"
             >
               <div
-                className="c57"
+                className="c60"
                 orientation="vertical"
               >
                 <div
-                  className="c124"
+                  className="c123"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c108"
+                className="c124"
                 orientation="vertical"
                 size="normal"
               >
                 <div
-                  className="c68"
+                  className="c71"
                   orientation="vertical"
                   size="normal"
                 >
                   <i
-                    className="lugia-icon-reminder_close c53 c8"
+                    className=" c16 c8"
                   />
+                  <div
+                    className="c17"
+                    size="normal"
+                  >
+                    0
+                  </div>
                 </div>
                 <div
-                  className="c115"
+                  className="c117"
                   orientation="vertical"
                   size="normal"
                 >
                   <div
-                    className="c116"
+                    className="c21"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    444
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description4
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c118"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c97"
+              orientation="vertical"
+              size="normal"
+            >
+              <div
+                className="c60"
+                orientation="vertical"
+              >
+                <div
+                  className="c125"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c111"
+                orientation="vertical"
+                size="normal"
+              >
+                <div
+                  className="c72"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <i
+                    className="lugia-icon-reminder_close c56 c8"
+                  />
+                </div>
+                <div
+                  className="c119"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c33"
                     orientation="vertical"
                     size="normal"
                   >
                     555
+                  </div>
+                  <div
+                    className="c34"
+                  >
+                    description5
                   </div>
                 </div>
               </div>
@@ -5279,16 +5981,17 @@ exports[`stepsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="c89"
+    className="c94"
   >
     <p>
       icon
     </p>
     <div
-      className="c1"
+      className="c95"
+      orientation="vertical"
     >
       <div
-        className="c90"
+        className="c96"
         orientation="vertical"
       >
         <div
@@ -5296,24 +5999,24 @@ exports[`stepsDemo Component JSON 1`] = `
           size="mini"
         >
           <div
-            className="c91"
+            className="c97"
             orientation="vertical"
             size="mini"
           >
             <div
-              className="c69"
+              className="c73"
               size="mini"
             >
               <i
-                className="lugia-icon-financial_cloud c70 c8"
+                className="lugia-icon-financial_cloud c74 c8"
               />
               <div
-                className="c98"
+                className="c103"
                 orientation="vertical"
                 size="mini"
               >
                 <div
-                  className="c94"
+                  className="c10"
                   orientation="vertical"
                   size="mini"
                 >
@@ -5324,42 +6027,42 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c95"
+          className="c100"
           orientation="vertical"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="mini"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c97"
+                  className="c102"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c69"
+                className="c73"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c70 c8"
+                  className="lugia-icon-financial_cloud c74 c8"
                 />
                 <div
-                  className="c98"
+                  className="c103"
                   orientation="vertical"
                   size="mini"
                 >
                   <div
-                    className="c94"
+                    className="c10"
                     orientation="vertical"
                     size="mini"
                   >
@@ -5371,42 +6074,42 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c95"
+          className="c100"
           orientation="vertical"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="mini"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c97"
+                  className="c102"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c69"
+                className="c73"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c70 c8"
+                  className="lugia-icon-financial_cloud c74 c8"
                 />
                 <div
-                  className="c98"
+                  className="c103"
                   orientation="vertical"
                   size="mini"
                 >
                   <div
-                    className="c100"
+                    className="c21"
                     orientation="vertical"
                     size="mini"
                   >
@@ -5418,42 +6121,42 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c101"
+          className="c105"
           orientation="vertical"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="mini"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c102"
+                  className="c106"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c69"
+                className="c73"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c71 c8"
+                  className="lugia-icon-financial_cloud c75 c8"
                 />
                 <div
-                  className="c103"
+                  className="c107"
                   orientation="vertical"
                   size="mini"
                 >
                   <div
-                    className="c100"
+                    className="c21"
                     orientation="vertical"
                     size="mini"
                   >
@@ -5465,42 +6168,42 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c104"
+          className="c108"
           orientation="vertical"
           size="mini"
         >
           <div
-            className="c13"
+            className="c12"
             size="mini"
           >
             <div
-              className="c91"
+              className="c97"
               orientation="vertical"
               size="mini"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c105"
+                  className="c109"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c69"
+                className="c73"
                 size="mini"
               >
                 <i
-                  className="lugia-icon-financial_cloud c72 c8"
+                  className="lugia-icon-financial_cloud c76 c8"
                 />
                 <div
-                  className="c106"
+                  className="c110"
                   orientation="vertical"
                   size="mini"
                 >
                   <div
-                    className="c107"
+                    className="c33"
                     orientation="vertical"
                     size="mini"
                   >
@@ -5515,40 +6218,41 @@ exports[`stepsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="c89"
+    className="c94"
   >
     <p>
       点状 虚线 size normal
     </p>
     <div
-      className="c1"
+      className="c95"
+      orientation="vertical"
     >
       <div
-        className="c90"
+        className="c96"
         orientation="vertical"
       >
         <div
-          className="c73"
+          className="c77"
           size="normal"
         >
           <div
-            className="c125"
+            className="c126"
             orientation="vertical"
           >
             <div
-              className="c75"
+              className="c79"
               size="normal"
             >
               <div
-                className="c76"
+                className="c80"
               />
               <div
-                className="c126"
+                className="c127"
                 orientation="vertical"
                 size="normal"
               >
                 <div
-                  className="c127"
+                  className="c10"
                   orientation="vertical"
                   size="normal"
                 >
@@ -5559,20 +6263,20 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c95"
+          className="c113"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c125"
+              className="c126"
               orientation="vertical"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
@@ -5581,11 +6285,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c79"
+                  className="c83"
                 />
                 <div
                   className="c129"
@@ -5593,7 +6297,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c127"
+                    className="c10"
                     orientation="vertical"
                     size="normal"
                   >
@@ -5605,20 +6309,20 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c95"
+          className="c113"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c125"
+              className="c126"
               orientation="vertical"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
@@ -5627,11 +6331,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c79"
+                  className="c83"
                 />
                 <div
                   className="c129"
@@ -5639,7 +6343,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c100"
+                    className="c21"
                     orientation="vertical"
                     size="normal"
                   >
@@ -5651,20 +6355,20 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c101"
+          className="c116"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c125"
+              className="c126"
               orientation="vertical"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
@@ -5673,11 +6377,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c81"
+                  className="c85"
                 />
                 <div
                   className="c130"
@@ -5685,7 +6389,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c100"
+                    className="c21"
                     orientation="vertical"
                     size="normal"
                   >
@@ -5697,20 +6401,20 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c104"
+          className="c118"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c125"
+              className="c126"
               orientation="vertical"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
@@ -5719,11 +6423,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c83"
+                  className="c87"
                 />
                 <div
                   className="c131"
@@ -5731,7 +6435,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c132"
+                    className="c33"
                     orientation="vertical"
                     size="normal"
                   >
@@ -5746,77 +6450,83 @@ exports[`stepsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="c89"
+    className="c94"
   >
     <p>
       点状风格 size normal
     </p>
     <div
-      className="c1"
+      className="c95"
+      orientation="vertical"
     >
       <div
-        className="c90"
+        className="c96"
         orientation="vertical"
       >
         <div
-          className="c73"
+          className="c77"
           size="normal"
         >
           <div
-            className="c125"
+            className="c126"
             orientation="vertical"
           >
             <div
-              className="c75"
+              className="c79"
               size="normal"
             >
               <div
-                className="c76"
+                className="c80"
               />
               <div
-                className="c126"
+                className="c127"
                 orientation="vertical"
                 size="normal"
               >
                 <div
-                  className="c127"
+                  className="c10"
                   orientation="vertical"
                   size="normal"
                 >
                   1111
                 </div>
+                <div
+                  className="c26"
+                >
+                  description1
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="c95"
+          className="c113"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c125"
+              className="c126"
               orientation="vertical"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c133"
+                  className="c132"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c79"
+                  className="c83"
                 />
                 <div
                   className="c129"
@@ -5824,57 +6534,16 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c127"
+                    className="c10"
                     orientation="vertical"
                     size="normal"
                   >
                     222
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="c95"
-          orientation="vertical"
-          size="normal"
-        >
-          <div
-            className="c13"
-            size="normal"
-          >
-            <div
-              className="c125"
-              orientation="vertical"
-            >
-              <div
-                className="c96"
-                orientation="vertical"
-              >
-                <div
-                  className="c133"
-                  orientation="vertical"
-                />
-              </div>
-              <div
-                className="c75"
-                size="normal"
-              >
-                <div
-                  className="c79"
-                />
-                <div
-                  className="c129"
-                  orientation="vertical"
-                  size="normal"
-                >
                   <div
-                    className="c100"
-                    orientation="vertical"
-                    size="normal"
+                    className="c26"
                   >
-                    33
+                    description2
                   </div>
                 </div>
               </div>
@@ -5882,33 +6551,84 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c101"
+          className="c113"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c125"
+              className="c126"
               orientation="vertical"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c133"
+                  className="c132"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c81"
+                  className="c83"
+                />
+                <div
+                  className="c129"
+                  orientation="vertical"
+                  size="normal"
+                >
+                  <div
+                    className="c21"
+                    orientation="vertical"
+                    size="normal"
+                  >
+                    33
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description3
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c116"
+          orientation="vertical"
+          size="normal"
+        >
+          <div
+            className="c12"
+            size="normal"
+          >
+            <div
+              className="c126"
+              orientation="vertical"
+            >
+              <div
+                className="c101"
+                orientation="vertical"
+              >
+                <div
+                  className="c132"
+                  orientation="vertical"
+                />
+              </div>
+              <div
+                className="c79"
+                size="normal"
+              >
+                <div
+                  className="c85"
                 />
                 <div
                   className="c130"
@@ -5916,11 +6636,16 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c100"
+                    className="c21"
                     orientation="vertical"
                     size="normal"
                   >
                     444
+                  </div>
+                  <div
+                    className="c27"
+                  >
+                    description4
                   </div>
                 </div>
               </div>
@@ -5928,33 +6653,33 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c104"
+          className="c118"
           orientation="vertical"
           size="normal"
         >
           <div
-            className="c13"
+            className="c12"
             size="normal"
           >
             <div
-              className="c125"
+              className="c126"
               orientation="vertical"
             >
               <div
-                className="c96"
+                className="c101"
                 orientation="vertical"
               >
                 <div
-                  className="c133"
+                  className="c132"
                   orientation="vertical"
                 />
               </div>
               <div
-                className="c75"
+                className="c79"
                 size="normal"
               >
                 <div
-                  className="c83"
+                  className="c87"
                 />
                 <div
                   className="c131"
@@ -5962,11 +6687,16 @@ exports[`stepsDemo Component JSON 1`] = `
                   size="normal"
                 >
                   <div
-                    className="c132"
+                    className="c33"
                     orientation="vertical"
                     size="normal"
                   >
                     555
+                  </div>
+                  <div
+                    className="c34"
+                  >
+                    description5
                   </div>
                 </div>
               </div>
