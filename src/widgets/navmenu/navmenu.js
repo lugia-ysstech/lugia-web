@@ -137,11 +137,10 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   getVerticalNavMenu = () => {
     const { data, displayField, valueField, separator } = this.props;
     const { popupVisible, value, expandedPath } = this.state;
-    const { width, submenuWidth, height } = this.getThemeTarget();
+    const { width, height } = this.getThemeTarget();
     const menuConfig = {
       [Widget.Menu]: {
         width,
-        submenuWidth,
         height,
       },
     };
@@ -208,7 +207,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const tabsData = this.getTabsData();
     const { width } = this.getThemeTarget();
     return (
-      // <Theme config={{ [Widget.Tabs]: { width } }}>
+      <Theme config={{ [Widget.Tabs]: { width } }}>
         <Tabs
           tabType={'line'}
           tabPosition={'top'}
@@ -220,7 +219,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           activityKey={this.state.activityKey}
           getTabpane={this.getTabpane}
         />
-      // </Theme>
+      </Theme>
     );
   };
 
@@ -288,7 +287,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   onTabClick = activityKey => {
     const isHasChildren = this.isHasChildren(activityKey);
-    // const popupVisible = isHasChildren ? true : false;
     if (!isHasChildren) {
       this.setState({ activityKey });
     } else {
