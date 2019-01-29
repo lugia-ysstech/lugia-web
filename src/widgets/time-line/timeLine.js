@@ -15,6 +15,7 @@ import type { TimeLineMode } from '../css/time-line';
 import { getContainerHeight } from '../css/time-line';
 import { px2emcss } from '../css/units';
 import TimeLineItem from './timeLineItem';
+import { getAttributeFromObject } from '../common/ObjectUtils';
 const em = px2emcss(1.2);
 
 const OutContainer = styled.div`
@@ -30,21 +31,23 @@ type TimeLineProps = {
   reverse: boolean,
   pendingDot: React.Node,
   pending: boolean,
+  data: Array<Object>,
+  defaultData: Array<Object>,
 };
 
-const children = [
-  <TimeLineItem time="2019-01-01" />,
-  <TimeLineItem time="2019-01-02" />,
-  <TimeLineItem time="2019-01-03" />,
-  <TimeLineItem time="2019-01-04" />,
-  <TimeLineItem time="2019-01-05" />,
+const defaultData = [
+  { time: '2019-01-01' },
+  { time: '2019-01-02' },
+  { time: '2019-01-03' },
+  { time: '2019-01-04' },
+  { time: '2019-01-05' },
 ];
 class TimeLine extends Component<TimeLineProps, TimeLineState> {
   static defaultProps = {
     pending: false,
     pendingDot: 'lugia-icon-financial_loading_o',
     mode: 'right',
-    children,
+    defaultData,
   };
   static displayName = Widget.TimeLine;
 
@@ -60,28 +63,61 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   }
 
   getChildren() {
-    const { children, reverse } = this.props;
-    if (Array.isArray(children) && children.length > 0) {
-      if (reverse === true) {
-        return this.getMapChildren(children).reverse();
-      }
-      return this.getMapChildren(children);
+    const { reverse } = this.props;
+    if (reverse === true) {
+      return this.getMapChildren().reverse();
     }
+    return this.getMapChildren();
   }
 
-  getMapChildren(children: Object[]) {
-    const { reverse, mode, pendingDot, pending } = this.props;
+  getMapChildren() {
+    const { data, defaultData, children } = this.props;
+    return data
+      ? this.data2Item(data)
+      : Array.isArray(children) && children.length > 0
+      ? React.Children.map(children, (child, i) => {
+          return React.cloneElement(child, this.getItemProps(child, i));
+        })
+      : this.data2Item(defaultData);
+  }
 
+  getItemProps(child, i) {
+    const { reverse, mode, pendingDot, pending, data, children, defaultData } = this.props;
+    const size = data ? data.length : children ? children.length : defaultData.length;
     const getDirection = this.getDirection(mode);
-    const size = children.length;
-    return React.Children.map(children, (child, i) => {
-      return React.cloneElement(child, {
-        isLast: this.isLast(i, size, reverse),
-        direction: getDirection(i),
-        pending,
-        pendingDot,
-      });
+    return {
+      isLast: this.isLast(i, size, reverse),
+      direction: getDirection(i),
+      pending,
+      pendingDot,
+      time: getAttributeFromObject(child, 'time', getAttributeFromObject(child.props, 'time', '')),
+      icon: getAttributeFromObject(child, 'icon', getAttributeFromObject(child.props, 'icon', '')),
+      description: getAttributeFromObject(
+        child,
+        'description',
+        getAttributeFromObject(child.props, 'description', '')
+      ),
+      status: getAttributeFromObject(
+        child,
+        'status',
+        getAttributeFromObject(child.props, 'status', 'normal')
+      ),
+      type: getAttributeFromObject(
+        child,
+        'type',
+        getAttributeFromObject(child.props, 'type', 'icon')
+      ),
+    };
+  }
+
+  data2Item(data) {
+    return data.map((child, i) => {
+      return this.getItem(child, i);
     });
+  }
+
+  getItem(child, i) {
+    return <TimeLineItem {...this.getItemProps(child, i)} />;
   }
 
   getDirection(mode: TimeLineMode): (index: number) => 'left' | 'right' {

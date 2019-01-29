@@ -101,7 +101,6 @@ describe('popover Demo', () => {
         <div />
       </Popover>
     );
-    console.log(getCmp(component).state, 111111);
     expect(getCmp(component).state.visible).toBe(true);
   });
 

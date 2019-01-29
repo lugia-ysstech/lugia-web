@@ -16,7 +16,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -30,38 +30,40 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c1:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c1::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
 <span
-  className="sv c0"
+  className="c0"
   disabled={false}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -92,7 +94,7 @@ exports[`Input props: null 1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -106,38 +108,40 @@ exports[`Input props: null 1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c1:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c1::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
 <span
-  className="sv c0"
+  className="c0"
   disabled={false}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -168,7 +172,7 @@ exports[`Input props: placeholder  1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -182,38 +186,40 @@ exports[`Input props: placeholder  1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c1:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c1::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
 <span
-  className="sv c0"
+  className="c0"
   disabled={false}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -245,7 +251,7 @@ exports[`Input props: placeholder  2`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -259,38 +265,40 @@ exports[`Input props: placeholder  2`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c1:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c1::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
 <span
-  className="sv c0"
+  className="c0"
   disabled={false}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -322,7 +330,7 @@ exports[`Input props: size 1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -336,38 +344,40 @@ exports[`Input props: size 1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c1:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c1::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
 <span
-  className="sv c0"
+  className="c0"
   disabled={false}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -398,7 +408,7 @@ exports[`Input props: size 2`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -412,38 +422,40 @@ exports[`Input props: size 2`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c1:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c1::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c1:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
 <span
-  className="sv c0"
+  className="c0"
   disabled={false}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}

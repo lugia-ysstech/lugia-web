@@ -13,6 +13,16 @@
       "desc": "时间轴需要包含的子组件",
       "defaultValue": "undefined"
     },
+    "data": {
+      "type": "Array<Object>",
+      "desc": "时间轴填充的数据",
+      "defaultValue": "undefined"
+    },
+    "defaultData": {
+      "type": "Array<Object>",
+      "desc": "时间轴填充的默认显示数据",
+      "defaultValue": "undefined"
+    },
     "reverse": {
       "type": "boolean",
       "desc": "控制节点排序，false 正序,true 倒序",
