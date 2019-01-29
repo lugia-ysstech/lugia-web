@@ -81,7 +81,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
       : this.data2Item(defaultData);
   }
 
-  getItemProps(child, i) {
+  getItemProps(child: Object, i: number) {
     const { reverse, mode, pendingDot, pending, data, children, defaultData } = this.props;
     const size = data ? data.length : children ? children.length : defaultData.length;
     const getDirection = this.getDirection(mode);
@@ -110,13 +110,13 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
     };
   }
 
-  data2Item(data) {
+  data2Item(data: Array<Object>) {
     return data.map((child, i) => {
       return this.getItem(child, i);
     });
   }
 
-  getItem(child, i) {
+  getItem(child: Object, i: number) {
     return <TimeLineItem {...this.getItemProps(child, i)} />;
   }
 

@@ -93,7 +93,7 @@ class Steps extends Component<StepsProps, StepsState> {
       </HStepsOutContainer>
     );
   }
-  getStepsConfig(child: React$Element<any>, i: number) {
+  getStepsConfig(child: Object, i: number) {
     const { orientation, stepType, size, currentStepNumber, desAlign } = this.props;
     return {
       orientation,
@@ -138,13 +138,13 @@ class Steps extends Component<StepsProps, StepsState> {
       : this.data2Step(defaultData);
   }
 
-  data2Step(data) {
+  data2Step(data: Array<Object>) {
     return data.map((child, i) => {
       return this.getStep(child, i);
     });
   }
 
-  getStep(child, i) {
+  getStep(child: Object, i: number) {
     return <Step {...this.getStepsConfig(child, i)} />;
   }
 }
