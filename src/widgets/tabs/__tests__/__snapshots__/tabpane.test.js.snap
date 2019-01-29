@@ -7,15 +7,18 @@ exports[`tabpaneDemo Component JSON 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
+  cursor: pointer;
   display: inline-block;
+  line-height: 2.8333333333333335em;
+  height: 2.8333333333333335em;
   padding: 0 0.8333333333333334em 0 1.6666666666666667em;
-  line-height: 2.5em;
   box-shadow: 0 0 0.5em none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -33,7 +36,6 @@ exports[`tabpaneDemo Component JSON 1`] = `
 }
 
 .c1 {
-  color: none;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -43,8 +45,8 @@ exports[`tabpaneDemo Component JSON 1`] = `
   user-select: none;
   text-align: left;
   padding: 0 0em 0 0em;
-  height: 2.666666666666667em;
-  line-height: 2.666666666666667em;
+  height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
 }
 
 .c1:focus {
@@ -70,6 +72,8 @@ exports[`tabpaneDemo Component JSON 1`] = `
 <div
   className="c0"
   onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="c1"

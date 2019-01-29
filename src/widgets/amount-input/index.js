@@ -53,6 +53,8 @@ const InputPlaceholder = styled.span`
   z-index: 2;
   font-size: ${FontSize};
 `;
+const Title = styled.span;
+Title.displayName = 'toolTip_title';
 
 type AmountInputState = {|
   value: string,
@@ -263,9 +265,9 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       titleValue = amountPrefix + amountFormatter(value);
     }
     if (transform) {
-      return <span onClick={this.onTransform}>{titleValue}</span>;
+      return <Title onClick={this.onTransform}>{titleValue}</Title>;
     }
-    return <span>{titleValue}</span>;
+    return <Title>{titleValue}</Title>;
   }
 
   onKeyDown = (event: KeyboardEvent) => {

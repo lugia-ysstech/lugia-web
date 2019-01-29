@@ -14,6 +14,7 @@ import ThemeProvider from '../theme-provider';
 import { getFlexDirection, getWidth } from '../css/steps';
 import type { AlignType, StepType, OrientationType, SizeType } from '../css/steps';
 import Step from './step';
+import { getAttributeFromObject } from '../common/ObjectUtils';
 
 const OutContainer = styled.div`
   display: inline-block;
@@ -41,12 +42,20 @@ type StepsProps = {
   getTheme: Function,
   children: React$Element<any>,
   desAlign: AlignType,
+  data: Array<Object>,
+  defaultData: Array<Object>,
 };
-export const children = [
-  <Step title="step1" stepStatus="finish" />,
-  <Step title="step2" stepStatus="process" />,
-  <Step title="step3" stepStatus="next" />,
-  <Step title="step4" stepStatus="wait" />,
+export const defaultData = [
+  { title: 'step1', stepStatus: 'finish' },
+  {
+    title: 'step2',
+    stepStatus: 'process',
+  },
+  {
+    title: 'step3',
+    stepStatus: 'next',
+  },
+  { title: 'step4', stepStatus: 'wait' },
 ];
 
 class Steps extends Component<StepsProps, StepsState> {
@@ -56,7 +65,7 @@ class Steps extends Component<StepsProps, StepsState> {
     size: 'normal',
     orientation: 'horizontal',
     desAlign: 'left',
-    children,
+    defaultData,
   };
   static displayName = Widget.Steps;
 
@@ -84,24 +93,59 @@ class Steps extends Component<StepsProps, StepsState> {
       </HStepsOutContainer>
     );
   }
+  getStepsConfig(child: React$Element<any>, i: number) {
+    const { orientation, stepType, size, currentStepNumber, desAlign } = this.props;
+    return {
+      orientation,
+      stepType,
+      size,
+      stepNumber: i + 1,
+      isFirst: i === 0,
+      currentStepNumber,
+      desAlign,
+      title: getAttributeFromObject(
+        child,
+        'title',
+        getAttributeFromObject(child.props, 'title', '')
+      ),
+      stepStatus: getAttributeFromObject(
+        child,
+        'stepStatus',
+        getAttributeFromObject(child.props, 'stepStatus', 'wait')
+      ),
+      description: getAttributeFromObject(
+        child,
+        'description',
+        getAttributeFromObject(child.props, 'description', '')
+      ),
+      icon: getAttributeFromObject(child, 'icon', getAttributeFromObject(child.props, 'icon', '')),
+      isDashed: getAttributeFromObject(
+        child,
+        'isDashed',
+        getAttributeFromObject(child.props, 'isDashed', false)
+      ),
+    };
+  }
 
   getChildren() {
-    const { children, orientation, stepType, size, currentStepNumber, desAlign } = this.props;
-    if (Array.isArray(children) && children.length > 0) {
-      return React.Children.map(children, (child, i) => {
-        return [
-          React.cloneElement(child, {
-            orientation,
-            stepType,
-            size,
-            stepNumber: i + 1,
-            isFirst: i === 0,
-            currentStepNumber,
-            desAlign,
-          }),
-        ];
-      });
-    }
+    const { children, data, defaultData } = this.props;
+    return data
+      ? this.data2Step(data)
+      : Array.isArray(children) && children.length > 0
+      ? React.Children.map(children, (child, i) => {
+          return React.cloneElement(child, this.getStepsConfig(child, i));
+        })
+      : this.data2Step(defaultData);
+  }
+
+  data2Step(data) {
+    return data.map((child, i) => {
+      return this.getStep(child, i);
+    });
+  }
+
+  getStep(child, i) {
+    return <Step {...this.getStepsConfig(child, i)} />;
   }
 }
 

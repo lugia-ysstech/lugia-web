@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
-.c6 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -23,7 +24,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -37,30 +38,31 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c2:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c2::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -77,6 +79,21 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   right: 0.4166666666666667em;
 }
 
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
 .c4 {
   opacity: 0;
   height: 2.5em;
@@ -91,7 +108,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   z-index: 2;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -107,8 +124,8 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   height: 50%;
 }
 
-.c7:hover {
-  color: #684fff;
+.c8:hover {
+  color: #4d63ff;
 }
 
 .c5 {
@@ -127,7 +144,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c5:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c0 {
@@ -139,12 +156,12 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c0:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 <span
@@ -154,10 +171,11 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   onMouseLeave={[Function]}
 >
   <span
-    className="sv c1"
+    className="c1"
     disabled={false}
   >
     <input
+      autoFocus={false}
       className="c2"
       disabled={false}
       onBlur={[Function]}
@@ -188,17 +206,17 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up  c6"
+        className="lugia-icon-direction_up c6 c7"
       />
     </span>
     <span
-      className="c7"
+      className="c8"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down  c6"
+        className="lugia-icon-direction_down c6 c7"
       />
     </span>
   </div>
@@ -206,12 +224,13 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 `;
 
 exports[`NumberInput props: null 1`] = `
-.c6 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -228,7 +247,7 @@ exports[`NumberInput props: null 1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -242,30 +261,31 @@ exports[`NumberInput props: null 1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c2:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c2::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -282,6 +302,21 @@ exports[`NumberInput props: null 1`] = `
   right: 0.4166666666666667em;
 }
 
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
 .c4 {
   opacity: 0;
   height: 2.5em;
@@ -296,7 +331,7 @@ exports[`NumberInput props: null 1`] = `
   z-index: 2;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -312,8 +347,8 @@ exports[`NumberInput props: null 1`] = `
   height: 50%;
 }
 
-.c7:hover {
-  color: #684fff;
+.c8:hover {
+  color: #4d63ff;
 }
 
 .c5 {
@@ -332,7 +367,7 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c5:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c0 {
@@ -344,12 +379,12 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c0:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 <span
@@ -359,10 +394,11 @@ exports[`NumberInput props: null 1`] = `
   onMouseLeave={[Function]}
 >
   <span
-    className="sv c1"
+    className="c1"
     disabled={false}
   >
     <input
+      autoFocus={false}
       className="c2"
       disabled={false}
       onBlur={[Function]}
@@ -393,17 +429,17 @@ exports[`NumberInput props: null 1`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up  c6"
+        className="lugia-icon-direction_up c6 c7"
       />
     </span>
     <span
-      className="c7"
+      className="c8"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down  c6"
+        className="lugia-icon-direction_down c6 c7"
       />
     </span>
   </div>
@@ -411,12 +447,13 @@ exports[`NumberInput props: null 1`] = `
 `;
 
 exports[`NumberInput props: placeholder  1`] = `
-.c6 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -433,7 +470,7 @@ exports[`NumberInput props: placeholder  1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -447,30 +484,31 @@ exports[`NumberInput props: placeholder  1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c2:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c2::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -487,6 +525,21 @@ exports[`NumberInput props: placeholder  1`] = `
   right: 0.4166666666666667em;
 }
 
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
 .c4 {
   opacity: 0;
   height: 2.5em;
@@ -501,7 +554,7 @@ exports[`NumberInput props: placeholder  1`] = `
   z-index: 2;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -517,8 +570,8 @@ exports[`NumberInput props: placeholder  1`] = `
   height: 50%;
 }
 
-.c7:hover {
-  color: #684fff;
+.c8:hover {
+  color: #4d63ff;
 }
 
 .c5 {
@@ -537,7 +590,7 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c5:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c0 {
@@ -549,12 +602,12 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c0:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 <span
@@ -564,10 +617,11 @@ exports[`NumberInput props: placeholder  1`] = `
   onMouseLeave={[Function]}
 >
   <span
-    className="sv c1"
+    className="c1"
     disabled={false}
   >
     <input
+      autoFocus={false}
       className="c2"
       disabled={false}
       onBlur={[Function]}
@@ -599,17 +653,17 @@ exports[`NumberInput props: placeholder  1`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up  c6"
+        className="lugia-icon-direction_up c6 c7"
       />
     </span>
     <span
-      className="c7"
+      className="c8"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down  c6"
+        className="lugia-icon-direction_down c6 c7"
       />
     </span>
   </div>
@@ -617,12 +671,13 @@ exports[`NumberInput props: placeholder  1`] = `
 `;
 
 exports[`NumberInput props: placeholder  2`] = `
-.c6 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -639,7 +694,7 @@ exports[`NumberInput props: placeholder  2`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -653,30 +708,31 @@ exports[`NumberInput props: placeholder  2`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c2:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c2::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -693,6 +749,21 @@ exports[`NumberInput props: placeholder  2`] = `
   right: 0.4166666666666667em;
 }
 
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
 .c4 {
   opacity: 0;
   height: 2.5em;
@@ -707,7 +778,7 @@ exports[`NumberInput props: placeholder  2`] = `
   z-index: 2;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -723,8 +794,8 @@ exports[`NumberInput props: placeholder  2`] = `
   height: 50%;
 }
 
-.c7:hover {
-  color: #684fff;
+.c8:hover {
+  color: #4d63ff;
 }
 
 .c5 {
@@ -743,7 +814,7 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c5:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c0 {
@@ -755,12 +826,12 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c0:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 <span
@@ -770,10 +841,11 @@ exports[`NumberInput props: placeholder  2`] = `
   onMouseLeave={[Function]}
 >
   <span
-    className="sv c1"
+    className="c1"
     disabled={false}
   >
     <input
+      autoFocus={false}
       className="c2"
       disabled={false}
       onBlur={[Function]}
@@ -805,17 +877,17 @@ exports[`NumberInput props: placeholder  2`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up  c6"
+        className="lugia-icon-direction_up c6 c7"
       />
     </span>
     <span
-      className="c7"
+      className="c8"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down  c6"
+        className="lugia-icon-direction_down c6 c7"
       />
     </span>
   </div>
@@ -823,12 +895,13 @@ exports[`NumberInput props: placeholder  2`] = `
 `;
 
 exports[`NumberInput props: size 1`] = `
-.c6 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -845,7 +918,7 @@ exports[`NumberInput props: size 1`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -859,30 +932,31 @@ exports[`NumberInput props: size 1`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c2:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c2::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -899,6 +973,21 @@ exports[`NumberInput props: size 1`] = `
   right: 0.4166666666666667em;
 }
 
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
 .c4 {
   opacity: 0;
   height: 1.8333333333333335em;
@@ -913,7 +1002,7 @@ exports[`NumberInput props: size 1`] = `
   z-index: 2;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -929,8 +1018,8 @@ exports[`NumberInput props: size 1`] = `
   height: 50%;
 }
 
-.c7:hover {
-  color: #684fff;
+.c8:hover {
+  color: #4d63ff;
 }
 
 .c5 {
@@ -949,7 +1038,7 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c5:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c0 {
@@ -961,12 +1050,12 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c0:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 <span
@@ -976,10 +1065,11 @@ exports[`NumberInput props: size 1`] = `
   onMouseLeave={[Function]}
 >
   <span
-    className="sv c1"
+    className="c1"
     disabled={false}
   >
     <input
+      autoFocus={false}
       className="c2"
       disabled={false}
       onBlur={[Function]}
@@ -1010,17 +1100,17 @@ exports[`NumberInput props: size 1`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up  c6"
+        className="lugia-icon-direction_up c6 c7"
       />
     </span>
     <span
-      className="c7"
+      className="c8"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down  c6"
+        className="lugia-icon-direction_down c6 c7"
       />
     </span>
   </div>
@@ -1028,12 +1118,13 @@ exports[`NumberInput props: size 1`] = `
 `;
 
 exports[`NumberInput props: size 2`] = `
-.c6 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -1050,7 +1141,7 @@ exports[`NumberInput props: size 2`] = `
   border-style: solid;
   border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
@@ -1064,30 +1155,31 @@ exports[`NumberInput props: size 2`] = `
   min-height: 100%;
   z-index: 1;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .c2:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c2::-webkit-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::-moz-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2::placeholder {
-  color: rgba(0,0,0,0.25);
+  color: #ccc;
 }
 
 .c2:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -1104,6 +1196,21 @@ exports[`NumberInput props: size 2`] = `
   right: 0.4166666666666667em;
 }
 
+.c6 {
+  cursor: pointer;
+  z-index: 3;
+  font-size: 0.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
 .c4 {
   opacity: 0;
   height: 3.1666666666666665em;
@@ -1118,7 +1225,7 @@ exports[`NumberInput props: size 2`] = `
   z-index: 2;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
@@ -1134,8 +1241,8 @@ exports[`NumberInput props: size 2`] = `
   height: 50%;
 }
 
-.c7:hover {
-  color: #684fff;
+.c8:hover {
+  color: #4d63ff;
 }
 
 .c5 {
@@ -1154,7 +1261,7 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c5:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c0 {
@@ -1166,12 +1273,12 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c0:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 <span
@@ -1181,10 +1288,11 @@ exports[`NumberInput props: size 2`] = `
   onMouseLeave={[Function]}
 >
   <span
-    className="sv c1"
+    className="c1"
     disabled={false}
   >
     <input
+      autoFocus={false}
       className="c2"
       disabled={false}
       onBlur={[Function]}
@@ -1215,17 +1323,17 @@ exports[`NumberInput props: size 2`] = `
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_up  c6"
+        className="lugia-icon-direction_up c6 c7"
       />
     </span>
     <span
-      className="c7"
+      className="c8"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
       <i
-        className="lugia-icon-direction_down  c6"
+        className="lugia-icon-direction_down c6 c7"
       />
     </span>
   </div>

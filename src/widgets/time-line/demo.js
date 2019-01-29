@@ -57,10 +57,23 @@ const view = {
     height: 20,
   },
 };
+const data = [
+  { time: '2018-01-01', description: 'description111' },
+  { time: '2018-01-02', description: 'description222' },
+  { time: '2018-01-03', description: 'description333' },
+  { time: '2018-01-04', description: 'description444' },
+  { time: '2018-01-05', description: 'description555' },
+];
 export const SimpleDemo = () => {
   return (
     <Theme config={view}>
       <div>
+        <Wrapper>
+          <TimeLine />
+        </Wrapper>
+        <Wrapper>
+          <TimeLine data={data} />
+        </Wrapper>
         <Wrapper>
           <p> 调节高度的 简洁样式</p>
           <br />

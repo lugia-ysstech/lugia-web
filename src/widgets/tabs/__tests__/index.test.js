@@ -291,7 +291,7 @@ describe('tabsDemo', () => {
       title: 'new tab 1',
     };
     const target = mount(
-      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} />
+      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} defaultData={[]} />
     );
     expect(getCmp(target).state.data).toEqual([]);
     target.find('addIcon').simulate('click');
@@ -323,7 +323,7 @@ describe('tabsDemo', () => {
       title: 'new tab 1',
     };
     const target = mount(
-      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} />
+      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} defaultData={[]} />
     );
     expect(getCmp(target).state.data).toEqual([]);
     target.find('addIcon').simulate('click', { firstItem });
@@ -360,7 +360,7 @@ describe('tabsDemo', () => {
       title: 'new tab 2',
     };
     const target = mount(
-      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} />
+      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} defaultData={[]} />
     );
     expect(getCmp(target).state.data).toEqual([]);
     target.find('addIcon').simulate('click', { firstItem });
@@ -406,7 +406,7 @@ describe('tabsDemo', () => {
       title: 'new tab 2',
     };
     const target = mount(
-      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} />
+      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} defaultData={[]} />
     );
     expect(getCmp(target).state.data).toEqual([]);
     target.find('addIcon').simulate('click', { firstItem });
