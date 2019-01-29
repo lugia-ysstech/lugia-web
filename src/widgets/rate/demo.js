@@ -38,11 +38,9 @@ class RateDemo extends React.Component<any, any> {
       allowHalf: false,
       classify: false,
       onClick: (e: Object, x: any) => {
-        console.log('onClick defaultProps', x);
         this.setStateValue('defaultProps', x.currentValue);
       },
       onChange: (e: Object, x: any) => {
-        console.log('onChange defaultProps', x);
         this.setStateValue('defaultProps', x.currentValue);
       },
     };
@@ -53,24 +51,10 @@ class RateDemo extends React.Component<any, any> {
       disabled: false,
       allowHalf: true,
       classify: false,
-      // iconClass:{
-      //     default:'lugia-icon-financial_smile_o',
-      //     primary:'lugia-icon-financial_smile',
-      //     half:'lugia-icon-financial_sad',
-      //     danger:'lugia-icon-financial_sad',
-      //     amazed:'lugia-icon-financial_smile'
-      // },
-      iconClass: {
-        // default:'lugia-icon-financial_star',
-        // primary:'lugia-icon-financial_star',
-        // half:'lugia-icon-financial_sad',
-      },
       onClick: (e: Object, x: any) => {
-        console.log('onClick defaultProps1', x);
         this.setStateValue('defaultProps1', x.currentValue);
       },
       onChange: (e: Object, x: any) => {
-        console.log('onChange defaultProps1', x);
         this.setStateValue('defaultProps1', x.currentValue);
       },
     };
@@ -82,11 +66,9 @@ class RateDemo extends React.Component<any, any> {
       allowHalf: true,
       classify: false,
       onClick: (e: Object, x: any) => {
-        console.log('onClick defaultProps2', x);
         this.setStateValue('defaultProps2', x.currentValue);
       },
       onChange: (e: Object, x: any) => {
-        console.log('onChange defaultProps2', x);
         this.setStateValue('defaultProps2', x.currentValue);
       },
     };
@@ -97,11 +79,8 @@ class RateDemo extends React.Component<any, any> {
       disabled: true,
       allowHalf: true,
       className: 'cccc',
-      onClick: (e: Object, x: any) => {
-        console.log('onClick defaultProps3', x);
-      },
+      onClick: (e: Object, x: any) => {},
       onChange: (e: Object, x: any) => {
-        console.log('onChange defaultProps3', x);
         this.setStateValue('defaultProps3', x.currentValue);
       },
     };
@@ -119,11 +98,9 @@ class RateDemo extends React.Component<any, any> {
       },
       className: 'cccc',
       onClick: (e: Object, x: any) => {
-        console.log('onClick defaultProps4', x);
         this.setStateValue('defaultProps4', x.currentValue);
       },
       onChange: (e: Object, x: any) => {
-        console.log('onChange defaultProps4', x);
         this.setStateValue('defaultProps4', x.currentValue);
       },
     };
@@ -140,11 +117,9 @@ class RateDemo extends React.Component<any, any> {
         amazed: 'lugia-icon-financial_smile',
       },
       onClick: (e: Object, x: any) => {
-        console.log('onClick defaultProps5', x);
         this.setStateValue('defaultProps5', x.currentValue);
       },
       onChange: (e: Object, x: any) => {
-        console.log('onChange defaultProps5', x);
         this.setStateValue('defaultProps5', x.currentValue);
       },
     };
@@ -161,11 +136,9 @@ class RateDemo extends React.Component<any, any> {
         amazed: 'lugia-icon-financial_smile',
       },
       onClick: (e: Object, x: any) => {
-        console.log('onClick defaultProps6', x);
         this.setStateValue('defaultProps6', x.currentValue);
       },
       onChange: (e: Object, x: any) => {
-        console.log('onChange defaultProps6', x);
         this.setStateValue('defaultProps6', x.currentValue);
       },
     };
@@ -173,24 +146,13 @@ class RateDemo extends React.Component<any, any> {
       count: 5,
       allowHalf: true,
       onClick: (e: Object, x: any) => {
-        console.log('onClick defaultProps7', x);
         this.setStateValue('defaultProps7', x.currentValue);
       },
       onChange: (e: Object, x: any) => {
-        console.log('onChange defaultProps7', x);
         this.setStateValue('defaultProps7', x.currentValue);
       },
     };
-    const defaultProps8 = {
-      // onClick: (e: Object, x: any) => {
-      //   console.log('onClick defaultProps8', x);
-      //   this.setStateValue('defaultProps8', x.currentValue);
-      // },
-      // onChange: (e: Object, x: any) => {
-      //   console.log('onChange defaultProps8', x);
-      //   this.setStateValue('defaultProps8', x.currentValue);
-      // },
-    };
+
     return (
       <div>
         <div>
