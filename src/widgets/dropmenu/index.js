@@ -159,6 +159,6 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
 const Result = ThemeProvider(DropMenu, Widget.DropMenu);
 
-// Result.Button = DropMenuButton;
+Result.Button = DropMenuButton;
 
 export default Result;
