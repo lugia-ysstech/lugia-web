@@ -36,3 +36,8 @@ export const OldValueTitle = CommonSpan.extend`
   padding: 0 ${em(5)};
 `;
 OldValueTitle.displayName = 'oldValueTitleSpan';
+
+export const EmptyBox = styled.div`
+  height: 0;
+`;
+EmptyBox.displayName = 'emptyBox';

@@ -98,19 +98,26 @@ describe('DropMenuButton', () => {
     };
 
   it('type: default, divided={true}; action = hover , click MenuItem && hover LeftButton', async () => {
-    const Demo = getTarget('hover', true, 'default');
+    const Demo = getTarget('hover', true, 'customs');
     const cmp = mount(<Demo />);
 
     pullButtonMouseEnter(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+    await delay(100);
+    cmp.update();
+
     pullButtonMouseLeave(cmp);
     await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
 
+    await delay(200);
+    cmp.update();
     pullButtonMouseEnter(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+    await delay(200);
+    cmp.update();
     clickMenuItem(cmp, 1);
-    await delay(100);
+    await delay(200);
     exp(cmp.state().visible).to.be.equal(false);
 
     hoverLeftButton(cmp);
