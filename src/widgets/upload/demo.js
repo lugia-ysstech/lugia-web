@@ -32,7 +32,6 @@ class UploadDemo extends React.Component<any, any> {
       multiple: true,
       accessKey: ['uploadToken'],
       beforeUpload: (file: Object) => {
-        // console.log('file', file);
         return new Promise((resolve, reject) => {
           request({
             url: 'http://localhost:7001/getToken',
@@ -53,26 +52,12 @@ class UploadDemo extends React.Component<any, any> {
           });
         });
       },
-      // headers:{
-      //   'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'
-      //   // 'Content-Type':'multipart/form-data '
-      // },
       data: {},
-      onChange: res => {
-        // console.log('cbk', res);
-      },
-      onSuccess: (res, fileList) => {
-        console.log('onSuccess', res, fileList);
-      },
-      onComplete: res => {
-        // console.log('onComplete', res);
-      },
-      onProgress: res => {
-        // console.log('onProgress', res);
-      },
-      onFail: res => {
-        // console.log('onFail', res);
-      },
+      onChange: res => {},
+      onSuccess: (res, fileList) => {},
+      onComplete: res => {},
+      onProgress: res => {},
+      onFail: res => {},
     };
     const defaultProps1 = {
       listType: 'button',
@@ -100,12 +85,9 @@ class UploadDemo extends React.Component<any, any> {
       listType: 'both',
       inputId: 'upload2',
       url: 'http://localhost:7001/upload',
-      // autoUpload: false,
       showFileList: true,
       multiple: true,
-      onChange: res => {
-        console.log('cbk', res);
-      },
+      onChange: res => {},
     };
     const defaultProps3 = {
       listType: 'picture',
