@@ -33,6 +33,7 @@ const Tree = 'lugia_widget_Tree';
 const TreeSelect = 'lugia_widget_TreeSelect';
 const TreeSelectLimitTitle = 'lugia_widget_TreeSelectLimitTitle';
 const ThrottleScroller = 'lugia_widget_ThrottleScroller';
+const Empty = 'lugia_widget_Empty';
 
 /* add by wangcuixia */
 const Switch = 'lugia_widget_Switch';
@@ -223,4 +224,5 @@ export default {
   AutoComplete,
   PageLoading,
   Table,
+  Empty,
 };
