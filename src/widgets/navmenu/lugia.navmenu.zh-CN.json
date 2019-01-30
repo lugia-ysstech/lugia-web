@@ -29,8 +29,8 @@
       "defaultValue": "undefined"
     },
     "mode": {
-      "type": "vertical | inline",
-      "desc": "菜单类型，支持垂直和内嵌模式",
+      "type": "vertical | inline| horizontal",
+      "desc": "菜单类型，支持垂直、内嵌和水平模式",
       "defaultValue": "inline"
     },
     "inlineType": {
