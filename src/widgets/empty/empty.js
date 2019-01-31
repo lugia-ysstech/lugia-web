@@ -4,11 +4,12 @@
  * @flow
  */
 import * as React from 'react';
-import Logo from './empty.png';
 import { px2emcss } from '../css/units';
 import { FontSizeNumber } from '../css';
 import Widget from '../consts/index';
 import styled from 'styled-components';
+// import logo from './empty.png';
+
 const em = px2emcss(FontSizeNumber);
 
 const getEmptyContainerWidth = props => {
@@ -18,14 +19,12 @@ const getEmptyContainerWidth = props => {
 
 const EmptyContainer = styled.div`
   ${getEmptyContainerWidth};
-  margin: 10px;
   padding: ${em(32)} 0;
   box-sizing: border-box;
 `;
 
 const EmptyWrap = styled.div`
   height: ${em(70)};
-  background-image: url(${Logo});
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto ${em(70)};

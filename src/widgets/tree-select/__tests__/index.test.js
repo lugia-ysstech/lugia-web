@@ -172,6 +172,7 @@ describe('TreeSelect', () => {
   it('测试查询功能 remote', async () => {
     const cmp = mount(<TreeSelect canSearch data={rowData} throttle={0} mode="remote" />);
     const firstValue = 'helloworld';
+    showTrigger(cmp);
     changeQuery(cmp, firstValue);
     exp(getTreeQuery(cmp)).to.be.equal('');
     exp(getQueryInputValue(cmp)).to.be.equal(firstValue);
@@ -1105,6 +1106,7 @@ describe('TreeSelect', () => {
     changeQuery(cmp, old);
     showTrigger(cmp);
     showTrigger(cmp);
+    cmp.update();
     exp(await queryEventData).to.be.eql([old, '']);
   });
 

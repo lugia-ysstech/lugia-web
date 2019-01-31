@@ -22,6 +22,7 @@ import ThemeProvider from '../theme-provider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
 import Theme from '../theme';
+import Empty from '../empty';
 import Trigger from '../trigger';
 import { findDOMNode } from 'react-dom';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
@@ -195,9 +196,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const items = this.getItems(props);
+
     const { data = [], size, autoHeight = false } = props;
+
     const length = data ? data.length : 0;
     const menuItemHeight = getMenuItemHeight(size);
+
     const bodyContent = (
       <MenuContainer
         length={length}
@@ -285,7 +289,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
       return this.computeItems(children, start, end, (obj: Object) => obj);
     }
 
-    return [<Item key={'暂无数据'}>暂无数据</Item>];
+    const { width } = this.getTheme();
+    return [
+      <Theme config={{ [Widget.Empty]: { width } }}>
+        <Empty />
+      </Theme>,
+    ];
   }
 
   getTheme() {

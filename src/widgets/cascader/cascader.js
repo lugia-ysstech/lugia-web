@@ -116,6 +116,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
             popupVisible={popupVisible}
             popup={this.getMenu(theme)}
             createPortal
+            lazy={false}
           >
             <InputTag
               onClick={this.handleClickInputTag}
@@ -164,6 +165,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { data, action, separator, offsetX, valueField, displayField } = this.props;
     const { popupVisible, expandedPath, selectedKeys } = this.state;
     const menuWidth = this.getMenuWidth();
+
     return (
       <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
         <Menu
