@@ -167,10 +167,9 @@ describe('Tag', () => {
 
     getTag = () => {
       const { data } = this.state;
-      console.info('re data', data);
       return data.map((item, index) => {
         return (
-          <Tag key={item} onClose={this.onClose.bind(this, item)}>
+          <Tag key={item} onClose={this.onClose.bind(this, item)} closable>
             {item}
           </Tag>
         );
@@ -181,7 +180,6 @@ describe('Tag', () => {
       const { data } = this.state;
       const index = data.indexOf(item);
       data.splice(index, 1);
-      console.info('data', data);
       this.setState({ data });
     }
   }

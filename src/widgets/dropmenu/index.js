@@ -61,6 +61,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   constructor(props: DropMenuProps) {
     super(props);
     this.state = { filter: '', visible: false };
+    this.isLeaf = true;
   }
 
   render() {
@@ -115,7 +116,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     } else {
       newChildProps.onClick = (...rest) => {
         menu.props.onClick.call(menu, ...rest);
-        this.onMenuClick();
+        this.onMenuClick(...rest);
       };
     }
     return newChildProps;
@@ -123,7 +124,10 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   onMenuClick = (e: Object, keys: string[], items: Object) => {
     const { children } = items;
     if (!children || children.length === 0) {
+      this.isLeaf = true;
       this.onPopupVisibleChange(false);
+    } else {
+      this.isLeaf = false;
     }
   };
 
@@ -148,12 +152,15 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     const { onQuery } = this.props;
     onQuery && onQuery(value);
   };
+
   onPopupVisibleChange = (visible: boolean) => {
     const { onPopupVisibleChange } = this.props;
-    setTimeout(() => {
-      this.setState({ visible });
-    }, 200);
-    onPopupVisibleChange && onPopupVisibleChange(visible);
+    if (this.isLeaf) {
+      setTimeout(() => {
+        this.setState({ visible });
+      }, 200);
+      onPopupVisibleChange && onPopupVisibleChange(visible);
+    }
   };
 }
 

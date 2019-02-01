@@ -10,7 +10,6 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Target from '../index';
 import Cascader from '../cascader';
-import renderer from 'react-test-renderer';
 import Widget from '../../consts/index';
 
 const data = [
@@ -60,13 +59,16 @@ describe('Cascader', () => {
     clickInputTag(cmp);
     expect(findMenu(cmp).length).toBe(1);
     expect(findMenuItem(cmp).length).toBe(0);
+    expect(findEmpty(cmp).length).toBe(1);
   });
 
   it('data: null', () => {
     const cmp = mount(<Target data={null} />);
     clickInputTag(cmp);
+
     expect(findMenu(cmp).length).toBe(1);
     expect(findMenuItem(cmp).length).toBe(0);
+    expect(findEmpty(cmp).length).toBe(1);
   });
 
   it('非受限, action: click', () => {
@@ -364,6 +366,10 @@ describe('Cascader', () => {
 
   function findMenuItem(cmp: Object) {
     return cmp.find(Widget.MenuItem);
+  }
+
+  function findEmpty(cmp: Object) {
+    return cmp.find(Widget.Empty);
   }
 
   function findMenu(cmp: Object) {
