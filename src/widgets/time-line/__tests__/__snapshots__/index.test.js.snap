@@ -266,91 +266,91 @@ exports[`timeLineDemo Component JSON 1`] = `
           <div
             className="c7"
           >
-            2019-01-29
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2019-01-30
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2019-01-31
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
             2019-02-01
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        type="icon"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+            type="icon"
+          />
+        </div>
+        <div
+          className="c5"
+          type="icon"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2019-02-02
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        type="icon"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+            type="icon"
+          />
+        </div>
+        <div
+          className="c5"
+          type="icon"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2019-02-03
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        type="icon"
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+            type="icon"
+          />
+        </div>
+        <div
+          className="c5"
+          type="icon"
+        />
+        <div
+          className="c6"
+          direction="right"
+        >
+          <div
+            className="c7"
+          >
+            2019-02-04
              
           </div>
         </div>
@@ -378,7 +378,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           <div
             className="c7"
           >
-            2019-02-02
+            2019-02-05
              
           </div>
         </div>
