@@ -45,18 +45,15 @@ export const getDerived = (nextProps: Object, preState: Object) => {
     noToday = true;
   }
   let startInWeek, endInWeek;
-  console.log(newValue, weekIndex, lastDayIndexInMonth);
   if (isWeeks) {
     const { startInWeeks, endInWeeks } = getRangeIndexfromWeeks(
       moment(newValue, newFormat),
       weekIndex,
       isStartOfWeek
     );
-    console.log(startInWeeks, endInWeeks);
     startInWeek = startInWeeks;
     endInWeek = endInWeeks;
   }
-  console.log(isStartOfWeek, startInWeek, endInWeek);
   return {
     value: newValue,
     days,
