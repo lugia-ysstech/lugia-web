@@ -34,8 +34,13 @@
       "defaultValue": "undefined"
     },
     "children":{
-      "type": "React.Node",
+      "type": "any",
       "desc": "Loading组件允许内嵌容器",
+      "defaultValue": "undefined"
+    },
+    "data":{
+      "type": "any",
+      "desc": "与children属性一样，在Loading组件内嵌入内容",
       "defaultValue": "undefined"
     }
   },

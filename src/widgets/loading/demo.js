@@ -38,7 +38,11 @@ class LoadingDemo extends React.Component {
         <Loading iconClass={'lugia-icon-financial_loading_o'} />
         <h2>加载中...</h2>
         <Loading tip={'加载中.....'} />
-        <Loading tip={'正在加载中.....'} size={'large'}>
+        <Loading
+          tip={'正在加载中.....'}
+          size={'large'}
+          data={'LugiaLugia Lugia Lugia Lugia Lugia '}
+        >
           <Alert
             message="Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。
           我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程，
