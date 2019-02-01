@@ -51,7 +51,7 @@ export const SliderBox = styled.div`
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  ${props => getSliderWrapperStyle(props).paddingSize};
+  ${props => getPaddingSize(props)};
   ${props => getSliderWrapperStyle(props).MarginValue};
 `;
 
@@ -143,22 +143,16 @@ export const Icons = ThemeProvider(
   `,
   Widgets.SliderIcon
 );
-function getMarginSize(vertical: boolean, LevelPaddings: number, sliderVerticalPaddings: number) {
-  const left = vertical ? sliderVerticalPaddings[0] : LevelPaddings[0];
-  const right = vertical ? sliderVerticalPaddings[1] : LevelPaddings[1];
-  const top = vertical ? LevelPaddings[1] : sliderVerticalPaddings[0];
-  const bottom = vertical ? LevelPaddings[0] : sliderVerticalPaddings[1];
+function getPaddingSize(props) {
+  const { vertical, levelPaddings, sliderVerticalPaddings } = props;
+  const left = vertical ? sliderVerticalPaddings[0] : levelPaddings[0];
+  const right = vertical ? sliderVerticalPaddings[1] : levelPaddings[1];
+  const top = vertical ? levelPaddings[1] : sliderVerticalPaddings[0];
+  const bottom = vertical ? levelPaddings[0] : sliderVerticalPaddings[1];
   return `padding:${em(top)} ${em(right)} ${em(bottom)} ${em(left)};`;
 }
 const getSliderWrapperStyle = (props: CssTypeProps) => {
-  const {
-    changeBackground,
-    disabled,
-    vertical,
-    getTheme,
-    LevelPaddings,
-    sliderVerticalPaddings,
-  } = props;
+  const { changeBackground, disabled, vertical, getTheme } = props;
   const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
   const { margin } = getTheme();
   let MarginValue;
@@ -178,13 +172,11 @@ const getSliderWrapperStyle = (props: CssTypeProps) => {
   }
   rangeW = em(Number(rangeW));
   rangeH = em(Number(rangeH));
-  const paddingSize = getMarginSize(vertical, LevelPaddings, sliderVerticalPaddings);
   return {
     wrapperBackground,
     rangeW,
     rangeH,
     MarginValue,
-    paddingSize,
   };
 };
 const getSliderInnerStyle = (props: CssTypeProps) => {
@@ -381,7 +373,7 @@ const getIconsStyle = (props: CssTypeProps) => {
     const iconCenterP = vertical ? 'left:50%' : 'top: 50%';
     const iconTrans = vertical ? 'translateX' : 'translateY';
     const theValue = value[0];
-    const distance = px2emcss(fontSize / 10)(iconDistancen);
+    const distance = px2emcss(iconfontSize / 10)(iconDistancen);
     if (index === 0) {
       iconPos = `${vertical ? 'bottom' : 'left'}:-${distance}`;
       if (theValue <= middleVal) {

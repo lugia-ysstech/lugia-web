@@ -4,6 +4,7 @@
  * */
 import React, { Component } from 'react';
 import Icon from '../icon/index';
+import Theme from '../theme/index';
 import Widget from '../consts/index';
 import { getElementPosition } from '../utils';
 import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
@@ -25,6 +26,7 @@ import {
   rangeHeightNormal,
   rangeWidthNormal,
 } from './slider_public_size';
+import Widgets from '../consts';
 type TypeProps = {
   btnWidth?: number | string,
   btnHeight?: number | string,
@@ -418,17 +420,17 @@ class Slider extends Component<TypeProps, TypeState> {
         ? dotHeights[dotHeights.length - 1]
         : dotWidths[dotWidths.length - 1]
       : 0;
-    let LevelPaddingFir = numbers;
-    let LevelPaddingSec = numbers;
+    let levelPaddingFir = numbers;
+    let levelPaddingSec = numbers;
     const dotHalfWidthFir = dotWidthsFir / 2;
     const dotHalfWidthSec = dotWidthsSec / 2;
     if (dotHalfWidthFir > numbers) {
-      LevelPaddingFir = dotHalfWidthFir;
+      levelPaddingFir = dotHalfWidthFir;
     }
     if (dotHalfWidthSec > numbers) {
-      LevelPaddingSec = vertical ? dotHalfWidthFir : dotHalfWidthSec;
+      levelPaddingSec = vertical ? dotHalfWidthFir : dotHalfWidthSec;
     }
-    return [LevelPaddingFir, LevelPaddingSec];
+    return [levelPaddingFir, levelPaddingSec];
   };
   getSliderLevelPaddings(
     vertical: boolean,
@@ -444,7 +446,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const { fontSizeNormal, marginNormal } = iconStyles;
     const halfBthSize = btnSize / 2;
     const numbers = hasIconsProps ? marginNormal + fontSizeNormal + halfBthSize : halfBthSize;
-    const LevelPaddings = this.getLevePadding(vertical, dotWidths, dotHeights, numbers);
+    const levelPaddings = this.getLevePadding(vertical, dotWidths, dotHeights, numbers);
     const iconSize = hasIconsProps ? [fontSizeNormal, fontSizeNormal] : [0, 0];
     if (hasIconsProps && value.length === 1 && Array.isArray(icons) && icons.length > 0) {
       icons.forEach((icon, index) => {
@@ -455,7 +457,7 @@ class Slider extends Component<TypeProps, TypeState> {
           const { fontSize = fontSizeNormal, margin = marginNormal } = style;
           newFontSize = fontSize > 0 && fontSize < 12 ? 12 : fontSize;
           iconDistancen = parseInt(fontSize) + parseInt(margin) + halfBthSize;
-          LevelPaddings[index] = iconDistancen;
+          levelPaddings[index] = iconDistancen;
           iconSize[index] = fontSize;
         }
         const iconStyle = {
@@ -467,12 +469,18 @@ class Slider extends Component<TypeProps, TypeState> {
 
         iconsChildren.push(
           <Icons iconStyle={iconStyle} value={value} {...size}>
-            <Icon iconClass={icon.name} />
+            <Theme
+              config={{
+                [Widgets.Icon]: { fontSize: newFontSize },
+              }}
+            >
+              <Icon iconClass={icon.name} />
+            </Theme>
           </Icons>
         );
       });
     }
-    return { iconsChildren, LevelPaddings, iconSize };
+    return { iconsChildren, levelPaddings, iconSize };
   }
   render() {
     const { background, tips = false, icons, vertical, disabled, getTheme } = this.props;
@@ -499,7 +507,7 @@ class Slider extends Component<TypeProps, TypeState> {
       maxValue,
       vertical,
     };
-    const { iconsChildren, LevelPaddings, iconSize } = this.getSliderLevelPaddings(
+    const { iconsChildren, levelPaddings, iconSize } = this.getSliderLevelPaddings(
       vertical,
       icons,
       value,
@@ -509,7 +517,7 @@ class Slider extends Component<TypeProps, TypeState> {
       dotHeights
     );
     const sliderWidth = styleSlider.width || rangeWidthNormal;
-    const themeSliderW = sliderWidth - LevelPaddings[0] - LevelPaddings[1];
+    const themeSliderW = sliderWidth - levelPaddings[0] - levelPaddings[1];
     const { rangeW = themeSliderW, rangeH = styleSlider.height || rangeHeightNormal } = this.props;
 
     this.style = {
@@ -608,7 +616,7 @@ class Slider extends Component<TypeProps, TypeState> {
       <SliderBox
         {...size}
         iconSize={iconSize}
-        LevelPaddings={LevelPaddings}
+        levelPaddings={levelPaddings}
         getTheme={getTheme}
         sliderVerticalPaddings={sliderVerticalPaddings}
       >
@@ -617,10 +625,7 @@ class Slider extends Component<TypeProps, TypeState> {
           onMouseDown={mousedown}
           onMouseUp={mouseup}
           {...size}
-          iconSize={iconSize}
-          LevelPaddings={LevelPaddings}
           getTheme={getTheme}
-          sliderVerticalPaddings={sliderVerticalPaddings}
         >
           {iconsChildren}
           {dots}

@@ -163,20 +163,19 @@ export default class Sl extends Component<any> {
         </div>
         <div style={{ float: 'left', padding: '0 40px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> icon</h2>
-          <Theme
-            config={{
-              [Widgets.SliderIcon]: { color: '#f8ac30', fontSize: 30, margin: 18 },
-            }}
-          >
-            <Slider
-              minValue={0}
-              tips
-              icons={[
-                { name: 'lugia-icon-financial_smile_o' },
-                { name: 'lugia-icon-financial_sad_o' },
-              ]}
-            />
-          </Theme>
+          <Slider
+            minValue={0}
+            tips
+            icons={[
+              {
+                name: 'lugia-icon-financial_smile_o',
+                style: {
+                  fontSize: 20,
+                },
+              },
+              { name: 'lugia-icon-financial_sad_o' },
+            ]}
+          />
         </div>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> 单滑块 disabled false-> true</h2>

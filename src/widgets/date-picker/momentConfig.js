@@ -1,5 +1,5 @@
 import moment from 'moment';
-function MomentConfig(firstWeekDay) {
+function momentConfig(firstWeekDay) {
   // // 过满一周才算一周
   // // 每年的一月一号到每年的第一周，不满一周时算上一年的周数
   moment.locale('en', {
@@ -9,7 +9,7 @@ function MomentConfig(firstWeekDay) {
     },
   });
 }
-MomentConfig(0);
+momentConfig(0);
 export function setMomentLocal(firstWeekDay: number) {
-  MomentConfig(firstWeekDay);
+  momentConfig(firstWeekDay);
 }
