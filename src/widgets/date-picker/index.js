@@ -22,5 +22,5 @@ DatePicker.TimePicker = TimePicker;
 
 export default DatePicker;
 export function momentConfig(number: number) {
-  return setMomentLocal(number);
+  setMomentLocal(number);
 }

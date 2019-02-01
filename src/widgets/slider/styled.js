@@ -5,6 +5,7 @@
 import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { valueInRange } from '../common/Math';
+import { iconStyles, dotStyles } from './slider_public_size';
 import { px2emcss } from '../css/units';
 import {
   btnDisabledBackground,
@@ -16,6 +17,8 @@ import {
   trackDisabledBackground,
   dotNormalColor,
   dotThroughColor,
+  iconNormalColor,
+  iconChangeColor,
 } from './slider_public_color';
 import Widgets from '../consts';
 import ThemeProvider from '../theme-provider';
@@ -43,6 +46,15 @@ type CssTypeProps = {
   vertical?: boolean,
 };
 const transitionTime = '0.1';
+export const SliderBox = styled.div`
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  display: inline-block;
+  vertical-align: top;
+  ${props => getSliderWrapperStyle(props).paddingSize};
+  ${props => getSliderWrapperStyle(props).MarginValue};
+`;
+
 export const SliderWrapper = ThemeProvider(
   styled.div`
     font-size: 1.4rem;
@@ -51,8 +63,6 @@ export const SliderWrapper = ThemeProvider(
     background: ${props => getSliderWrapperStyle(props).wrapperBackground};
     border-radius: ${em(6)};
     position: relative;
-    display: inline-block;
-    ${props => getSliderWrapperStyle(props).MarginValue};
   `,
   Widgets.Slider
 );
@@ -112,12 +122,10 @@ export const Dot = styled.span`
   border-radius: 50%;
   position: absolute;
   ${props => getDotStyle(props).dotPosition};  
-  z-index: 1;  
-  ${props => getDotStyle(props).dotStyle};
-  ${props => getDotStyle(props).dotBackground} 
+  z-index: 1;
+  ${props => getDotStyle(props).dotBackground}; 
   width: ${props => getDotStyle(props).dotW};
   height: ${props => getDotStyle(props).dotH};
-  
   &::before {
     content: '${props => getDotStyle(props).marskText}';
     display: block;
@@ -135,8 +143,22 @@ export const Icons = ThemeProvider(
   `,
   Widgets.SliderIcon
 );
+function getMarginSize(vertical: boolean, LevelPaddings: number, sliderVerticalPaddings: number) {
+  const left = vertical ? sliderVerticalPaddings[0] : LevelPaddings[0];
+  const right = vertical ? sliderVerticalPaddings[1] : LevelPaddings[1];
+  const top = vertical ? LevelPaddings[1] : sliderVerticalPaddings[0];
+  const bottom = vertical ? LevelPaddings[0] : sliderVerticalPaddings[1];
+  return `padding:${em(top)} ${em(right)} ${em(bottom)} ${em(left)};`;
+}
 const getSliderWrapperStyle = (props: CssTypeProps) => {
-  const { changeBackground, disabled, vertical, getTheme } = props;
+  const {
+    changeBackground,
+    disabled,
+    vertical,
+    getTheme,
+    LevelPaddings,
+    sliderVerticalPaddings,
+  } = props;
   const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
   const { margin } = getTheme();
   let MarginValue;
@@ -150,18 +172,19 @@ const getSliderWrapperStyle = (props: CssTypeProps) => {
   let { rangeW, rangeH } = props;
   const rangwWidth = rangeW;
   const rangwHeight = rangeH;
-
   if (vertical) {
     rangeW = rangwHeight;
     rangeH = rangwWidth;
   }
   rangeW = em(Number(rangeW));
   rangeH = em(Number(rangeH));
+  const paddingSize = getMarginSize(vertical, LevelPaddings, sliderVerticalPaddings);
   return {
     wrapperBackground,
     rangeW,
     rangeH,
     MarginValue,
+    paddingSize,
   };
 };
 const getSliderInnerStyle = (props: CssTypeProps) => {
@@ -224,6 +247,8 @@ const getButtonStyle = (props: CssTypeProps) => {
   }
   btnWidth = em(btnWidth);
   btnHeight = em(btnHeight);
+  const newBtnWidth = vertical ? btnHeight : btnWidth;
+  const newBtnHeight = vertical ? btnWidth : btnHeight;
   const btnZIndex = `
   z-index:${isChangeBg ? '3' : '2'};
   `;
@@ -239,8 +264,8 @@ const getButtonStyle = (props: CssTypeProps) => {
         transition:${transitionTime}s; 
       `;
   return {
-    btnWidth,
-    btnHeight,
+    btnWidth: newBtnWidth,
+    btnHeight: newBtnHeight,
     btnBackground,
     btnPosition,
   };
@@ -271,6 +296,7 @@ const getDotStyle = (props: CssTypeProps) => {
     let dotBorder = '#cccccc';
     let dotBg = '#ffffff';
     let dotColor = dotNormalColor;
+    let dotFontSize = 14;
     if (isShowDot) {
       dotBorder = 'transparent';
       dotBg = 'none';
@@ -285,6 +311,9 @@ const getDotStyle = (props: CssTypeProps) => {
     if (dotStyle && dotStyle.color) {
       dotColor = dotStyle.color;
     }
+    if (dotStyle && dotStyle.fontSize) {
+      dotFontSize = dotStyle.fontSize;
+    }
     dotBackground = `
       border-width:${em(1)};
       border-style:solid;
@@ -296,11 +325,13 @@ const getDotStyle = (props: CssTypeProps) => {
     const dotPosLeft = vertical ? 50 : dotMoveX;
     const dotPosTorBot = vertical ? `bottom: ${dotMoveX}%` : 'top: 50%';
     const dotPosTrans = vertical ? 'translateX' : 'translateY';
-
-    const dotTextLeft = vertical ? em(15) : '50%';
-    const dotTextTop = vertical ? '50%' : em(16);
+    const { distanceForSlider } = dotStyles;
+    const dotTextLeft = vertical ? px2emcss(1.4)(distanceForSlider) : '50%';
+    const dotTextTop = vertical ? '50%' : px2emcss(1.4)(distanceForSlider);
     const dotTextTrans = vertical ? 'translateY' : 'translateX';
     dotTextPosition = `
+      font-size:${px2emcss(1.4)(dotFontSize)};
+      line-height:1;
       left: ${dotTextLeft};
       transform: ${dotTextTrans}(-50%);
       -webkit-transform: ${dotTextTrans}(-50%);
@@ -308,7 +339,7 @@ const getDotStyle = (props: CssTypeProps) => {
       color:${dotColor};
     `;
     dotPosition = `
-      font-size:${em(14)};
+      font-size:1.4rem;
       left: ${dotPosLeft}%;
       ${dotPosTorBot};
       transform: ${dotPosTrans}(-50%);
@@ -329,37 +360,41 @@ const getDotStyle = (props: CssTypeProps) => {
   };
 };
 const getIconsStyle = (props: CssTypeProps) => {
-  const { value, iconStyle, minValue, maxValue, vertical, getTheme } = props;
-  let theme = {};
-  if (getTheme) {
-    theme = getTheme();
-  }
-  let { fontSize = 20 } = theme;
-  const { color = '#999', margin = 20 } = theme;
+  const { value, iconStyle, minValue, maxValue, vertical } = props;
+  const { fontSizeNormal } = iconStyles;
+  let iconfontSize = fontSizeNormal;
+  let iconColor = iconNormalColor;
   let iconPosition;
+  let iconChangeColors = iconChangeColor;
   let changeColor;
   if (iconStyle && value && value.length === 1) {
     const middleVal = (minValue + maxValue) / 2;
-    fontSize = em(parseInt(fontSize));
+    const { fontSize, iconDistancen } = iconStyle;
+    if (iconStyle.style) {
+      const { color = iconNormalColor, changeColor = iconChangeColor } = iconStyle.style;
+      iconColor = color;
+      iconChangeColors = changeColor;
+    }
+    iconfontSize = fontSize;
     const { index } = iconStyle;
     let iconPos;
     const iconCenterP = vertical ? 'left:50%' : 'top: 50%';
     const iconTrans = vertical ? 'translateX' : 'translateY';
     const theValue = value[0];
-    const distance = em(parseInt(margin));
+    const distance = px2emcss(fontSize / 10)(iconDistancen);
     if (index === 0) {
       iconPos = `${vertical ? 'bottom' : 'left'}:-${distance}`;
       if (theValue <= middleVal) {
-        changeColor = `color:${color}`;
+        changeColor = `color:${iconChangeColors}`;
       } else {
-        changeColor = 'color:#ccc;';
+        changeColor = `color:${iconColor};`;
       }
     } else {
       iconPos = `${vertical ? 'top' : 'right'}:-${distance}`;
       if (theValue >= middleVal) {
-        changeColor = `color:${color}`;
+        changeColor = `color:${iconChangeColors}`;
       } else {
-        changeColor = 'color:#ccc;';
+        changeColor = `color:${iconColor};`;
       }
     }
     iconPosition = `
@@ -372,6 +407,6 @@ const getIconsStyle = (props: CssTypeProps) => {
   return {
     iconPosition,
     changeColor,
-    fontSize,
+    fontSize: em(iconfontSize),
   };
 };
