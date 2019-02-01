@@ -10,8 +10,7 @@ import moment from 'moment';
 import DatePicker, { momentConfig } from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import Date from './panel/Date';
-const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker, TimePicker } = DatePicker;
+const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
 
 //如需指定周开始是星期几，请配置momentConfig，此函数接受一个number类型参数，表示周开始是星期几
 const firstWeekDay = 0;
