@@ -9,7 +9,6 @@ export function getChangeValue(changeValue, minValue, maxValue) {
       if (item > maxValue) {
         val = maxValue;
       }
-      console.log(changeValue);
       newValue[index] = val;
     });
     return newValue;

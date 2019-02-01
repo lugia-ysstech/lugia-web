@@ -28,6 +28,7 @@ type PropsCheck = {
   time?: number,
   loading?: boolean,
   children?: any,
+  data?: any,
 };
 type StateCheck = {
   width?: number,
@@ -86,12 +87,12 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
     const { iconClass, time = 3, tip, delay } = this.props;
     //loading的直径和圆点直径比例为8：1；后改为6:1
     let circleDiameter = Math.round(width / 6);
-    const children = [];
+    const childrens = [];
     let delayTime = 0.6;
     for (let i = 0; i < 5; i++) {
       delayTime += 0.1;
       circleDiameter = circleDiameter * 0.9;
-      children.push(
+      childrens.push(
         <LodingInner
           time={time}
           delay={delayTime}
@@ -112,7 +113,8 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
         <Icon iconClass={iconClass} />
       </IconLoading>
     );
-    const Children = this.props.children;
+    const { data, children } = this.props;
+    const Children = data || children;
     const hasChildren = delay ? !!Children && loading && isLoading : !!Children && loading;
     const showTips = delay ? isLoading && tip : tip;
     const isShowLoading = delay ? loading && isLoading : loading;
@@ -124,7 +126,7 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
         ) : (
           <LodingBox hasChildren={hasChildren}>
             <LodingWrapper width={width} tip={tip}>
-              {iconClass ? iconBox : delay && !isLoading ? '' : children}
+              {iconClass ? iconBox : delay && !isLoading ? '' : childrens}
             </LodingWrapper>
             {showTips ? <LoadingTip color={color}>{tip}</LoadingTip> : ''}
           </LodingBox>
