@@ -35,11 +35,10 @@ const em = px2emcss(1.2);
 const ArrowIcon: Object = styled(Icon)`
   ${getCursor};
   z-index: 3;
-  font-size: 0.6em;
+  font-size: ${em(8)};
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -187,8 +186,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       const theValue = hasValueInprops
         ? value
         : defaultValue
-          ? limit(Number(defaultValue), [min, max])
-          : '';
+        ? limit(Number(defaultValue), [min, max])
+        : '';
       const theDisabled = hasDisabledInprops ? disabled : false;
       return {
         value: theValue,

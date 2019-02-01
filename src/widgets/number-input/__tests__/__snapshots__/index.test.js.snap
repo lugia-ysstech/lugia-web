@@ -82,16 +82,16 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 .c6 {
   cursor: pointer;
   z-index: 3;
-  font-size: 0.6em;
+  font-size: 0.6666666666666667em;
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 50%;
   width: 100%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
+  line-height: 2;
 }
 
 .c4 {
@@ -305,16 +305,16 @@ exports[`NumberInput props: null 1`] = `
 .c6 {
   cursor: pointer;
   z-index: 3;
-  font-size: 0.6em;
+  font-size: 0.6666666666666667em;
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 50%;
   width: 100%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
+  line-height: 2;
 }
 
 .c4 {
@@ -528,16 +528,16 @@ exports[`NumberInput props: placeholder  1`] = `
 .c6 {
   cursor: pointer;
   z-index: 3;
-  font-size: 0.6em;
+  font-size: 0.6666666666666667em;
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 50%;
   width: 100%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
+  line-height: 2;
 }
 
 .c4 {
@@ -752,16 +752,16 @@ exports[`NumberInput props: placeholder  2`] = `
 .c6 {
   cursor: pointer;
   z-index: 3;
-  font-size: 0.6em;
+  font-size: 0.6666666666666667em;
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 50%;
   width: 100%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
+  line-height: 2;
 }
 
 .c4 {
@@ -976,16 +976,16 @@ exports[`NumberInput props: size 1`] = `
 .c6 {
   cursor: pointer;
   z-index: 3;
-  font-size: 0.6em;
+  font-size: 0.6666666666666667em;
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 50%;
   width: 100%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
+  line-height: 2;
 }
 
 .c4 {
@@ -1199,16 +1199,16 @@ exports[`NumberInput props: size 2`] = `
 .c6 {
   cursor: pointer;
   z-index: 3;
-  font-size: 0.6em;
+  font-size: 0.6666666666666667em;
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 50%;
   width: 100%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
+  line-height: 2;
 }
 
 .c4 {
