@@ -30,7 +30,9 @@ const data = (function(t) {
 describe('Select', () => {
   it('单选默认样式', () => {
     global.svtest = true;
-    expect(renderer.create(<Select data={data} />).toJSON()).toMatchSnapshot();
+    expect(
+      renderer.create(<Select displayField={'label'} data={data} />).toJSON()
+    ).toMatchSnapshot();
     global.svtest = false;
   });
 
@@ -47,13 +49,13 @@ describe('Select', () => {
 
   it('单选 设置value', async () => {
     const value = ['szfeng'];
-    const cmp = mount(<Select mutliple data={data} value={value} />);
+    const cmp = mount(<Select mutliple data={data} value={value} displayField={'label'} />);
     exp(getInputTagValue(cmp)).to.be.eql(value);
     exp(getInputTagDisplayValue(cmp)).to.be.eql(value);
   });
 
   it('单选查询功能', async () => {
-    const cmp = mount(<Select data={data} canSearch />);
+    const cmp = mount(<Select data={data} canSearch displayField={'label'} />);
     const queryValue = 'szfeng';
     showTrigger(cmp);
     changeQuery(cmp, queryValue);
@@ -61,7 +63,7 @@ describe('Select', () => {
   });
 
   it('关闭trigger后，清空queryInput值', () => {
-    const cmp = mount(<Select data={data} canSearch />);
+    const cmp = mount(<Select data={data} canSearch displayField={'label'} />);
     const queryValue = 'szfeng';
     showTrigger(cmp);
     changeQuery(cmp, queryValue);
@@ -71,7 +73,7 @@ describe('Select', () => {
   });
 
   it('点击选择全部', () => {
-    const cmp = mount(<Select data={data} mutliple />);
+    const cmp = mount(<Select data={data} mutliple displayField={'label'} />);
     showTrigger(cmp);
     checkAll(cmp);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.true;
@@ -81,7 +83,9 @@ describe('Select', () => {
 
   function createCanInputSelect({ mutliple }) {
     it(`多选mutliple: ${mutliple.toString()} canInput: true`, () => {
-      const cmp = mount(<Select data={data} mutliple={mutliple} canSearch canInput />);
+      const cmp = mount(
+        <Select data={data} mutliple={mutliple} canSearch canInput displayField={'label'} />
+      );
       showTrigger(cmp);
       const text = 'shizhenfeng';
       changeQuery(cmp, text);
@@ -96,7 +100,7 @@ describe('Select', () => {
   createCanInputSelect({ mutliple: false });
 
   it('选择全部 limitCount: 10', async () => {
-    const cmp = mount(<Select data={data} mutliple limitCount={10} />);
+    const cmp = mount(<Select data={data} mutliple limitCount={10} displayField={'label'} />);
     showTrigger(cmp);
     checkAll(cmp);
 
@@ -106,7 +110,9 @@ describe('Select', () => {
   });
 
   it('选择全部 limitCount: 10, canInput 先选全部再自定义输入', async () => {
-    const cmp = mount(<Select data={data} mutliple canSearch canInput limitCount={10} />);
+    const cmp = mount(
+      <Select data={data} mutliple canSearch canInput limitCount={10} displayField={'label'} />
+    );
 
     showTrigger(cmp);
     checkAll(cmp);
