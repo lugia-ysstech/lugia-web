@@ -216,7 +216,7 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   isLimit(): boolean {
     const { length, value } = this.state;
-    const { limitCount = length } = this.props;
+    const limitCount = this.getLimitCount();
     return value.length >= limitCount;
   }
 
@@ -247,11 +247,21 @@ class Select extends React.Component<SelectProps, SelectState> {
     onRefresh && onRefresh();
   };
 
+  getLimitCount = () => {
+    const { limitCount } = this.props;
+    const { length } = this.state;
+    const totalLimitCount = length + this.cancelItem.length;
+    if (limitCount && limitCount > totalLimitCount) {
+      return totalLimitCount;
+    }
+    return limitCount ? limitCount : totalLimitCount;
+  };
+
   onCheckAll = (event: Object) => {
     const { props, state } = this;
     const { data, isCheckedAll, length, value } = state;
     const { displayValue } = this;
-    const { limitCount = length } = props;
+    const limitCount = this.getLimitCount();
 
     if (isCheckedAll) {
       this.setValue([], [], {});
@@ -264,7 +274,7 @@ class Select extends React.Component<SelectProps, SelectState> {
 
       if (limitCount >= 0) {
         const needItemLen = limitCount - value.length;
-        for (let i = 0; i < limitCount; i++) {
+        for (let i = 0; i < length; i++) {
           const item = data[i];
           if (this.getInChecked(item[key])) {
             continue;
@@ -609,10 +619,9 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getIsCheckedAll(value: string[]) {
     const { props } = this;
-    const { limitCount } = props;
     const { length } = this.state;
 
-    const totalLimitCount = limitCount ? limitCount : this.cancelItem.length + length;
+    const totalLimitCount = this.getLimitCount();
     return totalLimitCount === value.length;
   }
 }
