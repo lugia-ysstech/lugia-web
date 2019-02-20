@@ -25,7 +25,6 @@ function readLines (input, func) {
   });
 
   input.on('end', function() {
-    console.info(container.join('\n'));
     fs.writeFileSync(__dirname + '/flow-error-line.log', container.join('\n'));
     fs.writeFileSync(__dirname + '/flow-error-filename.log', [ ...fileNames ].join('\n'));
     if (remaining.length > 0) {
@@ -42,7 +41,6 @@ function func (data) {
   }
 }
 
-childProcess.execSync('flow --show-all-errors');
 const input = fs.createReadStream(__dirname + '/flow-error-detail.log');
 readLines(input, func);
 

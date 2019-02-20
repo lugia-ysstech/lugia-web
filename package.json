@@ -36,6 +36,7 @@
     "start": "lugia-scripts start",
     "build": "lugia-scripts build",
     "flow": "flow --show-all-errors > flow-error-detail.log",
+    "flow-check": "node readflow.js",
     "flow-typed": "flow-typed",
     "reset-flow-typed": "npx shx rm -rf flow-typed/npm && flow-typed install --overwrite || true",
     "test": "node scripts/test.js --env=jsdom",
