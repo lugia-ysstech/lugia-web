@@ -59,9 +59,7 @@ export const OperationBtn = styled.span`
 
   & > button {
     margin-bottom: ${em(10)};
+    padding-left: ${em(12)};
+    padding-right: ${em(14)};
   }
-`;
-export const BtnText = styled.span`
-  font-size: ${em(16)};
-  line-height: ${px2emcss(1.6)(12)};
 `;
