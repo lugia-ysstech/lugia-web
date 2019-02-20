@@ -28,6 +28,7 @@ type CSSProps = {
   viewClass?: string,
   loading?: boolean,
   em: Function,
+  hasChildren?: boolean,
 };
 export type ButtonOutProps = CSSProps & {
   clicked: boolean,
@@ -438,7 +439,10 @@ export const getThemeStyle = (props: ButtonOutProps) => {
   `;
 };
 export const getIconStyle = (props: CSSProps) => {
-  const { em } = props;
+  const { em, hasChildren = true } = props;
+  if (!hasChildren) {
+    return '';
+  }
   return `
     margin-right: ${em(10)};
   `;

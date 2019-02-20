@@ -133,9 +133,10 @@ export default ThemeProvider(
             );
           }
           if (icon) {
+            const hasChildren = !!children;
             return (
               <span>
-                <IconWrap em={em} iconClass={icon} />
+                <IconWrap em={em} iconClass={icon} hasChildren={hasChildren} />
                 {children}
               </span>
             );
