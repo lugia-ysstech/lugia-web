@@ -17,7 +17,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
 }
 
 .c1:hover > span span {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c7 {
@@ -113,7 +113,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
 }
 
 .c4:hover {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c4::after {
@@ -144,14 +144,14 @@ exports[`CheckBox CheckBox CSS 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #4d63ff;
-  border: 1px solid #4d63ff;
+  background-color: #684fff;
+  border: 1px solid #684fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c6:hover {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c6::after {
@@ -258,14 +258,14 @@ exports[`CheckBox CheckBox CSS 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #4d63ff;
-  border: 1px solid #4d63ff;
+  background-color: #684fff;
+  border: 1px solid #684fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c11:hover {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c11::after {

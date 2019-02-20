@@ -270,7 +270,7 @@ exports[`Card css 1`] = `
   display: inline-block;
   height: 1.6666666666666667em;
   width: 0.4166666666666667em;
-  background: #4d63ff;
+  background: #684fff;
   border-radius: 0.4166666666666667em;
 }
 
@@ -307,15 +307,15 @@ exports[`Card css 1`] = `
 }
 
 .c33:hover > div {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c33:hover > span > i:first-child {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c34 {
-  color: #4d63ff;
+  color: #684fff;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -330,7 +330,7 @@ exports[`Card css 1`] = `
 }
 
 .c34:focus {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c35 {
@@ -348,7 +348,7 @@ exports[`Card css 1`] = `
 }
 
 .c35:focus {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c39 {

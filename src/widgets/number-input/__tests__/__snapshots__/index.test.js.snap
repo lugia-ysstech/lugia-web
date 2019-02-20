@@ -42,7 +42,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c2:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -62,7 +62,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c2:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -91,7 +91,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
-  line-height: 2;
 }
 
 .c4 {
@@ -125,7 +124,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c8:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c5 {
@@ -144,7 +143,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c5:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0 {
@@ -156,12 +155,12 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c0:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 <span
@@ -265,7 +264,7 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c2:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -285,7 +284,7 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c2:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -314,7 +313,6 @@ exports[`NumberInput props: null 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
-  line-height: 2;
 }
 
 .c4 {
@@ -348,7 +346,7 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c8:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c5 {
@@ -367,7 +365,7 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c5:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0 {
@@ -379,12 +377,12 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c0:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 <span
@@ -488,7 +486,7 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c2:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -508,7 +506,7 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c2:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -537,7 +535,6 @@ exports[`NumberInput props: placeholder  1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
-  line-height: 2;
 }
 
 .c4 {
@@ -571,7 +568,7 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c8:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c5 {
@@ -590,7 +587,7 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c5:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0 {
@@ -602,12 +599,12 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c0:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 <span
@@ -712,7 +709,7 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c2:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -732,7 +729,7 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c2:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -761,7 +758,6 @@ exports[`NumberInput props: placeholder  2`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
-  line-height: 2;
 }
 
 .c4 {
@@ -795,7 +791,7 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c8:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c5 {
@@ -814,7 +810,7 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c5:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0 {
@@ -826,12 +822,12 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c0:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 <span
@@ -936,7 +932,7 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c2:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -956,7 +952,7 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c2:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -985,7 +981,6 @@ exports[`NumberInput props: size 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
-  line-height: 2;
 }
 
 .c4 {
@@ -1019,7 +1014,7 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c8:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c5 {
@@ -1038,7 +1033,7 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c5:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0 {
@@ -1050,12 +1045,12 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c0:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 <span
@@ -1159,7 +1154,7 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c2:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -1179,7 +1174,7 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c2:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -1208,7 +1203,6 @@ exports[`NumberInput props: size 2`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   text-align: center;
-  line-height: 2;
 }
 
 .c4 {
@@ -1242,7 +1236,7 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c8:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c5 {
@@ -1261,7 +1255,7 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c5:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0 {
@@ -1273,12 +1267,12 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c0:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(248,172,48,0.2);
 }
 
 .c0:hover > span > span > input {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 <span

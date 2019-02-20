@@ -83,7 +83,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #4d63ff;
+  color: #684fff;
   font-weight: 900;
 }
 
@@ -93,19 +93,19 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 }
 
 .c0:after {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0:hover:after {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0:after {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0:hover:after {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 <li
@@ -201,7 +201,7 @@ exports[`Item Single MenuItem checked 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #4d63ff;
+  color: #684fff;
   font-weight: 900;
 }
 
@@ -211,11 +211,11 @@ exports[`Item Single MenuItem checked 1`] = `
 }
 
 .c0:after {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0:hover:after {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 <li

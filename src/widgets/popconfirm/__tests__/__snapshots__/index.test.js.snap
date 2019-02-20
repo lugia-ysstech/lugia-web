@@ -29,20 +29,20 @@ exports[`popconfirm Demo Component JSON 1`] = `
 }
 
 .c1:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
 }
 
 .c1:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
 }
 
 .c1:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
+  color: #533fcc;
+  border: 1px solid #533fcc;
 }
 
 .c2 {
@@ -82,7 +82,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
 }
 
 .c4:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c4::-webkit-input-placeholder {
@@ -102,7 +102,7 @@ exports[`popconfirm Demo Component JSON 1`] = `
 }
 
 .c4:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 

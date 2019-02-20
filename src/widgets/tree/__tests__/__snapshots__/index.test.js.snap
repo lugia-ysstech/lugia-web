@@ -26,7 +26,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c8:hover > span span {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c9 {
@@ -70,7 +70,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c15:hover {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c15::after {
@@ -101,14 +101,14 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #4d63ff;
-  border: 1px solid #4d63ff;
+  background-color: #684fff;
+  border: 1px solid #684fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c11:hover {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c11::after {
@@ -726,7 +726,7 @@ exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
 }
 
 .c6:hover {
-  background-color: rgba(77,99,255,0.05);
+  background-color: rgba(104,79,255,0.05);
 }
 
 .c7 {
@@ -1041,7 +1041,7 @@ Array [
 }
 
 .c12:hover {
-  background-color: rgba(77,99,255,0.05);
+  background-color: rgba(104,79,255,0.05);
 }
 
 .c8 {
@@ -1446,7 +1446,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c8:hover > span span {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c9 {
@@ -1490,7 +1490,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c15:hover {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c15::after {
@@ -1521,14 +1521,14 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #4d63ff;
-  border: 1px solid #4d63ff;
+  background-color: #684fff;
+  border: 1px solid #684fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c11:hover {
-  border: 1px solid #4d63ff;
+  border: 1px solid #684fff;
 }
 
 .c11::after {

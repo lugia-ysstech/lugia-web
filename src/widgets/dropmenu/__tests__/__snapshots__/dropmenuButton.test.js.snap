@@ -16,7 +16,7 @@ exports[`DropMenuButton default 1`] = `
   >
     <span
       checked={false}
-      className="sc-hSdWYo hxexKl sc-kEYyzF kxWEBa"
+      className="sc-hSdWYo gjtzhE sc-kEYyzF kxWEBa"
       disabled={false}
       type="customs"
     >
@@ -30,7 +30,7 @@ exports[`DropMenuButton default 1`] = `
     </span>
     <span
       checked={false}
-      className="sc-jAaTju fOqyzB"
+      className="sc-jAaTju bYnDqT"
       disabled={false}
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -54,7 +54,7 @@ exports[`DropMenuButton default 1`] = `
 exports[`DropMenuButton divided={false} 1`] = `
 <div
   checked={false}
-  className="sc-jKJlTe dptqFJ sc-ckVGcZ iZXgcY sc-kpOJdX bXCMzD"
+  className="sc-jKJlTe idCzGo sc-ckVGcZ iZXgcY sc-kpOJdX bXCMzD"
   disabled={false}
   onClick={[Function]}
   onMouseEnter={[Function]}
@@ -91,7 +91,7 @@ exports[`DropMenuButton type=basic 1`] = `
 >
   <div
     checked={false}
-    className="sc-cvbbAY dVbHZB sc-dxgOiQ gmLpER"
+    className="sc-cvbbAY kTKSTj sc-dxgOiQ gmLpER"
     disabled={false}
     onClick={[Function]}
     onMouseEnter={[Function]}
@@ -126,7 +126,7 @@ exports[`DropMenuButton type=basic 1`] = `
 
 exports[`DropMenuButton type=primary,divided={true} 1`] = `
 <div
-  className="sc-kkGfuU kDgOxc sc-ckVGcZ iPSWpm sc-kpOJdX bXCMzD"
+  className="sc-kkGfuU kDgOxc sc-ckVGcZ fJbgaW sc-kpOJdX bXCMzD"
   disabled={false}
   type="primary"
 >
@@ -140,7 +140,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
   >
     <span
       checked={false}
-      className="sc-hSdWYo fqGgVz sc-kEYyzF kxWEBa"
+      className="sc-hSdWYo jeadcr sc-kEYyzF kxWEBa"
       disabled={false}
       type="primary"
     >
@@ -154,7 +154,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
     </span>
     <span
       checked={false}
-      className="sc-jAaTju gVhTfy"
+      className="sc-jAaTju jsuUDF"
       disabled={false}
       onClick={[Function]}
       onMouseEnter={[Function]}

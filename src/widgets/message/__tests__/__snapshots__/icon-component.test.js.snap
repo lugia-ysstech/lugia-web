@@ -11,7 +11,7 @@ exports[`Message css 1`] = `
 }
 
 .c0 {
-  color: #4d63ff;
+  color: #684fff;
   position: relative;
   top: 0.18749999999999997em;
   margin-right: 0.625em;
@@ -47,7 +47,7 @@ exports[`Message css 1`] = `
 }
 
 .c5 {
-  color: #4d63ff;
+  color: #684fff;
   position: relative;
   top: 0.18749999999999997em;
   margin-right: 0.625em;
