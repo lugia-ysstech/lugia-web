@@ -34,7 +34,7 @@ type PopupInnerProps = {
   visible: boolean,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
-  children: React.Node,
+  children: ?React.Node,
   className: string,
 };
 

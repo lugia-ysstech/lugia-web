@@ -12046,25 +12046,20 @@ react-error-overlay@^4.0.1:
   resolved "http://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-4.0.1.tgz#417addb0814a90f3a7082eacba7cee588d00da89"
   integrity sha1-QXrdsIFKkPOnCC6sunzuWI0A2ok=
 
-react-is@^16.3.1, react-is@^16.5.2, react-is@^16.6.1, react-is@^16.6.3:
+react-is@^16.3.1, react-is@^16.6.1, react-is@^16.6.3:
   version "16.6.3"
   resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
   integrity sha1-0tdGL8/L5uwNpWrWkEfkflbn6sA=
+
+react-is@^16.8.2:
+  version "16.8.2"
+  resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
+  integrity sha1-CYkdMkytHLDB8tkfcKcaS+403w8=
 
 react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "http://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
-
-react-test-renderer@16.5.2:
-  version "16.5.2"
-  resolved "http://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.5.2.tgz#92e9d2c6f763b9821b2e0b22f994ee675068b5ae"
-  integrity sha1-kunSxvdjuYIbLgsi+ZTuZ1Bota4=
-  dependencies:
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    react-is "^16.5.2"
-    schedule "^0.5.0"
 
 react-test-renderer@^16.0.0-0:
   version "16.6.3"
@@ -12075,6 +12070,16 @@ react-test-renderer@^16.0.0-0:
     prop-types "^15.6.2"
     react-is "^16.6.3"
     scheduler "^0.11.2"
+
+react-test-renderer@^16.8.2:
+  version "16.8.2"
+  resolved "http://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.8.2.tgz#3ce0bf12aa211116612fda01a886d6163c9c459b"
+  integrity sha1-POC/EqohERZhL9oBqIbWFjycRZs=
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    react-is "^16.8.2"
+    scheduler "^0.13.2"
 
 react@^16.4.0, react@^16.6.1:
   version "16.6.3"
@@ -12831,13 +12836,6 @@ saxes@^3.1.3:
   dependencies:
     xmlchars "^1.3.1"
 
-schedule@^0.5.0:
-  version "0.5.0"
-  resolved "http://registry.npm.taobao.org/schedule/download/schedule-0.5.0.tgz#c128fffa0b402488b08b55ae74bb9df55cc29cc8"
-  integrity sha1-wSj/+gtAJIiwi1WudLud9VzCnMg=
-  dependencies:
-    object-assign "^4.1.1"
-
 scheduler@^0.11.2:
   version "0.11.2"
   resolved "http://registry.npm.taobao.org/scheduler/download/scheduler-0.11.2.tgz#a8db5399d06eba5abac51b705b7151d2319d33d3"
@@ -12850,6 +12848,14 @@ scheduler@^0.12.0:
   version "0.12.0"
   resolved "http://registry.npm.taobao.org/scheduler/download/scheduler-0.12.0.tgz#8ab17699939c0aedc5a196a657743c496538647b"
   integrity sha1-irF2mZOcCu3FoZamV3Q8SWU4ZHs=
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.13.2:
+  version "0.13.2"
+  resolved "http://registry.npm.taobao.org/scheduler/download/scheduler-0.13.2.tgz#969eaee2764a51d2e97b20a60963b2546beff8fa"
+  integrity sha1-lp6u4nZKUdLpeyCmCWOyVGvv+Po=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
