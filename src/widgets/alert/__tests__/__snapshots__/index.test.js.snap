@@ -18,8 +18,8 @@ exports[`Alert css 1`] = `
   padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 0.7142857142857143em;
   line-height: 1;
   border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #4d63ff;
-  background: rgba(77,99,255,0.2);
+  border-left: 0.28571428571428575em solid #684fff;
+  background: rgba(104,79,255,0.2);
 }
 
 .c4 {
@@ -66,7 +66,7 @@ exports[`Alert css 1`] = `
   padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 2.428571428571429em;
   line-height: 1;
   border-radius: 0.28571428571428575em;
-  background: rgba(77,99,255,0.2);
+  background: rgba(104,79,255,0.2);
 }
 
 .c14 {
@@ -110,8 +110,8 @@ exports[`Alert css 1`] = `
   padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 0.7142857142857143em;
   line-height: 1.5;
   border-radius: 0.28571428571428575em;
-  border-left: 0.28571428571428575em solid #4d63ff;
-  background: rgba(77,99,255,0.2);
+  border-left: 0.28571428571428575em solid #684fff;
+  background: rgba(104,79,255,0.2);
 }
 
 .c23 {
@@ -158,7 +158,7 @@ exports[`Alert css 1`] = `
   padding: 1.2857142857142858em 0.7142857142857143em 1.2857142857142858em 2.857142857142857em;
   line-height: 1.5;
   border-radius: 0.28571428571428575em;
-  background: rgba(77,99,255,0.2);
+  background: rgba(104,79,255,0.2);
 }
 
 .c30 {
@@ -220,7 +220,7 @@ exports[`Alert css 1`] = `
 }
 
 .c13 {
-  color: #4d63ff;
+  color: #684fff;
   top: 0.8571428571428572em;
   left: 0.7142857142857143em;
   position: absolute;
@@ -248,7 +248,7 @@ exports[`Alert css 1`] = `
 }
 
 .c29 {
-  color: #4d63ff;
+  color: #684fff;
   font-size: 1.4285714285714286em;
   top: 0.9em;
   left: 0.5em;

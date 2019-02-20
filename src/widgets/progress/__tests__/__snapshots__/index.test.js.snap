@@ -35,7 +35,7 @@ exports[`Progress css 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
-  background-color: #4d63ff;
+  background-color: #684fff;
   height: 0.5714285714285715em;
   border-radius: 3.5714285714285716em;
   position: relative;
@@ -46,7 +46,7 @@ exports[`Progress css 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
-  background-color: #4d63ff;
+  background-color: #684fff;
   height: 0.5714285714285715em;
   border-radius: 3.5714285714285716em;
   position: relative;
@@ -115,7 +115,7 @@ exports[`Progress css 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
-  background-color: #4d63ff;
+  background-color: #684fff;
   height: 0.5em;
   border-radius: 4.166666666666667em;
   position: relative;
@@ -126,7 +126,7 @@ exports[`Progress css 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
-  background-color: #4d63ff;
+  background-color: #684fff;
   height: 0.5em;
   border-radius: 4.166666666666667em;
   position: relative;
@@ -184,7 +184,7 @@ exports[`Progress css 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 0%;
-  background-color: #4d63ff;
+  background-color: #684fff;
   height: 1.142857142857143em;
   border-radius: 3.5714285714285716em;
   position: relative;
@@ -195,7 +195,7 @@ exports[`Progress css 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
-  background-color: #4d63ff;
+  background-color: #684fff;
   height: 1.142857142857143em;
   border-radius: 3.5714285714285716em;
   position: relative;
@@ -220,7 +220,7 @@ exports[`Progress css 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 30%;
-  background-color: #4d63ff;
+  background-color: #684fff;
   height: 1.142857142857143em;
   border-radius: 3.5714285714285716em;
   position: relative;
@@ -535,20 +535,20 @@ exports[`Progress css 1`] = `
 }
 
 .c12:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
 }
 
 .c12:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
+  color: #9482ff;
+  border: 1px solid #9482ff;
+  background-color: rgba(104,79,255,0.05);
 }
 
 .c12:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
+  color: #533fcc;
+  border: 1px solid #533fcc;
 }
 
 .c13 {
@@ -1295,7 +1295,7 @@ exports[`Progress css 1`] = `
           cy={60}
           fill="none"
           r={56}
-          stroke="#4d63ff"
+          stroke="#684fff"
           strokeDasharray="105.6 352"
           strokeLinecap="round"
           strokeWidth={8}
@@ -1706,7 +1706,7 @@ exports[`Progress css 1`] = `
           cy={40}
           fill="none"
           r={37}
-          stroke="#4d63ff"
+          stroke="#684fff"
           strokeDasharray="69.89999999999999 233"
           strokeLinecap="round"
           strokeWidth={6}
@@ -2069,7 +2069,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#4d63ff",
+                "stroke": "#684fff",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -3221,7 +3221,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#4d63ff",
+                "stroke": "#684fff",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }
@@ -3405,7 +3405,7 @@ exports[`Progress css 1`] = `
             style={
               Object {
                 "fill": "none",
-                "stroke": "#4d63ff",
+                "stroke": "#684fff",
                 "strokeWidth": 8,
                 "transition": "all .3s",
               }

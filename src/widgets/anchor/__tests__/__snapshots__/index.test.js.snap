@@ -63,7 +63,7 @@ exports[`Anchor css 1`] = `
 }
 
 .c4:hover {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c4:focus {

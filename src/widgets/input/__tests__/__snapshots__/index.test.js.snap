@@ -34,7 +34,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c1:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -54,7 +54,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c1:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -112,7 +112,7 @@ exports[`Input props: null 1`] = `
 }
 
 .c1:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -132,7 +132,7 @@ exports[`Input props: null 1`] = `
 }
 
 .c1:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -190,7 +190,7 @@ exports[`Input props: placeholder  1`] = `
 }
 
 .c1:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -210,7 +210,7 @@ exports[`Input props: placeholder  1`] = `
 }
 
 .c1:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -269,7 +269,7 @@ exports[`Input props: placeholder  2`] = `
 }
 
 .c1:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -289,7 +289,7 @@ exports[`Input props: placeholder  2`] = `
 }
 
 .c1:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -348,7 +348,7 @@ exports[`Input props: size 1`] = `
 }
 
 .c1:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -368,7 +368,7 @@ exports[`Input props: size 1`] = `
 }
 
 .c1:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -426,7 +426,7 @@ exports[`Input props: size 2`] = `
 }
 
 .c1:hover {
-  border-color: #4d63ff;
+  border-color: #684fff;
 }
 
 .c1::-webkit-input-placeholder {
@@ -446,7 +446,7 @@ exports[`Input props: size 2`] = `
 }
 
 .c1:focus {
-  border-color: #4d63ff;
+  border-color: #684fff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 

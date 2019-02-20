@@ -127,7 +127,7 @@ exports[`timeLineDemo Component JSON 1`] = `
 
 .c4 {
   position: absolute;
-  background: #4d63ff;
+  background: #684fff;
   width: 0.8333333333333334em;
   height: 0.8333333333333334em;
   left: 0.45833333333333337em;
@@ -201,7 +201,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   text-transform: none;
   outline: 0;
   color: #ffffff;
-  background-color: #4d63ff;
+  background-color: #684fff;
   border: none;
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
@@ -211,17 +211,17 @@ exports[`timeLineDemo Component JSON 1`] = `
 .c22:hover {
   color: #ffffff;
   border: none;
-  background-color: #8090ff;
+  background-color: #9482ff;
 }
 
 .c22:focus {
   color: #ffffff;
   border: none;
-  background-color: #8090ff;
+  background-color: #9482ff;
 }
 
 .c22:active {
-  background-color: #3e4fcc;
+  background-color: #533fcc;
 }
 
 .c23 {
@@ -266,7 +266,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           <div
             className="c7"
           >
-            2019-02-01
+            2019-02-20
              
           </div>
         </div>
@@ -294,7 +294,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           <div
             className="c7"
           >
-            2019-02-02
+            2019-02-21
              
           </div>
         </div>
@@ -322,7 +322,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           <div
             className="c7"
           >
-            2019-02-03
+            2019-02-22
              
           </div>
         </div>
@@ -350,7 +350,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           <div
             className="c7"
           >
-            2019-02-04
+            2019-02-23
              
           </div>
         </div>
@@ -378,7 +378,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           <div
             className="c7"
           >
-            2019-02-05
+            2019-02-24
              
           </div>
         </div>

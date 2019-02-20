@@ -155,7 +155,7 @@ exports[`Layout css 1`] = `
   text-align: center;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background: #4d63ff;
+  background: #684fff;
   width: 16.666666666666668em;
   cursor: pointer;
 }
@@ -179,7 +179,7 @@ exports[`Layout css 1`] = `
 
 .c5 {
   height: 100%;
-  background: #4d63ff;
+  background: #684fff;
 }
 
 .c9 {

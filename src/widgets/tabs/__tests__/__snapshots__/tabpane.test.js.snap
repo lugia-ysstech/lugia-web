@@ -28,7 +28,7 @@ exports[`tabpaneDemo Component JSON 1`] = `
 }
 
 .c0:hover > div {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c0:hover > span > i:first-child {
@@ -50,7 +50,7 @@ exports[`tabpaneDemo Component JSON 1`] = `
 }
 
 .c1:focus {
-  color: #4d63ff;
+  color: #684fff;
 }
 
 .c2 {
