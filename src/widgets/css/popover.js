@@ -15,7 +15,7 @@ export type PopoverProps = {
   content?: React.Node,
   getTheme: Function,
   placement: DirectionType,
-  action: string,
+  action: Array<string>,
   children: React.Node,
   visible: boolean,
   defaultVisible: boolean,
