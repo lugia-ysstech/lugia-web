@@ -43,7 +43,7 @@ export default ThemeProvider(
         type = 'info',
         showIcon = false,
         getTheme,
-        message,
+        message = '警告提示',
         closable = false,
         description,
         icon,
