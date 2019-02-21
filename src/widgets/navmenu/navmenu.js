@@ -62,6 +62,7 @@ type NavMenuState = {
   popupVisible: boolean,
   value: string[],
   expandedPath: string[],
+  activityKey: string,
 };
 const openClassName = 'lugia-icon-direction_up';
 const closeClassName = 'lugia-icon-direction_down';

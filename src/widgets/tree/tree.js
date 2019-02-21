@@ -53,7 +53,7 @@ export type TreeProps = {
   igronSelectField?: string,
   value: ?Array<string>,
   displayValue: ?Array<string>,
-  defaultValue: ?Array<string>,
+  defaultValue: ?Array<string> | string,
   svThemVersion?: number,
   /** 展开/收起节点时触发 */
   onExpand?: Function,
@@ -636,7 +636,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.value = value;
     const { props } = this;
     const { onChange } = props;
-
+    console.log('this.queryAllUtils', this.queryAllUtils.catchPathArray);
     onChange && onChange(value, this.getTitle(value));
   };
 

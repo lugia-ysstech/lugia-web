@@ -71,9 +71,7 @@ export default class extends React.Component<any, any> {
         <Theme config={defaultView}>
           <Box>
             <DropMenu menus={menu} autoHeight={true}>
-              <DropMenu.Button type="basic" onClick={this.onClick}>
-                Click me
-              </DropMenu.Button>
+              <DropMenu.Button type="basic">Click me</DropMenu.Button>
             </DropMenu>
           </Box>
 

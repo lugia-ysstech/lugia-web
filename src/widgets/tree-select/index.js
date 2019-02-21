@@ -54,7 +54,7 @@ type TreeSelectProps = {
   canInput: boolean,
   disabled: boolean,
   placeholder?: string,
-  translateTreeData?: string,
+  translateTreeData: boolean,
   label: string,
   labelSize: number,
   canSearch: boolean,
@@ -460,10 +460,29 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     this.setState({ selectAll: this.isSelectAll() });
   }
 
+  getItems = (value: string[]) => {
+    const length = value.length;
+
+    if (length === 0) {
+      return [];
+    }
+
+    const { data = [], valueField } = this.props;
+
+    return data.filter(item => {
+      const key = item[valueField];
+      return value.indexOf(key) !== -1;
+    });
+  };
+
+  expandOnSelect = (value: string[], displayValue: string[]) => {
+    const { onSelect } = this.props;
+    const items = this.getItems(value);
+    onSelect && onSelect(value, displayValue, items);
+  };
+
   onSelectAll = () => {
     const selectAll = !this.isSelectAll();
-    console.log('this.isSelectAll()', this.isSelectAll());
-    const { onSelect } = this.props;
     const { displayField, valueField } = this.props;
     if (selectAll === true) {
       const data = this.getQueryData();
@@ -486,7 +505,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         displayValue.push(title);
         cnt++;
       }
-      onSelect && onSelect({ value, displayValue });
+      this.expandOnSelect(value, displayValue);
       this.setValue(value, displayValue, {});
     } else {
       //TODO: 这里修改了getInputTagValueObject方法的值.
@@ -507,7 +526,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       for (let i = 0; i < valArray.length; i++) {
         dispArray.push(valueObj[valArray[i]][displayField]);
       }
-      onSelect && onSelect({ value: [], displayValue: [] });
+      this.expandOnSelect([], []);
       this.setValue(valArray, dispArray, {});
     }
   };
@@ -645,8 +664,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
-    const { onSelect } = this.props;
-    onSelect && onSelect({ value, displayValue });
+    this.expandOnSelect(value, displayValue);
+
+    this.expandOnSelect(value, displayValue);
     this.setValue(value, displayValue, {}, () => {
       if (!this.isMutliple()) {
         this.setTreePopupVisible(false);

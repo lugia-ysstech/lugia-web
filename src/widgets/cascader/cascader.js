@@ -258,7 +258,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     this.setPopupVisible(false, { expandedPath: [], value: [], inputValue: [] });
   };
 
-  onChange = (target: Object, item) => {
+  onChange = (target: Object) => {
     const { selectedKeys } = target;
     const { onChange } = this.props;
     onChange && onChange(selectedKeys);

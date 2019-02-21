@@ -35,6 +35,7 @@ export type MenuItemProps = {
   children?: React.Node,
   disabled: boolean,
   size: SizeType,
+  divided: ?boolean,
   checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
 };
 
