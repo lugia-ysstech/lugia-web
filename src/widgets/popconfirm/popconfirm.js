@@ -33,7 +33,7 @@ type PopconfirmProps = {
   action: 'hover' | 'click' | 'focus',
   children: React.Node,
   visible: boolean,
-  defaultVisible: boolean,
+  defaultVisible?: boolean,
   icon: React.Node,
   cancelText: string,
   okText: string,
