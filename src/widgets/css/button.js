@@ -108,6 +108,7 @@ const {
   darkGreyColor: defaultColor,
   defaultColor: white,
 } = colorsFunc();
+const cursor = 'not-allowed';
 
 function fetchType(type: string): Object {
   if (type === 'default') {
@@ -244,7 +245,6 @@ export const getDisabledCSS = (props: ButtonOutProps) => {
   let backgroundColor = '',
     color = '',
     border = '';
-  const cursor = 'not-allowed';
   const { disabled, type = 'default', themes, plain } = props;
   const themeColor = getThemeColor(themes);
   const colorChange = fetchTypeCSS(themeColor)[type].backgroundColor;
@@ -478,4 +478,10 @@ export const getCircleIconFont = (props: CSSProps) => {
   const { size = 'default', em } = props;
   const fontSize = CircleCSS[size].font;
   return `font-size: ${em(fontSize)};`;
+};
+export const getIconCursor = (props: CSSProps): ?string => {
+  const { disabled } = props;
+  if (disabled) {
+    return `cursor: ${cursor};`;
+  }
 };

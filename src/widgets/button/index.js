@@ -27,6 +27,7 @@ import {
   getLoadingIconStyle,
   getChildrenLineHeight,
   getCircleIconFont,
+  getIconCursor,
 } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
 
@@ -78,6 +79,7 @@ const IconWrap: Object = styled(Icon)`
   vertical-align: -${props => props.em(1.75)} !important;
   ${getIconStyle};
   ${getLoadingIconStyle};
+  ${getIconCursor}
 `;
 const CircleIcon: Object = styled(Icon)`
   vertical-align: -${props => props.em(1.75)} !important;
@@ -114,7 +116,7 @@ export default ThemeProvider(
         };
 
         handleChildren = () => {
-          const { children, icon, circle, loading, size = 'default' } = this.props;
+          const { children, icon, circle, loading, size = 'default', disabled } = this.props;
           let em = px2emcss(1.4);
           if (size === 'small') {
             em = px2emcss(1.2);
@@ -136,7 +138,7 @@ export default ThemeProvider(
             const hasChildren = !!children;
             return (
               <span>
-                <IconWrap em={em} iconClass={icon} hasChildren={hasChildren} />
+                <IconWrap em={em} iconClass={icon} hasChildren={hasChildren} disabled={disabled} />
                 {children}
               </span>
             );
