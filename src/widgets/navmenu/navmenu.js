@@ -55,6 +55,7 @@ type NavMenuProps = {
   displayField?: string,
   theme: 'light' | 'dark',
   separator?: string,
+  size: 'large' | 'default' | 'bigger',
 };
 
 type NavMenuState = {
@@ -63,6 +64,8 @@ type NavMenuState = {
   value: string[],
   expandedPath: string[],
   activityKey: string,
+  showMenuKey: string,
+  isInTabs: boolean,
 };
 const openClassName = 'lugia-icon-direction_up';
 const closeClassName = 'lugia-icon-direction_down';
@@ -224,7 +227,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     );
   };
 
-  getTabpane = (target, i) => {
+  getTabpane = (target: Object, i: string) => {
     const { popupVisible } = this.state;
     const popup = this.getHorizontaMenu(i);
     return (
@@ -286,7 +289,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return !!children && !!children.length;
   };
 
-  onTabClick = activityKey => {
+  onTabClick = (activityKey: string) => {
     const isHasChildren = this.isHasChildren(activityKey);
     if (!isHasChildren) {
       this.setState({ activityKey });

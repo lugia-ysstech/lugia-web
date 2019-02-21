@@ -95,6 +95,7 @@ export type MenuProps = {
   treeData?: TreeDataItem[],
   getIndexOffsetY?: Function,
   autoHeight?: boolean,
+  expandedPathInProps?: boolean,
 };
 const EmptyData = [];
 
@@ -104,6 +105,7 @@ export type MenuState = {
   popupVisible: boolean,
   childData: Array<Object>,
   indexOffsetY: number,
+  expandedPathInProps: boolean,
 };
 
 let SubMenu = () => <div />;
