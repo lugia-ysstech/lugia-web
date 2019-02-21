@@ -259,7 +259,7 @@ export default ThemeProvider(
     };
 
     getDataLength = (): number => {
-      const { model, data } = this.props;
+      const { model, data = [] } = this.props;
       return model.getDataLength(data);
     };
 
