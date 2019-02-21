@@ -58,6 +58,7 @@ export const IconInfo = {
 
 export const Wrap = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
+  font-size: ${FontSize}rem;
   position: fixed;
   top: 0;
   left: 0;
