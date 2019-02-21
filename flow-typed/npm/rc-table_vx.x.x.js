@@ -22,6 +22,9 @@ declare module 'rc-table' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
+declare module 'rc-table/assets/index.css' {
+  declare module.exports: any;
+}
 declare module 'rc-table/dist/rc-table' {
   declare module.exports: any;
 }

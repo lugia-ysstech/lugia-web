@@ -12,6 +12,7 @@ import Icon from '../icon/index';
 
 type TypeState = {
   load?: boolean,
+  value: boolean,
 };
 export default class Sw extends Component<any, TypeState> {
   constructor() {
@@ -26,7 +27,7 @@ export default class Sw extends Component<any, TypeState> {
       load: !this.state.load,
     });
   }
-  change = (item?: Object) => {
+  change = (item: Object) => {
     const { newValue } = item;
     this.setState({ value: newValue });
   };

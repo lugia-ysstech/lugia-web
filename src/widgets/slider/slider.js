@@ -28,10 +28,10 @@ import {
 } from './slider_public_size';
 import Widgets from '../consts';
 type TypeProps = {
-  btnWidth?: number | string,
-  btnHeight?: number | string,
-  rangeW?: number | string,
-  rangeH?: number | string,
+  btnWidth?: number,
+  btnHeight?: number,
+  rangeW?: number,
+  rangeH?: number,
   maxValue?: number,
   minValue?: number,
   background?: string,
@@ -52,6 +52,7 @@ type TypeState = {
   offsetLeft: number, //值在挂载完就固定了，元素距离窗口左边的距离
   offsetTop: number, //值在挂载完就固定了，元素距离窗口顶部的距离
   value: Array<number>,
+  changeValue: Array<number>,
   disabled?: boolean,
   index?: number,
   moveValue?: number,
@@ -60,6 +61,8 @@ type TypeState = {
   maxValue: number,
   marks: { [key: number]: string | Object },
   isInBall: boolean,
+  dotWidths: Array<number>,
+  dotHeights: Array<number>,
 };
 Button.displayName = 'Button';
 Button.displayName = 'SliderWrapper';
@@ -201,12 +204,12 @@ class Slider extends Component<TypeProps, TypeState> {
       }
     );
   };
-  getItem(length, val, marks) {
+  getItem(length: number, val: Array<number>, marks: Object) {
     const first = val && marks[val[0]];
     const second = val && marks[val[1]];
     return length === 2 ? [first, second] : first;
   }
-  getNewValue(lengthISOne: boolean, value: [], join: string) {
+  getNewValue(lengthISOne: boolean, value: Array<number>, join?: string) {
     let newVal = lengthISOne ? value && value[0] : value;
     if (join) {
       newVal = lengthISOne ? value : value && value.join(',');
@@ -259,7 +262,7 @@ class Slider extends Component<TypeProps, TypeState> {
   getMoveState = (pageX: number, pageY: number) => {
     const { offsetLeft, offsetTop, maxValue, minValue } = this.state;
     const { rangeW } = this.style;
-    const { vertical } = this.props;
+    const { vertical = false } = this.props;
     let move = pageX - offsetLeft;
     if (vertical) {
       move = rangeW - (pageY - offsetTop);
@@ -301,7 +304,7 @@ class Slider extends Component<TypeProps, TypeState> {
   };
   componentDidMount() {
     this.addDocListener();
-    const { disabled, vertical } = this.props;
+    const { disabled, vertical = false } = this.props;
     const { dotWidths, dotHeights } = this.getOffset(vertical);
     this.setState(
       {
@@ -355,7 +358,7 @@ class Slider extends Component<TypeProps, TypeState> {
   getStyleForFalseElement = (node: any, falseElement: string, type: string) => {
     return window.getComputedStyle(node, `:${falseElement}`)[type];
   };
-  getDotSize = (vertical, Node) => {
+  getDotSize = (vertical: boolean, Node: any) => {
     const { length } = Node;
     const nodeWidths = [];
     const nodeHeights = [];
@@ -378,10 +381,10 @@ class Slider extends Component<TypeProps, TypeState> {
       dotHeights: nodeHeights,
     };
   };
-  getOffset(vertical) {
+  getOffset(vertical: boolean) {
     const sliderRangeNode = this.sliderRange.current; //slider react 元素
     if (!sliderRangeNode) {
-      return { offsetLeft: 0, offsetTop: 0 };
+      return { offsetLeft: 0, offsetTop: 0, dotWidths: [], dotHeights: [] };
     }
     const { dotWidths, dotHeights } = this.getDotSize(vertical, sliderRangeNode.children);
     const { x, y } = getElementPosition(sliderRangeNode);
@@ -399,10 +402,10 @@ class Slider extends Component<TypeProps, TypeState> {
     vertical: boolean,
     rangeH: number,
     verticalBtnSize: number,
-    iconSize: [],
-    dotWidths: [],
-    dotHeights: []
-  ): [] {
+    iconSize: Array<number>,
+    dotWidths: Array<number>,
+    dotHeights: Array<number>
+  ): Array<number> {
     const maxSize = Math.max(...iconSize, verticalBtnSize);
     const marginTop = (maxSize - rangeH) / 2;
     let dotMargin = marginTop;
@@ -412,7 +415,12 @@ class Slider extends Component<TypeProps, TypeState> {
     const marginBot = dotMargin;
     return [marginTop, marginBot];
   }
-  getLevePadding = (vertical: boolean, dotWidths: [], dotHeights: [], numbers: number): [] => {
+  getLevePadding = (
+    vertical: boolean,
+    dotWidths: Array<number>,
+    dotHeights: Array<number>,
+    numbers: number
+  ): Array<number> => {
     const hasDot = dotWidths && dotWidths.length > 0 && dotHeights && dotHeights.length > 0;
     const dotWidthsFir = hasDot ? (vertical ? dotHeights[0] : dotWidths[0]) : 0;
     const dotWidthsSec = hasDot
@@ -434,12 +442,12 @@ class Slider extends Component<TypeProps, TypeState> {
   };
   getSliderLevelPaddings(
     vertical: boolean,
-    icons?: [],
-    value: [],
+    icons?: Array<Object>,
+    value: Array<number>,
     size: Object,
     btnSize: number,
-    dotWidths: [],
-    dotHeights: []
+    dotWidths: Array<number>,
+    dotHeights: Array<number>
   ): Object {
     const hasIconsProps = 'icons' in this.props;
     const iconsChildren = [];
@@ -483,7 +491,7 @@ class Slider extends Component<TypeProps, TypeState> {
     return { iconsChildren, levelPaddings, iconSize };
   }
   render() {
-    const { background, tips = false, icons, vertical, disabled, getTheme } = this.props;
+    const { background, tips = false, icons, vertical = false, disabled, getTheme } = this.props;
     const styleSlider = getTheme();
     const styleSliderButton = styleSlider.svThemeConfigTree[Widget.SliderButton];
     const {

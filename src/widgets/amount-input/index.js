@@ -53,7 +53,9 @@ const InputPlaceholder = styled.span`
   z-index: 2;
   font-size: ${FontSize};
 `;
-const Title = styled.span;
+const Title = styled.span`
+  font-size: ${FontSize};
+`;
 Title.displayName = 'toolTip_title';
 
 type AmountInputState = {|
