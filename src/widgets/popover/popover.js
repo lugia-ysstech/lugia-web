@@ -59,7 +59,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   static displayName = Widget.Popover;
   static defaultProps = {
     defaultVisible: false,
-    action: ['click'],
+    action: 'click',
   };
   target: Object;
 

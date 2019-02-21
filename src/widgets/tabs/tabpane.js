@@ -137,6 +137,7 @@ type TabpaneProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   getTabpaneWidth: Function,
+  getTheme: Function,
 };
 
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
@@ -179,16 +180,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   getHTabpane() {
-    const {
-      title,
-      tabType,
-      isSelect,
-      icon,
-      suffixIcon,
-      disabled,
-      getTheme,
-      activityKey,
-    } = this.props;
+    const { title, tabType, isSelect, icon, suffixIcon, disabled, getTheme } = this.props;
     const Target = (
       <HTab
         disabled={disabled}
