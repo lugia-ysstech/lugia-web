@@ -28,7 +28,7 @@ type TimeLineState = {};
 type TimeLineProps = {
   mode: TimeLineMode,
   getTheme: Function,
-  children: React.Node,
+  children: Array<React.Node>,
   reverse: boolean,
   pendingDot: React.Node,
   pending: boolean,
@@ -36,16 +36,16 @@ type TimeLineProps = {
   defaultData: Array<Object>,
 };
 
-function getDay(i: number) {
+function getDay(i: string) {
   return moment()
     .add('day', i)
     .format('YYYY-MM-DD');
 }
-const today = getDay(0);
-const tomorrow = getDay(1);
-const thirdDay = getDay(2);
-const fourthDay = getDay(3);
-const fifthDay = getDay(4);
+const today = getDay('0');
+const tomorrow = getDay('1');
+const thirdDay = getDay('2');
+const fourthDay = getDay('3');
+const fifthDay = getDay('4');
 const defaultData = [
   { time: today },
   { time: tomorrow },

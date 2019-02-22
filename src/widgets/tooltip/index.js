@@ -101,7 +101,7 @@ export function processOnVisibleChange(visible: boolean) {
 }
 
 export function getStateFromProps(
-  props: { visible: boolean, defaultVisible?: boolean },
+  props: { visible: boolean, defaultVisible: boolean },
   state: { visible: boolean }
 ) {
   const isHasVisibleProps = hasVisibleInProps(props);
@@ -128,7 +128,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       return {};
     },
     defaultVisible: false,
-    action: 'click',
+    action: ['click'],
   };
   trigger: Object;
   static getDerivedStateFromProps(props: TooltipProps, state: TooltipState) {
