@@ -35,7 +35,7 @@ export type DirectionType =
 
 export type TooltipProps = {
   placement: DirectionType,
-  action: string,
+  action: Array<string>,
   children: React.Node,
   title: React.Node,
   getTheme: Function,
