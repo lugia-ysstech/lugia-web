@@ -7,7 +7,9 @@
  */
 import * as React from 'react';
 import Button from '../button';
-import { BtnText, OperationBtn } from '../css/transfer-group';
+import Widget from '../consts/index';
+import Theme from '../theme';
+import { OperationBtn } from '../css/transfer-group';
 
 type TransferButtonProps = {
   onLeftClick: Function,
@@ -48,15 +50,31 @@ export default class TransferButton extends React.Component<
 
   render() {
     const { leftDisabled, rightDisabled } = this.state;
+    const buttonView = {
+      [Widget.Button]: {
+        width: 38,
+      },
+    };
     return (
       <OperationBtn>
-        <Button onClick={this.handleClick('left')} type="primary" disabled={leftDisabled}>
-          <BtnText>></BtnText>
-        </Button>
+        <Theme config={buttonView}>
+          <Button
+            icon="lugia-icon-direction_right"
+            onClick={this.handleClick('left')}
+            type="primary"
+            disabled={leftDisabled}
+          />
+        </Theme>
+
         <br />
-        <Button onClick={this.handleClick('right')} type="primary" disabled={rightDisabled}>
-          <BtnText>{'<'}</BtnText>
-        </Button>
+        <Theme config={buttonView}>
+          <Button
+            icon="lugia-icon-direction_Left"
+            onClick={this.handleClick('right')}
+            type="primary"
+            disabled={rightDisabled}
+          />
+        </Theme>
       </OperationBtn>
     );
   }

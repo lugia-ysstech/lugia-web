@@ -46,6 +46,7 @@ const getLeftOrRight = (props: CSSProps) => {
   return `right: ${em(posRight)};bottom: ${em(posBottom)}`;
 };
 export const BackTop = styled.div`
+  font-size: ${FontSize}rem;
   ${getFixedCSS} ${getLeftOrRight};
   cursor: pointer;
 `;

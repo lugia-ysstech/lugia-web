@@ -16,15 +16,7 @@ import CheckBox from '../checkbox';
 import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
-import {
-  CancelBox,
-  CancelBoxItem,
-  Check,
-  CheckText,
-  MenuWrap,
-  TransFer,
-  TreeWrap,
-} from '../css/transfer';
+import { CancelBox, CancelBoxItem, Check, CheckText, TransFer, TreeWrap } from '../css/transfer';
 import { filterEnableKeysFromSelectKeys } from './utils';
 
 const { MenuItem } = Menu;
@@ -167,7 +159,7 @@ export default ThemeProvider(
       const { menuView, treeView, wrapHeight } = this.getPanelThemeConfig(direction);
 
       return type === 'panel' ? (
-        <MenuWrap>
+        <div>
           <Theme config={menuView}>
             <TransferMenu
               {...this.props}
@@ -177,7 +169,7 @@ export default ThemeProvider(
               height={wrapHeight}
             />
           </Theme>
-        </MenuWrap>
+        </div>
       ) : (
         <TreeWrap height={wrapHeight}>
           <Theme config={treeView}>
@@ -203,12 +195,12 @@ export default ThemeProvider(
       const { width = 200 } = theme;
       const inputView = {
         [Widget.Input]: {
-          width: width - 20,
+          width: width - 16,
           margin: {
             top: 8,
-            right: 10,
+            right: 8,
             bottom: 16,
-            left: 10,
+            left: 8,
           },
           borderColor: '#e8e8e8',
         },
@@ -267,7 +259,7 @@ export default ThemeProvider(
     };
 
     getDataLength = (): number => {
-      const { model, data } = this.props;
+      const { model, data = [] } = this.props;
       return model.getDataLength(data);
     };
 
