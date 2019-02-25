@@ -17,6 +17,7 @@ export default class extends React.Component<PaginationProps, PaginationState> {
   static displayName = 'Pagination';
 
   render() {
-    return <RcPagination {...this.props} selectComponentClass={Select} />;
+    const { total = 1 } = this.props;
+    return <RcPagination {...this.props} total={total} selectComponentClass={Select} />;
   }
 }

@@ -50,6 +50,7 @@ type CSSProps = {
 const { borderColor } = colorsFunc();
 export const TransFer = styled.div`
   border: 1px solid ${borderColor};
+  border-radius: ${em(4)};
   display: inline-block;
   font-size: ${FontSize}rem;
   overflow: hidden;
@@ -65,12 +66,11 @@ export const Check = styled.div`
 export const CheckText = styled.span`
   position: absolute;
   right: ${em(10)};
-  line-height: 2;
+  line-height: 1.5;
+  font-size: ${em(12)};
+  color: #ccc;
 `;
 
-export const MenuWrap = styled.div`
-  padding-left: ${em(2)};
-`;
 const getNoDataHeight = (props: CSSProps) => {
   const { height } = props;
 

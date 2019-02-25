@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@lugia/jverify": "1.0.6",
-    "@lugia/mega-scripts": "^1.1.1",
+    "@lugia/mega-scripts": "^1.3.3",
     "@lugia/react-test-utils": "^1.0.0",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
