@@ -15,7 +15,7 @@ import MoreItem from './MoreItem';
 import FontItem from './FontItem';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import { ValueField } from '../consts/props';
+import { ValueField, DisplayField } from '../consts/props';
 import Theme from '../theme';
 import DropMenu from '../dropmenu';
 import Menu from '../menu';
@@ -257,12 +257,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         return {};
       }
       this.count = 1;
-      /**
-       * add by szfeng ==================================================
-       */
+
       return { text: displayValue === [] ? value : displayValue };
-      // return { text: displayValue ? displayValue : value };
-      // return { text: value };
     }
 
     const valLen = value.length;

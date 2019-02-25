@@ -636,7 +636,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.value = value;
     const { props } = this;
     const { onChange } = props;
-    console.log('this.queryAllUtils', this.queryAllUtils.catchPathArray);
     onChange && onChange(value, this.getTitle(value));
   };
 

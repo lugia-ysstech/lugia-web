@@ -239,6 +239,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       expandAll,
       translateTreeData,
     } = props;
+    const { onSelect, ...res } = props;
 
     const {
       current,
@@ -271,7 +272,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       <Tree
         data={data}
         key="tree"
-        {...props}
+        {...res}
         current={current}
         start={start}
         expandAll={expandAll}
@@ -442,7 +443,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       clearTimeout(this.queryHandle);
 
       const { newValue, newDisplayValue } = appendCustomValue(props, query, value, displayValue);
-
       this.setValue([...newValue], [...newDisplayValue], {});
       this.onQueryInputChange('');
     }
@@ -664,8 +664,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onTreeChange = (value: Array<string>, displayValue: Array<string>) => {
-    this.expandOnSelect(value, displayValue);
-
     this.expandOnSelect(value, displayValue);
     this.setValue(value, displayValue, {}, () => {
       if (!this.isMutliple()) {
