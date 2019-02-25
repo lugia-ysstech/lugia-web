@@ -973,9 +973,10 @@ export default {
           defaultValue: 'undefined',
         },
         tip: { type: 'string', desc: '自定义Loading加载文本', defaultValue: 'undefined' },
-        children: {
-          type: 'React.Node',
-          desc: 'Loading组件允许内嵌容器',
+        children: { type: 'any', desc: 'Loading组件允许内嵌容器', defaultValue: 'undefined' },
+        data: {
+          type: 'any',
+          desc: '与children属性一样，在Loading组件内嵌入内容',
           defaultValue: 'undefined',
         },
       },
@@ -1154,8 +1155,8 @@ export default {
           defaultValue: 'undefined',
         },
         mode: {
-          type: 'vertical | inline',
-          desc: '菜单类型，支持垂直和内嵌模式',
+          type: 'vertical | inline| horizontal',
+          desc: '菜单类型，支持垂直、内嵌和水平模式',
           defaultValue: 'inline',
         },
         inlineType: {
@@ -1818,6 +1819,12 @@ export default {
       props: {
         getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件', defaultValue: 'undefined' },
+        data: { type: 'Array<Object>', desc: '步骤条填充的数据', defaultValue: 'undefined' },
+        defaultData: {
+          type: 'Array<Object>',
+          desc: '步骤条填充的默认显示数据',
+          defaultValue: 'undefined',
+        },
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
@@ -2084,6 +2091,12 @@ export default {
       props: {
         getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         children: { type: 'React.Node', desc: '时间轴需要包含的子组件', defaultValue: 'undefined' },
+        data: { type: 'Array<Object>', desc: '时间轴填充的数据', defaultValue: 'undefined' },
+        defaultData: {
+          type: 'Array<Object>',
+          desc: '时间轴填充的默认显示数据',
+          defaultValue: 'undefined',
+        },
         reverse: {
           type: 'boolean',
           desc: '控制节点排序，false 正序,true 倒序',
