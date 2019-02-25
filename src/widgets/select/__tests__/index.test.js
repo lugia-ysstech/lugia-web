@@ -28,13 +28,13 @@ const data = (function(t) {
 })(20 * 10);
 
 describe('Select', () => {
-  it('单选默认样式', () => {
-    global.svtest = true;
-    expect(
-      renderer.create(<Select displayField={'label'} data={data} />).toJSON()
-    ).toMatchSnapshot();
-    global.svtest = false;
-  });
+  // it('单选默认样式', () => {
+  //   global.svtest = true;
+  //   expect(
+  //     renderer.create(<Select displayField={'label'} data={data} />).toJSON()
+  //   ).toMatchSnapshot();
+  //   global.svtest = false;
+  // });
 
   it('点击弹出面板', () => {
     const cmp = mount(<Select displayField={'label'} data={data} />);
@@ -734,10 +734,12 @@ describe('Select', () => {
     const newValue = value.slice(1, 5);
     const newDisplayValue = displayValue.slice(1, 5);
     const result = await selectPromise;
-    expect(result).toEqual([
+    expect(await selectPromise).toEqual([
       { value, displayValue },
       { value: newValue, displayValue: newDisplayValue },
     ]);
+    cmp.update();
+    await delay(100);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.false;
   });
 

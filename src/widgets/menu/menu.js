@@ -380,14 +380,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
         this.setState({ indexOffsetY });
 
         const { selectedKeys } = this.state;
+
         let index = -1;
-        if (mutliple) {
-          index = selectedKeys.indexOf(key);
-          const canSelect = selectedKeys.length < limitCount;
-          if (!canSelect) {
-            return;
-          }
-        }
+        index = selectedKeys.indexOf(key);
 
         const newSelectedKeys = this.fetchSelectedKeys({
           mutliple,
@@ -396,6 +391,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
           selectedKeys,
           index,
         });
+
+        if (mutliple) {
+          const canSelect = newSelectedKeys.length > limitCount;
+          if (canSelect) {
+            return;
+          }
+        }
 
         if (!mutliple) {
           const { children } = item;
