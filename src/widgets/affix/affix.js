@@ -151,6 +151,13 @@ export default class extends React.Component<AffixProps, AffixState> {
     switch (type) {
       case OffsetTop:
         const fixedTargetOffsetTop = offsetTop + targetScroll;
+        if (defaultDistance >= fixedTargetOffsetTop) {
+          this.setState({
+            fixed: false,
+          });
+          break;
+        }
+
         if (affixTop - targetTop < fixedTargetOffsetTop) {
           this.setState({
             fixed: true,
@@ -159,12 +166,6 @@ export default class extends React.Component<AffixProps, AffixState> {
           break;
         }
 
-        if (defaultDistance >= fixedTargetOffsetTop) {
-          this.setState({
-            fixed: false,
-          });
-          break;
-        }
         break;
 
       case OffsetBottom:

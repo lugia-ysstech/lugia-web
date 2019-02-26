@@ -55,9 +55,7 @@ exports[`Affix css 1`] = `
   line-height: 2.142857142857143em;
 }
 
-<div
-  onClick={[Function]}
->
+<div>
   <div
     style={
       Object {
