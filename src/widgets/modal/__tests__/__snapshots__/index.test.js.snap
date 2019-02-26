@@ -12,6 +12,7 @@ exports[`Modal css 1`] = `
 
 .c2 {
   display: none;
+  font-size: 1.4rem;
   position: fixed;
   top: 0;
   left: 0;
