@@ -47,7 +47,7 @@ export class LimitCase extends React.Component<any, any> {
     });
   };
 
-  onClick = e => {};
+  onClick = (e: Object) => {};
 }
 
 export class NormalCase extends React.Component<any, any> {
@@ -56,7 +56,7 @@ export class NormalCase extends React.Component<any, any> {
     this.state = { data };
   }
 
-  onClick = e => {
+  onClick = (e: Object) => {
     console.log('eeeeee', e);
   };
 

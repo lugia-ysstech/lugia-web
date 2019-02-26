@@ -74,13 +74,13 @@ export type MenuProps = {
   onMouseEnter?: Function,
   onExpandPathChange?: Function,
   limitCount?: number,
-  checkedCSS?: 'background' | 'checkbox' | 'none' | 'mark',
+  size: 'large' | 'default' | 'bigger',
+  checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
   offsetX: number,
   offsetY: number,
   popupVisible?: boolean,
   separator: string,
   action: 'hover' | 'click',
-  size: 'large' | 'default' | 'bigger',
   subsize: 'large' | 'default' | 'bigger',
   mouseDownInMenus?: Function,
   pushMenuInstance?: Function,
@@ -95,6 +95,7 @@ export type MenuProps = {
   treeData?: TreeDataItem[],
   getIndexOffsetY?: Function,
   autoHeight?: boolean,
+  expandedPathInProps?: boolean,
 };
 const EmptyData = [];
 
@@ -104,6 +105,7 @@ export type MenuState = {
   popupVisible: boolean,
   childData: Array<Object>,
   indexOffsetY: number,
+  expandedPathInProps: boolean,
 };
 
 let SubMenu = () => <div />;
@@ -378,14 +380,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
         this.setState({ indexOffsetY });
 
         const { selectedKeys } = this.state;
+
         let index = -1;
-        if (mutliple) {
-          index = selectedKeys.indexOf(key);
-          const canSelect = selectedKeys.length < limitCount;
-          if (!canSelect) {
-            return;
-          }
-        }
+        index = selectedKeys.indexOf(key);
 
         const newSelectedKeys = this.fetchSelectedKeys({
           mutliple,
@@ -394,6 +391,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
           selectedKeys,
           index,
         });
+
+        if (mutliple) {
+          const canSelect = newSelectedKeys.length > limitCount;
+          if (canSelect) {
+            return;
+          }
+        }
 
         if (!mutliple) {
           const { children } = item;

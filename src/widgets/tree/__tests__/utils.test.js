@@ -683,10 +683,10 @@ describe('utils', () => {
     mock.returned(result);
     mock.returned(other);
     const id2ExtendInfo = {};
-    const expandAll = true;
     const expandInfo = {
       id2ExtendInfo,
     };
+
     utils.oldVersion = 1;
     utils.version = 1;
     exp(utils.search(expandInfo, query)).to.be.equal(result);

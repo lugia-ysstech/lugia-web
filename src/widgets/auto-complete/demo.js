@@ -32,21 +32,34 @@ const data = [
   'R3hab',
 ];
 
-export default class Demo extends React.Component<any, any> {
+export default class AutoCompleteBounded extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       menuData: data,
-      value: '',
     };
   }
+  static getDerivedStateFromProps(props: any, state: any) {
+    const hasValueInProps = 'value' in props;
+    const value = hasValueInProps ? props.value : state ? state.value : props.defaultValue;
+    if (!state) {
+      return {
+        value,
+      };
+    }
+    return {
+      value,
+    };
+  }
+
   render() {
-    const { menuData } = this.state;
-    return <AutoComplete data={menuData} onChange={this.onChange} />;
+    const { menuData, value } = this.state;
+    return <AutoComplete showOldValue value={value} data={menuData} onChange={this.onChange} />;
   }
 
   onChange = (value: string) => {
     this.search(value);
+    this.setState({ value });
   };
 
   search(query: string) {
@@ -74,6 +87,59 @@ export default class Demo extends React.Component<any, any> {
   }
 
   searchValue = (query: string, row: string): boolean => {
-    return row.indexOf(query) !== -1 || row === query;
+    return row.indexOf(query) !== -1;
   };
 }
+
+// export default class Demo extends React.Component<any, any> {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       menuData: data,
+//       value: '',
+//     };
+//   }
+//   render() {
+//     return (
+//       <AutoComplete
+//         data={this.state.menuData}
+//         onChange={this.onChange}
+//         placeholder={'请输入'}
+//         showOldValue={true}
+//       />
+//     );
+//   }
+
+//   onChange = value => {
+//     this.search(value);
+//   };
+
+//   search(query) {
+//     let menuData;
+//     let rowSet = [];
+//     const len = data.length;
+
+//     for (let i = 0; i < len; i++) {
+//       const row = data[i];
+//       if (query === row) {
+//         rowSet = [];
+//         break;
+//       }
+
+//       if (this.searchValue(query, row)) {
+//         rowSet.push(row);
+//       }
+//     }
+
+//     if (rowSet.length === len) {
+//       menuData = data;
+//     } else {
+//       menuData = rowSet;
+//     }
+//     this.setState({ menuData });
+//   }
+
+//   searchValue = (query, row) => {
+//     return row.indexOf(query) !== -1 || row === query;
+//   };
+// }

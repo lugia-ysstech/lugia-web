@@ -92,7 +92,7 @@ describe('TreeSelect', () => {
         {},
         styleConfig,
         { svThemeConfigTree },
-        { height: adjustValue(DefaultHeight, MenuItemHeight) }
+        { height: adjustValue(DefaultHeight, MenuItemHeight) - 2 } //减去边框2px？
       ),
       [Widget.Trigger]: Object.assign({}, styleConfig, { svThemeConfigTree }),
       [Widget.InputTag]: Object.assign({}, styleConfig, { svThemeConfigTree }),
@@ -112,12 +112,13 @@ describe('TreeSelect', () => {
 
     const expResult: Object = {
       [Widget.Tree]: {
-        height: adjustValue(DefaultHeight, MenuItemHeight),
+        height: adjustValue(DefaultHeight, MenuItemHeight) - 2, //减去边框2px？
         svThemeConfigTree: { [Widget.TreeSelect]: {} },
+        width: 200,
       },
-      [Widget.Trigger]: { svThemeConfigTree: { [Widget.TreeSelect]: {} } },
-      [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {} } },
-      [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {} } },
+      [Widget.Trigger]: { svThemeConfigTree: { [Widget.TreeSelect]: {} }, width: 200 },
+      [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {} }, width: 200 },
+      [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {} }, width: 200 },
       [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9' },
     };
 
@@ -194,6 +195,7 @@ describe('TreeSelect', () => {
       const txt = '100';
       changeQuery(cmp, txt);
       queryInputEnter(cmp);
+
       mutliple
         ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt)
         : exp(getInputTagValue(cmp)[0]).to.be.equal(txt);
@@ -803,8 +805,11 @@ describe('TreeSelect', () => {
     let onSelect;
     const selAllPromise = new Promise(res => {
       const result = [];
-      onSelect = v => {
-        result.push(v);
+      onSelect = (value, text) => {
+        const target = {};
+        target.value = value;
+        target.displayValue = text;
+        result.push(target);
         if (result.length === 2) {
           res(result);
         }
@@ -837,15 +842,18 @@ describe('TreeSelect', () => {
       .at(0)
       .simulate('click');
     const result = await selAllPromise;
-    exp(result).to.be.eql([{ value, displayValue }, { value: [], displayValue: [] }]);
+    expect(result).toEqual([{ value, displayValue }, { value: [], displayValue: [] }]);
   });
 
   it('单选 选择第一个 onSelect 事件', async () => {
     let onSelect;
     const selAllPromise = new Promise(res => {
       const result = [];
-      onSelect = v => {
-        result.push(v);
+      onSelect = (value, text) => {
+        const target = {};
+        target.value = value;
+        target.displayValue = text;
+        result.push(target);
         if (result.length === 2) {
           res(result);
         }
@@ -878,15 +886,18 @@ describe('TreeSelect', () => {
       .at(0)
       .simulate('click');
     const result = await selAllPromise;
-    exp(result).to.be.eql([{ value, displayValue }, { value: [''], displayValue: [''] }]);
+    expect(result).toEqual([{ value, displayValue }, { value: [''], displayValue: [''] }]);
   });
 
   it('selectAll onSelect 事件', async () => {
     let onSelect;
     const selAllPromise = new Promise(res => {
       const result = [];
-      onSelect = v => {
-        result.push(v);
+      onSelect = (value, text) => {
+        const target = {};
+        target.value = value;
+        target.displayValue = text;
+        result.push(target);
         if (result.length === 2) {
           res(result);
         }
@@ -914,7 +925,7 @@ describe('TreeSelect', () => {
     selctedAll(cmp);
     const result = await selAllPromise;
     const expRes = [{ value, displayValue }, { value: [], displayValue: [] }];
-    exp(result).to.be.eql(expRes);
+    expect(result).toEqual(expRes);
   });
 
   it('没有任何结点可以选择的情况  全选框状态应该是未选中', async () => {
@@ -999,6 +1010,9 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     queryInputDown(cmp);
     queryInputShift(cmp);
+    showTrigger(cmp);
+    showTrigger(cmp);
+    cmp.update();
     checkTreeSelectValue(cmp, ['1']);
   });
 
@@ -1102,7 +1116,9 @@ describe('TreeSelect', () => {
         expandAll={true}
       />
     );
+
     const old = 'hello';
+    showTrigger(cmp);
     changeQuery(cmp, old);
     showTrigger(cmp);
     showTrigger(cmp);

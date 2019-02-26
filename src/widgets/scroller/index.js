@@ -370,7 +370,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
     this.setValue(newValue);
     this.lastFx = fx;
-    this.lastTime = now;
+    this.lastTime = Number(now);
   };
 
   getMoveStep(fx: Direction, step: number): number {

@@ -279,7 +279,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     );
   };
 
-  getChildren = (children: string[]) => {
+  getChildren = (children: Array<Object>): Array<Object> => {
     const { props, state } = this;
     const { switchType } = props;
     const { start = 0 } = state;
