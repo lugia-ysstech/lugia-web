@@ -18,15 +18,12 @@ type CascaderProps = {
   separator?: string,
   value: string[],
   displayValue?: string[],
-  defaultValue?: string[],
-  selectedKeys: string[],
   disabled: boolean,
   displayField: string,
   valueField: string,
-  popupVisible?: boolean,
   showAllLevels?: boolean,
-  placeholder?: string,
   allowClear?: boolean,
+  menuWidth: number,
 };
 type CascaderState = {
   popupVisible: boolean,

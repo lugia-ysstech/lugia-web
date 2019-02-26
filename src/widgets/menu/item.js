@@ -34,8 +34,9 @@ export type MenuItemProps = {
   onMouseEnter?: Function,
   children?: React.Node,
   disabled: boolean,
-  size: SizeType,
-  checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
+  divided: ?boolean,
+  size?: 'large' | 'default' | 'bigger',
+  checkedCSS?: 'none' | 'background' | 'mark' | 'checkbox',
 };
 
 const getFontSize = (props: Object) => {

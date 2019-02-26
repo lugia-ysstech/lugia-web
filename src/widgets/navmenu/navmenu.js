@@ -14,9 +14,9 @@ import styled from 'styled-components';
 import Trigger from '../trigger';
 import { getTreeData } from '../menu/utils';
 import { getValue, getInitExpandedPath } from '../cascader/utils';
-import { DefaultHeight } from '../css/navmenu';
-import { TreeUl } from '../css/navmenu';
+import { DefaultHeight, TreeUl, MenuItemHeight } from '../css/navmenu';
 import { getMenuItemHeight } from '../css/menu';
+import { DisplayField, ValueField } from '../consts/props';
 
 import {
   themeColor,
@@ -55,6 +55,7 @@ type NavMenuProps = {
   displayField?: string,
   theme: 'light' | 'dark',
   separator?: string,
+  size: 'large' | 'default' | 'bigger',
 };
 
 type NavMenuState = {
@@ -62,6 +63,9 @@ type NavMenuState = {
   popupVisible: boolean,
   value: string[],
   expandedPath: string[],
+  activityKey: string,
+  showMenuKey: string,
+  isInTabs: boolean,
 };
 const openClassName = 'lugia-icon-direction_up';
 const closeClassName = 'lugia-icon-direction_down';
@@ -77,6 +81,7 @@ const themeStyle = {
   TitleSpan,
   openClassName,
   closeClassName,
+  MenuItemHeight,
 };
 
 export default class MenuTree extends React.Component<NavMenuProps, NavMenuState> {
@@ -214,7 +219,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           onTabClick={this.onTabClick}
           onTabMouseEnter={this.onTabMouseEnter}
           onTabMouseLeave={this.onTabMouseLeave}
-          onChange={this.onNextClick}
           data={tabsData}
           activityKey={this.state.activityKey}
           getTabpane={this.getTabpane}
@@ -223,7 +227,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     );
   };
 
-  getTabpane = (target, i) => {
+  getTabpane = (target: Object, i: number) => {
     const { popupVisible } = this.state;
     const popup = this.getHorizontaMenu(i);
     return (
@@ -241,8 +245,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     );
   };
 
-  getHorizontaMenu = (i: string) => {
-    const { data, valueField } = this.props;
+  getHorizontaMenu = (i: number) => {
+    const { data = [], valueField = ValueField } = this.props;
     const { showMenuKey } = this.state;
     const { children } = data[i];
     if (!children || children.length === 0 || showMenuKey !== data[i][valueField]) {
@@ -280,12 +284,12 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   isHasChildren = (activeKeys: string) => {
-    const { data, valueField } = this.props;
+    const { data = [], valueField = ValueField } = this.props;
     const children = data.filter(item => item[valueField] === activeKeys)[0].children;
     return !!children && !!children.length;
   };
 
-  onTabClick = activityKey => {
+  onTabClick = (activityKey: string) => {
     const isHasChildren = this.isHasChildren(activityKey);
     if (!isHasChildren) {
       this.setState({ activityKey });
@@ -305,7 +309,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getTabsData = () => {
-    const { data, displayField, valueField } = this.props;
+    const { data = [], displayField = DisplayField, valueField = ValueField } = this.props;
     const tabsData = [];
     data.forEach((item, i) => {
       const target = {};

@@ -39,7 +39,7 @@ function defaultRenderItem(
   breadCrumbItemConfig: breadCrumbItemConfig,
   separator: string | React.Element<any>,
   lastSeparator: string | React.Element<any>
-) {
+): Object {
   return breadCrumbItemConfig.map(item => {
     const { href, title, isLast } = item;
 
