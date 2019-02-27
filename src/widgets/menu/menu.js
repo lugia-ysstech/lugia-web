@@ -144,7 +144,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       expandedPath: getExpandedPath(props, null),
       popupVisible: false,
       childData: getInitChildData(props, null),
-      expandedPathInProps: getexpandedPathInProps(props, null),
+      expandedPathInProps: getexpandedPathInProps(props),
       indexOffsetY: 0,
       start: 0,
     };
