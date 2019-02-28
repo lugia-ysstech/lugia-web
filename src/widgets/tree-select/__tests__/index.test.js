@@ -69,6 +69,7 @@ const rowData = [
   { value: '3.2', text: '3.2', pid: '3', path: '3', isLeaf: true },
   { value: '4', text: '4', isLeaf: true },
 ];
+
 const SelectedIcon = 'SelectedIcon';
 
 describe('TreeSelect', () => {
@@ -83,18 +84,21 @@ describe('TreeSelect', () => {
     exp(cmp.find(Trigger).length).to.be.equal(1);
   });
   it('getTheme 获取下拉树各部件的样式信息 并且 配置了组件的样式， 则组件要加上自部件的样式设置', () => {
-    const styleConfig = {
-      width: 500,
-    };
+    const styleConfig = { width: 500 };
     const svThemeConfigTree = { [Widget.TreeSelect]: styleConfig };
     const expResult: Object = {
       [Widget.Tree]: Object.assign(
         {},
         styleConfig,
         { svThemeConfigTree },
-        { height: adjustValue(DefaultHeight, MenuItemHeight) - 2 } //减去边框2px？
+        { height: adjustValue(DefaultHeight, MenuItemHeight) - 2 }
       ),
-      [Widget.Trigger]: Object.assign({}, styleConfig, { svThemeConfigTree }),
+      [Widget.Trigger]: Object.assign(
+        //减去边框2px？
+        {},
+        styleConfig,
+        { svThemeConfigTree }
+      ),
       [Widget.InputTag]: Object.assign({}, styleConfig, { svThemeConfigTree }),
       [Widget.Input]: Object.assign(
         {},
@@ -112,7 +116,7 @@ describe('TreeSelect', () => {
 
     const expResult: Object = {
       [Widget.Tree]: {
-        height: adjustValue(DefaultHeight, MenuItemHeight) - 2, //减去边框2px？
+        height: adjustValue(DefaultHeight, MenuItemHeight) - 2,
         svThemeConfigTree: { [Widget.TreeSelect]: {} },
         width: 200,
       },
@@ -120,15 +124,13 @@ describe('TreeSelect', () => {
       [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {} }, width: 200 },
       [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {} }, width: 200 },
       [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9' },
-    };
+    }; //减去边框2px？
 
     createThemeCase(styleConfig, expResult);
   });
 
   function createThemeCase(styleConfig: Object, expResult: Object) {
-    const config = {
-      [Widget.TreeSelect]: styleConfig,
-    };
+    const config = { [Widget.TreeSelect]: styleConfig };
 
     class TestDemo extends React.Component<any, any> {
       treeSelect: Object;
@@ -336,6 +338,7 @@ describe('TreeSelect', () => {
       .filter((item: Object, index: number) => index < 3)
       .map(item => item.value);
     checkTreeSelectValue(cmp, [...value, ...expValue], limit);
+    cmp.update();
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, value, limit);
