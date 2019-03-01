@@ -115,10 +115,17 @@ export default ThemeProvider(
 
     handleLinkClick = (e: Event, href: string) => {
       this.isClick = true;
-      this.setState({ activeLink: href });
-      setTimeout(() => {
-        this.isClick = false;
-      }, 50);
+      if (href) {
+        const id = href.slice(1);
+        const dom = document.getElementById(id);
+        if (dom) {
+          dom.scrollIntoView({ behavior: 'smooth' });
+        }
+        this.setState({ activeLink: href });
+        setTimeout(() => {
+          this.isClick = false;
+        }, 50);
+      }
     };
 
     getId(href: string): ?string {
