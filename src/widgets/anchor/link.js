@@ -32,11 +32,7 @@ export default class extends React.Component<AnchorLinkProps, AnchorLinkState> {
           const { onClick, activeLink } = context;
           return (
             <LinkWrap>
-              <Link
-                onClick={e => onClick && onClick(e, href)}
-                href={href}
-                active={activeLink === href}
-              >
+              <Link onClick={e => onClick && onClick(e, href)} active={activeLink === href}>
                 {title}
               </Link>
               {children}
