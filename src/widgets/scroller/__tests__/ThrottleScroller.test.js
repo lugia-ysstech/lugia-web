@@ -338,7 +338,8 @@ describe('ThrottleScroller', function() {
 
     const mockFunction = mockScroller.mockFunction('onWheel');
     mockFunction.returned(true);
-    const event = { target: 'ligx' };
+    const event = { target: 'ligx', stopPropagation: () => {}, preventDefault: () => {} };
+
     _this.onWheel(event);
     exp(mockFunction.getCallContext(0)).to.be.equal(scroller);
     exp(mockFunction.getCallArgs(0)).to.be.eql([event]);
