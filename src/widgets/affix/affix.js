@@ -125,7 +125,7 @@ export default class extends React.Component<AffixProps, AffixState> {
             offset: offsetBottom,
           });
         }
-        if (scrollTop + winHeight >= defaultTop + affixHeight) {
+        if (scrollTop + winHeight - offsetBottom >= defaultTop + affixHeight) {
           this.setState({
             fixed: false,
           });
