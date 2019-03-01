@@ -630,7 +630,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const valueLen = keys.length;
       for (let i = 0; i < valueLen; i++) {
         const key = keys[i];
-        const { text } = value[key];
+        const theValue = value[key];
+        if (!theValue) {
+          return false;
+        }
+        const { text } = theValue;
         const fontWidth = await this.getFontWidth(text);
         totalWidth += fontWidth + MarginRight;
         if (totalWidth >= listWidth) {
