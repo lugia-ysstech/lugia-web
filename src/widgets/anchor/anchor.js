@@ -35,10 +35,22 @@ export default ThemeProvider(
     }
 
     componentDidMount() {
+      this.initScroll();
       setTimeout(() => {
         window.addEventListener('scroll', this.addWindowScrollListener);
       }, 100);
     }
+    initScroll = () => {
+      const href = window && window.location.href;
+      if (href) {
+        const id = href.split('#')[1];
+        const dom = document.getElementById(id);
+        if (dom) {
+          dom.scrollIntoView({ behavior: 'smooth' });
+          this.setState({ activeLink: `#${id}` });
+        }
+      }
+    };
 
     addWindowScrollListener = () => {
       if (this.isClick) {
@@ -115,17 +127,10 @@ export default ThemeProvider(
 
     handleLinkClick = (e: Event, href: string) => {
       this.isClick = true;
-      if (href) {
-        const id = href.slice(1);
-        const dom = document.getElementById(id);
-        if (dom) {
-          dom.scrollIntoView({ behavior: 'smooth' });
-        }
-        this.setState({ activeLink: href });
-        setTimeout(() => {
-          this.isClick = false;
-        }, 50);
-      }
+      this.setState({ activeLink: href });
+      setTimeout(() => {
+        this.isClick = false;
+      }, 50);
     };
 
     getId(href: string): ?string {
