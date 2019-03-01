@@ -12,23 +12,23 @@ exports[`timeLineDemo Component JSON 1`] = `
 
 .c2 {
   position: relative;
-  height: 3.5000000000000004em;
-  width: 100%;
-}
-
-.c9 {
-  position: relative;
   height: 4.500000000000001em;
   width: 100%;
 }
 
-.c13 {
+.c10 {
   position: relative;
   height: 8.333333333333334em;
   width: 100%;
 }
 
-.c15 {
+.c12 {
+  position: relative;
+  height: 3.5000000000000004em;
+  width: 100%;
+}
+
+.c14 {
   position: relative;
   height: 1.6666666666666667em;
   width: 100%;
@@ -43,7 +43,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   color: #333333;
 }
 
-.c11 {
+.c8 {
   text-align: inherit;
   font-size: 1.4rem;
   max-width: 12.5em;
@@ -78,29 +78,12 @@ exports[`timeLineDemo Component JSON 1`] = `
 .c5 {
   position: relative;
   left: 0.8333333333333334em;
-  height: 100%;
-  border-left: 0.08333333333333334em solid #e8e8e8;
-  z-index: 2;
-}
-
-.c8 {
-  position: relative;
-  left: 0.8333333333333334em;
-  height: 100%;
-  border-left: 0.08333333333333334em solid #e8e8e8;
-  display: none;
-  z-index: 2;
-}
-
-.c10 {
-  position: relative;
-  left: 0.8333333333333334em;
   height: inherit;
   border-left: 0.08333333333333334em solid #e8e8e8;
   z-index: 2;
 }
 
-.c12 {
+.c9 {
   position: relative;
   left: 0.8333333333333334em;
   height: inherit;
@@ -109,7 +92,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c14 {
+.c11 {
   position: relative;
   left: 0.8333333333333334em;
   height: 8.333333333333334em;
@@ -117,11 +100,28 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c16 {
+.c13 {
+  position: relative;
+  left: 0.8333333333333334em;
+  height: 100%;
+  border-left: 0.08333333333333334em solid #e8e8e8;
+  z-index: 2;
+}
+
+.c15 {
   position: relative;
   left: 0.8333333333333334em;
   height: 1.6666666666666667em;
   border-left: 0.08333333333333334em solid #e8e8e8;
+  z-index: 2;
+}
+
+.c16 {
+  position: relative;
+  left: 0.8333333333333334em;
+  height: 100%;
+  border-left: 0.08333333333333334em solid #e8e8e8;
+  display: none;
   z-index: 2;
 }
 
@@ -266,159 +266,11 @@ exports[`timeLineDemo Component JSON 1`] = `
           <div
             className="c7"
           >
-            2019-02-26
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2019-02-27
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2019-02-28
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2019-03-01
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c8"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2019-03-02
-             
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c0"
-  >
-    <div
-      className="c1"
-    >
-      <div
-        className="c9"
-        type="icon"
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c10"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
             2018-01-01
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description111
              
@@ -426,7 +278,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type="icon"
       >
         <div
@@ -438,7 +290,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type="icon"
         />
         <div
@@ -452,7 +304,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description222
              
@@ -460,7 +312,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type="icon"
       >
         <div
@@ -472,7 +324,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type="icon"
         />
         <div
@@ -486,7 +338,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description333
              
@@ -494,7 +346,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type="icon"
       >
         <div
@@ -506,7 +358,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type="icon"
         />
         <div
@@ -520,7 +372,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description444
              
@@ -528,7 +380,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type="icon"
       >
         <div
@@ -540,7 +392,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c12"
+          className="c9"
           type="icon"
         />
         <div
@@ -554,7 +406,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description555
              
@@ -574,7 +426,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c13"
+        className="c10"
         type={[Function]}
       >
         <div
@@ -586,7 +438,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c14"
+          className="c11"
           type={[Function]}
         />
         <div
@@ -602,7 +454,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -614,7 +466,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -630,7 +482,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -642,7 +494,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -658,7 +510,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c15"
+        className="c14"
         type={[Function]}
       >
         <div
@@ -670,7 +522,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c16"
+          className="c15"
           type={[Function]}
         />
         <div
@@ -686,7 +538,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -698,7 +550,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c16"
           type={[Function]}
         />
         <div
@@ -726,7 +578,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -738,7 +590,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -752,7 +604,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description111
              
@@ -760,7 +612,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -772,7 +624,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -786,7 +638,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description222
              
@@ -794,7 +646,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -806,7 +658,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -820,7 +672,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description333
              
@@ -828,7 +680,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -840,7 +692,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -854,7 +706,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description444
              
@@ -862,7 +714,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -874,7 +726,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c12"
+          className="c9"
           type={[Function]}
         />
         <div
@@ -888,7 +740,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description555
              
@@ -908,7 +760,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -920,7 +772,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -936,7 +788,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -948,7 +800,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -964,7 +816,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -976,7 +828,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -992,7 +844,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -1004,7 +856,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -1020,7 +872,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -1032,7 +884,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c16"
           type={[Function]}
         />
         <div
@@ -1060,7 +912,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1072,7 +924,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1086,7 +938,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description111
              
@@ -1094,7 +946,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1106,7 +958,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1120,7 +972,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description222
              
@@ -1128,7 +980,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1140,7 +992,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1154,7 +1006,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description333
              
@@ -1162,7 +1014,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1174,7 +1026,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1188,7 +1040,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description444
              
@@ -1196,7 +1048,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1208,7 +1060,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c12"
+          className="c9"
           type={[Function]}
         />
         <div
@@ -1222,7 +1074,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description555
              
@@ -1242,7 +1094,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -1254,7 +1106,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -1270,7 +1122,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -1282,7 +1134,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -1298,7 +1150,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -1310,7 +1162,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -1326,7 +1178,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -1338,7 +1190,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c5"
+          className="c13"
           type={[Function]}
         />
         <div
@@ -1354,7 +1206,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c12"
         type={[Function]}
       >
         <div
@@ -1366,7 +1218,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c16"
           type={[Function]}
         />
         <div
@@ -1394,7 +1246,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1406,7 +1258,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1420,7 +1272,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description111
              
@@ -1428,7 +1280,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1440,7 +1292,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1454,7 +1306,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description222
              
@@ -1462,7 +1314,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1474,7 +1326,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1488,7 +1340,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description333
              
@@ -1496,7 +1348,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1508,7 +1360,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1522,7 +1374,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description444
              
@@ -1530,7 +1382,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1542,7 +1394,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c12"
+          className="c9"
           type={[Function]}
         />
         <div
@@ -1556,7 +1408,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description555
              
@@ -1576,7 +1428,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1588,7 +1440,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1602,7 +1454,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description111
              
@@ -1610,7 +1462,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1622,7 +1474,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1636,7 +1488,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description222
              
@@ -1644,7 +1496,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1656,7 +1508,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1670,7 +1522,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description333
              
@@ -1678,7 +1530,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1690,7 +1542,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1704,7 +1556,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description444
              
@@ -1712,7 +1564,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1723,7 +1575,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c12"
+          className="c9"
           type={[Function]}
         />
         <div
@@ -1737,7 +1589,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description555
              
@@ -1757,7 +1609,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1769,7 +1621,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1783,7 +1635,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description111
              
@@ -1791,7 +1643,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1803,7 +1655,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1817,7 +1669,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description222
              
@@ -1825,7 +1677,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1837,7 +1689,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1851,7 +1703,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description333
              
@@ -1859,7 +1711,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1871,7 +1723,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1885,7 +1737,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description444
              
@@ -1893,7 +1745,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1904,7 +1756,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c12"
+          className="c9"
           type={[Function]}
         />
         <div
@@ -1918,7 +1770,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description555
              
@@ -1957,7 +1809,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -1969,7 +1821,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -1983,7 +1835,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description111
              
@@ -1991,7 +1843,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -2003,7 +1855,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -2017,7 +1869,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description222
              
@@ -2025,7 +1877,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -2037,7 +1889,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -2051,7 +1903,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description333
              
@@ -2059,7 +1911,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -2071,7 +1923,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c10"
+          className="c5"
           type={[Function]}
         />
         <div
@@ -2085,7 +1937,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description444
              
@@ -2093,7 +1945,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c2"
         type={[Function]}
       >
         <div
@@ -2105,7 +1957,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c12"
+          className="c9"
           type={[Function]}
         />
         <div
@@ -2119,7 +1971,7 @@ exports[`timeLineDemo Component JSON 1`] = `
              
           </div>
           <div
-            className="c11"
+            className="c8"
           >
             description555
              

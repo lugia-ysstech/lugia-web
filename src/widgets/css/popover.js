@@ -18,7 +18,7 @@ export type PopoverProps = {
   action: Array<string>,
   children: React.Node,
   visible: boolean,
-  defaultVisible: boolean,
+  defaultVisible?: boolean,
   onVisibleChange: Function,
   clear?: React.Node,
   onClearClick?: Function,
