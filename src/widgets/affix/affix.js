@@ -51,8 +51,9 @@ export default class extends React.Component<AffixProps, AffixState> {
 
         return;
       }
+      this.addWindowListener();
       window.addEventListener('scroll', this.addWindowListener);
-    }, 100);
+    }, 0);
   }
 
   addWindowListener = () => {
