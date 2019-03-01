@@ -69,9 +69,6 @@ export const SimpleDemo = () => {
     <Theme config={view}>
       <div>
         <Wrapper>
-          <TimeLine />
-        </Wrapper>
-        <Wrapper>
           <TimeLine data={data} />
         </Wrapper>
         <Wrapper>
