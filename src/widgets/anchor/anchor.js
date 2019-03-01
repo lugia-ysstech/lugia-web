@@ -46,8 +46,8 @@ export default ThemeProvider(
         const id = href.split('#')[1];
         const dom = document.getElementById(id);
         if (dom) {
-          dom.scrollIntoView({ behavior: 'smooth' });
-          this.setState({ activeLink: `#${id}` });
+          dom.scrollIntoView({ block: 'start', behavior: 'smooth' });
+          this.handleLinkClick(undefined, `#${id}`);
         }
       }
     };
@@ -125,7 +125,7 @@ export default ThemeProvider(
       );
     }
 
-    handleLinkClick = (e: Event, href: string) => {
+    handleLinkClick = (e: ?Event, href: string) => {
       this.isClick = true;
       this.setState({ activeLink: href });
       setTimeout(() => {
