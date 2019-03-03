@@ -1,56 +1,54 @@
-import {
-  Affix,
-  Alert,
-  AmountInput,
-  Anchor,
-  AutoComplete,
-  Avatar,
-  BackTop,
-  Badge,
-  Breadcrumb,
-  Button,
-  Card,
-  Carousel,
-  Cascader,
-  CheckBox,
-  Collapse,
-  DatePicker,
-  Divider,
-  Drawer,
-  Dropmenu,
-  Grid,
-  Icon,
-  Input,
-  Layout,
-  Loading,
-  Menu,
-  Message,
-  Modal,
-  NavMenu,
-  Notification,
-  NumberInput,
-  Pagination,
-  Popconfirm,
-  Popover,
-  Progress,
-  Radio,
-  Rate,
-  Select,
-  Skeleton,
-  Slider,
-  Steps,
-  Switch,
-  Table,
-  Tabs,
-  Tag,
-  Timeline,
-  TimePicker,
-  Tooltip,
-  Transfer,
-  Tree,
-  TreeSelect,
-  Upload,
-} from '@lugia/lugia-web';
+import { Affix } from './affix';
+import { Alert } from './alert';
+import { AmountInput } from './amount-input';
+import { Anchor } from './anchor';
+import { AutoComplete } from './auto-complete';
+import { Avatar } from './avatar';
+import { BackTop } from './back-top';
+import { Badge } from './badge';
+import { Breadcrumb } from './breadcrumb';
+import { Button } from './button';
+import { Card } from './card';
+import { Carousel } from './carousel';
+import { Cascader } from './cascader';
+import { CheckBox } from './checkbox';
+import { Collapse } from './collapse';
+import { DatePicker } from './date-picker';
+import { Divider } from './divider';
+import { Drawer } from './drawer';
+import { Dropmenu } from './dropmenu';
+import { Grid } from './grid';
+import { Icon } from './icon';
+import { Input } from './input';
+import { Layout } from './layout';
+import { Loading } from './loading';
+import { Menu } from './menu';
+import { Message } from './message';
+import { Modal } from './modal';
+import { NavMenu } from './navmenu';
+import { Notification } from './notification';
+import { NumberInput } from './number-input';
+import { Pagination } from './pagination';
+import { Popconfirm } from './popconfirm';
+import { Popover } from './popover';
+import { Progress } from './progress';
+import { Radio } from './radio';
+import { Rate } from './rate';
+import { Select } from './select';
+import { Skeleton } from './skeleton';
+import { Slider } from './slider';
+import { Steps } from './steps';
+import { Switch } from './switch';
+import { Table } from './table';
+import { Tabs } from './tabs';
+import { Tag } from './tag';
+import { Timeline } from './time-line';
+import { TimePicker } from './time-picker';
+import { Tooltip } from './tooltip';
+import { Transfer } from './transfer';
+import { Tree } from './tree';
+import { TreeSelect } from './tree-select';
+import { Upload } from './upload';
 export default {
   Affix: {
     meta: {
