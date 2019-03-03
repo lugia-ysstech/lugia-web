@@ -49,6 +49,7 @@ import { Transfer } from './transfer';
 import { Tree } from './tree';
 import { TreeSelect } from './tree-select';
 import { Upload } from './upload';
+
 export default {
   Affix: {
     meta: {
@@ -498,7 +499,11 @@ export default {
           desc: '触发指示器切换或点击切换按钮时触发',
           args: [
             { name: 'newValue', desc: '切换到下一次面板的索引值', type: 'number' },
-            { name: 'oldValue', desc: '本次的索引值', type: 'number' },
+            {
+              name: 'oldValue',
+              desc: '本次的索引值',
+              type: 'number',
+            },
           ],
         },
       },
@@ -606,7 +611,11 @@ export default {
           desc: 'CheckBox改变时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            { name: 'checked', desc: '当前是否选中', type: 'boolean' },
+            {
+              name: 'checked',
+              desc: '当前是否选中',
+              type: 'boolean',
+            },
           ],
         },
       },
@@ -647,7 +656,11 @@ export default {
           desc: 'Collapse面板展开/折叠时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            { name: 'value', desc: '变化Collapse的value值', type: 'string' },
+            {
+              name: 'value',
+              desc: '变化Collapse的value值',
+              type: 'string',
+            },
           ],
         },
       },
@@ -1062,7 +1075,11 @@ export default {
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
+            {
+              name: 'keys',
+              desc: '所有的选中值',
+              type: 'Object',
+            },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -1070,7 +1087,11 @@ export default {
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
+            {
+              name: 'item',
+              desc: '当前鼠标进入的列表项数据',
+              type: 'Object',
+            },
           ],
         },
         onExpandPathChange: {
@@ -1355,14 +1376,22 @@ export default {
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            { name: 'pageSize', desc: '每页条数', type: 'number' },
+            {
+              name: 'pageSize',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            { name: 'size', desc: '每页条数', type: 'number' },
+            {
+              name: 'size',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
       },
@@ -1611,14 +1640,22 @@ export default {
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '点击后的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '点击后的所选值',
+              type: 'Object',
+            },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '鼠标移动时的所选值',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -1691,11 +1728,23 @@ export default {
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -1711,11 +1760,23 @@ export default {
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -1949,7 +2010,11 @@ export default {
           desc: '点击展开图标时触发',
           args: [
             { name: 'expanded', desc: '当前是否展开', type: 'boolean' },
-            { name: 'record', desc: '当前行数据', type: 'Object' },
+            {
+              name: 'record',
+              desc: '当前行数据',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -2295,14 +2360,22 @@ export default {
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
+            {
+              name: 'direction',
+              desc: '穿梭的方向，left、right',
+              type: 'DirectionType',
+            },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
         onCancelItemClick: {
           desc: 'Transfer 取消选项点击回调',
           args: [
-            { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
+            {
+              name: 'nextValue',
+              desc: 'Transfer 右侧面板值的集合',
+              type: 'string[]',
+            },
             { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
           ],
         },
@@ -2371,14 +2444,22 @@ export default {
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
+            {
+              name: 'end',
+              desc: '显示区域内，最后树节点所在数据中的索引值',
+              type: 'number',
+            },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
+            {
+              name: 'data',
+              desc: '所有的树形数据信息',
+              type: 'Array<Object>',
+            },
           ],
         },
         onSelect: {
@@ -2388,7 +2469,11 @@ export default {
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
+            {
+              name: 'selectValue',
+              desc: '所有选中项的valueField值的集合',
+              type: 'string[]',
+            },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
