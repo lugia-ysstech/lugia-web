@@ -110,6 +110,7 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
+              href="#anchor-link1"
               onClick={[Function]}
             >
               anchor-link1
@@ -120,6 +121,7 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
+              href="#anchor-link2"
               onClick={[Function]}
             >
               anchor-link2
@@ -130,6 +132,7 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
+              href="#anchor-link3"
               onClick={[Function]}
             >
               anchor-link3
@@ -139,6 +142,7 @@ exports[`Anchor css 1`] = `
             >
               <a
                 className="c4"
+                href="#anchor-link3.1"
                 onClick={[Function]}
               >
                 anchor-link3.1
@@ -149,6 +153,7 @@ exports[`Anchor css 1`] = `
             >
               <a
                 className="c4"
+                href="#anchor-link3.2"
                 onClick={[Function]}
               >
                 anchor-link3.2
@@ -160,6 +165,7 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
+              href="#anchor-link4"
               onClick={[Function]}
             >
               anchor-link4
@@ -189,6 +195,7 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
+              href="#anchor-link1"
               onClick={[Function]}
             >
               anchor-link1
@@ -199,6 +206,7 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
+              href="#anchor-link2"
               onClick={[Function]}
             >
               anchor-link2
@@ -209,6 +217,7 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
+              href="#anchor-link3"
               onClick={[Function]}
             >
               anchor-link3
@@ -218,6 +227,7 @@ exports[`Anchor css 1`] = `
             >
               <a
                 className="c4"
+                href="#anchor-link3.1"
                 onClick={[Function]}
               >
                 anchor-link3.1
@@ -228,6 +238,7 @@ exports[`Anchor css 1`] = `
             >
               <a
                 className="c4"
+                href="#anchor-link3.2"
                 onClick={[Function]}
               >
                 anchor-link3.2
@@ -239,6 +250,7 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
+              href="#anchor-link4"
               onClick={[Function]}
             >
               anchor-link4
@@ -262,6 +274,7 @@ exports[`Anchor css 1`] = `
       >
         <a
           className="c4"
+          href="#anchor-link1"
           onClick={[Function]}
         >
           anchor-link1
@@ -272,6 +285,7 @@ exports[`Anchor css 1`] = `
       >
         <a
           className="c4"
+          href="#anchor-link2"
           onClick={[Function]}
         >
           anchor-link2
@@ -282,6 +296,7 @@ exports[`Anchor css 1`] = `
       >
         <a
           className="c4"
+          href="#anchor-link3"
           onClick={[Function]}
         >
           anchor-link3
@@ -291,6 +306,7 @@ exports[`Anchor css 1`] = `
         >
           <a
             className="c4"
+            href="#anchor-link3.1"
             onClick={[Function]}
           >
             anchor-link3.1
@@ -301,6 +317,7 @@ exports[`Anchor css 1`] = `
         >
           <a
             className="c4"
+            href="#anchor-link3.2"
             onClick={[Function]}
           >
             anchor-link3.2
@@ -312,6 +329,7 @@ exports[`Anchor css 1`] = `
       >
         <a
           className="c4"
+          href="#anchor-link4"
           onClick={[Function]}
         >
           anchor-link4
