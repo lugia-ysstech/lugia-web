@@ -398,6 +398,11 @@ export default {
         loading: { type: 'boolean', desc: '设置按钮加载状态', defaultValue: 'undefined' },
         circle: { type: 'boolean', desc: '设置圆形按钮', defaultValue: 'undefined' },
         icon: { type: 'string', desc: '设置按钮图标类型', defaultValue: 'undefined' },
+        text: {
+          type: 'string | React.node',
+          desc: '设置按钮的文本内容',
+          defaultValue: 'undefined',
+        },
       },
       events: {
         onClick: {
