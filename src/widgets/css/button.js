@@ -22,6 +22,7 @@ type CSSProps = {
   circle?: boolean,
   disabled?: boolean,
   children?: (SyntheticEvent<HTMLButtonElement>) => any,
+  text?: string | React.ReactNode,
   icon?: string,
   onClick?: (SyntheticEvent<HTMLButtonElement>) => any,
   getTheme: Function,

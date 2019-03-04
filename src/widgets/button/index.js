@@ -85,7 +85,7 @@ const CircleIcon: Object = styled(Icon)`
   vertical-align: -${props => props.em(1.75)} !important;
   ${getCircleIconFont};
 `;
-ButtonOut.displayName = 'hello';
+ButtonOut.displayName = 'ButtonWrap';
 
 export default ThemeProvider(
   MouseEventAdaptor(
@@ -116,7 +116,7 @@ export default ThemeProvider(
         };
 
         handleChildren = () => {
-          const { children, icon, circle, loading, size = 'default', disabled } = this.props;
+          const { children, text, icon, circle, loading, size = 'default', disabled } = this.props;
           let em = px2emcss(1.4);
           if (size === 'small') {
             em = px2emcss(1.2);
@@ -130,20 +130,20 @@ export default ThemeProvider(
             return (
               <span>
                 <IconWrap em={em} loading iconClass="lugia-icon-financial_loading_o" />
-                {children}
+                {text || children}
               </span>
             );
           }
           if (icon) {
-            const hasChildren = !!children;
+            const hasChildren = !!children || !!text;
             return (
               <span>
                 <IconWrap em={em} iconClass={icon} hasChildren={hasChildren} disabled={disabled} />
-                {children}
+                {text || children}
               </span>
             );
           }
-          return children;
+          return text || children;
         };
         render() {
           const {
