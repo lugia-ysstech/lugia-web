@@ -595,15 +595,22 @@ class Select extends React.Component<SelectProps, SelectState> {
     }
   }
 
+  getNewValueOrOldValue = (v: string[], mutliple: boolean) => {
+    return mutliple ? v : v[0];
+  };
+
   onChangeHandle(targetObj: Object) {
-    const { onChange, onSelect } = this.props;
+    const { onChange, onSelect, mutliple } = this.props;
 
-    const { value: newValue, displayValue: newDisplayValue, event = null } = targetObj;
-    const isCheckedAll = this.getIsCheckedAll(newValue);
+    const { value: nextValue, displayValue: newDisplayValue, event = null } = targetObj;
+    const isCheckedAll = this.getIsCheckedAll(nextValue);
 
-    const { value: oldValue = [] } = this.state;
-    const { items: oldItem } = this.getItem(oldValue, false);
-    const { items: newItem } = this.getItem(newValue, false);
+    const { value: preValue = [] } = this.state;
+    const { items: oldItem } = this.getItem(preValue, false);
+    const { items: newItem } = this.getItem(nextValue, false);
+    const newValue = this.getNewValueOrOldValue(nextValue, mutliple);
+    const oldValue = this.getNewValueOrOldValue(preValue, mutliple);
+
     const obj = {
       newValue,
       oldValue,
