@@ -127,7 +127,7 @@ function getComponent(widgetNames, folderNames) {
   if (widgetNames && widgetNames.length > 0) {
     const importInfo = [];
     widgetNames.forEach((item, index) => {
-      importInfo.push(`import { ${item} } from './${folderNames[index]}';`);
+      importInfo.push(`import ${item} from './${folderNames[index]}';`);
     });
     // const importInfo = `import {${component}} from './${folderNames[index]}';`;
     return importInfo.join('');
