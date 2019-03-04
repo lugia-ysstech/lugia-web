@@ -620,7 +620,6 @@ class Select extends React.Component<SelectProps, SelectState> {
       event,
     };
     this.setState({ isCheckedAll });
-    console.log('newValue', obj);
     onChange && onChange(obj);
     onSelect && onSelect(obj);
   }
