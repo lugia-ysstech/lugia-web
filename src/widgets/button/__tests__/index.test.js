@@ -83,7 +83,7 @@ describe('Button', () => {
     );
     const target = { px: 'hello' };
     cmp
-      .find('hello')
+      .find('ButtonWrap')
       .at(0)
       .simulate('click', { target });
 

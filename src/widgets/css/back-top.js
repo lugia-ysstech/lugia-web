@@ -3,7 +3,7 @@
  * create by guorg
  * @flow
  */
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { getThemeColor } from '../common/ThemeUtils';
 import { px2emcss } from './units';
@@ -33,9 +33,13 @@ type CSSProps = {
 };
 
 const getFixedCSS = (props: CSSProps) => {
+  const ShowKeyframe = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
   const { fixed } = props;
   if (fixed) {
-    return 'position: fixed;';
+    return `position: fixed; animation:${ShowKeyframe} .4s;`;
   }
 };
 const getLeftOrRight = (props: CSSProps) => {

@@ -22,6 +22,7 @@ const Invalid = [
   'theme-provider',
   'trigger',
   'utils',
+  'empty',
 ];
 const fileRelativePath = '../src/widgets';
 createDesignInfo();
@@ -90,7 +91,8 @@ async function createDesignInfo() {
     });
 
     try {
-      const designData = getComponent(widgetNames) + 'export default { ' + designInfo + ' };';
+      const designData =
+        getComponent(widgetNames, folderNames) + 'export default { ' + designInfo + ' };';
       const designPath = getPath('../src/widgets/designInfo.js');
       await fs.writeFileSync(designPath, designData);
     } catch (err) {
@@ -121,14 +123,14 @@ function joinChildrenwidgetName(targetObject, targetWidgetNames, folderName, chi
     });
   }
 }
-function getComponent(widgetNames) {
-  let component = '';
+function getComponent(widgetNames, folderNames) {
   if (widgetNames && widgetNames.length > 0) {
-    widgetNames.forEach(item => {
-      component = component ? component + item + ',' : item + ',';
+    const importInfo = [];
+    widgetNames.forEach((item, index) => {
+      importInfo.push(`import ${item} from './${folderNames[index]}';`);
     });
-    const importInfo = `import {${component}} from '@lugia/lugia-web';`;
-    return importInfo;
+    // const importInfo = `import {${component}} from './${folderNames[index]}';`;
+    return importInfo.join('');
   }
   return '';
 }
