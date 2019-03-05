@@ -13,13 +13,15 @@ import colorsFunc from '../css/stateColor';
 import { getElementPosition } from '../utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import { toNumber } from '../common/NumberUtils';
+import Widget from '../consts';
+import Theme from '../theme';
 
 const { warningColor } = colorsFunc();
 const Container = styled.div`
   position: relative;
   padding: 10px;
   display: inline-block;
-  font-size: ${props => (props.theme.fontSize ? props.theme.fontSize : '18px')};
+  font-size: ${props => (props.theme.fontSize ? `${props.theme.fontSize}px` : '18px')};
 `;
 
 const showUp = keyframes`
@@ -53,7 +55,7 @@ const Ratespan = styled.span.attrs({
     z-index: -1;
   }
   & > i {
-    vertical-align: middle !important;
+    vertical-align: text-bottom !important;
   }
   & > i.primary {
     color: ${props => props.primary};
@@ -79,7 +81,7 @@ const Ratespan = styled.span.attrs({
 
 Ratespan.displayName = 'sv_rate_Ratespan';
 const RateIcon: Object = styled(Icon)`
-  vertical-align: middle !important;
+  vertical-align: text-bottom;
 `;
 
 RateIcon.displayName = 'sv_rate_icon';
@@ -329,12 +331,13 @@ class Rate extends React.Component<RateProps, any> {
   render() {
     const { getTheme } = this.props;
     const { count } = this.state;
+    const themeConfig = getTheme();
     return (
-      <Container theme={getTheme()} onMouseLeave={this.mouseLeave}>
+      <Container theme={themeConfig} onMouseLeave={this.mouseLeave}>
         {count.map((x, i) => (
           <Ratespan
             innerRef={this.ratespan[i]}
-            theme={getTheme()}
+            theme={themeConfig}
             onMouseMove={e => {
               this.onMouseMoveOrClick(e, i);
             }}
@@ -342,7 +345,7 @@ class Rate extends React.Component<RateProps, any> {
               this.onMouseMoveOrClick(e, i, true);
             }}
           >
-            {this.getElement(x)}
+            {this.getElement(x, themeConfig)}
           </Ratespan>
         ))}
       </Container>
@@ -414,12 +417,15 @@ class Rate extends React.Component<RateProps, any> {
     return getOffset(this.ratespan[index].current);
   }
 
-  getElement = (x: number) => {
+  getElement = (x: number, theme: Object) => {
     const { className, iconClass, disabled, character } = this.props;
     const IconClass = getIconClass(iconClass);
 
     const theClassName = `${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`;
-
+    const { fontSize = 18 } = theme;
+    const config = {
+      [Widget.Icon]: { fontSize },
+    };
     if (ObjectUtils.isString(character)) {
       return (
         <RateText character={character} className={theClassName}>
@@ -428,10 +434,10 @@ class Rate extends React.Component<RateProps, any> {
       );
     }
     return (
-      <React.Fragment>
+      <Theme config={config}>
         <RateIcon iconClass={`${IconClass[x]} ${theClassName}`} />
         <RateIcon iconClass={`${IconClass.default}  default bottom`} />
-      </React.Fragment>
+      </Theme>
     );
   };
 
