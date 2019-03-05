@@ -23,6 +23,8 @@ const Invalid = [
   'trigger',
   'utils',
   'empty',
+  'message',
+  'notification',
 ];
 const fileRelativePath = '../src/widgets';
 createDesignInfo();
