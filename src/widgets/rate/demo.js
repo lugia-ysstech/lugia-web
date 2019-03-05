@@ -28,7 +28,7 @@ class RateDemo extends React.Component<any, any> {
   }
   render() {
     const config = {
-      [Widget.Rate]: { fontSize: '18px' },
+      [Widget.Rate]: { fontSize: 18 },
     };
     const defaultProps = {
       count: 10,
