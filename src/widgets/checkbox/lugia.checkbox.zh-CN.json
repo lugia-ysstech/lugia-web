@@ -1,5 +1,5 @@
 {
-  "widgetName": "CheckBox",
+  "widgetName": "Checkbox",
   "title": "多选框",
   "desc": "多选框。",
   "props": {
