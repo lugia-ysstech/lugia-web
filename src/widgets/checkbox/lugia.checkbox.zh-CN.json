@@ -10,17 +10,17 @@
     },
     "checked": {
       "type": "boolean",
-      "desc": "指定CheckBox是否选中",
+      "desc": "指定Checkbox是否选中",
       "defaultValue": "undefined"
     },
     "defaultChecked": {
       "type": "boolean",
-      "desc": "指定CheckBox初始是否选中",
+      "desc": "指定Checkbox初始是否选中",
       "defaultValue": "undefined"
     },
     "disabled": {
       "type": "boolean",
-      "desc": "指定CheckBox是否禁用",
+      "desc": "指定Checkbox是否禁用",
       "defaultValue": "undefined"
     },
     "indeterminate": {
@@ -35,13 +35,18 @@
     },
     "styles": {
       "type": "CheckboxType",
-      "desc": "CheckBox展示方向，可选值为 vertical 或不设",
+      "desc": "Checkbox展示方向，可选值为 vertical 或不设",
       "defaultValue": "false"
+    },
+    "children": {
+      "type": "string | React.node",
+      "desc": "Checkbox展示内容",
+      "defaultValue": "undefined"
     }
   },
   "events": {
     "onChange": {
-      "desc": "CheckBox改变时回调",
+      "desc": "Checkbox改变时回调",
       "args": [
         {
           "name": "event",
@@ -58,17 +63,17 @@
   },
   "type": {
     "CheckboxType": ["default", "vertical"],
-    "CheckBoxStyle": {
+    "CheckboxStyle": {
       "width": {
         "type": "number",
-        "desc": "CheckBox宽度"
+        "desc": "Checkbox宽度"
       },
       "color": {
         "type": "string",
-        "desc": "CheckBox颜色"
+        "desc": "Checkbox颜色"
       }
     }
   },
-  "childrenWidget": ["checkbox-group"],
+  "childrenWidget": ["Checkbox-group"],
   "category": ["数据录入"]
 }
