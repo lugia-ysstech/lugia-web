@@ -27,6 +27,11 @@
       "type": "string",
       "desc": "单选框的 value 值",
       "defaultValue": "true"
+    },
+    "children": {
+      "type": "string | React.node",
+      "desc": "Radio展示内容",
+      "defaultValue": "undefined"
     }
   },
   "event": {
