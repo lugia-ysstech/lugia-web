@@ -10,6 +10,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { CollapseProps, CollapseState } from '../css/collapse';
 import { Wrap } from '../css/collapse';
+import Panel from './panel';
 
 function handleStateValue(value: string | string[], accordion?: boolean): string[] {
   if (Array.isArray(value)) {
@@ -43,6 +44,13 @@ export default ThemeProvider(
     }
     renderChildren = () => {
       const { children, accordion } = this.props;
+      if (!children) {
+        return (
+          <Panel value="lugia-panel" header="Lugia Panel">
+            Default Panel
+          </Panel>
+        );
+      }
       return React.Children.map(children, child => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
