@@ -23,7 +23,6 @@ const { disableColor, themeColor } = colorsFunc();
 const em = px2emcss(1.2);
 
 const Container = styled.div`
-  width: ${props => (props.theme.width ? props.theme.width : '366px')};
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -88,7 +87,7 @@ const InputContent = styled.div`
 `;
 
 const Ul = styled.ul`
-  width: 100%;
+  min-width: 366px;
   padding: 6px 0 0;
 `;
 
@@ -316,7 +315,6 @@ const PictureView = styled.div`
   padding: 6px;
   position: relative;
   cursor: pointer;
-  margin: 10px 10px 10px 0;
   ${getPictureOrAreaViewDisabled}
   ${getPictureViewStatus}
   ${getPictureViewSizeCSS}

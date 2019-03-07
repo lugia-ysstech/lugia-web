@@ -12,9 +12,8 @@ import GetElement from './getelement';
 import request from './request';
 
 const Container = styled.div`
-  width: ${props => (props.theme.width ? props.theme.width : '366px')};
   position: relative;
-  padding: 10px;
+  display: inline-block;
 `;
 
 type UploadProps = {
