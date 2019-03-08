@@ -15,6 +15,7 @@ export type TimeLineType = 'icon' | 'explain';
 export type TimeLineMode = 'right' | 'alternate';
 export type TimeLineStatus = 'success' | 'failed' | 'normal';
 const em = px2emcss(1.2);
+export const defauluWidth = 200;
 
 export const getLineDisplay = props => {
   const { isLast } = props;
@@ -24,8 +25,14 @@ export const getLineDisplay = props => {
 export const getContainerHeight = props => {
   const { theme } = props;
   const { height } = theme;
-  const theHeight = height && height > 0 ? em(height) : 200;
-  return `height:${theHeight};`;
+  const theHeight = height && height > 0 ? height : 200;
+  return `height:${em(theHeight)};`;
+};
+export const getContainerWidth = props => {
+  const { theme } = props;
+  const { width } = theme;
+  const theWidth = width && width > 0 ? width : defauluWidth;
+  return `width:${em(theWidth)};`;
 };
 export const getItemContainerHeight = props => {
   const { theme, description, type } = props;
@@ -51,7 +58,8 @@ export const getLineHeight = props => {
 export const getDirection = props => {
   const { direction } = props;
   const theDirection = direction === 'left' ? 'right' : 'left';
-  return `text-align: ${theDirection};${theDirection}:0; margin-${theDirection}: ${em(25)};`;
+  const length = direction === 'left' ? em(defauluWidth) : em(20);
+  return `text-align: ${theDirection};${theDirection}:${length}; `;
 };
 export const getDotBackground = props => {
   const { theme, type, status } = props;

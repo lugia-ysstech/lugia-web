@@ -55,6 +55,7 @@ export default () => {
   };
   return (
     <Theme config={config}>
+      <Tooltip />
       <DirectionTopWrapper>
         <ToolTipHWrapper>
           <Tooltip placement="topLeft" title={text}>

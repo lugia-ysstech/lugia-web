@@ -229,6 +229,7 @@ export const WrapperDemo = () => {
 };
 export default () => {
   return [
+    <Popover />,
     <WrapperDemo />,
     <Wrapper>
       <HoverAndClcikDemo /> <InnerCloseDemo />
