@@ -696,6 +696,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   onChange = (value: Array<string>, displayValue: Array<string>) => {
+    const { mutliple } = this.props;
     if (this.oldValue.length === 0 && value.length === 0) {
       return;
     }
@@ -710,6 +711,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     if (this.oldValue !== value) {
       const { onChange } = this.props;
       onChange && onChange({ value, displayValue });
+    }
+    if (!mutliple) {
+      this.setTreePopupVisible(false);
     }
   };
 
