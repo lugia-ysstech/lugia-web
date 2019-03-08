@@ -215,7 +215,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   isLimit(): boolean {
-    const { length, value } = this.state;
+    const { value } = this.state;
     const limitCount = this.getLimitCount();
     return value.length >= limitCount;
   }
@@ -258,7 +258,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   };
 
   onCheckAll = (event: Object) => {
-    const { props, state } = this;
+    const { state } = this;
     const { data, isCheckedAll, length, value } = state;
     const { displayValue } = this;
     const limitCount = this.getLimitCount();
@@ -602,13 +602,14 @@ class Select extends React.Component<SelectProps, SelectState> {
   onChangeHandle(targetObj: Object) {
     const { onChange, onSelect, mutliple } = this.props;
 
-    const { value: nextValue, displayValue: newDisplayValue, event = null } = targetObj;
+    const { value: nextValue, displayValue: nextDisplayValue, event = null } = targetObj;
     const isCheckedAll = this.getIsCheckedAll(nextValue);
 
     const { value: preValue = [] } = this.state;
     const { items: oldItem } = this.getItem(preValue, false);
     const { items: newItem } = this.getItem(nextValue, false);
     const newValue = this.getNewValueOrOldValue(nextValue, mutliple);
+    const newDisplayValue = this.getNewValueOrOldValue(nextDisplayValue, mutliple);
     const oldValue = this.getNewValueOrOldValue(preValue, mutliple);
 
     const obj = {
@@ -625,9 +626,6 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   getIsCheckedAll(value: string[]) {
-    const { props } = this;
-    const { length } = this.state;
-
     const totalLimitCount = this.getLimitCount();
     return totalLimitCount === value.length;
   }
