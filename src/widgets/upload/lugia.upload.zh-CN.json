@@ -3,11 +3,6 @@
   "title": "上传",
   "desc": "上传组件,可通过文件选择和拖拽上传",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "data": {
       "type": "Object",
       "desc": "上传时附带的额外参数",

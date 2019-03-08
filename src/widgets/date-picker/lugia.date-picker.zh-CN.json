@@ -3,11 +3,6 @@
   "title": "日期选择器",
   "desc": "用于日期选择",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "defaultValue": {
       "type": "string",
       "desc": "日期默认显示值",

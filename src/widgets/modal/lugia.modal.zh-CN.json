@@ -3,11 +3,6 @@
   "title": "对话框",
   "desc": "Modal 对话框。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "title": {
       "type": "React.node",
       "desc": "标题",

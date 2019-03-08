@@ -3,11 +3,6 @@
   "title": "标签",
   "desc": "标记和分类的标签",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "closable": {
       "type": "boolean",
       "desc": "标签是否可关闭",

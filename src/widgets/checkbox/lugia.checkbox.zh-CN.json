@@ -3,11 +3,6 @@
   "title": "多选框",
   "desc": "多选框。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "checked": {
       "type": "boolean",
       "desc": "指定Checkbox是否选中",

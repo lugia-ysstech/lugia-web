@@ -3,11 +3,6 @@
   "title": "多选框组",
   "desc": "多选框组。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "defaultValue": {
       "type": "string[]",
       "desc": "指定CheckboxGroup初始选中值",

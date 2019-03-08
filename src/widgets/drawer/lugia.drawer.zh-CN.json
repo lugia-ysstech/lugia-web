@@ -3,11 +3,6 @@
   "title": "抽屉",
   "desc": "在屏幕边缘出现的浮层面板。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "placement": {
       "type": "PlacementType",
       "desc": "抽屉的方向",

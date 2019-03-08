@@ -3,11 +3,6 @@
   "title": "标签页",
   "desc": "选项卡切换组件",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "activityKey": {
       "type": "string",
       "desc": "当前激活 tab 面板的 key",

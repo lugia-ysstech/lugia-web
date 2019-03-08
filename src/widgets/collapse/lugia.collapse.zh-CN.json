@@ -3,11 +3,6 @@
   "title": "折叠面板",
   "desc": "折叠面板，用于展开/折叠内容区域。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "activeValue": {
       "type": "string | string[]",
       "desc": "当前展开面板的 value值 或者 value 集合",

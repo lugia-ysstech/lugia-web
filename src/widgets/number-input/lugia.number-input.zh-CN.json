@@ -3,11 +3,6 @@
   "title": "数字输入框",
   "desc": "常用于数字输入,可以进行快速加减显示",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",

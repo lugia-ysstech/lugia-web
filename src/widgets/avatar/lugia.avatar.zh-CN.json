@@ -3,11 +3,6 @@
   "title": "头像",
   "desc": "用来代表用户或事物，支持图片、图标或字符展示。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "viewClass": {
       "type": "string",
       "desc": "用于配置通用主题属性",

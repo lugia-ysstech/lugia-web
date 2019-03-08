@@ -3,11 +3,6 @@
   "title": "图标",
   "desc": "语义化的矢量图形",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "viewClass": {
       "type": "string",
       "desc": "用于配置通用主题属性",

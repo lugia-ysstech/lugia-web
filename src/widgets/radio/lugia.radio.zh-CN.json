@@ -3,11 +3,6 @@
   "title": "单选框",
   "desc": "单选框。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "checked": {
       "type": "boolean",
       "desc": "单选框是否选中",

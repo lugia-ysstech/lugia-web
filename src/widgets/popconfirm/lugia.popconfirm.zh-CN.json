@@ -3,11 +3,6 @@
   "title": "气泡确认框",
   "desc": "气泡式的确认框",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "title": {
       "type": "React.Node",
       "desc": "确认框标题显示内容",

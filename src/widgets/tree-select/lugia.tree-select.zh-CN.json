@@ -8,11 +8,6 @@
       "desc": "input校验状态, 'success' 成功 | 'error'错误",
       "defaultValue": "success"
     },
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "data": {
       "type": "Array<Object>",
       "desc": "生成选择项的数据",

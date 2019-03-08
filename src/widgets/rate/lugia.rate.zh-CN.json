@@ -3,11 +3,6 @@
   "title": "评分",
   "desc": "评分组件",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "count": {
       "type": "number",
       "desc": "展示的 star 总数",

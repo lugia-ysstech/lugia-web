@@ -3,11 +3,6 @@
   "title": "按钮",
   "desc": "方便用户点击操作",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "disabled": {
       "type": "boolean",
       "desc": "按钮是否禁用，true 禁用 false 可用",
