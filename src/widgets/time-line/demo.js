@@ -182,20 +182,20 @@ export const OtherDemo = () => {
         <br />
         <TimeLine>
           <TimeLineItem time="2018-01-01" />
-          <TimeLineItem time="2018-01-02" type="explain" />
+          <TimeLineItem time="2018-01-02" timeLineType="explain" />
           <TimeLineItem time="2018-01-03" />
-          <TimeLineItem time="2018-01-04" type="explain" />
+          <TimeLineItem time="2018-01-04" timeLineType="explain" />
           <TimeLineItem time="2018-01-05" />
         </TimeLine>
       </Wrapper>
       <Wrapper>
         <p>节点说明样式 </p>
         <br />
-        <TimeLine>
+        <TimeLine type="explain">
           <TimeLineItem time="2018-01-01" description={'description111'} />
-          <TimeLineItem time="2018-01-02" description={'description222'} type="explain" />
+          <TimeLineItem time="2018-01-02" description={'description222'} timeLineType="explain" />
           <TimeLineItem time="2018-01-03" description={'description333'} />
-          <TimeLineItem time="2018-01-04" description={'description444'} type="explain" />
+          <TimeLineItem time="2018-01-04" description={'description444'} timeLineType="explain" />
           <TimeLineItem time="2018-01-05" description={'description555'} />
         </TimeLine>
       </Wrapper>

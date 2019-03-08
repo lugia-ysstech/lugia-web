@@ -1,5 +1,5 @@
 {
-  "widgetName": "Timeline",
+  "widgetName": "TimeLine",
   "title": "时间轴",
   "desc": "垂直展示的时间流信息",
   "props": {

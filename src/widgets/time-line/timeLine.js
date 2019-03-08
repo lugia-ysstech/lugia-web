@@ -12,16 +12,18 @@ import Widget from '../consts/index';
 
 import ThemeProvider from '../theme-provider';
 import type { TimeLineMode } from '../css/time-line';
-import { getContainerHeight } from '../css/time-line';
-import { px2emcss } from '../css/units';
+import { getContainerHeight, getContainerWidth } from '../css/time-line';
 import TimeLineItem from './timeLineItem';
 import { getAttributeFromObject } from '../common/ObjectUtils';
 import moment from 'moment';
-const em = px2emcss(1.2);
 
 const OutContainer = styled.div`
   ${getContainerHeight};
-  width: ${em(20)};
+`;
+
+const Wrapper = styled.div`
+  ${getContainerHeight};
+  ${getContainerWidth};
 `;
 type TimeLineState = {};
 
@@ -70,7 +72,11 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
 
   render() {
     const { getTheme } = this.props;
-    return <OutContainer theme={getTheme()}>{this.getChildren()}</OutContainer>;
+    return (
+      <Wrapper>
+        <OutContainer theme={getTheme()}>{this.getChildren()}</OutContainer>
+      </Wrapper>
+    );
   }
 
   getChildren() {
