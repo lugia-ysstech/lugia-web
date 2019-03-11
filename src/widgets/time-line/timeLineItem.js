@@ -109,7 +109,7 @@ type TimeLineProps = {
   getTheme: Function,
   isLast: boolean,
   status: TimeLineStatus,
-  type: TimeLineType,
+  timeLineType: TimeLineType,
   pendingDot: React.Node,
   pending: boolean,
 };
@@ -126,19 +126,24 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
   static getDerivedStateFromProps(props: TimeLineProps, state: TimeLineState) {}
 
   render() {
-    const { getTheme, description, time, isLast, direction, type } = this.props;
+    const { getTheme, description, time, isLast, direction, timeLineType } = this.props;
     const config = {
       [Widget.Tooltip]: {
         color: 'white',
         fontColor: '#000',
       },
     };
-    const theTime = type !== 'explain' ? time : '';
+    const theTime = timeLineType !== 'explain' ? time : '';
     return (
       <Theme config={config}>
-        <ItemContainer theme={getTheme()} description={description} type={type}>
+        <ItemContainer theme={getTheme()} description={description} timeLineType={timeLineType}>
           <DotContainer>{this.getDot()}</DotContainer>
-          <Line theme={getTheme()} isLast={isLast} description={description} type={type} />
+          <Line
+            theme={getTheme()}
+            isLast={isLast}
+            description={description}
+            timeLineType={timeLineType}
+          />
           <Content direction={direction}>
             <Time>{theTime} </Time>
             {this.getDescription()}
@@ -149,17 +154,8 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
   }
 
   getDot() {
-    const { icon, type, pending, pendingDot, isLast, time, description } = this.props;
-    if (pending === true && isLast && pendingDot) {
-      if (ObjectUtils.isString(pendingDot)) {
-        return <TimeLineIcon pending={pending} iconClass={pendingDot} />;
-      }
-      return pendingDot;
-    } else if (type === 'icon' && getString(icon)) {
-      return <TimeLineIcon iconClass={icon} />;
-    }
-
-    if (type === 'explain') {
+    const { icon, timeLineType, pending, pendingDot, isLast, time, description } = this.props;
+    if (timeLineType === 'explain') {
       return (
         <Explain
           placement="right"
@@ -170,17 +166,27 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
         </Explain>
       );
     }
+
+    if (pending === true && isLast && pendingDot) {
+      if (ObjectUtils.isString(pendingDot)) {
+        return <TimeLineIcon pending={pending} iconClass={pendingDot} />;
+      }
+      return pendingDot;
+    } else if (timeLineType === 'icon' && getString(icon)) {
+      return <TimeLineIcon iconClass={icon} />;
+    }
+
     return this.getInnerDot();
   }
 
   getInnerDot() {
-    const { type, getTheme, status } = this.props;
-    return <Dot type={type} theme={getTheme()} status={status} />;
+    const { timeLineType, getTheme, status } = this.props;
+    return <Dot timeLineType={timeLineType} theme={getTheme()} status={status} />;
   }
 
   getDescription() {
-    const { type, description } = this.props;
-    if (type !== 'explain' && getString(description)) {
+    const { timeLineType, description } = this.props;
+    if (timeLineType !== 'explain' && getString(description)) {
       return <Description>{description} </Description>;
     }
     return null;

@@ -39,7 +39,7 @@
       "desc": "时间节点的状态",
       "defaultValue": "normal"
     },
-    "type": {
+    "timeLineType": {
       "type": "TimeLineType",
       "desc": "时间节点的风格 可配置 图标风格和隐藏解释类型",
       "defaultValue": "undefined"

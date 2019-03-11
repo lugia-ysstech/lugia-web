@@ -86,6 +86,12 @@ const Message = styled.div`
   border-radius: ${RadiusSize};
   box-shadow: 0 ${em(2)} ${em(8)} rgba(0, 0, 0, 0.15);
 `;
+
+const DefaultChild = styled.div`
+  width: ${em(200)};
+  height: ${em(20)};
+`;
+
 export function hasVisibleInProps(props: Object) {
   return 'visible' in props;
 }
@@ -129,6 +135,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     },
     defaultVisible: false,
     action: ['click'],
+    defaultChildren: <DefaultChild>"点击显示文字提醒"</DefaultChild>,
   };
   trigger: Object;
   static getDerivedStateFromProps(props: TooltipProps, state: TooltipState) {
@@ -148,10 +155,20 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     return { visible: state.visible };
   }
   render() {
-    const { placement, action, title, popArrowType, getTheme, children } = this.props;
+    const {
+      placement,
+      action,
+      title,
+      popArrowType,
+      getTheme,
+      children,
+      defaultChildren,
+    } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
+    const theChildren = children ? children : defaultChildren;
+    const theTitle = title ? title : '默认信息';
     return (
       <ToolTrigger
         theme={getTheme()}
@@ -170,11 +187,11 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
             placement={placement}
           >
             {this.getArrow(direction)}
-            <Message theme={getTheme()}>{title}</Message>
+            <Message theme={getTheme()}>{theTitle}</Message>
           </Content>
         }
       >
-        {children}
+        {theChildren}
       </ToolTrigger>
     );
   }
