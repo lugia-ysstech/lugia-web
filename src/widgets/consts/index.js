@@ -49,7 +49,7 @@ const ButtonGroup = 'lugia_widget_ButtonGroup';
 const Radio = 'lugia_widget_Radio';
 const RadioGroup = 'lugia_widget_RadioGroup';
 const CheckBox = 'lugia_widget_CheckBox';
-const CheckBoxGroup = 'lugia_widget_CheckBoxGroup';
+const CheckboxGroup = 'lugia_widget_CheckBoxGroup';
 const CheckButton = 'lugia_widget_CheckButton';
 const AmountInput = 'lugia_widget_AmountInput';
 const Col = 'lugia_widget_Col';
@@ -161,7 +161,7 @@ export default {
   RadioGroup,
   ButtonGroup,
   CheckBox,
-  CheckBoxGroup,
+  CheckboxGroup,
   CheckButton,
   AmountInput,
   Col,

@@ -28,7 +28,7 @@ const view = {
   [Widget.CheckBox]: {
     color: 'red',
   },
-  [Widget.CheckBoxGroup]: {
+  [Widget.CheckboxGroup]: {
     color: 'red',
     width: 100,
   },
