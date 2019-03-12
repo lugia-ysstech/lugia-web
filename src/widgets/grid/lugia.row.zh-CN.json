@@ -29,5 +29,6 @@
     "JustifyType": ["start", "end", "center", "spaceAround", "spaceBetween"],
     "AlignType": ["top", "middle", "bottom"]
   },
-  "category": ["布局"]
+  "category": ["布局"],
+  "componentName": "Row"
 }

@@ -1,5 +1,5 @@
 {
-  "widgetName": "Row",
+  "widgetName": "Col",
   "title": "栅格",
   "desc": "栅格。",
   "props": {
@@ -29,5 +29,6 @@
       "defaultValue": "undefined"
     }
   },
-  "category": ["布局"]
+  "category": ["布局"],
+  "componentName": "Col"
 }
