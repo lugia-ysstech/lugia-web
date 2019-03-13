@@ -186,8 +186,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     }
 
     const exposeTarget = this.getExposeTarget(event, item, keys);
-    const { onClick, onChange } = this.props;
+    const { onClick, onChange, onSelect } = this.props;
     onChange && onChange(exposeTarget);
+    onSelect && onSelect(exposeTarget);
     onClick && onClick(exposeTarget);
   };
 
@@ -273,10 +274,10 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   onClickTabsMenu = (event: Object, keys: string[], item: Object) => {
     const { valueField } = this.props;
     const { children } = item;
-
     if (!children || children.length === 0) {
       const activityKey = this.getParentValueField(item[valueField]);
       this.setState({ activityKey });
+      this.exposeOnChange(item);
       setTimeout(() => {
         this.setState({ popupVisible: false });
       }, 100);
@@ -289,9 +290,16 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return !!children && !!children.length;
   };
 
+  getExposeTabsItem = (activityKey: string): Object => {
+    const { data = [], valueField = ValueField } = this.props;
+    return data.find(item => item[valueField] === activityKey);
+  };
+
   onTabClick = (activityKey: string) => {
     const isHasChildren = this.isHasChildren(activityKey);
     if (!isHasChildren) {
+      const item = this.getExposeTabsItem(activityKey);
+      this.exposeOnChange(item);
       this.setState({ activityKey });
     } else {
       return;
@@ -397,13 +405,17 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     }, 220);
   };
 
+  exposeOnChange(obj: Object) {
+    const { onChange, onSelect } = this.props;
+    onChange && onChange(obj);
+    onSelect && onSelect(obj);
+  }
+
   onChange = (value: string[]) => {
     const key = value[0];
     const treeItem = this.getCheckedItem(key);
     const item = this.getExposeItem(treeItem);
-    const { onChange, onSelect } = this.props;
-    onChange && onChange(item);
-    onSelect && onSelect(item);
+    this.exposeOnChange(item);
     this.setState({ value });
   };
 
@@ -411,7 +423,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     if (!key) {
       return {};
     }
-    const { valueField = 'value' } = this.props;
+    const { valueField = ValueField } = this.props;
     return this.treeData.find(item => item[valueField] === key);
   }
 }

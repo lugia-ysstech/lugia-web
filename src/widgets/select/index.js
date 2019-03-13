@@ -73,7 +73,6 @@ type SelectState = {
   displayValue: Array<string>,
   data: Array<Object>,
   length: number,
-  menuData: Array<Object>,
   disabled: boolean,
   query: string,
   validateStatus: ValidateStatus,
@@ -82,6 +81,13 @@ type SelectState = {
 };
 
 const ScrollerStep = 30;
+
+function getQuery(propsQuery: string, stateQuery?: string) {
+  if (propsQuery || propsQuery === 0 || propsQuery === '0') {
+    return propsQuery.toString();
+  }
+  return stateQuery ? stateQuery : '';
+}
 
 class Select extends React.Component<SelectProps, SelectState> {
   static defaultProps = {
@@ -134,7 +140,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   static getDerivedStateFromProps(props: SelectProps, state: SelectState) {
-    const { data = [], validateStatus = 'success' } = props;
+    const { data = [], validateStatus = 'success', query } = props;
     const length = data.length;
 
     const { value, displayValue } = getValueAndDisplayValue(props, state);
@@ -146,8 +152,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         displayValue,
         data,
         length,
-        menuData: data,
-        query: '',
+        query: getQuery(query),
         validateStatus,
         isCheckedAll: false,
       };
@@ -158,6 +163,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       displayValue,
       data,
       length,
+      query: getQuery(query, state.query),
       validateStatus,
     };
   }
@@ -215,7 +221,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   isLimit(): boolean {
-    const { length, value } = this.state;
+    const { value } = this.state;
     const limitCount = this.getLimitCount();
     return value.length >= limitCount;
   }
@@ -237,12 +243,11 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   refreshValue = (event: Object) => {
-    const { searchType, onRefresh } = this.props;
-    this.onQueryInputChange('');
+    const { onRefresh } = this.props;
+    this.onQueryInputChange({ newValue: '' });
     const value = [];
     const displayValue = [];
-    this.search('', searchType);
-    this.setValue(value, displayValue, {});
+    this.setValue(value, displayValue, { query: '' });
     this.onChangeHandle({ value, displayValue, event });
     onRefresh && onRefresh();
   };
@@ -258,7 +263,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   };
 
   onCheckAll = (event: Object) => {
-    const { props, state } = this;
+    const { state } = this;
     const { data, isCheckedAll, length, value } = state;
     const { displayValue } = this;
     const limitCount = this.getLimitCount();
@@ -363,9 +368,10 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getMenuItems(getMenu?: Function) {
     const { state, props } = this;
-    const { menuData, value } = state;
+    const { value, query, data, searchType } = state;
     const { displayField, valueField, limitCount } = props;
 
+    const menuData = this.updateMenuData(data, query, searchType);
     return (
       <Menu
         displayField={displayField}
@@ -434,8 +440,8 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   onQueryInputChange = (nextValue: any) => {
     const { props, state } = this;
-
     const { newValue } = nextValue;
+
     const value = newValue ? newValue : '';
 
     if (value === state.query) {
@@ -466,17 +472,17 @@ class Select extends React.Component<SelectProps, SelectState> {
     }
   };
 
-  getCurrentRow(value: string) {
-    this.search(value, this.props.searchType);
+  getCurrentRow(query: string) {
+    this.setState({ query });
   }
 
-  search(query: string, searchType?: QueryType = 'include') {
-    const { data } = this.state;
+  updateMenuData(data: Array<Object>, query: string, searchType?: QueryType = 'include') {
     const { displayField = DisplayField } = this.props;
     let menuData;
     const queryAll = query === '' || !query;
+    const isQueryZero = query === 0 || query === '0';
 
-    if (queryAll) {
+    if (queryAll && !isQueryZero) {
       menuData = data;
     } else {
       const queryArray = this.getQueryArray(query);
@@ -496,7 +502,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         menuData = rowSet.reverse();
       }
     }
-    this.setState({ menuData });
+    return menuData;
   }
 
   getQueryArray(query: string): Array<string> {
@@ -532,7 +538,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       const newDisplayValueArray = [...newDisplayValue];
 
       this.setValue(newValueArray, newDisplayValueArray, {});
-      this.onQueryInputChange('');
+      this.onQueryInputChange({ newValue: '' });
       this.onChangeHandle({ value: newValueArray, displayValue: newDisplayValueArray });
     }
   }
@@ -571,7 +577,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     if (visible) {
       const { onTrigger } = this.props;
       onTrigger && onTrigger();
-      this.onQueryInputChange('');
+      this.onQueryInputChange({ newValue: '' });
     }
     this.menuVisible = visible;
   };
@@ -602,13 +608,14 @@ class Select extends React.Component<SelectProps, SelectState> {
   onChangeHandle(targetObj: Object) {
     const { onChange, onSelect, mutliple } = this.props;
 
-    const { value: nextValue, displayValue: newDisplayValue, event = null } = targetObj;
+    const { value: nextValue, displayValue: nextDisplayValue, event = null } = targetObj;
     const isCheckedAll = this.getIsCheckedAll(nextValue);
 
     const { value: preValue = [] } = this.state;
     const { items: oldItem } = this.getItem(preValue, false);
     const { items: newItem } = this.getItem(nextValue, false);
     const newValue = this.getNewValueOrOldValue(nextValue, mutliple);
+    const newDisplayValue = this.getNewValueOrOldValue(nextDisplayValue, mutliple);
     const oldValue = this.getNewValueOrOldValue(preValue, mutliple);
 
     const obj = {
@@ -625,9 +632,6 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   getIsCheckedAll(value: string[]) {
-    const { props } = this;
-    const { length } = this.state;
-
     const totalLimitCount = this.getLimitCount();
     return totalLimitCount === value.length;
   }
