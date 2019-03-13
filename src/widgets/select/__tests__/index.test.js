@@ -599,8 +599,8 @@ describe('Select', () => {
       .at(0)
       .simulate('click');
 
-    const value = ['key-0'];
-    const displayValue = ['txt0'];
+    const value = 'key-0';
+    const displayValue = 'txt0';
 
     showTrigger(cmp);
     cmp
@@ -636,8 +636,8 @@ describe('Select', () => {
       .at(0)
       .simulate('click');
 
-    const value = ['key-0'];
-    const displayValue = ['txt0'];
+    const value = 'key-0';
+    const displayValue = 'txt0';
 
     showTrigger(cmp);
     cmp
@@ -645,8 +645,8 @@ describe('Select', () => {
       .at(1)
       .simulate('click');
 
-    const newValue = ['key-1'];
-    const newDisplayValue = ['txt1'];
+    const newValue = 'key-1';
+    const newDisplayValue = 'txt1';
 
     const result = await selectPromise;
     expect(result).toEqual([
