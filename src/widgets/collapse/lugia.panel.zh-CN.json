@@ -1,0 +1,52 @@
+{
+  "widgetName": "Panel",
+  "title": "Panel 面板",
+  "desc": "Panel 面板。",
+  "props": {
+    "value": {
+      "type": "string",
+      "desc": "指定Panel面板value值",
+      "defaultValue": "undefined"
+    },
+    "header": {
+      "type": "string | React.node",
+      "desc": "指定Panel面板头部内容",
+      "defaultValue": "undefined"
+    },
+    "children": {
+      "type": "string | React.node",
+      "desc": "Panel面板内容",
+      "defaultValue": "undefined"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "Panel面板是否禁用",
+      "defaultValue": "false"
+    },
+    "open": {
+      "type": "boolean",
+      "desc": "Panel面板是否展开",
+      "defaultValue": "false"
+    },
+    "showArrow": {
+      "type": "boolean",
+      "desc": "Panel面板是否展示箭头",
+      "defaultValue": "true"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "Panel面板点击事件回调",
+      "args": [
+        {
+          "name": "value",
+          "desc": "Panel面板点击时 value的值",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "type": {},
+  "category": ["数据展示"],
+  "componentName": "Panel"
+}

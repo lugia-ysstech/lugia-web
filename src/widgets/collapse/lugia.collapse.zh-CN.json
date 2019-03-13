@@ -53,5 +53,6 @@
       }
     }
   },
+  "childrenWidget": ["panel"],
   "category": ["数据展示"]
 }
