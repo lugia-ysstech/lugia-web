@@ -42,7 +42,7 @@ import Switch from './switch';
 import Table from './table';
 import Tabs from './tabs';
 import Tag from './tag';
-import Timeline from './time-line';
+import TimeLine from './time-line';
 import TimePicker from './time-picker';
 import Tooltip from './tooltip';
 import Transfer from './transfer';
@@ -2151,9 +2151,9 @@ export default {
     },
     target: Tag,
   },
-  Timeline: {
+  TimeLine: {
     meta: {
-      widgetName: 'Timeline',
+      widgetName: 'TimeLine',
       title: '时间轴',
       desc: '垂直展示的时间流信息',
       props: {
@@ -2186,7 +2186,7 @@ export default {
       childrenWidget: ['timeLineItem'],
       category: ['数据展示'],
     },
-    target: Timeline,
+    target: TimeLine,
   },
   TimePicker: {
     meta: {
