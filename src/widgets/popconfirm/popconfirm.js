@@ -38,6 +38,7 @@ type PopconfirmProps = {
   cancelText: string,
   okText: string,
   okType: ButtonType,
+  defaultChildren: React.Node,
 };
 type PopconfirmState = {
   visible: boolean,
@@ -91,11 +92,16 @@ const Cancel = BaseButton.extend`
 const Confirm = BaseButton.extend`
   font-size: 1.2rem;
 `;
+const DefaultChild = styled.div`
+  width: ${em(200)};
+  height: ${em(20)};
+`;
 
 class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   static displayName = Widget.Popconfirm;
   static defaultProps = {
     defaultVisible: false,
+    defaultChildren: <DefaultChild>"点击显示气泡确认框"</DefaultChild>,
   };
   target: Object;
 
@@ -168,8 +174,9 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   }
 
   render() {
-    const { children, action, placement, getTheme } = this.props;
+    const { children, action, placement, getTheme, defaultChildren } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
+    const theChildren = children ? children : defaultChildren;
     return (
       <Popover
         visible={this.state.visible}
@@ -180,7 +187,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
         ref={getTarget}
         placement={placement}
       >
-        {children}
+        {theChildren}
       </Popover>
     );
   }

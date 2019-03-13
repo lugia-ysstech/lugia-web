@@ -49,17 +49,23 @@ const Content = styled.div`
   display: inline-block;
   padding: ${em(6)} ${em(8)};
 `;
+
 const TooltipWrapper: Object = styled(Tooltip)`
   font-size: 1.2rem;
   display: inline-block;
   position: relative;
 `;
 
+const DefaultChild = styled.div`
+  width: ${em(200)};
+  height: ${em(20)};
+`;
 class Popover extends React.Component<PopoverProps, PopoverState> {
   static displayName = Widget.Popover;
   static defaultProps = {
     defaultVisible: false,
     action: ['click'],
+    defaultChildren: <DefaultChild>"点击显示气泡卡片"</DefaultChild>,
   };
   target: Object;
 
@@ -114,9 +120,10 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   }
 
   render() {
-    const { children, action, placement, getTheme } = this.props;
+    const { children, action, placement, getTheme, defaultChildren } = this.props;
     const { visible } = this.state;
     const getTarget: Function = cmp => (this.target = cmp);
+    const theChildren = children ? children : defaultChildren;
     return (
       <TooltipWrapper
         visible={visible}
@@ -128,7 +135,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         title={this.getContent()}
         ref={getTarget}
       >
-        {children}
+        {theChildren}
       </TooltipWrapper>
     );
   }

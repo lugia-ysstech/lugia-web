@@ -22,6 +22,7 @@ export type PopoverProps = {
   onVisibleChange: Function,
   clear?: React.Node,
   onClearClick?: Function,
+  defaultChildren: React.Node,
 };
 export type PopoverState = {
   visible: boolean,

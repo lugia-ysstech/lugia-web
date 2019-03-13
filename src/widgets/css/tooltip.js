@@ -44,7 +44,9 @@ export type TooltipProps = {
   popArrowType?: PopArrowType,
   visible: boolean,
   defaultVisible?: boolean,
+  defaultChildren: React.Node,
 };
+
 export type TooltipState = {
   visible: boolean,
 };

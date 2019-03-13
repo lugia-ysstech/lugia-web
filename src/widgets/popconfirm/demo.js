@@ -172,6 +172,7 @@ export const WrapperDemo = () => {
 };
 export default () => {
   return [
+    <Popconfirm />,
     <WrapperDemo />,
     <Wrapper>
       <Condition />

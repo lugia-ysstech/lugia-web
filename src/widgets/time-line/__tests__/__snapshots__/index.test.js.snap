@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`timeLineDemo Component JSON 1`] = `
-.c21 {
+.c22 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -10,31 +10,31 @@ exports[`timeLineDemo Component JSON 1`] = `
   font-size: 1.2rem;
 }
 
-.c2 {
+.c3 {
   position: relative;
   height: 4.500000000000001em;
   width: 100%;
 }
 
-.c10 {
+.c11 {
   position: relative;
   height: 8.333333333333334em;
   width: 100%;
 }
 
-.c12 {
+.c13 {
   position: relative;
   height: 3.5000000000000004em;
   width: 100%;
 }
 
-.c14 {
+.c15 {
   position: relative;
   height: 1.6666666666666667em;
   width: 100%;
 }
 
-.c7 {
+.c8 {
   text-align: inherit;
   font-size: 1.4rem;
   max-width: 12.5em;
@@ -43,7 +43,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   color: #333333;
 }
 
-.c8 {
+.c9 {
   text-align: inherit;
   font-size: 1.4rem;
   max-width: 12.5em;
@@ -53,29 +53,27 @@ exports[`timeLineDemo Component JSON 1`] = `
   color: #666666;
 }
 
-.c6 {
+.c7 {
   position: absolute;
   top: 0;
   text-align: left;
-  left: 0;
-  margin-left: 2.0833333333333335em;
+  left: 1.6666666666666667em;
 }
 
-.c17 {
+.c18 {
   position: absolute;
   top: 0;
   text-align: right;
-  right: 0;
-  margin-right: 2.0833333333333335em;
+  right: 16.666666666666668em;
 }
 
-.c3 {
+.c4 {
   position: relative;
   width: 1.6666666666666667em;
   text-align: center;
 }
 
-.c5 {
+.c6 {
   position: relative;
   left: 0.8333333333333334em;
   height: inherit;
@@ -83,7 +81,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c9 {
+.c10 {
   position: relative;
   left: 0.8333333333333334em;
   height: inherit;
@@ -92,7 +90,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c11 {
+.c12 {
   position: relative;
   left: 0.8333333333333334em;
   height: 8.333333333333334em;
@@ -100,7 +98,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c13 {
+.c14 {
   position: relative;
   left: 0.8333333333333334em;
   height: 100%;
@@ -108,7 +106,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c15 {
+.c16 {
   position: relative;
   left: 0.8333333333333334em;
   height: 1.6666666666666667em;
@@ -116,7 +114,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c16 {
+.c17 {
   position: relative;
   left: 0.8333333333333334em;
   height: 100%;
@@ -125,7 +123,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   z-index: 2;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   background: #684fff;
   width: 0.8333333333333334em;
@@ -137,7 +135,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   transition: all 0.3s linear 0.1s;
 }
 
-.c18 {
+.c19 {
   position: absolute;
   background: #56c22d;
   width: 0.8333333333333334em;
@@ -149,7 +147,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   transition: all 0.3s linear 0.1s;
 }
 
-.c19 {
+.c20 {
   position: absolute;
   background: #f22735;
   width: 0.8333333333333334em;
@@ -161,7 +159,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   transition: all 0.3s linear 0.1s;
 }
 
-.c20 {
+.c21 {
   position: absolute;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -176,12 +174,16 @@ exports[`timeLineDemo Component JSON 1`] = `
   animation: rotate 1s linear infinite;
 }
 
-.c1 {
+.c2 {
   height: 25em;
-  width: 1.6666666666666667em;
 }
 
-.c22 {
+.c1 {
+  height: 16.666666666666668em;
+  width: 16.666666666666668em;
+}
+
+.c23 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
@@ -208,23 +210,23 @@ exports[`timeLineDemo Component JSON 1`] = `
   border-radius: 0.28571428571428575em;
 }
 
-.c22:hover {
+.c23:hover {
   color: #ffffff;
   border: none;
   background-color: #9482ff;
 }
 
-.c22:focus {
+.c23:focus {
   color: #ffffff;
   border: none;
   background-color: #9482ff;
 }
 
-.c22:active {
+.c23:active {
   background-color: #533fcc;
 }
 
-.c23 {
+.c24 {
   display: inline-block;
   line-height: 2.285714285714286em;
 }
@@ -245,171 +247,160 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        type="icon"
       >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type="icon"
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description111
-             
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description111
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type="icon"
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description222
-             
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description222
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type="icon"
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description333
-             
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description333
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type="icon"
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description444
-             
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description444
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type="icon"
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type="icon"
-          />
-        </div>
-        <div
-          className="c9"
-          type="icon"
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
           >
-            2018-01-05
-             
+            <div
+              className="c5"
+            />
           </div>
           <div
-            className="c8"
+            className="c10"
+          />
+          <div
+            className="c7"
+            direction="right"
           >
-            description555
-             
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description555
+               
+            </div>
           </div>
         </div>
       </div>
@@ -426,142 +417,131 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c10"
-        type={[Function]}
+        className="c2"
       >
-        <div
-          className="c3"
-        >
-          <div
-            className="c4"
-            type={[Function]}
-          />
-        </div>
         <div
           className="c11"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-01
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c12"
           />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+          </div>
         </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-02
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c14"
           />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+          </div>
         </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-03
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c14"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c14"
           />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+          </div>
         </div>
         <div
           className="c15"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-04
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c16"
           />
-        </div>
-        <div
-          className="c16"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-05
-             
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+          </div>
+        </div>
+        <div
+          className="c13"
+        >
+          <div
+            className="c4"
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c17"
+          />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
           </div>
         </div>
       </div>
@@ -579,171 +559,160 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        type={[Function]}
       >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description111
-             
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description111
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description222
-             
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description222
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description333
-             
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description333
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description444
-             
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description444
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
-          />
-        </div>
-        <div
-          className="c9"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
           >
-            2018-01-05
-             
+            <div
+              className="c5"
+            />
           </div>
           <div
-            className="c8"
+            className="c10"
+          />
+          <div
+            className="c7"
+            direction="right"
           >
-            description555
-             
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description555
+               
+            </div>
           </div>
         </div>
       </div>
@@ -760,142 +729,131 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c12"
-        type={[Function]}
+        className="c2"
       >
         <div
-          className="c3"
+          className="c13"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c14"
           />
+          <div
+            className="c18"
+            direction="left"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+          </div>
         </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c17"
-          direction="left"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-01
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c14"
           />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+          </div>
         </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-02
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c14"
           />
+          <div
+            className="c18"
+            direction="left"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+          </div>
         </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c17"
-          direction="left"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-03
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c14"
           />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+          </div>
         </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-04
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
-          />
-        </div>
-        <div
-          className="c16"
-          type={[Function]}
-        />
-        <div
-          className="c17"
-          direction="left"
-        >
-          <div
-            className="c7"
           >
-            2018-01-05
-             
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c17"
+          />
+          <div
+            className="c18"
+            direction="left"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
           </div>
         </div>
       </div>
@@ -913,171 +871,160 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        type={[Function]}
       >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c17"
-          direction="left"
-        >
           <div
-            className="c7"
+            className="c18"
+            direction="left"
           >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description111
-             
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description111
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description222
-             
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description222
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c17"
-          direction="left"
-        >
           <div
-            className="c7"
+            className="c18"
+            direction="left"
           >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description333
-             
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description333
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description444
-             
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description444
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
-          />
-        </div>
-        <div
-          className="c9"
-          type={[Function]}
-        />
-        <div
-          className="c17"
-          direction="left"
-        >
-          <div
-            className="c7"
           >
-            2018-01-05
-             
+            <div
+              className="c5"
+            />
           </div>
           <div
-            className="c8"
+            className="c10"
+          />
+          <div
+            className="c18"
+            direction="left"
           >
-            description555
-             
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description555
+               
+            </div>
           </div>
         </div>
       </div>
@@ -1094,142 +1041,131 @@ exports[`timeLineDemo Component JSON 1`] = `
       className="c1"
     >
       <div
-        className="c12"
-        type={[Function]}
+        className="c2"
       >
-        <div
-          className="c3"
-        >
-          <div
-            className="c18"
-            type={[Function]}
-          />
-        </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-01
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c19"
+            />
+          </div>
+          <div
+            className="c14"
           />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+          </div>
         </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-02
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
-        >
-          <div
-            className="c19"
-            type={[Function]}
-          />
-        </div>
-        <div
-          className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-03
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c14"
           />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+          </div>
         </div>
         <div
           className="c13"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
-          >
-            2018-01-04
-             
-          </div>
-        </div>
-      </div>
-      <div
-        className="c12"
-        type={[Function]}
-      >
-        <div
-          className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c20"
+            />
+          </div>
+          <div
+            className="c14"
           />
-        </div>
-        <div
-          className="c16"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-05
-             
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+          </div>
+        </div>
+        <div
+          className="c13"
+        >
+          <div
+            className="c4"
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c14"
+          />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+          </div>
+        </div>
+        <div
+          className="c13"
+        >
+          <div
+            className="c4"
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c17"
+          />
+          <div
+            className="c7"
+            direction="right"
+          >
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
           </div>
         </div>
       </div>
@@ -1247,171 +1183,160 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        type={[Function]}
       >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description111
-             
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description111
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description222
-             
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description222
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description333
-             
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description333
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description444
-             
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description444
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
-          />
-        </div>
-        <div
-          className="c9"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
           >
-            2018-01-05
-             
+            <div
+              className="c5"
+            />
           </div>
           <div
-            className="c8"
+            className="c10"
+          />
+          <div
+            className="c7"
+            direction="right"
           >
-            description555
-             
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description555
+               
+            </div>
           </div>
         </div>
       </div>
@@ -1429,170 +1354,160 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        type={[Function]}
       >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description111
-             
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description111
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description222
-             
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description222
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description333
-             
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description333
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description444
-             
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description444
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
-          <i
-            className="lugia-icon-financial_loading_o c20 c21"
-          />
-        </div>
-        <div
-          className="c9"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
-            className="c7"
+            className="c4"
           >
-            2018-01-05
-             
+            <i
+              className="lugia-icon-financial_loading_o c21 c22"
+            />
           </div>
           <div
-            className="c8"
+            className="c10"
+          />
+          <div
+            className="c7"
+            direction="right"
           >
-            description555
-             
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description555
+               
+            </div>
           </div>
         </div>
       </div>
@@ -1610,170 +1525,160 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        type={[Function]}
       >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description111
-             
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description111
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description222
-             
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description222
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description333
-             
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description333
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description444
-             
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description444
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
-          <i
-            className="lugia-icon-financial_abort  c21"
-          />
-        </div>
-        <div
-          className="c9"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
-            className="c7"
+            className="c4"
           >
-            2018-01-05
-             
+            <i
+              className="lugia-icon-financial_abort  c22"
+            />
           </div>
           <div
-            className="c8"
+            className="c10"
+          />
+          <div
+            className="c7"
+            direction="right"
           >
-            description555
-             
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description555
+               
+            </div>
           </div>
         </div>
       </div>
@@ -1787,7 +1692,7 @@ exports[`timeLineDemo Component JSON 1`] = `
     }
   >
     <button
-      className="c22"
+      className="c23"
       onClick={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -1798,7 +1703,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       type="primary"
     >
       <span
-        className="c23"
+        className="c24"
         size="default"
         type="primary"
       >
@@ -1810,171 +1715,160 @@ exports[`timeLineDemo Component JSON 1`] = `
     >
       <div
         className="c2"
-        type={[Function]}
       >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description111
-             
+            <div
+              className="c8"
+            >
+              2018-01-01
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description111
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description222
-             
+            <div
+              className="c8"
+            >
+              2018-01-02
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description222
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description333
-             
+            <div
+              className="c8"
+            >
+              2018-01-03
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description333
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
+          >
+            <div
+              className="c5"
+            />
+          </div>
+          <div
+            className="c6"
           />
-        </div>
-        <div
-          className="c5"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
           <div
             className="c7"
+            direction="right"
           >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c8"
-          >
-            description444
-             
+            <div
+              className="c8"
+            >
+              2018-01-04
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description444
+               
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="c2"
-        type={[Function]}
-      >
         <div
           className="c3"
         >
           <div
             className="c4"
-            type={[Function]}
-          />
-        </div>
-        <div
-          className="c9"
-          type={[Function]}
-        />
-        <div
-          className="c6"
-          direction="right"
-        >
-          <div
-            className="c7"
           >
-            2018-01-05
-             
+            <div
+              className="c5"
+            />
           </div>
           <div
-            className="c8"
+            className="c10"
+          />
+          <div
+            className="c7"
+            direction="right"
           >
-            description555
-             
+            <div
+              className="c8"
+            >
+              2018-01-05
+               
+            </div>
+            <div
+              className="c9"
+            >
+              description555
+               
+            </div>
           </div>
         </div>
       </div>
