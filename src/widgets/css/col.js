@@ -81,6 +81,7 @@ export const ColWrap = styled.div`
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   ${getSpanCSS}
   ${getOffsetCSS}
   ${getPullAndPushCSS}
