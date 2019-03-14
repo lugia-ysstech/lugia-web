@@ -174,6 +174,86 @@ export const RowDemo = () => {
           </Col>
         </Row>
       </Wrapper>
+      <br />
+      <p>type: flex, order</p>
+      <Wrapper>
+        <Row type="flex" justify="center">
+          <Col span={4} order={3}>
+            col-4 center-order-3
+          </Col>
+          <Col span={4} order={2}>
+            col-4 center-order-2
+          </Col>
+          <Col span={4} order={1}>
+            col-4 center-order-1
+          </Col>
+          <Col span={4} order={4}>
+            col-4 center-order-4
+          </Col>
+        </Row>
+      </Wrapper>
+      <br />
+      <div style={{ width: '1200px' }}>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, xl: 24, lg: 24 }}>
+          <Col span={6}>
+            <div style={{ background: 'rgba(0, 160, 233, 0.7)' }}>col-6</div>
+          </Col>
+          <Col span={6}>
+            <div style={{ background: ' #00a0e9' }}>col-6</div>
+          </Col>
+          <Col span={6}>
+            <div style={{ background: 'rgba(0, 160, 233, 0.7)' }}>col-6</div>
+          </Col>
+          <Col span={6}>
+            <div style={{ background: ' #00a0e9' }}>col-6</div>
+          </Col>
+        </Row>
+      </div>
+      <br />
+      <div style={{ width: '1200px' }}>
+        <Row gutter={24}>
+          <Col span={6}>
+            <div style={{ background: 'rgba(0, 160, 233, 0.7)' }}>col-6</div>
+          </Col>
+          <Col span={6}>
+            <div style={{ background: ' #00a0e9' }}>col-6</div>
+          </Col>
+          <Col span={6}>
+            <div style={{ background: 'rgba(0, 160, 233, 0.7)' }}>col-6</div>
+          </Col>
+          <Col span={6}>
+            <div style={{ background: ' #00a0e9' }}>col-6</div>
+          </Col>
+        </Row>
+      </div>
+      <br />
+      <Wrapper>
+        <p>响应式</p>
+        <Row>
+          <Col span={6} xs={{ span: 4, offset: 2 }} xl={{ span: 5, offset: 1 }}>
+            col-
+          </Col>
+          <Col span={6} xs={{ span: 4, offset: 2 }} xl={{ span: 5, offset: 1 }}>
+            col-
+          </Col>
+          <Col span={6} xs={{ span: 4, offset: 2 }} xl={{ span: 5, offset: 1 }}>
+            col-
+          </Col>
+          <Col span={6} xs={{ span: 4, offset: 2 }} xl={{ span: 5, offset: 1 }}>
+            col-
+          </Col>
+        </Row>
+      </Wrapper>
+      <br />
+      <Wrapper>
+        <Row equable={30}>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+        </Row>
+      </Wrapper>
+      <br />
       <Wrapper>
         <Row gutter={{ xs: 8, sm: 16, md: 24, xl: 24, lg: 24 }} data={data} />
       </Wrapper>

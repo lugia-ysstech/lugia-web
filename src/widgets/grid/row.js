@@ -116,7 +116,6 @@ export default ThemeProvider(
 
       renderChildren = (scrrenSize?: string, gutter?: number | Object) => {
         const { children, equable = 24, data } = this.props;
-        console.log(gutter);
         if (data && data.length > 0) {
           return data.map(item => (
             <Col {...item} scrrenSize={scrrenSize} gutter={gutter} equable={equable}>
