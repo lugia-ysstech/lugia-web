@@ -118,6 +118,18 @@ export const CollapseDemo = class extends React.Component<any, any> {
   };
   render() {
     const { activeValue, defaultActiveValue } = this.state;
+    const data = [
+      {
+        value: '1',
+        header: 'LUGIA',
+        children: 'PanelContent...',
+      },
+      {
+        value: '2',
+        header: 'LUGIA',
+        children: 'PanelContent...',
+      },
+    ];
     return (
       <div>
         <Wrapper>
@@ -189,6 +201,8 @@ export const CollapseDemo = class extends React.Component<any, any> {
             </Collapse>
           </Theme>
           <br />
+          <p>data</p>
+          <Collapse defaultActiveValue={defaultActiveValue} data={data} />
         </Wrapper>
       </div>
     );

@@ -22,6 +22,12 @@
       "type": "boolean",
       "desc": "设置是否为手风琴模式",
       "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "Object[]",
+      "desc": "指定折叠面板data数据源，仅用于设计器",
+      "defaultValue": "undefined",
+      "designOnly": true
     }
   },
   "events": {
