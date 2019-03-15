@@ -3,11 +3,6 @@
   "title": "进度条",
   "desc": "展示操作的当前进度。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "type": {
       "type": "ProgressType",
       "desc": "进度条类型，line、circle、dashboard",

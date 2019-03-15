@@ -22,6 +22,12 @@
       "type": "number | Object",
       "desc": "栅格之间的间隔，可写为 number 格式 或支持响应式 对象写法：{xs: 8,sm: 16,md: 24}",
       "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "Object[]",
+      "desc": "指定栅格 data 属性，仅用于设计器",
+      "defaultValue": "undefined",
+      "designOnly": true
     }
   },
   "type": {
@@ -29,5 +35,6 @@
     "JustifyType": ["start", "end", "center", "spaceAround", "spaceBetween"],
     "AlignType": ["top", "middle", "bottom"]
   },
-  "category": ["布局"]
+  "category": ["布局"],
+  "componentName": "Row"
 }

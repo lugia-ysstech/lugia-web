@@ -3,11 +3,6 @@
   "title": "单步骤",
   "desc": "步骤条中每一个步骤",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "children": {
       "type": "React.Node",
       "desc": "气泡卡片需要包含的子组件",

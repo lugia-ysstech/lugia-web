@@ -30,7 +30,7 @@ export { default as Button } from './button';
 
 export { default as ButtonGroup } from './button/button-group';
 
-export { default as CheckBox } from './checkbox';
+export { default as Checkbox } from './checkbox';
 
 export { default as Collapse } from './collapse/collapse';
 

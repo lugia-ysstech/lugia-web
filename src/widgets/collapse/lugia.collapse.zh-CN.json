@@ -3,11 +3,6 @@
   "title": "折叠面板",
   "desc": "折叠面板，用于展开/折叠内容区域。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "activeValue": {
       "type": "string | string[]",
       "desc": "当前展开面板的 value值 或者 value 集合",
@@ -27,6 +22,12 @@
       "type": "boolean",
       "desc": "设置是否为手风琴模式",
       "defaultValue": "undefined"
+    },
+    "data": {
+      "type": "Object[]",
+      "desc": "指定折叠面板data数据源，仅用于设计器",
+      "defaultValue": "undefined",
+      "designOnly": true
     }
   },
   "events": {
@@ -58,5 +59,6 @@
       }
     }
   },
+  "childrenWidget": ["panel"],
   "category": ["数据展示"]
 }

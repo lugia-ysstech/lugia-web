@@ -3,11 +3,6 @@
   "title": "走马灯",
   "desc": "常用于展示一组图片或卡片轮播",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "defaultStart": {
       "type": "number",
       "desc": "幻灯片初始状态开始激活的索引，默认从0开始",

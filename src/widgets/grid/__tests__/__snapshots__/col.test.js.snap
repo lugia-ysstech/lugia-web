@@ -6,6 +6,7 @@ exports[`Col css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: NaN%;
   margin-left: NaN%;
 }
@@ -15,6 +16,7 @@ exports[`Col css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: NaN%;
   margin-left: NaN%;
   left: NaN%;
@@ -25,6 +27,7 @@ exports[`Col css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: NaN%;
   margin-left: NaN%;
   right: NaN%;
@@ -35,6 +38,7 @@ exports[`Col css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: NaN%;
   margin-left: NaN%;
   -webkit-order: 1;

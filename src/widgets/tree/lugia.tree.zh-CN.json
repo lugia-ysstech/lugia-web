@@ -3,11 +3,6 @@
   "title": "树形控件",
   "desc": "清晰地展示层级结构的信息,可展开或折叠。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "start": {
       "type": "number",
       "desc": "开始展示数据的索引值",

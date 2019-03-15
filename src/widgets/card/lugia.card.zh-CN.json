@@ -3,11 +3,6 @@
   "title": "卡片",
   "desc": "卡片容器，可添加文字、列表、图片等",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "getThemeByDisplayName": {
       "type": "Function",
       "desc": "用于配置组件内部图片的通用主题属性",

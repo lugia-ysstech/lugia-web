@@ -1,81 +1,76 @@
 {
-  "widgetName": "CheckBoxGroup",
+  "widgetName": "CheckboxGroup",
   "title": "多选框组",
   "desc": "多选框组。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "defaultValue": {
       "type": "string[]",
-      "desc": "指定CheckBoxGroup初始选中值",
+      "desc": "指定CheckboxGroup初始选中值",
       "defaultValue": "undefined"
     },
     "value": {
       "type": "string[]",
-      "desc": "指定CheckBoxGroup选中值",
+      "desc": "指定CheckboxGroup选中值",
       "defaultValue": "undefined"
     },
     "disabled": {
       "type": "boolean",
-      "desc": "指定CheckBoxGroup是否禁用",
+      "desc": "指定CheckboxGroup是否禁用",
       "defaultValue": "undefined"
     },
     "data": {
       "type": "Object[]",
-      "desc": "指定 CheckBox 组件展示值",
+      "desc": "指定 Checkbox 组件展示值",
       "defaultValue": "undefined"
     },
     "displayField": {
       "type": "string",
-      "desc": "指定CheckBoxGroup展示字段值",
+      "desc": "指定CheckboxGroup展示字段值",
       "defaultValue": "undefined"
     },
     "valueField": {
       "type": "string",
-      "desc": "指定 CheckBox 组件 value 值",
+      "desc": "指定 Checkbox 组件 value 值",
       "defaultValue": "false"
     },
     "displayValue": {
       "type": "string[]",
-      "desc": "指定CheckBoxGroup选中值备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值",
+      "desc": "指定CheckboxGroup选中值备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值",
       "defaultValue": "undefined"
     },
     "defaultDisplayValue": {
       "type": "string[]",
-      "desc": "指定CheckBoxGroup选中值初始备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值",
+      "desc": "指定CheckboxGroup选中值初始备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值",
       "defaultValue": "undefined"
     },
     "styles": {
       "type": "CheckboxType",
-      "desc": "指定CheckBoxGroup中CheckBox展示方向，可选值为 vertical 或不设",
+      "desc": "指定CheckboxGroup中Checkbox展示方向，可选值为 vertical 或不设",
       "defaultValue": "undefined"
     },
     "childType": {
       "type": "CheckboxGroupChildType",
-      "desc": "指定CheckBoxGroup展示类型，可设置为 button 或不设",
+      "desc": "指定CheckboxGroup展示类型，可设置为 button 或不设",
       "defaultValue": "undefined"
     },
     "size": {
       "type": "CheckboxButtonSizeType",
-      "desc": "指定CheckBoxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设",
+      "desc": "指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设",
       "defaultValue": "undefined"
     },
     "cache": {
       "type": "boolean",
-      "desc": "指定CheckBoxGroup中实时更新data 数据源信息",
+      "desc": "指定CheckboxGroup中实时更新data 数据源信息",
       "defaultValue": "undefined"
     }
   },
   "events": {
     "onChange": {
-      "desc": "CheckBoxGroup改变时回调",
+      "desc": "CheckboxGroup改变时回调",
       "args": [
         {
           "name": "newValue",
-          "desc": "CheckBoxGroup改变时 value、displayValue 和 item 对应的值",
+          "desc": "CheckboxGroup改变时 value、displayValue 和 item 对应的值",
           "type": "Object"
         }
       ]
@@ -85,16 +80,17 @@
     "CheckboxType": ["default", "vertical"],
     "CheckboxGroupChildType": ["default", "button"],
     "CheckboxButtonSizeType": ["default", "small", "large", "bigger"],
-    "CheckBoxGroupStyle": {
+    "CheckboxGroupStyle": {
       "width": {
         "type": "number",
-        "desc": "CheckBox宽度"
+        "desc": "Checkbox宽度"
       },
       "color": {
         "type": "string",
-        "desc": "CheckBox颜色"
+        "desc": "Checkbox颜色"
       }
     }
   },
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+  "componentName": "Group"
 }

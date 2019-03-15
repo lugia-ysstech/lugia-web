@@ -10,6 +10,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { CollapseProps, CollapseState } from '../css/collapse';
 import { Wrap } from '../css/collapse';
+import Panel from './panel';
 
 function handleStateValue(value: string | string[], accordion?: boolean): string[] {
   if (Array.isArray(value)) {
@@ -42,7 +43,26 @@ export default ThemeProvider(
       );
     }
     renderChildren = () => {
-      const { children, accordion } = this.props;
+      const { children, accordion, data } = this.props;
+      if (!children && !data) {
+        return (
+          <Panel value="lugia-panel" header="Lugia Panel" onClick={this.handleClick}>
+            Default Panel
+          </Panel>
+        );
+      }
+      if (data && data.length > 0) {
+        return data.map(item => (
+          <Panel
+            {...item}
+            onClick={this.handleClick}
+            open={this.handleOpen(item.value)}
+            accordion={accordion}
+          >
+            {item.children}
+          </Panel>
+        ));
+      }
       return React.Children.map(children, child => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {

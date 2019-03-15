@@ -4,11 +4,6 @@
   "desc": "时间轴每一个节点",
 
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "time": {
       "type": "string",
       "desc": "时间轴显示的时间",

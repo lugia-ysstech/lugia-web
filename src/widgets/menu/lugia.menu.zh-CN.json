@@ -3,12 +3,6 @@
   "title": "菜单",
   "desc": "为用户提供菜单列表",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
-
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",

@@ -3,11 +3,6 @@
   "title": "时间轴",
   "desc": "垂直展示的时间流信息",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "children": {
       "type": "React.Node",
       "desc": "时间轴需要包含的子组件",

@@ -3,11 +3,6 @@
   "title": "穿梭框",
   "desc": "穿梭框。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性，可配置 width、height",
-      "defaultValue": "undefined"
-    },
     "data": {
       "type": "Object[]",
       "desc": "左右两个面板数据源",

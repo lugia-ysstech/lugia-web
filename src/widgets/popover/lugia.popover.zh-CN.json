@@ -3,11 +3,6 @@
   "title": "气泡卡片",
   "desc": "气泡式的卡片浮层",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "title": {
       "type": "React.Node",
       "desc": "卡片标题显示内容",

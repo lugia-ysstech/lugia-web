@@ -3,11 +3,6 @@
   "title": "警告提示",
   "desc": "警告提示信息。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "type": {
       "type": "AlertType",
       "desc": "指定警告提示的样式，有四种可以选择：success、error、info、warning",

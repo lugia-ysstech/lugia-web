@@ -108,8 +108,9 @@ export default ThemeProvider(
 
     shouldComponentUpdate(nextProps: GroupProps, nextState: GroupState) {
       const { valueField = 'value', displayField = 'text' } = nextProps;
-
-      if (nextProps.data.length !== this.props.data.length || nextProps.data !== this.props.data) {
+      const { data = [] } = this.props;
+      const { data: nextData = [] } = nextProps;
+      if (nextData.length !== data.length || nextProps.data !== this.props.data) {
         const theTargetKeys = this.getTargetKeys(nextProps);
         this.initModel(nextProps, theTargetKeys);
       }

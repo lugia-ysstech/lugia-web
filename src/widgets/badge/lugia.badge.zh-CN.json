@@ -3,11 +3,6 @@
   "title": "徽标数",
   "desc": "图标右上角的圆形徽标数字",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "viewClass": {
       "type": "string",
       "desc": "用于配置通用主题属性",

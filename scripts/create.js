@@ -23,6 +23,8 @@ const Invalid = [
   'trigger',
   'utils',
   'empty',
+  'message',
+  'notification',
 ];
 const fileRelativePath = '../src/widgets';
 createDesignInfo();
@@ -76,18 +78,20 @@ async function createDesignInfo() {
     const folderNames = await getDemoFolderNames(allPathFile);
     const folderName2Meta = await getFolderName2Meta(folderNames);
     console.log('共获取组件[%d]个', allPathFile.length);
-    folderNames.forEach(async (folderName, pos) => {
+    folderNames.forEach((folderName, pos) => {
       const meta = folderName2Meta[folderName];
       if (!meta) {
         return;
       }
-      const { childrenWidget } = meta;
-      joinChildrenwidgetName(designInfo, widgetNames, folderName, childrenWidget);
-      const { widgetName } = meta;
+      const { childrenWidget, widgetName } = meta;
+      const childrenMeta =
+        folderName === 'table'
+          ? ''
+          : joinChildrenwidgetName(widgetName, folderName, childrenWidget);
       widgetNames.push(widgetName);
       const commonStr =
         widgetName + ':' + '{ meta: ' + JSON.stringify(meta) + ', target: ' + widgetName + '},';
-      designInfo = designInfo ? designInfo + commonStr : commonStr;
+      designInfo = (designInfo ? designInfo + commonStr : commonStr) + childrenMeta;
     });
 
     try {
@@ -104,24 +108,29 @@ async function createDesignInfo() {
   }
 }
 
-function joinChildrenwidgetName(targetObject, targetWidgetNames, folderName, childrenWidget) {
+function joinChildrenwidgetName(targetWidgetName, folderName, childrenWidget) {
+  let commonStr = '';
   if (childrenWidget && childrenWidget.length > 0) {
     childrenWidget.forEach(item => {
       const childrenMeta = require(`${fileRelativePath}/${folderName}/lugia.${item}.zh-CN.json`);
-      const { widgetName } = childrenMeta;
+      const { widgetName, componentName } = childrenMeta;
       //todo: 子组件导出形式全部更改后，可放开代码；否则报错；
       // targetWidgetNames.push(widgetName);
-      const commonStr =
+      commonStr =
+        commonStr +
         widgetName +
         ':' +
         '{ meta: ' +
         JSON.stringify(childrenMeta) +
         ', target: ' +
-        widgetName +
+        targetWidgetName +
+        '.' +
+        componentName +
         '},';
-      targetObject = targetObject ? targetObject + commonStr : commonStr;
+      // targetObject = targetObject ? targetObject + commonStr : commonStr;
     });
   }
+  return commonStr;
 }
 function getComponent(widgetNames, folderNames) {
   if (widgetNames && widgetNames.length > 0) {

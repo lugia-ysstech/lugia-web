@@ -3,12 +3,6 @@
   "title": "自动完成",
   "desc": "需要自动完成数据时使用",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
-
     "data": {
       "type": "string[]",
       "desc": "自动补全的数据",

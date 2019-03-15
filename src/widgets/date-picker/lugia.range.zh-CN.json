@@ -3,11 +3,6 @@
   "title": "日期范围选择器",
   "desc": "用于日期范围选择,",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "defaultValue": {
       "type": "Array<string>",
       "desc": "日期默认显示值",

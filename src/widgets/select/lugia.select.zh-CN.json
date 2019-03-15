@@ -3,11 +3,6 @@
   "title": "选择器",
   "desc": "选项过多时，弹出下拉菜单给用户选择操作",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "data": {
       "type": "[{valueField: '', displayField: ''}]",
       "desc": "生成选择项的数据",

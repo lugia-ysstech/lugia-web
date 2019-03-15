@@ -10,7 +10,6 @@ import Grid from './';
 const { Row, Col } = Grid;
 const Wrapper = styled.div`
   & > div > div {
-    padding: 8px;
     text-align: center;
   }
   & > div > div:nth-child(odd) {
@@ -46,6 +45,12 @@ export const ColDemo = () => {
   );
 };
 export const RowDemo = () => {
+  const data = [
+    { span: 5, children: 'col-6' },
+    { span: 5, children: 'col-6' },
+    { span: 5, children: 'col-6' },
+    { span: 5, children: 'col-6' },
+  ];
   return (
     <div>
       <Wrapper>
@@ -170,23 +175,6 @@ export const RowDemo = () => {
         </Row>
       </Wrapper>
       <br />
-      <Wrapper>
-        <Row type="flex" justify="end" align="bottom">
-          <Col span={4}>
-            <div style={{ height: 80 }}>col-4 align-bottom</div>
-          </Col>
-          <Col span={4}>
-            <div style={{ height: 60 }}>col-4 align-bottom</div>
-          </Col>
-          <Col span={4}>
-            <div style={{ height: 100 }}>col-4 align-bottom</div>
-          </Col>
-          <Col span={4}>
-            <div style={{ height: 120 }}>col-4 align-bottom</div>
-          </Col>
-        </Row>
-      </Wrapper>
-      <br />
       <p>type: flex, order</p>
       <Wrapper>
         <Row type="flex" justify="center">
@@ -266,6 +254,9 @@ export const RowDemo = () => {
         </Row>
       </Wrapper>
       <br />
+      <Wrapper>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, xl: 24, lg: 24 }} data={data} />
+      </Wrapper>
     </div>
   );
 };

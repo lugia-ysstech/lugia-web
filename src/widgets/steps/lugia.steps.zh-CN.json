@@ -3,11 +3,6 @@
   "title": "步骤条",
   "desc": "引导用户按照流程完成任务的导航条",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "children": {
       "type": "React.Node",
       "desc": "步骤条需要包含的子组件",

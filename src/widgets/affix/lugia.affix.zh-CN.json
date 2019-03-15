@@ -3,11 +3,6 @@
   "title": "固钉",
   "desc": "将元素展示在可视区域。",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "offsetTop": {
       "type": "number",
       "desc": "距离指定容器顶部达到指定偏移量后触发",

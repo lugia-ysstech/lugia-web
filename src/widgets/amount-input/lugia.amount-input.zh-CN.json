@@ -3,11 +3,6 @@
   "title": "金额输入框",
   "desc": "用于金额数字的填写,可切换人民币大小写显示效果.",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",

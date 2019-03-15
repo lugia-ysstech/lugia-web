@@ -3,11 +3,6 @@
   "title": "级联选择",
   "desc": "通过级联选择,可以清晰地显示层级数据结构",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "action": {
       "type": "hover | click",
       "desc": "展开子菜单的方式",

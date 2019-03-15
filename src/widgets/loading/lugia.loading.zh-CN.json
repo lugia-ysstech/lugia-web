@@ -3,11 +3,6 @@
   "title": "加载中",
   "desc": "用于页面和区块的加载中状态",
   "props": {
-    "getTheme": {
-      "type": "Function",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "size":{
       "type": "small|default|large",
       "desc": "Loading尺寸大小",

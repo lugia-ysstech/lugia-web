@@ -21,6 +21,9 @@ export const getMargin = createGetMargin({
   },
 });
 
+type CollapseDesignProps = {
+  data?: Object[],
+};
 export type CollapseProps = {
   activeValue?: string | string[],
   defaultActiveValue?: string | string[],
@@ -29,7 +32,7 @@ export type CollapseProps = {
   accordion?: boolean,
   getTheme: Function,
   children: any,
-};
+} & CollapseDesignProps;
 export type CollapseState = {
   value: string | string[],
 };
