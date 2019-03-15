@@ -54,28 +54,29 @@ type GroupCSSProps = {
 
 const getFirstChildBorder = (props: GroupCSSProps) => {
   const { children = [], themes, childType = 'default' } = props;
-  const { checked = false } = children[0].props;
-  const { cancel = false } = children[0].props;
-  const { disabled = false } = children[0].props;
-  const colors = themes.color || themeColor;
-  if (childType === 'button') {
-    if (disabled) {
-      return `
-      border-left: 1px solid ${borderDisableColor};
-    `;
-    }
-    if (cancel) {
-      return `
-      border-left: 1px solid ${disabledColor};
-      & > span {
-        border-radius: 4px 0 0 4px;
+  if (children && children.length > 0) {
+    const { checked = false } = children[0].props;
+    const { cancel = false } = children[0].props;
+    const { disabled = false } = children[0].props;
+    const colors = themes.color || themeColor;
+    if (childType === 'button') {
+      if (disabled) {
+        return `
+          border-left: 1px solid ${borderDisableColor};
+        `;
       }
+      if (cancel) {
+        return `
+          border-left: 1px solid ${disabledColor};
+          & > span {
+            border-radius: 4px 0 0 4px;
+          }
+        `;
+      }
+      return `
+        border-left: 1px solid ${checked ? colors : borderColor};
       `;
     }
-
-    return `
-    border-left: 1px solid ${checked ? colors : borderColor};
-  `;
   }
 };
 const getLastChildBorder = (props: GroupCSSProps) => {
@@ -322,10 +323,10 @@ export default ThemeProvider(
     getChildTheme() {
       const { getTheme } = this.props;
       return {
-        [Widget.CheckBox]: getTheme(),
+        [Widget.Checkbox]: getTheme(),
         [Widget.CheckButton]: getTheme(),
       };
     }
   },
-  Widget.CheckBoxGroup
+  Widget.CheckboxGroup
 );

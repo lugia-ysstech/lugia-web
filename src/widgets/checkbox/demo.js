@@ -25,7 +25,7 @@ const handleChange = obj => {
   console.info(obj);
 };
 const view = {
-  [Widget.CheckBox]: {
+  [Widget.Checkbox]: {
     color: 'red',
   },
   [Widget.CheckboxGroup]: {
