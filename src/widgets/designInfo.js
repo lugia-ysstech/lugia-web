@@ -11,7 +11,7 @@ import Button from './button';
 import Card from './card';
 import Carousel from './carousel';
 import Cascader from './cascader';
-import CheckBox from './checkbox';
+import Checkbox from './checkbox';
 import Collapse from './collapse';
 import DatePicker from './date-picker';
 import Divider from './divider';
@@ -23,10 +23,8 @@ import Input from './input';
 import Layout from './layout';
 import Loading from './loading';
 import Menu from './menu';
-import Message from './message';
 import Modal from './modal';
 import NavMenu from './navmenu';
-import Notification from './notification';
 import NumberInput from './number-input';
 import Pagination from './pagination';
 import Popconfirm from './popconfirm';
@@ -57,7 +55,6 @@ export default {
       title: '固钉',
       desc: '将元素展示在可视区域。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         offsetTop: {
           type: 'number',
           desc: '距离指定容器顶部达到指定偏移量后触发',
@@ -90,7 +87,6 @@ export default {
       title: '警告提示',
       desc: '警告提示信息。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         type: {
           type: 'AlertType',
           desc: '指定警告提示的样式，有四种可以选择：success、error、info、warning',
@@ -134,7 +130,6 @@ export default {
       title: '金额输入框',
       desc: '用于金额数字的填写,可切换人民币大小写显示效果.',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
         transform: {
           type: 'boolean',
@@ -217,7 +212,6 @@ export default {
       title: '自动完成',
       desc: '需要自动完成数据时使用',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         data: { type: 'string[]', desc: '自动补全的数据', defaultValue: '[]' },
         value: { type: 'string', desc: '给定输入框的值', defaultValue: 'undefined' },
         defaultValue: {
@@ -260,7 +254,6 @@ export default {
       title: '头像',
       desc: '用来代表用户或事物，支持图片、图标或字符展示。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         size: {
           type: 'AvatarSize',
@@ -283,7 +276,6 @@ export default {
       title: '回到顶部',
       desc: '返回页面顶部。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         visibilityHeight: {
           type: 'number',
           desc: '页面滚动高度达到指定值后出现BackTop',
@@ -311,7 +303,6 @@ export default {
       title: '徽标数',
       desc: '图标右上角的圆形徽标数字',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         showZero: { type: 'boolean', desc: '当数值为 0 时，是否展示 Badge', defaultValue: 'false' },
         overflowCount: {
@@ -373,7 +364,6 @@ export default {
       title: '按钮',
       desc: '方便用户点击操作',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -430,7 +420,6 @@ export default {
       title: '卡片',
       desc: '卡片容器，可添加文字、列表、图片等',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         getThemeByDisplayName: {
           type: 'Function',
           desc: '用于配置组件内部图片的通用主题属性',
@@ -473,7 +462,6 @@ export default {
       title: '走马灯',
       desc: '常用于展示一组图片或卡片轮播',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         defaultStart: {
           type: 'number',
           desc: '幻灯片初始状态开始激活的索引，默认从0开始',
@@ -522,7 +510,6 @@ export default {
       title: '级联选择',
       desc: '通过级联选择,可以清晰地显示层级数据结构',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         action: { type: 'hover | click', desc: '展开子菜单的方式', defaultValue: 'undefined' },
         offsetX: { type: 'number', desc: '菜单间的间隔', defaultValue: '2' },
         offsetY: { type: 'number', desc: '显示框与菜单的间隔', defaultValue: '5' },
@@ -585,20 +572,19 @@ export default {
     },
     target: Cascader,
   },
-  CheckBox: {
+  Checkbox: {
     meta: {
-      widgetName: 'CheckBox',
+      widgetName: 'Checkbox',
       title: '多选框',
       desc: '多选框。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
-        checked: { type: 'boolean', desc: '指定CheckBox是否选中', defaultValue: 'undefined' },
+        checked: { type: 'boolean', desc: '指定Checkbox是否选中', defaultValue: 'undefined' },
         defaultChecked: {
           type: 'boolean',
-          desc: '指定CheckBox初始是否选中',
+          desc: '指定Checkbox初始是否选中',
           defaultValue: 'undefined',
         },
-        disabled: { type: 'boolean', desc: '指定CheckBox是否禁用', defaultValue: 'undefined' },
+        disabled: { type: 'boolean', desc: '指定Checkbox是否禁用', defaultValue: 'undefined' },
         indeterminate: {
           type: 'boolean',
           desc: '设置半选状态，只用于样式控制',
@@ -607,13 +593,18 @@ export default {
         value: { type: 'string', desc: '组件value值', defaultValue: 'undefined' },
         styles: {
           type: 'CheckboxType',
-          desc: 'CheckBox展示方向，可选值为 vertical 或不设',
+          desc: 'Checkbox展示方向，可选值为 vertical 或不设',
           defaultValue: 'false',
+        },
+        children: {
+          type: 'string | React.node',
+          desc: 'Checkbox展示内容',
+          defaultValue: 'undefined',
         },
       },
       events: {
         onChange: {
-          desc: 'CheckBox改变时回调',
+          desc: 'Checkbox改变时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
             {
@@ -626,15 +617,95 @@ export default {
       },
       type: {
         CheckboxType: ['default', 'vertical'],
-        CheckBoxStyle: {
-          width: { type: 'number', desc: 'CheckBox宽度' },
-          color: { type: 'string', desc: 'CheckBox颜色' },
+        CheckboxStyle: {
+          width: { type: 'number', desc: 'Checkbox宽度' },
+          color: { type: 'string', desc: 'Checkbox颜色' },
         },
       },
       childrenWidget: ['checkbox-group'],
       category: ['数据录入'],
     },
-    target: CheckBox,
+    target: Checkbox,
+  },
+  CheckboxGroup: {
+    meta: {
+      widgetName: 'CheckboxGroup',
+      title: '多选框组',
+      desc: '多选框组。',
+      props: {
+        defaultValue: {
+          type: 'string[]',
+          desc: '指定CheckboxGroup初始选中值',
+          defaultValue: 'undefined',
+        },
+        value: { type: 'string[]', desc: '指定CheckboxGroup选中值', defaultValue: 'undefined' },
+        disabled: { type: 'boolean', desc: '指定CheckboxGroup是否禁用', defaultValue: 'undefined' },
+        data: { type: 'Object[]', desc: '指定 Checkbox 组件展示值', defaultValue: 'undefined' },
+        displayField: {
+          type: 'string',
+          desc: '指定CheckboxGroup展示字段值',
+          defaultValue: 'undefined',
+        },
+        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值', defaultValue: 'false' },
+        displayValue: {
+          type: 'string[]',
+          desc:
+            '指定CheckboxGroup选中值备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值',
+          defaultValue: 'undefined',
+        },
+        defaultDisplayValue: {
+          type: 'string[]',
+          desc:
+            '指定CheckboxGroup选中值初始备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值',
+          defaultValue: 'undefined',
+        },
+        styles: {
+          type: 'CheckboxType',
+          desc: '指定CheckboxGroup中Checkbox展示方向，可选值为 vertical 或不设',
+          defaultValue: 'undefined',
+        },
+        childType: {
+          type: 'CheckboxGroupChildType',
+          desc: '指定CheckboxGroup展示类型，可设置为 button 或不设',
+          defaultValue: 'undefined',
+        },
+        size: {
+          type: 'CheckboxButtonSizeType',
+          desc:
+            '指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
+          defaultValue: 'undefined',
+        },
+        cache: {
+          type: 'boolean',
+          desc: '指定CheckboxGroup中实时更新data 数据源信息',
+          defaultValue: 'undefined',
+        },
+      },
+      events: {
+        onChange: {
+          desc: 'CheckboxGroup改变时回调',
+          args: [
+            {
+              name: 'newValue',
+              desc: 'CheckboxGroup改变时 value、displayValue 和 item 对应的值',
+              type: 'Object',
+            },
+          ],
+        },
+      },
+      type: {
+        CheckboxType: ['default', 'vertical'],
+        CheckboxGroupChildType: ['default', 'button'],
+        CheckboxButtonSizeType: ['default', 'small', 'large', 'bigger'],
+        CheckboxGroupStyle: {
+          width: { type: 'number', desc: 'Checkbox宽度' },
+          color: { type: 'string', desc: 'Checkbox颜色' },
+        },
+      },
+      category: ['数据录入'],
+      componentName: 'Group',
+    },
+    target: Checkbox.Group,
   },
   Collapse: {
     meta: {
@@ -642,7 +713,6 @@ export default {
       title: '折叠面板',
       desc: '折叠面板，用于展开/折叠内容区域。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         activeValue: {
           type: 'string | string[]',
           desc: '当前展开面板的 value值 或者 value 集合',
@@ -655,6 +725,12 @@ export default {
         },
         showArrow: { type: 'boolean', desc: '是否展示面板箭头', defaultValue: 'undefined' },
         accordion: { type: 'boolean', desc: '设置是否为手风琴模式', defaultValue: 'undefined' },
+        data: {
+          type: 'Object[]',
+          desc: '指定折叠面板data数据源，仅用于设计器',
+          defaultValue: 'undefined',
+          designOnly: true,
+        },
       },
       events: {
         onChange: {
@@ -675,9 +751,39 @@ export default {
           color: { type: 'string', desc: 'Collapse颜色' },
         },
       },
+      childrenWidget: ['panel'],
       category: ['数据展示'],
     },
     target: Collapse,
+  },
+  Panel: {
+    meta: {
+      widgetName: 'Panel',
+      title: 'Panel 面板',
+      desc: 'Panel 面板。',
+      props: {
+        value: { type: 'string', desc: '指定Panel面板value值', defaultValue: 'undefined' },
+        header: {
+          type: 'string | React.node',
+          desc: '指定Panel面板头部内容',
+          defaultValue: 'undefined',
+        },
+        children: { type: 'string | React.node', desc: 'Panel面板内容', defaultValue: 'undefined' },
+        disabled: { type: 'boolean', desc: 'Panel面板是否禁用', defaultValue: 'false' },
+        open: { type: 'boolean', desc: 'Panel面板是否展开', defaultValue: 'false' },
+        showArrow: { type: 'boolean', desc: 'Panel面板是否展示箭头', defaultValue: 'true' },
+      },
+      events: {
+        onClick: {
+          desc: 'Panel面板点击事件回调',
+          args: [{ name: 'value', desc: 'Panel面板点击时 value的值', type: 'string' }],
+        },
+      },
+      type: {},
+      category: ['数据展示'],
+      componentName: 'Panel',
+    },
+    target: Collapse.Panel,
   },
   DatePicker: {
     meta: {
@@ -685,7 +791,6 @@ export default {
       title: '日期选择器',
       desc: '用于日期选择',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
         value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
         format: {
@@ -740,6 +845,219 @@ export default {
     },
     target: DatePicker,
   },
+  MonthPicker: {
+    meta: {
+      widgetName: 'MonthPicker',
+      title: '月选择器',
+      desc: '用于月份选择,',
+      props: {
+        defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
+        value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
+        format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-MM' },
+        placeholder: { type: 'string', desc: 'input输入提示信息', defaultValue: 'undefined' },
+        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
+        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
+        extraFooter: {
+          type: 'Object',
+          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
+          defaultValue: '无',
+        },
+      },
+      events: {
+        onChange: {
+          desc: '时间值发生变化时的回调',
+          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
+        },
+        onFocus: { desc: '输入框获取焦点', args: [] },
+        onBlur: { desc: '输入框失去焦点', args: [] },
+      },
+      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      category: ['数据录入'],
+    },
+    target: DatePicker.undefined,
+  },
+  YearPicker: {
+    meta: {
+      widgetName: 'YearPicker',
+      title: '年选择器',
+      desc: '用于年选择,',
+      props: {
+        defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
+        value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
+        format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY' },
+        placeholder: { type: 'string', desc: 'input输入提示信息', defaultValue: 'undefined' },
+        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
+        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
+        extraFooter: {
+          type: 'Object',
+          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
+          defaultValue: '无',
+        },
+        step: { type: 'number', desc: '设置年的展示步长', defaultValue: 'false' },
+      },
+      events: {
+        onChange: {
+          desc: '时间值发生变化时的回调',
+          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
+        },
+        onFocus: { desc: '输入框获取焦点', args: [] },
+        onBlur: { desc: '输入框失去焦点', args: [] },
+      },
+      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      category: ['数据录入'],
+    },
+    target: DatePicker.undefined,
+  },
+  WeekPicker: {
+    meta: {
+      widgetName: 'WeekPicker',
+      title: '周选择器',
+      desc: '用于周选择,',
+      props: {
+        defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
+        value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
+        format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-WW' },
+        placeholder: { type: 'string', desc: 'input输入提示信息', defaultValue: 'undefined' },
+        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
+        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
+        selectToday: { type: 'boolean', desc: '是否默认选中今天日期', defaultValue: 'false' },
+        showToday: {
+          type: 'boolean | Object',
+          desc: "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
+          defaultValue: 'false',
+        },
+        extraFooter: {
+          type: 'Object',
+          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
+          defaultValue: '无',
+        },
+        buttonOptions: {
+          type: 'Object',
+          desc:
+            '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
+          defaultValue: '无',
+        },
+        step: { type: 'number', desc: '设置周,年的展示步长', defaultValue: 'false' },
+      },
+      events: {
+        onChange: {
+          desc: '时间值发生变化时的回调',
+          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
+        },
+        onOk: {
+          desc:
+            "点击确定按钮的回掉onOk={function()} | onOk={message:'XXX',Function:function()} 可指定onOk按钮显示的文本",
+          args: [],
+        },
+        onFocus: { desc: '输入框获取焦点', args: [] },
+        onBlur: { desc: '输入框失去焦点', args: [] },
+      },
+      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      category: ['数据录入'],
+    },
+    target: DatePicker.undefined,
+  },
+  WeeksPicker: {
+    meta: {
+      widgetName: 'WeeksPicker',
+      title: '周选择器',
+      desc: '用于周选择,',
+      props: {
+        defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
+        value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
+        format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-WW' },
+        placeholder: { type: 'string', desc: 'input输入提示信息', defaultValue: 'undefined' },
+        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
+        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
+        extraFooter: {
+          type: 'Object',
+          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
+          defaultValue: '无',
+        },
+        step: { type: 'number', desc: '设置周,年的展示步长', defaultValue: 'false' },
+      },
+      events: {
+        onChange: {
+          desc: '时间值发生变化时的回调',
+          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
+        },
+        onFocus: { desc: '输入框获取焦点', args: [] },
+        onBlur: { desc: '输入框失去焦点', args: [] },
+      },
+      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      category: ['数据录入'],
+    },
+    target: DatePicker.undefined,
+  },
+  RangePicker: {
+    meta: {
+      widgetName: 'RangePicker',
+      title: '日期范围选择器',
+      desc: '用于日期范围选择,',
+      props: {
+        defaultValue: { type: 'Array<string>', desc: '日期默认显示值', defaultValue: 'undefined' },
+        value: { type: 'Array<string>', desc: '日期显示值', defaultValue: 'undefined' },
+        format: {
+          type: 'string',
+          desc: '用于指定输入框日期显示的格式',
+          defaultValue: 'YYYY-MM-DD',
+        },
+        placeholder: {
+          type: 'Array<string>',
+          desc: 'input输入提示信息',
+          defaultValue: 'undefined',
+        },
+        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
+        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
+        selectToday: { type: 'boolean', desc: '是否默认选中今天日期', defaultValue: 'false' },
+        showToday: {
+          type: 'boolean | Object',
+          desc: "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
+          defaultValue: 'false',
+        },
+        showTime: {
+          type: 'boolean | Object',
+          desc:
+            "为组件增加时间选择功能 | showTime={message:{showTime:'XXX',showDate:'XXX'}} 可以指定按钮切换文本",
+          defaultValue: 'false',
+        },
+        extraFooter: {
+          type: 'Object',
+          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
+          defaultValue: '无',
+        },
+        buttonOptions: {
+          type: 'Object',
+          desc:
+            '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
+          defaultValue: '无',
+        },
+        step: { type: 'number', desc: '设置周,年的展示步长', defaultValue: 'false' },
+      },
+      events: {
+        onChange: {
+          desc: '时间值发生变化时的回调',
+          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
+        },
+        onOk: {
+          desc:
+            "点击确定按钮的回掉onOk={function()} | onOk={message:'XXX',Function:function()} 可指定onOk按钮显示的文本",
+          args: [],
+        },
+        onFocus: { desc: '输入框获取焦点', args: [] },
+        onBlur: { desc: '输入框失去焦点', args: [] },
+      },
+      type: {
+        ChangeType: {
+          newValue: 'Array<string>',
+          oldValue: 'Array<string>',
+          event: 'SyntheticEvent',
+        },
+      },
+      category: ['数据录入'],
+    },
+    target: DatePicker.undefined,
+  },
   Divider: {
     meta: {
       widgetName: 'Divider',
@@ -771,7 +1089,6 @@ export default {
       title: '抽屉',
       desc: '在屏幕边缘出现的浮层面板。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         placement: { type: 'PlacementType', desc: '抽屉的方向', defaultValue: 'right' },
         title: { type: 'React.node', desc: '抽屉的标题', defaultValue: 'undefined' },
         visible: { type: 'boolean', desc: '抽屉是否展示', defaultValue: 'undefined' },
@@ -797,7 +1114,6 @@ export default {
       title: '下拉菜单',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         action: { type: 'click | hover', desc: '弹出项的打开方式', defaultValue: 'click' },
         hideAction: { type: 'click | hover', desc: '弹出项的隐藏方式', defaultValue: 'click' },
         menus: { type: 'React.Node', desc: '弹出项组件', defaultValue: 'undefined' },
@@ -818,6 +1134,32 @@ export default {
     },
     target: Dropmenu,
   },
+  DropmenuButton: {
+    meta: {
+      widgetName: 'DropmenuButton',
+      title: '下拉菜单的按钮',
+      desc: '用于Dropmenu的按钮',
+      props: {
+        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: 'false' },
+        type: {
+          type: 'customs | basic | primary',
+          desc: '按钮的风格,默认为customs',
+          defaultValue: 'customs',
+        },
+        text: { type: 'string', desc: '下拉菜单按钮的文本', defaultValue: 'undefined' },
+        direction: { type: 'up | bottom', desc: '按钮箭头的方向', defaultValue: 'bottom' },
+        divided: { type: 'boolean', desc: '是否有分割线', defaultValue: 'true' },
+      },
+      events: {
+        onClick: {
+          desc: '点击按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+      },
+      category: ['数据录入'],
+    },
+    target: Dropmenu.undefined,
+  },
   Grid: {
     meta: {
       widgetName: 'Grid',
@@ -825,8 +1167,69 @@ export default {
       desc: '栅格',
       childrenWidget: ['col', 'row'],
       category: ['布局'],
+      empty: true,
     },
     target: Grid,
+  },
+  Col: {
+    meta: {
+      widgetName: 'Col',
+      title: '栅格',
+      desc: '栅格。',
+      props: {
+        span: { type: 'number', desc: '栅格占位格数，共 24格', defaultValue: '1' },
+        offset: {
+          type: 'number',
+          desc: '栅格左侧的间隔格数，间隔内不可以有栅格',
+          defaultValue: 'undefined',
+        },
+        pull: { type: 'number', desc: '栅格向左移动格数', defaultValue: 'undefined' },
+        push: { type: 'number', desc: '栅格向右移动格数', defaultValue: 'undefined' },
+        order: { type: 'number', desc: '栅格的顺序，flex 布局下有效', defaultValue: 'undefined' },
+      },
+      category: ['布局'],
+      componentName: 'Col',
+    },
+    target: Grid.Col,
+  },
+  Row: {
+    meta: {
+      widgetName: 'Row',
+      title: '栅格',
+      desc: '栅格。',
+      props: {
+        type: { type: 'RowType', desc: '布局方式，可设为 flex 或不设', defaultValue: 'undefined' },
+        justify: {
+          type: 'JustifyType',
+          desc: 'flex 布局下的水平排列方式，可设置为 start、end、center、spaceAround、spaceBetween',
+          defaultValue: 'undefined',
+        },
+        align: {
+          type: 'AlignType',
+          desc: 'flex 布局下的垂直排列方式，可设置为 top、middle、bottom',
+          defaultValue: 'undefined',
+        },
+        gutter: {
+          type: 'number | Object',
+          desc: '栅格之间的间隔，可写为 number 格式 或支持响应式 对象写法：{xs: 8,sm: 16,md: 24}',
+          defaultValue: 'undefined',
+        },
+        data: {
+          type: 'Object[]',
+          desc: '指定栅格 data 属性，仅用于设计器',
+          defaultValue: 'undefined',
+          designOnly: true,
+        },
+      },
+      type: {
+        RowType: ['flex', 'default'],
+        JustifyType: ['start', 'end', 'center', 'spaceAround', 'spaceBetween'],
+        AlignType: ['top', 'middle', 'bottom'],
+      },
+      category: ['布局'],
+      componentName: 'Row',
+    },
+    target: Grid.Row,
   },
   Icon: {
     meta: {
@@ -834,7 +1237,6 @@ export default {
       title: '图标',
       desc: '语义化的矢量图形',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         iconClass: {
           type: 'string',
@@ -858,7 +1260,6 @@ export default {
       title: '文本输入框',
       desc: '常用于昵称,名称,表格内容等填写.',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         size: {
@@ -949,7 +1350,6 @@ export default {
       title: '布局',
       desc: '页面整体布局。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         direction: {
           type: 'LayoutDirectionType',
           desc: '指定Layout嵌套组件排列顺序，row 横向排列，column 纵向排列',
@@ -973,13 +1373,49 @@ export default {
     },
     target: Layout,
   },
+  Aside: {
+    meta: {
+      widgetName: 'Aside',
+      title: '侧边栏',
+      desc: '页面整体布局-侧边栏。',
+      props: {
+        collapsible: { type: 'boolean', desc: '指定 Aside 是否可以收起', defaultValue: 'column' },
+        trigger: { type: 'React.node', desc: '指定 Aside 收起元素', defaultValue: 'undefined' },
+        reverseArrow: {
+          type: 'string',
+          desc: '触发响应式的断点，可选 xs、sm、md、lg、xl、xxl',
+          defaultValue: 'undefined',
+        },
+        collapsedWidth: { type: 'number', desc: '收缩宽度', defaultValue: 'undefined' },
+        collapsed: { type: 'boolean', desc: '当前收缩状态', defaultValue: 'undefined' },
+      },
+      type: {
+        LayoutDirectionType: ['row', 'column'],
+        AsideStyle: {
+          height: { type: 'number', desc: 'Aside 高度' },
+          backgroundColor: { type: 'string', desc: 'Aside 背景色' },
+        },
+      },
+      events: {
+        onCollapse: {
+          desc: '展开-收起时的回调函数',
+          args: [{ name: 'collapsed', desc: '收起状态', type: 'boolean' }],
+        },
+        onBreakpoint: {
+          desc: '触发响应式时的回调函数',
+          args: [{ name: 'broken', desc: '收起状态', type: 'boolean' }],
+        },
+      },
+      category: ['布局'],
+    },
+    target: Layout.undefined,
+  },
   Loading: {
     meta: {
       widgetName: 'Loading',
       title: '加载中',
       desc: '用于页面和区块的加载中状态',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         size: { type: 'small|default|large', desc: 'Loading尺寸大小', defaultValue: 'default' },
         delay: { type: 'number', desc: '延迟加载时间', defaultValue: 'undefined' },
         scale: { type: 'boolean', desc: '是否缩放', defaultValue: 'false' },
@@ -1006,7 +1442,6 @@ export default {
       title: '菜单',
       desc: '为用户提供菜单列表',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -1110,27 +1545,12 @@ export default {
     },
     target: Menu,
   },
-  Message: {
-    meta: {
-      widgetName: 'Message',
-      title: '全局提示',
-      desc: '全局提示，展示操作反馈信息。',
-      props: {
-        content: { type: 'React.node', desc: '提示消息的内容', defaultValue: 'undefined' },
-        time: { type: 'number', desc: '自动延时关闭，单位为 秒', defaultValue: '2' },
-        callBack: { type: 'Function', desc: '关闭时的回调', defaultValue: 'undefined' },
-      },
-      category: ['反馈'],
-    },
-    target: Message,
-  },
   Modal: {
     meta: {
       widgetName: 'Modal',
       title: '对话框',
       desc: 'Modal 对话框。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         title: { type: 'React.node', desc: '标题', defaultValue: 'undefined' },
         visible: { type: 'boolean', desc: 'Modal 是否可见', defaultValue: 'undefined' },
         cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
@@ -1161,7 +1581,6 @@ export default {
       title: '导航菜单',
       desc: '为页面提供导航功能的菜单',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         data: {
           type: "[{valueField: '', displayField: ''}]",
           desc: '生成选择项的数据',
@@ -1222,34 +1641,12 @@ export default {
     },
     target: NavMenu,
   },
-  Notification: {
-    meta: {
-      widgetName: 'Notification',
-      title: '通知提醒框',
-      desc: 'Notification 通知提醒框。',
-      props: {
-        title: { type: 'React.node', desc: '标题', defaultValue: 'undefined' },
-        duration: { type: 'number', desc: '自定义演示关闭', defaultValue: '4.5' },
-        description: { type: 'React.node', desc: '通知提醒内容', defaultValue: 'undefined' },
-        icon: { type: 'string', desc: '自定义图标', defaultValue: 'undefined' },
-        placement: {
-          type: 'PlacementType',
-          desc: '弹出位置，topRight、bottomLeft、bottomRight、topLeft',
-          defaultValue: 'topRight',
-        },
-      },
-      type: { PlacementType: ['topRight', 'bottomLeft', 'bottomRight', 'topLeft'] },
-      category: ['反馈'],
-    },
-    target: Notification,
-  },
   NumberInput: {
     meta: {
       widgetName: 'NumberInput',
       title: '数字输入框',
       desc: '常用于数字输入,可以进行快速加减显示',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         size: {
@@ -1410,7 +1807,6 @@ export default {
       title: '气泡确认框',
       desc: '气泡式的确认框',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         title: { type: 'React.Node', desc: '确认框标题显示内容', defaultValue: 'undefined' },
         description: { type: 'React.Node', desc: '确认框描述显示内容', defaultValue: 'undefined' },
         content: { type: 'React.Node', desc: '整个确认框显示内容', defaultValue: 'undefined' },
@@ -1479,7 +1875,6 @@ export default {
       title: '气泡卡片',
       desc: '气泡式的卡片浮层',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'undefined' },
         description: { type: 'React.Node', desc: '卡片描述显示内容', defaultValue: 'undefined' },
         content: { type: 'React.Node', desc: '整个卡片显示内容', defaultValue: 'undefined' },
@@ -1540,7 +1935,6 @@ export default {
       title: '进度条',
       desc: '展示操作的当前进度。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         type: {
           type: 'ProgressType',
           desc: '进度条类型，line、circle、dashboard',
@@ -1586,11 +1980,11 @@ export default {
       title: '单选框',
       desc: '单选框。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         checked: { type: 'boolean', desc: '单选框是否选中', defaultValue: 'undefined' },
         defaultChecked: { type: 'boolean', desc: '单选框初始是否选中', defaultValue: 'undefined' },
         disabled: { type: 'boolean', desc: '单选框是否禁用', defaultValue: 'undefined' },
         value: { type: 'string', desc: '单选框的 value 值', defaultValue: 'true' },
+        children: { type: 'string | React.node', desc: 'Radio展示内容', defaultValue: 'undefined' },
       },
       event: {
         onChange: {
@@ -1615,7 +2009,6 @@ export default {
       title: '评分',
       desc: '评分组件',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: '5' },
         max: { type: 'number', desc: '最大分值', defaultValue: '5' },
         disabled: { type: 'boolean', desc: '禁用状态,不可进行交互', defaultValue: 'false' },
@@ -1674,7 +2067,6 @@ export default {
       title: '选择器',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         data: {
           type: "[{valueField: '', displayField: ''}]",
           desc: '生成选择项的数据',
@@ -1837,7 +2229,6 @@ export default {
       title: '滑动输入条',
       desc: '滑动型输入器，展示当前值和可选范围',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         maxValue: { type: 'number', desc: '最大值限制', defaultValue: 'Infinity' },
         minValue: { type: 'number', desc: '最小值限制', defaultValue: '-Infinity' },
         defaultValue: {
@@ -1881,7 +2272,6 @@ export default {
       title: '步骤条',
       desc: '引导用户按照流程完成任务的导航条',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件', defaultValue: 'undefined' },
         data: { type: 'Array<Object>', desc: '步骤条填充的数据', defaultValue: 'undefined' },
         defaultData: {
@@ -1921,6 +2311,65 @@ export default {
       category: ['导航'],
     },
     target: Steps,
+  },
+  Step: {
+    meta: {
+      widgetName: 'Step',
+      title: '单步骤',
+      desc: '步骤条中每一个步骤',
+      props: {
+        children: {
+          type: 'React.Node',
+          desc: '气泡卡片需要包含的子组件',
+          defaultValue: 'undefined',
+        },
+        stepType: {
+          type: 'StepType',
+          desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          defaultValue: 'simple',
+        },
+        size: {
+          type: 'SizeType',
+          desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
+          defaultValue: 'normal',
+        },
+        desAlign: {
+          type: 'AlignType',
+          desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
+          defaultValue: 'left',
+        },
+        orientation: {
+          type: 'SizeType',
+          desc: '步骤条方向,可选择水平,垂直',
+          defaultValue: 'horizontal',
+        },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        stepNumber: { type: 'number', desc: '步骤条位置', defaultValue: 'undefined' },
+        stepStatus: {
+          type: 'StepStatus',
+          desc: '步骤条状态,已完成,进行中,下一个,等待中,异常多种状态',
+          defaultValue: 'undefined',
+        },
+        title: { type: 'React.Node', desc: '步骤条显示的标题', defaultValue: 'undefined' },
+        description: {
+          type: 'React.Node',
+          desc: '步骤条显示的信息描述',
+          defaultValue: 'undefined',
+        },
+        icon: { type: 'string', desc: '步骤条显示的图标', defaultValue: 'undefined' },
+        isFirst: { type: 'boolean', desc: '该步骤是否是第一步', defaultValue: 'false' },
+        isDashed: { type: 'boolean', desc: '步骤条进度是否用虚线显示', defaultValue: 'false' },
+      },
+      type: {
+        StepType: ['simple', 'flat', 'icon', 'dot'],
+        StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
+        SizeType: ['normal', 'mini'],
+        OrientationType: ['horizontal', 'vertical'],
+        AlignType: ['center', 'left'],
+      },
+      category: ['导航'],
+    },
+    target: Steps.undefined,
   },
   Switch: {
     meta: {
@@ -2034,7 +2483,6 @@ export default {
       title: '标签页',
       desc: '选项卡切换组件',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         activityKey: { type: 'string', desc: '当前激活 tab 面板的 key', defaultValue: 'undefined' },
         defaultActivityKey: { type: 'string', desc: '默认激活 tab 面板的 key', defaultValue: '0' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
@@ -2110,13 +2558,82 @@ export default {
     },
     target: Tabs,
   },
+  Tabpane: {
+    meta: {
+      widgetName: 'Tabpane',
+      title: '单个标签页',
+      desc: '单个标签页组件',
+      props: {
+        activityKey: { type: 'string', desc: '当前激活 tab 面板的 key', defaultValue: 'undefined' },
+        title: { type: 'string', desc: '标签页标题', defaultValue: 'undefined' },
+        icon: { type: 'string', desc: '标签页图标资源', defaultValue: 'undefined' },
+        tabType: {
+          type: 'TabType',
+          desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
+          defaultValue: 'line',
+        },
+        tabPosition: {
+          type: 'TabPositionType',
+          desc: '页签位置，可配置 左,右,上,下',
+          defaultValue: 'top',
+        },
+        isSelect: { type: 'boolean', desc: '标签页是否被选中', defaultValue: 'false' },
+      },
+      events: {
+        onClick: {
+          desc: 'tab 被点击的回调',
+          args: [{ name: 'event', desc: '点击标签页时调用DOM事件', type: 'Object' }],
+        },
+        onDeleteClick: {
+          desc: '点击清除按钮后回调',
+          args: [{ name: 'event', desc: '要删除的标签页对象', type: 'Object' }],
+        },
+      },
+      type: {
+        TabType: ['line', 'card', 'window'],
+        TabPositionType: ['top', 'bottom', 'inner', 'default'],
+      },
+      category: ['数据展示'],
+    },
+    target: Tabs.undefined,
+  },
+  Tabcontent: {
+    meta: {
+      widgetName: 'Tabcontent',
+      title: '标签页内容',
+      desc: '选项卡内容显示组件',
+      props: {
+        activityKey: { type: 'string', desc: '当前激活 tab 面板的 key', defaultValue: 'undefined' },
+        tabType: {
+          type: 'TabType',
+          desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
+          defaultValue: 'line',
+        },
+        tabPosition: {
+          type: 'TabPositionType',
+          desc: '页签位置，可配置 左,右,上,下',
+          defaultValue: 'top',
+        },
+        content: {
+          type: 'React$Element<any>',
+          desc: '配置标签页需要显示的内容',
+          defaultValue: 'undefined',
+        },
+      },
+      type: {
+        TabType: ['line', 'card', 'window'],
+        TabPositionType: ['top', 'bottom', 'inner', 'default'],
+      },
+      category: ['数据展示'],
+    },
+    target: Tabs.undefined,
+  },
   Tag: {
     meta: {
       widgetName: 'Tag',
       title: '标签',
       desc: '标记和分类的标签',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: 'true' },
         shape: {
           type: ' basic | round ',
@@ -2157,7 +2674,6 @@ export default {
       title: '时间轴',
       desc: '垂直展示的时间流信息',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         children: { type: 'React.Node', desc: '时间轴需要包含的子组件', defaultValue: 'undefined' },
         data: { type: 'Array<Object>', desc: '时间轴填充的数据', defaultValue: 'undefined' },
         defaultData: {
@@ -2188,13 +2704,45 @@ export default {
     },
     target: TimeLine,
   },
+  TimeLineItem: {
+    meta: {
+      widgetName: 'TimeLineItem',
+      title: '时间轴节点',
+      desc: '时间轴每一个节点',
+      props: {
+        time: { type: 'string', desc: '时间轴显示的时间', defaultValue: 'undefined' },
+        description: { type: 'string', desc: '时间轴显示的节点描述', defaultValue: 'undefined' },
+        icon: { type: 'string', desc: '时间轴显示的节点图标资源', defaultValue: 'undefined' },
+        direction: {
+          type: 'string',
+          desc: '时间轴显示内容的方向,根据父组件mode属性来显示',
+          defaultValue: 'right',
+        },
+        isLast: { type: 'boolean', desc: '是否是最后一个时间节点', defaultValue: 'false' },
+        status: { type: 'TimeLineStatus', desc: '时间节点的状态', defaultValue: 'normal' },
+        timeLineType: {
+          type: 'TimeLineType',
+          desc: '时间节点的风格 可配置 图标风格和隐藏解释类型',
+          defaultValue: 'undefined',
+        },
+        pending: { type: 'boolean', desc: '最后一个是否是幽灵节点', defaultValue: 'false' },
+        pendingDot: {
+          type: 'React.Node',
+          desc: '当最后一个是幽灵节点时,指定其图标资源',
+          defaultValue: 'undefined',
+        },
+      },
+      type: { TimeLineType: ['icon', 'explain'], TimeLineStatus: ['success', 'failed', 'normal'] },
+      category: ['数据展示'],
+    },
+    target: TimeLine.undefined,
+  },
   TimePicker: {
     meta: {
       widgetName: 'TimePicker',
       title: '时间选择器',
       desc: '用于时间选择,',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         defaultValue: { type: 'string', desc: '时间默认显示值', defaultValue: 'undefined' },
         value: { type: 'string', desc: '时间显示值', defaultValue: 'undefined' },
         format: { type: 'string', desc: '用于指定输入框时间显示的格式', defaultValue: 'HH:mm:ss' },
@@ -2221,7 +2769,6 @@ export default {
       title: '文字提示',
       desc: '简单的文字气泡提示框',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         size: {
           type: 'ToolTipSize',
           desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
@@ -2291,11 +2838,6 @@ export default {
       title: '穿梭框',
       desc: '穿梭框。',
       props: {
-        getTheme: {
-          type: 'Function',
-          desc: '用于配置通用主题属性，可配置 width、height',
-          defaultValue: 'undefined',
-        },
         data: { type: 'Object[]', desc: '左右两个面板数据源', defaultValue: 'undefined' },
         showSearch: { type: 'boolean', desc: '是否展示搜索框', defaultValue: 'undefined' },
         filterOption: {
@@ -2403,7 +2945,6 @@ export default {
       title: '树形控件',
       desc: '清晰地展示层级结构的信息,可展开或折叠。',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: '0' },
         query: { type: 'string', desc: '用于过滤数据的关键字', defaultValue: " '' " },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: 'false' },
@@ -2502,7 +3043,6 @@ export default {
           desc: "input校验状态, 'success' 成功 | 'error'错误",
           defaultValue: 'success',
         },
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         data: { type: 'Array<Object>', desc: '生成选择项的数据', defaultValue: 'false' },
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'key' },
         displayField: {
@@ -2579,7 +3119,6 @@ export default {
       title: '上传',
       desc: '上传组件,可通过文件选择和拖拽上传',
       props: {
-        getTheme: { type: 'Function', desc: '用于配置通用主题属性', defaultValue: 'undefined' },
         data: { type: 'Object', desc: '上传时附带的额外参数', defaultValue: 'undefined' },
         listType: {
           type: 'UploadType',
