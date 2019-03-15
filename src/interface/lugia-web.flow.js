@@ -72,6 +72,7 @@ declare module '@lugia/lugia-web' {
     borderSize?: BorderSizeType,
     position?: PositionType,
     opacity?: OpacityType,
+    visibility?: VisibilityType,
   };
   declare type WidthType = number;
   declare type HeightType = number;
@@ -80,6 +81,7 @@ declare module '@lugia/lugia-web' {
   declare type ColorType = string;
   declare type RadiusType = number | RadiusSize;
   declare type OpacityType = number;
+  declare type VisibilityType = 'hidden' | 'visible';
 
   declare type MarginObject = { top?: number, right?: number, bottom?: number, left?: number };
   declare type PositionType = { top?: number, right?: number, bottom?: number, left?: number };

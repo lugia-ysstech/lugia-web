@@ -26,6 +26,7 @@ import {
   getVisibility,
   getWidth,
   isValidateSuccess,
+  getInputVisibility,
 } from '../css/input';
 import { FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
@@ -81,6 +82,7 @@ export const Input = CommonInputStyle.extend`
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
+  ${getInputVisibility};
 `;
 
 export const InputOnly = CommonInputStyle.extend`
@@ -197,6 +199,7 @@ class TextBox extends Component<InputProps, InputState> {
     let { value, defaultValue } = nextProps;
     const hasValueInprops = 'value' in nextProps;
     value = fixControlledValue(value);
+
     if (!preState) {
       return {
         value: hasValueInprops ? value : defaultValue,
