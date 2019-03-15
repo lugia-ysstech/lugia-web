@@ -127,5 +127,5 @@ export default ThemeProvider(
       );
     }
   },
-  Widget.CheckBox
+  Widget.Checkbox
 );
