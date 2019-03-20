@@ -65,6 +65,7 @@ type SelectProps = {
   displayValue?: string[],
   defaultValue?: string[],
   defaultDisplayValue?: string[],
+  createPortal?: boolean,
   children?: any,
 };
 
@@ -96,6 +97,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     },
     mutliple: false,
     canInput: false,
+    createPortal: false,
     displayField: DisplayField,
     valueField: ValueField,
     mode: 'local',
@@ -304,7 +306,15 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   fetchRenderItems() {
     const { props, state } = this;
-    const { disabled, validateStatus, placeholder, mutliple, canSearch, canInput } = props;
+    const {
+      disabled,
+      validateStatus,
+      placeholder,
+      mutliple,
+      canSearch,
+      canInput,
+      createPortal,
+    } = props;
     const { displayValue = [] } = this;
     const { value = [], query, isCheckedAll } = state;
 
@@ -343,6 +353,7 @@ class Select extends React.Component<SelectProps, SelectState> {
             popup={menu}
             key="trigger"
             ref={getMenuTriger}
+            createPortal={createPortal}
             action={disabled ? [] : ['click']}
             hideAction={['click']}
             onPopupVisibleChange={this.onMenuPopupVisibleChange}

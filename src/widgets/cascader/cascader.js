@@ -40,6 +40,7 @@ type CascaderProps = {
   disabled: boolean,
   displayField: string,
   valueField: string,
+  createPortal?: boolean,
   showAllLevels?: boolean,
   allowClear?: boolean,
   menuWidth: number,
@@ -65,6 +66,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     displayField: DisplayField,
     valueField: ValueField,
     allowClear: true,
+    createPortal: false,
     menuWidth: DefaultMenuWidth,
   };
 
@@ -101,7 +103,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   render() {
     const { props, state } = this;
     const { popupVisible, inputValue } = state;
-    const { getTheme, placeholder, offsetY, disabled } = props;
+    const { getTheme, placeholder, offsetY, disabled, createPortal } = props;
     const theme = getTheme();
     const { width = 200 } = theme;
     return (
@@ -115,7 +117,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
             offsetY={offsetY}
             popupVisible={popupVisible}
             popup={this.getMenu(theme)}
-            createPortal
+            createPortal={createPortal}
             lazy={false}
           >
             <InputTag

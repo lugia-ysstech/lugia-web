@@ -58,6 +58,7 @@ type TreeSelectProps = {
   label: string,
   labelSize: number,
   canSearch: boolean,
+  createPortal?: boolean,
 };
 type TreeSelectState = {
   open: boolean,
@@ -119,6 +120,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     valueField: 'value',
     displayField: 'text',
     mode: 'local',
+    createPortal: false,
     throttle: 200,
     disabled: false,
     canSearch: false,
@@ -238,6 +240,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       displayField,
       expandAll,
       translateTreeData,
+      createPortal,
     } = props;
     const { onSelect, ...res } = props;
 
@@ -312,6 +315,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         align="bottomLeft"
         key="trigger"
         ref={getTreeTriger}
+        createPortal={createPortal}
         action={disabled ? [] : ['click']}
         hideAction={['click']}
       >
