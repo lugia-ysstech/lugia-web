@@ -30,5 +30,6 @@
     }
   },
   "category": ["布局"],
-  "componentName": "Col"
+  "componentName": "Col",
+  "needExport": true
 }

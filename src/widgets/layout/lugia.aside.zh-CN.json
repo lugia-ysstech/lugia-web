@@ -52,5 +52,6 @@
       "args": [{ "name": "broken", "desc": "收起状态", "type": "boolean" }]
     }
   },
-  "category": ["布局"]
+  "category": ["布局"],
+  "needExport": true
 }

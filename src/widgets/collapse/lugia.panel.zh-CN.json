@@ -48,5 +48,6 @@
   },
   "type": {},
   "category": ["数据展示"],
-  "componentName": "Panel"
+  "componentName": "Panel",
+  "needExport": true
 }
