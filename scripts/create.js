@@ -116,17 +116,21 @@ function joinChildrenwidgetName(targetWidgetName, folderName, childrenWidget) {
       const { widgetName, componentName } = childrenMeta;
       //todo: 子组件导出形式全部更改后，可放开代码；否则报错；
       // targetWidgetNames.push(widgetName);
-      commonStr =
-        commonStr +
-        widgetName +
-        ':' +
-        '{ meta: ' +
-        JSON.stringify(childrenMeta) +
-        ', target: ' +
-        targetWidgetName +
-        '.' +
-        componentName +
-        '},';
+      const childrenNeedExport = childrenMeta.needExport;
+      if(childrenNeedExport){
+        commonStr =
+          commonStr +
+          widgetName +
+          ':' +
+          '{ meta: ' +
+          JSON.stringify(childrenMeta) +
+          ', target: ' +
+          targetWidgetName +
+          '.' +
+          componentName +
+          '},';
+      }
+
       // targetObject = targetObject ? targetObject + commonStr : commonStr;
     });
   }

@@ -36,5 +36,6 @@
     "AlignType": ["top", "middle", "bottom"]
   },
   "category": ["布局"],
-  "componentName": "Row"
+  "componentName": "Row",
+  "needExport": true
 }
