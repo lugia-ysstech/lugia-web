@@ -704,6 +704,7 @@ export default {
       },
       category: ['数据录入'],
       componentName: 'Group',
+      needExport: true,
     },
     target: Checkbox.Group,
   },
@@ -782,6 +783,7 @@ export default {
       type: {},
       category: ['数据展示'],
       componentName: 'Panel',
+      needExport: true,
     },
     target: Collapse.Panel,
   },
@@ -844,219 +846,6 @@ export default {
       category: ['数据录入'],
     },
     target: DatePicker,
-  },
-  MonthPicker: {
-    meta: {
-      widgetName: 'MonthPicker',
-      title: '月选择器',
-      desc: '用于月份选择,',
-      props: {
-        defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
-        value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
-        format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-MM' },
-        placeholder: { type: 'string', desc: 'input输入提示信息', defaultValue: 'undefined' },
-        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
-        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
-        extraFooter: {
-          type: 'Object',
-          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-          defaultValue: '无',
-        },
-      },
-      events: {
-        onChange: {
-          desc: '时间值发生变化时的回调',
-          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
-        },
-        onFocus: { desc: '输入框获取焦点', args: [] },
-        onBlur: { desc: '输入框失去焦点', args: [] },
-      },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
-      category: ['数据录入'],
-    },
-    target: DatePicker.undefined,
-  },
-  YearPicker: {
-    meta: {
-      widgetName: 'YearPicker',
-      title: '年选择器',
-      desc: '用于年选择,',
-      props: {
-        defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
-        value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
-        format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY' },
-        placeholder: { type: 'string', desc: 'input输入提示信息', defaultValue: 'undefined' },
-        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
-        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
-        extraFooter: {
-          type: 'Object',
-          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-          defaultValue: '无',
-        },
-        step: { type: 'number', desc: '设置年的展示步长', defaultValue: 'false' },
-      },
-      events: {
-        onChange: {
-          desc: '时间值发生变化时的回调',
-          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
-        },
-        onFocus: { desc: '输入框获取焦点', args: [] },
-        onBlur: { desc: '输入框失去焦点', args: [] },
-      },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
-      category: ['数据录入'],
-    },
-    target: DatePicker.undefined,
-  },
-  WeekPicker: {
-    meta: {
-      widgetName: 'WeekPicker',
-      title: '周选择器',
-      desc: '用于周选择,',
-      props: {
-        defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
-        value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
-        format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-WW' },
-        placeholder: { type: 'string', desc: 'input输入提示信息', defaultValue: 'undefined' },
-        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
-        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
-        selectToday: { type: 'boolean', desc: '是否默认选中今天日期', defaultValue: 'false' },
-        showToday: {
-          type: 'boolean | Object',
-          desc: "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
-          defaultValue: 'false',
-        },
-        extraFooter: {
-          type: 'Object',
-          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-          defaultValue: '无',
-        },
-        buttonOptions: {
-          type: 'Object',
-          desc:
-            '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
-          defaultValue: '无',
-        },
-        step: { type: 'number', desc: '设置周,年的展示步长', defaultValue: 'false' },
-      },
-      events: {
-        onChange: {
-          desc: '时间值发生变化时的回调',
-          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
-        },
-        onOk: {
-          desc:
-            "点击确定按钮的回掉onOk={function()} | onOk={message:'XXX',Function:function()} 可指定onOk按钮显示的文本",
-          args: [],
-        },
-        onFocus: { desc: '输入框获取焦点', args: [] },
-        onBlur: { desc: '输入框失去焦点', args: [] },
-      },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
-      category: ['数据录入'],
-    },
-    target: DatePicker.undefined,
-  },
-  WeeksPicker: {
-    meta: {
-      widgetName: 'WeeksPicker',
-      title: '周选择器',
-      desc: '用于周选择,',
-      props: {
-        defaultValue: { type: 'string', desc: '日期默认显示值', defaultValue: 'undefined' },
-        value: { type: 'string', desc: '日期显示值', defaultValue: 'undefined' },
-        format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-WW' },
-        placeholder: { type: 'string', desc: 'input输入提示信息', defaultValue: 'undefined' },
-        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
-        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
-        extraFooter: {
-          type: 'Object',
-          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-          defaultValue: '无',
-        },
-        step: { type: 'number', desc: '设置周,年的展示步长', defaultValue: 'false' },
-      },
-      events: {
-        onChange: {
-          desc: '时间值发生变化时的回调',
-          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
-        },
-        onFocus: { desc: '输入框获取焦点', args: [] },
-        onBlur: { desc: '输入框失去焦点', args: [] },
-      },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
-      category: ['数据录入'],
-    },
-    target: DatePicker.undefined,
-  },
-  RangePicker: {
-    meta: {
-      widgetName: 'RangePicker',
-      title: '日期范围选择器',
-      desc: '用于日期范围选择,',
-      props: {
-        defaultValue: { type: 'Array<string>', desc: '日期默认显示值', defaultValue: 'undefined' },
-        value: { type: 'Array<string>', desc: '日期显示值', defaultValue: 'undefined' },
-        format: {
-          type: 'string',
-          desc: '用于指定输入框日期显示的格式',
-          defaultValue: 'YYYY-MM-DD',
-        },
-        placeholder: {
-          type: 'Array<string>',
-          desc: 'input输入提示信息',
-          defaultValue: 'undefined',
-        },
-        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: 'false' },
-        readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
-        selectToday: { type: 'boolean', desc: '是否默认选中今天日期', defaultValue: 'false' },
-        showToday: {
-          type: 'boolean | Object',
-          desc: "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
-          defaultValue: 'false',
-        },
-        showTime: {
-          type: 'boolean | Object',
-          desc:
-            "为组件增加时间选择功能 | showTime={message:{showTime:'XXX',showDate:'XXX'}} 可以指定按钮切换文本",
-          defaultValue: 'false',
-        },
-        extraFooter: {
-          type: 'Object',
-          desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-          defaultValue: '无',
-        },
-        buttonOptions: {
-          type: 'Object',
-          desc:
-            '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
-          defaultValue: '无',
-        },
-        step: { type: 'number', desc: '设置周,年的展示步长', defaultValue: 'false' },
-      },
-      events: {
-        onChange: {
-          desc: '时间值发生变化时的回调',
-          args: [{ name: 'event', desc: '时间值发生变化时的回调', type: 'ChangeType' }],
-        },
-        onOk: {
-          desc:
-            "点击确定按钮的回掉onOk={function()} | onOk={message:'XXX',Function:function()} 可指定onOk按钮显示的文本",
-          args: [],
-        },
-        onFocus: { desc: '输入框获取焦点', args: [] },
-        onBlur: { desc: '输入框失去焦点', args: [] },
-      },
-      type: {
-        ChangeType: {
-          newValue: 'Array<string>',
-          oldValue: 'Array<string>',
-          event: 'SyntheticEvent',
-        },
-      },
-      category: ['数据录入'],
-    },
-    target: DatePicker.undefined,
   },
   Divider: {
     meta: {
@@ -1134,32 +923,6 @@ export default {
     },
     target: Dropmenu,
   },
-  DropmenuButton: {
-    meta: {
-      widgetName: 'DropmenuButton',
-      title: '下拉菜单的按钮',
-      desc: '用于Dropmenu的按钮',
-      props: {
-        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: 'false' },
-        type: {
-          type: 'customs | basic | primary',
-          desc: '按钮的风格,默认为customs',
-          defaultValue: 'customs',
-        },
-        text: { type: 'string', desc: '下拉菜单按钮的文本', defaultValue: 'undefined' },
-        direction: { type: 'up | bottom', desc: '按钮箭头的方向', defaultValue: 'bottom' },
-        divided: { type: 'boolean', desc: '是否有分割线', defaultValue: 'true' },
-      },
-      events: {
-        onClick: {
-          desc: '点击按钮时触发',
-          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
-        },
-      },
-      category: ['数据录入'],
-    },
-    target: Dropmenu.undefined,
-  },
   Grid: {
     meta: {
       widgetName: 'Grid',
@@ -1189,6 +952,7 @@ export default {
       },
       category: ['布局'],
       componentName: 'Col',
+      needExport: true,
     },
     target: Grid.Col,
   },
@@ -1228,6 +992,7 @@ export default {
       },
       category: ['布局'],
       componentName: 'Row',
+      needExport: true,
     },
     target: Grid.Row,
   },
@@ -1407,6 +1172,7 @@ export default {
         },
       },
       category: ['布局'],
+      needExport: true,
     },
     target: Layout.undefined,
   },
@@ -1789,11 +1555,7 @@ export default {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            {
-              name: 'size',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
       },
@@ -2312,65 +2074,6 @@ export default {
     },
     target: Steps,
   },
-  Step: {
-    meta: {
-      widgetName: 'Step',
-      title: '单步骤',
-      desc: '步骤条中每一个步骤',
-      props: {
-        children: {
-          type: 'React.Node',
-          desc: '气泡卡片需要包含的子组件',
-          defaultValue: 'undefined',
-        },
-        stepType: {
-          type: 'StepType',
-          desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
-          defaultValue: 'simple',
-        },
-        size: {
-          type: 'SizeType',
-          desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
-        },
-        desAlign: {
-          type: 'AlignType',
-          desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
-        },
-        orientation: {
-          type: 'SizeType',
-          desc: '步骤条方向,可选择水平,垂直',
-          defaultValue: 'horizontal',
-        },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
-        stepNumber: { type: 'number', desc: '步骤条位置', defaultValue: 'undefined' },
-        stepStatus: {
-          type: 'StepStatus',
-          desc: '步骤条状态,已完成,进行中,下一个,等待中,异常多种状态',
-          defaultValue: 'undefined',
-        },
-        title: { type: 'React.Node', desc: '步骤条显示的标题', defaultValue: 'undefined' },
-        description: {
-          type: 'React.Node',
-          desc: '步骤条显示的信息描述',
-          defaultValue: 'undefined',
-        },
-        icon: { type: 'string', desc: '步骤条显示的图标', defaultValue: 'undefined' },
-        isFirst: { type: 'boolean', desc: '该步骤是否是第一步', defaultValue: 'false' },
-        isDashed: { type: 'boolean', desc: '步骤条进度是否用虚线显示', defaultValue: 'false' },
-      },
-      type: {
-        StepType: ['simple', 'flat', 'icon', 'dot'],
-        StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
-        SizeType: ['normal', 'mini'],
-        OrientationType: ['horizontal', 'vertical'],
-        AlignType: ['center', 'left'],
-      },
-      category: ['导航'],
-    },
-    target: Steps.undefined,
-  },
   Switch: {
     meta: {
       widgetName: 'Switch',
@@ -2558,76 +2261,6 @@ export default {
     },
     target: Tabs,
   },
-  Tabpane: {
-    meta: {
-      widgetName: 'Tabpane',
-      title: '单个标签页',
-      desc: '单个标签页组件',
-      props: {
-        activityKey: { type: 'string', desc: '当前激活 tab 面板的 key', defaultValue: 'undefined' },
-        title: { type: 'string', desc: '标签页标题', defaultValue: 'undefined' },
-        icon: { type: 'string', desc: '标签页图标资源', defaultValue: 'undefined' },
-        tabType: {
-          type: 'TabType',
-          desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
-          defaultValue: 'line',
-        },
-        tabPosition: {
-          type: 'TabPositionType',
-          desc: '页签位置，可配置 左,右,上,下',
-          defaultValue: 'top',
-        },
-        isSelect: { type: 'boolean', desc: '标签页是否被选中', defaultValue: 'false' },
-      },
-      events: {
-        onClick: {
-          desc: 'tab 被点击的回调',
-          args: [{ name: 'event', desc: '点击标签页时调用DOM事件', type: 'Object' }],
-        },
-        onDeleteClick: {
-          desc: '点击清除按钮后回调',
-          args: [{ name: 'event', desc: '要删除的标签页对象', type: 'Object' }],
-        },
-      },
-      type: {
-        TabType: ['line', 'card', 'window'],
-        TabPositionType: ['top', 'bottom', 'inner', 'default'],
-      },
-      category: ['数据展示'],
-    },
-    target: Tabs.undefined,
-  },
-  Tabcontent: {
-    meta: {
-      widgetName: 'Tabcontent',
-      title: '标签页内容',
-      desc: '选项卡内容显示组件',
-      props: {
-        activityKey: { type: 'string', desc: '当前激活 tab 面板的 key', defaultValue: 'undefined' },
-        tabType: {
-          type: 'TabType',
-          desc: '可配置三种风格的标签页.可选 线性,卡片,窗口风格',
-          defaultValue: 'line',
-        },
-        tabPosition: {
-          type: 'TabPositionType',
-          desc: '页签位置，可配置 左,右,上,下',
-          defaultValue: 'top',
-        },
-        content: {
-          type: 'React$Element<any>',
-          desc: '配置标签页需要显示的内容',
-          defaultValue: 'undefined',
-        },
-      },
-      type: {
-        TabType: ['line', 'card', 'window'],
-        TabPositionType: ['top', 'bottom', 'inner', 'default'],
-      },
-      category: ['数据展示'],
-    },
-    target: Tabs.undefined,
-  },
   Tag: {
     meta: {
       widgetName: 'Tag',
@@ -2703,39 +2336,6 @@ export default {
       category: ['数据展示'],
     },
     target: TimeLine,
-  },
-  TimeLineItem: {
-    meta: {
-      widgetName: 'TimeLineItem',
-      title: '时间轴节点',
-      desc: '时间轴每一个节点',
-      props: {
-        time: { type: 'string', desc: '时间轴显示的时间', defaultValue: 'undefined' },
-        description: { type: 'string', desc: '时间轴显示的节点描述', defaultValue: 'undefined' },
-        icon: { type: 'string', desc: '时间轴显示的节点图标资源', defaultValue: 'undefined' },
-        direction: {
-          type: 'string',
-          desc: '时间轴显示内容的方向,根据父组件mode属性来显示',
-          defaultValue: 'right',
-        },
-        isLast: { type: 'boolean', desc: '是否是最后一个时间节点', defaultValue: 'false' },
-        status: { type: 'TimeLineStatus', desc: '时间节点的状态', defaultValue: 'normal' },
-        timeLineType: {
-          type: 'TimeLineType',
-          desc: '时间节点的风格 可配置 图标风格和隐藏解释类型',
-          defaultValue: 'undefined',
-        },
-        pending: { type: 'boolean', desc: '最后一个是否是幽灵节点', defaultValue: 'false' },
-        pendingDot: {
-          type: 'React.Node',
-          desc: '当最后一个是幽灵节点时,指定其图标资源',
-          defaultValue: 'undefined',
-        },
-      },
-      type: { TimeLineType: ['icon', 'explain'], TimeLineStatus: ['success', 'failed', 'normal'] },
-      category: ['数据展示'],
-    },
-    target: TimeLine.undefined,
   },
   TimePicker: {
     meta: {
@@ -2918,12 +2518,12 @@ export default {
         onCancelItemClick: {
           desc: 'Transfer 取消选项点击回调',
           args: [
+            { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
             {
-              name: 'nextValue',
-              desc: 'Transfer 右侧面板值的集合',
+              name: 'newDisplayValue',
+              desc: 'Transfer 右侧面板值的备用集合',
               type: 'string[]',
             },
-            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
           ],
         },
       },
@@ -3015,11 +2615,7 @@ export default {
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            {
-              name: 'selectValue',
-              desc: '所有选中项的valueField值的集合',
-              type: 'string[]',
-            },
+            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
