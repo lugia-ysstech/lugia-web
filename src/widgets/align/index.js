@@ -58,6 +58,7 @@ export default class Align extends React.Component<PropsType> {
     const rcAlignArg = {
       points: config ? config : builtinPlacements[defaultAligh],
       offset: [offsetX, offsetY],
+      overflow: { adjustX: true, adjustY: true },
     };
 
     if (typeof global !== 'undefined' && global.svtest === true) {
