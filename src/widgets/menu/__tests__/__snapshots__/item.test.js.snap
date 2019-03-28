@@ -2,7 +2,7 @@
 
 exports[`Item Mutliple MenuItem 1`] = `
 .c1 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -25,13 +25,14 @@ exports[`Item Mutliple MenuItem 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #333333;
+  color: undefined;
   font-weight: 500;
 }
 
 .c0:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c0:hover:after {
@@ -60,7 +61,7 @@ exports[`Item Mutliple MenuItem 1`] = `
 
 exports[`Item Mutliple MenuItem checked 1`] = `
 .c1 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -89,7 +90,8 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 
 .c0:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c0:after {
@@ -126,7 +128,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 
 exports[`Item Single MenuItem 1`] = `
 .c1 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -149,13 +151,14 @@ exports[`Item Single MenuItem 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #333333;
+  color: undefined;
   font-weight: 500;
 }
 
 .c0:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c0:hover:after {
@@ -178,7 +181,7 @@ exports[`Item Single MenuItem 1`] = `
 
 exports[`Item Single MenuItem checked 1`] = `
 .c1 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -207,7 +210,8 @@ exports[`Item Single MenuItem checked 1`] = `
 
 .c0:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c0:after {
@@ -236,7 +240,7 @@ exports[`Item Single MenuItem checked 1`] = `
 
 exports[`Item children: null 1`] = `
 .c1 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -259,13 +263,14 @@ exports[`Item children: null 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #333333;
+  color: undefined;
   font-weight: 500;
 }
 
 .c0:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c0:hover:after {
