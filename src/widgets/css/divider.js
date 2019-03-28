@@ -27,8 +27,11 @@ export const getPositionCSS = ([left, right]: DividerPosition[]) => (props: Divi
   }
   return 'width :100%';
 };
-export const getColor = () => {
-  return borderDisableColor;
+export const getColor = (props: Object) => {
+  const { theme } = props;
+  const { color } = theme;
+  const theColor = color ? color : borderDisableColor;
+  return theColor;
 };
 export const getDashed = (props: DividerProps) => {
   const { dashed } = props;

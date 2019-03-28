@@ -7,9 +7,7 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
   width: 16.666666666666668em;
-  margin: 2em 0.8333333333333334em;
 }
 
 .c1::before {
@@ -42,9 +40,7 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
   width: 16.666666666666668em;
-  margin: 2em 0.8333333333333334em;
 }
 
 .c3::before {
@@ -77,9 +73,7 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
   width: 41.66666666666667em;
-  margin: 2em 0.8333333333333334em;
 }
 
 .c4::before {
@@ -112,9 +106,7 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
   width: 41.66666666666667em;
-  margin: 2em 0.8333333333333334em;
 }
 
 .c5::before {
@@ -147,9 +139,7 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
   width: 41.66666666666667em;
-  margin: 2em 0.8333333333333334em;
 }
 
 .c6::before {
