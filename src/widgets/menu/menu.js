@@ -96,6 +96,7 @@ export type MenuProps = {
   getIndexOffsetY?: Function,
   autoHeight?: boolean,
   expandedPathInProps?: boolean,
+  divided: boolean,
 };
 const EmptyData = [];
 
@@ -121,6 +122,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     separator: '|',
     checkedCSS: 'none',
     action: 'click',
+    divided: false,
     getTheme: () => {
       return {};
     },
@@ -256,7 +258,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
     end = Math.round(end);
     if (data && data.length > 0) {
       return this.computeItems(data, start, end, (obj: Object) => {
-        const { valueField, displayField, size } = this.props;
+        const { valueField, displayField, size, divided: propsDivided, getTheme } = this.props;
+
         const { [valueField]: key, [displayField]: value, disabled, children, icon, divided } = obj;
         const { getPrefix, getSuffix } = props;
 
@@ -275,7 +278,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
         const iconElement = icon ? <TextIcon iconClass={icon} /> : null;
         return (
-          <Item key={key} size={size} disabled={disabled} checkedCSS={checkedCSS} divided={divided}>
+          <Item
+            key={key}
+            size={size}
+            disabled={disabled}
+            checkedCSS={checkedCSS}
+            divided={divided || propsDivided}
+            theme={getTheme()}
+          >
             {prefix}
             {iconElement}
             {value}
