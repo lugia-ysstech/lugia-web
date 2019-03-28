@@ -7,6 +7,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
+import Divider from '../divider';
 import { FontSize } from '../css';
 
 import {
@@ -38,6 +39,7 @@ export type MenuItemProps = {
   size?: 'large' | 'default' | 'bigger',
   checkedCSS?: 'none' | 'background' | 'mark' | 'checkbox',
   theme: Object,
+  isFirst: boolean,
 };
 
 const getFontSize = (props: Object) => {
@@ -145,11 +147,6 @@ const getHoverCSS = (props: Object) => {
   }`;
 };
 
-const getDivided = (props: Object) => {
-  const { divided } = props;
-  return divided ? 'border-top: 1px solid #e8e8e8;' : '';
-};
-
 const getCursor = (props: Object) => {
   const { disabled } = props;
   return `cursor: ${disabled ? 'not-allowed' : 'pointer'}`;
@@ -172,11 +169,18 @@ const SingleItem = styled.li`
   ${getIcon};
   ${getHeight};
   ${getCursor};
-  ${getDivided}
   ${getHoverCSS};
   ${getMulipleCheckedStyle};
   ${getItemColorAndBackground};
   ${getBackground};
+`;
+
+const DividedWrap = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: ${em(1)};
 `;
 
 const MutlipleItem = SingleItem.extend`
@@ -206,6 +210,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       size,
       divided,
       theme,
+      isFirst,
     } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
@@ -215,6 +220,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       }
     });
     const isCheckbox = checkedCSS === 'checkbox';
+
     const target = (
       <Item
         onClick={onClick}
@@ -227,6 +233,11 @@ class MenuItem extends React.Component<MenuItemProps> {
         size={size}
         theme={theme}
       >
+        {divided && !isFirst ? (
+          <DividedWrap>
+            <Divider />
+          </DividedWrap>
+        ) : null}
         {isCheckbox ? (
           <Theme>
             <TextContainer>

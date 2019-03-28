@@ -257,7 +257,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     start = Math.round(start);
     end = Math.round(end);
     if (data && data.length > 0) {
-      return this.computeItems(data, start, end, (obj: Object) => {
+      return this.computeItems(data, start, end, (obj: Object, isFirst: boolean) => {
         const { valueField, displayField, size, divided: propsDivided, getTheme } = this.props;
 
         const { [valueField]: key, [displayField]: value, disabled, children, icon, divided } = obj;
@@ -285,6 +285,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             checkedCSS={checkedCSS}
             divided={divided || propsDivided}
             theme={getTheme()}
+            isFirst={isFirst}
           >
             {prefix}
             {iconElement}
@@ -319,10 +320,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
     const items = [];
+    let isFirst = true;
     for (let i = start; i < end; i++) {
       const item = data[i];
       const indexOffsetY = i - start;
-      items.push(this.createMenuItemElement(getItem(item), this.isSelect, item, indexOffsetY));
+      items.push(
+        this.createMenuItemElement(getItem(item, isFirst), this.isSelect, item, indexOffsetY)
+      );
+      isFirst = false;
     }
     return items;
   }
