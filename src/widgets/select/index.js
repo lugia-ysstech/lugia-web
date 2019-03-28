@@ -434,12 +434,16 @@ class Select extends React.Component<SelectProps, SelectState> {
     } else {
       const key = selectedKeys;
       const nextDisplayValue = this.getSingleItemDisplayValue(this.dataItem[key]);
-      this.setState({
-        value: key,
-        displayValue: [nextDisplayValue],
-      });
       this.onChangeHandle({ value: key, displayValue, event });
       this.setSelectMenuPopupVisible(false);
+      const valueIsInProps = 'value' in props;
+
+      if (!valueIsInProps) {
+        this.setState({
+          value: key,
+          displayValue: [nextDisplayValue],
+        });
+      }
     }
   };
 
