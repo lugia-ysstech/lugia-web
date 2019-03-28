@@ -31,7 +31,6 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c1:hover {
@@ -110,7 +109,6 @@ exports[`Input props: null 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c1:hover {
@@ -189,7 +187,6 @@ exports[`Input props: placeholder  1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c1:hover {
@@ -269,7 +266,6 @@ exports[`Input props: placeholder  2`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c1:hover {
@@ -349,7 +345,6 @@ exports[`Input props: size 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c1:hover {
@@ -428,7 +423,6 @@ exports[`Input props: size 2`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c1:hover {

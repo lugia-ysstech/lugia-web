@@ -39,7 +39,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c2:hover {
@@ -262,7 +261,6 @@ exports[`NumberInput props: null 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c2:hover {
@@ -485,7 +483,6 @@ exports[`NumberInput props: placeholder  1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c2:hover {
@@ -709,7 +706,6 @@ exports[`NumberInput props: placeholder  2`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c2:hover {
@@ -933,7 +929,6 @@ exports[`NumberInput props: size 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c2:hover {
@@ -1156,7 +1151,6 @@ exports[`NumberInput props: size 2`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c2:hover {

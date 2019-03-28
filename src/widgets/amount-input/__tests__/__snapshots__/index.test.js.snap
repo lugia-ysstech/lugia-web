@@ -45,7 +45,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c3:hover {
@@ -98,7 +97,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c7:hover {
@@ -150,7 +148,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c10:hover {
@@ -202,7 +199,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c11:hover {
@@ -254,7 +250,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c12:hover {
@@ -778,7 +773,6 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c2:hover {
@@ -920,7 +914,6 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  visibility: visible;
 }
 
 .c2:hover {

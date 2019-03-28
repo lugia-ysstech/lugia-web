@@ -31,7 +31,7 @@ import { FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import { getMargin, getInputBorderRadius, getTargetVisibility } from '../common/ThemeUtils';
+import { getMargin, getInputBorderRadius } from '../common/ThemeUtils';
 
 const em = px2emcss(FontSizeNumber);
 
@@ -81,7 +81,6 @@ export const Input = CommonInputStyle.extend`
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  ${getTargetVisibility};
 `;
 
 export const InputOnly = CommonInputStyle.extend`
