@@ -103,8 +103,9 @@ export const getSize = (props: CommonInputProps) => {
 };
 
 export const getBackground = (props: CommonInputProps) => {
-  const { disabled } = props;
-  return `background:${disabled === true ? disableColor : ''}`;
+  const { disabled, theme } = props;
+  const { backgroundColor } = theme;
+  return `background:${disabled === true ? disableColor : backgroundColor ? backgroundColor : ''}`;
 };
 
 export const getCursor = (props: CommonInputProps) => {

@@ -164,6 +164,7 @@ type InputProps = {|
   parser?: (displayValue: number | string) => string,
   readOnly: boolean,
   autoFocus?: boolean,
+  type: string,
 |};
 
 class TextBox extends Component<InputProps, InputState> {
@@ -197,6 +198,7 @@ class TextBox extends Component<InputProps, InputState> {
     let { value, defaultValue } = nextProps;
     const hasValueInprops = 'value' in nextProps;
     value = fixControlledValue(value);
+
     if (!preState) {
       return {
         value: hasValueInprops ? value : defaultValue,
@@ -379,6 +381,7 @@ class TextBox extends Component<InputProps, InputState> {
       readOnly,
       onClick,
       autoFocus,
+      type,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
@@ -407,6 +410,7 @@ class TextBox extends Component<InputProps, InputState> {
         formatter={formatter}
         parser={parser}
         readOnly={readOnly}
+        type={type}
       />
     );
   }

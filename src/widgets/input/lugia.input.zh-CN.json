@@ -73,10 +73,15 @@
       "desc": "只读input",
       "defaultValue": "false"
     },
-    "autoFoucs": {
+    "autoFocus": {
       "type": "boolean",
       "desc": "是否自动获取焦点",
       "defaultValue": "false"
+    },
+    "type": {
+      "type": "string",
+      "desc": "input类型",
+      "defaultValue": "text"
     }
   },
   "events": {
