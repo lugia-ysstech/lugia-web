@@ -103,8 +103,9 @@ export const getSize = (props: CommonInputProps) => {
 };
 
 export const getBackground = (props: CommonInputProps) => {
-  const { disabled } = props;
-  return `background:${disabled === true ? disableColor : ''}`;
+  const { disabled, theme } = props;
+  const { backgroundColor } = theme;
+  return `background:${disabled === true ? disableColor : backgroundColor ? backgroundColor : ''}`;
 };
 
 export const getCursor = (props: CommonInputProps) => {
@@ -147,12 +148,6 @@ export const getVisibility = (props: CommonInputProps) => {
     isValidateSuccess(validateStatus, validateType, 'bottom') ? 'visible' : 'hidden'
   };`;
 };
-export const getInputVisibility = (props: Object) => {
-  const { theme } = props;
-  const { visibility } = theme;
-  const theVisibility = visibility ? visibility : 'visible';
-  return `visibility:${theVisibility};`;
-};
 
 export function isValidateSuccess(
   validateStatus: ValidateStatus,
@@ -170,7 +165,7 @@ export const getClearButtonColor = () => {
 };
 export const getDisplay = (props: Object) => {
   const { show } = props;
-  return show ? 'inline-block' : 'none';
+  return show ? 'inline-block' : ' !important';
 };
 export const getClearButtonHoverColor = () => {
   return `color: ${darkGreyColor}`;

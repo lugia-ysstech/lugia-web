@@ -26,13 +26,12 @@ import {
   getVisibility,
   getWidth,
   isValidateSuccess,
-  getInputVisibility,
 } from '../css/input';
 import { FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import { getMargin, getInputBorderRadius } from '../common/ThemeUtils';
+import { getMargin, getInputBorderRadius, getTargetVisibility } from '../common/ThemeUtils';
 
 const em = px2emcss(FontSizeNumber);
 
@@ -82,7 +81,7 @@ export const Input = CommonInputStyle.extend`
   z-index: 1;
   position: relative;
   font-size: 1.2rem;
-  ${getInputVisibility};
+  ${getTargetVisibility};
 `;
 
 export const InputOnly = CommonInputStyle.extend`
@@ -166,6 +165,7 @@ type InputProps = {|
   parser?: (displayValue: number | string) => string,
   readOnly: boolean,
   autoFocus?: boolean,
+  type: string,
 |};
 
 class TextBox extends Component<InputProps, InputState> {
@@ -382,6 +382,7 @@ class TextBox extends Component<InputProps, InputState> {
       readOnly,
       onClick,
       autoFocus,
+      type,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
@@ -410,6 +411,7 @@ class TextBox extends Component<InputProps, InputState> {
         formatter={formatter}
         parser={parser}
         readOnly={readOnly}
+        type={type}
       />
     );
   }
