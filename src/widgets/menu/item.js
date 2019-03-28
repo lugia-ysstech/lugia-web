@@ -37,6 +37,7 @@ export type MenuItemProps = {
   divided: ?boolean,
   size?: 'large' | 'default' | 'bigger',
   checkedCSS?: 'none' | 'background' | 'mark' | 'checkbox',
+  theme: Object,
 };
 
 const getFontSize = (props: Object) => {
@@ -45,7 +46,7 @@ const getFontSize = (props: Object) => {
 };
 
 const TextContainer = styled.span`
-  padding: ${em(7)} ${em(8)};
+  padding: ${em(0)} ${em(8)};
   font-size: ${getFontSize};
   position: absolute;
   left: 0;
@@ -72,7 +73,9 @@ const getMulipleCheckedStyle = (props: MenuItemProps) => {
 };
 
 const getItemColorAndBackground = (props: MenuItemProps) => {
-  const { checked, disabled, checkedCSS } = props;
+  const { checked, disabled, checkedCSS, theme } = props;
+  const { color } = theme;
+
   return disabled
     ? `color: ${lightGreyColor};
      font-weight: 500;`
@@ -88,7 +91,7 @@ const getItemColorAndBackground = (props: MenuItemProps) => {
       background: ${disableColor}
     `
     : `
-    color: ${blackColor};
+    color: ${color};
     font-weight: 500;
   `;
 };
@@ -130,23 +133,32 @@ const getHeight = (props: Object) => {
 };
 
 const getHoverCSS = (props: Object) => {
-  const { disabled } = props;
+  const { disabled, theme } = props;
+  const { hover } = theme;
+
   return disabled
     ? ''
     : `&:hover {
-    font-weight: 900;
-    background-color: ${ItemBackgroundColor};
+    font-weight: ${hover ? hover.fontWeight : 900};
+    background: ${hover ? hover.background : ItemBackgroundColor};
+    color: ${hover ? hover.color : blackColor};
   }`;
 };
 
 const getDivided = (props: Object) => {
   const { divided } = props;
-  return divided ? `border-top: 1px solid #e8e8e8;margin-top: ${em(4)}` : '';
+  return divided ? 'border-top: 1px solid #e8e8e8;' : '';
 };
 
 const getCursor = (props: Object) => {
   const { disabled } = props;
   return `cursor: ${disabled ? 'not-allowed' : 'pointer'}`;
+};
+
+const getBackground = (props: Object) => {
+  const { theme } = props;
+  const { background } = theme;
+  return `background: ${background ? background : ''}`;
 };
 const SingleItem = styled.li`
   box-sizing: border-box;
@@ -164,6 +176,7 @@ const SingleItem = styled.li`
   ${getHoverCSS};
   ${getMulipleCheckedStyle};
   ${getItemColorAndBackground};
+  ${getBackground};
 `;
 
 const MutlipleItem = SingleItem.extend`
@@ -192,6 +205,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       checkedCSS,
       size,
       divided,
+      theme,
     } = this.props;
     const Item = mutliple ? MutlipleItem : SingleItem;
     let title = '';
@@ -211,6 +225,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         divided={divided}
         checkedCSS={checkedCSS}
         size={size}
+        theme={theme}
       >
         {isCheckbox ? (
           <Theme>

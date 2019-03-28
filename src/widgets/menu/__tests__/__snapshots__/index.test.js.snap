@@ -18,7 +18,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c3 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -41,13 +41,14 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #333333;
+  color: undefined;
   font-weight: 500;
 }
 
 .c2:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c2:hover:after {
@@ -76,7 +77,8 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 
 .c4:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c4:after {
@@ -189,7 +191,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c3 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -212,13 +214,14 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #333333;
+  color: undefined;
   font-weight: 500;
 }
 
 .c2:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c2:hover:after {
@@ -243,7 +246,8 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 
 .c4:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c4:after {
@@ -348,7 +352,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 }
 
 .c3 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -371,13 +375,14 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #333333;
+  color: undefined;
   font-weight: 500;
 }
 
 .c2:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c2:hover:after {
@@ -478,7 +483,7 @@ exports[`Menu children: items 1`] = `
 }
 
 .c5 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1em;
   position: absolute;
   left: 0;
@@ -501,13 +506,14 @@ exports[`Menu children: items 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #333333;
+  color: undefined;
   font-weight: 500;
 }
 
 .c4:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c4:hover:after {

@@ -2125,7 +2125,7 @@ exports[`NavMenu  mode=vertical  1`] = `
 }
 
 .c4 {
-  padding: 0.5833333333333334em 0.6666666666666667em;
+  padding: 0em 0.6666666666666667em;
   font-size: 1.1666666666666667em;
   position: absolute;
   left: 0;
@@ -2148,13 +2148,14 @@ exports[`NavMenu  mode=vertical  1`] = `
   transition: background 0.3s ease;
   height: 5em;
   cursor: pointer;
-  color: #333333;
+  color: undefined;
   font-weight: 500;
 }
 
 .c3:hover {
   font-weight: 900;
-  background-color: #edf0fe;
+  background: #edf0fe;
+  color: #333333;
 }
 
 .c3:hover:after {
