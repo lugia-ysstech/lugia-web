@@ -33,9 +33,18 @@ type DropMenuProps = {
   needQueryInput: boolean,
   align: alignType,
 };
+
+const getShadow = props => {
+  const { theme } = props;
+  const { boxShadow } = theme;
+
+  const isHasBoxShadow = typeof boxShadow !== undefined;
+  return `box-shadow: ${isHasBoxShadow ? boxShadow : `0 ${em(1)} ${em(6)} ${lightGreyColor}`}`;
+};
+
 const MenuContainer = styled.div`
   background-color: #fff;
-  box-shadow: 0 ${em(1)} ${em(6)} ${lightGreyColor};
+  ${getShadow};
   border-radius: ${em(4)};
   box-sizing: border-box;
 `;
@@ -71,7 +80,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       return <DropMenuButton>下拉菜单</DropMenuButton>;
     }
 
-    const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
+    const theme = this.props.getTheme();
+    const { width = DefaultWidth, height = DefaultHeight } = theme;
     const offsetY = this.getOffSetY(align);
     const queryInputWidth = width;
     const oldMenuHeight = height - (Height + 2 * QueryInputPadding);
@@ -85,7 +95,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
     const popup = [
       this.isNeedQueryInput(),
-      <MenuContainer key="menus">
+      <MenuContainer key="menus" theme={theme}>
         {React.cloneElement(menu, this.ejectOnClick(menu))}
       </MenuContainer>,
     ];
