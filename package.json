@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.0.101",
+  "version": "1.0.102",
   "dependencies": {
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",

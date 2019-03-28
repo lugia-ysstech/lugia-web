@@ -1059,7 +1059,8 @@ export default {
           defaultValue: 'undefined',
         },
         readOnly: { type: 'boolean', desc: '只读input', defaultValue: 'false' },
-        autoFoucs: { type: 'boolean', desc: '是否自动获取焦点', defaultValue: 'false' },
+        autoFocus: { type: 'boolean', desc: '是否自动获取焦点', defaultValue: 'false' },
+        type: { type: 'string', desc: 'input类型', defaultValue: 'text' },
       },
       events: {
         onClick: {
