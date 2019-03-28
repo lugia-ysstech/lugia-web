@@ -12,6 +12,7 @@ import { px2emcss } from '../css/units';
 import type { DividerProps } from '../css/divider';
 import { getPositionCSS, getColor, getDashed, getWidth } from '../css/divider';
 import ThemeProvider from '../theme-provider';
+import { getMargin } from '../common/ThemeUtils';
 const em = px2emcss(1.2);
 
 const Divider = styled.div`
@@ -20,9 +21,8 @@ const Divider = styled.div`
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: ${getColor};
   ${getWidth};
-  margin: ${em(24)} ${em(10)};
+  ${getMargin};
   ::before {
     content: '';
     display: table-cell;
