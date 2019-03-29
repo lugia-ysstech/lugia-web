@@ -67,6 +67,7 @@ type SelectProps = {
   defaultDisplayValue?: string[],
   createPortal?: boolean,
   children?: any,
+  query: string | number,
 };
 
 type SelectState = {
@@ -83,7 +84,7 @@ type SelectState = {
 
 const ScrollerStep = 30;
 
-function getQuery(propsQuery: string, stateQuery?: string) {
+function getQuery(propsQuery: string | number, stateQuery?: string) {
   if (propsQuery || propsQuery === 0 || propsQuery === '0') {
     return propsQuery.toString();
   }
@@ -107,6 +108,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     canSearch: false,
     splitQuery: ',',
     searchType: 'include',
+    query: '',
   };
   static displayName = Widget.Select;
 
@@ -215,6 +217,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       (_, nextState) => nextState.displayValue,
       this.updateMapData
     );
+
     this.displayValue = nextState.displayValue;
     if (needUpdate && !this.displayValue) {
       this.updateDisplayValue(nextState.value);
@@ -379,8 +382,8 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getMenuItems(getMenu?: Function) {
     const { state, props } = this;
-    const { value, query, data, searchType } = state;
-    const { displayField, valueField, limitCount } = props;
+    const { value, query, data } = state;
+    const { displayField, valueField, limitCount, searchType } = props;
 
     const menuData = this.updateMenuData(data, query, searchType);
     return (
@@ -491,7 +494,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     this.setState({ query });
   }
 
-  updateMenuData(data: Array<Object>, query: string, searchType?: QueryType = 'include') {
+  updateMenuData(data: Array<Object>, query: string | number, searchType?: QueryType = 'include') {
     const { displayField = DisplayField } = this.props;
     let menuData;
     const queryAll = query === '' || !query;
@@ -520,12 +523,12 @@ class Select extends React.Component<SelectProps, SelectState> {
     return menuData;
   }
 
-  getQueryArray(query: string): Array<string> {
+  getQueryArray(query: string | number): Array<string> {
     const { splitQuery } = this.props;
     if (splitQuery) {
-      return query.split(splitQuery);
+      return query.toString().split(splitQuery);
     }
-    return [query];
+    return [query.toString()];
   }
 
   onQueryInputKeyDown = (e: Object) => {
