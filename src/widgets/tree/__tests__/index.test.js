@@ -116,7 +116,7 @@ describe('Tree', () => {
     const Target = <LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange} />;
     const cmp = mount(Target);
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
-    const chkBox = cmp.find(Widget.CheckBox);
+    const chkBox = cmp.find(Widget.Checkbox);
     chkBox.at(1).simulate('click', {});
     chkBox.at(1).simulate('click', {});
     chkBox.at(3).simulate('click', {});
@@ -146,7 +146,7 @@ describe('Tree', () => {
     const cmp = mount(Target);
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
 
-    const chkBox = cmp.find(Widget.CheckBox);
+    const chkBox = cmp.find(Widget.Checkbox);
     chkBox.at(1).simulate('click', {});
     chkBox.at(1).simulate('click', {});
     chkBox.at(3).simulate('click', {});
@@ -163,14 +163,14 @@ describe('Tree', () => {
 
   function getCheckedItem(cmp: Object) {
     return cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .map(item => item.props().checked)
       .filter(v => v === true);
   }
 
   function getHalfCheckedItem(cmp: Object) {
     return cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .map(item => item.props().indeterminate)
       .filter(v => v === true);
   }
@@ -434,7 +434,7 @@ describe('Tree', () => {
     const cmp = mount(
       <ExpandAllTree data={rowData} defaultValue={'1,1.1,1.2'.split(',')} mutliple />
     );
-    const chkBoxes = cmp.find(Widget.CheckBox);
+    const chkBoxes = cmp.find(Widget.Checkbox);
     exp(chkBoxes.at(0).props().indeterminate).to.be.true;
     exp(chkBoxes.at(1).props().checked).to.be.true;
     exp(chkBoxes.at(2).props().indeterminate).to.be.true;
@@ -442,7 +442,7 @@ describe('Tree', () => {
 
   it('props: value 1  mutliple: true', () => {
     const cmp = mount(<ExpandAllTree data={rowData} value="1" mutliple />);
-    const chkBoxes = cmp.find(Widget.CheckBox);
+    const chkBoxes = cmp.find(Widget.Checkbox);
     exp(chkBoxes.at(0).props().indeterminate).to.be.true;
     exp(chkBoxes.at(1).props().checked).to.be.false;
     exp(chkBoxes.at(2).props().indeterminate).to.be.false;
@@ -451,7 +451,7 @@ describe('Tree', () => {
   it('props: defaultValue: 1,1.1,1.2 & value 1  mutliple: true', () => {
     const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" value="1" mutliple />);
 
-    const chkBoxes = cmp.find(Widget.CheckBox);
+    const chkBoxes = cmp.find(Widget.Checkbox);
     exp(chkBoxes.at(0).props().indeterminate).to.be.true;
     exp(chkBoxes.at(1).props().checked).to.be.false;
     exp(chkBoxes.at(2).props().indeterminate).to.be.false;
@@ -488,7 +488,7 @@ describe('Tree', () => {
         <Tree mutliple={true} expandAll data={rowData} onChange={onChange} onlySelectLeaf />
       );
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(5)
         .simulate('click', {});
       exp(getSelectedItem(cmp).length).to.be.equal(0);
@@ -507,7 +507,7 @@ describe('Tree', () => {
         <Tree mutliple={true} expandAll data={rowData} onChange={onChange} limitCount={1} />
       );
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(5)
         .simulate('click', {});
 
@@ -623,7 +623,7 @@ describe('Tree', () => {
         <Tree mutliple={mutliple} expandAll data={data} igronSelectField={'igron'} />
       );
       cmp
-        .find(mutliple ? Widget.CheckBox : 'titleSpan')
+        .find(mutliple ? Widget.Checkbox : 'titleSpan')
         .at(target)
         .simulate('click', {});
       exp(getCheckedItem(cmp).length, '全选').to.be.equal(all);
@@ -649,7 +649,7 @@ describe('Tree', () => {
     exp(getCheckedItem(cmp).length, '全选结点必须为0').to.be.equal(1);
     exp(getHalfCheckedItem(cmp).length, '半选书必须为0').to.be.equal(2);
     exp(getSelectedItem(cmp).length, '单选数应该为0').to.be.equal(0);
-    const chkBox = cmp.find(Widget.CheckBox);
+    const chkBox = cmp.find(Widget.Checkbox);
     console.log('chkBox.at(chkBox.length - 4).props()', chkBox.at(chkBox.length - 4).props());
     exp(chkBox.at(chkBox.length - 4).props().indeterminate, '3被半选上').to.be.true;
     exp(chkBox.at(chkBox.length - 2).props().checked, '3.2被全选上').to.be.true;
@@ -914,7 +914,7 @@ describe('Tree', () => {
     exp(getHalfCheckedItem(cmp).length).to.be.equal(0);
 
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click', { shiftKey: true });
     cmp.update();
@@ -922,7 +922,7 @@ describe('Tree', () => {
     exp(getHalfCheckedItem(cmp).length).to.be.equal(1);
     exp(
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(0)
         .props().indeterminate
     ).to.be.true;
@@ -934,7 +934,7 @@ describe('Tree', () => {
     exp(getHalfCheckedItem(cmp).length).to.be.equal(0);
 
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click');
     cmp.update();
@@ -942,7 +942,7 @@ describe('Tree', () => {
     exp(getHalfCheckedItem(cmp).length).to.be.equal(8);
 
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click', { shiftKey: true });
     cmp.update();
@@ -964,13 +964,13 @@ describe('Tree', () => {
     exp(getCheckedItem(cmp).length).to.be.equal(1);
     exp(
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(5)
         .props().indeterminate
     ).to.be.true;
     exp(
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(6)
         .props().indeterminate
     ).to.be.true;

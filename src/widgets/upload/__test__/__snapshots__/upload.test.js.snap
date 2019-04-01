@@ -16,7 +16,6 @@ exports[`Rate Test css 1`] = `
 }
 
 .c1 {
-  width: 366px;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -94,9 +93,8 @@ exports[`Rate Test css 1`] = `
 }
 
 .c0 {
-  width: 366px;
   position: relative;
-  padding: 10px;
+  display: inline-block;
 }
 
 <div
