@@ -37,7 +37,7 @@ describe('Modal', () => {
     expect(state.visible).toBe(true);
     expect(state.opening).toBe(true);
     target
-      .find('hello')
+      .find('ButtonWrap')
       .at(0)
       .simulate('click');
     expect(getState(target).closing).toBe(false);
