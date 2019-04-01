@@ -70,9 +70,9 @@ export default ThemeProvider(
         footer,
         showIcon = false,
         iconType = 'info',
+        getTheme,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
-      console.log('closing', closing);
       const view = {
         [Widget.Button]: {
           width: 80,
@@ -86,7 +86,7 @@ export default ThemeProvider(
         <Wrap visible={closing ? true : visible}>
           <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
           <ModalWrap>
-            <Modal closing={closing} opening={opening}>
+            <Modal closing={closing} opening={opening} theme={getTheme()}>
               <ModalContent showIcon={showIcon}>
                 {showIcon ? (
                   <BigIcons iconClass={IconInfo[iconType].class} iconType={iconType} />

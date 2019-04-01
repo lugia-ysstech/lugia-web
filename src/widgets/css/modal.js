@@ -6,7 +6,9 @@
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
 import styled, { keyframes } from 'styled-components';
+import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
+import { createGetWidthOrHeight } from '../common/ThemeUtils';
 
 type IconType = 'confirm' | 'info' | 'success' | 'warning' | 'error';
 type FunctionPropsType = {
@@ -24,6 +26,7 @@ export type ModalProps = {
   confirmLoading?: boolean,
   footer?: string | React.ReactNode,
   maskClosable?: boolean,
+  getTheme: Function,
 } & FunctionPropsType;
 export type ModalState = {
   visible: boolean,
@@ -35,6 +38,7 @@ type CSSProps = {
   iconType: IconType,
   closing: boolean,
   opening: boolean,
+  theme?: ThemeType,
 };
 
 const FontSize = 1.4;
@@ -106,11 +110,21 @@ export const ModalWrap = styled.div`
   z-index: 99999;
 `;
 
+const getWidth = (props: CSSProps) => {
+  const { theme } = props;
+  const { width } = theme;
+  if (width && typeof width === 'number') {
+    return createGetWidthOrHeight('width', { fontSize: 1.4 })(props);
+  }
+
+  return `width: ${em(520)};`;
+};
+
 export const Modal = styled.div`
   box-sizing: border-box;
   font-size: ${FontSize}rem;
   position: relative;
-  width: ${em(520)};
+  ${getWidth};
   top: ${em(100)};
   margin: 0 auto;
   z-index: 99999;
