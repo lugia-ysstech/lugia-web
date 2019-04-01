@@ -1556,11 +1556,7 @@ export default {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            {
-              name: 'size',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
       },
@@ -2523,12 +2519,12 @@ export default {
         onCancelItemClick: {
           desc: 'Transfer 取消选项点击回调',
           args: [
+            { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
             {
-              name: 'nextValue',
-              desc: 'Transfer 右侧面板值的集合',
+              name: 'newDisplayValue',
+              desc: 'Transfer 右侧面板值的备用集合',
               type: 'string[]',
             },
-            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
           ],
         },
       },
@@ -2620,11 +2616,7 @@ export default {
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            {
-              name: 'selectValue',
-              desc: '所有选中项的valueField值的集合',
-              type: 'string[]',
-            },
+            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
