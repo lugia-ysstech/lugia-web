@@ -397,7 +397,12 @@ describe('TreeSelect', () => {
     }
 
     onChange = obj => {
-      this.setState(obj);
+      const { newValue, newDisplayValue } = obj;
+      const newObj = {
+        value: newValue,
+        displayValue: newDisplayValue,
+      };
+      this.setState(newObj);
     };
   }
 
@@ -530,7 +535,14 @@ describe('TreeSelect', () => {
     exp(getQueryInputValue(cmp)).to.be.equal('');
     checkTreeSelectValue(cmp, []);
     exp(await refreshResult).to.be.eql(true);
-    exp(await changeReuslt).to.be.eql({ value: [], displayValue: [] });
+    const newObj = {
+      newValue: [],
+      oldValue: ['我么啊啊'],
+      newItem: [],
+      oldItem: [],
+      newDisplayValue: [],
+    };
+    expect(await changeReuslt).toEqual(newObj);
   });
 
   it('非受限 没有值直接刷新 操作', () => {
@@ -597,10 +609,15 @@ describe('TreeSelect', () => {
 
       const result = await changeReuslt;
 
-      exp(result).to.be.eql({
-        value: [],
-        displayValue: [],
-      });
+      const newObj = {
+        newValue: [],
+        oldValue: ['我么啊啊'],
+        newItem: [],
+        oldItem: [],
+        newDisplayValue: [],
+      };
+      expect(result).toEqual(newObj);
+
       checkTreeSelectValue(cmp, [value]);
     });
   });
@@ -640,10 +657,15 @@ describe('TreeSelect', () => {
 
       const result = await changeReuslt;
 
-      exp(result).to.be.eql({
-        value: [],
-        displayValue: [],
-      });
+      const newObj = {
+        newValue: [],
+        oldValue: ['我么啊啊'],
+        newItem: [],
+        oldItem: [],
+        newDisplayValue: [],
+      };
+      expect(result).toEqual(newObj);
+
       checkTreeSelectValue(cmp, [], limit);
     });
   });
@@ -673,10 +695,15 @@ describe('TreeSelect', () => {
     selctedAll(cmp);
     checkTreeSelectValue(cmp, [value]);
     const result = await changeReuslt;
-    exp(result).to.be.eql({
-      value: [value, ...getAllRowDataValue(rowData)],
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
-    });
+
+    const newObj = {
+      newValue: [value, ...getAllRowDataValue(rowData)],
+      oldValue: [value],
+      newItem: [...rowData],
+      oldItem: [],
+      newDisplayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
+    };
+    expect(result).toEqual(newObj);
   });
 
   it('受限组件 canInput: true  手工添加项 onChange', async () => {
@@ -706,10 +733,15 @@ describe('TreeSelect', () => {
     queryInputEnter(cmp);
     checkTreeSelectValue(cmp, [value]);
     const result = await changeReuslt;
-    exp(result).to.be.eql({
-      value: [value, txt],
-      displayValue: [displayValue, txt],
-    });
+
+    const newObj = {
+      newValue: [value, txt],
+      oldValue: [value],
+      newItem: [],
+      oldItem: [],
+      newDisplayValue: [displayValue, txt],
+    };
+    expect(result).toEqual(newObj);
   });
 
   it('非受限组件 选择全部  onChange', async () => {
@@ -738,13 +770,18 @@ describe('TreeSelect', () => {
     checkTreeSelectValue(cmp, [value]);
 
     const result = await changeReuslt;
-    exp(result).to.be.eql({
-      value: [value, ...getAllRowDataValue(rowData)],
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
-    });
+
+    const newObj = {
+      newValue: [value, ...getAllRowDataValue(rowData)],
+      oldValue: [value],
+      newItem: [...rowData],
+      oldItem: [],
+      newDisplayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
+    };
+    expect(result).toEqual(newObj);
   });
 
-  it('非受限组件 选择全部  onChange', async () => {
+  it('受限组件 选择全部  onChange', async () => {
     let onChange;
     const changeReuslt = new Promise(resolve => {
       onChange = arg => {
@@ -770,12 +807,16 @@ describe('TreeSelect', () => {
     const allValue = [value, ...getAllRowDataValue(rowData)];
 
     checkTreeSelectValue(cmp, allValue);
-
     const result = await changeReuslt;
-    exp(result).to.be.eql({
-      value: allValue,
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
-    });
+
+    const newObj = {
+      newValue: allValue,
+      oldValue: [value],
+      newItem: [...rowData],
+      oldItem: [],
+      newDisplayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
+    };
+    expect(result).toEqual(newObj);
   });
 
   function getAllRowDataValue(data) {

@@ -17,7 +17,7 @@ import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import QueryInput from '../common/QueryInput';
 import { themeColor } from '../css/tree';
-
+import { getNewValueOrOldValue } from '../select';
 import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
 
 import { DefaultHelp } from '../css/input';
@@ -714,7 +714,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
     if (this.oldValue !== value) {
       const { onChange } = this.props;
-      onChange && onChange({ value, displayValue });
+
+      const newItem = getNewValueOrOldValue(this.getItems(value), mutliple);
+      const oldItem = getNewValueOrOldValue(this.getItems(this.oldValue), mutliple);
+      const obj = {
+        newValue: value,
+        oldValue: this.oldValue,
+        newItem,
+        oldItem,
+        newDisplayValue: displayValue,
+      };
+
+      onChange && onChange(obj);
     }
     if (!mutliple) {
       this.setTreePopupVisible(false);
