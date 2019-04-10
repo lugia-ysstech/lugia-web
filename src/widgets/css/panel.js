@@ -171,7 +171,7 @@ const getPanelContent = (props: CSSProps): string => {
   }
   if (open) {
     return `
-     height: ${height !== null && height !== undefined ? height + 'px' : '100%'};`;
+     height: 100%;`;
   }
   return `
     height: ${em(headerHeight)};
