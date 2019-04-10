@@ -25,6 +25,7 @@ const Invalid = [
   'empty',
   'message',
   'notification',
+  'design-responsive',
 ];
 const fileRelativePath = '../src/widgets';
 createDesignInfo();
@@ -117,7 +118,7 @@ function joinChildrenwidgetName(targetWidgetName, folderName, childrenWidget) {
       //todo: 子组件导出形式全部更改后，可放开代码；否则报错；
       // targetWidgetNames.push(widgetName);
       const childrenNeedExport = childrenMeta.needExport;
-      if(childrenNeedExport){
+      if (childrenNeedExport) {
         commonStr =
           commonStr +
           widgetName +
