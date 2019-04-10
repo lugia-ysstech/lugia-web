@@ -169,6 +169,7 @@ export const CollapseDemo = class extends React.Component<any, any> {
             </Panel>
           </Collapse>
           <br />
+          <p>accordion</p>
           <Collapse defaultActiveValue={defaultActiveValue} accordion>
             <Panel value="1" header="LUGIA">
               <div>PanelContent...</div>
@@ -203,6 +204,25 @@ export const CollapseDemo = class extends React.Component<any, any> {
           <br />
           <p>data</p>
           <Collapse defaultActiveValue={defaultActiveValue} data={data} />
+          <p>collapse nest</p>
+          <Collapse defaultActiveValue={defaultActiveValue}>
+            <Panel value="1" header="LUGIA">
+              <Collapse defaultActiveValue={defaultActiveValue}>
+                <Panel value="1" header="LUGIA">
+                  <div>PanelContent...</div>
+                  <div>PanelContent...</div>
+                </Panel>
+                <Panel value="2" header="LUGIA">
+                  <div>PanelContent...</div>
+                  <div>PanelContent...</div>
+                </Panel>
+              </Collapse>
+            </Panel>
+            <Panel value="2" header="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+          </Collapse>
         </Wrapper>
       </div>
     );
