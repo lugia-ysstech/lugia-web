@@ -831,7 +831,7 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click');
     const value = rowData
@@ -841,7 +841,7 @@ describe('TreeSelect', () => {
       .filter((item: Object, index: number) => index < 5)
       .map(item => item.text);
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click');
     const result = await selAllPromise;

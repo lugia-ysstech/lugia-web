@@ -1144,6 +1144,64 @@ describe('Select', () => {
     ]);
   });
 
+  it('单选 value受限组件，displayValue不受限，测试组件被受限', async () => {
+    const cmp = mount(<Select data={data} displayField={'label'} value={['key-0']} />);
+
+    showTrigger(cmp);
+    cmp
+      .find(Widget.MenuItem)
+      .at(1)
+      .simulate('click');
+
+    await delay(300);
+    cmp.update();
+
+    exp(getInputTagValue(cmp)).to.be.eql(['key-0']);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql(['txt0']);
+
+    showTrigger(cmp);
+    cmp
+      .find(Widget.MenuItem)
+      .at(3)
+      .simulate('click');
+
+    await delay(300);
+    cmp.update();
+
+    exp(getInputTagValue(cmp)).to.be.eql(['key-0']);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql(['txt0']);
+  });
+
+  it('多选 value受限组件，displayValue不受限，测试组件被受限', async () => {
+    const cmp = mount(
+      <Select data={data} displayField={'label'} value={['key-0', 'key-1']} mutliple />
+    );
+
+    showTrigger(cmp);
+    cmp
+      .find(Widget.MenuItem)
+      .at(2)
+      .simulate('click');
+
+    await delay(300);
+    cmp.update();
+
+    exp(getInputTagValue(cmp)).to.be.eql(['key-0', 'key-1']);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql(['txt0', 'txt1']);
+
+    showTrigger(cmp);
+    cmp
+      .find(Widget.MenuItem)
+      .at(1)
+      .simulate('click');
+
+    await delay(300);
+    cmp.update();
+
+    exp(getInputTagValue(cmp)).to.be.eql(['key-0', 'key-1']);
+    exp(getInputTagDisplayValue(cmp)).to.be.eql(['txt0', 'txt1']);
+  });
+
   function changeQuery(cmp: Object, value: string) {
     getQueryInput(cmp).simulate('change', { target: { value } });
   }

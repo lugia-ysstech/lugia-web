@@ -324,6 +324,7 @@ exports[` Badge css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 16.666666666666668%;
   margin-left: 0%;
 }
