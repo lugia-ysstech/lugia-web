@@ -70,13 +70,13 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
     }
   };
 
-  getRange = (width?: number, range?: [], rangeMap?: Object): string => {
-    if (!width || !range || !range.length || !rangeMap) {
+  getRange = (windowWidth?: number, range?: [], rangeMap?: Object): string => {
+    if (!windowWidth || !range || !range.length || !rangeMap) {
       return 'default';
     }
     let rangeStr;
     range.forEach((item, index) => {
-      if (item[0] <= width && width <= item[1]) {
+      if (item[0] <= windowWidth && windowWidth <= item[1]) {
         rangeStr = rangeMap && rangeMap[index];
       }
     });
