@@ -12,6 +12,7 @@ export const ResponsiveContext: Object = React.createContext({});
 type ResponsiveProps = {
   mode2Config: Object,
   mode2LayoutData: Object,
+  children?: any,
 };
 type ResponsiveState = {
   windowWidthRange: string,

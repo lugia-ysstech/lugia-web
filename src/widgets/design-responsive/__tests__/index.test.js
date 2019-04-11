@@ -45,15 +45,19 @@ describe('design-responsive', () => {
       },
     };
     const result = Element.handleWindowConfig(config);
+    const index0 = 0;
+    const index1 = 1;
     expect(result).toEqual({
       ranges: [[1025, 1366], [0, 1024]],
-      rangesMap: { 0: '1366x1080', 1: '1024x768' },
+      rangesMap: { [index0]: '1366x1080', [index1]: '1024x768' },
     });
   });
 
   it('design-responsive -> getRange', () => {
     const target = mount(<Component />);
     const Element = target.instance();
+    const index0 = 0;
+    const index1 = 1;
 
     const errorRes1 = Element.getRange();
     expect(errorRes1).toBe('default');
@@ -64,13 +68,22 @@ describe('design-responsive', () => {
     const errorRes3 = Element.getRange(undefined, [[0, 100]]);
     expect(errorRes3).toBe('default');
 
-    const result = Element.getRange(50, [[0, 100], [101, 200]], { 0: '50x100', 1: '101x200' });
+    const result = Element.getRange(50, [[0, 100], [101, 200]], {
+      [index0]: '50x100',
+      [index1]: '101x200',
+    });
     expect(result).toBe('50x100');
 
-    const result2 = Element.getRange(201, [[0, 100], [101, 200]], { 0: '50x100', 1: '101x200' });
+    const result2 = Element.getRange(201, [[0, 100], [101, 200]], {
+      [index0]: '50x100',
+      [index1]: '101x200',
+    });
     expect(result2).toBe('default');
 
-    const result3 = Element.getRange(100, [[0, 100], [101, 200]], { 0: '50x100', 1: '101x200' });
+    const result3 = Element.getRange(100, [[0, 100], [101, 200]], {
+      [index0]: '50x100',
+      [index1]: '101x200',
+    });
     expect(result3).toBe('50x100');
   });
 });
