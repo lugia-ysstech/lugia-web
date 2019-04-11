@@ -9,13 +9,22 @@ import * as React from 'react';
 
 export const ResponsiveContext: Object = React.createContext({});
 
-export default class extends React.Component<any, any> {
+type ResponsiveProps = {
+  mode2Config: Object,
+  mode2LayoutData: Object,
+};
+type ResponsiveState = {
+  windowWidthRange: string,
+};
+
+export default class extends React.Component<ResponsiveProps, ResponsiveState> {
   static defaultProps = {
     mode2Config: {},
     mode2LayoutData: {},
   };
-
-  constructor(props) {
+  widthRange: [];
+  widthRangeMap: Object;
+  constructor(props: any) {
     super(props);
     const { innerWidth } = window;
     const { mode2Config = {} } = props;
@@ -37,7 +46,7 @@ export default class extends React.Component<any, any> {
       if (configValues.length > 0) {
         const ranges = [];
         const rangesMap = {};
-        configValues.forEach((item, index) => {
+        configValues.forEach((item: Object, index) => {
           const { widthRange = [] } = item;
           ranges.push(widthRange);
           rangesMap[index] = configKeys[index];
@@ -60,14 +69,14 @@ export default class extends React.Component<any, any> {
     }
   };
 
-  getRange = (width?: number, range?: Array[], rangeMap?: Object): string => {
+  getRange = (width?: number, range?: [], rangeMap?: Object): string => {
     if (!width || !range || !range.length || !rangeMap) {
       return 'default';
     }
     let rangeStr;
     range.forEach((item, index) => {
       if (item[0] <= width && width <= item[1]) {
-        rangeStr = rangeMap[index];
+        rangeStr = rangeMap && rangeMap[index];
       }
     });
     return rangeStr || 'default';
