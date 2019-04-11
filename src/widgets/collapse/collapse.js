@@ -22,6 +22,7 @@ function handleStateValue(value: string | string[], accordion?: boolean): string
   }
   return [value];
 }
+
 export default ThemeProvider(
   class extends React.Component<CollapseProps, CollapseState> {
     static getDerivedStateFromProps(props, state) {
