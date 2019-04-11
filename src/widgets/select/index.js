@@ -35,6 +35,10 @@ import { toMatchFromType } from '../common/StringUtils';
 type ValidateStatus = 'success' | 'error';
 type RowData = { [key: string]: any };
 
+export function getNewValueOrOldValue(v: string[], mutliple: boolean) {
+  return mutliple ? v : v[0];
+}
+
 const SelectContainer = styled.div`
   display: inline-block;
 `;
@@ -619,10 +623,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     }
   }
 
-  getNewValueOrOldValue = (v: string[], mutliple: boolean) => {
-    return mutliple ? v : v[0];
-  };
-
   onChangeHandle(targetObj: Object) {
     const { onChange, onSelect, mutliple } = this.props;
 
@@ -632,9 +632,9 @@ class Select extends React.Component<SelectProps, SelectState> {
     const { value: preValue = [] } = this.state;
     const { items: oldItem } = this.getItem(preValue, false);
     const { items: newItem } = this.getItem(nextValue, false);
-    const newValue = this.getNewValueOrOldValue(nextValue, mutliple);
-    const newDisplayValue = this.getNewValueOrOldValue(nextDisplayValue, mutliple);
-    const oldValue = this.getNewValueOrOldValue(preValue, mutliple);
+    const newValue = getNewValueOrOldValue(nextValue, mutliple);
+    const newDisplayValue = getNewValueOrOldValue(nextDisplayValue, mutliple);
+    const oldValue = getNewValueOrOldValue(preValue, mutliple);
 
     const obj = {
       newValue,

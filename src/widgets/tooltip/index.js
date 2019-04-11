@@ -33,6 +33,7 @@ const ToolTrigger: Object = styled(Trigger)`
   ${getTriggerByArrow};
   box-shadow: none;
   ${getOpacity};
+  background: transparent;
 `;
 
 const Content = styled.div`

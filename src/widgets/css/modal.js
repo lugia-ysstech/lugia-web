@@ -111,10 +111,10 @@ export const ModalWrap = styled.div`
 `;
 
 const getWidth = (props: CSSProps) => {
-  const { theme } = props;
+  const { theme = {} } = props;
   const { width } = theme;
   if (width && typeof width === 'number') {
-    return createGetWidthOrHeight('width', { fontSize: 1.4 })(props);
+    return createGetWidthOrHeight('width', { fontSize: 1.4 })({ theme });
   }
 
   return `width: ${em(520)};`;
