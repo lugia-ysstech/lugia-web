@@ -21,7 +21,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c31:hover > div {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c38 {
@@ -35,7 +35,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c38:hover > div {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c8 {
@@ -56,11 +56,11 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c8:hover > div {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c8:hover > span > i:first-child {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c18 {
@@ -81,11 +81,11 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c18:hover > div {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c18:hover > span > i:first-child {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c23 {
@@ -138,7 +138,7 @@ exports[`tabsDemo Component JSON 1`] = `
   transform: translateX(-0.8333333333333334em);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c46:hover > span > i:first-child {
@@ -174,7 +174,7 @@ exports[`tabsDemo Component JSON 1`] = `
   transform: translateX(-0.8333333333333334em);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c49:hover > span > i:first-child {
@@ -205,7 +205,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c56:hover > div {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c56:hover > span > i:first-child {
@@ -232,7 +232,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c58:hover > div {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c58:hover > span > i:first-child {
@@ -240,7 +240,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c9 {
-  color: #684fff;
+  color: #4d63ff;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -255,7 +255,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c9:focus {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c10 {
@@ -273,11 +273,11 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c10:focus {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c19 {
-  color: #684fff;
+  color: #4d63ff;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -292,7 +292,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c19:focus {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c20 {
@@ -310,11 +310,11 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c20:focus {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c21 {
-  color: #684fff;
+  color: #4d63ff;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -329,7 +329,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c21:focus {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c24 {
@@ -366,7 +366,7 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c59:focus {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c22 {
@@ -400,14 +400,12 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c14 {
-  position: absolute;
   display: inline-block;
   overflow: hidden;
   width: 100%;
 }
 
 .c33 {
-  position: absolute;
   display: inline-block;
   overflow: hidden;
   width: 100%;
@@ -415,7 +413,6 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c40 {
-  position: absolute;
   display: inline-block;
   overflow: hidden;
   width: 100%;
@@ -424,7 +421,6 @@ exports[`tabsDemo Component JSON 1`] = `
 }
 
 .c43 {
-  position: absolute;
   display: inline-block;
   overflow: hidden;
   width: 100%;
@@ -893,7 +889,7 @@ exports[`tabsDemo Component JSON 1`] = `
   text-transform: none;
   outline: 0;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
@@ -903,17 +899,17 @@ exports[`tabsDemo Component JSON 1`] = `
 .c65:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c65:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c65:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c66 {
