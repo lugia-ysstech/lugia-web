@@ -35,12 +35,15 @@ const marginTop = 26;
 export const getCardContainerSize = (props: Object) => {
   const { theme, imageOrientation, type } = props;
   const { width, height } = theme;
+  const marginLeft = getContentMarginLeft(props);
+  const marginTopBottom = marginTop + marginBottom;
+
   let theWidth = 0;
   let theHeight = 0;
   if ((width && typeof width === 'number') || (height && typeof height === 'number')) {
     theWidth = width;
     theHeight = height;
-    return `width:${em(theWidth)};height:${em(theHeight)};`;
+    return `width:${em(theWidth + marginLeft)};height:${em(theHeight + marginTopBottom)};`;
   }
 
   switch (type) {
@@ -63,9 +66,7 @@ export const getCardContainerSize = (props: Object) => {
     default:
       break;
   }
-  return `width: ${em(theWidth + getContentMarginVLeft(props))};height:${em(
-    theHeight + marginTop + marginBottom
-  )};`;
+  return `width: ${em(theWidth + marginLeft)};height:${em(theHeight + marginTopBottom)};`;
 };
 
 export const getCardContainerShadow = () => {
@@ -133,10 +134,10 @@ export const getContentTextAlign = (props: Object) => {
 };
 
 export const getContentMargin = (props: Object) => {
-  return `margin-left: ${em(getContentMarginVLeft(props))}`;
+  return `margin-left: ${em(getContentMarginLeft(props))}`;
 };
 
-function getContentMarginVLeft(props: Object) {
+function getContentMarginLeft(props: Object) {
   const { type, imageOrientation } = props;
   return type === 'tip'
     ? 30
