@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
-.c31 {
+.c34 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -38,13 +38,13 @@ exports[`Card css 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 30em;
-  height: 14.000000000000002em;
+  width: 29.166666666666668em;
+  height: 10.833333333333334em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
@@ -54,13 +54,13 @@ exports[`Card css 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 25.833333333333336em;
-  height: 19.833333333333336em;
+  width: 25em;
+  height: 16.666666666666668em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
@@ -70,13 +70,13 @@ exports[`Card css 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 27.5em;
-  height: 19.833333333333336em;
+  width: 25em;
+  height: 16.666666666666668em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 2.5em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
@@ -87,12 +87,11 @@ exports[`Card css 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 12.5em;
-  height: 19em;
+  height: 15.833333333333334em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  padding-left: 0em;
+  text-align: center;
   border-radius: 0.4166666666666667em;
 }
 
@@ -102,120 +101,130 @@ exports[`Card css 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 27.5em;
-  height: 12.833333333333334em;
+  width: 26.666666666666668em;
+  height: 9.666666666666666em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
-.c20 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 17.5em;
-  height: 22.333333333333336em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  border-radius: 0.4166666666666667em;
-}
-
-.c23 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 27.5em;
-  height: 12.5em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  border-radius: 0.4166666666666667em;
-}
-
-.c24 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 30em;
-  height: 23.166666666666668em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  border-radius: 0.4166666666666667em;
-}
-
-.c41 {
+.c21 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   width: 16.666666666666668em;
-  height: 21.5em;
+  height: 19.166666666666668em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
+  border-radius: 0.4166666666666667em;
+}
+
+.c25 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 26.666666666666668em;
+  height: 9.333333333333334em;
+  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
+  background: #ffffff;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
+  border-radius: 0.4166666666666667em;
+}
+
+.c27 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 30em;
+  height: 20em;
+  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
+  background: #ffffff;
+  padding-left: 0em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
+  border-radius: 0.4166666666666667em;
+}
+
+.c44 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 16.666666666666668em;
+  height: 18.333333333333336em;
+  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
+  background: #ffffff;
+  padding-left: 0em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
 .c3 {
-  margin-left: 0.8333333333333334em;
   font-size: 1.2rem;
-  margin-bottom: 1em;
-  margin-top: 2.166666666666667em;
   display: inline-block;
-  width: inherit;
-  height: inherit;
+  width: 28.333333333333336em;
+  height: 7.666666666666666em;
 }
 
 .c8 {
-  margin-left: 2.5em;
   font-size: 1.2rem;
-  margin-bottom: 1em;
-  margin-top: 2.166666666666667em;
   display: inline-block;
-  width: inherit;
-  height: inherit;
+  width: -2.5em;
+  height: -3.1666666666666665em;
 }
 
 .c16 {
-  margin-left: 0em;
   font-size: 1.2rem;
-  text-align: center;
   display: inline-block;
-  width: inherit;
-  height: inherit;
+  width: 12.5em;
+  height: 12.666666666666666em;
 }
 
-.c25 {
-  margin-left: 0em;
+.c20 {
   font-size: 1.2rem;
-  margin-bottom: 1em;
-  margin-top: 2.166666666666667em;
   display: inline-block;
-  width: inherit;
-  height: inherit;
+  width: 25.833333333333336em;
+  height: 6.5em;
 }
 
-.c22 {
+.c24 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 15.833333333333334em;
+  height: 16em;
+}
+
+.c26 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 25.833333333333336em;
+  height: 6.166666666666667em;
+}
+
+.c28 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 16.666666666666668em;
+  height: 15.166666666666666em;
+}
+
+.c23 {
   width: inherit;
   height: inherit;
 }
@@ -236,7 +245,7 @@ exports[`Card css 1`] = `
   text-align: center;
 }
 
-.c21 {
+.c22 {
   position: relative;
   width: 16.666666666666668em;
   height: 10.833333333333334em;
@@ -245,12 +254,12 @@ exports[`Card css 1`] = `
 }
 
 .c13 {
-  margin: 1.6666666666666667em 0;
+  padding: 1.6666666666666667em 0;
   border-radius: 50%;
 }
 
 .c19 {
-  margin: 1.6666666666666667em 1.6666666666666667em;
+  padding: 1.6666666666666667em 1.6666666666666667em;
   border-radius: 50%;
 }
 
@@ -305,7 +314,7 @@ exports[`Card css 1`] = `
   top: 1.3333333333333335em;
 }
 
-.c34 {
+.c37 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -322,15 +331,15 @@ exports[`Card css 1`] = `
   box-sizing: border-box;
 }
 
-.c34:hover > div {
+.c37:hover > div {
   color: #4d63ff;
 }
 
-.c34:hover > span > i:first-child {
+.c37:hover > span > i:first-child {
   color: #4d63ff;
 }
 
-.c35 {
+.c38 {
   color: #4d63ff;
   position: relative;
   display: inline-block;
@@ -345,11 +354,11 @@ exports[`Card css 1`] = `
   line-height: 2.8333333333333335em;
 }
 
-.c35:focus {
+.c38:focus {
   color: #4d63ff;
 }
 
-.c36 {
+.c39 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -363,17 +372,17 @@ exports[`Card css 1`] = `
   line-height: 2.8333333333333335em;
 }
 
-.c36:focus {
+.c39:focus {
   color: #4d63ff;
 }
 
-.c40 {
+.c43 {
   display: inline-block;
   overflow: hidden;
   width: 100%;
 }
 
-.c37 {
+.c40 {
   background-color: blue;
   position: absolute;
   box-sizing: border-box;
@@ -389,7 +398,7 @@ exports[`Card css 1`] = `
   transition: all 0.3s;
 }
 
-.c29 {
+.c32 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -403,7 +412,7 @@ exports[`Card css 1`] = `
   left: 0.8333333333333334em;
 }
 
-.c38 {
+.c41 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -417,7 +426,7 @@ exports[`Card css 1`] = `
   right: 0.8333333333333334em;
 }
 
-.c27 {
+.c30 {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
@@ -425,14 +434,14 @@ exports[`Card css 1`] = `
   height: NaNem;
 }
 
-.c32 {
+.c35 {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.c33 {
+.c36 {
   height: 2.8333333333333335em;
   display: inline-block;
   box-sizing: border-box;
@@ -444,7 +453,7 @@ exports[`Card css 1`] = `
   transform: translateX(0em);
 }
 
-.c28 {
+.c31 {
   height: 2.8333333333333335em;
   line-height: 2.8333333333333335em;
   position: relative;
@@ -454,7 +463,7 @@ exports[`Card css 1`] = `
   z-index: 99;
 }
 
-.c30 {
+.c33 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -462,7 +471,7 @@ exports[`Card css 1`] = `
   cursor: not-allowed;
 }
 
-.c39 {
+.c42 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -476,18 +485,18 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c26 {
+.c29 {
   display: inline-block;
   margin-left: 20px;
 }
 
-.c42 {
+.c45 {
   text-align: center;
   width: 100%;
   height: 100%;
 }
 
-.c43 {
+.c46 {
   text-align: center;
   font-size: 16px;
   color: #666;
@@ -495,13 +504,13 @@ exports[`Card css 1`] = `
   width: 100%;
 }
 
-.c44 {
+.c47 {
   text-align: center;
   color: #4d63ff;
   display: inline-block;
 }
 
-.c45 {
+.c48 {
   position: absolute;
   text-align: center;
   font-size: 14px;
@@ -761,7 +770,7 @@ exports[`Card css 1`] = `
         </span>
       </div>
       <div
-        className="c3"
+        className="c20"
         type="avatar"
       >
         <div
@@ -794,11 +803,11 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c20"
+      className="c21"
       type="image"
     >
       <div
-        className="c21"
+        className="c22"
         size={
           Object {
             "height": 130,
@@ -808,12 +817,12 @@ exports[`Card css 1`] = `
         type="image"
       >
         <img
-          className="c22"
+          className="c23"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
         />
       </div>
       <div
-        className="c3"
+        className="c24"
         type="image"
       >
         <div
@@ -839,7 +848,7 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c23"
+      className="c25"
       type="image"
     >
       <div
@@ -853,12 +862,12 @@ exports[`Card css 1`] = `
         type="image"
       >
         <img
-          className="c22"
+          className="c23"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
         />
       </div>
       <div
-        className="c3"
+        className="c26"
         type="image"
       >
         <div
@@ -884,7 +893,7 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c24"
+      className="c27"
       type="combo"
     >
       <div
@@ -893,7 +902,7 @@ exports[`Card css 1`] = `
         操作
       </div>
       <div
-        className="c25"
+        className="c28"
         content={
           <styled.div>
              
@@ -920,91 +929,91 @@ exports[`Card css 1`] = `
         type="combo"
       >
         <div
-          className="c26"
+          className="c29"
         >
            
           <div
-            className="c27"
+            className="c30"
           >
             <div
-              className="c28"
+              className="c31"
             >
               <span
-                className="c29"
+                className="c32"
                 onClick={[Function]}
                 type="pre"
               >
                 <i
-                  className="lugia-icon-direction_Left c30 c31"
+                  className="lugia-icon-direction_Left c33 c34"
                 />
               </span>
               <div
-                className="c32"
+                className="c35"
               >
                 <div
-                  className="c33"
+                  className="c36"
                   x={-0}
                 >
                   <div
-                    className="c34"
+                    className="c37"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c35"
+                      className="c38"
                       disabled={false}
                     >
                       Tab1
                     </div>
                   </div>
                   <div
-                    className="c34"
+                    className="c37"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c36"
+                      className="c39"
                       disabled={false}
                     >
                       Tab2
                     </div>
                   </div>
                   <div
-                    className="c34"
+                    className="c37"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c36"
+                      className="c39"
                       disabled={false}
                     >
                       Tab3
                     </div>
                   </div>
                   <div
-                    className="c37"
+                    className="c40"
                     x={20}
                   />
                 </div>
               </div>
               <span
-                className="c38"
+                className="c41"
                 onClick={[Function]}
                 type="next"
               >
                 <i
-                  className="lugia-icon-direction_right c39 c31"
+                  className="lugia-icon-direction_right c42 c34"
                 />
               </span>
             </div>
             <div
-              className="c40"
+              className="c43"
             >
               content of Tab1
             </div>
@@ -1020,27 +1029,27 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c41"
+      className="c44"
       type="combo"
     >
       <div
-        className="c25"
+        className="c28"
         content={<AmountCard />}
         type="combo"
       >
         <div
-          className="c42"
+          className="c45"
         >
           <div
-            className="c43"
+            className="c46"
           >
             价格
           </div>
           <div
-            className="c44"
+            className="c47"
           >
             <div
-              className="c44"
+              className="c47"
               style={
                 Object {
                   "fontSize": 32,
@@ -1050,7 +1059,7 @@ exports[`Card css 1`] = `
               9
             </div>
             <div
-              className="c44"
+              className="c47"
               style={
                 Object {
                   "fontSize": 18,
@@ -1061,7 +1070,7 @@ exports[`Card css 1`] = `
             </div>
           </div>
           <button
-            className="c45"
+            className="c48"
           >
             购买
           </button>

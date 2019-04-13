@@ -18,11 +18,11 @@ import {
   getTitleColor,
   getFontWeight,
   getDescripitionColor,
-  getOutContainerDirection,
+  getCardContentrSize,
   getCardContainerBackground,
   getContentTextAlign,
-  getContentMargin,
-  getAvatarMargin,
+  getContentPadding,
+  getAvatarPadding,
   getTipLineBackground,
 } from '../css/card';
 import type { CardProps, CardState } from '../css/card';
@@ -45,16 +45,14 @@ const CardOutContainer = styled.div`
   ${getCardContainerSize};
   ${getCardContainerShadow};
   ${getCardContainerBackground};
-  ${getOutContainerDirection};
+  ${getContentPadding};
+  ${getContentTextAlign};
   border-radius: ${em(5)};
 `;
 const Content = styled.div`
-  ${getContentMargin};
   font-size: 1.2rem;
-  ${getContentTextAlign};
   display: inline-block;
-  width: inherit;
-  height: inherit;
+  ${getCardContentrSize};
 `;
 const Image = styled.img`
   width: inherit;
@@ -69,7 +67,7 @@ const ImageContainer = styled.div`
 ImageContainer.displayName = Widget.CardImage;
 
 const CardAvatar: Object = styled(Avatar)`
-  ${getAvatarMargin};
+  ${getAvatarPadding};
   border-radius: 50%;
 `;
 
