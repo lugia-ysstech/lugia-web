@@ -170,27 +170,21 @@ describe('design-responsive', () => {
     Element.matchValue(50, [0, 101]);
     expect(Element.matchValue(50, [0, 101]).result).toBe(0);
     expect(Element.matchValue(50, [0, 101]).resultIndex).toBe(0);
-    // expect(Element.matchValue(50, [0, 101]).minValueIndex).toBe(0);
 
     expect(Element.matchValue(50, [100, 201, 301]).result).toBe(100);
     expect(Element.matchValue(50, [100, 201, 301]).resultIndex).toBe(0);
-    // expect(Element.matchValue(50, [100, 201]).minValueIndex).toBe(0);
 
     expect(Element.matchValue(500, [301, 100, 201]).result).toBe(301);
     expect(Element.matchValue(500, [301, 100, 201]).resultIndex).toBe(0);
-    // expect(Element.matchValue(500, [100, 201]).minValueIndex).toBe(0);
 
     expect(Element.matchValue(350, [0, 200, 400, 600]).result).toBe(200);
     expect(Element.matchValue(350, [0, 200, 400, 600]).resultIndex).toBe(1);
-    // expect(Element.matchValue(350, [0, 200, 400, 600]).minValueIndex).toBe(0);
 
     expect(Element.matchValue(350, [400, 600, 0, 200]).result).toBe(200);
     expect(Element.matchValue(350, [400, 600, 0, 200]).resultIndex).toBe(3);
-    // expect(Element.matchValue(350, [400, 600, 0, 200]).minValueIndex).toBe(2);
 
     expect(Element.matchValue(200, [200, 700, 100, 500, 300]).result).toBe(200);
     expect(Element.matchValue(200, [200, 700, 100, 500, 300]).resultIndex).toBe(0);
-    // expect(Element.matchValue(100, [100, 700, 500, 300]).resultIndex).toBe(0);
 
     expect(Element.matchValue(50, [0, 200, 700, 100, 500, 300]).result).toBe(0);
     expect(Element.matchValue(50, [0, 200, 700, 100, 500, 300]).resultIndex).toBe(0);

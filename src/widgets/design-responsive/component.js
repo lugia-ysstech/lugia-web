@@ -97,7 +97,6 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
         minValue = item;
         minValueIndex = index;
       }
-      // 200, [200, 700, 100, 500, 300]
       if (value && value >= item) {
         if (!result || (result && item >= result)) {
           result = item;
