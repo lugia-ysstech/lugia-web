@@ -61,35 +61,38 @@ describe('design-responsive', () => {
     const index0 = 0;
     const index1 = 1;
 
-    const result = Element.getRanges(
-      50,
-      {
-        [index0]: '50x100',
-        [index1]: '101x200',
-      },
-      [0, 101]
-    );
-    expect(result).toBe('50x100');
+    expect(
+      Element.getRanges(
+        50,
+        {
+          [index0]: '50x100',
+          [index1]: '101x200',
+        },
+        [0, 101]
+      )
+    ).toBe('50x100');
 
-    const result2 = Element.getRanges(
-      201,
-      {
-        [index0]: '50x100',
-        [index1]: '101x200',
-      },
-      [0, 101]
-    );
-    expect(result2).toBe('101x200');
+    expect(
+      Element.getRanges(
+        201,
+        {
+          [index0]: '50x100',
+          [index1]: '101x200',
+        },
+        [0, 101]
+      )
+    ).toBe('101x200');
 
-    const result3 = Element.getRanges(
-      100,
-      {
-        [index0]: '50x100',
-        [index1]: '101x200',
-      },
-      [0, 101]
-    );
-    expect(result3).toBe('50x100');
+    expect(
+      Element.getRanges(
+        100,
+        {
+          [index0]: '50x100',
+          [index1]: '101x200',
+        },
+        [0, 101]
+      )
+    ).toBe('50x100');
   });
 
   it('getRanges： get min range value', () => {
