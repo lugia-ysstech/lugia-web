@@ -50,14 +50,110 @@ describe('design-responsive', () => {
     expect(result).toEqual({
       ranges: [[1025, 1366], [0, 1024]],
       rangesMap: { [index0]: '1366x1080', [index1]: '1024x768' },
+      rangeMaxValues: [1366, 1024],
+      rangeMinValues: [1025, 0],
     });
   });
 
-  it('design-responsive -> getRange', () => {
+  it('getRange', () => {
     const target = mount(<Component />);
     const Element = target.instance();
     const index0 = 0;
     const index1 = 1;
+
+    expect(
+      Element.getRange(
+        50,
+        {
+          [index0]: '50x100',
+          [index1]: '101x200',
+        },
+        [0, 101]
+      )
+    ).toBe('50x100');
+
+    expect(
+      Element.getRange(
+        201,
+        {
+          [index0]: '50x100',
+          [index1]: '101x200',
+        },
+        [0, 101]
+      )
+    ).toBe('101x200');
+
+    expect(
+      Element.getRange(
+        100,
+        {
+          [index0]: '50x100',
+          [index1]: '101x200',
+        },
+        [0, 101]
+      )
+    ).toBe('50x100');
+  });
+
+  it('getRange： get min range value', () => {
+    const target = mount(<Component />);
+    const Element = target.instance();
+    const index0 = 0;
+    const index1 = 1;
+    const index2 = 2;
+    const index3 = 3;
+
+    expect(
+      Element.getRange(
+        50,
+        {
+          [index0]: '200x300',
+          [index1]: '101x200',
+          [index2]: '400x500',
+        },
+        [200, 101, 400]
+      )
+    ).toBe('101x200');
+    expect(
+      Element.getRange(
+        200,
+        {
+          [index0]: '200x300',
+          [index1]: '101x200',
+          [index2]: '400x500',
+        },
+        [200, 101, 400]
+      )
+    ).toBe('200x300');
+
+    expect(
+      Element.getRange(
+        50,
+        {
+          [index0]: '50x100',
+          [index1]: '101x200',
+        },
+        [100, 201]
+      )
+    ).toBe('50x100');
+
+    expect(
+      Element.getRange(
+        500,
+        {
+          [index0]: '100x200',
+          [index1]: '201x300',
+          [index2]: '401x500',
+          [index3]: '301x400',
+        },
+        [100, 201, 401, 301]
+      )
+    ).toBe('401x500');
+  });
+
+  it('getRange : errorType', () => {
+    const target = mount(<Component />);
+    const Element = target.instance();
 
     const errorRes1 = Element.getRange();
     expect(errorRes1).toBe('default');
@@ -67,23 +163,63 @@ describe('design-responsive', () => {
 
     const errorRes3 = Element.getRange(undefined, [[0, 100]]);
     expect(errorRes3).toBe('default');
+  });
 
-    const result = Element.getRange(50, [[0, 100], [101, 200]], {
-      [index0]: '50x100',
-      [index1]: '101x200',
-    });
-    expect(result).toBe('50x100');
+  it('matchValue', () => {
+    const target = mount(<Component />);
+    const Element = target.instance();
 
-    const result2 = Element.getRange(201, [[0, 100], [101, 200]], {
-      [index0]: '50x100',
-      [index1]: '101x200',
-    });
-    expect(result2).toBe('default');
+    Element.matchValue(50, [0, 101]);
+    expect(Element.matchValue(50, [0, 101]).result).toBe(0);
+    expect(Element.matchValue(50, [0, 101]).resultIndex).toBe(0);
 
-    const result3 = Element.getRange(100, [[0, 100], [101, 200]], {
-      [index0]: '50x100',
-      [index1]: '101x200',
-    });
-    expect(result3).toBe('50x100');
+    expect(Element.matchValue(50, [100, 201, 301]).result).toBe(100);
+    expect(Element.matchValue(50, [100, 201, 301]).resultIndex).toBe(0);
+
+    expect(Element.matchValue(500, [301, 100, 201]).result).toBe(301);
+    expect(Element.matchValue(500, [301, 100, 201]).resultIndex).toBe(0);
+
+    expect(Element.matchValue(350, [0, 200, 400, 600]).result).toBe(200);
+    expect(Element.matchValue(350, [0, 200, 400, 600]).resultIndex).toBe(1);
+
+    expect(Element.matchValue(350, [400, 600, 0, 200]).result).toBe(200);
+    expect(Element.matchValue(350, [400, 600, 0, 200]).resultIndex).toBe(3);
+
+    expect(Element.matchValue(200, [200, 700, 100, 500, 300]).result).toBe(200);
+    expect(Element.matchValue(200, [200, 700, 100, 500, 300]).resultIndex).toBe(0);
+
+    expect(Element.matchValue(50, [0, 200, 700, 100, 500, 300]).result).toBe(0);
+    expect(Element.matchValue(50, [0, 200, 700, 100, 500, 300]).resultIndex).toBe(0);
+
+    expect(Element.matchValue(50, [200, 700, 0, 100, 500, 300]).result).toBe(0);
+    expect(Element.matchValue(50, [200, 700, 0, 100, 500, 300]).resultIndex).toBe(2);
+  });
+
+  it('matchValue value: errorType', () => {
+    const target = mount(<Component />);
+    const Element = target.instance();
+
+    expect(Element.matchValue(0, [0, 200, 400, 600]).result).toBeUndefined();
+    expect(Element.matchValue(0, [0, 200, 400, 600]).resultIndex).toBeUndefined();
+
+    expect(Element.matchValue(undefined, [0, 200, 400, 600]).result).toBeUndefined();
+    expect(Element.matchValue(undefined, [0, 200, 400, 600]).resultIndex).toBeUndefined();
+
+    expect(Element.matchValue(null, [0, 200, 400, 600]).result).toBeUndefined();
+    expect(Element.matchValue(null, [0, 200, 400, 600]).resultIndex).toBeUndefined();
+  });
+
+  it('matchValue rangeValue: errorType', () => {
+    const target = mount(<Component />);
+    const Element = target.instance();
+
+    expect(Element.matchValue(350, undefined).result).toBeUndefined();
+    expect(Element.matchValue(350, undefined).resultIndex).toBeUndefined();
+
+    expect(Element.matchValue(350, null).result).toBeUndefined();
+    expect(Element.matchValue(350, null).resultIndex).toBeUndefined();
+
+    expect(Element.matchValue(350, []).result).toBeUndefined();
+    expect(Element.matchValue(350, []).resultIndex).toBeUndefined();
   });
 });
