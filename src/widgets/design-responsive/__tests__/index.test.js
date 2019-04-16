@@ -55,14 +55,14 @@ describe('design-responsive', () => {
     });
   });
 
-  it('getRanges', () => {
+  it('getRange', () => {
     const target = mount(<Component />);
     const Element = target.instance();
     const index0 = 0;
     const index1 = 1;
 
     expect(
-      Element.getRanges(
+      Element.getRange(
         50,
         {
           [index0]: '50x100',
@@ -73,7 +73,7 @@ describe('design-responsive', () => {
     ).toBe('50x100');
 
     expect(
-      Element.getRanges(
+      Element.getRange(
         201,
         {
           [index0]: '50x100',
@@ -84,7 +84,7 @@ describe('design-responsive', () => {
     ).toBe('101x200');
 
     expect(
-      Element.getRanges(
+      Element.getRange(
         100,
         {
           [index0]: '50x100',
@@ -95,7 +95,7 @@ describe('design-responsive', () => {
     ).toBe('50x100');
   });
 
-  it('getRanges： get min range value', () => {
+  it('getRange： get min range value', () => {
     const target = mount(<Component />);
     const Element = target.instance();
     const index0 = 0;
@@ -104,7 +104,7 @@ describe('design-responsive', () => {
     const index3 = 3;
 
     expect(
-      Element.getRanges(
+      Element.getRange(
         50,
         {
           [index0]: '200x300',
@@ -115,7 +115,7 @@ describe('design-responsive', () => {
       )
     ).toBe('101x200');
     expect(
-      Element.getRanges(
+      Element.getRange(
         200,
         {
           [index0]: '200x300',
@@ -127,7 +127,7 @@ describe('design-responsive', () => {
     ).toBe('200x300');
 
     expect(
-      Element.getRanges(
+      Element.getRange(
         50,
         {
           [index0]: '50x100',
@@ -138,7 +138,7 @@ describe('design-responsive', () => {
     ).toBe('50x100');
 
     expect(
-      Element.getRanges(
+      Element.getRange(
         500,
         {
           [index0]: '100x200',
@@ -151,17 +151,17 @@ describe('design-responsive', () => {
     ).toBe('401x500');
   });
 
-  it('getRanges : errorType', () => {
+  it('getRange : errorType', () => {
     const target = mount(<Component />);
     const Element = target.instance();
 
-    const errorRes1 = Element.getRanges();
+    const errorRes1 = Element.getRange();
     expect(errorRes1).toBe('default');
 
-    const errorRes2 = Element.getRanges(100);
+    const errorRes2 = Element.getRange(100);
     expect(errorRes2).toBe('default');
 
-    const errorRes3 = Element.getRanges(undefined, [[0, 100]]);
+    const errorRes3 = Element.getRange(undefined, [[0, 100]]);
     expect(errorRes3).toBe('default');
   });
 

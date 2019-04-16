@@ -35,7 +35,7 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
     this.widthRangeMap = rangesMap;
     this.rangeMinValues = rangeMinValues;
     this.state = {
-      windowWidthRange: this.getRanges(innerWidth, this.widthRangeMap, this.rangeMinValues),
+      windowWidthRange: this.getRange(innerWidth, this.widthRangeMap, this.rangeMinValues),
     };
     if (window) {
       window.onresize = this.handleWindowDrag;
@@ -67,7 +67,7 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
 
   handleWindowDrag = () => {
     const { innerWidth } = window;
-    const currentWindowRange = this.getRanges(innerWidth, this.widthRangeMap, this.rangeMinValues);
+    const currentWindowRange = this.getRange(innerWidth, this.widthRangeMap, this.rangeMinValues);
     const { windowWidthRange } = this.state;
     if (currentWindowRange !== windowWidthRange) {
       this.setState({
@@ -76,11 +76,11 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
     }
   };
 
-  getRanges = (windowWidth?: number, rangeMap?: Object, rangeMinValues?: number[]) => {
+  getRange = (windowWidth?: number, rangeMap?: Object, rangeMinValues?: number[]) => {
     if (!windowWidth || !rangeMinValues || !rangeMinValues.length || !rangeMap) {
       return 'default';
     }
-    const { result, resultIndex } = this.matchValue(windowWidth, rangeMinValues);
+    const { resultIndex } = this.matchValue(windowWidth, rangeMinValues);
 
     return rangeMap[resultIndex];
   };
