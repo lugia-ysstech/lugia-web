@@ -61,7 +61,6 @@ describe('design-responsive', () => {
     const index0 = 0;
     const index1 = 1;
 
-    console.log(Element.matchValue(50, [0, 101]));
     const result = Element.getRanges(
       50,
       {
