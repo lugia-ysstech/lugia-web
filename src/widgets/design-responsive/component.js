@@ -54,7 +54,7 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
           const { widthRange = [] } = item;
           const rangeMinValue = widthRange[0];
           const rangeDesc = configKeys[index];
-          rangesMap[rangeMinValue] = { min: rangeMinValue, rangeDesc };
+          rangesMap[rangeMinValue] = { rangeDesc };
           rangeMinValues.push(rangeMinValue);
         });
         return { rangesMap, rangeMinValues: this.increasingSortArray(rangeMinValues) };

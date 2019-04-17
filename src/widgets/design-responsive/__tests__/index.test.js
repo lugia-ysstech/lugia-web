@@ -57,9 +57,9 @@ describe('design-responsive', () => {
     const index2 = 799;
     expect(result).toEqual({
       rangesMap: {
-        [index0]: { rangeDesc: '1366x1080', min: 1025 },
-        [index1]: { rangeDesc: '799x1023', min: 0 },
-        [index2]: { rangeDesc: '1024x768', min: 799 },
+        [index0]: { rangeDesc: '1366x1080' },
+        [index1]: { rangeDesc: '799x1023' },
+        [index2]: { rangeDesc: '1024x768' },
       },
       rangeMinValues: [0, 799, 1025],
     });
@@ -82,8 +82,8 @@ describe('design-responsive', () => {
       Element.getRange(
         50,
         {
-          [index0]: { min: 0, rangeDesc: '50x100' },
-          [index1]: { min: 101, rangeDesc: '101x200' },
+          [index0]: { rangeDesc: '50x100' },
+          [index1]: { rangeDesc: '101x200' },
         },
         [0, 101]
       )
@@ -93,8 +93,8 @@ describe('design-responsive', () => {
       Element.getRange(
         201,
         {
-          [index0]: { min: 0, rangeDesc: '50x100' },
-          [index1]: { min: 0, rangeDesc: '101x200' },
+          [index0]: { rangeDesc: '50x100' },
+          [index1]: { rangeDesc: '101x200' },
         },
         [0, 101]
       )
@@ -104,8 +104,8 @@ describe('design-responsive', () => {
       Element.getRange(
         100,
         {
-          [index0]: { min: 0, rangeDesc: '50x100' },
-          [index1]: { min: 0, rangeDesc: '101x200' },
+          [index0]: { rangeDesc: '50x100' },
+          [index1]: { rangeDesc: '101x200' },
         },
         [0, 101]
       )
@@ -118,11 +118,11 @@ describe('design-responsive', () => {
     const rangeMinValues = [200, 700, 100, 500, 300];
     const [index1, index2, index3, index4, index5] = rangeMinValues;
     const rangeMap = {
-      [index1]: { min: 200, rangeDesc: '200x399' },
-      [index2]: { min: 700, rangeDesc: '700x799' },
-      [index3]: { min: 100, rangeDesc: '100x199' },
-      [index4]: { min: 500, rangeDesc: '500x599' },
-      [index5]: { min: 300, rangeDesc: '300x399' },
+      [index1]: { rangeDesc: '200x399' },
+      [index2]: { rangeDesc: '700x799' },
+      [index3]: { rangeDesc: '100x199' },
+      [index4]: { rangeDesc: '500x599' },
+      [index5]: { rangeDesc: '300x399' },
     };
 
     expect(Element.getRange(50, rangeMap, rangeMinValues.sort())).toBe('100x199');
