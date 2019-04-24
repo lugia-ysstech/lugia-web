@@ -48,7 +48,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c3:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c3::-webkit-input-placeholder {
@@ -68,7 +68,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c3:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -120,7 +120,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c7:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -151,7 +151,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c10:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c10::-webkit-input-placeholder {
@@ -171,7 +171,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c10:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -202,7 +202,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c11:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c11::-webkit-input-placeholder {
@@ -222,7 +222,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c11:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -253,7 +253,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c12:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c12::-webkit-input-placeholder {
@@ -273,7 +273,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c12:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -776,7 +776,7 @@ exports[`AmountInputDemo props: placeholder  1`] = `
 }
 
 .c2:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -796,7 +796,7 @@ exports[`AmountInputDemo props: placeholder  1`] = `
 }
 
 .c2:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -917,7 +917,7 @@ exports[`AmountInputDemo props: placeholder  2`] = `
 }
 
 .c2:hover {
-  border-color: #684fff;
+  border-color: #4d63ff;
 }
 
 .c2::-webkit-input-placeholder {
@@ -937,7 +937,7 @@ exports[`AmountInputDemo props: placeholder  2`] = `
 }
 
 .c2:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 

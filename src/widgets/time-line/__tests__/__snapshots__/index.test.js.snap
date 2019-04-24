@@ -125,7 +125,7 @@ exports[`timeLineDemo Component JSON 1`] = `
 
 .c5 {
   position: absolute;
-  background: #684fff;
+  background: #4d63ff;
   width: 0.8333333333333334em;
   height: 0.8333333333333334em;
   left: 0.45833333333333337em;
@@ -203,7 +203,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   text-transform: none;
   outline: 0;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
@@ -213,17 +213,17 @@ exports[`timeLineDemo Component JSON 1`] = `
 .c23:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c23:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c23:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c24 {

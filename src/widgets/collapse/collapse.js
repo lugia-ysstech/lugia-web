@@ -45,7 +45,7 @@ export default ThemeProvider(
     }
     renderChildren = () => {
       const { children, accordion, data } = this.props;
-      if (!children && !data) {
+      if ((!children && !data) || typeof children === 'string') {
         return (
           <Panel value="lugia-panel" header="Lugia Panel" onClick={this.handleClick}>
             Default Panel

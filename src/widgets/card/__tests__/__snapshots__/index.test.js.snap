@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
-.c30 {
+.c34 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -10,7 +10,7 @@ exports[`Card css 1`] = `
   font-size: 1.2rem;
 }
 
-.c13 {
+.c14 {
   font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
@@ -25,7 +25,7 @@ exports[`Card css 1`] = `
   border-radius: 50%;
 }
 
-.c14 {
+.c15 {
   border-radius: 50%;
   width: 6.666666666666667em;
   height: 6.666666666666667em;
@@ -42,9 +42,9 @@ exports[`Card css 1`] = `
   height: 10.833333333333334em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
@@ -58,13 +58,29 @@ exports[`Card css 1`] = `
   height: 16.666666666666668em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
-.c10 {
+.c7 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 25em;
+  height: 16.666666666666668em;
+  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
+  background: #ffffff;
+  padding-left: 2.5em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
+  border-radius: 0.4166666666666667em;
+}
+
+.c11 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -74,13 +90,12 @@ exports[`Card css 1`] = `
   height: 15.833333333333334em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  padding-left: 0em;
+  text-align: center;
   border-radius: 0.4166666666666667em;
 }
 
-.c16 {
+.c17 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -90,13 +105,13 @@ exports[`Card css 1`] = `
   height: 9.666666666666666em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
-.c19 {
+.c21 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -106,13 +121,13 @@ exports[`Card css 1`] = `
   height: 19.166666666666668em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
-.c22 {
+.c25 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -122,13 +137,13 @@ exports[`Card css 1`] = `
   height: 9.333333333333334em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0.8333333333333334em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
-.c23 {
+.c27 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -138,13 +153,13 @@ exports[`Card css 1`] = `
   height: 20em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
-.c40 {
+.c44 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -154,57 +169,67 @@ exports[`Card css 1`] = `
   height: 18.333333333333336em;
   box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
   background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  padding-left: 0em;
+  padding-bottom: 1em;
+  padding-top: 2.166666666666667em;
   border-radius: 0.4166666666666667em;
 }
 
 .c3 {
-  margin-left: 0.8333333333333334em;
   font-size: 1.2rem;
-  margin-bottom: 1em;
-  margin-top: 2.166666666666667em;
   display: inline-block;
-  width: inherit;
-  height: inherit;
+  width: 28.333333333333336em;
+  height: 7.666666666666666em;
 }
 
-.c7 {
-  margin-left: 2.5em;
+.c8 {
   font-size: 1.2rem;
-  margin-bottom: 1em;
-  margin-top: 2.166666666666667em;
   display: inline-block;
-  width: inherit;
-  height: inherit;
+  width: -2.5em;
+  height: -3.1666666666666665em;
 }
 
-.c15 {
-  margin-left: 0em;
+.c16 {
   font-size: 1.2rem;
-  text-align: center;
   display: inline-block;
-  width: inherit;
-  height: inherit;
+  width: 12.5em;
+  height: 12.666666666666666em;
+}
+
+.c20 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 25.833333333333336em;
+  height: 6.5em;
 }
 
 .c24 {
-  margin-left: 0em;
   font-size: 1.2rem;
-  margin-bottom: 1em;
-  margin-top: 2.166666666666667em;
   display: inline-block;
+  width: 15.833333333333334em;
+  height: 16em;
+}
+
+.c26 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 25.833333333333336em;
+  height: 6.166666666666667em;
+}
+
+.c28 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 16.666666666666668em;
+  height: 15.166666666666666em;
+}
+
+.c23 {
   width: inherit;
   height: inherit;
 }
 
-.c21 {
-  width: inherit;
-  height: inherit;
-}
-
-.c11 {
+.c12 {
   position: relative;
   width: inherit;
   height: 9.333333333333334em;
@@ -212,7 +237,7 @@ exports[`Card css 1`] = `
   text-align: center;
 }
 
-.c17 {
+.c18 {
   position: relative;
   width: 10em;
   height: inherit;
@@ -220,7 +245,7 @@ exports[`Card css 1`] = `
   text-align: center;
 }
 
-.c20 {
+.c22 {
   position: relative;
   width: 16.666666666666668em;
   height: 10.833333333333334em;
@@ -228,13 +253,13 @@ exports[`Card css 1`] = `
   text-align: center;
 }
 
-.c12 {
-  margin: 1.6666666666666667em 0;
+.c13 {
+  padding: 1.6666666666666667em 0;
   border-radius: 50%;
 }
 
-.c18 {
-  margin: 1.6666666666666667em 1.6666666666666667em;
+.c19 {
+  padding: 1.6666666666666667em 1.6666666666666667em;
   border-radius: 50%;
 }
 
@@ -251,7 +276,7 @@ exports[`Card css 1`] = `
   white-space: nowrap;
 }
 
-.c9 {
+.c10 {
   text-align: inherit;
   display: inline-block;
   -webkit-flex: 1;
@@ -264,13 +289,13 @@ exports[`Card css 1`] = `
   white-space: nowrap;
 }
 
-.c8 {
+.c9 {
   left: 1.1666666666666667em;
   position: absolute;
   display: inline-block;
   height: 1.6666666666666667em;
   width: 0.4166666666666667em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4166666666666667em;
 }
 
@@ -289,7 +314,7 @@ exports[`Card css 1`] = `
   top: 1.3333333333333335em;
 }
 
-.c33 {
+.c37 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -306,16 +331,16 @@ exports[`Card css 1`] = `
   box-sizing: border-box;
 }
 
-.c33:hover > div {
-  color: #684fff;
+.c37:hover > div {
+  color: #4d63ff;
 }
 
-.c33:hover > span > i:first-child {
-  color: #684fff;
+.c37:hover > span > i:first-child {
+  color: #4d63ff;
 }
 
-.c34 {
-  color: #684fff;
+.c38 {
+  color: #4d63ff;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -329,36 +354,35 @@ exports[`Card css 1`] = `
   line-height: 2.8333333333333335em;
 }
 
-.c34:focus {
-  color: #684fff;
-}
-
-.c35 {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-align: left;
-  padding: 0 0em 0 0em;
-  height: 2.8333333333333335em;
-  line-height: 2.8333333333333335em;
-}
-
-.c35:focus {
-  color: #684fff;
+.c38:focus {
+  color: #4d63ff;
 }
 
 .c39 {
-  position: absolute;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  padding: 0 0em 0 0em;
+  height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+}
+
+.c39:focus {
+  color: #4d63ff;
+}
+
+.c43 {
   display: inline-block;
   overflow: hidden;
   width: 100%;
 }
 
-.c36 {
+.c40 {
   background-color: blue;
   position: absolute;
   box-sizing: border-box;
@@ -374,7 +398,7 @@ exports[`Card css 1`] = `
   transition: all 0.3s;
 }
 
-.c28 {
+.c32 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -388,7 +412,7 @@ exports[`Card css 1`] = `
   left: 0.8333333333333334em;
 }
 
-.c37 {
+.c41 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -402,7 +426,7 @@ exports[`Card css 1`] = `
   right: 0.8333333333333334em;
 }
 
-.c26 {
+.c30 {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
@@ -410,14 +434,14 @@ exports[`Card css 1`] = `
   height: NaNem;
 }
 
-.c31 {
+.c35 {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.c32 {
+.c36 {
   height: 2.8333333333333335em;
   display: inline-block;
   box-sizing: border-box;
@@ -429,7 +453,7 @@ exports[`Card css 1`] = `
   transform: translateX(0em);
 }
 
-.c27 {
+.c31 {
   height: 2.8333333333333335em;
   line-height: 2.8333333333333335em;
   position: relative;
@@ -439,7 +463,7 @@ exports[`Card css 1`] = `
   z-index: 99;
 }
 
-.c29 {
+.c33 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -447,7 +471,7 @@ exports[`Card css 1`] = `
   cursor: not-allowed;
 }
 
-.c38 {
+.c42 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -461,18 +485,18 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c25 {
+.c29 {
   display: inline-block;
   margin-left: 20px;
 }
 
-.c41 {
+.c45 {
   text-align: center;
   width: 100%;
   height: 100%;
 }
 
-.c42 {
+.c46 {
   text-align: center;
   font-size: 16px;
   color: #666;
@@ -480,13 +504,13 @@ exports[`Card css 1`] = `
   width: 100%;
 }
 
-.c43 {
+.c47 {
   text-align: center;
   color: #4d63ff;
   display: inline-block;
 }
 
-.c44 {
+.c48 {
   position: absolute;
   text-align: center;
   font-size: 14px;
@@ -589,11 +613,11 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c6"
+      className="c7"
       type="tip"
     >
       <div
-        className="c7"
+        className="c8"
         content={
           Array [
             <div>
@@ -607,10 +631,10 @@ exports[`Card css 1`] = `
         type="tip"
       >
         <div
-          className="c8"
+          className="c9"
         />
         <div
-          className="c9"
+          className="c10"
           type="tip"
         >
           <div>
@@ -654,11 +678,11 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c10"
+      className="c11"
       type="avatar"
     >
       <div
-        className="c11"
+        className="c12"
         size={
           Object {
             "height": undefined,
@@ -668,7 +692,7 @@ exports[`Card css 1`] = `
         type="avatar"
       >
         <span
-          className="c12 c13"
+          className="c13 c14"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -680,14 +704,14 @@ exports[`Card css 1`] = `
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
         >
           <img
-            className="c14"
+            className="c15"
             shape="circle"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
           />
         </span>
       </div>
       <div
-        className="c15"
+        className="c16"
         type="avatar"
       >
         <div
@@ -713,11 +737,11 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c16"
+      className="c17"
       type="avatar"
     >
       <div
-        className="c17"
+        className="c18"
         size={
           Object {
             "height": undefined,
@@ -727,7 +751,7 @@ exports[`Card css 1`] = `
         type="avatar"
       >
         <span
-          className="c18 c13"
+          className="c19 c14"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -739,14 +763,14 @@ exports[`Card css 1`] = `
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
         >
           <img
-            className="c14"
+            className="c15"
             shape="circle"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
           />
         </span>
       </div>
       <div
-        className="c3"
+        className="c20"
         type="avatar"
       >
         <div
@@ -779,11 +803,11 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c19"
+      className="c21"
       type="image"
     >
       <div
-        className="c20"
+        className="c22"
         size={
           Object {
             "height": 130,
@@ -793,12 +817,12 @@ exports[`Card css 1`] = `
         type="image"
       >
         <img
-          className="c21"
+          className="c23"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
         />
       </div>
       <div
-        className="c3"
+        className="c24"
         type="image"
       >
         <div
@@ -824,11 +848,11 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c22"
+      className="c25"
       type="image"
     >
       <div
-        className="c17"
+        className="c18"
         size={
           Object {
             "height": undefined,
@@ -838,12 +862,12 @@ exports[`Card css 1`] = `
         type="image"
       >
         <img
-          className="c21"
+          className="c23"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
         />
       </div>
       <div
-        className="c3"
+        className="c26"
         type="image"
       >
         <div
@@ -869,7 +893,7 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c23"
+      className="c27"
       type="combo"
     >
       <div
@@ -878,7 +902,7 @@ exports[`Card css 1`] = `
         操作
       </div>
       <div
-        className="c24"
+        className="c28"
         content={
           <styled.div>
              
@@ -905,91 +929,91 @@ exports[`Card css 1`] = `
         type="combo"
       >
         <div
-          className="c25"
+          className="c29"
         >
            
           <div
-            className="c26"
+            className="c30"
           >
             <div
-              className="c27"
+              className="c31"
             >
               <span
-                className="c28"
+                className="c32"
                 onClick={[Function]}
                 type="pre"
               >
                 <i
-                  className="lugia-icon-direction_Left c29 c30"
+                  className="lugia-icon-direction_Left c33 c34"
                 />
               </span>
               <div
-                className="c31"
+                className="c35"
               >
                 <div
-                  className="c32"
+                  className="c36"
                   x={-0}
                 >
                   <div
-                    className="c33"
+                    className="c37"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c34"
+                      className="c38"
                       disabled={false}
                     >
                       Tab1
                     </div>
                   </div>
                   <div
-                    className="c33"
+                    className="c37"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c35"
+                      className="c39"
                       disabled={false}
                     >
                       Tab2
                     </div>
                   </div>
                   <div
-                    className="c33"
+                    className="c37"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c35"
+                      className="c39"
                       disabled={false}
                     >
                       Tab3
                     </div>
                   </div>
                   <div
-                    className="c36"
+                    className="c40"
                     x={20}
                   />
                 </div>
               </div>
               <span
-                className="c37"
+                className="c41"
                 onClick={[Function]}
                 type="next"
               >
                 <i
-                  className="lugia-icon-direction_right c38 c30"
+                  className="lugia-icon-direction_right c42 c34"
                 />
               </span>
             </div>
             <div
-              className="c39"
+              className="c43"
             >
               content of Tab1
             </div>
@@ -1005,27 +1029,27 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c40"
+      className="c44"
       type="combo"
     >
       <div
-        className="c24"
+        className="c28"
         content={<AmountCard />}
         type="combo"
       >
         <div
-          className="c41"
+          className="c45"
         >
           <div
-            className="c42"
+            className="c46"
           >
             价格
           </div>
           <div
-            className="c43"
+            className="c47"
           >
             <div
-              className="c43"
+              className="c47"
               style={
                 Object {
                   "fontSize": 32,
@@ -1035,7 +1059,7 @@ exports[`Card css 1`] = `
               9
             </div>
             <div
-              className="c43"
+              className="c47"
               style={
                 Object {
                   "fontSize": 18,
@@ -1046,7 +1070,7 @@ exports[`Card css 1`] = `
             </div>
           </div>
           <button
-            className="c44"
+            className="c48"
           >
             购买
           </button>

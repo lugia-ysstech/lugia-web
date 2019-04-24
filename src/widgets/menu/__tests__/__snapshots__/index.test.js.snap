@@ -71,7 +71,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #684fff;
+  color: #4d63ff;
   font-weight: 900;
 }
 
@@ -82,19 +82,19 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 }
 
 .c4:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c4:hover:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c4:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c4:hover:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c0 {
@@ -240,7 +240,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #684fff;
+  color: #4d63ff;
   font-weight: 900;
 }
 
@@ -251,11 +251,11 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 }
 
 .c4:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c4:hover:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c0 {

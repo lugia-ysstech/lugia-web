@@ -100,7 +100,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c3:hover > span span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c21 {
@@ -184,14 +184,14 @@ exports[`Transfer css 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c6:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c6::after {
@@ -229,7 +229,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c19:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c19::after {
@@ -298,14 +298,14 @@ exports[`Transfer css 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c35:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c35::after {
@@ -374,8 +374,8 @@ exports[`Transfer css 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #cac2ff;
-  border: 1px solid #cac2ff;
+  background-color: #c0c8ff;
+  border: 1px solid #c0c8ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -484,19 +484,19 @@ exports[`Transfer css 1`] = `
 }
 
 .c20:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c20:hover:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c20:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c20:hover:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c34 {
@@ -511,7 +511,7 @@ exports[`Transfer css 1`] = `
   transition: background 0.3s ease;
   height: 2.916666666666667em;
   cursor: pointer;
-  color: #684fff;
+  color: #4d63ff;
   font-weight: 900;
 }
 
@@ -522,19 +522,19 @@ exports[`Transfer css 1`] = `
 }
 
 .c34:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c34:hover:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c34:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c34:hover:after {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c39 {
@@ -824,7 +824,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c10:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -875,7 +875,7 @@ exports[`Transfer css 1`] = `
 }
 
 .c36:focus {
-  border-color: #684fff;
+  border-color: #4d63ff;
   box-shadow: 0 0 6px rgba(104,79,255,0.2);
 }
 
@@ -912,7 +912,7 @@ exports[`Transfer css 1`] = `
   text-transform: none;
   outline: 0;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
@@ -923,17 +923,17 @@ exports[`Transfer css 1`] = `
 .c28:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c28:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c28:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c32 {
@@ -956,12 +956,12 @@ exports[`Transfer css 1`] = `
   text-transform: none;
   outline: 0;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
   border-radius: 0.28571428571428575em;
-  background-color: #cac2ff;
+  background-color: #c0c8ff;
   color: #ffffff;
   border: none;
   cursor: not-allowed;
@@ -971,21 +971,21 @@ exports[`Transfer css 1`] = `
 .c32:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c32:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c32:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c32:hover {
-  background-color: #cac2ff;
+  background-color: #c0c8ff;
   color: #ffffff;
   border: none;
 }

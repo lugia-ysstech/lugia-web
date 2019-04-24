@@ -549,15 +549,15 @@ exports[`Tag default: type = customs 1`] = `
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #684fff;
+  background: #4d63ff;
   color: #ffffff;
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c0:hover {
-  background: #684fff;
+  background: #4d63ff;
   color: #ffffff;
-  border-color: #9482ff;
+  border-color: #8090ff;
 }
 
 .c1 {
@@ -606,15 +606,15 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #684fff;
+  background: #4d63ff;
   color: #ffffff;
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c0:hover {
-  background: #684fff;
+  background: #4d63ff;
   color: #ffffff;
-  border-color: #9482ff;
+  border-color: #8090ff;
 }
 
 .c1 {

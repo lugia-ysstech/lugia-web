@@ -88,7 +88,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
 }
 
 .c7:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c11 {
@@ -124,7 +124,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
 }
 
 .c13:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c8 {
@@ -1129,7 +1129,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 }
 
 .c7:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c11 {
@@ -1165,7 +1165,7 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
 }
 
 .c13:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c8 {
@@ -2341,7 +2341,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   width: 0.5em;
   border-radius: 0.33333333333333337em;
   height: 3.3333333333333335em;
-  background: #684fff;
+  background: #4d63ff;
   opacity: 1;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -2390,7 +2390,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 }
 
 .c7:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c13 {
@@ -2410,7 +2410,7 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
 }
 
 .c13:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c8 {
@@ -3398,7 +3398,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   width: 0.5em;
   border-radius: 0.33333333333333337em;
   height: 3.3333333333333335em;
-  background: #684fff;
+  background: #4d63ff;
   opacity: 1;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -3448,7 +3448,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 }
 
 .c7:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c13 {
@@ -3468,7 +3468,7 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
 }
 
 .c13:hover {
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c8 {

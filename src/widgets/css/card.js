@@ -30,38 +30,54 @@ export type CardProps = {
 };
 export type CardState = {};
 
-export const getCardContainerSize = (props: Object) => {
+const paddingBottom = 12;
+const paddingTop = 26;
+
+export const getCardContainerSizeNumber = (props: Object) => {
   const { theme, imageOrientation, type } = props;
   const { width, height } = theme;
+
   let theWidth = 0;
   let theHeight = 0;
   if ((width && typeof width === 'number') || (height && typeof height === 'number')) {
-    theWidth = em(width);
-    theHeight = em(height);
-    return `width:${theWidth};height:${theHeight};`;
+    theWidth = width;
+    theHeight = height;
+    return { width: theWidth, height: theHeight };
   }
 
   switch (type) {
     case 'simple':
-      theWidth = em(350);
-      theHeight = em(130);
+      theWidth = 350;
+      theHeight = 130;
       break;
     case 'avatar':
-      theWidth = imageOrientation === 'horizontal' ? em(320) : em(150);
-      theHeight = imageOrientation === 'horizontal' ? em(116) : em(190);
+      theWidth = imageOrientation === 'horizontal' ? 320 : 150;
+      theHeight = imageOrientation === 'horizontal' ? 116 : 190;
       break;
     case 'image':
-      theWidth = imageOrientation === 'horizontal' ? em(320) : em(200);
-      theHeight = imageOrientation === 'horizontal' ? em(112) : em(230);
+      theWidth = imageOrientation === 'horizontal' ? 320 : 200;
+      theHeight = imageOrientation === 'horizontal' ? 112 : 230;
       break;
     case 'combo':
-      theWidth = em(200);
-      theHeight = em(220);
+      theWidth = 200;
+      theHeight = 220;
       break;
     default:
       break;
   }
-  return `width: ${theWidth};height:${theHeight};`;
+  return { width: theWidth, height: theHeight };
+};
+
+export const getCardContainerSize = (props: Object) => {
+  const { width, height } = getCardContainerSizeNumber(props);
+  return `width: ${em(width)};height:${em(height)};`;
+};
+
+export const getCardContentrSize = (props: Object) => {
+  const { width, height } = getCardContainerSizeNumber(props);
+  return `width: ${em(width - getContentPaddingLeft(props))};height:${em(
+    height - paddingBottom - paddingTop
+  )};`;
 };
 
 export const getCardContainerShadow = () => {
@@ -122,22 +138,26 @@ export const getTipLineBackground = () => {
 export const getContentTextAlign = (props: Object) => {
   const { type, imageOrientation } = props;
   if (type === 'avatar' && imageOrientation === 'vertical') return 'text-align:center;';
+
   return `
-  margin-bottom: ${em(12)};
-  margin-top: ${em(26)};`;
+  padding-bottom: ${em(paddingBottom)};
+  padding-top: ${em(paddingTop)};`;
 };
-export const getContentMargin = (props: Object) => {
+
+export const getContentPadding = (props: Object) => {
+  return `padding-left: ${em(getContentPaddingLeft(props))}`;
+};
+
+function getContentPaddingLeft(props: Object) {
   const { type, imageOrientation } = props;
-  const left =
-    type === 'tip'
-      ? 30
-      : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
-      ? 0
-      : 10;
-  return `margin-left: ${em(left)}`;
-};
-export const getAvatarMargin = (props: Object) => {
+  return type === 'tip'
+    ? 30
+    : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
+    ? 0
+    : 10;
+}
+export const getAvatarPadding = (props: Object) => {
   const { imageOrientation } = props;
   const left = imageOrientation === 'horizontal' ? em(20) : 0;
-  return `margin: ${em(20)}  ${left};`;
+  return `padding: ${em(20)}  ${left};`;
 };
