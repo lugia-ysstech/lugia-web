@@ -130,7 +130,7 @@ type TabpaneProps = {
   suffixIcon: string,
   tabType: TabType,
   tabPosition: TabPositionType,
-  activityKey: string,
+  activityValue: string,
   isSelect: boolean,
   disabled: boolean,
   onClick: Function,
@@ -215,8 +215,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   handleClick = () => {
-    const { activityKey, onClick, disabled } = this.props;
-    if (!disabled) onClick && onClick(activityKey);
+    const { activityValue, onClick, disabled } = this.props;
+    if (!disabled) onClick && onClick(activityValue);
   };
 
   getTabIconContainer(icon, type) {
@@ -230,8 +230,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     return icon;
   }
   onDeleteClick = (e: Event) => {
-    const { onDeleteClick, activityKey } = this.props;
-    onDeleteClick && onDeleteClick(e, activityKey);
+    const { onDeleteClick, activityValue } = this.props;
+    onDeleteClick && onDeleteClick(e, activityValue);
   };
   getClearButton() {
     const { tabType } = this.props;
@@ -257,12 +257,12 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
   };
   onMouseEnter = (e: Object) => {
-    const { onMouseEnter, activityKey } = this.props;
-    onMouseEnter && onMouseEnter(activityKey);
+    const { onMouseEnter, activityValue } = this.props;
+    onMouseEnter && onMouseEnter(activityValue);
   };
   onMouseLeave = (e: Object) => {
-    const { onMouseLeave, activityKey } = this.props;
-    onMouseLeave && onMouseLeave(activityKey);
+    const { onMouseLeave, activityValue } = this.props;
+    onMouseLeave && onMouseLeave(activityValue);
   };
   getContainerWidth() {
     if (this.tabpane) {

@@ -31,15 +31,15 @@ export function computePage(offset: number, actualSize: number): number {
   return totalPage;
 }
 
-export function addActivityKey2Data(data: Array<Object>): Array<Object> {
+export function addActivityValue2Data(data: Array<Object>): Array<Object> {
   if (data) {
     return data.map(
       (item: Object, i: number): Object => {
         return Object.assign({}, item, {
-          activityKey: getAttributeFromObject(
+          activityValue: getAttributeFromObject(
             item,
-            'activityKey',
-            getKeyfromIndex(data, i, 'activityKey')
+            'activityValue',
+            getKeyfromIndex(data, i, 'activityValue')
           ),
         });
       }

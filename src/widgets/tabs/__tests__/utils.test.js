@@ -9,10 +9,10 @@ import {
   plusWidth,
   computePage,
   matchType,
-  addActivityKey2Data,
+  addActivityValue2Data,
   addWidth2Data,
 } from '../utils';
-import { hasActivityKeyData } from '../demo';
+import { hasActivityValueData } from '../demo';
 import type { EditEventType, TabPositionType, TabType } from '../../css/tabs';
 describe('utils', () => {
   function testIsVertical(tabPosition: string, expectValue: boolean) {
@@ -63,31 +63,31 @@ describe('utils', () => {
   testComputePage(200, 410, 3);
 
   const data = [{ a: 'a' }, { a: 'b' }, { a: 'c' }];
-  const singleActivityKey = [{ a: 'a', activityKey: '1' }, { a: 'b' }, { a: 'c' }];
-  const activityKeyDatas = [
-    { a: 'a', activityKey: '_key_0' },
-    { a: 'b', activityKey: '_key_1' },
-    { a: 'c', activityKey: '_key_2' },
+  const singleActivityValue = [{ a: 'a', activityValue: '1' }, { a: 'b' }, { a: 'c' }];
+  const activityValueDatas = [
+    { a: 'a', activityValue: '_Value_0' },
+    { a: 'b', activityValue: '_Value_1' },
+    { a: 'c', activityValue: '_Value_2' },
   ];
-  const newSingleActivityKey = [
-    { a: 'a', activityKey: '1' },
-    { a: 'b', activityKey: '_key_1' },
-    { a: 'c', activityKey: '_key_2' },
+  const newSingleActivityValue = [
+    { a: 'a', activityValue: '1' },
+    { a: 'b', activityValue: '_Value_1' },
+    { a: 'c', activityValue: '_Value_2' },
   ];
-  const allActivityKey = [
-    { a: 'a', activityKey: '1' },
-    { a: 'b', activityKey: '2' },
-    { a: 'c', activityKey: '3' },
+  const allActivityValue = [
+    { a: 'a', activityValue: '1' },
+    { a: 'b', activityValue: '2' },
+    { a: 'c', activityValue: '3' },
   ];
-  function testAddActivityKey2Data(paramData: Array<Object>, expectData: Array<Object>) {
-    it(' testAddActivityKey2Data ', () => {
-      expect(addActivityKey2Data(paramData)).toEqual(expectData);
+  function testAddActivityValue2Data(paramData: Array<Object>, expectData: Array<Object>) {
+    it(' testAddActivityValue2Data ', () => {
+      expect(addActivityValue2Data(paramData)).toEqual(expectData);
     });
   }
-  testAddActivityKey2Data(hasActivityKeyData, hasActivityKeyData);
-  testAddActivityKey2Data(data, activityKeyDatas);
-  testAddActivityKey2Data(singleActivityKey, newSingleActivityKey);
-  testAddActivityKey2Data(allActivityKey, allActivityKey);
+  testAddActivityValue2Data(hasActivityValueData, hasActivityValueData);
+  testAddActivityValue2Data(data, activityValueDatas);
+  testAddActivityValue2Data(singleActivityValue, newSingleActivityValue);
+  testAddActivityValue2Data(allActivityValue, allActivityValue);
 
   const sampleWidthSize = [1, 2, 3];
   const anotherWidthSize = [100, 2, 30];

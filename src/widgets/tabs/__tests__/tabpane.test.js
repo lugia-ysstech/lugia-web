@@ -24,9 +24,9 @@ describe('tabpaneDemo', () => {
       .at(0)
       .instance();
   };
-  it('props activityKey', () => {
-    const target = mount(<Tabpane activityKey={'2'} />);
-    expect(getCmp(target).props.activityKey).toBe('2');
+  it('props activityValue', () => {
+    const target = mount(<Tabpane activityValue={'2'} />);
+    expect(getCmp(target).props.activityValue).toBe('2');
   });
 
   it('props isSelect', () => {
@@ -49,11 +49,11 @@ describe('tabpaneDemo', () => {
   testTitle('tabs', 'tabs');
   testTitle('', '');
   it('props disabled true  ', () => {
-    const target = mount(<Tabpane activityKey={'2'} disabled={true} />);
+    const target = mount(<Tabpane activityValue={'2'} disabled={true} />);
     expect(getCmp(target).props.disabled).toBe(true);
   });
   it('props disabled false', () => {
-    const target = mount(<Tabpane activityKey={'2'} disabled={false} />);
+    const target = mount(<Tabpane activityValue={'2'} disabled={false} />);
     expect(getCmp(target).props.disabled).toBe(false);
   });
 });

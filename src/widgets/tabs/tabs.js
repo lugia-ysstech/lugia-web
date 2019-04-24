@@ -47,7 +47,7 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import {
-  addActivityKey2Data,
+  addActivityValue2Data,
   addWidth2Data,
   computePage,
   isVertical,
@@ -242,7 +242,7 @@ const defaultData = [
 ];
 
 type TabsState = {|
-  activityKey: string,
+  activityValue: string,
   data: Array<Object>,
   currentPage: number,
   totalPage: number,
@@ -252,8 +252,8 @@ type TabsState = {|
 |};
 
 type TabsProps = {
-  activityKey: string,
-  defaultActivityKey: string,
+  activityValue: string,
+  defaultActivityValue: string,
   onTabClick: Function,
   tabPosition: TabPositionType,
   tabType: TabType,
@@ -295,8 +295,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
-    const { activityKey, defaultActivityKey, defaultData, data, children } = props;
-    const hasActivityKeyInprops = 'activityKey' in props;
+    const { activityValue, defaultActivityValue, defaultData, data, children } = props;
+    const hasActivityValueInprops = 'activityValue' in props;
     let configData = [];
     if (hasDataInProps(props)) {
       configData = data ? data : [];
@@ -311,17 +311,17 @@ class TabsBox extends Component<TabsProps, TabsState> {
       }
     }
     if (!state) {
-      const theData = configData ? addActivityKey2Data(configData) : [];
-      const theActivityKey = hasActivityKeyInprops
-        ? activityKey
-        : defaultActivityKey
-        ? defaultActivityKey
+      const theData = configData ? addActivityValue2Data(configData) : [];
+      const theActivityValue = hasActivityValueInprops
+        ? activityValue
+        : defaultActivityValue
+        ? defaultActivityValue
         : theData.length > 0
-        ? theData[0].activityKey
+        ? theData[0].activityValue
         : undefined;
       return {
         data: theData,
-        activityKey: theActivityKey,
+        activityValue: theActivityValue,
         currentPage: 0,
         totalPage: 1,
         pagedCount: 0,
@@ -330,10 +330,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
       };
     }
     const sData = state.data;
-    const sActivityKey = state.activityKey;
+    const sActivityValue = state.activityValue;
     return {
-      activityKey: hasActivityKeyInprops ? activityKey : sActivityKey,
-      data: hasDataInProps(props) ? addActivityKey2Data(configData) : sData,
+      activityValue: hasActivityValueInprops ? activityValue : sActivityValue,
+      data: hasDataInProps(props) ? addActivityValue2Data(configData) : sData,
     };
   }
 
@@ -383,7 +383,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getVtabs() {
     const { tabPosition } = this.props;
-    const { data, activityKey, pagedCount, totalPage } = this.state;
+    const { data, activityValue, pagedCount, totalPage } = this.state;
     const arrowUp = 'lugia-icon-direction_up';
     const arrowDown = 'lugia-icon-direction_down';
     const y = -YtabsHeight * pagedCount;
@@ -399,7 +399,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         <VTabsContainer>
           <YscrollerContainer y={y}>
             <VLine
-              y={getIndexfromKey(data, 'activityKey', activityKey) * 100}
+              y={getIndexfromKey(data, 'activityValue', activityValue) * 100}
               tabPosition={tabPosition}
             />
             {this.getChildren()}
@@ -442,13 +442,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getHline() {
     const { tabType, tabPosition } = this.props;
-    const { activityKey, data, childrenSize } = this.state;
+    const { activityValue, data, childrenSize } = this.state;
     if (matchType(tabType, 'line')) {
       return (
         <HLine
-          lineWidth={childrenSize[getIndexfromKey(data, 'activityKey', activityKey)]}
+          lineWidth={childrenSize[getIndexfromKey(data, 'activityValue', activityValue)]}
           x={
-            plusWidth(getIndexfromKey(data, 'activityKey', activityKey) - 1, childrenSize) +
+            plusWidth(getIndexfromKey(data, 'activityValue', activityValue) - 1, childrenSize) +
             LineMarginLeft
           }
           tabPosition={tabPosition}
@@ -555,16 +555,16 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getTabpaneConfig(child: React$Element<any>, i: number) {
     const { tabPosition, tabType } = this.props;
-    const { activityKey, data } = this.state;
-    const TabpaneActivityKey = getAttributeFromObject(
+    const { activityValue, data } = this.state;
+    const TabpaneActivityValue = getAttributeFromObject(
       child,
-      'activityKey',
+      'activityValue',
       child
-        ? getKeyfromIndex(data, i, 'activityKey')
+        ? getKeyfromIndex(data, i, 'activityValue')
         : getAttributeFromObject(
             child.props,
-            'activityKey',
-            child ? getKeyfromIndex(data, i, 'activityKey') : '0'
+            'activityValue',
+            child ? getKeyfromIndex(data, i, 'activityValue') : '0'
           )
     );
     const disabled = getAttributeFromObject(
@@ -586,9 +586,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
         'suffixIcon',
         getAttributeFromObject(child.props, 'suffixIcon', '')
       ),
-      activityKey: TabpaneActivityKey,
+      activityValue: TabpaneActivityValue,
       onClick: this.onTabClick,
-      isSelect: !disabled && TabpaneActivityKey === activityKey,
+      isSelect: !disabled && TabpaneActivityValue === activityValue,
       getTabpaneWidth: this.getTabpaneWidth,
       onDeleteClick: this.onDeleteClick,
       disabled,
@@ -609,19 +609,19 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
   getChildrenContent() {
     const { forceRender, tabPosition } = this.props;
-    const { activityKey, data } = this.state;
+    const { activityValue, data } = this.state;
     if (data && data.map) {
       return data.map((child, i) => {
-        const childActivityKey = getAttributeFromObject(
+        const childActivityValue = getAttributeFromObject(
           child,
-          'activityKey',
+          'activityValue',
           getAttributeFromObject(
             child.props,
-            'activityKey',
-            getKeyfromIndex(data, i, 'activityKey')
+            'activityValue',
+            getKeyfromIndex(data, i, 'activityValue')
           )
         );
-        if (forceRender || childActivityKey === activityKey) {
+        if (forceRender || childActivityValue === activityValue) {
           const content = getAttributeFromObject(
             child,
             'content',
@@ -630,7 +630,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
           return (
             <TabContent
               content={content}
-              activityKey={childActivityKey}
+              activityValue={childActivityValue}
               tabPosition={tabPosition}
             />
           );
@@ -639,36 +639,36 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     return null;
   }
-  getTabpaneDisabled(activityKey: string) {
+  getTabpaneDisabled(activityValue: string) {
     const { data } = this.state;
-    if (activityKey) {
-      const index = getIndexfromKey(data, 'activityKey', activityKey);
+    if (activityValue) {
+      const index = getIndexfromKey(data, 'activityValue', activityValue);
       return data[index].disabled;
     }
     return false;
   }
 
-  onTabClick = (activityKey: string, e: Event) => {
+  onTabClick = (activityValue: string, e: Event) => {
     const { onTabClick } = this.props;
-    if (!this.getTabpaneDisabled(activityKey)) {
-      onTabClick && onTabClick(activityKey, e);
-      this.setActiveKey(activityKey, e);
+    if (!this.getTabpaneDisabled(activityValue)) {
+      onTabClick && onTabClick(activityValue, e);
+      this.setActiveValue(activityValue, e);
     }
   };
-  setActiveKey = (activityKey: string, e: Event) => {
+  setActiveValue = (activityValue: string, e: Event) => {
     const { onChange } = this.props;
-    if (activityKey !== this.state.activityKey) {
-      if (!('activeKey' in this.props)) this.setState({ activityKey });
+    if (activityValue !== this.state.activityValue) {
+      if (!('activeValue' in this.props)) this.setState({ activityValue });
     }
-    onChange && onChange(activityKey, e);
+    onChange && onChange(activityValue, e);
   };
 
-  onDeleteClick = (e: Event, activityKey: string) => {
+  onDeleteClick = (e: Event, activityValue: string) => {
     const { data } = this.state;
     let newdata = [];
     if (!hasDataInProps(this.props)) {
       newdata = data.filter(tabpane => {
-        return tabpane.activityKey !== activityKey;
+        return tabpane.activityValue !== activityValue;
       });
       this.setState(
         {
@@ -680,7 +680,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       );
     }
     const { onDeleteClick } = this.props;
-    onDeleteClick && onDeleteClick(activityKey);
+    onDeleteClick && onDeleteClick(activityValue);
   };
 
   onAddClick = (e: Event) => {
@@ -694,12 +694,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
         : {
             title: `new tab ${tabIndex}`,
             content: `content of new tab ${tabIndex}`,
-            activityKey: `newTab${tabIndex}`,
+            activityValue: `newTab${tabIndex}`,
           };
       newdata.push(item);
       this.setState(
         {
-          data: addActivityKey2Data(newdata),
+          data: addActivityValue2Data(newdata),
         },
         () => {
           this.updataChildrenSize();
@@ -758,14 +758,14 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
     this.setState({ currentPage, pagedCount });
   };
-  onTabMouseEnter = (activityKey: string, e: Event) => {
+  onTabMouseEnter = (activityValue: string, e: Event) => {
     const { onTabMouseEnter } = this.props;
-    onTabMouseEnter && onTabMouseEnter(activityKey, e);
+    onTabMouseEnter && onTabMouseEnter(activityValue, e);
   };
 
-  onTabMouseLeave = (activityKey: string, e: Event) => {
+  onTabMouseLeave = (activityValue: string, e: Event) => {
     const { onTabMouseLeave } = this.props;
-    onTabMouseLeave && onTabMouseLeave(activityKey, e);
+    onTabMouseLeave && onTabMouseLeave(activityValue, e);
   };
 }
 
