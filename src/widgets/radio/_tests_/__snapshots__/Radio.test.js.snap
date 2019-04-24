@@ -18,7 +18,7 @@ exports[`Radio Radio css 1`] = `
 }
 
 .c1:hover > span > span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c6 {
@@ -58,7 +58,7 @@ exports[`Radio Radio css 1`] = `
 }
 
 .c9:hover > span > span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c10 {
@@ -117,7 +117,7 @@ exports[`Radio Radio css 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
   background-color: #fff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -138,7 +138,7 @@ exports[`Radio Radio css 1`] = `
   border-top: 0;
   border-left: 0;
   content: ' ';
-  background-color: #684fff;
+  background-color: #4d63ff;
 }
 
 .c7 {
@@ -171,7 +171,7 @@ exports[`Radio Radio css 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
   background-color: #fff;
   -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;

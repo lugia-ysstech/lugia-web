@@ -21,7 +21,7 @@ exports[`default Function getMarkValue marks vetical，单滑块 1`] = `
 .c7 {
   width: 0.4285714285714286em;
   height: 20%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -34,7 +34,7 @@ exports[`default Function getMarkValue marks vetical，单滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 17.1830985915493%;
@@ -302,7 +302,7 @@ exports[`default Function getMarkValue marks vetical，单滑块 2`] = `
 .c7 {
   width: 0.4285714285714286em;
   height: 20%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -315,7 +315,7 @@ exports[`default Function getMarkValue marks vetical，单滑块 2`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 17.1830985915493%;
@@ -583,7 +583,7 @@ exports[`default Function getMarkValue marks vetical，单滑块 3`] = `
 .c7 {
   width: 0.4285714285714286em;
   height: 20%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -596,7 +596,7 @@ exports[`default Function getMarkValue marks vetical，单滑块 3`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 17.1830985915493%;
@@ -864,7 +864,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 1`] = `
 .c7 {
   width: 0.4285714285714286em;
   height: 20%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -877,7 +877,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 17.1830985915493%;
@@ -894,7 +894,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 37.183098591549296%;
@@ -1181,7 +1181,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 2`] = `
 .c7 {
   width: 0.4285714285714286em;
   height: 20%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -1194,7 +1194,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 2`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 17.1830985915493%;
@@ -1211,7 +1211,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 2`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 37.183098591549296%;
@@ -1498,7 +1498,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 3`] = `
 .c7 {
   width: 0.4285714285714286em;
   height: 20%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -1511,7 +1511,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 3`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 17.1830985915493%;
@@ -1528,7 +1528,7 @@ exports[`default Function getMarkValue marks vetical，双滑块 3`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 37.183098591549296%;
@@ -1815,7 +1815,7 @@ exports[`default Function getMarkValue marks 横向，单滑块 1`] = `
 .c5 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -1828,7 +1828,7 @@ exports[`default Function getMarkValue marks 横向，单滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -2020,7 +2020,7 @@ exports[`default Function getMarkValue marks 横向，单滑块 2`] = `
 .c5 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -2033,7 +2033,7 @@ exports[`default Function getMarkValue marks 横向，单滑块 2`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -2225,7 +2225,7 @@ exports[`default Function getMarkValue marks 横向，单滑块 3`] = `
 .c5 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -2238,7 +2238,7 @@ exports[`default Function getMarkValue marks 横向，单滑块 3`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -2430,7 +2430,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 1`] = `
 .c6 {
   width: 40%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -2443,7 +2443,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 37.183098591549296%;
   top: 50%;
@@ -2460,7 +2460,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 77.18309859154931%;
   top: 50%;
@@ -2709,7 +2709,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 2`] = `
 .c6 {
   width: 40%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -2722,7 +2722,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 2`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 37.183098591549296%;
   top: 50%;
@@ -2739,7 +2739,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 2`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 77.18309859154931%;
   top: 50%;
@@ -2988,7 +2988,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 3`] = `
 .c6 {
   width: 40%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3001,7 +3001,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 3`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 37.183098591549296%;
   top: 50%;
@@ -3018,7 +3018,7 @@ exports[`default Function getMarkValue marks 横向，双滑块 3`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 77.18309859154931%;
   top: 50%;
@@ -3267,7 +3267,7 @@ exports[`default Function getMoveState 横向 单滑块 1`] = `
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3280,7 +3280,7 @@ exports[`default Function getMoveState 横向 单滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -3358,7 +3358,7 @@ exports[`default Function getMoveState 横向 双滑块 1`] = `
 .c2 {
   width: 16.666666666666664%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3371,7 +3371,7 @@ exports[`default Function getMoveState 横向 双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 30.516431924882625%;
   top: 50%;
@@ -3388,7 +3388,7 @@ exports[`default Function getMoveState 横向 双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 13.84976525821596%;
   top: 50%;
@@ -3485,7 +3485,7 @@ exports[`default Function getMoveState 纵向 单滑块 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 0%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3498,7 +3498,7 @@ exports[`default Function getMoveState 纵向 单滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: -2.8169014084507045%;
@@ -3576,7 +3576,7 @@ exports[`default Function getMoveState 纵向 双滑块 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 0%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3589,7 +3589,7 @@ exports[`default Function getMoveState 纵向 双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: -2.8169014084507045%;
@@ -3667,7 +3667,7 @@ exports[`default Function getMoveValue 横向 单滑块 再点击 1`] = `
 .c2 {
   width: 16.666666666666664%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3680,7 +3680,7 @@ exports[`default Function getMoveValue 横向 单滑块 再点击 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 13.095238095238093%;
   top: 50%;
@@ -3758,7 +3758,7 @@ exports[`default Function getMoveValue 横向 单滑块 点击 1`] = `
 .c2 {
   width: 16.666666666666664%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3771,7 +3771,7 @@ exports[`default Function getMoveValue 横向 单滑块 点击 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 13.095238095238093%;
   top: 50%;
@@ -3849,7 +3849,7 @@ exports[`default Function getMoveValue 横向 单滑块 默认状态 1`] = `
 .c2 {
   width: 16.666666666666664%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3862,7 +3862,7 @@ exports[`default Function getMoveValue 横向 单滑块 默认状态 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 13.095238095238093%;
   top: 50%;
@@ -3940,7 +3940,7 @@ exports[`default Function getMoveValue 横向 双滑块 再点击 1`] = `
 .c2 {
   width: 16.666666666666664%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -3953,7 +3953,7 @@ exports[`default Function getMoveValue 横向 双滑块 再点击 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 13.095238095238093%;
   top: 50%;
@@ -3970,7 +3970,7 @@ exports[`default Function getMoveValue 横向 双滑块 再点击 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 29.761904761904763%;
   top: 50%;
@@ -4067,7 +4067,7 @@ exports[`default Function getMoveValue 横向 双滑块 点击 1`] = `
 .c2 {
   width: 16.666666666666664%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4080,7 +4080,7 @@ exports[`default Function getMoveValue 横向 双滑块 点击 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 13.095238095238093%;
   top: 50%;
@@ -4097,7 +4097,7 @@ exports[`default Function getMoveValue 横向 双滑块 点击 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 29.761904761904763%;
   top: 50%;
@@ -4194,7 +4194,7 @@ exports[`default Function getMoveValue 横向 双滑块 默认 1`] = `
 .c2 {
   width: 16.666666666666664%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4207,7 +4207,7 @@ exports[`default Function getMoveValue 横向 双滑块 默认 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 13.095238095238093%;
   top: 50%;
@@ -4224,7 +4224,7 @@ exports[`default Function getMoveValue 横向 双滑块 默认 1`] = `
   width: 1.4285714285714286em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 29.761904761904763%;
   top: 50%;
@@ -4321,7 +4321,7 @@ exports[`default Function getMoveValue 纵向 单滑块 再点击 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 0%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4334,7 +4334,7 @@ exports[`default Function getMoveValue 纵向 单滑块 再点击 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: -3.571428571428571%;
@@ -4412,7 +4412,7 @@ exports[`default Function getMoveValue 纵向 单滑块 点击 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 0%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4425,7 +4425,7 @@ exports[`default Function getMoveValue 纵向 单滑块 点击 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: -3.571428571428571%;
@@ -4503,7 +4503,7 @@ exports[`default Function getMoveValue 纵向 单滑块 默认状态 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 0%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4516,7 +4516,7 @@ exports[`default Function getMoveValue 纵向 单滑块 默认状态 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: -3.571428571428571%;
@@ -4594,7 +4594,7 @@ exports[`default Function getMoveValue 纵向 单滑块 默认状态 2`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 0%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4607,7 +4607,7 @@ exports[`default Function getMoveValue 纵向 单滑块 默认状态 2`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: -3.571428571428571%;
@@ -4685,7 +4685,7 @@ exports[`default Function getMoveValue 纵向 双滑块 再点击 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 33.33333333333333%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4698,7 +4698,7 @@ exports[`default Function getMoveValue 纵向 双滑块 再点击 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 29.761904761904763%;
@@ -4715,7 +4715,7 @@ exports[`default Function getMoveValue 纵向 双滑块 再点击 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 63.095238095238095%;
@@ -4812,7 +4812,7 @@ exports[`default Function getMoveValue 纵向 双滑块 点击 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 33.33333333333333%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4825,7 +4825,7 @@ exports[`default Function getMoveValue 纵向 双滑块 点击 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 29.761904761904763%;
@@ -4842,7 +4842,7 @@ exports[`default Function getMoveValue 纵向 双滑块 点击 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 63.095238095238095%;
@@ -4939,7 +4939,7 @@ exports[`default Function getMoveValue 纵向 双滑块 默认 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 33.33333333333333%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -4952,7 +4952,7 @@ exports[`default Function getMoveValue 纵向 双滑块 默认 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 29.761904761904763%;
@@ -4969,7 +4969,7 @@ exports[`default Function getMoveValue 纵向 双滑块 默认 1`] = `
   width: 1.142857142857143em;
   height: 1.4285714285714286em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 63.095238095238095%;
@@ -5066,7 +5066,7 @@ exports[`default Function getNewIndex  单滑块 1`] = `
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -5079,7 +5079,7 @@ exports[`default Function getNewIndex  单滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -5157,7 +5157,7 @@ exports[`default Function getNewIndex  双滑块 1`] = `
 .c2 {
   width: 16.666666666666664%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -5170,7 +5170,7 @@ exports[`default Function getNewIndex  双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 30.516431924882625%;
   top: 50%;
@@ -5187,7 +5187,7 @@ exports[`default Function getNewIndex  双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 13.84976525821596%;
   top: 50%;
@@ -5284,7 +5284,7 @@ exports[`default Function mouseenter 1`] = `
 .c2 {
   width: 66.66666666666666%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -5297,7 +5297,7 @@ exports[`default Function mouseenter 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -5314,7 +5314,7 @@ exports[`default Function mouseenter 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 63.84976525821595%;
   top: 50%;
@@ -5411,7 +5411,7 @@ exports[`default Function mouseleave 1`] = `
 .c2 {
   width: 66.66666666666666%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -5424,7 +5424,7 @@ exports[`default Function mouseleave 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -5441,7 +5441,7 @@ exports[`default Function mouseleave 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 63.84976525821595%;
   top: 50%;
@@ -5538,7 +5538,7 @@ exports[`default Function publicmove 横向 单滑块 1`] = `
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -5551,7 +5551,7 @@ exports[`default Function publicmove 横向 单滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -5629,7 +5629,7 @@ exports[`default Function publicmove 横向 双滑块 1`] = `
 .c2 {
   width: 66.66666666666666%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -5642,7 +5642,7 @@ exports[`default Function publicmove 横向 双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -5659,7 +5659,7 @@ exports[`default Function publicmove 横向 双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 63.84976525821595%;
   top: 50%;
@@ -5756,7 +5756,7 @@ exports[`default Function publicmove 纵向 单滑块 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 33.33333333333333%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -5769,7 +5769,7 @@ exports[`default Function publicmove 纵向 单滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 30.516431924882625%;
@@ -5847,7 +5847,7 @@ exports[`default Function publicmove 纵向 双滑块 1`] = `
 .c2 {
   width: 0.4285714285714286em;
   height: 33.33333333333333%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -5860,7 +5860,7 @@ exports[`default Function publicmove 纵向 双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 30.516431924882625%;
@@ -5877,7 +5877,7 @@ exports[`default Function publicmove 纵向 双滑块 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 63.84976525821595%;
@@ -6079,7 +6079,7 @@ exports[`default Wrapper 1`] = `
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6103,7 +6103,7 @@ exports[`default Wrapper 1`] = `
 .c8 {
   width: 100%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6115,7 +6115,7 @@ exports[`default Wrapper 1`] = `
 .c10 {
   width: 66.66666666666666%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6139,7 +6139,7 @@ exports[`default Wrapper 1`] = `
 .c15 {
   width: 76.66666666666667%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6151,7 +6151,7 @@ exports[`default Wrapper 1`] = `
 .c21 {
   width: 40%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6163,7 +6163,7 @@ exports[`default Wrapper 1`] = `
 .c26 {
   width: 40%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6175,7 +6175,7 @@ exports[`default Wrapper 1`] = `
 .c40 {
   width: 0.4285714285714286em;
   height: 0%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6187,7 +6187,7 @@ exports[`default Wrapper 1`] = `
 .c42 {
   width: 0.4285714285714286em;
   height: 33.33333333333333%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6199,7 +6199,7 @@ exports[`default Wrapper 1`] = `
 .c44 {
   width: 0.4285714285714286em;
   height: 33.33333333333333%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6211,7 +6211,7 @@ exports[`default Wrapper 1`] = `
 .c51 {
   width: 0.4285714285714286em;
   height: 20%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6223,7 +6223,7 @@ exports[`default Wrapper 1`] = `
 .c57 {
   width: 0.4285714285714286em;
   height: 20%;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -6248,7 +6248,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -6282,7 +6282,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 97.1830985915493%;
   top: 50%;
@@ -6299,7 +6299,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 63.84976525821595%;
   top: 50%;
@@ -6333,7 +6333,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 73.84976525821597%;
   top: 50%;
@@ -6350,7 +6350,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 37.183098591549296%;
   top: 50%;
@@ -6367,7 +6367,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 77.18309859154931%;
   top: 50%;
@@ -6384,7 +6384,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -3.9215686274509802%;
   top: 50%;
@@ -6401,7 +6401,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: -2.8169014084507045%;
@@ -6418,7 +6418,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 30.516431924882625%;
@@ -6435,7 +6435,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 63.84976525821595%;
@@ -6452,7 +6452,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 17.1830985915493%;
@@ -6469,7 +6469,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: 37.183098591549296%;
@@ -6503,7 +6503,7 @@ exports[`default Wrapper 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 50%;
   bottom: -4.3478260869565215%;
@@ -9083,7 +9083,7 @@ exports[`default defaultValue Array length==1 defaultValue<minValue defaultValue
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -9096,7 +9096,7 @@ exports[`default defaultValue Array length==1 defaultValue<minValue defaultValue
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -9174,7 +9174,7 @@ exports[`default defaultValue Array length==1 defaultValue>maxValue defaultValue
 .c2 {
   width: 100%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -9187,7 +9187,7 @@ exports[`default defaultValue Array length==1 defaultValue>maxValue defaultValue
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 97.1830985915493%;
   top: 50%;
@@ -9265,7 +9265,7 @@ exports[`default defaultValue Array length==2 defaultValue[0]< minValue 1`] = `
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -9278,7 +9278,7 @@ exports[`default defaultValue Array length==2 defaultValue[0]< minValue 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -9375,7 +9375,7 @@ exports[`default defaultValue Array length==2 defaultValue[0]>maxValue defaultVa
 .c2 {
   width: 50%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -9388,7 +9388,7 @@ exports[`default defaultValue Array length==2 defaultValue[0]>maxValue defaultVa
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 97.1830985915493%;
   top: 50%;
@@ -9405,7 +9405,7 @@ exports[`default defaultValue Array length==2 defaultValue[0]>maxValue defaultVa
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 47.183098591549296%;
   top: 50%;
@@ -9502,7 +9502,7 @@ exports[`default defaultValue Array length==2 defaultValue[1]<minValue defaultVa
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -9515,7 +9515,7 @@ exports[`default defaultValue Array length==2 defaultValue[1]<minValue defaultVa
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -9612,7 +9612,7 @@ exports[`default defaultValue Array length==2 defaultValue[1]>maxValue defaultVa
 .c2 {
   width: 75%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -9625,7 +9625,7 @@ exports[`default defaultValue Array length==2 defaultValue[1]>maxValue defaultVa
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 97.1830985915493%;
   top: 50%;
@@ -9642,7 +9642,7 @@ exports[`default defaultValue Array length==2 defaultValue[1]>maxValue defaultVa
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 22.183098591549296%;
   top: 50%;
@@ -9739,7 +9739,7 @@ exports[`default defaultValue number defaultValue<minValue defaultValue=minValue
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -9752,7 +9752,7 @@ exports[`default defaultValue number defaultValue<minValue defaultValue=minValue
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -9830,7 +9830,7 @@ exports[`default defaultValue number defaultValue>maxValue defaultValue=maxValue
 .c2 {
   width: 100%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -9843,7 +9843,7 @@ exports[`default defaultValue number defaultValue>maxValue defaultValue=maxValue
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 97.1830985915493%;
   top: 50%;
@@ -10016,7 +10016,7 @@ exports[`default minValue maxValue 1`] = `
 .c2 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -10029,7 +10029,7 @@ exports[`default minValue maxValue 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -10107,7 +10107,7 @@ exports[`default 离散值 marks={}  publicMove 1`] = `
 .c5 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -10120,7 +10120,7 @@ exports[`default 离散值 marks={}  publicMove 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;
@@ -10312,7 +10312,7 @@ exports[`default 离散值 marks={} length==1 has maxValue minValue 1`] = `
 .c6 {
   width: 20%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -10325,7 +10325,7 @@ exports[`default 离散值 marks={} length==1 has maxValue minValue 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 17.1830985915493%;
   top: 50%;
@@ -10555,7 +10555,7 @@ exports[`default 离散值 marks={} length==2 has maxValue minValue 1`] = `
 .c6 {
   width: 40%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -10568,7 +10568,7 @@ exports[`default 离散值 marks={} length==2 has maxValue minValue 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 37.183098591549296%;
   top: 50%;
@@ -10585,7 +10585,7 @@ exports[`default 离散值 marks={} length==2 has maxValue minValue 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: 77.18309859154931%;
   top: 50%;
@@ -10834,7 +10834,7 @@ exports[`default 离散值 marks={} no maxValue minValue 1`] = `
 .c5 {
   width: 0%;
   height: 0.4285714285714286em;
-  background: #684fff;
+  background: #4d63ff;
   border-radius: 0.4285714285714286em;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -10847,7 +10847,7 @@ exports[`default 离散值 marks={} no maxValue minValue 1`] = `
   width: 1.142857142857143em;
   height: 1.142857142857143em;
   border-radius: 50%;
-  background: #684fff;
+  background: #4d63ff;
   position: absolute;
   left: -2.8169014084507045%;
   top: 50%;

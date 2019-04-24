@@ -129,20 +129,20 @@ exports[`Modal css 1`] = `
 }
 
 .c0:hover {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c0:focus {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c0:active {
-  color: #533fcc;
-  border: 1px solid #533fcc;
+  color: #3e4fcc;
+  border: 1px solid #3e4fcc;
 }
 
 .c13 {
@@ -165,7 +165,7 @@ exports[`Modal css 1`] = `
   text-transform: none;
   outline: 0;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
@@ -176,17 +176,17 @@ exports[`Modal css 1`] = `
 .c13:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c13:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c13:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c15 {
@@ -218,20 +218,20 @@ exports[`Modal css 1`] = `
 }
 
 .c15:hover {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c15:focus {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c15:active {
-  color: #533fcc;
-  border: 1px solid #533fcc;
+  color: #3e4fcc;
+  border: 1px solid #3e4fcc;
 }
 
 .c16 {
@@ -254,7 +254,7 @@ exports[`Modal css 1`] = `
   text-transform: none;
   outline: 0;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
@@ -264,17 +264,17 @@ exports[`Modal css 1`] = `
 .c16:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c16:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c16:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c1 {
