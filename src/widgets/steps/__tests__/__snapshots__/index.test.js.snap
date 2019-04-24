@@ -21,7 +21,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c22 {
@@ -63,7 +63,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c49 {
@@ -105,7 +105,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: rgb(148,130,255);
+  color: rgb(128,144,255);
 }
 
 .c69 {
@@ -119,7 +119,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: rgb(148,130,255);
+  color: rgb(128,144,255);
 }
 
 .c100 {
@@ -133,7 +133,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c105 {
@@ -175,7 +175,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #684fff;
+  color: #4d63ff;
 }
 
 .c116 {
@@ -217,7 +217,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: rgb(148,130,255);
+  color: rgb(128,144,255);
 }
 
 .c10 {
@@ -240,7 +240,7 @@ exports[`stepsDemo Component JSON 1`] = `
 
 .c58 {
   font-size: 1.4rem;
-  color: rgb(148,130,255);
+  color: rgb(128,144,255);
   text-align: inherit;
 }
 
@@ -279,7 +279,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: #684fff;
+  color: #4d63ff;
   top: 2.5em;
   margin-top: 0.8333333333333334em;
   text-align: left;
@@ -323,7 +323,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: #684fff;
+  color: #4d63ff;
   top: 2.5em;
   margin-top: 0.8333333333333334em;
   text-align: center;
@@ -375,7 +375,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: #684fff;
+  color: #4d63ff;
   top: 1.6666666666666667em;
   margin-top: 0.8333333333333334em;
   text-align: left;
@@ -405,7 +405,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: rgb(148,130,255);
+  color: rgb(128,144,255);
   top: 1.6666666666666667em;
   margin-top: 0.8333333333333334em;
   text-align: left;
@@ -415,7 +415,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: rgb(148,130,255);
+  color: rgb(128,144,255);
   top: 2.5em;
   margin-top: 0.8333333333333334em;
   text-align: left;
@@ -435,7 +435,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: #684fff;
+  color: #4d63ff;
   top: 0.8333333333333334em;
   margin-top: 0.8333333333333334em;
   text-align: left;
@@ -475,7 +475,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: #684fff;
+  color: #4d63ff;
   left: 1.6666666666666667em;
   margin-left: 0.8333333333333334em;
   text-align: left;
@@ -515,7 +515,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: #684fff;
+  color: #4d63ff;
   left: 2.5em;
   margin-left: 0.8333333333333334em;
   text-align: left;
@@ -545,7 +545,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: rgb(148,130,255);
+  color: rgb(128,144,255);
   left: 2.5em;
   margin-left: 0.8333333333333334em;
   text-align: left;
@@ -565,7 +565,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: absolute;
   white-space: normal;
   display: block;
-  color: #684fff;
+  color: #4d63ff;
   left: 0.8333333333333334em;
   margin-left: 0.8333333333333334em;
   text-align: left;
@@ -630,7 +630,7 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  background-color: #684fff;
+  background-color: #4d63ff;
 }
 
 .c23 {
@@ -666,7 +666,7 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  background-color: rgb(148,130,255);
+  background-color: rgb(128,144,255);
 }
 
 .c62 {
@@ -724,7 +724,7 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  background-color: #684fff;
+  background-color: #4d63ff;
 }
 
 .c106 {
@@ -760,7 +760,7 @@ exports[`stepsDemo Component JSON 1`] = `
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  background-color: rgb(148,130,255);
+  background-color: rgb(128,144,255);
 }
 
 .c123 {
@@ -888,7 +888,7 @@ exports[`stepsDemo Component JSON 1`] = `
 
 .c83 {
   position: relative;
-  background-color: #684fff;
+  background-color: #4d63ff;
   display: inLine-block;
   border-radius: 50%;
   width: 1em;
@@ -987,9 +987,9 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 2.666666666666667em;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 0.08333333333333334em solid #684fff;
-  background-color: #684fff;
-  background-color: #684fff;
+  border: 0.08333333333333334em solid #4d63ff;
+  background-color: #4d63ff;
+  background-color: #4d63ff;
 }
 
 .c20 {
@@ -1010,8 +1010,8 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1.6666666666666667em;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 0.08333333333333334em solid #684fff;
-  background-color: #684fff;
+  border: 0.08333333333333334em solid #4d63ff;
+  background-color: #4d63ff;
   background-color: #ffffff;
 }
 
@@ -1102,9 +1102,9 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 2em;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 0.08333333333333334em solid #684fff;
-  background-color: #684fff;
-  background-color: #684fff;
+  border: 0.08333333333333334em solid #4d63ff;
+  background-color: #4d63ff;
+  background-color: #4d63ff;
 }
 
 .c48 {
@@ -1125,8 +1125,8 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1em;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 0.08333333333333334em solid #684fff;
-  background-color: #684fff;
+  border: 0.08333333333333334em solid #4d63ff;
+  background-color: #4d63ff;
   background-color: #ffffff;
 }
 
@@ -1194,8 +1194,8 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 2em;
   box-sizing: border-box;
   border-radius: 50%;
-  background-color: rgb(148,130,255);
-  background-color: rgb(148,130,255);
+  background-color: rgb(128,144,255);
+  background-color: rgb(128,144,255);
 }
 
 .c64 {
@@ -1260,8 +1260,8 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 2.666666666666667em;
   box-sizing: border-box;
   border-radius: 50%;
-  background-color: rgb(148,130,255);
-  background-color: rgb(148,130,255);
+  background-color: rgb(128,144,255);
+  background-color: rgb(128,144,255);
 }
 
 .c71 {
@@ -1556,7 +1556,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: center;
   font-weight: 700;
   line-height: 1;
-  color: #684fff;
+  color: #4d63ff;
   z-index: 5;
 }
 
@@ -1596,8 +1596,8 @@ exports[`stepsDemo Component JSON 1`] = `
   font-weight: 700;
   line-height: 1;
   font-size: 2em;
-  border-color: #684fff;
-  color: #684fff;
+  border-color: #4d63ff;
+  color: #4d63ff;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -1699,7 +1699,7 @@ exports[`stepsDemo Component JSON 1`] = `
   text-transform: none;
   outline: 0;
   color: #ffffff;
-  background-color: #684fff;
+  background-color: #4d63ff;
   border: none;
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
@@ -1709,17 +1709,17 @@ exports[`stepsDemo Component JSON 1`] = `
 .c91:hover {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c91:focus {
   color: #ffffff;
   border: none;
-  background-color: #9482ff;
+  background-color: #8090ff;
 }
 
 .c91:active {
-  background-color: #533fcc;
+  background-color: #3e4fcc;
 }
 
 .c92 {

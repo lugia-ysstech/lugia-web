@@ -34,20 +34,20 @@ exports[`Affix css 1`] = `
 }
 
 .c1:hover {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c1:focus {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c1:active {
-  color: #533fcc;
-  border: 1px solid #533fcc;
+  color: #3e4fcc;
+  border: 1px solid #3e4fcc;
 }
 
 .c2 {
