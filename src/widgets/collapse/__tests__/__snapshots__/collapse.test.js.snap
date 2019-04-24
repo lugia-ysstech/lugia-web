@@ -123,7 +123,6 @@ exports[`Collapse Collapse CSS 1`] = `
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   font-size: 1.4rem;
-  padding-left: 0.8571428571428572em;
 }
 
 .c0 {
