@@ -29,7 +29,7 @@ type BasicStateType = {
   headerHeight: number,
 };
 export type PanelProps = {
-  header?: string | any,
+  title?: string | any,
   value?: string,
   children?: any,
   getTheme: Function,

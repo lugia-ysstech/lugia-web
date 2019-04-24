@@ -47,7 +47,7 @@ export default ThemeProvider(
       const { children, accordion, data } = this.props;
       if ((!children && !data) || typeof children === 'string') {
         return (
-          <Panel value="lugia-panel" header="Lugia Panel" onClick={this.handleClick}>
+          <Panel value="lugia-panel" title="Lugia Panel" onClick={this.handleClick}>
             Default Panel
           </Panel>
         );

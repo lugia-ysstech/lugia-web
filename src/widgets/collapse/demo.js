@@ -121,12 +121,12 @@ export const CollapseDemo = class extends React.Component<any, any> {
     const data = [
       {
         value: '1',
-        header: 'LUGIA',
+        title: 'LUGIA',
         children: 'PanelContent...',
       },
       {
         value: '2',
-        header: 'LUGIA',
+        title: 'LUGIA',
         children: 'PanelContent...',
       },
     ];
@@ -135,11 +135,11 @@ export const CollapseDemo = class extends React.Component<any, any> {
         <Wrapper>
           <p>defaultActiveValue={'1'}</p>
           <Collapse defaultActiveValue={defaultActiveValue}>
-            <Panel value="1" header="LUGIA">
+            <Panel value="1" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
-            <Panel value="2" header="LUGIA">
+            <Panel value="2" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
@@ -147,11 +147,11 @@ export const CollapseDemo = class extends React.Component<any, any> {
           <br />
           <p>activeValue={'1'}</p>
           <Collapse activeValue={'1'}>
-            <Panel value="1" header="LUGIA">
+            <Panel value="1" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
-            <Panel value="2" header="LUGIA">
+            <Panel value="2" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
@@ -159,11 +159,11 @@ export const CollapseDemo = class extends React.Component<any, any> {
           <br />
           <p>activeValue={'this.state.activeValue'}</p>
           <Collapse activeValue={activeValue} onChange={this.handleChangeActiveValue}>
-            <Panel value="1" header="LUGIA">
+            <Panel value="1" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
-            <Panel value="2" header="LUGIA">
+            <Panel value="2" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
@@ -171,19 +171,19 @@ export const CollapseDemo = class extends React.Component<any, any> {
           <br />
           <p>accordion</p>
           <Collapse defaultActiveValue={defaultActiveValue} accordion>
-            <Panel value="1" header="LUGIA">
+            <Panel value="1" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
-            <Panel value="2" header="LUGIA">
+            <Panel value="2" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
-            <Panel value="3" header="LUGIA">
+            <Panel value="3" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
-            <Panel value="4" header="LUGIA">
+            <Panel value="4" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
@@ -191,11 +191,11 @@ export const CollapseDemo = class extends React.Component<any, any> {
           <br />
           <Theme config={wrapView}>
             <Collapse activeValue={activeValue} onChange={this.handleChangeActiveValue}>
-              <Panel value="1" header="LUGIA">
+              <Panel value="1" title="LUGIA">
                 <div>PanelContent...</div>
                 <div>PanelContent...</div>
               </Panel>
-              <Panel value="2" header="LUGIA">
+              <Panel value="2" title="LUGIA">
                 <div>PanelContent...</div>
                 <div>PanelContent...</div>
               </Panel>
@@ -206,19 +206,19 @@ export const CollapseDemo = class extends React.Component<any, any> {
           <Collapse defaultActiveValue={defaultActiveValue} data={data} />
           <p>collapse nest</p>
           <Collapse defaultActiveValue={defaultActiveValue}>
-            <Panel value="1" header="LUGIA">
+            <Panel value="1" title="LUGIA">
               <Collapse defaultActiveValue={defaultActiveValue}>
-                <Panel value="1" header="LUGIA">
+                <Panel value="1" title="LUGIA">
                   <div>PanelContent...</div>
                   <div>PanelContent...</div>
                 </Panel>
-                <Panel value="2" header="LUGIA">
+                <Panel value="2" title="LUGIA">
                   <div>PanelContent...</div>
                   <div>PanelContent...</div>
                 </Panel>
               </Collapse>
             </Panel>
-            <Panel value="2" header="LUGIA">
+            <Panel value="2" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
