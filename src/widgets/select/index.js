@@ -72,6 +72,7 @@ type SelectProps = {
   createPortal?: boolean,
   children?: any,
   query: string | number,
+  prefix?: any,
 };
 
 type SelectState = {
@@ -321,6 +322,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       canSearch,
       canInput,
       createPortal,
+      prefix,
     } = props;
     const { displayValue = [] } = this;
     const { value = [], query, isCheckedAll } = state;
@@ -367,6 +369,7 @@ class Select extends React.Component<SelectProps, SelectState> {
           >
             <InputTag
               ref={getInputTag}
+              prefix={prefix}
               key="inputtag"
               value={[...value]}
               displayValue={[...displayValue]}
