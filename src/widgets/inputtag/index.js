@@ -75,6 +75,7 @@ type InputTagProps = {
   onClick?: Function,
   onClear?: Function,
   onPopupVisibleChange?: Function,
+  prefix?: any,
 };
 const Clear = 'lugia-icon-reminder_close';
 type InputTagState = {
@@ -118,6 +119,11 @@ const IconButton: Object = styled(Icon)`
   transform: translateY(-50%);
   color: ${lightGreyColor};
   transition: all 0.3s;
+`;
+
+const Prefix = styled.span`
+  position: relative;
+  left: ${em(-5)};
 `;
 
 /** add by szfeng */
@@ -320,7 +326,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const fillFontItem: Function = (cmp: Object): any => (this.fontItem = cmp);
     const font = <FontItem ref={fillFontItem} key="fontItem" />;
     const { focus } = state;
-    const { getTheme, disabled, validateStatus } = props;
+    const { getTheme, disabled, validateStatus, prefix } = props;
 
     if (!this.isMutliple()) {
       result = this.generateOutter(
@@ -332,6 +338,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         >
           <OutContainer focus={focus} disabled={disabled} validateStatus={validateStatus}>
             <SingleInnerContainer disabled={disabled} theme={props.getTheme()}>
+              {prefix ? <Prefix>{prefix}</Prefix> : null}
               {placeholder}
               {this.getSingleValue()}
               {clearButton}
@@ -352,6 +359,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           <OutContainer focus={focus} disabled={disabled} validateStatus={validateStatus}>
             <InnerContainer theme={props.getTheme()}>
               <List innerRef={cmp => (this.list = cmp)}>{items}</List>
+
               {placeholder}
               {clearButton}
               <FocuInput onFocus={this.onFocus} onBlur={this.onBlur} />
