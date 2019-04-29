@@ -8,6 +8,7 @@ import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { ObjectUtils } from '@lugia/type-utils';
+
 const { blackColor, darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -70,14 +71,22 @@ export const getCardContainerSizeNumber = (props: Object) => {
 
 export const getCardContainerSize = (props: Object) => {
   const { width, height } = getCardContainerSizeNumber(props);
-  return `width: ${em(width)};height:${em(height)};`;
+  return {
+    style: {
+      width: em(width),
+      height: em(height),
+    },
+  };
 };
 
 export const getCardContentrSize = (props: Object) => {
   const { width, height } = getCardContainerSizeNumber(props);
-  return `width: ${em(width - getContentPaddingLeft(props))};height:${em(
-    height - paddingBottom - paddingTop
-  )};`;
+  return {
+    style: {
+      width: em(width - getContentPaddingLeft(props)),
+      height: em(height - paddingBottom - paddingTop),
+    },
+  };
 };
 
 export const getCardContainerShadow = () => {
@@ -156,6 +165,7 @@ function getContentPaddingLeft(props: Object) {
     ? 0
     : 10;
 }
+
 export const getAvatarPadding = (props: Object) => {
   const { imageOrientation } = props;
   const left = imageOrientation === 'horizontal' ? em(20) : 0;
