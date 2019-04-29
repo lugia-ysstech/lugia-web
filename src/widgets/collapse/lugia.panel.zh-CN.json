@@ -8,7 +8,7 @@
       "desc": "指定Panel面板value值",
       "defaultValue": "undefined"
     },
-    "header": {
+    "title": {
       "type": "string | React.node",
       "desc": "指定Panel面板头部内容",
       "defaultValue": "undefined"

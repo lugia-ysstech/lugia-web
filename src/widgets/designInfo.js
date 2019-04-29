@@ -1,53 +1,52 @@
-import Affix from './affix';
-import Alert from './alert';
-import AmountInput from './amount-input';
-import Anchor from './anchor';
-import AutoComplete from './auto-complete';
-import Avatar from './avatar';
-import BackTop from './back-top';
-import Badge from './badge';
-import Breadcrumb from './breadcrumb';
-import Button from './button';
-import Card from './card';
-import Carousel from './carousel';
-import Cascader from './cascader';
-import Checkbox from './checkbox';
-import Collapse from './collapse';
-import DatePicker from './date-picker';
-import Divider from './divider';
-import Drawer from './drawer';
-import Dropmenu from './dropmenu';
-import Grid from './grid';
-import Icon from './icon';
-import Input from './input';
-import Layout from './layout';
-import Loading from './loading';
-import Menu from './menu';
-import Modal from './modal';
-import NavMenu from './navmenu';
-import NumberInput from './number-input';
-import Pagination from './pagination';
-import Popconfirm from './popconfirm';
-import Popover from './popover';
-import Progress from './progress';
-import Radio from './radio';
-import Rate from './rate';
-import Select from './select';
-import Skeleton from './skeleton';
-import Slider from './slider';
-import Steps from './steps';
-import Switch from './switch';
-import Table from './table';
-import Tabs from './tabs';
-import Tag from './tag';
-import TimeLine from './time-line';
-import TimePicker from './time-picker';
-import Tooltip from './tooltip';
-import Transfer from './transfer';
-import Tree from './tree';
-import TreeSelect from './tree-select';
-import Upload from './upload';
-
+import Affix from './lugiaaffix';
+import Alert from './lugiaalert';
+import AmountInput from './lugiaamount-input';
+import Anchor from './lugiaanchor';
+import AutoComplete from './lugiaauto-complete';
+import Avatar from './lugiaavatar';
+import BackTop from './lugiaback-top';
+import Badge from './lugiabadge';
+import Breadcrumb from './lugiabreadcrumb';
+import Button from './lugiabutton';
+import Card from './lugiacard';
+import Carousel from './lugiacarousel';
+import Cascader from './lugiacascader';
+import Checkbox from './lugiacheckbox';
+import Collapse from './lugiacollapse';
+import DatePicker from './lugiadate-picker';
+import Divider from './lugiadivider';
+import Drawer from './lugiadrawer';
+import Dropmenu from './lugiadropmenu';
+import Grid from './lugiagrid';
+import Icon from './lugiaicon';
+import Input from './lugiainput';
+import Layout from './lugialayout';
+import Loading from './lugialoading';
+import Menu from './lugiamenu';
+import Modal from './lugiamodal';
+import NavMenu from './lugianavmenu';
+import NumberInput from './lugianumber-input';
+import Pagination from './lugiapagination';
+import Popconfirm from './lugiapopconfirm';
+import Popover from './lugiapopover';
+import Progress from './lugiaprogress';
+import Radio from './lugiaradio';
+import Rate from './lugiarate';
+import Select from './lugiaselect';
+import Skeleton from './lugiaskeleton';
+import Slider from './lugiaslider';
+import Steps from './lugiasteps';
+import Switch from './lugiaswitch';
+import Table from './lugiatable';
+import Tabs from './lugiatabs';
+import Tag from './lugiatag';
+import TimeLine from './lugiatime-line';
+import TimePicker from './lugiatime-picker';
+import Tooltip from './lugiatooltip';
+import Transfer from './lugiatransfer';
+import Tree from './lugiatree';
+import TreeSelect from './lugiatree-select';
+import Upload from './lugiaupload';
 export default {
   Affix: {
     meta: {
@@ -752,7 +751,7 @@ export default {
       desc: 'Panel 面板。',
       props: {
         value: { type: 'string', desc: '指定Panel面板value值', defaultValue: 'undefined' },
-        header: {
+        title: {
           type: 'string | React.node',
           desc: '指定Panel面板头部内容',
           defaultValue: 'undefined',

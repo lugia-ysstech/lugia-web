@@ -65,7 +65,7 @@ export default ThemeProvider(
 
     render() {
       const { opening, closing, open, hover, headerHeight } = this.state;
-      const { disabled = false, header, children, getTheme, showArrow = true } = this.props;
+      const { disabled = false, title, children, getTheme, showArrow = true } = this.props;
       const config = {};
       if (!showArrow) {
         config.onMouseMove = this.changeHover(true);
@@ -89,7 +89,7 @@ export default ThemeProvider(
                   closing={closing}
                 />
               ) : null}
-              {header}
+              {title}
               <HoverIconWrap
                 theme={getTheme()}
                 hover={hover}

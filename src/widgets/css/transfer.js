@@ -56,6 +56,7 @@ export const TransFer = styled.div`
   overflow: hidden;
   position: relative;
   vertical-align: middle;
+  background: #fff;
 `;
 export const Check = styled.div`
   background: #f8f8f8;
