@@ -6,6 +6,7 @@ import * as React from 'react';
 import ContentBox from './ContentBox';
 import VisibleBox from '../common/VisibleBox';
 import { ZIndex } from '../common/MaskBox';
+import styled from 'styled-components';
 
 const getWidth = props => {
   const { theme = {} } = props;
@@ -18,7 +19,7 @@ const getZIndex = props => {
   const { zIndex } = theme;
   return zIndex ? `z-index: ${zIndex ? zIndex : ZIndex + 1};` : 'z-index: 9999;';
 };
-const PopupInnerBox = VisibleBox.extend`
+const PopupInnerBox = styled(VisibleBox)`
   position: absolute;
   ${getWidth} background-color: #fff;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);

@@ -2,6 +2,7 @@ import { MenuItemHeight } from './menu';
 import colorsFunc from '../css/stateColor';
 import styled from 'styled-components';
 import { px2emcss } from './units';
+
 const em = px2emcss(1.2);
 const { disableColor, mediumGreyColor } = colorsFunc();
 
@@ -25,13 +26,13 @@ export const CommonSpan = styled.span`
   transform: translateY(-50%);
 `;
 
-export const TimeIcon = CommonSpan.extend`
+export const TimeIcon = styled(CommonSpan)`
   margin-right: ${em(10)};
   font-size: ${em(12)};
   left: ${em(10)};
 `;
 
-export const OldValueTitle = CommonSpan.extend`
+export const OldValueTitle = styled(CommonSpan)`
   left: ${em(25)};
   padding: 0 ${em(5)};
 `;

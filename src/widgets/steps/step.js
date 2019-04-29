@@ -8,36 +8,36 @@ import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
 import Widget from '../consts/index';
-import type { StepType, StepStatus, SizeType, OrientationType, AlignType } from '../css/steps';
-import { DotSize } from '../css/steps';
+import type { AlignType, OrientationType, SizeType, StepStatus, StepType } from '../css/steps';
 import {
-  getStepColor,
-  getFinishDisplay,
-  getStepBackgroundColor,
-  getLineSize,
-  getStepOutContanerSize,
-  getStepContainerWidth,
-  getFinishIconColor,
-  getStepNumberSize,
-  getStepSize,
-  getStepFontColor,
-  stepContainerSize,
-  getStepInnerContainerPosition,
-  stepInnerContainerPosition,
-  getStepContainerSize,
-  getLinePadding,
-  getShow,
-  getContentPosition,
-  getLineColor,
-  getFlexDirection,
-  getDotLineSize,
-  getContentMargin,
-  getStepInnerBorder,
-  getTitleLineHeight,
-  getBeforeGap,
+  DotSize,
   getAfterGap,
+  getBeforeGap,
+  getContentMargin,
+  getContentPosition,
+  getDotLineSize,
+  getFinishDisplay,
+  getFinishIconColor,
+  getFlexDirection,
   getIndex,
+  getLineColor,
+  getLinePadding,
+  getLineSize,
+  getShow,
+  getStepBackgroundColor,
+  getStepColor,
+  getStepContainerSize,
+  getStepContainerWidth,
+  getStepFontColor,
+  getStepInnerBorder,
+  getStepInnerContainerPosition,
+  getStepNumberSize,
+  getStepOutContanerSize,
+  getStepSize,
   getTextAlign,
+  getTitleLineHeight,
+  stepContainerSize,
+  stepInnerContainerPosition,
 } from '../css/steps';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -53,7 +53,7 @@ const BaseStep = styled.div`
   ${getStepOutContanerSize};
   flex: 1;
 `;
-const HStep = BaseStep.extend`
+const HStep = styled(BaseStep)`
   display: inline-flex;
   color: ${getStepColor};
 `;
@@ -92,7 +92,7 @@ const LineContainer = styled.div`
   ${getLinePadding};
   z-index: 10;
 `;
-const Line = BaseLine.extend`
+const Line = styled(BaseLine)`
   ${getLineColor};
   &::before {
     ${getBeforeGap};
@@ -102,8 +102,8 @@ const Line = BaseLine.extend`
   }
 `;
 
-const DotLine = BaseLine.extend`
-  ${getDotLineSize}: ;
+const DotLine = styled(BaseLine)`
+  ${getDotLineSize};
 `;
 const StepHeadContainer = styled.div`
   position: relative;
@@ -164,12 +164,15 @@ const BaseInnerContainer = styled.div`
   position: relative;
   display: flex;
 `;
-const StepInnerContainer = BaseInnerContainer.extend`
+const getMargin = (props: Object) => {
+  return `${stepInnerContainerPosition(props)}: ${getStepSize(props)};`;
+};
+const StepInnerContainer = styled(BaseInnerContainer)`
   ${getStepInnerContainerPosition};
-  ${stepInnerContainerPosition}: ${getStepSize};
+  ${getMargin}
   ${getIndex};
 `;
-const DotInnerContainer = BaseInnerContainer.extend`
+const DotInnerContainer = styled(BaseInnerContainer)`
   width: ${em(DotSize)};
   height: ${em(DotSize)};
 `;
@@ -267,6 +270,7 @@ class Step extends React.Component<StepProps, StepState> {
     }
     return null;
   }
+
   getContent() {
     const { title, description, size, orientation, desAlign } = this.props;
     return (
@@ -363,9 +367,11 @@ class Step extends React.Component<StepProps, StepState> {
       );
     }
   }
+
   getStepValue(stepNumber: number, stepStatus: StepStatus): number {
     return (stepStatus === 'finish' || stepStatus === 'process') && stepNumber > 0 ? stepNumber : 0;
   }
+
   getStepNumber() {
     const { size, stepNumber } = this.props;
     const { stepStatus } = this.state;
@@ -385,6 +391,7 @@ class Step extends React.Component<StepProps, StepState> {
     };
   }
 }
+
 export const _Step = Step;
 const TargetStep = ThemeProvider(KeyBoardEventAdaptor(Step), Widget.Step);
 export default TargetStep;

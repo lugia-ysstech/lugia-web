@@ -7,6 +7,7 @@
 import colorsFunc from '../css/stateColor';
 import styled from 'styled-components';
 import { px2emcss } from './units';
+
 const em = px2emcss(1.2);
 export const { themeColor, darkGreyColor, mediumGreyColor, hoverColor, spiritColor } = colorsFunc();
 export const MenuItemHeight = 34;
@@ -28,7 +29,7 @@ export const Switcher = styled.span`
 `;
 Switcher.displayName = 'switcherButton';
 
-export const NullSwitcher = Switcher.extend`
+export const NullSwitcher = styled(Switcher)`
   opacity: 0;
 `;
 

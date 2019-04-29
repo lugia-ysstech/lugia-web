@@ -1,6 +1,7 @@
 import colorsFunc from '../css/stateColor';
 import { px2emcss } from './units';
 import styled from 'styled-components';
+
 export const { themeColor, mediumGreyColor, darkGreyColor, blackColor } = colorsFunc();
 const em = px2emcss(1.2);
 
@@ -21,7 +22,7 @@ export const CommonSpan = styled.span`
   font-size: ${FontSize};
 `;
 
-export const SeparatorSpan = CommonSpan.extend`
+export const SeparatorSpan = styled(CommonSpan)`
   margin-left: ${separatorMarginLeft};
   margin-right: ${separatorMarginRight};
   color: ${DefaultColor};

@@ -5,7 +5,7 @@
  * @flow
  */
 import '../common/shirm';
-import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo } from '@lugia/lugia-web';
+import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType } from '@lugia/lugia-web';
 import animation from '../common/openAnimation';
 import * as React from 'react';
 import { TreeNode } from './rc-tree';
@@ -17,20 +17,20 @@ import './index.css';
 import TreeUtils from './utils';
 import { deleteValue } from '../utils/index';
 import styled from 'styled-components';
-import { FontSizeNumber, FontSize } from '../css';
+import { FontSize, FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
-import type { QueryType } from '@lugia/lugia-web';
 
-import { MenuItemHeight, DefaultHeight } from '../css/tree';
-import { TreeUl } from '../css/tree';
 import {
-  themeColor,
-  Switcher,
-  NullSwitcher,
-  Li,
   ChildrenUl,
-  TitleWrap,
+  DefaultHeight,
+  Li,
+  MenuItemHeight,
+  NullSwitcher,
+  Switcher,
+  themeColor,
   TitleSpan,
+  TitleWrap,
+  TreeUl,
 } from '../css/tree';
 
 const em = px2emcss(FontSizeNumber);
@@ -91,7 +91,7 @@ const Empty = styled.span`
   display: block;
 `;
 
-const ErrorTooltip = Empty.extend`
+const ErrorTooltip = styled(Empty)`
   color: red;
 `;
 

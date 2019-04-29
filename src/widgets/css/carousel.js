@@ -8,6 +8,7 @@ import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
 import colorsFunc from '../css/stateColor';
+
 const { lightGreyColor, mediumGreyColor, defaultColor } = colorsFunc();
 const em = px2emcss(FontSizeNumber);
 
@@ -44,13 +45,13 @@ export const CommonButton = styled.span`
   transition: all 0.2s linear;
 `;
 
-export const PreButton = CommonButton.extend`
+export const PreButton = styled(CommonButton)`
   left: -${em(30)};
 `;
 
 PreButton.displayName = 'preButton';
 
-export const NextButton = CommonButton.extend`
+export const NextButton = styled(CommonButton)`
   right: -${em(30)};
 `;
 

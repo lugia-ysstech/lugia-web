@@ -18,7 +18,7 @@ import Theme from '../theme';
 
 const em = px2emcss(1.2);
 
-const Dot = BaseRedPoint.extend`
+const Dot = styled(BaseRedPoint)`
   ${dotRight};
   ${dotTop};
   ${getDotSize};
