@@ -45,7 +45,7 @@ const BaseTab = styled.div`
   white-space: nowrap;
   ${getTabpaneCursor};
 `;
-const VTab = BaseTab.extend`
+const VTab = styled(BaseTab)`
   text-align: ${props => (matchType(props.tabPosition, 'left') ? 'right' : 'left')};
   padding: 0 ${em(10)};
   display: block;
@@ -54,7 +54,7 @@ const VTab = BaseTab.extend`
   }
 `;
 VTab.displayName = 'yTabpane';
-const HTab = BaseTab.extend`
+const HTab = styled(BaseTab)`
   display: inline-block;
   line-height: ${getTabpaneHeight};
   height: ${getTabpaneHeight};

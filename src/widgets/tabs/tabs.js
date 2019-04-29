@@ -69,7 +69,7 @@ const BaseLine = styled.div`
   border-radius: ${em(2)};
 `;
 
-const HLine = BaseLine.extend`
+const HLine = styled(BaseLine)`
   height: ${em(2)};
   width: ${lineWidth};
   ${getLinePosition};
@@ -84,7 +84,7 @@ const ShadowLine = styled.div`
   z-index: -1;
   ${getBackgroundShadow};
 `;
-const VLine = BaseLine.extend`
+const VLine = styled(BaseLine)`
   height: ${em(YtabsHeight)};
   width: ${em(2)};
   transform: translateY(${props => props.y}%);
@@ -100,27 +100,27 @@ const ArrowContainer = styled.span`
   ${getCursor};
 `;
 
-const HBasePage = ArrowContainer.extend`
+const HBasePage = styled(ArrowContainer)`
   transform: translateY(-50%);
   line-height: 100%;
   ${getArrowTop};
 `;
 
-const HPrePage = HBasePage.extend`
+const HPrePage = styled(HBasePage)`
   left: ${em(10)};
 `;
-const HNextPage = HBasePage.extend`
+const HNextPage = styled(HBasePage)`
   right: ${em(10)};
 `;
-const VBasePage = ArrowContainer.extend`
+const VBasePage = styled(ArrowContainer)`
   width: 100%;
   text-align: center;
   height: ${em(24)};
 `;
-const VPrePage = VBasePage.extend`
+const VPrePage = styled(VBasePage)`
   top: ${em(12)};
 `;
-const VNextPage = VBasePage.extend`
+const VNextPage = styled(VBasePage)`
   transform: translateX(-100%);
   bottom: ${em(-6)};
 `;

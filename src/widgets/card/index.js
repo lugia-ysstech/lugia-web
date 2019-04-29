@@ -38,21 +38,19 @@ const getPos = props => {
   }
   return '';
 };
-const CardOutContainer = styled.div`
+const CardOutContainer = styled.div.attrs(getCardContainerSize)`
   position: relative;
   display: flex;
   ${getPos}
-  ${getCardContainerSize};
   ${getCardContainerShadow};
   ${getCardContainerBackground};
   ${getContentPadding};
   ${getContentTextAlign};
   border-radius: ${em(5)};
 `;
-const Content = styled.div`
+const Content = styled.div.attrs(getCardContentrSize)`
   font-size: 1.2rem;
   display: inline-block;
-  ${getCardContentrSize};
 `;
 const Image = styled.img`
   width: inherit;
@@ -74,7 +72,7 @@ const CardAvatar: Object = styled(Avatar)`
 const Basetext = styled.div`
   text-align: inherit;
 `;
-const Title = Basetext.extend`
+const Title = styled(Basetext)`
   display: inline-block;
   flex: 1;
   font-size: 1.6rem;
@@ -92,7 +90,7 @@ const TitleTipLine = styled.div`
   ${getTipLineBackground};
   border-radius: ${em(5)};
 `;
-const Descripition = Basetext.extend`
+const Descripition = styled(Basetext)`
   font-size: 1.4rem;
   margin-top: ${em(4)};
   ${getDescripitionColor};
