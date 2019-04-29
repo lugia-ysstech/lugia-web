@@ -7,7 +7,7 @@
 const createDesignInfo = require('@lugia/devtools-material').createDesignInfo;
 const path = require('path');
 
-const tartgetPath = path.join('D:\\workSpace\\lugia-web\\src\\widgets');
+const tartgetPath = path.join('..\\src\\widgets');
 const Invalid = [
   'align',
   'code-box',
