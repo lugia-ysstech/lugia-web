@@ -11,22 +11,23 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { TooltipProps, TooltipState } from '../css/tooltip';
 import {
-  getTriggerByArrow,
-  getFontColor,
-  getColor,
-  getArrow,
-  getNewArrow,
-  getDeg,
-  getSize,
-  Left,
-  Right,
   Down,
-  Up,
-  RadiusSize,
+  getArrow,
+  getColor,
+  getDeg,
+  getFontColor,
+  getNewArrow,
   getOpacity,
+  getSize,
+  getTriggerByArrow,
+  Left,
+  RadiusSize,
+  Right,
+  Up,
 } from '../css/tooltip';
 import { FontSize, FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
+
 const em = px2emcss(FontSizeNumber);
 
 const ToolTrigger: Object = styled(Trigger)`
@@ -65,11 +66,11 @@ const BaseArrow = styled.div`
   transform: rotateZ(${getDeg});
 `;
 
-const NewArrow = BaseArrow.extend`
+const NewArrow = styled(BaseArrow)`
   box-shadow: 0 0 ${em(6)} rgba(0, 0, 0, 0.15);
   z-index: -1;
 `;
-const MaskArrow = BaseArrow.extend`
+const MaskArrow = styled(BaseArrow)`
   z-index: 0;
 `;
 

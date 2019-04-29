@@ -16,6 +16,7 @@ import { px2emcss } from '../css/units';
 import ThemeProvider from '../theme-provider';
 import { ObjectUtils } from '@lugia/type-utils';
 import { getStateFromProps, processOnVisibleChange } from '../tooltip';
+
 const em = px2emcss(1.2);
 
 const ClearContainer = styled.div`
@@ -34,13 +35,13 @@ const Basetext = styled.div`
   white-space: nowrap;
   overflow: hidden;
 `;
-const Title = Basetext.extend`
+const Title = styled(Basetext)`
   display: inline-block;
   font-size: 1.6rem;
   font-weight: 500;
   ${getTitleColor};
 `;
-const Descripition = Basetext.extend`
+const Descripition = styled(Basetext)`
   font-size: 1.4rem;
   ${getDescripitionColor};
 `;

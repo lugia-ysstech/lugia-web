@@ -29,7 +29,7 @@ type BasicStateType = {
   headerHeight: number,
 };
 export type PanelProps = {
-  header?: string | any,
+  title?: string | any,
   value?: string,
   children?: any,
   getTheme: Function,
@@ -263,7 +263,6 @@ export const HoverIconWrap = styled.div`
 export const Wrap = styled.div`
   transition: all 0.2s;
   font-size: ${FontSize}rem;
-  padding-left: ${em(12)};
   ${getMargin}
   ${getThemeWidthCSS}
   ${getBoxShadow}

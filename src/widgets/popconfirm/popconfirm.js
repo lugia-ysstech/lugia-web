@@ -69,16 +69,16 @@ const Basetext = styled.div`
   font-size: 1.2rem;
   display: block;
 `;
-const Content = Basetext.extend``;
-const Operation = Basetext.extend`
+const Content = Basetext;
+const Operation = styled(Basetext)`
   margin-top: ${em(12)};
   text-align: right;
 `;
-const CancelText = Basetext.extend``;
+const CancelText = Basetext;
 
 CancelText.displayName = 'cancelText';
 
-const OkText = Basetext.extend``;
+const OkText = Basetext;
 
 CancelText.displayName = 'okText';
 
@@ -86,10 +86,10 @@ const BaseButton: Object = styled(Button)`
   font-size: 1.2rem;
   display: inline-block;
 `;
-const Cancel = BaseButton.extend`
+const Cancel = styled(BaseButton)`
   font-size: 1.2rem;
 `;
-const Confirm = BaseButton.extend`
+const Confirm = styled(BaseButton)`
   font-size: 1.2rem;
 `;
 const DefaultChild = styled.div`

@@ -74,13 +74,14 @@ const getOpacity = (props: Object) => {
   }
   return '';
 };
-const ScrollerCol = Col.extend`
+const ScrollerCol = styled(Col)`
   ${scrollerLeft};
   width: ${em(BarDefaultSize)};
   opacity: 0;
   ${ScrollerContainer}:hover & {
     opacity: 1;
   }
+
   ${getOpacity};
   transition: opacity 0.3s;
 `;

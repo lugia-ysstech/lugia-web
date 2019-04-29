@@ -5,6 +5,22 @@
  * @flow
  */
 import type { TimeLineStatus, TimeLineType } from '../css/time-line';
+import {
+  getBorderColor,
+  getDescriptionColor,
+  getDirection,
+  getDotBackground,
+  getDotLeft,
+  getDotSize,
+  getHoverBackground,
+  getIconBackground,
+  getIconIndex,
+  getItemContainerHeight,
+  getKeyframes,
+  getLineDisplay,
+  getLineHeight,
+  getTimeColor,
+} from '../css/time-line';
 import '../common/shirm';
 import * as React from 'react';
 import { Component } from 'react';
@@ -12,23 +28,6 @@ import styled from 'styled-components';
 import Widget from '../consts/index';
 import { getString } from '../common/StringUtils';
 import { ObjectUtils } from '@lugia/type-utils';
-
-import {
-  getLineDisplay,
-  getDirection,
-  getItemContainerHeight,
-  getDotBackground,
-  getDotSize,
-  getDotLeft,
-  getHoverBackground,
-  getIconBackground,
-  getIconIndex,
-  getLineHeight,
-  getKeyframes,
-  getTimeColor,
-  getDescriptionColor,
-  getBorderColor,
-} from '../css/time-line';
 import ThemeProvider from '../theme-provider';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
@@ -49,10 +48,10 @@ const BaseText = styled.div`
   overflow: hidden;
   white-space: nowrap;
 `;
-const Time = BaseText.extend`
+const Time = styled(BaseText)`
   ${getTimeColor};
 `;
-const Description = BaseText.extend`
+const Description = styled(BaseText)`
   line-height: 1.5;
   ${getDescriptionColor};
 `;

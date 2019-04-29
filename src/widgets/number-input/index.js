@@ -75,11 +75,11 @@ const StepButton = styled.span`
   width: 100%;
   font-weight: bold;
 `;
-const MinusButton = StepButton.extend`
+const MinusButton = styled(StepButton)`
   border-top: ${em(1)} solid #d9d9d9;
   ${getMinusHoverHeight};
 `;
-const PlusButton = StepButton.extend`
+const PlusButton = styled(StepButton)`
   ${getPlusHoverHeight};
 `;
 

@@ -11,9 +11,9 @@ import {
   DefaultHelp,
   getBackground,
   getClearButtonColor,
-  getDisplay,
   getClearButtonHoverColor,
   getCursor,
+  getDisplay,
   getFocusBorderColor,
   getFocusShadow,
   getFontColor,
@@ -31,7 +31,7 @@ import { FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import { getMargin, getInputBorderRadius } from '../common/ThemeUtils';
+import { getInputBorderRadius, getMargin } from '../common/ThemeUtils';
 
 const em = px2emcss(FontSizeNumber);
 
@@ -71,11 +71,11 @@ const BaseInputContainer = styled.span`
   position: relative;
   display: inline-block;
 `;
-const InputContainer = BaseInputContainer.extend`
+const InputContainer = styled(BaseInputContainer)`
   ${getMargin};
 `;
 
-export const Input = CommonInputStyle.extend`
+export const Input = styled(CommonInputStyle)`
   outline: none;
   min-height: 100%;
   z-index: 1;
@@ -83,7 +83,7 @@ export const Input = CommonInputStyle.extend`
   font-size: 1.2rem;
 `;
 
-export const InputOnly = CommonInputStyle.extend`
+export const InputOnly = styled(CommonInputStyle)`
   outline: none;
 `;
 const TipBottom = styled.span`
@@ -105,11 +105,11 @@ const Fix = styled.span`
   color: rgba(0, 0, 0, 0.65);
 `;
 
-const Prefix = Fix.extend`
+const Prefix = styled(Fix)`
   left: ${em(5)};
 `;
 
-const Suffix = Fix.extend`
+const Suffix = styled(Fix)`
   right: ${em(5)};
 `;
 

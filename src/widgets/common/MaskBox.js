@@ -4,9 +4,10 @@
  */
 import * as React from 'react';
 import VisibleBox from '../common/VisibleBox';
+import styled from 'styled-components';
 
 export const ZIndex = 1050;
-export default VisibleBox.extend`
+export default styled(VisibleBox)`
   position: fixed;
   top: 0;
   right: 0;

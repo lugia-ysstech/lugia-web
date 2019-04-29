@@ -96,5 +96,6 @@
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+  "needExport": true
 }

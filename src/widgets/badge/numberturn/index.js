@@ -33,13 +33,10 @@ type NumberTurnProps = {
   overflowCount: number,
 };
 
-const OutInner = BaseRedPoint.extend`
+const OutInner = styled(BaseRedPoint)`
   ${numDotRight};
   ${numDotTop};
-  white-space: nowrap;
-  text-align: center;
   overflow: hidden;
-  padding: 0 ${em(2)};
   color: white;
   display: inline-block;
   ${numDotHeight};
@@ -50,7 +47,6 @@ const OutInner = BaseRedPoint.extend`
   padding: 0 ${em(Padding)};
   font-weight: normal;
   white-space: nowrap;
-  -webkit-box-shadow: 0 0 0 ${em(1)} #fff;
   box-shadow: 0 0 0 ${em(1)} #fff;
 `;
 const NumberBoxContainer = styled.div`

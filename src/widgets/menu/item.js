@@ -11,17 +11,18 @@ import Divider from '../divider';
 import { FontSize } from '../css';
 
 import {
-  ItemBackgroundColor,
-  SelectIcon,
-  themeColor,
   blackColor,
-  lightGreyColor,
   disableColor,
   getMenuItemHeight,
+  ItemBackgroundColor,
+  lightGreyColor,
+  SelectIcon,
+  themeColor,
 } from '../css/menu';
 import CheckBox from '../checkbox';
 import Theme from '../theme';
 import { px2emcss } from '../css/units';
+
 const em = px2emcss(1.2);
 
 const Utils = require('@lugia/type-utils');
@@ -183,7 +184,7 @@ const DividedWrap = styled.div`
   height: ${em(1)};
 `;
 
-const MutlipleItem = SingleItem.extend`
+const MutlipleItem = styled(SingleItem)`
   ${getIcon};
   ${getMulipleCheckedStyle};
 `;

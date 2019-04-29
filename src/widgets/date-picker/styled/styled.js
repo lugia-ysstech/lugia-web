@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import { valueInRange } from '../../common/Math';
 import {
-  getThemeProperty,
-  getDateWrrap,
-  themeColor,
-  distance,
   borderRadius,
-  fontSize,
+  distance,
   em,
+  fontSize,
+  getDateWrrap,
+  getThemeProperty,
+  themeColor,
 } from './utils';
+
 const { hoverColor, normalColor, disableColor, spiritColor } = themeColor;
 export const Icons = styled.span`
   position: absolute;
@@ -57,11 +58,17 @@ export const HeaderTopText = styled.span`
     color: ${hoverColor};
   }
 `;
-export const HeaderTopArrow = HeaderTopText.extend`    
-    float:${props => props.position};
-    margin-${props => props.position}:${props => props.margin}px;
-    vertical-align:middle;
+
+function getMargin(props: Object) {
+  return `margin-${props.position}:${props.margin}px;`;
+}
+
+export const HeaderTopArrow = styled(HeaderTopText)`
+  float: ${props => props.position};
+  ${getMargin}
+  vertical-align: middle;
 `;
+
 export const HeaderWeekBox = styled.ul`
   padding: 0;
   margin: 0;

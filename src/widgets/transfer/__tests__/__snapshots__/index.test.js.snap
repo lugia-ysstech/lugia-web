@@ -671,6 +671,7 @@ exports[`Transfer css 1`] = `
   overflow: hidden;
   position: relative;
   vertical-align: middle;
+  background: #fff;
 }
 
 .c2 {

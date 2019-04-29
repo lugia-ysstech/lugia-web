@@ -7,7 +7,7 @@
 import colorsFunc from './stateColor';
 import styled from 'styled-components';
 import { px2emcss } from './units';
-import changeColor from './utilsColor.js';
+
 const em = px2emcss(1.2);
 export const {
   themeColor,
@@ -44,7 +44,7 @@ export const Switcher = styled.span`
 `;
 Switcher.displayName = 'switcherButton';
 
-export const NullSwitcher = Switcher.extend`
+export const NullSwitcher = styled(Switcher)`
   opacity: 0;
 `;
 

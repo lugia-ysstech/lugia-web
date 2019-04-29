@@ -14,12 +14,13 @@ import CommonIcon from '../icon';
 import { DefaultHeight } from '../css/input';
 import { isCanInput, isCanSearch, isMutliple } from '../common/selectFunction';
 import {
+  darkGreyColor,
   getCheckAllButtonColor,
   IsShowSearchInputHandle,
   themeColor,
-  darkGreyColor,
 } from '../css/queryInput';
 import { px2emcss } from '../css/units';
+
 const em = px2emcss(1.2);
 
 const OutContainer = styled.div`
@@ -65,16 +66,16 @@ const ShowCheckAllButton = styled.span`
   }
 `;
 
-const AppendValueButton = ShowCheckAllButton.extend``;
+const AppendValueButton = ShowCheckAllButton;
 AppendValueButton.displayName = 'addIcon';
 
-const RefreshButton = ShowCheckAllButton.extend`
+const RefreshButton = styled(ShowCheckAllButton)`
   margin-left: ${em(10)};
   font-size: ${em(16)};
 `;
 RefreshButton.displayName = 'RefreshButton';
 
-const SearchButton = ShowCheckAllButton.extend`
+const SearchButton = styled(ShowCheckAllButton)`
   position: absolute;
   top: 50%;
   right: ${em(10)};

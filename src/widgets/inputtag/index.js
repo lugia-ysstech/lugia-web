@@ -15,12 +15,13 @@ import MoreItem from './MoreItem';
 import FontItem from './FontItem';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import { ValueField, DisplayField } from '../consts/props';
+import { ValueField } from '../consts/props';
 import Theme from '../theme';
 import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
+import * as InputCSS from '../css/input';
 import {
   DefaultHelp,
   getFocusShadow,
@@ -33,18 +34,18 @@ import {
 import { FontSize, FontSizeNumber } from '../css';
 import { DefaultHeight } from '../css/menu';
 import {
-  MarginRight,
-  SingleLineHeight,
+  blackColor,
+  defaultColor,
   Height,
   lightGreyColor,
+  MarginRight,
   mediumGreyColor,
-  blackColor,
+  SingleLineHeight,
   themeColor,
-  defaultColor,
 } from '../css/inputtag';
-import * as InputCSS from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
+
 const em = px2emcss(FontSizeNumber);
 const ClearMenuItemButton: Object = styled(Icon)`
   top: 50%;
@@ -127,7 +128,7 @@ const Prefix = styled.span`
 `;
 
 /** add by szfeng */
-const PullIcon: Object = IconButton.extend`
+const PullIcon: Object = styled(IconButton)`
   font-size: ${FontSize};
 `;
 IconButton.displayName = Widget.InputTagClearButton;
@@ -172,7 +173,7 @@ const InnerContainer = styled.div`
   position: relative;
   user-select: none;
 `;
-const SingleInnerContainer = InnerContainer.extend`
+const SingleInnerContainer = styled(InnerContainer)`
   padding-left: ${em(5)};
   padding-right: ${em(14)};
   white-space: nowrap;

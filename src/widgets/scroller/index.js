@@ -46,10 +46,10 @@ const Container = styled.div`
   z-index: 996;
 `;
 
-const XContainer = Container.extend`
+const XContainer = styled(Container)`
   height: ${em(BarDefaultSize)};
 `;
-const YContainer = Container.extend`
+const YContainer = styled(Container)`
   width: ${em(BarDefaultSize)};
 `;
 const getBackground = props => (props.disabled ? '#898989' : BarBackgroundColor);
@@ -73,12 +73,12 @@ const Bar = styled.div`
 `;
 
 const scrollerSize = BarDefaultSize - BarDefaultSizePadding;
-const XBar = Bar.extend`
+const XBar = styled(Bar)`
   height: ${em(scrollerSize)};
   margin-bottom: ${em(2)};
   margin-top: ${em(2)};
 `;
-const YBar = Bar.extend`
+const YBar = styled(Bar)`
   width: ${em(scrollerSize)};
   margin-left: ${em(2)};
   margin-right: ${em(2)};
