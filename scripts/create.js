@@ -7,7 +7,7 @@
 const createDesignInfo = require('@lugia/devtools-material').createDesignInfo;
 const path = require('path');
 
-const tartgetPath = path.join('..\\src\\widgets');
+const tartgetPath = path.join(__dirname, '../src/widgets');
 const Invalid = [
   'align',
   'code-box',
@@ -29,4 +29,4 @@ const Invalid = [
   'design-responsive',
 ];
 
-createDesignInfo(tartgetPath,'lugia',Invalid);
+createDesignInfo(tartgetPath,'',Invalid);

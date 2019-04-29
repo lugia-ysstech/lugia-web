@@ -1,52 +1,53 @@
-import Affix from './lugiaaffix';
-import Alert from './lugiaalert';
-import AmountInput from './lugiaamount-input';
-import Anchor from './lugiaanchor';
-import AutoComplete from './lugiaauto-complete';
-import Avatar from './lugiaavatar';
-import BackTop from './lugiaback-top';
-import Badge from './lugiabadge';
-import Breadcrumb from './lugiabreadcrumb';
-import Button from './lugiabutton';
-import Card from './lugiacard';
-import Carousel from './lugiacarousel';
-import Cascader from './lugiacascader';
-import Checkbox from './lugiacheckbox';
-import Collapse from './lugiacollapse';
-import DatePicker from './lugiadate-picker';
-import Divider from './lugiadivider';
-import Drawer from './lugiadrawer';
-import Dropmenu from './lugiadropmenu';
-import Grid from './lugiagrid';
-import Icon from './lugiaicon';
-import Input from './lugiainput';
-import Layout from './lugialayout';
-import Loading from './lugialoading';
-import Menu from './lugiamenu';
-import Modal from './lugiamodal';
-import NavMenu from './lugianavmenu';
-import NumberInput from './lugianumber-input';
-import Pagination from './lugiapagination';
-import Popconfirm from './lugiapopconfirm';
-import Popover from './lugiapopover';
-import Progress from './lugiaprogress';
-import Radio from './lugiaradio';
-import Rate from './lugiarate';
-import Select from './lugiaselect';
-import Skeleton from './lugiaskeleton';
-import Slider from './lugiaslider';
-import Steps from './lugiasteps';
-import Switch from './lugiaswitch';
-import Table from './lugiatable';
-import Tabs from './lugiatabs';
-import Tag from './lugiatag';
-import TimeLine from './lugiatime-line';
-import TimePicker from './lugiatime-picker';
-import Tooltip from './lugiatooltip';
-import Transfer from './lugiatransfer';
-import Tree from './lugiatree';
-import TreeSelect from './lugiatree-select';
-import Upload from './lugiaupload';
+import Affix from './affix';
+import Alert from './alert';
+import AmountInput from './amount-input';
+import Anchor from './anchor';
+import AutoComplete from './auto-complete';
+import Avatar from './avatar';
+import BackTop from './back-top';
+import Badge from './badge';
+import Breadcrumb from './breadcrumb';
+import Button from './button';
+import Card from './card';
+import Carousel from './carousel';
+import Cascader from './cascader';
+import Checkbox from './checkbox';
+import Collapse from './collapse';
+import DatePicker from './date-picker';
+import Divider from './divider';
+import Drawer from './drawer';
+import Dropmenu from './dropmenu';
+import Grid from './grid';
+import Icon from './icon';
+import Input from './input';
+import Layout from './layout';
+import Loading from './loading';
+import Menu from './menu';
+import Modal from './modal';
+import NavMenu from './navmenu';
+import NumberInput from './number-input';
+import Pagination from './pagination';
+import Popconfirm from './popconfirm';
+import Popover from './popover';
+import Progress from './progress';
+import Radio from './radio';
+import Rate from './rate';
+import Select from './select';
+import Skeleton from './skeleton';
+import Slider from './slider';
+import Steps from './steps';
+import Switch from './switch';
+import Table from './table';
+import Tabs from './tabs';
+import Tag from './tag';
+import TimeLine from './time-line';
+import TimePicker from './time-picker';
+import Tooltip from './tooltip';
+import Transfer from './transfer';
+import Tree from './tree';
+import TreeSelect from './tree-select';
+import Upload from './upload';
+
 export default {
   Affix: {
     meta: {
@@ -491,7 +492,11 @@ export default {
           desc: '触发指示器切换或点击切换按钮时触发',
           args: [
             { name: 'newValue', desc: '切换到下一次面板的索引值', type: 'number' },
-            { name: 'oldValue', desc: '本次的索引值', type: 'number' },
+            {
+              name: 'oldValue',
+              desc: '本次的索引值',
+              type: 'number',
+            },
           ],
         },
       },
@@ -602,7 +607,11 @@ export default {
           desc: 'Checkbox改变时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            { name: 'checked', desc: '当前是否选中', type: 'boolean' },
+            {
+              name: 'checked',
+              desc: '当前是否选中',
+              type: 'boolean',
+            },
           ],
         },
       },
@@ -729,7 +738,11 @@ export default {
           desc: 'Collapse面板展开/折叠时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            { name: 'value', desc: '变化Collapse的value值', type: 'string' },
+            {
+              name: 'value',
+              desc: '变化Collapse的value值',
+              type: 'string',
+            },
           ],
         },
       },
@@ -1487,7 +1500,11 @@ export default {
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
+            {
+              name: 'keys',
+              desc: '所有的选中值',
+              type: 'Object',
+            },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -1495,7 +1512,11 @@ export default {
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
+            {
+              name: 'item',
+              desc: '当前鼠标进入的列表项数据',
+              type: 'Object',
+            },
           ],
         },
         onExpandPathChange: {
@@ -1742,14 +1763,22 @@ export default {
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            { name: 'pageSize', desc: '每页条数', type: 'number' },
+            {
+              name: 'pageSize',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            { name: 'size', desc: '每页条数', type: 'number' },
+            {
+              name: 'size',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
       },
@@ -1994,14 +2023,22 @@ export default {
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '点击后的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '点击后的所选值',
+              type: 'Object',
+            },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '鼠标移动时的所选值',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -2073,11 +2110,23 @@ export default {
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -2093,11 +2142,23 @@ export default {
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -2329,7 +2390,11 @@ export default {
           desc: '点击展开图标时触发',
           args: [
             { name: 'expanded', desc: '当前是否展开', type: 'boolean' },
-            { name: 'record', desc: '当前行数据', type: 'Object' },
+            {
+              name: 'record',
+              desc: '当前行数据',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -2665,14 +2730,22 @@ export default {
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
+            {
+              name: 'direction',
+              desc: '穿梭的方向，left、right',
+              type: 'DirectionType',
+            },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
         onCancelItemClick: {
           desc: 'Transfer 取消选项点击回调',
           args: [
-            { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
+            {
+              name: 'nextValue',
+              desc: 'Transfer 右侧面板值的集合',
+              type: 'string[]',
+            },
             { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
           ],
         },
@@ -2740,14 +2813,22 @@ export default {
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
+            {
+              name: 'end',
+              desc: '显示区域内，最后树节点所在数据中的索引值',
+              type: 'number',
+            },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
+            {
+              name: 'data',
+              desc: '所有的树形数据信息',
+              type: 'Array<Object>',
+            },
           ],
         },
         onSelect: {
@@ -2757,7 +2838,11 @@ export default {
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
+            {
+              name: 'selectValue',
+              desc: '所有选中项的valueField值的集合',
+              type: 'string[]',
+            },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
