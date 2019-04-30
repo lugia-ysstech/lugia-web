@@ -5,7 +5,7 @@
  */
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
 import { createGetWidthOrHeight } from '../common/ThemeUtils';
@@ -70,7 +70,7 @@ export const Wrap = styled.div`
 `;
 const getAnimate = (props: CSSProps) => {
   const { closing, opening } = props;
-  const OpenKeyframe = css`
+  const OpenKeyframe = keyframes`
     from {
       opacity: 0;
     }
@@ -78,7 +78,7 @@ const getAnimate = (props: CSSProps) => {
       opacity: 1;
     }
   `;
-  const CloseKeyframe = css`
+  const CloseKeyframe = keyframes`
     from {
       opacity: 1;
     }
@@ -87,14 +87,14 @@ const getAnimate = (props: CSSProps) => {
     }
   `;
   if (closing) {
-    return `
-     animation:${CloseKeyframe} 0.4s;
-     `;
+    return css`
+      animation: ${CloseKeyframe} 0.4s;
+    `;
   }
   if (opening) {
-    return `
-     animation:${OpenKeyframe} .4s;
-     `;
+    return css`
+      animation: ${OpenKeyframe} 0.4s;
+    `;
   }
 };
 export const ModalMask = styled.div`

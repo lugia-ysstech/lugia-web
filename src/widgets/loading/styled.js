@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { px2emcss } from '../css/units';
 import { FontSize, FontSizeNumber } from '../css/index';
 
@@ -10,7 +10,7 @@ type CssProps = {
   delay?: number,
   scale?: boolean,
 };
-export const WrapperKeyframes = css`
+export const WrapperKeyframes = keyframes`
   0% {
     transform: rotate(0deg);
   }
@@ -21,7 +21,7 @@ export const WrapperKeyframes = css`
     transform: rotate(360deg);
   }
 `;
-export const circleKeyframes = css`
+export const circleKeyframes = keyframes`
   0% {
     transform: scale (1, 1);
     opacity: 0.5;
@@ -47,35 +47,32 @@ const getStyled = (props?: CssProps) => {
       height:${em(width)};
       position:relative;
   `;
-  const LodingInnerStyle = `
-      height: ${em(width)};
-      width: ${em(circleDiameter)};
-      position: absolute;
-      left: ${em(width / 2 - circleDiameter / 2)};
-      top: 0;
-      transform:translateY(-50%);
-      -webkit-transform:translateY(-50%);
-      transform: rotate(0deg);
-      animation: ${WrapperKeyframes} ${props.time}s infinite;
-      animation-timing-function: cubic-bezier(0.28, 0.8, 0.69, 1);
-      animation-delay: ${delay}s;
+  const LodingInnerStyle = css`
+    height: ${em(width)};
+    width: ${em(circleDiameter)};
+    position: absolute;
+    left: ${em(width / 2 - circleDiameter / 2)};
+    top: 0;
+    -webkit-transform: translateY(-50%);
+    transform: rotate(0deg);
+    animation: ${WrapperKeyframes} ${props.time}s infinite;
+    animation-timing-function: cubic-bezier(0.28, 0.8, 0.69, 1);
+    animation-delay: ${delay}s;
   `;
-  const LodingInnerCircleStyle = `
+  const LodingInnerCircleStyle = css`
     display: block;
     width: ${em(circleDiameter)};
     height: ${em(circleDiameter)};
     background: ${color};
     border-radius: 50%;
-    ${
-      scale
-        ? `transform:scale(1.2);
+    ${scale
+      ? `transform:scale(1.2);
           animation:${circleKeyframes} 2.5s infinite;
           animation-delay: 0.6s;
         `
-        : `
+      : `
         transform:scale(1);
-        `
-    }
+        `}
   `;
   return {
     LodingWrapperStyle,

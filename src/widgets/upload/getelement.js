@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import Icon from '../icon';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import Progress from '../progress';
 import FileInput from './fileInput';
 import { px2emcss } from '../css/units';
@@ -29,7 +29,7 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 
-const rotate = css`
+const rotate = keyframes`
   from {
     transform: rotate(0deg);
   }
@@ -391,7 +391,11 @@ const getIconClass = props => {
   }
   let loadIconStyle = '';
   if (isClassInString(iconClass, 'loadIcon')) {
-    loadIconStyle = `margin-right: 10px;color: #684fff;animation: ${rotate} 0.8s linear infinite;`;
+    loadIconStyle = css`
+      margin-right: 10px;
+      color: #684fff;
+      animation: ${rotate} 0.8s linear infinite;
+    `;
   }
   let rightStyle = '';
   if (isClassInString(iconClass, 'right')) {

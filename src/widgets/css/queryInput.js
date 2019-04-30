@@ -4,14 +4,14 @@
  * @flow
  */
 
-import { css } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import * as InputCSS from './input';
 
 export const { themeColor, darkGreyColor } = colorsFunc();
 
 export const checkAllButtonAnimate = (fromHeight: any, toHeight: any) => {
-  const animate = css`
+  const animate = keyframes`
     from {
       transform: translateY(-${fromHeight});
     }
@@ -35,17 +35,17 @@ export function IsShowSearchInputHandle(props: Object): string {
   } = props;
 
   if (toShowSearchInputIng) {
-    return `
-        animation: ${checkAllButtonAnimate(0, InputCSS.DefaultHeight)} .4s linear;
-        animation-fill-mode: forwards;
-          `;
+    return css`
+      animation: ${checkAllButtonAnimate(0, InputCSS.DefaultHeight)} 0.4s linear;
+      animation-fill-mode: forwards;
+    `;
   }
 
   if (toShowCheckAllButtonIng) {
-    return `
-        animation: ${checkAllButtonAnimate(InputCSS.DefaultHeight, 0)} .4s linear;
-        animation-fill-mode: forwards
-          `;
+    return css`
+      animation: ${checkAllButtonAnimate(InputCSS.DefaultHeight, 0)} 0.4s linear;
+      animation-fill-mode: forwards;
+    `;
   }
 
   if (showCheckAllButton) {

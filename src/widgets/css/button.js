@@ -6,7 +6,7 @@
 import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
 import { getThemeColor } from '../common/ThemeUtils';
-import { css } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 import type { MarginType, ThemeType } from '@lugia/lugia-web';
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
@@ -328,7 +328,7 @@ export const getClickCSS = (props: ButtonOutProps) => {
     ? em(NotCircleSize.borderRadius)
     : em(ShapeCSS[size].borderRadius);
 
-  const clickAnimate = css`
+  const clickAnimate = keyframes`
     0% {
       width: 0;
       height: 0;
@@ -353,17 +353,19 @@ export const getClickCSS = (props: ButtonOutProps) => {
   `;
   const { clicked } = props;
   if (clicked) {
-    return `&::after{
-                content: '';
-                height: 0;
-                border: 0;
-                position: absolute;
-                z-index: 50;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                animation: ${clickAnimate} .5s linear;
-            }`;
+    return css`
+      &::after {
+        content: '';
+        height: 0;
+        border: 0;
+        position: absolute;
+        z-index: 50;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        animation: ${clickAnimate} 0.5s linear;
+      }
+    `;
   }
 };
 export const getActiveCSS = (props: ButtonOutProps) => {
@@ -448,8 +450,7 @@ export const getIconStyle = (props: CSSProps) => {
     margin-right: ${em(10)};
   `;
 };
-export const getLoadingIconStyle = (props: IconLoadingProps) => {
-  const IconSoin = css`
+const spin = keyframes`
     0% {
       transform: rotate(0deg);
     }
@@ -457,10 +458,12 @@ export const getLoadingIconStyle = (props: IconLoadingProps) => {
       transform: rotate(360deg);
     }
   `;
+
+export const getLoadingIconStyle = (props: IconLoadingProps) => {
   const { loading = false } = props;
   if (loading) {
-    return `
-      animation: ${IconSoin} 1s infinite linear;
+    return css`
+      animation: ${spin} 1s infinite linear;
     `;
   }
 };

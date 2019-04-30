@@ -1,6 +1,8 @@
 import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
+import { keyframes, css } from 'styled-components';
+
 const {
   themeColor,
   lightGreyColor,
@@ -108,10 +110,21 @@ export const getHoverBackground = props => {
   const background = backgroundColor ? backgroundColor : type === 'explain' ? themeColor : '';
   return `background:${background};`;
 };
+
+const loading = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  
+  to {
+    transform: rotate(359deg);
+  }
+`;
+
 export const getKeyframes = props => {
   const { pending } = props;
   if (pending === true)
-    return `animation: rotate 1s linear infinite;
-@keyframes rotate{from{transform: rotate(0deg)}
-    to{transform: rotate(359deg)}`;
+    return css`
+      animation: ${loading} 1s linear infinite;
+    `;
 };

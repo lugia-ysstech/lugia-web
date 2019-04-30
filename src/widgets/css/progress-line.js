@@ -3,7 +3,7 @@
  * create by guorg
  * @flow
  */
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { getWidth } from '../common/ThemeUtils';
 import { px2emcss } from './units';
@@ -102,7 +102,7 @@ const getStatusCSS = (props: CSSProps) => {
   const { status = 'default', theme, percent } = props;
   const { color } = theme;
   const defaultColor = color ? color : themeColor;
-  const activeAnimate = css`
+  const activeAnimate = keyframes`
     0% {
       opacity: 0.1;
       width: 0;
@@ -118,20 +118,22 @@ const getStatusCSS = (props: CSSProps) => {
   `;
 
   if (status === 'active') {
-    return `&::before{
-                content: '';
-                opacity: 0;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: #fff;
-                border-radius: 10px;
-                animation: ${activeAnimate} 2.4s ease infinite;
-            }
-            background-color: ${handlePercent(percent) === 100 ? successColor : defaultColor};
-            `;
+    return css`
+      &::before {
+        content: '';
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        border-radius: 10px;
+        animation: ${activeAnimate} 2.4s ease infinite;
+      }
+
+      background-color: ${handlePercent(percent) === 100 ? successColor : defaultColor};
+    `;
   }
 
   if (handlePercent(percent) === 100) {

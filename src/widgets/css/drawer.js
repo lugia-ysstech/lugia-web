@@ -4,7 +4,7 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 type Direction = 'top' | 'right' | 'bottom' | 'left';
 export type DrawerProps = {
@@ -103,7 +103,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
   const openTo = `${Direction}: 0;`;
   const closeFrom = `${Direction}: 0;`;
   const closeTo = `${Direction}: ${em(-(distance + 8))};`;
-  const OpenKeyframe = css`
+  const OpenKeyframe = keyframes`
     from {
       ${openFrom}
     }
@@ -111,7 +111,7 @@ const getDrawerAnimate = (props: CSSProps): string => {
       ${openTo}
     }
   `;
-  const CloseKeyframe = css`
+  const CloseKeyframe = keyframes`
     from {
       ${closeFrom}
     }
@@ -120,15 +120,17 @@ const getDrawerAnimate = (props: CSSProps): string => {
     }
   `;
   if (opening) {
-    return `
-      ${Direction}: 0;
-      animation: ${OpenKeyframe} .3s;
+    const zero = `${Direction}: 0;`;
+    return css`
+      ${zero}
+      animation: ${OpenKeyframe} 0.3s;
     `;
   }
   if (closing) {
-    return `
+    return css`
       ${Direction}: ${em(-(distance + 8))};
-      animation: ${CloseKeyframe} .3s;
+
+      animation: ${CloseKeyframe} 0.3s;
     `;
   }
   if (open) {
