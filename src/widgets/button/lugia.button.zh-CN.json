@@ -80,5 +80,35 @@
       }
     }
   },
-  "category": ["通用"]
+  "category": ["通用"],
+  "designInfo": {
+    "DefaultPrimaryButton": {
+      "props": {
+        "shape": "default",
+        "type": "default",
+        "text": "Button"
+      }
+    },
+    "DefaultSuccessButton": {
+      "props": {
+        "shape": "default",
+        "type": "success",
+        "text": "Button"
+      }
+    },
+    "DefaultWarningButton": {
+      "props": {
+        "shape": "default",
+        "type": "warning",
+        "text": "Button"
+      }
+    },
+    "DefaultDangerButton": {
+      "props": {
+        "shape": "default",
+        "type": "danger",
+        "text": "Button"
+      }
+    }
+  }
 }
