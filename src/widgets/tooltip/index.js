@@ -177,7 +177,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         popupVisible={visible}
         popArrowType={popArrowType}
         align={placement}
-        innerRef={getTarget}
+        ref={getTarget}
         onPopupVisibleChange={this.onVisibleChange}
         action={action}
         direction={direction}
