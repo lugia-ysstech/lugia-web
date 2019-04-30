@@ -233,7 +233,7 @@ export default class extends React.Component<AffixProps, AffixState> {
     const { contentWidth, contentHeight } = this;
     return (
       <div style={fixed ? { width: contentWidth, height: contentHeight } : null}>
-        <Affix innerRef={node => (this.affix = node)} fixed={fixed} {...this.getOffsetValue()}>
+        <Affix ref={node => (this.affix = node)} fixed={fixed} {...this.getOffsetValue()}>
           {children}
         </Affix>
       </div>

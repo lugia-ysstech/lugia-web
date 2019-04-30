@@ -348,7 +348,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       <Theme config={theme}>
         <OutContainer
           theme={getTheme()}
-          innerRef={cmp => {
+          ref={cmp => {
             this.tabs = cmp;
           }}
         >

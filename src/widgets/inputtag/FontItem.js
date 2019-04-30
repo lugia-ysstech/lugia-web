@@ -49,7 +49,7 @@ export default class extends React.Component<any, FontItemState> {
     const fillItem: Function = (cmp: Object): void => {
       this.item = cmp;
     };
-    return <HiddenItem innerRef={fillItem}>{text}</HiddenItem>;
+    return <HiddenItem ref={fillItem}>{text}</HiddenItem>;
   }
 
   componentDidMount() {

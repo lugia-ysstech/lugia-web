@@ -749,7 +749,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           disabled={disabled}
           status={classNameStatus}
           onClick={handleClickToUpload}
-          innerRef={dropArea}
+          ref={dropArea}
         >
           {getIconByType(classNameStatus)} {defaultText}
         </InputContent>
@@ -764,7 +764,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             status={classNameStatus}
             hasBtn="hasBtn"
             onClick={handleClickToUpload}
-            innerRef={dropArea}
+            ref={dropArea}
           >
             {defaultText}
             {showFileList ? null : getIconByType('li-' + classNameStatus)}
@@ -805,7 +805,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           <PictureView
             size={size}
             disabled={disabled}
-            innerRef={dropArea}
+            ref={dropArea}
             status={multiple && classNameStatus === 'done' ? 'default' : classNameStatus}
             onClick={handleClickToUpload}
           >
@@ -828,7 +828,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
         <AreaView
           disabled={disabled}
           size={'bigger'}
-          innerRef={dropArea}
+          ref={dropArea}
           onClick={handleClickToUpload}
           dragIn={dragIn}
           classNameStatus={classNameStatus}

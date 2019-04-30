@@ -187,7 +187,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         tabType={tabType}
         onClick={this.handleClick}
         isSelect={isSelect}
-        innerRef={cmp => (this.tabpane = cmp)}
+        ref={cmp => (this.tabpane = cmp)}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
         theme={getTheme()}

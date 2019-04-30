@@ -52,7 +52,7 @@ export default ThemeProvider(
       const hasDect = this.isInProps('description');
       return visible ? (
         <Alert
-          innerRef={(node: any) => (this.alert = node)}
+          ref={(node: any) => (this.alert = node)}
           type={type}
           showIcon={showIcon}
           theme={getTheme()}

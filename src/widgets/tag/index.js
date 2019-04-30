@@ -81,7 +81,7 @@ class Tag extends React.Component<TagProps, TagState> {
         type={type}
         Theme={Theme}
       >
-        <ItemText innerRef={cmp => (this.itemText = cmp)} type={type}>
+        <ItemText ref={cmp => (this.itemText = cmp)} type={type}>
           {children}
         </ItemText>
         {closable ? (

@@ -161,7 +161,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
         onMouseDown={isabled ? this.mousedown : null}
         onMouseUp={isabled ? this.mouseup : null}
         onKeyDown={isabled ? this.handleKeyDown : null}
-        innerRef={this.switchNode}
+        ref={this.switchNode}
         tabIndex={switchTabIndex}
         {...config}
       >

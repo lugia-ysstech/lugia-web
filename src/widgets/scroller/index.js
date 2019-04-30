@@ -183,7 +183,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return (
       <TargetContainer
         style={style}
-        innerRef={getScroller}
+        ref={getScroller}
         onMouseMove={this.onContainerMouseMove}
         onMouseDown={this.onContainerMouseDown}
         onMouseUp={this.onContainerMouseUp}
