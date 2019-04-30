@@ -390,7 +390,7 @@ class TextBox extends Component<InputProps, InputState> {
     return (
       <Input
         autoFocus={autoFocus}
-        innerRef={node => (this.input = node)}
+        ref={node => (this.input = node)}
         validateStatus={validateStatus}
         validateType={validateType}
         suffix={suffix}

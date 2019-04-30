@@ -4,7 +4,7 @@
   "desc": "单个标签页组件",
 
   "props": {
-    "activityKey": {
+    "activityValue": {
       "type": "string",
       "desc": "当前激活 tab 面板的 key",
       "defaultValue": "undefined"

@@ -334,7 +334,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         <Container
           disabled={disabled}
           theme={getTheme()}
-          innerRef={cmp => (this.container = cmp)}
+          ref={cmp => (this.container = cmp)}
           onClick={this.onClick}
         >
           <OutContainer focus={focus} disabled={disabled} validateStatus={validateStatus}>
@@ -354,12 +354,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         <Container
           disabled={disabled}
           theme={props.getTheme()}
-          innerRef={cmp => (this.container = cmp)}
+          ref={cmp => (this.container = cmp)}
           onClick={this.onClick}
         >
           <OutContainer focus={focus} disabled={disabled} validateStatus={validateStatus}>
             <InnerContainer theme={props.getTheme()}>
-              <List innerRef={cmp => (this.list = cmp)}>{items}</List>
+              <List ref={cmp => (this.list = cmp)}>{items}</List>
 
               {placeholder}
               {clearButton}

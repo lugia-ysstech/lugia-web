@@ -50,7 +50,7 @@ export default class extends React.Component<ItemProps, ItemState> {
       <ItemContainer
         className={className}
         closeable={closeable}
-        innerRef={c => (this.item = c)}
+        ref={c => (this.item = c)}
         onClick={onClick}
       >
         <ItemText>{this.props.children}</ItemText>

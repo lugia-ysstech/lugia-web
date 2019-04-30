@@ -48,7 +48,7 @@ class FileInput extends React.Component<PropTypes, any> {
     const { accept, multiple, inputId, disabled } = this.props;
     return (
       <Input
-        innerRef={this.input}
+        ref={this.input}
         accept={accept}
         multiple={multiple}
         onChange={this.handleChange}

@@ -629,7 +629,7 @@ class Slider extends Component<TypeProps, TypeState> {
         sliderVerticalPaddings={sliderVerticalPaddings}
       >
         <SliderWrapper
-          innerRef={this.sliderRange}
+          ref={this.sliderRange}
           onMouseDown={mousedown}
           onMouseUp={mouseup}
           {...size}

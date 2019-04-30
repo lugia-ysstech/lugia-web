@@ -11,7 +11,7 @@ import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Tabs from '../tabs';
-import { hasActivityKeyData, defaultData, shortChildren, longChildren } from '../demo';
+import { hasActivityValueData, defaultData, shortChildren, longChildren } from '../demo';
 import { isVertical } from '../utils';
 import Widgets from '../../consts';
 import Theme from '../../theme/';
@@ -19,7 +19,9 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('tabsDemo', () => {
   const createTabs = (obj?: Object): any => {
-    const config = obj ? obj : { tabType: 'line', tabPosition: 'bottom', data: hasActivityKeyData };
+    const config = obj
+      ? obj
+      : { tabType: 'line', tabPosition: 'bottom', data: hasActivityValueData };
     return <Tabs {...config} />;
   };
   it('Component JSON', () => {
@@ -35,15 +37,15 @@ describe('tabsDemo', () => {
       .instance();
   };
 
-  it('props defaultActivityKey', () => {
-    const target = mount(createTabs({ defaultActivityKey: '2', data: hasActivityKeyData }));
-    const { activityKey } = getCmp(target).state;
-    expect(activityKey).toBe('2');
+  it('props defaultActivityValue', () => {
+    const target = mount(createTabs({ defaultActivityValue: '2', data: hasActivityValueData }));
+    const { activityValue } = getCmp(target).state;
+    expect(activityValue).toBe('2');
   });
-  it('props activityKey', () => {
-    const target = mount(createTabs({ activityKey: '2', data: hasActivityKeyData }));
-    const { activityKey } = getCmp(target).state;
-    expect(activityKey).toBe('2');
+  it('props activityValue', () => {
+    const target = mount(createTabs({ activityValue: '2', data: hasActivityValueData }));
+    const { activityValue } = getCmp(target).state;
+    expect(activityValue).toBe('2');
   });
   it('props defaultData', () => {
     const target = mount(createTabs({ defaultData }));
@@ -51,14 +53,14 @@ describe('tabsDemo', () => {
     expect(data).toEqual(data);
   });
   it('props data', () => {
-    const target = mount(createTabs({ data: hasActivityKeyData, tabPosition: 'left' }));
+    const target = mount(createTabs({ data: hasActivityValueData, tabPosition: 'left' }));
     const { data } = getCmp(target).state;
-    expect(data).toEqual(hasActivityKeyData);
+    expect(data).toEqual(hasActivityValueData);
   });
   it('props data && defaultData', () => {
-    const target = mount(createTabs({ data: hasActivityKeyData, defaultData }));
+    const target = mount(createTabs({ data: hasActivityValueData, defaultData }));
     const { data } = getCmp(target).state;
-    expect(data).toEqual(hasActivityKeyData);
+    expect(data).toEqual(hasActivityValueData);
   });
   it('props data []', () => {
     const target = mount(createTabs({ data: [] }));
@@ -67,62 +69,62 @@ describe('tabsDemo', () => {
   });
   it('props children shortChildren', () => {
     const target = mount(createTabs({ children: shortChildren }));
-    const { activityKey } = getCmp(target).state;
-    expect(activityKey).toBe('_key_0');
+    const { activityValue } = getCmp(target).state;
+    expect(activityValue).toBe('_key_0');
   });
   it('props children longChildren', () => {
     const target = mount(createTabs({ children: longChildren }));
-    const { activityKey } = getCmp(target).state;
-    expect(activityKey).toBe('_key_0');
+    const { activityValue } = getCmp(target).state;
+    expect(activityValue).toBe('_key_0');
   });
   it('props children&&data', () => {
-    const target = mount(createTabs({ data: hasActivityKeyData, children: shortChildren }));
-    const { activityKey } = getCmp(target).state;
-    expect(activityKey).toBe('0');
+    const target = mount(createTabs({ data: hasActivityValueData, children: shortChildren }));
+    const { activityValue } = getCmp(target).state;
+    expect(activityValue).toBe('0');
   });
 
-  function testOnTabClick(component: any, expIndex: number, expActicityKey: string) {
+  function testOnTabClick(component: any, expIndex: number, expActicityValue: string) {
     it('props onTabClick', () => {
       const target = mount(component);
       const type = isVertical(component.props.tabPosition) ? 'yTabpane' : 'hTabpane';
       const tabpane = target.find(type);
       tabpane.at(expIndex).simulate('click');
-      expect(getCmp(target).state.activityKey).toBe(expActicityKey);
+      expect(getCmp(target).state.activityValue).toBe(expActicityValue);
     });
   }
   testOnTabClick(createTabs(), 0, '0');
   testOnTabClick(createTabs(), 1, '1');
   testOnTabClick(createTabs(), 2, '2');
   testOnTabClick(createTabs(), 3, '3');
-  testOnTabClick(createTabs({ data: hasActivityKeyData, tabType: 'card' }), 2, '2');
-  testOnTabClick(createTabs({ data: hasActivityKeyData, tabType: 'window' }), 2, '2');
+  testOnTabClick(createTabs({ data: hasActivityValueData, tabType: 'card' }), 2, '2');
+  testOnTabClick(createTabs({ data: hasActivityValueData, tabType: 'window' }), 2, '2');
   testOnTabClick(
-    createTabs({ data: hasActivityKeyData, tabType: 'line', tabPosition: 'left' }),
+    createTabs({ data: hasActivityValueData, tabType: 'line', tabPosition: 'left' }),
     1,
     '1'
   );
   testOnTabClick(
-    createTabs({ data: hasActivityKeyData, tabType: 'line', tabPosition: 'right' }),
+    createTabs({ data: hasActivityValueData, tabType: 'line', tabPosition: 'right' }),
     2,
     '2'
   );
   testOnTabClick(
-    createTabs({ data: hasActivityKeyData, tabType: 'line', tabPosition: 'top' }),
+    createTabs({ data: hasActivityValueData, tabType: 'line', tabPosition: 'top' }),
     3,
     '3'
   );
 
-  function testActivityKey(component: any, expActicityKey: string) {
-    it('props activityKey', () => {
+  function testActivityValue(component: any, expActicityValue: string) {
+    it('props activityValue', () => {
       const target = mount(component);
       const type = isVertical(component.props.tabPosition) ? 'yTabpane' : 'hTabpane';
       const tabpane = target.find(type);
       tabpane.at(2).simulate('click');
-      expect(getCmp(target).state.activityKey).toBe(expActicityKey);
+      expect(getCmp(target).state.activityValue).toBe(expActicityValue);
     });
   }
-  testActivityKey(createTabs({ data: hasActivityKeyData, activityKey: '1' }), '1');
-  testActivityKey(createTabs({ data: hasActivityKeyData, activityKey: '3' }), '3');
+  testActivityValue(createTabs({ data: hasActivityValueData, activityValue: '1' }), '1');
+  testActivityValue(createTabs({ data: hasActivityValueData, activityValue: '3' }), '3');
 
   it('props onAddClick', async () => {
     let onAddClick;
@@ -135,7 +137,9 @@ describe('tabsDemo', () => {
       title: 'new tabs',
       content: 'new tabs content',
     };
-    const target = mount(<Tabs data={hasActivityKeyData} tabType="card" onAddClick={onAddClick} />);
+    const target = mount(
+      <Tabs data={hasActivityValueData} tabType="card" onAddClick={onAddClick} />
+    );
     target.find('addIcon').simulate('click', { add });
     expect(await promise).toBe(add);
   });
@@ -149,14 +153,14 @@ describe('tabsDemo', () => {
       };
     });
     const target = mount(
-      <Tabs data={hasActivityKeyData} onDeleteClick={onDeleteClick} tabType="card" />
+      <Tabs data={hasActivityValueData} onDeleteClick={onDeleteClick} tabType="card" />
     );
     const { data, children } = getCmp(target).props;
     target
       .find('deleteIcon')
       .at(2)
       .simulate('click');
-    const newData = [...hasActivityKeyData];
+    const newData = [...hasActivityValueData];
     newData.splice(2, 1);
     target.setProps({ data: newData });
     expect(getCmp(target).props.data).toEqual(newData);
@@ -172,7 +176,7 @@ describe('tabsDemo', () => {
     const target = mount(
       <Theme config={{ [Widgets.Tabs]: { width: 500 } }}>
         <Tabs
-          data={hasActivityKeyData}
+          data={hasActivityValueData}
           onNextClick={onNextClick}
           pagedType={'page'}
           tabType="card"
@@ -198,7 +202,12 @@ describe('tabsDemo', () => {
     });
     const target = mount(
       <Theme config={{ [Widgets.Tabs]: { width: 500 } }}>
-        <Tabs data={hasActivityKeyData} onPreClick={onPreClick} pagedType={'page'} tabType="card" />
+        <Tabs
+          data={hasActivityValueData}
+          onPreClick={onPreClick}
+          pagedType={'page'}
+          tabType="card"
+        />
       </Theme>
     );
     target
@@ -215,62 +224,64 @@ describe('tabsDemo', () => {
   });
 
   const onChange = () => {};
-  it('props onChange limit activityKey="5" ', async () => {
+  it('props onChange limit activityValue="5" ', async () => {
     let onChange;
     const promise = new Promise(resolve => {
       onChange = e => {
         resolve(e);
       };
     });
-    const target = mount(<Tabs data={hasActivityKeyData} activityKey="5" onChange={onChange} />);
+    const target = mount(
+      <Tabs data={hasActivityValueData} activityValue="5" onChange={onChange} />
+    );
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
-    expect(getCmp(target).state.activityKey).toBe('5');
+    expect(getCmp(target).state.activityValue).toBe('5');
     tabpane.at(3).simulate('click');
     await promise;
-    expect(getCmp(target).state.activityKey).toBe('5');
+    expect(getCmp(target).state.activityValue).toBe('5');
   });
 
-  it('props onChange activityKey=state.activityKey', async () => {
+  it('props onChange activityValue=state.activityValue', async () => {
     let onChange;
     const promise = new Promise(resolve => {
       onChange = e => {
         resolve(e);
       };
     });
-    const target = mount(<Tabs data={hasActivityKeyData} onChange={onChange} />);
+    const target = mount(<Tabs data={hasActivityValueData} onChange={onChange} />);
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
     tabpane.at(5).simulate('click');
     await promise;
-    expect(getCmp(target).state.activityKey).toBe('5');
+    expect(getCmp(target).state.activityValue).toBe('5');
   });
 
-  it('props onChange activityKey!=state.activityKey', async () => {
+  it('props onChange activityValue!=state.activityValue', async () => {
     let onChange;
     const promise = new Promise(resolve => {
       onChange = e => {
         resolve(e);
       };
     });
-    const target = mount(<Tabs data={hasActivityKeyData} onChange={onChange} />);
+    const target = mount(<Tabs data={hasActivityValueData} onChange={onChange} />);
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
-    getCmp(target).setState({ activityKey: '5' });
-    expect(getCmp(target).state.activityKey).toBe('5');
+    getCmp(target).setState({ activityValue: '5' });
+    expect(getCmp(target).state.activityValue).toBe('5');
     tabpane.at(3).simulate('click');
     await promise;
-    expect(getCmp(target).state.activityKey).toBe('3');
+    expect(getCmp(target).state.activityValue).toBe('3');
   });
   it('props 受限 data', async () => {
-    const target = mount(<Tabs data={hasActivityKeyData} />);
-    expect(getCmp(target).state.data).toEqual(hasActivityKeyData);
+    const target = mount(<Tabs data={hasActivityValueData} />);
+    expect(getCmp(target).state.data).toEqual(hasActivityValueData);
     getCmp(target).setState({ data: [] });
-    expect(getCmp(target).state.data).toEqual(hasActivityKeyData);
+    expect(getCmp(target).state.data).toEqual(hasActivityValueData);
     target.setProps({ data: [] });
     expect(getCmp(target).state.data).toEqual([]);
-    target.setProps({ data: hasActivityKeyData });
-    expect(getCmp(target).state.data).toEqual(hasActivityKeyData);
+    target.setProps({ data: hasActivityValueData });
+    expect(getCmp(target).state.data).toEqual(hasActivityValueData);
   });
   it('props 非受限 data 默认addClick ', async () => {
     let onAddClick;
@@ -286,7 +297,7 @@ describe('tabsDemo', () => {
       };
     });
     const defaultAddItem = {
-      activityKey: 'newTab1',
+      activityValue: 'newTab1',
       content: 'content of new tab 1',
       title: 'new tab 1',
     };
@@ -318,7 +329,7 @@ describe('tabsDemo', () => {
       };
     });
     const firstItem = {
-      activityKey: 'newTab1',
+      activityValue: 'newTab1',
       content: 'content of new tab 1',
       title: 'new tab 1',
     };
@@ -332,7 +343,7 @@ describe('tabsDemo', () => {
     target
       .find('deleteIcon')
       .at(0)
-      .simulate('click', { activityKey: 'newTab1' });
+      .simulate('click', { activityValue: 'newTab1' });
     await deleteClick;
     expect(getCmp(target).state.data).toEqual([]);
   });
@@ -350,12 +361,12 @@ describe('tabsDemo', () => {
       };
     });
     const firstItem = {
-      activityKey: 'newTab1',
+      activityValue: 'newTab1',
       content: 'content of new tab 1',
       title: 'new tab 1',
     };
     const secondItem = {
-      activityKey: 'newTab2',
+      activityValue: 'newTab2',
       content: 'content of new tab 2',
       title: 'new tab 2',
     };
@@ -372,13 +383,13 @@ describe('tabsDemo', () => {
     target
       .find('deleteIcon')
       .at(0)
-      .simulate('click', { activityKey: 'newTab1' });
+      .simulate('click', { activityValue: 'newTab1' });
     await deleteClick;
     expect(getCmp(target).state.data).toEqual([secondItem]);
     target
       .find('deleteIcon')
       .at(0)
-      .simulate('click', { activityKey: 'newTab2' });
+      .simulate('click', { activityValue: 'newTab2' });
     await deleteClick;
     expect(getCmp(target).state.data).toEqual([]);
   });
@@ -396,12 +407,12 @@ describe('tabsDemo', () => {
       };
     });
     const firstItem = {
-      activityKey: 'newTab1',
+      activityValue: 'newTab1',
       content: 'content of new tab 1',
       title: 'new tab 1',
     };
     const secondItem = {
-      activityKey: 'newTab2',
+      activityValue: 'newTab2',
       content: 'content of new tab 2',
       title: 'new tab 2',
     };
@@ -418,13 +429,13 @@ describe('tabsDemo', () => {
     target
       .find('deleteIcon')
       .at(1)
-      .simulate('click', { activityKey: 'newTab2' });
+      .simulate('click', { activityValue: 'newTab2' });
     await deleteClick;
     expect(getCmp(target).state.data).toEqual([firstItem]);
     target
       .find('deleteIcon')
       .at(0)
-      .simulate('click', { activityKey: 'newTab1' });
+      .simulate('click', { activityValue: 'newTab1' });
     await deleteClick;
     expect(getCmp(target).state.data).toEqual([]);
   });

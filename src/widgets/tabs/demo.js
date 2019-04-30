@@ -17,19 +17,19 @@ const onPreClick = e => {};
 const onNextClick = e => {};
 export class Tabsdemo extends React.Component<any, any> {
   state = {
-    data: hasActivityKeyData,
-    activeKey: '0',
+    data: hasActivityValueData,
+    activeValue: '0',
   };
   onAddClick = () => {
-    const activityKey = `newTab${this.state.data.length++}`;
+    const activityValue = `newTab${this.state.data.length++}`;
     const item = {
       title: 'New Tab',
       content: 'Content of new Tab',
-      activityKey,
+      activityValue,
     };
     return item;
   };
-  onDeleteClick = (activityKey: string) => {};
+  onDeleteClick = (activityValue: string) => {};
   render() {
     return (
       <div>
@@ -48,34 +48,34 @@ export class Tabsdemo extends React.Component<any, any> {
 
 export class TabsLimitdemo extends React.Component<any, any> {
   state = {
-    data: hasActivityKeyData,
-    activeKey: '0',
+    data: hasActivityValueData,
+    activeValue: '0',
   };
   change = (e: Object) => {
-    hasActivityKeyData[0] = {
+    hasActivityValueData[0] = {
       title: ' changed Tab1',
       content: 'Content of changed Tab1',
-      activityKey: '-1',
+      activityValue: '-1',
     };
-    this.setState({ data: hasActivityKeyData });
+    this.setState({ data: hasActivityValueData });
   };
   onAddClick = () => {
     const data = this.state.data;
-    const activityKey = `newTab${this.state.data.length++}`;
+    const activityValue = `newTab${this.state.data.length++}`;
     data.push({
       title: 'New Tab',
       content: 'Content of new Tab',
-      activityKey,
+      activityValue,
     });
     this.setState({ data });
   };
 
-  onDeleteClick = (activityKey: string) => {
+  onDeleteClick = (activityValue: string) => {
     const { data } = this.state;
     let newdata = [];
     if (data.length > 1) {
       newdata = data.filter(child => {
-        return child.activityKey !== activityKey;
+        return child.activityValue !== activityValue;
       });
     }
     this.setState({ data: newdata });
@@ -152,11 +152,11 @@ export const disabledData = [
     content: 'content of Tab3',
   },
 ];
-export const hasActivityKeyData = [
+export const hasActivityValueData = [
   {
     title: 'Tab1',
     content: <div>1111111111</div>,
-    activityKey: '0',
+    activityValue: '0',
   },
   {
     title: 'Tab2',
@@ -165,10 +165,10 @@ export const hasActivityKeyData = [
         <div>222222</div>
       </div>
     ),
-    activityKey: '1',
+    activityValue: '1',
   },
   {
-    activityKey: '2',
+    activityValue: '2',
     title: 'Tab3',
     content: (
       <div>
@@ -179,7 +179,7 @@ export const hasActivityKeyData = [
     ),
   },
   {
-    activityKey: '3',
+    activityValue: '3',
     title: 'Tab4',
     content: (
       <div>
@@ -191,29 +191,29 @@ export const hasActivityKeyData = [
     ),
   },
   {
-    activityKey: '4',
+    activityValue: '4',
     title: 'Tab5',
     content: 55555,
   },
   {
-    activityKey: '5',
+    activityValue: '5',
     title: 'Tab6',
     content: 66666,
   },
   {
-    activityKey: '6',
+    activityValue: '6',
     title: 'Tab7',
     content: 77777,
   },
   {
-    activityKey: '7',
+    activityValue: '7',
     title: 'Tab8',
     content: 888888,
   },
 ];
 export const children = [
-  <Tabpane title={'1111'} content={'11111'} activityKey={'0'} />,
-  <Tabpane title={'2222'} content={<div>2222</div>} activityKey={'1'} />,
+  <Tabpane title={'1111'} content={'11111'} activityValue={'0'} />,
+  <Tabpane title={'2222'} content={<div>2222</div>} activityValue={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -223,7 +223,7 @@ export const children = [
         </div>
       </div>
     }
-    activityKey={'2'}
+    activityValue={'2'}
   />,
   <Tabpane
     title={'4444'}
@@ -234,7 +234,7 @@ export const children = [
         </div>
       </div>
     }
-    activityKey={'3'}
+    activityValue={'3'}
   />,
   <Tabpane
     title={'555555'}
@@ -245,7 +245,7 @@ export const children = [
         </div>
       </div>
     }
-    activityKey={'4'}
+    activityValue={'4'}
   />,
   <Tabpane
     title={'666666'}
@@ -256,7 +256,7 @@ export const children = [
         </div>
       </div>
     }
-    activityKey={'5'}
+    activityValue={'5'}
   />,
 ];
 export const longChildren = [
@@ -309,7 +309,7 @@ export const shortChildren = [
     content={'11111111111111111111111111'}
     icon={'lugia-icon-financial_archive'}
   />,
-  <Tabpane title={'2222'} content={<div>22222222222222</div>} activityKey={'1'} />,
+  <Tabpane title={'2222'} content={<div>22222222222222</div>} activityValue={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -319,12 +319,12 @@ export const shortChildren = [
         </div>
       </div>
     }
-    activityKey={'2'}
+    activityValue={'2'}
   />,
 ];
-const hasActivityKeyChildren = [
-  <Tabpane title={'11111'} content={'1111'} activityKey={'0'} />,
-  <Tabpane title={'2222'} content={<div>2222</div>} activityKey={'1'} />,
+const hasActivityValueChildren = [
+  <Tabpane title={'11111'} content={'1111'} activityValue={'0'} />,
+  <Tabpane title={'2222'} content={<div>2222</div>} activityValue={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -334,7 +334,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'2'}
+    activityValue={'2'}
   />,
   <Tabpane
     title={'44444'}
@@ -345,7 +345,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'3'}
+    activityValue={'3'}
   />,
   <Tabpane
     title={'555555'}
@@ -356,7 +356,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'4'}
+    activityValue={'4'}
   />,
   <Tabpane
     title={'666666'}
@@ -367,7 +367,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'5'}
+    activityValue={'5'}
   />,
   <Tabpane
     title={'7777777'}
@@ -378,7 +378,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'6'}
+    activityValue={'6'}
   />,
   <Tabpane
     title={'8888888'}
@@ -389,7 +389,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'7'}
+    activityValue={'7'}
   />,
   <Tabpane
     title={'999999'}
@@ -400,7 +400,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'8'}
+    activityValue={'8'}
   />,
   <Tabpane
     title={'10101010'}
@@ -411,7 +411,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'9'}
+    activityValue={'9'}
   />,
   <Tabpane
     title={'1111111'}
@@ -422,7 +422,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'10'}
+    activityValue={'10'}
   />,
   <Tabpane
     title={'12121212'}
@@ -433,7 +433,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'11'}
+    activityValue={'11'}
   />,
   <Tabpane
     title={'131313'}
@@ -444,7 +444,7 @@ const hasActivityKeyChildren = [
         </div>
       </div>
     }
-    activityKey={'12'}
+    activityValue={'12'}
   />,
 ];
 export default () => {
@@ -518,7 +518,7 @@ export default () => {
               tabPosition={'left'}
               onPreClick={onPreClick}
               onNextClick={onNextClick}
-              children={hasActivityKeyChildren}
+              children={hasActivityValueChildren}
             />
           </Wrapper>
           <p>children tabPosition=right</p>
@@ -556,7 +556,7 @@ export default () => {
           <Tabs
             tabType={'line'}
             tabPosition={'left'}
-            data={hasActivityKeyData}
+            data={hasActivityValueData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
           />
@@ -567,10 +567,10 @@ export default () => {
           <Tabs
             tabType={'line'}
             tabPosition={'right'}
-            data={hasActivityKeyData}
+            data={hasActivityValueData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-            defaultActivityKey={'2'}
+            defaultActivityValue={'2'}
           />
         </RightWrapper>
         <br />
@@ -590,7 +590,7 @@ export default () => {
           <Tabs
             tabType={'card'}
             pagedType={'single'}
-            data={hasActivityKeyData}
+            data={hasActivityValueData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
           />
@@ -602,7 +602,7 @@ export default () => {
           <Tabs
             tabType={'window'}
             pagedType={'page'}
-            data={hasActivityKeyData}
+            data={hasActivityValueData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
           />

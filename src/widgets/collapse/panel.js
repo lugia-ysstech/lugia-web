@@ -79,7 +79,7 @@ export default ThemeProvider(
               showArrow={showArrow}
               theme={getTheme()}
               onClick={this.handlePanelClick}
-              innerRef={(node: any) => (this.header = node)}
+              ref={(node: any) => (this.header = node)}
             >
               {showArrow ? (
                 <IconWrap
@@ -108,7 +108,7 @@ export default ThemeProvider(
               </HoverIconWrap>
             </PanelHeader>
             <PanelContentWrap
-              innerRef={(node: any) => (this.panel = node)}
+              ref={(node: any) => (this.panel = node)}
               open={open}
               opening={opening}
               closing={closing}

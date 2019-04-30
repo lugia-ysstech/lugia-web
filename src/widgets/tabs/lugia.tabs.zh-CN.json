@@ -3,12 +3,12 @@
   "title": "标签页",
   "desc": "选项卡切换组件",
   "props": {
-    "activityKey": {
+    "activityValue": {
       "type": "string",
       "desc": "当前激活 tab 面板的 key",
       "defaultValue": "undefined"
     },
-    "defaultActivityKey": {
+    "defaultActivityValue": {
       "type": "string",
       "desc": "默认激活 tab 面板的 key",
       "defaultValue": "0"

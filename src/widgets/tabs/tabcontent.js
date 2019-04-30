@@ -26,7 +26,7 @@ type TabContentProps = {
   content: React$Element<any>,
   tabType: TabType,
   tabPosition: TabPositionType,
-  activityKey: string,
+  activityValue: string,
 };
 
 class TabContent extends Component<TabContentProps, TabContentState> {
@@ -38,9 +38,9 @@ class TabContent extends Component<TabContentProps, TabContentState> {
   }
 
   render() {
-    const { tabPosition, content, activityKey } = this.props;
+    const { tabPosition, content, activityValue } = this.props;
     return (
-      <ContentContainer activityKey={activityKey} tabPosition={tabPosition}>
+      <ContentContainer activityValue={activityValue} tabPosition={tabPosition}>
         {content}
       </ContentContainer>
     );
