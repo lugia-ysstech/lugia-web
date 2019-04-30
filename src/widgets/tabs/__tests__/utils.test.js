@@ -65,14 +65,14 @@ describe('utils', () => {
   const data = [{ a: 'a' }, { a: 'b' }, { a: 'c' }];
   const singleActivityValue = [{ a: 'a', activityValue: '1' }, { a: 'b' }, { a: 'c' }];
   const activityValueDatas = [
-    { a: 'a', activityValue: '_Value_0' },
-    { a: 'b', activityValue: '_Value_1' },
-    { a: 'c', activityValue: '_Value_2' },
+    { a: 'a', activityValue: '_key_0' },
+    { a: 'b', activityValue: '_key_1' },
+    { a: 'c', activityValue: '_key_2' },
   ];
   const newSingleActivityValue = [
     { a: 'a', activityValue: '1' },
-    { a: 'b', activityValue: '_Value_1' },
-    { a: 'c', activityValue: '_Value_2' },
+    { a: 'b', activityValue: '_key_1' },
+    { a: 'c', activityValue: '_key_2' },
   ];
   const allActivityValue = [
     { a: 'a', activityValue: '1' },
