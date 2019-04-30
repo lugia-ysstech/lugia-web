@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import Icon from '../icon';
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Progress from '../progress';
 import FileInput from './fileInput';
 import { px2emcss } from '../css/units';
@@ -29,7 +29,7 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 
-const rotate = keyframes`
+const rotate = css`
   from {
     transform: rotate(0deg);
   }

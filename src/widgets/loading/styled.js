@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { px2emcss } from '../css/units';
 import { FontSize, FontSizeNumber } from '../css/index';
 
@@ -10,7 +10,7 @@ type CssProps = {
   delay?: number,
   scale?: boolean,
 };
-export const WrapperKeyframes = keyframes`
+export const WrapperKeyframes = css`
   0% {
     transform: rotate(0deg);
   }
@@ -21,7 +21,7 @@ export const WrapperKeyframes = keyframes`
     transform: rotate(360deg);
   }
 `;
-export const circleKeyframes = keyframes`
+export const circleKeyframes = css`
   0% {
     transform: scale (1, 1);
     opacity: 0.5;

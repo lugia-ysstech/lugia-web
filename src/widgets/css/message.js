@@ -4,7 +4,7 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import type { Type } from './component-iconwrap';
 
 export type MessageProps = {
@@ -38,7 +38,7 @@ export const Message = styled.div`
 `;
 const getAnimate = (props: CSSProps) => {
   const { opening, closing } = props;
-  const openAnimate = keyframes`
+  const openAnimate = css`
     0% {
       opacity: 0;
       margin-top: -30px;
@@ -52,7 +52,7 @@ const getAnimate = (props: CSSProps) => {
       margin-top: 0;
     }
   `;
-  const closeAnimate = keyframes`
+  const closeAnimate = css`
     0% {
       opacity: 1;
       margin-top: 0;

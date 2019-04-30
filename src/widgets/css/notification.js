@@ -5,8 +5,7 @@
  */
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import styled, { keyframes } from 'styled-components';
-import type { Type } from './component-iconwrap';
+import styled, { css } from 'styled-components';
 import Icon from '../icon';
 
 export type NotificationProps = {
@@ -53,21 +52,21 @@ const getAnimate = (props: CSSProps) => {
   const Direction = getAnimateDirection(props);
   const value = em(-410);
   const zero = em(0);
-  const openAnimate = keyframes`
+  const openAnimate = css`
     0% {
       ${Direction}: ${value};
     }
-    
+
     50% {
       ${Direction}: ${zero};
     }
   `;
-  const closeAnimate = keyframes`
+  const closeAnimate = css`
     0% {
       opacity: 1;
       ${Direction}: ${zero};
     }
-    
+
     50% {
       opacity: 0.2;
       ${Direction}: ${value};

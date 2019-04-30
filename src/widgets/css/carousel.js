@@ -3,7 +3,7 @@
  *
  * @flow
  */
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
@@ -208,23 +208,23 @@ const getAnimation = (props: CarouselProps) => {
 
   let animation;
   if (switchType === 'vertical') {
-    animation = keyframes`
-    0% {
-      top: ${em(nowTrans)};
-    }
-    100% {
-      top: ${em(toTrans)};
-    }
-  `;
+    animation = css`
+      0% {
+        top: ${em(nowTrans)};
+      }
+      100% {
+        top: ${em(toTrans)};
+      }
+    `;
   } else {
-    animation = keyframes`
-    0% {
-      left: ${em(nowTrans)};
-    }
-    100% {
-      left: ${em(toTrans)};
-    }
-  `;
+    animation = css`
+      0% {
+        left: ${em(nowTrans)};
+      }
+      100% {
+        left: ${em(toTrans)};
+      }
+    `;
   }
 
   return animation;

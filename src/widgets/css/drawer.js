@@ -4,8 +4,7 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type Direction = 'top' | 'right' | 'bottom' | 'left';
 export type DrawerProps = {
@@ -104,13 +103,21 @@ const getDrawerAnimate = (props: CSSProps): string => {
   const openTo = `${Direction}: 0;`;
   const closeFrom = `${Direction}: 0;`;
   const closeTo = `${Direction}: ${em(-(distance + 8))};`;
-  const OpenKeyframe = keyframes`
-    from { ${openFrom} }
-    to { ${openTo} }
+  const OpenKeyframe = css`
+    from {
+      ${openFrom}
+    }
+    to {
+      ${openTo}
+    }
   `;
-  const CloseKeyframe = keyframes`
-    from { ${closeFrom} }
-    to { ${closeTo} }
+  const CloseKeyframe = css`
+    from {
+      ${closeFrom}
+    }
+    to {
+      ${closeTo}
+    }
   `;
   if (opening) {
     return `

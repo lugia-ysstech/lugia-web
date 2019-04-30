@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import Icon from '../icon';
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { getElementPosition } from '../utils';
 import { ObjectUtils } from '@lugia/type-utils';
@@ -24,7 +24,7 @@ const Container = styled.div`
   font-size: ${props => (props.theme.fontSize ? `${props.theme.fontSize}px` : '18px')};
 `;
 
-const showUp = keyframes`
+const showUp = css`
   from {
     opacity: 0;
   }

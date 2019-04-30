@@ -3,7 +3,7 @@
  *
  * @flow
  */
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 import { toNumber } from '../common/NumberUtils';
@@ -25,7 +25,7 @@ type SkeletonProps = {
 const em = px2emcss(FontSizeNumber);
 const getCommonAnimation = (props: SkeletonProps) => {
   const { distance = 1000 } = props;
-  const animationCSS = keyframes`
+  const animationCSS = css`
     0% {
       transform: translate(0, -50%);
     }

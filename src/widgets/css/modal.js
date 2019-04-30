@@ -5,7 +5,7 @@
  */
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
 import { createGetWidthOrHeight } from '../common/ThemeUtils';
@@ -70,13 +70,21 @@ export const Wrap = styled.div`
 `;
 const getAnimate = (props: CSSProps) => {
   const { closing, opening } = props;
-  const OpenKeyframe = keyframes`
-    from { opacity: 0; }
-    to { opacity: 1; }
+  const OpenKeyframe = css`
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   `;
-  const CloseKeyframe = keyframes`
-    from { opacity: 1; }
-    to { opacity: 0; }
+  const CloseKeyframe = css`
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   `;
   if (closing) {
     return `

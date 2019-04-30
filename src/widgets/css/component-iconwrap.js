@@ -5,7 +5,7 @@
  */
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '../icon';
 
 export type Type = 'info' | 'success' | 'error' | 'warning' | 'loading';
@@ -32,14 +32,14 @@ export const IconInfo = {
 const getLoadingIconStyle = (props: IconConProps) => {
   const { iconType } = props;
   if (iconType === 'loading') {
-    const IconSpin = keyframes`
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  `;
+    const IconSpin = css`
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    `;
 
     return `
       animation: ${IconSpin} 1s infinite linear;

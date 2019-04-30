@@ -4,7 +4,7 @@
  * @flow
  */
 import colorsFunc from '../css/stateColor';
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { px2emcss } from '../css/units';
 import changeColor from '../css/utilsColor';
 import { getMargin } from './collapse';
@@ -149,14 +149,22 @@ const getPanelContent = (props: CSSProps): string => {
   const { open, opening, closing, headerHeight = 0 } = props;
   let { height } = props;
   height = height + headerHeight;
-  const OpenKeyframe = keyframes`
-  from { height: ${em(headerHeight)}; }
-  to { height: ${height}px; }
-`;
-  const CloseKeyframe = keyframes`
-  from { height: ${height}px; }
-  to { height: ${em(headerHeight)}; }
-`;
+  const OpenKeyframe = css`
+    from {
+      height: ${em(headerHeight)};
+    }
+    to {
+      height: ${height}px;
+    }
+  `;
+  const CloseKeyframe = css`
+    from {
+      height: ${height}px;
+    }
+    to {
+      height: ${em(headerHeight)};
+    }
+  `;
   if (opening) {
     return `
      height: ${height}px;

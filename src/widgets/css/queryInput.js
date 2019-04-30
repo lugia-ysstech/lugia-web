@@ -4,21 +4,21 @@
  * @flow
  */
 
-import { keyframes } from 'styled-components';
+import { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import * as InputCSS from './input';
 
 export const { themeColor, darkGreyColor } = colorsFunc();
 
 export const checkAllButtonAnimate = (fromHeight: any, toHeight: any) => {
-  const animate = keyframes`
-  from {
-    transform: translateY(-${fromHeight});
-  }
-  to {
-    transform: translateY(-${toHeight});
-  }
-`;
+  const animate = css`
+    from {
+      transform: translateY(-${fromHeight});
+    }
+    to {
+      transform: translateY(-${toHeight});
+    }
+  `;
   return animate;
 };
 

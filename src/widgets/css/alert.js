@@ -8,7 +8,7 @@ import colorsFunc from '../css/stateColor';
 import changeColor from './utilsColor';
 import type { ThemeType } from '@lugia/lugia-web';
 import { createGetWidthOrHeight } from '../common/ThemeUtils';
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '../icon';
 
 type Type = 'info' | 'success' | 'error' | 'warning';
@@ -123,12 +123,12 @@ const getPadding = (props: CSSProps): string => {
 };
 const getAlertAnimate = (props: CSSProps) => {
   const { height, animateStart } = props;
-  const closeAnimate = keyframes`
+  const closeAnimate = css`
     0% {
       padding: ${getPadding(props)};
       height: ${height}px;
     }
-   
+
     50% {
       padding: 0;
       height: 0;

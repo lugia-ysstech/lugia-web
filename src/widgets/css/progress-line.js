@@ -3,7 +3,7 @@
  * create by guorg
  * @flow
  */
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { getWidth } from '../common/ThemeUtils';
 import { px2emcss } from './units';
@@ -102,7 +102,7 @@ const getStatusCSS = (props: CSSProps) => {
   const { status = 'default', theme, percent } = props;
   const { color } = theme;
   const defaultColor = color ? color : themeColor;
-  const activeAnimate = keyframes`
+  const activeAnimate = css`
     0% {
       opacity: 0.1;
       width: 0;

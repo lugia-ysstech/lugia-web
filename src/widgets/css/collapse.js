@@ -3,7 +3,7 @@
  * create by guorg
  * @flow
  */
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import { getThemeWidthCSS } from '../css/panel';

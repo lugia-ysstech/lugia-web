@@ -6,7 +6,7 @@
 import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
 import { getThemeColor } from '../common/ThemeUtils';
-import { keyframes } from 'styled-components';
+import { css } from 'styled-components';
 import type { MarginType, ThemeType } from '@lugia/lugia-web';
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
@@ -328,29 +328,29 @@ export const getClickCSS = (props: ButtonOutProps) => {
     ? em(NotCircleSize.borderRadius)
     : em(ShapeCSS[size].borderRadius);
 
-  const clickAnimate = keyframes`
-  0% {
-    width: 0;
-    height: 0;
-    background: ${backGround};
-    border-radius: 0;
-    opacity: 0;
-  }
-  50% {
-    width: 100%;
-    height: ${sizeHeight};
-    background: ${backGround};
-    opacity: 0.15;
-    border-radius: ${borderRadius};
-  }
-  100% {
-    width: 100%;
-    height: ${sizeHeight};
-    background: ${backGround};
-    opacity: 0;
-    border-radius: ${borderRadius};
-  }
-`;
+  const clickAnimate = css`
+    0% {
+      width: 0;
+      height: 0;
+      background: ${backGround};
+      border-radius: 0;
+      opacity: 0;
+    }
+    50% {
+      width: 100%;
+      height: ${sizeHeight};
+      background: ${backGround};
+      opacity: 0.15;
+      border-radius: ${borderRadius};
+    }
+    100% {
+      width: 100%;
+      height: ${sizeHeight};
+      background: ${backGround};
+      opacity: 0;
+      border-radius: ${borderRadius};
+    }
+  `;
   const { clicked } = props;
   if (clicked) {
     return `&::after{
@@ -449,7 +449,7 @@ export const getIconStyle = (props: CSSProps) => {
   `;
 };
 export const getLoadingIconStyle = (props: IconLoadingProps) => {
-  const IconSoin = keyframes`
+  const IconSoin = css`
     0% {
       transform: rotate(0deg);
     }
