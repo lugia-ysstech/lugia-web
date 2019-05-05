@@ -1,7 +1,7 @@
 {
-  "widgetName": "DatePicker",
-  "title": "日期选择器",
-  "desc": "用于日期选择",
+  "widgetName": "PageLoading",
+  "title": "页面加载",
+  "desc": "用于页面加载",
   "props": {
     "loading": {
       "type": "boolean",
