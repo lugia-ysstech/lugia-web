@@ -359,6 +359,12 @@ class Slider extends Component<TypeProps, TypeState> {
     return window.getComputedStyle(node, `:${falseElement}`)[type];
   };
   getDotSize = (vertical: boolean, Node: any) => {
+    if (!Node) {
+      return {
+        dotWidths: [],
+        dotHeights: [],
+      };
+    }
     const { length } = Node;
     const nodeWidths = [];
     const nodeHeights = [];
