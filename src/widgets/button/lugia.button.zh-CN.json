@@ -80,5 +80,14 @@
       }
     }
   },
-  "category": ["通用"]
+  "category": ["通用"],
+  "designInfo": {
+    "DefaultSuccessButton": {
+      "props": {
+        "shape": "default",
+        "type": "success",
+        "text": "Button"
+      }
+    }
+  }
 }
