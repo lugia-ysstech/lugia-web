@@ -55,17 +55,14 @@ export const SliderBox = styled.div`
   ${props => getSliderWrapperStyle(props).MarginValue};
 `;
 
-export const SliderWrapper = ThemeProvider(
-  styled.div`
-    font-size: 1.4rem;
-    width: ${props => getSliderWrapperStyle(props).rangeW};
-    height: ${props => getSliderWrapperStyle(props).rangeH};
-    background: ${props => getSliderWrapperStyle(props).wrapperBackground};
-    border-radius: ${em(6)};
-    position: relative;
-  `,
-  Widgets.Slider
-);
+export const SliderWrapper = styled.div`
+  font-size: 1.4rem;
+  width: ${props => getSliderWrapperStyle(props).rangeW};
+  height: ${props => getSliderWrapperStyle(props).rangeH};
+  background: ${props => getSliderWrapperStyle(props).wrapperBackground};
+  border-radius: ${em(6)};
+  position: relative;
+`;
 export const SliderInner = styled.div`
   width: ${props => getSliderInnerStyle(props).InnerWidth};
   height: ${props => getSliderInnerStyle(props).InnerHeight};

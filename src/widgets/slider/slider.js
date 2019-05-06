@@ -358,18 +358,24 @@ class Slider extends Component<TypeProps, TypeState> {
   getStyleForFalseElement = (node: any, falseElement: string, type: string) => {
     return window.getComputedStyle(node, `:${falseElement}`)[type];
   };
-  getDotSize = (vertical: boolean, Node: any) => {
-    const { length } = Node;
+  getDotSize = (vertical: boolean, node: any) => {
+    if (!node) {
+      return {
+        dotWidths: [],
+        dotHeights: [],
+      };
+    }
+    const { length } = node;
     const nodeWidths = [];
     const nodeHeights = [];
     const rangeH = rangeHeightNormal - 1; //1 是mask的border
     for (let i = 0; i < length; i++) {
-      const sign = Node[i].getAttribute('data-sign');
+      const sign = node[i].getAttribute('data-sign');
       if (sign === 'mask') {
-        const nodeWidth = this.getStyleForFalseElement(Node[i], 'before', 'width');
-        const nodeHeight = this.getStyleForFalseElement(Node[i], 'before', 'height');
-        const nodeLeft = this.getStyleForFalseElement(Node[i], 'before', 'left');
-        const nodeTop = this.getStyleForFalseElement(Node[i], 'before', 'top');
+        const nodeWidth = this.getStyleForFalseElement(node[i], 'before', 'width');
+        const nodeHeight = this.getStyleForFalseElement(node[i], 'before', 'height');
+        const nodeLeft = this.getStyleForFalseElement(node[i], 'before', 'left');
+        const nodeTop = this.getStyleForFalseElement(node[i], 'before', 'top');
         const levelValue = vertical ? parseFloat(nodeLeft) - rangeH : 0;
         const verticalValue = vertical ? 0 : parseFloat(nodeTop) - rangeH;
         nodeWidths.push(parseFloat(nodeWidth) + levelValue);
