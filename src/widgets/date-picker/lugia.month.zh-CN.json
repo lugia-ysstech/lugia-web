@@ -67,5 +67,6 @@
     }
   },
   "category": ["数据录入"],
+  "componentName": "MonthPicker",
   "needExport": true
 }
