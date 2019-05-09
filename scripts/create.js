@@ -29,4 +29,4 @@ const Invalid = [
   'design-responsive',
 ];
 
-createDesignInfo(tartgetPath,'',Invalid);
+createDesignInfo(tartgetPath,Invalid);
