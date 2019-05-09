@@ -1,9 +1,8 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.0.110-3",
+  "version": "1.0.110-8",
   "dependencies": {
-    "@lugia/devtools-core": "^1.0.0",
-    "@lugia/devtools-material": "^1.0.3",
+    "@lugia/devtools-material": "^1.0.5-y.0",
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
