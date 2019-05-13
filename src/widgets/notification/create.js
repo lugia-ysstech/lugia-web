@@ -8,12 +8,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Notification from './notification';
-
+let wrap = '';
 export const createNotification = (iconType?: 'info' | 'success' | 'error' | 'warning') => {
   return (props: Object) => {
     const { placement = 'topRight' } = props;
-    const div = document.getElementsByClassName(`lugia-notification-${placement}`);
-    let wrap = div && div[0];
     if (!wrap) {
       wrap = document.createElement('div');
       wrap.className = `lugia-notification-${placement}`;
