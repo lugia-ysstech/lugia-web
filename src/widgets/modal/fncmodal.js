@@ -18,19 +18,23 @@ export class FncModal extends React.Component<any, any> {
   }
   handleOk = () => {
     const { onOk } = this.props;
-    this.setState({
-      visible: false,
-    });
+    this.setState(
+      {
+        visible: false,
+      },
+      this.removeDom
+    );
     onOk && onOk();
-    this.removeDom();
   };
   handleCancel = () => {
     const { onCancel } = this.props;
-    this.setState({
-      visible: false,
-    });
+    this.setState(
+      {
+        visible: false,
+      },
+      this.removeDom
+    );
     onCancel && onCancel();
-    this.removeDom();
   };
   render() {
     const { visible } = this.state;
