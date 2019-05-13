@@ -116,11 +116,12 @@ class Card extends React.Component<CardProps, CardState> {
 
   render() {
     const { getTheme, type, imageOrientation, content } = this.props;
+    const theme = getTheme();
     return (
-      <CardOutContainer theme={getTheme()} type={type} imageOrientation={imageOrientation}>
+      <CardOutContainer theme={theme} type={type} imageOrientation={imageOrientation}>
         {this.getDetails('operation')}
         {this.getImageContainer()}
-        <Content imageOrientation={imageOrientation} type={type} content={content}>
+        <Content imageOrientation={imageOrientation} type={type} content={content} theme={theme}>
           {this.getTitleTipLine()}
           {this.getDetails('title')}
           {this.getDetails('description')}
