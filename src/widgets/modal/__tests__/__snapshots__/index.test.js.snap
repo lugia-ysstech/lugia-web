@@ -15,7 +15,9 @@ exports[`Modal css 1`] = `
   font-size: 1.4rem;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
   z-index: 99999;
 }
 
@@ -33,10 +35,9 @@ exports[`Modal css 1`] = `
 
 .c4 {
   position: fixed;
-  top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
+  margin: auto;
   z-index: 99999;
 }
 
