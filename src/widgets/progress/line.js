@@ -60,7 +60,7 @@ export default class extends React.Component<ProgressProps, ProgressState> {
       getTheme,
     } = this.props;
     return (
-      <Wrap theme={getTheme()} size={size}>
+      <Wrap theme={getTheme()} size={size} type={type}>
         <ProgressLine showInfo={showInfo} showType={showType} size={size}>
           <ProgressBackground
             theme={getTheme()}
