@@ -27,6 +27,7 @@ export type ModalProps = {
   footer?: string | React.ReactNode,
   maskClosable?: boolean,
   getTheme: Function,
+  mask?: boolean,
 } & FunctionPropsType;
 export type ModalState = {
   visible: boolean,
@@ -65,7 +66,9 @@ export const Wrap = styled.div`
   font-size: ${FontSize}rem;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
   z-index: 99999;
 `;
 const getAnimate = (props: CSSProps) => {

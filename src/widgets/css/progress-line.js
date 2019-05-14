@@ -223,8 +223,19 @@ export const Icons: Object = styled(Icon)`
   ${getTextFont};
 `;
 
+const getMinWidth = (props: CSSProps) => {
+  const { size, type } = props;
+  const em = getEM(props);
+  if (type === 'line') {
+    const minWidth = isSmall(size) ? 56 : 60;
+
+    return `min-width: ${em(minWidth)};`;
+  }
+};
+
 export const Wrap = styled.div`
   font-size: ${getWrapFontSize}rem;
+  ${getMinWidth};
   ${getWidth};
 `;
 export const InsideText = styled.span`

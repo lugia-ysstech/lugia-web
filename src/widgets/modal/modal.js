@@ -71,6 +71,7 @@ export default ThemeProvider(
         showIcon = false,
         iconType = 'info',
         getTheme,
+        mask = true,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -84,7 +85,9 @@ export default ThemeProvider(
       }
       return (
         <Wrap visible={closing ? true : visible}>
-          <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
+          {mask ? (
+            <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
+          ) : null}
           <ModalWrap>
             <Modal closing={closing} opening={opening} theme={getTheme()}>
               <ModalContent showIcon={showIcon}>
