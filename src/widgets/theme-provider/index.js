@@ -15,7 +15,14 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
 
     constructor(props: any) {
       super(props);
-      this.state = { svThemVersion: 0 };
+      this.state = {
+        svThemVersion: 0,
+        themeState: {
+          click: false,
+          disabled: false,
+          hover: false,
+        },
+      };
     }
 
     componentWillReceiveProps(props: any, context: any) {
@@ -49,18 +56,52 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
           {}
         );
       };
-
+      const { disabled } = this.props;
       return (
-        <Target
-          {...this.props}
-          getTheme={getTheme}
-          getWidgetThemeName={() => widgetName}
-          getThemeByDisplayName={getThemeByDisplayName}
-          svThemVersion={this.state.svThemVersion}
-          ref={cmp => (this.svtarget = cmp)}
-        />
+        <span
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+          onClick={this.onClick}
+        >
+          <Target
+            {...this.props}
+            themeState={{ ...this.state.themeState, disabled }}
+            getTheme={getTheme}
+            getWidgetThemeName={() => widgetName}
+            getThemeByDisplayName={getThemeByDisplayName}
+            svThemVersion={this.state.svThemVersion}
+            ref={cmp => (this.svtarget = cmp)}
+          />
+        </span>
       );
     }
+
+    onClick = () => {
+      if (this.state.themeState.click === true) {
+        return;
+      }
+      this.setState({
+        themeState: { ...this.state.themeState, click: true },
+      });
+    };
+
+    onMouseEnter = () => {
+      if (this.state.themeState.hover === true) {
+        return;
+      }
+      this.setState({
+        themeState: { ...this.state.themeState, hover: true },
+      });
+    };
+
+    onMouseLeave = () => {
+      if (this.state.themeState.hover === false) {
+        return;
+      }
+      this.setState({
+        themeState: { ...this.state.themeState, hover: false },
+      });
+    };
 
     getThemeTarget = () => {
       let target = this.svtarget;
