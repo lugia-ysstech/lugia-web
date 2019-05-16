@@ -61,35 +61,32 @@ export const PanelDemo = class extends React.Component<any, any> {
     return (
       <div>
         <Wrapper>
-          <Panel value="1" header="LUGIA">
+          <Panel value="1" title="LUGIA" />
+          <br />
+          <Panel value="2" open={open} onClick={this.handleClick} title="lugia">
             <div>PanelContent...</div>
             <div>PanelContent...</div>
           </Panel>
           <br />
-          <Panel value="2" open={open} onClick={this.handleClick} header="lugia">
+          <Panel value="3" title="LUGIA" disabled>
             <div>PanelContent...</div>
             <div>PanelContent...</div>
           </Panel>
           <br />
-          <Panel value="3" header="LUGIA" disabled>
-            <div>PanelContent...</div>
-            <div>PanelContent...</div>
-          </Panel>
-          <br />
-          <Panel value="4" showArrow={false} header="LUGIA">
+          <Panel value="4" showArrow={false} title="LUGIA">
             <div>PanelContent...</div>
             <div>PanelContent...</div>
           </Panel>
           <br />
           <Theme config={view}>
-            <Panel value="4" showArrow={false} header="LUGIA">
+            <Panel value="4" showArrow={false} title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
           </Theme>
           <br />
           <Theme config={view}>
-            <Panel value="5" header="LUGIA">
+            <Panel value="5" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>

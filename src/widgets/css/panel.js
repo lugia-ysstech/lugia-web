@@ -38,6 +38,7 @@ export type PanelProps = {
 export type PanelState = BasicStateType;
 type CSSProps = {
   theme: ThemeType,
+  hasChildren?: boolean,
 } & BasicPropsType &
   BasicStateType;
 
@@ -201,7 +202,10 @@ const getContenColor = (props: CSSProps): string => {
     `;
 };
 const getContentPadding = (props: CSSProps): string => {
-  const { showArrow, hover } = props;
+  const { showArrow, hasChildren } = props;
+  if (!hasChildren) {
+    return '';
+  }
   if (showArrow) {
     return `
      padding: ${em(6)} ${em(30)} ${em(22)} ${em(34)};
