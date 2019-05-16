@@ -117,7 +117,7 @@ export default ThemeProvider(
               theme={getTheme()}
               hover={hover}
             >
-              <PanelContent showArrow={showArrow} hover={hover}>
+              <PanelContent showArrow={showArrow} hover={hover} hasChildren={!!children}>
                 {children}
               </PanelContent>
             </PanelContentWrap>
