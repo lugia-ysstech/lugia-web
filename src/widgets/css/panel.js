@@ -147,20 +147,22 @@ export const PanelHeader = styled.div`
   ${getColorCSS};
 `;
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing, headerHeight = 0 } = props;
-  let { height } = props;
-  height = height + headerHeight;
+  const { open, opening, closing, headerHeight = 0, theme } = props;
+  const { height: themeHeight } = theme;
+  const { height: propsHeight } = props;
+  const theHeight = (themeHeight || themeHeight === 0 ? themeHeight : propsHeight) + headerHeight;
+  const openHeight = themeHeight || themeHeight === 0 ? em(themeHeight) : '100%';
   const OpenKeyframe = keyframes`
     from {
       height: ${em(headerHeight)};
     }
     to {
-      height: ${height}px;
+      height: ${theHeight}px;
     }
   `;
   const CloseKeyframe = keyframes`
     from {
-      height: ${height}px;
+      height: ${theHeight}px;
     }
     to {
       height: ${em(headerHeight)};
@@ -168,19 +170,19 @@ const getPanelContent = (props: CSSProps): string => {
   `;
   if (opening) {
     return css`
-      height: ${height}px;
+      height: ${theHeight}px;
       animation: ${OpenKeyframe} 0.5s;
     `;
   }
   if (closing) {
     return css`
-      height: ${height}px;
+      height: ${theHeight}px;
       animation: ${CloseKeyframe} 0.5s;
     `;
   }
   if (open) {
     return `
-     height: 100%;`;
+     height: ${openHeight};`;
   }
   return `
     height: ${em(headerHeight)};

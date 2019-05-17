@@ -32,6 +32,16 @@ const view = {
     },
   },
 };
+const heightView = {
+  [Widget.Panel]: {
+    height: 100,
+  },
+};
+const spaceHeightView = {
+  [Widget.Panel]: {
+    height: 0,
+  },
+};
 const wrapView = {
   [Widget.Collapse]: {
     width: 500,
@@ -87,6 +97,27 @@ export const PanelDemo = class extends React.Component<any, any> {
           <br />
           <Theme config={view}>
             <Panel value="5" title="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+          </Theme>
+          <br />
+          <Theme config={heightView}>
+            <Panel title="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+          </Theme>
+          <br />
+          <Theme config={heightView}>
+            <Panel title="LUGIA" open>
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+          </Theme>
+          <br />
+          <Theme config={spaceHeightView}>
+            <Panel title="LUGIA" open>
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>
