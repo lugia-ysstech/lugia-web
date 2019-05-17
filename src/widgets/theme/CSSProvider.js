@@ -117,6 +117,12 @@ function selectSelfStyle(stateArray: Array<string>, style: Object): Object {
     });
   return newStyle;
 }
+//默认style
+function getDefaultStyle(cssConfig, state) {
+  if (!cssConfig || !state) return {};
+  return cssConfig && cssConfig[state] && cssConfig.state.default ? cssConfig.state.default : {};
+}
+
 // style obj
 function getStyle(cssConfig: CSSConfig) {
   return (props: ThemeProps) => {
@@ -131,21 +137,30 @@ function getStyle(cssConfig: CSSConfig) {
     const { normal = {}, clicked = {}, disabled = {}, hover = {} } = themeConfig;
     // normal < click < disabled < hover
 
-    const normalStyle = selectSelfStyle(normalArray, getStyleByThemeMeta(normal)); // 获取需要配置项
-
+    const normalDefaultStyle = getDefaultStyle(cssConfig, 'normal');
+    const clickedDefaultStyle = getDefaultStyle(cssConfig, 'clicked');
+    const disabledDefaultStyle = getDefaultStyle(cssConfig, 'disabled');
+    const hoverDefaultStyle = getDefaultStyle(cssConfig, 'hover');
     const {
       hover: hoverState = false,
       disabled: disabledState = false,
       click: clickState = false,
     } = themeState;
     //获取每种状态里边的配置项 然后给到的 themeMeta 里边取
+
+    const normalStyle = Object.assign(
+      selectSelfStyle(normalArray, getStyleByThemeMeta(normal)),
+      normalDefaultStyle
+    );
     const clickedStyle = clickState
       ? selectSelfStyle(clickedArray, getStyleByThemeMeta(clicked))
-      : {};
+      : clickedDefaultStyle;
     const disabledStyle = disabledState
       ? selectSelfStyle(disabledArray, getStyleByThemeMeta(disabled))
-      : {};
-    const hoverStyle = hoverState ? selectSelfStyle(hoverArray, getStyleByThemeMeta(hover)) : {};
+      : disabledDefaultStyle;
+    const hoverStyle = hoverState
+      ? selectSelfStyle(hoverArray, getStyleByThemeMeta(hover))
+      : hoverDefaultStyle;
     return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
