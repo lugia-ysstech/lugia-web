@@ -7,6 +7,8 @@
 
 // import type { ThemeType } from '@lugia/lugia-web';
 import React from 'react';
+import merge from 'deepmerge';
+import decamelize from 'decamelize';
 import styled, { css } from 'styled-components';
 
 type WidthType = number;
@@ -25,21 +27,19 @@ type BackgroundType = {
   backgroundImage: string,
 };
 
-type FontSizeType = number;
 type FontType = { fontStyle: string, fontWeight: number, fontSize: number };
-
+type BoxShadow = {};
 type ThemeMeta = {
   background?: BackgroundType,
-  backgroundColor?: ColorType,
   border?: BorderType,
   width?: WidthType,
   height?: HeightType,
   font?: FontType,
-  fontSize?: FontSizeType,
   color?: ColorType,
   opacity?: OpacityType,
   margin?: MarginType,
   padding?: PaddingType,
+  boxShadow?: BoxShadow,
 };
 
 type ThemeConfig = {
@@ -52,35 +52,74 @@ type ThemeConfig = {
 
 // 目前state类型
 type TagType = 'span' | 'a' | 'input' | 'li' | 'button' | 'div';
-
+type StateType = 'normal' | 'clicked' | 'hover' | 'disabled';
 type ThemeProps = {
   themeState: { click: boolean, disabled: boolean, hover: boolean },
   themeConfig: ThemeConfig,
 };
 type CSSMeta = {
-  selectNames?: string[], // 默认不设置是取全部属性
+  selectNames?: Array<string[]>, // 默认不设置是取全部属性
+  cssNames?: string[], // CSS生成的时候默认是使用内联样式 如果需要使用匿名类的属性列在此属性中指定
   getStyle?: (theme: ThemeConfig) => Object,
-  default?: ThemeMeta, // 自己写的样式
+  getCSS?: (theme: ThemeConfig) => string,
+  defaultTheme?: ThemeMeta, // 自己写的样式
 };
 type CSSConfig = {
   tag: TagType,
   css: any, // 这个是要去 css 模板的写法
-
   normal?: CSSMeta,
   clicked?: CSSMeta,
   hover?: CSSMeta,
   disabled?: CSSMeta,
 };
 
-function getStyleByThemeMeta(theme: ThemeMeta): Object {
+export function deepMerge(objA: Object, objB: Object): Object {
+  objA = objA || {};
+  objB = objB || {};
+  return merge(objA, objB);
+}
+
+export function getAttritubeValue(obj: Object, path: string[]): any {
+  if (!obj) {
+    return;
+  }
+  if (!path || path.length === 0) {
+    return;
+  }
+  let target = obj;
+  for (let i = 0; i < path.length; i++) {
+    const key = path[i];
+    target = target[key];
+    if (!target) {
+      return;
+    }
+  }
+  return target;
+}
+
+export function packObject(path: string[], value: any): Object {
+  if (!path || path.length === 0) {
+    return {};
+  }
+
+  const result = {};
+  let current = result;
+
+  const lastIndex = path.length - 1;
+  path.forEach((key: string, index: number) => {
+    if (lastIndex === index) {
+      current[key] = value;
+    } else {
+      current = current[key] = {};
+    }
+  });
+
+  return result;
+}
+
+function themeMeta2Style(theme: ThemeMeta): Object {
   const { width = 0, height = 0, background, color } = theme;
   console.log(theme, 'theme');
-  //
-  // const newTheme = {};
-  // for (const key in theme) {
-  //   theme[key] = newTheme[key];
-  // }
-  // console.log(newTheme,'newTheme');
   return {
     width: `${width}px`,
     height: `${height}px`,
@@ -89,88 +128,91 @@ function getStyleByThemeMeta(theme: ThemeMeta): Object {
   };
 }
 
-function style2css(style: Object): string {
+export function style2css(style: Object): string {
   if (!style) {
     return '';
   }
-  const { width, height, color, background } = style;
-  //有这条属性 才去 赋值, 没有就不给添加
-  const theBg = background ? background : '';
-  return `
-        width: ${width};
-        color: ${color};
-        height: ${height};
-        background:${theBg}`;
-}
-function getConfigSelectArray(cssConfig, state) {
-  let array = [];
-  if (cssConfig && state && cssConfig[state] && cssConfig[state].selectNames) {
-    array = [...cssConfig[state].selectNames];
+  const keys = Object.keys(style);
+  if (keys.length === 0) {
+    return '';
   }
-  return array;
+  return keys
+    .map((key: string) => {
+      const val = style[key];
+      return val ? `${decamelize(key, '-')}:${val};` : '';
+    })
+    .join('');
 }
-function selectSelfStyle(stateArray: Array<string>, style: Object): Object {
-  if (stateArray.length === 0) {
-    return style;
+
+export function getThemeMeta(
+  cssConfig: CSSConfig,
+  stateType: StateType
+): (theme: ThemeMeta) => ThemeMeta {
+  return (theme: ThemeMeta): ThemeMeta => {
+    if (!theme) {
+      return {};
+    }
+    if (!cssConfig) {
+      return theme;
+    }
+    const config = cssConfig[stateType];
+    if (!config) {
+      return theme;
+    }
+    const { defaultTheme = {}, selectNames = [] } = config;
+    return deepMerge(defaultTheme, getSelectNameThemeMeta(theme, selectNames));
+  };
+}
+
+export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<string[]>): ThemeMeta {
+  if (!theme) {
+    return {};
   }
-  const newStyle = {};
-  stateArray &&
-    stateArray.forEach(child => {
-      console.log('child', child);
-      const hasKey = child in style;
-      if (hasKey) {
-        newStyle[child] = style[child];
-      }
-    });
-  return newStyle;
+  if (!selectNames || selectNames.length === 0) {
+    return theme;
+  }
+
+  let result = {};
+  selectNames.forEach((names: string[]) => {
+    const value = getAttritubeValue(theme, names);
+    if (value !== undefined && value !== null) {
+      result = deepMerge(result, packObject(names, value));
+    }
+  });
+  return result;
 }
-//默认style
-function getDefaultStyle(cssConfig, state) {
-  if (!cssConfig || !state) return {};
-  return cssConfig && cssConfig[state] && cssConfig[state].default ? cssConfig[state].default : {};
+
+function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: ThemeMeta) => Object {
+  const getThemeMetaByConfig = getThemeMeta(cssConfig, stateType);
+
+  return (themeMeta: ThemeMeta) => {
+    return themeMeta2Style(getThemeMetaByConfig(themeMeta));
+  };
 }
 
 // style obj
 function getStyle(cssConfig: CSSConfig) {
+  const getNormalStyle = packStyle(cssConfig, 'normal');
+  const getClickedStyle = packStyle(cssConfig, 'clicked');
+  const getHoverStytle = packStyle(cssConfig, 'hover');
+  const getDisabledStyle = packStyle(cssConfig, 'disabled');
   return (props: ThemeProps) => {
     const { themeState, themeConfig } = props;
 
     // 获取状态配置数组
-    const normalArray = getConfigSelectArray(cssConfig, 'normal');
-    const clickedArray = getConfigSelectArray(cssConfig, 'clicked');
-    const hoverArray = getConfigSelectArray(cssConfig, 'hover');
-    const disabledArray = getConfigSelectArray(cssConfig, 'disabled');
 
     const { normal = {}, clicked = {}, disabled = {}, hover = {} } = themeConfig;
-    // normal < click < disabled < hover
-
-    const normalDefaultStyle = getDefaultStyle(cssConfig, 'normal');
-    const clickedDefaultStyle = getDefaultStyle(cssConfig, 'clicked');
-    const disabledDefaultStyle = getDefaultStyle(cssConfig, 'disabled');
-    const hoverDefaultStyle = getDefaultStyle(cssConfig, 'hover');
-    console.log('hoverStyle', hoverDefaultStyle);
     const {
       hover: hoverState = false,
       disabled: disabledState = false,
       click: clickState = false,
     } = themeState;
-    //获取每种状态里边的配置项 然后给到的 themeMeta 里边取
 
-    const normalStyle = Object.assign(
-      selectSelfStyle(normalArray, getStyleByThemeMeta(normal)),
-      normalDefaultStyle
-    );
+    const normalStyle = getNormalStyle(normal);
 
-    const clickedStyle = clickState
-      ? selectSelfStyle(clickedArray, getStyleByThemeMeta(clicked))
-      : clickedDefaultStyle;
-    const disabledStyle = disabledState
-      ? selectSelfStyle(disabledArray, getStyleByThemeMeta(disabled))
-      : disabledDefaultStyle;
-    const hoverStyle = hoverState
-      ? selectSelfStyle(hoverArray, getStyleByThemeMeta(hover))
-      : hoverDefaultStyle;
-    console.log(normalStyle, 'normalStyle');
+    const clickedStyle = clickState ? getClickedStyle(clicked) : {};
+    const disabledStyle = disabledState ? getDisabledStyle(disabled) : {};
+    const hoverStyle = hoverState ? getHoverStytle(hover) : {};
     return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
@@ -195,15 +237,34 @@ function getCSS(getStyle: Function) {
   };
 }
 
+export function getUserDefineCSS(cssConfig: CSSConfig) {
+  return (props: ThemeProps): string => {
+    return '';
+  };
+}
+
+export function getUserDefineStyle(cssConfig: CSSConfig) {
+  return (props: ThemeProps): Object => {
+    return {
+      style: {},
+    };
+  };
+}
+
 export default function CSSProvider(cssConfig: CSSConfig) {
   const { tag, css } = cssConfig;
   const styledElement = styled[tag];
   if (!styledElement) {
     throw new Error(`Not support tag: ${tag}`);
   }
-  const style = getStyle(css);
-  return styledElement.attrs(style)`
+  const getTheCSS = getUserDefineCSS(cssConfig);
+  const getTheStyle = getUserDefineStyle(cssConfig);
+  const getStyleByThemeMeta = getStyle(css);
+  return styledElement.attrs((themeProps: ThemeProps) => {
+    return deepMerge(getStyleByThemeMeta(themeProps), { style: getTheStyle(themeProps) });
+  })`
     ${css}
-    ${getCSS(style)}
+    ${getCSS(getStyleByThemeMeta)}
+    ${getTheCSS}
   `;
 }
