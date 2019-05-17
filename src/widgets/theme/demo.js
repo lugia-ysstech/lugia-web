@@ -10,10 +10,12 @@ import { css } from 'styled-components';
 import Theme from './';
 import ThemeProvider from '../theme-provider';
 import CSSProvider, { getClassName } from './CSSProvider.js';
-import Switch from '../switch';
 
 const Button = CSSProvider({
   tag: 'button',
+  normal: {
+    normal: { selectNames: ['width', 'height', 'background'] },
+  },
   css: css`
     background: green;
   `,
@@ -21,9 +23,33 @@ const Button = CSSProvider({
 
 const Input = CSSProvider({
   tag: 'input',
-  normal: { selectNames: ['width', 'height'], default: { hover: {} } },
+  normal: { selectNames: ['background'], default: { width: 100, height: 100 } },
   css: '',
 });
+const Child = CSSProvider({
+  tag: 'div',
+  normal: {
+    selectNames: ['width', 'height', 'background'], //只应用于配置属性
+    default: { width: 30, height: 30 },
+  },
+  hover: {
+    selectNames: ['background'],
+  },
+  css: css`
+    width: 60px;
+    height: 60px;
+    background-color: blue;
+    display: block;
+  `,
+});
+
+function getSelfTheme(theme: ThemeConfig, viewClass: string): ThemeConfig {
+  const { children } = theme;
+  if (children) {
+    const childTheme = children[viewClass];
+    return childTheme;
+  }
+}
 
 const ButtonInput = ThemeProvider(
   class extends React.Component<any, any> {
@@ -41,13 +67,13 @@ const ButtonInput = ThemeProvider(
     render() {
       const { children, getTheme } = this.props;
       const theme = getTheme();
-      console.info(theme);
 
       const { themeState } = this.props;
+      const childTheme = getSelfTheme(theme, 'child');
 
       return (
         <span>
-          <Switch viewClass={''} />
+          <Child themeState={themeState} themeConfig={childTheme} />
           <Button themeState={themeState} themeConfig={theme} className={getClassName('hello')}>
             {children}
           </Button>
@@ -78,13 +104,18 @@ class Demo extends React.Component<any, any> {
           color: 'red',
         },
         children: {
-          switch: {},
-        },
-      },
-      lgx: {
-        normal: {
-          height: 50,
-          width: 50,
+          child: {
+            normal: {
+              height: 50,
+              width: 50,
+              background: 'red',
+            },
+            hover: {
+              height: 100,
+              width: 100,
+              background: 'orange',
+            },
+          },
         },
       },
     };

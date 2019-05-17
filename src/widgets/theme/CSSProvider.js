@@ -5,40 +5,74 @@
  * @flow
  */
 
-import type { ThemeType } from '@lugia/lugia-web';
+// import type { ThemeType } from '@lugia/lugia-web';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+type WidthType = number;
+type HeightType = number;
+type MarginType = { top?: number, right?: number, bottom?: number, left?: number };
+type PaddingType = { top?: number, right?: number, bottom?: number, left?: number };
+type BorderType = {
+  borderWidth: string,
+  borderStyle: string,
+  borderColor: string,
+};
+type ColorType = string;
+type OpacityType = number;
+type BackgroundType = {
+  backgroundColor: ColorType,
+  backgroundImage: string,
+};
+
+type FontSizeType = number;
+type FontType = { fontStyle: string, fontWeight: number, fontSize: number };
+
+type ThemeMeta = {
+  background?: BackgroundType,
+  backgroundColor?: ColorType,
+  border?: BorderType,
+  width?: WidthType,
+  height?: HeightType,
+  font?: FontType,
+  fontSize?: FontSizeType,
+  color?: ColorType,
+  opacity?: OpacityType,
+  margin?: MarginType,
+  padding?: PaddingType,
+};
+
 type ThemeConfig = {
-  normal: ThemeType,
-  disabled: ThemeType,
-  clicked: ThemeType,
-  hover: ThemeType,
+  normal: ThemeMeta,
+  disabled: ThemeMeta,
+  clicked: ThemeMeta,
+  hover: ThemeMeta,
   children: { [childName: string]: ThemeConfig },
 };
 
 // 目前state类型
-type TagType = 'span' | 'a' | 'input' | 'li' | 'button';
+type TagType = 'span' | 'a' | 'input' | 'li' | 'button' | 'div';
 
 type ThemeProps = {
   themeState: { click: boolean, disabled: boolean, hover: boolean },
   themeConfig: ThemeConfig,
 };
 type CSSMeta = {
-  selectNames?: string[], // 默认是取全部属性
+  selectNames?: string[], // 默认不设置是取全部属性
   getStyle?: (theme: ThemeConfig) => Object,
-  default?: ThemeType,
+  default?: ThemeMeta, // 自己写的样式
 };
 type CSSConfig = {
   tag: TagType,
-  css: any,
+  css: any, // 这个是要去 css 模板的写法
+
   normal?: CSSMeta,
   clicked?: CSSMeta,
   hover?: CSSMeta,
   disabled?: CSSMeta,
 };
 
-function getStyleByThemeMeta(theme: ThemeType): Object {
+function getStyleByThemeMeta(theme: ThemeMeta): Object {
   const { width = 0, height = 0, background, color } = theme;
   return {
     width: `${width}px`,
@@ -52,31 +86,66 @@ function style2css(style: Object): string {
   if (!style) {
     return '';
   }
-  const { width, height, color } = style;
+  const { width, height, color, background } = style;
+  //有这条属性 才去 赋值, 没有就不给添加
+  const theBg = background ? background : '';
   return `
         width: ${width};
         color: ${color};
-        height: ${height};`;
+        height: ${height};
+        background:${theBg}`;
 }
-
+function getConfigSelectArray(cssConfig, state) {
+  let array = [];
+  if (cssConfig && state && cssConfig[state] && cssConfig[state].selectNames) {
+    array = [...cssConfig[state].selectNames];
+  }
+  return array;
+}
+function selectSelfStyle(stateArray: Array<string>, style: Object): Object {
+  if (stateArray.length === 0) {
+    return style;
+  }
+  const newStyle = {};
+  stateArray &&
+    stateArray.forEach(child => {
+      console.log('child', child);
+      const hasKey = child in style;
+      if (hasKey) {
+        newStyle[child] = style[child];
+      }
+    });
+  return newStyle;
+}
 // style obj
-function getStyle(css: CSSConfig) {
+function getStyle(cssConfig: CSSConfig) {
   return (props: ThemeProps) => {
     const { themeState, themeConfig } = props;
+
+    // 获取状态配置数组
+    const normalArray = getConfigSelectArray(cssConfig, 'normal');
+    const clickedArray = getConfigSelectArray(cssConfig, 'clicked');
+    const hoverArray = getConfigSelectArray(cssConfig, 'hover');
+    const disabledArray = getConfigSelectArray(cssConfig, 'disabled');
+
     const { normal = {}, clicked = {}, disabled = {}, hover = {} } = themeConfig;
     // normal < click < disabled < hover
 
-    const normalStyle = getStyleByThemeMeta(normal);
+    const normalStyle = selectSelfStyle(normalArray, getStyleByThemeMeta(normal)); // 获取需要配置项
 
     const {
       hover: hoverState = false,
       disabled: disabledState = false,
       click: clickState = false,
     } = themeState;
-
-    const clickedStyle = clickState ? getStyleByThemeMeta(clicked) : {};
-    const disabledStyle = disabledState ? getStyleByThemeMeta(disabled) : {};
-    const hoverStyle = hoverState ? getStyleByThemeMeta(hover) : {};
+    //获取每种状态里边的配置项 然后给到的 themeMeta 里边取
+    const clickedStyle = clickState
+      ? selectSelfStyle(clickedArray, getStyleByThemeMeta(clicked))
+      : {};
+    const disabledStyle = disabledState
+      ? selectSelfStyle(disabledArray, getStyleByThemeMeta(disabled))
+      : {};
+    const hoverStyle = hoverState ? selectSelfStyle(hoverArray, getStyleByThemeMeta(hover)) : {};
     return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
