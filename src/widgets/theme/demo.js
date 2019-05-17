@@ -14,7 +14,7 @@ import CSSProvider, { getClassName } from './CSSProvider.js';
 const Button = CSSProvider({
   tag: 'button',
   normal: {
-    normal: { selectNames: ['width', 'height', 'background'] },
+    normal: { selectNames: ['width', 'height', 'background'], default: { width: 30, height: 30 } },
   },
   css: css`
     background: green;
@@ -34,6 +34,7 @@ const Child = CSSProvider({
   },
   hover: {
     selectNames: ['background'],
+    default: { backgroundColor: 'black' },
   },
   css: css`
     width: 60px;
@@ -43,7 +44,7 @@ const Child = CSSProvider({
   `,
 });
 
-function getSelfTheme(theme: ThemeConfig, viewClass: string): ThemeConfig {
+function getSelfTheme(theme: ThemeConfig, viewClass: string) {
   const { children } = theme;
   if (children) {
     const childTheme = children[viewClass];

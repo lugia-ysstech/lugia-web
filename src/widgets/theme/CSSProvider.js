@@ -74,6 +74,13 @@ type CSSConfig = {
 
 function getStyleByThemeMeta(theme: ThemeMeta): Object {
   const { width = 0, height = 0, background, color } = theme;
+  console.log(theme, 'theme');
+  //
+  // const newTheme = {};
+  // for (const key in theme) {
+  //   theme[key] = newTheme[key];
+  // }
+  // console.log(newTheme,'newTheme');
   return {
     width: `${width}px`,
     height: `${height}px`,
@@ -120,7 +127,7 @@ function selectSelfStyle(stateArray: Array<string>, style: Object): Object {
 //默认style
 function getDefaultStyle(cssConfig, state) {
   if (!cssConfig || !state) return {};
-  return cssConfig && cssConfig[state] && cssConfig.state.default ? cssConfig.state.default : {};
+  return cssConfig && cssConfig[state] && cssConfig[state].default ? cssConfig[state].default : {};
 }
 
 // style obj
@@ -141,6 +148,7 @@ function getStyle(cssConfig: CSSConfig) {
     const clickedDefaultStyle = getDefaultStyle(cssConfig, 'clicked');
     const disabledDefaultStyle = getDefaultStyle(cssConfig, 'disabled');
     const hoverDefaultStyle = getDefaultStyle(cssConfig, 'hover');
+    console.log('hoverStyle', hoverDefaultStyle);
     const {
       hover: hoverState = false,
       disabled: disabledState = false,
@@ -152,6 +160,7 @@ function getStyle(cssConfig: CSSConfig) {
       selectSelfStyle(normalArray, getStyleByThemeMeta(normal)),
       normalDefaultStyle
     );
+
     const clickedStyle = clickState
       ? selectSelfStyle(clickedArray, getStyleByThemeMeta(clicked))
       : clickedDefaultStyle;
@@ -161,6 +170,7 @@ function getStyle(cssConfig: CSSConfig) {
     const hoverStyle = hoverState
       ? selectSelfStyle(hoverArray, getStyleByThemeMeta(hover))
       : hoverDefaultStyle;
+    console.log(normalStyle, 'normalStyle');
     return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
