@@ -30,6 +30,7 @@ type CSSProps = {
   loading?: boolean,
   em: Function,
   hasChildren?: boolean,
+  block?: boolean,
 };
 export type ButtonOutProps = CSSProps & {
   clicked: boolean,
