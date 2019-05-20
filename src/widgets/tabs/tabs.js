@@ -623,12 +623,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
           const content = getAttributeFromObject(
             child,
             'content',
-            getAttributeFromObject(child.props, 'content', undefined)
+            getAttributeFromObject(
+              child.props,
+              'content',
+              getAttributeFromObject(child, 'children', undefined)
+            )
           );
-          const theContent = content || <div>{content}</div>;
           return (
             <TabContent
-              content={theContent}
+              content={content}
               activityValue={childActivityValue}
               tabPosition={tabPosition}
             />
