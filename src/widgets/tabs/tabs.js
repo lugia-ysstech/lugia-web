@@ -201,7 +201,6 @@ const HTabsOutContainer = styled.div`
   ${getContainerBorder};
   background: ${backgroundColor};
   ${getContainerPadding};
-  margin: ${em(20)} 0;
   z-index: 99;
 `;
 
@@ -215,7 +214,6 @@ const VTabsOutContainer = styled.div`
   white-space: nowrap;
   overflow: hidden;
   height: 100%;
-  margin: 0 ${em(20)};
 `;
 const PageIcon: Object = styled(Icon)`
   display: inline-block;
@@ -625,7 +623,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
           const content = getAttributeFromObject(
             child,
             'content',
-            getAttributeFromObject(child.props, 'content', undefined)
+            getAttributeFromObject(
+              child.props,
+              'content',
+              getAttributeFromObject(child, 'children', undefined)
+            )
           );
           return (
             <TabContent
