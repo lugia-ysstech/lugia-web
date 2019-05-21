@@ -47,6 +47,11 @@
       "type": "string | React.node",
       "desc": "设置按钮的文本内容",
       "defaultValue": "undefined"
+    },
+    "block": {
+      "type": "boolean",
+      "desc": "按钮宽度为父元素宽度",
+      "defaultValue": "false"
     }
   },
   "events": {

@@ -139,7 +139,7 @@ exports[`Panel Panel CSS 1`] = `
 .c26 {
   box-sizing: border-box;
   overflow: hidden;
-  height: 0em;
+  height: 3.2857142857142856em;
   color: #666666;
   background: #fff;
 }
@@ -243,7 +243,7 @@ exports[`Panel Panel CSS 1`] = `
   transition: left 0.3s;
   opacity: 0;
   width: 1em;
-  height: 0em;
+  height: 3.2857142857142856em;
   position: absolute;
   top: 0;
   left: 0;
