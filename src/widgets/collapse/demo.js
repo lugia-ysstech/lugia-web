@@ -39,7 +39,7 @@ const heightView = {
 };
 const spaceHeightView = {
   [Widget.Panel]: {
-    height: 0,
+    height: 46,
   },
 };
 const wrapView = {

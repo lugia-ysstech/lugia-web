@@ -150,11 +150,11 @@ const getPanelContent = (props: CSSProps): string => {
   const { open, opening, closing, headerHeight = 0, theme } = props;
   const { height: themeHeight } = theme;
   const { height: propsHeight } = props;
-  const theHeight = (themeHeight || themeHeight === 0 ? themeHeight : propsHeight) + headerHeight;
-  const openHeight = themeHeight || themeHeight === 0 ? em(themeHeight) : '100%';
+  const theHeight = themeHeight ? themeHeight - headerHeight : propsHeight;
+  const openHeight = themeHeight ? em(themeHeight - headerHeight) : '100%';
   const OpenKeyframe = keyframes`
     from {
-      height: ${em(headerHeight)};
+      height: ${em(0)};
     }
     to {
       height: ${theHeight}px;
@@ -165,7 +165,7 @@ const getPanelContent = (props: CSSProps): string => {
       height: ${theHeight}px;
     }
     to {
-      height: ${em(headerHeight)};
+      height: ${em(0)};
     }
   `;
   if (opening) {
@@ -185,7 +185,7 @@ const getPanelContent = (props: CSSProps): string => {
      height: ${openHeight};`;
   }
   return `
-    height: ${em(headerHeight)};
+    height: ${em(0)};
   `;
 };
 const getContenColor = (props: CSSProps): string => {
