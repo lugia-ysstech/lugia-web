@@ -15,10 +15,8 @@ import CSSProvider, { getClassName } from './CSSProvider.js';
 const Button = CSSProvider({
   tag: 'button',
   normal: {
-    normal: {
-      selectNames: ['width', 'height', 'backgroundColor', 'font'],
-      default: { width: 30, height: 30 },
-    },
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['font']],
+    default: { width: 30, height: 30 },
   },
   css: css`
     background: green;
@@ -27,17 +25,17 @@ const Button = CSSProvider({
 
 const SelfInput = CSSProvider({
   tag: 'input',
-  normal: { selectNames: ['backgroundColor'], default: { width: 100, height: 100 } },
+  normal: { selectNames: [['backgroundColor']], default: { width: 100, height: 100 } },
   css: '',
 });
 const Child = CSSProvider({
   tag: 'div',
   normal: {
-    selectNames: ['width', 'height', 'backgroundColor', 'border'], //只应用于配置属性
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['border']], //只应用于配置属性
     default: { width: 100, height: 100 },
   },
   hover: {
-    selectNames: ['backgroundColor'],
+    selectNames: [['backgroundColor']],
     default: { backgroundColor: 'black' },
   },
   css: css`
