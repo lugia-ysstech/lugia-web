@@ -8,32 +8,36 @@
 import React from 'react';
 import { css } from 'styled-components';
 import Theme from './';
+import Input from '../input';
 import ThemeProvider from '../theme-provider';
 import CSSProvider, { getClassName } from './CSSProvider.js';
 
 const Button = CSSProvider({
   tag: 'button',
   normal: {
-    normal: { selectNames: ['width', 'height', 'background'], default: { width: 30, height: 30 } },
+    normal: {
+      selectNames: ['width', 'height', 'backgroundColor', 'font'],
+      default: { width: 30, height: 30 },
+    },
   },
   css: css`
     background: green;
   `,
 });
 
-const Input = CSSProvider({
+const SelfInput = CSSProvider({
   tag: 'input',
-  normal: { selectNames: ['background'], default: { width: 100, height: 100 } },
+  normal: { selectNames: ['backgroundColor'], default: { width: 100, height: 100 } },
   css: '',
 });
 const Child = CSSProvider({
   tag: 'div',
   normal: {
-    selectNames: ['width', 'height', 'background'], //只应用于配置属性
-    default: { width: 30, height: 30 },
+    selectNames: ['width', 'height', 'backgroundColor', 'border'], //只应用于配置属性
+    default: { width: 100, height: 100 },
   },
   hover: {
-    selectNames: ['background'],
+    selectNames: ['backgroundColor'],
     default: { backgroundColor: 'black' },
   },
   css: css`
@@ -78,7 +82,7 @@ const ButtonInput = ThemeProvider(
           <Button themeState={themeState} themeConfig={theme} className={getClassName('hello')}>
             {children}
           </Button>
-          <Input themeState={themeState} themeConfig={theme} />
+          <SelfInput themeState={themeState} themeConfig={theme} />
         </span>
       );
     }
@@ -97,24 +101,29 @@ class Demo extends React.Component<any, any> {
         clicked: {
           height: 60,
           width: 60,
-          color: 'blue',
+          backgroundColor: 'blue',
         },
         hover: {
           height: 60,
           width: 60,
-          color: 'red',
+          backgroundColor: 'yellow',
         },
         children: {
           child: {
             normal: {
               height: 50,
               width: 50,
-              background: 'red',
+              backgroundColor: 'red',
+              border: {
+                borderWidth: '2px',
+                borderStyle: 'solid',
+                borderColor: 'black',
+              },
             },
             hover: {
               height: 100,
               width: 100,
-              background: 'orange',
+              backgroundColor: 'orange',
             },
           },
         },
@@ -122,12 +131,29 @@ class Demo extends React.Component<any, any> {
     };
     return (
       <Theme config={config}>
-        <ButtonInput viewClass={'helloWorld'}>你好</ButtonInput>
+        <ButtonInput viewClass={'helloWorld'}>button</ButtonInput>
+      </Theme>
+    );
+  }
+}
+class InputDemo extends React.Component<any, any> {
+  render() {
+    const config = {
+      input: {
+        normal: {
+          height: 20,
+          width: 100,
+        },
+      },
+    };
+    return (
+      <Theme config={config}>
+        <Input viewClass={'input'}>button</Input>
       </Theme>
     );
   }
 }
 
 export default () => {
-  return <Demo />;
+  return [<Demo />, <InputDemo />];
 };

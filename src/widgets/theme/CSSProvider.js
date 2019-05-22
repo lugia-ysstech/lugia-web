@@ -5,14 +5,15 @@
  * @flow
  */
 
-// import type { ThemeType } from '@lugia/lugia-web';
 import React from 'react';
 import merge from 'deepmerge';
 import decamelize from 'decamelize';
 import styled, { css } from 'styled-components';
+import { px2emcss } from '../css/units';
+import { getAttributeFromObject } from '../common/ObjectUtils';
 
-type WidthType = number;
-type HeightType = number;
+type WidthType = number | string;
+type HeightType = number | string;
 type MarginType = { top?: number, right?: number, bottom?: number, left?: number };
 type PaddingType = { top?: number, right?: number, bottom?: number, left?: number };
 type BorderType = {
@@ -27,8 +28,12 @@ type BackgroundType = {
   backgroundImage: string,
 };
 
+type BoxShadowType = string;
 type FontType = { fontStyle: string, fontWeight: number, fontSize: number };
-type BoxShadow = {};
+type fontSizeType = string | number;
+const DefaultFontSize = 1.2;
+const em = px2emcss(DefaultFontSize);
+
 type ThemeMeta = {
   background?: BackgroundType,
   border?: BorderType,
@@ -39,7 +44,9 @@ type ThemeMeta = {
   opacity?: OpacityType,
   margin?: MarginType,
   padding?: PaddingType,
-  boxShadow?: BoxShadow,
+  boxShadow?: BoxShadowType,
+  backgroundColor: ColorType,
+  fontSize: fontSizeType,
 };
 
 type ThemeConfig = {
@@ -79,7 +86,7 @@ export function deepMerge(objA: Object, objB: Object): Object {
   return merge(objA, objB);
 }
 
-export function getAttritubeValue(obj: Object, path: string[]): any {
+export function getAttributeValue(obj: Object, path: string[]): any {
   if (!obj) {
     return;
   }
@@ -116,16 +123,97 @@ export function packObject(path: string[], value: any): Object {
 
   return result;
 }
-
+function getSizeFromTheme(size: WidthType | HeightType) {
+  const theSize =
+    typeof size === 'string' && size.indexOf('%') > -1
+      ? size
+      : typeof size === 'number'
+      ? em(size)
+      : '';
+  return theSize;
+}
+const DefaultSpace = 0;
+export const getSpaceFromTheme = (
+  spaceType: 'margin' | 'padding',
+  space,
+  opt?: MarginOpt = {
+    fontSize: DefaultFontSize,
+    default: {
+      left: DefaultSpace,
+      right: DefaultSpace,
+      top: DefaultSpace,
+      bottom: DefaultSpace,
+    },
+  }
+) => {
+  const theSpace = '';
+  const {
+    fontSize = DefaultFontSize,
+    default: {
+      left = DefaultSpace,
+      right = DefaultSpace,
+      top = DefaultSpace,
+      bottom = DefaultSpace,
+    },
+  } = opt;
+  const em = px2emcss(fontSize);
+  if (typeof space === 'number') {
+    return `:${em(space)} `;
+  }
+  if (space !== undefined) {
+    const spaceTop = getAttributeFromObject(space, 'top', top);
+    const spaceBottom = getAttributeFromObject(space, 'bottom', bottom);
+    const spaceLeft = getAttributeFromObject(space, 'left', left);
+    const spaceRight = getAttributeFromObject(space, 'right', right);
+    return `${em(spaceTop)} ${em(spaceRight)} ${em(spaceBottom)} ${em(spaceLeft)};`;
+  }
+  return theSpace;
+};
+function getObjectStyleFromTheme(obj: Object) {
+  if (!obj) return {};
+  return obj;
+}
+function getStringStyleFromTheme(stringStyle: string) {
+  const theStringStyle = typeof stringStyle === 'string' && stringStyle ? stringStyle : '';
+  return theStringStyle;
+}
+//todo
 function themeMeta2Style(theme: ThemeMeta): Object {
-  const { width = 0, height = 0, background, color } = theme;
-  console.log(theme, 'theme');
-  return {
-    width: `${width}px`,
-    height: `${height}px`,
+  const {
+    backgroundColor,
     background,
+    border,
+    width,
+    height,
+    font,
+    fontSize,
     color,
-  };
+    opacity,
+    margin = { top: 20 },
+    padding = { left: 20 },
+    boxShadow,
+  } = theme;
+  // todo  themeProps 转化 style 对象
+  // width,height 转em
+  // 内部含有对象的 都得根据自己的对象规则 转化成Style对象 用驼峰命名
+  const style = {};
+  style.width = getSizeFromTheme(width);
+  style.height = getSizeFromTheme(height);
+  style.fontSize = getStringStyleFromTheme(fontSize);
+  style.color = getStringStyleFromTheme(color);
+  style.backgroundColor = getStringStyleFromTheme(backgroundColor);
+  style.opacity = getStringStyleFromTheme(opacity);
+  style.boxShadow = getStringStyleFromTheme(boxShadow);
+  style.padding = getSpaceFromTheme('padding', padding);
+  style.margin = getSpaceFromTheme('margin', margin);
+  Object.assign(
+    style,
+    getObjectStyleFromTheme(font),
+    getObjectStyleFromTheme(background),
+    getObjectStyleFromTheme(border)
+  );
+
+  return style;
 }
 
 export function style2css(style: Object): string {
@@ -160,6 +248,7 @@ export function getThemeMeta(
       return theme;
     }
     const { defaultTheme = {}, selectNames = [] } = config;
+
     return deepMerge(defaultTheme, getSelectNameThemeMeta(theme, selectNames));
   };
 }
@@ -174,7 +263,7 @@ export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<str
 
   let result = {};
   selectNames.forEach((names: string[]) => {
-    const value = getAttritubeValue(theme, names);
+    const value = getAttributeValue(theme, names);
     if (value !== undefined && value !== null) {
       result = deepMerge(result, packObject(names, value));
     }
@@ -184,23 +273,18 @@ export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<str
 
 function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: ThemeMeta) => Object {
   const getThemeMetaByConfig = getThemeMeta(cssConfig, stateType);
-
   return (themeMeta: ThemeMeta) => {
     return themeMeta2Style(getThemeMetaByConfig(themeMeta));
   };
 }
 
-// style obj
 function getStyle(cssConfig: CSSConfig) {
   const getNormalStyle = packStyle(cssConfig, 'normal');
   const getClickedStyle = packStyle(cssConfig, 'clicked');
-  const getHoverStytle = packStyle(cssConfig, 'hover');
+  const getHoverStyle = packStyle(cssConfig, 'hover');
   const getDisabledStyle = packStyle(cssConfig, 'disabled');
   return (props: ThemeProps) => {
     const { themeState, themeConfig } = props;
-
-    // 获取状态配置数组
-
     const { normal = {}, clicked = {}, disabled = {}, hover = {} } = themeConfig;
     const {
       hover: hoverState = false,
@@ -212,7 +296,7 @@ function getStyle(cssConfig: CSSConfig) {
 
     const clickedStyle = clickState ? getClickedStyle(clicked) : {};
     const disabledStyle = disabledState ? getDisabledStyle(disabled) : {};
-    const hoverStyle = hoverState ? getHoverStytle(hover) : {};
+    const hoverStyle = hoverState ? getHoverStyle(hover) : {};
     return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
@@ -227,7 +311,6 @@ export function getClassName(className: string): string {
   return enabledClassNameBool ? className : '';
 }
 
-// css str
 function getCSS(getStyle: Function) {
   return (props: ThemeProps) => {
     const { style } = getStyle(props);
@@ -236,17 +319,18 @@ function getCSS(getStyle: Function) {
     `;
   };
 }
-
+//todo 自定义字符串css
 export function getUserDefineCSS(cssConfig: CSSConfig) {
   return (props: ThemeProps): string => {
     return '';
   };
 }
-
+// todo  自定义 style css
 export function getUserDefineStyle(cssConfig: CSSConfig) {
   return (props: ThemeProps): Object => {
+    const style = themeMeta2Style(props);
     return {
-      style: {},
+      style,
     };
   };
 }
@@ -260,6 +344,7 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   const getTheCSS = getUserDefineCSS(cssConfig);
   const getTheStyle = getUserDefineStyle(cssConfig);
   const getStyleByThemeMeta = getStyle(css);
+
   return styledElement.attrs((themeProps: ThemeProps) => {
     return deepMerge(getStyleByThemeMeta(themeProps), { style: getTheStyle(themeProps) });
   })`

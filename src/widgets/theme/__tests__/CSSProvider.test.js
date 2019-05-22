@@ -2,16 +2,16 @@
 
 import * as React from 'react';
 import chai from 'chai';
-import { deepMerge, getAttritubeValue, packObject, style2css } from '../CSSProvider';
+import { deepMerge, getAttributeValue, packObject, style2css } from '../CSSProvider';
 
 const { expect: exp } = chai;
 
 describe('CSSProvider', () => {
-  it('getAttritubeValue', () => {
-    expect(getAttritubeValue(null, [])).toBeUndefined();
-    expect(getAttritubeValue({}, [])).toBeUndefined();
-    expect(getAttritubeValue({ a: { b: 1 } }, ['a'])).toEqual({ b: 1 });
-    expect(getAttritubeValue({ a: { b: 1 } }, ['a', 'b'])).toEqual(1);
+  it('getAttributeValue', () => {
+    expect(getAttributeValue(null, [])).toBeUndefined();
+    expect(getAttributeValue({}, [])).toBeUndefined();
+    expect(getAttributeValue({ a: { b: 1 } }, ['a'])).toEqual({ b: 1 });
+    expect(getAttributeValue({ a: { b: 1 } }, ['a', 'b'])).toEqual(1);
   });
 
   it('packObject', () => {
@@ -55,12 +55,21 @@ describe('CSSProvider', () => {
     expect(style2css({})).toEqual('');
     expect(
       style2css({
-        backGround: 'hello',
+        background: 'hello',
         red: undefined,
         fontSize: 1,
         color: 'rgb(121,11,11,5)',
       })
-    ).toEqual('back-ground:hello;font-size:1;color:rgb(121,11,11,5);');
+    ).toEqual('background:hello;font-size:1;color:rgb(121,11,11,5);');
+  });
+
+  it('style2css backgroundColor', () => {
+    expect(
+      style2css({
+        backgroundColor: 'red',
+        borderSize: '1px',
+      })
+    ).toEqual('background-color:red;border-size:1px;');
   });
 
   it('getThemeByConfig', () => {});
