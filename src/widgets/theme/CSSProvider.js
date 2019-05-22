@@ -30,7 +30,8 @@ type BackgroundType = {
 
 type BoxShadowType = string;
 type FontType = { fontStyle: string, fontWeight: number, fontSize: number };
-type fontSizeType = string | number;
+type fontSizeType = number;
+
 const DefaultFontSize = 1.2;
 const em = px2emcss(DefaultFontSize);
 
@@ -78,6 +79,16 @@ type CSSConfig = {
   clicked?: CSSMeta,
   hover?: CSSMeta,
   disabled?: CSSMeta,
+};
+
+type MarginOpt = {
+  fontSize: number,
+  default: {
+    left: number,
+    right: number,
+    top: number,
+    bottom: number,
+  },
 };
 
 export function deepMerge(objA: Object, objB: Object): Object {
@@ -135,7 +146,7 @@ function getSizeFromTheme(size: WidthType | HeightType) {
 const DefaultSpace = 0;
 export const getSpaceFromTheme = (
   spaceType: 'margin' | 'padding',
-  space,
+  space: MarginType | PaddingType,
   opt?: MarginOpt = {
     fontSize: DefaultFontSize,
     default: {
@@ -177,21 +188,25 @@ function getStringStyleFromTheme(stringStyle: string) {
   const theStringStyle = typeof stringStyle === 'string' && stringStyle ? stringStyle : '';
   return theStringStyle;
 }
+function getNumberStyleFromTheme(numberStyle: number) {
+  const theNumberStyle = typeof numberStyle === 'number' && numberStyle ? numberStyle : 1;
+  return theNumberStyle;
+}
 //todo
 function themeMeta2Style(theme: ThemeMeta): Object {
   const {
-    backgroundColor,
-    background,
-    border,
-    width,
-    height,
-    font,
-    fontSize,
-    color,
-    opacity,
-    margin = { top: 20 },
-    padding = { left: 20 },
-    boxShadow,
+    backgroundColor = '',
+    background = {},
+    border = {},
+    width = 0,
+    height = 0,
+    font = {},
+    fontSize = 12,
+    color = '',
+    opacity = 1,
+    margin = {},
+    padding = {},
+    boxShadow = '',
   } = theme;
   // todo  themeProps 转化 style 对象
   // width,height 转em
@@ -199,10 +214,10 @@ function themeMeta2Style(theme: ThemeMeta): Object {
   const style = {};
   style.width = getSizeFromTheme(width);
   style.height = getSizeFromTheme(height);
-  style.fontSize = getStringStyleFromTheme(fontSize);
+  style.fontSize = getNumberStyleFromTheme(fontSize);
   style.color = getStringStyleFromTheme(color);
   style.backgroundColor = getStringStyleFromTheme(backgroundColor);
-  style.opacity = getStringStyleFromTheme(opacity);
+  style.opacity = getNumberStyleFromTheme(opacity);
   style.boxShadow = getStringStyleFromTheme(boxShadow);
   style.padding = getSpaceFromTheme('padding', padding);
   style.margin = getSpaceFromTheme('margin', margin);
@@ -325,10 +340,11 @@ export function getUserDefineCSS(cssConfig: CSSConfig) {
     return '';
   };
 }
+
 // todo  自定义 style css
 export function getUserDefineStyle(cssConfig: CSSConfig) {
   return (props: ThemeProps): Object => {
-    const style = themeMeta2Style(props);
+    const style = getStyle(cssConfig);
     return {
       style,
     };
