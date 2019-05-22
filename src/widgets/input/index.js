@@ -2,7 +2,7 @@
 import '../common/shirm';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { fixControlledValue } from '.././utils';
@@ -32,41 +32,88 @@ import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
 import { getInputBorderRadius, getMargin } from '../common/ThemeUtils';
+import CSSProvider from '../theme/CSSProvider';
 
 const em = px2emcss(FontSizeNumber);
 
-const CommonInputStyle = styled.input`
-  ${getSize};
-  ${getCursor};
-  ${getWidth};
-  ${getInputBorderRadius};
-  ${getInputBorderSize};
-  border-style: solid;
-  border-color: ${getInputBorderColor};
-  line-height: 1.5;
-  font-size: 1.4rem;
-  display: inline-block;
-  font-family: inherit;
-  &:hover {
-    border-color: ${getInputBorderHoverColor};
-  }
+// const CommonInputStyle = styled.input`
+//   ${getSize};
+//   ${getCursor};
+//   ${getWidth};
+//   ${getInputBorderRadius};
+//   ${getInputBorderSize};
+//   border-style: solid;
+//   border-color: ${getInputBorderColor};
+//   line-height: 1.5;
+//   font-size: 1.4rem;
+//   display: inline-block;
+//   font-family: inherit;
+//   &:hover {
+//     border-color: ${getInputBorderHoverColor};
+//   }
+//
+//   transition: all 0.3s;
+//   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+//   background-image: none;
+//   ${getFontColor};
+//   &::placeholder {
+//     color: #ccc;
+//   }
+//   &:focus {
+//     ${getFocusBorderColor};
+//     ${getFocusShadow};
+//   }
+//
+//   padding-left: ${getPadding};
+//   padding-right: ${getRightPadding};
+//   ${getBackground};
+// `;
 
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-image: none;
-  ${getFontColor};
-  &::placeholder {
-    color: #ccc;
-  }
-  &:focus {
-    ${getFocusBorderColor};
-    ${getFocusShadow};
-  }
+const CommonInputStyle = CSSProvider({
+  tag: 'input',
+  normal: {
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['border']],
+  },
+  hover: {
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['border']],
+  },
+  clicked: {
+    selectNames: [['width'], ['backgroundColor'], ['height']],
+    defaultTheme: { height: 20 },
+  },
+  css: css`
+    ${getSize};
+    ${getCursor};
+    ${getWidth};
+    ${getInputBorderRadius};
+    ${getInputBorderSize};
+    border-style: solid;
+    border-color: ${getInputBorderColor};
+    line-height: 1.5;
+    font-size: 1.4rem;
+    display: inline-block;
+    font-family: inherit;
+    &:hover {
+      border-color: ${getInputBorderHoverColor};
+    }
 
-  padding-left: ${getPadding};
-  padding-right: ${getRightPadding};
-  ${getBackground};
-`;
+    transition: all 0.3s;
+    background-image: none;
+    ${getFontColor};
+    &::placeholder {
+      color: #ccc;
+    }
+    &:focus {
+      ${getFocusBorderColor};
+      ${getFocusShadow};
+    }
+
+    padding-left: ${getPadding};
+    padding-right: ${getRightPadding};
+    ${getBackground};
+  `,
+});
+
 const BaseInputContainer = styled.span`
   position: relative;
   display: inline-block;
@@ -278,8 +325,16 @@ class TextBox extends Component<InputProps, InputState> {
 
   getInputContainer(fetcher: Function) {
     const { getTheme, disabled } = this.props;
+
+    const { themeState, themeConfig } = getTheme();
+    const {
+      hover: hoverState = false,
+      disabled: disabledState = false,
+      click: clickState = false,
+    } = themeState;
+    console.log(getTheme(), 'getTheme11');
     return (
-      <InputContainer theme={getTheme()} disabled={disabled}>
+      <InputContainer theme={themeConfig} disabled={disabled}>
         {fetcher()}
       </InputContainer>
     );
@@ -382,20 +437,23 @@ class TextBox extends Component<InputProps, InputState> {
       onClick,
       autoFocus,
       type,
+      getTheme,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
-
+    const { themeState, themeConfig } = getTheme();
+    console.log(getTheme(), 'inputgetTheme');
     return (
       <Input
+        themeState={themeState}
+        themeConfig={themeConfig}
         autoFocus={autoFocus}
         ref={node => (this.input = node)}
         validateStatus={validateStatus}
         validateType={validateType}
         suffix={suffix}
         prefix={prefix}
-        theme={this.props.getTheme()}
         value={value}
         size={size}
         onKeyUp={onKeyUp}

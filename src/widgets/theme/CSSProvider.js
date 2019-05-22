@@ -201,9 +201,9 @@ function themeMeta2Style(theme: ThemeMeta): Object {
     width = 0,
     height = 0,
     font = {},
-    fontSize = 12,
+    fontSize,
     color = '',
-    opacity = 1,
+    opacity,
     margin = {},
     padding = {},
     boxShadow = '',
@@ -214,7 +214,7 @@ function themeMeta2Style(theme: ThemeMeta): Object {
   const style = {};
   style.width = getSizeFromTheme(width);
   style.height = getSizeFromTheme(height);
-  style.fontSize = getNumberStyleFromTheme(fontSize);
+  style.fontSize = getStringStyleFromTheme(fontSize);
   style.color = getStringStyleFromTheme(color);
   style.backgroundColor = getStringStyleFromTheme(backgroundColor);
   style.opacity = getNumberStyleFromTheme(opacity);
@@ -252,6 +252,7 @@ export function getThemeMeta(
   stateType: StateType
 ): (theme: ThemeMeta) => ThemeMeta {
   return (theme: ThemeMeta): ThemeMeta => {
+    console.log(theme, 'getThemeMeta cssConfig', cssConfig);
     if (!theme) {
       return {};
     }
@@ -259,6 +260,8 @@ export function getThemeMeta(
       return theme;
     }
     const config = cssConfig[stateType];
+    console.log(config, 'getThemeMeta config');
+
     if (!config) {
       return theme;
     }
@@ -275,7 +278,6 @@ export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<str
   if (!selectNames || selectNames.length === 0) {
     return theme;
   }
-
   let result = {};
   selectNames.forEach((names: string[]) => {
     const value = getAttributeValue(theme, names);
@@ -293,13 +295,17 @@ function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: Them
   };
 }
 
+let enabledClassNameBool = false;
+
 function getStyle(cssConfig: CSSConfig) {
+  console.log(cssConfig, 'getStyle cssConfig');
   const getNormalStyle = packStyle(cssConfig, 'normal');
   const getClickedStyle = packStyle(cssConfig, 'clicked');
   const getHoverStyle = packStyle(cssConfig, 'hover');
   const getDisabledStyle = packStyle(cssConfig, 'disabled');
   return (props: ThemeProps) => {
     const { themeState, themeConfig } = props;
+    console.log(themeConfig, 'getStyle themeConfig');
     const { normal = {}, clicked = {}, disabled = {}, hover = {} } = themeConfig;
     const {
       hover: hoverState = false,
@@ -308,15 +314,14 @@ function getStyle(cssConfig: CSSConfig) {
     } = themeState;
 
     const normalStyle = getNormalStyle(normal);
-
+    console.log(normalStyle, 'getStyle normalStyle');
     const clickedStyle = clickState ? getClickedStyle(clicked) : {};
+    console.log(clickedStyle, 'getStyle clickedStyle');
     const disabledStyle = disabledState ? getDisabledStyle(disabled) : {};
     const hoverStyle = hoverState ? getHoverStyle(hover) : {};
     return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
-
-let enabledClassNameBool = false;
 
 export function enabledClassName() {
   enabledClassNameBool = true;
@@ -359,7 +364,7 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   }
   const getTheCSS = getUserDefineCSS(cssConfig);
   const getTheStyle = getUserDefineStyle(cssConfig);
-  const getStyleByThemeMeta = getStyle(css);
+  const getStyleByThemeMeta = getStyle(cssConfig);
 
   return styledElement.attrs((themeProps: ThemeProps) => {
     return deepMerge(getStyleByThemeMeta(themeProps), { style: getTheStyle(themeProps) });

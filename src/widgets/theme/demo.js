@@ -15,7 +15,7 @@ import CSSProvider, { getClassName } from './CSSProvider.js';
 const Button = CSSProvider({
   tag: 'button',
   normal: {
-    selectNames: [['width'], ['height'], ['backgroundColor'], ['font']],
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['font'], ['margin']],
     default: { width: 30, height: 30 },
   },
   css: css`
@@ -25,13 +25,16 @@ const Button = CSSProvider({
 
 const SelfInput = CSSProvider({
   tag: 'input',
-  normal: { selectNames: [['backgroundColor']], default: { width: 100, height: 100 } },
+  normal: {
+    selectNames: [['width'], ['height'], ['backgroundColor']],
+    default: { width: 100, height: 100 },
+  },
   css: '',
 });
 const Child = CSSProvider({
   tag: 'div',
   normal: {
-    selectNames: [['width'], ['height'], ['backgroundColor'], ['border']], //只应用于配置属性
+    selectNames: [['width'], ['height'], ['border']], //只应用于配置属性
     default: { width: 100, height: 100 },
   },
   hover: {
@@ -95,6 +98,7 @@ class Demo extends React.Component<any, any> {
         normal: {
           height: 60,
           width: 60,
+          margin: { left: 20 },
         },
         clicked: {
           height: 60,
@@ -117,6 +121,7 @@ class Demo extends React.Component<any, any> {
                 borderStyle: 'solid',
                 borderColor: 'black',
               },
+              margin: { top: 20 },
             },
             hover: {
               height: 100,
@@ -138,15 +143,39 @@ class InputDemo extends React.Component<any, any> {
   render() {
     const config = {
       input: {
-        normal: {
-          height: 20,
-          width: 100,
+        themeState: { normal: true, hover: false, click: true, disabled: false },
+        themeConfig: {
+          normal: {
+            width: 100,
+            height: 30,
+            backgroundColor: 'gray',
+            border: {
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: 'red',
+            },
+          },
+          hover: {
+            width: 200,
+            height: 50,
+            backgroundColor: 'red',
+            border: {
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: 'black',
+            },
+          },
+          clicked: {
+            width: 300,
+            height: 70,
+            backgroundColor: 'yellow',
+          },
         },
       },
     };
     return (
       <Theme config={config}>
-        <Input viewClass={'input'}>button</Input>
+        <Input viewClass={'input'} />
       </Theme>
     );
   }
