@@ -7,6 +7,8 @@
 import * as React from 'react';
 import Modal from './index';
 import Button from '../button';
+import Theme from '../theme';
+import Widgets from '../consts';
 
 class ModalBox extends React.Component<any, any> {
   constructor() {
@@ -54,6 +56,8 @@ export default class ModalDemo extends React.Component<any, any> {
       visable2: false,
       visable3: false,
       visable4: false,
+      visable5: false,
+      visable6: false,
     };
   }
 
@@ -79,7 +83,15 @@ export default class ModalDemo extends React.Component<any, any> {
   };
 
   render() {
-    const { visable1, visable2, visable3, visable4, confirmLoading } = this.state;
+    const {
+      visable1,
+      visable2,
+      visable3,
+      visable4,
+      visable5,
+      visable6,
+      confirmLoading,
+    } = this.state;
     return (
       <div>
         <Button onClick={this.Click(4)}>Modal</Button>
@@ -129,6 +141,32 @@ export default class ModalDemo extends React.Component<any, any> {
         >
           这是内容！
         </Modal>
+        <br />
+        <br />
+        <Button onClick={this.Click(5)}>ThemeModal</Button>
+        <Theme config={{ [Widgets.Modal]: { padding: 50 } }}>
+          <Modal
+            visible={visable5}
+            onOk={this.loadingClick(5)}
+            title="这是标题！"
+            onCancel={this.buttonClick(5)}
+          >
+            这是内容！
+          </Modal>
+        </Theme>
+        <br />
+        <br />
+        <Button onClick={this.Click(6)}>ThemeModal</Button>
+        <Theme config={{ [Widgets.Modal]: { padding: { left: 100, right: 100 } } }}>
+          <Modal
+            visible={visable6}
+            onOk={this.loadingClick(6)}
+            title="这是标题！"
+            onCancel={this.buttonClick(6)}
+          >
+            这是内容！
+          </Modal>
+        </Theme>
         <br />
         <br />
         <Button
