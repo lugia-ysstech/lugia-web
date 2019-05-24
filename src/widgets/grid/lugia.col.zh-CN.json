@@ -1,5 +1,5 @@
 {
-  "widgetName": "Col",
+  "widgetName": "Grid.Col",
   "title": "栅格",
   "desc": "栅格。",
   "props": {
@@ -30,6 +30,5 @@
     }
   },
   "category": ["布局"],
-  "componentName": "Col",
   "needExport": true
 }

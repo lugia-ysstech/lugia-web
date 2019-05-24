@@ -1,5 +1,5 @@
 {
-  "widgetName": "Panel",
+  "widgetName": "Collapse.Panel",
   "title": "Panel 面板",
   "desc": "Panel 面板。",
   "props": {

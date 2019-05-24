@@ -1,5 +1,5 @@
 {
-  "widgetName": "YearPicker",
+  "widgetName": "DatePicker.YearPicker",
   "title": "年选择器",
   "desc": "用于年选择,",
   "props": {
@@ -32,7 +32,7 @@
       "type": "boolean",
       "desc": "只读input",
       "defaultValue": "false"
-    },   
+    },
     "extraFooter":{
       "type": "Object",
       "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
@@ -42,7 +42,7 @@
       "type": "number",
       "desc": "设置年的展示步长",
       "defaultValue": "false"
-    }   
+    }
   },
   "events": {
     "onChange": {

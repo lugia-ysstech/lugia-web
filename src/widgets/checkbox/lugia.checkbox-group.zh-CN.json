@@ -1,5 +1,5 @@
 {
-  "widgetName": "CheckboxGroup",
+  "widgetName": "Checkbox.Group",
   "title": "多选框组",
   "desc": "多选框组。",
   "props": {
@@ -92,6 +92,5 @@
     }
   },
   "category": ["数据录入"],
-  "componentName": "Group",
   "needExport": true
 }

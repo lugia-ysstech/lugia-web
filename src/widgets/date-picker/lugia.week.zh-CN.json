@@ -1,5 +1,5 @@
 {
-  "widgetName": "WeekPicker",
+  "widgetName": "DatePicker.WeekPicker",
   "title": "周选择器",
   "desc": "用于周选择,",
   "props": {
@@ -32,7 +32,7 @@
       "type": "boolean",
       "desc": "只读input",
       "defaultValue": "false"
-    },    
+    },
     "selectToday":{
       "type": "boolean",
       "desc": "是否默认选中今天日期",
@@ -58,7 +58,7 @@
       "desc": "设置周,年的展示步长",
       "defaultValue": "false"
     }
-    
+
   },
   "events": {
     "onChange": {
