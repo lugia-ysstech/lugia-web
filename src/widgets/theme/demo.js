@@ -9,6 +9,8 @@ import React from 'react';
 import { css } from 'styled-components';
 import Theme from './';
 import Input from '../input';
+import Card from '../card';
+import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import CSSProvider, { getClassName } from './CSSProvider.js';
 
@@ -143,32 +145,47 @@ class InputDemo extends React.Component<any, any> {
   render() {
     const config = {
       input: {
-        themeState: { normal: true, hover: false, click: true, disabled: false },
+        themeState: { normal: true, hover: false, click: false, disabled: false },
         themeConfig: {
           normal: {
             width: 100,
-            height: 30,
-            backgroundColor: 'gray',
+            height: 20,
+            backgroundColor: 'white',
             border: {
               borderWidth: 1,
               borderStyle: 'solid',
-              borderColor: 'red',
+              borderColor: 'blue',
             },
+            background: {
+              backgroundColor: 'black',
+            },
+            fontSize: '20px',
+            font: {
+              fontWeight: 900,
+              fontStyle: 'solid',
+              fontSize: 16,
+            },
+            opacity: 0.3,
+            boxShadow: '0px 0px 6px gray inset;',
+            color: 'red',
+            margin: { left: 10 },
+            padding: { top: 20 },
           },
           hover: {
             width: 200,
-            height: 50,
+            height: 30,
             backgroundColor: 'red',
+            boxShadow: '0px 0px 6px blue inset;',
+          },
+          clicked: {
+            width: 300,
+            height: 40,
+            backgroundColor: 'yellow',
             border: {
               borderWidth: 1,
               borderStyle: 'solid',
               borderColor: 'black',
             },
-          },
-          clicked: {
-            width: 300,
-            height: 70,
-            backgroundColor: 'yellow',
           },
         },
       },

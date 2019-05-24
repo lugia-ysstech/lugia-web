@@ -72,10 +72,22 @@ const em = px2emcss(FontSizeNumber);
 const CommonInputStyle = CSSProvider({
   tag: 'input',
   normal: {
-    selectNames: [['width'], ['height'], ['backgroundColor'], ['border']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['backgroundColor'],
+      ['border'],
+      ['opacity'],
+      ['fontSize'],
+      ['font'],
+      ['boxShadow'],
+      ['color'],
+      ['padding'],
+      ['margin'],
+    ],
   },
   hover: {
-    selectNames: [['width'], ['height'], ['backgroundColor'], ['border']],
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['border'], ['boxShadow']],
   },
   clicked: {
     selectNames: [['width'], ['backgroundColor'], ['height']],
@@ -443,7 +455,6 @@ class TextBox extends Component<InputProps, InputState> {
       value = formatter(value);
     }
     const { themeState, themeConfig } = getTheme();
-    console.log(getTheme(), 'inputgetTheme');
     return (
       <Input
         themeState={themeState}

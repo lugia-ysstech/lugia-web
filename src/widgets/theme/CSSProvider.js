@@ -30,7 +30,7 @@ type BackgroundType = {
 
 type BoxShadowType = string;
 type FontType = { fontStyle: string, fontWeight: number, fontSize: number };
-type fontSizeType = number;
+type FontSizeType = string;
 
 const DefaultFontSize = 1.2;
 const em = px2emcss(DefaultFontSize);
@@ -46,8 +46,8 @@ type ThemeMeta = {
   margin?: MarginType,
   padding?: PaddingType,
   boxShadow?: BoxShadowType,
-  backgroundColor: ColorType,
-  fontSize: fontSizeType,
+  backgroundColor?: ColorType,
+  fontSize?: FontSizeType,
 };
 
 type ThemeConfig = {
@@ -185,11 +185,11 @@ function getObjectStyleFromTheme(obj: Object) {
   return obj;
 }
 function getStringStyleFromTheme(stringStyle: string) {
-  const theStringStyle = typeof stringStyle === 'string' && stringStyle ? stringStyle : '';
+  const theStringStyle = stringStyle && typeof stringStyle === 'string' ? stringStyle : '';
   return theStringStyle;
 }
 function getNumberStyleFromTheme(numberStyle: number) {
-  const theNumberStyle = typeof numberStyle === 'number' && numberStyle ? numberStyle : 1;
+  const theNumberStyle = numberStyle && typeof numberStyle === 'number' ? numberStyle : 0;
   return theNumberStyle;
 }
 //todo
@@ -201,7 +201,7 @@ function themeMeta2Style(theme: ThemeMeta): Object {
     width = 0,
     height = 0,
     font = {},
-    fontSize,
+    fontSize = '12',
     color = '',
     opacity,
     margin = {},
@@ -214,10 +214,10 @@ function themeMeta2Style(theme: ThemeMeta): Object {
   const style = {};
   style.width = getSizeFromTheme(width);
   style.height = getSizeFromTheme(height);
-  style.fontSize = getStringStyleFromTheme(fontSize);
+  style.fontSize = fontSize ? getStringStyleFromTheme(fontSize) : 12;
   style.color = getStringStyleFromTheme(color);
   style.backgroundColor = getStringStyleFromTheme(backgroundColor);
-  style.opacity = getNumberStyleFromTheme(opacity);
+  style.opacity = opacity ? getNumberStyleFromTheme(opacity) : 1;
   style.boxShadow = getStringStyleFromTheme(boxShadow);
   style.padding = getSpaceFromTheme('padding', padding);
   style.margin = getSpaceFromTheme('margin', margin);
@@ -342,7 +342,10 @@ function getCSS(getStyle: Function) {
 //todo 自定义字符串css
 export function getUserDefineCSS(cssConfig: CSSConfig) {
   return (props: ThemeProps): string => {
-    return '';
+    const { style } = props;
+    return css`
+      ${style2css(style)}
+    `;
   };
 }
 
