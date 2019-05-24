@@ -906,10 +906,10 @@
     babel-plugin-transform-dynamic-import "2.1.0"
     babel-plugin-transform-react-remove-prop-types "0.4.20"
 
-"@lugia/devtools-material@^1.0.5":
-  version "1.0.5"
-  resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.5.tgz#108762ec9e9c57776bbb9563aad93ffbc1fc32ab"
-  integrity sha1-EIdi7J6cV3dru5Vjqtk/+8H8Mqs=
+"@lugia/devtools-material@^1.0.6":
+  version "1.0.6"
+  resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.6.tgz#8e423b0342f1e9eb5f3e8751358bc9f64505645a"
+  integrity sha1-jkI7A0Lx6etfPodRNYvJ9kUFZFo=
   dependencies:
     babel-runtime "^6.26.0"
     immutable "^3.8.2"
