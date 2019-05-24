@@ -1,5 +1,5 @@
 {
-  "widgetName": "DatePicker.WeekPicker",
+  "widgetName": "WeekPicker",
   "title": "周选择器",
   "desc": "用于周选择,",
   "props": {

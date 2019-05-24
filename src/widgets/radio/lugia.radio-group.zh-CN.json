@@ -1,5 +1,5 @@
 {
-  "widgetName": "Radio.Group",
+  "widgetName": "Group",
   "title": "单选框",
   "desc": "单选框。",
   "props": {

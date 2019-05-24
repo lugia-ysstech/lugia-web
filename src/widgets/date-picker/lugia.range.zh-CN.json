@@ -1,5 +1,5 @@
 {
-  "widgetName": "DatePicker.RangePicker",
+  "widgetName": "RangePicker",
   "title": "日期范围选择器",
   "desc": "用于日期范围选择,",
   "props": {

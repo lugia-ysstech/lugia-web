@@ -1,5 +1,5 @@
 {
-  "widgetName": "DatePicker.MonthPicker",
+  "widgetName": "MonthPicker",
   "title": "月选择器",
   "desc": "用于月份选择,",
   "props": {

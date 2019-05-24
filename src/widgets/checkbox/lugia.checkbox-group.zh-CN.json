@@ -1,5 +1,5 @@
 {
-  "widgetName": "Checkbox.Group",
+  "widgetName": "Group",
   "title": "多选框组",
   "desc": "多选框组。",
   "props": {

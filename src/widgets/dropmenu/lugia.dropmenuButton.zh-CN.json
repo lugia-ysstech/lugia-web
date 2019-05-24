@@ -1,5 +1,5 @@
 {
-  "widgetName": "Dropmenu.Button",
+  "widgetName": "Button",
   "title": "下拉菜单的按钮",
   "desc": "用于Dropmenu的按钮",
   "props": {

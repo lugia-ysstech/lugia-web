@@ -1,5 +1,5 @@
 {
-  "widgetName": "DatePicker.YearPicker",
+  "widgetName": "YearPicker",
   "title": "年选择器",
   "desc": "用于年选择,",
   "props": {

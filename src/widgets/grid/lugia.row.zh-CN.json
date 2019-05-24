@@ -1,5 +1,5 @@
 {
-  "widgetName": "Grid.Row",
+  "widgetName": "Row",
   "title": "栅格",
   "desc": "栅格。",
   "props": {
