@@ -224,21 +224,6 @@ const PageIcon: Object = styled(Icon)`
 `;
 PageIcon.displayName = 'page';
 
-const defaultData = [
-  {
-    title: 'Tab1',
-    content: 'content of Tab1',
-  },
-  {
-    title: 'Tab2',
-    content: 'content of Tab2',
-  },
-  {
-    title: 'Tab3',
-    content: 'content of Tab3',
-  },
-];
-
 type TabsState = {|
   activityValue: string,
   data: Array<Object>,
@@ -279,7 +264,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     tabType: 'line',
     tabPosition: 'top',
     pagedType: 'single',
-    defaultData,
+    defaultData: [],
   };
   tabs: any;
   static displayName = Widget.Tabs;
