@@ -56,7 +56,13 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
           {}
         );
       };
+
       const { disabled } = this.props;
+
+      const themeProps = {
+        themeState: { ...this.state.themeState, disabled },
+        themeConfig: getTheme(),
+      };
       return (
         <span
           onMouseEnter={this.onMouseEnter}
@@ -65,7 +71,7 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
         >
           <Target
             {...this.props}
-            themeState={{ ...this.state.themeState, disabled }}
+            themeProps={themeProps}
             getTheme={getTheme}
             getWidgetThemeName={() => widgetName}
             getThemeByDisplayName={getThemeByDisplayName}
