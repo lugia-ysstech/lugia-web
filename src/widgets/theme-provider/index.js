@@ -18,7 +18,7 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
       this.state = {
         svThemVersion: 0,
         themeState: {
-          click: false,
+          clicked: false,
           disabled: false,
           hover: false,
         },
@@ -83,11 +83,11 @@ const ThemeProvider = (Target: ProviderComponent, widgetName: string): Function 
     }
 
     onClick = () => {
-      if (this.state.themeState.click === true) {
+      if (this.state.themeState.clicked === true) {
         return;
       }
       this.setState({
-        themeState: { ...this.state.themeState, click: true },
+        themeState: { ...this.state.themeState, clicked: true },
       });
     };
 
