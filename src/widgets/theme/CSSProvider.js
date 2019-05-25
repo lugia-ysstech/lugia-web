@@ -421,6 +421,7 @@ function getCSSFromPropsAndCSSConfigByHook(
     },
   });
 }
+
 const alwaysEmptyString = () => '';
 
 export function getUserDefineCSS(cssConfig: CSSConfig) {
@@ -480,9 +481,8 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   const getTheCSS = getUserDefineCSS(cssConfig);
   const getTheStyle = getUserDefineStyle(cssConfig);
   const getStyleByThemeMeta = getStyle(cssConfig);
-
   return styledElement.attrs((props: CSSProps) => {
-    return deepMerge(getStyleByThemeMeta(props), getTheStyle(props));
+    return deepMerge(getStyleByThemeMeta(props), { style: getTheStyle(props) });
   })`
     ${css}
     ${getCSS(getStyleByThemeMeta)}
