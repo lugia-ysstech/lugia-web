@@ -79,6 +79,7 @@ type ThemeState = { clicked: boolean, disabled: boolean, hover: boolean };
 type ThemeProps = {
   themeState: ThemeState,
   themeConfig: ThemeConfig,
+  propsConfig: Object,
 };
 type CSSProps = {
   themeProps: ThemeProps,
@@ -227,6 +228,7 @@ function getBorderStyleFromTheme(border) {
     const borderColor = getAttributeFromObject(target, 'borderColor');
     setStyleValue(style, `${name}Color`, borderColor, always(borderColor));
   }
+
   setBorderStyle(borderTop, 'borderTop');
   setBorderStyle(borderBottom, 'borderBottom');
   setBorderStyle(borderLeft, 'borderLeft');
