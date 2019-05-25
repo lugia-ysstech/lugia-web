@@ -16,21 +16,23 @@ type WidthType = number | string;
 type HeightType = number | string;
 type MarginType = { top?: number, right?: number, bottom?: number, left?: number };
 type PaddingType = { top?: number, right?: number, bottom?: number, left?: number };
+
 type BorderType = {
-  borderWidth: string,
-  borderStyle: string,
-  borderColor: string,
+  borderWidth?: string,
+  borderStyle?: string,
+  borderColor?: string,
 };
 type ColorType = string;
 type OpacityType = number;
 type BackgroundType = {
-  backgroundColor: ColorType,
-  backgroundImage: string,
+  backgroundColor?: ColorType,
+  backgroundImage?: string,
 };
 
 type BoxShadowType = string;
 type FontType = { fontStyle: string, fontWeight: number, fontSize: number };
 type FontSizeType = string;
+type BorderRadiusType = string | number;
 
 const DefaultFontSize = 1.2;
 const em = px2emcss(DefaultFontSize);
@@ -48,6 +50,7 @@ type ThemeMeta = {
   boxShadow?: BoxShadowType,
   backgroundColor?: ColorType,
   fontSize?: FontSizeType,
+  borderRadius?: BorderRadiusType,
 };
 
 type ThemeConfig = {
@@ -134,7 +137,7 @@ export function packObject(path: string[], value: any): Object {
 
   return result;
 }
-function getSizeFromTheme(size: WidthType | HeightType) {
+function getSizeFromTheme(size: WidthType | HeightType | BorderRadiusType) {
   const theSize =
     typeof size === 'string' && size.indexOf('%') > -1
       ? size
@@ -201,33 +204,36 @@ function themeMeta2Style(theme: ThemeMeta): Object {
     width = 0,
     height = 0,
     font = {},
-    fontSize = '12',
+    fontSize = '12px',
     color = '',
-    opacity,
+    opacity = 1,
     margin = {},
     padding = {},
     boxShadow = '',
+    borderRadius = 0,
   } = theme;
+  console.log(width, 111);
   // todo  themeProps 转化 style 对象
   // width,height 转em
   // 内部含有对象的 都得根据自己的对象规则 转化成Style对象 用驼峰命名
   const style = {};
+  style.fontSize = fontSize ? getStringStyleFromTheme(fontSize) : '12px';
   style.width = getSizeFromTheme(width);
   style.height = getSizeFromTheme(height);
-  style.fontSize = fontSize ? getStringStyleFromTheme(fontSize) : 12;
   style.color = getStringStyleFromTheme(color);
   style.backgroundColor = getStringStyleFromTheme(backgroundColor);
   style.opacity = opacity ? getNumberStyleFromTheme(opacity) : 1;
   style.boxShadow = getStringStyleFromTheme(boxShadow);
   style.padding = getSpaceFromTheme('padding', padding);
   style.margin = getSpaceFromTheme('margin', margin);
+  style.borderRadius = getSizeFromTheme(borderRadius);
   Object.assign(
     style,
     getObjectStyleFromTheme(font),
     getObjectStyleFromTheme(background),
     getObjectStyleFromTheme(border)
   );
-
+  console.log(style, 11111111111111);
   return style;
 }
 
@@ -266,7 +272,6 @@ export function getThemeMeta(
       return theme;
     }
     const { defaultTheme = {}, selectNames = [] } = config;
-
     return deepMerge(defaultTheme, getSelectNameThemeMeta(theme, selectNames));
   };
 }
@@ -298,27 +303,12 @@ function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: Them
 let enabledClassNameBool = false;
 
 function getStyle(cssConfig: CSSConfig) {
-  console.log(cssConfig, 'getStyle cssConfig');
-  const getNormalStyle = packStyle(cssConfig, 'normal');
-  const getClickedStyle = packStyle(cssConfig, 'clicked');
-  const getHoverStyle = packStyle(cssConfig, 'hover');
-  const getDisabledStyle = packStyle(cssConfig, 'disabled');
   return (props: ThemeProps) => {
-    const { themeState, themeConfig } = props;
-    console.log(themeConfig, 'getStyle themeConfig');
-    const { normal = {}, clicked = {}, disabled = {}, hover = {} } = themeConfig;
-    const {
-      hover: hoverState = false,
-      disabled: disabledState = false,
-      click: clickState = false,
-    } = themeState;
+    const { normalStyle, clickedStyle, disabledStyle, hoverStyle } = getStyleFromPropsAndCSSConfig(
+      cssConfig,
+      props
+    );
 
-    const normalStyle = getNormalStyle(normal);
-    console.log(normalStyle, 'getStyle normalStyle');
-    const clickedStyle = clickState ? getClickedStyle(clicked) : {};
-    console.log(clickedStyle, 'getStyle clickedStyle');
-    const disabledStyle = disabledState ? getDisabledStyle(disabled) : {};
-    const hoverStyle = hoverState ? getHoverStyle(hover) : {};
     return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
@@ -339,23 +329,50 @@ function getCSS(getStyle: Function) {
     `;
   };
 }
-//todo 自定义字符串css
+function getStyleFromPropsAndCSSConfig(cssConfig, props) {
+  const getNormalStyle = packStyle(cssConfig, 'normal');
+  const getClickedStyle = packStyle(cssConfig, 'clicked');
+  const getHoverStyle = packStyle(cssConfig, 'hover');
+  const getDisabledStyle = packStyle(cssConfig, 'disabled');
+  const { themeState = {}, themeConfig = {} } = props;
+  const { normal = {}, clicked = {}, disabled = {}, hover = {} } = themeConfig;
+  const {
+    hover: hoverState = false,
+    disabled: disabledState = false,
+    click: clickState = false,
+  } = themeState;
+  const normalStyle = getNormalStyle(normal);
+  const clickedStyle = clickState ? getClickedStyle(clicked) : {};
+  const disabledStyle = disabledState ? getDisabledStyle(disabled) : {};
+  const hoverStyle = hoverState ? getHoverStyle(hover) : {};
+  return {
+    normalStyle,
+    clickedStyle,
+    disabledStyle,
+    hoverStyle,
+  };
+}
+
 export function getUserDefineCSS(cssConfig: CSSConfig) {
   return (props: ThemeProps): string => {
-    const { style } = props;
+    const { normalStyle, clickedStyle, disabledStyle, hoverStyle } = getStyleFromPropsAndCSSConfig(
+      cssConfig,
+      props
+    );
+    const style = Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle);
     return css`
       ${style2css(style)}
     `;
   };
 }
 
-// todo  自定义 style css
 export function getUserDefineStyle(cssConfig: CSSConfig) {
   return (props: ThemeProps): Object => {
-    const style = getStyle(cssConfig);
-    return {
-      style,
-    };
+    const { normalStyle, clickedStyle, disabledStyle, hoverStyle } = getStyleFromPropsAndCSSConfig(
+      cssConfig,
+      props
+    );
+    return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
 

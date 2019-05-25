@@ -31,8 +31,17 @@ import { FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import { getInputBorderRadius, getMargin } from '../common/ThemeUtils';
 import CSSProvider from '../theme/CSSProvider';
+import colorsFunc from '../css/stateColor';
+const {
+  themeColor,
+  disableColor,
+  dangerColor,
+  blackColor,
+  mediumGreyColor,
+  darkGreyColor,
+  lightGreyColor,
+} = colorsFunc();
 
 const em = px2emcss(FontSizeNumber);
 
@@ -53,7 +62,6 @@ const em = px2emcss(FontSizeNumber);
 //   }
 //
 //   transition: all 0.3s;
-//   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 //   background-image: none;
 //   ${getFontColor};
 //   &::placeholder {
@@ -75,54 +83,103 @@ const CommonInputStyle = CSSProvider({
     selectNames: [
       ['width'],
       ['height'],
-      ['backgroundColor'],
-      ['border'],
-      ['opacity'],
       ['fontSize'],
       ['font'],
-      ['boxShadow'],
       ['color'],
       ['padding'],
-      ['margin'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['borderRadius'],
     ],
+    defaultTheme: {
+      width: 220,
+      height: 32,
+      fontSize: '12px',
+      padding: { left: 15, right: 25 },
+      borderRadius: 4,
+      border: {
+        borderColor: lightGreyColor,
+        borderStyle: 'solid',
+        borderWidth: '1px',
+      },
+    },
   },
   hover: {
-    selectNames: [['width'], ['height'], ['backgroundColor'], ['border'], ['boxShadow']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['padding'],
+      ['background'],
+      ['boxShadow'],
+      ['border'],
+      ['borderRadius'],
+    ],
+    defaultTheme: {
+      width: 220,
+      height: 32,
+      padding: { left: 15, right: 25 },
+      border: {
+        borderColor: themeColor,
+        borderStyle: 'solid',
+        borderWidth: '1px',
+      },
+      borderRadius: 4,
+    },
   },
   clicked: {
-    selectNames: [['width'], ['backgroundColor'], ['height']],
-    defaultTheme: { height: 20 },
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['padding'],
+      ['background'],
+      ['boxShadow'],
+      ['border'],
+      ['borderRadius'],
+    ],
+    defaultTheme: {
+      width: 220,
+      height: 32,
+      padding: { left: 15, right: 25 },
+      background: {
+        backgroundImage: 'none',
+        borderStyle: 'solid',
+        borderWidth: '1px',
+        borderColor: themeColor,
+      },
+      borderRadius: 4,
+    },
+  },
+  disabled: {
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius'], ['padding']],
+    defaultTheme: {
+      width: 220,
+      height: 32,
+      border: {
+        borderColor: lightGreyColor,
+        borderStyle: 'solid',
+        borderWidth: '1px',
+      },
+      padding: { left: 15, right: 25 },
+      background: {
+        backgroundColor: disableColor,
+        backgroundImage: 'none',
+      },
+      borderRadius: 4,
+    },
   },
   css: css`
-    ${getSize};
-    ${getCursor};
-    ${getWidth};
-    ${getInputBorderRadius};
-    ${getInputBorderSize};
-    border-style: solid;
-    border-color: ${getInputBorderColor};
+    width: ${em(220)};
+    height: ${em(32)};
+    outline: none;
     line-height: 1.5;
-    font-size: 1.4rem;
     display: inline-block;
     font-family: inherit;
-    &:hover {
-      border-color: ${getInputBorderHoverColor};
-    }
-
     transition: all 0.3s;
     background-image: none;
-    ${getFontColor};
     &::placeholder {
       color: #ccc;
     }
-    &:focus {
-      ${getFocusBorderColor};
-      ${getFocusShadow};
-    }
-
-    padding-left: ${getPadding};
-    padding-right: ${getRightPadding};
-    ${getBackground};
   `,
 });
 
@@ -130,16 +187,77 @@ const BaseInputContainer = styled.span`
   position: relative;
   display: inline-block;
 `;
-const InputContainer = styled(BaseInputContainer)`
-  ${getMargin};
-`;
+const InputContainer = CSSProvider({
+  tag: 'div',
+  normal: {
+    selectNames: [['width'], ['height'], ['opacity'], ['boxShadow'], ['padding'], ['margin']],
+    defaultTheme: {
+      // border: {
+      //   borderColor: lightGreyColor,
+      //   borderStyle: 'solid',
+      //   borderWidth: '1px',
+      // },
+      opacity: 1,
+      width: 220,
+      height: 32,
+    },
+  },
+  hover: {
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['boxShadow'], ['opacity']],
+    defaultTheme: {
+      border: {
+        borderColor: themeColor,
+        borderStyle: 'solid',
+        borderWidth: '1px',
+      },
+      opacity: 1,
+      width: 220,
+      height: 32,
+    },
+  },
+  clicked: {
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['boxShadow'], ['opacity']],
+    defaultTheme: {
+      width: 220,
+      height: 32,
+      boxShadow: `0px 0px 6px ${themeColor};`,
+      border: {
+        borderColor: themeColor,
+        borderStyle: 'solid',
+        borderWidth: '1px',
+      },
+    },
+  },
+  disabled: {
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['boxShadow']],
+    defaultTheme: {
+      backgroundColor: disableColor,
+      border: {
+        borderColor: disableColor,
+        borderStyle: 'solid',
+        borderWidth: '1px',
+      },
+      width: 220,
+      height: 32,
+    },
+  },
+  css: css`
+    width: ${em(220)};
+    height: ${em(32)};
+    z-index: 0;
+    position: relative;
+    display: inline-block;
+    outline: none;
+  `,
+});
 
 export const Input = styled(CommonInputStyle)`
-  outline: none;
-  min-height: 100%;
-  z-index: 1;
   position: relative;
   font-size: 1.2rem;
+
+  &:hover {
+    border-color: ${themeColor};
+  }
 `;
 
 export const InputOnly = styled(CommonInputStyle)`
@@ -192,6 +310,12 @@ ClearButton.displayName = 'ClearButton';
 type InputState = {|
   value: string,
   clearButtonShow: boolean,
+  themeState: {
+    normal?: boolean,
+    clicked: boolean,
+    hover: boolean,
+    disabled: boolean,
+  },
 |};
 
 type InputProps = {|
@@ -254,7 +378,7 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value, defaultValue } = nextProps;
+    let { value, defaultValue, disabled } = nextProps;
     const hasValueInprops = 'value' in nextProps;
     value = fixControlledValue(value);
 
@@ -262,6 +386,11 @@ class TextBox extends Component<InputProps, InputState> {
       return {
         value: hasValueInprops ? value : defaultValue,
         clearButtonShow: false,
+        themeState: {
+          clicked: false,
+          disabled,
+          hover: false,
+        },
       };
     }
     if (hasValueInprops) {
@@ -338,15 +467,18 @@ class TextBox extends Component<InputProps, InputState> {
   getInputContainer(fetcher: Function) {
     const { getTheme, disabled } = this.props;
 
-    const { themeState, themeConfig } = getTheme();
+    const { themeConfig = {} } = getTheme();
+    console.log(themeConfig, 'themeConfig');
     const {
-      hover: hoverState = false,
-      disabled: disabledState = false,
-      click: clickState = false,
-    } = themeState;
-    console.log(getTheme(), 'getTheme11');
+      themeState = {
+        normal: true,
+        hover: false,
+        clicked: false,
+        disabled,
+      },
+    } = getTheme();
     return (
-      <InputContainer theme={themeConfig} disabled={disabled}>
+      <InputContainer themeConfig={themeConfig} disabled={disabled}>
         {fetcher()}
       </InputContainer>
     );
@@ -454,10 +586,22 @@ class TextBox extends Component<InputProps, InputState> {
     if (formatter && parser) {
       value = formatter(value);
     }
-    const { themeState, themeConfig } = getTheme();
+    const {
+      themeState = {
+        normal: true,
+        hover: false,
+        clicked: false,
+        disabled,
+      },
+      themeConfig,
+    } = getTheme();
+    const theThemeState = getTheme() === true ? themeState : this.state.themeState;
+    console.log(this.state.themeState, 'this.state.themeState', getTheme === true);
+    console.log(theThemeState, themeConfig, 'theThemeState');
+    console.log(themeConfig, 'theThemeconfig');
     return (
       <Input
-        themeState={themeState}
+        themeState={theThemeState}
         themeConfig={themeConfig}
         autoFocus={autoFocus}
         ref={node => (this.input = node)}
@@ -480,9 +624,45 @@ class TextBox extends Component<InputProps, InputState> {
         parser={parser}
         readOnly={readOnly}
         type={type}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
       />
     );
   }
+  onMouseEnter = () => {
+    const { getTheme } = this.props;
+    const {
+      themeState = {
+        normal: true,
+        hover: false,
+        clicked: false,
+        disabled: false,
+      },
+    } = getTheme();
+    if (themeState.hover === true || themeState.disabled === true) {
+      return;
+    }
+
+    this.setState({
+      themeState: { ...this.state.themeState, hover: true },
+    });
+  };
+
+  onMouseLeave = () => {
+    const { getTheme } = this.props;
+    const {
+      themeState = {
+        normal: true,
+        hover: false,
+        clicked: false,
+        disabled: false,
+      },
+    } = getTheme();
+
+    this.setState({
+      themeState: { ...this.state.themeState, hover: false },
+    });
+  };
 
   onKeyDown = (event: KeyboardEvent) => {
     const { onKeyDown, onEnter } = this.props;

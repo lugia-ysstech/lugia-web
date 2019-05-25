@@ -13,7 +13,7 @@ import Card from '../card';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import CSSProvider, { getClassName } from './CSSProvider.js';
-
+const themeColor = '#4d63ff';
 const Button = CSSProvider({
   tag: 'button',
   normal: {
@@ -41,7 +41,6 @@ const Child = CSSProvider({
   },
   hover: {
     selectNames: [['backgroundColor']],
-    default: { backgroundColor: 'black' },
   },
   css: css`
     width: 60px;
@@ -121,7 +120,6 @@ class Demo extends React.Component<any, any> {
               border: {
                 borderWidth: '2px',
                 borderStyle: 'solid',
-                borderColor: 'black',
               },
               margin: { top: 20 },
             },
@@ -145,59 +143,47 @@ class InputDemo extends React.Component<any, any> {
   render() {
     const config = {
       input: {
-        themeState: { normal: true, hover: false, click: false, disabled: false },
+        themeState: { normal: true, hover: false, click: false, disabled: true },
         themeConfig: {
           normal: {
-            width: 100,
-            height: 20,
+            width: 500,
+            height: 50,
             backgroundColor: 'white',
             border: {
               borderWidth: 1,
               borderStyle: 'solid',
-              borderColor: 'blue',
+              borderColor: 'gray',
             },
             background: {
-              backgroundColor: 'black',
+              backgroundColor: 'white',
             },
-            fontSize: '20px',
-            font: {
-              fontWeight: 900,
-              fontStyle: 'solid',
-              fontSize: 16,
-            },
-            opacity: 0.3,
-            boxShadow: '0px 0px 6px gray inset;',
-            color: 'red',
-            margin: { left: 10 },
-            padding: { top: 20 },
+            borderRadius: 5,
           },
           hover: {
-            width: 200,
-            height: 30,
-            backgroundColor: 'red',
-            boxShadow: '0px 0px 6px blue inset;',
-          },
-          clicked: {
-            width: 300,
-            height: 40,
-            backgroundColor: 'yellow',
+            width: 500,
+            height: 50,
             border: {
               borderWidth: 1,
               borderStyle: 'solid',
-              borderColor: 'black',
+              borderColor: themeColor,
             },
+          },
+          clicked: {
+            width: 500,
+            height: 50,
+          },
+          disabled: {
+            width: 500,
+            height: 50,
+            backgroundColor: 'gray',
           },
         },
       },
     };
-    return (
-      <Theme config={config}>
-        <Input viewClass={'input'} />
-      </Theme>
-    );
+    return <Input viewClass={'input'} />;
   }
 }
 
 export default () => {
-  return [<Demo />, <InputDemo />];
+  return <InputDemo />;
 };
