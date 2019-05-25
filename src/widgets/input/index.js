@@ -293,11 +293,7 @@ const Clear = 'lugia-icon-reminder_close';
 
 const ClearButton: Object = CSSProvider({
   extend: Icon,
-  normal: {
-    getCSS(theme: Object) {
-      return theme.color === 'red' ? 'color: blue;' : 'color: green;';
-    },
-  },
+  normal: {},
   hover: {
     selectNames: [['color']],
     defaultTheme: {
