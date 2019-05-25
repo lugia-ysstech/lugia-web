@@ -17,10 +17,16 @@ type HeightType = number | string;
 type MarginType = { top?: number, right?: number, bottom?: number, left?: number };
 type PaddingType = { top?: number, right?: number, bottom?: number, left?: number };
 
-type BorderType = {
+type BorderInnerType = {
+  borderColor?: number,
   borderWidth?: string,
   borderStyle?: string,
-  borderColor?: string,
+};
+type BorderType = {
+  top?: BorderInnerType,
+  right?: BorderInnerType,
+  bottom?: BorderInnerType,
+  left?: BorderInnerType,
 };
 type ColorType = string;
 type OpacityType = number;
@@ -33,6 +39,8 @@ type BoxShadowType = string;
 type FontType = { fontStyle: string, fontWeight: number, fontSize: number };
 type FontSizeType = string;
 type BorderRadiusType = string | number;
+type VisibilityType = 'visible' | 'hidden' | 'collapse';
+type CursorType = 'Default' | 'Pointer' | 'text' | 'wait' | 'help' | 'Auto' | 'not-allowed';
 
 const DefaultFontSize = 1.2;
 const em = px2emcss(DefaultFontSize);
@@ -51,6 +59,8 @@ type ThemeMeta = {
   backgroundColor?: ColorType,
   fontSize?: FontSizeType,
   borderRadius?: BorderRadiusType,
+  visibility?: VisibilityType,
+  cursor?: CursorType,
 };
 
 type ThemeConfig = {
@@ -62,7 +72,7 @@ type ThemeConfig = {
 };
 
 // 目前state类型
-type TagType = 'span' | 'a' | 'input' | 'li' | 'button' | 'div';
+type TagType = 'span' | 'a' | 'input' | 'li' | 'button' | 'div' | 'i';
 type StateType = 'normal' | 'clicked' | 'hover' | 'disabled';
 type ThemeState = { clicked: boolean, disabled: boolean, hover: boolean };
 
@@ -197,6 +207,46 @@ function getObjectStyleFromTheme(obj: Object) {
   return obj;
 }
 
+function getBorderStyleFromTheme(border) {
+  if (!border) return {};
+  const DefaultBorderWidth = '1px';
+  const DefaultBorderStyle = 'solid';
+  const DefaultBorderColor = 'red';
+
+  const borderTop = getAttributeFromObject(border, 'top', {});
+  const borderBottom = getAttributeFromObject(border, 'bottom', {});
+  const borderLeft = getAttributeFromObject(border, 'left', {});
+  const borderRight = getAttributeFromObject(border, 'right', {});
+
+  const borderTopWidth = getAttributeFromObject(borderTop, 'borderWidth', DefaultBorderWidth);
+  const borderTopStyle = getAttributeFromObject(borderTop, 'borderStyle', DefaultBorderStyle);
+  const borderTopColor = getAttributeFromObject(borderTop, 'borderColor', DefaultBorderColor);
+  const borderBottomWidth = getAttributeFromObject(borderBottom, 'borderWidth', DefaultBorderWidth);
+  const borderBottomStyle = getAttributeFromObject(borderBottom, 'borderStyle', DefaultBorderStyle);
+  const borderBottomColor = getAttributeFromObject(borderBottom, 'borderColor', DefaultBorderColor);
+  const borderLeftWidth = getAttributeFromObject(borderLeft, 'borderWidth', DefaultBorderWidth);
+  const borderLeftStyle = getAttributeFromObject(borderLeft, 'borderStyle', DefaultBorderStyle);
+  const borderLeftColor = getAttributeFromObject(borderLeft, 'borderColor', DefaultBorderColor);
+  const borderRightWidth = getAttributeFromObject(borderRight, 'borderWidth', DefaultBorderWidth);
+  const borderRightStyle = getAttributeFromObject(borderRight, 'borderStyle', DefaultBorderStyle);
+  const borderRightColor = getAttributeFromObject(borderRight, 'borderColor', DefaultBorderColor);
+  return Object.assign(
+    {},
+    { borderTopWidth },
+    { borderTopStyle },
+    { borderTopColor },
+    { borderBottomWidth },
+    { borderBottomStyle },
+    { borderBottomColor },
+    { borderLeftWidth },
+    { borderLeftStyle },
+    { borderLeftColor },
+    { borderRightWidth },
+    { borderRightStyle },
+    { borderRightColor }
+  );
+}
+
 function getStringStyleFromTheme(stringStyle: string) {
   const theStringStyle = stringStyle && typeof stringStyle === 'string' ? stringStyle : '';
   return theStringStyle;
@@ -221,6 +271,8 @@ function themeMeta2Style(theme: ThemeMeta): Object {
     padding,
     boxShadow,
     borderRadius,
+    visibility,
+    cursor,
   } = theme;
   const style = {};
 
@@ -231,17 +283,18 @@ function themeMeta2Style(theme: ThemeMeta): Object {
   setStyleValue(style, 'color', color, getStringStyleFromTheme);
   setStyleValue(style, 'opacity', opacity, getNumberStyleFromTheme);
   setStyleValue(style, 'boxShadow', boxShadow, getStringStyleFromTheme);
+  setStyleValue(style, 'visibility', visibility, getStringStyleFromTheme);
+  setStyleValue(style, 'cursor', cursor, getStringStyleFromTheme);
   setStyleValue(style, 'padding', padding, (target: Object) =>
     getSpaceFromTheme('padding', target)
   );
   setStyleValue(style, 'margin', margin, (target: Object) => getSpaceFromTheme('margin', target)); //  fontSize传入
   setStyleValue(style, 'borderRadius', borderRadius, getSizeFromTheme);
-
   Object.assign(
     style,
     getObjectStyleFromTheme(font),
     getObjectStyleFromTheme(background),
-    getObjectStyleFromTheme(border)
+    getBorderStyleFromTheme(border)
   );
   return style;
 }
@@ -312,7 +365,9 @@ export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<str
 
 function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: ThemeMeta) => Object {
   const getThemeMetaByConfig = getThemeMeta(cssConfig, stateType);
+
   return (themeMeta: ThemeMeta) => {
+    console.log(getThemeMetaByConfig(themeMeta), 'getThemeMetaByConfig');
     return themeMeta2Style(getThemeMetaByConfig(themeMeta));
   };
 }
@@ -502,6 +557,7 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   const getStyleByThemeMeta = createGetStyleFromPropsAndCSSConfig(cssConfig);
   const getDefaultStyle = createGetStyleByDefaultThemeMeta(cssConfig);
   return styledElement.attrs((props: CSSProps) => {
+    console.log(getStyleByThemeMeta(props), 'getStyleByThemeMeta');
     return { style: deepMerge(getStyleByThemeMeta(props), getTheStyle(props)) };
   })`
     ${css}
