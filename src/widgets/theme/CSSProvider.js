@@ -18,7 +18,7 @@ type MarginType = { top?: number, right?: number, bottom?: number, left?: number
 type PaddingType = { top?: number, right?: number, bottom?: number, left?: number };
 
 type BorderInnerType = {
-  borderColor?: number,
+  borderColor?: string,
   borderWidth?: string,
   borderStyle?: string,
 };
@@ -209,42 +209,29 @@ function getObjectStyleFromTheme(obj: Object) {
 
 function getBorderStyleFromTheme(border) {
   if (!border) return {};
-  const DefaultBorderWidth = '1px';
-  const DefaultBorderStyle = 'solid';
-  const DefaultBorderColor = 'red';
 
   const borderTop = getAttributeFromObject(border, 'top', {});
   const borderBottom = getAttributeFromObject(border, 'bottom', {});
   const borderLeft = getAttributeFromObject(border, 'left', {});
   const borderRight = getAttributeFromObject(border, 'right', {});
 
-  const borderTopWidth = getAttributeFromObject(borderTop, 'borderWidth', DefaultBorderWidth);
-  const borderTopStyle = getAttributeFromObject(borderTop, 'borderStyle', DefaultBorderStyle);
-  const borderTopColor = getAttributeFromObject(borderTop, 'borderColor', DefaultBorderColor);
-  const borderBottomWidth = getAttributeFromObject(borderBottom, 'borderWidth', DefaultBorderWidth);
-  const borderBottomStyle = getAttributeFromObject(borderBottom, 'borderStyle', DefaultBorderStyle);
-  const borderBottomColor = getAttributeFromObject(borderBottom, 'borderColor', DefaultBorderColor);
-  const borderLeftWidth = getAttributeFromObject(borderLeft, 'borderWidth', DefaultBorderWidth);
-  const borderLeftStyle = getAttributeFromObject(borderLeft, 'borderStyle', DefaultBorderStyle);
-  const borderLeftColor = getAttributeFromObject(borderLeft, 'borderColor', DefaultBorderColor);
-  const borderRightWidth = getAttributeFromObject(borderRight, 'borderWidth', DefaultBorderWidth);
-  const borderRightStyle = getAttributeFromObject(borderRight, 'borderStyle', DefaultBorderStyle);
-  const borderRightColor = getAttributeFromObject(borderRight, 'borderColor', DefaultBorderColor);
-  return Object.assign(
-    {},
-    { borderTopWidth },
-    { borderTopStyle },
-    { borderTopColor },
-    { borderBottomWidth },
-    { borderBottomStyle },
-    { borderBottomColor },
-    { borderLeftWidth },
-    { borderLeftStyle },
-    { borderLeftColor },
-    { borderRightWidth },
-    { borderRightStyle },
-    { borderRightColor }
-  );
+  const style = {};
+
+  function setBorderStyle(target: Object, name: string) {
+    const borderTopWidth = getAttributeFromObject(target, 'borderWidth');
+    setStyleValue(style, `${name}Width`, borderTopWidth, always(borderTopWidth));
+
+    const borderTopStyle = getAttributeFromObject(target, 'borderStyle');
+    setStyleValue(style, `${name}Style`, borderTopStyle, always(borderTopStyle));
+
+    const borderColor = getAttributeFromObject(target, 'borderColor');
+    setStyleValue(style, `${name}Color`, borderColor, always(borderColor));
+  }
+  setBorderStyle(borderTop, 'borderTop');
+  setBorderStyle(borderBottom, 'borderBottom');
+  setBorderStyle(borderLeft, 'borderLeft');
+  setBorderStyle(borderRight, 'borderRight');
+  return style;
 }
 
 function getStringStyleFromTheme(stringStyle: string) {
@@ -367,7 +354,6 @@ function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: Them
   const getThemeMetaByConfig = getThemeMeta(cssConfig, stateType);
 
   return (themeMeta: ThemeMeta) => {
-    console.log(getThemeMetaByConfig(themeMeta), 'getThemeMetaByConfig');
     return themeMeta2Style(getThemeMetaByConfig(themeMeta));
   };
 }
@@ -415,25 +401,32 @@ function createGetStyleFromPropsAndCSSConfig(cssConfig: CSSConfig) {
       props,
       (cssConfig: CSSConfig, stateType: StateType): Function => {
         return packStyle(cssConfig, stateType);
-      }
+      },
+      'developer'
     );
   };
 }
 
 function getStyleValue(beforeValue: any, nextValue: any) {
-  return Object.assign(beforeValue, nextValue);
+  return Object.assign({}, beforeValue, nextValue);
 }
 
 function getStyleFromPropsAndCSSConfigByHook(
   cssConfig: CSSConfig,
   props: CSSProps,
-  createGetStyle: (cssConfig: CSSConfig, stateType: StateType) => Function
+  createGetStyle: (cssConfig: CSSConfig, stateType: StateType) => Function,
+  source: any
 ) {
-  return getInfoFromPropsAndCSSConfigByHook(cssConfig, props, {
-    createGetStyle,
-    initVal: {},
-    getValue: getStyleValue,
-  });
+  return getInfoFromPropsAndCSSConfigByHook(
+    cssConfig,
+    props,
+    {
+      createGetStyle,
+      initVal: {},
+      getValue: getStyleValue,
+    },
+    source
+  );
 }
 
 function getInfoFromPropsAndCSSConfigByHook(
@@ -443,7 +436,8 @@ function getInfoFromPropsAndCSSConfigByHook(
     createGetStyle: (cssConfig: CSSConfig, stateType: StateType) => Function,
     initVal: any,
     getValue: (beforeValue: any, nextValue: any) => any,
-  }
+  },
+  source: any
 ) {
   const { createGetStyle, initVal, getValue } = opt;
   const { themeProps } = props;
@@ -455,27 +449,40 @@ function getInfoFromPropsAndCSSConfigByHook(
   return stateTypes.reduce((beforeValue: any, stateType: StateType) => {
     const { [stateType]: themeMeta = {} } = themeConfig;
     const getStyle = createGetStyle(cssConfig, stateType);
-    return getValue(beforeValue, getStyle(themeMeta));
+    const current = getStyle(themeMeta);
+    const result = getValue(beforeValue, current);
+    console.info(
+      'generateStyleOrCSS' + String(cssConfig.tag) + '_' + stateType + '_' + source,
+      beforeValue,
+      current,
+      result
+    );
+    return result;
   }, initVal);
 }
 
 function getCSSFromPropsAndCSSConfigByHook(
   cssConfig: CSSConfig,
   props: CSSProps,
-  createGetStyle: (cssConfig: CSSConfig, stateType: StateType) => Function
+  createGetStyle: (cssConfig: CSSConfig, stateType: StateType) => Function,
+  source: string
 ) {
-  return getInfoFromPropsAndCSSConfigByHook(cssConfig, props, {
-    createGetStyle,
-    initVal: '',
-    getValue(beforeValue: any, nextValue: any) {
-      return `${beforeValue}${nextValue}`;
+  return getInfoFromPropsAndCSSConfigByHook(
+    cssConfig,
+    props,
+    {
+      createGetStyle,
+      initVal: '',
+      getValue(beforeValue: any, nextValue: any) {
+        return `${beforeValue}${nextValue}`;
+      },
     },
-  });
+    source
+  );
 }
 
 const always = (val: any) => () => val;
 const alwaysEmptyString = always('');
-const alwaysEmptyObject = always({});
 
 export function createGetUserDefineCSS(cssConfig: CSSConfig) {
   return (props: CSSProps): string => {
@@ -495,7 +502,8 @@ export function createGetUserDefineCSS(cssConfig: CSSConfig) {
           return alwaysEmptyString;
         }
         return getCSS;
-      }
+      },
+      'defaultCSS'
     );
   };
 }
@@ -506,6 +514,7 @@ export function createGetUserDefineStyle(cssConfig: CSSConfig) {
       cssConfig,
       props,
       (cssConfig: CSSConfig, stateType: StateType): Function => {
+        const alwaysEmptyObject = always({});
         if (!cssConfig) {
           return alwaysEmptyObject;
         }
@@ -518,31 +527,38 @@ export function createGetUserDefineStyle(cssConfig: CSSConfig) {
           return alwaysEmptyObject;
         }
         return getStyle;
-      }
+      },
+      'userDefine'
     );
   };
 }
 
 function createGetStyleByDefaultThemeMeta(cssConfig: CSSConfig) {
   return (props: CSSProps): string => {
-    return getInfoFromPropsAndCSSConfigByHook(cssConfig, props, {
-      createGetStyle(cssConfig: CSSConfig, stateType: StateType): Function {
-        if (!cssConfig || stateType === 'hover') {
-          return alwaysEmptyObject;
-        }
-        const cssMeta = cssConfig[stateType];
-        if (!cssMeta) {
-          return alwaysEmptyObject;
-        }
-        const { defaultTheme } = cssMeta;
-        if (!defaultTheme) {
-          return alwaysEmptyObject;
-        }
-        return always(themeMeta2Style(defaultTheme));
+    return getInfoFromPropsAndCSSConfigByHook(
+      cssConfig,
+      props,
+      {
+        createGetStyle(cssConfig: CSSConfig, stateType: StateType): Function {
+          const alwaysEmptyObject = always({});
+          if (!cssConfig || stateType === 'hover') {
+            return alwaysEmptyObject;
+          }
+          const cssMeta = cssConfig[stateType];
+          if (!cssMeta) {
+            return alwaysEmptyObject;
+          }
+          const { defaultTheme } = cssMeta;
+          if (!defaultTheme) {
+            return alwaysEmptyObject;
+          }
+          return always(themeMeta2Style(defaultTheme));
+        },
+        initVal: {},
+        getValue: getStyleValue,
       },
-      initVal: {},
-      getValue: getStyleValue,
-    });
+      'defaultTheme'
+    );
   };
 }
 
@@ -556,10 +572,28 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   const getTheStyle = createGetUserDefineStyle(cssConfig);
   const getStyleByThemeMeta = createGetStyleFromPropsAndCSSConfig(cssConfig);
   const getDefaultStyle = createGetStyleByDefaultThemeMeta(cssConfig);
-  return styledElement.attrs((props: CSSProps) => {
-    console.log(getStyleByThemeMeta(props), 'getStyleByThemeMeta');
+
+  const attrsHook = (props: CSSProps) => {
     return { style: deepMerge(getStyleByThemeMeta(props), getTheStyle(props)) };
-  })`
+  };
+
+  if (extend) {
+    const CSSComponent = styledElement`
+    ${css}
+    ${getCSS(getDefaultStyle)}
+    ${getTheCSS}
+  `;
+
+    return class extends React.Component<any, any> {
+      render() {
+        const { props } = this;
+        const style = attrsHook(props);
+        return <CSSComponent {...props} {...style} />;
+      }
+    };
+  }
+
+  return styledElement.attrs(attrsHook)`
     ${css}
     ${getCSS(getDefaultStyle)}
     ${getTheCSS}
