@@ -64,9 +64,14 @@ type ThemeConfig = {
 // 目前state类型
 type TagType = 'span' | 'a' | 'input' | 'li' | 'button' | 'div';
 type StateType = 'normal' | 'clicked' | 'hover' | 'disabled';
+type ThemeState = { clicked: boolean, disabled: boolean, hover: boolean };
+
 type ThemeProps = {
-  themeState: { click: boolean, disabled: boolean, hover: boolean },
+  themeState: ThemeState,
   themeConfig: ThemeConfig,
+};
+type CSSProps = {
+  themeProps: ThemeProps,
 };
 type CSSMeta = {
   selectNames?: Array<string[]>, // 默认不设置是取全部属性
@@ -76,7 +81,8 @@ type CSSMeta = {
   defaultTheme?: ThemeMeta, // 自己写的样式
 };
 type CSSConfig = {
-  tag: TagType,
+  tag?: TagType,
+  extend?: Object,
   css: any, // 这个是要去 css 模板的写法
   normal?: CSSMeta,
   clicked?: CSSMeta,
@@ -137,6 +143,7 @@ export function packObject(path: string[], value: any): Object {
 
   return result;
 }
+
 function getSizeFromTheme(size: WidthType | HeightType | BorderRadiusType) {
   const theSize =
     typeof size === 'string' && size.indexOf('%') > -1
@@ -146,6 +153,7 @@ function getSizeFromTheme(size: WidthType | HeightType | BorderRadiusType) {
       : '';
   return theSize;
 }
+
 const DefaultSpace = 0;
 export const getSpaceFromTheme = (
   spaceType: 'margin' | 'padding',
@@ -183,58 +191,69 @@ export const getSpaceFromTheme = (
   }
   return theSpace;
 };
+
 function getObjectStyleFromTheme(obj: Object) {
   if (!obj) return {};
   return obj;
 }
+
 function getStringStyleFromTheme(stringStyle: string) {
   const theStringStyle = stringStyle && typeof stringStyle === 'string' ? stringStyle : '';
   return theStringStyle;
 }
+
 function getNumberStyleFromTheme(numberStyle: number) {
   const theNumberStyle = numberStyle && typeof numberStyle === 'number' ? numberStyle : 0;
   return theNumberStyle;
 }
+
 //todo
 function themeMeta2Style(theme: ThemeMeta): Object {
   const {
-    backgroundColor = '',
-    background = {},
-    border = {},
-    width = 0,
-    height = 0,
-    font = {},
-    fontSize = '12px',
-    color = '',
-    opacity = 1,
-    margin = {},
-    padding = {},
-    boxShadow = '',
-    borderRadius = 0,
+    background,
+    border,
+    width,
+    height,
+    font,
+    fontSize,
+    color,
+    opacity,
+    margin,
+    padding,
+    boxShadow,
+    borderRadius,
   } = theme;
-  console.log(width, 111);
   // todo  themeProps 转化 style 对象
   // width,height 转em
   // 内部含有对象的 都得根据自己的对象规则 转化成Style对象 用驼峰命名
   const style = {};
   style.fontSize = fontSize ? getStringStyleFromTheme(fontSize) : '12px';
-  style.width = getSizeFromTheme(width);
-  style.height = getSizeFromTheme(height);
-  style.color = getStringStyleFromTheme(color);
-  style.backgroundColor = getStringStyleFromTheme(backgroundColor);
-  style.opacity = opacity ? getNumberStyleFromTheme(opacity) : 1;
-  style.boxShadow = getStringStyleFromTheme(boxShadow);
-  style.padding = getSpaceFromTheme('padding', padding);
-  style.margin = getSpaceFromTheme('margin', margin);
-  style.borderRadius = getSizeFromTheme(borderRadius);
+
+  setStyleValue(style, 'width', width, getSizeFromTheme);
+  setStyleValue(style, 'height', height, getSizeFromTheme);
+
+  setStyleValue(style, 'color', color, getStringStyleFromTheme);
+  setStyleValue(style, 'opacity', opacity, getNumberStyleFromTheme);
+  setStyleValue(style, 'boxShadow', boxShadow, getStringStyleFromTheme);
+  setStyleValue(style, 'padding', padding, (target: Object) =>
+    getSpaceFromTheme('padding', target)
+  );
+  setStyleValue(style, 'margin', margin, (target: Object) => getSpaceFromTheme('margin', target));
+  setStyleValue(style, 'borderRadius', borderRadius, getSizeFromTheme);
+
   Object.assign(
     style,
     getObjectStyleFromTheme(font),
     getObjectStyleFromTheme(background),
     getObjectStyleFromTheme(border)
   );
-  console.log(style, 11111111111111);
   return style;
+}
+
+function setStyleValue(style: Object, name: string, value: any, cb: Function) {
+  if (value) {
+    style[name] = cb(value);
+  }
 }
 
 export function style2css(style: Object): string {
@@ -258,7 +277,6 @@ export function getThemeMeta(
   stateType: StateType
 ): (theme: ThemeMeta) => ThemeMeta {
   return (theme: ThemeMeta): ThemeMeta => {
-    console.log(theme, 'getThemeMeta cssConfig', cssConfig);
     if (!theme) {
       return {};
     }
@@ -266,7 +284,6 @@ export function getThemeMeta(
       return theme;
     }
     const config = cssConfig[stateType];
-    console.log(config, 'getThemeMeta config');
 
     if (!config) {
       return theme;
@@ -303,13 +320,10 @@ function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: Them
 let enabledClassNameBool = false;
 
 function getStyle(cssConfig: CSSConfig) {
-  return (props: ThemeProps) => {
-    const { normalStyle, clickedStyle, disabledStyle, hoverStyle } = getStyleFromPropsAndCSSConfig(
-      cssConfig,
-      props
-    );
-
-    return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
+  return (props: CSSProps) => {
+    return {
+      style: getStyleFromPropsAndCSSConfig(cssConfig, props),
+    };
   };
 }
 
@@ -322,63 +336,144 @@ export function getClassName(className: string): string {
 }
 
 function getCSS(getStyle: Function) {
-  return (props: ThemeProps) => {
+  return (props: CSSProps) => {
     const { style } = getStyle(props);
     return css`
       ${style2css(style)}
     `;
   };
 }
-function getStyleFromPropsAndCSSConfig(cssConfig, props) {
-  const getNormalStyle = packStyle(cssConfig, 'normal');
-  const getClickedStyle = packStyle(cssConfig, 'clicked');
-  const getHoverStyle = packStyle(cssConfig, 'hover');
-  const getDisabledStyle = packStyle(cssConfig, 'disabled');
-  const { themeState = {}, themeConfig = {} } = props;
-  const { normal = {}, clicked = {}, disabled = {}, hover = {} } = themeConfig;
-  const {
-    hover: hoverState = false,
-    disabled: disabledState = false,
-    click: clickState = false,
-  } = themeState;
-  const normalStyle = getNormalStyle(normal);
-  const clickedStyle = clickState ? getClickedStyle(clicked) : {};
-  const disabledStyle = disabledState ? getDisabledStyle(disabled) : {};
-  const hoverStyle = hoverState ? getHoverStyle(hover) : {};
-  return {
-    normalStyle,
-    clickedStyle,
-    disabledStyle,
-    hoverStyle,
-  };
+
+function getStateTypes(themeState: ThemeState = {}): StateType[] {
+  const res = ['normal'];
+
+  const { hover = false, disabled = false, clicked = false } = themeState;
+
+  if (hover) {
+    res.push('hover');
+  }
+  if (clicked) {
+    res.push('clicked');
+  }
+  if (disabled) {
+    res.push('disabled');
+  }
+  return res;
 }
+
+function getStyleFromPropsAndCSSConfig(cssConfig: CSSConfig, props: CSSProps) {
+  return getStyleFromPropsAndCSSConfigByHook(
+    cssConfig,
+    props,
+    (cssConfig: CSSConfig, stateType: StateType): Function => {
+      return packStyle(cssConfig, stateType);
+    }
+  );
+}
+
+function getStyleFromPropsAndCSSConfigByHook(
+  cssConfig: CSSConfig,
+  props: CSSProps,
+  createGetStyle: (cssConfig: CSSConfig, stateType: StateType) => Function
+) {
+  return getInfoFromPropsAndCSSConfigByHook(cssConfig, props, {
+    createGetStyle,
+    initVal: {},
+    getValue(beforeValue: any, nextValue: any) {
+      return Object.assign(beforeValue, nextValue);
+    },
+  });
+}
+
+function getInfoFromPropsAndCSSConfigByHook(
+  cssConfig: CSSConfig,
+  props: CSSProps,
+  opt: {
+    createGetStyle: (cssConfig: CSSConfig, stateType: StateType) => Function,
+    initVal: any,
+    getValue: (beforeValue: any, nextValue: any) => any,
+  }
+) {
+  const { createGetStyle, initVal, getValue } = opt;
+  const { themeProps } = props;
+  const { themeState } = themeProps;
+
+  const stateTypes = getStateTypes(themeState);
+
+  const { themeConfig = {} } = themeProps;
+  return stateTypes.reduce((beforeValue: any, stateType: StateType) => {
+    const { [stateType]: themeMeta = {} } = themeConfig;
+    const getStyle = createGetStyle(cssConfig, stateType);
+    return getValue(beforeValue, getStyle(themeMeta));
+  }, initVal);
+}
+
+function getCSSFromPropsAndCSSConfigByHook(
+  cssConfig: CSSConfig,
+  props: CSSProps,
+  createGetStyle: (cssConfig: CSSConfig, stateType: StateType) => Function
+) {
+  return getInfoFromPropsAndCSSConfigByHook(cssConfig, props, {
+    createGetStyle,
+    initVal: '',
+    getValue(beforeValue: any, nextValue: any) {
+      return `${beforeValue}${nextValue}`;
+    },
+  });
+}
+const alwaysEmptyString = () => '';
 
 export function getUserDefineCSS(cssConfig: CSSConfig) {
-  return (props: ThemeProps): string => {
-    const { normalStyle, clickedStyle, disabledStyle, hoverStyle } = getStyleFromPropsAndCSSConfig(
+  return (props: CSSProps): string => {
+    return getCSSFromPropsAndCSSConfigByHook(
       cssConfig,
-      props
+      props,
+      (cssConfig: CSSConfig, stateType: StateType): Function => {
+        if (!cssConfig) {
+          return alwaysEmptyString;
+        }
+        const cssMeta = cssConfig[stateType];
+        if (!cssMeta) {
+          return alwaysEmptyString;
+        }
+        const { getCSS } = cssMeta;
+        if (!getCSS) {
+          return alwaysEmptyString;
+        }
+        return getCSS;
+      }
     );
-    const style = Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle);
-    return css`
-      ${style2css(style)}
-    `;
   };
 }
 
+const alwaysEmptyObject = () => ({});
+
 export function getUserDefineStyle(cssConfig: CSSConfig) {
-  return (props: ThemeProps): Object => {
-    const { normalStyle, clickedStyle, disabledStyle, hoverStyle } = getStyleFromPropsAndCSSConfig(
+  return (props: CSSProps): Object => {
+    return getStyleFromPropsAndCSSConfigByHook(
       cssConfig,
-      props
+      props,
+      (cssConfig: CSSConfig, stateType: StateType): Function => {
+        if (!cssConfig) {
+          return alwaysEmptyObject;
+        }
+        const cssMeta = cssConfig[stateType];
+        if (!cssMeta) {
+          return alwaysEmptyObject;
+        }
+        const { getStyle } = cssMeta;
+        if (!getStyle) {
+          return alwaysEmptyObject;
+        }
+        return getStyle;
+      }
     );
-    return { style: Object.assign(normalStyle, clickedStyle, disabledStyle, hoverStyle) };
   };
 }
 
 export default function CSSProvider(cssConfig: CSSConfig) {
-  const { tag, css } = cssConfig;
-  const styledElement = styled[tag];
+  const { tag = 'span', css, extend } = cssConfig;
+  const styledElement = extend ? styled(extend) : styled[tag];
   if (!styledElement) {
     throw new Error(`Not support tag: ${tag}`);
   }
@@ -386,8 +481,8 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   const getTheStyle = getUserDefineStyle(cssConfig);
   const getStyleByThemeMeta = getStyle(cssConfig);
 
-  return styledElement.attrs((themeProps: ThemeProps) => {
-    return deepMerge(getStyleByThemeMeta(themeProps), { style: getTheStyle(themeProps) });
+  return styledElement.attrs((props: CSSProps) => {
+    return deepMerge(getStyleByThemeMeta(props), getTheStyle(props));
   })`
     ${css}
     ${getCSS(getStyleByThemeMeta)}
