@@ -187,7 +187,7 @@ export const getSpaceFromTheme = (
     const spaceBottom = getAttributeFromObject(space, 'bottom', bottom);
     const spaceLeft = getAttributeFromObject(space, 'left', left);
     const spaceRight = getAttributeFromObject(space, 'right', right);
-    return `${em(spaceTop)} ${em(spaceRight)} ${em(spaceBottom)} ${em(spaceLeft)};`;
+    return `${em(spaceTop)} ${em(spaceRight)} ${em(spaceBottom)} ${em(spaceLeft)}`;
   }
   return theSpace;
 };
@@ -207,7 +207,6 @@ function getNumberStyleFromTheme(numberStyle: number) {
   return theNumberStyle;
 }
 
-//todo
 function themeMeta2Style(theme: ThemeMeta): Object {
   const {
     background,
@@ -215,7 +214,7 @@ function themeMeta2Style(theme: ThemeMeta): Object {
     width,
     height,
     font,
-    fontSize,
+    fontSize = DefaultFontSize,
     color,
     opacity,
     margin,
@@ -223,12 +222,9 @@ function themeMeta2Style(theme: ThemeMeta): Object {
     boxShadow,
     borderRadius,
   } = theme;
-  // todo  themeProps 转化 style 对象
-  // width,height 转em
-  // 内部含有对象的 都得根据自己的对象规则 转化成Style对象 用驼峰命名
   const style = {};
-  style.fontSize = fontSize ? getStringStyleFromTheme(fontSize) : '12px';
 
+  setStyleValue(style, 'fontSize', fontSize, getStringStyleFromTheme);
   setStyleValue(style, 'width', width, getSizeFromTheme);
   setStyleValue(style, 'height', height, getSizeFromTheme);
 
@@ -238,7 +234,7 @@ function themeMeta2Style(theme: ThemeMeta): Object {
   setStyleValue(style, 'padding', padding, (target: Object) =>
     getSpaceFromTheme('padding', target)
   );
-  setStyleValue(style, 'margin', margin, (target: Object) => getSpaceFromTheme('margin', target));
+  setStyleValue(style, 'margin', margin, (target: Object) => getSpaceFromTheme('margin', target)); //  fontSize传入
   setStyleValue(style, 'borderRadius', borderRadius, getSizeFromTheme);
 
   Object.assign(
@@ -289,7 +285,11 @@ export function getThemeMeta(
       return theme;
     }
     const { defaultTheme = {}, selectNames = [] } = config;
-    return deepMerge(defaultTheme, getSelectNameThemeMeta(theme, selectNames));
+    const selectNameThemeMeta = getSelectNameThemeMeta(theme, selectNames);
+    if (stateType === 'hover') {
+      return deepMerge(defaultTheme, selectNameThemeMeta);
+    }
+    return selectNameThemeMeta;
   };
 }
 
@@ -319,14 +319,6 @@ function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: Them
 
 let enabledClassNameBool = false;
 
-function getStyle(cssConfig: CSSConfig) {
-  return (props: CSSProps) => {
-    return {
-      style: getStyleFromPropsAndCSSConfig(cssConfig, props),
-    };
-  };
-}
-
 export function enabledClassName() {
   enabledClassNameBool = true;
 }
@@ -336,8 +328,8 @@ export function getClassName(className: string): string {
 }
 
 function getCSS(getStyle: Function) {
-  return (props: CSSProps) => {
-    const { style } = getStyle(props);
+  return function(props: CSSProps) {
+    const style = getStyle(props);
     return css`
       ${style2css(style)}
     `;
@@ -361,14 +353,20 @@ function getStateTypes(themeState: ThemeState = {}): StateType[] {
   return res;
 }
 
-function getStyleFromPropsAndCSSConfig(cssConfig: CSSConfig, props: CSSProps) {
-  return getStyleFromPropsAndCSSConfigByHook(
-    cssConfig,
-    props,
-    (cssConfig: CSSConfig, stateType: StateType): Function => {
-      return packStyle(cssConfig, stateType);
-    }
-  );
+function createGetStyleFromPropsAndCSSConfig(cssConfig: CSSConfig) {
+  return function(props: CSSProps) {
+    return getStyleFromPropsAndCSSConfigByHook(
+      cssConfig,
+      props,
+      (cssConfig: CSSConfig, stateType: StateType): Function => {
+        return packStyle(cssConfig, stateType);
+      }
+    );
+  };
+}
+
+function getStyleValue(beforeValue: any, nextValue: any) {
+  return Object.assign(beforeValue, nextValue);
 }
 
 function getStyleFromPropsAndCSSConfigByHook(
@@ -379,9 +377,7 @@ function getStyleFromPropsAndCSSConfigByHook(
   return getInfoFromPropsAndCSSConfigByHook(cssConfig, props, {
     createGetStyle,
     initVal: {},
-    getValue(beforeValue: any, nextValue: any) {
-      return Object.assign(beforeValue, nextValue);
-    },
+    getValue: getStyleValue,
   });
 }
 
@@ -422,9 +418,11 @@ function getCSSFromPropsAndCSSConfigByHook(
   });
 }
 
-const alwaysEmptyString = () => '';
+const always = (val: any) => () => val;
+const alwaysEmptyString = always('');
+const alwaysEmptyObject = always({});
 
-export function getUserDefineCSS(cssConfig: CSSConfig) {
+export function createGetUserDefineCSS(cssConfig: CSSConfig) {
   return (props: CSSProps): string => {
     return getCSSFromPropsAndCSSConfigByHook(
       cssConfig,
@@ -447,9 +445,7 @@ export function getUserDefineCSS(cssConfig: CSSConfig) {
   };
 }
 
-const alwaysEmptyObject = () => ({});
-
-export function getUserDefineStyle(cssConfig: CSSConfig) {
+export function createGetUserDefineStyle(cssConfig: CSSConfig) {
   return (props: CSSProps): Object => {
     return getStyleFromPropsAndCSSConfigByHook(
       cssConfig,
@@ -472,20 +468,44 @@ export function getUserDefineStyle(cssConfig: CSSConfig) {
   };
 }
 
+function createGetStyleByDefaultThemeMeta(cssConfig: CSSConfig) {
+  return (props: CSSProps): string => {
+    return getInfoFromPropsAndCSSConfigByHook(cssConfig, props, {
+      createGetStyle(cssConfig: CSSConfig, stateType: StateType): Function {
+        if (!cssConfig || stateType === 'hover') {
+          return alwaysEmptyObject;
+        }
+        const cssMeta = cssConfig[stateType];
+        if (!cssMeta) {
+          return alwaysEmptyObject;
+        }
+        const { defaultTheme } = cssMeta;
+        if (!defaultTheme) {
+          return alwaysEmptyObject;
+        }
+        return always(themeMeta2Style(defaultTheme));
+      },
+      initVal: {},
+      getValue: getStyleValue,
+    });
+  };
+}
+
 export default function CSSProvider(cssConfig: CSSConfig) {
   const { tag = 'span', css, extend } = cssConfig;
   const styledElement = extend ? styled(extend) : styled[tag];
   if (!styledElement) {
     throw new Error(`Not support tag: ${tag}`);
   }
-  const getTheCSS = getUserDefineCSS(cssConfig);
-  const getTheStyle = getUserDefineStyle(cssConfig);
-  const getStyleByThemeMeta = getStyle(cssConfig);
+  const getTheCSS = createGetUserDefineCSS(cssConfig);
+  const getTheStyle = createGetUserDefineStyle(cssConfig);
+  const getStyleByThemeMeta = createGetStyleFromPropsAndCSSConfig(cssConfig);
+  const getDefaultStyle = createGetStyleByDefaultThemeMeta(cssConfig);
   return styledElement.attrs((props: CSSProps) => {
-    return deepMerge(getStyleByThemeMeta(props), { style: getTheStyle(props) });
+    return { style: deepMerge(getStyleByThemeMeta(props), getTheStyle(props)) };
   })`
     ${css}
-    ${getCSS(getStyleByThemeMeta)}
+    ${getCSS(getDefaultStyle)}
     ${getTheCSS}
   `;
 }
