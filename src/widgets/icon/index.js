@@ -35,6 +35,7 @@ const IconTag = styled.i`
 type IconProps = {
   className?: string,
   iconClass: string,
+  style: Object,
   onClick?: Function,
   getTheme: Function,
 };
@@ -49,8 +50,21 @@ class Icon extends React.Component<IconProps> {
   };
 
   render() {
-    const { iconClass = 'lugia-icon-logo_lugia', onClick, getTheme, className = '' } = this.props;
-    return <IconTag className={`${iconClass} ${className}`} onClick={onClick} theme={getTheme()} />;
+    const {
+      iconClass = 'lugia-icon-logo_lugia',
+      onClick,
+      getTheme,
+      className = '',
+      style,
+    } = this.props;
+    return (
+      <IconTag
+        className={`${iconClass} ${className}`}
+        onClick={onClick}
+        theme={getTheme()}
+        style={style}
+      />
+    );
   }
 }
 
