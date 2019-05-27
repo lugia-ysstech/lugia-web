@@ -87,8 +87,8 @@ type CSSProps = {
 type CSSMeta = {
   selectNames?: Array<string[]>, // 默认不设置是取全部属性
   cssNames?: string[], // CSS生成的时候默认是使用内联样式 如果需要使用匿名类的属性列在此属性中指定
-  getStyle?: (theme: ThemeConfig) => Object,
-  getCSS?: (theme: ThemeConfig) => string,
+  getStyle?: (theme: ThemeMeta, themeProps: ThemeProps) => Object,
+  getCSS?: (theme: ThemeMeta, themeProps: ThemeProps) => string,
   defaultTheme?: ThemeMeta, // 自己写的样式
 };
 type CSSConfig = {
@@ -457,7 +457,7 @@ function getInfoFromPropsAndCSSConfigByHook(
   return stateTypes.reduce((beforeValue: any, stateType: StateType) => {
     const { [stateType]: themeMeta = {} } = themeConfig;
     const getStyle = createGetStyle(cssConfig, stateType);
-    const current = getStyle(themeMeta);
+    const current = getStyle(themeMeta, props.themeProps);
     const result = getValue(beforeValue, current);
     return result;
   }, initVal);

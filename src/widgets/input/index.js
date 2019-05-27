@@ -260,7 +260,7 @@ const TipBottom = CSSProvider({
       visibility: 'hidden',
     },
 
-    getCSS(themeProps) {
+    getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       console.log(themeProps, 'themeProps');
       const { validateType, validateStatus } = propsConfig;
@@ -495,13 +495,11 @@ class TextBox extends Component<InputProps, InputState> {
         </BaseInputContainer>,
       ];
       console.log('oldThemeprops', this.props.themeProps);
-      const newThemeProps = deepMerge(
-        this.props.themeProps,
-        getPropsConfig(this.props.themeProps, [{ validateType }, { validateStatus }])
-      );
-      console.log('newThemeProps', newThemeProps);
+      this.props.themeProps.propsConfig = { validateType, validateStatus };
       result.push(
-        <TipBottom themeProps={newThemeProps}>{this.isValidateError() ? help : ''}</TipBottom>
+        <TipBottom themeProps={this.props.themeProps}>
+          {this.isValidateError() ? help : ''}
+        </TipBottom>
       );
       return result;
     }
