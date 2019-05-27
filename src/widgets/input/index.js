@@ -12,7 +12,7 @@ import { FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import CSSProvider from '../theme/CSSProvider';
+import CSSProvider, { deepMerge } from '../theme/CSSProvider';
 import colorsFunc from '../css/stateColor';
 
 const { themeColor, disableColor, lightGreyColor } = colorsFunc();
@@ -259,6 +259,17 @@ const TipBottom = CSSProvider({
     defaultTheme: {
       visibility: 'hidden',
     },
+
+    getCSS(themeProps) {
+      const { propsConfig } = themeProps;
+      console.log(themeProps, 'themeProps');
+      const { validateType, validateStatus } = propsConfig;
+      return `
+      visibility:${
+        isValidateSuccess(validateStatus, validateType, 'bottom') ? 'visible' : 'hidden'
+      };
+      `;
+    },
   },
 });
 
@@ -350,6 +361,13 @@ type InputProps = {|
   type: string,
 |};
 
+function getPropsConfig(themeProps: Object, arrayProps: Array<Object>): Object {
+  themeProps.propsConfig = {};
+  arrayProps.forEach(child => {
+    Object.assign(themeProps.propsConfig, child);
+  });
+  return { ...themeProps };
+}
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     disabled: false,
@@ -462,7 +480,6 @@ class TextBox extends Component<InputProps, InputState> {
 
   getInputContainer(fetcher: Function) {
     const { themeProps } = this.props;
-
     return <InputContainer themeProps={themeProps}>{fetcher()}</InputContainer>;
   }
 
@@ -477,15 +494,14 @@ class TextBox extends Component<InputProps, InputState> {
           {this.generateSuffix()}
         </BaseInputContainer>,
       ];
-
+      console.log('oldThemeprops', this.props.themeProps);
+      const newThemeProps = deepMerge(
+        this.props.themeProps,
+        getPropsConfig(this.props.themeProps, [{ validateType }, { validateStatus }])
+      );
+      console.log('newThemeProps', newThemeProps);
       result.push(
-        <TipBottom
-          themeProps={this.props.themeProps}
-          validateStatus={validateStatus}
-          validateType={validateType}
-        >
-          {this.isValidateError() ? help : ''}
-        </TipBottom>
+        <TipBottom themeProps={newThemeProps}>{this.isValidateError() ? help : ''}</TipBottom>
       );
       return result;
     }
