@@ -86,6 +86,7 @@ const RateText = CSSProvider({
     vertical-align: text-bottom !important;
     opacity: 1;
     color: ${getColor};
+    cursor: pointer;
     &.hoverd:hover {
       transform: scale(1.2);
     }
@@ -221,8 +222,8 @@ const isLeft = (offsetX: number, offsetWidth: number, x: number): boolean => {
 
 const getReturnObj = (state: Object, multiple: number) => {
   return {
-    defaultValue: state.value,
-    currentValue: multiple >= 0 ? multiple : 0,
+    oldValue: state.value,
+    newValue: multiple >= 0 ? multiple : 0,
   };
 };
 const loop = () => true;
@@ -259,8 +260,6 @@ class Rate extends React.Component<RateProps, any> {
 
   componentDidMount() {
     this.saveState();
-    const { onChange, value = 0 } = this.props;
-    onChange({}, getReturnObj(this.state, value));
   }
 
   saveState() {
@@ -332,7 +331,7 @@ class Rate extends React.Component<RateProps, any> {
     const { offsetLeft, offsetWidth } = this.getOffset(i);
     const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
 
-    const { onChange, classify } = this.props;
+    const { classify } = this.props;
     const { count, current } = this.state;
     const classNames = getClassNames(count, starCount, !!classify);
 
@@ -342,20 +341,19 @@ class Rate extends React.Component<RateProps, any> {
       const { hasClick } = this.state;
       this.setValue(starCount, classNames, current, hasClick);
     }
-
-    onChange(e, getReturnObj(this.state, multipleValue(this.props, starCount)));
+    this.doExportChange(getReturnObj(this.state, multipleValue(this.props, starCount)));
   };
 
   mouseLeave = (e: Object) => {
     const { props } = this;
-    const { onChange } = props;
+
     const { current } = this.state;
 
     const temporary = this.getTemporary();
     if (temporary) {
       const { value, count } = temporary;
       this.setValue(value, count, current, false);
-      onChange(e, getReturnObj(this.state, multipleValue(props, current)));
+      this.doExportChange(getReturnObj(this.state, multipleValue(props, current)));
       return;
     }
 
@@ -363,7 +361,7 @@ class Rate extends React.Component<RateProps, any> {
     const { count } = props;
     const classNames = createCalssArray(count);
     this.setValue(0, classNames, current, hasClick);
-    onChange(e, getReturnObj(this.state, multipleValue(props, 0)));
+    this.doExportChange(getReturnObj(this.state, multipleValue(props, 0)));
   };
 
   getTemporary = () => {
@@ -443,7 +441,8 @@ class Rate extends React.Component<RateProps, any> {
     this.setValue(val, classNames, index, hasClicked);
 
     const { onClick } = props;
-    onClick(e, getReturnObj(state, multipleValue(props, val)));
+    const { newValue, oldValue } = getReturnObj(state, multipleValue(props, val));
+    onClick(newValue, oldValue);
   };
   setValue = (val: number, count: Array<string>, index: number, hasClick: boolean) => {
     this.setState(
@@ -463,6 +462,15 @@ class Rate extends React.Component<RateProps, any> {
         }
       }
     );
+  };
+
+  doExportChange = (resValue: Object) => {
+    const { newValue, oldValue } = resValue;
+    if (newValue === oldValue) {
+      return;
+    }
+    const { onChange } = this.props;
+    onChange && onChange(newValue, oldValue);
   };
 }
 

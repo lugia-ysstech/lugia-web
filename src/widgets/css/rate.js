@@ -13,7 +13,7 @@ export const getFontSize = (props: Object) => {
 
 export const getCharacter = (props: Object) => {
   const { character } = props;
-  return character;
+  return `'${character}'`;
 };
 
 const defaultColor = {
