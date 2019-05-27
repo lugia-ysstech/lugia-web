@@ -352,15 +352,18 @@ exports[`Progress css 1`] = `
 
 .c0 {
   font-size: 1.4rem;
+  min-width: 4.285714285714286em;
 }
 
 .c15 {
   font-size: 1.4rem;
+  min-width: 4.285714285714286em;
   width: 8.333333333333334em;
 }
 
 .c17 {
   font-size: 1.2rem;
+  min-width: 4.666666666666667em;
 }
 
 .c28 {
@@ -576,6 +579,7 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      type="line"
     >
       <div
         className="c1"
@@ -604,6 +608,7 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      type="line"
     >
       <div
         className="c1"
@@ -632,6 +637,7 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      type="line"
     >
       <div
         className="c1"
@@ -660,6 +666,7 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      type="line"
     >
       <div
         className="c1"
@@ -690,6 +697,7 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      type="line"
     >
       <div
         className="c1"
@@ -720,6 +728,7 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      type="line"
     >
       <div
         className="c1"
@@ -748,6 +757,7 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      type="line"
     >
       <div
         className="c1"
@@ -811,6 +821,7 @@ exports[`Progress css 1`] = `
     <div
       className="c0"
       size="default"
+      type="line"
     >
       <div
         className="c14"
@@ -831,6 +842,7 @@ exports[`Progress css 1`] = `
     <div
       className="c15"
       size="default"
+      type="line"
     >
       <div
         className="c1"
@@ -865,6 +877,7 @@ exports[`Progress css 1`] = `
       <div
         className="c17"
         size="small"
+        type="line"
       >
         <div
           className="c18"
@@ -893,6 +906,7 @@ exports[`Progress css 1`] = `
       <div
         className="c17"
         size="small"
+        type="line"
       >
         <div
           className="c18"
@@ -921,6 +935,7 @@ exports[`Progress css 1`] = `
       <div
         className="c17"
         size="small"
+        type="line"
       >
         <div
           className="c18"
@@ -951,6 +966,7 @@ exports[`Progress css 1`] = `
       <div
         className="c17"
         size="small"
+        type="line"
       >
         <div
           className="c18"
@@ -981,6 +997,7 @@ exports[`Progress css 1`] = `
       <div
         className="c17"
         size="small"
+        type="line"
       >
         <div
           className="c18"
@@ -1019,6 +1036,7 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        type="line"
       >
         <div
           className="c14"
@@ -1047,6 +1065,7 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        type="line"
       >
         <div
           className="c14"
@@ -1075,6 +1094,7 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        type="line"
       >
         <div
           className="c14"
@@ -1103,6 +1123,7 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        type="line"
       >
         <div
           className="c14"
@@ -1133,6 +1154,7 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        type="line"
       >
         <div
           className="c14"
@@ -1164,6 +1186,7 @@ exports[`Progress css 1`] = `
       <div
         className="c0"
         size="default"
+        type="line"
       >
         <div
           className="c14"
@@ -1193,6 +1216,7 @@ exports[`Progress css 1`] = `
       <div
         className="c15"
         size="default"
+        type="line"
       >
         <div
           className="c14"

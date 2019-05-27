@@ -48,6 +48,7 @@ const ButtonOut = styled.button`
   position: relative;
   text-transform: none;
   outline: 0;
+  ${props => (props.block ? 'width: 100%;' : '')}
   &:hover {
     ${hoverStyle}
   }
@@ -160,6 +161,7 @@ export default ThemeProvider(
             onMouseOver,
             onMouseUp,
             onMouseDown,
+            block,
           } = this.props;
           const { clicked } = this.state;
           let em = px2emcss(1.4);
@@ -184,6 +186,7 @@ export default ThemeProvider(
               onMouseDown={onMouseDown}
               themes={getTheme()}
               em={em}
+              block={block}
             >
               <ChildrenSpan em={em} size={size} type={type} plain={plain}>
                 {this.handleChildren()}

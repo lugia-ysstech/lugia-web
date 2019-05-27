@@ -15,6 +15,7 @@ import ThemeProvider from '../theme-provider';
 import { getContentPosition } from '../css/tabs';
 
 const ContentContainer = styled.div`
+  position: absolute;
   display: inline-block;
   overflow: hidden;
   width: 100%;

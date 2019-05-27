@@ -201,7 +201,6 @@ const HTabsOutContainer = styled.div`
   ${getContainerBorder};
   background: ${backgroundColor};
   ${getContainerPadding};
-  margin: ${em(20)} 0;
   z-index: 99;
 `;
 
@@ -215,7 +214,6 @@ const VTabsOutContainer = styled.div`
   white-space: nowrap;
   overflow: hidden;
   height: 100%;
-  margin: 0 ${em(20)};
 `;
 const PageIcon: Object = styled(Icon)`
   display: inline-block;
@@ -225,21 +223,6 @@ const PageIcon: Object = styled(Icon)`
   ${getCursor};
 `;
 PageIcon.displayName = 'page';
-
-const defaultData = [
-  {
-    title: 'Tab1',
-    content: 'content of Tab1',
-  },
-  {
-    title: 'Tab2',
-    content: 'content of Tab2',
-  },
-  {
-    title: 'Tab3',
-    content: 'content of Tab3',
-  },
-];
 
 type TabsState = {|
   activityValue: string,
@@ -281,7 +264,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     tabType: 'line',
     tabPosition: 'top',
     pagedType: 'single',
-    defaultData,
+    defaultData: [],
   };
   tabs: any;
   static displayName = Widget.Tabs;
@@ -625,7 +608,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
           const content = getAttributeFromObject(
             child,
             'content',
-            getAttributeFromObject(child.props, 'content', undefined)
+            getAttributeFromObject(
+              child.props,
+              'content',
+              getAttributeFromObject(child, 'children', undefined)
+            )
           );
           return (
             <TabContent

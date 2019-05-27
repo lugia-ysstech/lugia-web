@@ -106,13 +106,12 @@ export const hContainerWidth = props => {
 export const vContainerHeight = props => {
   const { theme } = props;
   const { height } = theme;
-  return `${em(height)};`;
+  const theHeight = height && height !== 0 ? em(height) : '';
+  return `${theHeight};`;
 };
 export const hContainerHeight = props => {
-  const { tabType, theme } = props;
-  const { height } = theme;
-  const theHeight =
-    height && height !== 0 ? em(height) : matchType(tabType, 'window') ? em(38) : em(34);
+  const { tabType } = props;
+  const theHeight = matchType(tabType, 'window') ? em(38) : em(34);
   return theHeight;
 };
 export const lineWidth = props => {

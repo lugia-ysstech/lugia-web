@@ -116,8 +116,9 @@ export default ThemeProvider(
               disabled={disabled}
               theme={getTheme()}
               hover={hover}
+              headerHeight={headerHeight}
             >
-              <PanelContent showArrow={showArrow} hover={hover}>
+              <PanelContent showArrow={showArrow} hover={hover} hasChildren={!!children}>
                 {children}
               </PanelContent>
             </PanelContentWrap>

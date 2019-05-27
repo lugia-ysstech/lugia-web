@@ -9,6 +9,7 @@ import styled, { css, keyframes } from 'styled-components';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
 import { createGetWidthOrHeight } from '../common/ThemeUtils';
+import { getAttributeFromObject } from '../common/ObjectUtils';
 
 type IconType = 'confirm' | 'info' | 'success' | 'warning' | 'error';
 type FunctionPropsType = {
@@ -27,6 +28,7 @@ export type ModalProps = {
   footer?: string | React.ReactNode,
   maskClosable?: boolean,
   getTheme: Function,
+  mask?: boolean,
 } & FunctionPropsType;
 export type ModalState = {
   visible: boolean,
@@ -65,7 +67,9 @@ export const Wrap = styled.div`
   font-size: ${FontSize}rem;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
   z-index: 99999;
 `;
 const getAnimate = (props: CSSProps) => {
@@ -137,6 +141,25 @@ export const Modal = styled.div`
   z-index: 99999;
   ${getAnimate};
 `;
+
+const getPadding = (props: CSSProps) => {
+  const { theme = {}, showIcon } = props;
+  const { padding } = theme;
+  const defaultLeft = showIcon ? 50 : 30;
+  if (padding) {
+    if (typeof padding === 'number') {
+      return `padding: ${em(padding)};`;
+    }
+    const top = getAttributeFromObject(padding, 'top', 30);
+    const right = getAttributeFromObject(padding, 'right', 30);
+    const bottom = getAttributeFromObject(padding, 'bottom', 30);
+    const left = getAttributeFromObject(padding, 'left', defaultLeft);
+
+    return `padding: ${em(top)} ${em(right)} ${em(bottom)} ${em(left)};`;
+  }
+  return `padding: ${em(30)} ${em(30)} ${em(30)} ${em(defaultLeft)};`;
+};
+
 export const ModalContent = styled.div`
   position: relative;
   background-color: #fff;
@@ -144,6 +167,7 @@ export const ModalContent = styled.div`
   border-radius: ${em(4)};
   box-shadow: 0 ${em(4)} ${em(12)} rgba(0, 0, 0, 0.15);
   ${props => (props.showIcon ? `padding-left: ${em(20)};` : '')};
+  ${getPadding};
 `;
 export const ModalClose = styled.div`
   position: absolute;
@@ -156,7 +180,7 @@ export const ModalClose = styled.div`
   line-height: ${em(64)};
 `;
 export const ModalTitle = styled.div`
-  padding: ${specialEM(30)} ${specialEM(80)} ${specialEM(16)} ${specialEM(30)};
+  padding-bottom: ${specialEM(16)};
   border-radius: ${specialEM(4)} ${specialEM(4)} 0 0;
   background: #fff;
   color: ${blackColor};
@@ -164,12 +188,11 @@ export const ModalTitle = styled.div`
   font-weight: 500;
 `;
 export const ModalBody = styled.div`
-  padding: 0 ${em(80)} 0 ${em(30)};
   color: ${darkGreyColor};
   word-wrap: break-word;
 `;
 export const ModalFooter = styled.div`
-  padding: ${em(22)} ${em(80)} ${em(26)} ${em(30)};
+  padding-top: ${em(22)};
   border-radius: 0 0 4px 4px;
   & > button {
     margin-left: ${em(14)};

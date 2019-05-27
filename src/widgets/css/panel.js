@@ -38,6 +38,7 @@ export type PanelProps = {
 export type PanelState = BasicStateType;
 type CSSProps = {
   theme: ThemeType,
+  hasChildren?: boolean,
 } & BasicPropsType &
   BasicStateType;
 
@@ -146,43 +147,45 @@ export const PanelHeader = styled.div`
   ${getColorCSS};
 `;
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing, headerHeight = 0 } = props;
-  let { height } = props;
-  height = height + headerHeight;
+  const { open, opening, closing, headerHeight = 0, theme } = props;
+  const { height: themeHeight } = theme;
+  const { height: propsHeight } = props;
+  const theHeight = themeHeight ? themeHeight - headerHeight : propsHeight;
+  const openHeight = themeHeight ? em(themeHeight - headerHeight) : '100%';
   const OpenKeyframe = keyframes`
     from {
-      height: ${em(headerHeight)};
+      height: ${em(0)};
     }
     to {
-      height: ${height}px;
+      height: ${theHeight}px;
     }
   `;
   const CloseKeyframe = keyframes`
     from {
-      height: ${height}px;
+      height: ${theHeight}px;
     }
     to {
-      height: ${em(headerHeight)};
+      height: ${em(0)};
     }
   `;
   if (opening) {
     return css`
-      height: ${height}px;
+      height: ${theHeight}px;
       animation: ${OpenKeyframe} 0.5s;
     `;
   }
   if (closing) {
     return css`
-      height: ${height}px;
+      height: ${theHeight}px;
       animation: ${CloseKeyframe} 0.5s;
     `;
   }
   if (open) {
     return `
-     height: 100%;`;
+     height: ${openHeight};`;
   }
   return `
-    height: ${em(headerHeight)};
+    height: ${em(0)};
   `;
 };
 const getContenColor = (props: CSSProps): string => {
@@ -201,7 +204,10 @@ const getContenColor = (props: CSSProps): string => {
     `;
 };
 const getContentPadding = (props: CSSProps): string => {
-  const { showArrow, hover } = props;
+  const { showArrow, hasChildren } = props;
+  if (!hasChildren) {
+    return '';
+  }
   if (showArrow) {
     return `
      padding: ${em(6)} ${em(30)} ${em(22)} ${em(34)};

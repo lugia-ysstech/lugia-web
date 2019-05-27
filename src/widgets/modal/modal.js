@@ -71,6 +71,7 @@ export default ThemeProvider(
         showIcon = false,
         iconType = 'info',
         getTheme,
+        mask = true,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -84,10 +85,12 @@ export default ThemeProvider(
       }
       return (
         <Wrap visible={closing ? true : visible}>
-          <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
+          {mask ? (
+            <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
+          ) : null}
           <ModalWrap>
             <Modal closing={closing} opening={opening} theme={getTheme()}>
-              <ModalContent showIcon={showIcon}>
+              <ModalContent showIcon={showIcon} theme={getTheme()}>
                 {showIcon ? (
                   <BigIcons iconClass={IconInfo[iconType].class} iconType={iconType} />
                 ) : (
@@ -95,26 +98,23 @@ export default ThemeProvider(
                     <Icons iconClass="lugia-icon-reminder_close" />
                   </ModalClose>
                 )}
-                <ModalTitle>{title}</ModalTitle>
+                {title !== null && <ModalTitle>{title}</ModalTitle>}
                 <ModalBody>{children}</ModalBody>
-                <ModalFooter>
-                  {this.isInprops('footer')
-                    ? footer
-                    : [
-                        <Theme config={view}>
-                          <Button
-                            onClick={this.handleOk}
-                            loading={confirmLoading}
-                            {...footerBtnProps}
-                          >
-                            {okText}
-                          </Button>
-                        </Theme>,
-                        <Theme config={view}>
-                          <Button onClick={this.handleCancel}>{cancelText}</Button>
-                        </Theme>,
-                      ]}
-                </ModalFooter>
+
+                {this.isInprops('footer') ? (
+                  footer
+                ) : (
+                  <ModalFooter>
+                    <Theme config={view}>
+                      <Button onClick={this.handleOk} loading={confirmLoading} {...footerBtnProps}>
+                        {okText}
+                      </Button>
+                    </Theme>
+                    <Theme config={view}>
+                      <Button onClick={this.handleCancel}>{cancelText}</Button>
+                    </Theme>
+                  </ModalFooter>
+                )}
               </ModalContent>
             </Modal>
           </ModalWrap>

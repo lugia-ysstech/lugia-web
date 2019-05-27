@@ -15,7 +15,9 @@ exports[`Modal css 1`] = `
   font-size: 1.4rem;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
   z-index: 99999;
 }
 
@@ -33,10 +35,9 @@ exports[`Modal css 1`] = `
 
 .c4 {
   position: fixed;
-  top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
+  margin: auto;
   z-index: 99999;
 }
 
@@ -56,6 +57,25 @@ exports[`Modal css 1`] = `
   border: 0;
   border-radius: 0.28571428571428575em;
   box-shadow: 0 0.28571428571428575em 0.8571428571428572em rgba(0,0,0,0.15);
+  padding: 2.142857142857143em 2.142857142857143em 2.142857142857143em 2.142857142857143em;
+}
+
+.c17 {
+  position: relative;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0.28571428571428575em;
+  box-shadow: 0 0.28571428571428575em 0.8571428571428572em rgba(0,0,0,0.15);
+  padding: 3.5714285714285716em;
+}
+
+.c18 {
+  position: relative;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0.28571428571428575em;
+  box-shadow: 0 0.28571428571428575em 0.8571428571428572em rgba(0,0,0,0.15);
+  padding: 2.142857142857143em 7.142857142857143em 2.142857142857143em 7.142857142857143em;
 }
 
 .c7 {
@@ -70,7 +90,7 @@ exports[`Modal css 1`] = `
 }
 
 .c10 {
-  padding: 1.875em 5em 1em 1.875em;
+  padding-bottom: 1em;
   border-radius: 0.25em 0.25em 0 0;
   background: #fff;
   color: #333333;
@@ -79,13 +99,12 @@ exports[`Modal css 1`] = `
 }
 
 .c11 {
-  padding: 0 5.714285714285714em 0 2.142857142857143em;
   color: #666666;
   word-wrap: break-word;
 }
 
 .c12 {
-  padding: 1.5714285714285716em 5.714285714285714em 1.8571428571428574em 2.142857142857143em;
+  padding-top: 1.5714285714285716em;
   border-radius: 0 0 4px 4px;
 }
 
@@ -735,11 +754,87 @@ exports[`Modal css 1`] = `
           >
             这是内容！
           </div>
+          <button
+            className="c16"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            size="default"
+            type="primary"
+          >
+            <span
+              className="c14"
+              size="default"
+              type="primary"
+            >
+              自定义页脚
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+  >
+    <span
+      className="c1"
+      size="default"
+    >
+      ThemeModal
+    </span>
+  </button>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onClick={[Function]}
+    />
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+      >
+        <div
+          className="c17"
+        >
+          <div
+            className="c7"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c8 c9"
+            />
+          </div>
+          <div
+            className="c10"
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+          >
+            这是内容！
+          </div>
           <div
             className="c12"
           >
             <button
-              className="c16"
+              className="c13"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -754,7 +849,121 @@ exports[`Modal css 1`] = `
                 size="default"
                 type="primary"
               >
-                自定义页脚
+                确定
+              </span>
+            </button>
+            <button
+              className="c15"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+            >
+              <span
+                className="c1"
+                size="default"
+              >
+                取消
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+  >
+    <span
+      className="c1"
+      size="default"
+    >
+      ThemeModal
+    </span>
+  </button>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onClick={[Function]}
+    />
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+      >
+        <div
+          className="c18"
+        >
+          <div
+            className="c7"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c8 c9"
+            />
+          </div>
+          <div
+            className="c10"
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+          >
+            这是内容！
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c13"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              type="primary"
+            >
+              <span
+                className="c14"
+                size="default"
+                type="primary"
+              >
+                确定
+              </span>
+            </button>
+            <button
+              className="c15"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+            >
+              <span
+                className="c1"
+                size="default"
+              >
+                取消
               </span>
             </button>
           </div>

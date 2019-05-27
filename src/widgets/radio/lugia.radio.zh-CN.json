@@ -49,5 +49,6 @@
       }
     }
   },
+  "childrenWidget": ["radio-group"],
   "category": ["数据录入"]
 }

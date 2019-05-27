@@ -154,7 +154,8 @@ export const getContentTextAlign = (props: Object) => {
 };
 
 export const getContentPadding = (props: Object) => {
-  return `padding-left: ${em(getContentPaddingLeft(props))}`;
+  return `padding-left: ${em(getContentPaddingLeft(props))};
+  padding-right: ${em(getContentPaddingLeft(props))};`;
 };
 
 function getContentPaddingLeft(props: Object) {
