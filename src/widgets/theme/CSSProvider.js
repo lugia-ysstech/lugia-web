@@ -374,6 +374,9 @@ export function getClassName(className: string): string {
 }
 
 function getCSS(getStyle: Function) {
+  if (!getStyle) {
+    return undefined;
+  }
   return function(props: CSSProps) {
     const style = getStyle(props);
     return css`
@@ -456,12 +459,6 @@ function getInfoFromPropsAndCSSConfigByHook(
     const getStyle = createGetStyle(cssConfig, stateType);
     const current = getStyle(themeMeta);
     const result = getValue(beforeValue, current);
-    console.info(
-      'generateStyleOrCSS' + String(cssConfig.tag) + '_' + stateType + '_' + source,
-      beforeValue,
-      current,
-      result
-    );
     return result;
   }, initVal);
 }
@@ -490,6 +487,10 @@ const always = (val: any) => () => val;
 const alwaysEmptyString = always('');
 
 export function createGetUserDefineCSS(cssConfig: CSSConfig) {
+  const { normal = {}, hover = {}, clicked = {}, disabled = {} } = cssConfig;
+  if (!normal.getCSS && !hover.getCSS && !clicked.getCSS && !disabled.getCSS) {
+    return '';
+  }
   return (props: CSSProps): string => {
     return getCSSFromPropsAndCSSConfigByHook(
       cssConfig,
@@ -539,6 +540,11 @@ export function createGetUserDefineStyle(cssConfig: CSSConfig) {
 }
 
 function createGetStyleByDefaultThemeMeta(cssConfig: CSSConfig) {
+  const { normal = {}, clicked = {}, disabled = {} } = cssConfig;
+
+  if (!normal.defaultTheme && !clicked.defaultTheme && !disabled.defaultTheme) {
+    return undefined;
+  }
   return (props: CSSProps): string => {
     return getInfoFromPropsAndCSSConfigByHook(
       cssConfig,
@@ -576,12 +582,12 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   const getTheCSS = createGetUserDefineCSS(cssConfig);
   const getTheStyle = createGetUserDefineStyle(cssConfig);
   const getStyleByThemeMeta = createGetStyleFromPropsAndCSSConfig(cssConfig);
-  const getDefaultStyle = createGetStyleByDefaultThemeMeta(cssConfig);
+  const getStyleByDefaultThemeMeta = createGetStyleByDefaultThemeMeta(cssConfig);
+  const getDefaultStyle = getStyleByDefaultThemeMeta ? getStyleByDefaultThemeMeta : undefined;
 
   const attrsHook = (props: CSSProps) => {
     return { style: deepMerge(getStyleByThemeMeta(props), getTheStyle(props)) };
   };
-
   if (extend) {
     const CSSComponent = styledElement`
     ${css}
