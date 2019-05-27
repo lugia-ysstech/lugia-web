@@ -339,8 +339,11 @@ export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<str
   if (!theme) {
     return {};
   }
-  if (!selectNames || selectNames.length === 0) {
+  if (!selectNames) {
     return theme;
+  }
+  if (selectNames.length === 0) {
+    return {};
   }
   let result = {};
   selectNames.forEach((names: string[]) => {
