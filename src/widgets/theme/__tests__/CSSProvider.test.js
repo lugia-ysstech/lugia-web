@@ -2,7 +2,13 @@
 
 import * as React from 'react';
 import chai from 'chai';
-import { deepMerge, getAttributeValue, packObject, style2css } from '../CSSProvider';
+import {
+  deepMerge,
+  getAttributeValue,
+  packObject,
+  style2css,
+  getSelectNameThemeMeta,
+} from '../CSSProvider';
 
 const { expect: exp } = chai;
 
@@ -73,4 +79,24 @@ describe('CSSProvider', () => {
   });
 
   it('getThemeByConfig', () => {});
+
+  it('getSelectNameThemeMeta selectNames =[]', () => {
+    expect(
+      getSelectNameThemeMeta(
+        {
+          a: 1,
+          b: 2,
+        },
+        []
+      )
+    ).toEqual({});
+  });
+  it('getSelectNameThemeMeta selectNames 不填', () => {
+    expect(
+      getSelectNameThemeMeta({
+        a: 1,
+        b: 2,
+      })
+    ).toEqual({ a: 1, b: 2 });
+  });
 });

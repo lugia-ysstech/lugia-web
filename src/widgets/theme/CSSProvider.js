@@ -87,8 +87,8 @@ type CSSProps = {
 type CSSMeta = {
   selectNames?: Array<string[]>, // 默认不设置是取全部属性
   cssNames?: string[], // CSS生成的时候默认是使用内联样式 如果需要使用匿名类的属性列在此属性中指定
-  getStyle?: (theme: ThemeConfig) => Object,
-  getCSS?: (theme: ThemeConfig) => string,
+  getStyle?: (theme: ThemeMeta, themeProps: ThemeProps) => Object,
+  getCSS?: (theme: ThemeMeta, themeProps: ThemeProps) => string,
   defaultTheme?: ThemeMeta, // 自己写的样式
 };
 type CSSConfig = {
@@ -339,8 +339,11 @@ export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<str
   if (!theme) {
     return {};
   }
-  if (!selectNames || selectNames.length === 0) {
+  if (!selectNames) {
     return theme;
+  }
+  if (selectNames.length === 0) {
+    return {};
   }
   let result = {};
   selectNames.forEach((names: string[]) => {
@@ -371,6 +374,9 @@ export function getClassName(className: string): string {
 }
 
 function getCSS(getStyle: Function) {
+  if (!getStyle) {
+    return undefined;
+  }
   return function(props: CSSProps) {
     const style = getStyle(props);
     return css`
@@ -451,14 +457,8 @@ function getInfoFromPropsAndCSSConfigByHook(
   return stateTypes.reduce((beforeValue: any, stateType: StateType) => {
     const { [stateType]: themeMeta = {} } = themeConfig;
     const getStyle = createGetStyle(cssConfig, stateType);
-    const current = getStyle(themeMeta);
+    const current = getStyle(themeMeta, props.themeProps);
     const result = getValue(beforeValue, current);
-    console.info(
-      'generateStyleOrCSS' + String(cssConfig.tag) + '_' + stateType + '_' + source,
-      beforeValue,
-      current,
-      result
-    );
     return result;
   }, initVal);
 }
@@ -487,6 +487,10 @@ const always = (val: any) => () => val;
 const alwaysEmptyString = always('');
 
 export function createGetUserDefineCSS(cssConfig: CSSConfig) {
+  const { normal = {}, hover = {}, clicked = {}, disabled = {} } = cssConfig;
+  if (!normal.getCSS && !hover.getCSS && !clicked.getCSS && !disabled.getCSS) {
+    return '';
+  }
   return (props: CSSProps): string => {
     return getCSSFromPropsAndCSSConfigByHook(
       cssConfig,
@@ -536,6 +540,11 @@ export function createGetUserDefineStyle(cssConfig: CSSConfig) {
 }
 
 function createGetStyleByDefaultThemeMeta(cssConfig: CSSConfig) {
+  const { normal = {}, clicked = {}, disabled = {} } = cssConfig;
+
+  if (!normal.defaultTheme && !clicked.defaultTheme && !disabled.defaultTheme) {
+    return undefined;
+  }
   return (props: CSSProps): string => {
     return getInfoFromPropsAndCSSConfigByHook(
       cssConfig,
@@ -573,12 +582,12 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   const getTheCSS = createGetUserDefineCSS(cssConfig);
   const getTheStyle = createGetUserDefineStyle(cssConfig);
   const getStyleByThemeMeta = createGetStyleFromPropsAndCSSConfig(cssConfig);
-  const getDefaultStyle = createGetStyleByDefaultThemeMeta(cssConfig);
+  const getStyleByDefaultThemeMeta = createGetStyleByDefaultThemeMeta(cssConfig);
+  const getDefaultStyle = getStyleByDefaultThemeMeta ? getStyleByDefaultThemeMeta : undefined;
 
   const attrsHook = (props: CSSProps) => {
     return { style: deepMerge(getStyleByThemeMeta(props), getTheStyle(props)) };
   };
-
   if (extend) {
     const CSSComponent = styledElement`
     ${css}
