@@ -61,11 +61,14 @@ export const SliderBox = CSSProvider({
 
 export const SliderWrapper = CSSProvider({
   tag: 'div',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     font-size: 1.4rem;
     width: ${props => getSliderWrapperStyle(props).rangeW};
     height: ${props => getSliderWrapperStyle(props).rangeH};
-    background: ${props => getSliderWrapperStyle(props).wrapperBackground};
+    background-color: ${props => getSliderWrapperStyle(props).wrapperBackground};
     border-radius: ${em(6)};
     position: relative;
   `,
@@ -81,15 +84,24 @@ export const SliderInner = CSSProvider({
     transition: ${transitionTime}s;
     ${props => getSliderInnerStyle(props).sliderInnerPosition};
   `,
+  normal: {
+    selectNames: [['background']],
+    defaultTheme: {
+      background: { backgroundColor: themeColor },
+    },
+  },
 });
 
 export const Button = CSSProvider({
   tag: 'span',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     width: ${props => getButtonStyle(props).btnWidth};
     height: ${props => getButtonStyle(props).btnHeight};
     border-radius: 50%;
-    background: ${props => getButtonStyle(props).btnBackground};
+    background-color: ${props => getButtonStyle(props).btnBackground};
     position: absolute;
     ${props => getButtonStyle(props).btnPosition};
   `,
@@ -97,6 +109,9 @@ export const Button = CSSProvider({
 
 export const Tips = CSSProvider({
   tag: 'span',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     font-size: ${em(14)};
     text-align: center;
@@ -109,6 +124,9 @@ export const Tips = CSSProvider({
 });
 export const Tipinner = CSSProvider({
   tag: 'span',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     display: block;
     min-width: ${em(21)};
@@ -124,6 +142,9 @@ export const Tipinner = CSSProvider({
 });
 export const Tiparrow = CSSProvider({
   tag: 'span',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     display: inline-block;
     vertical-align: top;
@@ -135,6 +156,9 @@ export const Tiparrow = CSSProvider({
 });
 export const Dot = CSSProvider({
   tag: 'span',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     border-radius: 50%;
     position: absolute;

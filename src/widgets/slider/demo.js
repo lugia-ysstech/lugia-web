@@ -40,7 +40,13 @@ export default class Sl extends Component<any> {
           <h2 style={{ padding: '20px 0' }}> normal</h2>
           <Theme
             config={{
-              [Widgets.Slider]: { backgroundColor: '#f8ac30', margin: 50, width: 300 },
+              [Widgets.Slider]: {
+                normal: {
+                  background: { backgroundColor: 'red' },
+                  margin: 50,
+                  width: 300,
+                },
+              },
             }}
           >
             <Slider value={value} tips={tipsValue} onChange={this.onchangeFirst} />
