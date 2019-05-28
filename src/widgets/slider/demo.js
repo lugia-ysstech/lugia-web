@@ -38,7 +38,19 @@ export default class Sl extends Component<any> {
       <div style={{ padding: '0 50px' }}>
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> normal</h2>
-          <Slider value={value} tips={tipsValue} onChange={this.onchangeFirst} />
+          <Theme
+            config={{
+              [Widgets.Slider]: {
+                normal: {
+                  background: { backgroundColor: 'red' },
+                  margin: 50,
+                  width: 300,
+                },
+              },
+            }}
+          >
+            <Slider value={value} tips={tipsValue} onChange={this.onchangeFirst} />
+          </Theme>
         </div>
 
         <div style={{ float: 'left', padding: '0 20px 50px' }}>
@@ -50,7 +62,7 @@ export default class Sl extends Component<any> {
           <Theme
             config={{
               [Widgets.SliderButton]: { color: '#f8ac30', width: 30, height: 20 },
-              [Widgets.Slider]: { color: '#000000', margin: 50, width: 300 },
+              [Widgets.Slider]: { color: '#f8ac30', margin: 50, width: 300 },
             }}
           >
             <Slider minValue={undefined} defaultValue={undefined} tips />

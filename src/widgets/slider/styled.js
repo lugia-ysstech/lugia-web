@@ -2,7 +2,7 @@
  * by wangcuixia
  * @flow
  * */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { valueInRange } from '../common/Math';
 import { iconStyles, dotStyles } from './slider_public_size';
@@ -22,6 +22,7 @@ import {
 } from './slider_public_color';
 import Widgets from '../consts';
 import ThemeProvider from '../theme-provider';
+import CSSProvider from '../theme/CSSProvider';
 
 const em = px2emcss(1.4);
 type CssTypeProps = {
@@ -46,90 +47,134 @@ type CssTypeProps = {
   vertical?: boolean,
 };
 const transitionTime = '0.1';
-export const SliderBox = styled.div`
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  display: inline-block;
-  vertical-align: top;
-  ${props => getPaddingSize(props)};
-  ${props => getSliderWrapperStyle(props).MarginValue};
-`;
+export const SliderBox = CSSProvider({
+  tag: 'div',
+  css: css`
+    box-sizing: border-box;
+    font-size: 1.4rem;
+    display: inline-block;
+    vertical-align: top;
+    ${props => getPaddingSize(props)};
+    ${props => getSliderWrapperStyle(props).MarginValue};
+  `,
+});
 
-export const SliderWrapper = styled.div`
-  font-size: 1.4rem;
-  width: ${props => getSliderWrapperStyle(props).rangeW};
-  height: ${props => getSliderWrapperStyle(props).rangeH};
-  background: ${props => getSliderWrapperStyle(props).wrapperBackground};
-  border-radius: ${em(6)};
-  position: relative;
-`;
-export const SliderInner = styled.div`
-  width: ${props => getSliderInnerStyle(props).InnerWidth};
-  height: ${props => getSliderInnerStyle(props).InnerHeight};
-  background: ${props => getSliderInnerStyle(props).innerBackground};
-  border-radius: ${em(6)};
-  position: absolute;
-  transition: ${transitionTime}s;
-  ${props => getSliderInnerStyle(props).sliderInnerPosition};
-`;
+export const SliderWrapper = CSSProvider({
+  tag: 'div',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    font-size: 1.4rem;
+    width: ${props => getSliderWrapperStyle(props).rangeW};
+    height: ${props => getSliderWrapperStyle(props).rangeH};
+    background-color: ${props => getSliderWrapperStyle(props).wrapperBackground};
+    border-radius: ${em(6)};
+    position: relative;
+  `,
+});
+export const SliderInner = CSSProvider({
+  tag: 'div',
+  css: css`
+    width: ${props => getSliderInnerStyle(props).InnerWidth};
+    height: ${props => getSliderInnerStyle(props).InnerHeight};
+    background: ${props => getSliderInnerStyle(props).innerBackground};
+    border-radius: ${em(6)};
+    position: absolute;
+    transition: ${transitionTime}s;
+    ${props => getSliderInnerStyle(props).sliderInnerPosition};
+  `,
+  normal: {
+    selectNames: [['background']],
+    defaultTheme: {
+      background: { backgroundColor: themeColor },
+    },
+  },
+});
 
-export const Button = ThemeProvider(
-  styled.span`
+export const Button = CSSProvider({
+  tag: 'span',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
     width: ${props => getButtonStyle(props).btnWidth};
     height: ${props => getButtonStyle(props).btnHeight};
     border-radius: 50%;
-    background: ${props => getButtonStyle(props).btnBackground};
+    background-color: ${props => getButtonStyle(props).btnBackground};
     position: absolute;
     ${props => getButtonStyle(props).btnPosition};
   `,
-  Widgets.SliderButton
-);
-//Button.displayName = Widgets.SliderButton;
+});
 
-export const Tips = styled.span`
-  font-size: ${em(14)};
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: -${em(40)};
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-`;
-export const Tipinner = styled.span`
-  display: block;
-  min-width: ${em(21)};
-  height: ${em(27)};
-  line-height: ${em(27)};
-  padding: 0 ${em(3)};
-  background: ${tipBackground};
-  color: ${tipColor};
-  border-radius: ${em(3)};
-  user-select: none;
-  -webkit-user-select: none;
-`;
-export const Tiparrow = styled.span`
-  display: inline-block;
-  vertical-align: top;
-  border-top: ${em(6)} solid ${tipBackground};
-  border-left: ${em(5)} solid transparent;
-  border-right: ${em(5)} solid transparent;
-  border-bottom: ${em(5)} solid transparent;
-`;
-export const Dot = styled.span`
-  border-radius: 50%;
-  position: absolute;
-  ${props => getDotStyle(props).dotPosition};  
-  z-index: 1;
-  ${props => getDotStyle(props).dotBackground}; 
-  width: ${props => getDotStyle(props).dotW};
-  height: ${props => getDotStyle(props).dotH};
-  &::before {
-    content: '${props => getDotStyle(props).marskText}';
-    display: block;
+export const Tips = CSSProvider({
+  tag: 'span',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    font-size: ${em(14)};
+    text-align: center;
     position: absolute;
-    ${props => getDotStyle(props).dotTextPosition}
-  }
-`;
+    left: 50%;
+    top: -${em(40)};
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+  `,
+});
+export const Tipinner = CSSProvider({
+  tag: 'span',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    display: block;
+    min-width: ${em(21)};
+    height: ${em(27)};
+    line-height: ${em(27)};
+    padding: 0 ${em(3)};
+    background: ${tipBackground};
+    color: ${tipColor};
+    border-radius: ${em(3)};
+    user-select: none;
+    -webkit-user-select: none;
+  `,
+});
+export const Tiparrow = CSSProvider({
+  tag: 'span',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+    vertical-align: top;
+    border-top: ${em(6)} solid ${tipBackground};
+    border-left: ${em(5)} solid transparent;
+    border-right: ${em(5)} solid transparent;
+    border-bottom: ${em(5)} solid transparent;
+  `,
+});
+export const Dot = CSSProvider({
+  tag: 'span',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    border-radius: 50%;
+    position: absolute;
+    ${props => getDotStyle(props).dotPosition};  
+    z-index: 1;
+    ${props => getDotStyle(props).dotBackground}; 
+    width: ${props => getDotStyle(props).dotW};
+    height: ${props => getDotStyle(props).dotH};
+    &::before {
+      content: '${props => getDotStyle(props).marskText}';
+      display: block;
+      position: absolute;
+      ${props => getDotStyle(props).dotTextPosition}
+    }
+  `,
+});
 export const Icons = ThemeProvider(
   styled.span`
     position: absolute;
@@ -179,8 +224,8 @@ const getSliderWrapperStyle = (props: CssTypeProps) => {
 const getSliderInnerStyle = (props: CssTypeProps) => {
   let { rangeH, SliderInnerWidth, SliderInnerLeft } = props;
   const { vertical, value, disabled, changeBackground, getTheme } = props;
-  const theme = getTheme(props);
-  const background = theme.color || themeColor;
+  //const theme = getTheme(props);
+  const background = themeColor;
   const doneBackground = background; //轨道划过完成的颜色
   const { hoverColor: doingBackground } = colorsFunc(doneBackground);
   const innerBackground = disabled
@@ -218,9 +263,9 @@ const getSliderInnerStyle = (props: CssTypeProps) => {
 const getButtonStyle = (props: CssTypeProps) => {
   const { innerBackground } = getSliderInnerStyle(props);
   const { changeBackground, btnDisabled, disabled, vertical, getTheme } = props;
-  const { color } = getTheme();
-  const background = color || themeColor;
-  const doneBackground = background; //轨道划过完成的颜色
+  // const { color } = getTheme();
+  // const background = color || themeColor;
+  const doneBackground = innerBackground; //轨道划过完成的颜色
   let { btnWidth, btnHeight, moveX, moveY } = props;
   const isChangeBg = changeBackground && btnDisabled;
 
