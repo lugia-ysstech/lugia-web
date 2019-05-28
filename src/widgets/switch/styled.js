@@ -1,10 +1,12 @@
 /*
  * by wangcuixia
  * */
-import styled from 'styled-components';
+import { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
+import CSSProvider from '../theme/CSSProvider';
 import { px2emcss } from '../css/units';
 const em = px2emcss(1.2);
+
 const { themeColor, successColor, dangerColor } = colorsFunc();
 const { disabledColor } = colorsFunc(themeColor);
 type CssProps = {
@@ -63,68 +65,77 @@ const getBackground = (props: Object) => {
     : '#ccc';
   return color;
 };
-export const SwitchWrapper = styled.span`
-  font-size: ${em(12)};
-  box-sizing: border-box;
-  display: inline-block;
-  ${props => getSwitchWrapper(props, 'switchWrapperSize').wrapperCss};
-  border-radius: ${em(20)};
-  background: ${props => getBackground(props)};
-  position: relative;
-  text-align: ${props => (props.value ? 'left' : 'right')};
-  padding: 0 ${em(4)};
-  color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  vertical-align: middle;
-
-  &:focus {
-    outline: none;
-  }
-`;
-export const SwitchText = styled.span`
-  & > *:first-child {
+export const SwitchWrapper = CSSProvider({
+  tag: 'span',
+  css: css`
+    font-size: ${em(12)};
+    box-sizing: border-box;
     display: inline-block;
-    line-height: ${props => getSwitchWrapper(props, 'switchWrapperSize').heightEm};
+    ${props => getSwitchWrapper(props, 'switchWrapperSize').wrapperCss};
+    border-radius: ${em(20)};
+    background: ${props => getBackground(props)};
+    position: relative;
+    text-align: ${props => (props.value ? 'left' : 'right')};
+    padding: 0 ${em(4)};
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    vertical-align: middle;
 
-    &::before {
+    &:focus {
+      outline: none;
+    }
+  `,
+});
+export const SwitchText = CSSProvider({
+  tag: 'span',
+  css: css`
+    & > *:first-child {
+      display: inline-block;
       line-height: ${props => getSwitchWrapper(props, 'switchWrapperSize').heightEm};
+
+      &::before {
+        line-height: ${props => getSwitchWrapper(props, 'switchWrapperSize').heightEm};
+      }
     }
-  }
-`;
-export const SwitchCircle = styled.span`
-  ${props => getSwitchWrapper(props, 'circleSize').wrapperCss};
-  border-radius: ${props => (props.isMouseDown ? `${em(7)}` : '50%')};
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
-  background: #fff;
-  position: absolute;
-  ${props => getStyled(props).position};
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transition: 1s;
-  -webkit-transition: all 0.2s;
+  `,
+});
+export const SwitchCircle = CSSProvider({
+  tag: 'span',
+  css: css`
+    ${props => getSwitchWrapper(props, 'circleSize').wrapperCss};
+    border-radius: ${props => (props.isMouseDown ? `${em(7)}` : '50%')};
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+    background: #fff;
+    position: absolute;
+    ${props => getStyled(props).position};
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transition: 1s;
+    -webkit-transition: all 0.2s;
 
-  & > *:first-child {
-    display: block;
-    color: ${props => getBackground(props)};
-    line-height: ${props => getSwitchWrapper(props, 'circleSize').heightEm};
-    animation: rotate 1.5s linear infinite;
-
-    &::before {
-      transform: scale(0.65);
+    & > *:first-child {
+      display: block;
+      color: ${props => getBackground(props)};
       line-height: ${props => getSwitchWrapper(props, 'circleSize').heightEm};
-    }
-  }
+      animation: rotate 1.5s linear infinite;
 
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
+      &::before {
+        transform: scale(0.65);
+        line-height: ${props => getSwitchWrapper(props, 'circleSize').heightEm};
+      }
     }
-    to {
-      transform: rotate(360deg);
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
-  }
-`;
+  `,
+});
 const getStyled = (props: CssProps) => {
   const { size, isMouseDown, value } = props;
   const normallPosition = (normalSize.height - normallCircleSize.height) / 2;

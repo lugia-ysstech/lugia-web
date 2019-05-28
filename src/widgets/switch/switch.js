@@ -144,7 +144,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
   }
   render() {
     const { isMouseDown, value, text } = this.state;
-    const { isInverse, size, disabled, loading } = this.props;
+    const { isInverse, size, disabled, loading, themeProps } = this.props;
     const isabled = !disabled && !loading;
     const switchTabIndex = disabled ? NO_TAB_INDEX : TAB_INDEX;
     const config = {
@@ -154,8 +154,8 @@ class Switch extends React.Component<TypeProps, TypeState> {
       disabled,
       loading,
       isInverse,
+      themeProps,
     };
-    //console.log(text);
     return (
       <SwitchWrapper
         onMouseDown={isabled ? this.mousedown : null}
