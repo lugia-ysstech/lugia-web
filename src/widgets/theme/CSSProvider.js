@@ -72,7 +72,7 @@ type ThemeConfig = {
 };
 
 // 目前state类型
-type TagType = 'span' | 'a' | 'input' | 'li' | 'button' | 'div' | 'i';
+type TagType = 'span' | 'a' | 'input' | 'li' | 'button' | 'div' | 'i' | 'ul';
 type StateType = 'normal' | 'clicked' | 'hover' | 'disabled';
 type ThemeState = { clicked: boolean, disabled: boolean, hover: boolean };
 

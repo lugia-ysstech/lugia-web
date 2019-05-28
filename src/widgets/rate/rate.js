@@ -63,19 +63,41 @@ const RateIcon = CSSProvider({
     opacity: 1;
     color: ${getColor};
     font-size: ${getFontSize};
-    &.bottom {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      z-index: -1;
+    &.hoverd:hover {
+      transform: scale(1.2);
+      ${getAnimation};
     }
   `,
-  hover: {
-    selectNames: [['color'], ['transition']],
+  normal: {
+    selectNames: [['color']],
     defaultTheme: {
-      transform: 'scale(1.2)',
+      // color: '#e8e8e8',
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      console.log(JSON.stringify(themeProps.propsConfig));
     },
   },
+  hover: {
+    selectNames: [['color']],
+    defaultTheme: {
+      // color: `${warningColor}`,
+      // transform: 'scale(1.2)',
+    },
+  },
+});
+
+const RateIconBottom = CSSProvider({
+  extend: Icon,
+  css: css`
+    vertical-align: text-bottom !important;
+    opacity: 1;
+    color: #e8e8e8;
+    font-size: ${getFontSize};
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  `,
 });
 
 RateIcon.displayName = 'sv_rate_icon';
@@ -303,6 +325,7 @@ class Rate extends React.Component<RateProps, any> {
     const { getTheme, themeProps } = this.props;
     const { count } = this.state;
     const themeConfig = getTheme();
+    console.log('count', count);
     return (
       <Container themeProps={themeProps} theme={themeConfig} onMouseLeave={this.mouseLeave}>
         {count.map((x, i) => (
@@ -388,8 +411,9 @@ class Rate extends React.Component<RateProps, any> {
     return getOffset(this.ratespan[index].current);
   }
 
-  getElement = (x: number, theme: Object) => {
-    const { className, iconClass, disabled, character, themeProps, classify } = this.props;
+  getElement = (x: string, theme: Object) => {
+    console.log('x', x);
+    const { className, iconClass, disabled, character, themeProps } = this.props;
     const IconClass = getIconClass(iconClass);
     const theClassName = `${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`;
     const { fontSize = 18 } = theme;
@@ -403,6 +427,7 @@ class Rate extends React.Component<RateProps, any> {
         </RateText>
       );
     }
+
     return (
       <React.Fragment config={config}>
         <RateIcon
@@ -411,10 +436,10 @@ class Rate extends React.Component<RateProps, any> {
           disabled={disabled}
           iconClass={`${IconClass[x]} ${theClassName} `}
         />
-        <RateIcon
+        <RateIconBottom
           themeProps={themeProps}
           type={'default'}
-          iconClass={`${classify ? IconClass[x] : IconClass.default}  default bottom `}
+          iconClass={`${iconClass ? IconClass[x] : IconClass.default}  default `}
         />
       </React.Fragment>
     );
@@ -466,9 +491,6 @@ class Rate extends React.Component<RateProps, any> {
 
   doExportChange = (resValue: Object) => {
     const { newValue, oldValue } = resValue;
-    if (newValue === oldValue) {
-      return;
-    }
     const { onChange } = this.props;
     onChange && onChange(newValue, oldValue);
   };

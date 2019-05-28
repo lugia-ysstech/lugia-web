@@ -1,6 +1,7 @@
 import { px2emcss } from './units';
 import { FontSizeNumber } from '../css';
 import colorsFunc from './stateColor';
+import { css, keyframes } from 'styled-components';
 const em = px2emcss(FontSizeNumber);
 
 const { warningColor, dangerColor } = colorsFunc();
@@ -24,11 +25,30 @@ const defaultColor = {
   half: `${warningColor}`,
 };
 export const getColor = (props: Object) => {
+  const {
+    theme: { color },
+  } = props;
+  // if(color){
+  //   return color;
+  // }
   const { type } = props;
-  return props.theme[type] || defaultColor[type];
+  return props.theme[type] || defaultColor[type] || color;
 };
 
+const showUp = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 export const getAnimation = (props: Object) => {
   const { type } = props;
-  return type === 'default' ? '' : 'opacity 0.3s;';
+  return type === 'default'
+    ? ''
+    : css`
+        animation: ${showUp} 0.3s linear forwards;
+      `;
 };
