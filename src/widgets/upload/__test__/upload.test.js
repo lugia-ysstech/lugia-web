@@ -13,38 +13,40 @@ import Upload, {
   isIdInArray,
 } from '../upload';
 import { getFormData, getRequestXHR, getQueryString } from '../request';
-import { getIconByType, getListIconType } from '../getelement';
+import { getIconByType } from '../getelement';
+import { getListIconType } from '../../css/upload';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Rate Test', () => {
-  const target = mount(<Upload url={'xxxx.test'} />);
+describe('Upload Test', () => {
+  const target = mount(<Upload themeProps={{}} url={'xxxx.test'} />);
   it('css', () => {
-    const target = <Upload url={'xxxx.test'} />;
+    const target = <Upload themeProps={{}} url={'xxxx.test'} />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 
   it('props autoUpload true', () => {
-    const target = mount(<Upload autoUpload={true} url={'xxxx.test'} />);
+    const target = mount(<Upload themeProps={{}} autoUpload={true} url={'xxxx.test'} />);
     expect(target.state().isAllowUpload).toEqual(true);
   });
 
   it('props autoUpload false', () => {
-    const target = mount(<Upload autoUpload={false} url={'xxxx.test'} />);
+    const target = mount(<Upload themeProps={{}} autoUpload={false} url={'xxxx.test'} />);
     expect(target.state().isAllowUpload).toEqual(false);
   });
 
   it('props url', () => {
-    const target = mount(<Upload url={'xxxx.test'} />);
+    const target = mount(<Upload themeProps={{}} url={'xxxx.test'} />);
     expect(target.props().url).toEqual('xxxx.test');
   });
 
   it('props fileList', () => {
     const target = mount(
       <Upload
+        themeProps={{}}
         url={'xxxx.test'}
         fileList={[
           { id: 1, name: '文件11111.jpg', status: 'done' },
@@ -59,7 +61,7 @@ describe('Rate Test', () => {
   });
 
   it('props fileList null', () => {
-    const target = mount(<Upload url={'xxxx.test'} />);
+    const target = mount(<Upload themeProps={{}} url={'xxxx.test'} />);
     expect(target.state().fileListDone).toEqual([]);
   });
 
@@ -153,7 +155,7 @@ describe('Rate Test', () => {
 
   function checkGetIconByType(status: ?string, expectation: ?string, props?: Object = {}) {
     it('Function GetIconByType ', () => {
-      const res = getIconByType(status, props);
+      const res = getIconByType({}, status, props);
       const { type } = props;
       if (!status || !res) {
         expect(res).toBe(expectation);
@@ -345,7 +347,7 @@ describe('Rate Test', () => {
     expectation: boolean
   ) {
     it('Function setAutoUploadState ', () => {
-      const target = mount(<Upload url={'xxxx.test'} />);
+      const target = mount(<Upload themeProps={{}} url={'xxxx.test'} />);
       choosedFileList && target.instance().setStateValue({ choosedFile: choosedFileList });
       target.instance().setAutoUploadState(props);
       expect(target.state().isAllowUpload).toEqual(expectation);
