@@ -349,7 +349,11 @@ export function getSelectNameThemeMeta(
     return {};
   }
   let result = {};
-  selectNames.forEach((names: string[]) => {
+  selectNames.forEach((names: string[], i: number) => {
+    if (typeof names === 'string') {
+      names = [names];
+      selectNames[i] = names;
+    }
     const value = getAttributeValue(theme, names);
     if (value !== undefined && value !== null) {
       result = deepMerge(result, packObject(names, value));
