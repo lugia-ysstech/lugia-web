@@ -35,8 +35,8 @@ const getBackground = (props: Object) => {
 
 const ItemWrap = styled.a`
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 60px;
+  height: 50px;
   line-height: 350px;
   text-align: center;
   ${getBackground};
@@ -98,13 +98,15 @@ export default class SkeletonDemo extends React.Component<any, any> {
   }
 
   render() {
-    const config = { [Widget.Carousel]: { width: 700, height: 350 } };
+    const config = { [Widget.Carousel]: { normal: { width: 700, height: 350 } } };
+    // const config = {};
+
     return (
       <div>
-        <H2>3s自动切换</H2>
+        {/* <H2>3s自动切换</H2>
         <DemoWrap>
           <Theme config={config}>
-            <Carousel autoPlay={true} delay={3000}>
+            <Carousel autoPlay={false} delay={3000}>
               {this.getItemWrap()}
             </Carousel>
           </Theme>
@@ -146,28 +148,28 @@ export default class SkeletonDemo extends React.Component<any, any> {
               {this.getItemWrap()}
             </Carousel>
           </Theme>
-        </DemoWrap>
+        </DemoWrap> */}
 
         <h2>图片轮播图 deafultStart=2 从索引值为2的图开始</h2>
         <DemoWrap>
           <Theme config={config}>
-            <Carousel autoPlay={true} delay={3000} deafultStart={2}>
+            <Carousel autoPlay={true} delay={3000} defaultStart={2}>
               {getImgWrap()}
             </Carousel>
           </Theme>
         </DemoWrap>
 
-        <h2>受限</h2>
-        <CarouselLimtDemo />
+        {/* <h2>受限</h2>
+        <CarouselLimtDemo /> */}
 
-        <h2>图片轮播图 switchType === fade 透明度切换</h2>
+        {/* <h2>图片轮播图 switchType === fade 透明度切换</h2>
         <DemoWrap>
           <Theme config={config}>
             <Carousel autoPlay={true} switchType={'fade'} delay={3000} deafultStart={2}>
               {getImgWrap()}
             </Carousel>
           </Theme>
-        </DemoWrap>
+        </DemoWrap> */}
       </div>
     );
   }
