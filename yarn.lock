@@ -806,6 +806,13 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
+"@babel/runtime@^7.4.5":
+  version "7.4.5"
+  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
+  integrity sha1-WCu1MfX53GfS/LaCl5iU914lPxI=
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "http://registry.npm.taobao.org/@babel/template/download/@babel/template-7.0.0-beta.44.tgz#f8832f4fdcee5d59bf515e595fc5106c529b394f"
@@ -914,6 +921,14 @@
     babel-plugin-transform-dynamic-import "2.1.0"
     babel-plugin-transform-react-remove-prop-types "0.4.20"
 
+"@lugia/css@^1.0.3-alpha.2":
+  version "1.0.3-alpha.2"
+  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.3-alpha.2.tgz#3f7bc6d21ee24ae1e1ca25176b840fcffa06f468"
+  integrity sha1-P3vG0h7iSuHhyiUXa4QPz/oG9Gg=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    decamelize "^3.2.0"
+
 "@lugia/devtools-material@^1.0.6":
   version "1.0.6"
   resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.6.tgz#8e423b0342f1e9eb5f3e8751358bc9f64505645a"
@@ -931,6 +946,13 @@
     "@lugia/type-utils" "^1.0.1"
     clone "^2.1.1"
     deep-equal "^1.0.1"
+
+"@lugia/math@^1.0.3-alpha.2":
+  version "1.0.3-alpha.2"
+  resolved "http://192.168.102.79:5001/@lugia/math/download/@lugia/math-1.0.3-alpha.2.tgz#8f7cea660583c1e7075ce634e67c0f4d200ed0fa"
+  integrity sha1-j3zqZgWDwecHXOY05nwPTSAO0Po=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
 
 "@lugia/mega-jest@^1.2.2":
   version "1.2.2"
@@ -1082,6 +1104,14 @@
     webpack-manifest-plugin "^1.3.2"
     webpack-merge "^4.1.4"
 
+"@lugia/object-utils@^1.0.3-alpha.2":
+  version "1.0.3-alpha.2"
+  resolved "http://192.168.102.79:5001/@lugia/object-utils/download/@lugia/object-utils-1.0.3-alpha.2.tgz#dd9a56c2b0f4a190d599995840dc9422f027fdb7"
+  integrity sha1-3ZpWwrD0oZDVmZlYQNyUIvAn/bc=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    deepmerge "^3.2.0"
+
 "@lugia/react-test-utils@^1.0.0":
   version "1.0.0"
   resolved "http://192.168.102.79:5001/@lugia/react-test-utils/download/@lugia/react-test-utils-1.0.0.tgz#019bc028615d3c8ae454ec9b98b4546d027a7497"
@@ -1089,6 +1119,42 @@
   dependencies:
     react "^16.4.0"
     react-dom "^16.4.0"
+
+"@lugia/theme-config@^1.0.3-alpha.2":
+  version "1.0.3-alpha.2"
+  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.3-alpha.2.tgz#39b41e04a053d95117e2d202fb7be671109a601a"
+  integrity sha1-ObQeBKBT2VEX4tIC+3vmcRCaYBo=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@lugia/theme-core" "^1.0.3-alpha.2"
+    prop-types "^15.7.2"
+
+"@lugia/theme-core@^1.0.3-alpha.2":
+  version "1.0.3-alpha.2"
+  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.3-alpha.2.tgz#6beeb96b0cb0570c0d6a8e27644bbf3b8f5623b5"
+  integrity sha1-a+65awywVwwNao4nZEu/O49WI7U=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@lugia/object-utils" "^1.0.3-alpha.2"
+
+"@lugia/theme-css-provider@^1.0.3-alpha.2":
+  version "1.0.3-alpha.2"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-provider/download/@lugia/theme-css-provider-1.0.3-alpha.2.tgz#4e5330fa1273209cf31ca849282568392eabaf5d"
+  integrity sha1-TlMw+hJzIJzzHKhJKCVoOS6rr10=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@lugia/css" "^1.0.3-alpha.2"
+    "@lugia/object-utils" "^1.0.3-alpha.2"
+    decamelize "^3.2.0"
+
+"@lugia/theme-hoc@^1.0.3-alpha.2":
+  version "1.0.3-alpha.2"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.3-alpha.2.tgz#9bd464ec19af97be3a45cc75b494af46d567f606"
+  integrity sha1-m9Rk7Bmvl746Rcx1tJSvRtVn9gY=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@lugia/object-utils" "^1.0.3-alpha.2"
+    "@lugia/theme-core" "^1.0.3-alpha.2"
 
 "@lugia/type-utils@^1.0.1", "@lugia/type-utils@^1.0.4":
   version "1.0.4"
@@ -9473,7 +9539,7 @@ longest@^1.0.1:
   resolved "http://registry.npm.taobao.org/longest/download/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
   integrity sha1-MKCy2jj3N3DoKUoNIuZiXtd9AJc=
 
-loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1:
+loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "http://registry.npm.taobao.org/loose-envify/download/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8=
@@ -11701,6 +11767,15 @@ prop-types@15.x, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, pr
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.7.2:
+  version "15.7.2"
+  resolved "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
+
 proxy-addr@~2.0.4:
   version "2.0.4"
   resolved "http://registry.npm.taobao.org/proxy-addr/download/proxy-addr-2.0.4.tgz#ecfc733bf22ff8c6f407fa275327b9ab67e48b93"
@@ -12117,7 +12192,7 @@ react-error-overlay@^4.0.1:
   resolved "http://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-4.0.1.tgz#417addb0814a90f3a7082eacba7cee588d00da89"
   integrity sha1-QXrdsIFKkPOnCC6sunzuWI0A2ok=
 
-react-is@^16.6.0:
+react-is@^16.6.0, react-is@^16.8.1:
   version "16.8.6"
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha1-W7weLSkUHJ+9/tRWND/ivEMKahY=

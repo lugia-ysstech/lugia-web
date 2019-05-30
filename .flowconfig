@@ -14,5 +14,12 @@ src/interface/
 node_modules/@lugia/jverify/interface
 node_modules/@lugia/type-utils/interface
 node_modules/@lugia/react-test-utils/interface
+
+node_modules/@lugia/css/interface
+node_modules/@lugia/math/interface
+node_modules/@lugia/object-utils/interface
+node_modules/@lugia/theme-config/interface
+node_modules/@lugia/theme-hoc/interface
+node_modules/@lugia/theme-css-provider/interface
 [options]
 module.name_mapper='^core/\(.*\)$' -> '<PROJECT_ROOT>/src/core/\1'
