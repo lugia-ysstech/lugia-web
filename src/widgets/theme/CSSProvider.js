@@ -326,7 +326,7 @@ export function getThemeMeta(
     if (!config) {
       return theme;
     }
-    const { defaultTheme = {}, selectNames = [] } = config;
+    const { defaultTheme = {}, selectNames } = config;
     const selectNameThemeMeta = getSelectNameThemeMeta(theme, selectNames);
     if (stateType === 'hover') {
       return deepMerge(defaultTheme, selectNameThemeMeta);
@@ -335,7 +335,10 @@ export function getThemeMeta(
   };
 }
 
-export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<string[]>): ThemeMeta {
+export function getSelectNameThemeMeta(
+  theme: ?ThemeMeta,
+  selectNames?: Array<string[]>
+): ThemeMeta {
   if (!theme) {
     return {};
   }
@@ -357,7 +360,6 @@ export function getSelectNameThemeMeta(theme: ?ThemeMeta, selectNames: Array<str
 
 function packStyle(cssConfig: CSSConfig, stateType: StateType): (themeMeta: ThemeMeta) => Object {
   const getThemeMetaByConfig = getThemeMeta(cssConfig, stateType);
-
   return (themeMeta: ThemeMeta) => {
     return themeMeta2Style(getThemeMetaByConfig(themeMeta));
   };
@@ -584,7 +586,6 @@ export default function CSSProvider(cssConfig: CSSConfig) {
   const getStyleByThemeMeta = createGetStyleFromPropsAndCSSConfig(cssConfig);
   const getStyleByDefaultThemeMeta = createGetStyleByDefaultThemeMeta(cssConfig);
   const getDefaultStyle = getStyleByDefaultThemeMeta ? getStyleByDefaultThemeMeta : undefined;
-
   const attrsHook = (props: CSSProps) => {
     return { style: deepMerge(getStyleByThemeMeta(props), getTheStyle(props)) };
   };
@@ -610,3 +611,6 @@ export default function CSSProvider(cssConfig: CSSConfig) {
     ${getTheCSS}
   `;
 }
+
+// import { CSSProvider } from '@lugia/theme-css-provider';
+// export default CSSProvider;
