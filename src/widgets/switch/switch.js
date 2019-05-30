@@ -22,6 +22,7 @@ type TypeProps = {
   autoFocus?: boolean,
   onChange?: any,
   displayFiled?: string,
+  getChildTheme: Function,
 };
 type TypeState = {
   isMouseDown?: boolean,
@@ -156,10 +157,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
       isInverse,
       themeProps,
     };
-    const {
-      themeConfig: { children },
-    } = themeProps;
-    console.log(themeProps, children);
+
+    const childrenwidgetName = 'SwitchButton';
+    const { viewClass, theme } = this.props.getChildTheme(childrenwidgetName);
+    console.log(theme);
     return (
       <SwitchWrapper
         onMouseDown={isabled ? this.mousedown : null}
@@ -170,7 +171,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
         {...config}
       >
         <SwitchText {...config}>{text}</SwitchText>
-        <SwitchCircle {...config} themeProps={children.SwitchButton}>
+        <SwitchCircle {...config} viewClass={viewClass} themeProps={themeProps} theme={theme}>
           {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
         </SwitchCircle>
       </SwitchWrapper>

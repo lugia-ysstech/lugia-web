@@ -50,6 +50,13 @@ export default class Sw extends Component<any, TypeState> {
                     normal: {
                       width: 50,
                       height: 60,
+                      background: {
+                        backgroundColor: 'red',
+                      },
+                    },
+                    active: {
+                      width: 54,
+                      height: 64,
                     },
                   },
                 },
