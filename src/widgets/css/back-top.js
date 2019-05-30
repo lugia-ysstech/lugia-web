@@ -88,6 +88,7 @@ export const IconWrap: Object = styled(Icon)`
 
 const CommonBackTopStyle = CSSProvider({
   tag: 'div',
+  className: 'a',
   css: css`
     border: 1px solid #e8e8e8;
     text-align: center;
@@ -98,6 +99,7 @@ const CommonBackTopStyle = CSSProvider({
 
 export const BackTop = CSSProvider({
   tag: 'div',
+  className: 'back-top',
   css: css`
     font-size: ${FontSize}rem;
     ${getFixedCSS};
@@ -111,6 +113,7 @@ export const BackTop = CSSProvider({
 
 export const BackTopContent = CSSProvider({
   extend: CommonBackTopStyle,
+  className: 'back-top-content',
   css: css`
     position: relative;
   `,
@@ -142,13 +145,14 @@ export const BackTopContent = CSSProvider({
 
 export const IconBox = CSSProvider({
   tag: 'span',
+  className: 'icon-box',
+  normal: {
+    selectNames: [['color']],
+  },
   css: css`
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   `,
-  normal: {
-    selectNames: [],
-  },
 });

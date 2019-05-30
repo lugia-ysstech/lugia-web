@@ -41,30 +41,37 @@ export default class AffixDemo extends React.Component<any, any> {
             borderColor: 'red',
           },
         },
+        children: {
+          IconBoxs: {
+            normal: {
+              color: 'green',
+            },
+          },
+        },
       },
     };
     return (
       <div style={{ height: '1600px' }}>
         <BackTop />
-        <Demo cur={1}>
-          <BackTop>
-            <DemoBack>UP</DemoBack>
-          </BackTop>
-        </Demo>
+        {/*<Demo cur={1}>*/}
+        {/*<BackTop>*/}
+        {/*<DemoBack>UP</DemoBack>*/}
+        {/*</BackTop>*/}
+        {/*</Demo>*/}
         <Demo cur={2}>
           <Theme config={view}>
             <BackTop />
           </Theme>
         </Demo>
-        <div
-          style={{ width: '200px', height: '200px', overflowY: 'scroll', marginTop: '400px' }}
-          ref={node => (this.EleRef = node)}
-        >
-          <Demo cur={3}>
-            <div style={{ width: '20px', height: '300px' }} />
-            <BackTop visibilityHeight={80} target={() => this.EleRef} />
-          </Demo>
-        </div>
+        {/*<div*/}
+        {/*style={{ width: '200px', height: '200px', overflowY: 'scroll', marginTop: '400px' }}*/}
+        {/*ref={node => (this.EleRef = node)}*/}
+        {/*>*/}
+        {/*<Demo cur={3}>*/}
+        {/*<div style={{ width: '20px', height: '300px' }} />*/}
+        {/*<BackTop visibilityHeight={80} target={() => this.EleRef} />*/}
+        {/*</Demo>*/}
+        {/*</div>*/}
       </div>
     );
   }

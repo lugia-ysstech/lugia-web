@@ -116,7 +116,9 @@ export default ThemeProvider(
     render() {
       const { children, getTheme, themeProps } = this.props;
       const { fixed, posRight, posBottom } = this.state;
-      console.log('themeProps', themeProps);
+      const { children: themeChildren = {} } = themeProps.themeConfig;
+      const { IconBoxs = {} } = themeChildren;
+      console.log('themeProps.themeConfig.children', themeProps.themeConfig.children);
       return (
         <div>
           {fixed ? (
@@ -132,7 +134,7 @@ export default ThemeProvider(
                 children
               ) : (
                 <BackTopContent theme={getTheme()} themeProps={themeProps}>
-                  <IconBox themeProps={themeProps}>
+                  <IconBox themeProps={IconBoxs}>
                     <Icon iconClass="lugia-icon-direction_up" />
                   </IconBox>
                 </BackTopContent>
