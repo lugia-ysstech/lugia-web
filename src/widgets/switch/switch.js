@@ -156,6 +156,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
       isInverse,
       themeProps,
     };
+    const {
+      themeConfig: { children },
+    } = themeProps;
+    console.log(themeProps, children);
     return (
       <SwitchWrapper
         onMouseDown={isabled ? this.mousedown : null}
@@ -166,7 +170,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
         {...config}
       >
         <SwitchText {...config}>{text}</SwitchText>
-        <SwitchCircle {...config}>
+        <SwitchCircle {...config} themeProps={children.SwitchButton}>
           {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
         </SwitchCircle>
       </SwitchWrapper>

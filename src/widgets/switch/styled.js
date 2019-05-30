@@ -67,6 +67,9 @@ const getBackground = (props: Object) => {
 };
 export const SwitchWrapper = CSSProvider({
   tag: 'span',
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
   css: css`
     font-size: ${em(12)};
     box-sizing: border-box;
@@ -101,6 +104,9 @@ export const SwitchText = CSSProvider({
 });
 export const SwitchCircle = CSSProvider({
   tag: 'span',
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
   css: css`
     ${props => getSwitchWrapper(props, 'circleSize').wrapperCss};
     border-radius: ${props => (props.isMouseDown ? `${em(7)}` : '50%')};
@@ -136,6 +142,7 @@ export const SwitchCircle = CSSProvider({
     }
   `,
 });
+
 const getStyled = (props: CssProps) => {
   const { size, isMouseDown, value } = props;
   const normallPosition = (normalSize.height - normallCircleSize.height) / 2;
