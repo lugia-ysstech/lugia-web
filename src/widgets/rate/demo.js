@@ -11,6 +11,8 @@ import Rate from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
+import colorsFunc from '../css/stateColor';
+const { warningColor, dangerColor } = colorsFunc();
 const TitleBox = styled.div`
   position: relative;
   padding: 10px;
@@ -40,20 +42,66 @@ class RateDemo extends React.Component<any, any> {
     const config = {
       [Widget.Rate]: {
         normal: {
-          color: 'yellow',
+          // color: 'yellow',
         },
         children: {
-          activeStar: {
+          activeIcon: {
+            normal: {
+              color: `${warningColor}`,
+            },
+            hover: {
+              // color: `${warningColor}`,
+            },
+          },
+          RateIconBottom: {
             normal: {
               color: '#e8e8e8',
             },
-            hover: {
-              color: 'red',
+          },
+          activeTextIcon: {
+            normal: {
+              color: `${warningColor}`,
+            },
+          },
+          defaultTextIcon: {
+            normal: {
+              color: '#e8e8e8',
             },
           },
         },
       },
     };
+
+    const configColorful = {
+      [Widget.Rate]: {
+        normal: {
+          // color: 'yellow',
+        },
+        children: {
+          activeIcon: {
+            normal: {
+              color: `${warningColor}`,
+            },
+          },
+          defaultRateIcon: {
+            normal: {
+              color: '#e8e8e8',
+            },
+          },
+          dangerIcon: {
+            normal: {
+              color: `${dangerColor}`,
+            },
+          },
+          amazedIcon: {
+            normal: {
+              color: '#f88e30',
+            },
+          },
+        },
+      },
+    };
+
     const defaultProps = {
       count: 10,
       max: 10,
@@ -179,50 +227,50 @@ class RateDemo extends React.Component<any, any> {
 
     return (
       <div>
-        {/*<div>*/}
-        {/*<TitleBox>基础用法 default：</TitleBox>*/}
-        {/*<Rate {...defaultProps7} />*/}
-        {/*<TextBox>{this.state.defaultProps7} 颗星</TextBox>*/}
-        {/*</div>*/}
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>基础用法 default limit：</TitleBox>*/}
-        {/*<Rate {...defaultProps} />*/}
-        {/*<TextBox>{this.state.defaultProps} 颗星</TextBox>*/}
-        {/*</Theme>*/}
+        <div>
+          <TitleBox>基础用法 default：</TitleBox>
+          <Rate {...defaultProps7} />
+          <TextBox>{this.state.defaultProps7} 颗星</TextBox>
+        </div>
+        <Theme config={config}>
+          <TitleBox>基础用法 default limit：</TitleBox>
+          <Rate {...defaultProps} />
+          <TextBox>{this.state.defaultProps} 颗星</TextBox>
+        </Theme>
         <Theme config={config}>
           <TitleBox>半星用法(总分10分) allowHalf：</TitleBox>
           <Rate {...defaultProps1} />
           <TextBox>{this.state.defaultProps1} 分</TextBox>
         </Theme>
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>辅助文字：</TitleBox>*/}
-        {/*<Rate {...defaultProps2} character="好" />*/}
-        {/*<TextBox>{this.state.defaultProps2} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>只读：</TitleBox>*/}
-        {/*<Rate {...defaultProps3} character="好" />*/}
-        {/*<TextBox>{this.state.defaultProps3} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>自定义图标：</TitleBox>*/}
-        {/*<Rate {...defaultProps4} />*/}
-        {/*<TextBox>{this.state.defaultProps4} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>自定义图标：</TitleBox>*/}
-        {/*<Rate {...defaultProps5} />*/}
-        {/*<TextBox>{this.state.defaultProps5} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>自定义图标：</TitleBox>*/}
-        {/*<Rate {...defaultProps6} />*/}
-        {/*<TextBox>{this.state.defaultProps6} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<div>*/}
-        {/*<TitleBox>默认设置 noProps：</TitleBox>*/}
-        {/*<Rate />*/}
-        {/*</div>*/}
+        <Theme config={config}>
+          <TitleBox>辅助文字：</TitleBox>
+          <Rate {...defaultProps2} character="好" />
+          <TextBox>{this.state.defaultProps2} 颗星</TextBox>
+        </Theme>
+        <Theme config={config}>
+          <TitleBox>只读：</TitleBox>
+          <Rate {...defaultProps3} character="好" />
+          <TextBox>{this.state.defaultProps3} 颗星</TextBox>
+        </Theme>
+        <Theme config={configColorful}>
+          <TitleBox>自定义图标：</TitleBox>
+          <Rate {...defaultProps4} />
+          <TextBox>{this.state.defaultProps4} 颗星</TextBox>
+        </Theme>
+        <Theme config={configColorful}>
+          <TitleBox>自定义图标：</TitleBox>
+          <Rate {...defaultProps5} />
+          <TextBox>{this.state.defaultProps5} 颗星</TextBox>
+        </Theme>
+        <Theme config={configColorful}>
+          <TitleBox>自定义图标：</TitleBox>
+          <Rate {...defaultProps6} />
+          <TextBox>{this.state.defaultProps6} 颗星</TextBox>
+        </Theme>
+        <div>
+          <TitleBox>默认设置 noProps：</TitleBox>
+          <Rate />
+        </div>
       </div>
     );
   }

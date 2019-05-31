@@ -15,25 +15,28 @@ const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify')
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Rate Test', () => {
-  const target = mount(<Rate themeProps={{}} />);
+  const themeProps = { themeConfig: {}, themeState: {} };
+  const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} />);
 
   it('css', () => {
-    const target = <Rate themeProps={{}} />;
+    const target = <Rate getChildTheme={() => true} themeProps={themeProps} />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 
   it('count=10', () => {
-    const target = mount(<Rate themeProps={{}} count={10} />);
+    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} count={10} />);
     expect(target.props().count).toEqual(10);
   });
 
   it('value=4', () => {
-    const target = mount(<Rate themeProps={{}} value={4} />);
+    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} value={4} />);
     expect(target.state().value).toEqual(4);
   });
 
   it('disabled=true', () => {
-    const target = mount(<Rate themeProps={{}} disabled={true} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} disabled={true} />
+    );
     expect(target.props().disabled).toEqual(true);
     expect(target.state().value).toEqual(0);
     findRate(target, 3).simulate('click', {}, 3);
@@ -41,13 +44,17 @@ describe('Rate Test', () => {
   });
 
   it('allowHalf=true', () => {
-    const target = mount(<Rate themeProps={{}} allowHalf={true} value={3.5} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} allowHalf={true} value={3.5} />
+    );
     expect(target.props().allowHalf).toEqual(true);
     expect(target.state().value).toEqual(3.5);
   });
 
   it('allowHalf=false value=3.5 ->3', () => {
-    const target = mount(<Rate themeProps={{}} allowHalf={false} value={3.5} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} allowHalf={false} value={3.5} />
+    );
     expect(target.props().allowHalf).toEqual(false);
     expect(target.state().value).toEqual(3);
   });
@@ -185,26 +192,30 @@ describe('Rate Test', () => {
 
   function setValue(
     val: number,
+    starNum: number,
     cou: Array<string>,
     current: number,
     hasClicked?: boolean,
     expectation
   ) {
     it('Function setValue', () => {
-      target.instance().setValue(val, cou, current, hasClicked);
+      target.instance().setValue(val, starNum, cou, current, hasClicked);
       expect(target.state().value).toEqual(expectation.value);
       expect(target.state().count).toEqual(expectation.count);
+      expect(target.state().starNum).toEqual(expectation.starNum);
     });
   }
 
-  setValue(1, ['primary', 'default', 'default'], 0, true, {
+  setValue(1, 1, ['primary', 'default', 'default'], 0, true, {
     value: 1,
+    starNum: 1,
     current: 0,
     count: ['primary', 'default', 'default'],
   });
 
-  setValue(2, ['primary', 'primary', 'default'], 1, undefined, {
+  setValue(2, 2, ['primary', 'primary', 'default'], 1, undefined, {
     value: 2,
+    starNum: 2,
     current: 1,
     count: ['primary', 'primary', 'default'],
   });
@@ -216,11 +227,13 @@ describe('Rate Test', () => {
   it('Function:onClick limit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, val) => {
-        res(val.currentValue);
+      onClick = (newValue, oldValue) => {
+        res(newValue);
       };
     });
-    const target = mount(<Rate themeProps={{}} value={4} onClick={onClick} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} value={4} onClick={onClick} />
+    );
 
     target.setProps({ value: 1 });
     expect(target.state().value).toEqual(1);
@@ -233,11 +246,19 @@ describe('Rate Test', () => {
   it('Function:onClick limit value allowHalf', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, val) => {
-        res(val.currentValue);
+      onClick = (newValue, oldValue) => {
+        res(newValue);
       };
     });
-    const target = mount(<Rate themeProps={{}} value={4} allowHalf={true} onClick={onClick} />);
+    const target = mount(
+      <Rate
+        getChildTheme={() => true}
+        themeProps={themeProps}
+        value={4}
+        allowHalf={true}
+        onClick={onClick}
+      />
+    );
     const order = VerifyOrder.create();
     const mockGetOffset = mockObject.create(
       target.instance(),
@@ -261,11 +282,13 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, val) => {
-        res(val.currentValue);
+      onClick = (newValue, oldValue) => {
+        res(newValue);
       };
     });
-    const target = mount(<Rate themeProps={{}} onClick={onClick} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} onClick={onClick} />
+    );
 
     findRate(target, 3).simulate('click', {}, 3, true);
     expect(target.state().value).toEqual(4);
@@ -273,7 +296,9 @@ describe('Rate Test', () => {
   });
 
   it('Function:onClick unlimit value allowHalf', async () => {
-    const target = mount(<Rate themeProps={{}} allowHalf={true} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} allowHalf={true} />
+    );
 
     const order = VerifyOrder.create();
     const mockGetOffset = mockObject.create(
@@ -293,11 +318,13 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, val) => {
-        res(val.currentValue);
+      onClick = (newValue, oldValue) => {
+        res(newValue);
       };
     });
-    const target = mount(<Rate themeProps={{}} onClick={onClick} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} onClick={onClick} />
+    );
 
     findRate(target, 3).simulate('click', {}, 3);
     expect(target.state().value).toEqual(4);
@@ -310,11 +337,13 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, val) => {
-        res(val.currentValue);
+      onClick = (newValue, oldValue) => {
+        res(newValue);
       };
     });
-    const target = mount(<Rate themeProps={{}} onClick={onClick} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} onClick={onClick} />
+    );
 
     target.setProps({ value: 2 });
     expect(target.state().value).toEqual(2);
@@ -324,14 +353,16 @@ describe('Rate Test', () => {
   });
 
   it('Check disabled Status', () => {
-    const target = mount(<Rate themeProps={{}} disabled={true} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} disabled={true} />
+    );
     expect(target.state().value).toEqual(0);
     findRate(target, 2).simulate('click', {}, 2);
     expect(target.state().value).toEqual(0);
   });
 
   it('Function:onMouseMoveOrClick limit ', async () => {
-    const target = mount(<Rate themeProps={{}} value={4} />);
+    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} value={4} />);
     target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(4);
   });
@@ -350,13 +381,13 @@ describe('Rate Test', () => {
   });
 
   it('Function:mouseLeave lilmit', async () => {
-    const target = mount(<Rate themeProps={{}} value={4} />);
+    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} value={4} />);
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(4);
     expect(target.state().starNum).toEqual(4);
   });
   it('Function:mouseLeave unlilmit', async () => {
-    const target = mount(<Rate themeProps={{}} />);
+    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} />);
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(0);
     expect(target.state().starNum).toEqual(0);
@@ -365,11 +396,13 @@ describe('Rate Test', () => {
   it('Function:mouseLeave onClick unlimit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, val) => {
-        res(val.currentValue);
+      onClick = (newValue, oldValue) => {
+        res(newValue);
       };
     });
-    const target = mount(<Rate themeProps={{}} onClick={onClick} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} onClick={onClick} />
+    );
 
     findRate(target, 3).simulate('click', {}, 3, true);
     expect(target.state().value).toEqual(4);
@@ -381,17 +414,18 @@ describe('Rate Test', () => {
   it('Function:mouseLeave onClick limit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, val) => {
-        res(val.currentValue);
+      onClick = (newValue, oldValue) => {
+        res(newValue);
       };
     });
-    const target = mount(<Rate themeProps={{}} value={5} onClick={onClick} />);
+    const target = mount(
+      <Rate getChildTheme={() => true} themeProps={themeProps} value={5} onClick={onClick} />
+    );
     findRate(target, 3).simulate('click', {}, 3, true);
     expect(target.state().value).toEqual(5);
     expect(await changePromise).toBe(4);
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(5);
-    expect(target.state().starNum).toEqual(5);
   });
   it('getClass', () => {
     expect(getClass(100, 1000, false)).toBe('primary');
