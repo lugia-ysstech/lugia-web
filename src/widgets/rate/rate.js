@@ -396,6 +396,7 @@ class Rate extends React.Component<RateProps, any> {
   }
 
   componentDidMount() {
+    console.log('rateRangeNode componentDidMount', JSON.stringify(this.ratespan));
     this.saveState();
   }
 
@@ -441,12 +442,11 @@ class Rate extends React.Component<RateProps, any> {
     const { count } = this.state;
     const themeConfig = getTheme();
     return (
-      <Container themeProps={themeProps} theme={themeConfig} onMouseLeave={this.mouseLeave}>
+      <Container themeProps={themeProps} onMouseLeave={this.mouseLeave}>
         {count.map((x, i) => (
           <Ratespan
             themeProps={themeProps}
-            ref={this.ratespan[i]}
-            theme={themeConfig}
+            ref={cmp => (this.ratespan[i] = cmp)}
             onMouseMove={e => {
               this.onMouseMoveOrClick(e, i);
             }}
@@ -464,7 +464,7 @@ class Rate extends React.Component<RateProps, any> {
   onMouseMoveOrClick = (e: Object, i: number, hasClick?: boolean = false) => {
     const { disabled } = this.props;
     if (disabled) return;
-
+    console.log('rateRangeNode onMouseMoveOrClick', this.ratespan);
     const { offsetLeft, offsetWidth } = this.getOffset(i);
     const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
 
@@ -523,6 +523,7 @@ class Rate extends React.Component<RateProps, any> {
   };
 
   getOffset(index: number) {
+    console.log('rateRangeNode  11111', this.ratespan);
     return getOffset(this.ratespan[index].current);
   }
 
@@ -532,13 +533,13 @@ class Rate extends React.Component<RateProps, any> {
     const theClassName = `${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`;
     const { starNum } = this.state;
     if (ObjectUtils.isString(character)) {
-      const { viewClass: RateTextClass, theme: RateTextTheme } = this.props.getChildTheme(
+      const { viewClass: RateTextClass, theme: RateTextTheme } = this.props.getChildThemeHocProps(
         'activeTextIcon'
       );
       const {
         viewClass: RateDefaultTextClass,
         theme: RateDefaultTextTheme,
-      } = this.props.getChildTheme('defaultTextIcon');
+      } = this.props.getChildThemeHocProps('defaultTextIcon');
 
       return (
         <React.Fragment>
@@ -581,7 +582,7 @@ class Rate extends React.Component<RateProps, any> {
     const {
       viewClass: RateIconBottomViewClass,
       theme: RateIconBottomTheme,
-    } = this.props.getChildTheme('defaultRateIcon');
+    } = this.props.getChildThemeHocProps('defaultRateIcon');
 
     return (
       <React.Fragment>
@@ -615,21 +616,23 @@ class Rate extends React.Component<RateProps, any> {
     let resultViewClass;
     switch (type) {
       case 'amazed':
-        const { viewClass: amazedIconViewClass, theme: amazedIconTheme } = this.props.getChildTheme(
-          'amazedIcon'
-        );
+        const {
+          viewClass: amazedIconViewClass,
+          theme: amazedIconTheme,
+        } = this.props.getChildThemeHocProps('amazedIcon');
         resultTheme = amazedIconTheme;
         resultViewClass = amazedIconViewClass;
         break;
       case 'danger':
-        const { viewClass: dangerIconViewClass, theme: dangerIconTheme } = this.props.getChildTheme(
-          'dangerIcon'
-        );
+        const {
+          viewClass: dangerIconViewClass,
+          theme: dangerIconTheme,
+        } = this.props.getChildThemeHocProps('dangerIcon');
         resultTheme = dangerIconTheme;
         resultViewClass = dangerIconViewClass;
         break;
       default:
-        const { viewClass, theme } = this.props.getChildTheme('activeIcon');
+        const { viewClass, theme } = this.props.getChildThemeHocProps('activeIcon');
         resultTheme = theme;
         resultViewClass = viewClass;
         break;
