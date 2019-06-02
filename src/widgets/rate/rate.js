@@ -20,6 +20,7 @@ import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import colorsFunc from '../css/stateColor';
 import { getFontSize, getColor, getAnimation, getCharacter } from '../css/rate';
+import { findDOMNode } from 'react-dom';
 
 const { warningColor, dangerColor } = colorsFunc();
 
@@ -61,30 +62,6 @@ const Ratespan = CSSComponent({
     }
   `,
 });
-
-// const Ratespan = ThemeHoc(CSSComponent({
-//   tag: 'span',
-//   className: 'starBox',
-//   normal: {
-//     selectNames: [['color']],
-//   },
-//   css: css`
-//     margin: 6px;
-//     position: relative;
-//     & > i.hoverd:hover {
-//       transform: scale(1.2);
-//     }
-//     & > i.bottom {
-//       position: absolute;
-//       left: 0;
-//       bottom: 0;
-//       z-index: -1;
-//     }
-//     & > i {
-//       vertical-align: text-bottom !important;
-//     }
-//   `,
-// }),'Ratespan');
 
 Ratespan.displayName = 'sv_rate_Ratespan';
 
@@ -255,7 +232,7 @@ type RateProps = {
   onChange: Function,
   character?: any,
   themeProps: Object,
-  getChildTheme: Function,
+  getChildThemeHocProps: Function,
 };
 
 export function getDefaultClassNames(count: number): Array<string> {
@@ -344,10 +321,10 @@ export const getIconClass = (iconClass: Object = {}): Object => {
 };
 
 const getOffset = (rateRangeNode: Object) => {
-  console.log('rateRangeNode', rateRangeNode);
   if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
+  rateRangeNode = findDOMNode(rateRangeNode);
   const { x } = getElementPosition(rateRangeNode);
   return { offsetLeft: x, offsetWidth: rateRangeNode.offsetWidth };
 };
@@ -396,7 +373,6 @@ class Rate extends React.Component<RateProps, any> {
   }
 
   componentDidMount() {
-    // console.log('rateRangeNode componentDidMount', JSON.stringify(this.ratespan));
     this.saveState();
   }
 
@@ -464,7 +440,6 @@ class Rate extends React.Component<RateProps, any> {
   onMouseMoveOrClick = (e: Object, i: number, hasClick?: boolean = false) => {
     const { disabled } = this.props;
     if (disabled) return;
-    console.log('rateRangeNode onMouseMoveOrClick', this.ratespan);
     const { offsetLeft, offsetWidth } = this.getOffset(i);
     const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
 
@@ -523,7 +498,6 @@ class Rate extends React.Component<RateProps, any> {
   };
 
   getOffset(index: number) {
-    console.log('rateRangeNode  11111', this.ratespan);
     return getOffset(this.ratespan[index].current);
   }
 
