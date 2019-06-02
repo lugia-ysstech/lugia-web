@@ -396,7 +396,7 @@ class Rate extends React.Component<RateProps, any> {
   }
 
   componentDidMount() {
-    console.log('rateRangeNode componentDidMount', JSON.stringify(this.ratespan));
+    // console.log('rateRangeNode componentDidMount', JSON.stringify(this.ratespan));
     this.saveState();
   }
 
@@ -446,7 +446,7 @@ class Rate extends React.Component<RateProps, any> {
         {count.map((x, i) => (
           <Ratespan
             themeProps={themeProps}
-            ref={cmp => (this.ratespan[i] = cmp)}
+            ref={this.ratespan[i]}
             onMouseMove={e => {
               this.onMouseMoveOrClick(e, i);
             }}
