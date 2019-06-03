@@ -10,11 +10,21 @@ import React from 'react';
 import styled from 'styled-components';
 import GetElement from './getelement';
 import request from './request';
+import CSSComponent, { css } from '../theme/CSSProvider';
+//
+// const Container = styled.div`
+//   position: relative;
+//   display: inline-block;
+// `;
 
-const Container = styled.div`
-  position: relative;
-  display: inline-block;
-`;
+const Container = CSSComponent({
+  tag: 'div',
+  className: 'upload_Container',
+  css: css`
+    position: relative;
+    display: inline-block;
+  `,
+});
 
 type UploadProps = {
   disabled?: boolean,
@@ -123,8 +133,9 @@ class Upload extends React.Component<UploadProps, StateProps> {
   }
 
   render() {
+    const { themeProps } = this.props;
     return (
-      <Container>
+      <Container themeProps={themeProps}>
         <GetElement
           {...this.props}
           {...this.state}
