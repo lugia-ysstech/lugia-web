@@ -12,7 +12,11 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
+import { px2emcss } from '../css/units';
+import { FontSizeNumber } from '../css';
+
 const { warningColor, dangerColor } = colorsFunc();
+const em = px2emcss(FontSizeNumber);
 const TitleBox = styled.div`
   position: relative;
   padding: 10px;
@@ -43,6 +47,7 @@ class RateDemo extends React.Component<any, any> {
       [Widget.Rate]: {
         normal: {
           // color: 'yellow',
+          // font:{fontWeight:'bold'},
         },
         children: {
           activeIcon: {
@@ -61,11 +66,16 @@ class RateDemo extends React.Component<any, any> {
           activeTextIcon: {
             normal: {
               color: `${warningColor}`,
+              // font:{fontWeight:'bold'},
+            },
+            hover: {
+              // color: `${warningColor}`,
             },
           },
           defaultTextIcon: {
             normal: {
               color: '#e8e8e8',
+              // font:{fontWeight:'bold'},
             },
           },
         },
@@ -76,6 +86,13 @@ class RateDemo extends React.Component<any, any> {
       [Widget.Rate]: {
         normal: {
           // color: 'yellow',
+          fontSize: em(26),
+          margin: {
+            // left:30,
+            right: 30,
+            // top:0,
+            // bottom:0,
+          },
         },
         children: {
           activeIcon: {
@@ -227,50 +244,50 @@ class RateDemo extends React.Component<any, any> {
 
     return (
       <div>
-        {/*<div>*/}
-        {/*<TitleBox>基础用法 default：</TitleBox>*/}
-        {/*<Rate {...defaultProps7} />*/}
-        {/*<TextBox>{this.state.defaultProps7} 颗星</TextBox>*/}
-        {/*</div>*/}
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>基础用法 default limit：</TitleBox>*/}
-        {/*<Rate {...defaultProps} />*/}
-        {/*<TextBox>{this.state.defaultProps} 颗星</TextBox>*/}
-        {/*</Theme>*/}
+        <div>
+          <TitleBox>基础用法 default：</TitleBox>
+          <Rate {...defaultProps7} />
+          <TextBox>{this.state.defaultProps7} 颗星</TextBox>
+        </div>
+        <Theme config={config}>
+          <TitleBox>基础用法 default limit：</TitleBox>
+          <Rate {...defaultProps} />
+          <TextBox>{this.state.defaultProps} 颗星</TextBox>
+        </Theme>
         <Theme config={config}>
           <TitleBox>半星用法(总分10分) allowHalf：</TitleBox>
           <Rate {...defaultProps1} />
           <TextBox>{this.state.defaultProps1} 分</TextBox>
         </Theme>
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>辅助文字：</TitleBox>*/}
-        {/*<Rate {...defaultProps2} character="好" />*/}
-        {/*<TextBox>{this.state.defaultProps2} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={config}>*/}
-        {/*<TitleBox>只读：</TitleBox>*/}
-        {/*<Rate {...defaultProps3} character="好" />*/}
-        {/*<TextBox>{this.state.defaultProps3} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={configColorful}>*/}
-        {/*<TitleBox>自定义图标：</TitleBox>*/}
-        {/*<Rate {...defaultProps4} />*/}
-        {/*<TextBox>{this.state.defaultProps4} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={configColorful}>*/}
-        {/*<TitleBox>自定义图标：</TitleBox>*/}
-        {/*<Rate {...defaultProps5} />*/}
-        {/*<TextBox>{this.state.defaultProps5} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<Theme config={configColorful}>*/}
-        {/*<TitleBox>自定义图标：</TitleBox>*/}
-        {/*<Rate {...defaultProps6} />*/}
-        {/*<TextBox>{this.state.defaultProps6} 颗星</TextBox>*/}
-        {/*</Theme>*/}
-        {/*<div>*/}
-        {/*<TitleBox>默认设置 noProps：</TitleBox>*/}
-        {/*<Rate />*/}
-        {/*</div>*/}
+        <Theme config={config}>
+          <TitleBox>辅助文字：</TitleBox>
+          <Rate {...defaultProps2} character="好" />
+          <TextBox>{this.state.defaultProps2} 颗星</TextBox>
+        </Theme>
+        <Theme config={config}>
+          <TitleBox>只读：</TitleBox>
+          <Rate {...defaultProps3} character="好" />
+          <TextBox>{this.state.defaultProps3} 颗星</TextBox>
+        </Theme>
+        <Theme config={configColorful}>
+          <TitleBox>自定义图标：</TitleBox>
+          <Rate {...defaultProps4} />
+          <TextBox>{this.state.defaultProps4} 颗星</TextBox>
+        </Theme>
+        <Theme config={configColorful}>
+          <TitleBox>自定义图标：</TitleBox>
+          <Rate {...defaultProps5} />
+          <TextBox>{this.state.defaultProps5} 颗星</TextBox>
+        </Theme>
+        <Theme config={configColorful}>
+          <TitleBox>自定义图标：</TitleBox>
+          <Rate {...defaultProps6} />
+          <TextBox>{this.state.defaultProps6} 颗星</TextBox>
+        </Theme>
+        <div>
+          <TitleBox>默认设置 noProps：</TitleBox>
+          <Rate />
+        </div>
       </div>
     );
   }

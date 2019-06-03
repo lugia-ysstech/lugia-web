@@ -8,31 +8,36 @@
  */
 import React from 'react';
 import Icon from '../icon';
-import { css } from 'styled-components';
 
 import { getElementPosition } from '../utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import { toNumber } from '../common/NumberUtils';
 
-import CSSComponent from '../theme/CSSProvider';
-import ThemeProvider from '../theme-provider';
+import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
 import ThemeHoc from '@lugia/theme-hoc';
-import Widget from '../consts/index';
 import colorsFunc from '../css/stateColor';
-import { getFontSize, getColor, getAnimation, getCharacter } from '../css/rate';
+import { getFontSize } from '../css/rate';
 import { findDOMNode } from 'react-dom';
+import { px2emcss } from '../css/units';
+import { FontSizeNumber } from '../css';
 
-const { warningColor, dangerColor } = colorsFunc();
+const { warningColor } = colorsFunc();
+const em = px2emcss(FontSizeNumber);
 
 const Container = CSSComponent({
   tag: 'div',
   className: 'characterContainer',
+  normal: {
+    selectNames: [['fontSize']],
+    defaultTheme: {
+      fontSize: '18px',
+    },
+  },
   css: css`
     position: relative;
     padding: 10px;
     white-space: nowrap;
     display: inline-block;
-    font-size: ${getFontSize};
   `,
 });
 
@@ -43,10 +48,18 @@ const Ratespan = CSSComponent({
   tag: 'span',
   className: 'starBox',
   normal: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['font'], ['margin']],
+    defaultTheme: {
+      margin: {
+        right: 6,
+      },
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      return '&:last-child { margin: 0 !important;}';
+    },
   },
   css: css`
-    margin: 6px;
+    margin-right: 6px;
     position: relative;
     & > i.hoverd:hover {
       transform: scale(1.2);
@@ -65,13 +78,23 @@ const Ratespan = CSSComponent({
 
 Ratespan.displayName = 'sv_rate_Ratespan';
 
+const showUp = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 const RateIcon = ThemeHoc(
   CSSComponent({
     extend: Icon,
     className: 'singleCharacter',
     css: css`
       vertical-align: text-bottom !important;
-      font-size: ${getFontSize};
+      font-size: ${em(18)};
     `,
     normal: {
       selectNames: [['color']],
@@ -82,8 +105,10 @@ const RateIcon = ThemeHoc(
     hover: {
       selectNames: [['color']],
       getCSS(themeMeta: Object, themeProps: Object) {
-        return `${getAnimation};
-      transition: scale(1.2);`;
+        return css`
+          animation: ${showUp} 0.3s linear forwards;
+          transform: scale(1.2);
+        `;
       },
     },
   }),
@@ -103,10 +128,6 @@ const RateDefaultIcon = ThemeHoc(
       selectNames: [['color']],
       defaultTheme: {
         color: '#e8e8e8',
-      },
-      getCSS(themeMeta: Object, themeProps: Object) {
-        return `${getAnimation};
-              transition: scale(1.2);`;
       },
     },
   }),
@@ -134,7 +155,7 @@ const RateIconBottom = ThemeHoc(
       },
     },
     hover: {
-      // selectNames: [['color']],
+      selectNames: [['color']],
     },
   }),
   'RateIconBottom'
@@ -233,6 +254,7 @@ type RateProps = {
   character?: any,
   themeProps: Object,
   getChildThemeHocProps: Function,
+  mergeThemePropsAndThemeConfig: Function,
 };
 
 export function getDefaultClassNames(count: number): Array<string> {
@@ -324,9 +346,13 @@ const getOffset = (rateRangeNode: Object) => {
   if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
-  rateRangeNode = findDOMNode(rateRangeNode);
-  const { x } = getElementPosition(rateRangeNode);
-  return { offsetLeft: x, offsetWidth: rateRangeNode.offsetWidth };
+  const rateRangeNodeRes = findDOMNode(rateRangeNode);
+
+  if (!rateRangeNodeRes) {
+    return { offsetLeft: 0, offsetWidth: 18 };
+  }
+  const { x } = getElementPosition(rateRangeNodeRes);
+  return { offsetLeft: x, offsetWidth: rateRangeNodeRes.offsetWidth };
 };
 
 const isLeft = (offsetX: number, offsetWidth: number, x: number): boolean => {
@@ -416,7 +442,6 @@ class Rate extends React.Component<RateProps, any> {
   render() {
     const { getTheme, themeProps } = this.props;
     const { count } = this.state;
-    const themeConfig = getTheme();
     return (
       <Container themeProps={themeProps} onMouseLeave={this.mouseLeave}>
         {count.map((x, i) => (
@@ -564,7 +589,6 @@ class Rate extends React.Component<RateProps, any> {
           this.getRateIcon(x, IconClass)
         ) : (
           <RateDefaultIcon
-            themeProps={RateIconBottomTheme}
             theme={RateIconBottomTheme}
             viewClass={RateIconBottomViewClass}
             type={'default'}
@@ -572,7 +596,6 @@ class Rate extends React.Component<RateProps, any> {
           />
         )}
         <RateIconBottom
-          themeProps={RateIconBottomTheme}
           theme={RateIconBottomTheme}
           viewClass={RateIconBottomViewClass}
           type={'default'}
@@ -613,7 +636,6 @@ class Rate extends React.Component<RateProps, any> {
     }
     return (
       <RateIcon
-        themeProps={themeProps}
         theme={resultTheme}
         type={type}
         viewClass={resultViewClass}

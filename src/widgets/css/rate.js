@@ -30,22 +30,3 @@ export const getColor = (props: Object) => {
   const { type } = props;
   return props.theme[type] || defaultColor[type];
 };
-
-const showUp = keyframes`
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-`;
-export const getAnimation = (props: Object) => {
-  const { type } = props;
-  console.log('type', type);
-  return type === 'default'
-    ? ''
-    : css`
-        animation: ${showUp} 0.3s linear forwards;
-      `;
-};
