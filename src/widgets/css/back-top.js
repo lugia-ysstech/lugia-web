@@ -8,8 +8,9 @@ import colorsFunc from '../css/stateColor';
 import { getThemeColor } from '../common/ThemeUtils';
 import { px2emcss } from './units';
 import Icon from '../icon';
+import CSSProvider from '../theme/CSSProvider';
 
-const { defaultColor } = colorsFunc();
+const { defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
@@ -18,6 +19,7 @@ export type BackTopProps = {
   children?: any,
   getTheme: Function,
   target?: Function,
+  themeProps: Object,
 };
 export type BackTopState = {
   fixed: boolean,
@@ -56,29 +58,97 @@ const getLeftOrRight = (props: CSSProps) => {
   }
   return `right: ${em(posRight)};bottom: ${em(posBottom)}`;
 };
-export const BackTop = styled.div`
-  font-size: ${FontSize}rem;
-  ${getFixedCSS} ${getLeftOrRight};
-  cursor: pointer;
-`;
+// export const BackTop = styled.div`
+//   font-size: ${FontSize}rem;
+//   ${getFixedCSS} ${getLeftOrRight};
+//   cursor: pointer;
+// `;
 
 const getBackgroundCSS = (props: CSSProps) => {
+  console.log('props', props);
   const { backgroundColor = defaultColor } = props.theme;
 
   return `background-color: ${backgroundColor}`;
 };
-export const BackTopContent = styled.div`
-  width: ${em(40)};
-  height: ${em(40)};
-  line-height: ${em(40)};
-  border-radius: ${em(40)};
-  border: 1px solid #e8e8e8;
-  color: ${props => getThemeColor(props.theme)};
-  text-align: center;
-  overflow: hidden;
-  box-shadow: 0 0 ${em(4)} #e8e8e8;
-  ${getBackgroundCSS};
-`;
+// export const BackTopContent = styled.div`
+//   width: ${em(40)};
+//   height: ${em(40)};
+//   line-height: ${em(40)};
+//   border-radius: ${em(40)};
+//   border: 1px solid #e8e8e8;
+//   color: ${props => getThemeColor(props.theme)};
+//   text-align: center;
+//   overflow: hidden;
+//   box-shadow: 0 0 ${em(4)} #e8e8e8;
+//   ${getBackgroundCSS};
+// `;
 export const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
 `;
+
+const CommonBackTopStyle = CSSProvider({
+  tag: 'div',
+  css: css`
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0 ${em(4)} #e8e8e8;
+  `,
+});
+
+export const BackTop = CSSProvider({
+  tag: 'div',
+  css: css`
+    font-size: ${FontSize}rem;
+    ${getFixedCSS};
+    ${getLeftOrRight};
+    cursor: pointer;
+  `,
+  normal: {
+    selectNames: [],
+  },
+});
+
+export const BackTopContent = CSSProvider({
+  extend: CommonBackTopStyle,
+  css: css`
+    position: relative;
+  `,
+  normal: {
+    selectNames: [
+      ['background'],
+      ['color'],
+      ['width'],
+      ['height'],
+      ['borderRadius'],
+      ['opacity'],
+      ['border'],
+    ],
+    defaultTheme: {
+      background: { backgroundColor: defaultColor },
+      color: themeColor,
+      width: 40,
+      height: 40,
+      borderRadius: 40,
+      opacity: 1,
+      border: {
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: '#e8e8e8',
+      },
+    },
+  },
+});
+
+export const IconBox = CSSProvider({
+  tag: 'span',
+  css: css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `,
+  normal: {
+    selectNames: [],
+  },
+});

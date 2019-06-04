@@ -14,7 +14,7 @@ import './widgets/css/global.css';
 // import App from './widgets/tag/demo';
 // import App from './widgets/tree-select/demo';
 // import App from './widgets/tree-select/defaultTreeSelect';
-import App from './widgets/progress/demo';
+import App from './widgets/switch/demo';
 
 // import App from './widgets/tree/InlineDataSingleTree';
 // import App from './widgets/tree/InlineDataMutlipleTree';
@@ -23,7 +23,6 @@ import App from './widgets/progress/demo';
 // import App from './widgets/tree/demo';
 
 import registerServiceWorker from './registerServiceWorker';
-
 // console.info(ReactServer.renderToString(<App />));
 const root = document.getElementById('root');
 if (root) {

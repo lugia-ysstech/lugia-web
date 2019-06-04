@@ -8,125 +8,119 @@
  */
 import React from 'react';
 import Icon from '../icon';
-import styled, { keyframes } from 'styled-components';
+import { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { getElementPosition } from '../utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import { toNumber } from '../common/NumberUtils';
 import Widget from '../consts';
-import Theme from '../theme';
+
+import CSSProvider from '../theme/CSSProvider';
+import { getFontSize, getColor, getAnimation, getCharacter } from '../css/rate';
 
 const { warningColor } = colorsFunc();
-const Container = styled.div`
-  position: relative;
-  padding: 10px;
-  display: inline-block;
-  font-size: ${props => (props.theme.fontSize ? `${props.theme.fontSize}px` : '18px')};
-`;
 
-const showUp = keyframes`
-  from {
-    opacity: 0;
-  }
+const Container = CSSProvider({
+  tag: 'div',
+  css: css`
+    position: relative;
+    padding: 10px;
+    white-space: nowrap;
+    display: inline-block;
+    font-size: ${getFontSize};
+  `,
+});
 
-  to {
-    opacity: 1;
-  }
-`;
 const StarIconClass = 'lugia-icon-financial_star';
 const StarIconClassOpen = 'lugia-icon-finacial_half_star';
 
-const Ratespan = styled.span.attrs({
-  primary: props => props.theme.primary || `${warningColor}`,
-  default: props => props.theme.default || '#e8e8e8',
-  danger: props => props.theme.danger || '#999999',
-  amazed: props => props.theme.amazed || '#f88e30',
-  half: props => props.theme.half || props.theme.primary || `${warningColor}`,
-})`
-  margin: 6px;
-  position: relative;
-  & > i.hoverd:hover {
-    transform: scale(1.2);
-  }
-  & > i.bottom {
+const Ratespan = CSSProvider({
+  tag: 'span',
+  css: css`
+    margin: 6px;
+    position: relative;
+    & > i.hoverd:hover {
+      transform: scale(1.2);
+    }
+    & > i.bottom {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    & > i {
+      vertical-align: text-bottom !important;
+    }
+  `,
+});
+
+Ratespan.displayName = 'sv_rate_Ratespan';
+
+const RateIcon = CSSProvider({
+  extend: Icon,
+  css: css`
+    vertical-align: text-bottom !important;
+    opacity: 1;
+    color: ${getColor};
+    font-size: ${getFontSize};
+    &.hoverd:hover {
+      transform: scale(1.2);
+      ${getAnimation};
+    }
+  `,
+  normal: {
+    selectNames: [['color']],
+    defaultTheme: {
+      // color: '#e8e8e8',
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      console.log(JSON.stringify(themeProps.propsConfig));
+    },
+  },
+  hover: {
+    selectNames: [['color']],
+    defaultTheme: {
+      // color: `${warningColor}`,
+      // transform: 'scale(1.2)',
+    },
+  },
+});
+
+const RateIconBottom = CSSProvider({
+  extend: Icon,
+  css: css`
+    vertical-align: text-bottom !important;
+    opacity: 1;
+    color: #e8e8e8;
+    font-size: ${getFontSize};
     position: absolute;
     left: 0;
     bottom: 0;
     z-index: -1;
-  }
-  & > i {
-    vertical-align: text-bottom !important;
-  }
-  & > i.primary {
-    color: ${props => props.primary};
-    animation: ${showUp} 0.3s linear forwards;
-  }
-  & > i.danger {
-    color: ${props => props.danger};
-    animation: ${showUp} 0.3s linear forwards;
-  }
-  & > i.default {
-    color: ${props => props.default};
-  }
-  & > i.amazed {
-    color: ${props => props.amazed};
-    animation: ${showUp} 0.3s linear forwards;
-  }
-  & > i.half {
-    color: ${props => props.half};
-    animation: ${showUp} 0.3s linear forwards;
-    position: relative;
-  }
-`;
-
-Ratespan.displayName = 'sv_rate_Ratespan';
-const RateIcon: Object = styled(Icon)`
-  vertical-align: text-bottom;
-`;
+  `,
+});
 
 RateIcon.displayName = 'sv_rate_icon';
 
-const RateText: Object = styled.span.attrs({
-  primary: props => props.theme.primary || `${warningColor}`,
-  default: props => props.theme.default || '#e8e8e8',
-  danger: props => props.theme.danger || props.theme.primary || `${warningColor}`,
-  amazed: props => props.theme.amazed || props.theme.primary || `${warningColor}`,
-  half: props => props.theme.half || props.theme.primary || `${warningColor}`,
-  character: props => props.character,
-})`
-  cursor:pointer;
-  color:${props => props.primary};
-  &.hoverd:hover{
-    transform : scale(1.2);
-  }
-  &.primary{
-    color:${props => props.primary};
-    animation: ${showUp} 0.3s linear forwards;
-  }
-  &.danger{
-    color:${props => props.danger};
-    animation: ${showUp} 0.3s linear forwards;
-  }
-  &.default{
-    color:${props => props.default};
-  }
-  &.amazed{
-    color:${props => props.amazed};
-    animation: ${showUp} 0.3s linear forwards;
-  }
-  &.half{
-    color:${props => props.half};
-    animation: ${showUp} 0.3s linear forwards;
-    position:relative;
-  }
-  &.half:before{
-    content: '${props => props.character}';
-    position: absolute;
-    z-index: 10;
-    color:#e8e8e8;
-    -webkit-mask: linear-gradient(to left,#e8e8e8 30%, ${props => props.half} 40%, transparent );
-  }
-`;
+const RateText = CSSProvider({
+  tag: 'span',
+  css: css`
+    vertical-align: text-bottom !important;
+    opacity: 1;
+    color: ${getColor};
+    cursor: pointer;
+    &.hoverd:hover {
+      transform: scale(1.2);
+    }
+    &.half::before {
+      content: ${getCharacter};
+      position: absolute;
+      z-index: 10;
+      color: #e8e8e8;
+      -webkit-mask: linear-gradient(to left, #e8e8e8 30%, ${getColor} 40%, transparent);
+    }
+  `,
+});
 
 RateText.displayName = 'sv_rate_RateText';
 
@@ -151,6 +145,7 @@ type RateProps = {
   onClick: Function,
   onChange: Function,
   character?: any,
+  themeProps: Object,
 };
 
 export function getDefaultClassNames(count: number): Array<string> {
@@ -249,8 +244,8 @@ const isLeft = (offsetX: number, offsetWidth: number, x: number): boolean => {
 
 const getReturnObj = (state: Object, multiple: number) => {
   return {
-    defaultValue: state.value,
-    currentValue: multiple >= 0 ? multiple : 0,
+    oldValue: state.value,
+    newValue: multiple >= 0 ? multiple : 0,
   };
 };
 const loop = () => true;
@@ -287,8 +282,6 @@ class Rate extends React.Component<RateProps, any> {
 
   componentDidMount() {
     this.saveState();
-    const { onChange, value = 0 } = this.props;
-    onChange({}, getReturnObj(this.state, value));
   }
 
   saveState() {
@@ -329,13 +322,15 @@ class Rate extends React.Component<RateProps, any> {
   }
 
   render() {
-    const { getTheme } = this.props;
+    const { getTheme, themeProps } = this.props;
     const { count } = this.state;
     const themeConfig = getTheme();
+    console.log('count', count);
     return (
-      <Container theme={themeConfig} onMouseLeave={this.mouseLeave}>
+      <Container themeProps={themeProps} theme={themeConfig} onMouseLeave={this.mouseLeave}>
         {count.map((x, i) => (
           <Ratespan
+            themeProps={themeProps}
             ref={this.ratespan[i]}
             theme={themeConfig}
             onMouseMove={e => {
@@ -359,7 +354,7 @@ class Rate extends React.Component<RateProps, any> {
     const { offsetLeft, offsetWidth } = this.getOffset(i);
     const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
 
-    const { onChange, classify } = this.props;
+    const { classify } = this.props;
     const { count, current } = this.state;
     const classNames = getClassNames(count, starCount, !!classify);
 
@@ -369,20 +364,19 @@ class Rate extends React.Component<RateProps, any> {
       const { hasClick } = this.state;
       this.setValue(starCount, classNames, current, hasClick);
     }
-
-    onChange(e, getReturnObj(this.state, multipleValue(this.props, starCount)));
+    this.doExportChange(getReturnObj(this.state, multipleValue(this.props, starCount)));
   };
 
   mouseLeave = (e: Object) => {
     const { props } = this;
-    const { onChange } = props;
+
     const { current } = this.state;
 
     const temporary = this.getTemporary();
     if (temporary) {
       const { value, count } = temporary;
       this.setValue(value, count, current, false);
-      onChange(e, getReturnObj(this.state, multipleValue(props, current)));
+      this.doExportChange(getReturnObj(this.state, multipleValue(props, current)));
       return;
     }
 
@@ -390,7 +384,7 @@ class Rate extends React.Component<RateProps, any> {
     const { count } = props;
     const classNames = createCalssArray(count);
     this.setValue(0, classNames, current, hasClick);
-    onChange(e, getReturnObj(this.state, multipleValue(props, 0)));
+    this.doExportChange(getReturnObj(this.state, multipleValue(props, 0)));
   };
 
   getTemporary = () => {
@@ -417,10 +411,10 @@ class Rate extends React.Component<RateProps, any> {
     return getOffset(this.ratespan[index].current);
   }
 
-  getElement = (x: number, theme: Object) => {
-    const { className, iconClass, disabled, character } = this.props;
+  getElement = (x: string, theme: Object) => {
+    console.log('x', x);
+    const { className, iconClass, disabled, character, themeProps } = this.props;
     const IconClass = getIconClass(iconClass);
-
     const theClassName = `${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`;
     const { fontSize = 18 } = theme;
     const config = {
@@ -428,16 +422,26 @@ class Rate extends React.Component<RateProps, any> {
     };
     if (ObjectUtils.isString(character)) {
       return (
-        <RateText character={character} className={theClassName}>
+        <RateText themeProps={themeProps} type={x} character={character} className={theClassName}>
           {character}
         </RateText>
       );
     }
+
     return (
-      <Theme config={config}>
-        <RateIcon iconClass={`${IconClass[x]} ${theClassName}`} />
-        <RateIcon iconClass={`${IconClass.default}  default bottom`} />
-      </Theme>
+      <React.Fragment config={config}>
+        <RateIcon
+          themeProps={themeProps}
+          type={x}
+          disabled={disabled}
+          iconClass={`${IconClass[x]} ${theClassName} `}
+        />
+        <RateIconBottom
+          themeProps={themeProps}
+          type={'default'}
+          iconClass={`${iconClass ? IconClass[x] : IconClass.default}  default `}
+        />
+      </React.Fragment>
     );
   };
 
@@ -462,7 +466,8 @@ class Rate extends React.Component<RateProps, any> {
     this.setValue(val, classNames, index, hasClicked);
 
     const { onClick } = props;
-    onClick(e, getReturnObj(state, multipleValue(props, val)));
+    const { newValue, oldValue } = getReturnObj(state, multipleValue(props, val));
+    onClick(newValue, oldValue);
   };
   setValue = (val: number, count: Array<string>, index: number, hasClick: boolean) => {
     this.setState(
@@ -482,6 +487,12 @@ class Rate extends React.Component<RateProps, any> {
         }
       }
     );
+  };
+
+  doExportChange = (resValue: Object) => {
+    const { newValue, oldValue } = resValue;
+    const { onChange } = this.props;
+    onChange && onChange(newValue, oldValue);
   };
 }
 

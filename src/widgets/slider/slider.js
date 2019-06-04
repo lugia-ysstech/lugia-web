@@ -482,7 +482,7 @@ class Slider extends Component<TypeProps, TypeState> {
         };
 
         iconsChildren.push(
-          <Icons iconStyle={iconStyle} value={value} {...size}>
+          <Icons iconStyle={iconStyle} value={value} {...size} themeProps={this.props.themeProps}>
             <Theme
               config={{
                 [Widgets.Icon]: { fontSize: newFontSize },
@@ -574,7 +574,15 @@ class Slider extends Component<TypeProps, TypeState> {
           rangeW: this.style.rangeW,
           rangeH: this.style.rangeH,
         };
-        dots.push(<Dot marksData={data} data-sign={'mask'} key={dotIndex} getTheme={getTheme} />);
+        dots.push(
+          <Dot
+            marksData={data}
+            data-sign={'mask'}
+            key={dotIndex}
+            getTheme={getTheme}
+            themeProps={this.props.themeProps}
+          />
+        );
       }
     }
 
@@ -597,8 +605,10 @@ class Slider extends Component<TypeProps, TypeState> {
       const btnDisabled = index === i;
       size.btnDisabled = btnDisabled;
       const tipsText = tips && (typeof tips === 'string' || typeof tips === 'number') ? tips : val;
+      const { themeProps } = this.props;
       return (
         <Button
+          themeProps={themeProps}
           onMouseDown={mousedown}
           onMouseUp={mouseup}
           onMouseEnter={mouseenter(i)}
@@ -608,9 +618,9 @@ class Slider extends Component<TypeProps, TypeState> {
           getTheme={getTheme}
         >
           {showTip && btnDisabled ? (
-            <Tips>
-              <Tipinner>{tipsText}</Tipinner>
-              <Tiparrow />
+            <Tips themeProps={themeProps}>
+              <Tipinner themeProps={themeProps}>{tipsText}</Tipinner>
+              <Tiparrow themeProps={themeProps} />
             </Tips>
           ) : (
             ''
@@ -626,15 +636,18 @@ class Slider extends Component<TypeProps, TypeState> {
       dotWidths,
       dotHeights
     );
+    const { themeProps } = this.props;
     return (
       <SliderBox
         {...size}
+        themeProps={themeProps}
         iconSize={iconSize}
         levelPaddings={levelPaddings}
         getTheme={getTheme}
         sliderVerticalPaddings={sliderVerticalPaddings}
       >
         <SliderWrapper
+          themeProps={themeProps}
           ref={this.sliderRange}
           onMouseDown={mousedown}
           onMouseUp={mouseup}
@@ -643,7 +656,7 @@ class Slider extends Component<TypeProps, TypeState> {
         >
           {iconsChildren}
           {dots}
-          <SliderInner {...size} getTheme={getTheme} />
+          <SliderInner themeProps={themeProps} {...size} getTheme={getTheme} />
           {children}
         </SliderWrapper>
       </SliderBox>

@@ -124,7 +124,6 @@ const InputDemo = () => {
     },
     register: {
       width: 140,
-      maigin: 10,
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};
@@ -137,7 +136,7 @@ const InputDemo = () => {
   return (
     <div>
       <Wrapper>
-        <Theme config={{ register: { width: 150, margin: 15 } }}>
+        <Theme config={{ register: { width: 150 } }}>
           <p>字体色值</p>
           <Input viewClass="register" disabled={true} value="色值:#333333" />
           <p>default input</p>
@@ -148,40 +147,38 @@ const InputDemo = () => {
           <Input size={'default'} disabled={true} />
         </Theme>
       </Wrapper>
-      <Theme config={view}>
-        <Wrapper>
-          <p>small size</p>
-          <Input size={'small'} placeholder={'small Input'} />
-          <p>default size</p>
-          <Input placeholder={'default Input'} />
-          <p>large size</p>
-          <Input size={'large'} placeholder={'large Input'} />
-        </Wrapper>
-        <Wrapper>
-          <p>delete</p>
-          <Input viewClass="register" suffix={<ClearIcon />} />
-          <p>search</p>
-          <Input prefix={<SearchIcon />} viewClass="register" suffix={<ClearIcon />} />
-          <p>pull</p>
-          <Input viewClass="register" suffix={<PullIcon />} />
-        </Wrapper>
-        <Wrapper>
-          <p>受限Input</p>
-          <LimitInput onChange={onChange('limit')} />
-          <p>有默认值的 受限Input</p>
-          <DefaultValueInput onChange={onChange('limit')} />
-          <p>formatter input</p>
-          <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
-        </Wrapper>
-        <Wrapper>
-          <p>校验信息显示类型 top</p>
-          <TopInput viewClass="register" validateType="top" onChange={onChange('limit')} />
-          <p>校验信息显示类型 bottom</p>
-          <ValidateInput viewClass="register" validateType="bottom" onChange={onChange('limit')} />
-          <p>校验信息显示类型 inner</p>
-          <ValidateInput viewClass="register" validateType="inner" onChange={onChange('limit')} />
-        </Wrapper>
-      </Theme>
+      <Wrapper>
+        <p>small size</p>
+        <Input size={'small'} placeholder={'small Input'} />
+        <p>default size</p>
+        <Input placeholder={'default Input'} />
+        <p>large size</p>
+        <Input size={'large'} placeholder={'large Input'} />
+      </Wrapper>
+      <Wrapper>
+        <p>delete</p>
+        <Input viewClass="register" suffix={<ClearIcon />} />
+        <p>search</p>
+        <Input prefix={<SearchIcon />} viewClass="register" suffix={<ClearIcon />} />
+        <p>pull</p>
+        <Input viewClass="register" suffix={<PullIcon />} />
+      </Wrapper>
+      <Wrapper>
+        <p>受限Input</p>
+        <LimitInput onChange={onChange('limit')} />
+        <p>有默认值的 受限Input</p>
+        <DefaultValueInput onChange={onChange('limit')} />
+        <p>formatter input</p>
+        <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
+      </Wrapper>
+      <Wrapper>
+        <p>校验信息显示类型 top 输入值 是否含有, </p>
+        <TopInput viewClass="register" validateType="top" onChange={onChange('limit')} />
+        <p>校验信息显示类型 bottom 输入值 是否含有,</p>
+        <ValidateInput viewClass="register" validateType="bottom" onChange={onChange('limit')} />
+        <p>校验信息显示类型 inner 输入值 是否含有, </p>
+        <ValidateInput viewClass="register" validateType="inner" onChange={onChange('limit')} />
+      </Wrapper>
     </div>
   );
 };

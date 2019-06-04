@@ -2,132 +2,325 @@
 import '../common/shirm';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import { css } from 'styled-components';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import { fixControlledValue } from '.././utils';
 import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
-import {
-  DefaultHelp,
-  getBackground,
-  getClearButtonColor,
-  getClearButtonHoverColor,
-  getCursor,
-  getDisplay,
-  getFocusBorderColor,
-  getFocusShadow,
-  getFontColor,
-  getInputBorderColor,
-  getInputBorderHoverColor,
-  getInputBorderSize,
-  getPadding,
-  getRightPadding,
-  getSize,
-  getVisibility,
-  getWidth,
-  isValidateSuccess,
-} from '../css/input';
+import { DefaultHelp, getDisplay, isValidateSuccess, getPadding } from '../css/input';
 import { FontSizeNumber } from '../css';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import { getInputBorderRadius, getMargin } from '../common/ThemeUtils';
+import CSSProvider, { deepMerge } from '../theme/CSSProvider';
+import colorsFunc from '../css/stateColor';
+
+const { themeColor, disableColor, lightGreyColor } = colorsFunc();
 
 const em = px2emcss(FontSizeNumber);
 
-const CommonInputStyle = styled.input`
-  ${getSize};
-  ${getCursor};
-  ${getWidth};
-  ${getInputBorderRadius};
-  ${getInputBorderSize};
-  border-style: solid;
-  border-color: ${getInputBorderColor};
-  line-height: 1.5;
-  font-size: 1.4rem;
-  display: inline-block;
-  font-family: inherit;
-  &:hover {
-    border-color: ${getInputBorderHoverColor};
-  }
+// const CommonInputStyle = styled.input`
+//   ${getSize};
+//   ${getCursor};
+//   ${getWidth};
+//   ${getInputBorderRadius};
+//   ${getInputBorderSize};
+//   border-style: solid;
+//   border-color: ${getInputBorderColor};
+//   line-height: 1.5;
+//   font-size: 1.4rem;
+//   display: inline-block;
+//   font-family: inherit;
+//   &:hover {
+//     border-color: ${getInputBorderHoverColor};
+//   }
+//
+//   transition: all 0.3s;
+//   background-image: none;
+//   ${getFontColor};
+//   &::placeholder {
+//     color: #ccc;
+//   }
+//   &:focus {
+//     ${getFocusBorderColor};
+//     ${getFocusShadow};
+//   }
+//
+//   padding-left: ${getPadding};
+//   padding-right: ${getRightPadding};
+//   ${getBackground};
+// `;
 
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-image: none;
-  ${getFontColor};
-  &::placeholder {
-    color: #ccc;
-  }
-  &:focus {
-    ${getFocusBorderColor};
-    ${getFocusShadow};
-  }
+const CommonInputStyle = CSSProvider({
+  tag: 'input',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['borderRadius'],
+      ['cursor'],
+    ],
+    defaultTheme: {
+      border: {
+        top: {
+          borderColor: lightGreyColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        left: {
+          borderColor: lightGreyColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        bottom: {
+          borderColor: lightGreyColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        right: {
+          borderColor: lightGreyColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+      },
+    },
+  },
+  hover: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['padding'],
+      ['background'],
+      ['boxShadow'],
+      ['border'],
+      ['borderRadius'],
+      ['cursor'],
+    ],
+    defaultTheme: {
+      border: {
+        top: {
+          borderColor: themeColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        left: {
+          borderColor: themeColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        bottom: {
+          borderColor: themeColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        right: {
+          borderColor: themeColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+      },
+    },
+  },
+  clicked: {
+    selectNames: [
+      ['background'],
+      ['boxShadow'],
+      ['border'],
+      ['borderRadius'],
+      ['padding'],
+      ['cursor'],
+    ],
+    defaultTheme: {
+      boxShadow: `0px 0px 6px ${themeColor};`,
+      border: {
+        top: {
+          borderColor: themeColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        left: {
+          borderColor: themeColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        bottom: {
+          borderColor: themeColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+        right: {
+          borderColor: themeColor,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+        },
+      },
+    },
+  },
+  disabled: {
+    selectNames: [
+      ['background'],
+      ['borderRadius'],
+      ['margin'],
+      ['padding'],
+      ['cursor'],
+      ['border'],
+    ],
+    defaultTheme: {
+      background: {
+        backgroundColor: disableColor,
+      },
+      cursor: 'not-allowed',
+    },
+  },
+  css: css`
+    width: ${em(200)};
+    height: ${em(32)};
+    cursor: text;
+    line-height: 1.5;
+    display: inline-block;
+    font-family: inherit;
+    transition: all 0.3s;
+    background-image: none;
+    border-radius: ${em(4)};
+    &::placeholder {
+      color: #ccc;
+    }
 
-  padding-left: ${getPadding};
-  padding-right: ${getRightPadding};
-  ${getBackground};
-`;
-const BaseInputContainer = styled.span`
-  position: relative;
-  display: inline-block;
-`;
-const InputContainer = styled(BaseInputContainer)`
-  ${getMargin};
-`;
+    padding-left: ${getPadding};
+    padding-right: ${em(35)};
+    outline: none;
+  `,
+});
 
-export const Input = styled(CommonInputStyle)`
-  outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-`;
+const BaseInputContainer = CSSProvider({
+  tag: 'span',
+  css: css`
+    position: relative;
+    display: inline-block;
+  `,
+});
+const InputContainer = CSSProvider({
+  tag: 'div',
+  normal: {
+    selectNames: [['width'], ['height'], ['opacity'], ['boxShadow'], ['padding'], ['margin']],
+    defaultTheme: {
+      margin: { top: 22, left: 20 },
+      opacity: 1,
+    },
+  },
+  disabled: {
+    selectNames: [['width'], ['height'], ['backgroundColor'], ['boxShadow']],
+    defaultTheme: {
+      backgroundColor: disableColor,
+    },
+  },
+  css: css`
+    width: ${em(200)};
+    height: ${em(32)};
+    z-index: 0;
+    position: relative;
+    display: inline-block;
+    outline: none;
+  `,
+});
 
-export const InputOnly = styled(CommonInputStyle)`
-  outline: none;
-`;
-const TipBottom = styled.span`
-  display: block;
-  ${getVisibility};
-  transform: translateY(50%);
-  z-index: 2;
-  font-size: 1em;
-  color: red;
-`;
+export const Input: Object = CSSProvider({
+  extend: CommonInputStyle,
+  css: css`
+    position: relative;
+    font-size: 1.2rem;
+    outline: none;
+  `,
+});
 
-const Fix = styled.span`
-  position: absolute;
-  transform: translateY(50%);
-  z-index: 2;
-  bottom: 50%;
-  line-height: ${em(10)};
-  font-size: 1.4em;
-  color: rgba(0, 0, 0, 0.65);
-`;
+export const InputOnly: Object = CSSProvider({
+  extend: CommonInputStyle,
+  css: css`
+    outline: none;
+  `,
+});
+const TipBottom = CSSProvider({
+  tag: 'span',
+  css: css`
+    display: block;
+    transform: translateY(50%);
+    z-index: 2;
+    font-size: 1em;
+    color: red;
+  `,
+  normal: {
+    defaultTheme: {
+      visibility: 'hidden',
+    },
 
-const Prefix = styled(Fix)`
-  left: ${em(5)};
-`;
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      console.log(themeProps, 'themeProps');
+      const { validateType, validateStatus } = propsConfig;
+      return `
+      visibility:${
+        isValidateSuccess(validateStatus, validateType, 'bottom') ? 'visible' : 'hidden'
+      };
+      `;
+    },
+  },
+});
 
-const Suffix = styled(Fix)`
-  right: ${em(5)};
-`;
+const Fix = CSSProvider({
+  tag: 'span',
+  css: css`
+    position: absolute;
+    transform: translateY(50%);
+    z-index: 2;
+    bottom: 50%;
+    line-height: ${em(10)};
+    font-size: 1.4em;
+    color: rgba(0, 0, 0, 0.65);
+  `,
+});
+
+const Prefix: Object = CSSProvider({
+  extend: Fix,
+  css: css`
+    left: ${em(5)};
+  `,
+});
+
+const Suffix: Object = CSSProvider({
+  extend: Fix,
+  css: css`
+    right: ${em(5)};
+  `,
+});
 
 const Clear = 'lugia-icon-reminder_close';
 
-const ClearButton: Object = styled(Icon)`
-  position: absolute;
-  transform: translateY(50%);
-  z-index: 2;
-  bottom: 50%;
-  line-height: ${em(10)};
-  right: ${em(10)};
-  display: ${getDisplay};
-  ${getClearButtonColor};
-  &:hover {
-    ${getClearButtonHoverColor};
-  }
-`;
+const ClearButton: Object = CSSProvider({
+  extend: Icon,
+  normal: {},
+  hover: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: themeColor,
+    },
+  },
+  css: css`
+    position: absolute;
+    transform: translateY(50%);
+    z-index: 2;
+    bottom: 50%;
+    line-height: ${em(10)};
+    right: ${em(10)};
+    display: ${getDisplay};
+  `,
+});
 ClearButton.displayName = 'ClearButton';
 
 type InputState = {|
@@ -138,6 +331,7 @@ type InputState = {|
 type InputProps = {|
   size?: InputSize,
   viewClass: string,
+  themeProps: Object,
   disabled: boolean,
   validateStatus: ValidateStatus,
   validateType: InputValidateType,
@@ -167,6 +361,13 @@ type InputProps = {|
   type: string,
 |};
 
+function getPropsConfig(themeProps: Object, arrayProps: Array<Object>): Object {
+  themeProps.propsConfig = {};
+  arrayProps.forEach(child => {
+    Object.assign(themeProps.propsConfig, child);
+  });
+  return { ...themeProps };
+}
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     disabled: false,
@@ -190,6 +391,7 @@ class TextBox extends Component<InputProps, InputState> {
   input: any;
   static displayName = Widget.Input;
   actualValue = '';
+
   constructor(props: InputProps) {
     super(props);
   }
@@ -277,28 +479,25 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   getInputContainer(fetcher: Function) {
-    const { getTheme, disabled } = this.props;
-    return (
-      <InputContainer theme={getTheme()} disabled={disabled}>
-        {fetcher()}
-      </InputContainer>
-    );
+    const { themeProps } = this.props;
+    return <InputContainer themeProps={themeProps}>{fetcher()}</InputContainer>;
   }
 
   getInputInner = () => {
-    const { validateType, validateStatus, help, disabled } = this.props;
+    const { validateType, validateStatus, help } = this.props;
 
     if (validateType === 'bottom') {
       const result = [
-        <BaseInputContainer disabled={disabled}>
+        <BaseInputContainer themeProps={this.props.themeProps}>
           {this.generatePrefix()}
           {this.generateInput()}
           {this.generateSuffix()}
         </BaseInputContainer>,
       ];
-
+      console.log('oldThemeprops', this.props.themeProps);
+      this.props.themeProps.propsConfig = { validateType, validateStatus };
       result.push(
-        <TipBottom validateStatus={validateStatus} validateType={validateType}>
+        <TipBottom themeProps={this.props.themeProps}>
           {this.isValidateError() ? help : ''}
         </TipBottom>
       );
@@ -313,11 +512,11 @@ class TextBox extends Component<InputProps, InputState> {
 
   render() {
     const { props } = this;
-    const { validateType, size, getTheme, help, validateStatus } = props;
+    const { validateType, size, help, validateStatus } = props;
     const result = this.getInputContent();
     if (isValidateSuccess(validateStatus, validateType, 'top')) {
       return (
-        <ErrorTip theme={getTheme()} size={size} placement={'topLeft'} title={help}>
+        <ErrorTip themeProps={this.props.themeProps} size={size} placement={'topLeft'} title={help}>
           {result}
         </ErrorTip>
       );
@@ -328,7 +527,7 @@ class TextBox extends Component<InputProps, InputState> {
   generatePrefix(): React$Element<any> | null {
     const { prefix } = this.props;
     if (prefix) {
-      return <Prefix>{prefix}</Prefix>;
+      return <Prefix themeProps={this.props.themeProps}>{prefix}</Prefix>;
     }
     return null;
   }
@@ -336,7 +535,7 @@ class TextBox extends Component<InputProps, InputState> {
   generateSuffix(): React$Element<any> | null {
     const { suffix } = this.props;
     if (suffix) {
-      return <Suffix>{suffix}</Suffix>;
+      return <Suffix themeProps={this.props.themeProps}>{suffix}</Suffix>;
     }
     return this.getClearButton();
   }
@@ -348,6 +547,7 @@ class TextBox extends Component<InputProps, InputState> {
     return (
       <ClearButton
         iconClass={Clear}
+        themeProps={this.props.themeProps}
         viewClass={ClearButton.displayName}
         onClick={this.onClear}
         show={this.state.clearButtonShow}
@@ -370,7 +570,6 @@ class TextBox extends Component<InputProps, InputState> {
       suffix,
       prefix,
       size,
-      disabled,
       formatter,
       parser,
       validateStatus,
@@ -386,16 +585,15 @@ class TextBox extends Component<InputProps, InputState> {
     if (formatter && parser) {
       value = formatter(value);
     }
-
     return (
       <Input
+        themeProps={this.props.themeProps}
         autoFocus={autoFocus}
         ref={node => (this.input = node)}
         validateStatus={validateStatus}
         validateType={validateType}
         suffix={suffix}
         prefix={prefix}
-        theme={this.props.getTheme()}
         value={value}
         size={size}
         onKeyUp={onKeyUp}
@@ -406,7 +604,6 @@ class TextBox extends Component<InputProps, InputState> {
         onBlur={this.onBlur}
         onClick={onClick}
         onChange={this.onChange}
-        disabled={disabled}
         formatter={formatter}
         parser={parser}
         readOnly={readOnly}

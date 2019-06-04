@@ -1,0 +1,54 @@
+import { px2emcss } from './units';
+import { FontSizeNumber } from '../css';
+import colorsFunc from './stateColor';
+import { css, keyframes } from 'styled-components';
+const em = px2emcss(FontSizeNumber);
+
+const { warningColor, dangerColor } = colorsFunc();
+export const getFontSize = (props: Object) => {
+  const {
+    theme: { fontSize },
+  } = props;
+  return fontSize ? em(fontSize) : em(18);
+};
+
+export const getCharacter = (props: Object) => {
+  const { character } = props;
+  return `'${character}'`;
+};
+
+const defaultColor = {
+  primary: `${warningColor}`,
+  default: '#e8e8e8',
+  danger: `${dangerColor}`,
+  amazed: '#f88e30',
+  half: `${warningColor}`,
+};
+export const getColor = (props: Object) => {
+  const {
+    theme: { color },
+  } = props;
+  // if(color){
+  //   return color;
+  // }
+  const { type } = props;
+  return props.theme[type] || defaultColor[type] || color;
+};
+
+const showUp = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+export const getAnimation = (props: Object) => {
+  const { type } = props;
+  return type === 'default'
+    ? ''
+    : css`
+        animation: ${showUp} 0.3s linear forwards;
+      `;
+};

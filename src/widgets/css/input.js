@@ -44,16 +44,9 @@ export const getInputBorderHoverColor = (props: Object) => {
 };
 
 export const getFocusShadow = (props: Object) => {
-  const { validateStatus = Success, theme } = props;
-  const { borderSize } = theme;
-  const noShadow =
-    borderSize === 0 ||
-    (borderSize && borderSize.top === 0) ||
-    (borderSize && borderSize.bottom === 0) ||
-    (borderSize && borderSize.left === 0) ||
-    (borderSize && borderSize.right === 0);
+  const { validateStatus = Success } = props;
   const color = isSuccess(validateStatus) ? 'rgba(104, 79, 255, 0.2)' : 'rgba(248, 172, 48, 0.2)';
-  return noShadow ? '' : 'box-shadow: 0 0 6px ' + color;
+  return 'box-shadow: 0 0 6px ' + color;
 };
 export const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -86,14 +79,8 @@ export const getWidth = (props: CommonInputProps) => {
   return `width:${theWidth};`;
 };
 export const getPadding = (props: CommonInputProps) => {
-  const { theme, prefix } = props;
-  const { width } = theme;
-  return `${prefix ? em(30) : width && width < 200 ? em(width / 20) : em(10)};`;
-};
-export const getRightPadding = (props: CommonInputProps) => {
-  const { theme } = props;
-  const { width } = theme;
-  return `${width && width < 200 ? em(15 + width / 10) : em(35)};`;
+  const { prefix } = props;
+  return `${prefix ? em(30) : em(10)};`;
 };
 export const getSize = (props: CommonInputProps) => {
   const { size } = props;
@@ -165,7 +152,7 @@ export const getClearButtonColor = () => {
 };
 export const getDisplay = (props: Object) => {
   const { show } = props;
-  return show ? 'inline-block' : ' !important';
+  return show ? 'inline-block' : '';
 };
 export const getClearButtonHoverColor = () => {
   return `color: ${darkGreyColor}`;

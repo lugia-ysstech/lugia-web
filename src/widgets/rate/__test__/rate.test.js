@@ -15,25 +15,25 @@ const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify')
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Rate Test', () => {
-  const target = mount(<Rate />);
+  const target = mount(<Rate themeProps={{}} />);
 
   it('css', () => {
-    const target = <Rate />;
+    const target = <Rate themeProps={{}} />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 
   it('count=10', () => {
-    const target = mount(<Rate count={10} />);
+    const target = mount(<Rate themeProps={{}} count={10} />);
     expect(target.props().count).toEqual(10);
   });
 
   it('value=4', () => {
-    const target = mount(<Rate value={4} />);
+    const target = mount(<Rate themeProps={{}} value={4} />);
     expect(target.state().value).toEqual(4);
   });
 
   it('disabled=true', () => {
-    const target = mount(<Rate disabled={true} />);
+    const target = mount(<Rate themeProps={{}} disabled={true} />);
     expect(target.props().disabled).toEqual(true);
     expect(target.state().value).toEqual(0);
     findRate(target, 3).simulate('click', {}, 3);
@@ -41,13 +41,13 @@ describe('Rate Test', () => {
   });
 
   it('allowHalf=true', () => {
-    const target = mount(<Rate allowHalf={true} value={3.5} />);
+    const target = mount(<Rate themeProps={{}} allowHalf={true} value={3.5} />);
     expect(target.props().allowHalf).toEqual(true);
     expect(target.state().value).toEqual(3.5);
   });
 
   it('allowHalf=false value=3.5 ->3', () => {
-    const target = mount(<Rate allowHalf={false} value={3.5} />);
+    const target = mount(<Rate themeProps={{}} allowHalf={false} value={3.5} />);
     expect(target.props().allowHalf).toEqual(false);
     expect(target.state().value).toEqual(3);
   });
@@ -220,7 +220,7 @@ describe('Rate Test', () => {
         res(val.currentValue);
       };
     });
-    const target = mount(<Rate value={4} onClick={onClick} />);
+    const target = mount(<Rate themeProps={{}} value={4} onClick={onClick} />);
 
     target.setProps({ value: 1 });
     expect(target.state().value).toEqual(1);
@@ -237,7 +237,7 @@ describe('Rate Test', () => {
         res(val.currentValue);
       };
     });
-    const target = mount(<Rate value={4} allowHalf={true} onClick={onClick} />);
+    const target = mount(<Rate themeProps={{}} value={4} allowHalf={true} onClick={onClick} />);
     const order = VerifyOrder.create();
     const mockGetOffset = mockObject.create(
       target.instance(),
@@ -265,7 +265,7 @@ describe('Rate Test', () => {
         res(val.currentValue);
       };
     });
-    const target = mount(<Rate onClick={onClick} />);
+    const target = mount(<Rate themeProps={{}} onClick={onClick} />);
 
     findRate(target, 3).simulate('click', {}, 3, true);
     expect(target.state().value).toEqual(4);
@@ -273,7 +273,7 @@ describe('Rate Test', () => {
   });
 
   it('Function:onClick unlimit value allowHalf', async () => {
-    const target = mount(<Rate allowHalf={true} />);
+    const target = mount(<Rate themeProps={{}} allowHalf={true} />);
 
     const order = VerifyOrder.create();
     const mockGetOffset = mockObject.create(
@@ -297,7 +297,7 @@ describe('Rate Test', () => {
         res(val.currentValue);
       };
     });
-    const target = mount(<Rate onClick={onClick} />);
+    const target = mount(<Rate themeProps={{}} onClick={onClick} />);
 
     findRate(target, 3).simulate('click', {}, 3);
     expect(target.state().value).toEqual(4);
@@ -314,7 +314,7 @@ describe('Rate Test', () => {
         res(val.currentValue);
       };
     });
-    const target = mount(<Rate onClick={onClick} />);
+    const target = mount(<Rate themeProps={{}} onClick={onClick} />);
 
     target.setProps({ value: 2 });
     expect(target.state().value).toEqual(2);
@@ -324,14 +324,14 @@ describe('Rate Test', () => {
   });
 
   it('Check disabled Status', () => {
-    const target = mount(<Rate disabled={true} />);
+    const target = mount(<Rate themeProps={{}} disabled={true} />);
     expect(target.state().value).toEqual(0);
     findRate(target, 2).simulate('click', {}, 2);
     expect(target.state().value).toEqual(0);
   });
 
   it('Function:onMouseMoveOrClick limit ', async () => {
-    const target = mount(<Rate value={4} />);
+    const target = mount(<Rate themeProps={{}} value={4} />);
     target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(4);
   });
@@ -350,13 +350,13 @@ describe('Rate Test', () => {
   });
 
   it('Function:mouseLeave lilmit', async () => {
-    const target = mount(<Rate value={4} />);
+    const target = mount(<Rate themeProps={{}} value={4} />);
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(4);
     expect(target.state().starNum).toEqual(4);
   });
   it('Function:mouseLeave unlilmit', async () => {
-    const target = mount(<Rate />);
+    const target = mount(<Rate themeProps={{}} />);
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(0);
     expect(target.state().starNum).toEqual(0);
@@ -369,7 +369,7 @@ describe('Rate Test', () => {
         res(val.currentValue);
       };
     });
-    const target = mount(<Rate onClick={onClick} />);
+    const target = mount(<Rate themeProps={{}} onClick={onClick} />);
 
     findRate(target, 3).simulate('click', {}, 3, true);
     expect(target.state().value).toEqual(4);
@@ -385,7 +385,7 @@ describe('Rate Test', () => {
         res(val.currentValue);
       };
     });
-    const target = mount(<Rate value={5} onClick={onClick} />);
+    const target = mount(<Rate themeProps={{}} value={5} onClick={onClick} />);
     findRate(target, 3).simulate('click', {}, 3, true);
     expect(target.state().value).toEqual(5);
     expect(await changePromise).toBe(4);

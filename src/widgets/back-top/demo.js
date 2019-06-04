@@ -11,7 +11,7 @@ import Widget from '../consts/index';
 import Theme from '../theme';
 
 const Demo = styled.div`
-  & > div > div {
+  & > span > div > div {
     bottom: ${props => 50 + props.cur * 50}px;
   }
 `;
@@ -28,8 +28,19 @@ export default class AffixDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.BackTop]: {
-        color: 'red',
-        backgroundColor: 'orange',
+        normal: {
+          color: 'red',
+          background: { backgroundColor: 'orange' },
+          width: 100,
+          height: 100,
+          borderRadius: 100,
+          opacity: 0.7,
+          border: {
+            borderWidth: 1,
+            borderStyle: 'solid',
+            borderColor: 'red',
+          },
+        },
       },
     };
     return (

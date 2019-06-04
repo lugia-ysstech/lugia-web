@@ -9,6 +9,8 @@
 import React, { Component } from 'react';
 import Switch from './index';
 import Icon from '../icon/index';
+import Widgets from '../consts/index';
+import Theme from '../theme/index';
 
 type TypeState = {
   load?: boolean,
@@ -36,7 +38,24 @@ export default class Sw extends Component<any, TypeState> {
       <div className="demo-switch" style={{ margin: '20px' }}>
         <section style={{ marginBottom: '20px' }}>
           <h3>normal</h3>
-          <Switch />
+          <Theme
+          // config={{[Widgets.Switch]:{
+          // normal:{
+          //   width:200,
+          //   height:20,
+          // },
+          // hover:{
+          //   width:300,
+          //   height:20
+          // },
+          // clicked:{
+          //   width:400,
+          //   height:20
+          // }
+          // }}}
+          >
+            <Switch />
+          </Theme>
         </section>
         <section style={{ marginBottom: '20px' }}>
           <h3>size=‘small’</h3>
