@@ -464,7 +464,7 @@ class Rate extends React.Component<RateProps, any> {
     const { disabled } = this.props;
     if (disabled) return;
     const { offsetLeft, offsetWidth } = this.getOffset(i);
-    const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
+    const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX);
 
     const { classify } = this.props;
     const { count, current } = this.state;

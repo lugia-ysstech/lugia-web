@@ -45,10 +45,7 @@ class RateDemo extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Rate]: {
-        normal: {
-          // color: 'yellow',
-          // font:{fontWeight:'bold'},
-        },
+        normal: {},
         children: {
           activeIcon: {
             normal: {
@@ -63,16 +60,11 @@ class RateDemo extends React.Component<any, any> {
           activeTextIcon: {
             normal: {
               color: `${warningColor}`,
-              // font:{fontWeight:'bold'},
-            },
-            hover: {
-              // color: `${warningColor}`,
             },
           },
           defaultTextIcon: {
             normal: {
               color: '#e8e8e8',
-              // font:{fontWeight:'bold'},
             },
           },
         },
@@ -82,13 +74,9 @@ class RateDemo extends React.Component<any, any> {
     const configColorful = {
       [Widget.Rate]: {
         normal: {
-          // color: 'yellow',
           fontSize: em(26),
           margin: {
-            // left:30,
             right: 30,
-            // top:0,
-            // bottom:0,
           },
         },
         children: {
