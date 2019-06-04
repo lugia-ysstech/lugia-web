@@ -8,36 +8,68 @@
  */
 import React from 'react';
 import Icon from '../icon';
-import { css } from 'styled-components';
-import colorsFunc from '../css/stateColor';
+
 import { getElementPosition } from '../utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import { toNumber } from '../common/NumberUtils';
-import Widget from '../consts';
 
-import CSSProvider from '../theme/CSSProvider';
-import { getFontSize, getColor, getAnimation, getCharacter } from '../css/rate';
+import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
+import ThemeHoc from '@lugia/theme-hoc';
+import colorsFunc from '../css/stateColor';
+import { getFontSize } from '../css/rate';
+import { findDOMNode } from 'react-dom';
+import { px2emcss } from '../css/units';
+import { FontSizeNumber } from '../css';
 
 const { warningColor } = colorsFunc();
+const em = px2emcss(FontSizeNumber);
 
-const Container = CSSProvider({
+const showUp = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const Container = CSSComponent({
   tag: 'div',
+  className: 'characterContainer',
+  normal: {
+    selectNames: [['fontSize']],
+    defaultTheme: {
+      fontSize: '18px',
+    },
+  },
   css: css`
     position: relative;
     padding: 10px;
     white-space: nowrap;
     display: inline-block;
-    font-size: ${getFontSize};
   `,
 });
 
 const StarIconClass = 'lugia-icon-financial_star';
 const StarIconClassOpen = 'lugia-icon-finacial_half_star';
 
-const Ratespan = CSSProvider({
+const Ratespan = CSSComponent({
   tag: 'span',
+  className: 'starBox',
+  normal: {
+    selectNames: [['color'], ['font'], ['margin']],
+    defaultTheme: {
+      margin: {
+        right: 6,
+      },
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      return '&:last-child { margin: 0 !important;}';
+    },
+  },
   css: css`
-    margin: 6px;
+    margin-right: 6px;
     position: relative;
     & > i.hoverd:hover {
       transform: scale(1.2);
@@ -56,71 +88,145 @@ const Ratespan = CSSProvider({
 
 Ratespan.displayName = 'sv_rate_Ratespan';
 
-const RateIcon = CSSProvider({
-  extend: Icon,
-  css: css`
-    vertical-align: text-bottom !important;
-    opacity: 1;
-    color: ${getColor};
-    font-size: ${getFontSize};
-    &.hoverd:hover {
-      transform: scale(1.2);
-      ${getAnimation};
-    }
-  `,
-  normal: {
-    selectNames: [['color']],
-    defaultTheme: {
-      // color: '#e8e8e8',
+const RateIcon = ThemeHoc(
+  CSSComponent({
+    extend: Icon,
+    className: 'singleCharacter',
+    css: css`
+      vertical-align: text-bottom !important;
+      font-size: ${em(18)};
+    `,
+    normal: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: `${warningColor}`,
+      },
     },
-    getCSS(themeMeta: Object, themeProps: Object) {
-      console.log(JSON.stringify(themeProps.propsConfig));
+    hover: {
+      selectNames: [['color']],
+      getCSS(themeMeta: Object, themeProps: Object) {
+        return css`
+          animation: ${showUp} 0.3s linear forwards;
+          transform: scale(1.2);
+        `;
+      },
     },
-  },
-  hover: {
-    selectNames: [['color']],
-    defaultTheme: {
-      // color: `${warningColor}`,
-      // transform: 'scale(1.2)',
-    },
-  },
-});
+  }),
+  'RateIcon',
+  { hover: true, actived: false }
+);
 
-const RateIconBottom = CSSProvider({
-  extend: Icon,
-  css: css`
-    vertical-align: text-bottom !important;
-    opacity: 1;
-    color: #e8e8e8;
-    font-size: ${getFontSize};
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-  `,
-});
+const RateDefaultIcon = ThemeHoc(
+  CSSComponent({
+    extend: Icon,
+    className: 'singleDefaultCharacter',
+    css: css`
+      vertical-align: text-bottom !important;
+    `,
+    normal: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#e8e8e8',
+      },
+    },
+  }),
+  'RateActiveIcon',
+  { hover: true, actived: false }
+);
+
+const RateIconBottom = ThemeHoc(
+  CSSComponent({
+    extend: Icon,
+    className: 'defaultCharacter',
+    css: css`
+      vertical-align: text-bottom !important;
+      color: #e8e8e8;
+      font-size: ${getFontSize};
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+    `,
+    normal: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#e8e8e8',
+      },
+    },
+    hover: {
+      selectNames: [['color']],
+    },
+  }),
+  'RateIconBottom'
+);
 
 RateIcon.displayName = 'sv_rate_icon';
 
-const RateText = CSSProvider({
-  tag: 'span',
-  css: css`
-    vertical-align: text-bottom !important;
-    opacity: 1;
-    color: ${getColor};
-    cursor: pointer;
-    &.hoverd:hover {
-      transform: scale(1.2);
-    }
-    &.half::before {
-      content: ${getCharacter};
+const RateText = ThemeHoc(
+  CSSComponent({
+    tag: 'span',
+    className: 'singleTextCharacter',
+    normal: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#e8e8e8',
+      },
+    },
+    css: css`
+      vertical-align: text-bottom !important;
+      cursor: pointer;
       position: absolute;
-      z-index: 10;
-      color: #e8e8e8;
-      -webkit-mask: linear-gradient(to left, #e8e8e8 30%, ${getColor} 40%, transparent);
-    }
-  `,
-});
+      left: 0;
+      bottom: 0;
+      &.half {
+        width: 50%;
+        overflow: hidden;
+      }
+    `,
+  }),
+  'RateText',
+  { hover: true, actived: false }
+);
+
+const RateDefaultText = ThemeHoc(
+  CSSComponent({
+    tag: 'span',
+    className: 'singleTextCharacter',
+    normal: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#e8e8e8',
+      },
+    },
+    css: css`
+      vertical-align: text-bottom !important;
+      opacity: 1;
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    `,
+  }),
+  'RateDefaultText'
+);
+
+const RateTextBottom = ThemeHoc(
+  CSSComponent({
+    tag: 'span',
+    className: 'singleTextCharacter',
+    normal: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#e8e8e8',
+      },
+    },
+    css: css`
+      vertical-align: text-bottom !important;
+      cursor: pointer;
+    `,
+  }),
+  'RateTextBottom'
+);
 
 RateText.displayName = 'sv_rate_RateText';
 
@@ -146,6 +252,7 @@ type RateProps = {
   onChange: Function,
   character?: any,
   themeProps: Object,
+  getChildThemeHocProps: Function,
 };
 
 export function getDefaultClassNames(count: number): Array<string> {
@@ -174,18 +281,23 @@ export const calcValue = (val: number = 0, allowHalf: boolean): number => {
   return allowHalf ? Math.floor(val * 2) / 2 : Math.floor(val);
 };
 
+export const getMultiple = (props: Object): number => {
+  if (!props) {
+    return 0;
+  }
+  const { max, count } = props;
+  return max && count ? max / count : 1;
+};
+
 export const multipleValue = (props: Object, val?: number): number => {
   if (!props || val === 0) {
     return 0;
   }
-
-  const { max, count, value = 0 } = props;
-  const multiple = max && count ? max / count : 1;
-
+  const multiple = getMultiple(props);
   if (val) {
     return val * multiple;
   }
-
+  const { value = 0 } = props;
   return value / multiple;
 };
 
@@ -193,7 +305,6 @@ export const getClass = (starNum: number, mid: number, classify: boolean): strin
   if (!classify || starNum === mid) {
     return 'primary';
   }
-
   return starNum < mid ? 'danger' : 'amazed';
 };
 
@@ -233,8 +344,13 @@ const getOffset = (rateRangeNode: Object) => {
   if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
-  const { x } = getElementPosition(rateRangeNode);
-  return { offsetLeft: x, offsetWidth: rateRangeNode.offsetWidth };
+  const rateRangeNodeRes = findDOMNode(rateRangeNode);
+
+  if (!rateRangeNodeRes) {
+    return { offsetLeft: 0, offsetWidth: 18 };
+  }
+  const { x } = getElementPosition(rateRangeNodeRes);
+  return { offsetLeft: x, offsetWidth: rateRangeNodeRes.offsetWidth };
 };
 
 const isLeft = (offsetX: number, offsetWidth: number, x: number): boolean => {
@@ -307,7 +423,7 @@ class Rate extends React.Component<RateProps, any> {
       return {
         count: classNames,
         value: theValue,
-        starNum: theValue,
+        starNum,
         current: value === 0 ? null : starNum,
         hasClick: false,
       };
@@ -322,17 +438,14 @@ class Rate extends React.Component<RateProps, any> {
   }
 
   render() {
-    const { getTheme, themeProps } = this.props;
+    const { themeProps } = this.props;
     const { count } = this.state;
-    const themeConfig = getTheme();
-    console.log('count', count);
     return (
-      <Container themeProps={themeProps} theme={themeConfig} onMouseLeave={this.mouseLeave}>
+      <Container themeProps={themeProps} onMouseLeave={this.mouseLeave}>
         {count.map((x, i) => (
           <Ratespan
             themeProps={themeProps}
             ref={this.ratespan[i]}
-            theme={themeConfig}
             onMouseMove={e => {
               this.onMouseMoveOrClick(e, i);
             }}
@@ -340,7 +453,7 @@ class Rate extends React.Component<RateProps, any> {
               this.onMouseMoveOrClick(e, i, true);
             }}
           >
-            {this.getElement(x, themeConfig)}
+            {this.getElement(x, i)}
           </Ratespan>
         ))}
       </Container>
@@ -350,9 +463,8 @@ class Rate extends React.Component<RateProps, any> {
   onMouseMoveOrClick = (e: Object, i: number, hasClick?: boolean = false) => {
     const { disabled } = this.props;
     if (disabled) return;
-
     const { offsetLeft, offsetWidth } = this.getOffset(i);
-    const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX); //移动后value.star
+    const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX);
 
     const { classify } = this.props;
     const { count, current } = this.state;
@@ -362,7 +474,8 @@ class Rate extends React.Component<RateProps, any> {
       this.handleClick(e, starCount, classNames, current);
     } else {
       const { hasClick } = this.state;
-      this.setValue(starCount, classNames, current, hasClick);
+      const multiple = getMultiple(this.props);
+      this.setValue(starCount * multiple, starCount, classNames, current, hasClick);
     }
     this.doExportChange(getReturnObj(this.state, multipleValue(this.props, starCount)));
   };
@@ -374,8 +487,8 @@ class Rate extends React.Component<RateProps, any> {
 
     const temporary = this.getTemporary();
     if (temporary) {
-      const { value, count } = temporary;
-      this.setValue(value, count, current, false);
+      const { value, count, starNum } = temporary;
+      this.setValue(value, starNum, count, current, false);
       this.doExportChange(getReturnObj(this.state, multipleValue(props, current)));
       return;
     }
@@ -383,7 +496,7 @@ class Rate extends React.Component<RateProps, any> {
     const { hasClick } = this.state;
     const { count } = props;
     const classNames = createCalssArray(count);
-    this.setValue(0, classNames, current, hasClick);
+    this.setValue(0, 0, classNames, current, hasClick);
     this.doExportChange(getReturnObj(this.state, multipleValue(props, 0)));
   };
 
@@ -411,37 +524,122 @@ class Rate extends React.Component<RateProps, any> {
     return getOffset(this.ratespan[index].current);
   }
 
-  getElement = (x: string, theme: Object) => {
-    console.log('x', x);
+  getElement = (x: string, index: number) => {
     const { className, iconClass, disabled, character, themeProps } = this.props;
     const IconClass = getIconClass(iconClass);
     const theClassName = `${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`;
-    const { fontSize = 18 } = theme;
-    const config = {
-      [Widget.Icon]: { fontSize },
-    };
+    const { starNum } = this.state;
     if (ObjectUtils.isString(character)) {
+      const { viewClass: RateTextClass, theme: RateTextTheme } = this.props.getChildThemeHocProps(
+        'activeTextIcon'
+      );
+      const {
+        viewClass: RateDefaultTextClass,
+        theme: RateDefaultTextTheme,
+      } = this.props.getChildThemeHocProps('defaultTextIcon');
+
       return (
-        <RateText themeProps={themeProps} type={x} character={character} className={theClassName}>
-          {character}
-        </RateText>
+        <React.Fragment>
+          {index < starNum ? (
+            <RateText
+              themeProps={themeProps}
+              theme={RateTextTheme}
+              viewClass={RateTextClass}
+              type={x}
+              character={character}
+              className={theClassName}
+            >
+              {character}
+            </RateText>
+          ) : (
+            <RateDefaultText
+              themeProps={themeProps}
+              theme={RateDefaultTextTheme}
+              viewClass={RateDefaultTextClass}
+              type={x}
+              character={character}
+              className={theClassName}
+            >
+              {character}
+            </RateDefaultText>
+          )}
+          <RateTextBottom
+            themeProps={themeProps}
+            theme={RateDefaultTextTheme}
+            viewClass={RateDefaultTextClass}
+            type={x}
+            character={character}
+            className={theClassName}
+          >
+            {character}
+          </RateTextBottom>
+        </React.Fragment>
       );
     }
+    const {
+      viewClass: RateIconBottomViewClass,
+      theme: RateIconBottomTheme,
+    } = this.props.getChildThemeHocProps('defaultRateIcon');
 
     return (
-      <React.Fragment config={config}>
-        <RateIcon
-          themeProps={themeProps}
-          type={x}
-          disabled={disabled}
-          iconClass={`${IconClass[x]} ${theClassName} `}
-        />
+      <React.Fragment>
+        {index < starNum ? (
+          this.getRateIcon(x, IconClass)
+        ) : (
+          <RateDefaultIcon
+            theme={RateIconBottomTheme}
+            viewClass={RateIconBottomViewClass}
+            type={'default'}
+            iconClass={`${IconClass.default}  default `}
+          />
+        )}
         <RateIconBottom
-          themeProps={themeProps}
+          theme={RateIconBottomTheme}
+          viewClass={RateIconBottomViewClass}
           type={'default'}
-          iconClass={`${iconClass ? IconClass[x] : IconClass.default}  default `}
+          iconClass={`${IconClass.default}  default `}
         />
       </React.Fragment>
+    );
+  };
+
+  getRateIcon = (type: string, IconClass: Object) => {
+    const { disabled, themeProps, className } = this.props;
+
+    const theClassName = `${defautClass[type]} ${className} ${disabled ? '' : 'hoverd'}`;
+    let resultTheme;
+    let resultViewClass;
+    switch (type) {
+      case 'amazed':
+        const {
+          viewClass: amazedIconViewClass,
+          theme: amazedIconTheme,
+        } = this.props.getChildThemeHocProps('amazedIcon');
+        resultTheme = amazedIconTheme;
+        resultViewClass = amazedIconViewClass;
+        break;
+      case 'danger':
+        const {
+          viewClass: dangerIconViewClass,
+          theme: dangerIconTheme,
+        } = this.props.getChildThemeHocProps('dangerIcon');
+        resultTheme = dangerIconTheme;
+        resultViewClass = dangerIconViewClass;
+        break;
+      default:
+        const { viewClass, theme } = this.props.getChildThemeHocProps('activeIcon');
+        resultTheme = theme;
+        resultViewClass = viewClass;
+        break;
+    }
+    return (
+      <RateIcon
+        theme={resultTheme}
+        type={type}
+        viewClass={resultViewClass}
+        disabled={disabled}
+        iconClass={`${IconClass[type]} ${theClassName} `}
+      />
     );
   };
 
@@ -462,18 +660,25 @@ class Rate extends React.Component<RateProps, any> {
       classNames = getDefaultClassNames(classNames.length);
       this.updateTemporary(null);
     }
-
-    this.setValue(val, classNames, index, hasClicked);
+    const multiple = getMultiple(props);
+    this.setValue(val * multiple, val, classNames, index, hasClicked);
 
     const { onClick } = props;
     const { newValue, oldValue } = getReturnObj(state, multipleValue(props, val));
     onClick(newValue, oldValue);
   };
-  setValue = (val: number, count: Array<string>, index: number, hasClick: boolean) => {
+
+  setValue = (
+    val: number,
+    starNum: number,
+    count: Array<string>,
+    index: number,
+    hasClick: boolean
+  ) => {
     this.setState(
       {
         value: val,
-        starNum: val,
+        starNum,
         count,
         current: index,
         hasClick,

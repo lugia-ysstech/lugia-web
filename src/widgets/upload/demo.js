@@ -10,6 +10,8 @@ import React from 'react';
 import Upload from './index';
 import styled from 'styled-components';
 import request from './request';
+import Widget from '../consts';
+import Theme from '../theme';
 
 const Title = styled.div`
   font-size: 16px;
@@ -59,6 +61,42 @@ class UploadDemo extends React.Component<any, any> {
       onProgress: res => {},
       onFail: res => {},
     };
+    const defaultProps11 = {
+      listType: 'default',
+      inputId: 'upload',
+      showFileList: true,
+      url: 'http://localhost:7001/upload',
+      multiple: true,
+      accessKey: ['uploadToken'],
+      disabled: true,
+      beforeUpload: (file: Object) => {
+        return new Promise((resolve, reject) => {
+          request({
+            url: 'http://localhost:7001/getToken',
+            method: 'post',
+            dataType: 'json',
+            data: { name: file.name },
+            onSuccess: res => {
+              if (res.code === 200) {
+                file.uploadToken = res.data;
+                resolve({ status: true, file });
+              } else {
+                reject();
+              }
+            },
+            onFail: res => {
+              reject();
+            },
+          });
+        });
+      },
+      data: {},
+      onChange: res => {},
+      onSuccess: (res, fileList) => {},
+      onComplete: res => {},
+      onProgress: res => {},
+      onFail: res => {},
+    };
     const defaultProps1 = {
       listType: 'button',
       inputId: 'upload1',
@@ -68,13 +106,6 @@ class UploadDemo extends React.Component<any, any> {
       fileList: [
         {
           id: 1,
-          name: '文件11111.jpg',
-          status: 'done',
-          url: 'http://img05.tooopen.com/images/20150602/tooopen_sy_128223296629.jpg',
-        },
-        { id: 2, name: '文件666.doc', status: 'fail' },
-        {
-          id: 3,
           name: '文件11111.jpg',
           status: 'done',
           url: 'http://img05.tooopen.com/images/20150602/tooopen_sy_128223296629.jpg',
@@ -151,30 +182,61 @@ class UploadDemo extends React.Component<any, any> {
       showFileList: true,
       limit: 3,
     };
+
+    const config = {
+      [Widget.Upload]: {
+        normal: {
+          // color: 'yellow',
+          // font:{fontWeight:'bold'},
+        },
+        children: {
+          defaultIcon: {
+            normal: {
+              color: '#666',
+            },
+          },
+          successIcon: {
+            normal: {
+              color: '#56c22d',
+            },
+          },
+          errorIcon: {
+            normal: {
+              color: '#f22735',
+            },
+          },
+        },
+      },
+    };
+
     return (
       <div>
-        <Title>默认： </Title>
-        <Upload {...defaultProps} />
-        <Title>Button： </Title>
-        <Upload {...defaultProps1} />
-        <Title>Both： </Title>
-        <Upload {...defaultProps2} />
-        <Title>picture large accept(image)： </Title>
-        <Upload {...defaultProps3} />
-        <Title>picture middle disabled： </Title>
-        <Upload {...defaultProps4} />
-        <Title>picture small： </Title>
-        <Upload {...defaultProps5} />
-        <Title>area： </Title>
-        <Upload {...defaultProps6} />
-        <Title>default disabled： </Title>
-        <Upload {...defaultProps7} />
-        <Title>Button disabled： </Title>
-        <Upload {...defaultProps8} />
-        <Title>area disabled： </Title>
-        <Upload {...defaultProps9} />
-        <Title>button limit 3： </Title>
-        <Upload {...defaultProps10} />
+        <Theme config={config}>
+          {/*<Title>默认： </Title>*/}
+          {/*<Upload {...defaultProps} />*/}
+          {/*<Title>默认 disabled： </Title>*/}
+          {/*<Upload {...defaultProps11} />*/}
+          {/*<Title>Button： </Title>*/}
+          {/*<Upload {...defaultProps1} />*/}
+          <Title>Both： </Title>
+          <Upload {...defaultProps2} />
+          {/*<Title>picture large accept(image)： </Title>*/}
+          {/*<Upload {...defaultProps3} />*/}
+          <Title>picture middle disabled： </Title>
+          <Upload {...defaultProps4} />
+          <Title>picture small： </Title>
+          <Upload {...defaultProps5} />
+          <Title>area： </Title>
+          <Upload {...defaultProps6} />
+          <Title>default disabled： </Title>
+          <Upload {...defaultProps7} />
+          <Title>Button disabled： </Title>
+          <Upload {...defaultProps8} />
+          <Title>area disabled： </Title>
+          <Upload {...defaultProps9} />
+          <Title>button limit 3： </Title>
+          <Upload {...defaultProps10} />
+        </Theme>
       </div>
     );
   }

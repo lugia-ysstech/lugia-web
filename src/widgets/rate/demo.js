@@ -11,6 +11,12 @@ import Rate from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
+import colorsFunc from '../css/stateColor';
+import { px2emcss } from '../css/units';
+import { FontSizeNumber } from '../css';
+
+const { warningColor, dangerColor } = colorsFunc();
+const em = px2emcss(FontSizeNumber);
 const TitleBox = styled.div`
   position: relative;
   padding: 10px;
@@ -38,8 +44,66 @@ class RateDemo extends React.Component<any, any> {
   }
   render() {
     const config = {
-      [Widget.Rate]: { fontSize: 18 },
+      [Widget.Rate]: {
+        normal: {},
+        children: {
+          activeIcon: {
+            normal: {
+              color: `${warningColor}`,
+            },
+          },
+          RateIconBottom: {
+            normal: {
+              color: '#e8e8e8',
+            },
+          },
+          activeTextIcon: {
+            normal: {
+              color: `${warningColor}`,
+            },
+          },
+          defaultTextIcon: {
+            normal: {
+              color: '#e8e8e8',
+            },
+          },
+        },
+      },
     };
+
+    const configColorful = {
+      [Widget.Rate]: {
+        normal: {
+          fontSize: em(26),
+          margin: {
+            right: 30,
+          },
+        },
+        children: {
+          activeIcon: {
+            normal: {
+              color: `${warningColor}`,
+            },
+          },
+          defaultRateIcon: {
+            normal: {
+              color: '#e8e8e8',
+            },
+          },
+          dangerIcon: {
+            normal: {
+              color: `${dangerColor}`,
+            },
+          },
+          amazedIcon: {
+            normal: {
+              color: '#f88e30',
+            },
+          },
+        },
+      },
+    };
+
     const defaultProps = {
       count: 10,
       max: 10,
@@ -190,17 +254,17 @@ class RateDemo extends React.Component<any, any> {
           <Rate {...defaultProps3} character="好" />
           <TextBox>{this.state.defaultProps3} 颗星</TextBox>
         </Theme>
-        <Theme config={config}>
+        <Theme config={configColorful}>
           <TitleBox>自定义图标：</TitleBox>
           <Rate {...defaultProps4} />
           <TextBox>{this.state.defaultProps4} 颗星</TextBox>
         </Theme>
-        <Theme config={config}>
+        <Theme config={configColorful}>
           <TitleBox>自定义图标：</TitleBox>
           <Rate {...defaultProps5} />
           <TextBox>{this.state.defaultProps5} 颗星</TextBox>
         </Theme>
-        <Theme config={config}>
+        <Theme config={configColorful}>
           <TitleBox>自定义图标：</TitleBox>
           <Rate {...defaultProps6} />
           <TextBox>{this.state.defaultProps6} 颗星</TextBox>
