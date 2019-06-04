@@ -54,9 +54,6 @@ class RateDemo extends React.Component<any, any> {
             normal: {
               color: `${warningColor}`,
             },
-            hover: {
-              // color: `${warningColor}`,
-            },
           },
           RateIconBottom: {
             normal: {

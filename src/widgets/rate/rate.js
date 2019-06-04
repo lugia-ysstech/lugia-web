@@ -24,6 +24,16 @@ import { FontSizeNumber } from '../css';
 const { warningColor } = colorsFunc();
 const em = px2emcss(FontSizeNumber);
 
+const showUp = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 const Container = CSSComponent({
   tag: 'div',
   className: 'characterContainer',
@@ -78,16 +88,6 @@ const Ratespan = CSSComponent({
 
 Ratespan.displayName = 'sv_rate_Ratespan';
 
-const showUp = keyframes`
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-`;
-
 const RateIcon = ThemeHoc(
   CSSComponent({
     extend: Icon,
@@ -122,7 +122,6 @@ const RateDefaultIcon = ThemeHoc(
     className: 'singleDefaultCharacter',
     css: css`
       vertical-align: text-bottom !important;
-      font-size: ${getFontSize};
     `,
     normal: {
       selectNames: [['color']],
@@ -254,7 +253,6 @@ type RateProps = {
   character?: any,
   themeProps: Object,
   getChildThemeHocProps: Function,
-  mergeThemePropsAndThemeConfig: Function,
 };
 
 export function getDefaultClassNames(count: number): Array<string> {
@@ -440,7 +438,7 @@ class Rate extends React.Component<RateProps, any> {
   }
 
   render() {
-    const { getTheme, themeProps } = this.props;
+    const { themeProps } = this.props;
     const { count } = this.state;
     return (
       <Container themeProps={themeProps} onMouseLeave={this.mouseLeave}>

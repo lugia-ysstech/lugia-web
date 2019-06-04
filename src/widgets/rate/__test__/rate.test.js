@@ -16,26 +16,30 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Rate Test', () => {
   const themeProps = { themeConfig: {}, themeState: {} };
-  const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} />);
+  const target = mount(<Rate getChildThemeHocProps={() => true} themeProps={themeProps} />);
 
   it('css', () => {
-    const target = <Rate getChildTheme={() => true} themeProps={themeProps} />;
+    const target = <Rate getChildThemeHocProps={() => true} themeProps={themeProps} />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 
   it('count=10', () => {
-    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} count={10} />);
+    const target = mount(
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} count={10} />
+    );
     expect(target.props().count).toEqual(10);
   });
 
   it('value=4', () => {
-    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} value={4} />);
+    const target = mount(
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} value={4} />
+    );
     expect(target.state().value).toEqual(4);
   });
 
   it('disabled=true', () => {
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} disabled={true} />
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} disabled={true} />
     );
     expect(target.props().disabled).toEqual(true);
     expect(target.state().value).toEqual(0);
@@ -45,7 +49,12 @@ describe('Rate Test', () => {
 
   it('allowHalf=true', () => {
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} allowHalf={true} value={3.5} />
+      <Rate
+        getChildThemeHocProps={() => true}
+        themeProps={themeProps}
+        allowHalf={true}
+        value={3.5}
+      />
     );
     expect(target.props().allowHalf).toEqual(true);
     expect(target.state().value).toEqual(3.5);
@@ -53,7 +62,12 @@ describe('Rate Test', () => {
 
   it('allowHalf=false value=3.5 ->3', () => {
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} allowHalf={false} value={3.5} />
+      <Rate
+        getChildThemeHocProps={() => true}
+        themeProps={themeProps}
+        allowHalf={false}
+        value={3.5}
+      />
     );
     expect(target.props().allowHalf).toEqual(false);
     expect(target.state().value).toEqual(3);
@@ -232,7 +246,12 @@ describe('Rate Test', () => {
       };
     });
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} value={4} onClick={onClick} />
+      <Rate
+        getChildThemeHocProps={() => true}
+        themeProps={themeProps}
+        value={4}
+        onClick={onClick}
+      />
     );
 
     target.setProps({ value: 1 });
@@ -252,7 +271,7 @@ describe('Rate Test', () => {
     });
     const target = mount(
       <Rate
-        getChildTheme={() => true}
+        getChildThemeHocProps={() => true}
         themeProps={themeProps}
         value={4}
         allowHalf={true}
@@ -287,7 +306,7 @@ describe('Rate Test', () => {
       };
     });
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} onClick={onClick} />
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} onClick={onClick} />
     );
 
     findRate(target, 3).simulate('click', {}, 3, true);
@@ -297,7 +316,7 @@ describe('Rate Test', () => {
 
   it('Function:onClick unlimit value allowHalf', async () => {
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} allowHalf={true} />
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} allowHalf={true} />
     );
 
     const order = VerifyOrder.create();
@@ -323,7 +342,7 @@ describe('Rate Test', () => {
       };
     });
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} onClick={onClick} />
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} onClick={onClick} />
     );
 
     findRate(target, 3).simulate('click', {}, 3);
@@ -342,7 +361,7 @@ describe('Rate Test', () => {
       };
     });
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} onClick={onClick} />
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} onClick={onClick} />
     );
 
     target.setProps({ value: 2 });
@@ -354,7 +373,7 @@ describe('Rate Test', () => {
 
   it('Check disabled Status', () => {
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} disabled={true} />
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} disabled={true} />
     );
     expect(target.state().value).toEqual(0);
     findRate(target, 2).simulate('click', {}, 2);
@@ -362,7 +381,9 @@ describe('Rate Test', () => {
   });
 
   it('Function:onMouseMoveOrClick limit ', async () => {
-    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} value={4} />);
+    const target = mount(
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} value={4} />
+    );
     target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(4);
   });
@@ -381,13 +402,15 @@ describe('Rate Test', () => {
   });
 
   it('Function:mouseLeave lilmit', async () => {
-    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} value={4} />);
+    const target = mount(
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} value={4} />
+    );
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(4);
     expect(target.state().starNum).toEqual(4);
   });
   it('Function:mouseLeave unlilmit', async () => {
-    const target = mount(<Rate getChildTheme={() => true} themeProps={themeProps} />);
+    const target = mount(<Rate getChildThemeHocProps={() => true} themeProps={themeProps} />);
     target.instance().mouseLeave({});
     expect(target.state().value).toEqual(0);
     expect(target.state().starNum).toEqual(0);
@@ -401,7 +424,7 @@ describe('Rate Test', () => {
       };
     });
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} onClick={onClick} />
+      <Rate getChildThemeHocProps={() => true} themeProps={themeProps} onClick={onClick} />
     );
 
     findRate(target, 3).simulate('click', {}, 3, true);
@@ -419,7 +442,12 @@ describe('Rate Test', () => {
       };
     });
     const target = mount(
-      <Rate getChildTheme={() => true} themeProps={themeProps} value={5} onClick={onClick} />
+      <Rate
+        getChildThemeHocProps={() => true}
+        themeProps={themeProps}
+        value={5}
+        onClick={onClick}
+      />
     );
     findRate(target, 3).simulate('click', {}, 3, true);
     expect(target.state().value).toEqual(5);

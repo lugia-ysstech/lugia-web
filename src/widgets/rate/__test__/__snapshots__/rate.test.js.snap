@@ -15,12 +15,13 @@ exports[`Rate Test css 1`] = `
   padding: 10px;
   white-space: nowrap;
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 18px;
 }
 
 .c1 {
-  margin: 6px;
+  margin-right: 6px;
   position: relative;
+  margin: 0em 0.5em 0em 0em;
 }
 
 .c1 > i.hoverd:hover {
@@ -40,18 +41,24 @@ exports[`Rate Test css 1`] = `
   vertical-align: text-bottom !important;
 }
 
-.c2 {
-  vertical-align: text-bottom !important;
-  opacity: 1;
-  color: #e8e8e8;
-  font-size: 1.5em;
+.c1:last-child {
+  margin: 0 !important;
 }
 
-.c2.bottom {
+.c2 {
+  vertical-align: text-bottom !important;
+  color: #e8e8e8;
+}
+
+.c4 {
+  vertical-align: text-bottom !important;
+  color: #e8e8e8;
+  font-size: 1.5em;
   position: absolute;
   left: 0;
   bottom: 0;
   z-index: -1;
+  color: #e8e8e8;
 }
 
 <div
@@ -74,71 +81,31 @@ exports[`Rate Test css 1`] = `
     }
   >
     <span
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <i
-        className="lugia-icon-financial_star default  hoverd  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c2 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
           }
-        }
-      />
+        />
+      </span>
     </span>
-    <span
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <i
-        className="lugia-icon-financial_star  default bottom  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
+    <span>
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c4 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
           }
-        }
-      />
-    </span>
-  </span>
-  <span
-    className="c1"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    style={
-      Object {
-        "fontSize": "",
-      }
-    }
-  >
-    <span
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <i
-        className="lugia-icon-financial_star default  hoverd  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
-          }
-        }
-      />
-    </span>
-    <span
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <i
-        className="lugia-icon-financial_star  default bottom  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
-          }
-        }
-      />
+        />
+      </span>
     </span>
   </span>
   <span
@@ -152,71 +119,31 @@ exports[`Rate Test css 1`] = `
     }
   >
     <span
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <i
-        className="lugia-icon-financial_star default  hoverd  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c2 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
           }
-        }
-      />
+        />
+      </span>
     </span>
-    <span
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <i
-        className="lugia-icon-financial_star  default bottom  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
+    <span>
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c4 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
           }
-        }
-      />
-    </span>
-  </span>
-  <span
-    className="c1"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    style={
-      Object {
-        "fontSize": "",
-      }
-    }
-  >
-    <span
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <i
-        className="lugia-icon-financial_star default  hoverd  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
-          }
-        }
-      />
-    </span>
-    <span
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <i
-        className="lugia-icon-financial_star  default bottom  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
-          }
-        }
-      />
+        />
+      </span>
     </span>
   </span>
   <span
@@ -230,32 +157,107 @@ exports[`Rate Test css 1`] = `
     }
   >
     <span
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <i
-        className="lugia-icon-financial_star default  hoverd  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c2 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
           }
-        }
-      />
+        />
+      </span>
     </span>
+    <span>
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c4 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        />
+      </span>
+    </span>
+  </span>
+  <span
+    className="c1"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    style={
+      Object {
+        "fontSize": "",
+      }
+    }
+  >
     <span
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <i
-        className="lugia-icon-financial_star  default bottom  c2 c3"
-        style={
-          Object {
-            "fontSize": "",
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c2 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
           }
-        }
-      />
+        />
+      </span>
+    </span>
+    <span>
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c4 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        />
+      </span>
+    </span>
+  </span>
+  <span
+    className="c1"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+    style={
+      Object {
+        "fontSize": "",
+      }
+    }
+  >
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c2 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        />
+      </span>
+    </span>
+    <span>
+      <span>
+        <i
+          className="lugia-icon-financial_star  default  c4 c3"
+          style={
+            Object {
+              "fontSize": "",
+            }
+          }
+        />
+      </span>
     </span>
   </span>
 </div>
