@@ -9,7 +9,8 @@ import Icon from '../icon/index';
 import { SwitchWrapper, SwitchText, SwitchCircle } from './styled';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
-
+import { getThemeProps } from './styledConfig';
+import { findDOMNode } from 'react-dom';
 type TypeProps = {
   value?: boolean,
   defaultValue?: boolean,
@@ -22,7 +23,7 @@ type TypeProps = {
   autoFocus?: boolean,
   onChange?: any,
   displayFiled?: string,
-  getChildTheme: Function,
+  mergeThemeStateAndChildThemeProps: Function,
 };
 type TypeState = {
   isMouseDown?: boolean,
@@ -127,14 +128,16 @@ class Switch extends React.Component<TypeProps, TypeState> {
     if (key === SPACE || key === ENTER) this.updateChecked(event, !value);
   };
   focus(): void {
-    if (this.switchNode.current) {
-      this.switchNode.current.focus();
+    const switchNode = findDOMNode(this.switchNode.current);
+    if (switchNode) {
+      switchNode.focus();
     }
   }
 
   blur(): void {
-    if (this.switchNode.current) {
-      this.switchNode.current.blur();
+    const switchNode = findDOMNode(this.switchNode.current);
+    if (switchNode) {
+      switchNode.blur();
     }
   }
   componentDidMount() {
@@ -145,22 +148,19 @@ class Switch extends React.Component<TypeProps, TypeState> {
   }
   render() {
     const { isMouseDown, value, text } = this.state;
-    const { isInverse, size, disabled, loading, themeProps } = this.props;
+    const { isInverse, size, disabled, loading } = this.props;
     const isabled = !disabled && !loading;
     const switchTabIndex = disabled ? NO_TAB_INDEX : TAB_INDEX;
     const config = {
       isMouseDown,
       value,
       size,
-      disabled,
+      disabled: disabled || loading,
       loading,
       isInverse,
-      themeProps,
     };
+    const { switchThemeProps, childrenThemeProps } = getThemeProps(this.props, value);
 
-    const childrenwidgetName = 'SwitchButton';
-    const { viewClass, theme } = this.props.getChildTheme(childrenwidgetName);
-    console.log(theme);
     return (
       <SwitchWrapper
         onMouseDown={isabled ? this.mousedown : null}
@@ -169,9 +169,12 @@ class Switch extends React.Component<TypeProps, TypeState> {
         ref={this.switchNode}
         tabIndex={switchTabIndex}
         {...config}
+        themeProps={switchThemeProps}
       >
-        <SwitchText {...config}>{text}</SwitchText>
-        <SwitchCircle {...config} viewClass={viewClass} themeProps={themeProps} theme={theme}>
+        <SwitchText {...config} themeProps={switchThemeProps}>
+          {typeof text === 'string' ? <i>{text}</i> : text}
+        </SwitchText>
+        <SwitchCircle {...config} themeProps={childrenThemeProps}>
           {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
         </SwitchCircle>
       </SwitchWrapper>

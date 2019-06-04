@@ -41,37 +41,97 @@ export default class Sw extends Component<any, TypeState> {
           <Theme
             config={{
               [Widgets.Switch]: {
-                normal: {
-                  width: 200,
-                  height: 20,
+                open: {
+                  normal: {
+                    width: 200,
+                    height: 50,
+                    fontSize: 20,
+                    color: '#000',
+                    background: {
+                      backgroundColor: 'red',
+                    },
+                    border: {
+                      top: {
+                        borderColor: '#ddd',
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                      },
+                      right: {
+                        borderColor: '#ddd',
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                      },
+                      bottom: {
+                        borderColor: '#ddd',
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                      },
+                      left: {
+                        borderColor: '#ddd',
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                      },
+                    },
+                  },
+                  disabled: {
+                    background: {
+                      backgroundColor: 'blue',
+                    },
+                  },
+                },
+                closed: {
+                  normal: {
+                    width: 200,
+                    height: 50,
+                    fontSize: 20,
+                    color: '#000',
+                    background: {
+                      backgroundColor: 'green',
+                    },
+                  },
+                  disabled: {
+                    background: {
+                      backgroundColor: 'pink',
+                    },
+                  },
                 },
                 children: {
                   SwitchButton: {
                     normal: {
-                      width: 50,
-                      height: 60,
+                      width: 30,
+                      height: 30,
                       background: {
-                        backgroundColor: 'red',
+                        backgroundColor: 'blue',
                       },
+                      borderRadius: '40%',
+                      color: 'red',
                     },
-                    active: {
-                      width: 54,
-                      height: 64,
+                    actived: {
+                      width: 40,
+                      height: 30,
+                      background: {
+                        backgroundColor: 'yellow',
+                      },
+                      borderRadius: 30,
+                    },
+                    disabled: {
+                      background: {
+                        backgroundColor: 'yellow',
+                      },
                     },
                   },
                 },
-                // hover:{
-                //   width:300,
-                //   height:20
-                // },
-                // clicked:{
-                //   width:400,
-                //   height:20
-                // }
               },
             }}
           >
-            <Switch />
+            <Switch
+              onChange={this.change}
+              data={[
+                { text: <Icon className={'lugia-icon-reminder_check'} /> },
+                { text: '国' },
+                { text: '日' },
+              ]}
+            />
           </Theme>
         </section>
         {/*<section style={{ marginBottom: '20px' }}>*/}

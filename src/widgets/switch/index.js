@@ -11,4 +11,4 @@ import ThemeProvider from '../theme-provider';
 import Switch from './switch';
 import DelayHoc from '../common/DelayHoc';
 
-export default ThemeProvider(DelayHoc(Switch), Widget.Switch);
+export default ThemeProvider(DelayHoc(Switch), Widget.Switch, { hover: true, actived: true });
