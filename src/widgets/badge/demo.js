@@ -44,7 +44,11 @@ class Turn extends React.Component<any, any> {
             iconClass="lugia-icon-reminder_plus_square_o"
             onClick={this.click('plus')}
           />
-          <Icon iconClass="lugia-icon-reminder_minus_square_o" onClick={this.click('minus')} />
+          <Icon
+            style={{ fontSize: '2em' }}
+            iconClass="lugia-icon-reminder_minus_square_o"
+            onClick={this.click('minus')}
+          />
         </Col>
       </Row>
     );
@@ -57,7 +61,7 @@ export default () => {
   };
   return (
     <div>
-      <Theme config={{ [Widget.Row]: { margin: 50 } }}>
+      <Theme config={{ [Widget.Row]: { normal: { margin: 50 } } }}>
         <Row>
           <Col span={4}>
             <Badge count={4}>
