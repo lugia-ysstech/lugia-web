@@ -111,14 +111,14 @@ export default () => {
               <Badge viewClass="green">
                 <Box />
               </Badge>
-            </Theme>{' '}
+            </Theme>
           </Col>
           <Col span={4}>
             <Theme config={{ purple: { normal: { background: { backgroundColor: 'purple' } } } }}>
               <Badge viewClass="purple">
                 <Box />
               </Badge>
-            </Theme>{' '}
+            </Theme>
           </Col>
           <Col span={4}>
             <Theme config={{ yellow: { normal: { background: { backgroundColor: 'yellow' } } } }}>
