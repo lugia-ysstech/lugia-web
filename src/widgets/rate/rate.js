@@ -18,11 +18,8 @@ import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from '../css/stateColor';
 import { getFontSize } from '../css/rate';
 import { findDOMNode } from 'react-dom';
-import { px2emcss } from '../css/units';
-import { FontSizeNumber } from '../css';
 
 const { warningColor } = colorsFunc();
-const em = px2emcss(FontSizeNumber);
 
 const showUp = keyframes`
   from {
@@ -58,7 +55,7 @@ const Ratespan = CSSComponent({
   tag: 'span',
   className: 'starBox',
   normal: {
-    selectNames: [['color'], ['font'], ['margin']],
+    selectNames: [['color'], ['font'], ['margin'], ['fontSize']],
     defaultTheme: {
       margin: {
         right: 6,
@@ -94,10 +91,9 @@ const RateIcon = ThemeHoc(
     className: 'singleCharacter',
     css: css`
       vertical-align: text-bottom !important;
-      font-size: ${em(18)};
     `,
     normal: {
-      selectNames: [['color']],
+      selectNames: [['color'], ['fontSize']],
       defaultTheme: {
         color: `${warningColor}`,
       },
@@ -105,6 +101,7 @@ const RateIcon = ThemeHoc(
     hover: {
       selectNames: [['color']],
       getCSS(themeMeta: Object, themeProps: Object) {
+        console.log('themeProps', themeProps);
         return css`
           animation: ${showUp} 0.3s linear forwards;
           transform: scale(1.2);
@@ -124,7 +121,7 @@ const RateDefaultIcon = ThemeHoc(
       vertical-align: text-bottom !important;
     `,
     normal: {
-      selectNames: [['color']],
+      selectNames: [['color'], ['fontSize']],
       defaultTheme: {
         color: '#e8e8e8',
       },
@@ -141,14 +138,13 @@ const RateIconBottom = ThemeHoc(
     css: css`
       vertical-align: text-bottom !important;
       color: #e8e8e8;
-      font-size: ${getFontSize};
       position: absolute;
       left: 0;
       bottom: 0;
       z-index: -1;
     `,
     normal: {
-      selectNames: [['color']],
+      selectNames: [['color'], ['fontSize']],
       defaultTheme: {
         color: '#e8e8e8',
       },
@@ -632,6 +628,7 @@ class Rate extends React.Component<RateProps, any> {
         resultViewClass = viewClass;
         break;
     }
+    console.log('resultTheme', resultTheme);
     return (
       <RateIcon
         theme={resultTheme}

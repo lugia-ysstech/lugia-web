@@ -74,7 +74,7 @@ class RateDemo extends React.Component<any, any> {
     const configColorful = {
       [Widget.Rate]: {
         normal: {
-          fontSize: em(26),
+          fontSize: 30,
           margin: {
             right: 30,
           },
