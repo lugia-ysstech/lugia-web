@@ -1145,7 +1145,7 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.7"
 
-"@lugia/theme-css-hoc@^1.0.8":
+"@lugia/theme-css-hoc@^1.0.9":
   version "1.0.9"
   resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.9.tgz#9e6d5b1b9a339c427e7173733c5e2d0f7366a0df"
   integrity sha1-nm1bG5oznEJ+cXNzPF4tD3NmoN8=
@@ -1155,7 +1155,7 @@
     "@lugia/object-utils" "^1.0.7"
     decamelize "^3.2.0"
 
-"@lugia/theme-hoc@^1.0.7":
+"@lugia/theme-hoc@^1.0.8":
   version "1.0.8"
   resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.8.tgz#9f3ea754b3b8e632dd3099676d4d12a4f2f29110"
   integrity sha1-nz6nVLO45jLdMJlnbU0SpPLykRA=
