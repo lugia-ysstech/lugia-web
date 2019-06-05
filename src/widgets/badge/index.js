@@ -7,7 +7,6 @@
 import '../common/shirm';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
-import { px2emcss } from '../css/units';
 import NumberTurn from './numberturn/index';
 
 import ThemeHoc from '@lugia/theme-hoc';
@@ -15,14 +14,16 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import { css } from '../theme/CSSProvider';
 import CSSComponent from '../theme/CSSProvider';
 import colorsFunc from '../css/stateColor';
+import { units } from '@lugia/css';
+
+const { px2remcss } = units;
 const { dangerColor, defaultColor } = colorsFunc();
-const em = px2emcss(1.2);
 
 export const BaseRedPoint = CSSComponent({
   tag: 'sup',
   className: 'baseRedPoint',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['color']],
+    selectNames: [['width'], ['height'], ['background'], ['color'], ['position']],
     defaultTheme: {},
   },
   css: css`
@@ -41,14 +42,14 @@ const Dot: Object = CSSComponent({
   extend: BaseRedPoint,
   className: 'badgeDot',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width'], ['height'], ['position']],
   },
   css: css`
-    height: ${em(10)};
-    width: ${em(10)};
+    height: ${px2remcss(10)};
+    width: ${px2remcss(10)};
     border-radius: 100%;
     z-index: 10;
-    box-shadow: 0 0 0 ${em(1)} #fff;
+    box-shadow: 0 0 0 ${px2remcss(1)} #fff;
   `,
 });
 
@@ -56,7 +57,7 @@ const Container: Object = CSSComponent({
   tag: 'span',
   className: 'badgeContainer',
   normal: {
-    selectNames: [['padding'], ['margin']],
+    selectNames: [['padding'], ['margin'], ['position']],
   },
   css: css`
     background: transparent;
@@ -86,7 +87,7 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   static displayName = Widget.Badge;
 
   getDot() {
-    const { showZero, count, themeProps } = this.props;
+    const { showZero = false, count = 0, themeProps } = this.props;
 
     const hasCount = 'count' in this.props;
     const hasShowZero = 'showZero' in this.props;
@@ -103,8 +104,11 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   }
 
   getNumberTurn(count: ?number) {
-    const { overflowCount, themeProps } = this.props;
-    return <NumberTurn count={count} overflowCount={overflowCount} theme={themeProps} />;
+    const { overflowCount } = this.props;
+    const { theme, viewClass } = this.props.getChildThemeHocProps(Widget.NumberTurn);
+    return (
+      <NumberTurn count={count} overflowCount={overflowCount} viewClass={viewClass} theme={theme} />
+    );
   }
 
   render() {

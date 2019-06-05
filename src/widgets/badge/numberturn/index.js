@@ -10,16 +10,15 @@ import Widget from '../../consts';
 
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../../common/KeyBoardEventAdaptor';
-import { px2emcss } from '../../css/units';
 import CSSComponent from '../../theme/CSSProvider';
 import StaticComponent from '../../theme/CSSProvider';
 
 import { Height, Padding } from '../../css/badge';
-import { BaseRedPoint } from '../index';
 import { css } from '../../theme/CSSProvider';
 import colorsFunc from '../../css/stateColor';
+import { units } from '@lugia/css';
 
-const em = px2emcss(1);
+const { px2remcss } = units;
 const { dangerColor } = colorsFunc();
 
 type NumberTurnProps = {
@@ -31,78 +30,56 @@ type NumberTurnProps = {
 };
 
 const OutInner = CSSComponent({
-  extend: BaseRedPoint,
+  tag: 'span',
   className: 'numberBadgeOutInner',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['fontSize'],
-      ['background'],
-      ['boxShadow'],
-      ['borderRadius'],
-      ['border'],
-      ['margin'],
-      ['padding'],
-      ['boxShadow'],
-    ],
+    selectNames: [['width'], ['height'], ['fontSize'], ['margin'], ['background'], ['padding']],
     defaultTheme: {},
-    getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { bitCnt, overflow } = propsConfig;
-      const overWidth = overflow ? 6 : 0;
-      const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * Padding) + overWidth;
-      return `width: ${em(width)};`;
-    },
   },
   css: css`
     overflow: hidden;
     color: white;
     display: inline-block;
     background: ${dangerColor};
-    height: ${em(14)};
-    border-radius: ${em(8)};
+    height: ${px2remcss(14)};
+    border-radius: ${px2remcss(8)};
     line-height: ${Height};
     text-align: center;
-    padding: 0 ${em(Padding)};
+    padding: 0 ${px2remcss(Padding)};
     font-weight: normal;
     white-space: nowrap;
-    box-shadow: 0 0 0 ${em(1)} #fff;
-    z-index: 999999;
+    box-shadow: 0 0 0 ${px2remcss(1)} #fff;
   `,
 });
 const NumberBoxContainer = CSSComponent({
   tag: 'div',
   className: 'badgeNumberBoxContainer',
-  normal: {
-    selectNames: [['color'], ['width'], ['height'], ['margin']],
-  },
-  css: css`
-    z-index: 999999;
-  `,
+  selectNames: [['position']],
 });
-const BitOut = CSSComponent({
+const BitOut = StaticComponent({
   tag: 'span',
   className: 'badgeNumberBitOut',
+  selectNames: [['background']],
   css: css`
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     white-space: nowrap;
     text-align: center;
     transform: translateY(${props => props.y}%);
-    height: ${em(14)};
+    height: ${px2remcss(14)};
     display: inline-block;
-    z-index: 999999;
   `,
 });
-const Bit = StaticComponent({
+const Bit = CSSComponent({
   tag: 'p',
   className: 'badgeNumberBit',
+  normal: {
+    selectNames: [['color'], ['fontSize']],
+  },
   css: css`
-    height: ${em(14)};
+    height: ${px2remcss(14)};
     text-align: center;
     box-sizing: border-box;
     margin: 0;
-    z-index: 999999;
   `,
 });
 
@@ -143,14 +120,13 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
 
   getBitOut(count: number) {
     const { overflow, beforeOverflow } = this.state;
-    const { themeProps } = this.props;
     const bitCnt = this.getBitCnt(count);
     const countStr = (count + '').split('');
     const result = [];
     for (let i = 0; i < bitCnt; i++) {
       const bitValue = Number(countStr[i]);
       result.push(
-        <BitOut themeProps={themeProps} y={-bitValue * 100}>
+        <BitOut themeProps={{}} y={-bitValue * 100}>
           {this.getBit()}
         </BitOut>
       );
