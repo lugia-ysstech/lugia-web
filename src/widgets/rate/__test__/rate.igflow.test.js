@@ -1,17 +1,7 @@
-import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Rate, {
-  createCalssArray,
-  calcValue,
-  multipleValue,
-  getClassNames,
-  getIconClass,
-} from '../rate';
-import Enzyme, { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { createCalssArray, calcValue } from '../rate';
+import Enzyme from 'enzyme';
 import 'jest-styled-components';
-
-const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
 Enzyme.configure({ adapter: new Adapter() });
 describe('Rate igflow Test', () => {
