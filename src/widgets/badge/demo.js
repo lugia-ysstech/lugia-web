@@ -57,7 +57,7 @@ class Turn extends React.Component<any, any> {
 
 export default () => {
   const view = {
-    [Widget.Badge]: { backgroundColor: 'orange', color: 'black' },
+    [Widget.Badge]: { normal: { background: { backgroundColor: 'orange' }, color: 'black' } },
   };
   return (
     <div>
@@ -107,28 +107,28 @@ export default () => {
         </Theme>
         <Row>
           <Col span={4}>
-            <Theme config={{ green: { backgroundColor: 'green' } }}>
+            <Theme config={{ green: { normal: { background: { backgroundColor: 'green' } } } }}>
               <Badge viewClass="green">
                 <Box />
               </Badge>
             </Theme>{' '}
           </Col>
           <Col span={4}>
-            <Theme config={{ purple: { backgroundColor: 'purple' } }}>
+            <Theme config={{ purple: { normal: { background: { backgroundColor: 'purple' } } } }}>
               <Badge viewClass="purple">
                 <Box />
               </Badge>
             </Theme>{' '}
           </Col>
           <Col span={4}>
-            <Theme config={{ yellow: { backgroundColor: 'yellow' } }}>
+            <Theme config={{ yellow: { normal: { background: { backgroundColor: 'yellow' } } } }}>
               <Badge viewClass="yellow">
                 <Box />
               </Badge>
-            </Theme>{' '}
+            </Theme>
           </Col>
           <Col span={4}>
-            <Theme config={{ blue: { backgroundColor: 'blue' } }}>
+            <Theme config={{ blue: { normal: { background: { backgroundColor: 'blue' } } } }}>
               <Badge viewClass="blue">
                 <Box />
               </Badge>
