@@ -42,9 +42,12 @@ export default class AffixDemo extends React.Component<any, any> {
           },
         },
         children: {
-          IconBoxs: {
+          Icon: {
             normal: {
               color: 'green',
+              fontSize: '16px',
+              margin: '10px',
+              padding: '10px',
             },
           },
         },

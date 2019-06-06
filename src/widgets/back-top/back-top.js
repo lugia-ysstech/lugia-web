@@ -8,9 +8,8 @@
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import Icon from '../icon';
 import { getScrollTop } from '../affix/affix';
-import { BackTop, BackTopContent, IconBox, IconWrap } from '../css/back-top';
+import { BackTop, BackTopContent, IconBox, Icons } from '../css/back-top';
 import type { BackTopProps, BackTopState } from '../css/back-top';
 
 export default ThemeProvider(
@@ -114,11 +113,10 @@ export default ThemeProvider(
     }
 
     render() {
-      const { children, getTheme, themeProps } = this.props;
+      const { children, themeProps, getChildTheme, icon = 'lugia-icon-direction_up' } = this.props;
       const { fixed, posRight, posBottom } = this.state;
-      const { children: themeChildren = {} } = themeProps.themeConfig;
-      const { IconBoxs = {} } = themeChildren;
-      console.log('themeProps.themeConfig.children', themeProps.themeConfig.children);
+      const { viewClass, theme } = getChildTheme('Icon');
+      console.log('theme', theme);
       return (
         <div>
           {fixed ? (
@@ -133,9 +131,14 @@ export default ThemeProvider(
               {children ? (
                 children
               ) : (
-                <BackTopContent theme={getTheme()} themeProps={themeProps}>
-                  <IconBox themeProps={IconBoxs}>
-                    <Icon iconClass="lugia-icon-direction_up" />
+                <BackTopContent themeProps={themeProps}>
+                  <IconBox themeProps={themeProps}>
+                    <Icons
+                      themeProps={themeProps}
+                      viewClass={viewClass}
+                      theme={theme}
+                      iconClass={icon}
+                    />
                   </IconBox>
                 </BackTopContent>
               )}
