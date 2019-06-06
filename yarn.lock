@@ -921,10 +921,10 @@
     babel-plugin-transform-dynamic-import "2.1.0"
     babel-plugin-transform-react-remove-prop-types "0.4.20"
 
-"@lugia/css@^1.0.8":
-  version "1.0.8"
-  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.8.tgz#33c95e2529c7889eeff69dc0f78fe8337c2ac6f9"
-  integrity sha1-M8leJSnHiJ7v9p3A94/oM3wqxvk=
+"@lugia/css@^1.0.9":
+  version "1.0.9"
+  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.9.tgz#080e1a329dda6d971f3dd4982a1cd699985b922f"
+  integrity sha1-CA4aMp3abZcfPdSYKhzWmZhbki8=
   dependencies:
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"

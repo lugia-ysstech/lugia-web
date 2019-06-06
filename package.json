@@ -2,7 +2,7 @@
   "name": "@lugia/lugia-web",
   "version": "1.0.110-14",
   "dependencies": {
-    "@lugia/css": "^1.0.8",
+    "@lugia/css": "^1.0.9",
     "@lugia/devtools-material": "^1.0.6",
     "@lugia/math": "^1.0.6",
     "@lugia/object-utils": "^1.0.7",
