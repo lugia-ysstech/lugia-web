@@ -11,6 +11,7 @@ import Switch from './index';
 import Icon from '../icon/index';
 import Widgets from '../consts/index';
 import Theme from '../theme/index';
+import { getBorderRadius, getBorder } from '../theme/CSSProvider';
 
 type TypeState = {
   load?: boolean,
@@ -22,6 +23,7 @@ export default class Sw extends Component<any, TypeState> {
     this.state = {
       load: false,
       value: true,
+      disabled: true,
     };
   }
   handleClick() {
@@ -43,35 +45,14 @@ export default class Sw extends Component<any, TypeState> {
               [Widgets.Switch]: {
                 open: {
                   normal: {
-                    width: 200,
-                    height: 50,
+                    width: 150,
+                    height: 40,
                     fontSize: 20,
                     color: '#000',
                     background: {
                       backgroundColor: 'red',
                     },
-                    border: {
-                      top: {
-                        borderColor: '#ddd',
-                        borderWidth: 1,
-                        borderStyle: 'solid',
-                      },
-                      right: {
-                        borderColor: '#ddd',
-                        borderWidth: 1,
-                        borderStyle: 'solid',
-                      },
-                      bottom: {
-                        borderColor: '#ddd',
-                        borderWidth: 1,
-                        borderStyle: 'solid',
-                      },
-                      left: {
-                        borderColor: '#ddd',
-                        borderWidth: 1,
-                        borderStyle: 'solid',
-                      },
-                    },
+                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
                   },
                   disabled: {
                     background: {
@@ -81,8 +62,8 @@ export default class Sw extends Component<any, TypeState> {
                 },
                 closed: {
                   normal: {
-                    width: 200,
-                    height: 50,
+                    width: 150,
+                    height: 40,
                     fontSize: 20,
                     color: '#000',
                     background: {
@@ -103,7 +84,9 @@ export default class Sw extends Component<any, TypeState> {
                       background: {
                         backgroundColor: 'blue',
                       },
-                      borderRadius: '40%',
+                      border: {
+                        borderRadius: getBorderRadius(40),
+                      },
                       color: 'red',
                     },
                     actived: {
@@ -112,7 +95,9 @@ export default class Sw extends Component<any, TypeState> {
                       background: {
                         backgroundColor: 'yellow',
                       },
-                      borderRadius: 30,
+                      border: {
+                        borderRadius: getBorderRadius(30),
+                      },
                     },
                     disabled: {
                       background: {
@@ -126,6 +111,9 @@ export default class Sw extends Component<any, TypeState> {
           >
             <Switch
               onChange={this.change}
+              // disabled
+              // autoFocus
+              loading={{ delay: 3000 }}
               data={[
                 { text: <Icon className={'lugia-icon-reminder_check'} /> },
                 { text: '国' },

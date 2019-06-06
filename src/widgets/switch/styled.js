@@ -4,8 +4,8 @@
 import { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import CSSProvider from '../theme/CSSProvider';
-import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+import { px2remcss } from '../css/units';
+const em = px2remcss;
 
 const { themeColor } = colorsFunc();
 export const SwitchWrapper = CSSProvider({
@@ -24,6 +24,7 @@ export const SwitchWrapper = CSSProvider({
       ['font'],
     ],
     getCSS(themeMeta) {
+      //console.log(themeMeta);
       return {
         ...themeMeta,
       };
@@ -33,7 +34,6 @@ export const SwitchWrapper = CSSProvider({
     selectNames: [['background'], ['border']],
   },
   css: css`
-    box-sizing: border-box;
     display: inline-block;
     position: relative;
     color: rgba(255, 255, 255, 0.8);
@@ -52,16 +52,16 @@ export const SwitchText = CSSProvider({
     getCSS(themeMeta, themeProps) {
       const { fontSize, fontWeight, color } = themeMeta;
       const {
-        propsConfig: { textPosition },
+        propsConfig: { textPosition, textBox },
       } = themeProps;
       return `
+          
           & > *:first-child {
+          ${textBox};
             ${textPosition};
             font-size:${em(fontSize)};
             font-weight:${fontWeight};
             color:${color};
-            height:${em(fontSize)};
-            line-height:${em(fontSize)};
             & > *:first-child{
               font-size:${em(fontSize)};
               font-weight:${fontWeight};
@@ -76,10 +76,11 @@ export const SwitchText = CSSProvider({
     & > *:first-child {
       position: absolute;
       top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
       font-style: normal;
       font-size: ${em(12)};
       color: #fff;
-      height: ${em(12)};
       line-height: ${em(12)};
     }
   `,
@@ -98,18 +99,14 @@ export const SwitchCircle = CSSProvider({
       ['color'],
     ],
     getCSS(themeMeta, themeProps) {
-      const { height, width, color } = themeMeta;
+      const { height } = themeMeta;
       const {
         propsConfig: { switchButtonPosition },
       } = themeProps;
       return `
           ${switchButtonPosition};
           & > *:first-child {
-            height:${em(height)};
-            & > *:first-child {
-              font-size:${em(width - 4)};
-              color:${color}
-            }
+            height:${em(height)};            
           }
         `;
     },

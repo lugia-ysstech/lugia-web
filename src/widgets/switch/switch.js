@@ -11,6 +11,9 @@ import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
 import { getThemeProps } from './styledConfig';
 import { findDOMNode } from 'react-dom';
+import Widgets from '../consts/index';
+import Theme from '../theme/index';
+
 type TypeProps = {
   value?: boolean,
   defaultValue?: boolean,
@@ -38,7 +41,10 @@ function getItem(value, items) {
   const item = value ? items[0] : items[1];
   return item;
 }
+
 class Switch extends React.Component<TypeProps, TypeState> {
+  static displayName = 'SwitchComponent';
+
   switchNode: any;
   constructor() {
     super();
@@ -88,7 +94,6 @@ class Switch extends React.Component<TypeProps, TypeState> {
     this.setState({
       isMouseDown: false,
     });
-    console.log(this.state.value);
     this.updateChecked(event, !this.state.value);
   };
   updateChecked(event?: any, value?: boolean): void {
@@ -121,6 +126,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
     );
   }
   handleKeyDown = (event: SyntheticKeyboardEvent<EventTarget>): void => {
+    const { disabled, loading } = this.props;
+    if (disabled || loading) {
+      return;
+    }
     const { value } = this.state;
     const key = event.keyCode;
     if (key === LEFT_ARROW) this.updateChecked(event, false);
@@ -141,8 +150,8 @@ class Switch extends React.Component<TypeProps, TypeState> {
     }
   }
   componentDidMount() {
-    const { autoFocus, disabled } = this.props;
-    if (autoFocus && !disabled) {
+    const { autoFocus, disabled, loading } = this.props;
+    if (autoFocus && !disabled && !loading) {
       this.focus();
     }
   }
@@ -160,7 +169,16 @@ class Switch extends React.Component<TypeProps, TypeState> {
       isInverse,
     };
     const { switchThemeProps, childrenThemeProps } = getThemeProps(this.props, value);
-
+    const {
+      themeConfig: {
+        disabled: { background: switchBackground },
+      },
+    } = switchThemeProps;
+    const {
+      themeConfig: {
+        disabled: { width: circleWidth, height: circleHeight },
+      },
+    } = childrenThemeProps;
     return (
       <SwitchWrapper
         onMouseDown={isabled ? this.mousedown : null}
@@ -175,7 +193,16 @@ class Switch extends React.Component<TypeProps, TypeState> {
           {typeof text === 'string' ? <i>{text}</i> : text}
         </SwitchText>
         <SwitchCircle {...config} themeProps={childrenThemeProps}>
-          {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
+          <Theme
+            config={{
+              [Widgets.Icon]: {
+                color: switchBackground.backgroundColor,
+                fontSize: Math.min(circleWidth, circleHeight) - 4,
+              },
+            }}
+          >
+            {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
+          </Theme>
         </SwitchCircle>
       </SwitchWrapper>
     );

@@ -4,8 +4,9 @@
 
 import colorsFunc from '../css/stateColor';
 import { deepMerge } from '@lugia/object-utils';
-import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+import { getBorder } from '../theme/CSSProvider';
+import { px2remcss } from '../css/units';
+const rem = px2remcss;
 const { themeColor, successColor, dangerColor } = colorsFunc();
 const normalSize = {
   width: 38,
@@ -62,10 +63,14 @@ export function getThemeProps(props, value) {
     switchWrapperSize: { width: wrapWidth, height: wrapHeight },
     circleSize: { width: circleWidth, height: circleHeight },
   } = getStyled(props);
-  const { themeProps, mergeThemeStateAndChildThemeProps } = props;
   const {
-    themeConfig: { open = {}, closed = {} },
-  } = themeProps;
+    themeProps: switchTheme,
+    getTheme,
+    mergeThemeStateAndChildThemeProps,
+    loading,
+    disabled,
+  } = props;
+  const { open = {}, closed = {} } = getTheme();
   const openBackgroundColor = getBackground(props, true);
   const closedBackgroundColor = getBackground(props, false);
 
@@ -73,7 +78,7 @@ export function getThemeProps(props, value) {
     normal: {
       width: wrapWidth,
       height: wrapHeight,
-      borderRadius: 20,
+      border: getBorder({ borderColor: '', borderStyle: '', borderWidth: 0 }, { radius: 20 }),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
       fontSize: 12,
       color: '#fff',
@@ -95,7 +100,7 @@ export function getThemeProps(props, value) {
     normal: {
       width: wrapWidth,
       height: wrapHeight,
-      borderRadius: 20,
+      border: getBorder({ borderColor: '', borderStyle: '', borderWidth: 0 }, { radius: 20 }),
       fontSize: 12,
       color: '#fff',
       font: {
@@ -125,7 +130,7 @@ export function getThemeProps(props, value) {
       background: {
         backgroundColor: '#fff',
       },
-      borderRadius: '50%',
+      border: getBorder({ borderColor: '', borderStyle: '', borderWidth: 0 }, { radius: '50%' }),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
     },
     actived: {
@@ -134,7 +139,10 @@ export function getThemeProps(props, value) {
       background: {
         backgroundColor: '#fff',
       },
-      borderRadius: circleWidth / 2,
+      border: getBorder(
+        { borderColor: '', borderStyle: '', borderWidth: 0 },
+        { radius: circleWidth / 2 }
+      ),
     },
     disabled: deepMerge(
       {
@@ -151,41 +159,68 @@ export function getThemeProps(props, value) {
   const openThemeProps = deepMerge(defaultOpenThemeProps, open);
   const closedThemeProps = deepMerge(openThemeProps, defaultClosedThemeProps, closed);
   const switchThemeProps = value ? openThemeProps : closedThemeProps;
-  themeProps.themeConfig = switchThemeProps;
+  switchTheme.themeConfig = switchThemeProps;
   const switchButtonThemeProps = deepMerge(defaultChildrenThemeProps, childrenConfig);
   childrenThemeProps.themeConfig = switchButtonThemeProps;
-  const { switchButtonPosition, textPosition } = getSwitchButtonPosition(
+  const { switchButtonPosition, textPosition, textBox } = getSwitchButtonPosition(
     switchThemeProps,
     switchButtonThemeProps,
     value
   );
-
   return {
-    switchThemeProps: deepMerge(themeProps, { propsConfig: { textPosition } }),
-    childrenThemeProps: deepMerge(childrenThemeProps, { propsConfig: { switchButtonPosition } }),
+    switchThemeProps: deepMerge(
+      { ...switchTheme },
+      { themeState: { disabled: disabled || loading } },
+      { propsConfig: { textPosition, textBox } }
+    ),
+    childrenThemeProps: deepMerge(
+      childrenThemeProps,
+      { themeState: { disabled: disabled || loading } },
+      { propsConfig: { switchButtonPosition } }
+    ),
   };
 }
 
 function getSwitchButtonPosition(switchThemeProps, switchButtonThemeProps, value) {
   const {
-    normal: { height: switchHeight },
+    normal: {
+      height: switchHeight,
+      width: switchWidth,
+      border: {
+        left: { borderWidth: switchborderLeft = 0 } = {},
+        right: { borderWidth: switchborderRight = 0 },
+      } = {},
+    },
   } = switchThemeProps;
   const {
-    normal: { width: circleWidth, height: circleHeight },
+    normal: {
+      width: circleWidth,
+      height: circleHeight,
+      border: {
+        left: { borderWidth: circleborderLeft = 0 } = {},
+        right: { borderWidth: circleborderRight = 0 } = {},
+      } = {},
+      top: { borderWidth: circleborderTop = 0 } = {},
+      bottom: { borderWidth: circleborderBottom = 0 } = {},
+    },
   } = switchButtonThemeProps;
-  const distance = (switchHeight - circleHeight) / 2;
-  const switchButtonPosition = value ? `right:${em(distance)}` : `left:${em(distance)}`;
-  const textPositionDistance = `calc(50% - ${(circleWidth + distance) / 2}px)`;
-  const textPosition = value
-    ? `
-    left:${textPositionDistance};
-    transform:translate(-50%,-50%);
-  `
-    : `right:${textPositionDistance};
-     transform:translate(50%,-50%);
-    `;
+  const distance = (switchHeight - circleHeight - circleborderTop - circleborderBottom) / 2;
+  const switchButtonPosition = value ? `right:${distance}px` : `left:${distance}px`;
+  const textPosition = value ? 'left:0;' : 'right:0;';
+  const textBox = `
+     width:${rem(
+       switchWidth -
+         circleWidth -
+         distance -
+         switchborderLeft -
+         switchborderRight -
+         circleborderLeft -
+         circleborderRight
+     )};
+  `;
   return {
     switchButtonPosition,
     textPosition,
+    textBox,
   };
 }
