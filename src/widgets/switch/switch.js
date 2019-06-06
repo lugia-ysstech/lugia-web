@@ -9,6 +9,10 @@ import Icon from '../icon/index';
 import { SwitchWrapper, SwitchText, SwitchCircle } from './styled';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
+import { getThemeProps } from './styledConfig';
+import { findDOMNode } from 'react-dom';
+import Widgets from '../consts/index';
+import Theme from '../theme/index';
 
 type TypeProps = {
   value?: boolean,
@@ -22,6 +26,7 @@ type TypeProps = {
   autoFocus?: boolean,
   onChange?: any,
   displayFiled?: string,
+  mergeThemeStateAndChildThemeProps: Function,
 };
 type TypeState = {
   isMouseDown?: boolean,
@@ -36,7 +41,10 @@ function getItem(value, items) {
   const item = value ? items[0] : items[1];
   return item;
 }
+
 class Switch extends React.Component<TypeProps, TypeState> {
+  static displayName = 'SwitchComponent';
+
   switchNode: any;
   constructor() {
     super();
@@ -86,7 +94,6 @@ class Switch extends React.Component<TypeProps, TypeState> {
     this.setState({
       isMouseDown: false,
     });
-    console.log(this.state.value);
     this.updateChecked(event, !this.state.value);
   };
   updateChecked(event?: any, value?: boolean): void {
@@ -119,6 +126,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
     );
   }
   handleKeyDown = (event: SyntheticKeyboardEvent<EventTarget>): void => {
+    const { disabled, loading } = this.props;
+    if (disabled || loading) {
+      return;
+    }
     const { value } = this.state;
     const key = event.keyCode;
     if (key === LEFT_ARROW) this.updateChecked(event, false);
@@ -126,36 +137,48 @@ class Switch extends React.Component<TypeProps, TypeState> {
     if (key === SPACE || key === ENTER) this.updateChecked(event, !value);
   };
   focus(): void {
-    if (this.switchNode.current) {
-      this.switchNode.current.focus();
+    const switchNode = findDOMNode(this.switchNode.current);
+    if (switchNode) {
+      switchNode.focus();
     }
   }
 
   blur(): void {
-    if (this.switchNode.current) {
-      this.switchNode.current.blur();
+    const switchNode = findDOMNode(this.switchNode.current);
+    if (switchNode) {
+      switchNode.blur();
     }
   }
   componentDidMount() {
-    const { autoFocus, disabled } = this.props;
-    if (autoFocus && !disabled) {
+    const { autoFocus, disabled, loading } = this.props;
+    if (autoFocus && !disabled && !loading) {
       this.focus();
     }
   }
   render() {
     const { isMouseDown, value, text } = this.state;
-    const { isInverse, size, disabled, loading, themeProps } = this.props;
+    const { isInverse, size, disabled, loading } = this.props;
     const isabled = !disabled && !loading;
     const switchTabIndex = disabled ? NO_TAB_INDEX : TAB_INDEX;
     const config = {
       isMouseDown,
       value,
       size,
-      disabled,
+      disabled: disabled || loading,
       loading,
       isInverse,
-      themeProps,
     };
+    const { switchThemeProps, childrenThemeProps } = getThemeProps(this.props, value);
+    const {
+      themeConfig: {
+        disabled: { background: switchBackground },
+      },
+    } = switchThemeProps;
+    const {
+      themeConfig: {
+        disabled: { width: circleWidth, height: circleHeight },
+      },
+    } = childrenThemeProps;
     return (
       <SwitchWrapper
         onMouseDown={isabled ? this.mousedown : null}
@@ -164,10 +187,22 @@ class Switch extends React.Component<TypeProps, TypeState> {
         ref={this.switchNode}
         tabIndex={switchTabIndex}
         {...config}
+        themeProps={switchThemeProps}
       >
-        <SwitchText {...config}>{text}</SwitchText>
-        <SwitchCircle {...config}>
-          {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
+        <SwitchText {...config} themeProps={switchThemeProps}>
+          {typeof text === 'string' ? <i>{text}</i> : text}
+        </SwitchText>
+        <SwitchCircle {...config} themeProps={childrenThemeProps}>
+          <Theme
+            config={{
+              [Widgets.Icon]: {
+                color: switchBackground.backgroundColor,
+                fontSize: Math.min(circleWidth, circleHeight) - 4,
+              },
+            }}
+          >
+            {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
+          </Theme>
         </SwitchCircle>
       </SwitchWrapper>
     );
