@@ -7,10 +7,19 @@ exports[`Icon iconClass: lugia-icon-reminder_close_circle_o 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
-<i
-  className="lugia-icon-reminder_close_circle_o  c0"
-/>
+<span
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <i
+    className="lugia-icon-reminder_close_circle_o    c0"
+    style={
+      Object {
+        "fontSize": "1.2rem",
+      }
+    }
+  />
+</span>
 `;
