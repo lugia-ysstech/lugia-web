@@ -7,15 +7,9 @@
  *
  */
 import React from 'react';
-import styled from 'styled-components';
 import GetElement from './getelement';
 import request from './request';
 import CSSComponent, { css } from '../theme/CSSProvider';
-//
-// const Container = styled.div`
-//   position: relative;
-//   display: inline-block;
-// `;
 
 const Container = CSSComponent({
   tag: 'div',
@@ -51,6 +45,8 @@ type UploadProps = {
   onComplete?: Function,
   onChange?: Function,
   onFail?: Function,
+  themeProps: Object,
+  getChildThemeHocProps: Function,
 };
 type StateProps = {
   defaultText?: string,
