@@ -56,6 +56,7 @@ export type TreeDataItem = {
 export type MenuProps = {
   start: number,
   level: number,
+  wrapItem: (element: Object) => Object,
   end: number,
   getTheme: Function,
   getPrefix: Function,
@@ -277,7 +278,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
         }
 
         const iconElement = icon ? <TextIcon iconClass={icon} /> : null;
-        return (
+        const { wrapItem } = this.props;
+        const result = (
           <Item
             key={key}
             size={size}
@@ -294,6 +296,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             {rightIcon}
           </Item>
         );
+        return wrapItem ? wrapItem(result, { key, value }) : result;
       });
     }
 
