@@ -35,7 +35,7 @@ describe('Switch', () => {
 
   it('Wrapper', () => {
     const target = <Wrapper />;
-    expect(renderer.create(target)).toMatchSnapshot();
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
   it('small', () => {
     const target = mount(<Switch size={'small'} />);
@@ -172,16 +172,7 @@ describe('Switch', () => {
     expect(switchComponent.props.loading).toBe(false);
     expect(switchComponent.props.disabled).toBe(true);
   });
-  it('isMouseDown', async () => {
-    const target = mount(<Switch data={[{ text: '年' }, { text: '月' }]} />);
-    const switchComponent = getSwitchComponent(target);
 
-    expect(switchComponent.state.isMouseDown).toBe(false);
-    switchComponent.mousedown();
-    expect(switchComponent.state.isMouseDown).toBe(true);
-    switchComponent.mouseup();
-    expect(switchComponent.state.isMouseDown).toBe(false);
-  });
   it('keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW" ', async () => {
     const target = mount(<Switch autoFocus data={[{ text: '年' }, { text: '月' }]} />);
     const switchComponent = getSwitchComponent(target);

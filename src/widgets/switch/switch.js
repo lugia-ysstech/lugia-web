@@ -29,7 +29,6 @@ type TypeProps = {
   mergeThemeStateAndChildThemeProps: Function,
 };
 type TypeState = {
-  isMouseDown?: boolean,
   items?: Array<Object>,
   value?: boolean,
   displayFiled?: string,
@@ -73,7 +72,6 @@ class Switch extends React.Component<TypeProps, TypeState> {
     const text = getItem(value, items)[displayFiled];
     if (!preState) {
       return {
-        isMouseDown: false,
         value,
         text,
         items,
@@ -85,17 +83,11 @@ class Switch extends React.Component<TypeProps, TypeState> {
       items,
     };
   }
-  mousedown = () => {
-    this.setState({
-      isMouseDown: true,
-    });
-  };
+
   mouseup = (event?: any) => {
-    this.setState({
-      isMouseDown: false,
-    });
     this.updateChecked(event, !this.state.value);
   };
+
   updateChecked(event?: any, value?: boolean): void {
     if (this.state.value === value) {
       return;
@@ -136,9 +128,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
     if (key === RIGHT_ARROW) this.updateChecked(event, true);
     if (key === SPACE || key === ENTER) this.updateChecked(event, !value);
   };
+
   focus(): void {
     const switchNode = findDOMNode(this.switchNode.current);
-    if (switchNode) {
+    if (switchNode && switchNode.focus) {
       switchNode.focus();
     }
   }
@@ -156,18 +149,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
     }
   }
   render() {
-    const { isMouseDown, value, text } = this.state;
-    const { isInverse, size, disabled, loading } = this.props;
+    const { value, text } = this.state;
+    const { disabled, loading } = this.props;
     const isabled = !disabled && !loading;
     const switchTabIndex = disabled ? NO_TAB_INDEX : TAB_INDEX;
-    const config = {
-      isMouseDown,
-      value,
-      size,
-      disabled: disabled || loading,
-      loading,
-      isInverse,
-    };
     const { switchThemeProps, childrenThemeProps } = getThemeProps(this.props, value);
     const {
       themeConfig: {
@@ -181,23 +166,23 @@ class Switch extends React.Component<TypeProps, TypeState> {
     } = childrenThemeProps;
     return (
       <SwitchWrapper
-        onMouseDown={isabled ? this.mousedown : null}
         onMouseUp={isabled ? this.mouseup : null}
         onKeyDown={isabled ? this.handleKeyDown : null}
         ref={this.switchNode}
         tabIndex={switchTabIndex}
-        {...config}
         themeProps={switchThemeProps}
       >
-        <SwitchText {...config} themeProps={switchThemeProps}>
+        <SwitchText themeProps={switchThemeProps}>
           {typeof text === 'string' ? <i>{text}</i> : text}
         </SwitchText>
-        <SwitchCircle {...config} themeProps={childrenThemeProps}>
+        <SwitchCircle themeProps={childrenThemeProps}>
           <Theme
             config={{
               [Widgets.Icon]: {
-                color: switchBackground.backgroundColor,
-                fontSize: Math.min(circleWidth, circleHeight) - 4,
+                normal: {
+                  color: switchBackground.backgroundColor,
+                  fontSize: Math.min(circleWidth, circleHeight) - 4,
+                },
               },
             }}
           >
