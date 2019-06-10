@@ -346,9 +346,9 @@ describe('Input', () => {
   }
 
   testValidateTop('value :""', '', 'success');
-  testValidateTop('value :"111,1111"', '111,1111', 'error');
-  testValidateTop('value :","', ',', 'error');
-  testValidateTop('value :",,,"', ',,,', 'error');
+  testValidateTop('value :"111a1111"', '111a1111', 'error');
+  testValidateTop('value :"a"', 'a', 'error');
+  testValidateTop('value :"aaa"', 'aaa', 'error');
 
   function testValidateBottomAndInner(
     title: string,
@@ -359,31 +359,23 @@ describe('Input', () => {
     it(` props :validateStatus  ${title}  &&  valiedateType ${validateType} ;`, () => {
       const onChange = () => {};
       const component = mount(<ValidateInput validateType={validateType} onChange={onChange} />);
-      const cmpInput = component
-        .children()
-        .at(0)
-        .children()
-        .at(0)
-        .instance();
-      component
-        .find('input')
-        .at(0)
-        .simulate('change', { target: { value } });
-      expect(cmpInput.props.validateStatus).toBe(expValue);
+      const cmpInput = component.find('input').at(0);
+      cmpInput.simulate('change', { target: { value } });
+      expect(component.find(Widget.Input).props().validateStatus).toBe(expValue);
     });
   }
 
   testValidateBottomAndInner('value :""', 'bottom', '', 'success');
   testValidateBottomAndInner('value :"111"', 'bottom', '111', 'success');
-  testValidateBottomAndInner('value :"111,1"', 'bottom', '111,1', 'error');
-  testValidateBottomAndInner('value :","', 'bottom', ',', 'error');
-  testValidateBottomAndInner('value :",,,"', 'bottom', ',,,', 'error');
+  testValidateBottomAndInner('value :"111a1"', 'bottom', '111a1', 'error');
+  testValidateBottomAndInner('value :"a"', 'bottom', 'a', 'error');
+  testValidateBottomAndInner('value :"a"', 'bottom', 'aaa', 'error');
 
   testValidateBottomAndInner('value :""', 'inner', '', 'success');
   testValidateBottomAndInner('value :"1111"', 'inner', '111', 'success');
-  testValidateBottomAndInner('value :"111,11"', 'inner', '111,1', 'error');
-  testValidateBottomAndInner('value :","', 'inner', ',', 'error');
-  testValidateBottomAndInner('value :",,,,"', 'inner', ',,,', 'error');
+  testValidateBottomAndInner('value :"111a11"', 'inner', '111a1', 'error');
+  testValidateBottomAndInner('value :"a"', 'inner', 'a', 'error');
+  testValidateBottomAndInner('value :"aaaa"', 'inner', 'aaa', 'error');
 
   it('props: readOnly true', () => {
     const value = '诸行无常';

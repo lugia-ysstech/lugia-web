@@ -2,57 +2,38 @@
 import '../common/shirm';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component } from 'react';
-import { css } from 'styled-components';
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
+import ThemeHoc from '@lugia/theme-hoc';
 import { fixControlledValue } from '.././utils';
 import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
-import { DefaultHelp, getDisplay, isValidateSuccess, getPadding } from '../css/input';
-import { FontSizeNumber } from '../css';
+import {
+  DefaultHelp,
+  isValidateSuccess,
+  isSuccess,
+  LargeHeight,
+  SmallHeight,
+  DefaultHeight,
+} from '../css/input';
 import ErrorTip from '../tooltip/ErrorTip';
-import { px2emcss } from '../css/units';
 import Icon from '../icon';
-import CSSProvider, { deepMerge } from '../theme/CSSProvider';
+import StaticComponent from '../theme/CSSProvider';
+import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
 import colorsFunc from '../css/stateColor';
+import { units } from '@lugia/css';
+const { px2remcss } = units;
+const {
+  themeColor,
+  disableColor,
+  lightGreyColor,
+  dangerColor,
+  blackColor,
+  mediumGreyColor,
+  darkGreyColor,
+} = colorsFunc();
 
-const { themeColor, disableColor, lightGreyColor } = colorsFunc();
-
-const em = px2emcss(FontSizeNumber);
-
-// const CommonInputStyle = styled.input`
-//   ${getSize};
-//   ${getCursor};
-//   ${getWidth};
-//   ${getInputBorderRadius};
-//   ${getInputBorderSize};
-//   border-style: solid;
-//   border-color: ${getInputBorderColor};
-//   line-height: 1.5;
-//   font-size: 1.4rem;
-//   display: inline-block;
-//   font-family: inherit;
-//   &:hover {
-//     border-color: ${getInputBorderHoverColor};
-//   }
-//
-//   transition: all 0.3s;
-//   background-image: none;
-//   ${getFontColor};
-//   &::placeholder {
-//     color: #ccc;
-//   }
-//   &:focus {
-//     ${getFocusBorderColor};
-//     ${getFocusShadow};
-//   }
-//
-//   padding-left: ${getPadding};
-//   padding-right: ${getRightPadding};
-//   ${getBackground};
-// `;
-
-const CommonInputStyle = CSSProvider({
+const CommonInputStyle = CSSComponent({
   tag: 'input',
+  className: 'innerInput',
   normal: {
     selectNames: [
       ['width'],
@@ -61,193 +42,187 @@ const CommonInputStyle = CSSProvider({
       ['font'],
       ['color'],
       ['padding'],
-      ['background'],
       ['border'],
-      ['boxShadow'],
-      ['borderRadius'],
       ['cursor'],
     ],
     defaultTheme: {
+      width: px2remcss(200),
+      height: DefaultHeight,
       border: {
         top: {
           borderColor: lightGreyColor,
           borderStyle: 'solid',
-          borderWidth: '1px',
+          borderWidth: 1,
         },
         left: {
           borderColor: lightGreyColor,
           borderStyle: 'solid',
-          borderWidth: '1px',
+          borderWidth: 1,
         },
         bottom: {
           borderColor: lightGreyColor,
           borderStyle: 'solid',
-          borderWidth: '1px',
+          borderWidth: 1,
         },
         right: {
           borderColor: lightGreyColor,
           borderStyle: 'solid',
-          borderWidth: '1px',
+          borderWidth: 1,
         },
       },
+    },
+    getStyle(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { size, prefix, validateStatus, validateType } = propsConfig;
+      const { width, height } = themeMeta;
+      const style = {};
+      const color = isValidateSuccess(validateStatus, validateType, 'inner')
+        ? dangerColor
+        : blackColor;
+      const theHeight = height
+        ? height
+        : size === 'large'
+        ? LargeHeight
+        : size === 'small'
+        ? SmallHeight
+        : DefaultHeight;
+      const paddingLeft = prefix
+        ? px2remcss(30)
+        : width && width < 200
+        ? px2remcss(width / 20)
+        : px2remcss(10);
+      const paddingRight = width && width < 200 ? px2remcss(15 + width / 10) : px2remcss(35);
+      style.color = color;
+      style.height = theHeight;
+      style.paddingLeft = paddingLeft;
+      style.paddingRight = paddingRight;
+      return style;
     },
   },
   hover: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['padding'],
-      ['background'],
-      ['boxShadow'],
-      ['border'],
-      ['borderRadius'],
-      ['cursor'],
-    ],
+    selectNames: [['width'], ['height'], ['padding'], ['border'], ['borderRadius'], ['cursor']],
     defaultTheme: {
       border: {
         top: {
           borderColor: themeColor,
           borderStyle: 'solid',
-          borderWidth: '1px',
+          borderWidth: 1,
         },
         left: {
           borderColor: themeColor,
           borderStyle: 'solid',
-          borderWidth: '1px',
+          borderWidth: 1,
         },
         bottom: {
           borderColor: themeColor,
           borderStyle: 'solid',
-          borderWidth: '1px',
+          borderWidth: 1,
         },
         right: {
           borderColor: themeColor,
           borderStyle: 'solid',
-          borderWidth: '1px',
+          borderWidth: 1,
         },
       },
     },
   },
-  clicked: {
-    selectNames: [
-      ['background'],
-      ['boxShadow'],
-      ['border'],
-      ['borderRadius'],
-      ['padding'],
-      ['cursor'],
-    ],
+  actived: {
+    selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['padding'], ['cursor']],
     defaultTheme: {
       boxShadow: `0px 0px 6px ${themeColor};`,
-      border: {
-        top: {
-          borderColor: themeColor,
-          borderStyle: 'solid',
-          borderWidth: '1px',
-        },
-        left: {
-          borderColor: themeColor,
-          borderStyle: 'solid',
-          borderWidth: '1px',
-        },
-        bottom: {
-          borderColor: themeColor,
-          borderStyle: 'solid',
-          borderWidth: '1px',
-        },
-        right: {
-          borderColor: themeColor,
-          borderStyle: 'solid',
-          borderWidth: '1px',
-        },
-      },
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { validateStatus } = propsConfig;
+      const color = isSuccess(validateStatus)
+        ? 'rgba(104, 79, 255, 0.2)'
+        : 'rgba(248, 172, 48, 0.2)';
+      return `
+          &:focus {
+          box-shadow: 0 0 6px ${color};
+        }
+        `;
     },
   },
   disabled: {
-    selectNames: [
-      ['background'],
-      ['borderRadius'],
-      ['margin'],
-      ['padding'],
-      ['cursor'],
-      ['border'],
-    ],
+    selectNames: [['cursor'], ['border'], ['background']],
     defaultTheme: {
-      background: {
-        backgroundColor: disableColor,
-      },
       cursor: 'not-allowed',
+      background: { backgroundColor: disableColor },
     },
   },
   css: css`
-    width: ${em(200)};
-    height: ${em(32)};
     cursor: text;
     line-height: 1.5;
     display: inline-block;
     font-family: inherit;
     transition: all 0.3s;
-    background-image: none;
-    border-radius: ${em(4)};
+    outline: none;
+    border-radius: ${px2remcss(4)};
     &::placeholder {
       color: #ccc;
     }
-
-    padding-left: ${getPadding};
-    padding-right: ${em(35)};
-    outline: none;
   `,
 });
 
-const BaseInputContainer = CSSProvider({
+const BaseInputContainer = StaticComponent({
   tag: 'span',
+  className: 'inputBaseInputContainer',
   css: css`
     position: relative;
     display: inline-block;
   `,
 });
-const InputContainer = CSSProvider({
+const InputErrorTip = StaticComponent({
+  extend: ErrorTip,
+  className: 'errorTip',
+  css: css`
+    position: relative;
+    display: inline-block;
+  `,
+});
+const InputContainer = CSSComponent({
   tag: 'div',
+  className: 'inputContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['opacity'], ['boxShadow'], ['padding'], ['margin']],
-    defaultTheme: {
-      margin: { top: 22, left: 20 },
-      opacity: 1,
-    },
+    selectNames: [['width'], ['height'], ['opacity'], ['padding'], ['margin'], ['borderRadius']],
+  },
+  hover: {
+    selectNames: [['borderRadius'], ['width'], ['height']],
   },
   disabled: {
-    selectNames: [['width'], ['height'], ['backgroundColor'], ['boxShadow']],
-    defaultTheme: {
-      backgroundColor: disableColor,
-    },
+    selectNames: [['boxShadow'], ['width'], ['height']],
+    defaultTheme: {},
   },
   css: css`
-    width: ${em(200)};
-    height: ${em(32)};
     z-index: 0;
     position: relative;
     display: inline-block;
     outline: none;
+    border-radius: ${px2remcss(4)};
   `,
 });
 
-export const Input: Object = CSSProvider({
+export const Input: Object = CSSComponent({
   extend: CommonInputStyle,
+  className: 'inputInner',
+  normal: { selectNames: [] },
   css: css`
     position: relative;
-    font-size: 1.2rem;
     outline: none;
   `,
 });
 
-export const InputOnly: Object = CSSProvider({
+export const InputOnly: Object = StaticComponent({
   extend: CommonInputStyle,
+  className: 'InputOnly',
   css: css`
     outline: none;
   `,
 });
-const TipBottom = CSSProvider({
+const TipBottom = StaticComponent({
   tag: 'span',
+  className: 'inputTipBottom',
   css: css`
     display: block;
     transform: translateY(50%);
@@ -259,68 +234,83 @@ const TipBottom = CSSProvider({
     defaultTheme: {
       visibility: 'hidden',
     },
-
-    getCSS(themeMeta: Object, themeProps: Object) {
+    getStyle(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      console.log(themeProps, 'themeProps');
       const { validateType, validateStatus } = propsConfig;
-      return `
-      visibility:${
-        isValidateSuccess(validateStatus, validateType, 'bottom') ? 'visible' : 'hidden'
-      };
-      `;
+      const style = {};
+      style.visibility = isValidateSuccess(validateStatus, validateType, 'bottom')
+        ? 'visible'
+        : 'hidden';
+      return style;
     },
   },
 });
 
-const Fix = CSSProvider({
+const Fix = StaticComponent({
   tag: 'span',
+  className: 'inputFix',
   css: css`
     position: absolute;
     transform: translateY(50%);
     z-index: 2;
     bottom: 50%;
-    line-height: ${em(10)};
+    line-height: ${px2remcss(10)};
     font-size: 1.4em;
     color: rgba(0, 0, 0, 0.65);
   `,
 });
 
-const Prefix: Object = CSSProvider({
+const Prefix: Object = StaticComponent({
   extend: Fix,
+  className: 'inputPrefix',
   css: css`
-    left: ${em(5)};
+    left: ${px2remcss(5)};
   `,
 });
 
-const Suffix: Object = CSSProvider({
+const Suffix: Object = StaticComponent({
   extend: Fix,
+  className: 'inputSuffix',
   css: css`
-    right: ${em(5)};
+    right: ${px2remcss(5)};
   `,
 });
 
 const Clear = 'lugia-icon-reminder_close';
 
-const ClearButton: Object = CSSProvider({
-  extend: Icon,
-  normal: {},
-  hover: {
-    selectNames: [['color']],
-    defaultTheme: {
-      color: themeColor,
+const ClearButton: Object = ThemeHoc(
+  CSSComponent({
+    extend: Icon,
+    className: 'inputClearButton',
+    normal: {
+      selectNames: [],
+      defaultTheme: {
+        color: mediumGreyColor,
+      },
     },
-  },
-  css: css`
-    position: absolute;
-    transform: translateY(50%);
-    z-index: 2;
-    bottom: 50%;
-    line-height: ${em(10)};
-    right: ${em(10)};
-    display: ${getDisplay};
-  `,
-});
+    hover: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: darkGreyColor,
+      },
+    },
+    actived: {
+      selectNames: [],
+    },
+    disabled: {
+      selectNames: [],
+    },
+    css: css`
+      position: absolute;
+      transform: translateY(50%);
+      z-index: 2;
+      bottom: 50%;
+      line-height: ${px2remcss(10)};
+      right: ${px2remcss(10)};
+    `,
+  }),
+  'ClearButton'
+);
 ClearButton.displayName = 'ClearButton';
 
 type InputState = {|
@@ -352,22 +342,17 @@ type InputProps = {|
    * 当键入回车时触发事件
    */
   onEnter?: (event: UIEvent) => void,
+
   defaultValue?: string,
   value?: string,
   formatter?: (value: number | string) => string,
   parser?: (displayValue: number | string) => string,
+  getChildTheme?: (childWidgetName: string) => { viewClass: string, theme: Object },
   readOnly: boolean,
   autoFocus?: boolean,
   type: string,
 |};
 
-function getPropsConfig(themeProps: Object, arrayProps: Array<Object>): Object {
-  themeProps.propsConfig = {};
-  arrayProps.forEach(child => {
-    Object.assign(themeProps.propsConfig, child);
-  });
-  return { ...themeProps };
-}
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
     disabled: false,
@@ -484,8 +469,8 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   getInputInner = () => {
-    const { validateType, validateStatus, help } = this.props;
-
+    const { validateType, validateStatus, help, themeProps, prefix, size } = this.props;
+    themeProps.propsConfig = { validateType, validateStatus, prefix, size };
     if (validateType === 'bottom') {
       const result = [
         <BaseInputContainer themeProps={this.props.themeProps}>
@@ -494,8 +479,6 @@ class TextBox extends Component<InputProps, InputState> {
           {this.generateSuffix()}
         </BaseInputContainer>,
       ];
-      console.log('oldThemeprops', this.props.themeProps);
-      this.props.themeProps.propsConfig = { validateType, validateStatus };
       result.push(
         <TipBottom themeProps={this.props.themeProps}>
           {this.isValidateError() ? help : ''}
@@ -512,13 +495,14 @@ class TextBox extends Component<InputProps, InputState> {
 
   render() {
     const { props } = this;
-    const { validateType, size, help, validateStatus } = props;
+    const { validateType, size, help, validateStatus, prefix, themeProps } = props;
     const result = this.getInputContent();
+    themeProps.propsConfig = { validateType, validateStatus, prefix, size };
     if (isValidateSuccess(validateStatus, validateType, 'top')) {
       return (
-        <ErrorTip themeProps={this.props.themeProps} size={size} placement={'topLeft'} title={help}>
+        <InputErrorTip themeProps={themeProps} size={size} placement={'topLeft'} title={help}>
           {result}
-        </ErrorTip>
+        </InputErrorTip>
       );
     }
     return result;
@@ -544,14 +528,12 @@ class TextBox extends Component<InputProps, InputState> {
     if (this.isEmpty()) {
       return null;
     }
+    const { themeProps, validateStatus, validateType, prefix, size } = this.props;
+    const show = this.state.clearButtonShow;
+    themeProps.propsConfig = { validateType, validateStatus, prefix, size };
+
     return (
-      <ClearButton
-        iconClass={Clear}
-        themeProps={this.props.themeProps}
-        viewClass={ClearButton.displayName}
-        onClick={this.onClear}
-        show={this.state.clearButtonShow}
-      />
+      <ClearButton themeProps={themeProps} iconClass={Clear} onClick={this.onClear} show={show} />
     );
   }
 
@@ -581,15 +563,17 @@ class TextBox extends Component<InputProps, InputState> {
       onClick,
       autoFocus,
       type,
+      themeProps,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
+    themeProps.propsConfig = { validateType, validateStatus, prefix, size };
     return (
       <Input
         themeProps={this.props.themeProps}
         autoFocus={autoFocus}
-        ref={node => (this.input = node)}
+        ref={this.input}
         validateStatus={validateStatus}
         validateType={validateType}
         suffix={suffix}
@@ -622,5 +606,8 @@ class TextBox extends Component<InputProps, InputState> {
 
 export const TextBoxInner = TextBox;
 
-const TargetTxtBox = ThemeProvider(KeyBoardEventAdaptor(TextBox), Widget.Input);
+const TargetTxtBox = ThemeHoc(KeyBoardEventAdaptor(TextBox), Widget.Input, {
+  hover: true,
+  actived: true,
+});
 export default TargetTxtBox;
