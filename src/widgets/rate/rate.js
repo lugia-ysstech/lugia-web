@@ -15,11 +15,7 @@ import { toNumber } from '../common/NumberUtils';
 
 import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
 import ThemeHoc from '@lugia/theme-hoc';
-import colorsFunc from '../css/stateColor';
-import { getFontSize } from '../css/rate';
 import { findDOMNode } from 'react-dom';
-
-const { warningColor } = colorsFunc();
 
 const showUp = keyframes`
   from {
@@ -95,7 +91,7 @@ const RateIcon = ThemeHoc(
     normal: {
       selectNames: [['color'], ['fontSize']],
       defaultTheme: {
-        color: `${warningColor}`,
+        color: '#e8e8e8',
       },
     },
     hover: {
@@ -109,24 +105,6 @@ const RateIcon = ThemeHoc(
     },
   }),
   'RateIcon',
-  { hover: true, actived: false }
-);
-
-const RateDefaultIcon = ThemeHoc(
-  CSSComponent({
-    extend: Icon,
-    className: 'singleDefaultCharacter',
-    css: css`
-      vertical-align: text-bottom !important;
-    `,
-    normal: {
-      selectNames: [['color'], ['fontSize']],
-      defaultTheme: {
-        color: '#e8e8e8',
-      },
-    },
-  }),
-  'RateActiveIcon',
   { hover: true, actived: false }
 );
 
@@ -181,28 +159,6 @@ const RateText = ThemeHoc(
   }),
   'RateText',
   { hover: true, actived: false }
-);
-
-const RateDefaultText = ThemeHoc(
-  CSSComponent({
-    tag: 'span',
-    className: 'singleTextCharacter',
-    normal: {
-      selectNames: [['color']],
-      defaultTheme: {
-        color: '#e8e8e8',
-      },
-    },
-    css: css`
-      vertical-align: text-bottom !important;
-      opacity: 1;
-      cursor: pointer;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-    `,
-  }),
-  'RateDefaultText'
 );
 
 const RateTextBottom = ThemeHoc(
@@ -366,7 +322,6 @@ class Rate extends React.Component<RateProps, any> {
   temporary: string;
   static defaultProps = {
     count: 5,
-    max: 5,
     disabled: false,
     allowHalf: false,
     classify: false,
@@ -533,31 +488,19 @@ class Rate extends React.Component<RateProps, any> {
         theme: RateDefaultTextTheme,
       } = this.props.getChildThemeHocProps('defaultTextIcon');
 
+      const theme = index < starNum ? RateTextTheme : RateDefaultTextTheme;
+      const viewClass = index < starNum ? RateTextClass : RateDefaultTextClass;
       return (
         <React.Fragment>
-          {index < starNum ? (
-            <RateText
-              themeProps={themeProps}
-              theme={RateTextTheme}
-              viewClass={RateTextClass}
-              type={x}
-              character={character}
-              className={theClassName}
-            >
-              {character}
-            </RateText>
-          ) : (
-            <RateDefaultText
-              themeProps={themeProps}
-              theme={RateDefaultTextTheme}
-              viewClass={RateDefaultTextClass}
-              type={x}
-              character={character}
-              className={theClassName}
-            >
-              {character}
-            </RateDefaultText>
-          )}
+          <RateText
+            theme={theme}
+            viewClass={viewClass}
+            type={x}
+            character={character}
+            className={theClassName}
+          >
+            {character}
+          </RateText>
           <RateTextBottom
             themeProps={themeProps}
             theme={RateDefaultTextTheme}
@@ -578,16 +521,7 @@ class Rate extends React.Component<RateProps, any> {
 
     return (
       <React.Fragment>
-        {index < starNum ? (
-          this.getRateIcon(x, IconClass)
-        ) : (
-          <RateDefaultIcon
-            theme={RateIconBottomTheme}
-            viewClass={RateIconBottomViewClass}
-            type={'default'}
-            iconClass={`${IconClass.default}  default `}
-          />
-        )}
+        {this.getRateIcon(x, IconClass)}
         <RateIconBottom
           theme={RateIconBottomTheme}
           viewClass={RateIconBottomViewClass}
@@ -599,11 +533,12 @@ class Rate extends React.Component<RateProps, any> {
   };
 
   getRateIcon = (type: string, IconClass: Object) => {
-    const { disabled, themeProps, className } = this.props;
+    const { disabled, className } = this.props;
 
     const theClassName = `${defautClass[type]} ${className} ${disabled ? '' : 'hoverd'}`;
     let resultTheme;
     let resultViewClass;
+    console.log('type', type);
     switch (type) {
       case 'amazed':
         const {
@@ -621,10 +556,18 @@ class Rate extends React.Component<RateProps, any> {
         resultTheme = dangerIconTheme;
         resultViewClass = dangerIconViewClass;
         break;
-      default:
+      case 'primary':
         const { viewClass, theme } = this.props.getChildThemeHocProps('activeIcon');
         resultTheme = theme;
         resultViewClass = viewClass;
+        break;
+      default:
+        const {
+          viewClass: RateIconBottomViewClass,
+          theme: RateIconBottomTheme,
+        } = this.props.getChildThemeHocProps('defaultRateIcon');
+        resultTheme = RateIconBottomTheme;
+        resultViewClass = RateIconBottomViewClass;
         break;
     }
     return (
