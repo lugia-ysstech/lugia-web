@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import JSONEditorReact from './JSONEditorReact.js';
-import 'jsoneditor-react/es/editor.min.css';
 
 const Title = styled.h3`
   margin-top: 20px;
