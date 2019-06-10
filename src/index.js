@@ -1,31 +1,25 @@
-//@flow
+import './widgets/css/global.css';
 import 'core-js/es6/map';
 import 'core-js/es6/set';
 import 'core-js/es6/string';
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './widgets/css/global.css';
-
-// import App from './widgets/date-picker/demo';
-//import App from './widgets/popconfirm/demo';
-//import App from './widgets/switch/demo';
-//import App from './widgets/loading/demo';
-// import App from './widgets/tag/demo';
-// import App from './widgets/tree-select/demo';
-// import App from './widgets/tree-select/defaultTreeSelect';
-import App from './widgets/switch/demo';
-
-// import App from './widgets/tree/InlineDataSingleTree';
-// import App from './widgets/tree/InlineDataMutlipleTree';
-// import App from './widgets/tree/DefaultMutlipleTree';
-// import App from './widgets/tree/DefaultTree';
-// import App from './widgets/tree/demo';
-
+import { createBrowserHistory } from 'history';
+import { createApp, render } from '@lugia/lugiax-router';
 import registerServiceWorker from './registerServiceWorker';
-// console.info(ReactServer.renderToString(<App />));
-const root = document.getElementById('root');
-if (root) {
-  window.a = ReactDOM.render(<App />, root);
-}
+import Main from './App';
+
+const history = createBrowserHistory();
+const App = createApp(
+  {
+    '/': {
+      component: Main,
+    },
+  },
+  history
+);
+
+render(() => {
+  return <App />;
+}, 'root');
+
 registerServiceWorker();
