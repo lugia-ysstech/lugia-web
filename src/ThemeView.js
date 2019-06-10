@@ -31,11 +31,10 @@ export default class extends Component<any, any> {
     return [
       <Title>主题测试</Title>,
       <Block>
-        <JSONEditorReact onChange={this.onThemeChange} />
-      </Block>,
-
-      <Block>
         <Result viewClass={viewClass} theme={theme} />
+      </Block>,
+      <Block>
+        <JSONEditorReact onChange={this.onThemeChange} />
       </Block>,
     ];
   }

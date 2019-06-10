@@ -297,8 +297,8 @@ class Header extends Component<any, any> {
 
   render() {
     return [
-      <Input onChange={this.onChange} />,
       <ThemeView modulePath={this.state.modulePath} modules={modules} />,
+      <Input onChange={this.onChange} />,
       <Menu data={this.state.data} onChange={this.onChangeItem} />,
     ];
   }

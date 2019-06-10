@@ -83,25 +83,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
-        <h1>JSONEditor React advanced demo</h1>
-        <div className="contents">
-          <JSONEditorReact
-            schema={this.state.schema}
-            text={this.state.text}
-            mode={this.state.mode}
-            modes={modes}
-            indentation={4}
-            onChangeText={this.onChangeText}
-            onModeChange={this.onModeChange}
-          />
-          <div className="code">
-            <pre>
-              <code>{this.state.text}</code>
-            </pre>
-          </div>
-        </div>
-      </div>
+      <JSONEditorReact
+        schema={this.state.schema}
+        text={this.state.text}
+        mode={this.state.mode}
+        modes={modes}
+        indentation={4}
+        onChangeText={this.onChangeText}
+        onModeChange={this.onModeChange}
+      />
     );
   }
 
