@@ -7,8 +7,6 @@ exports[`Switch Wrapper 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 2.6rem;
-  color: pink;
 }
 
 .c0 {
@@ -67,6 +65,166 @@ exports[`Switch Wrapper 1`] = `
   background-color: green;
 }
 
+.c4 {
+  display: inline-block;
+  position: relative;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
+  width: 30px;
+  height: 16px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  font-size: 12px;
+  color: #fff;
+}
+
+.c4:focus {
+  outline: none;
+}
+
+.c4 border borderRadius {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.c4 font {
+  font-weight: normal;
+}
+
+.c4 background {
+  background-color: #ccc;
+}
+
+.c7 {
+  display: inline-block;
+  position: relative;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
+  width: 38px;
+  height: 20px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  font-size: 12px;
+  color: #fff;
+}
+
+.c7:focus {
+  outline: none;
+}
+
+.c7 border borderRadius {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.c7 font {
+  font-weight: normal;
+}
+
+.c7 background {
+  background-color: #ccc;
+}
+
+.c10 {
+  display: inline-block;
+  position: relative;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
+  width: 38px;
+  height: 20px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  font-size: 12px;
+  color: #fff;
+}
+
+.c10:focus {
+  outline: none;
+}
+
+.c10 border borderRadius {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.c10 font {
+  font-weight: normal;
+}
+
+.c10 background {
+  background-color: #56c22d;
+}
+
+.c13 {
+  display: inline-block;
+  position: relative;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
+  width: 38px;
+  height: 20px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  font-size: 12px;
+  color: #fff;
+}
+
+.c13:focus {
+  outline: none;
+}
+
+.c13 border borderRadius {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.c13 font {
+  font-weight: normal;
+}
+
+.c13 background {
+  background-color: #f22735;
+}
+
+.c14 {
+  display: inline-block;
+  position: relative;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
+  width: 38px;
+  height: 20px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  font-size: 12px;
+  color: #fff;
+}
+
+.c14:focus {
+  outline: none;
+}
+
+.c14 border borderRadius {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.c14 font {
+  font-weight: normal;
+}
+
+.c14 background {
+  background-color: #4d63ff;
+}
+
 .c1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -99,6 +257,108 @@ exports[`Switch Wrapper 1`] = `
   font-size: 2rem;
   font-weight: undefined;
   color: #000;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c5 > *:first-child {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2rem;
+}
+
+.c5 > *:first-child {
+  width: 1.6rem;
+  right: 0;
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: #fff;
+}
+
+.c5 > *:first-child > *:first-child {
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: #fff;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c8 > *:first-child {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2rem;
+}
+
+.c8 > *:first-child {
+  width: 2.1rem;
+  right: 0;
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: #fff;
+}
+
+.c8 > *:first-child > *:first-child {
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: #fff;
+}
+
+.c11 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c11 > *:first-child {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2rem;
+}
+
+.c11 > *:first-child {
+  width: 2.1rem;
+  left: 0;
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: #fff;
+}
+
+.c11 > *:first-child > *:first-child {
+  font-size: 1.2rem;
+  font-weight: undefined;
+  color: #fff;
 }
 
 .c2 {
@@ -141,6 +401,126 @@ exports[`Switch Wrapper 1`] = `
   height: 3rem;
 }
 
+.c6 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+  left: 2px;
+}
+
+.c6 > *:first-child {
+  display: block;
+  color: #4d63ff;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+  position: relative;
+}
+
+.c6 > *:first-child > *:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c6 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+}
+
+.c6 > *:first-child {
+  height: 1.2rem;
+}
+
+.c9 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+  left: 3px;
+}
+
+.c9 > *:first-child {
+  display: block;
+  color: #4d63ff;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+  position: relative;
+}
+
+.c9 > *:first-child > *:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c9 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+}
+
+.c9 > *:first-child {
+  height: 1.4rem;
+}
+
+.c12 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+  right: 3px;
+}
+
+.c12 > *:first-child {
+  display: block;
+  color: #4d63ff;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+  position: relative;
+}
+
+.c12 > *:first-child > *:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c12 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+}
+
+.c12 > *:first-child {
+  height: 1.4rem;
+}
+
 <div
   className="demo-switch"
   style={
@@ -167,9 +547,7 @@ exports[`Switch Wrapper 1`] = `
     >
       <span
         className="c0"
-        disabled={true}
         onKeyDown={null}
-        onMouseDown={null}
         onMouseUp={null}
         style={
           Object {
@@ -199,11 +577,9 @@ exports[`Switch Wrapper 1`] = `
           }
         }
         tabIndex={0}
-        value={false}
       >
         <span
           className="c1"
-          disabled={true}
           style={
             Object {
               "backgroundColor": "pink",
@@ -211,7 +587,6 @@ exports[`Switch Wrapper 1`] = `
               "fontSize": "2rem",
             }
           }
-          value={false}
         >
           <i>
             国
@@ -219,7 +594,6 @@ exports[`Switch Wrapper 1`] = `
         </span>
         <span
           className="c2"
-          disabled={true}
           style={
             Object {
               "backgroundColor": "yellow",
@@ -233,11 +607,2043 @@ exports[`Switch Wrapper 1`] = `
               "width": "3rem",
             }
           }
-          value={false}
         >
-          <span>
+          <span
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
             <i
-              className="lugia-icon-financial_loading_o  c3"
+              className="lugia-icon-financial_loading_o    c3"
+              style={
+                Object {
+                  "color": "pink",
+                  "fontSize": "2.6rem",
+                }
+              }
+            />
+          </span>
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      size=‘small’
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c4"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "1.6rem",
+            "width": "3rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c6"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.2rem",
+              "width": "1.2rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data.length=3
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            月
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data.length=2 isInverse defaultValue
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c10"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#56c22d",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c11"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            开
+          </i>
+        </span>
+        <span
+          className="c12"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data \`data.length=1 isInverse\`
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c13"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#f22735",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data \`data.length=0\`
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=null
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=null,data[1]=null
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=undefined
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=undefined,data[1]=undefined
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=null,data[1]=undefined
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data[0]=null,data[1]=
+      text:月
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            月
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      displayFiled
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            月
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      no displayFiled, have text
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            时
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      no displayFiled no text
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        />
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      isInverse
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c13"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#f22735",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      data \`value\`
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c14"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c11"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c12"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      defaultValue
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c14"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c11"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c12"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      defaultValue && value
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c14"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c11"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c12"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      autoFocus
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            月
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      autoFocus && value
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c14"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c11"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            年
+          </i>
+        </span>
+        <span
+          className="c12"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      onChange
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            月
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      onChange value false
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ccc",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            月
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      onChange value false
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c14"
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c11"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <span
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <i
+              className="lugia-icon-logo_lugia lugia-icon-reminder_check   c3"
+              style={
+                Object {
+                  "fontSize": "1.2rem",
+                }
+              }
+            />
+          </span>
+        </span>
+        <span
+          className="c12"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      loading
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={null}
+        onMouseUp={null}
+        style={
+          Object {
+            "backgroundColor": "#f2f2f2",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          <span
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <i
+              className="lugia-icon-financial_loading_o    c3"
+              style={
+                Object {
+                  "color": "#f2f2f2",
+                  "fontSize": "1rem",
+                }
+              }
+            />
+          </span>
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      'loading=delay:3000'
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={null}
+        onMouseUp={null}
+        style={
+          Object {
+            "backgroundColor": "#f2f2f2",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={0}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          <span
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <i
+              className="lugia-icon-financial_loading_o    c3"
+              style={
+                Object {
+                  "color": "#f2f2f2",
+                  "fontSize": "1rem",
+                }
+              }
+            />
+          </span>
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      disabled
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={null}
+        onMouseUp={null}
+        style={
+          Object {
+            "backgroundColor": "#f2f2f2",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={-1}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      disabled loading
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={null}
+        onMouseUp={null}
+        style={
+          Object {
+            "backgroundColor": "#f2f2f2",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={-1}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          <span
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <i
+              className="lugia-icon-financial_loading_o    c3"
+              style={
+                Object {
+                  "color": "#f2f2f2",
+                  "fontSize": "1rem",
+                }
+              }
+            />
+          </span>
+        </span>
+      </span>
+    </span>
+  </section>
+  <section
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    <h3>
+      disabled loading=delay:3000
+    </h3>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="c7"
+        onKeyDown={null}
+        onMouseUp={null}
+        style={
+          Object {
+            "backgroundColor": "#f2f2f2",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#fff",
+            "fontSize": "1.2rem",
+            "fontWeight": "normal",
+            "height": "2rem",
+            "width": "3.8rem",
+          }
+        }
+        tabIndex={-1}
+      >
+        <span
+          className="c8"
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "color": "#fff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          <i>
+            
+          </i>
+        </span>
+        <span
+          className="c9"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "height": "1.4rem",
+              "width": "1.4rem",
+            }
+          }
+        >
+          <span
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <i
+              className="lugia-icon-financial_loading_o    c3"
+              style={
+                Object {
+                  "color": "#f2f2f2",
+                  "fontSize": "1rem",
+                }
+              }
             />
           </span>
         </span>
