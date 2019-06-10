@@ -8,36 +8,37 @@ import * as React from 'react';
 import '../css/font/lugia-icon.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import styled from 'styled-components';
-import { getMargin } from '../common/ThemeUtils';
-import { px2rem } from '../css/units';
-const getColor = (props: Object) => {
-  const { color } = props.theme;
-  return color ? `color: ${color};` : '';
-};
-const hover = (props: Object) => {
-  const { hoverColor } = props.theme;
-  return hoverColor ? `  &:hover { color: ${hoverColor}; }` : '';
-};
-const getFontSize = (props: Object) => {
-  const { theme } = props;
-  const { fontSize } = theme;
-  const theFontSize = fontSize && fontSize !== 0 ? `${px2rem(fontSize)}rem` : '1.2rem';
-  return `font-size:${theFontSize}`;
-};
-const IconTag = styled.i`
-  user-select: none;
-  cursor: pointer;
-  ${getFontSize};
-  ${getColor} ${hover};
-  ${getMargin};
-`;
+import CSSComponent, { css } from '../theme/CSSProvider';
+import { units } from '@lugia/css';
+
+const { px2rem } = units;
+
+const IconTag = CSSComponent({
+  tag: 'i',
+  className: 'iconTag',
+  normal: {
+    selectNames: [['color'], ['margin'], ['fontSize']],
+    getStyle(themeMeta: Object, themeProps: Object) {
+      const { fontSize } = themeMeta;
+      const theFontSize = fontSize && fontSize !== 0 ? `${px2rem(fontSize)}rem` : '1.2rem';
+      return { fontSize: theFontSize };
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['margin']],
+  },
+  css: css`
+    user-select: none;
+    cursor: pointer;
+  `,
+});
 type IconProps = {
   className?: string,
   iconClass: string,
   style: Object,
   onClick?: Function,
   getTheme: Function,
+  themeProps: Object,
 };
 
 class Icon extends React.Component<IconProps> {
@@ -53,7 +54,7 @@ class Icon extends React.Component<IconProps> {
     const {
       iconClass = 'lugia-icon-logo_lugia',
       onClick,
-      getTheme,
+      themeProps,
       className = '',
       style,
     } = this.props;
@@ -61,11 +62,11 @@ class Icon extends React.Component<IconProps> {
       <IconTag
         className={`${iconClass} ${className}`}
         onClick={onClick}
-        theme={getTheme()}
+        themeProps={themeProps}
         style={style}
       />
     );
   }
 }
 
-export default ThemeProvider(Icon, Widget.Icon);
+export default ThemeProvider(Icon, Widget.Icon, { hover: true });

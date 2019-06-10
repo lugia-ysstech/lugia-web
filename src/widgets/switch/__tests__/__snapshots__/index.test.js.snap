@@ -1,168 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Switch Wrapper 1`] = `
-.c12 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 2.6rem;
+  color: pink;
 }
 
 .c0 {
-  font-size: 1em;
-  box-sizing: border-box;
   display: inline-block;
-  width: 3.1666666666666665em;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
-  background: #ccc;
   position: relative;
-  text-align: right;
-  padding: 0 0.33333333333333337em;
   color: rgba(255,255,255,0.8);
   cursor: pointer;
   vertical-align: middle;
+  width: 150px;
+  height: 40px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  font-size: 20px;
+  color: #000;
 }
 
 .c0:focus {
   outline: none;
 }
 
-.c3 {
-  font-size: 1em;
-  box-sizing: border-box;
-  display: inline-block;
-  width: 2.5em;
-  height: 1.3333333333333335em;
-  line-height: 1.3333333333333335em;
-  border-radius: 1.6666666666666667em;
-  background: #ccc;
-  position: relative;
-  text-align: right;
-  padding: 0 0.33333333333333337em;
-  color: rgba(255,255,255,0.8);
-  cursor: pointer;
-  vertical-align: middle;
+.c0 border borderRadius {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
-.c3:focus {
-  outline: none;
+.c0 border left {
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px;
 }
 
-.c6 {
-  font-size: 1em;
-  box-sizing: border-box;
-  display: inline-block;
-  width: 3.1666666666666665em;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
-  background: #56c22d;
-  position: relative;
-  text-align: left;
-  padding: 0 0.33333333333333337em;
-  color: rgba(255,255,255,0.8);
-  cursor: pointer;
-  vertical-align: middle;
+.c0 border top {
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px;
 }
 
-.c6:focus {
-  outline: none;
+.c0 border right {
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px;
 }
 
-.c8 {
-  font-size: 1em;
-  box-sizing: border-box;
-  display: inline-block;
-  width: 3.1666666666666665em;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
-  background: #f22735;
-  position: relative;
-  text-align: right;
-  padding: 0 0.33333333333333337em;
-  color: rgba(255,255,255,0.8);
-  cursor: pointer;
-  vertical-align: middle;
+.c0 border bottom {
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px;
 }
 
-.c8:focus {
-  outline: none;
+.c0 font {
+  font-weight: normal;
 }
 
-.c10 {
-  font-size: 1em;
-  box-sizing: border-box;
-  display: inline-block;
-  width: 3.1666666666666665em;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
-  background: #4d63ff;
-  position: relative;
-  text-align: left;
-  padding: 0 0.33333333333333337em;
-  color: rgba(255,255,255,0.8);
-  cursor: pointer;
-  vertical-align: middle;
+.c0 background {
+  background-color: green;
 }
 
-.c10:focus {
-  outline: none;
-}
-
-.c13 {
-  font-size: 1em;
-  box-sizing: border-box;
-  display: inline-block;
-  width: 3.1666666666666665em;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
-  background: #c0c8ff;
-  position: relative;
-  text-align: right;
-  padding: 0 0.33333333333333337em;
-  color: rgba(255,255,255,0.8);
-  cursor: pointer;
-  vertical-align: middle;
-}
-
-.c13:focus {
-  outline: none;
+.c1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c1 > *:first-child {
-  display: inline-block;
-  line-height: 1.6666666666666667em;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2rem;
 }
 
-.c1 > *:first-child::before {
-  line-height: 1.6666666666666667em;
+.c1 > *:first-child {
+  width: 11.3rem;
+  right: 0;
+  font-size: 2rem;
+  font-weight: undefined;
+  color: #000;
 }
 
-.c4 > *:first-child {
-  display: inline-block;
-  line-height: 1.3333333333333335em;
-}
-
-.c4 > *:first-child::before {
-  line-height: 1.3333333333333335em;
+.c1 > *:first-child > *:first-child {
+  font-size: 2rem;
+  font-weight: undefined;
+  color: #000;
 }
 
 .c2 {
-  width: 1.1666666666666667em;
-  height: 1.1666666666666667em;
-  line-height: 1.1666666666666667em;
-  border-radius: 50%;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
-  background: #fff;
   position: absolute;
-  left: 0.25em;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -171,191 +111,34 @@ exports[`Switch Wrapper 1`] = `
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition: all 0.2s;
+  left: 5px;
 }
 
 .c2 > *:first-child {
   display: block;
-  color: #ccc;
-  line-height: 1.1666666666666667em;
+  color: #4d63ff;
   -webkit-animation: rotate 1.5s linear infinite;
   animation: rotate 1.5s linear infinite;
+  position: relative;
+}
+
+.c2 > *:first-child > *:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
 }
 
 .c2 > *:first-child::before {
   -webkit-transform: scale(0.65);
   -ms-transform: scale(0.65);
   transform: scale(0.65);
-  line-height: 1.1666666666666667em;
 }
 
-.c5 {
-  width: 1em;
-  height: 1em;
-  line-height: 1em;
-  border-radius: 50%;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
-  background: #fff;
-  position: absolute;
-  left: 0.16666666666666669em;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition: all 0.2s;
-}
-
-.c5 > *:first-child {
-  display: block;
-  color: #ccc;
-  line-height: 1em;
-  -webkit-animation: rotate 1.5s linear infinite;
-  animation: rotate 1.5s linear infinite;
-}
-
-.c5 > *:first-child::before {
-  -webkit-transform: scale(0.65);
-  -ms-transform: scale(0.65);
-  transform: scale(0.65);
-  line-height: 1em;
-}
-
-.c7 {
-  width: 1.1666666666666667em;
-  height: 1.1666666666666667em;
-  line-height: 1.1666666666666667em;
-  border-radius: 50%;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
-  background: #fff;
-  position: absolute;
-  right: 0.25em;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition: all 0.2s;
-}
-
-.c7 > *:first-child {
-  display: block;
-  color: #56c22d;
-  line-height: 1.1666666666666667em;
-  -webkit-animation: rotate 1.5s linear infinite;
-  animation: rotate 1.5s linear infinite;
-}
-
-.c7 > *:first-child::before {
-  -webkit-transform: scale(0.65);
-  -ms-transform: scale(0.65);
-  transform: scale(0.65);
-  line-height: 1.1666666666666667em;
-}
-
-.c9 {
-  width: 1.1666666666666667em;
-  height: 1.1666666666666667em;
-  line-height: 1.1666666666666667em;
-  border-radius: 50%;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
-  background: #fff;
-  position: absolute;
-  left: 0.25em;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition: all 0.2s;
-}
-
-.c9 > *:first-child {
-  display: block;
-  color: #f22735;
-  line-height: 1.1666666666666667em;
-  -webkit-animation: rotate 1.5s linear infinite;
-  animation: rotate 1.5s linear infinite;
-}
-
-.c9 > *:first-child::before {
-  -webkit-transform: scale(0.65);
-  -ms-transform: scale(0.65);
-  transform: scale(0.65);
-  line-height: 1.1666666666666667em;
-}
-
-.c11 {
-  width: 1.1666666666666667em;
-  height: 1.1666666666666667em;
-  line-height: 1.1666666666666667em;
-  border-radius: 50%;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
-  background: #fff;
-  position: absolute;
-  right: 0.25em;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition: all 0.2s;
-}
-
-.c11 > *:first-child {
-  display: block;
-  color: #4d63ff;
-  line-height: 1.1666666666666667em;
-  -webkit-animation: rotate 1.5s linear infinite;
-  animation: rotate 1.5s linear infinite;
-}
-
-.c11 > *:first-child::before {
-  -webkit-transform: scale(0.65);
-  -ms-transform: scale(0.65);
-  transform: scale(0.65);
-  line-height: 1.1666666666666667em;
-}
-
-.c14 {
-  width: 1.1666666666666667em;
-  height: 1.1666666666666667em;
-  line-height: 1.1666666666666667em;
-  border-radius: 50%;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
-  background: #fff;
-  position: absolute;
-  left: 0.25em;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition: all 0.2s;
-}
-
-.c14 > *:first-child {
-  display: block;
-  color: #c0c8ff;
-  line-height: 1.1666666666666667em;
-  -webkit-animation: rotate 1.5s linear infinite;
-  animation: rotate 1.5s linear infinite;
-}
-
-.c14 > *:first-child::before {
-  -webkit-transform: scale(0.65);
-  -ms-transform: scale(0.65);
-  transform: scale(0.65);
-  line-height: 1.1666666666666667em;
+.c2 > *:first-child {
+  height: 3rem;
 }
 
 <div
@@ -377,941 +160,87 @@ exports[`Switch Wrapper 1`] = `
       normal
     </h3>
     <span
-      className="c0"
-      onKeyDown={[Function]}
       onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
     >
       <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      size=‘small’
-    </h3>
-    <span
-      className="c3"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      size="small"
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c4"
-        size="small"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c5"
-        size="small"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data.length=3
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        月
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data.length=2 isInverse defaultValue
-    </h3>
-    <span
-      className="c6"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={true}
-    >
-      <span
-        className="c1"
-        value={true}
-      >
-        开
-      </span>
-      <span
-        className="c7"
-        value={true}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data \`data.length=1 isInverse\`
-    </h3>
-    <span
-      className="c8"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c9"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data \`data.length=0\`
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data[0]=null
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data[0]=null,data[1]=null
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data[0]=undefined
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data[0]=undefined,data[1]=undefined
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data[0]=null,data[1]=undefined
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data[0]=null,data[1]=
-      text:月
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        月
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      displayFiled
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        月
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      no displayFiled, have text
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        时
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      no displayFiled no text
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      />
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      isInverse
-    </h3>
-    <span
-      className="c8"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c9"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      data \`value\`
-    </h3>
-    <span
-      className="c10"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={true}
-    >
-      <span
-        className="c1"
-        value={true}
-      >
-        
-      </span>
-      <span
-        className="c11"
-        value={true}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      defaultValue
-    </h3>
-    <span
-      className="c10"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={true}
-    >
-      <span
-        className="c1"
-        value={true}
-      >
-        
-      </span>
-      <span
-        className="c11"
-        value={true}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      defaultValue && value
-    </h3>
-    <span
-      className="c10"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={true}
-    >
-      <span
-        className="c1"
-        value={true}
-      >
-        
-      </span>
-      <span
-        className="c11"
-        value={true}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      autoFocus
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        月
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      autoFocus && value
-    </h3>
-    <span
-      className="c10"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={true}
-    >
-      <span
-        className="c1"
-        value={true}
-      >
-        年
-      </span>
-      <span
-        className="c11"
-        value={true}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      onChange
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        月
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      onChange value false
-    </h3>
-    <span
-      className="c0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        月
-      </span>
-      <span
-        className="c2"
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      onChange value false
-    </h3>
-    <span
-      className="c10"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={0}
-      value={true}
-    >
-      <span
-        className="c1"
-        value={true}
-      >
-        <i
-          className="lugia-icon-logo_lugia lugia-icon-reminder_check c12"
-        />
-      </span>
-      <span
-        className="c11"
-        value={true}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      loading
-    </h3>
-    <span
-      className="c13"
-      onKeyDown={null}
-      onMouseDown={null}
-      onMouseUp={null}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c14"
-        value={false}
-      >
-        <i
-          className="lugia-icon-financial_loading_o  c12"
-        />
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      'loading=delay:3000'
-    </h3>
-    <span
-      className="c13"
-      onKeyDown={null}
-      onMouseDown={null}
-      onMouseUp={null}
-      tabIndex={0}
-      value={false}
-    >
-      <span
-        className="c1"
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c14"
-        value={false}
-      >
-        <i
-          className="lugia-icon-financial_loading_o  c12"
-        />
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      disabled
-    </h3>
-    <span
-      className="c13"
-      disabled={true}
-      onKeyDown={null}
-      onMouseDown={null}
-      onMouseUp={null}
-      tabIndex={-1}
-      value={false}
-    >
-      <span
-        className="c1"
+        className="c0"
         disabled={true}
+        onKeyDown={null}
+        onMouseDown={null}
+        onMouseUp={null}
+        style={
+          Object {
+            "backgroundColor": "pink",
+            "borderBottomColor": "#ddd",
+            "borderBottomLeftRadius": "2rem",
+            "borderBottomRightRadius": "2rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#ddd",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#ddd",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#ddd",
+            "borderTopLeftRadius": "2rem",
+            "borderTopRightRadius": "2rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "color": "#000",
+            "fontSize": "2rem",
+            "fontWeight": "normal",
+            "height": "4rem",
+            "width": "15rem",
+          }
+        }
+        tabIndex={0}
         value={false}
       >
-        
-      </span>
-      <span
-        className="c14"
-        disabled={true}
-        value={false}
-      >
-        
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      disabled loading
-    </h3>
-    <span
-      className="c13"
-      disabled={true}
-      onKeyDown={null}
-      onMouseDown={null}
-      onMouseUp={null}
-      tabIndex={-1}
-      value={false}
-    >
-      <span
-        className="c1"
-        disabled={true}
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c14"
-        disabled={true}
-        value={false}
-      >
-        <i
-          className="lugia-icon-financial_loading_o  c12"
-        />
-      </span>
-    </span>
-  </section>
-  <section
-    style={
-      Object {
-        "marginBottom": "20px",
-      }
-    }
-  >
-    <h3>
-      disabled loading=delay:3000
-    </h3>
-    <span
-      className="c13"
-      disabled={true}
-      onKeyDown={null}
-      onMouseDown={null}
-      onMouseUp={null}
-      tabIndex={-1}
-      value={false}
-    >
-      <span
-        className="c1"
-        disabled={true}
-        value={false}
-      >
-        
-      </span>
-      <span
-        className="c14"
-        disabled={true}
-        value={false}
-      >
-        <i
-          className="lugia-icon-financial_loading_o  c12"
-        />
+        <span
+          className="c1"
+          disabled={true}
+          style={
+            Object {
+              "backgroundColor": "pink",
+              "color": "#000",
+              "fontSize": "2rem",
+            }
+          }
+          value={false}
+        >
+          <i>
+            国
+          </i>
+        </span>
+        <span
+          className="c2"
+          disabled={true}
+          style={
+            Object {
+              "backgroundColor": "yellow",
+              "borderBottomLeftRadius": "4rem",
+              "borderBottomRightRadius": "4rem",
+              "borderTopLeftRadius": "4rem",
+              "borderTopRightRadius": "4rem",
+              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "color": "red",
+              "height": "3rem",
+              "width": "3rem",
+            }
+          }
+          value={false}
+        >
+          <span>
+            <i
+              className="lugia-icon-financial_loading_o  c3"
+            />
+          </span>
+        </span>
       </span>
     </span>
   </section>
