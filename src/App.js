@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { createRoute, Link } from '@lugia/lugiax-router';
+import { createRoute, go } from '@lugia/lugiax-router';
 import router from './router';
 import Menu from './widgets/menu';
 import Input from './widgets/input';
+import ThemeView from './ThemeView';
 
 const data = [
   {
@@ -258,19 +259,35 @@ const data = [
   },
 ];
 
+const processMap = {
+  amountinput: '/amount-input',
+  autocomplete: '/auto-complete',
+  backtop: '/back-top',
+  datepicker: '/date-picker',
+  timepicker: '/time-picker',
+  treeselect: '/tree-select',
+  timeline: '/time-line',
+  numberinput: '/number-input',
+};
+
+const modules = {};
+data.reduce((modules, item) => {
+  const itemValue = item.value;
+  const processVal = processMap[itemValue.replace(/\//g, '')];
+  const value = processVal ? processVal : itemValue;
+  modules[itemValue] = require(`./widgets${value}/index`).default;
+  return modules;
+}, modules);
+
 class Header extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = { data };
+    this.state = { data, modulePath: '/rate' };
   }
-
-  wrapItem = (item: Object, param: Object) => {
-    const { key } = param;
-    return <Link to={`${key}`}>{item} </Link>;
-  };
 
   onChange = item => {
     const { newValue = '' } = item;
+
     this.setState({
       data: data.filter(({ value }) => {
         return value && value.toLowerCase().indexOf(newValue.toLowerCase()) !== -1;
@@ -281,9 +298,19 @@ class Header extends Component<any, any> {
   render() {
     return [
       <Input onChange={this.onChange} />,
-      <Menu data={this.state.data} wrapItem={this.wrapItem} />,
+      <ThemeView modulePath={this.state.modulePath} modules={modules} />,
+      <Menu data={this.state.data} onChange={this.onChangeItem} />,
     ];
   }
+  onChangeItem = ({ selectedKeys }) => {
+    const url = selectedKeys[0];
+    if (url) {
+      go({ url });
+      this.setState({
+        modulePath: url,
+      });
+    }
+  };
 }
 
 export default () => {
