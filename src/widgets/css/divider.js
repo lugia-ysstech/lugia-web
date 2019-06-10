@@ -18,6 +18,7 @@ export type DividerProps = {
   type: DividerType,
   content?: string,
   getTheme: Function,
+  themeProps: Object,
 };
 
 export const getPositionCSS = ([left, right]: DividerPosition[]) => (props: DividerProps) => {

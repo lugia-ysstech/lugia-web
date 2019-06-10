@@ -9,6 +9,8 @@ import Card from './index';
 import styled from 'styled-components';
 import Theme from '../theme';
 import Tabs from '../tabs/tabs';
+import Input from '../input';
+import Button from '../button';
 import Widget from '../consts';
 
 const Wrapper = styled.div`
@@ -29,7 +31,9 @@ const Price = styled.div`
   text-align: center;
   font-size: 16px;
   color: #666;
-  margin-bottom: 26px;
+  height: 45px;
+  padding-top: 34px;
+  padding-bottom: 26px;
   width: 100%;
 `;
 const PriceNum = styled.div`
@@ -75,34 +79,107 @@ class AmountCard extends React.Component<Object, Object> {
 }
 
 export default () => {
+  const avatar = {
+    [Widget.Card]: {
+      normal: { width: 300, height: 160 },
+      hover: {
+        background: {
+          backgroundColor: 'red',
+        },
+      },
+    },
+  };
   const view = {
     [Widget.Card]: {
-      width: 300,
-      height: 200,
+      normal: { width: 500, height: 200 },
+      hover: {
+        background: {
+          backgroundColor: 'red',
+        },
+      },
     },
   };
-  const combo = {
-    register: {
-      width: 360,
-      height: 240,
-    },
-    vertical: {
-      width: 200,
-      height: 220,
-    },
-  };
-  const avatar = {
-    [Widget.Avatar]: {
-      width: 80,
-      height: 80,
-    },
-  };
-  const cardImage = {
-    [Widget.CardImage]: {
-      width: 200,
-      height: 130,
+  const imageVCard = {
+    [Widget.Card]: {
+      normal: {
+        width: 200,
+        height: 350,
+      },
+      children: {
+        cardImage: {
+          normal: {
+            width: 200,
+            height: 160,
+          },
+        },
+      },
     },
   };
+  const imageHCard = {
+    [Widget.Card]: {
+      normal: {
+        width: 360,
+        height: 200,
+      },
+      children: {
+        cardImage: {
+          normal: {
+            width: 160,
+            height: 200,
+          },
+        },
+      },
+    },
+  };
+  const avatarVCard = {
+    [Widget.Card]: {
+      normal: {
+        width: 160,
+        height: 220,
+      },
+      children: {
+        cardAvatar: {
+          normal: {
+            width: 100,
+            height: 100,
+          },
+        },
+      },
+    },
+  };
+  const avatarHCard = {
+    [Widget.Card]: {
+      normal: {
+        width: 260,
+        height: 180,
+      },
+      children: {
+        cardAvatar: {
+          normal: {
+            width: 100,
+            height: 100,
+          },
+        },
+      },
+    },
+  };
+
+  const price = {
+    [Widget.Card]: {
+      normal: { width: 200, height: 220 },
+      hover: {
+        background: {
+          backgroundColor: 'red',
+        },
+      },
+    },
+  };
+  const tabsCard = {
+    [Widget.Card]: {
+      normal: { width: 400, height: 240 },
+    },
+  };
+
   const defaultData = [
     {
       title: 'Tab1',
@@ -148,20 +225,14 @@ export default () => {
         <Wrapper>
           <Card
             type={'tip'}
-            title={<div>{'this is title'}</div>}
+            title={'this is title'}
             content={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
             shadow={'always'}
           />
         </Wrapper>
       </Theme>
-      <p>children样式 </p>
-      <Wrapper>
-        <Card>
-          <div>children 样式的卡片</div>
-        </Card>
-      </Wrapper>
 
-      <Theme config={avatar}>
+      <Theme config={avatarVCard}>
         <p>头像样式</p>
         <Wrapper>
           <Card
@@ -176,16 +247,16 @@ export default () => {
           />
         </Wrapper>
       </Theme>
+
       <p>头像样式</p>
-      <Theme config={avatar}>
+      <Theme config={avatarHCard}>
         <Wrapper>
           <Card
             type={'avatar'}
             title={'this is title'}
             description={
               <div>
-                <div>this is description</div>
-                <div>this is description</div>
+                <div>{'this is description'}</div>
               </div>
             }
             avatar={
@@ -196,7 +267,7 @@ export default () => {
         </Wrapper>
       </Theme>
 
-      <Theme config={cardImage}>
+      <Theme config={imageVCard}>
         <p>图片样式</p>
         <Wrapper>
           <Card
@@ -213,38 +284,39 @@ export default () => {
         </Wrapper>
       </Theme>
       <p>图片样式</p>
-      <Wrapper>
-        <Card
-          type={'image'}
-          title={'this is title'}
-          imageOrientation={'horizontal'}
-          description={'this is description'}
-          image={
-            'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
-          }
-          shadow={'hover'}
-        />
-      </Wrapper>
+      <Theme config={imageHCard}>
+        <Wrapper>
+          <Card
+            type={'image'}
+            title={'this is title'}
+            imageOrientation={'horizontal'}
+            description={'this is description'}
+            image={
+              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
+            }
+            shadow={'hover'}
+          />
+        </Wrapper>
+      </Theme>
       <p>组合样式</p>
-      <Theme config={combo}>
+      <Theme config={tabsCard}>
         <Wrapper>
           <Card
             operation={'操作'}
-            viewClass={'register'}
             type={'combo'}
             content={
               <TabsWrapper>
-                {' '}
                 <Tabs data={defaultData} />
               </TabsWrapper>
             }
             shadow={'hover'}
           />
         </Wrapper>
-
-        <p>组合样式</p>
+      </Theme>
+      <p>组合样式</p>
+      <Theme config={price}>
         <Wrapper>
-          <Card viewClass={'vertical'} type={'combo'} content={<AmountCard />} shadow={'hover'} />
+          <Card viewClass={'price'} type={'combo'} content={<AmountCard />} shadow={'hover'} />
         </Wrapper>
       </Theme>
     </Wrapper>

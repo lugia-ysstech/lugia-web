@@ -65,13 +65,3 @@ export const getColor = (props: BadgeProps) => {
   const { color } = theme;
   return `color:${color ? color : defaultColor}`;
 };
-export const BaseRedPoint = styled.sup`
-  font-size: 1rem;
-  box-sizing: border-box;
-  position: absolute;
-  transform: translateX(50%);
-  transform-origin: 100%;
-  z-index: 10;
-  ${getBackground};
-  ${getColor};
-`;
