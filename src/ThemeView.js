@@ -45,9 +45,8 @@ export default class extends Component<any, any> {
     try {
       res = JSON.parse(value);
       this.setState({ themeState: res });
-      console.info(res);
     } catch (err) {
-      console.info('');
+      //
     }
   };
 }
