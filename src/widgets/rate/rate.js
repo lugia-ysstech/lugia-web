@@ -101,7 +101,6 @@ const RateIcon = ThemeHoc(
     hover: {
       selectNames: [['color']],
       getCSS(themeMeta: Object, themeProps: Object) {
-        console.log('themeProps', themeProps);
         return css`
           animation: ${showUp} 0.3s linear forwards;
           transform: scale(1.2);
@@ -628,7 +627,6 @@ class Rate extends React.Component<RateProps, any> {
         resultViewClass = viewClass;
         break;
     }
-    console.log('resultTheme', resultTheme);
     return (
       <RateIcon
         theme={resultTheme}

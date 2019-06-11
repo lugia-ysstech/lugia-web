@@ -18,11 +18,6 @@ const IconTag = CSSComponent({
   className: 'iconTag',
   normal: {
     selectNames: [['color'], ['margin'], ['fontSize']],
-    getStyle(themeMeta: Object, themeProps: Object) {
-      const { fontSize } = themeMeta;
-      const theFontSize = fontSize && fontSize !== 0 ? `${px2rem(fontSize)}rem` : '1.2rem';
-      return { fontSize: theFontSize };
-    },
   },
   hover: {
     selectNames: [['color'], ['margin']],
