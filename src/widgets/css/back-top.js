@@ -4,20 +4,21 @@
  * @flow
  */
 import styled, { css, keyframes } from 'styled-components';
+import { getBorder } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import ThemeProvider from '../theme-provider';
-import { px2emcss } from './units';
+import { px2remcss } from './units';
 import Icon from '../icon';
-import CSSComponent from '@lugia/theme-css-provider';
+import CSSComponent from '@lugia/theme-css-hoc';
 
 const { defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
-const em = px2emcss(FontSize);
+const em = px2remcss;
 
 export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
-  getChildTheme: Function,
+  getChildThemeConfig: Function,
   target?: Function,
   themeProps: Object,
   icon?: string,
@@ -133,13 +134,8 @@ export const BackTopContent = CSSComponent({
       color: themeColor,
       width: 40,
       height: 40,
-      borderRadius: 40,
       opacity: 1,
-      border: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#e8e8e8',
-      },
+      border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }, { radius: 40 }),
     },
   },
 });

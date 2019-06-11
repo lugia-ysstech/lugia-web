@@ -14,6 +14,7 @@ import type { BackTopProps, BackTopState } from '../css/back-top';
 
 export default ThemeProvider(
   class extends React.Component<BackTopProps, BackTopState> {
+    static displayName = 'BackTop';
     constructor(props) {
       super(props);
       this.state = {
@@ -113,9 +114,16 @@ export default ThemeProvider(
     }
 
     render() {
-      const { children, themeProps, getChildTheme, icon = 'lugia-icon-direction_up' } = this.props;
+      const {
+        children,
+        themeProps,
+        getChildThemeHocProps,
+        icon = 'lugia-icon-direction_up',
+      } = this.props;
       const { fixed, posRight, posBottom } = this.state;
-      const { viewClass, theme } = getChildTheme('Icon');
+      const { viewClass, theme } = getChildThemeHocProps('Icon');
+      console.log("getChildThemeConfig('Icon')", getChildThemeHocProps('Icon'));
+      console.log('themeProps', themeProps);
       console.log('theme', theme);
       return (
         <div>

@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import BackTop from './back-top';
 import Widget from '../consts/index';
 import Theme from '../theme';
+import { getBorder } from '@lugia/theme-css-hoc';
 
 const Demo = styled.div`
   & > span > div > div {
@@ -33,21 +34,20 @@ export default class AffixDemo extends React.Component<any, any> {
           background: { backgroundColor: 'orange' },
           width: 100,
           height: 100,
-          borderRadius: 100,
           opacity: 0.7,
-          border: {
-            borderWidth: 1,
-            borderStyle: 'solid',
-            borderColor: 'red',
-          },
+          border: getBorder({ color: 'red', width: 1, style: 'solid' }, { radius: 100 }),
         },
         children: {
           Icon: {
             normal: {
               color: 'green',
-              fontSize: '16px',
-              margin: '10px',
-              padding: '10px',
+              fontSize: 16,
+              padding: {
+                right: 10,
+                left: 10,
+                top: 10,
+                bottom: 10,
+              },
             },
           },
         },
@@ -56,25 +56,25 @@ export default class AffixDemo extends React.Component<any, any> {
     return (
       <div style={{ height: '1600px' }}>
         <BackTop />
-        {/*<Demo cur={1}>*/}
-        {/*<BackTop>*/}
-        {/*<DemoBack>UP</DemoBack>*/}
-        {/*</BackTop>*/}
-        {/*</Demo>*/}
+        <Demo cur={1}>
+          <BackTop>
+            <DemoBack>UP</DemoBack>
+          </BackTop>
+        </Demo>
         <Demo cur={2}>
           <Theme config={view}>
             <BackTop />
           </Theme>
         </Demo>
-        {/*<div*/}
-        {/*style={{ width: '200px', height: '200px', overflowY: 'scroll', marginTop: '400px' }}*/}
-        {/*ref={node => (this.EleRef = node)}*/}
-        {/*>*/}
-        {/*<Demo cur={3}>*/}
-        {/*<div style={{ width: '20px', height: '300px' }} />*/}
-        {/*<BackTop visibilityHeight={80} target={() => this.EleRef} />*/}
-        {/*</Demo>*/}
-        {/*</div>*/}
+        <div
+          style={{ width: '200px', height: '200px', overflowY: 'scroll', marginTop: '400px' }}
+          ref={node => (this.EleRef = node)}
+        >
+          <Demo cur={3}>
+            <div style={{ width: '20px', height: '300px' }} />
+            <BackTop visibilityHeight={80} target={() => this.EleRef} />
+          </Demo>
+        </div>
       </div>
     );
   }

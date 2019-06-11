@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BackTop css 1`] = `
-.c0 > div > div {
+.c0 > span > div > div {
   bottom: 100px;
 }
 
-.c1 > div > div {
+.c1 > span > div > div {
   bottom: 150px;
 }
 
-.c2 > div > div {
+.c2 > span > div > div {
   bottom: 200px;
 }
 
@@ -20,16 +20,22 @@ exports[`BackTop css 1`] = `
     }
   }
 >
-  <div />
+  <span>
+    <div />
+  </span>
   <div
     className="c0"
   >
-    <div />
+    <span>
+      <div />
+    </span>
   </div>
   <div
     className="c1"
   >
-    <div />
+    <span>
+      <div />
+    </span>
   </div>
   <div
     style={
@@ -52,7 +58,9 @@ exports[`BackTop css 1`] = `
           }
         }
       />
-      <div />
+      <span>
+        <div />
+      </span>
     </div>
   </div>
 </div>
