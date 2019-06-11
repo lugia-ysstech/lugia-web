@@ -12,7 +12,6 @@ import styled from 'styled-components';
 import request from './request';
 import Widget from '../consts';
 import Theme from '../theme';
-
 const Title = styled.div`
   font-size: 16px;
   padding: 10px 0 0 10px;
@@ -108,16 +107,30 @@ class UploadDemo extends React.Component<any, any> {
           id: 1,
           name: '文件11111.jpg',
           status: 'done',
-          url: 'http://img05.tooopen.com/images/20150602/tooopen_sy_128223296629.jpg',
+          url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.jpg',
+        },
+        {
+          id: 2,
+          name: '文件2222.mp4',
+          status: 'fail',
+          url: 'http://pic18.nipic.com/20120204/8339340_14420376454_2.mp4',
+        },
+        {
+          id: 3,
+          name: '文件33333.doc',
+          status: 'done',
+          url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.doc',
         },
       ],
     };
+
     const defaultProps2 = {
       listType: 'both',
       inputId: 'upload2',
       url: 'http://localhost:7001/upload',
       showFileList: true,
       multiple: true,
+      autoUpload: false,
       onChange: res => {},
     };
     const defaultProps3 = {
@@ -186,23 +199,99 @@ class UploadDemo extends React.Component<any, any> {
     const config = {
       [Widget.Upload]: {
         normal: {
-          // color: 'yellow',
-          // font:{fontWeight:'bold'},
+          // width:120,
         },
         children: {
-          defaultIcon: {
+          buttonType: {
             normal: {
-              color: '#666',
+              width: 100,
+              height: 30,
+            },
+            hover: {
+              boxShadow: ' 0 0 2px #ccc',
+              opacity: 0.5,
+            },
+            disabled: {
+              background: {
+                backgroundColor: '#ccc',
+              },
+              boxShadow: ' 0 0 2px #ccc',
             },
           },
-          successIcon: {
+          defaultType: {
             normal: {
-              color: '#56c22d',
+              width: 346,
+              height: 30,
+              border: {
+                top: {
+                  borderStyle: 'solid',
+                  borderColor: '#9482ff',
+                  borderWidth: 1,
+                },
+                bottom: {
+                  borderStyle: 'solid',
+                  borderColor: '#9482ff',
+                  borderWidth: 1,
+                },
+                left: {
+                  borderStyle: 'solid',
+                  borderColor: '#9482ff',
+                  borderWidth: 1,
+                },
+                right: {
+                  borderStyle: 'solid',
+                  borderColor: '#9482ff',
+                  borderWidth: 1,
+                },
+              },
+            },
+            hover: {},
+            disabled: {
+              background: {
+                backgroundColor: '#ccc',
+              },
+              border: {
+                top: {
+                  borderStyle: 'solid',
+                  borderColor: '#ccc',
+                  borderWidth: 1,
+                },
+                bottom: {
+                  borderStyle: 'solid',
+                  borderColor: '#ccc',
+                  borderWidth: 1,
+                },
+                left: {
+                  borderStyle: 'solid',
+                  borderColor: '#ccc',
+                  borderWidth: 1,
+                },
+                right: {
+                  borderStyle: 'solid',
+                  borderColor: '#ccc',
+                  borderWidth: 1,
+                },
+              },
             },
           },
-          errorIcon: {
-            normal: {
-              color: '#f22735',
+        },
+      },
+    };
+
+    const areaConfig = {
+      [Widget.Upload]: {
+        normal: {
+          // width:648,
+          // height:323,
+          fontSize: 20,
+        },
+        disabled: {
+          color: '#ccc',
+          border: {
+            bottom: {
+              borderWidth: 0,
+              borderStyle: 'solid',
+              borderColor: 'transparent',
             },
           },
         },
@@ -212,30 +301,33 @@ class UploadDemo extends React.Component<any, any> {
     return (
       <div>
         <Theme config={config}>
-          {/*<Title>默认： </Title>*/}
-          {/*<Upload {...defaultProps} />*/}
-          {/*<Title>默认 disabled： </Title>*/}
-          {/*<Upload {...defaultProps11} />*/}
-          {/*<Title>Button： </Title>*/}
-          {/*<Upload {...defaultProps1} />*/}
+          <Title>默认： </Title>
+          <Upload {...defaultProps} />
+          <Title>默认 disabled： </Title>
+          <Upload {...defaultProps11} />
+          <Title>Button： </Title>
+          <Upload {...defaultProps1} />
           <Title>Both： </Title>
           <Upload {...defaultProps2} />
-          {/*<Title>picture large accept(image)： </Title>*/}
-          {/*<Upload {...defaultProps3} />*/}
+          <Title>picture large accept(image)： </Title>
+          <Upload {...defaultProps3} />
           <Title>picture middle disabled： </Title>
           <Upload {...defaultProps4} />
           <Title>picture small： </Title>
           <Upload {...defaultProps5} />
-          <Title>area： </Title>
-          <Upload {...defaultProps6} />
+
           <Title>default disabled： </Title>
           <Upload {...defaultProps7} />
           <Title>Button disabled： </Title>
           <Upload {...defaultProps8} />
-          <Title>area disabled： </Title>
-          <Upload {...defaultProps9} />
           <Title>button limit 3： </Title>
           <Upload {...defaultProps10} />
+        </Theme>
+        <Theme config={areaConfig}>
+          <Title>area： </Title>
+          <Upload {...defaultProps6} />
+          <Title>area disabled： </Title>
+          <Upload {...defaultProps9} />
         </Theme>
       </div>
     );
