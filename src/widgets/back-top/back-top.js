@@ -122,9 +122,6 @@ export default ThemeProvider(
       } = this.props;
       const { fixed, posRight, posBottom } = this.state;
       const { viewClass, theme } = getChildThemeHocProps('Icon');
-      console.log("getChildThemeConfig('Icon')", getChildThemeHocProps('Icon'));
-      console.log('themeProps', themeProps);
-      console.log('theme', theme);
       return (
         <div>
           {fixed ? (

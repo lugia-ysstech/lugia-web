@@ -18,7 +18,7 @@ const em = px2remcss;
 export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
-  getChildThemeConfig: Function,
+  getChildThemeHocProps: Function,
   target?: Function,
   themeProps: Object,
   icon?: string,
@@ -60,30 +60,7 @@ const getLeftOrRight = (props: CSSProps) => {
   }
   return `right: ${em(posRight)};bottom: ${em(posBottom)}`;
 };
-// export const BackTop = styled.div`
-//   font-size: ${FontSize}rem;
-//   ${getFixedCSS} ${getLeftOrRight};
-//   cursor: pointer;
-// `;
 
-const getBackgroundCSS = (props: CSSProps) => {
-  console.log('props', props);
-  const { backgroundColor = defaultColor } = props.theme;
-
-  return `background-color: ${backgroundColor}`;
-};
-// export const BackTopContent = styled.div`
-//   width: ${em(40)};
-//   height: ${em(40)};
-//   line-height: ${em(40)};
-//   border-radius: ${em(40)};
-//   border: 1px solid #e8e8e8;
-//   color: ${props => getThemeColor(props.theme)};
-//   text-align: center;
-//   overflow: hidden;
-//   box-shadow: 0 0 ${em(4)} #e8e8e8;
-//   ${getBackgroundCSS};
-// `;
 export const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
 `;
