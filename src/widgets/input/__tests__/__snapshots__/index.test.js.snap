@@ -8,9 +8,8 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  font-size: 1.2rem;
-  border-radius: 0.4rem;
   outline: none;
+  border-radius: 0.4rem;
   width: 20rem;
   height: 2.666666666666667em;
   border-top-width: 0.1rem;
@@ -68,7 +67,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   >
     <input
       autoFocus={false}
-      className="c1   c2"
+      className="c1  c2"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -99,9 +98,8 @@ exports[`Input props: null 1`] = `
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  font-size: 1.2rem;
-  border-radius: 0.4rem;
   outline: none;
+  border-radius: 0.4rem;
   width: 20rem;
   height: 2.666666666666667em;
   border-top-width: 0.1rem;
@@ -159,7 +157,7 @@ exports[`Input props: null 1`] = `
   >
     <input
       autoFocus={false}
-      className="c1   c2"
+      className="c1  c2"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -190,9 +188,8 @@ exports[`Input props: placeholder  1`] = `
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  font-size: 1.2rem;
-  border-radius: 0.4rem;
   outline: none;
+  border-radius: 0.4rem;
   width: 20rem;
   height: 2.666666666666667em;
   border-top-width: 0.1rem;
@@ -250,7 +247,7 @@ exports[`Input props: placeholder  1`] = `
   >
     <input
       autoFocus={false}
-      className="c1   c2"
+      className="c1  c2"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -282,9 +279,8 @@ exports[`Input props: placeholder  2`] = `
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  font-size: 1.2rem;
-  border-radius: 0.4rem;
   outline: none;
+  border-radius: 0.4rem;
   width: 20rem;
   height: 2.666666666666667em;
   border-top-width: 0.1rem;
@@ -342,7 +338,7 @@ exports[`Input props: placeholder  2`] = `
   >
     <input
       autoFocus={false}
-      className="c1   c2"
+      className="c1  c2"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -374,9 +370,8 @@ exports[`Input props: size 1`] = `
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  font-size: 1.2rem;
-  border-radius: 0.4rem;
   outline: none;
+  border-radius: 0.4rem;
   width: 20rem;
   height: 2.666666666666667em;
   border-top-width: 0.1rem;
@@ -434,7 +429,7 @@ exports[`Input props: size 1`] = `
   >
     <input
       autoFocus={false}
-      className="c1   c2"
+      className="c1  c2"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -465,9 +460,8 @@ exports[`Input props: size 2`] = `
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  font-size: 1.2rem;
-  border-radius: 0.4rem;
   outline: none;
+  border-radius: 0.4rem;
   width: 20rem;
   height: 2.666666666666667em;
   border-top-width: 0.1rem;
@@ -525,7 +519,7 @@ exports[`Input props: size 2`] = `
   >
     <input
       autoFocus={false}
-      className="c1   c2"
+      className="c1  c2"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}

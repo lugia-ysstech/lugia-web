@@ -42,6 +42,7 @@ const CommonInputStyle = CSSComponent({
       ['font'],
       ['color'],
       ['padding'],
+      ['background'],
       ['border'],
       ['cursor'],
     ],
@@ -100,7 +101,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['width'], ['height'], ['padding'], ['border'], ['borderRadius'], ['cursor']],
+    selectNames: [['width'], ['height'], ['padding'], ['border'], ['cursor']],
     defaultTheme: {
       border: {
         top: {
@@ -127,7 +128,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   actived: {
-    selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['padding'], ['cursor']],
+    selectNames: [['boxShadow'], ['border'], ['cursor']],
     defaultTheme: {
       boxShadow: `0px 0px 6px ${themeColor};`,
     },
@@ -185,14 +186,13 @@ const InputContainer = CSSComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['opacity'], ['padding'], ['margin'], ['borderRadius']],
+    selectNames: [['width'], ['height'], ['opacity'], ['padding'], ['margin'], ['border']],
   },
   hover: {
-    selectNames: [['borderRadius'], ['width'], ['height']],
+    selectNames: [['border']],
   },
   disabled: {
-    selectNames: [['boxShadow'], ['width'], ['height']],
-    defaultTheme: {},
+    selectNames: [['boxShadow']],
   },
   css: css`
     z-index: 0;
