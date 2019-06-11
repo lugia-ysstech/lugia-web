@@ -31,7 +31,7 @@ const Container = CSSComponent({
   tag: 'div',
   className: 'characterContainer',
   normal: {
-    selectNames: [['margin']],
+    selectNames: [],
     defaultTheme: {
       fontSize: '18px',
     },
@@ -48,7 +48,7 @@ const RateBox = CSSComponent({
   tag: 'div',
   className: 'RateBox',
   normal: {
-    selectNames: [['width'], ['height'], ['padding'], ['fontSize']],
+    selectNames: [['width'], ['margin'], ['height'], ['padding'], ['fontSize']],
   },
   css: css`
     position: relative;
@@ -154,7 +154,7 @@ const RateText = ThemeHoc(
     tag: 'span',
     className: 'singleTextCharacter',
     normal: {
-      selectNames: [['color']],
+      selectNames: [['color'], ['fontSize'], ['margin']],
       defaultTheme: {
         color: '#e8e8e8',
       },
@@ -180,7 +180,7 @@ const RateTextBottom = ThemeHoc(
     tag: 'span',
     className: 'singleTextCharacter',
     normal: {
-      selectNames: [['color']],
+      selectNames: [['color'], ['fontSize'], ['margin']],
       defaultTheme: {
         color: '#e8e8e8',
       },
