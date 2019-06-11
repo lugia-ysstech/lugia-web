@@ -13,9 +13,9 @@ import { getElementPosition } from '../utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import { toNumber } from '../common/NumberUtils';
 
-import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
+import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
-import { findDOMNode } from 'react-dom';
+import { deepMerge } from '@lugia/object-utils';
 
 const showUp = keyframes`
   from {
@@ -31,16 +31,30 @@ const Container = CSSComponent({
   tag: 'div',
   className: 'characterContainer',
   normal: {
-    selectNames: [['fontSize']],
+    selectNames: [['margin']],
     defaultTheme: {
       fontSize: '18px',
     },
   },
   css: css`
     position: relative;
-    padding: 10px;
+    min-height: 20px;
     white-space: nowrap;
     display: inline-block;
+  `,
+});
+
+const RateBox = CSSComponent({
+  tag: 'div',
+  className: 'RateBox',
+  normal: {
+    selectNames: [['width'], ['height'], ['padding'], ['fontSize']],
+  },
+  css: css`
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
   `,
 });
 
@@ -51,7 +65,7 @@ const Ratespan = CSSComponent({
   tag: 'span',
   className: 'starBox',
   normal: {
-    selectNames: [['color'], ['font'], ['margin'], ['fontSize']],
+    selectNames: [['color'], ['font'], ['fontSize']],
     defaultTheme: {
       margin: {
         right: 6,
@@ -89,7 +103,7 @@ const RateIcon = ThemeHoc(
       vertical-align: text-bottom !important;
     `,
     normal: {
-      selectNames: [['color'], ['fontSize']],
+      selectNames: [['color'], ['fontSize'], ['margin']],
       defaultTheme: {
         color: '#e8e8e8',
       },
@@ -210,6 +224,15 @@ export function getDefaultClassNames(count: number): Array<string> {
   return [...Array(count)].map(() => 'default');
 }
 
+export function getFontSize(count: number, width: number, height: number): number {
+  if (!width || !count) {
+    return 18;
+  }
+  const verticalHeight = height / 2 || 18;
+  const fontRes = (width - 6 * count) / count - 10;
+  return fontRes > verticalHeight ? verticalHeight : fontRes;
+}
+
 export const createCalssArray = (num: number | string, condition?: Object): Array<string> => {
   const classNames = getDefaultClassNames(toNumber(num, 0));
 
@@ -291,17 +314,12 @@ export const getIconClass = (iconClass: Object = {}): Object => {
   };
 };
 
-const getOffset = (rateRangeNode: Object) => {
+const getOffsetInfo = (rateRangeNode: Object) => {
   if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
-  const rateRangeNodeRes = findDOMNode(rateRangeNode);
-
-  if (!rateRangeNodeRes) {
-    return { offsetLeft: 0, offsetWidth: 18 };
-  }
-  const { x } = getElementPosition(rateRangeNodeRes);
-  return { offsetLeft: x, offsetWidth: rateRangeNodeRes.offsetWidth };
+  const { x } = getElementPosition(rateRangeNode);
+  return { offsetLeft: x, offsetWidth: rateRangeNode.offsetWidth };
 };
 
 const isLeft = (offsetX: number, offsetWidth: number, x: number): boolean => {
@@ -392,20 +410,22 @@ class Rate extends React.Component<RateProps, any> {
     const { count } = this.state;
     return (
       <Container themeProps={themeProps} onMouseLeave={this.mouseLeave}>
-        {count.map((x, i) => (
-          <Ratespan
-            themeProps={themeProps}
-            ref={this.ratespan[i]}
-            onMouseMove={e => {
-              this.onMouseMoveOrClick(e, i);
-            }}
-            onClick={e => {
-              this.onMouseMoveOrClick(e, i, true);
-            }}
-          >
-            {this.getElement(x, i)}
-          </Ratespan>
-        ))}
+        <RateBox themeProps={themeProps}>
+          {count.map((x, i) => (
+            <Ratespan
+              themeProps={themeProps}
+              innerRef={this.ratespan[i]}
+              onMouseMove={e => {
+                this.onMouseMoveOrClick(e, i);
+              }}
+              onClick={e => {
+                this.onMouseMoveOrClick(e, i, true);
+              }}
+            >
+              {this.getElement(x, i)}
+            </Ratespan>
+          ))}
+        </RateBox>
       </Container>
     );
   }
@@ -471,7 +491,7 @@ class Rate extends React.Component<RateProps, any> {
   };
 
   getOffset(index: number) {
-    return getOffset(this.ratespan[index].current);
+    return getOffsetInfo(this.ratespan[index].current);
   }
 
   getElement = (x: string, index: number) => {
@@ -514,20 +534,11 @@ class Rate extends React.Component<RateProps, any> {
         </React.Fragment>
       );
     }
-    const {
-      viewClass: RateIconBottomViewClass,
-      theme: RateIconBottomTheme,
-    } = this.props.getChildThemeHocProps('defaultRateIcon');
 
     return (
       <React.Fragment>
         {this.getRateIcon(x, IconClass)}
-        <RateIconBottom
-          theme={RateIconBottomTheme}
-          viewClass={RateIconBottomViewClass}
-          type={'default'}
-          iconClass={`${IconClass.default}  default `}
-        />
+        {this.getRateIcon('bottom', IconClass)}
       </React.Fragment>
     );
   };
@@ -538,7 +549,7 @@ class Rate extends React.Component<RateProps, any> {
     const theClassName = `${defautClass[type]} ${className} ${disabled ? '' : 'hoverd'}`;
     let resultTheme;
     let resultViewClass;
-    console.log('type', type);
+
     switch (type) {
       case 'amazed':
         const {
@@ -556,11 +567,13 @@ class Rate extends React.Component<RateProps, any> {
         resultTheme = dangerIconTheme;
         resultViewClass = dangerIconViewClass;
         break;
+      case 'half':
       case 'primary':
         const { viewClass, theme } = this.props.getChildThemeHocProps('activeIcon');
         resultTheme = theme;
         resultViewClass = viewClass;
         break;
+      case 'bottom':
       default:
         const {
           viewClass: RateIconBottomViewClass,
@@ -570,15 +583,48 @@ class Rate extends React.Component<RateProps, any> {
         resultViewClass = RateIconBottomViewClass;
         break;
     }
+
+    resultTheme = this.mergeFontSize(resultViewClass, resultTheme);
+
+    if (type === 'bottom') {
+      return (
+        <RateIconBottom
+          theme={resultTheme}
+          viewClass={resultViewClass}
+          type={'default'}
+          iconClass={`${IconClass.default}  default `}
+        />
+      );
+    }
+
     return (
       <RateIcon
         theme={resultTheme}
-        type={type}
         viewClass={resultViewClass}
+        type={type}
         disabled={disabled}
         iconClass={`${IconClass[type]} ${theClassName} `}
       />
     );
+  };
+
+  mergeFontSize = (resultViewClass: string, resultTheme: Object) => {
+    const { count, themeProps } = this.props;
+    const config = themeProps.themeConfig.normal;
+    let result = resultTheme;
+    if (config) {
+      const { width, height, fontSize } = config;
+      const calcFontSize = fontSize ? fontSize : getFontSize(count, width, height);
+      const newTheme = {
+        [resultViewClass]: {
+          normal: {
+            fontSize: `${calcFontSize}px`,
+          },
+        },
+      };
+      result = deepMerge(newTheme, resultTheme);
+    }
+    return result;
   };
 
   handleClick = (e: Object, val: number, classNames: Array<string>, index: number) => {

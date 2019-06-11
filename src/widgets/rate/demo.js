@@ -45,16 +45,32 @@ class RateDemo extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Rate]: {
-        normal: {},
+        normal: {
+          margin: {
+            right: 10,
+            left: 10,
+            top: 20,
+            bottom: 20,
+          },
+          width: 400,
+          height: 30,
+          fontSize: 20,
+        },
         children: {
           activeIcon: {
             normal: {
               color: `${warningColor}`,
+              margin: {
+                right: 6,
+              },
             },
           },
-          RateIconBottom: {
+          defaultRateIcon: {
             normal: {
               color: '#e8e8e8',
+              margin: {
+                right: 6,
+              },
             },
           },
           activeTextIcon: {
@@ -77,6 +93,9 @@ class RateDemo extends React.Component<any, any> {
           fontSize: 30,
           margin: {
             right: 30,
+            left: 30,
+            top: 30,
+            bottom: 30,
           },
         },
         children: {
@@ -232,7 +251,6 @@ class RateDemo extends React.Component<any, any> {
         <div>
           <TitleBox>基础用法 default：</TitleBox>
           <Rate {...defaultProps7} />
-          <TextBox>{this.state.defaultProps7} 颗星</TextBox>
         </div>
         <Theme config={config}>
           <TitleBox>基础用法 default limit：</TitleBox>
