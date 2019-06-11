@@ -88,6 +88,8 @@
   "category": ["通用"],
   "designInfo": {
     "DefaultSuccessButton": {
+      "title": "成功按钮",
+      "desc": "方便用户点击操作的成功按钮",
       "props": {
         "shape": "default",
         "type": "success",
