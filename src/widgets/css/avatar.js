@@ -54,9 +54,9 @@ export const getBorderRadius = (props: AvatarCssProps) => {
   return `border-radius:${shape === 'circle' ? '50%' : '10%'};`;
 };
 export const getAvatarBackground = (props: AvatarCssProps) => {
-  const { theme } = props;
+  const { theme, src, icon } = props;
   const { backgroundColor } = theme;
-  return `background:${backgroundColor ? backgroundColor : borderColor}`;
+  return `background:${backgroundColor ? backgroundColor : src || icon ? '' : borderColor}`;
 };
 export const getAvatarColor = (props: AvatarCssProps) => {
   const { theme } = props;
