@@ -13,6 +13,7 @@ import {
   Dot,
   Icons,
   SliderInner,
+  SliderBigBox,
   SliderBox,
   SliderWrapper,
   Tiparrow,
@@ -27,6 +28,9 @@ import {
   rangeWidthNormal,
 } from './slider_public_size';
 import Widgets from '../consts';
+import { getThemeProps } from './styledConfig';
+import { findDOMNode } from 'react-dom';
+import { deepMerge } from '@lugia/object-utils';
 type TypeProps = {
   btnWidth?: number,
   btnHeight?: number,
@@ -162,6 +166,7 @@ class Slider extends Component<TypeProps, TypeState> {
   draging: boolean;
   mousedown = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
     e = e || window.event;
+    console.log('mousedown');
     const { pageX, pageY } = e;
     const { index } = this.getNewIndex(pageX, pageY);
     const { value, isInBall } = this.state;
@@ -184,6 +189,7 @@ class Slider extends Component<TypeProps, TypeState> {
     index: number,
     e: SyntheticMouseEvent<HTMLButtonElement>
   ) => {
+    console.log(34);
     const { marksKeys, value } = this.state;
     const { moveValue } = this.getMoveState(pageX, pageY);
     if (value && value.length === 1) {
@@ -191,6 +197,8 @@ class Slider extends Component<TypeProps, TypeState> {
     }
     const { markValue } = this.getMarkValue(marksKeys, moveValue);
     value[index] = marksKeys.length > 0 ? markValue : moveValue;
+    console.log('value', value);
+    console.log('moveValue', moveValue);
     this.setState(
       {
         value,
@@ -388,12 +396,15 @@ class Slider extends Component<TypeProps, TypeState> {
     };
   };
   getOffset(vertical: boolean) {
-    const sliderRangeNode = this.sliderRange.current; //slider react 元素
+    console.log(this.sliderRange);
+    const sliderRangeNode = findDOMNode(this.sliderRange.current); //slider react 元素
+    console.log(this.sliderRange.current, sliderRangeNode);
     if (!sliderRangeNode) {
       return { offsetLeft: 0, offsetTop: 0, dotWidths: [], dotHeights: [] };
     }
     const { dotWidths, dotHeights } = this.getDotSize(vertical, sliderRangeNode.children);
     const { x, y } = getElementPosition(sliderRangeNode);
+    console.log(x, y);
     return { offsetLeft: x, offsetTop: y, dotWidths, dotHeights };
   }
 
@@ -402,6 +413,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const { rangeW } = this.style;
     const proportion = val / (maxValue - minValue); //比例
     const btnMove = ((proportion * rangeW - circleWidth / 2) / rangeW) * 100; //比例转化成px计算按钮中心点的位置；
+    console.log(rangeW);
     return { btnMove };
   };
   getSliderVerticalPaddings(
@@ -498,8 +510,18 @@ class Slider extends Component<TypeProps, TypeState> {
   }
   render() {
     const { background, tips = false, icons, vertical = false, disabled, getTheme } = this.props;
-    const styleSlider = getTheme();
-    const styleSliderButton = styleSlider.svThemeConfigTree[Widget.SliderButton];
+    // const styleSlider = getTheme();
+    const {
+      //  sliderTrackThemeProps:{sliderTrackThemeProps},
+      sliderPassedWayThemeProps: { sliderPassedWayThemeProps },
+      buttonThemeProps: { sliderButtonThemeProps, width: btnWidth, height: btnHeight },
+      sliderTrackThemeProps: { sliderTrackThemeProps, width: sliderWidth, height: sliderHeight },
+    } = getThemeProps(this.props);
+    console.log(sliderTrackThemeProps, sliderWidth, sliderHeight);
+    //  console.log(buttonThemeProps,sliderThemeProps);
+    //const {sliderThemeProps:styleSlider}=getThemeProps(this.props);
+    // const {width:rangeW,height:rangeH}=sliderThemeProps;
+    // const styleSliderButton = styleSlider.svThemeConfigTree[Widget.SliderButton];
     const {
       value,
       index,
@@ -512,10 +534,10 @@ class Slider extends Component<TypeProps, TypeState> {
       dotWidths,
       dotHeights,
     } = this.state;
-    const {
-      btnWidth = (styleSliderButton && styleSliderButton.width) || btnWidthNormal,
-      btnHeight = (styleSliderButton && styleSliderButton.height) || btnWidthNormal,
-    } = this.props;
+    // const {
+    //   btnWidth = (styleSliderButton && styleSliderButton.width) || btnWidthNormal,
+    //   btnHeight = (styleSliderButton && styleSliderButton.height) || btnWidthNormal,
+    // } = this.props;
     const iconPropsSize = {
       minValue,
       maxValue,
@@ -530,9 +552,13 @@ class Slider extends Component<TypeProps, TypeState> {
       dotWidths,
       dotHeights
     );
-    const sliderWidth = styleSlider.width || rangeWidthNormal;
-    const themeSliderW = sliderWidth - levelPaddings[0] - levelPaddings[1];
-    const { rangeW = themeSliderW, rangeH = styleSlider.height || rangeHeightNormal } = this.props;
+
+    //  const sliderWidth = styleSlider.width || rangeWidthNormal;
+    // const rangeW = sliderWidth - levelPaddings[0] - levelPaddings[1];
+    console.log(sliderWidth, levelPaddings[0], levelPaddings[1]);
+    console.log(sliderWidth - levelPaddings[0] - levelPaddings[1]);
+    const rangeW = sliderWidth;
+    const rangeH = sliderHeight;
 
     this.style = {
       background,
@@ -596,9 +622,13 @@ class Slider extends Component<TypeProps, TypeState> {
       btnDisabled: true,
       middleVal: 0,
     };
+    const sliderTipsName = 'SliderTips';
+    const sliderTipsThemeProps = this.props.mergeThemeStateAndChildThemeProps(sliderTipsName);
     const children = value.map((val, i) => {
       const realyVal = val - minValue;
+      console.log(realyVal, val, minValue, size.btnWidth, btnWidth);
       size.moveX = this.getMoveValue(realyVal, size.btnWidth).btnMove;
+      console.log(size.moveX);
       if (vertical) {
         size.moveY = this.getMoveValue(realyVal, btnWidth).btnMove;
       }
@@ -608,7 +638,7 @@ class Slider extends Component<TypeProps, TypeState> {
       const { themeProps } = this.props;
       return (
         <Button
-          themeProps={themeProps}
+          themeProps={sliderButtonThemeProps}
           onMouseDown={mousedown}
           onMouseUp={mouseup}
           onMouseEnter={mouseenter(i)}
@@ -618,9 +648,9 @@ class Slider extends Component<TypeProps, TypeState> {
           getTheme={getTheme}
         >
           {showTip && btnDisabled ? (
-            <Tips themeProps={themeProps}>
-              <Tipinner themeProps={themeProps}>{tipsText}</Tipinner>
-              <Tiparrow themeProps={themeProps} />
+            <Tips themeProps={sliderTipsThemeProps}>
+              <Tipinner themeProps={sliderTipsThemeProps}>{tipsText}</Tipinner>
+              <Tiparrow themeProps={sliderTipsThemeProps} />
             </Tips>
           ) : (
             ''
@@ -637,29 +667,36 @@ class Slider extends Component<TypeProps, TypeState> {
       dotHeights
     );
     const { themeProps } = this.props;
+    //console.log(sliderThemeProps);
     return (
-      <SliderBox
-        {...size}
-        themeProps={themeProps}
-        iconSize={iconSize}
-        levelPaddings={levelPaddings}
-        getTheme={getTheme}
-        sliderVerticalPaddings={sliderVerticalPaddings}
-      >
-        <SliderWrapper
-          themeProps={themeProps}
-          ref={this.sliderRange}
-          onMouseDown={mousedown}
-          onMouseUp={mouseup}
+      <SliderBigBox themeProps={deepMerge(themeProps, { propsConfig: { vertical } })}>
+        <SliderBox
           {...size}
-          getTheme={getTheme}
+          themeProps={themeProps}
+          iconSize={iconSize}
+          levelPaddings={levelPaddings}
+          //  getTheme={getTheme}
+          sliderVerticalPaddings={sliderVerticalPaddings}
         >
-          {iconsChildren}
-          {dots}
-          <SliderInner themeProps={themeProps} {...size} getTheme={getTheme} />
-          {children}
-        </SliderWrapper>
-      </SliderBox>
+          <SliderWrapper
+            // themeProps={sliderThemeProps}
+            themeProps={sliderTrackThemeProps}
+            innerRef={this.sliderRange}
+            onMouseDown={mousedown}
+            onMouseUp={mouseup}
+            {...size}
+            getTheme={getTheme}
+          >
+            {iconsChildren}
+            {dots}
+            <SliderInner
+              themeProps={deepMerge(sliderPassedWayThemeProps, { propsConfig: size })}
+              getTheme={getTheme}
+            />
+            {children}
+          </SliderWrapper>
+        </SliderBox>
+      </SliderBigBox>
     );
   }
 }
