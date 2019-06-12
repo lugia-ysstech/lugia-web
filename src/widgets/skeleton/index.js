@@ -3,7 +3,7 @@
  *
  * @flow
  */
-import ThemeProvider from '../theme-provider';
+import ThemeHoc from '@lugia/theme-hoc';
 import Skeleton from './skeleton';
 import Widget from '../consts';
-export default ThemeProvider(Skeleton, Widget.Skeleton);
+export default ThemeHoc(Skeleton, Widget.Skeleton);

@@ -5,6 +5,7 @@
  */
 import * as React from 'react';
 import { AnimationItem, CommonPicture } from '../css/skeleton';
+import { getNewThemeProps } from './utils';
 
 type PictrueProps = {
   pictureWidth: number,
@@ -13,12 +14,19 @@ type PictrueProps = {
 
 export default class Picture extends React.Component<any, PictrueProps> {
   render() {
-    const { pictureWidth = 180, pictureHeight = 128, animation } = this.props;
+    const { themeProps, animation } = this.props;
+
+    const { themeConfig } = themeProps;
+    const { width = 180, height = 128 } = themeConfig.normal;
+
+    const AnimationThemeProps = getNewThemeProps(themeProps, {
+      width,
+      height,
+    });
+
     return (
-      <CommonPicture pictureWidth={pictureWidth} pictureHeight={pictureHeight}>
-        {animation ? (
-          <AnimationItem width={pictureHeight} height={pictureHeight} distance={1000} />
-        ) : null}
+      <CommonPicture themeProps={themeProps}>
+        {animation ? <AnimationItem themeProps={AnimationThemeProps} /> : null}
       </CommonPicture>
     );
   }

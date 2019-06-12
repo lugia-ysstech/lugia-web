@@ -5,7 +5,7 @@
  */
 
 import * as React from 'react';
-
+import ThemeHoc from '@lugia/theme-hoc';
 import { ALink, CommonSpan, SeparatorSpan } from '../css/breadcrumb';
 
 export type BreadcrumbItemProps = {
@@ -14,23 +14,32 @@ export type BreadcrumbItemProps = {
   isLastItem?: boolean,
   children: React.Node,
   lastSeparator?: string | React.Element<any>,
+  textThemeHoc: Object,
+  separatorThemeProps: Object,
 };
 
-export default class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
+class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
   static defaultProps = {
     separator: '/',
   };
 
   render() {
-    const { separator, children, isLastItem, href } = this.props;
+    const { separator, children, isLastItem, href, textThemeHoc, separatorThemeProps } = this.props;
+
     let Link = CommonSpan;
     if ('href' in this.props) {
       Link = ALink;
     }
-    const config = { isLastItem, href };
+
+    const { theme, viewClass } = textThemeHoc;
+
     return [
-      <Link {...config}>{children}</Link>,
-      <SeparatorSpan {...config}>{separator}</SeparatorSpan>,
+      <Link href={href} theme={theme} viewClass={viewClass}>
+        {children}
+      </Link>,
+      <SeparatorSpan themeProps={separatorThemeProps}>{separator}</SeparatorSpan>,
     ];
   }
 }
+
+export default BreadcrumbItem;

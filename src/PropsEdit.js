@@ -36,6 +36,8 @@ export default class extends Component<any, any> {
   }
 
   render() {
+    const { info: { props = {} } = { props: {} }, propsData } = this.props;
+
     const columns = [
       {
         title: '属性名称',
@@ -62,6 +64,7 @@ export default class extends Component<any, any> {
         render: (text, record) => {
           const { type, name } = record;
           return this.createElement(type, {
+            value: propsData[name],
             onChange: e => {
               const { onChange } = this.props;
               const value = this.getChangeValue(type, e);
@@ -71,8 +74,6 @@ export default class extends Component<any, any> {
         },
       },
     ];
-
-    const { info: { props = {} } = { props: {} } } = this.props;
 
     const data = Object.keys(props).map((key: string) => {
       const { type, desc } = props[key];
