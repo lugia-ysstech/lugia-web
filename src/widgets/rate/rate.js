@@ -341,7 +341,6 @@ export const getIconClass = (iconClass: Object = {}): Object => {
 };
 
 const getOffsetInfo = (rateRangeNode: Object) => {
-  console.log('getOffsetInfo', rateRangeNode);
   if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
@@ -522,14 +521,13 @@ class Rate extends React.Component<RateProps, any> {
   };
 
   getOffset(index: number) {
-    // return getOffsetInfo(this.ratespan[index].current.querySelector('i'));
-    return getOffsetInfo(this.ratespan[index].current);
+    return getOffsetInfo(this.ratespan[index].current.querySelector('.iconCharacter'));
   }
 
   getElement = (x: string, index: number) => {
     const { className, iconClass, disabled, character } = this.props;
     const IconClass = getIconClass(iconClass);
-    const theClassName = `${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`;
+    const theClassName = `${defautClass[x]} ${className} iconCharacter ${disabled ? '' : 'hoverd'}`;
     const { starNum } = this.state;
     if (ObjectUtils.isString(character)) {
       const activeTextIconThemeProps = this.props.getPartOfThemeProps('activeTextIcon');
@@ -700,7 +698,7 @@ class Rate extends React.Component<RateProps, any> {
           viewClass={resultViewClass}
           type={'default'}
           disabled={disabled}
-          iconClass={`${IconClass.default}  default `}
+          iconClass={`${IconClass.default}  default iconCharacter `}
         />
       );
     }
@@ -712,7 +710,7 @@ class Rate extends React.Component<RateProps, any> {
         viewClass={resultViewClass}
         type={type}
         disabled={disabled}
-        iconClass={`${IconClass[type]} ${theClassName} `}
+        iconClass={`${IconClass[type]} ${theClassName} iconCharacter `}
       />
     );
   };
