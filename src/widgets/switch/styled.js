@@ -8,8 +8,44 @@ import { px2remcss } from '../css/units';
 const em = px2remcss;
 
 const { themeColor } = colorsFunc();
+export const SwitchContainer = CSSProvider({
+  tag: 'span',
+  className: 'SwitchContainer',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['opacity'],
+    ],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['opacity'],
+    ],
+  },
+  css: css`
+    display: inline-block;
+  `,
+});
 export const SwitchWrapper = CSSProvider({
   tag: 'span',
+  className: 'SwitchWrapper',
   normal: {
     selectNames: [
       ['width'],
@@ -24,11 +60,16 @@ export const SwitchWrapper = CSSProvider({
       ['font'],
     ],
     getCSS(themeMeta) {
-      //console.log(themeMeta);
       return {
         ...themeMeta,
       };
     },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
   },
   disabled: {
     selectNames: [['background'], ['border']],
@@ -88,6 +129,7 @@ export const SwitchText = CSSProvider({
 
 export const SwitchCircle = CSSProvider({
   tag: 'span',
+  className: 'SwitchButton',
   normal: {
     selectNames: [
       ['width'],
@@ -111,7 +153,10 @@ export const SwitchCircle = CSSProvider({
         `;
     },
   },
-  actived: {
+  hover: {
+    selectNames: [],
+  },
+  active: {
     selectNames: [
       ['width'],
       ['height'],
