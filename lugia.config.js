@@ -5,4 +5,5 @@ export default {
     return webpackConfig;
   },
   dllDependenciesExcludes: ['rc-util'],
+  dllDependenciesIncludes:['jsoneditor', 'react', 'react-dom']
 };
