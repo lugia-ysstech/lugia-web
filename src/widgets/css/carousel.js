@@ -8,6 +8,7 @@ import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 import Icon from '../icon';
 import colorsFunc from '../css/stateColor';
+import CSSProvider from '../theme/CSSProvider';
 
 const { lightGreyColor, mediumGreyColor, defaultColor } = colorsFunc();
 const em = px2emcss(FontSizeNumber);
@@ -34,26 +35,57 @@ type CarouselProps = {
   activeHeight?: number,
 };
 
-export const CommonButton = styled.span`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: ${em(30)};
-  height: ${em(30)};
-  z-index: 200;
-  border-radius: 50%;
-  transition: all 0.2s linear;
-`;
+// export const CommonButton = styled.span`
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   width: ${em(30)};
+//   height: ${em(30)};
+//   z-index: 200;
+//   border-radius: 50%;
+//   transition: all 0.2s linear;
+// `;
 
-export const PreButton = styled(CommonButton)`
-  left: -${em(30)};
-`;
+export const CommonButton = CSSProvider({
+  tag: 'span',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    width: ${em(30)};
+    height: ${em(30)};
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: red;
+    z-index: 200;
+    border-radius: 50%;
+    transition: all 0.2s linear;
+  `,
+});
+
+// export const PreButton = styled(CommonButton)`
+//   left: -${em(30)};
+// `;
+export const PreButton = CSSProvider({
+  extend: CommonButton,
+  css: css`
+    left: -${em(30)};
+  `,
+});
 
 PreButton.displayName = 'preButton';
 
-export const NextButton = styled(CommonButton)`
-  right: -${em(30)};
-`;
+// export const NextButton = styled(CommonButton)`
+//   right: -${em(30)};
+// `;
+
+export const NextButton = CSSProvider({
+  extend: CommonButton,
+  css: css`
+    right: -${em(30)};
+  `,
+});
 
 NextButton.displayName = 'nextButton';
 
@@ -85,27 +117,68 @@ const getWrapPadding = (props: CarouselProps) => {
   const { indicatorType } = props;
   return `padding-bottom: ${indicatorType === 'outside' ? em(15) : 0}`;
 };
-export const Wrap = styled.div`
-  box-sizing: content-box;
-  position: relative;
-  ${getWrapWidthAndHeight};
-  ${getWrapPadding};
-`;
+// export const Wrap = styled.div`
+//   box-sizing: content-box;
+//   position: relative;
+//   ${getWrapWidthAndHeight};
+//   ${getWrapPadding};
+// `;
 
-export const CarouselContainer = styled.div`
-  ${getShadowWidth};
-  ${getShadowHeight};
-  overflow: hidden;
-  position: relative;
+export const Wrap = CSSProvider({
+  tag: 'div',
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+  css: css`
+    position: relative;
+    box-sizing: content-box;
+    width: ${em(defaultWidth)};
+    height: ${em(defaultHeight)};
+  `,
+});
 
-  &:hover > span:nth-child(1) {
-    transform: translate(${em(50)}, -50%);
-  }
+// export const CarouselContainer = styled.div`
+//   ${getShadowWidth};
+//   ${getShadowHeight};
+//   overflow: hidden;
+//   position: relative;
 
-  &:hover > span:nth-child(2) {
-    transform: translate(-${em(50)}, -50%);
-  }
-`;
+//   &:hover > span:nth-child(1) {
+//     transform: translate(${em(50)}, -50%);
+//   }
+
+//   &:hover > span:nth-child(2) {
+//     transform: translate(-${em(50)}, -50%);
+//   }
+// `;
+
+export const CarouselContainer = CSSProvider({
+  tag: 'div',
+  className: 'carouselContainer',
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+  hover: {
+    getCSS: () => {
+      return `
+      &:hover > span:nth-child(1) {
+        transform: translate(${em(50)}, -50%);
+      }
+    
+      &:hover > span:nth-child(2) {
+        transform: translate(-${em(50)}, -50%);
+      }
+      `;
+    },
+  },
+  css: css`
+    overflow: hidden;
+    position: relative;
+    background: #999;
+    width: ${em(defaultWidth)};
+    height: ${defaultHeight};
+  `,
+});
 
 const getIndicatorContainerCSS = (props: CarouselProps) => {
   const { indicatorType } = props;
@@ -230,40 +303,74 @@ const getAnimation = (props: CarouselProps) => {
   return animation;
 };
 
-const getInitLeft = (props: CarouselProps) => {
-  const { initStart = 0, width = 0, switchType } = props;
-
+const getInitLeft = (isHorizontal: boolean, initStart: number, width: number) => {
   const left = initStart * width;
-  return `left: -${switchType === 'vertical' || switchType === 'fade' ? 0 : em(left)}`;
+  console.log('left', initStart, width, left);
+  return `left: -${isHorizontal ? em(left) : 0}`;
 };
 
-const getInitTop = (props: CarouselProps) => {
-  const { initStart = 0, height = 0, switchType } = props;
+const getInitTop = (isVertical: boolean, initStart: number, height: number) => {
+  // const { initStart = 0, height = 0, switchType } = props;
+
   const top = initStart * height;
-  return `top: -${switchType === 'vertical' ? em(top) : 0}`;
+  console.log('top', top);
+  return `top: -${isVertical ? em(top) : 0}`;
 };
 
 const getActiveWidth = (props: CarouselProps) => {
-  const { activeWidth = 0, switchType, width = 0 } = props;
-  return `width: ${switchType === 'vertical' ? em(width) : em(activeWidth)}`;
+  const { activeWidth = 0, switchType, width = 0, len } = props;
+  // return `width: ${activeWidth}`;
+
+  return `width: ${switchType === 'vertical' ? em(width) : em(width * (len + 1))}`;
 };
 
 const getActiveHeight = (props: CarouselProps) => {
-  const { activeHeight = 0, switchType, height = 0 } = props;
+  const { activeHeight = 0, switchType, height = 0, len } = props;
+  // return `height: ${activeHeight}`;
 
-  return `height: ${switchType === 'vertical' ? em(activeHeight) : em(height)}`;
+  return `height: ${switchType === 'vertical' ? em(height * (len + 1)) : em(height)}`;
 };
 
-export const AllItemsContainer = styled.div`
-  position: absolute;
-  animation: ${getAnimation} ${getAnimationTime} linear;
-  ${getInitLeft};
-  ${getInitTop};
-  ${getActiveWidth};
-  ${getActiveHeight};
-  z-index: 1;
-  animation-fill-mode: forwards;
-`;
+// export const AllItemsContainer = styled.div`
+//   position: absolute;
+//   animation: ${getAnimation} ${getAnimationTime} linear;
+//   ${getInitLeft};
+//   ${getInitTop};
+//   ${getActiveWidth};
+//   ${getActiveHeight};
+//   z-index: 1;
+//   animation-fill-mode: forwards;
+// `;
+
+export const AllItemsContainer = CSSProvider({
+  tag: 'div',
+  normal: {
+    selectNames: [],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { switchType, len, initStart } = propsConfig;
+      console.log('initStart', initStart);
+      const { width, height } = themeMeta;
+      const isHorizontal = switchType === 'horizontal';
+      const isVertical = switchType === 'vertical';
+      const activeWidth = isHorizontal ? width * (len + 1) : width;
+      const activeHeight = isVertical ? height * (len + 1) : height;
+      const left = getInitLeft(isHorizontal, initStart, width);
+      const top = getInitTop(isVertical, initStart, height);
+
+      return `
+        width: ${em(activeWidth)};
+        height: ${em(activeHeight)};
+      `;
+    },
+  },
+  css: css`
+    position: absolute;
+    animation: ${getAnimation} ${getAnimationTime} linear;
+    z-index: 1;
+    animation-fill-mode: forwards;
+  `,
+});
 
 const getImgWidth = (props: CarouselProps) => {
   const { width = 0 } = props;

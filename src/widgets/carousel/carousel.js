@@ -91,12 +91,12 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   }
 
   render() {
-    const { width, height } = this.getShadowWidthAndHeight();
-    const { indicatorType } = this.props;
-
+    // const { width, height } = this.getShadowWidthAndHeight();
+    const { indicatorType, themeProps } = this.props;
+    // console.log('themeProps', themeProps);
     return (
-      <Wrap width={width} height={height} indicatorType={indicatorType}>
-        <CarouselContainer height={height} width={width}>
+      <Wrap themeProps={themeProps} indicatorType={indicatorType}>
+        <CarouselContainer themeProps={themeProps}>
           {this.getSwitchButton()}
           {this.getItems()}
           {this.getIndicatros(indicatorType, false)}
@@ -113,18 +113,18 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   }
 
   getSwitchButton = () => {
-    const { indicatorType, children } = this.props;
+    const { indicatorType, children, themeProps } = this.props;
     if (!children || children.length === 0 || indicatorType === 'vertical') {
       return null;
     }
     const preItem = (
-      <PreButton onClick={this.preClick}>
+      <PreButton onClick={this.preClick} themeProps={themeProps}>
         <SwitchIcon iconClass={'lugia-icon-direction_left_circle'} />
       </PreButton>
     );
 
     const NextItem = (
-      <NextButton onClick={this.nextClick}>
+      <NextButton onClick={this.nextClick} themeProps={themeProps}>
         <SwitchIcon iconClass={'lugia-icon-direction_right_circle'} />
       </NextButton>
     );
@@ -254,25 +254,36 @@ export default class Carousel extends React.Component<any, CarouselProps> {
       return <Empty>暂无切换框</Empty>;
     }
     const { start: nextStart } = this.state;
-    const { start: initStart } = this.props;
+    const { start: initStart, themeProps } = this.props;
     const len = children.length;
-    const isVertical = switchType === 'vertical';
-    const isFade = switchType === 'fade';
+    // const isVertical = switchType === 'vertical';
+    // const isFade = switchType === 'fade';
     const { width, height } = this.getShadowWidthAndHeight();
-    const activeWidth = isVertical || isFade ? width : (len + 1) * width;
-    const activeHeight = isVertical ? (len + 1) * height : height;
+    // console.log('width themeProps', themeProps);
+    // const activeWidth = isVertical || isFade ? width : (len + 1) * width;
+    // const activeHeight = isVertical ? (len + 1) * height : height;
+    themeProps.propsConfig = {
+      initStart,
+      nextStart,
+      switchType,
+      len,
+    };
+    // themeProps.propsConfig.isFade = isFade;
+
     const animationTime = this.getAnimationTime(this.props) / 1000;
     return (
       <AllItemsContainer
         animationTime={animationTime}
+        themeProps={themeProps}
         width={width}
         height={height}
-        activeWidth={activeWidth}
-        activeHeight={activeHeight}
+        // activeWidth={activeWidth}
+        // activeHeight={activeHeight}
         switchType={switchType}
         nextStart={nextStart}
         initStart={initStart}
         preStart={this.preStart}
+        len={len}
       >
         {this.getChildren(children)}
       </AllItemsContainer>
@@ -281,7 +292,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   getChildren = (children: Array<Object>): Array<Object> => {
     const { props, state } = this;
-    const { switchType } = props;
+    const { switchType, themeProps } = props;
     const { start = 0 } = state;
     const { width, height } = this.getShadowWidthAndHeight();
     const animationTime = this.getAnimationTime(props) / 1000;
@@ -338,9 +349,10 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   }
 
   getShadowWidthAndHeight = () => {
-    const { getTheme } = this.props;
-    const theme = getTheme();
-    const { width = defaultWidth, height = defaultHeight } = theme;
+    const { themeProps } = this.props;
+    const { themeConfig } = themeProps;
+
+    const { width = defaultWidth, height = defaultHeight } = themeConfig.normal;
     return { width, height };
   };
 

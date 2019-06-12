@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Breadcrumb from '../';
+import InnerBreadcrumb from '../breadcrumb';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-styled-components';
@@ -101,9 +102,10 @@ describe('Breadcrumb', () => {
       renderer.create(<Breadcrumb separator={'>'} lastSeparator={'>'} routes={routes} />).toJSON()
     ).toMatchSnapshot();
   });
+
   it('Breadcrumb.prototype.getBreadCrumbItemConfig only href', () => {
     expect(
-      Breadcrumb.prototype.getBreadCrumbItemConfig([
+      InnerBreadcrumb.prototype.getBreadCrumbItemConfig([
         {
           href: 'index',
           title: '首页',
@@ -146,7 +148,7 @@ describe('Breadcrumb', () => {
   });
   it('Breadcrumb.prototype.getBreadCrumbItemConfig only path', () => {
     expect(
-      Breadcrumb.prototype.getBreadCrumbItemConfig([
+      InnerBreadcrumb.prototype.getBreadCrumbItemConfig([
         {
           path: 'index',
           title: '首页',
@@ -189,7 +191,7 @@ describe('Breadcrumb', () => {
   });
   it('Breadcrumb.prototype.getBreadCrumbItemConfig path & href', () => {
     expect(
-      Breadcrumb.prototype.getBreadCrumbItemConfig([
+      InnerBreadcrumb.prototype.getBreadCrumbItemConfig([
         {
           path: 'index',
           title: '首页',
@@ -234,7 +236,7 @@ describe('Breadcrumb', () => {
 
   it('Breadcrumb.prototype.getBreadCrumbItemConfig only href', () => {
     expect(
-      Breadcrumb.prototype.getBreadCrumbItemConfig(
+      InnerBreadcrumb.prototype.getBreadCrumbItemConfig(
         [
           {
             href: 'index/:name',
@@ -281,7 +283,7 @@ describe('Breadcrumb', () => {
 
   it('Breadcrumb.prototype.getBreadCrumbItemConfig no path & no href', () => {
     expect(
-      Breadcrumb.prototype.getBreadCrumbItemConfig([
+      InnerBreadcrumb.prototype.getBreadCrumbItemConfig([
         {
           path: 'index',
           title: '首页',
