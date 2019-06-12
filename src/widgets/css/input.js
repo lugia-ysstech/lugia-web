@@ -27,7 +27,7 @@ export const getInputBorderColor = (props: Object) => {
 };
 const Success = 'success';
 
-function isSuccess(validateStatus) {
+export function isSuccess(validateStatus: ValidateStatus) {
   return validateStatus === Success;
 }
 
@@ -71,6 +71,7 @@ type CommonInputProps = {
   disabled: boolean,
   validateType: InputValidateType,
   validateStatus: ValidateStatus,
+  themeProps: Object,
 };
 export const getWidth = (props: CommonInputProps) => {
   const { theme } = props;
@@ -79,8 +80,14 @@ export const getWidth = (props: CommonInputProps) => {
   return `width:${theWidth};`;
 };
 export const getPadding = (props: CommonInputProps) => {
-  const { prefix } = props;
-  return `${prefix ? em(30) : em(10)};`;
+  const { theme, prefix } = props;
+  const { width } = theme;
+  return `${prefix ? em(30) : width && width < 200 ? em(width / 20) : em(10)};`;
+};
+export const getRightPadding = (props: CommonInputProps) => {
+  const { theme } = props;
+  const { width } = theme;
+  return `${width && width < 200 ? em(15 + width / 10) : em(35)};`;
 };
 export const getSize = (props: CommonInputProps) => {
   const { size } = props;

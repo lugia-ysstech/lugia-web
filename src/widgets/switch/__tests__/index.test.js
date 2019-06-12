@@ -19,16 +19,17 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Switch', () => {
   function getSwitchComponent(target) {
     const switchComponent = target
-      .children()
-      .at(0)
-      .children()
+      .find('SwitchComponent')
+      // .children()
+      // .at(0)
+      // .children()
       .at(0)
       .instance();
     return switchComponent;
   }
 
   function keyDown(target, keyCode) {
-    const event = target.simulate('keyDown', { keyCode });
+    const event = target.handleKeyDown({ keyCode });
     return event;
   }
 
@@ -171,38 +172,30 @@ describe('Switch', () => {
     expect(switchComponent.props.loading).toBe(false);
     expect(switchComponent.props.disabled).toBe(true);
   });
-  it('isMouseDown', async () => {
-    const target = mount(<Switch data={[{ text: '年' }, { text: '月' }]} />);
-    const switchComponent = getSwitchComponent(target);
-    expect(switchComponent.state.isMouseDown).toBe(false);
-    target.simulate('mousedown');
-    expect(switchComponent.state.isMouseDown).toBe(true);
-    target.simulate('mouseup');
-    expect(switchComponent.state.isMouseDown).toBe(false);
-  });
+
   it('keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW" ', async () => {
     const target = mount(<Switch autoFocus data={[{ text: '年' }, { text: '月' }]} />);
     const switchComponent = getSwitchComponent(target);
 
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
 
-    keyDown(target, SPACE);
+    keyDown(switchComponent, SPACE);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    keyDown(target, SPACE);
+    keyDown(switchComponent, SPACE);
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
 
-    keyDown(target, RIGHT_ARROW);
+    keyDown(switchComponent, RIGHT_ARROW);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    keyDown(target, LEFT_ARROW);
+    keyDown(switchComponent, LEFT_ARROW);
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
   });
@@ -210,25 +203,25 @@ describe('Switch', () => {
     const target = mount(<Switch autoFocus value data={[{ text: '年' }, { text: '月' }]} />);
     const switchComponent = getSwitchComponent(target);
 
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    keyDown(target, ENTER);
-    expect(switchComponent.state.value).toBe(true);
-    expect(switchComponent.state.text).toBe('年');
-
-    keyDown(target, SPACE);
-    expect(switchComponent.state.value).toBe(true);
-    expect(switchComponent.state.text).toBe('年');
-    keyDown(target, SPACE);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    keyDown(target, RIGHT_ARROW);
+    keyDown(switchComponent, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(switchComponent, SPACE);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    keyDown(target, LEFT_ARROW);
+    keyDown(switchComponent, RIGHT_ARROW);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+
+    keyDown(switchComponent, LEFT_ARROW);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
   });
@@ -236,37 +229,37 @@ describe('Switch', () => {
     const target = mount(<Switch autoFocus value data={[{ text: '年' }, { text: '月' }]} />);
     const switchComponent = getSwitchComponent(target);
 
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    target.simulate('mouseup');
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    target.simulate('mouseup');
-    expect(switchComponent.state.value).toBe(true);
-    expect(switchComponent.state.text).toBe('年');
-
-    keyDown(target, SPACE);
-    expect(switchComponent.state.value).toBe(true);
-    expect(switchComponent.state.text).toBe('年');
-    target.simulate('mouseup');
-    expect(switchComponent.state.value).toBe(true);
-    expect(switchComponent.state.text).toBe('年');
-    keyDown(target, SPACE);
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    keyDown(target, RIGHT_ARROW);
+    keyDown(switchComponent, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    switchComponent.mouseup();
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(switchComponent, SPACE);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    target.simulate('mouseup');
+    keyDown(switchComponent, RIGHT_ARROW);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    keyDown(target, LEFT_ARROW);
+
+    switchComponent.mouseup();
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(switchComponent, LEFT_ARROW);
 
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
@@ -274,82 +267,82 @@ describe('Switch', () => {
   it('mouseUp,setProps{value:true} keyboard onKeyDown: "ENTER","SPACE","RIGHT_ARROW","LEFT_ARROW" ', async () => {
     const target = mount(<Switch autoFocus data={[{ text: '年' }, { text: '月' }]} />);
     const switchComponent = getSwitchComponent(target);
-    target.simulate('mouseup');
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    target.simulate('mouseup');
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
 
-    keyDown(target, SPACE);
+    keyDown(switchComponent, SPACE);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    target.simulate('mouseup');
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
 
-    keyDown(target, SPACE);
+    keyDown(switchComponent, SPACE);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    target.simulate('mouseup');
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
 
-    keyDown(target, RIGHT_ARROW);
+    keyDown(switchComponent, RIGHT_ARROW);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    target.simulate('mouseup');
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
 
-    keyDown(target, LEFT_ARROW);
+    keyDown(switchComponent, LEFT_ARROW);
     expect(switchComponent.state.value).toBe(false);
     expect(switchComponent.state.text).toBe('月');
 
     target.setProps({ value: true });
 
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    target.simulate('mouseup');
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    keyDown(target, ENTER);
+    keyDown(switchComponent, ENTER);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    target.simulate('mouseup');
-    expect(switchComponent.state.value).toBe(true);
-    expect(switchComponent.state.text).toBe('年');
-
-    keyDown(target, SPACE);
-    expect(switchComponent.state.value).toBe(true);
-    expect(switchComponent.state.text).toBe('年');
-    target.simulate('mouseup');
-    expect(switchComponent.state.value).toBe(true);
-    expect(switchComponent.state.text).toBe('年');
-    keyDown(target, SPACE);
+    switchComponent.mouseup();
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    keyDown(target, RIGHT_ARROW);
+    keyDown(switchComponent, SPACE);
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    switchComponent.mouseup();
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(switchComponent, SPACE);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
 
-    target.simulate('mouseup');
+    keyDown(switchComponent, RIGHT_ARROW);
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
-    keyDown(target, LEFT_ARROW);
+
+    switchComponent.mouseup();
+    expect(switchComponent.state.value).toBe(true);
+    expect(switchComponent.state.text).toBe('年');
+    keyDown(switchComponent, LEFT_ARROW);
 
     expect(switchComponent.state.value).toBe(true);
     expect(switchComponent.state.text).toBe('年');
@@ -375,11 +368,11 @@ describe('Switch', () => {
 
       if (keyCodes) {
         keyCodes.forEach((keyCode: any, index: number) => {
-          component.simulate('keydown', { keyCode });
+          switchComponent.handleKeyDown({ keyCode });
           expect(switchComponent.state.value).toBe(stateValue[index]);
         });
       } else {
-        component.simulate('mouseup');
+        switchComponent.mouseup();
         expect(switchComponent.state.value).toBe(stateValue[0]);
       }
 

@@ -11,6 +11,7 @@ import Switch from './index';
 import Icon from '../icon/index';
 import Widgets from '../consts/index';
 import Theme from '../theme/index';
+import { getBorderRadius, getBorder } from '../theme/CSSProvider';
 
 type TypeState = {
   load?: boolean,
@@ -22,6 +23,7 @@ export default class Sw extends Component<any, TypeState> {
     this.state = {
       load: false,
       value: true,
+      disabled: true,
     };
   }
   handleClick() {
@@ -39,22 +41,85 @@ export default class Sw extends Component<any, TypeState> {
         <section style={{ marginBottom: '20px' }}>
           <h3>normal</h3>
           <Theme
-          // config={{[Widgets.Switch]:{
-          // normal:{
-          //   width:200,
-          //   height:20,
-          // },
-          // hover:{
-          //   width:300,
-          //   height:20
-          // },
-          // clicked:{
-          //   width:400,
-          //   height:20
-          // }
-          // }}}
+            config={{
+              [Widgets.Switch]: {
+                open: {
+                  normal: {
+                    width: 150,
+                    height: 40,
+                    fontSize: 20,
+                    color: '#000',
+                    background: {
+                      backgroundColor: 'red',
+                    },
+                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+                  },
+                  disabled: {
+                    background: {
+                      backgroundColor: 'blue',
+                    },
+                  },
+                },
+                closed: {
+                  normal: {
+                    width: 150,
+                    height: 40,
+                    fontSize: 20,
+                    color: '#000',
+                    background: {
+                      backgroundColor: 'green',
+                    },
+                  },
+                  disabled: {
+                    background: {
+                      backgroundColor: 'pink',
+                    },
+                  },
+                },
+                children: {
+                  SwitchButton: {
+                    normal: {
+                      width: 30,
+                      height: 30,
+                      background: {
+                        backgroundColor: 'blue',
+                      },
+                      border: {
+                        borderRadius: getBorderRadius(40),
+                      },
+                      color: 'red',
+                    },
+                    actived: {
+                      width: 40,
+                      height: 30,
+                      background: {
+                        backgroundColor: 'yellow',
+                      },
+                      border: {
+                        borderRadius: getBorderRadius(30),
+                      },
+                    },
+                    disabled: {
+                      background: {
+                        backgroundColor: 'yellow',
+                      },
+                    },
+                  },
+                },
+              },
+            }}
           >
-            <Switch />
+            <Switch
+              onChange={this.change}
+              // disabled
+              // autoFocus
+              loading
+              data={[
+                { text: <Icon className={'lugia-icon-reminder_check'} /> },
+                { text: '国' },
+                { text: '日' },
+              ]}
+            />
           </Theme>
         </section>
         <section style={{ marginBottom: '20px' }}>

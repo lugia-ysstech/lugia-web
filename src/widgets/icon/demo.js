@@ -317,13 +317,18 @@ export default () => {
   };
   const view = {
     [Widget.Icon]: {
-      margin: {
-        left: 10,
-        right: 10,
-        top: 10,
-        bottom: 10,
+      normal: {
+        margin: {
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10,
+        },
+        fontSize: 20,
       },
-      fontSize: 20,
+      hover: {
+        color: '#4d63ff',
+      },
     },
   };
   return <Theme config={view}>{getIcon(iconData)}</Theme>;

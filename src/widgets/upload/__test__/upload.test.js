@@ -22,31 +22,73 @@ import 'jest-styled-components';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Upload Test', () => {
-  const target = mount(<Upload themeProps={{}} url={'xxxx.test'} />);
+  const themeHocProps = () => true;
+  const mergePropsConfig = () => true;
+  const themeProps = { themeConfig: {}, themeState: {} };
+  const target = mount(
+    <Upload
+      getChildThemeHocProps={themeHocProps}
+      mergeThemePropsAndPropsConfig={mergePropsConfig}
+      themeProps={themeProps}
+      url={'xxxx.test'}
+    />
+  );
   it('css', () => {
-    const target = <Upload themeProps={{}} url={'xxxx.test'} />;
-    expect(renderer.create(target).toJSON()).toMatchSnapshot();
+    const target = (
+      <Upload
+        getChildThemeHocProps={themeHocProps}
+        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        themeProps={themeProps}
+        url={'xxxx.test'}
+      />
+    );
+    expect(renderer.create(target)).toMatchSnapshot();
   });
 
   it('props autoUpload true', () => {
-    const target = mount(<Upload themeProps={{}} autoUpload={true} url={'xxxx.test'} />);
+    const target = mount(
+      <Upload
+        getChildThemeHocProps={themeHocProps}
+        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        themeProps={themeProps}
+        autoUpload={true}
+        url={'xxxx.test'}
+      />
+    );
     expect(target.state().isAllowUpload).toEqual(true);
   });
 
   it('props autoUpload false', () => {
-    const target = mount(<Upload themeProps={{}} autoUpload={false} url={'xxxx.test'} />);
+    const target = mount(
+      <Upload
+        getChildThemeHocProps={themeHocProps}
+        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        themeProps={themeProps}
+        autoUpload={false}
+        url={'xxxx.test'}
+      />
+    );
     expect(target.state().isAllowUpload).toEqual(false);
   });
 
   it('props url', () => {
-    const target = mount(<Upload themeProps={{}} url={'xxxx.test'} />);
+    const target = mount(
+      <Upload
+        getChildThemeHocProps={themeHocProps}
+        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        themeProps={themeProps}
+        url={'xxxx.test'}
+      />
+    );
     expect(target.props().url).toEqual('xxxx.test');
   });
 
   it('props fileList', () => {
     const target = mount(
       <Upload
-        themeProps={{}}
+        getChildThemeHocProps={themeHocProps}
+        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        themeProps={themeProps}
         url={'xxxx.test'}
         fileList={[
           { id: 1, name: '文件11111.jpg', status: 'done' },
@@ -61,7 +103,14 @@ describe('Upload Test', () => {
   });
 
   it('props fileList null', () => {
-    const target = mount(<Upload themeProps={{}} url={'xxxx.test'} />);
+    const target = mount(
+      <Upload
+        getChildThemeHocProps={themeHocProps}
+        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        themeProps={themeProps}
+        url={'xxxx.test'}
+      />
+    );
     expect(target.state().fileListDone).toEqual([]);
   });
 
@@ -155,7 +204,7 @@ describe('Upload Test', () => {
 
   function checkGetIconByType(status: ?string, expectation: ?string, props?: Object = {}) {
     it('Function GetIconByType ', () => {
-      const res = getIconByType({}, status, props);
+      const res = getIconByType({}, themeProps, status, props);
       const { type } = props;
       if (!status || !res) {
         expect(res).toBe(expectation);
@@ -347,7 +396,14 @@ describe('Upload Test', () => {
     expectation: boolean
   ) {
     it('Function setAutoUploadState ', () => {
-      const target = mount(<Upload themeProps={{}} url={'xxxx.test'} />);
+      const target = mount(
+        <Upload
+          getChildThemeHocProps={themeHocProps}
+          mergeThemePropsAndPropsConfig={mergePropsConfig}
+          themeProps={themeProps}
+          url={'xxxx.test'}
+        />
+      );
       choosedFileList && target.instance().setStateValue({ choosedFile: choosedFileList });
       target.instance().setAutoUploadState(props);
       expect(target.state().isAllowUpload).toEqual(expectation);

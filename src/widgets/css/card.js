@@ -28,6 +28,7 @@ export type CardProps = {
   getThemeByDisplayName: Function,
   type: CardType,
   imageOrientation: ImageOrientation,
+  themeProps: Object,
 };
 export type CardState = {};
 
@@ -66,27 +67,39 @@ export const getCardContainerSizeNumber = (props: Object) => {
     default:
       break;
   }
-  return { width: theWidth, height: theHeight };
+  return { width: em(theWidth), height: em(theHeight) };
 };
 
 export const getCardContainerSize = (props: Object) => {
-  const { width, height } = getCardContainerSizeNumber(props);
-  return {
-    style: {
-      width: em(width),
-      height: em(height),
-    },
-  };
-};
+  const { imageOrientation, type, width, height } = props;
 
-export const getCardContentrSize = (props: Object) => {
-  const { width, height } = getCardContainerSizeNumber(props);
-  return {
-    style: {
-      width: em(width - getContentPaddingLeft(props)),
-      height: em(height - paddingBottom - paddingTop),
-    },
-  };
+  let theWidth = 0;
+  let theHeight = 0;
+  if ((width && typeof width === 'number') || (height && typeof height === 'number')) {
+    theWidth = width;
+    theHeight = height;
+  }
+  switch (type) {
+    case 'simple':
+      theWidth = 350;
+      theHeight = 130;
+      break;
+    case 'avatar':
+      theWidth = imageOrientation === 'horizontal' ? 320 : 150;
+      theHeight = imageOrientation === 'horizontal' ? 116 : 190;
+      break;
+    case 'image':
+      theWidth = imageOrientation === 'horizontal' ? 320 : 200;
+      theHeight = imageOrientation === 'horizontal' ? 112 : 230;
+      break;
+    case 'combo':
+      theWidth = 200;
+      theHeight = 220;
+      break;
+    default:
+      break;
+  }
+  return `width: ${em(theWidth)}; height: ${em(theHeight)}`;
 };
 
 export const getCardContainerShadow = () => {
@@ -129,12 +142,6 @@ export const getFontWeight = (props: Object) => {
   const weight = type === 'tip' ? 700 : 500;
   return `font-weight:${weight}`;
 };
-export const getDescripitionColor = () => {
-  return `color:${darkGreyColor};`;
-};
-export const getCardContainerBorder = () => {
-  return `border:${em(1)} solid ${lightGreyColor};`;
-};
 export const getCardContainerBackground = (props: Object) => {
   const { theme } = props;
   const { backgroundColor } = theme;
@@ -147,7 +154,6 @@ export const getTipLineBackground = () => {
 export const getContentTextAlign = (props: Object) => {
   const { type, imageOrientation } = props;
   if (type === 'avatar' && imageOrientation === 'vertical') return 'text-align:center;';
-
   return `
   padding-bottom: ${em(paddingBottom)};
   padding-top: ${em(paddingTop)};`;
