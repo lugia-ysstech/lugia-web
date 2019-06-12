@@ -23,6 +23,8 @@ export default class extends Component<any, any> {
     };
   }
 
+  target: Object;
+
   render() {
     const { modulePath, modules } = this.props;
     const module = modules[modulePath];
@@ -32,13 +34,21 @@ export default class extends Component<any, any> {
     const theme = {
       [viewClass]: this.state.themeState[modulePath],
     };
+    const propsData = this.state.props[modulePath] || {};
     return [
       <Affix offsetTop={20}>
-        <Result viewClass={viewClass} theme={theme} {...this.state.props[modulePath]} />
+        <Result
+          viewClass={viewClass}
+          theme={theme}
+          {...propsData}
+          ref={cmp => {
+            this.target = cmp;
+          }}
+        />
       </Affix>,
       <Title>属性测试</Title>,
       <Block>
-        <PropsEdit info={Info} onChange={this.onChangeProps} />
+        <PropsEdit info={Info} onChange={this.onChangeProps} propsData={propsData} />
       </Block>,
       <Title>主题测试</Title>,
       <Block>
@@ -55,6 +65,25 @@ export default class extends Component<any, any> {
       this.setState({ props: { ...this.state.props, [modulePath]: { ...oldProps } } });
     }
   };
+
+  loadProps = (): Object => {
+    if (this.target) {
+      const themeTarget = this.target.getThemeTarget();
+      if (themeTarget) {
+        return themeTarget.props;
+      }
+    }
+    return {};
+  };
+
+  componentDidMount(): void {
+    const propsData = this.loadProps();
+    const { modulePath } = this.props;
+    this.state.props[modulePath] = { ...propsData };
+    this.setState({
+      props: this.state.props,
+    });
+  }
 
   onThemeChange = value => {
     const { modulePath } = this.props;
