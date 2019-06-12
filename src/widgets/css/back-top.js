@@ -18,7 +18,8 @@ const em = px2remcss;
 export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
-  getChildThemeHocProps: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
   target?: Function,
   themeProps: Object,
   icon?: string,
