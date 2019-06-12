@@ -5,7 +5,8 @@
  * @flow
  */
 import React from 'react';
-import Skeleton from '../skeleton';
+import Skeleton from '../';
+import InnerSkeleton from '../skeleton';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -89,9 +90,9 @@ describe('Skeleton', () => {
   });
 
   it('isLastItem', () => {
-    expect(Skeleton.prototype.isLastItem(5, 2)).toBeFalsy();
-    expect(Skeleton.prototype.isLastItem(3, 2)).toBeTruthy();
-    expect(Skeleton.prototype.isLastItem(0, 0)).toBeFalsy();
+    expect(InnerSkeleton.prototype.isLastItem(5, 2)).toBeFalsy();
+    expect(InnerSkeleton.prototype.isLastItem(3, 2)).toBeTruthy();
+    expect(InnerSkeleton.prototype.isLastItem(0, 0)).toBeFalsy();
   });
 
   function findParagraph(cmp: Object) {

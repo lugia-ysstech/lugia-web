@@ -30,8 +30,16 @@ const Box = styled.div`
   font-weight: 900;
 `;
 
-// config={{ [Widget.Menu]: { width: 200 } }}
-const config = { [Widget.Skeleton]: { width: 200 } };
+const config = {
+  [Widget.Skeleton]: {
+    normal: { width: 1000, height: 600, margin: { left: 50 }, padding: { top: 50 } },
+    children: {
+      Title: { normal: { width: 100 } },
+      Avatar: { normal: { width: 200 } },
+      Picture: { normal: { width: 300, height: 500 } },
+    },
+  },
+};
 
 export default class SkeletonDemo extends React.Component<any, any> {
   constructor(props: any) {
@@ -46,10 +54,8 @@ export default class SkeletonDemo extends React.Component<any, any> {
         </div>
         <Theme config={config}>
           <Skeleton
-            paragraphWidth={[111]}
-            // paragraphWidth={'100'}
-            // titleWidth={100}
-            avatar={true}
+            paragraphWidth={[300]}
+            // avatar={false}
             picture={true}
             // title={false}
             // pictureWidth={400}

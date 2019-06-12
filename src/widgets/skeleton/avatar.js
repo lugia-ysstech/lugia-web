@@ -5,6 +5,7 @@
  */
 import * as React from 'react';
 import { AnimationItem, CommonAvatar } from '../css/skeleton';
+import { getNewThemeProps } from './utils';
 
 type AvatarProps = {
   animation?: boolean,
@@ -16,10 +17,19 @@ export default class Avatar extends React.Component<any, AvatarProps> {
   };
 
   render() {
-    const { animation } = this.props;
+    const { animation, themeProps } = this.props;
+    const { themeConfig } = themeProps;
+    const { normal = {} } = themeConfig;
+    const { width = 40 } = normal;
+
+    const AnimationThemeProps = getNewThemeProps(themeProps, {
+      width,
+      height: width,
+    });
+
     return (
-      <CommonAvatar>
-        {animation ? <AnimationItem distance={300} width={16} height={16} /> : null}
+      <CommonAvatar themeProps={themeProps}>
+        {animation ? <AnimationItem themeProps={AnimationThemeProps} /> : null}
       </CommonAvatar>
     );
   }
