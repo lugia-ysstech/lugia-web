@@ -43,40 +43,73 @@ export default class Sw extends Component<any, TypeState> {
           <Theme
             config={{
               [Widgets.Switch]: {
-                open: {
-                  normal: {
-                    width: 150,
-                    height: 40,
-                    fontSize: 20,
-                    color: '#000',
-                    background: {
-                      backgroundColor: 'red',
-                    },
-                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
-                  },
-                  disabled: {
-                    background: {
-                      backgroundColor: 'blue',
-                    },
-                  },
-                },
-                closed: {
-                  normal: {
-                    width: 150,
-                    height: 40,
-                    fontSize: 20,
-                    color: '#000',
-                    background: {
-                      backgroundColor: 'green',
-                    },
-                  },
-                  disabled: {
-                    background: {
-                      backgroundColor: 'pink',
-                    },
-                  },
-                },
+                // open: {
+                //   normal: {
+                //     width: 150,
+                //     height: 40,
+                //     fontSize: 20,
+                //     color: '#000',
+                //     background: {
+                //       backgroundColor: 'red',
+                //     },
+                //     border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+                //   },
+                //   disabled: {
+                //     background: {
+                //       backgroundColor: 'blue',
+                //     },
+                //   },
+                // },
+                // closed: {
+                //   normal: {
+                //     width: 150,
+                //     height: 40,
+                //     fontSize: 20,
+                //     color: '#000',
+                //     background: {
+                //       backgroundColor: 'green',
+                //     },
+                //   },
+                //   disabled: {
+                //     background: {
+                //       backgroundColor: 'pink',
+                //     },
+                //   },
+                // },
                 children: {
+                  SwitchOpen: {
+                    normal: {
+                      width: 150,
+                      height: 40,
+                      fontSize: 20,
+                      color: '#000',
+                      background: {
+                        backgroundColor: 'red',
+                      },
+                      border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+                    },
+                    disabled: {
+                      background: {
+                        backgroundColor: 'blue',
+                      },
+                    },
+                  },
+                  SwitchClosed: {
+                    normal: {
+                      width: 150,
+                      height: 40,
+                      fontSize: 20,
+                      color: '#000',
+                      background: {
+                        backgroundColor: 'green',
+                      },
+                    },
+                    disabled: {
+                      background: {
+                        backgroundColor: 'pink',
+                      },
+                    },
+                  },
                   SwitchButton: {
                     normal: {
                       width: 30,

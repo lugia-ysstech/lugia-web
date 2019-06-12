@@ -70,7 +70,14 @@ export function getThemeProps(props, value) {
     loading,
     disabled,
   } = props;
-  const { open = {}, closed = {} } = getTheme();
+  const switchOpenName = 'SwitchOpen';
+  const switchclosedName = 'SwitchClosed';
+  const open = mergeThemeStateAndChildThemeProps(switchOpenName);
+  const closed = mergeThemeStateAndChildThemeProps(switchclosedName);
+  const { normal: themeNormal = {}, disabled: themeDisabled = {} } = getTheme();
+  console.log(themeNormal, themeDisabled);
+  // open.themeConfig={norma:themeNormal,disabled:themeDisabled};
+  // closed.themeConfig={norma:themeNormal,disabled:themeDisabled};
   const openBackgroundColor = getBackground(props, true);
   const closedBackgroundColor = getBackground(props, false);
 
@@ -156,8 +163,8 @@ export function getThemeProps(props, value) {
     ),
   };
 
-  const openThemeProps = deepMerge(defaultOpenThemeProps, open);
-  const closedThemeProps = deepMerge(openThemeProps, defaultClosedThemeProps, closed);
+  const openThemeProps = deepMerge(defaultOpenThemeProps, open.themeConfig);
+  const closedThemeProps = deepMerge(openThemeProps, defaultClosedThemeProps, closed.themeConfig);
   const switchThemeProps = value ? openThemeProps : closedThemeProps;
   switchTheme.themeConfig = switchThemeProps;
   const switchButtonThemeProps = deepMerge(defaultChildrenThemeProps, childrenConfig);
