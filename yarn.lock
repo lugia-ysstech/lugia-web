@@ -1453,39 +1453,39 @@
     react "^16.4.0"
     react-dom "^16.4.0"
 
-"@lugia/theme-config@^1.0.8":
-  version "1.0.8"
-  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.8.tgz#f1abc6a637b2475a05b2f2957165ec5d654010de"
-  integrity sha1-8avGpjeyR1oFsvKVcWXsXWVAEN4=
+"@lugia/theme-config@^1.0.9":
+  version "1.0.9"
+  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.9.tgz#a9ad5b211979b3eb1c3d28e5ec2cb84ac38f7b54"
+  integrity sha1-qa1bIRl5s+scPSjl7Cy4SsOPe1Q=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/theme-core" "^1.0.8"
+    "@lugia/theme-core" "^1.0.9"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@^1.0.8":
-  version "1.0.8"
-  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.8.tgz#49628dbcde85203f51cd29dc4fad2c4639fce2a9"
-  integrity sha1-SWKNvN6FID9RzSncT60sRjn84qk=
+"@lugia/theme-core@^1.0.9":
+  version "1.0.9"
+  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.9.tgz#a3cd1145ff27a8b75f342a844d86529d440e5983"
+  integrity sha1-o80RRf8nqLdfNCqETYZSnUQOWYM=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.7"
 
-"@lugia/theme-css-hoc@^1.0.15":
-  version "1.0.15"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.15.tgz#be766ffa04db6adc1cd60a8238675ddad94aaf68"
-  integrity sha1-vnZv+gTbatwc1gqCOGdd2tlKr2g=
+"@lugia/theme-css-hoc@^1.0.16":
+  version "1.0.16"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.16.tgz#6ce8d22998415ab40625cd8063edac2b8860f1b6"
+  integrity sha1-bOjSKZhBWrQGJc2AY+2sK4hg8bY=
   dependencies:
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"
 
-"@lugia/theme-hoc@^1.0.8":
-  version "1.0.8"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.8.tgz#9f3ea754b3b8e632dd3099676d4d12a4f2f29110"
-  integrity sha1-nz6nVLO45jLdMJlnbU0SpPLykRA=
+"@lugia/theme-hoc@^1.0.9":
+  version "1.0.9"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.9.tgz#8610916daa53fde1e9dfd6acc87c9075e1a37854"
+  integrity sha1-hhCRbapT/eHp39asyHyQdeGjeFQ=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.7"
-    "@lugia/theme-core" "^1.0.8"
+    "@lugia/theme-core" "^1.0.9"
 
 "@lugia/type-utils@^1.0.1", "@lugia/type-utils@^1.0.4":
   version "1.0.4"
