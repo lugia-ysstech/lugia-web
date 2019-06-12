@@ -5,19 +5,21 @@
  */
 
 import colorsFunc from '../css/stateColor';
-import styled from 'styled-components';
-import { px2emcss } from '../css/units';
+import styled, { css } from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
+import { getBorder } from '@lugia/theme-css-hoc/lib/index';
 
 const FontSize = 1.4;
-const em = px2emcss(FontSize);
+const em = px2remcss;
 const {
   themeColor,
   padding,
   borderColor,
   borderDisableColor,
   disableColor,
-  marginToDifferentElement,
+  marginToSameElement,
   marginToPeerElementForY,
   blackColor,
   lightGreyColor,
@@ -38,6 +40,8 @@ export type RadioProps = {
   item?: Object,
   value?: string,
   children?: any,
+  themeProps: Object,
+  mergeThemeStateAndChildThemeProps: Function,
 } & ForGroupType;
 type ForGroupType = {
   onChangeForGroup?: Function,
@@ -54,7 +58,7 @@ const getStyleCSS = (props: RadioType): string => {
   }
   return `
     display: inline-block;
-    margin-right: ${em(marginToDifferentElement)};
+    margin-right: ${em(marginToSameElement)};
   `;
 };
 
@@ -135,51 +139,154 @@ const getThemeMargin = (props: RadioType): string => {
   return '';
 };
 
-export const RadioWrap = styled.label`
-  font-size: ${FontSize}rem;
-  line-height: 1.5;
-  color: ${props => (props.disabled ? lightGreyColor : blackColor)};
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
-  width: ${props => (props.themes.width ? em(props.themes.width) : 'none')};
-  ${props => (props.disabled || props.cancel ? 'cursor: not-allowed' : 'cursor: pointer')};
-  ${getStyleCSS};
-  ${getThemeMargin};
+// export const RadioWrap = styled.label`
+//   font-size: ${FontSize}rem;
+//   line-height: 1.5;
+//   color: ${props => (props.disabled ? lightGreyColor : blackColor)};
+//   padding: 0;
+//   box-sizing: border-box;
+//   list-style: none;
+//   display: inline-block;
+//   position: relative;
+//   white-space: nowrap;
+//   width: ${props => (props.themes.width ? em(props.themes.width) : 'none')};
+//   ${props => (props.disabled || props.cancel ? 'cursor: not-allowed' : 'cursor: pointer')};
+//   ${getStyleCSS};
+//   ${getThemeMargin};
+//
+//   &:hover > span > span {
+//     ${hoverStyle};
+//   }
+// `;
 
-  &:hover > span > span {
-    ${hoverStyle};
-  }
-`;
-export const RadioContent = styled.span`
-  margin: 0;
-  outline: none;
-  line-height: 1;
-  vertical-align: text-bottom;
-  display: inline-block;
-`;
-export const RadioChildrenSpan = styled.span`
-  padding-left: ${em(padding)};
-`;
-export const RadioInnerSpan = styled.span`
-  position: relative;
-  top: 0;
-  left: 0;
-  display: block;
-  width: ${em(16)};
-  height: ${em(16)};
-  border-radius: 50%;
-  ${getIsClickBorder};
-  background-color: #fff;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+export const RadioWrap = CSSComponent({
+  tag: 'label',
+  className: 'radio-wrap',
+  css: css`
+    line-height: 1.5;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    ${props => (props.disabled || props.cancel ? 'cursor: not-allowed' : 'cursor: pointer')};
+    ${getStyleCSS};
+  `,
+  normal: {
+    selectNames: [['color'], ['font'], ['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+  },
+  hover: {
+    selectNames: [['opacity']],
+  },
+});
 
-  &::after {
-    ${getClickedCSS};
-  }
+export const RadioContent = CSSComponent({
+  tag: 'span',
+  className: 'radio-content',
+  css: css`
+    margin: 0;
+    outline: none;
+    line-height: 1;
+    vertical-align: text-bottom;
+    display: inline-block;
+  `,
+  normal: { selectNames: [] },
+  hover: { selectNames: [] },
+});
 
-  ${getDisabledCSS};
-`;
+export const RadioChildrenSpan = CSSComponent({
+  tag: 'span',
+  className: 'radio-children-span',
+  css: css`
+    padding-left: ${em(padding)};
+  `,
+  hover: {
+    selectNames: [],
+  },
+});
+
+export const RadioCircleSpan = CSSComponent({
+  tag: 'span',
+  className: 'radio-children-span',
+  css: css`
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: ${em(16)};
+    height: ${em(16)};
+    border-radius: 50%;
+    border: 1px solid ${borderColor};
+    background-color: #fff;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  `,
+  normal: {
+    selectNames: [['background'], ['border'], ['width'], ['height']],
+    getCSS(themeMeta: Object) {
+      const { checked, isDisabled, isCancel } = themeMeta;
+      if (checked) {
+        const { background, width = 10, height = 10 } = checked;
+        return css`
+          &::after {
+            position: absolute;
+            width: ${em(width)};
+            height: ${em(height)};
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 100%;
+            display: table;
+            border-top: 0;
+            border-left: 0;
+            content: ' ';
+            background-color: ${background
+              ? background.backgroundColor
+              : isCancel
+              ? colorsFunc(themeColor).disabledColor
+              : isDisabled
+              ? lightGreyColor
+              : themeColor};
+          }
+        `;
+      }
+    },
+  },
+  hover: {
+    selectNames: [['background'], ['border']],
+  },
+  disabled: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: {
+      background: { backgroundColor: disableColor },
+      border: getBorder(
+        { color: borderDisableColor, width: 1, style: 'solid' },
+        { radius: '100%' }
+      ),
+    },
+  },
+  actived: {
+    selectNames: [],
+  },
+});
+
+// export const RadioCircleSpan = styled.span`
+//   position: relative;
+//   top: 0;
+//   left: 0;
+//   display: block;
+//   width: ${em(16)};
+//   height: ${em(16)};
+//   border-radius: 50%;
+//   ${getIsClickBorder};
+//   background-color: #fff;
+//   -webkit-transition: all 0.3s;
+//   transition: all 0.3s;
+//
+//   &::after {
+//     ${getClickedCSS};
+//   }
+//
+//   ${getDisabledCSS};
+// `;
