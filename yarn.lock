@@ -1470,10 +1470,10 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.7"
 
-"@lugia/theme-css-hoc@^1.0.11":
-  version "1.0.11"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.11.tgz#e58c7cc76725933259d3633fb62eb843114fe9c3"
-  integrity sha1-5Yx8x2clkzJZ02M/ti64QxFP6cM=
+"@lugia/theme-css-hoc@^1.0.15":
+  version "1.0.15"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.15.tgz#be766ffa04db6adc1cd60a8238675ddad94aaf68"
+  integrity sha1-vnZv+gTbatwc1gqCOGdd2tlKr2g=
   dependencies:
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"

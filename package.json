@@ -7,7 +7,7 @@
     "@lugia/math": "^1.0.6",
     "@lugia/object-utils": "^1.0.7",
     "@lugia/theme-config": "^1.0.8",
-    "@lugia/theme-css-hoc": "^1.0.11",
+    "@lugia/theme-css-hoc": "^1.0.15",
     "@lugia/theme-hoc": "^1.0.8",
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",
