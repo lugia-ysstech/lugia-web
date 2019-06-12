@@ -58,7 +58,12 @@ class JSONEditorReact extends Component {
   }
 
   render() {
-    return <div className="jsoneditor-react-container" ref={elem => (this.container = elem)} />;
+    const { width = '100%', height = 200 } = this.props;
+    const style = {
+      width,
+      height,
+    };
+    return <div style={style} ref={elem => (this.container = elem)} />;
   }
 }
 

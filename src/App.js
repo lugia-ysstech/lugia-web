@@ -275,7 +275,10 @@ data.reduce((modules, item) => {
   const itemValue = item.value;
   const processVal = processMap[itemValue.replace(/\//g, '')];
   const value = processVal ? processVal : itemValue;
-  modules[itemValue] = require(`./widgets${value}/index`).default;
+  modules[itemValue] = {
+    Target: require(`./widgets${value}/index`).default,
+    Info: require(`./widgets${value}/lugia.${value.replace(/\//g, '')}.zh-CN.json`),
+  };
   return modules;
 }, modules);
 
@@ -302,6 +305,7 @@ class Header extends Component<any, any> {
       <Menu data={this.state.data} onChange={this.onChangeItem} />,
     ];
   }
+
   onChangeItem = ({ selectedKeys }) => {
     const url = selectedKeys[0];
     if (url) {
