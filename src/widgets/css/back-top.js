@@ -4,22 +4,24 @@
  * @flow
  */
 import styled, { css, keyframes } from 'styled-components';
+import { getBorder } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
-import { getThemeColor } from '../common/ThemeUtils';
-import { px2emcss } from './units';
+import ThemeProvider from '../theme-provider';
+import { px2remcss } from './units';
 import Icon from '../icon';
-import CSSProvider from '../theme/CSSProvider';
+import CSSComponent from '@lugia/theme-css-hoc';
 
 const { defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
-const em = px2emcss(FontSize);
+const em = px2remcss;
 
 export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
-  getTheme: Function,
+  getChildThemeHocProps: Function,
   target?: Function,
   themeProps: Object,
+  icon?: string,
 };
 export type BackTopState = {
   fixed: boolean,
@@ -58,36 +60,14 @@ const getLeftOrRight = (props: CSSProps) => {
   }
   return `right: ${em(posRight)};bottom: ${em(posBottom)}`;
 };
-// export const BackTop = styled.div`
-//   font-size: ${FontSize}rem;
-//   ${getFixedCSS} ${getLeftOrRight};
-//   cursor: pointer;
-// `;
 
-const getBackgroundCSS = (props: CSSProps) => {
-  console.log('props', props);
-  const { backgroundColor = defaultColor } = props.theme;
-
-  return `background-color: ${backgroundColor}`;
-};
-// export const BackTopContent = styled.div`
-//   width: ${em(40)};
-//   height: ${em(40)};
-//   line-height: ${em(40)};
-//   border-radius: ${em(40)};
-//   border: 1px solid #e8e8e8;
-//   color: ${props => getThemeColor(props.theme)};
-//   text-align: center;
-//   overflow: hidden;
-//   box-shadow: 0 0 ${em(4)} #e8e8e8;
-//   ${getBackgroundCSS};
-// `;
 export const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
 `;
 
-const CommonBackTopStyle = CSSProvider({
+const CommonBackTopStyle = CSSComponent({
   tag: 'div',
+  className: 'a',
   css: css`
     border: 1px solid #e8e8e8;
     text-align: center;
@@ -96,8 +76,9 @@ const CommonBackTopStyle = CSSProvider({
   `,
 });
 
-export const BackTop = CSSProvider({
+export const BackTop = CSSComponent({
   tag: 'div',
+  className: 'back-top',
   css: css`
     font-size: ${FontSize}rem;
     ${getFixedCSS};
@@ -109,8 +90,9 @@ export const BackTop = CSSProvider({
   },
 });
 
-export const BackTopContent = CSSProvider({
+export const BackTopContent = CSSComponent({
   extend: CommonBackTopStyle,
+  className: 'back-top-content',
   css: css`
     position: relative;
   `,
@@ -129,26 +111,43 @@ export const BackTopContent = CSSProvider({
       color: themeColor,
       width: 40,
       height: 40,
-      borderRadius: 40,
       opacity: 1,
-      border: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#e8e8e8',
-      },
+      border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }, { radius: 40 }),
     },
   },
 });
 
-export const IconBox = CSSProvider({
+export const IconBox = CSSComponent({
   tag: 'span',
+  className: 'icon-box',
+  normal: {
+    selectNames: [['color']],
+  },
   css: css`
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   `,
-  normal: {
-    selectNames: [],
-  },
 });
+
+export const Icons = ThemeProvider(
+  CSSComponent({
+    className: 'icon',
+    extend: Icon,
+    normal: {
+      selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
+    },
+    defaultTheme: {
+      margin: 0,
+      padding: 0,
+    },
+    css: css`
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    `,
+  }),
+  'Icons'
+);

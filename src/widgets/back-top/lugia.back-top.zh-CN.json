@@ -26,5 +26,13 @@
       }
     }
   },
-  "category": ["其他"]
+  "category": ["其他"],
+  "theme": {
+    "normal": [["color"], ["background"], ["width"], ["height"], ["opacity"], ["border"]],
+    "children": {
+      "Icon": {
+        "normal": [["color"], ["fontSize"], ["padding"], ["margin"]]
+      }
+    }
+  }
 }

@@ -1,59 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rate Test css 1`] = `
-.c3 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
-  padding: 10px;
+  min-height: 20px;
   white-space: nowrap;
   display: inline-block;
   font-size: 18px;
 }
 
 .c1 {
-  margin-right: 6px;
   position: relative;
-  margin: 0em 0.5em 0em 0em;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.c1 > i.hoverd:hover {
+.c2 {
+  margin-right: 6px;
+  position: relative;
+  margin: 0rem 0.6rem 0rem 0rem;
+}
+
+.c2 > i.hoverd:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
 
-.c1 > i.bottom {
+.c2 > i.bottom {
   position: absolute;
   left: 0;
   bottom: 0;
   z-index: -1;
 }
 
-.c1 > i {
+.c2 > i {
   vertical-align: text-bottom !important;
 }
 
-.c1:last-child {
+.c2:last-child {
   margin: 0 !important;
 }
 
-.c2 {
+.c3 {
   vertical-align: text-bottom !important;
   color: #e8e8e8;
 }
 
-.c4 {
+.c5 {
   vertical-align: text-bottom !important;
   color: #e8e8e8;
-  font-size: 1.5em;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -64,201 +69,172 @@ exports[`Rate Test css 1`] = `
 <div
   className="c0"
   onMouseLeave={[Function]}
-  style={
-    Object {
-      "fontSize": "",
-    }
-  }
+  style={Object {}}
 >
-  <span
+  <div
     className="c1"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    style={
-      Object {
-        "fontSize": "",
-      }
-    }
+    style={Object {}}
   >
     <span
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
+      className="c2"
+      onClick={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
     >
+      <span
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            style={Object {}}
+          />
+        </span>
+      </span>
       <span>
-        <i
-          className="lugia-icon-financial_star  default  c2 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star  default  c5  c4"
+            style={Object {}}
+          />
+        </span>
       </span>
     </span>
-    <span>
-      <span>
-        <i
-          className="lugia-icon-financial_star  default  c4 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
-      </span>
-    </span>
-  </span>
-  <span
-    className="c1"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    style={
-      Object {
-        "fontSize": "",
-      }
-    }
-  >
     <span
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
+      className="c2"
+      onClick={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
     >
+      <span
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            style={Object {}}
+          />
+        </span>
+      </span>
       <span>
-        <i
-          className="lugia-icon-financial_star  default  c2 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star  default  c5  c4"
+            style={Object {}}
+          />
+        </span>
       </span>
     </span>
-    <span>
-      <span>
-        <i
-          className="lugia-icon-financial_star  default  c4 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
-      </span>
-    </span>
-  </span>
-  <span
-    className="c1"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    style={
-      Object {
-        "fontSize": "",
-      }
-    }
-  >
     <span
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
+      className="c2"
+      onClick={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
     >
+      <span
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            style={Object {}}
+          />
+        </span>
+      </span>
       <span>
-        <i
-          className="lugia-icon-financial_star  default  c2 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star  default  c5  c4"
+            style={Object {}}
+          />
+        </span>
       </span>
     </span>
-    <span>
-      <span>
-        <i
-          className="lugia-icon-financial_star  default  c4 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
-      </span>
-    </span>
-  </span>
-  <span
-    className="c1"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    style={
-      Object {
-        "fontSize": "",
-      }
-    }
-  >
     <span
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
+      className="c2"
+      onClick={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
     >
+      <span
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            style={Object {}}
+          />
+        </span>
+      </span>
       <span>
-        <i
-          className="lugia-icon-financial_star  default  c2 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star  default  c5  c4"
+            style={Object {}}
+          />
+        </span>
       </span>
     </span>
-    <span>
-      <span>
-        <i
-          className="lugia-icon-financial_star  default  c4 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
-      </span>
-    </span>
-  </span>
-  <span
-    className="c1"
-    onClick={[Function]}
-    onMouseMove={[Function]}
-    style={
-      Object {
-        "fontSize": "",
-      }
-    }
-  >
     <span
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
+      className="c2"
+      onClick={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
     >
+      <span
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            style={Object {}}
+          />
+        </span>
+      </span>
       <span>
-        <i
-          className="lugia-icon-financial_star  default  c2 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <i
+            className="lugia-icon-financial_star  default  c5  c4"
+            style={Object {}}
+          />
+        </span>
       </span>
     </span>
-    <span>
-      <span>
-        <i
-          className="lugia-icon-financial_star  default  c4 c3"
-          style={
-            Object {
-              "fontSize": "",
-            }
-          }
-        />
-      </span>
-    </span>
-  </span>
+  </div>
 </div>
 `;
