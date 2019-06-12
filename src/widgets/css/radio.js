@@ -41,7 +41,7 @@ export type RadioProps = {
   value?: string,
   children?: any,
   themeProps: Object,
-  mergeThemeStateAndChildThemeProps: Function,
+  getPartOfThemeConfig: Function,
 } & ForGroupType;
 type ForGroupType = {
   onChangeForGroup?: Function,
@@ -266,7 +266,7 @@ export const RadioCircleSpan = CSSComponent({
       ),
     },
   },
-  actived: {
+  active: {
     selectNames: [],
   },
 });
