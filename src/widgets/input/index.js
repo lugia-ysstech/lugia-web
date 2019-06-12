@@ -17,7 +17,7 @@ import {
 import ErrorTip from '../tooltip/ErrorTip';
 import Icon from '../icon';
 import StaticComponent from '../theme/CSSProvider';
-import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
+import CSSComponent, { css } from '../theme/CSSProvider';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 const { px2remcss } = units;
@@ -76,6 +76,7 @@ const CommonInputStyle = CSSComponent({
       const { propsConfig } = themeProps;
       const { size, prefix, validateStatus, validateType } = propsConfig;
       const { width, height } = themeMeta;
+      console.log(themeMeta, 33333, themeProps);
       const style = {};
       const color = isValidateSuccess(validateStatus, validateType, 'inner')
         ? dangerColor
@@ -101,7 +102,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['width'], ['height'], ['padding'], ['border'], ['cursor']],
+    selectNames: [['width'], ['height'], ['padding'], ['border'], ['cursor'], ['background']],
     defaultTheme: {
       border: {
         top: {
@@ -127,22 +128,21 @@ const CommonInputStyle = CSSComponent({
       },
     },
   },
-  actived: {
+  active: {
     selectNames: [['boxShadow'], ['border'], ['cursor']],
     defaultTheme: {
       boxShadow: `0px 0px 6px ${themeColor};`,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
+      const { propsConfig, themeState } = themeProps;
       const { validateStatus } = propsConfig;
-      const color = isSuccess(validateStatus)
+      const { disabled } = themeState;
+      const theColor = disabled
+        ? disableColor
+        : isSuccess(validateStatus)
         ? 'rgba(104, 79, 255, 0.2)'
         : 'rgba(248, 172, 48, 0.2)';
-      return `
-          &:focus {
-          box-shadow: 0 0 6px ${color};
-        }
-        `;
+      return `box-shadow: 0 0 6px ${theColor}; `;
     },
   },
   disabled: {
@@ -150,6 +150,28 @@ const CommonInputStyle = CSSComponent({
     defaultTheme: {
       cursor: 'not-allowed',
       background: { backgroundColor: disableColor },
+      border: {
+        top: {
+          borderColor: lightGreyColor,
+          borderStyle: 'solid',
+          borderWidth: 1,
+        },
+        left: {
+          borderColor: lightGreyColor,
+          borderStyle: 'solid',
+          borderWidth: 1,
+        },
+        bottom: {
+          borderColor: lightGreyColor,
+          borderStyle: 'solid',
+          borderWidth: 1,
+        },
+        right: {
+          borderColor: lightGreyColor,
+          borderStyle: 'solid',
+          borderWidth: 1,
+        },
+      },
     },
   },
   css: css`
@@ -206,7 +228,6 @@ const InputContainer = CSSComponent({
 export const Input: Object = CSSComponent({
   extend: CommonInputStyle,
   className: 'inputInner',
-  normal: { selectNames: [] },
   css: css`
     position: relative;
     outline: none;
@@ -246,9 +267,12 @@ const TipBottom = StaticComponent({
   },
 });
 
-const Fix = StaticComponent({
+const Fix = CSSComponent({
   tag: 'span',
   className: 'inputFix',
+  normal: {
+    selectNames: [['font'], ['color']],
+  },
   css: css`
     position: absolute;
     transform: translateY(50%);
@@ -260,17 +284,23 @@ const Fix = StaticComponent({
   `,
 });
 
-const Prefix: Object = StaticComponent({
+const Prefix: Object = CSSComponent({
   extend: Fix,
   className: 'inputPrefix',
+  normal: {
+    selectNames: [['font'], ['color']],
+  },
   css: css`
     left: ${px2remcss(5)};
   `,
 });
 
-const Suffix: Object = StaticComponent({
+const Suffix: Object = CSSComponent({
   extend: Fix,
   className: 'inputSuffix',
+  normal: {
+    selectNames: [['font'], ['color']],
+  },
   css: css`
     right: ${px2remcss(5)};
   `,
@@ -283,7 +313,7 @@ const ClearButton: Object = ThemeHoc(
     extend: Icon,
     className: 'inputClearButton',
     normal: {
-      selectNames: [],
+      selectNames: [['font'], ['color']],
       defaultTheme: {
         color: mediumGreyColor,
       },
@@ -294,7 +324,7 @@ const ClearButton: Object = ThemeHoc(
         color: darkGreyColor,
       },
     },
-    actived: {
+    active: {
       selectNames: [],
     },
     disabled: {
@@ -510,16 +540,18 @@ class TextBox extends Component<InputProps, InputState> {
 
   generatePrefix(): React$Element<any> | null {
     const { prefix } = this.props;
+    const PrefixThemeProps = this.props.getPartOfThemeProps('InputPrefix');
     if (prefix) {
-      return <Prefix themeProps={this.props.themeProps}>{prefix}</Prefix>;
+      return <Prefix themeProps={PrefixThemeProps}>{prefix}</Prefix>;
     }
     return null;
   }
 
   generateSuffix(): React$Element<any> | null {
     const { suffix } = this.props;
+    const SuffixThemeProps = this.props.getPartOfThemeProps('InputSuffix');
     if (suffix) {
-      return <Suffix themeProps={this.props.themeProps}>{suffix}</Suffix>;
+      return <Suffix themeProps={SuffixThemeProps}>{suffix}</Suffix>;
     }
     return this.getClearButton();
   }
@@ -528,12 +560,17 @@ class TextBox extends Component<InputProps, InputState> {
     if (this.isEmpty()) {
       return null;
     }
-    const { themeProps, validateStatus, validateType, prefix, size } = this.props;
+    const { validateStatus, validateType, prefix, size } = this.props;
     const show = this.state.clearButtonShow;
-    themeProps.propsConfig = { validateType, validateStatus, prefix, size };
-
+    const ClearButtonThemeProps = this.props.getPartOfThemeProps('InputClearButton');
+    ClearButtonThemeProps.propsConfig = { validateType, validateStatus, prefix, size };
     return (
-      <ClearButton themeProps={themeProps} iconClass={Clear} onClick={this.onClear} show={show} />
+      <ClearButton
+        themeProps={ClearButtonThemeProps}
+        iconClass={Clear}
+        onClick={this.onClear}
+        show={show}
+      />
     );
   }
 
@@ -564,6 +601,7 @@ class TextBox extends Component<InputProps, InputState> {
       autoFocus,
       type,
       themeProps,
+      disabled,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
@@ -571,7 +609,7 @@ class TextBox extends Component<InputProps, InputState> {
     themeProps.propsConfig = { validateType, validateStatus, prefix, size };
     return (
       <Input
-        themeProps={this.props.themeProps}
+        themeProps={themeProps}
         autoFocus={autoFocus}
         ref={this.input}
         validateStatus={validateStatus}
@@ -582,7 +620,6 @@ class TextBox extends Component<InputProps, InputState> {
         size={size}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
-        placeholder={placeholder}
         onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
@@ -592,6 +629,8 @@ class TextBox extends Component<InputProps, InputState> {
         parser={parser}
         readOnly={readOnly}
         type={type}
+        placeholder={placeholder}
+        disabled={disabled}
       />
     );
   }
@@ -608,6 +647,6 @@ export const TextBoxInner = TextBox;
 
 const TargetTxtBox = ThemeHoc(KeyBoardEventAdaptor(TextBox), Widget.Input, {
   hover: true,
-  actived: true,
+  active: true,
 });
 export default TargetTxtBox;
