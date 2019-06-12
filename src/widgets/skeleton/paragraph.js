@@ -5,6 +5,7 @@
  */
 import * as React from 'react';
 import { AnimationItem, CommonParagraph, ParagraphWrap } from '../css/skeleton';
+import { getNewThemeProps } from './utils';
 
 type ParagraphProps = {
   type: 'title' | 'pragraph',
@@ -23,16 +24,16 @@ export default class Paragraph extends React.Component<any, ParagraphProps> {
   static displayName = 'ParagraphItem';
 
   render() {
-    const { type, lastItem, paragraphWidth, titleWidth, animation } = this.props;
+    const { paragraphWidth = 600, animation, themeProps } = this.props;
+    const AnimationThemeProps = getNewThemeProps(themeProps, {
+      width: paragraphWidth,
+      height: 20,
+    });
+
     return (
-      <ParagraphWrap
-        type={type}
-        lastItem={lastItem}
-        paragraphWidth={paragraphWidth}
-        titleWidth={titleWidth}
-      >
-        <CommonParagraph>
-          {animation ? <AnimationItem width={60} height={60} /> : null}
+      <ParagraphWrap themeProps={themeProps}>
+        <CommonParagraph themeProps={themeProps}>
+          {animation ? <AnimationItem themeProps={AnimationThemeProps} /> : null}
         </CommonParagraph>
       </ParagraphWrap>
     );

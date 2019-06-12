@@ -3,127 +3,231 @@
  *
  * @flow
  */
-import styled, { css, keyframes } from 'styled-components';
-import { FontSizeNumber } from '../css';
-import { px2emcss } from '../css/units';
+import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 import { toNumber } from '../common/NumberUtils';
 import colorsFunc from '../css/stateColor';
+
 const { disableColor, superLightColor } = colorsFunc();
 
-type SkeletonProps = {
-  distance?: number,
-  width?: number,
-  height?: number,
-  type?: 'type' | 'paragraph',
-  lastItem?: boolean,
-  paragraphWidth?: number | string,
-  titleWidth?: number | string,
-  pictureWidth?: number | string,
-  pictureHeight?: number | string,
-};
+const defaultPictureWidth = 180;
+const defaultPictureHeight = 128;
 
-const em = px2emcss(FontSizeNumber);
-const getCommonAnimation = (props: SkeletonProps) => {
-  const { distance = 1000 } = props;
+/**
+ * skeleton
+ */
+
+export const SkeletonWrap = CSSComponent({
+  tag: 'div',
+  className: 'skeletonWrap',
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+  css: `
+    display: inline-block;
+    width: ${px2remcss(800)};
+  `,
+});
+
+export const SkeletonContainer = CSSComponent({
+  tag: 'div',
+  className: 'skeletonContainer',
+  normal: {
+    selectNames: [['width'], ['height'], ['margin'], ['padding']],
+  },
+  css: `
+    display: flex;
+  `,
+});
+
+export const ParagraphContainer = CSSComponent({
+  tag: 'div',
+  className: 'paragraphContainer',
+  normal: {
+    selectNames: [],
+  },
+  css: `
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 ${px2remcss(10)};
+    flex: 1
+  `,
+});
+
+/**
+ * animation
+ */
+
+const getCommonAnimation = (width: number) => {
   const animationCSS = keyframes`
     0% {
-      transform: translate(0, -50%);
+      transform: translate(${px2remcss(-width * 3)}, -50%);
     }
     100% {
-      transform: translate(${em(distance)}, -50%);
+      transform: translate(${px2remcss(width * 3)}, -50%);
     }
   `;
   return animationCSS;
 };
 
-const getAnimationItemCSS = (props: SkeletonProps) => {
-  const { width = 0, height = 0 } = props;
-  return `width: ${em(width)};
-  height: ${em(height)};
-  box-shadow: 0 0 ${em(width * 2)} ${em(width)} ${disableColor};
-  left: -${em(width * 2)}; 
-  `;
-};
-
-export const AnimationItem = styled.div`
-  ${getAnimationItemCSS};
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  background: ${disableColor};
-  animation: ${getCommonAnimation} 1s linear infinite;
-`;
+export const AnimationItem = CSSComponent({
+  tag: 'div',
+  className: 'animationItem',
+  normal: {
+    selectNames: [],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { width } = propsConfig;
+      const animationCSS = getCommonAnimation(width);
+      return css`
+        animation: ${animationCSS} 1s linear infinite;
+      `;
+    },
+    getStyle: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { width, height } = propsConfig;
+      return {
+        width: px2remcss(width),
+        height: px2remcss(height),
+        boxShadow: `0 0 ${px2remcss(width)} ${px2remcss(width)} ${disableColor}`,
+      };
+    },
+  },
+  css: `
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: ${disableColor};
+    width: ${px2remcss(200)};
+    height: ${px2remcss(200)};
+  `,
+});
 
 /**
  * avatar
  */
 
-export const CommonAvatar = styled.div`
-  display: inline-block;
-  width: ${em(32)};
-  height: ${em(32)};
-  border-radius: 50%;
-  background: ${superLightColor};
-  position: relative;
-  overflow: hidden;
-`;
+export const AvatarContainer = CSSComponent({
+  tag: 'div',
+  className: 'avatarContainer',
+  normal: {
+    selectNames: [],
+  },
+  css: `
+    display: inline-block;
+    vertical-align: top;
+    padding: ${px2remcss(10)};
+  `,
+});
+
+export const CommonAvatar = CSSComponent({
+  tag: 'div',
+  className: 'avatar',
+  normal: {
+    selectNames: [['width']],
+    getStyle: themeMeta => {
+      const { width } = themeMeta;
+      return {
+        height: width,
+      };
+    },
+  },
+  css: `
+    display: inline-block;
+    width: ${px2remcss(32)};
+    height: ${px2remcss(32)};
+    background: ${superLightColor};
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden
+  `,
+});
 
 /**
  * paragraph
  */
 
-const getPaddingBottom = (props: SkeletonProps) => {
-  const { type } = props;
-  return `padding-bottom: ${type === 'title' ? em(16) : em(8)}`;
-};
+export const ParagraphWrap = CSSComponent({
+  tag: 'div',
+  className: 'paragraphWrap',
+  normal: {
+    selectNames: [],
+    getStyle: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { type } = propsConfig;
+      const bottom = type === 'title' ? 16 : 8;
+      return {
+        padding: {
+          bottom,
+        },
+      };
+    },
+  },
+  css: `
+    padding: ${px2remcss(8)} 0;
+  `,
+});
 
-const getWidth = (props: SkeletonProps) => {
-  let { paragraphWidth, titleWidth } = props;
-  const { type, lastItem } = props;
-
-  titleWidth = toNumber(titleWidth, 176);
-  paragraphWidth = toNumber(paragraphWidth, lastItem ? 400 : 480);
-
-  if (type === 'title') {
-    return `width: ${em(titleWidth)}`;
+const getParagraphWidth = (type: 'title' | 'paragraph', width: any, lastItem: boolean) => {
+  if (!width && !lastItem) {
+    return;
   }
-
-  return `width: ${em(paragraphWidth)}`;
+  const defaultWidth = type === 'title' ? 400 : lastItem ? 400 : 600;
+  return toNumber(width, defaultWidth);
 };
 
-export const ParagraphWrap = styled.div`
-  ${getWidth};
-  padding: ${em(8)} 0;
-  ${getPaddingBottom};
-`;
+export const CommonParagraph = CSSComponent({
+  tag: 'div',
+  className: 'commonParagraph',
+  normal: {
+    selectNames: [],
 
-export const CommonParagraph = styled.div`
-  height: ${em(16)};
-  background: ${superLightColor};
-  position: relative;
-  overflow: hidden;
-`;
+    getStyle: (themeMate, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { type, width, lastItem } = propsConfig;
+      const activeWidth = getParagraphWidth(type, width, lastItem);
+
+      return {
+        width: activeWidth,
+      };
+    },
+  },
+  css: `
+    height: ${px2remcss(16)};
+    background: ${superLightColor};
+    position: relative;
+    overflow: hidden
+  `,
+});
 
 /**
  * picture
  */
 
-const getPictureWidth = (props: SkeletonProps) => {
-  let { pictureWidth } = props;
-  pictureWidth = toNumber(pictureWidth, 180);
-  return `width: ${em(pictureWidth)}`;
-};
+export const PictrueContainer = CSSComponent({
+  tag: 'div',
+  className: 'pictrueContainer',
+  normal: {
+    selectNames: [],
+  },
+  css: `
+    display: inline-block;
+    vertical-align: top
+  `,
+});
 
-const getPictureHeight = (props: SkeletonProps) => {
-  let { pictureHeight } = props;
-  pictureHeight = toNumber(pictureHeight, 180);
-  return `height: ${em(pictureHeight)}`;
-};
-
-export const CommonPicture = styled.div`
-  ${getPictureWidth};
-  ${getPictureHeight};
-  background: ${superLightColor};
-  position: relative;
-  overflow: hidden;
-`;
+export const CommonPicture = CSSComponent({
+  tag: 'div',
+  className: 'picture',
+  normal: {
+    selectNames: [['width'], ['height']],
+  },
+  css: `
+    width: ${px2remcss(defaultPictureWidth)};
+    height: ${px2remcss(defaultPictureHeight)};
+    background: ${superLightColor};
+    position: relative;
+    overflow: hidden
+  `,
+});
