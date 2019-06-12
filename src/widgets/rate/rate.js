@@ -17,6 +17,9 @@ import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
+import colorsFunc from '../css/stateColor';
+const { warningColor, dangerColor } = colorsFunc();
+
 const showUp = keyframes`
   from {
     opacity: 0;
@@ -98,7 +101,7 @@ Ratespan.displayName = 'sv_rate_Ratespan';
 const RateIcon = ThemeHoc(
   CSSComponent({
     extend: Icon,
-    className: 'singleCharacter',
+    className: 'activeIcon',
     css: css`
       vertical-align: text-bottom !important;
     `,
@@ -131,7 +134,7 @@ const RateIcon = ThemeHoc(
 const RateIconBottom = ThemeHoc(
   CSSComponent({
     extend: Icon,
-    className: 'defaultCharacter',
+    className: 'defaultRateIcon',
     css: css`
       vertical-align: text-bottom !important;
       color: #e8e8e8;
@@ -155,61 +158,65 @@ const RateIconBottom = ThemeHoc(
 
 RateIcon.displayName = 'sv_rate_icon';
 
-const RateText = ThemeHoc(
-  CSSComponent({
-    tag: 'span',
-    className: 'singleTextCharacter',
-    normal: {
-      selectNames: [['color'], ['fontSize'], ['margin']],
-      defaultTheme: {
-        color: '#e8e8e8',
-      },
-    },
-    disabled: {
-      selectNames: [['color']],
-      defaultTheme: {
-        color: '#ccc',
-      },
-    },
-    css: css`
-      vertical-align: text-bottom !important;
-      cursor: pointer;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      &.half {
-        width: 50%;
-        overflow: hidden;
-      }
-    `,
-  }),
-  'RateText',
-  { hover: true, actived: false }
-);
+const RateTextContainer = CSSComponent({
+  tag: 'span',
+  className: 'RateTextContainer',
+  normal: {
+    selectNames: [['margin']],
+  },
+  css: css`
+    position: relative;
+  `,
+});
 
-const RateTextBottom = ThemeHoc(
-  CSSComponent({
-    tag: 'span',
-    className: 'singleTextCharacter',
-    normal: {
-      selectNames: [['color'], ['fontSize'], ['margin']],
-      defaultTheme: {
-        color: '#e8e8e8',
-      },
+const RateText = CSSComponent({
+  tag: 'span',
+  className: 'activeTextIcon',
+  normal: {
+    selectNames: [['color'], ['fontSize']],
+    defaultTheme: {
+      color: '#e8e8e8',
     },
-    disabled: {
-      selectNames: [['color']],
-      defaultTheme: {
-        color: '#f2f2f2',
-      },
+  },
+  disabled: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: '#ccc',
     },
-    css: css`
-      vertical-align: text-bottom !important;
-      cursor: pointer;
-    `,
-  }),
-  'RateTextBottom'
-);
+  },
+  css: css`
+    vertical-align: text-bottom !important;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    &.half {
+      width: 50%;
+      overflow: hidden;
+    }
+  `,
+});
+
+const RateTextBottom = CSSComponent({
+  tag: 'span',
+  className: 'defaultTextIcon',
+  normal: {
+    selectNames: [['color'], ['fontSize']],
+    defaultTheme: {
+      color: '#e8e8e8',
+    },
+  },
+  disabled: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: '#f2f2f2',
+    },
+  },
+  css: css`
+    vertical-align: text-bottom !important;
+    cursor: pointer;
+  `,
+});
 
 RateText.displayName = 'sv_rate_RateText';
 
@@ -235,7 +242,8 @@ type RateProps = {
   onChange: Function,
   character?: any,
   themeProps: Object,
-  getChildThemeHocProps: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 
 export function getDefaultClassNames(count: number): Array<string> {
@@ -333,6 +341,7 @@ export const getIconClass = (iconClass: Object = {}): Object => {
 };
 
 const getOffsetInfo = (rateRangeNode: Object) => {
+  console.log('getOffsetInfo', rateRangeNode);
   if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
@@ -357,7 +366,6 @@ class Rate extends React.Component<RateProps, any> {
   ratespan: any;
   temporary: string;
   static defaultProps = {
-    count: 5,
     disabled: false,
     allowHalf: false,
     classify: false,
@@ -400,7 +408,7 @@ class Rate extends React.Component<RateProps, any> {
       allowHalf,
       classify: defProps.classify,
     };
-    const { value, count, disabled } = defProps;
+    const { value, count = 5, disabled } = defProps;
     const classNames = createCalssArray(count, condition);
     if (!currentState) {
       const theValue = calcValue(value, allowHalf);
@@ -514,48 +522,41 @@ class Rate extends React.Component<RateProps, any> {
   };
 
   getOffset(index: number) {
+    // return getOffsetInfo(this.ratespan[index].current.querySelector('i'));
     return getOffsetInfo(this.ratespan[index].current);
   }
 
   getElement = (x: string, index: number) => {
-    const { className, iconClass, disabled, character, themeProps } = this.props;
+    const { className, iconClass, disabled, character } = this.props;
     const IconClass = getIconClass(iconClass);
     const theClassName = `${defautClass[x]} ${className} ${disabled ? '' : 'hoverd'}`;
     const { starNum } = this.state;
     if (ObjectUtils.isString(character)) {
-      const { viewClass: RateTextClass, theme: RateTextTheme } = this.props.getChildThemeHocProps(
-        'activeTextIcon'
-      );
-      const {
-        viewClass: RateDefaultTextClass,
-        theme: RateDefaultTextTheme,
-      } = this.props.getChildThemeHocProps('defaultTextIcon');
-
-      const theme = index < starNum ? RateTextTheme : RateDefaultTextTheme;
-      const viewClass = index < starNum ? RateTextClass : RateDefaultTextClass;
+      const activeTextIconThemeProps = this.props.getPartOfThemeProps('activeTextIcon');
+      const defaultTextIconThemeProps = this.props.getPartOfThemeProps('defaultTextIcon');
+      const themeProps = index < starNum ? activeTextIconThemeProps : defaultTextIconThemeProps;
       return (
         <React.Fragment>
-          <RateText
-            theme={theme}
-            viewClass={viewClass}
-            type={x}
-            disabled={disabled}
-            character={character}
-            className={theClassName}
-          >
-            {character}
-          </RateText>
-          <RateTextBottom
-            themeProps={themeProps}
-            theme={RateDefaultTextTheme}
-            viewClass={RateDefaultTextClass}
-            type={x}
-            disabled={disabled}
-            character={character}
-            className={theClassName}
-          >
-            {character}
-          </RateTextBottom>
+          <RateTextContainer themeProps={themeProps}>
+            <RateText
+              themeProps={themeProps}
+              type={x}
+              disabled={disabled}
+              character={character}
+              className={theClassName}
+            >
+              {character}
+            </RateText>
+            <RateTextBottom
+              themeProps={defaultTextIconThemeProps}
+              type={x}
+              disabled={disabled}
+              character={character}
+              className={theClassName}
+            >
+              {character}
+            </RateTextBottom>
+          </RateTextContainer>
         </React.Fragment>
       );
     }
@@ -659,7 +660,7 @@ class Rate extends React.Component<RateProps, any> {
         const {
           viewClass: amazedIconViewClass,
           theme: amazedIconTheme,
-        } = this.props.getChildThemeHocProps('amazedIcon');
+        } = this.props.getPartOfThemeHocProps('amazedIcon');
         resultTheme = amazedIconTheme;
         resultViewClass = amazedIconViewClass;
         break;
@@ -667,14 +668,18 @@ class Rate extends React.Component<RateProps, any> {
         const {
           viewClass: dangerIconViewClass,
           theme: dangerIconTheme,
-        } = this.props.getChildThemeHocProps('dangerIcon');
-        resultTheme = dangerIconTheme;
+        } = this.props.getPartOfThemeHocProps('dangerIcon');
+        resultTheme = deepMerge(
+          { [dangerIconViewClass]: { normal: { color: dangerColor } } },
+          dangerIconTheme
+        );
         resultViewClass = dangerIconViewClass;
         break;
       case 'half':
       case 'primary':
-        const { viewClass, theme } = this.props.getChildThemeHocProps('activeIcon');
-        resultTheme = theme;
+        const { viewClass, theme } = this.props.getPartOfThemeHocProps('activeIcon');
+
+        resultTheme = deepMerge({ [viewClass]: { normal: { color: warningColor } } }, theme);
         resultViewClass = viewClass;
         break;
       case 'bottom':
@@ -682,17 +687,15 @@ class Rate extends React.Component<RateProps, any> {
         const {
           viewClass: RateIconBottomViewClass,
           theme: RateIconBottomTheme,
-        } = this.props.getChildThemeHocProps('defaultRateIcon');
+        } = this.props.getPartOfThemeHocProps('defaultRateIcon');
         resultTheme = RateIconBottomTheme;
         resultViewClass = RateIconBottomViewClass;
         break;
     }
-
-    resultTheme = this.mergeFontSize(resultViewClass, resultTheme);
-
     if (type === 'bottom') {
       return (
         <RateIconBottom
+          themeProps={resultTheme}
           theme={resultTheme}
           viewClass={resultViewClass}
           type={'default'}
@@ -704,6 +707,7 @@ class Rate extends React.Component<RateProps, any> {
 
     return (
       <RateIcon
+        themeProps={resultTheme}
         theme={resultTheme}
         viewClass={resultViewClass}
         type={type}
