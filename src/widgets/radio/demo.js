@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import styled from 'styled-components';
+import { getBorder } from '@lugia/theme-css-hoc';
 import Theme from '../theme';
 import Widget from '../consts';
 import Radio from './';
@@ -41,51 +42,183 @@ const radioView = {
 const onChange = obj => {
   console.info('obj-demo', obj);
 };
-export const RadioDemo = () => {
-  return (
-    <div>
-      <Wrapper>
-        <p>default</p>
-        <Radio value="1">Radio</Radio>
-      </Wrapper>
-      <Wrapper>
-        <p>checked</p>
-        <Radio checked>Radio</Radio>
-      </Wrapper>
-      <Wrapper>
-        <p>defaultChecked</p>
-        <Radio defaultChecked>Radio</Radio>
-      </Wrapper>
-      <Wrapper>
-        <p>disabled</p>
-        <Radio value="1" disabled>
-          Radio
-        </Radio>
-        <Radio value="1" checked disabled>
-          Radio
-        </Radio>
-      </Wrapper>
-      <Wrapper>
-        <p>style default</p>
-        <Radio value="1">Radio</Radio>
-        <Radio value="2">Radio</Radio>
-        <p>style vertical</p>
-        <Radio value="1" checked styles="vertical">
-          Radio
-        </Radio>
-        <Radio value="1" styles="vertical">
-          Radio
-        </Radio>
-      </Wrapper>
-      <Theme config={view}>
-        <Radio viewClass="register" checked value="apple">
-          Radio
-        </Radio>
-      </Theme>
-    </div>
-  );
-};
-export const RadioGroupDemo = class extends React.Component<any, any> {
+export class RadioDemo extends React.Component<any, any> {
+  render() {
+    const view = {
+      [Widget.Radio]: {
+        normal: {
+          color: 'red',
+          fontSize: 16,
+          font: { fontWeight: 200, fontSize: 16 },
+          opacity: 0.6,
+          width: 100,
+          height: 50,
+          margin: {
+            top: 10,
+            bottom: 10,
+            left: 10,
+            right: 10,
+          },
+          padding: {
+            top: 10,
+            bottom: 10,
+            left: 10,
+            right: 10,
+          },
+        },
+        children: {
+          RadioEdge: {
+            normal: {
+              background: { backgroundColor: 'orange' },
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
+              width: 20,
+              height: 20,
+            },
+            hover: {
+              background: { backgroundColor: 'green' },
+              border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+            },
+            actived: {
+              background: { backgroundColor: 'yellow' },
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
+              width: 25,
+              height: 25,
+            },
+          },
+          RadioChecked: {
+            actived: {
+              background: { backgroundColor: 'red' },
+              width: 15,
+              height: 15,
+            },
+            disabled: {
+              background: { backgroundColor: 'red' },
+              width: 15,
+              height: 15,
+            },
+            cancel: {
+              background: { backgroundColor: 'green' },
+              width: 12,
+              height: 12,
+            },
+          },
+        },
+        hover: {
+          opacity: 0.4,
+        },
+      },
+    };
+    const newView = {
+      [Widget.Radio]: {
+        children: {
+          RadioEdge: {
+            disabled: {
+              background: { backgroundColor: 'orange' },
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
+            },
+          },
+          RadioChecked: {
+            disabled: {
+              background: { backgroundColor: 'red' },
+              width: 8,
+              height: 8,
+            },
+            cancel: {
+              background: { backgroundColor: 'green' },
+              width: 12,
+              height: 12,
+            },
+          },
+        },
+        hover: {
+          opacity: 0.4,
+        },
+      },
+    };
+    return (
+      <div>
+        <Wrapper>
+          <p>theme normal margin padding</p>
+          <Theme config={view}>
+            <Radio value="1">Radio</Radio>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <p>theme checked cancel</p>
+          <Theme config={view}>
+            <Radio value="1" checked cancel>
+              Radio
+            </Radio>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <p>theme checked disabled</p>
+          <Theme config={newView}>
+            <Radio value="1" checked disabled>
+              Radio
+            </Radio>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <p>theme disabled</p>
+          <Theme config={newView}>
+            <Radio value="1" disabled>
+              Radio
+            </Radio>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <p>theme cancel</p>
+          <Theme config={newView}>
+            <Radio value="1" checked cancel>
+              Radio
+            </Radio>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <p>checked</p>
+          <Radio checked>Radio</Radio>
+        </Wrapper>
+        <Wrapper>
+          <p>defaultChecked</p>
+          <Radio defaultChecked>Radio</Radio>
+        </Wrapper>
+        <Wrapper>
+          <p>normal</p>
+          <Radio>Radio</Radio>
+        </Wrapper>
+        <Wrapper>
+          <p>disabled</p>
+          <Radio value="1" disabled>
+            Radio
+          </Radio>
+          <Radio value="1" checked disabled>
+            Radio
+          </Radio>
+        </Wrapper>
+        <Wrapper>
+          <p>cancel</p>
+          <Radio defaultChecked cancel>
+            Radio
+          </Radio>
+        </Wrapper>
+        <Wrapper>
+          <p>style default</p>
+          <Radio value="1">Radio</Radio>
+          <Radio value="2">Radio</Radio>
+          <p>style vertical</p>
+          <Radio value="1" checked styles="vertical">
+            Radio
+          </Radio>
+          <Radio value="1" styles="vertical">
+            Radio
+          </Radio>
+        </Wrapper>
+      </div>
+    );
+  }
+}
+export class RadioGroupDemo extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
@@ -218,4 +351,4 @@ export const RadioGroupDemo = class extends React.Component<any, any> {
       </div>
     );
   }
-};
+}
