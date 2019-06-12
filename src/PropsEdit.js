@@ -72,9 +72,7 @@ export default class extends Component<any, any> {
       },
     ];
 
-    const {
-      info: { props },
-    } = this.props;
+    const { info: { props = {} } = { props: {} } } = this.props;
 
     const data = Object.keys(props).map((key: string) => {
       const { type, desc } = props[key];

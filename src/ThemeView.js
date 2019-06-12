@@ -25,15 +25,16 @@ export default class extends Component<any, any> {
 
   render() {
     const { modulePath, modules } = this.props;
-    const { Target, Info } = modules[modulePath];
+    const module = modules[modulePath];
+    const { Target, Info } = module ? module : {};
     const Result = Target ? Target : () => <div>找不到组件{modulePath}</div>;
     const viewClass = 'lugia_themeView';
     const theme = {
-      [viewClass]: this.state.themeState,
+      [viewClass]: this.state.themeState[modulePath],
     };
     return [
       <Affix offsetTop={20}>
-        <Result viewClass={viewClass} theme={theme} {...this.state.props} />
+        <Result viewClass={viewClass} theme={theme} {...this.state.props[modulePath]} />
       </Affix>,
       <Title>属性测试</Title>,
       <Block>
@@ -47,18 +48,20 @@ export default class extends Component<any, any> {
   }
 
   onChangeProps = (name: string, value: any) => {
-    const oldProps = this.state.props;
-    if (oldProps[name] == value) {
-      return;
+    const { modulePath } = this.props;
+    const oldProps = this.state.props[modulePath] || {};
+    if (oldProps[name] != value) {
+      oldProps[name] = value;
+      this.setState({ props: { ...this.state.props, [modulePath]: { ...oldProps } } });
     }
-    this.setState({ props: { ...oldProps, [name]: value } });
   };
 
   onThemeChange = value => {
+    const { modulePath } = this.props;
     let res = {};
     try {
       res = JSON.parse(value);
-      this.setState({ themeState: res });
+      this.setState({ themeState: { [modulePath]: res } });
     } catch (err) {
       //
     }
