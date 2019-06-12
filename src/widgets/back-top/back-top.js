@@ -7,6 +7,7 @@
  */
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
+import Theme from '../theme';
 import Widget from '../consts/index';
 import { getScrollTop } from '../affix/affix';
 import { BackTop, BackTopContent, IconBox, Icons } from '../css/back-top';
@@ -117,11 +118,11 @@ export default ThemeProvider(
       const {
         children,
         themeProps,
-        getChildThemeHocProps,
+        getPartOfThemeProps,
+        getPartOfThemeConfig,
         icon = 'lugia-icon-direction_up',
       } = this.props;
       const { fixed, posRight, posBottom } = this.state;
-      const { viewClass, theme } = getChildThemeHocProps('Icon');
       return (
         <div>
           {fixed ? (
@@ -136,14 +137,11 @@ export default ThemeProvider(
               {children ? (
                 children
               ) : (
-                <BackTopContent themeProps={themeProps}>
+                <BackTopContent themeProps={getPartOfThemeProps('BackTopContent')}>
                   <IconBox themeProps={themeProps}>
-                    <Icons
-                      themeProps={themeProps}
-                      viewClass={viewClass}
-                      theme={theme}
-                      iconClass={icon}
-                    />
+                    <Theme config={{ [Widget.Icon]: getPartOfThemeConfig('Icon') }}>
+                      <Icons iconClass={icon} />
+                    </Theme>
                   </IconBox>
                 </BackTopContent>
               )}
