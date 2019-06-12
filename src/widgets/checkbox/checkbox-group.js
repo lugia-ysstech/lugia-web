@@ -73,6 +73,7 @@ const getFirstChildBorder = (props: GroupCSSProps) => {
           }
         `;
       }
+      console.log('colors borderColor', colors, borderColor);
       return `
         border-left: 1px solid ${checked ? colors : borderColor};
       `;
@@ -92,14 +93,21 @@ const getLastChildBorder = (props: GroupCSSProps) => {
     }
   }
 };
+const getButtonCSS = (props: GroupCSSProps) => {
+  const { childType = 'default' } = props;
+  if (childType === 'button') {
+    return `& > span:first-child  > label > span {
+      ${getFirstChildBorder(props)}; 
+      border-radius: 4px 0 0 4px;
+    }
+    & > span:last-child > label > span {
+      border-radius: 0 4px 4px 0;
+      ${getLastChildBorder(props)};
+    }`;
+  }
+};
 export const Group = styled.div`
-  & > label:first-child > span {
-    ${getFirstChildBorder} border-radius: 4px 0 0 4px;
-  }
-  & > label:last-child > span {
-    border-radius: 0 4px 4px 0;
-    ${getLastChildBorder};
-  }
+  ${getButtonCSS}
 `;
 export default ThemeProvider(
   class extends React.Component<CheckBoxGroupProps, CheckBoxGroupState> {
