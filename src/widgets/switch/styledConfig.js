@@ -63,21 +63,11 @@ export function getThemeProps(props, value) {
     switchWrapperSize: { width: wrapWidth, height: wrapHeight },
     circleSize: { width: circleWidth, height: circleHeight },
   } = getStyled(props);
-  const {
-    themeProps: switchTheme,
-    getTheme,
-    mergeThemeStateAndChildThemeProps,
-    loading,
-    disabled,
-  } = props;
+  const { getPartOfThemeProps, loading, disabled } = props;
   const switchOpenName = 'SwitchOpen';
   const switchclosedName = 'SwitchClosed';
-  const open = mergeThemeStateAndChildThemeProps(switchOpenName);
-  const closed = mergeThemeStateAndChildThemeProps(switchclosedName);
-  const { normal: themeNormal = {}, disabled: themeDisabled = {} } = getTheme();
-  console.log(themeNormal, themeDisabled);
-  // open.themeConfig={norma:themeNormal,disabled:themeDisabled};
-  // closed.themeConfig={norma:themeNormal,disabled:themeDisabled};
+  const open = getPartOfThemeProps(switchOpenName);
+  const closed = getPartOfThemeProps(switchclosedName);
   const openBackgroundColor = getBackground(props, true);
   const closedBackgroundColor = getBackground(props, false);
 
@@ -127,7 +117,7 @@ export function getThemeProps(props, value) {
     },
   };
   const childrenwidgetName = 'SwitchButton';
-  const childrenThemeProps = mergeThemeStateAndChildThemeProps(childrenwidgetName);
+  const childrenThemeProps = getPartOfThemeProps(childrenwidgetName);
   const { themeConfig: childrenConfig } = childrenThemeProps;
   const { normal } = childrenConfig;
   const defaultChildrenThemeProps = {
@@ -140,7 +130,7 @@ export function getThemeProps(props, value) {
       border: getBorder({ borderColor: '', borderStyle: '', borderWidth: 0 }, { radius: '50%' }),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
     },
-    actived: {
+    active: {
       width: circleWidth + 4,
       height: circleHeight,
       background: {
@@ -166,7 +156,7 @@ export function getThemeProps(props, value) {
   const openThemeProps = deepMerge(defaultOpenThemeProps, open.themeConfig);
   const closedThemeProps = deepMerge(openThemeProps, defaultClosedThemeProps, closed.themeConfig);
   const switchThemeProps = value ? openThemeProps : closedThemeProps;
-  switchTheme.themeConfig = switchThemeProps;
+
   const switchButtonThemeProps = deepMerge(defaultChildrenThemeProps, childrenConfig);
   childrenThemeProps.themeConfig = switchButtonThemeProps;
   const { switchButtonPosition, textPosition, textBox } = getSwitchButtonPosition(
@@ -174,9 +164,10 @@ export function getThemeProps(props, value) {
     switchButtonThemeProps,
     value
   );
+
   return {
     switchThemeProps: deepMerge(
-      { ...switchTheme },
+      { themeConfig: switchThemeProps },
       { themeState: { disabled: disabled || loading } },
       { propsConfig: { textPosition, textBox } }
     ),
@@ -185,6 +176,9 @@ export function getThemeProps(props, value) {
       { themeState: { disabled: disabled || loading } },
       { propsConfig: { switchButtonPosition } }
     ),
+    SwitchContainerThemeProps: deepMerge(getPartOfThemeProps('SwitchContainer'), {
+      themeState: { disabled: disabled || loading },
+    }),
   };
 }
 
