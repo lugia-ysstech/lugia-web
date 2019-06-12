@@ -117,6 +117,12 @@ const RateIcon = ThemeHoc(
         `;
       },
     },
+    disabled: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#cccccc',
+      },
+    },
   }),
   'RateIcon',
   { hover: true, actived: false }
@@ -159,6 +165,12 @@ const RateText = ThemeHoc(
         color: '#e8e8e8',
       },
     },
+    disabled: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#ccc',
+      },
+    },
     css: css`
       vertical-align: text-bottom !important;
       cursor: pointer;
@@ -183,6 +195,12 @@ const RateTextBottom = ThemeHoc(
       selectNames: [['color'], ['fontSize'], ['margin']],
       defaultTheme: {
         color: '#e8e8e8',
+      },
+    },
+    disabled: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#f2f2f2',
       },
     },
     css: css`
@@ -360,8 +378,6 @@ class Rate extends React.Component<RateProps, any> {
 
   constructor(props: Object) {
     super(props);
-    const num = props ? props.count : 5;
-    this.ratespan = [...Array(num)].map(() => React.createRef());
   }
 
   componentDidMount() {
@@ -409,8 +425,9 @@ class Rate extends React.Component<RateProps, any> {
   }
 
   render() {
-    const { themeProps } = this.props;
+    const { themeProps, count: propsCount } = this.props;
     const { count } = this.state;
+    this.ratespan = [...Array(count.length)].map(() => React.createRef());
     return (
       <Container themeProps={themeProps} onMouseLeave={this.mouseLeave}>
         <RateBox themeProps={themeProps}>
@@ -438,7 +455,6 @@ class Rate extends React.Component<RateProps, any> {
     if (disabled) return;
     const { offsetLeft, offsetWidth } = this.getOffset(i);
     const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX);
-
     const { classify } = this.props;
     const { count, current } = this.state;
     const classNames = getClassNames(count, starCount, !!classify);
@@ -523,6 +539,7 @@ class Rate extends React.Component<RateProps, any> {
             theme={theme}
             viewClass={viewClass}
             type={x}
+            disabled={disabled}
             character={character}
             className={theClassName}
           >
@@ -533,6 +550,7 @@ class Rate extends React.Component<RateProps, any> {
             theme={RateDefaultTextTheme}
             viewClass={RateDefaultTextClass}
             type={x}
+            disabled={disabled}
             character={character}
             className={theClassName}
           >
@@ -678,6 +696,7 @@ class Rate extends React.Component<RateProps, any> {
           theme={resultTheme}
           viewClass={resultViewClass}
           type={'default'}
+          disabled={disabled}
           iconClass={`${IconClass.default}  default `}
         />
       );

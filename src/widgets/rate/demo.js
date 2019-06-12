@@ -12,11 +12,8 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
-import { px2emcss } from '../css/units';
-import { FontSizeNumber } from '../css';
 
 const { warningColor, dangerColor } = colorsFunc();
-const em = px2emcss(FontSizeNumber);
 const TitleBox = styled.div`
   position: relative;
   padding: 10px;
@@ -109,7 +106,7 @@ class RateDemo extends React.Component<any, any> {
         count: 5,
         max: 5,
         value: 3,
-        disabled: false,
+        disabled: true,
         allowHalf: false,
         classify: true,
         iconClass: {
@@ -178,6 +175,9 @@ class RateDemo extends React.Component<any, any> {
                 right: 36,
               },
             },
+            disabled: {
+              color: '#ccc',
+            },
           },
           defaultRateIcon: {
             normal: {
@@ -185,6 +185,9 @@ class RateDemo extends React.Component<any, any> {
               margin: {
                 right: 36,
               },
+            },
+            disabled: {
+              color: '#f2f2f2',
             },
           },
           activeTextIcon: {
@@ -194,6 +197,9 @@ class RateDemo extends React.Component<any, any> {
                 right: 36,
               },
             },
+            disabled: {
+              color: '#ccc',
+            },
           },
           defaultTextIcon: {
             normal: {
@@ -201,6 +207,9 @@ class RateDemo extends React.Component<any, any> {
               margin: {
                 right: 36,
               },
+            },
+            disabled: {
+              color: '#f2f2f2',
             },
           },
         },
@@ -274,7 +283,7 @@ class RateDemo extends React.Component<any, any> {
           <TextBox>{this.state.defaultProps4.value} 颗星</TextBox>
         </Theme>
         <Theme config={configColorful}>
-          <TitleBox>自定义图标：</TitleBox>
+          <TitleBox>自定义图标 disabled：</TitleBox>
           <Rate {...this.state.defaultProps5} />
           <TextBox>{this.state.defaultProps5.value} 颗星</TextBox>
         </Theme>
