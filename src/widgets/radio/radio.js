@@ -56,17 +56,18 @@ export default ThemeProvider(
         value = '',
         getTheme,
         disabled,
-        styles,
+        styles = 'default',
         cancel,
         themeProps,
-        mergeThemeStateAndChildThemeProps,
+        getPartOfThemeProps,
       } = this.props;
       const { checked } = this.state;
-      const CircleEdgeTheme = mergeThemeStateAndChildThemeProps('RadioEdge');
-      const CircleCheckedTheme = mergeThemeStateAndChildThemeProps('RadioChecked');
+      const RadioWrapProps = getPartOfThemeProps('RadioWrap');
+      const CircleEdgeTheme = getPartOfThemeProps('RadioEdge');
+      const CircleCheckedTheme = getPartOfThemeProps('RadioChecked');
       const defaultProps = {
         normal: {},
-        actived: {},
+        active: {},
         hover: {},
         disabled: {},
       };
@@ -75,33 +76,29 @@ export default ThemeProvider(
         CircleEdgeTheme.themeConfig = deepMerge(defaultProps, CircleEdgeTheme.themeConfig);
         CircleEdgeTheme.themeConfig.normal = deepMerge(
           CircleEdgeTheme.themeConfig.normal,
-          CircleEdgeTheme.themeConfig.actived
+          CircleEdgeTheme.themeConfig.active
         );
         CircleEdgeTheme.themeState.hover = false;
-        themeProps.themeState.hover = false;
+        RadioWrapProps.themeState.hover = false;
         CircleEdgeTheme.themeConfig.normal.checked = cancel
           ? CircleCheckedTheme.themeConfig.cancel || {}
           : disabled
           ? CircleCheckedTheme.themeConfig.disabled || {}
-          : CircleCheckedTheme.themeConfig.actived || {};
+          : CircleCheckedTheme.themeConfig.active || {};
         CircleEdgeTheme.themeConfig.normal.isDisabled = disabled;
         CircleEdgeTheme.themeConfig.normal.isCancel = cancel;
       }
       if (disabled) {
         CircleEdgeTheme.themeConfig = deepMerge(defaultProps, CircleEdgeTheme.themeConfig);
         CircleEdgeTheme.themeState.hover = false;
-        themeProps.themeState.hover = false;
+        RadioWrapProps.themeState.hover = false;
       }
 
-      // console.log(
-      //   'deepMerge(CircleEdgeTheme.normal, CircleEdgeTheme.actived)',
-      //   deepMerge(CircleEdgeTheme.normal, CircleEdgeTheme.actived)
-      // );
-      console.log('CircleCheckedTheme', CircleCheckedTheme);
+      console.log('themeProps', themeProps);
       return (
         <RadioWrap
           themes={getTheme()}
-          themeProps={themeProps}
+          themeProps={RadioWrapProps}
           onClick={this.handleClick(value)}
           styles={styles}
           disabled={disabled}
@@ -122,5 +119,5 @@ export default ThemeProvider(
     }
   },
   Widget.Radio,
-  { hover: true, actived: true }
+  { hover: true, active: true }
 );
