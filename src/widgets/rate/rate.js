@@ -384,7 +384,7 @@ class Rate extends React.Component<RateProps, any> {
       allowHalf,
       classify: defProps.classify,
     };
-    const { value, count } = defProps;
+    const { value, count, disabled } = defProps;
     const classNames = createCalssArray(count, condition);
     if (!currentState) {
       const theValue = calcValue(value, allowHalf);
@@ -396,10 +396,13 @@ class Rate extends React.Component<RateProps, any> {
         hasClick: false,
       };
     }
+    if (disabled) {
+      return;
+    }
     return {
-      count: 'count' in currentState ? currentState.count : classNames,
+      count: 'count' in defProps ? classNames : currentState.count,
       value: 'value' in defProps ? value : currentState.value,
-      starNum: 'starNum' in currentState ? currentState.starNum : 0,
+      starNum: 'starNum' in defProps ? starNum : currentState.starNum,
       current: 'current' in currentState ? currentState.current : -1,
       hasClick: 'hasClick' in currentState ? currentState.hasClick : false,
     };
@@ -453,6 +456,10 @@ class Rate extends React.Component<RateProps, any> {
   mouseLeave = (e: Object) => {
     const { props } = this;
 
+    const { disabled } = props;
+    if (disabled) {
+      return;
+    }
     const { current } = this.state;
 
     const temporary = this.getTemporary();
@@ -543,71 +550,6 @@ class Rate extends React.Component<RateProps, any> {
     );
   };
 
-  getRateIcon = (type: string, IconClass: Object) => {
-    const { disabled, className } = this.props;
-
-    const theClassName = `${defautClass[type]} ${className} ${disabled ? '' : 'hoverd'}`;
-    let resultTheme;
-    let resultViewClass;
-
-    switch (type) {
-      case 'amazed':
-        const {
-          viewClass: amazedIconViewClass,
-          theme: amazedIconTheme,
-        } = this.props.getChildThemeHocProps('amazedIcon');
-        resultTheme = amazedIconTheme;
-        resultViewClass = amazedIconViewClass;
-        break;
-      case 'danger':
-        const {
-          viewClass: dangerIconViewClass,
-          theme: dangerIconTheme,
-        } = this.props.getChildThemeHocProps('dangerIcon');
-        resultTheme = dangerIconTheme;
-        resultViewClass = dangerIconViewClass;
-        break;
-      case 'half':
-      case 'primary':
-        const { viewClass, theme } = this.props.getChildThemeHocProps('activeIcon');
-        resultTheme = theme;
-        resultViewClass = viewClass;
-        break;
-      case 'bottom':
-      default:
-        const {
-          viewClass: RateIconBottomViewClass,
-          theme: RateIconBottomTheme,
-        } = this.props.getChildThemeHocProps('defaultRateIcon');
-        resultTheme = RateIconBottomTheme;
-        resultViewClass = RateIconBottomViewClass;
-        break;
-    }
-
-    resultTheme = this.mergeFontSize(resultViewClass, resultTheme);
-
-    if (type === 'bottom') {
-      return (
-        <RateIconBottom
-          theme={resultTheme}
-          viewClass={resultViewClass}
-          type={'default'}
-          iconClass={`${IconClass.default}  default `}
-        />
-      );
-    }
-
-    return (
-      <RateIcon
-        theme={resultTheme}
-        viewClass={resultViewClass}
-        type={type}
-        disabled={disabled}
-        iconClass={`${IconClass[type]} ${theClassName} `}
-      />
-    );
-  };
-
   mergeFontSize = (resultViewClass: string, resultTheme: Object) => {
     const { count, themeProps } = this.props;
     const config = themeProps.themeConfig.normal;
@@ -680,8 +622,76 @@ class Rate extends React.Component<RateProps, any> {
 
   doExportChange = (resValue: Object) => {
     const { newValue, oldValue } = resValue;
-    const { onChange } = this.props;
+    const { onChange, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     onChange && onChange(newValue, oldValue);
+  };
+
+  getRateIcon = (type: string, IconClass: Object) => {
+    const { disabled, className } = this.props;
+
+    const theClassName = `${defautClass[type]} ${className} ${disabled ? '' : 'hoverd'}`;
+    let resultTheme;
+    let resultViewClass;
+
+    switch (type) {
+      case 'amazed':
+        const {
+          viewClass: amazedIconViewClass,
+          theme: amazedIconTheme,
+        } = this.props.getChildThemeHocProps('amazedIcon');
+        resultTheme = amazedIconTheme;
+        resultViewClass = amazedIconViewClass;
+        break;
+      case 'danger':
+        const {
+          viewClass: dangerIconViewClass,
+          theme: dangerIconTheme,
+        } = this.props.getChildThemeHocProps('dangerIcon');
+        resultTheme = dangerIconTheme;
+        resultViewClass = dangerIconViewClass;
+        break;
+      case 'half':
+      case 'primary':
+        const { viewClass, theme } = this.props.getChildThemeHocProps('activeIcon');
+        resultTheme = theme;
+        resultViewClass = viewClass;
+        break;
+      case 'bottom':
+      default:
+        const {
+          viewClass: RateIconBottomViewClass,
+          theme: RateIconBottomTheme,
+        } = this.props.getChildThemeHocProps('defaultRateIcon');
+        resultTheme = RateIconBottomTheme;
+        resultViewClass = RateIconBottomViewClass;
+        break;
+    }
+
+    resultTheme = this.mergeFontSize(resultViewClass, resultTheme);
+
+    if (type === 'bottom') {
+      return (
+        <RateIconBottom
+          theme={resultTheme}
+          viewClass={resultViewClass}
+          type={'default'}
+          iconClass={`${IconClass.default}  default `}
+        />
+      );
+    }
+
+    return (
+      <RateIcon
+        theme={resultTheme}
+        viewClass={resultViewClass}
+        type={type}
+        disabled={disabled}
+        iconClass={`${IconClass[type]} ${theClassName} `}
+      />
+    );
   };
 }
 
