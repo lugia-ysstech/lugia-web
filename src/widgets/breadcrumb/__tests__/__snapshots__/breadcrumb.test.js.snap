@@ -2,191 +2,191 @@
 
 exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链接 1`] = `
 .c2 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-right: 1rem;
   color: #999999;
 }
 
 .c1 {
+  font-weight: 500;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1:hover {
-  color: #333333;
-}
-
-.c3 {
-  color: #333333;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3:hover {
-  color: #333333;
 }
 
 .c0 {
   display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-<div
-  className="c0"
->
-  <a
-    className="c1"
-    href="/"
+<span>
+  <div
+    className="c0"
+    style={Object {}}
   >
-    主页
-  </a>
-  <span
-    className="c2"
-    href="/"
-  >
-    &gt;
-  </span>
-  <a
-    className="c1"
-    href="/"
-  >
-    一级菜单
-  </a>
-  <span
-    className="c2"
-    href="/"
-  >
-    &gt;
-  </span>
-  <a
-    className="c3"
-    href="/"
-  >
-    二级菜单
-  </a>
-  <span
-    className="c2"
-    href="/"
-  >
-    
-  </span>
-</div>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/"
+        style={Object {}}
+      >
+        主页
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/"
+        style={Object {}}
+      >
+        一级菜单
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/"
+        style={Object {}}
+      >
+        二级菜单
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      
+    </span>
+  </div>
+</span>
 `;
 
 exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
 .c2 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-right: 1rem;
   color: #999999;
 }
 
 .c1 {
+  font-weight: 500;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1:hover {
-  color: #333333;
-}
-
-.c3 {
-  color: #333333;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3:hover {
-  color: #333333;
 }
 
 .c0 {
   display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-<div
-  className="c0"
->
-  <a
-    className="c1"
+<span>
+  <div
+    className="c0"
+    style={Object {}}
   >
-    主页
-  </a>
-  <span
-    className="c2"
-  >
-    &gt;
-  </span>
-  <a
-    className="c1"
-  >
-    一级菜单
-  </a>
-  <span
-    className="c2"
-  >
-    &gt;
-  </span>
-  <a
-    className="c3"
-  >
-    二级菜单
-  </a>
-  <span
-    className="c2"
-  >
-    
-  </span>
-</div>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        style={Object {}}
+      >
+        主页
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        style={Object {}}
+      >
+        一级菜单
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        style={Object {}}
+      >
+        二级菜单
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      
+    </span>
+  </div>
+</span>
 `;
 
 exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
 .c3 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-right: 1rem;
   color: #999999;
 }
 
 .c1 {
+  font-weight: 500;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1:hover {
-  color: #333333;
-}
-
-.c4 {
-  color: #333333;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c4:hover {
-  color: #333333;
 }
 
 .c0 {
   display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .c2 {
@@ -198,377 +198,347 @@ exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
   font-size: 1.2rem;
 }
 
-<div
-  className="c0"
->
-  <a
-    className="c1"
+<span>
+  <div
+    className="c0"
+    style={Object {}}
   >
-    <i
-      className="lugia-icon-reminder_close_circle_o  c2"
-    />
-    <span>
-      主页
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        style={Object {}}
+      >
+        <span>
+          <i
+            className="lugia-icon-reminder_close_circle_o  c2"
+          />
+        </span>
+        <span>
+          主页
+        </span>
+      </a>
     </span>
-  </a>
-  <span
-    className="c3"
-  >
-    &gt;
-  </span>
-  <a
-    className="c4"
-  >
-    <span>
-      一级面包屑菜单
+    <span
+      className="c3"
+      style={Object {}}
+    >
+      &gt;
     </span>
-    <i
-      className="lugia-icon-reminder_close_circle_o  c2"
-    />
-  </a>
-  <span
-    className="c3"
-  >
-    
-  </span>
-</div>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        style={Object {}}
+      >
+        <span>
+          一级面包屑菜单
+        </span>
+        <span>
+          <i
+            className="lugia-icon-reminder_close_circle_o  c2"
+          />
+        </span>
+      </a>
+    </span>
+    <span
+      className="c3"
+      style={Object {}}
+    >
+      
+    </span>
+  </div>
+</span>
 `;
 
 exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = `
-Array [
-  .c0 {
-  color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-<a
-    className="c0"
-    href="/index"
-  >
-    
-  </a>,
-  .c0 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-<span
-    className="c0"
-    href="/index"
-  >
-    &gt;
-  </span>,
-  .c0 {
-  color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-<a
-    className="c0"
-    href="/index/first"
-  >
-    
-  </a>,
-  .c0 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-<span
-    className="c0"
-    href="/index/first"
-  >
-    &gt;
-  </span>,
-  .c0 {
-  color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-<a
-    className="c0"
-    href="/index/first/second"
-  >
-    
-  </a>,
-  .c0 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-<span
-    className="c0"
-    href="/index/first/second"
-  >
-    &gt;
-  </span>,
-  .c0 {
-  color: #333333;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-<a
-    className="c0"
-    href="/index/first/second/third"
-  >
-    
-  </a>,
-  .c0 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-<span
-    className="c0"
-    href="/index/first/second/third"
-  >
-    
-  </span>,
-]
-`;
-
-exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
 .c2 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-right: 1rem;
   color: #999999;
 }
 
 .c1 {
+  font-weight: 500;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1:hover {
-  color: #333333;
-}
-
-.c3 {
-  color: #333333;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3:hover {
-  color: #333333;
 }
 
 .c0 {
   display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-<div
-  className="c0"
->
-  <a
-    className="c1"
+<span>
+  <div
+    className="c0"
+    style={Object {}}
   >
-    主页
-  </a>
-  <span
-    className="c2"
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/index"
+        style={Object {}}
+      >
+        
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/index/first"
+        style={Object {}}
+      >
+        
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/index/first/second"
+        style={Object {}}
+      >
+        
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/index/first/second/third"
+        style={Object {}}
+      >
+        
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      
+    </span>
+  </div>
+</span>
+`;
+
+exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
+.c2 {
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: #999999;
+}
+
+.c1 {
+  font-weight: 500;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #999999;
+}
+
+.c0 {
+  display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+<span>
+  <div
+    className="c0"
+    style={Object {}}
   >
-    /
-  </span>
-  <a
-    className="c1"
-  >
-    一级菜单
-  </a>
-  <span
-    className="c2"
-  >
-    /
-  </span>
-  <a
-    className="c3"
-  >
-    二级菜单
-  </a>
-  <span
-    className="c2"
-  >
-    
-  </span>
-</div>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        style={Object {}}
+      >
+        主页
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      /
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        style={Object {}}
+      >
+        一级菜单
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      /
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        style={Object {}}
+      >
+        二级菜单
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      
+    </span>
+  </div>
+</span>
 `;
 
 exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
-Array [
-  .c0 {
+.c2 {
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-right: 1rem;
   color: #999999;
+}
+
+.c1 {
   font-weight: 500;
-  font-size: 1.1666666666666667em;
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-<a
-    className="c0"
-    href="/index"
-  >
-    
-  </a>,
-  .c0 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
   color: #999999;
 }
 
-<span
+.c0 {
+  display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+<span>
+  <div
     className="c0"
-    href="/index"
+    style={Object {}}
   >
-    &gt;
-  </span>,
-  .c0 {
-  color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-<a
-    className="c0"
-    href="/index/first"
-  >
-    
-  </a>,
-  .c0 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-<span
-    className="c0"
-    href="/index/first"
-  >
-    &gt;
-  </span>,
-  .c0 {
-  color: #999999;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-<a
-    className="c0"
-    href="/index/first/second"
-  >
-    
-  </a>,
-  .c0 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-<span
-    className="c0"
-    href="/index/first/second"
-  >
-    &gt;
-  </span>,
-  .c0 {
-  color: #333333;
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c0:hover {
-  color: #333333;
-}
-
-<a
-    className="c0"
-    href="/index/first/second/third"
-  >
-    
-  </a>,
-  .c0 {
-  font-weight: 500;
-  font-size: 1.1666666666666667em;
-  margin-left: 0.8333333333333334em;
-  margin-right: 0.8333333333333334em;
-  color: #999999;
-}
-
-<span
-    className="c0"
-    href="/index/first/second/third"
-  >
-    &gt;
-  </span>,
-]
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/index"
+        style={Object {}}
+      >
+        
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/index/first"
+        style={Object {}}
+      >
+        
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/index/first/second"
+        style={Object {}}
+      >
+        
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+    <span
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="c1"
+        href="/index/first/second/third"
+        style={Object {}}
+      >
+        
+      </a>
+    </span>
+    <span
+      className="c2"
+      style={Object {}}
+    >
+      &gt;
+    </span>
+  </div>
+</span>
 `;

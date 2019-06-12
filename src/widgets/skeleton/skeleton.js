@@ -7,12 +7,17 @@ import * as React from 'react';
 import Paragraph from './paragraph';
 import Avatar from './avatar';
 import Picture from './picture';
-import styled from 'styled-components';
-import { FontSizeNumber } from '../css';
-import { px2emcss } from '../css/units';
 import { toNumber } from '../common/NumberUtils';
+import { getNewThemeProps } from './utils';
 
-const em = px2emcss(FontSizeNumber);
+import {
+  SkeletonWrap,
+  SkeletonContainer,
+  AvatarContainer,
+  ParagraphContainer,
+  PictrueContainer,
+} from '../css/skeleton';
+
 type ParagraphType = {
   rows: number,
 };
@@ -32,27 +37,6 @@ type SkeletonProps = {
   animation?: boolean,
 };
 
-const SkeletonContainer = styled.div`
-  display: inline-block;
-`;
-
-const AvatarContainer = styled.div`
-  display: inline-block;
-  vertical-align: top;
-`;
-
-const ParagraphContainer = styled.div`
-  display: inline-block;
-  vertical-align: top;
-  padding: 0 ${em(10)};
-`;
-
-const PictrueContainer = styled.div`
-  display: inline-block;
-  vertical-align: top;
-  padding: 0 ${em(10)};
-`;
-
 export function getLastIndex(paragraphCount: number) {
   return paragraphCount - 1;
 }
@@ -68,29 +52,35 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
   };
 
   render() {
-    const { paragraph, loading, children } = this.props;
+    const { paragraph, loading, children, themeProps } = this.props;
     return loading ? (
-      <SkeletonContainer>
-        {this.getAvatar()}
-        <ParagraphContainer>
-          {this.getTitle()}
-          {this.getParagraph(this.getParagraphCount(paragraph))}
-        </ParagraphContainer>
-        {this.getPictrue()}
-      </SkeletonContainer>
+      <SkeletonWrap themeProps={themeProps}>
+        <SkeletonContainer themeProps={themeProps}>
+          {this.getAvatar()}
+          <ParagraphContainer themeProps={themeProps}>
+            {this.getTitle()}
+            {this.getParagraph(this.getParagraphCount(paragraph))}
+          </ParagraphContainer>
+          {this.getPictrue()}
+        </SkeletonContainer>
+      </SkeletonWrap>
     ) : (
       children
     );
   }
 
   getAvatar() {
-    const { avatar, animation } = this.props;
-    return avatar ? (
-      <AvatarContainer>
-        {' '}
-        <Avatar animation={animation} />{' '}
+    const { avatar, animation, themeProps } = this.props;
+    if (!avatar) {
+      return null;
+    }
+    const avatarThemeProps = this.props.mergeThemeStateAndChildThemeProps('Avatar');
+
+    return (
+      <AvatarContainer themeProps={themeProps}>
+        <Avatar themeProps={avatarThemeProps} animation={animation} />
       </AvatarContainer>
-    ) : null;
+    );
   }
 
   getTitle = () => {
@@ -98,33 +88,56 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
     if (!title) {
       return null;
     }
-    const { titleWidth, animation } = this.props;
-    return <Paragraph animation={animation} type={'title'} titleWidth={titleWidth} />;
+    const { animation, themeProps } = this.props;
+    const { themeConfig: titleThemeConfig } = this.props.mergeThemeStateAndChildThemeProps('Title');
+    const { normal: titleNormal } = titleThemeConfig;
+    const titleWidth = titleNormal ? titleNormal.width : 400;
+    const titleThemeProps = getNewThemeProps(themeProps, {
+      width: titleWidth,
+      type: 'title',
+    });
+
+    return <Paragraph themeProps={titleThemeProps} animation={animation} />;
   };
 
   getParagraph = (paragraphCount: number) => {
     if (paragraphCount === 0) {
       return null;
     }
-    const { paragraphWidth, animation } = this.props;
+    const { paragraphWidth, animation, themeProps } = this.props;
     const paragraphArray = [];
     const widthConfig = this.getParagraphWidth(paragraphWidth, paragraphCount);
+
     for (let i = 0; i < paragraphCount; i++) {
       const lastItem = this.isLastItem(paragraphCount, i);
-      paragraphArray.push(
-        <Paragraph animation={animation} paragraphWidth={widthConfig[i]} lastItem={lastItem} />
-      );
+
+      const paragraphThemeProps = getNewThemeProps(themeProps, {
+        width: widthConfig[i],
+        type: 'paragraph',
+        lastItem,
+      });
+
+      paragraphArray.push(<Paragraph themeProps={paragraphThemeProps} animation={animation} />);
     }
     return paragraphArray;
   };
 
   getParagraphWidth(paragraphWidth: ParagraphWidth, paragraphCount: number): any {
+    const paragraphWidthConfig = [];
+
     if (Array.isArray(paragraphWidth) && paragraphWidth.length > 0) {
-      return paragraphWidth;
+      for (let i = 0; i < paragraphCount; i++) {
+        const itemWidth = i < paragraphWidth.length ? paragraphWidth[i] : null;
+        paragraphWidthConfig.push(itemWidth);
+      }
+    } else {
+      for (let i = 0; i < paragraphCount; i++) {
+        const itemWidth = i === paragraphCount - 1 ? paragraphWidth : null;
+        paragraphWidthConfig.push(itemWidth);
+      }
     }
-    const res = {};
-    res[getLastIndex(paragraphCount)] = paragraphWidth;
-    return res;
+
+    return paragraphWidthConfig;
   }
 
   isLastItem(paragraphCount: number, index: number): boolean {
@@ -147,10 +160,12 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
     if (!picture) {
       return null;
     }
-    const { pictureWidth, pictureHeight, animation } = this.props;
+    const { animation, mergeThemeStateAndChildThemeProps } = this.props;
+    const pictureThemeProps = mergeThemeStateAndChildThemeProps('Picture');
+
     return (
-      <PictrueContainer>
-        <Picture animation={animation} pictureWidth={pictureWidth} pictureHeight={pictureHeight} />
+      <PictrueContainer themeProps={pictureThemeProps}>
+        <Picture themeProps={pictureThemeProps} animation={animation} />
       </PictrueContainer>
     );
   };

@@ -12,6 +12,7 @@ import ClearIcon from '../icon/ClearIcon';
 import SearchIcon from '../icon/SearchIcon';
 import PullIcon from '../icon/PullIcon';
 import styled from 'styled-components';
+import { getBorder } from '@lugia/theme-css-hoc';
 import { fixControlledValue } from '../utils';
 
 export class LimitInput extends React.Component<any, any> {
@@ -55,7 +56,8 @@ export class ValidateInput extends React.Component<any, any> {
   render() {
     const { validateType } = this.props;
     const value = this.state.value;
-    const validateStatus = value.indexOf(',') === -1 ? 'success' : 'error';
+    const validateStatus = value.indexOf('a') === -1 ? 'success' : 'error';
+
     return (
       <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
     );
@@ -86,7 +88,7 @@ export class TopInput extends React.Component<any, any> {
     this.props.onChange({ newValue: value });
   };
   onBlur = (event: UIEvent) => {
-    const validateStatus = this.state.value.indexOf(',') === -1 ? 'success' : 'error';
+    const validateStatus = this.state.value.indexOf('a') === -1 ? 'success' : 'error';
     this.setState({ validateStatus });
   };
   render() {
@@ -110,20 +112,16 @@ export class DefaultValueInput extends React.Component<any, any> {
 const Wrapper = styled.div`
   float: left;
   margin-left: 50px;
+  margin-top: 20px;
 `;
 
 const InputDemo = () => {
-  const view = {
+  const register = {
     [Widget.Input]: {
-      width: 260,
-      margin: 15,
-    },
-    [Widget.Tooltip]: {
-      color: '#999999',
-      fontColor: '#ffffff',
-    },
-    register: {
-      width: 140,
+      normal: {
+        width: 300,
+        height: 40,
+      },
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};
@@ -136,16 +134,14 @@ const InputDemo = () => {
   return (
     <div>
       <Wrapper>
-        <Theme config={{ register: { width: 150 } }}>
-          <p>字体色值</p>
-          <Input viewClass="register" disabled={true} value="色值:#333333" />
-          <p>default input</p>
-          <Input placeholder={'请填写内容'} />
-          <p>autoFocus</p>
-          <Input placeholder={'请填写内容'} autoFoucs />
-          <p>禁用状态 </p>
-          <Input size={'default'} disabled={true} />
-        </Theme>
+        <p>字体色值</p>
+        <Input value="色值:#333333" theme={register} />
+        <p>default input</p>
+        <Input placeholder={'请填写内容'} />
+        <p>autoFocus</p>
+        <Input placeholder={'请填写内容'} autoFoucs />
+        <p>禁用状态 </p>
+        <Input size={'default'} disabled={true} />
       </Wrapper>
       <Wrapper>
         <p>small size</p>
@@ -157,11 +153,11 @@ const InputDemo = () => {
       </Wrapper>
       <Wrapper>
         <p>delete</p>
-        <Input viewClass="register" suffix={<ClearIcon />} />
+        <Input suffix={<ClearIcon />} />
         <p>search</p>
         <Input prefix={<SearchIcon />} viewClass="register" suffix={<ClearIcon />} />
         <p>pull</p>
-        <Input viewClass="register" suffix={<PullIcon />} />
+        <Input suffix={<PullIcon />} />
       </Wrapper>
       <Wrapper>
         <p>受限Input</p>
@@ -170,14 +166,14 @@ const InputDemo = () => {
         <DefaultValueInput onChange={onChange('limit')} />
         <p>formatter input</p>
         <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
-      </Wrapper>
+      </Wrapper>{' '}
       <Wrapper>
-        <p>校验信息显示类型 top 输入值 是否含有, </p>
-        <TopInput viewClass="register" validateType="top" onChange={onChange('limit')} />
-        <p>校验信息显示类型 bottom 输入值 是否含有,</p>
-        <ValidateInput viewClass="register" validateType="bottom" onChange={onChange('limit')} />
-        <p>校验信息显示类型 inner 输入值 是否含有, </p>
-        <ValidateInput viewClass="register" validateType="inner" onChange={onChange('limit')} />
+        <p>校验信息显示类型 top 输入值 是否含有a</p>
+        <TopInput validateType="top" onChange={onChange('limit')} />
+        <p>校验信息显示类型 bottom 输入值 是否含有a</p>
+        <ValidateInput validateType="bottom" onChange={onChange('limit')} />
+        <p>校验信息显示类型 inner 输入值 是否含有a </p>
+        <ValidateInput validateType="inner" onChange={onChange('limit')} />
       </Wrapper>
     </div>
   );

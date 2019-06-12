@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
-.c34 {
+.c36 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
 .c14 {
@@ -16,293 +15,359 @@ exports[`Card css 1`] = `
   box-sizing: border-box;
   display: inline-block;
   text-align: center;
-  background: #cccccc;
   white-space: nowrap;
   position: relative;
-  width: 6.666666666666667em;
-  height: 6.666666666666667em;
-  line-height: 2.666666666666667em;
+  background-color: #cccccc;
   border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  line-height: 2.666666666666667em;
 }
 
 .c15 {
-  border-radius: 50%;
-  width: 6.666666666666667em;
-  height: 6.666666666666667em;
   vertical-align: middle;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
 }
 
 .c1 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 29.166666666666668em;
-  height: 10.833333333333334em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 0.8333333333333334em;
-  padding-bottom: 1em;
-  padding-top: 2.166666666666667em;
-  border-radius: 0.4166666666666667em;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  width: 35rem;
+  height: 13rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
-.c6 {
+.c8 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 25em;
-  height: 16.666666666666668em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 0.8333333333333334em;
-  padding-bottom: 1em;
-  padding-top: 2.166666666666667em;
-  border-radius: 0.4166666666666667em;
-}
-
-.c7 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 25em;
-  height: 16.666666666666668em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 2.5em;
-  padding-bottom: 1em;
-  padding-top: 2.166666666666667em;
-  border-radius: 0.4166666666666667em;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  width: 50rem;
+  height: 20rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c11 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 12.5em;
-  height: 15.833333333333334em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 0em;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  width: 15rem;
+  height: 19rem;
   text-align: center;
-  border-radius: 0.4166666666666667em;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.c17 {
+.c18 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 26.666666666666668em;
-  height: 9.666666666666666em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 0.8333333333333334em;
-  padding-bottom: 1em;
-  padding-top: 2.166666666666667em;
-  border-radius: 0.4166666666666667em;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  width: 32rem;
+  height: 11.6rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c21 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 16.666666666666668em;
-  height: 19.166666666666668em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 0.8333333333333334em;
-  padding-bottom: 1em;
-  padding-top: 2.166666666666667em;
-  border-radius: 0.4166666666666667em;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  width: 20rem;
+  height: 23rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.c25 {
+.c26 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 26.666666666666668em;
-  height: 9.333333333333334em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 0.8333333333333334em;
-  padding-bottom: 1em;
-  padding-top: 2.166666666666667em;
-  border-radius: 0.4166666666666667em;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  width: 32rem;
+  height: 11.2rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
-.c27 {
+.c29 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 30em;
-  height: 20em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 0em;
-  padding-bottom: 1em;
-  padding-top: 2.166666666666667em;
-  border-radius: 0.4166666666666667em;
-}
-
-.c44 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 16.666666666666668em;
-  height: 18.333333333333336em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  background: #ffffff;
-  padding-left: 0em;
-  padding-bottom: 1em;
-  padding-top: 2.166666666666667em;
-  border-radius: 0.4166666666666667em;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  width: 20rem;
+  height: 22rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c3 {
   font-size: 1.2rem;
   display: inline-block;
-  width: 28.333333333333336em;
-  height: 7.666666666666666em;
+  width: 100%;
+  padding-top: 1.6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.c8 {
+.c7 {
   font-size: 1.2rem;
   display: inline-block;
-  width: -2.5em;
-  height: -3.1666666666666665em;
+  width: 100%;
+  padding-top: 1.6rem;
+  width: 49rem;
+  height: 16.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c16 {
   font-size: 1.2rem;
   display: inline-block;
-  width: 12.5em;
-  height: 12.666666666666666em;
+  width: 100%;
+  padding-top: 1.6rem;
+  width: 15rem;
+  height: 18.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c20 {
   font-size: 1.2rem;
   display: inline-block;
-  width: 25.833333333333336em;
-  height: 6.5em;
+  width: 100%;
+  padding-top: 1.6rem;
+  width: 25rem;
+  height: 14.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c24 {
   font-size: 1.2rem;
   display: inline-block;
-  width: 15.833333333333334em;
-  height: 16em;
-}
-
-.c26 {
-  font-size: 1.2rem;
-  display: inline-block;
-  width: 25.833333333333336em;
-  height: 6.166666666666667em;
+  width: 100%;
+  padding-top: 1.6rem;
+  width: 19rem;
+  height: 31.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c28 {
   font-size: 1.2rem;
   display: inline-block;
-  width: 16.666666666666668em;
-  height: 15.166666666666666em;
+  width: 100%;
+  padding-top: 1.6rem;
+  width: 35rem;
+  height: 16.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.c30 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 100%;
+  padding-top: 1.6rem;
+  width: 39rem;
+  height: 20.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.c46 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 100%;
+  padding-top: 1.6rem;
+  width: 19rem;
+  height: 18.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c23 {
-  width: inherit;
-  height: inherit;
-}
-
-.c12 {
-  position: relative;
-  width: inherit;
-  height: 9.333333333333334em;
-  display: block;
-  text-align: center;
-}
-
-.c18 {
-  position: relative;
-  width: 10em;
-  height: inherit;
-  display: inline-block;
-  text-align: center;
+  width: 12rem;
+  height: 11.2rem;
 }
 
 .c22 {
   position: relative;
-  width: 16.666666666666668em;
-  height: 10.833333333333334em;
+  width: 20rem;
+  height: 35rem;
   display: block;
-  text-align: center;
 }
 
-.c13 {
-  padding: 1.6666666666666667em 0;
-  border-radius: 50%;
+.c27 {
+  position: relative;
+  width: 36rem;
+  height: 20rem;
+  display: inline-block;
+}
+
+.c12 {
+  position: relative;
+  text-align: center;
+  width: 16rem;
+  height: 22rem;
+  display: block;
 }
 
 .c19 {
-  padding: 1.6666666666666667em 1.6666666666666667em;
+  position: relative;
+  text-align: center;
+  width: 26rem;
+  height: 18rem;
+  display: block;
+}
+
+.c13 {
   border-radius: 50%;
-}
-
-.c4 {
-  text-align: inherit;
-  display: inline-block;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 1.6rem;
-  color: #333333;
-  font-weight: 500;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.c10 {
-  text-align: inherit;
-  display: inline-block;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 1.6rem;
-  color: #333333;
-  font-weight: 700;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.c9 {
-  left: 1.1666666666666667em;
-  position: absolute;
-  display: inline-block;
-  height: 1.6666666666666667em;
-  width: 0.4166666666666667em;
-  background: #4d63ff;
-  border-radius: 0.4166666666666667em;
+  width: 7rem;
+  height: 7rem;
+  background-color: transparent;
+  padding: 2rem 0;
 }
 
 .c5 {
   text-align: inherit;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.c4 {
+  display: inline-block;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 1.6rem;
+  color: #333333;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-weight: 500;
+  padding-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.c10 {
+  display: inline-block;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 1.6rem;
+  color: #333333;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-weight: 700;
+  padding-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.c17 {
+  display: inline-block;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 1.6rem;
+  color: #333333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-weight: 500;
+  padding-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.c25 {
+  display: inline-block;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 1.6rem;
+  color: #333333;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-weight: 500;
+  padding-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.c9 {
+  left: 1.4rem;
+  position: absolute;
+  display: inline-block;
+  height: 2rem;
+  width: 0.5rem;
+  background: #4d63ff;
+  border-radius: 0.5rem;
+}
+
+.c6 {
   font-size: 1.4rem;
-  margin-top: 0.33333333333333337em;
+  padding-top: 0.4rem;
   color: #666666;
 }
 
@@ -310,11 +375,11 @@ exports[`Card css 1`] = `
   position: absolute;
   font-size: 1.4rem;
   font-weight: 400;
-  right: 1.6666666666666667em;
-  top: 1.3333333333333335em;
+  right: 2rem;
+  top: 1.6rem;
 }
 
-.c37 {
+.c39 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -331,15 +396,15 @@ exports[`Card css 1`] = `
   box-sizing: border-box;
 }
 
-.c37:hover > div {
+.c39:hover > div {
   color: #4d63ff;
 }
 
-.c37:hover > span > i:first-child {
+.c39:hover > span > i:first-child {
   color: #4d63ff;
 }
 
-.c38 {
+.c40 {
   color: #4d63ff;
   position: relative;
   display: inline-block;
@@ -354,11 +419,11 @@ exports[`Card css 1`] = `
   line-height: 2.8333333333333335em;
 }
 
-.c38:focus {
+.c40:focus {
   color: #4d63ff;
 }
 
-.c39 {
+.c41 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -372,17 +437,18 @@ exports[`Card css 1`] = `
   line-height: 2.8333333333333335em;
 }
 
-.c39:focus {
+.c41:focus {
   color: #4d63ff;
 }
 
-.c43 {
+.c45 {
+  position: absolute;
   display: inline-block;
   overflow: hidden;
   width: 100%;
 }
 
-.c40 {
+.c42 {
   background-color: blue;
   position: absolute;
   box-sizing: border-box;
@@ -398,7 +464,7 @@ exports[`Card css 1`] = `
   transition: all 0.3s;
 }
 
-.c32 {
+.c34 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -412,7 +478,7 @@ exports[`Card css 1`] = `
   left: 0.8333333333333334em;
 }
 
-.c41 {
+.c43 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -426,22 +492,21 @@ exports[`Card css 1`] = `
   right: 0.8333333333333334em;
 }
 
-.c30 {
+.c32 {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
   width: NaNem;
-  height: NaNem;
 }
 
-.c35 {
+.c37 {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.c36 {
+.c38 {
   height: 2.8333333333333335em;
   display: inline-block;
   box-sizing: border-box;
@@ -453,17 +518,16 @@ exports[`Card css 1`] = `
   transform: translateX(0em);
 }
 
-.c31 {
+.c33 {
   height: 2.8333333333333335em;
   line-height: 2.8333333333333335em;
   position: relative;
   border-bottom: 0.08333333333333334em solid #e8e8e8;
   background: none;
-  margin: 1.6666666666666667em 0;
   z-index: 99;
 }
 
-.c33 {
+.c35 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -471,7 +535,7 @@ exports[`Card css 1`] = `
   cursor: not-allowed;
 }
 
-.c42 {
+.c44 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -485,32 +549,34 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c29 {
+.c31 {
   display: inline-block;
   margin-left: 20px;
 }
 
-.c45 {
+.c47 {
   text-align: center;
   width: 100%;
   height: 100%;
 }
 
-.c46 {
+.c48 {
   text-align: center;
   font-size: 16px;
   color: #666;
-  margin-bottom: 26px;
+  height: 45px;
+  padding-top: 34px;
+  padding-bottom: 26px;
   width: 100%;
 }
 
-.c47 {
+.c49 {
   text-align: center;
   color: #4d63ff;
   display: inline-block;
 }
 
-.c48 {
+.c50 {
   position: absolute;
   text-align: center;
   font-size: 14px;
@@ -534,34 +600,41 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c1"
-      type="simple"
-    >
+    <span>
       <div
-        className="c2"
-      >
-        操作
-      </div>
-      <div
-        className="c3"
+        className="c1"
+        style={Object {}}
         type="simple"
       >
         <div
-          className="c4"
-          type="simple"
+          className="c2"
+          style={Object {}}
         >
-          this is title
-           
+          操作
         </div>
         <div
-          className="c5"
+          className="c3"
+          style={Object {}}
+          type="simple"
         >
-          this is description
-           
+          <div
+            className="c4   c5"
+            style={Object {}}
+            type="simple"
+          >
+            this is title
+             
+          </div>
+          <div
+            className="c6   c5"
+            style={Object {}}
+          >
+            this is description
+             
+          </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
   <p>
     基本样式
@@ -569,42 +642,53 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c6"
-      type="simple"
-    >
+    <span>
       <div
-        className="c3"
+        className="c1"
+        style={
+          Object {
+            "height": "20rem",
+            "width": "50rem",
+          }
+        }
         type="simple"
       >
         <div
-          className="c4"
+          className="c7"
+          style={Object {}}
           type="simple"
         >
-          <div>
-            this is title
+          <div
+            className="c4   c5"
+            style={Object {}}
+            type="simple"
+          >
+            <div>
+              this is title
+            </div>
+             
           </div>
-           
-        </div>
-        <div
-          className="c5"
-        >
-          <div>
-            this is description
+          <div
+            className="c6   c5"
+            style={Object {}}
+          >
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+             
           </div>
-          <div>
-            this is description
-          </div>
-          <div>
-            this is description
-          </div>
-          <div>
-            this is description
-          </div>
-           
         </div>
       </div>
-    </div>
+    </span>
   </div>
   <p>
     tip样式
@@ -612,64 +696,53 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c7"
-      type="tip"
-    >
+    <span>
       <div
         className="c8"
-        content={
-          Array [
-            <div>
-              this is description
-            </div>,
-            <div>
-              this is description
-            </div>,
-          ]
+        style={
+          Object {
+            "height": "20rem",
+            "width": "50rem",
+          }
         }
         type="tip"
       >
         <div
-          className="c9"
-        />
-        <div
-          className="c10"
+          className="c7"
+          content={
+            Array [
+              <div>
+                this is description
+              </div>,
+              <div>
+                this is description
+              </div>,
+            ]
+          }
+          style={Object {}}
           type="tip"
         >
-          <div>
+          <div
+            className="c9"
+            style={Object {}}
+          />
+          <div
+            className="c10   c5"
+            style={Object {}}
+            type="tip"
+          >
             this is title
+             
           </div>
-           
-        </div>
-        <div>
-          this is description
-        </div>
-        <div>
-          this is description
-        </div>
-      </div>
-    </div>
-  </div>
-  <p>
-    children样式 
-  </p>
-  <div
-    className="c0"
-  >
-    <div
-      className="c1"
-      type="simple"
-    >
-      <div
-        className="c3"
-        type="simple"
-      >
-        <div>
-          children 样式的卡片
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
   <p>
     头像样式
@@ -677,58 +750,84 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c11"
-      type="avatar"
-    >
+    <span>
       <div
-        className="c12"
-        size={
+        className="c11"
+        style={
           Object {
-            "height": undefined,
-            "width": undefined,
+            "height": "22rem",
+            "width": "16rem",
           }
         }
         type="avatar"
       >
         <span
-          className="c13 c14"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          shape="circle"
-          size="default"
-          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+          className="c12"
+          style={
+            Object {
+              "height": "22rem",
+              "width": "16rem",
+            }
+          }
         >
-          <img
-            className="c15"
-            shape="circle"
-            src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-          />
+          <span>
+            <span>
+              <div
+                className="c13   c14"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                shape="circle"
+                size="default"
+                src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+                style={
+                  Object {
+                    "height": "10rem",
+                    "width": "10rem",
+                  }
+                }
+              >
+                <img
+                  className="c15"
+                  shape="circle"
+                  src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+                  style={
+                    Object {
+                      "height": "10rem",
+                      "width": "10rem",
+                    }
+                  }
+                />
+              </div>
+            </span>
+          </span>
         </span>
-      </div>
-      <div
-        className="c16"
-        type="avatar"
-      >
         <div
-          className="c4"
+          className="c16"
+          style={Object {}}
           type="avatar"
         >
-          this is title
-           
-        </div>
-        <div
-          className="c5"
-        >
-          this is description
-           
+          <div
+            className="c17   c5"
+            style={Object {}}
+            type="avatar"
+          >
+            this is title
+             
+          </div>
+          <div
+            className="c6   c5"
+            style={Object {}}
+          >
+            this is description
+             
+          </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
   <p>
     头像样式
@@ -736,65 +835,88 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c17"
-      type="avatar"
-    >
+    <span>
       <div
         className="c18"
-        size={
+        style={
           Object {
-            "height": undefined,
-            "width": undefined,
+            "height": "18rem",
+            "width": "26rem",
           }
         }
         type="avatar"
       >
         <span
-          className="c19 c14"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          shape="circle"
-          size="default"
-          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+          className="c19"
+          style={
+            Object {
+              "height": "18rem",
+              "width": "26rem",
+            }
+          }
         >
-          <img
-            className="c15"
-            shape="circle"
-            src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-          />
+          <span>
+            <span>
+              <div
+                className="c13   c14"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                shape="circle"
+                size="default"
+                src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+                style={
+                  Object {
+                    "height": "10rem",
+                    "width": "10rem",
+                  }
+                }
+              >
+                <img
+                  className="c15"
+                  shape="circle"
+                  src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+                  style={
+                    Object {
+                      "height": "10rem",
+                      "width": "10rem",
+                    }
+                  }
+                />
+              </div>
+            </span>
+          </span>
         </span>
-      </div>
-      <div
-        className="c20"
-        type="avatar"
-      >
         <div
-          className="c4"
+          className="c20"
+          style={Object {}}
           type="avatar"
         >
-          this is title
-           
-        </div>
-        <div
-          className="c5"
-        >
-          <div>
-            <div>
-              this is description
-            </div>
-            <div>
-              this is description
-            </div>
+          <div
+            className="c4   c5"
+            style={Object {}}
+            type="avatar"
+          >
+            this is title
+             
           </div>
-           
+          <div
+            className="c6   c5"
+            style={Object {}}
+          >
+            <div>
+              <div>
+                this is description
+              </div>
+            </div>
+             
+          </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
   <p>
     图片样式
@@ -802,44 +924,62 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c21"
-      type="image"
-    >
+    <span>
       <div
-        className="c22"
-        size={
+        className="c21"
+        style={
           Object {
-            "height": 130,
-            "width": 200,
+            "height": "35rem",
+            "width": "20rem",
           }
         }
         type="image"
       >
-        <img
-          className="c23"
-          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
-        />
-      </div>
-      <div
-        className="c24"
-        type="image"
-      >
         <div
-          className="c4"
+          className="c22"
+          style={
+            Object {
+              "height": "35rem",
+              "width": "20rem",
+            }
+          }
+        >
+          <span>
+            <img
+              className="c23"
+              src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
+              style={
+                Object {
+                  "height": "16rem",
+                  "width": "20rem",
+                }
+              }
+            />
+          </span>
+        </div>
+        <div
+          className="c24"
+          style={Object {}}
           type="image"
         >
-          this is title
-           
-        </div>
-        <div
-          className="c5"
-        >
-          this is description
-           
+          <div
+            className="c25   c5"
+            style={Object {}}
+            type="image"
+          >
+            this is title
+             
+          </div>
+          <div
+            className="c6   c5"
+            style={Object {}}
+          >
+            this is description
+             
+          </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
   <p>
     图片样式
@@ -847,44 +987,62 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c25"
-      type="image"
-    >
-      <div
-        className="c18"
-        size={
-          Object {
-            "height": undefined,
-            "width": undefined,
-          }
-        }
-        type="image"
-      >
-        <img
-          className="c23"
-          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
-        />
-      </div>
+    <span>
       <div
         className="c26"
+        style={
+          Object {
+            "height": "20rem",
+            "width": "36rem",
+          }
+        }
         type="image"
       >
         <div
-          className="c4"
-          type="image"
+          className="c27"
+          style={
+            Object {
+              "height": "20rem",
+              "width": "36rem",
+            }
+          }
         >
-          this is title
-           
+          <span>
+            <img
+              className="c23"
+              src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
+              style={
+                Object {
+                  "height": "20rem",
+                  "width": "16rem",
+                }
+              }
+            />
+          </span>
         </div>
         <div
-          className="c5"
+          className="c28"
+          style={Object {}}
+          type="image"
         >
-          this is description
-           
+          <div
+            className="c4   c5"
+            style={Object {}}
+            type="image"
+          >
+            this is title
+             
+          </div>
+          <div
+            className="c6   c5"
+            style={Object {}}
+          >
+            this is description
+             
+          </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
   <p>
     组合样式
@@ -892,135 +1050,173 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c27"
-      type="combo"
-    >
+    <span>
       <div
-        className="c2"
-      >
-        操作
-      </div>
-      <div
-        className="c28"
-        content={
-          <styled.div>
-             
-            <lugia_widget_ThemeWrapWidgetlugia_widget_Tabs
-              data={
-                Array [
-                  Object {
-                    "content": "content of Tab1",
-                    "title": "Tab1",
-                  },
-                  Object {
-                    "content": "content of Tab2",
-                    "title": "Tab2",
-                  },
-                  Object {
-                    "content": "content of Tab3",
-                    "title": "Tab3",
-                  },
-                ]
-              }
-            />
-          </styled.div>
+        className="c29"
+        style={
+          Object {
+            "height": "24rem",
+            "width": "40rem",
+          }
         }
         type="combo"
       >
         <div
-          className="c29"
+          className="c2"
+          style={Object {}}
         >
-           
+          操作
+        </div>
+        <div
+          className="c30"
+          content={
+            <ForwardRef(styled.div)>
+              <lugia_t_hoc_lugia_widget_Tabs
+                data={
+                  Array [
+                    Object {
+                      "content": "content of Tab1",
+                      "title": "Tab1",
+                    },
+                    Object {
+                      "content": "content of Tab2",
+                      "title": "Tab2",
+                    },
+                    Object {
+                      "content": "content of Tab3",
+                      "title": "Tab3",
+                    },
+                  ]
+                }
+              />
+            </ForwardRef(styled.div)>
+          }
+          style={Object {}}
+          type="combo"
+        >
           <div
-            className="c30"
+            className="c31"
           >
-            <div
-              className="c31"
-            >
-              <span
-                className="c32"
-                onClick={[Function]}
-                type="pre"
-              >
-                <i
-                  className="lugia-icon-direction_Left c33 c34"
-                />
-              </span>
+            <span>
               <div
-                className="c35"
+                className="c32"
               >
                 <div
-                  className="c36"
-                  x={-0}
+                  className="c33"
                 >
+                  <span
+                    className="c34"
+                    onClick={[Function]}
+                    type="pre"
+                  >
+                    <span
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                    >
+                      <i
+                        className="lugia-icon-direction_Left c35   c36"
+                        style={
+                          Object {
+                            "fontSize": "1.2rem",
+                          }
+                        }
+                      />
+                    </span>
+                  </span>
                   <div
                     className="c37"
-                    disabled={false}
-                    onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
                   >
                     <div
                       className="c38"
-                      disabled={false}
+                      x={-0}
                     >
-                      Tab1
+                      <span>
+                        <div
+                          className="c39"
+                          disabled={false}
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                        >
+                          <div
+                            className="c40"
+                            disabled={false}
+                          >
+                            Tab1
+                          </div>
+                        </div>
+                      </span>
+                      <span>
+                        <div
+                          className="c39"
+                          disabled={false}
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                        >
+                          <div
+                            className="c41"
+                            disabled={false}
+                          >
+                            Tab2
+                          </div>
+                        </div>
+                      </span>
+                      <span>
+                        <div
+                          className="c39"
+                          disabled={false}
+                          onClick={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                        >
+                          <div
+                            className="c41"
+                            disabled={false}
+                          >
+                            Tab3
+                          </div>
+                        </div>
+                      </span>
+                      <div
+                        className="c42"
+                        x={20}
+                      />
                     </div>
                   </div>
-                  <div
-                    className="c37"
-                    disabled={false}
+                  <span
+                    className="c43"
                     onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
+                    type="next"
                   >
-                    <div
-                      className="c39"
-                      disabled={false}
+                    <span
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
                     >
-                      Tab2
-                    </div>
-                  </div>
-                  <div
-                    className="c37"
-                    disabled={false}
-                    onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                  >
-                    <div
-                      className="c39"
-                      disabled={false}
-                    >
-                      Tab3
-                    </div>
-                  </div>
-                  <div
-                    className="c40"
-                    x={20}
-                  />
+                      <i
+                        className="lugia-icon-direction_right c44   c36"
+                        style={
+                          Object {
+                            "fontSize": "1.2rem",
+                          }
+                        }
+                      />
+                    </span>
+                  </span>
                 </div>
+                <span>
+                  <div
+                    className="c45"
+                  >
+                    content of Tab1
+                  </div>
+                </span>
               </div>
-              <span
-                className="c41"
-                onClick={[Function]}
-                type="next"
-              >
-                <i
-                  className="lugia-icon-direction_right c42 c34"
-                />
-              </span>
-            </div>
-            <div
-              className="c43"
-            >
-              content of Tab1
-            </div>
+            </span>
           </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
   <p>
     组合样式
@@ -1028,55 +1224,64 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <div
-      className="c44"
-      type="combo"
-    >
+    <span>
       <div
-        className="c28"
-        content={<AmountCard />}
+        className="c29"
+        style={
+          Object {
+            "height": "22rem",
+            "width": "20rem",
+          }
+        }
         type="combo"
       >
         <div
-          className="c45"
+          className="c46"
+          content={<AmountCard />}
+          style={Object {}}
+          type="combo"
         >
-          <div
-            className="c46"
-          >
-            价格
-          </div>
           <div
             className="c47"
           >
             <div
-              className="c47"
-              style={
-                Object {
-                  "fontSize": 32,
-                }
-              }
+              className="c48"
             >
-              9
+              价格
             </div>
             <div
-              className="c47"
-              style={
-                Object {
-                  "fontSize": 18,
-                }
-              }
+              className="c49"
             >
-              .88
+              <div
+                className="c49"
+                style={
+                  Object {
+                    "fontSize": 32,
+                  }
+                }
+              >
+                9
+              </div>
+              <div
+                className="c49"
+                style={
+                  Object {
+                    "fontSize": 18,
+                  }
+                }
+              >
+                .88
+              </div>
             </div>
+            <button
+              className="c50"
+            >
+              购买
+            </button>
           </div>
-          <button
-            className="c48"
-          >
-            购买
-          </button>
         </div>
       </div>
-    </div>
+    </span>
   </div>
 </div>
 `;

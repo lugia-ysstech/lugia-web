@@ -20,20 +20,44 @@ const Wrapper = styled.div`
 export default () => {
   const view = {
     [Widget.Avatar]: {
-      color: 'white',
-      backgroundColor: '#cccccc',
-      margin: 10,
+      normal: {
+        color: 'white',
+        background: {
+          backgroundColor: '#cccccc',
+        },
+        margin: {
+          left: 10,
+          top: 10,
+        },
+      },
     },
+  };
+  const badge = {
     [Widget.Badge]: {
-      position: { right: 20, top: 10 },
+      normal: {
+        position: { right: 20, top: 10 },
+      },
     },
-    register: {},
+  };
+  const config = {
+    [Widget.Avatar]: {
+      normal: {
+        color: 'white',
+        background: {
+          backgroundColor: '#4d63ff',
+        },
+        margin: {
+          left: 15,
+          top: 15,
+        },
+      },
+    },
   };
   return (
     <div>
       <Theme config={view}>
         <Wrapper>
-          <Theme config={{ register: {} }}>
+          <Theme>
             <Avatar viewClass="register" shape={'square'} name={'l'} />
             <Avatar viewClass="register" shape={'square'} name={'lu'} />
             <Avatar viewClass="register" shape={'square'} name={'lug'} />
@@ -46,7 +70,13 @@ export default () => {
           </Theme>
         </Wrapper>
         <Wrapper>
-          <Theme config={{ register: { color: 'white', backgroundColor: '#4d63ff' } }}>
+          <Theme
+            config={{
+              register: {
+                [Widget.Avatar]: { normal: { color: 'white', backgroundColor: '#4d63ff' } },
+              },
+            }}
+          >
             <Avatar
               viewClass="register"
               shape={'square'}
@@ -110,19 +140,19 @@ export default () => {
           <Avatar shape={'square'} size={'large'} name={'lugia'} />
         </Badge>
 
-        <Theme config={view}>
+        <br />
+        <br />
+        <Theme
+          config={{ register: { [Widget.Badge]: { normal: { position: { right: 15, top: 8 } } } } }}
+        >
+          <Badge viewClass="register" count={10}>
+            <Avatar icon={'lugia-icon-financial_user'} size={'large'} />
+          </Badge>
           <br />
           <br />
-          <Theme config={{ register: { position: { right: 15, top: 8 } } }}>
-            <Badge viewClass="register" count={10}>
-              <Avatar icon={'lugia-icon-financial_user'} size={'large'} />
-            </Badge>
-            <br />
-            <br />
-            <Badge dot={true}>
-              <Avatar icon={'lugia-icon-financial_user'} size={'large'} />
-            </Badge>
-          </Theme>
+          <Badge config={badge} dot={true}>
+            <Avatar icon={'lugia-icon-financial_user'} size={'large'} />
+          </Badge>
         </Theme>
       </Wrapper>
     </div>

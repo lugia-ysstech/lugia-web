@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { createRoute, Link } from '@lugia/lugiax-router';
+import { createRoute, go } from '@lugia/lugiax-router';
 import router from './router';
 import Menu from './widgets/menu';
 import Input from './widgets/input';
+import ThemeView from './ThemeView';
+import message from './widgets/message';
 
 const data = [
   {
@@ -258,19 +260,45 @@ const data = [
   },
 ];
 
+const processMap = {
+  amountinput: '/amount-input',
+  autocomplete: '/auto-complete',
+  backtop: '/back-top',
+  datepicker: '/date-picker',
+  timepicker: '/time-picker',
+  treeselect: '/tree-select',
+  timeline: '/time-line',
+  numberinput: '/number-input',
+};
+
+const modules = {};
+data.reduce((modules, item) => {
+  const { value: itemValue, text } = item;
+  const processVal = processMap[itemValue.replace(/\//g, '')];
+  const value = processVal ? processVal : itemValue;
+  try {
+    modules[itemValue] = {
+      Target: require(`./widgets${value}/index`).default,
+      Info: require(`./widgets${value}/lugia.${value.replace(/\//g, '')}.zh-CN.json`),
+    };
+  } catch (err) {
+    delete modules[itemValue];
+    const msg = `${text}组件加载错误`;
+    message.error(msg);
+    console.error(msg);
+  }
+  return modules;
+}, modules);
+
 class Header extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = { data };
+    this.state = { data, modulePath: '/rate' };
   }
-
-  wrapItem = (item: Object, param: Object) => {
-    const { key } = param;
-    return <Link to={`${key}`}>{item} </Link>;
-  };
 
   onChange = item => {
     const { newValue = '' } = item;
+
     this.setState({
       data: data.filter(({ value }) => {
         return value && value.toLowerCase().indexOf(newValue.toLowerCase()) !== -1;
@@ -280,10 +308,21 @@ class Header extends Component<any, any> {
 
   render() {
     return [
+      <ThemeView modulePath={this.state.modulePath} modules={modules} />,
       <Input onChange={this.onChange} />,
-      <Menu data={this.state.data} wrapItem={this.wrapItem} />,
+      <Menu data={this.state.data} onChange={this.onChangeItem} />,
     ];
   }
+
+  onChangeItem = ({ selectedKeys }) => {
+    const url = selectedKeys[0];
+    if (url) {
+      go({ url });
+      this.setState({
+        modulePath: url,
+      });
+    }
+  };
 }
 
 export default () => {
