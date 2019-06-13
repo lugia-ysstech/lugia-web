@@ -140,7 +140,7 @@ export default ThemeProvider(
                 <BackTopContent themeProps={getPartOfThemeProps('BackTopContent')}>
                   <IconBox themeProps={themeProps}>
                     <Theme config={{ [Widget.Icon]: getPartOfThemeConfig('Icon') }}>
-                      <Icons iconClass={icon} />
+                      <Icons iconClass={icon} themeProps={themeProps} />
                     </Theme>
                   </IconBox>
                 </BackTopContent>
