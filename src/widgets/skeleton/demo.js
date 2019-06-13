@@ -32,12 +32,10 @@ const Box = styled.div`
 
 const config = {
   [Widget.Skeleton]: {
-    normal: { width: 1000, height: 600, margin: { left: 50 }, padding: { top: 50 } },
-    children: {
-      Title: { normal: { width: 100 } },
-      Avatar: { normal: { width: 200 } },
-      Picture: { normal: { width: 300, height: 500 } },
-    },
+    Wrap: { normal: { width: 1000, height: 600, margin: { left: 50 }, padding: { top: 50 } } },
+    Title: { normal: { width: 100 } },
+    Avatar: { normal: { width: 200 } },
+    Picture: { normal: { width: 300, height: 500 } },
   },
 };
 

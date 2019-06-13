@@ -8,7 +8,6 @@ import { cloneElement } from 'react';
 import BreadcrumbItem from './breadcrumbItem';
 import { getHrefs, replaceStr } from '../common/StringUtils';
 import { BreadcrumbContainer } from '../css/breadcrumb';
-import { deepMerge } from '@lugia/object-utils';
 import Widget from '../consts/index';
 
 export type Route = {
@@ -29,8 +28,6 @@ export type BreadcrumbProps = {
   renderItem?: RenderFunc,
   lastSeparator: string | React.Element<any>,
   themeProps: Object,
-  mergeThemeStateAndChildThemeProps: Function,
-  getChildThemeHocProps: Function,
   children: React.ChildrenArray<React.Element<any>>,
 };
 
@@ -108,19 +105,9 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
   }
 
   getChildrenThemeProps = () => {
-    const { themeProps, mergeThemeStateAndChildThemeProps, getChildThemeHocProps } = this.props;
-
-    const separatorThemeProps = deepMerge(
-      themeProps,
-      mergeThemeStateAndChildThemeProps('Separator')
-    );
-
-    const { normal = {} } = themeProps.themeConfig;
-    const textThemeHoc = getChildThemeHocProps('Text');
-
-    const { theme: textTheme, viewClass } = getChildThemeHocProps('Text');
-
-    textThemeHoc.theme[viewClass] = deepMerge({ normal }, textTheme[viewClass]);
+    const { getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
+    const textThemeHoc = getPartOfThemeHocProps('Text');
+    const separatorThemeProps = getPartOfThemeProps('Separator');
 
     return {
       textThemeHoc,
@@ -138,11 +125,12 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       renderItem = defaultRenderItem,
       children,
       themeProps,
+      getPartOfThemeProps,
     } = this.props;
 
     const { textThemeHoc, separatorThemeProps } = this.getChildrenThemeProps();
-
-    const config = { textThemeHoc, separatorThemeProps, themeProps };
+    const wrapThemeProps = getPartOfThemeProps('Wrap');
+    const config = { textThemeHoc, separatorThemeProps, wrapThemeProps };
     if (!routes && !children) {
       crumbs = [
         <BreadcrumbItem {...config} separator={separator}>
@@ -163,7 +151,7 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
     if (routes && routes.length > 0) {
       const breadCrumbItemConfig = this.getBreadCrumbItemConfig(routes, params);
       return (
-        <BreadcrumbContainer themeProps={themeProps}>
+        <BreadcrumbContainer themeProps={wrapThemeProps}>
           {renderItem(breadCrumbItemConfig, separator, lastSeparator, config)}
         </BreadcrumbContainer>
       );
@@ -184,7 +172,6 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
           isLastItem: isLast,
           href,
           key: index,
-          themeProps,
           textThemeHoc,
           separatorThemeProps,
         });
@@ -195,11 +182,10 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
           separator: lastSeparator,
           isLastItem: true,
           key: 'one',
-          themeProps,
           textThemeHoc,
           separatorThemeProps,
         }));
     }
-    return <BreadcrumbContainer themeProps={themeProps}>{crumbs}</BreadcrumbContainer>;
+    return <BreadcrumbContainer themeProps={wrapThemeProps}>{crumbs}</BreadcrumbContainer>;
   }
 }

@@ -16,7 +16,7 @@ export default class Picture extends React.Component<any, PictrueProps> {
   render() {
     const { themeProps, animation } = this.props;
 
-    const { themeConfig } = themeProps;
+    const { themeConfig = {} } = themeProps;
     const { width = 180, height = 128 } = themeConfig.normal;
 
     const AnimationThemeProps = getNewThemeProps(themeProps, {

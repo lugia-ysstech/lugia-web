@@ -5,7 +5,7 @@
  */
 
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
+import ThemeHoc from '@lugia/theme-hoc';
 import Carousel from './carousel';
 
-export default ThemeProvider(Carousel, Widget.Carousel, { hover: true });
+export default ThemeHoc(Carousel, Widget.Carousel, { hover: true });
