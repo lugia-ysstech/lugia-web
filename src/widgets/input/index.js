@@ -51,24 +51,24 @@ const CommonInputStyle = CSSComponent({
       height: DefaultHeight,
       border: {
         top: {
-          borderColor: lightGreyColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: lightGreyColor,
+          style: 'solid',
+          width: 1,
         },
         left: {
-          borderColor: lightGreyColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: lightGreyColor,
+          style: 'solid',
+          width: 1,
         },
         bottom: {
-          borderColor: lightGreyColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: lightGreyColor,
+          style: 'solid',
+          width: 1,
         },
         right: {
-          borderColor: lightGreyColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: lightGreyColor,
+          style: 'solid',
+          width: 1,
         },
       },
     },
@@ -76,7 +76,6 @@ const CommonInputStyle = CSSComponent({
       const { propsConfig } = themeProps;
       const { size, prefix, validateStatus, validateType } = propsConfig;
       const { width, height } = themeMeta;
-      console.log(themeMeta, 33333, themeProps);
       const style = {};
       const color = isValidateSuccess(validateStatus, validateType, 'inner')
         ? dangerColor
@@ -106,24 +105,24 @@ const CommonInputStyle = CSSComponent({
     defaultTheme: {
       border: {
         top: {
-          borderColor: themeColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: themeColor,
+          style: 'solid',
+          width: 1,
         },
         left: {
-          borderColor: themeColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: themeColor,
+          style: 'solid',
+          width: 1,
         },
         bottom: {
-          borderColor: themeColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: themeColor,
+          style: 'solid',
+          width: 1,
         },
         right: {
-          borderColor: themeColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: themeColor,
+          style: 'solid',
+          width: 1,
         },
       },
     },
@@ -152,24 +151,24 @@ const CommonInputStyle = CSSComponent({
       background: { backgroundColor: disableColor },
       border: {
         top: {
-          borderColor: lightGreyColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: lightGreyColor,
+          style: 'solid',
+          width: 1,
         },
         left: {
-          borderColor: lightGreyColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: lightGreyColor,
+          style: 'solid',
+          width: 1,
         },
         bottom: {
-          borderColor: lightGreyColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: lightGreyColor,
+          style: 'solid',
+          width: 1,
         },
         right: {
-          borderColor: lightGreyColor,
-          borderStyle: 'solid',
-          borderWidth: 1,
+          color: lightGreyColor,
+          style: 'solid',
+          width: 1,
         },
       },
     },
@@ -208,10 +207,10 @@ const InputContainer = CSSComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['opacity'], ['padding'], ['margin'], ['border']],
+    selectNames: [['width'], ['height'], ['opacity'], ['padding'], ['margin']],
   },
   hover: {
-    selectNames: [['border']],
+    selectNames: [['boxShadow']],
   },
   disabled: {
     selectNames: [['boxShadow']],
@@ -377,10 +376,10 @@ type InputProps = {|
   value?: string,
   formatter?: (value: number | string) => string,
   parser?: (displayValue: number | string) => string,
-  getChildTheme?: (childWidgetName: string) => { viewClass: string, theme: Object },
   readOnly: boolean,
   autoFocus?: boolean,
   type: string,
+  getPartOfThemeProps: Function,
 |};
 
 class TextBox extends Component<InputProps, InputState> {
