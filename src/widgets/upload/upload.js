@@ -129,7 +129,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
   }
 
   render() {
-    const { themeProps } = this.props;
+    const { themeProps, mergeThemePropsAndPropsConfig } = this.props;
     return (
       <Container themeProps={themeProps}>
         <GetElement
@@ -138,6 +138,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
           setChoosedFile={this.setChoosedFile}
           setAutoUploadState={this.setAutoUploadState}
           setDeleteList={this.setDeleteList}
+          mergeThemePropsAndPropsConfig={mergeThemePropsAndPropsConfig}
         />
       </Container>
     );
