@@ -20,7 +20,7 @@ import {
   updateMapData,
 } from '../common/translateData';
 import Theme from '../theme';
-import { Group } from '../checkbox/checkbox-group';
+import { Group } from '../css/checkbox-group';
 
 type RadioGroupProps = {
   defaultValue?: string,
@@ -32,11 +32,13 @@ type RadioGroupProps = {
   valueField?: string,
   displayValue?: string,
   children?: any,
-  getTheme: Function,
   styles: 'default' | 'vertical',
   cache?: boolean,
   childType?: 'default' | 'button',
   size?: 'default' | 'small' | 'large' | 'bigger',
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
 };
 type RadioGroupState = {
   value: string,
@@ -102,12 +104,13 @@ export default ThemeProvider(
       const disV = typeof displayValue === 'string' ? [displayValue] : [];
       const {
         cache = true,
-        getTheme,
         childType = 'default',
         children,
         data,
         disabled,
         styles,
+        themeProps,
+        getPartOfThemeProps,
       } = this.props;
       if (!cache) {
         updateMapData(this.props, disV, this.updateMapData);
@@ -127,9 +130,10 @@ export default ThemeProvider(
         hasValueProps: () => this.hasValueProps(),
         cancelItem: this.cancelItem,
       };
+      console.log('themeProps', themeProps);
       return (
         <Theme config={this.getChildTheme()}>
-          <Group themes={getTheme()} childType={childType}>
+          <Group themeProps={getPartOfThemeProps('Group')} childType={childType}>
             {handleCreate(_this, 'radio', childType)}
           </Group>
         </Theme>
@@ -229,10 +233,11 @@ export default ThemeProvider(
       };
     };
     getChildTheme(): Object {
-      const { getTheme } = this.props;
+      const { getPartOfThemeConfig } = this.props;
+      console.log("getPartOfThemeProps('Radio')", getPartOfThemeConfig('Radio'));
       return {
-        [Widget.Radio]: getTheme(),
-        [Widget.CheckButton]: getTheme(),
+        [Widget.Radio]: getPartOfThemeConfig('Radio'),
+        [Widget.CheckButton]: getPartOfThemeConfig('CheckButton'),
       };
     }
   },
