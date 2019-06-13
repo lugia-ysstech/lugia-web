@@ -104,12 +104,7 @@ export const SliderWrapper = CSSProvider({
   tag: 'div',
   className: 'SliderTrack',
   normal: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
-    getCSS(themeMate) {
-      return {
-        ...themeMate,
-      };
-    },
+    selectNames: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
   },
   hover: {
     selectNames: [['background']],
@@ -129,7 +124,7 @@ export const SliderInner = CSSProvider({
   tag: 'div',
   className: 'SliderPassedWay',
   normal: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['border'], ['width']],
     getCSS(themeMate, themeProps) {
       const { propsConfig } = themeProps;
       const size = getSliderInnerHeight(themeMate, propsConfig);
@@ -203,7 +198,6 @@ export const Tips = CSSProvider({
     selectNames: [],
     getCSS(themeMate) {
       const { height } = themeMate;
-      console.log(height, 3);
       return `
         top: -${em(height + 10)};
       `;
@@ -219,7 +213,6 @@ export const Tips = CSSProvider({
     selectNames: [],
     getCSS(themeMate) {
       const { height } = themeMate;
-      console.log(height, 3);
       return `
         top: -${em(height + 10)};
       `;
@@ -258,9 +251,9 @@ export const Tipinner = CSSProvider({
     ) {
       const {
         height,
-        background: { backgroundColor },
+        background: { color },
         border: {
-          bottom: { borderColor: bottomBorderColor },
+          bottom: { color: bottomBorderColor },
         },
         boxShadow,
       } = themeMate;
@@ -268,11 +261,11 @@ export const Tipinner = CSSProvider({
         line-height:${em(height)};
         &::before{
           content:'${tipsText}';
-          background:${backgroundColor};          
+          background:${color};          
         };
         
         &::after {
-          background:${backgroundColor};
+          background:${color};
           border-right-color:${bottomBorderColor};
           border-bottom-color:${bottomBorderColor};
           box-shadow:${boxShadow};
@@ -334,13 +327,7 @@ export const Tiparrow = CSSProvider({
   tag: 'span',
   className: 'SliderTips',
   normal: {
-    selectNames: [],
-    getCSS(themeMate) {
-      const { background: { backgroundColor } = {}, width } = themeMate;
-      return `
-         border-top-color:${backgroundColor};
-      `;
-    },
+    selectNames: [['background'], ['border']],
   },
   hover: {
     selectNames: [],
@@ -349,13 +336,7 @@ export const Tiparrow = CSSProvider({
     selectNames: [],
   },
   disabled: {
-    selectNames: [],
-    getCSS(themeMate) {
-      const { background: { backgroundColor } = {} } = themeMate;
-      return `
-         border-top-color:${backgroundColor};
-      `;
-    },
+    selectNames: [['background'], ['border']],
   },
   css: css`
     display: inline-block;

@@ -41,108 +41,105 @@ export default class Sl extends Component<any> {
           <Theme
             config={{
               [Widgets.Slider]: {
-                // SliderContainer:{
-                //   normal: {
-                //     background: { backgroundColor: 'red' },
-                //     width: 400,
-                //     //  height: 10,
-                //     border: getBorder({ style: 'solid', width: 1, color: '#000' }, { radius: 6 }),
-                //     margin: {
-                //       top: 10,
-                //       right: 20,
-                //       bottom: 30,
-                //       left: 40,
-                //     },
-                //     padding: {
-                //       top: 10,
-                //       right: 20,
-                //       bottom: 30,
-                //       left: 40,
-                //     },
-                //   },
-                //   hover: {
-                //     background: { backgroundColor: 'green' },
-                //     border: getBorder({ color: 'red' }, { radius: 20 }),
-                //   },
-                //   active: {
-                //     background: { backgroundColor: 'green' },
-                //     border: getBorder({ color: 'blue' }, { radius: 10 }),
-                //   },
-                //   disabled: {
-                //     background: { backgroundColor: 'green' },
-                //     border: getBorder({ color: 'pink' }, { radius: 15 }),
-                //   },
-                // },
-                // SliderTrack: {
-                //   normal: {
-                //     background: { backgroundColor: 'green' },
-                //     width: 300,
-                //     height: 10,
-                //     border: getBorder({ style: 'solid', width: 1, color: '#000' }, { radius: 6 }),
-                //   },
-                //   hover: {
-                //     background: { backgroundColor: '#4fe24f' },
-                //   },
-                //   active: {
-                //     background: { backgroundColor: '#4fe24f' },
-                //   },
-                //   disabled: {
-                //     background: { backgroundColor: '#cae6ca' },
-                //   },
-                // },
-                // SliderPassedWay: {
-                //   normal: {
-                //     background: { backgroundColor: '#b53030' },
-                //     height: 10,
-                //   },
-                //   hover: {
-                //     background: { backgroundColor: 'yellow' },
-                //     height: 20,
-                //   },
-                //   active: {
-                //     background: { backgroundColor: 'blue' },
-                //     height: 50,
-                //   },
-                //   disabled: {
-                //     background: { backgroundColor: 'pink' },
-                //     height: 40,
-                //   },
-                // },
-                // SliderButton: {
-                //   normal: {
-                //     background: { backgroundColor: '#ef5a5a' },
-                //     width: 20,
-                //   },
-                //   hover: {
-                //     background: { backgroundColor: 'red' },
-                //     width: 20,
-                //     height: 40,
-                //   },
-                //   active: {
-                //     background: { backgroundColor: 'yellow' },
-                //     width: 20,
-                //     height: 50,
-                //   },
-                // },
-                // SliderTips: {
-                //   normal: {
-                //     width:30,
-                //     height:30,
-                //     border: getBorder(
-                //       { style: 'solid', color: 'blue', width: 1 },
-                //       { radius: 3 }
-                //     ),
-                //     background: {
-                //       backgroundColor: 'red',
-                //     },
-                //     color: '#fff',
-                //     boxShadow: '0 0 2px 0 red',
-                //     fontSize: 14,
-                //     font: {
-                //       fontWeight: 'bold',
-                //     },
-                //   },
-                // },
+                SliderContainer: {
+                  normal: {
+                    background: { color: 'red' },
+                    width: 400,
+                    //  height: 10,
+                    border: getBorder({ style: 'solid', width: 1, color: '#000' }, { radius: 6 }),
+                    margin: {
+                      top: 10,
+                      right: 20,
+                      bottom: 30,
+                      left: 40,
+                    },
+                    padding: {
+                      top: 10,
+                      right: 20,
+                      bottom: 30,
+                      left: 40,
+                    },
+                  },
+                  hover: {
+                    background: { color: 'green' },
+                    border: getBorder({ color: 'red' }, { radius: 20 }),
+                  },
+                  active: {
+                    background: { color: 'green' },
+                    border: getBorder({ color: 'blue' }, { radius: 10 }),
+                  },
+                  disabled: {
+                    background: { color: 'green' },
+                    border: getBorder({ color: 'pink' }, { radius: 15 }),
+                  },
+                },
+                SliderTrack: {
+                  normal: {
+                    background: { color: 'green' },
+                    width: 300,
+                    height: 10,
+                    border: getBorder({ style: 'solid', width: 1, color: '#000' }, { radius: 6 }),
+                  },
+                  hover: {
+                    background: { color: '#4fe24f' },
+                  },
+                  active: {
+                    background: { color: '#4fe24f' },
+                  },
+                  disabled: {
+                    background: { color: '#cae6ca' },
+                  },
+                },
+                SliderPassedWay: {
+                  normal: {
+                    background: { color: '#b53030' },
+                    height: 10,
+                  },
+                  hover: {
+                    background: { color: 'yellow' },
+                    height: 20,
+                  },
+                  active: {
+                    background: { color: 'blue' },
+                    height: 50,
+                  },
+                  disabled: {
+                    background: { color: 'pink' },
+                    height: 40,
+                  },
+                },
+                SliderButton: {
+                  normal: {
+                    background: { color: '#ef5a5a' },
+                    width: 20,
+                  },
+                  hover: {
+                    background: { color: 'red' },
+                    width: 20,
+                    height: 40,
+                  },
+                  active: {
+                    background: { color: 'yellow' },
+                    width: 20,
+                    height: 50,
+                  },
+                },
+                SliderTips: {
+                  normal: {
+                    width: 30,
+                    height: 30,
+                    border: getBorder({ style: 'solid', color: 'blue', width: 1 }, { radius: 3 }),
+                    background: {
+                      color: 'red',
+                    },
+                    color: '#fff',
+                    boxShadow: '0 0 2px 0 red',
+                    fontSize: 14,
+                    font: {
+                      fontWeight: 'bold',
+                    },
+                  },
+                },
                 // SliderMarks:{
                 //   0:{},
                 // }
@@ -150,29 +147,29 @@ export default class Sl extends Component<any> {
             }}
           >
             <Slider
-              defaultValue={15}
+              defaultValue={20}
               tips
               onChange={this.onchangeFirst}
-              marks={{
-                10: {
-                  text: '10℃',
-                  style: {
-                    color: 'blue',
-                  },
-                },
-                20: {
-                  text: '20℃',
-                  style: {
-                    color: 'pink',
-                  },
-                },
-                40: {
-                  text: '40℃',
-                  style: {
-                    color: 'red',
-                  },
-                },
-              }}
+              // marks={{
+              //   10: {
+              //     text: '10℃',
+              //     style: {
+              //       color: 'blue',
+              //     },
+              //   },
+              //   20: {
+              //     text: '20℃',
+              //     style: {
+              //       color: 'pink',
+              //     },
+              //   },
+              //   40: {
+              //     text: '40℃',
+              //     style: {
+              //       color: 'red',
+              //     },
+              //   },
+              // }}
             />
           </Theme>
         </div>
