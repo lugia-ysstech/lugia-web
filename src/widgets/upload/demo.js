@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import request from './request';
 import Widget from '../consts';
 import Theme from '../theme';
+import { getBorder } from '@lugia/theme-css-hoc';
 const Title = styled.div`
   font-size: 16px;
   padding: 10px 0 0 10px;
@@ -158,8 +159,6 @@ class UploadDemo extends React.Component<any, any> {
       listType: 'area',
       inputId: 'upload6',
       showFileList: true,
-      // multiple: true,
-      // limit:3,
       url: 'http://localhost:7001/upload',
     };
     const defaultProps7 = {
@@ -198,81 +197,104 @@ class UploadDemo extends React.Component<any, any> {
 
     const config = {
       [Widget.Upload]: {
-        normal: {
-          // width:120,
-        },
-        children: {
-          buttonType: {
-            normal: {
-              width: 100,
-              height: 30,
-            },
-            hover: {
-              boxShadow: ' 0 0 2px #ccc',
-              opacity: 0.5,
-            },
-            disabled: {
-              background: {
-                backgroundColor: '#ccc',
-              },
-              boxShadow: ' 0 0 2px #ccc',
-            },
+        uploadButtonType: {
+          normal: {
+            width: 100,
+            height: 30,
           },
-          defaultType: {
-            normal: {
-              width: 346,
-              height: 30,
-              border: {
-                top: {
-                  borderStyle: 'solid',
-                  borderColor: '#9482ff',
-                  borderWidth: 1,
-                },
-                bottom: {
-                  borderStyle: 'solid',
-                  borderColor: '#9482ff',
-                  borderWidth: 1,
-                },
-                left: {
-                  borderStyle: 'solid',
-                  borderColor: '#9482ff',
-                  borderWidth: 1,
-                },
-                right: {
-                  borderStyle: 'solid',
-                  borderColor: '#9482ff',
-                  borderWidth: 1,
-                },
-              },
+          hover: {
+            boxShadow: ' 0 0 2px #ccc',
+            opacity: 0.5,
+          },
+          disabled: {
+            background: {
+              backgroundColor: '#ccc',
             },
-            hover: {},
-            disabled: {
-              background: {
-                backgroundColor: '#ccc',
-              },
-              border: {
-                top: {
-                  borderStyle: 'solid',
-                  borderColor: '#ccc',
-                  borderWidth: 1,
-                },
-                bottom: {
-                  borderStyle: 'solid',
-                  borderColor: '#ccc',
-                  borderWidth: 1,
-                },
-                left: {
-                  borderStyle: 'solid',
-                  borderColor: '#ccc',
-                  borderWidth: 1,
-                },
-                right: {
-                  borderStyle: 'solid',
-                  borderColor: '#ccc',
-                  borderWidth: 1,
-                },
-              },
+            // cursor:'not-allowed',
+            boxShadow: ' 0 0 2px #ccc',
+          },
+        },
+        uploadDefaultType: {
+          normal: {
+            width: 346,
+            height: 30,
+            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }, { radius: 4 }),
+          },
+          hover: {},
+          disabled: {
+            background: {
+              backgroundColor: '#ccc',
             },
+            border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }, { radius: 4 }),
+          },
+        },
+        uploadPictureType: {
+          normal: {
+            width: 80,
+            height: 80,
+            border: getBorder({ color: '#9482ff', width: 1, style: 'dashed' }, { radius: 4 }),
+          },
+          hover: {},
+          disabled: {
+            background: {
+              backgroundColor: '#f7f9f9',
+            },
+            border: getBorder({ color: '#e8e8e8', width: 1, style: 'dashed' }, { radius: 4 }),
+          },
+        },
+        uploadListType: {
+          normal: {
+            width: 80,
+            height: 80,
+            border: getBorder({ color: '#9482ff', width: 1, style: 'dashed' }, { radius: 4 }),
+          },
+          hover: {},
+          disabled: {
+            background: {
+              backgroundColor: '#f9f9f9',
+            },
+            border: getBorder({ color: '#e8e8e8', width: 1, style: 'dashed' }, { radius: 4 }),
+          },
+        },
+      },
+    };
+
+    const configBoth = {
+      [Widget.Upload]: {
+        uploadButtonType: {
+          normal: {
+            width: 100,
+            height: 30,
+          },
+          hover: {
+            boxShadow: ' 0 0 2px #ccc',
+            opacity: 0.5,
+          },
+          disabled: {
+            background: {
+              backgroundColor: '#ccc',
+            },
+            boxShadow: ' 0 0 2px #ccc',
+          },
+        },
+        uploadDefaultType: {
+          normal: {
+            width: 346,
+            height: 30,
+            border: getBorder(
+              { color: '#9482ff', width: 1, style: 'solid' },
+              { radius: 4, radiusDirections: ['tl', 'bl'] }
+            ),
+          },
+          hover: {},
+          disabled: {
+            background: {
+              backgroundColor: '#ccc',
+            },
+            border: getBorder(
+              { color: '#e8e8e8', width: 1, style: 'solid' },
+              { radius: 4, radiusDirections: ['tl', 'bl'] }
+            ),
           },
         },
       },
@@ -280,19 +302,11 @@ class UploadDemo extends React.Component<any, any> {
 
     const areaConfig = {
       [Widget.Upload]: {
-        normal: {
-          // width:648,
-          // height:323,
-          fontSize: 20,
-        },
-        disabled: {
-          color: '#ccc',
-          border: {
-            bottom: {
-              borderWidth: 0,
-              borderStyle: 'solid',
-              borderColor: 'transparent',
-            },
+        uploadAreaType: {
+          normal: {
+            fontSize: 30,
+            width: 400,
+            height: 180,
           },
         },
       },
@@ -307,15 +321,18 @@ class UploadDemo extends React.Component<any, any> {
           <Upload {...defaultProps11} />
           <Title>Button： </Title>
           <Upload {...defaultProps1} />
+        </Theme>
+        <Theme config={configBoth}>
           <Title>Both： </Title>
           <Upload {...defaultProps2} />
+        </Theme>
+        <Theme config={config}>
           <Title>picture large accept(image)： </Title>
           <Upload {...defaultProps3} />
           <Title>picture middle disabled： </Title>
           <Upload {...defaultProps4} />
           <Title>picture small： </Title>
           <Upload {...defaultProps5} />
-
           <Title>default disabled： </Title>
           <Upload {...defaultProps7} />
           <Title>Button disabled： </Title>
@@ -325,7 +342,7 @@ class UploadDemo extends React.Component<any, any> {
         </Theme>
         <Theme config={areaConfig}>
           <Title>area： </Title>
-          <Upload {...defaultProps6} />
+          {/*<Upload {...defaultProps6} />*/}
           <Title>area disabled： </Title>
           <Upload {...defaultProps9} />
         </Theme>
