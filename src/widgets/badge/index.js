@@ -23,7 +23,7 @@ export const BaseRedPoint = CSSComponent({
   tag: 'sup',
   className: 'baseRedPoint',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['color'], ['position']],
+    selectNames: [['width'], ['height'], ['background'], ['position'], ['opacity']],
     defaultTheme: {},
   },
   css: css`
@@ -42,7 +42,7 @@ const Dot: Object = CSSComponent({
   extend: BaseRedPoint,
   className: 'badgeDot',
   normal: {
-    selectNames: [['width'], ['height'], ['position']],
+    selectNames: [['width'], ['height'], ['background'], ['position'], ['opacity']],
   },
   css: css`
     height: ${px2remcss(10)};
@@ -57,7 +57,7 @@ const Container: Object = CSSComponent({
   tag: 'span',
   className: 'badgeContainer',
   normal: {
-    selectNames: [['padding'], ['margin'], ['position']],
+    selectNames: [['padding'], ['margin'], ['position'], ['opacity']],
   },
   css: css`
     background: transparent;
@@ -105,10 +105,8 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
 
   getNumberTurn(count: ?number) {
     const { overflowCount } = this.props;
-    const { theme, viewClass } = this.props.getChildThemeHocProps(Widget.NumberTurn);
-    return (
-      <NumberTurn count={count} overflowCount={overflowCount} viewClass={viewClass} theme={theme} />
-    );
+    const themeProps = this.props.getPartOfThemeConfig(Widget.NumberTurn);
+    return <NumberTurn count={count} overflowCount={overflowCount} theme={themeProps} />;
   }
 
   render() {
