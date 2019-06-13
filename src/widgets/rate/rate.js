@@ -229,7 +229,7 @@ const defautClass = {
 };
 
 type RateProps = {
-  count: number,
+  count?: number,
   max?: number,
   value?: number,
   disabled?: boolean,
