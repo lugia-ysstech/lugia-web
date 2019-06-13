@@ -3,18 +3,18 @@
  * @flow
  * */
 import styled, { css } from 'styled-components';
-import colorsFunc from '../css/stateColor';
+// import colorsFunc from '../css/stateColor';
 import { valueInRange } from '../common/Math';
 import { iconStyles, dotStyles } from './slider_public_size';
-import { px2emcss } from '../css/units';
+import { px2remcss } from '../css/units';
 import {
   btnDisabledBackground,
-  themeColor,
-  throughRangeBackground,
+  // themeColor,
+  // throughRangeBackground,
   tipBackground,
   tipColor,
-  trackBackground,
-  trackDisabledBackground,
+  // trackBackground,
+  // trackDisabledBackground,
   dotNormalColor,
   dotThroughColor,
   iconNormalColor,
@@ -24,7 +24,7 @@ import Widgets from '../consts';
 import ThemeProvider from '../theme-provider';
 import CSSProvider from '../theme/CSSProvider';
 
-const em = px2emcss(1.4);
+const em = px2remcss;
 type CssTypeProps = {
   background: string,
   changeBackground: boolean,
@@ -47,66 +47,163 @@ type CssTypeProps = {
   vertical?: boolean,
 };
 const transitionTime = '0.1';
+export const SliderBigBox = CSSProvider({
+  tag: 'div',
+  normal: {
+    selectNames: [['border'], ['background'], ['width'], ['height'], ['margin'], ['padding']],
+    getCSS(
+      themeMate,
+      {
+        propsConfig: { vertical },
+      }
+    ) {
+      const { width } = themeMate;
+      return `
+        ${vertical ? 'height' : 'width'}:${em(width)};
+        ${vertical ? 'width' : 'height'}:'';
+      `;
+    },
+  },
+  hover: {
+    selectNames: [['border'], ['background']],
+  },
+  actived: {
+    selectNames: [['border'], ['background']],
+  },
+  disabled: {
+    selectNames: [['border'], ['background']],
+  },
+  css: css`
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+  `,
+});
 export const SliderBox = CSSProvider({
   tag: 'div',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  actived: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
   css: css`
     box-sizing: border-box;
     font-size: 1.4rem;
     display: inline-block;
     vertical-align: top;
     ${props => getPaddingSize(props)};
-    ${props => getSliderWrapperStyle(props).MarginValue};
   `,
 });
-
+//${props => getSliderWrapperStyle(props).MarginValue};
 export const SliderWrapper = CSSProvider({
   tag: 'div',
+  className: 'SliderTrack',
   normal: {
-    selectNames: [],
+    selectNames: [['background'], ['borderRadius'], ['border']],
+    getCSS(themeMate) {
+      return {
+        ...themeMate,
+      };
+    },
+  },
+  hover: {
+    selectNames: [['background']],
+  },
+  actived: {
+    selectNames: [['background']],
+  },
+  disabled: {
+    selectNames: [['background']],
   },
   css: css`
     font-size: 1.4rem;
-    width: ${props => getSliderWrapperStyle(props).rangeW};
-    height: ${props => getSliderWrapperStyle(props).rangeH};
-    background-color: ${props => getSliderWrapperStyle(props).wrapperBackground};
-    border-radius: ${em(6)};
     position: relative;
   `,
 });
+//width: ${props => getSliderWrapperStyle(props).rangeW};
+//     height: ${props => getSliderWrapperStyle(props).rangeH};
+//background-color: ${props => getSliderWrapperStyle(props).wrapperBackground};
 export const SliderInner = CSSProvider({
   tag: 'div',
+  className: 'SliderPassedWay',
+  normal: {
+    selectNames: [['background'], ['border']],
+    getCSS(themeMate, themeProps) {
+      const { propsConfig } = themeProps;
+      const size = getSliderInnerHeight(themeMate, propsConfig);
+      const { InnerWidth, InnerHeight, sliderInnerPosition } = getSliderInnerStyle(propsConfig);
+
+      return `
+        width:${InnerWidth};
+        height:${InnerHeight};
+        ${size};
+        ${sliderInnerPosition};
+      `;
+    },
+  },
+  hover: {
+    selectNames: [['background']],
+    getCSS(themeMate, themeProps) {
+      const { propsConfig } = themeProps;
+      return getSliderInnerHeight(themeMate, propsConfig);
+    },
+  },
+  actived: {
+    selectNames: [['background']],
+    getCSS(themeMate, themeProps) {
+      const { propsConfig } = themeProps;
+      return getSliderInnerHeight(themeMate, propsConfig);
+    },
+  },
+  disabled: {
+    selectNames: [['background']],
+    getCSS(themeMate, themeProps) {
+      const { propsConfig } = themeProps;
+      return getSliderInnerHeight(themeMate, propsConfig);
+    },
+  },
   css: css`
-    width: ${props => getSliderInnerStyle(props).InnerWidth};
-    height: ${props => getSliderInnerStyle(props).InnerHeight};
-    background: ${props => getSliderInnerStyle(props).innerBackground};
     border-radius: ${em(6)};
     position: absolute;
     transition: ${transitionTime}s;
-    ${props => getSliderInnerStyle(props).sliderInnerPosition};
   `,
-  normal: {
-    selectNames: [['background']],
-    defaultTheme: {
-      background: { backgroundColor: themeColor },
-    },
-  },
 });
+// width: ${props => getSliderInnerStyle(props).InnerWidth};
+// ${props => getSliderInnerStyle(props).sliderInnerPosition};
+//     height: ${props => getSliderInnerStyle(props).InnerHeight};
+//background: ${props => getSliderInnerStyle(props).innerBackground};
 
 export const Button = CSSProvider({
   tag: 'span',
+  className: 'SliderButton',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height'], ['background']],
+  },
+  hover: {
+    selectNames: [['width'], ['height'], ['background']],
+  },
+  actived: {
+    selectNames: [['width'], ['height'], ['background']],
+  },
+  disabled: {
+    selectNames: [['width'], ['height'], ['background']],
   },
   css: css`
-    width: ${props => getButtonStyle(props).btnWidth};
-    height: ${props => getButtonStyle(props).btnHeight};
     border-radius: 50%;
     background-color: ${props => getButtonStyle(props).btnBackground};
     position: absolute;
     ${props => getButtonStyle(props).btnPosition};
   `,
 });
-
+//width: ${props => getButtonStyle(props).btnWidth};
+//height: ${props => getButtonStyle(props).btnHeight};
 export const Tips = CSSProvider({
   tag: 'span',
   normal: {
@@ -117,15 +214,24 @@ export const Tips = CSSProvider({
     text-align: center;
     position: absolute;
     left: 50%;
-    top: -${em(40)};
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
+    top: -50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
   `,
 });
 export const Tipinner = CSSProvider({
   tag: 'span',
+  className: 'SliderTips',
   normal: {
-    selectNames: [],
+    selectNames: [
+      ['border'],
+      ['borderRadius'],
+      ['background'],
+      ['boxShadow'],
+      ['color'],
+      ['font'],
+      ['fontSize'],
+    ],
   },
   css: css`
     display: block;
@@ -144,6 +250,12 @@ export const Tiparrow = CSSProvider({
   tag: 'span',
   normal: {
     selectNames: [],
+    getCSS(themeMate) {
+      const { background: { backgroundColor } = {} } = themeMate;
+      return `
+         border-top-color:${backgroundColor};
+      `;
+    },
   },
   css: css`
     display: inline-block;
@@ -191,56 +303,53 @@ function getPaddingSize(props) {
   const right = vertical ? sliderVerticalPaddings[1] : levelPaddings[1];
   const top = vertical ? levelPaddings[1] : sliderVerticalPaddings[0];
   const bottom = vertical ? levelPaddings[0] : sliderVerticalPaddings[1];
-  return `padding:${em(top)} ${em(right)} ${em(bottom)} ${em(left)};`;
+  return `padding:${top}px ${right}px ${bottom}px ${left}px;`;
 }
-const getSliderWrapperStyle = (props: CssTypeProps) => {
-  const { changeBackground, disabled, vertical, getTheme } = props;
-  const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
-  const { margin } = getTheme();
-  let MarginValue;
-  if (margin && typeof margin === 'object') {
-    const { top, left, bottom, right } = margin;
-    MarginValue = `margin:${em(top)} ${em(right)} ${em(bottom)} ${em(left)}`;
-  }
-  if (margin && typeof margin === 'number') {
-    MarginValue = `margin:${em(margin)}`;
-  }
-  let { rangeW, rangeH } = props;
-  const rangwWidth = rangeW;
-  const rangwHeight = rangeH;
-  if (vertical) {
-    rangeW = rangwHeight;
-    rangeH = rangwWidth;
-  }
-  rangeW = em(Number(rangeW));
-  rangeH = em(Number(rangeH));
-  return {
-    wrapperBackground,
-    rangeW,
-    rangeH,
-    MarginValue,
-  };
-};
+// const getSliderWrapperStyle = (props: CssTypeProps) => {
+//   const { changeBackground, disabled, vertical } = props;
+//   const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
+//   let { rangeW, rangeH } = props;
+//   const rangwWidth = rangeW;
+//   const rangwHeight = rangeH;
+//   if (vertical) {
+//     rangeW = rangwHeight;
+//     rangeH = rangwWidth;
+//   }
+//   rangeW = em(Number(rangeW));
+//   rangeH = em(Number(rangeH));
+//   return {
+//     wrapperBackground,
+//     rangeW,
+//     rangeH,
+//   };
+// };
+function getSliderInnerHeight(themeMate, propsConfig) {
+  const { height } = themeMate;
+  const { vertical } = propsConfig;
+  return vertical ? `width:${em(height)};` : `height:${em(height)};`;
+}
+
 const getSliderInnerStyle = (props: CssTypeProps) => {
-  let { rangeH, SliderInnerWidth, SliderInnerLeft } = props;
-  const { vertical, value, disabled, changeBackground, getTheme } = props;
-  //const theme = getTheme(props);
-  const background = themeColor;
-  const doneBackground = background; //轨道划过完成的颜色
-  const { hoverColor: doingBackground } = colorsFunc(doneBackground);
-  const innerBackground = disabled
-    ? trackDisabledBackground
-    : changeBackground
-    ? doingBackground
-    : doneBackground;
-  SliderInnerWidth = Number(SliderInnerWidth);
-  SliderInnerLeft = Number(SliderInnerLeft);
+  const { rangeH, SliderInnerWidth, SliderInnerLeft } = props;
+  const { vertical, value } = props;
+  // const theme = getTheme(props);
+  // const background = themeColor;
+  // const doneBackground = background; //轨道划过完成的颜色
+  // const { hoverColor: doingBackground } = colorsFunc(doneBackground);
+  // const innerBackground = disabled
+  //   ? trackDisabledBackground
+  //   : changeBackground
+  //   ? doingBackground
+  //   : doneBackground;
+  // SliderInnerWidth = Number(SliderInnerWidth);
+  // SliderInnerLeft = Number(SliderInnerLeft);
 
   let InnerWidth = SliderInnerWidth + '%';
   let InnerHeight = em(rangeH);
   let sliderInnerPosition = `
       left:${SliderInnerLeft}%;
-      top:0;
+      top:50%;
+      transform:translateY(-50%);
   `;
   if (vertical) {
     InnerHeight = SliderInnerWidth + '%';
@@ -249,15 +358,16 @@ const getSliderInnerStyle = (props: CssTypeProps) => {
     const left = length === 1 ? SliderInnerLeft : 0;
     const bottom = length === 1 ? 0 : SliderInnerLeft;
     sliderInnerPosition = `
-        left:${left}%;
+        left:50%;
         bottom:${bottom}%;
+        transform:translateX(-50%);
       `;
   }
   return {
     InnerWidth,
     InnerHeight,
     sliderInnerPosition,
-    innerBackground,
+    //innerBackground,
   };
 };
 const getButtonStyle = (props: CssTypeProps) => {
@@ -360,11 +470,11 @@ const getDotStyle = (props: CssTypeProps) => {
     const dotPosTorBot = vertical ? `bottom: ${dotMoveX}%` : 'top: 50%';
     const dotPosTrans = vertical ? 'translateX' : 'translateY';
     const { distanceForSlider } = dotStyles;
-    const dotTextLeft = vertical ? px2emcss(1.4)(distanceForSlider) : '50%';
-    const dotTextTop = vertical ? '50%' : px2emcss(1.4)(distanceForSlider);
+    const dotTextLeft = vertical ? px2remcss(distanceForSlider) : '50%';
+    const dotTextTop = vertical ? '50%' : px2remcss(distanceForSlider);
     const dotTextTrans = vertical ? 'translateY' : 'translateX';
     dotTextPosition = `
-      font-size:${px2emcss(1.4)(dotFontSize)};
+      font-size:${px2remcss(dotFontSize)};
       line-height:1;
       left: ${dotTextLeft};
       transform: ${dotTextTrans}(-50%);
@@ -415,7 +525,7 @@ const getIconsStyle = (props: CssTypeProps) => {
     const iconCenterP = vertical ? 'left:50%' : 'top: 50%';
     const iconTrans = vertical ? 'translateX' : 'translateY';
     const theValue = value[0];
-    const distance = px2emcss(iconfontSize / 10)(iconDistancen);
+    const distance = px2remcss(iconDistancen);
     if (index === 0) {
       iconPos = `${vertical ? 'bottom' : 'left'}:-${distance}`;
       if (theValue <= middleVal) {

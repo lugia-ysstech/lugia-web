@@ -6,7 +6,7 @@
  * */
 import * as React from 'react';
 import Icon from '../icon/index';
-import { SwitchWrapper, SwitchText, SwitchCircle } from './styled';
+import { SwitchContainer, SwitchWrapper, SwitchText, SwitchCircle } from './styled';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
 import { getThemeProps } from './styledConfig';
@@ -26,7 +26,7 @@ type TypeProps = {
   autoFocus?: boolean,
   onChange?: any,
   displayFiled?: string,
-  mergeThemeStateAndChildThemeProps: Function,
+  getPartOfThemeProps: Function,
 };
 type TypeState = {
   items?: Array<Object>,
@@ -153,7 +153,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
     const { disabled, loading } = this.props;
     const isabled = !disabled && !loading;
     const switchTabIndex = disabled ? NO_TAB_INDEX : TAB_INDEX;
-    const { switchThemeProps, childrenThemeProps } = getThemeProps(this.props, value);
+    const { switchThemeProps, childrenThemeProps, SwitchContainerThemeProps } = getThemeProps(
+      this.props,
+      value
+    );
     const {
       themeConfig: {
         disabled: { background: switchBackground },
@@ -165,31 +168,33 @@ class Switch extends React.Component<TypeProps, TypeState> {
       },
     } = childrenThemeProps;
     return (
-      <SwitchWrapper
-        onMouseUp={isabled ? this.mouseup : null}
-        onKeyDown={isabled ? this.handleKeyDown : null}
-        ref={this.switchNode}
-        tabIndex={switchTabIndex}
-        themeProps={switchThemeProps}
-      >
-        <SwitchText themeProps={switchThemeProps}>
-          {typeof text === 'string' ? <i>{text}</i> : text}
-        </SwitchText>
-        <SwitchCircle themeProps={childrenThemeProps}>
-          <Theme
-            config={{
-              [Widgets.Icon]: {
-                normal: {
-                  color: switchBackground.backgroundColor,
-                  fontSize: Math.min(circleWidth, circleHeight) - 4,
+      <SwitchContainer themeProps={SwitchContainerThemeProps}>
+        <SwitchWrapper
+          onMouseUp={isabled ? this.mouseup : null}
+          onKeyDown={isabled ? this.handleKeyDown : null}
+          ref={this.switchNode}
+          tabIndex={switchTabIndex}
+          themeProps={switchThemeProps}
+        >
+          <SwitchText themeProps={switchThemeProps}>
+            {typeof text === 'string' ? <i>{text}</i> : text}
+          </SwitchText>
+          <SwitchCircle themeProps={childrenThemeProps}>
+            <Theme
+              config={{
+                [Widgets.Icon]: {
+                  normal: {
+                    color: switchBackground.backgroundColor,
+                    fontSize: Math.min(circleWidth, circleHeight) - 4,
+                  },
                 },
-              },
-            }}
-          >
-            {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
-          </Theme>
-        </SwitchCircle>
-      </SwitchWrapper>
+              }}
+            >
+              {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
+            </Theme>
+          </SwitchCircle>
+        </SwitchWrapper>
+      </SwitchContainer>
     );
   }
 }
