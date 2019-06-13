@@ -77,7 +77,9 @@ class RateDemo extends React.Component<any, any> {
         disabled: true,
         allowHalf: true,
         className: 'cccc',
-        onClick: (newValue: number, oldValue: number) => {},
+        onClick: (newValue: number, oldValue: number) => {
+          this.setStateValue('defaultProps3', 'value', newValue);
+        },
         onChange: (newValue: number, oldValue: number) => {
           this.setStateValue('defaultProps3', 'value', newValue);
         },
@@ -141,8 +143,6 @@ class RateDemo extends React.Component<any, any> {
         },
       },
       defaultProps7: {
-        count: 5,
-        allowHalf: true,
         onClick: (newValue: number, oldValue: number) => {
           this.setStateValue('defaultProps7', 'value', newValue);
         },
@@ -156,106 +156,100 @@ class RateDemo extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Rate]: {
-        normal: {
-          margin: {
-            right: 10,
-            left: 10,
-            top: 20,
-            bottom: 20,
-          },
-          width: 400,
-          height: 30,
-          fontSize: 20,
-        },
-        children: {
-          activeIcon: {
-            normal: {
-              color: `${warningColor}`,
-              margin: {
-                right: 36,
-              },
-            },
-            disabled: {
-              color: '#ccc',
+        activeIcon: {
+          normal: {
+            color: `${warningColor}`,
+            margin: {
+              right: 36,
             },
           },
-          defaultRateIcon: {
-            normal: {
-              color: '#e8e8e8',
-              margin: {
-                right: 36,
-              },
-            },
-            disabled: {
-              color: '#f2f2f2',
-            },
-          },
-          activeTextIcon: {
-            normal: {
-              color: `${warningColor}`,
-              margin: {
-                right: 36,
-              },
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          defaultTextIcon: {
-            normal: {
-              color: '#e8e8e8',
-              margin: {
-                right: 36,
-              },
-            },
-            disabled: {
-              color: '#f2f2f2',
-            },
+          disabled: {
+            color: '#ccc',
           },
         },
-      },
-    };
-    const configColorful = {
-      [Widget.Rate]: {
-        normal: {
-          fontSize: 30,
-          margin: {
-            right: 30,
-            left: 30,
-            top: 30,
-            bottom: 30,
+        defaultRateIcon: {
+          normal: {
+            color: '#e8e8e8',
+            margin: {
+              right: 36,
+            },
+          },
+          disabled: {
+            color: '#f2f2f2',
           },
         },
-        children: {
-          activeIcon: {
-            normal: {
-              color: `${warningColor}`,
+        activeTextIcon: {
+          normal: {
+            color: `${warningColor}`,
+            margin: {
+              right: 36,
             },
           },
-          defaultRateIcon: {
-            normal: {
-              color: '#e8e8e8',
+          disabled: {
+            color: '#ccc',
+          },
+        },
+        defaultTextIcon: {
+          normal: {
+            color: '#e8e8e8',
+            margin: {
+              right: 36,
             },
           },
-          dangerIcon: {
-            normal: {
-              color: `${dangerColor}`,
-            },
-          },
-          amazedIcon: {
-            normal: {
-              color: '#f88e30',
-            },
+          disabled: {
+            color: '#f2f2f2',
           },
         },
       },
     };
 
+    const configColorful = {
+      [Widget.Rate]: {
+        activeIcon: {
+          normal: {
+            color: `${warningColor}`,
+          },
+        },
+        defaultRateIcon: {
+          normal: {
+            color: '#e8e8e8',
+          },
+        },
+        dangerIcon: {
+          normal: {
+            color: `${dangerColor}`,
+          },
+        },
+        amazedIcon: {
+          normal: {
+            color: '#f88e30',
+          },
+        },
+      },
+    };
+
+    const configGlobal = {
+      [Widget.Rate]: {
+        activeIcon: {
+          normal: {
+            color: `${warningColor}`,
+          },
+        },
+        defaultRateIcon: {
+          normal: {
+            color: '#e8e8e8',
+          },
+        },
+      },
+    };
     return (
       <div>
         <div>
-          <TitleBox>基础用法 default：</TitleBox>
-          <Rate {...this.state.defaultProps7} />
+          <Theme config={configGlobal}>
+            <TitleBox>基础用法 default：</TitleBox>
+            <Rate {...this.state.defaultProps7} />
+            <TextBox>{this.state.defaultProps7.value} 颗星</TextBox>
+          </Theme>
         </div>
         <Theme config={config}>
           <TitleBox>基础用法 default limit：</TitleBox>
