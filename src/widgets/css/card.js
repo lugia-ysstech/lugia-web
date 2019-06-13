@@ -9,7 +9,7 @@ import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { ObjectUtils } from '@lugia/type-utils';
 
-const { blackColor, darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
+const { blackColor, defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
@@ -29,6 +29,8 @@ export type CardProps = {
   type: CardType,
   imageOrientation: ImageOrientation,
   themeProps: Object,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeConfig: Function,
 };
 export type CardState = {};
 

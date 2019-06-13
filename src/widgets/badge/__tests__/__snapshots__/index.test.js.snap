@@ -190,7 +190,7 @@ exports[` Badge css 1`] = `
                     style={
                       Object {
                         "position": "absolute",
-                        "right": "0.2rem",
+                        "right": "-0.5rem",
                         "top": "-0.5rem",
                       }
                     }
@@ -296,7 +296,7 @@ exports[` Badge css 1`] = `
                     style={
                       Object {
                         "position": "absolute",
-                        "right": "0.2rem",
+                        "right": "-0.5rem",
                         "top": "-0.5rem",
                       }
                     }
@@ -440,13 +440,7 @@ exports[` Badge css 1`] = `
                       </span>
                       <span
                         className="c9"
-                        style={
-                          Object {
-                            "position": "absolute",
-                            "right": "0.2rem",
-                            "top": "-0.5rem",
-                          }
-                        }
+                        style={Object {}}
                         y={-808}
                       >
                         +
@@ -476,7 +470,7 @@ exports[` Badge css 1`] = `
                   className="c4"
                 />
                 <sup
-                  className="c10   c11"
+                  className="c10  c11"
                   style={Object {}}
                 />
               </span>
@@ -512,7 +506,6 @@ exports[` Badge css 1`] = `
                 style={
                   Object {
                     "position": "absolute",
-                    "right": "0.2rem",
                     "top": "-0.5rem",
                   }
                 }
@@ -539,7 +532,6 @@ exports[` Badge css 1`] = `
                 style={
                   Object {
                     "position": "absolute",
-                    "right": "0.2rem",
                     "top": "-0.5rem",
                   }
                 }
@@ -553,7 +545,7 @@ exports[` Badge css 1`] = `
                     style={
                       Object {
                         "position": "absolute",
-                        "right": "0.2rem",
+                        "right": "-0.5rem",
                         "top": "-0.5rem",
                       }
                     }
@@ -651,7 +643,6 @@ exports[` Badge css 1`] = `
                 style={
                   Object {
                     "position": "absolute",
-                    "right": "0.2rem",
                     "top": "-0.5rem",
                   }
                 }
@@ -665,7 +656,7 @@ exports[` Badge css 1`] = `
                     style={
                       Object {
                         "position": "absolute",
-                        "right": "0.2rem",
+                        "right": "-0.5rem",
                         "top": "-0.5rem",
                       }
                     }
@@ -766,7 +757,6 @@ exports[` Badge css 1`] = `
                   style={
                     Object {
                       "position": "absolute",
-                      "right": "0.2rem",
                       "top": "-0.5rem",
                     }
                   }
@@ -775,13 +765,12 @@ exports[` Badge css 1`] = `
                     className="c4"
                   />
                   <sup
-                    className="c10   c11"
+                    className="c10  c11"
                     style={
                       Object {
                         "backgroundColor": "orange",
                         "color": "black",
                         "position": "absolute",
-                        "right": "0.2rem",
                         "top": "-0.5rem",
                       }
                     }
@@ -829,7 +818,7 @@ exports[` Badge css 1`] = `
                   className="c4"
                 />
                 <sup
-                  className="c10   c11"
+                  className="c10  c11"
                   style={
                     Object {
                       "backgroundColor": "green",
@@ -867,7 +856,7 @@ exports[` Badge css 1`] = `
                   className="c4"
                 />
                 <sup
-                  className="c10   c11"
+                  className="c10  c11"
                   style={
                     Object {
                       "backgroundColor": "purple",
@@ -905,7 +894,7 @@ exports[` Badge css 1`] = `
                   className="c4"
                 />
                 <sup
-                  className="c10   c11"
+                  className="c10  c11"
                   style={
                     Object {
                       "backgroundColor": "yellow",
@@ -943,7 +932,7 @@ exports[` Badge css 1`] = `
                   className="c4"
                 />
                 <sup
-                  className="c10   c11"
+                  className="c10  c11"
                   style={
                     Object {
                       "backgroundColor": "blue",
@@ -994,7 +983,7 @@ exports[` Badge css 1`] = `
                     style={
                       Object {
                         "position": "absolute",
-                        "right": "0.2rem",
+                        "right": "-0.5rem",
                         "top": "-0.5rem",
                       }
                     }
@@ -1080,13 +1069,9 @@ exports[` Badge css 1`] = `
               onMouseLeave={[Function]}
             >
               <i
-                className="lugia-icon-reminder_plus_square_o    c13"
+                className="lugia-icon-reminder_plus_square_o   c13"
                 onClick={[Function]}
-                style={
-                  Object {
-                    "fontSize": "2em",
-                  }
-                }
+                style={Object {}}
               />
             </span>
             <span
@@ -1094,13 +1079,9 @@ exports[` Badge css 1`] = `
               onMouseLeave={[Function]}
             >
               <i
-                className="lugia-icon-reminder_minus_square_o    c13"
+                className="lugia-icon-reminder_minus_square_o   c13"
                 onClick={[Function]}
-                style={
-                  Object {
-                    "fontSize": "2em",
-                  }
-                }
+                style={Object {}}
               />
             </span>
           </div>

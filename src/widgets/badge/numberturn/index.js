@@ -36,6 +36,15 @@ const OutInner = CSSComponent({
     selectNames: [['width'], ['height'], ['fontSize'], ['margin'], ['background'], ['padding']],
     defaultTheme: {},
   },
+  getStyle(themeMeta: Object, themeProps: ThemeProps) {
+    const { propsConfig } = themeProps;
+    const { bitCnt, overflow } = propsConfig;
+    const overWidth = overflow ? 6 : 0;
+    const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * Padding) + overWidth;
+    const style = {};
+    style.width = px2remcss(width);
+    return style;
+  },
   css: css`
     overflow: hidden;
     color: white;
@@ -59,7 +68,7 @@ const NumberBoxContainer = CSSComponent({
 const BitOut = StaticComponent({
   tag: 'span',
   className: 'badgeNumberBitOut',
-  selectNames: [['background']],
+  normal: { selectNames: [['background']] },
   css: css`
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     white-space: nowrap;
@@ -120,13 +129,14 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
 
   getBitOut(count: number) {
     const { overflow, beforeOverflow } = this.state;
+    const { themeProps } = this.props;
     const bitCnt = this.getBitCnt(count);
     const countStr = (count + '').split('');
     const result = [];
     for (let i = 0; i < bitCnt; i++) {
       const bitValue = Number(countStr[i]);
       result.push(
-        <BitOut themeProps={{}} y={-bitValue * 100}>
+        <BitOut themeProps={themeProps} y={-bitValue * 100}>
           {this.getBit()}
         </BitOut>
       );

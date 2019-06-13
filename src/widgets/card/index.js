@@ -34,6 +34,8 @@ const CardOutContainer = CSSComponent({
       ['margin'],
       ['padding'],
       ['boxShadow'],
+      ['opacity'],
+      ['color'],
     ],
     defaultTheme: {
       background: {
@@ -96,7 +98,20 @@ const Content = CSSComponent({
   tag: 'div',
   className: 'cardContent',
   normal: {
-    selectNames: [],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['fontSize'],
+      ['background'],
+      ['boxShadow'],
+      ['borderRadius'],
+      ['border'],
+      ['margin'],
+      ['padding'],
+      ['boxShadow'],
+      ['opacity'],
+      ['color'],
+    ],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
       const { type, imageOrientation } = themeProps;
@@ -128,7 +143,17 @@ const Image = ThemeHoc(
     tag: 'img',
     className: 'cardImage',
     normal: {
-      selectNames: [['width'], ['height']],
+      selectNames: [
+        ['width'],
+        ['height'],
+        ['background'],
+        ['borderRadius'],
+        ['border'],
+        ['margin'],
+        ['padding'],
+        ['boxShadow'],
+        ['opacity'],
+      ],
     },
     css: css`
       width: ${px2remcss(120)};
@@ -141,7 +166,17 @@ const ImageContainer = CSSComponent({
   tag: 'div',
   className: 'cardImageContainer',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['borderRadius'],
+      ['border'],
+      ['margin'],
+      ['padding'],
+      ['boxShadow'],
+      ['opacity'],
+    ],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
       const { propsConfig } = themeProps;
@@ -169,8 +204,18 @@ const AvatarContainer = CSSComponent({
   tag: 'span',
   className: 'cardAvatarContainer',
   normal: {
-    selectNames: [['width'], ['height']],
-    getCSS(themeMeta, themeProps) {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['borderRadius'],
+      ['border'],
+      ['margin'],
+      ['padding'],
+      ['boxShadow'],
+      ['opacity'],
+    ],
+    getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
       const { imageOrientation } = themeProps;
       const theWidth = ObjectUtils.isNumber(width)
@@ -198,8 +243,18 @@ const CardAvatar: Object = ThemeHoc(
     extend: Avatar,
     className: 'cardAvatar',
     normal: {
-      selectNames: [],
-      getCSS(themeMeta: Object, themeProps) {
+      selectNames: [
+        ['width'],
+        ['height'],
+        ['background'],
+        ['borderRadius'],
+        ['border'],
+        ['margin'],
+        ['padding'],
+        ['boxShadow'],
+        ['opacity'],
+      ],
+      getCSS(themeMeta: Object, themeProps: Object) {
         const { imageOrientation } = themeProps;
         const left = imageOrientation === 'horizontal' ? px2remcss(20) : 0;
         return `padding: ${px2remcss(20)}  ${left};`;
@@ -215,12 +270,22 @@ const CardAvatar: Object = ThemeHoc(
   'cardAvatar'
 );
 
-const BaseText = StaticComponent({
+const BaseText = CSSComponent({
   tag: 'div',
   className: 'cardBaseText',
   normal: {
-    selectNames: [],
-    getCSS(themeMeta, themeProps) {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['borderRadius'],
+      ['border'],
+      ['margin'],
+      ['padding'],
+      ['boxShadow'],
+      ['opacity'],
+    ],
+    getCSS(themeMeta: Object, themeProps: Object) {
       const { imageOrientation, type } = themeProps;
       const padding =
         type === 'tip'
@@ -235,11 +300,11 @@ const BaseText = StaticComponent({
     text-align: inherit;
   `,
 });
-const Title = StaticComponent({
+const Title = CSSComponent({
   extend: BaseText,
   className: 'cardTitle',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height'], ['color'], ['font']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { imageOrientation, type } = propsConfig;
@@ -279,11 +344,11 @@ const TitleTipLine = StaticComponent({
     border-radius: ${px2remcss(5)};
   `,
 });
-const Description = StaticComponent({
+const Description = CSSComponent({
   extend: BaseText,
   className: 'cardDescription',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height'], ['color'], ['font']],
   },
   css: css`
     font-size: 1.4rem;
@@ -291,11 +356,15 @@ const Description = StaticComponent({
     color: ${darkGreyColor};
   `,
 });
-const Operation = StaticComponent({
+const Operation = CSSComponent({
   tag: 'div',
   className: 'cardOperation',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height'], ['color'], ['font']],
+    getCSS(a, b) {
+      const { color } = a;
+      console.log(a, 111122222);
+    },
   },
   css: css`
     position: absolute;
@@ -369,33 +438,29 @@ class Card extends React.Component<CardProps, CardState> {
     return null;
   }
   getDetails(information: string): React.Node | null {
-    const { operation, title, description, content, children, type, themeProps } = this.props;
+    const { operation, title, description, content, children, type } = this.props;
     const hasNoContent = !(content && children);
-    let details = '';
     switch (information) {
       case 'operation':
-        details =
-          hasNoContent && operation ? (
-            <Operation themeProps={themeProps}>{operation}</Operation>
-          ) : null;
-        break;
+        const operationThemeProps = this.props.getPartOfThemeProps('CardOperation');
+        return hasNoContent && operation ? (
+          <Operation themeProps={operationThemeProps}>{operation}</Operation>
+        ) : null;
       case 'title':
-        details = title ? (
-          <Title type={type} themeProps={themeProps}>
+        const titleThemeProps = this.props.getPartOfThemeProps('CardTitle');
+        return title ? (
+          <Title type={type} themeProps={titleThemeProps}>
             {title}{' '}
           </Title>
         ) : null;
-        break;
       case 'description':
-        details =
-          hasNoContent && description ? (
-            <Description themeProps={themeProps}>{description} </Description>
-          ) : null;
-        break;
+        const descriptionThemeProps = this.props.getPartOfThemeProps('cardDescription');
+        return hasNoContent && description ? (
+          <Description themeProps={descriptionThemeProps}>{description} </Description>
+        ) : null;
       default:
-        break;
+        return null;
     }
-    return details;
   }
   getContent(): React.Node | null {
     const { content, children } = this.props;
@@ -403,7 +468,7 @@ class Card extends React.Component<CardProps, CardState> {
   }
   getImage() {
     const { image } = this.props;
-    const { theme, viewClass } = this.props.getChildThemeHocProps('cardImage');
+    const { theme, viewClass } = this.props.getPartOfThemeHocProps('cardImage');
     if (ObjectUtils.isString(image)) {
       return <Image viewClass={viewClass} theme={theme} src={image} />;
     }
@@ -411,7 +476,7 @@ class Card extends React.Component<CardProps, CardState> {
   }
   getAvatar() {
     const { avatar, imageOrientation } = this.props;
-    const { theme, viewClass } = this.props.getChildThemeHocProps('cardAvatar');
+    const { theme, viewClass } = this.props.getPartOfThemeHocProps('cardAvatar');
     if (ObjectUtils.isString(avatar)) {
       return (
         <CardAvatar
