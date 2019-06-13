@@ -10,7 +10,6 @@ const Hr = styled.div`
 `;
 
 const CommonIcon: Object = styled(Icon)`
-  color: #000;
   border-radius: 50%;
 `;
 
@@ -37,24 +36,38 @@ export default class Demo extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Breadcrumb]: {
-        normal: {
-          width: 1000,
-          color: 'red',
-          height: 200,
-          fontSize: 30,
-          padding: {
-            top: 80,
-          },
-          margin: {
-            left: 80,
+        Wrap: {
+          normal: {
+            width: 1000,
+            height: 200,
+            padding: {
+              top: 80,
+            },
+            margin: {
+              left: 80,
+            },
           },
         },
-        hover: {
-          color: '#000',
+
+        Text: {
+          normal: {
+            color: '#ccc',
+            fontSize: 20,
+          },
+          hover: {
+            color: '#999',
+          },
         },
-        children: {
-          Text: { normal: { color: '#ccc' }, hover: { color: '#999' } },
-          Separator: { normal: { color: '#666', margin: { left: 30, right: 20 } } },
+
+        Separator: {
+          normal: {
+            color: '#666',
+            fontSize: 20,
+            margin: {
+              left: 30,
+              right: 20,
+            },
+          },
         },
       },
     };

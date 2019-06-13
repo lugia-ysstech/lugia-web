@@ -52,12 +52,13 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
   };
 
   render() {
-    const { paragraph, loading, children, themeProps } = this.props;
+    const { paragraph, loading, children, getPartOfThemeProps } = this.props;
+    const wrapThemeProps = getPartOfThemeProps('Wrap');
     return loading ? (
-      <SkeletonWrap themeProps={themeProps}>
-        <SkeletonContainer themeProps={themeProps}>
+      <SkeletonWrap themeProps={wrapThemeProps}>
+        <SkeletonContainer themeProps={wrapThemeProps}>
           {this.getAvatar()}
-          <ParagraphContainer themeProps={themeProps}>
+          <ParagraphContainer themeProps={wrapThemeProps}>
             {this.getTitle()}
             {this.getParagraph(this.getParagraphCount(paragraph))}
           </ParagraphContainer>
@@ -74,7 +75,7 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
     if (!avatar) {
       return null;
     }
-    const avatarThemeProps = this.props.mergeThemeStateAndChildThemeProps('Avatar');
+    const avatarThemeProps = this.props.getPartOfThemeProps('Avatar');
 
     return (
       <AvatarContainer themeProps={themeProps}>
@@ -83,16 +84,22 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
     );
   }
 
+  addPropsConfig(themeProps: Object, propsConfig: Object) {
+    const newThemeProps = { ...themeProps };
+    newThemeProps.propsConfig = propsConfig;
+    return newThemeProps;
+  }
+
   getTitle = () => {
     const { title } = this.props;
     if (!title) {
       return null;
     }
-    const { animation, themeProps } = this.props;
-    const { themeConfig: titleThemeConfig } = this.props.mergeThemeStateAndChildThemeProps('Title');
+    const { animation, getPartOfThemeProps } = this.props;
+    const { themeConfig: titleThemeConfig } = getPartOfThemeProps('Title');
     const { normal: titleNormal } = titleThemeConfig;
     const titleWidth = titleNormal ? titleNormal.width : 400;
-    const titleThemeProps = getNewThemeProps(themeProps, {
+    const titleThemeProps = this.addPropsConfig(getPartOfThemeProps('Title'), {
       width: titleWidth,
       type: 'title',
     });
@@ -160,8 +167,8 @@ export default class Skeleton extends React.Component<Object, SkeletonProps> {
     if (!picture) {
       return null;
     }
-    const { animation, mergeThemeStateAndChildThemeProps } = this.props;
-    const pictureThemeProps = mergeThemeStateAndChildThemeProps('Picture');
+    const { animation, getPartOfThemeProps } = this.props;
+    const pictureThemeProps = getPartOfThemeProps('Picture');
 
     return (
       <PictrueContainer themeProps={pictureThemeProps}>
