@@ -8,6 +8,8 @@
  */
 import React from 'react';
 import styled from 'styled-components';
+import CSSComponent, { css } from '../theme/CSSProvider';
+import ThemeHoc from '@lugia/theme-hoc';
 
 type PropTypes = {
   accept?: string,
@@ -17,12 +19,21 @@ type PropTypes = {
   getChangeInfo: Function,
   getRegisterInput: Function,
   disabled?: boolean,
+  themeProps: Object,
 };
 
-const Input = styled.input`
-  width: 100%;
-  display: none;
-`;
+const Input = ThemeHoc(
+  CSSComponent({
+    tag: 'input',
+    className: 'upload_Input',
+    css: css`
+      width: 100%;
+      display: none;
+    `,
+  }),
+  'Input',
+  { hover: true, actived: false }
+);
 
 class FileInput extends React.Component<PropTypes, any> {
   input: any;
@@ -45,9 +56,10 @@ class FileInput extends React.Component<PropTypes, any> {
   }
 
   render() {
-    const { accept, multiple, inputId, disabled } = this.props;
+    const { accept, multiple, inputId, disabled, themeProps } = this.props;
     return (
       <Input
+        themeProps={themeProps}
         ref={this.input}
         accept={accept}
         multiple={multiple}
