@@ -4,6 +4,7 @@
  * @flow
  */
 import * as React from 'react';
+import ThemeHoc from '@lugia/theme-hoc';
 import { toNumber } from '../common/NumberUtils';
 import {
   AllItemsContainer,
@@ -19,6 +20,7 @@ import {
   Empty,
   defaultWidth,
   defaultHeight,
+  defaultButtonFontSize,
 } from '../css/carousel';
 import { limit } from '../common/Math';
 
@@ -80,6 +82,8 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   animationTime: number;
   width: number;
   height: number;
+  preButtonFontSize: number;
+  nextButtonFontSize: number;
 
   constructor(props: CarouselProps) {
     super(props);
@@ -87,6 +91,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     this.preStart = toNumber(props.start, 0);
     this.animationTime = this.getAnimationTime() / 1000;
     this.initWidthAndHeight();
+    this.initSwitchButtonFontSize();
   }
 
   static getDerivedStateFromProps(props: CarouselProps, state: CarouselState) {
@@ -105,6 +110,16 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { width = defaultWidth, height = defaultHeight } = normal;
     this.width = toNumber(width, defaultWidth);
     this.height = toNumber(height, defaultHeight);
+  }
+
+  initSwitchButtonFontSize() {
+    const { getPartOfThemeConfig } = this.props;
+    const { normal: PreButtonNormal = {} } = getPartOfThemeConfig('PreButton');
+    const { normal: NextButtonNormal = {} } = getPartOfThemeConfig('NextButton');
+    const { fontSize: preButtonFontSize = defaultButtonFontSize } = PreButtonNormal;
+    const { fontSize: nextButtonFontSize = defaultButtonFontSize } = NextButtonNormal;
+    this.preButtonFontSize = toNumber(preButtonFontSize, defaultButtonFontSize);
+    this.nextButtonFontSize = toNumber(nextButtonFontSize, defaultButtonFontSize);
   }
 
   initPropsConfig = () => {
@@ -128,6 +143,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   addPropsConfig(themeProps: Object, propsConfig: Object) {
     const newThemeProps = { ...themeProps };
+
     newThemeProps.propsConfig = propsConfig;
     return newThemeProps;
   }
@@ -137,6 +153,8 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { getPartOfThemeProps, indicatorType, indicator, switchButton } = this.props;
     const WrapThemeProps = this.addPropsConfig(getPartOfThemeProps('Wrap'), {
       indicatorType,
+      preButtonFontSize: this.preButtonFontSize,
+      nextButtonFontSize: this.nextButtonFontSize,
     });
 
     return (
@@ -156,13 +174,21 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   }
 
   getSwitchButton = () => {
-    const { indicatorType, children, themeProps, getPartOfThemeProps } = this.props;
+    const {
+      indicatorType,
+      children,
+      themePorps,
+      getPartOfThemeProps,
+      getPartOfThemeHocProps,
+    } = this.props;
     if (!children || children.length === 0 || indicatorType === 'vertical') {
       return null;
     }
-    const PreButtonThemeProps = this.addPropsConfig(getPartOfThemeProps('PreButton'), {});
+    const PreButtonThemeProps = getPartOfThemeProps('PreButton');
+    const { theme: preTheme, viewClass: preViewClass } = getPartOfThemeHocProps('PreButton');
+
     const preItem = (
-      <PreButton onClick={this.preClick} themeProps={PreButtonThemeProps}>
+      <PreButton onClick={this.preClick} theme={preTheme} viewClass={preViewClass}>
         <SwitchIcon
           themeProps={PreButtonThemeProps}
           iconClass={'lugia-icon-direction_left_circle'}
@@ -170,9 +196,12 @@ export default class Carousel extends React.Component<any, CarouselProps> {
       </PreButton>
     );
 
-    const NextButtonThemeProps = this.addPropsConfig(getPartOfThemeProps('NextButton'), {});
+    const NextButtonThemeProps = getPartOfThemeProps('NextButton');
+
+    const { theme: nextTheme, viewClass: nextViewClass } = getPartOfThemeHocProps('NextButton');
+
     const NextItem = (
-      <NextButton onClick={this.nextClick} themeProps={NextButtonThemeProps}>
+      <NextButton onClick={this.nextClick} theme={nextTheme} viewClass={nextViewClass}>
         <SwitchIcon
           themeProps={NextButtonThemeProps}
           iconClass={'lugia-icon-direction_right_circle'}

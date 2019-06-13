@@ -6,7 +6,6 @@
 import * as React from 'react';
 import Carousel from './index';
 import styled from 'styled-components';
-import Theme from '../theme';
 import Widget from '../consts/index';
 
 const data = [
@@ -68,7 +67,7 @@ class CarouselLimtDemo extends React.Component<any, any> {
   }
 
   onChange = (param: Object) => {
-    const { newValue, oldValue } = param;
+    const { newValue } = param;
     this.setState({ start: newValue });
   };
 
@@ -100,9 +99,18 @@ export default class SkeletonDemo extends React.Component<any, any> {
     const config = {
       [Widget.Carousel]: {
         Wrap: { normal: { width: 700, height: 350 } },
-        PreButton: { normal: { background: 'pink', opacity: 0.2 } },
-        NextButton: { normal: { background: 'orange' } },
-        Indicator: { normal: { background: 'pink' } },
+        PreButton: {
+          normal: { color: 'blue', fontSize: 60, opacity: 0.2 },
+          hover: { opacity: 1 },
+        },
+        NextButton: {
+          normal: { color: 'yellow', fontSize: 60, opacity: 0.2 },
+          hover: { opacity: 1 },
+        },
+        Indicator: {
+          normal: { background: 'pink', height: 20, width: 20 },
+          hover: { background: 'yellow' },
+        },
       },
     };
 
@@ -110,32 +118,29 @@ export default class SkeletonDemo extends React.Component<any, any> {
       <div>
         <H2>3s自动切换</H2>
         <DemoWrap>
-          <Carousel theme={config} autoPlay={false} delay={3000}>
+          <Carousel theme={config} defaultStart={2} autoPlay={false} delay={3000}>
             {this.getItemWrap()}
           </Carousel>
         </DemoWrap>
 
         <H2>水平切换 指示器在外部 indicatorType=outside</H2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel autoPlay={true} delay={3000} indicatorType={'outside'}>
-              {this.getItemWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel theme={config} autoPlay={true} delay={3000} indicatorType={'outside'}>
+            {this.getItemWrap()}
+          </Carousel>
         </DemoWrap>
 
         <H2>垂直切换 switchType === vertical indicatorType=vertical</H2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel
-              autoPlay={true}
-              delay={3000}
-              switchType={'vertical'}
-              indicatorType={'vertical'}
-            >
-              {this.getItemWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel
+            theme={config}
+            autoPlay={true}
+            delay={3000}
+            switchType={'vertical'}
+            indicatorType={'vertical'}
+          >
+            {this.getItemWrap()}
+          </Carousel>
         </DemoWrap>
 
         <H2>透明度切换 switchType === fade indicatorType=vertical</H2>
@@ -154,11 +159,9 @@ export default class SkeletonDemo extends React.Component<any, any> {
 
         <h2>图片轮播图 deafultStart=2 从索引值为2的图开始</h2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel autoPlay={true} delay={3000} defaultStart={2}>
-              {getImgWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel theme={config} autoPlay={true} delay={3000} defaultStart={2}>
+            {getImgWrap()}
+          </Carousel>
         </DemoWrap>
 
         <h2>受限</h2>
@@ -166,11 +169,15 @@ export default class SkeletonDemo extends React.Component<any, any> {
 
         <h2>图片轮播图 switchType === fade 透明度切换</h2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel autoPlay={true} switchType={'fade'} delay={3000} deafultStart={2}>
-              {getImgWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel
+            theme={config}
+            autoPlay={true}
+            switchType={'fade'}
+            delay={3000}
+            deafultStart={2}
+          >
+            {getImgWrap()}
+          </Carousel>
         </DemoWrap>
       </div>
     );

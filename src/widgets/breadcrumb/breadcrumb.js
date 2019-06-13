@@ -124,7 +124,6 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       params = {},
       renderItem = defaultRenderItem,
       children,
-      themeProps,
       getPartOfThemeProps,
     } = this.props;
 
