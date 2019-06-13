@@ -138,7 +138,14 @@ export default {
   },
 
   '/radio': {
-    render: async () => import('./widgets/radio/demo'),
+    render: async () => {
+      return (await import('./widgets/radio/demo')).RadioDemo;
+    },
+  },
+  '/radio-group': {
+    render: async () => {
+      return (await import('./widgets/radio/demo')).RadioGroupDemo;
+    },
   },
 
   '/rate': {
