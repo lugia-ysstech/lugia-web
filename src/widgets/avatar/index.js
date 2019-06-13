@@ -23,12 +23,21 @@ const BaseAvatar = CSSComponent({
   tag: 'div',
   className: 'baseAvatar',
   normal: {
-    selectNames: [['color'], ['width'], ['height'], ['background'], ['margin'], ['padding']],
+    selectNames: [
+      ['color'],
+      ['width'],
+      ['height'],
+      ['background'],
+      ['margin'],
+      ['padding'],
+      ['opacity'],
+    ],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { width, height } = themeMeta;
+      const { width, height, background = {} } = themeMeta;
       const { size, src, icon, shape } = propsConfig;
-      const theBackgroundColor = src || icon ? '' : borderColor;
+      const { color: backgroundColor } = background;
+      const theBackgroundColor = backgroundColor ? backgroundColor : src || icon ? '' : borderColor;
       const theSize =
         size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
       const theWidth = ObjectUtils.isNumber(width) ? px2remcss(width) : theSize;
@@ -52,11 +61,18 @@ const AvatarIcon: Object = CSSComponent({
   extend: Icon,
   className: 'avatarIcon',
   normal: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['fontSize']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
+      const { fontSize } = themeMeta;
       const { size } = propsConfig;
-      const theFontSize = size === 'large' ? '2.2em' : size === 'small' ? '1.2em' : '1.8em';
+      const theFontSize = fontSize
+        ? fontSize
+        : size === 'large'
+        ? '2.2em'
+        : size === 'small'
+        ? '1.2em'
+        : '1.8em';
       return `font-size:${theFontSize};`;
     },
   },

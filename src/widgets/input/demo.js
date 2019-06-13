@@ -5,14 +5,12 @@
  * @flow
  */
 import * as React from 'react';
-import Theme from '../theme';
 import Input from './';
 import Widget from '../consts/index';
 import ClearIcon from '../icon/ClearIcon';
 import SearchIcon from '../icon/SearchIcon';
 import PullIcon from '../icon/PullIcon';
 import styled from 'styled-components';
-import { getBorder } from '@lugia/theme-css-hoc';
 import { fixControlledValue } from '../utils';
 
 export class LimitInput extends React.Component<any, any> {
@@ -119,22 +117,9 @@ const InputDemo = () => {
   const register = {
     [Widget.Input]: {
       [Widget.Input]: {
-        normal: {
-          width: 300,
-          height: 40,
-        },
-        hover: {
-          background: {
-            backgroundColor: 'white',
-          },
-        },
-        disabled: {
-          border: {
-            borderColor: 'blue',
-            borderWidth: 1,
-            borderStyle: 'solid',
-          },
-        },
+        normal: { width: 300, height: 40 },
+        hover: { background: { backgroundColor: 'white' } },
+        disabled: { border: { color: 'blue', width: 1, style: 'solid' } },
       },
       InputSuffix: { normal: { color: 'red' } },
       InputPrefix: { normal: { color: 'pink' } },

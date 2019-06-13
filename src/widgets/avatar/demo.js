@@ -23,7 +23,7 @@ export default () => {
       normal: {
         color: 'white',
         background: {
-          backgroundColor: '#cccccc',
+          color: '#cccccc',
         },
         margin: {
           left: 10,
@@ -44,11 +44,7 @@ export default () => {
       normal: {
         color: 'white',
         background: {
-          backgroundColor: '#4d63ff',
-        },
-        margin: {
-          left: 15,
-          top: 15,
+          color: '#4d63ff',
         },
       },
     },

@@ -7,20 +7,17 @@ import '../common/shirm';
 import * as React from 'react';
 import '../css/font/lugia-icon.css';
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
+import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css } from '../theme/CSSProvider';
-import { units } from '@lugia/css';
-
-const { px2rem } = units;
 
 const IconTag = CSSComponent({
   tag: 'i',
   className: 'iconTag',
   normal: {
-    selectNames: [['color'], ['margin'], ['fontSize']],
+    selectNames: [['color'], ['margin'], ['fontSize'], ['padding'], ['cursor']],
   },
   hover: {
-    selectNames: [['color'], ['margin']],
+    selectNames: [['color'], ['margin'], ['cursor']],
   },
   css: css`
     user-select: none;
@@ -64,4 +61,4 @@ class Icon extends React.Component<IconProps> {
   }
 }
 
-export default ThemeProvider(Icon, Widget.Icon, { hover: true });
+export default ThemeHoc(Icon, Widget.Icon, { hover: true });
