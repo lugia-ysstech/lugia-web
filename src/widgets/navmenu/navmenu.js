@@ -63,7 +63,7 @@ type NavMenuState = {
   popupVisible: boolean,
   value: string[],
   expandedPath: string[],
-  activityKey: string,
+  activityValue: string,
   showMenuKey: string,
   isInTabs: boolean,
 };
@@ -105,7 +105,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       value: getValue(props, null),
       expandedPath: getInitExpandedPath(props),
       showMenuKey: '',
-      activityKey: '',
+      activityValue: '',
       isInTabs: false,
     };
     this.treeData = getTreeData(this.props);
@@ -221,7 +221,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           onTabMouseEnter={this.onTabMouseEnter}
           onTabMouseLeave={this.onTabMouseLeave}
           data={tabsData}
-          activityKey={this.state.activityKey}
+          activityValue={this.state.activityValue}
           getTabpane={this.getTabpane}
         />
       </Theme>
@@ -275,8 +275,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const { valueField } = this.props;
     const { children } = item;
     if (!children || children.length === 0) {
-      const activityKey = this.getParentValueField(item[valueField]);
-      this.setState({ activityKey });
+      const activityValue = this.getParentValueField(item[valueField]);
+      this.setState({ activityValue });
       this.exposeOnChange(item);
       setTimeout(() => {
         this.setState({ popupVisible: false });
@@ -290,17 +290,17 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return !!children && !!children.length;
   };
 
-  getExposeTabsItem = (activityKey: string): Object => {
+  getExposeTabsItem = (activityValue: string): Object => {
     const { data = [], valueField = ValueField } = this.props;
-    return data.find(item => item[valueField] === activityKey);
+    return data.find(item => item[valueField] === activityValue);
   };
 
-  onTabClick = (activityKey: string) => {
-    const isHasChildren = this.isHasChildren(activityKey);
+  onTabClick = (activityValue: string) => {
+    const isHasChildren = this.isHasChildren(activityValue);
     if (!isHasChildren) {
-      const item = this.getExposeTabsItem(activityKey);
+      const item = this.getExposeTabsItem(activityValue);
       this.exposeOnChange(item);
-      this.setState({ activityKey });
+      this.setState({ activityValue });
     } else {
       return;
     }
@@ -323,7 +323,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       const target = {};
       target.title = item[displayField];
       target.content = <div />;
-      target.activityKey = item[valueField];
+      target.activityValue = item[valueField];
       tabsData.push(target);
     });
     return tabsData;
