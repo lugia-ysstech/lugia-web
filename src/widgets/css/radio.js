@@ -42,6 +42,7 @@ export type RadioProps = {
   children?: any,
   themeProps: Object,
   getPartOfThemeConfig: Function,
+  getPartOfThemeProps: Function,
 } & ForGroupType;
 type ForGroupType = {
   onChangeForGroup?: Function,
