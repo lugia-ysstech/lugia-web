@@ -118,10 +118,26 @@ const Wrapper = styled.div`
 const InputDemo = () => {
   const register = {
     [Widget.Input]: {
-      normal: {
-        width: 300,
-        height: 40,
+      [Widget.Input]: {
+        normal: {
+          width: 300,
+          height: 40,
+        },
+        hover: {
+          background: {
+            backgroundColor: 'white',
+          },
+        },
+        disabled: {
+          border: {
+            borderColor: 'blue',
+            borderWidth: 1,
+            borderStyle: 'solid',
+          },
+        },
       },
+      InputSuffix: { normal: { color: 'red' } },
+      InputPrefix: { normal: { color: 'pink' } },
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};
@@ -141,7 +157,7 @@ const InputDemo = () => {
         <p>autoFocus</p>
         <Input placeholder={'请填写内容'} autoFoucs />
         <p>禁用状态 </p>
-        <Input size={'default'} disabled={true} />
+        <Input theme={register} size={'default'} disabled={true} />
       </Wrapper>
       <Wrapper>
         <p>small size</p>
@@ -155,7 +171,7 @@ const InputDemo = () => {
         <p>delete</p>
         <Input suffix={<ClearIcon />} />
         <p>search</p>
-        <Input prefix={<SearchIcon />} viewClass="register" suffix={<ClearIcon />} />
+        <Input prefix={<SearchIcon />} theme={register} suffix={<ClearIcon />} />
         <p>pull</p>
         <Input suffix={<PullIcon />} />
       </Wrapper>
@@ -166,7 +182,7 @@ const InputDemo = () => {
         <DefaultValueInput onChange={onChange('limit')} />
         <p>formatter input</p>
         <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
-      </Wrapper>{' '}
+      </Wrapper>
       <Wrapper>
         <p>校验信息显示类型 top 输入值 是否含有a</p>
         <TopInput validateType="top" onChange={onChange('limit')} />

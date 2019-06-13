@@ -90,7 +90,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
             style={Object {}}
           />
         </span>
@@ -101,7 +101,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star  default  c5  c4"
+            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
             style={Object {}}
           />
         </span>
@@ -122,7 +122,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
             style={Object {}}
           />
         </span>
@@ -133,7 +133,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star  default  c5  c4"
+            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
             style={Object {}}
           />
         </span>
@@ -154,7 +154,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
             style={Object {}}
           />
         </span>
@@ -165,7 +165,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star  default  c5  c4"
+            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
             style={Object {}}
           />
         </span>
@@ -186,7 +186,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
             style={Object {}}
           />
         </span>
@@ -197,7 +197,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star  default  c5  c4"
+            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
             style={Object {}}
           />
         </span>
@@ -218,7 +218,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star default  hoverd  c3  c4"
+            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
             style={Object {}}
           />
         </span>
@@ -229,7 +229,7 @@ exports[`Rate Test css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_star  default  c5  c4"
+            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
             style={Object {}}
           />
         </span>

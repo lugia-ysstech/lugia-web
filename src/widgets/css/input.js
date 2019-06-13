@@ -8,7 +8,8 @@ import { px2emcss } from './units';
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
-
+import { units } from '@lugia/css';
+const { px2remcss } = units;
 const {
   themeColor,
   disableColor,
@@ -51,10 +52,10 @@ export const getFocusShadow = (props: Object) => {
 export const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
-export const RadiusSize = em(4);
-export const LargeHeight = em(40);
-export const SmallHeight = em(24);
-export const DefaultHeight = em(32);
+export const RadiusSize = px2remcss(4);
+export const LargeHeight = px2remcss(40);
+export const SmallHeight = px2remcss(24);
+export const DefaultHeight = px2remcss(32);
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
 export const DefaultAmountPrefix = '¥';
@@ -76,18 +77,20 @@ type CommonInputProps = {
 export const getWidth = (props: CommonInputProps) => {
   const { theme } = props;
   const { width } = theme;
-  const theWidth = width ? em(width) : em(200);
+  const theWidth = width ? px2remcss(width) : px2remcss(200);
   return `width:${theWidth};`;
 };
 export const getPadding = (props: CommonInputProps) => {
   const { theme, prefix } = props;
   const { width } = theme;
-  return `${prefix ? em(30) : width && width < 200 ? em(width / 20) : em(10)};`;
+  return `${
+    prefix ? px2remcss(30) : width && width < 200 ? px2remcss(width / 20) : px2remcss(10)
+  };`;
 };
 export const getRightPadding = (props: CommonInputProps) => {
   const { theme } = props;
   const { width } = theme;
-  return `${width && width < 200 ? em(15 + width / 10) : em(35)};`;
+  return `${width && width < 200 ? px2remcss(15 + width / 10) : px2remcss(35)};`;
 };
 export const getSize = (props: CommonInputProps) => {
   const { size } = props;
@@ -114,7 +117,7 @@ export const getInputBorderSize = (props: CommonInputProps) => {
   const { theme } = props;
   const { borderSize } = theme;
   if (typeof borderSize === 'number') {
-    return `border:${em(borderSize)}`;
+    return `border:${px2remcss(borderSize)}`;
   }
   if (borderSize !== undefined) {
     const borderTop = getAttributeFromObject(borderSize, 'top', 0);
@@ -122,10 +125,10 @@ export const getInputBorderSize = (props: CommonInputProps) => {
     const borderBottom = getAttributeFromObject(borderSize, 'bottom', 0);
     const borderLeft = getAttributeFromObject(borderSize, 'left', 0);
     return `
-    border-top:${em(borderTop)};
-    border-right:${em(borderRight)};
-    border-bottom:${em(borderBottom)};
-    border-left:${em(borderLeft)}`;
+    border-top:${px2remcss(borderTop)};
+    border-right:${px2remcss(borderRight)};
+    border-bottom:${px2remcss(borderBottom)};
+    border-left:${px2remcss(borderLeft)}`;
   }
   return `border:${colorsFunc().borderSize}`;
 };

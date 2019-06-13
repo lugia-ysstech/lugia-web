@@ -41,7 +41,7 @@ class Turn extends React.Component<any, any> {
       [Widget.Badge]: {
         children: {
           [Widget.NumberTurn]: {
-            normal: { position: { top: -5, right: 2 } },
+            normal: { position: { top: -5, right: -5 } },
           },
         },
       },
@@ -76,7 +76,7 @@ export default () => {
   const view = {
     [Widget.Badge]: {
       normal: {
-        position: { top: -5, right: 2 },
+        position: { top: -5, right: 0 },
         background: { backgroundColor: 'orange' },
         color: 'black',
       },
@@ -89,7 +89,7 @@ export default () => {
           [Widget.Badge]: {
             children: {
               [Widget.NumberTurn]: {
-                normal: { position: { top: -5, right: 2 } },
+                normal: { position: { top: -5, right: -5 } },
               },
             },
           },

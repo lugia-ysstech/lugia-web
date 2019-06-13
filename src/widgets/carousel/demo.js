@@ -35,8 +35,8 @@ const getBackground = (props: Object) => {
 
 const ItemWrap = styled.a`
   display: block;
-  width: 60px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   line-height: 350px;
   text-align: center;
   ${getBackground};
@@ -69,7 +69,6 @@ class CarouselLimtDemo extends React.Component<any, any> {
 
   onChange = (param: Object) => {
     const { newValue, oldValue } = param;
-    // console.info('onAfter', oldValue, newValue);
     this.setState({ start: newValue });
   };
 
@@ -98,18 +97,22 @@ export default class SkeletonDemo extends React.Component<any, any> {
   }
 
   render() {
-    const config = { [Widget.Carousel]: { normal: { width: 700, height: 350 } } };
-    // const config = {};
+    const config = {
+      [Widget.Carousel]: {
+        Wrap: { normal: { width: 700, height: 350 } },
+        PreButton: { normal: { background: 'pink', opacity: 0.2 } },
+        NextButton: { normal: { background: 'orange' } },
+        Indicator: { normal: { background: 'pink' } },
+      },
+    };
 
     return (
       <div>
-        {/* <H2>3s自动切换</H2>
+        <H2>3s自动切换</H2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel autoPlay={false} delay={3000}>
-              {this.getItemWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel theme={config} autoPlay={false} delay={3000}>
+            {this.getItemWrap()}
+          </Carousel>
         </DemoWrap>
 
         <H2>水平切换 指示器在外部 indicatorType=outside</H2>
@@ -137,18 +140,17 @@ export default class SkeletonDemo extends React.Component<any, any> {
 
         <H2>透明度切换 switchType === fade indicatorType=vertical</H2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel
-              animationTime={1000}
-              autoPlay={true}
-              deafultStart={3}
-              delay={3000}
-              switchType={'fade'}
-            >
-              {this.getItemWrap()}
-            </Carousel>
-          </Theme>
-        </DemoWrap> */}
+          <Carousel
+            theme={config}
+            animationTime={1000}
+            autoPlay={false}
+            deafultStart={3}
+            delay={3000}
+            switchType={'fade'}
+          >
+            {this.getItemWrap()}
+          </Carousel>
+        </DemoWrap>
 
         <h2>图片轮播图 deafultStart=2 从索引值为2的图开始</h2>
         <DemoWrap>
@@ -159,17 +161,17 @@ export default class SkeletonDemo extends React.Component<any, any> {
           </Theme>
         </DemoWrap>
 
-        {/* <h2>受限</h2>
-        <CarouselLimtDemo /> */}
+        <h2>受限</h2>
+        <CarouselLimtDemo />
 
-        {/* <h2>图片轮播图 switchType === fade 透明度切换</h2>
+        <h2>图片轮播图 switchType === fade 透明度切换</h2>
         <DemoWrap>
           <Theme config={config}>
             <Carousel autoPlay={true} switchType={'fade'} delay={3000} deafultStart={2}>
               {getImgWrap()}
             </Carousel>
           </Theme>
-        </DemoWrap> */}
+        </DemoWrap>
       </div>
     );
   }
