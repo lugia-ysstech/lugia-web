@@ -293,7 +293,7 @@ data.reduce((modules, item) => {
 class Header extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = { data, modulePath: '/' };
+    this.state = { data, modulePath: '/rate' };
   }
 
   onChange = item => {
@@ -307,7 +307,11 @@ class Header extends Component<any, any> {
   };
 
   render() {
-    return [<ThemeView modulePath={this.state.modulePath} modules={modules} />];
+    return [
+      <ThemeView modulePath={this.state.modulePath} modules={modules} />,
+      <Input onChange={this.onChange} />,
+      <Menu data={this.state.data} onChange={this.onChangeItem} />,
+    ];
   }
 
   onChangeItem = ({ selectedKeys }) => {
