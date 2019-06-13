@@ -9,7 +9,7 @@ import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { ObjectUtils } from '@lugia/type-utils';
 
-const { blackColor, defaultColor, themeColor } = colorsFunc();
+const { blackColor, darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
@@ -29,6 +29,7 @@ export type CardProps = {
   type: CardType,
   imageOrientation: ImageOrientation,
   themeProps: Object,
+  getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeConfig: Function,
 };
@@ -143,6 +144,12 @@ export const getFontWeight = (props: Object) => {
   const { type } = props;
   const weight = type === 'tip' ? 700 : 500;
   return `font-weight:${weight}`;
+};
+export const getDescriptionColor = () => {
+  return `color:${darkGreyColor};`;
+};
+export const getCardContainerBorder = () => {
+  return `border:${em(1)} solid ${lightGreyColor};`;
 };
 export const getCardContainerBackground = (props: Object) => {
   const { theme } = props;

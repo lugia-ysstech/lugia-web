@@ -54,24 +54,10 @@ exports[`Avatar css 1`] = `
   width: 2em;
   height: 2em;
   line-height: 2em;
-}
-
-.c7 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
   background-color: #cccccc;
-  border-radius: 10%;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  line-height: 2.666666666666667em;
 }
 
-.c9 {
+.c8 {
   font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
@@ -84,6 +70,23 @@ exports[`Avatar css 1`] = `
   width: 3.3333333333333335em;
   height: 3.3333333333333335em;
   line-height: 3.3333333333333335em;
+  background-color: #cccccc;
+}
+
+.c10 {
+  font-variant: tabular-nums;
+  color: rgba(0,0,0,0.65);
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  background-color: #cccccc;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  background-color: #cccccc;
 }
 
 .c11 {
@@ -96,27 +99,13 @@ exports[`Avatar css 1`] = `
   position: relative;
   background-color: #cccccc;
   border-radius: 50%;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-}
-
-.c12 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
+  width: 3.3333333333333335em;
+  height: 3.3333333333333335em;
+  line-height: 3.3333333333333335em;
   background-color: #cccccc;
-  border-radius: 50%;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  line-height: 2.666666666666667em;
 }
 
-.c13 {
+.c23 {
   font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
@@ -129,70 +118,6 @@ exports[`Avatar css 1`] = `
   width: 3.3333333333333335em;
   height: 3.3333333333333335em;
   line-height: 3.3333333333333335em;
-}
-
-.c14 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  background-color: #cccccc;
-  border-radius: 10%;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-  background-color: #cccccc;
-}
-
-.c16 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  background-color: #cccccc;
-  border-radius: 10%;
-  width: 3.3333333333333335em;
-  height: 3.3333333333333335em;
-  line-height: 3.3333333333333335em;
-  background-color: #cccccc;
-}
-
-.c18 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  background-color: #cccccc;
-  border-radius: 50%;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-  background-color: #cccccc;
-}
-
-.c19 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  background-color: #cccccc;
-  border-radius: 50%;
-  width: 3.3333333333333335em;
-  height: 3.3333333333333335em;
-  line-height: 3.3333333333333335em;
-  background-color: #cccccc;
 }
 
 .c5 {
@@ -205,7 +130,7 @@ exports[`Avatar css 1`] = `
   font-size: 1.2em;
 }
 
-.c8 {
+.c7 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -215,7 +140,7 @@ exports[`Avatar css 1`] = `
   font-size: 1.8em;
 }
 
-.c10 {
+.c9 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -235,7 +160,7 @@ exports[`Avatar css 1`] = `
   height: 2.666666666666667em;
 }
 
-.c15 {
+.c12 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -245,7 +170,7 @@ exports[`Avatar css 1`] = `
   height: 2em;
 }
 
-.c17 {
+.c13 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -255,21 +180,21 @@ exports[`Avatar css 1`] = `
   height: 3.3333333333333335em;
 }
 
-.c20 {
+.c14 {
   vertical-align: middle;
   width: 2.666666666666667em;
   height: 2.666666666666667em;
   border-radius: 10%;
 }
 
-.c21 {
+.c15 {
   vertical-align: middle;
   width: 2.666666666666667em;
   height: 2.666666666666667em;
   border-radius: 50%;
 }
 
-.c23 {
+.c17 {
   overflow: hidden;
   color: white;
   display: inline-block;
@@ -284,7 +209,7 @@ exports[`Avatar css 1`] = `
   box-shadow: 0 0 0 0.1rem #fff;
 }
 
-.c24 {
+.c18 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -296,7 +221,7 @@ exports[`Avatar css 1`] = `
   display: inline-block;
 }
 
-.c26 {
+.c20 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -308,14 +233,14 @@ exports[`Avatar css 1`] = `
   display: inline-block;
 }
 
-.c25 {
+.c19 {
   height: 1.4rem;
   text-align: center;
   box-sizing: border-box;
   margin: 0;
 }
 
-.c28 {
+.c22 {
   font-size: 1rem;
   box-sizing: border-box;
   position: absolute;
@@ -330,7 +255,7 @@ exports[`Avatar css 1`] = `
   color: #ffffff;
 }
 
-.c27 {
+.c21 {
   height: 1rem;
   width: 1rem;
   border-radius: 100%;
@@ -338,7 +263,7 @@ exports[`Avatar css 1`] = `
   box-shadow: 0 0 0 0.1rem #fff;
 }
 
-.c22 {
+.c16 {
   background: transparent;
   box-sizing: border-box;
   position: relative;
@@ -649,20 +574,15 @@ exports[`Avatar css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_user c5   c6"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": "1.2rem",
-              }
-            }
+            className="lugia-icon-financial_user c5  c6"
+            style={Object {}}
           />
         </span>
       </div>
     </span>
     <span>
       <div
-        className="c7"
+        className="c1"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -684,20 +604,15 @@ exports[`Avatar css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_user c8   c6"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": "1.2rem",
-              }
-            }
+            className="lugia-icon-financial_user c7  c6"
+            style={Object {}}
           />
         </span>
       </div>
     </span>
     <span>
       <div
-        className="c9"
+        className="c8"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -719,13 +634,8 @@ exports[`Avatar css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_user c10   c6"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": "1.2rem",
-              }
-            }
+            className="lugia-icon-financial_user c9  c6"
+            style={Object {}}
           />
         </span>
       </div>
@@ -733,7 +643,7 @@ exports[`Avatar css 1`] = `
     <br />
     <span>
       <div
-        className="c11"
+        className="c10"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -755,20 +665,15 @@ exports[`Avatar css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_user c5   c6"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": "1.2rem",
-              }
-            }
+            className="lugia-icon-financial_user c5  c6"
+            style={Object {}}
           />
         </span>
       </div>
     </span>
     <span>
       <div
-        className="c12"
+        className="c3"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -790,20 +695,15 @@ exports[`Avatar css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_user c8   c6"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": "1.2rem",
-              }
-            }
+            className="lugia-icon-financial_user c7  c6"
+            style={Object {}}
           />
         </span>
       </div>
     </span>
     <span>
       <div
-        className="c13"
+        className="c11"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -825,13 +725,8 @@ exports[`Avatar css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_user c10   c6"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": "1.2rem",
-              }
-            }
+            className="lugia-icon-financial_user c9  c6"
+            style={Object {}}
           />
         </span>
       </div>
@@ -842,7 +737,7 @@ exports[`Avatar css 1`] = `
   >
     <span>
       <div
-        className="c14"
+        className="c4"
         name="lugia"
         onBlur={[Function]}
         onClick={[Function]}
@@ -861,7 +756,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c15"
+          className="c12"
           size="small"
           style={
             Object {
@@ -908,7 +803,7 @@ exports[`Avatar css 1`] = `
     </span>
     <span>
       <div
-        className="c16"
+        className="c8"
         name="lugia"
         onBlur={[Function]}
         onClick={[Function]}
@@ -927,7 +822,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c17"
+          className="c13"
           size="large"
           style={
             Object {
@@ -942,7 +837,7 @@ exports[`Avatar css 1`] = `
     <br />
     <span>
       <div
-        className="c18"
+        className="c10"
         name="lugia"
         onBlur={[Function]}
         onClick={[Function]}
@@ -961,7 +856,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c15"
+          className="c12"
           size="small"
           style={
             Object {
@@ -1008,7 +903,7 @@ exports[`Avatar css 1`] = `
     </span>
     <span>
       <div
-        className="c19"
+        className="c11"
         name="lugia"
         onBlur={[Function]}
         onClick={[Function]}
@@ -1027,7 +922,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c17"
+          className="c13"
           size="large"
           style={
             Object {
@@ -1078,7 +973,7 @@ exports[`Avatar css 1`] = `
     </span>
     <span>
       <div
-        className="c7"
+        className="c1"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -1100,20 +995,15 @@ exports[`Avatar css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_user c8   c6"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": "1.2rem",
-              }
-            }
+            className="lugia-icon-financial_user c7  c6"
+            style={Object {}}
           />
         </span>
       </div>
     </span>
     <span>
       <div
-        className="c7"
+        className="c1"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -1132,7 +1022,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <img
-          className="c20"
+          className="c14"
           shape="square"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
@@ -1179,7 +1069,7 @@ exports[`Avatar css 1`] = `
     </span>
     <span>
       <div
-        className="c12"
+        className="c3"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -1201,20 +1091,15 @@ exports[`Avatar css 1`] = `
           onMouseLeave={[Function]}
         >
           <i
-            className="lugia-icon-financial_user c8   c6"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": "1.2rem",
-              }
-            }
+            className="lugia-icon-financial_user c7  c6"
+            style={Object {}}
           />
         </span>
       </div>
     </span>
     <span>
       <div
-        className="c12"
+        className="c3"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -1233,7 +1118,7 @@ exports[`Avatar css 1`] = `
         }
       >
         <img
-          className="c21"
+          className="c15"
           shape="circle"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
@@ -1250,12 +1135,12 @@ exports[`Avatar css 1`] = `
   >
     <span>
       <span
-        className="c22"
+        className="c16"
         style={Object {}}
       >
         <span>
           <div
-            className="c16"
+            className="c8"
             name="lugia"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1268,7 +1153,7 @@ exports[`Avatar css 1`] = `
             style={Object {}}
           >
             <span
-              className="c17"
+              className="c13"
               size="large"
               style={Object {}}
             >
@@ -1282,137 +1167,137 @@ exports[`Avatar css 1`] = `
             style={Object {}}
           >
             <span
-              className="c23"
+              className="c17"
               overflow={false}
               style={Object {}}
             >
               <span
-                className="c24"
+                className="c18"
                 style={Object {}}
                 y={-100}
               >
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   0
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   1
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   2
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   3
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   4
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   5
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   6
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   7
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   8
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   9
                 </p>
               </span>
               <span
-                className="c26"
+                className="c20"
                 style={Object {}}
                 y={-0}
               >
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   0
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   1
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   2
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   3
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   4
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   5
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   6
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   7
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   8
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   9
@@ -1427,12 +1312,12 @@ exports[`Avatar css 1`] = `
     <br />
     <span>
       <span
-        className="c22"
+        className="c16"
         style={Object {}}
       >
         <span>
           <div
-            className="c16"
+            className="c8"
             name="lugia"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1445,7 +1330,7 @@ exports[`Avatar css 1`] = `
             style={Object {}}
           >
             <span
-              className="c17"
+              className="c13"
               size="large"
               style={Object {}}
             >
@@ -1454,7 +1339,7 @@ exports[`Avatar css 1`] = `
           </div>
         </span>
         <sup
-          className="c27   c28"
+          className="c21  c22"
           style={Object {}}
         />
       </span>
@@ -1463,12 +1348,12 @@ exports[`Avatar css 1`] = `
     <br />
     <span>
       <span
-        className="c22"
+        className="c16"
         style={Object {}}
       >
         <span>
           <div
-            className="c13"
+            className="c23"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1484,12 +1369,8 @@ exports[`Avatar css 1`] = `
               onMouseLeave={[Function]}
             >
               <i
-                className="lugia-icon-financial_user c10   c6"
-                style={
-                  Object {
-                    "fontSize": "1.2rem",
-                  }
-                }
+                className="lugia-icon-financial_user c9  c6"
+                style={Object {}}
               />
             </span>
           </div>
@@ -1500,137 +1381,137 @@ exports[`Avatar css 1`] = `
             style={Object {}}
           >
             <span
-              className="c23"
+              className="c17"
               overflow={false}
               style={Object {}}
             >
               <span
-                className="c24"
+                className="c18"
                 style={Object {}}
                 y={-100}
               >
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   0
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   1
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   2
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   3
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   4
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   5
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   6
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   7
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   8
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   9
                 </p>
               </span>
               <span
-                className="c26"
+                className="c20"
                 style={Object {}}
                 y={-0}
               >
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   0
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   1
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   2
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   3
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   4
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   5
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   6
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   7
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   8
                 </p>
                 <p
-                  className="c25"
+                  className="c19"
                   style={Object {}}
                 >
                   9
@@ -1645,12 +1526,12 @@ exports[`Avatar css 1`] = `
     <br />
     <span>
       <span
-        className="c22"
+        className="c16"
         style={Object {}}
       >
         <span>
           <div
-            className="c13"
+            className="c23"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1666,18 +1547,14 @@ exports[`Avatar css 1`] = `
               onMouseLeave={[Function]}
             >
               <i
-                className="lugia-icon-financial_user c10   c6"
-                style={
-                  Object {
-                    "fontSize": "1.2rem",
-                  }
-                }
+                className="lugia-icon-financial_user c9  c6"
+                style={Object {}}
               />
             </span>
           </div>
         </span>
         <sup
-          className="c27   c28"
+          className="c21  c22"
           style={Object {}}
         />
       </span>

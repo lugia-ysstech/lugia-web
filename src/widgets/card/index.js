@@ -361,10 +361,6 @@ const Operation = CSSComponent({
   className: 'cardOperation',
   normal: {
     selectNames: [['width'], ['height'], ['color'], ['font']],
-    getCSS(a, b) {
-      const { color } = a;
-      console.log(a, 111122222);
-    },
   },
   css: css`
     position: absolute;
@@ -394,6 +390,7 @@ class Card extends React.Component<CardProps, CardState> {
       { imageOrientation },
       { type }
     );
+
     return (
       <CardOutContainer themeProps={themeProps} type={type} imageOrientation={imageOrientation}>
         {this.getDetails('operation')}
