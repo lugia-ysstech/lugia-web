@@ -56,14 +56,8 @@ export const SwitchWrapper = CSSProvider({
       ['border'],
       ['boxShadow'],
       ['color'],
-      ['fontSize'],
       ['font'],
     ],
-    getCSS(themeMeta) {
-      return {
-        ...themeMeta,
-      };
-    },
   },
   hover: {
     selectNames: [],
@@ -77,7 +71,6 @@ export const SwitchWrapper = CSSProvider({
   css: css`
     display: inline-block;
     position: relative;
-    color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     vertical-align: middle;
     &:focus {
@@ -165,13 +158,6 @@ export const SwitchCircle = CSSProvider({
       ['border'],
       ['boxShadow'],
     ],
-    getCSS(themeMeta) {
-      const { borderRadius } = themeMeta;
-      return {
-        ...themeMeta,
-        'border-radius': borderRadius,
-      };
-    },
   },
   disabled: {
     selectNames: [['background'], ['border'], ['width'], ['height'], ['borderRadius']],
