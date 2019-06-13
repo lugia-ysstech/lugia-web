@@ -132,23 +132,20 @@ export const IconBox = CSSComponent({
   `,
 });
 
-export const Icons = ThemeProvider(
-  CSSComponent({
-    className: 'icon',
-    extend: Icon,
-    normal: {
-      selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
-    },
-    defaultTheme: {
-      margin: 0,
-      padding: 0,
-    },
-    css: css`
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    `,
-  }),
-  'Icons'
-);
+export const Icons = CSSComponent({
+  className: 'icon',
+  extend: Icon,
+  normal: {
+    selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
+  },
+  defaultTheme: {
+    margin: 0,
+    padding: 0,
+  },
+  css: css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `,
+});
