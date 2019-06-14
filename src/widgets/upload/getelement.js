@@ -38,7 +38,7 @@ const Container = CSSComponent({
 const InputContent = ThemeHoc(
   CSSComponent({
     tag: 'div',
-    className: 'upload_InputContent',
+    className: 'UploadDefaultType',
     normal: {
       selectNames: [['width'], ['height'], ['boxShadow'], ['border']],
     },
@@ -90,7 +90,7 @@ const ProgressCon = CSSComponent({
 const Li = ThemeHoc(
   CSSComponent({
     tag: 'li',
-    className: 'uploadListType',
+    className: 'UploadListType',
     normal: {
       selectNames: [['fontSize'], ['color'], ['border']],
     },
@@ -128,7 +128,7 @@ const Li = ThemeHoc(
 const Button = ThemeHoc(
   CSSComponent({
     tag: 'span',
-    className: 'uploadButtonType',
+    className: 'UploadButtonType',
     normal: {
       selectNames: [['background'], ['width'], ['height'], ['boxShadow'], ['border'], ['opacity']],
     },
@@ -255,7 +255,7 @@ const Triangle = CSSComponent({
 const PictureView = ThemeHoc(
   CSSComponent({
     tag: 'div',
-    className: 'upload_PictureView',
+    className: 'UploadPictureType',
     normal: {
       selectNames: [['width'], ['height'], ['opacity'], ['border']],
       defaultTheme: {
@@ -297,7 +297,7 @@ const PictureView = ThemeHoc(
 const AreaView = ThemeHoc(
   CSSComponent({
     tag: 'div',
-    className: 'upload_AreaView',
+    className: 'UploadAreaType',
     normal: {
       selectNames: [['width'], ['height'], ['fontSize'], ['color']],
     },
@@ -455,14 +455,14 @@ export const getIconByType = (
   switch (status) {
     case 'li-done':
       const { viewClass: successViewClass, theme: successTheme } = props.getPartOfThemeHocProps(
-        'uploadListSuccessIcon'
+        'UploadListSuccessIcon'
       );
       resultTheme = successTheme;
       resultViewClass = successViewClass;
       break;
     case 'li-fail':
       const { viewClass: failViewClass, theme: failTheme } = props.getPartOfThemeHocProps(
-        'uploadListFailedIcon'
+        'UploadListFailedIcon'
       );
       resultTheme = failTheme;
       resultViewClass = failViewClass;
@@ -566,7 +566,7 @@ const getDefaultSize = (size: string) => {
 
 const getFileList = (data: Array<Object>, close: Function, themeProps: Object, props: Object) => {
   if (!data || data.length === 0) return;
-  const { theme, viewClass } = props.getPartOfThemeHocProps('uploadListType');
+  const { theme, viewClass } = props.getPartOfThemeHocProps('UploadLiType');
   return (
     <Ul themeProps={themeProps}>
       {data.map((item, index) => {
@@ -694,7 +694,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
   render() {
     const { showFileList, fileListDone } = this.props;
-    const themeProps = this.props.getPartOfThemeProps('uploadListType');
+    const themeProps = this.props.getPartOfThemeProps('UploadLiType');
     return (
       <React.Fragment>
         <Container themeProps={themeProps}>{this.getElement()}</Container>
@@ -714,7 +714,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const children = this.getChildren(areaType, props, classNameStatus, dragIn);
     const { inputId, disabled, accept, multiple } = props;
     const { getRegisterInput, getChangeInfo } = this;
-    const themeProps = this.props.getPartOfThemeProps('uploadDefaultType');
+    const themeProps = this.props.getPartOfThemeProps('UploadDefaultType');
     return (
       <React.Fragment>
         <FileInput
@@ -736,7 +736,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadDefaultType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadDefaultType');
 
       children = (
         <InputContent
@@ -754,11 +754,11 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadButtonType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadButtonType');
       const {
         viewClass: InputContentViewClass,
         theme: InputContentTheme,
-      } = this.props.getPartOfThemeHocProps('uploadDefaultType');
+      } = this.props.getPartOfThemeHocProps('UploadDefaultType');
       children = (
         <React.Fragment>
           <InputContent
@@ -787,7 +787,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'button') {
       const { disabled } = props;
       const { handleClickToUpload } = this;
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadButtonType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadButtonType');
       children = (
         <Button
           theme={theme}
@@ -802,7 +802,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
       const { handleClickToUpload, handleClickToDelete, dropArea } = this;
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadPictureType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadPictureType');
       const resultTheme = deepMerge({ [viewClass]: { normal: getDefaultSize(size) } }, theme);
       children = (
         <React.Fragment>
@@ -851,8 +851,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'area') {
       const { dropArea, handleClickToUpload } = this;
       const { disabled } = props;
-      const themeProps = this.props.getPartOfThemeProps('uploadAreaType');
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadAreaType');
+      const themeProps = this.props.getPartOfThemeProps('UploadAreaType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadAreaType');
 
       children = (
         <AreaView

@@ -207,7 +207,7 @@ class UploadDemo extends React.Component<any, any> {
 
     const config = {
       [Widget.Upload]: {
-        uploadButtonType: {
+        UploadButtonType: {
           normal: {
             width: 100,
             height: 30,
@@ -222,7 +222,7 @@ class UploadDemo extends React.Component<any, any> {
             },
           },
         },
-        uploadDefaultType: {
+        UploadDefaultType: {
           normal: {
             width: 346,
             height: 30,
@@ -236,7 +236,7 @@ class UploadDemo extends React.Component<any, any> {
             border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }, { radius: 4 }),
           },
         },
-        uploadPictureType: {
+        UploadPictureType: {
           normal: {
             width: 80,
             height: 80,
@@ -250,7 +250,7 @@ class UploadDemo extends React.Component<any, any> {
             border: getBorder({ color: '#e8e8e8', width: 1, style: 'dashed' }, { radius: 4 }),
           },
         },
-        uploadListType: {
+        UploadLiType: {
           normal: {
             fontSize: 14,
             border: getBorder(
@@ -260,12 +260,12 @@ class UploadDemo extends React.Component<any, any> {
           },
           hover: {},
         },
-        uploadListSuccessIcon: {
+        UploadListSuccessIcon: {
           normal: {
             color: '#56c22d',
           },
         },
-        uploadListFailedIcon: {
+        UploadListFailedIcon: {
           normal: {
             color: '#f22735',
           },
@@ -275,7 +275,7 @@ class UploadDemo extends React.Component<any, any> {
 
     const configBoth = {
       [Widget.Upload]: {
-        uploadButtonType: {
+        UploadButtonType: {
           normal: {
             width: 100,
             height: 30,
@@ -291,7 +291,7 @@ class UploadDemo extends React.Component<any, any> {
             boxShadow: ' 0 0 2px #ccc',
           },
         },
-        uploadDefaultType: {
+        UploadDefaultType: {
           normal: {
             width: 346,
             height: 30,
@@ -316,7 +316,7 @@ class UploadDemo extends React.Component<any, any> {
 
     const areaConfig = {
       [Widget.Upload]: {
-        uploadAreaType: {
+        UploadAreaType: {
           normal: {
             fontSize: 30,
             width: 400,

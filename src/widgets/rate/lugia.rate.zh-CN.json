@@ -93,13 +93,13 @@
   "designInfo": {
     "ClassifyConfig": {
       "sequence": 1,
-      "title": "分级图标自定义样式",
+      "title": "分级图标评分",
       "desc": "按分值等级展示不同图标样式和颜色",
       "props": {
         "classify": true
       },
       "theme": {
-        "dangerIcon": {
+        "DangerIcon": {
           "name": "低分值样式",
           "desc": "选中的图标数少于一半时的样式配置",
           "normal": [["color"],["margin"]],
@@ -107,7 +107,7 @@
           "clicked": [],
           "disabled": []
         },
-        "amazedIcon": {
+        "AmazedIcon": {
           "name": "高分值样式",
           "desc": "选中的图标数超过一半时的样式配置",
           "normal": [["color"],["margin"]],
@@ -117,24 +117,24 @@
         }
       }
     },
-    "TextConfigConfig": {
+    "TextConfig": {
       "sequence": 2,
-      "title": "文字评分样式",
+      "title": "文字评分",
       "desc": "按分值等级展示不同图标样式和颜色",
       "props": {
-        "character": ""
+        "character": "好"
       },
       "theme": {
-        "activeTextIcon": {
-          "name": "选中文字的样式",
+        "ActiveTextIcon": {
+          "name": "选中的文字",
           "desc": "选中的文字的样式配置",
           "normal": [["color"],["margin"], ["fontSize"]],
           "hover": [],
           "clicked": [],
           "disabled": []
         },
-        "defaultTextIcon": {
-          "name": "默认文字的样式",
+        "DefaultTextIcon": {
+          "name": "默认的文字的",
           "desc": "默认的文字的样式配置",
           "normal": [["color"],["margin"], ["fontSize"]],
           "hover": [],
@@ -145,23 +145,22 @@
     }
   },
   "theme": {
-    "activeIcon": {
-        "name": "选中的图标样式",
+    "ActiveIcon": {
+        "name": "选中的图标",
         "desc": "选中的星星的样式",
         "normal": [["color"],["margin"], ["fontSize"]],
         "hover": [],
         "clicked": [],
         "disabled": []
     },
-    "defaultRateIcon": {
-        "name": "默认的图标样式",
+    "DefaultRateIcon": {
+        "name": "默认的图标",
         "desc": "默认的星星的样式",
         "normal": [["color"],["margin"], ["fontSize"]],
         "hover": [],
         "clicked": [],
         "disabled": []
     }
-
   }
 
 }

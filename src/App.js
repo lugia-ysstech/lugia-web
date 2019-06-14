@@ -293,7 +293,7 @@ data.reduce((modules, item) => {
 class Header extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = { data, modulePath: '/rate' };
+    this.state = { data, modulePath: '/switch' };
   }
 
   onChange = item => {
