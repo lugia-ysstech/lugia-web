@@ -184,7 +184,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
               config={{
                 [Widgets.Icon]: {
                   normal: {
-                    color: switchBackground.backgroundColor,
+                    color: switchBackground.color,
                     fontSize: Math.min(circleWidth, circleHeight) - 4,
                   },
                 },
