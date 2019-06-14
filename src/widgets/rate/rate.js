@@ -693,7 +693,6 @@ class Rate extends React.Component<RateProps, any> {
     if (type === 'bottom') {
       return (
         <RateIconBottom
-          themeProps={resultTheme}
           theme={resultTheme}
           viewClass={resultViewClass}
           type={'default'}
@@ -705,7 +704,6 @@ class Rate extends React.Component<RateProps, any> {
 
     return (
       <RateIcon
-        themeProps={resultTheme}
         theme={resultTheme}
         viewClass={resultViewClass}
         type={type}

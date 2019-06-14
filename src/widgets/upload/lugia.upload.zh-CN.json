@@ -8,7 +8,7 @@
       "desc": "上传时附带的额外参数",
       "defaultValue": "undefined"
     },
-    "listType": {
+    "areaType": {
       "type": "UploadType",
       "desc": "文件列表的类型 支持5种类型(default/both/button/picture/area)",
       "defaultValue": "default"
@@ -117,6 +117,116 @@
     "UploadSize": ["small", "default", "large"],
     "UploadType":["default","both","button","picture","area"]
   },
+  "category": ["数据录入"],
+  "designInfo": {
+    "ButtonTypeUpload": {
+      "sequence": 1,
+      "title": "按钮类型上传",
+      "desc": "按钮上传模式的配置项",
+      "props": {
+        "areaType": "button"
+      },
+      "theme": {
+        "uploadButtonType": {
+          "name": "按钮类型样式",
+          "desc": "按钮上传类型的样式配置",
+          "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
+          "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
+          "clicked": [],
+          "disabled": [["background"], ["border"]]
+        }
+      }
+    },
+    "PictureTypeUpload": {
+      "sequence": 2,
+      "title": "图片上传",
+      "desc": "图片上传模式的配置项，仅支持图片",
+      "props": {
+        "areaType": "picture"
+      },
+      "theme": {
+        "uploadPictureType": {
+          "name": "图片上传样式",
+          "desc": "图片上传类型的样式配置",
+          "normal": [["width"], ["height"], ["opacity"], ["border"]],
+          "hover": [["background"], ["opacity"], ["border"]],
+          "clicked": [],
+          "disabled": [["background"], ["color"], ["border"]]
+        }
+      }
+    },
+    "AreaTypeUpload": {
+      "sequence": 3,
+      "title": "区域拖拽上传",
+      "desc": "大面积区域拖拽上传模式的配置项",
+      "props": {
+        "areaType": "area"
+      },
+      "theme": {
+        "uploadAreaType": {
+          "name": "区域拖拽上传样式",
+          "desc": "区域拖拽上传类型的样式配置",
+          "normal": [["width"], ["height"], ["fontSize"],["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": [["color"]]
+        }
+      }
+    },
+    "BothTypeUpload": {
+      "sequence": 4,
+      "title": "带按钮的拖拽上传",
+      "desc": "带按钮的拖拽上传模式的配置项",
+      "props": {
+        "areaType": "both"
+      },
+      "theme": {
+        "uploadButtonType": {
+          "name": "按钮部分样式",
+          "desc": "按钮部分的样式配置",
+          "normal": [["width"], ["height"], ["fontSize"],["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": [["color"]]
+        }
+      }
+    }
+  },
+  "theme": {
+    "uploadDefaultType": {
+      "name": "默认样式",
+      "desc": "默认上传框的样式",
+      "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
+      "hover": [["boxShadow"], ["border"]],
+      "clicked": [],
+      "disabled": [["border"], ["cursor"]]
+    },
+    "uploadListType": {
+      "name": "默认样式",
+      "desc": "默认上传框的样式",
+      "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
+      "hover": [["boxShadow"], ["border"]],
+      "clicked": [],
+      "disabled": [["border"], ["cursor"]]
+    },
+    "uploadListSuccessIcon": {
+      "name": "上传成功图标样式",
+      "desc": "上传成功时列表图标的样式",
+      "normal": [["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "uploadListFailedIcon": {
+      "name": "上传失败图标样式",
+      "desc": "上传失败时列表图标的样式",
+      "normal": [["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    }
 
-  "category": ["数据录入"]
+
+  }
+
 }

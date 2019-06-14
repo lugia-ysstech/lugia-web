@@ -99,27 +99,21 @@
         "classify": true
       },
       "theme": {
-        "normal": [["width"],["margin"], ["height"], ["padding"], ["fontSize"]],
-        "hover": [],
-        "clicked": [],
-        "disabled": [],
-        "children": {
-          "dangerIcon": {
-            "name": "低分值样式",
-            "desc": "选中的图标数少于一半时的样式配置",
-            "normal": [["color"],["margin"]],
-            "hover": [],
-            "clicked": [],
-            "disabled": []
-          },
-          "amazedIcon": {
-            "name": "高分值样式",
-            "desc": "选中的图标数超过一半时的样式配置",
-            "normal": [["color"],["margin"]],
-            "hover": [],
-            "clicked": [],
-            "disabled": []
-          }
+        "dangerIcon": {
+          "name": "低分值样式",
+          "desc": "选中的图标数少于一半时的样式配置",
+          "normal": [["color"],["margin"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "amazedIcon": {
+          "name": "高分值样式",
+          "desc": "选中的图标数超过一半时的样式配置",
+          "normal": [["color"],["margin"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
         }
       }
     },
@@ -128,57 +122,46 @@
       "title": "文字评分样式",
       "desc": "按分值等级展示不同图标样式和颜色",
       "props": {
-        "character": "好"
+        "character": ""
       },
       "theme": {
-        "normal": [["width"],["margin"], ["height"], ["padding"], ["fontSize"]],
-        "hover": [],
-        "clicked": [],
-        "disabled": [],
-        "children": {
-          "activeTextIcon": {
-            "name": "选中文字的样式",
-            "desc": "选中的文字的样式配置",
-            "normal": [["color"],["margin"], ["fontSize"]],
-            "hover": [],
-            "clicked": [],
-            "disabled": []
-          },
-          "defaultTextIcon": {
-            "name": "默认文字的样式",
-            "desc": "默认的文字的样式配置",
-            "normal": [["color"],["margin"], ["fontSize"]],
-            "hover": [],
-            "clicked": [],
-            "disabled": []
-          }
+        "activeTextIcon": {
+          "name": "选中文字的样式",
+          "desc": "选中的文字的样式配置",
+          "normal": [["color"],["margin"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "defaultTextIcon": {
+          "name": "默认文字的样式",
+          "desc": "默认的文字的样式配置",
+          "normal": [["color"],["margin"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
         }
       }
     }
   },
   "theme": {
-    "normal": [["width"],["margin"], ["height"], ["padding"], ["fontSize"]],
-    "hover": [],
-    "clicked": [],
-    "disabled": [],
-    "children": {
-      "activeIcon": {
+    "activeIcon": {
         "name": "选中的图标样式",
         "desc": "选中的星星的样式",
         "normal": [["color"],["margin"], ["fontSize"]],
         "hover": [],
         "clicked": [],
         "disabled": []
-      },
-      "defaultRateIcon": {
+    },
+    "defaultRateIcon": {
         "name": "默认的图标样式",
         "desc": "默认的星星的样式",
         "normal": [["color"],["margin"], ["fontSize"]],
         "hover": [],
         "clicked": [],
         "disabled": []
-      }
     }
+
   }
 
 }
