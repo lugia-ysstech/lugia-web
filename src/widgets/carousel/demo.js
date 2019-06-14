@@ -5,6 +5,7 @@
  */
 import * as React from 'react';
 import Carousel from './index';
+import { getBorder } from '@lugia/theme-css-hoc';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 
@@ -98,18 +99,43 @@ export default class SkeletonDemo extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Carousel]: {
-        Wrap: { normal: { width: 700, height: 350 } },
+        CarouselWrap: { normal: { width: 700, height: 350 } },
         PreButton: {
-          normal: { color: 'blue', fontSize: 60, opacity: 0.2 },
+          normal: {
+            color: 'blue',
+            fontSize: 60,
+            opacity: 0.2,
+            boxShadow: '0px 0px 5px 5px yellow',
+          },
           hover: { opacity: 1 },
         },
         NextButton: {
-          normal: { color: 'yellow', fontSize: 60, opacity: 0.2 },
+          normal: {
+            color: 'yellow',
+            fontSize: 60,
+            opacity: 0.2,
+            boxShadow: '2px 2px 5px 5px blue',
+          },
           hover: { opacity: 1 },
         },
         Indicator: {
-          normal: { background: 'pink', height: 20, width: 20 },
-          hover: { background: 'yellow' },
+          normal: {
+            height: 20,
+            width: 20,
+            opacity: 0.5,
+            background: { color: 'pink' },
+            boxShadow: '2px 2px 5px 5px yellow',
+            border: getBorder({ color: '#9482ff', width: 0, style: 'solid' }, { radius: 20 }),
+            margin: {
+              left: 10,
+              right: 10,
+              top: 10,
+              bottom: 10,
+            },
+          },
+          hover: {
+            background: { color: 'orange' },
+          },
         },
       },
     };

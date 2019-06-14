@@ -61,5 +61,42 @@
       ]
     }
   },
-  "category": ["数据展示"]
+  "category": ["数据展示"],
+  "theme": {
+    "CarouselWrap": {
+      "name": "Carousel的外框",
+      "desc": "Carousel的外框",
+      "normal": [["width"], ["height"], ["borderRadius"], ["boxShadow"], ["opacity"], ["margin"]],
+      "hover": [["opacity"], ["boxShadow"]],
+      "clicked": [],
+      "disabled": []
+    },
+
+    "PreButton": {
+      "name": "左切换按钮",
+      "desc": "切换到前一个",
+      "normal": [["fontSize"], ["opacity"], ["color"], ["boxShadow"]],
+      "hover": [["opacity"], ["boxShadow"], ["color"]],
+      "clicked": [],
+      "disabled": []
+    },
+
+    "NextButton": {
+      "name": "右切换按钮",
+      "desc": "切换到后一个",
+      "normal": [["fontSize"], ["opacity"], ["color"], ["boxShadow"]],
+      "hover": [["opacity"], ["boxShadow"], ["color"]],
+      "clicked": [],
+      "disabled": []
+    },
+
+    "Indicator": {
+      "name": "轮播指示器",
+      "desc": "显示当前轮播所在位置",
+      "normal": [["width"], ["height"], ["border"], ["boxShadow"], ["margin"], ["opacity"]],
+      "hover": [["background"]],
+      "clicked": [],
+      "disabled": []
+    }
+  }
 }

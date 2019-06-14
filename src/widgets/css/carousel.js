@@ -5,83 +5,105 @@
  */
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
+import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from '../css/stateColor';
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
-const { lightGreyColor, mediumGreyColor, defaultColor } = colorsFunc();
+const { lightGreyColor } = colorsFunc();
 
 export const defaultWidth = 400;
 export const defaultHeight = 200;
+export const defaultButtonFontSize = 30;
+export const defaultButtonPadding = 20;
 
-export const CommonButton = CSSComponent({
-  tag: 'span',
-  className: 'commonButton',
-  normal: {
-    selectNames: [['width'], ['height']],
-  },
+const buttonCSS = `
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 200;
+      border-radius: 50%;
+      transition: all 0.2s linear;
+      font-size: ${px2remcss(defaultButtonFontSize)};
+      color: ${lightGreyColor};
+`;
 
-  css: css`
-    width: ${px2remcss(30)};
-    height: ${px2remcss(30)};
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 200;
-    border-radius: 50%;
-    transition: all 0.2s linear;
-  `,
-});
-
-export const PreButton = CSSComponent({
-  extend: CommonButton,
-  className: 'preButton',
-  normal: {
-    selectNames: [['width'], ['height']],
-    getCSS: (themeMeta, themeProps) => {
-      // 改变按钮大小应该设置Icon的字体大小
+export const PreButton = ThemeHoc(
+  CSSComponent({
+    tag: 'span',
+    className: 'PreButton',
+    normal: {
+      selectNames: [['fontSize'], ['opacity'], ['color'], ['boxShadow']],
+      getCSS: (themeMeta, themeProps) => {
+        const { fontSize = defaultButtonFontSize } = themeMeta;
+        return `
+        left: -${px2remcss(fontSize)};
+        width: ${px2remcss(fontSize)};
+        height: ${px2remcss(fontSize)}
+        `;
+      },
+      defaultTheme: {
+        opacity: 0.6,
+      },
     },
-  },
-  css: `
-    left: -${px2remcss(30)};
+    hover: {
+      selectNames: [['opacity'], ['boxShadow'], ['color']],
+      defaultTheme: {
+        opacity: 1,
+      },
+    },
+    css: `
+      ${buttonCSS};
   `,
-});
+  }),
+  'PreButton',
+  { hover: true, actived: false }
+);
 
 PreButton.displayName = 'preButton';
 
-export const NextButton = CSSComponent({
-  extend: CommonButton,
-  className: 'nectButton',
-  normal: {
-    selectNames: [],
-  },
-
-  css: `
-    right: -${px2remcss(30)};
+export const NextButton = ThemeHoc(
+  CSSComponent({
+    tag: 'span',
+    className: 'NextButton',
+    normal: {
+      selectNames: [['fontSize'], ['opacity'], ['color'], ['boxShadow']],
+      defaultTheme: {
+        opacity: 0.6,
+      },
+      getCSS: (themeMeta, themeProps) => {
+        const { fontSize = defaultButtonFontSize } = themeMeta;
+        return `
+        right: -${px2remcss(fontSize)};
+        width: ${px2remcss(fontSize)};
+        height: ${px2remcss(fontSize)}
+        `;
+      },
+    },
+    hover: {
+      selectNames: [['opacity']],
+      defaultTheme: {
+        opacity: 1,
+      },
+    },
+    css: `
+      ${buttonCSS};
   `,
-});
+  }),
+  'NextButton',
+  { hover: true, actived: false }
+);
 
-NextButton.displayName = 'nextButton';
+NextButton.displayName = 'NextButton';
 
 export const SwitchIcon = CSSComponent({
   extend: Icon,
   className: 'SwitchIcon',
   normal: {
-    selectNames: [['opacity']],
-    defaultTheme: {
-      opacity: 0.6,
-    },
+    selectNames: [],
   },
   hover: {
-    selectNames: [['opacity']],
-    defaultTheme: {
-      opacity: 0.6,
-    },
+    selectNames: [],
   },
   css: `
-    font-size: ${px2remcss(30)};
-    color: ${lightGreyColor};
-    &:hover {
-      opacity: 1;
-    }
   `,
 });
 
@@ -89,10 +111,10 @@ export const Wrap = CSSComponent({
   tag: 'div',
   className: 'Wrap',
   normal: {
-    selectNames: [['width'], ['height'], ['borderRadius'], ['boxShadow'], ['opacity']],
+    selectNames: [['width'], ['height'], ['borderRadius'], ['boxShadow'], ['opacity'], ['margin']],
   },
   hover: {
-    selectNames: [['opacity']],
+    selectNames: [['opacity'], ['boxShadow']],
   },
   css: `
     position: relative;
@@ -113,14 +135,19 @@ export const CarouselContainer = CSSComponent({
   },
   hover: {
     selectNames: [],
-    getCSS: () => {
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { preButtonFontSize, nextButtonFontSize } = propsConfig;
+      const leftTrans = preButtonFontSize + defaultButtonPadding;
+      const rightTrans = nextButtonFontSize + defaultButtonPadding;
+
       return `
-      &:hover > span:nth-child(1) {
-        transform: translate(${px2remcss(50)}, -50%);
+      &:hover > span:nth-child(1) > span:nth-child(1) {
+        transform: translate(${px2remcss(leftTrans)}, -50%);
       }
     
-      &:hover > span:nth-child(2) {
-        transform: translate(-${px2remcss(50)}, -50%);
+      &:hover > span:nth-child(2) > span:nth-child(1) {
+        transform: translate(-${px2remcss(rightTrans)}, -50%);
       }
       `;
     },
@@ -233,26 +260,49 @@ const getIndicatorCSS = (indicatorType: string) => {
   return indicatorType === 'vertical' ? verticalIndicatorCSS : defaultIndicatorCSS;
 };
 
+const getBackground = (themeConfig: Object) => {
+  const { normal = {}, hover = {} } = themeConfig;
+  const { background: defaultBg = {} } = normal;
+  const { background: checkedBg = {} } = hover;
+  const { color: defaultColor = '#999' } = defaultBg;
+  const { color: checkedColor = '#ddd' } = checkedBg;
+  return {
+    defaultColor,
+    checkedColor,
+  };
+};
+
 export const Indicator = CSSComponent({
   tag: 'div',
   className: 'indicator',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['boxShadow'],
+      ['margin'],
+      ['padding'],
+      ['opacity'],
+    ],
     getCSS: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
+      const { propsConfig, themeConfig } = themeProps;
+
       const { animationTime, indicatorType, checked } = propsConfig;
       const indicatorCSS = getIndicatorCSS(indicatorType);
-      // backgroundColor 需要重新根据indicatorType 来配置
-      const backgroundColor = checked ? '#ddd' : '#999';
+
+      const { defaultColor, checkedColor } = getBackground(themeConfig);
+      const backgroundColor = checked ? checkedColor : defaultColor;
+
       return `
         transition: all ${animationTime}s;
         ${indicatorCSS};
-        background: ${backgroundColor}
+        background: ${backgroundColor};
       `;
     },
   },
   hover: {
-    selectNames: [],
+    selectNames: [['opacity']],
   },
   css: `
     border-radius: ${px2remcss(2)};
