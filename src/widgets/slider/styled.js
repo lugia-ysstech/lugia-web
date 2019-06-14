@@ -49,8 +49,9 @@ type CssTypeProps = {
 const transitionTime = '0.1';
 export const SliderBigBox = CSSProvider({
   tag: 'div',
+  className: 'SliderBigBox',
   normal: {
-    selectNames: [['border'], ['background'], ['width'], ['height'], ['margin'], ['padding']],
+    selectNames: [['border'], ['background'], ['margin'], ['padding']],
     getCSS(
       themeMate,
       {
@@ -58,16 +59,13 @@ export const SliderBigBox = CSSProvider({
       }
     ) {
       const { width } = themeMate;
-      return `
-        ${vertical ? 'height' : 'width'}:${em(width)};
-        ${vertical ? 'width' : 'height'}:'';
-      `;
+      return vertical ? `height:${em(width)}` : `width:${em(width)}`;
     },
   },
   hover: {
     selectNames: [['border'], ['background']],
   },
-  actived: {
+  active: {
     selectNames: [['border'], ['background']],
   },
   disabled: {
@@ -87,7 +85,7 @@ export const SliderBox = CSSProvider({
   hover: {
     selectNames: [],
   },
-  actived: {
+  active: {
     selectNames: [],
   },
   disabled: {
@@ -116,7 +114,7 @@ export const SliderWrapper = CSSProvider({
   hover: {
     selectNames: [['background']],
   },
-  actived: {
+  active: {
     selectNames: [['background']],
   },
   disabled: {
@@ -127,9 +125,6 @@ export const SliderWrapper = CSSProvider({
     position: relative;
   `,
 });
-//width: ${props => getSliderWrapperStyle(props).rangeW};
-//     height: ${props => getSliderWrapperStyle(props).rangeH};
-//background-color: ${props => getSliderWrapperStyle(props).wrapperBackground};
 export const SliderInner = CSSProvider({
   tag: 'div',
   className: 'SliderPassedWay',
@@ -155,7 +150,7 @@ export const SliderInner = CSSProvider({
       return getSliderInnerHeight(themeMate, propsConfig);
     },
   },
-  actived: {
+  active: {
     selectNames: [['background']],
     getCSS(themeMate, themeProps) {
       const { propsConfig } = themeProps;
@@ -189,7 +184,7 @@ export const Button = CSSProvider({
   hover: {
     selectNames: [['width'], ['height'], ['background']],
   },
-  actived: {
+  active: {
     selectNames: [['width'], ['height'], ['background']],
   },
   disabled: {
@@ -197,26 +192,46 @@ export const Button = CSSProvider({
   },
   css: css`
     border-radius: 50%;
-    background-color: ${props => getButtonStyle(props).btnBackground};
     position: absolute;
     ${props => getButtonStyle(props).btnPosition};
   `,
 });
-//width: ${props => getButtonStyle(props).btnWidth};
-//height: ${props => getButtonStyle(props).btnHeight};
 export const Tips = CSSProvider({
   tag: 'span',
+  className: 'SliderTips',
   normal: {
     selectNames: [],
+    getCSS(themeMate) {
+      const { height } = themeMate;
+      console.log(height, 3);
+      return `
+        top: -${em(height + 10)};
+      `;
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+    getCSS(themeMate) {
+      const { height } = themeMate;
+      console.log(height, 3);
+      return `
+        top: -${em(height + 10)};
+      `;
+    },
   },
   css: css`
     font-size: ${em(14)};
     text-align: center;
     position: absolute;
     left: 50%;
-    top: -50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
   `,
 });
 export const Tipinner = CSSProvider({
@@ -224,6 +239,8 @@ export const Tipinner = CSSProvider({
   className: 'SliderTips',
   normal: {
     selectNames: [
+      ['width'],
+      ['height'],
       ['border'],
       ['borderRadius'],
       ['background'],
@@ -231,24 +248,107 @@ export const Tipinner = CSSProvider({
       ['color'],
       ['font'],
       ['fontSize'],
+      ['padding'],
     ],
+    getCSS(
+      themeMate,
+      {
+        propsConfig: { tipsText },
+      }
+    ) {
+      const {
+        height,
+        background: { backgroundColor },
+        border: {
+          bottom: { borderColor: bottomBorderColor },
+        },
+        boxShadow,
+      } = themeMate;
+      return `
+        line-height:${em(height)};
+        &::before{
+          content:'${tipsText}';
+          background:${backgroundColor};          
+        };
+        
+        &::after {
+          background:${backgroundColor};
+          border-right-color:${bottomBorderColor};
+          border-bottom-color:${bottomBorderColor};
+          box-shadow:${boxShadow};
+        }
+      `;
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['background'], ['color'], ['border']],
+    getCSS(themeMate) {
+      const { height } = themeMate;
+      return `
+        line-height:${em(height)};
+      `;
+    },
   },
   css: css`
     display: block;
-    min-width: ${em(21)};
-    height: ${em(27)};
-    line-height: ${em(27)};
+    min-width: ${em(25)};
     padding: 0 ${em(3)};
-    background: ${tipBackground};
-    color: ${tipColor};
-    border-radius: ${em(3)};
     user-select: none;
     -webkit-user-select: none;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      border-radius: ${em(3)};
+      padding: 0 ${em(3)};
+      text-align: center;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: ${em(12)};
+      height: ${em(12)};
+      position: absolute;
+      left: 50%;
+      bottom: -${em(3)};
+      transform: translateX(-50%) rotate(45deg);
+      border: 1px solid transparent;
+    }
   `,
 });
 export const Tiparrow = CSSProvider({
   tag: 'span',
+  className: 'SliderTips',
   normal: {
+    selectNames: [],
+    getCSS(themeMate) {
+      const { background: { backgroundColor } = {}, width } = themeMate;
+      return `
+         border-top-color:${backgroundColor};
+      `;
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
     selectNames: [],
     getCSS(themeMate) {
       const { background: { backgroundColor } = {} } = themeMate;
@@ -260,10 +360,6 @@ export const Tiparrow = CSSProvider({
   css: css`
     display: inline-block;
     vertical-align: top;
-    border-top: ${em(6)} solid ${tipBackground};
-    border-left: ${em(5)} solid transparent;
-    border-right: ${em(5)} solid transparent;
-    border-bottom: ${em(5)} solid transparent;
   `,
 });
 export const Dot = CSSProvider({
@@ -305,24 +401,6 @@ function getPaddingSize(props) {
   const bottom = vertical ? levelPaddings[0] : sliderVerticalPaddings[1];
   return `padding:${top}px ${right}px ${bottom}px ${left}px;`;
 }
-// const getSliderWrapperStyle = (props: CssTypeProps) => {
-//   const { changeBackground, disabled, vertical } = props;
-//   const wrapperBackground = changeBackground || disabled ? throughRangeBackground : trackBackground;
-//   let { rangeW, rangeH } = props;
-//   const rangwWidth = rangeW;
-//   const rangwHeight = rangeH;
-//   if (vertical) {
-//     rangeW = rangwHeight;
-//     rangeH = rangwWidth;
-//   }
-//   rangeW = em(Number(rangeW));
-//   rangeH = em(Number(rangeH));
-//   return {
-//     wrapperBackground,
-//     rangeW,
-//     rangeH,
-//   };
-// };
 function getSliderInnerHeight(themeMate, propsConfig) {
   const { height } = themeMate;
   const { vertical } = propsConfig;
@@ -332,17 +410,6 @@ function getSliderInnerHeight(themeMate, propsConfig) {
 const getSliderInnerStyle = (props: CssTypeProps) => {
   const { rangeH, SliderInnerWidth, SliderInnerLeft } = props;
   const { vertical, value } = props;
-  // const theme = getTheme(props);
-  // const background = themeColor;
-  // const doneBackground = background; //轨道划过完成的颜色
-  // const { hoverColor: doingBackground } = colorsFunc(doneBackground);
-  // const innerBackground = disabled
-  //   ? trackDisabledBackground
-  //   : changeBackground
-  //   ? doingBackground
-  //   : doneBackground;
-  // SliderInnerWidth = Number(SliderInnerWidth);
-  // SliderInnerLeft = Number(SliderInnerLeft);
 
   let InnerWidth = SliderInnerWidth + '%';
   let InnerHeight = em(rangeH);
@@ -355,7 +422,6 @@ const getSliderInnerStyle = (props: CssTypeProps) => {
     InnerHeight = SliderInnerWidth + '%';
     InnerWidth = em(rangeH);
     const { length } = value;
-    const left = length === 1 ? SliderInnerLeft : 0;
     const bottom = length === 1 ? 0 : SliderInnerLeft;
     sliderInnerPosition = `
         left:50%;
@@ -367,32 +433,13 @@ const getSliderInnerStyle = (props: CssTypeProps) => {
     InnerWidth,
     InnerHeight,
     sliderInnerPosition,
-    //innerBackground,
   };
 };
 const getButtonStyle = (props: CssTypeProps) => {
-  const { innerBackground } = getSliderInnerStyle(props);
-  const { changeBackground, btnDisabled, disabled, vertical, getTheme } = props;
-  // const { color } = getTheme();
-  // const background = color || themeColor;
-  const doneBackground = innerBackground; //轨道划过完成的颜色
-  let { btnWidth, btnHeight, moveX, moveY } = props;
+  const { changeBackground, btnDisabled, disabled, vertical } = props;
+  const { moveX, moveY } = props;
   const isChangeBg = changeBackground && btnDisabled;
 
-  const btnBackground = disabled
-    ? btnDisabledBackground
-    : isChangeBg
-    ? innerBackground
-    : doneBackground;
-
-  if (isChangeBg) {
-    btnWidth = btnWidth + 4;
-    btnHeight = btnHeight + 4;
-  }
-  btnWidth = em(btnWidth);
-  btnHeight = em(btnHeight);
-  const newBtnWidth = vertical ? btnHeight : btnWidth;
-  const newBtnHeight = vertical ? btnWidth : btnHeight;
   const btnZIndex = `
   z-index:${isChangeBg ? '3' : '2'};
   `;
@@ -408,9 +455,6 @@ const getButtonStyle = (props: CssTypeProps) => {
         transition:${transitionTime}s; 
       `;
   return {
-    btnWidth: newBtnWidth,
-    btnHeight: newBtnHeight,
-    btnBackground,
     btnPosition,
   };
 };

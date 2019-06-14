@@ -513,6 +513,8 @@ class Slider extends Component<TypeProps, TypeState> {
     // const styleSlider = getTheme();
     const {
       //  sliderTrackThemeProps:{sliderTrackThemeProps},
+      sliderTipsThemeProps,
+      sliderContainerThemeProps,
       sliderPassedWayThemeProps: { sliderPassedWayThemeProps },
       buttonThemeProps: { sliderButtonThemeProps, width: btnWidth, height: btnHeight },
       sliderTrackThemeProps: { sliderTrackThemeProps, width: sliderWidth, height: sliderHeight },
@@ -622,8 +624,9 @@ class Slider extends Component<TypeProps, TypeState> {
       btnDisabled: true,
       middleVal: 0,
     };
-    const sliderTipsName = 'SliderTips';
-    const sliderTipsThemeProps = this.props.mergeThemeStateAndChildThemeProps(sliderTipsName);
+    // const sliderTipsName = 'SliderTips';
+    // const sliderTipsThemeProps = this.props.getPartOfThemeProps(sliderTipsName);
+    // console.log(sliderTipsThemeProps);
     const children = value.map((val, i) => {
       const realyVal = val - minValue;
       console.log(realyVal, val, minValue, size.btnWidth, btnWidth);
@@ -647,14 +650,16 @@ class Slider extends Component<TypeProps, TypeState> {
           key={i}
           getTheme={getTheme}
         >
-          {showTip && btnDisabled ? (
-            <Tips themeProps={sliderTipsThemeProps}>
-              <Tipinner themeProps={sliderTipsThemeProps}>{tipsText}</Tipinner>
-              <Tiparrow themeProps={sliderTipsThemeProps} />
-            </Tips>
-          ) : (
-            ''
-          )}
+          {/*{showTip && btnDisabled ? (*/}
+          <Tips themeProps={sliderTipsThemeProps}>
+            <Tipinner themeProps={deepMerge(sliderTipsThemeProps, { propsConfig: { tipsText } })}>
+              {tipsText}
+            </Tipinner>
+            {/*<Tiparrow themeProps={sliderTipsThemeProps} />*/}
+          </Tips>
+          {/*// ) : (*/}
+          {/*//   ''*/}
+          {/*// )}*/}
         </Button>
       );
     });
@@ -669,7 +674,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const { themeProps } = this.props;
     //console.log(sliderThemeProps);
     return (
-      <SliderBigBox themeProps={deepMerge(themeProps, { propsConfig: { vertical } })}>
+      <SliderBigBox themeProps={sliderContainerThemeProps}>
         <SliderBox
           {...size}
           themeProps={themeProps}

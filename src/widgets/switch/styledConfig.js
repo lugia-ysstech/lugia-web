@@ -68,27 +68,27 @@ export function getThemeProps(props, value) {
   const switchclosedName = 'SwitchClosed';
   const open = getPartOfThemeProps(switchOpenName);
   const closed = getPartOfThemeProps(switchclosedName);
-  const openBackgroundColor = getBackground(props, true);
-  const closedBackgroundColor = getBackground(props, false);
+  const opencolor = getBackground(props, true);
+  const closedcolor = getBackground(props, false);
 
   const defaultOpenThemeProps = {
     normal: {
       width: wrapWidth,
       height: wrapHeight,
-      border: getBorder({ borderColor: '', borderStyle: '', borderWidth: 0 }, { radius: 20 }),
+      border: getBorder({ color: '', style: '', width: 0 }, { radius: 20 }),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
       fontSize: 12,
-      color: '#fff',
+      color: 'rgba(255, 255, 255, 0.8)',
       font: {
         fontWeight: 'normal',
       },
       background: {
-        backgroundColor: openBackgroundColor,
+        color: opencolor,
       },
     },
     disabled: {
       background: {
-        backgroundColor: colorsFunc(openBackgroundColor).disabledColor,
+        color: colorsFunc(opencolor).disabledColor,
       },
     },
   };
@@ -97,22 +97,19 @@ export function getThemeProps(props, value) {
     normal: {
       width: wrapWidth,
       height: wrapHeight,
-      border: getBorder({ borderColor: '', borderStyle: '', borderWidth: 0 }, { radius: 20 }),
+      border: getBorder({ color: '', style: '', width: 0 }, { radius: 20 }),
       fontSize: 12,
-      color: '#fff',
+      color: 'rgba(255, 255, 255, 0.8)',
       font: {
         fontWeight: 'normal',
       },
       background: {
-        backgroundColor: closedBackgroundColor,
+        color: closedcolor,
       },
     },
     disabled: {
       background: {
-        backgroundColor:
-          closedBackgroundColor === '#ccc'
-            ? '#f2f2f2'
-            : colorsFunc(closedBackgroundColor).disabledColor,
+        color: closedcolor === '#ccc' ? '#f2f2f2' : colorsFunc(closedcolor).disabledColor,
       },
     },
   };
@@ -120,33 +117,31 @@ export function getThemeProps(props, value) {
   const childrenThemeProps = getPartOfThemeProps(childrenwidgetName);
   const { themeConfig: childrenConfig } = childrenThemeProps;
   const { normal } = childrenConfig;
+
   const defaultChildrenThemeProps = {
     normal: {
       width: circleWidth,
       height: circleHeight,
       background: {
-        backgroundColor: '#fff',
+        color: '#fff',
       },
-      border: getBorder({ borderColor: '', borderStyle: '', borderWidth: 0 }, { radius: '50%' }),
+      border: getBorder({ color: '', style: '', width: 0 }, { radius: '50%' }),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
     },
     active: {
       width: circleWidth + 4,
       height: circleHeight,
       background: {
-        backgroundColor: '#fff',
+        color: '#fff',
       },
-      border: getBorder(
-        { borderColor: '', borderStyle: '', borderWidth: 0 },
-        { radius: circleWidth / 2 }
-      ),
+      border: getBorder({ color: '', style: '', width: 0 }, { radius: circleWidth / 2 }),
     },
     disabled: deepMerge(
       {
         width: circleWidth,
         height: circleHeight,
         background: {
-          backgroundColor: '#fff',
+          color: '#fff',
         },
       },
       normal

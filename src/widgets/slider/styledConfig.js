@@ -4,9 +4,11 @@ import {
   throughRangeBackground,
   trackDisabledBackground,
   btnDisabledBackground,
+  tipBackground,
+  tipColor,
 } from './slider_public_color';
 import colorsFunc from '../css/stateColor';
-import { getBorderRadius, getBorder } from '../theme/CSSProvider';
+import { getBorder } from '../theme/CSSProvider';
 export const { themeColor } = colorsFunc();
 export const iconStyles = {
   fontSizeNormal: 40,
@@ -33,7 +35,7 @@ function verticalSize(props) {
     width = rangwHeight;
     height = rangwWidth;
   }
-  console.log(width, height);
+
   return {
     width,
     height,
@@ -41,91 +43,28 @@ function verticalSize(props) {
 }
 
 export function getThemeProps(props) {
-  const { mergeThemeStateAndChildThemeProps, getTheme, themeProps: sliderTheme, vertical } = props;
-  // const sliderNormalTheme = {
-  //   normal: {
-  //     width: rangeWidthNormal,
-  //     height: rangeHeightNormal,
-  //     background: {
-  //       backgroundColor: trackBackground,
-  //     },
-  //     border: getBorder({ color: '', style: '', width: 0 }, { radius: 6 }),
-  //   },
-  // };
-  // const { normal = {}, hover = {}, active = {}, disabled = {} } = getTheme();
-  // const mergeSliderNormal = deepMerge(sliderNormalTheme, { normal });
-  // const {
-  //   normal: {
-  //     width,
-  //     height,
-  //     border: {
-  //       top: { borderWidth:topBorderWidth = 0 } = {},
-  //       right: {borderWidth:rightBorderWidth = 0 } = {},
-  //       bottom: { borderWidth:bottomBorderWidth = 0 } = {},
-  //       left: { borderWidth:leftBorderWidth = 0 } = {},
-  //     } = {},
-  //   },
-  // } = mergeSliderNormal;
-  // console.log(topBorderWidth,rightBorderWidth,bottomBorderWidth,leftBorderWidth);
-  // const { width: sliderWidth, height: sliderHeight } = verticalSize({ vertical, width, height });
-  // console.log(mergeSliderNormal);
-  // const defaultSliderThemeProps = {
-  //   ...mergeSliderNormal,
-  //   hover: {
-  //     background: {
-  //       backgroundColor: throughRangeBackground,
-  //     },
-  //   },
-  //   active: {
-  //     background: {
-  //       backgroundColor: throughRangeBackground,
-  //     },
-  //   },
-  //   disabled: {
-  //     background: {
-  //       backgroundColor: trackDisabledBackground,
-  //     },
-  //   },
-  // };
-  //
-  // const sliderThemeProps = deepMerge(defaultSliderThemeProps, {
-  //   normal: { width: sliderWidth, height: sliderHeight },
-  //   hover,
-  //   active,
-  //   disabled,
-  // });
-  //
-  // sliderTheme.themeConfig = sliderThemeProps;
-  // console.log(width, height);
-  const buttonThemeProps = getSliderButtonThemeProps(
-    mergeThemeStateAndChildThemeProps,
-    getTheme,
-    vertical
-  );
+  const { getPartOfThemeProps, getTheme, themeProps: sliderTheme, vertical } = props;
+  const buttonThemeProps = getSliderButtonThemeProps(getPartOfThemeProps, vertical);
 
-  const sliderTrackThemeProps = getSliderTrackThemeProps(
-    mergeThemeStateAndChildThemeProps,
-    getTheme,
-    vertical
-  );
+  const sliderTrackThemeProps = getSliderTrackThemeProps(getPartOfThemeProps, vertical);
   const { height } = sliderTrackThemeProps;
-  const sliderPassedWayThemeProps = getSliderPassedWayThemeProps(
-    mergeThemeStateAndChildThemeProps,
-    getTheme,
-    height
-  );
-
+  const sliderPassedWayThemeProps = getSliderPassedWayThemeProps(getPartOfThemeProps, height);
+  const sliderTipsThemeProps = getTipsThemeProps(getPartOfThemeProps, buttonThemeProps);
   return {
     buttonThemeProps,
     sliderPassedWayThemeProps,
     sliderTrackThemeProps,
+    sliderContainerThemeProps: deepMerge(getPartOfThemeProps('SliderContainer'), {
+      propsConfig: { vertical },
+    }),
+    sliderTipsThemeProps,
   };
 }
-function getSliderTrackThemeProps(mergeThemeStateAndChildThemeProps, getTheme, vertical) {
+function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
   const sliderTrackName = 'SliderTrack';
-  const sliderTrackThemeProps = mergeThemeStateAndChildThemeProps(sliderTrackName);
+  const sliderTrackThemeProps = getPartOfThemeProps(sliderTrackName);
   const {
-    themeConfig: { normal = {}, hover = {}, actived = {}, disabled = {} },
+    themeConfig: { normal = {}, hover = {}, active = {}, disabled = {} },
   } = sliderTrackThemeProps;
 
   const sliderNormalTheme = {
@@ -138,17 +77,7 @@ function getSliderTrackThemeProps(mergeThemeStateAndChildThemeProps, getTheme, v
       border: getBorder({ color: '', style: '', width: 0 }, { radius: 6 }),
     },
   };
-  // const {
-  //   normal: themeNormal = {},
-  //   hover: themeHover = {},
-  //   actived: themeActived = {},
-  //   disabled: themeDisabled = {},
-  // } = getTheme();
-  const mergeSliderTrackNormal = deepMerge(
-    sliderNormalTheme,
-    //{normal:themeNormal},
-    { normal }
-  );
+  const mergeSliderTrackNormal = deepMerge(sliderNormalTheme, { normal });
   const {
     normal: { width, height },
   } = mergeSliderTrackNormal;
@@ -160,7 +89,7 @@ function getSliderTrackThemeProps(mergeThemeStateAndChildThemeProps, getTheme, v
         backgroundColor: throughRangeBackground,
       },
     },
-    actived: {
+    active: {
       background: {
         backgroundColor: throughRangeBackground,
       },
@@ -172,16 +101,12 @@ function getSliderTrackThemeProps(mergeThemeStateAndChildThemeProps, getTheme, v
     },
   };
 
-  const sliderTrackTheme = deepMerge(
-    defaultSliderThemeProps,
-    //{ hover: themeHover, actived: themeActived, disabled: themeDisabled },
-    {
-      normal: { ...mergeSliderTrackNormal, width: sliderWidth, height: sliderHeight },
-      hover,
-      actived,
-      disabled,
-    }
-  );
+  const sliderTrackTheme = deepMerge(defaultSliderThemeProps, {
+    normal: { ...mergeSliderTrackNormal, width: sliderWidth, height: sliderHeight },
+    hover,
+    active,
+    disabled,
+  });
 
   sliderTrackThemeProps.themeConfig = sliderTrackTheme;
   return {
@@ -190,14 +115,14 @@ function getSliderTrackThemeProps(mergeThemeStateAndChildThemeProps, getTheme, v
     height,
   };
 }
-function getSliderPassedWayThemeProps(mergeThemeStateAndChildThemeProps, getTheme, height) {
+function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
   const sliderPassedWayName = 'SliderPassedWay';
-  const sliderPassedWayThemeProps = mergeThemeStateAndChildThemeProps(sliderPassedWayName);
+  const sliderPassedWayThemeProps = getPartOfThemeProps(sliderPassedWayName);
   const {
     themeConfig: {
       normal: sliderPassedWayNormalTheme = {},
       hover = {},
-      actived = {},
+      active = {},
       disabled = {},
     },
   } = sliderPassedWayThemeProps;
@@ -209,18 +134,7 @@ function getSliderPassedWayThemeProps(mergeThemeStateAndChildThemeProps, getThem
       height,
     },
   };
-  // const {
-  //   normal: themeNormal = {},
-  //   hover: themeHover = {},
-  //   actived: themeActived = {},
-  //   disabled: themeDisabled = {},
-  // } = getTheme();
-  const mergeNormal = deepMerge(
-    defaultThemeProps,
-    //  {normal:themeNormal},
-    { normal: sliderPassedWayNormalTheme }
-  );
-  console.log(mergeNormal);
+  const mergeNormal = deepMerge(defaultThemeProps, { normal: sliderPassedWayNormalTheme });
   const {
     normal: {
       background: { backgroundColor },
@@ -235,39 +149,32 @@ function getSliderPassedWayThemeProps(mergeThemeStateAndChildThemeProps, getThem
       },
       height: sliderPassedWayHeight,
     },
-    actived: {
+    active: {
       background: {
         backgroundColor: colorsFunc(backgroundColor).hoverColor,
       },
       height: sliderPassedWayHeight,
     },
     disabled: {
-      hover: {
-        background: {
-          backgroundColor: btnDisabledBackground,
-        },
-        height: sliderPassedWayHeight,
+      background: {
+        backgroundColor: btnDisabledBackground,
       },
+      height: sliderPassedWayHeight,
     },
   };
-  const mergesliderPassedWayTheme = deepMerge(
-    defaultSliderPassedWayThemeProps,
-    //{ hover: themeHover, actived: themeActived, disabled: themeDisabled },
-    {
-      hover,
-      actived,
-      disabled,
-    }
-  );
+  const mergesliderPassedWayTheme = deepMerge(defaultSliderPassedWayThemeProps, {
+    hover,
+    active,
+    disabled,
+  });
   sliderPassedWayThemeProps.themeConfig = mergesliderPassedWayTheme;
-  console.log(mergesliderPassedWayTheme);
   return {
     sliderPassedWayThemeProps,
   };
 }
-function getSliderButtonThemeProps(mergeThemeStateAndChildThemeProps, vertical) {
+function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
   const sliderButtonName = 'SliderButton';
-  const sliderButtonThemeProps = mergeThemeStateAndChildThemeProps(sliderButtonName);
+  const sliderButtonThemeProps = getPartOfThemeProps(sliderButtonName);
   const {
     themeConfig: { normal: buttonNormalTheme = {} },
   } = sliderButtonThemeProps;
@@ -300,7 +207,7 @@ function getSliderButtonThemeProps(mergeThemeStateAndChildThemeProps, vertical) 
         backgroundColor: colorsFunc(backgroundColor).hoverColor,
       },
     },
-    actived: {
+    active: {
       width: btnWidth + 4,
       height: btnHeight + 4,
       background: {
@@ -321,10 +228,33 @@ function getSliderButtonThemeProps(mergeThemeStateAndChildThemeProps, vertical) 
     { normal: { width: btnWidth, height: btnHeight } }
   );
   sliderButtonThemeProps.themeConfig = mergeSliderButtonThemeProps;
-  console.log(sliderButtonThemeProps);
   return {
     sliderButtonThemeProps,
     width,
     height,
   };
+}
+function getTipsThemeProps(getPartOfThemeProps, buttonThemeProps) {
+  const sliderTipsName = 'SliderTips';
+  const sliderTipsThemeProps = getPartOfThemeProps(sliderTipsName);
+  const defaultTipThemeProps = {
+    normal: {
+      background: {
+        backgroundColor: tipBackground,
+      },
+      height: 27,
+      color: tipColor,
+      border: getBorder({}, { radius: 3 }),
+      fontSize: 14,
+    },
+    disabled: {
+      background: {
+        backgroundColor: btnDisabledBackground,
+      },
+      color: '#fff',
+    },
+  };
+  const mergeThemeConfig = deepMerge(defaultTipThemeProps, sliderTipsThemeProps.themeConfig);
+  sliderTipsThemeProps.themeConfig = mergeThemeConfig;
+  return sliderTipsThemeProps;
 }
