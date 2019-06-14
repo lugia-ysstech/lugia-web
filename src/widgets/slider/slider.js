@@ -618,16 +618,16 @@ class Slider extends Component<TypeProps, TypeState> {
           key={i}
           getTheme={getTheme}
         >
-          {/*{showTip && btnDisabled ? (*/}
-          <Tips themeProps={sliderTipsThemeProps}>
-            <Tipinner themeProps={deepMerge(sliderTipsThemeProps, { propsConfig: { tipsText } })}>
-              {tipsText}
-            </Tipinner>
-            {/*<Tiparrow themeProps={sliderTipsThemeProps} />*/}
-          </Tips>
-          {/*// ) : (*/}
-          {/*//   ''*/}
-          {/*// )}*/}
+          {showTip && btnDisabled ? (
+            <Tips themeProps={sliderTipsThemeProps}>
+              <Tipinner themeProps={deepMerge(sliderTipsThemeProps, { propsConfig: { tipsText } })}>
+                {tipsText}
+              </Tipinner>
+              {/*<Tiparrow themeProps={sliderTipsThemeProps} />*/}
+            </Tips>
+          ) : (
+            ''
+          )}
         </Button>
       );
     });
