@@ -124,12 +124,12 @@ export const SliderInner = CSSProvider({
   tag: 'div',
   className: 'SliderPassedWay',
   normal: {
-    selectNames: [['background'], ['border'], ['height']],
+    selectNames: [['background'], ['border']],
     getCSS(themeMate, themeProps) {
       const { propsConfig } = themeProps;
       const size = getSliderInnerHeight(themeMate, propsConfig);
       const { InnerWidth, InnerHeight, sliderInnerPosition } = getSliderInnerStyle(propsConfig);
-
+      console.log(InnerWidth, InnerHeight);
       return `
         width:${InnerWidth};
         height:${InnerHeight};
@@ -165,10 +165,6 @@ export const SliderInner = CSSProvider({
     transition: ${transitionTime}s;
   `,
 });
-// width: ${props => getSliderInnerStyle(props).InnerWidth};
-// ${props => getSliderInnerStyle(props).sliderInnerPosition};
-//     height: ${props => getSliderInnerStyle(props).InnerHeight};
-//background: ${props => getSliderInnerStyle(props).innerBackground};
 
 export const Button = CSSProvider({
   tag: 'span',
@@ -391,7 +387,6 @@ function getSliderInnerHeight(themeMate, propsConfig) {
 const getSliderInnerStyle = (props: CssTypeProps) => {
   const { rangeH, SliderInnerWidth, SliderInnerLeft } = props;
   const { vertical, value } = props;
-
   let InnerWidth = SliderInnerWidth + '%';
   let InnerHeight = em(rangeH);
   let sliderInnerPosition = `
