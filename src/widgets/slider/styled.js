@@ -51,7 +51,7 @@ export const SliderBigBox = CSSProvider({
   tag: 'div',
   className: 'SliderBigBox',
   normal: {
-    selectNames: [['border'], ['background'], ['margin'], ['padding']],
+    selectNames: [['border'], ['background'], ['margin'], ['padding'], ['opacity']],
     getCSS(
       themeMate,
       {
@@ -63,13 +63,13 @@ export const SliderBigBox = CSSProvider({
     },
   },
   hover: {
-    selectNames: [['border'], ['background']],
+    selectNames: [['border'], ['background'], ['opacity']],
   },
   active: {
-    selectNames: [['border'], ['background']],
+    selectNames: [['border'], ['background'], ['opacity']],
   },
   disabled: {
-    selectNames: [['border'], ['background']],
+    selectNames: [['border'], ['background'], ['opacity']],
   },
   css: css`
     box-sizing: border-box;
@@ -124,7 +124,7 @@ export const SliderInner = CSSProvider({
   tag: 'div',
   className: 'SliderPassedWay',
   normal: {
-    selectNames: [['background'], ['border'], ['width']],
+    selectNames: [['background'], ['border'], ['height']],
     getCSS(themeMate, themeProps) {
       const { propsConfig } = themeProps;
       const size = getSliderInnerHeight(themeMate, propsConfig);
@@ -174,16 +174,16 @@ export const Button = CSSProvider({
   tag: 'span',
   className: 'SliderButton',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
   },
   hover: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
   },
   active: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
   },
   disabled: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
   },
   css: css`
     border-radius: 50%;

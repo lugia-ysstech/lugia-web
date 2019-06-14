@@ -7,6 +7,7 @@ import {
   tipBackground,
   tipColor,
 } from './slider_public_color';
+import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
 import colorsFunc from '../css/stateColor';
 import { getBorder } from '../theme/CSSProvider';
 export const { themeColor } = colorsFunc();
@@ -14,9 +15,9 @@ export const iconStyles = {
   fontSizeNormal: 40,
   marginNormal: 10,
 };
-export const btnWidthNormal = 40;
-export const rangeHeightNormal = 6;
-export const rangeWidthNormal = 300;
+// export const btnWidthNormal = 16;
+// export const rangeHeightNormal = 6;
+//export const rangeWidthNormal = 300;
 export const dotStyles = {
   distanceForSlider: 16,
 };
@@ -234,7 +235,7 @@ function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
     height,
   };
 }
-function getTipsThemeProps(getPartOfThemeProps, buttonThemeProps) {
+function getTipsThemeProps(getPartOfThemeProps) {
   const sliderTipsName = 'SliderTips';
   const sliderTipsThemeProps = getPartOfThemeProps(sliderTipsName);
   const defaultTipThemeProps = {
