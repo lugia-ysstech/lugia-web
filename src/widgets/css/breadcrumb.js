@@ -55,7 +55,7 @@ export const ALink = ThemeHoc(
     tag: 'a',
     className: 'aLink',
     normal: {
-      selectNames: [['color'], ['fontSize']],
+      selectNames: [['color'], ['fontSize'], ['margin']],
     },
     hover: {
       selectNames: [['color']],
@@ -78,7 +78,7 @@ export const BreadcrumbContainer = CSSComponent({
   tag: 'div',
   className: 'breadcrumbContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['color'], ['padding'], ['margin']],
+    selectNames: [['width'], ['height'], ['padding'], ['margin']],
   },
   css: `
     display: inline-block;
