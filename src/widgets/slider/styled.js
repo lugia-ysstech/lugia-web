@@ -51,7 +51,7 @@ export const SliderBigBox = CSSProvider({
   tag: 'div',
   className: 'SliderBigBox',
   normal: {
-    selectNames: [['border'], ['background'], ['margin'], ['padding']],
+    selectNames: [['border'], ['background'], ['margin'], ['padding'], ['opacity']],
     getCSS(
       themeMate,
       {
@@ -63,13 +63,13 @@ export const SliderBigBox = CSSProvider({
     },
   },
   hover: {
-    selectNames: [['border'], ['background']],
+    selectNames: [['border'], ['background'], ['opacity']],
   },
   active: {
-    selectNames: [['border'], ['background']],
+    selectNames: [['border'], ['background'], ['opacity']],
   },
   disabled: {
-    selectNames: [['border'], ['background']],
+    selectNames: [['border'], ['background'], ['opacity']],
   },
   css: css`
     box-sizing: border-box;
@@ -104,12 +104,7 @@ export const SliderWrapper = CSSProvider({
   tag: 'div',
   className: 'SliderTrack',
   normal: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
-    getCSS(themeMate) {
-      return {
-        ...themeMate,
-      };
-    },
+    selectNames: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
   },
   hover: {
     selectNames: [['background']],
@@ -134,7 +129,7 @@ export const SliderInner = CSSProvider({
       const { propsConfig } = themeProps;
       const size = getSliderInnerHeight(themeMate, propsConfig);
       const { InnerWidth, InnerHeight, sliderInnerPosition } = getSliderInnerStyle(propsConfig);
-
+      console.log(InnerWidth, InnerHeight);
       return `
         width:${InnerWidth};
         height:${InnerHeight};
@@ -170,25 +165,21 @@ export const SliderInner = CSSProvider({
     transition: ${transitionTime}s;
   `,
 });
-// width: ${props => getSliderInnerStyle(props).InnerWidth};
-// ${props => getSliderInnerStyle(props).sliderInnerPosition};
-//     height: ${props => getSliderInnerStyle(props).InnerHeight};
-//background: ${props => getSliderInnerStyle(props).innerBackground};
 
 export const Button = CSSProvider({
   tag: 'span',
   className: 'SliderButton',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
   },
   hover: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
   },
   active: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
   },
   disabled: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
   },
   css: css`
     border-radius: 50%;
@@ -203,7 +194,6 @@ export const Tips = CSSProvider({
     selectNames: [],
     getCSS(themeMate) {
       const { height } = themeMate;
-      console.log(height, 3);
       return `
         top: -${em(height + 10)};
       `;
@@ -219,7 +209,6 @@ export const Tips = CSSProvider({
     selectNames: [],
     getCSS(themeMate) {
       const { height } = themeMate;
-      console.log(height, 3);
       return `
         top: -${em(height + 10)};
       `;
@@ -258,9 +247,9 @@ export const Tipinner = CSSProvider({
     ) {
       const {
         height,
-        background: { backgroundColor },
+        background: { color },
         border: {
-          bottom: { borderColor: bottomBorderColor },
+          bottom: { color: bottomBorderColor },
         },
         boxShadow,
       } = themeMate;
@@ -268,11 +257,11 @@ export const Tipinner = CSSProvider({
         line-height:${em(height)};
         &::before{
           content:'${tipsText}';
-          background:${backgroundColor};          
+          background:${color};          
         };
         
         &::after {
-          background:${backgroundColor};
+          background:${color};
           border-right-color:${bottomBorderColor};
           border-bottom-color:${bottomBorderColor};
           box-shadow:${boxShadow};
@@ -334,13 +323,7 @@ export const Tiparrow = CSSProvider({
   tag: 'span',
   className: 'SliderTips',
   normal: {
-    selectNames: [],
-    getCSS(themeMate) {
-      const { background: { backgroundColor } = {}, width } = themeMate;
-      return `
-         border-top-color:${backgroundColor};
-      `;
-    },
+    selectNames: [['background'], ['border']],
   },
   hover: {
     selectNames: [],
@@ -349,13 +332,7 @@ export const Tiparrow = CSSProvider({
     selectNames: [],
   },
   disabled: {
-    selectNames: [],
-    getCSS(themeMate) {
-      const { background: { backgroundColor } = {} } = themeMate;
-      return `
-         border-top-color:${backgroundColor};
-      `;
-    },
+    selectNames: [['background'], ['border']],
   },
   css: css`
     display: inline-block;
@@ -410,7 +387,6 @@ function getSliderInnerHeight(themeMate, propsConfig) {
 const getSliderInnerStyle = (props: CssTypeProps) => {
   const { rangeH, SliderInnerWidth, SliderInnerLeft } = props;
   const { vertical, value } = props;
-
   let InnerWidth = SliderInnerWidth + '%';
   let InnerHeight = em(rangeH);
   let sliderInnerPosition = `
