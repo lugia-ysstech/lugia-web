@@ -26,5 +26,15 @@
       ]
     }
   },
-  "category": ["通用"]
+  "category": ["通用"],
+  "theme": {
+    "Icon": {
+      "name": "图标",
+      "desc": "图标",
+      "normal": [["color"], ["margin"], ["fontSize"], ["padding"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "clicked": [],
+      "disabled": [["color"], ["cursor"]]
+    }
+  }
 }
