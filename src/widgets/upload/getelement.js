@@ -11,7 +11,7 @@ import Icon from '../icon';
 import Progress from '../progress';
 import FileInput from './fileInput';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import CSSComponent, { css, getBorder } from '../theme/CSSProvider';
+import CSSComponent, { css, keyframes, getBorder } from '../theme/CSSProvider';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
@@ -38,7 +38,7 @@ const Container = CSSComponent({
 const InputContent = ThemeHoc(
   CSSComponent({
     tag: 'div',
-    className: 'upload_InputContent',
+    className: 'UploadDefaultType',
     normal: {
       selectNames: [['width'], ['height'], ['boxShadow'], ['border']],
     },
@@ -87,41 +87,48 @@ const ProgressCon = CSSComponent({
   `,
 });
 
-const Li = CSSComponent({
-  tag: 'li',
-  className: 'upload_List',
-  hover: {
-    selectNames: [['backgroundColor'], ['cursor']],
-    defaultTheme: {
-      backgroundColor: '#f2f2f2',
-      cursor: 'pointer',
+const Li = ThemeHoc(
+  CSSComponent({
+    tag: 'li',
+    className: 'UploadListType',
+    normal: {
+      selectNames: [['fontSize'], ['color'], ['border']],
     },
-  },
-  css: css`
-    height: 36px;
-    border-bottom: 1px dashed #e8e8e8;
-    position: relative;
-    padding-left: 5px;
-    & > span {
-      line-height: 36px;
-    }
-    &:hover {
-      background: #f2f2f2;
-      cursor: pointer;
-      & .right {
-        display: none;
+    hover: {
+      selectNames: [['background']],
+      defaultTheme: {
+        background: { color: '#f2f2f2' },
+        cursor: 'pointer',
+      },
+    },
+    css: css`
+      height: 36px;
+      border-bottom: 1px dashed #e8e8e8;
+      position: relative;
+      padding-left: 5px;
+      & > span {
+        line-height: 36px;
       }
-      & .delete {
-        display: block;
+      &:hover {
+        background: #f2f2f2;
+        cursor: pointer;
+        & .right {
+          display: none;
+        }
+        & .delete {
+          display: block;
+        }
       }
-    }
-  `,
-});
+    `,
+  }),
+  'uploadLi',
+  { hover: true, actived: false }
+);
 
 const Button = ThemeHoc(
   CSSComponent({
     tag: 'span',
-    className: 'uploadButtonType',
+    className: 'UploadButtonType',
     normal: {
       selectNames: [['background'], ['width'], ['height'], ['boxShadow'], ['border'], ['opacity']],
     },
@@ -132,6 +139,8 @@ const Button = ThemeHoc(
       selectNames: [['background'], ['border']],
       defaultTheme: {
         cursor: 'not-allowed',
+        background: { color: '#ccc' },
+        border: 'none',
       },
     },
     css: css`
@@ -246,7 +255,7 @@ const Triangle = CSSComponent({
 const PictureView = ThemeHoc(
   CSSComponent({
     tag: 'div',
-    className: 'upload_PictureView',
+    className: 'UploadPictureType',
     normal: {
       selectNames: [['width'], ['height'], ['opacity'], ['border']],
       defaultTheme: {
@@ -258,9 +267,12 @@ const PictureView = ThemeHoc(
       selectNames: [['background'], ['opacity'], ['border']],
     },
     disabled: {
-      selectNames: [['background'], ['color'], ['cursor'], ['border']],
+      selectNames: [['background'], ['color'], ['border']],
       defaultTheme: {
         cursor: 'not-allowed',
+        background: {
+          color: '#f2f2f2',
+        },
       },
     },
     css: css`
@@ -282,37 +294,41 @@ const PictureView = ThemeHoc(
   { hover: false, actived: false }
 );
 
-const AreaView = CSSComponent({
-  tag: 'div',
-  className: 'upload_AreaView',
-  normal: {
-    selectNames: [['width'], ['height'], ['fontSize']],
-  },
-  disabled: {
-    selectNames: [['cursor']],
-    defaultTheme: {
-      cursor: 'not-allowed',
+const AreaView = ThemeHoc(
+  CSSComponent({
+    tag: 'div',
+    className: 'UploadAreaType',
+    normal: {
+      selectNames: [['width'], ['height'], ['fontSize'], ['color']],
     },
-  },
-  css: css`
-    border: 1px dashed #999;
-    border-radius: 4px;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    color: #999;
-    text-align: center;
-    &:hover {
-      border: 1px dashed ${themeColor};
-    }
-  `,
-});
+    disabled: {
+      selectNames: [['color']],
+      defaultTheme: {
+        cursor: 'not-allowed',
+      },
+    },
+    css: css`
+      border: 1px dashed #999;
+      border-radius: 4px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      color: #999;
+      text-align: center;
+      &:hover {
+        border: 1px dashed ${themeColor};
+      }
+    `,
+  }),
+  'AreaView',
+  { hover: false, actived: false }
+);
 
 const AreaText = CSSComponent({
   tag: 'div',
   className: 'upload_AreaText',
   normal: {
-    selectNames: [],
+    selectNames: [['color']],
   },
   disabled: {
     selectNames: [['color']],
@@ -356,49 +372,64 @@ const AreaTextBlue = CSSComponent({
   `,
 });
 
-const LoadIcon = CSSComponent({
-  extend: Icon,
-  className: 'upload_LoadIcon',
-  normal: {
-    selectNames: [['fontSize']],
-  },
-  disabled: {
-    selectNames: [['color']],
-    defaultTheme: {
-      cursor: 'not-allowed',
-      color: 'red',
+const load = keyframes`
+    0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+const LoadIcon = ThemeHoc(
+  CSSComponent({
+    extend: Icon,
+    className: 'upload_LoadIcon',
+    normal: {
+      selectNames: [['fontSize'], ['color']],
     },
-  },
-  css: css`
-    color: #666;
-    display: inline-block;
-    &.right {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translate(0, -50%);
-    }
-    &.delete {
-      display: none;
-    }
-    &.areaIcon {
-      font-size: 30px;
-    }
-    &.success {
-      color: #56c22d;
-    }
-    &.error {
-      color: #f22735;
-    }
-    &.icon-mark {
-      margin: 0 4px 0 0;
-    }
-  `,
-});
+    disabled: {
+      selectNames: [['color'], ['cursor']],
+      defaultTheme: {
+        cursor: 'not-allowed',
+        color: 'red',
+      },
+    },
+    css: css`
+      color: #666;
+      display: inline-block;
+      &.right {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+      &.delete {
+        display: none;
+      }
+      &.areaIcon {
+        font-size: 30px;
+      }
+      &.success {
+        color: #56c22d;
+      }
+      &.error {
+        color: #f22735;
+      }
+      &.icon-mark {
+        margin: 0 4px 0 0;
+      }
+      &.loading {
+        animation: ${load} 0.8s linear infinite;
+      }
+    `,
+  }),
+  'LoadIcon'
+);
 
 const iconClassMap = {
   default: 'lugia-icon-financial_upload right',
-  loading: 'lugia-icon-financial_loading_o loadIcon',
+  loading: 'lugia-icon-financial_loading_o loading',
   done: 'lugia-icon-financial_upload right',
   video: 'lugia-icon-financial_video_camera icon-mark ccc',
   file: 'lugia-icon-financial_folder icon-mark ccc',
@@ -408,18 +439,40 @@ const iconClassMap = {
   'li-done': 'lugia-icon-reminder_check_circle right success',
   'li-fail': 'lugia-icon-reminder_close_circle right error',
   'li-delete': 'lugia-icon-reminder_close right delete',
-  'li-loading': 'lugia-icon-financial_loading_o right loadIcon',
+  'li-loading': 'lugia-icon-financial_loading_o right loading',
 };
 
 export const getIconByType = (
   props: Object,
-  themeProps: Object,
   status: ?string,
   info?: Object = {}
 ): ?Object | string => {
   if (!status) return null;
   const { type } = info;
   const { disabled } = props;
+  let resultTheme;
+  let resultViewClass;
+  switch (status) {
+    case 'li-done':
+      const { viewClass: successViewClass, theme: successTheme } = props.getPartOfThemeHocProps(
+        'UploadListSuccessIcon'
+      );
+      resultTheme = successTheme;
+      resultViewClass = successViewClass;
+      break;
+    case 'li-fail':
+      const { viewClass: failViewClass, theme: failTheme } = props.getPartOfThemeHocProps(
+        'UploadListFailedIcon'
+      );
+      resultTheme = failTheme;
+      resultViewClass = failViewClass;
+      break;
+    default:
+      resultTheme = {};
+      resultViewClass = '';
+      break;
+  }
+
   if (type === 1 && status !== 'loading') {
     return '上传';
   }
@@ -427,7 +480,8 @@ export const getIconByType = (
     const { doFunction, index } = info;
     return (
       <LoadIcon
-        themeProps={themeProps}
+        theme={resultTheme}
+        viewClass={resultViewClass}
         iconClass={`${iconClassMap[status]} `}
         disabled={disabled}
         onClick={() => {
@@ -437,11 +491,13 @@ export const getIconByType = (
     );
   }
   if (status === 'picture') {
+    const { themeProps } = props;
     return (
       <PrevCon themeProps={themeProps}>
         <LoadIcon
           disabled={disabled}
-          themeProps={themeProps}
+          theme={resultTheme}
+          viewClass={resultViewClass}
           iconClass="lugia-icon-financial_pic icon-mark ccc"
         />
         {getListIconType(info.name) === 'picture' && info.url ? (
@@ -458,13 +514,21 @@ export const getIconByType = (
     return (
       <LoadIcon
         disabled={disabled}
-        themeProps={themeProps}
+        theme={resultTheme}
+        viewClass={resultViewClass}
         iconClass={iconClassMap.loading}
         active={true}
       />
     );
   }
-  return <LoadIcon disabled={disabled} themeProps={themeProps} iconClass={iconClassMap[status]} />;
+  return (
+    <LoadIcon
+      theme={resultTheme}
+      viewClass={resultViewClass}
+      disabled={disabled}
+      iconClass={iconClassMap[status]}
+    />
+  );
 };
 
 const getProgress = (item: Object, themeProps: Object) => {
@@ -502,15 +566,16 @@ const getDefaultSize = (size: string) => {
 
 const getFileList = (data: Array<Object>, close: Function, themeProps: Object, props: Object) => {
   if (!data || data.length === 0) return;
+  const { theme, viewClass } = props.getPartOfThemeHocProps('UploadLiType');
   return (
     <Ul themeProps={themeProps}>
       {data.map((item, index) => {
         return (
-          <Li status={item.status} themeProps={themeProps}>
-            {getIconByType(props, themeProps, getListIconType(item.name), item)}
+          <Li status={item.status} theme={theme} viewClass={viewClass}>
+            {getIconByType(props, getListIconType(item.name), item)}
             <span>{item.name}</span>
-            {getIconByType(props, themeProps, 'li-' + item.status)}
-            {getIconByType(props, themeProps, 'li-delete', { doFunction: close, index })}
+            {getIconByType(props, 'li-' + item.status)}
+            {getIconByType(props, 'li-delete', { doFunction: close, index })}
             {getProgress(item, themeProps)}
           </Li>
         );
@@ -530,7 +595,7 @@ type DefProps = {
   getTheme: Function,
   setAutoUploadState: Function,
   setDeleteList: Function,
-  listType: string,
+  areaType: string,
   previewUrl: string,
   size: string,
   inputId: string,
@@ -629,11 +694,12 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
   render() {
     const { showFileList, fileListDone, themeProps } = this.props;
+    const liThemeProps = this.props.getPartOfThemeProps('UploadLiType');
     return (
       <React.Fragment>
         <Container themeProps={themeProps}>{this.getElement()}</Container>
         {showFileList
-          ? getFileList(fileListDone, this.handleClickToDelete, themeProps, this.props)
+          ? getFileList(fileListDone, this.handleClickToDelete, liThemeProps, this.props)
           : null}
       </React.Fragment>
     );
@@ -641,14 +707,14 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
   getElement = (): ?Object => {
     const { props } = this;
-    const { listType } = props;
-    if (!listType) return;
+    const { areaType } = props;
+    if (!areaType) return;
     const { state } = this;
     const { classNameStatus, dragIn } = state;
-    const children = this.getChildren(listType, props, classNameStatus, dragIn);
+    const children = this.getChildren(areaType, props, classNameStatus, dragIn);
     const { inputId, disabled, accept, multiple } = props;
     const { getRegisterInput, getChangeInfo } = this;
-    const themeProps = this.props.getPartOfThemeProps('uploadDefaultType');
+    const themeProps = this.props.getPartOfThemeProps('UploadDefaultType');
     return (
       <React.Fragment>
         <FileInput
@@ -665,13 +731,12 @@ class GetElement extends React.Component<DefProps, StateProps> {
     );
   };
 
-  getChildren(listType: string, props: DefProps, classNameStatus: string, dragIn: boolean) {
+  getChildren(areaType: string, props: DefProps, classNameStatus: string, dragIn: boolean) {
     let children;
-    if (listType === 'default') {
+    if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadDefaultType');
-      const themeProps = this.props.getPartOfThemeProps('uploadDefaultType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadDefaultType');
 
       children = (
         <InputContent
@@ -682,19 +747,18 @@ class GetElement extends React.Component<DefProps, StateProps> {
           onClick={handleClickToUpload}
           ref={this.dropArea}
         >
-          {getIconByType(props, themeProps, classNameStatus)} {defaultText}
+          {getIconByType(props, classNameStatus)} {defaultText}
         </InputContent>
       );
     }
-    if (listType === 'both') {
+    if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadButtonType');
-      const themeProps = this.props.getPartOfThemeProps('uploadButtonType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadButtonType');
       const {
         viewClass: InputContentViewClass,
         theme: InputContentTheme,
-      } = this.props.getPartOfThemeHocProps('uploadDefaultType');
+      } = this.props.getPartOfThemeHocProps('UploadDefaultType');
       children = (
         <React.Fragment>
           <InputContent
@@ -702,11 +766,12 @@ class GetElement extends React.Component<DefProps, StateProps> {
             viewClass={InputContentViewClass}
             status={classNameStatus}
             hasBtn="hasBtn"
+            disabled={disabled}
             onClick={handleClickToUpload}
             ref={this.dropArea}
           >
             {defaultText}
-            {showFileList ? null : getIconByType(props, themeProps, 'li-' + classNameStatus)}
+            {showFileList ? null : getIconByType(props, 'li-' + classNameStatus)}
           </InputContent>
           <Button
             theme={theme}
@@ -714,32 +779,30 @@ class GetElement extends React.Component<DefProps, StateProps> {
             disabled={disabled}
             onClick={handleClickToSubmit}
           >
-            {getIconByType(props, themeProps, classNameStatus, { type: 1 })}
+            {getIconByType(props, classNameStatus, { type: 1 })}
           </Button>
         </React.Fragment>
       );
     }
-    if (listType === 'button') {
+    if (areaType === 'button') {
       const { disabled } = props;
       const { handleClickToUpload } = this;
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadButtonType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadButtonType');
       children = (
         <Button
           theme={theme}
           viewClass={viewClass}
           disabled={disabled}
-          listType={listType}
           onClick={handleClickToUpload}
         >
           点击上传
         </Button>
       );
     }
-    if (listType === 'picture') {
+    if (areaType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
       const { handleClickToUpload, handleClickToDelete, dropArea } = this;
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('uploadPictureType');
-      const themeProps = this.props.getPartOfThemeProps('uploadPictureType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadPictureType');
       const resultTheme = deepMerge({ [viewClass]: { normal: getDefaultSize(size) } }, theme);
       children = (
         <React.Fragment>
@@ -753,7 +816,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
                 disabled={disabled}
                 status={classNameStatus}
               >
-                {getIconByType(props, themeProps, 'li-fail', {
+                {getIconByType(props, 'li-fail', {
                   doFunction: handleClickToDelete,
                   index,
                 })}
@@ -776,11 +839,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             {!multiple && previewUrl ? (
               <img src={previewUrl} alt="" />
             ) : (
-              getIconByType(
-                props,
-                themeProps,
-                `p-${classNameStatus === 'done' ? 'default' : classNameStatus}`
-              )
+              getIconByType(props, `p-${classNameStatus === 'done' ? 'default' : classNameStatus}`)
             )}
             {classNameStatus === 'fail' && size !== 'small' ? (
               <span>图片上传失败请重试</span>
@@ -789,13 +848,16 @@ class GetElement extends React.Component<DefProps, StateProps> {
         </React.Fragment>
       );
     }
-    if (listType === 'area') {
+    if (areaType === 'area') {
       const { dropArea, handleClickToUpload } = this;
       const { disabled } = props;
-      const themeProps = this.props.getPartOfThemeProps('uploadAreaType');
+      const themeProps = this.props.getPartOfThemeProps('UploadAreaType');
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('UploadAreaType');
+
       children = (
         <AreaView
-          themeProps={themeProps}
+          theme={theme}
+          viewClass={viewClass}
           disabled={disabled}
           size={'bigger'}
           ref={dropArea}
@@ -804,8 +866,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
           classNameStatus={classNameStatus}
         >
           {classNameStatus === 'loading'
-            ? getIconByType(props, themeProps, 'area-' + classNameStatus)
-            : getIconByType(props, themeProps, 'uploadcloud')}
+            ? getIconByType(props, 'area-' + classNameStatus)
+            : getIconByType(props, 'uploadcloud')}
           {classNameStatus === 'loading' ? (
             <AreaText themeProps={themeProps}>文件上传中...</AreaText>
           ) : (

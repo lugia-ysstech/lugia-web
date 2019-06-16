@@ -27,7 +27,7 @@ class UploadDemo extends React.Component<any, any> {
 
   render() {
     const defaultProps = {
-      listType: 'default',
+      areaType: 'default',
       inputId: 'upload',
       showFileList: true,
       url: 'http://localhost:7001/upload',
@@ -62,7 +62,7 @@ class UploadDemo extends React.Component<any, any> {
       onFail: res => {},
     };
     const defaultProps11 = {
-      listType: 'default',
+      areaType: 'default',
       inputId: 'upload',
       showFileList: true,
       url: 'http://localhost:7001/upload',
@@ -98,7 +98,7 @@ class UploadDemo extends React.Component<any, any> {
       onFail: res => {},
     };
     const defaultProps1 = {
-      listType: 'button',
+      areaType: 'button',
       inputId: 'upload1',
       url: 'http://localhost:7001/upload',
       multiple: true,
@@ -126,7 +126,7 @@ class UploadDemo extends React.Component<any, any> {
     };
 
     const defaultProps2 = {
-      listType: 'both',
+      areaType: 'both',
       inputId: 'upload2',
       url: 'http://localhost:7001/upload',
       showFileList: true,
@@ -134,8 +134,18 @@ class UploadDemo extends React.Component<any, any> {
       autoUpload: false,
       onChange: res => {},
     };
+    const defaultProps12 = {
+      areaType: 'both',
+      inputId: 'upload2',
+      url: 'http://localhost:7001/upload',
+      showFileList: true,
+      multiple: true,
+      autoUpload: false,
+      disabled: true,
+      onChange: res => {},
+    };
     const defaultProps3 = {
-      listType: 'picture',
+      areaType: 'picture',
       inputId: 'upload3',
       size: 'large',
       multiple: true,
@@ -143,40 +153,40 @@ class UploadDemo extends React.Component<any, any> {
       accept: 'image/*',
     };
     const defaultProps4 = {
-      listType: 'picture',
+      areaType: 'picture',
       inputId: 'upload4',
       disabled: true,
       url: 'http://localhost:7001/upload',
     };
     const defaultProps5 = {
-      listType: 'picture',
+      areaType: 'picture',
       inputId: 'upload5',
       size: 'small',
 
       url: 'http://localhost:7001/upload',
     };
     const defaultProps6 = {
-      listType: 'area',
+      areaType: 'area',
       inputId: 'upload6',
       showFileList: true,
       url: 'http://localhost:7001/upload',
     };
     const defaultProps7 = {
-      listType: 'default',
+      areaType: 'default',
       inputId: 'upload',
       showFileList: true,
       url: 'http://localhost:7001/upload',
       disabled: true,
     };
     const defaultProps9 = {
-      listType: 'area',
+      areaType: 'area',
       inputId: 'upload6',
       showFileList: true,
       disabled: true,
       url: 'http://localhost:7001/upload',
     };
     const defaultProps8 = {
-      listType: 'button',
+      areaType: 'button',
       inputId: 'upload1',
       url: 'http://localhost:7001/upload',
       disabled: true,
@@ -187,7 +197,7 @@ class UploadDemo extends React.Component<any, any> {
       ],
     };
     const defaultProps10 = {
-      listType: 'button',
+      areaType: 'button',
       inputId: 'upload1',
       url: 'http://localhost:7001/upload',
       multiple: true,
@@ -197,7 +207,7 @@ class UploadDemo extends React.Component<any, any> {
 
     const config = {
       [Widget.Upload]: {
-        uploadButtonType: {
+        UploadButtonType: {
           normal: {
             width: 100,
             height: 30,
@@ -208,13 +218,11 @@ class UploadDemo extends React.Component<any, any> {
           },
           disabled: {
             background: {
-              backgroundColor: '#ccc',
+              color: '#ccc',
             },
-            // cursor:'not-allowed',
-            boxShadow: ' 0 0 2px #ccc',
           },
         },
-        uploadDefaultType: {
+        UploadDefaultType: {
           normal: {
             width: 346,
             height: 30,
@@ -223,12 +231,12 @@ class UploadDemo extends React.Component<any, any> {
           hover: {},
           disabled: {
             background: {
-              backgroundColor: '#ccc',
+              color: '#ccc',
             },
             border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }, { radius: 4 }),
           },
         },
-        uploadPictureType: {
+        UploadPictureType: {
           normal: {
             width: 80,
             height: 80,
@@ -237,23 +245,29 @@ class UploadDemo extends React.Component<any, any> {
           hover: {},
           disabled: {
             background: {
-              backgroundColor: '#f7f9f9',
+              color: '#f7f9f9',
             },
             border: getBorder({ color: '#e8e8e8', width: 1, style: 'dashed' }, { radius: 4 }),
           },
         },
-        uploadListType: {
+        UploadLiType: {
           normal: {
-            width: 80,
-            height: 80,
-            border: getBorder({ color: '#9482ff', width: 1, style: 'dashed' }, { radius: 4 }),
+            fontSize: 14,
+            border: getBorder(
+              { color: '#e8e8e8', width: 1, style: 'dashed' },
+              { directions: ['b'] }
+            ),
           },
           hover: {},
-          disabled: {
-            background: {
-              backgroundColor: '#f9f9f9',
-            },
-            border: getBorder({ color: '#e8e8e8', width: 1, style: 'dashed' }, { radius: 4 }),
+        },
+        UploadListSuccessIcon: {
+          normal: {
+            color: '#56c22d',
+          },
+        },
+        UploadListFailedIcon: {
+          normal: {
+            color: '#f22735',
           },
         },
       },
@@ -261,7 +275,7 @@ class UploadDemo extends React.Component<any, any> {
 
     const configBoth = {
       [Widget.Upload]: {
-        uploadButtonType: {
+        UploadButtonType: {
           normal: {
             width: 100,
             height: 30,
@@ -272,12 +286,12 @@ class UploadDemo extends React.Component<any, any> {
           },
           disabled: {
             background: {
-              backgroundColor: '#ccc',
+              color: '#ccc',
             },
             boxShadow: ' 0 0 2px #ccc',
           },
         },
-        uploadDefaultType: {
+        UploadDefaultType: {
           normal: {
             width: 346,
             height: 30,
@@ -289,7 +303,7 @@ class UploadDemo extends React.Component<any, any> {
           hover: {},
           disabled: {
             background: {
-              backgroundColor: '#ccc',
+              color: '#ccc',
             },
             border: getBorder(
               { color: '#e8e8e8', width: 1, style: 'solid' },
@@ -302,7 +316,7 @@ class UploadDemo extends React.Component<any, any> {
 
     const areaConfig = {
       [Widget.Upload]: {
-        uploadAreaType: {
+        UploadAreaType: {
           normal: {
             fontSize: 30,
             width: 400,
@@ -325,6 +339,8 @@ class UploadDemo extends React.Component<any, any> {
         <Theme config={configBoth}>
           <Title>Both： </Title>
           <Upload {...defaultProps2} />
+          <Title>Both disabled： </Title>
+          <Upload {...defaultProps12} />
         </Theme>
         <Theme config={config}>
           <Title>picture large accept(image)： </Title>
@@ -342,7 +358,7 @@ class UploadDemo extends React.Component<any, any> {
         </Theme>
         <Theme config={areaConfig}>
           <Title>area： </Title>
-          {/*<Upload {...defaultProps6} />*/}
+          <Upload {...defaultProps6} />
           <Title>area disabled： </Title>
           <Upload {...defaultProps9} />
         </Theme>

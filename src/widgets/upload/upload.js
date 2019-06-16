@@ -24,7 +24,7 @@ type UploadProps = {
   disabled?: boolean,
   limit?: number,
   data?: Object,
-  listType?: string,
+  areaType?: string,
   getTheme: Function,
   multiple?: boolean,
   fileList?: Array<Object>,
@@ -46,7 +46,8 @@ type UploadProps = {
   onChange?: Function,
   onFail?: Function,
   themeProps: Object,
-  getChildThemeHocProps: Function,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
 type StateProps = {
   defaultText?: string,
@@ -93,7 +94,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
   input: Object;
   static defaultProps = {
     disabled: false,
-    listType: 'default',
+    areaType: 'default',
     multiple: false,
     showFileList: false,
     limit: Infinity,
@@ -129,7 +130,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
   }
 
   render() {
-    const { themeProps, mergeThemePropsAndPropsConfig } = this.props;
+    const { themeProps } = this.props;
     return (
       <Container themeProps={themeProps}>
         <GetElement
@@ -138,7 +139,6 @@ class Upload extends React.Component<UploadProps, StateProps> {
           setChoosedFile={this.setChoosedFile}
           setAutoUploadState={this.setAutoUploadState}
           setDeleteList={this.setDeleteList}
-          mergeThemePropsAndPropsConfig={mergeThemePropsAndPropsConfig}
         />
       </Container>
     );
@@ -168,11 +168,11 @@ class Upload extends React.Component<UploadProps, StateProps> {
     if (isIdInArray(hashMark, fileListDone)) {
       list = this.updateFieldList(fileListDone, hashMark, [{ target: 'status', value: 'loading' }]);
     } else {
-      const { listType } = this.props;
+      const { areaType } = this.props;
       list = this.appendFileList(fileListDone, {
         hashMark,
         name,
-        listType,
+        areaType,
         status: typeState,
         percent: 0,
       });
@@ -262,8 +262,8 @@ class Upload extends React.Component<UploadProps, StateProps> {
     if (!res) return;
     const arr = [];
     res.forEach(item => {
-      const { listType, name, percent, status, url } = item;
-      arr.push({ listType, name, percent, status, url });
+      const { areaType, name, percent, status, url } = item;
+      arr.push({ areaType, name, percent, status, url });
     });
 
     return arr;
@@ -277,8 +277,8 @@ class Upload extends React.Component<UploadProps, StateProps> {
       { target: 'url', value: res.data.url },
     ]);
     this.setStateValue({ classNameStatus: 'done', fileListDone: list });
-    const { listType } = this.props;
-    if (listType === 'picture') {
+    const { areaType } = this.props;
+    if (areaType === 'picture') {
       this.loadPreviewInfo(file);
     }
     this.setStateValue({ isAllowUpload: false });
