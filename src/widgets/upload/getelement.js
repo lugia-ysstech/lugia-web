@@ -693,13 +693,13 @@ class GetElement extends React.Component<DefProps, StateProps> {
   };
 
   render() {
-    const { showFileList, fileListDone } = this.props;
-    const themeProps = this.props.getPartOfThemeProps('UploadLiType');
+    const { showFileList, fileListDone, themeProps } = this.props;
+    const liThemeProps = this.props.getPartOfThemeProps('UploadLiType');
     return (
       <React.Fragment>
         <Container themeProps={themeProps}>{this.getElement()}</Container>
         {showFileList
-          ? getFileList(fileListDone, this.handleClickToDelete, themeProps, this.props)
+          ? getFileList(fileListDone, this.handleClickToDelete, liThemeProps, this.props)
           : null}
       </React.Fragment>
     );

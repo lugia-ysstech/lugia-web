@@ -24,12 +24,11 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Upload Test', () => {
   const themeHocProps = () => true;
-  const mergePropsConfig = () => true;
   const themeProps = { themeConfig: {}, themeState: {} };
   const target = mount(
     <Upload
       getPartOfThemeHocProps={themeHocProps}
-      getPartOfThemeProps={mergePropsConfig}
+      getPartOfThemeProps={themeHocProps}
       themeProps={themeProps}
       url={'xxxx.test'}
     />
@@ -38,7 +37,7 @@ describe('Upload Test', () => {
     const target = (
       <Upload
         getPartOfThemeHocProps={themeHocProps}
-        getPartOfThemeProps={mergePropsConfig}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         url={'xxxx.test'}
       />
@@ -50,7 +49,7 @@ describe('Upload Test', () => {
     const target = mount(
       <Upload
         getPartOfThemeHocProps={themeHocProps}
-        getPartOfThemeProps={mergePropsConfig}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         autoUpload={true}
         url={'xxxx.test'}
@@ -63,7 +62,7 @@ describe('Upload Test', () => {
     const target = mount(
       <Upload
         getPartOfThemeHocProps={themeHocProps}
-        getPartOfThemeProps={mergePropsConfig}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         autoUpload={false}
         url={'xxxx.test'}
@@ -76,7 +75,7 @@ describe('Upload Test', () => {
     const target = mount(
       <Upload
         getPartOfThemeHocProps={themeHocProps}
-        getPartOfThemeProps={mergePropsConfig}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         url={'xxxx.test'}
       />
@@ -88,7 +87,7 @@ describe('Upload Test', () => {
     const target = mount(
       <Upload
         getPartOfThemeHocProps={themeHocProps}
-        getPartOfThemeProps={mergePropsConfig}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         url={'xxxx.test'}
         fileList={[
@@ -107,7 +106,7 @@ describe('Upload Test', () => {
     const target = mount(
       <Upload
         getPartOfThemeHocProps={themeHocProps}
-        getPartOfThemeProps={mergePropsConfig}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         url={'xxxx.test'}
       />
@@ -220,7 +219,7 @@ describe('Upload Test', () => {
 
   checkGetIconByType('default', '上传', { type: 1 });
   checkGetIconByType('default', 'lugia-icon-financial_upload right');
-  checkGetIconByType('loading', 'lugia-icon-financial_loading_o loadIcon');
+  checkGetIconByType('loading', 'lugia-icon-financial_loading_o loading');
   checkGetIconByType(undefined, null);
   checkGetIconByType(undefined, null, { type: 1 });
 
@@ -400,7 +399,7 @@ describe('Upload Test', () => {
       const target = mount(
         <Upload
           getPartOfThemeHocProps={themeHocProps}
-          getPartOfThemeProps={mergePropsConfig}
+          getPartOfThemeProps={themeHocProps}
           themeProps={themeProps}
           url={'xxxx.test'}
         />

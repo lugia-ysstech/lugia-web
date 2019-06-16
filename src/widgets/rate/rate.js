@@ -340,7 +340,7 @@ export const getIconClass = (iconClass: Object = {}): Object => {
   };
 };
 
-const getOffsetInfo = (rateRangeNode: Object) => {
+const getOffsetInfo = (rateRangeNode: ?Object) => {
   if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
@@ -494,7 +494,7 @@ class Rate extends React.Component<RateProps, any> {
     }
 
     const { hasClick } = this.state;
-    const { count } = props;
+    const { count = 5 } = props;
     const classNames = createCalssArray(count);
     this.setValue(0, 0, classNames, current, hasClick);
     this.doExportChange(getReturnObj(this.state, multipleValue(props, 0)));
@@ -521,7 +521,11 @@ class Rate extends React.Component<RateProps, any> {
   };
 
   getOffset(index: number) {
-    return getOffsetInfo(this.ratespan[index].current.querySelector('.iconCharacter'));
+    let reactNode = null;
+    if (this.ratespan[index]) {
+      reactNode = this.ratespan[index].current.querySelector('.iconCharacter');
+    }
+    return getOffsetInfo(reactNode);
   }
 
   getElement = (x: string, index: number) => {
@@ -565,25 +569,6 @@ class Rate extends React.Component<RateProps, any> {
         {this.getRateIcon('bottom', IconClass)}
       </React.Fragment>
     );
-  };
-
-  mergeFontSize = (resultViewClass: string, resultTheme: Object) => {
-    const { count, themeProps } = this.props;
-    const config = themeProps.themeConfig.normal;
-    let result = resultTheme;
-    if (config) {
-      const { width, height, fontSize } = config;
-      const calcFontSize = fontSize ? fontSize : getFontSize(count, width, height);
-      const newTheme = {
-        [resultViewClass]: {
-          normal: {
-            fontSize: `${calcFontSize}px`,
-          },
-        },
-      };
-      result = deepMerge(newTheme, resultTheme);
-    }
-    return result;
   };
 
   handleClick = (e: Object, val: number, classNames: Array<string>, index: number) => {
