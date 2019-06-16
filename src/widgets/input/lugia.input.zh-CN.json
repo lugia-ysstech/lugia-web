@@ -186,5 +186,89 @@
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+  "designInfo": {
+    "ValidateTopConfig": {
+      "sequence": 1,
+      "title": "校验类型的输入框",
+      "desc": "按照校验类型的不同来展示不同样式的输入框",
+      "props": {
+        "validateType": "top"
+      },
+      "theme": {
+        "validateTopConfig": {
+          "name": "顶部校验",
+          "desc": "校验信息在顶部显示",
+          "normal": [["color"], ["background"], ["font"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+    "ValidateBottomConfig": {
+      "sequence": 2,
+      "title": "校验类型的输入框",
+      "desc": "按照校验类型的不同来展示不同样式的输入框",
+      "props": {
+        "validateType": "bottom"
+      },
+      "theme": {
+        "validateBottomConfig": {
+          "name": "底部校验",
+          "desc": "校验信息在底部显示",
+          "normal": [["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "Input": {
+      "name": "输入框主体",
+      "desc": "输入框主体结构",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["padding"],
+        ["background"],
+        ["border"],
+        ["cursor"],
+        ["margin"],
+        ["padding"]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "InputSuffix": {
+      "name": "后缀图标",
+      "desc": "输入框后缀自定义图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "InputPrefix": {
+      "name": "前缀图标",
+      "desc": "输入框前缀自定义图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "InputClearButton": {
+      "name": "输入框清除图标",
+      "desc": "输入框后缀清除图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    }
+  }
 }

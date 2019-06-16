@@ -14,9 +14,10 @@ import {
   SmallHeight,
   DefaultHeight,
 } from '../css/input';
-import ErrorTip from '../tooltip/ErrorTip';
+import ToolTip from '../tooltip/index';
 import Icon from '../icon';
 import StaticComponent from '../theme/CSSProvider';
+import { deepMerge } from '@lugia/object-utils';
 import CSSComponent, { css } from '../theme/CSSProvider';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
@@ -75,9 +76,11 @@ const CommonInputStyle = CSSComponent({
     getStyle(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { size, prefix, validateStatus, validateType } = propsConfig;
-      const { width, height } = themeMeta;
+      const { width, height, color } = themeMeta;
       const style = {};
-      const color = isValidateSuccess(validateStatus, validateType, 'inner')
+      const theColor = color
+        ? color
+        : isValidateSuccess(validateStatus, validateType, 'inner')
         ? dangerColor
         : blackColor;
       const theHeight = height
@@ -93,7 +96,7 @@ const CommonInputStyle = CSSComponent({
         ? px2remcss(width / 20)
         : px2remcss(10);
       const paddingRight = width && width < 200 ? px2remcss(15 + width / 10) : px2remcss(35);
-      style.color = color;
+      style.color = theColor;
       style.height = theHeight;
       style.paddingLeft = paddingLeft;
       style.paddingRight = paddingRight;
@@ -195,9 +198,18 @@ const BaseInputContainer = StaticComponent({
     display: inline-block;
   `,
 });
-const InputErrorTip = StaticComponent({
-  extend: ErrorTip,
+const InputErrorTip = CSSComponent({
+  extend: ToolTip,
   className: 'errorTip',
+  normal: {
+    selectNames: [['color'], ['background']],
+    defaultTheme: {
+      background: {
+        color: 'gray',
+      },
+      color: dangerColor,
+    },
+  },
   css: css`
     position: relative;
     display: inline-block;
@@ -224,23 +236,7 @@ const InputContainer = CSSComponent({
   `,
 });
 
-export const Input: Object = CSSComponent({
-  extend: CommonInputStyle,
-  className: 'inputInner',
-  css: css`
-    position: relative;
-    outline: none;
-  `,
-});
-
-export const InputOnly: Object = StaticComponent({
-  extend: CommonInputStyle,
-  className: 'InputOnly',
-  css: css`
-    outline: none;
-  `,
-});
-const TipBottom = StaticComponent({
+const TipBottom = CSSComponent({
   tag: 'span',
   className: 'inputTipBottom',
   css: css`
@@ -248,9 +244,10 @@ const TipBottom = StaticComponent({
     transform: translateY(50%);
     z-index: 2;
     font-size: 1em;
-    color: red;
+    color: ${dangerColor};
   `,
   normal: {
+    selectNames: [['color']],
     defaultTheme: {
       visibility: 'hidden',
     },
@@ -334,7 +331,6 @@ const ClearButton: Object = ThemeHoc(
       transform: translateY(50%);
       z-index: 2;
       bottom: 50%;
-      line-height: ${px2remcss(10)};
       right: ${px2remcss(10)};
     `,
   }),
@@ -367,11 +363,7 @@ type InputProps = {|
   onBlur?: (event: UIEvent) => void,
   onClick?: (event: UIEvent) => void,
   onClear?: Function,
-  /*
-   * 当键入回车时触发事件
-   */
   onEnter?: (event: UIEvent) => void,
-
   defaultValue?: string,
   value?: string,
   formatter?: (value: number | string) => string,
@@ -509,7 +501,7 @@ class TextBox extends Component<InputProps, InputState> {
         </BaseInputContainer>,
       ];
       result.push(
-        <TipBottom themeProps={this.props.themeProps}>
+        <TipBottom themeProps={this.props.getPartOfThemeProps('validateBottomConfig')}>
           {this.isValidateError() ? help : ''}
         </TipBottom>
       );
@@ -521,7 +513,6 @@ class TextBox extends Component<InputProps, InputState> {
   isValidateError(): boolean {
     return this.props.validateStatus === 'error';
   }
-
   render() {
     const { props } = this;
     const { validateType, size, help, validateStatus, prefix, themeProps } = props;
@@ -529,7 +520,14 @@ class TextBox extends Component<InputProps, InputState> {
     themeProps.propsConfig = { validateType, validateStatus, prefix, size };
     if (isValidateSuccess(validateStatus, validateType, 'top')) {
       return (
-        <InputErrorTip themeProps={themeProps} size={size} placement={'topLeft'} title={help}>
+        <InputErrorTip
+          themeProps={this.props.getPartOfThemeProps('validateTopConfig')}
+          size={size}
+          placement={'topLeft'}
+          switch
+          title={help}
+          action={['focus']}
+        >
           {result}
         </InputErrorTip>
       );
@@ -600,15 +598,17 @@ class TextBox extends Component<InputProps, InputState> {
       autoFocus,
       type,
       themeProps,
+      theme = {},
       disabled,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
-    themeProps.propsConfig = { validateType, validateStatus, prefix, size };
+    const theThemeProps = deepMerge(themeProps, theme);
+    theThemeProps.propsConfig = { validateType, validateStatus, prefix, size };
     return (
-      <Input
-        themeProps={themeProps}
+      <CommonInputStyle
+        themeProps={theThemeProps}
         autoFocus={autoFocus}
         ref={this.input}
         validateStatus={validateStatus}
@@ -641,8 +641,6 @@ class TextBox extends Component<InputProps, InputState> {
     onEnter && keyCode === 13 && onEnter(event);
   };
 }
-
-export const TextBoxInner = TextBox;
 
 const TargetTxtBox = ThemeHoc(KeyBoardEventAdaptor(TextBox), Widget.Input, {
   hover: true,

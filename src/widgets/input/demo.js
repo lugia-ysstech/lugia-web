@@ -116,14 +116,13 @@ const Wrapper = styled.div`
 const InputDemo = () => {
   const register = {
     [Widget.Input]: {
-      [Widget.Input]: {
-        normal: { width: 300, height: 40 },
-        hover: { background: { backgroundColor: 'white' } },
-        disabled: { border: { color: 'blue', width: 1, style: 'solid' } },
-      },
-      InputSuffix: { normal: { color: 'red' } },
-      InputPrefix: { normal: { color: 'pink' } },
+      normal: { width: 300, height: 40, margin: { top: 20 } },
+      hover: { background: { backgroundColor: 'white' } },
+      disabled: { border: { color: 'blue', width: 1, style: 'solid' } },
     },
+    InputSuffix: { normal: { color: 'red' } },
+    InputPrefix: { normal: { color: 'pink' } },
+    clearButton: { normal: { color: 'blue' } },
   };
   const onChange = (cmpName: string) => (value: any) => {};
   const formatter = value => {
@@ -138,7 +137,7 @@ const InputDemo = () => {
         <p>字体色值</p>
         <Input value="色值:#333333" theme={register} />
         <p>default input</p>
-        <Input placeholder={'请填写内容'} />
+        <Input placeholder={'请填写内容'} theme={register} />
         <p>autoFocus</p>
         <Input placeholder={'请填写内容'} autoFoucs />
         <p>禁用状态 </p>
