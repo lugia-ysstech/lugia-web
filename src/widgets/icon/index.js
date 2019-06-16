@@ -19,6 +19,9 @@ const IconTag = CSSComponent({
   hover: {
     selectNames: [['color'], ['margin'], ['cursor']],
   },
+  disabled: {
+    selectNames: [['color'], ['cursor']],
+  },
   css: css`
     user-select: none;
     cursor: pointer;
