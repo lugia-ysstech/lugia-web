@@ -632,7 +632,7 @@ exports[`default Wrapper 1`] = `
   -webkit-transform: translateY(50%);
   bottom: 50%;
   color: #333;
-  color: undefined;
+  color: blue;
 }
 
 .c5 {
@@ -1648,7 +1648,13 @@ exports[`default Wrapper 1`] = `
             <span
               className="c4"
               data-sign="mask"
-              style={Object {}}
+              style={
+                Object {
+                  "color": "blue",
+                  "fontSize": 14,
+                  "fontWeight": 700,
+                }
+              }
             />
             <span
               className="c5"

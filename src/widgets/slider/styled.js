@@ -3,18 +3,10 @@
  * @flow
  * */
 import styled, { css } from 'styled-components';
-// import colorsFunc from '../css/stateColor';
 import { valueInRange } from '../common/Math';
 import { iconStyles, dotStyles } from './slider_public_size';
 import { px2remcss } from '../css/units';
 import {
-  btnDisabledBackground,
-  // themeColor,
-  // throughRangeBackground,
-  tipBackground,
-  tipColor,
-  // trackBackground,
-  // trackDisabledBackground,
   dotNormalColor,
   dotThroughColor,
   iconNormalColor,
@@ -23,7 +15,6 @@ import {
 import Widgets from '../consts';
 import ThemeProvider from '../theme-provider';
 import CSSProvider from '../theme/CSSProvider';
-import ThemeHoc from '@lugia/theme-hoc';
 const em = px2remcss;
 type CssTypeProps = {
   background: string,

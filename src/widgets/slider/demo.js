@@ -152,6 +152,13 @@ export default class Sl extends Component<any> {
                         fontSize: 14,
                       },
                     },
+                    nth1: {
+                      color: 'blue',
+                      font: {
+                        fontWeight: 700,
+                        fontSize: 14,
+                      },
+                    },
                     last: {
                       color: 'green',
                       font: {
@@ -170,6 +177,13 @@ export default class Sl extends Component<any> {
                     },
                     last: {
                       color: '#ccc',
+                      font: {
+                        fontWeight: 700,
+                        fontSize: 14,
+                      },
+                    },
+                    nth2: {
+                      color: 'red',
                       font: {
                         fontWeight: 700,
                         fontSize: 14,
