@@ -11,16 +11,6 @@ import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_pu
 import colorsFunc from '../css/stateColor';
 import { getBorder } from '../theme/CSSProvider';
 export const { themeColor } = colorsFunc();
-export const iconStyles = {
-  fontSizeNormal: 40,
-  marginNormal: 10,
-};
-// export const btnWidthNormal = 16;
-// export const rangeHeightNormal = 6;
-//export const rangeWidthNormal = 300;
-export const dotStyles = {
-  distanceForSlider: 16,
-};
 
 function verticalSize(props) {
   let { width, height, vertical } = props;
@@ -173,7 +163,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     sliderPassedWayThemeProps,
   };
 }
-function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
+export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
   const sliderButtonName = 'SliderButton';
   const sliderButtonThemeProps = getPartOfThemeProps(sliderButtonName);
   const {
