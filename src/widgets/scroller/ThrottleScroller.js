@@ -9,34 +9,44 @@ import styled from 'styled-components';
 import Scroller from './index';
 import Widget from '../consts/index';
 import { FontSizeNumber } from '../css';
-import { BarDefaultSize, DefaultHeight, DefaultWidth } from '../css/scroller';
+import {
+  BarDefaultSize,
+  DefaultHeight,
+  DefaultWidth,
+  ScrollerContainer,
+  Col,
+  ScrollerCol,
+} from '../css/scroller';
 import { getCanSeeCount } from './support';
-import { px2emcss } from '../css/units';
+import { px2emcss, px2remcss } from '../css/units';
 
-const em = px2emcss(FontSizeNumber);
+// const em = px2emcss(FontSizeNumber);
 
 const height = props => {
   const { theme, totalSize, autoHeight = false } = props;
   const { height: themeHeight } = theme;
   if (!autoHeight) {
-    return themeHeight ? `height:${em(themeHeight)};` : `height:${em(DefaultHeight)};`;
+    return themeHeight
+      ? `height:${px2remcss(themeHeight)};`
+      : `height:${px2remcss(DefaultHeight)};`;
   }
 
   if (!themeHeight || themeHeight > totalSize) {
-    return `height: ${em(totalSize)}`;
+    return `height: ${px2remcss(totalSize)}`;
   }
-  return `height: ${em(themeHeight)}`;
+  return `height: ${px2remcss(themeHeight)}`;
 };
 
 const getActiveWidth = props => {
   const { theme } = props;
+
   const { width } = theme;
   return width;
 };
 
 const width = props => {
   const width = getActiveWidth(props);
-  return width ? `width:${em(width)};` : `width:${em(DefaultWidth)};`;
+  return width ? `width:${px2remcss(width)};` : `width:${px2remcss(DefaultWidth)};`;
 };
 const getContentWidthValue = props => {
   const width = getActiveWidth(props);
@@ -45,27 +55,27 @@ const getContentWidthValue = props => {
 
 const getContentWidth = props => {
   const width = getContentWidthValue(props);
-  return em(width);
+  return px2remcss(width);
 };
 
 const scrollerLeft = props => {
   return `left: ${getContentWidth(props)};`;
 };
 
-const Col = styled.div`
-  ${width};
-  font-size: ${FontSizeNumber}rem;
-  position: absolute;
-  display: inline-block;
-`;
+// const Col = styled.div`
+//   ${width};
+//   font-size: ${FontSizeNumber}rem;
+//   position: absolute;
+//   display: inline-block;
+// `;
 
-const ScrollerContainer = styled.div`
-  overflow: hidden;
-  font-size: ${FontSizeNumber}rem;
-  ${height};
-  ${width};
-  position: relative;
-`;
+// const ScrollerContainer = styled.div`
+//   overflow: hidden;
+//   font-size: ${FontSizeNumber}rem;
+//   ${height};
+//   ${width};
+//   position: relative;
+// `;
 
 const getOpacity = (props: Object) => {
   const { isDrag } = props;
@@ -74,22 +84,26 @@ const getOpacity = (props: Object) => {
   }
   return '';
 };
-const ScrollerCol = styled(Col)`
-  ${scrollerLeft};
-  width: ${em(BarDefaultSize)};
-  opacity: 0;
-  ${ScrollerContainer}:hover & {
-    opacity: 1;
-  }
+// const ScrollerCol = styled(Col)`
+//   ${scrollerLeft};
+//   width: ${px2remcss(BarDefaultSize)};
+//   opacity: 0;
+//   ${ScrollerContainer}:hover & {
+//     opacity: 1;
+//   }
 
-  ${getOpacity};
-  transition: opacity 0.3s;
-`;
+//   ${getOpacity};
+//   transition: opacity 0.3s;
+// `;
 
 type ThrottleScrollerState = {
   start: number,
 };
-export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
+export default (
+  Target: React.ComponentType<any>,
+  MenuItemHeight: number,
+  TargetWrapName: string
+) => {
   return class ThrottleScroller extends React.Component<any, ThrottleScrollerState> {
     static displayName = Widget.ThrottleScroller;
     static defaultProps = {
@@ -125,16 +139,23 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
       const start = this.getStart(props, this.state);
       const { getTheme } = props;
       const theme = getTheme();
-      const { level, autoHeight = false } = props;
+      const { level, autoHeight = false, getPartOfThemeProps } = props;
+      const themeProps = getPartOfThemeProps(TargetWrapName);
+      console.log('getPartOfThemeProps1', TargetWrapName, themeProps);
       const totalSize = this.fetchTotalSize();
-
+      themeProps.propsConfig = {
+        isDrag: this.isDrag,
+        autoHeight,
+        totalSize,
+      };
       const pack = (element: Object | Array<Object>) => {
         return (
           <ScrollerContainer
-            level={level}
-            totalSize={totalSize}
-            theme={theme}
-            autoHeight={autoHeight}
+            // level={level}
+            // totalSize={totalSize}
+            // theme={theme}
+            themeProps={themeProps}
+            // autoHeight={autoHeight}
             onWheel={this.onWheel}
           >
             {element}
@@ -162,8 +183,9 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
       const end = this.fetchEnd(start);
       const canSeeCount = this.canSeeCount();
       const menuItemHeight = this.itemHeight;
+
       return pack([
-        <Col theme={theme} level={level}>
+        <Col themeProps={themeProps} level={level}>
           <Target
             {...props}
             canSeeCount={canSeeCount}
@@ -172,7 +194,7 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
             ref={cmp => (this.scrollerTarget = cmp)}
           />
         </Col>,
-        <ScrollerCol level={level} theme={theme} isDrag={this.isDrag}>
+        <ScrollerCol level={level} themeProps={themeProps} isDrag={this.isDrag}>
           <Scroller
             ref={cmp => (this.scroller = cmp)}
             type={type}
@@ -218,17 +240,13 @@ export default (Target: React.ComponentType<any>, MenuItemHeight: number) => {
     }
 
     fetchViewSize = () => {
-      const { autoHeight = false } = this.props;
-      const { height: themeHeight } = this.props.getTheme();
-      if (!autoHeight) {
-        return themeHeight || themeHeight === 0 ? themeHeight : DefaultHeight;
-      }
+      const { autoHeight = false, getPartOfThemeConfig } = this.props;
+      const { normal = {} } = getPartOfThemeConfig(TargetWrapName);
+      let { height } = normal;
+      height = !height && height !== 0 ? DefaultHeight : height;
       const { data } = this.props;
       const allItemHeight = this.itemHeight * data.length;
-      if (!themeHeight || themeHeight > allItemHeight) {
-        return allItemHeight;
-      }
-      return themeHeight;
+      return autoHeight ? allItemHeight : height;
     };
 
     fetchTotalSize(): number {

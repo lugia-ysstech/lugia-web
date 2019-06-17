@@ -79,7 +79,7 @@ export const NextButton = ThemeHoc(
       },
     },
     hover: {
-      selectNames: [['opacity']],
+      selectNames: [['opacity'], ['boxShadow'], ['color']],
       defaultTheme: {
         opacity: 1,
       },

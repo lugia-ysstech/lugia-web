@@ -110,6 +110,13 @@ export type MenuState = {
   expandedPathInProps: boolean,
 };
 
+function addPropsConfig(themeProps: Object, propsConfig: Object) {
+  const newThemeProps = { ...themeProps };
+
+  newThemeProps.propsConfig = propsConfig;
+  return newThemeProps;
+}
+
 let SubMenu = () => <div />;
 
 class Menu extends React.Component<MenuProps, MenuState> {
@@ -202,19 +209,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { props } = this;
     const items = this.getItems(props);
 
-    const { data = [], size, autoHeight = false } = props;
+    const { data = [], size, autoHeight = false, getPartOfThemeProps } = props;
 
     const length = data ? data.length : 0;
     const menuItemHeight = getMenuItemHeight(size);
+    const WrapThemeProps = addPropsConfig(getPartOfThemeProps('MenuWrap'), {
+      length,
+      size,
+      autoHeight,
+    });
 
     const bodyContent = (
-      <MenuContainer
-        length={length}
-        size={size}
-        theme={this.getTheme()}
-        level={this.props.level}
-        autoHeight={autoHeight}
-      >
+      <MenuContainer themeProps={WrapThemeProps} level={this.props.level}>
         {items}
       </MenuContainer>
     );
@@ -276,9 +282,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
         if (obj === Placeholder) {
           return <li />;
         }
-
         const iconElement = icon ? <TextIcon iconClass={icon} /> : null;
-        const { wrapItem } = this.props;
+        const { wrapItem, getPartOfThemeHocProps } = this.props;
+        const { viewClass, theme } = getPartOfThemeHocProps('MenuItem');
+
         const result = (
           <Item
             key={key}
@@ -286,7 +293,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
             disabled={disabled}
             checkedCSS={checkedCSS}
             divided={divided || propsDivided}
-            theme={getTheme()}
+            theme={theme}
+            viewClass={viewClass}
             isFirst={isFirst}
           >
             {prefix}
@@ -831,7 +839,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 }
 
-const Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight), Widget.Menu);
+const Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight, 'MenuWrap'), Widget.Menu);
 
 Result.Placeholder = Placeholder;
 Result.computeCanSeeCount = (

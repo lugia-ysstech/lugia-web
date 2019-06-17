@@ -38,6 +38,21 @@ const Box = styled.div`
   margin: 10px 30px;
 `;
 
+const data = [
+  { value: '皮卡丘', text: '皮卡丘', disabled: true },
+  { value: '妙蛙种子', text: '妙蛙种子', disabled: true },
+  { value: '小火龙', text: '小火龙' },
+  { value: '杰尼龟', text: '杰尼龟' },
+  { value: '绿毛虫', text: '绿毛虫' },
+  { value: '独角虫', text: '独角虫' },
+  { value: '波波', text: '波波' },
+  { value: '小拉达', text: '小拉达' },
+  { value: '阿伯怪', text: '阿伯怪' },
+  { value: '穿山鼠', text: '穿山鼠' },
+  { value: '尼多兰', text: '尼多兰' },
+  { value: '皮皮', text: '皮皮' },
+];
+
 const items = [];
 for (let i = 0; i < 100000; i++) {
   items.push({ text: i, value: i, disabled: false });
@@ -117,9 +132,24 @@ export default class extends React.Component<any, any> {
   render() {
     const { items = [], selectedKeys, expandedPath } = this.state;
     const checkedKey = '4';
+    const config = {
+      [Widget.Menu]: {
+        MenuWrap: { normal: { width: 700, height: 350, fontSize: 16 } },
+        MenuItem: {
+          normal: { color: '#ccc' },
+          hover: { color: '#fff', background: { color: 'green' }, font: { fontWeight: 900 } },
+          active: { color: 'blue' },
+          disabled: { color: 'red', background: { color: '#000' } },
+        },
+      },
+    };
     return (
       <div>
-        <MenuWrap>
+        <Box>
+          <Menu theme={config} mutliple={false} data={data} />
+        </Box>
+
+        {/* <MenuWrap>
           <H2>级联嵌套菜单 </H2>
           <Box>
             <Theme config={{ [Widget.Menu]: { width: 200 }, [Widget.SubMenu]: { width: 150 } }}>
@@ -140,7 +170,7 @@ export default class extends React.Component<any, any> {
             </Theme>
           </Box>
           <Button onClick={this.btnClick}>hello</Button>
-        </MenuWrap>
+        </MenuWrap> */}
       </div>
     );
   }
