@@ -36,33 +36,14 @@ export default class Sl extends Component<any> {
     const { value, tipsValue } = this.state;
     return (
       <div style={{ padding: '0 60px' }}>
-        <Theme
-          config={{
-            [Widgets.Slider]: {
-              SliderTrack: {
-                normal: {
-                  width: 284,
-                },
-              },
-              SliderButton: {
-                normal: {
-                  width: 16,
-                  height: 16,
-                },
-              },
-            },
-          }}
-        >
-          <Slider minValue={0} defaultValue={[0, 20]} maxValue={30} />
-        </Theme>
-        <div style={{ float: 'left', padding: '0 20px 50px', border: '1px solid #ddd' }}>
-          <h2 style={{ padding: '20px 0' }}> normal</h2>
+        <div>
+          <h2> normal</h2>
           <Theme
             config={{
               [Widgets.Slider]: {
                 SliderContainer: {
                   normal: {
-                    background: { color: 'red' },
+                    background: { color: 'yellow' },
                     width: 400,
                     opacity: 0.5,
                     border: getBorder({ style: 'solid', width: 1, color: '#000' }, { radius: 6 }),
@@ -96,7 +77,7 @@ export default class Sl extends Component<any> {
                   normal: {
                     background: { color: 'green' },
                     width: 300,
-                    height: 10,
+                    height: 30,
                     border: getBorder({ style: 'solid', width: 1, color: '#000' }, { radius: 6 }),
                   },
                   hover: {
@@ -131,18 +112,19 @@ export default class Sl extends Component<any> {
                   normal: {
                     background: { color: '#ef5a5a' },
                     width: 20,
+                    height: 10,
                     border: getBorder({ style: 'solid', color: 'yellow', width: 1 }, { radius: 5 }),
                   },
                   hover: {
                     background: { color: 'red' },
-                    width: 20,
-                    height: 40,
+                    width: 30,
+                    height: 20,
                     border: getBorder({ style: 'solid', color: 'blue', width: 2 }, { radius: 10 }),
                   },
                   active: {
                     background: { color: 'yellow' },
-                    width: 20,
-                    height: 50,
+                    width: 60,
+                    height: 60,
                   },
                 },
                 SliderTips: {
@@ -161,43 +143,53 @@ export default class Sl extends Component<any> {
                     },
                   },
                 },
-                // SliderMarks:{
-                //   10:{
-                //     normal:{
-                //       color:'red',
-                //       font:{
-                //         fontWeight:700,
-                //         fontSize:14
-                //       }
-                //     }
-                //   },
-                // }
+                SliderMarks: {
+                  normal: {
+                    first: {
+                      color: 'red',
+                      font: {
+                        fontWeight: 700,
+                        fontSize: 14,
+                      },
+                    },
+                    last: {
+                      color: 'green',
+                      font: {
+                        fontWeight: 700,
+                        fontSize: 14,
+                      },
+                    },
+                  },
+                  disabled: {
+                    first: {
+                      color: '#ccc',
+                      font: {
+                        fontWeight: 700,
+                        fontSize: 14,
+                      },
+                    },
+                    last: {
+                      color: '#ccc',
+                      font: {
+                        fontWeight: 700,
+                        fontSize: 14,
+                      },
+                    },
+                  },
+                },
               },
             }}
           >
             <Slider
               defaultValue={20}
+              vertical
+              //disabled
               tips
               onChange={this.onchangeFirst}
               marks={{
-                10: {
-                  text: '10℃',
-                  style: {
-                    color: 'blue',
-                  },
-                },
-                20: {
-                  text: '20℃',
-                  style: {
-                    color: 'pink',
-                  },
-                },
-                40: {
-                  text: '40℃',
-                  style: {
-                    color: 'red',
-                  },
-                },
+                10: '10℃',
+                20: '20℃',
+                40: '40℃rtrtr54546',
               }}
             />
           </Theme>
@@ -446,7 +438,6 @@ export default class Sl extends Component<any> {
           <Slider
             minValue={0}
             tips
-            vertical
             icons={[
               { name: 'lugia-icon-financial_smile_o' },
               { name: 'lugia-icon-financial_sad_o' },

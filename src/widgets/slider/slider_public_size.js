@@ -6,5 +6,5 @@ export const btnWidthNormal = 16;
 export const rangeHeightNormal = 6;
 export const rangeWidthNormal = 300;
 export const dotStyles = {
-  distanceForSlider: 16,
+  distanceForSlider: 25,
 };

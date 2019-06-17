@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`default Wrapper 1`] = `
-.c53 {
+.c40 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -13,17 +13,17 @@ exports[`default Wrapper 1`] = `
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
-  width: NaNrem;
+  height: 40rem;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
-  width: 40rem;
+  width: NaNrem;
 }
 
-.c55 {
+.c42 {
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
@@ -35,18 +35,18 @@ exports[`default Wrapper 1`] = `
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 5px 8px 5px 8px;
+  padding: 0px 0px 0px 0px;
 }
 
-.c10 {
+.c9 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 3px 10px 3px 10px;
+  padding: 5px 8px 5px 8px;
 }
 
-.c51 {
+.c38 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
@@ -54,7 +54,7 @@ exports[`default Wrapper 1`] = `
   padding: 17px 58px 17px 38px;
 }
 
-.c56 {
+.c43 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
@@ -62,12 +62,12 @@ exports[`default Wrapper 1`] = `
   padding: 8px 5px 8px 5px;
 }
 
-.c82 {
+.c68 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 58px 17px 58px 17px;
+  padding: 17px 58px 17px 58px;
 }
 
 .c2 {
@@ -75,37 +75,22 @@ exports[`default Wrapper 1`] = `
   position: relative;
 }
 
-.c3 {
+.c6 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
   transition: 0.1s;
-  width: 66.66666666666666%;
-  height: 0.6rem;
-  height: 0.6rem;
-  left: 0%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  width: 3rem;
+  height: 33.33333333333333%;
+  width: 1rem;
+  left: 50%;
+  bottom: 0%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
-.c14 {
-  border-radius: 0.6rem;
-  position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-  width: 33.33333333333333%;
-  height: 1rem;
-  height: 1rem;
-  left: 0%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c18 {
+.c10 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -120,7 +105,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
 }
 
-.c21 {
+.c12 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -135,7 +120,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
 }
 
-.c24 {
+.c14 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -150,7 +135,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
 }
 
-.c27 {
+.c16 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -165,7 +150,22 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
 }
 
-.c31 {
+.c18 {
+  border-radius: 0.6rem;
+  position: absolute;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  width: 66.66666666666666%;
+  height: 0.6rem;
+  height: 0.6rem;
+  left: 0%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c20 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -181,7 +181,7 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c34 {
+.c22 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -196,7 +196,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
 }
 
-.c41 {
+.c28 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -211,7 +211,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
 }
 
-.c46 {
+.c33 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -226,7 +226,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
 }
 
-.c57 {
+.c44 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -241,7 +241,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c59 {
+.c46 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -256,7 +256,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c61 {
+.c48 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -271,7 +271,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c68 {
+.c55 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -286,7 +286,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c74 {
+.c61 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -301,7 +301,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c76 {
+.c63 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -317,10 +317,24 @@ exports[`default Wrapper 1`] = `
   width: 0.6rem;
 }
 
-.c4 {
+.c7 {
   border-radius: 50%;
   position: absolute;
-  left: -2.8169014084507045%;
+  left: 50%;
+  bottom: calc(30% + 0rem);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  z-index: 2;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.c11 {
+  border-radius: 50%;
+  position: absolute;
+  left: calc(47.333333333333336% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -331,10 +345,10 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c7 {
+.c13 {
   border-radius: 50%;
   position: absolute;
-  left: 63.84976525821595%;
+  left: calc(14.000000000000002% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -348,7 +362,21 @@ exports[`default Wrapper 1`] = `
 .c15 {
   border-radius: 50%;
   position: absolute;
-  left: 30%;
+  left: calc(-2.666666666666667% + 0rem);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  z-index: 2;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.c17 {
+  border-radius: 50%;
+  position: absolute;
+  left: calc(97.33333333333334% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -362,7 +390,7 @@ exports[`default Wrapper 1`] = `
 .c19 {
   border-radius: 50%;
   position: absolute;
-  left: 47.333333333333336%;
+  left: calc(64% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -373,10 +401,19 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c22 {
+.c21 {
   border-radius: 50%;
   position: absolute;
-  left: 14.000000000000002%;
+  left: calc(64% + 0rem);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  z-index: 2;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  left: calc(64% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -387,10 +424,10 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c25 {
+.c23 {
   border-radius: 50%;
   position: absolute;
-  left: -2.666666666666667%;
+  left: calc(74.00000000000001% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -401,10 +438,10 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c28 {
+.c29 {
   border-radius: 50%;
   position: absolute;
-  left: 97.33333333333334%;
+  left: calc(37.333333333333336% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -415,10 +452,10 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c30 {
+.c34 {
   border-radius: 50%;
   position: absolute;
-  left: 64%;
+  left: calc(77.33333333333333% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -429,53 +466,11 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c35 {
-  border-radius: 50%;
-  position: absolute;
-  left: 74.00000000000001%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-}
-
-.c42 {
-  border-radius: 50%;
-  position: absolute;
-  left: 37.333333333333336%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-}
-
-.c47 {
-  border-radius: 50%;
-  position: absolute;
-  left: 77.33333333333333%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-}
-
-.c58 {
+.c45 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: -2.666666666666667%;
+  bottom: calc(-2.666666666666667% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -485,11 +480,39 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c60 {
+.c47 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: 30.666666666666664%;
+  bottom: calc(30.666666666666664% + 0rem);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  z-index: 2;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.c49 {
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  bottom: calc(64% + 0rem);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  z-index: 2;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.c56 {
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  bottom: calc(17.333333333333336% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -503,7 +526,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: 64%;
+  bottom: calc(37.333333333333336% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -513,11 +536,20 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c69 {
+.c64 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: 17.333333333333336%;
+  bottom: calc(14.000000000000002% + 0rem);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  z-index: 2;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  left: 50%;
+  bottom: calc(14.000000000000002% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -527,708 +559,124 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c75 {
+.c3 {
   border-radius: 50%;
   position: absolute;
-  left: 50%;
-  bottom: 37.333333333333336%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-}
-
-.c77 {
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  bottom: 14.000000000000002%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-}
-
-.c5 {
+  z-index: 1;
   font-size: 1.4rem;
-  text-align: center;
-  position: absolute;
   left: 50%;
+  bottom: -5%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  top: -3.7rem;
-}
-
-.c16 {
-  font-size: 1.4rem;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: -4rem;
-}
-
-.c32 {
-  font-size: 1.4rem;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: -3.7rem;
-  top: -NaNrem;
-}
-
-.c6 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-}
-
-.c6::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c6::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c6::before {
-  content: '0';
-  background: #333333;
-}
-
-.c6::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c8 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-}
-
-.c8::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c8::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c8::before {
-  content: '20';
-  background: #333333;
-}
-
-.c8::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c17 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 3rem;
-}
-
-.c17::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c17::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c17::before {
-  content: '20';
-  background: red;
-}
-
-.c17::after {
-  background: red;
-  border-right-color: blue;
-  border-bottom-color: blue;
-  box-shadow: 0 0 2px 0 red;
-}
-
-.c20 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-}
-
-.c20::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c20::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c20::before {
-  content: '15';
-  background: #333333;
-}
-
-.c20::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c23 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-}
-
-.c23::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c23::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c23::before {
-  content: '5';
-  background: #333333;
-}
-
-.c23::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c26 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-}
-
-.c26::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c26::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c26::before {
-  content: '10';
-  background: #333333;
-}
-
-.c26::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c29 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-}
-
-.c29::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c29::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c29::before {
-  content: '40';
-  background: #333333;
-}
-
-.c29::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c33 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-  line-height: NaNrem;
-}
-
-.c33::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c33::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c33::before {
-  content: '20';
-  background: #333333;
-}
-
-.c33::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c36 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-}
-
-.c36::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c36::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c36::before {
-  content: '23';
-  background: #333333;
-}
-
-.c36::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c78 {
-  display: block;
-  min-width: 2.5rem;
-  padding: 0 0.3rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  line-height: 2.7rem;
-  line-height: NaNrem;
-}
-
-.c78::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  text-align: center;
-}
-
-.c78::after {
-  content: '';
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  position: absolute;
-  left: 50%;
-  bottom: -0.3rem;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) rotate(45deg);
-  transform: translateX(-50%) rotate(45deg);
-  border: 1px solid transparent;
-}
-
-.c78::before {
-  content: '5';
-  background: #333333;
-}
-
-.c78::after {
-  background: #333333;
-  border-right-color: undefined;
-  border-bottom-color: undefined;
-  box-shadow: undefined;
-}
-
-.c11 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: -1.6666666666666667%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
   border-width: 0.1rem;
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: 1rem;
-  height: 1rem;
+  width: 3rem;
+  height: 3rem;
 }
 
-.c11::before {
-  content: '10℃';
+.c3::before {
   display: block;
   position: absolute;
+}
+
+.c3::before {
+  content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #333;
+  color: red;
+}
+
+.c4 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
   left: 50%;
+  bottom: 28.333333333333332%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: blue;
-}
-
-.c12 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 31.666666666666664%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
   border-width: 0.1rem;
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: 1rem;
-  height: 1rem;
+  width: 3rem;
+  height: 3rem;
 }
 
-.c12::before {
-  content: '20℃';
+.c4::before {
   display: block;
   position: absolute;
+}
+
+.c4::before {
+  content: '20℃';
   font-size: 1.4rem;
   line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #333;
+  color: undefined;
+}
+
+.c5 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
   left: 50%;
+  bottom: 95%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: pink;
-}
-
-.c13 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 98.33333333333333%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
   border-width: 0.1rem;
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: 1rem;
-  height: 1rem;
+  width: 3rem;
+  height: 3rem;
 }
 
-.c13::before {
-  content: '40℃';
+.c5::before {
   display: block;
   position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: red;
 }
 
-.c37 {
+.c5::before {
+  content: '40℃rtrtr54546';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #999;
+  color: green;
+}
+
+.c24 {
   border-radius: 50%;
   position: absolute;
+  z-index: 1;
   font-size: 1.4rem;
   left: -1%;
   top: 50%;
@@ -1236,7 +684,348 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: none;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c24::before {
+  display: block;
+  position: absolute;
+}
+
+.c24::before {
+  content: '0';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: #333;
+  color: undefined;
+}
+
+.c25 {
+  border-radius: 50%;
+  position: absolute;
   z-index: 1;
+  font-size: 1.4rem;
+  left: 39%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c25::before {
+  display: block;
+  position: absolute;
+}
+
+.c25::before {
+  content: '10℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: blue;
+  color: undefined;
+}
+
+.c26 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 79%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c26::before {
+  display: block;
+  position: absolute;
+}
+
+.c26::before {
+  content: '20℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: pink;
+  color: undefined;
+}
+
+.c27 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 99%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: none;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c27::before {
+  display: block;
+  position: absolute;
+}
+
+.c27::before {
+  content: '25';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: #999;
+  color: undefined;
+}
+
+.c30 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: -1%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: none;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c30::before {
+  display: block;
+  position: absolute;
+}
+
+.c30::before {
+  content: '0';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: #999;
+  color: undefined;
+}
+
+.c31 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 39%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c31::before {
+  display: block;
+  position: absolute;
+}
+
+.c31::before {
+  content: '10℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: blue;
+  color: undefined;
+}
+
+.c32 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 79%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c32::before {
+  display: block;
+  position: absolute;
+}
+
+.c32::before {
+  content: '20℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: pink;
+  color: undefined;
+}
+
+.c35 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: -1%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: none;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c35::before {
+  display: block;
+  position: absolute;
+}
+
+.c35::before {
+  content: '10℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: #333;
+  color: undefined;
+}
+
+.c36 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 32.33333333333333%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c36::before {
+  display: block;
+  position: absolute;
+}
+
+.c36::before {
+  content: '20℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -2.5rem;
+  color: #999;
+  color: undefined;
+}
+
+.c37 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 99%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   border-width: 0.1rem;
   border-style: solid;
   border-color: transparent;
@@ -1246,9 +1035,12 @@ exports[`default Wrapper 1`] = `
 }
 
 .c37::before {
-  content: '0';
   display: block;
   position: absolute;
+}
+
+.c37::before {
+  content: '40℃';
   font-size: 1.4rem;
   line-height: 1;
   left: 50%;
@@ -1256,293 +1048,22 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: #333;
-}
-
-.c38 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 39%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: #cccccc;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c38::before {
-  content: '10℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: blue;
-}
-
-.c39 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 79%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: #cccccc;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c39::before {
-  content: '20℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: pink;
-}
-
-.c40 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 99%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: none;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c40::before {
-  content: '25';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: #999;
-}
-
-.c43 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: -1%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: none;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c43::before {
-  content: '0';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: #999;
-}
-
-.c44 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 39%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c44::before {
-  content: '10℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: blue;
-}
-
-.c45 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 79%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c45::before {
-  content: '20℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: pink;
-}
-
-.c48 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: -1%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: none;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c48::before {
-  content: '10℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: #333;
-}
-
-.c49 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 32.33333333333333%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: #cccccc;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c49::before {
-  content: '20℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: #999;
+  bottom: -2.5rem;
+  color: red;
+  color: undefined;
 }
 
 .c50 {
   border-radius: 50%;
   position: absolute;
-  font-size: 1.4rem;
-  left: 99%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
   z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: -1%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
   border-width: 0.1rem;
   border-style: solid;
   border-color: transparent;
@@ -1552,31 +1073,149 @@ exports[`default Wrapper 1`] = `
 }
 
 .c50::before {
-  content: '40℃';
   display: block;
   position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: 1.6rem;
-  color: red;
 }
 
-.c63 {
+.c50::before {
+  content: '0';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #333;
+  color: undefined;
+}
+
+.c51 {
   border-radius: 50%;
   position: absolute;
+  z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: -1%;
+  bottom: 19%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c51::before {
+  display: block;
+  position: absolute;
+}
+
+.c51::before {
+  content: '10℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #333;
+  color: undefined;
+}
+
+.c52 {
+  border-radius: 50%;
+  position: absolute;
   z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: 39%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c52::before {
+  display: block;
+  position: absolute;
+}
+
+.c52::before {
+  content: '20℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #999;
+  color: undefined;
+}
+
+.c53 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: 79%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c53::before {
+  display: block;
+  position: absolute;
+}
+
+.c53::before {
+  content: '40℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: red;
+  color: undefined;
+}
+
+.c54 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: 99%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
   border-width: 0.1rem;
   border-style: solid;
   border-color: transparent;
@@ -1585,24 +1224,67 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c63::before {
-  content: '0';
+.c54::before {
   display: block;
   position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #333;
 }
 
-.c64 {
+.c54::before {
+  content: '50';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #999;
+  color: undefined;
+}
+
+.c57 {
   border-radius: 50%;
   position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: -1%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: none;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c57::before {
+  display: block;
+  position: absolute;
+}
+
+.c57::before {
+  content: '0℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #999;
+  color: undefined;
+}
+
+.c58 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
   font-size: 1.4rem;
   left: 50%;
   bottom: 19%;
@@ -1610,33 +1292,37 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  z-index: 1;
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: transparent;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
 }
 
-.c64::before {
-  content: '10℃';
+.c58::before {
   display: block;
   position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #333;
 }
 
-.c65 {
+.c58::before {
+  content: '10℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #333;
+  color: undefined;
+}
+
+.c59 {
   border-radius: 50%;
   position: absolute;
+  z-index: 1;
   font-size: 1.4rem;
   left: 50%;
   bottom: 39%;
@@ -1644,41 +1330,120 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  z-index: 1;
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: transparent;
   background: #ffffff;
   width: 0.6rem;
   height: 0.6rem;
 }
 
-.c65::before {
-  content: '20℃';
+.c59::before {
   display: block;
   position: absolute;
+}
+
+.c59::before {
+  content: '20℃';
   font-size: 1.4rem;
   line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #333;
+  color: undefined;
+}
+
+.c60 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: 99%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: none;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c60::before {
+  display: block;
+  position: absolute;
+}
+
+.c60::before {
+  content: '50℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
   color: #999;
+  color: undefined;
+}
+
+.c65 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: -1%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: none;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c65::before {
+  display: block;
+  position: absolute;
+}
+
+.c65::before {
+  content: '0℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #333;
+  color: undefined;
 }
 
 .c66 {
   border-radius: 50%;
   position: absolute;
+  z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 79%;
+  bottom: 49%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  z-index: 1;
   border-width: 0.1rem;
   border-style: solid;
   border-color: #cccccc;
@@ -1688,23 +1453,28 @@ exports[`default Wrapper 1`] = `
 }
 
 .c66::before {
-  content: '40℃';
   display: block;
   position: absolute;
+}
+
+.c66::before {
+  content: '5';
   font-size: 1.4rem;
   line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: red;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #999;
+  color: undefined;
 }
 
 .c67 {
   border-radius: 50%;
   position: absolute;
+  z-index: 1;
   font-size: 1.4rem;
   left: 50%;
   bottom: 99%;
@@ -1712,7 +1482,6 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  z-index: 1;
   border-width: 0.1rem;
   border-style: solid;
   border-color: transparent;
@@ -1722,259 +1491,25 @@ exports[`default Wrapper 1`] = `
 }
 
 .c67::before {
-  content: '50';
   display: block;
   position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #999;
 }
 
-.c70 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: -1%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: none;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c70::before {
-  content: '0℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #999;
-}
-
-.c71 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: 19%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c71::before {
+.c67::before {
   content: '10℃';
-  display: block;
-  position: absolute;
   font-size: 1.4rem;
   line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #333;
-}
-
-.c72 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: 39%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c72::before {
-  content: '20℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #333;
-}
-
-.c73 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: 99%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: none;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c73::before {
-  content: '50℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
   color: #999;
+  color: undefined;
 }
 
-.c79 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: -1%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: none;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c79::before {
-  content: '0℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #333;
-}
-
-.c80 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: 49%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: #cccccc;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c80::before {
-  content: '5';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #999;
-}
-
-.c81 {
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: 99%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 1;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: none;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c81::before {
-  content: '10℃';
-  display: block;
-  position: absolute;
-  font-size: 1.4rem;
-  line-height: 1;
-  left: 1.6rem;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  top: 50%;
-  color: #999;
-}
-
-.c52 {
+.c39 {
   position: absolute;
   line-height: 0;
   top: 50%;
@@ -1987,7 +1522,7 @@ exports[`default Wrapper 1`] = `
   font-size: 2rem;
 }
 
-.c54 {
+.c41 {
   position: absolute;
   line-height: 0;
   top: 50%;
@@ -2000,29 +1535,16 @@ exports[`default Wrapper 1`] = `
   font-size: 4rem;
 }
 
-.c83 {
+.c69 {
   position: absolute;
   line-height: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  bottom: -5.8rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  left: -5.8rem;
   color: #999;
-  font-size: 4rem;
-}
-
-.c84 {
-  position: absolute;
-  line-height: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  top: -5.8rem;
-  color: #ccc;
   font-size: 4rem;
 }
 
@@ -2033,167 +1555,8 @@ exports[`default Wrapper 1`] = `
     }
   }
 >
-  <span
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-  >
-    <div
-      className="c0"
-      style={Object {}}
-    >
-      <div
-        className="c1"
-        style={Object {}}
-        value={
-          Array [
-            0,
-            20,
-          ]
-        }
-      >
-        <div
-          className="c2"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={
-            Object {
-              "backgroundColor": "#e8e8e8",
-              "borderBottomLeftRadius": "0.6rem",
-              "borderBottomRightRadius": "0.6rem",
-              "borderBottomWidth": "0rem",
-              "borderLeftWidth": "0rem",
-              "borderRightWidth": "0rem",
-              "borderTopLeftRadius": "0.6rem",
-              "borderTopRightRadius": "0.6rem",
-              "borderTopWidth": "0rem",
-              "height": "0.6rem",
-              "width": "28.4rem",
-            }
-          }
-          value={
-            Array [
-              0,
-              20,
-            ]
-          }
-        >
-          <div
-            className="c3"
-            style={
-              Object {
-                "backgroundColor": "#4d63ff",
-                "height": "0.6rem",
-              }
-            }
-          />
-          <span
-            className="c4"
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#4d63ff",
-                "height": "1.6rem",
-                "width": "1.6rem",
-              }
-            }
-            value={
-              Array [
-                0,
-                20,
-              ]
-            }
-          >
-            <span
-              className="c5"
-              style={Object {}}
-            >
-              <span
-                className="c6"
-                style={
-                  Object {
-                    "backgroundColor": "#333333",
-                    "borderBottomLeftRadius": "0.3rem",
-                    "borderBottomRightRadius": "0.3rem",
-                    "borderTopLeftRadius": "0.3rem",
-                    "borderTopRightRadius": "0.3rem",
-                    "color": "#ffffff",
-                    "fontSize": "1.4rem",
-                    "height": "2.7rem",
-                  }
-                }
-              >
-                0
-              </span>
-            </span>
-          </span>
-          <span
-            className="c7"
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#4d63ff",
-                "height": "1.6rem",
-                "width": "1.6rem",
-              }
-            }
-            value={
-              Array [
-                0,
-                20,
-              ]
-            }
-          >
-            <span
-              className="c5"
-              style={Object {}}
-            >
-              <span
-                className="c8"
-                style={
-                  Object {
-                    "backgroundColor": "#333333",
-                    "borderBottomLeftRadius": "0.3rem",
-                    "borderBottomRightRadius": "0.3rem",
-                    "borderTopLeftRadius": "0.3rem",
-                    "borderTopRightRadius": "0.3rem",
-                    "color": "#ffffff",
-                    "fontSize": "1.4rem",
-                    "height": "2.7rem",
-                  }
-                }
-              >
-                20
-              </span>
-            </span>
-          </span>
-        </div>
-      </div>
-    </div>
-  </span>
-  <div
-    style={
-      Object {
-        "border": "1px solid #ddd",
-        "float": "left",
-        "padding": "0 20px 50px",
-      }
-    }
-  >
-    <h2
-      style={
-        Object {
-          "padding": "20px 0",
-        }
-      }
-    >
+  <div>
+    <h2>
        normal
     </h2>
     <span
@@ -2203,10 +1566,10 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c9"
+        className="c0"
         style={
           Object {
-            "backgroundColor": "red",
+            "backgroundColor": "yellow",
             "borderBottomColor": "#000",
             "borderBottomLeftRadius": "0.6rem",
             "borderBottomRightRadius": "0.6rem",
@@ -2230,7 +1593,9 @@ exports[`default Wrapper 1`] = `
         }
       >
         <div
-          className="c10"
+          className="c1"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -2240,8 +1605,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "green",
@@ -2261,8 +1624,8 @@ exports[`default Wrapper 1`] = `
                 "borderTopRightRadius": "0.6rem",
                 "borderTopStyle": "solid",
                 "borderTopWidth": "0.1rem",
-                "height": "1rem",
-                "width": "30rem",
+                "height": "30rem",
+                "width": "3rem",
               }
             }
             value={
@@ -2272,31 +1635,42 @@ exports[`default Wrapper 1`] = `
             }
           >
             <span
-              className="c11"
+              className="c3"
               data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c12"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c13"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c14"
               style={
                 Object {
-                  "backgroundColor": "#b53030",
-                  "height": "1rem",
+                  "color": "red",
+                  "fontSize": 14,
+                  "fontWeight": 700,
                 }
               }
             />
             <span
-              className="c15"
+              className="c4"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c5"
+              data-sign="mask"
+              style={
+                Object {
+                  "color": "green",
+                  "fontSize": 14,
+                  "fontWeight": 700,
+                }
+              }
+            />
+            <div
+              className="c6"
+              style={
+                Object {
+                  "backgroundColor": "#b53030",
+                }
+              }
+            />
+            <span
+              className="c7"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -2320,8 +1694,8 @@ exports[`default Wrapper 1`] = `
                   "borderTopRightRadius": "0.5rem",
                   "borderTopStyle": "solid",
                   "borderTopWidth": "0.1rem",
-                  "height": "1.6rem",
-                  "width": "2rem",
+                  "height": "2rem",
+                  "width": "1rem",
                 }
               }
               value={
@@ -2330,43 +1704,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c16"
-                style={Object {}}
-              >
-                <span
-                  className="c17"
-                  style={
-                    Object {
-                      "backgroundColor": "red",
-                      "borderBottomColor": "blue",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderBottomStyle": "solid",
-                      "borderBottomWidth": "0.1rem",
-                      "borderLeftColor": "blue",
-                      "borderLeftStyle": "solid",
-                      "borderLeftWidth": "0.1rem",
-                      "borderRightColor": "blue",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "0.1rem",
-                      "borderTopColor": "blue",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "borderTopStyle": "solid",
-                      "borderTopWidth": "0.1rem",
-                      "boxShadow": "0 0 2px 0 red",
-                      "color": "#fff",
-                      "fontSize": "1.4rem",
-                      "fontWeight": "bold",
-                      "height": "3rem",
-                      "width": "3rem",
-                    }
-                  }
-                >
-                  20
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -2397,11 +1735,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -2411,8 +1751,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -2435,16 +1773,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c18"
+              className="c10"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c19"
+              className="c11"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -2462,28 +1799,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c20"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  15
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -2496,11 +1812,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -2511,8 +1829,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -2536,16 +1852,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c21"
+              className="c12"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c22"
+              className="c13"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -2564,31 +1879,10 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c23"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  5
-                </span>
-              </span>
+              
             </span>
             <span
-              className="c19"
+              className="c11"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -2607,28 +1901,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c20"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  15
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -2659,11 +1932,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -2673,8 +1948,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -2697,16 +1970,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c24"
+              className="c14"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c25"
+              className="c15"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -2724,28 +1996,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c6"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -2776,11 +2027,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -2790,8 +2043,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -2814,16 +2065,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c24"
+              className="c14"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c25"
+              className="c15"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -2841,28 +2091,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -2893,11 +2122,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -2907,8 +2138,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -2931,16 +2160,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c27"
+              className="c16"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c28"
+              className="c17"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -2958,28 +2186,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c29"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  40
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -3010,11 +2217,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -3025,8 +2234,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3050,16 +2257,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c3"
+              className="c18"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c25"
+              className="c15"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -3078,31 +2284,10 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c6"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </span>
+              
             </span>
             <span
-              className="c30"
+              className="c19"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -3121,28 +2306,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c8"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  20
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -3173,12 +2337,14 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
           disabled={true}
+          onMouseDown={null}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -3189,8 +2355,6 @@ exports[`default Wrapper 1`] = `
           <div
             className="c2"
             disabled={true}
-            onMouseDown={null}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#f2f2f2",
@@ -3213,16 +2377,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c31"
+              className="c20"
               style={
                 Object {
                   "backgroundColor": "#e8e8e8",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c30"
+              className="c21"
               disabled={true}
               onMouseDown={null}
               onMouseEnter={[Function]}
@@ -3241,28 +2404,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c32"
-                style={Object {}}
-              >
-                <span
-                  className="c33"
-                  style={
-                    Object {
-                      "backgroundColor": "#e8e8e8",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#fff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  20
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -3293,11 +2435,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -3307,8 +2451,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3331,16 +2473,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c34"
+              className="c22"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c35"
+              className="c23"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -3358,28 +2499,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c36"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  23
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -3410,11 +2530,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -3424,8 +2546,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3448,36 +2568,35 @@ exports[`default Wrapper 1`] = `
             }
           >
             <span
-              className="c37"
+              className="c24"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c38"
+              className="c25"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c39"
+              className="c26"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c40"
+              className="c27"
               data-sign="mask"
               style={Object {}}
             />
             <div
-              className="c41"
+              className="c28"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c42"
+              className="c29"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -3495,28 +2614,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -3547,11 +2645,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -3562,8 +2662,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3587,36 +2685,35 @@ exports[`default Wrapper 1`] = `
             }
           >
             <span
-              className="c43"
+              className="c30"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c44"
+              className="c31"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c45"
+              className="c32"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c40"
+              className="c27"
               data-sign="mask"
               style={Object {}}
             />
             <div
-              className="c46"
+              className="c33"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c42"
+              className="c29"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -3635,31 +2732,10 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
+              
             </span>
             <span
-              className="c47"
+              className="c34"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -3678,28 +2754,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c8"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  20
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -3730,11 +2785,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -3744,8 +2801,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3768,31 +2823,30 @@ exports[`default Wrapper 1`] = `
             }
           >
             <span
-              className="c48"
+              className="c35"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c49"
+              className="c36"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c50"
+              className="c37"
               data-sign="mask"
               style={Object {}}
             />
             <div
-              className="c24"
+              className="c14"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c25"
+              className="c15"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -3810,28 +2864,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -3862,11 +2895,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c51"
+          className="c38"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -3876,8 +2911,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3901,7 +2934,7 @@ exports[`default Wrapper 1`] = `
           >
             <span>
               <span
-                className="c52"
+                className="c39"
                 value={
                   Array [
                     0,
@@ -3913,7 +2946,7 @@ exports[`default Wrapper 1`] = `
                   onMouseLeave={[Function]}
                 >
                   <i
-                    className="lugia-icon-financial_smile_o   c53"
+                    className="lugia-icon-financial_smile_o   c40"
                     style={Object {}}
                   />
                 </span>
@@ -3921,7 +2954,7 @@ exports[`default Wrapper 1`] = `
             </span>
             <span>
               <span
-                className="c54"
+                className="c41"
                 value={
                   Array [
                     0,
@@ -3933,23 +2966,22 @@ exports[`default Wrapper 1`] = `
                   onMouseLeave={[Function]}
                 >
                   <i
-                    className="lugia-icon-financial_sad_o   c53"
+                    className="lugia-icon-financial_sad_o   c40"
                     style={Object {}}
                   />
                 </span>
               </span>
             </span>
             <div
-              className="c24"
+              className="c14"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c25"
+              className="c15"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -3967,28 +2999,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c6"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -4019,12 +3030,14 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c0"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c1"
+          className="c9"
           disabled={false}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -4035,8 +3048,6 @@ exports[`default Wrapper 1`] = `
           <div
             className="c2"
             disabled={false}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -4059,16 +3070,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c24"
+              className="c14"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c25"
+              className="c15"
               disabled={false}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -4087,28 +3097,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c6"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -4153,11 +3142,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c55"
+        className="c42"
         style={Object {}}
       >
         <div
-          className="c56"
+          className="c43"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -4167,8 +3158,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -4191,16 +3180,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c57"
+              className="c44"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c58"
+              className="c45"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -4218,28 +3206,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c6"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -4270,11 +3237,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c55"
+        className="c42"
         style={Object {}}
       >
         <div
-          className="c56"
+          className="c43"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -4284,8 +3253,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -4308,16 +3275,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c59"
+              className="c46"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c60"
+              className="c47"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -4335,28 +3301,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -4387,11 +3332,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c55"
+        className="c42"
         style={Object {}}
       >
         <div
-          className="c56"
+          className="c43"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -4401,8 +3348,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -4425,16 +3370,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c59"
+              className="c46"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c60"
+              className="c47"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -4452,28 +3396,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -4504,11 +3427,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c55"
+        className="c42"
         style={Object {}}
       >
         <div
-          className="c56"
+          className="c43"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -4519,8 +3444,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -4544,16 +3467,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c61"
+              className="c48"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c60"
+              className="c47"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -4572,31 +3494,10 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
+              
             </span>
             <span
-              className="c62"
+              className="c49"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -4615,28 +3516,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c8"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  20
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -4667,11 +3547,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c55"
+        className="c42"
         style={Object {}}
       >
         <div
-          className="c56"
+          className="c43"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -4682,8 +3564,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -4707,16 +3587,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c61"
+              className="c48"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c60"
+              className="c47"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -4735,28 +3614,272 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
+              
+            </span>
+            <span
+              className="c49"
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "height": "1.6rem",
+                  "width": "1.6rem",
+                }
+              }
+              value={
+                Array [
+                  10,
+                  20,
+                ]
+              }
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div
+    style={
+      Object {
+        "float": "left",
+        "padding": "0 50px 50px",
+      }
+    }
+  >
+    <h2
+      style={
+        Object {
+          "padding": "35px 0",
+        }
+      }
+    >
+       离散
+    </h2>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <div
+        className="c42"
+        style={Object {}}
+      >
+        <div
+          className="c43"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+          value={
+            Array [
+              10,
+            ]
+          }
+        >
+          <div
+            className="c2"
+            style={
+              Object {
+                "backgroundColor": "#e8e8e8",
+                "borderBottomLeftRadius": "0.6rem",
+                "borderBottomRightRadius": "0.6rem",
+                "borderBottomWidth": "0rem",
+                "borderLeftWidth": "0rem",
+                "borderRightWidth": "0rem",
+                "borderTopLeftRadius": "0.6rem",
+                "borderTopRightRadius": "0.6rem",
+                "borderTopWidth": "0rem",
+                "height": "30rem",
+                "width": "0.6rem",
+              }
+            }
+            value={
+              Array [
+                10,
+              ]
+            }
+          >
+            <span
+              className="c50"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c51"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c52"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c53"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c54"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <div
+              className="c55"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                }
+              }
+            />
+            <span
+              className="c56"
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "height": "1.6rem",
+                  "width": "1.6rem",
+                }
+              }
+              value={
+                Array [
+                  10,
+                ]
+              }
+            >
+              
+            </span>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div
+    style={
+      Object {
+        "float": "left",
+        "padding": "0 50px 50px",
+      }
+    }
+  >
+    <h2
+      style={
+        Object {
+          "padding": "35px 0",
+        }
+      }
+    >
+       离散
+    </h2>
+    <span
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <div
+        className="c42"
+        style={Object {}}
+      >
+        <div
+          className="c43"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+          value={
+            Array [
+              10,
+              20,
+            ]
+          }
+        >
+          <div
+            className="c2"
+            style={
+              Object {
+                "backgroundColor": "#e8e8e8",
+                "borderBottomLeftRadius": "0.6rem",
+                "borderBottomRightRadius": "0.6rem",
+                "borderBottomWidth": "0rem",
+                "borderLeftWidth": "0rem",
+                "borderRightWidth": "0rem",
+                "borderTopLeftRadius": "0.6rem",
+                "borderTopRightRadius": "0.6rem",
+                "borderTopWidth": "0rem",
+                "height": "30rem",
+                "width": "0.6rem",
+              }
+            }
+            value={
+              Array [
+                10,
+                20,
+              ]
+            }
+          >
+            <span
+              className="c57"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c58"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c59"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c53"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <span
+              className="c60"
+              data-sign="mask"
+              style={Object {}}
+            />
+            <div
+              className="c61"
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                }
+              }
+            />
+            <span
+              className="c56"
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#4d63ff",
+                  "height": "1.6rem",
+                  "width": "1.6rem",
+                }
+              }
+              value={
+                Array [
+                  10,
+                  20,
+                ]
+              }
+            >
+              
             </span>
             <span
               className="c62"
@@ -4778,358 +3901,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c8"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  20
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </span>
-  </div>
-  <div
-    style={
-      Object {
-        "float": "left",
-        "padding": "0 50px 50px",
-      }
-    }
-  >
-    <h2
-      style={
-        Object {
-          "padding": "35px 0",
-        }
-      }
-    >
-       离散
-    </h2>
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-    >
-      <div
-        className="c55"
-        style={Object {}}
-      >
-        <div
-          className="c56"
-          style={Object {}}
-          value={
-            Array [
-              10,
-            ]
-          }
-        >
-          <div
-            className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
-              }
-            }
-            value={
-              Array [
-                10,
-              ]
-            }
-          >
-            <span
-              className="c63"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c64"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c65"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c66"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c67"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c68"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
-                }
-              }
-            />
-            <span
-              className="c69"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                ]
-              }
-            >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </span>
-  </div>
-  <div
-    style={
-      Object {
-        "float": "left",
-        "padding": "0 50px 50px",
-      }
-    }
-  >
-    <h2
-      style={
-        Object {
-          "padding": "35px 0",
-        }
-      }
-    >
-       离散
-    </h2>
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-    >
-      <div
-        className="c55"
-        style={Object {}}
-      >
-        <div
-          className="c56"
-          style={Object {}}
-          value={
-            Array [
-              10,
-              20,
-            ]
-          }
-        >
-          <div
-            className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
-              }
-            }
-            value={
-              Array [
-                10,
-                20,
-              ]
-            }
-          >
-            <span
-              className="c70"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c71"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c72"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c66"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c73"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c74"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
-                }
-              }
-            />
-            <span
-              className="c69"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c26"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  10
-                </span>
-              </span>
-            </span>
-            <span
-              className="c75"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c8"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  20
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -5160,12 +3932,14 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c55"
+        className="c42"
         style={Object {}}
       >
         <div
-          className="c56"
+          className="c43"
           disabled={true}
+          onMouseDown={null}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -5176,8 +3950,6 @@ exports[`default Wrapper 1`] = `
           <div
             className="c2"
             disabled={true}
-            onMouseDown={null}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#f2f2f2",
@@ -5200,16 +3972,15 @@ exports[`default Wrapper 1`] = `
             }
           >
             <div
-              className="c76"
+              className="c63"
               style={
                 Object {
                   "backgroundColor": "#e8e8e8",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c77"
+              className="c64"
               disabled={true}
               onMouseDown={null}
               onMouseEnter={[Function]}
@@ -5228,28 +3999,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c32"
-                style={Object {}}
-              >
-                <span
-                  className="c78"
-                  style={
-                    Object {
-                      "backgroundColor": "#e8e8e8",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#fff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  5
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -5280,11 +4030,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c55"
+        className="c42"
         style={Object {}}
       >
         <div
-          className="c56"
+          className="c43"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -5294,8 +4046,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -5318,31 +4068,30 @@ exports[`default Wrapper 1`] = `
             }
           >
             <span
-              className="c79"
+              className="c65"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c80"
+              className="c66"
               data-sign="mask"
               style={Object {}}
             />
             <span
-              className="c81"
+              className="c67"
               data-sign="mask"
               style={Object {}}
             />
             <div
-              className="c57"
+              className="c44"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c58"
+              className="c45"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -5360,28 +4109,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c6"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
@@ -5412,11 +4140,13 @@ exports[`default Wrapper 1`] = `
       onMouseUp={[Function]}
     >
       <div
-        className="c55"
+        className="c8"
         style={Object {}}
       >
         <div
-          className="c82"
+          className="c68"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={Object {}}
           value={
             Array [
@@ -5426,8 +4156,6 @@ exports[`default Wrapper 1`] = `
         >
           <div
             className="c2"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -5439,8 +4167,8 @@ exports[`default Wrapper 1`] = `
                 "borderTopLeftRadius": "0.6rem",
                 "borderTopRightRadius": "0.6rem",
                 "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "height": "0.6rem",
+                "width": "30rem",
               }
             }
             value={
@@ -5451,7 +4179,7 @@ exports[`default Wrapper 1`] = `
           >
             <span>
               <span
-                className="c83"
+                className="c69"
                 value={
                   Array [
                     0,
@@ -5463,7 +4191,7 @@ exports[`default Wrapper 1`] = `
                   onMouseLeave={[Function]}
                 >
                   <i
-                    className="lugia-icon-financial_smile_o   c53"
+                    className="lugia-icon-financial_smile_o   c40"
                     style={Object {}}
                   />
                 </span>
@@ -5471,7 +4199,7 @@ exports[`default Wrapper 1`] = `
             </span>
             <span>
               <span
-                className="c84"
+                className="c41"
                 value={
                   Array [
                     0,
@@ -5483,23 +4211,22 @@ exports[`default Wrapper 1`] = `
                   onMouseLeave={[Function]}
                 >
                   <i
-                    className="lugia-icon-financial_sad_o   c53"
+                    className="lugia-icon-financial_sad_o   c40"
                     style={Object {}}
                   />
                 </span>
               </span>
             </span>
             <div
-              className="c57"
+              className="c14"
               style={
                 Object {
                   "backgroundColor": "#4d63ff",
-                  "height": "0.6rem",
                 }
               }
             />
             <span
-              className="c58"
+              className="c15"
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
@@ -5517,28 +4244,7 @@ exports[`default Wrapper 1`] = `
                 ]
               }
             >
-              <span
-                className="c5"
-                style={Object {}}
-              >
-                <span
-                  className="c6"
-                  style={
-                    Object {
-                      "backgroundColor": "#333333",
-                      "borderBottomLeftRadius": "0.3rem",
-                      "borderBottomRightRadius": "0.3rem",
-                      "borderTopLeftRadius": "0.3rem",
-                      "borderTopRightRadius": "0.3rem",
-                      "color": "#ffffff",
-                      "fontSize": "1.4rem",
-                      "height": "2.7rem",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </span>
+              
             </span>
           </div>
         </div>
