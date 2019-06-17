@@ -2,7 +2,7 @@
  * by wangcuixia
  * @flow
  * */
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { valueInRange } from '../common/Math';
 import { iconStyles, dotStyles } from './slider_public_size';
 import { px2remcss } from '../css/units';
@@ -12,9 +12,9 @@ import {
   iconNormalColor,
   iconChangeColor,
 } from './slider_public_color';
-import Widgets from '../consts';
-import ThemeProvider from '../theme-provider';
 import CSSProvider from '../theme/CSSProvider';
+import ThemeHoc from '@lugia/theme-hoc';
+import Icon from '../icon';
 const em = px2remcss;
 type CssTypeProps = {
   background: string,
@@ -90,7 +90,6 @@ export const SliderBox = CSSProvider({
     ${props => getPaddingSize(props)};
   `,
 });
-//${props => getSliderWrapperStyle(props).MarginValue};
 export const SliderWrapper = CSSProvider({
   tag: 'div',
   className: 'SliderTrack',
@@ -407,16 +406,50 @@ export const Dot = CSSProvider({
     }
   `,
 });
-export const Icons = ThemeProvider(
-  styled.span`
+export const Icons = CSSProvider({
+  tag: 'span',
+  normal: {
+    className: [],
+  },
+  hover: {
+    className: [],
+  },
+  active: {
+    className: [],
+  },
+  disabled: {
+    className: [],
+  },
+  css: css`
     position: absolute;
     line-height: 0;
     ${props => getIconsStyle(props).iconPosition};
     ${props => getIconsStyle(props).changeColor};
     font-size: ${props => getIconsStyle(props).fontSize};
   `,
-  Widgets.SliderIcon
+});
+
+export const IconsInner = ThemeHoc(
+  CSSProvider({
+    extend: Icon,
+    className: 'IconsInner',
+    normal: {
+      selectNames: [['color'], ['font'], ['fontSize']],
+    },
+    hover: {
+      selectNames: [],
+    },
+    active: {
+      selectNames: [],
+    },
+    disabled: {
+      selectNames: [['color']],
+    },
+  }),
+  'IconsInner',
+  { hover: true, active: false }
 );
+
 function getPaddingSize(props) {
   const { vertical, levelPaddings, sliderVerticalPaddings } = props;
   const left = vertical ? sliderVerticalPaddings[0] : levelPaddings[0];
@@ -596,7 +629,7 @@ const getIconsStyle = (props: CssTypeProps) => {
     const iconCenterP = vertical ? 'left:50%' : 'top: 50%';
     const iconTrans = vertical ? 'translateX' : 'translateY';
     const theValue = value[0];
-    const distance = px2remcss(iconDistancen);
+    const distance = em(iconDistancen);
     if (index === 0) {
       iconPos = `${vertical ? 'bottom' : 'left'}:-${distance}`;
       if (theValue <= middleVal) {

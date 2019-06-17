@@ -19,6 +19,7 @@ import {
   Tiparrow,
   Tipinner,
   Tips,
+  IconsInner,
 } from './styled';
 import { getChangeValue } from './utils';
 import {
@@ -478,26 +479,38 @@ class Slider extends Component<TypeProps, TypeState> {
           levelPaddings[index] = iconDistancen;
           iconSize[index] = fontSize;
         }
+        const sliderIcons = index === 0 ? 'IconsFirst' : 'IconsLast';
+        const { viewClass, theme } = this.props.getPartOfThemeHocProps(sliderIcons);
+        const { normal: { font: { fontSize: fontObjSize } = {}, fontSize } = {} } = theme[
+          viewClass
+        ];
+        const hasFontSize = fontSize || fontObjSize;
+        if (hasFontSize) {
+          newFontSize = hasFontSize;
+          iconSize[index] = hasFontSize;
+          iconDistancen = hasFontSize + 10;
+          levelPaddings[index] = hasFontSize + 10;
+        }
+
         const iconStyle = {
           ...icon,
           fontSize: newFontSize,
           iconDistancen,
           index,
         };
-
         iconsChildren.push(
-          <Icons iconStyle={iconStyle} value={value} {...size} themeProps={this.props.themeProps}>
-            <Theme
-              config={{
-                [Widgets.Icon]: { fontSize: newFontSize },
-              }}
-            >
-              <Icon iconClass={icon.name} />
-            </Theme>
+          <Icons
+            iconStyle={iconStyle}
+            value={value}
+            {...size}
+            themeProps={deepMerge({ themeConfig: theme[viewClass] })}
+          >
+            <IconsInner iconClass={icon.name} viewClass={viewClass} theme={theme} />
           </Icons>
         );
       });
     }
+
     return { iconsChildren, levelPaddings, iconSize };
   }
   render() {
@@ -535,7 +548,6 @@ class Slider extends Component<TypeProps, TypeState> {
       dotWidths,
       dotHeights
     );
-
     const rangeW = sliderWidth;
     const rangeH = sliderHeight;
 
