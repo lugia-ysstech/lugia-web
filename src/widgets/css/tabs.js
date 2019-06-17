@@ -32,10 +32,12 @@ export const getTabpaneIconHoverColor = (props: Object) => {
   const color = matchType(tabType, 'line') && !disabled ? themeColor : 'none';
   return `color: ${color};`;
 };
+
 export const getTabpaneHoverColor = (props: Object) => {
   const { disabled } = props;
   return `color: ${disabled ? disableColor : themeColor};`;
 };
+
 export const getSelectColor = (props: Object) => {
   const { isSelect, disabled } = props;
   return `color: ${disabled ? disableColor : isSelect ? themeColor : ''};`;
@@ -86,7 +88,7 @@ export const getContainerBorder = (props: Object) => {
 export const getTabpaneFocusShadow = (props: Object) => {
   const { tabType, isSelect } = props;
   const color = isSelect && tabType === 'window' ? 'rgba(104, 79, 255,0.2)' : 'none';
-  return `box-shadow: 0 0 ${em(6)} ` + color;
+  return { boxShadow: `0 0 ${em(6)} ` + color };
 };
 export const getBackgroundShadow = (props: Object) => {
   const { tabType, disabled } = props;
@@ -121,9 +123,9 @@ export const lineWidth = props => {
 };
 export const getTitlePadding = props => {
   const { hasPreIcon, tabType, hasSuffixIcon } = props;
-  const leftPadding = hasPreIcon && !matchType(tabType, 'window') ? em(10) : em(0);
-  const rightPadding = matchType(tabType, 'window') || hasSuffixIcon ? em(10) : em(0);
-  return `padding: 0 ${rightPadding}  0 ${leftPadding}`;
+  const leftPadding = hasPreIcon && !matchType(tabType, 'window') ? 10 : 0;
+  const rightPadding = matchType(tabType, 'window') || hasSuffixIcon ? 10 : 0;
+  return { padding: { right: rightPadding, left: leftPadding } };
 };
 export const getTabpanePadding = props => {
   const { tabType, isSelect } = props;

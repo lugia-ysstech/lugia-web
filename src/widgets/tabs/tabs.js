@@ -11,7 +11,7 @@ import Tabpane from './tabpane';
 import TabContent from './tabcontent';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import type { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
+import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
 import {
   AddButtonSize,
   ArrowContainerWidth,
