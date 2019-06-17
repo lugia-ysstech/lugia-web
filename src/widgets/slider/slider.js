@@ -588,7 +588,9 @@ class Slider extends Component<TypeProps, TypeState> {
           <Dot
             data-sign={'mask'}
             key={dotIndex}
-            themeProps={deepMerge(sliderMarksThemeProps, { propsConfig: { marksData: data } })}
+            themeProps={deepMerge(sliderMarksThemeProps, {
+              propsConfig: { marksData: data || [] },
+            })}
           />
         );
       }
