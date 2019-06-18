@@ -180,6 +180,12 @@ export const RadioWrap = CSSComponent({
   hover: {
     selectNames: [['opacity']],
   },
+  disabled: {
+    selectNames: [['opacity']],
+  },
+  active: {
+    selectNames: [['opacity']],
+  },
 });
 
 export const RadioContent = CSSComponent({
@@ -194,6 +200,8 @@ export const RadioContent = CSSComponent({
   `,
   normal: { selectNames: [] },
   hover: { selectNames: [] },
+  disabled: { selectNames: [] },
+  active: { selectNames: [] },
 });
 
 export const RadioChildrenSpan = CSSComponent({
