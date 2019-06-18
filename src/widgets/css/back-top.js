@@ -108,7 +108,7 @@ export const BackTopContent = CSSComponent({
       ['border'],
     ],
     defaultTheme: {
-      background: { backgroundColor: defaultColor },
+      background: { color: defaultColor },
       color: themeColor,
       width: 40,
       height: 40,
