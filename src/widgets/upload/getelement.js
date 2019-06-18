@@ -62,7 +62,7 @@ const InputContent = ThemeHoc(
     `,
   }),
   'InputContent',
-  { hover: true, actived: false }
+  { hover: true, active: false }
 );
 
 const Ul = ThemeHoc(
@@ -76,7 +76,7 @@ const Ul = ThemeHoc(
     `,
   }),
   'Ul',
-  { hover: true, actived: false }
+  { hover: true, active: false }
 );
 
 const ProgressCon = CSSComponent({
@@ -122,7 +122,7 @@ const Li = ThemeHoc(
     `,
   }),
   'uploadLi',
-  { hover: true, actived: false }
+  { hover: true, active: false }
 );
 
 const Button = ThemeHoc(
@@ -157,7 +157,7 @@ const Button = ThemeHoc(
     `,
   }),
   'Button',
-  { hover: true, actived: false }
+  { hover: true, active: false }
 );
 
 const PrevCon = CSSComponent({
@@ -291,7 +291,7 @@ const PictureView = ThemeHoc(
     `,
   }),
   'PictureView',
-  { hover: false, actived: false }
+  { hover: false, active: false }
 );
 
 const AreaView = ThemeHoc(
@@ -321,7 +321,7 @@ const AreaView = ThemeHoc(
     `,
   }),
   'AreaView',
-  { hover: false, actived: false }
+  { hover: false, active: false }
 );
 
 const AreaText = CSSComponent({

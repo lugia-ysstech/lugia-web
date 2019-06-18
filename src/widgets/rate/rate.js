@@ -128,7 +128,7 @@ const RateIcon = ThemeHoc(
     },
   }),
   'RateIcon',
-  { hover: true, actived: false }
+  { hover: true, active: false }
 );
 
 const RateIconBottom = ThemeHoc(
