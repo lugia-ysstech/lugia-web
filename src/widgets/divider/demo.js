@@ -16,7 +16,28 @@ const Wrapper = styled.div`
 export default () => {
   const view = {
     [Widget.Divider]: {
-      width: 200,
+      HorizontalDivider: {
+        normal: {
+          width: 400,
+          height: 2,
+          background: {
+            color: 'red',
+          },
+        },
+      },
+    },
+  };
+  const vertical = {
+    [Widget.Divider]: {
+      VerticalDivider: {
+        normal: {
+          width: 2,
+          height: 10,
+          background: {
+            color: 'blue',
+          },
+        },
+      },
     },
   };
   return (
@@ -28,30 +49,32 @@ export default () => {
           <p>dashed</p>
           <Divider dashed={true} content={'dashed'} />
         </Wrapper>
+        <Wrapper>
+          <p>position left</p>
+          <Divider content="position left" position="left" />
+          <p>position right</p>
+          <Divider content="position right" position="right" />
+          <Divider />
+          <p>"不用思考.因为我帮你想好了",这是lugia设计的重要原则之一.</p>
+          <Divider />
+        </Wrapper>
+        <Wrapper>
+          <p>type vertical</p>
+          <Theme config={vertical}>
+            <div style={{ height: 20 }}>
+              text
+              <Divider type="vertical" />
+              text
+              <Divider type="vertical" />
+              text
+              <Divider type="vertical" />
+              text
+              <Divider type="vertical" />
+              text
+            </div>
+          </Theme>
+        </Wrapper>
       </Theme>
-      <Wrapper>
-        <p>position left</p>
-        <Divider content="position left" position="left" />
-        <p>position right</p>
-        <Divider content="position right" position="right" />
-        <Divider />
-        <p>"不用思考.因为我帮你想好了",这是lugia设计的重要原则之一.</p>
-        <Divider />
-      </Wrapper>
-      <Wrapper>
-        <p>type vertical</p>
-        <div style={{ height: 20 }}>
-          text
-          <Divider type="vertical" />
-          text
-          <Divider type="vertical" />
-          text
-          <Divider type="vertical" />
-          text
-          <Divider type="vertical" />
-          text
-        </div>
-      </Wrapper>
     </div>
   );
 };
