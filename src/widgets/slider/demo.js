@@ -41,6 +41,26 @@ export default class Sl extends Component<any> {
           <Theme
             config={{
               [Widgets.Slider]: {
+                IconsFirst: {
+                  normal: {
+                    color: 'red',
+                    fontSize: 100,
+                  },
+                  disabled: {
+                    color: 'blue',
+                    fontSize: 30,
+                  },
+                },
+                IconsLast: {
+                  normal: {
+                    color: 'green',
+                    fontSize: 30,
+                  },
+                  disabled: {
+                    color: 'blue',
+                    fontSize: 30,
+                  },
+                },
                 SliderContainer: {
                   normal: {
                     background: { color: 'yellow' },
@@ -205,6 +225,10 @@ export default class Sl extends Component<any> {
                 20: '20℃',
                 40: '40℃rtrtr54546',
               }}
+              icons={[
+                { name: 'lugia-icon-financial_smile_o' },
+                { name: 'lugia-icon-financial_sad_o' },
+              ]}
             />
           </Theme>
         </div>
@@ -449,14 +473,42 @@ export default class Sl extends Component<any> {
         </div>
         <div style={{ float: 'left', padding: '0 40px 50px' }}>
           <h2 style={{ padding: '20px 0' }}> icon</h2>
-          <Slider
-            minValue={0}
-            tips
-            icons={[
-              { name: 'lugia-icon-financial_smile_o' },
-              { name: 'lugia-icon-financial_sad_o' },
-            ]}
-          />
+          <Theme
+            config={{
+              [Widgets.Slider]: {
+                IconsFirst: {
+                  normal: {
+                    color: 'red',
+                    fontSize: 100,
+                  },
+                  disabled: {
+                    color: 'blue',
+                    fontSize: 30,
+                  },
+                },
+                IconsLast: {
+                  normal: {
+                    color: 'green',
+                    fontSize: 30,
+                  },
+                  disabled: {
+                    color: 'blue',
+                    fontSize: 30,
+                  },
+                },
+              },
+            }}
+          >
+            <Slider
+              minValue={0}
+              tips
+              vertical
+              icons={[
+                { name: 'lugia-icon-financial_smile_o' },
+                { name: 'lugia-icon-financial_sad_o' },
+              ]}
+            />
+          </Theme>
         </div>
       </div>
     );
