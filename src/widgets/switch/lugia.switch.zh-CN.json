@@ -68,5 +68,86 @@
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+  "theme": {
+    "SwitchOpen": {
+      "name": "开关组件打开的样式",
+      "desc": "开关组件打开的样式配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["fontSize"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"],
+        ["font"]
+      ],
+      "hover": [],
+      "active": [],
+      "disabled": [["background"], ["border"]]
+    },
+    "SwitchClosed": {
+      "name": "开关组件打开的样式",
+      "desc": "开关组件打开的样式配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["fontSize"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"],
+        ["font"]
+      ],
+      "hover": [],
+      "active": [],
+      "disabled": [["background"], ["border"]]
+    },
+    "SwitchButton": {
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"]
+      ],
+      "disabled": [["background"], ["border"], ["width"], ["height"], ["borderRadius"]]
+    },
+    "SwitchContainer": {
+      "normal": [
+        ["width"],
+        ["height"],
+        ["border"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["opacity"]
+      ],
+      "hover": [],
+      "active": [],
+      "disabled": [
+        ["width"],
+        ["height"],
+        ["border"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["opacity"]
+      ]
+    }
+  }
 }

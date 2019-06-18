@@ -7,19 +7,10 @@ import {
   tipBackground,
   tipColor,
 } from './slider_public_color';
+import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
 import colorsFunc from '../css/stateColor';
 import { getBorder } from '../theme/CSSProvider';
 export const { themeColor } = colorsFunc();
-export const iconStyles = {
-  fontSizeNormal: 40,
-  marginNormal: 10,
-};
-export const btnWidthNormal = 40;
-export const rangeHeightNormal = 6;
-export const rangeWidthNormal = 300;
-export const dotStyles = {
-  distanceForSlider: 16,
-};
 
 function verticalSize(props) {
   let { width, height, vertical } = props;
@@ -72,7 +63,7 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
       width: rangeWidthNormal,
       height: rangeHeightNormal,
       background: {
-        backgroundColor: trackBackground,
+        color: trackBackground,
       },
       border: getBorder({ color: '', style: '', width: 0 }, { radius: 6 }),
     },
@@ -86,17 +77,17 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
     ...mergeSliderTrackNormal,
     hover: {
       background: {
-        backgroundColor: throughRangeBackground,
+        color: throughRangeBackground,
       },
     },
     active: {
       background: {
-        backgroundColor: throughRangeBackground,
+        color: throughRangeBackground,
       },
     },
     disabled: {
       background: {
-        backgroundColor: trackDisabledBackground,
+        color: trackDisabledBackground,
       },
     },
   };
@@ -129,7 +120,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
   const defaultThemeProps = {
     normal: {
       background: {
-        backgroundColor: themeColor,
+        color: themeColor,
       },
       height,
     },
@@ -137,7 +128,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
   const mergeNormal = deepMerge(defaultThemeProps, { normal: sliderPassedWayNormalTheme });
   const {
     normal: {
-      background: { backgroundColor },
+      background: { color },
       height: sliderPassedWayHeight,
     },
   } = mergeNormal;
@@ -145,19 +136,19 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     ...mergeNormal,
     hover: {
       background: {
-        backgroundColor: colorsFunc(backgroundColor).hoverColor,
+        color: colorsFunc(color).hoverColor,
       },
       height: sliderPassedWayHeight,
     },
     active: {
       background: {
-        backgroundColor: colorsFunc(backgroundColor).hoverColor,
+        color: colorsFunc(color).hoverColor,
       },
       height: sliderPassedWayHeight,
     },
     disabled: {
       background: {
-        backgroundColor: btnDisabledBackground,
+        color: btnDisabledBackground,
       },
       height: sliderPassedWayHeight,
     },
@@ -172,7 +163,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     sliderPassedWayThemeProps,
   };
 }
-function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
+export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
   const sliderButtonName = 'SliderButton';
   const sliderButtonThemeProps = getPartOfThemeProps(sliderButtonName);
   const {
@@ -183,7 +174,7 @@ function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       width: btnWidthNormal,
       height: btnWidthNormal,
       background: {
-        backgroundColor: themeColor,
+        color: themeColor,
       },
     },
   };
@@ -192,7 +183,7 @@ function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
   });
   const {
     normal: {
-      background: { backgroundColor },
+      background: { color },
       width,
       height,
     },
@@ -204,21 +195,21 @@ function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       width: btnWidth + 4,
       height: btnHeight + 4,
       background: {
-        backgroundColor: colorsFunc(backgroundColor).hoverColor,
+        color: colorsFunc(color).hoverColor,
       },
     },
     active: {
       width: btnWidth + 4,
       height: btnHeight + 4,
       background: {
-        backgroundColor: colorsFunc(backgroundColor).hoverColor,
+        color: colorsFunc(color).hoverColor,
       },
     },
     disabled: {
       width: btnWidth,
       height: btnHeight,
       background: {
-        backgroundColor: btnDisabledBackground,
+        color: btnDisabledBackground,
       },
     },
   };
@@ -234,13 +225,13 @@ function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
     height,
   };
 }
-function getTipsThemeProps(getPartOfThemeProps, buttonThemeProps) {
+function getTipsThemeProps(getPartOfThemeProps) {
   const sliderTipsName = 'SliderTips';
   const sliderTipsThemeProps = getPartOfThemeProps(sliderTipsName);
   const defaultTipThemeProps = {
     normal: {
       background: {
-        backgroundColor: tipBackground,
+        color: tipBackground,
       },
       height: 27,
       color: tipColor,
@@ -249,7 +240,7 @@ function getTipsThemeProps(getPartOfThemeProps, buttonThemeProps) {
     },
     disabled: {
       background: {
-        backgroundColor: btnDisabledBackground,
+        color: btnDisabledBackground,
       },
       color: '#fff',
     },

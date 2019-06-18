@@ -32,7 +32,7 @@ const Input = ThemeHoc(
     `,
   }),
   'Input',
-  { hover: true, actived: false }
+  { hover: true, active: false }
 );
 
 class FileInput extends React.Component<PropTypes, any> {

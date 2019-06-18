@@ -101,7 +101,7 @@ Ratespan.displayName = 'sv_rate_Ratespan';
 const RateIcon = ThemeHoc(
   CSSComponent({
     extend: Icon,
-    className: 'activeIcon',
+    className: 'ActiveIcon',
     css: css`
       vertical-align: text-bottom !important;
     `,
@@ -128,13 +128,13 @@ const RateIcon = ThemeHoc(
     },
   }),
   'RateIcon',
-  { hover: true, actived: false }
+  { hover: true, active: false }
 );
 
 const RateIconBottom = ThemeHoc(
   CSSComponent({
     extend: Icon,
-    className: 'defaultRateIcon',
+    className: 'DefaultRateIcon',
     css: css`
       vertical-align: text-bottom !important;
       color: #e8e8e8;
@@ -171,7 +171,7 @@ const RateTextContainer = CSSComponent({
 
 const RateText = CSSComponent({
   tag: 'span',
-  className: 'activeTextIcon',
+  className: 'ActiveTextIcon',
   normal: {
     selectNames: [['color'], ['fontSize']],
     defaultTheme: {
@@ -199,7 +199,7 @@ const RateText = CSSComponent({
 
 const RateTextBottom = CSSComponent({
   tag: 'span',
-  className: 'defaultTextIcon',
+  className: 'DefaultTextIcon',
   normal: {
     selectNames: [['color'], ['fontSize']],
     defaultTheme: {
@@ -340,7 +340,7 @@ export const getIconClass = (iconClass: Object = {}): Object => {
   };
 };
 
-const getOffsetInfo = (rateRangeNode: Object) => {
+const getOffsetInfo = (rateRangeNode: ?Object) => {
   if (!rateRangeNode) {
     return { offsetLeft: 0, offsetWidth: 18 };
   }
@@ -494,7 +494,7 @@ class Rate extends React.Component<RateProps, any> {
     }
 
     const { hasClick } = this.state;
-    const { count } = props;
+    const { count = 5 } = props;
     const classNames = createCalssArray(count);
     this.setValue(0, 0, classNames, current, hasClick);
     this.doExportChange(getReturnObj(this.state, multipleValue(props, 0)));
@@ -521,7 +521,11 @@ class Rate extends React.Component<RateProps, any> {
   };
 
   getOffset(index: number) {
-    return getOffsetInfo(this.ratespan[index].current.querySelector('.iconCharacter'));
+    let reactNode = null;
+    if (this.ratespan[index]) {
+      reactNode = this.ratespan[index].current.querySelector('.iconCharacter');
+    }
+    return getOffsetInfo(reactNode);
   }
 
   getElement = (x: string, index: number) => {
@@ -530,8 +534,8 @@ class Rate extends React.Component<RateProps, any> {
     const theClassName = `${defautClass[x]} ${className} iconCharacter ${disabled ? '' : 'hoverd'}`;
     const { starNum } = this.state;
     if (ObjectUtils.isString(character)) {
-      const activeTextIconThemeProps = this.props.getPartOfThemeProps('activeTextIcon');
-      const defaultTextIconThemeProps = this.props.getPartOfThemeProps('defaultTextIcon');
+      const activeTextIconThemeProps = this.props.getPartOfThemeProps('ActiveTextIcon');
+      const defaultTextIconThemeProps = this.props.getPartOfThemeProps('DefaultTextIcon');
       const themeProps = index < starNum ? activeTextIconThemeProps : defaultTextIconThemeProps;
       return (
         <React.Fragment>
@@ -565,25 +569,6 @@ class Rate extends React.Component<RateProps, any> {
         {this.getRateIcon('bottom', IconClass)}
       </React.Fragment>
     );
-  };
-
-  mergeFontSize = (resultViewClass: string, resultTheme: Object) => {
-    const { count, themeProps } = this.props;
-    const config = themeProps.themeConfig.normal;
-    let result = resultTheme;
-    if (config) {
-      const { width, height, fontSize } = config;
-      const calcFontSize = fontSize ? fontSize : getFontSize(count, width, height);
-      const newTheme = {
-        [resultViewClass]: {
-          normal: {
-            fontSize: `${calcFontSize}px`,
-          },
-        },
-      };
-      result = deepMerge(newTheme, resultTheme);
-    }
-    return result;
   };
 
   handleClick = (e: Object, val: number, classNames: Array<string>, index: number) => {
@@ -658,7 +643,7 @@ class Rate extends React.Component<RateProps, any> {
         const {
           viewClass: amazedIconViewClass,
           theme: amazedIconTheme,
-        } = this.props.getPartOfThemeHocProps('amazedIcon');
+        } = this.props.getPartOfThemeHocProps('AmazedIcon');
         resultTheme = amazedIconTheme;
         resultViewClass = amazedIconViewClass;
         break;
@@ -666,7 +651,7 @@ class Rate extends React.Component<RateProps, any> {
         const {
           viewClass: dangerIconViewClass,
           theme: dangerIconTheme,
-        } = this.props.getPartOfThemeHocProps('dangerIcon');
+        } = this.props.getPartOfThemeHocProps('DangerIcon');
         resultTheme = deepMerge(
           { [dangerIconViewClass]: { normal: { color: dangerColor } } },
           dangerIconTheme
@@ -675,7 +660,7 @@ class Rate extends React.Component<RateProps, any> {
         break;
       case 'half':
       case 'primary':
-        const { viewClass, theme } = this.props.getPartOfThemeHocProps('activeIcon');
+        const { viewClass, theme } = this.props.getPartOfThemeHocProps('ActiveIcon');
 
         resultTheme = deepMerge({ [viewClass]: { normal: { color: warningColor } } }, theme);
         resultViewClass = viewClass;
@@ -685,7 +670,7 @@ class Rate extends React.Component<RateProps, any> {
         const {
           viewClass: RateIconBottomViewClass,
           theme: RateIconBottomTheme,
-        } = this.props.getPartOfThemeHocProps('defaultRateIcon');
+        } = this.props.getPartOfThemeHocProps('DefaultRateIcon');
         resultTheme = RateIconBottomTheme;
         resultViewClass = RateIconBottomViewClass;
         break;
@@ -693,7 +678,6 @@ class Rate extends React.Component<RateProps, any> {
     if (type === 'bottom') {
       return (
         <RateIconBottom
-          themeProps={resultTheme}
           theme={resultTheme}
           viewClass={resultViewClass}
           type={'default'}
@@ -705,7 +689,6 @@ class Rate extends React.Component<RateProps, any> {
 
     return (
       <RateIcon
-        themeProps={resultTheme}
         theme={resultTheme}
         viewClass={resultViewClass}
         type={type}

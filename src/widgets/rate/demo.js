@@ -156,7 +156,7 @@ class RateDemo extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Rate]: {
-        activeIcon: {
+        ActiveIcon: {
           normal: {
             color: `${warningColor}`,
             margin: {
@@ -167,7 +167,7 @@ class RateDemo extends React.Component<any, any> {
             color: '#ccc',
           },
         },
-        defaultRateIcon: {
+        DefaultRateIcon: {
           normal: {
             color: '#e8e8e8',
             margin: {
@@ -178,7 +178,7 @@ class RateDemo extends React.Component<any, any> {
             color: '#f2f2f2',
           },
         },
-        activeTextIcon: {
+        ActiveTextIcon: {
           normal: {
             color: `${warningColor}`,
             margin: {
@@ -189,7 +189,7 @@ class RateDemo extends React.Component<any, any> {
             color: '#ccc',
           },
         },
-        defaultTextIcon: {
+        DefaultTextIcon: {
           normal: {
             color: '#e8e8e8',
             margin: {
@@ -205,22 +205,22 @@ class RateDemo extends React.Component<any, any> {
 
     const configColorful = {
       [Widget.Rate]: {
-        activeIcon: {
+        ActiveIcon: {
           normal: {
             color: `${warningColor}`,
           },
         },
-        defaultRateIcon: {
+        DefaultRateIcon: {
           normal: {
             color: '#e8e8e8',
           },
         },
-        dangerIcon: {
+        DangerIcon: {
           normal: {
             color: `${dangerColor}`,
           },
         },
-        amazedIcon: {
+        AmazedIcon: {
           normal: {
             color: '#f88e30',
           },
@@ -230,12 +230,12 @@ class RateDemo extends React.Component<any, any> {
 
     const configGlobal = {
       [Widget.Rate]: {
-        activeIcon: {
+        ActiveIcon: {
           normal: {
             color: `${warningColor}`,
           },
         },
-        defaultRateIcon: {
+        DefaultRateIcon: {
           normal: {
             color: '#e8e8e8',
           },

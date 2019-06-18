@@ -7,8 +7,8 @@
 import '../common/shirm';
 import * as React from 'react';
 import Widget from '../consts/index';
-import type { AvatarSize, AvatarShape } from '../css/avatar';
-import { LargeHeight, SmallHeight, DefaultHeight } from '../css/avatar';
+import type { AvatarShape, AvatarSize } from '../css/avatar';
+import { DefaultHeight, LargeHeight, SmallHeight } from '../css/avatar';
 import Icon from '../icon';
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
@@ -16,6 +16,7 @@ import CSSComponent, { css } from '../theme/CSSProvider';
 import { ObjectUtils } from '@lugia/type-utils';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
+import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
 const { borderColor } = colorsFunc();
@@ -47,7 +48,6 @@ const BaseAvatar = CSSComponent({
     },
   },
   css: css`
-    font-variant: tabular-nums;
     color: rgba(0, 0, 0, 0.65);
     box-sizing: border-box;
     display: inline-block;
@@ -64,15 +64,8 @@ const AvatarIcon: Object = CSSComponent({
     selectNames: [['color'], ['fontSize']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { fontSize } = themeMeta;
       const { size } = propsConfig;
-      const theFontSize = fontSize
-        ? fontSize
-        : size === 'large'
-        ? '2.2em'
-        : size === 'small'
-        ? '1.2em'
-        : '1.8em';
+      const theFontSize = size === 'large' ? '2.2rem' : size === 'small' ? '1.2rem' : '1.8rem';
       return `font-size:${theFontSize};`;
     },
   },
@@ -90,7 +83,7 @@ const Name = CSSComponent({
   tag: 'span',
   className: 'avatarName',
   normal: {
-    selectNames: [['color'], ['width'], ['height']],
+    selectNames: [['color'], ['width'], ['height'], ['fontSize']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { width, height } = themeMeta;
@@ -136,8 +129,8 @@ type AvatarProps = {
   src?: string,
   icon?: string,
   name: string,
-  getTheme: Function,
   themeProps: Object,
+  getPartOfThemeProps: Function,
 };
 type AvatarState = {};
 
@@ -153,14 +146,27 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     const { src, icon, name, size, shape, themeProps } = this.props;
     themeProps.propsConfig = { size, shape, src, icon };
     if (src !== undefined && src !== null) {
-      return <Picture src={src} shape={shape} themeProps={themeProps} />;
+      return (
+        <Picture src={src} shape={shape} themeProps={this.props.getPartOfThemeProps('SrcAvatar')} />
+      );
     } else if (icon !== undefined && icon !== null) {
-      return <AvatarIcon size={size} iconClass={icon} shape={shape} themeProps={themeProps} />;
+      const iconPropsTheme = this.props.getPartOfThemeProps('IconAvatar');
+      themeProps.propsConfig = { size, shape, src, icon };
+      const newIconPropsTheme = deepMerge(iconPropsTheme, themeProps);
+      return (
+        <AvatarIcon
+          size={size}
+          iconClass={icon}
+          shape={shape}
+          themeProps={newIconPropsTheme}
+          viewClass={'IconAvatar'}
+        />
+      );
     }
     let finalName = name + '';
     finalName = finalName.length > 5 ? finalName.substr(0, 5) : finalName;
     return (
-      <Name size={size} themeProps={themeProps}>
+      <Name size={size} themeProps={this.props.getPartOfThemeProps('FontAvatar')}>
         {finalName}
       </Name>
     );
@@ -169,8 +175,9 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     const { props } = this;
     const { themeProps, size, shape, src, icon } = props;
     themeProps.propsConfig = { size, shape, src, icon };
+    const newPropsTheme = deepMerge(this.props.getPartOfThemeProps(Widget.Avatar), themeProps);
     return (
-      <BaseAvatar {...props} themeProps={themeProps}>
+      <BaseAvatar {...props} themeProps={newPropsTheme}>
         {this.getChildren()}
       </BaseAvatar>
     );

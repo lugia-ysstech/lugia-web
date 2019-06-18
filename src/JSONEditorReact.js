@@ -70,18 +70,16 @@ class JSONEditorReact extends Component {
 const schema = {};
 
 const json = {
-  Button: {
-    normal: {},
-    hover: {},
-    disabled: {},
-    clicked: {},
-    children: {},
-  },
+  normal: {},
+  hover: {},
+  disabled: {},
+  clicked: {},
+  children: {},
 };
 
 const modes = ['tree', 'code'];
 
-export default class extends Component {
+class App extends Component {
   state = {
     schema,
     text: JSON.stringify(json, null, 2),
@@ -98,7 +96,6 @@ export default class extends Component {
         indentation={4}
         onChangeText={this.onChangeText}
         onModeChange={this.onModeChange}
-        {...this.props}
       />
     );
   }
@@ -113,3 +110,5 @@ export default class extends Component {
     this.setState({ mode });
   };
 }
+
+export default App;

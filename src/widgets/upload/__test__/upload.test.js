@@ -12,6 +12,7 @@ import Upload, {
   isEmptyObject,
   isIdInArray,
 } from '../upload';
+
 import { getFormData, getRequestXHR, getQueryString } from '../request';
 import { getIconByType } from '../getelement';
 import { getListIconType } from '../../css/upload';
@@ -23,12 +24,11 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Upload Test', () => {
   const themeHocProps = () => true;
-  const mergePropsConfig = () => true;
   const themeProps = { themeConfig: {}, themeState: {} };
   const target = mount(
     <Upload
-      getChildThemeHocProps={themeHocProps}
-      mergeThemePropsAndPropsConfig={mergePropsConfig}
+      getPartOfThemeHocProps={themeHocProps}
+      getPartOfThemeProps={themeHocProps}
       themeProps={themeProps}
       url={'xxxx.test'}
     />
@@ -36,20 +36,20 @@ describe('Upload Test', () => {
   it('css', () => {
     const target = (
       <Upload
-        getChildThemeHocProps={themeHocProps}
-        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        getPartOfThemeHocProps={themeHocProps}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         url={'xxxx.test'}
       />
     );
-    expect(renderer.create(target)).toMatchSnapshot();
+    expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 
   it('props autoUpload true', () => {
     const target = mount(
       <Upload
-        getChildThemeHocProps={themeHocProps}
-        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        getPartOfThemeHocProps={themeHocProps}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         autoUpload={true}
         url={'xxxx.test'}
@@ -61,8 +61,8 @@ describe('Upload Test', () => {
   it('props autoUpload false', () => {
     const target = mount(
       <Upload
-        getChildThemeHocProps={themeHocProps}
-        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        getPartOfThemeHocProps={themeHocProps}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         autoUpload={false}
         url={'xxxx.test'}
@@ -74,8 +74,8 @@ describe('Upload Test', () => {
   it('props url', () => {
     const target = mount(
       <Upload
-        getChildThemeHocProps={themeHocProps}
-        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        getPartOfThemeHocProps={themeHocProps}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         url={'xxxx.test'}
       />
@@ -86,8 +86,8 @@ describe('Upload Test', () => {
   it('props fileList', () => {
     const target = mount(
       <Upload
-        getChildThemeHocProps={themeHocProps}
-        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        getPartOfThemeHocProps={themeHocProps}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         url={'xxxx.test'}
         fileList={[
@@ -105,8 +105,8 @@ describe('Upload Test', () => {
   it('props fileList null', () => {
     const target = mount(
       <Upload
-        getChildThemeHocProps={themeHocProps}
-        mergeThemePropsAndPropsConfig={mergePropsConfig}
+        getPartOfThemeHocProps={themeHocProps}
+        getPartOfThemeProps={themeHocProps}
         themeProps={themeProps}
         url={'xxxx.test'}
       />
@@ -204,7 +204,7 @@ describe('Upload Test', () => {
 
   function checkGetIconByType(status: ?string, expectation: ?string, props?: Object = {}) {
     it('Function GetIconByType ', () => {
-      const res = getIconByType({}, themeProps, status, props);
+      const res = getIconByType({}, status, props);
       const { type } = props;
       if (!status || !res) {
         expect(res).toBe(expectation);
@@ -219,7 +219,7 @@ describe('Upload Test', () => {
 
   checkGetIconByType('default', '上传', { type: 1 });
   checkGetIconByType('default', 'lugia-icon-financial_upload right');
-  checkGetIconByType('loading', 'lugia-icon-financial_loading_o loadIcon');
+  checkGetIconByType('loading', 'lugia-icon-financial_loading_o loading');
   checkGetIconByType(undefined, null);
   checkGetIconByType(undefined, null, { type: 1 });
 
@@ -398,8 +398,8 @@ describe('Upload Test', () => {
     it('Function setAutoUploadState ', () => {
       const target = mount(
         <Upload
-          getChildThemeHocProps={themeHocProps}
-          mergeThemePropsAndPropsConfig={mergePropsConfig}
+          getPartOfThemeHocProps={themeHocProps}
+          getPartOfThemeProps={themeHocProps}
           themeProps={themeProps}
           url={'xxxx.test'}
         />

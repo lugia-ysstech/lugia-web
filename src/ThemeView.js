@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import PropsEdit from './PropsEdit';
-import Tabs from './widgets/tabs';
+import Affix from './widgets/affix';
 
-import JSONEditorReact from './JSONEditorReact';
-
-const TabPane = Tabs.TabPane;
+import JSONEditorReact from './JSONEditorReact.js';
 
 const Title = styled.h3`
   margin-top: 20px;
@@ -37,34 +35,25 @@ export default class extends Component<any, any> {
       [viewClass]: this.state.themeState[modulePath],
     };
     const propsData = this.state.props[modulePath] || {};
-    const tabData = [
-      {
-        title: '属性测试',
-        content: (
-          <Block>
-            <PropsEdit info={Info} onChange={this.onChangeProps} propsData={propsData} />
-          </Block>
-        ),
-      },
-      {
-        title: '主题测试',
-        content: (
-          <Block>
-            <JSONEditorReact onChange={this.onThemeChange} height={500} />
-          </Block>
-        ),
-      },
-    ];
     return [
-      <Result
-        viewClass={viewClass}
-        theme={theme}
-        {...propsData}
-        ref={cmp => {
-          this.target = cmp;
-        }}
-      />,
-      <Tabs data={tabData} />,
+      <Affix offsetTop={20}>
+        <Result
+          viewClass={viewClass}
+          theme={theme}
+          {...propsData}
+          ref={cmp => {
+            this.target = cmp;
+          }}
+        />
+      </Affix>,
+      <Title>属性测试</Title>,
+      <Block>
+        <PropsEdit info={Info} onChange={this.onChangeProps} propsData={propsData} />
+      </Block>,
+      <Title>主题测试</Title>,
+      <Block>
+        <JSONEditorReact onChange={this.onThemeChange} height={500} />
+      </Block>,
     ];
   }
 

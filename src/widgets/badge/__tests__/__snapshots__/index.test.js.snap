@@ -82,15 +82,15 @@ exports[` Badge css 1`] = `
   -ms-transform-origin: 100%;
   transform-origin: 100%;
   z-index: 10;
-  background: #f22735;
+  background-color: #f22735;
   color: #ffffff;
 }
 
 .c10 {
-  height: 1rem;
-  width: 1rem;
   border-radius: 100%;
   z-index: 10;
+  width: 1rem;
+  height: 1rem;
   box-shadow: 0 0 0 0.1rem #fff;
 }
 
@@ -187,7 +187,13 @@ exports[` Badge css 1`] = `
                 <span>
                   <div
                     className=""
-                    style={Object {}}
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "right": "-0.5rem",
+                        "top": "-0.5rem",
+                      }
+                    }
                   >
                     <span
                       className="c5"
@@ -287,7 +293,13 @@ exports[` Badge css 1`] = `
                 <span>
                   <div
                     className=""
-                    style={Object {}}
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "right": "-0.5rem",
+                        "top": "-0.5rem",
+                      }
+                    }
                   >
                     <span
                       className="c5"
@@ -491,13 +503,7 @@ exports[` Badge css 1`] = `
             <span>
               <span
                 className="c3"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "0rem",
-                    "top": "-0.5rem",
-                  }
-                }
+                style={Object {}}
               >
                 <div
                   className="c4"
@@ -518,13 +524,7 @@ exports[` Badge css 1`] = `
             <span>
               <span
                 className="c3"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "0rem",
-                    "top": "-0.5rem",
-                  }
-                }
+                style={Object {}}
               >
                 <div
                   className="c4"
@@ -532,7 +532,13 @@ exports[` Badge css 1`] = `
                 <span>
                   <div
                     className=""
-                    style={Object {}}
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "right": "-0.5rem",
+                        "top": "-0.5rem",
+                      }
+                    }
                   >
                     <span
                       className="c5"
@@ -624,13 +630,7 @@ exports[` Badge css 1`] = `
             <span>
               <span
                 className="c3"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "0rem",
-                    "top": "-0.5rem",
-                  }
-                }
+                style={Object {}}
               >
                 <div
                   className="c4"
@@ -638,7 +638,13 @@ exports[` Badge css 1`] = `
                 <span>
                   <div
                     className=""
-                    style={Object {}}
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "right": "-0.5rem",
+                        "top": "-0.5rem",
+                      }
+                    }
                   >
                     <span
                       className="c5"
@@ -733,13 +739,7 @@ exports[` Badge css 1`] = `
               <span>
                 <span
                   className="c3"
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": "0rem",
-                      "top": "-0.5rem",
-                    }
-                  }
+                  style={Object {}}
                 >
                   <div
                     className="c4"
@@ -748,9 +748,12 @@ exports[` Badge css 1`] = `
                     className="c10  c11"
                     style={
                       Object {
+                        "backgroundColor": "orange",
+                        "height": "2rem",
                         "position": "absolute",
-                        "right": "0rem",
+                        "right": "0.6rem",
                         "top": "-0.5rem",
+                        "width": "2rem",
                       }
                     }
                   />
@@ -785,13 +788,7 @@ exports[` Badge css 1`] = `
             <span>
               <span
                 className="c3"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "0.2rem",
-                    "top": "-0.5rem",
-                  }
-                }
+                style={Object {}}
               >
                 <div
                   className="c4"
@@ -800,6 +797,7 @@ exports[` Badge css 1`] = `
                   className="c10  c11"
                   style={
                     Object {
+                      "backgroundColor": "green",
                       "position": "absolute",
                       "right": "0.2rem",
                       "top": "-0.5rem",
@@ -822,13 +820,7 @@ exports[` Badge css 1`] = `
             <span>
               <span
                 className="c3"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "0.2rem",
-                    "top": "-0.5rem",
-                  }
-                }
+                style={Object {}}
               >
                 <div
                   className="c4"
@@ -837,6 +829,7 @@ exports[` Badge css 1`] = `
                   className="c10  c11"
                   style={
                     Object {
+                      "backgroundColor": "purple",
                       "position": "absolute",
                       "right": "0.2rem",
                       "top": "-0.5rem",
@@ -859,13 +852,7 @@ exports[` Badge css 1`] = `
             <span>
               <span
                 className="c3"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "0.2rem",
-                    "top": "-0.5rem",
-                  }
-                }
+                style={Object {}}
               >
                 <div
                   className="c4"
@@ -874,6 +861,7 @@ exports[` Badge css 1`] = `
                   className="c10  c11"
                   style={
                     Object {
+                      "backgroundColor": "yellow",
                       "position": "absolute",
                       "right": "0.2rem",
                       "top": "-0.5rem",
@@ -896,13 +884,7 @@ exports[` Badge css 1`] = `
             <span>
               <span
                 className="c3"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "0.2rem",
-                    "top": "-0.5rem",
-                  }
-                }
+                style={Object {}}
               >
                 <div
                   className="c4"
@@ -911,6 +893,7 @@ exports[` Badge css 1`] = `
                   className="c10  c11"
                   style={
                     Object {
+                      "backgroundColor": "blue",
                       "position": "absolute",
                       "right": "0.2rem",
                       "top": "-0.5rem",
