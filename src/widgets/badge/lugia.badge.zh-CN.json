@@ -29,5 +29,108 @@
       "defaultValue": "undefined"
     }
   },
-  "category": ["数据展示"]
+  "category": ["数据展示"],
+  "designInfo": {
+    "BadgeDotConfig": {
+      "sequence": 1,
+      "title": "徽标数",
+      "desc": "徽标数为0时,设置不显示数字时,显示的小点",
+      "props": {
+        "showZero": "false"
+      },
+      "theme": {
+        "BadgeDot": {
+          "name": "徽标数",
+          "desc": "徽标数不显示数字时的样式展示",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["position"],
+            ["opacity"],
+            ["margin"],
+            ["padding"],
+            ["boxShadow"]
+          ],
+          "hover": [["width"], ["height"], ["background"], ["opacity"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+    "BadgeNumberConfig": {
+      "sequence": 2,
+      "title": "徽标数",
+      "desc": "徽标数大于0时,显示的数字",
+      "props": {
+        "showZero": true,
+        "count": 1
+      },
+      "theme": {
+        "BadgeNumber": {
+          "name": "徽标数",
+          "desc": "徽标数 显示数字时的样式展示",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["position"],
+            ["opacity"],
+            ["color"],
+            ["margin"],
+            ["padding"],
+            ["boxShadow"]
+          ],
+          "hover": [["width"], ["height"], ["background"], ["opacity"], ["color"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "Badge": {
+    "name": "徽标数",
+    "desc": "对徽标数配置样式",
+    "normal": [["width"], ["height"], ["margin"], ["padding"]],
+    "hover": [["width"], ["height"]],
+    "clicked": [],
+    "disabled": []
+  },
+    "BadgeNumber": {
+      "name": "徽标数",
+      "desc": "徽标数 显示数字时的样式展示",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["position"],
+        ["opacity"],
+        ["color"],
+        ["margin"],
+        ["padding"],
+        ["boxShadow"]
+      ],
+      "hover": [["width"], ["height"], ["background"], ["opacity"], ["color"]],
+      "clicked": [],
+      "disabled": []
+    }, "BadgeDot": {
+      "name": "徽标数",
+      "desc": "徽标数不显示数字时的样式展示",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["position"],
+        ["opacity"],
+        ["margin"],
+        ["padding"],
+        ["boxShadow"]
+      ],
+      "hover": [["width"], ["height"], ["background"], ["opacity"]],
+      "clicked": [],
+      "disabled": []
+    }
 }
+}
+

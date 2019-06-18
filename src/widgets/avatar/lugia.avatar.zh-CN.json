@@ -38,5 +38,112 @@
     "AvatarSize": ["small", "default", "large"],
     "AvatarShape": ["circle", "square"]
   },
-  "category": ["数据展示"]
+  "category": ["数据展示"],
+  "designInfo": {
+    "AvatarIconConfig": {
+      "sequence": 1,
+      "title": "头像样式类型",
+      "desc": "按头像样式类型不同选择显示不同头像",
+      "props": {
+        "icon": "iconClass"
+      },
+      "theme": {
+        "IconAvatar": {
+          "name": "图标样式头像",
+          "desc": "使用图标样式展示头像",
+          "normal": [["color"], ["margin"], ["font"], ["background"], ["padding"]],
+          "hover": [["color"], ["background"], ["font"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+    "AvatarSrcConfig": {
+      "sequence": 2,
+      "title": "头像样式类型",
+      "desc": "按头像样式类型不同选择显示不同头像",
+
+      "props": {
+        "src": ""
+      },
+      "theme": {
+        "SrcAvatar": {
+          "name": "图片资源头像",
+          "desc": "使用图片资源展示头像",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["font"], ["background"]],
+          "hover": [["width"], ["height"], ["font"], ["background"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+    "AvatarFontConfig": {
+      "sequence": 3,
+      "title": "头像样式类型",
+      "desc": "按头像样式类型不同选择显示不同头像",
+      "props": {
+        "name": ""
+      },
+      "theme": {
+        "AvatarSrc": {
+          "name": "文字头像",
+          "desc": "使用文字展示头像",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["font"],
+            ["color"],
+            ["background"]
+          ],
+          "hover": [["width"], ["height"], ["font"], ["color"], ["background"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "Avatar": {
+      "name": "头像",
+      "desc": "对头像配置样式",
+      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
+      "hover": [["width"], ["height"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "IconAvatar": {
+      "name": "头像图标",
+      "desc": "对头像图标配置样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["background"], ["padding"]],
+      "hover": [["color"], ["background"], ["fontSize"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "SrcAvatar": {
+      "name": "头像图片",
+      "desc": "对头像图片配置样式",
+      "normal": [["width"], ["height"], ["margin"], ["padding"], ["fontSize"], ["background"]],
+      "hover": [["width"], ["height"], ["fontSize"], ["background"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "FontAvatar": {
+      "name": "头像文字",
+      "desc": "对头像文字配置样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["fontSize"],
+        ["color"],
+        ["background"]
+      ],
+      "hover": [["width"], ["height"], ["fontSize"], ["color"], ["background"]],
+      "clicked": [],
+      "disabled": []
+    }
+  }
 }
