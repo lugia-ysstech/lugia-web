@@ -38,12 +38,8 @@ class Turn extends React.Component<any, any> {
 
   render() {
     const config = {
-      [Widget.Badge]: {
-        children: {
-          [Widget.NumberTurn]: {
-            normal: { position: { top: -5, right: -5 } },
-          },
-        },
+      [Widget.NumberTurn]: {
+        normal: { position: { top: -5, right: -5 } },
       },
     };
     return (
