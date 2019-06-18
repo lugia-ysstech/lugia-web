@@ -46,21 +46,21 @@ export default ThemeProvider(
       };
       const wrapTheme = getPartOfThemeProps('CheckButtonWrap');
       const textTheme = getPartOfThemeProps('CheckButtonText');
-      const checkDisabled = getPartOfThemeProps('RadioChecked');
-      const unCheckDisabled = getPartOfThemeProps('RadioUnChecked');
+      const checkTheme = getPartOfThemeProps('Checked');
+      const unCheckTheme = getPartOfThemeProps('UnChecked');
       wrapTheme.themeConfig = deepMerge(wrapTheme.themeConfig, defaultProps);
       wrapTheme.themeConfig.normal.props = { checked, disabled, cancel, hasChecked, type };
       textTheme.themeConfig = deepMerge(wrapTheme.themeConfig, textTheme.themeConfig);
       if (checked) {
         textTheme.themeConfig.normal = deepMerge(
           textTheme.themeConfig.normal,
-          textTheme.themeConfig.active
+          checkTheme.themeConfig.active
         );
       }
       if (disabled) {
         const targetObj = checked
-          ? checkDisabled.themeConfig.disabled
-          : unCheckDisabled.themeConfig.disabled;
+          ? checkTheme.themeConfig.disabled
+          : unCheckTheme.themeConfig.disabled;
         wrapTheme.themeConfig.disabled = deepMerge(wrapTheme.themeConfig.disabled, targetObj);
         textTheme.themeConfig.disabled = deepMerge(textTheme.themeConfig.disabled, targetObj);
         textTheme.themeConfig.disabled.bgColor = wrapTheme.themeConfig.normal.background;
