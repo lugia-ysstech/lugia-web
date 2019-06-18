@@ -243,7 +243,7 @@ export const RadioCircleSpan = CSSComponent({
             border-left: 0;
             content: ' ';
             background-color: ${background
-              ? background.backgroundColor
+              ? background.color
               : isCancel
               ? colorsFunc(themeColor).disabledColor
               : isDisabled
@@ -260,7 +260,7 @@ export const RadioCircleSpan = CSSComponent({
   disabled: {
     selectNames: [['background'], ['border']],
     defaultTheme: {
-      background: { backgroundColor: disableColor },
+      background: { color: disableColor },
       border: getBorder(
         { color: borderDisableColor, width: 1, style: 'solid' },
         { radius: '100%' }

@@ -73,17 +73,17 @@ export class RadioDemo extends React.Component<any, any> {
         },
         RadioEdge: {
           normal: {
-            background: { backgroundColor: 'orange' },
+            background: { color: 'orange' },
             border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
             width: 20,
             height: 20,
           },
           hover: {
-            background: { backgroundColor: 'green' },
+            background: { color: 'green' },
             border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
           },
           active: {
-            background: { backgroundColor: 'yellow' },
+            background: { color: 'yellow' },
             border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
             width: 26,
             height: 26,
@@ -91,17 +91,17 @@ export class RadioDemo extends React.Component<any, any> {
         },
         RadioChecked: {
           active: {
-            background: { backgroundColor: 'red' },
+            background: { color: 'red' },
             width: 18,
             height: 18,
           },
           disabled: {
-            background: { backgroundColor: 'red' },
+            background: { color: 'red' },
             width: 15,
             height: 15,
           },
           cancel: {
-            background: { backgroundColor: 'green' },
+            background: { color: 'green' },
             width: 12,
             height: 12,
           },
@@ -117,18 +117,18 @@ export class RadioDemo extends React.Component<any, any> {
         },
         RadioEdge: {
           disabled: {
-            background: { backgroundColor: 'orange' },
+            background: { color: 'orange' },
             border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
           },
         },
         RadioChecked: {
           disabled: {
-            background: { backgroundColor: 'red' },
+            background: { color: 'red' },
             width: 8,
             height: 8,
           },
           cancel: {
-            background: { backgroundColor: 'green' },
+            background: { color: 'green' },
             width: 12,
             height: 12,
           },
@@ -263,22 +263,22 @@ export class RadioGroupDemo extends React.Component<any, any> {
           },
           RadioEdge: {
             normal: {
-              background: { backgroundColor: 'orange' },
+              background: { color: 'orange' },
               border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
               width: 20,
               height: 20,
             },
             hover: {
-              background: { backgroundColor: 'green' },
+              background: { color: 'green' },
               border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
             },
             disabled: {
-              background: { backgroundColor: 'red' },
+              background: { color: 'red' },
               width: 15,
               height: 15,
             },
             active: {
-              background: { backgroundColor: 'yellow' },
+              background: { color: 'yellow' },
               border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
               width: 26,
               height: 26,
@@ -286,12 +286,12 @@ export class RadioGroupDemo extends React.Component<any, any> {
           },
           RadioChecked: {
             active: {
-              background: { backgroundColor: 'red' },
+              background: { color: 'red' },
               width: 18,
               height: 18,
             },
             cancel: {
-              background: { backgroundColor: 'green' },
+              background: { color: 'green' },
               width: 12,
               height: 12,
             },
@@ -307,7 +307,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
             height: 100,
             opacity: 1,
             border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 4 }),
-            background: { backgroundColor: 'red' },
+            background: { color: 'red' },
             padding: {
               top: 10,
               bottom: 10,
@@ -353,22 +353,22 @@ export class RadioGroupDemo extends React.Component<any, any> {
           },
           RadioEdge: {
             normal: {
-              background: { backgroundColor: 'orange' },
+              background: { color: 'orange' },
               border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
               width: 20,
               height: 20,
             },
             hover: {
-              background: { backgroundColor: 'green' },
+              background: { color: 'green' },
               border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
             },
             disabled: {
-              background: { backgroundColor: 'red' },
+              background: { color: 'red' },
               width: 15,
               height: 15,
             },
             active: {
-              background: { backgroundColor: 'yellow' },
+              background: { color: 'yellow' },
               border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
               width: 26,
               height: 26,
@@ -376,12 +376,12 @@ export class RadioGroupDemo extends React.Component<any, any> {
           },
           RadioChecked: {
             active: {
-              background: { backgroundColor: 'red' },
+              background: { color: 'red' },
               width: 18,
               height: 18,
             },
             cancel: {
-              background: { backgroundColor: 'green' },
+              background: { color: 'green' },
               width: 12,
               height: 12,
             },
@@ -394,20 +394,20 @@ export class RadioGroupDemo extends React.Component<any, any> {
               height: 50,
               opacity: 1,
               border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
-              background: { backgroundColor: '#33f340' },
+              background: { color: '#33f340' },
             },
             hover: {
-              background: { backgroundColor: 'green' },
+              background: { color: 'green' },
               opacity: 0.6,
               border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
             },
             active: {
               opacity: 0.7,
-              background: { backgroundColor: 'yellow' },
+              background: { color: 'yellow' },
             },
             cancel: {
               border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
-              background: { backgroundColor: '#8D13DE' },
+              background: { color: '#8D13DE' },
             },
           },
           CheckButtonText: {
@@ -435,7 +435,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
           RadioChecked: {
             disabled: {
               opacity: 0.8,
-              background: { backgroundColor: '#b2a8ef' },
+              background: { color: '#b2a8ef' },
               border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 4 }),
               color: 'red',
             },
@@ -443,7 +443,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
           RadioUnChecked: {
             disabled: {
               opacity: 0.4,
-              background: { backgroundColor: '#ccc' },
+              background: { color: '#ccc' },
               border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
               color: 'green',
             },
@@ -457,7 +457,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
           CheckButtonWrap: {
             cancel: {
               border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
-              background: { backgroundColor: '#8D13DE' },
+              background: { color: '#8D13DE' },
             },
           },
           CheckButtonText: {
