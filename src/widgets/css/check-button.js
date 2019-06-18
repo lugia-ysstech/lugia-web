@@ -244,7 +244,7 @@ export const CheckSpan = CSSComponent({
         const { background: nromalBgColor } = bgColor;
         const defultDisabledColor = isChecked ? spiritColor : '#fff';
         const normalColor = nromalBgColor
-          ? changeColor(nromalBgColor.backgroundColor, 45).color
+          ? changeColor(nromalBgColor.color, 45).color
           : defultDisabledColor;
         return `background: ${normalColor};`;
       }
