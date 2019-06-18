@@ -401,10 +401,6 @@ export class RadioGroupDemo extends React.Component<any, any> {
               opacity: 0.6,
               border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
             },
-            active: {
-              opacity: 0.7,
-              background: { color: 'yellow' },
-            },
             cancel: {
               border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
               background: { color: '#8D13DE' },
@@ -432,7 +428,11 @@ export class RadioGroupDemo extends React.Component<any, any> {
               fontSize: 18,
             },
           },
-          RadioChecked: {
+          Checked: {
+            active: {
+              opacity: 0.7,
+              background: { color: 'yellow' },
+            },
             disabled: {
               opacity: 0.8,
               background: { color: '#b2a8ef' },
@@ -440,7 +440,11 @@ export class RadioGroupDemo extends React.Component<any, any> {
               color: 'red',
             },
           },
-          RadioUnChecked: {
+          UnChecked: {
+            active: {
+              opacity: 0.4,
+              background: { color: '#ccc' },
+            },
             disabled: {
               opacity: 0.4,
               background: { color: '#ccc' },
@@ -567,6 +571,17 @@ export class RadioGroupDemo extends React.Component<any, any> {
           />
         </Wrapper>
 
+        <Wrapper>
+          <Theme config={view}>
+            <RadioGroup childType="button" onChange={onChange} defaultValue="1">
+              <RadioButton value="1">CheckBox1</RadioButton>
+              <RadioButton value="2" disabled>
+                CheckBox2
+              </RadioButton>
+              <RadioButton value="3">CheckBox3</RadioButton>
+            </RadioGroup>
+          </Theme>
+        </Wrapper>
         <Wrapper>
           <Theme config={view}>
             <RadioGroup childType="button" onChange={onChange} defaultValue="1">

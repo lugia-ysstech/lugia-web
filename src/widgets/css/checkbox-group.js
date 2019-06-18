@@ -76,7 +76,7 @@ const getFirstChildBorder = (props: GroupCSSProps) => {
           }
         `;
       }
-      console.log('colors borderColor', colors, borderColor);
+
       return `
         border-left: 1px solid ${checked ? colors : borderColor};
       `;
@@ -99,11 +99,11 @@ const getLastChildBorder = (props: GroupCSSProps) => {
 const getButtonCSS = (props: GroupCSSProps) => {
   const { childType = 'default' } = props;
   if (childType === 'button') {
-    return `& > span:first-child  > label > span {
+    return `& > label:first-child > span {
       ${getFirstChildBorder(props)}; 
       border-radius: 4px 0 0 4px;
     }
-    & > span:last-child > label > span {
+    & > label:last-child > span {
       border-radius: 0 4px 4px 0;
       ${getLastChildBorder(props)};
     }`;
