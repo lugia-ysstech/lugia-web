@@ -99,11 +99,11 @@ const getLastChildBorder = (props: GroupCSSProps) => {
 const getButtonCSS = (props: GroupCSSProps) => {
   const { childType = 'default' } = props;
   if (childType === 'button') {
-    return `& > label:first-child > span {
+    return `& > span:first-child  > label > span {
       ${getFirstChildBorder(props)}; 
       border-radius: 4px 0 0 4px;
     }
-    & > label:last-child > span {
+    & > span:last-child > label > span {
       border-radius: 0 4px 4px 0;
       ${getLastChildBorder(props)};
     }`;
