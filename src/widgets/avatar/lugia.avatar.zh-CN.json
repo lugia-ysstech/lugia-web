@@ -70,8 +70,8 @@
         "SrcAvatar": {
           "name": "图片资源头像",
           "desc": "使用图片资源展示头像",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["font"], ["background"]],
-          "hover": [["width"], ["height"], ["font"], ["background"]],
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
+          "hover": [["width"], ["height"], ["background"]],
           "clicked": [],
           "disabled": []
         }
@@ -105,7 +105,7 @@
     }
   },
   "theme": {
-    "Avatar": {
+    "AvatarContainer": {
       "name": "头像",
       "desc": "对头像配置样式",
       "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],

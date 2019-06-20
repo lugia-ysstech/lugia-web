@@ -938,7 +938,13 @@ exports[` Badge css 1`] = `
                 <span>
                   <div
                     className=""
-                    style={Object {}}
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "right": "-0.5rem",
+                        "top": "-0.5rem",
+                      }
+                    }
                   >
                     <span
                       className="c5"

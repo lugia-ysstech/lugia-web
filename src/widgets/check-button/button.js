@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { deepMerge } from '@lugia/object-utils';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts';
 import { LabelWrapper, CheckInput, CheckSpan, CancelSpan, IconWrap } from '../css/check-button';
@@ -27,36 +29,83 @@ export default ThemeProvider(
         children,
         cancel = false,
         type = 'checkbox',
+        getPartOfThemeProps,
+        themeProps,
       } = this.props;
       const { hasChecked, hover, hasCancel } = this.state;
       const config = {};
       if (cancel) {
-        config.onMouseEnter = this.handleMouseEnter;
-        config.onMouseLeave = this.handleMouseLeave;
+        config.enter = this.handleMouseEnter;
+        config.leave = this.handleMouseLeave;
       }
+      const defaultProps = {
+        normal: {},
+        active: {},
+        hover: {},
+        disabled: {},
+      };
+      const wrapTheme = getPartOfThemeProps('CheckButtonWrap');
+      const textTheme = getPartOfThemeProps('CheckButtonText');
+      const checkTheme = getPartOfThemeProps('Checked');
+      const unCheckTheme = getPartOfThemeProps('UnChecked');
+      wrapTheme.themeConfig = deepMerge(wrapTheme.themeConfig, defaultProps);
+      wrapTheme.themeConfig.normal.props = { checked, disabled, cancel, hasChecked, type };
+      textTheme.themeConfig = deepMerge(wrapTheme.themeConfig, textTheme.themeConfig);
+      if (checked) {
+        textTheme.themeConfig.normal = deepMerge(
+          textTheme.themeConfig.normal,
+          textTheme.themeConfig.active
+        );
+        textTheme.themeConfig.normal = deepMerge(
+          textTheme.themeConfig.normal,
+          wrapTheme.themeConfig.active
+        );
+      }
+      if (disabled) {
+        const targetObj = checked
+          ? checkTheme.themeConfig.disabled
+          : unCheckTheme.themeConfig.disabled;
+        wrapTheme.themeConfig.disabled = deepMerge(wrapTheme.themeConfig.disabled, targetObj);
+        textTheme.themeConfig.disabled = deepMerge(textTheme.themeConfig.disabled, targetObj);
+        textTheme.themeConfig.disabled.bgColor = wrapTheme.themeConfig.normal.background;
+        textTheme.themeConfig.disabled.isChecked = checked;
+      }
+      if (cancel) {
+        textTheme.themeConfig.normal = deepMerge(
+          textTheme.themeConfig.normal,
+          wrapTheme.themeConfig.cancel
+        );
+        // textTheme.themeConfig.normal.props = { checked, disabled, cancel, hasChecked, type };
+      }
+      if (checked || disabled || cancel) {
+        wrapTheme.themeState.hover = false;
+        textTheme.themeState.hover = false;
+      }
+
       return (
         <LabelWrapper
           size={size}
           checked={checked}
           disabled={disabled}
           hasCancel={hasCancel}
-          themes={getTheme()}
+          themeProps={wrapTheme}
+          {...config}
+          {...addMouseEvent(this, config)}
         >
-          <CheckInput type="radio" onBlur={this.handleBlur} />
+          <CheckInput themeProps={themeProps} type="radio" onBlur={this.handleBlur} />
           <CheckSpan
-            {...config}
             onClick={this.handleClick}
             size={size}
             checked={checked}
             disabled={disabled}
-            themes={getTheme()}
             hasChecked={hasChecked}
             cancel={cancel}
             type={type}
+            themeProps={textTheme}
           >
             {children}
             {cancel && type === 'checkbox' ? (
-              <CancelSpan onClick={this.handleCancel} hover={hover}>
+              <CancelSpan onClick={this.handleCancel} themeProps={wrapTheme} hover={hover}>
                 <IconWrap size={size} iconClass="lugia-icon-reminder_close" />
               </CancelSpan>
             ) : null}
@@ -105,5 +154,6 @@ export default ThemeProvider(
       handleCancelItemClick(value);
     };
   },
-  Widget.CheckButton
+  Widget.CheckButton,
+  { hover: true, active: true }
 );

@@ -5,21 +5,19 @@
  */
 
 import colorsFunc from '../css/stateColor';
-import styled from 'styled-components';
-import { px2emcss } from '../css/units';
+import styled, { css } from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
+import { getBorder } from '@lugia/theme-css-hoc/lib/index';
 
 const FontSize = 1.4;
 const defaultColor = '#fff';
-const em = px2emcss(FontSize);
+const em = px2remcss;
 const {
   themeColor,
   mediumGreyColor,
-  borderColor,
-  borderDisableColor,
-  disableColor,
-  disabledColor,
   marginToDifferentElement,
   marginToPeerElementForY,
   blackColor,
@@ -46,81 +44,28 @@ export type CheckBoxProps = {
   children?: any,
   styles?: 'default' | 'vertical',
   handleCancelItemClick: Function,
+  getPartOfThemeProps: Function,
+  themeProps: Object,
 } & ForGroupType;
 type CheckBoxType = CheckBoxProps & CSStype;
 
-const getColors = (props: CheckBoxType): string => {
-  const {
-    checked = false,
-    hasChecked = false,
-    themes,
-    disabled,
-    indeterminate,
-    cancel = false,
-  } = props;
-  const ComThemeColor = themes.color || themeColor;
-  if (disabled) {
-    return `
-        background-color: ${disableColor};
-        border: 1px solid ${borderDisableColor};
-      `;
-  }
-  if (cancel) {
-    return `
-        background-color: ${disabledColor};
-        border: 1px solid ${disabledColor};
-    `;
-  }
-  if (checked || indeterminate) {
-    return `
-    background-color: ${ComThemeColor};
-    border: 1px solid ${ComThemeColor};
-    `;
-  }
-  return `
-  background-color: ${defaultColor};
-  border: 1px solid ${hasChecked ? ComThemeColor : borderColor};
-  `;
-};
-const hoverStyle = (props: CheckBoxType): string => {
-  const { disabled, themes, cancel } = props;
-  const ComThemeColor = themes.color || themeColor;
-  if (cancel) {
-    return '';
-  }
-  return `
-    border: 1px solid ${disabled ? borderDisableColor : ComThemeColor};
-  `;
-};
-const getAfterTransform = (props: CheckBoxType): string => {
+const getAfterTransform = (props: { checked: boolean, indeterminate: boolean }): string => {
   const { checked, indeterminate } = props;
   if (checked) {
     return `
-      left: ${em(5)};
-      top: ${em(2)};
-      width: ${em(6)};
-      height: ${em(10)};
-      transform: rotate(45deg) scale(1);
+      transform: translate(-50%, -50%) rotate(45deg) scale(1);
       transition: all .2s cubic-bezier(.71,-.46,.88,.6);
   `;
   }
   if (indeterminate) {
     return `
-      left: ${em(3)};
-      top: ${em(7)};
-      width: ${em(10)};
-      height: ${em(1)};
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
       transition: all .2s cubic-bezier(.03,.86,.56,.87);
     `;
   }
   return `
-    left: ${em(5)};
-    top: ${em(2)};
-    width: ${em(6)};
-    height: ${em(10)};
-    transform: rotate(45deg) scale(0);
-    transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transition: all .2s cubic-bezier(.71,-.46,.88,.6);
   `;
 };
 const getStyleCSS = (props: CheckBoxType): string => {
@@ -141,46 +86,62 @@ const getStyleCSS = (props: CheckBoxType): string => {
     margin-right: ${em(marginToDifferentElement)};
   `;
 };
-const getThemeMargin = (props: CheckBoxType): string => {
-  const { margin } = props.themes;
-  if (margin) {
-    if (typeof margin === 'number') {
-      return `margin: ${em(margin)};`;
-    }
-    if (typeof margin === 'object') {
-      const { top, right, bottom, left } = margin;
-      if (top && right && bottom && left) {
-        return `margin: ${em(top)} ${em(right)} ${em(bottom)} ${em(left)};`;
-      }
-    }
-  }
-  return '';
-};
 
-export const CheckBoxWrap = styled.label`
-  font-size: ${FontSize}rem;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  color: ${props => (props.disabled ? lightGreyColor : blackColor)};
-  width: ${props => (props.themes.width ? em(props.themes.width) : 'none')};
-  box-sizing: border-box;
-  padding: 0;
-  list-style: none;
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
-  ${getStyleCSS} ${getThemeMargin};
+export const CheckBoxWrap = CSSComponent({
+  tag: 'label',
+  className: 'checkbox-wrap',
+  css: css`
+    font-size: ${FontSize}rem;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+    box-sizing: border-box;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    ${getStyleCSS};
+  `,
+  normal: {
+    defaultTheme: {
+      color: blackColor,
+    },
+    selectNames: [['color'], ['font'], ['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+  },
+  hover: {
+    defaultTheme: {
+      color: blackColor,
+    },
+    selectNames: [['opacity'], ['color']],
+  },
+  disabled: {
+    defaultTheme: {
+      color: lightGreyColor,
+    },
+    selectNames: [['opacity'], ['color']],
+  },
+  active: {
+    defaultTheme: {
+      color: blackColor,
+    },
+    selectNames: [['opacity'], ['color']],
+  },
+});
 
-  &:hover > span span {
-    ${hoverStyle};
-  }
-`;
-export const CheckBoxContent = styled.span`
-  margin: 0;
-  outline: none;
-  line-height: 1;
-  vertical-align: text-bottom;
-  display: inline-block;
-`;
+export const CheckBoxContent = CSSComponent({
+  tag: 'span',
+  className: 'checkbox-content',
+  css: css`
+    margin: 0;
+    outline: none;
+    line-height: 1;
+    vertical-align: text-bottom;
+    display: inline-block;
+  `,
+  normal: { selectNames: [] },
+  hover: { selectNames: [] },
+  disabled: { selectNames: [] },
+  active: { selectNames: [] },
+});
 export const CheckBoxLabelSpan = styled.span`
   padding-left: ${em(10)};
 `;
@@ -196,30 +157,61 @@ export const CheckBoxInput = styled.input`
   width: 100%;
   height: 100%;
 `;
-export const CheckBoxInnerSpan = styled.span`
-  position: relative;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  display: block;
-  width: ${em(18)};
-  height: ${em(18)};
-  border-radius: ${em(2)};
-  ${getColors} transition: all 0.3s;
 
-  &:hover {
-    ${hoverStyle};
-  }
-  &::after {
-    position: absolute;
+export const CheckBoxInnerSpan = CSSComponent({
+  tag: 'span',
+  className: 'checkbox-inner-span',
+  css: css`
+    position: relative;
     box-sizing: border-box;
-    ${getAfterTransform} display: table;
-    border: ${em(2)} solid ${props => (props.disabled ? lightGreyColor : defaultColor)};
-    border-top: 0;
-    border-left: 0;
-    content: ' ';
-  }
-`;
+    top: 0;
+    left: 0;
+    display: block;
+    width: ${em(18)};
+    height: ${em(18)};
+    transition: all 0.3s;
+  `,
+  normal: {
+    selectNames: [['background'], ['border']],
+    getCSS(themeMeta: Object): string {
+      const { checked, isDisabled, isIndeterminate, isChecked } = themeMeta;
+      if (checked) {
+        const defaultWidth = isChecked ? 6 : isIndeterminate ? 10 : 6;
+        const defaultHeight = isChecked ? 10 : isIndeterminate ? 1 : 10;
+        const { background } = checked;
+        const colors = background ? background.color : isDisabled ? lightGreyColor : defaultColor;
+
+        return css`
+          &::after {
+            position: absolute;
+            box-sizing: border-box;
+            ${getAfterTransform({ indeterminate: isIndeterminate, checked: isChecked })};
+            left: 50%;
+            top: 50%;
+            width: ${em(defaultWidth)};
+            height: ${em(defaultHeight)};
+            display: table;
+            border: ${em(2)} solid ${colors};
+            border-top: 0;
+            border-left: 0;
+            content: ' ';
+          }
+        `;
+      }
+
+      return '';
+    },
+  },
+  hover: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+    },
+  },
+  disabled: { selectNames: [['background'], ['border']] },
+  active: { selectNames: [] },
+});
+
 export const HoverSpan = styled.span`
   box-sizing: border-box;
   display: block;

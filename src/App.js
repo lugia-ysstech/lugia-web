@@ -243,6 +243,16 @@ const data = [
     text: 'Breadcrumb 面包屑',
   },
   {
+    value: '/radio-group',
+    sort: 82,
+    text: 'RadioGroup 单选框组',
+  },
+  {
+    value: '/checkbox-group',
+    sort: 83,
+    text: 'CheckboxGroup 多选框组',
+  },
+  {
     value: '/button',
     text: 'Button 按钮',
   },
