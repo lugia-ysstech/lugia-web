@@ -11,7 +11,7 @@ import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import CheckBox from '../checkbox';
 import CheckBoxGroup from '../checkbox-group';
-import { CheckBoxGroupDemo } from '../demo';
+import { CheckboxGroupDemo } from '../demo';
 import renderer from 'react-test-renderer';
 import { delay } from '@lugia/react-test-utils';
 
@@ -52,7 +52,7 @@ describe('CheckBox', () => {
     return 0;
   };
   it('CheckBoxGroup CSS', () => {
-    const target = <CheckBoxGroupDemo />;
+    const target = <CheckboxGroupDemo />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 

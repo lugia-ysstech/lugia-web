@@ -20,6 +20,7 @@ import {
   HoverSpan,
   IconWrap,
 } from '../css/checkbox';
+import { addMouseEvent } from '@lugia/theme-hoc';
 
 type CheckBoxState = {
   checked: boolean,
@@ -98,8 +99,8 @@ export default ThemeProvider(
       const { checked, hasChecked, hasCancel } = this.state;
       const config = {};
       if (cancel) {
-        config.onMouseEnter = this.handleMouseEnter;
-        config.onMouseLeave = this.handleMouseLeave;
+        config.enter = this.handleMouseEnter;
+        config.leave = this.handleMouseLeave;
       }
       const CheckboxWrapProps = getPartOfThemeProps('CheckboxWrap');
       const CircleEdgeTheme = getPartOfThemeProps('CheckboxEdge');
@@ -192,7 +193,7 @@ export default ThemeProvider(
           cancel={cancel}
           hasCancel={hasCancel}
           styles={styles}
-          {...config}
+          {...addMouseEvent(this, config)}
         >
           <CheckBoxContent themeProps={themeProps} onClick={cancel ? this.handleCancel : null}>
             <CheckBoxInput disabled={disabled} type="checkbox" onBlur={this.handleBlur} />

@@ -10,7 +10,7 @@ import 'jest-styled-components';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import CheckBox from '../';
-import { CheckBoxDemo } from '../demo';
+import { CheckboxDemo } from '../demo';
 import renderer from 'react-test-renderer';
 import { delay } from '@lugia/react-test-utils';
 
@@ -32,7 +32,7 @@ describe('CheckBox', () => {
   };
 
   it('CheckBox CSS', () => {
-    const target = <CheckBoxDemo />;
+    const target = <CheckboxDemo />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 

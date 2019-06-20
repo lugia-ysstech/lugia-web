@@ -10,11 +10,13 @@ import CSSComponent from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
+import { getBorder } from '@lugia/theme-css-hoc/lib/index';
 
 const FontSize = 1.4;
 const defaultColor = '#fff';
 const em = px2remcss;
 const {
+  themeColor,
   mediumGreyColor,
   marginToDifferentElement,
   marginToPeerElementForY,
@@ -200,7 +202,12 @@ export const CheckBoxInnerSpan = CSSComponent({
       return '';
     },
   },
-  hover: { selectNames: [['background'], ['border']] },
+  hover: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+    },
+  },
   disabled: { selectNames: [['background'], ['border']] },
   active: { selectNames: [] },
 });

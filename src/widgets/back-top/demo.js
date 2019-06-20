@@ -12,7 +12,7 @@ import Theme from '../theme';
 import { getBorder } from '@lugia/theme-css-hoc';
 
 const Demo = styled.div`
-  & > span > div > div {
+  & > div > div {
     bottom: ${props => 50 + props.cur * 50}px;
   }
 `;
@@ -32,7 +32,7 @@ export default class AffixDemo extends React.Component<any, any> {
         BackTopContent: {
           normal: {
             color: 'red',
-            background: { backgroundColor: 'orange' },
+            background: { color: 'orange' },
             width: 100,
             height: 100,
             opacity: 0.7,

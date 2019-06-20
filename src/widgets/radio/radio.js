@@ -7,6 +7,7 @@
  */
 import * as React from 'react';
 import { deepMerge } from '@lugia/object-utils';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { RadioProps } from '../css/radio';
@@ -93,19 +94,17 @@ export default ThemeProvider(
         RadioWrapProps.themeState.hover = false;
       }
 
-      console.log('themeProps', themeProps);
       return (
         <RadioWrap
-          themes={getTheme()}
           themeProps={RadioWrapProps}
           onClick={this.handleClick(value)}
           styles={styles}
           disabled={disabled}
           cancel={cancel}
+          {...addMouseEvent(this)}
         >
           <RadioContent themeProps={themeProps}>
             <RadioCircleSpan
-              themes={getTheme()}
               themeProps={CircleEdgeTheme}
               cancel={cancel}
               disabled={disabled}

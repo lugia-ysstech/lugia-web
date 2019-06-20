@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BackTop css 1`] = `
-.c0 > span > div > div {
+.c0 > div > div {
   bottom: 100px;
 }
 
-.c1 > span > div > div {
+.c1 > div > div {
   bottom: 150px;
 }
 
-.c2 > span > div > div {
+.c2 > div > div {
   bottom: 200px;
 }
 
