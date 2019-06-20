@@ -93,7 +93,6 @@ export default ThemeProvider(
         RadioWrapProps.themeState.hover = false;
       }
 
-      console.log('themeProps', themeProps);
       return (
         <RadioWrap
           themes={getTheme()}

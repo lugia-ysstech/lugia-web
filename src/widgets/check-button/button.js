@@ -60,7 +60,6 @@ export default ThemeProvider(
           textTheme.themeConfig.normal,
           wrapTheme.themeConfig.active
         );
-        console.log('checked', textTheme);
       }
       if (disabled) {
         const targetObj = checked
@@ -82,7 +81,7 @@ export default ThemeProvider(
         wrapTheme.themeState.hover = false;
         textTheme.themeState.hover = false;
       }
-      console.log('textTheme', textTheme);
+
       return (
         <LabelWrapper
           size={size}
