@@ -178,7 +178,7 @@ export const RadioWrap = CSSComponent({
     selectNames: [['color'], ['font'], ['opacity'], ['margin'], ['padding'], ['width'], ['height']],
   },
   hover: {
-    selectNames: [['opacity']],
+    selectNames: [['opacity'], ['color']],
   },
   disabled: {
     selectNames: [['opacity']],

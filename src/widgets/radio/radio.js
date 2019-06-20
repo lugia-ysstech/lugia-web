@@ -73,7 +73,6 @@ export default ThemeProvider(
       };
       if (checked) {
         CircleEdgeTheme.themeConfig = deepMerge(defaultProps, CircleEdgeTheme.themeConfig);
-        CircleEdgeTheme.themeConfig = deepMerge(defaultProps, CircleEdgeTheme.themeConfig);
         CircleEdgeTheme.themeConfig.normal = deepMerge(
           CircleEdgeTheme.themeConfig.normal,
           CircleEdgeTheme.themeConfig.active
