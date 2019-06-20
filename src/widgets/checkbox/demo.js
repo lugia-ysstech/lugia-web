@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Theme from '../theme';
 import Widget from '../consts';
 import CheckBox from './';
+import { getBorder } from '@lugia/theme-css-hoc/lib/index';
 
 const CheckBoxGroup = CheckBox.Group;
 const CheckBoxButton = CheckBox.Button;
@@ -38,51 +39,143 @@ const view = {
     margin: 20,
   },
 };
-export const CheckBoxDemo = () => {
-  return (
-    <div>
-      <Wrapper>
-        <CheckBox>CheckBox</CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox checked onChange={handleChange}>
-          CheckBox
-        </CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox defaultChecked>CheckBox</CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox disabled>CheckBox</CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox checked disabled>
-          CheckBox
-        </CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox defaultChecked disabled>
-          CheckBox
-        </CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox indeterminate>CheckBox</CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <Theme config={view}>
-          <CheckBox viewClass="register">CheckBox</CheckBox>
-        </Theme>
-      </Wrapper>
-      <Wrapper>
-        <Theme config={view}>
-          <CheckBox viewClass="register" checked>
+export class CheckBoxDemo extends React.Component<any, any> {
+  render() {
+    const view = {
+      [Widget.Checkbox]: {
+        CheckboxWrap: {
+          normal: {
+            opacity: 1,
+            color: 'blue',
+            font: { fontWeight: 200, fontSize: 16 },
+            width: 100,
+            height: 50,
+            margin: {
+              top: 10,
+              bottom: 10,
+              left: 10,
+              right: 10,
+            },
+            padding: {
+              top: 10,
+              bottom: 10,
+              left: 10,
+              right: 10,
+            },
+          },
+          hover: {
+            opacity: 0.6,
+            color: 'red',
+          },
+          disabled: {
+            opacity: 0.4,
+            color: 'red',
+          },
+          active: {
+            opacity: 1,
+            color: 'green',
+          },
+        },
+        CheckboxEdge: {
+          normal: {
+            background: { color: 'yellow' },
+            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          hover: {
+            background: { color: '#56c22d' },
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          disabled: {
+            background: { color: 'orange' },
+            border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          active: {
+            background: { color: '#3452c2' },
+            border: getBorder({ color: 'red', width: 1, style: 'solid' }, { radius: 2 }),
+          },
+          cancel: {
+            background: { color: 'pink' },
+            border: getBorder({ color: 'red', width: 1, style: 'solid' }, { radius: 2 }),
+          },
+        },
+        CheckboxChecked: {
+          active: {
+            background: { color: 'yellow' },
+          },
+          disabled: {
+            background: { color: 'red' },
+          },
+          indeterminate: {
+            background: { color: 'pink' },
+          },
+        },
+      },
+    };
+    return (
+      <div>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox disabled>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox checked>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox cancel checked handleCancelItemClick={() => {}}>
+              CheckBox
+            </CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox cancel checked handleCancelItemClick={() => {}}>
             CheckBox
           </CheckBox>
-        </Theme>
-      </Wrapper>
-    </div>
-  );
-};
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox indeterminate>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox>CheckBox</CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox checked onChange={handleChange}>
+            CheckBox
+          </CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox defaultChecked>CheckBox</CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox disabled>CheckBox</CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox checked disabled>
+            CheckBox
+          </CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox defaultChecked disabled>
+            CheckBox
+          </CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox indeterminate>CheckBox</CheckBox>
+        </Wrapper>
+      </div>
+    );
+  }
+}
 export const CheckBoxGroupDemo = class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
