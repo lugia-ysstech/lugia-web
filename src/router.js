@@ -56,12 +56,15 @@ export default {
     render: async () => import('./widgets/cascader/demo'),
   },
 
-  '/checkbutton': {
-    render: async () => import('./widgets/check-button/demo'),
-  },
-
   '/checkbox': {
-    render: async () => import('./widgets/checkbox/demo'),
+    render: async () => {
+      return (await import('./widgets/checkbox/demo')).CheckboxDemo;
+    },
+  },
+  '/checkbox-group': {
+    render: async () => {
+      return (await import('./widgets/checkbox/demo')).CheckboxGroupDemo;
+    },
   },
   '/collapse': {
     render: async () => import('./widgets/collapse/demo'),
