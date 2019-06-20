@@ -54,8 +54,13 @@ export default ThemeProvider(
       if (checked) {
         textTheme.themeConfig.normal = deepMerge(
           textTheme.themeConfig.normal,
-          checkTheme.themeConfig.active
+          textTheme.themeConfig.active
         );
+        textTheme.themeConfig.normal = deepMerge(
+          textTheme.themeConfig.normal,
+          wrapTheme.themeConfig.active
+        );
+        console.log('checked', textTheme);
       }
       if (disabled) {
         const targetObj = checked
@@ -77,6 +82,7 @@ export default ThemeProvider(
         wrapTheme.themeState.hover = false;
         textTheme.themeState.hover = false;
       }
+      console.log('textTheme', textTheme);
       return (
         <LabelWrapper
           size={size}
@@ -101,7 +107,7 @@ export default ThemeProvider(
           >
             {children}
             {cancel && type === 'checkbox' ? (
-              <CancelSpan onClick={this.handleCancel} hover={hover}>
+              <CancelSpan onClick={this.handleCancel} themeProps={wrapTheme} hover={hover}>
                 <IconWrap size={size} iconClass="lugia-icon-reminder_close" />
               </CancelSpan>
             ) : null}

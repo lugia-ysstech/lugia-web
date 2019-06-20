@@ -405,6 +405,10 @@ export class RadioGroupDemo extends React.Component<any, any> {
               border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
               background: { color: '#8D13DE' },
             },
+            active: {
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              background: { color: 'red' },
+            },
           },
           CheckButtonText: {
             normal: {
@@ -429,10 +433,6 @@ export class RadioGroupDemo extends React.Component<any, any> {
             },
           },
           Checked: {
-            active: {
-              opacity: 0.7,
-              background: { color: 'yellow' },
-            },
             disabled: {
               opacity: 0.8,
               background: { color: '#b2a8ef' },
@@ -441,10 +441,6 @@ export class RadioGroupDemo extends React.Component<any, any> {
             },
           },
           UnChecked: {
-            active: {
-              opacity: 0.4,
-              background: { color: '#ccc' },
-            },
             disabled: {
               opacity: 0.4,
               background: { color: '#ccc' },
