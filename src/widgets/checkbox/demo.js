@@ -201,7 +201,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
         Group: {
           normal: {
             width: 400,
-            height: 100,
+            height: 500,
             opacity: 1,
             border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 4 }),
             background: { color: 'red' },

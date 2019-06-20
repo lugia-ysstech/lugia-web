@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { deepMerge } from '@lugia/object-utils';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts';
 import { LabelWrapper, CheckInput, CheckSpan, CancelSpan, IconWrap } from '../css/check-button';
@@ -29,14 +30,13 @@ export default ThemeProvider(
         cancel = false,
         type = 'checkbox',
         getPartOfThemeProps,
-        getPartOfThemeConfig,
         themeProps,
       } = this.props;
       const { hasChecked, hover, hasCancel } = this.state;
       const config = {};
       if (cancel) {
-        config.onMouseEnter = this.handleMouseEnter;
-        config.onMouseLeave = this.handleMouseLeave;
+        config.enter = this.handleMouseEnter;
+        config.leave = this.handleMouseLeave;
       }
       const defaultProps = {
         normal: {},
@@ -88,17 +88,16 @@ export default ThemeProvider(
           checked={checked}
           disabled={disabled}
           hasCancel={hasCancel}
-          themes={getTheme()}
           themeProps={wrapTheme}
+          {...config}
+          {...addMouseEvent(this, config)}
         >
           <CheckInput themeProps={themeProps} type="radio" onBlur={this.handleBlur} />
           <CheckSpan
-            {...config}
             onClick={this.handleClick}
             size={size}
             checked={checked}
             disabled={disabled}
-            themes={getTheme()}
             hasChecked={hasChecked}
             cancel={cancel}
             type={type}
