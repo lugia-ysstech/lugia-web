@@ -7,6 +7,7 @@ import * as React from 'react';
 import Menu from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
+import { getBorder } from '@lugia/theme-css-hoc';
 import styled from 'styled-components';
 const { MenuItem } = Menu;
 const Placeholder = Menu.Placeholder;
@@ -28,13 +29,11 @@ const H2 = styled.h2`
 `;
 
 const MenuWrap = styled.div`
-  border: 1px solid #ccc;
   margin: 10px;
 `;
 
 const Box = styled.div`
   display: inline-block;
-  border: 1px solid #ccc;
   margin: 10px 30px;
 `;
 
@@ -134,25 +133,81 @@ export default class extends React.Component<any, any> {
     const checkedKey = '4';
     const config = {
       [Widget.Menu]: {
-        MenuWrap: { normal: { width: 700, height: 350, fontSize: 16 } },
+        MenuWrap: {
+          normal: {
+            width: 600,
+            height: 350,
+            opacity: 0.6,
+            boxShadow: '2px 2px 5px #4d63ff',
+            background: { color: '#000' },
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+            // padding: {
+            //   top: 30,
+            //   left: 20,
+            //   right: 20,
+            // },
+          },
+          hover: {
+            opacity: 1,
+          },
+        },
         MenuItem: {
-          normal: { color: '#ccc' },
-          hover: { color: '#fff', background: { color: 'green' }, font: { fontWeight: 900 } },
-          active: { color: 'blue' },
+          normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
+          hover: {
+            color: '#fff',
+            fontSize: 20,
+            background: { color: 'green' },
+            font: { fontWeight: 400 },
+          },
+          active: {
+            color: 'blue',
+            fontSize: 14,
+            background: { color: 'pink' },
+            font: { fontWeight: 900 },
+          },
           disabled: { color: 'red', background: { color: '#000' } },
+        },
+        SelectedMenuItem: {
+          normal: {
+            color: 'blue',
+            font: { fontWeight: 900 },
+            fontSize: 18,
+            background: { color: 'orange' },
+          },
+          hover: { color: '#000', background: { color: 'yellow' } },
+          active: { color: 'green' },
+        },
+        Divider: { normal: { color: 'red' } },
+      },
+      [Widget.SubMenu]: {
+        MenuWrap: { normal: { width: 200, height: 350, fontSize: 14 } },
+        MenuItem: {
+          normal: { color: '#4d63ff' },
+          hover: { color: '#000', background: { color: 'orange' }, font: { fontWeight: 900 } },
+          active: { color: '#999' },
+          disabled: { color: 'red', background: { color: '#000' } },
+        },
+        SelectedMenuItem: {
+          normal: { color: 'blue', font: { fontWeight: 900 }, background: { color: '#ccc' } },
+          hover: { color: '#000', background: { color: 'yellow' } },
+          active: { color: 'green' },
         },
       },
     };
     return (
       <div>
         <Box>
-          <Menu theme={config} mutliple={false} data={data} />
+          <Menu divided theme={config} mutliple={false} data={data} />
         </Box>
 
-        {/* <MenuWrap>
+        <Box>
+          <Menu divided theme={config} mutliple data={data} />
+        </Box>
+
+        <MenuWrap>
           <H2>级联嵌套菜单 </H2>
           <Box>
-            <Theme config={{ [Widget.Menu]: { width: 200 }, [Widget.SubMenu]: { width: 150 } }}>
+            <Theme config={config}>
               <Menu
                 separator={'/'}
                 mutliple={false}
@@ -166,18 +221,18 @@ export default class extends React.Component<any, any> {
                 offsetY={0}
                 onExpandPathChange={this.onExpandPathChange}
                 onClick={this.onClick}
+                autoHeight
               />
             </Theme>
           </Box>
           <Button onClick={this.btnClick}>hello</Button>
-        </MenuWrap> */}
+        </MenuWrap>
       </div>
     );
   }
 
   clickDefaultMenu = (e, keys, item) => {
     const { selectedKeys } = keys;
-    // console.log('selectedKeys', selectedKeys);
   };
 
   btnClick = (e, keys, item) => {

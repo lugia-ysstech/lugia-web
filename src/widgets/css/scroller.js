@@ -45,13 +45,14 @@ export const ScrollerContainer = CSSComponent({
       `;
     },
   },
+  hover: {
+    selectNames: [],
+  },
   css: `
-    overflow: hidden;
     font-size: ${FontSizeNumber};
     width: ${px2remcss(DefaultWidth)};
-    // height: ${px2remcss(DefaultHeight)};
     position: relative;
-    background: pink;
+    transition: all 0.5s;
     &:hover > div:nth-child(2) {
       opacity: 1
     }
@@ -69,8 +70,7 @@ export const Col = CSSComponent({
       font-size: ${FontSizeNumber}rem;
       position: absolute;
       display: inline-block;
-      overflow:hidden;
-      background: orange;
+      // overflow:hidden;
     `,
 });
 
@@ -96,7 +96,6 @@ export const ScrollerCol = CSSComponent({
         position: absolute;
         display: inline-block;
         transition: opacity 0.3s;
-        background: green;
         opacity: 0
       `,
 });

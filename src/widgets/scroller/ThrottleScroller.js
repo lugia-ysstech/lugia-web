@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Scroller from './index';
 import Widget from '../consts/index';
 import { FontSizeNumber } from '../css';
+import { toNumber } from '../common/NumberUtils';
 import {
   BarDefaultSize,
   DefaultHeight,
@@ -138,10 +139,8 @@ export default (
 
       const start = this.getStart(props, this.state);
       const { getTheme } = props;
-      const theme = getTheme();
       const { level, autoHeight = false, getPartOfThemeProps } = props;
       const themeProps = getPartOfThemeProps(TargetWrapName);
-      console.log('getPartOfThemeProps1', TargetWrapName, themeProps);
       const totalSize = this.fetchTotalSize();
       themeProps.propsConfig = {
         isDrag: this.isDrag,
@@ -150,14 +149,7 @@ export default (
       };
       const pack = (element: Object | Array<Object>) => {
         return (
-          <ScrollerContainer
-            // level={level}
-            // totalSize={totalSize}
-            // theme={theme}
-            themeProps={themeProps}
-            // autoHeight={autoHeight}
-            onWheel={this.onWheel}
-          >
+          <ScrollerContainer themeProps={themeProps} onWheel={this.onWheel}>
             {element}
           </ScrollerContainer>
         );
@@ -251,7 +243,11 @@ export default (
 
     fetchTotalSize(): number {
       const { length } = this.getTarget();
-      return length * this.itemHeight;
+      const { normal = {} } = this.props.getPartOfThemeConfig(TargetWrapName);
+      const { padding = {} } = normal;
+      const { top } = padding;
+
+      return length * this.itemHeight + toNumber(top, 0) + 10;
     }
 
     getTarget(): Array<any> {
@@ -282,6 +278,7 @@ export default (
 
     onScroller = (value: number) => {
       const { onScroller } = this.props;
+
       const start = value / this.itemHeight;
       onScroller ? onScroller(start, this.fetchEnd(start)) : this.setState({ start });
     };

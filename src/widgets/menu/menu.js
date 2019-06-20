@@ -7,6 +7,7 @@
 import type { MenuItemProps } from './item';
 import Item from './item';
 import '../common/shirm';
+import ThemeHoc from '@lugia/theme-hoc';
 import * as React from 'react';
 import {
   DefaultHeight,
@@ -210,7 +211,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const items = this.getItems(props);
 
     const { data = [], size, autoHeight = false, getPartOfThemeProps } = props;
-
     const length = data ? data.length : 0;
     const menuItemHeight = getMenuItemHeight(size);
     const WrapThemeProps = addPropsConfig(getPartOfThemeProps('MenuWrap'), {
@@ -283,8 +283,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return <li />;
         }
         const iconElement = icon ? <TextIcon iconClass={icon} /> : null;
-        const { wrapItem, getPartOfThemeHocProps } = this.props;
-        const { viewClass, theme } = getPartOfThemeHocProps('MenuItem');
+        const { wrapItem } = this.props;
 
         const result = (
           <Item
@@ -293,8 +292,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             disabled={disabled}
             checkedCSS={checkedCSS}
             divided={divided || propsDivided}
-            theme={theme}
-            viewClass={viewClass}
+            theme={this.getItemTheme()}
             isFirst={isFirst}
           >
             {prefix}
@@ -329,6 +327,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return theme;
   }
 
+  getItemTheme() {
+    const { getPartOfThemeConfig } = this.props;
+    return {
+      [Widget.MenuItem]: {
+        Item: getPartOfThemeConfig('MenuItem'),
+        SelectedItem: getPartOfThemeConfig('SelectedMenuItem'),
+        CheckBox: getPartOfThemeConfig('CheckBox'),
+        Divider: getPartOfThemeConfig('Divider'),
+      },
+    };
+  }
+
   computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
     const items = [];
     let isFirst = true;
@@ -340,6 +350,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       );
       isFirst = false;
     }
+
     return items;
   }
 
@@ -366,7 +377,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
   ): MenuItemProps {
     const { mutliple } = this.props;
     const eventConfig = this.onMenuItemEventHandler(key, item, disabled, indexOffsetY);
-
     if (!key || !isSelect(key)) {
       return { mutliple, ...eventConfig, checked: false, disabled };
     }
@@ -437,6 +447,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         setSelectedKeys(newSelectedKeys);
 
         const keys = { selectedKeys: [...newSelectedKeys] };
+
         onClick && onClick(event, keys, item);
         onChange && onChange(keys);
 
@@ -608,6 +619,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const x = offsetX === 0 || offsetX ? offsetX : 4;
     const y = offsetY === 0 || offsetY ? offsetY : null;
     const subMenuItenHeight = getMenuItemHeight(subsize);
+
     return (
       <SubMenu
         mutliple={mutliple}
@@ -839,7 +851,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 }
 
-const Result = ThemeProvider(ThrolleScroller(Menu, MenuItemHeight, 'MenuWrap'), Widget.Menu);
+const Result = ThemeHoc(ThrolleScroller(Menu, MenuItemHeight, 'MenuWrap'), Widget.Menu, {
+  hover: true,
+});
 
 Result.Placeholder = Placeholder;
 Result.computeCanSeeCount = (
@@ -849,7 +863,7 @@ Result.computeCanSeeCount = (
   return Math.floor(getCanSeeCountRealy(height, menuItemHeight));
 };
 
-SubMenu = ThemeProvider(
+SubMenu = ThemeHoc(
   class SubMenu extends React.Component<MenuProps> {
     static displayName = Widget.SubMenu;
     svtarget: ?Object;
@@ -864,7 +878,10 @@ SubMenu = ThemeProvider(
       );
     }
   },
-  Widget.SubMenu
+  Widget.SubMenu,
+  {
+    hover: true,
+  }
 );
 
 export default Result;

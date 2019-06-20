@@ -453,6 +453,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   getMaxValue(props: ScrollerProps): number {
     const { totalSize, viewSize } = props;
+    console.log('totalSize', totalSize, viewSize);
     return totalSize - viewSize;
   }
 
