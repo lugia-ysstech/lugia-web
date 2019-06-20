@@ -5,57 +5,20 @@
  */
 
 import colorsFunc from '../css/stateColor';
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
-import { px2emcss } from '../css/units';
+import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import Icon from '../icon';
 
-const FontSize = 1.4;
-const defaultColor = '#fff';
-const em = px2emcss(FontSize);
-const {
-  themeColor,
-  mediumGreyColor,
-  borderColor,
-  borderDisableColor,
-  disableColor,
-  disabledColor,
-  marginToDifferentElement,
-  marginToPeerElementForY,
-  blackColor,
-  lightGreyColor,
-} = colorsFunc();
+const { themeColor, borderColor, borderDisableColor, disabledColor } = colorsFunc();
 
-export type CheckBoxGroupProps = {
-  defaultValue?: string[],
-  value?: Array<string>,
-  disabled?: boolean,
-  data?: Array<Object>,
-  onChange?: Function,
-  displayField?: string,
-  displayValue?: Array<string>,
-  defaultDisplayValue?: Array<string>,
-  valueField?: string,
-  children?: any,
-  getTheme: Function,
-  styles?: 'default' | 'vertical',
-  cache?: boolean,
-  childType?: 'default' | 'button',
-  size?: 'default' | 'small' | 'large' | 'bigger',
-};
 export type GroupCSSProps = {
   children: any,
   themes: Object,
   childType: 'default' | 'button',
 };
-export type CheckBoxGroupState = {
-  value: Array<string>,
-  displayValue: Array<string>,
-  dataLength: number,
-};
 
-const getFirstChildBorder = (props: GroupCSSProps) => {
+const getFirstChildBorder = (props: GroupCSSProps): string => {
   const { children = [], themes = {}, childType = 'default' } = props;
   if (children && children.length > 0) {
     const { checked = false } = children[0].props;
@@ -72,7 +35,7 @@ const getFirstChildBorder = (props: GroupCSSProps) => {
         return `
           border-left: 1px solid ${disabledColor};
           & > span {
-            border-radius: 4px 0 0 4px;
+            border-radius: ${px2remcss(4)} 0 0 ${px2remcss(4)};
           }
         `;
       }
@@ -82,8 +45,10 @@ const getFirstChildBorder = (props: GroupCSSProps) => {
       `;
     }
   }
+
+  return '';
 };
-const getLastChildBorder = (props: GroupCSSProps) => {
+const getLastChildBorder = (props: GroupCSSProps): string => {
   const { themes = {}, children = [], childType = 'default' } = props;
   const { checked = false, disabled = false } =
     (children.length && children[children.length - 1].props) || {};
@@ -95,16 +60,18 @@ const getLastChildBorder = (props: GroupCSSProps) => {
     `;
     }
   }
+
+  return '';
 };
 const getButtonCSS = (props: GroupCSSProps) => {
   const { childType = 'default' } = props;
   if (childType === 'button') {
     return `& > span:first-child  > label > span {
       ${getFirstChildBorder(props)}; 
-      border-radius: 4px 0 0 4px;
+      border-radius: ${px2remcss(4)} 0 0 ${px2remcss(4)};
     }
     & > span:last-child > label > span {
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 ${px2remcss(4)} ${px2remcss(4)} 0;
       ${getLastChildBorder(props)};
     }`;
   }

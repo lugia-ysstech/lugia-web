@@ -20,10 +20,6 @@ import {
   updateMapData,
 } from '../common/translateData';
 import Theme from '../theme';
-import colorsFunc from '../css/stateColor';
-import styled from 'styled-components';
-
-const { themeColor, borderDisableColor, borderColor, disabledColor } = colorsFunc();
 
 type CheckBoxGroupProps = {
   defaultValue?: string[],
@@ -37,6 +33,7 @@ type CheckBoxGroupProps = {
   valueField?: string,
   children?: any,
   getTheme: Function,
+  getPartOfThemeProps: Function,
   styles?: 'default' | 'vertical',
   cache?: boolean,
   childType?: 'default' | 'button',
@@ -46,11 +43,6 @@ type CheckBoxGroupState = {
   value: Array<string>,
   displayValue: Array<string>,
   dataLength: number,
-};
-type GroupCSSProps = {
-  children: any,
-  themes: Object,
-  childType: 'default' | 'button',
 };
 
 export default ThemeProvider(

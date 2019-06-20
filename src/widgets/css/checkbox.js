@@ -15,12 +15,7 @@ const FontSize = 1.4;
 const defaultColor = '#fff';
 const em = px2remcss;
 const {
-  themeColor,
   mediumGreyColor,
-  borderColor,
-  borderDisableColor,
-  disableColor,
-  disabledColor,
   marginToDifferentElement,
   marginToPeerElementForY,
   blackColor,
@@ -51,40 +46,6 @@ export type CheckBoxProps = {
   themeProps: Object,
 } & ForGroupType;
 type CheckBoxType = CheckBoxProps & CSStype;
-
-const getColors = (props: CheckBoxType): string => {
-  const {
-    checked = false,
-    hasChecked = false,
-    themes,
-    disabled,
-    indeterminate,
-    cancel = false,
-  } = props;
-  const ComThemeColor = themes.color || themeColor;
-  if (disabled) {
-    return `
-        background-color: ${disableColor};
-        border: 1px solid ${borderDisableColor};
-      `;
-  }
-  if (cancel) {
-    return `
-        background-color: ${disabledColor};
-        border: 1px solid ${disabledColor};
-    `;
-  }
-  if (checked || indeterminate) {
-    return `
-    background-color: ${ComThemeColor};
-    border: 1px solid ${ComThemeColor};
-    `;
-  }
-  return `
-  background-color: ${defaultColor};
-  border: 1px solid ${hasChecked ? ComThemeColor : borderColor};
-  `;
-};
 
 const getAfterTransform = (props: { checked: boolean, indeterminate: boolean }): string => {
   const { checked, indeterminate } = props;
@@ -123,24 +84,6 @@ const getStyleCSS = (props: CheckBoxType): string => {
     margin-right: ${em(marginToDifferentElement)};
   `;
 };
-
-// export const CheckBoxWrap = styled.label`
-//   font-size: ${FontSize}rem;
-//   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-//   color: ${props => (props.disabled ? lightGreyColor : blackColor)};
-//   width: ${props => (props.themes.width ? em(props.themes.width) : 'none')};
-//   box-sizing: border-box;
-//   padding: 0;
-//   list-style: none;
-//   display: inline-block;
-//   position: relative;
-//   white-space: nowrap;
-//   ${getStyleCSS};
-//
-//   &:hover > span span {
-//     ${hoverStyle};
-//   }
-// `;
 
 export const CheckBoxWrap = CSSComponent({
   tag: 'label',
@@ -212,31 +155,6 @@ export const CheckBoxInput = styled.input`
   width: 100%;
   height: 100%;
 `;
-// export const CheckBoxInnerSpan = styled.span`
-//   position: relative;
-//   box-sizing: border-box;
-//   top: 0;
-//   left: 0;
-//   display: block;
-//   width: ${em(18)};
-//   height: ${em(18)};
-//   border-radius: ${em(2)};
-//   ${getColors} transition: all 0.3s;
-//
-//   &:hover {
-//     ${hoverStyle};
-//   }
-//   &::after {
-//     position: absolute;
-//     box-sizing: border-box;
-//     ${getAfterTransform};
-//     display: table;
-//     border: ${em(2)} solid ${props => (props.disabled ? lightGreyColor : defaultColor)};
-//     border-top: 0;
-//     border-left: 0;
-//     content: ' ';
-//   }
-// `;
 
 export const CheckBoxInnerSpan = CSSComponent({
   tag: 'span',
