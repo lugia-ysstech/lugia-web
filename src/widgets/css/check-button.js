@@ -4,9 +4,11 @@
  * @flow
  */
 import colorsFunc from '../css/stateColor';
-import styled from 'styled-components';
-import { px2emcss } from '../css/units';
+import styled, { css } from 'styled-components';
+import CSSComponent, { getBorder } from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 import Icon from '../icon';
+import changeColor from './utilsColor';
 
 type CheckSize = 'default' | 'small' | 'large' | 'bigger';
 type TypeSizeCSS = {
@@ -35,7 +37,7 @@ export type CheckState = {
   hasChecked: boolean,
 };
 
-const em = px2emcss(1.2);
+const em = px2remcss;
 const getEm = (props: CheckProps) => {
   const { size = 'default' } = props;
   if (size === 'default' || 'small') {
@@ -74,13 +76,10 @@ const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
 const getSizeCSS = (props: PropsType): string => {
   const { size = 'default' } = props;
   const { height, lineHeight } = SizeCSS[size];
-  const { fontSize, fontNum } = getEm(props);
-  const em = px2emcss(fontNum);
 
   return `
     height: ${em(height)};
     line-height: ${em(lineHeight)};
-    font-size: ${fontSize};
   `;
 };
 const getHoverCSS = (props: PropsType): string => {
@@ -115,15 +114,8 @@ const getDisabledCSS = (props: PropsType): string => {
   `;
 };
 const getCheckedCSS = (props: PropsType): string => {
-  const {
-    checked,
-    themes,
-    disabled,
-    cancel = false,
-    hasChecked = false,
-    type = 'checkbox',
-  } = props;
-  const colors = themes.color || themeColor;
+  const { checked, disabled, cancel = false, hasChecked = false, type = 'checkbox' } = props;
+  const colors = themeColor;
   if (disabled) {
     return getDisabledCSS(props);
   }
@@ -145,6 +137,7 @@ const getCheckedCSS = (props: PropsType): string => {
 
   return `
       border: 1px solid ${hasChecked ? colors : borderColor};
+      border-left: 0;
       color: ${darkGreyColor};
       background: #fff;
     `;
@@ -157,70 +150,138 @@ const getDisplayCSS = (props: PropsType): string => {
   }
   return 'z-index: -2';
 };
-const getThemeMarginCSS = (props: PropsType): string => {
-  const { margin } = props.themes;
-  if (margin) {
-    if (typeof margin === 'number') {
-      return `margin: ${em(margin)};`;
-    }
-    if (typeof margin === 'object') {
-      const { top, right, bottom, left } = margin;
-      if (top && right && bottom && left) {
-        return `margin: ${em(top)} ${em(right)} ${em(bottom)} ${em(left)};`;
-      }
-    }
-  }
-  return '';
-};
-const getWidthCSS = (props: PropsType): string => {
-  const { width } = props.themes;
-  if (width) {
-    return `
-      width: ${em(width)};
-    `;
-  }
-  return '';
-};
 
-export const LabelWrapper = styled.label`
-  position: relative;
-  display: ${props => (props.hasCancel ? 'none' : 'inline-block')};
-  outline: none;
-  transition: all 0.3s;
-  ${getThemeMarginCSS} &:hover > span {
-    ${getHoverCSS};
-  }
-`;
-export const CheckInput = styled.input`
-  opacity: 0;
-  outline: none;
-  position: absolute;
-  z-index: -1;
-`;
-export const CheckSpan = styled.span`
-  display: inline-block;
-  box-sizing: border-box;
-  white-space: nowrap;
-  vertical-align: middle;
-  padding: 0 ${em(10)};
-  cursor: pointer;
-  ${getCheckedCSS} border-left: 0;
-  text-align: center;
-  margin: 0;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  ${getSizeCSS};
-  ${getWidthCSS};
-`;
-export const CancelSpan = styled.span`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  color: ${darkGreyColor};
-  background: ${lightGreyColor};
-  ${getDisplayCSS};
-`;
+// export const LabelWrapper = styled.label`
+//   position: relative;
+//   display: ${props => (props.hasCancel ? 'none' : 'inline-block')};
+//   outline: none;
+//   transition: all 0.3s;
+//   ${getThemeMarginCSS};
+//   &:hover > span {
+//     ${getHoverCSS};
+//   }
+// `;
+
+export const LabelWrapper = CSSComponent({
+  tag: 'label',
+  className: 'label-wrapper',
+  css: css`
+    position: relative;
+    display: ${props => (props.hasCancel ? 'none' : 'inline-block')};
+    outline: none;
+    transition: all 0.3s;
+  `,
+  normal: {
+    selectNames: [['opacity']],
+  },
+  hover: {
+    selectNames: [['opacity']],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['opacity']],
+  },
+});
+export const CheckInput = CSSComponent({
+  tag: 'input',
+  className: 'check-input',
+  css: css`
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+  `,
+});
+
+export const CheckSpan = CSSComponent({
+  tag: 'span',
+  className: 'check-span',
+  css: css`
+    display: inline-block;
+    box-sizing: border-box;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 0 ${em(10)};
+    cursor: pointer;
+    text-align: center;
+    margin: 0;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    ${getSizeCSS};
+  `,
+  normal: {
+    selectNames: [
+      ['border'],
+      ['background'],
+      ['width'],
+      ['height'],
+      ['color'],
+      ['fontSize'],
+      ['fontWeight'],
+      ['padding'],
+    ],
+    getCSS(themeMeta: Object) {
+      const { props } = themeMeta;
+      return getCheckedCSS(props);
+    },
+  },
+  hover: {
+    selectNames: [['border'], ['background'], ['color'], ['fontSize'], ['fontWeight']],
+    defaultTheme: {
+      color: themeColor,
+    },
+  },
+  disabled: {
+    selectNames: [['border'], ['background'], ['color']],
+    defaultTheme: {
+      color: lightGreyColor,
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+    },
+    getCSS(themeMeta: Object) {
+      const { background, bgColor = {}, isChecked } = themeMeta;
+      if (!background) {
+        const { background: nromalBgColor } = bgColor;
+        const defultDisabledColor = isChecked ? spiritColor : '#fff';
+        const normalColor = nromalBgColor
+          ? changeColor(nromalBgColor.color, 45).color
+          : defultDisabledColor;
+        return `background: ${normalColor};`;
+      }
+    },
+  },
+});
+// export const CheckSpan = styled.span`
+//   display: inline-block;
+//   box-sizing: border-box;
+//   white-space: nowrap;
+//   vertical-align: middle;
+//   padding: 0 ${em(10)};
+//   cursor: pointer;
+//   ${getCheckedCSS};
+//   border-left: 0;
+//   text-align: center;
+//   margin: 0;
+//   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+//   ${getSizeCSS};
+//   ${getWidthCSS};
+// `;
+
+export const CancelSpan = CSSComponent({
+  tag: 'span',
+  className: 'cancel-span',
+  css: css`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: ${darkGreyColor};
+    background: ${lightGreyColor};
+    ${getDisplayCSS};
+  `,
+});
+
 const getIconFont = (props: Object) => {
   const { size = 'default' } = props;
   if (size === 'default' || size === 'small') {

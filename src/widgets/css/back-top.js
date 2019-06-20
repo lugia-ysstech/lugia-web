@@ -18,7 +18,8 @@ const em = px2remcss;
 export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
-  getChildThemeHocProps: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
   target?: Function,
   themeProps: Object,
   icon?: string,
@@ -107,7 +108,7 @@ export const BackTopContent = CSSComponent({
       ['border'],
     ],
     defaultTheme: {
-      background: { backgroundColor: defaultColor },
+      background: { color: defaultColor },
       color: themeColor,
       width: 40,
       height: 40,
@@ -131,23 +132,20 @@ export const IconBox = CSSComponent({
   `,
 });
 
-export const Icons = ThemeProvider(
-  CSSComponent({
-    className: 'icon',
-    extend: Icon,
-    normal: {
-      selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
-    },
-    defaultTheme: {
-      margin: 0,
-      padding: 0,
-    },
-    css: css`
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    `,
-  }),
-  'Icons'
-);
+export const Icons = CSSComponent({
+  className: 'icon',
+  extend: Icon,
+  normal: {
+    selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
+  },
+  defaultTheme: {
+    margin: 0,
+    padding: 0,
+  },
+  css: css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `,
+});

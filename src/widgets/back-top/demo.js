@@ -29,25 +29,31 @@ export default class AffixDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.BackTop]: {
-        normal: {
-          color: 'red',
-          background: { backgroundColor: 'orange' },
-          width: 100,
-          height: 100,
-          opacity: 0.7,
-          border: getBorder({ color: 'red', width: 1, style: 'solid' }, { radius: 100 }),
+        BackTopContent: {
+          normal: {
+            color: 'red',
+            background: { backgroundColor: 'orange' },
+            width: 100,
+            height: 100,
+            opacity: 0.7,
+            border: getBorder({ color: 'red', width: 1, style: 'solid' }, { radius: 100 }),
+          },
         },
-        children: {
-          Icon: {
-            normal: {
-              color: 'green',
-              fontSize: 16,
-              padding: {
-                right: 10,
-                left: 10,
-                top: 10,
-                bottom: 10,
-              },
+        Icon: {
+          normal: {
+            color: 'green',
+            fontSize: 16,
+            padding: {
+              right: 10,
+              left: 10,
+              top: 10,
+              bottom: 10,
+            },
+            margin: {
+              right: 10,
+              left: 0,
+              top: 0,
+              bottom: 10,
             },
           },
         },
