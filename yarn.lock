@@ -1478,10 +1478,10 @@
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"
 
-"@lugia/theme-hoc@^1.0.14":
-  version "1.0.14"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.14.tgz#829d09c5106d4738f58c95f4fedb5a3c5177b296"
-  integrity sha1-gp0JxRBtRzj1jJX0/ttaPFF3spY=
+"@lugia/theme-hoc@^1.0.12":
+  version "1.0.15"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.15.tgz#de47d10e0cb7b547087494ceafb9df1b669c1055"
+  integrity sha1-3kfRDgy3tUcIdJTOr7nfG2acEFU=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.7"

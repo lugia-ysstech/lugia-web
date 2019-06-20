@@ -9,7 +9,7 @@
     "@lugia/theme-config": "^1.0.12",
     "@lugia/theme-core": "^1.0.12",
     "@lugia/theme-css-hoc": "^1.0.19",
-    "@lugia/theme-hoc": "^1.0.14",
+    "@lugia/theme-hoc": "^1.0.12",
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
