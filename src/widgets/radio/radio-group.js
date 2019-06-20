@@ -6,7 +6,6 @@
  *
  */
 import { DisplayField, ValueField } from '../consts/props';
-
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Radio from './radio';
@@ -130,7 +129,7 @@ export default ThemeProvider(
         hasValueProps: () => this.hasValueProps(),
         cancelItem: this.cancelItem,
       };
-      console.log('themeProps', themeProps);
+
       return (
         <Theme config={this.getChildTheme()}>
           <Group themeProps={getPartOfThemeProps('Group')} childType={childType}>
@@ -234,7 +233,7 @@ export default ThemeProvider(
     };
     getChildTheme(): Object {
       const { getPartOfThemeConfig } = this.props;
-      console.log("getPartOfThemeProps('Radio')", getPartOfThemeConfig('Radio'));
+
       return {
         [Widget.Radio]: getPartOfThemeConfig('Radio'),
         [Widget.CheckButton]: getPartOfThemeConfig('CheckButton'),

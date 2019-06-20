@@ -321,9 +321,6 @@ export class RadioGroupDemo extends React.Component<any, any> {
               right: 10,
             },
           },
-          hover: {},
-          disabled: {},
-          active: {},
         },
         Radio: {
           RadioWrap: {
