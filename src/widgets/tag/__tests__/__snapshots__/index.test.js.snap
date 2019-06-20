@@ -3,8 +3,8 @@
 exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -16,45 +16,55 @@ exports[`Tag Theme: type= basic, closable=false shape= round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #666666;
+  border: 1px solid #cccccc;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  color: #666666;
-  border: 1px solid #cccccc;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="basic"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="basic"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="basic"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag Theme: type= basic, shape= round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -66,45 +76,55 @@ exports[`Tag Theme: type= basic, shape= round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #666666;
+  border: 1px solid #cccccc;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  color: #666666;
-  border: 1px solid #cccccc;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="basic"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="basic"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="basic"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -116,52 +136,56 @@ exports[`Tag Theme: type= customs, closable=false shape= round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #fff;
+  background: #4d63ff;
+  border: 1px solid #4d63ff;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: ff5588;
-  color: #ffffff;
-  border: 1px solid ff5588;
-}
-
-.c0:hover {
-  background: ff5588;
-  color: #ffffff;
-  border-color: #000000;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="customs"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="customs"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="customs"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag Theme: type= customs, shape= round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -173,52 +197,56 @@ exports[`Tag Theme: type= customs, shape= round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #fff;
+  background: #4d63ff;
+  border: 1px solid #4d63ff;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: ff5588;
-  color: #ffffff;
-  border: 1px solid ff5588;
-}
-
-.c0:hover {
-  background: ff5588;
-  color: #ffffff;
-  border-color: #000000;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="customs"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="customs"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="customs"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -230,52 +258,56 @@ exports[`Tag Theme: type= presets, closable=false shape= round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #f22735;
+  background: rgba(242,39,53,0.05);
+  border: 1px solid #f22735;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: rgba(0,0,0,0.05);
-  color: ff5588;
-  border: 1px solid ff5588;
-}
-
-.c0:hover {
-  background: rgba(0,0,0,0.05);
-  color: #000000;
-  border-color: #000000;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="presets"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="presets"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="presets"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag Theme: type= presets, shape= round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -287,52 +319,56 @@ exports[`Tag Theme: type= presets, shape= round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #f22735;
+  background: rgba(242,39,53,0.05);
+  border: 1px solid #f22735;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: rgba(0,0,0,0.05);
-  color: ff5588;
-  border: 1px solid ff5588;
-}
-
-.c0:hover {
-  background: rgba(0,0,0,0.05);
-  color: #000000;
-  border-color: #000000;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="presets"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="presets"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="presets"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -344,45 +380,56 @@ exports[`Tag Theme: type= primary, closable=false shape= round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #666666;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #e8e8e8;
-  color: #666666;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="primary"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="primary"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="primary"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag Theme: type= primary, shape= round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -394,45 +441,56 @@ exports[`Tag Theme: type= primary, shape= round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #666666;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #e8e8e8;
-  color: #666666;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="primary"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="primary"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="primary"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag default: type = basic 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 0.33333333333333337em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -444,45 +502,55 @@ exports[`Tag default: type = basic 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 0.4rem;
+  color: #666666;
+  border: 1px solid #cccccc;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  color: #666666;
-  border: 1px solid #cccccc;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="basic"
-  type="basic"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="basic"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="basic"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag default: type = basic, shape = round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -494,45 +562,55 @@ exports[`Tag default: type = basic, shape = round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #666666;
+  border: 1px solid #cccccc;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  color: #666666;
-  border: 1px solid #cccccc;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="basic"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="basic"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="basic"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag default: type = customs 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 0.33333333333333337em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -544,52 +622,56 @@ exports[`Tag default: type = customs 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 0.4rem;
+  color: #fff;
+  background: #4d63ff;
+  border: 1px solid #4d63ff;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #4d63ff;
-  color: #ffffff;
-  border: 1px solid #4d63ff;
-}
-
-.c0:hover {
-  background: #4d63ff;
-  color: #ffffff;
-  border-color: #8090ff;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="basic"
-  type="customs"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="customs"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="customs"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag default: type = customs, shape = round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -601,52 +683,56 @@ exports[`Tag default: type = customs, shape = round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #fff;
+  background: #4d63ff;
+  border: 1px solid #4d63ff;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #4d63ff;
-  color: #ffffff;
-  border: 1px solid #4d63ff;
-}
-
-.c0:hover {
-  background: #4d63ff;
-  color: #ffffff;
-  border-color: #8090ff;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="customs"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="customs"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="customs"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag default: type = presets 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 0.33333333333333337em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -658,52 +744,56 @@ exports[`Tag default: type = presets 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 0.4rem;
+  color: #f22735;
+  background: rgba(242,39,53,0.05);
+  border: 1px solid #f22735;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: rgba(242,39,53,0.05);
-  color: #f22735;
-  border: 1px solid #f22735;
-}
-
-.c0:hover {
-  background: rgba(242,39,53,0.05);
-  color: #f25762;
-  border-color: #f25762;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="basic"
-  type="presets"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="presets"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="presets"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag default: type = presets, shape = round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -715,52 +805,56 @@ exports[`Tag default: type = presets, shape = round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #f22735;
+  background: rgba(242,39,53,0.05);
+  border: 1px solid #f22735;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: rgba(242,39,53,0.05);
-  color: #f22735;
-  border: 1px solid #f22735;
-}
-
-.c0:hover {
-  background: rgba(242,39,53,0.05);
-  color: #f25762;
-  border-color: #f25762;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="presets"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="presets"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="presets"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag default: type = primary 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 0.33333333333333337em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -772,45 +866,56 @@ exports[`Tag default: type = primary 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 0.4rem;
+  color: #666666;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #e8e8e8;
-  color: #666666;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="basic"
-  type="primary"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="primary"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="primary"
+      />
+    </div>
+  </span>
+</span>
 `;
 
 exports[`Tag default: type = primary, shape = round 1`] = `
 .c0 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  border-radius: 1.6666666666666667em;
+  height: 2rem;
+  border-radius: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
   overflow: hidden;
@@ -822,36 +927,47 @@ exports[`Tag default: type = primary, shape = round 1`] = `
   vertical-align: top;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  padding: 0 0.6666666666666667em;
+  border-radius: 2rem;
+  color: #666666;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  line-height: 1.8rem;
+  padding: 0 0.8rem;
   opacity: 1;
   -webkit-transform: scale(1,1);
   -ms-transform: scale(1,1);
   transform: scale(1,1);
-  background: #e8e8e8;
-  color: #666666;
 }
 
 .c1 {
   display: inline-block;
-  height: 1.6666666666666667em;
-  line-height: 1.6666666666666667em;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 0;
   vertical-align: top;
 }
 
-<div
-  checked={false}
-  className="c0"
-  onClick={[Function]}
-  shape="round"
-  type="primary"
+<span
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
 >
   <span
-    className="c1"
-    type="primary"
-  />
-</div>
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="c0"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c1"
+        style={Object {}}
+        type="primary"
+      />
+    </div>
+  </span>
+</span>
 `;

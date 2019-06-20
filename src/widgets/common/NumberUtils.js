@@ -11,3 +11,7 @@ export function toNumber(value: any, defaultValue?: number = 0): number {
   }
   return newValue;
 }
+
+export function isNumber(value: any): boolean {
+  return typeof value === 'number';
+}
