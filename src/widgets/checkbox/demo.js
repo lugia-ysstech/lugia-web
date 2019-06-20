@@ -44,7 +44,7 @@ const view = {
     margin: 20,
   },
 };
-export class CheckBoxDemo extends React.Component<any, any> {
+export class CheckboxDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.Checkbox]: {
@@ -181,7 +181,7 @@ export class CheckBoxDemo extends React.Component<any, any> {
     );
   }
 }
-export const CheckBoxGroupDemo = class extends React.Component<any, any> {
+export const CheckboxGroupDemo = class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
