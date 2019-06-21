@@ -208,7 +208,7 @@ export const CheckSpan = CSSComponent({
       color: lightGreyColor,
       border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
     },
-    getCSS(themeMeta: Object) {
+    getCSS(themeMeta: Object): string {
       const { background, bgColor = {}, isChecked } = themeMeta;
       if (!background) {
         const { background: nromalBgColor } = bgColor;
@@ -218,6 +218,8 @@ export const CheckSpan = CSSComponent({
           : defultDisabledColor;
         return `background: ${normalColor};`;
       }
+
+      return '';
     },
   },
 });
