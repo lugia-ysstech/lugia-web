@@ -116,7 +116,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
             opacity: 0.2,
             boxShadow: '2px 2px 5px 5px blue',
           },
-          hover: { opacity: 1 },
+          hover: { opacity: 1, color: 'green' },
         },
         Indicator: {
           normal: {
