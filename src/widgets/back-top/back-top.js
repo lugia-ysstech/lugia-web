@@ -109,7 +109,7 @@ export default ThemeProvider(
       if (this.hasTarget()) {
         const { target } = this.props;
         if (target && typeof target === 'function') {
-          target().removeEventListener('scroll', this.addTargetListener);
+          target() && target().removeEventListener('scroll', this.addTargetListener);
         }
       }
     }
