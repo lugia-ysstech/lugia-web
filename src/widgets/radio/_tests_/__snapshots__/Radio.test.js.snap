@@ -261,7 +261,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -293,7 +292,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -327,7 +325,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -359,7 +356,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -383,7 +379,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -414,7 +409,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -438,7 +432,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -469,7 +462,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -492,7 +484,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -502,7 +493,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -525,7 +515,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -535,7 +524,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -558,7 +546,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -568,7 +555,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -591,7 +577,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -601,7 +586,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -625,7 +609,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -656,7 +639,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -673,7 +655,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -704,7 +685,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -727,7 +707,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -737,7 +716,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -760,7 +738,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -770,7 +747,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -786,7 +762,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -796,7 +771,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -815,7 +789,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -825,7 +798,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>
@@ -841,7 +813,6 @@ exports[`Radio Radio css 1`] = `
     >
       <span
         className="c2"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -851,7 +822,6 @@ exports[`Radio Radio css 1`] = `
       </span>
       <span
         className="c4"
-        style={Object {}}
       >
         Radio
       </span>

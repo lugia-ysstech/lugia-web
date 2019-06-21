@@ -5,7 +5,7 @@
  */
 import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
-import CSSComponent, { getBorder } from '@lugia/theme-css-hoc';
+import CSSComponent, { getBorder, StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
 import changeColor from './utilsColor';
@@ -38,13 +38,6 @@ export type CheckState = {
 };
 
 const em = px2remcss;
-const getEm = (props: CheckProps) => {
-  const { size = 'default' } = props;
-  if (size === 'default' || 'small') {
-    return { fontSize: '1.2rem', fontNum: 1.2 };
-  }
-  return { fontSize: '1.4rem', fontNum: 1.2 };
-};
 const {
   themeColor,
   borderColor,
@@ -80,18 +73,6 @@ const getSizeCSS = (props: PropsType): string => {
   return `
     height: ${em(height)};
     line-height: ${em(lineHeight)};
-  `;
-};
-const getHoverCSS = (props: PropsType): string => {
-  const { disabled = false, checked = false, themes } = props;
-  const colors = themes.color || themeColor;
-  if (!disabled) {
-    return `
-      color: ${checked ? '#fff' : colors};
-    `;
-  }
-  return `
-    color: ${lightGreyColor};
   `;
 };
 const getDisabledCSS = (props: PropsType): string => {
@@ -151,17 +132,6 @@ const getDisplayCSS = (props: PropsType): string => {
   return 'z-index: -2';
 };
 
-// export const LabelWrapper = styled.label`
-//   position: relative;
-//   display: ${props => (props.hasCancel ? 'none' : 'inline-block')};
-//   outline: none;
-//   transition: all 0.3s;
-//   ${getThemeMarginCSS};
-//   &:hover > span {
-//     ${getHoverCSS};
-//   }
-// `;
-
 export const LabelWrapper = CSSComponent({
   tag: 'label',
   className: 'label-wrapper',
@@ -184,7 +154,7 @@ export const LabelWrapper = CSSComponent({
     selectNames: [['opacity']],
   },
 });
-export const CheckInput = CSSComponent({
+export const CheckInput = StaticComponent({
   tag: 'input',
   className: 'check-input',
   css: css`
@@ -251,23 +221,8 @@ export const CheckSpan = CSSComponent({
     },
   },
 });
-// export const CheckSpan = styled.span`
-//   display: inline-block;
-//   box-sizing: border-box;
-//   white-space: nowrap;
-//   vertical-align: middle;
-//   padding: 0 ${em(10)};
-//   cursor: pointer;
-//   ${getCheckedCSS};
-//   border-left: 0;
-//   text-align: center;
-//   margin: 0;
-//   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-//   ${getSizeCSS};
-//   ${getWidthCSS};
-// `;
 
-export const CancelSpan = CSSComponent({
+export const CancelSpan = StaticComponent({
   tag: 'span',
   className: 'cancel-span',
   css: css`
