@@ -6,10 +6,10 @@
 
 import colorsFunc from '../css/stateColor';
 import { css } from 'styled-components';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import { getBorder } from '@lugia/theme-css-hoc/lib/index';
+import { getBorder } from '@lugia/theme-css-hoc';
 
 const em = px2remcss;
 const {
@@ -89,7 +89,7 @@ export const RadioWrap = CSSComponent({
   },
 });
 
-export const RadioContent = CSSComponent({
+export const RadioContent = StaticComponent({
   tag: 'span',
   className: 'radio-content',
   css: css`
@@ -99,21 +99,14 @@ export const RadioContent = CSSComponent({
     vertical-align: text-bottom;
     display: inline-block;
   `,
-  normal: { selectNames: [] },
-  hover: { selectNames: [] },
-  disabled: { selectNames: [] },
-  active: { selectNames: [] },
 });
 
-export const RadioChildrenSpan = CSSComponent({
+export const RadioChildrenSpan = StaticComponent({
   tag: 'span',
   className: 'radio-children-span',
   css: css`
     padding-left: ${em(padding)};
   `,
-  hover: {
-    selectNames: [],
-  },
 });
 
 export const RadioCircleSpan = CSSComponent({
