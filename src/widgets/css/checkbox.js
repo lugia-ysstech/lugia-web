@@ -6,11 +6,10 @@
 
 import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent, getBorder } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
-import { getBorder } from '@lugia/theme-css-hoc/lib/index';
 
 const FontSize = 1.4;
 const defaultColor = '#fff';
@@ -127,7 +126,7 @@ export const CheckBoxWrap = CSSComponent({
   },
 });
 
-export const CheckBoxContent = CSSComponent({
+export const CheckBoxContent = StaticComponent({
   tag: 'span',
   className: 'checkbox-content',
   css: css`
@@ -137,26 +136,32 @@ export const CheckBoxContent = CSSComponent({
     vertical-align: text-bottom;
     display: inline-block;
   `,
-  normal: { selectNames: [] },
-  hover: { selectNames: [] },
-  disabled: { selectNames: [] },
-  active: { selectNames: [] },
 });
-export const CheckBoxLabelSpan = styled.span`
-  padding-left: ${em(10)};
-`;
-export const CheckBoxInput = styled.input`
-  position: absolute;
-  left: 0;
-  z-index: 1;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  opacity: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-`;
+
+export const CheckBoxLabelSpan = StaticComponent({
+  tag: 'span',
+  className: 'checkbox-label-span',
+  css: css`
+    padding-left: ${em(10)};
+  `,
+});
+
+export const CheckBoxInput = StaticComponent({
+  tag: 'input',
+  className: 'checkbox-input',
+  css: css`
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  `,
+});
 
 export const CheckBoxInnerSpan = CSSComponent({
   tag: 'span',
@@ -212,12 +217,16 @@ export const CheckBoxInnerSpan = CSSComponent({
   active: { selectNames: [] },
 });
 
-export const HoverSpan = styled.span`
-  box-sizing: border-box;
-  display: block;
-  width: ${em(18)};
-  height: ${em(18)};
-`;
+export const HoverSpan = StaticComponent({
+  tag: 'span',
+  className: 'checkbox-hover-span',
+  css: css`
+    box-sizing: border-box;
+    display: block;
+    width: ${em(18)};
+    height: ${em(18)};
+  `,
+});
 export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   font-size: ${em(18)};
