@@ -6,10 +6,9 @@
 import styled, { css, keyframes } from 'styled-components';
 import { getBorder } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
-import ThemeProvider from '../theme-provider';
 import { px2remcss } from './units';
 import Icon from '../icon';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 const { defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
@@ -77,7 +76,7 @@ const CommonBackTopStyle = CSSComponent({
   `,
 });
 
-export const BackTop = CSSComponent({
+export const BackTop = StaticComponent({
   tag: 'div',
   className: 'back-top',
   css: css`
@@ -86,9 +85,6 @@ export const BackTop = CSSComponent({
     ${getLeftOrRight};
     cursor: pointer;
   `,
-  normal: {
-    selectNames: [],
-  },
 });
 
 export const BackTopContent = CSSComponent({
