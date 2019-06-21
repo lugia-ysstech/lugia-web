@@ -45,7 +45,7 @@ import {
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
-import { px2emcss } from '../css/units';
+import { px2remcss } from '../css/units';
 import {
   addActivityValue2Data,
   addWidth2Data,
@@ -58,170 +58,390 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
 import { getIndexfromKey, getKeyfromIndex } from '../common/ObjectUtils';
+import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import { addMouseEvent } from '@lugia/theme-hoc';
+import ThemeHoc from '@lugia/theme-hoc';
+import { deepMerge } from '@lugia/object-utils';
 
-const em = px2emcss(1.2);
+const BaseLine = CSSComponent({
+  tag: 'div',
+  className: 'BaseLine',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    background-color: blue;
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 3;
+    border-radius: ${px2remcss(2)};
+  `,
+});
 
-const BaseLine = styled.div`
-  background-color: blue;
-  position: absolute;
-  box-sizing: border-box;
-  z-index: 3;
-  border-radius: ${em(2)};
-`;
+const HLine = CSSComponent({
+  extend: BaseLine,
+  className: 'HLine',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    height: ${px2remcss(2)};
+    width: ${lineWidth};
+    transform: translateX(${props => px2remcss(props.x)});
+    transition: all 0.3s;
+  `,
+}); // ${getLinePosition};
 
-const HLine = styled(BaseLine)`
-  height: ${em(2)};
-  width: ${lineWidth};
-  ${getLinePosition};
-  transform: translateX(${props => em(props.x)});
-  transition: all 0.3s;
-`;
-const ShadowLine = styled.div`
-  width: 100%;
-  position: absolute;
-  bottom: ${em(-1)};
-  height: ${em(1)};
-  z-index: -1;
-  ${getBackgroundShadow};
-`;
-const VLine = styled(BaseLine)`
-  height: ${em(YtabsHeight)};
-  width: ${em(2)};
-  transform: translateY(${props => props.y}%);
-  transition: all 0.3s;
-  ${getLinePosition};
-`;
+// const HLine = styled(BaseLine)`
+//   height: ${px2remcss(2)};
+//   width: ${lineWidth};
+//   ${getLinePosition};
+//   transform: translateX(${props => px2remcss(props.x)});
+//   transition: all 0.3s;
+// `;
 
-const ArrowContainer = styled.span`
-  position: absolute;
-  font-size: 1.2rem;
-  display: ${props => (props.arrowShow === false ? 'none' : 'inline-block')};
-  z-index: 5;
-  ${getCursor};
-`;
+const ShadowLine = CSSComponent({
+  tag: 'div',
+  className: 'BaseLine',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    width: 100%;
+    position: absolute;
+    bottom: ${px2remcss(-1)};
+    height: ${px2remcss(1)};
+    z-index: -1;
+  `,
+}); //${getBackgroundShadow};
 
-const HBasePage = styled(ArrowContainer)`
-  transform: translateY(-50%);
-  line-height: 100%;
-  ${getArrowTop};
-`;
+const VLine = CSSComponent({
+  extend: BaseLine,
+  className: 'VLine',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    height: ${px2remcss(YtabsHeight)};
+    width: ${px2remcss(2)};
+    transform: translateY(${props => props.y}%);
+    transition: all 0.3s;
+  `,
+}); //${getLinePosition};
 
-const HPrePage = styled(HBasePage)`
-  left: ${em(10)};
-`;
-const HNextPage = styled(HBasePage)`
-  right: ${em(10)};
-`;
-const VBasePage = styled(ArrowContainer)`
-  width: 100%;
-  text-align: center;
-  height: ${em(24)};
-`;
-const VPrePage = styled(VBasePage)`
-  top: ${em(12)};
-`;
-const VNextPage = styled(VBasePage)`
-  transform: translateX(-100%);
-  bottom: ${em(-6)};
-`;
-const OutContainer = styled.div`
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  position: relative;
-  width: ${hContainerWidth};
-  height: ${vContainerHeight};
-`;
+const ArrowContainer = CSSComponent({
+  tag: 'span',
+  className: 'BaseLine',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    position: absolute;
+    font-size: 1.2rem;
+    display: ${props => (props.arrowShow === false ? 'none' : 'inline-block')};
+    z-index: 5;
+  `,
+}); //${getCursor};;
+
+const HBasePage = CSSComponent({
+  extend: ArrowContainer,
+  className: 'HBasePage',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    transform: translateY(-50%);
+    line-height: 100%;
+  `,
+}); //${getArrowTop};
+
+const HPrePage = CSSComponent({
+  extend: HBasePage,
+  className: 'HPrePage',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    left: ${px2remcss(10)};
+  `,
+});
+
+const HNextPage = CSSComponent({
+  extend: HBasePage,
+  className: 'HNextPage',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    right: ${px2remcss(10)};
+  `,
+});
+
+const VBasePage = CSSComponent({
+  extend: ArrowContainer,
+  className: 'VBasePage',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    width: 100%;
+    text-align: center;
+    height: ${px2remcss(24)};
+  `,
+});
+
+const VPrePage = CSSComponent({
+  extend: VBasePage,
+  className: 'VPrePage',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    top: ${px2remcss(12)};
+  `,
+});
+
+const VNextPage = CSSComponent({
+  extend: VBasePage,
+  className: 'VNextPage',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    transform: translateX(-100%);
+    bottom: ${px2remcss(-6)};
+  `,
+});
+
+const OutContainer = CSSComponent({
+  tag: 'div',
+  className: 'OutContainer',
+  normal: {
+    selectNames: [['padding'], ['width']],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+  `,
+}); //width: ${hContainerWidth};height: ${vContainerHeight};
 OutContainer.displayName = Widget.TabsContainer;
-const HTabsContainer = styled.div`
-  width: 100%;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-const AddContainer = styled.div`
-  position: relative;
-  ${getAddBackground};
-  ${getTabpaneBorder};
-  ${getAddRadius};
-  ${getAddTop};
-  width: ${em(AddButtonSize)};
-  height: ${em(AddButtonSize)};
-  &:focus {
-    ${getAddHoverBackground};
-  }
-`;
 
-const AddOutContainer = styled.div`
-  position: relative;
-  text-align: center;
-  ${getAddTop};
-  ${getAddRight};
-  display: inline-block;
-  height: ${hContainerHeight};
-  line-height: ${hContainerHeight};
-`;
-const AddIcon: Object = styled(Icon)`
-  position: relative;
-  transition: all 0.3s linear 0.1s;
-  font-size: 1rem;
-  ${getAddButtonBottom};
-  ${getAddButtonDisplay};
-  opacity: 0;
-  &:hover {
-    ${getButtonShow};
-  }
-`;
+const HTabsContainer = CSSComponent({
+  tag: 'div',
+  className: 'HTabsContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+  `,
+});
+
+const AddContainer = CSSComponent({
+  tag: 'div',
+  className: 'AddContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    width: ${px2remcss(AddButtonSize)};
+    height: ${px2remcss(AddButtonSize)};
+  `,
+}); /* ${getAddBackground};${getTabpaneBorder};${getAddRadius};${getAddTop};&:focus {${getAddHoverBackground};}*/
+
+const AddOutContainer = CSSComponent({
+  tag: 'div',
+  className: 'AddContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    text-align: center;
+    display: inline-block;
+  `,
+}); // ${getAddTop};${getAddRight};  height: ${hContainerHeight};line-height: ${hContainerHeight};
+
+const AddIcon = CSSComponent({
+  extend: Icon,
+  className: 'AddIcon',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    transition: all 0.3s linear 0.1s;
+    font-size: 1rem;
+    opacity: 0;
+  `,
+}); //${getAddButtonBottom};${getAddButtonDisplay};&:hover { ${getButtonShow};}
+
 AddIcon.displayName = 'addIcon';
-const HscrollerContainer = styled.div`
-  height: ${hContainerHeight};
-  display: inline-block;
-  box-sizing: border-box;
-  white-space: nowrap;
-  transition: all 0.5s;
-  transform: translateX(${props => em(props.x)});
-`;
-const VTabsContainer = styled.div`
-  height: 100%;
-  box-sizing: border-box;
-  white-space: nowrap;
-  display: inline-block;
-  overflow: hidden;
-`;
-const YscrollerContainer = styled.div`
-  display: inline-block;
-  box-sizing: border-box;
-  white-space: nowrap;
-  transition: all 0.5s;
-  transform: translateY(${props => em(props.y)});
-`;
-const HTabsOutContainer = styled.div`
-  height: ${hContainerHeight};
-  line-height: ${hContainerHeight};
-  position: relative;
-  ${getContainerBorder};
-  background: ${backgroundColor};
-  ${getContainerPadding};
-  z-index: 99;
-`;
 
-const VTabsOutContainer = styled.div`
-  ${getSelectColor};
-  ${getContainerBorder};
-  display: inline-block;
-  position: relative;
-  ${getContainerPadding};
-  box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  height: 100%;
-`;
-const PageIcon: Object = styled(Icon)`
-  display: inline-block;
-  font-style: normal;
-  text-align: center;
-  font-size: 1rem;
-  ${getCursor};
-`;
+const HscrollerContainer = CSSComponent({
+  tag: 'div',
+  className: 'HscrollerContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+    box-sizing: border-box;
+    white-space: nowrap;
+    transition: all 0.5s;
+    transform: translateX(${props => px2remcss(props.x)});
+  `,
+}); //height: ${hContainerHeight};
+
+const VTabsContainer = CSSComponent({
+  tag: 'div',
+  className: 'VTabsContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    height: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+  `,
+});
+
+const YscrollerContainer = CSSComponent({
+  tag: 'div',
+  className: 'YscrollerContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+    box-sizing: border-box;
+    white-space: nowrap;
+    transition: all 0.5s;
+    transform: translateY(${props => px2remcss(props.y)});
+  `,
+});
+
+const HTabsOutContainer = CSSComponent({
+  tag: 'div',
+  className: 'HTabsOutContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    z-index: 99;
+  `,
+}); //height: ${hContainerHeight};line-height: ${hContainerHeight};position: relative;${getContainerBorder};background: ${backgroundColor};${getContainerPadding};
+
+const VTabsOutContainer = CSSComponent({
+  tag: 'div',
+  className: 'VTabsOutContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 100%;
+  `,
+}); //${getSelectColor};${getContainerBorder}; ${getContainerPadding};
+
+const PageIcon = CSSComponent({
+  extend: Icon,
+  className: 'PageIcon',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+    font-style: normal;
+    text-align: center;
+    font-size: 1rem;
+  `,
+}); // ${getCursor};
+
 PageIcon.displayName = 'page';
 
 type TabsState = {|
@@ -252,6 +472,7 @@ type TabsProps = {
   onAddClick: Function,
   pagedType: PagedType,
   getTabpane: Function,
+  themeProps: Object,
   onTabMouseEnter?: Function,
   onTabMouseLeave?: Function,
 };
@@ -321,15 +542,17 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { getTheme } = this.props;
+    const { getTheme, themeProps } = this.props;
     const config = {
       width: this.offsetWidth,
       height: this.offsetHeight,
     };
     const theme = { [Widget.TabsContainer]: config };
+    // {...addMouseEvent(this)}
     return (
       <Theme config={theme}>
         <OutContainer
+          themeProps={themeProps}
           theme={getTheme()}
           ref={cmp => {
             this.tabs = cmp;
@@ -365,23 +588,29 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getVtabs() {
-    const { tabPosition } = this.props;
+    const { tabPosition, themeProps } = this.props;
     const { data, activityValue, pagedCount, totalPage } = this.state;
     const arrowUp = 'lugia-icon-direction_up';
     const arrowDown = 'lugia-icon-direction_down';
     const y = -YtabsHeight * pagedCount;
     return (
-      <VTabsOutContainer tabPosition={tabPosition} showPadding={totalPage > 1}>
+      <VTabsOutContainer
+        themeProps={themeProps}
+        tabPosition={tabPosition}
+        showPadding={totalPage > 1}
+      >
         <VPrePage
+          themeProps={themeProps}
           tabPosition={tabPosition}
           onClick={this.onPreClick}
           {...this.getArrowConfig('pre')}
         >
-          <PageIcon iconClass={arrowUp} {...this.getArrowConfig('pre')} />
+          <PageIcon themeProps={themeProps} iconClass={arrowUp} {...this.getArrowConfig('pre')} />
         </VPrePage>
-        <VTabsContainer>
-          <YscrollerContainer y={y}>
+        <VTabsContainer themeProps={themeProps}>
+          <YscrollerContainer y={y} themeProps={themeProps}>
             <VLine
+              themeProps={themeProps}
               y={getIndexfromKey(data, 'activityValue', activityValue) * 100}
               tabPosition={tabPosition}
             />
@@ -389,21 +618,27 @@ class TabsBox extends Component<TabsProps, TabsState> {
           </YscrollerContainer>
         </VTabsContainer>
         <VNextPage
+          themeProps={themeProps}
           {...this.getArrowConfig('next')}
           tabPosition={tabPosition}
           onClick={this.onNextClick}
         >
-          <PageIcon iconClass={arrowDown} {...this.getArrowConfig('next')} />
+          <PageIcon
+            themeProps={themeProps}
+            iconClass={arrowDown}
+            {...this.getArrowConfig('next')}
+          />
         </VNextPage>
       </VTabsOutContainer>
     );
   }
 
   getHTabs() {
-    const { tabType, tabPosition, getTheme } = this.props;
+    const { tabType, tabPosition, getTheme, themeProps } = this.props;
     const { totalPage } = this.state;
     return [
       <HTabsOutContainer
+        themeProps={themeProps}
         tabType={tabType}
         tabPosition={tabPosition}
         showPadding={totalPage > 1}
@@ -416,19 +651,20 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getShadowLine() {
-    const { tabType } = this.props;
+    const { tabType, themeProps } = this.props;
     if (matchType(tabType, 'window')) {
-      return <ShadowLine tabType={tabType} />;
+      return <ShadowLine themeProps={themeProps} tabType={tabType} />;
     }
     return null;
   }
 
   getHline() {
-    const { tabType, tabPosition } = this.props;
+    const { tabType, tabPosition, themeProps } = this.props;
     const { activityValue, data, childrenSize } = this.state;
     if (matchType(tabType, 'line')) {
       return (
         <HLine
+          themeProps={themeProps}
           lineWidth={childrenSize[getIndexfromKey(data, 'activityValue', activityValue)]}
           x={
             plusWidth(getIndexfromKey(data, 'activityValue', activityValue) - 1, childrenSize) +
@@ -442,36 +678,41 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getHtabsChildren() {
-    const { tabType, getTheme } = this.props;
+    const { tabType, getTheme, themeProps } = this.props;
     const arrowLeft = 'lugia-icon-direction_Left';
     const arrowRight = 'lugia-icon-direction_right';
     const pre = this.getArrowConfig('pre');
     const next = this.getArrowConfig('next');
     return [
-      <HPrePage onClick={this.onPreClick} tabType={tabType} {...pre}>
-        <PageIcon iconClass={arrowLeft} {...pre} />
+      <HPrePage themeProps={themeProps} onClick={this.onPreClick} tabType={tabType} {...pre}>
+        <PageIcon themeProps={themeProps} iconClass={arrowLeft} {...pre} />
       </HPrePage>,
-      <HTabsContainer tabType={tabType}>
-        <HscrollerContainer tabType={tabType} x={this.computePagedX()} theme={getTheme()}>
+      <HTabsContainer themeProps={themeProps} tabType={tabType}>
+        <HscrollerContainer
+          themeProps={themeProps}
+          tabType={tabType}
+          x={this.computePagedX()}
+          theme={getTheme()}
+        >
           {this.getChildren()}
           {this.getAddButton()}
           {this.getHline()}
         </HscrollerContainer>
       </HTabsContainer>,
-      <HNextPage {...next} onClick={this.onNextClick} tabType={tabType}>
-        <PageIcon iconClass={arrowRight} {...next} />
+      <HNextPage themeProps={themeProps} {...next} onClick={this.onNextClick} tabType={tabType}>
+        <PageIcon themeProps={themeProps} iconClass={arrowRight} {...next} />
       </HNextPage>,
     ];
   }
 
   getAddButton() {
-    const { tabType, getTheme } = this.props;
+    const { tabType, getTheme, themeProps } = this.props;
     const add = 'lugia-icon-reminder_plus';
     if (!matchType(tabType, 'line')) {
       return (
-        <AddOutContainer tabType={tabType} theme={getTheme()}>
-          <AddContainer tabType={tabType} onClick={this.onAddClick}>
-            <AddIcon tabType={tabType} iconClass={add} />
+        <AddOutContainer themeProps={themeProps} tabType={tabType} theme={getTheme()}>
+          <AddContainer themeProps={themeProps} tabType={tabType} onClick={this.onAddClick}>
+            <AddIcon themeProps={themeProps} tabType={tabType} iconClass={add} />
           </AddContainer>
         </AddOutContainer>
       );
@@ -582,16 +823,16 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getChildren() {
     const { data } = this.state;
-    const { getTabpane } = this.props;
+    const { getTabpane, themeProps } = this.props;
     return data
       ? data.map((child, i) => {
-          const target = <Tabpane {...this.getTabpaneConfig(child, i)} />;
+          const target = <Tabpane {...this.props} {...this.getTabpaneConfig(child, i)} />;
           return getTabpane ? getTabpane(target, i) : target;
         })
       : null;
   }
   getChildrenContent() {
-    const { forceRender, tabPosition } = this.props;
+    const { forceRender, tabPosition, themeProps } = this.props;
     const { activityValue, data } = this.state;
     if (data && data.map) {
       return data.map((child, i) => {
@@ -616,6 +857,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
           );
           return (
             <TabContent
+              themeProps={themeProps}
               content={content}
               activityValue={childActivityValue}
               tabPosition={tabPosition}
@@ -756,5 +998,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   };
 }
 
-const TargetTabs = ThemeProvider(KeyBoardEventAdaptor(TabsBox), Widget.Tabs);
+const TargetTabs = ThemeProvider(KeyBoardEventAdaptor(TabsBox), Widget.Tabs, {
+  hover: true,
+  active: false,
+});
 export default TargetTabs;
