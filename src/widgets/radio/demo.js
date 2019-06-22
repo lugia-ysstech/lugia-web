@@ -23,6 +23,11 @@ const data = [
   { text: 'radio2', value: 'Pear' },
   { text: 'radio3', value: 'Orange', disabled: true },
 ];
+const data2 = [
+  { text: 'radio1', value: 'Apple', disabled: true },
+  { text: 'radio2', value: 'Pear' },
+  { text: 'radio3', value: 'Orange' },
+];
 const onChange = obj => {
   console.info('obj-demo', obj);
 };
@@ -314,7 +319,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
       [Widget.RadioGroup]: {
         Group: {
           normal: {
-            width: 400,
+            width: 500,
             height: 200,
             opacity: 1,
             border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 4 }),
@@ -423,92 +428,70 @@ export class RadioGroupDemo extends React.Component<any, any> {
           },
         },
         CheckButton: {
-          CheckButtonWrap: {
+          CheckButtonChecked: {
+            normal: {
+              width: 100,
+              height: 50,
+              opacity: 1,
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              background: { color: 'yellow' },
+              color: 'red',
+              font: { fontSize: 16, fontWeight: 500 },
+              padding: { top: 10, bottom: 10, left: 10, right: 10 },
+            },
+            hover: {
+              background: { color: 'yellow' },
+              opacity: 0.6,
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              color: 'green',
+            },
+            disabled: {
+              background: { color: 'orange' },
+              opacity: 0.6,
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 4 }),
+              color: 'green',
+            },
+          },
+          CheckButtonCancel: {
+            normal: {
+              width: 100,
+              height: 50,
+              opacity: 1,
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              background: { color: 'yellow' },
+              color: 'green',
+              font: { fontSize: 16, fontWeight: 500 },
+              padding: { top: 10, bottom: 10, left: 10, right: 10 },
+            },
+            hover: {
+              background: { color: 'green' },
+              opacity: 0.6,
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              color: 'yellow',
+            },
+          },
+          CheckButtonUnChecked: {
             normal: {
               width: 100,
               height: 50,
               opacity: 1,
               border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
               background: { color: '#33f340' },
+              color: 'red',
+              font: { fontSize: 16, fontWeight: 500 },
+              padding: { top: 10, bottom: 10, left: 10, right: 10 },
             },
             hover: {
-              background: { color: 'green' },
+              background: { color: 'yellow' },
               opacity: 0.6,
               border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
-            },
-            cancel: {
-              border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
-              background: { color: '#8D13DE' },
-            },
-            active: {
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
-              background: { color: 'red' },
-            },
-          },
-          CheckButtonText: {
-            normal: {
-              color: 'blue',
-              fontSize: 16,
-              fontWeight: 400,
-              padding: {
-                top: 10,
-                bottom: 10,
-                left: 10,
-                right: 10,
-              },
-            },
-            hover: {
-              color: 'red',
-              fontSize: 12,
-              fontWeight: 600,
-            },
-            active: {
-              color: '#fff',
-              fontSize: 18,
-            },
-          },
-          Checked: {
-            disabled: {
-              opacity: 0.8,
-              background: { color: '#b2a8ef' },
-              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 4 }),
-              color: 'red',
-            },
-          },
-          UnChecked: {
-            disabled: {
-              opacity: 0.4,
-              background: { color: '#ccc' },
-              border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
               color: 'green',
             },
-          },
-        },
-      },
-    };
-    const newView = {
-      [Widget.RadioGroup]: {
-        CheckButton: {
-          CheckButtonWrap: {
-            cancel: {
-              border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
-              background: { color: '#8D13DE' },
-            },
-          },
-          CheckButtonText: {
-            normal: {
-              color: 'blue',
-              fontSize: 16,
-              fontWeight: 400,
-            },
-            hover: {
-              color: 'red',
-              fontSize: 12,
-              fontWeight: 600,
-            },
-            active: {
-              color: '#fff',
-              fontSize: 18,
+            disabled: {
+              background: { color: 'orange' },
+              opacity: 0.6,
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 4 }),
+              color: 'yellow',
             },
           },
         },
@@ -665,12 +648,24 @@ export class RadioGroupDemo extends React.Component<any, any> {
         </Wrapper>
         <br />
         <Wrapper>
-          <Theme config={newView}>
+          <p>theme cancel</p>
+          <Theme config={view}>
             <RadioGroup
               onChange={this.handleChange}
               data={data}
               value={this.state.value}
               displayValue={this.state.displayValue}
+              childType="button"
+            />
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <p>theme checked</p>
+          <Theme config={view}>
+            <RadioGroup
+              onChange={this.handleChange}
+              data={data2}
+              defaultValue={'Apple'}
               childType="button"
             />
           </Theme>
