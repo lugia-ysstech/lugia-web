@@ -293,18 +293,18 @@ export class RadioGroupDemo extends React.Component<any, any> {
           },
           RadioInnerChecked: {
             normal: {
-              background: { color: '#fff' },
-              width: 16,
-              height: 16,
+              background: { color: 'green' },
+              width: 12,
+              height: 12,
             },
             disabled: {
-              background: { color: '#c0c8ff' },
+              background: { color: 'red' },
             },
             hover: {
               background: { color: 'blue' },
             },
             cancel: {
-              background: { color: 'red' },
+              background: { color: 'black' },
             },
           },
         },
@@ -315,10 +315,10 @@ export class RadioGroupDemo extends React.Component<any, any> {
         Group: {
           normal: {
             width: 400,
-            height: 100,
+            height: 200,
             opacity: 1,
             border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 4 }),
-            background: { color: 'red' },
+            background: { color: '#ccc' },
             padding: {
               top: 10,
               bottom: 10,
@@ -560,7 +560,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
         </Wrapper>
         <Wrapper>
           <p>themes</p>
-          <Theme config={radioView}>
+          <Theme config={view}>
             <RadioGroup defaultValue="1" onChange={onChange}>
               <Radio viewClass="register" value="1" styles="vertical">
                 Radio
