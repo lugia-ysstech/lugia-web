@@ -21,6 +21,7 @@ const {
   marginToSameElement,
   marginToPeerElementForY,
   lightGreyColor,
+  blackColor,
 } = colorsFunc();
 
 type RadioStyleType = 'default' | 'vertical';
@@ -61,6 +62,16 @@ const getStyleCSS = (props: RadioType): string => {
   `;
 };
 
+const RadioDefaultTheme = {
+  opacity: 1,
+  padding: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+};
+
 export const RadioWrap = CSSComponent({
   tag: 'label',
   className: 'radio-wrap',
@@ -76,16 +87,26 @@ export const RadioWrap = CSSComponent({
     ${getStyleCSS};
   `,
   normal: {
-    selectNames: [['color'], ['font'], ['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+    selectNames: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+    defaultTheme: RadioDefaultTheme,
   },
   hover: {
-    selectNames: [['opacity'], ['color']],
+    selectNames: [['opacity']],
+    defaultTheme: {
+      opacity: 1,
+    },
   },
   disabled: {
     selectNames: [['opacity']],
+    defaultTheme: {
+      opacity: 1,
+    },
   },
   active: {
     selectNames: [['opacity']],
+    defaultTheme: {
+      opacity: 1,
+    },
   },
 });
 
@@ -101,12 +122,43 @@ export const RadioContent = StaticComponent({
   `,
 });
 
-export const RadioChildrenSpan = StaticComponent({
+export const RadioChildrenSpan = CSSComponent({
   tag: 'span',
   className: 'radio-children-span',
   css: css`
     padding-left: ${em(padding)};
   `,
+  normal: {
+    selectNames: [['color'], ['font'], ['padding']],
+    defaultTheme: {
+      color: blackColor,
+      font: { fontSize: em(14) },
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: padding,
+      },
+    },
+  },
+  hover: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: blackColor,
+    },
+  },
+  disabled: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: lightGreyColor,
+    },
+  },
+  active: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: blackColor,
+    },
+  },
 });
 
 export const RadioCircleSpan = CSSComponent({
@@ -127,10 +179,21 @@ export const RadioCircleSpan = CSSComponent({
   `,
   normal: {
     selectNames: [['background'], ['border'], ['width'], ['height']],
-    getCSS(themeMeta: Object): string {
-      const { checked, isDisabled, isCancel } = themeMeta;
-      if (checked) {
-        const { background, width = 10, height = 10 } = checked;
+    getCSS(themeMeta: Object, themeProps: Object): string {
+      console.log('themeProps', themeProps);
+      const { propsConfig, themeState } = themeProps;
+      const { hover } = themeState;
+      const { RadioInnerCheckedTheme, isCancel, isDisabled, isChecked } = propsConfig;
+      const afterThemeConfig = RadioInnerCheckedTheme.themeConfig;
+      const theme = isDisabled
+        ? afterThemeConfig.disabled
+        : isCancel
+        ? afterThemeConfig.cancel
+        : hover
+        ? afterThemeConfig.hover
+        : afterThemeConfig.normal;
+      if (isChecked || isCancel) {
+        const { background, width = 10, height = 10 } = theme;
         return css`
           &::after {
             position: absolute;
@@ -144,24 +207,23 @@ export const RadioCircleSpan = CSSComponent({
             border-top: 0;
             border-left: 0;
             content: ' ';
-            background-color: ${background
-              ? background.color
-              : isCancel
-              ? colorsFunc(themeColor).disabledColor
-              : isDisabled
-              ? lightGreyColor
-              : themeColor};
+            background-color: ${background.color};
           }
         `;
       }
 
       return '';
     },
+    defaultTheme: {
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      background: { color: '#fff' },
+    },
   },
   hover: {
     selectNames: [['background'], ['border']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      background: { color: '#fff' },
     },
   },
   disabled: {
@@ -176,5 +238,9 @@ export const RadioCircleSpan = CSSComponent({
   },
   active: {
     selectNames: [],
+    defaultTheme: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      background: { color: '#fff' },
+    },
   },
 });
