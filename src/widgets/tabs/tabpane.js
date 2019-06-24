@@ -283,7 +283,9 @@ const TabIcon = CSSComponent({
     selectNames: [['color']],
     defaultTheme: {
       color: disableColor,
-      cursor: 'not-allowed',
+    },
+    getCSS: (theme: Object, themeProps: Object) => {
+      return 'cursor: not-allowed';
     },
   },
 });
@@ -329,35 +331,43 @@ const ClearButtonContainer = CSSComponent({
   },
   disabled: {
     selectNames: [],
-    defaultTheme: {
-      cursor: 'not-allowed',
-    },
   },
 });
 
-const ClearIcon = CSSComponent({
-  extend: Icon,
-  className: 'ClearIcon',
-  css: css`
-    font-size: 1rem;
-  `,
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [['cursor']],
-    defaultTheme: {
-      color: mediumGreyColor,
-      cursor: 'not-allowed',
+const ClearIcon = ThemeHoc(
+  CSSComponent({
+    extend: Icon,
+    className: 'ClearIcon',
+    css: css`
+      font-size: 1rem;
+      color: blue;
+    `,
+    normal: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: 'red',
+      },
     },
-  },
-  disabled: {
-    selectNames: [['cursor']],
-    defaultTheme: {
-      cursor: 'not-allowed',
+    hover: {
+      selectNames: [['color']],
+      defaultTheme: {
+        color: '#fff',
+      },
     },
-  },
-});
+    disabled: {
+      selectNames: [],
+      defaultTheme: {
+        cursor: 'not-allowed',
+        color: 'red',
+      },
+      getCSS: (theme: Object, themeProps: Object) => {
+        return 'cursor: not-allowed';
+      },
+    },
+  }),
+  'ClearIcon',
+  { hover: true, active: false }
+);
 
 ClearIcon.displayName = 'deleteIcon';
 
@@ -589,6 +599,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const { tabType, themeProps, disabled } = this.props;
     const { iconClass } = this.state;
     const cBtnthemeProps = deepMerge({ propsConfig: { tabType } }, themeProps);
+    const { theme, viewClass } = this.props.getPartOfThemeHocProps('DefaultTabPan');
     if (!matchType(tabType, 'line')) {
       return (
         <ClearButtonContainer
@@ -598,7 +609,12 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           onClick={this.onDeleteClick}
           tabType={tabType}
         >
-          <ClearIcon themeProps={themeProps} iconClass={iconClass} disabled={disabled} />
+          <ClearIcon
+            theme={theme}
+            viewClass={viewClass}
+            iconClass={iconClass}
+            disabled={disabled}
+          />
         </ClearButtonContainer>
       );
     }
