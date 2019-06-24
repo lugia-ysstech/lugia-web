@@ -35,61 +35,130 @@ import colorsFunc from '../css/stateColor';
 
 const { themeColor, mediumGreyColor, superLightColor, disableColor } = colorsFunc();
 
-const BaseTab = ThemeHoc(
-  CSSComponent({
-    tag: 'div',
-    className: 'BaseTab',
-    normal: {
-      selectNames: [['color'], ['background'], ['border'], ['margin']],
-    },
-    hover: {
-      selectNames: [['color'], ['background']],
-      defaultTheme: {
-        color: themeColor,
-      },
-      getCSS: (theme: Object, themeProps: Object) => {
-        return css`
-          & > span {
-            opacity: 1;
-          }
-          & > div.cardTitle {
-            transition: all 0.3s linear;
-            transform: translateX(-3px);
-          }
-        `;
-      },
-    },
-    disabled: {
-      selectNames: [],
-      defaultTheme: {
-        cursor: 'not-allowed',
-        color: '#999',
-      },
-      getCSS: (theme: Object, themeProps: Object) => {
-        const { color } = theme;
-        return css`
-          color: ${color || '#999'};
+// const BaseTab = ThemeHoc(
+//   CSSComponent({
+//     tag: 'div',
+//     className: 'BaseTab',
+//     normal: {
+//       selectNames: [['color'], ['background'], ['border'], ['margin']],
+//     },
+//     hover: {
+//       selectNames: [['color'], ['background']],
+//       defaultTheme: {
+//         color: themeColor,
+//       },
+//       getCSS: (theme: Object, themeProps: Object) => {
+//         return css`
+//           & > span {
+//             opacity: 1;
+//           }
+//           & > div.cardTitle {
+//             transition: all 0.3s linear;
+//             transform: translateX(-3px);
+//           }
+//         `;
+//       },
+//     },
+//     disabled: {
+//       selectNames: [],
+//       defaultTheme: {
+//         cursor: 'not-allowed',
+//         color: '#999',
+//       },
+//       getCSS: (theme: Object, themeProps: Object) => {
+//         const { color } = theme;
+//         return css`
+//           color: ${color || '#999'};
+//
+//           & > div.lineTitle::before {
+//             content: '';
+//             width: 0;
+//             height: 0;
+//           }
+//           & > div.cardTitle {
+//             transition: none;
+//             transform: none;
+//           }
+//         `;
+//       },
+//     },
+//     css: css`
+//       position: relative;
+//       cursor: pointer;
+//       white-space: nowrap;
+//       display: inline-block;
+//       padding: 0 10px 0 20px;
+//     `,
+//   }),
+//   'BaseTab',
+//   { hover: true, active: false }
+// );
 
-          & > div.lineTitle::before {
-            content: '';
-            width: 0;
-            height: 0;
-          }
-          & > div.cardTitle {
-            transition: none;
-            transform: none;
-          }
-        `;
-      },
+const BaseTabHoc = CSSComponent({
+  tag: 'div',
+  className: 'BaseTab',
+  normal: {
+    selectNames: [['color'], ['background'], ['border'], ['margin']],
+    getCSS: (theme: Object, themeProps: Object) => {},
+  },
+  hover: {
+    selectNames: [['color'], ['background']],
+    defaultTheme: {
+      color: themeColor,
     },
-    css: css`
-      position: relative;
-      cursor: pointer;
-      white-space: nowrap;
-      display: inline-block;
-      padding: 0 10px 0 20px;
-    `,
-  }),
+    getCSS: (theme: Object, themeProps: Object) => {
+      return css`
+        & > span {
+          opacity: 1;
+        }
+        & > div.cardTitle {
+          transition: all 0.3s linear;
+          transform: translateX(-3px);
+        }
+      `;
+    },
+  },
+  disabled: {
+    selectNames: [],
+    defaultTheme: {
+      cursor: 'not-allowed',
+      color: '#999',
+    },
+    getCSS: (theme: Object, themeProps: Object) => {
+      const { color } = theme;
+      return css`
+        color: ${color || '#999'};
+
+        & > div.lineTitle::before {
+          content: '';
+          width: 0;
+          height: 0;
+        }
+        & > div.cardTitle {
+          transition: none;
+          transform: none;
+        }
+      `;
+    },
+  },
+  css: css`
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 0 10px 0 20px;
+  `,
+});
+
+const BaseTab = ThemeHoc(
+  class extends React.Component<any, any> {
+    render() {
+      const { tabType, themeProps } = this.props;
+
+      themeProps.propsConfig = { tabType };
+      return <BaseTabHoc themeProps={themeProps} className={'BaseTab'} />;
+    }
+  },
   'BaseTab',
   { hover: true, active: false }
 );
@@ -126,7 +195,7 @@ const ActiveTab = ThemeHoc(
     },
     css: '',
   }),
-  'BaseTab',
+  'ActiveTab',
   { hover: true, active: false }
 );
 
@@ -361,7 +430,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     } = this.getHTabPaneThemeProps(tabType, isSelect);
 
     const TabTarget = isSelect ? ActiveTab : BaseTab;
-
+    console.log('title', title);
     let Target = (
       <TabTarget
         // themeProps={tabThemeProps}
@@ -441,6 +510,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
 
   getHTabPaneThemeProps(tabType: string, isSelect: boolean) {
     let titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
+    const cardTabPanThemeProps = this.props.getPartOfThemeProps('SelectTabPan');
+    console.log('doDeepMerge a,b', titleThemeProps, 'B', cardTabPanThemeProps);
+    console.log('doDeepMerge', doDeepMerge(titleThemeProps, cardTabPanThemeProps));
+
     const { props } = this;
     const targetObj = { normal: { ...getTitlePadding(props) } };
     titleThemeProps = doDeepMerge(targetObj, titleThemeProps);
@@ -580,3 +653,28 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
 //
 // export default TargetTabpano;
 export default Tabpane;
+
+// 原先是  const BaseTab = ThemeHoc(
+//   CSSComponent({
+//     ....
+//   }),
+//   'BaseTab',
+//   { hover: true, active: false }
+// );
+//
+// 拆成
+// const BaseTabCSShOC = CSSComponent({
+//     class TabsBox extends Component{
+//        <aaa><aaa/>
+//     }
+// });
+// BaseTabCSShOC.themeProps.propsConfig = {xxxxxxx};
+//  <BaseTabCSShOC themeProps= { 合并后的themeProps }></BaseTabCSShOC>
+
+// const BaseTab = ThemeHoc(
+//    BaseTabCSShOC,
+//   'BaseTab',
+//   { hover: true, active: false }
+// );
+
+// <BaseTab theme={theme} viewClass={viewClass}></BaseTab>

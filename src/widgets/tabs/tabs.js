@@ -73,7 +73,6 @@ const BaseLine = CSSComponent({
     selectNames: [],
   },
   css: css`
-    background-color: blue;
     position: absolute;
     box-sizing: border-box;
     z-index: 3;
@@ -276,7 +275,7 @@ const HTabsContainer = CSSComponent({
     width: 100%;
     display: inline-block;
     white-space: nowrap;
-    overflow: hidden;
+    // overflow: hidden;
   `,
 });
 
@@ -347,8 +346,8 @@ const HscrollerContainer = CSSComponent({
     display: inline-block;
     box-sizing: border-box;
     white-space: nowrap;
+    border-bottom: 1px solid #e8e8e8;
     transition: all 0.5s;
-    transform: translateX(${props => px2remcss(props.x)});
   `,
 }); //height: ${hContainerHeight};
 
@@ -696,7 +695,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         >
           {this.getChildren()}
           {this.getAddButton()}
-          {this.getHline()}
+          {/*{this.getHline()}*/}
         </HscrollerContainer>
       </HTabsContainer>,
       <HNextPage themeProps={themeProps} {...next} onClick={this.onNextClick} tabType={tabType}>

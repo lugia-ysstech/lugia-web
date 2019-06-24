@@ -106,15 +106,15 @@ export class TabsLimitdemo extends React.Component<any, any> {
   }
 }
 
-const Wrapper = CSSComponent({
+const Title = CSSComponent({
   tag: 'div',
   className: 'YscrollerContainer',
   css: css`
-    text-align: left;
-    margin: 50px;
+    border: 1px solid red;
+    margin: 10px 0;
   `,
 });
-
+const titleStyle = { border: '1px solid red', margin: '10px' };
 const RightWrapper = CSSComponent({
   tag: 'div',
   className: 'YscrollerContainer',
@@ -600,141 +600,141 @@ export default () => {
   };
   return (
     <div>
-      <Theme config={lineView}>
-        <div>
-          <p>defaultData </p>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'top'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            defaultData={defaultData}
-          />
-        </div>
-        <div>
-          <p>height 60 </p>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'top'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            defaultData={defaultData}
-          />
-        </div>
-        <div>
-          <p>suffixIcon </p>
-          <Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />
-        </div>
-        <div>
-          <p>disabled </p>
-          <Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />
-        </div>
-        <div>
-          <p>data tabPosition=top</p>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'top'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            children={children}
-            data={defaultData}
-          />
-        </div>
-      </Theme>
+      {/*<Theme config={lineView}>*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>defaultData </p>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*tabPosition={'top'}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*defaultData={defaultData}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>height 60 </p>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*tabPosition={'top'}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*defaultData={defaultData}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>suffixIcon </p>*/}
+      {/*<Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />*/}
+      {/*</div>*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>disabled </p>*/}
+      {/*<Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />*/}
+      {/*</div>*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>data tabPosition=top</p>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*tabPosition={'top'}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*children={children}*/}
+      {/*data={defaultData}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*</Theme>*/}
 
-      <Theme config={lineView}>
-        <div>
-          <p>children tabPosition=left</p>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'left'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            children={hasActivityValueChildren}
-          />
-        </div>
-        <p>children tabPosition=right</p>
-        <div>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'right'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            children={shortChildren}
-          />
-        </div>
-        <div>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'bottom'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            children={longChildren}
-          />
-        </div>
-        <div>
-          <p>data tabPosition=top</p>
-          <Tabs
-            tabType={'line'}
-            data={defaultData}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-          />
-        </div>
-        <br />
-        <div>
-          <p>data tabPosition=left </p>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'left'}
-            data={hasActivityValueData}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-          />
-        </div>
-        <br />
-        <p>data tabPosition=right && pagedType=single</p>
-        <div>
-          <Tabs
-            tabType={'line'}
-            tabPosition={'right'}
-            data={hasActivityValueData}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-            defaultActivityValue={'2'}
-          />
-        </div>
-        <br />
-        <p>children tabPosition=bottom</p>
-        <div>
-          <Tabs
-            tabType={'line'}
-            data={defaultData}
-            tabPosition={'bottom'}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-          />
-        </div>
-        <br />
-      </Theme>
+      {/*<Theme config={lineView}>*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>children tabPosition=left</p>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*tabPosition={'left'}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*children={hasActivityValueChildren}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<p style={{titleStyle}}>children tabPosition=right</p>*/}
+      {/*<div>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*tabPosition={'right'}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*children={shortChildren}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<div>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*tabPosition={'bottom'}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*children={longChildren}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>data tabPosition=top</p>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*data={defaultData}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<br />*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>data tabPosition=left </p>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*tabPosition={'left'}*/}
+      {/*data={hasActivityValueData}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<br />*/}
+      {/*<p style={{titleStyle}}>data tabPosition=right && pagedType=single</p>*/}
+      {/*<div>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*tabPosition={'right'}*/}
+      {/*data={hasActivityValueData}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*defaultActivityValue={'2'}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<br />*/}
+      {/*<p style={{titleStyle}}>children tabPosition=bottom</p>*/}
+      {/*<div>*/}
+      {/*<Tabs*/}
+      {/*tabType={'line'}*/}
+      {/*data={defaultData}*/}
+      {/*tabPosition={'bottom'}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<br />*/}
+      {/*</Theme>*/}
 
-      <Theme config={cardView}>
-        <div>
-          <p>tabType=card pagedType=single</p>
-          <Tabs
-            tabType={'card'}
-            pagedType={'single'}
-            data={hasActivityValueData}
-            onPreClick={onPreClick}
-            onNextClick={onNextClick}
-          />
-        </div>
-        <br />
-        <br />
-      </Theme>
+      {/*<Theme config={cardView}>*/}
+      {/*<div>*/}
+      {/*<p style={{titleStyle}}>tabType=card pagedType=single</p>*/}
+      {/*<Tabs*/}
+      {/*tabType={'card'}*/}
+      {/*pagedType={'single'}*/}
+      {/*data={hasActivityValueData}*/}
+      {/*onPreClick={onPreClick}*/}
+      {/*onNextClick={onNextClick}*/}
+      {/*/>*/}
+      {/*</div>*/}
+      {/*<br />*/}
+      {/*<br />*/}
+      {/*</Theme>*/}
       <Theme config={windowView}>
         <div>
-          <p>tabType=window pagedType=page</p>
+          <p style={{ titleStyle }}>tabType=window pagedType=page</p>
           <Tabs
             tabType={'window'}
             pagedType={'page'}
@@ -743,9 +743,9 @@ export default () => {
             onNextClick={onNextClick}
           />
         </div>
-        <p>非受限 不传data 展示数据由state 控制</p>
+        <p style={{ titleStyle }}>非受限 不传data 展示数据由state 控制</p>
         {/*<Tabsdemo />*/}
-        <p>受限 展示数据 由props控制</p>
+        <p style={{ titleStyle }}>受限 展示数据 由props控制</p>
         {/*<TabsLimitdemo />*/}
         <br />
       </Theme>
